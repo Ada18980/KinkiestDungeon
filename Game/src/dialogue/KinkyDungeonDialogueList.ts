@@ -261,9 +261,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							let CurrentDress = KinkyDungeonCurrentDress;
 							let dressList = KDGetDressList()[CurrentDress];
 							for (let d of dressList) {
-								if (d.Item && (
+								if (d.Item && !KDModelIsProtected(ModelDefs[d.Item]) && (
 									ModelDefs[d.Item]?.Categories.includes("Bras")
 									|| ModelDefs[d.Item]?.Categories.includes("Panties")
+									|| ModelDefs[d.Item]?.Categories.includes("Cosplay")
 								)) continue;
 								if (d.Properties && Object.values(d.Properties).some((p) => {return p.NoLoss;})) continue;
 								d.Lost = true;
@@ -630,6 +631,96 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					return false;
 				},
 				leadsToStage: "", dontTouchText: true,
+			},
+			"Leave": {playertext: "Leave", exitDialogue: true},
+		}
+	},
+
+	"GhostNegotiate": {
+		response: "Default",
+		inventory: true,
+		clickFunction: (_gagged, _player) => {
+			// create a fake 'ghost' npc to draw on the side
+			// todo
+			/*let npc = DialogueGetEnemy("Angel");
+			KDGameData.CurrentDialogEntity = npc;
+			KDGameData.CurrentDialogMsgSpeaker = npc.Enemy.name;
+			KDGameData.CurrentDialogMsgID = npc.id;
+			KDQuickGenNPC(npc, true);*/
+			return false;
+		},
+		options: {
+			"Possess": {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (__gagged, player) => {
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					return !KDEntityGetBuff(player, "GhostDeal") && tile;
+				},
+				options: {
+					"Confirm": {
+						playertext: "Default", response: "", gag: true,
+						prerequisiteFunction: (__gagged, player) => {
+							let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+							return !KDEntityGetBuff(player, "GhostDeal") && tile;
+						},
+						clickFunction: (_gagged, player) => {
+							let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+							tile.GhostDecision = 0;
+
+							KinkyDungeonApplyBuffToEntity(player,
+							{
+								id: "GhostDeal",
+								type: "GhostDeal",
+								power: 1,
+								events: [
+									{type: "Haunting_GhostDeal", trigger: "tick", dist: 4.5, count: 1, chance: 0.1},
+								],
+								endFloor: true,
+								aura: KDBaseWhite, auraSprite: "Null",
+								duration: 9999, infinite: true,
+							});
+							return false;
+						},
+						exitDialogue: true
+					},
+					"Leave": {playertext: "Leave", response: "Default", leadsToStage: ""},
+				}
+			},
+			"PossessPleasure": {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (__gagged, player) => {
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					return !KDEntityGetBuff(player, "GhostDealPleasure") && tile;
+				},
+				options: {
+					"Confirm": {
+						playertext: "Default", response: "", gag: true,
+						prerequisiteFunction: (__gagged, player) => {
+							let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+							return !KDEntityGetBuff(player, "GhostDealPleasure") && tile;
+						},
+						clickFunction: (_gagged, player) => {
+							let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+							tile.GhostDecision = 0;
+
+							KinkyDungeonApplyBuffToEntity(player,
+							{
+								id: "GhostDealPleasure",
+								type: "GhostDealPleasure",
+								power: 1,
+								events: [
+									{type: "Haunting_GhostDealPleasure", trigger: "tick", dist: 4.5, count: 1, chance: 0.12},
+								],
+								endFloor: true,
+								aura: KDBaseWhite, auraSprite: "Null",
+								duration: 9999, infinite: true,
+							});
+							return false;
+						},
+						exitDialogue: true
+					},
+					"Leave": {playertext: "Leave", response: "Default", leadsToStage: ""},
+				}
 			},
 			"Leave": {playertext: "Leave", exitDialogue: true},
 		}

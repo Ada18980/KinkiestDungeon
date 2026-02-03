@@ -657,6 +657,7 @@ function KinkyDungeonCreateMap (
 
 			if (altType && altType.tickFlags) {
 				KinkyDungeonSendEvent("tickFlags", {delta: 1});
+				KinkyDungeonUpdateBuffs(0, true);
 				KDTickSpecialStats();
 			}
 

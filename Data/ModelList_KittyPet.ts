@@ -165,7 +165,7 @@ AddModel({
 	Parent: "KittyPet",
 	TopLevel: true,
 	Protected: true,
-	Categories: ["Tails", "Kitty", "Cosplay"],
+	Categories: ["Tails", "Kitty", ],
 	AddPose: ["Tails", "Kitty", "Cosplay"],
 	Layers: ToLayerMap([
 		{ Name: "Tail2", Layer: "Tail", Pri: 5,

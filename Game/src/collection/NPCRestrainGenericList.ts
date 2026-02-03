@@ -32,6 +32,7 @@ let KDRestraintGenericTypes: Record<string, RestraintGenericType> = {
 			{count: 1, restraint: "ThighLink"},
 			{count: 1, restraint: "WristLink"},
 			{count: 1, restraint: "ElbowLink"},
+			{count: 1, restraint: "ChainHogtieLink"},
 		],
 	},
 	"NeoLink": {

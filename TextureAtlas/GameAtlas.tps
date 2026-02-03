@@ -2966,6 +2966,8 @@
             <key type="filename">../Game/Buffs/buff/buffEmpower.png</key>
             <key type="filename">../Game/Buffs/buff/buffForcedSubmission.png</key>
             <key type="filename">../Game/Buffs/buff/buffFuukaOrb.png</key>
+            <key type="filename">../Game/Buffs/buff/buffGhostDeal.png</key>
+            <key type="filename">../Game/Buffs/buff/buffGhostDealPleasure.png</key>
             <key type="filename">../Game/Buffs/buff/buffGreaterInvisibility.png</key>
             <key type="filename">../Game/Buffs/buff/buffHaunted.png</key>
             <key type="filename">../Game/Buffs/buff/buffHighValueFound.png</key>

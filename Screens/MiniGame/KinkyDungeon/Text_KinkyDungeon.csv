@@ -3351,19 +3351,36 @@ KinkyDungeonStruggleStruggleImpossibleShadowHandAroused,"The TargetRestraint's g
 KinkyDungeonStruggleStruggleImpossibleBoundShadowHand,"You're bound too tight to have a chance at shaking off the TargetRestraint."
 KinkyDungeonStruggleStruggleImpossibleBoundShadowHandAroused,"You whimper as you give up struggling against the TargetRestraint."
 
-KinkyDungeonStruggleStruggleFailPlug,"You wiggle around trying to get the TargetRestraint out..."
-KinkyDungeonStruggleStruggleFailPlugAroused,"You squirm around trying to dislodge the TargetRestraint..."
+KinkyDungeonStruggleStruggleFailPlug,"You wiggle around trying to push the TargetRestraint out..."
+KinkyDungeonStruggleStruggleFailPlugAroused,"You squirm around trying to push out the TargetRestraint..."
 KinkyDungeonStruggleStruggleImpossiblePlug,"The TargetRestraint is in too deeply, it won't come out."
-KinkyDungeonStruggleStruggleImpossiblePlugAroused,"You feel the TargetRestraint slide around inside but it won't come out!"
-KinkyDungeonStruggleStruggleImpossibleBoundPlug,"Your bondage keeps the TargetRestraint firmly in place."
+KinkyDungeonStruggleStruggleImpossiblePlugAroused,"You feel the TargetRestraint deep inside but it won't come out!"
+KinkyDungeonStruggleStruggleImpossibleBoundPlug,"Your bindings keep the TargetRestraint inside with no chance to slip out."
 KinkyDungeonStruggleStruggleImpossibleBoundPlugAroused,"Your struggling does nothing but shift the TargetRestraint's position inside of you."
 
-KinkyDungeonStruggleStruggleFailEgg,"You wiggle around trying to get the TargetRestraint out..."
-KinkyDungeonStruggleStruggleFailEggAroused,"You squirm around trying to dislodge the TargetRestraint..."
+KinkyDungeonStruggleStruggleFailEgg,"You wiggle around trying to push the TargetRestraint out..."
+KinkyDungeonStruggleStruggleFailEggAroused,"You squirm around trying to push out the TargetRestraint..."
 KinkyDungeonStruggleStruggleImpossibleEgg,"The TargetRestraint won't come out."
 KinkyDungeonStruggleStruggleImpossibleEggAroused,"You feel the TargetRestraint slide around but it won't come out!"
-KinkyDungeonStruggleStruggleImpossibleBoundEgg,"Your bondage keeps the TargetRestraint secure in place."
+KinkyDungeonStruggleStruggleImpossibleBoundEgg,"Your bindings keep the TargetRestraint from falling out."
 KinkyDungeonStruggleStruggleImpossibleBoundEggAroused,"Your struggling does nothing to dislodge the TargetRestraint."
+
+
+
+KinkyDungeonStruggleRemoveFailPlug,"You wiggle trying to pull the TargetRestraint out..."
+KinkyDungeonStruggleRemoveFailPlugAroused,"You squirm, tugging at the TargetRestraint..."
+KinkyDungeonStruggleRemoveImpossiblePlug,"You can't grip the TargetRestraint to take it out."
+KinkyDungeonStruggleRemoveImpossiblePlugAroused,"You fruitlessly feel around trying to grab the TargetRestraint."
+KinkyDungeonStruggleRemoveImpossibleBoundPlug,"Your bindings prevent you from reaching the TargetRestraint."
+KinkyDungeonStruggleRemoveImpossibleBoundPlugAroused,"The TargetRestraint is firmly kept inside of you by your bindings."
+
+KinkyDungeonStruggleRemoveFailEgg,"You wiggle trying to pull the TargetRestraint out..."
+KinkyDungeonStruggleRemoveFailEggAroused,"You squirm, tugging at the TargetRestraint..."
+KinkyDungeonStruggleRemoveImpossibleEgg,"You can't grip the TargetRestraint to take it out."
+KinkyDungeonStruggleRemoveImpossibleEggAroused,"You fruitlessly feel around trying to grab the TargetRestraint."
+KinkyDungeonStruggleRemoveImpossibleBoundEgg,"Your bindings prevent you from reaching the TargetRestraint."
+KinkyDungeonStruggleRemoveImpossibleBoundEggAroused,"The TargetRestraint is firmly kept inside of you by your bindings."
+
 
 
 KinkyDungeonStruggleRemoveFailCorset,"You work to unlace the TargetRestraint..."
@@ -3803,8 +3820,13 @@ KinkyDungeonCage4,"You look like a perfect, happy prisoner."
 
 RestraintBedTrap,Restraining Bed
 RestraintBedTrapDesc,"A bed with a booby trap designed to trap you on top of it!"
-RestraintBedTrapDesc2,"You have to get out somehow..."
+RestraintBedTrapDesc2,"The straps push you deeper into comfort~"
+RestraintBed,Comfy Bed
+RestraintBedDesc,"A formerly trapped bed."
+RestraintBedDesc2,"It's extremey comfortable, especially when you're tied on it."
 KDBedTrap,"Belts emerge from underneath the bed and wrap around you, strapping you down tightly!"
+KDBedTrapSleepsack,"The sheets snap up around you, encasing you in straps and hoisting you into the air!"
+KDBedTrapSleepsackLiedown,"The sheets snap up around you, encasing you in straps and affixing you to the bed!"
 
 RestraintBindingDress,Binding Dress
 RestraintBindingDressDesc,"It's a devious dress! I hope your elbows are flexible~"
@@ -4633,6 +4655,24 @@ RestraintAsylumLegbinderPlusDesc,"A legbinder to keep nurses safe from high-leve
 RestraintAsylumLegbinderPlusDesc2,"Tightly zipped together and secured with straps."
 
 
+
+RestraintSleepsackLegbinder,Heavy Sleepsack Bottom
+RestraintSleepsackLegbinderDesc,"A heavy sleepsack legbinder, designed to keep a subject comfortable yet immobilized."
+RestraintSleepsackLegbinderDesc2,"Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside."
+RestraintSleepsackJacket,Heavy Sleepsack Jacket
+RestraintSleepsackJacketDesc,"A heavy sleepsack jacket, designed to keep a subject comfortable yet helpless."
+RestraintSleepsackJacketDesc2,"Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside."
+RestraintSleepsackBoxbinder,Heavy Sleepsack Boxbinder
+RestraintSleepsackBoxbinderDesc,"A heavy sleepsack boxbinder, designed to keep a subject comfortable yet helpless."
+RestraintSleepsackBoxbinderDesc2,"Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside."
+RestraintSleepsackArmbinder,Heavy Sleepsack Armbinder
+RestraintSleepsackArmbinderDesc,"A heavy sleepsack armbinder, designed to keep a subject comfortable yet helpless."
+RestraintSleepsackArmbinderDesc2,"Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside."
+RestraintSleepsackSuspend,Heavy Sleepsack Cables
+RestraintSleepsackSuspendDesc,"Heavy duty leather straps designed to hold a sleepsack-wearing subject off the ground."
+RestraintSleepsackSuspendDesc2,"They are thick leather straps with lockable buckles."
+
+
 RestraintAsylumAnkleCuffs,Asylum Ankle Cuffs
 RestraintAsylumAnkleCuffsDesc,"A pair of chained cuffs made of reinforced leather. They make patients easier to catch."
 RestraintAsylumAnkleCuffsDesc2,"They can be thrown from long distances."
@@ -4690,6 +4730,9 @@ RestraintComfyGagDesc2,It's made of an ethereal material...
 RestraintComfyStraitjacket,Comfy Straitjacket
 RestraintComfyStraitjacketDesc,A straitjacket that is padded on the inside.
 RestraintComfyStraitjacketDesc2,It feels tight but is actually made of an ethereal material...
+RestraintComfyLegbinder,Comfy Legbinder
+RestraintComfyLegbinderDesc,"A legbinder that renders you unable to move quickly, either due to restriction or sheer comfort."
+RestraintComfyLegbinderDesc2,It feels tight but is actually made of an ethereal material...
 
 RestraintLatexStraitjacket,Latex Jacket
 RestraintLatexStraitjacketDesc,A tight jacket that keeps your arms completely useless.
@@ -7811,6 +7854,7 @@ KinkyDungeonCurseDescriptionMistressKey,"You have KeyAmount key(s) for this item
 KinkyDungeonDrawAngelHelpful,"The angel helps you struggle and use items"
 KinkyDungeonDrawGhostHelpful,"The ghost helps you struggle and use items"
 KinkyDungeonDrawGhostUnhelpful,"The ghost is unhelpful"
+KinkyDungeonDrawGhostOfferNegotiate,"Negotiate"
 
 KinkyDungeonAngelGreet,"Angel: Greetings!"
 KinkyDungeonAngelHelpful,"Angel: Perhaps I can assist with those!"
@@ -12968,6 +13012,38 @@ dAngelHelp_BlueKey,(Ask for a magic key)
 dAngelHelp_Divine,(Ask for help with a divine lock)
 
 KinkyDungeonAngelNoSpace,There is no valid space next to you!
+
+
+rGhostNegotiate,"(The ghost giggles at your predicament)|Looks like you need a bit of help~|Personally, I love to see cute girls tied up, but I'd be willing|to compromise if you can devise another way to entertain me.|Let's make a deal, shall we?"
+rGhostNegotiatePossess,"(The ghost smiles, her pleasant expression betraying a...)|(...sinister tone)|I'd love to~|I get to tie you as I please until you advance a floor.|How's that sound?"
+rGhostNegotiatePossessGag,"(The ghost grins)|Hmm, perhaps I could tie that adorable body of yours|some other time~|Just until you advance a floor~.|How's that sound?"
+rGhostNegotiatePossessPleasure,"(The ghost giggles)|Oh I like this one~|I shall pleasure you as I wish until you advance a floor.|How's that sound?"
+rGhostNegotiatePossessPleasureGag,"(The ghost chuckles)|Mhmm... you're cute~|Perhaps I should go... within you and give you pleasure as I will~|Just until you advance a floor~.|How's that sound?"
+
+rGhostNegotiatePossessPleasure_Cancel,"(The ghost smiles)|Whatever you want, dear~"
+rGhostNegotiatePossess_Cancel,"(The ghost smiles)|Whatever you want, dear~"
+
+
+dGhostNegotiate_Possess,"Perhaps you could tie me up later?"
+dGhostNegotiate_PossessGag,"(Offer up your body)"
+dGhostNegotiate_PossessPleasure,"Why don't you... pleasure me at your leisure?"
+dGhostNegotiate_PossessPleasureGag,"(Wiggle and moan seductively)"
+
+dGhostNegotiate_Leave,"I've already made some deals..."
+dGhostNegotiate_LeaveGag,"(Leave, as you are already under several deals)"
+
+dGhostNegotiatePossess_Confirm,"I accept your terms."
+dGhostNegotiatePossess_ConfirmGag,"(Nod quickly)"
+dGhostNegotiatePossessPleasure_Confirm,"I accept your terms."
+dGhostNegotiatePossessPleasure_ConfirmGag,"(Nod quickly)"
+dGhostNegotiatePossess_Cancel,"Not for me."
+dGhostNegotiatePossess_CancelGag,"(Shake your head)"
+dGhostNegotiatePossessPleasure_Cancel,"Not for me."
+dGhostNegotiatePossessPleasure_CancelGag,"(Shake your head)"
+
+KinkyDungeonBuffGhostDeal,"You've made a deal... your freedom now in exchange for your freedom later..."
+KinkyDungeonBuffGhostDealPleasure,"You've made a deal, which lurks deep inside you~"
+
 
 
 rGenericAlly,"(You approach the SPEAKER)"
@@ -27687,6 +27763,9 @@ KinkyDungeonInventoryItemBrowniesDesc2,"Restores 30% willpower. Takes a few turn
 
 KinkyDungeonBuffHaunted,A playful ghost now accompanies you on your journey.
 KDHaunting,"The ghost haunting you decides to have a little fun! (+RestraintAdded)"
+KDHauntingDeal,"The ghost you made a deal with decides to have a little fun! (+RestraintAdded)"
+KDHauntingDealLock,"The ghost you made a deal with decides to snap a ${LockType} lock to your ${Restraint}"
+KDHauntingDealPleasure,"The ghost you made a deal with decides to have a little fun with you!"
 
 RestraintRopeSnakeRaw,Hemp Rope
 RestraintRopeSnakeRawDesc,"The most common type of bondage rope."
@@ -29284,8 +29363,6 @@ KDDiffTab_Diff,Game Setup
 KDDiffTab_Challenge,Challenge Settings
 KDDiffTab_Consent,Consent Settings
 
-KDConsentList_Tickle,
-KDConsentListDesc_Tickle,
 
 KDInventoryActionInfo_RemoveMagicLock,Select an item to unlock using a Command Word
 KDInventoryActionInfo_Recycle,Current showing eligible items for recycling
@@ -29332,12 +29409,23 @@ KDConsentItem_Earplugs,Earplugs
 KDConsentItem_Shocks,Painful Shocks
 KDConsentItem_SenseDep,Sensory Deprivation
 KDConsentItem_Brats,Brats
+KDConsentItem_ChastityBra,Forced Chastity Bras
+KDConsentItem_ChastityBelt,Forced Chastity Belts
+KDConsentItem_ConsentIngame,Allow Menu Ingame
+
+KDConsentItem_Invis,Invisible Restraints
 
 KDConsentItemTooltip_Red,"|||This item is marked as Red, which prevents it from appearing in the game."
 KDConsentItemTooltip_Yellow,"|||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention."
 KDConsentItemTooltip_Green,"|||This item is marked as Green, which will make it appear more often."
 KDConsentItemTooltip_Check,"|||This item will appear ingame as normal."
 
+KDConsentMenuLocked,Menu Locked
+
+KDConsentItemTooltip_ConsentIngame,"Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot."
+KDConsentItemTooltip_Invis,"Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead."
+KDConsentItemTooltip_ChastityBra,"Allows chastity bras to be forced onto the player character, which prevent access to nipples and lock toys in.||If marked as yellow, chastity bras will not appear unless the player is wearing nipple toys."
+KDConsentItemTooltip_ChastityBelt,"Allows chastity belts to be forced onto the player character, which prevent access to the lower regions and lock toys in.||If marked as yellow, chastity belts will not appear unless the player is wearing toys or plugs on the lower body."
 KDConsentItemTooltip_Brats,"Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them."
 KDConsentItemTooltip_PlugFront,Allows plugs to be inserted into the front slot of your character.
 KDConsentItemTooltip_PlugRear,Allows plugs to be inserted into the rear slot of your character.
@@ -33126,3 +33214,10 @@ KDProgressTagDesc_Level,Training Level ${Level}
 
 KDOptionFilter,"Filter Toggles:"
 KDConsentFilter,"Filter Content:"
+
+
+KDSafeword,Use Safeword
+KDSafewordConfirm,Confirm Safeword?
+KDSafewordDesc,"Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. "
+KDSafewordMenu,"Only usable ingame."
+KDSafwordMsg,${Playername} used her safeword and was transported to the beginning of the level.

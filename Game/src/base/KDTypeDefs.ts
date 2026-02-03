@@ -208,6 +208,9 @@ interface KDRestraintPropsBase {
 	/** This item is not kept in the lost items chest unless it is magical */
 	noRecover?: boolean,
 
+	/** does not use affinity/neededge etc */
+	noaffinity?: boolean,
+	
 	/** These items can only be applied if an enemy has the items in her inventory or the unlimited enemy tag */
 	limited?: boolean,
 	/** Forced to allow these, mainly leashes and collars */
@@ -1748,6 +1751,11 @@ interface KDBuff {
 	training?: string,
 	id: string,
 	power?: number,
+	/** when the buff expires, it instead has its duration reset and either 1 subtracted from its power, or resetDurationPower subtracted. Once power reaches 0 it disappears*/
+	
+	resetDurationPower?: number,
+	/** when the buff expires, it instead has its duration reset and either 1 subtracted from its power, or resetDurationPower subtracted. Once power reaches 0 it disappears*/
+	resetDurationTime?: number,
 	type?: string,
 	duration?: number,
 	infinite?: boolean,
@@ -2000,6 +2008,7 @@ interface entity {
 	KinkyDungeonJailTourInfractions?: number,
 	/**  Used by guards.  */
 	CurrentRestraintSwapGroup?: string,
+	CurrentRestraintSwapIndex?: number,
 }
 
 type KinkyDungeonDress = {

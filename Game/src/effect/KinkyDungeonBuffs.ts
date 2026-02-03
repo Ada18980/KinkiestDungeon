@@ -90,10 +90,22 @@ function KinkyDungeonTickBuffs(entity: entity, delta: number, endFloor: boolean)
 	for (const [key, value] of Object.entries(list)) {
 		const buff = value;
 		if (buff) {
-			if (buff.endFloor && endFloor) KinkyDungeonExpireBuff(entity, key);
-			else if (buff.endSleep && KDGameData.SleepTurns > 1) KinkyDungeonExpireBuff(entity, key);
-			else if (!buff.duration || buff.duration < 0) KinkyDungeonExpireBuff(entity, key);
-			else {
+			let end = false;
+			if (buff.endFloor && endFloor) {end = true; KinkyDungeonExpireBuff(entity, key);}
+			else if (buff.endSleep && KDGameData.SleepTurns > 1) {end = true; KinkyDungeonExpireBuff(entity, key);}
+			else if (!buff.duration || buff.duration < 0) {
+				if (buff.resetDurationTime) {
+					let amt = buff.resetDurationPower || 1;
+					let newPower = buff.power - amt;
+					if ((amt > 0 && newPower <= 0) || (amt < 0 && newPower >= 0)) {
+						KinkyDungeonExpireBuff(entity, key);
+						end = true;
+					} else {
+						buff.duration = buff.resetDurationTime;
+					}
+				}
+			} 
+			if (!end) {
 				if (buff.type == "restore_mp") KDChangeMana(buff.id, "buff", "tick", buff.power);
 				else if (buff.type == "restore_wp") KDChangeWill(buff.id, "buff", "tick", buff.power);
 				else if (buff.type == "restore_sp") KDChangeStamina(buff.id, "buff", "tick", buff.power);

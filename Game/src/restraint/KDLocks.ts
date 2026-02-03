@@ -3,6 +3,76 @@
 
 
 let KDLocks: Record<string, KDLockType> = {
+	None: {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			return Enemy?.Enemy?.tags.rubber || Enemy?.Enemy?.tags.slime || Enemy?.Enemy?.tags.latex;
+		},
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
+			return false;
+		},
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
+			return 0;
+		},
+
+		consume_key: false,
+		lockmult: 1.0,
+		// Picking
+		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_speed: 1.5, // Multiplies the picking rate
+		pick_diff: -0.1, // Added to the item's pick difficulty
+
+		canPick: (_data) => {
+			return false;
+		},
+		doPick: (_data) => {
+			return false;
+		},
+		failPick: (_data) => {
+			return "Fail";
+		},
+		breakChance: (_data) => {
+			return false;
+		},
+
+		// Key
+		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "Knife",
+		canUnlock: (_data) => {
+			return KinkyDungeonGetAffinity(false, "Sharp");
+		},
+		doUnlock: (_data) => {
+			return true;
+		},
+		removeKeys: (_data) => {
+
+		},
+		failUnlock: (_data) => {
+			return "Fail";
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && KDEntityCanCut(entity);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (_data) => {
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (_item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		commandable: false,
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: true,
+	},
 	"Rubber": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return Enemy?.Enemy?.tags.rubber || Enemy?.Enemy?.tags.slime || Enemy?.Enemy?.tags.latex;

@@ -21,6 +21,14 @@ let KDAngelStruggleBonus = {
 	Default: 0.1,
 };
 
+let KDBaseSpeedMult = {
+	Struggle: 1.5,
+	Remove: 2.0,
+	Cut: 1.1,
+	Unlock: 3.0,
+	Pick: 1.0,
+};
+
 let KDWillEscapePenalty = 0.15;
 let KDWillEscapePenaltyArms = 0.1;
 let KDWillEscapePenaltyStart = 0.2;
@@ -637,7 +645,8 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
 			if (KDLocks[lock] && KDLocks[lock].doLock) KDLocks[lock].doLock({item: item, link: Link});
-			item.lock = lock;
+			if (lock != "None")
+				item.lock = lock;
 
 			item.pickProgress = 0;
 		}
@@ -2289,7 +2298,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	// todo make edgebonus a bonus
 
-	if ((data.struggleType == "Struggle") && !data.hasAffinity
+	if (!KDRestraint(data.restraint).noaffinity && (data.struggleType == "Struggle") && !data.hasAffinity
 		&& data.escapeChance <= 0 && data.escapeChance >= -edgeBonus && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
 		let typesuff = "";
 		if (!data.query) {
@@ -2411,7 +2420,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	if (data.struggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic"))
 		data.escapeChance = Math.max(data.escapeChance, 0.2);
 
-	if ((data.struggleType == "Remove") && !data.hasAffinity && data.escapeChance == 0 && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
+	if (!KDRestraint(data.restraint).noaffinity && (data.struggleType == "Remove") && !data.hasAffinity && data.escapeChance == 0 && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
 		let typesuff = "";
 		if (!data.query) {
 			if (!returnType) {
@@ -2786,7 +2795,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		affinity: affinity,
 		noise: StruggleType == "Struggle" ? 4 : 0,
 		strict: KinkyDungeonStrictness(true, struggleGroup, restraint),
-		hasAffinity: KinkyDungeonGetAffinity(!query, affinity, struggleGroup),
+		hasAffinity: KDRestraint(restraint)?.noaffinity ? false : KinkyDungeonGetAffinity(!query, affinity, struggleGroup),
 		restraintEscapeChance: KDRestraint(restraint).escapeChance[StruggleType],
 		cost: KinkyDungeonStatStaminaCostStruggle,
 		wcost: KinkyDungeonStatWillCostStruggle,
@@ -2803,7 +2812,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		buffMult: 1.0,
 		struggleTime: 1.0,
 		restriction: KDGameData.Restriction || 0,
-		speedMult: (speedmult || 1) * (KinkyDungeonHasHelp() ? 2.0 : 1.0),
+		speedMult: (speedmult || 1) * (KinkyDungeonHasHelp() ? 2.0 : 1.0) * (KDBaseSpeedMult[StruggleType] || 1),
 		escapeSpeed: 0,
 		maxLimit: 1,
 		result: "",
@@ -3324,6 +3333,7 @@ let KDNoOverrideTags = [
 	"NoSenseDep",
 	"NoHood",
 	"FreeBoob",
+	"NoBelt",
 	"Unchained",
 	"EasierBlindfolds",
 	"ClearVision",
@@ -3334,6 +3344,7 @@ let KDNoOverrideTags = [
 	"NoKigu",
 	"NoBlindfolds",
 	"Blackout",
+	"NoInvis",
 	"NoBoots",
 	"BubbleOptout",
 	"BubblePref",
@@ -3926,6 +3937,13 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 		if (KinkyDungeonStatsChoice.get("NoHood")) playerTags.set("NoHood", true);
 		if (KinkyDungeonStatsChoice.get("FreeBoob2")) playerTags.set("FreeBoob", true);
 		if (KinkyDungeonStatsChoice.get("FreeBoob1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("FreeBoob", true);
+		if (KinkyDungeonStatsChoice.get("NoBelt2")) playerTags.set("NoBelt", true);
+		if (KinkyDungeonStatsChoice.get("NoBelt1")
+			&& !KinkyDungeonPlayerTags.get("ItemVulva")
+			&& !KinkyDungeonPlayerTags.get("ItemVulvaPiercings")
+			&& !KinkyDungeonPlayerTags.get("ItemButt")) playerTags.set("NoBelt", true);
+		if (KinkyDungeonStatsChoice.get("NoBelt2")) playerTags.set("NoBelt", true);
+		if (KinkyDungeonStatsChoice.get("NoBelt1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("NoBelt", true);
 		if (KinkyDungeonStatsChoice.get("NoKigu")) playerTags.set("NoKigu", true);
 		if (KinkyDungeonStatsChoice.get("NoBlindfolds")) playerTags.set("NoBlindfolds", true);
 		if (KinkyDungeonStatsChoice.get("NoPet")) playerTags.set("NoPet", true);

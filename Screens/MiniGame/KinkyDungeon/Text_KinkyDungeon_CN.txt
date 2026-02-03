@@ -56,7 +56,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 法语
 - Russian
 俄语
-# - Polish
+- Polish
+波兰语
 - Mods
 模组
 - Mods Loaded.
@@ -253,8 +254,6 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDDialogue_ToyPlayRunAway_Sub
 # :: KinkyDungeonCurseUnlockOrgasmResist
 # :: KinkyDungeonCurseUnlockOrgasmForced
-# :: KDConsentList_Tickle
-# :: KDConsentListDesc_Tickle
 # :: KDEscapeMinimap_Pass_None
 # :: KinkyDungeonStat
 # :: KinkyDungeonStatDesc
@@ -266,15 +265,22 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDMinimapLabel_+
 # :: KDMinimapLabel_=
 
-# - Backup loaded!
-# - Backup failed to load.
-# - Backup saved!
-# - Backup failed to save!!!!!
+- Backup loaded!
+备份已加载！
+- Backup failed to load.
+备份加载失败
+- Backup saved!
+备份已保存！
+- Backup failed to save!!!!!
+备份保存失败
 
-# - Save Backup
+- Save Backup
+保存备份
 # - Stores all of your settings and presets into a file.
-# - Load Backup
-# - Loads your data from a file. Note: This may overwrite any data you currently have.
+- Load Backup
+加载备份
+- Loads your data from a file. Note: This may overwrite any data you currently have.
+从文件加载数据。注意：这将覆盖你现有的所有的游戏数据。
 
 - GFX
 图像特效
@@ -355,7 +361,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 加载存档时覆盖服装
 - Override Outfit
 覆盖服装
-# - Load Consent from Save
+- Load Consent from Save
+从存档加载性同意设置
 - Save Outfits within Save Files
 将服装数据附加到存档内
 - Show free characters on map
@@ -1351,13 +1358,20 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 视野通透
 # :: KinkyDungeonStatEasierBlindfolds
 # :: KinkyDungeonStatClearVision
-# - Items in the head slot are 10-20% easier to escape, depending on item level.
-# - Untapped Strength
-# - Gain 0.5% struggle power per floor.
-# - Bound by Gravity
-# - Lose 0.5% struggle power per floor.
-# - Painful Choice
-# - Struggle power is halved, but gain back 10% per slot you are restrained in (up to 150%). Toys don't count.
+- Items in the head slot are 10-20% easier to escape, depending on item level.
+头部拘束的脱缚效率提高 10%~20%，数值取决于物品等级。
+- Untapped Strength
+潜力
+- Gain 0.5% struggle power per floor.
+楼层每 +1，挣扎强度 +0.5%。
+- Bound by Gravity
+身陷重渊
+- Lose 0.5% struggle power per floor.
+楼层每 +1，挣扎强度 -0.5%。
+- Painful Choice
+两害相权
+- Struggle power is halved, but gain back 10% per slot you are restrained in (up to 150%). Toys don't count.
+挣扎强度减半，但每个被束缚的身体部位（不包括玩具）提供 10% 挣扎加成，最高 150%。
 - No Kigurumi Masks
 没有KIG面具
 - Removes face-mimicking masks from the game.
@@ -2225,7 +2239,8 @@ Devious Dungeon Challenge 已启用。
 返回
 - Game Options
 游戏选项
-# - Consent Options
+- Consent Options
+同意设置
 
 
 - Load from code
@@ -4091,7 +4106,7 @@ M.F. '女仆长'
 
 
 - Ranger of the Wild
-荒野游侠
+自然游侠
 - The ranger disappears into the environment.
 游侠消失在环境中。
 - The ranger gropes your chest with a smile on her face! (DamageTaken)
@@ -4102,7 +4117,7 @@ M.F. '女仆长'
 游侠往你的拘束具上扣上了一把锁！(DamageTaken)
 
 - Druid of the Wild
-野性德鲁伊
+自然德鲁伊
 - The druid calls forth vines to mask her retreat.
 德鲁伊召唤出藤蔓，掩护她撤退了。
 # :: KillElf
@@ -6110,7 +6125,8 @@ EnemyName 用 NewRestraintName 拘束你
 - The demon stuns you with her heavy mace! (+STUN)
 恶魔用她沉重的狼牙棒将你击晕！ ( +STUN )
 
-# - Ghostly Hand
+- Ghostly Hand
+幽灵之手
 # :: NameTickleHand
 # :: NameTickleHandSlave
 - The hand vanishes!
@@ -6663,20 +6679,20 @@ TargetRestraint 的抓力太强了……毫无希望。
 - You whimper as you give up struggling against the TargetRestraint.
 当你放弃从 TargetRestraint 挣脱时，你呜咽着。
 
-- You wiggle around trying to get the TargetRestraint out...
-你扭动身体试图将 TargetRestraint 取出来……
+- You wiggle around trying to push the TargetRestraint out...
+你扭动身体试图将 TargetRestraint 挤出来……
 # :: KinkyDungeonStruggleStruggleFailPlug
 # :: KinkyDungeonStruggleStruggleFailEgg
-- You squirm around trying to dislodge the TargetRestraint...
-你扭动着试图摆脱 TargetRestraint......
+- You squirm around trying to push out the TargetRestraint...
+你扭动着试图挤出 TargetRestraint......
 # :: KinkyDungeonStruggleStruggleFailPlugAroused
 # :: KinkyDungeonStruggleStruggleFailEggAroused
 - The TargetRestraint is in too deeply, it won't come out.
 TargetRestraint 陷得太深，出不来。
-- You feel the TargetRestraint slide around inside but it won't come out!
-你感觉 TargetRestraint 在里面滑动，但它出不来！
-- Your bondage keeps the TargetRestraint firmly in place.
-你的束缚将 TargetRestraint 牢牢固定着。
+- You feel the TargetRestraint deep inside but it won't come out!
+你感觉 TargetRestraint 插在你的深处，但它出不来！
+- Your bindings keep the TargetRestraint inside with no chance to slip out.
+你的束缚把 TargetRestraint 堵在里面，根本掉不出来。
 - Your struggling does nothing but shift the TargetRestraint's position inside of you.
 你的挣扎只会改变 TargetRestraint 在你体内的位置。
 
@@ -6684,10 +6700,33 @@ TargetRestraint 陷得太深，出不来。
 TargetRestraint 不会出来。
 - You feel the TargetRestraint slide around but it won't come out!
 你感觉 TargetRestraint 四处滑动，但它却出不来！
-- Your bondage keeps the TargetRestraint secure in place.
-你的束缚使 TargetRestraint 固定在适当的位置。
+- Your bindings keep the TargetRestraint from falling out.
+你的束缚堵住了 TargetRestraint，让它掉不出来。
 - Your struggling does nothing to dislodge the TargetRestraint.
 你的挣扎并不能摆脱 TargetRestraint。
+
+
+
+# - You wiggle trying to pull the TargetRestraint out...
+# :: KinkyDungeonStruggleRemoveFailPlug
+# :: KinkyDungeonStruggleRemoveFailEgg
+# - You squirm, tugging at the TargetRestraint...
+# :: KinkyDungeonStruggleRemoveFailPlugAroused
+# :: KinkyDungeonStruggleRemoveFailEggAroused
+# - You can't grip the TargetRestraint to take it out.
+# :: KinkyDungeonStruggleRemoveImpossiblePlug
+# :: KinkyDungeonStruggleRemoveImpossibleEgg
+# - You fruitlessly feel around trying to grab the TargetRestraint.
+# :: KinkyDungeonStruggleRemoveImpossiblePlugAroused
+# :: KinkyDungeonStruggleRemoveImpossibleEggAroused
+# - Your bindings prevent you from reaching the TargetRestraint.
+# :: KinkyDungeonStruggleRemoveImpossibleBoundPlug
+# :: KinkyDungeonStruggleRemoveImpossibleBoundEgg
+# - The TargetRestraint is firmly kept inside of you by your bindings.
+# :: KinkyDungeonStruggleRemoveImpossibleBoundPlugAroused
+# :: KinkyDungeonStruggleRemoveImpossibleBoundEggAroused
+
+
 
 
 - You work to unlace the TargetRestraint...
@@ -6755,7 +6794,8 @@ TargetRestraint 将你牢牢地束缚住！
 - You sigh and moan as the TargetRestraint aren't getting any looser.
 你叹气，呻吟着，但TargetRestraint 没有松开一点。
 
-# - Your leg cuffs are locked to the saddle!
+- Your leg cuffs are locked to the saddle!
+你的腿铐被锁在鞍具上了！
 
 - You try to stand up off the TargetRestraint...
 你尝试起身逃离 TargetRestraint ……
@@ -6948,7 +6988,8 @@ TargetRestraint 太结实了，不会破……
 # :: KDPaletteRubber
 - Crystal
 结晶
-# :: KinkyCrystalLockType
+:: KinkyCrystalLockType
+水晶
 :: m_LaceCorset_l_Crystal
 纽扣水晶
 :: m_LaceCorsetRestraint_l_Crystal
@@ -7794,9 +7835,12 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 专为像你这样的漂亮玩具而设计~
 
 
-# - Vibe-Master 5000
-# - A devious saddle-type furniture, designed to overpower even the most stoic minds.
-# - Contains an electric motor inside that shakes the entire assembly, but only if activated.
+- Vibe-Master 5000
+震动大师 5000
+- A devious saddle-type furniture, designed to overpower even the most stoic minds.
+一款诡谲的鞍型装置，专为征服最坚毅的意志而设计。
+- Contains an electric motor inside that shakes the entire assembly, but only if activated.
+内部装有电动马达，可使整个装置震动，但仅在激活时运作。
 
 - A display stand, fit for only the prettiest of trophies!
 展示架，专用来展示最漂亮的战利品！
@@ -7808,7 +7852,8 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 展示架突然把你锁在里面！
 # :: KDDisplayTrap
 # :: KDDisplayEgyptianTrap
-# - A powerful force sucks you down onto the saddle!
+- A powerful force sucks you down onto the saddle!
+一股强大的力量将你拽回鞍座上！
 - The storage unit beeps and closes behind you!
 存储单元哔了一声，在你身后关闭！
 
@@ -7856,10 +7901,15 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 拘束床
 - A bed with a booby trap designed to trap you on top of it!
 带有触发装置的床，旨在将你困在上面！
-- You have to get out somehow...
-你得想个办法逃脱......
+- The straps push you deeper into comfort~
+皮带将你牢牢捆住，却让你陷入更深的舒适之中~
+# - Comfy Bed
+# - A formerly trapped bed.
+# - It's extremey comfortable, especially when you're tied on it.
 - Belts emerge from underneath the bed and wrap around you, strapping you down tightly!
 皮带从床底下涌出来缠绕在你身上，把你紧紧地绑起来！
+# - The sheets snap up around you, encasing you in straps and hoisting you into the air!
+# - The sheets snap up around you, encasing you in straps and affixing you to the bed!
 
 - Binding Dress
 捆绑连衣裙
@@ -8293,11 +8343,16 @@ RestraintName 上的诅咒解除了！
 # :: RestraintBasicCollarDesc2
 # :: RestraintSteelCollarDesc2
 # :: RestraintKittyCollarDesc2
-# - Steel Collar
-# - A stainless steel collar befitting of a slave, or perhaps an enthusiastic submissive.
-# - Runic Collar
-# - A collar that adjusts to fit the wearer perfectly. It resembles steel, but with carved glyphs that faintly glow.
-# - The lock is decorative. It's sealed magically around your neck.
+- Steel Collar
+钢制项圈
+- A stainless steel collar befitting of a slave, or perhaps an enthusiastic submissive.
+一条不锈钢项圈，配得上奴隶，或者说，配得上热情的顺从者。
+- Runic Collar
+符文项圈
+- A collar that adjusts to fit the wearer perfectly. It resembles steel, but with carved glyphs that faintly glow.
+一款能自动调节以完美贴合佩戴者颈部的项圈。外观似钢铁材质，表面镌刻着微微发光的符文。
+- The lock is decorative. It's sealed magically around your neck.
+锁只是个装饰，它实际是由魔法封印的。
 - Kitty Collar
 猫咪项圈
 - A collar made with magically enchanted materials. It is protected by the blessing of Bast.
@@ -9115,9 +9170,12 @@ RestraintName 上的诅咒解除了！
 大腿铐之间的能量链接逐渐消失。
 - The cuff chains come off with the cuffs.
 拷绑链条随拷绑一起脱落
-# - The links come off with the saddle.
-# - Your ankle cuffs connect to the saddle, locking you in place!
-# - Your thigh cuffs connect to the saddle, locking you in place!
+- The links come off with the saddle.
+这些链子随鞍具一起卸下了。
+- Your ankle cuffs connect to the saddle, locking you in place!
+你的脚铐被连接在鞍具上，将你牢牢固定！
+- Your thigh cuffs connect to the saddle, locking you in place!
+你的腿铐被连接在鞍具上，将你牢牢固定！
 - The waist links come off with the belt.
 腰链随腰带一起脱落。
 - The hogtie link comes off.
@@ -9662,6 +9720,25 @@ RestraintName 上的诅咒解除了！
 使用拉链与绑带紧紧固定。
 
 
+
+# - Heavy Sleepsack Bottom
+# - A heavy sleepsack legbinder, designed to keep a subject comfortable yet immobilized.
+# - Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside.
+# :: RestraintSleepsackLegbinderDesc2
+# :: RestraintSleepsackJacketDesc2
+# :: RestraintSleepsackBoxbinderDesc2
+# :: RestraintSleepsackArmbinderDesc2
+# - Heavy Sleepsack Jacket
+# - A heavy sleepsack jacket, designed to keep a subject comfortable yet helpless.
+# - Heavy Sleepsack Boxbinder
+# - A heavy sleepsack boxbinder, designed to keep a subject comfortable yet helpless.
+# - Heavy Sleepsack Armbinder
+# - A heavy sleepsack armbinder, designed to keep a subject comfortable yet helpless.
+# - Heavy Sleepsack Cables
+# - Heavy duty leather straps designed to hold a sleepsack-wearing subject off the ground.
+# - They are thick leather straps with lockable buckles.
+
+
 - Asylum Ankle Cuffs
 安全脚铐
 - A pair of chained cuffs made of reinforced leather. They make patients easier to catch.
@@ -9732,6 +9809,11 @@ RestraintName 上的诅咒解除了！
 里面有衬垫的拘束衣。
 - It feels tight but is actually made of an ethereal material...
 它感觉很紧，但实际上是由一种空灵的材料制成的……
+# :: RestraintComfyStraitjacketDesc2
+# :: RestraintComfyLegbinderDesc2
+- Comfy Legbinder
+舒适束腿套
+# - A legbinder that renders you unable to move quickly, either due to restriction or sheer comfort.
 
 - Latex Jacket
 乳胶拘束衣
@@ -11740,7 +11822,8 @@ RestraintName 上的诅咒解除了！
 吞噬生物
 # :: KDEffectTileTooltipLatexDesc
 # :: KDEffectTileTooltipLatexThinDesc
-# - Engulfs dolls (like you)
+- Engulfs dolls (like you)
+吞噬生物
 # :: KDEffectTileTooltipLatexBlueDesc
 # :: KDEffectTileTooltipLatexThinBlueDesc
 - Engulfs pets (like you)
@@ -12319,7 +12402,7 @@ Ars烟火
 # :: KinkyDungeonSpellOrgasmResist
 # :: KDControlHarnessChastityMode_Fullpower
 - +100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
-+100 精神与魅惑抗性。当你的意志力高于10%或有护盾时，你不会不自觉地高潮（点击效果图标可切换）。在处于寸止状态时，意志力消耗速度减慢70%。
++100 精神与魅惑抗性。当你的意志力高于 10% 或有护盾时，你不会不自觉地高潮（点击效果图标可切换）。在处于寸止状态时，意志力消耗速度减慢 70%。
 - Mental Resistance: You cannot orgasm except by choice or below 10% WP. Click to toggle.
 坚定意志：除非自愿或意志力小于 10%，否则无法高潮。点击以切换。
 - Mental Resistance: You are allowing yourself to let go. Click to toggle.
@@ -15367,6 +15450,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 幽灵会帮助你挣扎和使用物品
 - The ghost is unhelpful
 幽灵不想帮你
+# - Negotiate
 
 - Angel: Greetings!
 天使 : ‎你好！
@@ -15936,7 +16020,8 @@ EnemyName 离开并锁上了她身后的牢房。
 远古口套
 - You find a muzzle with a long rubbery plug on the inside, glowing magnificently, along with a strange crystal next to it.
 你发现里面有一个长长的橡胶棒，闪闪发光，旁边还有一个奇怪的水晶。
-# - A muzzle that seals over the face tightly. When powered, it regenerates mana, boosts sneak, and multiplies damage dealt to unaware enemies by 1.75x.
+- A muzzle that seals over the face tightly. When powered, it regenerates mana, boosts sneak, and multiplies damage dealt to unaware enemies by 1.75x.
+一种紧密贴合面部的口套。充能后可回复法力、提升潜行能力，并对未察觉你的敌人造成1.75倍伤害。
 - 'Muzzle of the Saboteur'
 '破坏者的口套'
 - You claw at your face, but not only does a soft plug fill your mouth, your muzzle is unbreakable!
@@ -21941,6 +22026,8 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dOfferFungal_NoGag
 # :: dOfferApprentice_NoGag
 # :: dOfferTemp_NoGag
+# :: dGhostNegotiatePossess_CancelGag
+# :: dGhostNegotiatePossessPleasure_CancelGag
 # :: dGenericAllyFlirt_BondageOffer_NoGag
 # :: dFuukaBrat_ProceedGag_Proceed
 # :: dFuukaSub_Brat_ProceedGag
@@ -22345,6 +22432,8 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dOfferWolfRestraintYes_YesGag
 # :: dOfferKittyYes_YesGag
 # :: dOfferDragonYes_YesGag
+# :: dGhostNegotiatePossess_ConfirmGag
+# :: dGhostNegotiatePossessPleasure_ConfirmGag
 - Not really.
 并非如此。
 # :: dOfferScarf_No
@@ -24361,6 +24450,37 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 你旁边没有有效空间！
 
 
+# - (The ghost giggles at your predicament)|Looks like you need a bit of help~|Personally, I love to see cute girls tied up, but I'd be willing|to compromise if you can devise another way to entertain me.|Let's make a deal, shall we?
+# - (The ghost smiles, her pleasant expression betraying a...)|(...sinister tone)|I'd love to~|I get to tie you as I please until you advance a floor.|How's that sound?
+# - (The ghost grins)|Hmm, perhaps I could tie that adorable body of yours|some other time~|Just until you advance a floor~.|How's that sound?
+# - (The ghost giggles)|Oh I like this one~|I shall pleasure you as I wish until you advance a floor.|How's that sound?
+# - (The ghost chuckles)|Mhmm... you're cute~|Perhaps I should go... within you and give you pleasure as I will~|Just until you advance a floor~.|How's that sound?
+
+# - (The ghost smiles)|Whatever you want, dear~
+# :: rGhostNegotiatePossessPleasure_Cancel
+# :: rGhostNegotiatePossess_Cancel
+
+
+# - Perhaps you could tie me up later?
+# - (Offer up your body)
+# - Why don't you... pleasure me at your leisure?
+# - (Wiggle and moan seductively)
+
+# - I've already made some deals...
+# - (Leave, as you are already under several deals)
+
+# - I accept your terms.
+# :: dGhostNegotiatePossess_Confirm
+# :: dGhostNegotiatePossessPleasure_Confirm
+# - Not for me.
+# :: dGhostNegotiatePossess_Cancel
+# :: dGhostNegotiatePossessPleasure_Cancel
+
+# - You've made a deal... your freedom now in exchange for your freedom later...
+# - You've made a deal, which lurks deep inside you~
+
+
+
 - (You approach the SPEAKER)
 ( 你走近 SPEAKER )
 - (Threaten)
@@ -25674,7 +25794,8 @@ Mmmph? (行为混乱)
 ( 你发出命令释放 SPEAKER ) |呜呜呜！|( 她把堵嘴又锁上了... )
 # :: rPrisonerJailWordGagged
 # :: rPrisonerJailOwnWordGagged
-# - (The SPEAKER is locked in high-security manacles.|The safety pins have been triggered, making it impossible to help her without a key.)
+- (The SPEAKER is locked in high-security manacles.|The safety pins have been triggered, making it impossible to help her without a key.)
+( SPEAKER 被高安全性的镣铐锁住了。|安全别针已被触发，帮助她已经不可能了。 )
 
 - Use a key to unlock her
 用钥匙解开她
@@ -25823,8 +25944,10 @@ FOODMSG| ( 它邀请你分享它的美食 )
 - Pizza
 披萨
 
-# - (The table is bolted to the floor)
-# - (Despite your best efforts, the table goes nowhere)
+- (The table is bolted to the floor)
+（桌子被固定在地上）
+- (Despite your best efforts, the table goes nowhere)
+（你费尽力气，但桌子纹丝不动）
 # - (Try to flip the table)
 - (The table looks remarkably flippable)
 ( 这桌子看上去很容易掀翻 )
@@ -26357,10 +26480,14 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: KDWardrobeSaveGame
 # :: KDBackToGame
 # :: KDContainerBack_Game
-# - Back to Pause Menu
-# - Back to Game Setup
-# - Back to Character Setup
-# - Back to Challenge Setup
+- Back to Pause Menu
+返回暂停菜单
+- Back to Game Setup
+返回游戏设置
+- Back to Character Setup
+返回角色设置
+- Back to Challenge Setup
+返回挑战设置
 - Back to Wardrobe
 返回衣柜
 - Confirm Strip?
@@ -26387,11 +26514,11 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - Brightness
 亮度
 - Red
-红
+红色
 # :: KDColorSliderred
 # :: KDRed
 - Green
-绿
+绿色
 # :: KDColorSlidergreen
 # :: KDGreen
 - Blue
@@ -31023,7 +31150,8 @@ V形比基尼
 绳索腕部捆绑2
 - RopeChestStraps2
 绳索胸部条纹2
-# - ArmHarness
+- ArmHarness
+手臂绳子
 # :: m_RopeChestStraps2_l_ArmHarness
 # :: m_RopeBoxtie3_l_ArmHarness
 # :: m_RopeWristtie3_l_ArmHarness
@@ -31427,7 +31555,8 @@ V形比基尼
 # :: m_RibbonLegs1_l_Thigh1
 # :: m_RibbonLegs2_l_Thigh1
 # :: m_RibbonLegs3_l_Thigh1
-# - RightThigh1
+- RightThigh1
+右大腿1
 # :: m_RopeLegs1_l_RightThigh1
 # :: m_RopeLegs2_l_RightThigh1
 # :: m_RopeLegs3_l_RightThigh1
@@ -31451,7 +31580,8 @@ V形比基尼
 # :: m_RopeLegs3_l_Thigh2
 # :: m_RibbonLegs2_l_Thigh2
 # :: m_RibbonLegs3_l_Thigh2
-# - RightThigh2
+- RightThigh2
+右大腿2
 # :: m_RopeLegs2_l_RightThigh2
 # :: m_RopeLegs3_l_RightThigh2
 # :: m_RibbonLegs2_l_RightThigh2
@@ -31467,7 +31597,8 @@ V形比基尼
 # :: m_RibbonLegs3_l_Thigh3
 # :: m_RopeLegs3_l_Thigh3
 # :: m_RibbonLegs3_l_Thigh3
-# - RightThigh3
+- RightThigh3
+右大腿3
 # :: m_RopeLegs3_l_RightThigh3
 # :: m_RibbonLegs3_l_RightThigh3
 # :: m_RopeLegs3_l_RightThigh3
@@ -32694,7 +32825,8 @@ V形比基尼
 # :: m_TapeHeavyBottomFull_l_StrapCover
 # - TapeMedBottom
 # - TapeMedArms
-# - Top
+- Top
+上部
 # :: m_TapeMedArms_l_Top
 # :: m_TapeHeavyArms_l_Top
 # :: m_TapeHeavyArmsFull_l_Top
@@ -40473,16 +40605,20 @@ Vents发型
 # :: m_KittyPetEars1Restraint_l_Ears1InnerR
 - KittyPetEars2
 猫咪宠物耳2
-# - Ears2L
+- Ears2L
+耳朵2L
 # :: m_KittyPetEars2_l_Ears2L
 # :: m_KittyPetEars2Restraint_l_Ears2L
-# - Ears2R
+- Ears2R
+耳朵2R
 # :: m_KittyPetEars2_l_Ears2R
 # :: m_KittyPetEars2Restraint_l_Ears2R
-# - Ears2InnerL
+- Ears2InnerL
+耳内2L
 # :: m_KittyPetEars2_l_Ears2InnerL
 # :: m_KittyPetEars2Restraint_l_Ears2InnerL
-# - Ears2InnerR
+- Ears2InnerR
+耳内2R
 # :: m_KittyPetEars2_l_Ears2InnerR
 # :: m_KittyPetEars2Restraint_l_Ears2InnerR
 - KittyPetEarmuffs
@@ -43170,7 +43306,8 @@ Vents发型
 # - PumpkinBlindfold
 # - FashionPumpkinBlindfold
 # - PumpkinGag
-# - Pumpkin
+- Pumpkin
+南瓜
 # :: m_PumpkinGag_l_Pumpkin
 # :: m_FashionPumpkinGag_l_Pumpkin
 # - FashionPumpkinGag
@@ -43647,6 +43784,9 @@ Kjus眼5
 现在，一个顽皮的幽灵将陪伴你踏上旅程。
 - The ghost haunting you decides to have a little fun! (+RestraintAdded)
 困扰你的幽灵决定找点乐子！ ( +RestraintAdded )
+# - The ghost you made a deal with decides to have a little fun! (+RestraintAdded)
+# - The ghost you made a deal with decides to snap a ${LockType} lock to your ${Restraint}
+# - The ghost you made a deal with decides to have a little fun with you!
 
 - Hemp Rope
 麻绳
@@ -44252,7 +44392,8 @@ Kjus眼5
 秘银股绳
 - Mithril Wrist Rope
 秘银手腕绳缚
-# - Mithril Upper Knee Ropes
+- Mithril Upper Knee Ropes
+秘银膝上绳缚
 - Mithril Thigh Ropes
 秘银大腿绳缚
 - Mithril Upper Thigh Ropes
@@ -44262,7 +44403,7 @@ Kjus眼5
 - Mithril Lower Leg Ropes
 秘银小腿绳缚
 - Mithril Lower Knee Ropes
-秘银膝上绳缚
+秘银膝下绳缚
 - Mithril Toe Ropes
 秘银脚趾绳缚
 - Living Mithril Rope Collar
@@ -44273,7 +44414,8 @@ Kjus眼5
 
 - Dark Portal
 黑暗之门
-# - A gateway into a shadowy realm!
+- A gateway into a shadowy realm!
+通往暗影领域的门户！
 
 - Essence Mote
 精华微粒
@@ -46270,34 +46412,55 @@ RestraintName 失效了！
 游戏设置
 - Challenge Settings
 挑战设置
-# - Consent Settings
+- Consent Settings
+同意设置
 
 
-# - Select an item to unlock using a Command Word
-# - Current showing eligible items for recycling
-# - Select an item to feed to ${FoodTarget}
-# - Select an item to sell
-# - Select an item to equip offhand
-# - Select an item to attach
-# - Select a cursed item to purify
+- Select an item to unlock using a Command Word
+选择要使用命令词解锁的物品
+- Current showing eligible items for recycling
+显示当前符合回收条件的物品
+- Select an item to feed to ${FoodTarget}
+选择一个物品喂给${FoodTarget}
+- Select an item to sell
+选择要出售的物品
+- Select an item to equip offhand
+选择一件物品装备到副手
+- Select an item to attach
+选择要附加的物品
+- Select a cursed item to purify
+选择一件被诅咒的物品进行净化
 
 - Challenge Settings:
 挑战设置 : ‎
-# - Checked content will appear at the normal ingame rate.
-# - Red content (x) is removed from the game
-# - Yellow content (-) occurs significantly less often
-# - Green content (+) will appear more often!
-# - Due to game limitations, not all types of content can be fully blocked.
+- Checked content will appear at the normal ingame rate.
+已检查的内容将按游戏内常规频率显示。
+- Red content (x) is removed from the game
+红色内容（x）已从游戏中移除
+- Yellow content (-) occurs significantly less often
+黄色内容（-）出现的频率显著降低
+- Green content (+) will appear more often!
+绿色内容（+）将更频繁地出现
+- Due to game limitations, not all types of content can be fully blocked.
+由于游戏限制，并非所有类型的内容都能被完全屏蔽。
 
-# - Yellow
+- Yellow
+黄色
 
-# - Front Plugs
-# - Rear Plugs
-# - Cyber Dollification
-# - Elegant Dollification
-# - Police
-# - Nurses/Doctors
-# - Kigurumi Masks
+- Front Plugs
+阴塞
+- Rear Plugs
+肛塞
+- Cyber Dollification
+赛博玩偶化
+- Elegant Dollification
+优雅玩偶化
+- Police
+警察
+- Nurses/Doctors
+护士/医生
+- Kigurumi Masks
+Kigurumi面具
 - Encasement
 包裹
 # :: KDConsentItem_Encasement
@@ -46308,27 +46471,55 @@ RestraintName 失效了！
 # :: KDBindNPCSlot_BootsEncase
 # - Tape Bondage
 # - Tickling
-# - Bubbles
+- Bubbles
+泡泡
 # - Ball Suits
-# - Blindfolds
+- Blindfolds
+眼罩
 # - Yokes and Spreaders
-# - Straitjackets
-# - Petsuits
+- Straitjackets
+拘束衣
+- Petsuits
+宠物服
 # - Hoods
 # - Full-face Masks
 # - Earplugs
 # - Painful Shocks
-# - Sensory Deprivation
+- Sensory Deprivation
+感官剥夺
 # - Brats
+- Forced Chastity Bras
+强制贞操文胸
+- Forced Chastity Belts
+强制贞操带
+# - Allow Menu Ingame
 
-# - |||This item is marked as Red, which prevents it from appearing in the game.
-# - |||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention.
-# - |||This item is marked as Green, which will make it appear more often.
-# - |||This item will appear ingame as normal.
+- Invisible Restraints
+隐形拘束具
 
+- |||This item is marked as Red, which prevents it from appearing in the game.
+|||这种物品被标红，不会出现。
+- |||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention.
+|||这种物品被标黄，出现的更少。
+- |||This item is marked as Green, which will make it appear more often.
+||这种物品被标绿，出现的更多。
+- |||This item will appear ingame as normal.
+|||这种物品会正常出现。
+
+# - Menu Locked
+
+# - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
+- Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead.
+允许“隐形”系列拘束具||如果被标红，这些拘束具会被替换为“舒适”系列。
+- Allows chastity bras to be forced onto the player character, which prevent access to nipples and lock toys in.||If marked as yellow, chastity bras will not appear unless the player is wearing nipple toys.
+允许贞操文胸。||如果被标黄，贞操文胸就只会在玩家带了乳头玩具的情况下出现。
+- Allows chastity belts to be forced onto the player character, which prevent access to the lower regions and lock toys in.||If marked as yellow, chastity belts will not appear unless the player is wearing toys or plugs on the lower body.
+允许贞操带。||如果被标黄，贞操带就只会在玩家带了玩具或塞子的情况下出现。
 # - Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them.
-# - Allows plugs to be inserted into the front slot of your character.
-# - Allows plugs to be inserted into the rear slot of your character.
+- Allows plugs to be inserted into the front slot of your character.
+允许阴塞。
+- Allows plugs to be inserted into the rear slot of your character.
+允许肛塞。
 # - Does not place points where enemies will drop you off to become dollified in the factory level.
 # - Being captured by dress-up co will not result in getting placed on a doll stand and put on display in the shop.
 # - Affects the 'Deputy' enemy and any other police-related enemy types, but not bounty hunters.
@@ -46336,22 +46527,29 @@ RestraintName 失效了！
 # - Affects the spawn rate of slimes and latex witches.
 # :: KDConsentItemTooltip_Slime
 # :: KDConsentItemTooltip_Encasement
-# - Affects full masks that imitate a face, which can be unsettling to some.
+- Affects full masks that imitate a face, which can be unsettling to some.
+影响全覆盖面罩。
 # - Affects the spawn rate of tape drones and other enemies that use tape to restrain the player.
 # - Includes tickling by NPC attacks and tickle torture scenarios.||If marked as Yellow, spells and weapons that deal tickle damage to the player will deal Plush damage instead. Player attacks will still deal tickle damage.
 # - Includes bubble restraints, both water and slime-based, but does not affect rubber ball suits or latex spheres.
 # - Includes ball suits and inflatable latex spheres that restrain the player.
-# - Affects the frequency of blindfolds, but not hoods or masks that cover the upper face.
+- Affects the frequency of blindfolds, but not hoods or masks that cover the upper face.
+影响眼罩出现的频率，不影响面罩。
 # - Affects the frequency of metal yokes, fiddles, and spreader bars.
-# - Affects the frequency of armbinders that force the elbows close together.
-# - Affects the frequency of boxbinders that force the arms behind the back.
-# - Affects the frequency of straitjackets.
-# - Affects the frequency of pet crawlers that force the player to crawl on their knees and elbows.
+- Affects the frequency of armbinders that force the elbows close together.
+影响单手套出现的频率。
+- Affects the frequency of boxbinders that force the arms behind the back.
+影响盒式单手套出现的频率。
+- Affects the frequency of straitjackets.
+影响拘束衣出现的频率。
+- Affects the frequency of pet crawlers that force the player to crawl on their knees and elbows.
+影响宠物服出现的频率。
 # - Includes hoods that cover the hair. Does not remove masks that cover the face without affecting hair.
 # - Includes force-equipped masks that cover the entire face. This includes encasement, such as from slimes, although does not parts that cover the bottom half of the face as a gag.
 # - The Sensory Deprivation Hood is a highly restrictive item that deafens the player in addition to blocking most vision.
 # - Earplugs reduce the player's hearing.
-# - Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
+- Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
+用电刺激代替电击伤害，造成快感而非痛苦。
 
 - Palette
 调色板
@@ -47875,20 +48073,31 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 减少枷锁
 - Yokes are less favored over other heavy bondage.
 与其他重型束缚相比，枷锁更不受欢迎。
-# - Less Tickling
-# - Reduces the amount of tickling content in the game.
+- Less Tickling
+减少挠痒
+- Reduces the amount of tickling content in the game.
+减少游戏中的挠痒内容。
 
-# - teases
-# - tease
-# - teasing
-# - tickles
-# - tickle
-# - tickling
+- teases
+挑逗
+- tease
+挑逗
+- teasing
+挑逗
+- tickles
+挠痒
+- tickle
+挠痒
+- tickling
+挠痒
 
 
-# - gropes
-# - grope
-# - groping
+- gropes
+抚摸
+- grope
+抚摸
+- groping
+抚摸
 
 
 
@@ -48879,13 +49088,15 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - A link connecting your thigh cuffs together. You can still walk, albeit slower than usual.
 把你的腿铐连在一起。行走速度变慢。
 
-# - Saddle Ankle Links
+- Saddle Ankle Links
+鞍具踝链
 # - A set of padlocks attaching your ankle cuffs to a piece of saddle furniture.
 # - The durability depends on the type of lock.
 # :: RestraintSaddleLinkDesc2
 # :: RestraintSaddleLink2Desc2
 
-# - Saddle Thigh Links
+- Saddle Thigh Links
+鞍具腿链
 # - A set of padlocks attaching your thigh cuffs to a piece of saddle furniture.
 
 
@@ -49639,8 +49850,10 @@ Y 轴
 图层补偿
 - NoDynamicArmor (0/1)
 无动态护甲(0或1)
-# - AddPose (e.g Locked, CrotchStrap)
-# - DontAddPose
+- AddPose (e.g Locked, CrotchStrap)
+添加姿势
+- DontAddPose
+不添加姿势
 - HideOverridden (0/1)
 隐藏覆盖(0或1)
 - NoOverride (0/1)
@@ -50622,7 +50835,8 @@ ENMY 解开了 ITMN 的锁!
 惊吓
 - The Muffling
 堵嘴
-# - Conjure Ghostly Hands
+- Conjure Ghostly Hands
+召唤幽灵之手
 - Conjure Gags
 召唤口塞
 - Scriptum Ferri
@@ -50697,7 +50911,8 @@ ENMY 解开了 ITMN 的锁!
 调教协议
 - Motivation Protocol
 动力协议
-# - Conjure Ghostly Hand
+- Conjure Ghostly Hand
+召唤幽灵之手
 - Conjure Locks
 召唤锁
 - Chainstorm
@@ -51628,7 +51843,8 @@ EnemyName 设法蠕动着离开了视野！
 
 - , Floor AMNT
 ，第 NMB 层
-# - , Floor 
+- , Floor 
+, 层
 # -  NG+
 # -  the 
 
@@ -52321,7 +52537,8 @@ Boss
 - Select a progress item to show details
 选择一项进度以显示更多细节
 
-# - Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions, reducing XP gain by a multiplier.
+- Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions, reducing XP gain by a multiplier.
+高跟鞋训练影响你穿着高跟鞋时保持平衡的能力。穿着高跟鞋移动以提升训练进度。\n如果不穿高跟鞋，训练会失败，减少部分经验值。
 - Current Progress: 
 当前进度：
 - Milestones:
@@ -52341,4 +52558,16 @@ Boss
 
 - Filter Toggles:
 切换筛选：
-# - Filter Content:
+- Filter Content:
+筛选内容：
+
+
+- Use Safeword
+使用安全词
+- Confirm Safeword?
+确认安全词？
+# - Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. 
+- Only usable ingame.
+仅限游戏内使用。
+- ${Playername} used her safeword and was transported to the beginning of the level.
+${Playername}使用了安全词，被传送回关卡起点。

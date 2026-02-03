@@ -5806,6 +5806,7 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 let KDConsentPerkTypes = ["Red", "Yellow", "Green"];
 
 function KDUpdateConsentSettings(allowBackport: boolean) {
+
 	for (let entry of Object.entries(KDConsentListBasic)) {
 		if ((!entry[1].prereq || entry[1].prereq()) && KDConsentArray[entry[0]]) {
 			for (let type of KDConsentPerkTypes) {
@@ -5855,6 +5856,7 @@ function KDUpdateConsentSettings(allowBackport: boolean) {
 				KinkyDungeonStatsChoice.set(entry[1]["perkNo" + type], true);
 		}
 	}
+
 }
 
 function KDUpdatePlugSettings(evalHardMode: boolean, allow_backport_consent?: boolean) {
@@ -8124,8 +8126,22 @@ function KDDrawWardrobeButton() {
 
 function KDLoadConsentFromSave(saveData: KinkyDungeonSave, override) {
 	if (override && saveData.saveStat) {
+		
+		let dontPopulate: Record<string, string> = {};
+
+		for (let entry of Object.entries(KDConsentListBasic)) {
+			if (entry[1].dontPopulateFromSave) {
+				if (KDConsentArray[entry[0]]) {
+					dontPopulate[entry[0]] = KDConsentArray[entry[0]];
+				} else dontPopulate[entry[0]] = "";
+			}
+		}
 		KDConsentArray = saveData.saveStat.ConsentArray || {};
 		KDUpdateConsentSettings(true);
+
+		for (let entry of Object.entries(dontPopulate)) {
+			KDConsentArray[entry[0]] = entry[1];
+		}
 	} else
 		KDUpdateConsentSettings(false);
 }
