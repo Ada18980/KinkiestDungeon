@@ -91,19 +91,18 @@ function KinkyDungeonTickBuffs(entity: entity, delta: number, endFloor: boolean)
 		const buff = value;
 		if (buff) {
 			let end = false;
-			if (buff.endFloor && endFloor) {end = true; KinkyDungeonExpireBuff(entity, key);}
-			else if (buff.endSleep && KDGameData.SleepTurns > 1) {end = true; KinkyDungeonExpireBuff(entity, key);}
+			if (buff.endFloor && endFloor) {end = true;}
+			else if (buff.endSleep && KDGameData.SleepTurns > 1) {end = true;}
 			else if (!buff.duration || buff.duration < 0) {
 				if (buff.resetDurationTime) {
 					let amt = buff.resetDurationPower || 1;
 					let newPower = buff.power - amt;
 					if ((amt > 0 && newPower <= 0) || (amt < 0 && newPower >= 0)) {
-						KinkyDungeonExpireBuff(entity, key);
 						end = true;
 					} else {
 						buff.duration = buff.resetDurationTime;
 					}
-				}
+				} else end = true;
 			} 
 			if (!end) {
 				if (buff.type == "restore_mp") KDChangeMana(buff.id, "buff", "tick", buff.power);
@@ -125,6 +124,8 @@ function KinkyDungeonTickBuffs(entity: entity, delta: number, endFloor: boolean)
 
 				if (!(buff.infinite))
 					buff.duration -= delta;
+			} else {
+				KinkyDungeonExpireBuff(entity, key);
 			}
 		}
 	}
