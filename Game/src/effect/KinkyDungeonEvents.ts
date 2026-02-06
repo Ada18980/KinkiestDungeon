@@ -13057,7 +13057,32 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				KDGameData.titledata.dom = true
 			}
 		}
-	}
+	},
+	"afterChangeWill": {
+		"DamageWPStore": (_e, data) => {
+			const player = KinkyDungeonPlayerEntity;
+
+			// Any WP recovery should reduce the “healable pool” to prevent exploits.
+			if (data.amountChanged > 0) {
+				const buff = KDEntityGetBuff(player, "DamageWP");
+				if (buff?.power) {
+					buff.power = Math.max(0, buff.power - data.amountChanged);
+					buff.text = Math.round(10 * buff.power);
+					if (buff.power <= 0) buff.duration = 0;
+				}
+				KDClampDamageWP(player);
+				return;
+			}
+
+			// Loss of WP specifically from damage
+			if (data.amountChanged < 0 && data.type == "dmg") {
+				const eff = KDGetDamageHealEfficiency(player);
+				if (eff > 0) KDAddDamageWP(player, (-data.amountChanged) * eff);
+				KDClampDamageWP(player);
+			}
+		},
+	},
+
 };
 
 /**
@@ -13146,6 +13171,54 @@ function KDAddTraineeWP(player: entity, powerAdded: number) {
 		//KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower)*10)} ${TextGet("KDArcaneEnergy")}`, KDBaseLightBlue, 3);
 	}
 
+}
+
+// BASIC effectiveness: 0.5 = only 50% of WP lost from type==“dmg” is healed
+const KDDamageHealEfficiencyBase = 0.8;
+
+// Total effectiveness = base + buff stats “DamageHealEfficiency” (clamp 0..1)
+function KDGetDamageHealEfficiency(player: entity): number {
+	let eff = KDDamageHealEfficiencyBase + KDEntityBuffedStat(player, "DamageHealEfficiency");
+	if (isNaN(eff)) eff = KDDamageHealEfficiencyBase;
+	return Math.max(0, Math.min(1, eff));
+}
+
+// Clamp pool to current “missing WP” and auto-remove buff at 0
+function KDClampDamageWP(player: entity) {
+	const buff = KDEntityGetBuff(player, "DamageWP");
+	if (!buff) return;
+
+	const missing = Math.max(0, KinkyDungeonStatWillMax - KinkyDungeonStatWill);
+	buff.power = Math.max(0, Math.min(buff.power, missing));
+	buff.text = Math.round(10 * buff.power);
+
+	if (buff.power <= 0 || missing <= 0) buff.duration = 0;
+}
+
+// Add treatable WP to the pool (already taking effectiveness into account)
+function KDAddDamageWP(player: entity, powerAdded: number) {
+	if (powerAdded <= 0) return;
+
+	const missing = Math.max(0, KinkyDungeonStatWillMax - KinkyDungeonStatWill);
+	if (missing <= 0) return;
+
+	let buff = KDEntityGetBuff(player, "DamageWP");
+	if (!buff) {
+		const initial = Math.min(powerAdded, missing);
+		KinkyDungeonApplyBuffToEntity(player, {
+			id: "DamageWP",
+			type: "DamageWP",
+			aura: KDBaseWhite, auraSprite: "Null",
+			buffSprite: true,
+			power: initial,
+			duration: 9999, infinite: true,
+			text: Math.round(10 * initial),
+		});
+	} else {
+		buff.power = Math.min(missing, buff.power + powerAdded);
+		buff.text = Math.round(10 * buff.power);
+		if (buff.power <= 0) buff.duration = 0;
+	}
 }
 
 function KDAddArcaneEnergy(player: entity, powerAdded: number) {

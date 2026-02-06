@@ -2422,8 +2422,21 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Crackling", effect: effect};
 	},
+	"LightHealDamageWP": (_target, _damage, playerEffect, spell, _faction, _bullet, _entity) => {
+		const player = KinkyDungeonPlayerEntity;
+		const buff = KDEntityGetBuff(player, "DamageWP");
+		if (!buff || buff.power <= 0) return { sfx: "Shield", effect: false };
 
+		const healPower = Math.max(0, (playerEffect?.power ?? spell?.power ?? 1) * (playerEffect?.mult ?? 1));
+		const missing = Math.max(0, KinkyDungeonStatWillMax - KinkyDungeonStatWill);
+		const amt = Math.min(healPower, missing, buff.power);
 
+		if (amt > 0) {
+			KDChangeWill("lightheal", "heal", spell?.name || "LightHealDamageWP", amt, false);
+			return { sfx: spell?.sfx || "FireSpell", effect: true };
+		}
+		return { sfx: "Shield", effect: false };
+	},
 };
 
 /**
@@ -2567,7 +2580,7 @@ function KDTestSpellHits(spell: spell, allowEvade: number = 0, allowBlock: numbe
 
 function KinkyDungeonPlayerEffect(target: any, damage: string, playerEffect: any, spell?: spell, faction?: string, bullet?: any, entity?: entity) {
 	if (!playerEffect.name) return;
-	if (damage == "inert") return;
+	if (damage == "inert" && !playerEffect?.allowInert) return;
 	let effect = false;
 	let sfx = spell ? spell.hitsfx : undefined;
 	if (!sfx) sfx = (playerEffect.power && playerEffect.power < 2) ? "DamageWeak" : "Damage";
