@@ -13297,6 +13297,8 @@ AttackDollmakerBoss2Bind,"The Dollmaker's necklace flashes as you find yourself 
 AttackDollmakerBoss2,"The Dollmaker suggests that you surrender. (DamageTaken)"
 AttackDollmakerBoss2Lock,"The Dollmaker snaps her fingers as you find yourself locked! (DamageTaken)"
 
+NameDollmakerRecruit,"Dollmaker"
+
 NameDollmakerBoss3,"DOLLMAKER"
 KillDollmakerBoss3,"The Dollmaker falls kneeling to the floor, admitting defeat!"
 AttackDollmakerBoss3Bind,"The Dollmaker snaps her fingers, and many robotic arms restrain you! (+RestraintAdded)"
@@ -13314,6 +13316,8 @@ KillFuuka2,"Fuuka surrounds herself in defensive talismans one more time!"
 AttackFuuka2Bind,"Fuuka wraps you furiously in restraints! (+RestraintAdded)"
 AttackFuuka2,"Fuuka pouts as she tickles you relentlessly! (DamageTaken)"
 AttackFuuka2Lock,"Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)"
+
+NameFuukaRecruit,"Fuuka"
 
 rFuuka,"(You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?"
 dFuuka_Aggressive,"I should be asking the same of you."
@@ -30425,7 +30429,7 @@ AttackTheWarden2Bind,"The Warden forces you to kneel, and presents you with a re
 AttackTheWarden2,"The Warden strikes you with her whip! (DamageTaken)"
 AttackTheWarden2Lock,"The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)"
 
-
+NameTheWardenRecruit,"The Warden"
 
 
 

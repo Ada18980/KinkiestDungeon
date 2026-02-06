@@ -9674,7 +9674,7 @@ function KDEnemyRank(enemy: entity): number {
 function KDEnemyTypeRank(enemy: enemy): number {
 	let tags = enemy.tags;
 	if (tags) {
-		if (tags.stageBoss) return 5;
+		if (tags.stageBoss || tags.stageBossRecruit) return 5;
 		if (tags.boss) return 4;
 		if (tags.miniboss) return 3;
 		if (tags.elite) return 2;

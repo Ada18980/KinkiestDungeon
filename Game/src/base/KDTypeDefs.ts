@@ -1470,7 +1470,11 @@ interface enemy extends KDHasTags {
 	enemyCountSpellLimit?: number;
 	/** List of animations to be applied */
 	Animations?: string[];
-
+	/** If set, when this NPC is promoted/recruited to a Servant,
+	 *  its collection type will be swapped to this enemy type.
+	 *  For bosses / special NPCs that need a safe/nerfed variant.
+	 */
+	recruitType?: string;
 }
 
 interface shopItem {

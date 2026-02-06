@@ -1789,15 +1789,45 @@ function KDCanPromote(value: KDCollectionEntry): boolean {
 	return KDGetModifiedOpinionID(value.id) > 0 || value.Opinion > 0;
 }
 
+function KDRemoveFromAllFacilities(id: number) {
+	let listRender = Object.entries(KDFacilityTypes).filter(e => e[1].prereq());
+	for (let f of listRender) {
+		for (let dt of KDFacilityCollectionDataTypes) {
+			let data: number[] = KDGameData.FacilitiesData[dt + "_" + f[0]];
+			if (data?.includes(id)) data.splice(data.indexOf(id), 1);
+		}
+	}
+	if (KDGameData.Collection[id + ""]) delete KDGameData.Collection[id + ""].Facility;
+}
+
+function KDApplyRecruitType(value: KDCollectionEntry) {
+	let enemy = KinkyDungeonGetEnemyByName(value.type);
+	if (enemy?.recruitType && enemy.recruitType != value.type) {
+		value.type = enemy.recruitType;
+		delete value.Enemy;
+		if (KDIsNPCPersistent(value.id)) {
+			let npc = KDGetPersistentNPC(value.id);
+			if (npc?.entity) {
+				npc.entity.Enemy = KinkyDungeonGetEnemyByName(value.type);
+				npc.entity.hp = Math.min(npc.entity.hp || npc.entity.Enemy.maxhp, npc.entity.Enemy.maxhp);
+				delete npc.entity.homeCoord;
+				npc.special = false;
+				KDSetSpawnAndWanderAI(npc, undefined, undefined);
+			}
+		}
+	}
+}
+
 function KDPromote(value: KDCollectionEntry) {
 	value.status = "Servant";
+	KDRemoveFromAllFacilities(value.id);
+	KDApplyRecruitType(value);
 	if (KDIsNPCPersistent(value.id)) {
 		KDGetPersistentNPC(value.id).collect = true;
 		if (KDGetPersistentNPC(value.id).entity)
 			delete KDGetPersistentNPC(value.id).entity.hostile;
 		KDUpdatePersistentNPC(value.id);
 	}
-	delete value.Facility;
 }
 
 
