@@ -6061,7 +6061,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackLock: "Purple",
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "BlueKey", weight: 10}], ondeath: [{type: "dialogue_and_die", dialogue:"FuukaWin", click: true}]},
 
-	{name: "FuukaRecruit", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "Fuuka", bound: "Fuuka", faction: "Boss", clusterWith: "zombie",
+	{name: "FuukaRecruit", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "Fuuka", bound: "Fuuka", clusterWith: "zombie",
 		tags: KDMapInit(["nosub", "leashing", "fuuka",
 			"bulwark", "zombie", "ranged", "mikoRestraints", "unstoppable", "stageBossRecruit"]),
 		armor: 0, followRange: 1, AI: "hunt",
@@ -6069,33 +6069,25 @@ let KinkyDungeonEnemies: enemy[] = [
 			unlimitedRestraints: true,
 			requiredItems: ["MikoGag", "MikoDress"],
 		},
-		Behavior: {
-			leashCondition: "fuukaLeash",
-		},
 		special: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff7777"},
-			{trigger: "tick", type: "BossAssignFaction", kind: "Fuuka"},
 		],
 		maxblock: 3,
 		maxdodge: 3,
 		preferBlock: true,
 		Magic: {
 			castCooldownUnique: {
-				FuukaOrbMulti: 12,
-				SummonZombies: 30,
-				SummonMikoGhosts: 24,
+				SummonMikoGhosts: 45,
 			},
 			priority: {
-				FuukaOrbMulti: 10,
-				SummonZombies: 9,
-				SummonMikoGhosts: 8,
+				SummonMikoGhosts: 15,
 			},
 		},
 		stamina: 6,
 		unlockCommandLevel: 3, unlockCommandCD: 7,
-		spells: ["ZombieOrb", "ManyOrbs", "SummonMikoGhosts", "SummonZombies", "EnemyCM_self", "FuukaOrbMulti"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 0.85, noChannel: true,
-		visionRadius: 12, maxhp: 25, minLevel:0, weight:-1000, movePoints: 1, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
+		spells: ["ZombieOrb", "ManyOrbs", "SummonMikoGhosts", "EnemyCM_self"], spellCooldownMult: 0.75, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 0.85, noChannel: true,
+		visionRadius: 12, maxhp: 40, minLevel:0, weight:-1000, movePoints: 1, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "Purple",
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "BlueKey", weight: 10}]},
 
@@ -6278,18 +6270,13 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackLock: "HiSec",
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue_and_die", dialogue:"TheWardenWin", click: true}]},
 
-	{name: "TheWardenRecruit", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+	{name: "TheWardenRecruit", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", clusterWith: "human",
 			color: "#ffaa44",
 			tags: KDMapInit(["nosub", "leashing", "noshop", "warden", "human", "soulweakness", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "unflinching", "stageBossRecruit"]),
 			armor: 1, followRange: 3, AI: "guard",
-			events: [
-				{trigger: "tick", type: "BossAssignFaction", kind: "Warden"}
-			],
+			
 			RestraintFilter: {
 				unlimitedRestraints: true,
-			},
-			Behavior: {
-				leashCondition: "wardenLeash",
 			},
 			special: true,
 			preferDodge: true,
@@ -6297,7 +6284,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			maxblock: 1,
 			maxdodge: 1,
 			unlockCommandLevel: 3, unlockCommandCD: 7,
-			spells: ["OneBarMissile", "EnemySteelRainBurst", "EnemyCM_self"], spellCooldownMult: 0.4, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
+			spells: ["EnemySteelRainBurst", "EnemyCM_self"], spellCooldownMult: 0.5, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
 			visionRadius: 9, maxhp: 40, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAllWill", attackWidth: 2.5, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 			attackLock: "HiSec",
 			terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}]},
@@ -6395,7 +6382,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {}, floors:KDMapInit([]),
 		ondeath: [{type: "dialogue_and_die", dialogue:"DollmakerWin", click: true}]},
 
-	{name: "DollmakerRecruit", nameList: "Dollmaker", outfit: "Dollmaker", style: "Dollmaker", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
+	{name: "DollmakerRecruit", nameList: "Dollmaker", outfit: "Dollmaker", style: "Dollmaker", playLine: "Dollmaker", bound: "DollmakerBoss", clusterWith: "dollsmith",
 		applyFaction: "Dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged", "slimewalk",
 			"bulwark",
@@ -6403,7 +6390,6 @@ let KinkyDungeonEnemies: enemy[] = [
 		spellResist: 2.0, armor: 0.5, followRange: 1.5, AI: "guard",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff88ff"},
-			{trigger: "tick", type: "BossAssignFaction", kind: "Dollsmith"},
 		],
 		preferBlock: true,
 		maxblock: 5,
@@ -6412,14 +6398,11 @@ let KinkyDungeonEnemies: enemy[] = [
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
-		Behavior: {
-			leashCondition: "dollmakerLeash",
-		},
 		special: true,
 		unlockCommandLevel: 3, unlockCommandCD: 14,
-		spells: ["DollConvertMany", "DollBoost", "EnemyCM_self", "ManyCables"],
+		spells: ["EnemyCM_self", "ManyCables"],
 		spellCooldownMult: 0.2, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 1.15, noChannel: true,
-		visionRadius: 30, blindSight: 30, maxhp: 70, minLevel:0, weight:-1000, movePoints: 1.7, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "soul", fullBoundBonus: 4,
+		visionRadius: 30, blindSight: 30, maxhp: 40, minLevel:0, weight:-1000, movePoints: 1.7, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "soul", fullBoundBonus: 4,
 		terrainTags: {}, floors:KDMapInit([])},
 
 
