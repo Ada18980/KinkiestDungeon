@@ -1700,6 +1700,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 				mapY: currentMapData.mapY,
 				room: currentMapData.RoomType,
 			};
+			if (leasher.leash) KDBreakTether(leasher);
 			KDDespawnEnemy(leasher, undefined, currentMapData, KDMapData.RoomType);
 			let nextExit = KDGetNearestExitTo(
 				currentMapData.RoomType, currentMapData.mapX, currentMapData.mapY,

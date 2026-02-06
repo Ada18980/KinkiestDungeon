@@ -65,6 +65,14 @@ interface KDBondageStats {
  * Heels
  */
 
+let KDDeviceRow: NPCBindingGroup = 
+	{id: "Device", encaseGroup:
+		{id: "Device", encasedBy: [], allowedGroups: ["ItemDevices"],
+			allowedTags: ["Furniture", "Devices"]},
+		layers: [
+			
+		]};
+
 let NPCBindingGroups: NPCBindingGroup[] = [
 	{id: "Collar", encaseGroup:
 		{id: "Collar", encasedBy: [], allowedGroups: ["ItemNeck"],

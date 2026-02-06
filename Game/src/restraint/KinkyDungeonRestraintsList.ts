@@ -2941,7 +2941,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		tightType: "Secure",
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35, "Pick": 0.33, "Unlock": 0.7},
 		helpChance: {"Remove": 0.5, "Pick": 0.5, "Unlock": 1.0},
-		enemyTags: {"cage":100, shadowBall: 0.1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Cages"], ignoreSpells: true, removeOnLeash: true, immobile: true,
+		enemyTags: {"cage":100, shadowBall: 0.1, saddlemachine: 0.1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Cages"], ignoreSpells: true, removeOnLeash: true, immobile: true,
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Sarcophagus
 	{removePrison: true, name: "Sarcophagus", Asset: "DisplayCase", Color: ['Default'], Group: "ItemDevices", power: 10, weight: 1, immobile: true, alwaysStruggleable: true,

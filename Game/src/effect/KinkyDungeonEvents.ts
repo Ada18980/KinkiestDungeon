@@ -10487,6 +10487,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 					enemy.hp = enType.maxhp;
 					enemy.specialBoundLevel = {};
 					enemy.boundLevel = 0;
+					if (enemy.leash) KDBreakTether(enemy);
 					KDDespawnEnemy(enemy, undefined, KDMapData);
 				}
 			}
@@ -10514,6 +10515,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 					enemy.hp = enType.maxhp;
 					enemy.specialBoundLevel = {};
 					enemy.boundLevel = 0;
+					if (enemy.leash) KDBreakTether(enemy);
 					KDDespawnEnemy(enemy, undefined, KDMapData);
 				}
 			}

@@ -3188,15 +3188,20 @@ function KinkyDungeonCapture(enemy: entity): boolean {
  * @param enemy
  */
 function KDDropStolenItems(enemy: entity, mapData?: KDMapDataType) {
-	if (enemy.items && mapData) {
+	if (enemy.items?.length > 0 && mapData) {
+		let upd = false;
 		for (let name of enemy.items) {
 			if (!enemy.tempitems || !enemy.tempitems.includes(name)) {
 				let item = {x:enemy.x, y:enemy.y, name: name};
+				upd = true;
 				(mapData).GroundItems.push(item);
 			}
 		}
 		enemy.items = [];
 		enemy.tempitems = undefined;
+		if (upd && KDIsNPCPersistent(enemy.id)) {
+			KDUpdatePersistentNPC(enemy.id);
+		}
 	}
 }
 
@@ -3417,6 +3422,7 @@ function KDCheckDespawn(enemy: entity, E: number, mapData: KDMapDataType): boole
 			let slot = KDGetWorldMapLocation({x: mapData.mapX, y: mapData.mapY});
 			let rt = tile?.RoomType;
 			if (rt == "PerkRoom") rt = "";
+			if (enemy.leash) KDBreakTether(enemy);
 			KDDespawnEnemy(enemy, E, mapData, rt || slot?.main || "");
 			return true;
 		}
@@ -3426,6 +3432,7 @@ function KDCheckDespawn(enemy: entity, E: number, mapData: KDMapDataType): boole
 			enemy.despawnX = point.x;
 			enemy.despawnY = point.y;
 		} else {
+			if (enemy.leash) KDBreakTether(enemy);
 			KDDespawnEnemy(enemy, E, mapData);
 			return true;
 		}
@@ -3968,7 +3975,7 @@ function KinkyDungeonGetNearbyPoint (
 	for (let C = 0; C < 100; C++) {
 		let slot = slots[Math.floor(KDRandom() * slots.length)];
 		if (slot && (allowInsideEnemy
-			|| KinkyDungeonNoEnemyExceptSub(slot.x, slot.y, false, Enemy, mapData))
+			|| KinkyDungeonNoEnemyExceptSub(slot.x, slot.y, true, Enemy, mapData))
 			&& (ignoreOL || KDPointWanderable(slot.x, slot.y, mapData))
 			&& (allowNearPlayer || mapData != KDMapData
 				|| Math.max(Math.abs(KinkyDungeonPlayerEntity.x - slot.x),
@@ -5018,6 +5025,8 @@ function KDRunRegularJailDefeatAttempt(CDE: entity, allowMain: boolean = true, r
 
 	KDMovePlayer(entrance.x, entrance.y, false);
 
+	if (CDE)
+		if (CDE.leash) KDBreakTether(CDE);
 	KDDespawnEnemy(CDE, undefined, currentMapData, KDMapData.RoomType);
 	let nextExit = KDGetNearestExitTo(
 		currentMapData.RoomType, currentMapData.mapX, currentMapData.mapY,
@@ -9689,8 +9698,8 @@ function KDEnemyChangeSprint(enemy: entity, amt: number) {
 }
 
 let KDShopMoneyBase = 150;
-let KDShopMoneyPerFloor = 50;
-let KDShopMoneyPerRank = 40;
+let KDShopMoneyPerFloor = 75;
+let KDShopMoneyPerRank = 100;
 
 /**
  * @param enemy

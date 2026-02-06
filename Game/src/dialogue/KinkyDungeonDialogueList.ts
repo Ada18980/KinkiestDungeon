@@ -1653,20 +1653,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					if (en && !en.player && KDCanBind(en)) {
 						let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
 						let furn = KDFurniture[tile.Furniture];
-						let rest = KinkyDungeonGetRestraint(
-							{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-							KDCurrIndex(),
-							true,
-							"",
-							true,
-							false,
-							false, undefined, true);
-						KDImprisonEnemy(en, true, "PrisonerJailOwn", {
-							name: rest.name,
-							lock: "White",
-							id: KinkyDungeonGetItemID(),
-							faction: KDDefaultNPCBindPalette,
-						});
+						
+						KDImprisonEnemy(en, true, "PrisonerJailOwn", furn?.restraintTag ? [furn?.restraintTag] : undefined, undefined, undefined, undefined, undefined, "White");
 						KinkyDungeonAdvanceTime(1);
 					}
 					return false;

@@ -1438,12 +1438,9 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 				let en = DialogueCreateEnemy(KDGameData.InteractTargetX, KDGameData.InteractTargetY,
 					(value.Enemy || KinkyDungeonGetEnemyByName(value.type)).name, value.id, true);
 				if (en) {
-					KDImprisonEnemy(en, true, "PrisonerJailOwn", {
-						name: rest.name,
-						lock: "White",
-						id: KinkyDungeonGetItemID(),
-						faction: KDDefaultNPCBindPalette,
-					});
+					KDImprisonEnemy(en, true, "PrisonerJailOwn", [furn.restraintTag],
+						 undefined, undefined, undefined, undefined, "White"
+					);
 					//en.ceasefire = 9999;
 					en.playWithPlayer = 0;
 					if (KDNPCChar.get(en.id))
@@ -1493,6 +1490,8 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 						KDMoveEntity(en,
 							KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
 							KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), false);
+						en.visual_x = KDGameData.InteractTargetX + (nearestJail.direction?.x || 0);
+						en.visual_y = KDGameData.InteractTargetY + (nearestJail.direction?.y || 0);
 						KDSetNPCRestraint(en.id, "Device", {
 							name: rest.name,
 							lock: "White",

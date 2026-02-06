@@ -3865,7 +3865,9 @@ function KDBindEnemyWithTags(id: number, tags: string[],
 		let added = 0;
 
 		while (added < maxAdded && expected < maxBinding && iterations++ < maxTries && restraintsEligible.length > 0) {
-			let restraintTry = restraintsEligible[Math.floor(KDRandom() * restraintsEligible.length)];
+			//let restraintTry = restraintsEligible[Math.floor(KDRandom() * restraintsEligible.length)];
+			
+			let restraintTry = KDGetByRestraintEligibleEntry(restraintsEligible);
 			let bondageStats = KDGetRestraintBondageStats(restraintTry.restraint, entity);
 			if ((expected + bondageStats.amount < maxBinding || (iterations > maxTries/2 &&
 				(!KDGetNPCRestraints(id) || !KDGetNPCRestraints(id)[restraintTry.slot.id])

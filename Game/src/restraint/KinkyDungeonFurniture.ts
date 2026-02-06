@@ -9,6 +9,7 @@ interface KDFurnitureDef {
 	restraintSetTags?: Record<string, number>,
 	tickFunction: (delta: number) => void,
 	forceFaction?: string,
+	lockType?: string,
 
 }
 

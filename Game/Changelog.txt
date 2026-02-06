@@ -50,6 +50,11 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 - TODO potentially add a mechanic for cursed items to restore themselves after being removed for furniture reasons
 
+5.4.88
+- Addressed NPCs remaining leashed even after despawning
+- Prevented some allies from printing items when switching floors
+- Prevented imprisoned NPCs from spawning in a saddle type furniture if it doesnt support that
+
 5.4.87
 - Added safeword button in consent menu
 - Added consent options for chastity, invisible restraints
