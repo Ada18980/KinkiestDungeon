@@ -6398,9 +6398,14 @@ let KinkyDungeonEnemies: enemy[] = [
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
+		Magic: {
+			castCooldownUnique: {
+				SummonDrones: 20,
+			}
+		},
 		special: true,
 		unlockCommandLevel: 3, unlockCommandCD: 14,
-		spells: ["EnemyCM_self", "ManyCables"],
+		spells: ["SummonDrones", "EnemyCM_self", "ManyCables"],
 		spellCooldownMult: 0.2, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 1.15, noChannel: true,
 		visionRadius: 30, blindSight: 30, maxhp: 40, minLevel:0, weight:-1000, movePoints: 1.7, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "soul", fullBoundBonus: 4,
 		terrainTags: {}, floors:KDMapInit([])},
