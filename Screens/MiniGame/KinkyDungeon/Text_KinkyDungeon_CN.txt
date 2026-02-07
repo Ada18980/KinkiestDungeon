@@ -24848,6 +24848,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 玩偶师
 # :: NameDollmakerBoss1
 # :: NameDollmakerBoss2
+# :: NameDollmakerRecruit
 # :: m_Goggles_l_Dollmaker
 # :: m_GogglesRestraint_l_Dollmaker
 # :: m_Goggles_l_Dollmaker
@@ -24872,6 +24873,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - The Dollmaker suggests that you surrender. (DamageTaken)
 玩偶师建议你投降。 ( DamageTaken )
 
+
 - DOLLMAKER
 玩偶师
 - The Dollmaker falls kneeling to the floor, admitting defeat!
@@ -24885,6 +24887,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 风香
 # :: NameFuuka1
 # :: NameFuuka2
+# :: NameFuukaRecruit
 - Fuuka surrounds herself in defensive talismans!
 风香将自己包围在防御丝带中！
 - Fuuka wraps you tightly in restraints! (+RestraintAdded)
@@ -24902,6 +24905,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 风香狂怒地将你包裹起来！ ( +RestraintAdded )
 - Fuuka pouts as she tickles you relentlessly! (DamageTaken)
 风香一边噘嘴一边无情地给你挠痒痒！ ( DamageTaken )
+
 
 - (You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?
 ( 你发现一个穿着华丽衣服的女孩 ) | ( 她瞥了你一眼 ) |你是谁？
@@ -48161,6 +48165,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 典狱长
 # :: NameTheWarden1
 # :: NameTheWarden2
+# :: NameTheWardenRecruit
 - The Warden disappears into a trapdoor!
 典狱长消失在活板门中！
 - The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)
@@ -48179,7 +48184,6 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 典狱长用鞭子抽你！ ( DamageTaken )
 - The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)
 典狱长挥动着她那施了魔法的鞭子，把锁锁在你的身上！ ( DamageTaken )
-
 
 
 
@@ -51870,6 +51874,8 @@ NME 由于不够显要，被自动释放
 装备护甲中...
 - Using Consumable...
 使用中...
+# :: KDDelayedAction_Consumable
+# :: KDDelayedAction_ConsumableEffect
 - Struggling...
 挣扎中...
 
