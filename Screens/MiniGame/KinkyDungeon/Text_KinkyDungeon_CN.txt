@@ -12921,7 +12921,7 @@ Ars烟火
 
 - Healing Light
 治愈之光
-- Channel to heal 15 hitpoints per turn to summoned allies within a 5x5 area.
+- Channel to heal 15 hitpoints per turn to yourself and summoned allies within a 5x5 area.\n\nOnly willpower lost from non-tease damage on yourself can be healed.
 为 5x5 区域内的召唤盟友回复 15HP ( 不包括你自己 )
 - You conjure a healing light!
 你召唤出治愈之光！
@@ -14041,7 +14041,7 @@ Ars烟火
 治愈
 - Select which creature to heal
 选择要治疗的生物
-- Restore 45 hitpoints to an allied creature.
+- Restore 45 hitpoints to an allied creature or yourself.\n\nOnly willpower lost from non-tease damage on yourself can be healed.
 为一个友方生物恢复 45 点生命值 ( 不包括你自己 ) 。
 - You utter a word of healing.
 你咏唱治愈的咒语。
