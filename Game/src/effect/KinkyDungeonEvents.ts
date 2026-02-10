@@ -13209,11 +13209,11 @@ function KDAddDamageWP(player: entity, powerAdded: number) {
 		KinkyDungeonApplyBuffToEntity(player, {
 			id: "DamageWP",
 			type: "DamageWP",
-			aura: KDBaseWhite, auraSprite: "Null",
-			buffSprite: true,
+			//aura: KDBaseWhite, //auraSprite: "Null",
+			//buffSprite: true,
 			power: initial,
 			duration: 9999, infinite: true,
-			text: Math.round(10 * initial),
+			//text: Math.round(10 * initial),
 		});
 	} else {
 		buff.power = Math.min(missing, buff.power + powerAdded);
