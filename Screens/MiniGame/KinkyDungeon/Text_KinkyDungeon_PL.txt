@@ -215,8 +215,6 @@
 # :: KDDialogue_ToyPlayRunAway_Sub
 # :: KinkyDungeonCurseUnlockOrgasmResist
 # :: KinkyDungeonCurseUnlockOrgasmForced
-# :: KDConsentList_Tickle
-# :: KDConsentListDesc_Tickle
 # :: KDEscapeMinimap_Pass_None
 # :: KinkyDungeonStat
 # :: KinkyDungeonStatDesc
@@ -4093,21 +4091,44 @@
 # - You're bound too tight to have a chance at shaking off the TargetRestraint.
 # - You whimper as you give up struggling against the TargetRestraint.
 
-# - You wiggle around trying to get the TargetRestraint out...
+# - You wiggle around trying to push the TargetRestraint out...
 # :: KinkyDungeonStruggleStruggleFailPlug
 # :: KinkyDungeonStruggleStruggleFailEgg
-# - You squirm around trying to dislodge the TargetRestraint...
+# - You squirm around trying to push out the TargetRestraint...
 # :: KinkyDungeonStruggleStruggleFailPlugAroused
 # :: KinkyDungeonStruggleStruggleFailEggAroused
 # - The TargetRestraint is in too deeply, it won't come out.
-# - You feel the TargetRestraint slide around inside but it won't come out!
-# - Your bondage keeps the TargetRestraint firmly in place.
+# - You feel the TargetRestraint deep inside but it won't come out!
+# - Your bindings keep the TargetRestraint inside with no chance to slip out.
 # - Your struggling does nothing but shift the TargetRestraint's position inside of you.
 
 # - The TargetRestraint won't come out.
 # - You feel the TargetRestraint slide around but it won't come out!
-# - Your bondage keeps the TargetRestraint secure in place.
+# - Your bindings keep the TargetRestraint from falling out.
 # - Your struggling does nothing to dislodge the TargetRestraint.
+
+
+
+# - You wiggle trying to pull the TargetRestraint out...
+# :: KinkyDungeonStruggleRemoveFailPlug
+# :: KinkyDungeonStruggleRemoveFailEgg
+# - You squirm, tugging at the TargetRestraint...
+# :: KinkyDungeonStruggleRemoveFailPlugAroused
+# :: KinkyDungeonStruggleRemoveFailEggAroused
+# - You can't grip the TargetRestraint to take it out.
+# :: KinkyDungeonStruggleRemoveImpossiblePlug
+# :: KinkyDungeonStruggleRemoveImpossibleEgg
+# - You fruitlessly feel around trying to grab the TargetRestraint.
+# :: KinkyDungeonStruggleRemoveImpossiblePlugAroused
+# :: KinkyDungeonStruggleRemoveImpossibleEggAroused
+# - Your bindings prevent you from reaching the TargetRestraint.
+# :: KinkyDungeonStruggleRemoveImpossibleBoundPlug
+# :: KinkyDungeonStruggleRemoveImpossibleBoundEgg
+# - The TargetRestraint is firmly kept inside of you by your bindings.
+# :: KinkyDungeonStruggleRemoveImpossibleBoundPlugAroused
+# :: KinkyDungeonStruggleRemoveImpossibleBoundEggAroused
+
+
 
 
 # - You work to unlace the TargetRestraint...
@@ -4872,8 +4893,13 @@
 
 # - Restraining Bed
 # - A bed with a booby trap designed to trap you on top of it!
-# - You have to get out somehow...
+# - The straps push you deeper into comfort~
+# - Comfy Bed
+# - A formerly trapped bed.
+# - It's extremey comfortable, especially when you're tied on it.
 # - Belts emerge from underneath the bed and wrap around you, strapping you down tightly!
+# - The sheets snap up around you, encasing you in straps and hoisting you into the air!
+# - The sheets snap up around you, encasing you in straps and affixing you to the bed!
 
 # - Binding Dress
 # - It's a devious dress! I hope your elbows are flexible~
@@ -5180,12 +5206,12 @@
 # - Allows fitting of a leash.
 # :: RestraintBasicCollarDesc2
 # :: RestraintSteelCollarDesc2
-# :: RestraintMagicCollarDesc2
 # :: RestraintKittyCollarDesc2
-# - Slave Collar
-# - A high-security steel collar befitting of a slave.
-# - Enchanted Collar
-# - A collar made with magically enchanted materials. It is difficult to cut off.
+# - Steel Collar
+# - A stainless steel collar befitting of a slave, or perhaps an enthusiastic submissive.
+# - Runic Collar
+# - A collar that adjusts to fit the wearer perfectly. It resembles steel, but with carved glyphs that faintly glow.
+# - The lock is decorative. It's sealed magically around your neck.
 # - Kitty Collar
 # - A collar made with magically enchanted materials. It is protected by the blessing of Bast.
 # - Leash
@@ -6154,6 +6180,25 @@
 # - Tightly zipped together and secured with straps.
 
 
+
+# - Heavy Sleepsack Bottom
+# - A heavy sleepsack legbinder, designed to keep a subject comfortable yet immobilized.
+# - Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside.
+# :: RestraintSleepsackLegbinderDesc2
+# :: RestraintSleepsackJacketDesc2
+# :: RestraintSleepsackBoxbinderDesc2
+# :: RestraintSleepsackArmbinderDesc2
+# - Heavy Sleepsack Jacket
+# - A heavy sleepsack jacket, designed to keep a subject comfortable yet helpless.
+# - Heavy Sleepsack Boxbinder
+# - A heavy sleepsack boxbinder, designed to keep a subject comfortable yet helpless.
+# - Heavy Sleepsack Armbinder
+# - A heavy sleepsack armbinder, designed to keep a subject comfortable yet helpless.
+# - Heavy Sleepsack Cables
+# - Heavy duty leather straps designed to hold a sleepsack-wearing subject off the ground.
+# - They are thick leather straps with lockable buckles.
+
+
 # - Asylum Ankle Cuffs
 # - A pair of chained cuffs made of reinforced leather. They make patients easier to catch.
 # :: RestraintAsylumAnkleCuffsDesc
@@ -6198,6 +6243,10 @@
 # - Comfy Straitjacket
 # - A straitjacket that is padded on the inside.
 # - It feels tight but is actually made of an ethereal material...
+# :: RestraintComfyStraitjacketDesc2
+# :: RestraintComfyLegbinderDesc2
+# - Comfy Legbinder
+# - A legbinder that renders you unable to move quickly, either due to restriction or sheer comfort.
 
 # - Latex Jacket
 # - A tight jacket that keeps your arms completely useless.
@@ -8276,7 +8325,7 @@
 # - Choose target location (1x1)
 
 # - Healing Light
-# - Channel to heal 15 hitpoints per turn to summoned allies within a 5x5 area.
+# - Channel to heal 15 hitpoints per turn to yourself and summoned allies within a 5x5 area.\n\nOnly willpower lost from non-tease damage on yourself can be healed.
 # - You conjure a healing light!
 
 # - Crackle
@@ -8965,7 +9014,7 @@
 
 # - Heal
 # - Select which creature to heal
-# - Restore 45 hitpoints to an allied creature.
+# - Restore 45 hitpoints to an allied creature or yourself.\n\nOnly willpower lost from non-tease damage on yourself can be healed.
 # - You utter a word of healing.
 
 # - Flame Blade
@@ -9789,6 +9838,7 @@
 # - The angel helps you struggle and use items
 # - The ghost helps you struggle and use items
 # - The ghost is unhelpful
+# - Negotiate
 
 # - Angel: Greetings!
 # - Angel: Perhaps I can assist with those!
@@ -13911,6 +13961,8 @@
 # :: dOfferFungal_NoGag
 # :: dOfferApprentice_NoGag
 # :: dOfferTemp_NoGag
+# :: dGhostNegotiatePossess_CancelGag
+# :: dGhostNegotiatePossessPleasure_CancelGag
 # :: dGenericAllyFlirt_BondageOffer_NoGag
 # :: dFuukaBrat_ProceedGag_Proceed
 # :: dFuukaSub_Brat_ProceedGag
@@ -14191,6 +14243,8 @@
 # :: dOfferWolfRestraintYes_YesGag
 # :: dOfferKittyYes_YesGag
 # :: dOfferDragonYes_YesGag
+# :: dGhostNegotiatePossess_ConfirmGag
+# :: dGhostNegotiatePossessPleasure_ConfirmGag
 # - Not really.
 # :: dOfferScarf_No
 # :: dOfferMithrilYes_No
@@ -15476,6 +15530,37 @@
 # - There is no valid space next to you!
 
 
+# - (The ghost giggles at your predicament)|Looks like you need a bit of help~|Personally, I love to see cute girls tied up, but I'd be willing|to compromise if you can devise another way to entertain me.|Let's make a deal, shall we?
+# - (The ghost smiles, her pleasant expression betraying a...)|(...sinister tone)|I'd love to~|I get to tie you as I please until you advance a floor.|How's that sound?
+# - (The ghost grins)|Hmm, perhaps I could tie that adorable body of yours|some other time~|Just until you advance a floor~.|How's that sound?
+# - (The ghost giggles)|Oh I like this one~|I shall pleasure you as I wish until you advance a floor.|How's that sound?
+# - (The ghost chuckles)|Mhmm... you're cute~|Perhaps I should go... within you and give you pleasure as I will~|Just until you advance a floor~.|How's that sound?
+
+# - (The ghost smiles)|Whatever you want, dear~
+# :: rGhostNegotiatePossessPleasure_Cancel
+# :: rGhostNegotiatePossess_Cancel
+
+
+# - Perhaps you could tie me up later?
+# - (Offer up your body)
+# - Why don't you... pleasure me at your leisure?
+# - (Wiggle and moan seductively)
+
+# - I've already made some deals...
+# - (Leave, as you are already under several deals)
+
+# - I accept your terms.
+# :: dGhostNegotiatePossess_Confirm
+# :: dGhostNegotiatePossessPleasure_Confirm
+# - Not for me.
+# :: dGhostNegotiatePossess_Cancel
+# :: dGhostNegotiatePossessPleasure_Cancel
+
+# - You've made a deal... your freedom now in exchange for your freedom later...
+# - You've made a deal, which lurks deep inside you~
+
+
+
 # - (You approach the SPEAKER)
 # - (Threaten)
 # - (Really attack?)
@@ -15711,6 +15796,7 @@
 # - Dollmaker
 # :: NameDollmakerBoss1
 # :: NameDollmakerBoss2
+# :: NameDollmakerRecruit
 # :: m_Goggles_l_Dollmaker
 # :: m_GogglesRestraint_l_Dollmaker
 # :: m_Goggles_l_Dollmaker
@@ -15729,6 +15815,7 @@
 # - The Dollmaker sinks into a pool of latex!
 # - The Dollmaker suggests that you surrender. (DamageTaken)
 
+
 # - DOLLMAKER
 # - The Dollmaker falls kneeling to the floor, admitting defeat!
 # - The Dollmaker snaps her fingers, and many robotic arms restrain you! (+RestraintAdded)
@@ -15737,6 +15824,7 @@
 # - Fuuka
 # :: NameFuuka1
 # :: NameFuuka2
+# :: NameFuukaRecruit
 # - Fuuka surrounds herself in defensive talismans!
 # - Fuuka wraps you tightly in restraints! (+RestraintAdded)
 # - Fuuka squeezes your breasts and smiles! (DamageTaken)
@@ -15747,6 +15835,7 @@
 # - Fuuka surrounds herself in defensive talismans one more time!
 # - Fuuka wraps you furiously in restraints! (+RestraintAdded)
 # - Fuuka pouts as she tickles you relentlessly! (DamageTaken)
+
 
 # - (You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?
 # - I should be asking the same of you.
@@ -16719,6 +16808,7 @@
 # - Back to Pause Menu
 # - Back to Game Setup
 # - Back to Character Setup
+# - Back to Challenge Setup
 # - Back to Wardrobe
 # - Confirm Strip?
 # - Strip!
@@ -30600,6 +30690,9 @@
 
 # - A playful ghost now accompanies you on your journey.
 # - The ghost haunting you decides to have a little fun! (+RestraintAdded)
+# - The ghost you made a deal with decides to have a little fun! (+RestraintAdded)
+# - The ghost you made a deal with decides to snap a ${LockType} lock to your ${Restraint}
+# - The ghost you made a deal with decides to have a little fun with you!
 
 # - Hemp Rope
 # - The most common type of bondage rope.
@@ -32271,12 +32364,23 @@
 # - Painful Shocks
 # - Sensory Deprivation
 # - Brats
+# - Forced Chastity Bras
+# - Forced Chastity Belts
+# - Allow Menu Ingame
+
+# - Invisible Restraints
 
 # - |||This item is marked as Red, which prevents it from appearing in the game.
 # - |||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention.
 # - |||This item is marked as Green, which will make it appear more often.
 # - |||This item will appear ingame as normal.
 
+# - Menu Locked
+
+# - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
+# - Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead.
+# - Allows chastity bras to be forced onto the player character, which prevent access to nipples and lock toys in.||If marked as yellow, chastity bras will not appear unless the player is wearing nipple toys.
+# - Allows chastity belts to be forced onto the player character, which prevent access to the lower regions and lock toys in.||If marked as yellow, chastity belts will not appear unless the player is wearing toys or plugs on the lower body.
 # - Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them.
 # - Allows plugs to be inserted into the front slot of your character.
 # - Allows plugs to be inserted into the rear slot of your character.
@@ -33221,6 +33325,13 @@
 # - tickling
 
 
+# - gropes
+# - grope
+# - groping
+
+
+
+
 # -  (blocked!)
 # -  (dodged!)
 
@@ -33257,6 +33368,7 @@
 # - The Warden
 # :: NameTheWarden1
 # :: NameTheWarden2
+# :: NameTheWardenRecruit
 # - The Warden disappears into a trapdoor!
 # - The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)
 # :: AttackTheWarden1Bind
@@ -33268,7 +33380,6 @@
 # - The Warden falls flat on the ground, exhausted!
 # - The Warden strikes you with her whip! (DamageTaken)
 # - The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)
-
 
 
 
@@ -35475,6 +35586,8 @@
 # - Equipping Restraint...
 # - Equipping Armor...
 # - Using Consumable...
+# :: KDDelayedAction_Consumable
+# :: KDDelayedAction_ConsumableEffect
 # - Struggling...
 
 # - The ITMN1 is purified and returns to being a ITMN2!
@@ -35842,10 +35955,11 @@
 
 # - Select a progress item to show details
 
-# - Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.
+# - Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions, reducing XP gain by a multiplier.
 # - Current Progress: 
 # - Milestones:
 # - Bonus Progress (gained next Floor):
+# - Mistakes Made:
 # - Recent Modifiers:
 
 # - Any Level
@@ -35855,3 +35969,10 @@
 
 # - Filter Toggles:
 # - Filter Content:
+
+
+# - Use Safeword
+# - Confirm Safeword?
+# - Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. 
+# - Only usable ingame.
+# - ${Playername} used her safeword and was transported to the beginning of the level.

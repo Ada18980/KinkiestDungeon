@@ -3920,7 +3920,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		}, enemyTags: {"genericChastity": 8, 'machineChastity': 2, "blacksteelRestraints": 4, "blacksteelBra": 8, "blacksteelchastity": 25, "roboAngry": 6,
 			"chastitybraSpellBackup": 0.1, chastitybraSpell: 12,
 		},
-		playerTags: {"FreeBoob": -1000}, minLevel: 9, allFloors: true, shrine: ["ChastityBras", "Chastity", "Metal", "Blacksteel"]},
+		playerTags: {"FreeBoob": -1000, "ItemNipplesFull": 3}, minLevel: 9, allFloors: true, shrine: ["ChastityBras", "Chastity", "Metal", "Blacksteel"]},
 	{inventory: true, arousalMode: true, trappable: true, name: "SteelBelt", Asset: "PolishedChastityBelt", OverridePriority: 26, Color: "#333333", Group: "ItemPelvis", chastity: true,
 		power: 7, weight: 0, DefaultLock: "HiSec",
 		Security: {
@@ -3965,7 +3965,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Rim: {color: "Highlight", override: true},
 
 		},
-		chastitybra: true, power: 6, weight: 0,
+		chastitybra: true, power: 6, weight: 3,
 		DefaultLock: "HiSec",
 		Security: {
 			level_key: 1,
@@ -3973,7 +3973,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.5, "Cut": -0.3, "Remove": 10.0, "Pick": 0.2},
 		enemyTags: {"genericChastity": 8, "steelRestraints": 4, "steelBra": 8, "steelchastity": 25, "roboAngry": 6,
 			"machineChastity": .2, "maidRestraints": 9, "maidRestraintsLight": 6,},
-		playerTags: {"FreeBoob": -1000}, minLevel: 4, allFloors: true, shrine: ["ChastityBras", "Steel", "Chastity", "Metal"]},
+		playerTags: {"FreeBoob": -1000, "ItemNipplesFull": 3}, minLevel: 4, allFloors: true, shrine: ["ChastityBras", "Steel", "Chastity", "Metal"]},
 
 
 	{inventory: true, arousalMode: true, trappable: true, name: "MagicBelt", Asset: "PolishedChastityBelt", OverridePriority: 26, Color: "#8f60b1", Group: "ItemPelvis", chastity: true,
@@ -4028,14 +4028,14 @@ const KinkyDungeonRestraints: restraint[] = [
 		Filters: {
 			Lining: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		power: 4, weight: 0, DefaultLock: "Red",
+		power: 4, weight: 5, DefaultLock: "Red",
 		Security: {
 			level_key: 2,
 		},
 		maxwill: 0.75, escapeChance: {"Struggle": -0.5, "Cut": -0.10, "Remove": 10.0, "Pick": 0.35}, enemyTags: {"trap":10, 
 			"chastitybraSpellBackup": 0.1, chastitybraSpell: 12,
 			"maidRestraints": 6, "maidRestraintsLight": 6, "genericChastity": 10},
-		playerTags: {"ItemNipplesEmpty" : -5, "FreeBoob": -1000}, minLevel: 0, allFloors: true, shrine: ["ChastityBras", "Chastity", "Metal"]},
+		playerTags: {"ItemNipplesFull": 3, "FreeBoob": -1000}, minLevel: 0, allFloors: true, shrine: ["ChastityBras", "Chastity", "Metal"]},
 
 
 
@@ -4072,7 +4072,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {"genericChastity": 8, "ornateChastity": 8}, playerTags: {"NoBelt": -1000}, minLevel: 4,
 		allFloors: true, shrine: ["NeoBelt", "Chastity", "Metal", "ChastityBelts", "Ornate"]},
 	{inventory: true, arousalMode: true, trappable: true, name: "TrapBra2", Asset: "FuturisticBra2", OverridePriority: 26, Color: ['#5E5E6B', '#F8BD01', '#5E5E6B', '#5E5E6B', '#F8BD01', '#5E5E6B'], Group: "ItemBreast",
-		chastitybra: true, power: 9, weight: 0, DefaultLock: "Gold",
+		chastitybra: true, power: 9, weight: 1, DefaultLock: "Gold",
 		Security: {
 			level_magic: 2,
 			level_key: 3,
@@ -4092,7 +4092,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Steel: {"gamma":1,"saturation":0.8500000000000001,"contrast":3.3833333333333333,"brightness":0.43333333333333335,"red":1,"green":1,"blue":1,"alpha":1},
 		},*/
 		escapeChance: {"Struggle": -0.5, "Cut": -0.125, "Remove": 10.0, "Pick": 0.1}, enemyTags: {"genericChastity": 8, "ornateChastity": 8, "roboAngry": 10},
-		playerTags: {"FreeBoob": -1000}, minLevel: 4, allFloors: true, shrine: ["ChastityBras", "Chastity", "Metal", "Ornate"]},
+		playerTags: {"FreeBoob": -1000, "ItemNipplesFull": 3}, minLevel: 4, allFloors: true, shrine: ["ChastityBras", "Chastity", "Metal", "Ornate"]},
 	//endregion
 
 	// Toys

@@ -192,7 +192,7 @@ KDPrisonTypes.HighSec = {
 				if (!(KDGameData.GuardTimer > 0) && KDGameData.GuardSpawnTimer <= 1)
 					KDPrisonCommonGuard(player, undefined, false);
 
-				if (TheChosenOne && KinkyDungeonJailGuard()) {
+				if (TheChosenOne && KinkyDungeonJailGuard()?.hp > 0 && KDGameData.PrisonerState == 'jail') {
 					let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, ["jail"]);
 
 					if (nearestJail) {
