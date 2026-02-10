@@ -50,8 +50,13 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 - TODO potentially add a mechanic for cursed items to restore themselves after being removed for furniture reasons
 
+- TODO Cursed Kigu Mask
+
 5.4.89
--
+- Fixed bug where animated masterwork restraints would never spawn if you have 5 or more in inventory
+- Heal now allows you to restore willpower taken from damage - thanks Nightself!
+- Bosses now recruit into a version of themselves with different statistics, for balance purposes - thanks Nightself!
+- 
 
 
 5.4.88

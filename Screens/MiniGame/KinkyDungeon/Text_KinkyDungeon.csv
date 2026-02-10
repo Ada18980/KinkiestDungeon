@@ -6455,7 +6455,7 @@ KinkyDungeonSpellCastColdFeet,You tap your foot and call forth the frost!
 KinkyDungeonSpellTargetColdFeet,Choose target location (1x1)
 
 KinkyDungeonSpellHeal,Healing Light
-KinkyDungeonSpellDescriptionHeal,Channel to heal 15 hitpoints per turn to summoned allies within a 5x5 area.
+KinkyDungeonSpellDescriptionHeal,"Channel to heal 15 hitpoints per turn to yourself and summoned allies within a 5x5 area.\n\nOnly willpower lost from non-tease damage on yourself can be healed."
 KinkyDungeonSpellCastHeal,You conjure a healing light!
 KinkyDungeonSpellTargetHeal,Choose target AoE location (5x5)
 
@@ -7085,7 +7085,7 @@ KinkyDungeonSpellCastShadowBlade,You call forth dark runes on your weapon and ar
 
 KinkyDungeonSpellHeal2,Heal
 KinkyDungeonSpellTargetHeal2,Select which creature to heal
-KinkyDungeonSpellDescriptionHeal2,Restore 45 hitpoints to an allied creature.
+KinkyDungeonSpellDescriptionHeal2,"Restore 45 hitpoints to an allied creature or yourself.\n\nOnly willpower lost from non-tease damage on yourself can be healed."
 KinkyDungeonSpellCastHeal2,You utter a word of healing.
 
 KinkyDungeonSpellFlameBlade,Flame Blade

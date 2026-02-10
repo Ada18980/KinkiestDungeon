@@ -987,6 +987,7 @@ AddModel({
 		{ Name: "Knee", Layer: "KneeAccLeft", Pri: 15,
 			Poses: ToMap([...LEGPOSES]),
 			HideWhenOverridden: true,
+			HidePoses: {Saddled: true},
 		},
 	])
 });

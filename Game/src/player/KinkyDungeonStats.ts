@@ -600,7 +600,7 @@ function KDDoPerkDamageTypeChanges(data: any) {
 	}
 }
 
-function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean) {
+function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean, src?: string) {
 	if (bullet && !noAlreadyHit) {
 		if (KDBulletAlreadyHit(bullet, KinkyDungeonPlayerEntity)) return {happened: 0, string: ""};
 	}
@@ -777,57 +777,57 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAl
 			let amt = data.dmg/2 * data.arouseMod + data.distract;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}dp`;
-			KDChangeDistraction(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true, data.arouseAmount);
+			KDChangeDistraction(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt, true, data.arouseAmount);
 		}
 		if (data.distractionTypesWeakNeg.includes(data.type)) {
 			let amt = -data.dmg/2 * data.arouseMod + data.distract;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}dp`;
-			KDChangeDistraction(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true);
+			KDChangeDistraction(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt, true);
 		}
 		if (data.distractionTypesStrong.includes(data.type)) {
 			let amt = data.dmg * data.arouseMod + data.distract;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}dp`;
-			KDChangeDistraction(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true, data.arouseAmount);
+			KDChangeDistraction(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt, true, data.arouseAmount);
 		}
 		if (data.staminaTypesStrong.includes(data.type)) {
 			let amt = -data.dmg;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}sp`;
-			KDChangeStamina(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, false, 0, false, KDGetStamDamageThresh());
+			KDChangeStamina(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt, false, 0, false, KDGetStamDamageThresh());
 		} else if (data.staminaTypesWeak.includes(data.type)) {
 			let amt = -data.dmg/2;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}sp`;
-			KDChangeStamina(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, false, 0, false, KDGetStamDamageThresh());
+			KDChangeStamina(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt, false, 0, false, KDGetStamDamageThresh());
 		}
 		if (data.manaTypesStrong.includes(data.type)) {
 			let amt = -data.dmg;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}mp`;
-			KDChangeMana(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt);
+			KDChangeMana(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt);
 		} else if (data.manaTypesWeak.includes(data.type)) {
 			let amt = -data.dmg/2;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}mp`;
-			KDChangeMana(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt);
+			KDChangeMana(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt);
 		}
 		if (data.willTypesStrong.includes(data.type)) {
 			let amt = -data.dmg;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}wp`;
-			KDChangeWill(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true);
+			KDChangeWill(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt, true);
 		} else if (data.willTypesWeak.includes(data.type)) {
 			let amt = -data.dmg/2;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}wp`;
-			KDChangeWill(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true);
+			KDChangeWill(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt, true);
 		} else if (data.willTypesVeryWeak.includes(data.type)) {
 			let amt = -data.dmg/4;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}wp`;
-			KDChangeWill(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true);
+			KDChangeWill(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt, true);
 		}
 		if (!data.noInterrupt)
 			KinkyDungeonInterruptSleep();

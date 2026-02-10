@@ -12789,9 +12789,10 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				if (((data.chestType == "silver" && KDRandom() < 0.4*chancemult)
 					|| (data.chestType == "chest" && KDRandom() < 0.05*chancemult
 					&& !KinkyDungeonFlags.get("openedMasterwork")))) {
-					if (KDCountMasterworks(KDPlayer()) < 5) {
+					if (KDCountMasterworks(KDPlayer(), true, false) < 5 || KDCountMasterworks(KDPlayer()) < 5) {
 						data.selectedChestPossibilities["MasterworkTrap"] = 40;
-					}
+					} else 
+						data.selectedChestPossibilities["MasterworkTrap"] = 5;
 				}
 			}
 
@@ -13075,7 +13076,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			}
 
 			// Loss of WP specifically from damage
-			if (data.amountChanged < 0 && data.type == "dmg") {
+			if (data.amountChanged < 0 && ( data.src == "dmg" || data.src == "dmgtease")) {
 				const eff = KDGetDamageHealEfficiency(player);
 				if (eff > 0) KDAddDamageWP(player, (-data.amountChanged) * eff);
 				KDClampDamageWP(player);

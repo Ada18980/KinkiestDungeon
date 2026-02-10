@@ -957,11 +957,24 @@ function KDDrawStatusBars(x: number, y: number, width: number = 125) {
 		TextGet("StatWill")
 			.replace("MAX", KinkyDungeonStatWillMax*10 + "").replace("CURRENT", Math.floor(KinkyDungeonStatWill*10) + ""),
 		x + width * barWidthOffset2ndSet, y - 5 + heightPerBar * barHeightOffset2ndSet - 1.5*heightPerBar, 200, KDBaseWhite, KDBaseBlack, 16, "left", undefined, undefined, 4);
-	if (KDEntityBuffedStat(KDPlayer(), "RallyWill", true)) {
+	
+	let DamageWP = KinkyDungeonFlags.get("healEnabled") ? KDEntityBuffedStat(KDPlayer(), "DamageWP", true) : 0;
+	if (DamageWP) {
+		KDDraw(kdcanvas, kdpixisprites, "DamageWP+", KinkyDungeonRootDirectory + "UI/HealWill.png",
+			x - heightPerBar*0.52 + (flip < 0
+				? width * (1 - (KinkyDungeonStatWill + DamageWP)/KinkyDungeonStatWillMax)
+				: width * (KinkyDungeonStatWill + DamageWP)/KinkyDungeonStatWillMax),
+			y + heightPerBar * barHeightOffset2ndSet - heightPerBar*2,
+			undefined, undefined, undefined, {
+				zIndex: 57,
+			});
+	}
+	let rallywill = KDEntityBuffedStat(KDPlayer(), "RallyWill", true);
+	if (rallywill) {
 		KDDraw(kdcanvas, kdpixisprites, "rallywill+", KinkyDungeonRootDirectory + "UI/RallyWill.png",
 			x - heightPerBar*0.52 + (flip < 0
-				? width * (1 - (KinkyDungeonStatWill + KDEntityBuffedStat(KDPlayer(), "RallyWill", true))/KinkyDungeonStatWillMax)
-				: width * (KinkyDungeonStatWill + KDEntityBuffedStat(KDPlayer(), "RallyWill", true))/KinkyDungeonStatWillMax),
+				? width * (1 - (KinkyDungeonStatWill + rallywill + DamageWP)/KinkyDungeonStatWillMax)
+				: width * (KinkyDungeonStatWill + rallywill + DamageWP)/KinkyDungeonStatWillMax),
 			y + heightPerBar * barHeightOffset2ndSet - heightPerBar*2,
 			undefined, undefined, undefined, {
 				zIndex: 57,

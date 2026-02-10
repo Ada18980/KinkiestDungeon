@@ -2423,7 +2423,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "Crackling", effect: effect};
 	},
 	"LightHealDamageWP": (_target, _damage, playerEffect, spell, _faction, _bullet, _entity) => {
-		const player = KinkyDungeonPlayerEntity;
+		const player = _entity?.player ? _entity : KDPlayer();
 		const buff = KDEntityGetBuff(player, "DamageWP");
 		if (!buff || buff.power <= 0) return { sfx: "Shield", effect: false };
 
@@ -2433,9 +2433,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		if (amt > 0) {
 			KDChangeWill("lightheal", "heal", spell?.name || "LightHealDamageWP", amt, false);
-			return { sfx: spell?.sfx || "FireSpell", effect: true };
+			return { sfx: spell?.sfx || "Shield", effect: true };
 		}
-		return { sfx: "Shield", effect: false };
+		return { sfx: "", effect: false };
 	},
 };
 
