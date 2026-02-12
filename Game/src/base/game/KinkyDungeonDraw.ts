@@ -3302,6 +3302,7 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 				padding: 5,
 				wordWrap: Params.wordwrap,
 				wordWrapWidth: Params.Width,
+				breakWords: Params.wordwrap && CharacterCheckerHasCJK(Params.Text) != null
 			}
 		);
 

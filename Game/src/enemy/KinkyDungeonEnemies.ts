@@ -2275,40 +2275,23 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 						let faction = KDGetFaction(enemy);
 						if (faction && (!KinkyDungeonHiddenFactions.has(faction) || KinkyDungeonTooltipFactions.includes(faction))) {
 							let tt = TextGet("KinkyDungeonFaction" + faction);
-							let ttlength = 10;
-							if (CJKcheck(tt,2)){
+
+							if(!CharacterCheckerHasCJK(tt)){
 								DrawTextFitKD(tt, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, 10 + tt.length * 8, KDBaseWhite, "black");
 								yboost += -2*KinkyDungeonGridSizeDisplay/7;
-							} else {
-								let ttCJKcheck1 = CJKcheck(tt,1);
-								let ttCJKcheck2 = CJKcheck(tt);
-
-								if (ttCJKcheck1  &&  typeof (ttCJKcheck1) != 'boolean'){
-									for (const i in ttCJKcheck1){ttlength += ttCJKcheck1[i].length * 8;}
-								}
-								if (ttCJKcheck2  &&  typeof (ttCJKcheck2) != 'boolean'){
-									for (const i in ttCJKcheck2){ttlength += ttCJKcheck2[i].length * 16;}
-								}
-								DrawTextFitKD(tt, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, ttlength, KDBaseWhite, "black");
-								yboost += -3*KinkyDungeonGridSizeDisplay/8;
+							}
+							else{
+								DrawTextFitKD(tt, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, 10 + CharacterCheckerGetLength(tt) * 8, KDBaseWhite, "black");
+							 	yboost += -3*KinkyDungeonGridSizeDisplay/8;
 							}
 						}
 
 						let name = TextGet("Name" + enemy.Enemy.name);
-						let namelength = 10;
-						if (CJKcheck(name,2)){
+						if(!CharacterCheckerHasCJK(name)){
 							DrawTextFitKD(name, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, 10 + name.length * 8, KDBaseWhite, "black");
-						} else {
-							let nameCJKcheck1 = CJKcheck(name,1);
-							let nameCJKcheck2 = CJKcheck(name);
-
-							if (nameCJKcheck1  &&  typeof (nameCJKcheck1) != 'boolean'){
-								for (const i in nameCJKcheck1){namelength += nameCJKcheck1[i].length * 8;}
-							}
-							if (nameCJKcheck2  && typeof (nameCJKcheck2) != 'boolean'){
-								for (const i in nameCJKcheck2){namelength += nameCJKcheck2[i].length * 16;}
-							}
-							DrawTextFitKD(name, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, namelength, KDBaseWhite, "black");
+						}
+						else {
+							DrawTextFitKD(name, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3, 10 + CharacterCheckerGetLength(name) * 8, KDBaseWhite, "black");
 						}
 
 						if (enemy.CustomName) {
@@ -2330,10 +2313,10 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 					color = PIXI.utils.hex2string(rgbcolor);
 					let bgcolor = "#202020";
 
-					let dialougelenth = 30;
 					let xxx = canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2;
 					let yyy = yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - dialogueOffset;
-					if (CJKcheck(enemy.dialogue,2)){
+
+					if (!CharacterCheckerHasCJK(enemy.dialogue)) {
 						DrawTextFitKDTo(kdenemydialoguecanvas, enemy.dialogue,
 							xxx,
 							yyy, 120 + enemy.dialogue.length * 8, color, bgcolor, 18, undefined, 30,
@@ -2341,21 +2324,12 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 								+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]) ?
 								Math.max(KDFloaterGridWipedOutAlpha, (1 - (KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)
 									+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]))) : undefined);
-					} else {
-						let dialougeCJKcheck1 = CJKcheck(enemy.dialogue,1);
-						let dialougeCJKcheck2 = CJKcheck(enemy.dialogue);
-
-						if (dialougeCJKcheck1  &&  typeof (dialougeCJKcheck1) != 'boolean'){
-							for (const i in dialougeCJKcheck1){dialougelenth += dialougeCJKcheck1[i].length * 8;}
-						}
-						if (dialougeCJKcheck2  &&  typeof (dialougeCJKcheck2) != 'boolean'){
-							for (const i in dialougeCJKcheck2){dialougelenth += dialougeCJKcheck2[i].length * 16;}
-						}
-						xxx = canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2;
+					} 
+					else {
 						yyy = yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset;
 						DrawTextFitKDTo(kdenemystatusboard, enemy.dialogue,
 							xxx,
-							yyy, dialougelenth, color, bgcolor, 18, undefined, 30,
+							yyy, 120 + CharacterCheckerGetLength(enemy.dialogue) * 8, color, bgcolor, 18, undefined, 30,
 							(KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)
 								+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]) ?
 								Math.max(KDFloaterGridWipedOutAlpha, (1 - (KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)

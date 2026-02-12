@@ -7283,6 +7283,17 @@ function CJKcheck(text: string, p: number = 0, o: string = "search"): RegExpMatc
 	}
 }
 
+function CharacterCheckerGetLength(text: string): number{
+	return text.length + CharacterCheckerMatchCJK(text).length;
+}
+function CharacterCheckerMatchCJK(text: string): string[] {
+	return text.match(/[\u3000-\u9fff\ue000-\uf8ff\uff01-\uffdc\uac00-\ud7af]/g) || [];
+}
+
+function CharacterCheckerHasCJK(text: string): boolean{
+	return (/[\u3000-\u9fff\ue000-\uf8ff\uff01-\uffdc\uac00-\ud7af]+/g).test(text);
+}
+
 function KinkyDungeonGetCanvas(id: string): HTMLCanvasElement {
 	const canvas = document.getElementById(id);
 	if (!(canvas instanceof HTMLCanvasElement)) throw new Error(`Not a canvas element: ${canvas.id}`);
