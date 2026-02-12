@@ -12922,7 +12922,7 @@ Ars烟火
 - Healing Light
 治愈之光
 - Channel to heal 15 hitpoints per turn to yourself and summoned allies within a 5x5 area.\n\nOnly willpower lost from non-tease damage on yourself can be healed.
-为 5x5 区域内的召唤盟友回复 15HP ( 不包括你自己 )
+持续咏唱几回合，每回合为 5x5 范围内的盟友和自己恢复 15 点意志力。\n\n无法恢复因挑逗损失的意志力。
 - You conjure a healing light!
 你召唤出治愈之光！
 
@@ -14042,7 +14042,7 @@ Ars烟火
 - Select which creature to heal
 选择要治疗的生物
 - Restore 45 hitpoints to an allied creature or yourself.\n\nOnly willpower lost from non-tease damage on yourself can be healed.
-为一个友方生物恢复 45 点生命值 ( 不包括你自己 ) 。
+恢复自己或盟友 45 点意志力。\n\n无法恢复因挑逗损失的意志力。
 - You utter a word of healing.
 你咏唱治愈的咒语。
 
@@ -25952,7 +25952,8 @@ FOODMSG| ( 它邀请你分享它的美食 )
 （桌子被固定在地上）
 - (Despite your best efforts, the table goes nowhere)
 （你费尽力气，但桌子纹丝不动）
-# - (Try to flip the table)
+- (Try to flip the table)
+（尝试掀翻桌子）
 - (The table looks remarkably flippable)
 ( 这桌子看上去很容易掀翻 )
 - (You knock over the table!)
