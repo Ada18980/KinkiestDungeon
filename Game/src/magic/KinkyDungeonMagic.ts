@@ -1641,8 +1641,7 @@ function KinkyDungeonTestWhite(x: string, language: string): boolean {
 		return white.test(x.charAt(0));
 	}
 	if (language == "CJKP") {
-		/*  'test' option returns a boolean.  */
-		return CJKcheck(x.charAt(0),3,"test") as boolean;
+		return CharacterCheckerHasCJK(x.charAt(0)) as boolean;
 	}
 	if (language == "Num") {
 		let white = new RegExp(/^[0-9.]$/);
