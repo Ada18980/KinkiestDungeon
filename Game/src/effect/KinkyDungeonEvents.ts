@@ -8454,10 +8454,8 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 		"CastSpell": (e, _weapon, data) => {
 			if (data.enemy && !data.disarm && !KDHelpless(data.enemy)) {
 				let spell = KinkyDungeonFindSpell(e.spell, true);
-				KinkyDungeonCastSpell(data.enemy.x, data.enemy.y, spell, {
-					x: KinkyDungeonPlayerEntity.x,
-					y: KinkyDungeonPlayerEntity.y
-				}, { x: data.enemy.x, y: data.enemy.y }, undefined);
+				KinkyDungeonCastSpell(data.enemy.x, data.enemy.y, spell, undefined, 
+					{ x: data.enemy.x, y: data.enemy.y }, undefined);
 				if (e.energyCost) KDChangeCharge(_weapon.name, "weapon", "attack", - e.energyCost);
 			}
 		},

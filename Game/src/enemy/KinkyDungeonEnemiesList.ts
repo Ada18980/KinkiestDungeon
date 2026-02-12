@@ -5563,7 +5563,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 15, weight: 14, noSummon: true}, {name: "RopeRune", weight: 1, noSummon: true}]},
 
-	{name: "WitchShibari", nameList: "witch", outfit: "Bikini", style: "Earth", color: "#ffae70", faction: "Witch", clusterWith: "apprentice", bound: "WitchRope", playLine: "Witch", tags: KDMapInit(["leashing", "mage", "guardCall", "jail", "rope", "jailer", "imprisonable", "opendoors", "ropeRestraints", "closedoors", "human", "witch", "ranged", "miniboss", "hunter"]), followRange: 2,
+	{name: "WitchShibari", nameList: "witch", outfit: "Bikini", style: "Earth", color: "#ffae70", faction: "Witch", clusterWith: "apprentice", bound: "WitchRope",
+		playLine: "Witch", tags: KDMapInit(["leashing", "mage", "guardCall", "jail", "rope", "jailer", "imprisonable", "opendoors", "ropeRestraints", "closedoors", "human", "witch", "ranged", "miniboss", "hunter"]), followRange: 2,
 		castWhileMoving: true, spells: ["WitchRopeBoltLaunchMany", "EnemyEnchantRope2", "RopeEngulfWeak", "EnemyCM1"], unlockCommandLevel: 2, unlockCommandCD: 20, stopToCast: true, spellRdy: true, kite: 2.5, kiteChance: 0.9,
 		spellCooldownMult: 0.7, spellCooldownMod: 0, AI: "hunt", guardChance: 0.2, visionRadius: 7, maxhp: 12, minLevel:2, weight:1, movePoints: 2.2, attackPoints: 2, attack: "EffectSpellMeleeBind", attackWidth: 2.5, attackRange: 1, power: 3, dmgType: "charm", fullBoundBonus: 3,
 		terrainTags: {"secondhalf":0, "lastthird":1.5, "increasingWeight": -1, "ropeAnger": 8, "tech": -1, "rope": 4}, allFloors: true, shrines: ["Rope"], followLeashedOnly: true,
