@@ -760,13 +760,12 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			}
 
 
-		} else if (en && KDCanBind(en) && KDHelpless(en) && !en.Enemy.nonHumanoid) {
+		} else if (en && KDCanBind(en) && KDHelpless(en) && !en.Enemy.nonHumanoid && !KDIsImprisoned(en)) {
 			// Summon a pet
 			let Enemy = KinkyDungeonGetEnemyByName("PetDisplay");
 			if (Enemy) {
 				if (_miscast) return "Miscast";
-				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-
+				
 				// Deal 0 damage to aggro
 				KinkyDungeonDamageEnemy(en, {
 					type: "chain",
@@ -788,11 +787,16 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					movePoints: 0,
 					attackPoints: 0
 				};
-				KDAddEntity(doll);
+				if (KDAddEntity(doll)) {
+					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 
-				KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
-				KDChangeCharge(spell.name, "spell", "cast", 0.05);
-				return "Cast";
+					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
+					KDChangeCharge(spell.name, "spell", "cast", 0.05);
+					return "Cast";
+				}
+				
+
+				
 			}
 			return "Fail";
 		} else return "Fail";
