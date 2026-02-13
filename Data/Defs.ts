@@ -912,7 +912,31 @@ let LayerGroups = {
 		"WrappingLegsRight",
 		"WrappingLegsUnder",
 
+
 	]),
+	"LegbinderRight": ToMap([
+		"FootLeft",
+		"FootRightKneel",
+		"StockingLeftKneel", "StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
+		"FootLeft",
+		"LegLeft",
+		"FootRight",
+		"StockingRight",
+		"FootRight",
+		"LegRight",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
+		"ShoeLeft",
+		"ShoeRight",
+		"WrappingLegsUnder",
+		"WrappingLegsRight",
+		"WrappingLegs",
+
+
+	]),
+
+	
 	"BalletHeelRight": ToMap([
 		"FootLeft",
 		"FootRightKneel",

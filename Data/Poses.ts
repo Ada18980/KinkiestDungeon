@@ -629,6 +629,11 @@ function KDRefreshPoseOptions(Character: Character) {
 		KDCurrentModels.get(Character).TempPoses.Menu = true;
 		KDCurrentModels.get(Character).Poses.Menu = true;
 	}
+	if (KinkyDungeonStatsChoice.get("NoPrisonerMarkings")) {
+		KDCurrentModels.get(Character).TempPoses.NoPrisonerMarkings = true;
+		KDCurrentModels.get(Character).Poses.NoPrisonerMarkings = true;
+	}
+	
 	if (KDToggles.ChastityOption2) {
 		KDCurrentModels.get(Character).TempPoses.ChastityOption2 = true;
 		KDCurrentModels.get(Character).Poses.ChastityOption2 = true;

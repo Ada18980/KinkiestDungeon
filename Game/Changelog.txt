@@ -54,7 +54,8 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 5.4.90
 - Fixed Dragonslaver not casting its onhit spell properly
-- 
+- Added consent option for Prisoner Text on restraints
+- Added some text fixes for CN, JP, and KR languages for word wrap to work properly - Thanks Mitki!
 
 5.4.89
 - Heal now allows you to restore willpower taken from damage - thanks Nightself!

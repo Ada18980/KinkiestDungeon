@@ -428,6 +428,21 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "Ballsuit"),
             tooltip: TextGet("KDConsentListDesc_" + "Ballsuit"),
     },
+    PrisonerMarkings: {
+            name: "PrisonerMarkings",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "NoPrisonerMarkings",
+            perkYellow: "",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "PrisonerMarkings"),
+            tooltip: TextGet("KDConsentListDesc_" + "PrisonerMarkings"),
+    },
     ConsentIngame: {
             name: "ConsentIngame",
             color: KDBaseWhite,
