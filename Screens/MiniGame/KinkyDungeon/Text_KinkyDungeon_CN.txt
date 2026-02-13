@@ -362,7 +362,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Override Outfit
 覆盖服装
 - Load Consent from Save
-从存档加载性同意设置
+从存档加载内容设置
 - Save Outfits within Save Files
 将服装数据附加到存档内
 - Show free characters on map
@@ -2240,7 +2240,7 @@ Devious Dungeon Challenge 已启用。
 - Game Options
 游戏选项
 - Consent Options
-同意设置
+内容设置
 
 
 - Load from code
@@ -46418,7 +46418,7 @@ RestraintName 失效了！
 - Challenge Settings
 挑战设置
 - Consent Settings
-同意设置
+内容设置
 
 
 - Select an item to unlock using a Command Word
@@ -46439,13 +46439,13 @@ RestraintName 失效了！
 - Challenge Settings:
 挑战设置 : ‎
 - Checked content will appear at the normal ingame rate.
-已检查的内容将按游戏内常规频率显示。
+打勾的内容在游戏内以正常频率出现。
 - Red content (x) is removed from the game
-红色内容（x）已从游戏中移除
+红色内容（x）将从游戏中移除
 - Yellow content (-) occurs significantly less often
 黄色内容（-）出现的频率显著降低
 - Green content (+) will appear more often!
-绿色内容（+）将更频繁地出现
+绿色内容（+）出现的频率显著提高
 - Due to game limitations, not all types of content can be fully blocked.
 由于游戏限制，并非所有类型的内容都能被完全屏蔽。
 
@@ -46468,20 +46468,24 @@ RestraintName 失效了！
 Kigurumi面具
 - Encasement
 包裹
-# :: KDConsentItem_Encasement
+:: KDConsentItem_Encasement
+全包
 # :: KDBindNPCSlot_ArmEncase
 # :: KDBindNPCSlot_HandEncase
 # :: KDBindNPCSlot_LegEncase
 # :: KDBindNPCSlot_FeetEncase
 # :: KDBindNPCSlot_BootsEncase
-# - Tape Bondage
-# - Tickling
+- Tape Bondage
+胶带束缚
+- Tickling
+挠痒
 - Bubbles
 泡泡
 # - Ball Suits
 - Blindfolds
 眼罩
-# - Yokes and Spreaders
+- Yokes and Spreaders
+枷锁和分腿器
 - Straitjackets
 拘束衣
 - Petsuits
@@ -46489,7 +46493,8 @@ Kigurumi面具
 # - Hoods
 # - Full-face Masks
 # - Earplugs
-# - Painful Shocks
+- Painful Shocks
+剧烈电击
 - Sensory Deprivation
 感官剥夺
 # - Brats
@@ -46505,7 +46510,7 @@ Kigurumi面具
 - |||This item is marked as Red, which prevents it from appearing in the game.
 |||这种物品被标红，不会出现。
 - |||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention.
-|||这种物品被标黄，出现的更少。
+|||这种物品被标黄，出现的更少，但不会完全移除。
 - |||This item is marked as Green, which will make it appear more often.
 ||这种物品被标绿，出现的更多。
 - |||This item will appear ingame as normal.
@@ -46515,38 +46520,45 @@ Kigurumi面具
 
 # - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
 - Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead.
-允许“隐形”系列拘束具||如果被标红，这些拘束具会被替换为“舒适”系列。
+允许部分幽灵对你施加隐形束缚。尽管看不见实体，但它们依然能牢牢困住你。||如果被标红，这些拘束具会被替换为舒适的灵体束缚。
 - Allows chastity bras to be forced onto the player character, which prevent access to nipples and lock toys in.||If marked as yellow, chastity bras will not appear unless the player is wearing nipple toys.
-允许贞操文胸。||如果被标黄，贞操文胸就只会在玩家带了乳头玩具的情况下出现。
+允许贞操文胸。||如果被标黄，贞操文胸就只会在玩家佩戴了乳头玩具的情况下出现。
 - Allows chastity belts to be forced onto the player character, which prevent access to the lower regions and lock toys in.||If marked as yellow, chastity belts will not appear unless the player is wearing toys or plugs on the lower body.
-允许贞操带。||如果被标黄，贞操带就只会在玩家带了玩具或塞子的情况下出现。
-# - Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them.
+允许贞操带。||如果被标黄，贞操带就只会在玩家下半身佩戴了玩具或塞子的情况下出现。
+- Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them.
+顺从倾向的NPC有时会在无敌意的情况下“逃跑”，借此引诱玩家去抓住并惩罚她们。
 - Allows plugs to be inserted into the front slot of your character.
 允许阴塞。
 - Allows plugs to be inserted into the rear slot of your character.
 允许肛塞。
-# - Does not place points where enemies will drop you off to become dollified in the factory level.
+- Does not place points where enemies will drop you off to become dollified in the factory level.
+工厂关卡中敌人不再将玩家送至进行玩偶化改造的投放点。
 # - Being captured by dress-up co will not result in getting placed on a doll stand and put on display in the shop.
 # - Affects the 'Deputy' enemy and any other police-related enemy types, but not bounty hunters.
 # - Affects the 'Nurse' enemy and any other medical-related enemy types.
-# - Affects the spawn rate of slimes and latex witches.
+- Affects the spawn rate of slimes and latex witches.
+影响史莱姆和乳胶魔女的出现频率。
 # :: KDConsentItemTooltip_Slime
 # :: KDConsentItemTooltip_Encasement
 - Affects full masks that imitate a face, which can be unsettling to some.
 影响全覆盖面罩。
-# - Affects the spawn rate of tape drones and other enemies that use tape to restrain the player.
-# - Includes tickling by NPC attacks and tickle torture scenarios.||If marked as Yellow, spells and weapons that deal tickle damage to the player will deal Plush damage instead. Player attacks will still deal tickle damage.
-# - Includes bubble restraints, both water and slime-based, but does not affect rubber ball suits or latex spheres.
+- Affects the spawn rate of tape drones and other enemies that use tape to restrain the player.
+影响胶带无人机及其他使用胶带束缚玩家的敌人的出现频率。
+- Includes tickling by NPC attacks and tickle torture scenarios.||If marked as Yellow, spells and weapons that deal tickle damage to the player will deal Plush damage instead. Player attacks will still deal tickle damage.
+包含来自NPC的挠痒攻击及折磨场景。||如果被标黄，针对玩家造成搔痒伤害的法术与武器将转为造成毛绒伤害。玩家造成的伤害仍维持为搔痒伤害。
+- Includes bubble restraints, both water and slime-based, but does not affect rubber ball suits or latex spheres.
+包含水或史莱姆材质的气泡束缚，但不影响橡胶球衣或乳胶球。
 # - Includes ball suits and inflatable latex spheres that restrain the player.
 - Affects the frequency of blindfolds, but not hoods or masks that cover the upper face.
 影响眼罩出现的频率，不影响面罩。
-# - Affects the frequency of metal yokes, fiddles, and spreader bars.
+- Affects the frequency of metal yokes, fiddles, and spreader bars.
+影响金属项枷、提琴枷及分腿器的出现频率。
 - Affects the frequency of armbinders that force the elbows close together.
-影响单手套出现的频率。
+影响能使肘部紧密靠拢的单手套出现频率。
 - Affects the frequency of boxbinders that force the arms behind the back.
-影响盒式单手套出现的频率。
+影响能使手臂反绑并固定在身后的盒式单手套出现频率。
 - Affects the frequency of straitjackets.
-影响拘束衣出现的频率。
+影响拘束衣出现频率。
 - Affects the frequency of pet crawlers that force the player to crawl on their knees and elbows.
 影响宠物服出现的频率。
 # - Includes hoods that cover the hair. Does not remove masks that cover the face without affecting hair.
@@ -46554,7 +46566,7 @@ Kigurumi面具
 # - The Sensory Deprivation Hood is a highly restrictive item that deafens the player in addition to blocking most vision.
 # - Earplugs reduce the player's hearing.
 - Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
-用电刺激代替电击伤害，造成快感而非痛苦。
+将针对玩家的大部分“电击”伤害替换为“电刺激”伤害，造成快感而非痛苦。
 
 - Palette
 调色板
