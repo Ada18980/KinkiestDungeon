@@ -72,11 +72,6 @@ let LAYERS_BASE = [
 	"BindForeArmLeft",
 	"BindForeArmRight",
 
-	"BindCrossElbowLeft",
-	"BindForeElbowLeft",
-	
-	"BindCrossElbowRight",
-	"BindForeElbowRight",
 
 	"ForeWrists",
 	"SleevesFront",
@@ -492,6 +487,14 @@ let LAYERS_BASE = [
 
 	"BindElbowLeft",
 	"BindHandLeft",
+
+
+
+	"BindCrossElbowLeft",
+	"BindForeElbowLeft",
+	
+	"BindCrossElbowRight",
+	"BindForeElbowRight",
 
 	"BindWristLeft",
 	"LowerArmBondageLeft",

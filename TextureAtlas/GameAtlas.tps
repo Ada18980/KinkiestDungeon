@@ -4132,6 +4132,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/Particles/Heart.png</key>
+            <key type="filename">../Game/UI/HealWill.png</key>
             <key type="filename">../Game/UI/Heart.png</key>
             <key type="filename">../Game/UI/HeartExtreme.png</key>
             <key type="filename">../Game/UI/RallyWill.png</key>

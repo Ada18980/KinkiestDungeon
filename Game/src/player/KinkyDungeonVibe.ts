@@ -189,6 +189,7 @@ let KDToggles = {
 
 
 let KDToggleCategories = {
+	OverrideConsent: "none",
 	FlashingWarning: "UI",
 	StruggleContext: "UI",
 	Headpats: "Clothes",
