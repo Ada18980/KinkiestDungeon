@@ -9721,22 +9721,34 @@ RestraintName 上的诅咒解除了！
 
 
 
-# - Heavy Sleepsack Bottom
-# - A heavy sleepsack legbinder, designed to keep a subject comfortable yet immobilized.
-# - Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside.
+- Heavy Sleepsack Bottom
+重型拘束睡袋下装
+- A heavy sleepsack legbinder, designed to keep a subject comfortable yet immobilized.
+一款重型睡袋式束腿套，旨在让受试者保持舒适的同时无法动弹。
+- Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside.
+由厚帆布制成，并辅以皮带加固。一旦置身其中，即使是最强壮的穿戴者也将感到束手无策。
 # :: RestraintSleepsackLegbinderDesc2
 # :: RestraintSleepsackJacketDesc2
 # :: RestraintSleepsackBoxbinderDesc2
 # :: RestraintSleepsackArmbinderDesc2
-# - Heavy Sleepsack Jacket
-# - A heavy sleepsack jacket, designed to keep a subject comfortable yet helpless.
-# - Heavy Sleepsack Boxbinder
-# - A heavy sleepsack boxbinder, designed to keep a subject comfortable yet helpless.
-# - Heavy Sleepsack Armbinder
-# - A heavy sleepsack armbinder, designed to keep a subject comfortable yet helpless.
-# - Heavy Sleepsack Cables
-# - Heavy duty leather straps designed to hold a sleepsack-wearing subject off the ground.
-# - They are thick leather straps with lockable buckles.
+- Heavy Sleepsack Jacket
+重型拘束睡袋拘束衣
+- A heavy sleepsack jacket, designed to keep a subject comfortable yet helpless.
+一款重型睡袋式拘束衣，旨在让受试者保持舒适的同时处于无助状态。
+- Heavy Sleepsack Boxbinder
+重型拘束睡袋盒式束手套
+- A heavy sleepsack boxbinder, designed to keep a subject comfortable yet helpless.
+一款重型睡袋式盒式束手套，旨在让受试者保持舒适的同时处于无助状态。
+- Heavy Sleepsack Armbinder
+重型拘束睡袋单手套
+- A heavy sleepsack armbinder, designed to keep a subject comfortable yet helpless.
+重型拘束睡袋单手套，旨在让受试者保持舒适的同时处于无助状态。
+- Heavy Sleepsack Cables
+重型拘束睡袋吊索
+- Heavy duty leather straps designed to hold a sleepsack-wearing subject off the ground.
+重型皮革吊带，用于将身着睡袋的受试者悬吊至半空。
+- They are thick leather straps with lockable buckles.
+这些是带有可锁定扣环的厚实皮革带。
 
 
 - Asylum Ankle Cuffs
@@ -10173,28 +10185,28 @@ RestraintName 上的诅咒解除了！
 - Suspicious Mask
 可疑的面具
 - A well-fitted mask, covering your entire head neatly and locking in place.
-一款合身的面罩，整齐地覆盖你的整个头部并锁定到位。
+一款严丝合缝的头壳，能完美包裹并牢牢锁住你的整个头部。
 - It has eyeholes for you to somewhat see out of, but blocks access to the face.
-它有眼孔供你向外看，但挡住了接触脸部的通道。
+它留有眼孔供你勉强看清外界，但却完全阻隔了对脸部的触碰。
 # :: RestraintKiguMaskDesc
 # :: RestraintKiguMaskSmileDesc
 
 - Happy Face
-笑脸
+欢愉之面
 - Just put on a happy face and enjoy it.
-戴上笑脸，享受生活。
+戴上这副笑脸，沉溺于这份快乐吧。
 
 - Sensory Hood
-感官丧失头罩
+感官剥夺头套
 - A well-fitted hood that covers your head and muffles sounds.
-一个合身的头罩，可以遮住你的脸并掩盖声音。
+一个合身的头套，可以遮住你的脸并掩盖声音。
 - No eyeholes. Integrated blindfold and gag. Total darkness. Metallic studs make cutting it off more difficult.
 没有任何洞孔。集成眼罩和口塞。完全黑暗。金属饰钮让它很难切割。
 # :: RestraintLeatherHoodDesc
 # :: RestraintLeatherMaskDesc
 
 - Sensory Mask
-感官丧失面具
+感官剥夺面具
 - A well-fitted mask that covers your face and muffles sounds.
 一个合身的面具，可以遮住你的脸并掩盖声音。
 
@@ -29575,7 +29587,7 @@ Dask眼
 :: m_Robes_l_RibbonFarBack
 腰封背后(后层)
 - KiguMask
-kigurumi面具
+kigurumi头壳
 - Mask
 面具
 # :: m_KiguMask_l_Mask
@@ -35626,7 +35638,7 @@ Aura刘海(右后)
 :: m_ChainSkirtRestraint_l_Skirt2
 链甲前裙
 - FashionKiguMask
-装饰性Kig面具
+装饰性Kig头壳
 - SwimsuitUnder
 校园泳衣(打底)
 - BunnyLeotardUnder
@@ -46453,9 +46465,9 @@ RestraintName 失效了！
 黄色
 
 - Front Plugs
-阴塞
+前庭玩具
 - Rear Plugs
-肛塞
+后庭玩具
 - Cyber Dollification
 赛博玩偶化
 - Elegant Dollification
@@ -46465,7 +46477,7 @@ RestraintName 失效了！
 - Nurses/Doctors
 护士/医生
 - Kigurumi Masks
-Kigurumi面具
+Kigurumi头壳
 - Encasement
 包裹
 :: KDConsentItem_Encasement
@@ -46481,7 +46493,8 @@ Kigurumi面具
 挠痒
 - Bubbles
 泡泡
-# - Ball Suits
+- Ball Suits
+球形束缚
 - Blindfolds
 眼罩
 - Yokes and Spreaders
@@ -46490,8 +46503,10 @@ Kigurumi面具
 拘束衣
 - Petsuits
 宠物服
-# - Hoods
-# - Full-face Masks
+- Hoods
+头套
+- Full-face Masks
+全脸面罩
 # - Earplugs
 - Painful Shocks
 剧烈电击
@@ -46502,10 +46517,14 @@ Kigurumi面具
 强制贞操文胸
 - Forced Chastity Belts
 强制贞操带
-# - Allow Menu Ingame
+- Allow Menu Ingame
+开启游戏内菜单
 
+# - Prisoner Text
 - Invisible Restraints
 隐形拘束具
+
+
 
 - |||This item is marked as Red, which prevents it from appearing in the game.
 |||这种物品被标红，不会出现。
@@ -46518,39 +46537,44 @@ Kigurumi面具
 
 # - Menu Locked
 
-# - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
+- Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
+允许在游戏过程中使用此菜单（包括“安全词”按钮）。如果你不希望在开始游戏后还能进入此界面修改规则，请将其标红。此选项不会随存档读取而改变。
 - Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead.
 允许部分幽灵对你施加隐形束缚。尽管看不见实体，但它们依然能牢牢困住你。||如果被标红，这些拘束具会被替换为舒适的灵体束缚。
+# - Allows some restraints to display text such as 'Prisoner' or 'Inmate.'
 - Allows chastity bras to be forced onto the player character, which prevent access to nipples and lock toys in.||If marked as yellow, chastity bras will not appear unless the player is wearing nipple toys.
-允许贞操文胸。||如果被标黄，贞操文胸就只会在玩家佩戴了乳头玩具的情况下出现。
+允许强制玩家装备贞操文胸，使玩家无法接触乳头，并将玩具锁在其中。||如果被标黄，贞操文胸就只会在玩家已装备乳头玩具的情况下出现。
 - Allows chastity belts to be forced onto the player character, which prevent access to the lower regions and lock toys in.||If marked as yellow, chastity belts will not appear unless the player is wearing toys or plugs on the lower body.
-允许贞操带。||如果被标黄，贞操带就只会在玩家下半身佩戴了玩具或塞子的情况下出现。
+允许强制玩家装备贞操带，使玩家无法接触私处，并将玩具锁在其中。||如果被标黄，贞操带就只会在玩家下半身佩戴了玩具或塞子的情况下出现。
 - Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them.
 顺从倾向的NPC有时会在无敌意的情况下“逃跑”，借此引诱玩家去抓住并惩罚她们。
 - Allows plugs to be inserted into the front slot of your character.
-允许阴塞。
+允许将玩具插入玩家角色的前庭。
 - Allows plugs to be inserted into the rear slot of your character.
-允许肛塞。
+允许将玩具插入玩家角色的后庭。
 - Does not place points where enemies will drop you off to become dollified in the factory level.
 工厂关卡中敌人不再将玩家送至进行玩偶化改造的投放点。
 # - Being captured by dress-up co will not result in getting placed on a doll stand and put on display in the shop.
-# - Affects the 'Deputy' enemy and any other police-related enemy types, but not bounty hunters.
-# - Affects the 'Nurse' enemy and any other medical-related enemy types.
+- Affects the 'Deputy' enemy and any other police-related enemy types, but not bounty hunters.
+影响“副警长”及其他警察相关类型的敌人，但不包括赏金猎人。
+- Affects the 'Nurse' enemy and any other medical-related enemy types.
+影响“护士”及其他医疗相关类型的敌人。
 - Affects the spawn rate of slimes and latex witches.
 影响史莱姆和乳胶魔女的出现频率。
 # :: KDConsentItemTooltip_Slime
 # :: KDConsentItemTooltip_Encasement
 - Affects full masks that imitate a face, which can be unsettling to some.
-影响全覆盖面罩。
+影响模拟人脸的全头式头壳的出现频率，其外观对部分玩家来说可能显得惊悚。
 - Affects the spawn rate of tape drones and other enemies that use tape to restrain the player.
 影响胶带无人机及其他使用胶带束缚玩家的敌人的出现频率。
 - Includes tickling by NPC attacks and tickle torture scenarios.||If marked as Yellow, spells and weapons that deal tickle damage to the player will deal Plush damage instead. Player attacks will still deal tickle damage.
 包含来自NPC的挠痒攻击及折磨场景。||如果被标黄，针对玩家造成搔痒伤害的法术与武器将转为造成毛绒伤害。玩家造成的伤害仍维持为搔痒伤害。
 - Includes bubble restraints, both water and slime-based, but does not affect rubber ball suits or latex spheres.
 包含水或史莱姆材质的气泡束缚，但不影响橡胶球衣或乳胶球。
-# - Includes ball suits and inflatable latex spheres that restrain the player.
+- Includes ball suits and inflatable latex spheres that restrain the player.
+包含将玩家束缚其中的球形拘束服以及充气乳胶球。
 - Affects the frequency of blindfolds, but not hoods or masks that cover the upper face.
-影响眼罩出现的频率，不影响面罩。
+影响眼罩的出现频率，但不包括头套或覆盖上半脸的面罩。
 - Affects the frequency of metal yokes, fiddles, and spreader bars.
 影响金属项枷、提琴枷及分腿器的出现频率。
 - Affects the frequency of armbinders that force the elbows close together.
@@ -46560,10 +46584,13 @@ Kigurumi面具
 - Affects the frequency of straitjackets.
 影响拘束衣出现频率。
 - Affects the frequency of pet crawlers that force the player to crawl on their knees and elbows.
-影响宠物服出现的频率。
-# - Includes hoods that cover the hair. Does not remove masks that cover the face without affecting hair.
-# - Includes force-equipped masks that cover the entire face. This includes encasement, such as from slimes, although does not parts that cover the bottom half of the face as a gag.
-# - The Sensory Deprivation Hood is a highly restrictive item that deafens the player in addition to blocking most vision.
+影响宠物服出现的频率，该装备会强制玩家用手肘和膝盖爬行。
+- Includes hoods that cover the hair. Does not remove masks that cover the face without affecting hair.
+包含覆盖头发的头套。不会移除仅遮盖脸部而不影响头发的面具或头壳。
+- Includes force-equipped masks that cover the entire face. This includes encasement, such as from slimes, although does not parts that cover the bottom half of the face as a gag.
+包含强制装备且覆盖整个脸部的面罩。这包括史莱姆等造成的包裹效果，但不包括仅作为口塞覆盖下半张脸的装备。
+- The Sensory Deprivation Hood is a highly restrictive item that deafens the player in addition to blocking most vision.
+感官剥夺头套是一件高度拘束类装备，它不仅会阻挡玩家绝大部分视野，还会阻断玩家听觉。
 # - Earplugs reduce the player's hearing.
 - Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
 将针对玩家的大部分“电击”伤害替换为“电刺激”伤害，造成快感而非痛苦。
