@@ -15462,7 +15462,8 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 幽灵会帮助你挣扎和使用物品
 - The ghost is unhelpful
 幽灵不想帮你
-# - Negotiate
+- Negotiate
+交涉
 
 - Angel: Greetings!
 天使 : ‎你好！
@@ -21971,7 +21972,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (Nod enthusiastically)
 ( 热情点头 )
 - (Shake your head)
-( 摇头 )
+（摇头）
 # :: dOfferDress_NoGag
 # :: dOfferDressYes_NoGag
 # :: dOfferKigu_NoGag
@@ -22439,7 +22440,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - Sounds good!
 听起来不错！
 - (Nod quickly)
-( 连忙点头 )
+（连忙点头）
 # :: dOfferScarf_YesGag
 # :: dOfferWolfRestraintYes_YesGag
 # :: dOfferKittyYes_YesGag
@@ -24462,34 +24463,50 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 你旁边没有有效空间！
 
 
-# - (The ghost giggles at your predicament)|Looks like you need a bit of help~|Personally, I love to see cute girls tied up, but I'd be willing|to compromise if you can devise another way to entertain me.|Let's make a deal, shall we?
-# - (The ghost smiles, her pleasant expression betraying a...)|(...sinister tone)|I'd love to~|I get to tie you as I please until you advance a floor.|How's that sound?
-# - (The ghost grins)|Hmm, perhaps I could tie that adorable body of yours|some other time~|Just until you advance a floor~.|How's that sound?
-# - (The ghost giggles)|Oh I like this one~|I shall pleasure you as I wish until you advance a floor.|How's that sound?
-# - (The ghost chuckles)|Mhmm... you're cute~|Perhaps I should go... within you and give you pleasure as I will~|Just until you advance a floor~.|How's that sound?
+- (The ghost giggles at your predicament)|Looks like you need a bit of help~|Personally, I love to see cute girls tied up, but I'd be willing|to compromise if you can devise another way to entertain me.|Let's make a deal, shall we?
+（看到你受捆，幽灵笑了）|看起来你需要一点点帮助~|我喜欢看美少女被捆起来，但如果你能换个花样取悦我，我们可以交涉一下。|做个交易怎么样？
+- (The ghost smiles, her pleasant expression betraying a...)|(...sinister tone)|I'd love to~|I get to tie you as I please until you advance a floor.|How's that sound?
+（幽灵微笑着，用阴险的语调说着）|我很乐意~|在你通过楼层时，我要把你捆到我高兴为止。|怎么样？
+- (The ghost grins)|Hmm, perhaps I could tie that adorable body of yours|some other time~|Just until you advance a floor~.|How's that sound?
+（幽灵笑了）|嗯，我想捆绑你的娇躯|但不是现在~|而是在你通过楼层的时候~|怎么样？
+- (The ghost giggles)|Oh I like this one~|I shall pleasure you as I wish until you advance a floor.|How's that sound?
+（幽灵笑了）|哦，我喜欢这样~|在你通过楼层的时候，我将随心所欲地束缚你。|怎么样？
+- (The ghost chuckles)|Mhmm... you're cute~|Perhaps I should go... within you and give you pleasure as I will~|Just until you advance a floor~.|How's that sound?
+（幽灵笑了）|哦，你好可爱~|也许我该……进入你的身体，尽情给予你快感~|在你通过楼层的时候~|怎么样？
 
-# - (The ghost smiles)|Whatever you want, dear~
+- (The ghost smiles)|Whatever you want, dear~
+（幽灵微笑）|行吧，亲爱的~
 # :: rGhostNegotiatePossessPleasure_Cancel
 # :: rGhostNegotiatePossess_Cancel
 
 
-# - Perhaps you could tie me up later?
-# - (Offer up your body)
-# - Why don't you... pleasure me at your leisure?
-# - (Wiggle and moan seductively)
+- Perhaps you could tie me up later?
+待会儿你能把我绑起来吗？
+- (Offer up your body)
+（交出你的身体）
+- Why don't you... pleasure me at your leisure?
+不如……你来慢慢享用我，让我快乐一下？
+- (Wiggle and moan seductively)
+（妩媚地扭动并呻吟）
 
-# - I've already made some deals...
-# - (Leave, as you are already under several deals)
+- I've already made some deals...
+我已经和别人有约了……
+- (Leave, as you are already under several deals)
+（离开，因为你已经做了几个交易了）
 
-# - I accept your terms.
+- I accept your terms.
+我接受。
 # :: dGhostNegotiatePossess_Confirm
 # :: dGhostNegotiatePossessPleasure_Confirm
-# - Not for me.
+- Not for me.
+不要
 # :: dGhostNegotiatePossess_Cancel
 # :: dGhostNegotiatePossessPleasure_Cancel
 
-# - You've made a deal... your freedom now in exchange for your freedom later...
-# - You've made a deal, which lurks deep inside you~
+- You've made a deal... your freedom now in exchange for your freedom later...
+你和幽灵做了交易……用未来的自由换取当下的自由……
+- You've made a deal, which lurks deep inside you~
+你与幽灵的契约，深深潜伏在了你的体内~
 
 
 
@@ -43801,9 +43818,12 @@ Kjus眼5
 现在，一个顽皮的幽灵将陪伴你踏上旅程。
 - The ghost haunting you decides to have a little fun! (+RestraintAdded)
 困扰你的幽灵决定找点乐子！ ( +RestraintAdded )
-# - The ghost you made a deal with decides to have a little fun! (+RestraintAdded)
-# - The ghost you made a deal with decides to snap a ${LockType} lock to your ${Restraint}
-# - The ghost you made a deal with decides to have a little fun with you!
+- The ghost you made a deal with decides to have a little fun! (+RestraintAdded)
+与你做过交易的幽灵决定找点乐子！（+RestraintAdded）
+- The ghost you made a deal with decides to snap a ${LockType} lock to your ${Restraint}
+与你做过交易的幽灵用 ${LockType} 锁住了你的 ${Restraint}
+- The ghost you made a deal with decides to have a little fun with you!
+与你做过交易的幽灵想和你做些愉悦的事情！
 
 - Hemp Rope
 麻绳
