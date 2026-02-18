@@ -2081,13 +2081,13 @@ Devious Dungeon Challenge 已启用。
 - DP: PERCENT%
 性奋值 : ‎PERCENT%
 - DP: CURRENT/MAX (PERCENT% Desire)
-性奋值 : ‎CURRENT/MAX ( PERCENT% 欲望程度 )
+性奋：CURRENT/MAX（PERCENT% 欲望）
 - SP: CURRENT/MAX
-体力值 : ‎CURRENT/MAX
+体力：CURRENT/MAX
 - Willpower: CURRENT/MAX
 意志值 : ‎CURRENT/MAX
 - MP: CURRENT/MAX
-法力值 : ‎CURRENT/MAX
+法力：‎CURRENT/MAX
 - Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool.
 法力从有着 POOLMANA 点储备法力的储备池中缓慢恢复，喝药水可以恢复储备池。
 - Your Desire is the baseline Distraction you decay toward, and is increased by distracting things.
@@ -2099,7 +2099,7 @@ Devious Dungeon Challenge 已启用。
 - Charge is used to power various magic items and weapons.
 充能用于为各种魔法物品和武器提供能量。
 - WP: CURRENT/MAX
-意志力: CURRENT/MAX
+意志：CURRENT/MAX
 - Charge: PERCENT
 充能: PERCENT
 - Use Potion
@@ -46527,7 +46527,8 @@ Kigurumi头壳
 头套
 - Full-face Masks
 全脸面罩
-# - Earplugs
+- Earplugs
+耳塞
 - Painful Shocks
 剧烈电击
 - Sensory Deprivation
@@ -46555,7 +46556,8 @@ Kigurumi头壳
 - |||This item will appear ingame as normal.
 |||这种物品会正常出现。
 
-# - Menu Locked
+- Menu Locked
+菜单锁定
 
 - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
 允许在游戏过程中使用此菜单（包括“安全词”按钮）。如果你不希望在开始游戏后还能进入此界面修改规则，请将其标红。此选项不会随存档读取而改变。
@@ -46574,7 +46576,8 @@ Kigurumi头壳
 允许将玩具插入玩家角色的后庭。
 - Does not place points where enemies will drop you off to become dollified in the factory level.
 工厂关卡中敌人不再将玩家送至进行玩偶化改造的投放点。
-# - Being captured by dress-up co will not result in getting placed on a doll stand and put on display in the shop.
+- Being captured by dress-up co will not result in getting placed on a doll stand and put on display in the shop.
+被装扮公司抓住后，不会被锁到商店的玩偶架上展示。
 - Affects the 'Deputy' enemy and any other police-related enemy types, but not bounty hunters.
 影响“副警长”及其他警察相关类型的敌人，但不包括赏金猎人。
 - Affects the 'Nurse' enemy and any other medical-related enemy types.
@@ -46611,7 +46614,8 @@ Kigurumi头壳
 包含强制装备且覆盖整个脸部的面罩。这包括史莱姆等造成的包裹效果，但不包括仅作为口塞覆盖下半张脸的装备。
 - The Sensory Deprivation Hood is a highly restrictive item that deafens the player in addition to blocking most vision.
 感官剥夺头套是一件高度拘束类装备，它不仅会阻挡玩家绝大部分视野，还会阻断玩家听觉。
-# - Earplugs reduce the player's hearing.
+- Earplugs reduce the player's hearing.
+耳塞削弱了玩家的听力。
 - Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
 将针对玩家的大部分“电击”伤害替换为“电刺激”伤害，造成快感而非痛苦。
 
@@ -52611,7 +52615,8 @@ Boss
 里程碑：
 - Bonus Progress (gained next Floor):
 获得进度（进入下一层时结算）：
-# - Mistakes Made:
+- Mistakes Made:
+累计失误：
 # - Recent Modifiers:
 
 - Any Level
@@ -52632,7 +52637,8 @@ Boss
 使用安全词
 - Confirm Safeword?
 确认安全词？
-# - Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. 
+- Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. 
+移除你穿着的所有拘束具并放入背包，诅咒和转换等级归零，并将你移至当前层的起点。
 - Only usable ingame.
 仅限游戏内使用。
 - ${Playername} used her safeword and was transported to the beginning of the level.
