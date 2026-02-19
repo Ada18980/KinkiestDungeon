@@ -276,7 +276,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 
 - Save Backup
 保存备份
-# - Stores all of your settings and presets into a file.
+- Stores all of your settings and presets into a file.
+导出当前设置
 - Load Backup
 加载备份
 - Loads your data from a file. Note: This may overwrite any data you currently have.
@@ -7903,13 +7904,18 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 带有触发装置的床，旨在将你困在上面！
 - The straps push you deeper into comfort~
 皮带将你牢牢捆住，却让你陷入更深的舒适之中~
-# - Comfy Bed
-# - A formerly trapped bed.
-# - It's extremey comfortable, especially when you're tied on it.
+- Comfy Bed
+舒适床
+- A formerly trapped bed.
+一张曾作为陷阱的床。
+- It's extremey comfortable, especially when you're tied on it.
+它非常舒适，尤其当你被绑在上面的时候。
 - Belts emerge from underneath the bed and wrap around you, strapping you down tightly!
 皮带从床底下涌出来缠绕在你身上，把你紧紧地绑起来！
-# - The sheets snap up around you, encasing you in straps and hoisting you into the air!
-# - The sheets snap up around you, encasing you in straps and affixing you to the bed!
+- The sheets snap up around you, encasing you in straps and hoisting you into the air!
+床单猛地向上翻起将你裹住，用带子捆住你，吊到了半空中！
+- The sheets snap up around you, encasing you in straps and affixing you to the bed!
+床单猛地向上翻起将你裹住，用带子捆住你，牢牢固定在床上！
 
 - Binding Dress
 捆绑连衣裙
@@ -10124,9 +10130,12 @@ RestraintName 上的诅咒解除了！
 - Dragonscale Ankle Cuffs
 龙鳞脚铐
 
-# - Spreader Bar
-# - A set of steel shackles spread apart by a metal bar, forcing the wearer into an awkward hobbled position.
-# - It's made of solid, rigid steel. ABle to resist bites, blades, and futile struggles all the same.
+- Spreader Bar
+分腿器
+- A set of steel shackles spread apart by a metal bar, forcing the wearer into an awkward hobbled position.
+一对用金属棒隔开的钢铐，让穿戴者行走不便。
+- It's made of solid, rigid steel. ABle to resist bites, blades, and futile struggles all the same.
+由坚硬的钢铁制成，啃咬，劈砍，或是徒劳的挣扎都无法摆脱它。
 
 - Maid Jacket
 女仆拘束衣
@@ -11831,18 +11840,19 @@ RestraintName 上的诅咒解除了！
 # :: KDEffectTileTooltipLatexPink
 # :: KDEffectTileTooltipLatexThinPink
 - Engulfs creatures
-吞噬生物
+它会吞噬一切生物
 # :: KDEffectTileTooltipLatexDesc
 # :: KDEffectTileTooltipLatexThinDesc
 - Engulfs dolls (like you)
-吞噬生物
+它会吞噬像你一样的玩偶
 # :: KDEffectTileTooltipLatexBlueDesc
 # :: KDEffectTileTooltipLatexThinBlueDesc
 - Engulfs pets (like you)
-全包宠物（比如你）
+它会吞噬像你一样的宠物
 # :: KDEffectTileTooltipLatexGreenDesc
 # :: KDEffectTileTooltipLatexThinGreenDesc
-# - Engulfs toys (like you)
+- Engulfs toys (like you)
+它会吞噬像你一样的玩具
 # :: KDEffectTileTooltipLatexPinkDesc
 # :: KDEffectTileTooltipLatexThinPinkDesc
 - Slows creatures
@@ -46541,7 +46551,8 @@ Kigurumi头壳
 - Allow Menu Ingame
 开启游戏内菜单
 
-# - Prisoner Text
+- Prisoner Text
+囚犯文字
 - Invisible Restraints
 隐形拘束具
 
@@ -46563,7 +46574,8 @@ Kigurumi头壳
 允许在游戏过程中使用此菜单（包括“安全词”按钮）。如果你不希望在开始游戏后还能进入此界面修改规则，请将其标红。此选项不会随存档读取而改变。
 - Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead.
 允许部分幽灵对你施加隐形束缚。尽管看不见实体，但它们依然能牢牢困住你。||如果被标红，这些拘束具会被替换为舒适的灵体束缚。
-# - Allows some restraints to display text such as 'Prisoner' or 'Inmate.'
+- Allows some restraints to display text such as 'Prisoner' or 'Inmate.'
+允许一些拘束具印上例如“囚犯”的文字。
 - Allows chastity bras to be forced onto the player character, which prevent access to nipples and lock toys in.||If marked as yellow, chastity bras will not appear unless the player is wearing nipple toys.
 允许强制玩家装备贞操文胸，使玩家无法接触乳头，并将玩具锁在其中。||如果被标黄，贞操文胸就只会在玩家已装备乳头玩具的情况下出现。
 - Allows chastity belts to be forced onto the player character, which prevent access to the lower regions and lock toys in.||If marked as yellow, chastity belts will not appear unless the player is wearing toys or plugs on the lower body.
@@ -49159,7 +49171,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - Saddle Ankle Links
 鞍具踝链
 # - A set of padlocks attaching your ankle cuffs to a piece of saddle furniture.
-# - The durability depends on the type of lock.
+- The durability depends on the type of lock.
+耐久取决于锁型号。
 # :: RestraintSaddleLinkDesc2
 # :: RestraintSaddleLink2Desc2
 
@@ -52617,7 +52630,8 @@ Boss
 获得进度（进入下一层时结算）：
 - Mistakes Made:
 累计失误：
-# - Recent Modifiers:
+- Recent Modifiers:
+最近的变化：
 
 - Any Level
 任何等级
