@@ -126,7 +126,17 @@ function KDDrawDialogue(delta: number): void {
 						tt = tt.replace(d[0], d[1]);
 					}
 				}
-				DrawTextFitKD(tt.replace("SPEAKER", TextGet("Name" + KDGameData.CurrentDialogMsgSpeaker)),
+				/*  Try to eliminate any redundant "the".  */
+				const npc_name = TextGet ("Name" + KDGameData.CurrentDialogMsgSpeaker);
+				const re_the_npc = /^[Tt]he\s+/;	// Anchored to beginning of string.
+				if (re_the_npc.test (npc_name)) {
+					/*
+					 * NPC name starts with "The ".  Chop out redundant "A " or "The "
+					 * from dialog, if present.
+					 */
+					tt = tt.replace (/\b(?:[Aa]|[Tt]he)\s+SPEAKER/, "SPEAKER");
+				}
+				DrawTextFitKD (tt.replace ("SPEAKER", npc_name),
 					1000, 300 + 50 * i - 25 * text.length, 900, KDBaseWhite, "black", undefined, undefined, 115);
 			}
 
