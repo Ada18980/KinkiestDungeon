@@ -3800,10 +3800,10 @@ RestraintOneBarVibeTrapDesc2,"The end vibrates, giving the displayed subject per
 
 
 
-
 KDCageTrap,"You hear a click as the door shuts behind you..."
 KDDisplayTrap,"The display stand suddenly locks into place around you!"
 KDOneBarTrap,"A plug emerges from the floor and locks you into place as a stand!"
+KDOneBarSpreaderTrap,"A plug emerges from the floor and locks you into place, spreading your legs wide!"
 KDSybTrap,"A powerful force sucks you down onto the saddle!"
 KDDisplayEgyptianTrap,"The display stand suddenly locks into place around you!"
 KDFutureBoxTrap,The storage unit beeps and closes behind you!
