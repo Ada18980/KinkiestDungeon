@@ -139,6 +139,44 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 			msg: TextGet("KDDisplayTrap"),
 		};
 	},
+	OneBarTrap: (tile, entity, _x, _y) => {
+		if (entity.player) {
+			let items = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("OneBarTrap"), 0, true);
+			if (items > 0) {
+				if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+					tile.Trap = undefined;
+					tile.Type = "Furniture";
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapBoots"), 0, true);
+					return {
+						triggered: true,
+						msg: TextGet("KDOneBarTrap"),
+					};
+				}
+			}
+		return {
+			triggered: false,
+			msg: "",
+		};
+	},
+	OneBarVibeTrap: (tile, entity, _x, _y) => {
+		if (entity.player) {
+			let items = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("OneBarVibeTrap"), 0, true);
+			if (items > 0) {
+				if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+					tile.Trap = undefined;
+					tile.Type = "Furniture";
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapBoots"), 0, true);
+					return {
+						triggered: true,
+						msg: TextGet("KDOneBarTrap"),
+					};
+				}
+			}
+		return {
+			triggered: false,
+			msg: "",
+		};
+	},
 	FutureBoxTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("FutureBox"), 0, true, "Cyber");

@@ -29,6 +29,7 @@ interface ConsentListData {
 interface ConsentListEventData {
     list: ConsentListData[],
     player: entity,
+    consentsToShow?: string[],
 }
 
 
@@ -462,25 +463,29 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
     },
 };
 
-function KDEnumerateConsentList(sort: boolean = true, player?: entity): ConsentListData[] {
+function KDEnumerateConsentList(sort: boolean = true, player?: entity, consentsToShow?: string[]): ConsentListData[] {
     let data: ConsentListEventData = {
         list: [],
         player: player || KDPlayer(),
+        consentsToShow: consentsToShow,
     };
 
     KinkyDungeonSendEvent("enumerateConsentBefore", data);
 
     // enumerate vanilla consent options
     for (let kink of Object.values(KDConsentListBasic)) {
-        let txt = KDConsentFilter ? TextGet("KDConsentItem_" + kink.name).toLocaleLowerCase() : "";
+        if (!consentsToShow || consentsToShow.includes(kink.name)) {
+            let txt = KDConsentFilter ? TextGet("KDConsentItem_" + kink.name).toLocaleLowerCase() : "";
 
-		if (KDConsentFilter != ""
-            && !(txt == KDConsentFilter.toLocaleLowerCase()
-            || txt.includes(KDConsentFilter.toLocaleLowerCase())))
-            continue;
-			
-        if (!kink.prereq || kink.prereq())
-            data.list.push(kink);
+            if (KDConsentFilter != ""
+                && !(txt == KDConsentFilter.toLocaleLowerCase()
+                || txt.includes(KDConsentFilter.toLocaleLowerCase())))
+                continue;
+                
+            if (!kink.prereq || kink.prereq())
+                data.list.push(kink);
+        }
+       
     }
 
     
@@ -499,6 +504,44 @@ let KDConsent_Sidebar = 580;
 let KDConsent_SideOffset = 80;
 let KDConsent_Buttonstart = 386;
 let KDConsent_Buttonspace = 94;
+
+let KDShowConsents: string[] = null;
+let KDUpdatedSeenConsents = false;
+
+function KDDrawConsentHeader(xOffset, sidebar, headery, linespace, ii, fontsizeheading) {
+    if (KinkyDungeonPreviousState != "Menu") {
+        DrawTextFitKD(TextGet("KinkyDungeonConsent"), 
+                xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
+                headery + linespace*ii++, 
+                (PIXIWidth - xOffset - 80 - sidebar), KDBaseWhite, undefined, fontsizeheading)
+        DrawTextFitKD(TextGet("KDConsentLimits_Red"), 
+                xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
+                headery + linespace*ii++, 
+                (PIXIWidth - xOffset - 80 - sidebar), KDBaseRed, KDBaseBlack, fontsizeheading)
+        DrawTextFitKD(TextGet("KDConsentLimits_Yellow"), 
+                xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
+                headery + linespace*ii++, 
+                (PIXIWidth - xOffset - 80 - sidebar), KDBaseYellow, KDBaseBlack, fontsizeheading)
+        DrawTextFitKD(TextGet("KDConsentLimits_Green"), 
+                xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
+                headery + linespace*ii++, 
+                (PIXIWidth - xOffset - 80 - sidebar), KDBaseGreal, KDBaseBlack, fontsizeheading)
+        DrawTextFitKD(TextGet("KinkyDungeonConsent2"), 
+                xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
+                headery + linespace*ii++, 
+                (PIXIWidth - xOffset - 80 - sidebar), KDBaseWhite, undefined, fontsizeheading)
+    } else {
+        DrawTextFitKD(TextGet("KDNewConsentInfo"), 
+                xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
+                headery + linespace*ii++, 
+                (PIXIWidth - xOffset - 80 - sidebar), KDBaseWhite, undefined, fontsizeheading)
+    }
+    
+    return ii;
+}
+
+let KDSeenConsents: string[] = [];
+let KDCheckedConsentAtStartup = true; // is set false later in KDFirstRunMainmenu
 
 function KDDrawConsent(xOffset) {
 
@@ -520,26 +563,7 @@ function KDDrawConsent(xOffset) {
     let linespace = 24;
     let fontsizeheading = 18;
     let headery = 80;
-    DrawTextFitKD(TextGet("KinkyDungeonConsent"), 
-            xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
-            headery + linespace*ii++, 
-            (PIXIWidth - xOffset - 80 - sidebar), KDBaseWhite, undefined, fontsizeheading)
-    DrawTextFitKD(TextGet("KDConsentLimits_Red"), 
-            xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
-            headery + linespace*ii++, 
-            (PIXIWidth - xOffset - 80 - sidebar), KDBaseRed, KDBaseBlack, fontsizeheading)
-    DrawTextFitKD(TextGet("KDConsentLimits_Yellow"), 
-            xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
-            headery + linespace*ii++, 
-            (PIXIWidth - xOffset - 80 - sidebar), KDBaseYellow, KDBaseBlack, fontsizeheading)
-    DrawTextFitKD(TextGet("KDConsentLimits_Green"), 
-            xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
-            headery + linespace*ii++, 
-            (PIXIWidth - xOffset - 80 - sidebar), KDBaseGreal, KDBaseBlack, fontsizeheading)
-    DrawTextFitKD(TextGet("KinkyDungeonConsent2"), 
-            xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
-            headery + linespace*ii++, 
-            (PIXIWidth - xOffset - 80 - sidebar), KDBaseWhite, undefined, fontsizeheading)
+    ii = KDDrawConsentHeader(xOffset, sidebar, headery, linespace, ii, fontsizeheading);
 
     DrawTextFitKD(
 		TextGet("KDConsentFilter"),
@@ -552,11 +576,20 @@ function KDDrawConsent(xOffset) {
 		};
 	}
 
+    if (!KDUpdatedSeenConsents) {
+        for (let kink of Object.values(KDConsentListBasic)) {
+            if (!KDSeenConsents.includes(kink.name)) {
+                KDSeenConsents.push(kink.name);
+            }
+        }
+        localStorage.setItem("KDSeenConsents", JSON.stringify(KDSeenConsents));
+        KDUpdatedSeenConsents = true;
+    }
 
 
 
     if (ShouldUpdateList(MainList)) {
-        let list: ConsentListData[] = KDEnumerateConsentList();
+        let list: ConsentListData[] = KDEnumerateConsentList(undefined, undefined, KDShowConsents);
         PopulateList(MainList, x, yStart, horizontal ? h : wList, 
             horizontal ? wList : h, 50, 
             Math.round(h/spacing), 

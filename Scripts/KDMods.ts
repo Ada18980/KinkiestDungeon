@@ -352,6 +352,7 @@ async function KDExecuteMods() {
 	KDExecuted = true;
 	KDAwaitingModLoad = true;
 	KDAllModFiles = [];
+	KDUpdatedSeenConsents = false;
 
 	await KDUpdateModInfo();
 

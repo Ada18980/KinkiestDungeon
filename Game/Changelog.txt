@@ -51,9 +51,11 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - TODO potentially add a mechanic for cursed items to restore themselves after being removed for furniture reasons
 
 - TODO Cursed Kigu Mask
+- Todo Shopkeeper comes in and either offers to buy you or... chooses to buy you and you have debt~
 
 5.5.0
-- 
+- One bar prisons now are harder to escape if you wear heels
+- one bar prisons now appear around the map sometimes
 
 5.4.90
 - Fixed Dragonslaver not casting its onhit spell properly

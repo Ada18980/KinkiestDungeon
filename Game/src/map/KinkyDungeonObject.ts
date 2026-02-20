@@ -10,6 +10,8 @@ let TileTypeTooltipOverride = {
 		FutureBoxTrap: "Furniture",
 		DisplayEgyptianTrap: "Furniture",
 		BedTrap: "Bed",
+		OneBarTrap: "Furniture",
+		OneBarVibeTrap: "Furniture",
 	},
 	Furniture: {
 		LatexDisplayStand: "LatexDisplayStand",
@@ -25,6 +27,8 @@ let TileTypeTooltipOverride = {
 		Syb: "Syb",
 		ShadowBase: "ShadowBase",
 		VineBase: "VineBase",
+		OneBarTrap: "DollStand",
+		OneBarVibeTrap: "DollStand",
 	},
 }
 /** For stuff like traps */
@@ -35,6 +39,8 @@ let ObjectTypeTooltipOverride = {
 		CageTrap: "Furniture",
 		FutureBoxTrap: "Furniture",
 		DisplayEgyptianTrap: "Furniture",
+		OneBarVibeTrap: "Furniture",
+		OneBarTrap: "Furniture",
 		BedTrap: "Bed",
 		SybTrap: "Furniture",
 	},

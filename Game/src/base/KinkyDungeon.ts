@@ -965,6 +965,7 @@ function KDLoadToggles() {
 		console.log(e);
 	}
 	KDConsentArray = (localStorage.getItem("KDConsentArray") ? JSON.parse(localStorage.getItem("KDConsentArray")) : {}) || {};
+	KDSeenConsents = (localStorage.getItem("KDSeenConsents") ? JSON.parse(localStorage.getItem("KDSeenConsents")) : []) || [];
 	
 	KDDefaultPalette = localStorage.getItem("KDDefaultPalette") || "";
 
@@ -1748,6 +1749,7 @@ function KinkyDungeonRun() {
 		}
 		KinkyDungeonGameFlag = false;
 
+
 		if (KDSaveBusy) {
 			DrawTextKD(TextGet("KDSaveBusyMenu"), 1000, 500, KDBaseWhite, KDTextGray2);
 		} else {
@@ -1928,7 +1930,7 @@ function KinkyDungeonRun() {
 			}
 		}
 
-
+		KDRunnewConsentCheck();
 
 		if (KDRestart)
 			DrawTextKD(TextGet("RestartNeeded" + (localStorage.getItem("BondageClubLanguage") || "EN")), 1840, 600, KDBaseWhite, KDTextGray2);
@@ -1954,7 +1956,7 @@ function KinkyDungeonRun() {
 				//let Char = KinkyDungeonPlayer;
 				//DrawCharacter(Char, 0, 0, 0.01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
 
-				if (KDToggles.SkipIntro) KinkyDungeonState = "Menu"; else KinkyDungeonState = "Intro";
+				KDFirstRunMainmenu();
 			};
 			setTimeout(cb, 100);
 
@@ -7294,7 +7296,7 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 	let ii = 0;
 
 
-	if (!KinkyDungeonPreviousState || KinkyDungeonPreviousState == "Menu" || KinkyDungeonPreviousState == "Name" || KinkyDungeonPreviousState == "Diff") {
+	if (!KinkyDungeonPreviousState || KinkyDungeonPreviousState == "Name" || KinkyDungeonPreviousState == "Diff") {
 		DrawButtonKDEx("TabDiff", (_b) => {
 			KinkyDungeonState = "Diff";
 			return true;
@@ -7333,6 +7335,7 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 
 
 	DrawButtonKDEx("backButton", (_b) => {
+		KDShowConsents = null;
 		if (KinkyDungeonPreviousState) {
 			KinkyDungeonState = KinkyDungeonPreviousState;
 			KinkyDungeonPreviousState = "";
@@ -7651,6 +7654,8 @@ async function RunGenMapCallback() {
 }
 
 function KDReloadChallenge() {
+	KDSeenConsents = (localStorage.getItem("KDSeenConsents") ? JSON.parse(localStorage.getItem("KDSeenConsents")) : []) || [];
+	
 	KDConsentArray = (localStorage.getItem("KDConsentArray") ? JSON.parse(localStorage.getItem("KDConsentArray")) : {}) || {};
 	KinkyDungeonSexyMode = localStorage.getItem("KinkyDungeonSexyMode") != undefined ? localStorage.getItem("KinkyDungeonSexyMode") == "True" : true;
 	KinkyDungeonClassMode = localStorage.getItem("KinkyDungeonClassMode") != undefined ? localStorage.getItem("KinkyDungeonClassMode") : "Mage";
@@ -8139,4 +8144,36 @@ function KDLoadConsentFromSave(saveData: KinkyDungeonSave, override) {
 		}
 	} else
 		KDUpdateConsentSettings(false);
+}
+
+function KDFirstRunMainmenu() {
+	if (KDToggles.SkipIntro) {
+		KinkyDungeonState = "Menu";
+		KDCheckedConsentAtStartup = false;
+		
+		
+ 	} else {
+		KDCheckedConsentAtStartup = false;
+		KinkyDungeonState = "Intro";
+	}
+
+}
+
+function KDRunnewConsentCheck() {
+	if (!KDCheckedConsentAtStartup ) {
+		KDCheckedConsentAtStartup = true;
+		if (localStorage.getItem("diff_sawConsentTab")) {
+			let failedToFind = [];
+			for (let kink of Object.values(KDConsentListBasic)) {
+				if (!KDSeenConsents.includes(kink.name)) {
+					failedToFind.push(kink.name);
+				}
+			}
+			if (failedToFind.length > 0) {
+				KinkyDungeonPreviousState = "Menu";
+				KinkyDungeonState = "CConsent";
+				KDShowConsents = failedToFind;
+			}
+		}
+	}
 }

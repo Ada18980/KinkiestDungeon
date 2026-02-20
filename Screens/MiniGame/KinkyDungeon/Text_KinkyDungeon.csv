@@ -3585,6 +3585,7 @@ KinkyDungeonPayShrineCommerce,"You leave the coins on the altar and they transfo
 KDEffectTileTooltipBarrel,Barrel
 KDEffectTileTooltipDisplayStand,Display Stand
 KDEffectTileTooltipLatexDisplayStand,Rubberdoll Stand
+KDEffectTileTooltipDollStand,One Bar Prison
 KDEffectTileTooltipSyb,Vibrating Saddle
 KDEffectTileTooltipCage,Cage
 KDEffectTileTooltipIceBase,Icy Platform
@@ -3789,8 +3790,20 @@ RestraintSaddleMachineDesc2,"Contains an electric motor inside that shakes the e
 RestraintDisplayTrap,Display Stand
 RestraintDisplayTrapDesc,"A display stand, fit for only the prettiest of trophies!"
 RestraintDisplayTrapDesc2,"Your arms are pinned behind your back and you can barely move!"
+
+RestraintOneBarTrap,One Bar Prison
+RestraintOneBarTrapDesc,"A pole, inconveniently placed such that a girl in heels wouldn't be able to raise herself up over it."
+RestraintOneBarTrapDesc2,"Adjustable to fit all damsel sizes. The height cannot be adjusted while locked."
+RestraintOneBarVibeTrap,One Bar Heaven
+RestraintOneBarVibeTrapDesc,"A pole, inconveniently placed such that a girl in heels wouldn't be able to raise herself up over it."
+RestraintOneBarVibeTrapDesc2,"The end vibrates, giving the displayed subject perhaps a bit too much pleasure for their own good."
+
+
+
+
 KDCageTrap,"You hear a click as the door shuts behind you..."
 KDDisplayTrap,"The display stand suddenly locks into place around you!"
+KDOneBarTrap,"A plug emerges from the floor and locks you into place as a stand!"
 KDSybTrap,"A powerful force sucks you down onto the saddle!"
 KDDisplayEgyptianTrap,"The display stand suddenly locks into place around you!"
 KDFutureBoxTrap,The storage unit beeps and closes behind you!
@@ -29380,6 +29393,8 @@ KDConsentLimits_Yellow,Yellow content (-) occurs significantly less often
 KDConsentLimits_Green,Green content (+) will appear more often!
 KinkyDungeonConsent2,"Due to game limitations, not all types of content can be fully blocked."
 
+KDNewConsentInfo,New content has been added to the consent options since you last played.
+
 KDRed,Red
 KDYellow,Yellow
 KDGreen,Green
@@ -33005,6 +33020,10 @@ KDCantTouchPsychicNeedVision,"Unable to see the item, you are unable to use your
 KDMasterworkDebuff0,"Your masterwork restraints link together as one cohesive unit!"
 KDMasterworkDebuff1,"Your masterwork collar reinforces other masterwork items..."
 KDMasterworkDebuff2,"Your masterwork collar keeps everything firmly in place!"
+
+KDOneBarDebuff0,"Your heels make it more difficult to get off the stand!"
+KDOneBarDebuff1,"Your feet are already extended, you can't lift yourself off the stand."
+KDOneBarDebuff2,"Your feet, locked in heels, can lift you no further to take you off the stand."
 
 KDPlayerTitleUnlock,Unlocked Player Title: 
 

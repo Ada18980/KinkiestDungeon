@@ -155,6 +155,8 @@ let KDTilePalette = {
 	'DisplayStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayStand"}, jail: {type: "furniture", radius: 1}},
 	'LatexDisplayStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "LatexDisplayStand"}, jail: {type: "furniture", radius: 1}},
 	'DisplayEgyptian': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayEgyptian"}, jail: {type: "furniture", radius: 1}},
+	'OneBarTrap': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "OneBarTrap"}, jail: {type: "furniture", radius: 1}},
+	'OneBarVibeTrap': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "OneBarVibeTrap"}, jail: {type: "furniture", radius: 1}},
 	'IceBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "IceBase"}, jail: {type: "furniture", radius: 1}},
 	'CrystalBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "CrystalBase"}, jail: {type: "furniture", radius: 1}},
 	'Sybia-n': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "Syb"}, jail: {type: "furniture", radius: 1}},

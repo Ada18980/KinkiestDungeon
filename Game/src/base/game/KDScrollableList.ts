@@ -64,6 +64,34 @@ function PopulateList(name: string, x: number, y: number, w: number, h: number, 
 			min: 0,
 			num_per_page: num_per_page
 		};
+	} else {
+		let index = KDScrollableListDataset[name].index;
+		let selectedindex = KDScrollableListDataset[name].selectedindex;
+		let vindex = KDScrollableListDataset[name].visual_index;
+		let click_hold_y = KDScrollableListDataset[name].click_hold_y;
+		let click_hold_y_index = KDScrollableListDataset[name].click_hold_y_index;
+		let lastUpdated = KDScrollableListDataset[name].lastUpdated;
+
+		KDScrollableListDataset[name] = {
+			allowWrap: allowWrap,
+			x: x,
+			y: y,
+			w: w,
+			h: h,
+			click_hold_y: click_hold_y,
+			click_hold_y_index: click_hold_y_index,
+			index: index,
+			selectedindex: selectedindex,
+			visual_index: vindex,
+			items: [],
+			lastUpdated: lastUpdated,
+			updateInterval: 500,
+			zIndex: z,
+			max: list.length - 1,
+			min: 0,
+			num_per_page: num_per_page
+		};
+
 	}
 	KDScrollableListDataset[name].items = list;
 	KDScrollableListDataset[name].lastUpdated = CommonTime();
