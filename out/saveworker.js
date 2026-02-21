@@ -26,7 +26,18 @@ async function compressGzip(input) {
 		offset += chunk.length;
 	}
 
-	return 'data:application/vnd.straightlaced.kinkydungeon.save.game+gzip;version=2;base64,' + compressed.toBase64();
+	// Use toBase64() where available (Chrome 137+), fall back to btoa for older engines
+	let b64;
+	if (typeof compressed.toBase64 === 'function') {
+		b64 = compressed.toBase64();
+	} else {
+		let binary = '';
+		for (let i = 0; i < compressed.length; i++) {
+			binary += String.fromCharCode(compressed[i]);
+		}
+		b64 = btoa(binary);
+	}
+	return 'data:application/vnd.straightlaced.kinkydungeon.save.game+gzip;version=2;base64,' + b64;
 }
 
 onmessage = async (e) => {
