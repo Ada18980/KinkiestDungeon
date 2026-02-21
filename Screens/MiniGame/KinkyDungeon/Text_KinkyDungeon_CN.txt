@@ -7196,6 +7196,11 @@ SCHOOL 女神给予你庇护和反击之力！
 # :: RestraintDisplayTrap
 - Rubberdoll Stand
 橡胶玩偶架
+- One Bar Prison
+罚站桩
+# :: KDEffectTileTooltipDollStand
+# :: RestraintOneBarTrap
+# :: RestraintOneBar
 - Vibrating Saddle
 振动鞍
 - Cage
@@ -7847,12 +7852,24 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 展示架，专用来展示最漂亮的战利品！
 - Your arms are pinned behind your back and you can barely move!
 你的手臂被反扣在背后，几乎无法动弹！
+
+# - A pole, inconveniently placed such that a girl in heels wouldn't be able to raise herself up over it.
+# :: RestraintOneBarTrapDesc
+# :: RestraintOneBarVibeTrapDesc
+# - Adjustable to fit all damsel sizes. The height cannot be adjusted while locked.
+# - One Bar Heaven
+# - The end vibrates, giving the displayed subject perhaps a bit too much pleasure for their own good.
+
+
+
 - You hear a click as the door shuts behind you...
 你听到门在你身后关上的咔哒声...
 - The display stand suddenly locks into place around you!
 展示架突然把你锁在里面！
 # :: KDDisplayTrap
 # :: KDDisplayEgyptianTrap
+# - A plug emerges from the floor and locks you into place as a stand!
+# - A plug emerges from the floor and locks you into place, spreading your legs wide!
 - A powerful force sucks you down onto the saddle!
 一股强大的力量将你拽回鞍座上！
 - The storage unit beeps and closes behind you!
@@ -7871,8 +7888,6 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintDollStandDesc2
 # :: RestraintOneBarDesc2
 
-- One Bar Prison
-罚站桩
 - A devious way to immobilize people.
 一种使人动弹不得的狡猾方法。
 # :: RestraintOneBarDesc
@@ -46491,6 +46506,8 @@ RestraintName 失效了！
 - Due to game limitations, not all types of content can be fully blocked.
 由于游戏限制，并非所有类型的内容都能被完全屏蔽。
 
+# - New content has been added to the consent options since you last played.
+
 - Yellow
 黄色
 
@@ -52294,6 +52311,10 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 你的极品项圈加固了其他极品拘束具…
 - Your masterwork collar keeps everything firmly in place!
 你的极品项圈将所有其他组件牢固定住！
+
+# - Your heels make it more difficult to get off the stand!
+# - Your feet are already extended, you can't lift yourself off the stand.
+# - Your feet, locked in heels, can lift you no further to take you off the stand.
 
 - Unlocked Player Title: 
 已解锁玩家称号：
