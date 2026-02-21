@@ -26,12 +26,7 @@ async function compressGzip(input) {
 		offset += chunk.length;
 	}
 
-	let binary = '';
-	for (let i = 0; i < compressed.length; i++) {
-		binary += String.fromCharCode(compressed[i]);
-	}
-	// return 'data:application/vnd.straightlaced.kinkydungeon.save.game+gzip;version=2;base64,' + btoa(binary);
-	return 'gzip:' + btoa(binary);
+	return 'data:application/vnd.straightlaced.kinkydungeon.save.game+gzip;version=2;base64,' + compressed.toBase64();
 }
 
 onmessage = async (e) => {

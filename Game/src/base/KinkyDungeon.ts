@@ -7393,7 +7393,7 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 
 
 /**
- * Compress a string using native browser gzip, returns 'gzip:' + base64
+ * Compress a string using native browser gzip, returns a data: URI with MIME type
  */
 async function KDCompressGzip(input: string): Promise<string> {
 	const encoder = new TextEncoder();
@@ -7421,13 +7421,8 @@ async function KDCompressGzip(input: string): Promise<string> {
 		offset += chunk.length;
 	}
 
-	// Convert to base64
-	let binary = '';
-	for (let i = 0; i < compressed.length; i++) {
-		binary += String.fromCharCode(compressed[i]);
-	}
-	// return 'data:application/vnd.straightlaced.kinkydungeon.save.game+gzip;version=2;base64,' + btoa(binary);
-	return 'gzip:' + btoa(binary);
+	// Uint8Array.toBase64() needs ES2026+ lib; cast to any until tsconfig catches up
+	return 'data:application/vnd.straightlaced.kinkydungeon.save.game+gzip;version=2;base64,' + (compressed as any).toBase64();
 }
 
 /**
@@ -7453,18 +7448,18 @@ async function KDCompressForSave(json: string): Promise<string> {
 
 /**
  * Decompress save data - auto-detects format:
- * - 'gzip:' prefix (our format) - translates to data URI
- * - 'data:' prefix (PR #223 format) - passes directly to fetch
+ * - 'data:' prefix with MIME type - validates type if present, decompresses gzip
  * - anything else - legacy LZString
  */
 async function KDDecompressForLoad(data: string): Promise<string> {
 	const trimmed = "".concat(...data.trim().split('\n'));
-	if (trimmed.startsWith('gzip:')) {
-		// Translate our simple format to a data URI
-		return KDDecompressDataUri('data:application/gzip;base64,' + trimmed.slice(5));
-	}
 	if (trimmed.startsWith('data:')) {
-		// Support PR #223 format directly
+		// Validate save type from MIME if present (reject non-game saves)
+		const typeMatch = trimmed.match(/vnd\.straightlaced\.kinkydungeon\.save\.(\w+)/);
+		if (typeMatch && typeMatch[1] !== 'game') {
+			console.log(`Expected game save, got ${typeMatch[1]}`);
+			return null;
+		}
 		return KDDecompressDataUri(trimmed);
 	}
 	return LZString.decompressFromBase64(trimmed);
