@@ -744,6 +744,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 	]),
 	"Shoes": ToMap([
 		"ShoeLeft",
@@ -776,6 +777,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 	]),
 	"SlimeTorsoLower": ToMap([
 		"OverSkirt",
@@ -796,6 +798,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 		"AnkleLeftOver",
 		"AnkleRightOver",
 		"BindFeet",
@@ -813,6 +816,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 		"AnkleLeftOver",
 		"AnkleRightOver",
 		"BindFeet",
@@ -833,6 +837,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 		"AnkleLeftOver",
 		"AnkleRightOver",
 		"BindFeet",
@@ -855,6 +860,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 		"AnkleLeftOver",
 		"AnkleRightOver",
 		"BindFeet",
@@ -899,6 +905,7 @@ let LayerGroups = {
 	"BalletHeelsCuffs": ToMap([
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 	]),
 	"HeelRight": ToMap([
 		"FootLeft",
