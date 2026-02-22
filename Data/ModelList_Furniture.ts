@@ -330,6 +330,55 @@ AddModel({
 });
 
 
+
+AddModel({
+	Name: "OneBarPrisonSpreader",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Stands"],
+	AddPose: ["SuspendedHogtie", "ForceStand", "Spreader", "WideSpread"],
+	Layers: ToLayerMap([
+		{ Name: "OneBarTop", Layer: "WrappingTorsoUnder", Pri: -249,
+			Poses: ToMap(["Closed", "Spread"]),
+			RequirePoses: ToMap(["ChastityBelts"]),
+			AppendPose: {Ballet: "Heels"},
+			NoOverride: true,
+		},
+		{ Name: "OneBarFront", Layer: "Torso", Pri: -50,
+			Poses: ToMap(["Closed", "Spread"]),
+			AppendPose: {Ballet: "Heels"},
+		},
+		{ Name: "OneBarLarge", Layer: "FurnitureBack", Pri: 50,
+		},
+
+		{ Name: "ShortLeft", Layer: "AnkleLeftOver", Pri: 30,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			DisplacementSprite: "AnkleCuffLeft",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+		{ Name: "ShortRight", Layer: "AnkleRightOver", Pri: 30,
+			Invariant: true,
+			Poses: ToMap(["Spread"]),
+			HideWhenOverridden: true,
+			DisplacementSprite: "AnkleCuffRight",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+		{ Name: "Bar", Layer: "SpreaderBar", Pri: 30,
+			Invariant: true,
+			Poses: ToMap(["Spread"]),
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+
 AddModel({
 	Name: "OneBarPrisonLatex",
 	Folder: "Furniture",

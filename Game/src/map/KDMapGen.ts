@@ -771,7 +771,9 @@ function KinkyDungeonGenNavMap(fromPoint?: { x: number, y: number }) {
 	if (!fromPoint) fromPoint = KDMapData.EndPosition || KDMapData.StartPosition;
 	KDMapData.RandomPathablePoints = {};
 	RandomPathList = [];
-	let accessible = KinkyDungeonGetAccessible(fromPoint.x, fromPoint.y);
+	let accessible = KinkyDungeonGetAccessible(fromPoint.x, fromPoint.y,
+		undefined, undefined, KinkyDungeonMovableTilesSmartEnemy
+	);
 	for (let a of Object.entries(accessible)) {
 		let X = a[1].x;
 		let Y = a[1].y;
@@ -834,9 +836,10 @@ type GridEntry = {
 };
 
 // Checks everything that is accessible to the player
-function KinkyDungeonGetAccessible(startX: number, startY: number, testX?: number, testY?: number): GridEntry {
+function KinkyDungeonGetAccessible(startX: number, startY: number, testX?: number, testY?: number, interactable?: string): GridEntry {
 	let tempGrid = {};
 	let checkGrid: GridEntry = {};
+	if (!interactable) interactable = KDInteractableTiles;
 	checkGrid[(startX + "," + startY)] = {x: startX, y: startY};
 	while (Object.entries(checkGrid).length > 0) {
 		for (let g of Object.entries(checkGrid)) {
@@ -848,7 +851,7 @@ function KinkyDungeonGetAccessible(startX: number, startY: number, testX?: numbe
 					let locked = (testX != undefined && testY != undefined && X+XX == testX && Y+YY == testY)
 						|| (KinkyDungeonTilesGet("" + (X+XX) + "," + (Y+YY)) && KinkyDungeonTilesGet("" + (X+XX) + "," + (Y+YY)).Lock);
 					if (!checkGrid[testLoc] && !tempGrid[testLoc] && X+XX > 0 && X+XX < KDMapData.GridWidth-1 && Y+YY > 0 && Y+YY < KDMapData.GridHeight-1
-						&& KDInteractableTiles.includes(KinkyDungeonMapGet(X+XX, Y+YY)) && !locked) {
+						&& interactable.includes(KinkyDungeonMapGet(X+XX, Y+YY)) && !locked) {
 						if (KinkyDungeonMovableTilesSmartEnemy.includes(
 							KinkyDungeonMapGet(X+XX, Y+YY)))
 							checkGrid[testLoc] = {x:X+XX,y:Y+YY};
