@@ -1092,8 +1092,11 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 			if (l.ApplyFilterToLayerGroup) {
 				for (let lg of Object.entries(l.ApplyFilterToLayerGroup)) {
 					for (let ll of Object.entries(LayerGroups[lg[0]])) {
-						if (!ExtraFilters[ll[0]]) ExtraFilters[ll[0]] = [];
-						ExtraFilters[ll[0]].push(m.Filters[l.ApplyFilter || l.InheritColor || l.Name]);
+						if (!! m.Filters && !!m.Filters[l.ApplyFilter || l.InheritColor || l.Name]) {
+							if (!ExtraFilters[ll[0]]) ExtraFilters[ll[0]] = [];
+							ExtraFilters[ll[0]].push(m.Filters[l.ApplyFilter || l.InheritColor || l.Name]);
+						}
+						
 					}
 				}
 			}

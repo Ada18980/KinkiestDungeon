@@ -494,7 +494,7 @@ AddModel({
 		},*/
 
 
-		{ Name: "Legbinder", Layer: "LegbinderLegsOver", Pri: -40,
+		{ Name: "Legbinder", Layer: "LegbinderLegsOver2", Pri: -40,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			//HideWhenOverridden: true,
@@ -504,13 +504,13 @@ AddModel({
 			DisplacementSprite: "LegbinderSquish",
 
 		},
-		{ Name: "LegLegbinder", Layer: "LegbinderAnklesOver", Pri: -40,
+		{ Name: "LegLegbinder", Layer: "LegbinderAnklesOver", Pri: 500-40,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
-			SwapLayerPose: {Kneel: "LegbinderLegsOver", KneelClosed: "LegbinderLegsOver"},
+			SwapLayerPose: {Kneel: "LegbinderLegsOver2", KneelClosed: "LegbinderLegsOver2"},
 			InheritColor: "Skirt",
 		},
-		{ Name: "RightLegbinder", Layer: "LegbinderLegsOver", Pri: -40,
+		{ Name: "RightLegbinder", Layer: "LegbinderLegsOver2", Pri: -40,
 			//SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
@@ -518,7 +518,7 @@ AddModel({
 			InheritColor: "Skirt",
 
 		},
-		{ Name: "LegRightLegbinder", Layer: "LegbinderAnklesOver", Pri: -40,
+		{ Name: "LegRightLegbinder", Layer: "LegbinderAnklesOver", Pri: 500-40,
 			SwapLayerPose: {Kneel: "WrappingLegsRight", KneelClosed: "WrappingLegsRight"},
 			Poses: ToMap(["Closed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["Hogtie"]),

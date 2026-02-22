@@ -5392,6 +5392,14 @@
 	"spriteSourceSize": {"x":4,"y":1,"w":49,"h":64},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Enemies/DollmakerRecruit.png":
+{
+	"frame": {"x":1101,"y":1414,"w":59,"h":64},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":1,"w":59,"h":64},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Enemies/DollmakerTarget.png":
 {
 	"frame": {"x":604,"y":1339,"w":37,"h":63},
@@ -6409,6 +6417,14 @@
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Enemies/TheWarden2.png":
+{
+	"frame": {"x":444,"y":1269,"w":39,"h":63},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":4,"w":39,"h":63},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Enemies/TheWardenRecruit.png":
 {
 	"frame": {"x":444,"y":1269,"w":39,"h":63},
 	"rotated": false,
@@ -12376,6 +12392,6 @@
 	"size": {"w":2048,"h":1532},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:9460cac4b8d12b38d7be4564ad0ca7eb:fdb66a98d9d21abcf117fa30f5755db1:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:097b866763f7a0f60d994a312fca9ea2:4acf32e141e8e8222f246dfaf23cf6a5:54a7432a0665349a58c0c74f51e75c65$"
 }
 }
