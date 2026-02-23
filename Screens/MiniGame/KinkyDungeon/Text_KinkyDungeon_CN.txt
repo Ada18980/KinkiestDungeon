@@ -16447,13 +16447,13 @@ EnemyName 设法带着你的物品撤退了！
 许多绳索出现在你周围，从你身上移除较弱的绳索并束缚敌人！
 
 - Choose Class:
-选择职业 : ‎
+选择职业 :
 
 - Distraction Mode:
-性奋模式 : ‎
+性奋模式 :
 
 - Progression Mode:
-进展模式 : ‎
+进展模式 :
 - Key Hunt
 寻找钥匙
 # :: KinkyDungeonProgressionMode0
@@ -16472,7 +16472,7 @@ EnemyName 设法带着你的物品撤退了！
 在进入之前，你可以自行选择楼层的任务。需要特质: 进度。
 
 - Perks Mode:
-特质模式 : ‎
+特质模式 :
 - Extra
 更多
 - Less
@@ -16490,7 +16490,7 @@ EnemyName 设法带着你的物品撤退了！
 
 
 - Perk Progression Mode:
-特质进展模式 : ‎
+特质进展模式 :
 - Disabled
 禁用
 # :: KinkyDungeonPerkProgressionMode0
@@ -16512,7 +16512,7 @@ EnemyName 设法带着你的物品撤退了！
 
 
 - Perk Shrine Bondage:
-特质神泉束缚 : ‎
+特质神泉束缚 :
 - Never
 永不
 - Sometimes
@@ -16528,7 +16528,7 @@ EnemyName 设法带着你的物品撤退了！
 
 
 - Perk Shrine Bondage Info:
-特质神泉束缚信息 : ‎
+特质神泉束缚信息 :
 - Hidden
 隐藏
 - Partial
@@ -16550,7 +16550,7 @@ EnemyName 设法带着你的物品撤退了！
 你知道技能特质会施加什么拘束具
 
 - Difficulty:
-难度：
+难度 :
 - Normal Mode
 正常模式
 - Hard Mode
@@ -16591,7 +16591,7 @@ EnemyName 设法带着你的物品撤退了！
 你是一名法师，不过没有完成正式的“训练”。需要以性欲模式游玩
 
 - Spell Choice:
-技能选择 : ‎
+技能选择 :
 
 - Choose Spells
 选择法术
@@ -16603,7 +16603,7 @@ EnemyName 设法带着你的物品撤退了！
 打破宝珠，祈祷你能得到好东西
 
 - Save Mode:
-存档模式 : ‎
+存档模式 :
 
 - Save Codes
 存档码
@@ -16615,7 +16615,7 @@ EnemyName 设法带着你的物品撤退了！
 没有存档码，只会自动存档。你来到这里只是为了赢
 
 - Prison Strictness:
-监狱安全性 : ‎
+监狱安全性 :
 
 - Easy
 简单
@@ -48664,7 +48664,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 偏转诅咒 : ‎有 50% 的几率将攻击转移到相邻的敌对目标。
 
 - Loot Recovery:
-战利品恢复 : ‎
+战利品恢复 :
 
 - Enabled
 开启
