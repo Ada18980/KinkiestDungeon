@@ -1883,7 +1883,7 @@ let KDAltarUpdateFunction = {
 						if (!KDEntityHasFlag(PM, "targeted_by_npc")
 							&& !KDEntityHasFlag(PM, "aggression")) {
 								if (KDistChebyshev(x - PM.x, y - PM.y) < KDShrineEffectRadius(PM, KDPlayer())) {
-									let maxHeal = (PM.Enemy?.maxhp || 0) * Math.max(0.1, 0.8 - KDEnemyRank(PM));
+									let maxHeal = (PM.Enemy?.maxhp || 0) * Math.max(0.1, 0.8 - 0.1*KDEnemyRank(PM));
 									if (PM.hp < maxHeal) {
 										KDHealNPC(PM, 
 											Math.min(maxHeal - PM.hp,

@@ -4204,6 +4204,13 @@ let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spe
 		else if (target?.specialBoundLevel?.Rope > 0) return MiniGameKinkyDungeonLevel > 4;
 		return false;
 	},
+	"EnemyEnchantRope3": (_enemy, target) => {
+		if (target.player && (KinkyDungeonPlayerTags.get("RopeSnake") || KinkyDungeonPlayerTags.get("WeakMagicRopes"))) {
+			return MiniGameKinkyDungeonLevel > 4;
+		}
+		else if (target?.specialBoundLevel?.Rope > 0) return MiniGameKinkyDungeonLevel > 4;
+		return false;
+	},
 	"MagicMissileChannel": (enemy, _target) => {
 		return !KDEnemyHasFlag(enemy, "MagicMissileChannelFinished");
 	},
