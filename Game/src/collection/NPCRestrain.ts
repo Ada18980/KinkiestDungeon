@@ -300,7 +300,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			}, null, true, showAll, showAll ? KDGenericMatsPerRowShowAll : KDGenericMatsPerRow, KDGenericBindsPerRow);
 
 		} else {
-			let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter);
+			let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
+				undefined, undefined, true
+			);
 
 			filteredInventory = filteredInventory.filter((inv) => {
 				return groups.includes(KDRestraint(inv.item)?.Group)

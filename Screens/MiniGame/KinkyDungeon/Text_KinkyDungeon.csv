@@ -2651,7 +2651,7 @@ AttackRopeSnake,"The magic rope wriggles into your outfit! (DamageTaken)"
 
 NameFeathers,Cloud of Feathers
 KillFeathers,"The feathers fall to the floor."
-AttackFeathers,"The feathers tickle you mercilessly! (DamageTaken)"
+AttackFeathers,"The feathers tease you mercilessly! (DamageTaken)"
 
 NameScarves,Cloud of Scarves
 KillScarves,"The scarves become knotted and fall to the floor."
@@ -12951,7 +12951,7 @@ rBombSellFlashbang,"(The SPEAKER giggles)|That's what I'm talking about!"
 rBombSellBomb,"(The SPEAKER rubs her hands together)|Excellent..."
 rBombSellGunpowder,"(The SPEAKER smiles)|Yes! I can make more bombs!"
 
-rThiefSell,"(The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my frift."
+rThiefSell,"(The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my drift."
 rThiefSellAttack,"(The SPEAKER pulls out a knife)|Thought so. You won't take me that easily!"
 rThiefSellCuffKeys,"(The SPEAKER nods)|Could help out in a bind."
 rThiefSellSnuffer,"(The SPEAKER chuckles)|Lights out, eh..."

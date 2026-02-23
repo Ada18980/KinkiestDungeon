@@ -3458,6 +3458,8 @@
             <key type="filename">../Game/Bullets/EnemyEnchantRope.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRope2.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRope2Hit.png</key>
+            <key type="filename">../Game/Bullets/EnemyEnchantRope3.png</key>
+            <key type="filename">../Game/Bullets/EnemyEnchantRope3Hit.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRopeHit.png</key>
             <key type="filename">../Game/Bullets/FlashFreezeHit.png</key>
             <key type="filename">../Game/Bullets/Hailstorm.png</key>

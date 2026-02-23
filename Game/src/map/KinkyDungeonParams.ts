@@ -1313,7 +1313,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		torchchanceboring: 0.1,
 
 		music: {
-			"Dragon Lair.ogg": 15,
+			"DragonLair.ogg": 15,
 			"AREA7-LOSTTEMPLE-AMBIENT.ogg": 10,
 		},
 

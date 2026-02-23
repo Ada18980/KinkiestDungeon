@@ -3,7 +3,7 @@ let KDJailStripSearchTempTime = 50;
 
 function KDShouldStripSearchPlayer(player: entity, allowFlag: boolean = false): boolean {
 	if (!player.player) return false;
-	if (KinkyDungeonCheckRelease() >= 0) return false;
+	if (KinkyDungeonCheckRelease(-20) >= 0) return false;
 	if (allowFlag && KinkyDungeonFlags.get("jailStripSearched")) return false;
 	// TODO check if player has more than a few items in inventory
 	/** Max consumables */
