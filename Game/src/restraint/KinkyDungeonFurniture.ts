@@ -440,7 +440,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 	},
 	"OneBarVibeTrap": {
 		floor: "Floor",
-		sprite: "DollStand",
+		sprite: "DollStandVibe",
 		restraintTag: "onebarprisonvibe",
 		restraintSetTags: {
 			"leatherHeels": 8,

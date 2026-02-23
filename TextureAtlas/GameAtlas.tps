@@ -1623,6 +1623,8 @@
             <key type="filename">../Game/FloorGeneric/DollDropoffR.png</key>
             <key type="filename">../Game/FloorGeneric/DollStand.png</key>
             <key type="filename">../Game/FloorGeneric/DollStandSpreader.png</key>
+            <key type="filename">../Game/FloorGeneric/DollStandVibe.png</key>
+            <key type="filename">../Game/FloorGeneric/DollStandVibeSpreader.png</key>
             <key type="filename">../Game/FloorGeneric/DollSupply.png</key>
             <key type="filename">../Game/FloorGeneric/DollTerminal.png</key>
             <key type="filename">../Game/FloorGeneric/Doors/CyberDoor.png</key>
