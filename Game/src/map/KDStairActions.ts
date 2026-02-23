@@ -76,15 +76,12 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 		willing: willing,
 	};
 
-	if (data.altRoomTarget?.makeMain || !data.altRoomTarget) {
-		data.mapMod = data.mapMod || journeyTile?.MapMod || "";
-		data.faction = data.faction || journeyTile?.Faction || "";
-		data.escapeMethod = data.escapeMethod || journeyTile?.EscapeMethod || "";
-	}
-	
 	if (Advance.dataOverride) {
 		Object.assign(data, Advance.dataOverride);
 	}
+
+
+
 	KinkyDungeonSendEvent("beforeStairCancelFilter", data);
 	if (data.cancelfilter) {
 		if (data.cancelfilter && KDCancelFilters[data.cancelfilter]) {
@@ -157,10 +154,13 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				} else {
 					// If its an exit stair in the main, we override to the main of next floor
 					// The player can never backtrack to old perk rooms
+					data.mapMod = data.mapMod || journeyTile?.MapMod || "";
+					data.faction = data.faction || journeyTile?.Faction || "";
+					data.escapeMethod = data.escapeMethod || journeyTile?.EscapeMethod || "";
 
 					data.roomType = data.JourneyTile?.RoomType || "";
 					altRoomTarget = KinkyDungeonAltFloor(data.roomType);
-					KDGameData.MapMod = data.JourneyTile?.MapMod || "";
+					
 				}
 			}
 			let movedUp = MiniGameKinkyDungeonLevel > KDGameData.HighestLevelCurrent;
@@ -172,10 +172,12 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 			let MapMod = data.mapMod;
 			if (MapMod) {
 				KDGameData.MapMod = MapMod;
-				KDMapData.MapFaction = KDMapMods[KDGameData.MapMod].faction || "";
+				//KDMapData.MapFaction = KDMapMods[KDGameData.MapMod].faction || "";
+				data.faction = KDMapMods[KDGameData.MapMod].faction || "";
 			} else {
 				KDGameData.MapMod = "";
-				KDMapData.MapFaction = "";
+				//KDMapData.MapFaction = "";
+				data.faction = "";
 			}
 
 			if (!data.overrideJourney) {
