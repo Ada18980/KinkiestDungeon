@@ -861,10 +861,10 @@ function KDDrawStatusBars(x: number, y: number, width: number = 125) {
 		KDSendInput("consumable", {item: "PotionStamina", quantity: 1});
 		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
-	}, KinkyDungeonItemCount("PotionStamina") && KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax,
-	x - buttonWidth/1.85 , y - 5 - 2.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax && KinkyDungeonItemCount("PotionStamina")) ? "#AAFFAA" : "#333333",
+	}, KinkyDungeonConsumableCount("PotionStamina") && KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax,
+	x - buttonWidth/1.85 , y - 5 - 2.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax && KinkyDungeonConsumableCount("PotionStamina")) ? "#AAFFAA" : "#333333",
 	KinkyDungeonRootDirectory + "UI/UsePotion" + ((suff == "Unavailable") ? "" : "Stamina") + suff + ".png", "", false, true);
-	DrawTextFitKD(KinkyDungeonItemCount("PotionStamina") + 'x',
+	DrawTextFitKD(KinkyDungeonConsumableCount("PotionStamina") + 'x',
 		x - buttonWidth, y - 5 - 2*heightPerBar + heightPerBar/2, buttonWidth, KDBaseWhite, "#333333", 14, "left");
 
 
@@ -885,11 +885,11 @@ function KDDrawStatusBars(x: number, y: number, width: number = 125) {
 		KDSendInput("consumable", {item: "PotionMana", quantity: 1});
 		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
-	}, KinkyDungeonItemCount("PotionMana") && (KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax),
-	x - buttonWidth/1.85, y - 1.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatMana < KinkyDungeonStatManaMax && KinkyDungeonItemCount("PotionMana")) ? "#AAAAFF" : "#333333",
+	}, KinkyDungeonConsumableCount("PotionMana") && (KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax),
+	x - buttonWidth/1.85, y - 1.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatMana < KinkyDungeonStatManaMax && KinkyDungeonConsumableCount("PotionMana")) ? "#AAAAFF" : "#333333",
 	KinkyDungeonRootDirectory + "UI/UsePotion" + ((suff == "Unavailable") ? "" : "Mana") + suff + ".png", "", false, true);
 
-	DrawTextFitKD(KinkyDungeonItemCount("PotionMana") + 'x',
+	DrawTextFitKD(KinkyDungeonConsumableCount("PotionMana") + 'x',
 		x - buttonWidth, y - 1*heightPerBar + heightPerBar/2, buttonWidth, KDBaseWhite, "#333333", 14, "left");
 
 
@@ -938,11 +938,11 @@ function KDDrawStatusBars(x: number, y: number, width: number = 125) {
 		KDSendInput("consumable", {item: "PotionFrigid", quantity: 1});
 		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
-	}, KinkyDungeonItemCount("PotionFrigid") && KinkyDungeonStatDistraction > 0,
-	x - buttonWidth/1.85 + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 1.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatDistraction > 0 && KinkyDungeonItemCount("PotionFrigid")) ? "#333333" : "Pink",
+	}, KinkyDungeonConsumableCount("PotionFrigid") && KinkyDungeonStatDistraction > 0,
+	x - buttonWidth/1.85 + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 1.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatDistraction > 0 && KinkyDungeonConsumableCount("PotionFrigid")) ? "#333333" : "Pink",
 	KinkyDungeonRootDirectory + "UI/UsePotion" + ((suff == "Unavailable") ? "" : "Frigid") + suff + ".png", "", false, true);
 
-	DrawTextFitKD(KinkyDungeonItemCount("PotionFrigid") + 'x',
+	DrawTextFitKD(KinkyDungeonConsumableCount("PotionFrigid") + 'x',
 		x - buttonWidth + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 1*heightPerBar + heightPerBar/2, buttonWidth, KDBaseWhite, "#333333", 14, "left");
 
 
@@ -987,11 +987,11 @@ function KDDrawStatusBars(x: number, y: number, width: number = 125) {
 		KDSendInput("consumable", {item: "PotionWill", quantity: 1});
 		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
-	}, KinkyDungeonItemCount("PotionWill") && KinkyDungeonStatWill < KinkyDungeonStatWillMax,
-	x - buttonWidth/1.85 + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 5 - 2.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatWill < KinkyDungeonStatWillMax && KinkyDungeonItemCount("PotionWill")) ? "#ff4444" : "#333333",
+	}, KinkyDungeonConsumableCount("PotionWill") && KinkyDungeonStatWill < KinkyDungeonStatWillMax,
+	x - buttonWidth/1.85 + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 5 - 2.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatWill < KinkyDungeonStatWillMax && KinkyDungeonConsumableCount("PotionWill")) ? "#ff4444" : "#333333",
 	KinkyDungeonRootDirectory + "UI/UsePotion" + ((suff == "Unavailable") ? "" : "Will") + suff + ".png", "", false, true);
 
-	DrawTextFitKD(KinkyDungeonItemCount("PotionWill") + 'x',
+	DrawTextFitKD(KinkyDungeonConsumableCount("PotionWill") + 'x',
 		x - buttonWidth + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 5 - 2*heightPerBar +  heightPerBar/2, buttonWidth, KDBaseWhite, "#333333", 14, "left");
 
 
@@ -1016,12 +1016,12 @@ function KDDrawWeaponSwap(x: number, y: number): boolean {
 			(_bdata) => {
 				KDSendInput("consumable", {item: "AncientPowerSource", quantity: 1});
 				return true;
-			}, KDGameData.AncientEnergyLevel < 1.0 && KinkyDungeonItemCount("AncientPowerSource") != 0,
+			}, KDGameData.AncientEnergyLevel < 1.0 && KinkyDungeonConsumableCount("AncientPowerSource") != 0,
 			chargeX-buttonWidth, 830 - 0.5*heightPerBar + 10 - 72, buttonWidth, 26, "",
-			(KDGameData.AncientEnergyLevel < 1.0 && KinkyDungeonItemCount("AncientPowerSource")) ? "#ffee83" : "#333333",
+			(KDGameData.AncientEnergyLevel < 1.0 && KinkyDungeonConsumableCount("AncientPowerSource")) ? "#ffee83" : "#333333",
 			KinkyDungeonRootDirectory + "UI/UsePotionAncient.png", "", false, true);
 
-		DrawTextFitKD("x" + KinkyDungeonItemCount("AncientPowerSource"), chargeX, 830 + heightPerBar/2 - 72, buttonWidth, KDBaseWhite, "#333333", 18, "right");
+		DrawTextFitKD("x" + KinkyDungeonConsumableCount("AncientPowerSource"), chargeX, 830 + heightPerBar/2 - 72, buttonWidth, KDBaseWhite, "#333333", 18, "right");
 	}
 
 
@@ -1263,7 +1263,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		KDDraw(kdcanvas, kdpixisprites, "pick", KinkyDungeonRootDirectory + "Items/Pick.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
 			zIndex: 90
 		});
-		DrawTextFitKD("" + KinkyDungeonItemCount("Pick"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
+		DrawTextFitKD("" + KinkyDungeonConsumableCount("Pick"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
 		if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
 			DrawTextKD(TextGet("KinkyDungeonInventoryItemLockpick"),
 				resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
@@ -1273,7 +1273,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		KDDraw(kdcanvas, kdpixisprites, "redkey", KinkyDungeonRootDirectory + "Items/RedKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
 			zIndex: 90
 		});
-		DrawTextFitKD("" + KinkyDungeonItemCount("RedKey"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
+		DrawTextFitKD("" + KinkyDungeonConsumableCount("RedKey"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
 		if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
 			DrawTextKD(TextGet("KinkyDungeonInventoryItemRedKey"),
 				resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
@@ -1281,11 +1281,11 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		resourcesIndex--;
 
 
-		if (KinkyDungeonItemCount("BlueKey") > 0) {
+		if (KinkyDungeonConsumableCount("BlueKey") > 0) {
 			KDDraw(kdcanvas, kdpixisprites, "bluekey", KinkyDungeonRootDirectory + "Items/BlueKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
 				zIndex: 90
 			});
-			DrawTextFitKD("" + KinkyDungeonItemCount("BlueKey"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
+			DrawTextFitKD("" + KinkyDungeonConsumableCount("BlueKey"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
 			if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
 				DrawTextKD(TextGet("KinkyDungeonInventoryItemMagicKey"),
 					resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");

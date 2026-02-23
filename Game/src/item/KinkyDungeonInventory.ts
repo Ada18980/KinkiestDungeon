@@ -464,7 +464,9 @@ function KinkyDungeonHandleInventory() {
 	//let filter = KinkyDungeonCurrentFilter;
 	//if (KDFilterTransform[KinkyDungeonCurrentFilter]) filter = KDFilterTransform[KinkyDungeonCurrentFilter];
 
-	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, undefined, KDInvFilter);
+	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, undefined, KDInvFilter,
+		undefined, undefined, false
+	);
 
 
 
@@ -968,7 +970,7 @@ function KDGetRestraintPreviewImage(restraint: restraint): string {
  * @param [namefilter]
  */
 function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignoreHidden?: boolean, ignoreFilters?: boolean, click?: string, namefilter?: string,
-	overrideInventory?: Record<string, item>, ignoreFilterList: string[] = []
+	overrideInventory?: Record<string, item>, ignoreFilterList: string[] = [], ignoreAutoFilter: boolean = true
 ): itemPreviewEntry[] {
 	let filter_orig = Filter;
 	if (KDFilterTransform[Filter]) Filter = KDFilterTransform[Filter];
@@ -1019,7 +1021,7 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 			}
 
 			// Auto-filter from inventory action
-			if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.autoFilter) {
+			if (!ignoreAutoFilter && KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.autoFilter) {
 				if (!KDInventoryAction[KDGameData.InventoryAction].autoFilter(item)) continue;
 			}
 
@@ -1804,7 +1806,9 @@ function KDDrawInventoryContainer (
 						} else {
 							KinkyDungeonInventoryOffset = 0;
 						}
-						KinkyDungeonFilterInventory(CurrentFilter, undefined, undefined, undefined, filters[i][0], KDInvFilter);
+						KinkyDungeonFilterInventory(CurrentFilter, undefined, undefined, undefined, filters[i][0], KDInvFilter,
+							undefined, undefined, false
+						);
 					}
 					return true;
 				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
@@ -1834,7 +1838,9 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 		if (filters.includes(KDFilters[I])) continue;
 		if (!first) first = KDFilters[I];
 		let col = KDTextGray2;
-		if (KinkyDungeonFilterInventory(KDFilters[I], false, false, true).length > 0) {
+		if (KinkyDungeonFilterInventory(KDFilters[I], false, false, true, undefined, undefined, undefined, undefined,
+			false
+		).length > 0) {
 			col = "#888888";
 		}
 		//if (KDFilters.indexOf(KinkyDungeonCurrentFilter) == I) {
@@ -1877,7 +1883,7 @@ function KinkyDungeonDrawInventory() {
 	if (KDFilterTransform[KinkyDungeonCurrentFilter]) filter = KDFilterTransform[KinkyDungeonCurrentFilter];
 	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter,
 		undefined, undefined, undefined, undefined, KDInvFilter,
-		container?.items
+		container?.items, undefined, false
 	);
 
 

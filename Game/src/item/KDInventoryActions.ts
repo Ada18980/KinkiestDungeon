@@ -461,7 +461,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 			let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined,
 				undefined, undefined, undefined, KDInvFilter,
-				KDInventoryActionContainer(player)?.items);
+				KDInventoryActionContainer(player)?.items, undefined, true);
 			let index = filteredInventory.findIndex((element) => {return element.item.name == item.name;});
 			if (index >= 0) {
 				KinkyDungeonCurrentPageInventory = index;

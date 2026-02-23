@@ -975,6 +975,12 @@ function KDGetEffLevel(): number {
 
 	return effLevel;
 }
+function KDGetEffMaxLevel(): number {
+	let effLevel = KDGameData.HighestLevel + Math.round(KinkyDungeonDifficulty/5);
+	if (KinkyDungeonNewGame) effLevel += KinkyDungeonMaxLevel;
+
+	return effLevel;
+}
 
 function KDRandomizeRedLock(): string {
 	let level = KDGetEffLevel();

@@ -7187,7 +7187,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						AIData.damage == "pain" ? "Slap"
 						: (AIData.damage == "grope" ? "Grope"
 							: (AIData.damage == "tickle" ? (
-								KinkyDungeonStatsChoice.get("Less_Tickle") ? "Grope" : "Tickle")
+								KinkyDungeonStatsChoice.get("Less_Tickle") ? "Tickle" : "Grope")
 								: (data.damage > 1 ? "Damage" : "DamageWeak")))
 							;
 						if (enemy.usingSpecial && enemy.Enemy.specialsfx) sfx = enemy.Enemy.specialsfx;
@@ -7681,7 +7681,7 @@ function KinkyDungeonEnemyTryMove (
 		if (!ee && KinkyDungeonMapGet(enemy.x, enemy.y) == 'd' && enemy.Enemy
 			&& (enemy.Enemy.tags.closedoors
 			|| (enemy.Enemy.tags.opendoors && KinkyDungeonTilesGet(enemy.x + ',' + enemy.y)?.OGLock))
-			&& !(KDGameData.KinkyDungeonLeashedPlayer > 0 || KinkyDungeonFlags.has("noclosedoors"))
+			&& !((KDGameData.KinkyDungeonLeashedPlayer > 0 && !KinkyDungeonTilesGet(enemy.x + ',' + enemy.y)?.Jail) || KinkyDungeonFlags.has("noclosedoors"))
 			&& ((dist > 5) ||
 				(KinkyDungeonTilesGet(enemy.x + "," + enemy.y) && !KDAllied(enemy) && (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).ReLock) && !KDIsJailbreakProtected(KDPlayer())))) {
 			KinkyDungeonMapSet(enemy.x, enemy.y, 'D');

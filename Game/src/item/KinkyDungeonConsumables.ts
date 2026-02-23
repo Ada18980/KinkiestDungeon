@@ -86,7 +86,23 @@ function KinkyDungeonGetInventoryItem(Name: string, Filter: string = Consumable)
 	return null;
 }
 
+function KinkyDungeonConsumableCount(Name: string): number {
+	if (KinkyDungeonInventoryGet(Name)) {
+		if (KinkyDungeonInventoryGet(Name).quantity == undefined) return 1;
+		else return KinkyDungeonInventoryGet(Name).quantity;
+	}
+	let item = KinkyDungeonGetInventoryItem(Name, Consumable);
+	if (item && item.item && item.item.quantity) {
+		return item.item.quantity;
+	}
+	return 0;
+}
+
 function KinkyDungeonItemCount(Name: string): number {
+	if (KinkyDungeonInventoryGet(Name)) {
+		if (KinkyDungeonInventoryGet(Name).quantity == undefined) return 1;
+		else return KinkyDungeonInventoryGet(Name).quantity;
+	}
 	let item = KinkyDungeonGetInventoryItem(Name);
 	if (item && item.item && item.item.quantity) {
 		return item.item.quantity;

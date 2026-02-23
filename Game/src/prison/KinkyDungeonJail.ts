@@ -178,7 +178,7 @@ function KinkyDungeonCanPlay(enemy: entity): boolean {
 		&& enemy.hp > 0.52;
 }
 
-function KinkyDungeonCheckRelease() {
+function KinkyDungeonCheckRelease(modifier = 0) {
 	if (KDMapData.JailFaction?.length > 0 && KDFactionRelation("Jail", KDMapData.JailFaction[0]) < -0.15) return -1;
 	if (KDGameData.RoomType) {
 		let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
@@ -188,7 +188,7 @@ function KinkyDungeonCheckRelease() {
 	let security = KDGetEffSecurityLevel() + 50;
 	if (sub == undefined || isNaN(sub)) sub = 0;
 	if (security == undefined || isNaN(security)) security = 0;
-	let turns = KDGameData.JailTurns - security;
+	let turns = KDGameData.JailTurns - security + modifier;
 	for (let i = 0; i < KDJailReleaseTurns.length; i++) {
 		let condition = KDJailReleaseTurns[i];
 		if (sub >= condition.minSub && turns >= condition.releaseTurns) return i;

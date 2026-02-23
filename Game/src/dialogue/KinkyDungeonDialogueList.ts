@@ -4,7 +4,7 @@ let KDDialogueParams = {
 	ShopkeeperHelpFee: 230,
 	ShopkeeperHelpFeePerLevel: 70,
 	ShopkeeperHelpFeePerPower: 10,
-	ShopkeeperHelpFeeFreebiePower: 50,
+	ShopkeeperHelpFeeFreebiePower: 170,
 	ShopkeeperFee: 900,
 	ShopkeeperFeePerLevel: 100,
 	ShopkeeperFeePunishThresh: 2500,
@@ -3086,7 +3086,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit = KinkyDungeonGetRestraint({tags: ['shopCatsuit']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 
 						if (KDGetTotalRestraintPower(
-							KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false) > KDDialogueParams.ShopkeeperHelpFeeFreebiePower
+							KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false) > KDShopkeeperMaxHelpPower()
 							|| KinkyDungeonFlags.get("Collateral") || !(
 							KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor
 							|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint
@@ -3124,7 +3124,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit = KinkyDungeonGetRestraint({tags: ['shopCatsuit']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 
 					if (KDGetTotalRestraintPower(
-						KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false, undefined, false) > KDDialogueParams.ShopkeeperHelpFeeFreebiePower
+						KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false, undefined, false) > KDShopkeeperMaxHelpPower()
 						|| KinkyDungeonFlags.get("Collateral") || !(
 						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor
 						|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint
@@ -5909,3 +5909,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 };
 
 
+
+
+function KDShopkeeperMaxHelpPower() {
+	return 10*KDGetEffMaxLevel() + KDDialogueParams.ShopkeeperHelpFeeFreebiePower;
+}

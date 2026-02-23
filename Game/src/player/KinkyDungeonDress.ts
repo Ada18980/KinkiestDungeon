@@ -409,7 +409,7 @@ function KinkyDungeonDressPlayer (
 						if (ids[inv.id]) continue;
 						ids[inv.id] = true; // No dupe
 
-						if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
+						if (!KDRestraint(inv).hideTags || !KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 							let Poses = KDCurrentModels.get(Character)?.Poses;
 							if (!Poses || !KDRestraint(inv)?.noRenderPose?.some((s) => {
 								return !!Poses[s];

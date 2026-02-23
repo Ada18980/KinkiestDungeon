@@ -1076,6 +1076,7 @@
             <key type="filename">../Game/Enemies/DollmakerBoss3.png</key>
             <key type="filename">../Game/Enemies/DollmakerBoss3b.png</key>
             <key type="filename">../Game/Enemies/DollmakerMechanic.png</key>
+            <key type="filename">../Game/Enemies/DollmakerRecruit.png</key>
             <key type="filename">../Game/Enemies/DollmakerTarget.png</key>
             <key type="filename">../Game/Enemies/Dollsmith.png</key>
             <key type="filename">../Game/Enemies/DollsmithDoll.png</key>
@@ -1138,6 +1139,7 @@
             <key type="filename">../Game/Enemies/Fuuka1.png</key>
             <key type="filename">../Game/Enemies/Fuuka2.png</key>
             <key type="filename">../Game/Enemies/FuukaPillar.png</key>
+            <key type="filename">../Game/Enemies/FuukaRecruit.png</key>
             <key type="filename">../Game/Enemies/Gag.png</key>
             <key type="filename">../Game/Enemies/GagGeist.png</key>
             <key type="filename">../Game/Enemies/GasBarrel.png</key>
@@ -1288,6 +1290,7 @@
             <key type="filename">../Game/Enemies/TapeDrone.png</key>
             <key type="filename">../Game/Enemies/TheWarden1.png</key>
             <key type="filename">../Game/Enemies/TheWarden2.png</key>
+            <key type="filename">../Game/Enemies/TheWardenRecruit.png</key>
             <key type="filename">../Game/Enemies/TickleHand.png</key>
             <key type="filename">../Game/Enemies/TickleHandSlave.png</key>
             <key type="filename">../Game/Enemies/TickleTerror.png</key>
@@ -3454,6 +3457,8 @@
             <key type="filename">../Game/Bullets/EnemyEnchantRope.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRope2.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRope2Hit.png</key>
+            <key type="filename">../Game/Bullets/EnemyEnchantRope3.png</key>
+            <key type="filename">../Game/Bullets/EnemyEnchantRope3Hit.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRopeHit.png</key>
             <key type="filename">../Game/Bullets/FlashFreezeHit.png</key>
             <key type="filename">../Game/Bullets/Hailstorm.png</key>
