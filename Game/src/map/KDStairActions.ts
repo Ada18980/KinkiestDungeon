@@ -65,9 +65,9 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 		overrideRoomType: false,
 		overrideProgression: false,
 		overrideJourney: false,
-		mapMod: KinkyDungeonTilesGet(x + "," + y)?.MapMod || journeyTile?.MapMod,
-		faction: KinkyDungeonTilesGet(x + "," + y)?.Faction || journeyTile?.Faction,
-		escapeMethod: KinkyDungeonTilesGet(x + "," + y)?.EscapeMethod || journeyTile?.EscapeMethod,
+		mapMod: KinkyDungeonTilesGet(x + "," + y)?.MapMod,
+		faction: KinkyDungeonTilesGet(x + "," + y)?.Faction,
+		escapeMethod: KinkyDungeonTilesGet(x + "," + y)?.EscapeMethod,
 		cancelevent: "",
 		cancelfilter: tile?.CancelFilter,
 		SideRoom: tile?.SideRoom,
@@ -75,6 +75,13 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 		force: force,
 		willing: willing,
 	};
+
+	if (data.altRoomTarget?.makeMain || !data.altRoomTarget) {
+		data.mapMod = data.mapMod || journeyTile?.MapMod || "";
+		data.faction = data.faction || journeyTile?.Faction || "";
+		data.escapeMethod = data.escapeMethod || journeyTile?.EscapeMethod || "";
+	}
+	
 	if (Advance.dataOverride) {
 		Object.assign(data, Advance.dataOverride);
 	}
@@ -94,7 +101,10 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 		let newLocation = KDAdvanceLevel(data, MiniGameKinkyDungeonLevel + data.AdvanceAmount > KDGameData.HighestLevelCurrent,
 			true
 		);
+
 		let location = KDWorldMap[newLocation.x + "," + newLocation.y];
+
+
 
 		KDGenMapCallback = () => {
 
