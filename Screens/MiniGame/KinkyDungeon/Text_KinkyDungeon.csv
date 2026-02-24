@@ -1383,6 +1383,7 @@ KinkyDungeonInventoryItemMistressKey,Ancient Key
 KinkyDungeonInventoryItemMistressKeyDesc,"Perhaps it has something to do with ancient restraints?"
 KinkyDungeonInventoryItemMistressKeyDesc2,"An ancient key plated in gold. It doesnt look like it can open anything..."
 ItemPickupMistressKey,"You pick up a shining golden key."
+ItemPickupUniversalSolvent,"You pick up a bottle of Universal Solvent."
 
 ItemPickupGeneric,"You pick up a ReplaceValue."
 
