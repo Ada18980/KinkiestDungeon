@@ -633,7 +633,7 @@ function KDDrawSpellChoices() {
 						KinkyDungeonHandleSpell(index);
 						return true;
 					},
-					true,
+					enabled,
 					buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)",
 					KDGetItemPreview({name: item, id: 0, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)}).preview, "", false, true,
 					undefined, undefined, undefined, {
@@ -767,7 +767,7 @@ function KDDrawSpellChoices() {
 							KinkyDungeonHandleSpell(indexPaged);
 							return true;
 						},
-						true, buttonDimSmall.x, buttonDimSmall.y, buttonDim.wsmall, buttonDim.hsmall, "",
+						enabled, buttonDimSmall.x, buttonDimSmall.y, buttonDim.wsmall, buttonDim.hsmall, "",
 						"rgba(0, 0, 0, 0)", [prev.preview, prev.preview2], "", false, true,
 						undefined, undefined, undefined, {
 							zIndex: 71,
