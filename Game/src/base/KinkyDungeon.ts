@@ -1686,7 +1686,7 @@ function KinkyDungeonRun() {
 
 		(!KDExecuted)
 			DrawButtonKDEx("mods_load", (_bdata) => {
-				getFileInputType(".zip");
+				getFileInputType(CommonIsMobile ? undefined : ".zip");
 				return true;
 			}, true, 975, 250, 350, 64, TextGet("KinkyDungeonLoadMod"), KDBaseWhite, "");
 		DrawTextKD(TextGet("KinkyDungeonLoadModWarning1"), 1175, 100, KDBaseWhite, KDTextGray2);
