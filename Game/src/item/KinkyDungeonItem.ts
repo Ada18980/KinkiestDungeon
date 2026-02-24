@@ -334,10 +334,15 @@ function KDGetItemType(item: Named): string {
 	return Misc;
 }
 
+
+
 function KDGetItemImage(item: Named | item, entity: entity, equipped?: boolean) {
 	return item.name;
 }
 function KDGetItemImageFromString(item: string, entity: entity, equipped?: boolean) {
+	if (KinkyDungeonWeaponVariants[item]) return KinkyDungeonWeaponVariants[item].template;
+	if (KinkyDungeonConsumableVariants[item]) return KinkyDungeonConsumableVariants[item].template;
+	if (KinkyDungeonRestraintVariants[item]) return KinkyDungeonRestraintVariants[item].template;
 	return item;
 }
 
