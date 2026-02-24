@@ -234,7 +234,7 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 			if (tags.includes("nature")) w += 5;
 			return w;
 		},
-		jailOutfit: "Prisoner",
+		jailOutfit: "JailUniform",
 	},
 
 	Virus: {

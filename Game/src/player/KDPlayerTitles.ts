@@ -1054,7 +1054,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     // ---------------------------
     "SpellMasteryFlame": {
         "unlockCondition": () => {
-            let reqspells = ["TemperaturePlay", "Burning", "Firecracker", "Firebolt", "FlameBlade", "Ignite", "FlameRune", "Fireblast", "Fireball", "Incinerate", "Fissure"]
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeFire")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1074,7 +1074,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryWater": {
         "unlockCondition": () => {
-            let reqspells = ["WaterBall", "Rainstorm", "TidalBall"]
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeWater")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1093,7 +1093,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryEarth": {
         "unlockCondition": () => {
-            let reqspells = ["Earthform", "Tremor", "BoulderLaunch", "BigBoulderLaunch", "Shield", "StoneSkin", "IronBlood", "Strength", "Earthquake", "Volcanism", "BoulderKick", "GreaterShield"]
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeEarth")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1112,7 +1113,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryAir": {
         "unlockCondition": () => {
-            let reqspells = ["WindBlast", "Gust"] // Is there seriously only two spells for air? 
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeAir") // Is there seriously only two spells for air? 
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1131,7 +1132,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryLightning": {
         "unlockCondition": () => {
-            let reqspells = ["LightningRod", "Electrify", "Shock", "Thunderstorm", "LightningRune", "StaticSphere"]
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeElectric")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1150,7 +1151,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryIce": {
         "unlockCondition": () => {
-            let reqspells = ["TemperaturePlay", "IcePrison", "Hailstorm", "ColdFeet", "Freeze", "Icebolt", "Snowball", "FreezeRune", "Shatter", "IceOrb", "IceLance", "ZoneOfFrost", "Sleet", "IceBreath"]
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeIce")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1169,7 +1170,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryRope": {
         "unlockCondition": () => {
-            let reqspells = ['Snare', 'RopeBoltLaunch', 'EnchantRope', 'Ropework', "RopeBoltLaunchMany", "RopeStrike"]
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeRope")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1188,7 +1189,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryMetal": {
         "unlockCondition": () => {
-            let reqspells = ['SummonCuffs', 'DisplayStand', 'ChainBolt', 'Lockdown', 'LiquidMetal', 'LiquidMetalBurst', 'ChainStrike', 'SteelRainPlug', "Chastity", "ZoneOfPurity", "Frustration", "SteelRainBurst"]
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeMetal")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1207,7 +1209,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryLeather": {
         "unlockCondition": () => {
-            let reqspells = ['LeatherBurst', 'SummonGag', 'SummonBlindfold', 'SummonLeatherCuffs', 'SummonHarness', 'LeatherWhip', "SummonArmbinder", "SummonStraitjacket", "SummonLegbinder", "SummonAMGag", "Petsuit"]
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeLeather")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1226,7 +1229,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasterySummon": {
         "unlockCondition": () => {
-            let reqspells = ['Bomb', 'TickleCloud', 'Blink', 'Ally', 'FireElemental', 'WaterMote', 'AirMote', 'EarthMote', 'StormCrystal', "NatureSpirit", "Golem", "FeatherCloud"]
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeSummon")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1245,7 +1249,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryLatex": {
         "unlockCondition": () => {
-            let reqspells = ['SlimeSplash', 'SlimeBall', 'CommandSlime', 'SlimeWalk', 'SlimeWall', 'ElasticGrip', 'SlimeToLatex', 'Engulf', 'Spread', 'OneWithSlime', 'SlimeMimic', "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "SummonLatexGag", "SummonLatexLegbinder", "SummonLatexLegbinder", "Coalesce"]
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeLatex")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1264,7 +1269,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryPhysics": {
         "unlockCondition": () => {
-            let reqspells = ['Swap', 'Leap', 'Wall', 'Quickness', 'Quickness2', "Leap2", "Leap3", "TransportationPortal", "BanishPortal", "Quickness3", "Quickness4", "Quickness5"]
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticePhysics")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1283,7 +1289,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryShadow": {
         "unlockCondition": () => {
-            let reqspells = ['ShadowDance', 'Dagger', 'Shroud', 'ShadowBlade', 'ShadowWarrior', "TheShadowWithin", "ShadowSlash"]
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeShadow")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1302,7 +1309,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryLight": {
         "unlockCondition": () => {
-            let reqspells = ['Light', 'Flash', 'Ring', 'HolyOrb', "GreaterFlash", "FocusedFlash", "Corona"]
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeLight")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1321,7 +1329,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryObscurity": {
         "unlockCondition": () => {
-            let reqspells = ['Invisibility', 'Camo', 'Evasion', "GreaterInvisibility"]
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeMystery")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1340,7 +1349,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryProjection": {
         "unlockCondition": () => {
-            let reqspells = ['Decoy'] // Yeah theres apparently only one spell. 
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeProjection") // Yeah theres apparently only one spell. 
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,
@@ -1360,7 +1370,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     "SpellMasteryKnowledge": { 
         // Run to unlock and attempt to auto apply title. 
         "unlockCondition": () => {
-            let reqspells = ['Analyze', 'TrueSteel', 'TrueSight', 'EnemySense', 'Sonar']
+            
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeKnowledge")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,

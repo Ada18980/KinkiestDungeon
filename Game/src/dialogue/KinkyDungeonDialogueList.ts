@@ -4166,6 +4166,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							KDRemoveEntity(e, false, false, true);
 							delete KDGameData.Collection[e.id + ""].escaped;
 							delete KDGameData.Collection[e.id + ""].spawned;
+							if (KDIsImprisoned(e)) KDFreeNPC(e);
 							if (KDGetNPCRestraints(e.id)?.Device) {
 								KDSetNPCRestraint(e.id, "Device", null);
 							}

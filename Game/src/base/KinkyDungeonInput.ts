@@ -86,6 +86,14 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		}
 		return "Fail";
 	},
+	"offhandswitch": (data) => {
+		KDGameData.InventoryAction = "Offhand";
+		KDGameData.Offhand = "";
+		KDGameData.OffhandOld = "";
+		KDShowInventory(null);
+		KinkyDungeonCurrentFilter = Weapon;
+		return "";
+	},
 	"lock": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		let item = KinkyDungeonGetRestraintItem(data.group);

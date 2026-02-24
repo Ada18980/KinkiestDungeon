@@ -97,6 +97,7 @@ KDToggleOverrideConsentAbbr,Load Consent from Save
 KDToggleSaveOutfit,Save Outfits within Save Files
 KDToggleShowNPCSprites,Show free characters on map
 KDToggleShowJailedNPCSprites,Detailed jailed NPCs (experimental)
+KDToggleShowPatronNPCSprites,Detailed unique NPCs (experimental)
 KDToggleStruggleBars,Show Struggle Bars
 KDToggleAllowSusMods,Allow Suspicious Mods
 KDToggleAutoLoadMods,Auto Load Mods (offline only)
@@ -1296,6 +1297,11 @@ KinkyDungeonInventoryItemBindingDressDesc2,Your outfit from your time at the dol
 KinkyDungeonInventoryItemJailUniform,Jail Uniform
 KinkyDungeonInventoryItemJailUniformDesc,The prisoners are kept in revealing outfits to keep them from hiding things.
 KinkyDungeonInventoryItemJailUniformDesc2,"Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold."
+
+
+KinkyDungeonInventoryItemPrisoner,Jail Uniform
+KinkyDungeonInventoryItemPrisonerDesc,The prisoners are kept in revealing outfits to keep them from hiding things.
+KinkyDungeonInventoryItemPrisonerDesc2,"Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold."
 
 
 KinkyDungeonInventoryItemWolfgirl,Wolfgirl Suit
@@ -29678,7 +29684,7 @@ KDTurns,turns
 
 KDShieldAbsorb,Your shield absorbed AMNT damage.
 KDStatShield,You are currently shielded from damage and some spells.
-KDoffhandMissingTooltip,No offhand weapon set. Activate the spell in your hotbar to set one.
+KDoffhandMissingTooltip,No offhand weapon set. Click to open inventory and select the action on a weapon'.
 
 
 

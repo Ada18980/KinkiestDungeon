@@ -985,11 +985,12 @@ let KDPerkStart = {
 	MC_Fighter: () => {
 		if (!KDHasSpell("BattleRhythm")) {
 			KDPushSpell(KinkyDungeonFindSpell("BattleRhythm"));
-			KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+			KDInsertSpellChoiceInFreeSlot(KinkyDungeonSpells.length - 1);
 		}
 		if (!KDHasSpell("Offhand")) {
 			KDPushSpell(KinkyDungeonFindSpell("Offhand"));
-			KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+			KDInsertSpellChoiceInFreeSlot(KinkyDungeonSpells.length - 1);
+			
 		}
 		if (!KDHasSpell("FighterOffhand"))
 			KDPushSpell(KinkyDungeonFindSpell("FighterOffhand"));
@@ -1379,4 +1380,18 @@ function KDGetPerkShrineBondage(perks: string[]): string[] {
 	}
 
 	return ret;
+}
+
+
+function KDInsertSpellChoiceInFreeSlot(index: number): boolean {
+	for (let i = 0; i < KinkyDungeonSpellChoiceCount; i++) {
+		if ((KinkyDungeonSpellChoices[i] == -1 || !KinkyDungeonSpellChoices[i])
+			&& !KinkyDungeonWeaponChoices[i]
+			&& !KinkyDungeonConsumableChoices[i]
+			&& !KinkyDungeonArmorChoices[i]) {
+				KinkyDungeonSpellChoices[i] = index;
+				return true;
+			}
+	}
+	return false;
 }
