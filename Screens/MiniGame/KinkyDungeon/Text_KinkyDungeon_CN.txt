@@ -5421,7 +5421,7 @@ M.F. '女仆长'
 一团羽毛
 - The feathers fall to the floor.
 羽毛掉到地上。
-- The feathers tickle you mercilessly! (DamageTaken)
+- The feathers tease you mercilessly! (DamageTaken)
 羽毛无情地挠你痒痒！ ( DamageTaken )
 
 - Cloud of Scarves
@@ -24357,7 +24357,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER smiles)|Yes! I can make more bombs!
 ( SPEAKER 微笑 )|好嘞！我可以做更多炸弹了！
 
-- (The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my frift.
+- (The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my drift.
 ( SPEAKER 吸了一口雪茄 ) |嘿朋友。我正在市面上寻找一些'工具'，|...如果你明白我的意思的话。
 - (The SPEAKER pulls out a knife)|Thought so. You won't take me that easily!
 ( SPEAKER 拔出一把刀 ) |我想是的。你不会那么轻易带走我的！
