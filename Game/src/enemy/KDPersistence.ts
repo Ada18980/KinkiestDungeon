@@ -547,6 +547,9 @@ function KDGetPersistentNPC(id: number, entity?: entity, force: boolean = true, 
 				}
 
 			}
+
+
+			
 			let entry: KDPersistentNPC = {
 				Name: enemy.CustomName || KDGenEnemyName(enemy),
 				id: enemy.id,
@@ -566,6 +569,30 @@ function KDGetPersistentNPC(id: number, entity?: entity, force: boolean = true, 
 				facestyle: KDGameData.Collection[enemy.id + ""]?.facestyle,
 				cosplaystyle: KDGameData.Collection[enemy.id + ""]?.cosplaystyle,
 			};
+
+
+			// Custom outfit
+			if (enemy.outfit) entry.outfit = enemy.outfit;
+
+			// Custom style
+			if (enemy.style) {
+				let style = KDModelStyles[enemy.style];
+				if (style) {
+					if (!entry.bodystyle && style.Bodystyle) {
+						entry.bodystyle = style.Bodystyle[Math.floor(Math.random() * style.Bodystyle.length)];
+					}
+					if (!entry.hairstyle && style.Hairstyle) {
+						entry.hairstyle = style.Hairstyle[Math.floor(Math.random() * style.Hairstyle.length)];
+					}
+					if (!entry.facestyle && style.Facestyle) {
+						entry.facestyle = style.Facestyle[Math.floor(Math.random() * style.Facestyle.length)];
+					}
+					if (!entry.cosplaystyle && style.Cosplay) {
+						entry.cosplaystyle = style.Cosplay[Math.floor(Math.random() * style.Cosplay.length)];
+					}
+				}
+			}
+
 			if (special || enemy.Enemy?.special) entry.special = true;
 			KDPersistentNPCs[enemy.id] = entry;
 			if (addToParty)

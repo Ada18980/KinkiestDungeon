@@ -7,6 +7,8 @@ let KDMaxPreviousWeapon = 4;
 let KDMINDAMAGENOISE = 2;
 let KDDMGSOUNDMULT = 1.5;
 
+let KDBaseDodgeRemovalChance = 0.4;
+
 let KDBrawlerAmount = 1.0;
 let KDClumsyAmount = 0.7;
 let KDUnfocusedParams = {
@@ -671,7 +673,8 @@ function KinkyDungeonEvasion(Enemy: entity, IsSpell?: boolean, IsMagic?: boolean
 					// The way this works:
 					// Positive accuracy has higher hitchance, so it requires more dodges
 					// Negative accuracy has a chance to not consume the dodge token
-					if (hitChance >= 0 || KDRandom() > -hitChance)
+					// base 50% chance to remove a dodge token either way 
+					if (hitChance >= 0 || KDRandom() > Math.max(-hitChance, KDBaseDodgeRemovalChance))
 						Enemy.dodges = Math.max(0, Enemy.dodges - 1);
 					Enemy.blockedordodged = (Enemy.blockedordodged || 0) + 1;
 					dodged = true;

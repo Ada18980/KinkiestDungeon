@@ -2815,3 +2815,49 @@ function KDShockCollarCost() {
 function KDCurrIndex() {
 	return (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 }
+
+
+// Recursive search through the spell.prerequisite chain until the most top level spell
+// Returns either an origin spell name or an array of origin spell names, depending on the spell.prerequisite type.
+function KDGetSpellOrigin(spell) {
+  let origin = spell.name;
+  if (!spell.prerequisite) return origin;
+  if (typeof spell.prerequisite === "string") {
+    let origin = spell.prerequisite;
+    if (origin == "Null") return spell.name;
+    if (KinkyDungeonFindSpell(origin)) origin = KDGetSpellOrigin(KinkyDungeonFindSpell(origin));
+    return origin;
+    }
+    
+  if (spell.prerequisite instanceof Array) {
+    let ret = [];
+    for (let prereq of spell.prerequisite) {
+      let prereq_spell = KinkyDungeonFindSpell(prereq);
+      if (!prereq_spell) { ret.push(prereq); continue; }
+      ret.push(KDGetSpellOrigin(prereq_spell));
+    }
+    origin = ret;
+  }
+  return origin;
+}
+
+let KDSpellMasteryReqs: Record<string, string[]> = {};
+
+function KDUpdateSpellMasteryReqs(category: string): string[] {
+	if (!KDSpellMasteryReqs[category]) {
+		let reqspells: string[] = []
+		for (let spell of Object.values(KinkyDungeonSpellList).flat()) {
+			// A flat array of all spells
+			let SpellOrigin = KDGetSpellOrigin(spell);
+			if (SpellOrigin == category 
+				|| (SpellOrigin instanceof Array && SpellOrigin.some((s)=>{return s == category}))) {
+					// Some spells have an array of prerequisites, working as "any"
+				reqspells.push(spell.name);
+			}
+		}
+		KDSpellMasteryReqs[category] = reqspells;
+	}
+
+	return KDSpellMasteryReqs[category] || [];
+}
+

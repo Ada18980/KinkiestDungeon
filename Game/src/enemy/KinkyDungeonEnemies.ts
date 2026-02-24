@@ -960,7 +960,8 @@ function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: 
 	let o: any = null;
 
 	// Generate the NPC if applicable
-	if ((KDToggles.ShowJailedNPCSprites && KDIsImprisoned(enemy))) {
+	if ((KDToggles.ShowJailedNPCSprites && KDIsImprisoned(enemy))
+			|| (KDToggles.ShowPatronNPCSprites && !enemy.CustomSprite && enemy.CustomName && (enemy.style || enemy.outfit))) {
 		KDQuickGenNPC(enemy, enemy.CustomName != undefined);
 	}
 
@@ -978,7 +979,8 @@ function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: 
 			if (!o) o = {zIndex: zIndex};
 			else o.zIndex = zIndex;
 		}
-		if ((KDToggles.ShowJailedNPCSprites && KDIsImprisoned(enemy))
+		if (((KDToggles.ShowJailedNPCSprites && KDIsImprisoned(enemy))
+			|| (KDToggles.ShowPatronNPCSprites && !enemy.CustomSprite && enemy.CustomName && (enemy.style || enemy.outfit)))
 			&& KDNPCChar.get(enemy.id)) {
 			let char = KDNPCChar.get(enemy.id);
 			// We refresh
@@ -1033,7 +1035,8 @@ function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: 
 			if (!o) o = {zIndex: zIndex};
 			else o.zIndex = zIndex;
 		}
-		if (((KDToggles.ShowJailedNPCSprites && KDIsImprisoned(enemy)))
+		if (((KDToggles.ShowJailedNPCSprites && KDIsImprisoned(enemy))
+			|| (KDToggles.ShowPatronNPCSprites && !enemy.CustomSprite && enemy.CustomName && (enemy.style || enemy.outfit)))
 			&& KDNPCChar.get(enemy.id)) {
 			let char = KDNPCChar.get(enemy.id);
 			// We refresh

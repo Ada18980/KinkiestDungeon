@@ -471,6 +471,10 @@ function KDSetNPCRestraints(id: number, restraints: Record<string, NPCRestraint>
 		KDGameData.NPCRestraints = {};
 	KDGameData.NPCRestraints["" + id] = restraints;
 
+	if (KDNPCChar.get(id)) {
+		KDRefreshCharacter.set(KDNPCChar.get(id), true);
+	}
+
 	if (KDGameData.Collection[id + ""])
 		KDValidateEscapeGrace(KDGameData.Collection[id + ""]);
 }
@@ -489,6 +493,7 @@ function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint, No
 				items.push(blocker);
 				for (let entry of Object.entries(restraints)) {
 					delete restraints[entry[0]];
+					
 				}
 			}
 		}

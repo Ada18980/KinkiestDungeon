@@ -6718,7 +6718,9 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				}*/
 			} else {
 				if (DrawButtonKDEx("offhandreminder", (_b) => {
-
+					KDSendInput("offhandswitch", {
+						player: KDPlayer(),
+					})
 					return true;
 				}, true,
 					1750,

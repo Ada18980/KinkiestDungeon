@@ -607,6 +607,7 @@ function KDDrawSpellChoices() {
 						zIndex: 71,
 					});
 			}
+			
 			// Render number
 			//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, KDBaseWhite, KDTextGray0, 18, undefined, 101);
 
@@ -622,6 +623,8 @@ function KDDrawSpellChoices() {
 			if (arm && KinkyDungeonRestraintVariants[arm]) name = KinkyDungeonRestraintVariants[arm].template;
 			if (consumable && KinkyDungeonConsumableVariants[consumable]) name = KinkyDungeonConsumableVariants[consumable].template;
 			if (wep && KinkyDungeonWeaponVariants[wep]) name = KinkyDungeonWeaponVariants[wep].template;
+			
+			let enabled = !!arm || !!consumable || KinkyDungeonPlayerWeapon != item;
 			//DrawButtonKD("UseItem" + index, true, buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, "", "rgba(0, 0, 0, 0)",
 			//KDGetItemPreview({name: item, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)}).preview, "", false, true);
 			if (KDGetItemPreview({name: item, id: 0, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)})) {
@@ -651,6 +654,7 @@ function KDDrawSpellChoices() {
 							buttonDim.hsmall, KDBaseWhite, KDTextGray0, 18, "right");
 					}
 				}
+				
 			}
 			if (!KinkyDungeonInventoryGet(item)) {
 				let sp = "SpellFail";
@@ -660,16 +664,32 @@ function KDDrawSpellChoices() {
 					});
 				//DrawImage(KinkyDungeonRootDirectory + "Spells/" + sp + ".png", buttonDim.x + 2, buttonDim.y + 2,);
 			}
+			if (!arm && !consumable && !enabled) {
+				let sp = "";
+					if (KinkyDungeonPlayerWeapon == item) {
+						sp = KDAlreadyEquippedWeaponErrorIcon;
+						
+						
+					}
+					if (sp) {
+						KDDraw(kdcanvas, kdpixisprites, "alreadyEquip" + i, 
+							KinkyDungeonRootDirectory + "UI/" + sp + ".png",
+						buttonDim.x, buttonDim.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
+							zIndex: 70,
+						});
+					}
+					
+				}
 
 		}
 		let icon = 0;
 		// Draw icons for the other pages, if applicable
 		for (let page = 1; page < maxSmallIcons && page <= Math.floor((max_choices - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
 			let pg = KDSpellPage + page;
-			if (pg > Math.floor(max_choices / KinkyDungeonSpellChoiceCountPerPage)) pg -= 1 + Math.floor((max_choices - 1) / KinkyDungeonSpellChoiceCountPerPage);
+			if (pg > Math.floor((max_choices) / KinkyDungeonSpellChoiceCountPerPage)) pg -= Math.floor((max_choices) / KinkyDungeonSpellChoiceCountPerPage);
 
 			// Now we have our page...
-			let indexPaged = (i + pg * KinkyDungeonSpellChoiceCountPerPage) % (KinkyDungeonSpellChoiceCount);
+			let indexPaged = (i + pg * KinkyDungeonSpellChoiceCountPerPage) % (max_choices);
 			let spellPaged = KinkyDungeonSpells[KinkyDungeonSpellChoices[indexPaged]];
 			let item = KinkyDungeonConsumableChoices[indexPaged] || KinkyDungeonWeaponChoices[indexPaged] || KinkyDungeonArmorChoices[indexPaged];
 			let arm = KinkyDungeonArmorChoices[indexPaged];
@@ -739,6 +759,8 @@ function KDDrawSpellChoices() {
 				let wep = KinkyDungeonWeaponChoices[indexPaged];
 				if (wep && KinkyDungeonWeaponVariants[wep]) itemName = KinkyDungeonWeaponVariants[wep].template;
 				let prev = KDGetItemPreview({name: item, id: 0, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)});
+				let enabled = !!arm || !!consumable || KinkyDungeonPlayerWeapon != item;
+				
 				if (prev) {
 					DrawButtonKDEx("UseItem" + indexPaged,
 						() => {
@@ -771,6 +793,20 @@ function KDDrawSpellChoices() {
 							zIndex: 72,
 						});
 				}
+				if (!arm && !consumable && !enabled) {
+					let sp = "";
+					if (KinkyDungeonPlayerWeapon == item) {
+						sp = KDAlreadyEquippedWeaponErrorIcon;
+					}
+					if (sp)
+						KDDraw(kdcanvas, kdpixisprites, "alreadyEquip" + icon + "," + page + "," + indexPaged, 
+								KinkyDungeonRootDirectory + "UI/" + sp + ".png",
+							buttonDimSmall.x, buttonDimSmall.y, buttonDim.wsmall/2, buttonDim.hsmall/2, undefined, {
+								zIndex: 70,
+							});
+					
+				}
+				
 			}
 		}
 	}
@@ -2212,6 +2248,14 @@ function KDCullSpellChoices() {
 		}
 		else break;
 	}
+	if (KinkyDungeonSpellChoices.length >= KinkyDungeonSpellChoiceCount)
+		KinkyDungeonSpellChoices = KinkyDungeonSpellChoices.slice(0, KinkyDungeonSpellChoiceCount);
+	if (KinkyDungeonWeaponChoices.length >= KinkyDungeonSpellChoiceCount)
+		KinkyDungeonWeaponChoices = KinkyDungeonWeaponChoices.slice(0, KinkyDungeonSpellChoiceCount);
+	if (KinkyDungeonArmorChoices.length >= KinkyDungeonSpellChoiceCount)
+		KinkyDungeonArmorChoices = KinkyDungeonArmorChoices.slice(0, KinkyDungeonSpellChoiceCount);
+	if (KinkyDungeonConsumableChoices.length >= KinkyDungeonSpellChoiceCount)
+		KinkyDungeonConsumableChoices = KinkyDungeonConsumableChoices.slice(0, KinkyDungeonSpellChoiceCount);
 }
 
 let currentHighlightedItem: item = null;
@@ -3765,3 +3809,5 @@ function KDCanCallGuardHelp(player: entity) {
 	}
 	return false;
 }
+
+let KDAlreadyEquippedWeaponErrorIcon = "GrabClosed";

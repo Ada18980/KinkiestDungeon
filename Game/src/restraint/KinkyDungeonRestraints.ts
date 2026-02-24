@@ -2931,7 +2931,8 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 								data.origEscapeChance, data.origLimitChance, data.cutVulnerability);
 
 							limitProgress = (data.restraint.cutProgress || 0) ? (
-								(data.restraint.cutProgress || 0) < threshold ? (Math.min(0.9, data.restraint.cutProgress || 0) / Math.max(0.1, threshold)) : 1.0)
+								(data.restraint.cutProgress || 0) < threshold ? (Math.min(0.9, data.restraint.cutProgress || 0) / Math.max(0.1, 
+									threshold)) : 1.0)
 								: 0;
 							if (data.limitChance > 0) {
 								// Find the intercept
@@ -2950,6 +2951,9 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 						Math.min(1, 1.15 - 1.15 * cutStruggleProgress))
 						: (StruggleType == "Struggle" ? 0 : 1);*/
 					let limitPenalty = Math.max(0, Math.min(1, limitProgress) * data.limitChance, data.extraLimPenalty);
+					if (StruggleType == "Cut" && data.escapeChance > 0) {
+						limitPenalty = Math.min(limitPenalty, data.escapeChance * limitProgress);
+					}
 
 					if (data.extraLim > data.escapeChance) {
 						// Find the intercept
