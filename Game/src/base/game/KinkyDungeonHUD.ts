@@ -2256,6 +2256,12 @@ function KDCullSpellChoices() {
 		KinkyDungeonArmorChoices = KinkyDungeonArmorChoices.slice(0, KinkyDungeonSpellChoiceCount);
 	if (KinkyDungeonConsumableChoices.length >= KinkyDungeonSpellChoiceCount)
 		KinkyDungeonConsumableChoices = KinkyDungeonConsumableChoices.slice(0, KinkyDungeonSpellChoiceCount);
+	const max_choices = Math.max (KinkyDungeonSpellChoices.length, KinkyDungeonConsumableChoices.length, KinkyDungeonWeaponChoices.length, KinkyDungeonArmorChoices.length)
+	const padded_choices = Math.ceil(max_choices / KinkyDungeonSpellChoiceCountPerPage) * KinkyDungeonSpellChoiceCountPerPage
+	KinkyDungeonSpellChoices.length = padded_choices
+	KinkyDungeonWeaponChoices.length = padded_choices
+	KinkyDungeonArmorChoices.length = padded_choices
+	KinkyDungeonConsumableChoices.length = padded_choices
 }
 
 let currentHighlightedItem: item = null;
