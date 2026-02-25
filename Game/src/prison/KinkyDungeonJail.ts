@@ -1661,6 +1661,9 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 			fromHere ? "Jail" : undefined,
 			true
 		);
+		if (KDPersonalAlt[outpost]) {
+			forceFaction = KDPersonalAlt[outpost].OwnerFaction;
+		}
 		let room = outpost != undefined ? outpost : jailroom;
 
 
@@ -2490,7 +2493,7 @@ function KDGetHiSecDialogue(enemy: entity): string {
 
 function KDGetLeashFaction(leashEnemy: entity): string {
 	let forceFaction = undefined;
-	if (leashEnemy && (KDFactionProperties[KDGetFaction(leashEnemy)]
+	if (leashEnemy && KDSelfishLeash(leashEnemy) && (KDFactionProperties[KDGetFaction(leashEnemy)]
 		|| KDFactionProperties[KDGetFactionOriginal(leashEnemy)])) {
 		if (KDFactionProperties[KDGetFaction(leashEnemy)])
 			forceFaction = KDFactionProperties[KDGetFaction(leashEnemy)].jailFaction
