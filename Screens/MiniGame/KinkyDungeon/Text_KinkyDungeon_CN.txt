@@ -370,6 +370,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 在地图上显示自由的角色
 - Detailed jailed NPCs (experimental)
 被监禁的 NPC 细节 ( 实验性 )
+# - Detailed unique NPCs (experimental)
 - Show Struggle Bars
 显示挣脱进度
 - Allow Suspicious Mods
@@ -2731,10 +2732,18 @@ Devious Dungeon Challenge 已启用。
 
 - Jail Uniform
 监狱制服
+# :: KinkyDungeonInventoryItemJailUniform
+# :: KinkyDungeonInventoryItemPrisoner
 - The prisoners are kept in revealing outfits to keep them from hiding things.
 囚犯们穿着暴露的衣服，以防止他们隐藏东西。
+# :: KinkyDungeonInventoryItemJailUniformDesc
+# :: KinkyDungeonInventoryItemPrisonerDesc
 - Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold.
 使武器难以隐藏。并让你更容易受到寒冷的影响。
+# :: KinkyDungeonInventoryItemJailUniformDesc2
+# :: KinkyDungeonInventoryItemPrisonerDesc2
+
+
 
 
 - Wolfgirl Suit
@@ -2880,6 +2889,7 @@ Devious Dungeon Challenge 已启用。
 一把古老的镀金钥匙。看着似乎什么都打不开…
 - You pick up a shining golden key.
 你拿起了一把闪亮的金色钥匙。
+# - You pick up a bottle of Universal Solvent.
 
 - You pick up a ReplaceValue.
 你拿起了ReplaceValue。
@@ -5422,7 +5432,7 @@ M.F. '女仆长'
 - The feathers fall to the floor.
 羽毛掉到地上。
 - The feathers tease you mercilessly! (DamageTaken)
-羽毛无情地挠你痒痒！ ( DamageTaken )
+羽毛无情地挑逗你！（DamageTaken）
 
 - Cloud of Scarves
 一团围巾
@@ -7853,12 +7863,16 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Your arms are pinned behind your back and you can barely move!
 你的手臂被反扣在背后，几乎无法动弹！
 
-# - A pole, inconveniently placed such that a girl in heels wouldn't be able to raise herself up over it.
+- A pole, inconveniently placed such that a girl in heels wouldn't be able to raise herself up over it.
+一根位置刁钻的桩子，穿高跟鞋的女孩无法抬高自己的身体以摆脱它。
 # :: RestraintOneBarTrapDesc
 # :: RestraintOneBarVibeTrapDesc
-# - Adjustable to fit all damsel sizes. The height cannot be adjusted while locked.
-# - One Bar Heaven
-# - The end vibrates, giving the displayed subject perhaps a bit too much pleasure for their own good.
+- Adjustable to fit all damsel sizes. The height cannot be adjusted while locked.
+能调整适配各种少女的体型。上锁时，无法调节高度。
+- One Bar Heaven
+舒适桩
+- The end vibrates, giving the displayed subject perhaps a bit too much pleasure for their own good.
+末端会振动，给被展示的对象带来可能受不了的极度快感。
 
 
 
@@ -7868,8 +7882,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 展示架突然把你锁在里面！
 # :: KDDisplayTrap
 # :: KDDisplayEgyptianTrap
-# - A plug emerges from the floor and locks you into place as a stand!
-# - A plug emerges from the floor and locks you into place, spreading your legs wide!
+- A plug emerges from the floor and locks you into place as a stand!
+一根桩子拔地而起，强迫你站在原地！
+- A plug emerges from the floor and locks you into place, spreading your legs wide!
+一根桩子从地面弹出，将你锁在原地，双腿大开！
 - A powerful force sucks you down onto the saddle!
 一股强大的力量将你拽回鞍座上！
 - The storage unit beeps and closes behind you!
@@ -9846,7 +9862,8 @@ RestraintName 上的诅咒解除了！
 # :: RestraintComfyLegbinderDesc2
 - Comfy Legbinder
 舒适束腿套
-# - A legbinder that renders you unable to move quickly, either due to restriction or sheer comfort.
+- A legbinder that renders you unable to move quickly, either due to restriction or sheer comfort.
+一种让你不能快走的束腿套，无论是因为束缚感，还是因为它的舒适感。
 
 - Latex Jacket
 乳胶拘束衣
@@ -24358,7 +24375,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 微笑 )|好嘞！我可以做更多炸弹了！
 
 - (The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my drift.
-( SPEAKER 吸了一口雪茄 ) |嘿朋友。我正在市面上寻找一些'工具'，|...如果你明白我的意思的话。
+（SPEAKER 吸了一口雪茄）|嘿朋友。我正在市面上寻找一些“工具”，|……如果你明白我的意思的话。
 - (The SPEAKER pulls out a knife)|Thought so. You won't take me that easily!
 ( SPEAKER 拔出一把刀 ) |我想是的。你不会那么轻易带走我的！
 - (The SPEAKER nods)|Could help out in a bind.
@@ -46506,7 +46523,8 @@ RestraintName 失效了！
 - Due to game limitations, not all types of content can be fully blocked.
 由于游戏限制，并非所有类型的内容都能被完全屏蔽。
 
-# - New content has been added to the consent options since you last played.
+- New content has been added to the consent options since you last played.
+自您上次游玩以来，新增了一些内容设置。
 
 - Yellow
 黄色
@@ -47019,7 +47037,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 你的护盾吸收了 AMNT 的伤害。
 - You are currently shielded from damage and some spells.
 你目前被保护免受伤害和一些法术的伤害。
-- No offhand weapon set. Activate the spell in your hotbar to set one.
+- No offhand weapon set. Click to open inventory and select the action on a weapon'.
 没有副手武器组。激活快捷栏中的咒语来设置一个。
 
 
@@ -49187,7 +49205,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - Saddle Ankle Links
 鞍具踝链
-# - A set of padlocks attaching your ankle cuffs to a piece of saddle furniture.
+- A set of padlocks attaching your ankle cuffs to a piece of saddle furniture.
+一套将脚铐固定在鞍具上的挂锁。
 - The durability depends on the type of lock.
 耐久取决于锁型号。
 # :: RestraintSaddleLinkDesc2
@@ -49195,7 +49214,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - Saddle Thigh Links
 鞍具腿链
-# - A set of padlocks attaching your thigh cuffs to a piece of saddle furniture.
+- A set of padlocks attaching your thigh cuffs to a piece of saddle furniture.
+一套将腿铐固定在鞍具上的挂锁。
 
 
 
@@ -52312,9 +52332,12 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 - Your masterwork collar keeps everything firmly in place!
 你的极品项圈将所有其他组件牢固定住！
 
-# - Your heels make it more difficult to get off the stand!
-# - Your feet are already extended, you can't lift yourself off the stand.
-# - Your feet, locked in heels, can lift you no further to take you off the stand.
+- Your heels make it more difficult to get off the stand!
+穿着高跟鞋让你更难从桩子上下来！
+- Your feet are already extended, you can't lift yourself off the stand.
+你的双脚伸直，没法让自己从桩子上抬起身离开。
+- Your feet, locked in heels, can lift you no further to take you off the stand.
+双脚锁在高跟鞋中，你没法再抬高身体以逃离站桩。
 
 - Unlocked Player Title: 
 已解锁玩家称号：
