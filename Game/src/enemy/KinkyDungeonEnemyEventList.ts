@@ -461,6 +461,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					return 0;
 			}
 			let player = KDPlayer();
+			if (KinkyDungeonLeashingEnemy() && KinkyDungeonLeashingEnemy() != enemy) return 0;
 			return (hostile
 				&& (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing)
 				&& ((KinkyDungeonFlags.has("Released"))
@@ -1199,6 +1200,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		// This will make the enemy want to leash you
 		weight: (enemy, aiData, _allied, hostile, _aggressive) => {
 			if (!enemy.Enemy.tags.leashing) return 0;
+			if (KinkyDungeonLeashingEnemy() && KinkyDungeonLeashingEnemy() != enemy) return 0;
 			if (KinkyDungeonFlags.get("Released")) return 0;
 			if (KinkyDungeonFlags.get("LeashToPrison")) return 0;
 			if (KDGameData.PrisonerState == 'jail') return 0;

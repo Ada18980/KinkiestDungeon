@@ -4960,6 +4960,7 @@ function KDRunRegularJailDefeatAttempt(CDE: entity, allowMain: boolean = true, r
 		fromHere ? "Jail" : undefined,
 		true
 	);
+	if (KDPersonalAlt[outpost]) forceFaction = KDPersonalAlt[outpost].OwnerFaction;
 	if (KDMapData.RoomType == outpost) return true; // defeat in place
 	if (KDHasEntranceToJailRoom(outpost || jailroom, KDGetCurrentLocation(), allowMain)) {
 		return true;
