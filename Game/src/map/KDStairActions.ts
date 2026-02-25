@@ -42,7 +42,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 	let Advance = KDAdvanceAmount[toTile](altRoom, null, tile);
 	let AdvanceAmount = Advance.AdvanceAmount;
 
-	let journeyTile = KDGameData.JourneyTarget ? KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y]
+	let journeyTile = KDGameData.JourneyTarget && KDGameData.UseJourneyTarget ? KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y]
 		: KDGameData.JourneyMap[KDGameData.JourneyX + ',' + (KDGameData.JourneyY + AdvanceAmount)];
 	let originalRoom = KDGameData.RoomType;
 
@@ -165,7 +165,8 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				KDMapData.MapFaction = KDMapMods[KDGameData.MapMod].faction || "";
 			} else {
 				KDGameData.MapMod = "";
-				KDMapData.MapFaction = "";
+				//KDMapData.MapFaction = "";
+				//data.faction = "";
 			}
 
 			if (!data.overrideJourney) {
