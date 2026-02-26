@@ -6261,7 +6261,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			}
 		},
 		"Burning": (e, _spell, data) => {
-			if (data.enemy && (!data.flags || !data.flags.includes("BurningDamage")) && data.dmg > 0 && (!e.damage || e.damage == data.type)) {
+			if (data.enemy && (!data.flags || !data.flags.includes("BurningDamage")) && data.dmg > 0 && (!e.damage || e.damage == data.type) && data.faction == "Player") {
 				if ((!e.chance || KDRandom() < e.chance)) {
 					KinkyDungeonApplyBuffToEntity(data.enemy, KDBurning);
 				}
