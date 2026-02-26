@@ -57,6 +57,12 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - One bar prisons now are harder to escape if you wear heels
 - one bar prisons now appear around the map sometimes
 
+5.4.92
+- Fixed a bug where names could be duplicated for patron NPCs
+- Fixed a bug (again) where prisons ingame faction might not match the stated faction
+- Fixed missing string for Metamorphosis
+- fixed some sleepsack layering
+
 5.4.91
 - Can select offhand weapon by clicking the button
 - Dodge tokens now have a minimum 40% chance of being removed when an enemy dodges no matter your accuracy
