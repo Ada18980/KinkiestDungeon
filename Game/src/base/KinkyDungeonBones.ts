@@ -1405,8 +1405,8 @@ function KDProcessCustomPatron(Enemy: enemy, e: entity, chanceBoost: number, mak
 	if (!e.CustomName && KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < chance) {
 		let customs: any[] = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
 			return !KDGameData.NamesGenerated[element.name]
-			&& (element.prisoner && KDEnemyHasFlag(e, "imprisoned"))
-				|| (element.free && !KDEnemyHasFlag(e, "imprisoned"));
+			&& ((element.prisoner && KDEnemyHasFlag(e, "imprisoned"))
+				|| (element.free && !KDEnemyHasFlag(e, "imprisoned")));
 		});
 		if (customs.length > 0) {
 			let custom = customs[Math.floor(customs.length * KDRandom())];
