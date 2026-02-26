@@ -255,7 +255,7 @@ async function KDExecuteModsAndStart() {
 
 	if (!KDToggles.OverrideOutfit)
 		KinkyDungeonConfigAppearance = false;
-	KinkyDungeonStartNewGame(true);
+	await KinkyDungeonStartNewGameWithLoad();
 }
 
 /** Updates mod info by unzipping mods and reading the info only */

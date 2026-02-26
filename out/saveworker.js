@@ -1,8 +1,55 @@
 // eslint-disable-next-line strict
 importScripts('../Scripts/lib/LZString.js');
 
-onmessage = (e) => {
+async function compressGzip(input) {
+	const encoder = new TextEncoder();
+	const inputBytes = encoder.encode(input);
+
+	const cs = new CompressionStream('gzip');
+	const writer = cs.writable.getWriter();
+	writer.write(inputBytes);
+	writer.close();
+
+	const chunks = [];
+	const reader = cs.readable.getReader();
+	while (true) {
+		const {done, value} = await reader.read();
+		if (done) break;
+		chunks.push(value);
+	}
+
+	const totalLen = chunks.reduce((sum, c) => sum + c.length, 0);
+	const compressed = new Uint8Array(totalLen);
+	let offset = 0;
+	for (const chunk of chunks) {
+		compressed.set(chunk, offset);
+		offset += chunk.length;
+	}
+
+	// Use toBase64() where available (Chrome 137+), fall back to btoa for older engines
+	let b64;
+	if (typeof compressed.toBase64 === 'function') {
+		b64 = compressed.toBase64();
+	} else {
+		let binary = '';
+		for (let i = 0; i < compressed.length; i++) {
+			binary += String.fromCharCode(compressed[i]);
+		}
+		b64 = btoa(binary);
+	}
+	return 'data:application/vnd.straightlaced.kinkydungeon.save.game+gzip;version=2;base64,' + b64;
+}
+
+onmessage = async (e) => {
 	console.log("Compressing save in worker thread...");
-	postMessage(LZString.compressToBase64(e.data));
+	// Support both old format (string) and new format ({save, useGzip})
+	const data = typeof e.data === 'string' ? e.data : e.data.save;
+	const useGzip = typeof e.data === 'string' ? false : e.data.useGzip;
+
+	if (useGzip && typeof CompressionStream !== 'undefined') {
+		postMessage(await compressGzip(data));
+	} else {
+		postMessage(LZString.compressToBase64(data));
+	}
 	close();
 };

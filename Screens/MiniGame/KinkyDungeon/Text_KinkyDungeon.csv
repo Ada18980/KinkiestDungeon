@@ -77,6 +77,7 @@ KDToggleApplyPaletteRestraint,Apply palettes to Restraints
 KDToggleApplyPaletteTransform,Apply palettes to transforms
 
 KDToggleInvLimit,(Test) Enforce Inventory Limits
+KDToggleNativeCompression,Native Browser Save Compression
 KDToggleIgnoreApplyCharPalette,Don't use character palette
 KDToggleAlwaysApplyCharPalette,Always use character palette
 KDToggleDefaultApplyCharPalette,Use character palette for default outfit
