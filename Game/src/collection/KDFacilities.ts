@@ -65,7 +65,7 @@ function KDValidateAllFacilities() {
 				for (let servant of servants) {
 					if (!KDValidateServant(KDGameData.Collection[servant + ""],
 						facility,
-						tag)) {
+						tag) || KDGameData.Collection[servant + ""].Facility != facility) {
 							servants.splice(servants.indexOf(servant), 1);
 							if (KDGameData.Collection[servant + ""])
 								delete KDGameData.Collection[servant + ""].Facility;
