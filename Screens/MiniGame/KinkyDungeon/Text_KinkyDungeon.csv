@@ -11369,6 +11369,8 @@ KinkyDungeonSpecialStaffFlame,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffIncineration,Ignite torches and nearby objects
 KinkyDungeonSpecialPickaxe,"Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks."
 
+KinkyDungeonSpellCastSlimeSuit,Your body takes on properties of liquid latex as you use the staff!
+
 KDCategoryToggles,Preferences
 KDCategoryToggles2,Preferences 2
 KDCategoryMulticlass,Multiclass
@@ -22214,6 +22216,48 @@ m_OneBarPrisonLatex,OneBarPrisonLatex
 m_OneBarPrisonLatex_l_OneBarTop,OneBarTop
 m_OneBarPrisonLatex_l_OneBarFront,OneBarFront
 m_OneBarPrisonLatex_l_OneBarBack,OneBarBack
+
+m_SmoothBody,SmoothBody
+m_SmoothBody_l_Head,Head
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Torso,Torso
+m_SmoothBody_l_Nipples,Nipples
+m_SteelSpreader,SteelSpreader
+m_SteelSpreader_l_ShortLeft,ShortLeft
+m_SteelSpreader_l_ShortRight,ShortRight
+m_SteelSpreader_l_Bar,Bar
+m_SleepsackSuspend,SleepsackSuspend
+m_SleepsackSuspend_l_Straps,Straps
+m_BondageBed_l_Straps,Straps
+m_BondageBed_l_Straps,Straps
+m_BondageBed_l_Straps,Straps
+m_BondageBed_l_Straps,Straps
+m_BondageBed_l_Straps,Straps
+m_BondageBed_l_Straps,Straps
+m_OneBarPrisonSpreader,OneBarPrisonSpreader
+m_OneBarPrisonSpreader_l_OneBarTop,OneBarTop
+m_OneBarPrisonSpreader_l_OneBarFront,OneBarFront
+m_OneBarPrisonSpreader_l_OneBarLarge,OneBarLarge
+m_OneBarPrisonSpreader_l_ShortLeft,ShortLeft
+m_OneBarPrisonSpreader_l_ShortRight,ShortRight
+m_OneBarPrisonSpreader_l_Bar,Bar
+m_Spats_l_SpatsRight,SpatsRight
+
 
 
 m_FangMouth,FangMouth
@@ -33232,3 +33276,4 @@ KDSafewordConfirm,Confirm Safeword?
 KDSafewordDesc,"Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. "
 KDSafewordMenu,"Only usable ingame."
 KDSafwordMsg,${Playername} used her safeword and was transported to the beginning of the level.
+

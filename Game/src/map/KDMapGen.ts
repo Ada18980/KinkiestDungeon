@@ -331,7 +331,7 @@ function KinkyDungeonCreateMap (
 		}
 
 		let randomFactions = KDChooseFactions(factionList, Floor, [], bonus, true);
-		let factionEnemy = randomFactions[2] || forceFaction || "Bandit";
+		let factionEnemy = randomFactions[2] || "Bandit";
 		if (forceFaction) {
 			KDMapData.MapFaction = forceFaction;
 			KDMapData.JailFaction = [forceFaction];

@@ -29,6 +29,8 @@ let LAYERS_BASE = [
 	// Head items
 	"BlindfoldStraps",
 	"Blindfold",
+	"Goggles",
+	"Glasses",
 	"GagOver",
 	"GagMuzzleStraps",
 	"GagMuzzle",
@@ -45,8 +47,6 @@ let LAYERS_BASE = [
 	"MaskOver",
 	"CircletUnder",
 	"Mask",
-	"Goggles",
-	"Glasses",
 	"BlindfoldWrap",
 	"GagWrap",
 	// Head
@@ -195,6 +195,7 @@ let LAYERS_BASE = [
 	"LegbinderAnkleRightPants",
 
 
+	"BulkyJacket",
 
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
@@ -1855,6 +1856,15 @@ let LayerGroups = {
 			"Circlet",
 		]
 	),
+	Waistbelts: ToMap([
+		"BeltBondage",
+		"BeltCharm",
+		"BeltCharmSide",
+		"BeltArmor",
+		"Belt",
+		"BeltDeco",
+		"BeltUnder",
+	]),
 	Skirts: ToMap([
 		// These count as skirts since they are a layer over
 		"LegbinderLegRightPants",
@@ -1863,7 +1873,7 @@ let LayerGroups = {
 		
 		"BaggyShirt",
 		
-		"BulkyShirt",
+		"BulkyShirt","BulkyJacket",
 
 		"Apron",
 		"SkirtDeco",
@@ -1877,7 +1887,7 @@ let LayerGroups = {
 		// TODO make open sleepsack legs erase these
 		
 		"BaggyShirt",
-		"BulkyShirt",
+		"BulkyShirt","BulkyJacket",
 
 		"Apron",
 		"SkirtDeco",
@@ -1977,7 +1987,7 @@ let LayerGroups = {
 	"Apron",
 
 	"BaggyShirt",
-		"BulkyShirt",
+		"BulkyShirt","BulkyJacket",
 	// Skirts that dont follow shilhouette
 	"OverSkirtOverDeco",
 	"OverSkirtOver",
