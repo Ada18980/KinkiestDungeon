@@ -369,8 +369,9 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Show free characters on map
 在地图上显示自由的角色
 - Detailed jailed NPCs (experimental)
-被监禁的 NPC 细节 ( 实验性 )
-# - Detailed unique NPCs (experimental)
+高清被监禁的 NPC（实验性）
+- Detailed unique NPCs (experimental)
+高清独特 NPC（实验性）
 - Show Struggle Bars
 显示挣脱进度
 - Allow Suspicious Mods
@@ -2889,7 +2890,8 @@ Devious Dungeon Challenge 已启用。
 一把古老的镀金钥匙。看着似乎什么都打不开…
 - You pick up a shining golden key.
 你拿起了一把闪亮的金色钥匙。
-# - You pick up a bottle of Universal Solvent.
+- You pick up a bottle of Universal Solvent.
+你捡起了一瓶乳胶溶剂。
 
 - You pick up a ReplaceValue.
 你拿起了ReplaceValue。
