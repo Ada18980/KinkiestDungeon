@@ -1707,6 +1707,7 @@ EnemyName对TargetName念出了一个口令！
 # :: KinkyDungeonPlayerVibratedLocationItemNipples
 # :: KinkyDungeonGroupItemNipples
 # :: m_Body_l_Nipples
+# :: m_SmoothBody_l_Nipples
 - Breasts
 胸
 - Panties
@@ -11201,6 +11202,7 @@ RestraintName 上的诅咒解除了！
 # :: m_Body_l_Head
 # :: m_BubbleHead_l_Head
 # :: m_FashionBubbleHead_l_Head
+# :: m_SmoothBody_l_Head
 # :: m_KiguMask_l_Head
 # :: m_FashionKiguMask_l_Head
 # :: m_KiguMaskSmile_l_Head
@@ -11301,6 +11303,23 @@ RestraintName 上的诅咒解除了！
 # :: l_Body_Torso
 # :: m_Body_l_Torso
 # :: m_Body_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
+# :: m_SmoothBody_l_Torso
 # :: KDFilterFiltersTorso
 - Bra
 胸罩
@@ -21728,6 +21747,8 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: KinkyDungeonSpecialStaffIncineration
 - Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks.
 撞到一块有裂纹的瓷砖。如果另一侧有空隙或裂缝，它就会断裂。
+
+# - Your body takes on properties of liquid latex as you use the staff!
 
 - Preferences
 偏好
@@ -35219,6 +35240,7 @@ V形比基尼
 # :: m_OneBarPrison_l_OneBarFront
 # :: m_OneBarPrison_l_OneBarFront
 # :: m_OneBarPrisonLatex_l_OneBarFront
+# :: m_OneBarPrisonSpreader_l_OneBarFront
 # - OneBarBack
 # :: m_OneBarPrison_l_OneBarBack
 # :: m_OneBarPrison_l_OneBarBack
@@ -38758,6 +38780,13 @@ Aura刘海(右后)
 绑带
 :: m_BraStraps_l_Straps
 肩带
+# :: m_SleepsackSuspend_l_Straps
+# :: m_BondageBed_l_Straps
+# :: m_BondageBed_l_Straps
+# :: m_BondageBed_l_Straps
+# :: m_BondageBed_l_Straps
+# :: m_BondageBed_l_Straps
+# :: m_BondageBed_l_Straps
 # :: m_LeatherLeotardStrapsUpper_l_Straps
 # :: m_LeatherLeotardStrapsLower_l_Straps
 # :: m_LeatherLeotardStrapsLowerClean_l_Straps
@@ -40196,7 +40225,25 @@ Aura刘海(右后)
 # - OneBarTop
 # :: m_OneBarPrison_l_OneBarTop
 # :: m_OneBarPrisonLatex_l_OneBarTop
+# :: m_OneBarPrisonSpreader_l_OneBarTop
 # - OneBarPrisonLatex
+
+# - SmoothBody
+# - SteelSpreader
+# - ShortLeft
+# :: m_SteelSpreader_l_ShortLeft
+# :: m_OneBarPrisonSpreader_l_ShortLeft
+# - ShortRight
+# :: m_SteelSpreader_l_ShortRight
+# :: m_OneBarPrisonSpreader_l_ShortRight
+# - Bar
+# :: m_SteelSpreader_l_Bar
+# :: m_OneBarPrisonSpreader_l_Bar
+# - SleepsackSuspend
+# - OneBarPrisonSpreader
+# - OneBarLarge
+# - SpatsRight
+
 
 
 - FangMouth
@@ -52703,3 +52750,4 @@ Boss
 仅限游戏内使用。
 - ${Playername} used her safeword and was transported to the beginning of the level.
 ${Playername}使用了安全词，被传送回关卡起点。
+
