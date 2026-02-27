@@ -4163,6 +4163,7 @@ type KDCollectionTabDrawDef = (value: KDCollectionEntry, buttonSpacing: number, 
 
 interface KDCollectionEntry {
 	name: string,
+	refreshSprite?: boolean,
 	origname?: string,
 	color: string,
 	type: string,

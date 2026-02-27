@@ -146,6 +146,8 @@ let KDToggles = {
 	StruggleBars: true,
 	ShowJailedNPCSprites: true,
 	ShowPatronNPCSprites: true,
+	ShowServantNPCSprites: false,
+	ShowOtherNPCSprites: false,
 	ShowZoom: true,
 	Backgrounds: true,
 	RawDP: false,
@@ -206,6 +208,9 @@ let KDToggleCategories = {
 	ShowZoom: "UI",
 	ShowJailedNPCSprites: "GFX",
 	ShowPatronNPCSprites: "GFX",
+
+	ShowServantNPCSprites: "GFX",
+	ShowOtherNPCSprites: "GFX",
 
 	StruggleBars: "UI",
 	SpellBook: "UI",

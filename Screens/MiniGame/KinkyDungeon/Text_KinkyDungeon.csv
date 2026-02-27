@@ -33,7 +33,7 @@ RestartNeededPL,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.91"
+KDVersionStr,"5.4.92"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -98,6 +98,8 @@ KDToggleSaveOutfit,Save Outfits within Save Files
 KDToggleShowNPCSprites,Show free characters on map
 KDToggleShowJailedNPCSprites,Detailed jailed NPCs (experimental)
 KDToggleShowPatronNPCSprites,Detailed unique NPCs (experimental)
+KDToggleShowServantNPCSprites,Detailed servants in collection
+KDToggleShowOtherNPCSprites,Detailed prisoners/guests in collection
 KDToggleStruggleBars,Show Struggle Bars
 KDToggleAllowSusMods,Allow Suspicious Mods
 KDToggleAutoLoadMods,Auto Load Mods (offline only)

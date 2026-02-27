@@ -3794,12 +3794,12 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 		let icon = 0;
 		let maxSmallIcons = allowOverflow ? KinkyDungeonSpellChoiceRenderRows : 3;
 		// Draw icons for the other pages, if applicable
-		for (let page = 1; page < maxSmallIcons && page <= Math.floor((max_choices - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
+		for (let page = 1; page < maxSmallIcons && page <= Math.floor((KinkyDungeonSpellChoiceCount - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
 			let pg = KDSpellPage + page;
-			if (pg > Math.floor((max_choices) / KinkyDungeonSpellChoiceCountPerPage)) pg -= Math.floor((max_choices - 1) / KinkyDungeonSpellChoiceCountPerPage);
+			if (pg > Math.floor((KinkyDungeonSpellChoiceCount) / KinkyDungeonSpellChoiceCountPerPage)) pg -= Math.floor((KinkyDungeonSpellChoiceCount) / KinkyDungeonSpellChoiceCountPerPage);
 
 			// Now we have our page...
-			let indexPaged = (i + pg * KinkyDungeonSpellChoiceCountPerPage) % (max_choices);
+			let indexPaged = (i + pg * KinkyDungeonSpellChoiceCountPerPage) % (KinkyDungeonSpellChoiceCount);
 			let spellPaged = KinkyDungeonSpells[KinkyDungeonSpellChoices[indexPaged]];
 			let item = KinkyDungeonConsumableChoices[indexPaged] || KinkyDungeonWeaponChoices[indexPaged] || KinkyDungeonArmorChoices[indexPaged];
 			let arm = KinkyDungeonArmorChoices[indexPaged];
