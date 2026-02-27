@@ -1155,8 +1155,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 			let size = Math.max(79, 79);
 			drawChar = true;
 			DrawCharacter(char,
-					XX + size/2.5,
-			YY + size/4.5,
+				XX + size/2.7,
+				YY + size*0.2,
 				size/1300, false, kdcanvas, undefined, 
 				CHIBIMOD, 101, false, undefined, 
 				value.name + "_coll," + value.id, CHIBIMODEND);
@@ -1274,7 +1274,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 				drawChar = true;
 				DrawCharacter(char,
 					XX + size/2.7,
-			YY + size/3.7,
+					YY + size*0.2,
 					size/1300, false, kdcanvas, undefined, 
 					CHIBIMOD, 101, false, undefined, 
 					value.name + "_coll," + value.id, CHIBIMODEND);
