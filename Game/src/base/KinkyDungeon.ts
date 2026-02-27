@@ -1804,6 +1804,7 @@ function KinkyDungeonRun() {
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
 						let decoded = LZString.decompressFromBase64(code);
+						if (!decoded) return;
 						let parse = JSON.parse(decoded);
 						if (decoded && parse?.KDGameData?.PlayerName)
 							loadedsaveNames[num - 1] =
