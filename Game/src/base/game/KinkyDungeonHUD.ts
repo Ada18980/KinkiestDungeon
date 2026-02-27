@@ -686,7 +686,7 @@ function KDDrawSpellChoices() {
 		// Draw icons for the other pages, if applicable
 		for (let page = 1; page < maxSmallIcons && page <= Math.floor((max_choices - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
 			let pg = KDSpellPage + page;
-			if (pg > Math.floor((max_choices) / KinkyDungeonSpellChoiceCountPerPage)) pg -= Math.floor((max_choices - 1) / KinkyDungeonSpellChoiceCountPerPage);
+			if (pg > Math.floor((max_choices) / KinkyDungeonSpellChoiceCountPerPage)) pg -= Math.floor((max_choices) / KinkyDungeonSpellChoiceCountPerPage);
 
 			// Now we have our page...
 			let indexPaged = (i + pg * KinkyDungeonSpellChoiceCountPerPage) % (max_choices);

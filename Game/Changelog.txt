@@ -63,6 +63,10 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Fixed missing string for Metamorphosis
 - fixed some sleepsack layering
 
+5.4.92
+- Added option to render detailed NPCs in collection (note: graphics intensive)
+- Various minor bug fixes
+
 5.4.91
 - Can select offhand weapon by clicking the button
 - Dodge tokens now have a minimum 40% chance of being removed when an enemy dodges no matter your accuracy
