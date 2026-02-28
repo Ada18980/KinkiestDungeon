@@ -372,6 +372,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 高清被监禁的 NPC（实验性）
 - Detailed unique NPCs (experimental)
 高清独特 NPC（实验性）
+# - Detailed servants in collection
+# - Detailed prisoners/guests in collection
 - Show Struggle Bars
 显示挣脱进度
 - Allow Suspicious Mods
