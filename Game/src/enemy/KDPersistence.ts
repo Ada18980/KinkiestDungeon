@@ -412,13 +412,17 @@ function KDMovePersistentNPC(id: number, coord: WorldCoord): boolean {
 			PNPC.spawned = false;
 			if (PNPC.persistentParty) {
 				for (let pmid of PNPC.persistentParty) {
-					if (KDCompareLocation(oldCoord, KDGetNPCLocation(pmid))) {
-						// Move with them if they are in same slot, otherwise dont
+					let loc = KDGetNPCLocation(pmid);
+					if (!loc || KDCompareLocation(oldCoord, loc)) {
+						// Move with them if they are in same slot or in limbo, otherwise dont
 						let npc = KDGetPersistentNPC(pmid);
-						npc.spawned = false;
-						npc.room = coord.room;
-						npc.mapY = coord.mapY;
-						npc.mapX = coord.mapX;
+						if (npc) {
+
+							npc.spawned = false;
+							npc.room = coord.room;
+							npc.mapY = coord.mapY;
+							npc.mapX = coord.mapX;
+						}
 					}
 				}
 			}
