@@ -1544,6 +1544,9 @@ function KinkyDungeonRun() {
 				if (!MC.ContainersDrawn.has(Container[0]) && Container[1]) {
 					Container[1].Mesh.parent.removeChild(Container[1].Container);
 					MC.Containers.delete(Container[0]);
+					MC.Update.delete(Container[0])
+					MC.ForceUpdate.delete(Container[0])
+					MC.Refresh.delete(Container[0])
 					KDContainerClear(Container[1]);
 				} else if (refresh && (
 					ent[0] == KinkyDungeonPlayer
