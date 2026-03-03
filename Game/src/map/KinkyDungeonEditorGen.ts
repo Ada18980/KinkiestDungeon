@@ -1007,7 +1007,7 @@ let KDTileGen = {
 	"Cage": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
 		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
-		return {Type: "Furniture", Furniture: KDGetPervertibleFurniture("Cage", 0)};
+		return {Type: "Furniture", Furniture: KDGetPervertibleFurniture("Cage", KinkyDungeonStatsChoice.get("MoreKinkyFurniture") ? 0.8 : 0.1)};
 	},
 	"DisplayStand": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
@@ -1199,7 +1199,7 @@ function KDGetCategoryIndex(x, y) {
 }
 
 let KDPervertibleFurnitureWeights: Record<string, number> = {
-	Cage: 0.6,
+	//Cage: 0.6,
 	LatexDisplayStand: 0.1,
 	DisplayStand: 0.3,
 	OneBarTrap: 0.1,
@@ -1207,7 +1207,7 @@ let KDPervertibleFurnitureWeights: Record<string, number> = {
 }
 
 function KDGetPervertibleFurniture(base = "Cage", pervertChance = 0.1): string {
-	if (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") || KDRandom() < pervertChance) {
+	if (KDRandom() < pervertChance) {
 		return KDGetByWeight(KDPervertibleFurnitureWeights);
 	}
 
