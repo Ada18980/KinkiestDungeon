@@ -238,7 +238,8 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["Adventurer_Brat_Fighter", [
-		{name: "Rook", color: KDBaseRed, prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Rook"},
+		{name: "", color: KDBaseRed, prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Rook",
+			customOutfit: "Rook", customStyle: "Rook"},
 	],
 	],
 	["DragonLeaderDuelist", [
