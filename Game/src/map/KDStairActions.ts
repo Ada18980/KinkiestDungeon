@@ -148,8 +148,10 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 			}
 			if (!data.overrideRoomType) {
 				if (tile?.RoomType != undefined) {
-					data.roomType = tile.RoomType;
+					data.roomType = tile.RoomType || altRoomTarget?.name;
 					data.mapMod = tile.MapMod;
+					data.faction = tile.Faction || altRoomTarget?.faction;
+					altRoomTarget.faction
 					KDGameData.MapMod = ""; // Reset the map mod
 				} else {
 					// If its an exit stair in the main, we override to the main of next floor

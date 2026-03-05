@@ -1095,10 +1095,12 @@ let KDTileGen = {
 		return {Type: "BondageMachine", OL: true, Binding: tileGenerator.Binding};
 	},
 	"EffectTile": (x, y, tile, tileGenerator, data) => {
-		KDCreateEffectTile(x, y, {
+		let tt = {
 			name: tileGenerator.Tile,
 			duration: 9999,
-		}, 0);
+			infinite: true,
+		};
+		KDCreateEffectTile(x, y, tt, 0);
 		return null;
 	},
 	"AutoDoor": (x, y, tile, tileGenerator, data) => {
