@@ -33,7 +33,7 @@ RestartNeededPL,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.92"
+KDVersionStr,"5.4.93"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -14302,7 +14302,7 @@ m_BraidCustomBackNoBraid,"Back Only"
 l_BraidCustomBackNoBraid_BraidCustomBack,"Braid Upper"
 m_Ahoge,"Ahoge"
 l_Ahoge_Ahoge,"Ahoge"
-m_Body,"Body"
+m_Body,"Standard Body"
 l_Body_Head,"Head"
 l_Body_Torso,"Torso"
 m_Catsuit,"Catsuit"
@@ -22233,7 +22233,29 @@ m_OneBarPrisonLatex_l_OneBarTop,OneBarTop
 m_OneBarPrisonLatex_l_OneBarFront,OneBarFront
 m_OneBarPrisonLatex_l_OneBarBack,OneBarBack
 
-m_SmoothBody,SmoothBody
+
+m_DollBody,Doll Body
+m_DollBody_l_Head,Head
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Torso,Torso
+m_DollBody_l_Nipples,Nipples
+
+m_SmoothBody,Smooth Body
 m_SmoothBody_l_Head,Head
 m_SmoothBody_l_Torso,Torso
 m_SmoothBody_l_Torso,Torso

@@ -181,10 +181,25 @@ AddModel({
 AddModel({
 	Name: "SmoothBody",
 	Group: "Body",
-	TopLevel: true,
+	//TopLevel: true,
+	Parent: "Body",
 	Protected: true,
 	Categories: ["Body"],
 	Folder: "BodySmooth",
+	AddPose: ["Body"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Body"),
+	])
+});
+
+AddModel({
+	Name: "DollBody",
+	Group: "Body",
+	//TopLevel: true,
+	Parent: "Body",
+	Protected: true,
+	Categories: ["Body"],
+	Folder: "BodyDoll",
 	AddPose: ["Body"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Body"),

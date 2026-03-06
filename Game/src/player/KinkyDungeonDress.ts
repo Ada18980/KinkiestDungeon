@@ -823,10 +823,18 @@ function KinkyDungeonDressPlayer (
 			UpdateModels(Character, Xray, customFaction);
 		let ReUpdate = false;
 
-		let hairstyle = KDNPCStyle.get(Character)?.hairstyle || "Default";
-		let bodystyle = KDNPCStyle.get(Character)?.bodystyle || "Default";
-		let facestyle = KDNPCStyle.get(Character)?.facestyle || "Default";
-		let cosplaystyle = KDNPCStyle.get(Character)?.cosplaystyle || "Default";
+		let defaultStyle = CommonRandomItemFromList(null, DefaultStyles);
+
+		let hairstyle:string = KDNPCStyle.get(Character)?.hairstyle
+			|| (KDModelStyles[defaultStyle]?.Hairstyle ? CommonRandomItemFromList(null, KDModelStyles[defaultStyle]?.Hairstyle) : "")
+			|| "Default";
+		let bodystyle:string = KDNPCStyle.get(Character)?.bodystyle
+			|| (KDModelStyles[defaultStyle]?.Hairstyle ? CommonRandomItemFromList(null, KDModelStyles[defaultStyle]?.Bodystyle) : "")
+			|| "Default";
+		let facestyle:string = KDNPCStyle.get(Character)?.facestyle
+			|| (KDModelStyles[defaultStyle]?.Hairstyle ? CommonRandomItemFromList(null, KDModelStyles[defaultStyle]?.Facestyle) : "")
+			|| "Default";
+		let cosplaystyle:string = KDNPCStyle.get(Character)?.cosplaystyle || "Default";
 
 
 		if (!KDCurrentModels.get(Character)?.Poses?.Body && KDModelBody[bodystyle]) {
@@ -1415,3 +1423,7 @@ function KDGetPlayerPalette(C: Character) {
 	}
 	return palette;
 }
+
+let DefaultStyles = [
+	"BlueHair","GreenHair", "WhiteHair", "Ice", "Water", "Earth", "Air", "Fire", "RedHair", 
+];
