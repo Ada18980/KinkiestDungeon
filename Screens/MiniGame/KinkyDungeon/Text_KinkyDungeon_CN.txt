@@ -1709,6 +1709,7 @@ EnemyName对TargetName念出了一个口令！
 # :: KinkyDungeonPlayerVibratedLocationItemNipples
 # :: KinkyDungeonGroupItemNipples
 # :: m_Body_l_Nipples
+# :: m_DollBody_l_Nipples
 # :: m_SmoothBody_l_Nipples
 - Breasts
 胸
@@ -11204,6 +11205,7 @@ RestraintName 上的诅咒解除了！
 # :: m_Body_l_Head
 # :: m_BubbleHead_l_Head
 # :: m_FashionBubbleHead_l_Head
+# :: m_DollBody_l_Head
 # :: m_SmoothBody_l_Head
 # :: m_KiguMask_l_Head
 # :: m_FashionKiguMask_l_Head
@@ -11305,6 +11307,23 @@ RestraintName 上的诅咒解除了！
 # :: l_Body_Torso
 # :: m_Body_l_Torso
 # :: m_Body_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
+# :: m_DollBody_l_Torso
 # :: m_SmoothBody_l_Torso
 # :: m_SmoothBody_l_Torso
 # :: m_SmoothBody_l_Torso
@@ -26720,8 +26739,6 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_KjusEyes5_l_Eyes
 - Body
 身体
-# :: cat_Body
-# :: m_Body
 - Gloves
 手套
 # :: cat_Gloves
@@ -26803,6 +26820,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_Ahoge_l_Ahoge
 # :: m_Ahoge_l_Ahoge
 # :: m_PointyAhoge_l_Ahoge
+- Standard Body
+身体
 - Catsuit
 全包胶衣
 # :: m_Catsuit
@@ -40230,7 +40249,10 @@ Aura刘海(右后)
 # :: m_OneBarPrisonSpreader_l_OneBarTop
 # - OneBarPrisonLatex
 
-# - SmoothBody
+
+# - Doll Body
+
+# - Smooth Body
 # - SteelSpreader
 # - ShortLeft
 # :: m_SteelSpreader_l_ShortLeft
