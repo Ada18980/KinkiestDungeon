@@ -151,7 +151,6 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 					data.roomType = tile.RoomType || altRoomTarget?.name;
 					data.mapMod = tile.MapMod;
 					data.faction = tile.Faction || altRoomTarget?.faction;
-					altRoomTarget.faction
 					KDGameData.MapMod = ""; // Reset the map mod
 				} else {
 					// If its an exit stair in the main, we override to the main of next floor
@@ -199,7 +198,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				}
 			}
 
-			KDGameData.RoomType = data.roomType;
+			KDGameData.RoomType = data.roomType || "";
 
 
 			KinkyDungeonSendActionMessage(10, TextGet("ClimbDown" + toTile), KDBaseWhite, 1);
