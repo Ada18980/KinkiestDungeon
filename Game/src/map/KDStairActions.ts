@@ -175,7 +175,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 			if (MapMod) {
 				KDGameData.MapMod = MapMod;
 				//KDMapData.MapFaction = KDMapMods[KDGameData.MapMod].faction || "";
-				data.faction = KDMapMods[KDGameData.MapMod].faction || data.faction || "";
+				data.faction = KDMapMods[KDGameData.MapMod]?.faction || data.faction || "";
 			} else {
 				KDGameData.MapMod = "";
 				//KDMapData.MapFaction = "";

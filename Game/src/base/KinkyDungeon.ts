@@ -1144,10 +1144,6 @@ function KDReloadMainData(force: boolean) {
 
 		CharacterAppearanceRestore(KinkyDungeonPlayer, appearance, false, true);
 
-		DrawCharacter(KinkyDungeonPlayer, 0, 0, 0.01);
-		
-		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-		KinkyDungeonDressPlayer();
 
 		CharacterReleaseTotal(KinkyDungeonPlayer);
 
@@ -1160,6 +1156,10 @@ function KDReloadMainData(force: boolean) {
 
 		CharacterNaked(KinkyDungeonPlayer);
 
+
+		
+		DrawCharacter(KinkyDungeonPlayer, 0, 0, 0.01);
+		
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 
