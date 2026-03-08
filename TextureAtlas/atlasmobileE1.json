@@ -2792,6 +2792,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.25",
 	"related_multi_packs": [ "atlasmobileE0.json", "atlasmobileE2.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:44a520ffd909b7e084dde36ecaeccc0f:0b5bdfb0bedc777bd5611f58b7e8dd0f:f85b66f7b201a5f22f1563e00a94b472$"
+	"smartupdate": "$TexturePacker:SmartUpdate:7c4ba096a288b8a056c5841c1d7c5df5:0b5bdfb0bedc777bd5611f58b7e8dd0f:f85b66f7b201a5f22f1563e00a94b472$"
 }
 }
