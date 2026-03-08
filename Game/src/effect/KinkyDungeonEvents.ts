@@ -9735,7 +9735,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 					willing: true,
 				};
 				KinkyDungeonSendEvent("beforeTeleport", tdata);
-				if (tdata.cancel) {
+				if (!tdata.cancel) {
 					KDMoveEntity(enemy, nearest.x, nearest.y, true);
 					KinkyDungeonRemoveBuffsWithTag(enemy, ["displaceend"]);
 				}
@@ -9795,7 +9795,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 					willing: true,
 				};
 				KinkyDungeonSendEvent("beforeTeleport", tdata);
-				if (tdata.cancel) {
+				if (!tdata.cancel) {
 					KDMoveEntity(enemy, point.x, point.y, true);
 					KinkyDungeonRemoveBuffsWithTag(enemy, ["displaceend"]);
 					//KinkyDungeonSendTextMessage(5, TextGet("KDDragonTeleport"), "#814fb8", 1);
@@ -10109,7 +10109,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 							willing: false,
 						};
 						KinkyDungeonSendEvent("beforeTeleport", tdata);
-						if (tdata.cancel) {
+						if (!tdata.cancel) {
 							KDMoveEntity(en, point.x, point.y, false, false, true);
 							en.teleporting = Math.max(en.teleporting || 0, 4);
 							en.teleportingmax = Math.max(en.teleportingmax || 0, 4);
@@ -10139,7 +10139,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 							willing: false,
 						};
 						KinkyDungeonSendEvent("beforeTeleport", tdata);
-						if (tdata.cancel) {
+						if (!tdata.cancel) {
 							KDMoveEntity(en, point.x, point.y, false, false, true);
 							en.teleporting = Math.max(en.teleporting || 0, 1);
 							en.teleportingmax = Math.max(en.teleportingmax || 0, 1);
