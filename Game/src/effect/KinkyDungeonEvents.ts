@@ -9738,6 +9738,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 				if (!tdata.cancel) {
 					KDMoveEntity(enemy, nearest.x, nearest.y, true);
 					KinkyDungeonRemoveBuffsWithTag(enemy, ["displaceend"]);
+					KDBreakAllLeashedTo(enemy);
 				}
 				KinkyDungeonSendTextMessage(5, TextGet("KDDragonTeleport"), "#814fb8", 1);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Teleport.ogg", enemy);
@@ -9798,6 +9799,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 				if (!tdata.cancel) {
 					KDMoveEntity(enemy, point.x, point.y, true);
 					KinkyDungeonRemoveBuffsWithTag(enemy, ["displaceend"]);
+					KDBreakAllLeashedTo(enemy);
 					//KinkyDungeonSendTextMessage(5, TextGet("KDDragonTeleport"), "#814fb8", 1);
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Teleport.ogg", enemy);
 					if (KDRandom() < 0.4)
@@ -10084,6 +10086,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 						if (!tdata.cancel) {
 							KDMoveEntity(en, point.x, point.y, false, false, true);
 							KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
+							KDBreakAllLeashedTo(en);
 						}
 					}
 					enemies.splice(enemies.indexOf(en), 1);
@@ -10114,6 +10117,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 							en.teleporting = Math.max(en.teleporting || 0, 4);
 							en.teleportingmax = Math.max(en.teleportingmax || 0, 4);
 							KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
+							KDBreakAllLeashedTo(en);
 						}
 					}
 					enemies.splice(enemies.indexOf(en), 1);
@@ -10144,6 +10148,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 							en.teleporting = Math.max(en.teleporting || 0, 1);
 							en.teleportingmax = Math.max(en.teleportingmax || 0, 1);
 							KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
+							KDBreakAllLeashedTo(en);
 						}
 					}
 					enemies.splice(enemies.indexOf(en), 1);
