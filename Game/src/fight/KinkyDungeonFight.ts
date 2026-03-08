@@ -2727,6 +2727,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 					};
 					KinkyDungeonSendEvent("beforeTeleport", tdata);
 					if (!tdata.cancel) {
+						KDBreakTether(KDPlayer());
 						KDBreakAllLeashedTo(KDPlayer());
 						KDMovePlayer(point.x, point.y, false);
 						KinkyDungeonSendTextMessage(10, TextGet("KDTeleportNearby"), "#e7cf1a", 2, undefined, undefined, undefined, "Combat");
@@ -2752,6 +2753,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 				KinkyDungeonSendEvent("beforeTeleport", tdata);
 				if (!tdata.cancel) {
 					KDBreakAllLeashedTo(KDPlayer());
+					KDBreakTether(KDPlayer());
 					KDMovePlayer(b.x, b.y, false);
 					KinkyDungeonSendEvent("teleport", tdata);
 				} else {
