@@ -372,8 +372,10 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 高清被监禁的 NPC（实验性）
 - Detailed unique NPCs (experimental)
 高清独特 NPC（实验性）
-# - Detailed servants in collection
-# - Detailed prisoners/guests in collection
+- Detailed servants in collection
+高清收藏中的仆人
+- Detailed prisoners/guests in collection
+高清收藏中的囚犯/客人
 - Show Struggle Bars
 显示挣脱进度
 - Allow Suspicious Mods
@@ -6724,22 +6726,28 @@ TargetRestraint 不会出来。
 
 
 
-# - You wiggle trying to pull the TargetRestraint out...
+- You wiggle trying to pull the TargetRestraint out...
+你扭动着身体试图将 TargetRestraint 挤出来……
 # :: KinkyDungeonStruggleRemoveFailPlug
 # :: KinkyDungeonStruggleRemoveFailEgg
-# - You squirm, tugging at the TargetRestraint...
+- You squirm, tugging at the TargetRestraint...
+你扭动着身体，使劲把 TargetRestraint 挤出身体......
 # :: KinkyDungeonStruggleRemoveFailPlugAroused
 # :: KinkyDungeonStruggleRemoveFailEggAroused
-# - You can't grip the TargetRestraint to take it out.
+- You can't grip the TargetRestraint to take it out.
+你无法握住 TargetRestraint 以将其取出。
 # :: KinkyDungeonStruggleRemoveImpossiblePlug
 # :: KinkyDungeonStruggleRemoveImpossibleEgg
-# - You fruitlessly feel around trying to grab the TargetRestraint.
+- You fruitlessly feel around trying to grab the TargetRestraint.
+你徒劳地摸索着 TargetRestraint，但根本拿不到它。
 # :: KinkyDungeonStruggleRemoveImpossiblePlugAroused
 # :: KinkyDungeonStruggleRemoveImpossibleEggAroused
-# - Your bindings prevent you from reaching the TargetRestraint.
+- Your bindings prevent you from reaching the TargetRestraint.
+你的束缚让你无法碰到 TargetRestraint。
 # :: KinkyDungeonStruggleRemoveImpossibleBoundPlug
 # :: KinkyDungeonStruggleRemoveImpossibleBoundEgg
-# - The TargetRestraint is firmly kept inside of you by your bindings.
+- The TargetRestraint is firmly kept inside of you by your bindings.
+你的束缚将 TargetRestraint 牢牢地固定在身体内。
 # :: KinkyDungeonStruggleRemoveImpossibleBoundPlugAroused
 # :: KinkyDungeonStruggleRemoveImpossibleBoundEggAroused
 
@@ -21769,7 +21777,8 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks.
 撞到一块有裂纹的瓷砖。如果另一侧有空隙或裂缝，它就会断裂。
 
-# - Your body takes on properties of liquid latex as you use the staff!
+- Your body takes on properties of liquid latex as you use the staff!
+你使用法杖，让身体变得像液态乳胶一样！
 
 - Preferences
 偏好
@@ -25855,7 +25864,7 @@ Mmmph? (行为混乱)
 - (You unlock your SPEAKER)|Time to get to work~!
 ( 你解救了你的 SPEAKER ) |是时候开始干活了~！
 - (You unlock your SPEAKER)|Mmmmph!|(She wants to keep her gag...)
-( 你解救了你的 SPEAKER ) |呜呜呜！|（她不想摘下堵嘴）
+（你解开了你的 SPEAKER）|呜呜呜！|（她想保持自己的堵嘴……）
 - (You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
 ( 你解开了 SPEAKER ) |呜呜呜！| ( 她想保持自己的堵嘴… )
 # :: rPrisonerJailUnlockGagged
@@ -26821,7 +26830,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_Ahoge_l_Ahoge
 # :: m_PointyAhoge_l_Ahoge
 - Standard Body
-身体
+标准身体
 - Catsuit
 全包胶衣
 # :: m_Catsuit
@@ -47111,7 +47120,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - You are currently shielded from damage and some spells.
 你目前被保护免受伤害和一些法术的伤害。
 - No offhand weapon set. Click to open inventory and select the action on a weapon'.
-没有副手武器组。激活快捷栏中的咒语来设置一个。
+未设置副手武器。点击以打开背包并选择副手武器。
 
 
 
@@ -50042,7 +50051,7 @@ Y 轴
 - NoDynamicArmor (0/1)
 无动态护甲(0或1)
 - AddPose (e.g Locked, CrotchStrap)
-添加姿势
+添加姿势（例如 Locked，CrotchStrap）
 - DontAddPose
 不添加姿势
 - HideOverridden (0/1)
