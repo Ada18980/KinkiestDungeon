@@ -26,7 +26,7 @@
 },
 "Models/ArmorChain/SkirtBeltRivets.png":
 {
-	"frame": {"x":652,"y":598,"w":137,"h":27},
+	"frame": {"x":619,"y":598,"w":137,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":504,"y":786,"w":137,"h":27},
@@ -370,7 +370,7 @@
 },
 "Models/CrystalCuffs/SteelCollarRunes.png":
 {
-	"frame": {"x":793,"y":598,"w":94,"h":27},
+	"frame": {"x":760,"y":598,"w":94,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":577,"y":395,"w":94,"h":27},
@@ -386,7 +386,7 @@
 },
 "Models/Cuffs/SteelCollarRunes.png":
 {
-	"frame": {"x":793,"y":598,"w":94,"h":27},
+	"frame": {"x":760,"y":598,"w":94,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":577,"y":395,"w":94,"h":27},
@@ -394,7 +394,7 @@
 },
 "Models/Cuffs/ThighLinkSpread.png":
 {
-	"frame": {"x":891,"y":598,"w":81,"h":27},
+	"frame": {"x":858,"y":598,"w":81,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":559,"y":1035,"w":81,"h":27},
@@ -402,7 +402,7 @@
 },
 "Models/Cuffs/ThighLinkSpreadHigh.png":
 {
-	"frame": {"x":976,"y":598,"w":81,"h":27},
+	"frame": {"x":943,"y":598,"w":81,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":564,"y":1005,"w":81,"h":27},
@@ -416,14 +416,6 @@
 	"spriteSourceSize": {"x":699,"y":503,"w":75,"h":54},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/CyberCuffs/DisplayElbowRightFront.png":
-{
-	"frame": {"x":1035,"y":1284,"w":28,"h":48},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":422,"y":595,"w":28,"h":48},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/CyberCuffs/DisplayWristRightFree.png":
 {
 	"frame": {"x":1023,"y":1197,"w":40,"h":21},
@@ -432,25 +424,9 @@
 	"spriteSourceSize": {"x":368,"y":600,"w":40,"h":21},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/CyberCuffs/ElbowRightBoxtie.png":
-{
-	"frame": {"x":619,"y":598,"w":29,"h":28},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":455,"y":602,"w":29,"h":28},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/CyberCuffs/ElbowRightFront.png":
-{
-	"frame": {"x":1035,"y":1222,"w":28,"h":58},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":430,"y":588,"w":28,"h":58},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/CyberCuffs/LockElbowLeftUp.png":
 {
-	"frame": {"x":1035,"y":1336,"w":26,"h":39},
+	"frame": {"x":1035,"y":1222,"w":26,"h":39},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":719,"y":268,"w":26,"h":39},
@@ -496,6 +472,6 @@
 	"size": {"w":2047,"h":2047},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlasA0.json", "atlasA1.json", "atlasA2.json", "atlasA3.json", "atlasA4.json", "atlasA5.json", "atlasA6.json", "atlasA8.json", "atlasA9.json", "atlasA10.json", "atlasA11.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:390ee0f1b70c270e0b4350ca2f4809a8:0ba0a5a5f41d367fa63b764508740721:098aca47250cd65bb72914bc7298de4d$"
+	"smartupdate": "$TexturePacker:SmartUpdate:500397c0769fc0ecf397ccbd032f46f4:84236f70211b2a98bb2527973448b359:098aca47250cd65bb72914bc7298de4d$"
 }
 }
