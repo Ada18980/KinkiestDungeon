@@ -4998,7 +4998,7 @@ KinkyDungeonUnLinkScaleAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 RestraintSpreaderBar,Spreader Bar
 RestraintSpreaderBarDesc,"A set of steel shackles spread apart by a metal bar, forcing the wearer into an awkward hobbled position."
-RestraintSpreaderBarDesc2,"It's made of solid, rigid steel. ABle to resist bites, blades, and futile struggles all the same."
+RestraintSpreaderBarDesc2,"It's made of solid, rigid steel. Able to resist bites, blades, and futile struggles all the same."
 
 RestraintMaidJacket,Maid Jacket
 RestraintMaidJacketDesc,"A bolero jacket keeping your arms pinned snugly. You can't even move them."
@@ -11396,6 +11396,7 @@ KDCategoryTraining,Training
 KDCategoryRestraints,Restraints
 KDCategoryCombat,Combat
 KDCategoryKinky,Kinks
+KDCategorySpecies,Species
 KDCategorySenses,Senses
 KDCategoryDamage,Damage and Resists
 KDCategoryMagic,Magic
@@ -32927,6 +32928,10 @@ KDContextMenu_CurseUnlock,Unlock
 
 KDBedSleptLevel,(Already slept here)
 KDBedWillNotLow,(Will not low enough)
+KDBedIsArtificial,(Artificial beings do not sleep on beds)
+KDBedIsArtificialDollSleep,"(Dolls belong on a stand)"
+dFurniture_Sleep,(Sleep in the furniture)
+rFurnitureSleep,(You sleep soundly~)
 
 KDMoveCloser,Move closer to interact
 KDMoveCloserDoor,Your arms are not long enough.
@@ -33321,3 +33326,14 @@ KDSafewordDesc,"Removes ALL restraints from your character and places them in in
 KDSafewordMenu,"Only usable ingame."
 KDSafwordMsg,${Playername} used her safeword and was transported to the beginning of the level.
 
+
+KinkyDungeonSpellSpeciesDoll,Artificial
+KinkyDungeonSpellDescriptionSpeciesDoll,"As an artificial being, gain:\n+900 poison resist\n+Resistance to gases and spores\n+Unaffected by sleep darts or sedation, not including magic sleep.\n-Eating food does not restore willpower"
+
+KinkyDungeonStatSpeciesDoll,"Doll"
+KinkyDungeonStatDescSpeciesDoll,"This character is nothing but a doll, granting the Artificial passive and preventing sleep in beds, but allowing sleep on non-cage furniture."
+
+KinkyDungeonStatSpeciesTeethSharp,"Sharp Teeth"
+KinkyDungeonStatDescSpeciesTeethSharp,"While mouth is free, gain a powerful bite weapon. Struggling against mouth items is also easier."
+KinkyDungeonStatSpeciesTeethGnawing,"Gnawing Teeth"
+KinkyDungeonStatDescSpeciesTeethGnawing,"While mouth is free and arms can go in front, you can use teeth to cut. Also unlocks a bite weapon."

@@ -656,11 +656,19 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			],
 			level:1, mixedPassive: true, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
-		{name: "NovicePet0", tags: ["mana", "utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{name: "NovicePet1", tags: ["mana", "utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet0", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{name: "NovicePet2", tags: ["mana", "utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet1", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{name: "NovicePet3", tags: ["mana", "utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], prerequisite: "NovicePet2", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{name: "NovicePetX", tags: ["mana", "utility"], spellPointCost: 3, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet3", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+
+		{name: "SpeciesDoll", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1,
+			passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "SpeciesDoll", trigger: "tick"},
+			],
+		},
+
+		{name: "NovicePet0", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{name: "NovicePet1", tags: ["utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet0", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{name: "NovicePet2", tags: ["utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet1", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{name: "NovicePet3", tags: ["utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], prerequisite: "NovicePet2", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{name: "NovicePetX", tags: ["utility"], spellPointCost: 3, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet3", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
 
 

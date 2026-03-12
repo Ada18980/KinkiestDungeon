@@ -1264,10 +1264,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 				},
 				greyoutFunction: (_gagged, _player) => {
-					return KDCanSleep();
+					return KDCanSleep(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				},
 				greyoutCustomTooltip: (_gagged, _player) => {
-					return KDCanSleepTooltip();
+					return KDCanSleepTooltip(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				}
 			},
 			"Leave": {
@@ -1546,6 +1546,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			return false;
 		},
 		options: {
+			
 			"Use": {
 				playertext: "Default", response: "Default",
 				greyoutFunction: (_gagged, player) => {
@@ -1743,6 +1744,35 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						playertext: "Leave", response: "Default",
 						exitDialogue: true,
 					},
+				}
+			},
+			"Sleep": {
+				playertext: "Default", response: "Default",
+				prerequisiteFunction: (_gagged, _player) => {
+					return !!KDGetPreferredAltSleepType();
+				},
+				clickFunction: (_gagged, _player) => {
+					if (KinkyDungeonMapGet(KDPlayer().x, KDPlayer().y) && KDGameData.InteractTargetX && KDGameData.InteractTargetY) {
+						if (KinkyDungeonMapGet(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == 'B') {
+							KinkyDungeonTrapMoved = true;
+							KDMovePlayer(KDGameData.InteractTargetX, KDGameData.InteractTargetY, true);
+						}
+					}
+
+					KDSleep();
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				},
+				greyoutFunction: (_gagged, _player) => {
+					return KDCanSleep(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+				},
+				greyoutCustomTooltip: (_gagged, _player) => {
+					return KDCanSleepTooltip(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				}
 			},
 			"Leave": {

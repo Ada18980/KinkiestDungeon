@@ -20,22 +20,52 @@ function KDGetSleepWillRegenHealthTo() {
 /**
  * Can the player sleep in a bed?
  */
-function KDCanSleep() {
+function KDCanSleep(x: number, y: number) {
 	let willUnderTreshold = KinkyDungeonStatWill < KDGetSleepWillRegenHealthTo();
 	let jailedOrNotSleptOnLevel = (KinkyDungeonPlayerInCell() && KDGameData.PrisonerState == "jail") || !KinkyDungeonFlags.get('slept');
-	return willUnderTreshold && jailedOrNotSleptOnLevel;
+	let isArtificial = KinkyDungeonFlags.get("Artificial");
+	let altSleep = KDGetAltSleep(x, y);
+	return willUnderTreshold && jailedOrNotSleptOnLevel && (!!altSleep || !isArtificial);
+}
+
+
+function KDGetAltSleep(x: number, y: number): string {
+	if (KinkyDungeonFlags.get("DollSleep")) {
+		let tile = KinkyDungeonTilesGet(x + ',' + y);
+		if (tile?.Furniture && KDFurniture[tile.Furniture]?.dollsleep)
+			return "DollSleep";
+	}
+	return "";
+
+}
+
+function KDGetPreferredAltSleepType(): string {
+	if (KinkyDungeonFlags.get("DollSleep")) {
+		return "DollSleep";
+	}
+	return "";
+
 }
 
 /**
  * @returns Tooltip why player is unable to sleep at bed
  */
-function KDCanSleepTooltip() {
+function KDCanSleepTooltip(x: number, y: number) {
+	let isArtificial = KinkyDungeonFlags.get("Artificial");
+	let altSleep = KDGetAltSleep(x, y);
+
+	if (!altSleep && isArtificial) {
+		return "KDBedIsArtificial" + KDGetPreferredAltSleepType();
+	}
+	
 	if(KinkyDungeonFlags.get('slept') && !(KinkyDungeonPlayerInCell() && KDGameData.PrisonerState == "jail")) {
 		return "KDBedSleptLevel";
 	}
 	if(KinkyDungeonStatWill >= KDGetSleepWillRegenHealthTo()) {
 		return "KDBedWillNotLow";
 	}
+
+	
 
 	console.error("KDCanSleepTooltip should not reach this point")
 	return "KDBedWillNotLow";

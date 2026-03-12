@@ -10,6 +10,8 @@ interface KDFurnitureDef {
 	tickFunction: (delta: number) => void,
 	forceFaction?: string,
 	lockType?: string,
+	/* can a doll use this to sleep */
+	dollsleep?: boolean,
 
 }
 
@@ -18,6 +20,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		floor: "Floor",
 		sprite: "Cage",
 		restraintTag: "cage",
+		dollsleep: false,
 		restraintSetTags: {
 			// fiddle or yoke
 			"steelbondage": 1,
@@ -89,6 +92,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"trap": 5,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;
@@ -156,6 +160,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 			"latexRestraints": 8,
 			"latexRestraintsHeavy": 7,
 		},
+		dollsleep: true,
 		restraintSetLevelBonus: 20,
 		forceFaction: "Rubber",
 		tickFunction: (_delta) => {
@@ -220,6 +225,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		floor: "Floor",
 		sprite: "FutureBox",
 		restraintTag: "futurebox",
+		dollsleep: true,
 		restraintSetTags: {
 			"cyberDollRestraints": 8,
 		},
@@ -234,6 +240,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"mummyRestraints": 8,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			// Nothing yet TODO add special features like dressing the player
 		}
@@ -257,6 +264,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"vineRestraints": 10,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			// Nothing yet TODO add special features like dressing the player
 		}
@@ -279,6 +287,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"crystalRestraints": 5,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			// Nothing yet
 		}
@@ -295,6 +304,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 			"armbinderSpell": 5,
 			
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			// Nothing yet
 		}
@@ -315,6 +325,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"mummyRestraints": 8,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;
@@ -380,6 +391,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"leatherHeels": 8,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;
@@ -445,6 +457,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"leatherHeels": 8,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;

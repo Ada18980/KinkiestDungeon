@@ -20,6 +20,7 @@ let KDCategoriesStart = [
 	{name: "Toggles", buffs: [], debuffs: [],},
 	{name: "Toggles2", buffs: [], debuffs: [],},
 	{name: "Multiclass", buffs: [], debuffs: [],},
+	{name: "Species", buffs: [], debuffs: [],},
 	{name: "Major", buffs: [], debuffs: [],},
 	{name: "Restraints", buffs: [], debuffs: [],},
 	{name: "Restriction", buffs: [], debuffs: [],},
@@ -273,6 +274,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"NoPet": {category: "Toggles2", id: "NoPet", cost: 0, block: ["More_Petsuits"], debuff: true,},*/
 
 	"NovicePet":  {category: "Major", id: "NovicePet", cost: 1},
+	"SpeciesDoll":  {category: "Species", id: "SpeciesDoll", cost: 0},
 
 	//"Less_Tickle": {category: "Toggles2", id: "Less_Tickle", cost: 0,},
 

@@ -5801,6 +5801,29 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 		},
 	},
 	"tick": {
+		
+		SpeciesDoll: (e, spell, _data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "SpeciesDoll_hgdr",
+				type: "happygasDamageResist",
+				duration: 1,
+				power: 9
+			});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "SpeciesDoll_pgdr",
+				type: "poisongasDamageResist",
+				duration: 1,
+				power: 9
+			});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "SpeciesDoll_pdr",
+				type: "poisonDamageResist",
+				duration: 1,
+				power: 2
+			});
+			KinkyDungeonSetFlag("Artificial", 1);
+			KinkyDungeonSetFlag("DollSleep", 1);
+		},
 		"FirstWind": (e, spell, data) => {
 			//if (KinkyDungeonFlags.get("FirstWind")) {
 
@@ -7890,6 +7913,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 				power: e.power
 			});
 		},
+
 
 		"StaffStormAura": (e, weapon, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
@@ -12658,6 +12682,18 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 						KinkyDungeonSetFlag("NovicePetX", -1);
 						KinkyDungeonStatsChoice.delete("NovicePet");
 					}
+				}
+			}
+		},
+
+		
+		"SpeciesDoll": (_e, _data) => {
+			if (KinkyDungeonStatsChoice.has("SpeciesDoll")) {
+
+				
+				if (!KinkyDungeonFlags.get("SpeciesDollSpell")) {
+					KinkyDungeonSetFlag("SpeciesDollSpell", -1);
+					KinkyDungeonSpells.push(KinkyDungeonFindSpell("SpeciesDoll"));
 				}
 			}
 		},
