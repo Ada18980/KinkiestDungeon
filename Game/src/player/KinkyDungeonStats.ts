@@ -862,7 +862,7 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAl
 		if (!data.noInterrupt)
 			KinkyDungeonInterruptSleep();
 
-		if (data.dmg > 0 && KinkyDungeonStatsChoice.get("Breathless")) {
+		if (data.dmg > 0 && KinkyDungeonStatsChoice.get("Breathless") && !KinkyDungeonStatsChoice.get("Artificial")) {
 			let sleepAmount = data.dmg > 3 ? 6 : (data.dmg > 1 ? 4 : 2);
 			if (["chain", "poison", "crush"].includes(data.type))
 				KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, KinkyDungeonSleepiness + sleepAmount);
@@ -1764,8 +1764,10 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	KDGameData.HeelPowerEffective = KinkyDungeonCalculateHeelLevel(delta);
 	KDGameData.HeelPower = KinkyDungeonCalculateHeelLevel(delta, true);
 	let sleepRate = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sleepiness")
-		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessGas") * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2)
-		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessPoison") * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"));
+		+ (KDIsImmuneToGas(KDPlayer()) ? 0 : (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessGas")
+			* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2)))
+		+ (KDIsImmuneToDrugs(KDPlayer()) ? 0 : (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessPoison")
+			* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
 	if ((sleepRate && sleepRate > 0) || KinkyDungeonSleepiness > 0) {
 		KinkyDungeonSleepiness = Math.min(KinkyDungeonSleepinessMax, KinkyDungeonSleepiness + sleepRate * delta);
 		if (KinkyDungeonSleepiness > 2.99) {

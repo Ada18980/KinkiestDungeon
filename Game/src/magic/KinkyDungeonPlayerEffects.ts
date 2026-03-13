@@ -1662,31 +1662,46 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 	},
 	"SporesSick": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
 		let effect = false;
+		if (KDIsImmuneToSpores(_target)) {
+			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA"), "#4fd658", 2);
+			return {sfx: "", effect: effect};
+		}
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
-		KinkyDungeonSleepiness += 1.5 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2);
-		KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesSick").KDReplaceOrAddDmg( dmg.string), "#4fd658", 2);
+		if (KDIsImmuneToSpores(_target)) {
+				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+		} else {
+			KinkyDungeonSleepiness += 1.5 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2);
+			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesSick").KDReplaceOrAddDmg( dmg.string), "#4fd658", 2);
+		}
 		effect = true;
 		return {sfx: "Damage", effect: effect};
 	},
 	"PoisonDagger": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
 		let effect = false;
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+			
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDagger").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
-			// TODO make this get more intense over time
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: "PoisonDagger",
-				aura: "#22ff44",
-				type: "SleepinessPoison",
-				power: 1,
-				duration: playerEffect.time,
-				player: true,
-				enemies: false,
-				tags: ["sleep"],
-				range: 1.5
-			});
+
+			
+			if (KDIsImmuneToDrugs(_target)) {
+				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDaggerNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			} else {
+				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDagger").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+				// TODO make this get more intense over time
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					id: "PoisonDagger",
+					aura: "#22ff44",
+					type: "SleepinessPoison",
+					power: 1,
+					duration: playerEffect.time,
+					player: true,
+					enemies: false,
+					tags: ["sleep"],
+					range: 1.5
+				});
+			}
 			effect = true;
 			return {sfx: "Damage", effect: effect};
 		}
@@ -1697,30 +1712,41 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
-		KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, (playerEffect.amount || 6)
-			* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2));
-		KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSpores").KDReplaceOrAddDmg( dmg.string), "#a583ff", 2);
-		return {sfx: "Damage", effect: effect};
+		if (KDIsImmuneToSpores(_target)) {
+				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+		} else {
+			KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, (playerEffect.amount || 6)
+						* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2));
+					KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSpores").KDReplaceOrAddDmg( dmg.string), "#a583ff", 2);
+
+		}
+				return {sfx: "Damage", effect: effect};
 	},
 
 	"PoisonBreath": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
-		KinkyDungeonSendTextMessage(6, TextGet("KDPoisonBreath").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
-		// TODO make this get more intense over time
-		let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-			id: "PoisonBreath",
-			aura: "#22ff44",
-			type: "SleepinessPoison",
-			power: currentPoison + playerEffect.amount,
-			duration: playerEffect.time,
-			player: true,
-			enemies: false,
-			tags: ["sleep", "poison"],
-			range: 1.5,
-		});
+
+		if (KDIsImmuneToDrugs(_target) || KDIsImmuneToGas(_target)) {
+				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonBreathImmune").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+		} else {
+			KinkyDungeonSendTextMessage(6, TextGet("KDPoisonBreath").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			// TODO make this get more intense over time
+			let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "PoisonBreath",
+				aura: "#22ff44",
+				type: "SleepinessPoison",
+				power: currentPoison + playerEffect.amount,
+				duration: playerEffect.time,
+				player: true,
+				enemies: false,
+				tags: ["sleep", "poison"],
+				range: 1.5,
+			});
+		}
+		
 		return {sfx: "Damage", effect: effect};
 	},
 
@@ -1728,20 +1754,25 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
-		KinkyDungeonSendTextMessage(6, TextGet("KDDragonFlowerSpores").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
-		// TODO make this get more intense over time
-		let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-			id: "PoisonBreath",
-			aura: "#22ff44",
-			type: "SleepinessPoison",
-			power: currentPoison + playerEffect.amount,
-			duration: playerEffect.time,
-			player: true,
-			enemies: false,
-			tags: ["sleep", "poison"],
-			range: 1.5,
-		});
+		if (KDIsImmuneToSpores(_target)) {
+				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+		} else {
+		
+			KinkyDungeonSendTextMessage(6, TextGet("KDDragonFlowerSpores").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			// TODO make this get more intense over time
+			let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "PoisonBreath",
+				aura: "#22ff44",
+				type: "SleepinessPoison",
+				power: currentPoison + playerEffect.amount,
+				duration: playerEffect.time,
+				player: true,
+				enemies: false,
+				tags: ["sleep", "poison"],
+				range: 1.5,
+			});
+		}
 
 		return {sfx: "Damage", effect: effect};
 	},
@@ -1751,19 +1782,25 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 		KinkyDungeonSendTextMessage(6, TextGet("KDPoisonSlash").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
-		// TODO make this get more intense over time
-		let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-			id: "PoisonBreath",
-			aura: "#22ff44",
-			type: "SleepinessPoison",
-			power: currentPoison + playerEffect.amount,
-			duration: playerEffect.time,
-			player: true,
-			enemies: false,
-			tags: ["sleep", "poison"],
-			range: 1.5,
-		});
+
+		if (KDIsImmuneToDrugs(_target)) {
+			// lol
+		} else {
+			// TODO make this get more intense over time
+			let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "PoisonBreath",
+				aura: "#22ff44",
+				type: "SleepinessPoison",
+				power: currentPoison + playerEffect.amount,
+				duration: playerEffect.time,
+				player: true,
+				enemies: false,
+				tags: ["sleep", "poison"],
+				range: 1.5,
+			});
+		}
+		
 
 		return {sfx: "Damage", effect: effect};
 	},
@@ -2204,18 +2241,23 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNurseSyringe").KDReplaceOrAddDmg( dmg.string), KDBaseRed, 8);
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: "NurseSyringe",
-				aura: "#22ff44",
-				type: "SleepinessPoison",
-				power: 1,
-				duration: playerEffect.time,
-				player: true,
-				enemies: false,
-				tags: ["sleep"],
-				range: 1.5,
-			});
+			if (KDIsImmuneToDrugs(_target)) {
+				KinkyDungeonSendTextMessage(6, TextGet("KDImmuneToSyringe").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			} else {
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNurseSyringe").KDReplaceOrAddDmg( dmg.string), KDBaseRed, 8);
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					id: "NurseSyringe",
+					aura: "#22ff44",
+					type: "SleepinessPoison",
+					power: 1,
+					duration: playerEffect.time,
+					player: true,
+					enemies: false,
+					tags: ["sleep"],
+					range: 1.5,
+				});
+			}
+			
 			effect = true;
 			return {sfx: "Damage", effect: effect};
 		}
@@ -2842,5 +2884,22 @@ function KDAddSpecialStat(stat: string, entity: entity, amount: number, Msg: boo
 		} else if (amount < 0 && initial_amt > 0) {
 			KinkyDungeonSendTextMessage(10, TextGet("KDRemove" + stat).replace("AMNT", "" + -amount), color, 2);
 		}
+	}
+}
+
+
+function KDIsImmuneToSpores(entity: entity) {
+	if (entity == KDPlayer()) {
+		return !!KinkyDungeonStatsChoice.get("Artificial") || KDEntityBuffedStat(entity, "SporeImmunity") > 0.99;
+	}
+}
+function KDIsImmuneToGas(entity: entity) {
+	if (entity == KDPlayer()) {
+		return !!KinkyDungeonStatsChoice.get("Artificial") || KDEntityBuffedStat(entity, "GasImmunity") > 0.99;
+	}
+}
+function KDIsImmuneToDrugs(entity: entity) {
+	if (entity == KDPlayer()) {
+		return !!KinkyDungeonStatsChoice.get("Artificial") || KDEntityBuffedStat(entity, "DrugImmunity") > 0.99;
 	}
 }

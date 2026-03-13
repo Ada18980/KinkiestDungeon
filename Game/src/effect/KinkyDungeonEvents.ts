@@ -4050,6 +4050,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 	},
 	"tick": {
 		"poisonSleep": (_e, buff, entity, data) => {
+			if (KDIsImmuneToDrugs(entity)) return;
 			if (entity.player) {
 				KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness,
 					Math.min(8* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist")),
@@ -5821,8 +5822,8 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				duration: 1,
 				power: 2
 			});
-			KinkyDungeonSetFlag("Artificial", 1);
-			KinkyDungeonSetFlag("DollSleep", 1);
+			KinkyDungeonSetFlag("Artificial", 2);
+			KinkyDungeonSetFlag("DollSleep", 2);
 		},
 		"FirstWind": (e, spell, data) => {
 			//if (KinkyDungeonFlags.get("FirstWind")) {

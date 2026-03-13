@@ -365,7 +365,7 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Darjeeling", color: "#5ca363ff", prisoner: false, free: true, customPlayLine: "",
 			customIntro: "", customSprite: ""},
 		{name: "Istoodin", color: "#efef0bff", prisoner: true, free: true, customPlayLine: "",
-			customIntro: "Hello, is there aught I may help you with?", customSprite: "Istoodin", customStyle: "Istoodin"},
+			customIntro: "Hello, is there aught I may help you with?", customStyle: "Istoodin"},
 
 
 		{name: "Anketh", color: "#9822ffff", prisoner: true, free: true, customPlayLine: "",

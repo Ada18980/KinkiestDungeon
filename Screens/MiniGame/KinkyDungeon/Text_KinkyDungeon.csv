@@ -2439,6 +2439,7 @@ AttackBanditMerchantBind,"The dealer uses some high-quality restraints on you! (
 AttackBanditMerchantLock,"The dealer smiles and applies a lock! (DamageTaken)"
 AttackBanditMerchant,"The dealer kisses and gropes your body! (DamageTaken)"
 KDPoisonDagger,"That dagger was laced with something..."
+KDPoisonDaggerNA,"The dagger that hits you is poisoned, but it doesn't affect you."
 KinkyDungeonLustBomb,"You hear a shattering of glass, suddenly the air around you feels thick and moist..."
 KinkyDungeonSpellPoisonDagger,Poison Dagger
 KinkyDungeonSpellLustBomb,Lust Bomb
@@ -7327,6 +7328,7 @@ KinkyDungeonSpellHighBolt,Curious Spell
 KinkyDungeonFlummox,You have been flummoxed!
 
 KinkyDungeonNurseSyringe,"You feel a prick as a small syringe hits you, and you start feeling drowsy..."
+KDImmuneToSyringe,"You feel a prick as a small syringe hits you, but nothing happens."
 KinkyDungeonNurseBola,"The thrown cuffs snap shut around your ankles and slow you down!!!"
 KinkyDungeonSpellRibbonBurst,Ribbon Burst
 KinkyDungeonSpellSpores,Spores
@@ -7336,6 +7338,8 @@ KinkyDungeonSpellSporesHappy,Enticing Spores
 KinkyDungeonSpores,"You inhale some spores, and feel a bit sleepy..."
 KinkyDungeonSporesHappy,"The spores make you feel excited!"
 KinkyDungeonSporesSick,"The toxic spores make you feel faint..."
+KinkyDungeonSporesNA,"The spores do not affect you."
+
 
 KinkyDungeonSpellHairpin,Magic Hairpin
 KinkyDungeonHairpin,"The magic hairpin goes for your eyes and forces you to blink!"
@@ -31177,6 +31181,7 @@ KinkyDungeonSummonSingleDragonFlower,A magical flower sprouts out of the ground!
 KinkyDungeonSummonSingleIceWall,A wall of ice rises from the ground!
 KinkyDungeonSummonMultiIceWall,A wall of ice rises from the ground!
 KDPoisonBreath,The dragon's breath poisons you!
+KDPoisonBreathImmune,The dragon's breath does not affect you.
 KDPoisonSlash,The dragon girl strikes you with poisonous razor leaves!
 KDDragonFlowerSpores,The flower releases soporific spores!
 KinkyDungeonSpellCastDragonFlowerSpores,The flower releases soporific spores!

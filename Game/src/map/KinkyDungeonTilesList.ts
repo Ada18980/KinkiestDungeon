@@ -369,10 +369,14 @@ let KDTileUpdateFunctions: Record<string, (delta: number) => boolean> = {
 			bind: 0,
 			distract: 2.5,
 		});*/
+		if (KDIsImmuneToGas(KDPlayer())) return false;
 		KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonHappyGas"), "pink", 1);
 		return true;
 	},
 	"[": (_delta) => { // Happy Gas!
+		if (KDIsImmuneToSpores(KDPlayer())) {
+			return false;
+		}
 		KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness + (2) * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2), 5);
 		KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSporeGas"), "pink", 1);
 		return true;
