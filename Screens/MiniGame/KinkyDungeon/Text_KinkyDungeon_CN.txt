@@ -10180,7 +10180,7 @@ RestraintName 上的诅咒解除了！
 分腿器
 - A set of steel shackles spread apart by a metal bar, forcing the wearer into an awkward hobbled position.
 一对用金属棒隔开的钢铐，让穿戴者行走不便。
-- It's made of solid, rigid steel. ABle to resist bites, blades, and futile struggles all the same.
+- It's made of solid, rigid steel. Able to resist bites, blades, and futile struggles all the same.
 由坚硬的钢铁制成，啃咬，劈砍，或是徒劳的挣扎都无法摆脱它。
 
 - Maid Jacket
@@ -21801,6 +21801,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: KDLogFilterCombat
 - Kinks
 怪癖
+# - Species
 - Senses
 感官
 - Damage and Resists
@@ -52141,6 +52142,10 @@ NME 由于不够显要，被自动释放
 (已经睡过一次了)
 - (Will not low enough)
 (低意志力时可用)
+# - (Artificial beings do not sleep on beds)
+# - (Dolls belong on a stand)
+# - (Sleep in the furniture)
+# - (You sleep soundly~)
 
 - Move closer to interact
 接近并交互
@@ -52784,3 +52789,14 @@ Boss
 - ${Playername} used her safeword and was transported to the beginning of the level.
 ${Playername}使用了安全词，被传送回关卡起点。
 
+
+# - Artificial
+# - As an artificial being, gain:\n+900 poison resist\n+Resistance to gases and spores\n+Unaffected by sleep darts or sedation, not including magic sleep.\n-Eating food does not restore willpower
+
+# - Doll
+# - This character is nothing but a doll, granting the Artificial passive and preventing sleep in beds, but allowing sleep on non-cage furniture.
+
+# - Sharp Teeth
+# - While mouth is free, gain a powerful bite weapon. Struggling against mouth items is also easier.
+# - Gnawing Teeth
+# - While mouth is free and arms can go in front, you can use teeth to cut. Also unlocks a bite weapon.
