@@ -21801,7 +21801,8 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: KDLogFilterCombat
 - Kinks
 怪癖
-# - Species
+- Species
+种族
 - Senses
 感官
 - Damage and Resists
@@ -52142,10 +52143,14 @@ NME 由于不够显要，被自动释放
 (已经睡过一次了)
 - (Will not low enough)
 (低意志力时可用)
-# - (Artificial beings do not sleep on beds)
-# - (Dolls belong on a stand)
-# - (Sleep in the furniture)
-# - (You sleep soundly~)
+- (Artificial beings do not sleep on beds)
+（人造生命不能在床上睡觉）
+- (Dolls belong on a stand)
+（玩偶应该待在玩偶架上）
+- (Sleep in the furniture)
+（在家具上睡觉）
+- (You sleep soundly~)
+（你睡得很香~）
 
 - Move closer to interact
 接近并交互
@@ -52790,13 +52795,21 @@ Boss
 ${Playername}使用了安全词，被传送回关卡起点。
 
 
-# - Artificial
-# - As an artificial being, gain:\n+900 poison resist\n+Resistance to gases and spores\n+Unaffected by sleep darts or sedation, not including magic sleep.\n-Eating food does not restore willpower
+- Artificial
+人造生命
+- As an artificial being, gain:\n+900 poison resist\n+Resistance to gases and spores\n+Unaffected by sleep darts or sedation, not including magic sleep.\n-Eating food does not restore willpower
+作为人造生命体，获得：\n+900 毒抗性\n+对气体和孢子的抗性\n+不受睡眠镖或镇静剂影响（魔法睡眠除外）\n-进食无法恢复意志力
 
-# - Doll
-# - This character is nothing but a doll, granting the Artificial passive and preventing sleep in beds, but allowing sleep on non-cage furniture.
+- Doll
+玩偶
+- This character is nothing but a doll, granting the Artificial passive and preventing sleep in beds, but allowing sleep on non-cage furniture.
+该角色仅仅是一个玩偶，拥有人造生命的被动特性，不能在床上睡觉，但能在笼子之外的家具上睡觉。
 
-# - Sharp Teeth
-# - While mouth is free, gain a powerful bite weapon. Struggling against mouth items is also easier.
-# - Gnawing Teeth
-# - While mouth is free and arms can go in front, you can use teeth to cut. Also unlocks a bite weapon.
+- Sharp Teeth
+锋齿
+- While mouth is free, gain a powerful bite weapon. Struggling against mouth items is also easier.
+嘴部自由时，可以用强力的撕咬作为武器。更容易挣扎掉嘴部拘束。
+- Gnawing Teeth
+啮齿
+- While mouth is free and arms can go in front, you can use teeth to cut. Also unlocks a bite weapon.
+嘴部自由时，如果你能把手臂伸到嘴前，就可以用牙齿切割。同样能以撕咬作为武器。
