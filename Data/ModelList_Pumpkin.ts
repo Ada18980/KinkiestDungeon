@@ -475,7 +475,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "BallMouth"],
 	Layers: ToLayerMap([
 		{ Name: "PumpkinGag", Layer: "Gag", Pri: -5,
 			Invariant: true,

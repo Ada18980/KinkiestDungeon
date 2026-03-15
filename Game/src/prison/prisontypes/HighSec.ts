@@ -3,7 +3,7 @@ let KDJailStripSearchTempTime = 50;
 
 function KDShouldStripSearchPlayer(player: entity, allowFlag: boolean = false): boolean {
 	if (!player.player) return false;
-	if (KinkyDungeonCheckRelease() >= 0) return false;
+	if (KinkyDungeonCheckRelease(-20) >= 0) return false;
 	if (allowFlag && KinkyDungeonFlags.get("jailStripSearched")) return false;
 	// TODO check if player has more than a few items in inventory
 	/** Max consumables */
@@ -192,7 +192,7 @@ KDPrisonTypes.HighSec = {
 				if (!(KDGameData.GuardTimer > 0) && KDGameData.GuardSpawnTimer <= 1)
 					KDPrisonCommonGuard(player, undefined, false);
 
-				if (TheChosenOne && KinkyDungeonJailGuard()) {
+				if (TheChosenOne && KinkyDungeonJailGuard()?.hp > 0 && KDGameData.PrisonerState == 'jail') {
 					let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, ["jail"]);
 
 					if (nearestJail) {

@@ -314,20 +314,10 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 
 								let tile = KinkyDungeonTilesGet(furn.x + ',' + furn.y);
 								let ff = tile ? KDFurniture[tile.Furniture] : undefined;
-								let rest = ff ? KinkyDungeonGetRestraint(
-									{tags: [ff.restraintTag]}, MiniGameKinkyDungeonLevel,
-									KDCurrIndex(),
-									true,
-									"",
-									true,
-									false,
-									false, undefined, true) : undefined;
-								KDImprisonEnemy(en, true, "PrisonerJailOwn", rest ? {
-									name: rest.name,
-									lock: "White",
-									id: KinkyDungeonGetItemID(),
-									faction: KDDefaultNPCBindPalette,
-								} : undefined);
+								
+								KDImprisonEnemy(en, true, "PrisonerJailOwn", ff?.restraintTag ? [ff?.restraintTag] : undefined,
+									undefined, undefined, undefined, undefined, "Lock"
+								);
 
 								KDSetIDFlag(en.id, "cuddleTime", 80);
 							}

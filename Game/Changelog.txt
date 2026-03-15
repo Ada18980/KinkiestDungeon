@@ -50,6 +50,98 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 - TODO potentially add a mechanic for cursed items to restore themselves after being removed for furniture reasons
 
+- TODO Cursed Kigu Mask
+- Todo Shopkeeper comes in and either offers to buy you or... chooses to buy you and you have debt~
+
+
+Must do
+- Proper stripping
+- species perks
+- Doll stand (based on real doll stands?)
+
+5.4.93
+- One bar prisons now are harder to escape if you wear heels
+- one bar prisons now appear around the map sometimes
+- Default outfits now have more variation
+- Fixed leashes not breaking when teleporting
+
+5.4.92
+- Fixed a bug where names could be duplicated for patron NPCs
+- Fixed a bug (again) where prisons ingame faction might not match the stated faction
+- Fixed missing string for Metamorphosis
+- fixed some sleepsack layering
+
+5.4.92
+- Added option to render detailed NPCs in collection (note: graphics intensive)
+- Various minor bug fixes
+
+5.4.91
+- Can select offhand weapon by clicking the button
+- Dodge tokens now have a minimum 40% chance of being removed when an enemy dodges no matter your accuracy
+- Fixed bug where an extra hotbar would get added if you multiclass during ng+
+- Fixed patron NPC outfits not being properly assigned
+- Fixed a bug where things that should be cuttable were not cuttable
+
+5.4.90
+- Fixed Dragonslaver not casting its onhit spell properly
+- Added consent option for Prisoner Text on restraints
+- Added some text fixes for CN, JP, and KR languages for word wrap to work properly - Thanks Mitki!
+
+5.4.89
+- Heal now allows you to restore willpower taken from damage - thanks Nightself!
+- Bosses now recruit into a version of themselves with different statistics, for balance purposes - thanks Nightself!
+- Fixed bug where prison dialogue could appear even if you're not imprisoned.
+- Fixed bug where animated masterwork restraints would never spawn if you have 5 or more in inventory
+
+5.4.88
+- Addressed NPCs remaining leashed even after despawning
+- Prevented some allies from printing items when switching floors
+- Prevented imprisoned NPCs from spawning in a saddle type furniture if it doesnt support that
+- Fixed some issues with entities getting leashed into the player
+
+5.4.87
+- Added safeword button in consent menu
+- Added consent options for chastity, invisible restraints
+- Added option to negotiate with unhelpful adventurer ghosts
+- After long periods of intense denial, orgasm will be slightly easier to achieve
+- Added sleepsack trap to beds
+- Desire can now go to 100% since it decays back down to 75%
+
+5.4.86
+- Fixed a graphical bug that caused layering issues
+
+5.4.85
+- Fixed a serious issue involving unintentional item usage when clicking in quick inventory search
+
+5.4.84
+- Fixed a bug where enemies could sometimes enter the perk shrine
+- Fixed a bug where rescuing NPCs of a faction did not give reputation
+- Blade dance no longer triggers teleportation plates
+- Fixed some unintended navigation issues with the consent screen
+- Floors 12 and 16, since they do not have bosses, now have many more high level NPCs than usual
+
+5.4.83
+- Added consent screen to replace the perks in "advanced start" that are used to affect what content appears in the game
+- Added function in save file to backup/load backup of full settings/saves
+- Added more info about existing save slots when making a new game
+- fixed major bugs involving boss and persistent NPC behavior leading to stair camping and sudden disappearances of NPCs
+
+5.4.82
+- added spreader bar
+- remembers mods loaded without having to reselect them, uploading to browser (thanks xmg666)
+- New struggle perks: Clear Vision, Painful Choice, Bound by Gravity, untapped strength
+- added mod support for custom capture actions instead of just CaptureJail
+- added return booleans for some actions that trigger with a chance
+- Fixed ancient muzzle not actually doing the stated damage multiplier
+- Rubber is now easier to cut if you can cut it, but the hardness to cut is the same
+- Can now untie party members who got 'injured' since it's otherwise unclear why you cant help them up
+- instead of swapping, moving into an ally pushes them and only swaps if there is no available space
+- Certain unlock conditions like ancient items cant be used if the group is blocked
+- Restoration shrines now passively heal party members up to 80% (-10% per rank, 30% for bosses) within 7 squares when not in combat
+- Restoration shrines now full heal all party members when used
+- Added toggle to have warnings flash
+- Added key to toggle ALL statuses on game board
+
 5.4.81
 - More Kinky Furniture now allows Vibe-Master 5000's to spawn
 - Can now lock fashion cyber restraints by adding "Locked" to the lock layer's AddPose array in the expert tools

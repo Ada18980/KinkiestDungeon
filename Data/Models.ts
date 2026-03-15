@@ -435,7 +435,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 	Blend: any = PIXI.SCALE_MODES.LINEAR,
 	StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false,
 	extraPoses: string[] = undefined, containerID?: string,
-	EndMods: PoseMod[] = []): void {
+	EndMods: PoseMod[] = []): PIXIMesh {
 	if (!DrawCanvas) DrawCanvas = kdcanvas;
 
 	// Update the RenderCharacterQueue
@@ -819,8 +819,6 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 				buffer.update();
 
 			}
-
-			
 		}
 	}
 	// Update the updated array
@@ -840,7 +838,9 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 	if (MC.Containers.get(containerID)) {
 		MC.Containers.get(containerID).Mesh.x = X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25;
 		MC.Containers.get(containerID).Mesh.y = Y + Zoom * MODEL_SCALE * MODELHEIGHT * 0.5;
+		return MC.Containers.get(containerID).Mesh;
 	}
+	return null;
 }
 /** Future function */
 let DrawModel = DrawCharacter;
@@ -1092,8 +1092,11 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 			if (l.ApplyFilterToLayerGroup) {
 				for (let lg of Object.entries(l.ApplyFilterToLayerGroup)) {
 					for (let ll of Object.entries(LayerGroups[lg[0]])) {
-						if (!ExtraFilters[ll[0]]) ExtraFilters[ll[0]] = [];
-						ExtraFilters[ll[0]].push(m.Filters[l.ApplyFilter || l.InheritColor || l.Name]);
+						if (!! m.Filters && !!m.Filters[l.ApplyFilter || l.InheritColor || l.Name]) {
+							if (!ExtraFilters[ll[0]]) ExtraFilters[ll[0]] = [];
+							ExtraFilters[ll[0]].push(m.Filters[l.ApplyFilter || l.InheritColor || l.Name]);
+						}
+						
 					}
 				}
 			}
@@ -1355,7 +1358,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					let sid = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite,
 						"DisplacementMaps", false, l.DisplacementInvariant,
 						l.DisplacementMorph, l.NoAppendDisplacement);
-					let id = (l.DisplaceLayerGroups ? "LG_" : "") + sid;
+					let id = (l.DisplaceLayerGroups ? "LG_" + ll +"_" : "") + sid;
 
 					let zzz = (l.DisplaceZBonus || 0)*LAYER_INCREMENT-ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
 					if (DisplaceFiltersInUse[id] != undefined && DisplaceFiltersInUse[id] < zzz) {
@@ -1584,8 +1587,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 				for (let ll of Object.entries(l.EraseLayerGroups || l.EraseLayers)) {
 					let sid = ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
-					let id = (l.EraseLayerGroups ? "LG_" : "") + sid;
-					let zzz = (l.EraseZBonus || 0)*LAYER_INCREMENT -ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
+					let id = (l.EraseLayerGroups ? "LG_" + ll +"_" : "") + sid;
+					let zzz = (l.EraseZBonus || 0) -ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
 					if (EraseFiltersInUse[id] != undefined && EraseFiltersInUse[id] < zzz) {
 						EraseFiltersInUse[id] = zzz;
 						for (let dg of Object.keys(l.EraseLayerGroups || LayerGroups[ll[0]])) {
@@ -1608,6 +1611,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 
 					for (let dg of Object.keys(l.EraseLayerGroups || LayerGroups[ll[0]])) {
+						if (l.EraseLayerGroups && dg != ll[0]) continue;
 						if (!filterMap[dg]) filterMap[dg] = [];
 						EraseFiltersAmt[id + dg] = Math.max(
 							eAmount * (l.EraseAmount || 50) * Zoom,

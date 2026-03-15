@@ -30,6 +30,7 @@ interface KDPersistentNPC {
 	spawnAI?: string,
 	/** Special scripting */
 	specialScript?: string,
+	deactivated?: boolean,
 
 	/** Visual */
 	outfit?: string,
@@ -411,13 +412,17 @@ function KDMovePersistentNPC(id: number, coord: WorldCoord): boolean {
 			PNPC.spawned = false;
 			if (PNPC.persistentParty) {
 				for (let pmid of PNPC.persistentParty) {
-					if (KDCompareLocation(oldCoord, KDGetNPCLocation(pmid))) {
-						// Move with them if they are in same slot, otherwise dont
+					let loc = KDGetNPCLocation(pmid);
+					if (!loc || KDCompareLocation(oldCoord, loc)) {
+						// Move with them if they are in same slot or in limbo, otherwise dont
 						let npc = KDGetPersistentNPC(pmid);
-						npc.spawned = false;
-						npc.room = coord.room;
-						npc.mapY = coord.mapY;
-						npc.mapX = coord.mapX;
+						if (npc) {
+
+							npc.spawned = false;
+							npc.room = coord.room;
+							npc.mapY = coord.mapY;
+							npc.mapX = coord.mapX;
+						}
 					}
 				}
 			}
@@ -546,6 +551,9 @@ function KDGetPersistentNPC(id: number, entity?: entity, force: boolean = true, 
 				}
 
 			}
+
+
+			
 			let entry: KDPersistentNPC = {
 				Name: enemy.CustomName || KDGenEnemyName(enemy),
 				id: enemy.id,
@@ -565,6 +573,30 @@ function KDGetPersistentNPC(id: number, entity?: entity, force: boolean = true, 
 				facestyle: KDGameData.Collection[enemy.id + ""]?.facestyle,
 				cosplaystyle: KDGameData.Collection[enemy.id + ""]?.cosplaystyle,
 			};
+
+
+			// Custom outfit
+			if (enemy.outfit) entry.outfit = enemy.outfit;
+
+			// Custom style
+			if (enemy.style) {
+				let style = KDModelStyles[enemy.style];
+				if (style) {
+					if (!entry.bodystyle && style.Bodystyle) {
+						entry.bodystyle = style.Bodystyle[Math.floor(Math.random() * style.Bodystyle.length)];
+					}
+					if (!entry.hairstyle && style.Hairstyle) {
+						entry.hairstyle = style.Hairstyle[Math.floor(Math.random() * style.Hairstyle.length)];
+					}
+					if (!entry.facestyle && style.Facestyle) {
+						entry.facestyle = style.Facestyle[Math.floor(Math.random() * style.Facestyle.length)];
+					}
+					if (!entry.cosplaystyle && style.Cosplay) {
+						entry.cosplaystyle = style.Cosplay[Math.floor(Math.random() * style.Cosplay.length)];
+					}
+				}
+			}
+
 			if (special || enemy.Enemy?.special) entry.special = true;
 			KDPersistentNPCs[enemy.id] = entry;
 			if (addToParty)
@@ -732,7 +764,7 @@ function KDSpawnPersistentNPCs(coord: WorldCoord, searchEntities: boolean): numb
 		// only spawn NPCs that are in the level
 		for (let id of cache) {
 			let PNPC = KDGetPersistentNPC(id, undefined, false);
-			if (PNPC && !PNPC.spawned) {
+			if (PNPC && !PNPC.spawned && IsPNPCActive(PNPC)) {
 				let spawnAI = PNPC.spawnAI || "Default";
 				let AI = KDPersistentSpawnAIList[spawnAI];
 				if (AI && AI.filter(id, data)) {
@@ -763,7 +795,7 @@ function KDRunPersistentNPCScripts(coord: WorldCoord, searchEntities: boolean): 
 		// only spawn NPCs that are in the level
 		for (let id of cache) {
 			let PNPC = KDGetPersistentNPC(id, undefined, false);
-			if (PNPC) { //  && !PNPC.spawned
+			if (PNPC && IsPNPCActive(PNPC)) { //  && !PNPC.spawned
 				let specialScript = PNPC.specialScript || "";
 				let AI = KDPersistentScriptList[specialScript];
 				if (AI && AI.filter(id, data)) {
@@ -796,7 +828,7 @@ function KDWanderPersistentNPCs(coord: WorldCoord, searchEntities: boolean): num
 		for (let id of cache) {
 			let PNPC = KDGetPersistentNPC(id, undefined, false);
 			// Only wander if the party leader isnt on the floor
-			if (PNPC && (!PNPC.partyLeader || !cache.includes(PNPC.partyLeader))) { //  && !PNPC.spawned
+			if (PNPC && IsPNPCActive(PNPC) && (!PNPC.partyLeader || !cache.includes(PNPC.partyLeader))) { //  && !PNPC.spawned
 				let wanderAI = PNPC.wanderAI || "GoToMain";
 				let AI = KDIsInPartyID(PNPC.id) ? KDPersistentWanderAIList.PartyMember
 					: KDPersistentWanderAIList[wanderAI];
@@ -814,6 +846,10 @@ function KDWanderPersistentNPCs(coord: WorldCoord, searchEntities: boolean): num
 	return spawned;
 }
 
+function IsPNPCActive(npc: KDPersistentNPC) {
+	return npc && !npc.deactivated;
+}
+
 /** Captured by NOT PLAYER */
 function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string, faction: string, sameLocation: boolean = false): KDPersistentNPC[] {
 	let altType = KDGetAltType(Level, MapMod, RoomType);
@@ -824,6 +860,7 @@ function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string
 	let capturedPersistent = Object.values(KDPersistentNPCs).filter((npc) => {
 		return npc.captured && KDCapturable(npc.entity) && ((!sameLocation && !npc.jailed && !npc.collect) || (
 			npc.jailed && KDCompareLocation(KDGetNPCLocation(npc.id), KDGetCurrentLocation())
+			&& IsPNPCActive(npc)
 			&& !KinkyDungeonFindID(npc.id)
 		));
 	});

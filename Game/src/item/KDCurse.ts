@@ -272,6 +272,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 		noShrine: true,
 		customIcon_RemoveFailure: "Locks/Gold",
 		level: 10,
+		blockable: true,
 		weight: (_item) => {
 			return 1;
 		},
@@ -296,6 +297,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 		lock: true,
 		level: 3,
 		powerMult: 2.4,
+		blockable: true,
 		weight: (_item) => {
 			return 3;
 		},
@@ -321,6 +323,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 		powerMult: 2.1,
 		lock: true,
 		level: 1,
+		blockable: true,
 		weight: (_item) => {
 			return 10;
 		},
@@ -346,6 +349,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 		lock: true,
 		activatecurse: true,
 		level: 4,
+		blockable: true,
 		weight: (_item) => {
 			return 10;
 		},
@@ -843,7 +847,7 @@ function KDSetCurse(item: item, curse: string, force: boolean = false): boolean 
 		let prevCurse = item.curse;
 		if (item.curse) {
 			if (KDCurses[item.curse]) {
-				let unlock = KDCurses[item.curse].alwaysRemoveOnUnlock || !KDGroupBlocked(KDRestraint(item).Group);
+				let unlock = true;//KDCurses[item.curse].alwaysRemoveOnUnlock || !KDGroupBlocked(KDRestraint(item).Group);
 				let res = KDCurses[item.curse].remove(item, KDGetItemLinkHost(item), false);
 				if (typeof res === "boolean") {
 					unlock = res;
@@ -900,6 +904,7 @@ function KDAddEventVariant(restraint: restraint, newRestraintName: string, ev: K
 	return {
 		//protection: 0,
 		preview: restraint.preview || restraint.name,
+		original: restraint.name,
 		protectionCursed: true,
 		escapeChance: escapeChance,
 		DefaultLock: lock == undefined ? restraint.DefaultLock : lock,
@@ -937,9 +942,12 @@ function KinkyDungeonCurseStruggle(item: item, Curse: string) {
 
 function KinkyDungeonCurseAvailable(item: item, Curse: string) {
 	if (KDCurses[Curse] && KDCurses[Curse].condition(item)) {
-		return true;
+		return (KDCurses[Curse].blockable && (
+			KDGroupBlocked(KDRestraint(item)?.Group)
+			|| !KDIsItemAccessible(item)
+		)) ? "Blocked" : "";
 	}
-	return false;
+	return "FailCondition";
 }
 
 /**
@@ -968,7 +976,7 @@ function KinkyDungeonCurseUnlock(group: string, index: number, Curse: string) {
 	}
 
 	if (KDCurses[Curse]) {
-		unlock = KDCurses[Curse].alwaysRemoveOnUnlock || !KDGroupBlocked(group);
+		//unlock = KDCurses[Curse].alwaysRemoveOnUnlock || !KDGroupBlocked(group);
 		let res = KDCurses[Curse].remove(restraint, host, false);
 		if (typeof res === "boolean") {
 			unlock = res;

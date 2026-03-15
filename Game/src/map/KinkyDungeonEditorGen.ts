@@ -1007,14 +1007,7 @@ let KDTileGen = {
 	"Cage": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
 		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
-		if (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") && KDRandom() < 0.7) {
-			// Decide which furniture
-			if (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") && KDRandom() < 0.6)
-			return {Type: "Furniture", Furniture: "DisplayStand"};
-			else 
-			return {Type: "Furniture", Furniture: "Syb"};
-		}
-		return {Type: "Furniture", Furniture: "Cage"};
+		return {Type: "Furniture", Furniture: KDGetPervertibleFurniture("Cage", KinkyDungeonStatsChoice.get("MoreKinkyFurniture") ? 0.8 : 0.1)};
 	},
 	"DisplayStand": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
@@ -1102,10 +1095,12 @@ let KDTileGen = {
 		return {Type: "BondageMachine", OL: true, Binding: tileGenerator.Binding};
 	},
 	"EffectTile": (x, y, tile, tileGenerator, data) => {
-		KDCreateEffectTile(x, y, {
+		let tt = {
 			name: tileGenerator.Tile,
 			duration: 9999,
-		}, 0);
+			infinite: true,
+		};
+		KDCreateEffectTile(x, y, tt, 0);
 		return null;
 	},
 	"AutoDoor": (x, y, tile, tileGenerator, data) => {
@@ -1203,4 +1198,20 @@ function KDGetCategoryIndex(x, y) {
 		return KDMapData.CategoryIndex[Math.ceil(x/KDTE_Scale) + ',' + Math.ceil(y/KDTE_Scale)];
 	}
 	return {category: "", tags: []};
+}
+
+let KDPervertibleFurnitureWeights: Record<string, number> = {
+	//Cage: 0.6,
+	LatexDisplayStand: 0.1,
+	DisplayStand: 0.3,
+	OneBarTrap: 0.1,
+	OneBarVibeTrap: 0.05,
+}
+
+function KDGetPervertibleFurniture(base = "Cage", pervertChance = 0.1): string {
+	if (KDRandom() < pervertChance) {
+		return KDGetByWeight(KDPervertibleFurnitureWeights);
+	}
+
+	return base;
 }

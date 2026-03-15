@@ -14,7 +14,7 @@ interface KDOutfitMetadata {
 	customColors: Record<string, Record<string, LayerFilter>>,
 }
 
-interface FactionFilterDef {color: string, override: boolean, desaturate?: boolean};
+interface FactionFilterDef {color: string, override?: boolean, desaturate?: boolean};
 
 /** Kinky Dungeon Typedefs*/
 interface item extends NamedAndTyped {
@@ -208,6 +208,9 @@ interface KDRestraintPropsBase {
 	/** This item is not kept in the lost items chest unless it is magical */
 	noRecover?: boolean,
 
+	/** does not use affinity/neededge etc */
+	noaffinity?: boolean,
+	
 	/** These items can only be applied if an enemy has the items in her inventory or the unlimited enemy tag */
 	limited?: boolean,
 	/** Forced to allow these, mainly leashes and collars */
@@ -598,6 +601,7 @@ interface KDRestraintPropsBase {
 interface restraint extends KDRestraintProps {
 	power: number,
 	preview?: string,
+	original?: string,
 	/** Special condition for quick binding! */
 	quickBindCondition?: string,
 	/** Multiplier to bondage strength if target isn't disabled */
@@ -612,6 +616,9 @@ interface restraint extends KDRestraintProps {
 
 	/** Descriptor for tightness, e.g. Secure, Thick */
 	tightType?: string,
+
+	/** multiplies cut depth AFTER calculation */
+	cutVulnerability?: number,
 
 	escapeChance: KDEscapeChanceList,
 
@@ -748,7 +755,7 @@ interface floorParams {
 	//shortcuts: {Level: number, checkpoint: string, chance:number}[	],
 	//mainpath: {Level: number, checkpoint: string, chance?: number}[],
 
-	traps: {Name: string, Faction?: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number, filterTag?: string, filterBackup?: string, arousalMode?: boolean}[],
+	traps: {Name: string, Faction?: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, BlockedByPerks?: string[], Weight: number, strict?: true, teleportTime?: number, filterTag?: string, filterBackup?: string, arousalMode?: boolean}[],
 
 	min_width : number,
 	max_width : number,
@@ -807,7 +814,7 @@ interface alwaysDressModel {
 	/** Filters */
 	Filters?: Record<string, LayerFilter>,
 	/** Faction filter index */
-	factionFilters?: Record<string, {color: string, override: boolean}>,
+	factionFilters?: Record<string, {color: string, override?: boolean}>,
 	/** Inherits the filters of the main */
 	inheritFilters?: boolean,
 	/** Whether or not it overrides items already on */
@@ -819,6 +826,8 @@ interface alwaysDressModel {
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
 
 interface enemy extends KDHasTags {
+	/** allows custom intentactions for capture */
+	captureAction?: string,
 	/** Makes them special persistent */
 	special?: boolean,
 	overrideFactionDefeat?: boolean,
@@ -985,6 +994,8 @@ interface enemy extends KDHasTags {
 	willBonus?: number,
 	/** Enemies will prioritize this enemy less than other enemies. Used by allies only. */
 	lowpriority? : boolean,
+	/** stuns the entity when you swap with her */
+	stunWhenSwap?: boolean,
 	/** lookup condition in KDPathConditions,
 	 * basically allows enemies to path through an immobile enemy under certain circumstances */
 	pathcondition?: string,
@@ -1459,7 +1470,11 @@ interface enemy extends KDHasTags {
 	enemyCountSpellLimit?: number;
 	/** List of animations to be applied */
 	Animations?: string[];
-
+	/** If set, when this NPC is promoted/recruited to a Servant,
+	 *  its collection type will be swapped to this enemy type.
+	 *  For bosses / special NPCs that need a safe/nerfed variant.
+	 */
+	recruitType?: string;
 }
 
 interface shopItem {
@@ -1736,6 +1751,11 @@ interface KDBuff {
 	training?: string,
 	id: string,
 	power?: number,
+	/** when the buff expires, it instead has its duration reset and either 1 subtracted from its power, or resetDurationPower subtracted. Once power reaches 0 it disappears*/
+	
+	resetDurationPower?: number,
+	/** when the buff expires, it instead has its duration reset and either 1 subtracted from its power, or resetDurationPower subtracted. Once power reaches 0 it disappears*/
+	resetDurationTime?: number,
 	type?: string,
 	duration?: number,
 	infinite?: boolean,
@@ -1776,6 +1796,7 @@ interface KDBuff {
 	sfxApply?: string,
 	onlyAlly?: boolean,
 	noAlly?: boolean,
+	flashing?: boolean
 }
 
 interface entity {
@@ -1783,6 +1804,8 @@ interface entity {
 	lastmove?: number,
 	/** If true, immediately run the spawn AI for this once loading the map */
 	runSpawnAI?: boolean,
+	/** When this entity was spawned on a different map */
+	spawnTick?: number,
 
 	/** Targeted entity x */
 	tx?: number,
@@ -1985,6 +2008,7 @@ interface entity {
 	KinkyDungeonJailTourInfractions?: number,
 	/**  Used by guards.  */
 	CurrentRestraintSwapGroup?: string,
+	CurrentRestraintSwapIndex?: number,
 }
 
 type KinkyDungeonDress = {
@@ -2069,6 +2093,8 @@ interface effectTile {
 	/** Spin to the effect tile sprite */
 	spin?: number,
 	spinAngle?: number,
+	colortint?: string,
+	colorforcetint?: string,
 
 };
 
@@ -2082,6 +2108,8 @@ interface effectTileRef {
 	pauseSprite?: string,
 	skin?: string,
 	statuses?: Record<string, number>,
+	colortint?: string,
+	colorforcetint?: string,
 };
 
 type KDPerk = {
@@ -2718,6 +2746,7 @@ interface VibeMod {
 
 interface KDStruggleData {
 	angelHelp: boolean,
+	cutVulnerability: number,
 	minSpeed: number;
 	handBondage: number;
 	armsBound: boolean;
@@ -2786,12 +2815,15 @@ interface KDInventoryActionDef {
 	itemlabelcolor?: (player: entity, item: item) => string;
 	show?: (player: entity, item: item) => boolean;
 	valid: (player: entity, item: item) => boolean;
+	invalidtooltip?: (player: entity, item: item) => string;
 	click: (player: entity, item: item,) => void;
 	cancel: (player: entity, delta: number) => boolean;
 	icon: (player: entity, item: item) => string;
 	hotkey?: () => string,
 	hotkeyPress?: () => string,
 	alsoShow?: string[],
+	/** Auto-filter inventory items when this action is active */
+	autoFilter?: (item: item) => boolean,
 }
 
 interface KinkyDungeonSave {
@@ -2818,6 +2850,7 @@ interface KinkyDungeonSave {
 		Palette: string,
 		metadata: KDOutfitMetadata,
 
+		ConsentArray: Record<string, string>;
 
 		outfit: string,
 		name: string,
@@ -3732,8 +3765,8 @@ type KDParticleEmitterData = {
 }
 
 interface KDCursedDef {
-	/** Always removes even if under a chastity belt */
-	alwaysRemoveOnUnlock?: boolean,
+	/** If group is blocked you cant remove this one */
+	blockable?: boolean,
 	/** Restraints with this curse are unremovable via shrine */
 	noShrine?: boolean,
 	/** This curse is treated as a type of lock, for display purposes */
@@ -4130,6 +4163,7 @@ type KDCollectionTabDrawDef = (value: KDCollectionEntry, buttonSpacing: number, 
 
 interface KDCollectionEntry {
 	name: string,
+	refreshSprite?: boolean,
 	origname?: string,
 	color: string,
 	type: string,

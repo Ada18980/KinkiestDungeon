@@ -300,7 +300,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			}, null, true, showAll, showAll ? KDGenericMatsPerRowShowAll : KDGenericMatsPerRow, KDGenericBindsPerRow);
 
 		} else {
-			let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter);
+			let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
+				undefined, undefined, true
+			);
 
 			filteredInventory = filteredInventory.filter((inv) => {
 				return groups.includes(KDRestraint(inv.item)?.Group)
@@ -469,6 +471,10 @@ function KDSetNPCRestraints(id: number, restraints: Record<string, NPCRestraint>
 		KDGameData.NPCRestraints = {};
 	KDGameData.NPCRestraints["" + id] = restraints;
 
+	if (KDNPCChar.get(id)) {
+		KDRefreshCharacter.set(KDNPCChar.get(id), true);
+	}
+
 	if (KDGameData.Collection[id + ""])
 		KDValidateEscapeGrace(KDGameData.Collection[id + ""]);
 }
@@ -480,13 +486,14 @@ function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint, No
 	let entity = KDLookupID(id);
 
 	if (restraint && !bypass) {
-		let blockers = KDGetBlockersToAddRestraint(KDRestraint(restraint), entity);
+		let blockers = KDGetBlockersToAddRestraint(KDRestraint(restraint), entity, false);
 		if (blockers.length > 0) {
 			//let rPower = KDRestraintPower(restraint);
 			for (let blocker of blockers) {
 				items.push(blocker);
 				for (let entry of Object.entries(restraints)) {
 					delete restraints[entry[0]];
+					
 				}
 			}
 		}

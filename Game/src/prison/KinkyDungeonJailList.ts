@@ -75,7 +75,7 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 			if (KinkyDungeonVisionGet(guard.x, guard.y))
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardAppear").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), KDBaseWhite, 6);
 			KDGameData.GuardTimer = KDGameData.GuardTimerMax;
-			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax + 1 - KDGameData.GuardSpawnTimerMin));
 		},
 	},
 	"useCurrentGuard": {
@@ -121,7 +121,7 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 
 			//if (KinkyDungeonVisionGet(guard.x, guard.y))
 			KDGameData.GuardTimer = KDGameData.GuardTimerMax;
-			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax + 1 - KDGameData.GuardSpawnTimerMin));
 		},
 	},
 	"spawnRescue": {
@@ -317,14 +317,11 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerAdd").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
 				}
 			} else if (lockableRestraint.length > 0) {
-				let group = "";
-				if (lockableRestraint.includes("ItemMouth3")) group = "ItemMouth3";
-				else if (lockableRestraint.includes("ItemMouth2")) group = "ItemMouth2";
-				else if (lockableRestraint.includes("ItemMouth")) group = "ItemMouth";
-				else group = lockableRestraint[Math.floor(lockableRestraint.length * KDRandom())];
-				if (group) {
+				let item = lockableRestraint[Math.floor(lockableRestraint.length * KDRandom())];
+				if (item) {
 					guard.CurrentAction = "jailLockRestraints";
-					guard.CurrentRestraintSwapGroup = group;
+					guard.CurrentRestraintSwapGroup = KDRestraint(item).Group;
+					guard.CurrentRestraintSwapIndex = KDGetItemLinkIndex(item, true);
 					KDGameData.GuardTimer = Math.max(0, KDGameData.GuardTimer - 10);
 				}
 
@@ -453,7 +450,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 			if (touchesPlayer) {
 
 				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
-				let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
+				let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup, guard.CurrentRestraintSwapIndex);
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (oldRestraintItem && !oldRestraintItem.lock && KinkyDungeonIsLockable(KDRestraint(oldRestraintItem))) {
 						let lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(),false, undefined, {enemy: KinkyDungeonJailGuard()});
@@ -573,7 +570,7 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "TrapGag", Level: 15},
 			{Name: "Stuffing", Level: 25},
 			{Name: "FeetShackles", Level: 25},
-			{Name: "PrisonBelt", Level: 30},
+			{Name: "PrisonBelt", Level: 30, Condition: "ChastityBelt"},
 			{Name: "TrapPlug", Level: 30, Condition: "Plug"},
 			{Name: "LegShackles", Level: 35},
 			{Name: "HighsecLegbinder", Level: 35},
@@ -723,7 +720,7 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 		parole: false,
 		restraints: [
 			{Name: "TrapMittens", Level: 0},
-			{Name: "MaidCBelt", Level: 0},
+			{Name: "MaidCBelt", Level: 0, Condition: "ChastityBelt"},
 			{Name: "TrapGag", Level: 15},
 			{Name: "Stuffing", Level: 20},
 			{Name: "MaidGag", Level: 30},
@@ -825,8 +822,8 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 		parole: true,
 		restraints: [
 			{Name: "ControlHarness", Level: 0},
-			{Name: "CyberBelt", Level: 0},
-			{Name: "CyberBra", Level: 0},
+			{Name: "CyberBelt", Level: 0, Condition: "ChastityBelt"},
+			{Name: "CyberBra", Level: 0, Condition: "ChastityBra"},
 			{Name: "CyberArmCuffs", Level: 0},
 			{Name: "CyberMittens", Level: 0},
 			{Name: "LatexCatsuit", Level: 0},
@@ -923,10 +920,10 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "BindingDress", Level: 0},
 			{Name: "DressGag", Level: 40},
 			{Name: "NippleClamps", Level: 40},
-			{Name: "DressBra", Level: 60},
+			{Name: "DressBra", Level: 60, Condition: "ChastityBra"},
 			{Name: "DressCorset", Level: 60},
 			{Name: "DressMuzzle", Level: 60},
-			{Name: "MagicBelt", Level: 80},
+			{Name: "MagicBelt", Level: 80, Condition: "ChastityBelt"},
 			{Name: "KiguMaskSmile", Level: 100, Condition: "NoKigu"},
 		],
 	},
@@ -977,6 +974,9 @@ let KDJailConditions: Record<string, (r: KDJailRestraint) => boolean> = {
 	},
 	ChastityBra: (_r) => {
 		return !!(!KinkyDungeonStatsChoice.get("FreeBoob2") && (KinkyDungeonPlayerTags.get("ItemNipples") || !KinkyDungeonStatsChoice.get("FreeBoob1")));
+	},
+	ChastityBelt: (_r) => {
+		return !!(!KinkyDungeonStatsChoice.get("NoBelt2") && ((KinkyDungeonPlayerTags.get("ItemVulva") || KinkyDungeonPlayerTags.get("ItemVulvaPiercings") || KinkyDungeonPlayerTags.get("ItemButt")) || !KinkyDungeonStatsChoice.get("NoBelt1")));
 	},
 	NoPetsuit: (_r) => {
 		return !KinkyDungeonStatsChoice.get("NoPet");

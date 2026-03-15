@@ -104,7 +104,7 @@ AddModel({
 			EraseLayerGroups: {PantRight: true, SkirtLower: true, BikiniZone: true, UnderBustBondage: true},
 			EraseSprite: "EraseCorset",
 			EraseInvariant: true,
-			EraseZBonus: 1000,
+			EraseZBonus: 20000,
 			//EraseMorph: {EncaseTorsoLower: "Encase"},
 		},
 		{ Name: "Chest", Layer: "Chest", Pri: 0,
@@ -146,11 +146,11 @@ AddModel({
 			//HideWhenOverridden: true,
 			InheritColor: "Torso",
 			Poses: ToMap(KNEELPOSES),
-			EraseLayerGroups: {SkirtLower: true, BikiniZone: true, WrappingMid: true, UnderBustBondage: true},//PantRight: true, 
+			EraseLayerGroups: {SkirtLower: true, BikiniZone: true, WrappingMid: true, UnderBustBondage: true, HarnessMid: true},//PantRight: true, 
 			EraseSprite: "EraseCorsetKneel",
 			EraseInvariant: true,
-			EraseZBonus: 1000,
-			CancelErasePoses: ["Saddled"],
+			EraseZBonus: 20000,
+			EraseMorph: {"Saddled": "Saddled"},
 			//EraseMorph: {EncaseTorsoLower: "Encase"},
 		},
 		{ Name: "Butt2", Layer: "Butt", Pri: 0,
@@ -159,7 +159,7 @@ AddModel({
 			Poses: ToMap(KNEELPOSES),
 			EraseLayers: {ButtSleeves: true},
 			EraseSprite: "ButtSleeves",
-			EraseZBonus: 1000,
+			EraseZBonus: 20000,
 			EraseInvariant: true,
 			Invariant: true,
 			//EraseMorph: {EncaseTorsoLower: "Encase"},
@@ -173,5 +173,35 @@ AddModel({
 			Invariant: true,
 			HidePoses: {HideNipples: true},
 		},
+	])
+});
+
+
+
+AddModel({
+	Name: "SmoothBody",
+	Group: "Body",
+	//TopLevel: true,
+	Parent: "Body",
+	Protected: true,
+	Categories: ["Body"],
+	Folder: "BodySmooth",
+	AddPose: ["Body"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Body"),
+	])
+});
+
+AddModel({
+	Name: "DollBody",
+	Group: "Body",
+	//TopLevel: true,
+	Parent: "Body",
+	Protected: true,
+	Categories: ["Body"],
+	Folder: "BodyDoll",
+	AddPose: ["Body"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Body"),
 	])
 });

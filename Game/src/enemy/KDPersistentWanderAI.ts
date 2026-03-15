@@ -57,6 +57,7 @@ let KDPersistentWanderAIList: Record<string, PersistentWanderAI> = {
 				let halt = false;
 				if (entity) {
 					if (KDEnemyCanDespawn(id, mapData)) {
+						if (entity.leash) KDBreakTether(entity, mapData);
 						KDDespawnEnemy(entity, undefined, mapData);
 					} else {
 						let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
@@ -320,6 +321,7 @@ function KDStandardWander(id: number, mapData: KDMapDataType, entity: entity, AI
 		let halt = false;
 		if (entity) {
 			if (KDEnemyCanDespawn(id, mapData)){
+						if (entity.leash) KDBreakTether(entity, mapData);
 				KDDespawnEnemy(entity, undefined, mapData);
 			} else {
 				let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
@@ -458,6 +460,7 @@ function KDStandardLairWander(id: number, mapData: KDMapDataType, entity: entity
 		let halt = false;
 		if (entity) {
 			if (KDEnemyCanDespawn(id, mapData)){
+						if (entity.leash) KDBreakTether(entity, mapData);
 				KDDespawnEnemy(entity, undefined, mapData);
 			} else {
 				let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
@@ -588,6 +591,7 @@ function KDStandardTargetedWander(id: number, mapData: KDMapDataType, entity: en
 		let halt = false;
 		if (entity) {
 			if (KDEnemyCanDespawn(id, mapData)){
+						if (entity.leash) KDBreakTether(entity, mapData);
 				KDDespawnEnemy(entity, undefined, mapData);
 			} else {
 				let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,

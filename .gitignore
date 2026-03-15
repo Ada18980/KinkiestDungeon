@@ -35,3 +35,7 @@
 
 *.wav
 
+.DS_Store
+*/.DS_Store
+*.kra
+*.png~

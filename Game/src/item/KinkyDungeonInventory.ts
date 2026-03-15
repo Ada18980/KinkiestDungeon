@@ -31,8 +31,8 @@ let KDInventoryActionsDefault: Record<string, (item: item) => string[]> = {
 				ret.push("Lock");
 			}
 		} else {
-			ret.push("CurseInfo", "CurseStruggle");
-			if (KinkyDungeonCurseAvailable(item, KDGetCurse(item))) ret.push("CurseUnlock");
+			ret.push("CurseUnlock", "CurseInfo", "CurseStruggle");
+			//if (!KinkyDungeonCurseAvailable(item, KDGetCurse(item))) ret.push("CurseUnlock");
 		}
 		ret.push("Recolor");
 		return ret;
@@ -464,7 +464,9 @@ function KinkyDungeonHandleInventory() {
 	//let filter = KinkyDungeonCurrentFilter;
 	//if (KDFilterTransform[KinkyDungeonCurrentFilter]) filter = KDFilterTransform[KinkyDungeonCurrentFilter];
 
-	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, undefined, KDInvFilter);
+	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined, undefined, undefined, undefined, KDInvFilter,
+		undefined, undefined, false
+	);
 
 
 
@@ -968,7 +970,7 @@ function KDGetRestraintPreviewImage(restraint: restraint): string {
  * @param [namefilter]
  */
 function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignoreHidden?: boolean, ignoreFilters?: boolean, click?: string, namefilter?: string,
-	overrideInventory?: Record<string, item>, ignoreFilterList: string[] = []
+	overrideInventory?: Record<string, item>, ignoreFilterList: string[] = [], ignoreAutoFilter: boolean = true
 ): itemPreviewEntry[] {
 	let filter_orig = Filter;
 	if (KDFilterTransform[Filter]) Filter = KDFilterTransform[Filter];
@@ -1018,17 +1020,28 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 				}
 			}
 
+			// Auto-filter from inventory action
+			if (!ignoreAutoFilter && KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.autoFilter) {
+				if (!KDInventoryAction[KDGameData.InventoryAction].autoFilter(item)) continue;
+			}
+
 			let preview = KDGetItemPreview(item);
+			
+			let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentified(item);
+			let restraint = KDRestraint(item);
+			if (unidentified && restraint?.original) {
+				restraint = KDRest(restraint.original);
+			}
 			//let pre = (item.type == LooseRestraint || item.type == Restraint) ? "Restraint" : "KinkyDungeonInventoryItem";
 			if (preview
 				&& (item.type != LooseRestraint || (!enchanted || KDRestraint(item).enchanted || KDRestraint(item).showInQuickInv || item.showInQuickInv))
 				&& (!namefilter
 					|| KDGetItemName(preview.item).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 					|| (item.type == Weapon && TextGet("KinkyDungeonDamageType" + KDWeapon(item)?.type).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase()))
-					|| ((item.type == LooseRestraint || item.type == Restraint) && KDRestraint(item)?.shrine?.some((tag) => {
+					|| ((item.type == LooseRestraint || item.type == Restraint) && restraint?.shrine?.some((tag) => {
 						return !InvFilterShrineBlacklist.includes(tag) && tag.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase());
 					}))
-					|| ((item.type == LooseRestraint || item.type == Restraint) && (item.events || KDRestraint(item)?.events)?.some((e) => {
+					|| ((item.type == LooseRestraint || item.type == Restraint) && ((unidentified ? null : item.events) || restraint?.events)?.some((e) => {
 						return TextGet("KinkyDungeonDamageType" + (e.damage || e.kind)).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 						|| e.damage?.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 						|| e.kind?.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
@@ -1047,6 +1060,7 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 							/**
 							 */
 							let data: KDStruggleData = {
+								cutVulnerability: KDRestraint(item)?.cutVulnerability,
 								minSpeed: KDMinEscapeRate,
 								handBondage: 0,
 								handsBound: false,
@@ -1238,7 +1252,7 @@ function KinkyDungeonDrawInventorySelected (
 		: TextGet(prefix + name + "Desc"), 12*mult, 26*mult).split('\n');
 	let textSplit2 = KinkyDungeonWordWrap((unidentified && prefix == "Restraint")
 		? TextGet(`${prefix}${KDRestraint(item.item).name}Desc2`)
-		: TextGet(prefix + name + "Desc2"), 12*mult, 28*mult).split('\n');
+		: TextGet(prefix + name + "Desc2"), 12*mult, 26*mult).split('\n');
 
 	let data = {
 		extraLines: [],
@@ -1456,19 +1470,19 @@ function KinkyDungeonDrawInventorySelected (
 	} else {
 		for (let N = 0; N < textSplit.length; N++) {
 			DrawTextFitKD(textSplit[N],
-				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 25, 640*KinkyDungeonBookScale/2.5, KDBookText, KDTextTan, 24, undefined, 130); i++;}
+				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 25, 640*KinkyDungeonBookScale/2.5, KDBookText, KDTextTan, 20, undefined, 130); i++;}
 	}
 	i = 0;
 	for (let N = 0; N < data.extraLinesPre.length; N++) {
 		DrawTextFitKD(data.extraLinesPre[N],
-			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, data.extraLineColorPre[N], data.extraLineColorBGPre[N], 24, undefined, 130); i++;}
+			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, data.extraLineColorPre[N], data.extraLineColorBGPre[N], 20, undefined, 130); i++;}
 	for (let N = 0; N < textSplit2.length; N++) {
 		DrawTextFitKD(textSplit2[N],
-			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, KDBookText, KDTextTan, 24, undefined, 130); i++;}
+			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, KDBookText, KDTextTan, 20, undefined, 130); i++;}
 	if ((unidentified && item.item.type == Restraint) || (!unidentified)) {
 		for (let N = 0; N < data.extraLines.length; N++) {
 			DrawTextFitKD(data.extraLines[N],
-				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, data.extraLineColor[N], data.extraLineColorBG[N], 24, undefined, 130); i++;}
+				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, data.extraLineColor[N], data.extraLineColorBG[N], 20, undefined, 130); i++;}
 	}
 	i = 0;
 
@@ -1833,7 +1847,9 @@ function KDDrawInventoryContainer (
 						} else {
 							KinkyDungeonInventoryOffset = 0;
 						}
-						KinkyDungeonFilterInventory(CurrentFilter, undefined, undefined, undefined, filters[i][0], KDInvFilter);
+						KinkyDungeonFilterInventory(CurrentFilter, undefined, undefined, undefined, filters[i][0], KDInvFilter,
+							undefined, undefined, false
+						);
 					}
 					return true;
 				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
@@ -1863,7 +1879,9 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 		if (filters.includes(KDFilters[I])) continue;
 		if (!first) first = KDFilters[I];
 		let col = KDTextGray2;
-		if (KinkyDungeonFilterInventory(KDFilters[I], false, false, true).length > 0) {
+		if (KinkyDungeonFilterInventory(KDFilters[I], false, false, true, undefined, undefined, undefined, undefined,
+			false
+		).length > 0) {
 			col = "#888888";
 		}
 		//if (KDFilters.indexOf(KinkyDungeonCurrentFilter) == I) {
@@ -1888,6 +1906,10 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 	if (!selected && first) KinkyDungeonCurrentFilter = first;
 }
 
+let KD_invactiontextwidth = 800;
+let KD_invactiontextanchorx_offset = 500;
+let KD_invactiontextanchory = 170;
+
 function KinkyDungeonDrawInventory() {
 	let xOffset = -125;
 	//KinkyDungeonDrawMessages(true, 550, true, 600);
@@ -1902,13 +1924,47 @@ function KinkyDungeonDrawInventory() {
 	if (KDFilterTransform[KinkyDungeonCurrentFilter]) filter = KDFilterTransform[KinkyDungeonCurrentFilter];
 	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter,
 		undefined, undefined, undefined, undefined, KDInvFilter,
-		container?.items
+		container?.items, undefined, false
 	);
 
 
 	let ss = KDDrawInventoryContainer(xOffset, 0, filteredInventory, filter, KinkyDungeonCurrentFilter);
 	let selected = ss.selected;
 	KDDrawHotbarBottom(selected, undefined, undefined, -432, true);
+
+	if (!KDAlternateInventoryRender()) {
+		if (KDGameData.InventoryAction) {
+			if (!(KDGameData.InventoryActionContainer?.length > 0)) {
+				let invactiontextwidth = KD_invactiontextwidth;
+				let invactiontextanchorx = KD_invactiontextanchorx_offset + invactiontextwidth/2 + xOffset;
+				let invactiontextanchory = KD_invactiontextanchory;
+				let width = DrawTextFitKD(TextGet("KDInventoryActionInfo_" + KDGameData.InventoryAction, KDGameData.InventoryActionTokens), 
+				invactiontextanchorx,
+				invactiontextanchory, invactiontextwidth, 
+				KDBaseWhite,
+					KDTextGray0, undefined, "center");
+				DrawButtonKDEx("invActionCancel_", (_bdata) => {
+						KDSendInput("inventoryAction",
+							{action: "",
+								container: "",
+								player: KDPlayer(),
+								item: undefined});
+						return true;
+					}, true, invactiontextanchorx + width/2 + 20, 
+					invactiontextanchory - 37, 74, 74, "", "",
+					KinkyDungeonRootDirectory + "UI/X.png",
+					"",
+					false,
+					false, undefined,
+					undefined, undefined, {centered: true,
+						hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+						hotkeyPress: KinkyDungeonKeySkip[0],
+
+					},
+				);
+			}
+		}
+	}
 
 	if (KinkyDungeonDrawInventorySelected(filteredInventory[KinkyDungeonCurrentPageInventory],
 		undefined, undefined, xOffset) && !KDAlternateInventoryRender()) {
@@ -1922,6 +1978,8 @@ function KinkyDungeonDrawInventory() {
 		}
 
 		if (KDGameData.InventoryAction) {
+			
+			
 			inventoryActions.push(KDGameData.InventoryAction);
 			if (KDInventoryAction[KDGameData.InventoryAction]?.alsoShow) inventoryActions.push(...KDInventoryAction[KDGameData.InventoryAction].alsoShow);
 		}
@@ -3231,7 +3289,7 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
 			"" + item.id,
 			variant.suffix,
 			undefined,
-			true
+			true, item.data
 		);
 
 		KDUpdateItemEventCache = true;
@@ -3439,6 +3497,7 @@ function KDEquipInventoryVariant (
 	suffix:              string = "",
 	powerBonus:          number = 0,
 	NoActionPrune:		 boolean = false,
+	data?: any,
 )
 {
 	KDUpdateItemEventCache = true;
@@ -3460,7 +3519,7 @@ function KDEquipInventoryVariant (
 		Tightness, Bypass, Lock, Keep, Trapped,
 		events, faction, Deep, curse,
 		securityEnemy, useAugmentedPower, newname,
-		undefined, undefined, undefined,
+		data, undefined, undefined,
 		powerBonus, NoActionPrune
 	);
 }
@@ -3562,7 +3621,8 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 	);
 	//}
 
-
+	const max_choices = Math.max (KinkyDungeonSpellChoices.length, KinkyDungeonConsumableChoices.length, KinkyDungeonWeaponChoices.length, KinkyDungeonArmorChoices.length)
+	
 
 	for (i = 0; i < KinkyDungeonSpellChoiceCountPerPage; i++) {
 		let index = i + KDSpellPage * KinkyDungeonSpellChoiceCountPerPage;
@@ -3777,7 +3837,7 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 		// Draw icons for the other pages, if applicable
 		for (let page = 1; page < maxSmallIcons && page <= Math.floor((KinkyDungeonSpellChoiceCount - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
 			let pg = KDSpellPage + page;
-			if (pg > Math.floor((KinkyDungeonSpellChoiceCount) / KinkyDungeonSpellChoiceCountPerPage)) pg -= 1 + Math.floor((KinkyDungeonSpellChoiceCount - 1) / KinkyDungeonSpellChoiceCountPerPage);
+			if (pg > Math.floor((KinkyDungeonSpellChoiceCount) / KinkyDungeonSpellChoiceCountPerPage)) pg -= Math.floor((KinkyDungeonSpellChoiceCount) / KinkyDungeonSpellChoiceCountPerPage);
 
 			// Now we have our page...
 			let indexPaged = (i + pg * KinkyDungeonSpellChoiceCountPerPage) % (KinkyDungeonSpellChoiceCount);

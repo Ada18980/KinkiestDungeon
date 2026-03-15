@@ -1012,8 +1012,8 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpecificSpell", Spell: "TrapRopeStrong", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 7},
+			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 30, BlockedByPerks: ["BubbleOptout"]},
+			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 7, BlockedByPerks: ["SlimeOptout"]},
 			{Name: "SpawnEnemies", Enemy: "Dressmaker", strict: true, Level: 0, Power: 2, Weight: 10},
 			{Name: "SpawnEnemies", Enemy: "Librarian", strict: true, Level: 4, Power: 1, Weight: 5},
 			{Name: "SpecificSpell", Spell: "TrapLinks", Level: 4, Power: 1, Weight: 40},
@@ -1313,7 +1313,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		torchchanceboring: 0.1,
 
 		music: {
-			"Dragon Lair.ogg": 15,
+			"DragonLair.ogg": 15,
 			"AREA7-LOSTTEMPLE-AMBIENT.ogg": 10,
 		},
 
@@ -1913,8 +1913,8 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpawnEnemies", strict: true, Enemy: "CaptureBot", Level: 0, Power: 2, Weight: 100},
 			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 10},
 			{Name: "SpecificSpell", Spell: "TrapLatex", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 25},
-			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 15},
+			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 25, BlockedByPerks: ["BubbleOptout"]},
+			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 15, BlockedByPerks: ["SlimeOptout"]},
 			{Name: "SpecificSpell", Spell: "TrapLinks", Level: 4, Power: 1, Weight: 40},
 
 			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "OldDrone"},
@@ -2034,7 +2034,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		"traps": [
 			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 10},
 			{Name: "SpecificSpell", Spell: "TrapLatex", Level: 0, Power: 3, Weight: 30},
-			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 30, BlockedByPerks: ["BubbleOptout"]},
 
 		],
 
@@ -2264,8 +2264,8 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 30},
 			{Name: "SpecificSpell", Spell: "TrapMagicChainsWeak", Level: 0, Power: 3, Weight: 30},
 
-			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 200},
-			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 50},
+			{Name: "SpecificSpell", Spell: "TrapLatexBubble", Level: 0, Power: 3, Weight: 200, BlockedByPerks: ["BubbleOptout"]},
+			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 200, BlockedByPerks: ["SlimeOptout"]},
 		],
 
 		"min_width" : 5,

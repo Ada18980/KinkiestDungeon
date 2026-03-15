@@ -897,14 +897,7 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 
 	let tile = KinkyDungeonTilesGet(x + ',' + y);
 	let furn = KDFurniture[tile?.Furniture];
-	let rest: restraint = furn ? KinkyDungeonGetRestraint(
-		{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-		KDCurrIndex(),
-		true,
-		"",
-		true,
-		false,
-		false, undefined, true) : null;
+	
 
 	if (!noPersistent && persistentAvailable) {
 		/**
@@ -937,13 +930,9 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 			e.boundLevel = e.hp * 11;
 			e.items = [];
 
-			KDImprisonEnemy(e, noJam, "auto", rest ? {
-				name: rest.name,
-				lock: lock,
-				id: KinkyDungeonGetItemID(),
-				faction: KDGetMainFaction() || "Jail",
-			} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(),
-			undefined, furn?.restraintSetLevelBonus);
+			KDImprisonEnemy(e, noJam, "auto", furn?.restraintTag ? [furn?.restraintTag] : undefined, 
+				furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(),
+			undefined, furn?.restraintSetLevelBonus, furn?.lockType != undefined ? furn.lockType : "White");
 
 		}
 		return {
@@ -966,13 +955,9 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 		if (Enemy) {
 			let e = DialogueCreateEnemy(x, y, Enemy.name);
 			if (
-			KDImprisonEnemy(e, noJam, "auto", rest ? {
-				name: rest.name,
-				lock: lock,
-				id: KinkyDungeonGetItemID(),
-				faction: KDGetMainFaction() || "Jail",
-			} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(), true,
-			furn?.restraintSetLevelBonus)) {
+			KDImprisonEnemy(e, noJam, "auto", furn?.restraintTag ? [furn?.restraintTag] : undefined, 
+				furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(), true,
+			furn?.restraintSetLevelBonus, furn?.lockType != undefined ? furn.lockType : "White")) {
 				e.faction = "Prisoner";
 				e.boundLevel = e.hp * 11;
 				//e.prisondialogue = "PrisonerJail";
@@ -1186,6 +1171,7 @@ function KDGetNPCRestraintJailDialogueType(restraint: NPCRestraint) {
 	return "PrisonerJail";
 }
 
+
 /**
  * @param e
  * @param noJam
@@ -1193,9 +1179,21 @@ function KDGetNPCRestraintJailDialogueType(restraint: NPCRestraint) {
  * @param [restraint]
  */
 function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "auto",
-	restraint?: NPCRestraint, restraintSet?: Record<string, number>, faction: string = "", force?: boolean,
-	LevelBonus?: number): boolean {
+	restrainttags?: string[], restraintSet?: Record<string, number>, faction: string = "", force?: boolean,
+	LevelBonus?: number, Lock?: string): boolean {
 	if (!e || (!force && !KDCapturable(e))) return false;
+
+
+	let erestraints = restrainttags ? KDGetNPCEligibleRestraints_fromTags(e?.id, restrainttags, Lock ? {
+		forceLock: Lock
+	} : {}) : [];
+	let restrainttype = KDGetByRestraintEligibleEntry(erestraints);
+	let restraint: NPCRestraint = restrainttype?.restraint ? {
+		name: restrainttype.restraint.name,
+		lock: restrainttype.lock,
+		id: KinkyDungeonGetItemID(),
+		faction: KDDefaultNPCBindPalette
+	} : undefined;
 	if (dialogue == 'auto') {
 		if (restraint) {
 			dialogue = KDGetNPCRestraintJailDialogueType(restraint);
@@ -1209,6 +1207,10 @@ function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "auto",
 	}
 	if (noJam)
 		KinkyDungeonSetEnemyFlag(e, "nojam", -1);
+	
+	if (restraintSet) {
+		KDAddFurnitureRestraintSet(e, restraintSet, faction, LevelBonus);
+	}
 	e.prisondialogue = dialogue;
 	KinkyDungeonSetEnemyFlag(e, "noswap", -1);
 	KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
@@ -1216,9 +1218,6 @@ function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "auto",
 		KDSetNPCRestraint(e.id, "Device", restraint);
 		// Add the tieup value
 		KDNPCRestraintTieUp(e.id, restraint, 1);
-	}
-	if (restraintSet) {
-		KDAddFurnitureRestraintSet(e, restraintSet, faction, LevelBonus);
 	}
 	e.playerdmg = undefined;
 	if (e.hp <= 0.5) e.hp = 0.51;

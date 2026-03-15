@@ -13,9 +13,10 @@ AddModel({
 	TopLevel: true,
 	Parent: "SleepsackJacket",
 	Restraint: true,
+	AddPose: ["EncaseTorsoLower"],
 	Categories: ["Restraints", "Legbinder", "Sleepsack", "Pants"],
 	Layers: ToLayerMap([
-		{ Name: "LegLeft", Layer: "LegbinderLegsOver", Pri: 30,
+		{ Name: "LegLeft", Layer: "LegbinderLegsOver2", Pri: 30,
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			HideWhenOverridden: true,
@@ -34,7 +35,7 @@ AddModel({
 			AppendPose: {Saddled: "Saddled"},
 			InheritColor: "Binder",
 		},
-		{ Name: "LegRight", Layer: "LegbinderLegsOver", Pri: 30,
+		{ Name: "LegRight", Layer: "LegbinderLegsOver2", Pri: 30,
 			//SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
@@ -83,7 +84,7 @@ AddModel({
 			InheritColor: "Straps",
 		},
 		
-		{ Name: "LegLeftBelts", Layer: "LegbinderLegsOver", Pri: 30.1,
+		{ Name: "LegLeftBelts", Layer: "LegbinderLegsOver2", Pri: 30.1,
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			HideWhenOverridden: true,
@@ -102,7 +103,7 @@ AddModel({
 			HidePoses: {Saddled: true},
 			NoOverride: true,
 		},
-		{ Name: "LegRightBelts", Layer: "LegbinderLegsOver", Pri: 30.1,
+		{ Name: "LegRightBelts", Layer: "LegbinderLegsOver2", Pri: 30.1,
 			//SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
@@ -124,7 +125,7 @@ AddModel({
 		},
 		// hw
 		
-		{ Name: "LegLeftMetal", Layer: "LegbinderLegsOver", Pri: 30.2,
+		{ Name: "LegLeftMetal", Layer: "LegbinderLegsOver2", Pri: 30.2,
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			HideWhenOverridden: true,
@@ -144,7 +145,7 @@ AddModel({
 			HidePoses: {Saddled: true},
 			NoOverride: true,
 		},
-		{ Name: "LegRightMetal", Layer: "LegbinderLegsOver", Pri: 30.2,
+		{ Name: "LegRightMetal", Layer: "LegbinderLegsOver2", Pri: 30.2,
 			//SwapLayerPose: {Kneel: "WrappingLegsRightOver", KneelClosed: "WrappingLegsRightOver"},
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
@@ -166,11 +167,12 @@ AddModel({
 		},
 		// text
 		
-		{ Name: "LegLeftText", Layer: "LegbinderLegsOver", Pri: 30.3,
+		{ Name: "LegLeftText", Layer: "LegbinderLegsOver2", Pri: 30.3,
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			HideWhenOverridden: true,
 			InheritColor: "Text",
+			HidePoses: {NoPrisonerMarkings: true},
 			TieToLayer: "LegLeft",
 			MorphPoses: {Flip: "Flip"},
 			AppendPose: {Saddled: "Saddled"},
@@ -190,6 +192,8 @@ AddModel({
 	Restraint: true,
 	Parent: "SleepsackLegbinderFull",
 	Categories: ["Restraints", "Legbinder", "Sleepsack"],
+	AddPose: ["EncaseTorsoLower"],
+	HideLayerGroups: ["SlimeFeet", "BelowShoes", "Shoes"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SleepsackLegbinder"),
 		{ Name: "Feet", Layer: "LegbinderAnklesOver", Pri: 29,
@@ -200,8 +204,8 @@ AddModel({
 			EraseMorph: {Closed: "Closed"},
 			EraseSprite: "HeelsRightErase",
 			EraseAmount: 100,
-			EraseLayers: ToMap(["HeelRight"]),
-			EraseZBonus: 100,
+			EraseLayers: ToMap(["LegbinderRight"]),
+			EraseZBonus: 30000,
 			SwapLayerPose: {Saddled: "LegbinderAnkleLeftPants"},
 		},
 		{ Name: "FeetBelts", Layer: "LegbinderAnklesOver", Pri: 29.2,
@@ -283,16 +287,17 @@ AddModel({
 	Restraint: true,
 	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseHandLeft", "EncaseHandRight", "EncaseTorsoUpper"],
 	Categories: ["Restraints", "Jacket", "Leather", "Uniforms"],
+	HideLayerGroups: ["Waistbelts"],
 	Layers: ToLayerMap([
 
-		{ Name: "Leather", Layer: "BulkyShirt", Pri: 140,
+		{ Name: "Leather", Layer: "BulkyJacket", Pri: 140,
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed", "Front", "Free", "Yoked", "Up"]),
 			SwapLayerPose: {Crossed: "SleevesCrossArms"},
 			GlobalDefaultOverride: ToMap(["Crossed", "Front"]),
 			HidePoses: ToMap(["WrapArms"]),
 			InheritColor: "Binder",
 		},
-		{ Name: "Belts", Layer: "BulkyShirt", Pri: 140.1,
+		{ Name: "Belts", Layer: "BulkyJacket", Pri: 140.1,
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed", "Front", "Free", "Yoked", "Up"]),
 			SwapLayerPose: {Crossed: "SleevesCrossArms"},
 			GlobalDefaultOverride: ToMap(["Crossed", "Front"]),
@@ -301,7 +306,7 @@ AddModel({
 			NoOverride: true,
 			TieToLayer: "Leather",
 		},
-		{ Name: "Metal", Layer: "BulkyShirt", Pri: 140.2,
+		{ Name: "Metal", Layer: "BulkyJacket", Pri: 140.2,
 			Poses: ToMap(["Wristtie", "Boxtie", "Crossed", "Front", "Free", "Yoked", "Up"]),
 			SwapLayerPose: {Crossed: "SleevesCrossArms"},
 			GlobalDefaultOverride: ToMap(["Crossed", "Front"]),
@@ -339,7 +344,7 @@ AddModel({
 		{ Name: "ChestTextZipped", Layer: "ShirtChest", Pri: 140.3,
 			Poses: ToMap([...ARMPOSES]),
 			Invariant: true,
-			HidePoses: ToMap(["WrapChest"]),
+			HidePoses: ToMap(["WrapChest", "NoPrisonerMarkings"]),
 			TieToLayer: "ChestLeatherZipped",
 			InheritColor: "Text",
 			MorphPoses: {Flip: "Flip"},
@@ -575,3 +580,23 @@ AddModel({
 });
 
 AddModel(GetModelFashionVersion("PlasmaMuzzle", true));
+
+
+
+AddModel({
+	Name: "SleepsackSuspend",
+	Folder: "SleepsackJacket",
+	Parent: "Sleepsack",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Leather", "Suspension"],
+	AddPose: ["Suspended"],
+	HideLayerGroups: ["Waistbelts"],
+	Layers: ToLayerMap([
+		{ Name: "Suspension", Layer: "FurnitureBack", Pri: 10,
+			Invariant: true,
+			InheritColor: "Straps",
+			NoOverride: true,
+		},
+	])
+});

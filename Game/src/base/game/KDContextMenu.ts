@@ -326,7 +326,7 @@ function KDGetGameContextActionsVanilla(
 
 	if (KinkyDungeonPlayerDamage?.special)  {
 		options.push("Special");
-		optionImages.Special = KinkyDungeonRootDirectory + "Items/" + KinkyDungeonPlayerDamage.name + ".png";
+		optionImages.Special = KinkyDungeonRootDirectory + "Items/" + KDGetItemImage(KinkyDungeonPlayerDamage, KDPlayer(), true) + ".png";
 		optionText.Special = TextGet("KDContextMenu_Shoot" +
 			KDContextMenuWeaponSpecialSuff(KinkyDungeonPlayerDamage.special)
 		)

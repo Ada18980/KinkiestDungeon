@@ -125,15 +125,51 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("Bed"),
 
+		{ Name: "StrapsBack", Layer: "FurnitureLinked", Pri: -20,
+			Invariant: true,
+			TieToLayer: "Bed",
+			RequirePoses: {SleepsackTop: true},
+			Folder: "SleepsackJacket",
+			InheritColor: "Straps",
+
+		},
+		{ Name: "StrapsTied", Layer: "FurnitureLinked", Pri: 30,
+			Invariant: true,
+			TieToLayer: "Bed",
+			RequirePoses: {SleepsackTop: true},
+			HidePoses: {Crossed: true},
+			Folder: "SleepsackJacket",
+			InheritColor: "Straps",
+
+		},
+		{ Name: "StrapsCrossed", Layer: "FurnitureLinked", Pri: 30,
+			Invariant: true,
+			TieToLayer: "Bed",
+			RequirePoses: {Crossed: true, SleepsackTop: true},
+			Folder: "SleepsackJacket",
+			InheritColor: "Straps",
+
+		},
+		{ Name: "StrapsAnkles", Layer: "FurnitureLinked", Pri: 20,
+			Invariant: true,
+			TieToLayer: "Bed",
+			RequirePoses: {SleepsackBottom: true},
+			Folder: "SleepsackJacket",
+			InheritColor: "Straps",
+
+		},
 		{ Name: "BedStraps", Layer: "FurnitureLinked", Pri: 20,
 			Invariant: true,
 			TieToLayer: "Bed",
-			HidePoses: {Hogtie: true},
+			HidePoses: {Hogtie: true, SleepsackTop: true, SleepsackBottom: true},
+			InheritColor: "Straps",
+
 		},
 		{ Name: "BedStrapsHogtie", Layer: "FurnitureLinked", Pri: 20,
 			Invariant: true,
 			TieToLayer: "Bed",
 			Poses: {Hogtie: true},
+			HidePoses: {SleepsackTop: true, SleepsackBottom: true},
 			MorphPoses: {Boxtie: "Boxtie", Front: "Boxtie", Crossed: "Boxtie",
 				UprightHogtie: "", SuspendedHogtie: ""},
 			DisplacementSprite: "BedStrapsHogtie",
@@ -141,6 +177,7 @@ AddModel({
 			DisplacementMorph: {Boxtie: "Boxtie", Front: "Boxtie", Crossed: "Boxtie"},
 			DisplaceAmount: 100,
 			DisplacementInvariant: true,
+			InheritColor: "Straps",
 		},
 	])
 });
@@ -183,7 +220,7 @@ AddModel({
 			
 			EraseSprite: "EraseSaddle",
 			EraseInvariant: true,
-			EraseZBonus: 100000,
+			EraseZBonus: 1000,
 			
 		},
 		{ Name: "SaddleFront", Layer: "Saddle", Pri: 39.9,
@@ -288,6 +325,55 @@ AddModel({
 		{ Name: "OneBarBack", Layer: "FurnitureBack", Pri: 50,
 			Poses: ToMap(["Closed", "Spread"]),
 			AppendPose: {Ballet: "Heels"},
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "OneBarPrisonSpreader",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Stands"],
+	AddPose: ["SuspendedHogtie", "ForceStand", "Spreader", "WideSpread"],
+	Layers: ToLayerMap([
+		{ Name: "OneBarTop", Layer: "WrappingTorsoUnder", Pri: -249,
+			Poses: ToMap(["Closed", "Spread"]),
+			RequirePoses: ToMap(["ChastityBelts"]),
+			AppendPose: {Ballet: "Heels"},
+			NoOverride: true,
+		},
+		{ Name: "OneBarFront", Layer: "Torso", Pri: -50,
+			Poses: ToMap(["Closed", "Spread"]),
+			AppendPose: {Ballet: "Heels"},
+		},
+		{ Name: "OneBarLarge", Layer: "FurnitureBack", Pri: 50,
+		},
+
+		{ Name: "ShortLeft", Layer: "AnkleLeftOver", Pri: 30,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			DisplacementSprite: "AnkleCuffLeft",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+		{ Name: "ShortRight", Layer: "AnkleRightOver", Pri: 30,
+			Invariant: true,
+			Poses: ToMap(["Spread"]),
+			HideWhenOverridden: true,
+			DisplacementSprite: "AnkleCuffRight",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+		{ Name: "Bar", Layer: "SpreaderBar", Pri: 30,
+			Invariant: true,
+			Poses: ToMap(["Spread"]),
+			HideWhenOverridden: true,
 		},
 	])
 });

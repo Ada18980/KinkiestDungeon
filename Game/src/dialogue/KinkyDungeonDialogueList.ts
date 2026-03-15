@@ -4,7 +4,7 @@ let KDDialogueParams = {
 	ShopkeeperHelpFee: 230,
 	ShopkeeperHelpFeePerLevel: 70,
 	ShopkeeperHelpFeePerPower: 10,
-	ShopkeeperHelpFeeFreebiePower: 50,
+	ShopkeeperHelpFeeFreebiePower: 170,
 	ShopkeeperFee: 900,
 	ShopkeeperFeePerLevel: 100,
 	ShopkeeperFeePunishThresh: 2500,
@@ -261,9 +261,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							let CurrentDress = KinkyDungeonCurrentDress;
 							let dressList = KDGetDressList()[CurrentDress];
 							for (let d of dressList) {
-								if (d.Item && (
+								if (d.Item && !KDModelIsProtected(ModelDefs[d.Item]) && (
 									ModelDefs[d.Item]?.Categories.includes("Bras")
 									|| ModelDefs[d.Item]?.Categories.includes("Panties")
+									|| ModelDefs[d.Item]?.Categories.includes("Cosplay")
 								)) continue;
 								if (d.Properties && Object.values(d.Properties).some((p) => {return p.NoLoss;})) continue;
 								d.Lost = true;
@@ -630,6 +631,96 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					return false;
 				},
 				leadsToStage: "", dontTouchText: true,
+			},
+			"Leave": {playertext: "Leave", exitDialogue: true},
+		}
+	},
+
+	"GhostNegotiate": {
+		response: "Default",
+		inventory: true,
+		clickFunction: (_gagged, _player) => {
+			// create a fake 'ghost' npc to draw on the side
+			// todo
+			/*let npc = DialogueGetEnemy("Angel");
+			KDGameData.CurrentDialogEntity = npc;
+			KDGameData.CurrentDialogMsgSpeaker = npc.Enemy.name;
+			KDGameData.CurrentDialogMsgID = npc.id;
+			KDQuickGenNPC(npc, true);*/
+			return false;
+		},
+		options: {
+			"Possess": {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (__gagged, player) => {
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					return !KDEntityGetBuff(player, "GhostDeal") && tile;
+				},
+				options: {
+					"Confirm": {
+						playertext: "Default", response: "", gag: true,
+						prerequisiteFunction: (__gagged, player) => {
+							let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+							return !KDEntityGetBuff(player, "GhostDeal") && tile;
+						},
+						clickFunction: (_gagged, player) => {
+							let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+							tile.GhostDecision = 0;
+
+							KinkyDungeonApplyBuffToEntity(player,
+							{
+								id: "GhostDeal",
+								type: "GhostDeal",
+								power: 1,
+								events: [
+									{type: "Haunting_GhostDeal", trigger: "tick", dist: 4.5, count: 1, chance: 0.1},
+								],
+								endFloor: true,
+								aura: KDBaseWhite, auraSprite: "Null",
+								duration: 9999, infinite: true,
+							});
+							return false;
+						},
+						exitDialogue: true
+					},
+					"Leave": {playertext: "Leave", response: "Default", leadsToStage: ""},
+				}
+			},
+			"PossessPleasure": {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (__gagged, player) => {
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					return !KDEntityGetBuff(player, "GhostDealPleasure") && tile;
+				},
+				options: {
+					"Confirm": {
+						playertext: "Default", response: "", gag: true,
+						prerequisiteFunction: (__gagged, player) => {
+							let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+							return !KDEntityGetBuff(player, "GhostDealPleasure") && tile;
+						},
+						clickFunction: (_gagged, player) => {
+							let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+							tile.GhostDecision = 0;
+
+							KinkyDungeonApplyBuffToEntity(player,
+							{
+								id: "GhostDealPleasure",
+								type: "GhostDealPleasure",
+								power: 1,
+								events: [
+									{type: "Haunting_GhostDealPleasure", trigger: "tick", dist: 4.5, count: 1, chance: 0.12},
+								],
+								endFloor: true,
+								aura: KDBaseWhite, auraSprite: "Null",
+								duration: 9999, infinite: true,
+							});
+							return false;
+						},
+						exitDialogue: true
+					},
+					"Leave": {playertext: "Leave", response: "Default", leadsToStage: ""},
+				}
 			},
 			"Leave": {playertext: "Leave", exitDialogue: true},
 		}
@@ -1173,10 +1264,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 				},
 				greyoutFunction: (_gagged, _player) => {
-					return KDCanSleep();
+					return KDCanSleep(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				},
 				greyoutCustomTooltip: (_gagged, _player) => {
-					return KDCanSleepTooltip();
+					return KDCanSleepTooltip(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				}
 			},
 			"Leave": {
@@ -1455,6 +1546,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			return false;
 		},
 		options: {
+			
 			"Use": {
 				playertext: "Default", response: "Default",
 				greyoutFunction: (_gagged, player) => {
@@ -1562,20 +1654,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					if (en && !en.player && KDCanBind(en)) {
 						let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
 						let furn = KDFurniture[tile.Furniture];
-						let rest = KinkyDungeonGetRestraint(
-							{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-							KDCurrIndex(),
-							true,
-							"",
-							true,
-							false,
-							false, undefined, true);
-						KDImprisonEnemy(en, true, "PrisonerJailOwn", {
-							name: rest.name,
-							lock: "White",
-							id: KinkyDungeonGetItemID(),
-							faction: KDDefaultNPCBindPalette,
-						});
+						
+						KDImprisonEnemy(en, true, "PrisonerJailOwn", furn?.restraintTag ? [furn?.restraintTag] : undefined, undefined, undefined, undefined, undefined, "White");
 						KinkyDungeonAdvanceTime(1);
 					}
 					return false;
@@ -1664,6 +1744,35 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						playertext: "Leave", response: "Default",
 						exitDialogue: true,
 					},
+				}
+			},
+			"Sleep": {
+				playertext: "Default", response: "Default",
+				prerequisiteFunction: (_gagged, _player) => {
+					return !!KDGetPreferredAltSleepType();
+				},
+				clickFunction: (_gagged, _player) => {
+					if (KinkyDungeonMapGet(KDPlayer().x, KDPlayer().y) && KDGameData.InteractTargetX && KDGameData.InteractTargetY) {
+						if (KinkyDungeonMapGet(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == 'B') {
+							KinkyDungeonTrapMoved = true;
+							KDMovePlayer(KDGameData.InteractTargetX, KDGameData.InteractTargetY, true);
+						}
+					}
+
+					KDSleep();
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				},
+				greyoutFunction: (_gagged, _player) => {
+					return KDCanSleep(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+				},
+				greyoutCustomTooltip: (_gagged, _player) => {
+					return KDCanSleepTooltip(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				}
 			},
 			"Leave": {
@@ -2116,6 +2225,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 			"Flip": {
 				playertext: "Default", response: "Default",
+				prerequisiteFunction: () => {
+					return KDTablesAreFlippable(KDMapData);
+				},
 				clickFunction: (_gagged, _player) => {
 					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
 					if (tile && tile.Type == "Food") {
@@ -2215,6 +2327,50 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					}
 					return false;
 				},
+				options: {
+					"Leave": {
+						clickFunction: (_gagged, _player) => {
+							KinkyDungeonTargetTile = null;
+							KinkyDungeonTargetTileLocation = "";
+							KDModalArea = false;
+							return false;
+						},
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				clickFunction: (_gagged, _player) => {
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
+					return false;
+				},
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"TableNoFlip": {
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			if (KinkyDungeonTargetTile) {
+				let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+				if (tile) {
+					KDGameData.CurrentDialogMsgData = {
+						AMOUNT: "" + 10 * (tile.Amount || 1),
+						ARTICLE: "a",
+						FOODNAME: TextGet(KinkyDungeonTargetTile.Food),
+						FOODMSG: TextGet("KinkyDungeonFood" + KinkyDungeonTargetTile.Food),
+					};
+				}
+			}
+			return false;
+		},
+		options: {
+			"Flip": {
+				playertext: "Default", response: "Default",
 				options: {
 					"Leave": {
 						clickFunction: (_gagged, _player) => {
@@ -2960,7 +3116,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit = KinkyDungeonGetRestraint({tags: ['shopCatsuit']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 
 						if (KDGetTotalRestraintPower(
-							KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false) > KDDialogueParams.ShopkeeperHelpFeeFreebiePower
+							KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false) > KDShopkeeperMaxHelpPower()
 							|| KinkyDungeonFlags.get("Collateral") || !(
 							KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor
 							|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint
@@ -2998,7 +3154,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit = KinkyDungeonGetRestraint({tags: ['shopCatsuit']}, 10, 'grv', true, undefined, undefined, undefined, false)?.name;
 
 					if (KDGetTotalRestraintPower(
-						KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false, undefined, false) > KDDialogueParams.ShopkeeperHelpFeeFreebiePower
+						KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false, undefined, false) > KDShopkeeperMaxHelpPower()
 						|| KinkyDungeonFlags.get("Collateral") || !(
 						KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor
 						|| KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint
@@ -3608,7 +3764,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				if (KinkyDungeonFlags.get("LockJamPity")) KDGameData.CurrentDialogMsgValue.JamPercent /= 2;
 				KDGameData.CurrentDialogMsgData.JAMPERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.JamPercent)}%`;
 			} else {
-				KDGameData.CurrentDialogStage = "Jammed";
+				if (!(KinkyDungeonItemCount("RedKey") > 0))
+					KDGameData.CurrentDialogStage = "Jammed";
 				KDGameData.CurrentDialogMsg = "PrisonerJailJammed";
 			}
 
@@ -3667,13 +3824,17 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								e.faction = "Player";
 								KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
-								if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
-									if (KDFactionRelation("Player", faction) < 0.25)
-										KinkyDungeonChangeFactionRep(faction, 0.03);
-									else
-										KinkyDungeonChangeFactionRep(faction, 0.015);
-								}
+								
 								KinkyDungeonChangeRep("Prisoner", 0.5);
+								if (!KDEntityHasFlag(e, "rescuedOnce")) {
+									if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
+										if (KDFactionRelation("Player", faction) < 0.25)
+											KinkyDungeonChangeFactionRep(faction, 0.03);
+										else
+											KinkyDungeonChangeFactionRep(faction, 0.015);
+									}
+								}
+								KinkyDungeonSetEnemyFlag(e, "rescuedOnce", -1);
 								KDAddConsumable("RedKey", -1);
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
 									KinkyDungeonSetFlag("embarrassed", 8);
@@ -3706,6 +3867,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 			"Pick": {
 				playertext: "Default", response: "Default",
+				prerequisiteFunction: (_gagged, player) => {
+					let e = KDDialogueEnemy();
+					return e && !KDEnemyHasFlag(e, "LockJammed");
+				},
 				clickFunction: (_gagged, player) => {
 					if (KinkyDungeonItemCount("Pick") > 0) {
 						if (!KinkyDungeonIsHandsBound(false, true, 0.45)) {
@@ -3728,12 +3893,15 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									e.faction = "Player";
 									KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 									KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
-									if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
-										if (KDFactionRelation("Player", faction) < 0.25)
-											KinkyDungeonChangeFactionRep(faction, 0.03);
-										else
-											KinkyDungeonChangeFactionRep(faction, 0.015);
+									if (!KDEntityHasFlag(e, "rescuedOnce")) {
+										if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
+											if (KDFactionRelation("Player", faction) < 0.25)
+												KinkyDungeonChangeFactionRep(faction, 0.03);
+											else
+												KinkyDungeonChangeFactionRep(faction, 0.015);
+										}
 									}
+									KinkyDungeonSetEnemyFlag(e, "rescuedOnce", -1);
 									KinkyDungeonChangeRep("Prisoner", 0.5);
 									KDGameData.CurrentDialogMsg = "PrisonerJailPick" + KDJailPersonality(e);
 									if (e.Enemy.tags.gagged) {
@@ -4028,6 +4196,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							KDRemoveEntity(e, false, false, true);
 							delete KDGameData.Collection[e.id + ""].escaped;
 							delete KDGameData.Collection[e.id + ""].spawned;
+							if (KDIsImprisoned(e)) KDFreeNPC(e);
 							if (KDGetNPCRestraints(e.id)?.Device) {
 								KDSetNPCRestraint(e.id, "Device", null);
 							}
@@ -5169,6 +5338,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				clickFunction: (_gagged, _player) => {
+					
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("DollmakerVisor");
 						KDUnlockPerk("DollmakerMask");
@@ -5770,3 +5940,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 };
 
 
+
+
+function KDShopkeeperMaxHelpPower() {
+	return 10*KDGetEffMaxLevel() + KDDialogueParams.ShopkeeperHelpFeeFreebiePower;
+}

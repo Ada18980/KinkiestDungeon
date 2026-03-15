@@ -64,7 +64,7 @@ let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 			if (result.consumed > 0) {
 				KDChangeConsumable("entity_" + entity?.id,
 					"item", "cast", consumable,
-					-(KinkyDungeonTargetingSpellItem.useQuantity != undefined ? KinkyDungeonTargetingSpellItem.useQuantity : 1));
+					-(KDConsumable(item.item).useQuantity != undefined ? KDConsumable(item.item).useQuantity : 1));
 
 			}
 			if (result.success) {

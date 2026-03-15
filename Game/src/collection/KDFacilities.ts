@@ -52,6 +52,7 @@ function InitFacilities() {
 			if (data[entry[0]] == undefined) data[entry[0]] = JSON.parse(JSON.stringify(entry[1]));
 		}
 	}
+	KDFixupBossServants();
 }
 
 let FacilityValidationTags = ["Servants", "Prisoners", "Guests"];
@@ -64,7 +65,7 @@ function KDValidateAllFacilities() {
 				for (let servant of servants) {
 					if (!KDValidateServant(KDGameData.Collection[servant + ""],
 						facility,
-						tag)) {
+						tag) || KDGameData.Collection[servant + ""].Facility != facility) {
 							servants.splice(servants.indexOf(servant), 1);
 							if (KDGameData.Collection[servant + ""])
 								delete KDGameData.Collection[servant + ""].Facility;
@@ -116,6 +117,12 @@ function KDValidateServant(value: KDCollectionEntry, facility: string, type: str
 
 	return true;
 
+}
+
+function KDFixupBossServants() {
+	for (let v of Object.values(KDGameData.Collection)) {
+		if (v?.status == "Servant") KDApplyRecruitType(v);
+	}
 }
 
 function KDDrawFacilitiesList(xOffset) {

@@ -104,7 +104,7 @@ function KinkyDungeonCreateMap (
 	let location = KDWorldMap[(constantX ? 0 : worldLocation.x) + "," + worldLocation.y];
 
 	if (useExisting && location.data[KDGameData.RoomType]) {
-		KDLoadMapFromWorld(worldLocation.x, worldLocation.y, KDGameData.RoomType, direction, constantX);
+		let oldMapData = KDLoadMapFromWorld(worldLocation.x, worldLocation.y, KDGameData.RoomType, direction, constantX);
 
 		if (location.jx == undefined) location.jx = KDGameData.JourneyX;
 		if (location.jy == undefined) location.jy = KDGameData.JourneyY;
@@ -128,7 +128,10 @@ function KinkyDungeonCreateMap (
 		});
 
 		KDGameData.ShortcutIndex = KDGameData.RoomType;
-		return;
+		return {
+			newMapDataObject: KDMapData,
+			oldMapDataObject: oldMapData,
+		};
 	}
 
 	// Filter out the allies
@@ -174,7 +177,11 @@ function KinkyDungeonCreateMap (
 		KDMapData.ShopItems = KinkyDungeonGenerateShop(MiniGameKinkyDungeonLevel);
 		let shrinefilter = KinkyDungeonGetMapShrines(MapParams.shrines);
 		let traptypes = MapParams.traps.concat(KinkyDungeonGetGoddessTrapTypes());
-
+		traptypes = traptypes.filter((t) => {
+			return !t.BlockedByPerks || !t.BlockedByPerks.some((perk) => {
+				return !!KinkyDungeonStatsChoice.get(perk)
+			});
+		});
 		mapMod = null;
 		if (KDGameData.MapMod) {
 			mapMod = KDMapMods[KDGameData.MapMod];
@@ -324,7 +331,7 @@ function KinkyDungeonCreateMap (
 		}
 
 		let randomFactions = KDChooseFactions(factionList, Floor, [], bonus, true);
-		let factionEnemy = randomFactions[2] || forceFaction || "Bandit";
+		let factionEnemy = randomFactions[2] || "Bandit";
 		if (forceFaction) {
 			KDMapData.MapFaction = forceFaction;
 			KDMapData.JailFaction = [forceFaction];
@@ -650,6 +657,7 @@ function KinkyDungeonCreateMap (
 
 			if (altType && altType.tickFlags) {
 				KinkyDungeonSendEvent("tickFlags", {delta: 1});
+				KinkyDungeonUpdateBuffs(0, true);
 				KDTickSpecialStats();
 			}
 
@@ -763,7 +771,9 @@ function KinkyDungeonGenNavMap(fromPoint?: { x: number, y: number }) {
 	if (!fromPoint) fromPoint = KDMapData.EndPosition || KDMapData.StartPosition;
 	KDMapData.RandomPathablePoints = {};
 	RandomPathList = [];
-	let accessible = KinkyDungeonGetAccessible(fromPoint.x, fromPoint.y);
+	let accessible = KinkyDungeonGetAccessible(fromPoint.x, fromPoint.y,
+		undefined, undefined, KinkyDungeonMovableTilesSmartEnemy
+	);
 	for (let a of Object.entries(accessible)) {
 		let X = a[1].x;
 		let Y = a[1].y;
@@ -826,9 +836,10 @@ type GridEntry = {
 };
 
 // Checks everything that is accessible to the player
-function KinkyDungeonGetAccessible(startX: number, startY: number, testX?: number, testY?: number): GridEntry {
+function KinkyDungeonGetAccessible(startX: number, startY: number, testX?: number, testY?: number, interactable?: string): GridEntry {
 	let tempGrid = {};
 	let checkGrid: GridEntry = {};
+	if (!interactable) interactable = KDInteractableTiles;
 	checkGrid[(startX + "," + startY)] = {x: startX, y: startY};
 	while (Object.entries(checkGrid).length > 0) {
 		for (let g of Object.entries(checkGrid)) {
@@ -840,7 +851,7 @@ function KinkyDungeonGetAccessible(startX: number, startY: number, testX?: numbe
 					let locked = (testX != undefined && testY != undefined && X+XX == testX && Y+YY == testY)
 						|| (KinkyDungeonTilesGet("" + (X+XX) + "," + (Y+YY)) && KinkyDungeonTilesGet("" + (X+XX) + "," + (Y+YY)).Lock);
 					if (!checkGrid[testLoc] && !tempGrid[testLoc] && X+XX > 0 && X+XX < KDMapData.GridWidth-1 && Y+YY > 0 && Y+YY < KDMapData.GridHeight-1
-						&& KDInteractableTiles.includes(KinkyDungeonMapGet(X+XX, Y+YY)) && !locked) {
+						&& interactable.includes(KinkyDungeonMapGet(X+XX, Y+YY)) && !locked) {
 						if (KinkyDungeonMovableTilesSmartEnemy.includes(
 							KinkyDungeonMapGet(X+XX, Y+YY)))
 							checkGrid[testLoc] = {x:X+XX,y:Y+YY};
@@ -983,7 +994,8 @@ type SpawnBox = {
 	bias?:             number,
 }
 
-function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtags: string[], BonusTags: any, Floor: number, width: number, height: number, altRoom?: any, randomFactions?: any[], factionEnemy?: any) {
+function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtags: string[], BonusTags: any,
+	Floor: number, width: number, height: number, altRoom?: any, randomFactions?: any[], factionEnemy?: any) {
 	KinkyDungeonHuntDownPlayer = false;
 	KinkyDungeonFirstSpawn = true;
 	KinkyDungeonSearchTimer = 0;
@@ -1017,28 +1029,51 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 	let filterTagsSpawn = ["boss", "miniboss"];
 	let filterTagsCluster = ["boss", "miniboss"];
 
-	let spawnBoxes: SpawnBox[] = [
-		{requiredTags: ["boss"], tags: [], currentCount: 0, maxCount: 0.025},
-		{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.075},
-		{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.15},
-		{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.1},
-	];
-	if (KDGameData.MapMod) {
-		let mapMod = KDMapMods[KDGameData.MapMod];
+	let boxdata = {
+		filterTagsBase: filterTagsBase,
+		filterTagsSpawn: filterTagsSpawn,
+		filterTagsCluster: filterTagsCluster,
+		spawnBoxes: undefined,
+		MapMod: KDGameData.MapMod,
+		randomFactions: [...randomFactions],
+		factionEnemy: factionEnemy,
+		priority: 0,
+	}
+
+	KinkyDungeonSendEvent("beforeGetSpawnBoxes", boxdata)
+	if (!boxdata.spawnBoxes) {
+		boxdata.spawnBoxes = [
+			{requiredTags: ["boss"], tags: [], currentCount: 0, maxCount: 0.025},
+			{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.075},
+			{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.15},
+			{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.1},
+		];
+	}
+	
+	KinkyDungeonSendEvent("getSpawnBoxes", boxdata)
+	if (boxdata.MapMod) {
+		let mapMod = KDMapMods[boxdata.MapMod];
 		if (mapMod && mapMod.spawnBoxes) {
 			for (let m of mapMod.spawnBoxes) {
-				spawnBoxes.unshift(Object.assign({}, m));
+				boxdata.spawnBoxes.unshift(Object.assign({}, m));
 			}
 		}
-	} else {
-		for (let rf of randomFactions) {
+	} else if (boxdata.randomFactions) {
+		for (let rf of boxdata.randomFactions) {
 			if (rf != undefined) {
-				spawnBoxes.push({ignoreAllyCount: true, requiredTags: [KinkyDungeonFactionTag[rf]], filterTags: ["boss", "miniboss"], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.15, bias: rf == factionEnemy ? 2 : 1});
-				spawnBoxes.push({ignoreAllyCount: true, requiredTags: ["miniboss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.1, bias: rf == factionEnemy ? 2 : 1});
-				spawnBoxes.push({ignoreAllyCount: true, requiredTags: ["boss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.01, bias: rf == factionEnemy ? 2 : 1});
+				boxdata.spawnBoxes.push({ignoreAllyCount: true, requiredTags: [KinkyDungeonFactionTag[rf]], filterTags: ["boss", "miniboss"], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.15, bias: rf == factionEnemy ? 2 : 1});
+				boxdata.spawnBoxes.push({ignoreAllyCount: true, requiredTags: ["miniboss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.1, bias: rf == factionEnemy ? 2 : 1});
+				boxdata.spawnBoxes.push({ignoreAllyCount: true, requiredTags: ["boss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.01, bias: rf == factionEnemy ? 2 : 1});
 			}
 		}
 	}
+
+	KinkyDungeonSendEvent("afterGetSpawnBoxes", boxdata)
+
+	filterTagsBase = boxdata.filterTagsBase;
+	filterTagsSpawn = boxdata.filterTagsSpawn;
+	filterTagsCluster = boxdata.filterTagsCluster;
+
 
 	let currentCluster = null;
 
@@ -1193,7 +1228,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 		let playerDist = 9;
 		let PlayerEntity = KDMapData.StartPosition;
 
-		let spawnBox_filter = spawnBoxes.filter((bb) => {
+		let spawnBox_filter = boxdata.spawnBoxes.filter((bb) => {
 			return bb.currentCount < bb.maxCount * enemyCount && (!bb.bias
 				// This part places allied faction toward the center of the map and enemy faction around the edges
 				|| (bb.bias == 1 && X > width * 0.25 && X < width * 0.75 && Y > height * 0.25 && Y < height * 0.75)

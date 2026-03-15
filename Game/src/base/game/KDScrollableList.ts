@@ -64,6 +64,34 @@ function PopulateList(name: string, x: number, y: number, w: number, h: number, 
 			min: 0,
 			num_per_page: num_per_page
 		};
+	} else {
+		let index = KDScrollableListDataset[name].index;
+		let selectedindex = KDScrollableListDataset[name].selectedindex;
+		let vindex = KDScrollableListDataset[name].visual_index;
+		let click_hold_y = KDScrollableListDataset[name].click_hold_y;
+		let click_hold_y_index = KDScrollableListDataset[name].click_hold_y_index;
+		let lastUpdated = KDScrollableListDataset[name].lastUpdated;
+
+		KDScrollableListDataset[name] = {
+			allowWrap: allowWrap,
+			x: x,
+			y: y,
+			w: w,
+			h: h,
+			click_hold_y: click_hold_y,
+			click_hold_y_index: click_hold_y_index,
+			index: index,
+			selectedindex: selectedindex,
+			visual_index: vindex,
+			items: [],
+			lastUpdated: lastUpdated,
+			updateInterval: 500,
+			zIndex: z,
+			max: list.length - 1,
+			min: 0,
+			num_per_page: num_per_page
+		};
+
 	}
 	KDScrollableListDataset[name].items = list;
 	KDScrollableListDataset[name].lastUpdated = CommonTime();
@@ -160,7 +188,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	isSelected: boolean,
 	selectedIndex: number,
 	list: KDScrollableListData) => boolean, drawBG = true, horizontal = false, scrollbarSize = 36,
-	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = ""): any {
+	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string): any {
 	let list = KDScrollableListDataset[name];
 	let container = kdcanvas;
 	
@@ -186,30 +214,33 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	}
 
 	if (drawBG) {
-		DrawRectKD(container, kdpixisprites, name + "borderbg", {
-			Left: list.x,
-			Top: list.y,
-			Width: list.w,
-			Height: list.h,
-			Color: KDBaseBlack, 
-			alpha: KDUIAlpha,
-			LineWidth: 2,
-			zIndex: - 1,
-		});
-		FillRectKD(container, kdpixisprites, name + "border", {
-			Left: list.x,
-			Top: list.y,
-			Width: list.w,
-			Height: list.h,
-			Color: KDBaseBlack,
-			alpha: KDUIAlphaHighlight,
-			LineWidth: 2,
-			zIndex: - 0.9,
-		});
+		if (alphaborder > 0 || alphaborder == undefined)
+			DrawRectKD(container, kdpixisprites, name + "borderbg", {
+				Left: list.x,
+				Top: list.y,
+				Width: list.w,
+				Height: list.h,
+				Color: color != undefined ? color :  KDBaseBlack, 
+				alpha: alphaborder != undefined ? alphaborder :  KDUIAlpha,
+				LineWidth: 2,
+				zIndex: - 1,
+			});
+		if (alpha > 0 || alpha == undefined)
+			FillRectKD(container, kdpixisprites, name + "border", {
+				Left: list.x,
+				Top: list.y,
+				Width: list.w,
+				Height: list.h,
+				Color: color != undefined ? color :  KDBaseBlack,
+				alpha: alpha != undefined ? alpha :  KDUIAlphaHighlight,
+				LineWidth: 2,
+				zIndex: - 0.9,
+			});
 	}
 
+	// draw the scrollbar
 	if (scrollbarSize > 0 && list.items.length > 0) {
-		let spacing = horizontal ? (list.w - scrollbarSize*2) / list.num_per_page : ((list.h - scrollbarSize*2) / list.num_per_page);
+		let spacing = horizontal ? (list.w - scrollbarSize*2) * (1/list.items.length) : ((list.h - scrollbarSize*2) * (1/list.items.length));
 		FillRectKD(container, kdpixisprites, name + "scrollb", {
 			Left: list.x + (horizontal ? scrollbarSize + spacing * list.visual_index : list.w - scrollbarSize * KDScrollBarSpacingW),
 			Top: list.y + (horizontal ? list.h - scrollbarSize * KDScrollBarSpacingW : scrollbarSize + spacing * list.visual_index) + 3,
@@ -274,6 +305,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 
 	}
 
+	// draw the items
 	if (list.items.length > 0 && (mouseHoldTaken == name + "_scroll")) {
 		let mouseDelta = horizontal ? (MouseX - (scrollbarSize + list.x)) : (MouseY - (scrollbarSize + list.y));
 		mouseDelta /= horizontal ? list.w : list.h;
@@ -284,7 +316,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			list.min);
 	}
 	else if (list.items.length > 0 && (!mouseHoldTaken || mouseHoldTaken == name + "_drag")) {
-		let spacing = horizontal ? (list.w - scrollbarSize*2) / list.num_per_page : ((list.h - scrollbarSize*2) / list.num_per_page);
+		let spacing = horizontal ? (list.w - scrollbarSize*2) * (list.num_per_page/list.items.length) : ((list.h - scrollbarSize*2) * (list.num_per_page/list.items.length));
 		if (mouseDown && !list.click_hold_y) {
 			if (MouseIn(list.x, list.y, list.w - scrollbarSize, list.h)) {
 				list.click_hold_y = (horizontal ? MouseX : MouseY);

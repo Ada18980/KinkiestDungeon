@@ -20,6 +20,7 @@ let KDCategoriesStart = [
 	{name: "Toggles", buffs: [], debuffs: [],},
 	{name: "Toggles2", buffs: [], debuffs: [],},
 	{name: "Multiclass", buffs: [], debuffs: [],},
+	{name: "Species", buffs: [], debuffs: [],},
 	{name: "Major", buffs: [], debuffs: [],},
 	{name: "Restraints", buffs: [], debuffs: [],},
 	{name: "Restriction", buffs: [], debuffs: [],},
@@ -260,7 +261,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 5, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
 
 
-	"More_Armbinders":  {category: "Toggles2", id: "More_Armbinders", cost: 0, block: ["Less_Armbinders"]},
+	/*"More_Armbinders":  {category: "Toggles2", id: "More_Armbinders", cost: 0, block: ["Less_Armbinders"]},
 	"More_Jackets":  {category: "Toggles2", id: "More_Jackets", cost: 0, block: ["Less_Jackets"]},
 	"More_Boxbinders":  {category: "Toggles2", id: "More_Boxbinders", cost: 0, block: ["Less_Boxbinders"]},
 	"More_Yokes":  {category: "Toggles2", id: "More_Yokes", cost: 0, block: ["Less_Yokes"]},
@@ -270,9 +271,13 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"Less_Jackets":  {category: "Toggles2", id: "Less_Jackets", cost: 0, block: ["More_Jackets"], debuff: true,},
 	"Less_Boxbinders":  {category: "Toggles2", id: "Less_Boxbinders", cost: 0, block: ["More_Boxbinders"], debuff: true,},
 	"Less_Yokes":  {category: "Toggles2", id: "Less_Yokes", cost: 0, block: ["More_Yokes"], debuff: true,},
-	"NoPet": {category: "Toggles2", id: "NoPet", cost: 0, block: ["More_Petsuits"], debuff: true,},
+	"NoPet": {category: "Toggles2", id: "NoPet", cost: 0, block: ["More_Petsuits"], debuff: true,},*/
 
 	"NovicePet":  {category: "Major", id: "NovicePet", cost: 1},
+	"SpeciesDoll":  {category: "Species", id: "SpeciesDoll", cost: 0},
+
+	//"Less_Tickle": {category: "Toggles2", id: "Less_Tickle", cost: 0,},
+
 	"Fortify_Barricade":  {category: "Major", id: "Fortify_Barricade", cost: -1.5},
 	"Fortify_Trap":  {category: "Enemies", id: "Fortify_Trap", cost: -1},
 	"CurseSeeker":  {category: "Major", id: "CurseSeeker", cost: -3},
@@ -294,6 +299,10 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"Inflexible": {category: "Restraints", id: 3, cost: -1, block: ["Flexible"]},
 	"Locksmith": {category: "Restraints", id: 4, cost: 2, block: ["Clueless"]},
 	"Clueless": {category: "Restraints", id: 5, cost: -1, block: ["Locksmith"]},
+	
+	"StrugglePerLevel": {category: "Restraints", id: "StrugglePerLevel", cost: 3, block: ["StrugglePerLevelNeg"]},
+	"StrugglePerLevelNeg": {category: "Restraints", id: "StrugglePerLevelNeg", cost: -3, block: ["StrugglePerLevel"]},
+	"PainfulChoice": {category: "Restraints", id: "PainfulChoice", cost: 0},
 	"HighSecurity": {category: "Restraints", id: 48, cost: -1},
 	//"SearchParty": {category: "Enemies", id: 51, cost: -1},
 	"NoWayOut": {category: "Restraints", id: 52, cost: -1},
@@ -316,6 +325,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"Distracted": {category: "Combat", id: 19, cost: -1.5, block: ["Dodge"]},
 	"Submissive": {startPriority: 0, category: "Kinky", id: 10, cost: 0},
 	"Wanted": {category: "Kinky", id: 11, cost: -0.5},
+	"EasierBlindfolds": {category: "Kinky", id: "EasierBlindfolds", cost: 2.5},
 	"QuickDraw": {category: "Combat", id: 55, cost: 2.5, block: ["Disorganized"]},
 	"Disorganized": {category: "Combat", id: 57, cost: -2, block: ["QuickDraw", "QuickScribe"]},
 	"Brawler": {category: "Combat", id: 20, cost: 1.5, block: ["UnarmedSuck"]},
@@ -410,36 +420,36 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"Rusted": {category: "Map", id: "Rusted", cost: 0.5},
 
 
-	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], block: ["NoBrats"]},
-	"NoPolice": {category: "Toggles", id: "NoPolice", cost: 0, tags: ["start"], debuff: true},
+	//"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], block: ["NoBrats"]},
+	//"NoPolice": {category: "Toggles", id: "NoPolice", cost: 0, tags: ["start"], debuff: true},
 	"MoreKinkyFurniture": {category: "Toggles", id: "MoreKinkyFurniture", cost: 0, tags: ["start"]},
-	"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, tags: ["start"], debuff: true, block: ["OnlyBrats"]},
-	"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"], debuff: true},
-	"TapePref": {category: "Toggles", id: "TapePref", cost: 0, tags: ["start"], block: ["TapeOptout"]},
-	"TapeOptout": {category: "Toggles", id: "TapeOptout", cost: 0, tags: ["start"], debuff: true, block: ["TapePref"]},
-	"SlimePref": {category: "Toggles", id: "SlimePref", cost: 0, tags: ["start"], block: ["SlimeOptout"]},
-	"SlimeOptout": {category: "Toggles", id: "SlimeOptout", cost: 0, tags: ["start"], debuff: true, block: ["SlimePref"]},
-	"BubblePref": {category: "Toggles", id: "BubblePref", cost: 0, tags: ["start"], block: ["BubbleOptout"]},
-	"BubbleOptout": {category: "Toggles", id: "BubbleOptout", cost: 0, tags: ["start"], debuff: true, block: ["BubblePref"]},
+	//"NoBrats": {category: "Toggles", id: "NoBrats", cost: 0, tags: ["start"], debuff: true, block: ["OnlyBrats"]},
+	//"NoNurse": {category: "Toggles", id: "NoNurse", cost: 0, tags: ["start"], debuff: true},
+	//"TapePref": {category: "Toggles", id: "TapePref", cost: 0, tags: ["start"], block: ["TapeOptout"]},
+	//"TapeOptout": {category: "Toggles", id: "TapeOptout", cost: 0, tags: ["start"], debuff: true, block: ["TapePref"]},
+	//"SlimePref": {category: "Toggles", id: "SlimePref", cost: 0, tags: ["start"], block: ["SlimeOptout"]},
+	//"SlimeOptout": {category: "Toggles", id: "SlimeOptout", cost: 0, tags: ["start"], debuff: true, block: ["SlimePref"]},
+	//"BubblePref": {category: "Toggles", id: "BubblePref", cost: 0, tags: ["start"], block: ["BubbleOptout"]},
+	//"BubbleOptout": {category: "Toggles", id: "BubbleOptout", cost: 0, tags: ["start"], debuff: true, block: ["BubblePref"]},
 
-	"NoBlindfolds": {category: "Toggles", id: "NoBlindfolds", cost: 1, tags: ["start"], block: ["Blackout", "TotalBlackout"]},
-	"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
-	"NoHood": {category: "Toggles2", id: "NoHood", cost: 0, tags: ["start"]},
-	"NoSenseDep": {category: "Toggles2", id: "NoSenseDep", cost: 0, tags: ["start"], debuff: true},
-	"NoKigu": {category: "Toggles", id: "NoKigu", cost: 0, tags: ["start"], debuff: true},
+	//"NoBlindfolds": {category: "Toggles", id: "NoBlindfolds", cost: 1, tags: ["start"], block: ["Blackout", "TotalBlackout"]},
+	//"Unmasked": {category: "Toggles", id: "Unmasked", cost: 0, tags: ["start"]},
+	//"NoHood": {category: "Toggles2", id: "NoHood", cost: 0, tags: ["start"]},
+	//"NoSenseDep": {category: "Toggles2", id: "NoSenseDep", cost: 0, tags: ["start"], debuff: true},
+	//"NoKigu": {category: "Toggles", id: "NoKigu", cost: 0, tags: ["start"], debuff: true},
 
-	"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
-	"NoHelp": {category: "Toggles", id: "NoHelp", cost: 0, tags: ["start"]},
+	//"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
+	//"NoHelp": {category: "Toggles", id: "NoHelp", cost: 0, tags: ["start"]},
 
-	"Estim": {category: "Toggles", id: "Estim", cost: 0, tags: ["start"], debuff: true},
+	//"Estim": {category: "Toggles", id: "Estim", cost: 0, tags: ["start"], debuff: true},
 
 
 
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 
 	"BoundCrusader": {category: "Kinky", id: "BoundCrusader", cost: -1.5},
-	"FreeBoob1":  {category: "Restraints", id: "FreeBoob1", cost: 1.0, block: ["FreeBoob2"], requireArousal: true},
-	"FreeBoob2":  {category: "Restraints", id: "FreeBoob2", cost: 1.5, block: ["FreeBoob1"], requireArousal: true},
+	//"FreeBoob1":  {category: "Restraints", id: "FreeBoob1", cost: 1.0, block: ["FreeBoob2"], requireArousal: true},
+	//"FreeBoob2":  {category: "Restraints", id: "FreeBoob2", cost: 1.5, block: ["FreeBoob1"], requireArousal: true},
 
 	"Trespasser": {category: "Map", id: "Trespasser", cost: -1.5},
 
@@ -462,7 +472,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"ArchersEye": {category: "Senses", id: "ArchersEye", cost: 1, block: ["Nearsighted"]},
 
 	"Stoic":  {category: "Damage", id: "Stoic", cost: 0.5, block: ["Ticklish"]},
-	"Ticklish":  {category: "Damage", id: "Ticklish", cost: -0.5, block: ["Stoic"]},
+	"Ticklish":  {category: "Damage", id: "Ticklish", cost: -0.5, block: ["Stoic"], blockfunc: () => {return KinkyDungeonStatsChoice.get("Less_Tickle")}},
 	"Unperturbed":  {category: "Damage", id: "Unperturbed", cost: 0.5, block: ["Lascivious"]},
 	"Lascivious":  {category: "Damage", id: "Lascivious", cost: -0.5, block: ["Unperturbed"]},
 	"Masochist":  {category: "Damage", id: "Masochist", cost: -0.5},
@@ -977,11 +987,12 @@ let KDPerkStart = {
 	MC_Fighter: () => {
 		if (!KDHasSpell("BattleRhythm")) {
 			KDPushSpell(KinkyDungeonFindSpell("BattleRhythm"));
-			KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+			KDInsertSpellChoiceInFreeSlot(KinkyDungeonSpells.length - 1);
 		}
 		if (!KDHasSpell("Offhand")) {
 			KDPushSpell(KinkyDungeonFindSpell("Offhand"));
-			KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+			KDInsertSpellChoiceInFreeSlot(KinkyDungeonSpells.length - 1);
+			
 		}
 		if (!KDHasSpell("FighterOffhand"))
 			KDPushSpell(KinkyDungeonFindSpell("FighterOffhand"));
@@ -1371,4 +1382,18 @@ function KDGetPerkShrineBondage(perks: string[]): string[] {
 	}
 
 	return ret;
+}
+
+
+function KDInsertSpellChoiceInFreeSlot(index: number): boolean {
+	for (let i = 0; i < KinkyDungeonSpellChoiceCount; i++) {
+		if ((KinkyDungeonSpellChoices[i] == -1 || !KinkyDungeonSpellChoices[i])
+			&& !KinkyDungeonWeaponChoices[i]
+			&& !KinkyDungeonConsumableChoices[i]
+			&& !KinkyDungeonArmorChoices[i]) {
+				KinkyDungeonSpellChoices[i] = index;
+				return true;
+			}
+	}
+	return false;
 }

@@ -178,7 +178,7 @@ function KinkyDungeonCanPlay(enemy: entity): boolean {
 		&& enemy.hp > 0.52;
 }
 
-function KinkyDungeonCheckRelease() {
+function KinkyDungeonCheckRelease(modifier = 0) {
 	if (KDMapData.JailFaction?.length > 0 && KDFactionRelation("Jail", KDMapData.JailFaction[0]) < -0.15) return -1;
 	if (KDGameData.RoomType) {
 		let altRoom = KinkyDungeonAltFloor(KDGameData.RoomType);
@@ -188,7 +188,7 @@ function KinkyDungeonCheckRelease() {
 	let security = KDGetEffSecurityLevel() + 50;
 	if (sub == undefined || isNaN(sub)) sub = 0;
 	if (security == undefined || isNaN(security)) security = 0;
-	let turns = KDGameData.JailTurns - security;
+	let turns = KDGameData.JailTurns - security + modifier;
 	for (let i = 0; i < KDJailReleaseTurns.length; i++) {
 		let condition = KDJailReleaseTurns[i];
 		if (sub >= condition.minSub && turns >= condition.releaseTurns) return i;
@@ -720,7 +720,7 @@ function KinkyDungeonHandleJailSpawns(delta: number, useExistingGuard: boolean =
 
 			} else if (!KinkyDungeonJailGuard().IntentAction || KinkyDungeonJailGuard().IntentAction.startsWith('jail')) {
 				if (!KinkyDungeonFlags.has("notickguardtimer")
-					&& !KinkyDungeonFlags.has("nojailbreak")) {
+					&& !KDIsJailbreakProtected(KDPlayer())) {
 					if (KinkyDungeonJailGuard()?.temporary) {
 
 						// Return so that they can despawn
@@ -771,7 +771,7 @@ function KinkyDungeonHandleJailSpawns(delta: number, useExistingGuard: boolean =
 	}
 	if (!KDMapData.Entities.includes(KinkyDungeonJailGuard())) {
 		if (KDGameData.GuardSpawnTimer == 0 || KinkyDungeonJailGuard())
-			KDGameData.GuardSpawnTimer = 14 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+			KDGameData.GuardSpawnTimer = 14 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax + 1 - KDGameData.GuardSpawnTimerMin));
 		KDGameData.JailGuard = 0;
 	}
 	if (KDGameData.GuardSpawnTimerMax == undefined) {
@@ -786,15 +786,18 @@ function KinkyDungeonHandleJailSpawns(delta: number, useExistingGuard: boolean =
 	}
 }
 
-function KinkyDungeonLockableItems() {
-	let LockableGroups = [];
-	for (let g of KinkyDungeonStruggleGroupsBase) {
-		let currentItem = KinkyDungeonGetRestraintItem(g);
-		if (currentItem && !currentItem.lock && KinkyDungeonIsLockable(KDRestraint(currentItem))) {
-			LockableGroups.push(g);
+/**
+ * @deprecated
+ */
+function KinkyDungeonLockableItems(): item[] {
+	/*let items = [];
+	for (let currentItem of KDAllRestraintDynamicList()) {
+		if (!currentItem.lock && KinkyDungeonIsLockable(KDRestraint(currentItem))) {
+			items.push(currentItem);
 		}
 	}
-	return LockableGroups;
+	return items;*/
+	return KinkyDungeonPlayerGetLockableRestraints();
 }
 
 function KinkyDungeonMissingJailUniform() {
@@ -926,7 +929,7 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 			let enemy = KinkyDungeonEnemyAt(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			if (enemy) enemy.x += 1;
 			KinkyDungeonJailGuard().CurrentAction = "jailWander";
-			KDGameData.KinkyDungeonJailTourTimer = KDGameData.KinkyDungeonJailTourTimerMin + Math.floor((KDGameData.KinkyDungeonJailTourTimerMax - KDGameData.KinkyDungeonJailTourTimerMin) * KDRandom());
+			KDGameData.KinkyDungeonJailTourTimer = KDGameData.KinkyDungeonJailTourTimerMin + Math.floor((KDGameData.KinkyDungeonJailTourTimerMax + 1 - KDGameData.KinkyDungeonJailTourTimerMin) * KDRandom());
 			KinkyDungeonJailGuard().gx = KinkyDungeonJailGuard().x;
 			KinkyDungeonJailGuard().gy = KinkyDungeonJailGuard().y;
 		} else {
@@ -1379,7 +1382,7 @@ function KDEnterDragonLair(dragon: entity, lairType: string = "DragonLair") {
 
 	let slot = KDGetWorldMapLocation(KDCoordToPoint(dragon.homeCoord || KDGetCurrentLocation()));
 	let setFutureHomeCoord = false; // for dragons without a home
-	
+
 	if(slot == undefined) {
 		// thanks Gen for fix
 		if (!dragon.homeCoord) setFutureHomeCoord = true;
@@ -1658,6 +1661,9 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 			fromHere ? "Jail" : undefined,
 			true
 		);
+		if (KDPersonalAlt[outpost]) {
+			forceFaction = KDPersonalAlt[outpost].OwnerFaction;
+		}
 		let room = outpost != undefined ? outpost : jailroom;
 
 
@@ -1697,6 +1703,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 				mapY: currentMapData.mapY,
 				room: currentMapData.RoomType,
 			};
+			if (leasher.leash) KDBreakTether(leasher);
 			KDDespawnEnemy(leasher, undefined, currentMapData, KDMapData.RoomType);
 			let nextExit = KDGetNearestExitTo(
 				currentMapData.RoomType, currentMapData.mapX, currentMapData.mapY,
@@ -2256,7 +2263,7 @@ let KDCustomDefeatUniforms = {
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints"])},
 			Math.max(KDGetEffLevel(), 8), "grv", true, "Red",
-			
+
 			undefined, undefined, undefined, undefined, undefined, undefined,
 			undefined, undefined, undefined ,undefined, {
 				suppressTightPerk: MiniGameKinkyDungeonLevel == 0
@@ -2272,7 +2279,7 @@ let KDCustomDefeatUniforms = {
 		for (let i = 0; i < 10; i++) {
 			let r = KinkyDungeonGetRestraint({tags: (["linkRegular"])},
 			Math.max(KDGetEffLevel(), 6), "grv", true, "Red",
-			
+
 			undefined, undefined, undefined, undefined, undefined, undefined,
 			undefined, undefined, undefined ,undefined, {
 				suppressTightPerk: MiniGameKinkyDungeonLevel == 0
@@ -2294,7 +2301,7 @@ let KDCustomDefeatUniforms = {
 		for (let i = 0; i < 20; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket"]},
 				Math.max(KDGetEffLevel(), 9), "grv", true, "Purple",
-			
+
 				undefined, undefined, undefined, undefined, undefined, undefined,
 				undefined, undefined, undefined ,undefined, {
 					suppressTightPerk: MiniGameKinkyDungeonLevel == 0
@@ -2305,7 +2312,7 @@ let KDCustomDefeatUniforms = {
 		for (let i = 0; i < 10; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["handcuffer", "linkRegular"]},
 				Math.max(KDGetEffLevel(), 6), "grv", true, "Purple",
-			
+
 				undefined, undefined, undefined, undefined, undefined, undefined,
 				undefined, undefined, undefined ,undefined, {
 					suppressTightPerk: MiniGameKinkyDungeonLevel == 0
@@ -2319,12 +2326,12 @@ let KDCustomDefeatUniforms = {
 		KinkyDungeonSetDress("Maid", "Maid");
 	},
 	DollShoppe: () => {
-		KinkyDungeonAddRestraintIfWeaker("HeavyLatexCatsuit", 5, true, "Red", 
+		KinkyDungeonAddRestraintIfWeaker("HeavyLatexCatsuit", 5, true, "Red",
 			false, undefined, undefined, "Jail", true);
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexStart", "latexCollar", "latexRestraintsForced"]},
 				Math.max(KDGetEffLevel(), 6), "grv", true, "Purple",
-			
+
 				undefined, undefined, undefined, undefined, undefined, undefined,
 				undefined, undefined, undefined ,undefined, {
 					suppressTightPerk: MiniGameKinkyDungeonLevel == 0
@@ -2375,7 +2382,7 @@ let KDCustomDefeatUniforms = {
 			let r = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist",
 				"tapeRestraints", "genericToys"]},
 				Math.max(KDGetEffLevel(), 24), "grv", true, undefined,
-			
+
 				undefined, undefined, undefined, undefined, undefined, undefined,
 				undefined, undefined, undefined ,undefined, {
 					suppressTightPerk: MiniGameKinkyDungeonLevel == 0
@@ -2410,7 +2417,7 @@ let KDCustomDefeatUniforms = {
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys", "linkRegular"]},
 				Math.max(KDGetEffLevel(), 7), "grv", true, "Red",
-			
+
 				undefined, undefined, undefined, undefined, undefined, undefined,
 				undefined, undefined, undefined ,undefined, {
 					suppressTightPerk: MiniGameKinkyDungeonLevel == 0
@@ -2441,7 +2448,7 @@ function KDFixPlayerClothes(faction: string) {
 }
 
 function KDResetGuardSpawnTimer() {
-	KDGameData.GuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+	KDGameData.GuardSpawnTimer = 4 + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax + 1 - KDGameData.GuardSpawnTimerMin));
 }
 
 let KDChestRank = {
@@ -2486,7 +2493,7 @@ function KDGetHiSecDialogue(enemy: entity): string {
 
 function KDGetLeashFaction(leashEnemy: entity): string {
 	let forceFaction = undefined;
-	if (leashEnemy && (KDFactionProperties[KDGetFaction(leashEnemy)]
+	if (leashEnemy && KDSelfishLeash(leashEnemy) && (KDFactionProperties[KDGetFaction(leashEnemy)]
 		|| KDFactionProperties[KDGetFactionOriginal(leashEnemy)])) {
 		if (KDFactionProperties[KDGetFaction(leashEnemy)])
 			forceFaction = KDFactionProperties[KDGetFaction(leashEnemy)].jailFaction
@@ -2607,7 +2614,7 @@ function KDGetFurnitureCriteria(entity: entity): (x: number, y: number, point: K
 
 			return !entity || !furniture || (restrainttags && (
 				!KDCanEquipItemOnNPC(
-					KinkyDungeonGetRestraint({tags: restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, 
+					KinkyDungeonGetRestraint({tags: restrainttags}, KDGetEffLevel(),KDCurrIndex(), false,
 					undefined, undefined, undefined, undefined, undefined, true),
 					id, false, undefined, undefined
 				)
@@ -2615,5 +2622,5 @@ function KDGetFurnitureCriteria(entity: entity): (x: number, y: number, point: K
 		}
 	}
 
-	
+
 }

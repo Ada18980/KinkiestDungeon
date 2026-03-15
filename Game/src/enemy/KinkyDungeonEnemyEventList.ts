@@ -92,6 +92,12 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				} else {
 					enemy.gx = enemy.IntentLeashPoint.x;
 					enemy.gy = enemy.IntentLeashPoint.y;
+					let player = KDPlayer();
+					let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+					if (!nearestfurniture) {
+						enemy.IntentAction = '';
+						enemy.IntentLeashPoint = null;
+					} else
 					if (KDistChebyshev(enemy.IntentLeashPoint.x - enemy.x, enemy.IntentLeashPoint.y - enemy.y) < 1.5 && !(aiData as KDAIData).aggressive) {
 						KDIntentEvents.leashFurniture.arrive(enemy, aiData);
 					}
@@ -455,6 +461,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					return 0;
 			}
 			let player = KDPlayer();
+			if (KinkyDungeonLeashingEnemy() && KinkyDungeonLeashingEnemy() != enemy) return 0;
 			return (hostile
 				&& (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing)
 				&& ((KinkyDungeonFlags.has("Released"))
@@ -1193,6 +1200,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		// This will make the enemy want to leash you
 		weight: (enemy, aiData, _allied, hostile, _aggressive) => {
 			if (!enemy.Enemy.tags.leashing) return 0;
+			if (KinkyDungeonLeashingEnemy() && KinkyDungeonLeashingEnemy() != enemy) return 0;
 			if (KinkyDungeonFlags.get("Released")) return 0;
 			if (KinkyDungeonFlags.get("LeashToPrison")) return 0;
 			if (KDGameData.PrisonerState == 'jail') return 0;
@@ -1247,6 +1255,12 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.playWithPlayer = 10;
 				}// else enemy.playWithPlayer += delta;
 			}
+			let player = KDPlayer();
+			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+			if (!nearestfurniture) {
+				enemy.IntentAction = '';
+				enemy.IntentLeashPoint = null;
+			}
 			return false;
 		},
 	},
@@ -1270,7 +1284,8 @@ function KDResetIntent(enemy: entity, _aiData?: KDEventDataBoolean) {
  * @param [ftype]
  */
 function KDSettlePlayerInFurniture(enemy: entity, _aiData: KDAIData, tags?: string[], guardDelay: number = 24, ftype: string[] = ["furniture"]): boolean {
-	let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ftype, undefined, undefined, undefined, KDGetFurnitureCriteria(KDPlayer()));
+	let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ftype, undefined, 
+		undefined, undefined, KDGetFurnitureCriteria(KDPlayer()));
 	let tile = KinkyDungeonTilesGet(nearestfurniture.x + "," + nearestfurniture.y);
 	let type = tile ? tile.Furniture : undefined;
 

@@ -527,7 +527,8 @@ let KDSwapSpell = -1;
 function KinkyDungeonHandleSpell(ind?: number): boolean {
 	let clicked = false;
 	let spell = null;
-	if (!ind) {
+	if (ind == undefined) {
+		// Handle keyboard shortcuts for current page
 		for (let i = 0; i < KinkyDungeonSpellChoiceCountPerPage; i++) {
 			let index = i + KDSpellPage*KinkyDungeonSpellChoiceCountPerPage;
 
@@ -537,13 +538,7 @@ function KinkyDungeonHandleSpell(ind?: number): boolean {
 				clicked = result.clicked;
 			}
 		}
-		for (let ii = 0; ii < KinkyDungeonSpellChoiceCount; ii++) {
-			if (MouseInKD("SpellCast" + ii) || MouseInKD("UseItem" + ii)) {
-				let result = KinkyDungeonClickSpell(ii);
-				spell = result.spell;
-				clicked = result.clicked;
-			}
-		}
+		// Mouse clicks are handled by DrawButtonKDEx click handlers
 	} else {
 		let result = KinkyDungeonClickSpell(ind);
 		spell = result.spell;
@@ -1170,7 +1165,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 					aoe: spell.type == "dot" ? spell.bulletAoE : undefined,
 					source: spell.noSource ? undefined : ((entity?.player ? -1 : entity?.id) || bullet?.bullet?.source),
 					lifetime:spell.delay +
-						(spell.delayRandom ? Math.floor(KDRandom() * spell.delayRandom) : 0),
+						(spell.delayRandom ? Math.floor(KDRandom() * (spell.delayRandom + 1)) : 0),
 					cast: cast, dot: spell.dot, events: spell.events, alwaysCollideTags: spell.alwaysCollideTags,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 					bulletSpin: spell.bulletSpin,
@@ -1402,7 +1397,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 				KinkyDungeonAggroAction('magic', {});
 			if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + spell.school.toLowerCase(), 1);
 		}
-		
+
 		KinkyDungeonSendEvent("playerCast", data);
 		if (KDGameData.HeelPowerEffective > 0) {
 			if (spell.components?.includes("Arms"))
@@ -1449,7 +1444,7 @@ function KinkyDungeonClickSpellChoice(I: number, CurrentSpell: number) {
 	if (KinkyDungeonSpellChoicesToggle[I] && KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].cancelAutoMove) {
 		//KinkyDungeonFastMove = false;
 		//KinkyDungeonFastMoveSuppress = false;
-		
+
 		KinkyDungeonFastMovePath = [];
 	}
 }
@@ -1611,6 +1606,11 @@ function KinkyDungeonWordWrap(str: string, maxWidthTranslate: number, maxWidthEn
 				res = res + [str.slice(0, i), newLineStr].join('');
 				str = str.slice(i + 1);
 				found = true;
+			} if (str.slice(0, maxWidth).indexOf("\\n") >= 0) {
+				let i = str.indexOf("\\n");
+				res = res + [str.slice(0, i), newLineStr].join('');
+				str = str.slice(i + 2);
+				found = true;
 			} else
 			// Inserts new line at first whitespace of the line
 				for (let i = maxWidth - 1; i >= 0; i--) {
@@ -1630,6 +1630,7 @@ function KinkyDungeonWordWrap(str: string, maxWidthTranslate: number, maxWidthEn
 		}
 	}
 
+	
 
 	return res + str;
 }
@@ -1640,8 +1641,7 @@ function KinkyDungeonTestWhite(x: string, language: string): boolean {
 		return white.test(x.charAt(0));
 	}
 	if (language == "CJKP") {
-		/*  'test' option returns a boolean.  */
-		return CJKcheck(x.charAt(0),3,"test") as boolean;
+		return CharacterCheckerHasCJKSP(x.charAt(0)) as boolean;
 	}
 	if (language == "Num") {
 		let white = new RegExp(/^[0-9.]$/);
@@ -2815,3 +2815,49 @@ function KDShockCollarCost() {
 function KDCurrIndex() {
 	return (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 }
+
+
+// Recursive search through the spell.prerequisite chain until the most top level spell
+// Returns either an origin spell name or an array of origin spell names, depending on the spell.prerequisite type.
+function KDGetSpellOrigin(spell) {
+  let origin = spell.name;
+  if (!spell.prerequisite) return origin;
+  if (typeof spell.prerequisite === "string") {
+    let origin = spell.prerequisite;
+    if (origin == "Null") return spell.name;
+    if (KinkyDungeonFindSpell(origin)) origin = KDGetSpellOrigin(KinkyDungeonFindSpell(origin));
+    return origin;
+    }
+    
+  if (spell.prerequisite instanceof Array) {
+    let ret = [];
+    for (let prereq of spell.prerequisite) {
+      let prereq_spell = KinkyDungeonFindSpell(prereq);
+      if (!prereq_spell) { ret.push(prereq); continue; }
+      ret.push(KDGetSpellOrigin(prereq_spell));
+    }
+    origin = ret;
+  }
+  return origin;
+}
+
+let KDSpellMasteryReqs: Record<string, string[]> = {};
+
+function KDUpdateSpellMasteryReqs(category: string): string[] {
+	if (!KDSpellMasteryReqs[category]) {
+		let reqspells: string[] = []
+		for (let spell of Object.values(KinkyDungeonSpellList).flat()) {
+			// A flat array of all spells
+			let SpellOrigin = KDGetSpellOrigin(spell);
+			if (SpellOrigin == category 
+				|| (SpellOrigin instanceof Array && SpellOrigin.some((s)=>{return s == category}))) {
+					// Some spells have an array of prerequisites, working as "any"
+				reqspells.push(spell.name);
+			}
+		}
+		KDSpellMasteryReqs[category] = reqspells;
+	}
+
+	return KDSpellMasteryReqs[category] || [];
+}
+

@@ -24,7 +24,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 		Bodystyle: [
 			"Pale",
 			"Default",
-			"Tan",
+			"Tan","Tan","Tan2",
 		],
 		Facestyle: [
 			"CyanCute",
@@ -189,9 +189,9 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 		Bodystyle: [
 			"Pale",
 			"Default",
-			"Tan",
-			"Mid",
-			"MidTan",
+			"Tan","Tan","Tan2",
+			"Mid","Mid","Mid2",
+			"MidTan","MidTan","MidTan2",
 		],
 		Facestyle: [
 			"GreenNormal",
@@ -217,10 +217,10 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"KittyLong",
 		],
 		Bodystyle: [
-			"Tan",
-			"Mid",
-			"MidTan",
-			"DarkTan",
+			"Tan","Tan","Tan2",
+			"Mid","Mid","Mid2",
+			"MidTan","MidTan","MidTan2",
+			"DarkTan","DarkTan","DarkTan2",
 		],
 		Facestyle: [
 			"GreenNormal",
@@ -299,7 +299,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 		Bodystyle: [
 			"Pale",
 			"ElementalPale",
-			"Tan",
+			"Tan","Tan","Tan2",
 		],
 		Facestyle: [
 			"YellowAngry",
@@ -322,7 +322,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 		Bodystyle: [
 			"Pale",
 			"ElementalPale",
-			"Tan",
+			"Tan","Tan","Tan2",
 		],
 		Facestyle: [
 			"Worshipper",
@@ -351,9 +351,9 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Brown1",
 		],
 		Bodystyle: [
-			"Tan",
-			"MidTan",
-			"DarkTan",
+			"Tan","Tan","Tan2",
+			"MidTan","MidTan","MidTan2",
+			"DarkTan","DarkTan","DarkTan2",
 			"ElementalTan",
 			"ElementalPale",
 		],
@@ -378,8 +378,8 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"LavenderPonytail",
 		],
 		Bodystyle: [
-			"Tan",
-			"MidTan",
+			"Tan","Tan","Tan2",
+			"MidTan","MidTan","MidTan2",
 			"ElementalTan",
 			"ElementalPale",
 			"Pale",
@@ -558,7 +558,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 		Bodystyle: [
 			"Pale",
 			"Default",
-			"Tan",
+			"Tan","Tan","Tan2",
 			"ElementalPale",
 			"ElementalCorrupted",
 		],
@@ -592,11 +592,11 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"RedheadTwintail",
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
-			"Tan",
-			"MidTan",
-			"DarkTan",
+			"Default","Default2",
+			"Mid","Mid","Mid2",
+			"Tan","Tan","Tan2",
+			"MidTan","MidTan","MidTan2",
+			"DarkTan","DarkTan","DarkTan2",
 		],
 		Facestyle: [
 			"Brown1",
@@ -622,10 +622,10 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"BlueTwintail",
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
+			"Default","Default","Default2",
+			"Mid","Mid","Mid2",
 			"Pale",
-			"MidTan",
+			"MidTan","MidTan","MidTan2",
 		],
 		Facestyle: [
 			"Amber1",
@@ -645,10 +645,10 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"GreenTwintail",
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
+			"Default","Default","Default2",
+			"Mid","Mid","Mid2",
 			"Pale",
-			"MidTan",
+			"MidTan","MidTan","MidTan2",
 		],
 		Facestyle: [
 			"Amber1",
@@ -671,11 +671,11 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Maid2",
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
+			"Default","Default","Default2",
+			"Mid","Mid","Mid2",
 			"Pale",
-			"MidTan",
-			"DarkTan",
+			"MidTan","MidTan","MidTan2",
+			"DarkTan","DarkTan","DarkTan2",
 		],
 		Facestyle: [
 			"BlueCute",
@@ -698,10 +698,10 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Maid6",
 		],
 		Bodystyle: [
-			"Default",
-			"Tan",
+			"Default","Default","Default2",
+			"Tan","Tan","Tan2",
 			"Pale",
-			"MidTan",
+			"MidTan","MidTan","MidTan2",
 		],
 		Facestyle: [
 			"BlueCute",
@@ -731,10 +731,10 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"PurpleLong",
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
+			"Default","Default","Default2",
+			"Mid","Mid","Mid2",
 			"Pale",
-			"MidTan",
+			"MidTan","MidTan","MidTan2",
 		],
 		Facestyle: [
 			"Cyan",
@@ -757,8 +757,8 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"BlueTwintail",
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
+			"Default","Default","Default2",
+			"Mid","Mid","Mid2",
 			"Pale",
 		],
 		Facestyle: [
@@ -786,8 +786,8 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"PeachTwintails",
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
+			"Default","Default","Default2",
+			"Mid","Mid","Mid2",
 			"Pale",
 		],
 		Facestyle: [
@@ -810,8 +810,8 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"PeachTwintails",
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
+			"Default","Default","Default2",
+			"Mid","Mid","Mid2",
 			"Pale",
 		],
 		Facestyle: [
@@ -833,9 +833,9 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"FireMessy",
 		],
 		Bodystyle: [
-			"Default",
-			"Tan",
-			"DarkTan",
+			"Default","Default","Default2",
+			"Tan","Tan","Tan2",
+			"DarkTan","DarkTan","DarkTan2",
 			"Pale",
 		],
 		Facestyle: [
@@ -861,11 +861,11 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"PurpleLong",
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
+			"Default","Default","Default2",
+			"Mid","Mid","Mid2",
 			"Pale",
-			"Tan",
-			"DarkTan",
+			"Tan","Tan","Tan2",
+			"DarkTan","DarkTan","DarkTan2",
 		],
 		Facestyle: [
 			"GreenOpen",
@@ -894,11 +894,11 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
+			"Default","Default","Default2",
+			"Mid","Mid","Mid2",
 			"Pale",
-			"Tan",
-			"DarkTan",
+			"Tan","Tan","Tan2",
+			"DarkTan","DarkTan","DarkTan2",
 		],
 		Facestyle: [
 			"CrystalFace",
@@ -923,8 +923,8 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"BlueTwintail",
 		],
 		Bodystyle: [
-			"Default",
-			"Mid",
+			"Default","Default","Default2",
+			"Mid","Mid","Mid2",
 			"Pale",
 		],
 		Facestyle: [
@@ -976,9 +976,9 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"DeepRed",
 		],
 		Bodystyle: [
-			"Default",
-			"Tan",
-			"DarkTan",
+			"Default","Default","Default2",
+			"Tan","Tan","Tan2",
+			"DarkTan","DarkTan","DarkTan2",
 			"Pale",
 		],
 		Facestyle: [
@@ -991,9 +991,48 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"LightBlueCute",
 		],
 	},
+	Kaisei: {
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Kaisei",
+		],
+		Hairstyle: [
+			"Kaisei"
+		],
+	},
+	Krifath: {
+		Bodystyle: [
+			"Krifath",
+		],
+		Facestyle: [
+			"Krifath",
+		],
+		Hairstyle: [
+			"Krifath"
+		],
+		Cosplay: [
+			"Krifath"
+		],
+	},
+	Yumi: {
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Yumi",
+		],
+		Hairstyle: [
+			"Yumi"
+		],
+		Cosplay: [
+			"Yumi"
+		],
+	},
 	Melissa: {
 		Bodystyle: [
-			"Default",
+			"Default2",
 		],
 		Facestyle: [
 			"Melissa",
@@ -1002,9 +1041,234 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Melissa",
 		],
 	},
+	Director: {
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Director",
+		],
+		Hairstyle: [
+			"Director",
+		],
+	},
+	Minnie: {
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Minnie",
+		],
+		Hairstyle: [
+			"Minnie",
+		],
+	},
+	Carli: {
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Carli",
+		],
+		Hairstyle: [
+			"Carli",
+		],
+	},
+	Anketh: {
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Anketh",
+		],
+		Hairstyle: [
+			"Anketh",
+		],
+	},
+	Mizuna: {
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Mizuna",
+		],
+		Hairstyle: [
+			"Mizuna",
+		],
+		Cosplay: [
+			"Mizuna",
+		],
+	},
+	Anarial: {
+		
+		Cosplay: [
+			"Anarial",
+		],
+		Bodystyle: [
+			"Anarial",
+		],
+		Facestyle: [
+			"Anarial",
+		],
+		Hairstyle: [
+			"Anarial",
+		],
+	},
+	Istoodin: {
+		
+		Cosplay: [
+			"Istoodin",
+		],
+		Bodystyle: [
+			"Istoodin",
+		],
+		Facestyle: [
+			"Istoodin",
+		],
+		Hairstyle: [
+			"Istoodin",
+		],
+	},
+	Rook: {
+		
+		Cosplay: [
+			"Rook",
+		],
+		Bodystyle: [
+			"Rook",
+		],
+		Facestyle: [
+			"Rook",
+		],
+		Hairstyle: [
+			"Rook",
+		],
+	},
+	Elodie: {
+		
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Elodie",
+		],
+		Hairstyle: [
+			"Elodie",
+		],
+	},
+	iostream: {
+		
+		Cosplay: [
+			"iostream",
+		],
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"iostream",
+		],
+		Hairstyle: [
+			"iostream",
+		],
+	},
+	Ivy: {
+		
+		Cosplay: [
+			"Ivy",
+		],
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Ivy",
+		],
+		Hairstyle: [
+			"Ivy",
+		],
+	},
+	Salote: {
+		
+		Cosplay: [
+			"Salote",
+		],
+		Bodystyle: [
+			"Salote",
+		],
+		Facestyle: [
+			"Salote",
+		],
+		Hairstyle: [
+			"Salote",
+		],
+	},
+
+	Catey: {
+		
+		Bodystyle: [
+			"Catey",
+		],
+		Facestyle: [
+			"Catey",
+		],
+		Hairstyle: [
+			"Catey",
+		],
+	},
+	
+	Lushi: {
+		
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Lushi",
+		],
+		Hairstyle: [
+			"Lushi",
+		],
+	},
+	Mizuna2: {
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Mizuna2",
+		],
+		Hairstyle: [
+			"Mizuna2",
+		],
+		Cosplay: [
+			"Mizuna2",
+		],
+	},
+	Luce: {
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Luce",
+		],
+		Hairstyle: [
+			"Luce",
+		],
+		Cosplay: [
+			"Luce",
+		],
+	},
+	Fidel: {
+		Bodystyle: [
+			"Default2",
+		],
+		Facestyle: [
+			"Fidel",
+		],
+		Hairstyle: [
+			"Fidel",
+		],
+	},
 	Viola: {
 		Bodystyle: [
-			"Default",
+			"Default2",
 		],
 		Facestyle: [
 			"Viola",
@@ -1015,7 +1279,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 	},
 	Yuri: {
 		Bodystyle: [
-			"Default",
+			"Default2",
 		],
 		Facestyle: [
 			"Yuri",
@@ -1029,7 +1293,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 	},
 	Hilda: {
 		Bodystyle: [
-			"Default",
+			"Default2",
 		],
 		Facestyle: [
 			"Hilda",
@@ -1057,7 +1321,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 	},
 	Myrtrice: {
 		Bodystyle: [
-			"Default",
+			"Default2",
 		],
 		Facestyle: [
 			"Myrtrice",
@@ -1082,7 +1346,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 	},
 	Dollmaker: {
 		Bodystyle: [
-			"Default",
+			"Default2",
 		],
 		Facestyle: [
 			"GreenAngry",

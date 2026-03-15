@@ -145,11 +145,15 @@ let KDToggles = {
 	NoForceGreet: false,
 	StruggleBars: true,
 	ShowJailedNPCSprites: true,
+	ShowPatronNPCSprites: true,
+	ShowServantNPCSprites: false,
+	ShowOtherNPCSprites: false,
 	ShowZoom: true,
 	Backgrounds: true,
 	RawDP: false,
 	OnlySelfQuickInv: false,
 	OverrideOutfit: false,
+	OverrideConsent: true,
 	SaveOutfit: true,
 	ModCompat: false,
 
@@ -182,11 +186,14 @@ let KDToggles = {
 	ExtraBuffRow: true,
 	StruggleContext: false,
 	TrainingBuff: true,
+	FlashingWarning: true,
 };
 
 
 
 let KDToggleCategories = {
+	OverrideConsent: "none",
+	FlashingWarning: "UI",
 	StruggleContext: "UI",
 	Headpats: "Clothes",
 	ExtraBuffRow: "UI",
@@ -200,6 +207,11 @@ let KDToggleCategories = {
 	Backgrounds: "GFX",
 	ShowZoom: "UI",
 	ShowJailedNPCSprites: "GFX",
+	ShowPatronNPCSprites: "GFX",
+
+	ShowServantNPCSprites: "GFX",
+	ShowOtherNPCSprites: "GFX",
+
 	StruggleBars: "UI",
 	SpellBook: "UI",
 	FastFloaters: "UI",

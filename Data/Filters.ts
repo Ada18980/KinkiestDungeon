@@ -286,6 +286,7 @@ class EraseFilter extends PIXI.Filter
     }
 }
 
+
 class DisplaceFilter extends PIXI.Filter
 {
     public maskSprite: ISpriteMaskTarget;

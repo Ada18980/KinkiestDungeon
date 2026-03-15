@@ -40,7 +40,7 @@ AddModel({
 			EraseSprite: "BalletRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["BalletHeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 		},
 
 
@@ -121,7 +121,7 @@ AddModel({
 			EraseSprite: "BalletRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["BalletHeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 		},
 
 
@@ -181,7 +181,7 @@ AddModel({
 			EraseSprite: "BalletRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["BalletHeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 		},
 
 
@@ -255,7 +255,7 @@ AddModel({
 			EraseSprite: "HeelsRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["HeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 		},
 		{ Name: "LeatherLegLeft", Layer: "OverShoes", Pri: 31,
 			InheritColor: "Shoe",
@@ -304,7 +304,7 @@ AddModel({
 			EraseSprite: "HeelsRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["HeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 		},
 		{ Name: "LegLeft", Layer: "OverShoes", Pri: 29.5,
 			InheritColor: "Shoe",
@@ -354,7 +354,7 @@ AddModel({
 			EraseSprite: "HeelsRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["HeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 		},
 		{ Name: "TallLegLeft", Layer: "OverSocks", Pri: 27,
 			InheritColor: "Shoe",
@@ -417,7 +417,7 @@ AddModel({
 			EraseSprite: "HeelsRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["HeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 		},
 		{ Name: "TallLegLeft", Layer: "OverSocks", Pri: 27,
 			InheritColor: "Shoe",
@@ -481,7 +481,7 @@ AddModel({
 			EraseSprite: "BalletRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["HeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 		},
 		{ Name: "TallLegLeft", Layer: "OverShoes", Pri: 27,
 			InheritColor: "Shoe",

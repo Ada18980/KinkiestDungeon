@@ -1452,6 +1452,8 @@ function KDDrawSubmeshEditor() {
 function KDDrawWardrobe(_screen: string, Character: Character) {
 	if (KDOutfitInfo.length == 0) KDRefreshOutfitInfo();
 
+	let C = Character || KinkyDungeonPlayer;
+
 	if (KDDebugMode) {
 		DrawButtonKDEx("togglewireframeeditor", 
 			() => {
@@ -1460,6 +1462,29 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				SubmeshEditorBufferOrig = null;
 				return true;
 			}, true, 510, 5, 100, 40, "Submesh Editor", KDBaseWhite);
+		let II = 0;
+		let debugspacing = 110;
+		if (KDShowCharacterPalette) DrawButtonKDEx("fliplayerbonus", 
+		() => {
+			if (C) {
+				
+				KDChangeWardrobe(C);
+				for (let model of C.Appearance) {
+					if (model.Properties) {
+						for (let entry of Object.entries(model.Properties)) {
+							if (entry[1].LayerBonus)
+								model.Properties[entry[0]].LayerBonus *= -1;
+						}
+					}
+						
+				}
+				KDUpdateChar(C);
+				if (KDCurrentModels.get(C)) {
+					KDCurrentModels.get(C).Update.clear();
+				}
+			}
+			return true;
+		}, true, 510 + debugspacing * ++II, 5, 100, 40, "Flip lyrbonus", KDBaseWhite);
 		if (KDSubmeshEditor) {
 			KDDrawSubmeshEditor();
 		}
@@ -1477,7 +1502,6 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		}
 	}
 
-	let C = Character || KinkyDungeonPlayer;
 	if (KDBGColor) {
 		FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
 			Left: 0,
@@ -1661,6 +1685,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					true, xxColor, yyColor, 200, 60, TextGet("KDPaletteLayer_" + col), 
 					KDTextWhite, sprite, undefined, undefined, col != KDSelectedPaletteLayer, 
 					KDButtonColor, undefined, true, {
+						// @ts-ignore
 						filters: KDPIXIPaletteFilters.get(pid + selectedPalette) ? KDPIXIPaletteFilters.get(pid + selectedPalette)[ii++] : undefined,
 					});
 
@@ -2074,11 +2099,16 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 
 	if (!Character || Character == KinkyDungeonPlayer) {
 		DrawButtonKDEx("KDWardrobeSave", (_bdata) => {
-			KinkyDungeonState = "Menu";
+			if (KinkyDungeonPreviousState) {
+				KinkyDungeonState = KinkyDungeonPreviousState;
+				KinkyDungeonPreviousState = "";
+			} else {
+				KinkyDungeonState = "Menu";
+			}
 			KDPlayerSetPose = false;
 			KinkyDungeonDressSet();
 			return true;
-		}, true, 20, 940, 400, 50, TextGet("KDWardrobeSave"), KDBaseWhite, "");
+		}, true, 20, 940, 400, 50, TextGet("KDWardrobeSave" + (KinkyDungeonPreviousState || "")), KDBaseWhite, "");
 	} else {
 		DrawButtonKDEx("KDBackToGame", (_bdata) => {
 			KinkyDungeonState = "Game";
@@ -3102,6 +3132,7 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 				true, X, YY - 15, width, 60, TextGet("KDPaletteLayer_" + key), 
 				KDTextWhite, sprite, undefined, undefined, key != selectedLayer, 
 				KDButtonColor, undefined, true, {
+					// @ts-ignore
 					filters: (ii >= 0 && KDPIXIPaletteFilters.get(pid + palette)) ? KDPIXIPaletteFilters.get(pid + palette)[ii++] : undefined,
 				});
 

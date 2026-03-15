@@ -12,7 +12,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["StuffMouth", "HideMouth"],
+	AddPose: ["StuffMouth", "HideMouth", "BallMouthLarge"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 50,
 			Invariant: true,
@@ -53,7 +53,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["StuffMouth", "HideMouth"],
+	AddPose: ["StuffMouth", "HideMouth", "BallMouthLarge"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 50,
 			Invariant: true,

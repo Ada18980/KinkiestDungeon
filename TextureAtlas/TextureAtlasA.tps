@@ -153,7 +153,7 @@
             <key>scale</key>
             <double>0.5</double>
             <key>scaleMode</key>
-            <enum type="ScaleMode">Fast</enum>
+            <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
             <uint>1</uint>
             <key>trimThreshold</key>
@@ -374,6 +374,64 @@
             <key type="filename">../M1/Models/Body/TorsoKneel.png</key>
             <key type="filename">../M1/Models/Body/TorsoSpread.png</key>
             <key type="filename">../M1/Models/Body/TorsoSpreadChastity.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmLeftBoxtie.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmLeftCrossed.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmLeftFree.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmLeftFront.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmLeftUp.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmLeftWristtie.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmLeftYoked.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmRightBoxtie.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmRightCrossed.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmRightFree.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmRightFront.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmRightUp.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmRightWristtie.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ArmRightYoked.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ButtKneel.png</key>
+            <key type="filename">../M1/Models/BodyDoll/CalfLeftHogtie.png</key>
+            <key type="filename">../M1/Models/BodyDoll/Chest.png</key>
+            <key type="filename">../M1/Models/BodyDoll/Eyes.png</key>
+            <key type="filename">../M1/Models/BodyDoll/FootLeftHogtie.png</key>
+            <key type="filename">../M1/Models/BodyDoll/FootRightHogtie.png</key>
+            <key type="filename">../M1/Models/BodyDoll/FootRightKneel.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ForeArmLeftCrossed.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ForeArmLeftFront.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ForeArmRightCrossed.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ForeArmRightFront.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HandLeftFree.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HandLeftFront.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HandLeftYoked.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HandRightBoxtie.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HandRightFree.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HandRightFront.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HandRightYoked.png</key>
+            <key type="filename">../M1/Models/BodyDoll/Head.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HeadBigGag.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HeadGag.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HeadNoEar.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HeadNoEarBigGag.png</key>
+            <key type="filename">../M1/Models/BodyDoll/HeadNoEarGag.png</key>
+            <key type="filename">../M1/Models/BodyDoll/LegLeftClosed.png</key>
+            <key type="filename">../M1/Models/BodyDoll/LegLeftHogtie.png</key>
+            <key type="filename">../M1/Models/BodyDoll/LegLeftKneel.png</key>
+            <key type="filename">../M1/Models/BodyDoll/LegLeftKneelClosed.png</key>
+            <key type="filename">../M1/Models/BodyDoll/LegLeftSpread.png</key>
+            <key type="filename">../M1/Models/BodyDoll/LegRightClosed.png</key>
+            <key type="filename">../M1/Models/BodyDoll/LegRightHogtie.png</key>
+            <key type="filename">../M1/Models/BodyDoll/LegRightKneel.png</key>
+            <key type="filename">../M1/Models/BodyDoll/LegRightKneelClosed.png</key>
+            <key type="filename">../M1/Models/BodyDoll/LegRightSpread.png</key>
+            <key type="filename">../M1/Models/BodyDoll/Nipples.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ShoulderLeftUp.png</key>
+            <key type="filename">../M1/Models/BodyDoll/ShoulderRightUp.png</key>
+            <key type="filename">../M1/Models/BodyDoll/Torso.png</key>
+            <key type="filename">../M1/Models/BodyDoll/TorsoChastity.png</key>
+            <key type="filename">../M1/Models/BodyDoll/TorsoClosed.png</key>
+            <key type="filename">../M1/Models/BodyDoll/TorsoClosedChastity.png</key>
+            <key type="filename">../M1/Models/BodyDoll/TorsoKneel.png</key>
+            <key type="filename">../M1/Models/BodyDoll/TorsoSpread.png</key>
+            <key type="filename">../M1/Models/BodyDoll/TorsoSpreadChastity.png</key>
             <key type="filename">../M1/Models/BodySmooth/ArmLeftBoxtie.png</key>
             <key type="filename">../M1/Models/BodySmooth/ArmLeftCrossed.png</key>
             <key type="filename">../M1/Models/BodySmooth/ArmLeftFree.png</key>
@@ -429,6 +487,7 @@
             <key type="filename">../M1/Models/BodySmooth/TorsoChastity.png</key>
             <key type="filename">../M1/Models/BodySmooth/TorsoClosed.png</key>
             <key type="filename">../M1/Models/BodySmooth/TorsoClosedChastity.png</key>
+            <key type="filename">../M1/Models/BodySmooth/TorsoKneel.png</key>
             <key type="filename">../M1/Models/BodySmooth/TorsoSpread.png</key>
             <key type="filename">../M1/Models/BodySmooth/TorsoSpreadChastity.png</key>
             <key type="filename">../M1/Models/Bra/Bra.png</key>
@@ -1156,6 +1215,7 @@
             </struct>
             <key type="filename">../M1/Models/Armbinder/BinderRightWristtie.png</key>
             <key type="filename">../M1/Models/Body/Butt2.png</key>
+            <key type="filename">../M1/Models/BodyDoll/Butt2.png</key>
             <key type="filename">../M1/Models/BodySmooth/Butt2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

@@ -329,7 +329,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			return "InventoryAction/CurseStruggle";
 		},
 		show: (_player, item) => {
-			return !(KDGetCurse(item) || item.lock);
+			return !!KDGetCurse(item);
 		},
 		valid: (_player, _item) => {
 			return true;
@@ -348,7 +348,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			return "InventoryAction/CurseInfo";
 		},
 		show: (_player, item) => {
-			return !(KDGetCurse(item) || item.lock);
+			return !!KDGetCurse(item);
 		},
 		valid: (_player, _item) => {
 			return true;
@@ -367,14 +367,17 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			return "InventoryAction/CurseUnlock";
 		},
 		show: (_player, item) => {
-			return !KDGetCurse(item) == true;
+			return !!KDGetCurse(item);
 		},
 		valid: (_player, item) => {
+			return !KinkyDungeonCurseAvailable(item, (KDGetCurse(item)));
+		},
+		invalidtooltip: (player, item) => {
 			return KinkyDungeonCurseAvailable(item, (KDGetCurse(item)));
 		},
 		click: (_player, item) => {
 			let itemIndex = KDGetItemLinkIndex(item, false);
-			if (itemIndex >= 0 && KinkyDungeonCurseAvailable(item, (KDGetCurse(item)))) {
+			if (itemIndex >= 0 && !KinkyDungeonCurseAvailable(item, (KDGetCurse(item)))) {
 				let r = KDRestraint(item);
 				let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 				KDSendInput("curseUnlock", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
@@ -412,7 +415,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[3]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[3];},
 		icon: (_player, _item) => {
-			return (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerWeapon :"InventoryAction/Cut";
+			return (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KDGetItemImage(KinkyDungeonPlayerDamage, KDPlayer(), true) :"InventoryAction/Cut";
 		},
 		show: (_player, item) => {
 			let r = KDRestraint(item);
@@ -458,7 +461,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 			let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined,
 				undefined, undefined, undefined, KDInvFilter,
-				KDInventoryActionContainer(player)?.items);
+				KDInventoryActionContainer(player)?.items, undefined, true);
 			let index = filteredInventory.findIndex((element) => {return element.item.name == item.name;});
 			if (index >= 0) {
 				KinkyDungeonCurrentPageInventory = index;
@@ -486,7 +489,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 	"QuickSlot1": {
 		icon: (_player, _item) => {
-			return KDGameData.PreviousWeapon[0] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[0]]?.template || KDGameData.PreviousWeapon[0]) : "InventoryAction/Quickslot";
+			return KDGameData.PreviousWeapon[0] ? "Items/" + KDGetItemImageFromString(KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[0]]?.template || KDGameData.PreviousWeapon[0], KDPlayer(), false) : "InventoryAction/Quickslot";
 		},
 		valid: (player, _item) => {
 			return !KDInventoryActionContainer(player);//KDGameData.PreviousWeapon[0] != item.name;
@@ -513,7 +516,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 	},
 	"QuickSlot2": {
 		icon: (_player, _item) => {
-			return KDGameData.PreviousWeapon[1] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[1]]?.template || KDGameData.PreviousWeapon[1]) : "InventoryAction/Quickslot";
+			return KDGameData.PreviousWeapon[1] ? "Items/" + KDGetItemImageFromString(KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[1]]?.template || KDGameData.PreviousWeapon[1], KDPlayer(), false) : "InventoryAction/Quickslot";
 		},
 		valid: (player, _item) => {
 			return !KDInventoryActionContainer(player);//KDGameData.PreviousWeapon[0] != item.name;
@@ -540,7 +543,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 	},
 	"QuickSlot3": {
 		icon: (_player, _item) => {
-			return KDGameData.PreviousWeapon[2] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[2]]?.template || KDGameData.PreviousWeapon[2]) : "InventoryAction/Quickslot";
+			return KDGameData.PreviousWeapon[2] ? "Items/" + KDGetItemImageFromString(KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[2]]?.template || KDGameData.PreviousWeapon[2], KDPlayer(), false) : "InventoryAction/Quickslot";
 		},
 		valid: (player, _item) => {
 			return !KDInventoryActionContainer(player);//KDGameData.PreviousWeapon[0] != item.name;
@@ -567,7 +570,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 	},
 	"QuickSlot4": {
 		icon: (_player, _item) => {
-			return KDGameData.PreviousWeapon[3] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[3]]?.template || KDGameData.PreviousWeapon[3]) : "InventoryAction/Quickslot";
+			return KDGameData.PreviousWeapon[3] ? "Items/" + KDGetItemImageFromString(KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[3]]?.template || KDGameData.PreviousWeapon[3], KDPlayer(), false) : "InventoryAction/Quickslot";
 		},
 		valid: (player, _item) => {
 			return !KDInventoryActionContainer(player);//KDGameData.PreviousWeapon[0] != item.name;
@@ -693,6 +696,9 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		},
 		valid: (_player, item) => {
 			if (!(item?.type == Restraint)) return false;
+			return KDMagicLocks.includes(item.lock);
+		},
+		autoFilter: (item) => {
 			return KDMagicLocks.includes(item.lock);
 		},
 		/** Happens when you click the button */

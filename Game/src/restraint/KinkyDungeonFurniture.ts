@@ -9,6 +9,9 @@ interface KDFurnitureDef {
 	restraintSetTags?: Record<string, number>,
 	tickFunction: (delta: number) => void,
 	forceFaction?: string,
+	lockType?: string,
+	/* can a doll use this to sleep */
+	dollsleep?: boolean,
 
 }
 
@@ -17,6 +20,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		floor: "Floor",
 		sprite: "Cage",
 		restraintTag: "cage",
+		dollsleep: false,
 		restraintSetTags: {
 			// fiddle or yoke
 			"steelbondage": 1,
@@ -88,6 +92,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"trap": 5,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;
@@ -155,6 +160,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 			"latexRestraints": 8,
 			"latexRestraintsHeavy": 7,
 		},
+		dollsleep: true,
 		restraintSetLevelBonus: 20,
 		forceFaction: "Rubber",
 		tickFunction: (_delta) => {
@@ -219,6 +225,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		floor: "Floor",
 		sprite: "FutureBox",
 		restraintTag: "futurebox",
+		dollsleep: true,
 		restraintSetTags: {
 			"cyberDollRestraints": 8,
 		},
@@ -233,6 +240,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"mummyRestraints": 8,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			// Nothing yet TODO add special features like dressing the player
 		}
@@ -256,6 +264,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"vineRestraints": 10,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			// Nothing yet TODO add special features like dressing the player
 		}
@@ -278,6 +287,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"crystalRestraints": 5,
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			// Nothing yet
 		}
@@ -294,6 +304,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 			"armbinderSpell": 5,
 			
 		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			// Nothing yet
 		}
@@ -314,6 +325,139 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 		restraintSetTags: {
 			"mummyRestraints": 8,
 		},
+		dollsleep: true,
+		tickFunction: (_delta) => {
+			if (!KDGameData.PrisonerState) {
+				let power = 0;
+				if (KDBoundPowerLevel >= 0.35) power = 2;
+				else if (KDBoundPowerLevel >= 0.1) power = 1;
+				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
+				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
+				if (power >= 2) {
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: "cage",
+						type: "SlowDetection",
+						duration: 1,
+						power: 4.0,
+						player: true,
+						enemies: true,
+						endSleep: true,
+						maxCount: 1,
+						tags: ["SlowDetection", "move", "cast"],
+					});
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: "cage2",
+						type: "Sneak",
+						duration: 1,
+						power: 9.95,
+						player: true,
+						enemies: true,
+						endSleep: true,
+						maxCount: 1,
+						tags: ["Sneak", "darkness", "move", "cast"],
+					});
+				} else if (power >= 1) {
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: "cage",
+						type: "SlowDetection",
+						duration: 1,
+						power: 4.0,
+						player: true,
+						enemies: true,
+						endSleep: true,
+						maxCount: 1,
+						tags: ["SlowDetection", "move", "cast"],
+					});
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: "cage2",
+						type: "Sneak",
+						duration: 1,
+						power: 2.95,
+						player: true,
+						enemies: true,
+						endSleep: true,
+						maxCount: 1,
+						tags: ["Sneak", "darkness", "move", "cast"],
+					});
+				}
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
+			}
+		}
+	},
+	"OneBarTrap": {
+		floor: "Floor",
+		sprite: "DollStand",
+		restraintTag: "onebarprison",
+		restraintSetTags: {
+			"leatherHeels": 8,
+		},
+		dollsleep: true,
+		tickFunction: (_delta) => {
+			if (!KDGameData.PrisonerState) {
+				let power = 0;
+				if (KDBoundPowerLevel >= 0.35) power = 2;
+				else if (KDBoundPowerLevel >= 0.1) power = 1;
+				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
+				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
+				if (power >= 2) {
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: "cage",
+						type: "SlowDetection",
+						duration: 1,
+						power: 4.0,
+						player: true,
+						enemies: true,
+						endSleep: true,
+						maxCount: 1,
+						tags: ["SlowDetection", "move", "cast"],
+					});
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: "cage2",
+						type: "Sneak",
+						duration: 1,
+						power: 9.95,
+						player: true,
+						enemies: true,
+						endSleep: true,
+						maxCount: 1,
+						tags: ["Sneak", "darkness", "move", "cast"],
+					});
+				} else if (power >= 1) {
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: "cage",
+						type: "SlowDetection",
+						duration: 1,
+						power: 4.0,
+						player: true,
+						enemies: true,
+						endSleep: true,
+						maxCount: 1,
+						tags: ["SlowDetection", "move", "cast"],
+					});
+					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+						id: "cage2",
+						type: "Sneak",
+						duration: 1,
+						power: 2.95,
+						player: true,
+						enemies: true,
+						endSleep: true,
+						maxCount: 1,
+						tags: ["Sneak", "darkness", "move", "cast"],
+					});
+				}
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
+			}
+		}
+	},
+	"OneBarVibeTrap": {
+		floor: "Floor",
+		sprite: "DollStandVibe",
+		restraintTag: "onebarprisonvibe",
+		restraintSetTags: {
+			"leatherHeels": 8,
+		},
+		dollsleep: true,
 		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;

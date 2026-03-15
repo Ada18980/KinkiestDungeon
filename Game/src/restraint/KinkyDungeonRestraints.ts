@@ -21,6 +21,14 @@ let KDAngelStruggleBonus = {
 	Default: 0.1,
 };
 
+let KDBaseSpeedMult = {
+	Struggle: 1.5,
+	Remove: 2.0,
+	Cut: 1.1,
+	Unlock: 3.0,
+	Pick: 1.0,
+};
+
 let KDWillEscapePenalty = 0.15;
 let KDWillEscapePenaltyArms = 0.1;
 let KDWillEscapePenaltyStart = 0.2;
@@ -213,6 +221,12 @@ let KDFlexibleSpeedBonus = 1.5;
 let KDInflexibleMult = 1.25;
 let KDInflexibleSpeedBonus = 0.75;
 
+
+let KDStrugglePerLevelBonus = 0.005;
+let KDPainfulChoicePenalty = 0.5;
+let KDPainfulChoiceBonus = 0.1;
+let KDPainfulChoiceMax = 1.5;
+let KDClearVisionBonus = 0.1;
 let KDUnchainedBonus = 0.1;
 let KDDamselBonus = 1.3;
 let KDDamselPickAmount = 6;
@@ -631,7 +645,8 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
 			if (KDLocks[lock] && KDLocks[lock].doLock) KDLocks[lock].doLock({item: item, link: Link});
-			item.lock = lock;
+			if (lock != "None")
+				item.lock = lock;
 
 			item.pickProgress = 0;
 		}
@@ -1017,15 +1032,15 @@ function KinkyDungeonHasHelp(): boolean {
 function KinkyDungeonHasAllyHelp(): boolean {
 	return (KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some(
 		(enemy) => {
-			return (KDEnemyHasFlag(enemy, "HelpMe") || enemy.Enemy.tags.alwayshelp)
+			return (KDEnemyHasFlag(enemy, "HelpMe") || enemy.Enemy.tags?.alwayshelp)
 				&& enemy.Enemy.bound
-				&& !enemy.Enemy.tags.nohelp
+				&& !enemy.Enemy.tags?.nohelp
 				&& !KDHelpless(enemy)
 				&& KDBoundEffects(enemy) < 4;
 		})
 		|| (!KinkyDungeonStatsChoice.get("NoHelp") && KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((enemy) => {
 			return enemy.Enemy.bound
-				&& !enemy.Enemy.tags.nohelp
+				&& !enemy.Enemy.tags?.nohelp
 				&& KDAllied(enemy)
 				&& !KDHelpless(enemy)
 				&& KDBoundEffects(enemy) < 4;
@@ -1789,21 +1804,12 @@ function KDGetRestraintAffinity(item: item, data: any): string {
 	return data.affinity;
 }
 
-function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePre: number, limitChancePre: number, ApplyGhost: boolean, ApplyPlayerBonus: boolean, Msg?: boolean) {
-	let escapeChance = escapeChancePre != undefined ? escapeChancePre : KDRestraint(restraint).escapeChance[StruggleType] != undefined ? KDRestraint(restraint).escapeChance[StruggleType] : 1.0;
-	if (KDGetCurse(restraint)) escapeChance = -100;
-	let lockType = (restraint.lock && KDLocks[restraint.lock]) ? KDLocks[restraint.lock] : null;
-	if (lockType) {
-		let extraChance = (StruggleType == "Pick" && lockType.pick_diff) ? lockType.pick_diff : 0;
-		if (extraChance) escapeChance += extraChance;
-		if (StruggleType == "Unlock" && lockType.unlock_diff) {
-			escapeChance -= lockType.unlock_diff;
-		}
+function KDApplyPlayerStruggleBonuses(player: entity, data: KDGetStruggleData, ApplyPlayerBonus: boolean) {
+	let StruggleType = data.struggleType;
+	let escapeChance = data.escapeChance;
+	let limitChance = data.limitChance;
+	let restraint = data.restraint;
 
-	}
-
-	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
-		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.12);
 
 	if (ApplyPlayerBonus) {
 		if (StruggleType == "Pick") {
@@ -1837,7 +1843,17 @@ function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePr
 			KinkyDungeonEnchKnifeBreakAmount = KinkyDungeonEnchKnifeBreakAmountBase;
 		}
 		if (KinkyDungeonStatsChoice.get("FreeSpirit") && (KDRestraint(restraint).chastity || KDRestraint(restraint).chastitybra)) escapeChance += 0.5;
+		if (KinkyDungeonStatsChoice.get("StrugglePerLevel")) {
+			escapeChance += KDStrugglePerLevelBonus * Math.max(0, Math.min(KinkyDungeonMaxLevel - 1, 1 + MiniGameKinkyDungeonLevel));
+		} else if (KinkyDungeonStatsChoice.get("StrugglePerLevelNeg")) {
+			limitChance += KDStrugglePerLevelBonus * Math.max(0, Math.min(KinkyDungeonMaxLevel - 1, 1 + MiniGameKinkyDungeonLevel));
+		} 
 
+		
+
+		if (KinkyDungeonStatsChoice.get("EasierBlindfolds") && KDRestraint(restraint).Group == "ItemHead") {
+			escapeChance += KDClearVisionBonus * (1 + Math.max(0, Math.min(1, KDRestraint(restraint).power/20)));
+		} 
 
 		if (KinkyDungeonStatsChoice.get("Unchained") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal")) {
 			escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDUnchainedBonus;
@@ -1877,10 +1893,60 @@ function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePr
 			if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < -KDDragonBonus)
 				limitChance *= KDDragonBonus;
 		}
+
+
+		if (KinkyDungeonStatsChoice.get("PainfulChoice")) {
+			if (escapeChance > 0) {
+				let num = 0;
+				for (let grp of KinkyDungeonStruggleGroupsBase) {
+					let items = KDDynamicLinkList(KinkyDungeonGetRestraintItem(grp));
+					for (let inv of items) {
+						if (KDIsBinding(inv)) {
+							num++;
+							break;
+						}
+					}
+				}
+				escapeChance *= Math.min(KDPainfulChoiceMax, KDPainfulChoicePenalty + num * KDPainfulChoiceBonus); 
+			}
+		}
+
 	}
 
+	data.limitChance = limitChance;
+	data.escapeChance = escapeChance;
+}
 
-	let data = {
+interface KDGetStruggleData {
+    restraint: item;
+    escapeChance: any;
+    limitChance: any;
+    struggleType: string;
+    escapeChancePre: number;
+    limitChancePre: number;
+    ApplyGhost: boolean;
+    ApplyPlayerBonus: boolean;
+    GoddessBonus: number;
+    Msg: boolean;
+}
+
+function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePre: number, limitChancePre: number, ApplyGhost: boolean, ApplyPlayerBonus: boolean, Msg?: boolean) {
+	let escapeChance = escapeChancePre != undefined ? escapeChancePre : KDRestraint(restraint).escapeChance[StruggleType] != undefined ? KDRestraint(restraint).escapeChance[StruggleType] : 1.0;
+	if (KDGetCurse(restraint)) escapeChance = -100;
+	let lockType = (restraint.lock && KDLocks[restraint.lock]) ? KDLocks[restraint.lock] : null;
+	if (lockType) {
+		let extraChance = (StruggleType == "Pick" && lockType.pick_diff) ? lockType.pick_diff : 0;
+		if (extraChance) escapeChance += extraChance;
+		if (StruggleType == "Unlock" && lockType.unlock_diff) {
+			escapeChance -= lockType.unlock_diff;
+		}
+
+	}
+
+	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
+		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.12);
+
+	let data: KDGetStruggleData = {
 		restraint: restraint,
 		escapeChance: escapeChance,
 		limitChance: limitChance,
@@ -1893,6 +1959,11 @@ function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePr
 		Msg: Msg,
 
 	};
+
+	KDApplyPlayerStruggleBonuses(KDPlayer(), data, ApplyPlayerBonus);
+
+
+	
 
 	let GoddessBonus = KDGetItemGoddessBonus(restraint, data);
 	//if (data.escapeChance > 0)
@@ -2227,7 +2298,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	// todo make edgebonus a bonus
 
-	if ((data.struggleType == "Struggle") && !data.hasAffinity
+	if (!KDRestraint(data.restraint).noaffinity && (data.struggleType == "Struggle") && !data.hasAffinity
 		&& data.escapeChance <= 0 && data.escapeChance >= -edgeBonus && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
 		let typesuff = "";
 		if (!data.query) {
@@ -2349,7 +2420,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	if (data.struggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic"))
 		data.escapeChance = Math.max(data.escapeChance, 0.2);
 
-	if ((data.struggleType == "Remove") && !data.hasAffinity && data.escapeChance == 0 && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
+	if (!KDRestraint(data.restraint).noaffinity && (data.struggleType == "Remove") && !data.hasAffinity && data.escapeChance == 0 && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
 		let typesuff = "";
 		if (!data.query) {
 			if (!returnType) {
@@ -2710,6 +2781,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		armsBound: false,
 		query: query,
 		cutBonus: 0,
+		cutVulnerability: KDRestraint(restraint).cutVulnerability,
 		restraint: restraint,
 		struggleType: StruggleType,
 		struggleGroup: struggleGroup,
@@ -2723,7 +2795,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		affinity: affinity,
 		noise: StruggleType == "Struggle" ? 4 : 0,
 		strict: KinkyDungeonStrictness(true, struggleGroup, restraint),
-		hasAffinity: KinkyDungeonGetAffinity(!query, affinity, struggleGroup),
+		hasAffinity: KDRestraint(restraint)?.noaffinity ? false : KinkyDungeonGetAffinity(!query, affinity, struggleGroup),
 		restraintEscapeChance: KDRestraint(restraint).escapeChance[StruggleType],
 		cost: KinkyDungeonStatStaminaCostStruggle,
 		wcost: KinkyDungeonStatWillCostStruggle,
@@ -2740,7 +2812,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		buffMult: 1.0,
 		struggleTime: 1.0,
 		restriction: KDGameData.Restriction || 0,
-		speedMult: (speedmult || 1) * (KinkyDungeonHasHelp() ? 2.0 : 1.0),
+		speedMult: (speedmult || 1) * (KinkyDungeonHasHelp() ? 2.0 : 1.0) * (KDBaseSpeedMult[StruggleType] || 1),
 		escapeSpeed: 0,
 		maxLimit: 1,
 		result: "",
@@ -2855,10 +2927,12 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 							}
 							break;
 						case "Cut":
-							threshold = KDMaxCutDepth(threshold, data.cutBonus, data.origEscapeChance, data.origLimitChance);
+							threshold = KDMaxCutDepth(threshold, data.cutBonus, 
+								data.origEscapeChance, data.origLimitChance, data.cutVulnerability);
 
 							limitProgress = (data.restraint.cutProgress || 0) ? (
-								(data.restraint.cutProgress || 0) < threshold ? threshold * (data.restraint.cutProgress || 0) : 1.0)
+								(data.restraint.cutProgress || 0) < threshold ? (Math.min(0.9, data.restraint.cutProgress || 0) / Math.max(0.1, 
+									threshold)) : 1.0)
 								: 0;
 							if (data.limitChance > 0) {
 								// Find the intercept
@@ -2877,6 +2951,9 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 						Math.min(1, 1.15 - 1.15 * cutStruggleProgress))
 						: (StruggleType == "Struggle" ? 0 : 1);*/
 					let limitPenalty = Math.max(0, Math.min(1, limitProgress) * data.limitChance, data.extraLimPenalty);
+					if (StruggleType == "Cut" && data.escapeChance > 0) {
+						limitPenalty = Math.min(limitPenalty, data.escapeChance * limitProgress);
+					}
 
 					if (data.extraLim > data.escapeChance) {
 						// Find the intercept
@@ -3249,6 +3326,7 @@ let KDHeavyRestraintPrefs = [
 	"Less_Boxbinders",
 	"Less_Jackets",
 	"Less_Yokes",
+	"Less_Tickle",
 ];
 
 
@@ -3259,15 +3337,34 @@ let KDNoOverrideTags = [
 	"NoSenseDep",
 	"NoHood",
 	"FreeBoob",
+	"NoBelt",
 	"Unchained",
+	"EasierBlindfolds",
+	"ClearVision",
+	"StrugglePerLevel",
+	"StrugglePerLevelNeg",
 	"Damsel",
 	"NoPet",
 	"NoKigu",
 	"NoBlindfolds",
+	"Blackout",
+	"NoInvis",
 	"NoBoots",
+	"BubbleOptout",
+	"BubblePref",
+	"SlimePref",
+	"SlimeOptout",
+	"RobotVetoTape",
+	"RobotVetoLatex",
+	"TapePref",
+	"BallsuitOptout",
+	"Less_Tickle",
+	"TapeOptout",
 	"arousalMode",
 	"arousalModePlug",
 	"arousalModePlugNoFront",
+	"arousalModePlugFront",
+	"arousalModePlugNoRear",
 	"arousalModePiercing",
 	...KDHeavyRestraintPrefs,
 ];
@@ -3833,16 +3930,34 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 		for (let t of KDHeavyRestraintPrefs) {
 			if (KinkyDungeonStatsChoice.get(t)) playerTags.set(t, true);
 		}
+		for (let t of KDNoOverrideTags) {
+			if (KinkyDungeonStatsChoice.get(t)) playerTags.set(t, true);
+		}
+
+		
 		if (KinkyDungeonStatsChoice.get("Deprived")) playerTags.set("NoVibes", true);
 		if (KinkyDungeonStatsChoice.get("Unmasked")) playerTags.set("Unmasked", true);
 		if (KinkyDungeonStatsChoice.get("NoSenseDep")) playerTags.set("NoSenseDep", true);
 		if (KinkyDungeonStatsChoice.get("NoHood")) playerTags.set("NoHood", true);
 		if (KinkyDungeonStatsChoice.get("FreeBoob2")) playerTags.set("FreeBoob", true);
 		if (KinkyDungeonStatsChoice.get("FreeBoob1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("FreeBoob", true);
+		if (KinkyDungeonStatsChoice.get("NoBelt2")) playerTags.set("NoBelt", true);
+		if (KinkyDungeonStatsChoice.get("NoBelt1")
+			&& !KinkyDungeonPlayerTags.get("ItemVulva")
+			&& !KinkyDungeonPlayerTags.get("ItemVulvaPiercings")
+			&& !KinkyDungeonPlayerTags.get("ItemButt")) playerTags.set("NoBelt", true);
+		if (KinkyDungeonStatsChoice.get("NoBelt2")) playerTags.set("NoBelt", true);
+		if (KinkyDungeonStatsChoice.get("NoBelt1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("NoBelt", true);
 		if (KinkyDungeonStatsChoice.get("NoKigu")) playerTags.set("NoKigu", true);
 		if (KinkyDungeonStatsChoice.get("NoBlindfolds")) playerTags.set("NoBlindfolds", true);
 		if (KinkyDungeonStatsChoice.get("NoPet")) playerTags.set("NoPet", true);
 		if (KinkyDungeonStatsChoice.get("Unchained")) playerTags.set("Unchained", true);
+		if (KinkyDungeonStatsChoice.get("ClearVision")) playerTags.set("ClearVision", true);
+		if (KinkyDungeonStatsChoice.get("EasierBlindfolds")) playerTags.set("EasierBlindfolds", true);
+		if (KinkyDungeonStatsChoice.get("StrugglePerLevel")) playerTags.set("StrugglePerLevel", true);
+		if (KinkyDungeonStatsChoice.get("StrugglePerLevelNeg")) playerTags.set("StrugglePerLevelNed", true);
+		
+		
 		if (KinkyDungeonStatsChoice.get("Damsel")) playerTags.set("Damsel", true);
 		if (KinkyDungeonStatsChoice.get("arousalMode")) playerTags.set("arousalMode", true);
 		if (KinkyDungeonStatsChoice.get("arousalModePlug")) playerTags.set("arousalModePlug", true);
@@ -4318,19 +4433,19 @@ function KDCanAddRestraint (
 	//if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
 	if (!KDIsEligible(restraint, KDPlayer(), !noOverpower)) return false;
 	let rPower = undefined;
-	if (!Bypass) {
-		let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer());
-			
-			if (blockers.length > 0) {
-				if (rPower == undefined)
-					rPower = KDRestraintPower(restraint, undefined, Lock, curse) + powerBonus;
-				if (blockers.some((blocker) => {
-					return rPower < KinkyDungeonRestraintPower(blocker);
-				})) {
-					return false;
-				}
+	//if (!Bypass) {
+	let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer(), Bypass);
+		
+		if (blockers.length > 0) {
+			if (rPower == undefined)
+				rPower = KDRestraintPower(restraint, undefined, Lock, curse) + powerBonus;
+			if (blockers.some((blocker) => {
+				return rPower < KinkyDungeonRestraintPower(blocker);
+			})) {
+				return false;
 			}
-	}
+		}
+	//}
 	
 
 	let metadata = KDEntityRestraintMetadata.get(KDPlayer().id);
@@ -5123,15 +5238,14 @@ function KinkyDungeonAddRestraint (
 
 
 		if (!Link && !Unlink) {
-			if (!Bypass) {
-				let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer());
-				if (blockers.length > 0) {
-					//let rPower = KDRestraintPower(restraint);
-					for (let blocker of blockers) {
-						KinkyDungeonRemoveRestraintSpecific(blocker, Keep, true, false,false, false, securityEnemy,
-							ForceRemove
-						);
-					}
+			let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer(), Bypass);
+			if (blockers.length > 0) {
+				//let rPower = KDRestraintPower(restraint);
+				for (let blocker of blockers) {
+					KinkyDungeonSetFlag("remove_incidental", 5);
+					KinkyDungeonRemoveRestraintSpecific(blocker, Keep, true, false,false, false, securityEnemy,
+						ForceRemove
+					);
 				}
 			}
 			
@@ -5176,6 +5290,8 @@ function KinkyDungeonAddRestraint (
 			// Some confusing stuff here to prevent recursion. If Link = true this means we are in the middle of linking, we dont want to do that
 			if (!KinkyDungeonCancelFlag) {
 				// Note that this only happens when removing TOP LEVEL item, keep in mind for forceRemove
+				
+				KinkyDungeonSetFlag("remove_incidental", 5);
 				KinkyDungeonRemoveRestraint(restraint.Group, Keep && !Link, Link || Unlink, undefined, undefined, 
 					Unlink, undefined, ForceRemove); // r && r.dynamicLink && restraint.name == r.dynamicLink.name
 
@@ -5196,6 +5312,7 @@ function KinkyDungeonAddRestraint (
 
 			// If we did not link an item (or unlink one) then we proceed as normal
 			if (!KinkyDungeonCancelFlag) {
+				KinkyDungeonSetFlag("remove_incidental", 5);
 				KinkyDungeonRemoveRestraint(restraint.Group, Keep, false, undefined, undefined, r && r.dynamicLink&& restraint.name == r.dynamicLink.name);
 				if (restraint.remove)
 					for (let remove of restraint.remove) {
@@ -5220,6 +5337,7 @@ function KinkyDungeonAddRestraint (
 							}
 
 							if (KDRestraint(removeR).shrine && KDRestraint(removeR).shrine.includes(remove)) {
+								KinkyDungeonSetFlag("remove_incidental", 5);
 								KinkyDungeonRemoveRestraint(KDRestraint(removeR).Group, Keep, false, false, false, false);
 							}
 						}
@@ -5850,6 +5968,7 @@ function KDSuccessRemove(StruggleType: string, restraint: item, lockType: KDLock
 					+ ".ogg");
 			}
 		}
+		KinkyDungeonSetFlag("remove_incidental", 0);
 		if (index) {
 			//if (KDStruggleGroupLinkIndex[KDRestraint(restraint).Group]) KDStruggleGroupLinkIndex[KDRestraint(restraint).Group] = 0;
 			KinkyDungeonRemoveDynamicRestraint(host, !destroy, false, KinkyDungeonPlayerEntity);
@@ -7145,12 +7264,16 @@ function KDLockoutGain(player: entity, data: any, base: number = 20): void {
 }
 
 
-function KDMaxCutDepth(threshold: number, cutBonus: number, origEscapeChance: number, origLimitChance: number): number {
-	return Math.min(1.4 * threshold, Math.max(0, Math.min(
+function KDMaxCutDepth(threshold: number, cutBonus: number, origEscapeChance: number, origLimitChance: number, cutVulnerability?: number): number {
+	let res = Math.min(1.4 * threshold, Math.max(0, Math.min(
 		1.1,
 		2.0 * (0.25 + cutBonus + origEscapeChance -
 			Math.max(0, origLimitChance)
 		))));
+	if (res > 0 && cutVulnerability != undefined) {
+		res *= cutVulnerability;
+	}
+	return res;
 }
 
 

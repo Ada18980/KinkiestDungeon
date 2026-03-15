@@ -267,6 +267,7 @@ AddModel({
 	Protected: true,
 	//Group: "Blush",
 	Categories: ["Face"],
+	AddPose: ["Blush"],
 	Layers: ToLayerMap([
 		{ Name: "Blush", Layer: "Blush", Pri: 0,
 			Sprite: "", // Because pose is called MouthNeutral lol
@@ -284,6 +285,7 @@ AddModel({
 	Protected: true,
 	//Group: "Blush",
 	Categories: ["Face"],
+	AddPose: ["Fear"],
 	Layers: ToLayerMap([
 		{ Name: "Fear", Layer: "Fear", Pri: 0,
 			Invariant: true,
@@ -537,6 +539,7 @@ AddModel({
 	Protected: true,
 	//Group: "Blush",
 	Categories: ["Face"],
+	AddPose: ["Blush"],
 	Layers: ToLayerMap([
 		{ Name: "Blush", Layer: "Blush", Pri: 0,
 			Sprite: "", // Because pose is called MouthNeutral lol

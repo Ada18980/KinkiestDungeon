@@ -20,10 +20,23 @@ interface EligibleRestraintEntry {
 	/** Eligible slot */
 	slot: NPCBindingSubgroup,
 	faction?: string,
+	weight?: number,
 }
 
+/** incase a modder decives to change */
+let KDOverrideDeviceNPCBinding = true;
+
 function KDGetNPCBindingSlotForItem(restraint: restraint, id: number, treatAsEmpty: boolean = false, power?: number): {row: NPCBindingGroup, sgroup: NPCBindingSubgroup} {
+	
 	let restraints = KDGetNPCRestraints(id);
+	if (KDOverrideDeviceNPCBinding && restraint?.Group == "ItemDevices") {
+		let row = KDDeviceRow;
+		let sgroup = row.encaseGroup;
+		if (KDRowItemIsValid(
+				restraint, sgroup, row, restraints, treatAsEmpty, power
+			)) return {row: row, sgroup: sgroup};
+		else return null;
+	}
 	for (let row of NPCBindingGroups) {
 		for (let sgroup of [row.encaseGroup, ...row.layers]) {
 			if (KDRowItemIsValid(
@@ -64,6 +77,22 @@ function KDGetNPCRestraintPower(restraint: NPCRestraint): number {
 	return power;
 }
 
+
+function KDGetByRestraintEligibleEntry(entries: EligibleRestraintEntry[]): EligibleRestraintEntry {
+	if (!(entries?.length > 0)) return null;
+	let key_weight: Record<string, number> = {};
+	let key_value: Record<string, EligibleRestraintEntry> = {};
+	for (let en of entries) {
+		key_value[en.restraint?.name + (en.applyVariant || "")] = en;
+		key_weight[en.restraint?.name + (en.applyVariant || "")] = en.weight;
+	}
+
+	return key_value[KDGetByWeight(key_weight)];
+} 
+
+
+let KDDefaultNPCEps = 0.05;
+
 function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options: {
 	forceEffLevel?: number,
 	allowedRestraints?: restraint[],
@@ -77,8 +106,10 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 	forceConjure?: boolean,
 	currentWill?: number,
 	requireTags?: string[],
+	eps?: number
 }): EligibleRestraintEntry[] {
 	let ret: EligibleRestraintEntry[] = [];
+	let eps: number = options?.eps != undefined ? options.eps : KDDefaultNPCEps;
 	let effLevel = 4 + (options?.forceEffLevel != undefined ? options.forceEffLevel : undefined) || KDGetEffLevel();
 
 	let arousalMode = KinkyDungeonStatsChoice.get("arousalMode");
@@ -107,9 +138,7 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 			if (options?.currentWill != undefined
 				&& (restraint.maxwill != undefined || restraint.maxwillEnemy)
 				&& (restraint.maxwillEnemy != undefined ? restraint.maxwillEnemy : restraint.maxwill) < options.currentWill) continue;
-			if (KDCanEquipItemOnNPC(restraint, id, false, 
-				options?.forceLock || restraint.DefaultLock || options?.fallbackLock,
-				options?.forceCurse || restraint.curse || options?.fallbackCurse)) continue;
+			
 
 			if (!restraint.arousalMode || arousalMode) {
 				let enabled = false;
@@ -130,6 +159,11 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 							weight *= restraint.enemyTagsMult[t];
 						}
 					}
+
+				if (enabled && KDCanEquipItemOnNPC(restraint, id, false, 
+				options?.forceLock || restraint.DefaultLock || options?.fallbackLock,
+				options?.forceCurse || restraint.curse || options?.fallbackCurse)) continue;
+
 				if (enabled && weight > 0) {
 					cache.push({r: restraint, w:weight});
 				}
@@ -219,7 +253,9 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 		}
 	}
 
+	let maxweight = 0;
 	for (let cp of cachePossible) {
+		maxweight = Math.max(cp.w, maxweight);
 		ret.push({
 			applyVariant: cp.v,
 			forceConjure: cp.r.forceConjure || options?.forceConjure,
@@ -229,8 +265,18 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 			curse: (options?.forceCurse != undefined ? options.forceCurse : cp.r.curse) || options?.fallbackCurse,
 			restraint: cp.r,
 			row: cp.row,
-			slot: cp.sgroup
+			slot: cp.sgroup,
+			weight: cp.w
 		});
+	}
+
+	if (eps > 0) {
+		let filtered = ret.filter((r) => {
+			return r.weight > maxweight*eps;
+		});
+		if (filtered.length > 0) {
+			ret = filtered;
+		}
 	}
 
 

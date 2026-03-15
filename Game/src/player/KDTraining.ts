@@ -60,7 +60,7 @@ function KDGetTrainingPercentage(name: string, data: KDTrainingRecord, player: e
 		- data.turns_skipped)/data.turns_total);
 	if (useMin && data.turns_total > 0) {
 		tt = Math.max(tt, KDGetTrainingMinRatioPercent(name, data, player)
-		* (data.best_ratio||0)) * Math.max(0, 1 - data.turns_skipped/data.turns_total)
+		* (data.best_ratio||0)) * Math.max(0, 1 - data.turns_skipped/Math.max(data.turns_total, data.turns_skipped + data.turns_trained))
 	}
 	let trainingPercentage = Math.min(1, 
 		data.turns_total/(noSoftScale ? 1 : KDTrainingSoftScale))

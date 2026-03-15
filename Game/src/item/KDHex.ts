@@ -164,7 +164,7 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 		]},
 	"Tickle": {level: 1,
 		weight: (_item, _allHex, _data) => {
-			return 8;
+			return KinkyDungeonStatsChoice.get("Less_Tickle") ? 0 : 8;
 		},
 		events: (_data) => [
 			// All hexes have this

@@ -29,6 +29,7 @@ let KDBasePurple = "#5946b2"; // plum
 // #5218fa // plum purple
 // #5946b2 // han purple
 let KDBaseGreal = "#00ff88";
+let KDBaseGreen = "#00b548ff";
 // #00ff88 // greenish teal
 let KDBaseNeon = "#5cff67"; // lemon lime
 // #55ff55
@@ -55,3 +56,29 @@ let KDBaseWhite = "#fffafa" // snow
 let KDBaseBlack = "#010203"; // rich black
 // #000000
 let KDBaseLightGrey = "#80949a";
+
+let KDColorList = {
+    KDBaseLightGrey: KDBaseLightGrey,
+    KDBaseBlack: KDBaseBlack,
+    KDBaseWhite: KDBaseWhite,
+    KDBaseBaby: KDBaseBaby,
+    KDBaseBlue: KDBaseBlue,
+    KDBaseLightBlue: KDBaseLightBlue,
+    KDBaseTeal: KDBaseTeal,
+    KDBaseCyan: KDBaseCyan,
+    KDBaseElectricBlue: KDBaseElectricBlue,
+    KDBaseForest: KDBaseForest,
+    KDBaseLightGreen: KDBaseLightGreen,
+    KDBaseMint: KDBaseMint,
+    KDBaseNeon: KDBaseNeon,
+    KDBaseGreal: KDBaseGreal,
+    KDBasePurple: KDBasePurple,
+    KDBaseYellowGreen: KDBaseYellowGreen,
+    KDBaseLime: KDBaseLime,
+    KDBasePink: KDBasePink,
+    KDBaseRibbon: KDBaseRibbon,
+    KDBaseYellow: KDBaseYellow,
+    KDBaseOrange: KDBaseOrange,
+    KDBaseRed: KDBaseRed,
+    KDBaseGreen: KDBaseGreen,
+};

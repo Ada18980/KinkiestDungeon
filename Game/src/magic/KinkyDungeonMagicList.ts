@@ -594,7 +594,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			],
 			noMiscast: true,
 			staminacost: 3,
-			manacost: 0, components: ["Legs"], noTargetEnemies: true, level:1, type:"hit", onhit:"teleport", delay: 0, lifetime:1, range: 1.5, damage: ""}, // A quick blink
+			manacost: 0, components: ["Legs"], noTargetEnemies: true, level:1, type:"hit", onhit:"teleport", nonmagical: true, delay: 0, lifetime:1, range: 1.5, damage: ""}, // A quick blink
 
 
 		{name: "Charge", tags: ["stamina", "utility", "offense"], school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", manacost: 0, customCost: "SprintPlusAttack", components: [], level:1, type:"special", special: "Charge", noMiscast: true,
@@ -656,11 +656,19 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			],
 			level:1, mixedPassive: true, type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
-		{name: "NovicePet0", tags: ["mana", "utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{name: "NovicePet1", tags: ["mana", "utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet0", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{name: "NovicePet2", tags: ["mana", "utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet1", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{name: "NovicePet3", tags: ["mana", "utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], prerequisite: "NovicePet2", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
-		{name: "NovicePetX", tags: ["mana", "utility"], spellPointCost: 3, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet3", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+
+		{name: "SpeciesDoll", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1,
+			passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			events: [
+				{type: "SpeciesDoll", trigger: "tick"},
+			],
+		},
+
+		{name: "NovicePet0", tags: ["utility"], school: "Special", manacost: 0, components: [], prerequisite: "Null", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{name: "NovicePet1", tags: ["utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet0", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{name: "NovicePet2", tags: ["utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet1", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{name: "NovicePet3", tags: ["utility"], spellPointCost: 1, school: "Special", manacost: 0, components: [], prerequisite: "NovicePet2", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
+		{name: "NovicePetX", tags: ["utility"], spellPointCost: 3, school: "Special", manacost: 0, components: [], hideLearned: true, prerequisite: "NovicePet3", hideUnlearnable: true, level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 
 
 
@@ -1086,7 +1094,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		{name: "Fissure", tags: ["fire", "denial", "dot", "aoe", "offense"], noUniqueHits: true, prerequisite: "Ignite", noise: 7, sfx: "FireSpell", school: "Elements", manacost: 8, components: ["Legs"], level:1, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 5.5, delay: 0, range: 4, speed: 4, size: 1, damage: "fire",
 			trailPower: 1.5, trailLifetime: 6, piercingTrail: true, trailDamage:"fire", trail:"lingering", trailChance: 1, playerEffect: {name: "DamageNoMsg", hitTag: "Fissure", time: 1, damage:"fire", power: 3}},
 		//{name: "Shield", sfx: "MagicSlash", school: "Elements", manacost: 1, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, level:1, type:"inert", block: 10, onhit:"", power: 0,delay: 2, range: 1.5, size: 1, damage: ""}, // Creates a shield that blocks projectiles for 1 turn
-		{name: "Shield", tags: ["shield", "defense", "earth"], prerequisite: "ApprenticeEarth", sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
+		{name: "Shield", tags: ["shield", "defense", "buff", "earth"], prerequisite: "ApprenticeEarth", sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
 			buffs: [
 				{id: "Shield", type: "SpellResist", aura: "#73efe8", duration: 50, power: 3.0, player: true, enemies: true, tags: ["defense", "damageTaken"]},
 			], onhit:"", time:50, power: 0, range: 2, size: 1, damage: ""},
@@ -1498,12 +1506,15 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 
 		{name: "Golem", prerequisite: "Ally", tags: ["summon", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 24, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:3, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "Golem", count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: -1, range: 2.5, size: 1, aoe: 0.5, lifetime: 1, damage: "fire"},
 		{name: "StormCrystal", prerequisite: "ApprenticeSummon", tags: ["summon", "denial", "offense"], noise: 7, sfx: "MagicSlash", school: "Conjure", manacost: 10, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "StormCrystal", count: 1, time: 9999, bound: true}], power: 0, time: 30, delay: -1, range: 2.5, size: 1, aoe: 0.5, lifetime: 1, damage: "fire"},
-		{noAggro: true, tags: ["heal", "light"], name: "Heal", prerequisite: "ApprenticeLight",  bulletSpin: 0.1, hitSpin: 0.4, noise: 3, sfx: "FireSpell", school: "Conjure", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 1, power: 1.5, range: 4.5, size: 5, aoe: 2.9, lifetime: 4, time: 2, damage: "heal", channel: 4},
-		{noAggro: true, tags: ["heal", "light"], buff: true, heal: true, name: "Heal2", prerequisite: "ApprenticeLight", sfx: "MagicSlash", school: "Conjure", manacost: 3, components: ["Verbal"], noTargetPlayer: true, mustTarget: true, level:1, type:"hit",
+		{noAggro: true, tags: ["heal", "light"], name: "Heal", prerequisite: "ApprenticeLight", 
+			learnFlags: ["healEnabled"],
+			bulletSpin: 0.1, hitSpin: 0.4, noise: 3, sfx: "FireSpell", school: "Conjure", manacost: 4, components: ["Verbal"], level: 1, type: "inert", onhit: "aoe", delay: 1, power: 1.5, range: 4.5, size: 5, aoe: 2.9, lifetime: 4, time: 2, damage: "heal", channel: 4, playerEffect: { name: "LightHealDamageWP" }},
+		{noAggro: true, tags: ["heal", "light"], buff: true, heal: true, name: "Heal2", prerequisite: "ApprenticeLight", sfx: "MagicSlash", school: "Conjure", manacost: 3, components: ["Verbal"], mustTarget: true, level: 1, type: "hit",
 			events: [
 				{type: "Buff", trigger: "tick", power: 1.0, buffType: "blindResist"},
 			],
-			onhit:"heal", time:2, lifetime: 1, delay: 1, power: 4.5, aoe: 0.9, range: 7, size: 1, damage: "inert"},
+			learnFlags: ["healEnabled"],
+			onhit:"heal", time:2, lifetime: 1, delay: 1, power: 4.5, aoe: 0.9, range: 7, size: 1, damage: "inert", playerEffect: { name: "LightHealDamageWP", allowInert: true}},
 		/*{name: "FloatingWeapon", prerequisite: "ApprenticePhysics", tags: ["buff", "offense", "physics"], sfx: "MagicSlash", school: "Conjure", manacost: 2, components: [], level:3, type:"passive",
 			events: [
 				{type: "FloatingWeapon", trigger: "playerAttack"},
@@ -2693,19 +2704,19 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "BubbleBurst", color: "#88ffff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Water",
 		duration: 20,
-	}, manacost: 4, specialCD: 12, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "soap", channel: 2,
+	}, castCondition: "BubblesAllowed", manacost: 4, specialCD: 12, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "soap", channel: 2,
 	playerEffect: {name: "WaterBubble", power: 5}},
 
 	{enemySpell: true, name: "BubbleBurstLatex", color: "#88aaff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "LatexThinBlue",
 		duration: 20,
-	}, manacost: 6, specialCD: 17, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 5, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", channel: 4,
+	}, castCondition: "EncasementAllowed", manacost: 6, specialCD: 17, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 5, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", channel: 4,
 	playerEffect: {name: "LatexBubble", power: 6}},
 
 	{enemySpell: true, name: "BubbleBurstSlime", color: "#ff00ff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Slime",
 		duration: 20,
-	}, manacost: 4, specialCD: 16, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 5, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", channel: 4,
+	}, castCondition: "SlimeAllowed", manacost: 4, specialCD: 16, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 5, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", channel: 4,
 	playerEffect: {name: "SlimeBubble", power: 6, time: 4}},
 
 	{enemySpell: true, name: "CursingCircle", color: KDBaseRed, minRange: 0, sfx: "Fwoosh", bulletSpin: 0.1, specialCD: 12,
@@ -3962,7 +3973,7 @@ let KDSpecialBondage: Record<string, KDBondage> = {
 		powerStruggleBoost: 0.5,
 		healthStruggleBoost: 0.8,
 		enemyBondageMult: 1.0,
-		helpImmune: true,
+		//helpImmune: true,
 	},
 	"Latex": {
 		priority: -8,
@@ -4061,6 +4072,16 @@ let KDMagicDefs = {
 };
 
 let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spell) => boolean> = {
+	
+	"BubblesAllowed": (_enemy, target) => {
+		return !KinkyDungeonStatsChoice.get("BubbleOptout");
+	},
+	"EncasementAllowed": (_enemy, target) => {
+		return !KinkyDungeonStatsChoice.get("BallsuitOptout");
+	},
+	"SlimeAllowed": (_enemy, target) => {
+		return !KinkyDungeonStatsChoice.get("SlimeOptout");
+	},
 	"latexLegbinderSpell": (_enemy, target) => {
 		if (target.player) {
 			let restraint = KinkyDungeonGetRestraint({tags: ["latexlegbinderSpell"]}, 100, "tmb");
@@ -4191,6 +4212,13 @@ let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spe
 		else if (target?.specialBoundLevel?.Rope > 0) return MiniGameKinkyDungeonLevel > 4;
 		return false;
 	},
+	"EnemyEnchantRope3": (_enemy, target) => {
+		if (target.player && (KinkyDungeonPlayerTags.get("RopeSnake") || KinkyDungeonPlayerTags.get("WeakMagicRopes"))) {
+			return MiniGameKinkyDungeonLevel > 4;
+		}
+		else if (target?.specialBoundLevel?.Rope > 0) return MiniGameKinkyDungeonLevel > 4;
+		return false;
+	},
 	"MagicMissileChannel": (enemy, _target) => {
 		return !KDEnemyHasFlag(enemy, "MagicMissileChannelFinished");
 	},
@@ -4207,6 +4235,7 @@ let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spe
 		}
 		return false;
 	},
+	
 };
 
 let KDPlayerCastConditions: Record<string, (player: entity, x: number, y: number) => boolean> = {

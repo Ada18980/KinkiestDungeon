@@ -412,14 +412,16 @@ if (KDToggles.MobileTextures) {
 	"TextureAtlas/atlasmobileA0.json",
 	"TextureAtlas/atlasmobileB0.json",
 	"TextureAtlas/atlasmobileC0.json",
-	"TextureAtlas/atlasmobileD0.json",]);
+	"TextureAtlas/atlasmobileD0.json",
+	"TextureAtlas/atlasmobileE0.json",]);
 } else  {
 	linearList.push(...[
 	"TextureAtlas/atlas0.json",
 	"TextureAtlas/atlasA0.json",
 	"TextureAtlas/atlasB0.json",
 	"TextureAtlas/atlasC0.json",
-	"TextureAtlas/atlasD0.json",]);
+	"TextureAtlas/atlasD0.json",
+	"TextureAtlas/atlasE0.json",]);
 }
 linearList.push(
 	"TextureAtlas/displace0.json");

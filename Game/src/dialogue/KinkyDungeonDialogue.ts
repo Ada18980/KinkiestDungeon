@@ -126,7 +126,17 @@ function KDDrawDialogue(delta: number): void {
 						tt = tt.replace(d[0], d[1]);
 					}
 				}
-				DrawTextFitKD(tt.replace("SPEAKER", TextGet("Name" + KDGameData.CurrentDialogMsgSpeaker)),
+				/*  Try to eliminate any redundant "the".  */
+				const npc_name = TextGet ("Name" + KDGameData.CurrentDialogMsgSpeaker);
+				const re_the_npc = /^[Tt]he\s+/;	// Anchored to beginning of string.
+				if (re_the_npc.test (npc_name)) {
+					/*
+					 * NPC name starts with "The ".  Chop out redundant "A " or "The "
+					 * from dialog, if present.
+					 */
+					tt = tt.replace (/\b(?:[Aa]|[Tt]he)\s+SPEAKER/, "SPEAKER");
+				}
+				DrawTextFitKD (tt.replace ("SPEAKER", npc_name),
 					1000, 300 + 50 * i - 25 * text.length, 900, KDBaseWhite, "black", undefined, undefined, 115);
 			}
 
@@ -837,6 +847,9 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KDGameData.InventoryAction = "Food";
+				KDGameData.InventoryActionTokens = {
+					FoodTarget: KDGetName(enemy.id),
+				};
 				KDGameData.FoodTarget = enemy.id;
 				KDShowInventory(null);
 				KinkyDungeonCurrentFilter = Consumable;
@@ -1199,6 +1212,32 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KinkyDungeonSetFlag("Passthrough", 8);
+						KinkyDungeonSetFlag("PassthroughAll", 8);
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"ConfirmPush": {playertext: name + "LetMePass_Confirm", response: "Default",
+				clickFunction: (_gagged, _player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						KinkyDungeonSetEnemyFlag(enemy, "passthroughP", 8);
+						if (KinkyDungeonFlags.has("LetMePass")) {
+							KDResetDialogue();
+						}
+						KinkyDungeonSetFlag("LetMePass", 30);
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"ConfirmPushAll": {playertext: name + "LetMePass_ConfirmAll", response: "Default",
+				clickFunction: (_gagged, _player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						KinkyDungeonSetFlag("PassthroughP", 8);
+						KinkyDungeonSetFlag("PassthroughPAll", 8);
 					}
 					return false;
 				},

@@ -74,7 +74,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "BallMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: -50,
 			Sprite: "GhostBall",
@@ -105,7 +105,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "BallMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 1,
 			Sprite: "Ball",
@@ -167,7 +167,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "BallMouthLarge"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 1,
 			Sprite: "BigBall",
@@ -226,7 +226,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "BallMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 2,
 			Sprite: "CrystalBall",
@@ -257,7 +257,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "BallMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 2,
 			Sprite: "CrystalBall",
@@ -596,7 +596,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "BallMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Knot", Layer: "Gag", Pri: 0,
 			OffsetX: 942,
@@ -676,8 +676,10 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Latex",
-			AppendPose: {StuffMouth: "Flat"},
+			AppendPose: {PlugMouth: "Plug", BallMouthLarge: "Ball", BallMouth: "Ball1", StuffMouth: "Flat"},
 			DisplacementSources: ["Head", "FaceGag"],
+			
+			SwapLayerPose: {LatexOTN: "GagMuzzle"},
 		},
 	])
 });
@@ -700,7 +702,9 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Latex",
+			//AppendPose: {PlugMouth: "Plug", BallMouthLarge: "Ball", BallMouth: "Ball1", StuffMouth: "Flat"},
 			DisplacementSources: ["Head", "FaceGag"],
+			SwapLayerPose: {LatexOTN: "GagMuzzle"},
 		},
 	])
 });
@@ -711,6 +715,7 @@ AddModel(GetModelWithExtraLayers("GagLatexFlatHarness", "GagLatexFlat", [
 		OffsetX: 942,
 		OffsetY: 200,
 		Invariant: true,
+			SwapLayerPose: {LatexOTN: "GagMuzzleStraps"},
 	},
 ], "GagLatex", false));
 AddModel(GetModelWithExtraLayers("GagLatexFlatHarnessSecure", "GagLatexFlatHarness", [
@@ -719,6 +724,7 @@ AddModel(GetModelWithExtraLayers("GagLatexFlatHarnessSecure", "GagLatexFlatHarne
 		OffsetX: 942,
 		OffsetY: 200,
 		Invariant: true,
+			SwapLayerPose: {LatexOTN: "GagMuzzleStraps"},
 	},
 ], "GagLatex", false));
 
@@ -740,6 +746,7 @@ AddModel({
 			HideWhenOverridden: true,
 			InheritColor: "Latex",
 			DisplacementSources: ["Head", "FaceGag"],
+			SwapLayerPose: {LatexOTN: "GagMuzzle"},
 		},
 		{ Name: "MuteLogo", Layer: "GagFlat", Pri: 30.1,
 			OffsetX: 942,
@@ -749,6 +756,7 @@ AddModel({
 			TieToLayer: "OTNFlat",
 			InheritColor: "Symbol",
 			DisplacementSources: ["Head", "FaceGag"],
+			SwapLayerPose: {LatexOTN: "GagMuzzle"},
 		},
 	])
 });
@@ -759,6 +767,7 @@ AddModel(GetModelWithExtraLayers("GagLatexMuteHarness", "GagLatexMute", [
 		OffsetX: 942,
 		OffsetY: 200,
 		Invariant: true,
+		SwapLayerPose: {LatexOTN: "GagMuzzleStraps"},
 	},
 ], "GagLatex", false));
 AddModel(GetModelWithExtraLayers("GagLatexMuteHarnessSecure", "GagLatexMuteHarness", [
@@ -767,6 +776,7 @@ AddModel(GetModelWithExtraLayers("GagLatexMuteHarnessSecure", "GagLatexMuteHarne
 		OffsetX: 942,
 		OffsetY: 200,
 		Invariant: true,
+		SwapLayerPose: {LatexOTN: "GagMuzzleStraps"},
 	},
 ], "GagLatex", false));
 
@@ -786,7 +796,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags","Latex"],
-	AddPose: ["FaceCoverGag"],
+	AddPose: ["FaceCoverGag", "PlugMouth"],
 	Layers: ToLayerMap([
 		...GetModelLayers("GagLatexFlat"),
 		{ Name: "Plug", Layer: "GagFlatStraps", Pri: 40,
@@ -794,7 +804,7 @@ AddModel({
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
-			SwapLayerPose: {XrayFace: "GagStraps"},
+			SwapLayerPose: {XrayFace: "GagStraps", LatexOTN: "GagMuzzle"},
 		},
 	])
 });
@@ -805,6 +815,7 @@ AddModel(GetModelWithExtraLayers("GagLatexPlugHarness", "GagLatexPlug", [
 		OffsetX: 942,
 		OffsetY: 200,
 		Invariant: true,
+		SwapLayerPose: {LatexOTN: "GagMuzzleStraps"},
 	},
 ], "GagLatex", false));
 AddModel(GetModelWithExtraLayers("GagLatexPlugHarnessSecure", "GagLatexPlugHarness", [
@@ -813,6 +824,7 @@ AddModel(GetModelWithExtraLayers("GagLatexPlugHarnessSecure", "GagLatexPlugHarne
 		OffsetX: 942,
 		OffsetY: 200,
 		Invariant: true,
+		SwapLayerPose: {LatexOTN: "GagMuzzleStraps"},
 	},
 ], "GagLatex", false));
 
@@ -1148,7 +1160,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "BallMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 1,
 			Sprite: "Ball",
@@ -1209,7 +1221,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "BallMouthLarge"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 3,
 			Sprite: "BigBall",
@@ -1268,7 +1280,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth", "StuffMouth"],
+	AddPose: ["HideMouth", "StuffMouth", "BallMouthLarge"],
 	Layers: ToLayerMap([
 		{ Name: "Ball", Layer: "Gag", Pri: 2,
 			Sprite: "BigBall",
@@ -1361,7 +1373,7 @@ AddModel(GetModelWithExtraLayers("UltimateSciFiBallGag", "AdvancedSciFiBallGag",
 		Invariant: true,
 	},
 ], "SciFiBallGag", false, {
-	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag"],
+	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag", "BallMouthLarge"],
 }));
 AddModel(GetModelWithExtraLayers("UltimateSciFiBallGag2", "AdvancedSciFiBallGag", [
 
@@ -1372,7 +1384,7 @@ AddModel(GetModelWithExtraLayers("UltimateSciFiBallGag2", "AdvancedSciFiBallGag"
 		Invariant: true,
 	},
 ], "SciFiBallGag", false, {
-	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag"],
+	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag", "BallMouthLarge"],
 }));
 
 
@@ -1505,7 +1517,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["HideMouth","StuffMouth"],
+	AddPose: ["HideMouth","StuffMouth", "PlugMouth"],
 	Layers: ToLayerMap([
 		{ Name: "Panel", Layer: "GagFlatStraps", Pri: 17,
 			Sprite: "SciFiPanel",
@@ -1613,7 +1625,7 @@ AddModel(GetModelWithExtraLayers("UltimateSciFiPlugGag", "AdvancedSciFiPlugGag",
 		SwapLayerPose: {XrayFace: "GagStraps"},
 	},
 ], "SciFiPlugGag", false, {
-	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag"],
+	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag", "PlugMouth"],
 }));
 AddModel(GetModelWithExtraLayers("UltimateSciFiPlugGag2", "AdvancedSciFiPlugGag", [
 
@@ -1625,7 +1637,7 @@ AddModel(GetModelWithExtraLayers("UltimateSciFiPlugGag2", "AdvancedSciFiPlugGag"
 		SwapLayerPose: {XrayFace: "GagStraps"},
 	},
 ], "SciFiPlugGag", false, {
-	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag"],
+	AddPose: ["HideMouth", "StuffMouth", "FaceCoverGag", "PlugMouth"],
 }));
 
 

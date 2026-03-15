@@ -42,7 +42,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 	let Advance = KDAdvanceAmount[toTile](altRoom, null, tile);
 	let AdvanceAmount = Advance.AdvanceAmount;
 
-	let journeyTile = KDGameData.JourneyTarget ? KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y]
+	let journeyTile = KDGameData.JourneyTarget && KDGameData.UseJourneyTarget ? KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y]
 		: KDGameData.JourneyMap[KDGameData.JourneyX + ',' + (KDGameData.JourneyY + AdvanceAmount)];
 	let originalRoom = KDGameData.RoomType;
 
@@ -65,9 +65,9 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 		overrideRoomType: false,
 		overrideProgression: false,
 		overrideJourney: false,
-		mapMod: KinkyDungeonTilesGet(x + "," + y)?.MapMod || journeyTile?.MapMod,
-		faction: KinkyDungeonTilesGet(x + "," + y)?.Faction || journeyTile?.Faction,
-		escapeMethod: KinkyDungeonTilesGet(x + "," + y)?.EscapeMethod || journeyTile?.EscapeMethod,
+		mapMod: KinkyDungeonTilesGet(x + "," + y)?.MapMod,
+		faction: KinkyDungeonTilesGet(x + "," + y)?.Faction,
+		escapeMethod: KinkyDungeonTilesGet(x + "," + y)?.EscapeMethod,
 		cancelevent: "",
 		cancelfilter: tile?.CancelFilter,
 		SideRoom: tile?.SideRoom,
@@ -75,9 +75,13 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 		force: force,
 		willing: willing,
 	};
+
 	if (Advance.dataOverride) {
 		Object.assign(data, Advance.dataOverride);
 	}
+
+
+
 	KinkyDungeonSendEvent("beforeStairCancelFilter", data);
 	if (data.cancelfilter) {
 		if (data.cancelfilter && KDCancelFilters[data.cancelfilter]) {
@@ -94,7 +98,10 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 		let newLocation = KDAdvanceLevel(data, MiniGameKinkyDungeonLevel + data.AdvanceAmount > KDGameData.HighestLevelCurrent,
 			true
 		);
+
 		let location = KDWorldMap[newLocation.x + "," + newLocation.y];
+
+
 
 		KDGenMapCallback = () => {
 
@@ -141,16 +148,20 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 			}
 			if (!data.overrideRoomType) {
 				if (tile?.RoomType != undefined) {
-					data.roomType = tile.RoomType;
-					data.mapMod = tile.MapMod;
+					data.roomType = tile.RoomType || altRoomTarget?.name || "";
+					data.mapMod = tile.MapMod || "";
+					data.faction = tile.Faction || altRoomTarget?.faction || KDPersonalAlt[tile.RoomType]?.OwnerFaction || "";
 					KDGameData.MapMod = ""; // Reset the map mod
 				} else {
 					// If its an exit stair in the main, we override to the main of next floor
 					// The player can never backtrack to old perk rooms
+					data.mapMod = data.mapMod || journeyTile?.MapMod || "";
+					data.faction = data.faction || journeyTile?.Faction || "";
+					data.escapeMethod = data.escapeMethod || journeyTile?.EscapeMethod || "";
 
 					data.roomType = data.JourneyTile?.RoomType || "";
 					altRoomTarget = KinkyDungeonAltFloor(data.roomType);
-					KDGameData.MapMod = data.JourneyTile?.MapMod || "";
+					
 				}
 			}
 			let movedUp = MiniGameKinkyDungeonLevel > KDGameData.HighestLevelCurrent;
@@ -162,10 +173,12 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 			let MapMod = data.mapMod;
 			if (MapMod) {
 				KDGameData.MapMod = MapMod;
-				KDMapData.MapFaction = KDMapMods[KDGameData.MapMod].faction || "";
+				//KDMapData.MapFaction = KDMapMods[KDGameData.MapMod].faction || "";
+				data.faction = KDMapMods[KDGameData.MapMod]?.faction || data.faction || "";
 			} else {
 				KDGameData.MapMod = "";
-				KDMapData.MapFaction = "";
+				//KDMapData.MapFaction = "";
+				//data.faction = "";
 			}
 
 			if (!data.overrideJourney) {
@@ -185,7 +198,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				}
 			}
 
-			KDGameData.RoomType = data.roomType;
+			KDGameData.RoomType = data.roomType || "";
 
 
 			KinkyDungeonSendActionMessage(10, TextGet("ClimbDown" + toTile), KDBaseWhite, 1);

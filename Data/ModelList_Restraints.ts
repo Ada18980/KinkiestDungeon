@@ -29,6 +29,39 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "SteelSpreader",
+	Folder: "Spreader",
+	Parent: "Spreader",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Metal", "Spreaders"],
+	AddPose: ["Spreader", "WideSpread"],
+	Layers: ToLayerMap([
+		{ Name: "ShortLeft", Layer: "AnkleLeftOver", Pri: 10,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			DisplacementSprite: "AnkleCuffLeft",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+		{ Name: "ShortRight", Layer: "AnkleRightOver", Pri: 10,
+			Invariant: true,
+			Poses: ToMap(["Spread"]),
+			HideWhenOverridden: true,
+			DisplacementSprite: "AnkleCuffRight",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+		{ Name: "Bar", Layer: "SpreaderBar", Pri: 10,
+			Invariant: true,
+			Poses: ToMap(["Spread"]),
+			HideWhenOverridden: true,
+		},
+	])
+});
 
 AddModel({
 	Name: "HeavyYoke",

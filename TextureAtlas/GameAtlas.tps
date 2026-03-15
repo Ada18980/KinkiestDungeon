@@ -798,9 +798,11 @@
             <key type="filename">../Game/EffectTiles/Latex.png</key>
             <key type="filename">../Game/EffectTiles/LatexBlue.png</key>
             <key type="filename">../Game/EffectTiles/LatexGreen.png</key>
+            <key type="filename">../Game/EffectTiles/LatexPink.png</key>
             <key type="filename">../Game/EffectTiles/LatexThin.png</key>
             <key type="filename">../Game/EffectTiles/LatexThinBlue.png</key>
             <key type="filename">../Game/EffectTiles/LatexThinGreen.png</key>
+            <key type="filename">../Game/EffectTiles/LatexThinPink.png</key>
             <key type="filename">../Game/EffectTiles/LiquidMetal.png</key>
             <key type="filename">../Game/EffectTiles/Magicflies.png</key>
             <key type="filename">../Game/EffectTiles/ManaEmpty.png</key>
@@ -1074,6 +1076,7 @@
             <key type="filename">../Game/Enemies/DollmakerBoss3.png</key>
             <key type="filename">../Game/Enemies/DollmakerBoss3b.png</key>
             <key type="filename">../Game/Enemies/DollmakerMechanic.png</key>
+            <key type="filename">../Game/Enemies/DollmakerRecruit.png</key>
             <key type="filename">../Game/Enemies/DollmakerTarget.png</key>
             <key type="filename">../Game/Enemies/Dollsmith.png</key>
             <key type="filename">../Game/Enemies/DollsmithDoll.png</key>
@@ -1136,6 +1139,7 @@
             <key type="filename">../Game/Enemies/Fuuka1.png</key>
             <key type="filename">../Game/Enemies/Fuuka2.png</key>
             <key type="filename">../Game/Enemies/FuukaPillar.png</key>
+            <key type="filename">../Game/Enemies/FuukaRecruit.png</key>
             <key type="filename">../Game/Enemies/Gag.png</key>
             <key type="filename">../Game/Enemies/GagGeist.png</key>
             <key type="filename">../Game/Enemies/GasBarrel.png</key>
@@ -1286,6 +1290,7 @@
             <key type="filename">../Game/Enemies/TapeDrone.png</key>
             <key type="filename">../Game/Enemies/TheWarden1.png</key>
             <key type="filename">../Game/Enemies/TheWarden2.png</key>
+            <key type="filename">../Game/Enemies/TheWardenRecruit.png</key>
             <key type="filename">../Game/Enemies/TickleHand.png</key>
             <key type="filename">../Game/Enemies/TickleHandSlave.png</key>
             <key type="filename">../Game/Enemies/TickleTerror.png</key>
@@ -1296,6 +1301,7 @@
             <key type="filename">../Game/Enemies/VineSpitter.png</key>
             <key type="filename">../Game/Enemies/Wall.png</key>
             <key type="filename">../Game/Enemies/WallDoor.png</key>
+            <key type="filename">../Game/Enemies/WandHand.png</key>
             <key type="filename">../Game/Enemies/WardenArcher.png</key>
             <key type="filename">../Game/Enemies/WardenFighter.png</key>
             <key type="filename">../Game/Enemies/WardenMage.png</key>
@@ -1616,6 +1622,9 @@
             <key type="filename">../Game/FloorGeneric/DollDropoffL.png</key>
             <key type="filename">../Game/FloorGeneric/DollDropoffR.png</key>
             <key type="filename">../Game/FloorGeneric/DollStand.png</key>
+            <key type="filename">../Game/FloorGeneric/DollStandSpreader.png</key>
+            <key type="filename">../Game/FloorGeneric/DollStandVibe.png</key>
+            <key type="filename">../Game/FloorGeneric/DollStandVibeSpreader.png</key>
             <key type="filename">../Game/FloorGeneric/DollSupply.png</key>
             <key type="filename">../Game/FloorGeneric/DollTerminal.png</key>
             <key type="filename">../Game/FloorGeneric/Doors/CyberDoor.png</key>
@@ -2855,7 +2864,9 @@
             <key type="filename">../Game/Locks/White.png</key>
             <key type="filename">../Game/Poses/SetPose.png</key>
             <key type="filename">../Game/Struggle.png</key>
-            <key type="filename">../Game/UI/BulletTransparency.png</key>
+            <key type="filename">../Game/UI/BulletTransparencyAll.png</key>
+            <key type="filename">../Game/UI/BulletTransparencyNone.png</key>
+            <key type="filename">../Game/UI/BulletTransparencyOnly.png</key>
             <key type="filename">../Game/UI/ContextMenu/CurseInfo.png</key>
             <key type="filename">../Game/UI/ContextMenu/CurseUnlock.png</key>
             <key type="filename">../Game/UI/ContextMenu/Remove.png</key>
@@ -2961,6 +2972,8 @@
             <key type="filename">../Game/Buffs/buff/buffEmpower.png</key>
             <key type="filename">../Game/Buffs/buff/buffForcedSubmission.png</key>
             <key type="filename">../Game/Buffs/buff/buffFuukaOrb.png</key>
+            <key type="filename">../Game/Buffs/buff/buffGhostDeal.png</key>
+            <key type="filename">../Game/Buffs/buff/buffGhostDealPleasure.png</key>
             <key type="filename">../Game/Buffs/buff/buffGreaterInvisibility.png</key>
             <key type="filename">../Game/Buffs/buff/buffHaunted.png</key>
             <key type="filename">../Game/Buffs/buff/buffHighValueFound.png</key>
@@ -3447,6 +3460,8 @@
             <key type="filename">../Game/Bullets/EnemyEnchantRope.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRope2.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRope2Hit.png</key>
+            <key type="filename">../Game/Bullets/EnemyEnchantRope3.png</key>
+            <key type="filename">../Game/Bullets/EnemyEnchantRope3Hit.png</key>
             <key type="filename">../Game/Bullets/EnemyEnchantRopeHit.png</key>
             <key type="filename">../Game/Bullets/FlashFreezeHit.png</key>
             <key type="filename">../Game/Bullets/Hailstorm.png</key>
@@ -4125,6 +4140,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/Particles/Heart.png</key>
+            <key type="filename">../Game/UI/HealWill.png</key>
             <key type="filename">../Game/UI/Heart.png</key>
             <key type="filename">../Game/UI/HeartExtreme.png</key>
             <key type="filename">../Game/UI/RallyWill.png</key>
@@ -4439,6 +4455,10 @@
                 <false/>
             </struct>
             <key type="filename">../Game/UI/CheckSmall.png</key>
+            <key type="filename">../Game/UI/ConsentCheck.png</key>
+            <key type="filename">../Game/UI/ConsentGreen.png</key>
+            <key type="filename">../Game/UI/ConsentRed.png</key>
+            <key type="filename">../Game/UI/ConsentYellow.png</key>
             <key type="filename">../Game/UI/Plus.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

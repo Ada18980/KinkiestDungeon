@@ -7,7 +7,73 @@ let KinkyDungeonBones = {
 let KDPatronAdventurers = [
 ];
 
+	// TODO add missing npcs
+	// id 114
+	// id 116 - add chastity when found
+	// id 122 - warden???
+	// id 123 - sevika???????
+	// id 129 - maid knight
+	// id 135 - ???
+	// id 137 maid squire generic
+
+
+	// need custom sprites
+	// danurell
+	// kaisei
+	// fidel
+	// Anketh
+	// Mizuna
+	// Luce
+	// Minnie
+	// Carli
+	// Yumi
+	// Director
+	// Anarial
+	// Lushi
+	// Catey
+	// Salote
+	// Ivy
+	// iostream
+	// Elodie
+	// Istoodin
+	// Aurora Kanagawa Appearance : Fox ears, 9 Fox tails, Brown hair and emerald, green eyes.
+
+	// special
+	//Yumi - change to generic maid knight when added
+	// Lushi change to dressmaker maid when added
+	
+
+	// force personality
+	// Luce - dominant
+	// Knifu - 'make really passive aggressive'
+	// Nevermere Director - make her not attack first
+
+	// add lines
+	// Gonds - id 120
+	// Minnie id 126 - custom dialogue
+	// id 132 - kitty puns
+	// Nix - unit nix, firing!
+	// Mizuna (operative) - submissive, also attack line: "I might be a Foxgirl instead of a Wolfgirl, but that doesn't mean I can't make you into one~"
+	// lushi: "My Superiors at DressUp Co think this would look great on you!" etc
+	// alexia: when rescued Thank you, I shall remember this generosity.
+	// Katey "I wonder when's lunch time" "...I'm kinda hungry" "Oriel is kinda chill actually"
+	// Ivy :  "You would make a great pet"
+	// Elodie: Maybe a battle line like "Just give in...I'll make you look divine" , and a restraint request "You know...I have the perfect accessory for you"
 let KDPatronCustomEnemies = new Map([
+	
+	["Wolfguard", [
+		{name: "Mizuna", color: "#ff5be6ff", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Mmmffphhhhmmm!", customSprite: "", customOutfit: "Mizuna", customStyle: "Mizuna"},
+	],
+	],
+	["WolfOperative", [
+		{name: "Nevermere Director", color: "#96a1a1ff", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "You are lucky! But my sisters are not.", customSprite: "", customOutfit: "Director", customStyle: "Director"},
+		{name: "Mizuna", color: "#f96fe7ff", prisoner: true, free: true,
+					customPlayLine: "SubMaid", customIntro: "For the last time, I'm a fox, not a wolf!", customSprite: "", customOutfit: "Mizuna2", customStyle: "Mizuna2"},
+	],
+	],
+	
 	["Wolfgirl", [
 		{name: "Yanen Mian", color: "#63ab3f", prisoner: false, free: true, customPlayLine: "", customIntro: "ei hey!", customSprite: ""},
 		{name: "Naho Kuroneko", color: "#ffac33",
@@ -51,10 +117,20 @@ let KDPatronCustomEnemies = new Map([
 	["ElementalLeather", [
 		{name: "Jaina", color: "#FF00DC", prisoner: true, free: true, customPlayLine: "",
 			customOutfit: "Hilda", customStyle: "Hilda",
-			customIntro: "Let’s have some fun~", customSprite: "Hilda"},
+			customIntro: "Let's have some fun~", customSprite: "Hilda"},
 		{name: "Timyang", color: "#2257e9", prisoner: true, free: true, customPlayLine: "", customIntro: "I'm Timyang, do you have anything to do with me?", customSprite: ""},
+		{name: "Knifu", color: "#e92222ff", prisoner: false, free: true, customPlayLine: "", customIntro: "Howdy hoe!", customSprite: ""},
+		
 	],
 	],
+	["Jailer", [
+		{name: "Minnie", color: "#FF00DC", prisoner: true, free: true, customPlayLine: "",
+			customOutfit: "Minnie", customStyle: "Minnie",
+			customIntro: "You give a prisioner an inch and they take a mile.", customSprite: ""},
+		
+	],
+	],
+	
 	["WolfgirlPet", [
 		{name: "Demetria", color: "#c9d4fd", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Sayaron", color: "#841ee1", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
@@ -88,12 +164,22 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Amelisia", color: "#ff5500", prisoner: true, free: true,
 			customPlayLine: "", customIntro: "I'd love to hear your moans through your gags.", customSprite: ""},
 		{name: "Athena", color: "#7e52cc", prisoner: false, free: true, customPlayLine: "Athena", customIntro: "Hey there cutie!", customSprite: ""},
+		{name: "Luce", color: "#2a36b4ff", prisoner: true, free: true, customPlayLine: "Athena", customIntro: "Are you sure you want to be down here, love?", customSprite: "",
+			customOutfit: "Luce", customStyle: "Luce"
+		},
 	],
 	],
 	["Dragon", [
 		{name: "Garss", color: KDBasePink, prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
+	["DragonShield", [
+		{name: "Salote Proudsong", color: "#4545ffff", prisoner: true, free: true, customPlayLine: "", customIntro: "Let's see how you dance!", customSprite: "",
+			customOutfit:"Salote", customStyle: "Salote"
+		},
+	],
+	],
+	
 	["Conjurer", [
 		{name: "Stela", color: "#9c2767", prisoner: false, free: true, customPlayLine: "Selly", customIntro: "I am Stela. But to you, sweetie? Call me Mistress.", customSprite: "Selly",
 			pets: {
@@ -152,7 +238,8 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["Adventurer_Brat_Fighter", [
-		{name: "Rook", color: KDBaseRed, prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Rook"},
+		{name: "", color: KDBaseRed, prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Rook",
+			customOutfit: "Rook", customStyle: "Rook"},
 	],
 	],
 	["DragonLeaderDuelist", [
@@ -233,6 +320,8 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Morgan", color: "#6241e1", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Daiseng", color: "#ff9900", prisoner: false, free: true, customPlayLine: "", customIntro: "Do I look like a taxi driver to you?", customSprite: ""},
 		{name: "Matt", color: "#ff0000", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Aurora Kanagawa", color: "#9dd8a0ff", prisoner: false, free: true, customPlayLine: "", customIntro: "Hi. How is your journey in this dungeon?", customSprite: ""},
+		
 		{name: "Luplus Falmele", color: "#22ffff",
 			prisoner: true, free: true,
 			customPlayLine: "", customIntro: "Latex can last for hundreds of years, so why can't we?", customSprite: ""},
@@ -242,6 +331,7 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Vixen", color: "#a632ec", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
+
 	["Dressmaker", [
 		{name: "Maelith", color: "#3E6B3A", prisoner: true, free: true,
 			customPlayLine: "", customIntro: "You look bored, love... Let me fix that.", customSprite: ""},
@@ -253,6 +343,13 @@ let KDPatronCustomEnemies = new Map([
 			customIntro: "My name's Melissa! I know I'm pretty, but try not to stare too much~", customSprite: "Melissa"},
 		{name: "Alice", color: "#ee99ee", prisoner: true, free: true, customPlayLine: "", customIntro: "Hello, I am a dressmaker and the name's Alice! Need a new dress?", customSprite: ""},
 		{name: "Monika", color: "#49dc20", prisoner: true, free: true, customPlayLine: "", customIntro: "Whatcha doing?", customSprite: ""},
+		{name: "Lushi", color: "#f552beff", prisoner: true, free: true, customPlayLine: "", customIntro: "Hello Ma'am, DressUp Co. welcomes you. Anything I can do for you?", customSprite: "",
+			customOutfit: "Lushi", customStyle: "Lushi"
+		},
+		{name: "Elodie", color: "#48d94dff", prisoner: false, free: true, customPlayLine: "", customIntro: "Fortune brings you to me.", customSprite: "",
+			customOutfit: "Elodie", customStyle: "Elodie"
+		},
+		
 	],
 	],
 	["Demon", [
@@ -261,6 +358,25 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["Maidforce", [
+		
+		{name: "Yumi", color: "#8e8a92ff", prisoner: true, free: true, customPlayLine: "",
+			customOutfit: "Yumi",customStyle: "Yumi", 
+			customIntro: "How do you like my white pantyhose dear~", customSprite: ""},
+		{name: "Darjeeling", color: "#5ca363ff", prisoner: false, free: true, customPlayLine: "",
+			customIntro: "", customSprite: ""},
+		{name: "Istoodin", color: "#efef0bff", prisoner: true, free: true, customPlayLine: "",
+			customIntro: "Hello, is there aught I may help you with?", customSprite: "Istoodin", customStyle: "Istoodin"},
+
+
+		{name: "Anketh", color: "#9822ffff", prisoner: true, free: true, customPlayLine: "",
+			customOutfit: "Anketh",customStyle: "Anketh", 
+			customIntro: "I just don't seem to get used to it...", customSprite: ""},
+		{name: "iostream", color: "#454346ff", prisoner: true, free: true, customPlayLine: "",
+			customOutfit: "iostream",customStyle: "iostream", 
+			customIntro: "", customSprite: ""},
+		{name: "Fidel", color: "#ff3322", prisoner: true, free: false, customPlayLine: "",
+			customOutfit: "Fidel",customStyle: "Fidel", 
+			customIntro: "I used to be an adventurer like you, then I took a plug inside me...", customSprite: ""},
 		{name: "Handcuffed Girl", color: "#ce6cf4", prisoner: true, free: false, customPlayLine: "",
 			customIntro: "It felt as if I was chained for eternity!", customSprite: ""},
 		{name: "Handcuffed Girl", color: "#ffa1fd", prisoner: true, free: false, customPlayLine: "",
@@ -302,6 +418,19 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Marine", color: "#4477ff", prisoner: true, free: true, customPlayLine: "", customIntro: "Hi! I'm Marine Kelley. 'Miss Marine', to you.", customSprite: ""},
 	],
 	],
+	["MaidforcePara", [
+		{name: "NRNJ", color: "#0055ff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Alexia ", color: "#9bbcffff", prisoner: true, free: true, customPlayLine: "", customIntro: "Heya, the name's Alexia, how can I be of service today?", customSprite: ""},
+	],
+	],
+	["MaidforceMafia", [
+		{name: "Nix", color: "#6a9cffff", prisoner: true, free: true, customPlayLine: "", customIntro: "Better stay vigilant, there's plenty to 'clean' around here.", customSprite: ""},
+	],
+	],
+	["MaidforceMini", [
+		{name: "Gonds", color: "#0055ff", prisoner: true, free: true, customPlayLine: "", customIntro: "Hi there! I'm Gonds!", customSprite: ""},
+	],
+	],
 	["WitchFlame", [
 		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customPlayLine: "Myrtrice",
 			customStyle: "Myrtrice", customOutfit: "Myrtrice",
@@ -315,11 +444,9 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Nara", color: "#5F54FF", prisoner: true, free: true, customPlayLine: "",
 			customStyle: "Nara", customOutfit: "Nara", customSprite: "Nara"
 		},
-		{name: "Krifath", color: "#6633cc", prisoner: true, free: true,
-			customPlayLine: "", customIntro: "I used to be an adventurer like you, then I took an arrow in the knee.",
-		},
-		{name: "Krifath", color: "#6633cc", prisoner: true, free: true,
-			customPlayLine: "", customIntro: "I used to be an adventurer like you, then I took an arrow in the knee.",
+		{name: "Daanulrel", color: "#6633cc", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Drem Yol Lok. Greetings, wunduniik. I am Daanulrel.",
+			customStyle: "Krifath", customOutfit: "Krifath",
 		},
 	],
 	],
@@ -331,6 +458,13 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["WitchIce", [
 		{name: "Verina", color: "#44ff66", prisoner: true, free: false, customPlayLine: "", customIntro: "Have you seen my girlfriend around here?", customSprite: ""},
+		{name: "Kaisei", color: "#1ed0f8ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "",
+			customStyle: "Kaisei", customOutfit: "Kaisei",
+		},
+		{name: "Anarial", color: "#39c4af", prisoner: false, free: true, customPlayLine: "", customIntro: "Oh my, you'll make an ice addition to my collection!", customSprite: "",
+			customStyle: "Anarial", customOutfit: "Anarial",
+		},
+		
 	],
 	],
 	["WitchShock", [
@@ -349,6 +483,10 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Kathy Narlato", color: "#4e3da9", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Claire", color: KDBaseNeon, prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Luna", color: "#872eff", prisoner: true, free: true, customPlayLine: "", customIntro: "Hi I'm Luna.", customSprite: ""},
+		{name: "Carli", color: "#ea2effff", prisoner: true, free: true, customPlayLine: "", customIntro: "You'll forget who you are~", customSprite: "",
+			customOutfit: "Carli", customStyle: "Carli"
+		},
+
 	],
 	],
 	["WitchWater", [
@@ -375,6 +513,10 @@ let KDPatronCustomEnemies = new Map([
 	["BanditChief", [
 		{name: "Betruger", color: "#ba26e7", prisoner: true, free: true,
 			customPlayLine: "", customIntro: "Hi! Are you ok?", customSprite: ""},
+		{name: "Chie", color: "#f77fcbff", prisoner: false, free: true,
+			customPlayLine: "", customIntro: "I'll lock you away, and throw away the Chie! Ki, Ki, Ki, Ki.", customSprite: ""},
+		{name: "Await Fingers", color: "#f5dd28ff", prisoner: false, free: true,
+			customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Wizard", [
@@ -397,6 +539,9 @@ let KDPatronCustomEnemies = new Map([
 	["Elf", [
 		{name: "Ferahla", color: "#44ff44", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Clockheart", color: "#80fc7c", prisoner: true, free: true, customPlayLine: "", customIntro: "I hope no one locks me into a straitjacket~", customSprite: ""},
+		{name: "Ivy", color: "#8510ff", prisoner: false, free: true, customPlayLine: "", customIntro: "Hey sexy!", customSprite: "",
+			customOutfit: "Ivy", customStyle: "Ivy",
+		},
 	],
 	],
 	["Dollsmith", [
@@ -413,14 +558,27 @@ let KDPatronCustomEnemies = new Map([
 			customPlayLine: "", customIntro: "Oh, a pet!", customSprite: ""},
 	],
 	],
+	["Cleric", [
+		{name: "Wpol", color: "#bf3624ff", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "You're bound to be fun hun!", customSprite: ""},
+	],
+	],
 	["Mummy", [
 		{name: "Skarne", color: "#ff0549", prisoner: false, free: true,
 			customPlayLine: "", customIntro: "I've been watching you~", customSprite: ""},
+		{name: "PawPaw", color: "#dc75e3ff", prisoner: false, free: true,
+			customPlayLine: "", customIntro: "You will be my mummy~", customSprite: ""},
 	],
 	],
 	["MummyPet", [
 		{name: "Béatrice", color: "#db72c4", prisoner: true, free: false,
 			customPlayLine: "", customIntro: "I.. I thought I was being a good girl...", customSprite: ""},
+	],
+	],
+	["Cyborg", [
+		{name: "Catey", color: "#fb8435ff", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "What do you want?", customSprite: "",
+			customOutfit: "Catey", customStyle: "Catey"},
 	],
 	],
 
@@ -1248,8 +1406,8 @@ function KDProcessCustomPatron(Enemy: enemy, e: entity, chanceBoost: number, mak
 	if (!e.CustomName && KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < chance) {
 		let customs: any[] = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
 			return !KDGameData.NamesGenerated[element.name]
-			&& (element.prisoner && KDEnemyHasFlag(e, "imprisoned"))
-				|| (element.free && !KDEnemyHasFlag(e, "imprisoned"));
+			&& ((element.prisoner && KDEnemyHasFlag(e, "imprisoned"))
+				|| (element.free && !KDEnemyHasFlag(e, "imprisoned")));
 		});
 		if (customs.length > 0) {
 			let custom = customs[Math.floor(customs.length * KDRandom())];

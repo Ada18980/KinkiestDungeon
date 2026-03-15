@@ -153,7 +153,7 @@
             <key>scale</key>
             <double>0.25</double>
             <key>scaleMode</key>
-            <enum type="ScaleMode">Fast</enum>
+            <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
             <uint>1</uint>
             <key>trimThreshold</key>

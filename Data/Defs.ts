@@ -29,6 +29,8 @@ let LAYERS_BASE = [
 	// Head items
 	"BlindfoldStraps",
 	"Blindfold",
+	"Goggles",
+	"Glasses",
 	"GagOver",
 	"GagMuzzleStraps",
 	"GagMuzzle",
@@ -45,8 +47,6 @@ let LAYERS_BASE = [
 	"MaskOver",
 	"CircletUnder",
 	"Mask",
-	"Goggles",
-	"Glasses",
 	"BlindfoldWrap",
 	"GagWrap",
 	// Head
@@ -72,11 +72,6 @@ let LAYERS_BASE = [
 	"BindForeArmLeft",
 	"BindForeArmRight",
 
-	"BindCrossElbowLeft",
-	"BindForeElbowLeft",
-	
-	"BindCrossElbowRight",
-	"BindForeElbowRight",
 
 	"ForeWrists",
 	"SleevesFront",
@@ -190,6 +185,18 @@ let LAYERS_BASE = [
 	"CrossArmLeft",
 
 
+
+
+	"LegbinderLegLeftPants",
+	"LegbinderLegLeftLowerPants",
+	"LegbinderAnkleLeftPants",
+	"LegbinderLegRightPants",
+	"LegbinderLegLowerRightPants",
+	"LegbinderAnkleRightPants",
+
+
+	"BulkyJacket",
+
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
 	"BeltCharmSide",
@@ -201,6 +208,13 @@ let LAYERS_BASE = [
 
 	"OverCorset",
 
+
+	"SkirtOverDecoOverKneel",
+	"SkirtOverOverKneel",
+	"SkirtDecoOverKneel",
+	"SkirtOverKneel",
+
+	"BulkyShirt",
 	"BaggyShirt",
 
 	"Apron",
@@ -233,17 +247,9 @@ let LAYERS_BASE = [
 	"ShirtOver",
 
 	// Skirt part that goes in front of corsets, shirts, etc
-	"LegbinderLegLeftPants",
-	"LegbinderLegLeftLowerPants",
-	"LegbinderAnkleLeftPants",
-	"SkirtOverDecoOverKneel",
-	"SkirtOverOverKneel",
 
 	"CrotchPanelMid",
 	
-	"LegbinderLegRightPants",
-	"LegbinderLegLowerRightPants",
-	"LegbinderAnkleRightPants",
 	"SkirtOverDeco",
 	"SkirtOver",
 
@@ -268,8 +274,6 @@ let LAYERS_BASE = [
 	"Bra",
 
 	// Skirts that are slim and follow the shilhouette
-	"SkirtDecoOverKneel",
-	"SkirtOverKneel",
 	"SkirtDeco",
 	"Skirt",
 
@@ -310,6 +314,9 @@ let LAYERS_BASE = [
 	"AnkleLeft",
 
 	"WrappingLegs2",
+
+	"SpreaderBar",
+
 	"WrappingLegs",
 
 
@@ -363,6 +370,7 @@ let LAYERS_BASE = [
 
 
 	
+	"PetsuitLegsRight",
 
 	// Lower harness
 	"Option2_ChastityBeltLower",
@@ -401,7 +409,6 @@ let LAYERS_BASE = [
 	// Right leg
 	"WrappingLegsRightOver",
 	
-	"PetsuitLegsRight",
 	"BindThighRight",
 	"RightThighs3",
 	"RightThighs2",
@@ -415,6 +422,7 @@ let LAYERS_BASE = [
 	"ThighRightOver",
 	"AnkleRightOver",
 	"PantsAccRight",
+	"ShortsRight",
 	"PantRight",
 	"PantLegs",
 
@@ -427,7 +435,6 @@ let LAYERS_BASE = [
 
 	// Left arm clothes
 
-	"BulkyShirt",
 	
 	"WrapArmLeft",
 	"BindArmLeft",
@@ -469,6 +476,7 @@ let LAYERS_BASE = [
 	// External overlaps are fine, e.g. right leg goes over
 	"ShoulderLeft",
 	"UpSleeveRight",
+	"ShoulderSleeveRight",
 	"ShoulderRight",
 	"TorsoUpper",
 	"Butt",
@@ -480,6 +488,14 @@ let LAYERS_BASE = [
 
 	"BindElbowLeft",
 	"BindHandLeft",
+
+
+
+	"BindCrossElbowLeft",
+	"BindForeElbowLeft",
+	
+	"BindCrossElbowRight",
+	"BindForeElbowRight",
 
 	"BindWristLeft",
 	"LowerArmBondageLeft",
@@ -571,14 +587,17 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "UpperTorso", start: "WrappingChest", end: "Straps"},
 	{id: "Chest", start: "Straps", end: "WrappingTorsoUpper"},
 	{id: "ClothMid", start: "WrappingTorsoUpper", end: "WrapCrossArms"},
-	{id: "ArmsCross", start: "WrapCrossArms", end: "BeltBondage"},
-	{id: "UnderBustBondage", start: "BeltBondage", end: "BaggyShirt"},
-	{id: "BaggyShirtAndSkirt", start: "BaggyShirt", end: "WrappingTorsoMid"},
+	{id: "ArmsCross", start: "WrapCrossArms", end: "LegbinderLegLeftPants"},
+	{id: "LegbinderLeft", start: "LegbinderLegLeftPants", end: "LegbinderLegRightPants"},
+	{id: "LegbinderRight", start: "LegbinderLegRightPants", end: "BeltBondage"},
+	{id: "UnderBustBondage", start: "BeltBondage", end: "SkirtOverDecoOverKneel"},
+	{id: "SkirtOverKneelLeft", start: "SkirtOverDecoOverKneel", end: "SkirtDecoOverKneel"},
+	{id: "SkirtKneelLeft", start: "SkirtDecoOverKneel", end: "BulkyShirt"},
+	{id: "BaggyShirtAndSkirt", start: "BulkyShirt", end: "WrappingTorsoMid"},
 	{id: "WrappingMid", start: "WrappingTorsoMid", end: "OverCrotchStrapMid"},
-	{id: "ClothLower", start: "OverCrotchStrapMid", end: "LegbinderLegLeftPants"},
-	{id: "SkirtOverKneelLeft", start: "LegbinderLegLeftPants", end: "CrotchPanelMid"},
-	{id: "SkirtOver", start: "LegbinderLegRightPants", end: "Cincher"},
-	{id: "SkirtKneelLeft", start: "SkirtDecoOverKneel", end: "SkirtDeco"},
+	{id: "HarnessMid", start: "Option2_ChastityBelt", end: "Bustier"},
+	{id: "ClothLower", start: "Bustier", end: "CrotchPanelMid"},
+	{id: "SkirtOver", start: "SkirtOverDeco", end: "Cincher"},
 	{id: "Skirt", start: "SkirtDeco", end: "WrappingLegsOver"},
 	{id: "OverLegsLeft", start: "WrappingLegsOver", end: "WrappingTorsoUnder"},
 	{id: "OverLegs", start: "WrappingTorsoUnder", end: "ThighLeftOver"},
@@ -588,6 +607,7 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "OverLegs3", start: "WrappingLegs2", end: "OverShoes"},
 	{id: "PantLeft", start: "OverShoes", end: "Saddle"},
 	{id: "SkirtLower", start: "SkirtOverLowerDeco", end: "Shorts"},
+	{id: "PetsuitRight", start: "TightPants", end: "PetsuitLegsRight"},
 	{id: "BikiniZone", start: "Option2_ChastityBeltLower", end: "WrappingLegsRightOver"},
 	{id: "LegRightOver", start: "WrappingLegsRightOver", end: "HarnessUnder"},
 	{id: "ArmLeftOver", start: "WrapArmLeft", end: "ShoeRightOver"},
@@ -597,7 +617,8 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "ArmLeft", start: "BindElbowLeft", end: "WrappingLegsUnderHogtie"},
 	{id: "FeetBack", start: "AnkleLeftHogtie", end: "WrapArmRight"},
 	{id: "ArmRight", start: "WrapArmRight", end: "BindChainLinksUnder"},
-	{id: "ClothesBack", start: "SkirtBack", end: "FurnitureBackLinked"},
+	{id: "LegLinks", start: "BindChainLinksUnder", end: "LegbinderBack"},
+	{id: "ClothesBack", start: "LegbinderBack", end: "FurnitureBackLinked"},
 	{id: "Furniture", start: "FurnitureBackLinked", end: "BG"},
 	{id: "BG", start: "BG", end: "BG"},
 ];
@@ -724,6 +745,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 	]),
 	"Shoes": ToMap([
 		"ShoeLeft",
@@ -756,12 +778,14 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 	]),
 	"SlimeTorsoLower": ToMap([
 		"OverSkirt",
 		"Pants",
 		"TightPants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 	]),
 	// endregion
@@ -775,6 +799,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 		"AnkleLeftOver",
 		"AnkleRightOver",
 		"BindFeet",
@@ -792,6 +817,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 		"AnkleLeftOver",
 		"AnkleRightOver",
 		"BindFeet",
@@ -812,6 +838,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 		"AnkleLeftOver",
 		"AnkleRightOver",
 		"BindFeet",
@@ -834,6 +861,7 @@ let LayerGroups = {
 		"Ankles1",
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 		"AnkleLeftOver",
 		"AnkleRightOver",
 		"BindFeet",
@@ -878,6 +906,7 @@ let LayerGroups = {
 	"BalletHeelsCuffs": ToMap([
 		"AnkleLeft",
 		"AnkleRight",
+		"RightAnkles3","RightAnkles2","RightAnkles1",
 	]),
 	"HeelRight": ToMap([
 		"FootLeft",
@@ -894,7 +923,31 @@ let LayerGroups = {
 		"WrappingLegsRight",
 		"WrappingLegsUnder",
 
+
 	]),
+	"LegbinderRight": ToMap([
+		"FootLeft",
+		"FootRightKneel",
+		"StockingLeftKneel", "StockingLeft",
+		"StockingLeftKneel", "StockingLeft",
+		"FootLeft",
+		"LegLeft",
+		"FootRight",
+		"StockingRight",
+		"FootRight",
+		"LegRight",
+		"ShoeLeftUnder",
+		"ShoeRightUnder",
+		"ShoeLeft",
+		"ShoeRight",
+		"WrappingLegsUnder",
+		"WrappingLegsRight",
+		"WrappingLegs",
+
+
+	]),
+
+	
 	"BalletHeelRight": ToMap([
 		"FootLeft",
 		"FootRightKneel",
@@ -928,6 +981,7 @@ let LayerGroups = {
 		"UpSleeveRight",
 		"ArmLeft",
 		"ArmRight",
+		"ShoulderSleeveRight",
 		//"TorsoUpper",
 
 		"CrossMittenLeft",
@@ -953,6 +1007,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"UpSleeveRight",
+		"ShoulderSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -1034,6 +1089,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"UpSleeveRight",
+		"ShoulderSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -1115,6 +1171,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"UpSleeveRight",
+		"ShoulderSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -1144,6 +1201,7 @@ let LayerGroups = {
 		"TightPants",
 		"Pants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1177,6 +1235,7 @@ let LayerGroups = {
 		"TightPants",
 		"Pants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1208,6 +1267,7 @@ let LayerGroups = {
 		"TightPants",
 		"Pants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1251,6 +1311,7 @@ let LayerGroups = {
 
 		"ForeSleeveDecoRight",
 		"ForeSleeveRight",
+		"ShoulderSleeveRight",
 		"ForeMittenRight",
 		"ForeGloveRight",
 		"ForeHandRight",
@@ -1275,6 +1336,7 @@ let LayerGroups = {
 
 		"ForeSleeveRight",
 		"ForeSleeveDecoRight",
+		"ShoulderSleeveRight",
 		"GloveRight",
 		"MittenLeft",
 		"MittenRight",
@@ -1287,6 +1349,7 @@ let LayerGroups = {
 		"TightPants",
 		"Pants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1326,6 +1389,7 @@ let LayerGroups = {
 		"TightPants",
 		"Pants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		// Shoes
@@ -1433,6 +1497,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"UpSleeveRight",
+		"ShoulderSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -1460,6 +1525,7 @@ let LayerGroups = {
 		"Pants",
 		"TightPants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1490,6 +1556,7 @@ let LayerGroups = {
 		"MittenRight",
 		"GloveRight",
 		"ForeHandRight",
+		"ShoulderSleeveRight",
 	]),
 
 	"CorsetBra": ToMap([
@@ -1517,6 +1584,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"ArmRight",
 		"GloveRight",
+		"ShoulderSleeveRight",
 	]),
 
 	"RibbonThighs": ToMap([
@@ -1525,6 +1593,7 @@ let LayerGroups = {
 		"Pants",
 		"TightPants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1557,6 +1626,7 @@ let LayerGroups = {
 		"Pants",
 		"TightPants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		// Shoes
@@ -1608,6 +1678,7 @@ let LayerGroups = {
 		"Pants",
 		"TightPants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		// Shoes
@@ -1717,6 +1788,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"UpSleeveRight",
+		"ShoulderSleeveRight",
 		//"ArmLeft",
 		//"ArmRight",
 	]),
@@ -1784,6 +1856,15 @@ let LayerGroups = {
 			"Circlet",
 		]
 	),
+	Waistbelts: ToMap([
+		"BeltBondage",
+		"BeltCharm",
+		"BeltCharmSide",
+		"BeltArmor",
+		"Belt",
+		"BeltDeco",
+		"BeltUnder",
+	]),
 	Skirts: ToMap([
 		// These count as skirts since they are a layer over
 		"LegbinderLegRightPants",
@@ -1791,6 +1872,8 @@ let LayerGroups = {
 		"LegbinderAnkleRightPants",
 		
 		"BaggyShirt",
+		
+		"BulkyShirt","BulkyJacket",
 
 		"Apron",
 		"SkirtDeco",
@@ -1804,6 +1887,7 @@ let LayerGroups = {
 		// TODO make open sleepsack legs erase these
 		
 		"BaggyShirt",
+		"BulkyShirt","BulkyJacket",
 
 		"Apron",
 		"SkirtDeco",
@@ -1843,6 +1927,7 @@ let LayerGroups = {
 
 	"ForeSleeveRight",
 	"ForeSleeveDecoRight",
+		"ShoulderSleeveRight",
 
 
 
@@ -1902,6 +1987,7 @@ let LayerGroups = {
 	"Apron",
 
 	"BaggyShirt",
+		"BulkyShirt","BulkyJacket",
 	// Skirts that dont follow shilhouette
 	"OverSkirtOverDeco",
 	"OverSkirtOver",
@@ -1978,6 +2064,7 @@ let LayerGroups = {
 	"Pants",
 		"TightPants",
 	"ShortsLeft",
+	"ShortsRight",
 	"Shorts",
 
 	"SleeveDecoLeft",
@@ -2175,6 +2262,9 @@ let LayerProperties = {
 		Parent: "Head",
 	},
 	HairFront: {
+		Parent: "Head",
+	},
+	Ahoge: {
 		Parent: "Head",
 	},
 	HairOver: {
