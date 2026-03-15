@@ -1126,6 +1126,46 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 
 	return ret;
 }
+/**
+ * @param item
+ */
+function KDInventoryItemHover(item: any) {
+    let name = item.name;
+    let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentified(item);
+    let prefix = "KinkyDungeonInventoryItem";
+    let nameText = KDGetItemName(item.item)
+    if (item.type == Restraint || item.type == LooseRestraint) {
+        prefix = "Restraint";
+    }
+    let mods = [];
+    if (item.item.events) {
+        item.item.events.forEach((t) => {
+            if (t.trigger == "inventoryTooltip") {
+                if (t.type == "varModifier") {
+                    mods.push({
+                        str: TextGet("KDVariableModifier_" + t.msg)
+                                .replace("AMNT", `${t.power >= 0 ? "+" : ""}${Math.round(t.power)}`)
+                                .replace("DRTN", `${Math.round(t.duration)}`)
+                                .replace("DMG", TextGet("KinkyDungeonDamageType" + t.damage))
+                                .replace("TYPE", `${t.kind}`),
+                        colorFG: "#eeeeee",
+                        colorBG: t.bgcolor || KDBaseBlack,
+                        TextSize: 20
+                    });
+                }
+            }
+        })
+    }
+    let hoverobject = {
+        type: "InventoryItem",
+        item: item,
+        name: (unidentified ? "Unknown" : nameText),
+        TitleTextColor: KDBaseWhite,
+        TitleTextColorBack: KDBaseBlack,
+        ItemMods: mods
+    }
+    return hoverobject
+}
 
 /**
  * @param item
@@ -1574,7 +1614,8 @@ function KDDrawInventoryContainer (
 						(prefix ? KinkyDungeonCurrentPageContainer : KinkyDungeonCurrentPageInventory),
 					colorcallback ? colorcallback(filteredInventory[index]) : KDTextGray1, undefined, undefined, {
 						scaleImage: true,
-					}) && !tooltipitem) {
+                    //@ts-ignore // This should have a type assigned to it probably, but I do not know where to trace to make it happy. -Enraa
+					}, KDInventoryItemHover(filteredInventory[index])) && !tooltipitem) {
 						tooltipitem = filteredInventory[index];
 					}
 					if (useIcons && filteredInventory[index].preview2)

@@ -1388,6 +1388,56 @@ let KDErrorTextTime = 0;
 let KDErrorTextTime_DELAY = 2500;
 
 let KDCurrentHoverButton: KDButtonParamData = null;
+let KDCurrentHoverBox: KDButtonParamData;
+
+let KDHoverTypes = ["InventoryItem"]
+let KDHoverFunctions = {
+    "InventoryItem": (hover) => {
+        let currentlyhovering = ((MouseX >= KDCurrentHoverBox.Left) && (MouseX <= KDCurrentHoverBox.Left + KDCurrentHoverBox.Width) && (MouseY >= KDCurrentHoverBox.Top) && (MouseY <= KDCurrentHoverBox.Top + KDCurrentHoverBox.Height));
+        if (!currentlyhovering) {
+            KDCurrentHoverBox = undefined;
+            return;
+        }
+        let pad = 10;
+        let TooltipWidth = Math.max(20, 220, (Math.min(hover.Hover.name.length * 12, 350)));
+        let TooltipHeight = Math.max(20, ((pad * 2) + ((hover.Hover.ItemMods ?? []).length > 0 ? 46 : 20) + (hover.Hover.ItemMods ?? []).length * (20 + 10)));
+
+        let tooltipX = KDCurrentHoverBox.Left + KDCurrentHoverBox.Width;
+        // Move the tooltip to the left if it would flow off the right side of the screen.
+        if ((tooltipX + TooltipWidth + 10) > 2000) {
+            tooltipX = KDCurrentHoverBox.Left - TooltipWidth;
+        }
+        let tooltipY = KDCurrentHoverBox.Top;
+        // Move the tooltip up if it would flow off the bottom of the screen. 
+        if ((tooltipY + TooltipHeight + 10) > 1000) {
+            tooltipY = 1000 - TooltipHeight;
+        }
+        let YY = 20;
+        FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + hover.Hover.name, {
+            Left: tooltipX,
+            Top: tooltipY, //- 25,
+            Width: TooltipWidth,
+            Height: TooltipHeight, //+ 20,
+            Color: KDBaseBlack,
+            LineWidth: 1,
+            zIndex: 700,
+            alpha: 0.8,
+        });
+        
+        if (hover.Hover.name) {
+            DrawTextFitKD(`${hover.Hover.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, hover.Hover.TitleTextColor, hover.TitleTextColorBack, (hover.Hover.TitleTextSize ? hover.Hover.TitleTextSize : 24), "center", 701);
+            YY += (hover.TitleTextSize ? (hover.TitleTextSize + 4) : 16);
+        }
+        YY = YY + 30
+        if (hover.Hover.ItemMods) {
+            hover.Hover.ItemMods.forEach((mod) => {
+                DrawTextFitKD(mod.str, tooltipX + pad, tooltipY + YY, TooltipWidth - 2 * pad, mod.colorFG, mod.colorBG, (mod.TextSize ? mod.TextSize : 20), "left", 701);
+                YY += (mod.TextSize + 10);
+            })
+        }
+    }
+}
+
 let KDLastScrollableListUpdate = 0;
 let mouseHoldTaken = "";
 
@@ -3590,7 +3640,8 @@ interface KDButtonParamData {
 	func?: (bdata: KDButtonPressData) => boolean,
 	priority: number,
 	scrollfunc?: (amount: number) => void,
-	hotkeyPress?: string, contextMenu?: string
+	hotkeyPress?: string, contextMenu?: string,
+    Hover?: any
 }
 
 let KDButtonsCache: Record<string, KDButtonParamData> = {
@@ -3631,7 +3682,8 @@ function DrawButtonKD (
 	Image?:		string,
 	HoveringText?:	string,
 	Disabled?:	boolean,
-	NoBorder?:	boolean
+	NoBorder?:	boolean,
+    Hover?:      Function,
 ): void
 {
 	let params = {
@@ -3641,10 +3693,14 @@ function DrawButtonKD (
 		Height,
 		enabled,
 		priority: 0,
+        Hover
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		if (!KDCurrentHoverButton) {
+            KDCurrentHoverButton = params;
+            KDCurrentHoverBox = params;
+        }
 		else Disabled = true;
 	}
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder);
@@ -3777,6 +3833,7 @@ function DrawButtonKDEx (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	any,
+    Hover?:      Function,
 ): boolean
 {
 	let params = {
@@ -3788,10 +3845,14 @@ function DrawButtonKDEx (
 		func,
 		priority: (options?.zIndex || 0),
 		hotkeyPress: options?.hotkeyPress,
+        Hover,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		if (!KDCurrentHoverButton) {
+            KDCurrentHoverButton = params;
+            KDCurrentHoverBox = params;
+        }
 		else Disabled = true;
 	}
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
@@ -3926,6 +3987,7 @@ function DrawButtonKDExScroll (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	any,
+    Hover?:      Function,
 ): boolean
 {
 	
@@ -3939,10 +4001,14 @@ function DrawButtonKDExScroll (
 		priority: (options?.zIndex || 0),
 		scrollfunc: scrollfunc,
 		hotkeyPress: options?.hotkeyPress,
+        Hover,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		if (!KDCurrentHoverButton) {
+            KDCurrentHoverButton = params;
+            KDCurrentHoverBox = params;
+        }
 		else Disabled = true;
 	}
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
