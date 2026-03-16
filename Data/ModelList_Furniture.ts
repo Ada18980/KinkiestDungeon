@@ -35,6 +35,10 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Rim", Layer: "FurnitureFront", Pri: 20,
 			Invariant: true,
+			EraseSprite: "FutureBox",
+			EraseLayers: ToMap(["All"]),
+			EraseAmount: 100,
+			EraseInvariant: true,
 			HidePoses: ToMap(["Sprite"]),
 		},
 		{ Name: "Display", Layer: "FurnitureFront", Pri: 20.1,
@@ -63,10 +67,6 @@ AddModel({
 		},
 		{ Name: "Back", Layer: "FurnitureBack", Pri: -20,
 			Invariant: true,
-			EraseSprite: "FutureBox",
-			EraseLayers: ToMap(["All"]),
-			EraseAmount: 100,
-			EraseInvariant: true,
 			HidePoses: ToMap(["Sprite"]),
 		},
 	])

@@ -12,7 +12,8 @@ let KDMusicLoopTracksChance = {
 	"AREA8-ORRERY.ogg": 0.7,
 	"AREA9-BELLOWS.ogg": 0.5,
 	"Shopping.ogg": 0.15,
-	"slimy_science_1.ogg": 0.15,
+	"MachinedPerfection_Loopable.ogg": 0.15,
+	"SlimyScience.ogg": 0.15,
 };
 
 let KDMusicUpdateTime = 0;
@@ -133,7 +134,8 @@ function KDUpdateMusic() {
 
 	if (allowMusic) {
 		KDCurrentMusicSoundUpdate = false;
-		let KDMusic = KinkyDungeonMapParams[KDGetMusicCheckpoint()].music;
+		let altRoom = KDGameData.RoomType ? KinkyDungeonAltFloor(KDGameData.RoomType) : KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel);
+		let KDMusic = altRoom?.music || KinkyDungeonMapParams[KDGetMusicCheckpoint()].music;
 
 		if (!KDNewSong) {
 			let iter = 0;

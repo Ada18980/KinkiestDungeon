@@ -1878,7 +1878,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 		music: {
 			"AREA9-BELLOWS.ogg": 20,
-			"slimy_science_1.ogg": 9,
+			"SlimyScience.ogg": 9,
 		},
 
 		tagModifiers: {

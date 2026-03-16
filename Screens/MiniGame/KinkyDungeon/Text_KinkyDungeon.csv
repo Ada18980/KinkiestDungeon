@@ -31193,8 +31193,11 @@ RestraintVineSuspension,Vine Suspension
 RestraintVineSuspensionDesc,"Vines linked to your bindings that keep you suspended!"
 RestraintVineSuspensionDesc2,"You are left dangling! Maybe if you swing hard enough you can tear the vines..."
 
-slimy_science_1.ogg,EchoZero - Slimy Science
+SlimyScience.ogg,EchoZero - Slimy Science
+MachinedPerfection.ogg,EchoZero - Machined Perfection
+MachinedPerfection_Loopable.ogg,EchoZero - Machined Perfection
 GENERIC-DOLLRACK.ogg,Kocaeli - Doll Storage
+Doll_Sorting_Room.ogg,Kocaeli - Doll Sorting Area
 factory_ambient.ogg,Kocaeli - Factory
 AAA.ogg,Kocaeli - AAA
 DD.ogg,Kocaeli - DD

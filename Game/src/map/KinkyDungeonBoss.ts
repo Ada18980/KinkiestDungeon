@@ -17,6 +17,9 @@ let bosses: Record<string, AltTypeBoss> = {
 			"FuukaAltar": 1000,
 		},
 		genType: "Chamber",
+		jailType: "Elf",
+		guardType: "Elf",
+		faction: "Elf",
 		spawns: false,
 		chests: false,
 		shrines: false,
@@ -41,9 +44,14 @@ let bosses: Record<string, AltTypeBoss> = {
 		bossroom: true,
 		jailType: "Dollsmith",
 		guardType: "Dollsmith",
+		faction: "Dollsmith",
 		width: 21,
 		height: 21,
 		setpieces: {
+		},
+		music: {
+			"AREA9-BELLOWS.ogg": 1,
+			"MachinedPerfection_Loopable.ogg": 20,
 		},
 		genType: "Dollmaker",
 		musicParams: "Dollmaker",
@@ -78,6 +86,7 @@ let bosses: Record<string, AltTypeBoss> = {
 		bossroom: true,
 		jailType: "Warden",
 		guardType: "Warden",
+		faction: "Warden",
 		width: 21,
 		height: 21,
 		setpieces: {

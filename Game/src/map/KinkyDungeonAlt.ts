@@ -158,6 +158,7 @@ interface AltType {
 	shrines: boolean,
 	orbs?: number,
 	setpieces: Record<string, number>,
+	music?: Record<string, number>,
 	chargers: boolean,
 	notorches?: boolean,
 	heart: boolean,

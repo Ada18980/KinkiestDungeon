@@ -1759,6 +1759,30 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						}
 					}
 
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					if (tile?.Furniture) {
+						KDMovePlayer(KDGameData.InteractTargetX, KDGameData.InteractTargetY, true);
+
+						let furn = KDFurniture[tile.Furniture];
+						if (furn) {
+							KinkyDungeonSetFlag("GuardCalled", 5000);
+							let rest = KinkyDungeonGetRestraint(
+								{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+								KDCurrIndex(),
+								true,
+								"None",
+								true,
+								false,
+								false);
+							if (rest) {
+								KinkyDungeonAddRestraintIfWeaker(rest, KDGetEffLevel(), true, "None");
+								if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockHeavy.ogg");
+							}
+						}
+
+					}
+
+
 					KDSleep();
 					return false;
 				},
@@ -1768,10 +1792,56 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						exitDialogue: true,
 					},
 				},
-				greyoutFunction: (_gagged, _player) => {
+				greyoutFunction: (_gagged, player) => {
+					if (KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY)
+						&& KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY) != player) return false;
+
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					if (tile?.Furniture) {
+						let furn = KDFurniture[tile.Furniture];
+						if (furn) {
+							KinkyDungeonSetFlag("GuardCalled", 50);
+							let rest = KinkyDungeonGetRestraint(
+								{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+								KDCurrIndex(),
+								true,
+								"",
+								true,
+								false,
+								false);
+							if (rest) {
+								return true;
+							}
+						}
+					}
+
 					return KDCanSleep(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				},
-				greyoutCustomTooltip: (_gagged, _player) => {
+				greyoutCustomTooltip: (_gagged, player) => {
+					if (KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY)
+						&& KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY) != player) return "KDOccupied";
+
+					else {
+						let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+						if (tile?.Furniture) {
+							let furn = KDFurniture[tile.Furniture];
+							if (furn) {
+								KinkyDungeonSetFlag("GuardCalled", 50);
+								let rest = KinkyDungeonGetRestraint(
+									{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+									KDCurrIndex(),
+									true,
+									"",
+									true,
+									false,
+									false);
+								if (rest) {
+									return "KDCantEnterFurniture";
+								}
+							}
+						}
+						
+					}
 					return KDCanSleepTooltip(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				}
 			},
@@ -5218,7 +5288,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Fight": {
 				prerequisiteFunction: (_gagged, _player) => {return false;},
 				enterFunction: () => {
-					KDPlayMusic("slimy_science_1.ogg", undefined, true);
+					KDPlayMusic("MachinedPerfection.ogg", undefined, true);
 					return false;
 				},
 				playertext: "Default", response: "Default",
@@ -5268,7 +5338,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 			"Attack": {
 				clickFunction: () => {
-					KDPlayMusic("slimy_science_1.ogg", undefined, true);
+					KDPlayMusic("MachinedPerfection.ogg", undefined, true);
 					return false;
 				},
 				playertext: "Default", exitDialogue: true},
