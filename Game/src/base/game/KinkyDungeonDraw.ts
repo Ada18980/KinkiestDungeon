@@ -1108,6 +1108,9 @@ function KinkyDungeonDrawGame() {
 
 	
 	KinkyDungeonCapStats();
+    if (KDHoverTypes.includes(KDCurrentHoverBox?.Hover?.type)) {
+        KDHoverFunctions[KDCurrentHoverBox?.Hover?.type](KDCurrentHoverBox);
+    }
 
 	if (KDContextMenu && KDCurrentHoverButton?.contextMenu) {
 		KDDrawGameContextMenu[KDCurrentHoverButton.contextMenu](true, MouseX, MouseY);
