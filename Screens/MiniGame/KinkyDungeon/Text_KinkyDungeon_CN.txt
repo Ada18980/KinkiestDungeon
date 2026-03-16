@@ -5003,6 +5003,7 @@ M.F. '女仆长'
 黑商亲吻并抚摸你的身体！ ( DamageTaken )
 - That dagger was laced with something...
 那把匕首上沾着什么东西……
+# - The dagger that hits you is poisoned, but it doesn't affect you.
 - You hear a shattering of glass, suddenly the air around you feels thick and moist...
 你听到玻璃破碎的声音，身边的空气突然变得粘稠而潮湿……
 - Poison Dagger
@@ -14527,6 +14528,7 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 
 - You feel a prick as a small syringe hits you, and you start feeling drowsy...
 当一个小型注射器击中你时，你会感到刺痛，然后你开始感到昏昏欲睡……
+# - You feel a prick as a small syringe hits you, but nothing happens.
 - The thrown cuffs snap shut around your ankles and slow you down!!!
 抛出的手铐会卡住你的脚踝，让你慢下来！
 - Ribbon Burst
@@ -14547,6 +14549,8 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 孢子让你感到兴奋！
 - The toxic spores make you feel faint...
 有毒的孢子让你感到头晕目眩……
+# - The spores do not affect you.
+
 
 - Magic Hairpin
 魔法发夹
@@ -49360,6 +49364,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: KinkyDungeonSummonMultiIceWall
 - The dragon's breath poisons you!
 龙息让你中毒！
+# - The dragon's breath does not affect you.
 - The dragon girl strikes you with poisonous razor leaves!
 龙娘使用带毒锋利叶片攻击你！
 - The flower releases soporific spores!
@@ -49381,8 +49386,12 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - EchoZero - Slimy Science
 EchoZero -《黏糊糊的科学》
+# - EchoZero - Machined Perfection
+# :: MachinedPerfection.ogg
+# :: MachinedPerfection_Loopable.ogg
 - Kocaeli - Doll Storage
 Kocaeli - 《玩偶柜》
+# - Kocaeli - Doll Sorting Area
 - Kocaeli - Factory
 Kocaeli - 《工厂》
 - Kocaeli - AAA
