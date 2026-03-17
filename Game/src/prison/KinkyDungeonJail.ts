@@ -2441,9 +2441,9 @@ let KDCustomDefeatUniforms = {
 	},
 };
 
-function KDFixPlayerClothes(faction: string) {
-	for (let inv of KinkyDungeonAllRestraintDynamic()) {
-		inv.item.faction = faction;
+function KDFixPlayerClothes(faction: string, itemsList?: item[]) {
+	for (let inv of (itemsList || KDAllRestraintDynamicList())) {
+		inv.faction = faction;
 	}
 }
 

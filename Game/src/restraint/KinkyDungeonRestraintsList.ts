@@ -9832,7 +9832,9 @@ let KDControlHarnessCategories = {
 					addedGroup[newRestraint.Group] = true;
 					//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
 					if (
-						KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
+						KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, 
+							"", false, undefined, undefined, item.faction, true)) {
+						if (item.faction) KDFixPlayerClothes(item.faction);
 						if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/RobotEngage.ogg");
 						succ = true;
 					}
@@ -9882,6 +9884,7 @@ let KDControlHarnessCategories = {
 					//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
 					if (
 						KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
+						if (item.faction) KDFixPlayerClothes(item.faction);
 						if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/RobotEngage.ogg");
 						succ = true;
 					}
@@ -9930,6 +9933,7 @@ let KDControlHarnessCategories = {
 					if (KinkyDungeonGetRestraintItem(KDRestraint(newRestraint).Group)) continue;
 					if (
 						KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
+						
 						if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/RobotEngage.ogg");
 					}
 				}
