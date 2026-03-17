@@ -439,7 +439,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	//"NoKigu": {category: "Toggles", id: "NoKigu", cost: 0, tags: ["start"], debuff: true},
 
 	//"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
-	//"NoHelp": {category: "Toggles", id: "NoHelp", cost: 0, tags: ["start"]},
+	"NoHelp": {category: "Toggles", id: "NoHelp", cost: 0, tags: ["start"]},
 
 	//"Estim": {category: "Toggles", id: "Estim", cost: 0, tags: ["start"], debuff: true},
 
