@@ -1074,6 +1074,13 @@ function KDReloadMainData(force: boolean) {
 				kdgammafilterstore[0] = KDGamma;
 			}
 		}
+		if (localStorage.getItem("KDCharSize") != undefined) {
+			let parsed = parseInt(localStorage.getItem("KDCharSize"));
+			if (parsed != undefined) {
+				KDCharSizeListIndex = parsed;
+				KDCharSize = KDCharSizeList[KDCharSizeListIndex] || 0;
+			}
+		}
 		if (localStorage.getItem("zoomLvl") != undefined) {
 			let parsed = parseInt(localStorage.getItem("zoomLvl"));
 			if (parsed != undefined) {
@@ -1707,7 +1714,9 @@ function KinkyDungeonRun() {
 			});
 		}
 		let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
-		DrawCharacter(Char, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+		DrawCharacter(Char, 
+			250 - 250 * KDCharSize,
+			0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, KDCharSize, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
 	}
 
 	if (CommonIsMobile && mouseDown && !KDMouseInPlayableArea()) {
@@ -5897,7 +5906,10 @@ function KDUpdateConsentSettings(allowBackport: boolean) {
 						if (entry[1]["perkNo" + type2])
 							KinkyDungeonStatsChoice.delete(entry[1]["perk" + type2]);
 					}
-					// mark this consent entry
+				}
+			}
+			for (let type of KDConsentPerkTypes) {
+				if (KDConsentArray[entry[0]] == type) {
 					KinkyDungeonStatsChoice.set(entry[1]["perk" + type], true);
 					break;
 				}
@@ -6232,7 +6244,14 @@ function KDMenuTogglesClick() {
 				localStorage.setItem("KDGamma", "" + KDGammaListIndex);
 				kdgammafilterstore[0] = KDGamma;
 			}
-			YY += YYd*2;
+			YY += YYd;
+			if (MouseIn(CombarXX, YY, 350, 64)) {
+				if (MouseX <= CombarXX + 350/2) KDCharSizeListIndex = (KDCharSizeList.length + KDCharSizeListIndex - 1) % KDCharSizeList.length;
+				else KDCharSizeListIndex = (KDCharSizeListIndex + 1) % KDCharSizeList.length;
+				KDCharSize = KDCharSizeList[KDCharSizeListIndex] || 0;
+				localStorage.setItem("KDCharSize", "" + KDCharSizeListIndex);
+			}
+			YY += YYd*1.25;
 		}
 
 		if (MouseIn(CombarXX, YY, 350, 64)) {
@@ -6262,7 +6281,7 @@ function KDMenuTogglesClick() {
 			KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
 			localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
 		}
-		YY += YYd;
+		YY += YYd*1.25;
 		if (MouseIn(CombarXX, YY, 350, 64)) {
 			if (MouseX <= CombarXX + 350/2) KDSelectedFontListIndex = (KDSelectedFontList.length + KDSelectedFontListIndex - 1) % KDSelectedFontList.length;
 			else KDSelectedFontListIndex = (KDSelectedFontListIndex + 1) % KDSelectedFontList.length;
@@ -8005,7 +8024,11 @@ function KDTogglesDraw() {
 				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDGamma") + " " + (Math.round(KDGamma * 100) + "%"), KDBaseWhite, "",
 					() => KDGammaList[(KDGammaListIndex + KDGammaList.length - 1) % KDGammaList.length] * 100 + "%",
 					() => KDGammaList[(KDGammaListIndex + 1) % KDGammaList.length] * 100 + "%");
-				YY += YYd * 2;
+				YY += YYd * 1.25;
+				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDCharSize") + " " + (Math.round(KDCharSize * 100) + "%"), KDBaseWhite, "",
+					() => KDCharSizeList[(KDCharSizeListIndex + KDCharSizeList.length - 1) % KDCharSizeList.length] * 100 + "%",
+					() => KDCharSizeList[(KDCharSizeListIndex + 1) % KDCharSizeList.length] * 100 + "%");
+				YY += YYd;
 			}
 
 			DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), KDBaseWhite, "",
@@ -8023,7 +8046,7 @@ function KDTogglesDraw() {
 			DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), KDBaseWhite, "",
 				() => KDAnimSpeedList[(KDAnimSpeedListIndex + KDAnimSpeedList.length - 1) % KDAnimSpeedList.length] * 100 + "%",
 				() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
-			YY += YYd;
+			YY += YYd * 1.25;
 			DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDSelectedFont") + " " + (KDSelectedFont), KDBaseWhite, "",
 				() => KDSelectedFontList[(KDSelectedFontListIndex + KDSelectedFontList.length - 1) % KDSelectedFontList.length],
 				() => KDSelectedFontList[(KDSelectedFontListIndex + 1) % KDSelectedFontList.length]);

@@ -275,7 +275,7 @@ function KinkyDungeonDrawDoor() {
 		//}
 		DrawButtonKDEx("ModalDoorPick", () => {
 			if (KinkyDungeonTargetTile)
-				if (KinkyDungeonItemCount("Pick") > 0 && (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}))) {
+				if ((KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}))) {
 					// Done, converted to input
 					KDSendInput("pick", {targetTile: KinkyDungeonTargetTileLocation});
 					return true;

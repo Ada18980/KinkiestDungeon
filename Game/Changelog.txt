@@ -59,6 +59,16 @@ Must do
 - species perks
 - Doll stand (based on real doll stands?)
 
+5.5.0
+- Added doll body type
+- Added Doll species perk
+- Changed the warden's orb spell so that you need to get hit 3 times for the one bar prison to be applied
+- Made the warden's taunt mechanic explain itself if you get hit by it
+- Added character size option
+- One bar spike traps now take 3 turns to trigger, up from 2
+- Fixed bug with leashing getting stuck on conveyors
+- Fixed a bug where bast cultists would never apply kitty suit in jail
+
 5.4.93
 - One bar prisons now are harder to escape if you wear heels
 - one bar prisons now appear around the map sometimes

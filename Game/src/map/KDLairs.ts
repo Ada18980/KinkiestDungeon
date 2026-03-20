@@ -50,6 +50,14 @@ let KDLairTypes: Record<string, lairType> = {
 		DefaultEntranceFrom: "Jail",
 		AlwaysHide: true,
 	},
+	DollShoppe: {
+		Entrances: {},
+		DefaultEntrance: "Jail",
+		EntrancesFrom: {},
+		DefaultEntranceFrom: "Jail",
+		AlwaysHide: true,
+	},
+	
 }
 
 function KDGenerateLairNameFromEnemy(RoomType: string, enemy: entity): string {

@@ -792,7 +792,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			{
 				name: "TauntGround",
 				duration: playerEffect.time + 1,
-			}, 0, Math.max(2.5, KDistEuclidean(ent.x - KinkyDungeonPlayerEntity.x, ent.y - KinkyDungeonPlayerEntity.y)), undefined, undefined, undefined);
+			}, 0, Math.max(2.5, 1.5 + KDistEuclidean(ent.x - KinkyDungeonPlayerEntity.x, ent.y - KinkyDungeonPlayerEntity.y)), undefined, undefined, undefined);
 
 		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonTaunted"), "yellow", playerEffect.time);
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDTaunted, {
@@ -828,7 +828,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			if (tt?.player) {
 				KinkyDungeonApplyBuffToEntity(tt, {
 					id: "FuukaOrb",
-					duration: 300,
+					duration: 100,
 					tags: ["removeNewMap", "removeDefeat"],
 					power: 1,
 					type: "SlowLevel",
@@ -839,7 +839,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}, (tt) => {
 			KinkyDungeonApplyBuffToEntity(tt, {
 				id: "FuukaOrb",
-				duration: 300,
+				duration: 200,
 				tags: ["removeNewMap", "removeDefeat"],
 				power: 3,
 				type: "SlowLevel",
@@ -995,7 +995,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 	"Bind": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
 		let effect = false;
 		if (KDTestSpellHits(spell, 1.0, 1.0)) {
-			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			let dmg = KinkyDungeonDealDamage(
+				{damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet,
+			true);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let restraintAdd = KinkyDungeonGetRestraint({tags: playerEffect.tags || [playerEffect.tag]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
@@ -1115,6 +1117,76 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			return {sfx: "Freeze", effect: effect};
 		}
 		return {sfx: "Bones", effect: effect};
+	},
+	"WardenOrb": (_target, _damage, _playerEffect, _spell, _faction, _bullet, _entity) => {
+		let effect = false;
+		KDTripleBuffKill("WardenOrb", KinkyDungeonPlayerEntity, 12, (tt) => {
+			if (KinkyDungeonFlags.get("wardenorb_done")) {
+				return;
+			}
+			KinkyDungeonSetFlag("wardenorb_done", 1);
+			effect = true;
+			KinkyDungeonApplyBuffToEntity(tt, {
+				id: "WardenOrb",
+				duration: 90,
+				tags: ["removeNewMap", "removeDefeat"],
+				power: -100,
+				type: "RestraintBlock",
+				aura: "#ffd667", auraSprite: "AuraSeal",
+				buffSprite: true,
+			});
+			KDPlayerEffects.Bind(_target, _damage, _playerEffect, _spell, _faction, _bullet, _entity);
+		}, "WardenOrb", (tt) => {
+			if (tt?.player) {
+				if (KinkyDungeonFlags.get("wardenorb_done")) {
+					return;
+				}
+				KinkyDungeonSetFlag("wardenorb_done", 1);
+				effect = true;
+				KinkyDungeonApplyBuffToEntity(tt, {
+					id: "WardenOrb",
+					duration: 70,
+					tags: ["removeNewMap", "removeDefeat"],
+					power: -1,
+					type: "RestraintBlock",
+					aura: "#ffd667", auraSprite: "AuraSeal",
+					buffSprite: true,
+				});
+			}
+		}, (tt) => {
+			if (KinkyDungeonFlags.get("wardenorb_done")) {
+				return;
+			}
+			KinkyDungeonSetFlag("wardenorb_done", 1);
+			effect = true;
+			KinkyDungeonApplyBuffToEntity(tt, {
+				id: "WardenOrb",
+				duration: 80,
+				tags: ["removeNewMap", "removeDefeat"],
+				power: -2,
+				type: "RestraintBlock",
+				aura: "#ffd6676", auraSprite: "AuraSeal",
+				buffSprite: true,
+			});
+		},  (tt) => {
+			if (KinkyDungeonFlags.get("wardenorb_done")) {
+				return;
+			}
+			KinkyDungeonSetFlag("wardenorb_done", 1);
+			effect = true;
+			KinkyDungeonApplyBuffToEntity(tt, {
+				id: "WardenOrb",
+				duration: 90,
+				tags: ["removeNewMap", "removeDefeat"],
+				power: -100,
+				type: "RestraintBlock",
+				aura: "#ffd667", auraSprite: "AuraSeal",
+				buffSprite: true,
+			});
+			KDPlayerEffects.Bind(_target, _damage, _playerEffect, _spell, _faction, _bullet, _entity);
+			
+		}, );
+		return {sfx: effect ? "Evil" : "", effect: effect};
 	},
 	"WitchBoulder": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
 		let effect = false;

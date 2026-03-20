@@ -9,6 +9,7 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 	Dressmaker: {
 		honor: -1,
 		jailBackupFaction: "Apprentice",
+		jailRoom: "DollShoppe",
 		honor_specific: {
 			Witch: 1,
 		},

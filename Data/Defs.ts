@@ -220,6 +220,7 @@ let LAYERS_BASE = [
 	"Apron",
 
 	// Skirts that dont follow shilhouette
+	"DollStandFront",
 	"OverSkirtDeco",
 	"OverSkirt",
 	"WrappingLegsOver2",
@@ -827,6 +828,7 @@ let LayerGroups = {
 		"WrappingLegsUnder",
 		"WrappingLegsRight",
 		"PetsuitLegs",
+		"PetsuitLegsRight",
 		"PetsuitOver",
 		"PetsuitLegsUnder",
 	]),

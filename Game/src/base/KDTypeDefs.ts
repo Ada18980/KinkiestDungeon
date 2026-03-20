@@ -1364,6 +1364,9 @@ interface enemy extends KDHasTags {
 	 */
 	Defeat?: {
 		furnitureTags?: {tags: string[], count: number}[],
+		jailroom?: string,
+		useLair?: boolean,
+		alwaysForceJailroom?: string,
 		specificRestraints?: {
 			name: string,
 			minlevel: number,
@@ -4223,6 +4226,7 @@ interface KDFactionProps {
 	customHiSecDialogue?: (guard: entity) => string,
 	/** Custom defeat to use */
 	customDefeat?: string,
+	
 	/** Custom jail allied faction to use */
 	jailAlliedFaction?: string,
 	/** Backup incase cant find strictly using jailAlliedFaction */

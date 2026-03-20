@@ -781,13 +781,13 @@ function KDConveyor(_delta: number, X: number, Y: number, unwilling?: boolean) {
 	}
 	if (entity && KinkyDungeonMovableTilesEnemy.includes(tiletype) && !KinkyDungeonEntityAt(X + (tile.DX || 0), Y + (tile.DY || 0))) {
 		if (entity.player) {
-			if (!KinkyDungeonFlags.get("conveyed") && (!tile.Sfty || KDPlayerIsStunned() || unwilling || KinkyDungeonFlags.get("conveyed_rec"))) {
+			if (!KinkyDungeonFlags.get("conveyed") && !KinkyDungeonFlags.get("pulled") && (!tile.Sfty || KDPlayerIsStunned() || unwilling || KinkyDungeonFlags.get("conveyed_rec"))) {
 				KinkyDungeonSetFlag("conveyed", 2);
 				KinkyDungeonSetFlag("conveyed_rec", 3);
 				KDMovePlayer(X + (tile.DX || 0), Y + (tile.DY || 0), false, false, true);
 				KinkyDungeonSendTextMessage(4, TextGet("KDConveyorPush"), "#ffff44", 2);
 			}
-		} else if (!KDIsImmobile(entity) && !KDIsFlying(entity) && !entity.Enemy.tags.ignoreconveyor && !entity.Enemy.ethereal
+		} else if (!KDIsImmobile(entity) && !KDEntityHasFlag(entity, "pulled") && !KDIsFlying(entity) && !entity.Enemy.tags.ignoreconveyor && !entity.Enemy.ethereal
 			&& !((entity.Enemy.tags.unstoppable && (!KinkyDungeonIsDisabled(entity) || !KinkyDungeonIsSlowed(entity)))
 			 || (entity.Enemy.tags.unflinching && !KinkyDungeonIsDisabled(entity)))) {
 			if (!KDEnemyHasFlag(entity, "conveyed") && (!tile.Sfty || KinkyDungeonIsDisabled(entity) || unwilling || KDEnemyHasFlag(entity, "conveyed_rec") || KDEnemyHasFlag(entity, "stagger"))) {

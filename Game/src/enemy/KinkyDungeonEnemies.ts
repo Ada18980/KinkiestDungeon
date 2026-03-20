@@ -7686,8 +7686,9 @@ function KinkyDungeonEnemyTryMove (
 			&& (enemy.Enemy.tags.closedoors
 			|| (enemy.Enemy.tags.opendoors && KinkyDungeonTilesGet(enemy.x + ',' + enemy.y)?.OGLock))
 			&& !((KDGameData.KinkyDungeonLeashedPlayer > 0 && !KinkyDungeonTilesGet(enemy.x + ',' + enemy.y)?.Jail) || KinkyDungeonFlags.has("noclosedoors"))
-			&& ((dist > 5) ||
-				(KinkyDungeonTilesGet(enemy.x + "," + enemy.y) && !KDAllied(enemy) && (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).ReLock) && !KDIsJailbreakProtected(KDPlayer())))) {
+			&& ((dist > 5 || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail) ||
+				(KinkyDungeonTilesGet(enemy.x + "," + enemy.y) && !KDAllied(enemy) && (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).ReLock) && (!KDIsJailbreakProtected(KDPlayer())
+				|| KDGameData.KinkyDungeonLeashedPlayer <= 0)))) {
 			KinkyDungeonMapSet(enemy.x, enemy.y, 'D');
 			if ((KDGameData.PrisonerState == 'jail' || KinkyDungeonTilesGet(enemy.x + "," + enemy.y)?.OGLock)
 				&& KinkyDungeonTilesGet(enemy.x + "," + enemy.y)
@@ -9049,7 +9050,7 @@ function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
 		fromHere = false;
 
 	if (KDFactionProperties[KDGetFaction(enemy)]?.lairType
-		|| KDGetLairs(slot, enemy.id).length > 0) {
+		|| KDGetLairs(slot, enemy.id).length > 0 || enemy.Enemy?.Defeat?.useLair) {
 		let lairType = KDLairTypes[jailroom];
 		let outpost = KDAddLair(
 			slot,

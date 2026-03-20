@@ -1102,7 +1102,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 			if (spell.effectTilePre) {
 				KDCreateAoEEffectTiles(tX-entity.x,tY - entity.y, spell.effectTilePre, spell.effectTileDurationModPre, (spell.aoe) ? spell.aoe : 0.5);
 			}
-			if (xx == tX-entity.x && yy == tY-entity.y) {
+			if (0 == tX-entity.x && 0 == tY-entity.y) {
 				// Avoid bolt bullets in place
 				if (moveDirection && (moveDirection.x || moveDirection.y)) {
 					tX += moveDirection.x;

@@ -437,8 +437,8 @@ let alts: Record<string, AltType> = {
 		name: "Jail",
 		persist: true,
 		bossroom: false,
-		width: 15,
-		height: 15,
+		width: 19,
+		height: 19,
 		enemyMult: 0.6,
 
 		allowJailEntrances: true,
@@ -554,6 +554,47 @@ let alts: Record<string, AltType> = {
 		lightParams: "DollStorage",
 		useGenParams: "DollStorage",
 		genType: "DollStorage",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		orbs: 0,
+		chargers: false,
+		notorches: true,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		nostartstairs: true,
+		notraps: false,
+		noClutter: true,
+		nobrick: true,
+		nolore: true,
+		noboring: true, // Skip generating boringness
+	},
+	"DollShoppe": {
+		name: "DollShoppe",
+		Title: "DollShoppe",
+		noWear: true, // Disables doodad wear
+		bossroom: false,
+		width: 30,
+		height: 15,
+		nopatrols: true,
+		alwaysRegen: true, // Always regenerate this room
+		prisonType: "HighSec",
+		isPrison: true,
+		setpieces: {
+		},
+		data: {
+			dollshoppe: true,
+		},
+		skin: "DollShoppe",
+		musicParams: "DollShoppe",
+		lightParams: "DollShoppe",
+		useGenParams: "DollShoppe",
+		genType: "DollShoppe",
 		spawns: false,
 		chests: false,
 		shrines: false,
@@ -1263,6 +1304,10 @@ let KinkyDungeonCreateMapGenType: Record<string, (
 	"DollStorage": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
+	"DollShoppe": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
+		KinkyDungeonCreateDollShoppe(POI, VisitedRooms, width, height, 0, 10, 0, data);
+	},
+	
 	"Summit": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateSummit(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
@@ -2004,6 +2049,39 @@ function KinkyDungeonCreateRoom(_POI: any, _VisitedRooms: any[], width: number, 
 }
 
 function KinkyDungeonCreateDollStorage(_POI: any, VisitedRooms: any[], _width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
+	KDMapData.StartPosition = {x: 7 * 4-1, y: 7 * 1+2};
+	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
+	VisitedRooms[0].x = 1;
+	VisitedRooms[0].y = Math.floor(height/2);
+
+	// Now we STRETCH the map
+	let KinkyDungeonOldGrid = KDMapData.Grid;
+	let w = KDMapData.GridWidth;
+	let h = KDMapData.GridHeight;
+	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
+	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
+	KDMapData.Grid = "";
+
+	// Generate the grid
+	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+		for (let X = 0; X < KDMapData.GridWidth; X++)
+			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
+		KDMapData.Grid = KDMapData.Grid + '\n';
+	}
+
+	KD_PasteTile(KDMapTilesList.DollRoom, 1, 1, data);
+	KDMapData.EndPosition = {x: 2, y: 11};
+	KinkyDungeonMapSet(2, 11, 's');
+	if (MiniGameKinkyDungeonLevel == 0 && !KinkyDungeonFlags.get("fg")) {
+		KinkyDungeonTilesSet("2,11", {RoomType: "JourneyFloor"});
+		KinkyDungeonSetFlag("fg", -1);
+	}
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+
+}
+
+
+function KinkyDungeonCreateDollShoppe(_POI: any, VisitedRooms: any[], _width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	KDMapData.StartPosition = {x: 7 * 4-1, y: 7 * 1+2};
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
 	VisitedRooms[0].x = 1;

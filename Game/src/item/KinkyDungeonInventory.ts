@@ -1155,7 +1155,7 @@ function KDInventoryItemHover(item: any) {
     if (item.item.events) {
         item.item.events.forEach((t) => {
             if (t.trigger == "inventoryTooltip") {
-                if (t.type == "varModifier") {
+                if (t.type == "varModifier" && !unidentified) {
                     mods.push({
                         str: TextGet("KDVariableModifier_" + t.msg)
                                 .replace("AMNT", `${t.power >= 0 ? "+" : ""}${Math.round(t.power)}`)

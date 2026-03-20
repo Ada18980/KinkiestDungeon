@@ -1682,7 +1682,10 @@ function KinkyDungeonDrawGame() {
 						alpha: StandalonePatched ? KDUIAlpha : 0.01,
 					});
 				}
-				DrawCharacter(KinkyDungeonPlayer, 0, 0, 1, undefined, undefined, undefined, undefined, KinkyDungeonDrawState == "Game" ? 0 : - 20, KDToggles.FlipPlayer);
+				DrawCharacter(KinkyDungeonPlayer, 
+					250 - 250 * KDCharSize , 
+					0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, KDCharSize, 
+					undefined, undefined, undefined, undefined, KinkyDungeonDrawState == "Game" ? 0 : - 20, KDToggles.FlipPlayer);
 
 			}
 			if (KinkyDungeonSleepiness) {

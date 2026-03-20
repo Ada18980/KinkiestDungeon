@@ -1081,6 +1081,19 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 		}
 	},
+	
+	"TauntFail": {
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
 	"Tutorial": {
 		response: "Default",
 		clickFunction: (_gagged, _player) => {
@@ -4768,6 +4781,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			}
 		}
 	},
+
 	"TheWarden": {
 		response: "Default",
 		clickFunction: (_gagged, _player) => {

@@ -183,6 +183,7 @@ KDMusicVolume,Music Volume:
 KDSfxVolume,SFX Volume:
 KDAnimSpeed,Animation Time:
 KDGamma,Map Brightness:
+KDCharSize,Character Scale:
 KDSelectedFont,Game Font:
 KDButtonFont,Button Font:
 KinkyDungeonJourneyMap,Journey
@@ -1185,6 +1186,7 @@ DungeonNamemrb,Marble Halls
 DungeonNamedll,Doll Storage
 DungeonName20,
 DungeonNameDollRoom,Processing
+DungeonNameDollShoppe,Doll Shoppe
 DungeonNameDollStorage,Processing
 DungeonNameBanditFort,Bandit Hideout
 DungeonNameGoldVault,Ancient Vault
@@ -3608,13 +3610,13 @@ KDEffectTileTooltipWrapping,Wrapping
 
 KinkyDungeonObjectCharger,"It appears to be a receptacle for an ancient crystal."
 KinkyDungeonObjectChargerDestroyed,"It's a pile of slag emitting a strange magic smoke..."
-KinkyDungeonObjectLock,"That object is locked with a LKTP."
+KinkyDungeonObjectLock,"object"
 KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectShrineCommerce,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectDoor,"That door is open. Do you want to close it?"
 KinkyDungeonObjectFurniture,"Just a normal piece of furniture."
 KinkyDungeonObjectTrap,"Nothing to see here."
-KinkyDungeonObject,"Nothing to see here."
+KinkyDungeonObject,"object"
 KinkyDungeonObjectChest,"Chest"
 KinkyDungeonObjectDoor,"Door"
 
@@ -7799,7 +7801,7 @@ curseFrom,"[RNAME]"
 curseInfoAntiMagic,"Magic-Draining: This item drains your mana quickly up to a limit, then slowly after."
 
 curseInfoTickle,"Curse of Tickling: This item is tickling you without end!"
-curseInfoPunish,"Curse of Punishment: Inflicts psychic damage when you attack or cast a spell."
+curseInfoPunish,"Curse of Pacifism: Inflicts psychic damage when you attack or cast a spell."
 curseInfoIllumination,"Curse of Illumination: Produces light and makes you easier to see."
 curseInfoAttraction,"Curse of Attraction: Women find you irresistable."
 curseInfoAnimation,"Curse of Animation: Causes loose restraints to animate and attack you!"
@@ -14644,7 +14646,7 @@ l_ElfEarrings_ElfEarringsBack,ElfEarringsBack
 m_Earrings,Earrings
 l_Earrings_Earrings,Earrings
 l_Earrings_EarringsBack,EarringsBack
-m_BunnyEars,BunnyEars
+m_BunnyEars,Latex Bunny Ears
 l_BunnyEars_Ears,Ears
 l_BunnyEars_InnerEars,EarsInner
 m_KittyEars,KittyEars
@@ -30911,7 +30913,7 @@ RestraintWardenAnkleCuffs3Desc2,"They feel like they aren't even there, but the 
 KinkyDungeonUnLinkWardenAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
-KinkyDungeonTaunted,"Your buttons have been pushed, and not in a pleasant way!"
+KinkyDungeonTaunted,"The Gladiator insults you, filling you with the need to face them!"
 KinkyDungeonBuffTaunted,"Defeat all taunting enemies or stay within the tiles to avoid shame!"
 KinkyDungeonSpellTaunt,Degradating Taunts
 KDTauntPunishment,You failed to come up with a proper comeback!
@@ -31193,6 +31195,7 @@ RestraintVineSuspension,Vine Suspension
 RestraintVineSuspensionDesc,"Vines linked to your bindings that keep you suspended!"
 RestraintVineSuspensionDesc2,"You are left dangling! Maybe if you swing hard enough you can tear the vines..."
 
+DragonLair.ogg,Kocaeli - Dragon Lair
 SlimyScience.ogg,EchoZero - Slimy Science
 MachinedPerfection.ogg,EchoZero - Machined Perfection
 MachinedPerfection_Loopable.ogg,EchoZero - Machined Perfection
@@ -32566,11 +32569,22 @@ RestraintLeatherBootsCommonDesc2,"Provides minor protection against enemy attack
 
 KDGenMap,Generating Map...
 
+KinkyDungeonBuffWardenOrb,Marked for Collection. Getting hit by more orbs will put you on a stand. Reduces Bondage resist.
+
 KinkyDungeonSpellHexWrappingDamage,Mystic wrappings constrict around your body!
 KinkyDungeonSpellOneBarMissile,One Bar Missile
 
 KDTut_RestraintContext,Right click on a restraint's name to open a context menu.
 KDTut_RestraintContext2,There is also an option in HUD settings to replace the small buttons with a context menu.
+
+KDTut_Taunt,"You've been taunted, leaving the angry zone will stun you!"
+KDTut_TauntFail,"You moved out of the taunt zone, and are now punished!"
+rTauntFail,"The warrior's taunt effect forces you to stay in a certain area.|If you move out of the area, you are stunned,|as you have just been."
+KinkyDungeonWardenOrb1,The warden's magic leaves you more vulnerable to binding.
+KinkyDungeonWardenOrb2,The warden's magic leaves you significantly vulnerable to binding.
+KinkyDungeonWardenOrb3,The warden's magic ensnares you. It's time to give in.
+
+
 
 KDTut_Tooltip,You can click Inspect then click the enemy to cycle thru pages.
 KDTut_Tooltip2,NPC tooltips like the ${EnemyName} are too long to show on one page.

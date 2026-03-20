@@ -245,7 +245,7 @@ let KDLocks: Record<string, KDLockType> = {
 		pick_diff: -0.1, // Added to the item's pick difficulty
 
 		canPick: (_data) => {
-			return true;
+			return KinkyDungeonItemCount("Pick") > 0;
 		},
 		doPick: (_data) => {
 			return true;
@@ -630,7 +630,7 @@ let KDLocks: Record<string, KDLockType> = {
 		pick_diff: -0.1, // Added to the item's pick difficulty
 
 		canPick: (_data) => {
-			return true;
+			return KinkyDungeonItemCount("Pick") > 0;
 		},
 		doPick: (_data) => {
 			return true;
@@ -717,7 +717,7 @@ let KDLocks: Record<string, KDLockType> = {
 		pick_diff: 0.0, // Added to the item's pick difficulty
 
 		canPick: (_data) => {
-			return true;
+			return KinkyDungeonItemCount("Pick") > 0;
 		},
 		doPick: (_data) => {
 			return true;
@@ -799,7 +799,7 @@ let KDLocks: Record<string, KDLockType> = {
 		pick_lim: 0.15, // Added to the item's pick limitchance
 
 		canPick: (_data) => {
-			return true;
+			return KinkyDungeonItemCount("Pick") > 0;
 		},
 		doPick: (_data) => {
 			return true;
@@ -880,7 +880,7 @@ let KDLocks: Record<string, KDLockType> = {
 		pick_lim: 0.3, // Added to the item's pick limitchance
 
 		canPick: (_data) => {
-			return true;
+			return KinkyDungeonItemCount("Pick") > 0;
 		},
 		doPick: (_data) => {
 			return true;
@@ -961,7 +961,7 @@ let KDLocks: Record<string, KDLockType> = {
 		pick_lim: 1.0, // Added to the item's pick limitchance
 
 		canPick: (_data) => {
-			return true;
+			return KinkyDungeonItemCount("Pick") > 0;
 		},
 		doPick: (_data) => {
 			return true;
@@ -1042,7 +1042,7 @@ let KDLocks: Record<string, KDLockType> = {
 		pick_lim: 10.0, // Added to the item's pick limitchance
 
 		canPick: (_data) => {
-			return true;
+			return KinkyDungeonItemCount("Pick") > 0;
 		},
 		doPick: (_data) => {
 			return true;

@@ -590,10 +590,10 @@ function KDRestraintBlockPenalty() {
 function KDCalcRestraintBlock() {
 	let RestraintBlock = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock");
 	let RestraintBlockPenalty = KDRestraintBlockPenalty();
-	let val = RestraintBlock * Math.max(0, 1 - RestraintBlockPenalty)
+	let val = (RestraintBlock > 0 ? RestraintBlock * Math.max(0, 1 - RestraintBlockPenalty) : RestraintBlock)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockProtected");
 
-	return val;
+	return Math.max(val, 0);
 }
 
 function KinkyDungeonPlayerEvasion(Event?: boolean): number {

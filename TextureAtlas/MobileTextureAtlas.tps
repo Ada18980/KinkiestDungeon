@@ -173,21 +173,18 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../Models/Hood/MouseEars.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>400,239,800,479</rect>
-                <key>scale9Paddings</key>
-                <rect>400,239,800,479</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
+            <key type="filename">../Models/BunnyEars/Ear1Left.png</key>
+            <key type="filename">../Models/BunnyEars/Ear1Right.png</key>
+            <key type="filename">../Models/BunnyEars/FlopEar1Left.png</key>
+            <key type="filename">../Models/BunnyEars/FlopEar1Right.png</key>
+            <key type="filename">../Models/BunnyEars/FlopInner1Left.png</key>
+            <key type="filename">../Models/BunnyEars/FlopInner1Right.png</key>
+            <key type="filename">../Models/BunnyEars/HalfFlopEar1Left.png</key>
+            <key type="filename">../Models/BunnyEars/HalfFlopEar1Right.png</key>
+            <key type="filename">../Models/BunnyEars/HalfFlopInner1Left.png</key>
+            <key type="filename">../Models/BunnyEars/HalfFlopInner1Right.png</key>
+            <key type="filename">../Models/BunnyEars/Inner1Left.png</key>
+            <key type="filename">../Models/BunnyEars/Inner1Right.png</key>
             <key type="filename">../Models/LatexMittens/LatexLeftBoxtie.png</key>
             <key type="filename">../Models/LatexMittens/LatexLeftCrossed.png</key>
             <key type="filename">../Models/LatexMittens/LatexLeftFree.png</key>
@@ -922,6 +919,21 @@
                 <rect>620,877,1240,1754</rect>
                 <key>scale9Paddings</key>
                 <rect>620,877,1240,1754</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/Hood/MouseEars.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>400,239,800,479</rect>
+                <key>scale9Paddings</key>
+                <rect>400,239,800,479</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

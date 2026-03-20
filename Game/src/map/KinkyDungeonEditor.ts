@@ -828,12 +828,13 @@ function KDTE_CustomUI() {
 	let YY = 990 - names.length * 55;
 	let XX = 650;
 	for (let name of names) {
+		YY += 55;
 		if (!customfieldsElements.includes(name)) {
 			ElementCreateTextArea("KDTECustomField" + name);
 			document.getElementById("KDTECustomField" + name).setAttribute("placeholder", name);
-			ElementPosition("KDTECustomField" + name, XX, YY, 300, 45); YY += 55;
 			customfieldsElements.push(name);
 		}
+		ElementPosition("KDTECustomField" + name, XX, YY, 300, 45);
 	}
 }
 

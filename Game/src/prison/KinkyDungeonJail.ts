@@ -1641,7 +1641,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 		let slot = KDGetWorldMapLocation(KDCurrentWorldSlot);
 		let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
 		let fromHere = true;
-		if (!((slot.main || "") == KDGameData.RoomType) && !(altRoom &&
+		if (!((slot?.main || "") == KDGameData.RoomType) && !(altRoom &&
 			(
 				altRoom.placeJailEntrances
 				&& (!altRoom.sameFactionJailOnly || forceFaction == KDGetMainFaction())
@@ -1651,12 +1651,12 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 			fromHere = false;
 		let outpost = KDAddOutpost(
 			slot,
-			fromHere ? KDGameData.RoomType : slot.main || "",
+			fromHere ? KDGameData.RoomType : slot?.main || "",
 			jailroom,
 			forceFaction || "Jail",
 			KDLairTypes[jailroom || "Jail"]?.AlwaysHide,
 			"Jail",
-			fromHere ? slot.main || "" : undefined,
+			fromHere ? slot?.main || "" : undefined,
 			fromHere ? "Jail" : undefined,
 			fromHere ? "Jail" : undefined,
 			true
@@ -1675,7 +1675,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 
 		let currentMapData = KinkyDungeonCreateMap(params, room, "",
 			MiniGameKinkyDungeonLevel, undefined, undefined,
-			forceFaction, undefined, true, slot.main || "").oldMapDataObject;
+			forceFaction, undefined, true, slot?.main || "").oldMapDataObject;
 
 		// The above condition is the condition to start in jail
 		// We move the player to the jail after generating one
@@ -2517,7 +2517,15 @@ function KDGetLeashFaction(leashEnemy: entity): string {
 
 function KDGetLeashJailRoom(leashEnemy: entity): string {
 	let jailRoom = undefined;
-	if (leashEnemy
+	if (leashEnemy && (!leashEnemy.faction || leashEnemy.Enemy?.Defeat?.alwaysForceJailroom)
+		&& leashEnemy.Enemy?.Defeat?.jailroom) {
+		jailRoom = leashEnemy.Enemy.Defeat.jailroom;
+	} else if (leashEnemy && KDSelfishLeash(leashEnemy) && 
+		KDGetWorldMapLocation(KDCurrentWorldSlot) && KDGetLairs(KDGetWorldMapLocation(KDCurrentWorldSlot),
+		leashEnemy.id)?.length > 0) {
+		jailRoom = KDGetLairs(KDGetWorldMapLocation(KDCurrentWorldSlot),
+			leashEnemy.id)[0];
+	} else if (leashEnemy
 		&& (KDFactionProperties[KDGetFaction(leashEnemy)]?.lairType
 		|| (!KDFactionProperties[KDGetFaction(leashEnemy)]
 		&& KDFactionProperties[KDGetFactionOriginal(leashEnemy)]?.lairType))) {
@@ -2543,7 +2551,7 @@ function KDHasEntranceToJailRoom(jailRoom: string, map: WorldCoord, allowMainIns
 	if (!slot) return false;
 	if (allowMainInstead) {
 		// We assume highsec will appear in main
-		if (map.room == slot.main) {
+		if (map.room == slot?.main) {
 			return true;
 		}
 	}

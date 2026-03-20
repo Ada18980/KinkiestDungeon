@@ -402,7 +402,7 @@ function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, x
 				if (slot && KinkyDungeonEntityAt(slot.x, slot.y) && KDIsImmobile(KinkyDungeonEntityAt(slot.x, slot.y), true)) {
 					slot = null;
 				}
-				if (slot) {
+				if (slot && (slot.x != Entity.x || slot.y != Entity.y)) {
 					let enemy = KinkyDungeonEntityAt(slot.x, slot.y);
 					if (enemy && !enemy.player) { //  && !KDHostile(Entity, enemy)
 						let slot2 = null;
@@ -452,6 +452,8 @@ function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, x
 						if (Msg && restraint) KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonTetherPull").replace("TETHER", KDGetItemName(restraint.item)), KDBaseRed, 2, true);
 
 					}
+					
+					
 				}
 			}
 		}

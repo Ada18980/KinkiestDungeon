@@ -375,7 +375,7 @@ AddModel({
 			DisplacementInvariant: true,
 			NoOverride: true,
 		},
-		{ Name: "Laces", Layer: "BodysuitOver", Pri: 30.1,
+		{ Name: "Laces", Layer: "Bustier", Pri: 30.1,
 			InheritColor: "Laces",
 			TieToLayer: "Leotard",
 			NoOverride: true,

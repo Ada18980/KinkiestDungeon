@@ -1513,7 +1513,9 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			alpha: StandalonePatched ? KDUIAlpha : 0.01,
 		});
 	}
-	DrawCharacter(C, 0, 0, 1, undefined, undefined, undefined, undefined, undefined, C == KinkyDungeonPlayer ? KDToggles.FlipPlayer : false);
+	DrawCharacter(C, 
+		250 - 250 * KDCharSize , 
+					0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, KDCharSize, undefined, undefined, undefined, undefined, undefined, C == KinkyDungeonPlayer ? KDToggles.FlipPlayer : false);
 
 	KDTextField("KDOutfitName", 25, 5, 450, 30);
 	if (!ElementValue("KDOutfitName")) {

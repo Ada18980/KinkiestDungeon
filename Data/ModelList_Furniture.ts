@@ -332,6 +332,32 @@ AddModel({
 
 
 AddModel({
+	Name: "DollStand",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Stands"],
+	AddPose: ["SuspendedHogtie", "ForceStand"],
+	Layers: ToLayerMap([
+		{ Name: "DollStand", Layer: "DollStandFront", Pri: -249,
+			Poses: ToMap(["Closed", "Spread"]),
+			NoOverride: true,
+		},
+		{ Name: "OneBarFront", Layer: "Torso", Pri: -50,
+			Poses: ToMap(["Closed", "Spread"]),
+			AppendPose: {Ballet: "Heels"},
+		},
+		{ Name: "OneBarBack", Layer: "FurnitureBack", Pri: 50,
+			Poses: ToMap(["Closed", "Spread"]),
+			AppendPose: {Ballet: "Heels"},
+		},
+	])
+});
+
+
+
+AddModel({
 	Name: "OneBarPrisonSpreader",
 	Folder: "Furniture",
 	TopLevel: true,

@@ -4294,8 +4294,18 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		"Taunted": (e, buff, entity, _data) => {
 			if (buff.duration > 0) {
 				if (entity.player) {
+					if (!KinkyDungeonFlags.get("tut_taunt")) {
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Taunt"), KDTutorialColor, 10);
+						KinkyDungeonSetFlag("tut_taunt", -1);
+					}
 					if (!KDEffectTileTags(entity.x, entity.y).taunt) {
 						buff.duration = 0;
+						
+						if (!KinkyDungeonFlags.get("tut_tauntfail")) {
+							KinkyDungeonSendTextMessage(10, TextGet("KDTut_TauntFail"), KDTutorialColor, 10);
+							KinkyDungeonSetFlag("tut_tauntfail", -1);
+							KDStartDialog("TauntFail");
+						}
 						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "soul", { name: "TauntShame", count: e.count, kind: e.kind, power: e.power, damage: e.damage });
 						KDRemoveAoEEffectTiles(entity.x, entity.y, ["taunt"], 10);
 					}
@@ -10400,7 +10410,10 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 						count += 1;
 					}
 				}
-				if (count < e.count || (KinkyDungeonNewGame > 0 && count < 3)) {
+				let boost = 0;
+				if (enemy.hp < enemy.Enemy.maxhp * 0.5) boost += 1;
+				if (enemy.hp < enemy.Enemy.maxhp * 0.25) boost += 1;
+				if (count < e.count + boost || (KinkyDungeonNewGame > 0 && count < 3)) {
 					let filter = "";
 					if (e.count == 1 && !(KinkyDungeonNewGame > 0)) {
 						let rand = [];
@@ -11845,6 +11858,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			else if (KinkyDungeonStatsChoice.get("BubbleOptout")) data.tags.push("bubbleOptout");
 			if (KinkyDungeonStatsChoice.get("NovicePet")) data.tags.push("petPref");
 			else if (KinkyDungeonStatsChoice.get("NoPet")) data.tags.push("petOptout");
+			if (KinkyDungeonStatsChoice.get("Less_Tickle")) data.tags.push("Less_Tickle");
+			
 		}
 	},
 	"postMapgen": {
