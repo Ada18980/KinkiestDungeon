@@ -542,6 +542,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 动画时长 :
 - Map Brightness:
 地图亮度 :‎
+# - Character Scale:
 - Game Font:
 游戏字体 :‎
 - Button Font:
@@ -2506,6 +2507,10 @@ Devious Dungeon Challenge 已启用。
 玩偶工厂
 # :: DungeonNameDollRoom
 # :: DungeonNameDollStorage
+- Doll Shoppe
+玩偶商店
+# :: DungeonNameDollShoppe
+# :: KinkyDungeonFactionDollShoppe
 - Bandit Hideout
 强盗藏身处
 # :: DungeonNameBanditFort
@@ -7267,8 +7272,10 @@ SCHOOL 女神给予你庇护和反击之力！
 似乎是一个远古水晶的容器。
 - It's a pile of slag emitting a strange magic smoke...
 一堆散发着古怪魔法烟气的熔渣……
-- That object is locked with a LKTP.
+- object
 目标被 LKTP 上锁。
+# :: KinkyDungeonObjectLock
+# :: KinkyDungeonObject
 - A shrine to the goddess of TYPE.
 TYPE女神的神泉。
 # :: KinkyDungeonObjectShrine
@@ -7279,8 +7286,6 @@ TYPE女神的神泉。
 只是一件普通家具。
 - Nothing to see here.
 这里什么也没有。
-# :: KinkyDungeonObjectTrap
-# :: KinkyDungeonObject
 - Chest
 胸部
 :: KinkyDungeonObjectChest
@@ -7676,8 +7681,6 @@ Zora的船员
 
 - Rope Dojo
 绳道场
-- Doll Shoppe
-玩偶商店
 - Fuuka's Shrine
 风香的神龛
 - The Collectors
@@ -15416,7 +15419,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 
 - Curse of Tickling: This item is tickling you without end!
 挠痒诅咒 : ‎这个物品会不停地挠你
-- Curse of Punishment: Inflicts psychic damage when you attack or cast a spell.
+- Curse of Pacifism: Inflicts psychic damage when you attack or cast a spell.
 惩罚诅咒 : ‎当你攻击或施展法术时对你造成灵能伤害
 - Curse of Illumination: Produces light and makes you easier to see.
 照明诅咒 : ‎产生光并让你更容易被敌人看到。
@@ -28952,11 +28955,8 @@ Dask眼
 耳环(后)
 # :: l_Earrings_EarringsBack
 # :: m_Earrings_l_EarringsBack
-- BunnyEars
+- Latex Bunny Ears
 兔耳
-# :: m_BunnyEars
-# :: m_LeatherHood_l_BunnyEars
-# :: m_FashionLeatherHood_l_BunnyEars
 - EarsInner
 耳朵内侧
 # :: l_BunnyEars_InnerEars
@@ -39125,6 +39125,10 @@ Aura刘海(右后)
 装饰性皮革面具
 - LeatherHood
 皮革帽
+- BunnyEars
+兔耳
+# :: m_LeatherHood_l_BunnyEars
+# :: m_FashionLeatherHood_l_BunnyEars
 - FashionLeatherHood
 装饰性皮革头套
 - CyberLongMittenLeft
@@ -48912,7 +48916,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 典狱长踝铐
 
 
-- Your buttons have been pushed, and not in a pleasant way!
+- The Gladiator insults you, filling you with the need to face them!
 你的按钮已经被按下了，而且是以一种不愉快的方式！
 - Defeat all taunting enemies or stay within the tiles to avoid shame!
 击败所有嘲讽的敌人，或留在方格内以避免被羞辱！
@@ -49384,6 +49388,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - You are left dangling! Maybe if you swing hard enough you can tear the vines...
 你悬空了！也许你挥动得足够用力，你就能震破藤蔓......
 
+# - Kocaeli - Dragon Lair
 - EchoZero - Slimy Science
 EchoZero -《黏糊糊的科学》
 # - EchoZero - Machined Perfection
@@ -51596,6 +51601,8 @@ ENMY 解开了 ITMN 的锁!
 - Generating Map...
 生成地图中...
 
+# - Marked for Collection. Getting hit by more orbs will put you on a stand. Reduces Bondage resist.
+
 - Mystic wrappings constrict around your body!
 神秘的丝带紧紧包裹了你的身体！
 
@@ -51603,6 +51610,15 @@ ENMY 解开了 ITMN 的锁!
 右键点击拘束具的名称以打开菜单
 - There is also an option in HUD settings to replace the small buttons with a context menu.
 在HUD设置中可以选择将小按钮替换为菜单
+
+# - You've been taunted, leaving the angry zone will stun you!
+# - You moved out of the taunt zone, and are now punished!
+# - The warrior's taunt effect forces you to stay in a certain area.|If you move out of the area, you are stunned,|as you have just been.
+# - The warden's magic leaves you more vulnerable to binding.
+# - The warden's magic leaves you significantly vulnerable to binding.
+# - The warden's magic ensnares you. It's time to give in.
+
+
 
 - You can click Inspect then click the enemy to cycle thru pages.
 你可以点击“检查”按钮然后再点击敌人来翻页。
