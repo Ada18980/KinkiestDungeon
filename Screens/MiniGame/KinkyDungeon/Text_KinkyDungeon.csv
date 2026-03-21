@@ -33,7 +33,7 @@ RestartNeededPL,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.93"
+KDVersionStr,"5.5.0"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -5949,7 +5949,7 @@ KDEffectTileTooltipCMDSlime,"Can be controlled using Rubbermancy"
 
 KDTileTooltip0,Floor
 KDTileTooltip1,Wall
-KDTileTooltip5,Object
+KDTileTooltip5,Floor
 KDTileTooltip6,Object
 KDTileTooltip7,Object
 KDTileTooltip2,Brickwork

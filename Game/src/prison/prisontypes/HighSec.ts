@@ -392,9 +392,13 @@ KDPrisonTypes.HighSec = {
 			},
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
-				KDPrisonCommonGuard(player);
+				let guard = KDPrisonCommonGuard(player);
 				KinkyDungeonSetFlag("noWeaponStop", 10);
-				if (KDPrisonIsInFurniture(player) && !KinkyDungeonFlags.get("jailStripSearched")) {
+				let nearestfurniture = guard ?KinkyDungeonNearestJailPoint(guard.x, guard.y, ["furniture"], 
+					undefined, undefined, true, 
+					KDGetFurnitureCriteria(player)) : null;
+				// End when the player is settled
+				if (!nearestfurniture || KDPrisonIsInFurniture(player) && !KinkyDungeonFlags.get("jailStripSearched")) {
 					KinkyDungeonSetFlag("jailStripSearched", KDJailStripSearchTempTime);
 					return KDGoToSubState(player, "StripRemove");
 				}
@@ -415,13 +419,15 @@ KDPrisonTypes.HighSec = {
 				let player = KinkyDungeonPlayerEntity;
 				let guard = KDPrisonCommonGuard(player);
 				KinkyDungeonSetFlag("noWeaponStop", 10);
-
-				if (guard && KDPrisonIsInFurniture(player)) {
+				let nearestfurniture = guard ?KinkyDungeonNearestJailPoint(guard.x, guard.y, ["furniture"], 
+					undefined, undefined, true, 
+					KDGetFurnitureCriteria(player)) : null;
+				if (guard && (!nearestfurniture || KDPrisonIsInFurniture(player))) {
 					guard.gx = player.x;
 					guard.gy = player.y;
 					KinkyDungeonSetEnemyFlag(guard, "overrideMove", 2);
 					if (KDistChebyshev(guard.x - player.x, guard.y - player.y) < 1.5) {
-						if (KDPrisonIsInFurniture(player)) {
+						if (!nearestfurniture || KDPrisonIsInFurniture(player)) {
 							KinkyDungeonSetFlag("jailStripSearched", KDJailStripSearchTime);
 							return KDDoStripSearchRemove(player, guard);
 						}
@@ -446,18 +452,25 @@ KDPrisonTypes.HighSec = {
 				if (lostTrack == "Unaware") {
 					return KDSetPrisonState(player, "Jail");
 				}
-
+				let guard = KDPrisonCommonGuard(player);
+				let nearestfurniture = guard ?KinkyDungeonNearestJailPoint(guard.x, guard.y, ["furniture"], 
+					undefined, undefined, true, 
+					KDGetFurnitureCriteria(player)) : null;
 				// End when the player is settled
-				if (KDPrisonIsInFurniture(player)) {
+				if (!nearestfurniture || KDPrisonIsInFurniture(player)) {
+					if (guard) KDResetIntent(guard);
 					return KDPopSubstate(player);
 				}
 				// We are not in a furniture, so we conscript the guard
-				let guard = KDPrisonCommonGuard(player);
+				
 				if (guard) {
 					// Assign the guard to a furniture intentaction
 					let action = (KDGameData.PrisonerState == 'jail'
 						&& !KinkyDungeonAggressive(guard, player))
 						? "leashFurniture" : "leashFurnitureAggressive";
+						
+					
+					if (!nearestfurniture) 
 					if (guard.IntentAction != action)
 						KDIntentEvents[action].trigger(guard, {});
 					if (lostTrack) {

@@ -40,6 +40,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.IntentLeashPoint = nearestfurniture;
 			enemy.playWithPlayer = 22;
 			KDSetPlayCD(enemy, 3);
+			KinkyDungeonSetEnemyFlag(enemy, "intent_startChecking", 5);
 
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 3);
 			KinkyDungeonSetEnemyFlag(enemy, "motivated", 50);
@@ -84,10 +85,13 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				enemy.aware = true;
 
 				if (!enemy.IntentLeashPoint) {
-					enemy.IntentAction = '';
-					enemy.IntentLeashPoint = null;
-					enemy.gx = enemy.IntentLeashPoint?.x;
-					enemy.gy = enemy.IntentLeashPoint?.y;
+					if (!KDEntityHasFlag(enemy, "intent_startChecking")) {
+						enemy.IntentAction = '';
+						enemy.IntentLeashPoint = null;
+						enemy.gx = enemy.IntentLeashPoint?.x;
+						enemy.gy = enemy.IntentLeashPoint?.y;
+					}
+					
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 				} else {
 					enemy.gx = enemy.IntentLeashPoint.x;

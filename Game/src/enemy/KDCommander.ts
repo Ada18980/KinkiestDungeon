@@ -1116,6 +1116,8 @@ let KDBarricades: Record<string, KDBoobyTrap> = {
 			let params = KinkyDungeonMapParams[altRoom?.useGenParams ? altRoom.useGenParams : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 			if (params?.enemyTags?.includes("oldrobot"))
 				return true;
+			if (KDMapData.enemyTags?.includes("oldrobot"))
+				return true;
 			return false;
 		},
 		weight: (_enemy, _x, _y, _checkpoint, _type) => {

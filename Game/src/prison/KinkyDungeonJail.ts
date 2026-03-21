@@ -1448,6 +1448,7 @@ function KDEnterDollTerminal(willing: boolean, cancelDialogue: boolean = true, f
 		let defeat_outfit = "CyberDoll";
 		if (KDGetMainFaction() == "Dollsmith") defeat_outfit = "DollSuit";
 		if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
+		if (!KinkyDungeonInventoryGet(defeat_outfit)) KinkyDungeonInventoryAdd({name: defeat_outfit, type: Outfit, id: KinkyDungeonGetItemID()});
 
 		KinkyDungeonSetDress(defeat_outfit, defeat_outfit);
 	}

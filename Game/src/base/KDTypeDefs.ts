@@ -766,7 +766,9 @@ interface floorParams {
 	ShopExclusives? : string[],
 	ShopExclusivesArousal? : string[],
 
-	enemyTags: string[],
+	enemyTags?: string[],
+	// chooses one
+	enemyTags_single?: string[],
 	// these are global--even if a TilesAlternate def replaces the local biome
 	globalEnemyTags?: string[],
 	"defeat_outfit": outfitKey,
@@ -3125,6 +3127,7 @@ interface KDMapDataType {
 	Checkpoint: string,
 	Title: string,
 	PrisonState: string,
+	enemyTags: string[]
 	/** 1 for explored, undefined not */
 	ExpStair: Record<string, number>,
 	PrisonStateStack: string[],

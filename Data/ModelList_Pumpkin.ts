@@ -507,7 +507,7 @@ AddModel({
 	Folder: "Pumpkin",
 	Parent: "PumpkinVines",
 	TopLevel: true,
-	Categories: ["Uniforms", "Accessories"],
+	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		...GetModelLayers("PumpkinBra"),
 		...GetModelLayers("PumpkinPanties"),

@@ -723,6 +723,7 @@ function KDInferno(existingTile: effectTile, newTile: effectTile, duration: numb
 	}
 	return false;
 }
+
 /**
  *
  * @param tile
@@ -732,7 +733,8 @@ function KDInferno(existingTile: effectTile, newTile: effectTile, duration: numb
  * @param [refreshDuration]
  */
 function KDGrow(tile: effectTile, type: string, duration: number = 20, chance: number = 0.1, refreshDuration: number = 20): boolean {
-	if (KDEffectTileTags(tile.x, tile.y).wet && KDRandom() < chance) {
+	if (KDEffectTileTags(tile.x, tile.y).wet && KDRandom() < chance
+		&& KDGrowableTiles.includes(KinkyDungeonMapGet(tile.x, tile.y))) {
 		tile.duration = Math.max(tile.duration, refreshDuration);
 		let xx = Math.floor(KDRandom() * 3) - 1;
 		let yy = Math.floor(KDRandom() * 3) - 1;

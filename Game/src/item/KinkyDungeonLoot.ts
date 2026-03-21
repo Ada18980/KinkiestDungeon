@@ -1045,19 +1045,27 @@ let KDChestTrapWeights = {
 		mult: 1,
 	},
 	skeletonTrap: {
-		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("skeleton") ? 300 : 0;},
+		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]
+			|| MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("skeleton")
+			|| KDMapData?.enemyTags?.includes("skeleton") ? 300 : 0;},
 		mult: 1.4,
 	},
 	zombieTrap: {
-		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("zombie") ? 300 : 0;},
+		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]
+			|| MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("zombie")
+			|| KDMapData?.enemyTags?.includes("zombie") ? 300 : 0;},
 		mult: 1.5,
 	},
 	mummyTrap: {
-		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("mummy") ? 300 : 0;},
+		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]
+			|| MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("mummy")
+			|| KDMapData?.enemyTags?.includes("mummy") ? 300 : 0;},
 		mult: 1,
 	},
 	mushroomTrap: {
-		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("mushroom") ? 300 : 0;},
+		weight: () => {return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]
+			|| MiniGameKinkyDungeonCheckpoint)]?.enemyTags?.includes("mushroom")
+			|| KDMapData?.enemyTags?.includes("mushroom") ? 300 : 0;},
 		mult: 1,
 	},
 };

@@ -78,6 +78,7 @@ let KinkyDungeonPOI = [];
 let KinkyDungeonStairTiles = 'sSH';
 let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023wW][?/";
+let KDGrowableTiles = '0235][?/t';
 let KinkyDungeonWallTiles = "14,6f";
 let KDCrackableTiles = '4Xaom-';
 let KDMendableTiles = '4';
@@ -189,10 +190,12 @@ function KDDefaultMapData(mapX: number, mapY: number, RoomType: string = "", Map
 		RespawnQueue: [],
 		ShrineList: [],
 
+		enemyTags: [],
 		mapX: mapX,
 		mapY: mapY,
 
 		RepopulateQueue: [],
+		
 
 		ExpStair: {},
 		TilesAlternate: {},

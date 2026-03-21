@@ -1105,8 +1105,10 @@ function KDPlaceChest(cornerX: number, cornerY: number, _radius: number, chestli
 	if (factions.length > 0) {
 		let fl = factions;
 		let checkpoint = (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
+		let tags = KinkyDungeonMapParams[checkpoint].enemyTags || [];
+		if (KDMapData.enemyTags) tags = tags.concat(KDMapData.enemyTags);
 		let chosenFaction = KDGetByWeight(KDGetFactionProps(fl, MiniGameKinkyDungeonLevel, checkpoint,
-			KinkyDungeonMapParams[checkpoint].enemyTags || [], {}));
+			tags, {}));
 		factionList = factionList.filter((entry) => {
 			return chosenFaction == entry.faction || KDFactionRelation(chosenFaction, entry.faction) > .35;
 		});

@@ -2762,6 +2762,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Model: "NeckCorsetGag",
 		factionFilters: {
 			Neck: {color: "LightNeutral", override: false},
+			Gag: {color: "LightNeutral", override: false},
 			Latex: {color: "LightNeutral", override: false},
 			Rim: {color: "Highlight", override: true},
 		},
@@ -5710,6 +5711,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Rim: {color: "Highlight", override: true},
 		},
 		Filters: {
+			Gag: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 			Neck: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 			Latex: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},
 			Rim: {"gamma":1,"saturation":0,"contrast":1.0666666666666667,"brightness":0.9166666666666666,"red":1,"green":1,"blue":1.9,"alpha":0.9166666666666666},

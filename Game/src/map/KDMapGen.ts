@@ -316,6 +316,17 @@ function KinkyDungeonCreateMap (
 					tags.push(t);
 			}
 		}
+		if (MapParams.enemyTags_single) {
+			if (!KDMapData.enemyTags) 
+				KDMapData.enemyTags = [];
+			let tt = CommonRandomItemFromList(null, MapParams.enemyTags_single);
+			if (tt) {
+				tags.push(tt);
+				KDMapData.enemyTags.push(tt);
+			}
+			
+		}
+
 
 		KDMapData.JailFaction = [];
 		if (mapMod?.jailType) KDMapData.JailFaction.push(mapMod.jailType);
@@ -1304,6 +1315,12 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 				if (tags?.length > 0) {
 					// Add in any mapmod tags
 					for (let t of tags) {
+						tagList[biome].push(t);
+					}
+				}
+				if (KDMapData.enemyTags?.length > 0) {
+					// Add in any mapmod tags
+					for (let t of KDMapData.enemyTags) {
 						tagList[biome].push(t);
 					}
 				}
