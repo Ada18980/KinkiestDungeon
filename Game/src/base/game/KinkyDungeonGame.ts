@@ -1452,7 +1452,15 @@ function KinkyDungeonPlaceFurniture(barrelChance: number, cageChance: number, wi
 			}
 }
 
-let KDFood = {
+interface KDFoodData {
+	Food: string,
+	Weight: number,
+	Theft?: string,
+	OnEat?: string,
+	inedible?: boolean,
+}
+
+let KDFood: Record<string, KDFoodData> = {
 	"": {
 		Food: "",
 		Weight: 10,
@@ -1467,11 +1475,46 @@ let KDFood = {
 		Theft: "Cookie",
 		Weight: 8,
 	},
+	Donut: {
+		Food: "Donut",
+		Theft: "Donut",
+		Weight: 6,
+	},
+	Brownies: {
+		Food: "Brownies",
+		Theft: "Brownies",
+		Weight: 3,
+	},
+	IceCream: {
+		Food: "IceCream",
+		Weight: 8,
+	},
 	Pizza: {
 		Food: "Pizza",
-		Weight: 4,
+		Weight: 12,
+	},
+	IceCreamPoisoned: {
+		Food: "IceCreamPoisoned",
+		Weight: 2,
+		OnEat: "PoisonedFood",
+	},
+	PizzaPoisoned: {
+		Food: "PizzaPoisoned",
+		OnEat: "PoisonedFood",
+		Weight: 2,
 	},
 };
+
+let KDOnEatScripts: Record<string, (x: number, y: number, tile: any, food: KDFoodData) => void> = {
+	PoisonedFood: (x, y, tile, food) => {
+		KinkyDungeonSendTextMessage(10, TextGet("KDFoodPoison", {
+			Food: TextGet("KDFoodName" + food.Food).toLocaleLowerCase()
+		}), KDBaseRed, 8);
+		KinkyDungeonApplyBuffToEntity(KDPlayer(), KDPoisonSleepLong);
+		let sfx = "Damage";
+		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
+	},
+}
 
 function KinkyDungeonPlaceFood(foodChance: number, width: number, height: number, altType: AltType) {
 

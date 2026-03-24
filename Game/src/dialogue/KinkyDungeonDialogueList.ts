@@ -2240,6 +2240,11 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							let amount = tile.Amount ? tile.Amount : 1.0;
 							KDChangeWill(tile.Food, "food", "consumable",
 								amount * Willmulti);
+								
+							if (KDFood[tile.Food]?.OnEat) {
+								KDOnEatScripts[KDFood[tile.Food].OnEat](KDGameData.InteractTargetX, KDGameData.InteractTargetY,
+									tile, KDFood[tile.Food]);
+							}
 
 							// Send the message and advance time
 							KinkyDungeonAdvanceTime(1);

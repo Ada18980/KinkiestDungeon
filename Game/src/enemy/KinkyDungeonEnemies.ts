@@ -8983,7 +8983,7 @@ function KDRunBondageResist (
 					} else {
 						bb = KinkyDungeonAddRestraintIfWeaker(r.r, ((enemy ? enemy.Enemy.power + KDEnemyRank(enemy) : 0) || spell?.power || 0),
 						KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, (enemy?.Enemy.useLock ? enemy.Enemy.useLock : (r.r.DefaultLock || Lock)),
-						Keep, undefined, undefined, enemy?.Enemy.applyFaction || faction || enemy?.Enemy.defaultFaction,
+						Keep, undefined, undefined, KDAddFactionForEntity(enemy, faction),
 						KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
 						undefined, enemy, true,
 						undefined, undefined, undefined, r.v) * 2;
@@ -11102,4 +11102,15 @@ function KDGetPushTile(Enemy: entity, dx: number, dy: number): KDPoint {
 
 		}
 	}
+}
+
+function KDAddFactionForEntity(enemy: entity, forcefaction?: string): string {
+	//if (forcefaction) return forcefaction;
+
+	let faction = enemy?.Enemy.applyFaction
+		|| forcefaction
+		|| (!KDSelfishLeash(enemy) ? KDGetMainFaction() : "")
+		|| enemy?.Enemy.defaultFaction;
+
+	return faction;
 }

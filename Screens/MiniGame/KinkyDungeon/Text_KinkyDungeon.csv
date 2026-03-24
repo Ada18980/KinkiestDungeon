@@ -13915,9 +13915,19 @@ dTableFood_Eat,(Eat it to restore AMOUNT% WP)
 dTableFood_Take,(Take it!)
 
 KinkyDungeonFoodCookies,"(Someone left their cookies unattended)"
+KinkyDungeonFoodDonut,"(You find a fresh donut)"
+KinkyDungeonFoodBrownies,"(Somebody baked some brownies~)"
+KinkyDungeonFoodIceCream,"(You find an unattended ice cream cone)"
 KinkyDungeonFoodPizza,"(You smell delicious pizza)"
+KinkyDungeonFoodIceCreamPoisoned,"(You find an unattended ice cream cone)"
+KinkyDungeonFoodPizzaPoisoned,"(You smell delicious pizza)"
 KDFoodNameCookie,Cookie
 KDFoodNamePizza,Pizza
+KDFoodNamePizzaPoisoned,Pizza
+KDFoodNameIceCream,Ice Cream Cone
+KDFoodNameIceCreamPoisoned,Ice Cream Cone
+KDFoodNameBrownies,Batch of Brownies
+KDFoodNameDonut,Donut
 
 rTableNoFlip,"(The table is bolted to the floor)"
 rTableNoFlipFlip,"(Despite your best efforts, the table goes nowhere)"
@@ -33359,3 +33369,5 @@ KinkyDungeonStatSpeciesTeethSharp,"Sharp Teeth"
 KinkyDungeonStatDescSpeciesTeethSharp,"While mouth is free, gain a powerful bite weapon. Struggling against mouth items is also easier."
 KinkyDungeonStatSpeciesTeethGnawing,"Gnawing Teeth"
 KinkyDungeonStatDescSpeciesTeethGnawing,"While mouth is free and arms can go in front, you can use teeth to cut. Also unlocks a bite weapon."
+
+KDFoodPoison,"After eating the ${Food}, you start to feel dizzy..."

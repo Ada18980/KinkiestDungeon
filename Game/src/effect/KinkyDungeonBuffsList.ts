@@ -87,6 +87,13 @@ const KDPoisonSleep: KDBuff = {
 	]
 }
 
+const KDPoisonSleepLong: KDBuff = {
+	id: "poisonSleep", type: "Event", power: 0.03, duration: 30, events: [
+		{type: "poisonSleep", trigger: "tick"},
+		{type: "poisonSleep", trigger: "expireBuff"},
+	]
+}
+
 const KDEager: KDBuff = {
 	id: "Eager", type: "MoveSpeed", power: 0.1, duration: 1, events: [
 		{type: "ApplyVuln", duration: 1, trigger: "tick"},

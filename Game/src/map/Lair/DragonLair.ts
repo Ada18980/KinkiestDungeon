@@ -351,11 +351,12 @@ function KDMapgenCreateCave(POI, VisitedRooms, width, height, openness, density,
 	// Scatter a healthy amount of cursed items around
 
 	let CurseList = "Dragon";
-	let HexList = "Dragon";
+	let HexListOrig = "Dragon";
 	let EnchantList = "Dragon";
 	let idist = 5;
 
 	for (let i = 0; i < 10; i++) {
+		let HexList = KDRandom() < 0.3 ? HexListOrig : "";
 
 		let ang = KDRandom() * 2 * Math.PI;
 		let point = (KDRandom() < 0.7 ? null : KinkyDungeonGetNearbyPoint(
@@ -371,7 +372,7 @@ function KDMapgenCreateCave(POI, VisitedRooms, width, height, openness, density,
 		if (point) {
 			let curse: string = undefined;
 			let Lock = "Gold";
-			if (CurseList && KDRandom() < 0.3) {
+			if (CurseList && HexList) {
 				curse = KDGetByWeight(
 					KinkyDungeonGetCurseByListWeighted(
 						[CurseList],

@@ -3607,9 +3607,13 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 	},
 	"expireBuff": {
 		"poisonSleep": (_e, buff, entity, data) => {
+			if (KDIsImmuneToDrugs(entity)) return;
+			//if (KDIsImmuneToSleep(entity)) return;
 			if (buff == data.buff && entity.player) {
-				KDStunTurns(Math.round(12 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
-				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, Math.round(12 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
+				KDStunTurns(Math.round(12 * KinkyDungeonMultiplicativeStat(
+					KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
+				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, 
+					Math.round(12 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
 			}
 		},
 		"TeleportHostUnlessStunned": (_e, buff, entity, data) => {
@@ -4053,7 +4057,8 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 			if (KDIsImmuneToDrugs(entity)) return;
 			if (entity.player) {
 				KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness,
-					Math.min(8* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist")),
+					Math.min(8* KinkyDungeonMultiplicativeStat(
+						KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist")),
 					KinkyDungeonSleepiness + 1.7*data.delta));
 			}
 		},

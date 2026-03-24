@@ -1339,7 +1339,13 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 					let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
 					let amount = tile.Amount ? tile.Amount : 1.0;
 					KDChangeWill(tile.Food, "food", "consumable", amount * Willmulti);
-
+					if (KDFood[tile.Food]?.OnEat) {
+						let x = parseInt(data.targetTile.split(',')[0]);
+						let y = parseInt(data.targetTile.split(',')[1]);
+						if (x && y) {
+							KDOnEatScripts[KDFood[tile.Food].OnEat](x, y, tile, KDFood[tile.Food]);
+						}
+					}
 
 					// Send the message and advance time
 					KinkyDungeonAdvanceTime(1);

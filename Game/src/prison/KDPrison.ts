@@ -249,7 +249,7 @@ function KDDoUniformApply(player: entity, guard: entity, jailGroups: string[], l
 			if (KinkyDungeonAddRestraintIfWeaker(
 				KinkyDungeonGetRestraintByName(restraint.item),
 				2, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
-				lockType, false, false, undefined, KDGetMainFaction(),
+				lockType, false, false, undefined, KDAddFactionForEntity(guard),
 				KinkyDungeonStatsChoice.has("TightRestraints") ? true : undefined,
 				undefined, KinkyDungeonJailGuard(),
 				false, undefined, undefined, undefined,

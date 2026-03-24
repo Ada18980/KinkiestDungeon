@@ -1358,8 +1358,10 @@ function KDAddDefeatRestraints(enemy: entity, allowFurniture: boolean) {
 					let lock = restraintAdd.r.DefaultLock || enemy.Enemy.useLock || enemy.Enemy.attackLock;
 					KinkyDungeonAddRestraintIfWeaker(restraintAdd.r,
 						10, KinkyDungeonStatsChoice.get("MagicHands"), lock,
-						false, false, undefined, KDGetFaction(enemy), true, undefined,
-						enemy, true, undefined, undefined, undefined,
+						false, false, undefined, 
+						KDGetFaction(enemy), true, undefined,
+						enemy, true, undefined, undefined,
+						 undefined,
 						restraintAdd.v
 					)
 				}

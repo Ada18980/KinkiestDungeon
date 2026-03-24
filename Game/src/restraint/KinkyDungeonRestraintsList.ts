@@ -1502,7 +1502,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		factionColor: [[], [2], [0,1]],
 		Group: "ItemFeet", power: 12, weight: 0,
 		escapeChance: {"Struggle": -0.8, "Cut": -0.65, "Remove": 0.6, "Pick": -0.15},
-		enemyTags: {"cyberdollcuffs":6, "cyberdollrestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 4, allFloors: true,
+		enemyTags: {"cyberdollcuffs":6, "cyberdollrestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true,
 		shrine: ["CyberCuffs", "Cyber", "Cuffs", "Metal",  "AnkleCuffsBase", "HogtieLower", "CyberAnkleCuffs"],
 	},
 	{inventory: true, name: "CyberLegCuffs", debris: "Chains", accessible: true, Asset: "FuturisticLegCuffs", LinkableBy: [...KDBindable, ...KDDevices],
@@ -1522,7 +1522,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		factionColor: [[], [2], [0,1]],
 		Group: "ItemLegs", power: 12, weight: 0,
 		escapeChance: {"Struggle": -0.8, "Cut": -0.65, "Remove": 0.6, "Pick": -0.15},
-		enemyTags: {"cyberdollcuffs":6, "cyberdollrestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 4, allFloors: true,
+		enemyTags: {"cyberdollcuffs":6, "cyberdollrestraints":6}, playerTags: {"ItemFeetFull":-2}, minLevel: 0, allFloors: true,
 		shrine: ["CyberCuffs", "Cyber", "Metal", "Cuffs", "LegCuffsBase", "CyberLegCuffs"],
 	},
 	{renderWhenLinked: ["Ties"], nonbinding: true, inventory: true, name: "CyberArmCuffs", debris: "Chains", accessible: true,
@@ -1545,7 +1545,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Group: "ItemArms", bindarms: false, power: 12, weight: 0,
 		escapeChance: {"Struggle": -0.8, "Cut": -0.65, "Remove": 0.25, "Pick": -0.15},
 		enemyTags: {"cyberdollcuffs":20, "cyberdollrestraints":6}, playerTags: {"ItemArmsFull":-2},
-		minLevel: 4, allFloors: true, shrine: ["CyberCuffs", "Cyber", "Cuffs", "Metal",  "ArmCuffsBase", "CyberWristCuffs"],
+		minLevel: 0, allFloors: true, shrine: ["CyberCuffs", "Cyber", "Cuffs", "Metal",  "ArmCuffsBase", "CyberWristCuffs"],
 		maxwill: 0.8
 	},
 	//endregion
@@ -2827,6 +2827,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		escapeChance: {"Struggle": 0, "Cut": 0.8, "Remove": 0.3},
 		helpChance: {"Struggle": 0.2, "Pick": 1.0, "Remove": .2},
+		struggleMinSpeed: {
+			Cut: 3,
+		},
 		events: [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
@@ -2848,6 +2851,9 @@ const KinkyDungeonRestraints: restraint[] = [
 			Cut: 0.3,
 			Struggle: 0.4,
 			Remove: 0.8,
+		},
+		struggleMinSpeed: {
+			Cut: 3,
 		},
 		escapeChance: {"Struggle": 0, "Cut": 0.4, "Remove": .3},
 		helpChance: {"Struggle": 0.2, "Pick": 1.0, "Remove": .2},
@@ -2875,6 +2881,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		factionFilters: {
 			BallSuit: {color: "Catsuit", override: false},
+		},
+		struggleMinSpeed: {
+			Cut: 2,
 		},
 		events: [
 			//{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
@@ -2907,6 +2916,9 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
 		],
+		struggleMinSpeed: {
+			Cut: 2,
+		},
 		enemyTags: {"latexSphere":100}, playerTags: {BallsuitOptout: -1000}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex"], removeOnLeash: true,
 	},
 	// Future Box
