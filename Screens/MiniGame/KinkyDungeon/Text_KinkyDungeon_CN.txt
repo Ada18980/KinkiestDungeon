@@ -542,7 +542,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 动画时长 :
 - Map Brightness:
 地图亮度 :‎
-# - Character Scale:
+- Character Scale:
+角色缩放
 - Game Font:
 游戏字体 :‎
 - Button Font:
@@ -5008,7 +5009,8 @@ M.F. '女仆长'
 黑商亲吻并抚摸你的身体！ ( DamageTaken )
 - That dagger was laced with something...
 那把匕首上沾着什么东西……
-# - The dagger that hits you is poisoned, but it doesn't affect you.
+- The dagger that hits you is poisoned, but it doesn't affect you.
+你被带毒的匕首击中了，但是毒对你没有效果。
 - You hear a shattering of glass, suddenly the air around you feels thick and moist...
 你听到玻璃破碎的声音，身边的空气突然变得粘稠而潮湿……
 - Poison Dagger
@@ -12046,10 +12048,11 @@ RestraintName 上的诅咒解除了！
 
 
 - Floor
-地板
+物体
+# :: KDTileTooltip0
+# :: KDTileTooltip5
 - Object
 物体
-# :: KDTileTooltip5
 # :: KDTileTooltip6
 # :: KDTileTooltip7
 - Brickwork
@@ -14531,7 +14534,8 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 
 - You feel a prick as a small syringe hits you, and you start feeling drowsy...
 当一个小型注射器击中你时，你会感到刺痛，然后你开始感到昏昏欲睡……
-# - You feel a prick as a small syringe hits you, but nothing happens.
+- You feel a prick as a small syringe hits you, but nothing happens.
+一个小型注射器刺痛了你，但是什么也没发生。
 - The thrown cuffs snap shut around your ankles and slow you down!!!
 抛出的手铐会卡住你的脚踝，让你慢下来！
 - Ribbon Burst
@@ -14552,7 +14556,8 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 孢子让你感到兴奋！
 - The toxic spores make you feel faint...
 有毒的孢子让你感到头晕目眩……
-# - The spores do not affect you.
+- The spores do not affect you.
+孢子对你没有效果。
 
 
 - Magic Hairpin
@@ -49368,7 +49373,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: KinkyDungeonSummonMultiIceWall
 - The dragon's breath poisons you!
 龙息让你中毒！
-# - The dragon's breath does not affect you.
+- The dragon's breath does not affect you.
+龙息对你没有效果。
 - The dragon girl strikes you with poisonous razor leaves!
 龙娘使用带毒锋利叶片攻击你！
 - The flower releases soporific spores!
@@ -49388,15 +49394,18 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - You are left dangling! Maybe if you swing hard enough you can tear the vines...
 你悬空了！也许你挥动得足够用力，你就能震破藤蔓......
 
-# - Kocaeli - Dragon Lair
+- Kocaeli - Dragon Lair
+Kocaeli - 《龙巢》
 - EchoZero - Slimy Science
-EchoZero -《黏糊糊的科学》
-# - EchoZero - Machined Perfection
+EchoZero - 《黏糊糊的科学》
+- EchoZero - Machined Perfection
+EchoZero - 机械完美
 # :: MachinedPerfection.ogg
 # :: MachinedPerfection_Loopable.ogg
 - Kocaeli - Doll Storage
 Kocaeli - 《玩偶柜》
-# - Kocaeli - Doll Sorting Area
+- Kocaeli - Doll Sorting Area
+Kocaeli - 《玩偶分拣区》
 - Kocaeli - Factory
 Kocaeli - 《工厂》
 - Kocaeli - AAA
@@ -51601,7 +51610,8 @@ ENMY 解开了 ITMN 的锁!
 - Generating Map...
 生成地图中...
 
-# - Marked for Collection. Getting hit by more orbs will put you on a stand. Reduces Bondage resist.
+- Marked for Collection. Getting hit by more orbs will put you on a stand. Reduces Bondage resist.
+捕获标记。被更多球体命中会让你被束缚在罚站桩上。削弱束缚抗性。
 
 - Mystic wrappings constrict around your body!
 神秘的丝带紧紧包裹了你的身体！
@@ -51611,12 +51621,18 @@ ENMY 解开了 ITMN 的锁!
 - There is also an option in HUD settings to replace the small buttons with a context menu.
 在HUD设置中可以选择将小按钮替换为菜单
 
-# - You've been taunted, leaving the angry zone will stun you!
-# - You moved out of the taunt zone, and are now punished!
-# - The warrior's taunt effect forces you to stay in a certain area.|If you move out of the area, you are stunned,|as you have just been.
-# - The warden's magic leaves you more vulnerable to binding.
-# - The warden's magic leaves you significantly vulnerable to binding.
-# - The warden's magic ensnares you. It's time to give in.
+- You've been taunted, leaving the angry zone will stun you!
+你被嘲讽了，离开愤怒区域会让你眩晕！
+- You moved out of the taunt zone, and are now punished!
+你离开了嘲讽区域，受到了惩罚！
+- The warrior's taunt effect forces you to stay in a certain area.|If you move out of the area, you are stunned,|as you have just been.
+战士的嘲讽效果会迫使你待在特定区域。|如果你离开该区域，你会被眩晕，|就像刚刚那样。
+- The warden's magic leaves you more vulnerable to binding.
+典狱长的魔法让你更容易被束缚。
+- The warden's magic leaves you significantly vulnerable to binding.
+典狱长的魔法让你非常容易被束缚。
+- The warden's magic ensnares you. It's time to give in.
+典狱长的魔法俘获了你。束手就擒吧。
 
 
 
