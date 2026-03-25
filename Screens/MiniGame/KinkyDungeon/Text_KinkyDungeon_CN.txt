@@ -26079,12 +26079,26 @@ FOODMSG| ( 它邀请你分享它的美食 )
 
 - (Someone left their cookies unattended)
 ( 有人留下了他们的曲奇无人看管 )
+# - (You find a fresh donut)
+# - (Somebody baked some brownies~)
+# - (You find an unattended ice cream cone)
+# :: KinkyDungeonFoodIceCream
+# :: KinkyDungeonFoodIceCreamPoisoned
 - (You smell delicious pizza)
 ( 你闻到美味的披萨的味道 )
+# :: KinkyDungeonFoodPizza
+# :: KinkyDungeonFoodPizzaPoisoned
 - Cookie
 曲奇
 - Pizza
 披萨
+# :: KDFoodNamePizza
+# :: KDFoodNamePizzaPoisoned
+# - Ice Cream Cone
+# :: KDFoodNameIceCream
+# :: KDFoodNameIceCreamPoisoned
+# - Batch of Brownies
+# - Donut
 
 - (The table is bolted to the floor)
 （桌子被固定在地上）
@@ -52854,3 +52868,5 @@ ${Playername}使用了安全词，被传送回关卡起点。
 啮齿
 - While mouth is free and arms can go in front, you can use teeth to cut. Also unlocks a bite weapon.
 嘴部自由时，如果你能把手臂伸到嘴前，就可以用牙齿切割。同样能以撕咬作为武器。
+
+# - After eating the ${Food}, you start to feel dizzy...
