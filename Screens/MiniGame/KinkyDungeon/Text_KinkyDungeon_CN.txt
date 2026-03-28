@@ -7275,7 +7275,7 @@ SCHOOL 女神给予你庇护和反击之力！
 - It's a pile of slag emitting a strange magic smoke...
 一堆散发着古怪魔法烟气的熔渣……
 - object
-目标被 LKTP 上锁。
+目标
 # :: KinkyDungeonObjectLock
 # :: KinkyDungeonObject
 - A shrine to the goddess of TYPE.
@@ -12048,7 +12048,7 @@ RestraintName 上的诅咒解除了！
 
 
 - Floor
-物体
+层
 # :: KDTileTooltip0
 # :: KDTileTooltip5
 - Object
@@ -15425,7 +15425,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Curse of Tickling: This item is tickling you without end!
 挠痒诅咒 : ‎这个物品会不停地挠你
 - Curse of Pacifism: Inflicts psychic damage when you attack or cast a spell.
-惩罚诅咒 : ‎当你攻击或施展法术时对你造成灵能伤害
+和平诅咒 : ‎当你攻击或施展法术时对你造成灵能伤害
 - Curse of Illumination: Produces light and makes you easier to see.
 照明诅咒 : ‎产生光并让你更容易被敌人看到。
 - Curse of Attraction: Women find you irresistable.
@@ -26079,13 +26079,16 @@ FOODMSG| ( 它邀请你分享它的美食 )
 
 - (Someone left their cookies unattended)
 ( 有人留下了他们的曲奇无人看管 )
-# - (You find a fresh donut)
-# - (Somebody baked some brownies~)
-# - (You find an unattended ice cream cone)
+- (You find a fresh donut)
+(你发现了一个新鲜的甜甜圈)
+- (Somebody baked some brownies~)
+(有人烤了布朗尼~)
+- (You find an unattended ice cream cone)
+(你发现了一个无人看管的冰淇淋甜筒)
 # :: KinkyDungeonFoodIceCream
 # :: KinkyDungeonFoodIceCreamPoisoned
 - (You smell delicious pizza)
-( 你闻到美味的披萨的味道 )
+(你闻到了美味的披萨)
 # :: KinkyDungeonFoodPizza
 # :: KinkyDungeonFoodPizzaPoisoned
 - Cookie
@@ -26094,11 +26097,14 @@ FOODMSG| ( 它邀请你分享它的美食 )
 披萨
 # :: KDFoodNamePizza
 # :: KDFoodNamePizzaPoisoned
-# - Ice Cream Cone
+- Ice Cream Cone
+冰淇淋甜筒
 # :: KDFoodNameIceCream
 # :: KDFoodNameIceCreamPoisoned
-# - Batch of Brownies
-# - Donut
+- Batch of Brownies
+一盘布朗尼
+- Donut
+甜甜圈
 
 - (The table is bolted to the floor)
 （桌子被固定在地上）
@@ -48936,7 +48942,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 
 - The Gladiator insults you, filling you with the need to face them!
-你的按钮已经被按下了，而且是以一种不愉快的方式！
+角斗士侮辱了你，使你迫切地想要与其一决高下！
 - Defeat all taunting enemies or stay within the tiles to avoid shame!
 击败所有嘲讽的敌人，或留在方格内以避免被羞辱！
 - Degradating Taunts
@@ -52869,4 +52875,5 @@ ${Playername}使用了安全词，被传送回关卡起点。
 - While mouth is free and arms can go in front, you can use teeth to cut. Also unlocks a bite weapon.
 嘴部自由时，如果你能把手臂伸到嘴前，就可以用牙齿切割。同样能以撕咬作为武器。
 
-# - After eating the ${Food}, you start to feel dizzy...
+- After eating the ${Food}, you start to feel dizzy...
+吃完${Food}后，你开始感到头晕……
