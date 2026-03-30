@@ -89,6 +89,7 @@ interface item extends NamedAndTyped {
 interface consumable extends NamedAndTyped {
 	name: string,
 	range?: number,
+	food?: boolean,
 	maxInventory?: number,
 	/** 1 - (Rarity * sub value) = sub threshold */
 	sub?: number,
@@ -2820,6 +2821,8 @@ interface KDInventoryActionDef {
 	itemlabelcolor?: (player: entity, item: item) => string;
 	show?: (player: entity, item: item) => boolean;
 	valid: (player: entity, item: item) => boolean;
+	highlight?: (player: entity, item: item) => string;
+	
 	invalidtooltip?: (player: entity, item: item) => string;
 	click: (player: entity, item: item,) => void;
 	cancel: (player: entity, delta: number) => boolean;

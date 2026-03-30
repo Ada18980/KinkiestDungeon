@@ -84,15 +84,23 @@ const KDPoisonSleep: KDBuff = {
 	id: "poisonSleep", type: "Event", power: 0.1, duration: 10, events: [
 		{type: "poisonSleep", trigger: "tick"},
 		{type: "poisonSleep", trigger: "expireBuff"},
-	]
+	], tags: ["poison"]
 }
 
 const KDPoisonSleepLong: KDBuff = {
 	id: "poisonSleep", type: "Event", power: 0.03, duration: 30, events: [
 		{type: "poisonSleep", trigger: "tick"},
 		{type: "poisonSleep", trigger: "expireBuff"},
-	]
+	], tags: ["poison"]
 }
+const KDArousalOverTime: KDBuff = {
+	id: "arousalOverTime", type: "restore_ap", power: 0.5, duration: 30, tags: ["poison"]
+}
+const KDArousalOverTime2: KDBuff = {
+	id: "arousalOverTime2", type: "restore_dp", power: 0.05, duration: 30, tags: ["poison"]
+}
+
+
 
 const KDEager: KDBuff = {
 	id: "Eager", type: "MoveSpeed", power: 0.1, duration: 1, events: [

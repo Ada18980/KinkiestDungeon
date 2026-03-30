@@ -67,6 +67,7 @@ Must do
 - Made the warden's taunt mechanic explain itself if you get hit by it
 - Added character size option
 - One bar spike traps now take 3 turns to trigger, up from 2
+- Food at tables can now contain extra effects (can be turned off in consent settings)
 - Fixed bug with leashing getting stuck on conveyors
 - Fixed a bug where bast cultists would never apply kitty suit in jail
 

@@ -848,7 +848,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KDGameData.InventoryAction = "Food";
 				KDGameData.InventoryActionTokens = {
-					FoodTarget: KDGetName(enemy.id),
+					FoodTarget: KDGetName(enemy.id) || KDGetEnemyTypeName(enemy),
 				};
 				KDGameData.FoodTarget = enemy.id;
 				KDShowInventory(null);
@@ -1218,7 +1218,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 				},
 				exitDialogue: true,
 			},
-			"ConfirmPush": {playertext: name + "LetMePass_Confirm", response: "Default",
+			"ConfirmPush": {playertext: name + "LetMePass_ConfirmPush", response: "Default",
 				clickFunction: (_gagged, _player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
@@ -1232,7 +1232,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 				},
 				exitDialogue: true,
 			},
-			"ConfirmPushAll": {playertext: name + "LetMePass_ConfirmAll", response: "Default",
+			"ConfirmPushAll": {playertext: name + "LetMePass_ConfirmPushAll", response: "Default",
 				clickFunction: (_gagged, _player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {

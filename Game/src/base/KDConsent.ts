@@ -444,6 +444,36 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "PrisonerMarkings"),
             tooltip: TextGet("KDConsentListDesc_" + "PrisonerMarkings"),
     },
+    SleepFood: {
+            name: "SleepFood",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "No_SleepFood",
+            perkYellow: "",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "SleepFood"),
+            tooltip: TextGet("KDConsentListDesc_" + "SleepFood"),
+    },
+    ArousalFood: {
+            name: "ArousalFood",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "No_ArousalFood",
+            perkYellow: "",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "ArousalFood"),
+            tooltip: TextGet("KDConsentListDesc_" + "ArousalFood"),
+    },
     ConsentIngame: {
             name: "ConsentIngame",
             color: KDBaseWhite,
@@ -506,7 +536,7 @@ let KDConsent_Buttonstart = 386;
 let KDConsent_Buttonspace = 94;
 
 let KDShowConsents: string[] = null;
-let KDUpdatedSeenConsents = false;
+let KDUpdatedSeenConsents = true;
 
 function KDDrawConsentHeader(xOffset, sidebar, headery, linespace, ii, fontsizeheading) {
     if (KinkyDungeonPreviousState != "Menu") {

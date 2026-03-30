@@ -2234,6 +2234,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						if (gagTotal > 0) {
 							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEatenGag"), KDBaseOrange, 1);
 							KDGameData.CurrentDialogMsg = "TableFoodEatFail";
+						} else if (KDIsArtificial(_player)) {
+							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEatenGag"), KDBaseOrange, 1);
+							KDGameData.CurrentDialogMsg = "TableFoodEatDoll";
 						} else {
 							// Perform the deed
 							let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);

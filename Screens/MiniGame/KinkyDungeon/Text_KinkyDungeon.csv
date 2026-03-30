@@ -68,6 +68,7 @@ KDToggleBindPercent,Show Enemy Binding as %
 KDToggleAutoWaitDelayed,Auto-wait Through Delayed Actions
 
 KDToggle,Show Training in Buffs List
+KDToggleStackOutfitItems,Allow Stacking Similar Items
 KDToggleMMLabels,Show Minimap Labels
 KDToggleAutoLoot,Auto loot all from chests
 KDToggleNoOutfitPalette,Don't Use Outfit Palettes
@@ -1532,7 +1533,7 @@ KinkyDungeonInventoryItemDonutDesc2,"Restores 10% willpower. Takes a few turns t
 ItemPickupCookieJailer,"You pick up a sugar cookie slathered in pink frosting!"
 KinkyDungeonInventoryItemCookieJailer,Good-Girl Gift
 KinkyDungeonInventoryItemCookieJailerUse,"You slowly eat the cookie, savoring its fluffy texture."
-KinkyDungeonInventoryItemCookieJailerDesc,"It tempts you with sweet promises, but something about it feels off..."
+KinkyDungeonInventoryItemCookieJailerDesc,"It tempts you with sweet promises, but you feel like eating it would be admitting something about yourself."
 KinkyDungeonInventoryItemCookieJailerDesc2,"Restores 15% willpower and adds +5 submissiveness. Takes a few turns to eat."
 
 ItemPickupCookie,"You find a chocolate-chip cookie!"
@@ -13910,6 +13911,8 @@ rFurnitureEnemyHelpless,"(You lock her into the furniture so that she stays in p
 rTableFood,"FOODMSG|(It invites you to partake in its culinary delights)"
 rTableFoodEat,"(You eat the food and feel your willpower rising)"
 rTableFoodEatFail,"(Being gagged as you are you cannot enjoy the food)"
+rTableFoodEatDoll,"(Artificial beings don't need to eat)"
+KDFoodEatDoll,"(Artificial beings don't need to eat)"
 rTableFoodTake,"(You steal the food, hoping nobody will notice...)"
 dTableFood_Eat,(Eat it to restore AMOUNT% WP)
 dTableFood_Take,(Take it!)
@@ -13921,11 +13924,15 @@ KinkyDungeonFoodIceCream,"(You find an unattended ice cream cone)"
 KinkyDungeonFoodPizza,"(You smell delicious pizza)"
 KinkyDungeonFoodIceCreamPoisoned,"(You find an unattended ice cream cone)"
 KinkyDungeonFoodPizzaPoisoned,"(You smell delicious pizza)"
+KinkyDungeonFoodIceCreamArousal,"(You find an unattended ice cream cone)"
+KinkyDungeonFoodPizzaArousal,"(You smell delicious pizza)"
 KDFoodNameCookie,Cookie
 KDFoodNamePizza,Pizza
 KDFoodNamePizzaPoisoned,Pizza
+KDFoodNamePizzaArousal,Pizza
 KDFoodNameIceCream,Ice Cream Cone
 KDFoodNameIceCreamPoisoned,Ice Cream Cone
+KDFoodNameIceCreamArousal,Ice Cream Cone
 KDFoodNameBrownies,Batch of Brownies
 KDFoodNameDonut,Donut
 
@@ -29522,8 +29529,12 @@ KDConsentItem_ConsentIngame,Allow Menu Ingame
 
 KDConsentItem_PrisonerMarkings,Prisoner Text
 KDConsentItem_Invis,Invisible Restraints
+KDConsentItem_ArousalFood,Aphrodisiac-Laced Food
+KDConsentItem_SleepFood,Sleep-Laced Food
 
 
+KDConsentItemTooltip_SleepFood,"Some food items on tables will be laced with a drug that makes your character fall asleep."
+KDConsentItemTooltip_ArousalFood,"Some food items on tables will be laced with a drug that makes your character very distracted."
 
 KDConsentItemTooltip_Red,"|||This item is marked as Red, which prevents it from appearing in the game."
 KDConsentItemTooltip_Yellow,"|||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention."
@@ -33371,3 +33382,8 @@ KinkyDungeonStatSpeciesTeethGnawing,"Gnawing Teeth"
 KinkyDungeonStatDescSpeciesTeethGnawing,"While mouth is free and arms can go in front, you can use teeth to cut. Also unlocks a bite weapon."
 
 KDFoodPoison,"After eating the ${Food}, you start to feel dizzy..."
+KDFoodArousal,"After eating the ${Food}, you start to feel heated~"
+
+KDWontRestoreDoll,Will not restore willpower because you are artificial.
+KDWontRestoreDollNPC,Will not restore willpower because target is artificial.
+KDNoRestore,No wp res

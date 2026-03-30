@@ -903,3 +903,8 @@ function KDMaxInventoryStorage(item: item, entity: entity) {
 	}
 	return 1000000;
 }
+
+
+function KDIsFood(item: item) {
+	return !!KDConsumable(item)?.food;
+}

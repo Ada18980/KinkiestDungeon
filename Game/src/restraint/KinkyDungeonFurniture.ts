@@ -81,7 +81,8 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "move", "cast"],
 					});
 				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
+				if (!KinkyDungeonGetRestraintItem("ItemDevices"))
+					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
 		}
 	},
@@ -147,7 +148,8 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "move", "cast"],
 					});
 				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
+				if (!KinkyDungeonGetRestraintItem("ItemDevices"))
+					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
 		}
 	},
@@ -217,7 +219,8 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "move", "cast"],
 					});
 				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
+				if (!KinkyDungeonGetRestraintItem("ItemDevices"))
+					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
 		}
 	},
@@ -380,7 +383,8 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "darkness", "move", "cast"],
 					});
 				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
+				if (!KinkyDungeonGetRestraintItem("ItemDevices"))
+					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
 		}
 	},
@@ -446,7 +450,8 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "darkness", "move", "cast"],
 					});
 				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
+				if (!KinkyDungeonGetRestraintItem("ItemDevices"))
+					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
 		}
 	},
@@ -512,7 +517,8 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "darkness", "move", "cast"],
 					});
 				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
+				if (!KinkyDungeonGetRestraintItem("ItemDevices"))
+					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
 		}
 	},

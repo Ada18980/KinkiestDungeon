@@ -1626,7 +1626,10 @@ function KDDrawInventoryContainer (
 					useIcons ? filteredInventory[index].preview || "" : "",
 					undefined, undefined, index !=
 						(prefix ? KinkyDungeonCurrentPageContainer : KinkyDungeonCurrentPageInventory),
-					colorcallback ? colorcallback(filteredInventory[index]) : KDTextGray1, undefined, undefined, {
+					colorcallback ? colorcallback(filteredInventory[index]) : 
+					(KDInventoryAction[KDGameData.InventoryAction]?.highlight ?
+						KDInventoryAction[KDGameData.InventoryAction].highlight(KDPlayer(),
+						filteredInventory[index].item) : KDButtonColor), undefined, undefined, {
 						scaleImage: true,
                     //@ts-ignore // This should have a type assigned to it probably, but I do not know where to trace to make it happy. -Enraa
 					}, KDInventoryItemHover(filteredInventory[index])) && !tooltipitem) {
@@ -1938,7 +1941,8 @@ function KinkyDungeonDrawInventory() {
 				let invactiontextwidth = KD_invactiontextwidth;
 				let invactiontextanchorx = KD_invactiontextanchorx_offset + invactiontextwidth/2 + xOffset;
 				let invactiontextanchory = KD_invactiontextanchory;
-				let width = DrawTextFitKD(TextGet("KDInventoryActionInfo_" + KDGameData.InventoryAction, KDGameData.InventoryActionTokens), 
+				let width = DrawTextFitKD(TextGet("KDInventoryActionInfo_" + KDGameData.InventoryAction, 
+					KDGameData.InventoryActionTokens), 
 				invactiontextanchorx,
 				invactiontextanchory, invactiontextwidth, 
 				KDBaseWhite,
@@ -2010,7 +2014,10 @@ function KinkyDungeonDrawInventory() {
 						KinkyDungeonRootDirectory + KDInventoryAction[action].icon(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) + ".png",
 						"",
 						!KDInventoryAction[action].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item),
-						true, KDInventoryAction[action].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) ? KDButtonColor : "rgba(255, 50, 50, 0.5)",
+						true, 
+						KDInventoryAction[action].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) ? (
+							KDInventoryAction[action].highlight ? KDInventoryAction[action].highlight(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item) : KDButtonColor
+						) : "rgba(255, 50, 50, 0.5)",
 						undefined, undefined, {centered: true,
 							hotkey: KDInventoryAction[action].hotkey ? KDInventoryAction[action].hotkey() : undefined,
 							hotkeyPress: KDInventoryAction[action].hotkeyPress ? KDInventoryAction[action].hotkeyPress() : undefined,

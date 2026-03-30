@@ -1416,6 +1416,59 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				}
 			}
 		},
+		
+		text:  (player, item) => {
+			let nearby = KDNearbyEnemies(player.x, player.y, 1.5);
+			for (let enemy of nearby) {
+				if (enemy.id == KDGameData.FoodTarget) {
+					if (KDIsFood(item) && KDIsArtificial(enemy)) {
+						return TextGet("KDWontRestoreDollNPC");
+					}
+				}
+			}
+			return "";
+		},
+		label:  (player, item) => {
+			let nearby = KDNearbyEnemies(player.x, player.y, 1.5);
+			for (let enemy of nearby) {
+				if (enemy.id == KDGameData.FoodTarget) {
+					if (KDIsFood(item) && KDIsArtificial(enemy)) {
+						return TextGet("KDNoRestore");
+					}
+				}
+			}
+			return "";
+		},
+		itemlabel:  (player, item) => {
+			let nearby = KDNearbyEnemies(player.x, player.y, 1.5);
+			for (let enemy of nearby) {
+				if (enemy.id == KDGameData.FoodTarget) {
+					if (KDIsFood(item) && KDIsArtificial(enemy)) {
+						return TextGet("KDNoRestore");
+					}
+				}
+			}
+			return "";
+		},
+		itemlabelcolor: (_player, _item) => {return "#ffff44";},
+		
+		highlight: (player, item) => {
+			let artificial = false;
+
+			let nearby = KDNearbyEnemies(player.x, player.y, 1.5);
+			for (let enemy of nearby) {
+				if (enemy.id == KDGameData.FoodTarget) {
+					if (KDIsFood(item) && KDIsArtificial(enemy)) {
+						artificial = true;
+						break;
+					}
+				}
+			}
+			return (KDConsumable(item)?.wp_gradual != undefined
+			 	|| KDConsumable(item)?.wp_instant != undefined) ? (
+					artificial ? KDBaseYellow : KDBaseGreal
+				) : KDButtonColor
+			},
 		/** Return true to cancel it */
 		cancel: (player, delta) => {
 			if (delta > 0) {

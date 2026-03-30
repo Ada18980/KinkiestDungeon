@@ -11114,3 +11114,10 @@ function KDAddFactionForEntity(enemy: entity, forcefaction?: string): string {
 
 	return faction;
 }
+
+function KDIsArtificial(enemy: entity) {
+	if (enemy.player) {
+		return !!KinkyDungeonStatsChoice.get("Artificial");
+	}
+	return enemy.Enemy?.nonHumanoid || !!enemy.Enemy?.bound || enemy.Enemy?.tags?.artificial;
+}

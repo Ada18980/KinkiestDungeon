@@ -7,6 +7,7 @@ let KDGenMapCallback: () => string = null;
 
 let KDOptionFilter = "";
 let KDConsentFilter = "";
+let LaunchedMenu = false;
 
 
 // Modders look here!
@@ -2022,13 +2023,17 @@ function KinkyDungeonRun() {
 			DrawTextKD(TextGet("KDLoading") + Math.round(100 * KDLoadingDone / KDLoadingMax) + "%", 1000, 950, KDBaseWhite, KDTextGray2);
 		} else {
 			KDOptOut = true;
-			let cb = () => {
-				//let Char = KinkyDungeonPlayer;
-				//DrawCharacter(Char, 0, 0, 0.01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+			if (!LaunchedMenu) {
+				LaunchedMenu = true;
+				let cb = () => {
+					//let Char = KinkyDungeonPlayer;
+					//DrawCharacter(Char, 0, 0, 0.01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
 
-				KDFirstRunMainmenu();
-			};
-			setTimeout(cb, 100);
+					KDFirstRunMainmenu();
+				};
+				setTimeout(cb, 100);
+			}
+			
 
 			CharacterReleaseTotal(KinkyDungeonPlayer);
 			KinkyDungeonDressSet();
@@ -2838,9 +2843,9 @@ function KinkyDungeonRun() {
 		}, true, 875, 920, 350, 64, TextGet("KinkyDungeonStartGame"), KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= minPoints ? KDBaseWhite : "pink", "");
 
 		DrawButtonKDEx("KDPerksBack", (_bdata) => {
-			KinkyDungeonState = "Menu";
+			KinkyDungeonState = "Diff";
 			return true;
-		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), KDBaseWhite, "", undefined, undefined, undefined, undefined,
+		}, true, 1275, 920, 350, 64, TextGet("KDWardrobeSaveDiff"), KDBaseWhite, "", undefined, undefined, undefined, undefined,
 		undefined, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
 			hotkeyPress: KinkyDungeonKeySkip[0],
@@ -6334,6 +6339,9 @@ function KDClick(event: MouseEvent) {
 		KDIntroStage += 1;
 		if (KDIntroStage > KDIntroProgress.length) {
 			KinkyDungeonState = "Menu";
+			
+			KDCheckedConsentAtStartup = false;
+			KDUpdatedSeenConsents = false;
 			// Draw the PC for one
 			let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
 			DrawCharacter(Char, 0, 0, .01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
@@ -8249,8 +8257,9 @@ function KDLoadConsentFromSave(saveData: KinkyDungeonSave, override) {
 function KDFirstRunMainmenu() {
 	if (KDToggles.SkipIntro) {
 		KinkyDungeonState = "Menu";
-		KDCheckedConsentAtStartup = false;
 		
+		KDCheckedConsentAtStartup = false;
+		KDUpdatedSeenConsents = false;
 		
  	} else {
 		KDCheckedConsentAtStartup = false;

@@ -329,6 +329,7 @@ AddModel({
 
 AddModel({
 	Name: "KjusEyes2",
+	Parent: "KjusEyes",
 	Folder: "EyesK2",
 	TopLevel: true,
 	Protected: true,
@@ -358,6 +359,7 @@ AddModel({
 
 AddModel({
 	Name: "KjusEyes3",
+	Parent: "KjusEyes",
 	Folder: "EyesK3",
 	TopLevel: true,
 	Protected: true,
@@ -387,6 +389,7 @@ AddModel({
 
 AddModel({
 	Name: "KjusEyes4",
+	Parent: "KjusEyes",
 	Folder: "EyesK4",
 	TopLevel: true,
 	Protected: true,
@@ -417,6 +420,7 @@ AddModel({
 
 AddModel({
 	Name: "KjusEyes5",
+	Parent: "KjusEyes",
 	Folder: "EyesK5",
 	TopLevel: true,
 	Protected: true,

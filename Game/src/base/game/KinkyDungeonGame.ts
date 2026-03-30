@@ -1457,6 +1457,7 @@ interface KDFoodData {
 	Weight: number,
 	Theft?: string,
 	OnEat?: string,
+	FilterPerk?: string,
 	inedible?: boolean,
 }
 
@@ -1496,11 +1497,26 @@ let KDFood: Record<string, KDFoodData> = {
 	IceCreamPoisoned: {
 		Food: "IceCreamPoisoned",
 		Weight: 2,
+		FilterPerk: "No_SleepFood",
 		OnEat: "PoisonedFood",
 	},
 	PizzaPoisoned: {
 		Food: "PizzaPoisoned",
+		FilterPerk: "No_SleepFood",
 		OnEat: "PoisonedFood",
+		Weight: 2,
+	},
+	
+	IceCreamArousal: {
+		Food: "IceCreamArousal",
+		Weight: 2,
+		FilterPerk: "No_ArousalFood",
+		OnEat: "ArousalFood",
+	},
+	PizzaArousal: {
+		Food: "PizzaArousal",
+		FilterPerk: "No_ArousalFood",
+		OnEat: "ArousalFood",
 		Weight: 2,
 	},
 };
@@ -1511,6 +1527,16 @@ let KDOnEatScripts: Record<string, (x: number, y: number, tile: any, food: KDFoo
 			Food: TextGet("KDFoodName" + food.Food).toLocaleLowerCase()
 		}), KDBaseRed, 8);
 		KinkyDungeonApplyBuffToEntity(KDPlayer(), KDPoisonSleepLong);
+		let sfx = "Damage";
+		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
+	},
+	ArousalFood: (x, y, tile, food) => {
+		KinkyDungeonSendTextMessage(10, TextGet("KDFoodArousal", {
+			Food: TextGet("KDFoodName" + food.Food).toLocaleLowerCase()
+		}), KDBaseRed, 8);
+		KinkyDungeonApplyBuffToEntity(KDPlayer(), KDArousalOverTime);
+		KinkyDungeonApplyBuffToEntity(KDPlayer(), KDArousalOverTime2);
+		
 		let sfx = "Damage";
 		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 	},
@@ -1621,8 +1647,11 @@ function KinkyDungeonPlaceFood(foodChance: number, width: number, height: number
 			let Weights = [];
 
 			for (let obj of Object.values(KDFood)) {
-				Weights.push({event: obj, weight: WeightTotal});
-				WeightTotal += obj.Weight;
+				if (!obj.FilterPerk || !KinkyDungeonStatsChoice.get(obj.FilterPerk)) {
+					Weights.push({event: obj, weight: WeightTotal});
+					WeightTotal += obj.Weight;
+				}
+				
 			}
 
 			let selection = KDRandom() * WeightTotal;

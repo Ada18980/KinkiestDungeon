@@ -1038,8 +1038,10 @@ let KDTileGen = {
 			let Weights = [];
 
 			for (let obj of Object.values(KDFood)) {
-				Weights.push({event: obj, weight: WeightTotal});
-				WeightTotal += obj.Weight;
+				if (!obj.FilterPerk || !KinkyDungeonStatsChoice.get(obj.FilterPerk)) {
+					Weights.push({event: obj, weight: WeightTotal});
+					WeightTotal += obj.Weight;
+				}
 			}
 
 			let selection = KDRandom() * WeightTotal;

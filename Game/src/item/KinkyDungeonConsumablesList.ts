@@ -77,10 +77,10 @@ let KinkyDungeonConsumables: Record<string, consumable> = {
 
 // Separate for organizational purposes
 let KDCookies: Record<string, consumable> = {
-	"Cookie" : {name: "Cookie", rarity: 0, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
-	"Brownies" : {name: "Brownies", rarity: 1, shop: true, type: "restore", wp_instant: 3.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 4, gagMax: 0.59, duration: 0, sfx: "Cookie"},
-	"Donut" : {name: "Donut", rarity: 0, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
-	"CookieJailer" : {name: "CookieJailer", isSubby: true, rarity: 0, shop: true,
+	"Cookie" : {name: "Cookie", rarity: 0, food: true, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
+	"Brownies" : {name: "Brownies", rarity: 1, food: true, shop: true, type: "restore", wp_instant: 3.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 4, gagMax: 0.59, duration: 0, sfx: "Cookie"},
+	"Donut" : {name: "Donut", rarity: 0, shop: true, food: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
+	"CookieJailer" : {name: "CookieJailer", isSubby: true, food: true, rarity: 0, shop: true,
 		type: "restore", wp_instant: 1.5, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true,
 		delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie",
 		sideEffects: ["subAdd"],
@@ -231,16 +231,19 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity,
 			if (Consumable.mp_instant != undefined) {
 				KDChangeMana(Consumable.name, "restore", "consumable", Consumable.mp_instant * Manamulti * gagMult, false, Consumable.mpool_instant * Manamulti * gagMult, false, true);
 			}
-			if (Consumable.wp_instant) KDChangeWill(Consumable.name, "restore", "consumable", Consumable.wp_instant * Willmulti * gagMult);
+			if ((!Consumable.food || !KDIsArtificial(entity)) && Consumable.wp_instant) KDChangeWill(Consumable.name, "restore", "consumable", Consumable.wp_instant * Willmulti * gagMult);
 			if (Consumable.sp_instant) KDChangeStamina(Consumable.name, "restore", "consumable", Consumable.sp_instant * multi * gagMult);
 			if (Consumable.ap_instant) KDChangeDistraction(Consumable.name, "restore", "consumable", Consumable.ap_instant * Distmulti * gagMult, false, Consumable.arousalRatio ? Consumable.arousalRatio : 0);
 
 			KinkyDungeonCalculateMiscastChance();
 			if (Consumable.mp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionMana", type: "restore_mp", power: Consumable.mp_gradual/Consumable.duration * gagMult * Manamulti, duration: Consumable.duration});
-			if (Consumable.wp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionWill", type: "restore_wp", power: Consumable.wp_gradual/Consumable.duration * gagMult * Willmulti, duration: Consumable.duration});
+			if ((!Consumable.food || !KDIsArtificial(entity)) &&Consumable.wp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionWill", type: "restore_wp", power: Consumable.wp_gradual/Consumable.duration * gagMult * Willmulti, duration: Consumable.duration});
 			if (Consumable.sp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionStamina", type: "restore_sp", power: Consumable.sp_gradual/Consumable.duration * gagMult * multi, duration: Consumable.duration});
 			if (Consumable.ap_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionFrigid", type: "restore_ap", power: Consumable.ap_gradual/Consumable.duration * gagMult * Distmulti, duration: Consumable.duration});
 
+			if ((Consumable.food && !KDIsArtificial(entity)) && (Consumable.wp_instant || Consumable.wp_gradual)) {
+				KinkyDungeonSendTextMessage(3, TextGet("KDFoodEatDoll"), KDBaseRed, 1);
+			}
 		} else {
 			let gagFloor = Consumable.gagFloor ? Consumable.gagFloor : 0;
 			let gagMult = (Consumable.potion && gagFloor != 1.0) ? Math.max(0, gagFloor + (1 - gagFloor) * (1 - Math.max(0, Math.min(1.0,
@@ -248,7 +251,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity,
 			)))) : 1.0;
 
 			if (Consumable.mp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionMana", type: "restore_mp", power: Consumable.mp_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
-			if (Consumable.wp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionWill", type: "restore_wp", power: Consumable.wp_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
+			if ((!Consumable.food || !KDIsArtificial(entity)) &&Consumable.wp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionWill", type: "restore_wp", power: Consumable.wp_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
 			if (Consumable.sp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionStamina", type: "restore_sp", power: Consumable.sp_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
 			if (Consumable.ap_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionFrigid", type: "restore_ap", power: Consumable.ap_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
 
