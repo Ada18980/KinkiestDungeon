@@ -315,6 +315,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 
 - Show Training in Buffs List
 在增益列表中显示训练进度
+# - Allow Stacking Similar Items
 - Show Minimap Labels
 显示小地图标签
 - Auto loot all from chests
@@ -3203,7 +3204,7 @@ Devious Dungeon Challenge 已启用。
 乖巧女孩的礼物
 - You slowly eat the cookie, savoring its fluffy texture.
 你慢慢地品尝着这块饼干，享受着它蓬松的口感。
-- It tempts you with sweet promises, but something about it feels off...
+- It tempts you with sweet promises, but you feel like eating it would be admitting something about yourself.
 它诱惑着你，带来甜蜜，但同时你感觉有些不对劲……
 - Restores 15% willpower and adds +5 submissiveness. Takes a few turns to eat.
 恢复 15% 意志力并 +5 服从度，需要几个回合的时间吃掉。
@@ -26070,6 +26071,9 @@ FOODMSG| ( 它邀请你分享它的美食 )
 ( 吃完食物你感觉到你的意志力在上升 )
 - (Being gagged as you are you cannot enjoy the food)
 ( 被塞住嘴的时候无法享受食物 )
+# - (Artificial beings don't need to eat)
+# :: rTableFoodEatDoll
+# :: KDFoodEatDoll
 - (You steal the food, hoping nobody will notice...)
 ( 你偷食物，希望没人会注意到...... )
 - (Eat it to restore AMOUNT% WP)
@@ -26087,20 +26091,24 @@ FOODMSG| ( 它邀请你分享它的美食 )
 (你发现了一个无人看管的冰淇淋甜筒)
 # :: KinkyDungeonFoodIceCream
 # :: KinkyDungeonFoodIceCreamPoisoned
+# :: KinkyDungeonFoodIceCreamArousal
 - (You smell delicious pizza)
 (你闻到了美味的披萨)
 # :: KinkyDungeonFoodPizza
 # :: KinkyDungeonFoodPizzaPoisoned
+# :: KinkyDungeonFoodPizzaArousal
 - Cookie
 曲奇
 - Pizza
 披萨
 # :: KDFoodNamePizza
 # :: KDFoodNamePizzaPoisoned
+# :: KDFoodNamePizzaArousal
 - Ice Cream Cone
 冰淇淋甜筒
 # :: KDFoodNameIceCream
 # :: KDFoodNameIceCreamPoisoned
+# :: KDFoodNameIceCreamArousal
 - Batch of Brownies
 一盘布朗尼
 - Donut
@@ -46707,8 +46715,12 @@ Kigurumi头壳
 囚犯文字
 - Invisible Restraints
 隐形拘束具
+# - Aphrodisiac-Laced Food
+# - Sleep-Laced Food
 
 
+# - Some food items on tables will be laced with a drug that makes your character fall asleep.
+# - Some food items on tables will be laced with a drug that makes your character very distracted.
 
 - |||This item is marked as Red, which prevents it from appearing in the game.
 |||这种物品被标红，不会出现。
@@ -52877,3 +52889,8 @@ ${Playername}使用了安全词，被传送回关卡起点。
 
 - After eating the ${Food}, you start to feel dizzy...
 吃完${Food}后，你开始感到头晕……
+# - After eating the ${Food}, you start to feel heated~
+
+# - Will not restore willpower because you are artificial.
+# - Will not restore willpower because target is artificial.
+# - No wp res
