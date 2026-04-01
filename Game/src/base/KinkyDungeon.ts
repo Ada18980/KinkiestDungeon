@@ -3503,7 +3503,7 @@ function DrawButtonKD (
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton) {
+		if (!KDCurrentHoverButton || params.priority > KDCurrentHoverButton.priority) {
             KDCurrentHoverButton = params;
             KDCurrentHoverBox = params;
         }
@@ -3657,7 +3657,7 @@ function DrawButtonKDEx (
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton) {
+		if (!KDCurrentHoverButton || params.priority > KDCurrentHoverButton.priority) {
             KDCurrentHoverButton = params;
             KDCurrentHoverBox = params;
         }
@@ -3830,7 +3830,7 @@ function DrawButtonKDExScroll (
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton) {
+		if (!KDCurrentHoverButton || params.priority > KDCurrentHoverButton.priority) {
             KDCurrentHoverButton = params;
             KDCurrentHoverBox = params;
         }

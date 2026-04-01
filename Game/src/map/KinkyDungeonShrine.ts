@@ -996,22 +996,8 @@ function KinkyDungeonDrawPerkOrb() {
             DrawTextKD(TextGet("KinkyDungeonPerkGainPerk"), KDModalArea_x + (360 * i) + 180, textoffset, KDBaseWhite, KDTextGray2, 14);
             textoffset += 40
             perks.forEach((p) => {
-                let perkraritycolor = KDBaseRed;
-                if (KinkyDungeonStatsPresets[p].cost >= 0) {
-                    perkraritycolor = KDBaseWhite
-                }
-                if (KinkyDungeonStatsPresets[p].cost > 1) {
-                    perkraritycolor = KDBaseGreal
-                }
-                if (KinkyDungeonStatsPresets[p].cost > 2) {
-                    perkraritycolor = KDBaseBaby
-                }
-                if (KinkyDungeonStatsPresets[p].cost > 3) {
-                    perkraritycolor = KDBasePurple
-                }
-                if (KinkyDungeonStatsPresets[p].cost > 4) {
-                    perkraritycolor = KDBaseOrange
-                }
+                let perkraritycolor = KDGetPerkRarityColor(KinkyDungeonStatsPresets[p].cost)
+				
                 DrawTextFitKD(TextGet("KinkyDungeonStat" + KinkyDungeonStatsPresets[p].id), KDModalArea_x + (360 * i) + 25, textoffset, 300, perkraritycolor, (KinkyDungeonStatsPresets[p].cost < 0) ? KDTextRed1: KDTextGray2, 30, "left");
                 textoffset += 30
                 let perktextsplits = TextGet("KinkyDungeonStatDesc" + KinkyDungeonStatsPresets[p].id).split(" ");
@@ -1105,4 +1091,25 @@ function KDSetShrineQuest(map: KDMapDataType, tile: any, quest: string) {
 	if (!tile) return;
 	tile.Quest = quest;
 	KDSetMapFlag(map, quest);
+}
+
+
+function KDGetPerkRarityColor(cost: number): string {
+	let perkraritycolor = KDBaseRed;
+	if (cost >= 0) {
+		perkraritycolor = KDBaseWhite
+	}
+	if (cost > 1) {
+		perkraritycolor = KDBaseGreal
+	}
+	if (cost > 2) {
+		perkraritycolor = KDBaseBaby
+	}
+	if (cost > 3) {
+		perkraritycolor = KDBasePurple
+	}
+	if (cost > 4) {
+		perkraritycolor = KDBaseOrange
+	}
+	return perkraritycolor;
 }

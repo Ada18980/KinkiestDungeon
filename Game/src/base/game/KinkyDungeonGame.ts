@@ -3093,6 +3093,16 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 						}*/
 
 						//}
+
+						if (KinkyDungeonSlowLevel >= 10) {
+							let data: KDFailMoveData = {
+								player: KinkyDungeonPlayerEntity,
+								moveX: moveX,
+								moveY: moveY,
+								cancelSprint: false,
+							};
+							KinkyDungeonSendEvent("failMove", data)
+						}
 					}
 
 					if (KDGameData.Balance <= 0 && !KDGameData.Crouch && newDelta < 10 && !quick) {
@@ -4502,3 +4512,10 @@ let KDCustomKeyDown = [
 ];
 let KDCustomKeyUp = [
 ];
+
+interface KDFailMoveData  {
+	player: entity,
+	moveX: number,
+	moveY: number,
+	cancelSprint: boolean,
+}

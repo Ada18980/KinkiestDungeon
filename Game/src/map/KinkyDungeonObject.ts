@@ -29,6 +29,8 @@ let TileTypeTooltipOverride = {
 		VineBase: "VineBase",
 		OneBarTrap: "DollStand",
 		OneBarVibeTrap: "DollStand",
+		DollStandReal: "DollStandReal",
+		
 	},
 }
 /** For stuff like traps */

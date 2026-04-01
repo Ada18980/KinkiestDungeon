@@ -388,6 +388,19 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 			}
 		}
 	},
+	
+	"DollStandReal": {
+		floor: "Floor",
+		sprite: "DollStandReal",
+		restraintTag: "dollstandreal",
+		restraintSetTags: {
+			"leatherHeels": 8,
+		},
+		dollsleep: true,
+		tickFunction: (_delta) => {
+			
+		}
+	},
 	"OneBarTrap": {
 		floor: "Floor",
 		sprite: "DollStand",

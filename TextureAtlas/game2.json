@@ -1528,6 +1528,22 @@
 	"spriteSourceSize": {"x":25,"y":1,"w":29,"h":65},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/FloorGeneric/DollStand.png":
+{
+	"frame": {"x":1178,"y":1608,"w":18,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":27,"w":18,"h":44},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/FloorGeneric/DollStandReal.png":
+{
+	"frame": {"x":1175,"y":1563,"w":19,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":28,"w":19,"h":43},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/FloorGeneric/GhostImportant.png":
 {
 	"frame": {"x":1695,"y":1986,"w":44,"h":60},
@@ -1800,14 +1816,6 @@
 	"spriteSourceSize": {"x":6,"y":26,"w":61,"h":19},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/LeftSmall.png":
-{
-	"frame": {"x":1175,"y":1563,"w":17,"h":40},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":8,"y":0,"w":17,"h":40},
-	"sourceSize": {"w":36,"h":40}
-},
 "Game/Outfits/Elven.png":
 {
 	"frame": {"x":654,"y":1951,"w":166,"h":62},
@@ -1839,14 +1847,6 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":13,"w":15,"h":15},
 	"sourceSize": {"w":46,"h":45}
-},
-"Game/RightSmall.png":
-{
-	"frame": {"x":1178,"y":1605,"w":17,"h":40},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":0,"w":17,"h":40},
-	"sourceSize": {"w":36,"h":40}
 },
 "Game/ShopBasic/Elven.png":
 {
@@ -1960,6 +1960,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:07e51d17800caa37f13ef1907d49198c:459420091207300d273f7cae3f434e6a:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:4b2179b8a9db0db0e51be1d34e5b05e5:ab2e137923a4c3a60fa9dc7f8fd09bab:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

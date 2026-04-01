@@ -3167,6 +3167,22 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			}
 		}
 	},
+	failMove: {
+		OneBarFailMove: (e, item, data) => {
+			if (!e.chance || KDRandom() < e.chance) {
+				if (data.player == KDPlayer) {
+					if (!e.prereq || KDCheckPrereq(KinkyDungeonPlayerEntity)) {
+						KDChangeDistraction(item.name, "restraint", "move", e.power);
+						KinkyDungeonSendTextMessage(1, TextGet("KDOneBarFailMove"), 
+							KDBaseRed, 2);
+					}
+					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg", undefined, e.vol);
+				}
+				return true;
+			}
+			return false;
+		},
+	},
 	"playerMove": {
 		"removeOnMove": (e, item, _data) => {
 			if (!e.chance || KDRandom() < e.chance) {

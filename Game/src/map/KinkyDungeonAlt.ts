@@ -2102,7 +2102,9 @@ function KinkyDungeonCreateDollShoppe(_POI: any, VisitedRooms: any[], _width: nu
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
 
-	KD_PasteTile(KDMapTilesList.DollRoom, 1, 1, data);
+	KD_PasteTile(KDMapTilesList.DollShoppe, 1, 1, data);
+
+
 	KDMapData.EndPosition = {x: 2, y: 11};
 	KinkyDungeonMapSet(2, 11, 's');
 	if (MiniGameKinkyDungeonLevel == 0 && !KinkyDungeonFlags.get("fg")) {

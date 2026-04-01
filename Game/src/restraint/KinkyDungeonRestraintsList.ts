@@ -3021,7 +3021,8 @@ const KinkyDungeonRestraints: restraint[] = [
 			
 		]},
 	// Display trap
-	{removePrison: true, name: "DisplayTrap", Asset: "TheDisplayFrame", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
+	{removePrison: true, name: "DisplayTrap", Asset: "TheDisplayFrame", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1,
+		immobile: true, alwaysStruggleable: true,
 		DefaultLock: "Red",
 		bindarms: true,
 		Model: "DisplayStand",
@@ -3044,10 +3045,30 @@ const KinkyDungeonRestraints: restraint[] = [
 		removeShrine: ["Hogties"],
 		events: [
 			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true},
+			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"dollstandSpell":100, "dollstand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Dollstand"], ignoreSpells: true, removeOnLeash: true,
 	},
-	{removePrison: true, name: "LatexDollStand", Asset: "OneBarPrison", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
+
+	{removePrison: true, name: "DollStandReal",
+		Asset: "OneBarPrison", Color: ['Default'], Group: "ItemDevices", power: 3.5, weight: 1,
+		immobile: true, alwaysStruggleable: true,
+		DefaultLock: "Red",
+		Model: "DollStand",
+		addTag: ["ForceStand"],
+		tightType: "Secure",
+		escapeChance: {"Struggle": 0.3, "Cut": -0.6, "Remove": 0.65, "Pick": 0.2, "Unlock": 0.4},
+		helpChance: {"Remove": 0.8, "Pick": 0.35, "Unlock": 1.0},
+		removeShrine: ["Hogties"],
+		events: [
+			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.35, inheritLinked: true},
+			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
+		enemyTags: {"dollstandreal": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "DollStands"],
+		ignoreSpells: true, removeOnLeash: true,
+	},
+
+	{removePrison: true, name: "LatexDollStand", Asset: "OneBarPrison", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1,
+		immobile: true, alwaysStruggleable: true,
 		DefaultLock: "Red",
 		Model: "OneBarPrisonLatex",
 		addTag: ["ForceStand"],
@@ -3057,6 +3078,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		removeShrine: ["Hogties"],
 		events: [
 			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true}, 
+			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"dollstandSpell":100, "latexdollstand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex", "Dollstand"], ignoreSpells: true, removeOnLeash: true,
 	},
@@ -3083,6 +3105,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "tick", type: "cageDebuff", inheritLinked: true},
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04},
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
+			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "postApply", type: "NoBlockers", inheritLinked: true},
 			{trigger: "postApplyNPC", type: "NoBlockers", inheritLinked: true},
 
@@ -3117,6 +3140,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
 			{trigger: "postApply", type: "NoBlockers", inheritLinked: true},
 			{trigger: "postApplyNPC", type: "NoBlockers", inheritLinked: true},
+			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", inheritLinked: true, power: 3, time: 20, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 3, time: 30, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.03},
@@ -3141,6 +3165,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		DefaultLock: "White",
 		events: [
 			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true},
+			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"onebar":1000}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["OneBar"],
 		removeOnLeash: true,
@@ -3160,6 +3185,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		DefaultLock: "White",
 		events: [
 			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true}, 
+			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"onebar":1000}, playerTags: {"arousalMode": -1000}, minLevel: 0, allFloors: true,
 		shrine: ["OneBar"], removeOnLeash: true,

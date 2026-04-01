@@ -1675,9 +1675,16 @@
             <key type="filename">../Game/FloorGeneric/SummitTeleporter.png</key>
             <key type="filename">../Game/FloorGeneric/Syb.png</key>
             <key type="filename">../Game/FloorGeneric/Table.png</key>
+            <key type="filename">../Game/FloorGeneric/TableBrownies.png</key>
             <key type="filename">../Game/FloorGeneric/TableCookies.png</key>
+            <key type="filename">../Game/FloorGeneric/TableDonut.png</key>
             <key type="filename">../Game/FloorGeneric/TableFlipped.png</key>
+            <key type="filename">../Game/FloorGeneric/TableIceCream.png</key>
+            <key type="filename">../Game/FloorGeneric/TableIceCreamArousal.png</key>
+            <key type="filename">../Game/FloorGeneric/TableIceCreamPoisoned.png</key>
             <key type="filename">../Game/FloorGeneric/TablePizza.png</key>
+            <key type="filename">../Game/FloorGeneric/TablePizzaArousal.png</key>
+            <key type="filename">../Game/FloorGeneric/TablePizzaPoisoned.png</key>
             <key type="filename">../Game/FloorGeneric/TablePlate.png</key>
             <key type="filename">../Game/FloorGeneric/Tablet.png</key>
             <key type="filename">../Game/FloorGeneric/TabletCursed.png</key>

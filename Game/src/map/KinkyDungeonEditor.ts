@@ -150,8 +150,10 @@ let KDTilePalette = {
 	'Barrel': {type: "tile", tile: 'L', special: {Type: "Barrel"}},
 	'BarrelAlways': {type: "tile", tile: 'L', special: {Type: "Barrel", Always: true}},
 	'Cage': {type: "tile", tile: 'L', special: {Type: "Cage", Furniture: "Cage"}, jail: {type: "furniture", radius: 1}},
+	'AlwaysCage': {type: "tile", tile: 'L', special: {Type: "Cage", Furniture: "Cage"}, jail: {type: "furniture", radius: 1}},
 	'FutureBox': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "FutureBox", }, jail: {type: "furniture", radius: 1}},
 	'FutureBoxStorage': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "FutureBox", jail: {type: "storage", radius: 1}}, jail: {type: "storage", radius: 1}},
+	'DollStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DollStandReal"}, jail: {type: "furniture", radius: 1}},
 	'DisplayStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayStand"}, jail: {type: "furniture", radius: 1}},
 	'LatexDisplayStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "LatexDisplayStand"}, jail: {type: "furniture", radius: 1}},
 	'DisplayEgyptian': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayEgyptian"}, jail: {type: "furniture", radius: 1}},
@@ -596,21 +598,28 @@ function KDDrawEditorUI() {
 		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
 			KDTE_Create(x, y, undefined, false, false);
 		return true;
-	}, true, 1600, 130, 110, 64, "New (Open)", KDBaseWhite, "");
+	}, true, 1500, 130, 110, 64, "New (Open)", KDBaseWhite, "");
 	DrawButtonKDEx("TileEditorNewFloor", () => {
 		let x = parseInt(ElementValue("MapTileX"));
 		let y = parseInt(ElementValue("MapTileY"));
 		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
 			KDTE_Create(x, y, undefined, false, true);
 		return true;
-	}, true, 1720, 130, 110, 64, "New (Empty)", KDBaseWhite, "");
+	}, true, 1620, 130, 110, 64, "New (Empty)", KDBaseWhite, "");
 	DrawButtonKDEx("TileEditorNewClosed", () => {
 		let x = parseInt(ElementValue("MapTileX"));
 		let y = parseInt(ElementValue("MapTileY"));
 		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
 			KDTE_Create(x, y, undefined, true);
 		return true;
-	}, true, 1840, 130, 110, 64, "New (Closed)", KDBaseWhite, "");
+	}, true, 1740, 130, 110, 64, "New (Closed)", KDBaseWhite, "");
+	DrawButtonKDEx("TileEditorNewHollow", () => {
+		let x = parseInt(ElementValue("MapTileX"));
+		let y = parseInt(ElementValue("MapTileY"));
+		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
+			KDTE_Create(x, y, undefined, true, true);
+		return true;
+	}, true, 1860, 130, 110, 64, "New (Closed+Empty)", KDBaseWhite, "");
 
 	DrawButtonKDEx("TileTest", () => {
 		KDTE_CloseUI();

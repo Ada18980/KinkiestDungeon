@@ -3599,6 +3599,7 @@ KDEffectTileTooltipBarrel,Barrel
 KDEffectTileTooltipDisplayStand,Display Stand
 KDEffectTileTooltipLatexDisplayStand,Rubberdoll Stand
 KDEffectTileTooltipDollStand,One Bar Prison
+KDEffectTileTooltipDollStandReal,Doll Stand
 KDEffectTileTooltipSyb,Vibrating Saddle
 KDEffectTileTooltipCage,Cage
 KDEffectTileTooltipIceBase,Icy Platform
@@ -3822,9 +3823,15 @@ KDSybTrap,"A powerful force sucks you down onto the saddle!"
 KDDisplayEgyptianTrap,"The display stand suddenly locks into place around you!"
 KDFutureBoxTrap,The storage unit beeps and closes behind you!
 
-RestraintDollStand,Doll Stand
+RestraintDollStand,Lewd Doll Stand
 RestraintDollStandDesc,"A mobile display stand for dolls to keep them in place."
 RestraintDollStandDesc2,"As long as it's... inserted, you won't be going anywhere!"
+
+RestraintDollStandReal,Doll Stand
+RestraintDollStandRealDesc,"A stand for keeping dolls comfortable when they're not being played with."
+RestraintDollStandRealDesc2,"It can be locked in place, and is difficult to dismount when wearing high heeled shoes."
+
+
 
 RestraintOneBar,One Bar Prison
 RestraintOneBarDesc,"A devious way to immobilize people."
@@ -33390,3 +33397,5 @@ KDFoodArousal,"After eating the ${Food}, you start to feel heated~"
 KDWontRestoreDoll,Will not restore willpower because you are artificial.
 KDWontRestoreDollNPC,Will not restore willpower because target is artificial.
 KDNoRestore,No wp res
+
+KDOneBarFailMove,Your attempts to move off the stand only twist the plug inside of you.
