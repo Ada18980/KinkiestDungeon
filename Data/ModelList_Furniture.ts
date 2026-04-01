@@ -310,7 +310,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Stands"],
-	AddPose: ["SuspendedHogtie", "ForceStand"],
+	AddPose: ["SuspendedHogtie", "ForceStand", "OneBarLegWarp"],
 	Layers: ToLayerMap([
 		{ Name: "OneBarTop", Layer: "WrappingTorsoUnder", Pri: -249,
 			Poses: ToMap(["Closed", "Spread"]),
@@ -338,10 +338,11 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Stands"],
-	AddPose: ["SuspendedHogtie", "ForceStand"],
+	AddPose: ["SuspendedHogtie", "ForceStand", "OneBarLegWarp"],
 	Layers: ToLayerMap([
 		{ Name: "DollStand", Layer: "DollStandFront", Pri: -249,
-			Poses: ToMap(["Closed", "Spread"]),
+			Poses: ToMap(["Closed", "Spread", "Hogtie"]),
+			MorphPoses: {"Hogtie": "Spread"},
 			NoOverride: true,
 		},
 		{ Name: "OneBarFront", Layer: "Torso", Pri: -50,
@@ -351,6 +352,56 @@ AddModel({
 		{ Name: "OneBarBack", Layer: "FurnitureBack", Pri: 50,
 			Poses: ToMap(["Closed", "Spread"]),
 			AppendPose: {Ballet: "Heels"},
+		},
+	])
+});
+
+
+
+
+
+AddModel({
+	Name: "DollStandSpreader",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Stands"],
+	AddPose: ["SuspendedHogtie", "ForceStand", "Spreader", "WideSpread"],
+	Layers: ToLayerMap([
+		{ Name: "DollStand", Layer: "DollStandFront", Pri: -249,
+			Poses: ToMap(["Closed", "Spread", "Hogtie"]),
+			MorphPoses: {"Hogtie": "Spread"},
+			NoOverride: true,
+		},
+		{ Name: "OneBarFront", Layer: "Torso", Pri: -50,
+			Poses: ToMap(["Closed", "Spread"]),
+			AppendPose: {Ballet: "Heels"},
+		},
+		{ Name: "OneBarLarge", Layer: "FurnitureBack", Pri: 50,
+		},
+
+		{ Name: "ShortLeft", Layer: "AnkleLeftOver", Pri: 30,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			DisplacementSprite: "AnkleCuffLeft",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+		{ Name: "ShortRight", Layer: "AnkleRightOver", Pri: 30,
+			Invariant: true,
+			Poses: ToMap(["Spread"]),
+			HideWhenOverridden: true,
+			DisplacementSprite: "AnkleCuffRight",
+			DisplaceLayers: ToMap(["LegCuffs"]),
+			DisplaceAmount: 50,
+		},
+		{ Name: "Bar", Layer: "SpreaderBar", Pri: 30,
+			Invariant: true,
+			Poses: ToMap(["Spread"]),
+			HideWhenOverridden: true,
 		},
 	])
 });
@@ -412,7 +463,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Stands"],
-	AddPose: ["SuspendedHogtie", "ForceStand"],
+	AddPose: ["SuspendedHogtie", "ForceStand", "OneBarLegWarp"],
 	Filters: {"OneBarTop":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.3333333333333333,"green":0.7450980392156863,"blue":1.6666666666666667,"alpha":1},"OneBarFront":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.3333333333333333,"green":0.7450980392156863,"blue":1.6666666666666667,"alpha":1},"OneBarBack":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.3333333333333333,"green":0.7450980392156863,"blue":1.6666666666666667,"alpha":1}},
 	Layers: ToLayerMap([
 		{ Name: "OneBarTop", Layer: "WrappingTorsoUnder", Pri: -249,

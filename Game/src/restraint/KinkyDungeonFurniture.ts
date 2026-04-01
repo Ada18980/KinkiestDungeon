@@ -401,6 +401,18 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 			
 		}
 	},
+	"DollStandSpreaderReal": {
+		floor: "Floor",
+		sprite: "DollStandSpreaderReal",
+		restraintTag: "dollstandrealspreader",
+		restraintSetTags: {
+			"leatherHeels": 8,
+		},
+		dollsleep: true,
+		tickFunction: (_delta) => {
+			
+		}
+	},
 	"OneBarTrap": {
 		floor: "Floor",
 		sprite: "DollStand",
@@ -533,6 +545,31 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				if (!KinkyDungeonGetRestraintItem("ItemDevices"))
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
+		}
+	},
+
+	"OneBarSpreaderTrap": {
+		floor: "Floor",
+		sprite: "DollStandSpreader",
+		restraintTag: "onebarprisonspreader",
+		restraintSetTags: {
+			"leatherHeels": 8,
+		},
+		dollsleep: true,
+		tickFunction: (_delta) => {
+			
+		}
+	},
+	"OneBarSpreaderVibeTrap": {
+		floor: "Floor",
+		sprite: "DollStandVibeSpreader",
+		restraintTag: "onebarprisonvibespreader",
+		restraintSetTags: {
+			"leatherHeels": 8,
+		},
+		dollsleep: true,
+		tickFunction: (_delta) => {
+			
 		}
 	},
 };

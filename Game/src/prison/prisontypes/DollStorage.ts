@@ -369,6 +369,7 @@ KDPrisonTypes.DollStorage = {
 				let player = KinkyDungeonPlayerEntity;
 				KDPrisonCommonGuard(player);
 				let jailPoint = KinkyDungeonNearestJailPoint(player.x, player.y, ["storage"]);
+				
 				if (!jailPoint || jailPoint.x != player.x || jailPoint.y != player.y) {
 					// Move the player to the storage
 					return KDGoToSubState(player, "StorageTravel");
@@ -542,8 +543,10 @@ KDPrisonTypes.DollStorage = {
 					return KDSetPrisonState(player, "Jail");
 				}
 
+				let jailPointTarget = KDRandomJailPoint(player.x, player.y, ["storage"], undefined, undefined);
 				let jailPointNearest = KinkyDungeonNearestJailPoint(player.x, player.y, ["storage"], undefined, undefined);
-				if (!(jailPointNearest && jailPointNearest.x == player.x && jailPointNearest.y == player.y))
+				if (!(jailPointTarget && jailPointTarget.x == player.x && jailPointTarget.y == player.y)
+					&& !(jailPointNearest && jailPointNearest.x == player.x && jailPointNearest.y == player.y))
 				{
 					// We are not in a furniture, so we conscript the guard
 					let guard = KDPrisonCommonGuard(player);

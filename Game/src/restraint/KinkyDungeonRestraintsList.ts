@@ -1221,6 +1221,30 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.25, "Cut": -0.15, "Remove": 0.15, "Pick": -0.1},
 		maxwill: 0.4, enemyTags: {"cyberdollrestraints": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 0, allFloors: true, shrine: ["CyberMittens","Mittens", "Metal", "Cyber"]},
 
+	/*{inventory: true, name: "TrackingCollarPassive", debris: "Chains", accessible: true, Asset: "FuturisticCollar",
+		sfx: "FutureLock",
+		sfxRemove: "SciFiConfigure",
+		Model: "FutureCollar",
+		tightType: "Secure",
+		factionFilters: {
+			Display: {color: "Highlight", override: false},
+			Base: {color: "DarkNeutral", override: true},
+			Rim: {color: "LightNeutral", override: true},
+			Band: {color: "LightNeutral", override: true},
+		},
+		linkCategories: ["CyberCollar", "BasicCollar"], linkSizes: [0.7, 0.45],
+		Color: ['#499ed6', '#555555', '#b927a8', '#000000'],
+		factionColor: [[], [2], [0]],
+		DefaultLock: "Cyber2",
+		Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 5, weight: 0,
+		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": 0.33, "Pick": -0.15},
+		maxwill: 0.5,
+		enemyTags: {"controlHarness":5, "roboPrisoner" : 100, "cyberdollrestraints" : 10},
+		playerTags: {"ItemNeckFull":-100},
+		minLevel: 0, allFloors: true, shrine: ["Metal", "Collars", "Cyber"],
+	},*/
+
+	
 	{inventory: true, name: "TrackingCollar", debris: "Chains", accessible: true, Asset: "FuturisticCollar",
 		sfx: "FutureLock",
 		sfxRemove: "SciFiConfigure",
@@ -1241,7 +1265,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		maxwill: 0.5,
 		enemyTags: {"controlHarness":5, "roboPrisoner" : 100, "cyberdollrestraints" : 10},
 		playerTags: {"ItemNeckEmpty":10},
-		minLevel: 0, allFloors: true, shrine: ["Metal", "Collars", "Cyber"],
+		minLevel: 4, allFloors: true, shrine: ["Metal", "Collars", "Cyber"],
 	},
 
 	{inventory: true, name: "CyberLinkCollar", debris: "Chains", accessible: true, Asset: "FuturisticCollar",
@@ -3066,6 +3090,37 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {"dollstandreal": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "DollStands"],
 		ignoreSpells: true, removeOnLeash: true,
 	},
+	{removePrison: true, name: "DollStandSpreaderReal",
+		Asset: "OneBarPrison", Color: ['Default'], Group: "ItemDevices", power: 5.5, weight: 1,
+		immobile: true, alwaysStruggleable: true,
+		DefaultLock: "Red",
+		Model: "DollStandSpreader",
+		tightType: "Secure",
+		escapeChance: {"Struggle": -0.1, "Cut": -0.7, "Remove": 0.1, "Pick": 0.05, "Unlock": 0.05},
+		helpChance: {"Remove": 0.8, "Pick": 0.2, "Unlock": 0.7},
+		
+		playerTagsMult: {
+			"More_Yokes": 1.5,
+			"Less_Yokes": 0.5,
+			"More_Spreader": 2.5,
+			"Less_Spreader": 0.1,
+		},
+
+		addTag: ["ForceStand", "BlockClosed", "BlockKneelClosed", "DiscourageHogtie"],
+		requireNoTagToEquip: ["ForceKneel", "ForceHogtie", "FeetLinked", "LegBind"],
+		blockRestraintsWithTag: ["ForceKneel", "ForceHogtie", "FeetLinked", "LegBind"],
+		allowOverrideBasedOnTagFilters: ["ForceKneel", "ForceHogtie", "FeetLinked", "LegBind", "blockfeet"],
+
+		events: [
+			{trigger: "postApply", type: "NoBlockers", inheritLinked: true},
+			{trigger: "postApplyNPC", type: "NoBlockers", inheritLinked: true},
+			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}
+		],
+		
+		removeShrine: ["Hogties"],
+		enemyTags: {"dollstandrealspreader": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "DollStands"],
+		ignoreSpells: true, removeOnLeash: true,
+	},
 
 	{removePrison: true, name: "LatexDollStand", Asset: "OneBarPrison", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1,
 		immobile: true, alwaysStruggleable: true,
@@ -3149,6 +3204,89 @@ const KinkyDungeonRestraints: restraint[] = [
 
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"onebarprisonvibe":1000}, playerTags: {"arousalMode": -1000, arousalModePlugNoFront: -1000}, minLevel: 0, allFloors: true,
+		shrine: ["OneBar"], removeOnLeash: true,
+	},
+	{removePrison: true, name: "OneBarSpreaderTrap",
+		Group: "ItemDevices", power: 3, weight: 1, immobile: true, alwaysStruggleable: true,
+		Model: "OneBarPrisonSpreader",
+		alwaysEscapable: ["Struggle"],
+		tightType: "Secure",
+		restriction: 10,
+		blockfeet: true,
+		escapeChance: {"Struggle": -0.1, "Cut": -0.7, "Remove": 0.1, "Pick": 0.05, "Unlock": 0.05},
+		helpChance: {"Remove": 0.8, "Pick": 0.2, "Unlock": 0.7},
+		removeShrine: ["Hogties"],
+		DefaultLock: "White",
+
+		playerTagsMult: {
+			"More_Yokes": 1.5,
+			"Less_Yokes": 0.5,
+			"More_Spreader": 2.5,
+			"Less_Spreader": 0.1,
+		},
+
+		addTag: ["ForceStand", "BlockClosed", "BlockKneelClosed", "DiscourageHogtie"],
+		requireNoTagToEquip: ["ForceKneel", "ForceHogtie", "ChastityBelts", "FeetLinked", "LegBind"],
+		blockRestraintsWithTag: ["ForceKneel", "ForceHogtie", "ChastityBelts", "FeetLinked", "LegBind"],
+		allowOverrideBasedOnTagFilters: ["ForceKneel", "ForceHogtie", "FeetLinked", "LegBind", "blockfeet"],
+
+		events: [
+			{trigger: "postApply", type: "NoBlockers", inheritLinked: true},
+			{trigger: "postApplyNPC", type: "NoBlockers", inheritLinked: true},
+
+			{trigger: "tick", type: "cageDebuff", inheritLinked: true},
+			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04},
+			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
+			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
+			{trigger: "postApply", type: "NoBlockers", inheritLinked: true},
+			{trigger: "postApplyNPC", type: "NoBlockers", inheritLinked: true},
+
+			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
+		enemyTags: {"onebarprisonspreader":1000, "onebarprisonvibespreader":1}, playerTags: {"arousalMode": -1000, arousalModePlugNoFront: -1000}, minLevel: 0, allFloors: true,
+		shrine: ["OneBar"], removeOnLeash: true,
+	},
+	{removePrison: true, name: "OneBarSpreaderVibeTrap",
+		Group: "ItemDevices", power: 3, weight: 1, immobile: true, alwaysStruggleable: true,
+		Model: "OneBarPrisonSpreader",
+		alwaysEscapable: ["Struggle"],
+		tightType: "Secure",
+		restriction: 10,
+		blockfeet: true,
+		escapeChance: {"Struggle": -0.1, "Cut": -0.7, "Remove": 0.1, "Pick": 0.05, "Unlock": 0.05},
+		helpChance: {"Remove": 0.8, "Pick": 0.2, "Unlock": 0.7},
+		removeShrine: ["Hogties"],
+		DefaultLock: "White",
+		vibeLocation: "ItemVulva",
+		linkedVibeTags: ["teaser"], allowRemote: true,
+
+		playerTagsMult: {
+			"More_Yokes": 1.5,
+			"Less_Yokes": 0.5,
+			"More_Spreader": 2.5,
+			"Less_Spreader": 0.1,
+		},
+
+		addTag: ["ForceStand", "BlockClosed", "BlockKneelClosed", "DiscourageHogtie"],
+		requireNoTagToEquip: ["ForceKneel", "ForceHogtie", "ChastityBelts", "FeetLinked", "LegBind"],
+		blockRestraintsWithTag: ["ForceKneel", "ForceHogtie", "ChastityBelts", "FeetLinked", "LegBind"],
+		allowOverrideBasedOnTagFilters: ["ForceKneel", "ForceHogtie", "FeetLinked", "LegBind", "blockfeet"],
+
+		events: [
+
+			{trigger: "tick", type: "cageDebuff", inheritLinked: true},
+			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04},
+			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
+			{trigger: "postApply", type: "NoBlockers", inheritLinked: true},
+			{trigger: "postApplyNPC", type: "NoBlockers", inheritLinked: true},
+			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
+
+			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", inheritLinked: true, power: 3, time: 20, edgeOnly: true},
+			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 3, time: 30, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.03},
+			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 4, time: 20, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.02},
+			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 5, time: 70, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.01},
+
+			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
+		enemyTags: {"onebarprisonvibespreader":1000}, playerTags: {"arousalMode": -1000, arousalModePlugNoFront: -1000}, minLevel: 0, allFloors: true,
 		shrine: ["OneBar"], removeOnLeash: true,
 	},
 

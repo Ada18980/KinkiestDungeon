@@ -45,6 +45,8 @@ function KinkyDungeonCreateMap (
 	KDBreakTether(KDPlayer());
 
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeNewMap"]);
+	KDGameData.PreferredJailPointTick = 0;
+
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
 	let mapMod = KDMapData.MapMod ? KDMapMods[KDMapData.MapMod] : null;

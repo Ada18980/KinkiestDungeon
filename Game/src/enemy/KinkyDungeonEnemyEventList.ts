@@ -215,7 +215,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			KDResetIntent(enemy, aiData);
 			enemy.IntentAction = 'leashStorage';
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 140);
-			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["storage"]);
+			let nearestfurniture = KDRandomJailPoint(enemy.x, enemy.y, ["storage"]);
 			enemy.IntentLeashPoint = nearestfurniture;
 			enemy.playWithPlayer = 22;
 			KDSetPlayCD(enemy, 3);
@@ -262,7 +262,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				enemy.aware = true;
 
 				if (!enemy.IntentLeashPoint) {
-					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["storage"]);
+					let nj = KDRandomJailPoint(enemy.x, enemy.y, ["storage"]);
 					enemy.IntentLeashPoint = nj;
 				} else {
 					enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;

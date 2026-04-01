@@ -155,6 +155,60 @@ function KinkyDungeonNearestJailPoint(x: number, y: number, filter?: string[], a
 	return point;
 }
 
+
+/**
+ * @param x
+ * @param y
+ * @param [filter]
+ * @param [any]
+ * @param [qualified] - Exclude jails where the player doesnt meet conditions
+ * @param [unnocupied] - No enemy in the jail
+ */
+function KDRandomJailPoint(x: number, y: number, filter?: string[], any?: boolean, qualified?: boolean, unnocupied?: boolean, criteria?: (x, y, point) => boolean, maxTime: number = 300): KDJailPoint {
+	let filt = filter ? filter : ["jail", "dropoff"];
+	let dist = 100000;
+	let point = null;
+	let leash = KinkyDungeonGetRestraintItem("ItemNeckRestraints");
+	let furniture = KinkyDungeonGetRestraintItem("ItemDevices");
+
+
+	let toPullFrom = [...KDMapData.JailPoints];
+	let toCheck = [];
+	// Shuffle
+	while (toPullFrom.length > 0) {
+		let index = Math.floor(KDRandom() * toPullFrom.length);
+
+		let p = toPullFrom[index];
+		toPullFrom.splice(index, 1);
+		if (!any && p.type && !filt.includes(p.type)) continue;
+		if (qualified && p.requireLeash && !leash) continue;
+		if (qualified && p.requireFurniture && !furniture) continue;
+		if (unnocupied && KinkyDungeonEntityAt(p.x, p.y)) continue;
+		if (criteria && !criteria(p.x, p.y, p)) continue;
+		if (KinkyDungeonEntityAt(p.x, p.y, undefined, 
+			undefined, undefined, false)
+			&& KDIsImprisoned(KinkyDungeonEntityAt(p.x, p.y))) continue;
+
+		if (KDGameData.PreferredJailPoint?.x == p.x
+			&& KDGameData.PreferredJailPoint?.y == p.y
+			&& KDGameData.PreferredJailPointTick + maxTime >= KinkyDungeonCurrentTick
+		) {
+			KDGameData.PreferredJailPoint = p;
+			KDGameData.PreferredJailPointTick = KinkyDungeonCurrentTick;
+			return p;
+		}
+		toCheck.push(p);
+	}
+
+	for (let p of toCheck) {
+		KDGameData.PreferredJailPoint = p;
+		KDGameData.PreferredJailPointTick = KinkyDungeonCurrentTick;
+		return p;
+	}
+
+	return point;
+}
+
 function KDLockNearbyJailDoors(x: number, y: number) {
 	let jail = KinkyDungeonNearestJailPoint(x, y);
 	if (jail) {

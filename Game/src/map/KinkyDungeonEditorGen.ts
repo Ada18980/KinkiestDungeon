@@ -1029,10 +1029,25 @@ let KDTileGen = {
 		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarVibeTrap" : "DisplayStand"};
 	},
+	"OneBarSpreaderTrap": (x, y, tile, tileGenerator, data) => {
+		KinkyDungeonMapSet(x, y, 'L');
+		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarSpreaderTrap" : "DisplayStand"};
+	},
+	"OneBarSpreaderVibeTrap": (x, y, tile, tileGenerator, data) => {
+		KinkyDungeonMapSet(x, y, 'L');
+		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarSpreaderVibeTrap" : "DisplayStand"};
+	},
 	"DollStand": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
 		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: "DollStandReal"};
+	},
+	"DollStandSpreader": (x, y, tile, tileGenerator, data) => {
+		KinkyDungeonMapSet(x, y, 'L');
+		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		return {Type: "Furniture", Furniture: "DollStandSpreaderReal"};
 	},
 	"JailBed": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'B');
@@ -1228,7 +1243,8 @@ let KDPervertibleFurnitureWeights: Record<string, number> = {
 	DisplayStand: 0.3,
 	OneBarTrap: 0.1,
 	OneBarVibeTrap: 0.05,
-	DollStandReal: 0.05,
+	DollStandReal: 0.04,
+	DollStandSpreaderReal: 0.02,
 }
 
 function KDGetPervertibleFurniture(base = "Cage", pervertChance = 0.1): string {

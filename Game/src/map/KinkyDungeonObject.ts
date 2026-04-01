@@ -12,6 +12,9 @@ let TileTypeTooltipOverride = {
 		BedTrap: "Bed",
 		OneBarTrap: "Furniture",
 		OneBarVibeTrap: "Furniture",
+		OneBarSpreaderTrap: "Furniture",
+		OneBarSpreaderVibeTrap: "Furniture",
+		
 	},
 	Furniture: {
 		LatexDisplayStand: "LatexDisplayStand",
@@ -30,6 +33,9 @@ let TileTypeTooltipOverride = {
 		OneBarTrap: "DollStand",
 		OneBarVibeTrap: "DollStand",
 		DollStandReal: "DollStandReal",
+		DollStandSpreaderReal: "DollStandSpreaderReal",
+		OneBarSpreaderTrap: "DollStand",
+		OneBarSpreaderVibeTrap: "DollStand",
 		
 	},
 }
@@ -43,6 +49,8 @@ let ObjectTypeTooltipOverride = {
 		DisplayEgyptianTrap: "Furniture",
 		OneBarVibeTrap: "Furniture",
 		OneBarTrap: "Furniture",
+		OneBarSpreaderVibeTrap: "Furniture",
+		OneBarSpreaderTrap: "Furniture",
 		BedTrap: "Bed",
 		SybTrap: "Furniture",
 	},

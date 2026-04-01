@@ -827,7 +827,7 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "CyberArmCuffs", Level: 0},
 			{Name: "CyberMittens", Level: 0},
 			{Name: "LatexCatsuit", Level: 0},
-			{Name: "TrackingCollar", Level: 20},
+			{Name: "TrackingCollar", Level: 0},
 			{Name: "CyberBallGag", Level: 20},
 			{Name: "CyberLegCuffs", Level: 30},
 			{Name: "CyberPlugGag", Level: 40},

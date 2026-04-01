@@ -567,10 +567,18 @@ interface KDGameDataBase {
 	titlesUnlockedCache: Record<string, number>,
 	titledata: KDPlayerTitleData,
 	RecentProgress: Record<string, ProgressRecord>,
+
+	
+	PreferredJailPoint?: KDJailPoint,
+	PreferredJailPointTick?: number,
 };
 
 
 let KDGameDataBase: KDGameDataBase = {
+	PreferredJailPoint: null,
+	PreferredJailPointTick: 0,
+
+
 	titledata: null,
 	titlesUnlockedCache: {},
 	CurrentDialogEntity: null,

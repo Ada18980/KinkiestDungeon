@@ -3600,6 +3600,7 @@ KDEffectTileTooltipDisplayStand,Display Stand
 KDEffectTileTooltipLatexDisplayStand,Rubberdoll Stand
 KDEffectTileTooltipDollStand,One Bar Prison
 KDEffectTileTooltipDollStandReal,Doll Stand
+KDEffectTileTooltipDollStandSpreaderReal,Doll Stand
 KDEffectTileTooltipSyb,Vibrating Saddle
 KDEffectTileTooltipCage,Cage
 KDEffectTileTooltipIceBase,Icy Platform
@@ -3813,12 +3814,19 @@ RestraintOneBarVibeTrap,One Bar Heaven
 RestraintOneBarVibeTrapDesc,"A pole, inconveniently placed such that a girl in heels wouldn't be able to raise herself up over it."
 RestraintOneBarVibeTrapDesc2,"The end vibrates, giving the displayed subject perhaps a bit too much pleasure for their own good."
 
+RestraintOneBarSpreaderTrap,One Bar Prison (S)
+RestraintOneBaSpreaderTrapDesc,"A pole and frame, ankles locked in place so that escape is completely impossible for the girl mounted on it."
+RestraintOneBarSpreaderTrapDesc2,"Adjustable to fit all damsel sizes. The height cannot be adjusted while locked."
+RestraintOneBarSpreaderVibeTrap,One Bar Heaven (S)
+RestraintOneBarSpreaderVibeTrapDesc,"A pole and frame, ankles locked in place so that escape is completely impossible for the girl mounted on it."
+RestraintOneBarSpreaderVibeTrapDesc2,"The end vibrates, giving the displayed subject perhaps a bit too much pleasure for their own good."
+
 
 
 KDCageTrap,"You hear a click as the door shuts behind you..."
 KDDisplayTrap,"The display stand suddenly locks into place around you!"
 KDOneBarTrap,"A plug emerges from the floor and locks you into place as a stand!"
-KDOneBarSpreaderTrap,"A plug emerges from the floor and locks you into place, spreading your legs wide!"
+KDOneBarSpreaderTrap,"A frame emerges from the floor and locks you into place, spreading your legs wide!"
 KDSybTrap,"A powerful force sucks you down onto the saddle!"
 KDDisplayEgyptianTrap,"The display stand suddenly locks into place around you!"
 KDFutureBoxTrap,The storage unit beeps and closes behind you!
@@ -3830,6 +3838,10 @@ RestraintDollStandDesc2,"As long as it's... inserted, you won't be going anywher
 RestraintDollStandReal,Doll Stand
 RestraintDollStandRealDesc,"A stand for keeping dolls comfortable when they're not being played with."
 RestraintDollStandRealDesc2,"It can be locked in place, and is difficult to dismount when wearing high heeled shoes."
+
+RestraintDollStandSpreaderReal,Doll Stand (S)
+RestraintDollStandSpreaderRealDesc,"A stand for keeping dolls comfortable when they're not being played with."
+RestraintDollStandSpreaderRealDesc2,"The subject is locked in place and unable to move an inch."
 
 
 
@@ -3918,6 +3930,10 @@ RestraintNippleClamps3Desc2,"They will make for some great fun! Type: Edging"
 RestraintControlHarness,Control Harness
 RestraintControlHarnessDesc,"An advanced harness for controlling high-security prisoners."
 RestraintControlHarnessDesc2,"It seems to be made of flexible steel plates."
+
+RestraintTrackingCollarPassive,Cyber Collar
+RestraintTrackingCollarPassiveDesc,"An advanced collar for registering prisoners into the facility network."
+RestraintTrackingCollarPassiveDesc2,"It seems to be made of flexible steel plates, and it has a high-security lock."
 
 RestraintTrackingCollar,Cyber Collar
 RestraintTrackingCollarDesc,"An advanced collar for registering prisoners into the facility network."
@@ -27633,6 +27649,34 @@ m_LatexDollMittsLong_l_UpperGlow,UpperGlow
 m_FashionLatexDollMitts,FashionLatexDollMitts
 m_FashionLatexDollMitts_l_Mitten,Mitten
 m_FashionLatexDollMitts_l_Mitten,Mitten
+
+m_BunnyEars1,BunnyEars1
+m_BunnyEars1_l_Ears,Ears
+m_BunnyEars1_l_InnerEars,InnerEars
+m_BunnyEars1_l_Ears,Ears
+m_BunnyEars1_l_InnerEars,InnerEars
+m_BunnyEars2,BunnyEars2
+m_BunnyEars2_l_Ears,Ears
+m_BunnyEars2_l_InnerEars,InnerEars
+m_BunnyEars2_l_Ears,Ears
+m_BunnyEars2_l_InnerEars,InnerEars
+m_BunnyEars3,BunnyEars3
+m_BunnyEars3_l_Ears,Ears
+m_BunnyEars3_l_InnerEars,InnerEars
+m_BunnyEars3_l_Ears,Ears
+m_BunnyEars3_l_InnerEars,InnerEars
+m_DollStand,DollStand
+m_DollStand_l_DollStand,DollStand
+m_DollStand_l_OneBarFront,OneBarFront
+m_DollStand_l_OneBarBack,OneBarBack
+m_DollStandSpreader,DollStandSpreader
+m_DollStandSpreader_l_DollStand,DollStand
+m_DollStandSpreader_l_OneBarFront,OneBarFront
+m_DollStandSpreader_l_OneBarLarge,OneBarLarge
+m_DollStandSpreader_l_ShortLeft,ShortLeft
+m_DollStandSpreader_l_ShortRight,ShortRight
+m_DollStandSpreader_l_Bar,Bar
+
 
 
 m_HighSecBlindfoldRestraint,HighSecBlindfoldRestraint
