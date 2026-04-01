@@ -277,6 +277,7 @@ let KDTextGray0 = KDBaseBlack;
 let KDTextGreen1 = "#001100";
 let KDTextBlue1 = "#000011";
 let KDTextRed1 = "#110000";
+let KDTextRedBG = "#551616";
 let KDCurseColor = "#ff55aa";
 let KDGoodColor = "#77ff99";
 
@@ -2614,7 +2615,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 		let size = 48;
 		let filterCols = 2;
 		let yyy = KDLogFilters.length * spacing/filterCols + 30;
-		if (MouseIn(KDMsgWidthMin + KDMsgX + shiftx + 70, 0, 300, yyy)) {
+		if (MouseIn(KDMsgWidthMin + KDMsgX + shiftx + 70, 0, 300, yyy) && !KDModalArea) {
 			let filterX = KDMsgWidthMin + KDMsgX + shiftx + 70 + 60;
 			let filterY = 4;
 			let ii = 0;

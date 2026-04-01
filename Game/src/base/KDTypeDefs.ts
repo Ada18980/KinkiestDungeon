@@ -3208,7 +3208,9 @@ interface KDMapDataType {
 	JailFaction: string[],
 	GuardFaction: string[],
 	MapFaction: string,
-	clickHeadpatted: boolean
+	clickHeadpatted: boolean,
+    PerkShrines: string[],
+    SelectedPerk: number,
 }
 
 

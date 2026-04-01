@@ -2663,12 +2663,14 @@ function KinkyDungeonCreatePerkRoom(POI: any, VisitedRooms: any[], width: number
 				KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks,
 					Light: 5,
 					lightColor: 0xffff88,
-					Bondage: bondage, Method: method});
+					Bondage: bondage, Method: method, Type: "PerkOrb"});
 				perksplaced += 1;
 				for (let p of newperks) {
 					perks[p] = true;
 				}
 			}
+            if (!KDMapData.PerkShrines) { KDMapData.PerkShrines = [] }
+            KDMapData.PerkShrines.push(`${p1x + i * 2},${py}`)
 		}
 	}
 

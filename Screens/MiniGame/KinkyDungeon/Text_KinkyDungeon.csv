@@ -3620,6 +3620,7 @@ KinkyDungeonObjectTrap,"Nothing to see here."
 KinkyDungeonObject,"object"
 KinkyDungeonObjectChest,"Chest"
 KinkyDungeonObjectDoor,"Door"
+KinkyDungeonObjectPerkOrb,"Perk Shrine"
 
 
 
@@ -7956,8 +7957,10 @@ KinkyDungeonOrbIntroKinky,"You find a magic orb, containing the SHCL spell 'SPLN
 KinkyDungeonOrbIntroKinkyRandom,"You find a magic orb, containing a random spell and angering a goddess."
 KinkyDungeonOrbIntro2,"Should you break it, she will send her minions after you. Which Goddess will you anger?"
 
-KinkyDungeonPerkIntro,"An altar stands before you, bestowing a heavenly contract."
+KinkyDungeonPerkIntro,"An altar stands before you with a heavenly contract. It reads..."
 KinkyDungeonPerkIntro2,"Do you choose to accept its terms?"
+KinkyDungeonPerkGainPerk,"You will receive perks: "
+KinkyDungeonPerkGainBondage,"You will be bound with: "
 
 KinkyDungeonPerkConfirm,"Are you sure? This choice is final."
 

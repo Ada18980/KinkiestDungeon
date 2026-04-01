@@ -258,6 +258,7 @@ let KDObjectDraw: Record<string, () => void> = {
 	"Lock": () => KinkyDungeonDrawLock(),
 	"Shrine": () => KinkyDungeonDrawShrine(),
 	"Door": () => KinkyDungeonDrawDoor(),
+    "PerkOrb": () => KinkyDungeonDrawPerkOrb(),
 	Orb: () => KDDrawOrb(),
 };
 

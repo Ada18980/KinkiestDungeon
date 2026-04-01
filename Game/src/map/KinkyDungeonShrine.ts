@@ -908,110 +908,158 @@ function KinkyDungeonTakePerk(Amount: number, X: number, Y: number) {
 	KDPerkOrbPerks = KinkyDungeonTilesGet(X + "," + Y).Perks;
 	KDPerkOrbBondage = KinkyDungeonTilesGet(X + "," + Y).Bondage;
 	KDPerkOrbMethod = KinkyDungeonTilesGet(X + "," + Y).Method;
-	KinkyDungeonDrawState = "PerkOrb";
+	//KinkyDungeonDrawState = "PerkOrb";
 	KinkyDungeonOrbAmount = Amount;
 	KDOrbX = X;
 	KDOrbY = Y;
 }
 function KinkyDungeonDrawPerkOrb() {
-	let bwidth = 350;
-	let bheight = 64;
-	let Twidth = 1250;
+    KDModalArea = true;
+    let perkshrineheight = 700
+    let YY = 700;
+    KDModalArea_y = YY - perkshrineheight + 80;
+    KDModalArea_height = perkshrineheight + 100;
+    KDModalArea_width = 1100;
+    FillRectKD(kdcanvas, kdpixisprites, "perkshrinebg", {
+        Left: KDModalArea_x - 25,
+        Top: KDModalArea_y,
+        Width: KDModalArea_width + 25,
+        Height: perkshrineheight + 20,
+        Color: KDButtonColor,
+        LineWidth: 1,
+        zIndex: 60,
+        alpha: 0.8,
+    });
+    DrawRectKD(kdcanvas, kdpixisprites, "perkshrinebg2", {
+        Left: KDModalArea_x - 25,
+        Top: KDModalArea_y,
+        Width: KDModalArea_width + 25,
+        Height: perkshrineheight + 20,
+        Color: KDBorderColor,
+        LineWidth: 1,
+        zIndex: 60.1,
+        alpha: 1.0,
+    });
+    DrawTextKD(TextGet("KinkyDungeonPerkIntro"), 1120, 110, KDBaseWhite, KDTextGray2, 26);
+    let perkOrbChoices = [];
+    for (let i = 0; i < 3; i++) {
+        let pshrine = KDMapData.PerkShrines[i]
+        let perks = KinkyDungeonTilesGet(pshrine).Perks;
+        let bondage = KinkyDungeonTilesGet(pshrine).Bondage;
+        let method = KinkyDungeonTilesGet(pshrine).Method;
+        if (KDMapData.SelectedPerk == i) {
+            DrawButtonKDEx(`AcceptContractButton${i}`, () => {
+                KDDelayedActionPrune(["Action", "World"]);
+                KDSendStatus('goddess', perks, 'takePerkOrb');
+                KDModalArea = false;
+                if (perks) {
+                    for (let p of perks) {
+                        KinkyDungeonStatsChoice.set(p, true);
+                    }
+                }
+                if (bondage) {
+                    for (let b of bondage) {
+                        KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(b), 20, true, "Gold", true);
+                    }
+                }
+                if (method) {
+                    KDGameData.SelectedEscapeMethod = method;
+                }
+                KDMapData.PerkShrines.forEach((pshrine) => {
+                    KinkyDungeonMapSet(parseInt(pshrine.split(",")[0]), parseInt(pshrine.split(",")[1]), 'p')
+                    KinkyDungeonTilesGet(pshrine).Type = undefined;
+                })
+                KinkyDungeonSetFlag("choseperk", 3);
+                KinkyDungeonSendEvent("perkOrb", { x: pshrine.split(",")[0], y: pshrine.split(",")[1], perks: perks });
+            }, true, KDModalArea_x + (360 * i) + 50, KDModalArea_y + 630, 250, 60, "Accept", KDBaseWhite, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
+                zIndex: 60.5
+            });
+        }
+        DrawButtonKDEx(`perkshrinechoicebg${i}`, () => {
+            console.log("Clicked Perk " + i)
+            KDMapData.SelectedPerk = i
+        }, true, KDModalArea_x + (360 * i), KDModalArea_y + 60, 350, perkshrineheight - 50, undefined, KDBaseWhite, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
+            zIndex: 60.2
+        });
+        /*DrawRectKD(kdcanvas, kdpixisprites, `perkshrinechoicebg${i}`, {
+            Left: KDModalArea_x + (360 * i),
+            Top: KDModalArea_y + 60,
+            Width: 350,
+            Height: perkshrineheight - 50,
+            Color: KDBaseLightGrey,
+            LineWidth: 2,
+            zIndex: 60.2,
+            alpha: 1.0,
+        });*/
+        let textoffset = KDModalArea_y + 80;
+        if (perks && perks.length > 0) {
+            DrawTextKD(TextGet("KinkyDungeonPerkGainPerk"), KDModalArea_x + (360 * i) + 180, textoffset, KDBaseWhite, KDTextGray2, 14);
+            textoffset += 40
+            perks.forEach((p) => {
+                let perkraritycolor = KDBaseRed;
+                if (KinkyDungeonStatsPresets[p].cost >= 0) {
+                    perkraritycolor = KDBaseWhite
+                }
+                if (KinkyDungeonStatsPresets[p].cost > 1) {
+                    perkraritycolor = KDBaseGreal
+                }
+                if (KinkyDungeonStatsPresets[p].cost > 2) {
+                    perkraritycolor = KDBaseBaby
+                }
+                if (KinkyDungeonStatsPresets[p].cost > 3) {
+                    perkraritycolor = KDBasePurple
+                }
+                if (KinkyDungeonStatsPresets[p].cost > 4) {
+                    perkraritycolor = KDBaseOrange
+                }
+                DrawTextFitKD(TextGet("KinkyDungeonStat" + KinkyDungeonStatsPresets[p].id), KDModalArea_x + (360 * i) + 25, textoffset, 300, perkraritycolor, (KinkyDungeonStatsPresets[p].cost < 0) ? KDTextRed1: KDTextGray2, 30, "left");
+                textoffset += 30
+                let perktextsplits = TextGet("KinkyDungeonStatDesc" + KinkyDungeonStatsPresets[p].id).split(" ");
+                perktextsplits = perktextsplits.reduce((prev, currword) => {
+                    let currentlength = prev[prev.length - 1].length;
+                    if ((currentlength + currword.length + 1) > 36 && (currentlength > 0)) {
+                        prev.push(currword)
+                    }
+                    else {
+                        prev[prev.length - 1] = (currentlength > 0) ? `${prev[prev.length - 1]} ${currword}` : currword
+                    }
+                    return prev;
+                }, ['']);
+                if (KinkyDungeonStatsPresets[p].cost < 0) {
+                    FillRectKD(kdcanvas, kdpixisprites, `bg_${i}_debuffperk_${p}`, {
+                        Left: KDModalArea_x + (360 * i) + 10,
+                        Top: textoffset - 55,
+                        Width: 330,
+                        Height: 50 + (perktextsplits.length * 25),
+                        Color: KDTextRedBG,
+                        LineWidth: 5,
+                        zIndex: 60.3,
+                        alpha: 1.0
+                    })
+                }
+                perktextsplits.forEach((tsplit) => {
+                    DrawTextFitKD(tsplit, KDModalArea_x + (360 * i) + 30, textoffset, 300, KDBaseWhite, KDTextGray2, 16, "left");
+                    textoffset += 25
+                })
 
-	if (!StandalonePatched)
-		MainCanvas.textAlign = "center";
-	DrawTextKD(TextGet("KinkyDungeonPerkIntro"), 1250, 50, KDBaseWhite, KDTextGray2);
-	DrawTextKD(TextGet("KinkyDungeonPerkIntro2"), 1250, 100, KDBaseWhite, KDTextGray2);
-
-	let count = 0;
-	let pspacing = 120;
-	for (let p of KDPerkOrbPerks) {
-		DrawTextFitKD(TextGet("KinkyDungeonStat" + KinkyDungeonStatsPresets[p].id), 1250, 200 + count * pspacing, Twidth, KDBaseWhite, KDTextGray2, 30);
-		DrawTextFitKD(TextGet("KinkyDungeonStatDesc" + KinkyDungeonStatsPresets[p].id), 1250, 235 + count * pspacing, Twidth, KDBaseWhite, KDTextGray2, 22);
-		FillRectKD(kdcanvas, kdpixisprites, "bg_" + KinkyDungeonStatsPresets[p].id, {
-			Left: 1250-Twidth/2 - 10,
-			Top: 200 + count * pspacing - 30,
-			Width: Twidth + 20,
-			Height: 70 + 20,
-			Color: KinkyDungeonStatsPresets[p].cost < 0 ? KDTextRed1 : KDTextGray0,
-			LineWidth: 1,
-			zIndex: 60,
-			alpha: 0.7,
-		});
-		count += 1;
-	}
-	if (KDPerkOrbBondage?.length > 0 && !KinkyDungeonStatsChoice.get("hideperkbondage")) {
-		let str = "";
-		for (let b of KDPerkOrbBondage) {
-			if (str) str = str + ', ';
-			str = str + TextGet("Restraint" + b);
-		}
-		if (KinkyDungeonStatsChoice.get("partialhideperkbondage")) {
-			DrawTextFitKD(TextGet("KDBondageOptionPerkHidden"), 1250, 210 + count * pspacing, Twidth, KDBaseWhite, KDTextGray2, 30);
-		} else {
-			DrawTextFitKD(TextGet("KDBondageOptionPerk"), 1250, 200 + count * pspacing, Twidth, KDBaseWhite, KDTextGray2, 24);
-			DrawTextFitKD(str, 1250, 235 + count * pspacing, Twidth, KDBaseWhite, KDTextGray2, 22);
-		}
-
-		FillRectKD(kdcanvas, kdpixisprites, "bg_bndg", {
-			Left: 1250-Twidth/2 - 10,
-			Top: 200 + count * pspacing - 30,
-			Width: Twidth + 20,
-			Height: 70 + 20,
-			Color: KDTextRed1,
-			LineWidth: 1,
-			zIndex: 60,
-			alpha: 0.7,
-		});
-		count += 1;
-	}
-
-	if (KinkyDungeonStatsChoice.get("escapeselect")) {
-		DrawTextFitKD(TextGet("KDEscapeMethod_" + KDPerkOrbMethod), 1250, 200 + count * pspacing, Twidth, KDBaseWhite, KDTextGray2, 30);
-		DrawTextFitKD(TextGet("KDEscapeMethodDesc_" + KDPerkOrbMethod), 1250, 235 + count * pspacing, Twidth, KDBaseWhite, KDTextGray2, 22);
-
-		FillRectKD(kdcanvas, kdpixisprites, "bg_method", {
-			Left: 1250-Twidth/2 - 10,
-			Top: 200 + count * pspacing - 30,
-			Width: Twidth + 20,
-			Height: 70 + 20,
-			Color: KDTextGreen1,
-			LineWidth: 1,
-			zIndex: 60,
-			alpha: 0.7,
-		});
-		count += 1;
-	}
-
-
-	if (KDPerkConfirm) {
-		DrawTextFitKD(TextGet("KinkyDungeonPerkConfirm"), 1250, 800, 1300, KDBaseWhite, KDTextGray2, 30);
-	}
-
-	DrawButtonKDEx("reject", (_bdata) => {
-		KinkyDungeonDrawState = "Game";
-		KDResetAlternateInventoryRender();
-		return true;
-	}, true, 1250-1300, 850 + 120 - 1000, 2600, 2000, TextGet("KinkyDungeonPerkReject"), KDBaseWhite, undefined, undefined, undefined, true, undefined, undefined, undefined,
-	{
-		zIndex: 1,
-		alpha: 0,
-	});
-
-	DrawButtonKDEx("accept", (_bdata) => {
-		if (KDPerkConfirm) {
-			KDSendInput("perkorb", {shrine: "perk", perks: KDPerkOrbPerks, bondage: KDPerkOrbBondage, method: KDPerkOrbMethod, Amount: 1, x: KDOrbX, y: KDOrbY});
-			KinkyDungeonDrawState = "Game";
-			KDResetAlternateInventoryRender();
-		}
-		KDPerkConfirm = true;
-		return true;
-	}, true, 1250 - bwidth/2, 850, bwidth, bheight, TextGet("KinkyDungeonPerkAccept" + (KDPerkConfirm ? "Confirm" : "")), KDBaseWhite,
-	undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
-		zIndex: 70,
-	});
-
-
+                textoffset += 20
+            })
+            textoffset += 15
+        }
+        if ((bondage && bondage.length > 0) && !KinkyDungeonStatsChoice.get("hideperkbondage")) {
+            if (KinkyDungeonStatsChoice.get("partialhideperkbondage")) {
+                DrawTextKD(TextGet("KDBondageOptionPerkHidden"), KDModalArea_x + (360 * i) + 175, textoffset, KDBaseWhite, KDTextGray2, 14);
+            }
+            else {
+                DrawTextKD(TextGet("KinkyDungeonPerkGainBondage"), KDModalArea_x + (360 * i) + 180, textoffset, KDBaseWhite, KDTextGray2, 14);
+                textoffset += 40
+                bondage.forEach((b) => {
+                    DrawTextFitKD(TextGet("Restraint" + b), KDModalArea_x + (360 * i) + 25, textoffset, 300, KDTextWhite, KDTextGray2, 30, "left");
+                    textoffset += 40
+                })
+            }
+        }
+    }
 }
 
 function KDGetPosNegColor(value: number): string {

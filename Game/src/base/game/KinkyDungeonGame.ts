@@ -261,7 +261,10 @@ function KDDefaultMapData(mapX: number, mapY: number, RoomType: string = "", Map
 		KeyQuota: -1,
 		KeysHeld: 0,
 
-		clickHeadpatted: false
+		clickHeadpatted: false,
+
+        PerkShrines: [],
+        SelectedPerk: -1
 	};
 }
 
