@@ -3507,7 +3507,7 @@ function DrawButtonKD (
             KDCurrentHoverButton = params;
             KDCurrentHoverBox = params;
         }
-		else Disabled = true;
+		else {Disabled = true; hover = false;}
 	}
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder);
 	KDButtonsCache[name] = params;
@@ -3661,7 +3661,7 @@ function DrawButtonKDEx (
             KDCurrentHoverButton = params;
             KDCurrentHoverBox = params;
         }
-		else Disabled = true;
+		else {Disabled = true; hover = false;}
 	}
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
 	KDButtonsCache[name] = params
@@ -3834,7 +3834,7 @@ function DrawButtonKDExScroll (
             KDCurrentHoverButton = params;
             KDCurrentHoverBox = params;
         }
-		else Disabled = true;
+		else {Disabled = true; hover = false;}
 	}
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
 	KDButtonsCache[name] = params
