@@ -408,9 +408,23 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 
 function KDRenderHotbarTooltip(button: KDButtonParamData) {
 	if (button.hoverData) {
-		DrawTextFitKD(button.hoverData,
-			button.Left, button.Top - 140, 300,
-			KDBaseWhite, "#333333", undefined, "center");
+		//DrawTextFitKD(button.hoverData,
+		//	button.Left, button.Top - 140, 300,
+		//	KDBaseWhite, "#333333", undefined, "center");
+		let inv = KinkyDungeonInventoryGet(button.hoverData);
+		if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), false, true, 0);
+		
+	}
+}
+
+
+function KDRenderHotbarTooltipSpell(button: KDButtonParamData) {
+	if (button.hoverData) {
+		//DrawTextFitKD(button.hoverData,
+		//	button.Left, button.Top - 140, 300,
+		//	KDBaseWhite, "#333333", undefined, "center");
+
+		KDDrawSpellInfo(true, 0,-75, button.hoverData, false);
 	}
 }
 
@@ -591,8 +605,8 @@ function KDDrawSpellChoices() {
 				undefined, undefined, undefined, {
 					hotkey: KDHotkeyToText(KinkyDungeonKeySpell[i]),
 					scaleImage: true,
-					hoverData: TextGet("KinkyDungeonSpell" + spell.name),
-					onHover: KDRenderHotbarTooltip,
+					hoverData: spell,//TextGet("KinkyDungeonSpell" + spell.name),
+					onHover: KDRenderHotbarTooltipSpell,
 				});
 			if (KinkyDungeoCheckComponentsPartial(spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true).length > 0) {
 				let sp = KinkyDungeoCheckComponents(spell).failed.length > 0 ? "SpellFail" : "SpellFailPartial";
@@ -639,7 +653,7 @@ function KDDrawSpellChoices() {
 					undefined, undefined, undefined, {
 						hotkey: KDHotkeyToText(KinkyDungeonKeySpell[i]),
 						scaleImage: true,
-						hoverData: TextGet((arm ? "Restraint" : "KinkyDungeonInventoryItem") + name),
+						hoverData: item,//TextGet((arm ? "Restraint" : "KinkyDungeonInventoryItem") + name),
 						onHover: KDRenderHotbarTooltip,
 					});
 				// Render number
@@ -728,8 +742,8 @@ function KDDrawSpellChoices() {
 					"rgba(0, 0, 0, 0)", KinkyDungeonRootDirectory + "Spells/" + spellPaged.name + ".png", "", false, true,
 					undefined, undefined, undefined, {
 						scaleImage: true,
-						hoverData: TextGet("KinkyDungeonSpell" + spellPaged.name),
-						onHover: KDRenderHotbarTooltip,
+						hoverData: spellPaged,//TextGet("KinkyDungeonSpell" + spellPaged.name),
+						onHover: KDRenderHotbarTooltipSpell,
 					});
 				//DrawImageEx(KinkyDungeonRootDirectory + "Spells/" + spellPaged.name + ".png", buttonDim.x - buttonDim.wsmall * page, buttonDim.y, {
 				//Width: buttonDim.wsmall,
@@ -772,7 +786,7 @@ function KDDrawSpellChoices() {
 						undefined, undefined, undefined, {
 							zIndex: 71,
 							scaleImage: true,
-							hoverData: TextGet((arm ? "Restraint" : "KinkyDungeonInventoryItem") + itemName),
+							hoverData: item,//TextGet((arm ? "Restraint" : "KinkyDungeonInventoryItem") + itemName),
 							onHover: KDRenderHotbarTooltip,
 						});
 				}
