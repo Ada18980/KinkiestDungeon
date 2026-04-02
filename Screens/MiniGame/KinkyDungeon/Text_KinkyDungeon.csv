@@ -32245,6 +32245,7 @@ KDAutoLoot,"Auto-loot found "
 KDNotPickedUp," (not picked up)"
 
 KDToggleFlipPlayerAuto,Automatically Flip When Moving
+KDToggleHotbarTooltips,Show detailed info on hotbar tooltips
 
 KDWardenNeedSummit,Go to the summit to deposit restraints
 KDPlayerChestNeedSummit,Visit a shrine or your own base to access storage

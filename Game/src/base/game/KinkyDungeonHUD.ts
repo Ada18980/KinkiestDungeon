@@ -408,11 +408,14 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 
 function KDRenderHotbarTooltip(button: KDButtonParamData) {
 	if (button.hoverData) {
-		//DrawTextFitKD(button.hoverData,
-		//	button.Left, button.Top - 140, 300,
-		//	KDBaseWhite, "#333333", undefined, "center");
+		if (!KDToggles.HotbarTooltips) {
+			DrawTextFitKD(button.hoverData,
+				button.Left, button.Top - 140, 300,
+				KDBaseWhite, "#333333", undefined, "center");
+			return;
+		}
 		let inv = KinkyDungeonInventoryGet(button.hoverData);
-		if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), false, true, 0);
+		if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), false, true, 0, 0);
 		
 	}
 }
@@ -420,11 +423,14 @@ function KDRenderHotbarTooltip(button: KDButtonParamData) {
 
 function KDRenderHotbarTooltipSpell(button: KDButtonParamData) {
 	if (button.hoverData) {
-		//DrawTextFitKD(button.hoverData,
-		//	button.Left, button.Top - 140, 300,
-		//	KDBaseWhite, "#333333", undefined, "center");
+		if (!KDToggles.HotbarTooltips) {
+			DrawTextFitKD(button.hoverData,
+				button.Left, button.Top - 140, 300,
+				KDBaseWhite, "#333333", undefined, "center");
+			return;
+		}
 
-		KDDrawSpellInfo(true, 0,-75, button.hoverData, false);
+		KDDrawSpellInfo(true, 0,0, button.hoverData, false);
 	}
 }
 
