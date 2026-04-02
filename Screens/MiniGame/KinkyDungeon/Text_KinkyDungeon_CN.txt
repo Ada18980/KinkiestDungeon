@@ -7234,6 +7234,12 @@ SCHOOL 女神给予你庇护和反击之力！
 # :: KDEffectTileTooltipDollStand
 # :: RestraintOneBarTrap
 # :: RestraintOneBar
+- Doll Stand
+玩偶架
+# :: KDEffectTileTooltipDollStandReal
+# :: KDEffectTileTooltipDollStandSpreaderReal
+# :: RestraintDollStandReal
+# :: RestraintDollStandSFW
 - Vibrating Saddle
 振动鞍
 - Cage
@@ -7426,6 +7432,7 @@ TYPE女神的神泉。
 门
 # :: KinkyDungeonObjectDoor
 # :: m_FutureBox_l_Door
+# - Perk Shrine
 
 
 
@@ -7890,10 +7897,20 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintOneBarVibeTrapDesc
 - Adjustable to fit all damsel sizes. The height cannot be adjusted while locked.
 能调整适配各种少女的体型。上锁时，无法调节高度。
+# :: RestraintOneBarTrapDesc2
+# :: RestraintOneBarSpreaderTrapDesc2
 - One Bar Heaven
 舒适桩
 - The end vibrates, giving the displayed subject perhaps a bit too much pleasure for their own good.
 末端会振动，给被展示的对象带来可能受不了的极度快感。
+# :: RestraintOneBarVibeTrapDesc2
+# :: RestraintOneBarSpreaderVibeTrapDesc2
+
+# - One Bar Prison (S)
+# - A pole and frame, ankles locked in place so that escape is completely impossible for the girl mounted on it.
+# :: RestraintOneBaSpreaderTrapDesc
+# :: RestraintOneBarSpreaderVibeTrapDesc
+# - One Bar Heaven (S)
 
 
 
@@ -7905,17 +7922,15 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: KDDisplayEgyptianTrap
 - A plug emerges from the floor and locks you into place as a stand!
 一根桩子拔地而起，强迫你站在原地！
-- A plug emerges from the floor and locks you into place, spreading your legs wide!
+- A frame emerges from the floor and locks you into place, spreading your legs wide!
 一根桩子从地面弹出，将你锁在原地，双腿大开！
 - A powerful force sucks you down onto the saddle!
 一股强大的力量将你拽回鞍座上！
 - The storage unit beeps and closes behind you!
 存储单元哔了一声，在你身后关闭！
 
-- Doll Stand
+- Lewd Doll Stand
 玩偶架
-# :: RestraintDollStand
-# :: RestraintDollStandSFW
 - A mobile display stand for dolls to keep them in place.
 一个用于固定玩偶的移动展示架。
 # :: RestraintDollStandDesc
@@ -7924,6 +7939,16 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 只要它插进… 那里，你就哪儿也去不了！
 # :: RestraintDollStandDesc2
 # :: RestraintOneBarDesc2
+
+# - A stand for keeping dolls comfortable when they're not being played with.
+# :: RestraintDollStandRealDesc
+# :: RestraintDollStandSpreaderRealDesc
+# - It can be locked in place, and is difficult to dismount when wearing high heeled shoes.
+
+# - Doll Stand (S)
+# - The subject is locked in place and unable to move an inch.
+
+
 
 - A devious way to immobilize people.
 一种使人动弹不得的狡猾方法。
@@ -8076,10 +8101,17 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 - Cyber Collar
 赛博项圈
+# :: RestraintTrackingCollarPassive
+# :: RestraintTrackingCollar
 - An advanced collar for registering prisoners into the facility network.
 用于将囚犯登记到设施网络中的高级项圈。
+# :: RestraintTrackingCollarPassiveDesc
+# :: RestraintTrackingCollarDesc
 - It seems to be made of flexible steel plates, and it has a high-security lock.
 它似乎由柔性钢板制成，并且具有高安全性锁。
+# :: RestraintTrackingCollarPassiveDesc2
+# :: RestraintTrackingCollarDesc2
+
 
 - Latex Ball Gag
 乳胶口球
@@ -11258,6 +11290,12 @@ RestraintName 上的诅咒解除了！
 # :: m_KittyLatexEar_l_Ears
 # :: m_KittyLatex_l_Ears
 # :: m_MilitaryUniform_l_Ears
+# :: m_BunnyEars1_l_Ears
+# :: m_BunnyEars1_l_Ears
+# :: m_BunnyEars2_l_Ears
+# :: m_BunnyEars2_l_Ears
+# :: m_BunnyEars3_l_Ears
+# :: m_BunnyEars3_l_Ears
 - Neck
 脖子
 # :: KinkyDungeonGroupItemNeckRestraints
@@ -15704,10 +15742,12 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Should you break it, she will send her minions after you. Which Goddess will you anger?
 如果你打破了它，她就会派出她的奴仆追杀你。你会激怒哪位女神呢？
 
-- An altar stands before you, bestowing a heavenly contract.
+- An altar stands before you with a heavenly contract. It reads...
 一座祭坛矗立在你面前，授予你一份神圣的契约。
 - Do you choose to accept its terms?
 你选择接受契约吗？
+# - You will receive perks: 
+# - You will be bound with: 
 
 - Are you sure? This choice is final.
 你确定吗？选择后无法反悔。
@@ -35310,10 +35350,13 @@ V形比基尼
 # :: m_OneBarPrison_l_OneBarFront
 # :: m_OneBarPrisonLatex_l_OneBarFront
 # :: m_OneBarPrisonSpreader_l_OneBarFront
+# :: m_DollStand_l_OneBarFront
+# :: m_DollStandSpreader_l_OneBarFront
 # - OneBarBack
 # :: m_OneBarPrison_l_OneBarBack
 # :: m_OneBarPrison_l_OneBarBack
 # :: m_OneBarPrisonLatex_l_OneBarBack
+# :: m_DollStand_l_OneBarBack
 # - StardustCollar
 - MikoCollar
 风香的项圈
@@ -40309,15 +40352,20 @@ Aura刘海(右后)
 # - ShortLeft
 # :: m_SteelSpreader_l_ShortLeft
 # :: m_OneBarPrisonSpreader_l_ShortLeft
+# :: m_DollStandSpreader_l_ShortLeft
 # - ShortRight
 # :: m_SteelSpreader_l_ShortRight
 # :: m_OneBarPrisonSpreader_l_ShortRight
+# :: m_DollStandSpreader_l_ShortRight
 # - Bar
 # :: m_SteelSpreader_l_Bar
 # :: m_OneBarPrisonSpreader_l_Bar
+# :: m_DollStandSpreader_l_Bar
 # - SleepsackSuspend
 # - OneBarPrisonSpreader
 # - OneBarLarge
+# :: m_OneBarPrisonSpreader_l_OneBarLarge
+# :: m_DollStandSpreader_l_OneBarLarge
 # - SpatsRight
 
 
@@ -41211,6 +41259,12 @@ Vents发型
 # :: m_KittyEars_l_InnerEars
 # :: m_WolfEars_l_InnerEars
 # :: m_FoxEars_l_InnerEars
+# :: m_BunnyEars1_l_InnerEars
+# :: m_BunnyEars1_l_InnerEars
+# :: m_BunnyEars2_l_InnerEars
+# :: m_BunnyEars2_l_InnerEars
+# :: m_BunnyEars3_l_InnerEars
+# :: m_BunnyEars3_l_InnerEars
 - Tail1
 尾巴1
 # :: m_Kitty2Tail_l_Tail1
@@ -43723,6 +43777,16 @@ Aura刘海
 # - LatexDollMittsLong
 - FashionLatexDollMitts
 装饰性乳胶玩偶束手套
+
+# - BunnyEars1
+# - BunnyEars2
+# - BunnyEars3
+# - DollStand
+# :: m_DollStand
+# :: m_DollStand_l_DollStand
+# :: m_DollStandSpreader_l_DollStand
+# - DollStandSpreader
+
 
 
 - HighSecBlindfoldRestraint
@@ -52894,3 +52958,5 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - Will not restore willpower because you are artificial.
 # - Will not restore willpower because target is artificial.
 # - No wp res
+
+# - Your attempts to move off the stand only twist the plug inside of you.
