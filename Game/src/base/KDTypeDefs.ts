@@ -1,3 +1,7 @@
+/* Static analysis typedefs - define checks in tools/type-validators.ts
+	To run analysis, exec: npx tsx tools/static-analysis.ts */
+type HexColor = string;
+
 type Named = {
 	name: string,
 	inventoryVariant?: string,
@@ -144,7 +148,7 @@ interface consumable extends NamedAndTyped {
 	power?: number,
 	amount?: number,
 	rechargeCost?: number,
-	aura?: string,
+	aura?: HexColor,
 	buff?: string,
 	costMod?: number,
 	shrine?: string,
@@ -1765,7 +1769,7 @@ interface KDBuff {
 	type?: string,
 	duration?: number,
 	infinite?: boolean,
-	aura?: string,
+	aura?: HexColor,
 	range?: number,
 	currentCount?: number,
 	maxCount?: number,
@@ -4034,7 +4038,7 @@ interface KDSeal {
 	/** Name of the seal buff */
 	name: string,
 	/** Color of the seal buff */
-	aura: string,
+	aura: HexColor,
 	/** Sprite of the seal buff */
 	aurasprite: string,
 	/** Events of the seal buff */
