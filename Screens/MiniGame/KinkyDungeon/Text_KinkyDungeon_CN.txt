@@ -51030,6 +51030,7 @@ ENMY 解开了 ITMN 的锁!
 
 - Automatically Flip When Moving
 在移动时自动翻转
+# - Show detailed info on hotbar tooltips
 
 - Go to the summit to deposit restraints
 前往顶部存放拘束具
