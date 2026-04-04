@@ -13,7 +13,7 @@ export interface TypeValidator {
 
 export const typeValidators: Record<string, TypeValidator> = {
 	HexColor: {
-		validate: (v) => /^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?([0-9a-fA-F]{2})?$/.test(v),
+		validate: (v) => /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.test(v),
 		expected: '#RGB, #RRGGBB, or #RRGGBBAA',
 	},
 };
