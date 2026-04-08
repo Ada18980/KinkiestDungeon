@@ -3205,7 +3205,7 @@ Devious Dungeon Challenge 已启用。
 - You slowly eat the cookie, savoring its fluffy texture.
 你慢慢地品尝着这块饼干，享受着它蓬松的口感。
 - It tempts you with sweet promises, but you feel like eating it would be admitting something about yourself.
-它诱惑着你，带来甜蜜，但同时你感觉有些不对劲……
+它用甜蜜的承诺诱惑着你，但你总觉得，一旦吃了它，就仿佛是承认了某个事实。
 - Restores 15% willpower and adds +5 submissiveness. Takes a few turns to eat.
 恢复 15% 意志力并 +5 服从度，需要几个回合的时间吃掉。
 
@@ -7923,7 +7923,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A plug emerges from the floor and locks you into place as a stand!
 一根桩子拔地而起，强迫你站在原地！
 - A frame emerges from the floor and locks you into place, spreading your legs wide!
-一根桩子从地面弹出，将你锁在原地，双腿大开！
+一个钢架从地面弹出，将你锁在原地，双腿大开！
 - A powerful force sucks you down onto the saddle!
 一股强大的力量将你拽回鞍座上！
 - The storage unit beeps and closes behind you!
@@ -15743,11 +15743,13 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 如果你打破了它，她就会派出她的奴仆追杀你。你会激怒哪位女神呢？
 
 - An altar stands before you with a heavenly contract. It reads...
-一座祭坛矗立在你面前，授予你一份神圣的契约。
+一座祭坛矗立在你面前，放着一份神圣契约。上面写着……
 - Do you choose to accept its terms?
 你选择接受契约吗？
-# - You will receive perks: 
-# - You will be bound with: 
+- You will receive perks: 
+你将获得特质：
+- You will be bound with: 
+你将受到以下束缚：
 
 - Are you sure? This choice is final.
 你确定吗？选择后无法反悔。
@@ -51030,7 +51032,8 @@ ENMY 解开了 ITMN 的锁!
 
 - Automatically Flip When Moving
 在移动时自动翻转
-# - Show detailed info on hotbar tooltips
+- Show detailed info on hotbar tooltips
+显示详细的快捷栏提示信息
 
 - Go to the summit to deposit restraints
 前往顶部存放拘束具
