@@ -47,11 +47,11 @@ Pусский
 - By Ada18980
 От Ada18980
 - You are an adventurer descending into an ancient underground city of magic.
-Вы - искательница приключений, спускающаяся в древний подземный магический город.
+Вы - искательница приключений, спускающаяся в древний подземный город магии.
 - Beneath its depths lies the Mistress' Staff, an artifact of untold power.
-В его глубинах находится Посох Госпожи, артефакт невыразимой силы.
+В его глубинах скрыт Посох Госпожи, артефакт невыразимой силы.
 - Will you prevail against forces unknown, or succumb to its dark secrets?
-Сумеете ли вы одолеть неведомые силы или поддадитесь их темным тайнам?
+Сумеете ли вы одолеть неведомые силы или поддадитесь его тёмным тайнам?
 - (This game does not contain spiders)
 (Игра не содержит контента с пауками)
 
@@ -67,17 +67,17 @@ Pусский
 - Controls
 Клавиши
 - Keybindings
-Управление
+Назначение клавиш
 ### Mouse Shortcuts
-
+Сочетания мыши
 ### Auto-path through NPCs
-
+Автоматический прохождение через неигровых персонажей
 ### Auto-path through Doors
-
+Автоматический проход через двери
 - Show Enemy Binding as %
 Показывать скованность врагов в %
 ### Auto-wait Through Delayed Actions
-
+Автоматическое ожидание выполнения отложенных действий
 - Show Minimap Labels
 Показывать надписи на миникарте
 - Auto loot all from chests
@@ -103,7 +103,7 @@ Pусский
 - Show Background Art
 Показывать фоновое изображение
 ### Experimental Rendering (unstable)
-
+Экспериментальный рендеринг (нестабильный)
 - Mute when Minimized
 Отключать звук при сворачивании
 - Show DP instead of %
@@ -149,7 +149,7 @@ Pусский
 - Async Rendering (beta)
 Асинхронный рендеринг (beta)
 ### Bloom & Glow
-
+Свечение и сияние
 - Transparent UI
 Прозрачный UI
 - Turn Counter
@@ -209,7 +209,7 @@ Particle FX у Кляпа
 - Show Trajectory on Auto-Path
 Отображение траектории на авто-пути
 ### Always Show Player Facing
-
+Всегда показывать направление, куда смотрит игрок
 - Show more learnable spells
 Показывать больше заклинаний для изучения
 - Show Player Buff Auras
@@ -227,7 +227,7 @@ Particle FX у Кляпа
 - Flip Status Bars
 Отзеркалить строку состояния
 ### Reduce Accidental Wall Clicks
-
+Уменьшить количество случайных нажатий на стены
 - Enable Nipples
 Включить соски
 - Show Nipple Toys Over Bras
@@ -247,7 +247,7 @@ Particle FX у Кляпа
 - No Damage Floaters
 Убрать всплывающую инф. об уроне
 ### Dynamic Armor (must hide armor)
-
+Динамическая броня (должен прятать броню)
 - Hide floating weapon display
 Скрыть всплывающее изображение оружия
 - Automatically Take All from Chests
@@ -335,11 +335,11 @@ Particle FX у Кляпа
 - Flexible
 Гибкая
 - Slightly boosts the Remove/Unlock option, escaping is 1.5x as fast except picking, and your feet can use items/buckles.
-Немного усиляет опции Снять/Разблокировать, освобождение происходит в 1.5x раза быстрее (за исключением взлома), и вы можете использовать предметы/открывать пряжки ногами.
+Немного усиляет опции «Снять»/«Разблокировать», освобождение происходит в 1.5x раза быстрее (за исключением взлома), и вы можете использовать предметы/открывать пряжки ногами.
 - Inflexible
 Негибкая
 - You get a penalty to the Remove and Unlock action, and escaping is 0.75x as fast.
-Опции Снять/Разблокировать получают небольшой штраф, и скорость освобождения уменьшается до 75%.
+Опции Снять/Разблокировать получают небольшой штраф, и скорость освобождения уменьшается до 0.75x.
 
 
 - Locksmith
@@ -349,7 +349,7 @@ Particle FX у Кляпа
 - Clueless
 Невежда
 - You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick most advanced locks.
-Вы не знаете, как правильно вскрывать замки. Скорость взлома уменьшена до 0.5x, и вы не можете более вскрыть большинство продвинутых замков.
+Вы не знаете, как правильно вскрывать замки. Скорость взлома уменьшается до 0.5x, и вы не можете вскрыть большинство продвинутых замков.
 
 
 - Psychic
@@ -369,7 +369,7 @@ Particle FX у Кляпа
 - Cursed
 Проклятая
 - Goddess reputations can never exceed 25.
-Благосклонность Богинь не может превысить 25.
+Репутация Богинь не может превысить 25.
 
 
 - Submissive
@@ -385,7 +385,7 @@ Particle FX у Кляпа
 - Studious
 Студент
 - You start the game with +1 spell point. Your first two spell categories are free.
-Вы начинаете игру с 1-им дополнительным очком способностей. Ваши первые две категории заклинаний бесплатны.
+Вы начинаете игру с +1 очком способностей. Ваши первые две категории заклинаний бесплатны.
 - Meditation
 Медитация
 - You slowly regenerate mana, up to a maximum of 50.
@@ -447,7 +447,7 @@ Particle FX у Кляпа
 - Unfocused
 Отвлеченная
 - Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction.
-Точность умножается на 0,9 при 10%-ном возбуждении, и на 0,6 при 90%-ном возбуждении.
+Точность умножается в 0.9x при 10% возбуждении, и на 0.6x при 90% возбуждении.
 
 
 - Focused Strikes
@@ -457,7 +457,7 @@ Particle FX у Кляпа
 - Focused Power
 Сосредоточенная сила
 - 90% less stamina cost penalty on staves and similar weapons distraction.
-На 90% меньше штраф к потери выносливости оружия типа посохов и похожего из-за возбуждения.
+На 90% меньше штраф к потери выносливости из-за возбуждения при использовании посохов и похожего оружия.
 
 
 - Pristine
@@ -473,7 +473,7 @@ Particle FX у Кляпа
 - Unchained
 Нескованная
 - Start with high Metal reputation, and all metal restraints are easier to escape from.
-Начните с высокой благосклонностью Метала. Вам будет легче освободиться ото всех металлических ограничителей.
+Начните с высокой благосклонностью Метала. Вам будет легче освободиться от всех металлических ограничителей.
 - Damsel in Chains
 Дама в цепях
 - Metal restraints are harder to escape from.
@@ -489,9 +489,9 @@ Particle FX у Кляпа
 - Cursed Locks
 Проклятые замки
 - Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle.
-Те, у кого нет ключей, встретятся с Гневом Замков. Заблокированные предметы нельзя разрезать, и сними труднее бороться.
+Те, у кого нет ключей, встретятся с Гневом Замков. Заблокированные предметы нельзя разрезать, и с ними труднее бороться.
 - The magical warding from the lock protects the item.
-Магическая защита замка окутывает весь предмет.
+Магическая защита замка оберегает весь предмет.
 - Undeniable
 Безотказная
 - Born with an intense submissive desire, you cannot refuse bondage from dialogues.
@@ -507,7 +507,7 @@ Particle FX у Кляпа
 - Escape Artist
 Гуру верёвок
 - Start with high Rope reputation, and all rope restraints are easier to escape from.
-Начните с высокой благосклонностью Верёвки. Вам будет легче освободиться ото всех верёвочных ограничителей.
+Начните с высокой благосклонностью Верёвки. Вам будет легче освободиться от всех верёвочных ограничителей.
 - Rope Bunny
 Связанный кролик
 - Rope restraints are harder to escape from.
@@ -517,7 +517,7 @@ Particle FX у Кляпа
 - Slippery
 Скользкая
 - Start with high Latex reputation, and all latex restraints are easier to escape from.
-Начните с высокой благосклонностью Латекса. Вам будет легче освободиться ото всех латексных ограничителей.
+Начните с высокой благосклонностью Латекса. Вам будет легче освободиться от всех латексных ограничителей.
 - Latex Doll
 Латексная кукла
 - Latex restraints are harder to escape from.
@@ -527,7 +527,7 @@ Particle FX у Кляпа
 - Escapee
 Мастер побега
 - Start with high Leather reputation, and all leather restraints are easier to escape from.
-Начните с высокой благосклонностью Кожи. Вам будет легче освободиться ото всех кожаных ограничителей.
+Начните с высокой благосклонностью Кожи. Вам будет легче освободиться от всех кожаных ограничителей.
 - Leather-Bound
 В кожаных тисках
 - Leather restraints are harder to escape from.
@@ -537,7 +537,7 @@ Particle FX у Кляпа
 - Slayer
 Стихийник
 - You can cast Elemental spells without having the components, at twice the cost. Start w/ Firebolt.
-Вы можете применять Стихийные заклинания без активатора, но за двойную цену. На старте  вам будет доступен Огненную стрелу.
+Вы можете применять Стихийные заклинания без активатора, но за двойную цену. На старте  вам будет доступна Огненная шара.
 - Conjurer
 Созидатель
 - You can cast Conjuration spells without having the components, at twice the cost. Start w/ Conjure Chain.
@@ -551,7 +551,7 @@ Particle FX у Кляпа
 - Narcoleptic
 Нарколепсия
 - You slowly lose stamina over time.
-Вы медленно теряете выносливость.
+Со временем ваша выносливость постепенно снижается.
 
 
 - Stealth Mission
@@ -565,7 +565,7 @@ Particle FX у Кляпа
 - Denial Lovers
 Фанаты отрицания
 - All humanoids that can bind you also apply denial toys.
-Все гуманоиды, которые могут связать вас, также используют игрушки с функцией отрицания.
+Все гуманоиды, которые могут связать вас, также используют игрушки с функцией подавления воли.
 - Pleasure Lovers
 Фанаты удовольствия
 - All humanoids that can bind you also apply pleasurable toys.
@@ -615,7 +615,7 @@ Particle FX у Кляпа
 - Kill Squad
 Миссия невыполнима
 - Enemies gain increased blindsight and vision radius.
-Враги получают улучшенные Слепое Зрение (Видение сквозь стены) и радиус обзора.
+Враги получают улучшенное Слепое Зрение (Видение сквозь стены) и увеличенный радиус обзора.
 
 
 - Supermarket
@@ -639,7 +639,7 @@ Particle FX у Кляпа
 - Oppression
 Презренная
 - Ghosts are less likely to help you.
-Призраки куда менее охотно помогают вам.
+Призраки менее охотно помогают вам.
 - Search Party
 Группа захвата
 - More enemies spawn during sleep.
@@ -653,7 +653,7 @@ Particle FX у Кляпа
 - Deft Footwork
 Ловкие ноги
 - You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance.
-Вы игнорируете некоторые последствия умеренного замедления из-за каблуков или слизи, и можете использовать заклинания с активатором Ноги, будучи значительно замедленными, с вероятностью осечки в 50%.
+Вы игнорируете некоторые последствия небольшого замедления из-за каблуков или слизи, и вы можете использовать заклинания с активатором Ног, будучи значительно замедленными, с вероятностью осечки в 50%.
 - Poor Form
 Плохая форма
 - Slowing effects on you are amplified.
@@ -665,7 +665,7 @@ Particle FX у Кляпа
 - Deft Fingering
 Ловкие пальцы
 - You can cast arm spells using just your fingers, as long as your hands aren't bound.
-Вы можете произносить заклинания с активатором Рук, используя только пальцы, если ваши ладони не связаны.
+Вы можете произносить заклинания с активатором Рук, используя только пальцы, если ваши руки не связаны.
 
 
 - Well-Equipped
@@ -687,7 +687,7 @@ Particle FX у Кляпа
 - Disorganized
 Безалаберность
 - Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns.
-Смена оружия, выбор/изучение заклинаний и применение заклинаний из общего списка занимает 3 хода.
+Смена оружия, изучение/выбор заклинаний и применение заклинаний из книги заклинаний занимает 3 хода.
 - Savour the Taste
 Наслаждаясь вкусом
 - Drinking a potion takes 2 turns
@@ -745,7 +745,7 @@ Particle FX у Кляпа
 - Persisting Desires
 Настойчивые желания
 - Your dark desires are endless.
-Ваше темное желание бесконечно.
+Ваши темные желания бесконечны.
 
 
 - Sugar Rush
@@ -761,11 +761,11 @@ Particle FX у Кляпа
 - Berserker Rage
 Ярость берсерка
 - Melee attacks distract you, but melee (including chain) damage increases by up to 30% at max distraction.
-Атаки ближнего боя возбуждают вас, но ваш урон в ближнем бою (включая цепной) увеличивается до +30% при максимальном возбуждении.
+Атаки ближнего боя возбуждают вас, но урон в ближнем бою (включая цепной) увеличивается на +30% при максимальном возбуждении.
 - Unstable Magic
 Нестабильная магия
 ### Spells do up to 30% additional damage based on distraction or miscast chance, whichever is higher.
-
+Заклинания наносят до +30% дополнительного урона в зависимости от вашего возбуждения или шанса осечки — в зависимости от того, что выше.
 - Absolute Focus
 Абсолютный дисфокус
 - Miscast chance is doubled.
@@ -781,19 +781,19 @@ Particle FX у Кляпа
 - Nowhere is Safe
 Нигде не безопасно
 - Beds and furniture are often trapped.
-Кровати и мебель могут зачастую содержать ловушки.
+Кровати и мебель часто оказываются с ловушками.
 
 
 - Quakehoof Associate
 Помощник Quakehoof'а
 - Start with the Epsilon Collar, which regenerates mana when you play with yourself.
-Начните с Ошейником Эпсилон, который восстанавливает ману, когда вы играете сами с собой.
+Начните с Ошейником Эпсилон, который восстанавливает ману, когда вы играете с собой.
 - Epsilon Collar
 Ошейник Эпсилон
 - A collar reserved for the most prestigious of submissives.
 Ошейник, предназначенный для самых элитных сабмиссивов.
 - Restores mana when you play with yourself, but increases the distraction given. Only works when Desire is below the limit.
-Восстанавливает ману, когда вы играете сами с собой, но увеличивает количество получаемого возбуждения. Работает только тогда, когда Желание ниже предела.
+Восстанавливает ману, когда вы играете с собой, но увеличивает получаемое возбуждение. Работает только тогда, когда Желание ниже предела.
 
 
 - Bullet Hell
@@ -821,25 +821,25 @@ Particle FX у Кляпа
 - Quickness
 Ускорение
 - Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock.
-Если вы не двигаетесь 4 хода, то получаете ускорение. Ускорение позволит вам переместиться на 1 клетку без затраты хода.
+Если вы не двигаетесь 4 хода, то получаете ускорение. Ускорение позволяет вам переместиться на 1 клетку без затраты хода.
 
 
 - Expansive Halls
 Обширные залы
 - Increases the size of maps by 3 in the long dimension. Maps will be less dense.
-Увеличивает размер карт на 3 в длину. Карты будут менее плотными.
+Увеличивает размер карт на 3 в длину. Карты становятся менее плотными.
 - Gargantuan Halls
-Впечатляющие залы
+Гигантские залы
 - Increases the size of maps by 6 in the long dimension. Maps will have a mix of tunnels and dead ends.
-Увеличивает размер карт на 6 в длину. На картах будет много туннелей и тупиков.
+Увеличивает размер карт на 6 в длину. На картах предостовляет собой смесь туннелей и тупиков.
 - Labyrinthine Halls
 Настоящий лабиринт
 - Increases the size of maps by 9 in the long dimension. Maps will be mostly tunnels.
-Увеличивает размер карт на 9 в длину. Карты будут в основном состоять из туннелей.
+Увеличивает размер карт на 9 в длину. Карты состоят в основном из туннелей.
 - Absurdly Huge Maps
 Абсурдно огромные карты
 - (Experimental) Make the maps really really big. Probably breaks the game.
-(Экспериментальные) Делают карты действительно очень большими. Возможно, это сломает игру.
+(Экспериментальные) Делает карты очень-очень большими. Возможно, это сломает игру.
 
 
 - Rigger
@@ -853,7 +853,7 @@ Particle FX у Кляпа
 - Curse Seeker
 Искательница проклятий
 - When you pick up cursed armor or restraints from chests, they equip automatically if able.
-Когда вы берете проклятую броню или ограничители из сундуков, они снаряжаются автоматически, если это возможно.
+Когда вы подбираете проклятую броню или ограничители из сундуков, они снаряжаются автоматически, если это возможно.
 
 
 - Burning Desire
@@ -863,27 +863,27 @@ Particle FX у Кляпа
 - Frigid Personality
 Холодна как лёд
 - While below 10% distraction, you gain +10% ice damage and can walk on ice without penalties.
-Когда ваше возбуждение меньше 10%, вы наносите на +10% больше ледяного урона и можете ходить по льду без штрафов.
+Пока ваше возбуждение меньше 10%, вы получаете +10% к ледяному урону и можете ходить по льду без штрафов.
 
 
 - Grounded in Reality
 Заземление
 - While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
-Когда ваша мана на максимуме, ваши атаки наносят дополнительные +30% урона в видео урона от электричества.
+Пока ваша мана на максимуме, ваши атаки наносят дополнительные +30% урона в виде урона от электричества.
 - Like the Wind
 Как ветер
 - While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1.
-Когда у вас больше 95% выносливости, вы получаете +30 к Уклонению, а уровень вашего замедления снижается на 1.
+Пока у вас больше 95% выносливости, вы получаете +30 к уклонению, а уровень вашего замедления снижается на 1.
 
 
 - Immovable Object
 Непоколебимая
 - While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells cost half mana.
-Когда у вас больше 90% силы воли, вы получаете +150 к сопротивлению сковыванию, а заклинания стихии Земли стоят половину маны.
+Пока у вас больше 90% силы воли, вы получаете +150 к сопротивлению сковыванию, а заклинания стихии Земли стоят вдвое меньше маны.
 - Path of Least Resistance
 Путь наименьшего сопротивления
 - While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as soap damage when enemies restrain you.
-Пока ваша сила воли на 0, вы получаете +35 к уклонению и наносите 20% от максимума вашей силы воли в качестве Смывающего урона когда враги сковывают вас.
+Пока ваша сила воли равна 0, вы получаете +35 к уклонению и наносите 20% от максимума вашей силы воли в виде Смывающего урона когда враги сковывают вас.
 
 
 - Sticky Situation
@@ -951,7 +951,7 @@ Particle FX у Кляпа
 - Unperturbed
 Невозмутимая
 - You gain +82 grope resist.
-Вы получаете 82 сопротивления ощупыванию.
+Вы получаете +82 сопротивления ощупыванию.
 
 
 - Masochist
@@ -967,35 +967,35 @@ Particle FX у Кляпа
 - Fashionable
 Модница
 - When you are jailed, you keep your outfit.
-Оказавшись в тюрьме, вы сохраните свой наряд.
+Оказавшись в тюрьме, вы сохраняете свой наряд.
 
 
 - Futile Struggles
 Тщетная борьба
 - Lose 2 WP every time you remove a non-trivial restraint.
-Теряйте 2 WP каждый раз, когда вы снимаете нетривиальный ограничитель.
+Вы теряйте 2 WP каждый раз, когда вы снимаете нетривиальный ограничитель.
 
 
 - Second Wind
 Второе дыхание
 - Regenerate WP when unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, gag, or slows. (Upgrade available in spell tree)
-Восстанавливает WP когда вы свободны, до 10% от максимального WP.'Свободны' означает отсутствие связывания рук, кистей, ног, повязки на глазах, кляпа во рту и уровня замедления.(Апгрейд доступен в дереве закл.)
+Восстанавливает WP когда вы не скованы, до 10% от максимального WP."Свободный" означает отсутствие связывания рук, кистей, ног, повязки на глазах, кляпа во рту и уровня замедления.(Апгрейд доступен в дереве закл.)
 - Second Wind Perk
 Второе дыхание (Перк)
 - Regenerate WP when you are unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, or gag bondage, and no slows.
-Восстанавливает WP когда вы свободны, до 10% от максимального WP. 'Свободны' означает отсутствие связывания рук, кистей, ног, повязки на глазах, кляпа во рту и уровня замедления.
+Восстанавливает WP когда вы не скованы, до 10% от максимального WP. "Свободны" означает отсутствие связывания рук, кистей, ног, повязки на глазах, кляпа во рту и уровня замедления.
 - Triumphant Wind
 Торжествующий ветер
 - Second Wind now regenerates up to 25% of your max WP
-Второе дыхание теперь восстанавливает до 25% вашего максимального WP
+Второе дыхание теперь восстанавливает от 25% вашего максимального WP
 - Mental Defiance
 Ментальное неповиновение
 - Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP.
-Пассивное: При потере WP от остановки на краю, оргазма, или поддразнивания, накапливает 'Неповиновение' на величину вашего потерянного DP. Переключение: Когда WP ниже 25%, быстро преобразует 'Неповиновение' в WP.
+Пассивное: При потере WP от остановки на краю, оргазма, или поддразнивания, накапливается "Неповиновение" вплоть до недостающего значения DP. Переключение: Пока WP ниже 25%, быстро преобразует "Неповиновение" в WP.
 - Mental Fortitude
 Ментальная стойкость
 - Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While above 75% WP but below 100%, quickly convert 'Defiance' into WP. Exclusive with Mental Defiance.
-Пассивное: При потере WP от остановки на краю, оргазма, или поддразнивания, накапливает 'Неповиновение' на величину вашего потерянного DP. Переключение: Когда WP выше 75%, но ниже 100%, быстро преобразует 'Неповиновение' в WP. Несовместимо с 'Ментальное неповиновение'.
+Пассивное: При потере WP от остановки на краю, оргазма, или поддразнивания, накапливается "Неповиновение" на величину вашего потерянного DP. Переключение: Пока WP выше 75%, но ниже 100%, быстро преобразует "Неповиновение" в WP. Несовместимо с "Ментальным неповиновением".
 
 
 - Locked Up
