@@ -2907,6 +2907,12 @@ KillBowyerQuest,You rob the bowyer!
 NameShadyQuest,Not a Kidnapper
 KillShadyQuest,You bring the kidnapper to justice!
 
+NamePuppetLost,Lost Puppet
+KillPuppetLost,"The lost puppet wanders away."
+AttackPuppetLostBind,"The lost puppet reaches out with her strings wrapping around you. (+RestraintAdded)"
+AttackPuppetLostLock,"The lost puppet clicks on a brass lock."
+AttackPuppetLost,"The lost puppet firmly holds and caresses you in its arms. (DamageTaken)"
+
 NameDressmaker,Dressmaker
 KillDressmaker,"The dressmaker storms out in a rage."
 AttackDressmakerBind,"The dressmaker has you try on one of her new accessories! (+RestraintAdded)"
@@ -2914,13 +2920,13 @@ AttackDressmakerLock,"The dressmaker adds a lock 'just to complete the look, you
 AttackDressmaker,"The dressmaker cuddles your helpless body~ (DamageTaken)"
 
 NameNurse,Nurse
-KillNurse,"The Nurse checks her notes and runs off."
+KillNurse,"The Nurse marks her notes and runs off."
 AttackNurseBind,"The Nurse tries to pacify this rowdy patient! (+RestraintAdded)"
 AttackNurseLock,"The Nurse adds a lock to keep you from hurting the staff."
 AttackNurse,"The Nurse assures you it's going to be alright~ (DamageTaken)"
 
 NameLibrarian,Librarian
-KillLibrarian,"The librarian gets angry and retreats."
+KillLibrarian,"The librarian slams her book shut and backs off."
 AttackLibrarianBind,"The librarian shushes you as she brandishes a restraint! (+RestraintAdded)"
 AttackLibrarianLock,"The librarian snaps her fingers and sends a lock flying at you!"
 AttackLibrarian,"The librarian whispers seductively into your ear! (DamageTaken)"
@@ -8478,7 +8484,7 @@ KinkyDungeonHardMode0,Normal Mode
 KinkyDungeonHardMode1,Hard Mode
 KinkyDungeonExtremeMode,Extreme Mode
 KinkyDungeonHardModeDesc0,"A supposedly reasonable difficulty curve."
-KinkyDungeonHardModeDesc1,"Play the game the way it was intended. Cruel and restrictive. "
+KinkyDungeonHardModeDesc1,"Play the game the way it was intended. Cruel and restrictive."
 KinkyDungeonExtremeModeDesc,"Play at your own peril. Unlocked by double-clicking the Hard Mode button."
 
 KinkyDungeonSexyMode0,Distracted
@@ -12711,7 +12717,7 @@ dOfferDragonheartForce_NoGag,"(Shake your head and frown) (PERCENT chance to avo
 rOfferBandit,"(The SPEAKER waves and calls you over)|Looks like you've made a name for yourself.|What do you say to a little agreement?"
 rOfferBanditYes,"(The SPEAKER clears her throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us."
 rOfferBanditYes_Yes,"(The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!"
-rOfferBanditYes_No,"(The SPEAKER tilts her head and shrugs)|Ah well. "
+rOfferBanditYes_No,"(The SPEAKER tilts her head and shrugs)|Ah well."
 rOfferBanditNo,"(The SPEAKER nods)|Fair enough."
 rOfferBanditForce,"(The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~"
 rOfferBanditForceYes,"(The SPEAKER grins)|I like your spunk, girl.|But you're kidding, right?"
@@ -13797,7 +13803,7 @@ rCyberHiSecQuestion1,"(The SPEAKER grins)|It means you'll get nicely packaged,|s
 dCyberHiSec_Question1,W-what does that entail?
 rCyberHiSecQuestion1Gag,"(The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~"
 dCyberHiSec_Question1Gag,Hmmmph? Mmmm! (Act worried and whimper)
-rCyberHiSecQuestion2,"(The SPEAKER folds her arms)|Mistress Oriel's orders "
+rCyberHiSecQuestion2,"(The SPEAKER folds her arms)|Mistress Oriel's orders"
 dCyberHiSec_Question2,Not in the 'System'?
 rCyberHiSecQuestion2Gag,"(The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System."
 dCyberHiSec_Question2Gag,Mmmph? (Act confused)
@@ -28459,7 +28465,7 @@ KDQuickLoadoutSave,"Save Loadout"
 
 KinkyDungeonInventoryItemDildoBat,Rubber Stick
 KinkyDungeonInventoryItemDildoBatDesc,"A rubber cylinder without any lewd intentions whatsoever."
-KinkyDungeonInventoryItemDildoBatDesc2,"Deals grope damage. "
+KinkyDungeonInventoryItemDildoBatDesc2,"Deals grope damage."
 ItemPickupDildoBat,"You pick up a flexible rubber stick."
 
 KinkyDungeonInventoryItemDildoBatPlus,"Blade of Ejahl"
@@ -31029,6 +31035,7 @@ KDMapMod_Witch,"Witch's Lair"
 KDMapMod_Mold,"Mold Infestation"
 KDMapMod_Bandit,"Bandit Raid"
 KDMapMod_Dragon,"Dragon Sighting"
+KDMapMod_Doll,"Doll Awakening"
 KDMapMod_Plant,"Overgrown"
 KDMapMod_Slime,"Slime Infestation"
 KDMapMod_Wolf,"Wolfgirl Training"
@@ -33420,7 +33427,7 @@ KDConsentFilter,"Filter Content:"
 
 KDSafeword,Use Safeword
 KDSafewordConfirm,Confirm Safeword?
-KDSafewordDesc,"Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. "
+KDSafewordDesc,"Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level."
 KDSafewordMenu,"Only usable ingame."
 KDSafwordMsg,${Playername} used her safeword and was transported to the beginning of the level.
 

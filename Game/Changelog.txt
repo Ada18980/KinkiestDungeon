@@ -58,7 +58,6 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 Must do
 - Proper stripping
 - species perks
-- Doll stand (based on real doll stands?)
 
 5.5.0
 - Added doll body type
