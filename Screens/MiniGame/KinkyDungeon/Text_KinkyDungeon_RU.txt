@@ -56,6 +56,12 @@ Pусский
 (Игра не содержит контента с пауками)
 
 
+- Right click on a restraint's name to open a context menu.
+Щёлкните правой кнопкой мыши по названию ограничителя, чтобы открыть контекстное меню.
+- There is also an option in HUD settings to replace the small buttons with a context menu.
+В настройках HUD есть опция, позволяющая заменить маленькие кнопки на контекстное меню.
+
+
 - GFX
 Графика
 - Character
@@ -84,6 +90,88 @@ Pусский
 Авто-лут всего из сундуков
 - Use Palette regardless of Outfit
 Использовать палитру вне зависимости от наряда
+- Show (mostly) full tooltips
+Показывать (почти) полные подсказки
+- Auto cycle through multipage tooltips
+Автоперелистывание подсказок
+- Show extra struggle info
+Показывать дополнительную информацию о борьбе
+- Allow two rows of buffs when collapsed
+Разрешить две строки баффов в свернутом виде
+- Replace struggle icons with menu
+Заменить иконки борьбы на меню
+- Show Training level in buffs and stats
+Показывать уровень тренировки в баффах и характеристиках
+- Flashing Warning Tiles
+Мигающие предупредительные плитки
+- Apply worn restraint palettes to player
+Применять палитры надетых ограничителей к персонажу
+- Enable Headpats
+Включить поглаживания по голове
+- (Test) Enforce Inventory Limits
+(Тест) Применять ограничения инвентаря
+
+
+- Turn Count: 
+Количество ходов: 
+- Visibility: 
+Видимость: 
+- Chance for a spell to fizzle: 
+Шанс осечки заклинания: 
+- Toggle UI Transparency
+Переключить прозрачность интерфейса
+
+
+- Qty: 
+Кол-во: 
+- Rarity: 
+Редкость: 
+- Damage: 
+Урон: 
+- Crit: 
+Крит: 
+- Accuracy: 
+Точность: 
+- SP Cost: 
+Стоимость SP: 
+- Goddess: 
+Богиня: 
+
+
+- (The table is bolted to the floor)
+(Стол прикручен к полу)
+- (Try to flip the table)
+(Попробуйте перевернуть стол)
+- (Despite your best efforts, the table goes nowhere)
+(Несмотря на все ваши усилия, стол никуда не двигается)
+- (Will not low enough)
+(Вы не чувствуете усталости, чтобы лечь)
+
+
+- Talk
+Поговорить
+- Aggress
+Напасть
+- Allow Passing
+Разрешить обход
+- Attack
+Атака
+- Move To
+Подойти
+- Sprint
+Спринт
+- Progress
+Прогресс
+
+
+- Load Backup
+Загрузить резервную копию
+- Loads your data from a file. Note: This may overwrite any data you currently have.
+Загружает ваши данные из файла. Внимание: это может перезаписать любые текущие данные.
+- Save Backup
+Сохранить резервную копию
+- Stores all of your settings and presets into a file.
+Сохраняет все ваши настройки и пресеты в файл.
 
 
 - Apply palettes to Restraints
@@ -100,10 +188,14 @@ Pусский
 Исп. палитру персонажа для экипировки по умолчанию
 
 
+- Filter Toggles:
+Поиск настроек:
 - Show Background Art
 Показывать фоновое изображение
 - Experimental Rendering (unstable)
 Экспериментальный рендеринг (нестабильный)
+- Low-Res Textures (Needs Restart)
+Текстуры низкого разрешения (требуется перезапуск)
 - Mute when Minimized
 Отключать звук при сворачивании
 - Show DP instead of %
@@ -118,6 +210,12 @@ Pусский
 Показывать свободных персонажей на карте
 - Detailed jailed NPCs (experimental)
 Детали о заключенных NPC (экспериментальное)
+- Detailed unique NPCs (experimental)
+Детализированные уникальные NPC (экспериментально)
+- Detailed servants in collection
+Детализированные слуги в коллекции
+- Detailed prisoners/guests in collection
+Детализированные заключённые/гости в коллекции
 - Show Struggle Bars
 Показывать полоску Борьбы
 - Allow Suspicious Mods
@@ -163,7 +261,7 @@ Pусский
 - Vibration Particles
 Частицы при вибрации
 - Gag Particle FX
-Particle FX у Кляпа
+Частицы FX у Кляпа
 - Show NPC Status
 Показывать статус NPC
 - Show Spell Range
@@ -27355,7 +27453,7 @@ FаshiоnKiguMаskSmilе
 
 
 - Targe
-Тарджет
+Щит
 - Hide behind it while you still can.
 Прячьтесь за ним, пока еще можете.
 - +60 Block. Deals crush damage and stuns for 4 turns. Offhand: Gives the same block bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
@@ -27688,12 +27786,8 @@ FаshiоnKiguMаskSmilе
 Возможна разборка
 - Raw Material
 Исходный материал
-- Armbinders
-Армбиндеры
 - Legbinders
 Легбиндеры
-- Boxbinders
-Сумки для рук
 - Devices
 Устройства
 - Toys
@@ -29964,8 +30058,16 @@ X-Ray видение
 Настройки игры
 - Challenge Settings
 Настройки сложности
+- Use Safeword
+Использовать сейфворд
+- Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. 
+Снимает все ограничения с персонажа и помещает их в инвентарь, обнуляет уровни проклятия и трансформации, а также телепортирует вас к началу уровня. 
+- Only usable ingame.
+Используется только в игре.
 - Consent Settings
 Настройки ограничений
+
+
 - Checked content will appear at the normal ingame rate.
 Отмеченный контент будет появляться с обычной скоростью в игре.
 - Red content (x) is removed from the game
@@ -30007,11 +30109,92 @@ X-Ray видение
 - Painful Shocks
 Болезненные разряды
 - Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
-Заменяет большинство случаев "электрического" урона игроку на "Эро-урон", вызывая удовольствие вместо боли.
+Заменяет большинство случаев "Электрического" урона игроку на "Эро-урон", вызывая удовольствие вместо боли.
 - Brats
 Непослушные
 - Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them.
 NPC с наклонностями к подчинению иногда "убегают" от игрока, даже если не враждебны, маня его догнать и наказать.
+- Encasement
+Обволакивание латексом
+- Affects the spawn rate of slimes and latex witches.
+Влияет на частоту появления слаймов и латексных ведьм.
+- Tape Bondage
+Связывание лентой
+- Affects the spawn rate of tape drones and other enemies that use tape to restrain the player.
+Влияет на частоту появления дронов с лентой и других врагов, использующих ленту для связывания игрока.
+- Armbinders
+Армбиндеры
+- Affects the frequency of armbinders that force the elbows close together.
+Влияет на частоту появления армбиндеров, которые стягивают руки, сводя локти вместе.
+- Boxbinders
+Сумки для рук
+- Affects the frequency of boxbinders that force the arms behind the back.
+Влияет на частоту появления сумок для рук, которые жёстко фиксируют руки за спиной.
+- Straitjackets
+Смирительные рубашки
+- Affects the frequency of straitjackets.
+Влияет на частоту появления смирительных рубашек.
+- Yokes and Spreaders
+Металлические фиксаторы
+- Affects the frequency of metal yokes, fiddles, and spreader bars.
+Определяет, как часто появляются металлические фиксаторов.
+- Petsuits
+Костюмы питомцев
+- Affects the frequency of pet crawlers that force the player to crawl on their knees and elbows.
+Влияет на частоту появления "Костюмов-питомцев", которые заставляют персонажа ползать на коленях и локтях.
+- Bubbles
+Пузыри
+- Includes bubble restraints, both water and slime-based, but does not affect rubber ball suits or latex spheres.
+Включает ограничения в виде пузырей, как водяных, так и слизевых, но не влияет на костюмы с резиновыми шарами или латексные сферы.
+- Cyber Dollification
+Кибер-куколизация
+- Does not place points where enemies will drop you off to become dollified in the factory level.
+Не создаёт точек для превращения в куклу на уровне фабрики.
+- Invisible Restraints
+Невидимые ограничители
+- Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead.
+Позволяет некоторым призракам накладывать на вас невидимые ограничители. Они связывают вас, даже когда вы видимы.||Если предмет отмечен как "Красный", они будут заменены на удобные призрачные оковы.
+- Sensory Deprivation
+Сенсорная депривация
+- The Sensory Deprivation Hood is a highly restrictive item that deafens the player in addition to blocking most vision.
+Маска лишения органов чувств — крайне ограничивающий предмет, который оглушает персонажа и блокирует большую часть зрения.
+- Kigurumi Masks
+Маски кигуруми
+- Affects full masks that imitate a face, which can be unsettling to some.
+Влияет на полные маски, имитирующие лицо
+- Hoods
+Капюшоны
+- Includes hoods that cover the hair. Does not remove masks that cover the face without affecting hair.
+Включает капюшоны, закрывающие волосы. Не снимает маски, которые закрывают лицо, не влияя на волосы.
+- Full-face Masks
+Маски с полной фиксацией лица
+- Includes force-equipped masks that cover the entire face. This includes encasement, such as from slimes, although does not parts that cover the bottom half of the face as a gag.
+Включает принудительно надетые маски, которые полностью закрывают лицо. Сюда входят ограничения типа слизью, но не считаются элементы, закрывающие только нижнюю часть лица, как кляпы.
+- Blindfolds
+Повязки на глаза
+- Affects the frequency of blindfolds, but not hoods or masks that cover the upper face.
+Влияет на частоту появления повязок на глаза, но не капюшонов или масок, закрывающих верхнюю часть лица.
+- Nurses/Doctors
+Медсестры/Врачи
+- Affects the 'Nurse' enemy and any other medical-related enemy types.
+Влияет на врага "Медсестра" и любые другие типы врагов, связанные с медициной.
+- Police
+Полиция
+- Affects the 'Deputy' enemy and any other police-related enemy types, but not bounty hunters.
+Влияет на врага "Помощник шерифа" и любые другие типы врагов, связанные с полицией, но не на охотников за наградой.
+- Ball Suits
+Надувные костюмы
+- Includes ball suits and inflatable latex spheres that restrain the player.
+Включает шаровые костюмы и надувные латексные сферы, которые ограничивают движения персонажа.
+- Prisoner Text
+Надписи заключённого
+- Allows some restraints to display text such as 'Prisoner' or 'Inmate.'
+Позволяет некоторым ограничениям отображать надписи, такие как "Заключённый" или "Обвиняемый".
+- Allow Menu Ingame
+Разрешить меню в игре
+- Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
+Позволяет использовать это меню в игре (включая кнопку "сохранения"). Установите в "Красный", если вы не хотите иметь возможность открыть это меню после начала игры. Эта настройка не будет активной из существующих сохранений при загрузке из слота.
+
 
 
 - Filter Content:
@@ -33444,8 +33627,6 @@ AMNT/MAXX Назначено слуг
 Плоский кляп
 - Wrists
 Запястья
-- Encasement
-Чехол
 - Mittens / Tape
 Варежки / Ленты
 - Gloves / Tape
@@ -33791,15 +33972,15 @@ NPC недоступен
 - This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
 Это обычный вход в подземелье.|Обучение находится в начале коридора.
 - This is the alternate entrance to the ancient tombs.|It's harder than the normal entrance.
-Это запасной вход в древние гробницы.|Он сложнее, чем обычный вход.
+Это запасной вход в древние гробницы.|Он сложнее обычного входа.
 - This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random.
-Эта часть подземелья была изменена богиней хаоса.|Порядок зон, через которые вы будете проходить, совершенно случайный.
+Эта часть подземелья изменена богиней хаоса.|Порядок зон, через которые вы будете проходить, совершенно случайный.
 - Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
-Легенда гласит, что в бескрайних джунглях есть тайный храм.|Надень свою фетровую шляпу и найди какое-нибудь сокровище!
+Легенда гласит, что в бескрайних джунглях скрыт тайный храм.|Надень свою приключенческую шляпу и отправляйся искать сокровища!
 - You've gotten lost in an ancient doll processing facility.|This journey features mostly lategame tilesets.
-Вы заблудились в древнем цехе по подготовке кукол.|В этом путешествии представлены в основном локации поздней игры.
+Вы заблудились в древнем комплексе по подготовке кукол.|В этом путешествии в основном используются локации поздней игры.
 - You've gotten lost inside an ancient temple to a kinky goddess.|Will you find your way out, or will you find yourself trapped even deeper?
-Вы заблудились в древнем храме извращенной богини.|Найдете ли вы выход или потеряетесь окончательно?
+Вы заблудились в древнем храме извращенной богини. | Сможете ли вы найти выход или окажетесь затянуты ещё глубже?
 - You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!
 Вы заблудились, блуждая по руинам.|Порядок локаций меняется на противоположный!
 
@@ -34554,6 +34735,8 @@ AMNTx урона SP превышает 50%
 Уровень опасности: Средний|Почитатели Богини Кошек. Посвятив себя защите гробниц от чужаков, они редко идут на переговоры. Некоторые из них обладают высочайшей физической силой, в то время как другие могут даже творить заклинания.||-Обитатели подземелий от Кэтрин Уиллоус
 - Bast Clerics
 Жрицы Баст
+- Breastplate
+Нагрудник
 - Rock-solid and form-fitting.
 Прочный и облегающий.
 - Provides minor protection against enemy attacks. Decreases stealth.
