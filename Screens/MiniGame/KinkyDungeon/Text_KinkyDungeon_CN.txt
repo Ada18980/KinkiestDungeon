@@ -5865,6 +5865,12 @@ Ada 屈服于欲望，跌倒在地~
 - You bring the kidnapper to justice!
 你把绑匪绳之以法！
 
+# - Lost Puppet
+# - The lost puppet wanders away.
+# - The lost puppet reaches out with her strings wrapping around you. (+RestraintAdded)
+# - The lost puppet clicks on a brass lock.
+# - The lost puppet firmly holds and caresses you in its arms. (DamageTaken)
+
 - Dressmaker
 裁缝
 - The dressmaker storms out in a rage.
@@ -5878,7 +5884,7 @@ Ada 屈服于欲望，跌倒在地~
 
 - Nurse
 护士
-- The Nurse checks her notes and runs off.
+- The Nurse marks her notes and runs off.
 护士检查了她的笔记，然后跑开了。
 - The Nurse tries to pacify this rowdy patient! (+RestraintAdded)
 护士试图控制这位不安分的病人！(+RestraintAdded)
@@ -5889,7 +5895,7 @@ Ada 屈服于欲望，跌倒在地~
 
 - Librarian
 图书管理员
-- The librarian gets angry and retreats.
+- The librarian slams her book shut and backs off.
 图书管理员生气的离开了。
 - The librarian shushes you as she brandishes a restraint! (+RestraintAdded)
 图书管理员挥舞着一件拘束具，让你保持安静！ (+RestraintAdded)
@@ -16681,7 +16687,7 @@ EnemyName 设法带着你的物品撤退了！
 极限模式
 - A supposedly reasonable difficulty curve.
 合理的难度曲线
-- Play the game the way it was intended. Cruel and restrictive. 
+- Play the game the way it was intended. Cruel and restrictive.
 以游戏的原旨进行游玩：残酷且充满限制。
 - Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 你将自食其果，该难度通过双击“困难模式”按钮解锁
@@ -23996,8 +24002,6 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: rOfferBanditYes_Yes
 - (The SPEAKER tilts her head and shrugs)|Ah well. 
 (SPEAKER歪了歪头，耸肩)|啊，好吧。
-# :: rOfferDragonheartYes_No
-# :: rOfferBanditYes_No
 - (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 ( SPEAKER 皱着眉头)|这是什么|你不是正义的敌人，是吗？
 - (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
@@ -24038,6 +24042,8 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 挥手叫你过来)|看来你已经出名了|你觉得达成一个小协议怎么样？
 - (The SPEAKER clears her throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
 ( SPEAKER 清了清嗓子)|好吧，你现在在我们的地盘上。|但我们愿意让你放松一下|你只需要同意不攻击我们任何人。
+- (The SPEAKER tilts her head and shrugs)|Ah well.
+(SPEAKER歪了歪头，耸肩)|啊，好吧。
 - (The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~
 ( SPEAKER 皱着眉头)|罪犯？女孩，我们是这些地方的法律~
 - (The SPEAKER grins)|I like your spunk, girl.|But you're kidding, right?
@@ -25849,7 +25855,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( SPEAKER 咯咯地笑了起来)|这意味着我们可以把你打包起来，然后|决定怎么处理你，傻瓜~
 - Hmmmph? Mmmm! (Act worried and whimper)
 Hmmmph? Mmmm!(表现出担忧和呜咽)
-- (The SPEAKER folds her arms)|Mistress Oriel's orders 
+- (The SPEAKER folds her arms)|Mistress Oriel's orders
 （她双臂交叉）这是女主人奥莉尔的命令
 - Not in the 'System'?
 不在“系统”中？
@@ -44851,7 +44857,7 @@ Kjus眼5
 橡胶棒
 - A rubber cylinder without any lewd intentions whatsoever.
 一个没有任何猥亵意图的橡胶圆棒。
-- Deals grope damage. 
+- Deals grope damage.
 造成抚摸伤害。
 - You pick up a flexible rubber stick.
 你拿起一根柔软的橡胶棒。
@@ -49082,6 +49088,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 强盗袭击
 - Dragon Sighting
 龙影现踪
+# - Doll Awakening
 - Slime Infestation
 黏液侵袭
 - Wolfgirl Training
@@ -52928,7 +52935,7 @@ Boss
 使用安全词
 - Confirm Safeword?
 确认安全词？
-- Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. 
+- Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level.
 移除你穿着的所有拘束具并放入背包，诅咒和转换等级归零，并将你移至当前层的起点。
 - Only usable ingame.
 仅限游戏内使用。
