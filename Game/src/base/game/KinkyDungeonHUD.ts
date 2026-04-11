@@ -2460,7 +2460,7 @@ function KDDrawMinimap(MinimapX: number, MinimapY: number) {
 
 		let escapeMethod = KDGetEscapeMethod(MiniGameKinkyDungeonLevel);
 		let escape = KDCanEscape(escapeMethod);
-		let escapeText = KDGetEscapeMinimapText(escapeMethod)?.split('|');
+		let escapeText = KDGetEscapeMinimapText(escapeMethod)?.split(/[\|\n]/);
 		if (escapeText) {
 			let spacing = 17;
 			let II = -(escapeText.length - 1);

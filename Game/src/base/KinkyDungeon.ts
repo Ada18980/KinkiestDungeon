@@ -1777,7 +1777,7 @@ function KinkyDungeonRun() {
 		}
 
 	} else if (KinkyDungeonState == "Credits") {
-		let credits = TextGet("KinkyDungeonCreditsList" + KinkyDungeonCreditsPos).split('|');
+		let credits = TextGet("KinkyDungeonCreditsList" + KinkyDungeonCreditsPos).split(/[\|\n]/);
 		let i = 0;
 		for (let c of credits) {
 			DrawTextKD(c, 550, 25 + 40 * i, KDBaseWhite, KDTextGray2, undefined, "left");
@@ -1787,7 +1787,7 @@ function KinkyDungeonRun() {
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), KDBaseWhite, "");
 		DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), KDBaseWhite, "");
 	} else if (KinkyDungeonState == "Patrons") {
-		let credits = KDPatrons;//TextGet("KinkyDungeonPatronsList" + x).split('|');
+		let credits = KDPatrons;//TextGet("KinkyDungeonPatronsList" + x).split(/[\|\n]/);
 		DrawTextKD(TextGet("KinkyDungeonPatronsList"), 550, 25, KDBaseWhite, KDTextGray2, undefined, "left");
 		let col = 0;
 		let iter = 1;
@@ -2091,7 +2091,7 @@ function KinkyDungeonRun() {
 		for (let i = 0; i < KDIntroProgress.length; i++) {
 			let progress = KDIntroProgress[i];
 			if (progress > 0) {
-				let textSplit = TextGet("KDIntroScene" + (i + 1)).split('|');
+				let textSplit = TextGet("KDIntroScene" + (i + 1)).split(/[\|\n]/);
 				let ii = 0;
 				for (let s of textSplit) {
 					DrawTextKD(s, 1000, 150 + 200 * i + 33*ii, KDBaseWhite, KDTextGray2, 24, undefined, undefined, Math.max(0.01, Math.min(progress - ii * 0.33, 0.999)));
@@ -2908,7 +2908,7 @@ function KinkyDungeonRun() {
 				CF.Element.oninput = (_event: InputEvent) => {
 					let text = ElementValue("KDCopyPerks");
 					try {
-						let list = text.split('|');
+						let list = text.split(/[\|\n]/);
 						let changed = 1;
 						let iter = 0;
 						while (changed > 0 && iter < 1000) {

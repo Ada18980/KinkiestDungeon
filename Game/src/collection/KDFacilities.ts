@@ -226,7 +226,7 @@ function KDDrawFacilitiesList(xOffset) {
 		);
 		DrawTextFitKD(TextGet("KDFacility_" + facility[0]), XX + 80, YY - 40, width - 160, KDBaseWhite, KDTextGray0, 32, "left");
 		let yyy = 0;
-		for (let str of TextGet("KDFacilityDesc_" + facility[0]).split('|'))
+		for (let str of TextGet("KDFacilityDesc_" + facility[0]).split(/[\|\n]/))
 			DrawTextFitKD(str, XX + 25, YY + 16 + 22*(yyy++), width - 50, KDBaseWhite, KDTextGray0, 18, "left");
 
 

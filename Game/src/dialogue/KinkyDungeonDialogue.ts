@@ -118,7 +118,7 @@ function KDDrawDialogue(delta: number): void {
 
 		if (!dialogue.drawFunction || !dialogue.drawFunction(gagged, KinkyDungeonPlayerEntity, delta)) {
 			// Type the message
-			let text = TextGet("r" + KDGameData.CurrentDialogMsg).split("|");
+			let text = TextGet("r" + KDGameData.CurrentDialogMsg).split(/[\|\n]/);
 			for (let i = 0; i < text.length; i++) {
 				let tt = text[i];
 				if (KDGameData.CurrentDialogMsgData) {
