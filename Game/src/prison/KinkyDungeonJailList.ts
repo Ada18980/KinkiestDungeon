@@ -163,7 +163,7 @@ function KDCanSpawnShopkeeper(override?: boolean): boolean {
 
 type guardAction_num  = (guard: entity, xx: number, yy: number) => number;
 type guardAction_bool = (guard: entity, xx: number, yy: number) => boolean;
-type guardAction_void = (guard: entity, xx: number, yy: number, delta?: number) => void;
+type guardAction_void = (guard: entity, xx: number, yy: number, delta: number) => void;
 
 type guardActionEntry = {
 	weight:       guardAction_num;

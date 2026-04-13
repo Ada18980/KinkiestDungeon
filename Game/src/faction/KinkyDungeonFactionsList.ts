@@ -485,7 +485,7 @@ let KinkyDungeonTooltipFactions = [
 ];
 
 /** Tag for these factions, these also can have increased chances to appear on a map */
-let KinkyDungeonFactionTag = {
+let KinkyDungeonFactionTag : Record<string, string> = {
 	Bountyhunter: "bountyhunter",
 	Bandit: "bandit",
 	Alchemist: "alchemist",
@@ -543,7 +543,7 @@ let KinkyDungeonFactionJailTag = {
 	Warden: "warden",
 };
 
-let KinkyDungeonFactionRelationsBase = {
+let KinkyDungeonFactionRelationsBase : Record<string, Record<string, number>> = {
 	"Player": {
 		Enemy: -1.0,
 		Jail: -1.0,
@@ -1089,8 +1089,8 @@ function KDSetFactionRelation(a: string, b: string, relation: number) {
 function KDChangeFactionRelation(a: string, b: string, amount: number, AffectRivals?: boolean) {
 	if (a == "Rage" || b == "Rage") return;
 	if ((a != "Player" && KinkyDungeonHiddenFactions.has(a)) || (b != "Player" && KinkyDungeonHiddenFactions.has(b))) return;
-	if (!KinkyDungeonFactionRelations[a]) KinkyDungeonFactionRelations[a] = KinkyDungeonFactionRelationsBase[a] || 0;
-	if (!KinkyDungeonFactionRelations[b]) KinkyDungeonFactionRelations[b] = KinkyDungeonFactionRelationsBase[b] || 0;
+	if (!KinkyDungeonFactionRelations[a]) KinkyDungeonFactionRelations[a] = KinkyDungeonFactionRelationsBase[a] || {};
+	if (!KinkyDungeonFactionRelations[b]) KinkyDungeonFactionRelations[b] = KinkyDungeonFactionRelationsBase[b] || {};
 
 	let amountSetTo = 0;
 	let amountSet = false;

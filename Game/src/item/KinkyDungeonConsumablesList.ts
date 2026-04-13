@@ -97,7 +97,7 @@ Object.assign(KinkyDungeonConsumables, KDCookies);
 let KDRechargeCost = 100;
 
 /** Criteria that must be true for an enemy to sell you an item */
-let KDSellCriteria = {
+let KDSellCriteria: Record<string, (seller: entity) => boolean> = {
 	Keyring: (seller: entity) => {
 		return KDMapData.EscapeMethod == "Key";
 	},
