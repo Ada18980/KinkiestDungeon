@@ -877,6 +877,16 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 
 		],
 	},
+	"dressmaker": {
+		overridelowerpriority: true,
+		priority: 3,
+		jail: true,
+		parole: true,
+		restraints: [
+			
+
+		],
+	},
 	"mithrilRestraints": {
 		overridelowerpriority: false,
 		priority: 1.5,

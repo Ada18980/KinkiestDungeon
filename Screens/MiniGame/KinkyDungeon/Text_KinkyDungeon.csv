@@ -504,7 +504,7 @@ KinkyDungeonStatDescLeastResistance,"While at 0 WP, you gain +35 Evasion and dea
 KinkyDungeonStatSticky,"Sticky Situation"
 KinkyDungeonStatDescSticky,"You take 40% more glue damage."
 KinkyDungeonStatBreathless,"Breathless"
-KinkyDungeonStatDescBreathless,"Taking chain, poison, and crush damage makes you dizzy."
+KinkyDungeonStatDescBreathless,"Taking chain, poison, and impact damage makes you dizzy."
 
 
 
@@ -1634,7 +1634,7 @@ ItemPickupDarkKatana,"You pick up Shadow's Edge."
 
 KinkyDungeonInventoryItemStormBreaker,Stormbreaker
 KinkyDungeonInventoryItemStormBreakerDesc,"I have the power! Taking electric damage charges you (1 turn/10dmg)."
-KinkyDungeonInventoryItemStormBreakerDesc2,"Deals crush damage. Deals bonus electric damage in an area when charged, up to +40. Gives +100 Electric Resist when held. (can be wielded offhand to apply the Electric Resist)"
+KinkyDungeonInventoryItemStormBreakerDesc2,"Deals impact damage. Deals bonus electric damage in an area when charged, up to +40. Gives +100 Electric Resist when held. (can be wielded offhand to apply the Electric Resist)"
 ItemPickupStormBreaker,"You pick up Stormbreaker."
 
 
@@ -1651,15 +1651,15 @@ ItemPickupFoil,"You pick up a fencing sword."
 
 KinkyDungeonInventoryItemMaul,Sledgehammer
 KinkyDungeonInventoryItemMaulDesc,"Do you have what it takes?"
-KinkyDungeonInventoryItemMaulDesc2,"Deals heavy crush damage and knocks the target back 2 spaces. Deals bonus damage to most solid barricades."
+KinkyDungeonInventoryItemMaulDesc2,"Deals heavy impact damage and knocks the target back 2 spaces. Deals bonus damage to most solid barricades."
 ItemPickupMaul,You pick up a heavy sledgehammer.
 
 KinkyDungeonInventoryItemHammer,Hammer
 KinkyDungeonInventoryItemHammerDesc,"A crude way of fixing your problems."
-KinkyDungeonInventoryItemHammerDesc2,"Deals crush damage and knocks the target back."
+KinkyDungeonInventoryItemHammerDesc2,"Deals impact damage and knocks the target back."
 KinkyDungeonInventoryItemFlail,Flail
 KinkyDungeonInventoryItemFlailDesc,"Very fast and hard to dodge as long as you know what you're doing."
-KinkyDungeonInventoryItemFlailDesc2,"Also deals 10 damage to targets next to you. Deals crush damage."
+KinkyDungeonInventoryItemFlailDesc2,"Also deals 10 damage to targets next to you. Deals impact damage."
 KinkyDungeonInventoryItemSpear,Spear
 KinkyDungeonInventoryItemSpearDesc,"Speak softly and carry a pointy stick."
 KinkyDungeonInventoryItemSpearDesc2,"Deals pierce damage to the target and one square behind it. Can be used to make a ranged attack 2 tiles away."
@@ -1735,7 +1735,7 @@ KinkyDungeonInventoryItemMoiraiScissorsDesc2,"Deals slash damage. Ignores up to 
 KinkyDungeonSpellCastMoiraiScissors,"With a single snip of the magic scissors, everyone's clothes fall off."
 KDMoiraiFail,No eligible targets within 4 tiles
 KinkyDungeonInventoryItemSlimethrower,Latex Projector
-KinkyDungeonInventoryItemSlimethrowerDesc,"Deals crush damage. Can be used to spray a '+' shaped pool of slime."
+KinkyDungeonInventoryItemSlimethrowerDesc,"Deals impact damage. Can be used to spray a '+' shaped pool of slime."
 KinkyDungeonInventoryItemSlimethrowerDesc2,"Spend 15 charge to create a pool of slime that deals 35 glue damage per tile and slows enemies."
 KinkyDungeonInventoryItemMagicAxe,Magic Axe
 KinkyDungeonInventoryItemMagicAxeDesc,"Sick and vile, like the hearts of your enemies."
@@ -1745,16 +1745,16 @@ KinkyDungeonInventoryItemPickaxeDesc,"Used for drilling holes in rock and armor.
 KinkyDungeonInventoryItemPickaxeDesc2,"Deals pierce damage. Reduces enemy armor by 20 for 6 turns."
 KinkyDungeonInventoryItemMagicFlail,Magic Flail
 KinkyDungeonInventoryItemMagicFlailDesc,"A blessed censer that distributes pain equally."
-KinkyDungeonInventoryItemMagicFlailDesc2,"Deals crush damage. Deals 20 bonus holy damage to the target and enemies near the target."
+KinkyDungeonInventoryItemMagicFlailDesc2,"Deals impact damage. Deals 20 bonus holy damage to the target and enemies near the target."
 KinkyDungeonInventoryItemMagicSpear,Magic Spear
 KinkyDungeonInventoryItemMagicSpearDesc,"Seeks and pierces hearts with ease."
 KinkyDungeonInventoryItemMagicSpearDesc2,"Deals pierce damage to the target and two squares behind it. Can be used to make a ranged attack."
 KinkyDungeonInventoryItemMagicHammer,Magic Hammer
 KinkyDungeonInventoryItemMagicHammerDesc,"Made of a magical, resonant material."
-KinkyDungeonInventoryItemMagicHammerDesc2,"Deals crush damage and knocks the target back. Helps to bash open restraints while cutting."
+KinkyDungeonInventoryItemMagicHammerDesc2,"Deals impact damage and knocks the target back. Helps to bash open restraints while cutting."
 KinkyDungeonInventoryItemIceBreaker,Icebreaker
 KinkyDungeonInventoryItemIceBreakerDesc,"A frigid magical hammer useful for both climbing up and destroying ice."
-KinkyDungeonInventoryItemIceBreakerDesc2,"Deals crush damage. Deals 3x damage to frozen targets instead of 2x. Triggers Shatter."
+KinkyDungeonInventoryItemIceBreakerDesc2,"Deals impact damage. Deals 3x damage to frozen targets instead of 2x. Triggers Shatter."
 KinkyDungeonInventoryItemDreamcatcher,Dreamcatcher
 KinkyDungeonInventoryItemDreamcatcherDesc,"Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy."
 KinkyDungeonInventoryItemDreamcatcherDesc2,"Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. "
@@ -6369,7 +6369,7 @@ KinkyDungeonSpellMagicChain,Magic Chain
 KinkyDungeonSpellMagicRope,Magic Rope
 KinkyDungeonSpellMagicBelt,Magic Belt
 KinkyDungeonSpellWitchChainBolt,Witch's Chain
-KinkyDungeonSpellDescriptionChainBolt,Throws a chain that does DamageDealt chain damage. Targets with 50% or more binding take 50 crush damage and are slowed for 4 turns.
+KinkyDungeonSpellDescriptionChainBolt,Throws a chain that does DamageDealt chain damage. Targets with 50% or more binding take 50 impact damage and are slowed for 4 turns.
 KinkyDungeonSpellCastChainBolt,You a hurl a strand of chain!
 KinkyDungeonSpellTargetChainBolt,Choose aim direction
 
@@ -6522,7 +6522,7 @@ KinkyDungeonSpellCastCrackle,Lightning erupts from your fingertips!
 KinkyDungeonSpellTargetCrackle,Choose line direction (max range 4 tiles)
 
 KinkyDungeonSpellTremor,Tremor
-KinkyDungeonSpellDescriptionTremor,"Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage. Creates a slowing field after."
+KinkyDungeonSpellDescriptionTremor,"Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt impact damage. Creates a slowing field after."
 KinkyDungeonSpellCastTremor,You call forth the rage of the earth.
 KinkyDungeonSpellTargetTremor,Choose AoE
 
@@ -6689,19 +6689,19 @@ KinkyDungeonSpellTargetEarthformArc,Choose line direction
 
 KinkyDungeonSpellBoulderLaunch,Rock
 KinkyDungeonSpellBoulder,Rock
-KinkyDungeonSpellDescriptionBoulderLaunch,Channel 1 turn to launch a rock that deals DamageDealt crush damage and slows for 4 turns. Blocks up to 80 damage.
+KinkyDungeonSpellDescriptionBoulderLaunch,Channel 1 turn to launch a rock that deals DamageDealt impact damage and slows for 4 turns. Blocks up to 80 damage.
 KinkyDungeonSpellCastBoulderLaunch,You raise a stone from the ground and kick it forward!
 KinkyDungeonSpellTargetBoulderLaunch,Choose line direction
 
 KinkyDungeonSpellBoulderKick,Earth Kick
 KinkyDungeonSpellBoulderKicked,Stone Projectile
-KinkyDungeonSpellDescriptionBoulderKick,Kick a summoned rock to turn it into a projectile. Deals DamageDealt crush damage in a 3x3 area and slows for 4 turns.
+KinkyDungeonSpellDescriptionBoulderKick,Kick a summoned rock to turn it into a projectile. Deals DamageDealt impact damage in a 3x3 area and slows for 4 turns.
 KinkyDungeonSpellCastBoulderKick,"With a solid kick, you launch one of your monoliths forward!"
 KinkyDungeonSpellTargetBoulderKick,Choose a monolith to kick
 
 KinkyDungeonSpellBigBoulderLaunch,Boulder
 KinkyDungeonSpellBigBoulder,Boulder
-KinkyDungeonSpellDescriptionBigBoulderLaunch,"Channel 1 turn to launch a huge slow rock that deals DamageDealt crush damage and slows for 8 turns. AoE, collides with summoned rocks. Blocks up to 200 damage."
+KinkyDungeonSpellDescriptionBigBoulderLaunch,"Channel 1 turn to launch a huge slow rock that deals DamageDealt impact damage and slows for 8 turns. AoE, collides with summoned rocks. Blocks up to 200 damage."
 KinkyDungeonSpellCastBigBoulderLaunch,You raise a massive boulder from the ground and kick it forward!
 KinkyDungeonSpellTargetBigBoulderLaunch,Choose line direction
 
@@ -6760,7 +6760,7 @@ KinkyDungeonSpellDescriptionMagicalOverload,"When landing a critical strike with
 
 
 KinkyDungeonSpellBruteForce1,Brute Force
-KinkyDungeonSpellDescriptionBruteForce1,"When enabled, your attacks deal 10% of your willpower as additional crush damage but cost 10 more stamina."
+KinkyDungeonSpellDescriptionBruteForce1,"When enabled, your attacks deal 10% of your willpower as additional impact damage but cost 10 more stamina."
 
 KinkyDungeonSpellOneWithSlime,One With Slime
 KinkyDungeonSpellDescriptionOneWithSlime,"While standing on slime/latex, you can cast rubber spells without components."
@@ -8361,7 +8361,7 @@ KinkyDungeonDamageTypepoisongas,"Poison Gas"
 KinkyDungeonDamageTypecharm,"Charm"
 KinkyDungeonDamageTypetickle,"Tickle"
 KinkyDungeonDamageTypegrope,"Grope"
-KinkyDungeonDamageTypecrush,"Crush"
+KinkyDungeonDamageTypecrush,"Impact"
 KinkyDungeonDamageTypegravity,"Gravity"
 KinkyDungeonDamageTypepierce,"Pierce"
 KinkyDungeonDamageTypeslash,"Slash"
@@ -27857,22 +27857,22 @@ ItemPickupFrostSword,"You pick up an icy sword."
 
 KinkyDungeonInventoryItemShield,Targe
 KinkyDungeonInventoryItemShieldDesc,"Hide behind it while you still can."
-KinkyDungeonInventoryItemShieldDesc2,"+60 Block. Deals crush damage and stuns for 4 turns. Offhand: Gives the same block bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
+KinkyDungeonInventoryItemShieldDesc2,"+60 Block. Deals impact damage and stuns for 4 turns. Offhand: Gives the same block bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
 ItemPickupShield,"You pick up a wooden shield."
 
 KinkyDungeonInventoryItemShieldTower,Tower Shield
 KinkyDungeonInventoryItemShieldTowerDesc,"Now with more leg room."
-KinkyDungeonInventoryItemShieldTowerDesc2,"Makes it slower to turn around. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
+KinkyDungeonInventoryItemShieldTowerDesc2,"Makes it slower to turn around. +120 Block, +30 Physical Armor. Deals impact damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
 ItemPickupShieldTower,"You pick up a metal tower shield."
 
 KinkyDungeonInventoryItemShieldReinforced,Reinforced Shield
 KinkyDungeonInventoryItemShieldReinforcedDesc,"New and improved, but also clumsier."
-KinkyDungeonInventoryItemShieldReinforcedDesc2,"+80 Block, +15 Physical Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
+KinkyDungeonInventoryItemShieldReinforcedDesc2,"+80 Block, +15 Physical Armor. Deals impact damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
 ItemPickupShieldReinforced,"You pick up a reinforced shield."
 
 KinkyDungeonInventoryItemShieldMagic,Runic Shield
 KinkyDungeonInventoryItemShieldMagicDesc,"For when you've been tied up one too many times..."
-KinkyDungeonInventoryItemShieldMagicDesc2,"+80 Block, +20 Magic Armor. Deals crush damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
+KinkyDungeonInventoryItemShieldMagicDesc2,"+80 Block, +20 Magic Armor. Deals impact damage and stuns for 5 turns. Offhand: Gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
 ItemPickupShieldMagic,"You pick up a runic shield."
 
 KinkyDungeonSpellGreaterInvisibility,Vanish
@@ -28485,7 +28485,7 @@ KDMagicRopeBackfire,"Without mana to control it, the enchanted rope springs back
 
 KinkyDungeonInventoryItemBow,Light Bow
 KinkyDungeonInventoryItemBowDesc,"Pointy stick delivery system."
-KinkyDungeonInventoryItemBowDesc2,"Reload time: None. Deals crush damage on melee. Draws 10 charge and 20 stamina to fire an ordinary arrow, dealing 30 pierce damage."
+KinkyDungeonInventoryItemBowDesc2,"Reload time: None. Deals impact damage on melee. Draws 10 charge and 20 stamina to fire an ordinary arrow, dealing 30 pierce damage."
 ItemPickupBow,"You find a wooden bow."
 KinkyDungeonSpecialBow,"10 charge to fire an arrow. Deals 30 pierce damage."
 KinkyDungeonSpellTargetArrowNormal,Choose projectile path
@@ -28507,7 +28507,7 @@ LootArcheryKit,"You find a bow and a glowing crystal. The bow is scribed with ru
 
 KinkyDungeonInventoryItemCrossbow,Crossbow
 KinkyDungeonInventoryItemCrossbowDesc,"Watch where you're pointing that thing!"
-KinkyDungeonInventoryItemCrossbowDesc2,"Reload time: 3 stationary turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 65 pierce damage."
+KinkyDungeonInventoryItemCrossbowDesc2,"Reload time: 3 stationary turns. Deals impact damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 65 pierce damage."
 ItemPickupCrossbow,"You find a crossbow."
 KinkyDungeonSpecialCrossbow,"20 charge to fire a bolt. Deals 65 pierce damage."
 KinkyDungeonSpellTargetArrowBolt,Choose projectile path
@@ -28722,7 +28722,7 @@ KDPrereqFailLoaded,"The weapon needs to be loaded to fire."
 
 KinkyDungeonInventoryItemBowRecurve,Recurve Bow
 KinkyDungeonInventoryItemBowRecurveDesc,"Curvy, just like its user."
-KinkyDungeonInventoryItemBowRecurveDesc2,"Reload time: 1 turn. Deals crush damage on melee. Draws 14 charge and 35 stamina to fire an ordinary arrow, dealing 40 pierce damage."
+KinkyDungeonInventoryItemBowRecurveDesc2,"Reload time: 1 turn. Deals impact damage on melee. Draws 14 charge and 35 stamina to fire an ordinary arrow, dealing 40 pierce damage."
 ItemPickupBowRecurve,"You find a recurve bow."
 KinkyDungeonSpecialBowRecurve,"14 charge to fire an arrow. Deals 40 pierce damage."
 KinkyDungeonSpellTargetArrowRecurve,Choose projectile path
@@ -28731,7 +28731,7 @@ KinkyDungeonSpellCastArrowRecurve,"You loose a strong arrow!"
 
 KinkyDungeonInventoryItemLongbow,Longbow
 KinkyDungeonInventoryItemLongbowDesc,"Great for building both empires and muscle."
-KinkyDungeonInventoryItemLongbowDesc2,"Reload time: 2 turns. Deals crush damage on melee. Draws 18 charge and 60 stamina to fire an ordinary arrow, dealing 60 pierce damage."
+KinkyDungeonInventoryItemLongbowDesc2,"Reload time: 2 turns. Deals impact damage on melee. Draws 18 charge and 60 stamina to fire an ordinary arrow, dealing 60 pierce damage."
 ItemPickupLongbow,"You find a huge longbow."
 KinkyDungeonSpecialLongbow,"18 charge to fire an arrow. Deals 60 pierce damage."
 KinkyDungeonSpellTargetArrowLongbow,Choose projectile path
@@ -28740,7 +28740,7 @@ KinkyDungeonSpellCastArrowLongbow,"You loose a mighty arrow!"
 
 KinkyDungeonInventoryItemCrossbowPistol,Pistol Crossbow
 KinkyDungeonInventoryItemCrossbowPistolDesc,"Lethal. Sustainable. Portable."
-KinkyDungeonInventoryItemCrossbowPistolDesc2,"Reload time: 3 turns. Deals crush damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 45 pierce damage."
+KinkyDungeonInventoryItemCrossbowPistolDesc2,"Reload time: 3 turns. Deals impact damage on melee. Draws 15 charge and no stamina to fire an ordinary arrow, dealing 45 pierce damage."
 ItemPickupCrossbowPistol,"You find a pistol crossbow."
 KinkyDungeonSpecialCrossbowPistol,"20 charge to fire a bolt. Deals 45 pierce damage."
 KinkyDungeonSpellTargetArrowBoltPistol,Choose projectile path
@@ -28749,7 +28749,7 @@ KinkyDungeonSpellCastArrowBoltPistol,"You pull the trigger!"
 
 KinkyDungeonInventoryItemCrossbowHeavy,Arbalest
 KinkyDungeonInventoryItemCrossbowHeavyDesc,"At this point why not just use a gun?"
-KinkyDungeonInventoryItemCrossbowHeavyDesc2,"Reload time: 5 stationary turns. Deals crush damage on melee. Draws 25 charge and no stamina to fire an ordinary arrow, dealing 70 pierce damage, passing through units."
+KinkyDungeonInventoryItemCrossbowHeavyDesc2,"Reload time: 5 stationary turns. Deals impact damage on melee. Draws 25 charge and no stamina to fire an ordinary arrow, dealing 70 pierce damage, passing through units."
 ItemPickupCrossbowHeavy,"You find an arbalest."
 KinkyDungeonSpecialCrossbowHeavy,"25 charge to fire a bolt. Deals 100 pierce damage."
 KinkyDungeonSpellTargetArrowBoltHeavy,Choose projectile path
@@ -29031,7 +29031,7 @@ KDoffhand2Tooltip,This is your previously held weapon. Click to switch to it.
 KDCantWield,You can't hold the WPN in your current state.
 
 KinkyDungeonSpellCharge,"Charge!"
-KinkyDungeonSpellDescriptionCharge,"Dash and make an attack attack against a target within 2 tiles. If it deals 20% of their current hp in damage, you knock them back and take their place, otherwise they take +15% max hp crush damage from hitting the wall. If the attack misses, you still dash. Costs stamina equal to your sprint cost plus your attack cost."
+KinkyDungeonSpellDescriptionCharge,"Dash and make an attack attack against a target within 2 tiles. If it deals 20% of their current hp in damage, you knock them back and take their place, otherwise they take +15% max hp impact damage from hitting the wall. If the attack misses, you still dash. Costs stamina equal to your sprint cost plus your attack cost."
 KinkyDungeonSpellCastCharge,You charge at the target!
 KinkyDungeonSpellTargetCharge,Choose a target.
 
@@ -29984,7 +29984,7 @@ KinkyDungeonLiquidMetalSlowEngulf,The Liquid Metal takes advantage of your statu
 
 KinkyDungeonSpellLiquidMetalBurst,Silver Burst
 KinkyDungeonSpellTargetLiquidMetalBurst,Select a liquid metal tile
-KinkyDungeonSpellDescriptionLiquidMetalBurst,"Target a liquid metal tile. After 3 turns, it erupts, spreading more liquid metal and engulfing any nearby creatures. Deals DamageDealt crush damage and applies 80 points of metallic binding."
+KinkyDungeonSpellDescriptionLiquidMetalBurst,"Target a liquid metal tile. After 3 turns, it erupts, spreading more liquid metal and engulfing any nearby creatures. Deals DamageDealt impact damage and applies 80 points of metallic binding."
 KinkyDungeonSpellCastLiquidMetalBurst,A powerful explosion simmers beneath the surface...'
 
 KinkyDungeonTrapSpawnLiquidMetalCube,"The ground shakes as a huge wall of liquid metal approaches!"
@@ -30170,7 +30170,7 @@ KinkyDungeonSpellKineticMastery,Kinetic Mastery
 KinkyDungeonSpellDescriptionKineticMastery,"Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon."
 
 KinkyDungeonSpellGrasp,Grasp
-KinkyDungeonSpellDescriptionGrasp,"Cast on an enemy to snare them for 20 turns, or until you leave range/are incapacitated. Cast on a point to throw the grasped enemy in that direction, dealing 40 crush damage if they hit a wall or another enemy."
+KinkyDungeonSpellDescriptionGrasp,"Cast on an enemy to snare them for 20 turns, or until you leave range/are incapacitated. Cast on a point to throw the grasped enemy in that direction, dealing 40 impact damage if they hit a wall or another enemy."
 KinkyDungeonSpellCastGrasp,You grab the ENMY using telekinesis and hold them in place!
 KinkyDungeonSpellCastThrowGrasp,You throw the ENMY!
 KinkyDungeonSpellTargetGrasp,Choose a target or a location (if a target is currently grasped)
@@ -30178,7 +30178,7 @@ KinkyDungeonSpellTargetGrasp,Choose a target or a location (if a target is curre
 
 KinkyDungeonInventoryItemRock,Rock
 KinkyDungeonInventoryItemRockDesc,"Perfect for a lifestyle of love and peace."
-KinkyDungeonInventoryItemRockDesc2,"Deals crush damage. Stuns on critical. Ouch!"
+KinkyDungeonInventoryItemRockDesc2,"Deals impact damage. Stuns on critical. Ouch!"
 ItemPickupRock,"You pick up a particularly nice rock."
 
 
@@ -31020,6 +31020,7 @@ KDSideRoom_GoldChest,"Ancient Chest"
 KDSideRoom_ElevatorRoom,"Elevator Hall"
 KDSideRoom_ElevatorEgyptian,"Dark Passageway"
 KDSideRoom_ElevatorEgyptian2,"Dark Passageway"
+KDSideRoom_DollShoppe,"Doll Shoppe"
 KDSideRoom_Caldera,"Caldera Passage"
 KDSideRoom_GoldVault,"Ancient Vault"
 KDSideRoom_AuctionHall,"Auction Hall"

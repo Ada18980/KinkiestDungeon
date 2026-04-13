@@ -583,14 +583,14 @@ let alts: Record<string, AltType> = {
 		height: 15,
 		nopatrols: true,
 		alwaysRegen: true, // Always regenerate this room
-		prisonType: "HighSec",
+		prisonType: "DollShoppe",
 		isPrison: true,
 		setpieces: {
 		},
 		data: {
 			dollshoppe: true,
 		},
-		skin: "DollShoppe",
+		skin: "shoppe",
 		musicParams: "DollShoppe",
 		lightParams: "DollShoppe",
 		useGenParams: "DollShoppe",
@@ -2102,11 +2102,59 @@ function KinkyDungeonCreateDollShoppe(_POI: any, VisitedRooms: any[], _width: nu
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
 
-	KD_PasteTile(KDMapTilesList.DollShoppe, 1, 1, data);
+	KD_PasteTile(KDMapTilesList.DollStorage, 1, 1, data);
+
+	let jailleft = KDRandom() < 0.5;
+	let quadrant_1 = CommonRandomItemFromList(null, 
+		KDGetMapTileWithTags(jailleft ? "dollshoppe_storage" : "dollshoppe_jail"))?.name;
+	let quadrant_2 = CommonRandomItemFromList(null, 
+		KDGetMapTileWithTags(jailleft ? "dollshoppe_jail" : "dollshoppe_storage"))?.name;
+	let quadrant_3 = CommonRandomItemFromList(null, 
+		KDGetMapTileWithTags("dollshoppe_display"))?.name;
+	let quadrant_4 = CommonRandomItemFromList(null, 
+		KDGetMapTileWithTags("dollshoppe_display"))?.name;
+
+	if (quadrant_1) KD_PasteTile(KDMapTilesList[quadrant_1], Math.floor(w)+1, 2, data);
+	if (quadrant_2) KD_PasteTile(KDMapTilesList[quadrant_2], 2, 2, data);
+	if (quadrant_3) KD_PasteTile(KDMapTilesList[quadrant_3], 2, Math.floor(h)+1, data);
+	if (quadrant_4) KD_PasteTile(KDMapTilesList[quadrant_4], Math.floor(w)+1, Math.floor(h)+1, data);
+	
 
 
-	KDMapData.EndPosition = {x: 2, y: 11};
-	KinkyDungeonMapSet(2, 11, 's');
+	let endX = 1 + Math.floor(0.5 * KDRandom() * KDMapData.GridWidth)*2;
+	KDMapData.EndPosition = {x: endX, y: 1};
+	KDMapData.StartPosition = {x: KDMapData.EndPosition.x, y: KDMapData.EndPosition.y};
+	KinkyDungeonMapSet(endX, 1, 's');
+
+	// fill in any space that doesnt have a non '0' within 5 tiles
+	let toFillin: KDPoint[] = [];
+
+	for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
+		for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
+			if (Math.abs(X - endX) > 2) { // make sure center passage is clear
+				if (KinkyDungeonMapGet(X, Y) == '0') {
+					let found = false;
+					for (let YY = Math.max(1, Y - 3);
+							!found && YY < KDMapData.GridHeight - 1 && YY <= Y + 3; YY++) {
+						for (let XX = Math.max(1, X - 3);
+							!found && XX < KDMapData.GridWidth - 1 && XX <= X + 3; XX++) {
+							if (KinkyDungeonMapGet(XX, YY) != '0') {
+								found = true;
+							}
+						}
+					}
+					if (!found) {
+						toFillin.push({x: X, y: Y});
+					}
+				}
+			}
+		}
+			
+	}
+	for (let p of toFillin) {
+		KinkyDungeonMapSet(p.x, p.y, '1');
+	}
+
 	if (MiniGameKinkyDungeonLevel == 0 && !KinkyDungeonFlags.get("fg")) {
 		KinkyDungeonTilesSet("2,11", {RoomType: "JourneyFloor"});
 		KinkyDungeonSetFlag("fg", -1);

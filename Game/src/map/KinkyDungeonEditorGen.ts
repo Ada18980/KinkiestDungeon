@@ -1254,3 +1254,15 @@ function KDGetPervertibleFurniture(base = "Cage", pervertChance = 0.1): string {
 
 	return base;
 }
+
+function KDGetMapTileWithTags(tag: string): KDMapTile[] {
+	let list: KDMapTile[] = [];
+	
+	for (let mapTile of Object.values(KDMapTilesList)) {
+		if (mapTile.tags?.includes(tag)) {
+			list.push(mapTile);
+		}
+	}
+
+	return list;
+}

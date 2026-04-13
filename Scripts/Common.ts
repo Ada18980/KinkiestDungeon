@@ -384,7 +384,7 @@ function CommonColorIsValid(Color: any): boolean {
  */
 function CommonRandomItemFromList<T>(ItemPrevious: T, ItemList: T[]): T {
 	let NewItem = ItemPrevious;
-	if (!ItemList) return undefined;
+	if (!ItemList || ItemList.length == 0) return undefined;
 	while (NewItem == ItemPrevious)
 		NewItem = ItemList[Math.floor(Math.random() * ItemList.length)];
 	return NewItem;
