@@ -185,9 +185,22 @@ class ModelContainer {
 	/** Updates a model, usually after adding all the models*/
 	updateModel(Name: string) {
 		let Model = this.Models.get(Name);
-		if (Model?.ImportBodyFilters && this.Models.get("Body")?.Filters) {
-			if (!Model.Filters) Model.Filters = {};
-			Object.assign(Model.Filters, JSON.parse(JSON.stringify(this.Models.get("Body").Filters)));
+		if (Model?.ImportBodyFilters) {
+			let body = this.Models.get("Body");
+			if (!body) {
+				// iterate, slower but ah well
+				for (let model of this.Models.values()) {
+					if (model.Group == "Body") {
+						body = model;
+						break;
+					}
+				}
+			}
+			if (body) {
+				if (!Model.Filters) Model.Filters = {};
+				let Filters = body.Filters;
+				Object.assign(Model.Filters, JSON.parse(JSON.stringify(Filters)));
+			}
 		}
 
 		// Hunts down the proper color
@@ -652,10 +665,11 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 					if (!SubmeshEditorBufferOrig) SubmeshEditorBufferOrig = [...buffer.data];
 				}
 				if (KDSubmeshEditor && KDSubmeshChosen == entry[0] && SubmeshEditorBuffer) {
+					//@ts-ignore
 					buffer.data = SubmeshEditorBuffer;
 				} 
 
-				let drawDots = (x, width, y, height, i) => {
+				let drawDots = (x: number, width: number, y: number, height: number, i: number) => {
 					if (KDSubmeshEditor && KDSubmeshChosen == entry[0] && Zoom == 1 && x >= width*.25 && x <= width*.75 && y >= height*.25 && y <= height*.75) {
 						let color = y % 2 == 0 ? 0x00ff00 : 0xff0000;
 						let xxx = -50 + (buffer.data[i]*2 + -( MODELWIDTH*0.25 - MODEL_XOFFSET * 0.5))*.5;
@@ -679,7 +693,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 									buffer.data[i] = buffer.data[i] + (mx_eff - xxx)*MODEL_SCALE;
 									// y
 									buffer.data[i+1] = buffer.data[i+1] + (my_eff - yyy)*MODEL_SCALE;
-
+									//@ts-ignore
 									SubmeshEditorBuffer = buffer.data;
 								}
 
@@ -845,7 +859,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 /** Future function */
 let DrawModel = DrawCharacter;
 
-function LayerIsHidden(MC: ModelContainer, l: ModelLayer, m: Model, Mods) : boolean {
+function LayerIsHidden(MC: ModelContainer, l: ModelLayer, m: Model, Mods: PoseMod[]) : boolean {
 	if (l.LockLayer && !m.LockType && !(m.Properties && 
 		 (m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)]
 				|| m.Properties[l.Name] || m.Properties[l.InheritColor])
@@ -877,7 +891,7 @@ function LayerIsHidden(MC: ModelContainer, l: ModelLayer, m: Model, Mods) : bool
 	return false;
 }
 
-function LayerLayer(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : string {
+function LayerLayer(MC: ModelContainer, l: ModelLayer, m: Model, Mods?: PoseMod[]) : string {
 	let layer = l.Layer;
 	if (l.SwapLayerPose) {
 		for (let p of Object.entries(l.SwapLayerPose)) {
@@ -895,7 +909,7 @@ function LayerLayer(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : string
 	return layer;
 }
 
-function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
+function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?: PoseMod[]) : number {
 	if (l.SwapPriorityPose) {
 		for (let p of Object.entries(l.SwapPriorityPose)) {
 			if (MC.Poses[p[0]] || MC.TempPoses[p[0]]) return p[1];
@@ -1059,7 +1073,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	// Yes we draw these layers
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
-			if (!LayerIsHidden(MC, l, m, totalMods))
+			if (!LayerIsHidden(MC, l, m, totalMods[l.Name]))
 				drawLayers[m.Name + "," + l.Name] = ModelDrawLayer(MC, m, l, MC.Poses);
 		}
 	}
@@ -1276,7 +1290,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				) {
 				let transform = new Transform();
 
-				let layer = LayerLayer(MC, l, m, totalMods);
+				let layer = LayerLayer(MC, l, m, totalMods[l.Name]);
 
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
@@ -1335,7 +1349,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
-				layer = LayerLayer(MC, l, m, totalMods);
+				layer = LayerLayer(MC, l, m, totalMods[l.Name]);
 				while (layer) {
 					let mod_selected: PoseMod[] = endMods[layer] || [];
 					for (let mod of mod_selected) {
@@ -1360,7 +1374,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						l.DisplacementMorph, l.NoAppendDisplacement);
 					let id = (l.DisplaceLayerGroups ? "LG_" + ll +"_" : "") + sid;
 
-					let zzz = (l.DisplaceZBonus || 0)*LAYER_INCREMENT-ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
+					let zzz = (l.DisplaceZBonus || 0)*LAYER_INCREMENT-ModelLayers[LayerLayer(MC, l, m, totalMods[l.Name])] + (LayerPri(MC, l, m, totalMods[l.Name]) || 0);
 					if (DisplaceFiltersInUse[id] != undefined && DisplaceFiltersInUse[id] < zzz) {
 						DisplaceFiltersInUse[id] = zzz;
 						for (let dg of Object.keys(l.DisplaceLayerGroups || LayerGroups[ll[0]])) {
@@ -1507,7 +1521,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 			) {
 				let transform = new Transform();
 
-				let layer = LayerLayer(MC, l, m, totalMods);
+				let layer = LayerLayer(MC, l, m, totalMods[l.Name]);
 
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
@@ -1566,7 +1580,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
-				layer = LayerLayer(MC, l, m, totalMods);
+				layer = LayerLayer(MC, l, m, totalMods[l.Name]);
 				while (layer) {
 					let mod_selected: PoseMod[] = endMods[layer] || [];
 					for (let mod of mod_selected) {
@@ -1588,7 +1602,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				for (let ll of Object.entries(l.EraseLayerGroups || l.EraseLayers)) {
 					let sid = ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
 					let id = (l.EraseLayerGroups ? "LG_" + ll +"_" : "") + sid;
-					let zzz = (l.EraseZBonus || 0) -ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
+					let zzz = (l.EraseZBonus || 0) -ModelLayers[LayerLayer(MC, l, m, totalMods[l.Name])] + (LayerPri(MC, l, m, totalMods[l.Name]) || 0);
 					if (EraseFiltersInUse[id] != undefined && EraseFiltersInUse[id] < zzz) {
 						EraseFiltersInUse[id] = zzz;
 						for (let dg of Object.keys(l.EraseLayerGroups || LayerGroups[ll[0]])) {
@@ -1729,7 +1743,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 		for (let l of Object.values(m.Layers)) {
 			if (drawLayers[m.Name + "," + l.Name] && !ModelLayerHidden(drawLayers, MC, m, l, MC.Poses)) {
 
-				let layer = LayerLayer(MC, l, m, totalMods);
+				let layer = LayerLayer(MC, l, m, totalMods[l.Name]);
 				let origlayer = layer;
 
 				let transform = new Transform();
@@ -1777,7 +1791,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 
 
-				layer = LayerLayer(MC, l, m, totalMods);
+				layer = LayerLayer(MC, l, m, totalMods[l.Name]);
 				while (layer) {
 					let mod_selected: PoseMod[] = endMods[layer] || [];
 					for (let mod of mod_selected) {
@@ -1814,7 +1828,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 
 				let extrafilter: PIXIFilter[] = [];
-				let zz = -ModelLayers[origlayer] + (LayerPri(MC, l, m, totalMods) || 0);
+				let zz = -ModelLayers[origlayer] + (LayerPri(MC, l, m, totalMods[l.Name]) || 0);
 				// Add extrafilters
 				if (ExtraFilters[origlayer]) {
 					for (let ef of ExtraFilters[origlayer]) {
@@ -3359,5 +3373,5 @@ function KDGetStringHash(str: string): number {
 
 let SubmeshEditorClosest = -1;
 let SubmeshEditorClosestDist = 10000;
-let SubmeshEditorBuffer = null;
-let SubmeshEditorBufferOrig = null;
+let SubmeshEditorBuffer: number[] = null;
+let SubmeshEditorBufferOrig: number[] = null;

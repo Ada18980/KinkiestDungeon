@@ -36,7 +36,7 @@ let KDRubberLink = ["Wrapping", "Encase", "Tape", "Belts", "Masks", "Mittens"]; 
 let KDBlindfoldLink = ["Wrapping", "Encase", "Masks", "Tape"];
 let KDVisorLink = ["Wrapping", "Encase", "Masks", "Tape"];
 let KDWrappingLink = ["Masks", "Wrapping", "Encase",];
-let KDMaskLink = [];
+let KDMaskLink: string[] = [];
 let KDStuffingLink = ["BallGags", "FlatGags", "Stuffing", "Tape", "Wrapping", "Encase",];
 let KDBallGagLink = ["FlatGags", "MuzzleGags", "Tape", "Wrapping", "Encase",];
 let KDFlatGagLink = ["FlatGags", "MuzzleGags", "Tape", "Wrapping", "Encase",];
@@ -9993,7 +9993,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 })();
 
 
-let KDControlHarnessCategories = {
+let KDControlHarnessCategories: Record<string, any> = {
 	"Cuffs": {
 		activateCount: 3,
 		activateTags: ["CyberWristCuffs", "CyberAnkleCuffs", "CyberLegCuffs"],
@@ -10002,7 +10002,7 @@ let KDControlHarnessCategories = {
 
 			// If there are any cuffs to upgrade
 			let upgradedTags = ["ControlHArm", "ControlHAnkle", "ControlHLeg"];
-			let addedGroup = {};
+			let addedGroup: Record<string, boolean> = {};
 			if (upgradedTags.some((tag) => {return KinkyDungeonPlayerTags.get(tag) != true;})) {
 				let succ = false;
 				for (let rName of ["CyberHeels", "CyberMittens"]) {
@@ -10053,7 +10053,7 @@ let KDControlHarnessCategories = {
 
 			// If there are any cuffs to upgrade
 			let upgradedTags = ["ControlHArm", "ControlHAnkle", "ControlHLeg"];
-			let addedGroup = {};
+			let addedGroup: Record<string, boolean> = {};
 			if (upgradedTags.some((tag) => {return KinkyDungeonPlayerTags.get(tag) != true;})) {
 				let succ = false;
 				for (let rName of ["CyberWristLink", "CyberElbowLink", "CyberThighLink", "CyberAnkleLink", "CyberAnkleLinkShort"]) {
