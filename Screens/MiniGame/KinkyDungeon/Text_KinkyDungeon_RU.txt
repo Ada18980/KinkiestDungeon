@@ -3112,7 +3112,7 @@ ID Куклы
 - The universal key.
 Универсальный ключ.
 - Also assists in cutting restraints when equipped.
-Когда экипирован, также помогает разрезать удерживающие устройства.
+Когда экипирован, также помогает разрезать ограничители.
 - A go-to for travelers and adventurers.
 Отличный 'мультитул' для путешественников и искателей приключений.
 - Deals slash damage. Offhand: +10 Block
@@ -3310,7 +3310,7 @@ ID Куклы
 - You found a hook you can use to pull on straps and loops.
 Вы нашли крючок, с помощью которого можно развязать ремешки и петли.
 - You have access to something sharp and can attempt to Cut restraints, or Remove more effectively.
-У вас есть доступ к чему-нибудь острому, и вы можете попытаться Разрезать ограничители, или Удалить с лучшей эффективностью.
+У вас есть доступ к чему-нибудь острому и вы можете попытаться разрезать ограничители, или удалить их с лучшей эффективностью.
 - You found a corner to help manipulate buckles and snaps with.
 Вы нашли уголок, с помощью которого можно попытаться расстегнуть пряжки и защелки.
 - You found a crack and could maybe wedge a knife or tool into it to keep it still.
@@ -3346,7 +3346,7 @@ ID Куклы
 
 
 - You feel a gentle buzz...
-Вы чувствуете нежную вибрацию...
+Вы чувствуете лёгкую вибрацию...
 - Your toys tease you gently...
 Ваши игрушки нежно дразнят вас...
 - Your toys are vibrating.
@@ -3354,7 +3354,7 @@ ID Куклы
 - Your toys are buzzing strongly!
 Ваши игрушки сильно вибрируют!
 - Your toys vibrate intensely!
-Ваши игрушки словно бы ходят ходуном!
+Ваши игрушки словно ходят ходуном!
 - The vibration is torturous!
 Эти вибрации мучительны!
 
@@ -3378,21 +3378,21 @@ ID Куклы
 
 
 - It appears to be a receptacle
-Похоже, сюда можно что-то вставляется.
+Похоже, сюда можно что-то вставить.
 - Place live crystal
 Поместить заряж. кристалл
 - Take the crystal
 Взять кристалл
 - You place the crystal into the receptacle and it lights up!
-Вы помещаете кристалл в сокет, и он загорается!
+Вы помещаете кристалл в подставку, и он загорается!
 - You take the crystal from the receptacle and all goes dark.
-Вы достаете кристалл из сосуда, и всё вокруг погружается во тьму.
+Вы достаете кристалл из подставки, и всё вокруг погружается во тьму.
 - You try to take the crystal but the cage around it is secured with a magic purple lock.
 Вы пытаетесь забрать кристалл, но клетка вокруг него заперта магическим фиолетовым замком.
 - Place spent crystal
 Поместить разряж. кристалл
 - VALUE gold vanishes from your satchel as the receptacle explodes and your crystal is recharged!
-VALUE золота исчезает из вашей сумки, после чего сокет передаёт энергию в кристалл, заряжая его!
+VALUE золота исчезает из вашей сумки, после чего подставка передаёт энергию в кристалл, заряжая его!
 - Nothing seems to happen
 Кажется, ничего не происходит
 
@@ -3404,7 +3404,7 @@ EnemyName хватает вас и тянет за собой!!!
 - The EnemyName misses you!
 EnemyName промахивается по вам!
 - You duck under the EnemyName's attack!
-Вы подныривает под атаку EnemyName!
+Вы подныриваете под атаку EnemyName!
 
 
 - You hear a door creak open nearby!
@@ -3552,7 +3552,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 - Air Mote
 Воздушная частица
 - The air mote returns to dust.
-Воздушная частица превращается в пыль.
+Воздушная частица растворяется в воздухе.
 - Water Mote
 Водяная частица
 - The water mote turns into a puddle.
@@ -3564,7 +3564,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 - Shadow Warrior
 Теневой Воин
 - The shadow warrior screeches as it vanishes into mist.
-Теневой Воин визжит, исчезая в тумане.
+Теневой Воин кричит, исчезая в тумане.
 - Allied Golem
 Голем
 - The words vanish from the golem's forehead as it crashes down.
@@ -3712,7 +3712,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 - Water Elemental
 Водный элементаль
 - The water elemental melts into a pool of water.
-Водный элементаль тает, превращаясь в лужу воды.
+Водный элементаль превращается в лужу воды.
 - The water elemental's song compels you to be bound! (+RestraintAdded)
 Песня водного элементаля принуждает вас надеть ограничители! (+RestraintAdded)
 - The water elemental sings a song of helplessness. (DamageTaken)
@@ -3976,7 +3976,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 - The Poison Dragonheart thrums her claws across your figure! (DamageTaken)
 Отравитель Драконьего Сердца проводит когтями по вашему телу! (DamageTaken)
 - The Dragonheart locks your restraint using natural magics! (DamageTaken)
-Представитель Драконьего Сердца запирает ваши ограничители, используя магию природы! (DamageTaken)
+Отравитель Драконьего Сердца запирает ваши ограничители, используя магию природы! (DamageTaken)
 
 
 - Crystal Dragonheart
@@ -4078,7 +4078,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 - The Dragonheart Rebel apprehends you! (+RestraintAdded)
 Мятежница Драконьего Сердца сковывает вас! (+RestraintAdded)
 - 'En garde!'
-'Защищайся!'
+'На страже!'
 - The Dragonheart Rebel squeezes your body! (DamageTaken)
 Мятежница Драконьего Сердца стискивает ваше тело! (DamageTaken)
 
@@ -4098,7 +4098,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 
 - Highly-Motivated Doll
-Высокомотивированная кукла
+Целеустремлённая кукла
 - The doll falls to the ground, moaning loudly.
 Кукла падает на землю, громко постанывая.
 - The doll rubs her body against yours. You can feel the conduction. (DamageTaken)
@@ -4170,15 +4170,15 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 
 - Wolfguard
-Волчья стражница
+Стражница-волчица
 - The wolfguard's suit punishes her for poor performance!
-Костюм волчьей стражницы наказывает её за плохую работу!
+Костюм стражницы-волчицы наказывает её за плохую работу!
 - The wolfguard lunges at you and strikes you!
-Волчья стражница набрасывается на вас и бьёт изо всех сил!
+Стражница-волчица набрасывается на вас и бьёт изо всех сил!
 - The wolfguard's escort drones shock you! (DamageTaken)
-Дроны сопровождения волчьей стражницы бьют вас электрическим током! (DamageTaken)
+Дроны сопровождения стражницы-волчицы бьют вас электрическим током! (DamageTaken)
 - The wolfguard's escort drones deploy some restraints! (+RestraintAdded)
-Дроны сопровождения волчьей стражницы фиксируют на вас ограничители! (+RestraintAdded)
+Дроны сопровождения стражницы-волчицы фиксируют на вас ограничители! (+RestraintAdded)
 
 
 - Wolfgirl Trainer
