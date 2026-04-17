@@ -49,7 +49,8 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		customDefeat: "DollStorage",
 		customHiSecDialogue: (enemy) => {
 			if (KDGetEnemyPlayLine(enemy).includes("Robot")) {
-				KinkyDungeonSendDialogue(enemy, TextGet("KDJailerHiSecDialogue" + KDGetEnemyPlayLine(enemy)),
+				KinkyDungeonSendDialogue(enemy, TextGet("KDJailerHiSecDialogue" + KDGetEnemyPlayLine(enemy),
+									KDGetGenericDialogueParams(KDPlayer(), enemy)),
 					KDGetColor(enemy), 8, 10, true);
 				KinkyDungeonSetFlag("LeashToPrison", -1);
 				if (enemy?.hostile) {
@@ -247,7 +248,8 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		customDefeat: "DollStorage",
 		customHiSecDialogue: (enemy) => {
 			if (KDGetEnemyPlayLine(enemy).includes("Robot")) {
-				KinkyDungeonSendDialogue(enemy, TextGet("KDJailerHiSecDialogue" + KDGetEnemyPlayLine(enemy)),
+				KinkyDungeonSendDialogue(enemy, TextGet("KDJailerHiSecDialogue" + KDGetEnemyPlayLine(enemy),
+									KDGetGenericDialogueParams(KDPlayer(), enemy)),
 					KDGetColor(enemy), 8, 10, true);
 				KinkyDungeonSetFlag("LeashToPrison", -1);
 				if (enemy?.hostile) {

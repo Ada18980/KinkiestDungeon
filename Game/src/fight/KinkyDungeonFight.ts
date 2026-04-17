@@ -1489,7 +1489,8 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 		if (Enemy.playerdmg || KinkyDungeonVisionGet(Enemy.x, Enemy.y)) {
 			KDDamageQueue.push({floater: TextGet("KDMissed"), Entity: Enemy, Color: KDBaseRed, Time: 0.5, Delay: Delay});
 			if (KDRandom() < actionDialogueChanceIntense)
-				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
+				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "MissedMe",
+									KDGetGenericDialogueParams(attacker, Enemy)).replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
 		}
 
 		let vol = KDCanHearSound(KinkyDungeonPlayerEntity, Math.max(KDMINDAMAGENOISE, KDDMGSOUNDMULT * Math.max(predata.dmg, predata.dmgDealt)), Enemy.x, Enemy.y, 1.0);
@@ -1502,7 +1503,8 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 		if (KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
 			KDAddThought(Enemy.id, "Laugh", 5, 3);
 			if (KDRandom() < actionDialogueChanceIntense)
-				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "BlockedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
+				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "BlockedMe",
+									KDGetGenericDialogueParams(attacker, Enemy)).replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
 			KDDamageQueue.push({floater: TextGet("KDBlocked"), Entity: Enemy, Color: KDBaseRed, Time: 0.5, Delay: Delay});
 		}
 
@@ -1520,7 +1522,8 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Enemy.Enemy.cueSfx.Damage + ".ogg", undefined, Math.min(1, vol));
 		}
 		if (KDRandom() < actionDialogueChance)
-			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "Hit").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5);
+			KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "Hit",
+									KDGetGenericDialogueParams(attacker, Enemy)).replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5);
 	}
 
 	if (predata.aggro)

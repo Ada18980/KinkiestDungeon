@@ -124,6 +124,7 @@
         "Game/src/prison/KDPrisonList.ts",
         "Game/src/prison/prisontypes/DollStorage.ts",
         "Game/src/prison/prisontypes/HighSec.ts",
+        "Game/src/prison/prisontypes/DollShoppe.ts",
         "Game/src/map/KinkyDungeonSetpiece.ts",
         "Game/src/dialogue/KinkyDungeonDialogue.ts",
         "Game/src/dialogue/KinkyDungeonDialogueTriggers.ts",

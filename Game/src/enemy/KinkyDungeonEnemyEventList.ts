@@ -48,7 +48,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			KDAddThought(enemy.id, "Jail", 5, enemy.playWithPlayer);
 
 			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
-			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
+			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
 		},
 		arrive: (enemy, aiData) => {
 			// When the enemy arrives at the leash point we move the player to it
@@ -148,7 +149,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			KDAddThought(enemy.id, "Jail", 5, enemy.playWithPlayer);
 
 			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
-			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
+			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
 		},
 		arrive: (enemy, _aiData) => {
 			// When the enemy arrives at the leash point we move the player to it
@@ -226,7 +228,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			KDAddThought(enemy.id, "Jail", 5, enemy.playWithPlayer);
 
 			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
-			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
+			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
 		},
 		arrive: (enemy, aiData) => {
 			// When the enemy arrives at the leash point we move the player to it
@@ -308,7 +311,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			KDAddThought(enemy.id, "Jail", 5, enemy.playWithPlayer);
 
 			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
-			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
+			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
 		},
 		arrive: (enemy, aiData) => {
 			// When the enemy arrives at the leash point we move the player to it
@@ -401,7 +405,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				else
 					suff = "Sub" + suff;
 			}
-			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + index).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 12, 3);
+			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + index,
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 12, 3);
 		},
 	},
 	"freeFurniture": {
@@ -548,7 +553,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		},
 		arrive: (enemy, aiData) => {
 			if (KDGameData.PrisonerState == 'parole' && !KDSelfishLeash(enemy)) {
-				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
+				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
 				KDBreakTether(KinkyDungeonPlayerEntity);
 				if (enemy.IntentLeashPoint)
 					KDMovePlayer(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y, false, false);
@@ -608,7 +614,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.IntentAction = 'ToyWithPlayer';
 			KinkyDungeonSetFlag("ToyedWith", 100);
 
-			KinkyDungeonSendDialogue(enemy, TextGet("KDCombatLine_YoureFinished_" + KDJailPersonality(enemy) + Math.floor(Math.random() * 3)), KDGetColor(enemy), 9, 10);
+			KinkyDungeonSendDialogue(enemy, TextGet("KDCombatLine_YoureFinished_" + KDJailPersonality(enemy) + Math.floor(Math.random() * 3),
+									KDGetGenericDialogueParams(KDPlayer(), enemy)), KDGetColor(enemy), 9, 10);
 
 		},
 		maintain: (enemy, _delta, _aiData) => {
@@ -674,7 +681,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				KDTickTraining("Heels", KDGameData.HeelPower > 0,
 					KDGameData.HeelPower <= 0, 4, 25);
 			KinkyDungeonSendDialogue(enemy,
-				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)) + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				KDGetColor(enemy), 14, 10);
 			KDAddThought(enemy.id, "Play", 7, enemy.playWithPlayer);
 
@@ -703,7 +711,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 						enemy.playWithPlayer = 0;
 						enemy.playWithPlayerCD = 30;
 						KinkyDungeonSendDialogue(enemy,
-							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndNow").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndNow",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 							KDGetColor(enemy), 7, 10);
 					}
 				} else {
@@ -722,7 +731,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					if (!KinkyDungeonFlags.get("TempLeashReturn")) {
 						KinkyDungeonSetFlag("TempLeashReturn", 40);
 						KinkyDungeonSendDialogue(enemy,
-							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 							KDGetColor(enemy), 7, 7);
 					}
 					if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
@@ -737,7 +747,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 							}
 							KinkyDungeonSetEnemyFlag(enemy, "templeashpause", 3);
 							KinkyDungeonSendDialogue(enemy,
-								TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+								TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 								KDGetColor(enemy), 5, 10);
 
 							KDAddThought(enemy.id, "Happy", 6, enemy.playWithPlayer);
@@ -827,7 +838,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 
 				if (KinkyDungeonFlags.get("TempLeash") == 10 && returnToJail) {
 					KinkyDungeonSendDialogue(enemy,
-						TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+						TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 						KDGetColor(enemy), 7, 7);
 				}
 				if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
@@ -841,7 +853,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 							KinkyDungeonRemoveRestraint("ItemDevices", false, false, false);
 						}
 						KinkyDungeonSendDialogue(enemy,
-							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 							KDGetColor(enemy), 5, 10);
 
 						KDAddThought(enemy.id, "Happy", 6, enemy.playWithPlayer);
@@ -910,7 +923,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				KDTickTraining("Heels", KDGameData.HeelPower > 0,
 					KDGameData.HeelPower <= 0, 4, 25);
 			KinkyDungeonSendDialogue(enemy,
-				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)) + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				KDGetColor(enemy), 14, 10);
 			KDAddThought(enemy.id, "Play", 7, enemy.playWithPlayer);
 
@@ -934,7 +948,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 						enemy.playWithPlayer = 0;
 						enemy.playWithPlayerCD = 30;
 						KinkyDungeonSendDialogue(enemy,
-							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndNow").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndNow",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 							KDGetColor(enemy), 7, 10);
 					}
 				} else {
@@ -953,7 +968,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					if (!KinkyDungeonFlags.get("TempLeashReturn")) {
 						KinkyDungeonSetFlag("TempLeashReturn", 40);
 						KinkyDungeonSendDialogue(enemy,
-							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 							KDGetColor(enemy), 7, 7);
 					}
 					if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
@@ -968,7 +984,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 							}
 							KinkyDungeonSetEnemyFlag(enemy, "templeashpause", 3);
 							KinkyDungeonSendDialogue(enemy,
-								TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+								TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 								KDGetColor(enemy), 5, 10);
 
 							KDAddThought(enemy.id, "Happy", 6, enemy.playWithPlayer);
@@ -1056,7 +1073,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 
 				if (KinkyDungeonFlags.get("TempLeash") == 10 && KDGameData.PrisonerState == 'jail') {
 					KinkyDungeonSendDialogue(enemy,
-						TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+						TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 						KDGetColor(enemy), 7, 7);
 				}
 				if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
@@ -1070,7 +1088,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 							KinkyDungeonRemoveRestraint("ItemDevices", false, false, false);
 						}
 						KinkyDungeonSendDialogue(enemy,
-							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+							TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 							KDGetColor(enemy), 5, 10);
 
 						KDAddThought(enemy.id, "Happy", 6, enemy.playWithPlayer);
@@ -1126,7 +1145,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		},
 		arrive: (enemy, aiData) => {
 			if (KDGameData.PrisonerState == 'parole' && !KDSelfishLeash(enemy)) {
-				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
+				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
 				KDBreakTether(KinkyDungeonPlayerEntity);
 				if (enemy.IntentLeashPoint)
 					KDMovePlayer(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y, false, false);
@@ -1230,7 +1250,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			KDAddThought(enemy.id, "Jail", 5, 3);
 
 			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
-			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
+			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + "Leash",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 3);
 		},
 		arrive: (enemy, aiData) => {
 			// When the enemy arrives at the leash point we move the player to it

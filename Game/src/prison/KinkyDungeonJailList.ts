@@ -301,7 +301,8 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 						KDGameData.GuardTimer = Math.max(0, KDGameData.GuardTimer - 20);
 					}
 
-					KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerRemove").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
+					KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerRemove",
+									KDGetGenericDialogueParams(KDPlayer(), guard)).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
 				} else if (missingJailUniform.length > 0) {
 					let group = "";
 					if (missingJailUniform.includes("ItemMouth3")) group = "ItemMouth3";
@@ -314,7 +315,8 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 						KDGameData.GuardTimer = Math.max(0, KDGameData.GuardTimer - 20);
 					}
 
-					KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerAdd").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
+					KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerAdd",
+									KDGetGenericDialogueParams(KDPlayer(), guard)).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
 				}
 			} else if (lockableRestraint.length > 0) {
 				let item = lockableRestraint[Math.floor(lockableRestraint.length * KDRandom())];
@@ -325,7 +327,8 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					KDGameData.GuardTimer = Math.max(0, KDGameData.GuardTimer - 10);
 				}
 
-				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerLock").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
+				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerLock",
+									KDGetGenericDialogueParams(KDPlayer(), guard)).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
 			}
 		},
 		handle: (_guard, _xx, _yy, _delta) => {
@@ -499,7 +502,8 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 			guard.CurrentAction = "jailLeashTour";
 			guard.KinkyDungeonJailTourInfractions = 0;
 			KinkyDungeonInterruptSleep();
-			let msg = TextGet("KinkyDungeonRemindJailTourStart").replace("EnemyName", TextGet("Name" + guard.Enemy.name));
+			let msg = TextGet("KinkyDungeonRemindJailTourStart",
+									KDGetGenericDialogueParams(KDPlayer(), guard)).replace("EnemyName", TextGet("Name" + guard.Enemy.name));
 
 			KinkyDungeonSendDialogue(guard, msg, "#e7cf1a", 4, 9);
 		},
@@ -531,7 +535,8 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 				guard.gy = guard.NextJailLeashTourWaypointY;
 			}
 			KinkyDungeonInterruptSleep();
-			let msg = TextGet("KinkyDungeonRemindJailTourStartCell").replace("EnemyName", TextGet("Name" + guard.Enemy.name));
+			let msg = TextGet("KinkyDungeonRemindJailTourStartCell",
+									KDGetGenericDialogueParams(KDPlayer(), guard)).replace("EnemyName", TextGet("Name" + guard.Enemy.name));
 
 			KinkyDungeonSendDialogue(guard, msg, "#e7cf1a", 4, 9);
 		},
@@ -883,8 +888,7 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 		jail: true,
 		parole: true,
 		restraints: [
-			
-
+			{Name: "TrapBoots", Level: -50},
 		],
 	},
 	"mithrilRestraints": {

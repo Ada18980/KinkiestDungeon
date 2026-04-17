@@ -1334,7 +1334,7 @@ function KDTriggerNPCEscape(maxNPC: number = 10) {
 
 				KDMakeHostile(entity, 300);
 				KinkyDungeonSendDialogue(entity,
-					TextGet((KDHelpless(entity) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(entity) ? KDGetEnemyPlayLine(entity) : "") + Math.floor(KDRandom() * 3))
+					TextGet((KDHelpless(entity) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(entity) ? KDGetEnemyPlayLine(entity) : "") + Math.floor(KDRandom() * 3), KDGetGenericDialogueParams(KDPlayer(), entity))
 						.replace("EnemyName", TextGet("Name" + entity.Enemy.name)), KDGetColor(entity),
 					Math.floor(12 + KDRandom() * 8), 10, false, true);
 				count += 1;

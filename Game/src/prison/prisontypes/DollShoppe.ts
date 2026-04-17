@@ -1,4 +1,4 @@
-KDPrisonTypes.DollStorage = {
+KDPrisonTypes.DollShoppe = {
 	name: "DollShoppe",
 	default_state: "Jail",
 	starting_state: "Intro",
@@ -137,8 +137,8 @@ KDPrisonTypes.DollStorage = {
 
 			if (KDMapData.Labels && KDMapData.Labels.Deploy?.length > 0) {
 				let l = KDMapData.Labels.Deploy[Math.floor(KDRandom() * KDMapData.Labels.Deploy.length)];
-				let tag = KDGetMainFaction() == "Dollsmith" ? "dollsmith" : "cyborg";
-				let Enemy = KinkyDungeonGetEnemy([tag, "robot"], MiniGameKinkyDungeonLevel + 4, 'bel', '0', [tag], undefined, {[tag]: {mult: 4, bonus: 10}}, ["boss"]);
+				let tag = "dressmaker";
+				let Enemy = KinkyDungeonGetEnemy([tag, "dressmaker"], MiniGameKinkyDungeonLevel + 4, 'lib', '0', [tag], undefined, {[tag]: {mult: 4, bonus: 10}}, ["boss"]);
 				if (Enemy && !KinkyDungeonEnemyAt(KDMapData.EndPosition.x, KDMapData.EndPosition.y)
 					&& KDistChebyshev(KDPlayer().x - KDMapData.EndPosition.x, KDPlayer().y - KDMapData.EndPosition.y)
 					> 7) {
@@ -288,7 +288,7 @@ KDPrisonTypes.DollStorage = {
 				KDPrisonCommonGuard(player);
 
 				if (KDPrisonIsInFurniture(player)) {
-					let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Purple", KDJAILPOWER);
+					let uniformCheck = KDPrisonGetGroups(player, ["dressmaker"], "Purple", KDJAILPOWER);
 					if (uniformCheck.groupsToStrip.length > 0 && !KinkyDungeonFlags.get("failStrip")) {
 						// Create a queue
 						KDGoToSubState(player, "UniformApply");

@@ -49,12 +49,17 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - TODO add option for tiles to override the local biome
 
 - TODO potentially add a mechanic for cursed items to restore themselves after being removed for furniture reasons
+- TODO make shock collar affect anyone touching you as well
 
 - TODO Cursed Kigu Mask
 - Todo Shopkeeper comes in and either offers to buy you or... chooses to buy you and you have debt~
 
 - TODO transformation into doll w/o sex organs as a possibility?
 - Bondage offer, except if you are a doll - need help getting dressed? dolls shouldn't be dressing themselves~
+- Make stamina potions not work on dolls, and frigid reduced effect. Mana and will still work.
+- Give dolls more stamina, but much slower regen, allow different types of dolls with different methods: winding, manacharge, repair
+- Also add an extra bit that can make dolls have even more stamina, but have NO regen at all
+
 
 Must do
 - Proper stripping

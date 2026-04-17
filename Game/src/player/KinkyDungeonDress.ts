@@ -1354,8 +1354,8 @@ function KinkyDungeonHeadpatModal() {
 	let windowoffsets = KDGetWindowCanvasOffset();
     let pxassign = {
         position: "absolute",
-        width: `${windowoffsets.canvaswidth * 0.08}px`,
-        height: `${windowoffsets.canvasheight * 0.05}px`,
+        width: `${windowoffsets.canvaswidth * 0.06}px`,
+        height: `${windowoffsets.canvasheight * 0.055}px`,
 		top: "0px",
 		left: "0px",
 		transform: "none",

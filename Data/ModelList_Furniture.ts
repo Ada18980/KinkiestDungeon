@@ -381,6 +381,8 @@ AddModel({
 			AppendPose: {Ballet: "Heels"},
 		},
 		{ Name: "OneBarLarge", Layer: "FurnitureBack", Pri: 50,
+			
+			AppendPose: {Ballet: "Heels"},
 		},
 
 		{ Name: "ShortLeft", Layer: "AnkleLeftOver", Pri: 30,
@@ -430,6 +432,7 @@ AddModel({
 			AppendPose: {Ballet: "Heels"},
 		},
 		{ Name: "OneBarLarge", Layer: "FurnitureBack", Pri: 50,
+			AppendPose: {Ballet: "Heels"},
 		},
 
 		{ Name: "ShortLeft", Layer: "AnkleLeftOver", Pri: 30,

@@ -115,10 +115,14 @@ function KDDrawDialogue(delta: number): void {
 		if (gagged && dialogue.responseGag) KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gag";
 
 		gagged = KDDialogueGagged();
+		
 
 		if (!dialogue.drawFunction || !dialogue.drawFunction(gagged, KinkyDungeonPlayerEntity, delta)) {
+			let dialogueParams = KDGetGenericDialogueParams(KinkyDungeonPlayerEntity, KinkyDungeonFindID(
+				KDGameData.CurrentDialogEntity?.id || 0
+			));
 			// Type the message
-			let text = TextGet("r" + KDGameData.CurrentDialogMsg).split(/[\|\n]/);
+			let text = TextGet("r" + KDGameData.CurrentDialogMsg, dialogueParams).split(/[\|\n]/);
 			for (let i = 0; i < text.length; i++) {
 				let tt = text[i];
 				if (KDGameData.CurrentDialogMsgData) {
@@ -154,7 +158,7 @@ function KDDrawDialogue(delta: number): void {
 							if (playertext == "Default") playertext = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage + "_" + entries[i][0];
 							if (entries[i][1].gag && KDDialogueGagged()) playertext = playertext + "Gag";
 
-							let tt = TextGet("d" + playertext);
+							let tt = TextGet("d" + playertext, dialogueParams);
 							if (KDGameData.CurrentDialogMsgData) {
 								for (let d of Object.entries(KDGameData.CurrentDialogMsgData)) {
 									tt = tt.replace(d[0], d[1]);
@@ -179,7 +183,7 @@ function KDDrawDialogue(delta: number): void {
 							(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(
 								entries[i][1].greyoutCustomTooltip
 								? entries[i][1].greyoutCustomTooltip(gagged, KDPlayer())
-								: entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? KDBaseWhite : "#888888",
+								: entries[i][1].greyoutTooltip, dialogueParams), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? KDBaseWhite : "#888888",
 								!!entries[i][1].image ? KinkyDungeonRootDirectory + entries[i][1].image : undefined,
 							undefined, undefined, undefined,
 							KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined,
@@ -326,7 +330,7 @@ function KDAddOpinion(enemy: entity, Amount: number): number {
 		if (enemy.hostile > 0) {
 			KDResetIntent(enemy);
 			KinkyDungeonSendDialogue(enemy,
-				TextGet("KDReconsider" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged"))
+				TextGet("KDReconsider" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged"), KDGetGenericDialogueParams(KDPlayer(), enemy))
 				.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				KDGetColor(enemy), 14, 11);
 		}
@@ -1159,7 +1163,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 							KDTickTraining("Heels", KDGameData.HeelPower > 0,
 								KDGameData.HeelPower <= 0, 4, 25);
 						KinkyDungeonSendDialogue(enemy,
-							TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+							TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime", KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 							KDGetColor(enemy), 14, 10);
 						KDAddThought(enemy.id, "Play", 7, enemy.playWithPlayer);
 
@@ -2948,4 +2952,43 @@ function KDAggroViaDialogue(enemy: entity, unaware: boolean, aggroothers: boolea
 
 	}
 
+}
+
+function KDIsGenderAmbiguous(player: entity) {
+	return false;
+}
+
+function KDGetHonorific(player: entity) {if (player?.Enemy?.tags?.robot || player?.Enemy?.tags?.cyborg) return TextGet("KDHonorificUnit");
+	if (player?.player && KinkyDungeonGoddessRep.Ghost < -25) return TextGet(KDIsGenderAmbiguous(player) ? "KDHonorificMaster" : "KDHonorificMistress");
+	return TextGet("KDHonorificMiss");
+}
+function KDGetSubTitle(player: entity) {
+	if (player?.player && KDIsArtificial(player)) return TextGet(
+		KinkyDungeonFlags.get("DollSleep") ? "KDSubTitleUnit" : "KDSubTitleDoll");
+	if (player?.player && KinkyDungeonStatsChoice.get("NovicePet")) return TextGet("KDSubTitlePet");
+	return TextGet("KDSubTitleGirl");
+}
+
+function KDGetDiminutive(player: entity) {
+	if (player?.player && KDIsArtificial(player)) return TextGet(
+		KinkyDungeonFlags.get("DollSleep") ? "KDSubTitleUnit" : "KDSubTitleDoll");
+	if (player?.player && KinkyDungeonStatsChoice.get("NovicePet")) return TextGet("KDSubTitlePet");
+	return TextGet("KDSubTitleGirl");
+}
+//function KDGetSubTitle(player: entity) {return TextGet("");}
+
+function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?: Record<string, string>): Record<string, string> {
+	let params: Record<string, string> = {
+		PHonor: KDGetHonorific(player),
+		PSub: KDGetSubTitle(player),
+		PDim: KDGetDiminutive(player),
+
+		EHonor: KDGetHonorific(enemy),
+		ESub: KDGetSubTitle(enemy),
+		EDim: KDGetDiminutive(enemy),
+	};
+
+	if (extraparams)
+		Object.assign(params, extraparams);
+	return params;
 }

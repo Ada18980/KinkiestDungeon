@@ -7807,12 +7807,17 @@ function KDRefreshSleep() {
 	KDUpdateWaitTime(100);
 }
 
+
+
+let KDCustomOptionsFontSize = {
+	UI: 20,
+};
 let KDCustomOptionsSize = {
 	UI: 50,
 	"ClothesToggles": 48,
 };
 let KDCustomOptionsSpacing = {
-	UI: 60,
+	UI: 54,
 	"ClothesToggles": 52,
 };
 
@@ -8015,7 +8020,7 @@ function KDTogglesDraw() {
 				return true;
 			}, true, XX, YY, size, size, TextGet("KDToggle" + toggle), KDToggles[toggle], false, KDBaseWhite, undefined, {
 				maxWidth: 350,
-				fontSize: 24,
+				fontSize: KDCustomOptionsFontSize[KDToggleTab] || 24,
 				scaleImage: true,
 			});
 

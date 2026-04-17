@@ -153,15 +153,15 @@ let KDTilePalette = {
 	'AlwaysCage': {type: "tile", tile: 'L', special: {Type: "Cage", Furniture: "Cage"}, jail: {type: "furniture", radius: 1}},
 	'FutureBox': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "FutureBox", }, jail: {type: "furniture", radius: 1}},
 	'FutureBoxStorage': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "FutureBox", jail: {type: "storage", radius: 1}}, jail: {type: "storage", radius: 1}},
-	'DollStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DollStandReal"}, jail: {type: "furniture", radius: 1}},
-	'DollStandSpreader': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DollStandSpreaderReal"}, jail: {type: "furniture", radius: 1}},
-	'DisplayStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayStand"}, jail: {type: "furniture", radius: 1}},
-	'LatexDisplayStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "LatexDisplayStand"}, jail: {type: "furniture", radius: 1}},
-	'DisplayEgyptian': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayEgyptian"}, jail: {type: "furniture", radius: 1}},
-	'OneBarTrap': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "OneBarTrap"}, jail: {type: "furniture", radius: 1}},
-	'OneBarVibeTrap': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "OneBarVibeTrap"}, jail: {type: "furniture", radius: 1}},
-	'OneBarSpreaderTrap': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "OneBarSpreaderTrap"}, jail: {type: "furniture", radius: 1}},
-	'OneBarSpreaderVibeTrap': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "OneBarSpreaderVibeTrap"}, jail: {type: "furniture", radius: 1}},
+	'DollStand': {type: "tile", tile: 'L', special: {Type: "DollStand", Furniture: "DollStandReal"}, jail: {type: "furniture", radius: 1}},
+	'DollStandSpreader': {type: "tile", tile: 'L', special: {Type: "DollStandSpreader", Furniture: "DollStandSpreaderReal"}, jail: {type: "furniture", radius: 1}},
+	'DisplayStand': {type: "tile", tile: 'L', special: {Type: "DisplayStand", Furniture: "DisplayStand"}, jail: {type: "furniture", radius: 1}},
+	'LatexDisplayStand': {type: "tile", tile: 'L', special: {Type: "DisplayStand", Furniture: "LatexDisplayStand"}, jail: {type: "furniture", radius: 1}},
+	'DisplayEgyptian': {type: "tile", tile: 'L', special: {Type: "DisplayStand", Furniture: "DisplayEgyptian"}, jail: {type: "furniture", radius: 1}},
+	'OneBarTrap': {type: "tile", tile: 'L', special: {Type: "OneBarTrap", Furniture: "OneBarTrap"}, jail: {type: "furniture", radius: 1}},
+	'OneBarVibeTrap': {type: "tile", tile: 'L', special: {Type: "OneBarVibeTrap", Furniture: "OneBarVibeTrap"}, jail: {type: "furniture", radius: 1}},
+	'OneBarSpreaderTrap': {type: "tile", tile: 'L', special: {Type: "OneBarSpreaderTrap", Furniture: "OneBarSpreaderTrap"}, jail: {type: "furniture", radius: 1}},
+	'OneBarSpreaderVibeTrap': {type: "tile", tile: 'L', special: {Type: "OneBarSpreaderVibeTrap", Furniture: "OneBarSpreaderVibeTrap"}, jail: {type: "furniture", radius: 1}},
 	'IceBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "IceBase"}, jail: {type: "furniture", radius: 1}},
 	'CrystalBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "CrystalBase"}, jail: {type: "furniture", radius: 1}},
 	'Sybia-n': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "Syb"}, jail: {type: "furniture", radius: 1}},
@@ -1378,7 +1378,13 @@ function KDTE_LoadTile(name: any, loadedTile?: KDMapTile) {
 	KDMapData.TilesSkin = KDObjFromMapArray(nt.Skin);
 	KDMapData.JailPoints = [];
 	for (let j of nt.Jail) {
-		KDMapData.JailPoints.push(Object.assign({}, j));
+		let jp : any = {};
+		KDMapData.JailPoints.push(Object.assign(jp, j));
+		if (KDMapData.Labels["Storage"]) {
+			for (let label of KDMapData.Labels["Storage"]) {
+				if (label.x == jp.x && label.y == jp.y && label.type == "Storage") jp.type = "storage";
+			}
+		}
 	}
 	let array = KDObjFromMapArray(nt.effectTiles);
 	for (let tile of Object.entries(array)) {

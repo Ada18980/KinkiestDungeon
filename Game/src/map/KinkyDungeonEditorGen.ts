@@ -1006,47 +1006,137 @@ let KDTileGen = {
 	},
 	"Cage": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		let storage = false;
+		if (KDMapData.Labels["Storage"]) {
+			for (let label of KDMapData.Labels["Storage"]) {
+				if (label.x == x && label.y == y && label.type == "Storage") {
+					storage = true;
+					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
+				}
+			}
+		}
+		if (!storage)
+			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KDGetPervertibleFurniture("Cage", KinkyDungeonStatsChoice.get("MoreKinkyFurniture") ? 0.8 : 0.1)};
 	},
 	"AlwaysCage": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		let storage = false;
+		if (KDMapData.Labels["Storage"]) {
+			for (let label of KDMapData.Labels["Storage"]) {
+				if (label.x == x && label.y == y && label.type == "Storage") {
+					storage = true;
+					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
+				}
+			}
+		}
+		if (!storage)
+			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: "Cage"};
 	},
 	"DisplayStand": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
-		return {Type: "Furniture", Furniture: "DisplayStand"};
+		let storage = false;
+		if (KDMapData.Labels["Storage"]) {
+			for (let label of KDMapData.Labels["Storage"]) {
+				if (label.x == x && label.y == y && label.type == "Storage") {
+					storage = true;
+					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
+				}
+			}
+		}
+		if (!storage)
+			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		return {Type: "Furniture", Furniture: tileGenerator.Furniture};
 	},
 	"OneBarTrap": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		let storage = false;
+		if (KDMapData.Labels["Storage"]) {
+			for (let label of KDMapData.Labels["Storage"]) {
+				if (label.x == x && label.y == y && label.type == "Storage") {
+					storage = true;
+					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
+				}
+			}
+		}
+		if (!storage)
+			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarTrap" : "DisplayStand"};
 	},
 	"OneBarVibeTrap": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		let storage = false;
+		if (KDMapData.Labels["Storage"]) {
+			for (let label of KDMapData.Labels["Storage"]) {
+				if (label.x == x && label.y == y && label.type == "Storage") {
+					storage = true;
+					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
+				}
+			}
+		}
+		if (!storage)
+			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarVibeTrap" : "DisplayStand"};
 	},
 	"OneBarSpreaderTrap": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		let storage = false;
+		if (KDMapData.Labels["Storage"]) {
+			for (let label of KDMapData.Labels["Storage"]) {
+				if (label.x == x && label.y == y && label.type == "Storage") {
+					storage = true;
+					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
+				}
+			}
+		}
+		if (!storage)
+			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarSpreaderTrap" : "DisplayStand"};
 	},
 	"OneBarSpreaderVibeTrap": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		let storage = false;
+		if (KDMapData.Labels["Storage"]) {
+			for (let label of KDMapData.Labels["Storage"]) {
+				if (label.x == x && label.y == y && label.type == "Storage") {
+					storage = true;
+					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
+				}
+			}
+		}
+		if (!storage)
+			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarSpreaderVibeTrap" : "DisplayStand"};
 	},
 	"DollStand": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		let storage = false;
+		if (KDMapData.Labels["Storage"]) {
+			for (let label of KDMapData.Labels["Storage"]) {
+				if (label.x == x && label.y == y && label.type == "Storage") {
+					storage = true;
+					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
+				}
+			}
+		}
+		if (!storage)
+			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: "DollStandReal"};
 	},
 	"DollStandSpreader": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
+		let storage = false;
+		if (KDMapData.Labels["Storage"]) {
+			for (let label of KDMapData.Labels["Storage"]) {
+				if (label.x == x && label.y == y && label.type == "Storage") {
+					storage = true;
+					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
+				}
+			}
+		}
+		if (!storage)
+			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: "DollStandSpreaderReal"};
 	},
 	"JailBed": (x, y, tile, tileGenerator, data) => {

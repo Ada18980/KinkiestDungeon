@@ -646,6 +646,7 @@
             <key type="filename">../M2/Models/Furniture/OneBarFrontSpread.png</key>
             <key type="filename">../M2/Models/Furniture/OneBarFrontSpreadHeels.png</key>
             <key type="filename">../M2/Models/Furniture/OneBarLarge.png</key>
+            <key type="filename">../M2/Models/Furniture/OneBarLargeHeels.png</key>
             <key type="filename">../M2/Models/Furniture/OneBarTopClosed.png</key>
             <key type="filename">../M2/Models/Furniture/OneBarTopClosedHeels.png</key>
             <key type="filename">../M2/Models/Furniture/OneBarTopSpread.png</key>

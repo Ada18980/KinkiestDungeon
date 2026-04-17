@@ -4900,7 +4900,8 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 								let index = ("" + Math.floor(Math.random() * 3));
 
 								if ((!enemy.dialogue || !enemy.dialogueDuration) && !enemy.playWithPlayer)
-									KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailChase" + suff + index).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 7, (!KDGameData.PrisonerState) ? 3 : 5);
+									KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailChase" + suff + index,
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 7, (!KDGameData.PrisonerState) ? 3 : 5);
 							}
 							KDMakeHostile(enemy, KDMaxAlertTimerAggro * 0.5);
 						}
@@ -5386,7 +5387,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				KDAddThought(enemy.id, "Aware", 3, 3);
 				if (KDRandom() < actionDialogueChanceIntense)
 					KinkyDungeonSendDialogue(enemy,
-						TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Alert")
+						TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Alert",
+									KDGetGenericDialogueParams(player, enemy))
 							.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 						4, 5, false, true);
 			}
@@ -5612,7 +5614,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 	// Intro line
 	if (enemy.aware && (enemy.Enemy.bound || enemy.intro || enemy.Enemy.intro) && player?.player && (enemy.CustomName || enemy.intro || enemy.Enemy.intro) && !KDEnemyHasFlag(enemy, "PatronIntro")) {
 		KinkyDungeonSendDialogue(enemy, (
-			enemy.intro || TextGet("KinkyDungeonRemindJail" + (enemy.Enemy.intro || (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "")) + "Intro")
+			enemy.intro || TextGet("KinkyDungeonRemindJail" + (enemy.Enemy.intro || (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "")) + "Intro",
+									KDGetGenericDialogueParams(player, enemy))
 		)
 			.replace("EnemyName", TextGet("Name" + enemy.Enemy.name))
 			.replace("PTRN", enemy.CustomName), KDGetColor(enemy), 12, 10);
@@ -5794,7 +5797,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				KDAddThought(enemy.id, "Aware", 3, 3);
 				if (KDRandom() < actionDialogueChanceIntense)
 					KinkyDungeonSendDialogue(enemy,
-						TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Alert")
+						TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Alert",
+									KDGetGenericDialogueParams(player, enemy))
 							.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 						4, 5, false, true);
 			}
@@ -6623,7 +6627,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							false, false, undefined, "Combat");
 
 						if (KDRandom() < actionDialogueChance)
-							KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Miss").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 4);
+							KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Miss",
+									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 4);
 					} else {
 						KinkyDungeonSendEvent("missEnemy", {enemy: enemy, player: player});
 					}
@@ -6649,7 +6654,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							false, false, undefined, "Combat");
 
 						if (KDRandom() < actionDialogueChance)
-							KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Block").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 4);
+							KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Block",
+									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, 4);
 					} else {
 						KinkyDungeonSendEvent("blockEnemy", {enemy: enemy, player: player, preData: preData});
 					}
@@ -6666,7 +6672,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				}
 				if (hit) {
 					if (KDRandom() < actionDialogueChanceIntense && !enemy.playWithPlayer)
-						KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "HitPlayer").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 3, 5);
+						KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "HitPlayer",
+									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 3, 5);
 					let replace = [];
 					let restraintAdd: {r: restraint, v: ApplyVariant, iv: string}[] = [];
 					let restraintFromInventory = [];
@@ -6765,7 +6772,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 								enemy.specialCD = enemy.Enemy.specialCD;
 							}
 							if (KDRandom() < actionDialogueChanceIntense && !enemy.playWithPlayer)
-								KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Lock").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 4);
+								KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Lock",
+									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 4);
 
 						} else if (AIData.attack.includes("Bind")
 							&& (((enemy.Enemy.smartBind && !KinkyDungeonFlags.get("PlayerCombat"))
@@ -6960,7 +6968,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											}
 
 											if (KDRandom() < actionDialogueChanceIntense)
-												KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Leash").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
+												KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Leash",
+									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
 											KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonLeashGrab").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDBaseOrange, 1,
 												false, false, undefined, "Combat");
 										}
@@ -6988,7 +6997,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											if (enemy.Enemy.pullMsg) msg = "Attack" + enemy.Enemy.name + "Pull";
 
 											if (KDRandom() < actionDialogueChanceIntense)
-												KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Pull").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
+												KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Pull",
+									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
 											KinkyDungeonSendTextMessage(8, TextGet(msg).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDBaseOrange, 1,
 												false, false, undefined, "Combat");
 										}
@@ -7092,7 +7102,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							priorityBonus += 3*time;
 							Stun = true;
 							if (KDRandom() < actionDialogueChanceIntense)
-								KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Stun").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
+								KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Stun",
+									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
 
 						}
 						if (AIData.attack.includes("Blind")) {
@@ -7403,7 +7414,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				KinkyDungeonSendEvent("enemyMiscast", {spell: spell, enemy: enemy, player: player, AIData: AIData});
 
 				if (KDRandom() < actionDialogueChanceIntense)
-					KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailMiscast" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : ""))
+					KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailMiscast" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : ""),
+									KDGetGenericDialogueParams(player, enemy))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name))
 						.replace("SPL", TextGet("KinkyDungeonSpell" + spell.name)), KDGetColor(enemy), 2, 3);
 
@@ -7472,7 +7484,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				});
 
 				if (KDRandom() < actionDialogueChanceIntense)
-					KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailCast" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : ""))
+					KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailCast" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : ""),
+									KDGetGenericDialogueParams(player, enemy))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name))
 						.replace("SPL", TextGet("KinkyDungeonSpell" + spell.name)), KDGetColor(enemy), 2, 3);
 
@@ -8075,6 +8088,7 @@ function KDTileIsMovable(entity: entity, xx: number, yy: number, MovableTiles: s
  * @returns {entity}
  */
 function KinkyDungeonFindID(id: number, mapData?: KDMapDataType): entity {
+	if (id == 0) return null;
 	if (!mapData || mapData == KDMapData) {
 		if (KDIDCache.get(id)) return KDIDCache.get(id);
 		for (let e of KDMapData.Entities) {
@@ -8563,12 +8577,12 @@ function KinkyDungeonGetLoadoutForEnemy(enemy: entity, guaranteed: boolean): str
  * @param enemy - The enemy
  * @param useName - Whether to use the enemy name or faction
  */
-function KinkyDungeonGetTextForEnemy(key: string, enemy: entity, useName: boolean = false): string {
+function KinkyDungeonGetTextForEnemy(key: string, enemy: entity, useName: boolean = false, player?: entity): string {
 	const enemyKey = `${key}${useName ? enemy.Enemy.name : enemy.Enemy.faction}`;
-	let text = TextGet(enemyKey);
+	let text = TextGet(enemyKey, player ? KDGetGenericDialogueParams(KDPlayer(), enemy) : undefined);
 	if (!text || text.endsWith(enemyKey)) {
 		// Couldn't find enemy-specific text - fall back to just the key
-		text = TextGet(key);
+		text = TextGet(key, player? KDGetGenericDialogueParams(KDPlayer(), enemy) : undefined);
 	}
 	return text;
 }
@@ -10693,7 +10707,7 @@ function KDBlockedByPlayer(enemy: entity, dir: { x: number, y: number, delta: nu
 		&& KDPlayer().y == enemy.y + dir.y) {
 		KinkyDungeonSetEnemyFlag(enemy, "playerBlocking", 6);
 		if (!KinkyDungeonGetRestraintItem("ItemDevices") && !KDIsPlayerTetheredToEntity(KDPlayer(), enemy))
-			KinkyDungeonSendDialogue(enemy, TextGet("KDDialogue_StepAside" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || "")))
+			KinkyDungeonSendDialogue(enemy, TextGet("KDDialogue_StepAside" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || "")), KDGetGenericDialogueParams(KDPlayer(), enemy))
 				.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 			KDGetColor(enemy), 3, 10);
 	}

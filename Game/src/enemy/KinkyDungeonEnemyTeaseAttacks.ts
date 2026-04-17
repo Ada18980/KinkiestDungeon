@@ -34,7 +34,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 					KinkyDungeonGoddessRep.Ghost + 50 >= 75
 				);
 		},
-		apply: (enemy, _player, _aiData, blocked, evaded, damagemod) => {
+		apply: (enemy, player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(0.5 + 1.5 * (KinkyDungeonGoddessRep.Ghost + 50)/100), type: "soul"}, 
@@ -42,7 +42,8 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 			let index = Math.floor(Math.random() * 3);
 			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DamageWeak.ogg");
-			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + index)
+			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + index,
+									KDGetGenericDialogueParams(player, enemy))
 				.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
 
 			if (dmg.happened) {
@@ -610,7 +611,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 			}
 			return false;
 		},
-		apply: (enemy, _player, aiData, blocked, evaded, _damagemod) => {
+		apply: (enemy, player, aiData, blocked, evaded, _damagemod) => {
 			if (!blocked && !evaded) {
 
 				let item = aiData.playerItems.length > 0 ? aiData.playerItems[Math.floor(KDRandom() * aiData.playerItems.length)] : undefined;
@@ -673,7 +674,8 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
 					KinkyDungeonSetFlag("pickpocket", 1);
 					if (KDRandom() < actionDialogueChanceIntense)
-						KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Pickpocket").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 1);
+						KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Pickpocket",
+									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 1);
 
 					return true;
 				}
@@ -721,7 +723,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 
 			return false;
 		},
-		apply: (enemy, _player, _aiData, blocked, evaded, _damagemod) => {
+		apply: (enemy, player, _aiData, blocked, evaded, _damagemod) => {
 			if (!blocked && !evaded) {
 				// Easier to evase harness grabs
 				let harnessChance = 0;
@@ -746,13 +748,14 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 						roll = Math.min(roll, KDRandom());
 					}
 					if (roll < KinkyDungeonTorsoGrabChance + bonus) {
-						KDDoSlow(_player, 1);
+						KDDoSlow(player, 1);
 						let msg = TextGet("KinkyDungeonTorsoGrab").replace("RestraintName", KDGetItemNameString(harnessRestraintName)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name));
 
 						KinkyDungeonSendTextMessage(5, msg, KDBaseOrange, 1);
 
 						if (KDRandom() < actionDialogueChance)
-							KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Grab").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 4);
+							KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Grab",
+									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 4);
 
 						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grab.ogg", enemy);
 						KinkyDungeonTorsoGrabCD = 3;

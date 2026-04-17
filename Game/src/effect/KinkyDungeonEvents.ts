@@ -3132,7 +3132,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			}
 
 			if (e.enemyDialogue) {
-				const dialogue = KinkyDungeonGetTextForEnemy(e.enemyDialogue, enemy);
+				const dialogue = KinkyDungeonGetTextForEnemy(e.enemyDialogue, enemy, undefined, KDPlayer());
 				KinkyDungeonSendDialogue(enemy, dialogue, KDGetColor(enemy), 2, 4);
 			}
 
@@ -3155,7 +3155,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true, undefined, undefined, undefined);
 
 			if (e.enemyDialogue) {
-				const dialogue = KinkyDungeonGetTextForEnemy(e.enemyDialogue, enemy);
+				const dialogue = KinkyDungeonGetTextForEnemy(e.enemyDialogue, enemy, undefined, KDPlayer());
 				KinkyDungeonSendDialogue(enemy, dialogue, KDGetColor(enemy), 2, 4);
 			}
 
@@ -7364,7 +7364,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 					if (en && en.buffs?.AllySelect) {
 						if (!KDEntityHasFlag(en, "Defensive") && (KDRandom() < 0.5 || i == 0)) {
 							KinkyDungeonSendDialogue(en,
-								TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(en) ? KDGetEnemyPlayLine(en) : "") + "CommandDefend")
+								TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(en) ? KDGetEnemyPlayLine(en) : "") + "CommandDefend", KDGetGenericDialogueParams(KDPlayer(), en))
 									.replace("EnemyName", TextGet("Name" + en.Enemy.name)), KDGetColor(en),
 								7, 7, false, true);
 							i++;
@@ -10962,7 +10962,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 		},
 		"tauntMsg": (e, enemy, data) => {
 			if (data.enemy == enemy) {
-				KinkyDungeonSendDialogue(enemy, TextGet(e.msg + Math.floor(Math.random() * e.power)), KDGetColor(enemy), e.time || 6, 1, true, true);
+				KinkyDungeonSendDialogue(enemy, TextGet(e.msg + Math.floor(Math.random() * e.power), KDGetGenericDialogueParams(KDPlayer(), enemy)), KDGetColor(enemy), e.time || 6, 1, true, true);
 			}
 		},
 

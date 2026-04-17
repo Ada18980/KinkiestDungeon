@@ -533,6 +533,14 @@
 	"frame": {"x":1319,"y":1594,"w":680,"h":95},
 	"rotated": false,
 	"trimmed": true,
+	"spriteSourceSize": {"x":254,"y":1581,"w":680,"h":95},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Furniture/OneBarLargeHeels.png":
+{
+	"frame": {"x":1319,"y":1594,"w":680,"h":95},
+	"rotated": false,
+	"trimmed": true,
 	"spriteSourceSize": {"x":254,"y":1616,"w":680,"h":95},
 	"sourceSize": {"w":1240,"h":1754}
 },
@@ -584,6 +592,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlasB0.json", "atlasB1.json", "atlasB2.json", "atlasB4.json", "atlasB5.json", "atlasB6.json", "atlasB7.json", "atlasB8.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:4be111970ffeb09fb8e5886a3a2a7470:7bba4eaa5ced4a47669e47fe258ff894:a3086864cd516275d21c0bc925efc64d$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1c8c5146ee2924350174dae4add7b4b6:e6accbf84acb3acefe43aa61afb21bb8:a3086864cd516275d21c0bc925efc64d$"
 }
 }
