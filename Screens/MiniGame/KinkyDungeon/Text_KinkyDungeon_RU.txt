@@ -1,9 +1,9 @@
-### By Strait-Laced Games
-
-### Credits
-
-### Patrons
-
+- By Strait-Laced Games
+От Strait-Laced Games
+- Credits
+Авторы
+- Patrons
+Покровители
 - News and Updates
 Новости и Обновления
 - Support @ Patreon
@@ -14,7 +14,7 @@
 Назад
 - Next
 Вперед
-### Music: kocaeli, EchoZero|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+### Music: kocaeli, EchoZero|Bound enemy graphics: Song|RU Translation: Denchik7144, Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
 
 ### Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
 
@@ -41,23 +41,29 @@ Pусский
 
 
 - Version
-Ру-перевод веб-версии более не поддерживается. В дискорде (general-topics, ветка RU) можно найти последний перевод для оффлайн-версии. Версия игры
+Ру-перевод снова поддерживается, игра будет переводится постепенно. Версия игры
 ### Kinky Dungeon
 
 - By Ada18980
 От Ada18980
 - You are an adventurer descending into an ancient underground city of magic.
-Вы - искательница приключений, спускающаяся в древний подземный магический город.
+Вы - искательница приключений, спускающаяся в древний подземный город магии.
 - Beneath its depths lies the Mistress' Staff, an artifact of untold power.
-В его глубинах находится Посох Госпожи, артефакт невыразимой силы.
+В его глубинах скрыт Посох Госпожи, артефакт невыразимой силы.
 - Will you prevail against forces unknown, or succumb to its dark secrets?
-Сумеете ли вы одолеть неведомые силы или поддадитесь их темным тайнам?
+Сумеете ли вы одолеть неведомые силы или поддадитесь его тёмным тайнам?
 - (This game does not contain spiders)
 (Игра не содержит контента с пауками)
 
 
-### GFX
+- Right click on a restraint's name to open a context menu.
+Щёлкните правой кнопкой мыши по названию ограничителя, чтобы открыть контекстное меню.
+- There is also an option in HUD settings to replace the small buttons with a context menu.
+В настройках HUD есть опция, позволяющая заменить маленькие кнопки на контекстное меню.
 
+
+- GFX
+Графика
 - Character
 Персонаж
 - Main
@@ -67,23 +73,105 @@ Pусский
 - Controls
 Клавиши
 - Keybindings
-Управление
-### Mouse Shortcuts
-
-### Auto-path through NPCs
-
-### Auto-path through Doors
-
+Назначение клавиш
+- Mouse Shortcuts
+Сочетания мыши
+- Auto-path through NPCs
+Автоматический прохождение через неигровых персонажей
+- Auto-path through Doors
+Автоматический проход через двери
 - Show Enemy Binding as %
 Показывать скованность врагов в %
-### Auto-wait Through Delayed Actions
-
+- Auto-wait Through Delayed Actions
+Автоматическое ожидание выполнения отложенных действий
 - Show Minimap Labels
 Показывать надписи на миникарте
 - Auto loot all from chests
 Авто-лут всего из сундуков
 - Use Palette regardless of Outfit
 Использовать палитру вне зависимости от наряда
+- Show (mostly) full tooltips
+Показывать (почти) полные подсказки
+- Auto cycle through multipage tooltips
+Автоперелистывание подсказок
+- Show extra struggle info
+Показывать дополнительную информацию о борьбе
+- Allow two rows of buffs when collapsed
+Разрешить две строки баффов в свернутом виде
+- Replace struggle icons with menu
+Заменить иконки борьбы на меню
+- Show Training level in buffs and stats
+Показывать уровень тренировки в баффах и характеристиках
+- Flashing Warning Tiles
+Мигающие предупредительные плитки
+- Apply worn restraint palettes to player
+Применять палитры надетых ограничителей к персонажу
+- Enable Headpats
+Включить поглаживания по голове
+- (Test) Enforce Inventory Limits
+(Тест) Применять ограничения инвентаря
+
+
+- Turn Count: 
+Количество ходов: 
+- Visibility: 
+Видимость: 
+- Chance for a spell to fizzle: 
+Шанс осечки заклинания: 
+- Toggle UI Transparency
+Переключить прозрачность интерфейса
+
+
+- Qty: 
+Кол-во: 
+- Rarity: 
+Редкость: 
+- Damage: 
+Урон: 
+- Crit: 
+Крит: 
+- Accuracy: 
+Точность: 
+- SP Cost: 
+Стоимость SP: 
+- Goddess: 
+Богиня: 
+
+
+- (The table is bolted to the floor)
+(Стол прикручен к полу)
+- (Try to flip the table)
+(Попробуйте перевернуть стол)
+- (Despite your best efforts, the table goes nowhere)
+(Несмотря на все ваши усилия, стол никуда не двигается)
+- (Will not low enough)
+(Вы не чувствуете усталости, чтобы лечь)
+
+
+- Talk
+Поговорить
+- Aggress
+Напасть
+- Allow Passing
+Разрешить обход
+- Attack
+Атака
+- Move To
+Подойти
+- Sprint
+Спринт
+- Progress
+Прогресс
+
+
+- Load Backup
+Загрузить резервную копию
+- Loads your data from a file. Note: This may overwrite any data you currently have.
+Загружает ваши данные из файла. Внимание: это может перезаписать любые текущие данные.
+- Save Backup
+Сохранить резервную копию
+- Stores all of your settings and presets into a file.
+Сохраняет все ваши настройки и пресеты в файл.
 
 
 - Apply palettes to Restraints
@@ -100,10 +188,14 @@ Pусский
 Исп. палитру персонажа для экипировки по умолчанию
 
 
+- Filter Toggles:
+Поиск настроек:
 - Show Background Art
 Показывать фоновое изображение
-### Experimental Rendering (unstable)
-
+- Experimental Rendering (unstable)
+Экспериментальный рендеринг (нестабильный)
+- Low-Res Textures (Needs Restart)
+Текстуры низкого разрешения (требуется перезапуск)
 - Mute when Minimized
 Отключать звук при сворачивании
 - Show DP instead of %
@@ -118,6 +210,12 @@ Pусский
 Показывать свободных персонажей на карте
 - Detailed jailed NPCs (experimental)
 Детали о заключенных NPC (экспериментальное)
+- Detailed unique NPCs (experimental)
+Детализированные уникальные NPC (экспериментально)
+- Detailed servants in collection
+Детализированные слуги в коллекции
+- Detailed prisoners/guests in collection
+Детализированные заключённые/гости в коллекции
 - Show Struggle Bars
 Показывать полоску Борьбы
 - Allow Suspicious Mods
@@ -148,8 +246,8 @@ Pусский
 Включить музыку
 - Async Rendering (beta)
 Асинхронный рендеринг (beta)
-### Bloom & Glow
-
+- Bloom & Glow
+Свечение и сияние
 - Transparent UI
 Прозрачный UI
 - Turn Counter
@@ -163,7 +261,7 @@ Pусский
 - Vibration Particles
 Частицы при вибрации
 - Gag Particle FX
-Particle FX у Кляпа
+Частицы FX у Кляпа
 - Show NPC Status
 Показывать статус NPC
 - Show Spell Range
@@ -208,8 +306,8 @@ Particle FX у Кляпа
 Отображение баффов сбоку
 - Show Trajectory on Auto-Path
 Отображение траектории на авто-пути
-### Always Show Player Facing
-
+- Always Show Player Facing
+Всегда показывать направление, куда смотрит игрок
 - Show more learnable spells
 Показывать больше заклинаний для изучения
 - Show Player Buff Auras
@@ -226,8 +324,8 @@ Particle FX у Кляпа
 Старые аниамции
 - Flip Status Bars
 Отзеркалить строку состояния
-### Reduce Accidental Wall Clicks
-
+- Reduce Accidental Wall Clicks
+Уменьшить количество случайных нажатий на стены
 - Enable Nipples
 Включить соски
 - Show Nipple Toys Over Bras
@@ -246,8 +344,8 @@ Particle FX у Кляпа
 Ускоренное исчезновение всплыващей инф.
 - No Damage Floaters
 Убрать всплывающую инф. об уроне
-### Dynamic Armor (must hide armor)
-
+- Dynamic Armor (must hide armor)
+Динамическая броня (должен прятать броню)
 - Hide floating weapon display
 Скрыть всплывающее изображение оружия
 - Automatically Take All from Chests
@@ -284,6 +382,8 @@ Particle FX у Кляпа
 Игровой шрифт:
 - Button Font:
 Шрифт кнопок:
+- Back to Character Setup
+Вернуться к настройке персонажа
 - Journey
 Путешествие
 - Select a journey. This will determine the ordering of game areas.
@@ -332,14 +432,24 @@ Particle FX у Кляпа
 Вы физически слабы. Борьба гораздо менее эффективна.
 
 
+- Untapped Strength
+Неиспользованная сила
+- Gain 0.5% struggle power per floor.
+Получаете +0.5% к силе борьбы за каждый этаж.
+- Bound by Gravity
+Под тяжестью гравитации
+- Lose 0.5% struggle power per floor.
+Вы теряете 0.5% к силе борьбы за каждый этаж.
+
+
 - Flexible
 Гибкая
 - Slightly boosts the Remove/Unlock option, escaping is 1.5x as fast except picking, and your feet can use items/buckles.
-Немного усиляет опции Снять/Разблокировать, освобождение происходит в 1.5x раза быстрее (за исключением взлома), и вы можете использовать предметы/открывать пряжки ногами.
+Немного усиляет опции «Снять»/«Разблокировать», освобождение происходит в 1.5x раза быстрее (за исключением взлома), и вы можете использовать предметы/открывать пряжки ногами.
 - Inflexible
 Негибкая
 - You get a penalty to the Remove and Unlock action, and escaping is 0.75x as fast.
-Опции Снять/Разблокировать получают небольшой штраф, и скорость освобождения уменьшается до 75%.
+Опции Снять/Разблокировать получают небольшой штраф, и скорость освобождения уменьшается до 0.75x.
 
 
 - Locksmith
@@ -349,7 +459,7 @@ Particle FX у Кляпа
 - Clueless
 Невежда
 - You have no idea how to pick locks. Picking is 0.5x as fast and you can't pick most advanced locks.
-Вы не знаете, как правильно вскрывать замки. Скорость взлома уменьшена до 0.5x, и вы не можете более вскрыть большинство продвинутых замков.
+Вы не знаете, как правильно вскрывать замки. Скорость взлома уменьшается до 0.5x, и вы не можете вскрыть большинство продвинутых замков.
 
 
 - Psychic
@@ -369,7 +479,7 @@ Particle FX у Кляпа
 - Cursed
 Проклятая
 - Goddess reputations can never exceed 25.
-Благосклонность Богинь не может превысить 25.
+Репутация Богинь не может превысить 25.
 
 
 - Submissive
@@ -385,7 +495,7 @@ Particle FX у Кляпа
 - Studious
 Студент
 - You start the game with +1 spell point. Your first two spell categories are free.
-Вы начинаете игру с 1-им дополнительным очком способностей. Ваши первые две категории заклинаний бесплатны.
+Вы начинаете игру с +1 очком способностей. Ваши первые две категории заклинаний бесплатны.
 - Meditation
 Медитация
 - You slowly regenerate mana, up to a maximum of 50.
@@ -447,7 +557,7 @@ Particle FX у Кляпа
 - Unfocused
 Отвлеченная
 - Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction.
-Точность умножается на 0,9 при 10%-ном возбуждении, и на 0,6 при 90%-ном возбуждении.
+Точность умножается в 0.9x при 10% возбуждении, и на 0.6x при 90% возбуждении.
 
 
 - Focused Strikes
@@ -457,7 +567,7 @@ Particle FX у Кляпа
 - Focused Power
 Сосредоточенная сила
 - 90% less stamina cost penalty on staves and similar weapons distraction.
-На 90% меньше штраф к потери выносливости оружия типа посохов и похожего из-за возбуждения.
+На 90% меньше штраф к потери выносливости из-за возбуждения при использовании посохов и похожего оружия.
 
 
 - Pristine
@@ -473,7 +583,7 @@ Particle FX у Кляпа
 - Unchained
 Нескованная
 - Start with high Metal reputation, and all metal restraints are easier to escape from.
-Начните с высокой благосклонностью Метала. Вам будет легче освободиться ото всех металлических ограничителей.
+Начните с высокой благосклонностью Метала. Вам будет легче освободиться от всех металлических ограничителей.
 - Damsel in Chains
 Дама в цепях
 - Metal restraints are harder to escape from.
@@ -489,9 +599,9 @@ Particle FX у Кляпа
 - Cursed Locks
 Проклятые замки
 - Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle.
-Те, у кого нет ключей, встретятся с Гневом Замков. Заблокированные предметы нельзя разрезать, и сними труднее бороться.
+Те, у кого нет ключей, встретятся с Гневом Замков. Заблокированные предметы нельзя разрезать, и с ними труднее бороться.
 - The magical warding from the lock protects the item.
-Магическая защита замка окутывает весь предмет.
+Магическая защита замка оберегает весь предмет.
 - Undeniable
 Безотказная
 - Born with an intense submissive desire, you cannot refuse bondage from dialogues.
@@ -507,7 +617,7 @@ Particle FX у Кляпа
 - Escape Artist
 Гуру верёвок
 - Start with high Rope reputation, and all rope restraints are easier to escape from.
-Начните с высокой благосклонностью Верёвки. Вам будет легче освободиться ото всех верёвочных ограничителей.
+Начните с высокой благосклонностью Верёвки. Вам будет легче освободиться от всех верёвочных ограничителей.
 - Rope Bunny
 Связанный кролик
 - Rope restraints are harder to escape from.
@@ -517,7 +627,7 @@ Particle FX у Кляпа
 - Slippery
 Скользкая
 - Start with high Latex reputation, and all latex restraints are easier to escape from.
-Начните с высокой благосклонностью Латекса. Вам будет легче освободиться ото всех латексных ограничителей.
+Начните с высокой благосклонностью Латекса. Вам будет легче освободиться от всех латексных ограничителей.
 - Latex Doll
 Латексная кукла
 - Latex restraints are harder to escape from.
@@ -527,7 +637,7 @@ Particle FX у Кляпа
 - Escapee
 Мастер побега
 - Start with high Leather reputation, and all leather restraints are easier to escape from.
-Начните с высокой благосклонностью Кожи. Вам будет легче освободиться ото всех кожаных ограничителей.
+Начните с высокой благосклонностью Кожи. Вам будет легче освободиться от всех кожаных ограничителей.
 - Leather-Bound
 В кожаных тисках
 - Leather restraints are harder to escape from.
@@ -537,7 +647,7 @@ Particle FX у Кляпа
 - Slayer
 Стихийник
 - You can cast Elemental spells without having the components, at twice the cost. Start w/ Firebolt.
-Вы можете применять Стихийные заклинания без активатора, но за двойную цену. На старте  вам будет доступен Огненную стрелу.
+Вы можете применять Стихийные заклинания без активатора, но за двойную цену. На старте  вам будет доступна Огненная шара.
 - Conjurer
 Созидатель
 - You can cast Conjuration spells without having the components, at twice the cost. Start w/ Conjure Chain.
@@ -551,7 +661,7 @@ Particle FX у Кляпа
 - Narcoleptic
 Нарколепсия
 - You slowly lose stamina over time.
-Вы медленно теряете выносливость.
+Со временем ваша выносливость постепенно снижается.
 
 
 - Stealth Mission
@@ -565,7 +675,7 @@ Particle FX у Кляпа
 - Denial Lovers
 Фанаты отрицания
 - All humanoids that can bind you also apply denial toys.
-Все гуманоиды, которые могут связать вас, также используют игрушки с функцией отрицания.
+Все гуманоиды, которые могут связать вас, также используют игрушки с функцией подавления воли.
 - Pleasure Lovers
 Фанаты удовольствия
 - All humanoids that can bind you also apply pleasurable toys.
@@ -615,7 +725,7 @@ Particle FX у Кляпа
 - Kill Squad
 Миссия невыполнима
 - Enemies gain increased blindsight and vision radius.
-Враги получают улучшенные Слепое Зрение (Видение сквозь стены) и радиус обзора.
+Враги получают улучшенное Слепое Зрение (Видение сквозь стены) и увеличенный радиус обзора.
 
 
 - Supermarket
@@ -639,7 +749,7 @@ Particle FX у Кляпа
 - Oppression
 Презренная
 - Ghosts are less likely to help you.
-Призраки куда менее охотно помогают вам.
+Призраки менее охотно помогают вам.
 - Search Party
 Группа захвата
 - More enemies spawn during sleep.
@@ -653,7 +763,7 @@ Particle FX у Кляпа
 - Deft Footwork
 Ловкие ноги
 - You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance.
-Вы игнорируете некоторые последствия умеренного замедления из-за каблуков или слизи, и можете использовать заклинания с активатором Ноги, будучи значительно замедленными, с вероятностью осечки в 50%.
+Вы игнорируете некоторые последствия небольшого замедления из-за каблуков или слизи, и вы можете использовать заклинания с активатором Ног, будучи значительно замедленными, с вероятностью осечки в 50%.
 - Poor Form
 Плохая форма
 - Slowing effects on you are amplified.
@@ -665,7 +775,7 @@ Particle FX у Кляпа
 - Deft Fingering
 Ловкие пальцы
 - You can cast arm spells using just your fingers, as long as your hands aren't bound.
-Вы можете произносить заклинания с активатором Рук, используя только пальцы, если ваши ладони не связаны.
+Вы можете произносить заклинания с активатором Рук, используя только пальцы, если ваши руки не связаны.
 
 
 - Well-Equipped
@@ -687,7 +797,7 @@ Particle FX у Кляпа
 - Disorganized
 Безалаберность
 - Switching weapons, learning/choosing spells, and casting from spellbook takes 3 turns.
-Смена оружия, выбор/изучение заклинаний и применение заклинаний из общего списка занимает 3 хода.
+Смена оружия, изучение/выбор заклинаний и применение заклинаний из книги заклинаний занимает 3 хода.
 - Savour the Taste
 Наслаждаясь вкусом
 - Drinking a potion takes 2 turns
@@ -745,7 +855,7 @@ Particle FX у Кляпа
 - Persisting Desires
 Настойчивые желания
 - Your dark desires are endless.
-Ваше темное желание бесконечно.
+Ваши темные желания бесконечны.
 
 
 - Sugar Rush
@@ -761,11 +871,11 @@ Particle FX у Кляпа
 - Berserker Rage
 Ярость берсерка
 - Melee attacks distract you, but melee (including chain) damage increases by up to 30% at max distraction.
-Атаки ближнего боя возбуждают вас, но ваш урон в ближнем бою (включая цепной) увеличивается до +30% при максимальном возбуждении.
+Атаки ближнего боя возбуждают вас, но урон в ближнем бою (включая цепной) увеличивается на +30% при максимальном возбуждении.
 - Unstable Magic
 Нестабильная магия
-### Spells do up to 30% additional damage based on distraction or miscast chance, whichever is higher.
-
+- Spells do up to 30% additional damage based on distraction or miscast chance, whichever is higher.
+Заклинания наносят до +30% дополнительного урона в зависимости от вашего возбуждения или шанса осечки — в зависимости от того, что выше.
 - Absolute Focus
 Абсолютный дисфокус
 - Miscast chance is doubled.
@@ -781,19 +891,19 @@ Particle FX у Кляпа
 - Nowhere is Safe
 Нигде не безопасно
 - Beds and furniture are often trapped.
-Кровати и мебель могут зачастую содержать ловушки.
+Кровати и мебель часто оказываются с ловушками.
 
 
 - Quakehoof Associate
 Помощник Quakehoof'а
 - Start with the Epsilon Collar, which regenerates mana when you play with yourself.
-Начните с Ошейником Эпсилон, который восстанавливает ману, когда вы играете сами с собой.
+Начните с Ошейником Эпсилон, который восстанавливает ману, когда вы играете с собой.
 - Epsilon Collar
 Ошейник Эпсилон
 - A collar reserved for the most prestigious of submissives.
 Ошейник, предназначенный для самых элитных сабмиссивов.
 - Restores mana when you play with yourself, but increases the distraction given. Only works when Desire is below the limit.
-Восстанавливает ману, когда вы играете сами с собой, но увеличивает количество получаемого возбуждения. Работает только тогда, когда Желание ниже предела.
+Восстанавливает ману, когда вы играете с собой, но увеличивает получаемое возбуждение. Работает только тогда, когда Желание ниже предела.
 
 
 - Bullet Hell
@@ -821,25 +931,25 @@ Particle FX у Кляпа
 - Quickness
 Ускорение
 - Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock.
-Если вы не двигаетесь 4 хода, то получаете ускорение. Ускорение позволит вам переместиться на 1 клетку без затраты хода.
+Если вы не двигаетесь 4 хода, то получаете ускорение. Ускорение позволяет вам переместиться на 1 клетку без затраты хода.
 
 
 - Expansive Halls
 Обширные залы
 - Increases the size of maps by 3 in the long dimension. Maps will be less dense.
-Увеличивает размер карт на 3 в длину. Карты будут менее плотными.
+Увеличивает размер карт на 3 в длину. Карты становятся менее плотными.
 - Gargantuan Halls
-Впечатляющие залы
+Гигантские залы
 - Increases the size of maps by 6 in the long dimension. Maps will have a mix of tunnels and dead ends.
-Увеличивает размер карт на 6 в длину. На картах будет много туннелей и тупиков.
+Увеличивает размер карт на 6 в длину. На картах предостовляет собой смесь туннелей и тупиков.
 - Labyrinthine Halls
 Настоящий лабиринт
 - Increases the size of maps by 9 in the long dimension. Maps will be mostly tunnels.
-Увеличивает размер карт на 9 в длину. Карты будут в основном состоять из туннелей.
+Увеличивает размер карт на 9 в длину. Карты состоят в основном из туннелей.
 - Absurdly Huge Maps
 Абсурдно огромные карты
 - (Experimental) Make the maps really really big. Probably breaks the game.
-(Экспериментальные) Делают карты действительно очень большими. Возможно, это сломает игру.
+(Экспериментальные) Делает карты очень-очень большими. Возможно, это сломает игру.
 
 
 - Rigger
@@ -853,7 +963,7 @@ Particle FX у Кляпа
 - Curse Seeker
 Искательница проклятий
 - When you pick up cursed armor or restraints from chests, they equip automatically if able.
-Когда вы берете проклятую броню или ограничители из сундуков, они снаряжаются автоматически, если это возможно.
+Когда вы подбираете проклятую броню или ограничители из сундуков, они снаряжаются автоматически, если это возможно.
 
 
 - Burning Desire
@@ -863,27 +973,27 @@ Particle FX у Кляпа
 - Frigid Personality
 Холодна как лёд
 - While below 10% distraction, you gain +10% ice damage and can walk on ice without penalties.
-Когда ваше возбуждение меньше 10%, вы наносите на +10% больше ледяного урона и можете ходить по льду без штрафов.
+Пока ваше возбуждение меньше 10%, вы получаете +10% к ледяному урону и можете ходить по льду без штрафов.
 
 
 - Grounded in Reality
 Заземление
 - While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
-Когда ваша мана на максимуме, ваши атаки наносят дополнительные +30% урона в видео урона от электричества.
+Пока ваша мана на максимуме, ваши атаки наносят дополнительные +30% урона в виде урона от электричества.
 - Like the Wind
 Как ветер
 - While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1.
-Когда у вас больше 95% выносливости, вы получаете +30 к Уклонению, а уровень вашего замедления снижается на 1.
+Пока у вас больше 95% выносливости, вы получаете +30 к уклонению, а уровень вашего замедления снижается на 1.
 
 
 - Immovable Object
 Непоколебимая
 - While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells cost half mana.
-Когда у вас больше 90% силы воли, вы получаете +150 к сопротивлению сковыванию, а заклинания стихии Земли стоят половину маны.
+Пока у вас больше 90% силы воли, вы получаете +150 к сопротивлению сковыванию, а заклинания стихии Земли стоят вдвое меньше маны.
 - Path of Least Resistance
 Путь наименьшего сопротивления
 - While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as soap damage when enemies restrain you.
-Пока ваша сила воли на 0, вы получаете +35 к уклонению и наносите 20% от максимума вашей силы воли в качестве Смывающего урона когда враги сковывают вас.
+Пока ваша сила воли равна 0, вы получаете +35 к уклонению и наносите 20% от максимума вашей силы воли в виде Смывающего урона когда враги сковывают вас.
 
 
 - Sticky Situation
@@ -894,8 +1004,6 @@ Particle FX у Кляпа
 Запыхавшаяся
 - Taking chain, poison, and crush damage makes you dizzy.
 При получении цепного урона, урона ядом и дробящего урона у вас начинается головокружение.
-
-
 
 
 - Kinky Prisoner
@@ -930,6 +1038,11 @@ Particle FX у Кляпа
 Вместо того, чтобы прерваться, большинство неправильно произнесённых AOE-заклинаний и заклинаний-снарядов будут нацелены на вас.
 
 
+- Painful Choice
+Болезненный выбор
+- Struggle power is halved, but gain back 10% per slot you are restrained in (up to 150%). Toys don't count.
+Сила борьбы уменьшается вдвое, но вы восстанавливаете 10% за каждый слот, в котором вы связаны (до 150%). Игрушки не учитываются.
+
 
 
 
@@ -951,7 +1064,7 @@ Particle FX у Кляпа
 - Unperturbed
 Невозмутимая
 - You gain +82 grope resist.
-Вы получаете 82 сопротивления ощупыванию.
+Вы получаете +82 сопротивления ощупыванию.
 
 
 - Masochist
@@ -967,35 +1080,35 @@ Particle FX у Кляпа
 - Fashionable
 Модница
 - When you are jailed, you keep your outfit.
-Оказавшись в тюрьме, вы сохраните свой наряд.
+Оказавшись в тюрьме, вы сохраняете свой наряд.
 
 
 - Futile Struggles
 Тщетная борьба
 - Lose 2 WP every time you remove a non-trivial restraint.
-Теряйте 2 WP каждый раз, когда вы снимаете нетривиальный ограничитель.
+Вы теряйте 2 WP каждый раз, когда вы снимаете нетривиальный ограничитель.
 
 
 - Second Wind
 Второе дыхание
 - Regenerate WP when unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, gag, or slows. (Upgrade available in spell tree)
-Восстанавливает WP когда вы свободны, до 10% от максимального WP.'Свободны' означает отсутствие связывания рук, кистей, ног, повязки на глазах, кляпа во рту и уровня замедления.(Апгрейд доступен в дереве закл.)
+Восстанавливает WP когда вы не скованы, до 10% от максимального WP."Свободный" означает отсутствие связывания рук, кистей, ног, повязки на глазах, кляпа во рту и уровня замедления.(Апгрейд доступен в дереве закл.)
 - Second Wind Perk
 Второе дыхание (Перк)
 - Regenerate WP when you are unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, or gag bondage, and no slows.
-Восстанавливает WP когда вы свободны, до 10% от максимального WP. 'Свободны' означает отсутствие связывания рук, кистей, ног, повязки на глазах, кляпа во рту и уровня замедления.
+Восстанавливает WP когда вы не скованы, до 10% от максимального WP. "Свободны" означает отсутствие связывания рук, кистей, ног, повязки на глазах, кляпа во рту и уровня замедления.
 - Triumphant Wind
 Торжествующий ветер
 - Second Wind now regenerates up to 25% of your max WP
-Второе дыхание теперь восстанавливает до 25% вашего максимального WP
+Второе дыхание теперь восстанавливает от 25% вашего максимального WP
 - Mental Defiance
 Ментальное неповиновение
 - Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP.
-Пассивное: При потере WP от остановки на краю, оргазма, или поддразнивания, накапливает 'Неповиновение' на величину вашего потерянного DP. Переключение: Когда WP ниже 25%, быстро преобразует 'Неповиновение' в WP.
+Пассивное: При потере WP от остановки на краю, оргазма, или поддразнивания, накапливается "Неповиновение" вплоть до недостающего значения DP. Переключение: Пока WP ниже 25%, быстро преобразует "Неповиновение" в WP.
 - Mental Fortitude
 Ментальная стойкость
 - Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While above 75% WP but below 100%, quickly convert 'Defiance' into WP. Exclusive with Mental Defiance.
-Пассивное: При потере WP от остановки на краю, оргазма, или поддразнивания, накапливает 'Неповиновение' на величину вашего потерянного DP. Переключение: Когда WP выше 75%, но ниже 100%, быстро преобразует 'Неповиновение' в WP. Несовместимо с 'Ментальное неповиновение'.
+Пассивное: При потере WP от остановки на краю, оргазма, или поддразнивания, накапливается "Неповиновение" на величину вашего потерянного DP. Переключение: Пока WP выше 75%, но ниже 100%, быстро преобразует "Неповиновение" в WP. Несовместимо с "Ментальным неповиновением".
 
 
 - Locked Up
@@ -1009,57 +1122,57 @@ Particle FX у Кляпа
 - Controlled Urges
 Контролируемые позывы
 - Locked Up is 150% effective. Gain +70 psychic/charm resist from a chastity belt and +30 from a chastity bra. While not wearing a chastity belt, your Desire increases slowly.
-'Взаперти' применяется со 150% эффективностью. Получите +70 сопротивления психическому урона и урону от очарования от пояса целомудрия и +30 от бюстгальтера целомудрия. Пока вы не носите пояс целомудрия, ваше Желание медленно возрастает.
+"Взаперти" действует со 150% эффективностью. Получите +70 сопротивления психическому урону от очарования от пояса целомудрия и +30 от бюстгальтера целомудрия. Пока вы не носите пояс целомудрия, ваше Желание медленно возрастает.
 - Ready for Training
 Готова к тренировке
 - Locked Up is 200% effective. +25% stamina regen per 100 current DP. Playing with yourself is less effective while vibrators are off or set to edge. Slow level is increased by 1 when you aren't wearing any chastity.
-'Взаперти' применяется с 200% эффективностью. +25% к восстановлению выносливости за 100 текущих DP. Самоудовлетворение менее эффективно, когда вибраторы выключены или находятся в режиме удержания на грани. Уровень Замедления увеличивается на 1 когда вы не носите предмет целомудрия.
+"Взаперти" действует с 200% эффективностью. +25% к восстановлению выносливости за каждые 100 текущих DP. Самоудовлетворение менее эффективно, когда вибраторы выключены или находятся в режиме удержания на грани. Уровень Замедления увеличивается на 1 когда вы не носите предмет целомудрия.
 - Efficient Denial
 Эффективное отрицание
 - Locked Up is 300% effective. When Locked Up triggers, you gain -30% mana costs and +25% physical damage for 7 turns (35 when opening a chest or breaking orbs). You cannot orgasm unless you are wearing a chastity belt, and slow level is increased by 2.
-'Взаперти' применяется с 300% эффективностью. Когда 'Взаперти' активирована, ваши затраты маны снижаются на 30% и вы получаете +25% психического урона на 7 ходов (35 при открытии сундука или разбивании сферы). Вы не сможете достичь оргазма, если на вас не надет пояс целомудрия, а Уровень Замедления увеличится на 2.
+"Взаперти" действует с 300% эффективностью. Когда "Взаперти" активирована, ваши затраты маны снижаются на 30% а вы получаете +25% физического урона на 7 ходов (35 при открытии сундука или разбивании сферы). Вы не сможете достичь оргазма, если на вас не надет пояс целомудрия, а уровень Замедления увеличится на 2.
 - Recalcitrant
 Непокорная
 - Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back.
-Откажитесь от перка 'Взаперти'. Работает только один раз. Если вы снова возьмете этот перк, пути назад не будет.
+Откажитесь от перка "Взаперти". Работает только один раз. Если вы снова возьмёте этот перк, пути назад не будет.
 
 
 - Novice Pet
 Начинающий питомец
 - You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
-Теперь вы можете перейти на спринт нося петсьют. (Апгрейды доступны в дереве заклинаний)
+Теперь вы можете перейти на спринт нося костюм питомца. (Улучшения доступны в дереве заклинаний)
 - Novice Pet Training
 Питомец в начале тренировки
 - You can now sprint while wearing a petsuit.
-Теперь вы можете перейти на спринт только нося петсьют.
+Теперь вы можете перейти на спринт только нося костюм питомца.
 - Eager Pet
 Осваивающийся питомец
 - +1 slow reduction while wearing a petsuit, but sprint costs are increased by 30% when not wearing a petsuit.
-Дает +1 сокращение Замедления пока вы носите петсьют, но затраты на Спринт увеличиваются на 30% когда вы не носите петсьют.
+Дает -1 Замедление пока вы носите костюм питомца, но затраты на Спринт увеличиваются на 30% когда вы не носите костюм питомца.
 - Experienced Pet
 Опытный питомец
 - +2 slow reduction total while wearing a petsuit (from +1), but sprint costs are increased by 100% (from 30%) when not wearing a petsuit and slow level is increased by +1.
-+2 сокращение Замедления пока вы носите петсьют (вместо +1), но затраты на Спринт увеличиваются на 100% (вместо 30%) когда вы не носите петсьют, а также при этом Уровень Замедления увеличится на +1.
+Дает -2 Замедление пока вы носите костюм питомца (вместо -1), но затраты на Спринт увеличиваются на 100% (вместо 30%) пока вы не носите костюм питомца, а также при этом уровень Замедления увеличится на +1.
 - Devoted Pet
 Преданный питомец
 - +3 slow reduction total while wearing a petsuit (from +2), but you cannot sprint (from +100% cost) when not wearing a petsuit and slow level is increased by +2 (from +1).
-+3 сокращение Замедления пока вы носите петсьют (вместо +2), но вы не можете перейти на Спринт (вместо +100% стоимости) когда вы не носите петсьют, а также при этом Уровень Замедления увеличится на +2 (вместо +1).
+Дает -3 Замедления пока вы носите костюм питомца (вместо -2), но вы не можете перейти на Спринт (вместо +100% стоимости Спринта) когда вы не носите костюм питомца, а также при этом уровень Замедления увеличится на +2 (вместо +1).
 - Bad Pet
 Плохой питомец
 - Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
-Откажитесь от перка 'Начинающий питомец'. Работает только один раз. Если вы снова возьмете этот перк, пути назад не будет.
+Откажитесь от перка "Начинающий питомец". Работает только один раз. Если вы снова возьмете этот перк, пути назад не будет.
 - You are an expert in wearing a petsuit and your mobility is increased.
-Вы эксперт в ношении петсьюта, ваша мобильность повышается.
+Вы эксперт в ношении костюма питомца, ваша мобильность повышается.
 - You are too used to wearing petsuits! Sprinting is impaired.
-Вы слишком привыкли носить петсьюты! Спринт невозможен.
+Вы слишком привыкли носить костюм питомца! Спринт невозможен.
 - You are a disobedient pet. You should put on a petsuit!
-Непослушный питомец. Тебе следует надеть петсьют!
+Непослушный питомец. Тебе следует надеть костюм питомца!
 
 
 - Dominant
 Доминант
 - They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage.
-Это они заперты здесь с вами. Призраке более полезны, и вы можете связывать врагов, которые предлагают связать вас.
+Это они заперты здесь с вами. Призраки более полезны, и вы можете связывать врагов, которые пытаются связать вас.
 
 
 - Stranger
@@ -1091,13 +1204,13 @@ Particle FX у Кляпа
 - Rusty Bolts
 Ржавые болты
 - Most traps have a 25% misfire chance each time you step on them.
-Большинство ловушек имеют 25%-ную вероятность не сработать каждый раз, когда вы на них наступаете.
+Большинство ловушек имеют 25% шанс не сработать каждый раз, когда вы на них наступаете.
 
 
 - Not a Pet
 Я вам не питомец
 - Petsuits occur less often.
-Петсьюты встречаются реже.
+Костюм питомца встречается реже.
 - Unmasked
 Без масок
 - Hoods and full-face covering masks do not appear, but blindfolds are more powerful. Does not include kigurumi masks.
@@ -1117,11 +1230,11 @@ Particle FX у Кляпа
 - Blackout
 Блэкаут
 - Blindfolds are stronger. While blindfolded you can only see enemies next to you.
-Повязки на глаза теперь эффективное. С завязанными глазами вы можете увидеть только тех врагов, что стоят рядом с вами.
+Повязки на глаза становятся сильнее. Пока глаза завязаны, вы видите только врагов, находящихся рядом с вами.
 - No Blindfolds
 Без повязок на глаза
 - In most cases you will not get blindfolded, except for cloth blindfolds which can be escaped easily.
-В большинстве случаев вам не будут завязывать глаза, за исключением матерчатых повязок, которые можно легко снять.
+В большинстве случаев вам не будут завязывать глаза, за исключением матерчатых повязок, которые легко снять.
 
 
 - Total Blackout
@@ -1131,11 +1244,11 @@ Particle FX у Кляпа
 - Poor Vision
 Плохое зрение
 - Vision radius is significantly reduced.
-Радиус обзора значительно уменьшается.
+Радиус обзора значительно сокращён.
 - Keen Hearing
 Острый слух
 - You can more easily hear enemies and their movements through walls.
-Вам будет легче услышать врагов и их передвижения сквозь стены.
+Вы легче слышите врагов и их передвижения сквозь стены.
 - Archer's Eye
 Глаз лучника
 - +2 vision radius.
@@ -1143,57 +1256,57 @@ Particle FX у Кляпа
 - Night Owl
 Ночная сова
 - Your vision in dark areas is improved.
-Ваше зрение в темных местах улучшается.
+Ваше зрение в тёмных местах улучшается.
 - Fear of the Dark
 Ужас во тьме
 - Your vision in dark areas is reduced.
-Ваше зрение в темных местах ухудшается.
+Ваше зрение в тёмных местах ухудшено.
 
 
 - Mutually Assured Darkness
 Обоюдоострая темнота
 - Darkness is twice as effective in hiding from enemies, but your night vision is also reduced.
-Темнота в два раза эффективнее для укрытия от врагов, но ваше ночное зрение также ухудшается.
+Темнота вдвое эффективнее для укрытия от врагов, но ваше ночное зрение ухудшено.
 - Stalker
 Сталкер
 - Darkness is twice as effective in hiding from enemies.
-Темнота в два раза эффективнее для укрытия от врагов.
+Темнота вдвое эффективнее для укрытия от врагов.
 
 
 - Not a Doll
 Я не кукла
 - You may still enter Doll Terminals, but enemies will not force you onto doll stands.
-Вы все еще можете войти в Кукольные Терминалы, но враги не поместят вас на кукольные стенды.
+Вы всё ещё можете входить в Кукольные Терминалы, но враги не смогут поместить вас на кукольные стенды.
 - No Nurses
-Никаких медсестёр
+Без медсестёр
 - Nurses will not appear in the game.
 Медсестры не будут появляться в игре.
 - No Police
-Никакой полиции
+Без полиции
 - Police-based bounty hunters will not appear in the game.
-Основанные на полиции охотники за головами не будут появляться в игре.
+Связанные с полицией охотники за головами не будут появляться в игре.
 - No Brats
-Никаких сорванцов
+Без сорванцов
 - Submissive enemies won't run away from you.
-Покорные враги не убегают от вас.
+Покорные враги не будут убегать от вас.
 - Brats Only
 Только сорванцы
 - Submissive enemies will always be bratty and force you to catch them.
-Покорные враги всегда будут дерзкими и заставят вас ловить их.
+Покорные враги всегда ведут себя дерзко и заставляют вас ловить их.
 
 
 - More Tape
 Больше лент
 - Tape-wielding enemies (such as Tape Bots) occur more frequently.
-Враги, имеющие при себе ленты (такие как ленточные боты) встречаются чаще.
+Враги, с лентами (такие как ленточные боты) встречаются чаще.
 - Less Tape
 Меньше лент
 - Fewer tape-related enemies will appear, although this does not remove tape entirely.
-Будет появляться меньше врагов, имеющих при себе ленты, хотя это и не удаляет ленты полностью.
+Враги с лентами будут появляться реже, хотя это не убирает ленты из игры полностью.
 
 
 - No Tape Bots
-Никаких ленточных ботов
+Без ленточных ботов
 - The old civilization did not use tape-based restraints in their capture robots.
 Древняя цивилизация не использовала в своих роботах захвата ограничители на основе лент.
 - Less Cable Bots
@@ -1211,13 +1324,13 @@ Particle FX у Кляпа
 
 
 - More Encasement
-Больше Оболочек
+Больше оболочек
 - Enemies that encase you (e.g slimes, latex cubes) will appear more frequently.
-Враги, которые могут заключить вас в Оболочку (например слаймы, латексные кубы), будут появляться чаще.
+Враги, способные заключить вас в оболочку (например слаймы, латексные кубы), будут появляться чаще.
 - Less Encasement
-Меньше Оболочек
+Меньше оболочек
 - Fewer encasement-related enemies will appear, although this does not remove them entirely.
-Будет появляться меньше врагов, связанных с Оболочками, хотя это не устранит их полностью.
+Будет появляться меньше врагов, связанных с оболочками, хотя это не устранит их полностью.
 
 
 - More Bubbles
@@ -1233,9 +1346,9 @@ Particle FX у Кляпа
 
 
 - Trainee
-Стажер
+Стажёр
 - Your training has given you access to the powers of the Trainee class. (Aroused mode only)
-Ваши тренировки дали вам доступ к способностям класса Стажер. (Только похотливый режим)
+Ваши тренировки дали вам доступ к способностям класса Стажер. (Только в похотливом режиме)
 - Fighter
 Воительница
 - Your training has given you access to the powers of the Fighter class.
@@ -1269,29 +1382,29 @@ Particle FX у Кляпа
 
 
 - Butterfingers
-Скользкие пальцы
+Беспомощные руки
 - Having arms bound prevents you from using your hands to struggle or unlock yourself.
-Ограничители на предплечьях мешают вам использовать руки при борьбе или разблокировке.
+Связанные руки мешают вам использовать руки для борьбы или освобождения.
 
 
 - Weak Grip
 Слабая хватка
 - Having arms bound prevents you from holding weapons or potions.
-Ограничители на предплечьях мешают вам удерживать зелья или оружие.
+Связанные руки мешают вам держать оружие или зелья.
 
 
 - You kneel down so you can reach the potion with your mouth...
-Вы встаете на колени, чтобы добраться до зелья своим ротом ...
+Вы опускаетесь на колени, чтобы добраться до зелья своим ротом ...
 
 
 - Can't Hear You!
 Не слышу тебя!
 - Being gagged blocks you from casting verbal spells regardless of gag power.
-Любой кляп, вне зависимости от своей строгости, лишает вас возможности произносить заклинания.
+Любой кляп, вне зависимости от своей силы, лишает вас возможности произносить Словесных заклинания.
 - Smooth Talker
 Язык без костей
 - Being gagged does not increase your miscast chance for verbal spells unless fully gagged, and reduces gag power by 20%.
-Если вам заткнули рот, это не увеличивает ваш шанс осечки при произнесении Словесных заклинаний, если только ваш рот не заткнут полностью, также уменьшает силу кляпа на 20%.
+Если вам заткнули рот, это не увеличивает ваш шанс осечки при произнесении Словесных заклинаний, если только ваш рот не заткнут полностью, а также уменьшает силу кляпа на 20%.
 
 
 - Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
@@ -1343,11 +1456,11 @@ Particle FX у Кляпа
 - Mana Burst
 Взрыв маны
 - While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge.
-Когда вы возбуждены на 100%, вы получаете -100% к шансу осечки, но большая единоразовая трата маны может вызвать оргазм.
+При 100% возбуждении вы получаете -100% к шансу осечки, но слишком большая трата маны за один раз может довести до оргазма.
 - Arousing Magic
 Возбуждающая магия
 - Your magic is powered by otherworldly distracting energies. Casting spells increases distraction based on the mana spent.
-Ваша магия пропитана потусторонними возбуждающими эманациями. Применение заклинаний увеличит ваше возбуждение, основываясь на кол-ве затраченной маны.
+Ваша магия пропитана потусторонними возбуждающими энергииями. Применение заклинаний увеличит ваше возбуждение, в зависимости от затраченной маны.
 - Clearheaded
 Чистый разум
 - Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
@@ -1357,7 +1470,7 @@ Particle FX у Кляпа
 - Unidentified Wear
 Неопознанная экипировка
 - Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
-Зачарованные (и проклятые) предметы экипировки и оружие остаются неопознанными до тех пор, пока они не будут использованы.
+Зачарованные (и проклятые) предметы экипировки и оружие остаются неопознанными пока их не используют.
 - Unknown
 'Неопознано'
 
@@ -1371,9 +1484,9 @@ Particle FX у Кляпа
 - DAMAGEDEALT electric damage conducts to you!!!
 Вы получаете DAMAGEDEALT урона от электричества!!!
 - The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
-Давление раздувает пламя на вас, нанося дополнительно DAMAGEDEALT урона от огня!
+Давление раздувает пламя вокруг вас, нанося дополнительно DAMAGEDEALT урона от огня!
 - The RestraintName comes off more easily in the presence of water!
-С наличием воды RestraintName снимается гораздо легче!
+В воде RestraintName снимается гораздо легче!
 - You slip on the floor!
 Вы поскользнулись!
 - The air around you is ablaze! (-DamageDealt SP)
@@ -1381,7 +1494,7 @@ Particle FX у Кляпа
 - The Goddess of Illusions shrouds you in shadows!
 Богиня Иллюзий окутывает вас тенями!
 - You struggle against your bonds, but a magical force resists!
-Вы боретесь со своими оковами, но вам мешает магическая сила!
+Вы боретесь с оковами, но вам препятствует магическая сила!
 - The ropes squeeze you tighter and tighter...
 Веревки всё туже и туже сжимаются вокруг вас...
 - Your body sinks deeper into a sea of bindings...
@@ -1399,13 +1512,13 @@ Particle FX у Кляпа
 - Your body struggles to move as you feel a power sealing you!
 Ваше тело изо всех сил пытается вырваться, но вы чувствуете, как какая-то сила запечатывает вас!
 - The sarcophagus' door slides open as you are slowly pulled inside...
-Створки саркофага открываются, и вас медленно втягивает внутрь...
+Створки саркофага открываются, и вас медленно затягивает внутрь...
 - The hands squeeze you tightly as a shadowy portal appears...
-Руки крепко сжимают вас и появляется темный портал...
+Руки крепко сжимают вас и возникает тёмный портал...
 - More hands clasp over your body as they pull you toward the portal...
-Еще больше рук обхватывают ваше тело, и они тянут вас к порталу...
+Ещё больше рук обхватывают ваше тело и тянут вас к порталу...
 - You struggle to breath as you are pulled into the mass of shadow hands...
-Вам становится трудно дышать, вас всё глубже затягивает в массу теневых рук...
+Вам становится трудно дышать, и вас всё глубже затягивает в массу теневых рук...
 - The world goes dark...
 Мир погружается во тьму...
 - You wake up in a different place...
@@ -1445,9 +1558,9 @@ EnemyName произносит командное слово в сторону T
 - Magic Armor:
 Магическая защита:
 - In the Shadows: You are harder to see.
-В тенях: Вас труднее увидеть.
+В тенях: Вас труднее заметить.
 - Invisible: You are very difficult to see.
-Невидимость: Вас очень трудно увидеть.
+Невидимость: Вас очень трудно заметить.
 - Quickness: Your next movement is so fast it doesn't advance a turn.
 Ускорение: Ваше следующее движение будет очень быстрым и не потратит ход.
 - All Damage Reduction:
@@ -1505,11 +1618,11 @@ EnemyName произносит командное слово в сторону T
 - Your mouth is free for potion-drinking and spellcasting activities.
 Ваш рот свободен для питья зелий и колдовства.
 - Your vision is clear.
-Ваше зрение не затруднено.
+Ваше зрение ясное.
 - Your hands are unobstructed.
 Ваши руки свободны.
 - Your arms are free to move as you please.
-Ваши руки свободны двигаться так, как вам заблагорассудится.
+Ваши руки свободны и могут двигаться, как вам захочется.
 - Your legs are free and unimpeded.
 Ваши ноги свободны и ничем не стеснены.
 - You are gagged! Verbal miscast chance is increased and your potions are less effective!
@@ -1563,7 +1676,7 @@ EnemyName произносит командное слово в сторону T
 - Chilled: The cold makes it hard to move! You are slowed.
 Замерзшая: Из-за холода вам трудно двигаться! Вы замедлены.
 - Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
-В слизи: Она липка и плотная! Вы замедлены на 30% и более уязвимы к урону от слизи.
+В слизи: Она липкая и плотная! Вы замедлены на 30% и более уязвимы к урону от слизи.
 - Unsteady: You're on loose footing. You are easier to hit and are slowed.
 Неустойчивая: вы находитесь на шаткой поверхности. По вам легче попасть, и вы замедляетесь.
 - Ignore Ice Tiles
@@ -1613,7 +1726,7 @@ EnemyName произносит командное слово в сторону T
 - Lesser Invisibility: It is harder for enemies to see you.
 Слабая невидимость: Врагам труднее вас увидеть.
 - FULL POWER: Cutting power increased.
-ПОЛНАЯ СИЛА: Сила разрезания увеличена.
+Полная сила: Сила разрезания увеличена.
 - Graceful: Struggling power increased.
 Грациозность: Увеличена эффективность борьбы.
 - Iron Blood: Reduced melee cost, increased mana costs.
@@ -1625,9 +1738,9 @@ EnemyName произносит командное слово в сторону T
 - We did it! We made ourselves invisible--mmmmph!!!
 Мы сделали это! Мы сделали себя невидимыми--ммммфх!!!
 - You are not currently attempting to disguise yourself. Click to reenable.
-В данный момент вы не пытаетесь маскироваться. Нажмите, активировать заново.
+В данный момент вы не пытаетесь маскироваться. Нажмите, чтобы активировать заново.
 - Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
-Зачарование с ограничителей снято, теперь вы можете разрезать их как не-зачарованные.
+Зачарование с ограничителей снято, теперь их можно разрезать как обычные, не зачарованные.
 - You can launch another leather restraint instantly!
 Вы можете мгновенно запустить еще один кожаный ограничитель!
 - You can launch another Sagitta instantly!
@@ -1637,9 +1750,9 @@ EnemyName произносит командное слово в сторону T
 - You have stored willpower.
 У вас есть сохраненная сила воли.
 - You have consumed a mote of essence, granting miscast chance reduction.
-Вы израсходовали частицу сущности, что снижает вероятность осечки.
+Вы использовали частицу сущности, которая снижает шанс осечки.
 - You recapture an essence mote and concentrate on its essence!
-Вы возвращаете частицу сущности и концентрируетесь на ее существе!
+Вы возвращаете частицу сущности и сосредотачиваетесь на её энергии!
 - Choose an essence mote to absorb.
 Выберите частицу сущности для поглощения.
 
@@ -1673,7 +1786,7 @@ EnemyName произносит командное слово в сторону T
 - Exciting: Orbs give random spells
 Волнение: Сферы дают случайные заклинания
 - Kinky: No save codes, orbs give random spells, start with very little
-Извращение: Нет кодов сохранения, шары дают случайные заклинания, начинайте с меньшего
+Извращение: Нет кодов сохранения, шары дают случайные заклинания, начинайте с минимальными ресурсами
 
 
 - Journal
@@ -1774,34 +1887,34 @@ EnemyName произносит командное слово в сторону T
 Сильное Замедление
 - Immobile
 Обездвиживание
-### DP: PERCENT%
-
+- DP: PERCENT%
+DP: PERCENT%
 - DP: CURRENT/MAX (PERCENT% Desire)
 DP: CURRENT/MAX (PERCENT% Желание)
-### SP: CURRENT/MAX
-
+- SP: CURRENT/MAX
+SP: CURRENT/MAX
 - Willpower: CURRENT/MAX
 Сила воли: CURRENT/MAX
-### MP: CURRENT/MAX
-
+- MP: CURRENT/MAX
+MP: CURRENT/MAX
 - Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool.
 Мана медленно восстанавливается из резерва, равного POOLMANA. Пейте зелья, чтобы восстановить резерв.
 - Your Desire is the baseline Distraction you decay toward, and is increased by distracting things.
-Ваше Желание определяет базовое Возбуждение, к которому то стремится. Оно усиливается за счет возбуждающих вещей.
+Ваше Желание определяет базовое Возбуждение, к которому то стремится. Оно усиливается за счёт возбуждающих вещей.
 - Stamina recovers more quickly when you aren't spending it.
 Выносливость восстанавливается быстрее, когда вы её не расходуете.
 - Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape.
 Сила воли восстанавливается с помощью еды, сна и зелий. Освободиться без силы воли становится куда сложнее.
 - Charge is used to power various magic items and weapons.
 Заряд используется для усиления различных магических предметов и оружия.
-### WP: CURRENT/MAX
-
+- WP: CURRENT/MAX
+WP: CURRENT/MAX
 - Charge: PERCENT
 Заряд: PERCENT
 - Use Potion
 Выпить зелье
-###  MP
-
+- MP
+MP
 - Go to sleep
 Спать
 - Call for help!
@@ -1930,6 +2043,8 @@ DP: CURRENT/MAX (PERCENT% Желание)
 Отмена
 - Filter
 Фильтр
+- Back to Character Setup
+Вернуться к настройке персонажа
 
 
 - DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
@@ -2075,7 +2190,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 
 
 - You climb down the stairs. The passage closes behind you.
-Вы спускаетесь по лестнице, а проход закрывается за вами.
+Вы спускаетесь по лестнице и проход закрывается за вами.
 - You climb back up the stairs.
 Вы поднимаетесь обратно по лестнице.
 - You can't climb down until you get out of this leash...
@@ -2099,7 +2214,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - The Bellows
 Сильфоны
 - Rundown Laboratory
-Захудалая лаборатория
+Обветшалая лаборатория
 - Forgotten Garden
 Забытый сад
 - Coastal Grotto
@@ -2121,7 +2236,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - Crystal Cave
 Кристальная пещера
 - Cavern
-Каверна
+Пещера
 - Orrery
 Планетарий
 - Training Center
@@ -2307,7 +2422,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - Legendary
 Легендарное
 - Supreme
-Наследное
+Величайшее
 - Mythic
 Мифическое
 - Angelic
@@ -2319,7 +2434,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - Quantity:
 Количество:
 - Use One
-Использовать 1
+Использовать одно
 
 
 - way of the fist
@@ -2351,7 +2466,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - The prisoners are kept in revealing outfits to keep them from hiding things.
 Заключенных содержат в откровенной одежде, чтобы они ничего не смогли спрятать.
 - Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold.
-Разработана для того, чтобы затруднить сокрытие оружия. Делает вас более заметной и уязвимой к холоду.
+Разработана так, чтобы скрыть оружие было сложнее. Делает вас более заметной и уязвимой к холоду.
 
 
 - Wolfgirl Suit
@@ -2451,9 +2566,9 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - Scroll of Sleight
 Свиток ловкости
 - The scroll makes your memories of arm movements clear as day!
-Свиток делает ваши воспоминания о свободных руках ясными, будто бы это было вчера!
+Свиток делает ваши воспоминания о движениях рук такими ясными, будто это было вчера!
 - A scroll used by thieves to make their plays in secret.
-Свиток, используемый ворами для их воровских игрищ.
+Свиток, используемый ворами для их воровских игр.
 - Allows you to cast Arm spells without components for 12 turns.
 Позволяет применять жестовые заклинания без рук в течение 12 ходов.
 
@@ -2507,7 +2622,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - You hold the crystal and the power flows into you.
 Вы сжимаете кристалл, и в вас вливается сила.
 - You're not sure how they charged these...
-Вы не знаете точно, как они их заряжали...
+Вы точно не знаете, как они их заряжали...
 - A mysterious device used by the old civilization, powering their ancient devices.
 Таинственное устройство, используемое древней цивилизацией. Приводит в действие их древние устройства.
 
@@ -2523,7 +2638,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - You are not sure how to charge this back up.
 Вы не знаете точно, как зарядить его вновь.
 - A mysterious device used by the old civilization, now depleted.
-Таинственное устройство, использовавшееся древней цивилизацией, ныне разряженное.
+Таинственное устройство, используемое древней цивилизацией, теперь разряжено.
 
 
 - Gold
@@ -2549,7 +2664,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - A magical blade, suitable against ghosts.
 Волшебный клинок, предназначенный для борьбы с призраками.
 - Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
-Наносит урон тьмой. Может перерезать зачарованные веревки. В левой руке: Увеличивает базовый критический показатель всего магического урона на 20%.
+Наносит урон тьмой. Может перерезать зачарованные верёвки. В левой руке: увеличивает базовый критический показатель всего магического урона на 20%.
 - Bola
 Болас
 - A pair of weights attached to a rope. Can be thrown.
@@ -2629,21 +2744,21 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - You ready a smoke bomb...
 Вы подготавливаете дымовую бомбу...
 - A type of pyrotechnic often employed by saboteurs. Can be rolled and used without hands.
-Разновидность пиротехники, часто используемой диверсантами. Может катиться и активироваться без помощи рук.
+Разновидность пиротехники, часто используемый диверсантами. Может катиться и активироваться без помощи рук.
 - Creates a smoke screen lasting 8 turns. You are harder to see while inside the smoke.
 Создает дымовую завесу на 8 ходов. Вас труднее разглядеть, пока вы находитесь внутри дыма.
 - Smoke Bomb x3
 Дымовая бомба х3
 - Flash Bomb
-Световая бомба
+Световая граната
 - Flash Bomb x3
-Световая бомба х3
+Световая граната х3
 - Flashbang x3
 Светошумовая граната х3
 - You toss the flash bomb and the fuse starts ticking...
-Вы бросаете световую бомбу, и взрыватель начинает тикать...
+Вы бросаете световую гранату, и взрыватель начинает тикать...
 - You ready a flash bomb...
-Вы подготавливаете световую бомбу...
+Вы подготавливаете световую гранату...
 - A type of explosive used by agents. Blinds nearby targets without causing significant injury.
 Разновидность взрывчатки, используемой агентами. Ослепляет близлежащие цели, не причиняя значительных травм.
 - Blinds for 20 turns in a 3x3 area.
@@ -2695,7 +2810,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 - It feels slimmy.
 Весьма скользкая на ощупь.
 - Creates a 3x3 area on you for 9 turns. Gives +30 Magic Armor to friendlies, halves enemy speed.
-Создает вокруг вас зону 3х3 на 9 ходов, которая повышает магическую защиту вас и ваших союзников на 30, а также вдвое снижает скорость врагов.
+Создает вокруг вас зону 3х3 на 9 ходов, которая повышает магическую защиту вас и союзников на 30 и вдвое снижает скорость врагов.
 - Ice Rune
 Руна Льда
 - You smash the rune in front of you, and icicles pierce through the floor!
@@ -2805,7 +2920,7 @@ ID Куклы
 - Staff of Frostbite
 Посох обморожения
 - A magical weapon with a 33% chance to freeze the target for 4 turns.
-Магическое оружие с 33% шансом заморозить цель на 4 хода.
+Магическое оружие с шансом 33% заморозить цель на 4 хода.
 - +20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn. Offhand: Applies ice damage bonus.
 +20% урона льдом. Наносит урон льдом. Замороженные враги получают 5 единиц ледяного урона за ход. В левой руке: Применяется бонус к урону льдом.
 - Staff of Binding
@@ -2869,7 +2984,7 @@ ID Куклы
 
 
 - You pick up a staff of the storm. It tingles.
-Вы подбираете Посох бурь, и он слабенько ударяет вас током.
+Вы подбираете Посох бурь, и он слегка искрит у вас в руках.
 - You pick up a staff of flames. It feels warm.
 Вы подбираете Огненный посох. Он тёплый.
 - You pick up a staff of slime.
@@ -2881,7 +2996,7 @@ ID Куклы
 - Crop
 Хлыст
 - For those unruly subs.
-Для недисциплинированных саб.
+Для недисциплинированных подчинённых.
 - Deals pain damage. Highly distracting. Offhand: +5 pain damage on attack for 3 stamina.
 Наносит урон Болью. Сильно возбуждает. В левой руке: +5 урона болью при атаке (потребляет дополнительно 3 выносливости).
 - You pick up a riding crop.
@@ -2936,8 +3051,6 @@ ID Куклы
 Наносит дробящий урон. Наносит дополнительный урон от электрического тока в небольшой зоне при Зарядке, до +40. Экипированный дает +100 к сопрот. электричеству. (Сопротивления дается и если держать в левой руке)
 - You pick up Stormbreaker.
 Вы подбираете Разрушитель Бурь.
-
-
 
 
 - Rapier
@@ -2999,7 +3112,7 @@ ID Куклы
 - The universal key.
 Универсальный ключ.
 - Also assists in cutting restraints when equipped.
-Когда экипирован, также помогает разрезать удерживающие устройства.
+Когда экипирован, также помогает разрезать ограничители.
 - A go-to for travelers and adventurers.
 Отличный 'мультитул' для путешественников и искателей приключений.
 - Deals slash damage. Offhand: +10 Block
@@ -3197,7 +3310,7 @@ ID Куклы
 - You found a hook you can use to pull on straps and loops.
 Вы нашли крючок, с помощью которого можно развязать ремешки и петли.
 - You have access to something sharp and can attempt to Cut restraints, or Remove more effectively.
-У вас есть доступ к чему-нибудь острому, и вы можете попытаться Разрезать ограничители, или Удалить с лучшей эффективностью.
+У вас есть доступ к чему-нибудь острому и вы можете попытаться разрезать ограничители, или удалить их с лучшей эффективностью.
 - You found a corner to help manipulate buckles and snaps with.
 Вы нашли уголок, с помощью которого можно попытаться расстегнуть пряжки и защелки.
 - You found a crack and could maybe wedge a knife or tool into it to keep it still.
@@ -3233,7 +3346,7 @@ ID Куклы
 
 
 - You feel a gentle buzz...
-Вы чувствуете нежную вибрацию...
+Вы чувствуете лёгкую вибрацию...
 - Your toys tease you gently...
 Ваши игрушки нежно дразнят вас...
 - Your toys are vibrating.
@@ -3241,7 +3354,7 @@ ID Куклы
 - Your toys are buzzing strongly!
 Ваши игрушки сильно вибрируют!
 - Your toys vibrate intensely!
-Ваши игрушки словно бы ходят ходуном!
+Ваши игрушки словно ходят ходуном!
 - The vibration is torturous!
 Эти вибрации мучительны!
 
@@ -3265,21 +3378,21 @@ ID Куклы
 
 
 - It appears to be a receptacle
-Похоже, сюда можно что-то вставляется.
+Похоже, сюда можно что-то вставить.
 - Place live crystal
 Поместить заряж. кристалл
 - Take the crystal
 Взять кристалл
 - You place the crystal into the receptacle and it lights up!
-Вы помещаете кристалл в сокет, и он загорается!
+Вы помещаете кристалл в подставку, и он загорается!
 - You take the crystal from the receptacle and all goes dark.
-Вы достаете кристалл из сосуда, и всё вокруг погружается во тьму.
+Вы достаете кристалл из подставки, и всё вокруг погружается во тьму.
 - You try to take the crystal but the cage around it is secured with a magic purple lock.
 Вы пытаетесь забрать кристалл, но клетка вокруг него заперта магическим фиолетовым замком.
 - Place spent crystal
 Поместить разряж. кристалл
 - VALUE gold vanishes from your satchel as the receptacle explodes and your crystal is recharged!
-VALUE золота исчезает из вашей сумки, после чего сокет передаёт энергию в кристалл, заряжая его!
+VALUE золота исчезает из вашей сумки, после чего подставка передаёт энергию в кристалл, заряжая его!
 - Nothing seems to happen
 Кажется, ничего не происходит
 
@@ -3291,7 +3404,7 @@ EnemyName хватает вас и тянет за собой!!!
 - The EnemyName misses you!
 EnemyName промахивается по вам!
 - You duck under the EnemyName's attack!
-Вы подныривает под атаку EnemyName!
+Вы подныриваете под атаку EnemyName!
 
 
 - You hear a door creak open nearby!
@@ -3439,7 +3552,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 - Air Mote
 Воздушная частица
 - The air mote returns to dust.
-Воздушная частица превращается в пыль.
+Воздушная частица растворяется в воздухе.
 - Water Mote
 Водяная частица
 - The water mote turns into a puddle.
@@ -3451,7 +3564,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 - Shadow Warrior
 Теневой Воин
 - The shadow warrior screeches as it vanishes into mist.
-Теневой Воин визжит, исчезая в тумане.
+Теневой Воин кричит, исчезая в тумане.
 - Allied Golem
 Голем
 - The words vanish from the golem's forehead as it crashes down.
@@ -3599,7 +3712,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 - Water Elemental
 Водный элементаль
 - The water elemental melts into a pool of water.
-Водный элементаль тает, превращаясь в лужу воды.
+Водный элементаль превращается в лужу воды.
 - The water elemental's song compels you to be bound! (+RestraintAdded)
 Песня водного элементаля принуждает вас надеть ограничители! (+RestraintAdded)
 - The water elemental sings a song of helplessness. (DamageTaken)
@@ -3863,7 +3976,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 - The Poison Dragonheart thrums her claws across your figure! (DamageTaken)
 Отравитель Драконьего Сердца проводит когтями по вашему телу! (DamageTaken)
 - The Dragonheart locks your restraint using natural magics! (DamageTaken)
-Представитель Драконьего Сердца запирает ваши ограничители, используя магию природы! (DamageTaken)
+Отравитель Драконьего Сердца запирает ваши ограничители, используя магию природы! (DamageTaken)
 
 
 - Crystal Dragonheart
@@ -3965,7 +4078,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 - The Dragonheart Rebel apprehends you! (+RestraintAdded)
 Мятежница Драконьего Сердца сковывает вас! (+RestraintAdded)
 - 'En garde!'
-'Защищайся!'
+'На страже!'
 - The Dragonheart Rebel squeezes your body! (DamageTaken)
 Мятежница Драконьего Сердца стискивает ваше тело! (DamageTaken)
 
@@ -3985,7 +4098,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 
 - Highly-Motivated Doll
-Высокомотивированная кукла
+Целеустремлённая кукла
 - The doll falls to the ground, moaning loudly.
 Кукла падает на землю, громко постанывая.
 - The doll rubs her body against yours. You can feel the conduction. (DamageTaken)
@@ -4057,15 +4170,15 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 
 - Wolfguard
-Волчья стражница
+Стражница-волчица
 - The wolfguard's suit punishes her for poor performance!
-Костюм волчьей стражницы наказывает её за плохую работу!
+Костюм стражницы-волчицы наказывает её за плохую работу!
 - The wolfguard lunges at you and strikes you!
-Волчья стражница набрасывается на вас и бьёт изо всех сил!
+Стражница-волчица набрасывается на вас и бьёт изо всех сил!
 - The wolfguard's escort drones shock you! (DamageTaken)
-Дроны сопровождения волчьей стражницы бьют вас электрическим током! (DamageTaken)
+Дроны сопровождения стражницы-волчицы бьют вас электрическим током! (DamageTaken)
 - The wolfguard's escort drones deploy some restraints! (+RestraintAdded)
-Дроны сопровождения волчьей стражницы фиксируют на вас ограничители! (+RestraintAdded)
+Дроны сопровождения стражницы-волчицы фиксируют на вас ограничители! (+RestraintAdded)
 
 
 - Wolfgirl Trainer
@@ -13659,7 +13772,7 @@ EnemyName умудряется убежать с вашими вещами!
 - Start with nothing to your name. For those who want a challenge.
 Начните с чистого листа. Для тех, кто хочет челлендж.
 - You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
-Вы маг, но еще не закончили свое формальное 'обучение'. Требуется режим 'Похотливая'.
+Вы маг, но еще не закончили свое формальное "обучение". Требуется режим "Похотливая".
 
 
 - Spell Choice:
@@ -21972,6 +22085,9 @@ ENEMYNAME превращает близлежащих кукол в своих �
 Сохранить изменения?
 - Back to Menu
 Вернуться в меню
+- Back to Game Setup
+Вернуться к настройке игры
+
 - Back to Wardrobe
 Вернуться в гардероб
 - Confirm Strip?
@@ -27337,7 +27453,7 @@ FаshiоnKiguMаskSmilе
 
 
 - Targe
-Тарджет
+Щит
 - Hide behind it while you still can.
 Прячьтесь за ним, пока еще можете.
 - +60 Block. Deals crush damage and stuns for 4 turns. Offhand: Gives the same block bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
@@ -27670,12 +27786,8 @@ FаshiоnKiguMаskSmilе
 Возможна разборка
 - Raw Material
 Исходный материал
-- Armbinders
-Армбиндеры
 - Legbinders
 Легбиндеры
-- Boxbinders
-Сумки для рук
 - Devices
 Устройства
 - Toys
@@ -29946,8 +30058,147 @@ X-Ray видение
 Настройки игры
 - Challenge Settings
 Настройки сложности
+- Use Safeword
+Использовать сейфворд
+- Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. 
+Снимает все ограничения с персонажа и помещает их в инвентарь, обнуляет уровни проклятия и трансформации, а также телепортирует вас к началу уровня. 
+- Only usable ingame.
+Используется только в игре.
+- Consent Settings
+Настройки ограничений
 
 
+- Checked content will appear at the normal ingame rate.
+Отмеченный контент будет появляться с обычной скоростью в игре.
+- Red content (x) is removed from the game
+Красный контент (x) удалён из игры.
+- Yellow content (-) occurs significantly less often
+Жёлтый контент (-) появляется значительно реже.
+- Green content (+) will appear more often!
+Зелёный контент (+) будет появляться чаще!
+- Due to game limitations, not all types of content can be fully blocked.
+Из-за ограничений игры не все типы контента могут быть полностью заблокированы.
+- |||This item will appear ingame as normal.
+|||Этот предмет будет появляться в игре как обычно.
+- |||This item is marked as Red, which prevents it from appearing in the game.
+|||Этот предмет отмечен как "Красный", что предотвращает его появление в игре.
+- |||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention.
+|||Этот предмет отмечен как "Жёлтый", что снижает его появление, но не исключает полностью.
+- |||This item is marked as Green, which will make it appear more often.
+|||Этот предмет отмечен как «Зелёный», что заставит его появляться чаще.
+- Front Plugs
+Передние игрушки
+- Allows plugs to be inserted into the front slot of your character.
+Даёт возможность надеть игрушки в передние отверстие персонажа.
+- Rear Plugs
+Задние игрушки
+- Allows plugs to be inserted into the rear slot of your character.
+Даёт возможность надеть игрушки в задние отверстие персонажа.
+- Forced Chastity Bras
+Бюстгальтеры целомудрия
+- Allows chastity bras to be forced onto the player character, which prevent access to nipples and lock toys in.||If marked as yellow, chastity bras will not appear unless the player is wearing nipple toys.
+Позволяет надевать на персонажа принудительные бюстгальтеры целомудрия, которые блокируют доступ к соскам и фиксируют игрушки внутри.||Если предмет отмечен как "Жёлтый", бюстгальтеры целомудрия не будут появляться, если персонаж не носит игрушки для сосков.
+- Forced Chastity Belts
+Пояс целомудрия
+- Allows chastity belts to be forced onto the player character, which prevent access to the lower regions and lock toys in.||If marked as yellow, chastity belts will not appear unless the player is wearing toys or plugs on the lower body.
+Позволяет надевать на персонажа принудительные пояса целомудрия, которые блокируют доступ к интимной области и фиксируют игрушки внутри.||Если предмет отмечен как "Жёлтый", пояса целомудрия не будут появляться, если персонаж не носит игрушки или затычки на нижней части тела.
+- Tickling
+Щекотка
+- Includes tickling by NPC attacks and tickle torture scenarios.||If marked as Yellow, spells and weapons that deal tickle damage to the player will deal Plush damage instead. Player attacks will still deal tickle damage.
+Включает щекотку от атак NPC и сценарии пыток щекоткой.||Если предмет отмечен как «Жёлтый», заклинания и оружие, наносящие щекотливый урон игроку, будут наносить вместо этого ощупывающий урон. Атаки игрока всё ещё будут наносить щекотный урон.
+- Painful Shocks
+Болезненные разряды
+- Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
+Заменяет большинство случаев "Электрического" урона игроку на "Эро-урон", вызывая удовольствие вместо боли.
+- Brats
+Непослушные
+- Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them.
+NPC с наклонностями к подчинению иногда "убегают" от игрока, даже если не враждебны, маня его догнать и наказать.
+- Encasement
+Обволакивание латексом
+- Affects the spawn rate of slimes and latex witches.
+Влияет на частоту появления слаймов и латексных ведьм.
+- Tape Bondage
+Связывание лентой
+- Affects the spawn rate of tape drones and other enemies that use tape to restrain the player.
+Влияет на частоту появления дронов с лентой и других врагов, использующих ленту для связывания игрока.
+- Armbinders
+Армбиндеры
+- Affects the frequency of armbinders that force the elbows close together.
+Влияет на частоту появления армбиндеров, которые стягивают руки, сводя локти вместе.
+- Boxbinders
+Сумки для рук
+- Affects the frequency of boxbinders that force the arms behind the back.
+Влияет на частоту появления сумок для рук, которые жёстко фиксируют руки за спиной.
+- Straitjackets
+Смирительные рубашки
+- Affects the frequency of straitjackets.
+Влияет на частоту появления смирительных рубашек.
+- Yokes and Spreaders
+Металлические фиксаторы
+- Affects the frequency of metal yokes, fiddles, and spreader bars.
+Определяет, как часто появляются металлические фиксаторов.
+- Petsuits
+Костюмы питомцев
+- Affects the frequency of pet crawlers that force the player to crawl on their knees and elbows.
+Влияет на частоту появления "Костюмов-питомцев", которые заставляют персонажа ползать на коленях и локтях.
+- Bubbles
+Пузыри
+- Includes bubble restraints, both water and slime-based, but does not affect rubber ball suits or latex spheres.
+Включает ограничения в виде пузырей, как водяных, так и слизевых, но не влияет на костюмы с резиновыми шарами или латексные сферы.
+- Cyber Dollification
+Кибер-куколизация
+- Does not place points where enemies will drop you off to become dollified in the factory level.
+Не создаёт точек для превращения в куклу на уровне фабрики.
+- Invisible Restraints
+Невидимые ограничители
+- Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead.
+Позволяет некоторым призракам накладывать на вас невидимые ограничители. Они связывают вас, даже когда вы видимы.||Если предмет отмечен как "Красный", они будут заменены на удобные призрачные оковы.
+- Sensory Deprivation
+Сенсорная депривация
+- The Sensory Deprivation Hood is a highly restrictive item that deafens the player in addition to blocking most vision.
+Маска лишения органов чувств — крайне ограничивающий предмет, который оглушает персонажа и блокирует большую часть зрения.
+- Kigurumi Masks
+Маски кигуруми
+- Affects full masks that imitate a face, which can be unsettling to some.
+Влияет на полные маски, имитирующие лицо
+- Hoods
+Капюшоны
+- Includes hoods that cover the hair. Does not remove masks that cover the face without affecting hair.
+Включает капюшоны, закрывающие волосы. Не снимает маски, которые закрывают лицо, не влияя на волосы.
+- Full-face Masks
+Маски с полной фиксацией лица
+- Includes force-equipped masks that cover the entire face. This includes encasement, such as from slimes, although does not parts that cover the bottom half of the face as a gag.
+Включает принудительно надетые маски, которые полностью закрывают лицо. Сюда входят ограничения типа слизью, но не считаются элементы, закрывающие только нижнюю часть лица, как кляпы.
+- Blindfolds
+Повязки на глаза
+- Affects the frequency of blindfolds, but not hoods or masks that cover the upper face.
+Влияет на частоту появления повязок на глаза, но не капюшонов или масок, закрывающих верхнюю часть лица.
+- Nurses/Doctors
+Медсестры/Врачи
+- Affects the 'Nurse' enemy and any other medical-related enemy types.
+Влияет на врага "Медсестра" и любые другие типы врагов, связанные с медициной.
+- Police
+Полиция
+- Affects the 'Deputy' enemy and any other police-related enemy types, but not bounty hunters.
+Влияет на врага "Помощник шерифа" и любые другие типы врагов, связанные с полицией, но не на охотников за наградой.
+- Ball Suits
+Надувные костюмы
+- Includes ball suits and inflatable latex spheres that restrain the player.
+Включает шаровые костюмы и надувные латексные сферы, которые ограничивают движения персонажа.
+- Prisoner Text
+Надписи заключённого
+- Allows some restraints to display text such as 'Prisoner' or 'Inmate.'
+Позволяет некоторым ограничениям отображать надписи, такие как "Заключённый" или "Обвиняемый".
+- Allow Menu Ingame
+Разрешить меню в игре
+- Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
+Позволяет использовать это меню в игре (включая кнопку "сохранения"). Установите в "Красный", если вы не хотите иметь возможность открыть это меню после начала игры. Эта настройка не будет активной из существующих сохранений при загрузке из слота.
+
+
+
+- Filter Content:
+Фильтр контента:
 
 
 - Challenge Settings:
@@ -33376,8 +33627,6 @@ AMNT/MAXX Назначено слуг
 Плоский кляп
 - Wrists
 Запястья
-- Encasement
-Чехол
 - Mittens / Tape
 Варежки / Ленты
 - Gloves / Tape
@@ -33723,15 +33972,15 @@ NPC недоступен
 - This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
 Это обычный вход в подземелье.|Обучение находится в начале коридора.
 - This is the alternate entrance to the ancient tombs.|It's harder than the normal entrance.
-Это запасной вход в древние гробницы.|Он сложнее, чем обычный вход.
+Это запасной вход в древние гробницы.|Он сложнее обычного входа.
 - This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random.
-Эта часть подземелья была изменена богиней хаоса.|Порядок зон, через которые вы будете проходить, совершенно случайный.
+Эта часть подземелья изменена богиней хаоса.|Порядок зон, через которые вы будете проходить, совершенно случайный.
 - Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
-Легенда гласит, что в бескрайних джунглях есть тайный храм.|Надень свою фетровую шляпу и найди какое-нибудь сокровище!
+Легенда гласит, что в бескрайних джунглях скрыт тайный храм.|Надень свою приключенческую шляпу и отправляйся искать сокровища!
 - You've gotten lost in an ancient doll processing facility.|This journey features mostly lategame tilesets.
-Вы заблудились в древнем цехе по подготовке кукол.|В этом путешествии представлены в основном локации поздней игры.
+Вы заблудились в древнем комплексе по подготовке кукол.|В этом путешествии в основном используются локации поздней игры.
 - You've gotten lost inside an ancient temple to a kinky goddess.|Will you find your way out, or will you find yourself trapped even deeper?
-Вы заблудились в древнем храме извращенной богини.|Найдете ли вы выход или потеряетесь окончательно?
+Вы заблудились в древнем храме извращенной богини. | Сможете ли вы найти выход или окажетесь затянуты ещё глубже?
 - You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!
 Вы заблудились, блуждая по руинам.|Порядок локаций меняется на противоположный!
 
@@ -34486,6 +34735,8 @@ AMNTx урона SP превышает 50%
 Уровень опасности: Средний|Почитатели Богини Кошек. Посвятив себя защите гробниц от чужаков, они редко идут на переговоры. Некоторые из них обладают высочайшей физической силой, в то время как другие могут даже творить заклинания.||-Обитатели подземелий от Кэтрин Уиллоус
 - Bast Clerics
 Жрицы Баст
+- Breastplate
+Нагрудник
 - Rock-solid and form-fitting.
 Прочный и облегающий.
 - Provides minor protection against enemy attacks. Decreases stealth.
