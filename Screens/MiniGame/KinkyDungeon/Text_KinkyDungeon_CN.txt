@@ -649,6 +649,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KinkyDungeonStat10
 # :: KDPersonalitySub
 # :: KDPlayerTitle_Submissive
+# :: KDSubTitleSub
 - Your submissiveness starts at 100 and cannot go below 70.
 开局顺从级别变为 100 ，并且在游戏中顺从级别不会低于 70。
 - Wanted
@@ -1158,7 +1159,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Breathless
 气喘吁吁
 - Taking chain, poison, and impact damage makes you dizzy.
-受到锁链、毒素和碾压伤害会让你眩晕。
+受到锁链、毒素和钝击伤害会让你眩晕。
 
 
 
@@ -3392,7 +3393,7 @@ Devious Dungeon Challenge 已启用。
 - I have the power! Taking electric damage charges you (1 turn/10dmg).
 赐予我力量吧！受到电击伤害会充能 ( 每1回合/10点伤害 ) 。
 - Deals impact damage. Deals bonus electric damage in an area when charged, up to +40. Gives +100 Electric Resist when held. (can be wielded offhand to apply the Electric Resist)
-造成碾压伤害。充能后，在范围内造成额外最高 40 点电击伤害，装备时提供+100电击抗性。( 可以副手装备以应用电击抗性 )
+造成钝击伤害。充能后，在范围内造成额外最高 40 点电击伤害，装备时提高 100 点电击抗性。（可以副手装备以应用电击抗性）
 - You pick up Stormbreaker.
 你拿起了风暴之锤。
 
@@ -3421,7 +3422,7 @@ Devious Dungeon Challenge 已启用。
 - Do you have what it takes?
 你够格吗？
 - Deals heavy impact damage and knocks the target back 2 spaces. Deals bonus damage to most solid barricades.
-造成碾压伤害并将目标击退 2 格。对大多数坚固路障造成额外伤害。
+造成钝击伤害并将目标击退 2 格。对大多数坚固路障造成额外伤害。
 - You pick up a heavy sledgehammer.
 你拿起重型大锤。
 
@@ -3430,13 +3431,13 @@ Devious Dungeon Challenge 已启用。
 - A crude way of fixing your problems.
 粗暴，有效的问题解决方式。
 - Deals impact damage and knocks the target back.
-造成碾压伤害并将目标击退。
+造成钝击伤害并将目标击退。
 - Flail
 流星锤
 - Very fast and hard to dodge as long as you know what you're doing.
 在行家手中是一把迅猛难防的利器。
 - Also deals 10 damage to targets next to you. Deals impact damage.
-还会对你旁边的单位造成 10 点伤害。造成碾压伤害。
+还会对你旁边的单位造成 10 点伤害。造成钝击伤害。
 - Spear
 矛
 - Speak softly and carry a pointy stick.
@@ -3678,7 +3679,7 @@ Devious Dungeon Challenge 已启用。
 - Latex Projector
 乳胶投射器
 - Deals impact damage. Can be used to spray a '+' shaped pool of slime.
-造成碾压伤害。可用于喷洒“+”形粘液池。
+造成钝击伤害。可用于喷洒十字形粘液池。
 - Spend 15 charge to create a pool of slime that deals 35 glue damage per tile and slows enemies.
 花费 15 点能量来制造一滩粘液，每块造成 35 点胶体伤害并减缓敌人的速度。
 - Magic Axe
@@ -3698,7 +3699,7 @@ Devious Dungeon Challenge 已启用。
 - A blessed censer that distributes pain equally.
 一把将苦痛平等分发的祝福香炉。
 - Deals impact damage. Deals 20 bonus holy damage to the target and enemies near the target.
-造成碾压伤害。对目标和目标附近的敌人造成20点额外的神圣伤害。
+造成钝击伤害。对目标和目标附近的敌人造成 20 点额外的神圣伤害。
 - Magic Spear
 附魔矛
 - Seeks and pierces hearts with ease.
@@ -3710,13 +3711,13 @@ Devious Dungeon Challenge 已启用。
 - Made of a magical, resonant material.
 由神奇的共振材料制成。
 - Deals impact damage and knocks the target back. Helps to bash open restraints while cutting.
-造成碾压伤害并将目标击退。有助于在切割时砸开拘束。
+造成钝击伤害并将目标击退。有助于在切割时砸开拘束。
 - Icebreaker
 破冰锤
 - A frigid magical hammer useful for both climbing up and destroying ice.
 一把冰冷的魔法锤，适合用于攀爬或破冰。
 - Deals impact damage. Deals 3x damage to frozen targets instead of 2x. Triggers Shatter.
-造成碾压伤害，对冰冻的目标造成 3 倍而不是 2 倍伤害，触发粉碎。
+造成钝击伤害，对冰冻的目标造成 3 倍而不是 2 倍伤害，触发粉碎。
 - Dreamcatcher
 ”逐梦者“
 - Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
@@ -5886,7 +5887,7 @@ Ada 屈服于欲望，跌倒在地~
 - Nurse
 护士
 - The Nurse marks her notes and runs off.
-护士检查了她的笔记，然后跑开了。
+护士在笔记本上写了什么，然后跑开了。
 - The Nurse tries to pacify this rowdy patient! (+RestraintAdded)
 护士试图控制这位不安分的病人！(+RestraintAdded)
 - The Nurse adds a lock to keep you from hurting the staff.
@@ -5897,7 +5898,7 @@ Ada 屈服于欲望，跌倒在地~
 - Librarian
 图书管理员
 - The librarian slams her book shut and backs off.
-图书管理员生气的离开了。
+图书管理员“啪”地一声合上书跑开了。
 - The librarian shushes you as she brandishes a restraint! (+RestraintAdded)
 图书管理员挥舞着一件拘束具，让你保持安静！ (+RestraintAdded)
 - The librarian snaps her fingers and sends a lock flying at you!
@@ -12830,7 +12831,7 @@ Ars烟火
 - Witch's Chain
 女巫的锁链
 - Throws a chain that does DamageDealt chain damage. Targets with 50% or more binding take 50 impact damage and are slowed for 4 turns.
-投掷一条造成 DamageDealt 点锁链伤害的链条。对束缚值 50% 及以上的目标造成 50 点碾压伤害并减速 4 回合。
+投掷一条造成 DamageDealt 点锁链伤害的链条。对束缚值 50% 及以上的目标造成 50 点钝击伤害并减速 4 回合。
 - You a hurl a strand of chain!
 你投掷出一条锁链！
 
@@ -13099,7 +13100,7 @@ Ars烟火
 - Tremor
 震颤
 - Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt impact damage. Creates a slowing field after.
-在 Duration 回合内向目标区域中的敌人施加虚弱和减速，并造成 DamageDealt 点碾压伤害。并创建一个减速场。
+在 Duration 回合内向目标区域中的敌人施加虚弱和减速，并造成 DamageDealt 点钝击伤害。并创建一个减速场。
 - You call forth the rage of the earth.
 你唤起了大地之怒。
 - Choose AoE
@@ -13389,7 +13390,7 @@ Ars烟火
 # :: KinkyDungeonSpellBoulder
 # :: KinkyDungeonInventoryItemRock
 - Channel 1 turn to launch a rock that deals DamageDealt impact damage and slows for 4 turns. Blocks up to 80 damage.
-消耗 1 回合发射一块岩石，造成 DamageDealt 点碾压伤害并减速 4 回合，阻挡最多 80 点伤害。
+消耗 1 回合发射一块岩石，造成 DamageDealt 点钝击伤害并减速 4 回合，阻挡最多 80 点伤害。
 - You raise a stone from the ground and kick it forward!
 你用魔法从地上剥离出一块岩石并向前发射！
 
@@ -13398,7 +13399,7 @@ Ars烟火
 - Stone Projectile
 巨石飞弹
 - Kick a summoned rock to turn it into a projectile. Deals DamageDealt impact damage in a 3x3 area and slows for 4 turns.
-射出一块召唤出的巨石。 在 3x3 区域内造成 DamageDealt 点碾压伤害并减速 4 回合。
+射出一块召唤出的巨石。 在 3x3 区域内造成 DamageDealt 点钝击伤害并减速 4 回合。
 - With a solid kick, you launch one of your monoliths forward!
 你射出一块召唤巨石！
 - Choose a monolith to kick
@@ -13409,7 +13410,7 @@ Ars烟火
 # :: KinkyDungeonSpellBigBoulderLaunch
 # :: KinkyDungeonSpellBigBoulder
 - Channel 1 turn to launch a huge slow rock that deals DamageDealt impact damage and slows for 8 turns. AoE, collides with summoned rocks. Blocks up to 200 damage.
-消耗 1 回合发射一块巨大但缓慢的岩石，造成 DamageDealt 碾压伤害并减速 8 回合。范围攻击会被巨岩抵挡，阻挡最多 200 点伤害。
+消耗 1 回合发射一块巨大但缓慢的岩石，造成 DamageDealt 钝击伤害并减速 8 回合。范围攻击会被巨岩抵挡，阻挡最多 200 点伤害。
 - You raise a massive boulder from the ground and kick it forward!
 你用魔法从地上剥离出一块巨石并向前发射！
 
@@ -13515,7 +13516,7 @@ Ars烟火
 - Brute Force
 蛮力攻击
 - When enabled, your attacks deal 10% of your willpower as additional impact damage but cost 10 more stamina.
-启用后，你的攻击会造成意志力上限10%的额外碾压伤害，但会多消耗 10 点体力。
+启用后，你的攻击会造成意志力上限 10% 的额外钝击伤害，但会多消耗 10 点体力。
 
 - One With Slime
 粘液一体
@@ -16436,7 +16437,7 @@ AMNT% 的概率命中你
 - Grope
 抚摸
 - Impact
-碾压
+钝击
 - Gravity
 重力
 - Pierce
@@ -18958,7 +18959,7 @@ SPL失败
 你说要的！
 - Me? Help? Alright!
 我？帮忙？好吧！
-- Sorry miss, I'm on an escort mission.
+- Sorry ${PHonor}, I'm on an escort mission.
 对不起，小姐，我在执行护送任务。
 - There goes my nice, relaxing day...
 我美好而放松的一天就这样过去了...
@@ -19056,7 +19057,7 @@ SPL失败
 介意我加入吗？
 - Mmmph~ You two look like you're having fun!
 嗯~你们俩看起来玩得很开心！
-- Hey miss, I'm going to have to stop you now~
+- Hey ${PHonor}, I'm going to have to stop you now~
 嘿，小姐，我现在得阻止你了~
 - Why don't you fight ME instead~
 你为什么不和我战斗~
@@ -19277,7 +19278,7 @@ Nya~！不公平...
 你攻击我的客户是个错误。
 - Capture her? Fine, but I expect payment.
 抓住她？好吧，但我希望获得报酬。
-- I just follow the money, miss~
+- I just follow the money, ${PHonor}~
 我只是跟钱走，小姐~
 - Can't let you have all the fun, can I?
 我不能让你享受所有的乐趣，对吧？
@@ -19614,7 +19615,7 @@ SPL时间到了!
 Boo！哈，吓到你了~
 - What, did you think I'd just stand here?
 什么，你以为我会站在这里吗？
-- There's a bounty on your head, miss.
+- There's a bounty on your head, ${PHonor}.
 小姐，你头上有赏金。
 - I won't let you get away. That bounty is mine.
 我不会让你逃脱的。那笔赏金是我的。
@@ -21007,11 +21008,11 @@ Ah！原谅我!
 # :: KinkyDungeonRemindJailPlayBratGunnerMaid1
 - Please no! I don't want the edging training again!
 请不要！我不想再参加寸止训练了！
-- Don't you need a bodyguard, miss?
+- Don't you need a bodyguard, ${PHonor}?
 不需要保镖吗，小姐？
 # :: KinkyDungeonRemindJailPlaySubSubMaid0
 # :: KinkyDungeonRemindJailPlaySubGunnerMaid0
-- Won't you train me, miss?
+- Won't you train me, ${PHonor}?
 你不训练我吗，小姐？
 # :: KinkyDungeonRemindJailPlaySubSubMaid1
 # :: KinkyDungeonRemindJailPlaySubGunnerMaid1
@@ -21019,11 +21020,11 @@ Ah！原谅我!
 我曾经是个坏女孩...
 # :: KinkyDungeonRemindJailPlaySubSubMaid2
 # :: KinkyDungeonRemindJailPlaySubGunnerMaid2
-- Miss, your uniform is dirty...
+- ${PHonor}, your uniform is dirty...
 小姐，你的制服脏了……
 # :: KinkyDungeonRemindJailPlaySubMaid0
 # :: KinkyDungeonRemindJailPlayGunnerMaid0
-- Why hello miss...
+- Why hello ${PHonor}...
 你好小姐...
 # :: KinkyDungeonRemindJailPlaySubMaid1
 # :: KinkyDungeonRemindJailPlayGunnerMaid1
@@ -21035,11 +21036,11 @@ Ah！原谅我!
 嗯，我我收紧那些吗？
 # :: KinkyDungeonRemindJailPlaySubMaidStruggle
 # :: KinkyDungeonRemindJailPlayGunnerMaidStruggle
-- M-miss... I was told to bring you somewhere...
+- ${PHonor}... I was told to bring you somewhere...
 小…小姐…有人叫我带你去某个地方...
 # :: KinkyDungeonRemindJailPlaySubMaidLeash
 # :: KinkyDungeonRemindJailPlayGunnerMaidLeash
-- Umm, miss, you're supposed to report to the head maid...
+- Umm, ${PHonor}, you're supposed to report to the head maid...
 嗯，小姐，你应该向女仆长报告……
 # :: KinkyDungeonRemindJailPlaySubMaidFree
 # :: KinkyDungeonRemindJailPlayGunnerMaidFree
@@ -21061,15 +21062,15 @@ Ah！原谅我!
 # :: KinkyDungeonRemindJailChaseSubMaidJailbreak
 # :: KinkyDungeonRemindJailChaseGunnerMaidAttack1
 # :: KinkyDungeonRemindJailChaseGunnerMaidJailbreak
-- Miss! You're not allowed to cast that!
+- ${PHonor}! You're not allowed to cast that!
 小姐！你不能那么做！
-- Miss, I have to report that!
+- ${PHonor}, I have to report that!
 小姐，我必须报告！
 - Eeep!
 呃！
 # :: KinkyDungeonRemindJailChaseSubMaidSpellItem
 # :: KinkyDungeonRemindJailChaseApprenticeAttack0
-- Miss, that's reserved for the head maid!
+- ${PHonor}, that's reserved for the head maid!
 小姐，这是留给女仆长的！
 # :: KinkyDungeonRemindJailChaseSubMaidShrine
 # :: KinkyDungeonRemindJailChaseGunnerMaidShrine
@@ -21142,7 +21143,7 @@ Ah！原谅我!
 我？帮助？正确的！
 # :: KinkyDungeonRemindJailChaseSubMaidHonor0
 # :: KinkyDungeonRemindJailChaseGunnerMaidHonor0
-- I'm sorry miss...
+- I'm sorry ${PHonor}...
 我很抱歉，女士...
 # :: KinkyDungeonRemindJailChaseSubMaidHonor1
 # :: KinkyDungeonRemindJailChaseGunnerMaidHonor1
@@ -21152,7 +21153,7 @@ Ah！原谅我!
 # :: KinkyDungeonRemindJailChaseGunnerMaidHonor2
 - I-I'm coming!
 我-我来了！
-- Please surrender, miss!
+- Please surrender, ${PHonor}!
 请投降吧，小姐！
 - I'll just stay here!
 我就在这儿等！
@@ -21514,9 +21515,9 @@ Hmm. 你可以叫我女仆 PTRN。
 我保证稍后会回来！
 - I didn't do anything wrong!
 我没有做错任何事！
-- I won't get in your way, miss!
+- I won't get in your way, ${PHonor}!
 我不会妨碍你的，小姐！
-- Take me as your student, miss!
+- Take me as your student, ${PHonor}!
 小姐，让我当你的学徒吧！
 - Won't you teach me?
 你不教我吗？
@@ -21530,7 +21531,7 @@ Hmm. 你可以叫我女仆 PTRN。
 我的女主人让我给你一个愉快的时光......
 - Hehe, having fun?
 嘿嘿，玩得开心吗？
-- Miss, won't you come?
+- ${PHonor}, won't you come?
 小姐，你不来吗？
 - Hey, you're free to play, right~?
 Hey，可以随便玩弄你，对吧~？
@@ -21598,7 +21599,7 @@ Hgh！我是个天才！
 我会救你的，女主人！
 - Me? Capture her? Okay mistress...
 我吗?捉她?好吧，女主人……
-- Okay miss, I'll do that...
+- Okay ${PHonor}, I'll do that...
 好的，小姐，我会的...
 - But he's going to tie me up...
 但他要把我绑起来...
@@ -21966,13 +21967,13 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 向你喊话 ) |你不应该带着武器。|把它交出来。
 - (The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply.
 ( SPEAKER 靠近你 ) |检测到违禁品。开始没收。|请遵守。
-- (The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
+- (The SPEAKER blushes)|Umm, ${PHonor}, I see that you have a weapon there,|could you maybe hand it over?
 (SPEAKER 脸红了)|嗯，小姐，我看见你那里有武器，|你能把它交出来吗？
 - (The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
 (SPEAKER 对你微笑)|做个好女孩，把武器交出来，|好吗？
 - (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
 (SPEAKER 咧嘴笑着，掰着指关节)|你打算用它和别人打架吗？|或者你要把它交出去？
-- Yes, miss... (Currently held weapon will be lost)
+- Yes, ${EHonor}... (Currently held weapon will be lost)
 是的，小姐…… ( 目前持有的武器将会丢失 )
 - Mmph... (Nod politely) (Currently held weapon will be lost)
 嗯…… ( 礼貌地点头 )  ( 当前持有的武器会丢失 )
@@ -22209,7 +22210,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dTheWardenSub_Brat_ProceedGag
 # :: dResistanceRobotNegativeGag
 
-- Of course miss.
+- Of course ${EHonor}.
 当然，小姐。
 - (Nod again)
 （再次点头）
@@ -22386,7 +22387,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - I don't like the sound of this.
 听起来我并不喜欢。
 
-- Yes miss!
+- Yes ${EHonor}!
 是的，女士！
 # :: dOfferDusterGagYes_Yes
 # :: dOfferRopesYes_Yes
@@ -22981,7 +22982,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - Not like that!
 不是这样的！
 
-- Y-Yes miss~
+- Y-Yes ${EHonor}~
 是-是的小姐~
 - (Duck out the way) (PERCENT chance to avoid)
 ( 闪开 )  ( 有 PERCENT 的机会避开 )
@@ -23309,7 +23310,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 
-- (The SPEAKER nervously walks up to you)|Excuse me miss...|Are you a fan of latex by chance?
+- (The SPEAKER nervously walks up to you)|Excuse me ${PHonor}...|Are you a fan of latex by chance?
 ( SPEAKER 紧张地走到你面前 ) |请问小姐……|你是不是乳胶爱好者？
 - (The SPEAKER blushes deeply)|Then would you like to try on this RESTRAINT?
 ( SPEAKER 脸红了 ) |那你要不要试试这个RESTRAINT？
@@ -23439,11 +23440,11 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 
-- (The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?
+- (The SPEAKER nervously walks up to you)|Excuse me ${PHonor}...|Can you help me out?
 ( SPEAKER 紧张地走到你面前 ) |请问小姐……|你能帮帮我吗？
 - (The SPEAKER blushes deeply)|I found this cursed RESTRAINT and I can't let go of it!|Could you... wear it for me?
 ( SPEAKER 深深地脸红了 ) |我设法解开了我的 RESTRAINT，|但我的女主人希望我戴上它！|你能为我戴上它吗？
-- (The SPEAKER smiles)|Thank you so much, miss!
+- (The SPEAKER smiles)|Thank you so much, ${PHonor}!
 ( SPEAKER 微笑 )|非常感谢您，小姐！
 - (The SPEAKER frowns)|...That does seem rather far-fetched of me to ask.
 (SPEAKER 皱眉)|...…我这样问确实有点牵强。
@@ -23455,9 +23456,9 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 (The SPEAKER 恳求你)|... 明白了.但！|我最终会被困在里面很长一段时间……
 - (The SPEAKER sighs and wears it herself)|(The lock starts glowing brightly...)
 ( SPEAKER 叹了口气，自己戴上 ) | ( 锁开始发光…… )
-- (The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
+- (The SPEAKER looks relieved)|Thank you so much ${PHonor}!|I won't forget you!
 ( SPEAKER 松了口气 ) |非常感谢！|我不会忘记你的！
-- (As you turn around, the SPEAKER surprises you)|(You hear a click on your body)|I'm sorry miss! It was my only choice~
+- (As you turn around, the SPEAKER surprises you)|(You hear a click on your body)|I'm sorry ${PHonor}! It was my only choice~
 (当你转身时，SPEAKER让你大吃一惊)|(你听到身上的咔哒声)|对不起，小姐！这是我唯一的选择~
 
 - I would love to help!
@@ -24228,13 +24229,13 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: rArmorerShopTrapBelt
 # :: rArmorerShopTrapBra
 
-- (The SPEAKER waves)|Hello miss!|What brings you here today?
+- (The SPEAKER waves)|Hello ${PHonor}!|What brings you here today?
 ( SPEAKER 挥手 ) |你好啊小姐！|什么风把您吹到这来了
 - (The SPEAKER folds her arms)|That's not very nice!
 ( SPEAKER 交叉双臂 ) |那样做可不好哦！
 - (The SPEAKER looks at you and smiles.)|Don't you already have one?
 ( SPEAKER 微笑着看着你 ) |你不是已经有一个了吗？
-- (The SPEAKER folds her arms)|I don't do charity, miss.
+- (The SPEAKER folds her arms)|I don't do charity, ${PHonor}.
 ( SPEAKER 交叉双臂 ) |我不做慈善事业，小姐。
 - (The SPEAKER nods)|Could use a higher heel...
 ( SPEAKER 点点头 ) |鞋跟或许可以再高一点...
@@ -24307,7 +24308,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 向你出售该物品 )
 - (The SPEAKER shakes her head)|I think you'd be better off without that~
 ( SPEAKER 摇头 ) |我认为没有那个你会更好~
-- (The SPEAKER looks embarassed)|I can't sell you that, miss...
+- (The SPEAKER looks embarassed)|I can't sell you that, ${PHonor}...
 ( SPEAKER 看上去很尴尬 ) |我不能把这个卖给你，小姐……
 - (The SPEAKER blushes)|Actually, I was saving that for myself...
 ( SPEAKER 脸红了 ) |其实，我是为自己留下的……
@@ -24317,7 +24318,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 发出嗡嗡声 ) |错误，访问权限不足。
 - (The SPEAKER giggles at your empty pockets)|You can't afford such things, silly~
 ( SPEAKER 对着你空空的口袋咯咯笑 ) |你买不起这东西的，傻瓜~
-- (The SPEAKER pauses nervously)|Um miss, I don't think you can afford that...
+- (The SPEAKER pauses nervously)|Um ${PHonor}, I don't think you can afford that...
 ( SPEAKER 紧张地停顿 ) |嗯，小姐，我认为你负担不起……
 - (The SPEAKER frowns)|What does this look like, a charity?
 ( SPEAKER 皱起眉头 ) |你觉得我看起来像什么，慈善机构？
@@ -24918,7 +24919,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 紧张地笑了)|你-你怎么知道的？
 - (The SPEAKER smiles)|Indeed I am... Won't you assist me?
 ( SPEAKER 微笑 )|确实如此... 你不愿意帮助我吗？
-- (The SPEAKER wiggles excitedly)|Y-yes miss!
+- (The SPEAKER wiggles excitedly)|Y-yes ${PHonor}!
 ( SPEAKER 兴奋地扭动着身体 ) |是-是的，小姐！
 - (The SPEAKER shakes her head while blushing)|W-what makes you think that?
 ( SPEAKER 脸红了，摇了摇头 ) |你怎么会这么想？
@@ -25278,7 +25279,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: dTheWardenDom_BratGag
 - It is indeed!
 确实！
-- I'm an adventurer, miss.
+- I'm an adventurer, ${EHonor}.
 我是一位探险家，小姐。
 - Mmmpphh~ (Moan and wiggle seductively)
 Mmmpphh~ ( 呻吟和诱惑地扭动 )
@@ -25298,7 +25299,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ...也许
 - Exciting!
 令人兴奋！
-- That sounds great. But who are you miss?
+- That sounds great. But who are you ${EHonor}?
 这听起来很不错。但你是谁？
 - Mmmmph~
 嗯~
@@ -25345,7 +25346,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 # :: dTheWardenPostIntro_DomGag
 - (SPEAKER smiles)|Then let us fight!|If I win, I will make you my pet.|If you win, I will let you pass.
 ( SPEAKER 笑 )|那我们开打吧！|如果我赢了，你就得成为我的宠物。|如果你赢了，我会让你过去。
-- I don't want to fight, miss...
+- I don't want to fight, ${EHonor}...
 我不想打架，小姐...
 - Mmph! (Shake your head frantically)
 嗯！ ( 疯狂地摇头 )
@@ -25662,16 +25663,16 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( SPEAKER 拍了拍你并确保你没事 ) |我绝对能帮忙处理！|但如你所知，我帮助了很多像你一样的探险家们。|你猜怎么着，我会给你打个折！|只要 RESCUECOST 金币！
 
 
-- (The SPEAKER rubs her chin)|Sorry miss!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
+- (The SPEAKER rubs her chin)|Sorry ${PGen}!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
 ( SPEAKER 揉着下巴 ) |不好意思小姐！|但是做生意的成本，你知道吗？|你为什么不带一些诱人的、闪闪发光的金币回来呢~
 # :: rShopkeeperOfferHelpTabYesRestrained
 # :: rShopkeeperOfferHelpTabYes
-- (The SPEAKER folds her arms)|Business is business, miss~
+- (The SPEAKER folds her arms)|Business is business, ${PGen}~
 ( SPEAKER 交叉双臂 ) |生意归生意，小姐~
 
 - (The SPEAKER rubs her chin)|No can do.|Rules are rules~
 ( SPEAKER 摸着下巴 ) |没办法。|规则就是规则~
-- (The SPEAKER sighs)|Business is business, miss~
+- (The SPEAKER sighs)|Business is business, ${PGen}~
 ( SPEAKER 叹了口气 ) |生意就是生意，小姐~
 
 - (The SPEAKER reluctantly frees you)|...Fine, I'll cut you a deal.|You help me, I help you. Fair?
@@ -25766,7 +25767,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( SPEAKER 躺在你面前 ) | ( 她看着你，嘴里咕哝着，咯咯笑着 )
 - (SPEAKER looks grateful)|Thank you so much|I shall join your party.
 ( SPEAKER 看起来很感激 ) |非常感谢|我会加入你的队伍。
-- (SPEAKER looks grateful)|Thank you so much miss!|I owe you everything.
+- (SPEAKER looks grateful)|Thank you so much ${PGen}!|I owe you everything.
 ( SPEAKER 看起来很感激 ) |非常感谢您，小姐！|我欠您一切。
 - (SPEAKER groans and wriggles around uselessly)
 ( SPEAKER 呻吟着，毫无用处地扭动着。 )
@@ -25802,7 +25803,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 - Mmmmm! (Struggle)
 呜呜呜呜！ ( 挣扎 )
 
-- (A SPEAKER clutching her books approaches you)|Miss adventurer!|I happen to need a magic scroll of any kind.|It's for my studies.
+- (A SPEAKER clutching her books approaches you)|Adventurer!|I happen to need a magic scroll of any kind.|It's for my studies.
 ( SPEAKER 抓着她的书走近你 ) |探险家小姐！|我碰巧需要一个魔法卷轴，任何一种都行。|我的研究需要它。
 - (The SPEAKER smiles)|Yes, thank you so much!|It's been so difficult to get them lately.|The magic library is closed off these days,|and there are mean people trying to get the scrolls back...
 ( SPEAKER 微笑 )|是的，非常感谢！|最近很难搞到它们。|魔法图书馆这两天也关着，|还有一些卑鄙的家伙试图拿回卷轴...
@@ -25857,7 +25858,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 - Hmmmph? Mmmm! (Act worried and whimper)
 Hmmmph? Mmmm!(表现出担忧和呜咽)
 - (The SPEAKER folds her arms)|Mistress Oriel's orders
-（她双臂交叉）这是女主人奥莉尔的命令
+（SPEAKER 双臂交叉）这是女主人奥莉尔的命令
 - Not in the 'System'?
 不在“系统”中？
 # :: dCyberHiSec_Question2
@@ -25917,7 +25918,7 @@ Mmmph? (行为混乱)
 ( 你解救了 SPEAKER ) |…谢谢。|不，我可没有在享受…
 - (You unlock the SPEAKER)|Appreciate the rescue!|'twas fun while it lasted...
 ( 你解救了 SPEAKER ) |谢谢！|虽然被捆着的时候也很舒服…
-- (You unlock the SPEAKER)|Thank you miss!
+- (You unlock the SPEAKER)|Thank you ${PGen}!
 ( 你解救了 SPEAKER ) |感谢您，女士！
 - (You unlock your SPEAKER)|...at your command.
 ( 你解救了你的 SPEAKER ) |…听候您的吩咐。
@@ -25937,7 +25938,7 @@ Mmmph? (行为混乱)
 （过了一会儿，你救出了 SPEAKER）|捆的真紧…谢谢你救了我。
 - (After a while, you free the SPEAKER)|That was fun!|Er--|Thanks, I mean!
 （过了一会儿，你救出了 SPEAKER）|我刚才还享受着呢！|额——|我的意思是，谢谢你！
-- (After a while, you free the SPEAKER)|Mmph... thank you miss!
+- (After a while, you free the SPEAKER)|Mmph... thank you ${PGen}!
 （过了一会儿，你救出了 SPEAKER）|唔…感谢您，女士！
 - (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
 ( 过了一会儿，你解开了 SPEAKER ) |谢谢|让我们开始行动！
@@ -25958,7 +25959,7 @@ Mmmph? (行为混乱)
 # :: rPrisonerLatexCutHandsBound
 - (After a while, you free the SPEAKER)|For a moment there I thought it was too much for you~
 （过了一会儿，你救出了 SPEAKER）|刚才我还以为这对你来说太困难了呢~
-- (After a while, you free the SPEAKER)|Thank you miss!|Your lockpicking skills are impeccable!
+- (After a while, you free the SPEAKER)|Thank you ${PGen}!|Your lockpicking skills are impeccable!
 （过了一会儿，你救出了 SPEAKER）|感谢您女士！|真是无可挑剔的撬锁手法！
 - (After a while, you free the SPEAKER)|Mmph, that took forever~
 （过了一会儿，你救出了 SPEAKER）|唔…那可花了老长时间呢~
@@ -43496,6 +43497,8 @@ Vents发型
 # :: m_MilitaryUniform_l_Unit
 # :: m_CyberPetsuit_l_Unit
 # :: m_CyberPetsuit_l_Unit
+# :: KDHonorificUnit
+# :: KDSubTitleUnit
 # - Secret_UnderbustStrap
 # - Secret_UnderbustHardware
 # - Secret_Strap
@@ -44230,7 +44233,7 @@ Kjus眼5
 *投降* 下次一定要你好看!
 - This pleases me.
 我觉得不错。
-- Thank you miss! I won't bother you anymore.
+- Thank you ${PHonor}! I won't bother you anymore.
 谢谢你小姐！我不会再烦扰你了。
 - --Exception cleared. Awaiting orders.
 --错误移除。等待指令。
@@ -44246,7 +44249,7 @@ Kjus眼5
 - You've been quite adorable! Until next time~
 你真是太可爱了！下次见~
 
-- It's time for your walk, miss.
+- It's time for your walk, ${PHonor}.
 小姐，该散步了。
 - Now let's see, where to go...
 现在让我们看看，该去哪里……
@@ -44254,7 +44257,7 @@ Kjus眼5
 我想我们已经到了终点。
 - I have to put you back now~
 我现在必须把你带回去了~
-- It's been fun playing with you miss!
+- It's been fun playing with you ${PHonor}!
 和你一起玩很有趣，小姐！
 
 - (reaches for your leash)
@@ -46016,6 +46019,8 @@ LKTYP 锁锁在了你的一个拘束具上！
 法杖
 - Toy
 玩具
+# :: KDFilterFiltersToy
+# :: KDSubTitleToy
 - Teasing
 挑逗
 
@@ -47821,11 +47826,11 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Gosh, you're so cute like that!
 天哪，你真是太可爱了！
 
-- I'm going to have to search you, miss~
+- I'm going to have to search you, ${PHonor}~
 我得去找你了，小姐~
 - Let's check your restraints.
 让我检查一下你的束缚。
-- You look so cute like that, miss!
+- You look so cute like that, ${PHonor}!
 你这样看起来真可爱，小姐！
 
 - All nice and tight. Certainly no longer a threat~
@@ -48713,7 +48718,7 @@ Mmmph! ( 热切地点头 )
 我负责自己的道路。
 - (SPEAKER grins)|Let's see how long you can keep up that attitude~
 ( SPEAKER 笑了 ) |让我们看看你能保持这种态度多久~
-- That won't be necessary, miss.
+- That won't be necessary, ${EHonor}.
 没必要，小姐。
 - (SPEAKER smiles)|Oh, it's quite necessary~|Why don't I show you?
 ( SPEAKER 耸耸肩)|直截了当，对吧？
@@ -50309,7 +50314,7 @@ AMNT/MAXX 仆从分配
 你挡住我了。
 - You're in my way!
 你挡住我了！
-- Miss, you're blocking me...
+- ${PHonor}, you're blocking me...
 小姐，你挡住我了……
 - Step aside~
 请让开~
@@ -51967,36 +51972,67 @@ PTRN 的 RMTPE
 
 - (The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
 （SPEAKER 轻抚你的身体）|你身上好像有些危险物品。|囚犯可不该带这些东西呢~
-- (The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+- (The SPEAKER folds her hands together)|${PHonor}, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
 （SPEAKER 双手交叉）|小姐，我得确保你没带任何危险物品。|现在我要搜身了。
 - (The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
 （SPEAKER 直视着你）|你以为你带着这些能蒙混过关？
+# :: rStripSearchDom
+# :: rStripSearchCyberDom
 - (The SPEAKER smiles)|Let's see, what loot do we have here...|(SPEAKER is going to search you)
 （SPEAKER 微笑）|看看我们能拿到什么战利品……|（SPEAKER 要对你搜身）
+# :: rStripSearchBrat
+# :: rStripSearchCyberBrat
 - (The SPEAKER scans you with a red light)|Enumerating contraband...|Please comply for removal.
 （SPEAKER 用红光扫描你）|检测违禁品……|请配合清除违禁品。
-- Yes, miss... (Begin search and confiscation)
+# :: rStripSearchRobot
+# :: rStripSearchCyberRobot
+- Yes, ${EHonor}... (Begin search and confiscation)
 是的，小姐……（开始搜身）
+# :: dStripSearch_Accept
+# :: dStripSearchCyber_Accept
 - Mmph... (Nod politely) (Begin search and confiscation)
 嗯…… ( 礼貌地点头 )  ( 开始搜身 )
+# :: dStripSearch_AcceptGag
+# :: dStripSearchCyber_AcceptGag
 - No, I refuse! (Fight)
 不，我拒绝！（战斗）
+# :: dStripSearchDeny
+# :: dStripSearchCyberDeny
 - Mmph! (Shake your head and fight)
 呜呜！（摇头并战斗）
+# :: dStripSearchDenyGag
+# :: dStripSearchCyberDenyGag
 
 - Option not available at 0 WP
 意志为 0 时无法选择此选项
 
 - (The SPEAKER starts by removing most of your clothes...)
 （SPEAKER 首先脱掉你的大部分衣服）
+# :: rStripSearchAccept_1
+# :: rStripSearchCyberAccept_1
 - (Next, the SPEAKER looks through your weapons)
 （之后，SPEAKER 检查你的武器）
+# :: rStripSearchAccept_1_2
+# :: rStripSearchCyberAccept_1_2
 - (Finally, the SPEAKER opens the rest of your bag)
 （最后，SPEAKER 翻看你包里的其余物品）
+# :: rStripSearchAccept_1_2_3
+# :: rStripSearchCyberAccept_1_2_3
 - (The search is complete)|There! Now let's get you situated~
 （搜身完成）|搞定！现在给你安排妥当~
-- (The search is complete)|Alright miss, please behave, okay?
+# :: rStripSearchAccept_1_2_3_End
+# :: rStripSearchCyberAccept_1_2_3_End
+- (The search is complete)|Alright ${PHonor}, please behave, okay?
 （搜身完成）|好了，小姐，乖乖配合，可以吗？
+# :: rStripSearchAccept_1_2_3_EndSub
+# :: rStripSearchCyberAccept_1_2_3_EndSub
+
+
+
+
+# - (The SPEAKER scans you with a handheld device)|Hmm, I've detected something dangerous on you.|Dolls like you need to be harmless and docile,|so let's get to fixing that, shall we?
+# - (The SPEAKER scans you with a handheld device)|${PHonor}, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+
 
 
 
@@ -52951,6 +52987,8 @@ ${Playername}使用了安全词，被传送回关卡起点。
 
 - Doll
 玩偶
+# :: KinkyDungeonStatSpeciesDoll
+# :: KDSubTitleDoll
 - This character is nothing but a doll, granting the Artificial passive and preventing sleep in beds, but allowing sleep on non-cage furniture.
 该角色仅仅是一个玩偶，拥有人造生命的被动特性，不能在床上睡觉，但能在笼子之外的家具上睡觉。
 
@@ -52972,3 +53010,12 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - No wp res
 
 # - Your attempts to move off the stand only twist the plug inside of you.
+
+# - Miss
+# - Mistress
+# - Master
+
+# - Girl
+# - Slave
+# - Brat
+# - Pet
