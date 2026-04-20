@@ -1369,6 +1369,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		icon: (_player, _item) => {
 			return "InventoryAction/Cookie";
 		},
+		
 		/** Returns if the button is greyed out */
 		valid: (player, item) => {
 			if (!(item?.type == Consumable) || item.quantity < 1 || !KDConsumable(item)?.wp_instant) return false;
@@ -1426,7 +1427,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 					}
 				}
 			}
-			return "";
+			return TextGet("KDInventoryActionFood", KDGetGenericDialogueParams(player, KinkyDungeonFindID(KDGameData.FoodTarget)));
 		},
 		label:  (player, item) => {
 			let nearby = KDNearbyEnemies(player.x, player.y, 1.5);

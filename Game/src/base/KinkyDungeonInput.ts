@@ -748,7 +748,8 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		let player = KDPlayer();
 
 		let msg = TextGet("KDSafwordMsg", {
-			Playername: KDGameData.PlayerName
+			Playername: KDGameData.PlayerName,
+			PTheir: KDGetPronounTheir(KDPlayer())
 		});
 
 		

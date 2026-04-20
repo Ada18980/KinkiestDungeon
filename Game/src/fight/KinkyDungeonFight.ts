@@ -2810,8 +2810,12 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 			}
 		}
 		if (!b.bullet.spell?.noSumMsg) {
-			if (created == 1) KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSummonSingle"+type), KDBaseWhite, 2, undefined, undefined, b, "Combat");
-			else if (created > 1) KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonSummonMulti"+type).replace("SummonCount", "" + created), KDBaseWhite, 3, undefined, undefined, b, "Combat");
+			if (created == 1) KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSummonSingle"+type,
+				KDGetGenericDialogueParams(KDPlayer(), (b.bullet.source ? KinkyDungeonFindID(b.bullet.source) : null) || KDPlayer())
+			), KDBaseWhite, 2, undefined, undefined, b, "Combat");
+			else if (created > 1) KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonSummonMulti"+type,
+				KDGetGenericDialogueParams(KDPlayer(), (b.bullet.source ? KinkyDungeonFindID(b.bullet.source) : null) || KDPlayer())
+			).replace("SummonCount", "" + created), KDBaseWhite, 3, undefined, undefined, b, "Combat");
 		}
 	}
 

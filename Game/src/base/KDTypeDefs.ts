@@ -1919,6 +1919,7 @@ interface entity {
 	CustomName?: string,
 	CustomSprite?: string,
 	CustomNameColor?: string,
+	CustomPronoun?: string,
 	rescue?: boolean,
 	personality?: string,
 	patrolIndex?: number,

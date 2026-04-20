@@ -919,7 +919,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 		}
 	} else if (!enemy && !bullet && player) {
 		if (!spell.noCastMsg && (spell.noCastMsg === false || spell.type != "special"))
-			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (data.channel ? data.channel - 1 : 0));
+			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name, KDGetGenericDialogueParams(player, enemy)), "#88AAFF", 2 + (data.channel ? data.channel - 1 : 0));
 
 	}
 

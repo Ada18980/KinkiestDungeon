@@ -485,6 +485,7 @@ interface KDGameDataBase {
 	Party:				entity[],
 	CapturedParty:			entity[],
 	PlayerName:			string,
+	PlayerPronoun:			string,
 	QuickLoadout_Weapon:		boolean,
 	QuickLoadout_Merge:		boolean,
 	ItemsSold:			Record<string, number>,
@@ -632,6 +633,8 @@ let KDGameDataBase: KDGameDataBase = {
 	Shield: 0,
 	ShieldDamage: 0,
 	PlayerName: "Ada",
+	
+	PlayerPronoun: "She",
 	Party: [],
 	CapturedParty: [],
 	BlockTokens: 0,

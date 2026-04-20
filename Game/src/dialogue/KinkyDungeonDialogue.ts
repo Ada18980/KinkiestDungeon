@@ -648,7 +648,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 				if (KDGetLeashedToCount(enemy) >= 3) {
 					KinkyDungeonSendActionMessage(7, TextGet("KDTooManyLeashes"), "#e64539", 1);
 				} else if (!(enemy.leash?.reason == "PlayerLeash")) {
-					KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpell").replace("ENMY", KDGetEnemyTypeName(enemy)), "#63ab3f", 1);
+					KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpell", KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("ENMY", KDGetEnemyTypeName(enemy)), "#63ab3f", 1);
 					KinkyDungeonAttachTetherToEntity(1.5, KDPlayer(), enemy, "PlayerLeash", "#e64539", 7);
 				}
 			}
@@ -2977,6 +2977,90 @@ function KDGetDiminutive(player: entity) {
 }
 //function KDGetSubTitle(player: entity) {return TextGet("");}
 
+interface KDPronounData {
+	player: entity,
+	type: string,
+	pronoun: string,
+	priority: number,
+	lowercase: boolean,
+}
+
+function KDGetPronoun(player: entity, type: string = "", lowercase: boolean = false) {
+	let data: KDPronounData = {
+		player: player,
+		type: type,
+		pronoun: "",
+		priority: 0,
+		lowercase: lowercase,
+	}
+	if (player.player) {
+		data.pronoun = TextGet("KDPro_" + (KDGameData.PlayerPronoun || "She") + data.type + (data.lowercase ? "LC" : ""));
+		KinkyDungeonSendEvent("playerpronoun", data);
+		return data.pronoun;;
+	}
+	if (!player) return TextGet("KDPro_She" + data.type + (data.lowercase ? "LC" : ""));
+	data.pronoun = TextGet("KDPro_" + ((KDIsNPCPersistent(data.player?.id) ? KDGetPersistentNPC(data.player.id).entity?.CustomPronoun : data.player.CustomPronoun) || "She") + data.type + (data.lowercase ? "LC" : ""));
+	KinkyDungeonSendEvent("npcpronoun", data);
+	return data.pronoun;
+}
+function KDGetPronounThey(player: entity) {
+	return KDGetPronoun(player, "");
+}
+function KDGetPronounThem(player: entity) {
+	return KDGetPronoun(player, "Obj");
+}
+function KDGetPronounTheir(player: entity) {
+	return KDGetPronoun(player, "Pos");
+}
+function KDGetPronounTheyve(player: entity) {
+	return KDGetPronoun(player, "Have");
+}
+function KDGetPronounTheyre(player: entity) {
+	return KDGetPronoun(player, "Is");
+}
+
+function KDGetPronounthey(player: entity) {
+	return KDGetPronoun(player, "", true);
+}
+function KDGetPronounthem(player: entity) {
+	return KDGetPronoun(player, "Obj", true);
+}
+function KDGetPronountheir(player: entity) {
+	return KDGetPronoun(player, "Pos", true);
+}
+
+function KDGetPronountheyve(player: entity) {
+	return KDGetPronoun(player, "Have", true);
+}
+function KDGetPronountheyre(player: entity) {
+	return KDGetPronoun(player, "Is", true);
+}
+
+
+// In english it's awkward to say "they returns" or "they pulls" so the s gets removed depending on pronoun
+function KDGetTheyThem_s(player: entity) {
+	if (KDGetPronoun(player, "", true) == TextGet("KDPro_TheyLC")) {
+		return "";
+	} else return TextGet("KDTheyThem_s")
+}
+// In english it's awkward to say "they inches" so the es gets removed depending on pronoun
+function KDGetTheyThem_es(player: entity) {
+	if (KDGetPronoun(player, "", true) == TextGet("KDPro_TheyLC")) {
+		return "";
+	} else return TextGet("KDTheyThem_es")
+}
+// In english it's awkward to say "they has" so it gets changed to "they have"
+function KDGetTheyThem_has(player: entity) {
+	if (KDGetPronoun(player, "", true) == TextGet("KDPro_TheyLC")) {
+		return TextGet("KDTheyThem_have");
+	} else return TextGet("KDTheyThem_has")
+}
+// In english it's awkward to say "they is" so it gets changed to "they are"
+function KDGetTheyThem_is(player: entity) {
+	if (KDGetPronoun(player, "", true) == TextGet("KDPro_TheyLC")) {
+		return TextGet("KDTheyThem_are");
+	} else return TextGet("KDTheyThem_is")
+}
 function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?: Record<string, string>): Record<string, string> {
 	let params: Record<string, string> = {
 		PHonor: KDGetHonorific(player),
@@ -2986,6 +3070,37 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 		EHonor: KDGetHonorific(enemy),
 		ESub: KDGetSubTitle(enemy),
 		EDim: KDGetDiminutive(enemy),
+
+		PTheir: KDGetPronounTheir(player),
+		PThem: KDGetPronounThem(player),
+		PThey: KDGetPronounThey(player),
+		ETheir: KDGetPronounTheir(enemy),
+		EThem: KDGetPronounThem(enemy),
+		EThey: KDGetPronounThey(enemy),
+		PTheyre: KDGetPronounTheyre(player),
+		PTheyve: KDGetPronounTheyve(player),
+		ETheyre: KDGetPronounTheyre(enemy),
+		ETheyve: KDGetPronounTheyve(enemy),
+		
+		Ptheir: KDGetPronountheir(player),
+		Pthem: KDGetPronounthem(player),
+		Pthey: KDGetPronounthey(player),
+		Etheir: KDGetPronountheir(enemy),
+		Ethem: KDGetPronounthem(enemy),
+		Ethey: KDGetPronounthey(enemy),
+		Ptheyre: KDGetPronountheyre(player),
+		Ptheyve: KDGetPronountheyve(player),
+		Etheyre: KDGetPronountheyre(enemy),
+		Etheyve: KDGetPronountheyve(enemy),
+
+		Es: KDGetTheyThem_s(enemy),
+		Ps: KDGetTheyThem_s(player),
+		Ees: KDGetTheyThem_es(enemy),
+		Pes: KDGetTheyThem_es(player),
+		Ehas: KDGetTheyThem_has(enemy),
+		Phas: KDGetTheyThem_has(player),
+		Eis: KDGetTheyThem_is(enemy),
+		Pis: KDGetTheyThem_is(player),
 	};
 
 	if (extraparams)

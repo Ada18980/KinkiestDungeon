@@ -3210,7 +3210,7 @@ function KinkyDungeonCapture(enemy: entity): boolean {
 	}
 	KinkyDungeonSendEvent("afterCapture", {enemy: enemy});
 	KinkyDungeonSendActionMessage(10,
-		TextGet(msg).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)).replace("GODDESS", TextGet("KinkyDungeonShrine" + KDGameData.Champion)),
+		TextGet(msg, KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)).replace("GODDESS", TextGet("KinkyDungeonShrine" + KDGameData.Champion)),
 		KDBaseLightGreen, 2, false, false, undefined, "Kills");
 	return false;
 }
@@ -3321,7 +3321,8 @@ function KinkyDungeonEnemyCheckHP(enemy: entity, E: number, mapData: KDMapDataTy
 			if (enemy == KinkyDungeonKilledEnemy) {
 
 				if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 10)
-					KinkyDungeonSendActionMessage(9, TextGet("Kill"+enemy.Enemy.name), "orange", 2, false, false, undefined, "Kills");
+					KinkyDungeonSendActionMessage(9, 
+				TextGet("Kill"+enemy.Enemy.name, KDGetGenericDialogueParams(KDPlayer(), enemy)), "orange", 2, false, false, undefined, "Kills");
 				KinkyDungeonKilledEnemy = null;
 			}
 		}
@@ -6999,7 +7000,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											if (KDRandom() < actionDialogueChanceIntense)
 												KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Pull",
 									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
-											KinkyDungeonSendTextMessage(8, TextGet(msg).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDBaseOrange, 1,
+											KinkyDungeonSendTextMessage(8, TextGet(msg, KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDBaseOrange, 1,
 												false, false, undefined, "Combat");
 										}
 									}
@@ -7260,7 +7261,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 								: (data.damage > 1 ? "Damage" : "DamageWeak")))
 							;
 						if (enemy.usingSpecial && enemy.Enemy.specialsfx) sfx = enemy.Enemy.specialsfx;
-						let text = TextGet("Attack"+enemy.Enemy.name + suffix).KDReplaceOrAddDmg(dmgString);
+						let text = TextGet("Attack"+enemy.Enemy.name + suffix, KDGetGenericDialogueParams(player, enemy)).KDReplaceOrAddDmg(dmgString);
 						data.text = text;
 						data.sfx = sfx;
 						KinkyDungeonSendEvent("hit", data);
@@ -7379,7 +7380,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							let e = nearAllies[Math.floor(KDRandom() * nearAllies.length)];
 							if (e) {
 								spelltarget = e;
-								KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDBaseWhite, 2,
+								KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name, KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDBaseWhite, 2,
 									false, false, undefined, "Combat");
 								break;
 							}
@@ -7404,7 +7405,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			}
 			if (spell && !enemy.Enemy.noMiscast && KDRandom() < KDGetEnemyMiscast(enemy)) {
 				if (player == KinkyDungeonPlayerEntity) KinkyDungeonSendTextMessage(4,
-					TextGet(enemy.Enemy.miscastmsg || "KDEnemyMiscast").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff88ff", 2,
+					TextGet(enemy.Enemy.miscastmsg || "KDEnemyMiscast", KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff88ff", 2,
 					false, false, undefined, "Combat");
 				if (spell?.components?.includes("Verbal")) KinkyDungeonSetEnemyFlag(enemy, "verbalcast", 2);
 
@@ -7453,12 +7454,12 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					xx = enemy.x;
 					yy = enemy.y;
 					if (!spell.noCastMsg)
-						KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8844", 4, undefined, undefined, enemy,
+						KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name, KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8844", 4, undefined, undefined, enemy,
 							"Combat");
 				} else if (spell && spell.msg) {
 
 					if (!spell.noCastMsg)
-						KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8844", 4, undefined, undefined, enemy,
+						KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name, KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff8844", 4, undefined, undefined, enemy,
 							"Combat");
 				}
 
@@ -10687,7 +10688,7 @@ function KDEnemyRelease(Enemy: entity): boolean {
 	}
 
 	if (KinkyDungeonVisionGet(Enemy.x, Enemy.y)) {
-		KinkyDungeonSendTextMessage(1, TextGet("KDEnemyLetGo")
+		KinkyDungeonSendTextMessage(1, TextGet("KDEnemyLetGo", KDGetGenericDialogueParams(KDPlayer(), Enemy))
 			.replace("ENMY", TextGet("Name" + Enemy.Enemy.name))
 			.replace("AMNT", "" + Math.round(10*damageData.damage)),
 		"#e7cf1a", 2, undefined, undefined, undefined, "Combat");

@@ -3544,7 +3544,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 
 			if (target == KDPlayer()) {
 				if (KinkyDungeonFlags.get("PlayerOrgasm")) return;
-				KinkyDungeonSendTextMessage(4, TextGet("KDOrgasmPsychicLinkEnemy"), "ff4477", 4);
+				KinkyDungeonSendTextMessage(4, TextGet("KDOrgasmPsychicLinkEnemy", KDGetGenericDialogueParams(KDPlayer(), entity)), "ff4477", 4);
 				KDChangeDistraction("PsychicLink", "spell", "distract",
 					amount, false, 0.5, undefined, true
 				);
@@ -3560,7 +3560,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		"PsychicLink": (_e, buff, entity, data) => {
 			if (!entity.player) return;
 			data.amount *= 0.75;
-			KinkyDungeonSendTextMessage(4, TextGet("KDOrgasmPsychicLinkAttempt"), "ff4477", 4);
+			KinkyDungeonSendTextMessage(4, TextGet("KDOrgasmPsychicLinkAttempt", KDGetGenericDialogueParams(KDPlayer(), entity)), "ff4477", 4);
 		},
 	},
 	"orgasm": {
@@ -3573,7 +3573,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 
 			if (target == KDPlayer()) {
 				if (KinkyDungeonFlags.get("PlayerOrgasm")) return;
-				KinkyDungeonSendTextMessage(4, TextGet("KDOrgasmPsychicLinkEnemy"), "ff4477", 4);
+				KinkyDungeonSendTextMessage(4, TextGet("KDOrgasmPsychicLinkEnemy", KDGetGenericDialogueParams(KDPlayer(), entity)), "ff4477", 4);
 				KDChangeDistraction("PsychicLink", "spell", "distract",
 					amount, false, 0.5, undefined, true
 				);
