@@ -2993,7 +2993,7 @@ function KDGetPronoun(player: entity, type: string = "", lowercase: boolean = fa
 		priority: 0,
 		lowercase: lowercase,
 	}
-	if (player.player) {
+	if (player?.player) {
 		data.pronoun = TextGet("KDPro_" + (KDGameData.PlayerPronoun || "She") + data.type + (data.lowercase ? "LC" : ""));
 		KinkyDungeonSendEvent("playerpronoun", data);
 		return data.pronoun;;
