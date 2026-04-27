@@ -1702,7 +1702,7 @@ DAMAGEDEALT 点电击伤害传导到你身上！
 - Arcane Explosion
 奥术爆发
 
-- EnemyName says something incomprehensible! ${Etheir} spell miscasts!
+- EnemyName says something incomprehensible! ${ETheir} spell miscasts!
 EnemyName说了一些难以理解的话！她的法术施放失败了！
 - EnemyName fumbles ${Etheir} next move!
 EnemyName在下一个动作中搞砸了！
