@@ -33488,9 +33488,9 @@ KDSubTitlePet,Pet
 
 KDPro_She,She
 KDPro_SheObj,Her
-KDPro_HerPos,Her
-KDPro_HerIs,She's
-KDPro_HerHave,She's
+KDPro_ShePos,Her
+KDPro_SheIs,She's
+KDPro_SheHave,She's
 
 KDPro_They,They
 KDPro_TheyObj,Them
@@ -33506,9 +33506,9 @@ KDPro_ItHave,It's
 
 KDPro_SheLC,she
 KDPro_SheObjLC,her
-KDPro_HerPosLC,her
-KDPro_HerIsLC,she's
-KDPro_HerHaveLC,she's
+KDPro_ShePosLC,her
+KDPro_SheIsLC,she's
+KDPro_SheHaveLC,she's
 
 KDPro_TheyLC,they
 KDPro_TheyObjLC,them
