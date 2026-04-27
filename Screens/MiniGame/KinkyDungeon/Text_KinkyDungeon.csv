@@ -1857,7 +1857,7 @@ KinkyDungeonAngelAnger1,"But do not fear, we will keep this between you and I...
 KinkyDungeonAngelAnger2,"For I will first have a little fun..."
 KinkyDungeonAngelAnger3,"You have brought this upon yourself, after all."
 
-KinkyDungeonAngelAggro,"The angel frowns as you attack ${Etheir}, and glowing rings appear."
+KinkyDungeonAngelAggro,"The angel frowns as you attack ${Ethem}, and glowing rings appear."
 
 KinkyDungeonAngelDefeated,"Angel: MMMMMPHH!!!"
 
@@ -6974,7 +6974,7 @@ KillPetDisplay,The enemy steals your doll from you!
 
 KinkyDungeonSpellPetsuit,Conjure Petsuit
 KinkyDungeonSpellDescriptionPetsuit,"Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool."
-KinkyDungeonSpellCastPetsuit,"You conjure an enchanted petsuit which wraps around your target, forcing ${Etheir} to follow you!"
+KinkyDungeonSpellCastPetsuit,"You conjure an enchanted petsuit which wraps around your target, forcing ${Ethem} to follow you!"
 KinkyDungeonSpellCastSelfPetsuit,"You watch in horror as your own creation lunges toward you, binding your hands and feet!"
 KinkyDungeonSpellTargetPetsuit,Choose a helpless target
 
@@ -7115,7 +7115,7 @@ KinkyDungeonSpellTargetCommandWord,Select which creature to unlock
 KinkyDungeonSpellDescriptionCommandWord,"On yourself: Removes one purple (magical) lock. On a creature: Reduces the target's binding by 20 points."
 KinkyDungeonSpellCastCommandWord,You speak a command word!
 KDCommandWordFail_NoLocks,None of the locks you are wearing respond to your magic.
-KDCommandWordFail_NoEnemy,You can't help ${Etheir} with this.
+KDCommandWordFail_NoEnemy,You can't help ${Ethem} with this.
 KDCommandWordFail_NoTarget,"You must target yourself, an enemy, or a locked object."
 KDCommandWordFail_Miscast,"The command is intricate and you are unable to enunciate it properly!"
 
@@ -14074,7 +14074,7 @@ KinkyDungeonSpellRubberNuke,"Rubber Nuke Direct Hit"
 KinkyDungeonSpellRubberNukeExplosion,"Rubber Nuke"
 
 
-rDollmaker,"(In the center of the room stands a woman wearing a latex dress)|(Around ${Ethem} are robotic servants, obeying ${Etheir} without a word)|(${EThey} ${Ehas} been watching you this entire time)"
+rDollmaker,"(In the center of the room stands a woman wearing a latex dress)|(Around ${Ethem} are robotic servants, obeying ${Ethem} without a word)|(${EThey} ${Ehas} been watching you this entire time)"
 dDollmaker_Ask,"And who might you be?"
 dDollmaker_AskGag,"(Tilt your head)"
 rDollmakerAsk,"(The woman's mask reflects the harsh industrial light)|You don't know who I am?|Hmmph, and I suppose my servants haven't told you...|They call me the Dollmaker."
@@ -30348,7 +30348,7 @@ KDInventoryActionRemove,Try to Remove
 KDInventoryActionPick,Try to Pick
 KDInventoryActionCurseInfo,Examine the Curse
 KDInventoryActionCurseRemove,Remove the Curse
-KDInventoryActionFood,Feed this to ${Etheir}
+KDInventoryActionFood,Feed this to ${Ethem}
 KDInventoryActionSell,Sell for VLU gp
 KDInventoryActionSellBulk,Sell ALL for VLU gp
 KDInventoryActionSellExcess,Sell all but one for VLU gp
@@ -30618,7 +30618,7 @@ NameTheWardenRecruit,"The Warden"
 
 rTheWarden,"(The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not in my records..."
 dTheWarden_Aggressive,"Cut to the chase. Do I have to fight you or not?"
-dTheWarden_AggressiveGag,"(Growl at ${Etheir})"
+dTheWarden_AggressiveGag,"(Growl at ${Ethem})"
 rTheWardenAggressive,"(She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~"
 dTheWardenAggressive_Question,Quite a boast for someone who's about to lose.
 rTheWardenAggressive_Question,"(SPEAKER grins)|I look forward to testing those claims~"
@@ -31506,7 +31506,7 @@ AttackDroneGuardian,"The drone uses a short-ranged electric attack! (DamageTaken
 AttackDroneGuardianBind,"The drone attaches to you! (+RestraintAdded)"
 
 NameCyborgGuardian,Cyber Guardian
-KillCyborgGuardian,"The cyber warden's suit goes into lockdown, leaving ${Etheir} wiggling helplessly!"
+KillCyborgGuardian,"The cyber warden's suit goes into lockdown, leaving ${Ethem} wiggling helplessly!"
 AttackCyborgGuardianLock,"The cyber warden applies an advanced locking technology!"
 AttackCyborgGuardianBind,"The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)"
 AttackCyborgGuardian,"The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)"
@@ -31664,8 +31664,8 @@ KinkyDungeonInventoryItemLeashItemUse,"You ready the leash..."
 KinkyDungeonInventoryItemLeashItemDesc2,"Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to 50% first. Target self to release all leashes, or target a leashed NPC to unleash them."
 ItemPickupLeashItem,"You pick up a leash."
 
-KDLeashSpellCant,You are not in a condition to use a leash on ${Etheir}.
-KDLeashSpellMustTie,She refuses to be leashed unless you tie ${Etheir} up!
+KDLeashSpellCant,You are not in a condition to use a leash on ${Ethem}.
+KDLeashSpellMustTie,She refuses to be leashed unless you tie ${Ethem} up!
 KDLeashSpell,You attach a leash to ENMY.
 KDLeashSpellRemove,You remove your leash from ENMY.
 KDLeashSpellRemoveAll,You let go of all leashes.
@@ -32794,7 +32794,7 @@ KDMMLocked,"(L)"
 
 rPrisonerLatex,"(The SPEAKER sits encased in skintight rubber up to ${Etheir} nose.|Though the latex over ${Etheir} mouth is smooth and flat,|you know from ${Etheir} whimpering moans that ${Etheir} mouth|is totally filled with a gag, useless like the rest of ${Etheir} body.|Some sort of stand affixes ${Etheir} to the floor.)"
 rPrisonerLatexNoKeys,"(You don't have any solvents that work on latex)"
-rPrisonerLatexUnlockHandsBound,"(You can't help ${Etheir}, bound as tightly as you are...)"
+rPrisonerLatexUnlockHandsBound,"(You can't help ${Ethem}, bound as tightly as you are...)"
 rPrisonerLatexUnlockSlow,"(You dissolve ${Etheir} restraints, fumbling around for a while with your bound hands)"
 rPrisonerLatexUnlock,"(You rescue the SPEAKER)|Thank you!|Let's get out of here!"
 rPrisonerLatexUnlockGagged,"(You rescue the SPEAKER)|Mmmmph!|(${EThey} wants to keep ${Etheir} gag...)"

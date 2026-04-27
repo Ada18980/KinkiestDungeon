@@ -3904,7 +3904,7 @@ RESTRAINTNAME 已经没有可添加的束缚了，将进入一段休眠期。
 - You have brought this upon yourself, after all.
 毕竟，这是你自作自受。
 
-- The angel frowns as you attack ${Etheir}, and glowing rings appear.
+- The angel frowns as you attack ${Ethem}, and glowing rings appear.
 当你攻击她时，天使皱起眉头，一枚枚光环显现出来。
 
 - Angel: MMMMMPHH!!!
@@ -4852,7 +4852,7 @@ M.F. '女仆长'
 
 - Cyber Warden
 赛博看守
-- The cyber warden's suit goes into lockdown, leaving ${Etheir} wiggling helplessly!
+- The cyber warden's suit goes into lockdown, leaving ${Ethem} wiggling helplessly!
 赛博看守的套装进入了锁定状态，她只能无助地扭动身体！
 # :: KillCyborg
 # :: KillCyborgGuardian
@@ -13891,7 +13891,7 @@ Ars烟火
 召唤宠物服
 - Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool.
 仅可对完全束缚的敌人施放。将它们变成跟随你的宠物，并增加你从法力池中的被动法力恢复。
-- You conjure an enchanted petsuit which wraps around your target, forcing ${Etheir} to follow you!
+- You conjure an enchanted petsuit which wraps around your target, forcing ${Ethem} to follow you!
 你召唤出的魔法宠物服，紧紧包住了你瞄准的目标，使她不得不跟着你！
 - You watch in horror as your own creation lunges toward you, binding your hands and feet!
 你惊恐地看着你自己的造物冲向了你，束缚了你的手脚！
@@ -14158,7 +14158,7 @@ Ars烟火
 你念出指令！
 - None of the locks you are wearing respond to your magic.
 你身上的所有锁都没有对你的咒语做出反应。
-- You can't help ${Etheir} with this.
+- You can't help ${Ethem} with this.
 你帮不了她
 - You must target yourself, an enemy, or a locked object.
 你必须以自己、敌人或被锁定的对象为目标。
@@ -26338,7 +26338,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 橡胶核弹
 
 
-- (In the center of the room stands a woman wearing a latex dress)|(Around ${Ethem} are robotic servants, obeying ${Etheir} without a word)|(${EThey} ${Ehas} been watching you this entire time)
+- (In the center of the room stands a woman wearing a latex dress)|(Around ${Ethem} are robotic servants, obeying ${Ethem} without a word)|(${EThey} ${Ehas} been watching you this entire time)
 ( 房间中央站着一个穿着乳胶裙的女人 ) | ( 她周围是机器人仆人，一言不发地服从着她 ) | ( 她一直在盯着你 )
 - And who might you be?
 请问你是谁呢？
@@ -48065,7 +48065,7 @@ AMNT 回合后起身...
 尝试撬开
 - Examine the Curse
 检查诅咒
-- Feed this to ${Etheir}
+- Feed this to ${Ethem}
 把这个喂给她
 - Sell for VLU gp
 以 VLU 金币出售
@@ -48507,7 +48507,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 ( 典狱长看了你一眼 ) |哦？是谁来了？|一个探险家？|我的记录里没有你啊…
 - Cut to the chase. Do I have to fight you or not?
 直入主题。我到底要不要跟你打架？
-- (Growl at ${Etheir})
+- (Growl at ${Ethem})
 ( 对她咆哮 )
 - (She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
 ( 她笑了 ) |哦，天哪~|我希望你的技能和你的态度一样好。|我没有时间陪那些制造麻烦的人~
@@ -50107,9 +50107,9 @@ ENMY 请求帮助！
 - You pick up a leash.
 你拿起一条皮带。
 
-- You are not in a condition to use a leash on ${Etheir}.
+- You are not in a condition to use a leash on ${Ethem}.
 你不能用皮带拴住她。
-- She refuses to be leashed unless you tie ${Etheir} up!
+- She refuses to be leashed unless you tie ${Ethem} up!
 除非你把她绑起来，否则她不能被拴住！
 - You attach a leash to ENMY.
 你给 ENMY 系上皮带。
@@ -51930,7 +51930,7 @@ PTRN 的 RMTPE
 (SPEAKER 坐着，被包在上达她的鼻子的紧身橡胶中。|即使她嘴上的乳胶既光滑又平坦，|你通过她呜咽着的呻吟知道，|她的嘴被口塞完全填充着，与她剩余的身体一样无用。|某种台子将她粘在了地板上。)
 - (You don't have any solvents that work on latex)
 (你没有任何对乳胶有用的溶剂)
-- (You can't help ${Etheir}, bound as tightly as you are...)
+- (You can't help ${Ethem}, bound as tightly as you are...)
 ( 你帮不了她，毕竟你也被紧紧地绑着… )
 - (You dissolve ${Etheir} restraints, fumbling around for a while with your bound hands)
 (你溶解了她的拘束具，用绑着的手摸索了一会儿。)
