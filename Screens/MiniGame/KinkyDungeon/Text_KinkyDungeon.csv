@@ -788,7 +788,7 @@ KinkyDungeonPassOut2,"You wake up in a different place..."
 
 KinkyDungeonSpellArcaneStrike,Arcane Explosion
 
-KDEnemyMiscast,"EnemyName says something incomprehensible! ${Etheir} spell miscasts!"
+KDEnemyMiscast,"EnemyName says something incomprehensible! ${ETheir} spell miscasts!"
 KDBanditMiscast,"EnemyName fumbles ${Etheir} next move!"
 KDCastCM1,"The EnemyName utters a command word on the TargetName!"
 
