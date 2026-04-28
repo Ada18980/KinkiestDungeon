@@ -2404,6 +2404,8 @@ let KDDialogueSlots = {};
  * @param enemy
  */
 function KDEnemyName(enemy: entity): string {
+	if (enemy?.id == -1) return KDGameData.PlayerName;
+	if (!enemy) return "";
 	return enemy.CustomName || KDGetName(enemy.id) || TextGet("Name" + enemy.Enemy?.name);
 }
 /**

@@ -2985,7 +2985,7 @@ interface KDPronounData {
 	lowercase: boolean,
 }
 
-function KDGetPronoun(player: entity, type: string = "", lowercase: boolean = false) {
+function KDGetPronoun(player: entity, type: string = "", lowercase: boolean = false, override?: string) {
 	let data: KDPronounData = {
 		player: player,
 		type: type,
@@ -2994,75 +2994,97 @@ function KDGetPronoun(player: entity, type: string = "", lowercase: boolean = fa
 		lowercase: lowercase,
 	}
 	if (player?.player) {
-		data.pronoun = TextGet("KDPro_" + (KDGameData.PlayerPronoun || "She") + data.type + (data.lowercase ? "LC" : ""));
+		data.pronoun = override || TextGet("KDPro_" + (KDGameData.PlayerPronoun || "She") + data.type + (data.lowercase ? "LC" : ""));
 		KinkyDungeonSendEvent("playerpronoun", data);
 		return data.pronoun;;
 	}
 	if (!player) return TextGet("KDPro_She" + data.type + (data.lowercase ? "LC" : ""));
-	data.pronoun = TextGet("KDPro_" + ((KDIsNPCPersistent(data.player?.id) ? KDGetPersistentNPC(data.player.id).entity?.CustomPronoun : data.player.CustomPronoun) || "She") + data.type + (data.lowercase ? "LC" : ""));
+	data.pronoun = override || TextGet("KDPro_" + ((KDIsNPCPersistent(data.player?.id) ? KDGetPersistentNPC(data.player.id).entity?.CustomPronoun : data.player.CustomPronoun) || "She") + data.type + (data.lowercase ? "LC" : ""));
 	KinkyDungeonSendEvent("npcpronoun", data);
 	return data.pronoun;
 }
-function KDGetPronounThey(player: entity) {
-	return KDGetPronoun(player, "");
+function KDGetPronounThey(player: entity, override?: string) {
+	return KDGetPronoun(player, "", undefined, override);
 }
-function KDGetPronounThem(player: entity) {
-	return KDGetPronoun(player, "Obj");
+function KDGetPronounThem(player: entity, override?: string) {
+	return KDGetPronoun(player, "Obj", undefined, override);
 }
-function KDGetPronounTheir(player: entity) {
-	return KDGetPronoun(player, "Pos");
+function KDGetPronounTheir(player: entity, override?: string) {
+	return KDGetPronoun(player, "Pos", undefined, override);
 }
-function KDGetPronounTheyve(player: entity) {
-	return KDGetPronoun(player, "Have");
+function KDGetPronounTheyve(player: entity, override?: string) {
+	return KDGetPronoun(player, "Have", undefined, override);
 }
-function KDGetPronounTheyre(player: entity) {
-	return KDGetPronoun(player, "Is");
-}
-
-function KDGetPronounthey(player: entity) {
-	return KDGetPronoun(player, "", true);
-}
-function KDGetPronounthem(player: entity) {
-	return KDGetPronoun(player, "Obj", true);
-}
-function KDGetPronountheir(player: entity) {
-	return KDGetPronoun(player, "Pos", true);
+function KDGetPronounTheyre(player: entity, override?: string) {
+	return KDGetPronoun(player, "Is", undefined, override);
 }
 
-function KDGetPronountheyve(player: entity) {
-	return KDGetPronoun(player, "Have", true);
+function KDGetPronounthey(player: entity, override?: string) {
+	return KDGetPronoun(player, "", true, override);
 }
-function KDGetPronountheyre(player: entity) {
-	return KDGetPronoun(player, "Is", true);
+function KDGetPronounthem(player: entity, override?: string) {
+	return KDGetPronoun(player, "Obj", true, override);
+}
+function KDGetPronountheir(player: entity, override?: string) {
+	return KDGetPronoun(player, "Pos", true, override);
+}
+
+function KDGetPronountheyve(player: entity, override?: string) {
+	return KDGetPronoun(player, "Have", true, override);
+}
+function KDGetPronountheyre(player: entity, override?: string) {
+	return KDGetPronoun(player, "Is", true, override);
 }
 
 
 // In english it's awkward to say "they returns" or "they pulls" so the s gets removed depending on pronoun
-function KDGetTheyThem_s(player: entity) {
-	if (KDGetPronoun(player, "", true) == TextGet("KDPro_TheyLC")) {
+function KDGetTheyThem_s(player: entity, override?: string) {
+	let pro = KDGetPronoun(player, "", true, override);
+	if (pro == TextGet("KDPro_TheyLC")
+		|| pro == TextGet("KDPro_YouLC")) {
 		return "";
 	} else return TextGet("KDTheyThem_s")
 }
 // In english it's awkward to say "they inches" so the es gets removed depending on pronoun
-function KDGetTheyThem_es(player: entity) {
-	if (KDGetPronoun(player, "", true) == TextGet("KDPro_TheyLC")) {
+function KDGetTheyThem_es(player: entity, override?: string) {
+	let pro = KDGetPronoun(player, "", true, override);
+	if (pro == TextGet("KDPro_TheyLC")
+		|| pro == TextGet("KDPro_YouLC")) {
 		return "";
 	} else return TextGet("KDTheyThem_es")
 }
 // In english it's awkward to say "they has" so it gets changed to "they have"
-function KDGetTheyThem_has(player: entity) {
-	if (KDGetPronoun(player, "", true) == TextGet("KDPro_TheyLC")) {
+function KDGetTheyThem_has(player: entity, override?: string) {
+	let pro = KDGetPronoun(player, "", true, override);
+	if (pro == TextGet("KDPro_TheyLC")
+		|| pro == TextGet("KDPro_YouLC")) {
 		return TextGet("KDTheyThem_have");
 	} else return TextGet("KDTheyThem_has")
 }
 // In english it's awkward to say "they is" so it gets changed to "they are"
-function KDGetTheyThem_is(player: entity) {
-	if (KDGetPronoun(player, "", true) == TextGet("KDPro_TheyLC")) {
+function KDGetTheyThem_is(player: entity, override?: string) {
+	let pro = KDGetPronoun(player, "", true, override);
+	if (pro == TextGet("KDPro_TheyLC")
+		|| pro == TextGet("KDPro_YouLC")) {
 		return TextGet("KDTheyThem_are");
 	} else return TextGet("KDTheyThem_is")
 }
 function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?: Record<string, string>): Record<string, string> {
 	let params: Record<string, string> = {
+		PName: KDEnemyName(player),
+		EName: KDEnemyName(enemy),
+		
+		You: KDGetPronounThey(player, player == KDPlayer() ? "You" : undefined),
+		YouObj: KDGetPronounThem(player, player == KDPlayer() ? "You" : undefined),
+		Your: KDGetPronounTheir(player, player == KDPlayer() ? "You" : undefined),
+		Youre: KDGetPronounTheyre(player, player == KDPlayer() ? "You" : undefined),
+		Youve: KDGetPronounTheyve(player, player == KDPlayer() ? "You" : undefined),
+		you: KDGetPronounthey(player, player == KDPlayer() ? "You" : undefined),
+		youObj: KDGetPronounthem(player, player == KDPlayer() ? "You" : undefined),
+		your: KDGetPronountheir(player, player == KDPlayer() ? "You" : undefined),
+		youre: KDGetPronountheyre(player, player == KDPlayer() ? "You" : undefined),
+		youve: KDGetPronountheyve(player, player == KDPlayer() ? "You" : undefined),
+	
 		PHonor: KDGetHonorific(player),
 		PSub: KDGetSubTitle(player),
 		PDim: KDGetDiminutive(player),
@@ -3101,6 +3123,11 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 		Phas: KDGetTheyThem_has(player),
 		Eis: KDGetTheyThem_is(enemy),
 		Pis: KDGetTheyThem_is(player),
+		
+		YIs: KDGetTheyThem_is(player, player == KDPlayer() ? "You" : undefined),
+		Yhas: KDGetTheyThem_has(player, player == KDPlayer() ? "You" : undefined),
+		Ys: KDGetTheyThem_s(player, player == KDPlayer() ? "You" : undefined),
+		Yes: KDGetTheyThem_es(player, player == KDPlayer() ? "You" : undefined),
 	};
 
 	if (extraparams)

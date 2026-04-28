@@ -586,9 +586,9 @@ KinkyDungeonSpellNovicePet3,Devoted Pet
 KinkyDungeonSpellDescriptionNovicePet3,"+3 slow reduction total while wearing a petsuit (from +2), but you cannot sprint (from +100% cost) when not wearing a petsuit and slow level is increased by +2 (from +1)."
 KinkyDungeonSpellNovicePetX,Bad Pet
 KinkyDungeonSpellDescriptionNovicePetX,"Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back."
-KinkyDungeonBuffNovicePet,You are an expert in wearing a petsuit and your mobility is increased.
-KinkyDungeonBuffNovicePetBad,You are too used to wearing petsuits! Sprinting is impaired.
-KinkyDungeonBuffNovicePetVeryBad,You are a disobedient pet. You should put on a petsuit!
+KinkyDungeonBuffNovicePet,${You} ${Pis} an expert in wearing a petsuit and ${Your} mobility is increased.
+KinkyDungeonBuffNovicePetBad,${You} ${Pis} too used to wearing petsuits! Sprinting is impaired.
+KinkyDungeonBuffNovicePetVeryBad,${You} ${Pis} a disobedient pet. ${You} should put on a petsuit!
 
 KinkyDungeonStatDominant,"Dominant"
 KinkyDungeonStatDescDominant,"They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage."
@@ -963,7 +963,7 @@ StatWeapon,""
 StatKeyEscapeKey,Got the keys! Find the stairs to go to the next floor.
 StatKeyEscapeNoKey,You haven't found the keys for this floor yet.
 StatKey,Missing key
-StatShield,You are protected from damage and can't be bound until the shield is broken!
+StatShield,Protects from damage and binding until the shield is broken!
 StatMiscastChance,"Chance for a spell to fizzle: "
 StatEvasion,"Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty."
 StatBlock,"Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty."
@@ -33498,6 +33498,12 @@ KDPro_TheyPos,Their
 KDPro_TheyIs,They're
 KDPro_TheyHave,They've
 
+KDPro_You,You
+KDPro_YouObj,You
+KDPro_YouPos,Your
+KDPro_YouIs,You're
+KDPro_YouHave,You've
+
 KDPro_It,It
 KDPro_ItObj,It
 KDPro_ItPos,Its
@@ -33516,6 +33522,12 @@ KDPro_TheyPosLC,their
 KDPro_TheyIsLC,they're
 KDPro_TheyHaveLC,they've
 
+KDPro_YouLC,you
+KDPro_YouObjLC,you
+KDPro_YouPosLC,your
+KDPro_YouIsLC,you're
+KDPro_YouHaveLC,you've
+
 KDPro_ItLC,it
 KDPro_ItObjLC,it
 KDPro_ItPosLC,its
@@ -33528,3 +33540,24 @@ KDTheyThem_has,has
 KDTheyThem_have,have
 KDTheyThem_is,is
 KDTheyThem_are,are
+
+
+KinkyDungeonBuffHypno_Doll,{$Youve} hear suggestions on how to be a good doll...
+KinkyDungeonBuffHypnosis,"{$Youve} fallen into a trance, making suggestions more powerful."
+
+KDHypno_Doll_1,Good doll.
+KDHypno_Doll_2,Pretty doll.
+KDHypno_Doll_3,Lovely doll.
+KDHypno_Doll_4,Quiet doll.
+
+KDHypno_Doll_Still,Be still...
+KDHypno_Doll_Silent,A quiet doll...
+KDHypno_Doll_Avoid,I'm not a doll.
+KDHypno_Doll_AvoidFail,I'm not a doll!
+KDHypno_Doll_Accept,I am a doll.
+
+
+KinkyDungeonInventoryItemDollMirror,Doll's Mirror
+KinkyDungeonInventoryItemDollMirrorDesc,"Reflects the face of a doll."
+KinkyDungeonInventoryItemDollMirrorDesc2,"Those who hold it feel a compulsion to look at it. Surely nothing will come of it, though. Can be turned toward enemies to deal psychic damage."
+ItemPickupDollMirror,"You pick up an doll's mirror."
