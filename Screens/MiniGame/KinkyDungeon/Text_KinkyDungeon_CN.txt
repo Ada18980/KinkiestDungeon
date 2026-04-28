@@ -1302,11 +1302,11 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 坏宠物
 - Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
 放弃“宠物初学者”特质。只能选一次。如果你再点出这项特质，就没有回头路了。
-- You are an expert in wearing a petsuit and your mobility is increased.
+- ${You} ${Pis} an expert in wearing a petsuit and ${Your} mobility is increased.
 你是穿着宠物服的专家，你的灵活度也得到了提高。
-- You are too used to wearing petsuits! Sprinting is impaired.
+- ${You} ${Pis} too used to wearing petsuits! Sprinting is impaired.
 你已经穿惯宠物服了！短跑能力受损。
-- You are a disobedient pet. You should put on a petsuit!
+- ${You} ${Pis} a disobedient pet. ${You} should put on a petsuit!
 你是个不听话的宠物。你应该穿上宠物服！
 
 - Dominant
@@ -2061,7 +2061,7 @@ Devious Dungeon Challenge 已启用。
 你还没有找到本层的钥匙。
 - Missing key
 未找到钥匙
-- You are protected from damage and can't be bound until the shield is broken!
+- Protects from damage and binding until the shield is broken!
 你将受到保护，免受伤害，并且在护盾被打破之前无法被束缚！
 - Chance for a spell to fizzle: 
 施法失败几率：
@@ -4852,10 +4852,8 @@ M.F. '女仆长'
 
 - Cyber Warden
 赛博看守
-- The cyber warden's suit goes into lockdown, leaving ${Ethem} wiggling helplessly!
+- The cyber warden's suit goes into lockdown, leaving ${Etheir} wiggling helplessly!
 赛博看守的套装进入了锁定状态，她只能无助地扭动身体！
-# :: KillCyborg
-# :: KillCyborgGuardian
 - The cyber warden applies an advanced locking technology!
 赛博看守施加了先进的锁定技术！
 # :: AttackCyborgLock
@@ -49868,6 +49866,8 @@ ESCP 强度 : ‎AMNT
 
 - Cyber Guardian
 赛博守护者
+- The cyber warden's suit goes into lockdown, leaving ${Ethem} wiggling helplessly!
+赛博看守的套装进入了锁定状态，她只能无助地扭动身体！
 
 - Auto Enforcer Guardian
 自行执法守护者
@@ -53027,16 +53027,23 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - She
 # - Her
 # :: KDPro_SheObj
-# :: KDPro_HerPos
+# :: KDPro_ShePos
 # - She's
-# :: KDPro_HerIs
-# :: KDPro_HerHave
+# :: KDPro_SheIs
+# :: KDPro_SheHave
 
 # - They
 # - Them
 # - Their
 # - They're
 # - They've
+
+# - You
+# :: KDPro_You
+# :: KDPro_YouObj
+# - Your
+# - You're
+# - You've
 
 # - It
 # :: KDPro_It
@@ -53049,16 +53056,23 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - she
 # - her
 # :: KDPro_SheObjLC
-# :: KDPro_HerPosLC
+# :: KDPro_ShePosLC
 # - she's
-# :: KDPro_HerIsLC
-# :: KDPro_HerHaveLC
+# :: KDPro_SheIsLC
+# :: KDPro_SheHaveLC
 
 # - they
 # - them
 # - their
 # - they're
 # - they've
+
+# - you
+# :: KDPro_YouLC
+# :: KDPro_YouObjLC
+# - your
+# - you're
+# - you've
 
 # - it
 # :: KDPro_ItLC
@@ -53074,3 +53088,24 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - have
 # - is
 # - are
+
+
+# - {$Youve} hear suggestions on how to be a good doll...
+# - {$Youve} fallen into a trance, making suggestions more powerful.
+
+# - Good doll.
+# - Pretty doll.
+# - Lovely doll.
+# - Quiet doll.
+
+# - Be still...
+# - A quiet doll...
+# - I'm not a doll.
+# - I'm not a doll!
+# - I am a doll.
+
+
+# - Doll's Mirror
+# - Reflects the face of a doll.
+# - Those who hold it feel a compulsion to look at it. Surely nothing will come of it, though. Can be turned toward enemies to deal psychic damage.
+# - You pick up an doll's mirror.
