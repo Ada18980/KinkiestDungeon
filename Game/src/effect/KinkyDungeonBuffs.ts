@@ -93,7 +93,7 @@ function KinkyDungeonTickBuffs(entity: entity, delta: number, endFloor: boolean)
 			let end = false;
 			if (buff.endFloor && endFloor) {end = true;}
 			else if (buff.endSleep && KDGameData.SleepTurns > 1) {end = true;}
-			else if (!buff.duration || buff.duration < 0) {
+			else if (!buff.duration || buff.duration < 0 || (buff.resetDurationTime && buff.duration <= 1)) {
 				if (buff.resetDurationTime) {
 					let amt = buff.resetDurationPower || 1;
 					let newPower = buff.power - amt;
@@ -101,6 +101,7 @@ function KinkyDungeonTickBuffs(entity: entity, delta: number, endFloor: boolean)
 						end = true;
 					} else {
 						buff.duration = buff.resetDurationTime;
+						buff.power = newPower;
 					}
 				} else end = true;
 			} 

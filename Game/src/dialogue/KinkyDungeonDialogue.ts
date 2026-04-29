@@ -2994,12 +2994,12 @@ function KDGetPronoun(player: entity, type: string = "", lowercase: boolean = fa
 		lowercase: lowercase,
 	}
 	if (player?.player) {
-		data.pronoun = override || TextGet("KDPro_" + (KDGameData.PlayerPronoun || "She") + data.type + (data.lowercase ? "LC" : ""));
+		data.pronoun = TextGet("KDPro_" + (override || KDGameData.PlayerPronoun || "She") + data.type + (data.lowercase ? "LC" : ""));
 		KinkyDungeonSendEvent("playerpronoun", data);
 		return data.pronoun;;
 	}
 	if (!player) return TextGet("KDPro_She" + data.type + (data.lowercase ? "LC" : ""));
-	data.pronoun = override || TextGet("KDPro_" + ((KDIsNPCPersistent(data.player?.id) ? KDGetPersistentNPC(data.player.id).entity?.CustomPronoun : data.player.CustomPronoun) || "She") + data.type + (data.lowercase ? "LC" : ""));
+	data.pronoun = TextGet("KDPro_" + (override || (KDIsNPCPersistent(data.player?.id) ? KDGetPersistentNPC(data.player.id).entity?.CustomPronoun : data.player.CustomPronoun) || "She") + data.type + (data.lowercase ? "LC" : ""));
 	KinkyDungeonSendEvent("npcpronoun", data);
 	return data.pronoun;
 }

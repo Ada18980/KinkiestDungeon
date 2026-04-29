@@ -3043,7 +3043,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 			let pri = 0;
 			if (b.duration) pri += Math.min(90, b.duration);
 			if (count) pri += Math.min(10, count);
-			let t = TextGet("KinkyDungeonBuff" + (b.desc || b.id), KDGetGenericDialogueParams(KDPlayer(), null)) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : "");
+			let t = TextGet("KinkyDungeonBuff" + (b.desc || b.id), KDGetGenericDialogueParams(KDPlayer(), null)) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration >= 1 && b.duration < 1000) ? ` (${b.duration})` : "");
 			if (b.buffTextReplace) {
 				for (let replace of Object.entries(b.buffTextReplace)) {
 					t = t.replace(replace[0], (replace as [string , string])[1]);
