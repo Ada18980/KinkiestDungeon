@@ -2777,7 +2777,7 @@ function KDDoAttack(Enemy: entity, teasesub: boolean, attackCost: number, skip: 
 				.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name))
 				.replace("DamageDealt", "" + Math.round(dmgTotal * 10))
 				.replace("BondageDealt", "" + Math.round(bondageTotal * 10)),
-			KDBaseWhite, 2, undefined, undefined, undefined, "Action");
+			KDBaseWhite, 2, undefined, undefined, undefined, "TotalDamage");
 	} else {
 		KinkyDungeonSendActionMessage(3.5,
 			TextGet("KDAttackMiss").replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("DamageDealt", "" + Math.round(dmgTotal * 10)),

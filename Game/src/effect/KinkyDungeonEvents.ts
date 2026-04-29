@@ -4231,13 +4231,13 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 					let str = TextGet("KDHauntingDealPleasure");
 					let amount = 1 + Math.round(15 * KDRandom())/10;
 
-					let delay = 8 + Math.round(KDRandom() * 13);
+					let delay = 80 + Math.round(KDRandom() * 130);
 					if (KinkyDungeonFlags.get("GhostDecideRelease")) {
-						delay = Math.ceil(delay / 5);
+						delay = Math.ceil(delay / 50);
 					} else 
 					if (!KDIsEdged(entity)) {
-						delay = Math.ceil(delay / 3);
-					} else if (KDRandom() < 0.1) {
+						delay = Math.ceil(delay / 30);
+					} else if (KDRandom() < 0.25) {
 						KinkyDungeonSetFlag("GhostDecideRelease", Math.round(20 + KDRandom() * 50));
 					}
 					
@@ -4251,7 +4251,11 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 
 					}, undefined, undefined, true).string;
 
-					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg", undefined, 1);
+					let sfx = "Grope";
+					if (KDRandom() < 0.4) sfx = "Grope2";
+					else if (KDRandom() < 0.33) sfx = "Slap";
+
+					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg", undefined, 1);
 
 					KinkyDungeonSendTextMessage(5, str.KDReplaceOrAddDmg(dmg), KDBaseRed, 1);
 					
@@ -13316,6 +13320,39 @@ function KDAddDamageWP(player: entity, powerAdded: number) {
 		});
 	} else {
 		buff.power = Math.min(missing, buff.power + powerAdded);
+		buff.text = Math.round(10 * buff.power);
+		if (buff.power <= 0) buff.duration = 0;
+	}
+}
+
+
+let KDHypnoResetTime = 4; // turns to lose 1 point of trance
+let KDMaxHypnosis = 100;
+
+// Add treatable WP to the pool (already taking effectiveness into account)
+function KDAddTrance(player: entity, powerAdded: number) {
+	if (powerAdded <= 0) return;
+
+	let buff = KDEntityGetBuff(player, "Hypnosis");
+	if (!buff) {
+		const initial = Math.min(powerAdded, KDMaxHypnosis);
+		KinkyDungeonApplyBuffToEntity(player, {
+			id: "Hypnosis",
+			type: "Hypnosis",
+			aura: KDBaseWhite, auraSprite: "Null",
+			buffSprite: true,
+			power: initial,
+			duration: KDHypnoResetTime,//infinite: true,
+			flashing: true,
+			flag: "Hypnosis",
+			resetDurationPower: 1,
+			resetDurationTime: KDHypnoResetTime,
+			textPower: true,
+			textSuff: "%",
+			//text: Math.round(10 * initial),
+		});
+	} else {
+		buff.power = Math.min(KDMaxHypnosis, buff.power + powerAdded);
 		buff.text = Math.round(10 * buff.power);
 		if (buff.power <= 0) buff.duration = 0;
 	}

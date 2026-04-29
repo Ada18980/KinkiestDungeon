@@ -145,6 +145,7 @@
         "Game/src/map/KDContainers.ts",
         "Game/src/restraint/Anatomy.ts",
         "Game/src/restraint/KDRestraintUtility.ts",
+        "Game/src/restraint/KDHypno.ts",
         "Game/src/restraint/KinkyDungeonRestraintsList.ts",
         "Game/src/collection/KinkyDungeonCollection.ts",
         "Game/src/collection/KDCollectionWander.ts",

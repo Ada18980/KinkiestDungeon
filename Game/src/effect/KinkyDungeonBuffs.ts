@@ -122,6 +122,9 @@ function KinkyDungeonTickBuffs(entity: entity, delta: number, endFloor: boolean)
 					KDCustomBuff[buff.type](entity, buff);
 				}
 
+				if (buff.flag) {
+					KinkyDungeonSetFlag(buff.flag, 1 + delta);
+				}
 
 				if (!(buff.infinite))
 					buff.duration -= delta;

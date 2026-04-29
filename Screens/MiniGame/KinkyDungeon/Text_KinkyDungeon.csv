@@ -31640,6 +31640,9 @@ KDLogFilterAmbient,Ambient
 KDLogFilterStruggle,Struggle
 KDLogFilterItems,Items
 KDLogFilterKills,Kills
+KDLogFilterCritical,Critical Hits
+KDLogFilterTotalDamage,Total Damage
+
 
 KDAttack,You attack TargetEnemy for DamageDealt total damage.
 KDAttackBind,You attack TargetEnemy for DamageDealt damage / BondageDealt binding.
@@ -33542,8 +33545,8 @@ KDTheyThem_is,is
 KDTheyThem_are,are
 
 
-KinkyDungeonBuffHypno_Doll,{$Youve} hear suggestions on how to be a good doll...
-KinkyDungeonBuffHypnosis,"{$Youve} fallen into a trance, making suggestions more powerful."
+KinkyDungeonBuffHypno_Doll,${You} feel like ${You} ${Yis} nothing but a doll... 
+KinkyDungeonBuffHypnosis,"${Youve} fallen into a trance, making suggestions more powerful."
 
 KDHypno_Doll_1,Good doll.
 KDHypno_Doll_2,Pretty doll.

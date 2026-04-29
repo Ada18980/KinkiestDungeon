@@ -572,10 +572,13 @@ interface KDGameDataBase {
 	
 	PreferredJailPoint?: KDJailPoint,
 	PreferredJailPointTick?: number,
+
+	HypnoButtons: HypnoButton[],
 };
 
 
 let KDGameDataBase: KDGameDataBase = {
+	HypnoButtons: [],
 	PreferredJailPoint: null,
 	PreferredJailPointTick: 0,
 
@@ -1504,7 +1507,7 @@ function KinkyDungeonRun() {
 			(data) => {
 					try {
 						localStorage.setItem('KinkyDungeonSave', data);
-					} catch (e) {
+					} catch (e: any) {
 						KDSendMusicToast(e.message, 0);
 						localStorage.setItem('KinkyDungeonSave', "");
 						saveError = true;
@@ -7205,7 +7208,7 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 			if (String) {
 				try {
 					localStorage.setItem('KinkyDungeonSave', String);
-				} catch (e) {
+				} catch (e: any) {
 					KDSendMusicToast(e.message, 0);
 					localStorage.setItem('KinkyDungeonSave', "");
 					saveError = true;

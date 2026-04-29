@@ -888,7 +888,7 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 						KinkyDungeonSendTextMessage(4, TextGet((Enemy.vulnerable || Enemy.distraction > Enemy.Enemy.maxhp) ? "KinkyDungeonVulnerable" : "KinkyDungeonUnseen")
 							.replace("AMOUNT", "" + Math.round(10 * dmgBonus))
 							.replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDBaseLightGreen, 2,
-						undefined, undefined, undefined, "Combat");
+						undefined, undefined, undefined, "Critical");
 
 
 
@@ -1312,7 +1312,7 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 					if (!NoMsg && predata.faction == "Player") {
 						KinkyDungeonSendTextMessage(4, TextGet(effmult == 1 ? "KDIsBound" : (effmult > 1 ? "KDDisabledBonus" : "KDUnflinchingPenalty"))
 							.replace("AMNT", "" + Math.round(10 * amt))
-							.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)), KDBaseLightGreen, 2, undefined, undefined, undefined, "Combat");
+							.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)), KDBaseLightGreen, 2, undefined, undefined, undefined, "Critical");
 					}
 
 				}

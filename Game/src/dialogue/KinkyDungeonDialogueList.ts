@@ -666,6 +666,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						clickFunction: (_gagged, player) => {
 							let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
 							tile.GhostDecision = 0;
+							KinkyDungeonSetFlag("GhostDeal", 200);
 
 							KinkyDungeonApplyBuffToEntity(player,
 							{

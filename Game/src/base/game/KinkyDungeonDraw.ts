@@ -2585,6 +2585,8 @@ let KDMaxConsoleMsg = 6;
 let KDLogFilters = [
 	"Action",
 	"Combat",
+	"TotalDamage",
+	"Critical",
 	"Self",
 	"Struggle",
 	"Ambient",
@@ -2592,6 +2594,9 @@ let KDLogFilters = [
 	"Items",
 	"Kills",
 ];
+let KDLogFilterDefault: {
+	TotalDamage: false,
+}
 
 function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boolean = false, width: number = KDMsgWidthMin) {
 	if (!NoLog) {
@@ -2608,7 +2613,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 		if (!KDGameData.LogFilters) {
 			KDGameData.LogFilters = {};
 			for (let filter of KDLogFilters) {
-				KDGameData.LogFilters[filter] = true;
+				KDGameData.LogFilters[filter] = KDLogFilterDefault[filter] != undefined ? KDLogFilterDefault[filter] : true;
 			}
 		}
 		let spacing = 51;
@@ -2620,6 +2625,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 			let filterY = 4;
 			let ii = 0;
 			for (let filter of KDLogFilters) {
+				if (KDGameData.LogFilters[filter] == undefined) KDGameData.LogFilters[filter] = KDLogFilterDefault[filter] != undefined ? KDLogFilterDefault[filter] : true;
 				if (
 					DrawButtonKDEx("logtog" + filter, (_bdata) => {
 						KDGameData.LogFilters[filter] = !KDGameData.LogFilters[filter];

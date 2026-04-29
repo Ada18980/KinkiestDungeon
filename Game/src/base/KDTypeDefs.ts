@@ -1796,6 +1796,10 @@ interface KDBuff {
 	labelcolor?: string,
 	hide?: boolean,
 	text?: any,
+	/** instead of text or duration it shows the power */
+	textPower?: boolean,
+	/** suffix for text */
+	textSuff?: string,
 	desc?: string,
 	buffTextReplace?: Record<string, any>,
 	buffSprite?: boolean,
@@ -1806,7 +1810,9 @@ interface KDBuff {
 	sfxApply?: string,
 	onlyAlly?: boolean,
 	noAlly?: boolean,
-	flashing?: boolean
+	flashing?: boolean,
+	/** Adds this flag when ticked */
+	flag?: string,
 }
 
 interface entity {

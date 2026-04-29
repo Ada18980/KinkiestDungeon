@@ -61,6 +61,17 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Also add an extra bit that can make dolls have even more stamina, but have NO regen at all
 
 
+Hypno guide:
+- Trance and suggestions are separate. Being in trance does not mean you get suggestions. Many things that apply hypnosis apply both, but there are things that don't.
+For example, when you're in trance you can start getting hypnotic suggestions just from regular enemies in jail.
+You also enter a trance from spells that put you in it, but don't get suggestions from those spells.
+Enemies can give suggestions if they are aware of your trance and have those specific suggestions
+
+- Trance ticks down over time unless it's ticking up. The Doll Mirror for example ticks up your trance level and also tries to send suggestions
+- Clicking suggestions raises the hypnosis training level, for example clicking doll suggestions increases your doll training level
+- Some triggers have their own training level, but most are bundled, e.g. pet hypnosis, doll hypnosis, drone hypnosis.
+- Triggers do not tick down directly, they tick down as you advance floors or if you pay the hypnotist in the shop to deprogram you
+
 Must do
 - Proper stripping
 - species perks
@@ -76,6 +87,8 @@ Must do
 - Food at tables can now contain extra effects (can be turned off in consent settings)
 - Fixed bug with leashing getting stuck on conveyors
 - Fixed a bug where bast cultists would never apply kitty suit in jail
+- Made ghost possession (pleasure option) have much longer time between teasings
+- Added log option to filter out "critical hit" and "total damage" messages from log
 
 5.4.93
 - One bar prisons now are harder to escape if you wear heels
