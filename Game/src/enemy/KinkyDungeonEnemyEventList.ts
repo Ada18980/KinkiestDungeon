@@ -1281,10 +1281,22 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				}// else enemy.playWithPlayer += delta;
 			}
 			let player = KDPlayer();
-			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
-			if (!nearestfurniture) {
-				enemy.IntentAction = '';
-				enemy.IntentLeashPoint = null;
+			
+			if (!enemy.IntentLeashPoint) {
+					if (!KDEntityHasFlag(enemy, "intent_startChecking")) {
+						enemy.IntentAction = '';
+						enemy.IntentLeashPoint = null;
+						enemy.gx = enemy.IntentLeashPoint?.x;
+						enemy.gy = enemy.IntentLeashPoint?.y;
+					}
+					
+					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+			} else {
+				let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+				if (!nearestfurniture) {
+					enemy.IntentAction = '';
+					enemy.IntentLeashPoint = null;
+				}
 			}
 			return false;
 		},

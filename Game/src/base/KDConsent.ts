@@ -264,6 +264,21 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "Petsuits"),
             tooltip: TextGet("KDConsentListDesc_" + "Petsuits"),
     },
+    Hypnosis: {
+            name: "ArousalFood",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "NoHypno",
+            perkYellow: "",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "Hypnosis"),
+            tooltip: TextGet("KDConsentListDesc_" + "Hypnosis"),
+    },
     Bubbles: {
             name: "Bubbles",
             color: KDBaseWhite,

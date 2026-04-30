@@ -99,6 +99,7 @@ let KDWeaponTags = {
 	"heavy": true,
 	"massive": true,
 	"illum": true,
+	"hypno": true,
 };
 
 let KDInvFilter = "";
@@ -1432,6 +1433,14 @@ function KinkyDungeonDrawInventorySelected (
 						undefined, {
 							zIndex: 130,
 						});
+					if (MouseIn(
+						canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale/3.35 - spritesize2/2 * (tags.length - 1) + spritesize2*tagi,
+						yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 46 - spritesize + 133,
+						spritesize, spritesize,
+					)) {
+						mult = KDGetFontMult();
+						textSplit = KinkyDungeonWordWrap(TextGet("KDWeaponTagD_damage"), 13*1.3*mult, 30*1.3*mult).split('\n');
+					}
 				} else {
 					// Draw the tag
 					KDDraw(kdcanvas, kdpixisprites, "wt_" + tagi,
@@ -2039,7 +2048,7 @@ function KinkyDungeonDrawInventory() {
 							&& (!KDInventoryAction[action].valid || KDInventoryAction[action].valid(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item))
 						)
 							DrawTextFitKD(KDInventoryAction[action].label(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item),
-								XX + II*KDInventoryActionSpacing + 34, YY + 72 - 9, 72, KDInventoryAction[action].labelcolor ? KDInventoryAction[action].labelcolor(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) : KDBaseWhite,
+								XX + II*KDInventoryActionSpacing + (KDInventoryAction[action]?.doubleSize ? (74 + KDInventoryActionSpacing)/2 : 34), YY + 72 - 9, 72, KDInventoryAction[action].labelcolor ? KDInventoryAction[action].labelcolor(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) : KDBaseWhite,
 								KDTextGray0, 18, "center");
 						if (DrawButtonKDEx("invAction" + action, (_bdata) => {
 							KDSendInput("inventoryAction",
@@ -2048,7 +2057,12 @@ function KinkyDungeonDrawInventory() {
 									player: KDPlayer(),
 									item: filteredInventory[KinkyDungeonCurrentPageInventory].item});
 							return true;
-						}, true, XX + II*KDInventoryActionSpacing, YY, 74, 74, "", "",
+						}, true, XX + II*KDInventoryActionSpacing, YY, 
+						KDInventoryAction[action]?.doubleSize ? (74 + KDInventoryActionSpacing) : 74, 74, 
+						KDInventoryAction[action]?.doubleSize ? TextGet("KDInventoryAction" + action) : "", 
+						KDInventoryAction[action]?.doubleSize ?  (KDInventoryAction[action].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) ? (
+								KDInventoryAction[action].highlight ? KDInventoryAction[action].highlight(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item) : KDBaseWhite
+							) : KDBaseRed) : "",
 						KinkyDungeonRootDirectory + KDInventoryAction[action].icon(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) + ".png",
 						"",
 						!KDInventoryAction[action].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item),
@@ -2056,9 +2070,11 @@ function KinkyDungeonDrawInventory() {
 						KDInventoryAction[action].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) ? (
 							KDInventoryAction[action].highlight ? KDInventoryAction[action].highlight(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item) : KDButtonColor
 						) : "rgba(255, 50, 50, 0.5)",
-						undefined, undefined, {centered: true,
+						undefined, KDInventoryAction[action]?.doubleSize, {
+							centered: !KDInventoryAction[action]?.doubleSize,
 							hotkey: KDInventoryAction[action].hotkey ? KDInventoryAction[action].hotkey() : undefined,
 							hotkeyPress: KDInventoryAction[action].hotkeyPress ? KDInventoryAction[action].hotkeyPress() : undefined,
+							
 
 						},
 						)) {
@@ -2070,6 +2086,7 @@ function KinkyDungeonDrawInventory() {
 					}
 
 					II++;
+					if (KDInventoryAction[action].doubleSize) II++;
 					if (II > KDInventoryActionPerRow) {
 						II = 0;
 						YY += KDInventoryActionSpacing;

@@ -819,6 +819,7 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 		incomingDamage: Damage,
 		dmgDealt: 0,
 		dmgShieldDealt: 0,
+		armormult: Damage?.armormult != undefined ? Damage.armormult : 1,
 		freezebroke: false,
 		froze: 0,
 		vulnerable: (Enemy.vulnerable || (KDHostile(Enemy) && !Enemy.aware)) && Damage && !Damage.novulnerable && (!Enemy.Enemy.tags || !Enemy.Enemy.tags.nonvulnerable),
@@ -1019,18 +1020,18 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 
 		if (predata.type != "inert" && resistDamage < 2) {
 			if (resistDamage == 1) {
-				predata.dmgDealt = Math.max(predata.dmg * KDArmorFormula(predata.dmg, armor), 0); // Armor goes before resistance
+				predata.dmgDealt = Math.max(predata.dmg * KDArmorFormula(predata.dmg, armor * predata.armormult), 0); // Armor goes before resistance
 				predata.dmgDealt = predata.dmgDealt*0.5; // Enemies that are vulnerable take either dmg+0.5 or 1.5x damage, whichever is greater
 			} else if (resistDamage == -1) {
 				if (predata.dmg > 0)
 					predata.dmgDealt = Math.max(predata.dmg+0.5, predata.dmg*1.5); // Enemies that are vulnerable take either dmg+1 or 1.5x damage, whichever is greater
 				else predata.dmgDealt = 0;
-				predata.dmgDealt = Math.max(predata.dmgDealt * KDArmorFormula(predata.dmg, armor), 0); // Armor comes after vulnerability
+				predata.dmgDealt = Math.max(predata.dmgDealt * KDArmorFormula(predata.dmg, armor * predata.armormult), 0); // Armor comes after vulnerability
 			} else if (resistDamage == -2) {
 				predata.dmgDealt = Math.max(predata.dmg+1, predata.dmg*2); // Enemies that are severely vulnerable take either dmg+1 or 2x damage, whichever is greater
-				predata.dmgDealt = Math.max(predata.dmgDealt * KDArmorFormula(predata.dmg, armor), 0); // Armor comes after vulnerability
+				predata.dmgDealt = Math.max(predata.dmgDealt * KDArmorFormula(predata.dmg, armor * predata.armormult), 0); // Armor comes after vulnerability
 			} else {
-				predata.dmgDealt = Math.max(predata.dmg * KDArmorFormula(predata.dmg, armor), 0);
+				predata.dmgDealt = Math.max(predata.dmg * KDArmorFormula(predata.dmg, armor * predata.armormult), 0);
 			}
 
 			if (Enemy.Enemy.tags && Enemy.Enemy.tags.playerinstakill && attacker && attacker.player) predata.dmgDealt = Enemy.hp;

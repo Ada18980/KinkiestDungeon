@@ -2900,6 +2900,11 @@ let KDSpecialStats: Record<string, SpecialStat> = {
 			return 50;
 		}
 	},
+	Hypno_Doll: {
+		PerFloor: (_player, _amount) => {
+			return 100;
+		}
+	},
 	LatexIntegration: {
 		PerFloor: (_player, amount) => {
 			return Math.max(0, Math.floor(10 - 0.1 * amount)); // 0 at 100

@@ -641,7 +641,8 @@ let KinkyDungeonLootTable = {
 		{name: "ArcaneCrystal", minLevel: 5, weight:3, weapon: "ArcaneCrystal",
 			noweapon: ["ArcaneCrystal"], message:"LootChestWeapon",
 			messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
-
+		{name: "DollMirror", weaponlist: "DollMirror", enchantlist: "CommonTrinket", enchantchance: 1.0, minLevel: 0, weight:0.5, message:"LootChestWeapon", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
+		
 		{name: "spell_illusion_low", magic: true, minLevel: 0, weight: 0.75, message:"LootChestSpell", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true, prerequisites: ["UnlearnedIllusion", "lowlevel"]}, // lowlevel is spell levels 1-2
 		{name: "spell_conjuration_low", magic: true, minLevel: 0, weight: 0.75, message:"LootChestSpell", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true, prerequisites: ["UnlearnedConjure", "lowlevel"]}, // lowlevel is spell levels 1-2
 		{name: "spell_elemental_low", magic: true, minLevel: 0, weight: 0.75, message:"LootChestSpell", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true, prerequisites: ["UnlearnedElements", "lowlevel"]}, // lowlevel is spell levels 1-2
@@ -671,6 +672,8 @@ let KinkyDungeonLootTable = {
 		...KDEnchantedRestraints,
 	],
 	"lessergold": [
+		{name: "DollMirror", weaponlist: "DollMirror", enchantlist: "CommonTrinket", enchantchance: 1.0, minLevel: 0, weight:0.25, message:"LootChestWeapon", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
+		
 		...KDGoldArmor, ...KDGoldArmor2,
 		{name: "RobeOfChastity", arousalMode: true, minLevel: 0, weight:4, message:"LootChestArmor",
 			armor: "RobeOfChastity",
@@ -724,6 +727,8 @@ let KinkyDungeonLootTable = {
 		{name: "trap_beltonly", arousalMode: true, trap: true, minLevel: 1, weight:2, message:"LootChestTrapMagicBelt", messageColor:KDBaseRed, messageTime: 3, allFloors: true, prerequisites: ["Group_ItemPelvis"], power: 5},
 		{name: "trap_belt", arousalMode: true, trap: true, minLevel: 3, weight:2, message:"LootChestTrapMagicVibe", messageColor:KDBaseRed, messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulvaPiercings", "alreadyBelted"], power: 1},
 		*/
+		{name: "DollMirror", weaponlist: "DollMirror", enchantlist: "CommonTrinket", enchantchance: 1.0, minLevel: 0, weight:0.1, message:"LootChestWeapon", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
+		
 		{name: "trap_plug", notag: ["SupremeBelt", "NoBelt"], arousalMode: true, trap: true, minLevel: 5, weight:1.5, message:"LootChestTrapMagicPlug", messageColor:KDBaseRed, messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 3},
 		{name: "trap_plug_tease", notag: ["SupremeBelt", "NoBelt"], arousalMode: true, trap: true, minLevel: 11, weight:1, message:"LootChestTrapMagicPlug", messageColor:KDBaseRed, messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 4},
 		{name: "trap_plug_torment", notag: ["SupremeBelt", "NoBelt"], arousalMode: true, trap: true, minLevel: 15, weight:0.5, message:"LootChestTrapMagicPlug", messageColor:KDBaseRed, messageTime: 3, allFloors: true, prerequisites: ["Group_ItemVulva", "alreadyBelted", "vibe"], power: 5},

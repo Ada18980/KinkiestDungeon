@@ -5472,7 +5472,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 		},
 	},
 	"calcEfficientMana": {
-		"ManaCost": (e, _item, data) => {
+		"ManaCost": (e, _spell, data) => {
 			data.efficiency += e.power;
 		},
 	},
@@ -5836,6 +5836,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			}
 		},
 	},
+	
 	"tick": {
 		
 		SpeciesDoll: (e, spell, _data) => {
@@ -7757,6 +7758,18 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 			data.flags.isMagic = true;
 		},
 	},
+	
+	"calcEfficientMana": {
+		"ManaCost": (e, _weapon, data) => {
+			data.efficiency += e.power;
+		},
+	},
+	
+	"afterCalcManaPool": {
+		"MultManaPoolRegen": (e, _weapon, data) => {
+			data.manaPoolRegen *= e.power;
+		},
+	},
 	"draw": {
 		"Float": (_e, _weapon, _data) => {
 			if (!KDToggles.HideFloatingWeapon && KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({ name: KinkyDungeonPlayerWeapon }))) {
@@ -7949,8 +7962,51 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 				power: e.power
 			});
 		},
-
-
+		"DollHypnosis": (e, weapon, data) => {
+			if (data?.delta > 0) {
+				let player = KDPlayer();
+				KDAddTrance(player, e.power);
+				if (!KinkyDungeonFlags.get("DollSuggestion_Basic") && KDRandom() < e.chance) {
+					// add a suggestion
+					let amount = 1;
+					let key = "KDHypno_Doll_" + Math.floor(KDRandom() * KDDollHypnoSuggestions);
+					let keyafter: string = null;
+					let callback: (player: entity) => void = null;
+					if (KDRandom() < 0.6 && KDEntityBuffedStat(player, "Hypnosis") > 25 && KDRandom() < KDEntityBuffedStat(player, "Hypnosis")*0.01) {
+						let dollLevel = KDEntityBuffedStat(player, "Hypno_Doll");
+						if (dollLevel > 90 && KDRandom() < 0.25) {
+							amount = Math.floor(5 * (0.5 + KDRandom()));
+							key = "KDHypno_Doll_Accept";
+							callback = (player) => {
+								// TODO freeze the player and call an NPC to make the player a doll
+							};
+						} else if (dollLevel > 25 && KDRandom() < 0.2 + 0.005 * dollLevel) {
+							if (KDRandom() < 0.5) {
+								key = "KDHypno_Doll_Still";
+								callback = (player) => {
+									KDStunTurns(Math.floor(2 * (0.5 + KDRandom())), true);
+								};
+							} else {
+								key = "KDHypno_Doll_Silent";
+								callback = (player) => {
+									KDApplyGenBuffs(player, "Silenced", Math.floor(5 * (0.5 + KDRandom())));
+								};
+							}
+						} else if (dollLevel > 25 || KDRandom() < 0.1 + dollLevel*0.003) {
+							if (KDRandom() < dollLevel * 0.006) {
+								key = "KDHypno_Doll_AvoidFail";
+								keyafter = "KDHypno_Doll_AvoidFail2";
+							} else {
+								key = "KDHypno_Doll_Avoid";
+								amount = -Math.floor(8 * (0.5 + KDRandom()));
+							}
+						} 
+					}
+					KDAddHypnoButton("Hypno_Doll", amount, key, null, keyafter, callback);
+					KinkyDungeonSetFlag("DollSuggestion_Basic", 3 + Math.floor(KDRandom() * 3));
+				}
+			}
+		},
 		"StaffStormAura": (e, weapon, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "StaffStormAura",
@@ -9036,7 +9092,8 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 					shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
 					boundBonus: KinkyDungeonPlayerDamage.boundBonus,
 					novulnerable: KinkyDungeonPlayerDamage.novulnerable,
-					tease: KinkyDungeonPlayerDamage.tease
+					tease: KinkyDungeonPlayerDamage.tease,
+					armormult: KinkyDungeonPlayerDamage.armormult
 				}
 
 				if (KinkyDungeonPlayerDamage.stam50mult && KinkyDungeonStatMana / KinkyDungeonStatManaMax >= 0.50) {
@@ -9096,7 +9153,8 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 					shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
 					boundBonus: KinkyDungeonPlayerDamage.boundBonus,
 					novulnerable: KinkyDungeonPlayerDamage.novulnerable,
-					tease: KinkyDungeonPlayerDamage.tease
+					tease: KinkyDungeonPlayerDamage.tease,
+					armormult: KinkyDungeonPlayerDamage.armormult
 				};
 
 				if (KinkyDungeonPlayerDamage.stam50mult && KinkyDungeonStatMana / KinkyDungeonStatManaMax >= 0.50) {
@@ -10031,7 +10089,8 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 								shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
 								boundBonus: KinkyDungeonPlayerDamage.boundBonus,
 								novulnerable: KinkyDungeonPlayerDamage.novulnerable,
-								tease: KinkyDungeonPlayerDamage.tease
+								tease: KinkyDungeonPlayerDamage.tease,
+								armormult: KinkyDungeonPlayerDamage.armormult
 							}
 
 							if (KinkyDungeonPlayerDamage.stam50mult && KinkyDungeonStatMana / KinkyDungeonStatManaMax >= 0.50) {
@@ -10096,7 +10155,8 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 										shield_vuln: weapon.shield_vuln, // Vuln thru shield
 										boundBonus: weapon.boundBonus,
 										novulnerable: weapon.novulnerable,
-										tease: weapon.tease
+										tease: weapon.tease,
+										armormult: KinkyDungeonPlayerDamage.armormult
 									}
 
 									if (weapon.stam50mult && KinkyDungeonStatMana / KinkyDungeonStatManaMax >= 0.50) {
@@ -12616,6 +12676,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				if (!KinkyDungeonFlags.get("SecondWindSpell")) {
 					KinkyDungeonSetFlag("SecondWindSpell", -1);
 					KinkyDungeonSpells.push(KinkyDungeonFindSpell("SecondWind0"));
+					KDRefreshSpellCache = true;
 				}
 				if (!KinkyDungeonFlags.get("SecondWind1")) {
 					if (KDHasSpell("SecondWind1")) {
@@ -12702,6 +12763,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				if (!KinkyDungeonFlags.get("NovicePetSpell")) {
 					KinkyDungeonSetFlag("NovicePetSpell", -1);
 					KinkyDungeonSpells.push(KinkyDungeonFindSpell("NovicePet0"));
+					KDRefreshSpellCache = true;
 				}
 				if (!KinkyDungeonFlags.get("NovicePet1")) {
 					if (KDHasSpell("NovicePet1")) {
@@ -12735,6 +12797,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				if (!KinkyDungeonFlags.get("SpeciesDollSpell")) {
 					KinkyDungeonSetFlag("SpeciesDollSpell", -1);
 					KinkyDungeonSpells.push(KinkyDungeonFindSpell("SpeciesDoll"));
+					KDRefreshSpellCache = true;
 				}
 			}
 		},
@@ -13353,8 +13416,8 @@ function KDAddTrance(player: entity, powerAdded: number) {
 		});
 	} else {
 		buff.power = Math.min(KDMaxHypnosis, buff.power + powerAdded);
-		buff.text = Math.round(10 * buff.power);
 		if (buff.power <= 0) buff.duration = 0;
+		else buff.duration = Math.max(KDHypnoResetTime, buff.duration);
 	}
 }
 

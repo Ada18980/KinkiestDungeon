@@ -1048,6 +1048,11 @@ let KDAutowait_Med = 50;
 let KDAutowait_Fast = 75;
 let KDAutowait_Max = 200;
 
+let KDHypnoAngle = KDRandom();
+let KDHypnoTime = 6;
+let KDHypnoWaveTime = 10;
+let KDHypnoIntensity = 4;
+
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
 	KDCurrentEnemyTooltip = null;
@@ -1151,6 +1156,16 @@ function KinkyDungeonDrawGame() {
 			let CamY_offsetVis = (KinkyDungeonInspect ? KDInspectCamera.y : KinkyDungeonPlayerEntity.visual_y) - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
 
 
+			if (KinkyDungeonFlags.get("Hypnosis") && KDToggles.HypnoOverlay) {
+				let hypnosis = KDEntityBuffedStat(KDPlayer(), "Hypnosis");
+				KDHypnoAngle = KDHypnoAngle + Math.PI * 2 * KinkyDungeonDrawDelta * 0.001 / (KDHypnoTime);
+				if (KDHypnoAngle > Math.PI * 2) KDHypnoAngle -= Math.PI * 2;
+				let length = KDHypnoIntensity* 0.01 * hypnosis * Math.sin(
+					((0.001 * CommonTime()) * (Math.PI * 2 / KDHypnoWaveTime)) % (Math.PI * 2))
+					/ KinkyDungeonGridWidthDisplay;
+				CamX_offsetVis += Math.cos(KDHypnoAngle) * length;
+				CamY_offsetVis += Math.sin(KDHypnoAngle) * length;
+			}
 
 
 			KinkyDungeonCamXVis = CamX + CamX_offsetVis;
@@ -2256,6 +2271,7 @@ function KinkyDungeonDrawGame() {
 		if (KDToggles.VibeHearts) {
 			KDDrawVibeParticles(KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax);
 		}
+		KDDrawHypnoOverlay(0, 0, 1);
 
 		/*if (!KinkyDungeonFlags.get("PlayerOrgasmFilter") && KDIntenseFilter) {
 			kdgameboard.removeChild(KDIntenseFilter);
@@ -2594,7 +2610,7 @@ let KDLogFilters = [
 	"Items",
 	"Kills",
 ];
-let KDLogFilterDefault: {
+let KDLogFilterDefault = {
 	TotalDamage: false,
 }
 
@@ -2625,6 +2641,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 			let filterY = 4;
 			let ii = 0;
 			for (let filter of KDLogFilters) {
+				if (!KDGameData.LogFilters) KDGameData.LogFilters = {};
 				if (KDGameData.LogFilters[filter] == undefined) KDGameData.LogFilters[filter] = KDLogFilterDefault[filter] != undefined ? KDLogFilterDefault[filter] : true;
 				if (
 					DrawButtonKDEx("logtog" + filter, (_bdata) => {
@@ -3646,6 +3663,7 @@ type ButtonOptions = {
 	///  Dont show text backgrounds
 	noTextBG?:    boolean;
 	alpha?:       number;
+	textalpha?: number,
 	/// zIndex
 	zIndex?:      number;
 	/// This button is not differentiated by position
@@ -3848,7 +3866,7 @@ function DrawButtonVisTo (
 			Top + Math.floor(Height / 2), (options?.centerText) ? Width : (Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04)),
 			Color,
 			(options && options.noTextBG) ? "none" : undefined,
-			FontSize, undefined, zIndex + 0.009, undefined, undefined,
+			FontSize, undefined, zIndex + 0.009, options?.textalpha, undefined,
 			options?.unique, KDButtonFont);
 
 	if (options?.hotkey) {
@@ -3857,7 +3875,7 @@ function DrawButtonVisTo (
 			Top + (size / 2) + 2, Width*0.7,
 			'#ffffff',
 			(options && options.noTextBG) ? "none" : undefined,
-			size, "right", zIndex + 0.02, undefined, undefined, undefined, KDButtonFont);
+			size, "right", zIndex + 0.02, options?.textalpha, undefined, undefined, KDButtonFont);
 	}
 }
 

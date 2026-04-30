@@ -3124,7 +3124,7 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 		Eis: KDGetTheyThem_is(enemy),
 		Pis: KDGetTheyThem_is(player),
 		
-		YIs: KDGetTheyThem_is(player, player == KDPlayer() ? "You" : undefined),
+		Yis: KDGetTheyThem_is(player, player == KDPlayer() ? "You" : undefined),
 		Yhas: KDGetTheyThem_has(player, player == KDPlayer() ? "You" : undefined),
 		Ys: KDGetTheyThem_s(player, player == KDPlayer() ? "You" : undefined),
 		Yes: KDGetTheyThem_es(player, player == KDPlayer() ? "You" : undefined),

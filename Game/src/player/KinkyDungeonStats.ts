@@ -596,6 +596,7 @@ interface damageInfo extends damageInfoMinor {
 	noblock?: boolean,
 	evadeable?: boolean,
 	nokill?: boolean,
+	armormult?: number,
 
 	ignoreshield?: boolean,
 

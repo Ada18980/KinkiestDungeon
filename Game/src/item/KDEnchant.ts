@@ -83,6 +83,13 @@ let KDEnchantVariantList = {
 		"AoEDamageFrozen",
 		"ShadowBleed",
 	],
+	"CommonTrinket": [
+		"SpellWard",
+		"DamageResist",
+		"ElementalDmg",
+		"ManaCost",
+		"ManaRegen",
+	],
 };
 
 /**
@@ -450,7 +457,26 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 		prefix: "ManaCost",
 		types: {
 			2: null, //consumable
-			1: null, //weapon
+			1: {level: 5,
+				filter: (_item, _allEnchant) => {
+					return true;
+				},
+				weight: (item, allEnchant) => {
+					if (allEnchant.includes("ManaCost")) return 0;
+					if (allEnchant.includes("ManaCostSpecific")) return 0;
+					
+					if (KDWep(item)?.magic) return 8;
+					return 3;
+				},
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+					let power = Math.max(KDGetItemPower(item), 2);
+					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.7));
+					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
+					return [
+						{original: "ManaCost", trigger: "calcEfficientMana", type: "ManaCost", power: amt*0.01, inheritLinked: true},
+						{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: amt, color: KDBaseBlue, bgcolor: KDBaseLightBlue},
+						{original: "ManaCost", trigger: "icon", type: "tintIcon", power: 5, color: KDBaseBlue},
+					];}}, //weapon
 			0: /*restraint*/{level: 5,
 				filter: (_item, _allEnchant) => {
 					return true;
@@ -682,7 +708,24 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 		prefix: "ManaRegen",
 		types: {
 			2: null, //consumable
-			1: null, //weapon
+			1: {level: 3,
+				filter: (_item, _allEnchant) => {
+					return true;
+				},
+				weight: (item, allEnchant) => {
+					if (allEnchant.includes("ManaRegen")) return 0;
+					if (KDWep(item)?.magic) return 12;
+					return 6;
+				},
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+					let power = Math.max(KDGetItemPower(item), 3);
+					let amt = 25 + Math.round((0.4 + 0.6*KDRandom()) * 10 * Math.pow(power, 0.75));
+					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
+					return [
+						{original: "ManaRegen", trigger: "afterCalcManaPool", type: "MultManaPoolRegen", power: 1 + amt*0.01, inheritLinked: true},
+						{original: "ManaRegen", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaRegen", power: amt, color: KDBaseBaby, bgcolor: "#88aaff"},
+						{original: "ManaRegen", trigger: "icon", type: "tintIcon", power: 2, color: "#0055aa"},
+					];}}, //weapon
 			0: /*restraint*/{level: 2,
 				filter: (_item, _allEnchant) => {
 					return true;

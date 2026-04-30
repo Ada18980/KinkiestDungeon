@@ -59,6 +59,7 @@ KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 KDToggleTabMouseShortcuts,Mouse Shortcuts
 
+KDToggleHypnoOverlay,Hypnosis Screen Wobble
 
 KDToggleStruggleContext,Replace struggle icons with menu
 KDToggleFastMovePassable,Auto-path through NPCs
@@ -29007,6 +29008,10 @@ KDWeaponTag_massive,Massive
 KDWeaponTagD_massive,"Massive: This weapon either stuns or slows you after attacking with it. Handle with care!"
 KDWeaponTag_illum,Illumination
 KDWeaponTagD_illum,"Illumination: This weapon is a light source."
+KDWeaponTag_hypno,Mesmerizing
+KDWeaponTagD_hypno,"Mesmerizing: This item has mind-altering effects."
+KDWeaponTag_damage,Damaging
+KDWeaponTagD_damage,"Damage Type: "
 
 KinkyDungeonSpellOffhand,"Dual Wield"
 KinkyDungeonSpellDescriptionOffhand,"Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand."
@@ -29591,6 +29596,7 @@ KDConsentItem_PrisonerMarkings,Prisoner Text
 KDConsentItem_Invis,Invisible Restraints
 KDConsentItem_ArousalFood,Aphrodisiac-Laced Food
 KDConsentItem_SleepFood,Sleep-Laced Food
+KDConsentItem_Hypnosis,Hypnosis
 
 
 KDConsentItemTooltip_SleepFood,"Some food items on tables will be laced with a drug that makes your character fall asleep."
@@ -29633,6 +29639,7 @@ KDConsentItemTooltip_Masks,"Includes force-equipped masks that cover the entire 
 KDConsentItemTooltip_SenseDep,"The Sensory Deprivation Hood is a highly restrictive item that deafens the player in addition to blocking most vision."
 KDConsentItemTooltip_Earplugs,Earplugs reduce the player's hearing.
 KDConsentItemTooltip_Shocks,"Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain."
+KDConsentItemTooltip_Hypnosis,"Allows the player character to get hypnotized, listening to suggestions which alter behavior."
 
 KDColorPickerPalette,Palette
 KDPaletteColorPickerInfo,Pick a palette in Extra Options
@@ -33545,10 +33552,11 @@ KDTheyThem_is,is
 KDTheyThem_are,are
 
 
-KinkyDungeonBuffHypno_Doll,${You} feel like ${You} ${Yis} nothing but a doll... 
+KinkyDungeonBuffHypno_DollStat,${You} feel like ${You} ${Yis} nothing but a doll... 
 KinkyDungeonBuffHypnosis,"${Youve} fallen into a trance, making suggestions more powerful."
 
-KDHypno_Doll_1,Good doll.
+KDHypno_Doll_0,Good doll.
+KDHypno_Doll_1,Good doll...
 KDHypno_Doll_2,Pretty doll.
 KDHypno_Doll_3,Lovely doll.
 KDHypno_Doll_4,Quiet doll.
@@ -33557,10 +33565,15 @@ KDHypno_Doll_Still,Be still...
 KDHypno_Doll_Silent,A quiet doll...
 KDHypno_Doll_Avoid,I'm not a doll.
 KDHypno_Doll_AvoidFail,I'm not a doll!
+KDHypno_Doll_AvoidFail2,I'm a doll!
 KDHypno_Doll_Accept,I am a doll.
 
+KinkyDungeonBuffSilenced,"${You} ${Yis} silenced, unable to cast spells easily."
 
 KinkyDungeonInventoryItemDollMirror,Doll's Mirror
 KinkyDungeonInventoryItemDollMirrorDesc,"Reflects the face of a doll."
-KinkyDungeonInventoryItemDollMirrorDesc2,"Those who hold it feel a compulsion to look at it. Surely nothing will come of it, though. Can be turned toward enemies to deal psychic damage."
+KinkyDungeonInventoryItemDollMirrorDesc2,"Those who hold it feel a compulsion to look at it. Surely nothing will come of it, though.\n\nCan be turned toward enemies to deal psychic damage, but cannot critically hit. Ignores 75% of magical armor."
 ItemPickupDollMirror,"You pick up an doll's mirror."
+
+KDAddHypno_Doll,"You feel just like a pretty, still doll... (+AMNT Stillness)"
+KDRemoveHypno_Doll,You regain a bit of your sense of self. (-AMNT Stillness)

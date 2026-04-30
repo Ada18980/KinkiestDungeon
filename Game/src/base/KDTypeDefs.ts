@@ -2839,6 +2839,8 @@ interface KDInventoryActionDef {
 	cancel: (player: entity, delta: number) => boolean;
 	icon: (player: entity, item: item) => string;
 	hotkey?: () => string,
+	/** Makes the button twice as wide and have text */
+	doubleSize?: boolean,
 	hotkeyPress?: () => string,
 	alsoShow?: string[],
 	/** Auto-filter inventory items when this action is active */

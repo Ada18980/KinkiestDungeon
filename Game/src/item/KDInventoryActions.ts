@@ -20,6 +20,7 @@ function KDCalcMarketDecayMultiplier (qty_previous: number, qty_this : number, r
 
 let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 	"Equip": {
+		doubleSize: true,
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[0]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[0];},
 		text: (_player, item) => {

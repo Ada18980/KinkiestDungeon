@@ -25,6 +25,9 @@ let KDWeaponLootList: Record<string, Record<string, number>> = {
 		"DildoBat": 1,
 		"Scissors": 1,
 	},
+	"DollMirror": {
+		"DollMirror": 1,
+	},
 };
 
 /**
@@ -354,6 +357,15 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		events: [
 			{type: "Buff", kind: "Book", trigger: "tick", power: 0.1, buffType: "BindAmp", offhand: true},
 		]},
+
+	"DollMirror": {name: "DollMirror", damage: 0.7, chance: 5.0, staminacost: 0.2, type: "soul", unarmed: false,
+		rarity: 7, shop: true, sfx: "MirrorShine", magic: true,
+		tags: ["hypno"], noDamagePenalty: true,
+		nocrit: true,
+		armormult: 0.25,
+		events: [
+			{type: "DollHypnosis", trigger: "tick", power: 1, chance: 0.1}]},
+	
 
 	// Techy
 	"Slimethrower": {name: "Slimethrower", damage: 3.5, chance: 1.0, staminacost: 6.0, type: "crush", unarmed: false, rarity: 6, shop: false, sfx: "HeavySwing",

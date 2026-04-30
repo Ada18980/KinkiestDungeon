@@ -247,6 +247,8 @@ const KDAttackSlow: KDBuff = {
 };
 
 
+const Silenced: KDBuff = {id: "Silenced", aura: KDBaseLightGrey, type: "Miscast", power: 1.0, player: false, enemies: true, buffSprite: true,
+	duration: 2,};
 const KDAntiMagicMiscast: KDBuff = {id: "AntiMagicMiscast", aura: KDBaseCyan, type: "Miscast", power: 0.5, player: false, enemies: true,
 	duration: 2,};
 
@@ -278,6 +280,7 @@ const KDBuffReference: Record<string, KDBuff[]> = {
 	"Vibrate1": [KDVibrate1],
 	"Vibrate2": [KDVibrate2],
 	"Vibrate3": [KDVibrate3],
+	"Silenced": [Silenced],
 };
 
 const KDDisenchantSelf: KDBuff = {id: "DisenchantSelf", aura: KDBaseLightBlue, type: "Disenchant", power: 9.9, player: true, enemies: true, duration: 10,};

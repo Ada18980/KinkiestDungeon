@@ -192,6 +192,7 @@ let KDToggles = {
 	StruggleContext: false,
 	TrainingBuff: true,
 	FlashingWarning: true,
+	HypnoOverlay: true,
 };
 
 
@@ -217,6 +218,7 @@ let KDToggleCategories = {
 
 	ShowServantNPCSprites: "GFX",
 	ShowOtherNPCSprites: "GFX",
+	HypnoOverlay: "UI",
 
 	StruggleBars: "UI",
 	SpellBook: "UI",
