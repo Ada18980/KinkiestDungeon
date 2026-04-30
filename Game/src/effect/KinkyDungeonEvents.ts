@@ -7997,7 +7997,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 									// freeze the player and call an NPC to make the player a doll
 									KinkyDungeonSetFlag("GuardCalled", 35);
 									let entity = KinkyDungeonCallGuard(player.x, player.y,
-											true, true, undefined, "Dressmaker");
+											true, true, undefined, "Dressmaker", "dolldressmaker");
 									if (entity) {
 										// TODO add intent action to bring up doll dialogue
 									}
