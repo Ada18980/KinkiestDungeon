@@ -234,8 +234,8 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
         // draw the usual background
         DrawRectKD(container, kdpixisprites, id + "mainborder", {
             Left: x,
-            Height: height,
-            Top: y,
+            Height: height + 8,
+            Top: y - 4,
             Width: width,
 			Color: KDBaseBlack, 
 			alpha: KDUIAlpha,
@@ -244,8 +244,8 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
         });
         FillRectKD(container, kdpixisprites, id + "mainfill", {
             Left: x,
-            Height: height,
-            Top: y,
+            Height: height + 8,
+            Top: y - 4,
             Width: width,
 			Color: KDBaseBlack,
 			alpha: KDUIAlphaHighlight,

@@ -231,7 +231,6 @@ let KDStatsOrder = {
 
 let KDUIColor = "#111111";
 let KDUIAlpha = 0.5;
-let KDUIColorHighlight = "#ffee83";
 let KDUIAlphaHighlight = 0.7;
 
 

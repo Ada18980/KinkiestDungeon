@@ -188,7 +188,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	isSelected: boolean,
 	selectedIndex: number,
 	list: KDScrollableListData) => boolean, drawBG = true, horizontal = false, scrollbarSize = 36,
-	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string): any {
+	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string, pad: number = 4): any {
 	let list = KDScrollableListDataset[name];
 	let container = kdcanvas;
 	
@@ -205,7 +205,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			let mask = new PIXI.Graphics();
 			// Add the rectangular area to show
 			mask.beginFill(0xffffff);
-			mask.drawRect(list.x, list.y, list.w, list.h);
+			mask.drawRect(list.x - pad, list.y - pad, list.w + 2*pad, list.h + 2*pad);
 			mask.endFill();
 			container.mask = mask;
 			container.addChild(mask);
@@ -216,10 +216,10 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	if (drawBG) {
 		if (alphaborder > 0 || alphaborder == undefined)
 			DrawRectKD(container, kdpixisprites, name + "borderbg", {
-				Left: list.x,
-				Top: list.y,
-				Width: list.w,
-				Height: list.h,
+				Left: list.x - pad,
+				Top: list.y - pad,
+				Width: list.w + 2*pad,
+				Height: list.h + 2*pad,
 				Color: color != undefined ? color :  KDBaseBlack, 
 				alpha: alphaborder != undefined ? alphaborder :  KDUIAlpha,
 				LineWidth: 2,
@@ -227,10 +227,10 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			});
 		if (alpha > 0 || alpha == undefined)
 			FillRectKD(container, kdpixisprites, name + "border", {
-				Left: list.x,
-				Top: list.y,
-				Width: list.w,
-				Height: list.h,
+				Left: list.x - pad,
+				Top: list.y - pad,
+				Width: list.w + 2*pad,
+				Height: list.h + 2*pad,
 				Color: color != undefined ? color :  KDBaseBlack,
 				alpha: alpha != undefined ? alpha :  KDUIAlphaHighlight,
 				LineWidth: 2,
@@ -250,7 +250,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			Height: horizontal ? scrollbarSize * KDScrollBarW - 1 : (Math.max(1, 
 				Math.min((list.h - scrollbarSize*2) - spacing * list.visual_index, 
 			(list.h - scrollbarSize*2) * (list.num_per_page-1)/list.items.length) - 7)),
-			Color: KDBorderColor,
+			Color: KDStrongHighlightColor,
 			alpha: 0.9,
 			LineWidth: 2,
 			zIndex: - 0.9,

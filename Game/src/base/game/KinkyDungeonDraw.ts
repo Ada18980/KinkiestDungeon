@@ -2977,7 +2977,10 @@ type CircleParams = {
 let KDBoxThreshold = 60;
 let KDButtonColor = "rgba(5, 5, 5, 0.5)";
 let KDButtonColorIntense = "rgba(5, 5, 5, 0.8)";
-let KDBorderColor = '#f0b541';
+let KDBorderColor = KDBaseLightGrey;
+let KDUIColorHighlight = KDBaseLightGrey;//"#ffee83";
+let KDHighlightColor = 'rgb(220, 207, 178)';//'rgb(225, 187, 104)'
+let KDStrongHighlightColor = 'rgb(217, 173, 78)';
 
 
 
@@ -3031,7 +3034,7 @@ function DrawBoxKDTo(Container: PIXIContainer, Left: number, Top: number, Width:
 			Width: Width,
 			Height: Height,
 			Color: bordercolor || KDBorderColor,
-			LineWidth: 2,
+			LineWidth: 1,
 			zIndex: zIndex + 0.003,
 		});
 	}
@@ -3806,14 +3809,14 @@ function DrawButtonVisTo (
 			options?.bordercolor != undefined ? options.bordercolor : undefined
 		);
 	if (hover) {
-		let pad = 2;
+		let pad = 1;
 		// Draw the button rectangle (makes the background color cyan if the mouse is over it)
 		DrawRectKD(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "out", {
 			Left: Left + pad,
 			Top: Top + pad,
 			Width: Width - 2 * pad + 1,
 			Height: Height - 2 * pad + 1,
-			Color: KDBaseWhite,
+			Color: KDHighlightColor,
 			LineWidth: 2,
 			zIndex: zIndex + 0.005,
 		});
