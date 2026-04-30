@@ -50068,6 +50068,9 @@ AMNT1 (最大)
 环境
 - Kills
 击杀
+# - Critical Hits
+# - Total Damage
+
 
 - You attack TargetEnemy for DamageDealt total damage.
 你攻击了 TargetEnemy, 造成 DamageDealt 点伤害。
@@ -53090,8 +53093,8 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - are
 
 
-# - {$Youve} hear suggestions on how to be a good doll...
-# - {$Youve} fallen into a trance, making suggestions more powerful.
+# - ${You} feel like ${You} ${Yis} nothing but a doll... 
+# - ${Youve} fallen into a trance, making suggestions more powerful.
 
 # - Good doll.
 # - Pretty doll.
