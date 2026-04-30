@@ -15,6 +15,7 @@ interface HypnoButton {
     alphaRate: number,
     textKey_after: string,
     callback?: (player: entity) => void,
+    player?: number,
 }
 
 let KDDollHypnoSuggestions = 5;
@@ -55,7 +56,7 @@ let KDMaxHypnoButtonPlacementAttempts = 64;
 let KDStandardHypnoHeight = 80;
 let KDStandardHypnoWidth = 160;
 
-function KDAddHypnoButton(buff: string, amount: number, textKey: string, textData?: Record<string, string>, textKey_after?: string, callback?: (player: entity) => void, duration?: number, extraTrance?: number, x?: number, y?: number) {
+function KDAddHypnoButton(buff: string, amount: number, textKey: string, textData?: Record<string, string>, textKey_after?: string, callback?: (player: entity) => void, player?: number, duration?: number, extraTrance?: number, x?: number, y?: number) {
     let width = KDStandardHypnoWidth;
     let setPoint = (button) => {
         
@@ -81,6 +82,7 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
         width: width,
         clicked: false,
         callback: callback,
+        player: player,
     };
     if (!x && !y) {
         setPoint(button);
@@ -115,6 +117,9 @@ function KDDrawHypnoButton(button: HypnoButton, x: number, y: number, alpha: num
                     if (button.amount) {
                         KDAddSpecialStat(button.buff, player, button.amount, true);
                     }
+                    if (button.callback && KinkyDungeonFindID(button.player)) {
+                        button.callback(KinkyDungeonFindID(button.player));
+                    }
                 }
             }
            
@@ -135,6 +140,10 @@ function KDDrawHypnoButton(button: HypnoButton, x: number, y: number, alpha: num
         if (button.textKey_after) {
             button.textKey = button.textKey_after;
             delete button.textKey_after;
+        }
+        if (button.alpha < 1 && !(button.clicked || KinkyDungeonCurrentTick > button.startTick + button.duration)) {
+            button.alpha += 3*KinkyDungeonDrawDelta * button.alphaRate*0.001;
+            if (button.alpha > 1) button.alpha = 1;
         }
     }
 }

@@ -326,7 +326,7 @@ function KDEntityCanBeGuard(en: entity, faction: string, requireTags: string[]):
  * @param normalDrops
  * @param [requireTags]
  */
-function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, normalDrops: boolean, requireTags?: string[]): entity {
+function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, normalDrops: boolean, requireTags?: string[], faction?: string): entity {
 	//if (!noTransgress)
 	// KinkyDungeonAggroAction('call', {});
 	let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, true, true);
@@ -334,7 +334,7 @@ function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, nor
 	if (point) {
 
 		if (!KinkyDungeonJailGuard()) {
-			let mainFaction = KDGetMainFaction();
+			let mainFaction = faction || KDGetMainFaction();
 
 			let entities = KDNearbyEnemies(x, y, 20).filter((en) => {
 				return KDEntityCanBeGuard(en, mainFaction, requireTags || ["jail"]);
@@ -351,7 +351,7 @@ function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, nor
 		}
 		if (!KinkyDungeonJailGuard()) {
 			// Jail tag
-			let mainFaction = KDGetMainFaction();
+			let mainFaction = faction || KDGetMainFaction();
 
 			let jt = KDMapData.GuardFaction?.length > 0 ? KinkyDungeonFactionTag[KDMapData.GuardFaction[Math.floor(KDRandom() * KDMapData.GuardFaction.length)]] : "guardCall";
 

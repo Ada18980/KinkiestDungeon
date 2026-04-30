@@ -1958,7 +1958,9 @@ function KDUpdatePerksBonus() {
 
 function KinkyDungeonCalculateMiscastChance() {
 	let flags = {
-		miscastChance: Math.max(0, KinkyDungeonStatDistractionMiscastChance * Math.min(1, KinkyDungeonStatDistraction / (KinkyDungeonStatDistractionMax||1))),
+		miscastChance: Math.max(0, 
+			KinkyDungeonStatDistractionMiscastChance * Math.min(1, 
+				KinkyDungeonStatDistraction / (KinkyDungeonStatDistractionMax||1))),
 		satisfiedAmount: 0.3,
 	};
 	if (KinkyDungeonStatsChoice.has("AbsoluteFocus")) {

@@ -1051,7 +1051,7 @@ let KDAutowait_Max = 200;
 let KDHypnoAngle = KDRandom();
 let KDHypnoTime = 6;
 let KDHypnoWaveTime = 10;
-let KDHypnoIntensity = 4;
+let KDHypnoIntensity = 3;
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {

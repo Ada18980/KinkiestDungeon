@@ -2952,8 +2952,10 @@ function KDAddSpecialStat(stat: string, entity: entity, amount: number, Msg: boo
 
 	buff.power = newCurse;
 	buff.text = Math.floor(newCurse) + "%";
+	if (buff.power < 0 && amount < 0) amount -= buff.power;
 	if (buff.power <= 0)
 		KinkyDungeonExpireBuff(entity, stat + "Stat");
+
 
 	if (Msg) {
 		if (amount > 0 && initial_amt < max) {

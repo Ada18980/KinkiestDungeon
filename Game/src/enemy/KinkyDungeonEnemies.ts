@@ -8092,6 +8092,7 @@ function KDTileIsMovable(entity: entity, xx: number, yy: number, MovableTiles: s
  */
 function KinkyDungeonFindID(id: number, mapData?: KDMapDataType): entity {
 	if (id == 0) return null;
+	if (id == -1) return KDPlayer();
 	if (!mapData || mapData == KDMapData) {
 		if (KDIDCache.get(id)) return KDIDCache.get(id);
 		for (let e of KDMapData.Entities) {

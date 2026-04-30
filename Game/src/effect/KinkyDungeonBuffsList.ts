@@ -248,8 +248,11 @@ const KDAttackSlow: KDBuff = {
 
 
 const Silenced: KDBuff = {id: "Silenced", aura: KDBaseLightGrey, type: "Miscast", power: 1.0, player: false, enemies: true, buffSprite: true,
+	events: [
+			{type: "AddMiscast", trigger: "beforeCast", power: 1.0, inheritLinked: true},
+	],
 	duration: 2,};
-const KDAntiMagicMiscast: KDBuff = {id: "AntiMagicMiscast", aura: KDBaseCyan, type: "Miscast", power: 0.5, player: false, enemies: true,
+const KDAntiMagicMiscast: KDBuff = {id: "AntiMagicMiscast", aura: KDBaseCyan, type: "MiscastChance", power: 0.5, player: false, enemies: true,
 	duration: 2,};
 
 const KDUnsteady: KDBuff = {id: "Unsteady", aura: "#aa8888", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1,};
