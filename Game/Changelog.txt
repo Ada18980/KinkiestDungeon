@@ -79,6 +79,8 @@ Must do
 5.5.0
 - Added doll body type
 - Added Doll species perk
+- Added Doll Mirror weapon
+- Added hypnosis
 - Changed the warden's orb spell so that you need to get hit 3 times for the one bar prison to be applied
 - Made the warden's taunt mechanic explain itself if you get hit by it
 - Added character size option
@@ -89,6 +91,7 @@ Must do
 - Fixed a bug where bast cultists would never apply kitty suit in jail
 - Made ghost possession (pleasure option) have much longer time between teasings
 - Added log option to filter out "critical hit" and "total damage" messages from log
+- Shock orb doesnt move a tile the first turn it is cast
 
 5.4.93
 - One bar prisons now are harder to escape if you wear heels

@@ -63,7 +63,7 @@ let KDInventoryActionsDefault: Record<string, (item: item) => string[]> = {
 		ret.push("QuickSlot4");
 		if (KDGameData.Offhand == _item.name)
 			ret.push("RemoveOffhand");
-		else if (KDGameData.InventoryAction != "Offhand")
+		else if (KDGameData.InventoryAction != "Offhand" && KinkyDungeonFlags.get("AnyOffhand"))
 			ret.push("Offhand");
 		ret.push("Hotbar");
 		return ret;

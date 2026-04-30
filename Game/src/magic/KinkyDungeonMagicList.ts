@@ -436,6 +436,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		{name: "FighterOffhand", tags: ["utility", "defense", "offense"], school: "Special",
 			prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm",
 			hideLearned: true, hideWith: "FighterOffhand",
+			learnFlags: ["AnyOffhand"],
 			events: [
 				{trigger: "canOffhand", type: "FighterOffhand"},
 			],
@@ -444,6 +445,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		{name: "RogueOffhand", tags: ["utility", "defense", "offense"], school: "Special",
 			prerequisite: "RogueTargets", classSpecific: "Rogue", hideWithout: "RogueTargets",
 			hideLearned: true, hideWith: "FighterOffhand",
+			learnFlags: ["AnyOffhand"],
 			events: [
 				{trigger: "canOffhand", type: "RogueOffhand", delayedOrder: 1},
 			],
@@ -451,6 +453,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 		{name: "WizardOffhand", tags: ["utility", "defense", "offense"], school: "Special", prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen",
 			hideLearned: true, hideWith: "FighterOffhand",
+			learnFlags: ["AnyOffhand"],
 			events: [
 				{trigger: "canOffhand", type: "WizardOffhand", delayedOrder: 1},
 				{trigger: "tick", type: "WizardOffhand", delayedOrder: 1},
@@ -1078,6 +1081,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			},
 			sfx: "FireSpell", landsfx: "Shock", school: "Elements", manacost: 5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", power: 9, time: 4, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "electric", playerEffect: {name: "Shock", time: 1}}, // A series of light shocks incapacitate you
 		{name: "Shock", tags: ["electric", "bolt", "offense", "dot"], prerequisite: "ApprenticeLightning", sfx: "FireSpell",
+			slowStart: true,
 			effectTileDurationMod: 2, effectTile: {
 				name: "Sparks",
 				duration: 3,

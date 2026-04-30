@@ -247,6 +247,13 @@ function KinkyDungeonResetMagic() {
 let KDRefreshSpellCache = true;
 function KDPushSpell(spell: spell) {
 	KinkyDungeonSpells.push(JSON.parse(JSON.stringify(spell)));
+	
+	if (spell.learnFlags) {
+		for (let sp of spell.learnFlags) {
+			KinkyDungeonFlags.set(sp, -1);
+		}
+	}
+
 	KDRefreshSpellCache = true;
 }
 
