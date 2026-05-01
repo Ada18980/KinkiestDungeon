@@ -300,6 +300,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Mouse Shortcuts
 鼠标快捷操作
 
+# - Hypnosis Screen Wobble
 
 - Replace struggle icons with menu
 将挣扎按钮替换为菜单
@@ -45788,6 +45789,10 @@ LKTYP 锁锁在了你的一个拘束具上！
 照明
 - Illumination: This weapon is a light source.
 照明 : ‎该武器是一个光源。
+# - Mesmerizing
+# - Mesmerizing: This item has mind-altering effects.
+# - Damaging
+# - Damage Type: 
 
 - Dual Wield
 双持
@@ -46789,6 +46794,7 @@ Kigurumi头壳
 隐形拘束具
 # - Aphrodisiac-Laced Food
 # - Sleep-Laced Food
+# - Hypnosis
 
 
 # - Some food items on tables will be laced with a drug that makes your character fall asleep.
@@ -46866,6 +46872,7 @@ Kigurumi头壳
 耳塞削弱了玩家的听力。
 - Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
 将针对玩家的大部分“电击”伤害替换为“电刺激”伤害，造成快感而非痛苦。
+# - Allows the player character to get hypnotized, listening to suggestions which alter behavior.
 
 - Palette
 调色板
@@ -53097,6 +53104,7 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - ${Youve} fallen into a trance, making suggestions more powerful.
 
 # - Good doll.
+# - Good doll...
 # - Pretty doll.
 # - Lovely doll.
 # - Quiet doll.
@@ -53105,10 +53113,15 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - A quiet doll...
 # - I'm not a doll.
 # - I'm not a doll!
+# - I'm a doll!
 # - I am a doll.
 
+# - ${You} ${Yis} silenced, unable to cast spells easily.
 
 # - Doll's Mirror
 # - Reflects the face of a doll.
-# - Those who hold it feel a compulsion to look at it. Surely nothing will come of it, though. Can be turned toward enemies to deal psychic damage.
+# - Those who hold it feel a compulsion to look at it. Surely nothing will come of it, though.\n\nCan be turned toward enemies to deal psychic damage, but cannot critically hit. Ignores 75% of magical armor.
 # - You pick up an doll's mirror.
+
+# - You feel just like a pretty, still doll... (+AMNT Stillness)
+# - You regain a bit of your sense of self. (-AMNT Stillness)
