@@ -300,6 +300,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Mouse Shortcuts
 鼠标快捷操作
 
+# - Hypnosis Screen Wobble
 
 - Replace struggle icons with menu
 将挣扎按钮替换为菜单
@@ -313,8 +314,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Auto-wait Through Delayed Actions
 自动等待略过有延时的行动
 
-- Show Training in Buffs List
-在增益列表中显示训练进度
+
+# - Play sound when targeted by attacks
 # - Allow Stacking Similar Items
 - Show Minimap Labels
 显示小地图标签
@@ -322,7 +323,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 自动从箱子中拿走所有物品
 - Don't Use Outfit Palettes
 不使用套装调色板
-- Show Training level in buffs and stats
+- Show training in buffs and stats
 在增益和状态中显示训练等级
 
 - Apply palettes to Restraints
@@ -2024,17 +2025,17 @@ Roguelike : ‎没有保存代码，只有自动保存
 # :: KDNavQuit
 - I will simply wait to see what happens.
 我会等着看会发生什么。
-- Save my current progress.
+- Save and return to menu
 保存当前进度
 - Give up & delete save
 放弃并删除存档
 - Yes, delete my save file!
 是的，删除我的存档文件
-- Actually, I will let the enemy capture me instead.
+- Give up and go to jail.
 实际上，我要让敌人俘虏我
 - Yes, jail me!
 是的，囚禁我
-- No, I wish to press on
+- Return to game
 不，我想继续
 - See Perks
 查看特质
@@ -2228,7 +2229,7 @@ Devious Dungeon Challenge 已启用。
 - You feel like you are going to pass out...
 你感觉自己快要昏倒了……
 
-- Start New Game
+- New Game
 开始新游戏
 - New Game+
 新游戏+
@@ -2236,9 +2237,9 @@ Devious Dungeon Challenge 已启用。
 新游戏+（困难模式）
 - New Game+ (Extreme Mode)
 新游戏+（极限模式）
-- Continue Last Save
+- Continue
 继续上次游戏
-- Load Saved Game
+- Load Save
 加载已保存的游戏
 - Save Outfit (overwrite!)
 保存服装 ( 覆盖！ )
@@ -2250,7 +2251,7 @@ Devious Dungeon Challenge 已启用。
 取消修改
 - Return
 返回
-- Game Options
+- Options
 游戏选项
 - Consent Options
 内容设置
@@ -13440,6 +13441,12 @@ Ars烟火
 影于暗处
 - You are harder to see when waiting.
 你在等待时很难被发现。
+# - Locksmith I
+# - Reduces lock difficulty by 5.
+# - Locksmith II
+# - Reduces lock difficulty by a further 5. (+10 total)
+# - Locksmith III
+# - Reduces lock difficulty by a further 5. (+15 total)
 - Vault
 腾跃
 - You can sprint under flying enemies and through vulnerable, slowed, or disabled enemies. Does not work on immobile enemies such as doors and turrets.
@@ -16313,7 +16320,7 @@ AMNT% 的概率命中你
 可缴械 ( 概率 : ‎DISARMCHANCE% )
 - Resistances:
 抗性 : ‎
-- HP: 
+- WP: 
 生命值：
 - Shield: 
 护盾：
@@ -21809,7 +21816,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - Save... friend...
 救...朋友...
 
-- The weapon requires power from an Ancient Crystal to function.
+- Out of charge. Use a crystal to recharge.
 该武器需要来自远古水晶的能量才能发挥作用。
 - Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to launch binding belts
 瞄准敌人 : ‎用驯龙者攻击。瞄准一个格子 : ‎花费 8 点能量来发射捆绑带
@@ -45788,6 +45795,10 @@ LKTYP 锁锁在了你的一个拘束具上！
 照明
 - Illumination: This weapon is a light source.
 照明 : ‎该武器是一个光源。
+# - Mesmerizing
+# - Mesmerizing: This item has mind-altering effects.
+# - Damaging
+# - Damage Type: 
 
 - Dual Wield
 双持
@@ -46579,7 +46590,7 @@ RestraintName 失效了！
 不再忠诚于这位女神。
 - You are not devoted to this goddess.
 你并未忠诚于这位女神。
-- Guarantees a quest from this goddess on every floor.
+- Guarantees a quest from this goddess on every following floor.
 保证每层都有这位女神的任务。
 - You are already a devotee of this goddess.
 你已经忠诚于这位女神了。
@@ -46789,6 +46800,7 @@ Kigurumi头壳
 隐形拘束具
 # - Aphrodisiac-Laced Food
 # - Sleep-Laced Food
+# - Hypnosis
 
 
 # - Some food items on tables will be laced with a drug that makes your character fall asleep.
@@ -46866,6 +46878,7 @@ Kigurumi头壳
 耳塞削弱了玩家的听力。
 - Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
 将针对玩家的大部分“电击”伤害替换为“电刺激”伤害，造成快感而非痛苦。
+# - Allows the player character to get hypnotized, listening to suggestions which alter behavior.
 
 - Palette
 调色板
@@ -53097,6 +53110,7 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - ${Youve} fallen into a trance, making suggestions more powerful.
 
 # - Good doll.
+# - Good doll...
 # - Pretty doll.
 # - Lovely doll.
 # - Quiet doll.
@@ -53105,10 +53119,15 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - A quiet doll...
 # - I'm not a doll.
 # - I'm not a doll!
+# - I'm a doll!
 # - I am a doll.
 
+# - ${You} ${Yis} silenced, unable to cast spells easily.
 
 # - Doll's Mirror
 # - Reflects the face of a doll.
-# - Those who hold it feel a compulsion to look at it. Surely nothing will come of it, though. Can be turned toward enemies to deal psychic damage.
+# - Those who hold it feel a compulsion to look at it. Surely nothing will come of it, though.\n\nCan be turned toward enemies to deal psychic damage, but cannot critically hit. Ignores 75% of magical armor.
 # - You pick up an doll's mirror.
+
+# - You feel just like a pretty, still doll... (+AMNT Stillness)
+# - You regain a bit of your sense of self. (-AMNT Stillness)
