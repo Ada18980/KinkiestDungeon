@@ -119,7 +119,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				|| (altRoom && !(altRoom?.makeMain || altRoom?.persist))) {
 				// Clear all enemies and remove them so that we pick up allies
 				for (let en of [...KDMapData.Entities]) {
-					if (!KDIsInParty(en) || !KDCanBringAlly(en))
+					if (!KDCanBringAlly(en))
 						KDRemoveEntity(en, false, true, true);
 				}
 			}

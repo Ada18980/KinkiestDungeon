@@ -3354,6 +3354,7 @@ let KDNoOverrideTags = [
 	"BubblePref",
 	"SlimePref",
 	"SlimeOptout",
+	"Estim",
 	"RobotVetoTape",
 	"RobotVetoLatex",
 	"TapePref",

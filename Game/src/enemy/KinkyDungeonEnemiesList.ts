@@ -4775,6 +4775,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			baseAmount: 0,
 			moveAmount: 2.5,
 			attackAmount: 5,
+			alertAmount: 0,
 		},
 		terrainTags: {"demon" : 15, "increasingWeight": 0.1, "goddessRage": 10, "goddessPleased": 10, }, shrines: [], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 25, amountMax: 35, weight: 10}]
@@ -5182,6 +5183,11 @@ let KinkyDungeonEnemies: enemy[] = [
 		Attack: {
 			mustBindorFail: true,
 		},
+		Sound: {
+			baseAmount: 2,
+			attackAmount: 3,
+			idleSoundName: "Rope2",
+		},
 		nopickpocket: true,
 		maxblock: 0,
 		maxdodge: 0,
@@ -5197,6 +5203,11 @@ let KinkyDungeonEnemies: enemy[] = [
 		ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"],
 		Resistance: {
 			profile: ["rope", "construct"],
+		},
+		Sound: {
+			baseAmount: 0,
+			attackAmount: 3,
+			idleSoundName: "Rope",
 		},
 		nopickpocket: true,
 		maxblock: 0,
@@ -5214,6 +5225,11 @@ let KinkyDungeonEnemies: enemy[] = [
 		ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"],
 		Attack: {
 			mustBindorFail: true,
+		},
+		Sound: {
+			baseAmount: 1,
+			attackAmount: 3,
+			idleSoundName: "Rope",
 		},
 		nopickpocket: true,
 		maxblock: 0,
@@ -5242,6 +5258,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		effect: {
 			effect: {name: "Hogtie", power: 4},
 		},
+		Sound: {
+			idleSoundName: "Rope2",
+		},
 		nopickpocket: true,
 		maxblock: 0,
 		maxdodge: 0,
@@ -5269,6 +5288,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 6,
 		RestraintFilter: {
 			unlimitedRestraints: true,
+		},
+		Sound: {
+			idleSoundName: "Rope",
 		},
 		maxblock: 2,
 		maxdodge: 0,
@@ -5329,6 +5351,11 @@ let KinkyDungeonEnemies: enemy[] = [
 		Resistance: {
 			profile: ["rope", "construct"],
 		},
+		Sound: {
+			baseAmount: 6,
+			moveAmount: 4,
+			idleSoundName: "Rope",
+		},
 		maxblock: 3,
 		maxdodge: 0,
 		evasion: -1.4, armor: 1.5,
@@ -5345,6 +5372,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		visionRadius: 10,
 		Awareness: {
 			chaseradius: 15,
+		},
+		Sound: {
+			idleSoundName: "Rope2",
 		},
 		nopickpocket: true,
 		maxblock: 0,
@@ -5681,7 +5711,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		tags: KDMapInit(["leashing", "mage", "opendoors", "antiMagic", "handcuffer", "electric", "jail", "jailer", "closedoors", "human", "witch", "ranged", "miniboss", "unflinching", "electricresist", "glueweakness", "iceweakness", "hunter"]), followRange: 2,
 		castWhileMoving: true, spells: ["WitchElectrify", "WitchElectricOrb", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 12, stopToCast: true, spellRdy: true, kite: 1.5, kiteChance: 0.9,
 		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 15, minLevel:2, weight:2, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 3,
-		terrainTags: {"secondhalf":2, "lastthird":1, "tech": -10, "electric": 6}, allFloors: true, shrines: [], followLeashedOnly: true,
+		terrainTags: {"secondhalf":2, "lastthird":1, "tech": -2, "electric": 6, Estim: -10}, allFloors: true, shrines: [], followLeashedOnly: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 14, noSummon: true}], attackLock: "White",
 		maxblock: 0,
 		maxdodge: 1,
@@ -5697,7 +5727,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxdodge: 1,
 		spellCooldownMult: 1, spellCooldownMod: -1, AI: "hunt", guardChance: 0.6, visionRadius: 8, maxhp: 24, minLevel:12, weight:1, movePoints: 2, attackPoints: 2, attack: "SpellMeleeBindLock",
 		attackWidth: 1, attackRange: 1, power: 1, dmgType: "electric", fullBoundBonus: 1, noLeashUnlessExhausted: true, attackLock: "Purple",
-		terrainTags: {"lastthird":1, "miniboss": -10, "tech": -10, "metalAnger": 4, "elementsAnger": 6, "increasingWeight": 0.5, "electric": 6}, allFloors: true, shrines: [], followLeashedOnly: true,
+		terrainTags: {"lastthird":1, "miniboss": -10, "tech": -10, "metalAnger": 4, Estim: -10, "elementsAnger": 6, "increasingWeight": 0.5, "electric": 6}, allFloors: true, shrines: [], followLeashedOnly: true,
 		dropTable: [{name: "BlueKey", weight: 3}, {name: "ScrollArms", weight: 1}, {name: "ScrollVerbal", weight: 1}, {name: "ScrollLegs", weight: 1}],
 		RestraintFilter: {
 			requiredItems: ["MagneticArmCuffs", "MagneticAnkleCuffs"],

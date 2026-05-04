@@ -6518,7 +6518,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							enemy.fx = player.x;
 							enemy.fy = player.y;
 						} else {
-							if (KDSoundEnabled() && KDToggles.WarningSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
+							if (player?.player && KDSoundEnabled() && KDToggles.WarningSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
 						}
 					}
 					if (AIData.refreshWarningTiles && enemy.usingSpecial) enemy.attackPoints = Math.min(enemy.attackPoints, delta);
@@ -6543,7 +6543,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							}
 						}
 					} else {
-						if (KDSoundEnabled() && KDToggles.WarningSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
+						if (player?.player && KDSoundEnabled() && KDToggles.WarningSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
 					}
 				}
 

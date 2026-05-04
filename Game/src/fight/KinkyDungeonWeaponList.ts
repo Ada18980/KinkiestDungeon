@@ -43,7 +43,7 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 
 
 	"Rock": {name: "Rock", damage: 1.5, chance: 0.8, staminacost: 3.8, type: "crush",
-		unarmed: false, rarity: 0, shop: true, heavy: true, sfx: "HeavySwing",
+		unarmed: false, rarity: 0, shop: true, heavy: true, sfx: "Bonk",
 		crit: 1.5,
 		tags: ["rock"],
 		stam50mult: 2.0,

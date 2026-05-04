@@ -1913,15 +1913,15 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 						b.born = 0;
 					}
 
-					if (b.bullet.spell && (b.trail || b.trailEffectTile) && (b.x != Math.round(b.xx) || b.y != Math.round(b.yy) || (b.bullet.spell && b.bullet.spell.trailOnSelf))
-						&& !trailSquares.includes(Math.round(b.xx) + "," + Math.round(b.yy))) {
+					if (b.bullet.spell && (b.trail || b.trailEffectTile) && (b.x != KDBulletRound(b.xx) || b.y != KDBulletRound(b.yy) || (b.bullet.spell && b.bullet.spell.trailOnSelf))
+						&& !trailSquares.includes(KDBulletRound(b.xx) + "," + KDBulletRound(b.yy))) {
 						if (KinkyDungeonBulletTrail(b)) {
-							trailSquares.push(Math.round(b.xx) + "," + Math.round(b.yy));
+							trailSquares.push(KDBulletRound(b.xx) + "," + KDBulletRound(b.yy));
 						}
 					}
 
-					b.x = Math.round(b.xx);
-					b.y = Math.round(b.yy);
+					b.x = KDBulletRound(b.xx);
+					b.y = KDBulletRound(b.yy);
 
 					d -= dt;
 				} else first = false;
@@ -2015,8 +2015,8 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 							btime -= dt;
 						}
 
-						bx = Math.round(bxx);
-						by = Math.round(byy);
+						bx = KDBulletRound(bxx);
+						by = KDBulletRound(byy);
 
 						d -= dt;
 					} else first = false;
@@ -2247,8 +2247,8 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 		if (!KinkyDungeonMovableTilesEnemy.includes(tt)) {
 			b.xx -= b.vx * dt;
 			b.yy -= b.vy * dt;
-			b.x = Math.round(b.xx);
-			b.y = Math.round(b.yy);
+			b.x = KDBulletRound(b.xx);
+			b.y = KDBulletRound(b.yy);
 		}
 	}
 
@@ -3957,4 +3957,11 @@ function KDAddWarning(tile: WarningTileRecord) {
 function KDGetWarnings(x: number, y: number) {
 	if (KDGameData.WarningTiles && KDGameData.WarningTiles[x + ',' + y]) return KDGameData.WarningTiles[x + ',' + y];
 	return [];
+}
+
+
+function KDBulletRound(x: number) : number {
+	let diff = x - Math.round(x);
+	if (diff < 0.25) return Math.round(x);
+	else return x > 0 ? Math.floor(x) : Math.ceil(x);
 }

@@ -11976,6 +11976,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			if (KinkyDungeonStatsChoice.get("NovicePet")) data.tags.push("petPref");
 			else if (KinkyDungeonStatsChoice.get("NoPet")) data.tags.push("petOptout");
 			if (KinkyDungeonStatsChoice.get("Less_Tickle")) data.tags.push("Less_Tickle");
+			if (KinkyDungeonStatsChoice.get("Estim")) data.tags.push("Estim");
+			
 			
 		}
 	},

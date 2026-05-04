@@ -1469,15 +1469,28 @@ function KinkyDungeonDrawGame() {
 								if (!range || spellRange > range) range = spellRange;
 								let dist = Math.sqrt((KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x)*(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x)
 									+ (KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)*(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y));
+								let collision = false;
 								for (let R = 0; R <= Math.max(1, range - 1); R+= 0.1) {
-									let xx = KinkyDungeonMoveDirection.x + Math.round((KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x) * R / dist);
-									let yy = KinkyDungeonMoveDirection.y + Math.round((KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) * R / dist);
-									if (KinkyDungeonVisionGet(xx + KinkyDungeonPlayerEntity.x, yy + KinkyDungeonPlayerEntity.y) > 0 && !KinkyDungeonForceRender)
-										KDDraw(kdstatusboard, kdpixisprites, xx + "," + yy + "_target", KinkyDungeonRootDirectory + "Target.png",
+									let xx = KinkyDungeonMoveDirection.x + KDBulletRound((KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x) * R / dist);
+									let yy = KinkyDungeonMoveDirection.y + KDBulletRound((KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) * R / dist);
+									if (KinkyDungeonVisionGet(xx + KinkyDungeonPlayerEntity.x, yy + KinkyDungeonPlayerEntity.y) > 0 && !KinkyDungeonForceRender) {
+										let hit = false;
+										if (!KinkyDungeonTargetingSpell.passthrough
+											&& !KinkyDungeonTargetingSpell.piercing
+											&& !KinkyDungeonOpenObjects.includes(
+												KinkyDungeonMapGet(
+													xx + KinkyDungeonPlayerEntity.x, 
+													yy + KinkyDungeonPlayerEntity.y))) {
+												collision = true;
+												hit = true;
+											}
+										KDDraw(kdstatusboard, kdpixisprites, xx + "," + yy + "_target", KinkyDungeonRootDirectory + (collision ? "TargetHit.png" : "Target.png"),
 											(xx + KinkyDungeonPlayerEntity.x - CamX)*KinkyDungeonGridSizeDisplay, (yy + KinkyDungeonPlayerEntity.y - CamY)*KinkyDungeonGridSizeDisplay,
 											KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 												zIndex: 99,
+												alpha: (!hit && collision) ? 0.5 : 1
 											});
+										}
 								}
 							}
 							else if (!KinkyDungeonForceRender) {

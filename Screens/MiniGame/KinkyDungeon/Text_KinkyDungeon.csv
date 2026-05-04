@@ -32975,6 +32975,8 @@ KDAmbSound_SlimeLarge,goopy noises
 KDAmbSound_SlimeLarge2,bubbling noise
 KDAmbSound_Rubber,rubber squeaking
 KDAmbSound_ServerAlarm,blaring siren
+KDAmbSound_Rope,rope unraveling
+KDAmbSound_Rope2,rope shuffling
 
 ItemPickupSweeper,"You claim the Sweeper."
 KinkyDungeonInventoryItemSweeper,The Sweeper

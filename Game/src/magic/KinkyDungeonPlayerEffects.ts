@@ -1198,7 +1198,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			KinkyDungeonSendTextMessage(Math.min(spell.power, 5), TextGet("KDEffectWitchBoulder").KDReplaceOrAddDmg(dmg.string), KDBaseRed, 1);
 			effect = true;
 
-			return {sfx: "ClangDeep", effect: effect};
+			return {sfx: "Bonk", effect: effect};
 		}
 		return {sfx: "Miss", effect: effect};
 	},
