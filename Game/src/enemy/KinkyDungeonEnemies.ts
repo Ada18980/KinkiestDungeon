@@ -656,6 +656,7 @@ function KDGetNearestExitTo(roomTo: string, mapX: number, mapY: number, x: numbe
 
 function KinkyDungeonInDanger() {
 	if (KDGetWarnings(KDPlayer().x, KDPlayer().y).length > 0) {
+		if (KDSoundEnabled() && KDToggles.WarningSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
 		return true;
 	}
 	for (let b of KDMapData.Bullets) {
@@ -2617,7 +2618,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 		let caster = KinkyDungeonFindID(enemy.boundTo);
 		if (caster || caster?.player)
 			TooltipList.push({
-				str: TextGet("KDTooltipBoundTo").replace("ENEMYNAME", TextGet("Name" + caster.Enemy.name)),
+				str: TextGet("KDTooltipBoundTo").replace("ENEMYNAME", KDEnemyName(caster)),
 				fg: KDHostile(enemy) ? KDBaseMint : KDBaseRed,
 				bg: KDBaseBlack,
 				size: 14,
@@ -4263,7 +4264,9 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 			let master = KinkyDungeonFindMaster(enemy);
 			if (master.master && enemy.aware) {
 
-				if (!master.master.aware && KDEnemyCanSignalOthers(master.master)) KDEnemyAddSound(master.master, master.master.Enemy.Sound?.alertAmount != undefined ? master.master.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+				if (!master.master.aware && KDEnemyCanSignalOthers(master.master)) KDEnemyAddSound(master.master, master.master.Enemy.Sound?.alertAmount != undefined ? master.master.Enemy.Sound?.alertAmount : (
+					(master.master?.Enemy?.Sound?.baseAmount == 0 ? 0 : KDDefaultEnemyAlertSound)
+				),
 					undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 				);
 
@@ -4271,7 +4274,8 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 			}
 			if (master.master && master.master.aware) {
 
-				if (!enemy.aware && !enemy.ignore && KDEnemyCanSignalOthers(enemy)) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+				if (!enemy.aware && !enemy.ignore && KDEnemyCanSignalOthers(enemy)) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : 
+					(enemy?.Enemy?.Sound?.baseAmount == 0 ? 0 : KDDefaultEnemyAlertSound),
 					undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 				);
 
@@ -5396,7 +5400,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						4, 5, false, true);
 			}
 
-			if (!enemy.aware && KDEnemyCanSignalOthers(enemy)) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+			if (!enemy.aware && KDEnemyCanSignalOthers(enemy)) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : 
+				(enemy?.Enemy?.Sound?.baseAmount == 0 ? 0 : KDDefaultEnemyAlertSound),
 				undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 			);
 
@@ -5805,7 +5810,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 						4, 5, false, true);
 			}
-			if (!enemy.aware && KDEnemyCanSignalOthers(enemy)) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+			if (!enemy.aware && KDEnemyCanSignalOthers(enemy)) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : 
+				(enemy?.Enemy?.Sound?.baseAmount == 0 ? 0 : KDDefaultEnemyAlertSound),
 				undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 			);
 			let wasAware = enemy.aware;
@@ -5845,7 +5851,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							} else {
 								if (!e.aware) KDAddThought(e.id, "Confused", 3, 3);
 
-								if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+								if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : 
+									(enemy?.Enemy?.Sound?.baseAmount == 0 ? 0 : KDDefaultEnemyAlertSound),
 									undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 								);
 
@@ -6510,6 +6517,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						if (!playerIn) {
 							enemy.fx = player.x;
 							enemy.fy = player.y;
+						} else {
+							if (KDSoundEnabled() && KDToggles.WarningSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
 						}
 					}
 					if (AIData.refreshWarningTiles && enemy.usingSpecial) enemy.attackPoints = Math.min(enemy.attackPoints, delta);
@@ -6533,6 +6542,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 								KDDash(enemy, player, AIData.MovableTiles);
 							}
 						}
+					} else {
+						if (KDSoundEnabled() && KDToggles.WarningSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
 					}
 				}
 

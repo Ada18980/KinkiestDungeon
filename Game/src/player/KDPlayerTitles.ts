@@ -1132,7 +1132,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "SpellMasteryLightning": {
         "unlockCondition": () => {
-            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeElectric")
+            let reqspells = KDUpdateSpellMasteryReqs("ApprenticeLightning")
             return (reqspells.every((sp) => KinkyDungeonSpells.map((t) => t.name).includes(sp))) // Checks if we have every single spell above
         },
         "priority": 2,

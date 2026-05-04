@@ -549,6 +549,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 			let roll = KinkyDungeonTilesGet(moveX + "," +moveY) ? KinkyDungeonTilesGet(moveX + "," +moveY).Roll : KDRandom();
 			if (faction && !KinkyDungeonChestConfirm) {
 				KinkyDungeonChestConfirm = true;
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChestFaction").replace("FACTION", TextGet("KinkyDungeonFaction" + faction)), KDBaseRed, 2, true);
 				return true;
 			} else {

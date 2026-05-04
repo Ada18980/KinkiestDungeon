@@ -117,8 +117,10 @@ function KinkyDungeonHandleMoveToTile(toTile: string): void {
 			KinkyDungeonConfirmStairs = false;
 			KinkyDungeonHandleStairs(toTile);
 		} else if (!(KDGameData.SleepTurns > 0)) {
-			if (KinkyDungeonLastAction == "Move" || KinkyDungeonLastAction == "Wait")
+			if (KinkyDungeonLastAction == "Move" || KinkyDungeonLastAction == "Wait") {
 				KinkyDungeonConfirmStairs = true;
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
+			}
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonConfirmStairs"), KDBaseWhite, 1, true);
 		}
 	}

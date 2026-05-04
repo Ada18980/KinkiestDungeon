@@ -1067,6 +1067,11 @@ function KDDrawWeaponSwap(x: number, y: number): boolean {
 
 		DrawTextFitKD(TextGet("StatAncient").replace("PERCENT", Math.round(KDGameData.AncientEnergyLevel*1000) + ""),
 			chargeX + 100, 830 - 72, 200 , (KDGameData.AncientEnergyLevel > 0.01) ? KDBaseWhite : "pink", "#333333", 16, "center");
+		
+		if (CommonTime() < KinkyDungeonCrystalWarningTime + KinkyDungeonCrystalWarningDuration) {
+			DrawBoxKD(chargeX, 830 - 128, 340, 120, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																				
+		}
 		DrawButtonKDEx("potionAncient",
 			(_bdata) => {
 				KDSendInput("consumable", {item: "AncientPowerSource", quantity: 1});
@@ -1703,12 +1708,16 @@ function KDAutoStruggleClick() {
 	}
 }
 
+let KinkyDungeonCrystalWarningTime = 0;
+let KinkyDungeonCrystalWarningDuration = 10000;
+
 function KinkyDungeonActivateWeaponSpell(instant = false) {
 	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.special) {
 
 		let energyCost = KinkyDungeonPlayerDamage.special.energyCost;
 		if (KDGameData.AncientEnergyLevel < energyCost) {
 			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonInsufficientEnergy"), KDBaseRed, 1);
+			KinkyDungeonCrystalWarningTime = CommonTime();
 			return true;
 		}
 		if (KinkyDungeonPlayerDamage.special.prereq && KDPrereqs[KinkyDungeonPlayerDamage.special.prereq] && !KDPrereqs[KinkyDungeonPlayerDamage.special.prereq](KinkyDungeonPlayerEntity, undefined, {})) {
@@ -2013,6 +2022,8 @@ function KinkyDungeonHandleHUD() {
 				KinkyDungeonDressPlayer();
 			} else {
 				KDConfirmDeleteSave = true;
+				
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 			}
 			return true;
 		}

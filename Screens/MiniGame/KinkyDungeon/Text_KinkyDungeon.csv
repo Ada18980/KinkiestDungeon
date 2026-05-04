@@ -68,12 +68,13 @@ KDToggleFastMoveDoors,Auto-path through Doors
 KDToggleBindPercent,Show Enemy Binding as %
 KDToggleAutoWaitDelayed,Auto-wait Through Delayed Actions
 
-KDToggle,Show Training in Buffs List
+
+KDToggleWarningSound,Play sound when targeted by attacks
 KDToggleStackOutfitItems,Allow Stacking Similar Items
 KDToggleMMLabels,Show Minimap Labels
 KDToggleAutoLoot,Auto loot all from chests
 KDToggleNoOutfitPalette,Don't Use Outfit Palettes
-KDToggleTrainingBuff,Show Training level in buffs and stats
+KDToggleTrainingBuff,Show training in buffs and stats
 
 KDToggleApplyPaletteRestraint,Apply palettes to Restraints
 KDToggleApplyPaletteTransform,Apply palettes to transforms
@@ -939,12 +940,12 @@ KinkyDungeonGameContinue,"Continue..."
 KinkyDungeonRestart,"Menu"
 KinkyDungeonRestartConfirm,""
 KinkyDungeonRestartWait,"I will simply wait to see what happens."
-KinkyDungeonRestartQuitNoErase,"Save my current progress."
+KinkyDungeonRestartQuitNoErase,"Save and return to menu"
 KinkyDungeonRestartYes,"Give up & delete save"
 KinkyDungeonRestartYesConfirm,"Yes, delete my save file!"
-KinkyDungeonRestartCapture,"Actually, I will let the enemy capture me instead."
+KinkyDungeonRestartCapture,"Give up and go to jail."
 KinkyDungeonRestartCaptureConfirm,"Yes, jail me!"
-KinkyDungeonRestartNo,"No, I wish to press on"
+KinkyDungeonRestartNo,"Return to game"
 KinkyDungeonCheckPerks,"See Perks"
 
 KinkyDungeonChestFaction,This chest belongs to the FACTION
@@ -1046,19 +1047,19 @@ KinkyDungeonStaminaWarningMed,"You are feeling tired."
 KinkyDungeonStaminaWarningLow,"You feel exhausted..."
 KinkyDungeonStaminaWarningNone,"You feel like you are going to pass out..."
 
-GameStart,Start New Game
+GameStart,New Game
 KinkyDungeonNewGamePlus,New Game+
 KinkyDungeonNewGamePlusHard,New Game+ (Hard Mode)
 KinkyDungeonNewGamePlusExtreme,New Game+ (Extreme Mode)
-GameContinue,Continue Last Save
-LoadGame,Load Saved Game
+GameContinue,Continue
+LoadGame,Load Save
 LoadOutfit,Save Outfit (overwrite!)
 LoadOutfitClothes,Save Outfit (Clothes Only!)
 GameReturnToMenu,Save Keybindings
 GameReturnToMenu2,Cancel Changes
 GameReturnToMenuFromOptions,Return
 GameConfigKeys,Keybindings
-GameToggles,Game Options
+GameToggles,Options
 GameConsent,Consent Options
 
 
@@ -6721,6 +6722,12 @@ KinkyDungeonSpellAthlete,Athlete
 KinkyDungeonSpellDescriptionAthlete,"Sprinting costs 40% less stamina."
 KinkyDungeonSpellSneaky,Sneaky
 KinkyDungeonSpellDescriptionSneaky,"You are harder to see when waiting."
+KinkyDungeonSpellLocksmith1,Locksmith I
+KinkyDungeonSpellDescriptionLocksmith1,"Reduces lock difficulty by 5."
+KinkyDungeonSpellLocksmith2,Locksmith II
+KinkyDungeonSpellDescriptionLocksmith2,"Reduces lock difficulty by a further 5. (+10 total)"
+KinkyDungeonSpellLocksmith3,Locksmith III
+KinkyDungeonSpellDescriptionLocksmith3,"Reduces lock difficulty by a further 5. (+15 total)"
 KinkyDungeonSpellVault,Vault
 KinkyDungeonSpellDescriptionVault,"You can sprint under flying enemies and through vulnerable, slowed, or disabled enemies. Does not work on immobile enemies such as doors and turrets."
 KinkyDungeonSpellVaultAdv,Improved Vault
@@ -8300,7 +8307,7 @@ KinkyDungeonTooltipDealsDamage,"Deals DAMAGETYPE damage"
 KinkyDungeonTooltipDealsAccuracy,"AMNT% chance to hit you"
 KDTooltipDisarm,"Can disarm (chance: DISARMCHANCE%)"
 KDTooltipDamageResists,Resistances:
-KDTooltipHP,"HP: "
+KDTooltipHP,"WP: "
 KDTooltipShield,"Shield: "
 KDTooltipBinding,"Binding: "
 KDTooltipOpinion0,"Ambivalent"
@@ -11409,7 +11416,7 @@ KinkyDungeonRemindJailChaseZombieCommandDefend,"Stop..."
 KinkyDungeonRemindJailChaseZombieCommandAssault,"Come... here..."
 KinkyDungeonRemindJailChaseZombieCommandBlock,"*giggles*"
 
-KinkyDungeonInsufficientEnergy,The weapon requires power from an Ancient Crystal to function.
+KinkyDungeonInsufficientEnergy,"Out of charge. Use a crystal to recharge."
 KinkyDungeonSpecialDragonslaver,Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to launch binding belts
 KinkyDungeonSpecialTheEncaser,"25 charge to enter Slime Form for 25 turns, and create slime around yourself."
 KinkyDungeonSpecialFourSeasons,"50 charge to reduce mana cost of next fire, earth, air, and water spell by 50 (once for each element)"
@@ -29471,7 +29478,7 @@ KDShrineQuestAcceptedFail,You cannot accept that quest right now.
 
 KDShrineActionDescChampionRemove,"Removes your devotion from this goddess."
 KDShrineActionDescChampionRemoveFail,You are not devoted to this goddess.
-KDShrineActionDescChampion,"Guarantees a quest from this goddess on every floor."
+KDShrineActionDescChampion,"Guarantees a quest from this goddess on every following floor."
 KDShrineActionDescChampionFail,You are already a devotee of this goddess.
 KDShrineActionDescOffer,Offer gold in exchange for help. Destroys the shrine.
 KDShrineActionDescPray,Ask for help without offering gold.

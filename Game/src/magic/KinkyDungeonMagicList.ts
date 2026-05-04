@@ -143,7 +143,7 @@ let KinkyDungeonLearnableSpells = [
 		// Dex
 		["Athlete", "CombatTraining", "Sneaky", "Accurate1", "Accurate2", "Accurate3", "Evasive1", "Evasive2", "Evasive3", "Vault", "ArrowFireSpell", "ArrowVineSpell", "NovicePet1", "NovicePet2", "NovicePet3", "NovicePetX", "RogueBind", "RogueEscape"],
 		// Intellect
-		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3"],
+		["SummonUp1", "SummonUp2", "StaffUser1", "StaffUser2", "StaffUser3", "Locksmith1", "Locksmith2", "Locksmith3", ],
 		// Misc
 		["CriticalStrike", "OrgasmFrequency", "OrgasmFrequency2", "OrgasmResist"],
 	],
@@ -327,6 +327,23 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		]},
 		{name: "Evasive3", tags: ["buff", "defense"], school: "Any", spellPointCost: 1, prerequisite: "Evasive2", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{type: "Buff", trigger: "tick", power: 0.25, buffType: "Evasion"},
+		]},
+
+		
+		{name: "Locksmith1", tags: ["buff", "utility"], school: "Any", spellPointCost: 1, hideLearned: true, manacost: 0,
+			components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0,
+			damage: "inert", events: [
+			{type: "Locksmith", trigger: "beforeStruggleCalc", power: 0.05},
+		]},
+		{name: "Locksmith2", tags: ["buff", "defense"], school: "Any", spellPointCost: 1, hideLearned: true, 
+			prerequisite: "Locksmith1", classSpecific: "Rogue", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0,
+			delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Locksmith", trigger: "beforeStruggleCalc", power: 0.05},
+		]},
+		{name: "Locksmith3", tags: ["buff", "defense"], school: "Any", spellPointCost: 1,
+			prerequisite: "Locksmith2", classSpecific: "Rogue", manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0,
+			delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+			{type: "Locksmith", trigger: "beforeStruggleCalc", power: 0.05},
 		]},
 
 		{name: "Accurate1", tags: ["buff", "offense"], school: "Any", spellPointCost: 1, hideLearned: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [

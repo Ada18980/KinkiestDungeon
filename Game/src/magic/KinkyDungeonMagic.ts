@@ -2413,6 +2413,7 @@ function KDDrawHotbar(xLoc: number, _yLoc: number, _name: string, _fn: (I: numbe
 	DrawButtonKDEx("KDSpellsClear", (_bdata) => {
 		if (!KDConfirmClearSpells) {
 			KDConfirmClearSpells = true;
+            if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDConfirmSpellsClear"), KDBaseWhite, 2, true);
 		} else {
 			KDClearChoices();

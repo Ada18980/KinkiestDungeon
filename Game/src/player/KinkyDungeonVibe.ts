@@ -81,6 +81,7 @@ let KDWToolsLayerAbbrModeIndex = 0;
 
 let KDToggles = {
 	SoundOffWhenMin: true,
+	StackOutfitItems: false,
 	SpellBook: false,
 	ShowRestraintOnHover: false,
 	//HiResModel: false,
@@ -193,11 +194,13 @@ let KDToggles = {
 	TrainingBuff: true,
 	FlashingWarning: true,
 	HypnoOverlay: true,
+	WarningSound: true,
 };
 
 
 
 let KDToggleCategories = {
+	StackOutfitItems: "Character",
 	OverrideConsent: "none",
 	FlashingWarning: "UI",
 	StruggleContext: "UI",
@@ -295,6 +298,8 @@ let KDToggleCategories = {
 	HideArmorWardrobe: "none",
 	BindPercent: "UI",
 	AutoWaitDelayed: "UI",
+	
+	WarningSound: "UI",
 };
 
 function KDStopAllVibeSounds(Exceptions?: string[]) {

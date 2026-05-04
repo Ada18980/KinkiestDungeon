@@ -1219,6 +1219,8 @@ let alts: Record<string, AltType> = {
 		nostairs: true,
 		notraps: true,
 		noClutter: true,
+		startatstartpos: true,
+		nostartstairs: true,
 	},
 };
 

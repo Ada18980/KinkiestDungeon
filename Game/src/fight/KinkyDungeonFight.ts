@@ -235,6 +235,11 @@ function KinkyDungeonWeaponCanCut(RequireInteract: boolean, MagicOnly?: boolean)
 function KDSetWeapon(Weapon: string, forced?: boolean) {
 	if (!Weapon) Weapon = 'Unarmed';
 	KinkyDungeonEvasionPityModifier = 0;
+	if (KinkyDungeonPlayerWeapon != Weapon) {
+		KinkyDungeonTargetingSpell = null;
+		KinkyDungeonTargetingSpellItem = null;
+		KinkyDungeonTargetingSpellWeapon = null;
+	}
 	KinkyDungeonPlayerWeapon = Weapon;
 	if (!forced)
 		KDGameData.PlayerWeaponLastEquipped = Weapon;
@@ -3381,6 +3386,9 @@ function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, C
 
 			if (tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(tx, ty) > 0) {
 
+				if (tx == KDPlayer().x && ty == KDPlayer().y) {
+					if (KDSoundEnabled() && KDToggles.WarningSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
+				}
 				KDDraw(kdwarningboardOver, kdpixisprites, tx + "," + ty + "_w" + t.color, KinkyDungeonRootDirectory + "WarningColorSpell.png",
 					(txvis - CamX + 0.5 - 0.5 * scale) * KinkyDungeonGridSizeDisplay, (tyvis - CamY + 0.5 - 0.5 * scale) * KinkyDungeonGridSizeDisplay,
 					KinkyDungeonGridSizeDisplay * scale, KinkyDungeonGridSizeDisplay * scale, undefined, {

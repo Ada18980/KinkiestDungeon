@@ -1187,6 +1187,18 @@ function KDDrawModelList(X: number, C: Character) {
 				let M = ModelDefs[name];
 				if (M) {
 					KDChangeWardrobe(C);
+
+					if (!!M.Group && !KDToggles.StackOutfitItems) {
+						// Items with groups cannot stack unless toggle is turned off
+						for (let appIndex = 0; appIndex < C.Appearance.length; appIndex++) {
+						if (C.Appearance[appIndex]?.Model?.Group == M.Group) {
+								C.Appearance.splice(appIndex, 1);
+								removed = true;
+								break;
+							}
+						}
+					}
+
 					KDAddModel(C, M.Group || M.Name, M, "Default", undefined);
 					KDUpdateChar(C);
 				}
@@ -1990,6 +2002,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		} else {
 			KDConfirmType = "revert";
 			KinkyDungeonReplaceConfirm = 2;
+            if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 			return true;
 		}
 	}, true, 465, 820, 240, 50,
@@ -2020,6 +2033,8 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			} else {
 				KDConfirmType = "save";
 				KinkyDungeonReplaceConfirm = 2;
+				
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 				return true;
 			}
 		}, true, 465, 930, 240, 50,
@@ -2088,6 +2103,8 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			} else {
 				KDConfirmType = "reset";
 				KinkyDungeonReplaceConfirm = 2;
+				
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 				return true;
 			}
 		}, true, 465, 930, 240, 50,

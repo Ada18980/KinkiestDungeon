@@ -76,7 +76,7 @@ let KDClassStart: Record<string, (start: boolean) => void> = {
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, 2);
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1);
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 1);
-			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
+			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 4);
 			KinkyDungeonInventoryAddLoose("RopeSnakeRaw", undefined, undefined, 10);
 			KinkyDungeonInventoryAddLoose("TrapGag", undefined, undefined, 3);
 		}

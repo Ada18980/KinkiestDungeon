@@ -6715,6 +6715,12 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			}
 		},
 
+		"Locksmith": (e, _spell, data) => {
+			if (data.escapeChance != undefined && (data.struggleType == "Pick")) {
+				data.escapePenalty -= e.power;
+			}
+		},
+
 
 	},
 	"calcStamina": {

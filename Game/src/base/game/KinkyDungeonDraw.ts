@@ -1089,6 +1089,7 @@ function KinkyDungeonDrawGame() {
 		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 
 
+
 	let wt = 50;
 	if (KinkyDungeonAutoWait) {
 		if (KDGameData.FocusControlToggle.AutoWaitSlow) wt = KDAutowait_Slow;

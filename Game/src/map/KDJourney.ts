@@ -280,6 +280,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 			DrawButtonKDEx("confirmJourney", (bdata) => {
 				KinkyDungeonState = "Game";
 				KinkyDungeonConfirmStairs = true;
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 				KinkyDungeonMove({x: 0, y: 0}, 1, true);
 				return true;
 			}, true, 1300, 900, 400, 55, TextGet("KDNavMapConfirm"), KDBaseWhite, undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {

@@ -716,6 +716,7 @@ function KDDrawConsent(xOffset) {
     if (DrawButtonKDEx("removeGuest", (_b) => {
 			if (!KDConfirmOverInventoryAction) {
 				KDConfirmOverInventoryAction = true;
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 			} else {
 				KDSendInput("safeword", {
 					player: KDPlayer().id,

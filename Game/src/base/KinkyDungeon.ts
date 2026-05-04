@@ -2776,6 +2776,7 @@ function KinkyDungeonRun() {
 
 			if (danger && !KDConfirmDeleteSave) {
 				KDConfirmDeleteSave = true;
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 			} else {
 				KDConfirmDeleteSave = false;
 				localStorage.setItem("PlayerName", ElementValue("PlayerNameField") || "Ada");
@@ -4829,6 +4830,7 @@ function KDDrawLoadMenu() {
 				DrawButtonKDEx("KDDeleteSlotButton" + i, (_b) => {
 					if (!KDConfirmDeleteSave || KDDeleteSaveIndex != num) {
 						KDConfirmDeleteSave = true;
+                	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 						KDDeleteSaveIndex = num;
 					} else {
 						KDConfirmDeleteSave = false;
@@ -4916,6 +4918,7 @@ function KDDrawLoadMenu() {
                 DrawButtonKDEx("KDDeleteSlotButton" + i, (_b) => {
                     if (!KDConfirmDeleteSave || KDDeleteSaveIndex != num) {
                         KDConfirmDeleteSave = true;
+                	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
                         KDDeleteSaveIndex = num;
                     }
                     else {
@@ -4935,6 +4938,7 @@ function KDDrawLoadMenu() {
                 DrawButtonKDEx("KDUploadSlotButton" + i, (_b) => {
                     if (!KDConfirmUpload || KDUploadSaveIndex != num) {
                         KDConfirmUpload = true;
+                	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
                         KDUploadSaveIndex = num;
                     }
                     else {
@@ -6253,6 +6257,7 @@ function KDMenuTogglesClick() {
 				else KDResolutionListIndex = (KDResolutionListIndex + 1) % KDResolutionList.length;
 				KDResolution = KDResolutionList[KDResolutionListIndex];
 				KDResolutionConfirm = true;
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 				localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
 			}
 			YY += YYd;

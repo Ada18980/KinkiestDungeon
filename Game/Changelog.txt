@@ -77,6 +77,7 @@ Must do
 - species perks
 
 5.5.0
+- Added 'Allow Stacking Similar Items' option to disable new logic to make it easier to swap eyes, etc
 - Added doll body type
 - Added Doll species perk
 - Added Doll Mirror weapon
@@ -85,6 +86,7 @@ Must do
 - Made the warden's taunt mechanic explain itself if you get hit by it
 - Added character size option
 - Added tooltips on the hotbar and an option to disable this
+- Added warning sound when player is targeted by an attack
 - One bar spike traps now take 3 turns to trigger, up from 2
 - Food at tables can now contain extra effects (can be turned off in consent settings)
 - Fixed bug with leashing getting stuck on conveyors

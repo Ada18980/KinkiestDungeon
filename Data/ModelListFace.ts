@@ -9,7 +9,7 @@ AddModel({
 	Folder: "FaceKoi",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Eyes",
+	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
@@ -46,7 +46,7 @@ AddModel({
 	Folder: "FaceKoi",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Eyes",
+	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
@@ -82,7 +82,7 @@ AddModel({
 	Folder: "FaceKoiBlank",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Eyes",
+	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
@@ -119,7 +119,7 @@ AddModel({
 	Folder: "FaceKoi",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Brows",
+	Group: "Brows",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Brows", Layer: "Brows", Pri: 0,
@@ -143,7 +143,7 @@ AddModel({
 	Folder: "EyesDai1",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Brows",
+	Group: "Brows",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Brows", Layer: "Brows", Pri: 0,
@@ -163,7 +163,7 @@ AddModel({
 	Folder: "EyesDai2",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Brows",
+	Group: "Brows",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Brows", Layer: "Brows", Pri: 0,
@@ -184,7 +184,7 @@ AddModel({
 	Folder: "EyesDai1",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Brows",
+	Group: "Brows",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Ridge", Layer: "Brows", Pri: 0,
@@ -265,7 +265,7 @@ AddModel({
 	Folder: "FaceKoi",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Blush",
+	Group: "Blush",
 	Categories: ["Face"],
 	AddPose: ["Blush"],
 	Layers: ToLayerMap([
@@ -283,7 +283,7 @@ AddModel({
 	Folder: "Expressions",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Blush",
+	Group: "Blush",
 	Categories: ["Face"],
 	AddPose: ["Fear"],
 	Layers: ToLayerMap([
@@ -301,7 +301,7 @@ AddModel({
 	Folder: "FaceKjus",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Eyes",
+	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
@@ -331,9 +331,9 @@ AddModel({
 	Name: "KjusEyes2",
 	Parent: "KjusEyes",
 	Folder: "EyesK2",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
-	//Group: "Eyes",
+	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
@@ -361,9 +361,9 @@ AddModel({
 	Name: "KjusEyes3",
 	Parent: "KjusEyes",
 	Folder: "EyesK3",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
-	//Group: "Eyes",
+	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
@@ -391,9 +391,9 @@ AddModel({
 	Name: "KjusEyes4",
 	Parent: "KjusEyes",
 	Folder: "EyesK4",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
-	//Group: "Eyes",
+	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
@@ -422,9 +422,9 @@ AddModel({
 	Name: "KjusEyes5",
 	Parent: "KjusEyes",
 	Folder: "EyesK5",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
-	//Group: "Eyes",
+	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	AddPose: ["Eyes"],
 	Layers: ToLayerMap([
@@ -454,7 +454,7 @@ AddModel({
 	Folder: "FaceKjus",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Brows",
+	Group: "Brows",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Brows", Layer: "Brows", Pri: 0,
@@ -541,7 +541,7 @@ AddModel({
 	Folder: "FaceKjus",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Blush",
+	Group: "Blush",
 	Categories: ["Face"],
 	AddPose: ["Blush"],
 	Layers: ToLayerMap([
@@ -557,7 +557,7 @@ AddModel({
 	Folder: "FaceDask",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Brows",
+	Group: "Brows",
 	Categories: ["Eyes","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Brows", Layer: "Brows", Pri: 0,
@@ -578,7 +578,7 @@ AddModel({
 	Folder: "FaceDask",
 	TopLevel: true,
 	Protected: true,
-	//Group: "Eyes",
+	Group: "Eyes",
 	Categories: ["Eyes","Face"],
 	AddPose: ["Eyes"],
 	Layers: ToLayerMap([

@@ -1639,6 +1639,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		if (value.status == "Guest" && DrawButtonKDEx("removeGuest", (_b) => {
 			if (!KDConfirmOverInventoryAction) {
 				KDConfirmOverInventoryAction = true;
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 			} else {
 				KDSendInput("removeGuest", {
 					selection: {[value.id]: true},

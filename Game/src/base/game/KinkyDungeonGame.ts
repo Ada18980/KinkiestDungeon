@@ -2664,6 +2664,7 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 			else {
 				KinkyDungeonSendActionMessage(10, TextGet("KDGameData.ConfirmAttack"), KDBaseRed, 1);
 				KDGameData.ConfirmAttack = true;
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 				noadvance = true;
 				result = "confirm";
 			}

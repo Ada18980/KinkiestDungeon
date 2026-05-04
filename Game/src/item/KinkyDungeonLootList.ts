@@ -1519,7 +1519,7 @@ let KDLootEvents: Record<string, lootEventFunc> = {
 	},
 	"archerykit": (_Loot, _Floor, Replacemsg, _Lock, container) => {
 		KDInvAddWeapon(container, "Bow");
-		KDAddConsumable("AncientPowerSource", 1, container);
+		KDAddConsumable("AncientPowerSource", 4, container);
 		return {
 			value: 0,
 			Replacemsg: Replacemsg,

@@ -4441,6 +4441,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		Sound: {
 			baseAmount: 0,
+			alertAmount: 0,
 		},
 		nonDirectional: true,
 		nopickpocket: true,
@@ -4460,6 +4461,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		Sound: {
 			baseAmount: 0,
+			alertAmount: 0,
 		},
 		nopickpocket: true,
 		noOverrideFloor: true,
@@ -4479,6 +4481,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		Sound: {
 			baseAmount: 0,
+			alertAmount: 0,
 		},
 		nopickpocket: true,
 		noOverrideFloor: true,
@@ -4646,6 +4649,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			baseAmount: 0,
 			moveAmount: 1.4,
 			attackAmount: 3,
+			alertAmount: 0,
 			decay: 1,
 		},
 		terrainTags: {"trap": 100, revenge: 10}, shrines: [], allFloors: true},
@@ -4730,6 +4734,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			baseAmount: 0,
 			moveAmount: 2.5,
 			attackAmount: 5,
+			alertAmount: 0,
 		},
 		nonDirectional: true,
 		stamina: 4,
@@ -4750,6 +4755,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 1,
+			alertAmount: 0,
 		},
 		nopickpocket: true,
 		nonDirectional: true,

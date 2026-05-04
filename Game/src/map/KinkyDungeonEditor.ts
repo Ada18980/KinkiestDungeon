@@ -537,6 +537,7 @@ function KDDrawEditorUI() {
 				KDEditorCurrentMapTileName = tileKeys[index];
 				ElementValue("MapTileTitle", KDEditorCurrentMapTileName);
 				KDTELoadConfirm = true;
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 			} else if (KDTELoadConfirm) {
 				KDTE_LoadTile(KDEditorCurrentMapTileName);
 				KDTELoadConfirm = false;
@@ -735,6 +736,7 @@ function KDDrawEditorUI() {
 			KDMapTilesListEditor = JSON.parse(JSON.stringify(KDMapTilesList));
 		} else {
 			KDTE_confirmreset = true;
+            if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 		}
 
 
@@ -786,6 +788,7 @@ function KDDrawEditorUI() {
 			KDMapTilesList = JSON.parse(JSON.stringify(KDMapTilesListEditor));
 		} else {
 			KDTE_confirmcommit = true;
+            if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 		}
 		return true;
 	}, true, 1450, 950, 275, 45, "Commit Editor Tiles", KDBaseWhite, "");

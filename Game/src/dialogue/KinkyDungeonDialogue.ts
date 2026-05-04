@@ -141,7 +141,9 @@ function KDDrawDialogue(delta: number): void {
 					tt = tt.replace (/\b(?:[Aa]|[Tt]he)\s+SPEAKER/, "SPEAKER");
 				}
 				DrawTextFitKD (tt.replace ("SPEAKER", npc_name),
-					1000, 300 + 50 * i - 25 * text.length, 900, KDBaseWhite, "black", undefined, undefined, 115);
+					1000, 320 + 45 * i - 25 * text.length, 
+					900, KDBaseWhite, 
+					"black", 26, undefined, 115);
 			}
 
 			// Draw the options

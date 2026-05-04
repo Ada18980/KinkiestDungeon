@@ -1130,7 +1130,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										playertext: "Continue", response: "Default",
 										drawFunction: (_gagged, _player, _delta) => {
 											// Buff bar
-											DrawBoxKD(740, 750, 800, 175, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+											if (KDToggles.BuffSide)
+												DrawBoxKD(500, 10, 80, 500, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+											else
+												DrawBoxKD(740, 750, 800, 175, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 											return false;
 										},
 										options: {
@@ -1154,7 +1157,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 																// Status Bar
 																playertext: "Continue", response: "Default",
 																drawFunction: (_gagged, _player, _delta) => {
-																	DrawBoxKD(1700, 280, 320, 180, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																	DrawBoxKD(1700, 280, 290, 145, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 																	return false;
 																},
 																options: {

@@ -1109,6 +1109,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						if (!KinkyDungeonTilesGet(tt.x + ',' + tt.y)?.Lock) {
 							if (_miscast) return "Miscast";
 							KinkyDungeonChestConfirm = true;
+                			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 							success = KDMoveObjectFunctions[tile](tt.x, tt.y);
 							KinkyDungeonChestConfirm = false;
 						} else {
