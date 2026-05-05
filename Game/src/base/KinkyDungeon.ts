@@ -1731,7 +1731,7 @@ function KinkyDungeonRun() {
 		let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
 		DrawCharacter(Char, 
 			250 - 250 * KDCharSize,
-			0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, KDCharSize, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+			0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, KDCharSize, undefined, undefined, undefined, undefined, KinkyDungeonState == "Game" ? KDGamePlayerZIndex : KDMenuPlayerZIndex, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
 	}
 
 	if (CommonIsMobile && mouseDown && !KDMouseInPlayableArea()) {

@@ -2704,11 +2704,13 @@
             <key type="filename">../Game/TargetAction.png</key>
             <key type="filename">../Game/TargetAttack.png</key>
             <key type="filename">../Game/TargetHit.png</key>
+            <key type="filename">../Game/TargetHit2.png</key>
             <key type="filename">../Game/TargetMove.png</key>
             <key type="filename">../Game/TargetPass.png</key>
             <key type="filename">../Game/TargetSpell.png</key>
             <key type="filename">../Game/TargetSub.png</key>
             <key type="filename">../Game/TargetTalk.png</key>
+            <key type="filename">../Game/TargetUnknown.png</key>
             <key type="filename">../Game/UI/AutoBindCopy.png</key>
             <key type="filename">../Game/UI/AutoBindPaste.png</key>
             <key type="filename">../Game/UI/AutoBindPasteAll.png</key>

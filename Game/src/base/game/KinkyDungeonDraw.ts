@@ -4,6 +4,9 @@ let lastExtraTooltipCycleTimeAuto = 0;
 let lastExtraTooltipCycleTimeAuto_Delay = 1500;
 let lastExtraTooltipCycleTimeAuto_ManualDelay = 30000;
 
+let KDGamePlayerZIndex = 6;
+let KDMenuPlayerZIndex = 6;;
+
 
 interface KDLight {
 	x: number,
@@ -1436,7 +1439,7 @@ function KinkyDungeonDrawGame() {
 							str = TextGet("KDCasting").replace("SPNME", TextGet("KinkyDungeonSpell" + KinkyDungeonTargetingSpell.name));
 						}
 						DrawTextKD(str,
-							(KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY - 0.5)*KinkyDungeonGridSizeDisplay,
+							PIXIWidth/2 + (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay*2)), 90,
 							KDBaseLightBlue, undefined, undefined, undefined, 100.1
 						);
 
@@ -1482,22 +1485,34 @@ function KinkyDungeonDrawGame() {
 										let yy = KDBulletRound(byy);
 										bxx += (KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x)/dd * dt;
 										byy += (KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)/dd * dt;
-										if (KinkyDungeonVisionGet(xx + KinkyDungeonPlayerEntity.x, yy + KinkyDungeonPlayerEntity.y) > 0 && !KinkyDungeonForceRender) {
+										let visible = KinkyDungeonVisionGet(
+											xx + KinkyDungeonPlayerEntity.x, 
+											yy + KinkyDungeonPlayerEntity.y) > 0
+											|| KinkyDungeonFogGet(
+											xx + KinkyDungeonPlayerEntity.x, 
+											yy + KinkyDungeonPlayerEntity.y) > 0;
+										if (!KinkyDungeonForceRender) {
 											let hit = false;
-											if (!KinkyDungeonTargetingSpell.passthrough
-												&& !KinkyDungeonTargetingSpell.piercing
-												&& !KinkyDungeonOpenObjects.includes(
-													KinkyDungeonMapGet(
-														xx + KinkyDungeonPlayerEntity.x, 
-														yy + KinkyDungeonPlayerEntity.y))) {
-													collision = true;
-													hit = true;
-												}
-											KDDraw(kdstatusboard, kdpixisprites, xx + "," + yy + "_target", KinkyDungeonRootDirectory + (collision ? "TargetHit.png" : "Target.png"),
+											if (visible) {
+												if (!collision 
+													&& !KinkyDungeonTargetingSpell.passthrough
+													&& !KinkyDungeonTargetingSpell.piercing
+													&& !KinkyDungeonOpenObjects.includes(
+														KinkyDungeonMapGet(
+															xx + KinkyDungeonPlayerEntity.x, 
+															yy + KinkyDungeonPlayerEntity.y))) {
+														collision = true;
+														hit = true;
+													}
+											}
+											
+											KDDraw(kdstatusboard, kdpixisprites, xx + "," + yy + "_target", KinkyDungeonRootDirectory + (collision ? ((!hit && collision) ? "TargetHit2.png" : "TargetHit.png") : (
+												visible ? "Target.png" : "TargetUnknown.png"
+											)),
 												(xx + KinkyDungeonPlayerEntity.x - CamX)*KinkyDungeonGridSizeDisplay, (yy + KinkyDungeonPlayerEntity.y - CamY)*KinkyDungeonGridSizeDisplay,
 												KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 													zIndex: 99,
-													alpha: (!hit && collision) ? 0.5 : 1
+													alpha: (!hit && collision) ? 0.37 : 1
 												});
 											}
 									}
@@ -1726,7 +1741,7 @@ function KinkyDungeonDrawGame() {
 				DrawCharacter(KinkyDungeonPlayer, 
 					250 - 250 * KDCharSize , 
 					0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, KDCharSize, 
-					undefined, undefined, undefined, undefined, KinkyDungeonDrawState == "Game" ? 0 : - 20, KDToggles.FlipPlayer);
+					undefined, undefined, undefined, undefined, KinkyDungeonDrawState == "Game" ? KDGamePlayerZIndex : - 20, KDToggles.FlipPlayer);
 
 			}
 			if (KinkyDungeonSleepiness) {
@@ -1890,7 +1905,8 @@ function KinkyDungeonDrawGame() {
 				KDDrawDialogue(KinkyDungeonDrawDelta);
 			}
 
-			KinkyDungeonDrawMessages();
+			if (!KinkyDungeonTargetingSpell)
+				KinkyDungeonDrawMessages();
 
 			// Draw the quick inventory
 			if (KDShowQuickInv()) {
@@ -2661,7 +2677,8 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 		let size = 48;
 		let filterCols = 2;
 		let yyy = KDLogFilters.length * spacing/filterCols + 30;
-		if (MouseIn(KDMsgWidthMin + KDMsgX + shiftx + 70, 0, 300, yyy) && !KDModalArea) {
+		if (!KinkyDungeonTargetingSpell
+			&& MouseIn(KDMsgWidthMin + KDMsgX + shiftx + 70, 0, 300, yyy) && !KDModalArea) {
 			let filterX = KDMsgWidthMin + KDMsgX + shiftx + 70 + 60;
 			let filterY = 4;
 			let ii = 0;

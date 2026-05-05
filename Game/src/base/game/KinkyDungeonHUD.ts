@@ -376,10 +376,13 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 	KDDrawStruggleGroups();
 	KDDrawStatusBars(1790, 340, 200);
 	KinkyDungeonDrawActionBar(1780, 166);
-	if (KDToggles.BuffSide)
-		KDProcessBuffIcons(510, 82, true);
-	else
-		KDProcessBuffIcons(830, 995 - 72 - 36 - 24);
+	if (!KinkyDungeonTargetingSpell) {
+		if (KDToggles.BuffSide)
+			KDProcessBuffIcons(510, 82, true);
+		else
+			KDProcessBuffIcons(830, 995 - 72 - 36 - 24);
+	}
+	
 
 
 	if (KinkyDungeonTargetTile) {
@@ -1310,57 +1313,61 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	let resourcesY = 825 - 10 - 1 * resourceSpacing;
 
 
-	KDDraw(kdcanvas, kdpixisprites, "gold", KinkyDungeonRootDirectory + "Items/Gold.png", resourcesX - 8, resourcesY - 10 + resourcesIndex*resourceSpacing, 80, 80, undefined, {
-		zIndex: 90
-	});
-	DrawTextFitKD("" + KinkyDungeonGold, resourcesX + 32, resourcesY + 40 + resourcesIndex*resourceSpacing, 80, KDBaseWhite, "#333333", 18, undefined, 90);
-	if (MouseIn(resourcesX - 10, resourcesY + resourcesIndex*resourceSpacing, 80, 80))
-		DrawTextKD(TextGet("KinkyDungeonInventoryItemGold"),
-			resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
-	resourcesIndex--;
-
-	if (KDShowQuickInv() || (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.FULL || KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE || MouseIn(0, 0, 500, 1000))) {
-		KDDraw(kdcanvas, kdpixisprites, "pick", KinkyDungeonRootDirectory + "Items/Pick.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
-			zIndex: 90
-		});
-		DrawTextFitKD("" + KinkyDungeonConsumableCount("Pick"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
-		if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
-			DrawTextKD(TextGet("KinkyDungeonInventoryItemLockpick"),
-				resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
-
-
-		resourcesIndex--;
-		KDDraw(kdcanvas, kdpixisprites, "redkey", KinkyDungeonRootDirectory + "Items/RedKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
-			zIndex: 90
-		});
-		DrawTextFitKD("" + KinkyDungeonConsumableCount("RedKey"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
-		if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
-			DrawTextKD(TextGet("KinkyDungeonInventoryItemRedKey"),
-				resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
-
-		resourcesIndex--;
-
-
-		if (KinkyDungeonConsumableCount("BlueKey") > 0) {
-			KDDraw(kdcanvas, kdpixisprites, "bluekey", KinkyDungeonRootDirectory + "Items/BlueKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
+	if (KDDrawResourcesQuick()) {
+		KDDraw(kdcanvas, kdpixisprites, "gold", KinkyDungeonRootDirectory + "Items/Gold.png", resourcesX - 8, resourcesY - 10 + resourcesIndex*resourceSpacing, 80, 80, undefined, {
 				zIndex: 90
 			});
-			DrawTextFitKD("" + KinkyDungeonConsumableCount("BlueKey"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
-			if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
-				DrawTextKD(TextGet("KinkyDungeonInventoryItemMagicKey"),
+			DrawTextFitKD("" + KinkyDungeonGold, resourcesX + 32, resourcesY + 40 + resourcesIndex*resourceSpacing, 80, KDBaseWhite, "#333333", 18, undefined, 90);
+			if (MouseIn(resourcesX - 10, resourcesY + resourcesIndex*resourceSpacing, 80, 80))
+				DrawTextKD(TextGet("KinkyDungeonInventoryItemGold"),
 					resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
-		}
+			resourcesIndex--;
+
+			if (KDShowQuickInv() || (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.FULL || KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE || MouseIn(0, 0, 500, 1000))) {
+				KDDraw(kdcanvas, kdpixisprites, "pick", KinkyDungeonRootDirectory + "Items/Pick.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
+					zIndex: 90
+				});
+				DrawTextFitKD("" + KinkyDungeonConsumableCount("Pick"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
+				if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
+					DrawTextKD(TextGet("KinkyDungeonInventoryItemLockpick"),
+						resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
+
+
+				resourcesIndex--;
+				KDDraw(kdcanvas, kdpixisprites, "redkey", KinkyDungeonRootDirectory + "Items/RedKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
+					zIndex: 90
+				});
+				DrawTextFitKD("" + KinkyDungeonConsumableCount("RedKey"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
+				if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
+					DrawTextKD(TextGet("KinkyDungeonInventoryItemRedKey"),
+						resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
+
+				resourcesIndex--;
+
+
+				if (KinkyDungeonConsumableCount("BlueKey") > 0) {
+					KDDraw(kdcanvas, kdpixisprites, "bluekey", KinkyDungeonRootDirectory + "Items/BlueKey.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
+						zIndex: 90
+					});
+					DrawTextFitKD("" + KinkyDungeonConsumableCount("BlueKey"), resourcesX + 25, resourcesY + 40 + resourcesIndex*resourceSpacing, 50, KDBaseWhite, "#333333", 18, undefined, 90);
+					if (MouseIn(resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50))
+						DrawTextKD(TextGet("KinkyDungeonInventoryItemMagicKey"),
+							resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
+				}
+			}
+
+			
+		if (DrawButtonKDEx("openQuickInv", (_b) => {
+			KinkyDungeonShowInventory = !KinkyDungeonShowInventory;
+			return true;
+		}, true, 510, 825, 60, 90, "", KDBaseWhite, KinkyDungeonRootDirectory + (KinkyDungeonShowInventory ? "BackpackOpen.png" : "Backpack.png"), "",
+		undefined, undefined, undefined, undefined, undefined,
+		{
+			hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[0]),
+		})) str = "KDQuickInv";
+
 	}
-
-
-	if (DrawButtonKDEx("openQuickInv", (_b) => {
-		KinkyDungeonShowInventory = !KinkyDungeonShowInventory;
-		return true;
-	}, true, 510, 825, 60, 90, "", KDBaseWhite, KinkyDungeonRootDirectory + (KinkyDungeonShowInventory ? "BackpackOpen.png" : "Backpack.png"), "",
-	undefined, undefined, undefined, undefined, undefined,
-	{
-		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[0]),
-	})) str = "KDQuickInv";
+	
 
 
 	// Weapon Switch
@@ -3849,3 +3856,7 @@ function KDCanCallGuardHelp(player: entity) {
 }
 
 let KDAlreadyEquippedWeaponErrorIcon = "GrabClosed";
+
+function KDDrawResourcesQuick() {
+	return !KinkyDungeonTargetingSpell;
+}
