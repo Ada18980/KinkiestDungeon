@@ -1891,8 +1891,39 @@ interface MoveDirection {
 	delta: number,
 }
 
+// factor which affects directionality of grid based directions
+let KDDirectionFactor = 1.8;
+
 // returns an object containing coordinates of which direction the player will move after a click, plus a time multiplier
 function KinkyDungeonGetDirection(dx: number, dy: number): MoveDirection {
+
+	let X = 0;
+	let Y = 0;
+
+	if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5)
+		return {x:0, y:0, delta:1};
+	const factor = KDDirectionFactor;
+
+	// Cardinal directions first - up down left right
+	if (dy > 0 && Math.abs(dx) < Math.abs(dy)/factor) Y = 1;
+	else if (dy < 0 && Math.abs(dx) < Math.abs(dy)/factor) Y = -1;
+	else if (dx > 0 && Math.abs(dy) < Math.abs(dx)/factor) X = 1;
+	else if (dx < 0 && Math.abs(dy) < Math.abs(dx)/factor) X = -1;
+
+	// Diagonals
+	else if (dy > 0 && dx > dy/factor) {Y = 1; X = 1;}
+	else if (dy > 0 && -dx > dy/factor) {Y = 1; X = -1;}
+	else if (dy < 0 && dx > -dy/factor) {Y = -1; X = 1;}
+	else if (dy < 0 && -dx > -dy/factor) {Y = -1; X = -1;}
+
+	if (X == 0 && Y == 0 && (dx || dy)) return KDGetDirGeometric(dx, dy);
+
+	return {x:X, y:Y, delta:Math.round(Math.sqrt(X*X+Y*Y)*2)/2}; // Delta is always in increments of 0.5
+}
+
+
+// Geometric version of GetDirection - obeys euclidean rather than grid logic
+function KDGetDirGeometric(dx: number, dy: number): MoveDirection {
 
 	let X = 0;
 	let Y = 0;

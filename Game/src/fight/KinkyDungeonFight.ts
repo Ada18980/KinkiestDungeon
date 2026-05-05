@@ -2004,9 +2004,9 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 
 				b.warnings = [];
 
-				while (d > 0.1) {
+				while (d > 0.05) {
 					if (!first && delta > 0) {
-						dt = 0.5 * (d - Math.max(0, d - 1))/Math.sqrt(Math.max(1, b.vx*b.vx+b.vy*b.vy));
+						dt = (d - Math.max(0, d - 1))/Math.sqrt(Math.max(1, b.vx*b.vx+b.vy*b.vy));
 
 						if (bborn >= 0) bborn -= dt;
 						if (bborn < mod) {
@@ -3961,7 +3961,8 @@ function KDGetWarnings(x: number, y: number) {
 
 
 function KDBulletRound(x: number) : number {
-	let diff = x - Math.round(x);
+	/*let diff = Math.abs(x - Math.round(x));
 	if (diff < 0.25) return Math.round(x);
-	else return x > 0 ? Math.floor(x) : Math.ceil(x);
+	else return x > 0 ? Math.floor(x) : Math.ceil(x);*/
+	return Math.round(x);
 }

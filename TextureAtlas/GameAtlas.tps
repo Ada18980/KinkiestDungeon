@@ -1237,6 +1237,7 @@
             <key type="filename">../Game/Enemies/PrisonerBandit.png</key>
             <key type="filename">../Game/Enemies/Pumpkin.png</key>
             <key type="filename">../Game/Enemies/PumpkinAngry.png</key>
+            <key type="filename">../Game/Enemies/Puppet_Lost.png</key>
             <key type="filename">../Game/Enemies/Rat.png</key>
             <key type="filename">../Game/Enemies/RedSlime.png</key>
             <key type="filename">../Game/Enemies/ResistanceDrone.png</key>
@@ -1506,6 +1507,7 @@
             <key type="filename">../Game/EnemiesBound/Ninja.png</key>
             <key type="filename">../Game/EnemiesBound/NinjaStalker.png</key>
             <key type="filename">../Game/EnemiesBound/Nurse.png</key>
+            <key type="filename">../Game/EnemiesBound/Puppet_Lost.png</key>
             <key type="filename">../Game/EnemiesBound/SamuraiZombie.png</key>
             <key type="filename">../Game/EnemiesBound/Skeleton.png</key>
             <key type="filename">../Game/EnemiesBound/SlimeAdv.png</key>
@@ -1624,6 +1626,7 @@
             <key type="filename">../Game/FloorGeneric/DollStand.png</key>
             <key type="filename">../Game/FloorGeneric/DollStandReal.png</key>
             <key type="filename">../Game/FloorGeneric/DollStandSpreader.png</key>
+            <key type="filename">../Game/FloorGeneric/DollStandSpreaderReal.png</key>
             <key type="filename">../Game/FloorGeneric/DollStandVibe.png</key>
             <key type="filename">../Game/FloorGeneric/DollStandVibeSpreader.png</key>
             <key type="filename">../Game/FloorGeneric/DollSupply.png</key>
@@ -2274,6 +2277,7 @@
             <key type="filename">../Game/Items/DiscPick.png</key>
             <key type="filename">../Game/Items/DivineTear.png</key>
             <key type="filename">../Game/Items/DollID.png</key>
+            <key type="filename">../Game/Items/DollMirror.png</key>
             <key type="filename">../Game/Items/Dragonslaver.png</key>
             <key type="filename">../Game/Items/Dreamcatcher.png</key>
             <key type="filename">../Game/Items/Duster.png</key>
@@ -2699,6 +2703,7 @@
             <key type="filename">../Game/Target.png</key>
             <key type="filename">../Game/TargetAction.png</key>
             <key type="filename">../Game/TargetAttack.png</key>
+            <key type="filename">../Game/TargetHit.png</key>
             <key type="filename">../Game/TargetMove.png</key>
             <key type="filename">../Game/TargetPass.png</key>
             <key type="filename">../Game/TargetSpell.png</key>
@@ -2741,6 +2746,7 @@
             <key type="filename">../Game/UI/ItemAura.png</key>
             <key type="filename">../Game/UI/ItemAuraBG.png</key>
             <key type="filename">../Game/UI/MapMod/Bandit.png</key>
+            <key type="filename">../Game/UI/MapMod/Doll.png</key>
             <key type="filename">../Game/UI/MapMod/Dragon.png</key>
             <key type="filename">../Game/UI/MapMod/Mold.png</key>
             <key type="filename">../Game/UI/MapMod/None.png</key>
@@ -3014,6 +3020,9 @@
             <key type="filename">../Game/Buffs/buff/buffGreaterInvisibility.png</key>
             <key type="filename">../Game/Buffs/buff/buffHaunted.png</key>
             <key type="filename">../Game/Buffs/buff/buffHighValueFound.png</key>
+            <key type="filename">../Game/Buffs/buff/buffHypno_DollStat.png</key>
+            <key type="filename">../Game/Buffs/buff/buffHypnosis.png</key>
+            <key type="filename">../Game/Buffs/buff/buffHypnosisOld.png</key>
             <key type="filename">../Game/Buffs/buff/buffIgnite.png</key>
             <key type="filename">../Game/Buffs/buff/buffInnerPowerArcaneStore.png</key>
             <key type="filename">../Game/Buffs/buff/buffInvisibility.png</key>
@@ -3037,6 +3046,7 @@
             <key type="filename">../Game/Buffs/buff/buffScrollVerbal.png</key>
             <key type="filename">../Game/Buffs/buff/buffShadowSeal.png</key>
             <key type="filename">../Game/Buffs/buff/buffShockCollarCD.png</key>
+            <key type="filename">../Game/Buffs/buff/buffSilenced.png</key>
             <key type="filename">../Game/Buffs/buff/buffSlimeMimic.png</key>
             <key type="filename">../Game/Buffs/buff/buffSlimed.png</key>
             <key type="filename">../Game/Buffs/buff/buffSlippery.png</key>
@@ -3176,6 +3186,7 @@
             <key type="filename">../Game/Buffs/weaponTag/bow.png</key>
             <key type="filename">../Game/Buffs/weaponTag/clumsy.png</key>
             <key type="filename">../Game/Buffs/weaponTag/heavy.png</key>
+            <key type="filename">../Game/Buffs/weaponTag/hypno.png</key>
             <key type="filename">../Game/Buffs/weaponTag/illum.png</key>
             <key type="filename">../Game/Buffs/weaponTag/light.png</key>
             <key type="filename">../Game/Buffs/weaponTag/magic.png</key>
@@ -3649,11 +3660,13 @@
             <key type="filename">../Game/UI/Log/Action.png</key>
             <key type="filename">../Game/UI/Log/Ambient.png</key>
             <key type="filename">../Game/UI/Log/Combat.png</key>
+            <key type="filename">../Game/UI/Log/Critical.png</key>
             <key type="filename">../Game/UI/Log/Dialogue.png</key>
             <key type="filename">../Game/UI/Log/Items.png</key>
             <key type="filename">../Game/UI/Log/Kills.png</key>
             <key type="filename">../Game/UI/Log/Self.png</key>
             <key type="filename">../Game/UI/Log/Struggle.png</key>
+            <key type="filename">../Game/UI/Log/TotalDamage.png</key>
             <key type="filename">../Game/UI/NoPass.png</key>
             <key type="filename">../Game/UI/NoSprint.png</key>
             <key type="filename">../Game/UI/Pass.png</key>
@@ -4630,6 +4643,7 @@
             <key type="filename">../Game/UI/SideRoom/BanditFort.png</key>
             <key type="filename">../Game/UI/SideRoom/Caldera.png</key>
             <key type="filename">../Game/UI/SideRoom/DemonTransition.png</key>
+            <key type="filename">../Game/UI/SideRoom/DollShoppe.png</key>
             <key type="filename">../Game/UI/SideRoom/ElevatorEgyptian.png</key>
             <key type="filename">../Game/UI/SideRoom/ElevatorEgyptian2.png</key>
             <key type="filename">../Game/UI/SideRoom/ElevatorRoom.png</key>

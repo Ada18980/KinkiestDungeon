@@ -1455,6 +1455,7 @@ function KinkyDungeonDrawGame() {
 												(X)*KinkyDungeonGridSizeDisplay, (Y)*KinkyDungeonGridSizeDisplay,
 												KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 													zIndex: 98,
+													alpha: 0.5,
 												});
 										}
 									}
@@ -1470,28 +1471,38 @@ function KinkyDungeonDrawGame() {
 								let dist = Math.sqrt((KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x)*(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x)
 									+ (KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)*(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y));
 								let collision = false;
-								for (let R = 0; R <= Math.max(1, range - 1); R+= 0.1) {
-									let xx = KinkyDungeonMoveDirection.x + KDBulletRound((KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x) * R / dist);
-									let yy = KinkyDungeonMoveDirection.y + KDBulletRound((KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) * R / dist);
-									if (KinkyDungeonVisionGet(xx + KinkyDungeonPlayerEntity.x, yy + KinkyDungeonPlayerEntity.y) > 0 && !KinkyDungeonForceRender) {
-										let hit = false;
-										if (!KinkyDungeonTargetingSpell.passthrough
-											&& !KinkyDungeonTargetingSpell.piercing
-											&& !KinkyDungeonOpenObjects.includes(
-												KinkyDungeonMapGet(
-													xx + KinkyDungeonPlayerEntity.x, 
-													yy + KinkyDungeonPlayerEntity.y))) {
-												collision = true;
-												hit = true;
+								let dt = 1/Math.sqrt(Math.max(1, Math.max(0.1, KinkyDungeonTargetingSpell.speed)));
+								
+								let bxx = KinkyDungeonMoveDirection.x;
+								let byy = KinkyDungeonMoveDirection.y;
+								let dd = KDistEuclidean(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y);
+								if (dd > 0) {
+									for (let R = 0; R <= Math.max(1, range - 1); R+= dt) {
+										let xx = KDBulletRound(bxx);
+										let yy = KDBulletRound(byy);
+										bxx += (KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x)/dd * dt;
+										byy += (KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)/dd * dt;
+										if (KinkyDungeonVisionGet(xx + KinkyDungeonPlayerEntity.x, yy + KinkyDungeonPlayerEntity.y) > 0 && !KinkyDungeonForceRender) {
+											let hit = false;
+											if (!KinkyDungeonTargetingSpell.passthrough
+												&& !KinkyDungeonTargetingSpell.piercing
+												&& !KinkyDungeonOpenObjects.includes(
+													KinkyDungeonMapGet(
+														xx + KinkyDungeonPlayerEntity.x, 
+														yy + KinkyDungeonPlayerEntity.y))) {
+													collision = true;
+													hit = true;
+												}
+											KDDraw(kdstatusboard, kdpixisprites, xx + "," + yy + "_target", KinkyDungeonRootDirectory + (collision ? "TargetHit.png" : "Target.png"),
+												(xx + KinkyDungeonPlayerEntity.x - CamX)*KinkyDungeonGridSizeDisplay, (yy + KinkyDungeonPlayerEntity.y - CamY)*KinkyDungeonGridSizeDisplay,
+												KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+													zIndex: 99,
+													alpha: (!hit && collision) ? 0.5 : 1
+												});
 											}
-										KDDraw(kdstatusboard, kdpixisprites, xx + "," + yy + "_target", KinkyDungeonRootDirectory + (collision ? "TargetHit.png" : "Target.png"),
-											(xx + KinkyDungeonPlayerEntity.x - CamX)*KinkyDungeonGridSizeDisplay, (yy + KinkyDungeonPlayerEntity.y - CamY)*KinkyDungeonGridSizeDisplay,
-											KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
-												zIndex: 99,
-												alpha: (!hit && collision) ? 0.5 : 1
-											});
-										}
+									}
 								}
+								
 							}
 							else if (!KinkyDungeonForceRender) {
 								let rad = KinkyDungeonTargetingSpell.aoe ? KinkyDungeonTargetingSpell.aoe : 0.5;
