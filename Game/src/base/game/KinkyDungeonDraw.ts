@@ -1506,12 +1506,12 @@ function KinkyDungeonDrawGame() {
 													}
 											}
 											
-											KDDraw(kdstatusboard, kdpixisprites, xx + "," + yy + "_target", KinkyDungeonRootDirectory + (collision ? ((!hit && collision) ? "TargetHit2.png" : "TargetHit.png") : (
+											KDDraw(kdstatusboard, kdpixisprites, xx + "," + yy + "_target" + hit, KinkyDungeonRootDirectory + (collision ? ((!hit && collision) ? "TargetHit2.png" : "TargetHit.png") : (
 												visible ? "Target.png" : "TargetUnknown.png"
 											)),
 												(xx + KinkyDungeonPlayerEntity.x - CamX)*KinkyDungeonGridSizeDisplay, (yy + KinkyDungeonPlayerEntity.y - CamY)*KinkyDungeonGridSizeDisplay,
 												KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
-													zIndex: 99,
+													zIndex: (!hit && collision) ? 98 : 99,
 													alpha: (!hit && collision) ? 0.37 : 1
 												});
 											}
