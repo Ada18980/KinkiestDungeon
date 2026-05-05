@@ -1892,9 +1892,11 @@ interface MoveDirection {
 }
 
 // factor which affects directionality of grid based directions
-let KDDirectionFactor = 1.8;
+let KDDirectionFactor = 1.5;
+let KDDirectionFactorScale = 1;
 
 // returns an object containing coordinates of which direction the player will move after a click, plus a time multiplier
+// This is optimized for allowing tight aiming around corners
 function KinkyDungeonGetDirection(dx: number, dy: number): MoveDirection {
 
 	let X = 0;
@@ -1902,7 +1904,7 @@ function KinkyDungeonGetDirection(dx: number, dy: number): MoveDirection {
 
 	if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5)
 		return {x:0, y:0, delta:1};
-	const factor = KDDirectionFactor;
+	const factor = KDDirectionFactor + KDDirectionFactorScale * Math.min(1, KDistChebyshev(dx, dy)/5);
 
 	// Cardinal directions first - up down left right
 	if (dy > 0 && Math.abs(dx) < Math.abs(dy)/factor) Y = 1;
