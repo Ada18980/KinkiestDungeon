@@ -315,7 +315,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 自动等待略过有延时的行动
 
 
-# - Play sound when targeted by attacks
+- Play sound when targeted by attacks
+被锁定为攻击目标时播放警告声
 # - Allow Stacking Similar Items
 - Show Minimap Labels
 显示小地图标签
@@ -2026,17 +2027,17 @@ Roguelike : ‎没有保存代码，只有自动保存
 - I will simply wait to see what happens.
 我会等着看会发生什么。
 - Save and return to menu
-保存当前进度
+保存并回到主菜单
 - Give up & delete save
 放弃并删除存档
 - Yes, delete my save file!
 是的，删除我的存档文件
 - Give up and go to jail.
-实际上，我要让敌人俘虏我
+投降并入狱
 - Yes, jail me!
 是的，囚禁我
 - Return to game
-不，我想继续
+返回游戏
 - See Perks
 查看特质
 
@@ -2063,7 +2064,7 @@ Devious Dungeon Challenge 已启用。
 - Missing key
 未找到钥匙
 - Protects from damage and binding until the shield is broken!
-你将受到保护，免受伤害，并且在护盾被打破之前无法被束缚！
+盾未破裂时，免受伤害和束缚！
 - Chance for a spell to fizzle: 
 施法失败几率：
 - Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
@@ -2230,7 +2231,7 @@ Devious Dungeon Challenge 已启用。
 你感觉自己快要昏倒了……
 
 - New Game
-开始新游戏
+新游戏
 - New Game+
 新游戏+
 - New Game+ (Hard Mode)
@@ -2238,9 +2239,9 @@ Devious Dungeon Challenge 已启用。
 - New Game+ (Extreme Mode)
 新游戏+（极限模式）
 - Continue
-继续上次游戏
+继续
 - Load Save
-加载已保存的游戏
+读取存档
 - Save Outfit (overwrite!)
 保存服装 ( 覆盖！ )
 - Save Outfit (Clothes Only!)
@@ -2252,7 +2253,7 @@ Devious Dungeon Challenge 已启用。
 - Return
 返回
 - Options
-游戏选项
+选项
 - Consent Options
 内容设置
 
@@ -3179,7 +3180,7 @@ Devious Dungeon Challenge 已启用。
 - You apply a clever trick to reset your visor cooldown.
 你使用一个巧妙的技巧重置了你的面罩的冷却时间。
 - A chip used to identify dolls. The doll must have dropped it. Either way it contains valuable tech...
-这是一个用于识别玩偶的芯片。有人可能遗失了它，无论如何，里面蕴含着有价值的技术……
+这是一个用于识别玩偶的芯片。有玩偶把它弄丢了。无论如何，里面蕴含着有价值的技术……
 - With enough, it can be used to remove Dollmaker's headwear.
 如果有足够的量，它可以用来摘掉玩偶师的目镜和面罩。
 
@@ -13441,12 +13442,18 @@ Ars烟火
 影于暗处
 - You are harder to see when waiting.
 你在等待时很难被发现。
-# - Locksmith I
-# - Reduces lock difficulty by 5.
-# - Locksmith II
-# - Reduces lock difficulty by a further 5. (+10 total)
-# - Locksmith III
-# - Reduces lock difficulty by a further 5. (+15 total)
+- Locksmith I
+锁匠Ⅰ
+- Reduces lock difficulty by 5.
+减少 5 开锁难度。
+- Locksmith II
+锁匠Ⅱ
+- Reduces lock difficulty by a further 5. (+10 total)
+再减少 5 开锁难度。（总共 10）
+- Locksmith III
+锁匠Ⅲ
+- Reduces lock difficulty by a further 5. (+15 total)
+再减少 5 开锁难度。（总共 15）
 - Vault
 腾跃
 - You can sprint under flying enemies and through vulnerable, slowed, or disabled enemies. Does not work on immobile enemies such as doors and turrets.
@@ -16321,7 +16328,7 @@ AMNT% 的概率命中你
 - Resistances:
 抗性 : ‎
 - WP: 
-生命值：
+意志值：
 - Shield: 
 护盾：
 - Binding: 
@@ -50081,8 +50088,10 @@ AMNT1 (最大)
 环境
 - Kills
 击杀
-# - Critical Hits
-# - Total Damage
+- Critical Hits
+暴击
+- Total Damage
+总伤害
 
 
 - You attack TargetEnemy for DamageDealt total damage.
@@ -52205,6 +52214,8 @@ EnemyName 设法蠕动着离开了视野！
 橡胶嘎吱作响
 - blaring siren
 刺耳的警笛声
+# - rope unraveling
+# - rope shuffling
 
 - You claim the Sweeper.
 你拿起了清扫者
@@ -53109,7 +53120,8 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - ${You} feel like ${You} ${Yis} nothing but a doll... 
 # - ${Youve} fallen into a trance, making suggestions more powerful.
 
-# - Good doll.
+- Good doll.
+好玩偶。
 # - Good doll...
 # - Pretty doll.
 # - Lovely doll.
@@ -53119,7 +53131,8 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - A quiet doll...
 # - I'm not a doll.
 # - I'm not a doll!
-# - I'm a doll!
+- I'm a doll!
+我是玩偶！
 # - I am a doll.
 
 # - ${You} ${Yis} silenced, unable to cast spells easily.
