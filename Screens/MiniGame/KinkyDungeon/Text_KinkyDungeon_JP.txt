@@ -30178,7 +30178,7 @@ ITMNS 検索：
 
 - You begin to move at lightning speed!
 光の速度で動けるようになった！
-- ACCEL BEGIN!
+- ACCEL BEGIN
 加速開始！
 - Not enough mana.
 マナが足りない。

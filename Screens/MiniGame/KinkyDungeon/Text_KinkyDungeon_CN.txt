@@ -47147,7 +47147,7 @@ BOSS 房已清空！
 
 - You begin to move at lightning speed!
 你开始以闪电般的速度移动！
-- ACCEL BEGIN!
+- ACCEL BEGIN
 加速开始！
 - Not enough mana.
 法力不够。

@@ -5259,7 +5259,10 @@ function KinkyDungeonAddRestraint (
 		// First we try linking under
 		if (!Unlink) {
 			let ret = KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, false, events, faction, true, Curse, securityEnemy, true, inventoryAs, data, powerBonus);
-			if (ret) return ret;
+			if (ret) {
+				KDUpdateWaitTime(200);
+				return ret;
+			}
 		}
 
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
@@ -5434,6 +5437,8 @@ function KinkyDungeonAddRestraint (
 		let end = performance.now();
 		if (KDDebug)
 			console.log(`Took ${end - start} milliseconds to add restraint ${restraint.name}`);
+		
+		KDUpdateWaitTime(200);
 		return Math.max(1, restraint.power);
 	}
 	return 0;

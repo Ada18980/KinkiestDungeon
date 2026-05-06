@@ -30441,7 +30441,7 @@ NPC с наклонностями к подчинению иногда "убег
 
 - You begin to move at lightning speed!
 Вы начинаете двигаться с молниеносной скоростью!
-- ACCEL BEGIN!
+- ACCEL BEGIN
 УСКОРЕНИЕ!
 - Not enough mana.
 Недостаточно маны.

@@ -28980,7 +28980,7 @@ Ataque a distancia
 
 ### You begin to move at lightning speed!
 
-### ACCEL BEGIN!
+### ACCEL BEGIN
 
 ### Not enough mana.
 

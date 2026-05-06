@@ -28680,7 +28680,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### You begin to move at lightning speed!
 
-### ACCEL BEGIN!
+### ACCEL BEGIN
 
 ### Not enough mana.
 

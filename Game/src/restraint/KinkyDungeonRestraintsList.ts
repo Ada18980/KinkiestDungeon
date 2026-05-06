@@ -1691,8 +1691,12 @@ const KinkyDungeonRestraints: restraint[] = [
 		Filters: {
 			Binder: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.6833333333333333,"blue":3.1,"alpha":1},
 		},
+		cutVulnerability: 1.5,
 		factionFilters: {
 			Binder: {color: "DarkNeutral", override: true},
+		},
+		speedMult: {
+			Cut: 0.5,
 		},
 		struggleMult: {Struggle: 0.4},
 		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},

@@ -29765,7 +29765,7 @@ KDVarSuffBaseDamageBuffMagic,of Destruction
 
 
 KinkyDungeonSpellQuickness,Phase Dance
-KinkyDungeonSpellDescriptionQuickness,"For 4 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal."
+KinkyDungeonSpellDescriptionQuickness,"For 3 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal. Can miscast unlike many self-targeted spells."
 KinkyDungeonBuffQuickness,"You are F A S T"
 
 KinkyDungeonSpellQuickness2,Double Accel
@@ -29791,7 +29791,7 @@ KDQuickness5_Yes,"Time has ceased to pass."
 KDQuickness5_Floater,"Total Accel!"
 
 KDQuickness_Yes,"You begin to move at lightning speed!"
-KDQuickness_Floater,"ACCEL BEGIN!"
+KDQuickness_Floater,"ACCEL BEGIN"
 KDQuickness_NoMana,"Not enough mana."
 KDQuickness_NoComp,"You need to free your legs."
 
@@ -33586,3 +33586,5 @@ ItemPickupDollMirror,"You pick up an doll's mirror."
 
 KDAddHypno_Doll,"You feel just like a pretty, still doll... (+AMNT Stillness)"
 KDRemoveHypno_Doll,You regain a bit of your sense of self. (-AMNT Stillness)
+
+KDAlreadyActive,The spell is already active.

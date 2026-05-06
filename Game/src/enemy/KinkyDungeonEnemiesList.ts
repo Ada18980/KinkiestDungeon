@@ -5068,7 +5068,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxdodge: 0,
 		nonDirectional: true,
 		specialCD: 8, specialAttack: "MeleeDash", specialRemove: "SuicideMeleeBindLockWill", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4.99, specialMinRange: 1.5, dashThrough: false, specialsfx: "Miss",
-		visionRadius: 5, visionSummoned: 12, maxhp: 4, minLevel: 0, weight:0, movePoints: 1, attackPoints: 3, attack: "SuicideMeleeBindLockWill", attackWidth: 3, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
+		visionRadius: 5, visionSummoned: 12, maxhp: 2.5, minLevel: 0, weight:0, movePoints: 1, attackPoints: 3, attack: "SuicideMeleeBindLockWill", attackWidth: 3, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":1, "lastthird":1, revenge: 60, "doortrap": 5, "trap": 40}, allFloors: true, shrines: ["Metal"],
 		maxLevel: 3,
 		events: [
@@ -5091,7 +5091,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		nonDirectional: true, kite: 1.5,
 		spells: ["LockBullet"], castWhileMoving: true, projectileTargeting: true,
 		spellCooldownMod: 0, spellCooldownMult: 1,
-		visionRadius: 5.5, visionSummoned: 12, maxhp: 10, minLevel: 3, weight:0, movePoints: 2,
+		visionRadius: 5.5, visionSummoned: 12, maxhp: 6, minLevel: 3, weight:0, movePoints: 2,
 		stamina: 5,
 		sprintspeed: 2.0,
 		attackLock: "Purple",

@@ -1257,7 +1257,7 @@ function KinkyDungeonDrawGame() {
 								aura_scale += 1/aura_scale_max;
 								let s = aura_scale;
 								if (b.noAuraColor) {
-									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "Aura") + ".png",
+									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "PlayerAura") + ".png",
 										(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
@@ -1265,7 +1265,7 @@ function KinkyDungeonDrawGame() {
 											//alpha: KDMousePlayableAreaStatusFade,
 										});
 								} else {
-									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "Aura") + ".png",
+									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "PlayerAura") + ".png",
 										(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
@@ -1458,7 +1458,7 @@ function KinkyDungeonDrawGame() {
 												(X)*KinkyDungeonGridSizeDisplay, (Y)*KinkyDungeonGridSizeDisplay,
 												KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 													zIndex: 98,
-													alpha: 0.5,
+													alpha: 0.6,
 												});
 										}
 									}

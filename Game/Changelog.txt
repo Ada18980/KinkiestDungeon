@@ -91,13 +91,18 @@ Must do
 - Food at tables can now contain extra effects (can be turned off in consent settings)
 - Fixed bug with leashing getting stuck on conveyors
 - Fixed a bug where bast cultists would never apply kitty suit in jail
-- Made ghost possession (pleasure option) have much longer time between teasings
 - Added log option to filter out "critical hit" and "total damage" messages from log
-- Shock orb doesnt move a tile the first turn it is cast
 - Tweaked algorithm for projectile rounding
 - Spell aim now warns the player if a projectile will hit a wall
 - Improved accuracy of aim lines for spell targeting
 - Aiming spells around tight corners should now be more practical
+
+Balance: 
+- Phase Dance now lasts 3 turns instead of 4 and can miscast
+- Shock orb doesnt move a tile the first turn it is cast
+- Made ghost possession (pleasure option) have much longer time between teasings
+- Levitating Locks hp reduced from 40 to 25
+- Masterful Lock hp reduced from 100 to 60
 
 5.4.93
 - One bar prisons now are harder to escape if you wear heels

@@ -796,6 +796,61 @@ function KDDoGaggedMiscastFlag(data: any, components: string[]) {
 	}
 }
 
+
+interface GaggedmiscastEventData {
+    gaggedMiscastFlag: boolean;
+    miscastChance: number;
+    gaggedMiscastType: string;
+    lastPartialChance: number;
+}
+/**
+ *
+ * @param data
+ * @param {spell} data.spell
+ * @param {string} data.gaggedMiscastType
+ * @param {number} data.targetX
+ * @param {number} data.targetY
+ * @param {object} data.flags
+ * @param {boolean} data.gaggedMiscastFlag
+ */
+function KDDoGaggedMiscastFlagEvent(spell: spell, targetX: number, targetY: number, miscastChance: number,
+	components: string[]): GaggedmiscastEventData {
+	let lastPartialChance = 0;
+	let gaggedMiscastType = "";
+
+	let gaggedMiscastFlag = false;
+	if (!KDSpellIgnoreComp(spell)) {
+		for (let c of components || spell.components) {
+			if (KDSpellComponentTypes[c]?.partialMiscastChance && KDSpellComponentTypes[c].check(spell, targetX, targetY)) {
+				let partialMiscastChance = KDSpellComponentTypes[c].partialMiscastChance(spell, targetX, targetY);
+				if (partialMiscastChance > 0) {
+					if (lastPartialChance == 0 || KDRandom() < partialMiscastChance) {
+						lastPartialChance = partialMiscastChance;
+						gaggedMiscastType = KDSpellComponentTypes[c].partialMiscastType(spell, targetX, targetY);
+					}
+					miscastChance = miscastChance + Math.max(0, 1 - miscastChance) * (partialMiscastChance);
+					gaggedMiscastFlag = true;
+				}
+
+			}
+		}
+	}
+	if (gaggedMiscastFlag) {
+		return {
+			gaggedMiscastFlag: true,
+			miscastChance: miscastChance,
+			gaggedMiscastType: gaggedMiscastType,
+			lastPartialChance: lastPartialChance,
+		};
+	}
+	return {
+		gaggedMiscastFlag: false,
+		miscastChance: miscastChance,
+		gaggedMiscastType: gaggedMiscastType,
+		lastPartialChance: lastPartialChance,
+	};
+}
+
 /**
  * @param targetX
  * @param targetY
@@ -904,15 +959,8 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 		flags.miscastChance = 0;
 	}
 	if (!spell.noMiscast && !enemy && !bullet && player && Math.min(1, KDRandom() + KinkyDungeonMiscastPityModifier) < flags.miscastChance) {
-		// Increment the pity timer
-		KinkyDungeonMiscastPityModifier += KinkyDungeonMiscastPityModifierIncrementPercentage * Math.max(1 - flags.miscastChance, 0);
-
-		if (data.gaggedMiscastFlag)
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscast" + data.gaggedMiscastType), KDBaseOrange, 2);
-		else
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscast"), KDBaseOrange, 2);
-
-		miscast = true;
+		
+		miscast = KDDoMiscast(flags.miscastChance, data.gaggedMiscastFlag, data.gaggedMiscastType);
 
 		if (!spell.special) {
 			moveDirection = {x:0, y:0, delta:1};
@@ -2940,4 +2988,85 @@ function KDDrawSpellInfo(showbg: boolean, xOffset: number, yOffset: number, spel
 				(KinkyDungeonSpellPoints >= cost && KinkyDungeonCheckSpellPrerequisite(spell)) ? KDBaseWhite : "Pink", "", "");
 		}
 	}
+}
+
+function KDDoMiscast(miscastChance: number, gaggedMiscastFlag: boolean, gaggedMiscastType: string) {
+	// Increment the pity timer
+	KinkyDungeonMiscastPityModifier += KinkyDungeonMiscastPityModifierIncrementPercentage * Math.max(1 - miscastChance, 0);
+
+	if (gaggedMiscastFlag)
+		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscast" + gaggedMiscastType), KDBaseOrange, 2);
+	else
+		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellMiscast"), KDBaseOrange, 2);
+
+	return true;
+}
+
+interface MiscastEventData {
+	spell: spell,
+
+	targetX: number,
+	targetY: number,
+	originX: number,
+	originY: number,
+	flags: {
+		miscastChance: number
+	},
+	enemy: entity,
+	bullet: KDBullet,
+	player: entity,
+
+}
+
+function KDDoToggleMiscast(spell: spell, player: entity) : boolean {
+	let com = KinkyDungeoCheckComponents(spell, player.x, player.y);
+	let miscast: GaggedmiscastEventData = {
+		miscastChance: KinkyDungeonMiscastChance,
+		gaggedMiscastFlag: false,
+		gaggedMiscastType: "",
+		lastPartialChance: 0,
+	};
+
+	if (com.components) {
+		let cpp = KinkyDungeoCheckComponentsPartial(spell,
+			player.x,
+			player.y,
+			false,
+			false,
+		);
+
+		if (cpp.length > 0)
+			miscast = KDDoGaggedMiscastFlagEvent(spell, player.x, player.y,
+			miscast.miscastChance, cpp);
+	}
+
+	if (miscast?.miscastChance > 0) {
+		if (Math.min(1, KDRandom() + KinkyDungeonMiscastPityModifier) < miscast.miscastChance) {
+			KDDoMiscast(
+				miscast.miscastChance, 
+				miscast.gaggedMiscastFlag, 
+				miscast.gaggedMiscastType);
+			if (!spell.special) {
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + (spell.miscastSfx || "SoftShield") + ".ogg");
+				KinkyDungeonSendEvent("miscast", {
+					spell: spell,
+					targetX: player.x,
+					targetY: player.y,
+					originX: player.x,
+					originY: player.y,
+					flags: {
+						miscastChance: miscast.miscastChance
+					},
+					enemy: null,
+					bullet: null,
+					player: player,
+				} as MiscastEventData);
+				KinkyDungeonSetFlag("miscast", 1);
+				KDStunTurns(1, true);
+				return true;
+			}
+		}
+		
+	}
+	return false;
 }

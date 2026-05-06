@@ -14,7 +14,8 @@ interface HypnoButton {
     textData: Record<string, string>,
     alphaRate: number,
     textKey_after: string,
-    callback?: (player: entity) => void,
+    callback?: string,
+    callbackdata?: any,
     player?: number,
 }
 
@@ -56,7 +57,7 @@ let KDMaxHypnoButtonPlacementAttempts = 64;
 let KDStandardHypnoHeight = 80;
 let KDStandardHypnoWidth = 160;
 
-function KDAddHypnoButton(buff: string, amount: number, textKey: string, textData?: Record<string, string>, textKey_after?: string, callback?: (player: entity) => void, player?: number, duration?: number, extraTrance?: number, x?: number, y?: number) {
+function KDAddHypnoButton(buff: string, amount: number, textKey: string, textData?: Record<string, string>, textKey_after?: string, callback?: {name: string, data: any}, player?: number, duration?: number, extraTrance?: number, x?: number, y?: number) {
     let width = KDStandardHypnoWidth;
     let setPoint = (button) => {
         
@@ -81,7 +82,8 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
         textKey_after: textKey_after,
         width: width,
         clicked: false,
-        callback: callback,
+        callback: callback.name,
+        callbackdata: callback.data,
         player: player,
     };
     if (!x && !y) {
@@ -118,7 +120,9 @@ function KDDrawHypnoButton(button: HypnoButton, x: number, y: number, alpha: num
                         KDAddSpecialStat(button.buff, player, button.amount, true);
                     }
                     if (button.callback && KinkyDungeonFindID(button.player)) {
-                        button.callback(KinkyDungeonFindID(button.player));
+                        if (KDHypnoCallbacks[button.callback]) {
+                            KDHypnoCallbacks[button.callback](button.callbackdata);
+                        }
                     }
                 }
             }
@@ -146,4 +150,32 @@ function KDDrawHypnoButton(button: HypnoButton, x: number, y: number, alpha: num
             if (button.alpha > 1) button.alpha = 1;
         }
     }
+}
+
+
+let KDHypnoCallbacks : Record<string, (data: any) => void> = {
+    DollAccept: (data) => {
+        let player = KinkyDungeonFindID(data.player);
+        if (!player) return;
+        if (KinkyDungeonJailGuard()) {
+            //KDStunTurns(Math.floor(2 * (0.5 + KDRandom())), true);
+        } else {
+            KDStunTurns(40, true);
+            // freeze the player and call an NPC to make the player a doll
+            KinkyDungeonSetFlag("GuardCalled", 35);
+            let entity = KinkyDungeonCallGuard(player.x, player.y,
+                    true, true, undefined, "Dressmaker", "dolldressmaker");
+            if (entity) {
+                // TODO add intent action to bring up doll dialogue
+            }
+        }
+    },
+    DollStill: (data) => {
+        KDStunTurns(Math.floor(2 * (0.5 + KDRandom())), false);
+    },
+    DollSilent: (data) => {
+        let player = KinkyDungeonFindID(data.player);
+        if (!player) return;
+        KDApplyGenBuffs(player, "Silenced", Math.floor(5 * (0.5 + KDRandom())));
+    },
 }

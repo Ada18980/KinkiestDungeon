@@ -339,7 +339,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 	},
 	"miscast": {
-		"EssenceMote": (e, item, data) => {
+		"EssenceMote": (e, item, data: MiscastEventData) => {
 			//if (KinkyDungeonFlags.get("essMote")) return;
 			if (data.spell && (!data.spell.manacost || data.spell.noMiscast)) return;
 			if (e.chance && KDRandom() > e.chance) return;
@@ -5064,7 +5064,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 		}
 	},
 	"miscast": {
-		"EssenceMote": (e, spell, data) => {
+		"EssenceMote": (e, spell, data: MiscastEventData) => {
 			if (KinkyDungeonFlags.get("essMote"))
 				if (data.spell && (!data.spell.manacost || data.spell.noMiscast)) return;
 			let slots: KDPoint[] = [];
@@ -7218,16 +7218,23 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				let player = KinkyDungeonPlayerEntity;
 				let cost = KinkyDungeonGetManaCost(spell, false, true);
 				if (KinkyDungeoCheckComponents(spell, player.x, player.y).failed.length == 0) {
+					if (KinkyDungeonPlayerBuffs[spell.name]) {
+						KinkyDungeonSendTextMessage(10, TextGet("KDAlreadyActive"), KDBaseRed, 2, true);
+						return;
+					}
 					if (KinkyDungeonHasMana(cost)) {
+						if (KDDoToggleMiscast(spell, player)) return;
 
 						KinkyDungeonApplyBuffToEntity(player, {
 							id: spell.name,
 							type: "Quickness",
-							duration: e.time,
+							duration: e.time - 1,
 							power: 1,
 							endSleep: true,
 							currentCount: -1,
-							maxCount: 3,
+							maxCount: e.time - 1,
+							aura: KDBaseYellow,
+							hide: true,
 							tags: ["quickness", "move", "attack", "cast"],
 						});
 
@@ -7988,40 +7995,22 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 					let amount = Math.floor(4 * (0.5 + 0.7*KDRandom()));
 					let key = "KDHypno_Doll_" + Math.floor(KDRandom() * KDDollHypnoSuggestions);
 					let keyafter: string = null;
-					let callback: (player: entity) => void = null;
+					let callback: string = undefined;
+					let callbackdata: any = {player: player.id};
 					let duration = 0;
 					if (KDRandom() < 0.6 && KDEntityBuffedStat(player, "Hypnosis") > 25 && KDRandom() < KDEntityBuffedStat(player, "Hypnosis")*0.01) {
 						let dollLevel = KDEntityBuffedStat(player, "Hypno_Doll");
 						if (dollLevel > 90 && KDRandom() < 0.25) {
 							amount = Math.floor(5 * (0.5 + KDRandom()));
 							key = "KDHypno_Doll_Accept";
-							callback = (player) => {
-								if (KinkyDungeonJailGuard()) {
-									//KDStunTurns(Math.floor(2 * (0.5 + KDRandom())), true);
-								} else {
-									KDStunTurns(40, true);
-									// freeze the player and call an NPC to make the player a doll
-									KinkyDungeonSetFlag("GuardCalled", 35);
-									let entity = KinkyDungeonCallGuard(player.x, player.y,
-											true, true, undefined, "Dressmaker", "dolldressmaker");
-									if (entity) {
-										// TODO add intent action to bring up doll dialogue
-									}
-								}
-								
-								
-							};
+							callback = "DollAccept";
 						} else if (dollLevel > 25 && KDRandom() < 0.2 + 0.005 * dollLevel) {
 							if (KDRandom() < 0.5) {
 								key = "KDHypno_Doll_Still";
-								callback = (player) => {
-									KDStunTurns(Math.floor(2 * (0.5 + KDRandom())), false);
-								};
+								callback = "DollStill";
 							} else {
 								key = "KDHypno_Doll_Silent";
-								callback = (player) => {
-									KDApplyGenBuffs(player, "Silenced", Math.floor(5 * (0.5 + KDRandom())));
-								};
+								callback = "DollSilent";
 							}
 						} else if (dollLevel > 25 || KDRandom() < 0.1 + dollLevel*0.003) {
 							if (dollLevel > 10 && KDRandom() < 0.3 + dollLevel * 0.0035) {
@@ -8034,7 +8023,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 							}
 						} 
 					}
-					KDAddHypnoButton("Hypno_Doll", amount, key, null, keyafter, callback, player.id, duration ? duration : undefined);
+					KDAddHypnoButton("Hypno_Doll", amount, key, null, keyafter, callback ? {name: callback, data: callbackdata} : undefined, player.id, duration ? duration : undefined);
 					KinkyDungeonSetFlag("DollSuggestion_Basic", 3 + Math.floor(KDRandom() * 3));
 				}
 			}
