@@ -7993,13 +7993,14 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 				if (!KinkyDungeonFlags.get("DollSuggestion_Basic") && KDRandom() < e.chance) {
 					// add a suggestion
 					let amount = Math.floor(4 * (0.5 + 0.7*KDRandom()));
-					let key = "KDHypno_Doll_" + Math.floor(KDRandom() * KDDollHypnoSuggestions);
 					let keyafter: string = null;
 					let callback: string = undefined;
 					let callbackdata: any = {player: player.id};
 					let duration = 0;
 					if (KDRandom() < 0.6 && KDEntityBuffedStat(player, "Hypnosis") > 25 && KDRandom() < KDEntityBuffedStat(player, "Hypnosis")*0.01) {
 						let dollLevel = KDEntityBuffedStat(player, "Hypno_Doll");
+						let key = "KDHypno_Doll_" + Math.floor(KDRandom() * Math.round(
+							KDDollHypnoSuggestions * (0.5 + dollLevel/100)));
 						if (dollLevel > 90 && KDRandom() < 0.25) {
 							amount = Math.floor(5 * (0.5 + KDRandom()));
 							key = "KDHypno_Doll_Accept";

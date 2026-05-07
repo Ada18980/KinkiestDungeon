@@ -19,7 +19,7 @@ interface HypnoButton {
     player?: number,
 }
 
-let KDDollHypnoSuggestions = 5;
+let KDDollHypnoSuggestions = 10;
 
 let KDHypnoDefaultAlphaRate = 0.5;
 let KDMaxHypnoButtons = 20;
