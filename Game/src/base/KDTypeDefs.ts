@@ -4078,6 +4078,7 @@ interface ApplyVariant {
 interface SpecialStat {
 	PerFloor: (player: entity, amount: number) => number, // Amount lost per floor
 	BuffEvents?: (player: entity) => KinkyDungeonEvent[],
+	BuffTags?: string[],
 }
 
 enum PosNeutNeg {

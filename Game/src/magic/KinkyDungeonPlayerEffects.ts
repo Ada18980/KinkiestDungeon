@@ -2903,7 +2903,8 @@ let KDSpecialStats: Record<string, SpecialStat> = {
 	Hypno_Doll: {
 		PerFloor: (_player, _amount) => {
 			return 100;
-		}
+		},
+		BuffTags: ["hypnostat"],
 	},
 	LatexIntegration: {
 		PerFloor: (_player, amount) => {
@@ -2947,6 +2948,9 @@ function KDAddSpecialStat(stat: string, entity: entity, amount: number, Msg: boo
 		});
 		if (KDSpecialStats[stat]?.BuffEvents) {
 			buff.events = KDSpecialStats[stat].BuffEvents(entity);
+		}
+		if (KDSpecialStats[stat]?.BuffTags) {
+			buff.tags.push(...KDSpecialStats[stat].BuffTags);
 		}
 	}
 

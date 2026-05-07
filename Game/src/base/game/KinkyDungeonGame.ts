@@ -2234,6 +2234,9 @@ function KDCheckCustomKeypress(): boolean {
 	for (let b of Object.entries(KDButtonsCache)) {
 		if (b[1].hotkeyPress == KinkyDungeonKeybindingCurrentKey) {
 			if (KDClickButton(b[0], "hotkey", KinkyDungeonKeybindingCurrentKey)) {
+				if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeySkip[0]) {
+					KinkyDungeonGameKey.keyPressed[9] = false;
+				}
 				return true;
 			}
 		}

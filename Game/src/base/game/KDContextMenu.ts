@@ -263,6 +263,7 @@ function KDGetGameContextActionsVanilla(
 			} else if (optionGrey.Truss) {
 				optionText.Truss = TextGet("KDContextMenu_TrussAttempt");
 				optionImages.Truss = "TrussA";
+				delete optionGrey.Truss;
 			}
 			optionActions.Truss = () => {
 				KDCancelAutoWait();

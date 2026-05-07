@@ -83,6 +83,8 @@ let KDBreathAnimTime = 1400;
 
 let KDFlipPlayer = false;
 
+let KDBaseButtonAlpha = 0.5;
+
 // PIXI experimental
 let pixiview: HTMLCanvasElement = null;
 let pixirenderer = null;
@@ -2334,8 +2336,18 @@ function KinkyDungeonDrawGame() {
 		KinkyDungeonKeybindingCurrentKey = '';
 	}
 
-	// @ts-ignore
 	if ((KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
+		if (!KinkyDungeonKeybindingCurrentKey) {
+			KinkyDungeonKeybindingCurrentKey = KinkyDungeonKeySkip[0];
+
+			KDCheckCustomKeypress();
+
+			KinkyDungeonKeybindingCurrentKey = "";
+		}
+	}
+
+	// @ts-ignore
+	if ((KinkyDungeonGameKey.keyPressed[9] && KinkyDungeonKeybindingCurrentKey != KinkyDungeonKeySkip[0]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
 
 		// @ts-ignore
 		if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) {
@@ -3847,7 +3859,7 @@ function DrawButtonVisTo (
 	if (!NoBorder || FillColor)
 		DrawBoxKDTo(Container, Left, Top, Width, Height,
 			options?.fillcolor != undefined ? options.fillcolor : (FillColor ? FillColor : (hover ? (KDTextGray2) : KDButtonColor)),
-			NoBorder, options?.alpha || 0.5, zIndex,
+			NoBorder, options?.alpha || KDBaseButtonAlpha, zIndex,
 			options?.bordercolor != undefined ? options.bordercolor : undefined
 		);
 	if (hover) {
@@ -4092,7 +4104,7 @@ function DrawBackNextButtonVis (
 	const RightSplit = Left + Width - ArrowWidth;
 
 	DrawBoxKD(Left, Top, Width, Height,
-		KDButtonColor, undefined, options?.alpha || 0.5
+		KDButtonColor, undefined, options?.alpha || KDBaseButtonAlpha
 	);
 
 	// Draw the button rectangle
@@ -5867,7 +5879,10 @@ type InvColorFilterData = {
 let KDCustomDrawInvColorFilter = {
 	"Bondage": (data: InvColorFilterData) => {
 		return (inv: any) => {
-			if (KDRowItemIsValid(KDRestraint(inv.item), KDNPCBindingSelectedSlot, KDNPCBindingSelectedRow, data.restraints))
+			let slot_temp = KDNPCBindingSelectedSlot ? KDNPCBindingSelectedSlot 
+				: (data?.entity ? KDGetNPCBindingSlotForItem(KDRestraint(inv.item), data.entity?.id)?.sgroup : null);
+			
+			if (slot_temp && KDRowItemIsValid(KDRestraint(inv.item), slot_temp, KDGetEncaseGroupRow(slot_temp.id), data.restraints))
 				return data.force ? KDTextGray1 : KDCanApplyBondage(data.entity, data.player,
 					inv ? (
 						KDRestraint(inv)?.quickBindCondition ?

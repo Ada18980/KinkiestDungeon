@@ -3,6 +3,9 @@ let KDNPCBindingSelectedRow: NPCBindingGroup = null;
 let KDSelectedGenericRestraintType = "";
 let KDSelectedGenericBindItem = "";
 
+let UpdateRestraintBindingData = true;
+let KDNPCRestraintBindingData: Record<string, string[]> = {};
+
 interface NPCRestraint extends Named {
 	name: string,
 	inventoryVariant?: string,
@@ -46,6 +49,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 	let paddingX = 50;
 	let paddingY = 67;
 
+	let refresh = UpdateRestraintBindingData;
+
 	for (let row of rows) {
 		let II = 0;
 		let tooltip = "";
@@ -65,6 +70,24 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 			}
 			let wid = II == 0 ? 56 : 42;
+			if (refresh) {
+				let filter = LooseRestraint;
+				let slot = sgroup;
+				let groups = slot.allowedGroups;
+				KDNPCRestraintBindingData[sgroup.id] = [];
+				let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
+				undefined, undefined, true
+				);
+
+				filteredInventory = filteredInventory.filter((inv) => {
+					return groups.includes(KDRestraint(inv.item)?.Group)
+						&& slot.allowedTags.some((tag) => {return KDRestraint(inv.item)?.shrine.includes(tag);});
+				});
+				for (let item of filteredInventory) {
+					KDNPCRestraintBindingData[sgroup.id].push(item.name);
+				}
+			}
+			let hasRestraints = KDNPCRestraintBindingData[sgroup.id]?.length > 0;
 			if ((!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk)) &&
 				(!sgroup.noPerk || !KinkyDungeonStatsChoice.get(sgroup.noPerk)) && DrawButtonKDEx(
 				"npc_rest_butsg_"+ sgroup.id,
@@ -91,8 +114,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				wid, wid, "", KDBaseWhite,
 				preview, undefined, undefined,
 				KDNPCBindingSelectedSlot?.id != sgroup.id,
-				KDButtonColor, undefined, undefined, {
+				hasRestraints ? KDButtonColor : KDBaseRed, undefined, undefined, {
 					scaleImage: true,
+					alpha: hasRestraints ? KDBaseButtonAlpha : 0.25
 				}
 			) || KDNPCBindingSelectedSlot?.id == sgroup.id) tooltip = sgroup.id;
 
@@ -158,12 +182,30 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 	let currentBottomTab = "";
 
-	if (KDNPCBindingSelectedSlot) {
-		let currentItem = restraints[KDNPCBindingSelectedSlot.id];
+	
+
+	if (KDNPCBindingSelectedSlot || !KDNPCBindingSelectedSlot) { // ow
+		if (KDNPCBindingSelectedSlot) {
+			// hidden button with exit hotkey
+			DrawButtonKDEx("unsetKDNPCBindingSelectedSlot", () => {
+				KDNPCBindingSelectedSlot = null;
+				return true;
+			}, !!KDNPCBindingSelectedSlot, 2*PIXIWidth, 920, 250, 64,
+			"",
+			KDBaseWhite, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+				hotkeyPress: KinkyDungeonKeySkip[0],
+			}
+			);
+		}
+		
+
+
 		let slot = KDNPCBindingSelectedSlot;
-		let groups = slot.allowedGroups;
+		let currentItem = slot ? restraints[KDNPCBindingSelectedSlot.id] : null;
 		let filter = LooseRestraint;
 		let ss: {selected: KDFilteredInventoryItem, tooltipitem: KDFilteredInventoryItem} = null;
+		let groups = slot?.allowedGroups;
 
 		if (KDNPCBindingPalette) {
 			currentBottomTab = "Palette";
@@ -227,7 +269,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		} else if (KDNPCBindingGeneric) {
 			currentBottomTab = "Generic";
-			let showAll = KDShowAllGenericCategories;
+			let showAll = !slot || KDShowAllGenericCategories;
 			KDDrawGenericCharacterRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250,
 			currentItem, slot, npcID, (currentItem, restraint, slt, item, count, itemtype) => {
 				if (currentItem) {
@@ -264,23 +306,28 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 										TextGet("KDBondageCondition_" + condition),
 										KDBaseRed, 1, true);
 								} else {
-									KDSendInput("addNPCRestraint", {
-										slot: slot.id,
-										id: KinkyDungeonGetItemID(),
-										restraint: restraint.name,
-										restraintid: -1,
-										lock: "",
-										events: itemtype.events,
-										powerbonus: itemtype.powerbonus,
-										inventoryVariant: itemtype.inventoryVariant,
-										npc: npcID,
-										faction: KDDefaultNPCBindPalette,
-										time: KDLookupID(npcID) ? 1 : 0,
-										player: KDPlayer().id,
-									});
-									if (item) {
-										item.quantity -= count;
+									let slot_temp = slot || KDGetNPCBindingSlotForItem(restraint, npcID).sgroup;
+									if (slot_temp) {
+										KDSendInput("addNPCRestraint", {
+											slot: slot_temp,
+											id: KinkyDungeonGetItemID(),
+											restraint: restraint.name,
+											restraintid: -1,
+											lock: "",
+											events: itemtype.events,
+											powerbonus: itemtype.powerbonus,
+											inventoryVariant: itemtype.inventoryVariant,
+											npc: npcID,
+											faction: KDDefaultNPCBindPalette,
+											time: KDLookupID(npcID) ? 1 : 0,
+											player: KDPlayer().id,
+										});
+										if (item) {
+											item.quantity -= count;
+										}
 									}
+									
+									
 								}
 							} else {
 								let condition = KDLookupID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
@@ -304,16 +351,20 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				undefined, undefined, true
 			);
 
-			filteredInventory = filteredInventory.filter((inv) => {
-				return groups.includes(KDRestraint(inv.item)?.Group)
-					&& slot.allowedTags.some((tag) => {return KDRestraint(inv.item)?.shrine.includes(tag);});
-			})
+			if (slot)
+				filteredInventory = filteredInventory.filter((inv) => {
+					return groups.includes(KDRestraint(inv.item)?.Group)
+						&& slot.allowedTags.some((tag) => {return KDRestraint(inv.item)?.shrine.includes(tag);});
+				});
+			else filteredInventory = filteredInventory.filter((inv) => {
+					return !KDRestraint(inv.item)?.shrine?.includes("Raw");
+				});
 
 
 
 			ss = KDDrawInventoryContainer(-165, 100, filteredInventory, filter, filter,
 				(inv: KDFilteredInventoryItem, x, y, w, h) => {
-				if (restraints[slot.id]?.name == inv.item.name) {
+				if (slot && restraints[slot.id]?.name == inv.item.name) {
 					KDSendInput("addNPCRestraint", {
 						slot: slot.id,
 						id: -1,
@@ -346,17 +397,20 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 								TextGet("KDBondageCondition_" + condition),
 								KDBaseRed, 1, true);
 						} else {
-							KDSendInput("addNPCRestraint", {
-								slot: slot.id,
-								id: inv.item.id,
-								restraint: inv.item.name,
-								restraintid: inv.item.id,
-								lock: "",
-								npc: npcID,
-								faction: KDDefaultNPCBindPalette || inv.item.faction,
-								time: KDLookupID(npcID) ? 1 : 0,
-								player: KDPlayer().id,
-							});
+							let slot_temp = slot || KDGetNPCBindingSlotForItem(restraint, npcID).sgroup;
+							if (slot_temp) {
+								KDSendInput("addNPCRestraint", {
+									slot: slot_temp.id,
+									id: inv.item.id,
+									restraint: inv.item.name,
+									restraintid: inv.item.id,
+									lock: "",
+									npc: npcID,
+									faction: KDDefaultNPCBindPalette || inv.item.faction,
+									time: KDLookupID(npcID) ? 1 : 0,
+									player: KDPlayer().id,
+								});
+							}
 						}
 					} else {
 						let condition = KDLookupID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
@@ -382,7 +436,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				force: !KDLookupID(npcID),
 			})
 			: (inv) => {
-			if (KDRowItemIsValid(KDRestraint(inv.item), KDNPCBindingSelectedSlot, KDNPCBindingSelectedRow, restraints))
+			let slot_temp = KDNPCBindingSelectedSlot ? KDNPCBindingSelectedSlot 
+				: KDGetNPCBindingSlotForItem(KDRestraint(inv.item), npcID)?.sgroup;
+			if (slot_temp && KDRowItemIsValid(KDRestraint(inv.item), slot_temp, KDGetEncaseGroupRow(slot_temp.id), restraints))
 				return KDTextGray1;
 			return "#e64539";
 		});
@@ -410,10 +466,10 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			KDNPCBindingGeneric = false;
 			return true;
 		}, true, 1400, 920, 250, 64,
-		TextGet(currentBottomTab ? "KDSetRestraintPaletteReturn" : "KDSetRestraintPalette"),
+		TextGet(currentBottomTab ? (KDNPCBindingPalette ? "KDSetRestraintPaletteReturn" : "KDSetRestraintPalette") : "KDSetRestraintPalette"),
 		KDBaseWhite
 		);
-		if (!currentBottomTab)
+		if (!currentBottomTab || KDNPCBindingGeneric)
 			DrawButtonKDEx("genericrestraint", () => {
 				KDNPCBindingGeneric = !KDNPCBindingGeneric;
 				KDNPCBindingPalette = false;
@@ -451,6 +507,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				}
 		}
 	}
+
+	if (refresh) UpdateRestraintBindingData = false;
 }
 
 let KDNPCBindingPalette = false;
@@ -544,6 +602,7 @@ function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint, No
 
 function KDSetBindingSlot(sgroup: NPCBindingSubgroup, row: NPCBindingGroup): boolean {
 	if (sgroup != KDNPCBindingSelectedSlot) {
+		UpdateRestraintBindingData = true;
 		KDNPCBindingSelectedSlot = sgroup;
 		KDNPCBindingSelectedRow = row;
 		return true;
@@ -658,6 +717,7 @@ function KDRowItemIsValid(restraint: restraint,
 
 	return false;
 }
+
 
 /** Gets the row of the specified id */
 function KDGetEncaseGroupRow(id: string): NPCBindingGroup {
@@ -1534,15 +1594,16 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 
 
 	if (!KDNPCBindingSelectedSlot) {
-		DrawTextFitKD(
+		/*DrawTextFitKD(
 			TextGet("KDSelectABindingSlot"),
 			x + secondXX,
 			y + 200,
 			2 * secondXX,
 			KDBaseWhite, KDTextGray0
-		);
+		);*/
 	} else if (selectedcat) {
-		let quantity = KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw)?.quantity;
+		// TODO make this work even without selected subgroup
+		let quantity = Kin kyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw)?.quantity;
 		index = 0;
 		let items = selectedcat.items.filter(
 			(item) => {

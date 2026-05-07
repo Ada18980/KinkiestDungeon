@@ -343,8 +343,10 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 							KDCurrentRestrainingTarget = en.id;
 							KinkyDungeonDrawState = "Bondage";
-							// Select wrists
-							KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
+							// Select non wrists
+							UpdateRestraintBindingData = true;
+							KDNPCBindingSelectedSlot = null;
+							//KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
 						} else {
 							// get the binding slot this item fits in
 							let slots = KDGetNPCBindingSlotForItem(r, en.id);
@@ -353,6 +355,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 								if (rs && rs[slots.sgroup.id] != undefined) {
 									// If its filled we indicate to the player that its full
 									KDNPCBindingGeneric = false;
+									UpdateRestraintBindingData = true;
 									KDNPCBindingSelectedRow = slots.row;
 									KDNPCBindingSelectedSlot = slots.sgroup;
 									KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
@@ -368,6 +371,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 										KinkyDungeonDrawState = "Bondage";
 										// Hover the new item
 										KDNPCBindingGeneric = false;
+										UpdateRestraintBindingData = true;
 										KDNPCBindingSelectedRow = slots.row;
 										KDNPCBindingSelectedSlot = slots.sgroup;
 										KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
@@ -417,6 +421,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 								KDNPCBindingGeneric = false;
 								slots = KDGetNPCBindingSlotForItem(r, en.id, true);
 								if (slots) {
+									UpdateRestraintBindingData = true;
 									KDNPCBindingSelectedRow = slots.row;
 									KDNPCBindingSelectedSlot = slots.sgroup;
 								}
@@ -430,8 +435,12 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						KDCurrentRestrainingTarget = en.id;
 						KinkyDungeonDrawState = "Bondage";
 
+						// Select non wrists
+						UpdateRestraintBindingData = true;
+						KDNPCBindingSelectedSlot = null;
+
 						// Select wrists
-						KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
+						//KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
 
 						KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), KDBaseRed, 1, true);
 						return "Fail";

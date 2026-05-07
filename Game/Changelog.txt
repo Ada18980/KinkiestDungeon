@@ -96,6 +96,7 @@ Must do
 - Spell aim now warns the player if a projectile will hit a wall
 - Improved accuracy of aim lines for spell targeting
 - Aiming spells around tight corners should now be more practical
+- When binding NPCs, reds-out buttons that you don't have restraints for in your inventory
 
 Balance: 
 - Phase Dance now lasts 3 turns instead of 4 and can miscast

@@ -145,6 +145,7 @@ function KDDrawCollectionTabOptions(x: number, y: number) {
 	}
 }
 
+
 function KinkyDungeonDrawCollection(xOffset: number = -125) {
 
 	let x = 1225 + xOffset;
@@ -790,6 +791,11 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 }
 
+
+let KDLastRestrainingTarget: number = 0;
+let KDLastRestrainingTargetTime: number = 0;
+let KDLastRestrainingTargetTimeDelay = 2000;
+
 /**
  * @param id
  * @param x
@@ -797,6 +803,12 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
  */
 function KDDrawCollectionRestrain(id: number, x: number, y: number) {
 	if (!KDGameData.CollectionSorted) KDSortCollection();
+
+	if (id != KDLastRestrainingTarget || CommonTime() > (KDLastRestrainingTargetTime + KDLastRestrainingTargetTimeDelay)) {
+		KDLastRestrainingTargetTime = CommonTime();
+		KDLastRestrainingTarget = id;
+		UpdateRestraintBindingData = true;
+	}
 
 	KDDrawCollectionRestrainMain(id, x, y);
 	if (KDGetGlobalEntity(id) || KDGameData.Collection[id + ""])
