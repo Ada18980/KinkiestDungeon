@@ -47098,7 +47098,7 @@ BOSS 房已清空！
 
 - Phase Dance
 相位之舞
-- For 4 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal.
+- For 3 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal. Can miscast unlike many self-targeted spells.
 在 4 回合内，你的移动不会使时间流动。攻击或施法仍算作一回合，时间也会正常流动。
 - You are F A S T
 你 超 越 了 光 速
@@ -53144,3 +53144,5 @@ ${Playername}使用了安全词，被传送回关卡起点。
 
 # - You feel just like a pretty, still doll... (+AMNT Stillness)
 # - You regain a bit of your sense of self. (-AMNT Stillness)
+
+# - The spell is already active.
