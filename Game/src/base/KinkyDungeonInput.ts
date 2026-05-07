@@ -1555,6 +1555,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 
 		if (packed) KDPackEnemy(enemy);
+		if (!res) return "Fail";
 		return "";
 	},
 };

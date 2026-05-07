@@ -2987,7 +2987,7 @@ function KinkyDungeonSetMoveDirection() {
 
 	let point = KDGetMoveDirection();
 
-	KDSendInput("setMoveDirection", {dir: KinkyDungeonGetDirection(
+	KDSendInput("setMoveDirection", {dir: KDGetDirGeometric(
 		point.x - KinkyDungeonPlayerEntity.x,
 		point.y - KinkyDungeonPlayerEntity.y)}, true, true);
 
@@ -5879,10 +5879,25 @@ type InvColorFilterData = {
 let KDCustomDrawInvColorFilter = {
 	"Bondage": (data: InvColorFilterData) => {
 		return (inv: any) => {
-			let slot_temp = KDNPCBindingSelectedSlot ? KDNPCBindingSelectedSlot 
-				: (data?.entity ? KDGetNPCBindingSlotForItem(KDRestraint(inv.item), data.entity?.id)?.sgroup : null);
+			let slot_temp = KDNPCBindingSelectedSlot;
+			let row_temp = KDNPCBindingSelectedRow;
+
+			if (!slot_temp) {
+				let container = (data?.entity ? KDGetNPCBindingSlotForItem(KDRestraint(inv.item), data.entity?.id) : null);
+				if (container) {
+					slot_temp = container.sgroup;
+					row_temp = container.row;
+				}
+			}
+
+			if (slot_temp && data?.entity && KDGetNPCRestraints(data.entity.id)
+				&& KDGetNPCRestraints(data.entity.id)[slot_temp.id]?.name == KDRestraint(inv)?.name
+				&& !KDCanOverwriteNPCRestraint(inv, KDGetNPCRestraints(data.entity.id)[slot_temp.id])) {
 			
-			if (slot_temp && KDRowItemIsValid(KDRestraint(inv.item), slot_temp, KDGetEncaseGroupRow(slot_temp.id), data.restraints))
+				return "#e64539";
+			}
+			
+			if (slot_temp && KDRowItemIsValid(KDRestraint(inv.item), slot_temp, row_temp, data.restraints))
 				return data.force ? KDTextGray1 : KDCanApplyBondage(data.entity, data.player,
 					inv ? (
 						KDRestraint(inv)?.quickBindCondition ?

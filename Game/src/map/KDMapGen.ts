@@ -105,8 +105,14 @@ function KinkyDungeonCreateMap (
 	}
 	let location = KDWorldMap[(constantX ? 0 : worldLocation.x) + "," + worldLocation.y];
 
+	let js = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
+	if (js.HiddenRooms) delete js.HiddenRooms[RoomType];
+
 	if (useExisting && location.data[KDGameData.RoomType]) {
 		let oldMapData = KDLoadMapFromWorld(worldLocation.x, worldLocation.y, KDGameData.RoomType, direction, constantX);
+
+		
+
 
 		if (location.jx == undefined) location.jx = KDGameData.JourneyX;
 		if (location.jy == undefined) location.jy = KDGameData.JourneyY;
@@ -144,6 +150,8 @@ function KinkyDungeonCreateMap (
 	KDUpdateEnemyCache = true;
 	// Else make a new one
 	let oldMapData = KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
+
+
 
 	let maxIter = 100;
 	for (let iterations = 0; iterations <= maxIter; iterations++) {
@@ -591,6 +599,7 @@ function KinkyDungeonCreateMap (
 			for (let sr of sideRooms) {
 				if (KDSideRooms[sr]?.beforeWorldGenScript) KDSideRooms[sr].beforeWorldGenScript(KDGetCurrentLocation());
 			}
+			if (journeySlot.HiddenRooms) delete journeySlot.HiddenRooms[RoomType];
 		}
 
 

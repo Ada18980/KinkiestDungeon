@@ -290,6 +290,21 @@ function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: Mo
 	}
 	return null;
 }
+function GetModelWithDifferentLayers(NewModel: string, BaseModel: string, Layers: ModelLayer[], Parent?: string, TopLevel?: boolean, ExtraProps?: object): Model {
+	if (ModelDefs[BaseModel]) {
+		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
+		model.Name = NewModel;
+		if (Parent != undefined) model.Parent = Parent;
+		if (TopLevel != undefined) model.TopLevel = TopLevel;
+		model.Layers = {};
+		for (let l of Layers) {
+			model.Layers[l.Name] = JSON.parse(JSON.stringify(l));
+		}
+		if (ExtraProps) Object.assign(model, ExtraProps);
+		return model;
+	}
+	return null;
+}
 
 function GetModelRestraintVersion(BaseModel: string, Parent: boolean,
 	extraAddPoses?: string[],

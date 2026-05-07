@@ -324,7 +324,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 								KDRestraint(KinkyDungeonTargetingSpellItem),
 								KinkyDungeonTargetingSpellItem)) :
 							undefined
-						) : undefined);
+						) : undefined, KinkyDungeonTargetingSpellItem ? KDRestraint(KinkyDungeonTargetingSpellItem) : undefined, false);
 					if (!canApply) {
 						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"
 							+ (KinkyDungeonTargetingSpellItem ? (KDRestraint(KinkyDungeonTargetingSpellItem).quickBindCondition || "") : "")), KDBaseRed, 1, true);

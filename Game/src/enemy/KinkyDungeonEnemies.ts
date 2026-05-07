@@ -10964,15 +10964,28 @@ function KDPlayPossible(enemy: entity): boolean {
  * @param target
  * @param player
  */
-function KDCanApplyBondage(target: entity, player: entity, extraCondition: (t: entity, p: entity) => boolean = undefined): boolean {
-	if (player?.player) {
-		return (extraCondition ? extraCondition(target, player) : false)
+function KDCanApplyBondage(target: entity, player: entity, extraCondition: (t: entity, p: entity) => boolean = undefined, r?: restraint, allowSame: boolean = false): boolean {
+	if (player?.player && !(
+		(extraCondition ? extraCondition(target, player) : false)
 			|| (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow")
 				> KDEntityBuffedStat(target, "TimeSlow"))
 			|| (KinkyDungeonIsDisabled(target))
-			|| KDWillingBondage(target, player);
+			|| KDWillingBondage(target, player)
+	)) {
+		return false;
 	}
-	return KinkyDungeonIsDisabled(target);
+	
+	if (r && target && !allowSame && KDGetNPCRestraints(target.id)) {
+			let slot_temp = KDGetNPCBindingSlotForItem(r, target.id)?.sgroup;
+			if (slot_temp && KDGetNPCRestraints(target.id)[slot_temp.id]?.name == r.name
+				&& !KDCanOverwriteNPCRestraint({
+					name: r.name,
+					id: -1,
+					lock: undefined,
+				}, KDGetNPCRestraints(target.id)[slot_temp.id])) return false;
+		}
+	
+	return player?.player ? true : KinkyDungeonIsDisabled(target);
 }
 
 /**

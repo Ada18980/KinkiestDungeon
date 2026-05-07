@@ -412,13 +412,16 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 				) mod = -1;
 				let highlight = (slot.y <= KDGameData.JourneyY + mod)
 					|| (KDGameData.JourneyTarget && KDGameData.JourneyMap[c.x + ',' + c.y] == KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y]);
+				let flash = (slot.y <= KDGameData.JourneyY + mod) || (slot.y == KDGameData.JourneyY && KDGameData.JourneyTarget && KDGameData.JourneyMap[c.x + ',' + c.y] == KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y])
+					|| CommonTime() % 2000 > 1000
 				KDDrawJourneyLine(
 					xOffset + ScaleX*(slot.x - X),
 					yOffset + ScaleY*(slot.y - Y) + spriteSize/4,
 					xOffset + ScaleX*(c.x - X),
 					yOffset + ScaleY*(c.y - Y) - spriteSize/4,
-					(highlight) ? 0xfffafa : 0x888888,
-					highlight ? KDJourneyGraphicsUpper : undefined
+					(highlight && flash) ? 0xfffafa : 0x454545,
+					highlight ? KDJourneyGraphicsUpper : undefined,
+					highlight ? 2 : 1
 				)
 			}
 	}
@@ -604,8 +607,8 @@ function KDInitJourneyMap(Level = 0) {
 
 }
 
-function KDDrawJourneyLine(x1: number, y1: number, x2: number, y2: number, color: number, Canvas = KDJourneyGraphics) {
-	Canvas.lineStyle(2, color, 1);
+function KDDrawJourneyLine(x1: number, y1: number, x2: number, y2: number, color: number, Canvas = KDJourneyGraphics, width?: number) {
+	Canvas.lineStyle(width || 2, color, 1);
 	Canvas.moveTo(x1, y1);
 	Canvas.lineTo(x2, y2);
 	return;

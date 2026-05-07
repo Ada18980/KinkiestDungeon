@@ -405,7 +405,7 @@ AddModel({
 	])
 });
 
-AddModel(GetModelWithExtraLayers("RopeAnkles2", "RopeAnkles1", [
+AddModel(GetModelWithDifferentLayers("RopeAnkles2", "RopeAnkles1", [
 	{ Name: "Calf2", Layer: "Ankles2", Pri: 1,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
@@ -420,7 +420,7 @@ AddModel(GetModelWithExtraLayers("RopeAnkles2", "RopeAnkles1", [
 ], "RopeHarness", false));
 
 
-AddModel(GetModelWithExtraLayers("RopeAnkles3", "RopeAnkles2", [
+AddModel(GetModelWithDifferentLayers("RopeAnkles3", "RopeAnkles2", [
 	{ Name: "Calf3", Layer: "Ankles3", Pri: 1,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
@@ -466,7 +466,7 @@ AddModel({
 	])
 });
 
-AddModel(GetModelWithExtraLayers("RopeLegs2", "RopeLegs1", [
+AddModel(GetModelWithDifferentLayers("RopeLegs2", "RopeLegs1", [
 	{ Name: "Thigh2", Layer: "Thighs2", Pri: 0,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
@@ -488,7 +488,7 @@ AddModel(GetModelWithExtraLayers("RopeLegs2", "RopeLegs1", [
 ], "RopeHarness", false));
 
 
-AddModel(GetModelWithExtraLayers("RopeLegs3", "RopeLegs2", [
+AddModel(GetModelWithDifferentLayers("RopeLegs3", "RopeLegs2", [
 	{ Name: "Thigh3", Layer: "Thighs3", Pri: 1,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),

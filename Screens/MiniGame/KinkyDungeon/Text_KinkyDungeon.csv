@@ -32053,6 +32053,7 @@ rMummyElevator,"(As you approach the statue, you hear a crumbling sound)|(The st
 NameMummyElevator,Mysterious Statue
 
 KDSelectABindingSlot,Select a Binding Slot
+KDSelectABindingMat,Select Binding Material
 
 KDCost,"Cost: "
 
@@ -32069,6 +32070,7 @@ KDBondageCondition_MissingTag1,Requires additional items to equip
 KDBondageCondition_MissingTag2,Requires an additional item to equip
 KDBondageCondition_BlockedTag,Incompatible with another item
 KDBondageCondition_NoTag,Incompatible with existing items
+KDBondageCondition_Same,Already tied with that
 
 KDConjuredRestraintVanish,The conjured RSTN vanishes as you remove it.
 
