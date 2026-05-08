@@ -50723,6 +50723,7 @@ N/A
 
 - Select a Binding Slot
 选择一个拘束插槽
+# - Select Binding Material
 
 - Cost: 
 花费：
@@ -50752,6 +50753,7 @@ N/A
 与另一件物品不兼容
 - Incompatible with existing items
 与已存在的物品不兼容
+# - Already tied with that
 
 - The conjured RSTN vanishes as you remove it.
 变出的 RSTN 会在你移除它时消失。
@@ -53126,6 +53128,11 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - Pretty doll.
 # - Lovely doll.
 # - Quiet doll.
+# - Cute doll.
+# - Polite doll.
+# - Beautiful doll.
+# - Graceful doll.
+# - Elegant doll.
 
 # - Be still...
 # - A quiet doll...
