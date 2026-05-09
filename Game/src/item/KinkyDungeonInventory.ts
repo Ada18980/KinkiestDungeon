@@ -2042,7 +2042,13 @@ function KinkyDungeonDrawInventory() {
 			let II = 0;
 			for (let action of inventoryActions) {
 				if (!KDInventoryAction[action]?.show || KDInventoryAction[action]?.show(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)) {
+					let already = false;
 					if (KDInventoryAction[action]) {
+						if (KDInventoryAction[action].doubleSize && II + 1 > KDInventoryActionPerRow) {
+							II = 0;
+							YY += KDInventoryActionSpacing;
+						}
+						
 						if (KDInventoryAction[action]?.label
 							&& (!KDInventoryAction[action].show || KDInventoryAction[action].show(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item))
 							&& (!KDInventoryAction[action].valid || KDInventoryAction[action].valid(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item))
@@ -2074,7 +2080,7 @@ function KinkyDungeonDrawInventory() {
 							centered: !KDInventoryAction[action]?.doubleSize,
 							hotkey: KDInventoryAction[action].hotkey ? KDInventoryAction[action].hotkey() : undefined,
 							hotkeyPress: KDInventoryAction[action].hotkeyPress ? KDInventoryAction[action].hotkeyPress() : undefined,
-							
+							wrap: true,
 
 						},
 						)) {
@@ -2087,7 +2093,7 @@ function KinkyDungeonDrawInventory() {
 
 					II++;
 					if (KDInventoryAction[action].doubleSize) II++;
-					if (II > KDInventoryActionPerRow) {
+					if (!already && II > KDInventoryActionPerRow) {
 						II = 0;
 						YY += KDInventoryActionSpacing;
 					}

@@ -3389,7 +3389,7 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 				padding: 5,
 				wordWrap: Params.wordwrap,
 				wordWrapWidth: Params.Width,
-				breakWords: Params.wordwrap && CharacterCheckerHasCJK(Params.Text) != null
+				breakWords: false,//Params.wordwrap && CharacterCheckerHasCJK(Params.Text) != null
 			}
 		);
 
@@ -3737,6 +3737,8 @@ type ButtonOptions = {
 	hotkey?:      string;
 	/// hotkey
 	hotkeyPress?: string;
+	/** wraps the text if its too big */
+	wrap?: boolean,
 	/// filters
 	filters?:     any[];
 	font?:        string;
@@ -3923,14 +3925,17 @@ function DrawButtonVisTo (
 			Top + Math.floor(Height / 2), (options?.centerText) ? Width : (Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04)),
 			Color,
 			(options && options.noTextBG) ? "none" : undefined,
-			FontSize, undefined, zIndex + 0.009, options?.textalpha, undefined,
-			options?.unique, KDButtonFont);
+			FontSize, undefined, zIndex + 0.009, options?.textalpha, 
+			undefined,
+			options?.unique, KDButtonFont, options?.wrap);
+		
+		
 
 	if (options?.hotkey) {
 		let size = (FontSize*0.6) || 14;
 		DrawTextFitKDTo(Container || kdcanvas, options?.hotkey, Left + Width - 4,
 			Top + (size / 2) + 2, Width*0.7,
-			'#ffffff',
+			KDBaseVLightGrey,
 			(options && options.noTextBG) ? "none" : undefined,
 			size, "right", zIndex + 0.02, options?.textalpha, undefined, undefined, KDButtonFont);
 	}

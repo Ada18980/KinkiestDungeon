@@ -599,6 +599,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 
 	"RemoveCurseOrHex": {
+		doubleSize: true,
 		icon: (_player, _item) => {
 			return "InventoryAction/Macaron";
 		},
@@ -690,6 +691,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		},
 	},
 	"RemoveMagicLock": {
+		doubleSize: true,
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeyEnter[0]);},
 		hotkeyPress: () => {return KinkyDungeonKeyEnter[0];},
 		icon: (_player, _item) => {
@@ -1062,6 +1064,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 
 	"Recycle": {
+		doubleSize: true,
 		alsoShow: ["RecycleBulk", "RecycleExcess"],
 		icon: (_player, _item) => {
 			return "InventoryAction/Recycle";
@@ -1272,6 +1275,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 
 	"Bondage": {
+		doubleSize: true,
 		icon: (_player, _item) => {
 			return "InventoryAction/Bondage";
 		},

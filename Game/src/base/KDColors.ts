@@ -56,6 +56,8 @@ let KDBaseWhite = "#fffafa" // snow
 let KDBaseBlack = "#010203"; // rich black
 // #000000
 let KDBaseLightGrey = "#80949a";
+// #000000
+let KDBaseVLightGrey = `rgb(180, 185, 190)`;
 
 let KDColorList = {
     KDBaseLightGrey: KDBaseLightGrey,

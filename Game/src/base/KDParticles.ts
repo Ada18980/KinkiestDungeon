@@ -136,7 +136,12 @@ function KDUpdateParticles(delta: number) {
 		sprite.anchor.set(0.5);
 
 		if ((info.rotation || info.rotation_spread) && !sprite.rotation) sprite.rotation = (info.rotation || 0) + (info.rotation_spread || 0) * (2 * KDRandom() - 1);
-
+		if (info.time < 0) {
+			let dd = delta;
+			delta = Math.max(0, delta + info.time);
+			info.time += dd;
+		} else info.time += delta;
+		
 		if (info.vy) {sprite.position.y += info.vy * delta;}
 		if (info.vx) {sprite.position.x += info.vx * delta;}
 
@@ -155,7 +160,6 @@ function KDUpdateParticles(delta: number) {
 			info.scale += delta * info.scale_delta;
 		}
 
-		info.time += delta;
 		if (!info.lifetime || info.time > info.lifetime) {
 			KDRemoveParticle(id);
 		}
@@ -176,9 +180,14 @@ function KDUpdateParticles(delta: number) {
 			sprite.position.y -= (KinkyDungeonCamYVis - emitter.camY) * KinkyDungeonGridSizeDisplay;
 			emitter.camY = KinkyDungeonCamYVis;
 		}
-
-
+		
 		if (emitter.rotation && !sprite.rotation) sprite.rotation = emitter.rotation + (emitter.rotation_spread || 0) * (2 * KDRandom() - 1);
+
+		if (emitter.time < 0) {
+			let dd = delta;
+			delta = Math.max(0, delta + emitter.time);
+			emitter.time += dd;
+		} else emitter.time += delta;
 
 		if (emitter.vy) {sprite.position.y += emitter.vy * delta;}
 		if (emitter.vx) {sprite.position.x += emitter.vx * delta;}
@@ -198,7 +207,6 @@ function KDUpdateParticles(delta: number) {
 			emitter.scale += delta * emitter.scale_delta;
 		}
 
-		emitter.time += delta;
 		emitter.cd -= delta;
 
 		if (emitter.cd < 0) {
@@ -261,7 +269,7 @@ function KDDrawVibeParticles(density: number) {
 }
 
 function KDAddShockwave(x: number, y: number, size: number, spr: string = `Particles/Shockwave.png`, attachToCamera: boolean = true) {
-	let lifetime = 700 + size;
+	let lifetime = 500 + size;
 	let data = {
 		time: 0,
 		lifetime: lifetime,

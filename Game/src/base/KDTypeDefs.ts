@@ -3737,6 +3737,7 @@ type KDParticleData = {
 
 	rotation?: number,
 	rotation_spread?: number,
+	//delay?: number,
 
 	vy?: number,
 	vy_spread?: number,

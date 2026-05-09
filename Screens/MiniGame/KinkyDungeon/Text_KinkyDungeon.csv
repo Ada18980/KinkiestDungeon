@@ -28696,7 +28696,7 @@ KDUsing,"Using ${Item}"
 KDAiming,"Aiming ${Item}"
 KDClimbUpTrapped,"The door suddenly locks behind you!"
 
-KDInventoryActionBondage,"Apply To Target"
+KDInventoryActionBondage,"Bind Target"
 KDInventoryActionRemoveCurseOrHex,"Purify"
 
 
@@ -29335,7 +29335,7 @@ KinkyDungeonSpellDescriptionAllyAggressive,All selected units switch to Aggressi
 KinkyDungeonSpellsPageCommand,"Command"
 KinkyDungeonSpellsPageClass,"Unique"
 
-KDInventoryActionRemoveMagicLock,Unlock using magic
+KDInventoryActionRemoveMagicLock,Magic Unlock
 
 KDQuickLoadout_Weapon,Include Weapons
 KDQuickLoadout_Merge,Merge Armor

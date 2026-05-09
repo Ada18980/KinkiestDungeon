@@ -640,7 +640,7 @@ function KinkyDungeonIsLockable(restraint: restraint): boolean {
  * @param [pick]
  */
 function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Link: boolean = false,
-	pick: boolean = false, normalUnlock?: boolean, remover?: entity): void {
+	pick: boolean = false, normalUnlock?: boolean, remover?: entity, particleDelay?: number): void {
 	KDUpdateItemEventCache = true;
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
@@ -649,6 +649,8 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 				item.lock = lock;
 
 			item.pickProgress = 0;
+			
+			KDDoLockParticlePlayer(lock, KDRestraint(item), particleDelay);
 		}
 	} else {
 		let cancel = false;
@@ -659,6 +661,7 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 				remover: remover != undefined ? remover : KDPlayer()
 			});
 		if (!cancel) {
+			if (item.lock) KDDoLockParticlePlayer("Unlock", KDRestraint(item), particleDelay);
 			item.lock = lock;
 			if (!NoEvent) {
 				if (item.events) {
@@ -670,6 +673,7 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 				}
 				KinkyDungeonSendEvent("postUnlock", {item: item});
 			}
+			
 		}
 
 
@@ -4384,7 +4388,13 @@ function KinkyDungeonGenerateRestraintTrap(): string {
 
 function KDGetLockVisual(item: item): string {
 	//if (KinkyDungeonBlindLevel > 0) return `Locks/Blind.png`;
-	return `Locks/${item.lock}.png`;
+	return KDGetLockImage(item.lock);
+}
+function KDGetLockImage(lock: string): string {
+	return `Locks/${lock}.png`;
+}
+function KDGetLockImageRoot(lock: string): string {
+	return KinkyDungeonRootDirectory + `Locks/${lock}.png`;
 }
 
 /**
@@ -4820,8 +4830,10 @@ function KDLinkUnder (
 
 		KDUpdateItemEventCache = true;
 		let lk = linkUnder.dynamicLink;
-		if (!Curse && (Lock)) KinkyDungeonLock(linkUnder.dynamicLink, Lock);
-		else if (restraint.DefaultLock) KinkyDungeonLock(linkUnder.dynamicLink, restraint.DefaultLock);
+		if (!Curse && (Lock)) KinkyDungeonLock(linkUnder.dynamicLink, Lock, 
+			undefined, undefined, undefined, undefined, undefined, KDRestraintParticleLifetime * 0.75);
+		else if (restraint.DefaultLock) KinkyDungeonLock(linkUnder.dynamicLink, restraint.DefaultLock, 
+			undefined, undefined, undefined, undefined, undefined, KDRestraintParticleLifetime * 0.75);
 		if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
 		if (!safeLink) {
 			// Remove the original by iterating down and identifying one we can delete
@@ -5261,6 +5273,7 @@ function KinkyDungeonAddRestraint (
 			let ret = KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, false, events, faction, true, Curse, securityEnemy, true, inventoryAs, data, powerBonus);
 			if (ret) {
 				KDUpdateWaitTime(200);
+				KDDoRestraintParticlePlayer(restraint);
 				return ret;
 			}
 		}
@@ -5380,11 +5393,14 @@ function KinkyDungeonAddRestraint (
 					});
 				}
 
-				if (Lock) KinkyDungeonLock(item, Lock, false, Unlink);
-				else if (restraint.DefaultLock && !Unlink) KinkyDungeonLock(item, KDProcessLock(restraint.DefaultLock));
+				if (Lock) KinkyDungeonLock(item, Lock, false, Unlink, 
+					undefined, undefined, undefined, KDRestraintParticleLifetime * 0.75);
+				else if (restraint.DefaultLock && !Unlink) KinkyDungeonLock(item, KDProcessLock(restraint.DefaultLock),
+						undefined, undefined, undefined, undefined, undefined, KDRestraintParticleLifetime * 0.75);
 
 				KDUpdateLinkCaches(item);
 				KDUpdateItemEventCache = true;
+				KDDoRestraintParticlePlayer(restraint);
 			} else if ((!Link && !linked) || SwitchItems) {
 				KinkyDungeonCancelFlag = false;
 				// Otherwise, if we did unlink an item, and we are not in the process of linking (very important to prevent loops)
@@ -5820,7 +5836,7 @@ function KinkyDungeonLinkItem (
 				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonLink" + oldItem.name), KDBaseRed, 2,
 					false, false, undefined, "Struggle");
 
-
+			KDDoRestraintParticlePlayer(newRestraint);
 			KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: newItem, host: undefined, keep: Keep, Link: true, UnLink: false, attacker: undefined});
 			KDUpdateItemEventCache = true;
 			return newItem;
@@ -7573,4 +7589,65 @@ function KDTest_ListRestraintsWithFeetLinked() {
 		}
 	}
 	console.log(res);
+}
+
+let KDRestraintParticleLifetime = 1700;
+let KDLockParticleLifetime = 1000;
+let KDRestraintParticleScale = 3;
+let KDLockParticleScale = 4;
+
+function KDDoRestraintParticlePlayer(restraint: restraint) {
+	let Ystart = PIXIHeight / 2;
+	let Xstart = PIXIWidth / 2;
+	let Yend = 0;
+	let Xend = 500 / 2;
+
+	if (!restraint) return;
+
+	let group = restraint.Group;
+	Yend += 1000 * KinkyDungeonStruggleGroupsBase.indexOf(group)/KinkyDungeonStruggleGroupsBase.length;
+	let preview = KDGetRestraintPreviewImage(restraint);
+	let lifetime = KDRestraintParticleLifetime;
+
+	KDAddParticle(Xstart, Ystart, preview, 
+		undefined, {
+			time: 0,
+			lifetime: lifetime,
+			vx: (Xend - Xstart)/lifetime,
+			vy: (Yend - Ystart)/lifetime,
+			zIndex: 1000,
+			phase: 0,
+			scale: KDRestraintParticleScale,
+			scale_delta: -(KDRestraintParticleScale - 0.25) / lifetime,
+			fadeEase: "invcos",
+			rotation: 0,
+		});
+}
+
+
+function KDDoLockParticlePlayer(lock: string, restraint: restraint, particleDelay: number = 0) {
+	if (!lock) return;
+	let Ystart = PIXIHeight / 2 - 500;
+	let Xstart = 500 / 3;
+
+	if (!restraint) return;
+
+	let group = restraint.Group;
+	Ystart += 1000 * KinkyDungeonStruggleGroupsBase.indexOf(group)/KinkyDungeonStruggleGroupsBase.length;
+	let preview = KDGetLockImageRoot(lock);
+	let lifetime = KDLockParticleLifetime;
+
+	KDAddParticle(Xstart, Ystart, preview, 
+		undefined, {
+			time: -particleDelay,
+			lifetime: lifetime,
+			vx: 0,
+			vy: 0,
+			zIndex: 1000,
+			phase: 0,
+			scale: 0.1,
+			scale_delta: (KDLockParticleScale - 0.1) / lifetime,
+			fadeEase: "invcos",
+			rotation: 0,
+		});
 }
