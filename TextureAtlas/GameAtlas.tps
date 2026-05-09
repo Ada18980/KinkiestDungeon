@@ -2836,6 +2836,7 @@
             <key type="filename">../Game/Aura/Muscle.png</key>
             <key type="filename">../Game/Aura/NoWP.png</key>
             <key type="filename">../Game/Aura/Null.png</key>
+            <key type="filename">../Game/Aura/PlayerAura.png</key>
             <key type="filename">../Game/Aura/Plugged.png</key>
             <key type="filename">../Game/Aura/PsychicLink.png</key>
             <key type="filename">../Game/Aura/Reload.png</key>
@@ -2906,6 +2907,7 @@
             <key type="filename">../Game/Locks/Red_Med.png</key>
             <key type="filename">../Game/Locks/Rubber.png</key>
             <key type="filename">../Game/Locks/StarCurse.png</key>
+            <key type="filename">../Game/Locks/Unlock.png</key>
             <key type="filename">../Game/Locks/White.png</key>
             <key type="filename">../Game/Poses/SetPose.png</key>
             <key type="filename">../Game/Struggle.png</key>

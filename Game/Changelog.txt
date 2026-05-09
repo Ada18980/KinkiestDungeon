@@ -82,6 +82,7 @@ Must do
 - Added Doll species perk
 - Added Doll Mirror weapon
 - Added hypnosis
+- Added particle effect to tell you when you've been restrained
 - Changed the warden's orb spell so that you need to get hit 3 times for the one bar prison to be applied
 - Made the warden's taunt mechanic explain itself if you get hit by it
 - Added character size option

@@ -123,6 +123,7 @@ KDToggleTransparentUI,Transparent UI
 KDToggleTurnCounter,Turn Counter
 KDToggleStunFlash,Flash Screen on Stun
 KDToggleParticlesFX,Map Particles
+KDToggleParticlesRestrain,Restraint Particles
 KDToggleArousalHearts,Distraction Particles
 KDToggleVibeHearts,Vibration Particles
 KDToggleGagParticles,Gag Particle FX

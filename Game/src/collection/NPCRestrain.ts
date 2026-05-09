@@ -583,6 +583,7 @@ function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint, No
 
 
 	if (restraints[slot]) {
+		
 		items.push({
 			name: restraints[slot].inventoryVariant || restraints[slot].name,
 			//curse: curse,
@@ -595,9 +596,13 @@ function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint, No
 			quantity: 1,
 			showInQuickInv: KinkyDungeonRestraintVariants[restraints[slot].inventoryVariant] != undefined});
 	}
-	if (restraint)
+	if (restraint) {
+		if (entity && KinkyDungeonDrawState == "Game") {
+			if (KinkyDungeonVisionGet(entity.x, entity.y) > 0.1)
+				KDDoRestraintParticle(KinkyDungeonFindID(id, KDMapData), KDRestraint(restraint));
+		}
 		restraints[slot] = restraint;
-	else delete restraints[slot];
+	} else delete restraints[slot];
 
 	KDSetNPCRestraints(id, restraints);
 

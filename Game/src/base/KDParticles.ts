@@ -37,6 +37,10 @@ function KDAddParticle(x: number, y: number, img: string, _type: string, data: K
 		let sprite = PIXI.Sprite.from(tex);
 		sprite.position.x = x;
 		sprite.position.y = y;
+		if (info.width) {
+			sprite.width = info.width;
+			sprite.height = info.height;
+		}
 		sprite.zIndex = info.zIndex;
 
 		if (info.scale != 1 || info.scale_delta) {
@@ -95,6 +99,10 @@ function KDAddParticleEmitter(x: number, y: number, img: string, imgemitted: str
 		sprite.position.x = x;
 		sprite.position.y = y;
 		sprite.zIndex = emitterinfo.zIndex;
+		if (emitterinfo.width) {
+			sprite.width = emitterinfo.width;
+			sprite.height = emitterinfo.height;
+		}
 
 		if (emitterinfo.scale != 1 || emitterinfo.scale_delta) {
 			sprite.scale.x = emitterinfo.scale;

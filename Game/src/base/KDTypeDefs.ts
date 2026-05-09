@@ -3735,6 +3735,9 @@ type KDParticleData = {
 	scale?: number,
 	scale_delta?: number,
 
+	width?: number,
+	height?: number,
+
 	rotation?: number,
 	rotation_spread?: number,
 	//delay?: number,
@@ -3760,6 +3763,8 @@ type KDParticleEmitterData = {
 
 	camX?: number,
 	camY?: number,
+	width?: number,
+	height?: number,
 
 	zIndex: number,
 	fadeEase?: string,

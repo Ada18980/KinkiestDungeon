@@ -7593,10 +7593,13 @@ function KDTest_ListRestraintsWithFeetLinked() {
 
 let KDRestraintParticleLifetime = 1700;
 let KDLockParticleLifetime = 1000;
+let KDNPCRestraintParticleLifetime = 1000;
+let KDNPCLockParticleLifetime = 800;
 let KDRestraintParticleScale = 3;
 let KDLockParticleScale = 4;
 
 function KDDoRestraintParticlePlayer(restraint: restraint) {
+	if (!KDToggles.ParticlesRestrain) return;
 	let Ystart = PIXIHeight / 2;
 	let Xstart = PIXIWidth / 2;
 	let Yend = 0;
@@ -7621,11 +7624,48 @@ function KDDoRestraintParticlePlayer(restraint: restraint) {
 			scale_delta: -(KDRestraintParticleScale - 0.25) / lifetime,
 			fadeEase: "invcos",
 			rotation: 0,
+			width: 72,
+			height: 72,
 		});
 }
 
 
+
+function KDDoRestraintParticle(entity: entity, restraint: restraint) {
+	if (!entity) return;
+	if (entity?.player) KDDoRestraintParticlePlayer(restraint); 
+
+	let lifetime = KDNPCRestraintParticleLifetime;
+	let data = {
+		time: 0,
+		lifetime: lifetime,
+		vx: 0,
+		vy: -25/lifetime,
+		zIndex: 10,
+		phase: 0,
+		scale: 0.5,
+		scale_delta: 1 / lifetime,
+		fadeEase: "invcos",
+		rotation: 0,
+		width: 72,
+		height: 72,
+	};
+	let preview = KDGetRestraintPreviewImage(restraint);
+	data['camX'] = KinkyDungeonCamX;
+	data['camY'] = KinkyDungeonCamY;
+	KDAddParticle(
+		//@ts-ignore
+		(entity.x - data.camX + 0.5) * KinkyDungeonGridSizeDisplay,
+		//@ts-ignore
+		(entity.y - data.camY + 0.1) * KinkyDungeonGridSizeDisplay,
+		preview,
+		undefined, data);
+
+}
+
+
 function KDDoLockParticlePlayer(lock: string, restraint: restraint, particleDelay: number = 0) {
+	if (!KDToggles.ParticlesRestrain) return;
 	if (!lock) return;
 	let Ystart = PIXIHeight / 2 - 500;
 	let Xstart = 500 / 3;
