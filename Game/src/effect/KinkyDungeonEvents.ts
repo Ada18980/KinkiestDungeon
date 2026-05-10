@@ -1215,6 +1215,43 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		}
 	},
 	"tick": {
+		/** for stuff like binding dress, doll stand, etc that get equipped */
+		"DollHypno_Passive": (e, item, data) => {
+			if (data?.delta > 0) {
+				let player = KDPlayer();
+				let trance = KDEntityBuffedStat(player, "Hypnosis");
+				if (!KinkyDungeonFlags.get("DollHypno_Passive") && KDRandom() < e.chance * trance * 0.01) {
+					// add a suggestion
+					let amount = Math.floor(4 * (0.5 + 0.7*KDRandom()));
+					let keyafter: string = null;
+					let callback: string = undefined;
+					let callbackdata: any = {player: player.id};
+					let duration = 0;
+					let dollLevel = KDEntityBuffedStat(player, "Hypno_Doll");
+					let key = "KDHypno_Doll_" + Math.floor(KDRandom() * Math.round(
+							KDDollHypnoSuggestions * (0.5 + dollLevel/100)));
+					if (KDRandom() < 0.6 && KDEntityBuffedStat(player, "Hypnosis") > 25 && KDRandom() < KDEntityBuffedStat(player, "Hypnosis")*0.01) {
+						
+						if (dollLevel > 90 && KDRandom() < 0.25) {
+							amount = Math.floor(5 * (0.5 + KDRandom()));
+							key = "KDHypno_Doll_Accept";
+							callback = "DollAccept";
+						} else if (dollLevel > 25 || KDRandom() < 0.1 + dollLevel*0.003) {
+							if (dollLevel > 10 && KDRandom() < 0.3 + dollLevel * 0.0035) {
+								key = "KDHypno_Doll_AvoidFail";
+								keyafter = "KDHypno_Doll_AvoidFail2";
+							} else {
+								key = "KDHypno_Doll_Avoid";
+								amount = -Math.floor(8 * (0.5 + KDRandom()));
+								duration = 3;
+							}
+						} 
+					}
+					KDAddHypnoButton("Hypno_Doll", amount, key, null, keyafter, callback ? {name: callback, data: callbackdata} : undefined, player.id, duration ? duration : undefined);
+					KinkyDungeonSetFlag("DollSuggestion_Basic", 3 + Math.floor(KDRandom() * 3));
+				}
+			}
+		},
 		LatexKittyCurse: (_e, _item, _data) => {
 			let player = KDPlayer();
 			// only tick once per turn
@@ -8030,43 +8067,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 				}
 			}
 		},
-		/** for stuff like binding dress, doll stand, etc that get equipped */
-		"DollHypno_Passive": (e, weapon, data) => {
-			if (data?.delta > 0) {
-				let player = KDPlayer();
-				let trance = KDEntityBuffedStat(player, "Hypnosis");
-				if (!KinkyDungeonFlags.get("DollHypno_Passive") && KDRandom() < e.chance * trance * 0.01) {
-					// add a suggestion
-					let amount = Math.floor(4 * (0.5 + 0.7*KDRandom()));
-					let keyafter: string = null;
-					let callback: string = undefined;
-					let callbackdata: any = {player: player.id};
-					let duration = 0;
-					let dollLevel = KDEntityBuffedStat(player, "Hypno_Doll");
-					let key = "KDHypno_Doll_" + Math.floor(KDRandom() * Math.round(
-							KDDollHypnoSuggestions * (0.5 + dollLevel/100)));
-					if (KDRandom() < 0.6 && KDEntityBuffedStat(player, "Hypnosis") > 25 && KDRandom() < KDEntityBuffedStat(player, "Hypnosis")*0.01) {
-						
-						if (dollLevel > 90 && KDRandom() < 0.25) {
-							amount = Math.floor(5 * (0.5 + KDRandom()));
-							key = "KDHypno_Doll_Accept";
-							callback = "DollAccept";
-						} else if (dollLevel > 25 || KDRandom() < 0.1 + dollLevel*0.003) {
-							if (dollLevel > 10 && KDRandom() < 0.3 + dollLevel * 0.0035) {
-								key = "KDHypno_Doll_AvoidFail";
-								keyafter = "KDHypno_Doll_AvoidFail2";
-							} else {
-								key = "KDHypno_Doll_Avoid";
-								amount = -Math.floor(8 * (0.5 + KDRandom()));
-								duration = 3;
-							}
-						} 
-					}
-					KDAddHypnoButton("Hypno_Doll", amount, key, null, keyafter, callback ? {name: callback, data: callbackdata} : undefined, player.id, duration ? duration : undefined);
-					KinkyDungeonSetFlag("DollSuggestion_Basic", 3 + Math.floor(KDRandom() * 3));
-				}
-			}
-		},
+		
 		"StaffStormAura": (e, weapon, data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "StaffStormAura",

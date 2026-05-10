@@ -2743,9 +2743,9 @@ function KinkyDungeonRun() {
 		// if slots 0-8 selected it's +0, then 9-16 it's +8...
 		let pageSlotOffset = Math.floor((KDSaveSlot - 1)/(cols*rows)) * (cols*rows);
 		const dangerColor = KDBaseRed, defaultColor = KDBaseWhite, selectedColor = KDBaseYellow;
-		for(let col = 0; col < cols; col++) {
-			for(let row = 0; row < rows; row++) {
-				let slot = row*cols + col + pageSlotOffset + 1;
+		for(let row = 0; row < rows; row++) {
+			for(let col = 0; col < cols; col++) {
+				let slot = rows*col + row + pageSlotOffset + 1;
 				let yOffset = startY + row*70;
 				let slotText = slot + ". " + (((loadedsaveNames[slot-1] ? loadedsaveNames[slot - 1] : "")
 					+ (loadedsaveClasses[slot-1] ? TextGet("KDClassSaveLabel") + TextGet("KinkyDungeonStatMC_" + loadedsaveClasses[slot-1]) : "")

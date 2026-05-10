@@ -3694,6 +3694,7 @@ KinkyDungeonFactionMaidforce,MaidForce
 KinkyDungeonFactionMushy,Fungal Kingdom
 KinkyDungeonFactionSlime,Slime
 KinkyDungeonFactionPlant,Nature
+KinkyDungeonFactionJail,
 
 KinkyDungeonFactionWitch,Witches' Coven
 KinkyDungeonFactionLoveCrafters,Love Crafters
@@ -33596,3 +33597,17 @@ KDAddHypno_Doll,"You feel just like a pretty, still doll... (+AMNT Stillness)"
 KDRemoveHypno_Doll,You regain a bit of your sense of self. (-AMNT Stillness)
 
 KDAlreadyActive,The spell is already active.
+
+
+
+rDollTransform,"(The SPEAKER reaches out with a gentle hand, propping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?"
+dDollTransform_Material,"Materials??"
+dDollTransform_MaterialGag,"(Squeak when ${Ethey} say${Es} 'materials')"
+dDollTransform_Caress,"Hands off!"
+dDollTransform_CaressGag,"(Whimper when ${Ethey} caress${Es} caress your chin)"
+dDollTransform_Curious,"Your showcase?"
+dDollTransform_CuriousGag,"(Tilt your head with interest)"
+dDollTransform_Subby,"At your service~"
+dDollTransform_SubbyGag,"(Nod happily)"
+
+rDollTransformAccept_1,"(The SPEAKER starts by removing most of your clothes...)"

@@ -2309,6 +2309,7 @@ const KinkyDungeonRestraints: restraint[] = [
 
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', kind: "Dressmaker", mult: 0.8, power: 2,},
+			{type: "DollHypno_Passive", trigger: "tick", power: 1, chance: 0.1},
 		],
 		LinkableBy: [...KDDressLink], alwaysRender: true, bindarms: true, bindhands: 1.0, power: 8, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": -0.2, "Pick": 0.15}, helpChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.075},
