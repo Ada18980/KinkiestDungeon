@@ -419,6 +419,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 眩晕时闪屏
 - Map Particles
 地图粒子效果
+# - Restraint Particles
 - Distraction Particles
 性奋粒子
 - Vibration Particles
@@ -45268,7 +45269,7 @@ ${Item} 瞄准
 - The door suddenly locks behind you!
 门突然在你身后锁上了！
 
-- Apply To Target
+- Bind Target
 应用于目标
 - Purify
 净化
@@ -46350,7 +46351,7 @@ LKTYP 锁锁在了你的一个拘束具上！
 所有选定的队伍切换到侵略模式
 
 
-- Unlock using magic
+- Magic Unlock
 使用魔法解锁
 
 - Include Weapons
