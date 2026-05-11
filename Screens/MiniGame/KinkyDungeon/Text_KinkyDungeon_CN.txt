@@ -95,6 +95,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: DungeonName8
 # :: DungeonName9
 # :: DungeonName20
+# :: KinkyDungeonFactionJail
 # :: RestraintT
 # :: RestraintTDesc
 # :: RestraintTDesc2
@@ -21400,6 +21401,7 @@ Hmm. 你可以叫我女仆 PTRN。
 把手放开！
 # :: KinkyDungeonRemindJailWitchHit
 # :: KinkyDungeonRemindJailSellyHit
+# :: dDollTransform_Caress
 - Now I got you.
 现在我得到你了。
 # - Hmph.
@@ -22839,6 +22841,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dOfferLatex2_YesGag
 # :: dOfferLeather_YesGag
 # :: dDollmakerAssume_HappyGag
+# :: dDollTransform_SubbyGag
 - No, thanks.
 不，谢谢。
 # :: dOfferMithril_No
@@ -52042,6 +52045,7 @@ PTRN 的 RMTPE
 （SPEAKER 首先脱掉你的大部分衣服）
 # :: rStripSearchAccept_1
 # :: rStripSearchCyberAccept_1
+# :: rDollTransformAccept_1
 - (Next, the SPEAKER looks through your weapons)
 （之后，SPEAKER 检查你的武器）
 # :: rStripSearchAccept_1_2
@@ -53154,3 +53158,14 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - You regain a bit of your sense of self. (-AMNT Stillness)
 
 # - The spell is already active.
+
+
+
+# - (The SPEAKER reaches out with a gentle hand, propping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?
+# - Materials??
+# - (Squeak when ${Ethey} say${Es} 'materials')
+# - (Whimper when ${Ethey} caress${Es} caress your chin)
+# - Your showcase?
+# - (Tilt your head with interest)
+# - At your service~
+
