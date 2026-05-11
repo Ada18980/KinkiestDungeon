@@ -384,6 +384,8 @@ Pусский
 Шрифт кнопок:
 - Back to Character Setup
 Вернуться к настройке персонажа
+- Back to Challenge Setup
+Вернуться к настройке сложности
 - Journey
 Путешествие
 - Select a journey. This will determine the ordering of game areas.
@@ -1746,6 +1748,10 @@ EnemyName произносит командное слово в сторону T
 - You can launch another Sagitta instantly!
 Вы можете мгновенно запустить еще одну Сагитту!
 
+- Your headpatting feels nice!
+Поглаживание по голове доставляет удовольствие!
+- Your headpatting restored your willpower slightly!
+Поглаживание по голове немного укрепило вашу силу воли!
 
 - You have stored willpower.
 У вас есть сохраненная сила воли.
@@ -2640,6 +2646,37 @@ MP
 - A mysterious device used by the old civilization, now depleted.
 Таинственное устройство, используемое древней цивилизацией, теперь разряжено.
 
+- Maid Ankle Cuffs
+Горничные оковы на лодыжки
+- Don't let the comfy, padded exterior fool you, the core is solid steel and will resist most attempts to cut it!
+Не дайте мягкой поверхности себя обмануть — внутри находится цельная сталь, способная выдержать большинство попыток разрезать её!
+- A pair of steel-reinforced cuffs used by the Maidforce.
+Пара усиленных сталью манжет, используемых подразделением Горничных.
+- Saddle Thigh Links
+Седло на бёдрах
+- A set of padlocks attaching your thigh cuffs to a piece of saddle furniture.
+Набор замков, соединяющих ваши набедренные оковы с частью седла.
+- The durability depends on the type of lock.
+Долговечность зависит от типа замка
+- Sunglasses
+Солнцезащитные очки
+- (Sell from your storage)
+(Продавайте со своего склада)
+- Masterwork Collar
+Мастерский ошейник
+- A collar hand-crafted and signed by the famous blacksmith Ada Lovelock. The crowning jewel of a five-piece set designed to hold its wearer in an ever-tightening embrace.
+Ошейник, созданный вручную и подписанный знаменитой кузнецом Ada Lovelock. Венец пятиэлементного комплекта, созданного, чтобы удерживать носителя в постоянно затягивающемся объятии.
+- Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection.
+Несмотря на мягкую текстуру, кожа усилена практически неразрушимым волокном, блокирующим большинство инструментов, способных её разрезать. Механизм замка имеет ещё четыре точки фиксации.
+- Masterwork
+Мастерская работа
+### Vibe-Master 5000
+- A devious saddle-type furniture, designed to overpower even the most stoic minds.
+Коварная мебель в форме седла, призванная покорить даже самые невозмутимые умы.
+- Contains an electric motor inside that shakes the entire assembly, but only if activated.
+Внутри установлен электромотор, который приводит в вибрацию весь механизм, но лишь при включении.
+
+
 
 - Gold
 Золото
@@ -3325,6 +3362,8 @@ ID Куклы
 
 - Submissive: Enemies won't attack you, but they will try to play with you.
 Покорная: Враги не атакуют вас, но они попытаются поиграть с вами.
+- Items in the head slot are 10-20% easier to escape, depending on item level.
+Из предметов, надетых на голову, на 10–20% легче выбраться, в зависимости от уровня предмета.
 - On the Run! Enemies are hostile.
 В бегах! Враги жаждут вас поймать.
 - Prisoner: Enemies won't attack you unless you are out of jail.
@@ -7023,8 +7062,8 @@ TargetRestraint слишком прочен, все ваши усилия бес
 Трусики 'Волчица'
 - A set of vibrating panties designed to help subdue unruly wolfgirls.
 Набор вибрирующих трусиков, предназначенных для того, чтобы помочь усмирить непослушных девушек-волчиц.
-- It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber.
-Они невероятно плотные, и их трудно снять после того, как они окажутся застегнуты, но материал - всё еще резина.
+- It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber. Type: Teasing, Pleasure, Denial
+Они невероятно плотные, и их трудно снять после того, как они окажутся застегнуты, но материал - всё еще резина. Тип: Дразнение, Удовольствие, Отказ
 
 
 - You can't equip that.
@@ -7169,6 +7208,10 @@ TargetRestraint слишком прочен, все ваши усилия бес
 Ошейник
 - A classy leather collar.
 Классический кожаный ошейник.
+- Steel Collar
+Стальной ошейник
+- A stainless steel collar befitting of a slave, or perhaps an enthusiastic submissive.
+Ошейник из нержавеющей стали, подобающий рабу или, возможно, покорному рабу.
 - Allows fitting of a leash.
 К нему можно прикрепить поводок.
 - Slave Collar
@@ -7727,12 +7770,12 @@ TargetRestraint слишком прочен, все ваши усилия бес
 Вы все еще можешь видеть через щель около своего носа.
 
 
-### High-Security Blindfold
-
-### A chin harness stretches this leather blindfold tightly against your face.
-
-### Total blackout. The tough leather is reinforced with rivets.
-
+- High-Security Blindfold
+Повязка на глаза повышенной безопасности
+- A chin harness stretches this leather blindfold tightly against your face.
+Подбородочная шлейка плотно прижимает эту кожаную повязку к вашему лицу.
+- Total blackout. The tough leather is reinforced with rivets.
+Полная темнота. Прочная кожа усилена заклёпками.
 
 
 - Magic Chastity Belt
@@ -7743,16 +7786,24 @@ TargetRestraint слишком прочен, все ваши усилия бес
 Щитки могут открыться, чтобы принять новые игрушки, но они уже не выпустят их наружу...
 - Steel Chastity Belt
 Стальной пояс целомудрия
+- Steel Belt
+Стальной пояс
 - A cruel device used for locking magical vibrators in place.
 Жестокое устройство, используемое для фиксации магических вибраторов.
+- Made of steel, solid and secure.
+Изготовлен из стали, прочный и надежный.
 - Blacksteel Belt
 Пояс из черной стали
 - Blacksteel is a metal used by the Old Civilization. It is very difficult to scratch, let alone cut.
 Черная сталь - это металл, использовавшийся Древней цивилизацией. Его очень трудно поцарапать, не говоря уже о том, чтобы разрезать.
+- Steel Bra
+Стальной бюстгалтер
 - Blacksteel Bra
 Бюстгальтер из черной стали
 - A cruel device used for locking magical massagers in place.
 Жестокое устройство, используемое для фиксации магических массажеров.
+- Made of steel, solid and secure.
+Изготовлен из стали, прочный и надёжный.
 - Prototype Belt
 Пояс-Прототип
 - A strange device built using unknown technology.
@@ -7769,6 +7820,11 @@ TargetRestraint слишком прочен, все ваши усилия бес
 Замок не снимется, пока не пройдет время и действие магии не ослабнет...
 - Ornate Chastity Bra
 Изысканный бюстгальтер целомудрия
+- Steel Waist Belt
+Стальной ремень для пояса
+- A device that provides an attachment point for linkage. Not restraining on its own, but useful for keeping a prisoner's hands to herself.
+Устройство, обеспечивающее точку крепления для соединения. Само по себе не является средством ограничения движений, но полезно для того, чтобы удерживать руки заключенной при себе.
+
 
 
 - Maid Chastity Belt
@@ -10209,7 +10265,7 @@ TargetRestraint слишком прочен, все ваши усилия бес
 
 - Raincloud
 Дождевая туча
-- After 3 turns, rain falls, creating a 3x3 grid of water and dealing DamageDealt acid damage to enemies within.
+- After 3 turns, rain falls, creating a 3x3 grid of water and dealing DamageDealt soap damage to enemies within.
 Спустя 3 хода выпадает дождь, создавая лужу размером 3х3 и нанося DamageDealt урона от кислоты врагам внутри.
 - You create a stormy cloud!
 Вы создаете грозовую тучу!
@@ -10647,8 +10703,8 @@ TargetRestraint слишком прочен, все ваши усилия бес
 
 - Precise Critical
 Точный крит
-### When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 25% efficiency (50% for Light weapons)
-
+- When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 25% efficiency (50% for Light weapons)
+При нанесении критического удара с физическим уроном точность свыше 100% преобразуется в бонусный множитель критического урона с эффективностью 25% (50% для легкого оружия).
 - Precise Magic
 Точная магия
 - When landing a critical strike with magic damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
@@ -20311,6 +20367,8 @@ SPL! Теперь ты узришь мой гнев!
 
 - (Sneak Attack)
 (Внезапная атака)
+- Sneak Attack
+Внезапная атака
 - (Really attack? Target is unaware and will be stunned 1 turn.)
 (Действительно напасть? Цель не ожидает этого и будет оглушена на 1 ход.)
 
@@ -20479,6 +20537,9 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER ухмыляется и тянется к вашему телу)
 - (The SPEAKER makes a beeping noise)|Loading cuddle module...
 (SPEAKER издает звуковой сигнал)|Загрузка модуля объятий...
+
+- (Move through her space)
+(Пройти через её личное пространство)
 
 
 - Got something for me?
@@ -21390,7 +21451,9 @@ SPL! Теперь ты узришь мой гнев!
 - (You can't help her, bound as tightly as you are...)
 (Вы не можете помочь ей, ибо она связана так же крепко, как и вы сами...)
 - (You unlock her, fumbling around for a while with your bound hands)
-(Вы освобождаете ее, некоторое время повозившись со связанными руками)
+(Вы освобождаете её, некоторое время повозившись со связанными руками)
+- (You unlock the SPEAKER)|Appreciate the rescue!|'twas fun while it lasted...
+(Вы освобождаете SPEAKER)|Спасибо за спасение!|Было весело, пока это продолжалось...
 - (You unlock the SPEAKER)|Thank you!|Let's get out of here!
 (Вы освобождаете SPEAKER)|Спасибо!|Давай убираться отсюда!
 - (You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
@@ -21521,8 +21584,8 @@ SPL! Теперь ты узришь мой гнев!
 (Укажите на одного из ваших заключенных)
 - (Lock yourself inside)
 (Запереть внутри саму себя)
-### (Check the occupant)
-
+- (Check the occupant)
+(Проверить обитателя)
 - (Try to lock NME into the furniture) (PRCNT% Chance)
 (Попробовать запереть NME в устройстве) (PRCNT% Шанс)
 - (You close the furniture around your unfortunate victim!)
@@ -21561,12 +21624,12 @@ FOODMSG|(Приглашаем вас отведать кулинарные из�
 Пицца
 
 
-### (The table looks remarkably flippable)
-
-### (You knock over the table!)
-
-### (Flip the table)
-
+- (The table looks remarkably flippable)
+(Стол выглядит удивительно удобным для переворачивания)
+- (You knock over the table!)
+Ты опрокинул стол
+- (Flip the table)
+Переверните стол
 - (There is a button on a control panel here.)
 (Здесь есть кнопка на панели управления.)
 - (You touch the button and it glows, releasing a pulse of energy!)
@@ -22261,7 +22324,7 @@ PlаtеВооts
 - BootLeftHogtie
 ВооtLеftHоgtiе
 - Gauntlets
-Gаuntlеts
+Перчатки
 - GauntletLeft
 GаuntlеtLеft
 - GauntletRight
@@ -22272,18 +22335,18 @@ PlаtеАrmоr
 СhаinShirt
 - ShirtChest
 ShirtСhеst
-### Shirt
-
+- Shirt
+Рубашка
 - ChainSkirt
 СhаinSkirt
-### Skirt
-
+- Skirt
+Юбка
 - ChainArmor
 СhаinАrmоr
 - BanditShorts
 ВаnditShоrts
 - Shorts
-Shоrts
+Шорты
 - BanditLeftWrist
 ВаnditLеftWrist
 - WristLeft
@@ -22307,11 +22370,11 @@ ShоеLеftHоgtiе
 - BanditBreastplate
 ВаnditВrеаstplаtе
 - Striped Skirt
-Stripеd Skirt
+Полосатая юбка
 - MaidApron
 MаidАprоn
 - Apron
-Аprоn
+Фартук
 - MaidBlouse
 MаidВlоusе
 - Blouse
@@ -22321,11 +22384,11 @@ MаidВlоusе
 - MaidBow
 MаidВоw
 - Bow
-Воw
+Лук
 - MaidCorset
 MаidСоrsеt
 - Corset
-Соrsеt
+Корсет
 - MaidCorsetFull
 MаidСоrsеtFull
 - CorsetStraps
@@ -22750,8 +22813,8 @@ Mаsk
 Lосk
 - EyesWhites
 ЕyеsWhitеs
-### Swimsuit
-
+- Swimsuit
+Купальник
 - SwimsuitChest
 SwimsuitСhеst
 - StrappyBra
@@ -27466,8 +27529,8 @@ FаshiоnKiguMаskSmilе
 Башенный щит
 - Now with more leg room.
 Теперь больше места для ног.
-### Makes it slower to turn around. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-
+- Makes it slower to turn around. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+Замедляет разворот. +120 к блокированию, +30 к физической броне. Наносит дробящий урон и оглушает на 7 ходов. В левой руке: замедляет вас и дает тот же бонус к блокированию и броне. Бонусы от щитов в дополнительном оружии не суммируются с бонусами от уже экипированного щита.
 - You pick up a metal tower shield.
 Вы находите металлический башенный щит.
 
@@ -28148,8 +28211,8 @@ FаshiоnKiguMаskSmilе
 Промышленный пленочный жезл
 - A non-magical tape wand used for creating tight little packages.
 Немагический пленочный жезл, используемый для создания маленьких плотных упаковок.
-- Deals chain damage. 200% binding efficiency. Hitting an enemy applies the Taped debuff for 12 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving.
-Наносит Цепной урон. Эффективность сковывания 200%. Удар по врагу накладывает дебафф 'Упаковка' на 12 ходов, увеличивая получаемый им Цепной урон на 15%. Наносит 10 Цепного урона находящимся рядом врагам в 'Упаковке' во время перемещения.
+- Deals chain damage. Hitting an enemy applies the Taped debuff for 12 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving.
+Наносит Цепной урон. При попадании по врагу накладывается дебафф 'Упаковка' на 12 ходов, увеоичивая еаерсмсый ему цепной урон на 15%. Наносит 10 цепного урона соседним врагам, находящимся под действием дебаффа 'Упаковка', во время движения.
 
 
 - Bag of Goodies
@@ -32846,6 +32909,8 @@ EnemyName глубоко вдыхает, отчего воздух вокруг 
 - (The viewscreen depicts a face)|Why hello there adventurer! What brings you?
 (На экране появляется лицо)|Привет, искатель приключений! Что привело тебя сюда?
 
+- (The SPEAKER knocks you down and forces you into the RESTRAINT)|Here, maybe you'll reconsider after wearing it a while!
+(SPEAKER сбивает тебя с ног и заставляет надеть тебя RESTRAINT)|Возможно, после некоторого времени ношения вы передумаете!
 
 - Hmmmphgm?
 Хмммфхгм?
@@ -33211,8 +33276,8 @@ AMNT1 (макс.)
 
 - Negate Rune
 Руна отрицания
-### Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
-
+- Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
+Удаляет руну с целевой клетки. Если применяется на себя, удаляет все созданные вами руны. Применение на вражескую руну восстанавливает 10 маны. Расходует 5 маны, если применяется на клетку без рун.
 - You scribe a negation rune!
 Вы чертите руну отрицания!
 - Target a single rune, or yourself to negate all your runes.
@@ -34294,6 +34359,13 @@ AMNTx урона SP превышает 50%
 - Screen flash when distracted
 Вспышки экрана когда возбуждена
 
+- Secured Asylum Muzzle
+Намордник для магов
+- An advanced muzzle intended for particularly loud-mouthed mages.
+Усовершенствованный намордник, предназначенный для магов с особенно громким голосом.
+- It's sturdy leather and metal buckles.
+Это прочная кожа и металлические пряжки.
+
 
 - Essentia Aliquam
 Эссенция Аликвама
@@ -34833,8 +34905,8 @@ AMNTx урона SP превышает 50%
 Мистические бинты обвиваются вокруг вашего тела!
 
 
-### You are slowed! Trying to move will cause you to lose a turn, but you can sprint at 2x SP cost.
-
+- You are slowed! Trying to move will cause you to lose a turn, but you can sprint at 2x SP cost.
+Вы замедлены! Попытка движения приведет к потере хода, но вы можете бежать с удвоенной стоимостью SP.
 - You'll need a sharp object to cut items. Look for a knife or a piece of scrap on the floor.
 Вам понадобится острый объект, чтобы резать предмет. Поищите на полу нож или какой-нибудь хлам.
 - If you can't get your knife into place, try sitting next to a crack on the wall.
@@ -34935,6 +35007,11 @@ AMNTx урона SP превышает 50%
 Вы соединены психической связью!
 - You've used Shock Collar recently and it costs more DP.
 Вы недавно пользовались шокирующим ошейником, и он стоит дороже обычного.
+
+- You can click Inspect then click the enemy to cycle thru pages.
+Вы можете нажать «Проверить документацию», а затем щелкнуть по врагу, чтобы переключаться между страницами.
+- NPC tooltips like the ${EnemyName} are too long to show on one page.
+Всплывающие подсказки для NPC, например, о Медцестре, слишком длинные, чтобы отобразить их на одной странице.
 
 
 - Essence Crystal
@@ -35329,26 +35406,28 @@ NME не является достаточно примечательной дл
 
 ### Set Pivot
 
-### Toggle click & drag
-
-### Settings
-
-### Scroll Controls:
-
+- Toggle click & drag
+Переключить режим перетаскивания мышью
+- Settings
+Настройки
+- Scroll Controls:
+Управление прокруткой:
 ### Layer Text:
 
 ### No Actions Available
 
-### Talk
-
-### Move To
-
-### Take Stairs
-
-### Allow Passing
-
-### Tie Up
-
+- Talk
+Поговорить
+- Move To
+Переместиться к
+- Take Stairs
+Подняться по лестнице
+- Allow Passing
+Спуститься по лестнице
+- Tie Up
+Связать
+- Activate on Self
+Применить на себя
 ### Attempt to Tie
 
 ### Move Closer to Tie
@@ -35361,8 +35440,8 @@ NME не является достаточно примечательной дл
 
 ### (Will not low enough)
 
-### Move closer to interact
-
+- Move closer to interact
+Приблизьтесь к взаимодействию
 ### Several poles rise up out of the ground...
 
 ### Various Scrolls
