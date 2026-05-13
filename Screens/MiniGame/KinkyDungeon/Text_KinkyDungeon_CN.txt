@@ -2066,7 +2066,7 @@ Devious Dungeon Challenge 已启用。
 - Missing key
 未找到钥匙
 - Protects from damage and binding until the shield is broken!
-盾未破裂时，免受伤害和束缚！
+护盾未破裂时，免受伤害和束缚！
 - Chance for a spell to fizzle: 
 施法失败几率：
 - Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
