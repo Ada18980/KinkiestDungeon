@@ -399,6 +399,21 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "Blindfolds"),
             tooltip: TextGet("KDConsentListDesc_" + "Blindfolds"),
     },
+    Rough: {
+            name: "Rough",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "",
+            perkYellow: "NoRough",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "Rough"),
+            tooltip: TextGet("KDConsentListDesc_" + "Rough"),
+    },
     Nurses: {
             name: "Nurses",
             color: KDBaseWhite,

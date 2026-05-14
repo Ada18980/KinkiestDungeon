@@ -61,7 +61,7 @@ function KinkyDungeonLoot(
 	/** Used for the case where you only want to return the loot object and not execute it */
 	returnOnly?: boolean,
 	noTrap?: boolean,
-	minWeight: number = 0.1,
+	minWeight: number = 0.015,
 	minWeightFallback: boolean = true,
 	container?: KDContainer, lootType?: any[]): boolean | any {
 	let lootWeightTotal = 0;

@@ -144,7 +144,7 @@ function KinkyDungeonDrawTitles() {
         });
     }
     let loreName = ((KDTitleTabCurrentTitle != "None") && (KDTitleTabCurrentTitle != "???")) ? TextGet(`KDPlayerTitle_${KDTitleTabCurrentTitleSelected}`) : "Unknown"
-    let loreOrig = ((KDTitleTabCurrentDesc != "None") ? TextGet(`KDPlayerTitleDesc_${KDTitleTabCurrentTitleSelected}`) : "").split(/[\|\n]/)
+    let loreOrig = ((KDTitleTabCurrentDesc != "None") ? TextGet(`KDPlayerTitleDesc_${KDTitleTabCurrentTitleSelected}`) : "").split(/\||\\n|\n/)
     let lore = [];
     let mult = KDGetFontMult();
     for (let str of loreOrig) {
@@ -156,7 +156,7 @@ function KinkyDungeonDrawTitles() {
     if (KDLoreImg[KinkyDungeonCurrentLore]) {
         i += 0.7;
         let imgwidth = 200;
-        let images = KDLoreImg[KinkyDungeonCurrentLore].split(/[\|\n]/);
+        let images = KDLoreImg[KinkyDungeonCurrentLore].split(/\||\\n|\n/);
         for (let ii = 0; ii < images.length; ii++) {
             KDDraw(kdcanvas, kdpixisprites, "kdlorimage" + ii, KinkyDungeonRootDirectory + images[ii], 0.75 * 640 * KinkyDungeonLoreScale * (0.525) + imgwidth * ii - (imgwidth / 2 * (images.length))
                 + canvasOffsetX_ui - 100 + 640 * KinkyDungeonLoreScale / 8, canvasOffsetY_ui - 100 + 483 * KinkyDungeonLoreScale / 6 + i * 40, imgwidth, imgwidth, 0, undefined, undefined, undefined, undefined, true);

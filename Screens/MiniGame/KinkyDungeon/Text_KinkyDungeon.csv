@@ -29600,6 +29600,7 @@ KDConsentItem_Brats,Brats
 KDConsentItem_ChastityBra,Forced Chastity Bras
 KDConsentItem_ChastityBelt,Forced Chastity Belts
 KDConsentItem_ConsentIngame,Allow Menu Ingame
+KDConsentItem_Rough,Rough Treatment
 
 KDConsentItem_PrisonerMarkings,Prisoner Text
 KDConsentItem_Invis,Invisible Restraints
@@ -29610,6 +29611,7 @@ KDConsentItem_Hypnosis,Hypnosis
 
 KDConsentItemTooltip_SleepFood,"Some food items on tables will be laced with a drug that makes your character fall asleep."
 KDConsentItemTooltip_ArousalFood,"Some food items on tables will be laced with a drug that makes your character very distracted."
+KDConsentItemTooltip_Rough,"Removes some dialogue paths that end with your character getting slapped, hair pulled, or otherwise 'beaten.'"
 
 KDConsentItemTooltip_Red,"|||This item is marked as Red, which prevents it from appearing in the game."
 KDConsentItemTooltip_Yellow,"|||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention."
@@ -33604,10 +33606,24 @@ rDollTransform,"(The SPEAKER reaches out with a gentle hand, propping up your ch
 dDollTransform_Material,"Materials??"
 dDollTransform_MaterialGag,"(Squeak when ${Ethey} say${Es} 'materials')"
 dDollTransform_Caress,"Hands off!"
-dDollTransform_CaressGag,"(Whimper when ${Ethey} caress${Es} caress your chin)"
+dDollTransform_CaressGag,"(Shake your head angrily as ${Ethey} caress${Es} caress you)"
+dDollTransformCaress_Caress2,"I won't let you!"
+dDollTransformCaress_Caress2Gag,"(Keep shaking your head)"
+dDollTransformCaress_CaressFight,"Oh yeah? Try me! (Enter combat)"
+dDollTransformCaress_CaressFightGag,"(Enter combat with defiance in your eyes)"
+dDollTransformCaress_CaressWhimper,"(Whimper and give in)"
+dDollTransform_Whimper,"(Whimper pathetically)"
 dDollTransform_Curious,"Your showcase?"
 dDollTransform_CuriousGag,"(Tilt your head with interest)"
 dDollTransform_Subby,"At your service~"
 dDollTransform_SubbyGag,"(Nod happily)"
 
-rDollTransformAccept_1,"(The SPEAKER starts by removing most of your clothes...)"
+rDollTransformMaterial,"(The SPEAKER smiles and boops your nose)\nThat's you~\nPretty one."
+rDollTransformCaress,"(The SPEAKER pulls back ${Etheir} hand... and smacks you across the face)\nA good {$PSub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like..."
+rDollTransformCaressAlt,"(The SPEAKER pulls back ${Etheir} hand and merely smiles)\nA good {$PSub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like..."
+rDollTransformWhimper,"(The SPEAKER lets a sadistic smile slip across ${Etheir} face)\nDon't worry, you'll be a happy little doll soon.\nVery soon..."
+rDollTransformCurious,"My showcase is full of lovely dolls.\nLovely dolls just like you will be.\nAren't you excited?"
+rDollTransformSubby,"(The SPEAKER gives an approving nod)\nExcellent.\nYou'll be fitting right in with all the other dolls!"
+
+rDollTransformCaress_Caress2,"(The SPEAKER shrugs)\nYou don't have a choice in the matter.\nNot like that you don't~"
+

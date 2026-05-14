@@ -2448,7 +2448,7 @@ function KDDrawHotbar(xLoc: number, _yLoc: number, _name: string, _fn: (I: numbe
 		spell == name ? KDBaseWhite : KDTextGray3, "", "");
 	}*/
 
-	let strs = TextGet("KDHotbarTutorial").split(/[\|\n]/);
+	let strs = TextGet("KDHotbarTutorial").split(/\||\\n|\n/);
 	let II = 0;
 
 	let yy = 350;

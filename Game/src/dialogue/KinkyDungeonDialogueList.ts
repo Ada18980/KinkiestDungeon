@@ -1095,6 +1095,65 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 		}
 	},
+
+	
+	"DollTransform": {
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			return false;
+		},
+		options: {
+			"Material": {
+				response: "Default", gag: true,
+				clickFunction: () => {
+					KinkyDungeonSetFlag("DollTransformDialogue_Mat", 10);
+					return false;
+				},
+				leadsToStage: "",
+			},
+			"Caress": {
+				response: "Default", gag: true,
+				clickFunction: () => {
+					KDGameData.CurrentDialog
+					return false;
+				},
+				options: {
+					"Caress2": {
+						response: "Default", gag: true,
+						options: {
+							"CaressFight": {
+								gag: true, playertext: "Default",
+								greyoutFunction: (_gagged, _player) => {
+									return KinkyDungeonHasWill(0.1);
+								},
+								greyoutTooltip: "KDTextGrayNeedWP",
+								clickFunction: (_gagged, _player) => {
+									KinkyDungeonStartChase(undefined, "Refusal");
+									KDAggroSpeaker();
+									return false;
+								},
+								options: {"Leave": {playertext: "Leave", exitDialogue: true}}
+							},
+						},
+					},
+					"CaressWhimper": {
+						response: "Default",
+						leadsToStage: "",
+					}
+				}
+			},
+			
+			"Whimper": {
+				response: "Default", gag: true,
+			},
+			"Curious": {
+				response: "Default", gag: true,
+			},
+			"Subby": {
+				response: "Default", gag: true,
+			},
+		}
+	},
 	"Tutorial": {
 		response: "Default",
 		clickFunction: (_gagged, _player) => {

@@ -152,7 +152,7 @@ function KinkyDungeonDrawLore() {
 
 	//let wrapAmount = KDBigLanguages.includes(TranslationLanguage) ? 19 : 45;
 	let loreName = TextGet("KDLoreTitle" + KinkyDungeonCurrentLore);
-	let loreOrig = TextGet("KDLoreText" + KinkyDungeonCurrentLore).split(/[\|\n]/);
+	let loreOrig = TextGet("KDLoreText" + KinkyDungeonCurrentLore).split(/\||\\n|\n/);
 	let lore = [];
 	let mult = KDGetFontMult();
 	if (KDLoreEnemy[KinkyDungeonCurrentLore]) mult *= 0.74;
@@ -166,7 +166,7 @@ function KinkyDungeonDrawLore() {
 	if (KDLoreImg[KinkyDungeonCurrentLore]) {
 		i += 0.7;
 		let imgwidth = 200;
-		let images = KDLoreImg[KinkyDungeonCurrentLore].split(/[\|\n]/);
+		let images = KDLoreImg[KinkyDungeonCurrentLore].split(/\||\\n|\n/);
 		for (let ii = 0; ii < images.length; ii++) {
 			KDDraw(kdcanvas, kdpixisprites, "kdlorimage" + ii,
 				KinkyDungeonRootDirectory + images[ii],

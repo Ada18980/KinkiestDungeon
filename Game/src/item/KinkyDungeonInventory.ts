@@ -262,6 +262,17 @@ let KDSpecialFilters: Record<string, Record<string, (item: item, handle: boolean
 		QuickBind: (item, _handle) => {
 			return KDRestraint(item)?.quickBindCondition != undefined;
 		},
+		Harness: (item, _handle) => {
+			return KDRestraint(item)?.shrine?.includes("Harness") != undefined;
+		},
+		Harnesses: (item, _handle) => {
+			return KDRestraint(item)?.shrine?.includes("Harnesses") != undefined
+				|| KDRestraint(item)?.shrine?.includes("ArmbinderHarness") != undefined;
+		},
+		Devices: (item, _handle) => {
+			return KDRestraint(item)?.shrine?.includes("Devices") != undefined
+				|| KDRestraint(item)?.shrine?.includes("Modules") != undefined;
+		},
 	},
 	armor: {
 		Enchanted: (item, handle) => {

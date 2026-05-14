@@ -122,7 +122,7 @@ function KDDrawDialogue(delta: number): void {
 				KDGameData.CurrentDialogEntity?.id || 0
 			));
 			// Type the message
-			let text = TextGet("r" + KDGameData.CurrentDialogMsg, dialogueParams).split(/[\|\n]/);
+			let text = TextGet("r" + KDGameData.CurrentDialogMsg, dialogueParams).split(/\||\\n|\n/);
 			for (let i = 0; i < text.length; i++) {
 				let tt = text[i];
 				if (KDGameData.CurrentDialogMsgData) {
@@ -157,7 +157,7 @@ function KDDrawDialogue(delta: number): void {
 						&& (!entries[i][1].gagDisabled || !gagged)) {
 						if (II >= 0) {
 							let playertext = entries[i][1].playertext;
-							if (playertext == "Default") playertext = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage + "_" + entries[i][0];
+							if (playertext == undefined || playertext == "Default") playertext = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage + "_" + entries[i][0];
 							if (entries[i][1].gag && KDDialogueGagged()) playertext = playertext + "Gag";
 
 							let tt = TextGet("d" + playertext, dialogueParams);
