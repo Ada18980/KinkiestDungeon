@@ -326,7 +326,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Don't Use Outfit Palettes
 不使用套装调色板
 - Show training in buffs and stats
-在增益和状态中显示训练等级
+在增益和状态中显示训练
 
 - Apply palettes to Restraints
 将调色应用于束缚
@@ -45809,7 +45809,8 @@ LKTYP 锁锁在了你的一个拘束具上！
 # - Mesmerizing
 # - Mesmerizing: This item has mind-altering effects.
 # - Damaging
-# - Damage Type: 
+- Damage Type: 
+伤害类型：
 
 - Dual Wield
 双持
@@ -53058,61 +53059,91 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - Brat
 # - Pet
 
-# - She
-# - Her
+- She
+她
+- Her
+她的
 # :: KDPro_SheObj
 # :: KDPro_ShePos
-# - She's
+- She's
+她
 # :: KDPro_SheIs
 # :: KDPro_SheHave
 
-# - They
-# - Them
-# - Their
-# - They're
-# - They've
+- They
+它们
+- Them
+它们
+- Their
+它们的
+- They're
+它们
+- They've
+它们
 
-# - You
+- You
+你
 # :: KDPro_You
 # :: KDPro_YouObj
-# - Your
-# - You're
-# - You've
+- Your
+你的
+- You're
+你
+- You've
+你
 
-# - It
+- It
+它
 # :: KDPro_It
 # :: KDPro_ItObj
-# - Its
-# - It's
+- Its
+它的
+- It's
+它
 # :: KDPro_ItIs
 # :: KDPro_ItHave
 
-# - she
-# - her
+- she
+她
+- her
+她的
 # :: KDPro_SheObjLC
 # :: KDPro_ShePosLC
-# - she's
+- she's
+她
 # :: KDPro_SheIsLC
 # :: KDPro_SheHaveLC
 
-# - they
-# - them
-# - their
-# - they're
-# - they've
+- they
+它们
+- them
+它们
+- their
+它们的
+- they're
+它们
+- they've
+它们
 
-# - you
+- you
+你
 # :: KDPro_YouLC
 # :: KDPro_YouObjLC
-# - your
-# - you're
-# - you've
+- your
+你的
+- you're
+你
+- you've
+你
 
-# - it
+- it
+它
 # :: KDPro_ItLC
 # :: KDPro_ItObjLC
-# - its
-# - it's
+- its
+它的
+- it's
+它
 # :: KDPro_ItIsLC
 # :: KDPro_ItHaveLC
 
