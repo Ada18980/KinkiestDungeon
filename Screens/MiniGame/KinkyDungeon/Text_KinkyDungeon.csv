@@ -4057,10 +4057,10 @@ KinkyDungeonInventoryItemDusterGagDesc2,"Deals 0.5 tickle damage on attack and a
 
 RestraintGasMask,Gas Mask
 RestraintGasMaskDesc,"A respirator designed to protect the wearer from noxious fumes."
-RestraintGasMaskDesc2,"+50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech."
+RestraintGasMaskDesc2,"+50 Poison resist. Protects against the effects of poison gas and spores. Affects speech."
 KinkyDungeonInventoryItemGasMask,Gas Mask
 KinkyDungeonInventoryItemGasMaskDesc,"A respirator designed to protect the wearer from noxious fumes."
-KinkyDungeonInventoryItemGasMaskDesc2,"+50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech."
+KinkyDungeonInventoryItemGasMaskDesc2,"+50 Poison resist. Protects against the effects of poison gas and spores. Affects speech."
 
 
 KDCursedArmorUncurse,The curse on the RestraintName is lifted!
@@ -7930,25 +7930,25 @@ KinkyDungeonAngelHelpful,"Angel: Perhaps I can assist with those!"
 
 KinkyDungeonGhostGreet0,"Adventurer's Ghost: Well met, traveler!"
 KinkyDungeonGhostGreet1,"Adventurer's Ghost: Hello again, traveler (giggles)."
-KinkyDungeonGhostGreet2,"Adventurer's Ghost: Having fun, girl?"
-KinkyDungeonGhostGreet3,"Adventurer's Ghost: Looking for some trouble, slave?"
-KinkyDungeonGhostGreet4,"Adventurer's Ghost: I see you, naughty little slave!"
+KinkyDungeonGhostGreet2,"Adventurer's Ghost: Having fun, ${Phonor}?"
+KinkyDungeonGhostGreet3,"Adventurer's Ghost: Looking for some trouble, ${Pdim}?"
+KinkyDungeonGhostGreet4,"Adventurer's Ghost: I see you, naughty little ${Pdim}!"
 
 KinkyDungeonGhostHelpful0,"Ghost: I can try to help with those, traveler."
 KinkyDungeonGhostHelpful1,"Ghost: Aww, you look like you're having fun..."
 
 KinkyDungeonGhostUnhelpfulGeneric2,"Ghost: You look great in those, hehe~"
 KinkyDungeonGhostUnhelpfulGeneric3,"Ghost: Please don't bother me."
-KinkyDungeonGhostUnhelpfulGeneric4,"Ghost: A good slave doesn't complain."
+KinkyDungeonGhostUnhelpfulGeneric4,"Ghost: A good ${Psub} doesn't complain."
 
 KinkyDungeonGhostUnhelpfulGag2,"Ghost: What's that? I don't understand."
 KinkyDungeonGhostUnhelpfulGag3,"Ghost: Silence is golden."
-KinkyDungeonGhostUnhelpfulGag4,"Ghost: A good slave doesn't speak until addressed."
+KinkyDungeonGhostUnhelpfulGag4,"Ghost: A good ${Psub} doesn't speak until addressed."
 KinkyDungeonGhostUnhelpfulArms2,"Ghost: Aww, so helpless~"
-KinkyDungeonGhostUnhelpfulArms3,"Ghost: Trussed up like a good girl~"
+KinkyDungeonGhostUnhelpfulArms3,"Ghost: Trussed up like a good ${Psub}~"
 KinkyDungeonGhostUnhelpfulArms4,"Ghost: You're going to stay that way for a good while."
 KinkyDungeonGhostUnhelpfulFeet2,"Ghost: I love watching you hop around, it's funny!"
-KinkyDungeonGhostUnhelpfulFeet3,"Ghost: Just sit there like a good girl~"
+KinkyDungeonGhostUnhelpfulFeet3,"Ghost: Just sit there like a good ${Psub}~"
 KinkyDungeonGhostUnhelpfulFeet4,"Ghost: I want to see you kneel~"
 KinkyDungeonGhostUnhelpfulChaste2,"Ghost: Aww, feeling frustrated?"
 KinkyDungeonGhostUnhelpfulChaste3,"Ghost: Looks like someone's been naughty~"
@@ -8047,18 +8047,18 @@ KinkyDungeonRemindJailTour2,"I won't repeat myself"
 KinkyDungeonRemindJailTour3,"Then let's put you back in your cell!"
 
 KinkyDungeonRemindJailRelease0,"I hope you learned your lesson. Now get your butt out of here."
-KinkyDungeonRemindJailRelease1,"You've been a good girl. I hope you don't make the same mistake again. You can leave."
-KinkyDungeonRemindJailRelease2,"That's a good girl. Now behave yourself, okay? You're free to go."
+KinkyDungeonRemindJailRelease1,"You've been a good ${Psub}. I hope you don't make the same mistake again. You can leave."
+KinkyDungeonRemindJailRelease2,"That's a good ${Psub}. Now behave yourself, okay? You're free to go."
 KinkyDungeonRemindJailRelease3,"Looks like you got yourself in a bind! (${EThey} pat${Es} your butt playfully) Go make the others happy!"
 
 rJailRelease0,"I hope you learned your lesson.|Now get your butt out of here."
-rJailRelease1,"You've been a good girl. I hope you don't make the same mistake again.|You can leave."
-rJailRelease2,"That's a good girl. Now behave yourself, okay?|You're free to go."
+rJailRelease1,"You've been a good ${Psub}. I hope you don't make the same mistake again.|You can leave."
+rJailRelease2,"That's a good ${Psub}. Now behave yourself, okay?|You're free to go."
 rJailRelease3,"Looks like you got yourself in a bind!|(${EThey} pat${Es} your butt playfully)|You're free to go!"
 rJailRelease,"Looks like you got yourself in a bind!|(${EThey} pat${Es} your butt playfully)|You're free to go!"
 
 
-KinkyDungeonJailerGoodGirl0,"Good girl."
+KinkyDungeonJailerGoodGirl0,"Good ${PSub}."
 KinkyDungeonJailerGoodGirl1,"You'll be making others happy in no time."
 KinkyDungeonJailerGoodGirl2,"You're shaping up to be a good slave."
 KinkyDungeonJailerGoodGirl3,"I wish I could take you to my room..."
@@ -8077,7 +8077,7 @@ KinkyDungeonJailerRemove,"I am going to change your restraints. Hold still!"
 KinkyDungeonJailerLock,"Just need to add a little security~"
 
 KinkyDungeonJailerMistake,"Got yourself in trouble, eh?"
-KinkyDungeonJailerDomMistake,"Looks like you're shaping up to be a good girl~"
+KinkyDungeonJailerDomMistake,"Looks like you're shaping up to be a good ${Psub}~"
 KinkyDungeonJailerSubMistake,"Oh! Looks like I've made a mistake..."
 KinkyDungeonJailerRobotMistake,"404 prisoner not found. Releasing tether."
 
@@ -8795,7 +8795,7 @@ KinkyDungeonRemindJailPlayBrat0,"Catch me if you can!"
 KinkyDungeonRemindJailPlayBrat1,"You'll never get away with this!"
 KinkyDungeonRemindJailPlayBrat2,"I don't want to be your slave!"
 KinkyDungeonRemindJailPlaySub0,"I've been naughty, looks like I need to be punished..."
-KinkyDungeonRemindJailPlaySub1,"I've been a bad girl, won't you do something about it?"
+KinkyDungeonRemindJailPlaySub1,"I've been a bad ${Esub}, won't you do something about it?"
 KinkyDungeonRemindJailPlaySub2,"Mmmph... maybe I talk too much..."
 KinkyDungeonRemindJailPlayFree,"Hey! Where do you think you're going~"
 KinkyDungeonRemindJailPlayStruggle,"You look like you're having fun!"
@@ -8803,7 +8803,7 @@ KinkyDungeonRemindJailPlayLeash,"I have somewhere else in mind for you~"
 KinkyDungeonRemindJailPlayLoot,"What do you think you're doing with that?"
 KinkyDungeonRemindJailPlayKey,"Looks like you found my keys! Hand them over."
 KinkyDungeonRemindJailChaseAlert,"Alert!"
-KinkyDungeonRemindJailPlay0,"You look like a good girl. Come on~"
+KinkyDungeonRemindJailPlay0,"You look like a good ${Psub}. Come on~"
 KinkyDungeonRemindJailPlay1,"Come here, let's play!"
 KinkyDungeonRemindJailPlay2,"*grins and starts walking toward you*"
 KinkyDungeonRemindJailChaseAttack0,"Hey! Play nice!"
@@ -9340,7 +9340,7 @@ KinkyDungeonRemindJailPlayAlchemist2,"Looks like it's time to drop some science!
 KinkyDungeonRemindJailChaseAlchemistAttack0,"Bad girl!"
 KinkyDungeonRemindJailChaseAlchemistAttack1,"Keep your filthy hands off me!"
 KinkyDungeonRemindJailChaseAlchemistAttack2,"Your chances of winning are... less than zero."
-KinkyDungeonRemindJailChaseAlchemistSpell0,"Good girls don't use magic without permission."
+KinkyDungeonRemindJailChaseAlchemistSpell0,"Good ${Psub}s don't use magic without permission."
 KinkyDungeonRemindJailChaseAlchemistSpell1,"Keep that magic away from my experiments!"
 KinkyDungeonRemindJailChaseAlchemistSpell2,"You're going to break something!"
 KinkyDungeonRemindJailChaseAlchemistSpellItem,"That's dangerous!"
@@ -10170,7 +10170,7 @@ KinkyDungeonRemindJailChaseWolfgirlShrine,"Don't even think about appealing to y
 KinkyDungeonRemindJailChaseWolfgirlChest,"Stop right there!"
 KinkyDungeonRemindJailChaseWolfgirlOrb,"It'll take you quite a while to pay off those damages!"
 KinkyDungeonRemindJailChaseWolfgirlJailbreak,"Finally, I've tracked you down!"
-KinkyDungeonRemindJailWolfgirlGrab,"Now there, good girl!"
+KinkyDungeonRemindJailWolfgirlGrab,"Now there, good ${Psub}!"
 KinkyDungeonRemindJailWolfgirlDisarm,"Wrong move!"
 KinkyDungeonRemindJailWolfgirlHit,"Get your paws off me!"
 KinkyDungeonRemindJailWolfgirlHitPlayer,"*scoffs* Could use some work~"
@@ -10210,11 +10210,11 @@ KinkyDungeonRemindJailPlaySubYen0,"Catch me. If you can, that is."
 KinkyDungeonRemindJailPlaySubYen1,"I double dare you."
 KinkyDungeonRemindJailPlaySubYen2,"Weren't you chasing me?"
 KinkyDungeonRemindJailPlayYen0,"I've got somethin nice for ya."
-KinkyDungeonRemindJailPlayYen1,"Be a good girl for me, will ya?"
+KinkyDungeonRemindJailPlayYen1,"Be a good ${Psub} for me, will ya?"
 KinkyDungeonRemindJailPlayYen2,"You need to show some restraint."
-KinkyDungeonRemindJailPlayYenStruggle,"Stay where you belong, you naughty girl."
+KinkyDungeonRemindJailPlayYenStruggle,"Stay where you belong, you naughty ${Psub}."
 KinkyDungeonRemindJailPlayYenLeash,"Let's go somewhere more private."
-KinkyDungeonRemindJailPlayYenFree,"Watch yourself, girl~"
+KinkyDungeonRemindJailPlayYenFree,"Watch yourself, ${Psub}~"
 KinkyDungeonRemindJailPlayYenLoot,"Nice find. I'll take it."
 KinkyDungeonRemindJailPlayYenKey,"This place is off-limits for you."
 KinkyDungeonRemindJailChaseYenAlert,"Ready or not, here I come."
@@ -10911,7 +10911,7 @@ KinkyDungeonRemindJailPlayDomMaid2,"Let's test your manners~"
 KinkyDungeonRemindJailPlayDomMaidStruggle,"Having fun there?"
 KinkyDungeonRemindJailPlayDomMaidLeash,"It's time for your training."
 KinkyDungeonRemindJailPlayDomMaidFree,"You need to be taught some manners, maid."
-KinkyDungeonRemindJailPlayDomMaidLoot,"Good girl. I'll take that to the storage room."
+KinkyDungeonRemindJailPlayDomMaidLoot,"Good ${Psub}. I'll take that to the storage room."
 KinkyDungeonRemindJailPlayDomMaidKey,"I'll be taking those."
 KinkyDungeonRemindJailChaseDomMaidAlert,"Who the hell are you?"
 KinkyDungeonRemindJailChaseDomMaidAttack0,"Oh, you're approaching me?"
@@ -11085,7 +11085,7 @@ KinkyDungeonRemindJailPlayHeadMaid2,"It's time for a test."
 KinkyDungeonRemindJailPlayHeadMaidStruggle,"A maid remains quiet until asked."
 KinkyDungeonRemindJailPlayHeadMaidLeash,"Come with me. I will train you personally."
 KinkyDungeonRemindJailPlayHeadMaidFree,"You need to work on your ladylike manners."
-KinkyDungeonRemindJailPlayHeadMaidLoot,"Good girl, finding lost items."
+KinkyDungeonRemindJailPlayHeadMaidLoot,"Good ${Psub}, finding lost items."
 KinkyDungeonRemindJailPlayHeadMaidKey,"I do not give you permmission to leave."
 KinkyDungeonRemindJailChaseHeadMaidAlert,"Seems I will have to get my hands dirty."
 KinkyDungeonRemindJailChaseHeadMaidAttack0,"Do you know who I am?"
@@ -11116,7 +11116,7 @@ KinkyDungeonRemindJailHeadMaidIntro,"Hmm. You may call me Head Maid PTRN."
 KinkyDungeonRemindJailChaseHeadMaidDefend0,"Looks like we have a guest."
 KinkyDungeonRemindJailChaseHeadMaidDefend1,"I'll be gentle, I promise~"
 KinkyDungeonRemindJailChaseHeadMaidDefend2,"Know your place, dear~"
-KinkyDungeonRemindJailChaseHeadMaidDefendHonor0,"Good girls keep their hands to themselves."
+KinkyDungeonRemindJailChaseHeadMaidDefendHonor0,"Good ${Psub}s keep their hands to themselves."
 KinkyDungeonRemindJailChaseHeadMaidDefendHonor1,"You broke the rules, now you'll face the consequences."
 KinkyDungeonRemindJailChaseHeadMaidDefendHonor2,"Hands off our partners."
 KinkyDungeonRemindJailChaseHeadMaidHonor0,"Looks like you've made a few enemies along the way."
@@ -11469,11 +11469,11 @@ rHeadMaidExcuseMe,"(The SPEAKER furrows her brow)|...Excuse me?"
 
 rBluffed,"(The SPEAKER tilts her head)|Right, sorry."
 rBluffedSub,"(The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on..."
-rBluffedDom,"(The SPEAKER smiles)|Keep up the good work, girl."
+rBluffedDom,"(The SPEAKER smiles)|Keep up the good work, ${Psub}."
 rBluffedRobot,"(The SPEAKER beeps)|Vital signs indicate honesty. Carry on."
 
-rGoodGirl,"(The SPEAKER smiles)|Good girl."
-rGoodGirlDom,"(The SPEAKER smiles)|That's a good girl."
+rGoodGirl,"(The SPEAKER smiles)|Good ${Psub}."
+rGoodGirlDom,"(The SPEAKER smiles)|That's a good ${Psub}."
 rGoodGirlSub,"(The SPEAKER smiles)|Thank you."
 rGoodGirlRobot,"(The SPEAKER beeps)|Thank you for complying."
 
@@ -11487,7 +11487,7 @@ rPunishmentRobot,"(The SPEAKER beeps)|Subject is resisting. Begin capture protoc
 rWeaponFound,"(The SPEAKER calls at you)|You're not supposed to be carrying a weapon.|Hand it over."
 rWeaponFoundRobot,"(The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply."
 rWeaponFoundSub,"(The SPEAKER blushes)|Umm, ${PHonor}, I see that you have a weapon there,|could you maybe hand it over?"
-rWeaponFoundDom,"(The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?"
+rWeaponFoundDom,"(The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?"
 rWeaponFoundBrat,"(The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?"
 dWeaponFoundAccept,"Yes, ${EHonor}... (Currently held weapon will be lost)"
 dWeaponFoundAcceptGag,"Mmph... (Nod politely) (Currently held weapon will be lost)"
@@ -11525,12 +11525,12 @@ dPrisonIntroNewLife_SubGag,"(Moan into your gag and giggle)"
 dPrisonIntroRules_Pout,"(Glare at her)"
 dPrisonIntroRules_Brat,"Let me out this instant!"
 dPrisonIntroRules_BratGag,"(Scream into your gag uselessly)"
-dPrisonIntroRules_Sub,"I will be a good girl!"
+dPrisonIntroRules_Sub,"I will be a good ${Psub}!"
 dPrisonIntroRules_SubGag,"(Giggle and wiggle your body)"
 
 
 
-rPrisonRepeat,"(The SPEAKER approaches you in your cell)|Back again, are we? Silly girl.|You know we don't take no for an answer."
+rPrisonRepeat,"(The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You know we don't take no for an answer."
 
 rPrisonRepeatSmile,"(The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!"
 rPrisonRepeatSmile_Correct,"(The SPEAKER frowns)|I know exactly what you need..."
@@ -11645,7 +11645,7 @@ dOfferSenseDepForce_NoGag,"(Shake your head and groan) (PERCENT chance to avoid)
 
 
 rOfferDusterGag,"(The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!"
-rOfferDusterGagYes,"(The SPEAKER takes a duster gag from her satchel)|Such a good girl!|So here's what I have for you~|It's a special tool to help keep the place clean."
+rOfferDusterGagYes,"(The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean."
 rOfferDusterGagYes_Yes,"(The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?"
 rOfferDusterGagYes_No,"(The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~"
 rOfferDusterGagNo,"(The SPEAKER shrugs)|I'll find someone else..."
@@ -11729,7 +11729,7 @@ dOfferIceForce_NoGag,"(Wriggle to warm up) (PERCENT chance to avoid)"
 
 
 
-rOfferAutoTape,"(A robotic SPEAKER approaches)|QUERY: Good girl detected:|Restraint desired?"
+rOfferAutoTape,"(A robotic SPEAKER approaches)|QUERY: Good ${PSub} detected:|Restraint desired?"
 rOfferAutoTapeYes,"(The SPEAKER beeps and whirrs)|SPEAKER will add RESTRAINT.|Acceptable?"
 rOfferAutoTapeYes_Yes,"(The SPEAKER spins around you, releasing tape)|RESTRAINT dispensed.|Have a nice day."
 rOfferAutoTapeYes_No,"(The SPEAKER buzzes)|Understood. Proceding back to duty."
@@ -11757,7 +11757,7 @@ dOfferAutoTapeForce_NoGag,"(Shake your head rapidly) (PERCENT chance to avoid)"
 
 
 
-rOfferHiTechCables,"(A robotic SPEAKER approaches)|QUERY: Good girl detected:|Restraint desired?"
+rOfferHiTechCables,"(A robotic SPEAKER approaches)|QUERY: Good ${PSub} detected:|Restraint desired?"
 rOfferHiTechCablesYes,"(The SPEAKER beeps and whirrs)|SPEAKER will add RESTRAINT.|Acceptable?"
 rOfferHiTechCablesYes_Yes,"(The SPEAKER shoots cables at you)|RESTRAINT dispensed.|Have a nice day."
 rOfferHiTechCablesYes_No,"(The SPEAKER buzzes)|Understood. Proceding back to duty."
@@ -11875,9 +11875,9 @@ rOfferWolfRestraintYes_Yes,"(The SPEAKER puts on the RESTRAINT)|Perfect. Better 
 rOfferWolfRestraintYes_No,"(The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~"
 rOfferWolfRestraintNo,"(The SPEAKER nods glumly)|Not a fan?|Shame, I am~"
 rOfferWolfRestraintForce,"(The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained..."
-rOfferWolfRestraintForceYes,"(The SPEAKER looks at you deviously)|A good girl wears her RESTRAINT with enthusiasm~"
+rOfferWolfRestraintForceYes,"(The SPEAKER looks at you deviously)|A good ${Psub} wears her RESTRAINT with enthusiasm~"
 rOfferWolfRestraintForce_No,"(The SPEAKER sulks)|You'd be difficult to train anyway~"
-rOfferWolfRestraintForce_Yes,"(The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good girl~|I'll make it extra tight for you!"
+rOfferWolfRestraintForce_Yes,"(The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good ${Psub}~|I'll make it extra tight for you!"
 rOfferWolfRestraintForce_Failure,"(The SPEAKER knocks you down and forces you into the RESTRAINT)|Here, maybe you'll reconsider after wearing it a while!"
 
 dOfferWolfRestraint_Yes,"Maybe a little~"
@@ -11899,7 +11899,7 @@ dOfferWolfRestraintForce_NoGag,"(Shake your head worriedly) (PERCENT chance to a
 
 rOfferMithril,"(A SPEAKER gracefully gestures to you)|So good to see a friendly face~|Care to see some elven goods?"
 rOfferMithrilYes,"(The SPEAKER holds up a RESTRAINT)|These are some of our strictest.|Want to try?"
-rOfferMithrilYes_Yes,"(The SPEAKER smiles sweetly)|Such a good girl~|(The RESTRAINT locks with a loud click)"
+rOfferMithrilYes_Yes,"(The SPEAKER smiles sweetly)|Such a good ${Psub}~|(The RESTRAINT locks with a loud click)"
 rOfferMithrilYes_No,"(The SPEAKER sagely nods)|As you wish~"
 rOfferMithrilNo,"(The SPEAKER frowns briefly)|I understand~"
 rOfferMithrilForce,"(The SPEAKER leans closer)|Then you can test their escapability!|(The SPEAKER dives towards you!)"
@@ -12385,7 +12385,7 @@ rOfferRopesNo,"(The SPEAKER frowns)|Aw. What a missed opportunity!"
 rOfferRopesForce,"(The SPEAKER grins and reaches for her satchel)|Well, too bad--"
 rOfferRopesForceYes,"(The SPEAKER grins)|But I've already brought so much rope with me~"
 rOfferRopesForce_No,"(The SPEAKER frowns)|Suit yourself."
-rOfferRopesForce_Yes,"(The SPEAKER smiles)|Good girl~"
+rOfferRopesForce_Yes,"(The SPEAKER smiles)|Good ${Psub}~"
 rOfferRopesForce_Failure,"(The SPEAKER takes you down and trusses you up tightly)|That'll teach you~"
 
 dOfferRopes_Yes,"I think so too!"
@@ -12407,14 +12407,14 @@ dOfferRopesForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 rOfferWolfgirl,"(The SPEAKER perks her ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!"
 rOfferWolfgirlYes,"(The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here..."
-rOfferWolfgirlYes_Yes,"(The SPEAKER gets you suited up)|There you go! Now go be a good girl!"
+rOfferWolfgirlYes_Yes,"(The SPEAKER gets you suited up)|There you go! Now go be a good ${Psub}!"
 rOfferWolfgirlYes_No,"(The SPEAKER scoffs)|That's what they all say."
 rOfferWolfgirlNo,"(The SPEAKER frowns)|What a shame."
 rOfferWolfgirlForce,"(The SPEAKER sneakily reaches for her baton)|You'll love it if you try it!"
 rOfferWolfgirlForceYes,"(The SPEAKER grins)|I promise you it's a good deal~"
 rOfferWolfgirlForce_No,"(The SPEAKER frowns)|Fine. I'll look for other candidates."
 rOfferWolfgirlForce_Yes,"(The SPEAKER smiles)|That's right. Your name, please?"
-rOfferWolfgirlForce_Failure,"(The SPEAKER zaps you and places you in restrictive gear)|Good girls need training.|Come back when you've learned a thing or two~"
+rOfferWolfgirlForce_Failure,"(The SPEAKER zaps you and places you in restrictive gear)|Good ${Psub}s need training.|Come back when you've learned a thing or two~"
 
 dOfferWolfgirl_Yes,"This sounds like an interesting opportunity."
 dOfferWolfgirl_YesGag,"(Nod excitedly)"
@@ -12665,8 +12665,8 @@ dOfferBountyhunterForce_NoGag,"(Frown at her) (PERCENT chance to avoid)"
 
 
 rOfferAncientRobot,"(The SPEAKER beeps)|Prisoner 74121 identified.|Subject not registered in database."
-rOfferAncientRobotYes,"(The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good girl' to enter database."
-rOfferAncientRobotYes_Yes,"(The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good girl."
+rOfferAncientRobotYes,"(The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good ${Psub}' to enter database."
+rOfferAncientRobotYes_Yes,"(The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good ${Psub}."
 rOfferAncientRobotYes_No,"(The SPEAKER beeps)|Acknowledged. Be warned:|Lost contact with Sections 98, 97, 96, 95...|(The list goes on...)"
 rOfferAncientRobotNo,"(The SPEAKER beeps)|Acknowledged. Updating records."
 rOfferAncientRobotForce,"(The SPEAKER beeps and flashes its lights)|Target acquired."
@@ -12680,12 +12680,12 @@ dOfferAncientRobot_YesGag,"(Stop to talk to the robot)"
 dOfferAncientRobot_No,"Prisoner 74121? You must be mistaken..."
 dOfferAncientRobot_NoGag,"(Avoid the robot)"
 
-dOfferAncientRobotYes_Yes,"Prisoner 74121 reporting. I will be a good girl."
+dOfferAncientRobotYes_Yes,"Prisoner 74121 reporting. I will be a good ${Psub}."
 dOfferAncientRobotYes_YesGag,"(Accept the contract)"
 dOfferAncientRobotYes_No,"Actually, I am an administrator. (Refuse)"
 dOfferAncientRobotYes_NoGag,"(Refuse the contract)"
 
-dOfferAncientRobotForce_Yes,"I'm sorry, I will be a good girl!"
+dOfferAncientRobotForce_Yes,"I'm sorry, I will be a good ${Psub}!"
 dOfferAncientRobotForce_YesGag,"(Moan and nod)"
 dOfferAncientRobotForce_No,"What? (PERCENT chance to avoid)"
 dOfferAncientRobotForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
@@ -12919,7 +12919,7 @@ rShopBuyItem,"(The SPEAKER sells you the item)"
 rShopBuy_Fail,"(The SPEAKER shakes her head)|I think you'd be better off without that~"
 rShopBuy_FailSub,"(The SPEAKER looks embarassed)|I can't sell you that, ${PHonor}..."
 rShopBuy_FailBrat,"(The SPEAKER blushes)|Actually, I was saving that for myself..."
-rShopBuy_FailDom,"(The SPEAKER grins)|Good girls don't need one of those~"
+rShopBuy_FailDom,"(The SPEAKER grins)|Good ${Psub}s don't need one of those~"
 rShopBuy_FailRobot,"(The SPEAKER buzzes)|Error, insufficient access privileges."
 rShopBuy_NoMoney,"(The SPEAKER giggles at your empty pockets)|You can't afford such things, silly~"
 rShopBuy_NoMoneySub,"(The SPEAKER pauses nervously)|Um ${PHonor}, I don't think you can afford that..."
@@ -13646,7 +13646,7 @@ rShopkeeperTeleportDebt_Armor,"(The SPEAKER holds up a RESTRAINTNAME)|I've bough
 rShopkeeperTeleportDebt_Restraint,"(The SPEAKER holds up a RESTRAINTNAME)|I need to make sure you won't go running off again.|This RESTRAINTNAME here has a special seal on it.|I can get you out of it, of course, but you'll have to pay up first."
 rShopkeeperTeleportDebt_Collar,"(The SPEAKER holds up a RESTRAINTNAME)|Your captors are quite the market for high-security restraints.|If you get captured by them, maybe they'll see my logo on this collar!|It's quite comfy and secure,|you'll end up feeling more submissive the more your wear it."
 rShopkeeperTeleportDebt_Catsuit,"(The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!"
-rShopkeeperTeleportDebt_Pay,"(The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~"
+rShopkeeperTeleportDebt_Pay,"(The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~"
 
 dShopkeeperTeleportDebt_Yes,"Sure! I accept!"
 dShopkeeperTeleportDebt_YesGag,"(Nod in approval)"
@@ -13696,7 +13696,7 @@ rShopkeeperOfferHelpDebt_Armor,"(The SPEAKER holds up a RESTRAINTNAME)|I've boug
 rShopkeeperOfferHelpDebt_Restraint,"(The SPEAKER holds up a RESTRAINTNAME)|I need to make sure you won't go running off again.|This RESTRAINTNAME here has a special seal on it.|I can get you out of it, of course, but you'll have to pay up first."
 rShopkeeperOfferHelpDebt_Collar,"(The SPEAKER holds up a RESTRAINTNAME)|Your captors are quite the market for high-security restraints.|If you get captured by them, maybe they'll see my logo on this collar!|It's quite comfy and secure,|you'll end up feeling more submissive the more your wear it."
 rShopkeeperOfferHelpDebt_Catsuit,"(The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!"
-rShopkeeperOfferHelpDebt_Pay,"(The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~"
+rShopkeeperOfferHelpDebt_Pay,"(The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~"
 
 dShopkeeperOfferHelpDebt_Yes,"Sure! I accept!"
 dShopkeeperOfferHelpDebt_YesGag,"(Nod in approval)"
@@ -14298,6 +14298,7 @@ KDCreateAlwaysDress,Export AlwaysDress
 KDCreateHair,Export Hair
 KDCreateFace,Export Face
 KDCreateCosplay,Export Cosplay
+KDCreateExpression,Export Expression
 
 KDColorSlidergamma,Gamma
 KDColorSlidersaturation,Original Color
@@ -14349,7 +14350,7 @@ cat_Weapon,"Weapons"
 m_KoiEyes,"Cat Eyes"
 l_KoiEyes_Eyes,"Right Eye"
 l_KoiEyes_Eyes2,"Left Eye"
-m_KoiBrows,"Cat Brows"
+m_KoiBrows,"Simple Brows"
 l_KoiBrows_Brows,"Right Brow"
 l_KoiBrows_Brows2,"Left Brow"
 m_KoiMouth,"Simple Mouth"
@@ -14661,7 +14662,7 @@ m_KoiEyes_l_Eyes,Eyes
 l_KoiEyes_Eyes2,Eyes2
 l_KoiEyes_Whites,Whites
 l_KoiEyes_Whites2,Whites2
-m_HumanEyes,HumanEyes
+m_HumanEyes,Simple Eyes
 l_HumanEyes_Eyes,"Right Eye"
 l_HumanEyes_Eyes2,"Left Eye"
 l_HumanEyes_Whites,Whites
@@ -14670,36 +14671,41 @@ m_KoiBrows_l_Brows,Brows
 m_KoiBrows_l_Brows2,Brows2
 m_KoiMouth_l_Mouth,Mouth
 m_KoiBlush_l_Blush,Blush
-m_KjusEyes,KjusEyes
+c_KjusEyes,Eyes
+m_KjusEyes,Kjus Eyes
 l_KjusEyes_Eyes,"Right Eye"
 l_KjusEyes_Eyes2,"Left Eye"
 l_KjusEyes_Whites,Whites
 l_KjusEyes_Whites2,Whites2
-m_KjusBrows,KjusBrows
+c_KjusBrows,Eyebrows
+m_KjusBrows,Kjus Brows
 l_KjusBrows_Brows,"Right Brow"
 l_KjusBrows_Brows2,"Left Brow"
-m_KjusMouth,KjusMouth
+c_KjusMouth,Mouth
+m_KjusMouth,Kjus Mouth
 l_KjusMouth_Mouth,Mouth
-m_KjusBlush,KjusBlush
+m_KjusBlush,Kjus Blush
+c_KjusBlush,Blush
 l_KjusBlush_Blush,Blush
 m_DaskBrows,Hikimayu
 l_DaskBrows_Brows,"Right Brow"
 l_DaskBrows_Brows2,"Left Brow"
-m_DaskEyes,DaskEyes
+m_DaskEyes,Dask Eyes
 l_DaskEyes_Eyes,"Right Eye"
 l_DaskEyes_Eyes2,"Left Eye"
 l_DaskEyes_Whites,Whites
 l_DaskEyes_Whites2,Whites2
-m_ElfEars,ElfEars
+m_ElfEars,Elf Ears
+c_ElfEars,Ears
 l_ElfEars_ElfFront,ElfFront
 l_ElfEars_ElfBack,ElfBack
-m_ElfEarsLong,ElfEarsLong
+m_ElfEarsLong,Elf Ears (Long)
 l_ElfEarsLong_ElfLongFront,ElfLongFront
 l_ElfEarsLong_ElfLongBack,ElfLongBack
-m_ElfEarsFloppy,ElfEarsFloppy
+m_ElfEarsFloppy,Elf Ears (Floppy)
 l_ElfEarsFloppy_ElfFloppyFront,ElfFloppyFront
 l_ElfEarsFloppy_ElfFloppyBack,ElfFloppyBack
-m_ElfEarrings,ElfEarrings
+m_ElfEarrings,Elf Earrings
 l_ElfEarrings_ElfEarringsFront,ElfEarringsFront
 l_ElfEarrings_ElfEarringsBack,ElfEarringsBack
 m_Earrings,Earrings
@@ -14708,38 +14714,41 @@ l_Earrings_EarringsBack,EarringsBack
 m_BunnyEars,Latex Bunny Ears
 l_BunnyEars_Ears,Ears
 l_BunnyEars_InnerEars,EarsInner
-m_KittyEars,KittyEars
+m_KittyEars,Catgirl Ears
 l_KittyEars_Ears,Kitty
 l_KittyEars_InnerEars,KittyInner
-m_WolfEars,WolfEars
+m_WolfEars,WolfE ars
 l_WolfEars_Ears,Wolf
 l_WolfEars_InnerEars,WolfInner
-m_FoxEars,FoxEars
+m_FoxEars,Fox Ears
 l_FoxEars_Ears,Fox
 l_FoxEars_InnerEars,FoxInner
-m_WolfTail,WolfTail
+c_WolfTail,Tail
+c_FoxTail,Fox Tails
+c_KittyTail,Cat Tails
+m_WolfTail,Wolf Tail
 l_WolfTail_Tail,Wolf
-m_KittyTail,KittyTail
+m_KittyTail,Cat Tail
 l_KittyTail_Tail,Kitty
-m_Kitty2Tail,Kitty2Tail
+m_Kitty2Tail,Cat 2 Tail
 l_Kitty2Tail_Tail1,Kitty
 l_Kitty2Tail_Tail2,Kitty2
-m_FoxTail,FoxTail
+m_FoxTail,Fox Tail
 l_FoxTail_Tail,Fox
-m_Fox2Tail,Fox2Tail
+m_Fox2Tail,Fox 2 Tail
 l_Fox2Tail_Tail1,Fox
 l_Fox2Tail_Tail2,Fox2
-m_Fox3Tail,Fox3Tail
+m_Fox3Tail,Fox 3 Tail
 l_Fox3Tail_Tail,Fox3
-m_Fox4Tail,Fox4Tail
+m_Fox4Tail,Fox 4 Tail
 l_Fox4Tail_Tail,Fox4
-m_Fox5Tail,Fox5Tail
+m_Fox5Tail,Fox 5 Tail
 l_Fox5Tail_Tail,Fox5
-m_Fox6Tail,Fox6Tail
+m_Fox6Tail,Fox 6 Tail
 l_Fox6Tail_Tail,Fox6
-m_Fox7Tail,Fox7Tail
+m_Fox7Tail,Fox 7 Tail
 l_Fox7Tail_Tail,Fox7
-m_CatsuitLower,CatsuitLower
+m_CatsuitLower,Catsuit Lower
 m_CatsuitLower_l_TorsoLower,TorsoLower
 m_CatsuitLower_l_FootRight,FootRight
 m_CatsuitLower_l_FootRightKneel,FootRightKneel
@@ -14748,7 +14757,7 @@ m_CatsuitLower_l_FootLeftHogtie,FootLeftHogtie
 m_CatsuitLower_l_LegRight,LegRight
 m_CatsuitLower_l_LegLeft,LegLeft
 m_CatsuitLower_l_Butt,Butt
-m_CatsuitUpper,CatsuitUpper
+m_CatsuitUpper,Catsuit Upper
 m_CatsuitUpper_l_ArmRight,ArmRight
 m_CatsuitUpper_l_ArmLeft,ArmLeft
 m_CatsuitUpper_l_ShoulderRight,ShoulderRight
@@ -28040,10 +28049,10 @@ KinkyDungeonJailerLeashTime,"Why don't we go for a walk?"
 KinkyDungeonJailerLeashed,"That's better! Now come along~"
 KinkyDungeonJailerLeashEndSoon,"This has been lots of fun!"
 KinkyDungeonJailerLeashEndReturn,"I have to go return you~"
-KinkyDungeonJailerLeashEndNow,"Good girl~ Let's go again later~"
+KinkyDungeonJailerLeashEndNow,"Good ${Psub}~ Let's go again later~"
 
 KinkyDungeonJailerBratLeashTime,"It's time for walkies!"
-KinkyDungeonJailerBratLeashed,"That's a good girl!"
+KinkyDungeonJailerBratLeashed,"That's a good ${Psub}!"
 KinkyDungeonJailerBratLeashEndSoon,"I want to keep you longer, but I've got things to do."
 KinkyDungeonJailerBratLeashEndReturn,"It's time to go back to your little house~"
 KinkyDungeonJailerBratLeashEndNow,"(pats you on the head)"
@@ -29507,36 +29516,36 @@ KDQuest_WolfgirlHunters,You are being chased by a band of relentless poachers.
 KDQuest_RopeQuest,Slay the Rope Kraken.
 KDQuestFail_RopeQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_RopeQuest,You have pleased the Goddess.
-KDQuestSucceedSub_RopeQuest,The Goddess calls you a good girl.
+KDQuestSucceedSub_RopeQuest,The Goddess calls you a good ${PSub}.
 KDQuest_LatexQuest,Rescue some alchemists from their own experiment.
 KDQuestFail_LatexQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_LatexQuest,You have pleased the Goddess.
-KDQuestSucceedSub_LatexQuest,The Goddess calls you a good girl.
+KDQuestSucceedSub_LatexQuest,The Goddess calls you a good ${PSub}.
 KDQuest_LeatherQuest,Stop rebels from making a pact with primordial beings.
 KDQuestFail_LeatherQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_LeatherQuest,You have pleased the Goddess.
-KDQuestSucceedSub_LeatherQuest,You have pleased the Goddess.
+KDQuestSucceedSub_LeatherQuest,The Goddess calls you a good ${PSub}.
 KDQuest_MetalQuest,Decommission some malfunctioning drones.
 KDQuestFail_MetalQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_MetalQuest,You have pleased the Goddess.
-KDQuestSucceedSub_MetalQuest,The Goddess calls you a good girl.
+KDQuestSucceedSub_MetalQuest,The Goddess calls you a good ${PSub}.
 
 KDQuest_WillQuest,Resolve a dispute between elves and catgirls by tying up both sides.
 KDQuestFail_WillQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_WillQuest,You have pleased the Goddess.
-KDQuestSucceedSub_WillQuest,The Goddess calls you a good girl.
+KDQuestSucceedSub_WillQuest,The Goddess calls you a good ${PSub}.
 KDQuest_ElementsQuest,Repel a planar incursion by a dangerous demon.
 KDQuestFail_ElementsQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_ElementsQuest,You have pleased the Goddess.
-KDQuestSucceedSub_ElementsQuest,The Goddess calls you a good girl.
+KDQuestSucceedSub_ElementsQuest,The Goddess calls you a good ${PSub}.
 KDQuest_ConjureQuest,Stop some witches from performing a dubious summoning ritual.
 KDQuestFail_ConjureQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_ConjureQuest,You have pleased the Goddess.
-KDQuestSucceedSub_ConjureQuest,The Goddess calls you a good girl.
+KDQuestSucceedSub_ConjureQuest,The Goddess calls you a good ${PSub}.
 KDQuest_IllusionQuest,Defeat a congregation of the Shadow Clan.
 KDQuestFail_IllusionQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_IllusionQuest,You have pleased the Goddess.
-KDQuestSucceedSub_IllusionQuest,The Goddess calls you a good girl.
+KDQuestSucceedSub_IllusionQuest,The Goddess calls you a good ${PSub}.
 
 KDGoddessQuestReward_Spell,"The Goddess grants you knowledge of SpellLearned!"
 KDGoddessQuestReward_SpellPoints,"You Goddess grants you +AMOUNT spell points!"
@@ -30813,7 +30822,7 @@ KDDisarmFlag,"The ENMY weakens your grip on your weapon! Enemies may disarm you 
 dGenericAllyFlirt_LinkRequestArms,"Can you link my arm cuffs?"
 dGenericAllyFlirt_LinkRequestArmsGag,"(Hold out your arm cuffs)"
 rGenericAllyFlirt_LinkRequestArms,"(The SPEAKER smiles)|Why sure, sweetie, I can help you with that~"
-rGenericAllyFlirt_LinkRequestArmsDom,"(The SPEAKER grins)|What a good girl!"
+rGenericAllyFlirt_LinkRequestArmsDom,"(The SPEAKER grins)|What a good ${Psub}!"
 rGenericAllyFlirt_LinkRequestArmsSub,"(The SPEAKER blushes)|Those look like fun!"
 rGenericAllyFlirt_LinkRequestArmsBrat,"(The SPEAKER smirks)|Sure thing~"
 rGenericAllyFlirt_LinkRequestArmsRobot,"(The SPEAKER beeps)|+10 social credit"
@@ -30821,7 +30830,7 @@ rGenericAllyFlirt_LinkRequestArmsRobot,"(The SPEAKER beeps)|+10 social credit"
 dGenericAllyFlirt_LinkRequestLegs,"Can you link my leg cuffs?"
 dGenericAllyFlirt_LinkRequestLegsGag,"(Hold out your leg cuffs)"
 rGenericAllyFlirt_LinkRequestLegs,"(The SPEAKER smiles)|Why sure, sweetie, I can help you with that~"
-rGenericAllyFlirt_LinkRequestLegsDom,"(The SPEAKER grins)|What a good girl!"
+rGenericAllyFlirt_LinkRequestLegsDom,"(The SPEAKER grins)|What a good ${Psub}!"
 rGenericAllyFlirt_LinkRequestLegsSub,"(The SPEAKER blushes)|Those look like fun!"
 rGenericAllyFlirt_LinkRequestLegsBrat,"(The SPEAKER smirks)|Sure thing~"
 rGenericAllyFlirt_LinkRequestLegsRobot,"(The SPEAKER beeps)|+10 social credit"
@@ -33498,18 +33507,30 @@ KDNoRestore,No wp res
 KDOneBarFailMove,Your attempts to move off the stand only twist the plug inside of you.
 
 KDHonorificUnit,Unit
+KDHonorificUnit_LC,unit
 KDHonorificMiss,Miss
 KDHonorificMistress,Mistress
+KDHonorificMistress_LC,mistress
 KDHonorificMaster,Master
+KDHonorificMaster_LC,master
 
 KDSubTitleDoll,Doll
+KDSubTitleDoll_LC,doll
 KDSubTitleGirl,Girl
+KDSubTitleGirl_LC,girl
 KDSubTitleSub,Submissive
+KDSubTitleSub_LC,submissive
 KDSubTitleSlave,Slave
+KDSubTitleSlave_LC,slave
 KDSubTitleBrat,Brat
+KDSubTitleBrat_LC,brat
 KDSubTitleUnit,Unit
+KDSubTitleUnit_LC,unit
 KDSubTitleToy,Toy
+KDSubTitleToy_LC,toy
 KDSubTitlePet,Pet
+KDSubTitlePet_LC,pet
+
 
 KDPro_She,She
 KDPro_SheObj,Her
@@ -33602,7 +33623,7 @@ KDAlreadyActive,The spell is already active.
 
 
 
-rDollTransform,"(The SPEAKER reaches out with a gentle hand, propping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?"
+rDollTransform,"(The SPEAKER reaches out with a gentle hand,\npropping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?"
 dDollTransform_Material,"Materials??"
 dDollTransform_MaterialGag,"(Squeak when ${Ethey} say${Es} 'materials')"
 dDollTransform_Caress,"Hands off!"
@@ -33619,8 +33640,8 @@ dDollTransform_Subby,"At your service~"
 dDollTransform_SubbyGag,"(Nod happily)"
 
 rDollTransformMaterial,"(The SPEAKER smiles and boops your nose)\nThat's you~\nPretty one."
-rDollTransformCaress,"(The SPEAKER pulls back ${Etheir} hand... and smacks you across the face)\nA good {$PSub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like..."
-rDollTransformCaressAlt,"(The SPEAKER pulls back ${Etheir} hand and merely smiles)\nA good {$PSub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like..."
+rDollTransformCaress,"(The SPEAKER pulls back ${Etheir} hand...\nand smacks you across the face)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like..."
+rDollTransformCaressAlt,"(The SPEAKER pulls back ${Etheir} hand and merely smiles)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like..."
 rDollTransformWhimper,"(The SPEAKER lets a sadistic smile slip across ${Etheir} face)\nDon't worry, you'll be a happy little doll soon.\nVery soon..."
 rDollTransformCurious,"My showcase is full of lovely dolls.\nLovely dolls just like you will be.\nAren't you excited?"
 rDollTransformSubby,"(The SPEAKER gives an approving nod)\nExcellent.\nYou'll be fitting right in with all the other dolls!"

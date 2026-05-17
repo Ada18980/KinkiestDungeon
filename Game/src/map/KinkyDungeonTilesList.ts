@@ -22,6 +22,7 @@ let KDCornerTiles = {
  */
 let KDTileUpdateFunctionsLocal: Record<string, (delta: number, X?: number, Y?: number) => void> = {
 	"]": (delta, X, Y) => {// Happy Gas!
+		
 		if (delta > 0)
 			KDDealEnvironmentalDamage(X, Y, 0.5, {
 				type: "happygas",
@@ -38,6 +39,7 @@ let KDTileUpdateFunctionsLocal: Record<string, (delta: number, X?: number, Y?: n
 				damage: 0.0,
 				time: 4,
 				bind: 0,
+				flags: ["Spores"],
 			});
 	},
 	'z': (_delta, X, Y) => {

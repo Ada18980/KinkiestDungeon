@@ -1100,6 +1100,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 	"DollTransform": {
 		response: "Default",
 		clickFunction: (_gagged, _player) => {
+			let speaker = KDGetSpeaker(true);
+			if (speaker) {
+				KDCustomExp[speaker.id] = {"BlushPose":"BlushLow","EyesPose":"EyesSly","Eyes2Pose":"Eyes2Sly","MouthPose":"MouthSmile","FearPose":"NoFearPose","BrowsPose":"BrowsNeutral","Brows2Pose":"Brows2Neutral"};
+			}
 			return false;
 		},
 		options: {
@@ -1114,7 +1118,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Caress": {
 				response: "Default", gag: true,
 				clickFunction: () => {
-					KDGameData.CurrentDialog
+					if (KinkyDungeonStatsChoice.get("NoRough"))
+						KDGameData.CurrentDialogMsg = "DollTransformCaressAlt";
 					return false;
 				},
 				options: {

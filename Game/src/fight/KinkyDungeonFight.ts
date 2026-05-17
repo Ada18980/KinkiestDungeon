@@ -3771,18 +3771,31 @@ function KDIsTeasing(damage: damageInfo): boolean {
  */
 function KDDealEnvironmentalDamage(x: number, y: number, aoe: number, damage: damageInfo, Attacker?: entity) {
 	for (let enemy of KDNearbyEnemies(x, y, aoe)) {
-		KinkyDungeonDamageEnemy(enemy, damage, true, true, undefined, undefined, Attacker, 0.1);
+
+		KDDealEnvDamageToEnemy(enemy, damage, Attacker);
+		
 	}
 	if (KinkyDungeonPlayerEntity.x == x && KinkyDungeonPlayerEntity.y == y) {
-		KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, damage.type, {
-			name: "EnvDamage",
-			power: damage.damage,
-			damage: damage.type,
-			flags: ["EnvDamage"],
-		}, undefined, KDGetFaction(Attacker), undefined);
+		KDDealEnvDamageToPlayer(KinkyDungeonPlayerEntity, damage, Attacker);
 	}
 }
 
+function KDDealEnvDamageToPlayer(player: entity, damage: damageInfo, Attacker?: entity) {
+	KinkyDungeonPlayerEffect(player, damage.type, {
+		name: "EnvDamage",
+		power: damage.damage,
+		damage: damage.type,
+		flags: ["EnvDamage"],
+	}, undefined, KDGetFaction(Attacker), undefined);
+}
+
+function KDDealEnvDamageToEnemy(enemy: entity, damage: damageInfo, Attacker?: entity) {
+	if (damage.type == "poisongas" && (KDIsImmuneToGas(enemy) || KDIsImmuneToDrugs(enemy))) return false;
+	if (damage.type == "happygas" && (KDIsImmuneToGas(enemy) || KDIsImmuneToDrugs(enemy))) return false;
+	if (damage.type == "poison" && KDIsImmuneToDrugs(enemy)) return false;
+	if (damage.flags?.includes("Spores") && KDIsImmuneToSpores(enemy)) return false;
+	KinkyDungeonDamageEnemy(enemy, damage, true, true, undefined, undefined, Attacker, 0.1);
+}
 
 
 function KDCanOffhand(item: item): boolean {

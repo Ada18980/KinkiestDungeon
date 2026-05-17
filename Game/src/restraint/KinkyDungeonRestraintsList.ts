@@ -1314,7 +1314,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "calcEscapeKillTarget", type: "DollmakerMask", inheritLinked: true},
 			{trigger: "calcEscapeMethod", type: "DollmakerMask", inheritLinked: true},
 		],
-		minLevel: 0, allFloors: true, shrine: ["Visors", "Cyber"],
+		minLevel: 0, allFloors: true, shrine: ["Visors", "Cyber", "Drone"],
 	},
 	{
 		inventory: true, name: "DollmakerMask", inaccessible: true,
@@ -8202,6 +8202,8 @@ const KinkyDungeonRestraints: restraint[] = [
 			{type: "Buff", trigger: "tick", power: 2.0, buffType: "happygasDamageResist"},
 			{type: "Buff", trigger: "tick", power: 2.0, buffType: "poisongasDamageResist"},
 			{type: "Buff", trigger: "tick", power: 0.5, buffType: "poisonDamageResist"},
+			{type: "Buff", trigger: "tick", power: 1, buffType: "GasImmunity"},
+			{type: "Buff", trigger: "tick", power: 1, buffType: "SporeImmunity"},
 		],
 		escapeChance: {"Struggle": 0.15, "Cut": -0.3, "Remove": 10, "Pick": 0.9}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: []},
 	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true,

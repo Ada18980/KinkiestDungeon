@@ -21,7 +21,7 @@ function KDAddParticle(x: number, y: number, img: string, _type: string, data: K
 		// Setup info...
 		let info = Object.assign({}, data);
 		Object.assign(info, {
-			time: 0,
+			time: data.time || 0,
 			lifetime: (data.lifetime || 0) + (data.lifetime_spread ? (Math.random()*data.lifetime_spread - data.lifetime_spread*0.5) : 0),
 			zIndex: data.zIndex || 100,
 			vy: data.vy + (data.vy_spread ? (Math.random()*data.vy_spread - data.vy_spread*0.5) : 0),
@@ -47,8 +47,9 @@ function KDAddParticle(x: number, y: number, img: string, _type: string, data: K
 			sprite.scale.x = info.scale;
 			sprite.scale.y = info.scale;
 		}
+		if (info.time < 0) sprite.visible = false;
 
-		if (info.fadeEase) {
+		if (info.fadeEase && sprite.visible) {
 			switch (info.fadeEase) {
 				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * info.time / info.lifetime)));}
 			}
@@ -79,7 +80,7 @@ function KDAddParticleEmitter(x: number, y: number, img: string, imgemitted: str
 	if (tex && emitted && emitter) {
 		let emitterinfo = Object.assign({}, emitter);
 		Object.assign(emitterinfo, {
-			time: 0,
+			time: emitter.time || 0,
 			lifetime: (emitter.lifetime || 0) + (emitter.lifetime_spread ? (Math.random()*emitter.lifetime_spread - emitter.lifetime_spread*0.5) : 0),
 			zIndex: emitter.zIndex || 100,
 			vy: emitter.vy + (emitter.vy_spread ? (Math.random()*emitter.vy_spread - emitter.vy_spread*0.5) : 0),
@@ -108,8 +109,9 @@ function KDAddParticleEmitter(x: number, y: number, img: string, imgemitted: str
 			sprite.scale.x = emitterinfo.scale;
 			sprite.scale.y = emitterinfo.scale;
 		}
+		if (emitterinfo.time < 0) sprite.visible = false;
 
-		if (emitterinfo.fadeEase) {
+		if (emitterinfo.fadeEase && sprite.visible) {
 			switch (emitterinfo.fadeEase) {
 				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * emitterinfo.time / emitterinfo.lifetime)));}
 			}
@@ -123,11 +125,12 @@ function KDAddParticleEmitter(x: number, y: number, img: string, imgemitted: str
 }
 
 
-function KDUpdateParticles(delta: number) {
+function KDUpdateParticles(main_delta: number) {
 	let id = 0;
 	let info: KDParticleData = null;
 	let sprite = null;
 	for (let particle of KDParticles.entries()) {
+		let delta = main_delta;
 		id = particle[0].valueOf();
 		info = particle[1].info;
 		sprite = particle[1].sprite;
@@ -149,14 +152,17 @@ function KDUpdateParticles(delta: number) {
 			delta = Math.max(0, delta + info.time);
 			info.time += dd;
 		} else info.time += delta;
+
 		
+		
+		if (info.time >= 0) sprite.visible = true;
 		if (info.vy) {sprite.position.y += info.vy * delta;}
 		if (info.vx) {sprite.position.x += info.vx * delta;}
 
-		if (info.sin_x && info.sin_period) {sprite.position.x += info.sin_x * Math.sin(info.phase + info.sin_period * info.time / info.lifetime) * delta;}
-		if (info.sin_y && info.sin_period) {sprite.position.y += info.sin_y * Math.sin(info.phase + info.sin_period * info.time / info.lifetime) * delta;}
+		if (info.sin_x && info.sin_period && sprite.visible) {sprite.position.x += info.sin_x * Math.sin(info.phase + info.sin_period * info.time / info.lifetime) * delta;}
+		if (info.sin_y && info.sin_period && sprite.visible) {sprite.position.y += info.sin_y * Math.sin(info.phase + info.sin_period * info.time / info.lifetime) * delta;}
 
-		if (info.fadeEase) {
+		if (info.fadeEase && sprite.visible) {
 			switch (info.fadeEase) {
 				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * info.time / info.lifetime)));}
 			}
@@ -176,6 +182,7 @@ function KDUpdateParticles(delta: number) {
 
 	let emitter: KDParticleEmitterData = null;
 	for (let particle of KDParticleEmitters.entries()) {
+		let delta = main_delta;
 		id = particle[0].valueOf();
 		emitter = particle[1].emitter;
 		sprite = particle[1].sprite;
@@ -199,11 +206,12 @@ function KDUpdateParticles(delta: number) {
 
 		if (emitter.vy) {sprite.position.y += emitter.vy * delta;}
 		if (emitter.vx) {sprite.position.x += emitter.vx * delta;}
+		if (emitter.time >= 0) sprite.visible = true;
 
-		if (emitter.sin_x && emitter.sin_period) {sprite.position.x += emitter.sin_x * Math.sin(emitter.phase + emitter.sin_period * emitter.time / emitter.lifetime) * delta;}
-		if (emitter.sin_y && emitter.sin_period) {sprite.position.y += emitter.sin_y * Math.sin(emitter.phase + emitter.sin_period * emitter.time / emitter.lifetime) * delta;}
+		if (emitter.sin_x && emitter.sin_period && sprite.visible) {sprite.position.x += emitter.sin_x * Math.sin(emitter.phase + emitter.sin_period * emitter.time / emitter.lifetime) * delta;}
+		if (emitter.sin_y && emitter.sin_period && sprite.visible) {sprite.position.y += emitter.sin_y * Math.sin(emitter.phase + emitter.sin_period * emitter.time / emitter.lifetime) * delta;}
 
-		if (emitter.fadeEase) {
+		if (emitter.fadeEase && sprite.visible) {
 			switch (emitter.fadeEase) {
 				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * emitter.time / emitter.lifetime)));}
 			}

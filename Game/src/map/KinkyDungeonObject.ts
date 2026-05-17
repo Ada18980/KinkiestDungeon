@@ -456,7 +456,9 @@ function KinkyDungeonGhostMessage(): boolean {
 			if (KinkyDungeonSlowLevel > 0 && Math.random() < 0.33) BoundType = "Feet";
 			if (KinkyDungeonChastityMult() > 0 && Math.random() < 0.33) BoundType = "Chaste";
 
-			msg = TextGet("KinkyDungeonGhostUnhelpful" + BoundType + KinkyDungeonTargetTile.GhostDecision);
+			msg = TextGet("KinkyDungeonGhostUnhelpful" + BoundType + KinkyDungeonTargetTile.GhostDecision,
+				KDGetGenericDialogueParams(KDPlayer())
+			);
 		}
 	}
 	if (msg) {

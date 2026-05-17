@@ -1325,6 +1325,7 @@
             <key type="filename">../M2/Models/FaceFang/MouthSmile.png</key>
             <key type="filename">../M2/Models/FaceFang2/MouthSmile.png</key>
             <key type="filename">../M2/Models/FaceFangless/MouthSmile.png</key>
+            <key type="filename">../M2/Models/FaceKjus/MouthCatSmile.png</key>
             <key type="filename">../M2/Models/FaceKjus/MouthSmile.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

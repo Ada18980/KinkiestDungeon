@@ -7,7 +7,7 @@
 AddModel({
 	Name: "KoiEyes",
 	Folder: "FaceKoi",
-	TopLevel: true,
+	TopLevel: false, Parent: "KjusEyes",
 	Protected: true,
 	Group: "Eyes",
 	Categories: ["Eyes","Face"],
@@ -44,7 +44,7 @@ AddModel({
 AddModel({
 	Name: "HumanEyes",
 	Folder: "FaceKoi",
-	TopLevel: true,
+	TopLevel: false, Parent: "KjusEyes",
 	Protected: true,
 	Group: "Eyes",
 	Categories: ["Eyes","Face"],
@@ -80,7 +80,7 @@ AddModel({
 AddModel({
 	Name: "BlankEyes",
 	Folder: "FaceKoiBlank",
-	TopLevel: true,
+	TopLevel: false, Parent: "KjusEyes",
 	Protected: true,
 	Group: "Eyes",
 	Categories: ["Eyes","Face"],
@@ -117,7 +117,7 @@ AddModel({
 AddModel({
 	Name: "KoiBrows",
 	Folder: "FaceKoi",
-	TopLevel: true,
+	TopLevel: false, Parent: "KjusBrows",
 	Protected: true,
 	Group: "Brows",
 	Categories: ["Eyes","Face"],
@@ -141,7 +141,7 @@ AddModel({
 AddModel({
 	Name: "DaiBrows1",
 	Folder: "EyesDai1",
-	TopLevel: true,
+	TopLevel: false, Parent: "KjusBrows",
 	Protected: true,
 	Group: "Brows",
 	Categories: ["Eyes","Face"],
@@ -161,7 +161,7 @@ AddModel({
 AddModel({
 	Name: "DaiBrows2",
 	Folder: "EyesDai2",
-	TopLevel: true,
+	TopLevel: false, Parent: "KjusBrows",
 	Protected: true,
 	Group: "Brows",
 	Categories: ["Eyes","Face"],
@@ -182,7 +182,7 @@ AddModel({
 AddModel({
 	Name: "Glabella",
 	Folder: "EyesDai1",
-	TopLevel: true,
+	TopLevel: false, Parent: "KjusBrows",
 	Protected: true,
 	Group: "Brows",
 	Categories: ["Eyes","Face"],
@@ -246,9 +246,10 @@ AddModel({
 AddModel({
 	Name: "KoiMouth",
 	Folder: "FaceKoi",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
 	Group: "Mouth",
+	Parent: "KjusMouth",
 	Categories: ["Mouth","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Mouth", Layer: "Mouth", Pri: 0,
@@ -263,7 +264,7 @@ AddModel({
 AddModel({
 	Name: "KoiBlush",
 	Folder: "FaceKoi",
-	TopLevel: true,
+	TopLevel: false, Parent: "KjusBlush",
 	Protected: true,
 	Group: "Blush",
 	Categories: ["Face"],
@@ -485,13 +486,31 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "KjusMouthBeast",
+	Folder: "FaceKjus",
+	TopLevel: false,
+	Protected: true,
+	Parent: "KjusMouth",
+	Group: "Mouth",
+	Categories: ["Mouth","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Mouth", Layer: "Mouth", Pri: 0,
+			Sprite: "", // Because pose is called MouthNeutral lol
+			Poses: ToMap(MOUTHPOSES),
+			HidePoses: ToMap(["HideMouth"]),
+			MorphPoses: {"Smile": "CatSmile"},
+		},
+	])
+});
 
 AddModel({
 	Name: "FangMouth",
 	Folder: "FaceFang",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
 	Group: "Mouth",
+	Parent: "KjusMouth",
 	Categories: ["Mouth","Face"],
 	AddPose: ["Fang"],
 	Layers: ToLayerMap([
@@ -507,9 +526,10 @@ AddModel({
 AddModel({
 	Name: "FangMouth_Double",
 	Folder: "FaceFang2",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
 	Group: "Mouth",
+	Parent: "KjusMouth",
 	Categories: ["Mouth","Face"],
 	AddPose: ["2Fang"],
 	Layers: ToLayerMap([
@@ -524,9 +544,10 @@ AddModel({
 AddModel({
 	Name: "FanglessMouth",
 	Folder: "FaceFangless",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
 	Group: "Mouth",
+	Parent: "KjusMouth",
 	Categories: ["Mouth","Face"],
 	Layers: ToLayerMap([
 		{ Name: "Mouth", Layer: "Mouth", Pri: 0,
@@ -555,7 +576,7 @@ AddModel({
 AddModel({
 	Name: "DaskBrows",
 	Folder: "FaceDask",
-	TopLevel: true,
+	TopLevel: false, Parent: "KjusBrows",
 	Protected: true,
 	Group: "Brows",
 	Categories: ["Eyes","Face"],
@@ -576,7 +597,7 @@ AddModel({
 AddModel({
 	Name: "DaskEyes",
 	Folder: "FaceDask",
-	TopLevel: true,
+	TopLevel: false, Parent: "KjusEyes",
 	Protected: true,
 	Group: "Eyes",
 	Categories: ["Eyes","Face"],

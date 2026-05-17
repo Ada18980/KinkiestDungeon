@@ -78,17 +78,15 @@ Must do
 
 5.5.0
 - Added 'Allow Stacking Similar Items' option to disable new logic to make it easier to swap eyes, etc
-- Added doll body type
 - Added Doll species perk
 - Added Doll Mirror weapon
 - Added hypnosis
 - Added particle effect to tell you when you've been restrained
 - Changed the warden's orb spell so that you need to get hit 3 times for the one bar prison to be applied
 - Made the warden's taunt mechanic explain itself if you get hit by it
-- Added character size option
+- Added character size option in game settings
 - Added tooltips on the hotbar and an option to disable this
 - Added warning sound when player is targeted by an attack
-- One bar spike traps now take 3 turns to trigger, up from 2
 - Food at tables can now contain extra effects (can be turned off in consent settings)
 - Fixed bug with leashing getting stuck on conveyors
 - Fixed a bug where bast cultists would never apply kitty suit in jail
@@ -98,8 +96,15 @@ Must do
 - Improved accuracy of aim lines for spell targeting
 - Aiming spells around tight corners should now be more practical
 - When binding NPCs, reds-out buttons that you don't have restraints for in your inventory
+- Hovering over NPC drawing in dialogue now zooms in on the character model
+
+Assets:
+- Added doll body type
+- Added bunny ears
+- Kjus mouth now has a normal smile, the :3 smile is in new version that is the "beast" version
 
 Balance: 
+- One bar spike traps now take 3 turns to trigger, up from 2
 - Phase Dance now lasts 3 turns instead of 4 and can miscast
 - Shock orb doesnt move a tile the first turn it is cast
 - Made ghost possession (pleasure option) have much longer time between teasings

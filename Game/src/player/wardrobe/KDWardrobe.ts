@@ -1281,7 +1281,7 @@ function KDDrawModelList(X: number, C: Character) {
 					KDCategoryFilterSpecialTopClick[mainCat](C, toplevel, index_top, toplevel)
 					: clickToplevel(toplevel, index_top, sublevel)
 		, true, X+220, 100 + buttonSpacing * i, 190, buttonHeight,
-			!toplevel ? "" : TextGet("m_" + toplevel),
+			!toplevel ? "" : (HasText("c_" + toplevel) ? TextGet("c_" + toplevel) : TextGet("m_" + toplevel)),
 			(KDCurrentModels.get(C).Models.has(toplevel) || hasTopLevel[toplevel]) ? KDBaseWhite : faded, "",
 			undefined, undefined, 
 			KDCategoryFilterSpecialTopNoBorder[mainCat] ?
@@ -2185,6 +2185,23 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		}, true, 945, 890, 100, 60,
 		TextGet("KDCreateAlwaysDress"), "#99ff99", "");
 
+		DrawButtonKDEx("KDCreateExpression", (_bdata) => {
+
+			let exportData: KDExpressionType = {
+				BlushPose: KDGetPoseOfType(C, "Blush"),
+				EyesPose: KDGetPoseOfType(C, "Eyes"),
+				Eyes2Pose: KDGetPoseOfType(C, "Eyes2"),
+				MouthPose: KDGetPoseOfType(C, "Mouth"),
+				FearPose: KDGetPoseOfType(C, "Fear"),
+				BrowsPose: KDGetPoseOfType(C, "Brows"),
+				Brows2Pose: KDGetPoseOfType(C, "Brows2"),
+			};
+			
+
+			KinkyDungeonExportWardrobeDataToClipboardOrModal(JSON.stringify(exportData), "KDCreateFace")
+			return true;
+		}, true, 845, 710, 100, 60,
+		TextGet("KDCreateExpression"), "#99ff99", "");
 
 		DrawButtonKDEx("KDCreateFace", (_bdata) => {
 			let exportData = [];
@@ -2226,6 +2243,8 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			return true;
 		}, true, 945, 830, 100, 60,
 		TextGet("KDCreateHair"), "#99ff99", "");
+
+		
 		DrawButtonKDEx("KDCreateCosplay", (_bdata) => {
 			let exportData = [];
 			if (C?.Appearance)
@@ -2246,6 +2265,8 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			return true;
 		}, true, 945, 770, 100, 60,
 		TextGet("KDCreateCosplay"), "#99ff99", "");
+
+
 	}
 
 	KDWardrobeToolsDraw(Character);

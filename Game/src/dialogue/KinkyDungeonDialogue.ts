@@ -2960,22 +2960,40 @@ function KDIsGenderAmbiguous(player: entity) {
 	return false;
 }
 
-function KDGetHonorific(player: entity) {if (player?.Enemy?.tags?.robot || player?.Enemy?.tags?.cyborg) return TextGet("KDHonorificUnit");
-	if (player?.player && KinkyDungeonGoddessRep.Ghost < -25) return TextGet(KDIsGenderAmbiguous(player) ? "KDHonorificMaster" : "KDHonorificMistress");
-	return TextGet("KDHonorificMiss");
+/**
+ * Replaces mistress with miss, master, etc
+ * @param player 
+ * @param lowercase 
+ * @returns 
+ */
+function KDGetHonorific(player: entity, lowercase?: boolean) {if (KinkyDungeonPlayerTags.get("Drone") || player?.Enemy?.tags?.robot || player?.Enemy?.tags?.cyborg) return TextGet("KDHonorificUnit"+ (lowercase ? "_LC" : ""));
+	if (player?.player && KinkyDungeonGoddessRep.Ghost < -25) return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMaster" : "KDHonorificMistress")+ (lowercase ? "_LC" : ""));
+	return TextGet("KDHonorificMiss"+ (lowercase ? "_LC" : ""));
 }
-function KDGetSubTitle(player: entity) {
-	if (player?.player && KDIsArtificial(player)) return TextGet(
-		KinkyDungeonFlags.get("DollSleep") ? "KDSubTitleUnit" : "KDSubTitleDoll");
-	if (player?.player && KinkyDungeonStatsChoice.get("NovicePet")) return TextGet("KDSubTitlePet");
-	return TextGet("KDSubTitleGirl");
+/**
+ * replaces things like "good girl" and such with "good enby" or similar
+ * @param player 
+ * @param lowercase 
+ * @returns 
+ */
+function KDGetSubTitle(player: entity, lowercase?: boolean) {
+	if (player?.player && KDIsArtificial(player)) return TextGet((
+		KinkyDungeonFlags.get("DollSleep") ? "KDSubTitleUnit" : "KDSubTitleDoll") + (lowercase ? "_LC" : ""));
+	if (player?.player && KinkyDungeonStatsChoice.get("NovicePet")) return TextGet("KDSubTitlePet" + (lowercase ? "_LC" : ""));
+	return TextGet("KDSubTitleGirl"+ (lowercase ? "_LC" : ""));
 }
 
-function KDGetDiminutive(player: entity) {
-	if (player?.player && KDIsArtificial(player)) return TextGet(
-		KinkyDungeonFlags.get("DollSleep") ? "KDSubTitleUnit" : "KDSubTitleDoll");
-	if (player?.player && KinkyDungeonStatsChoice.get("NovicePet")) return TextGet("KDSubTitlePet");
-	return TextGet("KDSubTitleGirl");
+/**
+ * For when you're not being a good X and the enemy just wants to call you something
+ * @param player 
+ * @param lowercase 
+ * @returns 
+ */
+function KDGetDiminutive(player: entity, lowercase?: boolean) {
+	if (player?.player && KDIsArtificial(player)) return TextGet((
+		KinkyDungeonFlags.get("DollSleep") ? "KDSubTitleUnit" : "KDSubTitleDoll")+ (lowercase ? "_LC" : ""));
+	if (player?.player && KinkyDungeonStatsChoice.get("NovicePet")) return TextGet("KDSubTitlePet"+ (lowercase ? "_LC" : ""));
+	return TextGet("KDSubTitleGirl"+ (lowercase ? "_LC" : ""));
 }
 //function KDGetSubTitle(player: entity) {return TextGet("");}
 
@@ -3094,6 +3112,16 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 		EHonor: KDGetHonorific(enemy),
 		ESub: KDGetSubTitle(enemy),
 		EDim: KDGetDiminutive(enemy),
+
+		
+		Phonor: KDGetHonorific(player, true),
+		Psub: KDGetSubTitle(player, true),
+		Pdim: KDGetDiminutive(player, true),
+
+		Ehonor: KDGetHonorific(enemy, true),
+		Esub: KDGetSubTitle(enemy, true),
+		Edim: KDGetDiminutive(enemy, true),
+
 
 		PTheir: KDGetPronounTheir(player),
 		PThem: KDGetPronounThem(player),

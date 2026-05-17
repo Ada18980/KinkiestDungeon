@@ -4831,9 +4831,9 @@ function KDLinkUnder (
 		KDUpdateItemEventCache = true;
 		let lk = linkUnder.dynamicLink;
 		if (!Curse && (Lock)) KinkyDungeonLock(linkUnder.dynamicLink, Lock, 
-			undefined, undefined, undefined, undefined, undefined, KDRestraintParticleLifetime * 0.75);
+			undefined, undefined, undefined, undefined, undefined, KDRestraintParticleLifetime * KDRestraintParticleLifetimeMult);
 		else if (restraint.DefaultLock) KinkyDungeonLock(linkUnder.dynamicLink, restraint.DefaultLock, 
-			undefined, undefined, undefined, undefined, undefined, KDRestraintParticleLifetime * 0.75);
+			undefined, undefined, undefined, undefined, undefined, KDRestraintParticleLifetime * KDRestraintParticleLifetimeMult);
 		if (inventoryAs) linkUnder.dynamicLink.inventoryVariant = inventoryAs;
 		if (!safeLink) {
 			// Remove the original by iterating down and identifying one we can delete
@@ -5394,9 +5394,9 @@ function KinkyDungeonAddRestraint (
 				}
 
 				if (Lock) KinkyDungeonLock(item, Lock, false, Unlink, 
-					undefined, undefined, undefined, KDRestraintParticleLifetime * 0.75);
+					undefined, undefined, undefined, KDRestraintParticleLifetime * KDRestraintParticleLifetimeMult);
 				else if (restraint.DefaultLock && !Unlink) KinkyDungeonLock(item, KDProcessLock(restraint.DefaultLock),
-						undefined, undefined, undefined, undefined, undefined, KDRestraintParticleLifetime * 0.75);
+						undefined, undefined, undefined, undefined, undefined, KDRestraintParticleLifetime * KDRestraintParticleLifetimeMult);
 
 				KDUpdateLinkCaches(item);
 				KDUpdateItemEventCache = true;
@@ -7592,6 +7592,7 @@ function KDTest_ListRestraintsWithFeetLinked() {
 }
 
 let KDRestraintParticleLifetime = 1700;
+let KDRestraintParticleLifetimeMult = 0.6;
 let KDLockParticleLifetime = 1000;
 let KDNPCRestraintParticleLifetime = 1000;
 let KDNPCLockParticleLifetime = 800;

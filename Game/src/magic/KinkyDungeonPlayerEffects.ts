@@ -1742,6 +1742,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 		if (KDIsImmuneToSpores(_target)) {
 				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			return {sfx: "", effect: false};
 		} else {
 			KinkyDungeonSleepiness += 1.5 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2);
 			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesSick").KDReplaceOrAddDmg( dmg.string), "#4fd658", 2);
@@ -1759,6 +1760,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			
 			if (KDIsImmuneToDrugs(_target)) {
 				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDaggerNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+				return {sfx: "", effect: false};
 			} else {
 				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDagger").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 				// TODO make this get more intense over time
@@ -1786,6 +1788,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 		if (KDIsImmuneToSpores(_target)) {
 				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			return {sfx: "", effect: false};
 		} else {
 			KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, (playerEffect.amount || 6)
 						* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2));
@@ -1801,7 +1804,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 
 		if (KDIsImmuneToDrugs(_target) || KDIsImmuneToGas(_target)) {
-				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonBreathImmune").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			KinkyDungeonSendTextMessage(6, TextGet("KDPoisonBreathImmune").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			return {sfx: "", effect: false};
 		} else {
 			KinkyDungeonSendTextMessage(6, TextGet("KDPoisonBreath").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 			// TODO make this get more intense over time
@@ -1827,7 +1831,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 		if (KDIsImmuneToSpores(_target)) {
-				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			return {sfx: "", effect: false};
 		} else {
 		
 			KinkyDungeonSendTextMessage(6, TextGet("KDDragonFlowerSpores").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
@@ -1857,6 +1862,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		if (KDIsImmuneToDrugs(_target)) {
 			// lol
+			return {sfx: "", effect: false};
 		} else {
 			// TODO make this get more intense over time
 			let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
@@ -2315,6 +2321,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KDIsImmuneToDrugs(_target)) {
 				KinkyDungeonSendTextMessage(6, TextGet("KDImmuneToSyringe").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
+			
+				return {sfx: "", effect: false};
 			} else {
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNurseSyringe").KDReplaceOrAddDmg( dmg.string), KDBaseRed, 8);
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {

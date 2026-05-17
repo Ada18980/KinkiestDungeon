@@ -1286,7 +1286,9 @@ function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFu
 
 				KinkyDungeonChangeRep(Goddess, (!KinkyDungeonFlags.get("QuestFirstRep")) ? 2.5 + Rep : Rep);
 				KinkyDungeonSetFlag("QuestFirstRep", -1, 1);
-				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed" + (KinkyDungeonGoddessRep.Ghost > 1 ? "Sub" : "") + "_" + Name), KDBaseWhite, 1);
+				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed" + (KinkyDungeonGoddessRep.Ghost > 1 ? "Sub" : "") + "_" + Name,
+					KDGetGenericDialogueParams(KDPlayer())),
+					KDBaseWhite, 1);
 				KDRemoveQuest(Name, false, false, true);
 				for (let inv of KinkyDungeonAllRestraintDynamic()) {
 					if (inv.item.lock == "Divine") KinkyDungeonLock(inv.item, "", false, false, false, false);

@@ -124,6 +124,9 @@ kdmapboard.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 let kdlightmap = null;
 let kdlightmapGFX = null;
 
+let npcTooltipContainer = new PIXI.Container();
+npcTooltipContainer.zIndex = 120;
+
 let kdbrightnessmap = null;
 let kdbrightnessmapGFX = null;
 
@@ -243,6 +246,8 @@ kdcanvas.addChild(kdpalettecontainer);
 
 kdcanvas.addChild(kdBGMask);
 
+kdcanvas.addChild(npcTooltipContainer);
+
 //kdcanvas.addChild(new PIXI.Sprite(kdlightmap));
 
 let statusOffset = 0;
@@ -256,6 +261,7 @@ if (StandalonePatched) {
 	kdgameboard.addChild(kdgamefog);
 	//kdgameboard.addChild(kdgamefogmask);
 	kdcanvas.addChild(kdgameboard);
+	
 
 }
 
@@ -1635,6 +1641,15 @@ function KinkyDungeonDrawGame() {
 
 				let cursorX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamX;
 				let cursorY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
+				if (NPCTooltipZoomIn) {
+					NPCTooltipZoomIn = false;
+				} else {
+					NPCTooltipZoomCurrent = Math.max(1, NPCTooltipZoomCurrent - 1.4 * KDDrawDelta*0.001);
+					if (NPCTooltipZoomX > 0) NPCTooltipZoomX = Math.max(0, NPCTooltipZoomX - 1.4 * KDDrawDelta*0.001);
+					else if (NPCTooltipZoomX < 0) NPCTooltipZoomX = Math.min(0, NPCTooltipZoomX + 1.4 * KDDrawDelta*0.001);
+					if (NPCTooltipZoomY > 0) NPCTooltipZoomY = Math.max(0, NPCTooltipZoomY - 1.4 * KDDrawDelta*0.001);
+					else if (NPCTooltipZoomY < 0) NPCTooltipZoomY = Math.min(0, NPCTooltipZoomY + 1.4 * KDDrawDelta*0.001);
+				}
 				if (KDMouseInPlayableArea() && (KinkyDungeonVisionGet(cursorX, cursorY) > 0 || tooltips.length > 0)) {
 
 					let ambushTile = "";
@@ -5433,6 +5448,20 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 			if (KDDrewEnemyTooltipThisFrame) {
 				if (!KDDrewEnemyTooltip) {
 					KDRefreshCharacter.set(listItem.npcSprite, true);
+
+					
+					// Create a graphics object to define our mask
+					let mask = new PIXI.Graphics();
+					// Add the rectangular area to show
+					mask.beginFill(0xffffff);
+					mask.drawRect(
+						tooltipX + (listItem.center ? TooltipWidth/2 : pad) - (listItem.size)/4,
+						tooltipY + YY - 9,
+						TooltipWidth,
+						listItem.size
+					);
+					mask.endFill();
+					npcTooltipContainer.mask = mask;
 				}
 			}
 			if (KDRefreshCharacter.get(listItem.npcSprite)) {
@@ -5444,16 +5473,63 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 			}
 			KinkyDungeonDressPlayer(listItem.npcSprite, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[listItem.id + ''] : undefined);
 
-			DrawCharacter(listItem.npcSprite,
+			let zoomX = 0;
+			let zoomY = 0;
+			let zoomed = false;
+
+			if (KDGameData.CurrentDialog && MouseIn(
 				tooltipX + (listItem.center ? TooltipWidth/2 : pad) - (listItem.size)/4,
 				tooltipY + YY - 9,
-				(listItem.size)/1000, false, undefined, undefined, undefined, 120, false);
+				TooltipWidth,
+				listItem.size
+			)) {
+				zoomX = 0.8 - 1.6*(MouseX - (tooltipX + (listItem.center ? TooltipWidth/2 : pad) - (listItem.size)/4))/TooltipWidth;
+				zoomY = 1 - 2*(MouseY - (tooltipY + YY - 9))/listItem.size;
+				zoomed = true;
+				NPCTooltipZoomIn = true;
+
+				if (NPCTooltipZoomCurrent == NPCTooltipZoomRatio) {
+					NPCTooltipZoomX = zoomX;
+					NPCTooltipZoomY = zoomY;
+				} else {
+					if (NPCTooltipZoomCurrent < NPCTooltipZoomRatio) {
+						NPCTooltipZoomCurrent = Math.min(NPCTooltipZoomRatio, NPCTooltipZoomCurrent + 2.4 * KDDrawDelta*0.001);
+					}
+
+
+					if (NPCTooltipZoomX > zoomX) NPCTooltipZoomX = Math.max(zoomX, NPCTooltipZoomX - 2.4 * KDDrawDelta*0.001);
+					else if (NPCTooltipZoomX < zoomX) NPCTooltipZoomX = Math.min(zoomX, NPCTooltipZoomX + 2.4 * KDDrawDelta*0.001);
+					if (NPCTooltipZoomY > zoomY) NPCTooltipZoomY = Math.max(zoomY, NPCTooltipZoomY - 2.4 * KDDrawDelta*0.001);
+					else if (NPCTooltipZoomY < zoomY) NPCTooltipZoomY = Math.min(zoomY, NPCTooltipZoomY + 2.4 * KDDrawDelta*0.001);
+				}
+			}
+
+
+			
+
+			DrawCharacter(listItem.npcSprite,
+				(NPCTooltipZoomCurrent > 1 ? (NPCTooltipZoomCurrent - 1)/(NPCTooltipZoomRatio - 1)* -250 * (TooltipWidth)/500 : 0)
+					+ (NPCTooltipZoomX * 500 * (TooltipWidth)/500)
+					+ tooltipX + (listItem.center ? TooltipWidth/2 : pad) - (listItem.size)/4,
+				(NPCTooltipZoomCurrent > 1 ? (NPCTooltipZoomCurrent - 1)/(NPCTooltipZoomRatio - 1)* -500 * (listItem.size)/1000 : 0)
+					+ (NPCTooltipZoomY * 1000 * (listItem.size)/1000)
+					+ tooltipY + YY - 9,
+				NPCTooltipZoomCurrent * (listItem.size)/1000, false, 
+				npcTooltipContainer, undefined, undefined, 120, false);
 
 		}
 		YY += extra + listItem.size;
 	}
 	return offset + TooltipHeight + 30;
 }
+
+let NPCTooltipZoomRatio = 2;
+let NPCTooltipZoomCurrent = 1;
+let NPCTooltipZoomX = 0;
+let NPCTooltipZoomY = 0;
+
+let NPCTooltipZoomIn = false;
+
 
 /**
  * Elements which are temporary and drawn using a declarative style

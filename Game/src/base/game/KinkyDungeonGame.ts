@@ -3710,6 +3710,10 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 		}
 	}
 
+	if (!KDGameData.CurrentDialog) {
+		KDCustomExpTmp = {};
+	}
+
 }
 let KDEntityFlagCache = new Map();
 let KDUpdateEntityFlagCache = false;

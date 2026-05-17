@@ -1,4 +1,6 @@
 
+let KDCustomExpTmp : Record<number, KDExpressionType>= {
+};
 let KDCustomExp : Record<number, KDExpressionType>= {
 };
 
@@ -16,12 +18,18 @@ let KDExpressions: Record<string, KDExpression> = {
 	"Custom": {
 		priority: 10000,
 		criteria: (C, flags) => {
+			if (KDNPCChar_ID.get(C) && KDCustomExpTmp[KDNPCChar_ID.get(C)]) {
+				return true;
+			}
 			if (KDNPCChar_ID.get(C) && KDCustomExp[KDNPCChar_ID.get(C)]) {
 				return true;
 			}
 			return false;
 		},
 		expression: (C, flags) => {
+			if (KDNPCChar_ID.get(C) && KDCustomExpTmp[KDNPCChar_ID.get(C)]) {
+				return KDCustomExpTmp[KDNPCChar_ID.get(C)];
+			}
 			if (KDNPCChar_ID.get(C) && KDCustomExp[KDNPCChar_ID.get(C)]) {
 				return KDCustomExp[KDNPCChar_ID.get(C)];
 			}

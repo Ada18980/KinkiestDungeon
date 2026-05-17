@@ -274,7 +274,7 @@
 },
 "Models/DivineCuffs/CollarLockBand.png":
 {
-	"frame": {"x":3,"y":1403,"w":23,"h":13},
+	"frame": {"x":287,"y":1330,"w":23,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":298,"y":202,"w":23,"h":13},
@@ -602,7 +602,7 @@
 },
 "Models/DivineCuffs/ThighRightLockBandKneel.png":
 {
-	"frame": {"x":34,"y":1368,"w":24,"h":15},
+	"frame": {"x":3,"y":1385,"w":24,"h":15},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":212,"y":424,"w":24,"h":15},
@@ -1082,7 +1082,7 @@
 },
 "Models/EyesDai1/BrowsAnnoyed.png":
 {
-	"frame": {"x":3,"y":1385,"w":24,"h":14},
+	"frame": {"x":298,"y":1312,"w":24,"h":14},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":265,"y":122,"w":24,"h":14},
@@ -1090,7 +1090,7 @@
 },
 "Models/EyesDai1/BrowsSad.png":
 {
-	"frame": {"x":31,"y":1387,"w":24,"h":14},
+	"frame": {"x":259,"y":1313,"w":24,"h":14},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":264,"y":127,"w":24,"h":14},
@@ -1114,7 +1114,7 @@
 },
 "Models/EyesDai2/BrowsAngry.png":
 {
-	"frame": {"x":98,"y":1361,"w":25,"h":15},
+	"frame": {"x":66,"y":1367,"w":25,"h":15},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":271,"y":126,"w":25,"h":15},
@@ -1130,7 +1130,7 @@
 },
 "Models/EyesDai2/BrowsNeutral.png":
 {
-	"frame": {"x":298,"y":1312,"w":22,"h":13},
+	"frame": {"x":259,"y":1331,"w":22,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":264,"y":121,"w":22,"h":13},
@@ -2234,7 +2234,7 @@
 },
 "Models/FaceFangless/MouthNeutral.png":
 {
-	"frame": {"x":66,"y":1367,"w":22,"h":17},
+	"frame": {"x":34,"y":1368,"w":22,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":293,"y":159,"w":22,"h":17},
@@ -2344,6 +2344,14 @@
 	"spriteSourceSize": {"x":263,"y":134,"w":28,"h":23},
 	"sourceSize": {"w":396,"h":250}
 },
+"Models/FaceKjus/MouthCatSmile.png":
+{
+	"frame": {"x":132,"y":1349,"w":24,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":291,"y":160,"w":24,"h":17},
+	"sourceSize": {"w":350,"h":218}
+},
 "Models/FaceKjus/MouthDistracted.png":
 {
 	"frame": {"x":450,"y":620,"w":24,"h":26},
@@ -2378,7 +2386,7 @@
 },
 "Models/FaceKjus/MouthSmile.png":
 {
-	"frame": {"x":132,"y":1349,"w":24,"h":17},
+	"frame": {"x":98,"y":1361,"w":24,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":291,"y":160,"w":24,"h":17},
@@ -2514,7 +2522,7 @@
 },
 "Models/FaceKoi/BrowsSurprised.png":
 {
-	"frame": {"x":259,"y":1313,"w":22,"h":13},
+	"frame": {"x":314,"y":1330,"w":22,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":29,"y":71,"w":22,"h":13},
@@ -3285,9 +3293,9 @@
 	"version": "1.0",
 	"image": "atlasmobileB2.webp",
 	"format": "RGBA8888",
-	"size": {"w":512,"h":1419},
+	"size": {"w":512,"h":1403},
 	"scale": "0.25",
 	"related_multi_packs": [ "atlasmobileB0.json", "atlasmobileB1.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:45ea3d2faff19bba5be407a69a9a994a:e6accbf84acb3acefe43aa61afb21bb8:51e21466c3e5ba1c7b4a59d471b32aed$"
+	"smartupdate": "$TexturePacker:SmartUpdate:8efad65c90c93dd6c4d8f656ca2dd3d5:9903562fa22066da976e90b7a2069897:51e21466c3e5ba1c7b4a59d471b32aed$"
 }
 }
