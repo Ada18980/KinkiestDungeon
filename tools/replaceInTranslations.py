@@ -1633,7 +1633,7 @@ IGNORE_KEYS = [
 # Read the CSV file
 def parse_csv_lines(file_path) -> list:
     with open(file_path, newline='', encoding='utf-8') as f:
-        lines = [line for line in f.readlines()]
+        lines = [(line.lstrip().rstrip("\r\n") if len(line) > 2 else '') for line in f.readlines()]
         return lines
 
 for trans_file in translation_files:
@@ -1642,8 +1642,9 @@ for trans_file in translation_files:
     for line in origlines:
         newline = line
         for replaceline in replaceMap:
-            if (line == replaceline[0]):
-                newline = replaceline[1]
+            if (replaceline[0] in line):
+                newline = line.replace(replaceline[0], replaceline[1])
+                break
         
         newlines.append(newline)
     with open(trans_file, 'w', encoding='utf-8') as f:
