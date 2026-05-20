@@ -1054,9 +1054,9 @@ DPか詠唱失敗率のうち、高い方の30%分魔法の威力が上昇する
 パーク「新参ペット」を放棄する。一度のみ選択可能。再びパークを取得した場合、後戻りはできない
 - You are an expert in wearing a petsuit and your mobility is increased.
 ペットスーツの扱いに熟練しており、素早く移動できる。
-- You are too used to wearing petsuits! Sprinting is impaired.
+- ${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
 ペットスーツの動きに慣れすぎて走れない。
-- You are a disobedient pet. You should put on a petsuit!
+- ${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
 悪い子だ。ペットはペットスーツを着るべきだ。
 
 
@@ -1420,9 +1420,9 @@ RestraintName は、水を使用すると簡単に解除できる。
 アーケイン・エクスプロージョン
 
 
-- EnemyName says something incomprehensible! Her spell miscasts!
+- EnemyName says something incomprehensible! ${ETheir} spell miscasts!
 EnemyName が何かを唱えたが、失敗したようだ。
-- EnemyName fumbles her next move!
+- EnemyName fumbles ${Etheir} next move!
 EnemyName は失敗した。
 - The EnemyName utters a command word on the TargetName!
 EnemyName は TargetName にコマンドワードを放った！
@@ -3328,9 +3328,9 @@ RESTRAINTNAME は追加する拘束具がなくなり、活動を停止した。
 天使を倒した！
 - The angel decides to toy with you while you are trussed up. (DamageTaken)
 縛られた体を天使が愛撫してきた。(DamageTaken)
-- The angel snaps her fingers and divine restraints appear on your body! (+RestraintAdded)
+- The angel snaps ${Etheir} fingers and divine restraints appear on your body! (+RestraintAdded)
 天使が指を鳴らすと、突然体に聖なる拘束具が出現した! (+RestraintAdded)
-- The angel snaps her fingers and glowing locks appear on your body!
+- The angel snaps ${Etheir} fingers and glowing locks appear on your body!
 天使が指を鳴らすと、拘束具に聖なる錠が施された！
 
 
@@ -3350,7 +3350,7 @@ RESTRAINTNAME は追加する拘束具がなくなり、活動を停止した。
 恐れることなかれ、私は天より貢物を回収しに来ました。
 - Hold still and I will take the offering...
 じっとしていなさい、すぐに回収しますから……
-- (She takes the gold)
+- (${EThey} take${Es} the gold)
 （お金を持っていった）
 - Peace be with you! Goodbye!
 あなたに祝福あれ、さようなら！
@@ -3364,7 +3364,7 @@ RESTRAINTNAME は追加する拘束具がなくなり、活動を停止した。
 次からはちゃんとお金を持って来てくださいね。
 
 
-- The angel frowns as you attack her, and glowing rings appear.
+- The angel frowns as you attack ${Ethem}, and glowing rings appear.
 あなたは天使に突然殴りかかった。彼女は困惑した表情を浮かべ、光輪を纏う。
 
 
@@ -3430,7 +3430,7 @@ EnemyName に拘束されそうになったが、抵抗した！
 使い魔
 - The familiar dissolves into spectral ash.
 使い魔は輝く灰になった。
-- The doll gives in to her desires and squirms around on the ground.
+- The doll gives in to ${Etheir} desires and squirms around on the ground.
 人形は快楽に耐えられず、地面にへたり込んだ。
 - Storm Crystal
 ストームクリスタル
@@ -3504,7 +3504,7 @@ EnemyName に拘束されそうになったが、抵抗した！
 メイドが高速拘束技を使ってきた！ (+RestraintAdded)
 - The maid snaps a lock on one of your restraints! (DamageTaken)
 メイドに拘束具を1つロックされた！ (DamageTaken)
-- The maid tickles you with her feather duster! (DamageTaken)
+- The maid tickles you with ${Etheir} feather duster! (DamageTaken)
 メイドが羽根でくすぐってきた！(DamageTaken)
 
 
@@ -3536,9 +3536,9 @@ M.F. 'ゴーイング・ラウド'
 
 - Heavy Weapons Maid
 重装備メイド
-- The maid drops her weapon and runs.
+- The maid drops ${Etheir} weapon and runs.
 メイドは武器を放り出して逃げ出した！
-- The maid bonks you with her weapon! (DamageTaken)
+- The maid bonks you with ${Etheir} weapon! (DamageTaken)
 メイドに武器で殴られた！ (DamageTaken)
 
 
@@ -3556,7 +3556,7 @@ M.F. 'マスタープラン'
 M.F. 'マスタープラン'は優雅に降伏した。
 - The head maid suddenly whips out a restraint and locks it on! (+RestraintAdded)
 M.F. 'マスタープラン'は高速で拘束してきた！ (+RestraintAdded)
-- The head maid snaps her fingers and you find your restraints locked! (DamageTaken)
+- The head maid snaps ${Etheir} fingers and you find your restraints locked! (DamageTaken)
 M.F. 'マスタープラン'が指をパチンと鳴らすと突然拘束具がロックされた！ (DamageTaken)
 - The head maid tickles you strategically! (DamageTaken)
 M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(DamageTaken)
@@ -3572,7 +3572,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 炎の精霊は突然手足に拘束具を鍛造してきた！ (+RestraintAdded)
 - The fire elemental places a heavy lock on your restraint! (DamageTaken)
 炎の精霊は拘束具に強力な錠を取り付けた！ (DamageTaken)
-- The fire elemental touches you with her burning finger! (DamageTaken)
+- The fire elemental touches you with ${Etheir} burning finger! (DamageTaken)
 炎の精霊が燃え盛る指で触れてきた！ (DamageTaken)
 
 
@@ -3580,7 +3580,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 エルフのレンジャー
 - The ranger disappears into the environment.
 レンジャーは背景へと消え去っていった。
-- The ranger gropes your chest with a smile on her face! (DamageTaken)
+- The ranger gropes your chest with a smile on ${Etheir} face! (DamageTaken)
 レンジャーが笑顔で胸を揉みしだいてきた！（DamageTaken）
 - The ranger surprises you and binds you! (+RestraintAdded)
 レンジャーは突然拘束してきた！ (+RestraintAdded)
@@ -3590,13 +3590,13 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Druid of the Wild
 エルフのドルイド
-- The druid calls forth vines to mask her retreat.
+- The druid calls forth vines to mask ${Etheir} retreat.
 ドルイドは呼び出した蔦に紛れて逃げていった。
 - The druid holds your face and kisses you! (DamageTaken)
 ドルイドに顔を抱えられ、キスされた！ (DamageTaken)
 - The druid binds you with mithril restraints! (+RestraintAdded)
 ドルイドがミスリルの拘束具で拘束してきた！ (+RestraintAdded)
-- The druid tosses a lock from her cloak! It finds you and fastens with a click. (DamageTaken)
+- The druid tosses a lock from ${Etheir} cloak! It finds you and fastens with a click. (DamageTaken)
 ドルイドは外套から錠前を投げてきた！ (DamageTaken)
 
 
@@ -3674,7 +3674,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 サポートドローンに撃たれた！ (DamageTaken)
 - The Dollmaker commands a drone to attack you!
 ドールメイカーはドローンに攻撃命令を下した！
-- The Dollmaker commands her drones to attack you!
+- The Dollmaker commands ${Ptheir} drones to attack you!
 ドールメイカーはドローンに攻撃命令を下した！
 
 
@@ -3688,7 +3688,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 捕獲用ドローンの射出するケーブルに捕まった！ (+RestraintAdded)
 - The Dollmaker commands a drone to capture you!
 ドールメイカーはドローンに捕獲命令を下した！
-- The Dollmaker commands her drones to capture you!
+- The Dollmaker commands ${Ptheir} drones to capture you!
 ドールメイカーはドローンに捕獲命令を下した！
 
 
@@ -3708,7 +3708,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 メイジゾンビ
 - The zombie frowns and disappears in a puff of ice and ribbons.
 ゾンビは眉をひそめ、氷とリボンの渦に消えた。
-- The zombie smiles as she wraps you in charms! (+RestraintAdded)
+- The zombie smiles as ${Ethey} wrap${Es} you in charms! (+RestraintAdded)
 ゾンビは笑顔でテープを巻き付けてきた！ (+RestraintAdded)
 - The zombie's ribbons form magical locks on your body! (DamageTaken)
 ゾンビはリボンで魔法のロックを生成した! (DamageTaken)
@@ -3716,9 +3716,9 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Talisman Zombie
 札付きゾンビ
-- The zombie pouts and puts up a shield to let her retreat.
+- The zombie pouts and puts up a shield to let ${Etheir} retreat.
 ゾンビは不機嫌に口をとがらせ、盾を構えながら撤退した。
-- The zombie giggles as she wraps you in charms! (+RestraintAdded)
+- The zombie giggles as ${Ethey} wrap${Es} you in charms! (+RestraintAdded)
 ゾンビがくすくす笑いながらテープを巻き付けてきた！ (+RestraintAdded)
 - The zombie uses a sealing spell to create magical locks! (DamageTaken)
 ゾンビは封印魔法を唱え、拘束具をロックしてきた！ (DamageTaken)
@@ -3730,7 +3730,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 ゾンビウォーリアは映画のように叫び、倒れこんだ。
 - The warrior zombie uses a traditional binding technique (+RestraintAdded)
 ゾンビウォーリアは秘伝の捕縛術を繰り出してきた！(+RestraintAdded)
-- The warrior zombie strikes you with her wooden sword! (+STUN)
+- The warrior zombie strikes you with ${Etheir} wooden sword! (+STUN)
 ゾンビウォーリアが木刀で殴りかかってきた！ (+STUN)
 - The warrior zombie runs its fingers along your body! (DamageTaken)
 ゾンビウォーリアが突然体に指を這わせてきた！ (DamageTaken)
@@ -3752,7 +3752,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Deputy
 保安官
-- The deputy surrenders her donuts.
+- The deputy surrenders ${Etheir} donuts.
 保安官はドーナツで手打ちを提案してきた。
 - The deputy slaps on some cuffs! (+RestraintAdded)
 保安官に手錠をかけられた！ (+RestraintAdded)
@@ -3772,7 +3772,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 忍者は伝統的な捕縛術を繰り出してきた！(+RestraintAdded)
 - The ninja warrior tosses a shuriken and hits you! (Stunned!)
 忍者が手裏剣を投擲してきた！（気絶）
-- The ninja warrior uses a lock to give herself the upper hand! (DamageTaken)
+- The ninja warrior uses a lock to give ${Ethem}self the upper hand! (DamageTaken)
 忍者は拘束具をロックしてきた！ (DamageTaken)
 - The ninja warrior uses a subduing technique! (DamageTaken)
 忍者は柔術を使ってきた！（DamageTaken）
@@ -3862,9 +3862,9 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 ドラゴンハート・ポイズンは緑の霧の中に消えていった。
 - The Poison Dragonheart apprehends you! (+RestraintAdded)
 ドラゴンハート・ポイズンに捕まった！ (+RestraintAdded)
-- The Poison Dragonheart smacks you with her axe! (DamageTaken)
+- The Poison Dragonheart smacks you with ${Etheir} axe! (DamageTaken)
 ドラゴンハート・ポイズンが斧で打ち据えてきた！ (DamageTaken)
-- The Poison Dragonheart thrums her claws across your figure! (DamageTaken)
+- The Poison Dragonheart thrums ${Etheir} claws across your figure! (DamageTaken)
 ドラゴンハート・ポイズンは爪でひっかいてきた！(DamageTaken)
 - The Dragonheart locks your restraint using natural magics! (DamageTaken)
 ドラゴンハートは自然の魔法で拘束具に錠をかけてきた！ (DamageTaken)
@@ -3938,9 +3938,9 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 ドラゴンハート・シャドーに捕まった！（+RestraintAdded）
 - The Shadow Dragonheart conjures a shadowly lock! (DamageTaken)
 ドラゴンハート・シャドーは影の錠を召喚してきた！ (DamageTaken)
-- The Shadow Dragonheart extends her scythe and pulls you closer!!!
+- The Shadow Dragonheart extends ${Etheir} scythe and pulls you closer!!!
 ドラゴンハート・シャドーに大鎌で引き寄せられた！
-- The Shadow Dragonheart catches you with her scythe! (DamageTaken)
+- The Shadow Dragonheart catches you with ${Etheir} scythe! (DamageTaken)
 ドラゴンハート・シャドーは大鎌で打ち据えてきた！ (DamageTaken)
 
 
@@ -3978,7 +3978,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 ドライアド
 - The dryad sinks into the ground.
 ドライアドは地面に沈んでいった。
-- The dryad extends an arm, and she wraps you in vines! (+RestraintAdded)
+- The dryad extends an arm, and ${Ethey} wrap${Es} you in vines! (+RestraintAdded)
 ドライアドが腕を伸ばすと、蔦が全身に絡まってきた！ (+RestraintAdded)
 - The dryad sings a song that mesmerizes you! (DamageTaken)
 ドライアドは不思議な歌をうたった！ (DamageTaken)
@@ -3992,19 +3992,19 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 洗脳された人形
 - The doll falls to the ground, moaning loudly.
 人形はうめき声をあげながら倒れた。
-- The doll rubs her body against yours. You can feel the conduction. (DamageTaken)
+- The doll rubs ${Etheir} body against yours. You can feel the conduction. (DamageTaken)
 人形が体をこすりつけてきた。導電性になってしまった。(DamageTaken)
-- The doll tackles you and squeezes you with her trembling legs! (DamageTaken)
+- The doll tackles you and squeezes you with ${Etheir} trembling legs! (DamageTaken)
 人形が震える足でタックルしてきた！ (DamageTaken)
 
 
 - Dollsmith
 ドールスミス
-- The dollsmith's suit locks her wrists together and renders her helpless.
+- The dollsmith's suit locks ${Etheir} wrists together and renders ${Etheir} helpless.
 ドールスミスは自身のスーツに拘束された。
 - The dollsmith runs a latex-covered finger across your vulnerable body! (DamageTaken)
 ドールスミスはゴムで覆われた指で愛撫してきた！ (DamageTaken)
-- The dollsmith grabs you and applies her favorite doll restraints! (+RestraintAdded)
+- The dollsmith grabs you and applies ${Etheir} favorite doll restraints! (+RestraintAdded)
 ドールスミスに掴まれ、人形用の拘束具を取り付けられた！(+RestraintAdded)
 - The dollsmith slaps a lock onto your restraints! (DamageTaken)
 ドールスミスに拘束具をロックされた！(DamageTaken)
@@ -4014,11 +4014,11 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Dollmaker's Apprentice
 ドールメイカーの手先
-- The dollmaker apprentice's suit becomes rigid and locks her limbs in place.
+- The dollmaker apprentice's suit becomes rigid and locks ${Etheir} limbs in place.
 ドールメイカーの手先のスーツは固まってしまった。
-- The dollmaker's apprentice squeezes your body with her gloved hands! (DamageTaken)
+- The dollmaker's apprentice squeezes your body with ${Etheir} gloved hands! (DamageTaken)
 ドールメイカーの手先にゴムの手袋で抱きしめられた！ (DamageTaken)
-- The dollmaker's apprentice uses her staff to encase you in doll restraints! (+RestraintAdded)
+- The dollmaker's apprentice uses ${Etheir} staff to encase you in doll restraints! (+RestraintAdded)
 ドールメイカーの手先が杖を振るうと人形用の拘束具が取り付いてきた！ (+RestraintAdded)
 - The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)
 ドールメイカーの手先に拘束具をロックされた！(DamageTaken)
@@ -4062,7 +4062,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Wolfguard
 ウルフガード
-- The wolfguard's suit punishes her for poor performance!
+- The wolfguard's suit punishes ${Etheir} for poor performance!
 ウルフガードはスーツに罰せられた！
 - The wolfguard lunges at you and strikes you!
 ウルフガードが突進してきた！
@@ -4100,7 +4100,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 見習い調教師
 - The trainer's apprentice escapes!
 見習い調教師は逃げた！
-- The trainer's apprentice rubs her claws across your chest playfully! (DamageTaken)
+- The trainer's apprentice rubs ${Etheir} claws across your chest playfully! (DamageTaken)
 見習い調教師は乳首を爪弾いてきた！ (DamageTaken)
 - The trainer's apprentice secures you in training gear! (+RestraintAdded)
 見習い調教師にペット用拘束具で拘束されてしまった! (+RestraintAdded)
@@ -4254,7 +4254,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Cyber Warden
 サイバーワーデン
-- The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
+- The cyber warden's suit goes into lockdown, leaving ${Etheir} wiggling helplessly!
 サイバーワーデンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
 - The cyber warden applies an advanced locking technology!
 サイバーワーデンが未知の技術で拘束具に高度な錠を施してきた！
@@ -4298,7 +4298,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Alkahestor
 大錬金術師
-- The alkahestor resigns to her fate.
+- The alkahestor resigns to ${Etheir} fate.
 大錬金術師は天に身を任せた。
 - The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)
 大錬金術師のはなった液体に包み込まれてしまった！(+RestraintAdded)
@@ -4336,9 +4336,9 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 革の精霊
 - The leather elemental sits down and sulks.
 革の精霊は不機嫌そうに座り込んだ。
-- The leather elemental wraps her long extremities around your body! (+RestraintAdded)
+- The leather elemental wraps ${Etheir} long extremities around your body! (+RestraintAdded)
 革の精霊に革製の長い四肢で絡みつかれた！ (+RestraintAdded)
-- The leather elemental strikes you with her leather belts! (DamageTaken)
+- The leather elemental strikes you with ${Etheir} leather belts! (DamageTaken)
 革の精霊に革ベルトで叩かれた！ (DamageTaken)
 - The leather elemental clicks a lock onto your restraints! (DamageTaken)
 革の精霊に拘束具をロックされた！(DamageTaken)
@@ -4358,13 +4358,13 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Miner
 炭坑婦
-- The bandit tosses her pick to the ground and complains about her pay.
+- The bandit tosses ${Etheir} pick to the ground and complains about ${Etheir} pay.
 炭坑婦はつるはしを地面にたたきつけて自身の待遇を愚痴りだした……
 - The miner restrains you! (+RestraintAdded)
 炭坑婦に拘束された！ (+RestraintAdded)
-- The miner pins you with the haft of her pickaxe! (DamageTaken)
+- The miner pins you with the haft of ${Etheir} pickaxe! (DamageTaken)
 炭坑婦につるはしの柄で締められた！ (DamageTaken)
-- The miner pins you with the haft of her pickaxe and adds a lock! (DamageTaken)
+- The miner pins you with the haft of ${Etheir} pickaxe and adds a lock! (DamageTaken)
 炭坑婦につるはしの柄で締められ、拘束具をロックされた！(DamageTaken)
 
 
@@ -4390,7 +4390,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Shady Dealer
 怪しげな商人
-- The dealer flees, leaving her goods behind.
+- The dealer flees, leaving ${Etheir} goods behind.
 怪しげな商人は商品を置き去りにして逃げた。
 - The dealer uses some high-quality restraints on you! (+RestraintAdded)
 怪しげな商人におすすめの試供品を提供された！ (+RestraintAdded)
@@ -4426,7 +4426,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 盗賊の長は撤退した！
 - The bandit restrains you tightly! (+RestraintAdded)
 盗賊の長に拘束された！(+RestraintAdded)
-- The bandit runs her hands all along your restrained body! (DamageTaken)
+- The bandit runs ${Etheir} hands all along your restrained body! (DamageTaken)
 盗賊の長に身体を縛られて全身を愛撫された！（DamageTaken）
 - The bandit chuckles and applies a lock! (DamageTaken)
 盗賊の長は嘲笑と共に拘束具をロックしてきた！ (DamageTaken)
@@ -4460,7 +4460,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 盗賊の鎖使い
 - The bandit grappler retreats.
 盗賊の鎖使いは撤退した。
-- The bandit grappler loops her chains around you! (+RestraintAdded)
+- The bandit grappler loops ${Etheir} chains around you! (+RestraintAdded)
 盗賊の鎖使いにチェーンを巻きつけられた！(+RestraintAdded)
 - The bandit grappler caresses your restrained body! (DamageTaken)
 盗賊の鎖使いに身体を縛られて全身を愛撫された！(DamageTaken)
@@ -4472,13 +4472,13 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Mummy
 バスト教の信徒
-- The Mummy collapses and her body vanishes.
+- The Mummy collapses and ${Etheir} body vanishes.
 バスト教の神官は倒れ、消え去った。
 - The Mummy conjures a mystic wrapping! (+RestraintAdded)
 バスト教の神官は奇妙な包帯を召喚した！ (+RestraintAdded)
 - The Mummy conjures a magical lock upon you! (DamageTaken)
 バスト教の信徒に魔法の錠で拘束具をロックしてきた！ (DamageTaken)
-- The Mummy punishes you with a blow from her staff! (DamageTaken)
+- The Mummy punishes you with a blow from ${Etheir} staff! (DamageTaken)
 バスト教の神官が杖で叩いてきた！ (DamageTaken)
 
 
@@ -4518,7 +4518,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 バスト教の戦士は鳴き声を上げて倒れた。
 - The Bast Warrior restrains you! (+RestraintAdded)
 バスト教の戦士に拘束された！(+RestraintAdded)
-- The Bast Warrior tickles you with her claws! (DamageTaken)
+- The Bast Warrior tickles you with ${Etheir} claws! (DamageTaken)
 バスト教の戦士に爪でくすぐられた！ (DamageTaken)
 - The Bast Warrior pulls out a lock and slips it on! (DamageTaken)
 バスト教の戦士に拘束をロックされた！(DamageTaken)
@@ -4550,15 +4550,15 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - High Cleric
 バスト教の司祭
-- The High Cleric locks herself in ritual bondage as punishment for failure.
+- The High Cleric locks ${Ethem}self in ritual bondage as punishment for failure.
 バスト教の司祭は自らを罰するために自縛した。
-- The High Cleric holds up her staff and you feel intense vibrations throughout your body! (DamageTaken)
+- The High Cleric holds up ${Etheir} staff and you feel intense vibrations throughout your body! (DamageTaken)
 バスト教の司祭が杖を振るうと、全身に強烈な振動が駆け巡った。 (DamageTaken)
 - The High Cleric summons animated restraints to bind you! (+RestraintAdded)
 バスト教の司祭は生きた拘束具を召喚し、拘束してきた！ (+RestraintAdded)
 - A flurry of mummy wrappings encase you and stun you! (DamageTaken)
 大量の包帯に絡め取られ、気絶してしまった！ (DamageTaken)
-- The High Cleric smiles as she conjures many locks on your restraints! (DamageTaken)
+- The High Cleric smiles as ${Ethey} conjure${Es} many locks on your restraints! (DamageTaken)
 バスト教の司祭は笑顔で大量の錠を召喚してきた！ (DamageTaken)
 
 
@@ -4646,7 +4646,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 赤い液体が泡立ち、丸いスライムが飛び出してきた！
 - A revenant appears!
 悪霊が出現した！
-- Fuuka uses a talisman to call forth the spirits of her pets!
+- Fuuka uses a talisman to call forth the spirits of ${Ptheir} pets!
 フウカが護符に力を込めると悪霊が寄ってきた！
 
 
@@ -4708,7 +4708,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 ドールは制圧された。
 - Freed Doll
 逃走中のドール
-- The doll returns to her place.
+- The doll returns to ${Etheir} place.
 ドールは居るべき場所に送られた。
 
 
@@ -4716,11 +4716,11 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 スライムに包まれた冒険者
 - The encased adventurer loses hope.
 スライムに包まれた冒険者は絶望した。
-- The encased adventurer moans as she throws herself against you for help! (DamageTaken)
+- The encased adventurer moans as ${Ethey} throw${Es} ${Ethem}self against you for help! (DamageTaken)
 スライムに包まれた冒険者がうめき声をあげて飛び込んできた！(DamageTaken)
-- The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)
+- The encased adventurer sticks to you as ${Ethey} mumble${Es} incoherently! (DamageTaken)
 スライムに包まれた冒険者が支離滅裂につぶやきながら飛びついてきた！ (DamageTaken)
-- The encased adventurer pleads for help as her slime spreads to you! (+RestraintAdded)
+- The encased adventurer pleads for help as ${Etheir} slime spreads to you! (+RestraintAdded)
 スライムに包まれた冒険者が懇願すると同時に、スライムが飛びかかってきた！ (+RestraintAdded)
 
 
@@ -5038,7 +5038,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Rope Witch
 縄の魔女
-- The rope witch retreats as her animated ropes chase her.
+- The rope witch retreats as ${Etheir} animated ropes chase ${Etheir}.
 縄の魔女は、自身の縄に追いかけられていった。
 
 
@@ -5080,7 +5080,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 見習い魔女が拘束具を召喚してきた！ (+RestraintAdded)
 - The witch's apprentice smiles and summons a lock onto you! (DamageTaken)
 見習い魔女が笑顔で拘束具の錠を召喚してきた！ (DamageTaken)
-- The witch's apprentice smiles as she squeezes your chest! (DamageTaken)
+- The witch's apprentice smiles as ${Ethey} squeeze${Es} your chest! (DamageTaken)
 見習い魔女は笑顔で脇腹を撫で回してきた！ (DamageTaken)
 
 
@@ -5120,7 +5120,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 スライムの魔女
 - The slime witch vanishes into a pool of pink slime, leaving behind a keyring.
 スライムの魔女は鍵の束を残してスライム溜まりに消えた。
-- The witch touches her with her sticky grasp! (+RestraintAdded)
+- The witch touches ${Etheir} with ${Etheir} sticky grasp! (+RestraintAdded)
 スライムの魔女がねっとりとした手で拘束してきた！ (+RestraintAdded)
 - The witch creates a magical lock made of hardened latex! (DamageTaken)
 スライムの魔女は硬化したラテックスで魔法のロックを施してきた！ (DamageTaken)
@@ -5136,7 +5136,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 ハイウィザードが首を拘束してきた！ (+RestraintAdded)
 - The wizard clips a lock to your restraints! (DamageTaken)
 ハイウィザードが拘束具をロックしてきた！ (DamageTaken)
-- The wizard laughs maniacally as she tickles you! (DamageTaken)
+- The wizard laughs maniacally as ${Ethey} tickle${Es} you! (DamageTaken)
 ハイウィザードは狂ったように笑いながらくすぐってきた！(DamageTaken)
 
 
@@ -5148,7 +5148,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 ファンガールが首を拘束してきた！  (+RestraintAdded)
 - The fun-gal produces a magical lock on all your restraints! (DamageTaken)
 ファンガールはすべての拘束具に魔法のロックを生成してきた！(DamageTaken)
-- The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
+- The fun-gal rubs your chest with ${Etheir} long, slender fingers! (DamageTaken)
 ファンガールが細い指で胸を優しく揉んできた！ (DamageTaken)
 - Crystal Slash
 クリスタルスラッシュ
@@ -5212,7 +5212,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 仕立て屋
 - The dressmaker storms out in a rage.
 仕立て屋は怒り狂って暴れまわった。
-- The dressmaker has you try on one of her new accessories! (+RestraintAdded)
+- The dressmaker has you try on one of ${Etheir} new accessories! (+RestraintAdded)
 仕立て屋が服を試着させてくれた！(+RestraintAdded)
 - The dressmaker adds a lock 'just to complete the look, you know?'
 仕立て屋が拘束具をロックしてきた！「鍵をかければもっと見栄えが良くなるわ」
@@ -5236,9 +5236,9 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 司書
 - The librarian gets angry and retreats.
 司書は怒りながら逃げていった。
-- The librarian shushes you as she brandishes a restraint! (+RestraintAdded)
+- The librarian shushes you as ${Ethey} brandish${Ees} a restraint! (+RestraintAdded)
 司書が拘束具を振り回してきた！ (+RestraintAdded)
-- The librarian snaps her fingers and sends a lock flying at you!
+- The librarian snaps ${Etheir} fingers and sends a lock flying at you!
 司書が指をパチンと鳴らし、錠を飛ばしてきた！
 - The librarian whispers seductively into your ear! (DamageTaken)
 司書が耳元で魅惑的に囁いてきた! (DamageTaken)
@@ -5298,7 +5298,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Jailer
 看守
-- The jailer passes out and drops her possessions!
+- The jailer passes out and drops ${Etheir} possessions!
 看守は失神して持ち物を落とした！
 - The jailer locks your restraints!
 看守が拘束具をロックしてきた！
@@ -5314,7 +5314,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 
 - Guard
 警備員
-- The guard passes out and drops her possessions!
+- The guard passes out and drops ${Etheir} possessions!
 警備員は失神して持ち物を落とした！
 - The guard locks your restraints!
 警備員が拘束具をロックしてきた！
@@ -5330,7 +5330,7 @@ M.F. 'マスタープラン'が熟練の手付きでくすぐってきた！(Dam
 武装警備員は鍵の束を落としながら退却した！
 - The guard shocks you and slaps on some restraints! (+RestraintAdded)
 武装警備員はスタンガンを撃ち込み、怯んだ隙に拘束具を追加してきた！ (+RestraintAdded)
-- The guard shocks you with her taser!!!
+- The guard shocks you with ${Etheir} taser!!!
 武装警備員にテーザーを撃ち込まれた！
 
 
@@ -5396,7 +5396,7 @@ EnemyName は NewRestraintName を取り付けてきた。
 堕落した冒険者は大量の腕をまとわりつかせてきた！(+RestraintAdded)
 - The corrupted aventurer clicks a lock on from behind you! (DamageTaken)
 堕落した冒険者に背後から拘束具をロックされた！ (DamageTaken)
-- The corrupted adventurer drags her chilling fingers across your vulnerable skin! (DamageTaken)
+- The corrupted adventurer drags ${Etheir} chilling fingers across your vulnerable skin! (DamageTaken)
 堕落した冒険者は冷たい指先を身体に這わせてきた！ (DamageTaken)
 
 
@@ -5480,9 +5480,9 @@ EnemyName は NewRestraintName を取り付けてきた。
 悪魔を祓った！
 - The demon places you in dark, glassy restraints. (+RestraintAdded)
 悪魔が呪いの拘束具で拘束してきた！(+RestraintAdded)
-- The demon caresses you gently with her sharp nails! (DamageTaken)
+- The demon caresses you gently with ${Etheir} sharp nails! (DamageTaken)
 悪魔に尖った爪で優しく愛撫された！ (DamageTaken)
-- The demon stuns you with her heavy mace! (+STUN)
+- The demon stuns you with ${Etheir} heavy mace! (+STUN)
 悪魔にメイスで殴られ、スタンしてしまった！(+スタン)
 
 
@@ -5562,7 +5562,7 @@ EnemyName は NewRestraintName を取り付けてきた。
 
 - Necromancer
 ネクロマンサー
-- The necromancer faints. Ironic that she couldn't save herself.
+- The necromancer faints. Ironic that ${Ethey} couldn't save ${Ethem}self.
 ネクロマンサーは失神した。
 - The necromancer locks all of your restraints!
 ネクロマンサーはすべての拘束具をロックしてきた！
@@ -10898,7 +10898,7 @@ DamageDealt チェーンダメージを与えるハーネスを召喚する。�
 ペットスーツ召喚
 - Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool.
 無力化した敵をペットにする。ペットがいる間、マナプールから得られるマナの回復量が上昇する。
-- You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!
+- You conjure an enchanted petsuit which wraps around your target, forcing ${Ethem} to follow you!
 無力化した敵にペットスーツを着せ、強制的に服従させた！
 - You watch in horror as your own creation lunges toward you, binding your hands and feet!
 自身の召喚したペットスーツに拘束されてしまった！
@@ -11144,7 +11144,7 @@ CMD: ロック解除(小)
 コマンドワードを唱え、拘束具を解除する！
 - None of the locks you are wearing respond to your magic.
 どのロックにも効果がないようだ。
-- You can't help her with this.
+- You can't help ${Ethem} with this.
 この魔法を使っても意味はない。
 - You must target yourself, an enemy, or a locked object.
 ロックされた拘束具を付けている対象を選ぶ必要がある。
@@ -11288,7 +11288,7 @@ Duration ターンの間、部屋を明るくする。全く光のない部屋�
 
 - The EnemyName gains increased physical armor!
 EnemyName の物理アーマーが増加した！
-- The EnemyName buffs the physical armor of her allies!
+- The EnemyName buffs the physical armor of ${Ptheir} allies!
 EnemyName は味方の物理アーマーを強化した！
 - The EnemyName deploys an energy shield to allies!
 EnemyName はエネルギーシールドを味方に展開した!
@@ -11670,7 +11670,7 @@ SummonCount のゾンビが周囲に現れた！
 鎖と錠前でできた雲がカタカタと音を立てながら向かってきた！
 - A huge cloud of locks and chains clatters as it levitates toward you!
 大量の鎖と錠前の塊と空中衝突を起こしてしまった！
-- Floating hands appear by the conjurer's side as she points her staff!
+- Floating hands appear by the conjurer's side as ${Pthey} point${Ps} ${Ptheir} staff!
 召喚士が杖を掲げると、浮遊する手が現れた！
 
 
@@ -12630,13 +12630,13 @@ KeyAmount の鍵を試してみた。
 幽霊：良い奴隷は話しかけられるまで黙っているものなのよ？
 - Ghost: Aww, so helpless~
 幽霊：あはは、これはもう一人じゃどうしようもないね～。
-- Ghost: Trussed up like a good girl~
+- Ghost: Trussed up like a good ${Psub}~
 幽霊：縛られていい子にしていなさいね～。
 - Ghost: You're going to stay that way for a good while.
 幽霊：しばらくそうしていなさい。
 - Ghost: I love watching you hop around, it's funny!
 幽霊：動くたびにぶるぶる震えるあなたのお尻が好きなの。もっと見せて。
-- Ghost: Just sit there like a good girl~
+- Ghost: Just sit there like a good ${Psub}~
 幽霊：そこでじっと座っていなさい。
 - Ghost: I want to see you kneel~
 幽霊：ちょっとそこで跪いてみてよ。
@@ -12812,17 +12812,17 @@ KeyAmount の鍵を試してみた。
 
 - I hope you learned your lesson. Now get your butt out of here.
 良い勉強になっただろう、もう来るんじゃないぞ。
-- You've been a good girl. I hope you don't make the same mistake again. You can leave.
+- You've been a good ${Psub}. I hope you don't make the same mistake again. You can leave.
 いい子にしていたようだな、もう出て言っていいぞ。
-- That's a good girl. Now behave yourself, okay? You're free to go.
+- That's a good ${Psub}. Now behave yourself, okay? You're free to go.
 行儀よくしていたようだな、外でもそうしていろよ。
 - Looks like you got yourself in a bind! (she pats your butt playfully) Go make the others happy!
 そんなに縛られるのが好きなのか。それじゃあ他の奴らに奉仕してこい！(お尻を軽く叩かれた)
 - I hope you learned your lesson.|Now get your butt out of here.
 ちゃんと反省しただろうな？|それじゃあさっさと行け！
-- You've been a good girl. I hope you don't make the same mistake again.|You can leave.
+- You've been a good ${Psub}. I hope you don't make the same mistake again.|You can leave.
 しっかり反省しているようだな、もう間違いを犯すこともないだろう。|もう行っていいぞ。
-- That's a good girl. Now behave yourself, okay?|You're free to go.
+- That's a good ${Psub}. Now behave yourself, okay?|You're free to go.
 いい子だ、この調子でお行儀よくするんだぞ。|もう行け。
 - Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!
 そんなに縛られるのが好きなのか。|それじゃあ他の奴らに奉仕してこい！(お尻を軽く叩かれた)
@@ -12866,7 +12866,7 @@ EnemyName は RestraintName を LockType でロックした！
 
 - Got yourself in trouble, eh?
 トラブルに巻き込まれたのか？うん？
-- Looks like you're shaping up to be a good girl~
+- Looks like you're shaping up to be a good ${Psub}~
 いい娘になったみたいだな。
 - Oh! Looks like I've made a mistake...
 おっと、間違えた……
@@ -13754,7 +13754,7 @@ EnemyName を捕まえたが、この階層ではこれ以上神に捧げても�
 捕まえられるものなら捕まえてみなさい！
 - I've been naughty, looks like I need to be punished...
 いたずらしちゃった……お仕置きしてくれる？
-- I've been a bad girl, won't you do something about it?
+- I've been a bad ${Esub}, won't you do something about it?
 悪い子だから、何もしてくれないの？
 - Mmmph... maybe I talk too much...
 うーん、喋りすぎたかな……
@@ -14082,7 +14082,7 @@ SPLを唱えるよ！
 鍵を盗んだの？渡しなさい！
 - Alert!
 脱獄だ！
-- You look like a good girl. Come on~
+- You look like a good ${Psub}. Come on~
 いい子だからこっちにいらっしゃい。
 - Come here, let's play!
 ちょっといいことしましょう！
@@ -14800,7 +14800,7 @@ query([ID]); >ERROR; ([UNKNOWN], [DOLL]) を輸送します。
 汚い手で触るな！
 - Your chances of winning are... less than zero.
 キミの勝率は0%だぞ。
-- Good girls don't use magic without permission.
+- Good ${Psub}s don't use magic without permission.
 許可なしに魔法を使うな！
 - Keep that magic away from my experiments!
 実験器具の近くで魔法を使うな！
@@ -15944,7 +15944,7 @@ SPLを使用する！
 へたくそだな、縄抜けの訓練を怠ったのか？
 - I'm going to have some fun with you~
 楽しませてあげるよ。
-- Watch yourself, girl~
+- Watch yourself, ${Psub}~
 気をつけなよ、お嬢さん。
 - Nice find. I'll take it.
 よく見つけたな、それをよこせ。
@@ -16052,7 +16052,7 @@ SPLを使用する！
 やめて！
 - It'll take you quite a while to pay off those damages!
 損害賠償は高く付くよ！
-- Now there, good girl!
+- Now there, good ${Psub}!
 さあ、大人しくしてね！
 - Wrong move!
 遅いね！
@@ -16102,11 +16102,11 @@ PTRN 、ネバーミアの社員です。名刺をどうぞ……
 私を追いかけてたんじゃないの？
 - I've got somethin nice for ya.
 いいものがあるよ。
-- Be a good girl for me, will ya?
+- Be a good ${Psub} for me, will ya?
 いい子にしてるんだよ、わかった？
 - You need to show some restraint.
 少しは自制してね。
-- Stay where you belong, you naughty girl.
+- Stay where you belong, you naughty ${Psub}.
 そこでしばらく大人しくしてるんだよ。
 - Let's go somewhere more private.
 ちょっと人目につかないところに行こうよ。
@@ -16750,13 +16750,13 @@ Myrtleは私よりも守護に長けていた……妹に会いたいのだ…�
 抜け出せるものなら抜け出してみろ。
 - Who am I? You beings may call me PTRN.
 私？ PTRN とでも呼ぶといい。
-- She thinks she can beat us~
+- ${PThey} thinks ${Pthey} can beat us~
 勝てると思っているのか。
 - No one will save you.
 誰も助けには来ない。
 - Come and accept your fate.
 運命を受け入れろ。
-- An unruly subject. She needs training.
+- An unruly subject. ${PThey} need${Ps} training.
 手に負えない。少し分からせてあげる必要があるようね。
 - You should consider your actions and their consequences~
 自分の行いを悔いるといい。
@@ -16970,7 +16970,7 @@ SPLからはそう簡単には逃げられないよ！
 トレーニングの時間だよ。
 - You need to be taught some manners, maid.
 メイドとしてもっとマナーを身につけてね。
-- Good girl. I'll take that to the storage room.
+- Good ${Psub}. I'll take that to the storage room.
 掃除してくれたんだね、私が倉庫に持っていくよ。
 - I'll be taking those.
 私が預かるよ。
@@ -17054,7 +17054,7 @@ PTRN 、出勤しました。
 お仕置きしてくれませんか……？
 - I've been a bad girl...
 私は悪い子です……
-- Miss, your uniform is dirty...
+- ${PHonor}, your uniform is dirty...
 お洋服が汚れていますよ……
 - Why hello miss...
 お、おはようございます……
@@ -17076,13 +17076,13 @@ PTRN 、出勤しました。
 どちら様！？
 - Oh no!
 そんな！
-- Miss! You're not allowed to cast that!
+- ${PHonor}! You're not allowed to cast that!
 こっ、ここでは魔法は禁止されていて……
-- Miss, I have to report that!
+- ${PHonor}, I have to report that!
 あの、報告させていただきますね！
 - Eeep!
 えぇっ！？
-- Miss, that's reserved for the head maid!
+- ${PHonor}, that's reserved for the head maid!
 それはメイド長のものですよ！
 - Thief! I'm reporting this!
 泥棒！？
@@ -17204,7 +17204,7 @@ SPLの前にひれ伏しなさい。
 こちらへ来なさい。個人授業の時間です。
 - You need to work on your ladylike manners.
 少しマナーを身につける必要がありますわね。
-- Good girl, finding lost items.
+- Good ${Psub}, finding lost items.
 よくできました。失せ物が見つかったようですね。
 - I do not give you permmission to leave.
 ここから立ち去る許可は出していませんよ？
@@ -17258,7 +17258,7 @@ SPLの前にひれ伏しなさい。
 怖がらないで、優しくしてあげますから。
 - Know your place, dear~
 立場をわきまえなさい。
-- Good girls keep their hands to themselves.
+- Good ${Psub}s keep their hands to themselves.
 良い子は他人に手を上げません。
 - You broke the rules, now you'll face the consequences.
 ルールを破りましたね。すぐに報いを受けますよ。
@@ -17452,7 +17452,7 @@ SPLを使うわ！あっ、ちょっと……
 師匠からキミを楽しませろと言われているんだ。
 - Hehe, having fun?
 へへ～、楽しんでる？
-- Miss, won't you come?
+- ${PHonor}, won't you come?
 ちょっと来てくれない？
 - Hey, you're free to play, right~?
 ねえ、キミは自由に弄んで良いんだよね？
@@ -17808,15 +17808,15 @@ SPL……
 (SPEAKER は首を傾げた)|そっか、ごめんね。
 - (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
 (SPEAKER は顔を赤くした)|あっ……あっ、ごめんなさい！
-- (The SPEAKER smiles)|Keep up the good work, girl.
+- (The SPEAKER smiles)|Keep up the good work, ${Psub}.
 (SPEAKER は笑顔になった)|なんでもないわ、作業を続けなさい。
 - (The SPEAKER beeps)|Vital signs indicate honesty. Carry on.
 (SPEAKER はビープ音を発した)|バイタルニ異常ナシ。行ッテクダサイ。
 
 
-- (The SPEAKER smiles)|Good girl.
+- (The SPEAKER smiles)|Good ${Psub}.
 (SPEAKER は笑顔になった)|いい子だ。
-- (The SPEAKER smiles)|That's a good girl.
+- (The SPEAKER smiles)|That's a good ${Psub}.
 (SPEAKER は笑顔になった)|いい子だ。
 - (The SPEAKER smiles)|Thank you.
 (SPEAKER は笑顔になった)|ありがとうございます！
@@ -17842,7 +17842,7 @@ SPL……
 (SPEAKER が接近してきた)|武器ノ所持ハ認可サレテイマセン。|オ渡シ下サイ。
 - (The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
 (SPEAKER は遠慮がちに警告してきた)|すみません、武器を持っていますよね？|そちらをお渡しいただけますか……？
-- (The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
+- (The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?
 (SPEAKER は笑顔で言い放ってきた)|そんなものを持っていたらだめよ？|いい子だからわかるでしょ？
 - (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
 (SPEAKER は指を鳴らしながらニヤニヤと笑っている)|喧嘩でもしようとしてるのか？|さっさとそれを渡しな。
@@ -17918,7 +17918,7 @@ SPL……
 さっさと出して！
 - (Scream into your gag uselessly)
 (猿轡越しに叫ぶ)
-- I will be a good girl!
+- I will be a good ${Psub}!
 大人しくしてるから……
 - (Giggle and wiggle your body)
 (喜びに身体をくねらせる)
@@ -17926,11 +17926,11 @@ SPL……
 
 
 
-- (The SPEAKER approaches you in your cell)|Back again, are we? Silly girl.|You know we don't take no for an answer.
+- (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You know we don't take no for an answer.
 (SPEAKER が牢にやってきた)|おかえり、お馬鹿さん。|逃がすわけ無いでしょう？
 
 
-- (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(She leaves and returns with some toys...)|Now hold still!
+- (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
 (SPEAKER が微笑み返してきた)||それならもっと楽しくしてあげましょうか？|(彼女はいくつかのオモチャを持ってきた)|ほら、じっとしてなさい！
 - (The SPEAKER frowns)|I know exactly what you need...
 (SPEAKER は顔をしかめた)|あなたが何を欲しているか知ってるわ……
@@ -18074,7 +18074,7 @@ SPL……
 
 
 
-- (The SPEAKER smiles as she hides her hands behind her back)|Have you heard of 'sensory deprivation'?
+- (The SPEAKER smiles as ${Ethey} hide${Es} her hands behind her back)|Have you heard of 'sensory deprivation'?
 (後ろで手を組みながら、 SPEAKER が笑顔を湛え問いかけてきた)|ねえ、"感覚遮断"って知ってる？
 - (The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!
 (SPEAKER は RESTRAINT を渡してきた)|へぇ～、じゃあこれをあげるね。|付け心地が良くてね、耳栓もついてるんだよ！
@@ -18120,9 +18120,9 @@ SPL……
 
 - (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
 (SPEAKER は厭らしい笑みを浮かべながらこちらを見ている)|ごきげんよう、"お仕事"の時間ですよ！
-- (The SPEAKER takes a duster gag from her satchel)|Such a good girl!|So here's what I have for you~|It's a special tool to help keep the place clean.
+- (The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
 (SPEAKER はカバンから小さな箒の付いたパネルギャグを取り出す)|いい子ですね！|では、私からのプレゼントです。|これはダンジョンを綺麗にする特別な掃除用具なんです。
-- (The SPEAKER grins)|I'm glad we could come to an understanding~|(She takes out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+- (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
 (SPEAKER はニヤニヤと笑っている)|理解していただきありがとうございます～。|(彼女に猿轡を手渡された)|さて、ここは少しばかり埃っぽいので、|それをつけて綺麗にしてくださいね？
 - (The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
 (SPEAKER は眉をひそめている)|そうですか。|本当にそんなこと言っていいんですか？
@@ -18130,11 +18130,11 @@ SPL……
 (SPEAKER は肩を落としている)|別の方を探すとしましょう……
 - (The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(She pulls out a duster gag from her satchel and grins)
 (SPEAKER に突然肩を掴まれた)|いやいや、|お仕事をサボってはいけませんよ～？|(彼女は粘着く笑みを浮かべながら、カバンから小さな箒の付いたパネルギャグを取り出した。)
-- (The SPEAKER smiles)|Don't be afraid!|(She turns the gag with the round mouth ball clearly visible)|Now open up...
+- (The SPEAKER smiles)|Don't be afraid!|(${EThey} turn${Es} the gag with the round mouth ball clearly visible)|Now open up...
 (SPEAKER は笑みを浮かべている)|そう固くならないで。|(彼女は猿轡を回し、裏についた丸いボールを見せてくる)|さあ、口を開けて……
 - (The SPEAKER shrugs)|Fine, I'll get someone else to clean up.
 (SPEAKER は不機嫌そうだ)|別の方を探すとしましょうか……
-- (The SPEAKER places the gag in your mouth)|(She then buckles up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
+- (The SPEAKER places the gag in your mouth)|(${EThey} then buckle${Es} up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
 (SPEAKER に猿轡を噛まされた)|(首の裏でベルトを締められる)|(猿轡がきつくしまっていくのを感じる……)|良いメイドですね！
 - (The SPEAKER catches you and forces the gag on you)|(You feel it tighten as it locks on securely...)|I don't want to hear it!|Now go and do your job~
 (SPEAKER に掴まれ、無理やり猿轡を噛まされてしまった)|(猿轡はきつくかたく締まっている……)|怠惰の言い訳なんて聞きたくありませんからね。|それじゃあお仕事がんばってくださいね～。
@@ -18166,7 +18166,7 @@ SPL……
 (SPEAKER は RESTRAINT を取り出した)|私のお古だけど……|これは……えっと……ヘルメット、だな。
 - (The SPEAKER winks and locks it on)|I feel much safer already~
 (SPEAKER はウィンクしながら装備を手伝ってくれた)|これで安全に冒険できるな。
-- (The SPEAKER pouts)|Aww, spoilsport!|(She returns to fighting her imaginary enemies)
+- (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting her imaginary enemies)
 (SPEAKER は口をとがらせている)|そんなお古だからって嫌がることはないだろう！|(彼女は再び素振りを始めた)
 - (The SPEAKER shrugs)|Your loss~
 (SPEAKER は肩をすくめる)|そう。じゃあな。
@@ -18354,7 +18354,7 @@ SPL……
 
 - (An excited SPEAKER turns to you)|Eureka, I've done it!|Do you want to see?
 (興奮した SPEAKER がこちらに向かってきた)|エウレカ、ついにやったよ！|見たいか？
-- (The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(She holds out the container)
+- (The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(${EThey} hold${Es} out the container)
 (SPEAKER は加圧フラスコを取り出した)|気体のゴムだ！|内部を不活性化のスライムでコーティングして保管に成功したんだ！|ほら、見てみて！|(彼女はフラスコを差し出してきた)
 - (The flask springs a leak)|Oh no! That wasn't supposed to happen!|(The gas crystalizes into a RESTRAINT across your body)
 (フラスコは飛び跳ね、中身がこぼれだした)|あぁっ、そんな！|(ガスが全身を包み、結晶化して RESTRAINT となった)
@@ -18362,11 +18362,11 @@ SPL……
 (SPEAKER は見下した笑みを浮かべている)|今にわかるさ……今にな！
 - (The SPEAKER sighs)|So hard to find good help out here...
 (SPEAKER はため息をついている)なかなか手伝ってくれる人がいないな……
-- (The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(She unscrews the cap)
+- (The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(${EThey} unscrew${Es} the cap)
 (SPEAKER は口をとがらせている)|私の研究にケチをつけるのか？そんなやつはこうだ！|(彼女はフラスコの蓋を外しだした)
 - (The green gas starts leaking)|Oh no! It wasn't supposed to do that!
 (フラスコから緑色のガスが漏れ出した)|あぁっ、そんなはずじゃあ！
-- (You push her out of the way, but she frowns)|Hmph. This is your fault.
+- (You push her out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
 (彼女を突き飛ばすと、彼女は不機嫌そうな顔をしていた)|お前のせいだからな。
 - (You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
 (彼女を突き飛ばしたが、ガスからは逃げられなかった)|(ガスが全身を包み、結晶化して RESTRAINT となった)|うわぁ、ガス浴びなくてよかった！
@@ -18492,7 +18492,7 @@ SPL……
 (SPEAKER が優雅に挨拶してきた)|こんにちは、そこのお方。|エルフの道具はいりませんか？
 - (The SPEAKER holds up a RESTRAINT)|These are some of our strictest.|Want to try?
 (SPEAKER は RESTRAINT をかざしてきた)|これはエルフの拘束具で一番きついものなのだけれど|試してみませんか？
-- (The SPEAKER smiles sweetly)|Such a good girl~|(The RESTRAINT locks with a loud click)
+- (The SPEAKER smiles sweetly)|Such a good ${Psub}~|(The RESTRAINT locks with a loud click)
 (SPEAKER は可憐に笑う)|ありがとうございます、素直でいい子ですね。|(RESTRAINT は大きな音を立ててロックされた)
 - (The SPEAKER sagely nods)|As you wish~
 (SPEAKER は頷いた)|そうですか、わかりました。
@@ -18536,7 +18536,7 @@ SPL……
 (SPEAKER は銀色のロープをいじっている)|うーん、もっと上手になりたい……|あの、練習に付き合ってくれませんか？
 - (The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~
 (SPEAKER は幸せそうに微笑んだ)|ありがとうございます！|それじゃあ RESTRAINT で拘束しますね。
-- (The SPEAKER binds you tightly)|(The rope is tight, and she's clearly an expert.)|Mmm, not too bad~
+- (The SPEAKER binds you tightly)|(The rope is tight, and ${Etheyre} clearly an expert.)|Mmm, not too bad~
 (SPEAKER はきつく縛ってきた)|(彼女は慣れた手付きでロープをきつく締める)|んー、いい感じですね。
 - (The SPEAKER pouts indignantly)|Why say yes then?!|(The SPEAKER walks off grumbling)
 (SPEAKER は)|最初に手伝うって言ったのに……|(SPEAKER は不満そうに歩いていった)
@@ -18546,11 +18546,11 @@ SPL……
 (SPEAKER が詰め寄ってきた)|簡単には逃しませんよ。|手伝うって言いましたものね？
 - (The SPEAKER smirks)|Ooh, a chance to practice against resistance~|I can't pass that up!
 (SPEAKER はニヤニヤ笑っている)|これは抵抗する相手を縛る良い機会ですね～|この機会をふいにするわけにはいきません！
-- (The SPEAKER can't keep the knots tight)|(Eventually, she gives up)|S-Stupid human...
+- (The SPEAKER can't keep the knots tight)|(Eventually, ${Ethey} give${Es} up)|S-Stupid human...
 (SPEAKER は中々上手に縛れない)|(そして諦めてしまった)|そんなに抵抗するなんて……
-- (The SPEAKER strictly ties you up)|(You can feel she's done this many times)|(She smirks at you as she departs)
+- (The SPEAKER strictly ties you up)|(You can feel ${Etheyve} done this many times)|(${EThey} smirk${Es} at you as ${Ethey} depart${Es})
 (SPEAKER にきつく縛られた)|(長い時間をかけてゆっくりと練習台にされてしまった)|(彼女はニヤニヤと笑いながら去っていった)
-- (The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(She makes a face at you as she leaves)
+- (The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(${EThey} make${Es} a face at you as ${Ethey} leave${Es})
 (SPEAKER にきつく縛られた)|(全く抜け出せない)|(彼女はこちらを嬉しそうに一瞥すると去っていった)
 
 
@@ -18586,11 +18586,11 @@ SPL……
 (SPEAKER は怒っている)|ちょっと、ねぇ！あなたに話して……|ハァ……
 - (The SPEAKER grins sneakily)|I thought you might say that~|But it wasn't a choice...
 (SPEAKER はニヤリと笑いながら近づいてきた)|まあ、そうだよね～|でもあなたに選択肢はないよ……
-- (The SPEAKER follows you)|Not so fast there~|(She blocks your path)
+- (The SPEAKER follows you)|Not so fast there~|(${EThey} block${Es} your path)
 (SPEAKER が追ってきた)|そんなに急がないでさ～|(道を塞がれてしまった)
 - (The SPEAKER fumbles with the RESTRAINT)|C-Come on, open-|(You quickly walk away)
 (SPEAKER は誤って自らの拘束具にはまってしまった)|ちょっと、解けない……|(放っておこう)
-- (The SPEAKER adds the RESTRAINT)|Good luck with that one~|(She sounds like she's gloating...)
+- (The SPEAKER adds the RESTRAINT)|Good luck with that one~|(${EThey} sound${Es} like ${Etheyre} gloating...)
 (SPEAKER は RESTRAINT を取り付けてきた)|幸運を祈るよ！|(彼女は満足気に去っていった……)
 - (The SPEAKER roughly forces you down)|(Pushing your head down, the RESTRAINT slides on)|(The SPEAKER tugs your hair, then walks away)
 (SPEAKER に押し倒された)|(頭を抑え込まれ、 RESTRAINT を無理やり取り付けられた)|(SPEAKER は去っていった……)
@@ -18676,7 +18676,7 @@ SPL……
 (SPEAKER は息を呑んだ)|わかった、もうやらない！
 - (The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?
 (SPEAKER は RESTRAINT を取り付けてきた)|興奮してるの？|最初は否定してたくせに。
-- (The SPEAKER giggles as she catches you and slaps on the cuffs)|No so fast, dear~
+- (The SPEAKER giggles as ${Ethey} catch${Ees} you and slaps on the cuffs)|No so fast, dear~
 (SPEAKER は笑みを浮かべ、素早く取り押さえて枷をはめてきた)|もうちょっとゆっくりしていきなよ～
 
 
@@ -18756,11 +18756,11 @@ SPL……
 (SPEAKER は頷いた)|ああ、まあそうだよな。|ぶつかって悪かったな。
 - (The SPEAKER shakes her head)|You don't get off that lightly.|These are going on.
 (SPEAKER は首を振った)|いいや、ちょっと待て。|まだ話は終わっていないぞ。
-- (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(She holds up a RESTRAINT)
+- (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(${EThey} hold${Es} up a RESTRAINT)
 (SPEAKER は食い下がってきた)|放って置いたらまた誰かにぶつかるだろう？|だからこうするべきだ。|(彼女は RESTRAINT を取り出した)
 - (The SPEAKER sighs)|I'll let you off then.|Oh, and, uh, sorry for the bump.
 (SPEAKER はため息をつく)|わかった、急いでいるし見逃してやろう……|ぶつかって悪かったな。
-- (The SPEAKER adds the RESTRAINT)|(As she's locking it, she giggles)|You're really cute actually~
+- (The SPEAKER adds the RESTRAINT)|(As ${Etheyre} locking it, ${Ethey} giggle${Es})|You're really cute actually~
 (SPEAKER に RESTRAINT を追加された)|(拘束を終えると、彼女は笑みを浮かべる)|まったく可愛いやつめ。
 - (The SPEAKER stumbles and grimaces)|Ugh! Fine, you can go then.|D-Didn't want to see you tied anyway...
 (SPEAKER はよろめき、苦笑いを浮かべた)|よし、じゃあもう行っていいぞ。|お、お前が縛られている姿なんて見たくなかったしな……
@@ -18928,7 +18928,7 @@ SPL……
 (SPEAKER はため息をついた)|次は首を縦に振ってもらうよ。
 - (The SPEAKER wraps a long chain around you)|(RESTRAINT hugs your body closely)|(You shiver as the cold metal touches you)
 (SPEAKER が鎖をこちらの身体に巻き付け始めた)|(RESTRAINT が身体を締め上げてくる)|(鎖の冷たい感触に思わず震えてしまった)
-- (The SPEAKER grins as she binds your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
+- (The SPEAKER grins as ${Ethey} bind${Es} your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
 (SPEAKER はニヤニヤしながら鎖で拘束してきた)|(RESTRAINT が身体を圧迫する)|それじゃあね～。
 
 
@@ -19002,9 +19002,9 @@ SPL……
 
 - (The SPEAKER walks up to you)|Say, would you be interested in some 'protection?'
 (SPEAKER が歩み寄ってきた)|とってもいい「防具」があるんだけど、興味ないかな？
-- (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(She shows you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
+- (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(${EThey} show${Es} you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
 (SPEAKER はニコニコしている)|食いついたね、最近こんな物を見つけたんだ……|(彼女は施錠のされていない RESTRAINT を見せてきた)|あたしはこういうのに興味ないんだけどさ、|あんたはこういうの好きじゃない？
-- (The SPEAKER blushes as she locks the belt around your waist)|I'm enjoying this more than I thought I would~
+- (The SPEAKER blushes as ${Ethey} lock${Es} the belt around your waist)|I'm enjoying this more than I thought I would~
 (SPEAKER は興奮しながら貞操帯を取り付けてくれた)|思った以上にいいね～！
 - (The SPEAKER smiles)|Enjoy your freedom while it lasts~
 (SPEAKER は笑顔のままだ)|そう、今のうちに自由を謳歌しときな。
@@ -19016,7 +19016,7 @@ SPL……
 (SPEAKER は悪辣な笑みを浮かべている)|拒否権があると思っているのか？
 - (The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~
 (SPEAKER はため息を付いて去っていった)|他に着てくれそうな可愛い子を探すとするか……。
-- (The SPEAKER blushes as she locks the RESTRAINT onto you)|There we go~
+- (The SPEAKER blushes as ${Ethey} lock${Es} the RESTRAINT onto you)|There we go~
 (SPEAKER は興奮しながら RESTRAINT を取り付けてくれた)|それじゃあな～。
 - (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Whoops! I guess I acted too soon.|Ah well~
 (踵を返すと SPEAKER が突然驚かせてきた)|(驚いている間に、腰辺りで鍵のかかる音がした)|おっと、手が滑っちゃったよ。|まあ、自分でなんとかしてくれ。
@@ -19066,7 +19066,7 @@ SPL……
 (SPEAKER は必死に哀願している)|ね、ねぇ、あなた拘束されるの好きなんですよね！？|どうしても RESTRAINT を付けてください、お願いします！
 - (The SPEAKER pleads with you)|...point taken. But still!|I'll end up stuck in it for a really long time...
 (SPEAKER は懇願している)|ええ、そうです……でも！|ずっとこれを着けていなきゃいけないなんて嫌なんです……。
-- (The SPEAKER sighs and wears it herself)|(The lock starts glowing brightly...)
+- (The SPEAKER sighs and wears it ${Ethem}self)|(The lock starts glowing brightly...)
 (SPEAKER はため息を付き、再び貞操帯を付ける)|(すると貞操帯の錠前が輝き出した……)
 - (The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
 (SPEAKER は安堵の表情を浮かべている)|本当にありがとうございます！|この御恩は絶対に忘れません！
@@ -19120,13 +19120,13 @@ SPL……
 
 
 
-- (The SPEAKER grins as she sees you)|Hey there sweetie~|I think you'd look good in some ropes!
+- (The SPEAKER grins as ${Ethey} see${Es} you)|Hey there sweetie~|I think you'd look good in some ropes!
 (SPEAKER がこちらを見て、ニヤリと笑った)|ねえ、そこの可愛い子！|キミ、とっても縄が似合いそうだね～！
 - (The SPEAKER looks at your bound body)|I've got some more ropes for you, babe!
 (SPEAKER はジロジロと縛られた身体を見つめてくる)|もっと縄を足してあげようか？
 - (The SPEAKER smiles)|Okay, hold still while I get you rigged up~
 (SPEAKER は笑顔になった)|おっけー、それじゃあじっとしててね。
-- (The SPEAKER slaps your butt as she ties the last knot)|All trussed up~
+- (The SPEAKER slaps your butt as ${Ethey} tie${Es} the last knot)|All trussed up~
 (SPEAKER は縛り終えると、お尻を一度叩いてきた)|完璧～！
 - (The SPEAKER looks disappointed and packs her rope away)
 (SPEAKER は落胆した様子でロープを仕舞った)
@@ -19138,7 +19138,7 @@ SPL……
 (SPEAKER はニヤニヤ笑っている)|でも、縄が余っててね～……
 - (The SPEAKER frowns)|Suit yourself.
 (SPEAKER は肩を落としている)|もう好きにして。
-- (The SPEAKER smiles)|Good girl~
+- (The SPEAKER smiles)|Good ${Psub}~
 (SPEAKER はにっこり笑った)|いい子だね～。
 - (The SPEAKER takes you down and trusses you up tightly)|That'll teach you~
 (SPEAKER に押し倒され、ぐるぐる巻きにされてしまった)|良い勉強になったかな～？
@@ -19166,11 +19166,11 @@ SPL……
 
 
 
-- (The SPEAKER perks her ears as she sees you)|You've got a nice body.|I think it'll do better with some training!
+- (The SPEAKER perks her ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
 (こちらを見て SPEAKER が耳を立てた)|良い身体してるね！|私達とトレーニングすればもっと良くなるよ！
 - (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
 (SPEAKER は笑顔で紙を差し出してきた)|ネバーミアトレーニングはいつでも新人さん募集中だよ！|ここにサインしてね……
-- (The SPEAKER gets you suited up)|There you go! Now go be a good girl!
+- (The SPEAKER gets you suited up)|There you go! Now go be a good ${Psub}!
 (SPEAKER はスーツを着せてきた)|これでよし、それじゃあいい子にしてね……
 - (The SPEAKER scoffs)|That's what they all say.
 (SPEAKER は不満そうにしている)|皆そう言うよ。
@@ -19210,7 +19210,7 @@ SPL……
 (必死に首を横に振る)(PERCENT の確率で拒否)
 
 
-- (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
+- (The SPEAKER does a short bow as ${Ethey} see${Es} you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 (SPEAKER はこちらを見るなり小さくお辞儀をしてきた)|ごきげんよう。|あなたは十分な素質をお持ちのようですね。|共に来ていただければ良いポジションに就けることを約束しますよ……
 - (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
 (SPEAKER は微笑み、咳払いをする)|素晴らしい！|ここにあなたの制服がありますので……
@@ -19228,7 +19228,7 @@ SPL……
 (SPEAKER は残念そうにしている)|夜道には気をつけなさい。
 - (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
 (SPEAKER は笑顔になる)|わかっていただけて何よりです。|では、まず最初の仕事です。このフロアを掃除しなさい。|幸運を。
-- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
+- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 (突然 SPEAKER が距離を詰めてきた)|(反応する前に足を取られ、組み伏せられてしまう)|(彼女に無理やり制服を着せられ、きつくロックされてしまった……)|追加でトレーニングが必要みたいですね……
 
 
@@ -19248,7 +19248,7 @@ SPL……
 
 
 
-- (The SPEAKER perks her ears as she sees you)|Glory to the blessed kitty!|Are you prepared to join us?
+- (The SPEAKER perks her ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
 (SPEAKER はこちらを見て耳を立てた)|祝福を受けし猫に栄光あれ！|お前も参加するか？
 - (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to cats.|And also we own you now.
 (SPEAKER は嬉しそうに頷く)|素晴らしい！お前は猫に優しくするとだけ誓えばいい。|そうすればお前は我々のものだ。
@@ -19336,7 +19336,7 @@ SPL……
 
 - (The SPEAKER runs up to you)|Wow! You make a fine specimen-er, I mean...|Nice to meet you!
 (SPEAKER が走ってきた)|おお！絶好のモル……被験者になれる人材が来た！|あえて嬉しいよ！
-- (The SPEAKER smiles)|Now, I have something wonderful in store for you.|(She takes out a blue catsuit)|I'd like you to be my assistant!
+- (The SPEAKER smiles)|Now, I have something wonderful in store for you.|(${EThey} take${Es} out a blue catsuit)|I'd like you to be my assistant!
 (SPEAKER は笑顔を向ける)|キミに渡したいものがあるんだ。|(彼女は青いキャットスーツを取り出した)|私のアシスタントになってくれないか？
 - (The SPEAKER looks excited)|Awesome! Let me help you get in uniform...
 (SPEAKER は喜んでいる)|素晴らしい！着るのを手伝ってあげよう……
@@ -19350,7 +19350,7 @@ SPL……
 (SPEAKER は眉をひそめた)|実験の時間だ！
 - (The SPEAKER looks happy again)|Thank you! I'm super grateful!
 (SPEAKER は再び幸せそうな顔をした)|ありがとう！感謝するよ！
-- (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as she breaks a glass vial)|(A suit of blue latex envelops you!)
+- (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
 (SPEAKER は小さく首を傾げた)|わかった、諦めよう。|(立ち去ろうとすると、背中から”冗談だ”という声と共に瓶の割れる音が聞こえてきた)|(突如身体を青いゴムが包み込んだ！)
 
 
@@ -19394,7 +19394,7 @@ SPL……
 (SPEAKER は顔をしかめている)|奴隷ではありませんよ。|奴隷は私達の社会に足を踏み入れることさえできませんから。
 - (The SPEAKER frowns)|We will meet again.
 (SPEAKER は眉をひそめ、去っていった)|また会うことになるでしょう。
-- (The SPEAKER nods and smiles)|(She decorates your body with 'jewelry')|I am glad you had a change of heart.
+- (The SPEAKER nods and smiles)|(${EThey} decorate${Es} your body with 'jewelry')|I am glad you had a change of heart.
 (SPEAKER は笑顔で頷く)|(身体に”アクセサリー”を取り付けられた)|考えを変えてくださりとても嬉しく思います。
 - (The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur.
 (SPEAKER は嘲笑した)|(彼女が魔法を唱えると、輝く縄で縛られてしまった)|雑魚ですわね。
@@ -19482,7 +19482,7 @@ SPL……
 (SPEAKER は小首をかしげる)|はは、面白い。|アンタは悪人なんかじゃない……そうだろう？
 - (The SPEAKER frowns and readies for battle)|My instincts were right.
 (SPEAKER は戦闘態勢を取った)|私の直感は正しかったようだな！
-- (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as she ties you in a strict rope hogtie...)|(She dusts off her hands)|We'll have a talk when you get out of that, okay?
+- (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off her hands)|We'll have a talk when you get out of that, okay?
 (突然 SPEAKER に床に押し倒された)|(素早く手足を縛られ、背中で繋がれてしまった……)|(彼女は手についたホコリを払っている)|解き終わったらもう一度話し合おうか？
 
 
@@ -19510,9 +19510,9 @@ SPL……
 
 - (The SPEAKER beeps)|Prisoner 74121 identified.|Subject not registered in database.
 (SPEAKER は機械音をたてている)|囚人番号74121確認。|対象者ハデータベースニアリマセン。
-- (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good girl' to enter database.
+- (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good ${Psub}' to enter database.
 (SPEAKER は機械音をたてている)|データベース登録ヲ開始シマス。|開始ニハ「私はいい子にします」ト言ッテクダサイ。
-- (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good girl.
+- (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good ${Psub}.
 (SPEAKER は機械音をたて、追跡装置を取り付けてきた)|(金属製のケーブルが身体に取り付き、かすかに音を立てている)|囚人番号74121登録完了。
 - (The SPEAKER beeps)|Acknowledged. Be warned:|Lost contact with Sections 98, 97, 96, 95...|(The list goes on...)
 (SPEAKER は機械音をたてている)|承知シマシタ。警告：|途絶セクションアリ、98、97、96、95……(リストは続いていく……)
@@ -19540,13 +19540,13 @@ SPL……
 (ロボットから逃げる)
 
 
-- Prisoner 74121 reporting. I will be a good girl.
+- Prisoner 74121 reporting. I will be a good ${Psub}.
 囚人番号74121が宣言します、"私はいい子にします"
 - Actually, I am an administrator. (Refuse)
 私は管理者だよ(抵抗する)
 
 
-- I'm sorry, I will be a good girl!
+- I'm sorry, I will be a good ${Psub}!
 わかった、"私はいい子にします"
 - What? (PERCENT chance to avoid)
 何！？(PERCENT の確率で拒否)
@@ -19692,7 +19692,7 @@ SPL……
 
 
 
-- (The SPEAKER does a short bow as she sees you)|Um... hi!|I have a letter for you...
+- (The SPEAKER does a short bow as ${Ethey} see${Es} you)|Um... hi!|I have a letter for you...
 (SPEAKER はこちらを見て小さくお辞儀をした)|ど、どうも……|えっと、あなたにお手紙が……
 - (The letter is a contract from the College)|(They want you to sign up as an instructor for apprentices)|(The SPEAKER looks at you nervously.)
 (手紙は魔法学校からだった)|(手紙は眼の前の少女のインストラクターになってほしいという内容だった)|(SPEAKER はおどおどとこちらを見つめている)
@@ -19844,7 +19844,7 @@ SPL……
 
 
 
-- (The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
+- (The SPEAKER rattles as ${Ethey} wave${Es})|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
 (SPEAKER はカラカラと手を降っている)|ねえ！|お宝に興味はないかい？|アタシは骨董品を扱っているんだけど、いいものが揃っているよ！
 - (The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
 (SPEAKER は指を鳴らしている)|変装を見破るなんて、やるじゃないか……
@@ -19876,7 +19876,7 @@ SPL……
 (SPEAKER は恥ずかしそうにしている)|それは売れません……
 - (The SPEAKER blushes)|Actually, I was saving that for myself...
 (SPEAKER は赤面している)|それは自分のためにとっておいてあるものだから……
-- (The SPEAKER grins)|Good girls don't need one of those~
+- (The SPEAKER grins)|Good ${Psub}s don't need one of those~
 (SPEAKER はクスクスと笑っている)|いい子にはこんなもの必要ないわよ～？
 - (The SPEAKER buzzes)|Error, insufficient access privileges.
 (SPEAKER はエラー音を吐いている)|エラー、アクセス権限ガアリマセン。
@@ -19892,7 +19892,7 @@ SPL……
 (SPEAKER は機械音を鳴らしている)|通貨不足。
 
 
-- (Look at what she wants to buy)
+- (Look at what ${Ethey} want${Es} to buy)
 (売る)
 - You're giving me everything you have.
 持ち物全部よこしなさい
@@ -20074,7 +20074,7 @@ SPL……
 (SPEAKER はドーナツにかぶりついた)|ちょっと砂糖が多いかな……
 - (The SPEAKER blushes)|This is... my new favorite.
 (SPEAKER は赤面している)|これ……すごくいい……
-- (The SPEAKER's eyes widen as she wolfs down the golden cookie)|Truly divine...
+- (The SPEAKER's eyes widen as ${Ethey} wolf${Es} down the golden cookie)|Truly divine...
 (SPEAKER は黄金色のクッキーを頬張り、目を見開いた)|すごく神々しい……！
 
 
@@ -20104,7 +20104,7 @@ SPL……
 (SPEAKER はにっこり笑った)|おお！素晴らしい！
 
 
-- (Look at what she has to sell)
+- (Look at what ${Ethey} ${Ehas} to sell)
 (買う)
 - (Sell Item0 for ItemCost0 gp) (Owned: AMNT0)
 (ItemCost0 gp で Item0 を売る)(所持数:AMNT0)
@@ -20150,7 +20150,7 @@ SPL……
 (ItemCost9 gp で Item9 を買う)(所持数:AMNT9)
 
 
-- (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)
+- (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(${EThey} will remain and help you with restraints for 50 turns)
 (SPEAKER が光を背に現れた)|神の名のもとに、ただいま参りました。|助けが必要なのでしょう？|(50ターンの間拘束具を外す手伝いをしてくれる)
 - (The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?
 (SPEAKER はナイフを渡してきた)|自分を切らないでくださいね？
@@ -20162,7 +20162,7 @@ SPL……
 (SPEAKER はこちらを感心するように見つめている)|天使じゃないと女神の加護が宿った拘束具は外せません。|応募してくれたら外してあげますよ？ｗ
 - (The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!
 (SPEAKER はこちらを感心するように見つめている)|クエストの邪魔はできませんね。
-- (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)
+- (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(${EThey} perform${Es} a short prayer and a random divine lock comes off)
 (SPEAKER はこちらを感心するように見つめている)|女神の祝福を受けているようですね、助けてあげましょう。|(彼女が祈りを捧げると、ランダムな女神の拘束具の錠が外れた)
 
 
@@ -20360,7 +20360,7 @@ HPが足りない。
 抱きしめてほしいんだけど、いいかな？
 - (Move closer, attempting to cuddle)
 (近寄って抱きしめようとする)
-- (The SPEAKER smiles)|You do, in fact!|(She inches closer)
+- (The SPEAKER smiles)|You do, in fact!|(${EThey} inch${Ees} closer)
 (SPEAKER は笑顔を見せている)|ええ、そうね|(彼女はゆっくりと近づいてきた)
 - (The SPEAKER smiles gently)|Aren't you precious~
 (SPEAKER は優しい笑みを浮かべている)|可愛らしいわね～。
@@ -20550,7 +20550,7 @@ HPが足りない。
 
 - Fuuka
 フウカ
-- Fuuka surrounds herself in defensive talismans!
+- Fuuka surrounds ${Ethem}self in defensive talismans!
 突然フウカの周囲に護符が集まってきた！
 - Fuuka wraps you tightly in restraints! (+RestraintAdded)
 フウカが拘束具を巻き付けてきた！(+RestraintAdded)
@@ -20560,19 +20560,19 @@ HPが足りない。
 フウカが指を鳴らすと、拘束具が全てロックされた！
 
 
-- Fuuka surrounds herself in defensive talismans one more time!
+- Fuuka surrounds ${Ethem}self in defensive talismans one more time!
 再びフウカの周囲に護符が集まる！
 - Fuuka wraps you furiously in restraints! (+RestraintAdded)
 フウカが怒りを込めて拘束具を巻き付けてきた！(+RestraintAdded)
-- Fuuka pouts as she tickles you relentlessly! (DamageTaken)
+- Fuuka pouts as ${Ethey} tickle${Es} you relentlessly! (DamageTaken)
 フウカが執拗にくすぐってきた！(DamageTaken)
 
 
-- (You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?
+- (You find a girl wearing an ornate dress)|(${EThey} glance${Es} at you)|And who might you be?
 (豪奢なドレスを着て、佇んでいる少女を見つけた)|(こちらに気付いた彼女が一瞥する)|あなたは？
 - I should be asking the same of you.
 先に名乗って
-- (Growl at her)
+- (Growl at ${Ethem})
 (唸り声を上げる)
 - (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
 (彼女は涼しげに微笑む)|私はフウカ。風と歌でフウカよ。|あなたは？
@@ -20762,13 +20762,13 @@ HPが足りない。
 (SPEAKER は悪戯な笑みを浮かべている)|同意する必要なんてないわ。
 - I never said I consented to being a pet!
 同意した覚えはないけど？
-- (Give her a puzzled look and shake your head)
+- (Give ${Ethem} a puzzled look and shake your head)
 (必死に首を横に振る)
 - No way!
 やめて！
 - (Sigh and shrug)
 (ため息をついて肩をすくめる)
-- (Attack her without saying anything)
+- (Attack ${Ethem} without saying anything)
 (何も言わずに攻撃する)
 
 
@@ -20852,7 +20852,7 @@ HPが足りない。
 (彼女に服従し、特別な首輪をもらう)
 - (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
 (SPEAKER は抵抗したが、猿轡をかませることに成功した)|っんぐぅ！！
-- (Gag her)
+- (Gag ${Ethem})
 (猿轡をかませる)
 
 
@@ -20930,7 +20930,7 @@ HPが足りない。
 (アイテムを売る)
 - (Sell Whole Stacks of Items)
 (全部売る)
-- Daww! What a cutie!|(She smiles and pats your head gently)
+- Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)
 あら可愛い！|(彼女は笑顔で優しく頭を撫でてきた)
 
 
@@ -21004,7 +21004,7 @@ HPが足りない。
 (SPEAKER は RESTRAINTNAME を取り出した)|あなたを捕まえた方々は高品質な拘束具を扱う店に出入りしているようですね。|首輪を付けたあなたが彼女たちに捕まれば、この店のロゴが目に入って宣伝になるでしょう。|安心してください、絶対に外れませんし意外と快適ですから。|身につければ、きっと誰かに服従したくなりますよ。
 - (The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
 (SPEAKER は RESTRAINTNAME を取り出した)|あなたの身体を宣伝に使わせていただきます。|このスーツには魅了の魔法がかかっているんです。|あなたがこのスーツを着れば、他の方々も寄ってくるでしょう。|そしてスーツに書かれたこの店のロゴを見るわけですね。
-- (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
+- (The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~
 (SPEAKER は腕を組み満足気に頷いた)|あなたならちゃんと返してくれるって信じてましたよ～。
 
 
@@ -21016,15 +21016,15 @@ HPが足りない。
 他のは？
 
 
-- Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
+- Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
 よし！それじゃあじっとしていてくださいね～。|(RESTRAINTNAME を着ると、突然封印が浮かび上がった)|あぇっ！？売り物に出さなくて良かったぁ～……|……それは私からのプレゼントです！大事に使ってくださいね？
-- Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
+- Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
 よし！それじゃあじっとしていてくださいね～。|(RESTRAINTNAME を着たが、何も起きなかった)|やった！賭けに勝ちましたね！|あっ、欲しかったらちゃんと買ってくださいね？
-- Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
+- Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(${EThey} place${Es} the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
 わかりました、またここに送られ……返ってくるのを待っていますよ！|たくさんのお宝を持ってね！|(彼女に RESTRAINTNAME を取り付けられ、特別な封印を施される。拘束に鍵穴は見当たらない)
-- Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
+- Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
 わかりました、それじゃあ動かないでね～。|(首輪を取り付けられた)|さあ、お宝探し頑張ってください！
-- You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
+- You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
 きっと気に入りますよ！|(彼女は引き出しからキャットスーツを取り出し、ホコリを払うとそれを着せてきた)|(ジッパーの類はなく、首周りが伸びるようになっている)|(着終わると、首周りが光出して少し緩くなった……)|(……そして魔法の力か引っ張ってもゴムが肌から離れなくなった)|わぁ、とっても似合っていますよ！それじゃあ、お宝探し頑張ってくださいね！|頑張ってくれればそれだけ客足も伸びますから。
 
 
@@ -21150,9 +21150,9 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 目を閉じるが、オモチャから送られてくる快楽のせいで寝付けない……。
 
 
-- (A SPEAKER lies hogtied in front of you)|(She looks at you with pleading eyes,)|(and mumbles incoherently through her gag)
+- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through her gag)
 (SPEAKER は手足を縄で繋がれ、目の前に転がっている)|(彼女は懇願するような眼差しをこちらに向け、)|(猿轡越しに何かを叫んでいる。)
-- (A SPEAKER lies hogtied in front of you)|(She looks at you, mumbling and giggling into her gag)
+- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into her gag)
 (SPEAKER は手足を縄で繋がれ、目の前に転がっている)|(彼女はこちらを見つめ、猿轡越しに何かを呟いている。)
 - (SPEAKER looks grateful)|Thank you so much|I shall join your party.
 (SPEAKER は感謝の意を示した)|ありがとう！|一緒に行ってもいい？
@@ -21164,7 +21164,7 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 (SPEAKER はうめき声を上げて、必死にもがいている)
 - Untie her
 縄を解く
-- Make sure she is tight and secure
+- Make sure ${Ethey} ${Eis} tight and secure
 縄をきつくする
 
 
@@ -21172,7 +21172,7 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 (物思いにふけっている様子の SPEAKER とぶつかった)|おっと、ごきげんよう。|あら、あなたとても綺麗ですわね。|探しものを手伝っていただけません？
 - (The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!
 (SPEAKER は喜びに小さく飛び跳ねている)|ありがとうございます！|私、ドレスをどこかになくしてしまいまして。|もし見つかったら、試着して見せてくださらない？|よろしくね。
-- (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(She snaps a photo of you using a magic crystal)
+- (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(${EThey} snap${Es} a photo of you using a magic crystal)
 (SPEAKER は獣のような視線を向けてきた)|まぁまぁ、とってもゴージャスですわ！|ありがとうございます！|(彼女は魔法のクリスタルを使い、写真を撮りだした)
 - (The SPEAKER giggles)|I never said I'd take it off, did I?
 (SPEAKER はニヤニヤと笑っている)|脱がすなんて一言も言っておりませんわよ？
@@ -21250,7 +21250,7 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 むぅぅ？(混乱した素振りを見せる)
 - (The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System.
 (SPEAKER は腕を組み答える)|全ての者を登録すること。|それがオーリエルの命令です。
-- (The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure she will have time to speak with you if you want to ask her.
+- (The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure ${Ethey} will have time to speak with you if you want to ask her.
 (SPEAKER は少しの間考え込み、答える)|私はオーリエルの命令をこなすだけです。|もし会うことがあれば、あの方が答えてくれるでしょう。
 - But why???
 なぜ？
@@ -21262,7 +21262,7 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 (SPEAKER は少しの間考え込み、答える)|数百年前からだったと記憶しています。|今は休止しておりますが、|我らは皆再開の時を待っています。
 - When are these orders from?
 いつから命令を実行しているの？
-- (You anger the SPEAKER. She gags you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?
+- (You anger the SPEAKER. ${EThey} gag${Es} you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?
 (SPEAKER に猿轡をかませられた。彼女を怒らせてしまったようだ)|我々はあなたとは違って辛抱強いのです。|調教の時間まで大人しくしていてください。
 - The facility is in ruins! This is pointless!
 もう工場は機能していないし、こんなこと無意味よ！
@@ -21278,13 +21278,13 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 (SPEAKER は手足を厳重な枷で繋がれている|まずは錠を開ける必要がある)
 - (You don't have any keys that work on the lock)
 (対応する鍵を持っていない)
-- (You can't help her, bound as tightly as you are...)
+- (You can't help ${Ethem}, bound as tightly as you are...)
 (自分がきつく縛られているせいで上手く助けられない……)
 - (You unlock her, fumbling around for a while with your bound hands)
 (縛られた手でなんとか助け出した)
 - (You unlock the SPEAKER)|Thank you!|Let's get out of here!
 (SPEAKER を助け出した)|ありがとう！|ここから逃げよう！
-- (You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+- (You unlock the SPEAKER)|Mmmmph!|(She want${Es} to keep her gag...)
 (SPEAKER を助け出した)|むぅぅっ！|(彼女は猿轡を気に入っているようだ)
 - (You don't have any lockpicks)
 (ロックピックを持っていない)
@@ -21294,7 +21294,7 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 (手を縛られたままでは上手くロックピックできない)
 - (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
 (錠をこじ開け、 SPEAKER を助け出した)|ありがとう！|さっさと行こう！
-- (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
+- (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} her head when you go for her gag...)
 (錠をこじ開け、 SPEAKER を助け出した)|うぅぅんっ！|(猿轡を外そうとしたが、断られてしまった……)
 - (You don't have enough mana for a command word)
 (コマンドワードを唱えるためのマナが足りない)
@@ -21302,7 +21302,7 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 (口を封じられて魔法を唱えられない)
 - (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
 (コマンドワードを使い SPEAKER を助け出した)|ありがとう！|行こう！
-- (You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+- (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} her gag back on...)
 (コマンドワードを使い SPEAKER を助け出した)|んんぅ。|(彼女は再び猿轡をロックした……)
 - (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
 (SPEAKER は高度な鍵のかかった枷で繋がれている|鍵なしに助け出すのは難しいだろう)
@@ -21318,7 +21318,7 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 謝罪する
 
 
-- (The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)
+- (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} is bugged and needs your help to get out)
 (SPEAKER は不具合の力で拘束されているようだ)|(彼女は助けを求めている)
 - (Unlock her and file a bug report to Ada)
 (解錠する。不具合の報告も忘れずに)
@@ -21350,7 +21350,7 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 敵に見つかってしまった！
 
 
-- (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
+- (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(${EThey} managed to pick the lock on your cell door)
 (SPEAKER が檻を叩き、話しかけてきた)|起きて！ここから抜け出すよ！|(彼女は牢屋の扉をどうにかして開けてくれた)
 - (A SPEAKER wakes you up by melting the door with acid)|These guys were a piece of cake.|Now let's discover a way out of here!
 (SPEAKER が檻を酸で溶かし、話しかけてきた)|こんなの朝飯前さ。|さあ、逃げ道を探すぞ！
@@ -21426,7 +21426,7 @@ DPは、つまるところ……|キミがどれだけイきそうになって�
 安全を確保していない。
 - (Secure NME into the furniture)
 (NME を拘束用インテリアに閉じ込めて完全拘束する)
-- (You lock her into the furniture so that she stays in place)
+- (You lock her into the furniture so that ${Ethey} stay${Es} in place)
 (彼女を拘束具に押し込めた)
 
 
@@ -21618,7 +21618,7 @@ RESTRAINTNAME の封印が解けた。
 乙女の罠
 
 
-- The ENEMYNAME transforms nearby dolls into her subjects!
+- The ENEMYNAME transforms nearby dolls into ${Ptheir} subjects!
 ENEMYNAME が近くの人形を支配下に置いた！
 
 
@@ -21638,7 +21638,7 @@ ENEMYNAME が近くの人形を支配下に置いた！
 ラバーラージミサイル
 
 
-- (In the center of the room stands a woman wearing a latex dress)|(Around her are robotic servants, obeying her without a word)|(She has been watching you this entire time)
+- (In the center of the room stands a woman wearing a latex dress)|(Around ${Ethem} are robotic servants, obeying ${Ethem} without a word)|(${EThey} ${Ehas} been watching you this entire time)
 (広間の中央に、ラバードレスを着た女性が立っていた)|(周囲の機械は言葉もなしに彼女に従っている)|(彼女は無言でこちらを見つめている)
 - And who might you be?
 あなたは？
@@ -21664,11 +21664,11 @@ ENEMYNAME が近くの人形を支配下に置いた！
 有名になれたようね！
 - Indeed. And I'm here to bring you down.
 あなたを倒すために来た
-- (Scoff at her)
+- (Scoff at ${Ethem})
 (唸り声を上げる)
 
 
-- (The Dollmaker folds her arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
+- (The Dollmaker folds ${Etheir} arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
 (ドールメイカーは腕を組む)|いずれにせよ、あなたの冒険はここで終わりです。|我が領分を侵すものは誰であろうと決して許しません。|あなたの人生はここで終わり。永遠に人形として私に仕えるのです。
 - Do you have the Mistress' Staff?
 女王の杖を持ってる？
@@ -21676,7 +21676,7 @@ ENEMYNAME が近くの人形を支配下に置いた！
 (ドールメイカーは苦笑している)|あんなものを探しているのですか？|あなたの狙いはそれだったのですね。|いえ、私は持っていません。|あれはある大魔術師のものです。
 - Then you are of no use to me.
 役に立たないわね
-- (The Dollmaker summons a drone to her side)|Such arrogance! I'll have to teach you some manners!
+- (The Dollmaker summons a drone to ${Etheir} side)|Such arrogance! I'll have to teach you some manners!
 (突然、ドールメイカーはドローンを召喚した)|傲慢ですね。マナーを教えてあげましょう。
 - What a bother.
 面倒くさいわね
@@ -21700,7 +21700,7 @@ ENEMYNAME が近くの人形を支配下に置いた！
 人形には少し興味があるけど……先に進まなきゃ
 
 
-- (The Dollmaker folds her arms as she walks over)|All tight and shiny!|You'll be my prized possession~
+- (The Dollmaker folds ${Etheir} arms as she walks over)|All tight and shiny!|You'll be my prized possession~
 (ドールメイカーが腕を組みながら歩み寄ってきた)|完璧ですね。|あなたは大事に扱ってあげましょう。
 - (The Dollmaker nods)|Already eager to obey!|So beautiful...
 (ドールメイカーは満足げに頷く)|もう心が折れたのですか。|素敵ですね……
@@ -21710,19 +21710,19 @@ ENEMYNAME が近くの人形を支配下に置いた！
 選択肢はないみたいね
 - You will never get away with this!
 こんなことをしても逃げられないわ
-- (Sigh and be forced to wear her visor)
+- (Sigh and be forced to wear ${Etheir} visor)
 (バイザーを選ぶ)
-- (Sigh and be forced to wear her mask)
+- (Sigh and be forced to wear ${Etheir} mask)
 (マスクを選ぶ)
 - (Sigh and be forced to wear whatever she chooses)
 (ドールメイカーに決めさせる)
-- (The Dollmaker places her visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them.
+- (The Dollmaker places ${Etheir} visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them.
 (ドールメイカーにバイザーを被せられた)|(ベルトが後頭部まで伸び、鍵の閉まる音がする)|では、最初の仕事です。|この工場から逃げ出した人形がいます。|彼女を捕まえてきなさい。
 
 
 - (The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower.
 (ドールメイカーが突然眼の前から消えた)|ふむ、もっと火力が必要なようですね。
-- (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from her back as she storms toward you!)
+- (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as she storms toward you!)
 (ドールメイカーはスライムの海に沈んでいった……)|(が、突然機械の腕を背中に装着した姿で目の前に現れ、突進してきた！)
 
 
@@ -21734,7 +21734,7 @@ ENEMYNAME が近くの人形を支配下に置いた！
 (ドールバイザーをつける)
 - (Wear a doll mask)
 (ドールマスクをつける)
-- (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into her open mouth and she starts mumbling angrily)
+- (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and she starts mumbling angrily)
 (ドールメイカーのマスクを取ると、不満げな顔をしている若い女性と目があった)|な、何を……|(開いた口に猿轡を押し込むと、彼女は怒りにうめき声を漏らす)
 
 
@@ -21950,7 +21950,7 @@ ENEMYNAME が近くの人形を支配下に置いた！
 
 - Escaped Doll
 逃げ出したドール
-- You return the doll to her rightful owner.
+- You return the doll to ${Etheir} rightful owner.
 ドールをオーナーの元に送り返した。
 
 
@@ -27446,13 +27446,13 @@ EnemyName の拘束を回避した！
 
 - Chef
 シェフ
-- You defeat the chef and claim her prize.
+- You defeat the chef and claim ${Etheir} prize.
 シェフを倒して持ち物を奪った！
 - The chef makes sure you'll never steal again! (DamageTaken)
 シェフに泥棒対策をされた！ (DamageTaken)
 - The chef makes sure you'll never steal again! (+RestraintAdded)
 シェフに泥棒対策をされた！ (+RestraintAdded)
-- The chef spanks you with her frying pan! (DamageTaken)
+- The chef spanks you with ${Etheir} frying pan! (DamageTaken)
 シェフがフライパンで叩いてきた！ (DamageTaken)
 
 
@@ -27600,13 +27600,13 @@ EnemyName の拘束を回避した！
 とっても楽しかったよ！
 - I have to go return you~
 そろそろキミを返さないと……
-- Good girl~ Let's go again later~
+- Good ${Psub}~ Let's go again later~
 いい子だね、また今度！
 
 
 - It's time for walkies!
 ウォーキングの時間よ！
-- That's a good girl!
+- That's a good ${Psub}!
 いい子ね。
 - I want to keep you longer, but I've got things to do.
 もっと遊んでいたいけど、やることがあるの。
@@ -28414,9 +28414,9 @@ RESTRAINTNAME の封印が弱まった！
 戦士は拗ねてどこかに行ってしまった！
 - The fighter knocks you to the ground and binds you! (+RestraintAdded)
 戦士に組み伏せられ、拘束具を取り付けられた！ (+RestraintAdded)
-- The fighter strikes you with her weapon! (DamageTaken)
+- The fighter strikes you with ${Etheir} weapon! (DamageTaken)
 戦士が武器で打ち据えてきた！ (DamageTaken)
-- The fighter takes you down with the back of her weapon! (DamageTaken)
+- The fighter takes you down with the back of ${Etheir} weapon! (DamageTaken)
 戦士に武器の柄で殴られた！ (DamageTaken)
 - The fighter puts you in a hold and manages to slip on a lock! (DamageTaken)
 戦士に拘束具をロックされた！ (DamageTaken)
@@ -28428,21 +28428,21 @@ RESTRAINTNAME の封印が弱まった！
 
 - The fighter moans loudly and rolls around on the floor!
 戦士は大声で呻きのたうち回った！
-- The fighter wraps her arms around you with bindings in hand! (+RestraintAdded)
+- The fighter wraps ${Etheir} arms around you with bindings in hand! (+RestraintAdded)
 戦士に拘束具を巻き付けられた！ (+RestraintAdded)
-- The fighter pins you with her weapon and grabs your breast! (DamageTaken)
+- The fighter pins you with ${Etheir} weapon and grabs your breast! (DamageTaken)
 戦士に武器で固定され、胸を揉みしだかれた！ (DamageTaken)
-- The fighter enchants her weapon and strikes you! (DamageTaken)
+- The fighter enchants ${Etheir} weapon and strikes you! (DamageTaken)
 戦士は自らの武器にエンチャントして攻撃してきた！ (DamageTaken)
-- The fighter smiles lasciviously as she dangles a lock in front of you! (DamageTaken)
+- The fighter smiles lasciviously as ${Ethey} dangle${Es} a lock in front of you! (DamageTaken)
 戦士に拘束具をロックされた！ (DamageTaken)
-- The fighter enchants her weapon and flies forward!
+- The fighter enchants ${Etheir} weapon and flies forward!
 戦士はエンチャントした武器を推力に突進してきた！
 
 
-- The fighter drops her weapon and admits defeat!
+- The fighter drops ${Etheir} weapon and admits defeat!
 戦士は武器を落とし、敗北を認めた。
-- The fighter feints and strikes, slapping you with the flat of her blade! (DamageTaken)
+- The fighter feints and strikes, slapping you with the flat of ${Etheir} blade! (DamageTaken)
 戦士はフェイントを仕掛け、フラーで打ち据えてきた！ (DamageTaken)
 - The fighter proudly clicks on a lock! (DamageTaken)
 戦士に拘束具をロックされた！ (DamageTaken)
@@ -28450,11 +28450,11 @@ RESTRAINTNAME の封印が弱まった！
 戦士は唐突に姿を消し、背後に回り込んできた！
 
 
-- The fighter falls on her knees and begs!
+- The fighter falls on ${Etheir} knees and begs!
 戦士は膝を折り、命乞いをしだした！
 - The fighter throws an enchanted binding ring at you! (+RestraintAdded)
 戦士は魔法の拘束リングを投げつけてきた！ (+RestraintAdded)
-- The fighter throws her weapon at you! (DamageTaken)
+- The fighter throws ${Etheir} weapon at you! (DamageTaken)
 戦士は武器を投げつけてきた！ (DamageTaken)
 
 
@@ -28958,7 +28958,7 @@ TargetEnemy にはあまり効いていないようで AMNT の拘束値を受�
 
 - Lab Assistant
 ラボの研究員
-- The assistant envelops herself in her own bubble for protection.
+- The assistant envelops ${Ethem}self in ${Etheir} own bubble for protection.
 ラボの研究員はプロテクション・バブルの中に避難した！
 
 
@@ -28968,7 +28968,7 @@ TargetEnemy にはあまり効いていないようで AMNT の拘束値を受�
 
 - Glue Technician
 接着剤の技術士
-- The technician trips and glues herself to the floor.
+- The technician trips and glues ${Ethem}self to the floor.
 接着剤の技術士は接着剤まみれの床につまずき、動けなくなった！
 
 
@@ -29428,7 +29428,7 @@ RestraintName は粉々に砕け落ちた！
 フレイムキーパー
 - The flame keeper steps away into a fiery portal.
 フレイムキーパーは燃え盛るポータルに消えていった。
-- The flame keeper grabs you, and volcanic restraints emerge from her armor! (+RestraintAdded)
+- The flame keeper grabs you, and volcanic restraints emerge from ${Etheir} armor! (+RestraintAdded)
 フレイムキーパーに掴まれると、彼女の鎧から燃え盛る拘束具が飛び出してきた！ (+RestraintAdded)
 - The flame keeper locks a restraint!
 フレイムキーパーに拘束具をロックされた！
@@ -30898,7 +30898,7 @@ ENMY を投げ飛ばした！
 
 - Rubber Elemental
 ゴムの精霊
-- The rubber elemental's restraints snap onto her and she falls over hogtied.
+- The rubber elemental's restraints snap onto ${Ethem} and ${Ethey} fall${Es} over hogtied.
 ゴムの精霊は誤って自縛してしまった。
 - The rubber elemental molds itself into restraints! (+RestraintAdded)
 ゴムの精霊は自らの身体を拘束具に変え、取り付いてきた！ (+RestraintAdded)
@@ -30972,9 +30972,9 @@ ENMY を投げ飛ばした！
 
 - The Timekeeper
 タイムキーパー
-- The Timekeeper releases her grip on the timeline.
+- The Timekeeper releases ${Etheir} grip on the timeline.
 タイムキーパーはこの時間軸から飛び去った！
-- The Timekeeper takes the time to enjoy herself with you... (DamageTaken)
+- The Timekeeper takes the time to enjoy ${Ethem}self with you... (DamageTaken)
 タイムキーパーが楽しむために時間を割いてくれた…… (DamageTaken)
 - The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
 タイムキーパーに時空を乱した罰を受けた！ (+RestraintAdded)
@@ -31136,7 +31136,7 @@ ENMY を投げ飛ばした！
 呪いの詳細を見る
 - Remove the Curse
 呪いを取り除く
-- Feed this to her
+- Feed this to ${Ethem}
 食べさせる
 - Sell for VLU gp
 VLU ゴールドで売る
@@ -31184,7 +31184,7 @@ ENNME に RSTR を与えた！ (AMNT1/AMNT2 hp)
 +AMNT ゴールド
 
 
-- ENMY lets go of herself for AMNT damage!
+- ENMY lets go of ${Ethem}self for AMNT damage!
 ENMY は絶頂し、 AMNT のダメージを受けた！
 
 
@@ -31402,11 +31402,11 @@ ENMY は赤面している。
 ENMY にバカにされた！ (DMGDLT)
 - The ENMY struggles to find words!
 ENMY は必死に罵倒しようとしている！
-- The ENMY buzzes you with her VTY! (DMGDLT)
+- The ENMY buzzes you with ${Etheir} VTY! (DMGDLT)
 ENMY は VTY を使用した！ (DMGDLT)
-- The ENMY catches you and teases you with her VTY! (DMGDLT)
+- The ENMY catches you and teases you with ${Etheir} VTY! (DMGDLT)
 ENMY に掴まれ、 VTY を使われた！ (DMGDLT)
-- The ENMY reaches for her VTY!
+- The ENMY reaches for ${Etheir} VTY!
 ENMY は VTY を使おうとして失敗した！
 - The ENMY sticks a VTY into you! (DMGDLT)
 ENMY に VTY で責められた！ (DMGDLT)
@@ -31514,7 +31514,7 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 闘士
 - The gladiator puts you in a hold and binds you! (+RestraintAdded)
 闘士に後ろ手に拘束された！ (+RestraintAdded)
-- The gladiator chuckles as she spanks your butt! (DamageTaken)
+- The gladiator chuckles as ${Ethey} spank${Es} your butt! (DamageTaken)
 闘士に尻を叩かれた！ (DamageTaken)
 - The gladiator smiles and clicks a lock on you! (DamageTaken)
 闘士は笑顔で拘束具をロックしてきた！ (DamageTaken)
@@ -31542,9 +31542,9 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 
 - The Warden falls flat on the ground, exhausted!
 看守長は力尽き、地面に倒れ込んだ！
-- The Warden strikes you with her whip! (DamageTaken)
+- The Warden strikes you with ${Etheir} whip! (DamageTaken)
 看守長に鞭で叩かれた！ (DamageTaken)
-- The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)
+- The Warden swings ${Etheir} enchanted whip and conjures locks on your body! (DamageTaken)
 看守長が魔法の鞭を振ると、拘束具に錠前が召喚された！ (DamageTaken)
 
 
@@ -31568,7 +31568,7 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 (SPEAKER は肩をすくめている)|あのゾンビ娘を倒したのね。|でも残念、彼女はパラディンの中でも最弱よ。|あの娘はいかに自分が特別かを散々語り散らかしていたでしょうけど、|私から言わせればただの甘やかされたガキよ。
 - ...Zombie girl?
 ……ゾンビ娘？
-- (SPEAKER tilts her head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too.
+- (SPEAKER tilts ${Etheir} head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too.
 (SPEAKER は呆れた表情を見せている)|彼女はヴィンラーガの魔法による不死化が始まる前から生きていたの。|そう、彼女の魔法は女神から授かったもの、|一応は、私と同じね。
 - ...Paladins?
 パラディン？
@@ -31596,7 +31596,7 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 (SPEAKER はニヤリと笑う)|昔襲った牢獄の守衛達よ。|すごく反抗的でね、今はここで調教しているの。
 - Who are the prisoners, anyway?
 囚人は誰なの？
-- (SPEAKER folds her arms)|Is it not holy and just to bring down tyrants?
+- (SPEAKER folds ${Etheir} arms)|Is it not holy and just to bring down tyrants?
 (SPEAKER は腕を組み語る)|人の世を揺るがす暴君を倒すために聖戦を起こしたのよ。
 - Why did the Goddesses intervene?
 どうして女神の介入があったの？
@@ -31636,7 +31636,7 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 (SPEAKER は笑いかけてくる)|そうだと思うなら、余計な詮索はやめなさい。|禁断の知識を得るためにはそれなりの対価が必要なんだから……
 - It sounds like the gods are trying to hide something
 女神は何かを隠しているんじゃ？
-- (SPEAKER folds her arms)|And what makes you think an old myth would be relevant here?|Would the Archmagus herself lead a rebellion against the divine?
+- (SPEAKER folds ${Etheir} arms)|And what makes you think an old myth would be relevant here?|Would the Archmagus herself lead a rebellion against the divine?
 (SPEAKER は腕を組んでいる)|神話の人物が関係あると思ったの？|大魔術師が神々に反旗を翻すと？
 - Was Sariel Vinlaga the leader of the old civilization?
 サリエル・ヴィンラーガは旧文明の主だったの？
@@ -31670,7 +31670,7 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 (口ごもる)
 - That's a shame about your records, I'll be going now.
 記録については残念だったね、じゃあね。
-- Mmpphgh? (Go to pass her)
+- Mmpphgh? (Go to pass ${Ethem})
 うぅう？(すれ違う)
 - (She smirks)|Not so fast, dear~|You'll have to wear a special collar to pass.
 (彼女はニヤニヤと笑っている)|まぁ、そんなに急がないで。|この首輪をつけたら通ってもいいわよ。
@@ -31682,7 +31682,7 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 (彼女は笑っている)|あら、|今つけている首輪が気に入ってるの？
 - Why don't you wear it yourself?
 自分につけたらどう？
-- Hmmph. (Scoff at her)
+- Hmmph. (Scoff at ${Ethem})
 んふふぅ(彼女を嘲笑う)
 - (She frowns)|Watch your tongue~
 (彼女は不機嫌そうにしている)|随分な態度ね。
@@ -31750,13 +31750,13 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 テストがあるなんて……
 
 
-- (SPEAKER readies her whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
+- (SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
 (SPEAKER は鞭を構えた)|じゃ、きちんと自己紹介しましょうか。|我こそは監獄の主、法と裁きの神命を賜りし聖人なり。|遍く牢は我が膝下に、遍く罪は逃げ得ない。|我に神授の首輪ありき、|聖地を護りし神の力よ。|……これをつけたら通してあげるわよ～。
 - I will never be collared by you!
 あなたのコレクションになんかならないわ！
 - (Shake your head and scoff)
 (首を振り小馬鹿にする)
-- (SPEAKER folds her arms)|So be it.
+- (SPEAKER folds ${Etheir} arms)|So be it.
 (SPEAKER は腕を組んでいる)|ふふふ。いいわよ、その態度。
 - Tell me about your collection.
 コレクションについて教えてくれる？
@@ -31770,7 +31770,7 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 (SPEAKER は笑みを浮かべている)|いいえ、必要なの。
 - I would rather fight you.
 戦いましょう。
-- (Fight her)
+- (Fight ${Ethem})
 (戦う)
 - (SPEAKER shrugs)|Straight and to the point, eh?
 (SPEAKER は肩をすくめている)|いい子ね。
@@ -31786,11 +31786,11 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 
 - (SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~
 (SPEAKER は勝ち誇った笑みを浮かべている)|すごくよかったわ。|あなたは負けたけど、十分楽しませてもらったわ。
-- (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(She snaps her fingers and conjures a glowing ring)
+- (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
 (SPEAKER は残酷な笑みを浮かべている)|この首輪をつけたらここを通っていいわよ。|(彼女が指を鳴らすと、輝く首輪が現れた。)
 - (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your collar~|(She snaps her fingers and conjures a glowing ring)
 (SPEAKER は)|なら、あなたの旅路もここで終い……|……というのは嫌でしょう？|さて、この首輪をつけてもらうわ。|(彼女が指を鳴らすと、輝く首輪が現れた。)
-- (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(She snaps her fingers and conjures a glowing ring)
+- (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
 (SPEAKER は満足げな笑みを浮かべている)|ええ、素晴らしい魔法でしょう？|ただの管理職だから勝てるとでも思ったのかしら？|(彼女が指を鳴らすと、輝く首輪が現れた。)
 - Was that magic?
 なんて魔法なの……
@@ -31808,11 +31808,11 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 
 - (SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
 (SPEAKER は膝をついた)|そんな……|たかが冒険者風情に……|覚えてなさい……
-- (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
+- (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
 (SPEAKER は驚いている)|えっと、こんなに素直だとは思わなかったわ。|(彼女は指を鳴らし、ベルトを渡してきた)|神の権能を持つものだけに許された特別製よ。|おめでとう、あなたは勝ち取ったのよ。
 - (Wear her belt anyway)
 (ベルトを受け取り自身に装着する)
-- (SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
+- (SPEAKER shakes ${Etheir} head as you force a gag into ${Etheir} mouth)|MMMMMPH!
 (頭を振って抵抗する SPEAKER に無理矢理猿轡を噛ませた)|んぁおぉぉ！
 
 
@@ -31826,7 +31826,7 @@ ENMY に武器を持つ握力を弱められた！敵に近寄りすぎると武
 (手枷を差し出す)
 - (The SPEAKER smiles)|Why sure, sweetie, I can help you with that~
 (SPEAKER は笑顔で答える)|ええ、いいわよ。やってあげる。
-- (The SPEAKER grins)|What a good girl!
+- (The SPEAKER grins)|What a good ${Psub}!
 (SPEAKER はニヤニヤと笑っている)|いい子ね！
 - (The SPEAKER blushes)|Those look like fun!
 (SPEAKER は赤面している)|楽しそうですね……
@@ -32058,7 +32058,7 @@ NMB ターン経過するまで階段の鍵が開かない。
 魔法が収束し、拘束具になった！
 
 
-- The mage starts channeling her energy!
+- The mage starts channeling ${Ptheir} energy!
 魔法使いはエネルギーを溜めだした！
 
 
@@ -32280,7 +32280,7 @@ NMB ターン経過するまで階段の鍵が開かない。
 ポイズン・ドラゴンの強力な急降下に巻き込まれた！(スタン)
 - Poison Dragon Girl
 ポイズン・ドラゴンガール
-- The dragon girl slashes you with her venomous nails! (DamageTaken)
+- The dragon girl slashes you with ${Etheir} venomous nails! (DamageTaken)
 ポイズン・ドラゴンガールは毒の爪で引っ掻いてきた！ (DamageTaken)
 - The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)
 ポイズン・ドラゴンガールの召喚した蔦に捕らえられた！ (+RestraintAdded)
@@ -33052,9 +33052,9 @@ NPCか自身を選択
 リードを拾った。
 
 
-- You are not in a condition to use a leash on her.
+- You are not in a condition to use a leash on ${Ethem}.
 リードを取り付けられる状態じゃない。
-- She refuses to be leashed unless you tie her up!
+- She refuses to be leashed unless you tie ${Ethem} up!
 リードを取り付けようとしたら抵抗された。先に拘束しなければ。
 - You attach a leash to ENMY.
 ENMY にリードを取り付けた・
@@ -33252,7 +33252,7 @@ ITM をリサイクルした。
 どいてくれない？
 - You're in my way!
 どいて！
-- Miss, you're blocking me...
+- ${PHonor}, you're blocking me...
 通らせていただけませんか……？
 - Step aside~
 ちょっと通してくれない？
@@ -33496,7 +33496,7 @@ NPC の拘束をより強固にする必要があるが、今はできない
 NPC が逃げ出した！
 - NPC is likely to escape.
 NPC は逃げ出す機会を伺っている。
-- NPC has managed to loosen her bonds.
+- NPC has managed to loosen ${Etheir} bonds.
 NPC は拘束を緩めている。
 
 
@@ -33848,7 +33848,7 @@ NME を上書きする？
 
 - Ancient Worshipper
 古代文明の崇拝者
-- The ancient worshipper repents of her ways.
+- The ancient worshipper repents of ${Etheir} ways.
 古代文明の崇拝者は改心した。
 - The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
 古代文明の崇拝者の拘束具が伝播した！ (+RestraintAdded)
@@ -33860,7 +33860,7 @@ NME を上書きする？
 
 - Ancient Congregant
 古代文明の信徒
-- The ancient congregant repents of her ways.
+- The ancient congregant repents of ${Etheir} ways.
 古代文明の信徒は改心した。
 - The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
 古代文明の信徒の拘束具が伝播した (+RestraintAdded)
@@ -33872,7 +33872,7 @@ NME を上書きする？
 
 - Ancient Hierophant
 古代文明の教皇
-- The ancient hierophant repents of her ways.
+- The ancient hierophant repents of ${Etheir} ways.
 古代文明の教皇は改心した。
 - The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
 古代文明の教皇の拘束具が伝播した (+RestraintAdded)
@@ -34236,11 +34236,11 @@ ITMN1 が口の中で大きくなり、 ITMN2 に変化した！
 
 
 
-- (The Warden perks an eyebrow at the sight of you,|before a wide grin overtakes her face)|Ahhh Fuuka. Chosen by the Goddess?|How does it feel to once again be under a leash?
+- (The Warden perks an eyebrow at the sight of you,|before a wide grin overtakes ${Etheir} face)|Ahhh Fuuka. Chosen by the Goddess?|How does it feel to once again be under a leash?
 (看守長はこちらを見つめ、眉をひそめた後|ニヤリと笑った。)|あらあらフウカちゃん、女神のもとに下ったのね。|再び鎖をつけられた気分はどう？
-- Fuuka, take her down.
+- Fuuka, take ${Ethem} down.
 フウカ、やっておしまい。
-- (Send Fuuka to fight her)
+- (Send Fuuka to fight ${Ethem})
 (フウカを戦わせる)
 - That is none of your business. Now kneel.
 関係ないでしょ、あなたも捕まえるわ。
@@ -34702,7 +34702,7 @@ DPが100%のとき、詠唱失敗率-100%。ただし、大量の魔力を使う
 詠唱失敗率-100%。ただし、大量の魔力を使うと限界を超えてしまうかもしれない。
 - The psychic link conducts away some of the intensity...
 サイキック・リンクが、快楽を分け合った。
-- Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
+- Your linked target lets go of ${Ethem}self, transmitting a wave of pleasure to yourself...
 リンクしている相手が絶頂したようだ……快楽が流れ込んでくる。
 
 
@@ -34758,33 +34758,33 @@ PLCE へ
 
 
 
-- (The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
+- (The SPEAKER sits encased in skintight rubber up to ${Etheir} nose.|Though the latex over ${Etheir} mouth is smooth and flat,|you know from ${Etheir} whimpering moans that ${Etheir} mouth|is totally filled with a gag, useless like the rest of ${Etheir} body.|Some sort of stand affixes ${Etheir} to the floor.)
 (鼻上までラバーでぴっちり拘束された SPEAKER がいた。|口元を覆うラバーに凹凸はなく、口の存在を完全に隠滅しているが、|彼女のかすかなうめき声が聞こえる。|何かで固定されているようだ。)
 - (You don't have any solvents that work on latex)
 (ゴム用の溶剤を持っていない)
-- (You dissolve her restraints, fumbling around for a while with your bound hands)
+- (You dissolve ${Etheir} restraints, fumbling around for a while with your bound hands)
 (拘束された手でなんとか相手のゴムを剥がした)
 - (You rescue the SPEAKER)|Thank you!|Let's get out of here!
 (SPEAKER を助けた)|ありがとう！|ここから逃げよう！
-- (You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+- (You rescue the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
 (SPEAKER を助けた)|んん、ぅぅうん。|(猿轡を外したくないようだ。)
 - (You are not holding a cutting tool)
 (切断できる道具を持っていない)
-- (You cut her restraints, fumbling around for a while with your bound hands)
+- (You cut ${Etheir} restraints, fumbling around for a while with your bound hands)
 (拘束された手でなんとか相手のゴムを切断した)
 - (You don't have enough mana for Remove Slime)
 (「リムーブスライム」を唱えるだけのマナが足りない)
 - (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
 (魔法を使い SPEAKER を助けた)|ありがとう！|一緒に行こう！
-- (You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+- (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} locks ${Etheir} gag back on...)
 (魔法を使い SPEAKER を助けた)|んん、ぅぅうん。|(彼女は再び猿轡をつけ直した。)
 
 
 - Dissolve the latex with a SLVNT
 SLVNT を使ってゴムを溶かす
-- Cut her out with a sharp tool
+- Cut ${Ethem} out with a sharp tool
 道具を使って切断する
-- Use Remove Slime to unlock her
+- Use Remove Slime to unlock ${Ethem}
 魔法「リムーブスライム」で助ける
 
 
@@ -34808,7 +34808,7 @@ SLVNT を使ってゴムを溶かす
 
 - (The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
 (SPEAKER が身体を撫で回してきた)|何か危ないものを持っているんじゃない？|何かないかチェックさせてもらうわね。
-- (The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+- (The SPEAKER folds ${Etheir} hands together)|${PHonor}, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
 (SPEAKER は手を前に合わせている)|すみません、身体検査をするよう命令されましたので……|今からしても大丈夫でしょうか……？
 - (The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
 (SPEAKER は警戒しながらこちらを見ている)|あれだけのことをやって、忍び込めるつもりだったのか？
@@ -34942,7 +34942,7 @@ ITMN は AMNTx 個見逃された。
 メイドの騎士
 - You humiliate the Maid Squire!
 メイドの見習い騎士を辱めた！
-- You defeat the Maid Knight! For now... she swears revenge.
+- You defeat the Maid Knight! For now... ${Ethey} swear${Es} revenge.
 メイドの騎士を退けた！……どうやら彼女は復讐を誓ったようだ。
 - The Squire zips you up in comfy leather gear!
 メイドの見習い騎士に革の拘束具を取り付けられた！
@@ -34952,9 +34952,9 @@ ITMN は AMNTx 個見逃された。
 メイドの見習い騎士に拘束具をロックされた！
 - The Maid Knight secures your restraints!
 メイドの騎士に拘束具をロックされた！
-- The Squire dusts you with her duster plug.
+- The Squire dusts you with ${Etheir} duster plug.
 メイドの見習い騎士は口の箒で掃いてきた！
-- The Maid Knight sweeps you with her cleaning halberd!
+- The Maid Knight sweeps you with ${Etheir} cleaning halberd!
 メイドの騎士はお掃除用ハルバードでぶっ叩いてきた！
 
 

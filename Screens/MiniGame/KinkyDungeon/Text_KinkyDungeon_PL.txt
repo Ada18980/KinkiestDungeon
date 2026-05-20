@@ -809,8 +809,8 @@
 # - Bad Pet
 # - Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
 # - You are an expert in wearing a petsuit and your mobility is increased.
-# - You are too used to wearing petsuits! Sprinting is impaired.
-# - You are a disobedient pet. You should put on a petsuit!
+# - ${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
+# - ${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
 
 # - Dominant
 # :: KinkyDungeonStatDominant
@@ -1047,8 +1047,8 @@
 
 # - Arcane Explosion
 
-# - EnemyName says something incomprehensible! Her spell miscasts!
-# - EnemyName fumbles her next move!
+# - EnemyName says something incomprehensible! ${ETheir} spell miscasts!
+# - EnemyName fumbles ${Etheir} next move!
 # - The EnemyName utters a command word on the TargetName!
 
 # - Nipples
@@ -2356,8 +2356,8 @@
 # - Angel
 # - You subdue the angel!
 # - The angel decides to toy with you while you are trussed up. (DamageTaken)
-# - The angel snaps her fingers and divine restraints appear on your body! (+RestraintAdded)
-# - The angel snaps her fingers and glowing locks appear on your body!
+# - The angel snaps ${Etheir} fingers and divine restraints appear on your body! (+RestraintAdded)
+# - The angel snaps ${Etheir} fingers and glowing locks appear on your body!
 
 # - Holy Construct
 # - You banish the holy construct!
@@ -2367,14 +2367,14 @@
 
 # - Be not afraid! I am the courier of a local shrine, and I have come to take your offering.
 # - Hold still and I will take the offering...
-# - (She takes the gold)
+# - (${EThey} take${Es} the gold)
 # - Peace be with you! Goodbye!
 # - You don't have the gold, do you?
 # - But do not fear, we will keep this between you and I...
 # - For I will first have a little fun...
 # - You have brought this upon yourself, after all.
 
-# - The angel frowns as you attack her, and glowing rings appear.
+# - The angel frowns as you attack ${Ethem}, and glowing rings appear.
 
 # - Angel: MMMMMPHH!!!
 
@@ -2418,7 +2418,7 @@
 # - The sphere shrinks back into the storm dimension.
 # - Familiar
 # - The familiar dissolves into spectral ash.
-# - The doll gives in to her desires and squirms around on the ground.
+# - The doll gives in to ${Etheir} desires and squirms around on the ground.
 # - Storm Crystal
 # - The storm crystal shatters into many crackling pieces.
 # - Fire Mote
@@ -2473,7 +2473,7 @@
 # :: AttackMaidforceMafiaLock
 # :: AttackMaidforceMiniLock
 # :: AttackMaidforceParaLock
-# - The maid tickles you with her feather duster! (DamageTaken)
+# - The maid tickles you with ${Etheir} feather duster! (DamageTaken)
 
 # - M.F. 'Unseen Blade'
 # :: NameMaidforceStalker
@@ -2498,8 +2498,8 @@
 
 
 # - Heavy Weapons Maid
-# - The maid drops her weapon and runs.
-# - The maid bonks you with her weapon! (DamageTaken)
+# - The maid drops ${Etheir} weapon and runs.
+# - The maid bonks you with ${Etheir} weapon! (DamageTaken)
 
 # - M.F. 'Parasol'
 # - The maid leaps out of sight.
@@ -2508,7 +2508,7 @@
 # - M.F. 'Master Plan'
 # - The head maid surrenders gracefully.
 # - The head maid suddenly whips out a restraint and locks it on! (+RestraintAdded)
-# - The head maid snaps her fingers and you find your restraints locked! (DamageTaken)
+# - The head maid snaps ${Etheir} fingers and you find your restraints locked! (DamageTaken)
 # - The head maid tickles you strategically! (DamageTaken)
 # - You are distracted for a moment and suddenly you find yourself in chastity!
 
@@ -2516,22 +2516,22 @@
 # - The fire elemental dissolves into ash.
 # - The fire elemental conjures forged restraints around your limbs! (+RestraintAdded)
 # - The fire elemental places a heavy lock on your restraint! (DamageTaken)
-# - The fire elemental touches you with her burning finger! (DamageTaken)
+# - The fire elemental touches you with ${Etheir} burning finger! (DamageTaken)
 
 
 # - Ranger of the Wild
 # - The ranger disappears into the environment.
-# - The ranger gropes your chest with a smile on her face! (DamageTaken)
+# - The ranger gropes your chest with a smile on ${Etheir} face! (DamageTaken)
 # - The ranger surprises you and binds you! (+RestraintAdded)
 # - The ranger slips a lock onto one of your restraints! (DamageTaken)
 
 # - Druid of the Wild
-# - The druid calls forth vines to mask her retreat.
+# - The druid calls forth vines to mask ${Etheir} retreat.
 # :: KillElf
 # :: KinkyDungeonSummonMultiBramble
 # - The druid holds your face and kisses you! (DamageTaken)
 # - The druid binds you with mithril restraints! (+RestraintAdded)
-# - The druid tosses a lock from her cloak! It finds you and fastens with a click. (DamageTaken)
+# - The druid tosses a lock from ${Etheir} cloak! It finds you and fastens with a click. (DamageTaken)
 
 # - Water Elemental
 # - The water elemental melts into a pool of water.
@@ -2583,7 +2583,7 @@
 # - The support drone retreats to recharge its weapon!
 # - The support drone zaps you! (DamageTaken)
 # - The Dollmaker commands a drone to attack you!
-# - The Dollmaker commands her drones to attack you!
+# - The Dollmaker commands ${Ptheir} drones to attack you!
 
 # - Capture Drone
 # :: NameSummonedCaptureDrone
@@ -2592,7 +2592,7 @@
 # - The capture drone grapples you! (DamageTaken)
 # - The capture drone wraps you in advanced cables! (+RestraintAdded)
 # - The Dollmaker commands a drone to capture you!
-# - The Dollmaker commands her drones to capture you!
+# - The Dollmaker commands ${Ptheir} drones to capture you!
 
 # - Artistic Zombie
 # - The zombie smiles as it collapses to the ground.
@@ -2605,14 +2605,14 @@
 # :: NameMageZombie
 # :: KDLoreTitleen.MageZombie
 # - The zombie frowns and disappears in a puff of ice and ribbons.
-# - The zombie smiles as she wraps you in charms! (+RestraintAdded)
+# - The zombie smiles as ${Ethey} wrap${Es} you in charms! (+RestraintAdded)
 # - The zombie's ribbons form magical locks on your body! (DamageTaken)
 
 # - Talisman Zombie
 # :: NameTalismanZombie
 # :: KDLoreTitleen.TalismanZombie
-# - The zombie pouts and puts up a shield to let her retreat.
-# - The zombie giggles as she wraps you in charms! (+RestraintAdded)
+# - The zombie pouts and puts up a shield to let ${Etheir} retreat.
+# - The zombie giggles as ${Ethey} wrap${Es} you in charms! (+RestraintAdded)
 # - The zombie uses a sealing spell to create magical locks! (DamageTaken)
 
 # - Warrior Zombie
@@ -2620,7 +2620,7 @@
 # :: KDLoreTitleen.SamuraiZombie
 # - The warrior zombie yells and falls cinematically.
 # - The warrior zombie uses a traditional binding technique (+RestraintAdded)
-# - The warrior zombie strikes you with her wooden sword! (+STUN)
+# - The warrior zombie strikes you with ${Etheir} wooden sword! (+STUN)
 # - The warrior zombie runs its fingers along your body! (DamageTaken)
 # - The warrior zombie fights using the way of Sword and Lock. (DamageTaken)
 
@@ -2631,7 +2631,7 @@
 # - The rope artist smiles and tickles your feet! (DamageTaken)
 
 # - Deputy
-# - The deputy surrenders her donuts.
+# - The deputy surrenders ${Etheir} donuts.
 # - The deputy slaps on some cuffs! (+RestraintAdded)
 # - The deputy tases you! (Stunned!)
 # - The deputy conducts a strip search! (DamageTaken)
@@ -2641,7 +2641,7 @@
 # - The ninja warrior retreats into the shadows.
 # - The ninja warrior uses a traditional binding technique (+RestraintAdded)
 # - The ninja warrior tosses a shuriken and hits you! (Stunned!)
-# - The ninja warrior uses a lock to give herself the upper hand! (DamageTaken)
+# - The ninja warrior uses a lock to give ${Ethem}self the upper hand! (DamageTaken)
 # - The ninja warrior uses a subduing technique! (DamageTaken)
 
 # - Ninja Assassin
@@ -2700,8 +2700,8 @@
 # - Poison Dragonheart
 # - The Poison Dragonheart retreats in a green mist.
 # - The Poison Dragonheart apprehends you! (+RestraintAdded)
-# - The Poison Dragonheart smacks you with her axe! (DamageTaken)
-# - The Poison Dragonheart thrums her claws across your figure! (DamageTaken)
+# - The Poison Dragonheart smacks you with ${Etheir} axe! (DamageTaken)
+# - The Poison Dragonheart thrums ${Etheir} claws across your figure! (DamageTaken)
 # - The Dragonheart locks your restraint using natural magics! (DamageTaken)
 
 # - Crystal Dragonheart
@@ -2749,8 +2749,8 @@
 # - The Shadow Dragonheart frowns and runs away.
 # - The Shadow Dragonheart apprehends you! (+RestraintAdded)
 # - The Shadow Dragonheart conjures a shadowly lock! (DamageTaken)
-# - The Shadow Dragonheart extends her scythe and pulls you closer!!!
-# - The Shadow Dragonheart catches you with her scythe! (DamageTaken)
+# - The Shadow Dragonheart extends ${Etheir} scythe and pulls you closer!!!
+# - The Shadow Dragonheart catches you with ${Etheir} scythe! (DamageTaken)
 
 
 
@@ -2778,7 +2778,7 @@
 # - The dryad sinks into the ground.
 # :: KillDryad
 # :: KillJungleDryad
-# - The dryad extends an arm, and she wraps you in vines! (+RestraintAdded)
+# - The dryad extends an arm, and ${Ethey} wrap${Es} you in vines! (+RestraintAdded)
 # :: AttackDryadBind
 # :: AttackJungleDryadBind
 # - The dryad sings a song that mesmerizes you! (DamageTaken)
@@ -2792,20 +2792,20 @@
 
 # - Highly-Motivated Doll
 # - The doll falls to the ground, moaning loudly.
-# - The doll rubs her body against yours. You can feel the conduction. (DamageTaken)
-# - The doll tackles you and squeezes you with her trembling legs! (DamageTaken)
+# - The doll rubs ${Etheir} body against yours. You can feel the conduction. (DamageTaken)
+# - The doll tackles you and squeezes you with ${Etheir} trembling legs! (DamageTaken)
 
 # - Dollsmith
-# - The dollsmith's suit locks her wrists together and renders her helpless.
+# - The dollsmith's suit locks ${Etheir} wrists together and renders ${Etheir} helpless.
 # - The dollsmith runs a latex-covered finger across your vulnerable body! (DamageTaken)
-# - The dollsmith grabs you and applies her favorite doll restraints! (+RestraintAdded)
+# - The dollsmith grabs you and applies ${Etheir} favorite doll restraints! (+RestraintAdded)
 # - The dollsmith slaps a lock onto your restraints! (DamageTaken)
 # - The dollsmith splashes a red latex concoction onto you! (+RestraintAdded)
 
 # - Dollmaker's Apprentice
-# - The dollmaker apprentice's suit becomes rigid and locks her limbs in place.
-# - The dollmaker's apprentice squeezes your body with her gloved hands! (DamageTaken)
-# - The dollmaker's apprentice uses her staff to encase you in doll restraints! (+RestraintAdded)
+# - The dollmaker apprentice's suit becomes rigid and locks ${Etheir} limbs in place.
+# - The dollmaker's apprentice squeezes your body with ${Etheir} gloved hands! (DamageTaken)
+# - The dollmaker's apprentice uses ${Etheir} staff to encase you in doll restraints! (+RestraintAdded)
 # - The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)
 # - The dollmaker's apprentice unleashes a powerful latex blast! (+RestraintAdded)
 
@@ -2846,7 +2846,7 @@
 # :: KDPlayerTitle_Nevermere
 
 # - Wolfguard
-# - The wolfguard's suit punishes her for poor performance!
+# - The wolfguard's suit punishes ${Etheir} for poor performance!
 # - The wolfguard lunges at you and strikes you!
 # - The wolfguard's escort drones shock you! (DamageTaken)
 # - The wolfguard's escort drones deploy some restraints! (+RestraintAdded)
@@ -2865,7 +2865,7 @@
 
 # - Trainer's Apprentice
 # - The trainer's apprentice escapes!
-# - The trainer's apprentice rubs her claws across your chest playfully! (DamageTaken)
+# - The trainer's apprentice rubs ${Etheir} claws across your chest playfully! (DamageTaken)
 # - The trainer's apprentice secures you in training gear! (+RestraintAdded)
 # - The trainer's apprentice adds a lock to your restraints.
 
@@ -2962,7 +2962,7 @@
 # :: AttackDroneGuardianBind
 
 # - Cyber Warden
-# - The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
+# - The cyber warden's suit goes into lockdown, leaving ${Etheir} wiggling helplessly!
 # :: KillCyborg
 # :: KillCyborgGuardian
 # - The cyber warden applies an advanced locking technology!
@@ -3004,7 +3004,7 @@
 # - Alkahestor
 # :: NameAlkahestor
 # :: KDPlayerTitle_Alchemist
-# - The alkahestor resigns to her fate.
+# - The alkahestor resigns to ${Etheir} fate.
 # - The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)
 # :: AttackAlkahestorBind
 # :: AttackPinkAlkahestorBind
@@ -3030,8 +3030,8 @@
 
 # - Leather Elemental
 # - The leather elemental sits down and sulks.
-# - The leather elemental wraps her long extremities around your body! (+RestraintAdded)
-# - The leather elemental strikes you with her leather belts! (DamageTaken)
+# - The leather elemental wraps ${Etheir} long extremities around your body! (+RestraintAdded)
+# - The leather elemental strikes you with ${Etheir} leather belts! (DamageTaken)
 # - The leather elemental clicks a lock onto your restraints! (DamageTaken)
 
 # - Slime Enthusiast
@@ -3041,10 +3041,10 @@
 # - The slime enthusiast looks happy to make sure your restraints are secure! (DamageTaken)
 
 # - Miner
-# - The bandit tosses her pick to the ground and complains about her pay.
+# - The bandit tosses ${Etheir} pick to the ground and complains about ${Etheir} pay.
 # - The miner restrains you! (+RestraintAdded)
-# - The miner pins you with the haft of her pickaxe! (DamageTaken)
-# - The miner pins you with the haft of her pickaxe and adds a lock! (DamageTaken)
+# - The miner pins you with the haft of ${Etheir} pickaxe! (DamageTaken)
+# - The miner pins you with the haft of ${Etheir} pickaxe and adds a lock! (DamageTaken)
 
 # - You hear a fuse going off...
 # - Miner Bomb
@@ -3057,7 +3057,7 @@
 # - The bandit caresses your restrained body! (DamageTaken)
 
 # - Shady Dealer
-# - The dealer flees, leaving her goods behind.
+# - The dealer flees, leaving ${Etheir} goods behind.
 # - The dealer uses some high-quality restraints on you! (+RestraintAdded)
 # - The dealer smiles and applies a lock! (DamageTaken)
 # - The dealer kisses and gropes your body! (DamageTaken)
@@ -3075,7 +3075,7 @@
 # - Bandit Chief
 # - The bandit scoffs and retreats until next time.
 # - The bandit restrains you tightly! (+RestraintAdded)
-# - The bandit runs her hands all along your restrained body! (DamageTaken)
+# - The bandit runs ${Etheir} hands all along your restrained body! (DamageTaken)
 # - The bandit chuckles and applies a lock! (DamageTaken)
 
 # - Bandit Pet
@@ -3092,7 +3092,7 @@
 
 # - Bandit Grappler
 # - The bandit grappler retreats.
-# - The bandit grappler loops her chains around you! (+RestraintAdded)
+# - The bandit grappler loops ${Etheir} chains around you! (+RestraintAdded)
 # - The bandit grappler caresses your restrained body! (DamageTaken)
 # - The bandit giggles and applies a lock! (DamageTaken)
 # - The bandit grappler hooks you closer!!!
@@ -3101,10 +3101,10 @@
 # :: NameMummy
 # :: KDLoreLabelen.mummy
 # :: KDLoreLabelen.meleecleric
-# - The Mummy collapses and her body vanishes.
+# - The Mummy collapses and ${Etheir} body vanishes.
 # - The Mummy conjures a mystic wrapping! (+RestraintAdded)
 # - The Mummy conjures a magical lock upon you! (DamageTaken)
-# - The Mummy punishes you with a blow from her staff! (DamageTaken)
+# - The Mummy punishes you with a blow from ${Etheir} staff! (DamageTaken)
 
 # - Cursed One
 # - The Cursed One is drawn into an eldritch portal.
@@ -3124,7 +3124,7 @@
 # - Bast Warrior
 # - The Bast Warrior collapses and meows loudly.
 # - The Bast Warrior restrains you! (+RestraintAdded)
-# - The Bast Warrior tickles you with her claws! (DamageTaken)
+# - The Bast Warrior tickles you with ${Etheir} claws! (DamageTaken)
 # - The Bast Warrior pulls out a lock and slips it on! (DamageTaken)
 
 
@@ -3146,11 +3146,11 @@
 # - The Bast Cleric pulls out a lock and slips it on! (DamageTaken)
 
 # - High Cleric
-# - The High Cleric locks herself in ritual bondage as punishment for failure.
-# - The High Cleric holds up her staff and you feel intense vibrations throughout your body! (DamageTaken)
+# - The High Cleric locks ${Ethem}self in ritual bondage as punishment for failure.
+# - The High Cleric holds up ${Etheir} staff and you feel intense vibrations throughout your body! (DamageTaken)
 # - The High Cleric summons animated restraints to bind you! (+RestraintAdded)
 # - A flurry of mummy wrappings encase you and stun you! (DamageTaken)
-# - The High Cleric smiles as she conjures many locks on your restraints! (DamageTaken)
+# - The High Cleric smiles as ${Ethey} conjure${Es} many locks on your restraints! (DamageTaken)
 
 # - The skeleton falls to pieces.
 
@@ -3200,7 +3200,7 @@
 # :: KinkyDungeonSummonSingleRedSlime
 # :: KinkyDungeonSpellRedSlime
 # - A revenant appears!
-# - Fuuka uses a talisman to call forth the spirits of her pets!
+# - Fuuka uses a talisman to call forth the spirits of ${Ptheir} pets!
 
 # - A pool of latex bubbles and a twisted elemental appears!
 
@@ -3233,15 +3233,15 @@
 # - Factory Doll
 # - The doll is subdued.
 # - Freed Doll
-# - The doll returns to her place.
+# - The doll returns to ${Etheir} place.
 
 # - Encased Adventurer
 # :: NameSlimeAdv
 # :: KDPlayerTitle_EncasedAdventurer
 # - The encased adventurer loses hope.
-# - The encased adventurer moans as she throws herself against you for help! (DamageTaken)
-# - The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)
-# - The encased adventurer pleads for help as her slime spreads to you! (+RestraintAdded)
+# - The encased adventurer moans as ${Ethey} throw${Es} ${Ethem}self against you for help! (DamageTaken)
+# - The encased adventurer sticks to you as ${Ethey} mumble${Es} incoherently! (DamageTaken)
+# - The encased adventurer pleads for help as ${Etheir} slime spreads to you! (+RestraintAdded)
 
 # - Slime
 # :: NameSmallSlime
@@ -3490,7 +3490,7 @@
 
 
 # - Rope Witch
-# - The rope witch retreats as her animated ropes chase her.
+# - The rope witch retreats as ${Etheir} animated ropes chase ${Etheir}.
 
 # - Magnet Witch
 # - The witch is pulled away by an unseen force.
@@ -3517,7 +3517,7 @@
 # - The witch's apprentice confidently admits defeat.
 # - The witch's apprentice conjures magic bindings on you! (+RestraintAdded)
 # - The witch's apprentice smiles and summons a lock onto you! (DamageTaken)
-# - The witch's apprentice smiles as she squeezes your chest! (DamageTaken)
+# - The witch's apprentice smiles as ${Ethey} squeeze${Es} your chest! (DamageTaken)
 
 # - Latex Apprentice
 # - The apprentice attaches a sticky restraint! (+RestraintAdded)
@@ -3537,7 +3537,7 @@
 
 # - Slime Witch
 # - The slime witch vanishes into a pool of pink slime, leaving behind a keyring.
-# - The witch touches her with her sticky grasp! (+RestraintAdded)
+# - The witch touches ${Etheir} with ${Etheir} sticky grasp! (+RestraintAdded)
 # - The witch creates a magical lock made of hardened latex! (DamageTaken)
 # - The witch squeezes your body playfully! (DamageTaken)
 
@@ -3545,13 +3545,13 @@
 # - The wizard falls asleep.
 # - The wizard clips a restraint around your neck! (+RestraintAdded)
 # - The wizard clips a lock to your restraints! (DamageTaken)
-# - The wizard laughs maniacally as she tickles you! (DamageTaken)
+# - The wizard laughs maniacally as ${Ethey} tickle${Es} you! (DamageTaken)
 
 # - FunGal
 # - The fun-gal retreats into the ground.
 # - The fun-gal clips a restraint around your neck! (+RestraintAdded)
 # - The fun-gal produces a magical lock on all your restraints! (DamageTaken)
-# - The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
+# - The fun-gal rubs your chest with ${Etheir} long, slender fingers! (DamageTaken)
 # - Crystal Slash
 # - Crystal Bolt
 # :: KinkyDungeonSpellCrystalBolt
@@ -3588,7 +3588,7 @@
 
 # - Dressmaker
 # - The dressmaker storms out in a rage.
-# - The dressmaker has you try on one of her new accessories! (+RestraintAdded)
+# - The dressmaker has you try on one of ${Etheir} new accessories! (+RestraintAdded)
 # - The dressmaker adds a lock 'just to complete the look, you know?'
 # - The dressmaker cuddles your helpless body~ (DamageTaken)
 
@@ -3600,8 +3600,8 @@
 
 # - Librarian
 # - The librarian gets angry and retreats.
-# - The librarian shushes you as she brandishes a restraint! (+RestraintAdded)
-# - The librarian snaps her fingers and sends a lock flying at you!
+# - The librarian shushes you as ${Ethey} brandish${Ees} a restraint! (+RestraintAdded)
+# - The librarian snaps ${Etheir} fingers and sends a lock flying at you!
 # - The librarian whispers seductively into your ear! (DamageTaken)
 
 
@@ -3632,7 +3632,7 @@
 # - The infected mushroom gives you a crushing hug! (DamageTaken)
 
 # - Jailer
-# - The jailer passes out and drops her possessions!
+# - The jailer passes out and drops ${Etheir} possessions!
 # - The jailer locks your restraints!
 # - The jailer places some restraints on you! (+RestraintAdded)
 # :: AttackJailerBind
@@ -3642,7 +3642,7 @@
 # - The guard checks your restraints to make sure they are secure.
 
 # - Guard
-# - The guard passes out and drops her possessions!
+# - The guard passes out and drops ${Etheir} possessions!
 # - The guard locks your restraints!
 # :: AttackGuardLock
 # :: AttackGuardHeavyLock
@@ -3652,7 +3652,7 @@
 # - Armed Guard
 # - The armed guard retreats, but drops a keyring!
 # - The guard shocks you and slaps on some restraints! (+RestraintAdded)
-# - The guard shocks you with her taser!!!
+# - The guard shocks you with ${Etheir} taser!!!
 # :: AttackGuardHeavy
 # :: AttackGuardHeavyStun
 
@@ -3700,7 +3700,7 @@
 # - The corrupted adventurer falls into a deep sleep.
 # - The corrupted aventurer's many arms latch onto you! (+RestraintAdded)
 # - The corrupted aventurer clicks a lock on from behind you! (DamageTaken)
-# - The corrupted adventurer drags her chilling fingers across your vulnerable skin! (DamageTaken)
+# - The corrupted adventurer drags ${Etheir} chilling fingers across your vulnerable skin! (DamageTaken)
 
 
 # - Shadowy Ghast
@@ -3756,8 +3756,8 @@
 # - Demon
 # - The demon is exorcised.
 # - The demon places you in dark, glassy restraints. (+RestraintAdded)
-# - The demon caresses you gently with her sharp nails! (DamageTaken)
-# - The demon stuns you with her heavy mace! (+STUN)
+# - The demon caresses you gently with ${Etheir} sharp nails! (DamageTaken)
+# - The demon stuns you with ${Etheir} heavy mace! (+STUN)
 
 # - Ghostly Hand
 # :: NameTickleHand
@@ -3830,7 +3830,7 @@
 
 
 # - Necromancer
-# - The necromancer faints. Ironic that she couldn't save herself.
+# - The necromancer faints. Ironic that ${Ethey} couldn't save ${Ethem}self.
 # - The necromancer locks all of your restraints!
 # - The necromancer prepares you for transport!
 # - The necromancer rubs your body sensually!
@@ -8828,7 +8828,7 @@
 
 # - Conjure Petsuit
 # - Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool.
-# - You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!
+# - You conjure an enchanted petsuit which wraps around your target, forcing ${Ethem} to follow you!
 # - You watch in horror as your own creation lunges toward you, binding your hands and feet!
 # - Choose a helpless target
 # :: KinkyDungeonSpellTargetPetsuit
@@ -8990,7 +8990,7 @@
 # - On yourself: Removes one purple (magical) lock. On a creature: Reduces the target's binding by 20 points.
 # - You speak a command word!
 # - None of the locks you are wearing respond to your magic.
-# - You can't help her with this.
+# - You can't help ${Ethem} with this.
 # - You must target yourself, an enemy, or a locked object.
 # - The command is intricate and you are unable to enunciate it properly!
 
@@ -9067,7 +9067,7 @@
 # - Your skin takes on the appearance of cracked earth!
 
 # - The EnemyName gains increased physical armor!
-# - The EnemyName buffs the physical armor of her allies!
+# - The EnemyName buffs the physical armor of ${Ptheir} allies!
 # - The EnemyName deploys an energy shield to allies!
 # - The EnemyName activates the vibrators of nearby wolfgirls, greatly motivating them!
 # - The EnemyName activates the vibrators of nearby dolls, greatly motivating them!
@@ -9295,7 +9295,7 @@
 # - A swarm of gags approaches you!
 # - A cloud of locks and chains clatters as it levitates toward you!
 # - A huge cloud of locks and chains clatters as it levitates toward you!
-# - Floating hands appear by the conjurer's side as she points her staff!
+# - Floating hands appear by the conjurer's side as ${Pthey} point${Ps} ${Ptheir} staff!
 
 # - Floating books appear near the caster!
 # :: KinkyDungeonSummonMultiBookChain
@@ -9860,10 +9860,10 @@
 # - Ghost: Silence is golden.
 # - Ghost: A good slave doesn't speak until addressed.
 # - Ghost: Aww, so helpless~
-# - Ghost: Trussed up like a good girl~
+# - Ghost: Trussed up like a good ${Psub}~
 # - Ghost: You're going to stay that way for a good while.
 # - Ghost: I love watching you hop around, it's funny!
-# - Ghost: Just sit there like a good girl~
+# - Ghost: Just sit there like a good ${Psub}~
 # - Ghost: I want to see you kneel~
 # - Ghost: Aww, feeling frustrated?
 # - Ghost: Looks like someone's been naughty~
@@ -9967,13 +9967,13 @@
 # - Then let's put you back in your cell!
 
 # - I hope you learned your lesson. Now get your butt out of here.
-# - You've been a good girl. I hope you don't make the same mistake again. You can leave.
-# - That's a good girl. Now behave yourself, okay? You're free to go.
+# - You've been a good ${Psub}. I hope you don't make the same mistake again. You can leave.
+# - That's a good ${Psub}. Now behave yourself, okay? You're free to go.
 # - Looks like you got yourself in a bind! (she pats your butt playfully) Go make the others happy!
 
 # - I hope you learned your lesson.|Now get your butt out of here.
-# - You've been a good girl. I hope you don't make the same mistake again.|You can leave.
-# - That's a good girl. Now behave yourself, okay?|You're free to go.
+# - You've been a good ${Psub}. I hope you don't make the same mistake again.|You can leave.
+# - That's a good ${Psub}. Now behave yourself, okay?|You're free to go.
 # - Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!
 # :: rJailRelease3
 # :: rJailRelease
@@ -9998,7 +9998,7 @@
 # - Just need to add a little security~
 
 # - Got yourself in trouble, eh?
-# - Looks like you're shaping up to be a good girl~
+# - Looks like you're shaping up to be a good ${Psub}~
 # - Oh! Looks like I've made a mistake...
 # - 404 prisoner not found. Releasing tether.
 
@@ -10526,7 +10526,7 @@
 # :: KinkyDungeonRemindJailPlaySubFuuka0
 # :: KinkyDungeonRemindJailPlaySubDollmaker0
 # :: KinkyDungeonRemindJailPlaySub0
-# - I've been a bad girl, won't you do something about it?
+# - I've been a bad ${Esub}, won't you do something about it?
 # :: KinkyDungeonRemindJailPlaySubFuuka1
 # :: KinkyDungeonRemindJailPlaySubDollmaker1
 # :: KinkyDungeonRemindJailPlaySubTheWarden1
@@ -10915,7 +10915,7 @@
 # - Alert!
 # :: KinkyDungeonRemindJailChaseAlert
 # :: KinkyDungeonRemindJailChaseMushyAlert
-# - You look like a good girl. Come on~
+# - You look like a good ${Psub}. Come on~
 # - Come here, let's play!
 # - *grins and starts walking toward you*
 # - Hey! Play nice!
@@ -11556,7 +11556,7 @@
 # - Bad girl!
 # - Keep your filthy hands off me!
 # - Your chances of winning are... less than zero.
-# - Good girls don't use magic without permission.
+# - Good ${Psub}s don't use magic without permission.
 # - Keep that magic away from my experiments!
 # - You're going to break something!
 # - That's dangerous!
@@ -12274,7 +12274,7 @@
 # - I'm going to have some fun with you~
 # :: KinkyDungeonRemindJailPlayHunterLeash
 # :: KinkyDungeonRemindJailPlayWolfgirlLeash
-# - Watch yourself, girl~
+# - Watch yourself, ${Psub}~
 # :: KinkyDungeonRemindJailPlayHunterFree
 # :: KinkyDungeonRemindJailPlayWolfgirlFree
 # :: KinkyDungeonRemindJailPlayYenFree
@@ -12366,7 +12366,7 @@
 # - Don't even think about appealing to your goddess!
 # - Stop right there!
 # - It'll take you quite a while to pay off those damages!
-# - Now there, good girl!
+# - Now there, good ${Psub}!
 # - Wrong move!
 # - Get your paws off me!
 # :: KinkyDungeonRemindJailWolfgirlHit
@@ -12430,9 +12430,9 @@
 # :: KinkyDungeonRemindJailPlayBratYen2
 # :: KinkyDungeonRemindJailPlaySubYen2
 # - I've got somethin nice for ya.
-# - Be a good girl for me, will ya?
+# - Be a good ${Psub} for me, will ya?
 # - You need to show some restraint.
-# - Stay where you belong, you naughty girl.
+# - Stay where you belong, you naughty ${Psub}.
 # - Let's go somewhere more private.
 # - Ready or not, here I come.
 # - Those sticky fingers belong in a pair of mittens.
@@ -13010,7 +13010,7 @@
 # :: KinkyDungeonRemindJailElementalIntro
 # :: KinkyDungeonRemindJailAthenaIntro
 # :: KinkyDungeonRemindJailAngelIntro
-# - She thinks she can beat us~
+# - ${PThey} thinks ${Pthey} can beat us~
 # :: KinkyDungeonRemindJailChaseElementalDefend0
 # :: KinkyDungeonRemindJailChaseAthenaDefend0
 # :: KinkyDungeonRemindJailChaseAngelDefend0
@@ -13022,7 +13022,7 @@
 # :: KinkyDungeonRemindJailChaseElementalDefend2
 # :: KinkyDungeonRemindJailChaseAthenaDefend2
 # :: KinkyDungeonRemindJailChaseAngelDefend2
-# - An unruly subject. She needs training.
+# - An unruly subject. ${PThey} need${Ps} training.
 # :: KinkyDungeonRemindJailChaseElementalDefendHonor0
 # :: KinkyDungeonRemindJailChaseAthenaDefendHonor0
 # :: KinkyDungeonRemindJailChaseAngelDefendHonor0
@@ -13169,7 +13169,7 @@
 # - Having fun there?
 # - It's time for your training.
 # - You need to be taught some manners, maid.
-# - Good girl. I'll take that to the storage room.
+# - Good ${Psub}. I'll take that to the storage room.
 # - I'll be taking those.
 # - Who the hell are you?
 # - Oh, you're approaching me?
@@ -13226,7 +13226,7 @@
 # - I've been a bad girl...
 # :: KinkyDungeonRemindJailPlaySubSubMaid2
 # :: KinkyDungeonRemindJailPlaySubGunnerMaid2
-# - Miss, your uniform is dirty...
+# - ${PHonor}, your uniform is dirty...
 # :: KinkyDungeonRemindJailPlaySubMaid0
 # :: KinkyDungeonRemindJailPlayGunnerMaid0
 # - Why hello miss...
@@ -13257,12 +13257,12 @@
 # :: KinkyDungeonRemindJailChaseSubMaidJailbreak
 # :: KinkyDungeonRemindJailChaseGunnerMaidAttack1
 # :: KinkyDungeonRemindJailChaseGunnerMaidJailbreak
-# - Miss! You're not allowed to cast that!
-# - Miss, I have to report that!
+# - ${PHonor}! You're not allowed to cast that!
+# - ${PHonor}, I have to report that!
 # - Eeep!
 # :: KinkyDungeonRemindJailChaseSubMaidSpellItem
 # :: KinkyDungeonRemindJailChaseApprenticeAttack0
-# - Miss, that's reserved for the head maid!
+# - ${PHonor}, that's reserved for the head maid!
 # :: KinkyDungeonRemindJailChaseSubMaidShrine
 # :: KinkyDungeonRemindJailChaseGunnerMaidShrine
 # - Thief! I'm reporting this!
@@ -13360,7 +13360,7 @@
 # - A maid remains quiet until asked.
 # - Come with me. I will train you personally.
 # - You need to work on your ladylike manners.
-# - Good girl, finding lost items.
+# - Good ${Psub}, finding lost items.
 # - I do not give you permmission to leave.
 # - Seems I will have to get my hands dirty.
 # - Do you know who I am?
@@ -13391,7 +13391,7 @@
 # - Looks like we have a guest.
 # - I'll be gentle, I promise~
 # - Know your place, dear~
-# - Good girls keep their hands to themselves.
+# - Good ${Psub}s keep their hands to themselves.
 # - You broke the rules, now you'll face the consequences.
 # - Hands off our partners.
 # - Looks like you've made a few enemies along the way.
@@ -13544,7 +13544,7 @@
 # - Oooh! My new friend!
 # - My mistress told me to give you a good time...
 # - Hehe, having fun?
-# - Miss, won't you come?
+# - ${PHonor}, won't you come?
 # - Hey, you're free to play, right~?
 # - Hey, uh, give that back... (blushes)
 # - Um, you have to return those!
@@ -13780,11 +13780,11 @@
 
 # - (The SPEAKER tilts her head)|Right, sorry.
 # - (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
-# - (The SPEAKER smiles)|Keep up the good work, girl.
+# - (The SPEAKER smiles)|Keep up the good work, ${Psub}.
 # - (The SPEAKER beeps)|Vital signs indicate honesty. Carry on.
 
-# - (The SPEAKER smiles)|Good girl.
-# - (The SPEAKER smiles)|That's a good girl.
+# - (The SPEAKER smiles)|Good ${Psub}.
+# - (The SPEAKER smiles)|That's a good ${Psub}.
 # - (The SPEAKER smiles)|Thank you.
 # - (The SPEAKER beeps)|Thank you for complying.
 
@@ -13798,7 +13798,7 @@
 # - (The SPEAKER calls at you)|You're not supposed to be carrying a weapon.|Hand it over.
 # - (The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply.
 # - (The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
-# - (The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
+# - (The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?
 # - (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
 # - Yes, miss... (Currently held weapon will be lost)
 # - Mmph... (Nod politely) (Currently held weapon will be lost)
@@ -13840,14 +13840,14 @@
 # :: dGhostInfo_BrashGag
 # - Let me out this instant!
 # - (Scream into your gag uselessly)
-# - I will be a good girl!
+# - I will be a good ${Psub}!
 # - (Giggle and wiggle your body)
 
 
 
-# - (The SPEAKER approaches you in your cell)|Back again, are we? Silly girl.|You know we don't take no for an answer.
+# - (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You know we don't take no for an answer.
 
-# - (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(She leaves and returns with some toys...)|Now hold still!
+# - (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
 # - (The SPEAKER frowns)|I know exactly what you need...
 # - (The SPEAKER smiles back)|I'm glad you're enjoying yourself.|However, your behavior is still unacceptable.|You need to learn some respect.
 # - (The SPEAKER chuckles)|Looks like you're enjoying your restraints?|Let's make them tighter, shall we?
@@ -14045,7 +14045,7 @@
 
 
 
-# - (The SPEAKER smiles as she hides her hands behind her back)|Have you heard of 'sensory deprivation'?
+# - (The SPEAKER smiles as ${Ethey} hide${Es} her hands behind her back)|Have you heard of 'sensory deprivation'?
 # - (The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!
 # - (The SPEAKER starts pulling the hood over your head)|Let's get you laced in!
 # :: rOfferSenseDepYes_Yes
@@ -14083,14 +14083,14 @@
 
 
 # - (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
-# - (The SPEAKER takes a duster gag from her satchel)|Such a good girl!|So here's what I have for you~|It's a special tool to help keep the place clean.
-# - (The SPEAKER grins)|I'm glad we could come to an understanding~|(She takes out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+# - (The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
+# - (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
 # - (The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
 # - (The SPEAKER shrugs)|I'll find someone else...
 # - (The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(She pulls out a duster gag from her satchel and grins)
-# - (The SPEAKER smiles)|Don't be afraid!|(She turns the gag with the round mouth ball clearly visible)|Now open up...
+# - (The SPEAKER smiles)|Don't be afraid!|(${EThey} turn${Es} the gag with the round mouth ball clearly visible)|Now open up...
 # - (The SPEAKER shrugs)|Fine, I'll get someone else to clean up.
-# - (The SPEAKER places the gag in your mouth)|(She then buckles up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
+# - (The SPEAKER places the gag in your mouth)|(${EThey} then buckle${Es} up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
 # - (The SPEAKER catches you and forces the gag on you)|(You feel it tighten as it locks on securely...)|I don't want to hear it!|Now go and do your job~
 
 # - I'll do it!
@@ -14110,7 +14110,7 @@
 # - (The SPEAKER swings an imaginary sword around)|En guar- Oh, you're unarmored!|Do you want to borrow some of mine?
 # - (The SPEAKER holds up a RESTRAINT)|I found this near an old suit of armor.|I think it's a helmet or something...
 # - (The SPEAKER winks and locks it on)|I feel much safer already~
-# - (The SPEAKER pouts)|Aww, spoilsport!|(She returns to fighting her imaginary enemies)
+# - (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting her imaginary enemies)
 # - (The SPEAKER shrugs)|Your loss~
 # - (The SPEAKER grins deviously)|So? It might help...|(The SPEAKER dives at you suddenly!)
 # - (The SPEAKER giggles)|Close enough, right?|Come on, there's enemies to fight!
@@ -14269,15 +14269,15 @@
 
 
 # - (An excited SPEAKER turns to you)|Eureka, I've done it!|Do you want to see?
-# - (The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(She holds out the container)
+# - (The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(${EThey} hold${Es} out the container)
 # - (The flask springs a leak)|Oh no! That wasn't supposed to happen!|(The gas crystalizes into a RESTRAINT across your body)
 # - (The SPEAKER scoffs)|You'll see... you'll all see!
 # - (The SPEAKER sighs)|So hard to find good help out here...
 # :: rOfferResinNo
 # :: rOfferSlimeNo
-# - (The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(She unscrews the cap)
+# - (The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(${EThey} unscrew${Es} the cap)
 # - (The green gas starts leaking)|Oh no! It wasn't supposed to do that!
-# - (You push her out of the way, but she frowns)|Hmph. This is your fault.
+# - (You push her out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
 # - (You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
 # - (The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen...
 
@@ -14330,9 +14330,9 @@
 # - (The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
 # - (The SPEAKER nods glumly)|Not a fan?|Shame, I am~
 # - (The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained...
-# - (The SPEAKER looks at you deviously)|A good girl wears her RESTRAINT with enthusiasm~
+# - (The SPEAKER looks at you deviously)|A good ${Psub} wears her RESTRAINT with enthusiasm~
 # - (The SPEAKER sulks)|You'd be difficult to train anyway~
-# - (The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good girl~|I'll make it extra tight for you!
+# - (The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good ${Psub}~|I'll make it extra tight for you!
 # - (The SPEAKER knocks you down and forces you into the RESTRAINT)|Here, maybe you'll reconsider after wearing it a while!
 
 # - Maybe a little~
@@ -14373,7 +14373,7 @@
 
 # - (A SPEAKER gracefully gestures to you)|So good to see a friendly face~|Care to see some elven goods?
 # - (The SPEAKER holds up a RESTRAINT)|These are some of our strictest.|Want to try?
-# - (The SPEAKER smiles sweetly)|Such a good girl~|(The RESTRAINT locks with a loud click)
+# - (The SPEAKER smiles sweetly)|Such a good ${Psub}~|(The RESTRAINT locks with a loud click)
 # - (The SPEAKER sagely nods)|As you wish~
 # - (The SPEAKER frowns briefly)|I understand~
 # - (The SPEAKER leans closer)|Then you can test their escapability!|(The SPEAKER dives towards you!)
@@ -14414,14 +14414,14 @@
 
 # - (A SPEAKER plays with silvery rope)|Hmm, I need to get better with this.|Can I practice on you?
 # - (The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~
-# - (The SPEAKER binds you tightly)|(The rope is tight, and she's clearly an expert.)|Mmm, not too bad~
+# - (The SPEAKER binds you tightly)|(The rope is tight, and ${Etheyre} clearly an expert.)|Mmm, not too bad~
 # - (The SPEAKER pouts indignantly)|Why say yes then?!|(The SPEAKER walks off grumbling)
 # - (The SPEAKER sighs)|Very well then~
 # - (The SPEAKER pouts indignantly)|Oh no, you don't get out that easy.|You said you'd help!
 # - (The SPEAKER smirks)|Ooh, a chance to practice against resistance~|I can't pass that up!
-# - (The SPEAKER can't keep the knots tight)|(Eventually, she gives up)|S-Stupid human...
-# - (The SPEAKER strictly ties you up)|(You can feel she's done this many times)|(She smirks at you as she departs)
-# - (The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(She makes a face at you as she leaves)
+# - (The SPEAKER can't keep the knots tight)|(Eventually, ${Ethey} give${Es} up)|S-Stupid human...
+# - (The SPEAKER strictly ties you up)|(You can feel ${Etheyve} done this many times)|(${EThey} smirk${Es} at you as ${Ethey} depart${Es})
+# - (The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(${EThey} make${Es} a face at you as ${Ethey} leave${Es})
 
 # - Any time~
 # - I'd rather you didn't.
@@ -14442,9 +14442,9 @@
 # - (The SPEAKER grins sneakily)|I thought you might say that~|But- ahh!|(They drop the item and you slip away)
 # - (The SPEAKER looks angry)|Hey! HEY! I'm talking to-|Ah, forget it.
 # - (The SPEAKER grins sneakily)|I thought you might say that~|But it wasn't a choice...
-# - (The SPEAKER follows you)|Not so fast there~|(She blocks your path)
+# - (The SPEAKER follows you)|Not so fast there~|(${EThey} block${Es} your path)
 # - (The SPEAKER fumbles with the RESTRAINT)|C-Come on, open-|(You quickly walk away)
-# - (The SPEAKER adds the RESTRAINT)|Good luck with that one~|(She sounds like she's gloating...)
+# - (The SPEAKER adds the RESTRAINT)|Good luck with that one~|(${EThey} sound${Es} like ${Etheyre} gloating...)
 # - (The SPEAKER roughly forces you down)|(Pushing your head down, the RESTRAINT slides on)|(The SPEAKER tugs your hair, then walks away)
 
 # - (Walk over, curiously)
@@ -14513,7 +14513,7 @@
 # - (The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in her hand)
 # - (The SPEAKER gulps)|M-Maybe I won't then!
 # - (The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?
-# - (The SPEAKER giggles as she catches you and slaps on the cuffs)|No so fast, dear~
+# - (The SPEAKER giggles as ${Ethey} catch${Ees} you and slaps on the cuffs)|No so fast, dear~
 
 # - Maybe a bit~
 # - Not at all.
@@ -14563,9 +14563,9 @@
 # - (The SPEAKER rolls her eyes)|Run along then girl~
 # - (The SPEAKER nods)|Didn't think so~|Oh, and, uh, sorry for the bump.
 # - (The SPEAKER shakes her head)|You don't get off that lightly.|These are going on.
-# - (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(She holds up a RESTRAINT)
+# - (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(${EThey} hold${Es} up a RESTRAINT)
 # - (The SPEAKER sighs)|I'll let you off then.|Oh, and, uh, sorry for the bump.
-# - (The SPEAKER adds the RESTRAINT)|(As she's locking it, she giggles)|You're really cute actually~
+# - (The SPEAKER adds the RESTRAINT)|(As ${Etheyre} locking it, ${Ethey} giggle${Es})|You're really cute actually~
 # - (The SPEAKER stumbles and grimaces)|Ugh! Fine, you can go then.|D-Didn't want to see you tied anyway...
 
 # - That doesn't sound bad...
@@ -14663,7 +14663,7 @@
 # :: rOfferChainForce_No
 # :: rOfferNeoLinkForce_No
 # - (The SPEAKER wraps a long chain around you)|(RESTRAINT hugs your body closely)|(You shiver as the cold metal touches you)
-# - (The SPEAKER grins as she binds your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
+# - (The SPEAKER grins as ${Ethey} bind${Es} your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
 
 # - I love chains!
 # - Plenty beats it.
@@ -14687,7 +14687,7 @@
 # :: rOfferNeoLinkForce
 # :: rOfferNeoLinkForceYes
 # - (The SPEAKER connects chains to your cuffs)|There! Connected, as all things should be.
-# - (The SPEAKER grins as she connects chains to your cuffs)|(The RESTRAINT is unyielding as you struggle)|Enjoy, cutie~
+# - (The SPEAKER grins as ${Ethey} connect${Es} chains to your cuffs)|(The RESTRAINT is unyielding as you struggle)|Enjoy, cutie~
 
 # - Indeed! (hold out your wrists)
 # - (Nod happily and present your body)
@@ -14756,14 +14756,14 @@
 
 
 # - (The SPEAKER walks up to you)|Say, would you be interested in some 'protection?'
-# - (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(She shows you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
-# - (The SPEAKER blushes as she locks the belt around your waist)|I'm enjoying this more than I thought I would~
+# - (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(${EThey} show${Es} you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
+# - (The SPEAKER blushes as ${Ethey} lock${Es} the belt around your waist)|I'm enjoying this more than I thought I would~
 # - (The SPEAKER smiles)|Enjoy your freedom while it lasts~
 # - (The SPEAKER shrugs)|That's okay, just thought I'd ask.
 # - (The SPEAKER rubs the smooth metal seductively)|Are you sure?|Adventurers need to take care of themselves.|You don't want to lose control of yourself and run into some curse,|do you?
 # - (The SPEAKER gives an evil smile)|What if I wasn't asking?
 # - (The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~
-# - (The SPEAKER blushes as she locks the RESTRAINT onto you)|There we go~
+# - (The SPEAKER blushes as ${Ethey} lock${Es} the RESTRAINT onto you)|There we go~
 # - (As you turn around, the SPEAKER surprises you)|(You hear a click on your body)|Whoops! I guess I acted too soon.|Ah well~
 # - (The lock on the RESTRAINT starts glowing...)
 # :: rOfferChastityGlow
@@ -14797,7 +14797,7 @@
 # - (The SPEAKER blushes)|Oh... okay.
 # - (The SPEAKER frowns angrily)|Look, we all know how much you enjoy being restrained~|Do me a favor and wear the RESTRAINT, okay?
 # - (The SPEAKER pleads with you)|...point taken. But still!|I'll end up stuck in it for a really long time...
-# - (The SPEAKER sighs and wears it herself)|(The lock starts glowing brightly...)
+# - (The SPEAKER sighs and wears it ${Ethem}self)|(The lock starts glowing brightly...)
 # - (The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
 # - (As you turn around, the SPEAKER surprises you)|(You hear a click on your body)|I'm sorry miss! It was my only choice~
 
@@ -14829,16 +14829,16 @@
 
 
 
-# - (The SPEAKER grins as she sees you)|Hey there sweetie~|I think you'd look good in some ropes!
+# - (The SPEAKER grins as ${Ethey} see${Es} you)|Hey there sweetie~|I think you'd look good in some ropes!
 # - (The SPEAKER looks at your bound body)|I've got some more ropes for you, babe!
 # - (The SPEAKER smiles)|Okay, hold still while I get you rigged up~
-# - (The SPEAKER slaps your butt as she ties the last knot)|All trussed up~
+# - (The SPEAKER slaps your butt as ${Ethey} tie${Es} the last knot)|All trussed up~
 # - (The SPEAKER looks disappointed and packs her rope away)
 # - (The SPEAKER frowns)|Aw. What a missed opportunity!
 # - (The SPEAKER grins and reaches for her satchel)|Well, too bad--
 # - (The SPEAKER grins)|But I've already brought so much rope with me~
 # - (The SPEAKER frowns)|Suit yourself.
-# - (The SPEAKER smiles)|Good girl~
+# - (The SPEAKER smiles)|Good ${Psub}~
 # - (The SPEAKER takes you down and trusses you up tightly)|That'll teach you~
 
 # - I think so too!
@@ -14853,16 +14853,16 @@
 
 
 
-# - (The SPEAKER perks her ears as she sees you)|You've got a nice body.|I think it'll do better with some training!
+# - (The SPEAKER perks her ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
 # - (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
-# - (The SPEAKER gets you suited up)|There you go! Now go be a good girl!
+# - (The SPEAKER gets you suited up)|There you go! Now go be a good ${Psub}!
 # - (The SPEAKER scoffs)|That's what they all say.
 # - (The SPEAKER frowns)|What a shame.
 # - (The SPEAKER sneakily reaches for her baton)|You'll love it if you try it!
 # - (The SPEAKER grins)|I promise you it's a good deal~
 # - (The SPEAKER frowns)|Fine. I'll look for other candidates.
 # - (The SPEAKER smiles)|That's right. Your name, please?
-# - (The SPEAKER zaps you and places you in restrictive gear)|Good girls need training.|Come back when you've learned a thing or two~
+# - (The SPEAKER zaps you and places you in restrictive gear)|Good ${Psub}s need training.|Come back when you've learned a thing or two~
 
 # - This sounds like an interesting opportunity.
 # :: dOfferWolfgirl_Yes
@@ -14915,7 +14915,7 @@
 # :: dOfferTempForce_NoGag
 
 
-# - (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
+# - (The SPEAKER does a short bow as ${Ethey} see${Es} you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 # :: rOfferMaid
 # :: rOfferWitch
 # :: rOfferTemp
@@ -14953,7 +14953,7 @@
 # :: rOfferMaidForce_Yes
 # :: rOfferWitchForce_Yes
 # :: rOfferTempForce_Yes
-# - (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|Consider this a warning from my mistress~
+# - (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|Consider this a warning from my mistress~
 
 
 # - Gladly!
@@ -14970,7 +14970,7 @@
 
 
 
-# - (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
+# - (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 # :: rOfferWitchForce_Failure
 # :: rOfferTempForce_Failure
 
@@ -14981,7 +14981,7 @@
 
 
 
-# - (The SPEAKER perks her ears as she sees you)|Glory to the blessed kitty!|Are you prepared to join us?
+# - (The SPEAKER perks her ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
 # - (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to other kitties.|Also we own you now.
 # - (The SPEAKER jumps happily)|Wonderful! Here's your collar!
 # - (The SPEAKER whimpers and looks at you)|How mean!
@@ -14990,7 +14990,7 @@
 # - (The SPEAKER grins slyly)|You wouldn't DISRESPECT the goddess, would you?
 # - (The SPEAKER frowns)|Then we'll have to make sure you don't come back to harm anyone!
 # - (The SPEAKER smiles proudly)|I knew you would pull through!
-# - (The SPEAKER forces you down with a burst of speed)|(She stuffs you into pet gear)|There. Punishment for your insolence~
+# - (The SPEAKER forces you down with a burst of speed)|(${EThey} stuff${Es} you into pet gear)|There. Punishment for your insolence~
 
 # - Yes! I love the blessed kity!
 # - No, you guys are a bunch of weirdos.
@@ -15028,7 +15028,7 @@
 
 
 # - (The SPEAKER runs up to you)|Wow! You make a fine specimen-er, I mean...|Nice to meet you!
-# - (The SPEAKER smiles)|Now, I have something wonderful in store for you.|(She takes out a blue catsuit)|I'd like you to be my assistant!
+# - (The SPEAKER smiles)|Now, I have something wonderful in store for you.|(${EThey} take${Es} out a blue catsuit)|I'd like you to be my assistant!
 # - (The SPEAKER looks excited)|Awesome! Let me help you get in uniform...
 # - (The SPEAKER shrugs)|It was worth a shot...
 # :: rOfferAlchemistYes_No
@@ -15037,7 +15037,7 @@
 # - (The SPEAKER looks frustrated)|I'm not... my work is not crazy!|We seek only knowledge!
 # - (The SPEAKER frowns)|Time for a test run!
 # - (The SPEAKER looks happy again)|Thank you! I'm super grateful!
-# - (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as she breaks a glass vial)|(A suit of blue latex envelops you!)
+# - (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
 
 # - ...Hello?
 # - You guys are crazy.
@@ -15062,7 +15062,7 @@
 # - (The SPEAKER folds her arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild.
 # - (The SPEAKER frowns)|Hardly slavery!|A mere slave would not be allowed to even set foot in our society.
 # - (The SPEAKER frowns)|We will meet again.
-# - (The SPEAKER nods and smiles)|(She decorates your body with 'jewelry')|I am glad you had a change of heart.
+# - (The SPEAKER nods and smiles)|(${EThey} decorate${Es} your body with 'jewelry')|I am glad you had a change of heart.
 # - (The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur.
 
 # - I'm interested. (Talk with her)
@@ -15115,7 +15115,7 @@
 # - (The SPEAKER looks dubious)|You know, there's quite a bounty on your head.|I'm sure we could do something about it.
 # - (The SPEAKER tilts her head)|Haha, very funny.|We both know that you're not one of those... right?
 # - (The SPEAKER frowns and readies for battle)|My instincts were right.
-# - (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as she ties you in a strict rope hogtie...)|(She dusts off her hands)|We'll have a talk when you get out of that, okay?
+# - (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off her hands)|We'll have a talk when you get out of that, okay?
 
 # - I have no interest in joining the guild.
 
@@ -15132,8 +15132,8 @@
 
 
 # - (The SPEAKER beeps)|Prisoner 74121 identified.|Subject not registered in database.
-# - (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good girl' to enter database.
-# - (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good girl.
+# - (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good ${Psub}' to enter database.
+# - (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good ${Psub}.
 # - (The SPEAKER beeps)|Acknowledged. Be warned:|Lost contact with Sections 98, 97, 96, 95...|(The list goes on...)
 # - (The SPEAKER beeps)|Acknowledged. Updating records.
 # - (The SPEAKER beeps and flashes its lights)|Target acquired.
@@ -15147,10 +15147,10 @@
 # - Prisoner 74121? You must be mistaken...
 # - (Avoid the robot)
 
-# - Prisoner 74121 reporting. I will be a good girl.
+# - Prisoner 74121 reporting. I will be a good ${Psub}.
 # - Actually, I am an administrator. (Refuse)
 
-# - I'm sorry, I will be a good girl!
+# - I'm sorry, I will be a good ${Psub}!
 # - What? (PERCENT chance to avoid)
 
 
@@ -15241,7 +15241,7 @@
 
 
 
-# - (The SPEAKER does a short bow as she sees you)|Um... hi!|I have a letter for you...
+# - (The SPEAKER does a short bow as ${Ethey} see${Es} you)|Um... hi!|I have a letter for you...
 # - (The letter is a contract from the College)|(They want you to sign up as an instructor for apprentices)|(The SPEAKER looks at you nervously.)
 # - (The SPEAKER sighs in relief)|That's good...|(You sign the contract and it vanishes into the aether)
 # - (The SPEAKER whimpers)|What will I tell them...
@@ -15334,7 +15334,7 @@
 
 
 
-# - (The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
+# - (The SPEAKER rattles as ${Ethey} wave${Es})|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
 # - (The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
 # - (The SPEAKER looks at you.)|Yours is just fine, dear.
 # - (The SPEAKER chuckles)|You don't have enough gold for that, dear.|Try coming back after a good round of looting!
@@ -15350,7 +15350,7 @@
 # - (The SPEAKER shakes her head)|I think you'd be better off without that~
 # - (The SPEAKER looks embarassed)|I can't sell you that, miss...
 # - (The SPEAKER blushes)|Actually, I was saving that for myself...
-# - (The SPEAKER grins)|Good girls don't need one of those~
+# - (The SPEAKER grins)|Good ${Psub}s don't need one of those~
 # - (The SPEAKER buzzes)|Error, insufficient access privileges.
 # - (The SPEAKER giggles at your empty pockets)|You can't afford such things, silly~
 # - (The SPEAKER pauses nervously)|Um miss, I don't think you can afford that...
@@ -15358,7 +15358,7 @@
 # - (The SPEAKER smules)|You'll have to secure that by other means, I think~
 # - (The SPEAKER beeps)|Insufficient currency.
 
-# - (Look at what she wants to buy)
+# - (Look at what ${Ethey} want${Es} to buy)
 # - You're giving me everything you have.
 # :: dShopBuyAttack
 # :: dItemShopAttack
@@ -15473,7 +15473,7 @@
 # - (The SPEAKER eats the brownies slowly, savoring every bite)|Kind of dense, but really good!
 # - (The SPEAKER takes a bite out of the donut)|A bit heavy on the sprinkles...
 # - (The SPEAKER blushes)|This is... my new favorite.
-# - (The SPEAKER's eyes widen as she wolfs down the golden cookie)|Truly divine...
+# - (The SPEAKER's eyes widen as ${Ethey} wolf${Es} down the golden cookie)|Truly divine...
 
 
 
@@ -15491,7 +15491,7 @@
 # - (The SPEAKER smiles)|This looks like strong evidence for my investigation!
 # - (The SPEAKER grins)|Woah! That's so cool!
 
-# - (Look at what she has to sell)
+# - (Look at what ${Ethey} ${Ehas} to sell)
 # - (Sell Item0 for ItemCost0 gp) (Owned: AMNT0)
 # - (Sell Item1 for ItemCost1 gp) (Owned: AMNT1)
 # - (Sell Item2 for ItemCost2 gp) (Owned: AMNT2)
@@ -15514,13 +15514,13 @@
 # - (Buy Item8 for ItemCost8 gp) (Owned: AMNT8)
 # - (Buy Item9 for ItemCost9 gp) (Owned: AMNT9)
 
-# - (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)
+# - (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(${EThey} will remain and help you with restraints for 50 turns)
 # - (The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?
 # - (The SPEAKER gives you three picks)|I don't know how you plan to use these...
 # - (The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable.
 # - (The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*
 # - (The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!
-# - (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)
+# - (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(${EThey} perform${Es} a short prayer and a random divine lock comes off)
 
 # - (Ask for 2 knives)
 # - (Ask for 3 lockpicks)
@@ -15691,7 +15691,7 @@
 
 # - Don't I look quite cuddly?
 # - (Move closer, attempting to cuddle)
-# - (The SPEAKER smiles)|You do, in fact!|(She inches closer)
+# - (The SPEAKER smiles)|You do, in fact!|(${EThey} inch${Ees} closer)
 # - (The SPEAKER smiles gently)|Aren't you precious~
 # - (The SPEAKER looks flustered)|Well, it's been a long day...|I could use a hug...
 # - (The SPEAKER smirks and reaches for your body)
@@ -15825,21 +15825,21 @@
 # :: NameFuuka1
 # :: NameFuuka2
 # :: NameFuukaRecruit
-# - Fuuka surrounds herself in defensive talismans!
+# - Fuuka surrounds ${Ethem}self in defensive talismans!
 # - Fuuka wraps you tightly in restraints! (+RestraintAdded)
 # - Fuuka squeezes your breasts and smiles! (DamageTaken)
 # - Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)
 # :: AttackFuuka1Lock
 # :: AttackFuuka2Lock
 
-# - Fuuka surrounds herself in defensive talismans one more time!
+# - Fuuka surrounds ${Ethem}self in defensive talismans one more time!
 # - Fuuka wraps you furiously in restraints! (+RestraintAdded)
-# - Fuuka pouts as she tickles you relentlessly! (DamageTaken)
+# - Fuuka pouts as ${Ethey} tickle${Es} you relentlessly! (DamageTaken)
 
 
-# - (You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?
+# - (You find a girl wearing an ornate dress)|(${EThey} glance${Es} at you)|And who might you be?
 # - I should be asking the same of you.
-# - (Growl at her)
+# - (Growl at ${Ethem})
 # :: dFuuka_AggressiveGag
 # :: dTheWarden_AggressiveGag
 # - (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
@@ -15956,14 +15956,14 @@
 # - (SPEAKER giggles)|Hehe... We will have so much fun~
 # - (SPEAKER giggles)|You don't have to consent, dear~
 # - I never said I consented to being a pet!
-# - (Give her a puzzled look and shake your head)
+# - (Give ${Ethem} a puzzled look and shake your head)
 # :: dFuukaSub_BratGag
 # :: dTheWardenSub_BratGag
 # - No way!
 # - (Sigh and shrug)
 # :: dFuukaSub_Brat_Proceed2
 # :: dTheWardenSub_Brat_Proceed2
-# - (Attack her without saying anything)
+# - (Attack ${Ethem} without saying anything)
 # :: dFuuka_Attack
 # :: dDollmaker_Attack
 # :: dTheWarden_Attack
@@ -16028,7 +16028,7 @@
 # - (SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then...
 # - (Submit to her anyway) (Gain a special collar)
 # - (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
-# - (Gag her)
+# - (Gag ${Ethem})
 # :: dFuukaWin_Gag
 # :: dDollmakerWin_Gag
 # :: dTheWardenWin_Gag
@@ -16074,7 +16074,7 @@
 # - (Sell Items)
 # - (Sell Whole Stacks of Items)
 # - (Sell from your storage)
-# - Daww! What a cutie!|(She smiles and pats your head gently)
+# - Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)
 
 # - Do you have anything for sale?
 # - (Look around for items to buy)
@@ -16146,7 +16146,7 @@
 # - (The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
 # :: rShopkeeperTeleportDebt_Catsuit
 # :: rShopkeeperOfferHelpDebt_Catsuit
-# - (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
+# - (The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~
 # :: rShopkeeperTeleportDebt_Pay
 # :: rShopkeeperOfferHelpDebt_Pay
 
@@ -16160,19 +16160,19 @@
 # :: dShopkeeperTeleportDebt_No
 # :: dShopkeeperOfferHelpDebt_No
 
-# - Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
+# - Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
 # :: rShopkeeperTeleportDebt_Armor_YesCursed
 # :: rShopkeeperOfferHelpDebt_Armor_YesCursed
-# - Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
+# - Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
 # :: rShopkeeperTeleportDebt_Armor_YesUncursed
 # :: rShopkeeperOfferHelpDebt_Armor_YesUncursed
-# - Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
+# - Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(${EThey} place${Es} the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
 # :: rShopkeeperTeleportDebt_Restraint_Yes
 # :: rShopkeeperOfferHelpDebt_Restraint_Yes
-# - Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
+# - Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
 # :: rShopkeeperTeleportDebt_Collar_Yes
 # :: rShopkeeperOfferHelpDebt_Collar_Yes
-# - You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
+# - You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
 # :: rShopkeeperTeleportDebt_Catsuit_Yes
 # :: rShopkeeperOfferHelpDebt_Catsuit_Yes
 
@@ -16255,18 +16255,18 @@
 # - You're not feeling it...
 # - You close your eyes but the vibrations keep you from dozing off...
 
-# - (A SPEAKER lies hogtied in front of you)|(She looks at you with pleading eyes,)|(and mumbles incoherently through her gag)
-# - (A SPEAKER lies hogtied in front of you)|(She looks at you, mumbling and giggling into her gag)
+# - (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through her gag)
+# - (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into her gag)
 # - (SPEAKER looks grateful)|Thank you so much|I shall join your party.
 # - (SPEAKER looks grateful)|Thank you so much miss!|I owe you everything.
 # - (SPEAKER groans and wriggles around uselessly)
 # - (SPEAKER moans and rolls around, blushing deeply)
 # - Untie her
-# - Make sure she is tight and secure
+# - Make sure ${Ethey} ${Eis} tight and secure
 
 # - (A SPEAKER bumps into you while immersed in her thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
 # - (The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!
-# - (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(She snaps a photo of you using a magic crystal)
+# - (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(${EThey} snap${Es} a photo of you using a magic crystal)
 # - (The SPEAKER giggles)|I never said I'd take it off, did I?
 # - (The SPEAKER smiles)|Sure thing!
 # - (Show interest)
@@ -16323,13 +16323,13 @@
 # :: dCyberHiSec_Question2Gag
 # :: dCyberHiSec_Question2Gag
 # - (The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System.
-# - (The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure she will have time to speak with you if you want to ask her.
+# - (The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure ${Ethey} will have time to speak with you if you want to ask her.
 # - But why???
 # - (The SPEAKER frowns)|You should be thankful.|Without Mistress Oriel, we'd all be dead!|Probably...
 # - Who is Mistress Oriel?
 # - (The SPEAKER pauses for a moment, then answers)|Well, only a few hundred years ago, I think?|This is a bit longer of a downtime than usual,|But all of us are waiting patiently~
 # - When are these orders from?
-# - (You anger the SPEAKER. She gags you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?
+# - (You anger the SPEAKER. ${EThey} gag${Es} you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?
 # - The facility is in ruins! This is pointless!
 
 # - (A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
@@ -16339,7 +16339,7 @@
 # - (You don't have any keys that work on the lock)
 # :: rPrisonerJailNoKeys
 # :: rPrisonerJailOwnNoKeys
-# - (You can't help her, bound as tightly as you are...)
+# - (You can't help ${Ethem}, bound as tightly as you are...)
 # :: rPrisonerJailUnlockHandsBound
 # :: rPrisonerJailOwnUnlockHandsBound
 # :: rPrisonerLatexUnlockHandsBound
@@ -16356,8 +16356,8 @@
 # - (You unlock your SPEAKER)|Hmmpf... are you letting me go?
 # - (You unlock your SPEAKER)|Oh? So soon?
 # - (You unlock your SPEAKER)|Time to get to work~!
-# - (You unlock your SPEAKER)|Mmmmph!|(She wants to keep her gag...)
-# - (You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+# - (You unlock your SPEAKER)|Mmmmph!|(She want${Es} to keep her gag...)
+# - (You unlock the SPEAKER)|Mmmmph!|(She want${Es} to keep her gag...)
 # :: rPrisonerJailUnlockGagged
 # :: rPrisonerJailOwnUnlockGagged
 # - (After a while, you free the SPEAKER)|That was quite tight... thanks for the rescue.
@@ -16379,8 +16379,8 @@
 # - (After a while, you free the SPEAKER)|For a moment there I thought it was too much for you~
 # - (After a while, you free the SPEAKER)|Thank you miss!|Your lockpicking skills are impeccable!
 # - (After a while, you free the SPEAKER)|Mmph, that took forever~
-# - (After a while, you free the SPEAKER)|Are you supposed to be here?|(She giggles)
-# - (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
+# - (After a while, you free the SPEAKER)|Are you supposed to be here?|(${EThey} giggle${Es})
+# - (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} her head when you go for her gag...)
 # :: rPrisonerJailPickGagged
 # :: rPrisonerJailOwnPickGagged
 # :: rPrisonerLatexCutGagged
@@ -16394,7 +16394,7 @@
 # - (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
 # :: rPrisonerJailWord
 # :: rPrisonerJailOwnWord
-# - (You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+# - (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} her gag back on...)
 # :: rPrisonerJailWordGagged
 # :: rPrisonerJailOwnWordGagged
 # - (The SPEAKER is locked in high-security manacles.|The safety pins have been triggered, making it impossible to help her without a key.)
@@ -16408,7 +16408,7 @@
 # :: dPrisonerJailJammedRecent_Apologize
 # :: dPrisonerJailOwnJammedRecent_Apologize
 
-# - (The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)
+# - (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} is bugged and needs your help to get out)
 # - (Unlock her and file a bug report to Ada)
 
 
@@ -16428,7 +16428,7 @@
 
 # - An enemy found you while you were busy!
 
-# - (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
+# - (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(${EThey} managed to pick the lock on your cell door)
 # :: rPrisonerRescue
 # :: rPrisonerRescueBandit
 # - (A SPEAKER wakes you up by melting the door with acid)|These guys were a piece of cake.|Now let's discover a way out of here!
@@ -16469,7 +16469,7 @@
 # - Stun or disable her first.
 # - Area isn't clear.
 # - (Secure NME into the furniture)
-# - (You lock her into the furniture so that she stays in place)
+# - (You lock her into the furniture so that ${Ethey} stay${Es} in place)
 
 
 # - FOODMSG|(It invites you to partake in its culinary delights)
@@ -16581,7 +16581,7 @@
 # :: KinkyDungeonSpellBearTrap
 # :: KinkyDungeonSpellBearTrapStrike
 
-# - The ENEMYNAME transforms nearby dolls into her subjects!
+# - The ENEMYNAME transforms nearby dolls into ${Ptheir} subjects!
 # :: KinkyDungeonSpellCastDollConvert
 # :: KinkyDungeonSpellCastDollConvertMany
 
@@ -16594,7 +16594,7 @@
 # - Rubber Nuke
 
 
-# - (In the center of the room stands a woman wearing a latex dress)|(Around her are robotic servants, obeying her without a word)|(She has been watching you this entire time)
+# - (In the center of the room stands a woman wearing a latex dress)|(Around ${Ethem} are robotic servants, obeying ${Ethem} without a word)|(${EThey} ${Ehas} been watching you this entire time)
 # - And who might you be?
 # - (Tilt your head)
 # :: dDollmaker_AskGag
@@ -16615,14 +16615,14 @@
 # - (The woman chuckles)|Correct.|And you must be the adventurer causing the recent troubles.
 # - I'm famous!
 # - Indeed. And I'm here to bring you down.
-# - (Scoff at her)
+# - (Scoff at ${Ethem})
 
 
-# - (The Dollmaker folds her arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
+# - (The Dollmaker folds ${Etheir} arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
 # - Do you have the Mistress' Staff?
 # - (The Dollmaker chuckles)|That trinket?|So that's what you're after!|As a matter of fact, I do not have it.|It belongs to a certain Archmagus.
 # - Then you are of no use to me.
-# - (The Dollmaker summons a drone to her side)|Such arrogance! I'll have to teach you some manners!
+# - (The Dollmaker summons a drone to ${Etheir} side)|Such arrogance! I'll have to teach you some manners!
 # - What a bother.
 # - Who?
 # - (The Dollmaker explains)|Archmagus Sariel Vinlaga. I'm surprised you didn't know.|Not that it matters for a future doll like you.
@@ -16634,18 +16634,18 @@
 # - Feel free to try.
 # - Sounds fun... but I really need to get going.
 
-# - (The Dollmaker folds her arms as she walks over)|All tight and shiny!|You'll be my prized possession~
+# - (The Dollmaker folds ${Etheir} arms as she walks over)|All tight and shiny!|You'll be my prized possession~
 # - (The Dollmaker nods)|Already eager to obey!|So beautiful...
 # - (The Dollmaker chuckles)|Oh, but I already have~
 # - I have no choice but to submit.
 # - You will never get away with this!
-# - (Sigh and be forced to wear her visor)
-# - (Sigh and be forced to wear her mask)
+# - (Sigh and be forced to wear ${Etheir} visor)
+# - (Sigh and be forced to wear ${Etheir} mask)
 # - (Sigh and be forced to wear whatever she chooses)
-# - (The Dollmaker places her visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them.
+# - (The Dollmaker places ${Etheir} visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them.
 
 # - (The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower.
-# - (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from her back as she storms toward you!)
+# - (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as she storms toward you!)
 
 # - (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)
 # - (SPEAKER looks confused)|What are you... Okay, you can have it...
@@ -16653,7 +16653,7 @@
 # :: rDollmakerWinAccept2
 # - (Wear a doll visor)
 # - (Wear a doll mask)
-# - (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into her open mouth and she starts mumbling angrily)
+# - (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and she starts mumbling angrily)
 
 
 # - The Dollmaker calls in drone reinforcements!
@@ -16783,7 +16783,7 @@
 # - Your visor dims to help you focus on your task.
 
 # - Escaped Doll
-# - You return the doll to her rightful owner.
+# - You return the doll to ${Etheir} rightful owner.
 
 # - Your movement sets off your [RESTRAINTNAME]
 # - Your struggling sets off your [RESTRAINTNAME]
@@ -30675,10 +30675,10 @@
 # - Kinky Armory
 
 # - Chef
-# - You defeat the chef and claim her prize.
+# - You defeat the chef and claim ${Etheir} prize.
 # - The chef makes sure you'll never steal again! (DamageTaken)
 # - The chef makes sure you'll never steal again! (+RestraintAdded)
-# - The chef spanks you with her frying pan! (DamageTaken)
+# - The chef spanks you with ${Etheir} frying pan! (DamageTaken)
 
 # - As you eat, you look up and notice that someone is not very happy with you.
 
@@ -30842,10 +30842,10 @@
 # - That's better! Now come along~
 # - This has been lots of fun!
 # - I have to go return you~
-# - Good girl~ Let's go again later~
+# - Good ${Psub}~ Let's go again later~
 
 # - It's time for walkies!
-# - That's a good girl!
+# - That's a good ${Psub}!
 # - I want to keep you longer, but I've got things to do.
 # - It's time to go back to your little house~
 # - (pats you on the head)
@@ -31431,8 +31431,8 @@
 # - The fighter knocks you to the ground and binds you! (+RestraintAdded)
 # :: AttackAdventurer_Brat_FighterBind
 # :: AttackAdventurer_Dom_FighterBind
-# - The fighter strikes you with her weapon! (DamageTaken)
-# - The fighter takes you down with the back of her weapon! (DamageTaken)
+# - The fighter strikes you with ${Etheir} weapon! (DamageTaken)
+# - The fighter takes you down with the back of ${Etheir} weapon! (DamageTaken)
 # :: AttackAdventurer_Brat_FighterStun
 # :: AttackAdventurer_Dom_FighterStun
 # - The fighter puts you in a hold and manages to slip on a lock! (DamageTaken)
@@ -31445,21 +31445,21 @@
 
 
 # - The fighter moans loudly and rolls around on the floor!
-# - The fighter wraps her arms around you with bindings in hand! (+RestraintAdded)
-# - The fighter pins you with her weapon and grabs your breast! (DamageTaken)
-# - The fighter enchants her weapon and strikes you! (DamageTaken)
-# - The fighter smiles lasciviously as she dangles a lock in front of you! (DamageTaken)
-# - The fighter enchants her weapon and flies forward!
+# - The fighter wraps ${Etheir} arms around you with bindings in hand! (+RestraintAdded)
+# - The fighter pins you with ${Etheir} weapon and grabs your breast! (DamageTaken)
+# - The fighter enchants ${Etheir} weapon and strikes you! (DamageTaken)
+# - The fighter smiles lasciviously as ${Ethey} dangle${Es} a lock in front of you! (DamageTaken)
+# - The fighter enchants ${Etheir} weapon and flies forward!
 
 
-# - The fighter drops her weapon and admits defeat!
-# - The fighter feints and strikes, slapping you with the flat of her blade! (DamageTaken)
+# - The fighter drops ${Etheir} weapon and admits defeat!
+# - The fighter feints and strikes, slapping you with the flat of ${Etheir} blade! (DamageTaken)
 # - The fighter proudly clicks on a lock! (DamageTaken)
 # - The fighter briefly vanishes and ends up behind you!
 
-# - The fighter falls on her knees and begs!
+# - The fighter falls on ${Etheir} knees and begs!
 # - The fighter throws an enchanted binding ring at you! (+RestraintAdded)
-# - The fighter throws her weapon at you! (DamageTaken)
+# - The fighter throws ${Etheir} weapon at you! (DamageTaken)
 
 # - Casting SPNME
 # - Using ${Item}
@@ -31755,12 +31755,12 @@
 
 
 # - Lab Assistant
-# - The assistant envelops herself in her own bubble for protection.
+# - The assistant envelops ${Ethem}self in ${Etheir} own bubble for protection.
 
 # - Glue Bomb
 
 # - Glue Technician
-# - The technician trips and glues herself to the floor.
+# - The technician trips and glues ${Ethem}self to the floor.
 
 # - Quite sticky, innit?
 
@@ -32009,7 +32009,7 @@
 
 # - Flame Keeper
 # - The flame keeper steps away into a fiery portal.
-# - The flame keeper grabs you, and volcanic restraints emerge from her armor! (+RestraintAdded)
+# - The flame keeper grabs you, and volcanic restraints emerge from ${Etheir} armor! (+RestraintAdded)
 # - The flame keeper locks a restraint!
 # - The flame keeper flanks you!
 # - The flame keeper offers a painful caress! (DamageTaken)
@@ -32997,7 +32997,7 @@
 # - Surely nothing can happen now!
 
 # - Rubber Elemental
-# - The rubber elemental's restraints snap onto her and she falls over hogtied.
+# - The rubber elemental's restraints snap onto ${Ethem} and ${Ethey} fall${Es} over hogtied.
 # - The rubber elemental molds itself into restraints! (+RestraintAdded)
 # - The rubber elemental squeezes you with its appendages! (DamageTaken)
 # - The rubber elemental forms rubber locks around all your restraints! (DamageTaken)
@@ -33035,8 +33035,8 @@
 # - The being has already bound you! (+RestraintAdded)
 
 # - The Timekeeper
-# - The Timekeeper releases her grip on the timeline.
-# - The Timekeeper takes the time to enjoy herself with you... (DamageTaken)
+# - The Timekeeper releases ${Etheir} grip on the timeline.
+# - The Timekeeper takes the time to enjoy ${Ethem}self with you... (DamageTaken)
 # - The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
 
 # - Analysis
@@ -33127,7 +33127,7 @@
 # - Try to Remove
 # - Try to Pick
 # - Examine the Curse
-# - Feed this to her
+# - Feed this to ${Ethem}
 # - Sell for VLU gp
 # - Sell ALL for VLU gp
 # - Sell all but one for VLU gp
@@ -33151,7 +33151,7 @@
 
 # - +AMNT gp
 
-# - ENMY lets go of herself for AMNT damage!
+# - ENMY lets go of ${Ethem}self for AMNT damage!
 
 # - Sonar
 # - Emit a ping to highlight floors and tiles in a large radius. The ping is audible and attracts enemies to your position.
@@ -33279,9 +33279,9 @@
 # - The ENMY blushes at your cuteness!
 # - The ENMY makes fun of you! (DMGDLT)
 # - The ENMY struggles to find words!
-# - The ENMY buzzes you with her VTY! (DMGDLT)
-# - The ENMY catches you and teases you with her VTY! (DMGDLT)
-# - The ENMY reaches for her VTY!
+# - The ENMY buzzes you with ${Etheir} VTY! (DMGDLT)
+# - The ENMY catches you and teases you with ${Etheir} VTY! (DMGDLT)
+# - The ENMY reaches for ${Etheir} VTY!
 # :: KDTeaseAttackResist_VibeToy
 # :: KDTeaseAttackResist_InsertToy
 # - The ENMY sticks a VTY into you! (DMGDLT)
@@ -33358,7 +33358,7 @@
 
 # - Gladiator
 # - The gladiator puts you in a hold and binds you! (+RestraintAdded)
-# - The gladiator chuckles as she spanks your butt! (DamageTaken)
+# - The gladiator chuckles as ${Ethey} spank${Es} your butt! (DamageTaken)
 # - The gladiator smiles and clicks a lock on you! (DamageTaken)
 
 # - The magician conjures some restraints on you! (+RestraintAdded)
@@ -33378,8 +33378,8 @@
 
 
 # - The Warden falls flat on the ground, exhausted!
-# - The Warden strikes you with her whip! (DamageTaken)
-# - The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)
+# - The Warden strikes you with ${Etheir} whip! (DamageTaken)
+# - The Warden swings ${Etheir} enchanted whip and conjures locks on your body! (DamageTaken)
 
 
 
@@ -33393,7 +33393,7 @@
 # - I defeated Fuuka. Now you're next!
 # - (SPEAKER shrugs)|You beat that zombie girl?|She's the weakest of the paladins.|She loves to boast about how she's special,|But she's really just a spoiled brat.
 # - ...Zombie girl?
-# - (SPEAKER tilts her head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too.
+# - (SPEAKER tilts ${Etheir} head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too.
 # - ...Paladins?
 # - (SPEAKER nods happily)|Divinely-appointed judges, presiding over mortals.|Unlike you, our immortality is earned.|Myself, I captured many defilers long ago.|Is it not fitting that I get to keep them for myself?
 # - It is an honor to fight a worthy opponent.
@@ -33407,7 +33407,7 @@
 # - (SPEAKER smiles pleasantly)|Its a fitting reward, isn't it?|Long ago, this mountain was home to a vicious empire.|Machines went out to sea, bringing back countless prisoners.|As commander of the invasion, I earned this title!
 # - (SPEAKER grins)|When we stormed the prisons, we encountered many fierce defenders.|Many of them now reside in these halls, earning their rightful punishment.
 # - Who are the prisoners, anyway?
-# - (SPEAKER folds her arms)|Is it not holy and just to bring down tyrants?
+# - (SPEAKER folds ${Etheir} arms)|Is it not holy and just to bring down tyrants?
 # - Why did the Goddesses intervene?
 # - (SPEAKER shrugs)|Most of them had already been... conditioned.|It will take centuries to undo centuries of training.|After all, we have plenty of time.
 # - What about the former prisoners?
@@ -33427,7 +33427,7 @@
 # - What makes you any better than the old rulers?
 # - (SPEAKER smirks at you)|If that were so, then perhaps it would be best not to pry...|Forbidden knowledge has its price, after all.
 # - It sounds like the gods are trying to hide something
-# - (SPEAKER folds her arms)|And what makes you think an old myth would be relevant here?|Would the Archmagus herself lead a rebellion against the divine?
+# - (SPEAKER folds ${Etheir} arms)|And what makes you think an old myth would be relevant here?|Would the Archmagus herself lead a rebellion against the divine?
 # - Was Sariel Vinlaga the leader of the old civilization?
 # - (SPEAKER frowns)|You don't trust me? That's too bad...
 # - It's the way you keep dodging questions.
@@ -33444,13 +33444,13 @@
 # - Why should I listen to you?
 # - (Pout)
 # - That's a shame about your records, I'll be going now.
-# - Mmpphgh? (Go to pass her)
+# - Mmpphgh? (Go to pass ${Ethem})
 # - (She smirks)|Not so fast, dear~|You'll have to wear a special collar to pass.
 # - I won't wear anyone's collar!
 # - (She smirks)|Tsk tsk. Then you won't pass.
 # - (She giggles)|How cute!|You're so used to yours that you forgot about it~
 # - Why don't you wear it yourself?
-# - Hmmph. (Scoff at her)
+# - Hmmph. (Scoff at ${Ethem})
 # - (She frowns)|Watch your tongue~
 # - (She frowns)|I do not wear collars.
 # - You'd be better off wearing mine instead.
@@ -33484,17 +33484,17 @@
 # - (SPEAKER giggles)|Not so confident, are we?
 # - I didn't think it would involve a test...
 
-# - (SPEAKER readies her whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
+# - (SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
 # - I will never be collared by you!
 # - (Shake your head and scoff)
-# - (SPEAKER folds her arms)|So be it.
+# - (SPEAKER folds ${Etheir} arms)|So be it.
 # - Tell me about your collection.
 # - I'm in charge of my own path.
 # - (SPEAKER grins)|Let's see how long you can keep up that attitude~
 # - That won't be necessary, miss.
 # - (SPEAKER smiles)|Oh, it's quite necessary~|Why don't I show you?
 # - I would rather fight you.
-# - (Fight her)
+# - (Fight ${Ethem})
 # - (SPEAKER shrugs)|Straight and to the point, eh?
 
 # - Ready yourself!
@@ -33502,9 +33502,9 @@
 # - I guess I have no choice...
 
 # - (SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~
-# - (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(She snaps her fingers and conjures a glowing ring)
-# - (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(She snaps her fingers and conjures a glowing ring)
-# - (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(She snaps her fingers and conjures a glowing ring)
+# - (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
+# - (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
+# - (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
 # - Was that magic?
 # - I've lost. Now what?
 # - I won't submit to you!
@@ -33513,9 +33513,9 @@
 # - (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really believe it would be this easy?
 
 # - (SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
-# - (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
-# - (Wear her waist belt anyway)
-# - (SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
+# - (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
+# - (Wear ${Etheir} waist belt anyway)
+# - (SPEAKER shakes ${Etheir} head as you force a gag into ${Etheir} mouth)|MMMMMPH!
 
 # - The ENMY weakens your grip on your weapon! Enemies may disarm you if you stand too close...
 
@@ -33525,7 +33525,7 @@
 # - (The SPEAKER smiles)|Why sure, sweetie, I can help you with that~
 # :: rGenericAllyFlirt_LinkRequestArms
 # :: rGenericAllyFlirt_LinkRequestLegs
-# - (The SPEAKER grins)|What a good girl!
+# - (The SPEAKER grins)|What a good ${Psub}!
 # :: rGenericAllyFlirt_LinkRequestArmsDom
 # :: rGenericAllyFlirt_LinkRequestLegsDom
 # - (The SPEAKER blushes)|Those look like fun!
@@ -33678,7 +33678,7 @@
 # - The spell explodes and stuns you!
 # - The spell congeals into restraints!
 
-# - The mage starts channeling her energy!
+# - The mage starts channeling ${Ptheir} energy!
 
 
 # - Warden Cuffs
@@ -33838,7 +33838,7 @@
 # - The poison dragon takes flight and swoops toward you!
 # - The poison dragon takes flight and slams into you! (Stunned!)
 # - Poison Dragon Girl
-# - The dragon girl slashes you with her venomous nails! (DamageTaken)
+# - The dragon girl slashes you with ${Etheir} venomous nails! (DamageTaken)
 # - The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)
 # - The dragon girl holds you in place and locks your restraints! (+RestraintAdded)
 
@@ -34353,8 +34353,8 @@
 # - You ready the leash...
 # - You pick up a leash.
 
-# - You are not in a condition to use a leash on her.
-# - She refuses to be leashed unless you tie her up!
+# - You are not in a condition to use a leash on ${Ethem}.
+# - She refuses to be leashed unless you tie ${Ethem} up!
 # - You attach a leash to ENMY.
 # - You remove your leash from ENMY.
 # - You let go of all leashes.
@@ -34473,7 +34473,7 @@
 
 # - You're blocking me.
 # - You're in my way!
-# - Miss, you're blocking me...
+# - ${PHonor}, you're blocking me...
 # - Step aside~
 # - Path blocked by citizen.
 # - *Bumps into you*
@@ -34614,7 +34614,7 @@
 
 # - NPC has escaped!
 # - NPC is likely to escape.
-# - NPC has managed to loosen her bonds.
+# - NPC has managed to loosen ${Etheir} bonds.
 
 # - Any
 # - NPC Opinion: 
@@ -34817,13 +34817,13 @@
 
 
 # - Ancient Worshipper
-# - The ancient worshipper repents of her ways.
+# - The ancient worshipper repents of ${Etheir} ways.
 # - The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
 # - Crystals start to grow on one of your restraints! (DamageTaken)
 # - The ancient worshipper mumbles at you for assistance! (DamageTaken)
 
 # - Ancient Congregant
-# - The ancient congregant repents of her ways.
+# - The ancient congregant repents of ${Etheir} ways.
 # - The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
 # - Crystals start to grow on your restraints! (DamageTaken)
 # :: AttackCuffedGirl2Lock
@@ -34831,7 +34831,7 @@
 # - The ancient congregant mumbles at you for assistance! (DamageTaken)
 
 # - Ancient Hierophant
-# - The ancient hierophant repents of her ways.
+# - The ancient hierophant repents of ${Etheir} ways.
 # - The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
 # - The ancient hierophant mumbles at you for assistance! (DamageTaken)
 
@@ -35039,9 +35039,9 @@
 
 
 
-# - (The Warden perks an eyebrow at the sight of you,|before a wide grin overtakes her face)|Ahhh Fuuka. Chosen by the Goddess?|How does it feel to once again be under a leash?
-# - Fuuka, take her down.
-# - (Send Fuuka to fight her)
+# - (The Warden perks an eyebrow at the sight of you,|before a wide grin overtakes ${Etheir} face)|Ahhh Fuuka. Chosen by the Goddess?|How does it feel to once again be under a leash?
+# - Fuuka, take ${Ethem} down.
+# - (Send Fuuka to fight ${Ethem})
 # - That is none of your business. Now kneel.
 # - (Fight without listening.)
 
@@ -35376,7 +35376,7 @@
 # - While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
 # - -100% miscast chance, but casting spells can send you over the edge.
 # - The psychic link conducts away some of the intensity...
-# - Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
+# - Your linked target lets go of ${Ethem}self, transmitting a wave of pleasure to yourself...
 
 # - FCTN RMTPE
 # - PTRN's RMTPE
@@ -35404,20 +35404,20 @@
 # - (L)
 
 
-# - (The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
+# - (The SPEAKER sits encased in skintight rubber up to ${Etheir} nose.|Though the latex over ${Etheir} mouth is smooth and flat,|you know from ${Etheir} whimpering moans that ${Etheir} mouth|is totally filled with a gag, useless like the rest of ${Etheir} body.|Some sort of stand affixes ${Etheir} to the floor.)
 # - (You don't have any solvents that work on latex)
-# - (You dissolve her restraints, fumbling around for a while with your bound hands)
+# - (You dissolve ${Etheir} restraints, fumbling around for a while with your bound hands)
 # - (You rescue the SPEAKER)|Thank you!|Let's get out of here!
-# - (You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+# - (You rescue the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
 # - (You are not holding a cutting tool)
-# - (You cut her restraints, fumbling around for a while with your bound hands)
+# - (You cut ${Etheir} restraints, fumbling around for a while with your bound hands)
 # - (You don't have enough mana for Remove Slime)
 # - (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
-# - (You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+# - (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} locks ${Etheir} gag back on...)
 
 # - Dissolve the latex with a SLVNT
-# - Cut her out with a sharp tool
-# - Use Remove Slime to unlock her
+# - Cut ${Ethem} out with a sharp tool
+# - Use Remove Slime to unlock ${Ethem}
 
 # - Local Saves
 # - Cloud Saves
@@ -35430,7 +35430,7 @@
 
 
 # - (The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
-# - (The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+# - (The SPEAKER folds ${Etheir} hands together)|${PHonor}, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
 # - (The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
 # - (The SPEAKER smiles)|Let's see, what loot do we have here...|(SPEAKER is going to search you)
 # - (The SPEAKER scans you with a red light)|Enumerating contraband...|Please comply for removal.
@@ -35525,13 +35525,13 @@
 # - Maid Squire
 # - Maid Knight
 # - You humiliate the Maid Squire!
-# - You defeat the Maid Knight! For now... she swears revenge.
+# - You defeat the Maid Knight! For now... ${Ethey} swear${Es} revenge.
 # - The Squire zips you up in comfy leather gear!
 # - The Maid Knight places you in strict bondage!
 # - The Squire secures your restraints!
 # - The Maid Knight secures your restraints!
-# - The Squire dusts you with her duster plug.
-# - The Maid Knight sweeps you with her cleaning halberd!
+# - The Squire dusts you with ${Etheir} duster plug.
+# - The Maid Knight sweeps you with ${Etheir} cleaning halberd!
 
 # - The EnemyName retreats!
 # - The EnemyName manages to squirm out of sight!
@@ -35668,7 +35668,7 @@
 # - Can you unlock my Masterwork restraints?
 # - (Present your masterwork restraints)
 # - (SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~
-# - (SPEAKER smiles as she unlocks your restraints with her key)|I hope you had a great time in them~
+# - (SPEAKER smiles as ${Ethey} unlock${Es} your restraints with ${Etheir} key)|I hope you had a great time in them~
 
 
 # - The chest contained an angry latex kitty!
@@ -35975,4 +35975,4 @@
 # - Confirm Safeword?
 # - Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. 
 # - Only usable ingame.
-# - ${Playername} used her safeword and was transported to the beginning of the level.
+# - ${Playername} used ${Etheir} safeword and was transported to the beginning of the level.

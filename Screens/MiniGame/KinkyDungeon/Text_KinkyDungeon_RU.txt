@@ -1165,9 +1165,9 @@ Pусский
 Откажитесь от перка "Начинающий питомец". Работает только один раз. Если вы снова возьмете этот перк, пути назад не будет.
 - You are an expert in wearing a petsuit and your mobility is increased.
 Вы эксперт в ношении костюма питомца, ваша мобильность повышается.
-- You are too used to wearing petsuits! Sprinting is impaired.
+- ${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
 Вы слишком привыкли носить костюм питомца! Спринт невозможен.
-- You are a disobedient pet. You should put on a petsuit!
+- ${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
 Непослушный питомец. Тебе следует надеть костюм питомца!
 
 
@@ -1531,9 +1531,9 @@ Pусский
 Взрыв Арканы
 
 
-- EnemyName says something incomprehensible! Her spell miscasts!
+- EnemyName says something incomprehensible! ${ETheir} spell miscasts!
 EnemyName говорит что-то нечленораздельное! Её заклинание не срабатывает!
-- EnemyName fumbles her next move!
+- EnemyName fumbles ${Etheir} next move!
 EnemyName обдумывает свой следующий ход!
 - The EnemyName utters a command word on the TargetName!
 EnemyName произносит командное слово в сторону TargetName!
@@ -3476,9 +3476,9 @@ RESTRAINTNAME исчерпал добавляемые ограничители �
 Вы подчиняете себе ангела!
 - The angel decides to toy with you while you are trussed up. (DamageTaken)
 Ангел решает поиграть с вами, пока вы связаны. (DamageTaken)
-- The angel snaps her fingers and divine restraints appear on your body! (+RestraintAdded)
+- The angel snaps ${Etheir} fingers and divine restraints appear on your body! (+RestraintAdded)
 Ангел щелкает пальцами, и на вашем теле появляются божественные оковы! (+RestraintAdded)
-- The angel snaps her fingers and glowing locks appear on your body!
+- The angel snaps ${Etheir} fingers and glowing locks appear on your body!
 Ангел щелкает пальцами, и на вашем теле появляются светящиеся замки!
 
 
@@ -3498,7 +3498,7 @@ RESTRAINTNAME исчерпал добавляемые ограничители �
 Не бойтесь! Я курьер местного святилища и пришел принять ваше подношение.
 - Hold still and I will take the offering...
 Стой спокойно, а я возьму подношение...
-- (She takes the gold)
+- (${EThey} take${Es} the gold)
 (Она берет золото)
 - Peace be with you! Goodbye!
 Да пребудет с тобою мир! Пока-пока!
@@ -3512,7 +3512,7 @@ RESTRAINTNAME исчерпал добавляемые ограничители �
 В конце концов, ты сама на это напросилась.
 
 
-- The angel frowns as you attack her, and glowing rings appear.
+- The angel frowns as you attack ${Ethem}, and glowing rings appear.
 Ангел хмурится, когда вы нападаете на неё, и появляются светящиеся кольца.
 
 
@@ -3578,7 +3578,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Фамильяр
 - The familiar dissolves into spectral ash.
 Фамильяр растворяется в иллюзорном пепле
-- The doll gives in to her desires and squirms around on the ground.
+- The doll gives in to ${Etheir} desires and squirms around on the ground.
 Кукла сдаётся своим желаниям и извивается на земле.
 - Storm Crystal
 Штормовой кристалл
@@ -3652,7 +3652,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Горничная использует технику быстрого связывания! (+RestraintAdded)
 - The maid snaps a lock on one of your restraints! (DamageTaken)
 Горничная защелкивает замок на одном из ваших ограничителей! (DamageTaken)
-- The maid tickles you with her feather duster! (DamageTaken)
+- The maid tickles you with ${Etheir} feather duster! (DamageTaken)
 Горничная щекочет вас своей метелкой из перьев! (DamageTaken)
 
 
@@ -3684,9 +3684,9 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Heavy Weapons Maid
 Горничная с тяжелым оружием
-- The maid drops her weapon and runs.
+- The maid drops ${Etheir} weapon and runs.
 Горничная бросает свое оружие и убегает.
-- The maid bonks you with her weapon! (DamageTaken)
+- The maid bonks you with ${Etheir} weapon! (DamageTaken)
 Горничная делает вам 'боньк' своим оружием! (DamageTaken)
 
 
@@ -3704,7 +3704,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Старшая горничная грациозно сдается.
 - The head maid suddenly whips out a restraint and locks it on! (+RestraintAdded)
 Старшая горничная внезапно достает ограничитель и защелкивает его! (+RestraintAdded)
-- The head maid snaps her fingers and you find your restraints locked! (DamageTaken)
+- The head maid snaps ${Etheir} fingers and you find your restraints locked! (DamageTaken)
 Старшая горничная щелкает пальцами, и вы обнаруживаете, что ваши ограничители заперты! (DamageTaken)
 - The head maid tickles you strategically! (DamageTaken)
 Старшая горничная щекочет вас в самых чувствительных местах! (DamageTaken)
@@ -3720,7 +3720,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Огненный элементаль сотворяет кованые ограничители на ваших конечностях! (+RestraintAdded)
 - The fire elemental places a heavy lock on your restraint! (DamageTaken)
 Огненный элементаль запирает тяжелый замок на одном из ваших ограничителей! (DamageTaken)
-- The fire elemental touches you with her burning finger! (DamageTaken)
+- The fire elemental touches you with ${Etheir} burning finger! (DamageTaken)
 Огненный элементаль прикасается к вам своим горящим пальцем! (DamageTaken)
 
 
@@ -3728,7 +3728,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Дикий Рейнджер
 - The ranger disappears into the environment.
 Рейнджер растворяется в окружающей среде.
-- The ranger gropes your chest with a smile on her face! (DamageTaken)
+- The ranger gropes your chest with a smile on ${Etheir} face! (DamageTaken)
 Рейнджер, с улыбкой на лице, ощупывает вашу грудь! (DamageTaken)
 - The ranger surprises you and binds you! (+RestraintAdded)
 Рейнджер внезапно связывает вас! (+RestraintAdded)
@@ -3738,13 +3738,13 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Druid of the Wild
 Дикий Друид
-- The druid calls forth vines to mask her retreat.
+- The druid calls forth vines to mask ${Etheir} retreat.
 Друид призывает лозы, чтобы замаскировать свое отступление.
 - The druid holds your face and kisses you! (DamageTaken)
 Друид удерживает ваше лицо и целует вас! (DamageTaken)
 - The druid binds you with mithril restraints! (+RestraintAdded)
 Друид надевает на вас мифриловые ограничители!  (+RestraintAdded)
-- The druid tosses a lock from her cloak! It finds you and fastens with a click. (DamageTaken)
+- The druid tosses a lock from ${Etheir} cloak! It finds you and fastens with a click. (DamageTaken)
 Друид метает оковы из под своего плаща! Они находят вас и защелкиваются с громким щелчком. (DamageTaken)
 
 
@@ -3822,7 +3822,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Дрон поддержки бьет вас электрическим током! (DamageTaken)
 - The Dollmaker commands a drone to attack you!
 Кукольница приказывает дрону атаковать вас!
-- The Dollmaker commands her drones to attack you!
+- The Dollmaker commands ${Ptheir} drones to attack you!
 Кукольница приказывает своим дронам атаковать вас!
 
 
@@ -3836,7 +3836,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Дрон захвата обвязывает вас усовершенствованными тросами! (+RestraintAdded)
 - The Dollmaker commands a drone to capture you!
 Кукольница приказывает дрону схватить вас!
-- The Dollmaker commands her drones to capture you!
+- The Dollmaker commands ${Ptheir} drones to capture you!
 Кукольница приказывает своим дронам схватить вас!
 
 
@@ -3856,7 +3856,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Зомби маг
 - The zombie frowns and disappears in a puff of ice and ribbons.
 Зомби хмурится и исчезает в облаке льда и лент.
-- The zombie smiles as she wraps you in charms! (+RestraintAdded)
+- The zombie smiles as ${Ethey} wrap${Es} you in charms! (+RestraintAdded)
 Зомби улыбается, окутывая вас амулетами! (+RestraintAdded)
 - The zombie's ribbons form magical locks on your body! (DamageTaken)
 Ленты зомби на вашем теле блокируются волшебными замками! (DamageTaken)
@@ -3864,9 +3864,9 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Talisman Zombie
 Зомби владыка талисманов
-- The zombie pouts and puts up a shield to let her retreat.
+- The zombie pouts and puts up a shield to let ${Etheir} retreat.
 Зомби надувает губы и выставляет щит, дабы отступить.
-- The zombie giggles as she wraps you in charms! (+RestraintAdded)
+- The zombie giggles as ${Ethey} wrap${Es} you in charms! (+RestraintAdded)
 Зомби хихикает, окутывая вас амулетами! (+RestraintAdded)
 - The zombie uses a sealing spell to create magical locks! (DamageTaken)
 Зомби использует запечатывающее заклинание для создания магических замков! (DamageTaken)
@@ -3878,7 +3878,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Зомби-воин кричит и кинематографично падает.
 - The warrior zombie uses a traditional binding technique (+RestraintAdded)
 Зомби-воин использует классическую технику связывания. (+RestraintAdded)
-- The warrior zombie strikes you with her wooden sword! (+STUN)
+- The warrior zombie strikes you with ${Etheir} wooden sword! (+STUN)
 Зомби-воин поражает вас своим деревянным мечом! (+STUN)
 - The warrior zombie runs its fingers along your body! (DamageTaken)
 Зомби-воин проводит пальцами по вашему телу! (DamageTaken)
@@ -3900,7 +3900,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Deputy
 Шериф
-- The deputy surrenders her donuts.
+- The deputy surrenders ${Etheir} donuts.
 Шериф отдает свои пончики.
 - The deputy slaps on some cuffs! (+RestraintAdded)
 Шериф заковывает вас в наручники! (+RestraintAdded)
@@ -3920,7 +3920,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Ниндзя воин использует классическую технику связывания. (+RestraintAdded)
 - The ninja warrior tosses a shuriken and hits you! (Stunned!)
 Ниндзя воин бросает сюрикен и попадает в вас! (Stunned!)
-- The ninja warrior uses a lock to give herself the upper hand! (DamageTaken)
+- The ninja warrior uses a lock to give ${Ethem}self the upper hand! (DamageTaken)
 Ниндзя воин использует замок, чтобы получить преимущества! (DamageTaken)
 - The ninja warrior uses a subduing technique! (DamageTaken)
 Ниндзя воин использует усмиряющую технику! (DamageTaken)
@@ -4010,9 +4010,9 @@ EnemyName пытается сковать вас, но вы сопротивля
 Отравитель Драконьего Сердца отступает в зеленом тумане.
 - The Poison Dragonheart apprehends you! (+RestraintAdded)
 Отравитель Драконьего Сердца сковывает вас! (+RestraintAdded)
-- The Poison Dragonheart smacks you with her axe! (DamageTaken)
+- The Poison Dragonheart smacks you with ${Etheir} axe! (DamageTaken)
 Отравитель Драконьего Сердца бьет вас своим топором! (DamageTaken)
-- The Poison Dragonheart thrums her claws across your figure! (DamageTaken)
+- The Poison Dragonheart thrums ${Etheir} claws across your figure! (DamageTaken)
 Отравитель Драконьего Сердца проводит когтями по вашему телу! (DamageTaken)
 - The Dragonheart locks your restraint using natural magics! (DamageTaken)
 Отравитель Драконьего Сердца запирает ваши ограничители, используя магию природы! (DamageTaken)
@@ -4086,9 +4086,9 @@ EnemyName пытается сковать вас, но вы сопротивля
 Тень Драконьего Сердца сковывает вас! (+RestraintAdded)
 - The Shadow Dragonheart conjures a shadowly lock! (DamageTaken)
 Тень Драконьего Сердца сотворяет теневой замок! (DamageTaken)
-- The Shadow Dragonheart extends her scythe and pulls you closer!!!
+- The Shadow Dragonheart extends ${Etheir} scythe and pulls you closer!!!
 Тень Драконьего Сердца взмахивает своей косой и притягивает вас ближе!!!
-- The Shadow Dragonheart catches you with her scythe! (DamageTaken)
+- The Shadow Dragonheart catches you with ${Etheir} scythe! (DamageTaken)
 Тень Драконьего Сердца ударяет вас своей косой! (DamageTaken)
 
 
@@ -4126,7 +4126,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Дриада
 - The dryad sinks into the ground.
 Дриада погружается в землю.
-- The dryad extends an arm, and she wraps you in vines! (+RestraintAdded)
+- The dryad extends an arm, and ${Ethey} wrap${Es} you in vines! (+RestraintAdded)
 Дриада протягивает руку и обвивает вас лозами! (+RestraintAdded)
 - The dryad sings a song that mesmerizes you! (DamageTaken)
 Дриада поет песню, которая завораживает вас! (DamageTaken)
@@ -4140,19 +4140,19 @@ EnemyName пытается сковать вас, но вы сопротивля
 Целеустремлённая кукла
 - The doll falls to the ground, moaning loudly.
 Кукла падает на землю, громко постанывая.
-- The doll rubs her body against yours. You can feel the conduction. (DamageTaken)
+- The doll rubs ${Etheir} body against yours. You can feel the conduction. (DamageTaken)
 Кукла трется своим телом о ваше. Вы можете почувствовать удары электрическим током. (DamageTaken)
-- The doll tackles you and squeezes you with her trembling legs! (DamageTaken)
+- The doll tackles you and squeezes you with ${Etheir} trembling legs! (DamageTaken)
 Кукла хватает вас и сжимает своими ножками! (DamageTaken)
 
 
 - Dollsmith
 Изготовительница кукол
-- The dollsmith's suit locks her wrists together and renders her helpless.
+- The dollsmith's suit locks ${Etheir} wrists together and renders ${Etheir} helpless.
 Костюм изготовительницы кукол сковывает ее запястья и делает ее беспомощной.
 - The dollsmith runs a latex-covered finger across your vulnerable body! (DamageTaken)
 Изготовительница кукол проводит пальцем, покрытым латексом, по вашему уязвимому телу! (DamageTaken)
-- The dollsmith grabs you and applies her favorite doll restraints! (+RestraintAdded)
+- The dollsmith grabs you and applies ${Etheir} favorite doll restraints! (+RestraintAdded)
 Изготовительница кукол хватает вас и надевает свои любимые кукольные ограничители! (+RestraintAdded)
 - The dollsmith slaps a lock onto your restraints! (DamageTaken)
 Изготовительница кукол защелкивает замок на ваших ограничителях! (DamageTaken)
@@ -4162,11 +4162,11 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Dollmaker's Apprentice
 Ученица Кукольницы
-- The dollmaker apprentice's suit becomes rigid and locks her limbs in place.
+- The dollmaker apprentice's suit becomes rigid and locks ${Etheir} limbs in place.
 Костюм ученицы кукольницы становится жестким и фиксирует ее конечности.
-- The dollmaker's apprentice squeezes your body with her gloved hands! (DamageTaken)
+- The dollmaker's apprentice squeezes your body with ${Etheir} gloved hands! (DamageTaken)
 Ученица Кукольницы сжимает ваше тело руками в перчатках! (DamageTaken)
-- The dollmaker's apprentice uses her staff to encase you in doll restraints! (+RestraintAdded)
+- The dollmaker's apprentice uses ${Etheir} staff to encase you in doll restraints! (+RestraintAdded)
 Ученица Кукольницы использует свой посох, чтобы заковать вас в кукольные ограничители! (+RestraintAdded)
 - The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)
 Ученица Кукольницы защелкивает замок на ваших ограничителях! (DamageTaken)
@@ -4210,7 +4210,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Wolfguard
 Стражница-волчица
-- The wolfguard's suit punishes her for poor performance!
+- The wolfguard's suit punishes ${Etheir} for poor performance!
 Костюм стражницы-волчицы наказывает её за плохую работу!
 - The wolfguard lunges at you and strikes you!
 Стражница-волчица набрасывается на вас и бьёт изо всех сил!
@@ -4248,7 +4248,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Ученица дрессировщицы
 - The trainer's apprentice escapes!
 Ученица дрессировщицы сбегает!
-- The trainer's apprentice rubs her claws across your chest playfully! (DamageTaken)
+- The trainer's apprentice rubs ${Etheir} claws across your chest playfully! (DamageTaken)
 Ученица дрессировщицы игриво проводит когтями по вашей груди! (DamageTaken)
 - The trainer's apprentice secures you in training gear! (+RestraintAdded)
 Ученица дрессировщицы облачает вас в тренировочное снаряжение! (+RestraintAdded)
@@ -4402,7 +4402,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Cyber Warden
 Кибер-надзирательница
-- The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
+- The cyber warden's suit goes into lockdown, leaving ${Etheir} wiggling helplessly!
 Костюм кибер-надзирательницы отключается, оставляя ее беспомощно извиваться на земле!
 - The cyber warden applies an advanced locking technology!
 Кибер-надзирательница применяет передовую технологию блокировки!
@@ -4446,7 +4446,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Alkahestor
 Алкагестор
-- The alkahestor resigns to her fate.
+- The alkahestor resigns to ${Etheir} fate.
 Алкагестор смиряется со своей судьбой.
 - The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)
 Алкагестор выпускает пузырек с жидкостью, которая разливается по вашему телу! (+RestraintAdded)
@@ -4484,9 +4484,9 @@ EnemyName пытается сковать вас, но вы сопротивля
 Кожаный элементаль
 - The leather elemental sits down and sulks.
 Кожаный элементаль падает и сдувается.
-- The leather elemental wraps her long extremities around your body! (+RestraintAdded)
+- The leather elemental wraps ${Etheir} long extremities around your body! (+RestraintAdded)
 Кожаный элементаль обвивает своими длинными конечностями ваше тело! (+RestraintAdded)
-- The leather elemental strikes you with her leather belts! (DamageTaken)
+- The leather elemental strikes you with ${Etheir} leather belts! (DamageTaken)
 Кожаный элементаль ударяет вас своими кожаными ремнями! (DamageTaken)
 - The leather elemental clicks a lock onto your restraints! (DamageTaken)
 Кожаный элементаль защелкивает замок на ваших ограничителях! (DamageTaken)
@@ -4506,13 +4506,13 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Miner
 Шахтер
-- The bandit tosses her pick to the ground and complains about her pay.
+- The bandit tosses ${Etheir} pick to the ground and complains about ${Etheir} pay.
 Бандитка бросает свою кирку на землю и жалуется на свою зарплату.
 - The miner restrains you! (+RestraintAdded)
 Шахтёр вешает на вас ограничитель! (+RestraintAdded)
-- The miner pins you with the haft of her pickaxe! (DamageTaken)
+- The miner pins you with the haft of ${Etheir} pickaxe! (DamageTaken)
 Шахтер ударяет вас рукояткой своей кирки! (DamageTaken)
-- The miner pins you with the haft of her pickaxe and adds a lock! (DamageTaken)
+- The miner pins you with the haft of ${Etheir} pickaxe and adds a lock! (DamageTaken)
 Шахтер ударяет вас рукояткой своей кирки и добавляет замок! (DamageTaken)
 
 
@@ -4538,7 +4538,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Shady Dealer
 Теневая торговка
-- The dealer flees, leaving her goods behind.
+- The dealer flees, leaving ${Etheir} goods behind.
 Торговка убегает, оставив свой товар.
 - The dealer uses some high-quality restraints on you! (+RestraintAdded)
 Торговка вешает на вас несколько высококачественных ограничителей! (+RestraintAdded)
@@ -4574,7 +4574,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Бандитка усмехается и отступает, обещая явиться вновь.
 - The bandit restrains you tightly! (+RestraintAdded)
 Бандитка вешает на вас тугие ограничители! (+RestraintAdded)
-- The bandit runs her hands all along your restrained body! (DamageTaken)
+- The bandit runs ${Etheir} hands all along your restrained body! (DamageTaken)
 Бандитка проводит руками по всему твоему скованному телу! (DamageTaken)
 - The bandit chuckles and applies a lock! (DamageTaken)
 Бандитка смеется и защелкивает замок! (DamageTaken)
@@ -4608,7 +4608,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Бандитка-захватчик
 - The bandit grappler retreats.
 Бандитка-захватчик отступает.
-- The bandit grappler loops her chains around you! (+RestraintAdded)
+- The bandit grappler loops ${Etheir} chains around you! (+RestraintAdded)
 Бандитка-захватчик обвивает вас своими цепями! (+RestraintAdded)
 - The bandit grappler caresses your restrained body! (DamageTaken)
 Бандитка-захватчик ласкает ваше скованное тело! (DamageTaken)
@@ -4620,13 +4620,13 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Mummy
 Мумия
-- The Mummy collapses and her body vanishes.
+- The Mummy collapses and ${Etheir} body vanishes.
 Мумия падает, и ее тело исчезает.
 - The Mummy conjures a mystic wrapping! (+RestraintAdded)
 Мумия создает мистические ленты! (+RestraintAdded)
 - The Mummy conjures a magical lock upon you! (DamageTaken)
 Мумия создает на вас магический замок! (DamageTaken)
-- The Mummy punishes you with a blow from her staff! (DamageTaken)
+- The Mummy punishes you with a blow from ${Etheir} staff! (DamageTaken)
 Мумия наказывает вас ударом своего посоха! (DamageTaken)
 
 
@@ -4666,7 +4666,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Воин Баст падает и начинает громко мяукать.
 - The Bast Warrior restrains you! (+RestraintAdded)
 Воин Баст вешает на вас ограничители! (+RestraintAdded)
-- The Bast Warrior tickles you with her claws! (DamageTaken)
+- The Bast Warrior tickles you with ${Etheir} claws! (DamageTaken)
 Воин Баст щекочет вас своими когтями! (DamageTaken)
 - The Bast Warrior pulls out a lock and slips it on! (DamageTaken)
 Воин Баст вытаскивает замочек и защелкивает его на ваших ограничителях! (DamageTaken)
@@ -4698,15 +4698,15 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - High Cleric
 Верховная жрица
-- The High Cleric locks herself in ritual bondage as punishment for failure.
+- The High Cleric locks ${Ethem}self in ritual bondage as punishment for failure.
 Верховная жрица заключает себя в ритуальные оковы в качестве наказания за неудачу.
-- The High Cleric holds up her staff and you feel intense vibrations throughout your body! (DamageTaken)
+- The High Cleric holds up ${Etheir} staff and you feel intense vibrations throughout your body! (DamageTaken)
 Верховная жрица поднимает свой посох, и вы ощущаете интенсивные вибрации по всему своему телу! (DamageTaken)
 - The High Cleric summons animated restraints to bind you! (+RestraintAdded)
 Верховная жрица призывает живые оковы, чтобы сковать вас! (+RestraintAdded)
 - A flurry of mummy wrappings encase you and stun you! (DamageTaken)
 Шквал из бинтов мумий окутывает вас и оглушает! (DamageTaken)
-- The High Cleric smiles as she conjures many locks on your restraints! (DamageTaken)
+- The High Cleric smiles as ${Ethey} conjure${Es} many locks on your restraints! (DamageTaken)
 Верховная жрица улыбается, накладывая множество замков на ваши ограничители! (DamageTaken)
 
 
@@ -4794,7 +4794,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Красная жидкость пузырится, и из нее выскакивает круглый слайм!
 - A revenant appears!
 Появляется привидение!
-- Fuuka uses a talisman to call forth the spirits of her pets!
+- Fuuka uses a talisman to call forth the spirits of ${Ptheir} pets!
 Фуука использует талисман, чтобы вызвать духов своих питомцев!
 
 
@@ -4856,7 +4856,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Кукла подавлена.
 - Freed Doll
 Освобожденная кукла
-- The doll returns to her place.
+- The doll returns to ${Etheir} place.
 Кукла возвращается на свое место.
 
 
@@ -4864,11 +4864,11 @@ EnemyName пытается сковать вас, но вы сопротивля
 Авантюристка в Оболочке
 - The encased adventurer loses hope.
 Авантюристка в Оболочке теряет надежду.
-- The encased adventurer moans as she throws herself against you for help! (DamageTaken)
+- The encased adventurer moans as ${Ethey} throw${Es} ${Ethem}self against you for help! (DamageTaken)
 Авантюристка в Оболочке стонет, бросаясь к вам за помощью! (DamageTaken)
-- The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)
+- The encased adventurer sticks to you as ${Ethey} mumble${Es} incoherently! (DamageTaken)
 Авантюристка в Оболочке прилипает к вам, что-то бессвязно бормоча! (DamageTaken)
-- The encased adventurer pleads for help as her slime spreads to you! (+RestraintAdded)
+- The encased adventurer pleads for help as ${Etheir} slime spreads to you! (+RestraintAdded)
 Авантюристка в Оболочке умоляет о помощи, а в это время слизь с неё перекидывается на вас! (+RestraintAdded)
 
 
@@ -5186,7 +5186,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Rope Witch
 Верёвочная ведьма
-- The rope witch retreats as her animated ropes chase her.
+- The rope witch retreats as ${Etheir} animated ropes chase ${Etheir}.
 Веревочная ведьма отступает, а её оживлённые веревки начинают преследовать ее саму.
 
 
@@ -5228,7 +5228,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Ученица ведьмы создает на вас магические оковы! (+RestraintAdded)
 - The witch's apprentice smiles and summons a lock onto you! (DamageTaken)
 Ученица ведьмы улыбается и призывает прямо на вас замок! (DamageTaken)
-- The witch's apprentice smiles as she squeezes your chest! (DamageTaken)
+- The witch's apprentice smiles as ${Ethey} squeeze${Es} your chest! (DamageTaken)
 Ученица ведьмы улыбается, сжимая вашу грудь! (DamageTaken)
 
 
@@ -5268,7 +5268,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Ведьма слизи
 - The slime witch vanishes into a pool of pink slime, leaving behind a keyring.
 Ведьма слизи исчезает в луже розовой слизи, оставляя после себя связку ключей.
-- The witch touches her with her sticky grasp! (+RestraintAdded)
+- The witch touches ${Etheir} with ${Etheir} sticky grasp! (+RestraintAdded)
 Ведьма прикасается к вам своими липкими ладонями! (+RestraintAdded)
 - The witch creates a magical lock made of hardened latex! (DamageTaken)
 Ведьма создает волшебный замок из затвердевшего латекса! (DamageTaken)
@@ -5284,7 +5284,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Волшебница застегивает ошейник на вашей шее! (+RestraintAdded)
 - The wizard clips a lock to your restraints! (DamageTaken)
 Волшебница защелкивает замок на ваших ограничителях! (DamageTaken)
-- The wizard laughs maniacally as she tickles you! (DamageTaken)
+- The wizard laughs maniacally as ${Ethey} tickle${Es} you! (DamageTaken)
 Волшебница безумно смеется, щекоча вас! (DamageTaken)
 
 
@@ -5296,7 +5296,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Заражённая спорами застегивает ошейник на вашей шее! (+RestraintAdded)
 - The fun-gal produces a magical lock on all your restraints! (DamageTaken)
 Заражённая спорами создаете волшебные замки на всех ваших ограничителях! (DamageTaken)
-- The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
+- The fun-gal rubs your chest with ${Etheir} long, slender fingers! (DamageTaken)
 Заражённая спорами трёт вашу грудь своими длинными, тонкими пальцами! (DamageTaken)
 - Crystal Slash
 Кристальный удар
@@ -5360,7 +5360,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Портниха
 - The dressmaker storms out in a rage.
 Портниха убегает со всех ног.
-- The dressmaker has you try on one of her new accessories! (+RestraintAdded)
+- The dressmaker has you try on one of ${Etheir} new accessories! (+RestraintAdded)
 Портниха заставляет вас примерить один из ее новых аксессуаров! (+RestraintAdded)
 - The dressmaker adds a lock 'just to complete the look, you know?'
 Портниха добавляет замок 'просто для завершения образа, понимаешь?'
@@ -5384,9 +5384,9 @@ EnemyName пытается сковать вас, но вы сопротивля
 Библиотекарь
 - The librarian gets angry and retreats.
 Библиотекарь сердится и отступает.
-- The librarian shushes you as she brandishes a restraint! (+RestraintAdded)
+- The librarian shushes you as ${Ethey} brandish${Ees} a restraint! (+RestraintAdded)
 Библиотекарь шикает на вас, размахивая ограничителем! (+RestraintAdded)
-- The librarian snaps her fingers and sends a lock flying at you!
+- The librarian snaps ${Etheir} fingers and sends a lock flying at you!
 Библиотекарь щелкает пальцем, и в вас летит замок!
 - The librarian whispers seductively into your ear! (DamageTaken)
 Библиотекарь соблазнительно шепчет что-то вам на ухо! (DamageTaken)
@@ -5446,7 +5446,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Jailer
 Тюремщица
-- The jailer passes out and drops her possessions!
+- The jailer passes out and drops ${Etheir} possessions!
 Тюремщица теряет сознание и роняет свои вещи!
 - The jailer locks your restraints!
 Тюремщица запирает ваши ограничители!
@@ -5462,7 +5462,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 
 - Guard
 Охранница
-- The guard passes out and drops her possessions!
+- The guard passes out and drops ${Etheir} possessions!
 Охранница теряет сознание и роняет свои вещи!
 - The guard locks your restraints!
 Охранница запирает ваши ограничители!
@@ -5478,7 +5478,7 @@ EnemyName пытается сковать вас, но вы сопротивля
 Вооруженная охранница отступает, но теряет связку ключей!
 - The guard shocks you and slaps on some restraints! (+RestraintAdded)
 Охранница бьёт вас электрошокером вас и надевает несколько ограничителей! (+RestraintAdded)
-- The guard shocks you with her taser!!!
+- The guard shocks you with ${Etheir} taser!!!
 Охранница бьёт вас своим электрошокером!!!
 
 
@@ -5544,7 +5544,7 @@ EnemyName надевает на вас NewRestraintName
 Многочисленные руки падшей авантюристки вцепляются в вас! (+RestraintAdded)
 - The corrupted aventurer clicks a lock on from behind you! (DamageTaken)
 Падшая авантюриста защелкивает замок за вашей спиной! (DamageTaken)
-- The corrupted adventurer drags her chilling fingers across your vulnerable skin! (DamageTaken)
+- The corrupted adventurer drags ${Etheir} chilling fingers across your vulnerable skin! (DamageTaken)
 Падшая авантюристка проводит своими леденящими пальцами по вашей уязвимой коже! (DamageTaken)
 
 
@@ -5628,9 +5628,9 @@ EnemyName надевает на вас NewRestraintName
 Демон изгнан.
 - The demon places you in dark, glassy restraints. (+RestraintAdded)
 Демон пустоты заключает вас в темные, стеклоподобные оковы. (+RestraintAdded)
-- The demon caresses you gently with her sharp nails! (DamageTaken)
+- The demon caresses you gently with ${Etheir} sharp nails! (DamageTaken)
 Демон нежно поглаживает вас своими острыми ногтями! (DamageTaken)
-- The demon stuns you with her heavy mace! (+STUN)
+- The demon stuns you with ${Etheir} heavy mace! (+STUN)
 Демон оглушает вас своей тяжелой булавой! (+STUN)
 
 
@@ -5710,7 +5710,7 @@ EnemyName надевает на вас NewRestraintName
 
 - Necromancer
 Некромант
-- The necromancer faints. Ironic that she couldn't save herself.
+- The necromancer faints. Ironic that ${Ethey} couldn't save ${Ethem}self.
 Некромант теряет сознание. Ирония судьбы в том, что она может спасти себя.
 - The necromancer locks all of your restraints!
 Некромант запирает все ваши ограничители!
@@ -11063,7 +11063,7 @@ AoE-ловушка на земле, которая наносит 25 цепно�
 Сотворение петсьюта
 - Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool.
 Можно применить только на беспомощных врагов. Превращает их в питомцев, которые следуют за вами и увеличивают ваше пассивное восстановление маны из резерва маны.
-- You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!
+- You conjure an enchanted petsuit which wraps around your target, forcing ${Ethem} to follow you!
 Вы призываете магический костюм домашнего животного, который оборачивается вокруг вашей цели, заставляя ее следовать за вами!
 - You watch in horror as your own creation lunges toward you, binding your hands and feet!
 Вы в ужасе наблюдаете, как ваше собственное творение бросается на вас, связывая вас по рукам и ногам!
@@ -11309,7 +11309,7 @@ AoE-ловушка на земле, которая наносит 25 цепно�
 Вы произносите командное слово!
 - None of the locks you are wearing respond to your magic.
 Ни один из замков, которые вы носите, не поддается вашей магии.
-- You can't help her with this.
+- You can't help ${Ethem} with this.
 Вы не можете помочь ей этим.
 - You must target yourself, an enemy, or a locked object.
 Вы должны нацелиться на себя, врага или заблокированный объект.
@@ -11453,7 +11453,7 @@ AoE-ловушка на земле, которая наносит 25 цепно�
 
 - The EnemyName gains increased physical armor!
 EnemyName получает увеличение физической брони!
-- The EnemyName buffs the physical armor of her allies!
+- The EnemyName buffs the physical armor of ${Ptheir} allies!
 EnemyName усиливает физическую броню своих союзников!
 - The EnemyName deploys an energy shield to allies!
 EnemyName накладывает энергетический щит на союзников!
@@ -11835,7 +11835,7 @@ EnemyName использует светящийся талисман, чтобы
 Облако замков и цепей гремит, левитируя к вам!
 - A huge cloud of locks and chains clatters as it levitates toward you!
 Огромное облако замков и цепей гремит, левитируя к вам!
-- Floating hands appear by the conjurer's side as she points her staff!
+- Floating hands appear by the conjurer's side as ${Pthey} point${Ps} ${Ptheir} staff!
 Парящие руки появляются рядом с призывательницей, когда она направляет свой посох!
 
 
@@ -12795,13 +12795,13 @@ EnemyName дистанционно заставляет ваши игрушки 
 Призрак: Хорошая рабыня не разговаривает, пока к ней не обратятся.
 - Ghost: Aww, so helpless~
 Призрак: Оу, такая беспомощная~
-- Ghost: Trussed up like a good girl~
+- Ghost: Trussed up like a good ${Psub}~
 Призрак: Связан, как хорошая девочка~
 - Ghost: You're going to stay that way for a good while.
 Призрак: Ты будешь оставаться такой еще долгое время.
 - Ghost: I love watching you hop around, it's funny!
 Призрак: Мне нравится смотреть, как ты прыгаешь, это забавно!
-- Ghost: Just sit there like a good girl~
+- Ghost: Just sit there like a good ${Psub}~
 Призрак: Просто сиди здесь, как хорошая девочка~
 - Ghost: I want to see you kneel~
 Призрак: Я хочу увидеть, как ты встанешь на колени~
@@ -12977,17 +12977,17 @@ EnemyName дистанционно заставляет ваши игрушки 
 
 - I hope you learned your lesson. Now get your butt out of here.
 Я надеюсь, ты усвоила свой урок. А теперь убирай свою задницу отсюда.
-- You've been a good girl. I hope you don't make the same mistake again. You can leave.
+- You've been a good ${Psub}. I hope you don't make the same mistake again. You can leave.
 Ты была хорошей девочкой. Я надеюсь, ты больше не совершишь ту же ошибку. Ты можешь уходить.
-- That's a good girl. Now behave yourself, okay? You're free to go.
+- That's a good ${Psub}. Now behave yourself, okay? You're free to go.
 Ты хорошая девочка. Так что теперь веди себя хорошо, ладно? Ты можешь идти.
 ### Looks like you got yourself in a bind! (she pats your butt playfully) Go make the others happy!
 
 ### I hope you learned your lesson.|Now get your butt out of here.
 
-### You've been a good girl. I hope you don't make the same mistake again.|You can leave.
+### You've been a good ${Psub}. I hope you don't make the same mistake again.|You can leave.
 
-### That's a good girl. Now behave yourself, okay?|You're free to go.
+### That's a good ${Psub}. Now behave yourself, okay?|You're free to go.
 
 ### Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!
 
@@ -13031,7 +13031,7 @@ EnemyName запирает ваш RestraintName на LockType!
 
 - Got yourself in trouble, eh?
 Вляпалась в неприятности, а?
-- Looks like you're shaping up to be a good girl~
+- Looks like you're shaping up to be a good ${Psub}~
 Похоже, ты становишься хорошей девочкой~
 - Oh! Looks like I've made a mistake...
 О! Похоже, я допустил ошибку...
@@ -13919,7 +13919,7 @@ EnemyName умудряется убежать с вашими вещами!
 Поймай меня, если сможешь!
 - I've been naughty, looks like I need to be punished...
 Я была непослушной, похоже, меня нужно наказать...
-- I've been a bad girl, won't you do something about it?
+- I've been a bad ${Esub}, won't you do something about it?
 Я была плохой девочкой, неужели ты ничего не сделаешь с этим?
 - Mmmph... maybe I talk too much...
 Хммм... может быть, я слишком много болтаю...
@@ -14247,7 +14247,7 @@ EnemyName умудряется убежать с вашими вещами!
 Похоже, ты нашла мои ключи! Отдай их мне.
 - Alert!
 Тревога!
-- You look like a good girl. Come on~
+- You look like a good ${Psub}. Come on~
 Ты выглядишь хорошей девочкой. Иди сюда~
 - Come here, let's play!
 Иди сюда, давай поиграем!
@@ -14965,7 +14965,7 @@ SPL экипирован.
 Убери от меня свои грязные лапы!
 - Your chances of winning are... less than zero.
 Твои шансы на победу равны... меньше нуля.
-- Good girls don't use magic without permission.
+- Good ${Psub}s don't use magic without permission.
 Хорошие девочки не пользуются магией без разрешения.
 - Keep that magic away from my experiments!
 Держи эту магию подальше от моих экспериментов!
@@ -16109,7 +16109,7 @@ SPL! Нет, подожди, только не так!
 Похоже, ты ржавая как железяка. Ты что, никогда не проходила подготовку по побегу?
 - I'm going to have some fun with you~
 Я собираюсь немного повеселиться с тобой~
-- Watch yourself, girl~
+- Watch yourself, ${Psub}~
 Следи за собой, девочка~
 - Nice find. I'll take it.
 Хорошая находка. Я возьму это.
@@ -16217,7 +16217,7 @@ SPL! Нет, подожди, только не так!
 Остановись!
 - It'll take you quite a while to pay off those damages!
 Тебе потребуется немало времени, чтобы возместить этот ущерб!
-- Now there, good girl!
+- Now there, good ${Psub}!
 Ну вот, умница!
 - Wrong move!
 Неверный ход!
@@ -16267,11 +16267,11 @@ PTRN, партнер Невермера. Вот моя визитка.
 Разве ты не гналась за мной?
 - I've got somethin nice for ya.
 У меня есть для тебя кое-что приятное.
-- Be a good girl for me, will ya?
+- Be a good ${Psub} for me, will ya?
 Будь хорошей девочкой ради меня, ладно?
 - You need to show some restraint.
 Тебе нужно показать несколько ограничителей.
-- Stay where you belong, you naughty girl.
+- Stay where you belong, you naughty ${Psub}.
 Оставайся где приказано, непослушная девчонка.
 - Let's go somewhere more private.
 Давай пойдем в более уединенное место.
@@ -16915,13 +16915,13 @@ SPL! Теперь ты узришь мой гнев!
 Попробуй выбраться из этого!
 - Who am I? You beings may call me PTRN.
 Кто я? Вы, существа, можете называть меня PTRN.
-- She thinks she can beat us~
+- ${PThey} thinks ${Pthey} can beat us~
 Она думает, что может победить нас~
 - No one will save you.
 Никто тебя не спасет.
 - Come and accept your fate.
 Подойди и прими свою судьбу.
-- An unruly subject. She needs training.
+- An unruly subject. ${PThey} need${Ps} training.
 Какая непослушная. Она нуждается в обучении.
 - You should consider your actions and their consequences~
 Тебе следует обдумывать свои действия и их последствия~
@@ -17135,7 +17135,7 @@ SPL! Теперь ты узришь мой гнев!
 Пришло время для твоей тренировки.
 - You need to be taught some manners, maid.
 Тебя нужно научить хорошим манерам, горничная.
-- Good girl. I'll take that to the storage room.
+- Good ${Psub}. I'll take that to the storage room.
 Хорошая девочка. Я отнесу это в кладовку.
 - I'll be taking those.
 Я возьму это.
@@ -17219,7 +17219,7 @@ SPL! Теперь ты узришь мой гнев!
 Вы не потренируете меня, мисс?
 - I've been a bad girl...
 Я была плохой девочкой...
-- Miss, your uniform is dirty...
+- ${PHonor}, your uniform is dirty...
 Мисс, ваша униформа грязная...
 - Why hello miss...
 О, здравствуйте, мисс...
@@ -17241,13 +17241,13 @@ SPL! Теперь ты узришь мой гнев!
 Кто вы такая?!
 - Oh no!
 О нет!
-- Miss! You're not allowed to cast that!
+- ${PHonor}! You're not allowed to cast that!
 Мисс! Вам не разрешается использовать это!
-- Miss, I have to report that!
+- ${PHonor}, I have to report that!
 Мисс, я должна сообщить об этом!
 - Eeep!
 Ииип!
-- Miss, that's reserved for the head maid!
+- ${PHonor}, that's reserved for the head maid!
 Мисс, это зарезервировано для старшей горничной!
 - Thief! I'm reporting this!
 Вор! Я доложу об этом!
@@ -17369,7 +17369,7 @@ SPL! Теперь ты узришь мой гнев!
 Пойдем со мной. Я буду обучать тебя лично.
 - You need to work on your ladylike manners.
 Тебе нужно поработать над своими женственными манерами.
-- Good girl, finding lost items.
+- Good ${Psub}, finding lost items.
 Хорошая девочка, находит потерянные вещи.
 - I do not give you permmission to leave.
 Я не давала тебе разрешения уходить.
@@ -17423,7 +17423,7 @@ SPL! Теперь ты узришь мой гнев!
 Я буду нежной, обещаю~
 - Know your place, dear~
 Знай свое место, дорогая~
-- Good girls keep their hands to themselves.
+- Good ${Psub}s keep their hands to themselves.
 Хорошие девочки держат свои руки при себе.
 - You broke the rules, now you'll face the consequences.
 Ты нарушила правила, теперь тебе придется столкнуться с последствиями.
@@ -17617,7 +17617,7 @@ SPL! Теперь ты узришь мой гнев!
 Моя хозяйка велела мне хорошо провести с тобой время...
 - Hehe, having fun?
 Хе-хе, развлекаешься?
-- Miss, won't you come?
+- ${PHonor}, won't you come?
 Мисс, вы не 'придёте'?
 - Hey, you're free to play, right~?
 Эй, ты ведь можешь свободно играть, верно~?
@@ -17973,15 +17973,15 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER склоняет голову)|Верно, извиняюсь.
 - (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
 (SPEAKER густо краснеет)|Я... Я извиняюсь! Пожалуйста, продолжай...
-- (The SPEAKER smiles)|Keep up the good work, girl.
+- (The SPEAKER smiles)|Keep up the good work, ${Psub}.
 (SPEAKER улыбается)|Продолжай в том же духе, девочка.
 - (The SPEAKER beeps)|Vital signs indicate honesty. Carry on.
 (SPEAKER пищит)|Жизненные показатели указывают на честность. Продолжай.
 
 
-- (The SPEAKER smiles)|Good girl.
+- (The SPEAKER smiles)|Good ${Psub}.
 (SPEAKER улыбается)|Хорошая девочка.
-- (The SPEAKER smiles)|That's a good girl.
+- (The SPEAKER smiles)|That's a good ${Psub}.
 (SPEAKER улыбается)|Вот это хорошая девочка.
 - (The SPEAKER smiles)|Thank you.
 (SPEAKER улыбается)|Спасибо тебе.
@@ -18007,7 +18007,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER подходит к вам)|Обнаружена контрабанда. Инициирование конфискации.|Пожалуйста, подчинитесь.
 - (The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
 (SPEAKER краснеет)|Ммм, мисс, я вижу, у тебя там оружие,|не могла бы ты его передать мне?
-- (The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
+- (The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?
 (SPEAKER улыбается вам)|Может будешь хорошей девочкой,|и отдашь оружие?
 - (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
 (SPEAKER ухмыляется и хрустит костяшками пальцев)|Ты собираешься им с кем-нибудь драться?|Или ты отдашь его?
@@ -18083,7 +18083,7 @@ SPL! Теперь ты узришь мой гнев!
 Выпустите меня сейчас же!
 - (Scream into your gag uselessly)
 (Беспомощно кричать в свой кляп)
-- I will be a good girl!
+- I will be a good ${Psub}!
 Я буду хорошей девочкой!
 - (Giggle and wiggle your body)
 (Хихикать и покачивать всем телом)
@@ -18091,11 +18091,11 @@ SPL! Теперь ты узришь мой гнев!
 
 
 
-- (The SPEAKER approaches you in your cell)|Back again, are we? Silly girl.|You know we don't take no for an answer.
+- (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You know we don't take no for an answer.
 (SPEAKER подходит к вам в вашей камере)|Мы снова вернулись, не так ли? Глупая девчонка.|Ты же знаешь, мы не принимаем 'нет' в качестве ответа.
 
 
-- (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(She leaves and returns with some toys...)|Now hold still!
+- (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
 (SPEAKER улыбается в ответ)|О, для тебя это игра?|Тогда, возможно, мне следует сделать так, чтобы тебе было веселее...|(Она уходит и возвращается с какими-то игрушками...)|А теперь стой смирно!
 - (The SPEAKER frowns)|I know exactly what you need...
 (SPEAKER хмурится)|Я точно знаю, что тебе нужно...
@@ -18239,7 +18239,7 @@ SPL! Теперь ты узришь мой гнев!
 
 
 
-- (The SPEAKER smiles as she hides her hands behind her back)|Have you heard of 'sensory deprivation'?
+- (The SPEAKER smiles as ${Ethey} hide${Es} her hands behind her back)|Have you heard of 'sensory deprivation'?
 (SPEAKER улыбается, пряча руки за спину)|Ты слышала о 'сенсорной депривации'?
 - (The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!
 (SPEAKER демонстрирует RESTRAINT)|Что ж, у меня есть как раз то, что тебе нужно!|Красивый и удобный, а еще есть встроенные наушники!
@@ -18285,9 +18285,9 @@ SPL! Теперь ты узришь мой гнев!
 
 - (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
 (SPEAKER улыбается и хитро смотрит на вас сверху вниз)|Привет, у меня есть для тебя 'работенка'!
-- (The SPEAKER takes a duster gag from her satchel)|Such a good girl!|So here's what I have for you~|It's a special tool to help keep the place clean.
+- (The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
 (SPEAKER достает кляп с метелкой своей сумки)|Какая хорошая девочка!|Смотри, что у меня есть для тебя~|Это специальный инструмент, помогающий поддерживать чистоту.
-- (The SPEAKER grins)|I'm glad we could come to an understanding~|(She takes out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+- (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
 (SPEAKER ухмыляется)|Я рада, что мы смогли прийти к взаимопониманию~|(Она достает тряпку для кляп-метелку из своей сумки)|Итак, здесь очень грязно.|Почему бы тебе не надеть эту штучку и не помочь нам?
 - (The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
 (SPEAKER хмурится)|Ладно.|Возможно, тебе следует пересмотреть свой жизненный выбор~
@@ -18295,11 +18295,11 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER пожимает плечами)|Я найду кого-нибудь другого...
 - (The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(She pulls out a duster gag from her satchel and grins)
 (SPEAKER протягивает руку, чтобы схватить вас)|Ну, ну,|ты не должна пренебрегать своими обязанностями~|(Она достает кляп-метелку из своей сумки и улыбается)
-- (The SPEAKER smiles)|Don't be afraid!|(She turns the gag with the round mouth ball clearly visible)|Now open up...
+- (The SPEAKER smiles)|Don't be afraid!|(${EThey} turn${Es} the gag with the round mouth ball clearly visible)|Now open up...
 (SPEAKER улыбается)|Не бойся!|(Она поворачивает кляп так, чтобы был хорошо виден круглый шарик для рта)|Теперь открой...
 - (The SPEAKER shrugs)|Fine, I'll get someone else to clean up.
 (SPEAKER пожимает плечами)|Хорошо, я попрошу прибраться кого-нибудь другого.
-- (The SPEAKER places the gag in your mouth)|(She then buckles up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
+- (The SPEAKER places the gag in your mouth)|(${EThey} then buckle${Es} up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
 (SPEAKER вставляет кляп вам в рот)|(Затем она застегивает ремни.)|(Вы чувствуете, как запирающий механизм туго натягивает ремни...)|Хорошая горничная!
 - (The SPEAKER catches you and forces the gag on you)|(You feel it tighten as it locks on securely...)|I don't want to hear it!|Now go and do your job~
 (SPEAKER ловит вас и затыкает вам рот кляпом)|(Вы чувствуете, как он затягивается, очень надежно фиксируясь...)|Я не хочу слышать подобного!|А теперь иди и делай свою работу~
@@ -18331,7 +18331,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER держит в руках RESTRAINT)|Я нашла это рядом со старыми доспехами.|Я думаю, это шлем или что-то в этом роде...
 - (The SPEAKER winks and locks it on)|I feel much safer already~
 (SPEAKER подмигивает и запирает замок)|Я уже чувствую себя в гораздо большей безопасности~
-- (The SPEAKER pouts)|Aww, spoilsport!|(She returns to fighting her imaginary enemies)
+- (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting her imaginary enemies)
 (SPEAKER надувает губки)|О-о-о, обломщица!|(Она возвращается к борьбе со своими воображаемыми врагами)
 - (The SPEAKER shrugs)|Your loss~
 (SPEAKER пожимает плечами)|Твоя потеря~
@@ -18519,7 +18519,7 @@ SPL! Теперь ты узришь мой гнев!
 
 - (An excited SPEAKER turns to you)|Eureka, I've done it!|Do you want to see?
 (Взволнованная SPEAKER поворачивается к вам)|Эврика, я сделала это!|Ты хочешь посмотреть?
-- (The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(She holds out the container)
+- (The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(${EThey} hold${Es} out the container)
 (SPEAKER достает герметичную колбу)|Смотри! Газообразная форма латекса!|Я покрыла внутреннюю поверхность слоем инертной слизи, чтобы добиться целостности структуры.|Вот, взгляни!|(Она протягивает колбу)
 - (The flask springs a leak)|Oh no! That wasn't supposed to happen!|(The gas crystalizes into a RESTRAINT across your body)
 (Колба дает течь)|О, нет! Этого не должно было случиться!|(Газ кристаллизуется, образуя RESTRAINT на вашем теле)
@@ -18527,11 +18527,11 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER смеется)|Вы увидите... вы все увидите!
 - (The SPEAKER sighs)|So hard to find good help out here...
 (SPEAKER вздыхает)|Здесь так трудно найти хороших помощников...
-- (The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(She unscrews the cap)
+- (The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(${EThey} unscrew${Es} the cap)
 (SPEAKER хмурится)|Что, ты сомневаешься в моих результатах? Убедись сама!|(Она отвинчивает крышку)
 - (The green gas starts leaking)|Oh no! It wasn't supposed to do that!
 (Зеленый газ начинает вытекать)|О нет! Всё должно было быть не так!
-- (You push her out of the way, but she frowns)|Hmph. This is your fault.
+- (You push her out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
 (Вы отталкиваете ее с дороги, но она лишь хмурится)|Хмпф. Это твоя вина.
 - (You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
 (Вы отталкиваете ее с дороги, но сами попадаете в облако)|(Газ кристаллизуется, образуя RESTRAINT на вашем теле)|О нет, это могла бы быть я!
@@ -18657,7 +18657,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER изящно жестикулирует в вашем направлении)|Так приятно видеть дружелюбное лицо~|Хочешь посмотреть кое-какие эльфийские товары?
 - (The SPEAKER holds up a RESTRAINT)|These are some of our strictest.|Want to try?
 (SPEAKER держит в руках RESTRAINT)|Это один из наших самых строгих.|Хочешь попробовать?
-- (The SPEAKER smiles sweetly)|Such a good girl~|(The RESTRAINT locks with a loud click)
+- (The SPEAKER smiles sweetly)|Such a good ${Psub}~|(The RESTRAINT locks with a loud click)
 (SPEAKER мило улыбается)|Такая хорошая девочка~|(RESTRAINT защелкивается с громким щелчком)
 - (The SPEAKER sagely nods)|As you wish~
 (SPEAKER глубокомысленно кивает)|Как пожелаешь~
@@ -18701,7 +18701,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER играет с серебристой веревкой)|Хм, мне нужно больше практиковаться.|Могу я попробовать на тебе?
 - (The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~
 (SPEAKER счастливо улыбается)|Спасибо тебе, девочка~|Тогда я свяжу тебя RESTRAINT~
-- (The SPEAKER binds you tightly)|(The rope is tight, and she's clearly an expert.)|Mmm, not too bad~
+- (The SPEAKER binds you tightly)|(The rope is tight, and ${Etheyre} clearly an expert.)|Mmm, not too bad~
 (SPEAKER крепко связывает вас)|(Веревка очень тугая, она явно профессионал)|Ммм, не так уж плохо~
 - (The SPEAKER pouts indignantly)|Why say yes then?!|(The SPEAKER walks off grumbling)
 (SPEAKER возмущенно надувает губы)|Зачем тогда говорить 'да'?!|(Разочарованная SPEAKER уходит)
@@ -18711,11 +18711,11 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER возмущенно надувает губы)|О нет, так просто ты не отделаешься.|Ты сказала, что поможешь!
 - (The SPEAKER smirks)|Ooh, a chance to practice against resistance~|I can't pass that up!
 (SPEAKER ухмыляется)|О, шанс попрактиковаться на сопротивляющейся~| Я не могу его упустить!
-- (The SPEAKER can't keep the knots tight)|(Eventually, she gives up)|S-Stupid human...
+- (The SPEAKER can't keep the knots tight)|(Eventually, ${Ethey} give${Es} up)|S-Stupid human...
 (SPEAKER не может туго завязать узлы)|(В конце концов, она сдается)|Г-глупый человечишка...
-- (The SPEAKER strictly ties you up)|(You can feel she's done this many times)|(She smirks at you as she departs)
+- (The SPEAKER strictly ties you up)|(You can feel ${Etheyve} done this many times)|(${EThey} smirk${Es} at you as ${Ethey} depart${Es})
 (SPEAKER туго вас связывает)|(Вы можешь почувствовать, что она делала это много раз)|(Она ухмыляется вам, уходя)
-- (The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(She makes a face at you as she leaves)
+- (The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(${EThey} make${Es} a face at you as ${Ethey} leave${Es})
 (SPEAKER туго вас связывает)|(Все узлы очень тугие, нет ни одного некачественного!)|(Она корчит тебе рожу, уходя)
 
 
@@ -18751,11 +18751,11 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER выглядит сердитой)|Эй! ЭЙ! Я разговариваю с... |Ах, забудь об этом.
 - (The SPEAKER grins sneakily)|I thought you might say that~|But it wasn't a choice...
 (SPEAKER украдкой усмехается)|Я так и думала, что ты это скажешь~|Но у тебя не было выбора...
-- (The SPEAKER follows you)|Not so fast there~|(She blocks your path)
+- (The SPEAKER follows you)|Not so fast there~|(${EThey} block${Es} your path)
 (SPEAKER следует за вами)|Не так быстро~| (Она преграждает вам путь)
 - (The SPEAKER fumbles with the RESTRAINT)|C-Come on, open-|(You quickly walk away)
 (SPEAKER возится с RESTRAINT)|Д-Давай, открывайся-|(Вы быстро ускользаете)
-- (The SPEAKER adds the RESTRAINT)|Good luck with that one~|(She sounds like she's gloating...)
+- (The SPEAKER adds the RESTRAINT)|Good luck with that one~|(${EThey} sound${Es} like ${Etheyre} gloating...)
 (SPEAKER использует RESTRAINT)|Удачи с этой штучкой~|(Звучит так, будто она злорадствует...)
 - (The SPEAKER roughly forces you down)|(Pushing your head down, the RESTRAINT slides on)|(The SPEAKER tugs your hair, then walks away)
 (SPEAKER грубо прижимает вас к земле)|(Опускает вашу голову, и надевает RESTRAINT)|(SPEAKER дергает вас за волосы, а затем уходит)
@@ -18841,7 +18841,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER сглатывает)|М-Может быть, тогда я этого не сделаю!
 - (The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?
 (SPEAKER использует RESTRAINT)|Ты краснеешь, дорогая~|Она слишком сильно протестует?
-- (The SPEAKER giggles as she catches you and slaps on the cuffs)|No so fast, dear~
+- (The SPEAKER giggles as ${Ethey} catch${Ees} you and slaps on the cuffs)|No so fast, dear~
 (SPEAKER хихикает, когда она ловит тебя и надевает наручники)|Не так быстро, дорогая~
 
 
@@ -18921,11 +18921,11 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER кивает)|Я так не думала~| О, и, э-э, извини за столкновение.
 - (The SPEAKER shakes her head)|You don't get off that lightly.|These are going on.
 (SPEAKER качает головой)|Так легко ты не отделаешься.|Начнём.
-- (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(She holds up a RESTRAINT)
+- (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(${EThey} hold${Es} up a RESTRAINT)
 (SPEAKER хмурится)|Я думаю, мне следует это сделать.|Ты можешь побеспокоить кого-нибудь другого.|(Она поднимает RESTRAINT)
 - (The SPEAKER sighs)|I'll let you off then.|Oh, and, uh, sorry for the bump.
 (SPEAKER вздыхает)|Тогда я тебя отпущу.| О, и, э-э, извини за столкновение.
-- (The SPEAKER adds the RESTRAINT)|(As she's locking it, she giggles)|You're really cute actually~
+- (The SPEAKER adds the RESTRAINT)|(As ${Etheyre} locking it, ${Ethey} giggle${Es})|You're really cute actually~
 (SPEAKER применяет RESTRAINT)|(Когда она запирает его, она смеется)|Ты действительно милая~
 - (The SPEAKER stumbles and grimaces)|Ugh! Fine, you can go then.|D-Didn't want to see you tied anyway...
 (SPEAKER спотыкается и гримасничает)|Тьфу! Отлично, тогда ты можешь идти.|В-Все равно я не хотела увидеть тебя связанной...
@@ -19093,7 +19093,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER вздыхает)|Тогда, может быть, в другой раз.
 - (The SPEAKER wraps a long chain around you)|(RESTRAINT hugs your body closely)|(You shiver as the cold metal touches you)
 (SPEAKER обвивает вас длинной цепью)|(RESTRAINT тесно облегает ваше тело)|(Вы дрожите, когда холодный металл касается вашей кожи)
-- (The SPEAKER grins as she binds your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
+- (The SPEAKER grins as ${Ethey} bind${Es} your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
 (SPEAKER ухмыляется, когда связывает ваше тело)|(в вас врезается RESTRAINT)|Наслаждайся, милашка~
 
 
@@ -19167,9 +19167,9 @@ SPL! Теперь ты узришь мой гнев!
 
 - (The SPEAKER walks up to you)|Say, would you be interested in some 'protection?'
 (SPEAKER подходит к вам)|Скажи, тебя заинтересовала бы кое-какая 'защита'?
-- (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(She shows you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
+- (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(${EThey} show${Es} you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
 (SPEAKER улыбается)|Замечательно! Видишь ли, я совсем недавно приобрела один...|(Она демонстрирует вам ослабленный RESTRAINT)|Я не слишком заинтересована в том, чтобы носить его самой,|но я подумала, что он подойдет тебе?
-- (The SPEAKER blushes as she locks the belt around your waist)|I'm enjoying this more than I thought I would~
+- (The SPEAKER blushes as ${Ethey} lock${Es} the belt around your waist)|I'm enjoying this more than I thought I would~
 (SPEAKER краснеет, застегивая ремень на вашей талии)|Мне это понравилось больше, чем я думала~
 - (The SPEAKER smiles)|Enjoy your freedom while it lasts~
 (SPEAKER улыбается)|Наслаждайтесь своей свободой, пока она есть~
@@ -19181,7 +19181,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER злобно улыбается)|А что, если я не спрашивала?
 - (The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~
 (SPEAKER вздыхает)|Я, наверное, найду какую-нибудь другую красотку, которая наденет его~
-- (The SPEAKER blushes as she locks the RESTRAINT onto you)|There we go~
+- (The SPEAKER blushes as ${Ethey} lock${Es} the RESTRAINT onto you)|There we go~
 (SPEAKER краснеет, застегивая на вас RESTRAINT)|Вот и все~
 - (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Whoops! I guess I acted too soon.|Ah well~
 (Когда вы оборачиваетесь, SPEAKER удивляет вас)|(Вы слышите щелчок у себя на поясе)|Упс! Кажется, я поторопилась.|Ну ладно~
@@ -19231,7 +19231,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER сердито хмурится)|Послушай, мы все знаем, как тебе нравится быть скованной~|Сделай одолжение, надень RESTRAINT, хорошо?
 - (The SPEAKER pleads with you)|...point taken. But still!|I'll end up stuck in it for a really long time...
 (SPEAKER умоляет вас)|...аргумент принят. Но все же!|В конечном итоге я застряну в этом на очень долгое время...
-- (The SPEAKER sighs and wears it herself)|(The lock starts glowing brightly...)
+- (The SPEAKER sighs and wears it ${Ethem}self)|(The lock starts glowing brightly...)
 (SPEAKER вздыхает и надевает его сама)|(Замок начинает ярко светиться...)
 - (The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
 (SPEAKER выглядит успокоенной)|Большое тебе спасибо!|Я тебя не забуду!
@@ -19285,13 +19285,13 @@ SPL! Теперь ты узришь мой гнев!
 
 
 
-- (The SPEAKER grins as she sees you)|Hey there sweetie~|I think you'd look good in some ropes!
+- (The SPEAKER grins as ${Ethey} see${Es} you)|Hey there sweetie~|I think you'd look good in some ropes!
 (SPEAKER улыбается, когда видит вам)|Привет, милая~|Я думаю, ты бы хорошо смотрелась в каких-нибудь веревках!
 - (The SPEAKER looks at your bound body)|I've got some more ropes for you, babe!
 (SPEAKER смотрит на ваше связанное тело)|У меня есть еще несколько веревок для тебя, детка!
 - (The SPEAKER smiles)|Okay, hold still while I get you rigged up~
 (SPEAKER улыбается)|Ладно, стой смирно, пока я тебя связываю~
-- (The SPEAKER slaps your butt as she ties the last knot)|All trussed up~
+- (The SPEAKER slaps your butt as ${Ethey} tie${Es} the last knot)|All trussed up~
 (SPEAKER шлепает вас по заднице, завязывая последний узел)|Теперь ты вся в веревках~
 - (The SPEAKER looks disappointed and packs her rope away)
 (SPEAKER выглядит разочарованной и убирает свои веревки)
@@ -19303,7 +19303,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER усмехается)|Но я уже захватила с собой много верёвок~
 - (The SPEAKER frowns)|Suit yourself.
 (SPEAKER хмурится)|По твоему усмотрению.
-- (The SPEAKER smiles)|Good girl~
+- (The SPEAKER smiles)|Good ${Psub}~
 (SPEAKER улыбается)|Хорошая девочка~
 - (The SPEAKER takes you down and trusses you up tightly)|That'll teach you~
 (SPEAKER сбивает вас с ног и крепко связывает)|Это урок для тебя~
@@ -19331,11 +19331,11 @@ SPL! Теперь ты узришь мой гнев!
 
 
 
-- (The SPEAKER perks her ears as she sees you)|You've got a nice body.|I think it'll do better with some training!
+- (The SPEAKER perks her ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
 (SPEAKER навостряет уши, когда видит вас)|У тебя красивое тело.|Я думаю, что с некоторой тренировкой оно станет еще лучше!
 - (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
 (SPEAKER улыбается и протягивает вам бумагу)|Тренировки Невермера - это всегда поиск новых рекрутов!|Я просто попрошу тебя расписаться здесь...
-- (The SPEAKER gets you suited up)|There you go! Now go be a good girl!
+- (The SPEAKER gets you suited up)|There you go! Now go be a good ${Psub}!
 (SPEAKER одевает вас в костюм)|Вот так! А теперь иди и будь хорошей девочкой!
 - (The SPEAKER scoffs)|That's what they all say.
 (SPEAKER усмехается)|То, что они все говорят.
@@ -19375,7 +19375,7 @@ SPL! Теперь ты узришь мой гнев!
 (Покачать головой и нахмуриться) (PERCENT шанс на избежание)
 
 
-- (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
+- (The SPEAKER does a short bow as ${Ethey} see${Es} you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 (SPEAKER отвешивает короткий поклон, когда видит вас)|Приветствую.|Похоже, ты обладаешь качествами, которые мы можем использовать.|Я была бы рада предложить тебе работу...
 - (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
 (SPEAKER коротко улыбается, прежде чем прочистить горло)|Фантастика!|У меня как раз есть форма для тебя, прямо вот здесь...
@@ -19393,7 +19393,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER хмурится)|Ты не поймешь, что тебя поразило.
 - (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
 (SPEAKER улыбается)|Я рада, что ты приняла правильное решение.|Теперь твоей первой задачей будет навести порядок на этом этаже.|Удачи.
-- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
+- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 (SPEAKER внезапно начинает двигаться быстрее, чем вы успеваете среагировать)|(Вы чувствуете, как нога давит вам на спину, и вас прижимают к земле)|(Она надевает на вас форму и туго затягивает ее...)|Я полагаю, тебе потребуется дополнительная тренировка...
 
 
@@ -19413,7 +19413,7 @@ SPL! Теперь ты узришь мой гнев!
 
 
 
-- (The SPEAKER perks her ears as she sees you)|Glory to the blessed kitty!|Are you prepared to join us?
+- (The SPEAKER perks her ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
 (SPEAKER навостряет уши, когда видит вас)|Слава благословенной кошке!|Готова ли ты присоединиться к нам?
 - (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to cats.|And also we own you now.
 (SPEAKER радостно кивает)|Фантастика! Тебе просто нужно согласиться быть милой с кошками.|А еще теперь ты принадлежишь нам.
@@ -19501,7 +19501,7 @@ SPL! Теперь ты узришь мой гнев!
 
 - (The SPEAKER runs up to you)|Wow! You make a fine specimen-er, I mean...|Nice to meet you!
 (SPEAKER подбегает к вам)|Ух ты! Ты прекрасный образец... э-э, я имею в виду...|Рада с тобой познакомиться!
-- (The SPEAKER smiles)|Now, I have something wonderful in store for you.|(She takes out a blue catsuit)|I'd like you to be my assistant!
+- (The SPEAKER smiles)|Now, I have something wonderful in store for you.|(${EThey} take${Es} out a blue catsuit)|I'd like you to be my assistant!
 (SPEAKER улыбается)|А теперь... у меня припасено для тебя кое-что замечательное.|(Она достает синий комбинезон)|Я бы хотела, чтобы ты стала моей помощницей!
 - (The SPEAKER looks excited)|Awesome! Let me help you get in uniform...
 (SPEAKER выглядит взволнованной)|Потрясающе! Позволь мне помочь тебе надеть форму...
@@ -19515,7 +19515,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER хмурится)|Время для тестового запуска!
 - (The SPEAKER looks happy again)|Thank you! I'm super grateful!
 (SPEAKER снова выглядит счастливой)|Спасибо! Я очень благодарна!
-- (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as she breaks a glass vial)|(A suit of blue latex envelops you!)
+- (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
 (SPEAKER наклоняет голову)|Тогда ладно. Ты победила.|(Когда вы уходите, вы слышите 'шучу', и она разбивает стеклянный флакон)|(Вас окутывает костюм из синего латекса!)
 
 
@@ -19559,7 +19559,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER хмурится)|Какое это рабство!|Простой рабыне не позволили бы даже ступить ногой в наше общество.
 - (The SPEAKER frowns)|We will meet again.
 (SPEAKER хмурится)|Мы еще встретимся.
-- (The SPEAKER nods and smiles)|(She decorates your body with 'jewelry')|I am glad you had a change of heart.
+- (The SPEAKER nods and smiles)|(${EThey} decorate${Es} your body with 'jewelry')|I am glad you had a change of heart.
 (SPEAKER кивает и улыбается)|(Она надевает 'украшения' на ваше тело)|Я рада, что ты передумала.
 - (The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur.
 (SPEAKER усмехается)|(Её магия внезапно крепко связывает вас светящимися веревками)|Самонадеянная.
@@ -19647,7 +19647,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER наклоняет голову)|Ха-ха, очень смешно.|Мы оба знаем, что ты не одна из этих... верно?
 - (The SPEAKER frowns and readies for battle)|My instincts were right.
 (SPEAKER хмурится и готовится к бою)|Мои инстинкты говорили правду.
-- (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as she ties you in a strict rope hogtie...)|(She dusts off her hands)|We'll have a talk when you get out of that, okay?
+- (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off her hands)|We'll have a talk when you get out of that, okay?
 (SPEAKER внезапно опрокидывает вас на пол)|(Вы чувствуете чью-то ногу на своей спине, и что вас связываю тугой веревочной кабаньей вязью...)|(Она отряхивает руки)|Мы поговорим, когда ты выберешься из этого, хорошо?
 
 
@@ -19675,9 +19675,9 @@ SPL! Теперь ты узришь мой гнев!
 
 - (The SPEAKER beeps)|Prisoner 74121 identified.|Subject not registered in database.
 (SPEAKER издает звуковой сигнал)|Опознан заключенный 74121.|Субъект не зарегистрирован в базе данных.
-- (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good girl' to enter database.
+- (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good ${Psub}' to enter database.
 (SPEAKER издает звуковой сигнал)|Подтверждение ввода в базу данных.|Скажите 'Я буду хорошей девочкой', чтобы зарегистрироваться в базу данных.
-- (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good girl.
+- (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good ${Psub}.
 (SPEAKER издает звуковой сигнал и активирует механизмы слежения)|(Металлические кабели защелкиваются на вас с тихим звуковым сигналом)|Зарегистрирован заключенный 74121. Хорошая девочка.
 - (The SPEAKER beeps)|Acknowledged. Be warned:|Lost contact with Sections 98, 97, 96, 95...|(The list goes on...)
 (SPEAKER издает звуковой сигнал)|Подтверждено. Предупреждение:|Потеряна связь с секциями 98, 97, 96, 95...|(Перечисление продолжается...)
@@ -19705,13 +19705,13 @@ SPL! Теперь ты узришь мой гнев!
 (Обойти робота)
 
 
-- Prisoner 74121 reporting. I will be a good girl.
+- Prisoner 74121 reporting. I will be a good ${Psub}.
 Докладывает заключенный 74121. Я буду хорошей девочкой.
 - Actually, I am an administrator. (Refuse)
 Вообще-то, я администратор. (Отказаться)
 
 
-- I'm sorry, I will be a good girl!
+- I'm sorry, I will be a good ${Psub}!
 Прости, я буду хорошей девочкой!
 - What? (PERCENT chance to avoid)
 Что? (PERCENT шанс на избежание)
@@ -19857,7 +19857,7 @@ SPL! Теперь ты узришь мой гнев!
 
 
 
-- (The SPEAKER does a short bow as she sees you)|Um... hi!|I have a letter for you...
+- (The SPEAKER does a short bow as ${Ethey} see${Es} you)|Um... hi!|I have a letter for you...
 (SPEAKER отвешивает короткий поклон, когда видит вас)|Эм... привет!|У меня для тебя письмо...
 - (The letter is a contract from the College)|(They want you to sign up as an instructor for apprentices)|(The SPEAKER looks at you nervously.)
 (Письмо - это контракт из колледжа)|(Они хотят, чтобы вы зарегистрировались в качестве инструктора для учеников)| (SPEAKER нервничая смотрит на вас.)
@@ -20009,7 +20009,7 @@ SPL! Теперь ты узришь мой гнев!
 
 
 
-- (The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
+- (The SPEAKER rattles as ${Ethey} wave${Es})|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
 (SPEAKER дрожит, когда она машет рукой)|Привет!|Хочешь приобрести какие-нибудь древние сокровища?|В моем антикварном магазине есть как раз то, что тебе нужно!
 - (The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
 (SPEAKER хрустит костяшками пальцев)|Итак, ты разгадала мою маскировку...
@@ -20041,7 +20041,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER выглядит смущенной)|Я не могу продать вам это, мисс...
 - (The SPEAKER blushes)|Actually, I was saving that for myself...
 (SPEAKER краснеет)|Вообще-то, я приберегала это для себя...
-- (The SPEAKER grins)|Good girls don't need one of those~
+- (The SPEAKER grins)|Good ${Psub}s don't need one of those~
 (SPEAKER ухмыляется)|Хорошим девочкам такое не нужно~
 - (The SPEAKER buzzes)|Error, insufficient access privileges.
 (SPEAKER жужжит)|Ошибка, недостаточно прав доступа.
@@ -20057,7 +20057,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER издает звуковой сигнал)|Недостаточно валюты.
 
 
-- (Look at what she wants to buy)
+- (Look at what ${Ethey} want${Es} to buy)
 (Посмотреть, что она хочет купить)
 - You're giving me everything you have.
 Ты отдашь мне все, что у тебя есть.
@@ -20239,7 +20239,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER откусывает кусочек от пончика)|Немного переборщили с посыпкой...
 - (The SPEAKER blushes)|This is... my new favorite.
 (SPEAKER краснеет)|Это... мой новый фаворит.
-- (The SPEAKER's eyes widen as she wolfs down the golden cookie)|Truly divine...
+- (The SPEAKER's eyes widen as ${Ethey} wolf${Es} down the golden cookie)|Truly divine...
 (Глаза SPEAKER расширяются, когда она с жадностью поглощает золотистое печенье)|Поистине божественно...
 
 
@@ -20269,7 +20269,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER усмехается)|Ого! Это так круто!
 
 
-- (Look at what she has to sell)
+- (Look at what ${Ethey} ${Ehas} to sell)
 (Посмотреть, что она может продать)
 - (Sell Item0 for ItemCost0 gp) (Owned: AMNT0)
 (Продать Item0 за ItemCost0 зол) (Наличие: AMNT0)
@@ -20315,7 +20315,7 @@ SPL! Теперь ты узришь мой гнев!
 (Купить Item9 за ItemCost9 зол) (Наличие: AMNT9)
 
 
-- (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)
+- (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(${EThey} will remain and help you with restraints for 50 turns)
 (SPEAKER появляется во вспышке света)|Я пришел с именем Богини.|Я полагаю, тебе нужна моя помощь?|(Она останется и будет помогать вам с ограничителями в течение 50 ходов)
 - (The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?
 (SPEAKER дает вам два ножа)|Не поранься ими, хорошо?
@@ -20327,7 +20327,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER, похоже, впечатлен вашим затруднительным положением)|Ни один ангел не сможет снять это без божественного благословения.|Может быть, тебе стоит подать заявку на такое? *смешок*
 - (The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!
 (SPEAKER, похоже, впечатлен вашим затруднительным положением)|Я не буду вставать между тобой и твоими квестовыми обязанностями!
-- (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)
+- (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(${EThey} perform${Es} a short prayer and a random divine lock comes off)
 (SPEAKER выглядит впечатленным вашим затруднительным положением)|Поскольку ты благословлена богиней, я могу тебе помочь.|(Она произносит короткую молитву, и случайный божественный замок отщелкивается)
 
 
@@ -20527,7 +20527,7 @@ SPL! Теперь ты узришь мой гнев!
 Разве я не выгляжу довольно привлекательно?
 - (Move closer, attempting to cuddle)
 (Придвигается ближе, пытаясь обнять)
-- (The SPEAKER smiles)|You do, in fact!|(She inches closer)
+- (The SPEAKER smiles)|You do, in fact!|(${EThey} inch${Ees} closer)
 (SPEAKER улыбается)|На самом деле, так оно и есть!|(Она придвигается еще ближе)
 - (The SPEAKER smiles gently)|Aren't you precious~
 (SPEAKER нежно улыбается)|Разве ты не прелесть~
@@ -20720,7 +20720,7 @@ SPL! Теперь ты узришь мой гнев!
 
 - Fuuka
 Фуука
-- Fuuka surrounds herself in defensive talismans!
+- Fuuka surrounds ${Ethem}self in defensive talismans!
 Фуука окружает себя защитными талисманами!
 - Fuuka wraps you tightly in restraints! (+RestraintAdded)
 Фуука обертывает вокруг вас тугие ограничители! (+RestraintAdded)
@@ -20730,19 +20730,19 @@ SPL! Теперь ты узришь мой гнев!
 Фуука щелкает пальцами, и все ваши ограничители запираются! (DamageTaken)
 
 
-- Fuuka surrounds herself in defensive talismans one more time!
+- Fuuka surrounds ${Ethem}self in defensive talismans one more time!
 Фуука еще раз окружает себя защитными талисманами!
 - Fuuka wraps you furiously in restraints! (+RestraintAdded)
 Фуука яростно обертывает вокруг вас ограничители! (+RestraintAdded)
-- Fuuka pouts as she tickles you relentlessly! (DamageTaken)
+- Fuuka pouts as ${Ethey} tickle${Es} you relentlessly! (DamageTaken)
 Фуука надувает губки, безжалостно щекоча вас! (DamageTaken)
 
 
-- (You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?
+- (You find a girl wearing an ornate dress)|(${EThey} glance${Es} at you)|And who might you be?
 (Вы видите девушку в изысканном платье)|(Она бросает на вас взгляд)|И кто же ты такая?
 - I should be asking the same of you.
 Я должна была бы спросить то же самое у тебя.
-- (Growl at her)
+- (Growl at ${Ethem})
 (Рычать на нее)
 - (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
 (Она улыбается)|Меня зовут Фуука, с иероглифами, обозначающими Ветер и Песню.|А ты собираешься представиться?
@@ -20932,13 +20932,13 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER смеется)|Ты не обязана соглашаться, дорогая~
 - I never said I consented to being a pet!
 Я никогда не говорила, что согласна быть питомцем!
-- (Give her a puzzled look and shake your head)
+- (Give ${Ethem} a puzzled look and shake your head)
 (Озадаченно взглянуть на неё и покачать головой)
 - No way!
 Ни за что!
 - (Sigh and shrug)
 (Вздохнуть и пожать плечами)
-- (Attack her without saying anything)
+- (Attack ${Ethem} without saying anything)
 (Напасть на нее, ничего не сказав)
 
 
@@ -21022,7 +21022,7 @@ SPL! Теперь ты узришь мой гнев!
 (Всё равно подчиниться ей)(На вас наденут специальный ошейник)
 - (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
 (SPEAKER сопротивляется, но в конце концов вы засовываете ей в рот кляп)|МММММФХ!
-- (Gag her)
+- (Gag ${Ethem})
 (Заткнуть её кляпом)
 
 
@@ -21100,7 +21100,7 @@ SPL! Теперь ты узришь мой гнев!
 (Продать предметы)
 - (Sell Whole Stacks of Items)
 (Продать целые стопки предметов)
-- Daww! What a cutie!|(She smiles and pats your head gently)
+- Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)
 Ваау! Какая милашка!|(Она улыбается и нежно гладит вас по голове)
 
 
@@ -21174,7 +21174,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER держит RESTRAINTNAME)|У твоих похитителей большой спрос на ограничители повышенной надежности.|Если они поймают тебя, возможно, они увидят мой логотип на этом ошейнике!|Он довольно удобный и надежный,|и чем больше ты будешь его носить, тем более покорной будешь себя чувствовать.
 - (The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
 (SPEAKER держит RESTRAINTNAME)|Твое тело выглядит как большой рекламный щит!|Этот костюм сделает тебя настолько привлекательной, что никто не сможет устоять!|И в процессе, кхм, изучения тебя, они обязательно увидят мой логотип!
-- (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
+- (The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~
 (SPEAKER складывает руки на груди и кивает)|Хорошая девочка! Я знала, что ты во всем признаешься~
 
 
@@ -21186,15 +21186,15 @@ SPL! Теперь ты узришь мой гнев!
 Как насчет чего-нибудь другого?
 
 
-- Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
+- Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
 Превосходно! Пожалуйста, не двигайся~|(Она примеряет на вас RESTRAINTNAME, и печать пробуждается)|Упс! Хорошо, что я это не продала!|Я позволю тебе оставить это себе, в знак дружбы~
-- Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
+- Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
 Превосходно! Пожалуйста, не двигайся~|(Она примеряет на вас RESTRAINTNAME, и ничего не происходит)|У нас есть победитель!|Но ты не получишь это, пока не заплатишь~
-- Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
+- Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(${EThey} place${Es} the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
 Замечательно. Я с нетерпением жду, когда ты доставишь, э-э, вернешься с кучей сокровищ в руках!|(Она надевает на вас RESTRAINTNAME, и печать активируется. Здесь нет замочной скважины.)
-- Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
+- Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
 Хорошо! А теперь замри~|(Она убирает ваши волосы в сторону и застегивает ошейник)|А теперь иди и найди мне какое-нибудь сокровище~
-- You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
+- You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
 Тебе понравится, я гарантирую~|(Она достает комбинезон из ящика, стряхивает с него пыль и помогает вам надеть его)|(В нем нет молнии или застежки, только очень эластичное отверстие для шеи)|(Как только он оказывается надет и расправлен, вы чувствуете, как отверстие на шее затягивается...)|(...и оттянуть резину от вашей кожи становится невозможно)|Красиво. Сейчас я тебя отпущу.|Я уверена, что твой новый образ привлечет множество клиентов!
 
 
@@ -21320,9 +21320,9 @@ SPL! Теперь ты узришь мой гнев!
 Вы закрываете глаза, но вибрации не дают вам задремать...
 
 
-- (A SPEAKER lies hogtied in front of you)|(She looks at you with pleading eyes,)|(and mumbles incoherently through her gag)
+- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through her gag)
 (SPEAKER лежит связанная словно кабанчик прямо перед вами)|(Она смотрит на вас умоляющими глазами)|(и что-то бессвязно бормочет сквозь кляп)
-- (A SPEAKER lies hogtied in front of you)|(She looks at you, mumbling and giggling into her gag)
+- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into her gag)
 (SPEAKER лежит связанная словно кабанчик прямо перед вам)|(Она смотрит на вас, бормоча и хихикая в свой кляп)
 - (SPEAKER looks grateful)|Thank you so much|I shall join your party.
 (SPEAKER выглядит благодарной)|Большое тебе спасибо|я присоединюсь к твоей группе.
@@ -21334,7 +21334,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER стонет и катается по полу, густо краснея)
 - Untie her
 Развязать ее
-- Make sure she is tight and secure
+- Make sure ${Ethey} ${Eis} tight and secure
 Убедиться, что туго и надежно скована
 
 
@@ -21342,7 +21342,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER натыкается на вас, погруженная в свои мысли)|О! Привет!|Скажи, милашка...|Ты не против помочь мне кое-что найти?
 - (The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!
 (SPEAKER прыгает вверх-вниз)|Ах, замечательно!|Я потеряла одно из своих платьев.|Если бы вы могли найти что-нибудь такое, надеть и принести мне, я была бы вам очень признателен! Спасибо!
-- (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(She snaps a photo of you using a magic crystal)
+- (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(${EThey} snap${Es} a photo of you using a magic crystal)
 (SPEAKER смотрит на вас, как бешеное животное)|Ух ты! Ты выглядишь великолепно!|Большое тебе спасибо!|(Она фотографирует тебя с помощью волшебного кристалла)
 - (The SPEAKER giggles)|I never said I'd take it off, did I?
 (SPEAKER смеется)|Я никогда не говорила, что сниму это, не так ли?
@@ -21420,7 +21420,7 @@ SPL! Теперь ты узришь мой гнев!
 Ммммфх? (Изобразить замешательство)
 - (The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System.
 (SPEAKER складывает руки на груди)|Приказы госпожи Ориэль были четкими:|Любой, кто не зарегистрирован в Системе, будет внесен в Систему.
-- (The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure she will have time to speak with you if you want to ask her.
+- (The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure ${Ethey} will have time to speak with you if you want to ask her.
 (SPEAKER на мгновение замолкает, затем говорит)|Я просто выполняю указания госпожи Ориэль.|Я уверена, что у нее найдется время поговорить с тобой,|если ты захочешь её расспросить.
 - But why???
 Но почему???
@@ -21432,7 +21432,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER на мгновение замолкает, а затем отвечает)|Ну, я думаю, всего несколько сотен лет назад?|Это время простоя немного больше, чем обычно,|но мы все терпеливо ждем~
 - When are these orders from?
 Когда поступят эти приказы?
-- (You anger the SPEAKER. She gags you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?
+- (You anger the SPEAKER. ${EThey} gag${Es} you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?
 (Вы разозлили SPEAKER. Она затыкает вас кляпом.)|В отличие от тебя, нас учили не жаловаться на отданные нам приказы.|Так что, пока ты не пройдешь обучение, почему бы тебе не побыть милой тихоней?
 - The facility is in ruins! This is pointless!
 Комплекс в руинах! Это бессмысленно!
@@ -21448,7 +21448,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER сидит, закованная в кандалы повышенной надежности.|Вам нужно будет открыть замок, чтобы вытащить ее.)
 - (You don't have any keys that work on the lock)
 (У вас нет никаких ключей, которые подходили бы к замку)
-- (You can't help her, bound as tightly as you are...)
+- (You can't help ${Ethem}, bound as tightly as you are...)
 (Вы не можете помочь ей, ибо она связана так же крепко, как и вы сами...)
 - (You unlock her, fumbling around for a while with your bound hands)
 (Вы освобождаете её, некоторое время повозившись со связанными руками)
@@ -21456,7 +21456,7 @@ SPL! Теперь ты узришь мой гнев!
 (Вы освобождаете SPEAKER)|Спасибо за спасение!|Было весело, пока это продолжалось...
 - (You unlock the SPEAKER)|Thank you!|Let's get out of here!
 (Вы освобождаете SPEAKER)|Спасибо!|Давай убираться отсюда!
-- (You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+- (You unlock the SPEAKER)|Mmmmph!|(She want${Es} to keep her gag...)
 (Вы освобождаете SPEAKER)|Мммффхх!|(Она хочет сохранить свой кляп при себе...)
 - (You don't have any lockpicks)
 (У вас нет отмычек)
@@ -21466,7 +21466,7 @@ SPL! Теперь ты узришь мой гнев!
 (Вы не сможете вскрыть замок со связанными руками)
 - (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
 (Спустя некоторое время вы освобождаете SPEAKER)|Спасибо!|Давай уходить отсюда!
-- (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
+- (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} her head when you go for her gag...)
 (Спустя некоторое время вы освобождаете SPEAKER)|Мммффх!|(Она качает головой, когда вы тянетесь к её кляпу...)
 - (You don't have enough mana for a command word)
 (У вас недостаточно маны для Командного Слова)
@@ -21474,7 +21474,7 @@ SPL! Теперь ты узришь мой гнев!
 (Как бы вы ни старались, ваш рот слишком плотно заблокирован)
 - (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
 (Вы произносите командное слово, чтобы освободить SPEAKER)|Большое спасибо!|Уходим!
-- (You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+- (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} her gag back on...)
 (Вы произносите командное слово, чтобы освободить SPEAKER)|Ммфффх!|(Она вновь защелкивает свой кляп...)
 - (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
 (SPEAKER сидит, закованная в кандалы повышенной надежности.|Сработал защитный экран, из-за чего помочь ей стало невозможно.)
@@ -21490,7 +21490,7 @@ SPL! Теперь ты узришь мой гнев!
 Приношу свои глубочайшие извинения!
 
 
-- (The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)
+- (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} is bugged and needs your help to get out)
 (SPEAKER сидит, связанная загадочными ASCII символами)|(Она багнулась и нуждается в вашей помощи, чтобы выбраться)
 - (Unlock her and file a bug report to Ada)
 (Отоприте её и отправьте сообщение об ошибке Ada)
@@ -21522,7 +21522,7 @@ SPL! Теперь ты узришь мой гнев!
 Враг нашел вас, пока вы были заняты!
 
 
-- (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
+- (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(${EThey} managed to pick the lock on your cell door)
 (A SPEAKER будит вас, стуча по решетке)|Просыпайся! Давай убираться отсюда!|(Ей удалось взломать замок на двери вашей камеры)
 - (A SPEAKER wakes you up by melting the door with acid)|These guys were a piece of cake.|Now let's discover a way out of here!
 (SPEAKER будит вас, расплавляя дверь кислотой)|Эти ребята оказались полными тюфяками.|А теперь давайте найдем выход отсюда!
@@ -21596,7 +21596,7 @@ SPL! Теперь ты узришь мой гнев!
 Зона не очищена.
 - (Secure NME into the furniture)
 (Запереть NME в устройстве)
-- (You lock her into the furniture so that she stays in place)
+- (You lock her into the furniture so that ${Ethey} stay${Es} in place)
 (Вы заперли её в устройстве, так что она останется здесь)
 
 
@@ -21788,7 +21788,7 @@ FOODMSG|(Приглашаем вас отведать кулинарные из�
 Ловушка для девицы
 
 
-- The ENEMYNAME transforms nearby dolls into her subjects!
+- The ENEMYNAME transforms nearby dolls into ${Ptheir} subjects!
 ENEMYNAME превращает близлежащих кукол в своих подданных!
 
 
@@ -21808,7 +21808,7 @@ ENEMYNAME превращает близлежащих кукол в своих �
 Резиновая Боеголовка
 
 
-- (In the center of the room stands a woman wearing a latex dress)|(Around her are robotic servants, obeying her without a word)|(She has been watching you this entire time)
+- (In the center of the room stands a woman wearing a latex dress)|(Around ${Ethem} are robotic servants, obeying ${Ethem} without a word)|(${EThey} ${Ehas} been watching you this entire time)
 (В центре комнаты стоит женщина в латексном платье)|(Вокруг нее роботы-слуги, подчиняющиеся ей без единого слова)|(Все это время она наблюдала за вами)
 - And who might you be?
 И кем бы вы могли быть?
@@ -21834,11 +21834,11 @@ ENEMYNAME превращает близлежащих кукол в своих �
 Я знаменита!
 - Indeed. And I'm here to bring you down.
 Действительно. И я здесь для того, чтобы победить тебя.
-- (Scoff at her)
+- (Scoff at ${Ethem})
 (Насмехаться над ней)
 
 
-- (The Dollmaker folds her arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
+- (The Dollmaker folds ${Etheir} arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
 (Кукольница складывает руки на груди)|В любом случае, твоё путешествие заканчивается здесь.|Я не одобряю, когда всяие негодницы шныряют по моим владениям.|Я лично поведу тебя к твоему новому будущему в качестве куклы.
 - Do you have the Mistress' Staff?
 У тебя есть Посох Госпожи?
@@ -21846,7 +21846,7 @@ ENEMYNAME превращает близлежащих кукол в своих �
 (Кукольница хихикает)|Эта безделушка?|Так вот чего ты ищешь!|На самом деле, у меня его нет.|Он принадлежит некоему архимагу.
 - Then you are of no use to me.
 Тогда ты мне ни к чему.
-- (The Dollmaker summons a drone to her side)|Such arrogance! I'll have to teach you some manners!
+- (The Dollmaker summons a drone to ${Etheir} side)|Such arrogance! I'll have to teach you some manners!
 (Кукольница подзывает к себе дрона)|Какое высокомерие!Мне придется научить тебя хорошим манерам!
 - What a bother.
 Какое беспокойство.
@@ -21870,7 +21870,7 @@ ENEMYNAME превращает близлежащих кукол в своих �
 Звучит забавно... но мне действительно нужно идти.
 
 
-- (The Dollmaker folds her arms as she walks over)|All tight and shiny!|You'll be my prized possession~
+- (The Dollmaker folds ${Etheir} arms as she walks over)|All tight and shiny!|You'll be my prized possession~
 (Кукольница складывает руки на груди, подходя к вам)|Так туго обтянутая, и такая блестящая!|Ты будешь моей любимой куклой~
 - (The Dollmaker nods)|Already eager to obey!|So beautiful...
 (Кукольница кивает)|Уже готова повиноваться!|Красавица...
@@ -21880,19 +21880,19 @@ ENEMYNAME превращает близлежащих кукол в своих �
 У меня нет другого выбора, кроме как подчиниться.
 - You will never get away with this!
 Тебе это никогда не сойдет с рук!
-- (Sigh and be forced to wear her visor)
+- (Sigh and be forced to wear ${Etheir} visor)
 (Вздохнуть и вынужденно надеть визор)
-- (Sigh and be forced to wear her mask)
+- (Sigh and be forced to wear ${Etheir} mask)
 (Вздохнуть и вынужденно надеть маску)
 - (Sigh and be forced to wear whatever she chooses)
 (Вздохнуть и вынужденно надеть то, что она выберет)
-- (The Dollmaker places her visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them.
+- (The Dollmaker places ${Etheir} visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them.
 (Кукольница закрывает тебе лицо визором)|(Вы чувствуете, как застежки защелкиваются вокруг вашей головы)|А теперь... когда ты в таком виде, у меня есть задание для тебя, куколка.|Видишь ли, некоторые куклы сбежали из моего царства.|Я хочу, чтобы ты пошла и поймала их.
 
 
 - (The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower.
 (Кукольница внезапно телепортируется)|Хммм. Похоже, мне придется использовать свою тяжелую огневую мощь.
-- (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from her back as she storms toward you!)
+- (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as she storms toward you!)
 (Кукольница погружается в лужу слизи и выныривает неподалеку)|(Роботизированные руки вырастают из ее спины, и она несется к вам!)
 
 
@@ -21904,7 +21904,7 @@ ENEMYNAME превращает близлежащих кукол в своих �
 (Надеть Визор Куклы)
 - (Wear a doll mask)
 (Надеть Кукольную Маску)
-- (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into her open mouth and she starts mumbling angrily)
+- (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and she starts mumbling angrily)
 (Вы поднимаете маску кукольницы, открывая лицо надувшейся молодую женщины)|Что ты--|(Вы вставляете кляп в ее открытый рот, и она начинает сердито что-то мямлить)
 
 
@@ -22120,7 +22120,7 @@ ENEMYNAME превращает близлежащих кукол в своих �
 
 - Escaped Doll
 Сбежавшая кукла
-- You return the doll to her rightful owner.
+- You return the doll to ${Etheir} rightful owner.
 Вы возвращаете куклу ее законному владельцу.
 
 
@@ -27635,13 +27635,13 @@ FаshiоnKiguMаskSmilе
 
 - Chef
 Шеф-повар
-- You defeat the chef and claim her prize.
+- You defeat the chef and claim ${Etheir} prize.
 Вы побеждаете шеф-повара и забираете ее приз.
 - The chef makes sure you'll never steal again! (DamageTaken)
 Шеф-повар решает позаботиться о том, чтобы вы больше никогда не воровали! (DamageTaken)
 - The chef makes sure you'll never steal again! (+RestraintAdded)
 Шеф-повар решает позаботиться о том, чтобы вы больше никогда не воровали! (+RestraintAdded)
-- The chef spanks you with her frying pan! (DamageTaken)
+- The chef spanks you with ${Etheir} frying pan! (DamageTaken)
 Шеф-повар шлепает вас своей сковородой! (Нанесен урон)
 
 
@@ -27789,13 +27789,13 @@ FаshiоnKiguMаskSmilе
 Было очень весело!
 - I have to go return you~
 Мне нужно вернуть тебя обратно~
-- Good girl~ Let's go again later~
+- Good ${Psub}~ Let's go again later~
 Хорошая девочка~ Давай прогуляемся еще разок попозже~
 
 
 - It's time for walkies!
 Пришло время для прогулки!
-- That's a good girl!
+- That's a good ${Psub}!
 Хорошая девочка!
 - I want to keep you longer, but I've got things to do.
 Я хочу побыть с тобой подольше, но у меня есть дела.
@@ -28599,9 +28599,9 @@ AMNT Стат.
 Воительница надувает губы и убегает!
 - The fighter knocks you to the ground and binds you! (+RestraintAdded)
 Воительница сбивает вас с ног и связывает! (+RestraintAdded)
-- The fighter strikes you with her weapon! (DamageTaken)
+- The fighter strikes you with ${Etheir} weapon! (DamageTaken)
 Воительница наносит вам удар своим оружием! (DamageTaken)
-- The fighter takes you down with the back of her weapon! (DamageTaken)
+- The fighter takes you down with the back of ${Etheir} weapon! (DamageTaken)
 Воительница сбивает вас с ног тыльной стороной своего оружия! (DamageTaken)
 - The fighter puts you in a hold and manages to slip on a lock! (DamageTaken)
 Воительница берет вас в захват и умудряется защелкнуть замок!
@@ -28613,21 +28613,21 @@ AMNT Стат.
 
 - The fighter moans loudly and rolls around on the floor!
 Воительница громко стонет и катается по полу!
-- The fighter wraps her arms around you with bindings in hand! (+RestraintAdded)
+- The fighter wraps ${Etheir} arms around you with bindings in hand! (+RestraintAdded)
 Воительница обхватывает вас руками, в которых вы замечаете ограничители! (+RestraintAdded)
-- The fighter pins you with her weapon and grabs your breast! (DamageTaken)
+- The fighter pins you with ${Etheir} weapon and grabs your breast! (DamageTaken)
 Воительница прижимает вас своим оружием и хватает за грудь! (DamageTaken)
-- The fighter enchants her weapon and strikes you! (DamageTaken)
+- The fighter enchants ${Etheir} weapon and strikes you! (DamageTaken)
 Воительница зачаровывает свое оружие и атакует вас! (DamageTaken)
-- The fighter smiles lasciviously as she dangles a lock in front of you! (DamageTaken)
+- The fighter smiles lasciviously as ${Ethey} dangle${Es} a lock in front of you! (DamageTaken)
 Воительница похотливо улыбается, размахивая перед вами замочком! (DamageTaken)
-- The fighter enchants her weapon and flies forward!
+- The fighter enchants ${Etheir} weapon and flies forward!
 Воительница зачаровывает свое оружие и бросается вперед!
 
 
-- The fighter drops her weapon and admits defeat!
+- The fighter drops ${Etheir} weapon and admits defeat!
 Воительница бросает свое оружие и признает поражение!
-- The fighter feints and strikes, slapping you with the flat of her blade! (DamageTaken)
+- The fighter feints and strikes, slapping you with the flat of ${Etheir} blade! (DamageTaken)
 Воительница делает финт и наносит удар, поражая вас плоской стороной своего клинка! (DamageTaken)
 - The fighter proudly clicks on a lock! (DamageTaken)
 Воительница гордо щелкает замком! (DamageTaken)
@@ -28635,11 +28635,11 @@ AMNT Стат.
 Воительница ненадолго исчезает и оказывается позади вас!
 
 
-- The fighter falls on her knees and begs!
+- The fighter falls on ${Etheir} knees and begs!
 Воительница падает на колени и умоляет!
 - The fighter throws an enchanted binding ring at you! (+RestraintAdded)
 Воительница бросает в вас зачарованное сковывающее кольцо! (+RestraintAdded)
-- The fighter throws her weapon at you! (DamageTaken)
+- The fighter throws ${Etheir} weapon at you! (DamageTaken)
 Воительница бросает в вас свое оружие! (DamageTaken)
 
 
@@ -29143,7 +29143,7 @@ LKTYP замок защелкивается на одном из ваших ог
 
 - Lab Assistant
 Лаборантка
-- The assistant envelops herself in her own bubble for protection.
+- The assistant envelops ${Ethem}self in ${Etheir} own bubble for protection.
 Лаборантка окутывает себя пузырем для защиты.
 
 
@@ -29153,7 +29153,7 @@ LKTYP замок защелкивается на одном из ваших ог
 
 - Glue Technician
 Специалист по клею
-- The technician trips and glues herself to the floor.
+- The technician trips and glues ${Ethem}self to the floor.
 Специалист по клею спотыкается и приклеивается к полу.
 
 
@@ -29613,7 +29613,7 @@ Yf вашем RestraintName начинают образовываться тре
 Хранительница пламени
 - The flame keeper steps away into a fiery portal.
 Хранительница пламени уходит в огненный портал.
-- The flame keeper grabs you, and volcanic restraints emerge from her armor! (+RestraintAdded)
+- The flame keeper grabs you, and volcanic restraints emerge from ${Etheir} armor! (+RestraintAdded)
 Хранительница пламени хватает вас, и из ее доспехов появляются вулканические ограничители! (+RestraintAdded)
 - The flame keeper locks a restraint!
 Хранительница пламени запирает ограничитель!
@@ -31224,7 +31224,7 @@ ENMY оказывает неожиданное сопротивление, ум�
 
 - Rubber Elemental
 Резиновый элементаль
-- The rubber elemental's restraints snap onto her and she falls over hogtied.
+- The rubber elemental's restraints snap onto ${Ethem} and ${Ethey} fall${Es} over hogtied.
 Ограничители резинового элементаля защелкиваются на ней, и она падает связанная.
 - The rubber elemental molds itself into restraints! (+RestraintAdded)
 Резиновый элементаль сам превращается в ограничители! (+RestraintAdded)
@@ -31298,9 +31298,9 @@ ENMY оказывает неожиданное сопротивление, ум�
 
 - The Timekeeper
 Хранительница времени
-- The Timekeeper releases her grip on the timeline.
+- The Timekeeper releases ${Etheir} grip on the timeline.
 Хранительница времени ослабляет свою хватку на временной шкале.
-- The Timekeeper takes the time to enjoy herself with you... (DamageTaken)
+- The Timekeeper takes the time to enjoy ${Ethem}self with you... (DamageTaken)
 Хранительница времени находит время, чтобы повеселиться с вами... (DamageTaken)
 - The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
 Хранительница времени выносит приговор за нарушение времени! (+RestraintAdded)
@@ -31462,7 +31462,7 @@ ENMY оказывает неожиданное сопротивление, ум�
 Изучить проклятие
 - Remove the Curse
 Снять проклятие
-- Feed this to her
+- Feed this to ${Ethem}
 Скормить это ей
 - Sell for VLU gp
 Продать за VLU зол.
@@ -31510,7 +31510,7 @@ ENMY оказывает неожиданное сопротивление, ум�
 +AMNT зол.
 
 
-- ENMY lets go of herself for AMNT damage!
+- ENMY lets go of ${Ethem}self for AMNT damage!
 ENMY отпускает вас, нанося AMNT урона!
 
 
@@ -31728,11 +31728,11 @@ ENMY краснеет от вашей милоты!
 ENMY смеется над вами! (DMGDLT)
 - The ENMY struggles to find words!
 ENMY с трудом подбирает слова!
-- The ENMY buzzes you with her VTY! (DMGDLT)
+- The ENMY buzzes you with ${Etheir} VTY! (DMGDLT)
 ENMY дразнит вас своим VTY! (DMGDLT)
-- The ENMY catches you and teases you with her VTY! (DMGDLT)
+- The ENMY catches you and teases you with ${Etheir} VTY! (DMGDLT)
 ENMY ловит вас и дразнит своим VTY! (DMGDLT)
-- The ENMY reaches for her VTY!
+- The ENMY reaches for ${Etheir} VTY!
 ENMY тянется к своему VTY!
 - The ENMY sticks a VTY into you! (DMGDLT)
 ENMY втыкает в вас VTY! (DMGDLT)
@@ -31840,7 +31840,7 @@ ENMY тянется к вашему инвентарю, но не может д�
 Гладиатор
 - The gladiator puts you in a hold and binds you! (+RestraintAdded)
 Гладиатор хватает вас и связывает! (+RestraintAdded)
-- The gladiator chuckles as she spanks your butt! (DamageTaken)
+- The gladiator chuckles as ${Ethey} spank${Es} your butt! (DamageTaken)
 Гладиатор хихикает, шлепая вас по заднице! (DamageTaken)
 - The gladiator smiles and clicks a lock on you! (DamageTaken)
 Гладиаторша улыбается и защелкивает на вас замок! (DamageTaken)
@@ -31868,9 +31868,9 @@ ENMY тянется к вашему инвентарю, но не может д�
 
 - The Warden falls flat on the ground, exhausted!
 Надзирательница в изнеможении падает на землю!
-- The Warden strikes you with her whip! (DamageTaken)
+- The Warden strikes you with ${Etheir} whip! (DamageTaken)
 Надзирательница бьет вас своим хлыстом! (DamageTaken)
-- The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)
+- The Warden swings ${Etheir} enchanted whip and conjures locks on your body! (DamageTaken)
 Надзирательница взмахивает своим зачарованным хлыстом и создает на вас замки! (DamageTaken)
 
 
@@ -31894,7 +31894,7 @@ ENMY тянется к вашему инвентарю, но не может д�
 (SPEAKER пожимает плечами)|Ты победила ту девочку-зомби?|Она самая слабая из паладинов.|Она любит хвастаться тем, какая она особенная,|но на самом деле она просто избалованная девчонка.
 - ...Zombie girl?
 ...Девочку-зомби?
-- (SPEAKER tilts her head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too.
+- (SPEAKER tilts ${Etheir} head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too.
 (SPEAKER наклоняет голову)|Да, она была здесь до Винлаги.|Ее магия была подарена ей Богинями,|и вполне естественно, что она действует и на нее тоже.
 - ...Paladins?
 ...Паладинов?
@@ -31922,7 +31922,7 @@ ENMY тянется к вашему инвентарю, но не может д�
 (SPEAKER улыбается)|Когда мы штурмовали тюрьмы, мы столкнулись со многими яростными защитниками.|Многие из них сейчас находятся в этих залах, заслужив свое законное наказание.
 - Who are the prisoners, anyway?
 Кто эти заключенные?
-- (SPEAKER folds her arms)|Is it not holy and just to bring down tyrants?
+- (SPEAKER folds ${Etheir} arms)|Is it not holy and just to bring down tyrants?
 (SPEAKER)|Разве это не свято и не справедливо - свергать тиранов?
 - Why did the Goddesses intervene?
 Почему вмешались Богини?
@@ -31962,7 +31962,7 @@ ENMY тянется к вашему инвентарю, но не может д�
 (SPEAKER ухмыляется вам)|Если это так, то, возможно, было бы лучше не совать нос в чужие дела...|В конце концов, запретное знание имеет свою цену.
 - It sounds like the gods are trying to hide something
 Звучит так, словно богини пытаются что-то скрыть
-- (SPEAKER folds her arms)|And what makes you think an old myth would be relevant here?|Would the Archmagus herself lead a rebellion against the divine?
+- (SPEAKER folds ${Etheir} arms)|And what makes you think an old myth would be relevant here?|Would the Archmagus herself lead a rebellion against the divine?
 (SPEAKER складывает руки на груди)|И что заставляет тебя думать, что старые мифы здесь уместны?|Возглавит ли сама Архимаг восстание против божественного?
 - Was Sariel Vinlaga the leader of the old civilization?
 Была ли Сариэль Винлага лидером древней цивилизации?
@@ -31996,7 +31996,7 @@ ENMY тянется к вашему инвентарю, но не может д�
 (Надуть губы)
 - That's a shame about your records, I'll be going now.
 Жаль, что так получилось с твоими записями, я пойду.
-- Mmpphgh? (Go to pass her)
+- Mmpphgh? (Go to pass ${Ethem})
 Ммффхгх? (Пройти мимо нее)
 - (She smirks)|Not so fast, dear~|You'll have to wear a special collar to pass.
 (Она ухмыляется)|Не так быстро, дорогая~|Тебе придется надеть специальный ошейник, чтобы пройти.
@@ -32008,7 +32008,7 @@ ENMY тянется к вашему инвентарю, но не может д�
 (Она хихикает)|Как мило!|Ты так привык к своему, что забыла об этом~
 - Why don't you wear it yourself?
 Почему бы тебе самой не надеть его?
-- Hmmph. (Scoff at her)
+- Hmmph. (Scoff at ${Ethem})
 Хммфх. (Насмехаться над ней)
 - (She frowns)|Watch your tongue~
 (Она хмурится)|Следи за своим языком~
@@ -32076,13 +32076,13 @@ ENMY тянется к вашему инвентарю, но не может д�
 Я не думала, что это будет включать в себя тест...
 
 
-- (SPEAKER readies her whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
+- (SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
 (SPEAKER готовит свой хлыст)|Позволь мне представиться должным образом.|Я Надзирательницы, назначенный божествами судья и блюститель порядка.|Те, кто входит в эту гору, делают это под моим бдительным присмотром.|Чтобы гарантировать это, я изготовила специальный ошейник.|Это гарантирует, что ты не осквернишь святые места.|Я могу пропустить тебя, если ты наденешь его~
 - I will never be collared by you!
 Я никогда не позволю тебе надеть на меня ошейник!
 - (Shake your head and scoff)
 (Покачать головой и усмехнуться)
-- (SPEAKER folds her arms)|So be it.
+- (SPEAKER folds ${Etheir} arms)|So be it.
 (SPEAKER складывает руки на груди)|Да будет так.
 - Tell me about your collection.
 Расскажи мне о своей коллекции.
@@ -32096,7 +32096,7 @@ ENMY тянется к вашему инвентарю, но не может д�
 (SPEAKER улыбается)|О, это действительно необходимо~|Почему бы мне не показать тебе?
 - I would rather fight you.
 Я бы предпочла подраться с тобой.
-- (Fight her)
+- (Fight ${Ethem})
 (Вступить с ней в бой)
 - (SPEAKER shrugs)|Straight and to the point, eh?
 (SPEAKER пожимает плечами)|Прямо и по существу, да?
@@ -32112,11 +32112,11 @@ ENMY тянется к вашему инвентарю, но не может д�
 
 - (SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~
 (SPEAKER улыбается)|Весьма впечатляюще.|Возможно, ты проиграла битву, но выступила превосходно~
-- (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(She snaps her fingers and conjures a glowing ring)
+- (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
 (SPEAKER улыбается)|Я позволю тебе пройти, если ты оденешь мой ошейник.|(Она щелкает пальцами и создает светящееся кольцо)
 - (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your collar~|(She snaps her fingers and conjures a glowing ring)
 (SPEAKER хихикает)|И так твое путешествие заканчивается.|Я полагаю, ты этого не хочешь.|Теперь, что касается твоего ошейника~|(Она щелкает пальцами и создает светящееся кольцо)
-- (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(She snaps her fingers and conjures a glowing ring)
+- (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
 (SPEAKER хихикает)|Конечно, это была магия~|Кто сказал, что командир должен быть беззащитен?|(Она щелкает пальцами и создает светящееся кольцо)
 - Was that magic?
 Это была магия?
@@ -32134,11 +32134,11 @@ ENMY тянется к вашему инвентарю, но не может д�
 
 - (SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
 (SPEAKER приседает)|Действительно впечатляюще...|Я нечасто проигрываю авантюристам...|Я бы хотела, в конце концов, заполучить тебя в свои руки~
-- (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
+- (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
 (SPEAKER выглядит удивленной)|Я не ожидала, что ты будешь такой... уступчивой.|(Она щелкает пальцами и бросает вам светящийся пояс)|Это особый пояс, предназначенный для тех, у кого есть божественные привилегии.|Ты его заслужила.
 - (Wear her belt anyway)
 (Все равно надеть её ремень)
-- (SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
+- (SPEAKER shakes ${Etheir} head as you force a gag into ${Etheir} mouth)|MMMMMPH!
 (SPEAKER качает головой, когда вы засовываете ей в рот кляп)|МММММФХ!
 
 
@@ -32152,7 +32152,7 @@ ENMY ослабляет вашу хватку на оружии! Враги мо
 (Протяните свои руки с манжетами)
 - (The SPEAKER smiles)|Why sure, sweetie, I can help you with that~
 (SPEAKER улыбается)|Конечно, милая, я могу помочь тебе с этим~
-- (The SPEAKER grins)|What a good girl!
+- (The SPEAKER grins)|What a good ${Psub}!
 (SPEAKER ухмыляется)|Какая хорошая девочка!
 - (The SPEAKER blushes)|Those look like fun!
 (SPEAKER краснеет)|Это выглядит забавно!
@@ -32384,7 +32384,7 @@ ENMY ослабляет вашу хватку на оружии! Враги мо
 Заклинание превращается в ограничители!
 
 
-- The mage starts channeling her energy!
+- The mage starts channeling ${Ptheir} energy!
 Маг начинает направлять свою энергию!
 
 
@@ -32606,7 +32606,7 @@ ENMY ослабляет вашу хватку на оружии! Враги мо
 Ядовитый дракон взлетает и врезается в вас! ((Оглушение!)
 - Poison Dragon Girl
 Девушка-ядовитый дракон
-- The dragon girl slashes you with her venomous nails! (DamageTaken)
+- The dragon girl slashes you with ${Etheir} venomous nails! (DamageTaken)
 Девушка-дракон вонзает в вас свои ядовитые ногти! (DamageTaken)
 - The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)
 Девушка-дракон поднимает из земли лианы, чтобы связать вас! (+RestraintAdded)
@@ -33380,9 +33380,9 @@ ENMY зовет на помощь!
 Вы находите поводок.
 
 
-- You are not in a condition to use a leash on her.
+- You are not in a condition to use a leash on ${Ethem}.
 Вы не в том состоянии, чтобы использовать на ней поводк.
-- She refuses to be leashed unless you tie her up!
+- She refuses to be leashed unless you tie ${Ethem} up!
 Она отказывается быть на поводке, пока вы ее не свяжете!
 - You attach a leash to ENMY.
 Вы берете ENMY на поводок.
@@ -33580,7 +33580,7 @@ AMNT/MAXX Назначено слуг
 Ты мне мешаешь.
 - You're in my way!
 Ты стоишь у меня на пути!
-- Miss, you're blocking me...
+- ${PHonor}, you're blocking me...
 Мисс, вы мне мешаете...
 - Step aside~
 Отойди в сторону~
@@ -33822,7 +33822,7 @@ NPC нужно затянуть, но сейчас это невозможно
 NPC сбежала!
 - NPC is likely to escape.
 NPC, скорее всего, сбежит.
-- NPC has managed to loosen her bonds.
+- NPC has managed to loosen ${Etheir} bonds.
 NPC удалось ослабить свои путы.
 
 
@@ -34172,7 +34172,7 @@ NPC недоступен
 
 - Ancient Worshipper
 Почитательница древних
-- The ancient worshipper repents of her ways.
+- The ancient worshipper repents of ${Etheir} ways.
 Почитательница древних раскаивается в своих поступках.
 - The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
 Кристаллические оковы почитательницы древних распространяются и на вас! (+RestraintAdded)
@@ -34184,7 +34184,7 @@ NPC недоступен
 
 - Ancient Congregant
 Прихожанка древних
-- The ancient congregant repents of her ways.
+- The ancient congregant repents of ${Etheir} ways.
 Прихожанка древних раскаивается в своих поступках.
 - The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
 Кристаллические оковы древней прихожанки распространяются и на вас! (+RestraintAdded)
@@ -34196,7 +34196,7 @@ NPC недоступен
 
 - Ancient Hierophant
 Иерофант древних
-- The ancient hierophant repents of her ways.
+- The ancient hierophant repents of ${Etheir} ways.
 Иерофант древних раскаивается в своих поступках.
 - The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
 Кристаллические оковы иерофанта древних распространяются и на вас! (+RestraintAdded)
@@ -34567,11 +34567,11 @@ AMNTx урона SP превышает 50%
 
 
 
-- (The Warden perks an eyebrow at the sight of you,|before a wide grin overtakes her face)|Ahhh Fuuka. Chosen by the Goddess?|How does it feel to once again be under a leash?
+- (The Warden perks an eyebrow at the sight of you,|before a wide grin overtakes ${Etheir} face)|Ahhh Fuuka. Chosen by the Goddess?|How does it feel to once again be under a leash?
 (Надзирательница приподнимает бровь при виде вас,|после чего ее лицо расплывается в широкой улыбке)|А-а-а, Фуука. Избранная богиней?|Каково это - снова оказаться на привязи?
-- Fuuka, take her down.
+- Fuuka, take ${Ethem} down.
 Фуука, уложи её.
-- (Send Fuuka to fight her)
+- (Send Fuuka to fight ${Ethem})
 (Отправить Фууку сражаться с ней)
 - That is none of your business. Now kneel.
 Это не твое дело. А теперь встань на колени.
@@ -35040,7 +35040,7 @@ AMNTx урона SP превышает 50%
 -100% шанс осечки, но использование заклинаний может привести к тому, что вы перейдете грань.
 - The psychic link conducts away some of the intensity...
 Психическая связь отводит часть напряжения...
-- Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
+- Your linked target lets go of ${Ethem}self, transmitting a wave of pleasure to yourself...
 Ваша цель, с которой вы связаны, расслабляется, передавая вам волну удовольствия...
 
 
@@ -35094,33 +35094,33 @@ AMNTx урона SP превышает 50%
 
 
 
-- (The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
+- (The SPEAKER sits encased in skintight rubber up to ${Etheir} nose.|Though the latex over ${Etheir} mouth is smooth and flat,|you know from ${Etheir} whimpering moans that ${Etheir} mouth|is totally filled with a gag, useless like the rest of ${Etheir} body.|Some sort of stand affixes ${Etheir} to the floor.)
 (SPEAKER сидит, запечатанная в плотную резину до самого носа.|Хотя латекс у нее на рту гладкий и плоский,|по ее жалобным стонам вы понимаете, что ее рот|полностью забит кляпом, становясь бесполезным, как и все остальное тело.|Какая-то подставка прижимает ее к полу.)
 - (You don't have any solvents that work on latex)
 (У вас нет растворителей, которые работают с латексом)
-- (You dissolve her restraints, fumbling around for a while with your bound hands)
+- (You dissolve ${Etheir} restraints, fumbling around for a while with your bound hands)
 (Вы растворяете нее ограничители, некоторое время возясь со связанными руками)
 - (You rescue the SPEAKER)|Thank you!|Let's get out of here!
 (Вы спасаете SPEAKER)|Спасибо!|Давай убираться отсюда!
-- (You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+- (You rescue the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
 (Вы спасаете SPEAKER)|Ммммф!|(Она хочет, чтобы кляп остался у неё во рту...)
 - (You are not holding a cutting tool)
 (У вас в руках нет режущего инструмента)
-- (You cut her restraints, fumbling around for a while with your bound hands)
+- (You cut ${Etheir} restraints, fumbling around for a while with your bound hands)
 (Ты разрезаете ее путы, некоторое время возясь со связанными руками)
 - (You don't have enough mana for Remove Slime)
 (У вас недостаточно маны для Удаления Слизи)
 - (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
 (Вы произносите слово освобождения, чтобы освободить SPEAKER)|Большое спасибо!|Пошли!
-- (You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+- (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} locks ${Etheir} gag back on...)
 (Вы произносите слово освобождения, чтобы освободить SPEAKER)|Ммммф!|(Она снова вставляет кляп в рот...)
 
 
 - Dissolve the latex with a SLVNT
 Растворите латекс с помощью SLVNT
-- Cut her out with a sharp tool
+- Cut ${Ethem} out with a sharp tool
 Разрежьте ее ограничители инструментом для резки
-- Use Remove Slime to unlock her
+- Use Remove Slime to unlock ${Ethem}
 Используйте 'Удалить Слизь' для её освобождения
 
 
@@ -35144,7 +35144,7 @@ AMNTx урона SP превышает 50%
 
 - (The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
 (SPEAKER проводит рукой по вашему телу)|Похоже, ты переносишь какой-то опасный груз.|Заключенные не должны носить с собой то, что им не принадлежит~
-- (The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+- (The SPEAKER folds ${Etheir} hands together)|${PHonor}, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
 (SPEAKER складывает руки на груди)|Мисс, мне было приказано убедиться, что у тебя нет|ничего опасного. Сейчас я собираюсь тебя обыскать.
 - (The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
 (SPEAKER уверенно смотрит на вас)|Ты думала, что сможешь проникнуть сюда со всем этим?
@@ -35278,7 +35278,7 @@ AMNTx урона SP превышает 50%
 Горничная-рыцарь
 - You humiliate the Maid Squire!
 Вы унижаете Горничную-оруженосца!
-- You defeat the Maid Knight! For now... she swears revenge.
+- You defeat the Maid Knight! For now... ${Ethey} swear${Es} revenge.
 Ты побеждаете Горничную-рыцаря! Сейчас... она клянется отомстить.
 - The Squire zips you up in comfy leather gear!
 Оруженосец облачает вас в удобную кожаную экипировку!
@@ -35288,9 +35288,9 @@ AMNTx урона SP превышает 50%
 Оруженосец запирает ваши ограничители!
 - The Maid Knight secures your restraints!
 Горничная-рыцарь запирает ваши ограничители!
-- The Squire dusts you with her duster plug.
+- The Squire dusts you with ${Etheir} duster plug.
 Оруженосец протирает вас своей щеточкой.
-- The Maid Knight sweeps you with her cleaning halberd!
+- The Maid Knight sweeps you with ${Etheir} cleaning halberd!
 Горничная-рыцарь протирает вас своей очищающей алебардой!
 
 

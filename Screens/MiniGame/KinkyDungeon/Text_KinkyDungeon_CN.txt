@@ -15666,13 +15666,13 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 幽灵 : ‎一个好的奴隶在被允许之前不会说话。
 - Ghost: Aww, so helpless~
 幽灵 : ‎哇哦，好无助~
-- Ghost: Trussed up like a good girl~
+- Ghost: Trussed up like a good ${Psub}~
 幽灵 : ‎像个好姑娘一样被绑起来~
 - Ghost: You're going to stay that way for a good while.
 幽灵 : ‎你将保持这种状态很长一段时间。
 - Ghost: I love watching you hop around, it's funny!
 幽灵 : ‎我喜欢看你跳来跳去，这很有趣！
-- Ghost: Just sit there like a good girl~
+- Ghost: Just sit there like a good ${Psub}~
 幽灵 : ‎像个好女孩一样坐在那里，姑娘~
 - Ghost: I want to see you kneel~
 幽灵 : ‎我想看你跪下~
@@ -15857,18 +15857,18 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 
 - I hope you learned your lesson. Now get your butt out of here.
 我希望你吸取了教训，现在滚出去。
-- You've been a good girl. I hope you don't make the same mistake again. You can leave.
+- You've been a good ${Psub}. I hope you don't make the same mistake again. You can leave.
 你之前表现得很好。希望你不要再犯同样的错误。你可以走了。
-- That's a good girl. Now behave yourself, okay? You're free to go.
+- That's a good ${Psub}. Now behave yourself, okay? You're free to go.
 做得很好。现在规矩点，好吗？你可以走了。
 - Looks like you got yourself in a bind! (${EThey} pat${Es} your butt playfully) Go make the others happy!
 看起来你绑的很好！  ( 她开戏谑地拍拍你的屁股 ) 去让别人开心吧！
 
 - I hope you learned your lesson.|Now get your butt out of here.
 我希望你吸取了教训，|现在滚出去。
-- You've been a good girl. I hope you don't make the same mistake again.|You can leave.
+- You've been a good ${Psub}. I hope you don't make the same mistake again.|You can leave.
 你表现得很好。希望你不会再犯同样的错误。|你可以走了。
-- That's a good girl. Now behave yourself, okay?|You're free to go.
+- That's a good ${Psub}. Now behave yourself, okay?|You're free to go.
 真是个好女孩。现在要乖乖的，好吗？|你可以走了。
 - Looks like you got yourself in a bind!|(${EThey} pat${Es} your butt playfully)|You're free to go!
 看起来你陷入了捆境！|（她开玩笑地拍拍你的屁股）|你可以走了！
@@ -15911,7 +15911,7 @@ EnemyName 使用 LockType 锁上了你的 RestraintName！
 
 - Got yourself in trouble, eh?
 给自己惹上麻烦了，嗯？
-- Looks like you're shaping up to be a good girl~
+- Looks like you're shaping up to be a good ${Psub}~
 看来你是一个好女孩啊~
 - Oh! Looks like I've made a mistake...
 哦！ 看来我犯了一个错误...
@@ -16819,7 +16819,7 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailPlaySubFuuka0
 # :: KinkyDungeonRemindJailPlaySubDollmaker0
 # :: KinkyDungeonRemindJailPlaySub0
-- I've been a bad girl, won't you do something about it?
+- I've been a bad ${Esub}, won't you do something about it?
 我是个坏女孩，你能做点什么吗？
 # :: KinkyDungeonRemindJailPlaySubFuuka1
 # :: KinkyDungeonRemindJailPlaySubDollmaker1
@@ -17365,7 +17365,7 @@ EnemyName 设法带着你的物品撤退了！
 警报！
 # :: KinkyDungeonRemindJailChaseAlert
 # :: KinkyDungeonRemindJailChaseMushyAlert
-- You look like a good girl. Come on~
+- You look like a good ${Psub}. Come on~
 你看起来像个好女孩。过来吧~
 - Come here, let's play!
 过来，一起玩吧！
@@ -18323,7 +18323,7 @@ SPL已激活。
 把你的脏手拿开！
 - Your chances of winning are... less than zero.
 你获胜的机会……小于零。
-- Good girls don't use magic without permission.
+- Good ${Psub}s don't use magic without permission.
 好女孩未经许可不会使用魔法。
 - Keep that magic away from my experiments!
 让那个魔法离我的实验远点！
@@ -19544,7 +19544,7 @@ SPL时间到了!
 我要和你玩点好玩的~
 # :: KinkyDungeonRemindJailPlayHunterLeash
 # :: KinkyDungeonRemindJailPlayWolfgirlLeash
-- Watch yourself, girl~
+- Watch yourself, ${Psub}~
 小心点，妹妹~
 # :: KinkyDungeonRemindJailPlayHunterFree
 # :: KinkyDungeonRemindJailPlayWolfgirlFree
@@ -19689,7 +19689,7 @@ Boo！哈，吓到你了~
 站在这！
 - It'll take you quite a while to pay off those damages!
 你要花很长时间才能还清这些损失！
-- Now there, good girl!
+- Now there, good ${Psub}!
 好了，好姑娘！
 - Wrong move!
 走错了！
@@ -19777,11 +19777,11 @@ PTRN，“奈文米尔”的一员。这是我的名片。
 # :: KinkyDungeonRemindJailPlaySubYen2
 - I've got somethin nice for ya.
 我有件好东西给你。
-- Be a good girl for me, will ya?
+- Be a good ${Psub} for me, will ya?
 做个好女孩，好嘛？
 - You need to show some restraint.
 你需要克制一些。
-- Stay where you belong, you naughty girl.
+- Stay where you belong, you naughty ${Psub}.
 呆在属于你的地方，你这个淘气的女孩。
 - Let's go somewhere more private.
 我们去更私密的地方吧。
@@ -20936,7 +20936,7 @@ SPL之力!
 是时候训练了。
 - You need to be taught some manners, maid.
 得教你一些礼仪了，女仆。
-- Good girl. I'll take that to the storage room.
+- Good ${Psub}. I'll take that to the storage room.
 乖女孩。我会把它收进储藏室的。
 - I'll be taking those.
 那些我就拿走了。
@@ -21241,7 +21241,7 @@ Ack !多不雅啊!
 跟我来，我亲自训练你。
 - You need to work on your ladylike manners.
 你需要提升你的淑女风度。
-- Good girl, finding lost items.
+- Good ${Psub}, finding lost items.
 乖女孩，寻找丢失的物品。
 - I do not give you permmission to leave.
 我不允许你离开。
@@ -21299,7 +21299,7 @@ Hmm. 你可以叫我女仆 PTRN。
 我保证，我会很温柔的~
 - Know your place, dear~
 认清你的地位，亲爱的~
-- Good girls keep their hands to themselves.
+- Good ${Psub}s keep their hands to themselves.
 好女孩总是把手放在自己身上。
 - You broke the rules, now you'll face the consequences.
 你违反了规则，现在你将面临后果。
@@ -21952,14 +21952,14 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 歪着头 ) |呃，对不起。
 - (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
 ( SPEAKER 脸红 ) |我……我很抱歉！请继续...
-- (The SPEAKER smiles)|Keep up the good work, girl.
+- (The SPEAKER smiles)|Keep up the good work, ${Psub}.
 ( SPEAKER 微笑 )|继续努力吧，女孩。
 - (The SPEAKER beeps)|Vital signs indicate honesty. Carry on.
 ( SPEAKER 发出哔哔声 ) |生命体征表明诚实。继续。
 
-- (The SPEAKER smiles)|Good girl.
+- (The SPEAKER smiles)|Good ${Psub}.
 ( SPEAKER 微笑 )|好姑娘。
-- (The SPEAKER smiles)|That's a good girl.
+- (The SPEAKER smiles)|That's a good ${Psub}.
 ( SPEAKER 微笑 )|那姑娘真好。
 - (The SPEAKER smiles)|Thank you.
 ( SPEAKER 微笑 )|谢谢。
@@ -21984,7 +21984,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 靠近你 ) |检测到违禁品。开始没收。|请遵守。
 - (The SPEAKER blushes)|Umm, ${PHonor}, I see that you have a weapon there,|could you maybe hand it over?
 (SPEAKER 脸红了)|嗯，小姐，我看见你那里有武器，|你能把它交出来吗？
-- (The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
+- (The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?
 (SPEAKER 对你微笑)|做个好女孩，把武器交出来，|好吗？
 - (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
 (SPEAKER 咧嘴笑着，掰着指关节)|你打算用它和别人打架吗？|或者你要把它交出去？
@@ -22057,14 +22057,14 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 马上让我出去！
 - (Scream into your gag uselessly)
 ( 无用地隔着堵嘴大叫 )
-- I will be a good girl!
+- I will be a good ${Psub}!
 我会做个好女孩的！
 - (Giggle and wiggle your body)
 ( 咯咯笑着扭动你的身体 )
 
 
 
-- (The SPEAKER approaches you in your cell)|Back again, are we? Silly girl.|You know we don't take no for an answer.
+- (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You know we don't take no for an answer.
 ( SPEAKER 在你的牢房里接近你 ) |又回来了，是吗？傻丫头。|你知道我们不会停你的回答的。
 
 - (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
@@ -22378,7 +22378,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 - (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
 ( SPEAKER 微笑并狡猾地低头看着你 ) |嘿，我有一份 '工作' 给你！
-- (The SPEAKER takes a duster gag from her satchel)|Such a good girl!|So here's what I have for you~|It's a special tool to help keep the place clean.
+- (The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
 ( SPEAKER 从书包里拿出一个掸子口塞 ) |真是个好女孩！|这就是我给你的东西~|这是一个帮助保持地方卫生的特殊工具。
 - (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
 ( SPEAKER 笑了 ) |很高兴我们能达成共识~| ( 她从书包里拿出一个掸子口塞 ) |现在，这个地方很脏。|你为什么不戴上这个来帮忙呢？
@@ -22754,11 +22754,11 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 闷闷不乐地点点头 ) |不是粉丝？|耻辱，我是~
 - (The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained...
 ( SPEAKER 迅速地抓住你 ) |哦，很严格~|而且非常适合接受训练...
-- (The SPEAKER looks at you deviously)|A good girl wears her RESTRAINT with enthusiasm~
+- (The SPEAKER looks at you deviously)|A good ${Psub} wears her RESTRAINT with enthusiasm~
 ( SPEAKER 阴险地看着你 ) |好女孩应该热情地穿上 RESTRAINT~
 - (The SPEAKER sulks)|You'd be difficult to train anyway~
 ( SPEAKER 生闷气 ) |你可真难调教~
-- (The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good girl~|I'll make it extra tight for you!
+- (The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good ${Psub}~|I'll make it extra tight for you!
 ( SPEAKER 添加了 RESTRAINT ) | ( 你感觉到她在上锁之前收紧了所有束缚 ) |好女孩~|为了你，我会绑的格外紧！
 - (The SPEAKER knocks you down and forces you into the RESTRAINT)|Here, maybe you'll reconsider after wearing it a while!
 （SPEAKER 打倒你并强行用 RESTRAINT 束缚你）|也许你戴上这个一会儿后就会重新考虑了！
@@ -22812,7 +22812,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 优雅地向你打手势 ) |很高兴看到一张友好的面孔~|想看看一些精灵商品吗？
 - (The SPEAKER holds up a RESTRAINT)|These are some of our strictest.|Want to try?
 ( SPEAKER 举起 RESTRAINT ) |这些是我们最严格的拘束具。|想试试吗？
-- (The SPEAKER smiles sweetly)|Such a good girl~|(The RESTRAINT locks with a loud click)
+- (The SPEAKER smiles sweetly)|Such a good ${Psub}~|(The RESTRAINT locks with a loud click)
 ( SPEAKER 甜甜地笑 ) |真是个好女孩~| ( '咔哒' 一声，RESTRAINT 锁上了 )
 - (The SPEAKER sagely nods)|As you wish~
 ( SPEAKER 睿智地点点头 ) |如你所愿~
@@ -23538,7 +23538,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 笑着 ) |可是我已经带了这么多绳子了~
 - (The SPEAKER frowns)|Suit yourself.
 ( SPEAKER 皱眉 ) |随你便。
-- (The SPEAKER smiles)|Good girl~
+- (The SPEAKER smiles)|Good ${Psub}~
 ( SPEAKER 微笑 )|好姑娘~
 - (The SPEAKER takes you down and trusses you up tightly)|That'll teach you~
 ( SPEAKER 把你拉下来，把你绑得紧紧的 ) |给你长个教训~
@@ -23566,7 +23566,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 一看到你就竖起耳朵 ) |你的体型很完美。|我想通过一些训练会做得更好！
 - (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
 ( SPEAKER 咧嘴笑着递给你一张纸 ) |Nevermere 训练师一直在寻找新人！|你只需要在这里签字……
-- (The SPEAKER gets you suited up)|There you go! Now go be a good girl!
+- (The SPEAKER gets you suited up)|There you go! Now go be a good ${Psub}!
 ( SPEAKER 让你穿上衣服 ) |现在去！去做一个好女孩吧！
 - (The SPEAKER scoffs)|That's what they all say.
 ( SPEAKER 嗤笑 ) |他们都是这么说的。
@@ -23580,7 +23580,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 皱眉 ) |好吧。我会寻找其他候选人。
 - (The SPEAKER smiles)|That's right. Your name, please?
 ( SPEAKER 微笑 )|没错。请告诉我你的名字？
-- (The SPEAKER zaps you and places you in restrictive gear)|Good girls need training.|Come back when you've learned a thing or two~
+- (The SPEAKER zaps you and places you in restrictive gear)|Good ${Psub}s need training.|Come back when you've learned a thing or two~
 （SPEAKER 电击你并将给你穿上拘束）|好女孩需要调教！|等你学乖了再来吧~
 
 - This sounds like an interesting opportunity.
@@ -23967,9 +23967,9 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 - (The SPEAKER beeps)|Prisoner 74121 identified.|Subject not registered in database.
 ( SPEAKER 发出嘟嘟声 ) |囚犯 74121 已识别。|对象未在数据库中注册。
-- (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good girl' to enter database.
+- (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good ${Psub}' to enter database.
 ( SPEAKER 发出嘟嘟声 ) |正在确认数据库条目。|说 '我会成为一个好女孩' 以进入数据库。
-- (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good girl.
+- (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good ${Psub}.
 ( SPEAKER 发出蜂鸣声并启用跟踪装置 ) | ( 金属缆绳卡入到位，发出柔和的蜂鸣声 ) | 囚犯 74121 已注册。好女孩。
 - (The SPEAKER beeps)|Acknowledged. Be warned:|Lost contact with Sections 98, 97, 96, 95...|(The list goes on...)
 ( SPEAKER 发出嘟嘟声 ) |已确认。请注意 : ‎|与第 98、97、96、95 区块失去联系...| ( 持续列举中... )
@@ -23995,12 +23995,12 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (Avoid the robot)
 ( 避开机器人 )
 
-- Prisoner 74121 reporting. I will be a good girl.
+- Prisoner 74121 reporting. I will be a good ${Psub}.
 囚犯 74121 报告。我会是一个好女孩。
 - Actually, I am an administrator. (Refuse)
 事实上，我是一名管理员。 ( 拒绝 )
 
-- I'm sorry, I will be a good girl!
+- I'm sorry, I will be a good ${Psub}!
 对不起，我会做一个好女孩！
 - What? (PERCENT chance to avoid)
 什么？ ( PERCENT 的概率避开 )
@@ -24328,7 +24328,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 看上去很尴尬 ) |我不能把这个卖给你，小姐……
 - (The SPEAKER blushes)|Actually, I was saving that for myself...
 ( SPEAKER 脸红了 ) |其实，我是为自己留下的……
-- (The SPEAKER grins)|Good girls don't need one of those~
+- (The SPEAKER grins)|Good ${Psub}s don't need one of those~
 ( SPEAKER 笑 ) |好女孩不需要这些~
 - (The SPEAKER buzzes)|Error, insufficient access privileges.
 ( SPEAKER 发出嗡嗡声 ) |错误，访问权限不足。
@@ -25116,7 +25116,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( 你发现一个穿着华丽衣服的女孩 ) | ( 她瞥了你一眼 ) |你是谁？
 - I should be asking the same of you.
 这是我要问的。
-- (Growl at her)
+- (Growl at ${Ethem})
 ( 对她咆哮 )
 - (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
 ( 笑 )|我叫风香 (Fuuka)，包含“风”和“歌”的字母。|你要介绍一下自己吗？
@@ -25326,7 +25326,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( SPEAKER咯咯笑 )|不需要你的同意，亲爱的~
 - I never said I consented to being a pet!
 我从来没有说过我同意做宠物！
-- (Give her a puzzled look and shake your head)
+- (Give ${Ethem} a puzzled look and shake your head)
 ( 给她一个疑惑的眼神，然后摇头 )
 - No way!
 没门！
@@ -25334,7 +25334,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( 叹气和耸肩 )
 # :: dFuukaSub_Brat_Proceed2
 # :: dTheWardenSub_Brat_Proceed2
-- (Attack her without saying anything)
+- (Attack ${Ethem} without saying anything)
 ( 二话不说就攻击她 )
 
 - (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
@@ -25433,7 +25433,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( 服从于她 )  ( 获得特殊项圈 )
 - (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
 ( SPEAKER 反抗，但最终你把堵嘴塞进了她的嘴里 ) |MMMMPH！
-- (Gag her)
+- (Gag ${Ethem})
 ( 堵住她的嘴 )
 
 
@@ -25607,7 +25607,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( SPEAKER 举起一个 RESTRAINTNAME ) |你的身体看起来就像一个巨大的广告牌！|这套衣服会让你如此有吸引力，没有人能够抗拒！|在，咳咳，检查你的过程中，|他们会..一定会看到我的logo！
 # :: rShopkeeperTeleportDebt_Catsuit
 # :: rShopkeeperOfferHelpDebt_Catsuit
-- (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
+- (The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~
 ( SPEAKER 抱起双臂点头 ) |好女孩！我就知道你会坦白的~
 # :: rShopkeeperTeleportDebt_Pay
 # :: rShopkeeperOfferHelpDebt_Pay
@@ -25907,7 +25907,7 @@ Mmmph? (行为混乱)
 ( 你没有锁的钥匙。 )
 # :: rPrisonerJailNoKeys
 # :: rPrisonerJailOwnNoKeys
-- (You can't help her, bound as tightly as you are...)
+- (You can't help ${Ethem}, bound as tightly as you are...)
 ( 你帮不了她，毕竟你也被紧紧地绑着… )
 # :: rPrisonerJailUnlockHandsBound
 # :: rPrisonerJailOwnUnlockHandsBound
@@ -44289,12 +44289,12 @@ Kjus眼5
 这真是太有趣了！
 - I have to go return you~
 我得去还你~
-- Good girl~ Let's go again later~
+- Good ${Psub}~ Let's go again later~
 好女孩~ 我们一会儿再去吧~
 
 - It's time for walkies!
 该走了！
-- That's a good girl!
+- That's a good ${Psub}!
 真是个好女孩！
 - I want to keep you longer, but I've got things to do.
 我想让你多待一会儿，但我还有事要做。
@@ -48800,7 +48800,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 (SPEAKER微笑)|当然，甜心，我可以帮你~
 # :: rGenericAllyFlirt_LinkRequestArms
 # :: rGenericAllyFlirt_LinkRequestLegs
-- (The SPEAKER grins)|What a good girl!
+- (The SPEAKER grins)|What a good ${Psub}!
 (SPEAKER咧嘴一笑)|多好的女孩啊！
 # :: rGenericAllyFlirt_LinkRequestArmsDom
 # :: rGenericAllyFlirt_LinkRequestLegsDom

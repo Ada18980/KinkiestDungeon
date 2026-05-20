@@ -992,9 +992,9 @@ Segundo aire
 
 ### You are an expert in wearing a petsuit and your mobility is increased.
 
-### You are too used to wearing petsuits! Sprinting is impaired.
+### ${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
 
-### You are a disobedient pet. You should put on a petsuit!
+### ${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
 
 - Dominant
 Dominante
@@ -1336,9 +1336,9 @@ Te despiertas en un lugar diferente...
 Explosión Arcana
 
 
-- EnemyName says something incomprehensible! Her spell miscasts!
+- EnemyName says something incomprehensible! ${ETheir} spell miscasts!
 ¡EnemyName dice algo incomprensible! ¡Su hechizo falla!
-- EnemyName fumbles her next move!
+- EnemyName fumbles ${Etheir} next move!
 ¡EnemyName pierde su siguiente movimiento!
 - The EnemyName utters a command word on the TargetName!
 ¡El EnemyName pronuncia una palabra de comando en el TargetName!
@@ -3178,9 +3178,9 @@ La baba empieza a endurecerse sobre tu piel...
 ¡Tú sometes al ángel!
 - The angel decides to toy with you while you are trussed up. (DamageTaken)
 El ángel decide jugar contigo mientras estás atado. (Daño Recibido)
-- The angel snaps her fingers and divine restraints appear on your body! (+RestraintAdded)
+- The angel snaps ${Etheir} fingers and divine restraints appear on your body! (+RestraintAdded)
 ¡El ángel chasquea los dedos y las restricciones divinas aparecen en tu cuerpo! (+ Restricción agregada)
-- The angel snaps her fingers and glowing locks appear on your body!
+- The angel snaps ${Etheir} fingers and glowing locks appear on your body!
 ¡El ángel chasquea los dedos y aparecen mechones brillantes en tu cuerpo!
 
 
@@ -3200,7 +3200,7 @@ Construcción sagrada
 ¡No tengas miedo! Soy el mensajero de un santuario local y he venido a recoger tu ofrenda.
 - Hold still and I will take the offering...
 Quédate quieto y tomaré la ofrenda...
-- (She takes the gold)
+- (${EThey} take${Es} the gold)
 (Ella toma el oro)
 - Peace be with you! Goodbye!
 ¡La paz sea con vosotros! ¡Adiós!
@@ -3214,7 +3214,7 @@ Porque primero me divertiré un poco...
 Usted ha traído esto sobre usted mismo, después de todo.
 
 
-- The angel frowns as you attack her, and glowing rings appear.
+- The angel frowns as you attack ${Ethem}, and glowing rings appear.
 El ángel frunce el ceño cuando la atacas y aparecen anillos brillantes.
 
 
@@ -3278,7 +3278,7 @@ La esfera se encoge de nuevo en la dimensión de la tormenta.
 
 - The familiar dissolves into spectral ash.
 El familiar se disuelve en ceniza espectral.
-- The doll gives in to her desires and squirms around on the ground.
+- The doll gives in to ${Etheir} desires and squirms around on the ground.
 La muñeca cede a sus deseos y se retuerce en el suelo.
 - Storm Crystal
 Cristal de tormenta
@@ -3352,7 +3352,7 @@ La criada hace una retirada a tientas.
 ¡La criada usa una técnica de encuadernación rápida! (+ Restricción agregada)
 - The maid snaps a lock on one of your restraints! (DamageTaken)
 ¡La criada abre un candado en una de tus ataduras! (Daño Recibido)
-- The maid tickles you with her feather duster! (DamageTaken)
+- The maid tickles you with ${Etheir} feather duster! (DamageTaken)
 ¡La criada te hace cosquillas con su plumero! (Daño Recibido)
 
 
@@ -3384,9 +3384,9 @@ M. F. 'Haciéndose ruidoso'
 
 ### Heavy Weapons Maid
 
-### The maid drops her weapon and runs.
+### The maid drops ${Etheir} weapon and runs.
 
-### The maid bonks you with her weapon! (DamageTaken)
+### The maid bonks you with ${Etheir} weapon! (DamageTaken)
 
 - M.F. 'Parasol'
 M. F. 'Sombrilla'
@@ -3402,7 +3402,7 @@ M. F. 'Plan Maestro'
 La doncella principal se rinde con gracia.
 - The head maid suddenly whips out a restraint and locks it on! (+RestraintAdded)
 ¡La doncella principal de repente saca una restricción y la bloquea! (+ Restricción agregada)
-- The head maid snaps her fingers and you find your restraints locked! (DamageTaken)
+- The head maid snaps ${Etheir} fingers and you find your restraints locked! (DamageTaken)
 ¡La doncella principal chasquea los dedos y encuentras tus ataduras cerradas! (Daño Recibido)
 - The head maid tickles you strategically! (DamageTaken)
 ¡La doncella principal te hace cosquillas estratégicamente! (Daño Recibido)
@@ -3418,7 +3418,7 @@ El elemental de fuego se disuelve en cenizas.
 ¡El elemental de fuego evoca ataduras forjadas alrededor de tus extremidades! (+ Restricción agregada)
 - The fire elemental places a heavy lock on your restraint! (DamageTaken)
 ¡El elemental de fuego coloca un pesado candado en tu sujeción! (Daño Recibido)
-- The fire elemental touches you with her burning finger! (DamageTaken)
+- The fire elemental touches you with ${Etheir} burning finger! (DamageTaken)
 ¡El elemental de fuego te toca con su dedo ardiente! (Daño Recibido)
 
 
@@ -3426,7 +3426,7 @@ El elemental de fuego se disuelve en cenizas.
 Guardabosques de lo salvaje
 - The ranger disappears into the environment.
 El guardabosques desaparece en el medio ambiente.
-- The ranger gropes your chest with a smile on her face! (DamageTaken)
+- The ranger gropes your chest with a smile on ${Etheir} face! (DamageTaken)
 ¡La guardabosques toca tu pecho con una sonrisa en su rostro! (Daño Recibido)
 - The ranger surprises you and binds you! (+RestraintAdded)
 ¡El guardabosques te sorprende y te ata! (+ Restricción agregada)
@@ -3436,13 +3436,13 @@ El guardabosques desaparece en el medio ambiente.
 
 - Druid of the Wild
 Druida de lo salvaje
-- The druid calls forth vines to mask her retreat.
+- The druid calls forth vines to mask ${Etheir} retreat.
 La druida invoca enredaderas para enmascarar su retirada.
 - The druid holds your face and kisses you! (DamageTaken)
 ¡El druida sostiene tu rostro y te besa! (Daño Recibido)
 - The druid binds you with mithril restraints! (+RestraintAdded)
 ¡El druida te ata con ataduras de mithril! (+ Restricción agregada)
-- The druid tosses a lock from her cloak! It finds you and fastens with a click. (DamageTaken)
+- The druid tosses a lock from ${Etheir} cloak! It finds you and fastens with a click. (DamageTaken)
 ¡La druida arroja un mechón de su capa! Te encuentra y sujeta con un clic. (Daño Recibido)
 
 
@@ -3518,7 +3518,7 @@ Dron de apoyo
 
 - The Dollmaker commands a drone to attack you!
 ¡El fabricante de muñecas ordena a un dron que te ataque!
-- The Dollmaker commands her drones to attack you!
+- The Dollmaker commands ${Ptheir} drones to attack you!
 ¡La Dollmaker ordena a sus drones que te ataquen!
 
 
@@ -3532,7 +3532,7 @@ dron de captura
 ¡El dron de captura te envuelve en cables avanzados! (+ Restricción agregada)
 - The Dollmaker commands a drone to capture you!
 ¡El fabricante de muñecas ordena a un dron que te capture!
-- The Dollmaker commands her drones to capture you!
+- The Dollmaker commands ${Ptheir} drones to capture you!
 ¡La Dollmaker ordena a sus drones que te capturen!
 
 
@@ -3552,7 +3552,7 @@ El zombi sonríe mientras se derrumba en el suelo.
 Zombi mago
 - The zombie frowns and disappears in a puff of ice and ribbons.
 El zombi frunce el ceño y desaparece en una nube de hielo y cintas.
-- The zombie smiles as she wraps you in charms! (+RestraintAdded)
+- The zombie smiles as ${Ethey} wrap${Es} you in charms! (+RestraintAdded)
 ¡La zombi sonríe mientras te envuelve en amuletos! (+ Restricción agregada)
 - The zombie's ribbons form magical locks on your body! (DamageTaken)
 ¡Las cintas de zombi forman mechones mágicos en tu cuerpo! (Daño Recibido)
@@ -3560,9 +3560,9 @@ El zombi frunce el ceño y desaparece en una nube de hielo y cintas.
 
 - Talisman Zombie
 Talismán Zombi
-- The zombie pouts and puts up a shield to let her retreat.
+- The zombie pouts and puts up a shield to let ${Etheir} retreat.
 El zombi hace un puchero y levanta un escudo para dejarla retirarse.
-- The zombie giggles as she wraps you in charms! (+RestraintAdded)
+- The zombie giggles as ${Ethey} wrap${Es} you in charms! (+RestraintAdded)
 ¡La zombi se ríe mientras te envuelve en encantos! (+ Restricción agregada)
 - The zombie uses a sealing spell to create magical locks! (DamageTaken)
 ¡El zombi usa un hechizo de sellado para crear cerraduras mágicas! (Daño Recibido)
@@ -3574,7 +3574,7 @@ guerrero zombi
 El zombi guerrero grita y cae cinematográficamente.
 - The warrior zombie uses a traditional binding technique (+RestraintAdded)
 El zombi guerrero usa una técnica de unión tradicional (+ Restricción Agregada)
-- The warrior zombie strikes you with her wooden sword! (+STUN)
+- The warrior zombie strikes you with ${Etheir} wooden sword! (+STUN)
 ¡La zombie guerrera te golpea con su espada de madera! (+ATURDIMIENTO)
 - The warrior zombie runs its fingers along your body! (DamageTaken)
 ¡El zombi guerrero pasa sus dedos por tu cuerpo! (Daño Recibido)
@@ -3596,7 +3596,7 @@ El artista de cuerdas frunce el ceño y se aleja, luciendo derrotado.
 
 - Deputy
 Diputado
-- The deputy surrenders her donuts.
+- The deputy surrenders ${Etheir} donuts.
 La diputada entrega sus donas.
 - The deputy slaps on some cuffs! (+RestraintAdded)
 ¡El diputado pone unas esposas! (+ Restricción agregada)
@@ -3616,7 +3616,7 @@ El guerrero ninja se retira a las sombras.
 El guerrero ninja usa una técnica de unión tradicional (+ Restricción Agregada)
 - The ninja warrior tosses a shuriken and hits you! (Stunned!)
 ¡El guerrero ninja lanza un shuriken y te golpea! (¡Aturdido!)
-- The ninja warrior uses a lock to give herself the upper hand! (DamageTaken)
+- The ninja warrior uses a lock to give ${Ethem}self the upper hand! (DamageTaken)
 ¡La guerrera ninja usa un candado para ganar ventaja! (Daño Recibido)
 - The ninja warrior uses a subduing technique! (DamageTaken)
 ¡El guerrero ninja usa una técnica de sometimiento! (Daño Recibido)
@@ -3706,9 +3706,9 @@ Corazón de dragón venenoso
 El Poison Dragonheart se retira en una niebla verde.
 - The Poison Dragonheart apprehends you! (+RestraintAdded)
 ¡El Corazón de Dragón Venenoso te aprehende! (+ Restricción agregada)
-- The Poison Dragonheart smacks you with her axe! (DamageTaken)
+- The Poison Dragonheart smacks you with ${Etheir} axe! (DamageTaken)
 ¡La Poison Dragonheart te golpea con su hacha! (Daño Recibido)
-- The Poison Dragonheart thrums her claws across your figure! (DamageTaken)
+- The Poison Dragonheart thrums ${Etheir} claws across your figure! (DamageTaken)
 ¡El Poison Dragonheart golpea con sus garras tu figura! (Daño Recibido)
 ### The Dragonheart locks your restraint using natural magics! (DamageTaken)
 
@@ -3778,9 +3778,9 @@ Shadow Dragonheart frunce el ceño y sale corriendo.
 ¡Shadow Dragonheart te aprehende! (+ Restricción agregada)
 ### The Shadow Dragonheart conjures a shadowly lock! (DamageTaken)
 
-- The Shadow Dragonheart extends her scythe and pulls you closer!!!
+- The Shadow Dragonheart extends ${Etheir} scythe and pulls you closer!!!
 ¡Shadow Dragonheart extiende su guadaña y te acerca!
-- The Shadow Dragonheart catches you with her scythe! (DamageTaken)
+- The Shadow Dragonheart catches you with ${Etheir} scythe! (DamageTaken)
 ¡Shadow Dragonheart te atrapa con su guadaña! (Daño Recibido)
 
 
@@ -3818,7 +3818,7 @@ El Dragonheart Rebel admite la derrota.
 Dríada
 - The dryad sinks into the ground.
 La dríada se hunde en el suelo.
-- The dryad extends an arm, and she wraps you in vines! (+RestraintAdded)
+- The dryad extends an arm, and ${Ethey} wrap${Es} you in vines! (+RestraintAdded)
 ¡La dríada extiende un brazo y te envuelve en vides! (+ Restricción agregada)
 - The dryad sings a song that mesmerizes you! (DamageTaken)
 ¡La dríada canta una canción que te hipnotiza! (Daño Recibido)
@@ -3832,19 +3832,19 @@ La dríada se hunde en el suelo.
 Muñeca altamente motivada
 - The doll falls to the ground, moaning loudly.
 La muñeca cae al suelo, gimiendo en voz alta.
-- The doll rubs her body against yours. You can feel the conduction. (DamageTaken)
+- The doll rubs ${Etheir} body against yours. You can feel the conduction. (DamageTaken)
 La muñeca frota su cuerpo contra el tuyo. Puedes sentir la conducción. (Daño Recibido)
-- The doll tackles you and squeezes you with her trembling legs! (DamageTaken)
+- The doll tackles you and squeezes you with ${Etheir} trembling legs! (DamageTaken)
 ¡La muñeca te aborda y te aprieta con sus piernas temblorosas! (Daño Recibido)
 
 
 - Dollsmith
 herrero
-- The dollsmith's suit locks her wrists together and renders her helpless.
+- The dollsmith's suit locks ${Etheir} wrists together and renders ${Etheir} helpless.
 El traje del fabricante de muñecas bloquea sus muñecas y la deja indefensa.
 - The dollsmith runs a latex-covered finger across your vulnerable body! (DamageTaken)
 ¡El fabricante de muñecas pasa un dedo cubierto de látex por tu cuerpo vulnerable! (Daño Recibido)
-- The dollsmith grabs you and applies her favorite doll restraints! (+RestraintAdded)
+- The dollsmith grabs you and applies ${Etheir} favorite doll restraints! (+RestraintAdded)
 ¡El fabricante de muñecas te agarra y aplica sus restricciones de muñecas favoritas! (+ Restricción agregada)
 - The dollsmith slaps a lock onto your restraints! (DamageTaken)
 ¡El herrero coloca un candado en tus ataduras! (Daño Recibido)
@@ -3854,11 +3854,11 @@ El traje del fabricante de muñecas bloquea sus muñecas y la deja indefensa.
 
 - Dollmaker's Apprentice
 Aprendiz de fabricante de muñecas
-- The dollmaker apprentice's suit becomes rigid and locks her limbs in place.
+- The dollmaker apprentice's suit becomes rigid and locks ${Etheir} limbs in place.
 El traje de la aprendiz de fabricante de muñecas se vuelve rígido y bloquea sus extremidades en su lugar.
-- The dollmaker's apprentice squeezes your body with her gloved hands! (DamageTaken)
+- The dollmaker's apprentice squeezes your body with ${Etheir} gloved hands! (DamageTaken)
 ¡La aprendiz de muñeca aprieta tu cuerpo con sus manos enguantadas! (Daño Recibido)
-- The dollmaker's apprentice uses her staff to encase you in doll restraints! (+RestraintAdded)
+- The dollmaker's apprentice uses ${Etheir} staff to encase you in doll restraints! (+RestraintAdded)
 ¡La aprendiz de fabricante de muñecas usa su bastón para envolverte en ataduras de muñecas! (+ Restricción agregada)
 - The dollmaker's apprentice slips a lock onto your restraints! (DamageTaken)
 ¡El aprendiz de fabricante de muñecas pone un candado en tus ataduras! (Daño Recibido)
@@ -3902,7 +3902,7 @@ Niña lobo
 
 ### Wolfguard
 
-- The wolfguard's suit punishes her for poor performance!
+- The wolfguard's suit punishes ${Etheir} for poor performance!
 ¡El traje de Wolfguard la castiga por su bajo rendimiento!
 - The wolfguard lunges at you and strikes you!
 ¡La guardia lobo se abalanza sobre ti y te golpea!
@@ -3940,7 +3940,7 @@ Nunca más operativo
 Aprendiz de entrenador
 - The trainer's apprentice escapes!
 ¡El aprendiz de entrenador se escapa!
-- The trainer's apprentice rubs her claws across your chest playfully! (DamageTaken)
+- The trainer's apprentice rubs ${Etheir} claws across your chest playfully! (DamageTaken)
 ¡La aprendiz de entrenador frota sus garras en tu pecho juguetonamente! (Daño Recibido)
 - The trainer's apprentice secures you in training gear! (+RestraintAdded)
 ¡El aprendiz de entrenador te asegura el equipo de entrenamiento! (+ Restricción agregada)
@@ -4094,7 +4094,7 @@ Zumbido
 
 ### Cyber Warden
 
-### The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
+### The cyber warden's suit goes into lockdown, leaving ${Etheir} wiggling helplessly!
 
 ### The cyber warden applies an advanced locking technology!
 
@@ -4136,7 +4136,7 @@ Tienda de energía
 
 ### Alkahestor
 
-- The alkahestor resigns to her fate.
+- The alkahestor resigns to ${Etheir} fate.
 El alkahestor se resigna a su destino.
 - The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)
 ¡El alkahestor libera un vial de líquido que te envuelve! (+ Restricción agregada)
@@ -4172,9 +4172,9 @@ El elemental de cuerda se anuda y cae al suelo, inerte.
 Elemental de cuero
 - The leather elemental sits down and sulks.
 El elemental de cuero se sienta y se pone de mal humor.
-- The leather elemental wraps her long extremities around your body! (+RestraintAdded)
+- The leather elemental wraps ${Etheir} long extremities around your body! (+RestraintAdded)
 ¡La elemental de cuero envuelve sus largas extremidades alrededor de tu cuerpo! (+ Restricción agregada)
-- The leather elemental strikes you with her leather belts! (DamageTaken)
+- The leather elemental strikes you with ${Etheir} leather belts! (DamageTaken)
 ¡La elemental de cuero te golpea con sus cinturones de cuero! (Daño Recibido)
 - The leather elemental clicks a lock onto your restraints! (DamageTaken)
 ¡El elemental de cuero hace clic en un candado en tus ataduras! (Daño Recibido)
@@ -4194,13 +4194,13 @@ El entusiasta del limo grita y corre.
 
 - Miner
 Minero
-- The bandit tosses her pick to the ground and complains about her pay.
+- The bandit tosses ${Etheir} pick to the ground and complains about ${Etheir} pay.
 La bandida tira su pico al suelo y se queja de su paga.
 - The miner restrains you! (+RestraintAdded)
 ¡El minero te frena! (+ Restricción agregada)
-- The miner pins you with the haft of her pickaxe! (DamageTaken)
+- The miner pins you with the haft of ${Etheir} pickaxe! (DamageTaken)
 ¡La minera te clava con el mango de su pico! (Daño Recibido)
-- The miner pins you with the haft of her pickaxe and adds a lock! (DamageTaken)
+- The miner pins you with the haft of ${Etheir} pickaxe and adds a lock! (DamageTaken)
 ¡La minera te inmoviliza con el mango de su pico y agrega un candado! (Daño Recibido)
 
 
@@ -4226,7 +4226,7 @@ El bandido se derrumba.
 
 - Shady Dealer
 Traficante turbio
-- The dealer flees, leaving her goods behind.
+- The dealer flees, leaving ${Etheir} goods behind.
 El traficante huye, dejando atrás sus bienes.
 - The dealer uses some high-quality restraints on you! (+RestraintAdded)
 ¡El crupier usa algunas restricciones de alta calidad contigo! (+ Restricción agregada)
@@ -4262,7 +4262,7 @@ Jefe de bandidos
 El bandido se burla y se retira hasta la próxima vez.
 - The bandit restrains you tightly! (+RestraintAdded)
 ¡El bandido te sujeta con fuerza! (+ Restricción agregada)
-- The bandit runs her hands all along your restrained body! (DamageTaken)
+- The bandit runs ${Etheir} hands all along your restrained body! (DamageTaken)
 ¡La bandida recorre con sus manos todo tu cuerpo inmovilizado! (Daño Recibido)
 - The bandit chuckles and applies a lock! (DamageTaken)
 ¡El bandido se ríe y aplica un candado! (Daño Recibido)
@@ -4294,7 +4294,7 @@ El cazador de bandidos se retira.
 Luchador bandido
 - The bandit grappler retreats.
 El luchador bandido se retira.
-- The bandit grappler loops her chains around you! (+RestraintAdded)
+- The bandit grappler loops ${Etheir} chains around you! (+RestraintAdded)
 ¡La luchadora bandida te envuelve con sus cadenas! (+ Restricción agregada)
 - The bandit grappler caresses your restrained body! (DamageTaken)
 ¡El luchador bandido acaricia tu cuerpo contenido! (Daño Recibido)
@@ -4306,13 +4306,13 @@ El luchador bandido se retira.
 
 - Mummy
 Momia
-- The Mummy collapses and her body vanishes.
+- The Mummy collapses and ${Etheir} body vanishes.
 La Momia se derrumba y su cuerpo se desvanece.
 - The Mummy conjures a mystic wrapping! (+RestraintAdded)
 ¡La Momia evoca un envoltorio místico! (+ Restricción agregada)
 ### The Mummy conjures a magical lock upon you! (DamageTaken)
 
-- The Mummy punishes you with a blow from her staff! (DamageTaken)
+- The Mummy punishes you with a blow from ${Etheir} staff! (DamageTaken)
 ¡La Momia te castiga con un golpe de su bastón! (Daño Recibido)
 
 
@@ -4352,7 +4352,7 @@ Bastón guerrero
 El Bast Warrior se derrumba y maúlla en voz alta.
 - The Bast Warrior restrains you! (+RestraintAdded)
 ¡El Bast Warrior te frena! (+ Restricción agregada)
-- The Bast Warrior tickles you with her claws! (DamageTaken)
+- The Bast Warrior tickles you with ${Etheir} claws! (DamageTaken)
 ¡Bast Warrior te hace cosquillas con sus garras! (Daño Recibido)
 - The Bast Warrior pulls out a lock and slips it on! (DamageTaken)
 ¡El Bast Warrior saca un candado y lo desliza! (Daño Recibido)
@@ -4384,15 +4384,15 @@ Bast Cleric se derrumba y maúlla suavemente.
 
 ### High Cleric
 
-### The High Cleric locks herself in ritual bondage as punishment for failure.
+### The High Cleric locks ${Ethem}self in ritual bondage as punishment for failure.
 
-### The High Cleric holds up her staff and you feel intense vibrations throughout your body! (DamageTaken)
+### The High Cleric holds up ${Etheir} staff and you feel intense vibrations throughout your body! (DamageTaken)
 
 ### The High Cleric summons animated restraints to bind you! (+RestraintAdded)
 
 ### A flurry of mummy wrappings encase you and stun you! (DamageTaken)
 
-### The High Cleric smiles as she conjures many locks on your restraints! (DamageTaken)
+### The High Cleric smiles as ${Ethey} conjure${Es} many locks on your restraints! (DamageTaken)
 
 - The skeleton falls to pieces.
 El esqueleto se cae a pedazos.
@@ -4474,7 +4474,7 @@ Las zarzas están cortadas.
 ¡El líquido rojo burbujea y sale una baba redonda!
 - A revenant appears!
 ¡Aparece un aparecido!
-- Fuuka uses a talisman to call forth the spirits of her pets!
+- Fuuka uses a talisman to call forth the spirits of ${Ptheir} pets!
 ¡Fuuka usa un talismán para llamar a los espíritus de sus mascotas!
 
 
@@ -4534,17 +4534,17 @@ muñeca de fábrica
 La muñeca está sometida.
 ### Freed Doll
 
-### The doll returns to her place.
+### The doll returns to ${Etheir} place.
 
 - Encased Adventurer
 Aventurero encerrado
 - The encased adventurer loses hope.
 El aventurero encerrado pierde la esperanza.
-- The encased adventurer moans as she throws herself against you for help! (DamageTaken)
+- The encased adventurer moans as ${Ethey} throw${Es} ${Ethem}self against you for help! (DamageTaken)
 ¡La aventurera encerrada gime mientras se lanza contra ti en busca de ayuda! (Daño Recibido)
-- The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)
+- The encased adventurer sticks to you as ${Ethey} mumble${Es} incoherently! (DamageTaken)
 ¡La aventurera encerrada se pega a ti mientras murmura incoherencias! (Daño Recibido)
-### The encased adventurer pleads for help as her slime spreads to you! (+RestraintAdded)
+### The encased adventurer pleads for help as ${Etheir} slime spreads to you! (+RestraintAdded)
 
 - Slime
 Limo
@@ -4854,7 +4854,7 @@ Chorro de agua
 
 - Rope Witch
 Bruja de la cuerda
-- The rope witch retreats as her animated ropes chase her.
+- The rope witch retreats as ${Etheir} animated ropes chase ${Etheir}.
 La bruja de las cuerdas se retira mientras sus cuerdas animadas la persiguen.
 
 
@@ -4896,7 +4896,7 @@ Aprendiz de bruja
 
 ### The witch's apprentice smiles and summons a lock onto you! (DamageTaken)
 
-### The witch's apprentice smiles as she squeezes your chest! (DamageTaken)
+### The witch's apprentice smiles as ${Ethey} squeeze${Es} your chest! (DamageTaken)
 
 - Latex Apprentice
 aprendiz de látex
@@ -4934,7 +4934,7 @@ La bruja de metal se desvanece en una pila de polvo de metal, dejando atrás un 
 Bruja del limo
 - The slime witch vanishes into a pool of pink slime, leaving behind a keyring.
 La bruja de baba desaparece en un charco de baba rosa, dejando atrás un llavero.
-- The witch touches her with her sticky grasp! (+RestraintAdded)
+- The witch touches ${Etheir} with ${Etheir} sticky grasp! (+RestraintAdded)
 ¡La bruja la toca con su agarre pegajoso! (+ Restricción agregada)
 - The witch creates a magical lock made of hardened latex! (DamageTaken)
 ¡La bruja crea un candado mágico hecho de látex endurecido! (Daño Recibido)
@@ -4950,7 +4950,7 @@ El mago se queda dormido.
 ¡El mago sujeta una atadura alrededor de tu cuello! (+ Restricción agregada)
 - The wizard clips a lock to your restraints! (DamageTaken)
 ¡El mago engancha un candado a tus ataduras! (Daño Recibido)
-- The wizard laughs maniacally as she tickles you! (DamageTaken)
+- The wizard laughs maniacally as ${Ethey} tickle${Es} you! (DamageTaken)
 ¡El mago se ríe como un maníaco mientras te hace cosquillas! (Daño Recibido)
 
 
@@ -4962,7 +4962,7 @@ El hongo se retira al suelo.
 ¡La fun-gal sujeta una restricción alrededor de tu cuello! (+ Restricción agregada)
 - The fun-gal produces a magical lock on all your restraints! (DamageTaken)
 ¡La fun-gal produce un candado mágico en todas tus ataduras! (Daño Recibido)
-- The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
+- The fun-gal rubs your chest with ${Etheir} long, slender fingers! (DamageTaken)
 ¡La fun-gal frota tu pecho con sus dedos largos y delgados! (Daño Recibido)
 ### Crystal Slash
 
@@ -5014,7 +5014,7 @@ Herrero
 Modista
 - The dressmaker storms out in a rage.
 La modista sale furiosa.
-- The dressmaker has you try on one of her new accessories! (+RestraintAdded)
+- The dressmaker has you try on one of ${Etheir} new accessories! (+RestraintAdded)
 ¡La modista te hace probar uno de sus nuevos accesorios! (+ Restricción agregada)
 - The dressmaker adds a lock 'just to complete the look, you know?'
 La modista agrega un mechón 'solo para completar el look, ¿sabes?'
@@ -5038,9 +5038,9 @@ La enfermera te asegura que todo va a estar bien ~ (DamageTaken)
 bibliotecario
 - The librarian gets angry and retreats.
 El bibliotecario se enoja y se retira.
-- The librarian shushes you as she brandishes a restraint! (+RestraintAdded)
+- The librarian shushes you as ${Ethey} brandish${Ees} a restraint! (+RestraintAdded)
 ¡La bibliotecaria te hace callar mientras blande una restricción! (+ Restricción agregada)
-- The librarian snaps her fingers and sends a lock flying at you!
+- The librarian snaps ${Etheir} fingers and sends a lock flying at you!
 ¡La bibliotecaria chasquea los dedos y te lanza un candado!
 - The librarian whispers seductively into your ear! (DamageTaken)
 ¡El bibliotecario susurra seductoramente en tu oído! (Daño Recibido)
@@ -5096,7 +5096,7 @@ Hongo infectado
 
 - Jailer
 Carcelero
-- The jailer passes out and drops her possessions!
+- The jailer passes out and drops ${Etheir} possessions!
 ¡El carcelero se desmaya y deja caer sus posesiones!
 - The jailer locks your restraints!
 ¡El carcelero bloquea tus ataduras!
@@ -5112,7 +5112,7 @@ El guardia revisa sus restricciones para asegurarse de que estén seguras.
 
 - Guard
 Guardia
-- The guard passes out and drops her possessions!
+- The guard passes out and drops ${Etheir} possessions!
 ¡El guardia se desmaya y deja caer sus pertenencias!
 - The guard locks your restraints!
 ¡El guardia bloquea tus ataduras!
@@ -5128,7 +5128,7 @@ Guardia armado
 ¡El guardia armado se retira, pero deja caer un llavero!
 - The guard shocks you and slaps on some restraints! (+RestraintAdded)
 ¡El guardia te sorprende y te pone algunas restricciones! (+ Restricción agregada)
-### The guard shocks you with her taser!!!
+### The guard shocks you with ${Etheir} taser!!!
 
 ### The EnemyName applies a NewRestraintName over your OldRestraintName
 
@@ -5192,7 +5192,7 @@ El aventurero corrupto cae en un sueño profundo.
 ¡Los muchos brazos del aventurero corrupto se aferran a ti! (+ Restricción agregada)
 ### The corrupted aventurer clicks a lock on from behind you! (DamageTaken)
 
-- The corrupted adventurer drags her chilling fingers across your vulnerable skin! (DamageTaken)
+- The corrupted adventurer drags ${Etheir} chilling fingers across your vulnerable skin! (DamageTaken)
 ¡La aventurera corrupta arrastra sus dedos helados por tu piel vulnerable! (Daño Recibido)
 
 
@@ -5274,9 +5274,9 @@ Demonio
 El demonio es exorcizado.
 - The demon places you in dark, glassy restraints. (+RestraintAdded)
 El demonio te coloca en ataduras oscuras y vidriosas. (+ Restricción agregada)
-### The demon caresses you gently with her sharp nails! (DamageTaken)
+### The demon caresses you gently with ${Etheir} sharp nails! (DamageTaken)
 
-### The demon stuns you with her heavy mace! (+STUN)
+### The demon stuns you with ${Etheir} heavy mace! (+STUN)
 
 - Tickle Hand
 cosquillas en la mano
@@ -5352,7 +5352,7 @@ Quizá te suelten si te comportas...
 
 - Necromancer
 Nigromante
-- The necromancer faints. Ironic that she couldn't save herself.
+- The necromancer faints. Ironic that ${Ethey} couldn't save ${Ethem}self.
 El nigromante se desmaya. Irónico que no pudiera salvarse a sí misma.
 - The necromancer locks all of your restraints!
 ¡El nigromante bloquea todas tus ataduras!
@@ -10442,7 +10442,7 @@ Muñeca de exhibición
 Conjurar Petsuit
 ### Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool.
 
-- You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!
+- You conjure an enchanted petsuit which wraps around your target, forcing ${Ethem} to follow you!
 ¡Conjuras un traje de mascota encantado que envuelve a tu objetivo, obligándolo a seguirte!
 - You watch in horror as your own creation lunges toward you, binding your hands and feet!
 ¡Miras con horror cómo tu propia creación se lanza hacia ti, atándote las manos y los pies!
@@ -10684,7 +10684,7 @@ Selecciona qué criatura desbloquear
 ¡Hablas una palabra de mando!
 - None of the locks you are wearing respond to your magic.
 Ninguno de los candados que llevas responde a tu magia.
-- You can't help her with this.
+- You can't help ${Ethem} with this.
 No puedes ayudarla con esto.
 - You must target yourself, an enemy, or a locked object.
 Debes apuntarte a ti mismo, a un enemigo o a un objeto bloqueado.
@@ -10812,7 +10812,7 @@ Haz que la criatura objetivo (o tú mismo) gane +20 de armadura por turnos de du
 
 - The EnemyName gains increased physical armor!
 ¡El EnemyName gana una mayor armadura física!
-- The EnemyName buffs the physical armor of her allies!
+- The EnemyName buffs the physical armor of ${Ptheir} allies!
 ¡EnemyName mejora la armadura física de sus aliados!
 - The EnemyName deploys an energy shield to allies!
 ¡El EnemyName despliega un escudo de energía a los aliados!
@@ -11190,7 +11190,7 @@ Esqueleto de invocación masiva
 ¡Una nube de candados y cadenas traquetea mientras levita hacia ti!
 - A huge cloud of locks and chains clatters as it levitates toward you!
 ¡Una enorme nube de candados y cadenas traquetea mientras levita hacia ti!
-- Floating hands appear by the conjurer's side as she points her staff!
+- Floating hands appear by the conjurer's side as ${Pthey} point${Ps} ${Ptheir} staff!
 ¡Aparecen manos flotantes al costado del prestidigitador mientras apunta con su bastón!
 
 
@@ -12134,13 +12134,13 @@ Fantasma: El silencio es oro.
 Fantasma: Un buen esclavo no habla hasta que se dirige.
 - Ghost: Aww, so helpless~
 Fantasma: Aww, tan indefenso~
-- Ghost: Trussed up like a good girl~
+- Ghost: Trussed up like a good ${Psub}~
 Fantasma: Atado como una buena chica~
 - Ghost: You're going to stay that way for a good while.
 Fantasma: Te vas a quedar así por un buen tiempo.
 - Ghost: I love watching you hop around, it's funny!
 Fantasma: Me encanta verte saltar, ¡es gracioso!
-- Ghost: Just sit there like a good girl~
+- Ghost: Just sit there like a good ${Psub}~
 Fantasma: Siéntate ahí como una buena chica~
 - Ghost: I want to see you kneel~
 Fantasma: Quiero verte arrodillado~
@@ -12312,17 +12312,17 @@ no me repetiré
 
 - I hope you learned your lesson. Now get your butt out of here.
 Espero que hayas aprendido tu lección. Ahora saca tu trasero de aquí.
-- You've been a good girl. I hope you don't make the same mistake again. You can leave.
+- You've been a good ${Psub}. I hope you don't make the same mistake again. You can leave.
 Has sido una buena chica. Espero que no vuelvas a cometer el mismo error. Puedes irte.
-- That's a good girl. Now behave yourself, okay? You're free to go.
+- That's a good ${Psub}. Now behave yourself, okay? You're free to go.
 Esa es una buena chica. Ahora compórtate, ¿de acuerdo? Eres libre de irte.
 ### Looks like you got yourself in a bind! (she pats your butt playfully) Go make the others happy!
 
 ### I hope you learned your lesson.|Now get your butt out of here.
 
-### You've been a good girl. I hope you don't make the same mistake again.|You can leave.
+### You've been a good ${Psub}. I hope you don't make the same mistake again.|You can leave.
 
-### That's a good girl. Now behave yourself, okay?|You're free to go.
+### That's a good ${Psub}. Now behave yourself, okay?|You're free to go.
 
 ### Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!
 
@@ -12366,7 +12366,7 @@ Solo necesito agregar un poco de seguridad ~
 
 - Got yourself in trouble, eh?
 Te metiste en problemas, ¿eh?
-- Looks like you're shaping up to be a good girl~
+- Looks like you're shaping up to be a good ${Psub}~
 Parece que te estás perfilando para ser una buena chica~
 - Oh! Looks like I've made a mistake...
 ¡Oh! Parece que he cometido un error...
@@ -13234,7 +13234,7 @@ No me rastrees
 Atrápame si puedes!
 - I've been naughty, looks like I need to be punished...
 He sido travieso, parece que necesito ser castigado...
-- I've been a bad girl, won't you do something about it?
+- I've been a bad ${Esub}, won't you do something about it?
 He sido una chica mala, ¿no harás algo al respecto?
 - Mmmph... maybe I talk too much...
 Mmmph... tal vez hablo demasiado...
@@ -13560,7 +13560,7 @@ Tengo otro lugar en mente para ti~
 ¡Parece que encontraste mis llaves! Entregarlas.
 ### Alert!
 
-- You look like a good girl. Come on~
+- You look like a good ${Psub}. Come on~
 Pareces una buena chica. Vamos ~
 - Come here, let's play!
 ¡Ven aquí, vamos a jugar!
@@ -14266,7 +14266,7 @@ Serás un buen sujeto de prueba...
 ¡Mantén tus sucias manos lejos de mí!
 - Your chances of winning are... less than zero.
 Tus posibilidades de ganar son... menos de cero.
-- Good girls don't use magic without permission.
+- Good ${Psub}s don't use magic without permission.
 Las chicas buenas no usan magia sin permiso.
 - Keep that magic away from my experiments!
 ¡Mantén esa magia alejada de mis experimentos!
@@ -15392,7 +15392,7 @@ Tienes un buen par de muñecas~
 Parece que estás oxidado. ¿Nunca has hecho entrenamiento de escape?
 - I'm going to have some fun with you~
 Voy a divertirme contigo~
-- Watch yourself, girl~
+- Watch yourself, ${Psub}~
 Cuídate, chica~
 - Nice find. I'll take it.
 Buen hallazgo Me lo llevo.
@@ -15500,7 +15500,7 @@ Deja de hacer el tonto.
 ¡Alto ahí!
 - It'll take you quite a while to pay off those damages!
 ¡Te llevará bastante tiempo pagar esos daños!
-- Now there, good girl!
+- Now there, good ${Psub}!
 Ahora ahí, ¡buena chica!
 - Wrong move!
 ¡Movimiento equivocado!
@@ -15550,11 +15550,11 @@ Ahora ahí, ¡buena chica!
 
 ### I've got somethin nice for ya.
 
-### Be a good girl for me, will ya?
+### Be a good ${Psub} for me, will ya?
 
 ### You need to show some restraint.
 
-### Stay where you belong, you naughty girl.
+### Stay where you belong, you naughty ${Psub}.
 
 ### Let's go somewhere more private.
 
@@ -16188,13 +16188,13 @@ Buen equipo. Me lo llevo.
 ¡Intenta salir de eso!
 ### Who am I? You beings may call me PTRN.
 
-### She thinks she can beat us~
+### ${PThey} thinks ${Pthey} can beat us~
 
 ### No one will save you.
 
 ### Come and accept your fate.
 
-### An unruly subject. She needs training.
+### An unruly subject. ${PThey} need${Ps} training.
 
 ### You should consider your actions and their consequences~
 
@@ -16402,7 +16402,7 @@ Probemos tus modales~
 Es hora de tu entrenamiento.
 - You need to be taught some manners, maid.
 Necesitas que te enseñen modales, doncella.
-- Good girl. I'll take that to the storage room.
+- Good ${Psub}. I'll take that to the storage room.
 Buena niña. Llevaré eso a la sala de almacenamiento.
 - I'll be taking those.
 Me los llevaré.
@@ -16484,7 +16484,7 @@ Dame ese.
 ¿No me entrenará, señorita?
 - I've been a bad girl...
 He sido una chica mala...
-- Miss, your uniform is dirty...
+- ${PHonor}, your uniform is dirty...
 Señorita, su uniforme está sucio...
 - Why hello miss...
 ¿Por qué hola señorita...
@@ -16506,13 +16506,13 @@ Gracias por recoger
 ¿¡Quién eres!?
 - Oh no!
 ¡Oh, no!
-- Miss! You're not allowed to cast that!
+- ${PHonor}! You're not allowed to cast that!
 ¡Extrañar! ¡No tienes permitido lanzar eso!
-- Miss, I have to report that!
+- ${PHonor}, I have to report that!
 ¡Señorita, tengo que informar de eso!
 - Eeep!
 ¡Eeep!
-- Miss, that's reserved for the head maid!
+- ${PHonor}, that's reserved for the head maid!
 ¡Señorita, eso está reservado para la doncella principal!
 - Thief! I'm reporting this!
 ¡Ladrón! Estoy reportando esto!
@@ -16630,7 +16630,7 @@ Una criada permanece en silencio hasta que se le pregunta.
 Ven conmigo. Te entrenaré personalmente.
 - You need to work on your ladylike manners.
 Necesitas trabajar en tus modales de dama.
-- Good girl, finding lost items.
+- Good ${Psub}, finding lost items.
 Buena chica, encontrando objetos perdidos.
 - I do not give you permmission to leave.
 No te doy permiso para salir.
@@ -16684,7 +16684,7 @@ Me quedaré con las llaves.
 
 ### Know your place, dear~
 
-### Good girls keep their hands to themselves.
+### Good ${Psub}s keep their hands to themselves.
 
 ### You broke the rules, now you'll face the consequences.
 
@@ -16872,7 +16872,7 @@ No tengo tiempo para esto.
 Mi ama me dijo que te hiciera pasar un buen rato...
 - Hehe, having fun?
 Jeje, divirtiéndote?
-- Miss, won't you come?
+- ${PHonor}, won't you come?
 Señorita, ¿no viene?
 - Hey, you're free to play, right~?
 Oye, eres libre de jugar, ¿verdad~?
@@ -17218,15 +17218,15 @@ Entregas tu arma de mala gana...
 (La SPEAKER inclina la cabeza)|Cierto, lo siento.
 - (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
 (El SPEAKER se sonroja profundamente)|Lo... lo siento! Por Favor Continúe...
-- (The SPEAKER smiles)|Keep up the good work, girl.
+- (The SPEAKER smiles)|Keep up the good work, ${Psub}.
 (El SPEAKER sonríe)|Sigue así, niña.
 - (The SPEAKER beeps)|Vital signs indicate honesty. Carry on.
 (El SPEAKER suena)|Signos vitales indican honestidad. Continuar.
 
 
-- (The SPEAKER smiles)|Good girl.
+- (The SPEAKER smiles)|Good ${Psub}.
 (El SPEAKER sonríe)|Buena chica.
-- (The SPEAKER smiles)|That's a good girl.
+- (The SPEAKER smiles)|That's a good ${Psub}.
 (El SPEAKER sonríe)|Es una buena chica.
 - (The SPEAKER smiles)|Thank you.
 (El SPEAKER sonríe)|Gracias.
@@ -17252,7 +17252,7 @@ Entregas tu arma de mala gana...
 (El SPEAKER se acerca a usted)|Contrabando detectado. Iniciando confiscación.|Por favor cumpla.
 ### (The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
 
-### (The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
+### (The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?
 
 ### (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
 
@@ -17328,7 +17328,7 @@ Eso suena bien...
 ¡Déjame salir en este instante!
 - (Scream into your gag uselessly)
 (Grita en tu mordaza inútilmente)
-- I will be a good girl!
+- I will be a good ${Psub}!
 ¡Seré una buena chica!
 - (Giggle and wiggle your body)
 (Ríete y mueve tu cuerpo)
@@ -17336,11 +17336,11 @@ Eso suena bien...
 
 
 
-- (The SPEAKER approaches you in your cell)|Back again, are we? Silly girl.|You know we don't take no for an answer.
+- (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You know we don't take no for an answer.
 (El SPEAKER se acerca a ti en tu celda)|Otra vez, ¿verdad? Niña tonta. Sabes que no aceptamos un no por respuesta.
 
 
-- (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(She leaves and returns with some toys...)|Now hold still!
+- (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
 (El SPEAKER le devuelve la sonrisa)|Oh, ¿esto es un juego para usted?|Entonces quizás debería hacerlo más divertido para usted...|(Ella se va y regresa con algunos juguetes...)|¡Ahora quédese quieto!
 - (The SPEAKER frowns)|I know exactly what you need...
 (El SPEAKER frunce el ceño)|Sé exactamente lo que necesitas...
@@ -17480,7 +17480,7 @@ No tengo tiempo para esto. (PERCENT de probabilidad de evitar)
 
 
 
-### (The SPEAKER smiles as she hides her hands behind her back)|Have you heard of 'sensory deprivation'?
+### (The SPEAKER smiles as ${Ethey} hide${Es} her hands behind her back)|Have you heard of 'sensory deprivation'?
 
 ### (The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!
 
@@ -17520,9 +17520,9 @@ No tengo tiempo para esto. (PERCENT de probabilidad de evitar)
 
 ### (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
 
-### (The SPEAKER takes a duster gag from her satchel)|Such a good girl!|So here's what I have for you~|It's a special tool to help keep the place clean.
+### (The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
 
-### (The SPEAKER grins)|I'm glad we could come to an understanding~|(She takes out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+### (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
 
 ### (The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
 
@@ -17530,11 +17530,11 @@ No tengo tiempo para esto. (PERCENT de probabilidad de evitar)
 
 ### (The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(She pulls out a duster gag from her satchel and grins)
 
-### (The SPEAKER smiles)|Don't be afraid!|(She turns the gag with the round mouth ball clearly visible)|Now open up...
+### (The SPEAKER smiles)|Don't be afraid!|(${EThey} turn${Es} the gag with the round mouth ball clearly visible)|Now open up...
 
 ### (The SPEAKER shrugs)|Fine, I'll get someone else to clean up.
 
-### (The SPEAKER places the gag in your mouth)|(She then buckles up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
+### (The SPEAKER places the gag in your mouth)|(${EThey} then buckle${Es} up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!
 
 ### (The SPEAKER catches you and forces the gag on you)|(You feel it tighten as it locks on securely...)|I don't want to hear it!|Now go and do your job~
 
@@ -17560,7 +17560,7 @@ No tengo tiempo para esto. (PERCENT de probabilidad de evitar)
 (El SPEAKER levanta un RESTRAINT)|Encontré esto cerca de una vieja armadura.|Creo que es un casco o algo así...
 - (The SPEAKER winks and locks it on)|I feel much safer already~
 (El SPEAKER guiña un ojo y lo bloquea)|Ya me siento mucho más seguro~
-- (The SPEAKER pouts)|Aww, spoilsport!|(She returns to fighting her imaginary enemies)
+- (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting her imaginary enemies)
 (El SPEAKER hace pucheros)|Aww, ¡aguafiestas!|(Ella vuelve a luchar contra sus enemigos imaginarios)
 - (The SPEAKER shrugs)|Your loss~
 (El SPEAKER se encoge de hombros)|Tu pérdida~
@@ -17748,7 +17748,7 @@ Bueno... seguro entonces.
 
 ### (An excited SPEAKER turns to you)|Eureka, I've done it!|Do you want to see?
 
-### (The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(She holds out the container)
+### (The SPEAKER pulls out a pressurized flask)|Behold! A gaseous form of latex!|I've coated the interior with a layer of inert slime to keep it secure.|Here, have a look!|(${EThey} hold${Es} out the container)
 
 ### (The flask springs a leak)|Oh no! That wasn't supposed to happen!|(The gas crystalizes into a RESTRAINT across your body)
 
@@ -17756,11 +17756,11 @@ Bueno... seguro entonces.
 
 - (The SPEAKER sighs)|So hard to find good help out here...
 (El SPEAKER suspira)|Es tan difícil encontrar buena ayuda aquí...
-### (The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(She unscrews the cap)
+### (The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(${EThey} unscrew${Es} the cap)
 
 ### (The green gas starts leaking)|Oh no! It wasn't supposed to do that!
 
-### (You push her out of the way, but she frowns)|Hmph. This is your fault.
+### (You push her out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
 
 ### (You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
 
@@ -17880,7 +17880,7 @@ Yo- Bueno- O-Está bien~
 (UN SPEAKER te hace un gesto con gracia)|Qué bueno ver una cara amistosa~|¿Te gustaría ver algunos bienes élficos?
 - (The SPEAKER holds up a RESTRAINT)|These are some of our strictest.|Want to try?
 (El SPEAKER levanta una RESTRAINT)|Estos son algunos de los más estrictos.|¿Quiere probar?
-- (The SPEAKER smiles sweetly)|Such a good girl~|(The RESTRAINT locks with a loud click)
+- (The SPEAKER smiles sweetly)|Such a good ${Psub}~|(The RESTRAINT locks with a loud click)
 (El SPEAKER sonríe dulcemente)|Qué buena chica~|(El RESTRAINT se bloquea con un fuerte clic)
 - (The SPEAKER sagely nods)|As you wish~
 (El SPEAKER asiente sabiamente)|Como desees~
@@ -17924,7 +17924,7 @@ Bonito por favor~
 (UN SPEAKER juega con una cuerda plateada)|Hmm, necesito mejorar con esto.|¿Puedo practicar contigo?
 - (The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~
 (El SPEAKER sonríe felizmente)|Gracias niña~|Entonces empataré con RESTRAINT~
-- (The SPEAKER binds you tightly)|(The rope is tight, and she's clearly an expert.)|Mmm, not too bad~
+- (The SPEAKER binds you tightly)|(The rope is tight, and ${Etheyre} clearly an expert.)|Mmm, not too bad~
 (El SPEAKER te ata con fuerza)|(La cuerda está apretada, y ella es clara y experta.)|Mmm, no está tan mal~
 - (The SPEAKER pouts indignantly)|Why say yes then?!|(The SPEAKER walks off grumbling)
 (El SPEAKER hace un puchero indignado)|¿¡Entonces por qué decir que sí?!|(El SPEAKER se aleja refunfuñando)
@@ -17934,11 +17934,11 @@ Bonito por favor~
 (El SPEAKER hace un puchero indignado)|Oh no, no saldrás tan fácil.|¡Dijiste que ayudarías!
 - (The SPEAKER smirks)|Ooh, a chance to practice against resistance~|I can't pass that up!
 (El SPEAKER sonríe)|Ooh, una oportunidad de practicar contra la resistencia~|¡No puedo dejarla pasar!
-- (The SPEAKER can't keep the knots tight)|(Eventually, she gives up)|S-Stupid human...
+- (The SPEAKER can't keep the knots tight)|(Eventually, ${Ethey} give${Es} up)|S-Stupid human...
 (El SPEAKER no puede mantener los nudos apretados)|(Eventualmente, ella se da por vencida)|E-Estúpido humano...
-- (The SPEAKER strictly ties you up)|(You can feel she's done this many times)|(She smirks at you as she departs)
+- (The SPEAKER strictly ties you up)|(You can feel ${Etheyve} done this many times)|(${EThey} smirk${Es} at you as ${Ethey} depart${Es})
 (El SPEAKER te ata estrictamente)|(Puedes sentir que ha hecho esto muchas veces)|(Ella te sonríe mientras se va)
-- (The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(She makes a face at you as she leaves)
+- (The SPEAKER strictly ties you up)|(There's no slack anywhere!)|(${EThey} make${Es} a face at you as ${Ethey} leave${Es})
 (El SPEAKER te ata estrictamente)|(¡No hay holgura en ninguna parte!)|(Te hace una mueca mientras se va)
 
 
@@ -17974,11 +17974,11 @@ Seguiré el juego entonces~
 (El SPEAKER parece enfadado)|¡Oye! ¡EY! Estoy hablando con-|Ah, olvídalo.
 - (The SPEAKER grins sneakily)|I thought you might say that~|But it wasn't a choice...
 (El SPEAKER sonríe disimuladamente)|Pensé que podrías decir eso~|Pero no fue una elección...
-- (The SPEAKER follows you)|Not so fast there~|(She blocks your path)
+- (The SPEAKER follows you)|Not so fast there~|(${EThey} block${Es} your path)
 (El SPEAKER te sigue)|Ahí no tan rápido~|(Te bloquea el paso)
 - (The SPEAKER fumbles with the RESTRAINT)|C-Come on, open-|(You quickly walk away)
 (El SPEAKER busca a tientas el RESTRAINT)|V-Vamos, abre-|(Te alejas rápidamente)
-- (The SPEAKER adds the RESTRAINT)|Good luck with that one~|(She sounds like she's gloating...)
+- (The SPEAKER adds the RESTRAINT)|Good luck with that one~|(${EThey} sound${Es} like ${Etheyre} gloating...)
 (El SPEAKER agrega la RESTRAINT)|Buena suerte con eso~|(Suena como si estuviera regodeándose...)
 - (The SPEAKER roughly forces you down)|(Pushing your head down, the RESTRAINT slides on)|(The SPEAKER tugs your hair, then walks away)
 (El SPEAKER te obliga bruscamente a bajar)|(Empujando tu cabeza hacia abajo, el SOPORTE se desliza)|(El SPEAKER tira de tu cabello y luego se aleja)
@@ -18064,7 +18064,7 @@ S-Si señorita~
 (El SPEAKER traga saliva)|¡T-Tal vez no lo haga entonces!
 - (The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?
 (El SPEAKER agrega la RESTRAINT)|Te estás sonrojando querida~|¿Ella protesta demasiado?
-- (The SPEAKER giggles as she catches you and slaps on the cuffs)|No so fast, dear~
+- (The SPEAKER giggles as ${Ethey} catch${Ees} you and slaps on the cuffs)|No so fast, dear~
 (El SPEAKER se ríe cuando te atrapa y te da una palmada en las esposas)|No tan rápido, querida~
 
 
@@ -18144,11 +18144,11 @@ Se ve cómodo~
 (El SPEAKER asiente)|No lo creo~|Oh, y, eh, perdón por el golpe.
 - (The SPEAKER shakes her head)|You don't get off that lightly.|These are going on.
 (La SPEAKERA niega con la cabeza)|No se sale tan a la ligera.|Estos están pasando.
-- (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(She holds up a RESTRAINT)
+- (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(${EThey} hold${Es} up a RESTRAINT)
 (El SPEAKER frunce el ceño) Creo que debería. Solo molestarás a alguien más. (Ella sostiene una RESTRAINT)
 - (The SPEAKER sighs)|I'll let you off then.|Oh, and, uh, sorry for the bump.
 (El SPEAKER suspira)|Entonces te dejaré ir.|Ah, y, eh, perdón por el bache.
-- (The SPEAKER adds the RESTRAINT)|(As she's locking it, she giggles)|You're really cute actually~
+- (The SPEAKER adds the RESTRAINT)|(As ${Etheyre} locking it, ${Ethey} giggle${Es})|You're really cute actually~
 (El SPEAKER agrega la RESTRAINT)|(Mientras lo cierra, se ríe)|Eres muy lindo en realidad~
 - (The SPEAKER stumbles and grimaces)|Ugh! Fine, you can go then.|D-Didn't want to see you tied anyway...
 (El SPEAKER tropieza y hace una mueca)|¡Ugh! Bien, puedes irte entonces. N-No quería verte atada de todos modos...
@@ -18314,7 +18314,7 @@ B-bueno-o-bien...
 (El SPEAKER suspira)|Tal vez en otro momento entonces.
 - (The SPEAKER wraps a long chain around you)|(RESTRAINT hugs your body closely)|(You shiver as the cold metal touches you)
 (El SPEAKER envuelve una cadena larga a tu alrededor)|(RESTRAINT abraza tu cuerpo de cerca)|(Te estremeces cuando el frío metal te toca)
-- (The SPEAKER grins as she binds your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
+- (The SPEAKER grins as ${Ethey} bind${Es} your body)|(RESTRAINT digs into you a little)|Enjoy, cutie~
 (El SPEAKER sonríe mientras ata tu cuerpo)|(RESTRAINT se clava un poco en ti)|Disfruta, linda~
 
 
@@ -18386,9 +18386,9 @@ Bien vale...
 
 ### (The SPEAKER walks up to you)|Say, would you be interested in some 'protection?'
 
-### (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(She shows you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
+### (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(${EThey} show${Es} you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
 
-### (The SPEAKER blushes as she locks the belt around your waist)|I'm enjoying this more than I thought I would~
+### (The SPEAKER blushes as ${Ethey} lock${Es} the belt around your waist)|I'm enjoying this more than I thought I would~
 
 ### (The SPEAKER smiles)|Enjoy your freedom while it lasts~
 
@@ -18400,7 +18400,7 @@ Bien vale...
 
 ### (The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~
 
-### (The SPEAKER blushes as she locks the RESTRAINT onto you)|There we go~
+### (The SPEAKER blushes as ${Ethey} lock${Es} the RESTRAINT onto you)|There we go~
 
 ### (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Whoops! I guess I acted too soon.|Ah well~
 
@@ -18446,7 +18446,7 @@ Bien vale...
 
 ### (The SPEAKER pleads with you)|...point taken. But still!|I'll end up stuck in it for a really long time...
 
-- (The SPEAKER sighs and wears it herself)|(The lock starts glowing brightly...)
+- (The SPEAKER sighs and wears it ${Ethem}self)|(The lock starts glowing brightly...)
 (La SPEAKER suspira y se lo pone ella misma)|(El candado comienza a brillar intensamente...)
 - (The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
 (El SPEAKER parece aliviado)|¡Muchas gracias señorita!|¡No la olvidaré!
@@ -18496,13 +18496,13 @@ no te ayudaré Úselo usted mismo. (PERCENT de probabilidad de evitar)
 
 
 
-- (The SPEAKER grins as she sees you)|Hey there sweetie~|I think you'd look good in some ropes!
+- (The SPEAKER grins as ${Ethey} see${Es} you)|Hey there sweetie~|I think you'd look good in some ropes!
 (La SPEAKER sonríe cuando te ve)|Hola cariño~|¡Creo que te verías bien con algunas cuerdas!
 - (The SPEAKER looks at your bound body)|I've got some more ropes for you, babe!
 (El SPEAKER mira tu cuerpo atado)|¡Tengo más cuerdas para ti, nena!
 - (The SPEAKER smiles)|Okay, hold still while I get you rigged up~
 (El SPEAKER sonríe) Vale, quédate quieto mientras te arreglo~
-- (The SPEAKER slaps your butt as she ties the last knot)|All trussed up~
+- (The SPEAKER slaps your butt as ${Ethey} tie${Es} the last knot)|All trussed up~
 (La SPEAKER te da una palmada en el trasero mientras hace el último nudo)|Todo atado~
 - (The SPEAKER looks disappointed and packs her rope away)
 (La SPEAKER parece decepcionada y guarda su cuerda)
@@ -18514,7 +18514,7 @@ no te ayudaré Úselo usted mismo. (PERCENT de probabilidad de evitar)
 (El SPEAKER sonríe)|Pero ya he traído mucha cuerda conmigo~
 - (The SPEAKER frowns)|Suit yourself.
 (El SPEAKER frunce el ceño)|Como quieras.
-- (The SPEAKER smiles)|Good girl~
+- (The SPEAKER smiles)|Good ${Psub}~
 (El SPEAKER sonríe)|Buena chica~
 - (The SPEAKER takes you down and trusses you up tightly)|That'll teach you~
 (El SPEAKER te derriba y te ata con fuerza)|Eso te enseñará~
@@ -18542,11 +18542,11 @@ Bien. Tú ganas.
 
 
 
-- (The SPEAKER perks her ears as she sees you)|You've got a nice body.|I think it'll do better with some training!
+- (The SPEAKER perks her ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
 (El SPEAKER aguza los oídos cuando te ve)|Tienes un buen cuerpo.|¡Creo que te irá mejor con un poco de entrenamiento!
 - (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
 (El SPEAKER sonríe y le entrega un papel)|¡Nevermere Training siempre está buscando nuevos reclutas!|Le pediré que firme aquí...
-- (The SPEAKER gets you suited up)|There you go! Now go be a good girl!
+- (The SPEAKER gets you suited up)|There you go! Now go be a good ${Psub}!
 (El SPEAKER te pone el traje)|¡Ahí tienes! ¡Ahora sé una buena chica!
 - (The SPEAKER scoffs)|That's what they all say.
 (El SPEAKER se burla)|Eso es lo que dicen todos.
@@ -18586,7 +18586,7 @@ Bien. lo firmaré...
 (Sacude la cabeza y frunce el ceño) (PERCENT de posibilidades de evitar)
 
 
-- (The SPEAKER does a short bow as she sees you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
+- (The SPEAKER does a short bow as ${Ethey} see${Es} you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 (El SPEAKER hace una breve reverencia cuando lo ve)|Saludos.|Parece que posee cualidades que podemos aprovechar.|Me complacería ofrecerle un puesto...
 - (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
 (La SPEAKER sonríe brevemente antes de aclararse la garganta)|¡Fantástico!|Tengo tu uniforme aquí mismo...
@@ -18604,7 +18604,7 @@ Bien. lo firmaré...
 (El SPEAKER frunce el ceño)|No sabrás qué te golpeó.
 - (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
 (El SPEAKER sonríe)|Me alegro de que haya tomado la decisión correcta.|Ahora, su primera tarea será limpiar este piso.|Buena suerte.
-- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose...
+- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|You'll require additional training, I suppose...
 (El SPEAKER de repente se mueve más rápido de lo que puedes reaccionar)|(Sientes un pie presionando tu espalda mientras te obligan a bajar)|(Ella te pone un uniforme y te lo cierra con fuerza...)|Necesitarás entrenamiento adicional , Supongo...
 
 
@@ -18624,7 +18624,7 @@ Bien. lo firmaré...
 
 
 
-- (The SPEAKER perks her ears as she sees you)|Glory to the blessed kitty!|Are you prepared to join us?
+- (The SPEAKER perks her ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
 (La SPEAKER aguza los oídos al verte)|¡Gloria al bendito gatito!|¿Estás preparado para unirte a nosotros?
 - (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to cats.|And also we own you now.
 (El SPEAKER asiente felizmente)|¡Fantástico! Solo tienes que estar de acuerdo en ser bueno con los gatos. Y ahora también somos tuyos.
@@ -18712,7 +18712,7 @@ Bien... inscríbeme.
 
 - (The SPEAKER runs up to you)|Wow! You make a fine specimen-er, I mean...|Nice to meet you!
 (El SPEAKER corre hacia ti)|¡Guau! Eres un buen espécimen, quiero decir... ¡Encantado de conocerte!
-- (The SPEAKER smiles)|Now, I have something wonderful in store for you.|(She takes out a blue catsuit)|I'd like you to be my assistant!
+- (The SPEAKER smiles)|Now, I have something wonderful in store for you.|(${EThey} take${Es} out a blue catsuit)|I'd like you to be my assistant!
 (El SPEAKER sonríe)|Ahora, tengo algo maravilloso reservado para ti.|(Ella saca un catsuit azul)|¡Quiero que seas mi asistente!
 - (The SPEAKER looks excited)|Awesome! Let me help you get in uniform...
 (El SPEAKER se ve emocionado) | ¡Impresionante! Déjame ayudarte a ponerte el uniforme...
@@ -18726,7 +18726,7 @@ Bien... inscríbeme.
 (El SPEAKER frunce el ceño)|¡Es hora de hacer una prueba!
 - (The SPEAKER looks happy again)|Thank you! I'm super grateful!
 (El SPEAKER vuelve a mirar feliz)|¡Gracias! ¡Estoy súper agradecida!
-- (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as she breaks a glass vial)|(A suit of blue latex envelops you!)
+- (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
 (La SPEAKER inclina la cabeza)|Bien entonces. Tú ganas.|(Al salir, escuchas un 'es broma' mientras rompe un vial de vidrio)|(¡Te envuelve un traje de látex azul!)
 
 
@@ -18770,7 +18770,7 @@ Ve a buscar a alguien más. (PERCENT de probabilidad de evitar)
 (El SPEAKER frunce el ceño)|¡Difícilmente esclavitud!|A un simple esclavo no se le permitiría ni siquiera poner un pie en nuestra sociedad.
 - (The SPEAKER frowns)|We will meet again.
 (El SPEAKER frunce el ceño)|Nos volveremos a encontrar.
-- (The SPEAKER nods and smiles)|(She decorates your body with 'jewelry')|I am glad you had a change of heart.
+- (The SPEAKER nods and smiles)|(${EThey} decorate${Es} your body with 'jewelry')|I am glad you had a change of heart.
 (El SPEAKER asiente y sonríe)|(Ella decora tu cuerpo con 'joyas')|Me alegro de que hayas cambiado de opinión.
 - (The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur.
 (El SPEAKER se burla)|(Su magia de repente te ata fuertemente con cuerdas brillantes)|Aficionado.
@@ -18858,7 +18858,7 @@ Entonces parece que no tengo elección. (Únete a ella)
 (La SPEAKER inclina la cabeza)|Jaja, muy divertido.|Ambos sabemos que no eres uno de esos... ¿verdad?
 - (The SPEAKER frowns and readies for battle)|My instincts were right.
 (El SPEAKER frunce el ceño y se prepara para la batalla)|Mi instinto era correcto.
-- (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as she ties you in a strict rope hogtie...)|(She dusts off her hands)|We'll have a talk when you get out of that, okay?
+- (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off her hands)|We'll have a talk when you get out of that, okay?
 (El SPEAKER de repente te golpea contra el suelo)|(Sientes un pie en tu espalda mientras te ata con una cuerda estricta...)|(Ella se quita el polvo de las manos)|Hablaremos cuando llegues. fuera de eso, ¿de acuerdo?
 
 
@@ -18886,9 +18886,9 @@ Irse. (PERCENT de probabilidad de evitar)
 
 - (The SPEAKER beeps)|Prisoner 74121 identified.|Subject not registered in database.
 (El SPEAKER emite un pitido)|Prisionero 74121 identificado.|Sujeto no registrado en base de datos.
-- (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good girl' to enter database.
+- (The SPEAKER beeps)|Confirming database entry.|Say 'I will be a good ${Psub}' to enter database.
 (El SPEAKER emite un pitido)|Confirmando la entrada a la base de datos.|Di 'Seré una buena chica' para ingresar a la base de datos.
-- (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good girl.
+- (The SPEAKER beeps and applies tracking gear)|(The metallic cables click into place with a soft beep)|Prisoner 74121 registered. Good ${Psub}.
 (El SPEAKER emite un pitido y aplica el mecanismo de seguimiento)|(Los cables metálicos encajan en su lugar con un pitido suave)|Prisionero 74121 registrado. Buena niña.
 - (The SPEAKER beeps)|Acknowledged. Be warned:|Lost contact with Sections 98, 97, 96, 95...|(The list goes on...)
 (El SPEAKER emite un pitido)|Reconocido. Advertencia:|Se perdió el contacto con las Secciones 98, 97, 96, 95...|(La lista continúa...)
@@ -18916,13 +18916,13 @@ Prisionero 74121? Debes estar equivocado...
 (Evitar el robot)
 
 
-- Prisoner 74121 reporting. I will be a good girl.
+- Prisoner 74121 reporting. I will be a good ${Psub}.
 Informe del prisionero 74121. Seré una buena chica.
 - Actually, I am an administrator. (Refuse)
 En realidad, soy un administrador. (Rechazar)
 
 
-- I'm sorry, I will be a good girl!
+- I'm sorry, I will be a good ${Psub}!
 ¡Lo siento, seré una buena chica!
 - What? (PERCENT chance to avoid)
 ¿Qué? (PERCENT de probabilidad de evitar)
@@ -19068,7 +19068,7 @@ Está bien, me los pondré...
 
 
 
-- (The SPEAKER does a short bow as she sees you)|Um... hi!|I have a letter for you...
+- (The SPEAKER does a short bow as ${Ethey} see${Es} you)|Um... hi!|I have a letter for you...
 (El SPEAKER hace una pequeña reverencia cuando te ve)|Um... ¡hola!|Tengo una carta para ti...
 - (The letter is a contract from the College)|(They want you to sign up as an instructor for apprentices)|(The SPEAKER looks at you nervously.)
 (La carta es un contrato del Colegio)|(Quieren que te registres como instructor de aprendices)|(El SPEAKER te mira nervioso.)
@@ -19212,7 +19212,7 @@ Bien. lo leeré (Únete al Colegio como instructor)
 
 
 
-### (The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
+### (The SPEAKER rattles as ${Ethey} wave${Es})|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
 
 ### (The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
 
@@ -19242,7 +19242,7 @@ Bien. lo leeré (Únete al Colegio como instructor)
 
 ### (The SPEAKER blushes)|Actually, I was saving that for myself...
 
-### (The SPEAKER grins)|Good girls don't need one of those~
+### (The SPEAKER grins)|Good ${Psub}s don't need one of those~
 
 ### (The SPEAKER buzzes)|Error, insufficient access privileges.
 
@@ -19256,7 +19256,7 @@ Bien. lo leeré (Únete al Colegio como instructor)
 
 ### (The SPEAKER beeps)|Insufficient currency.
 
-### (Look at what she wants to buy)
+### (Look at what ${Ethey} want${Es} to buy)
 
 - You're giving me everything you have.
 Me estás dando todo lo que tienes.
@@ -19428,7 +19428,7 @@ Me estás dando todo lo que tienes.
 
 ### (The SPEAKER blushes)|This is... my new favorite.
 
-### (The SPEAKER's eyes widen as she wolfs down the golden cookie)|Truly divine...
+### (The SPEAKER's eyes widen as ${Ethey} wolf${Es} down the golden cookie)|Truly divine...
 
 
 
@@ -19454,7 +19454,7 @@ Me estás dando todo lo que tienes.
 (El SPEAKER sonríe)|¡Vaya! ¡Eso es tan cool!
 
 
-### (Look at what she has to sell)
+### (Look at what ${Ethey} ${Ehas} to sell)
 
 ### (Sell Item0 for ItemCost0 gp) (Owned: AMNT0)
 
@@ -19496,7 +19496,7 @@ Me estás dando todo lo que tienes.
 
 ### (Buy Item9 for ItemCost9 gp) (Owned: AMNT9)
 
-- (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)
+- (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(${EThey} will remain and help you with restraints for 50 turns)
 (El SPEAKER aparece en un destello de luz)|Vengo en nombre de la Diosa.|¿Supongo que necesitas mi ayuda?|(Ella permanecerá y te ayudará con las ataduras durante 50 turnos)
 - (The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?
 (El SPEAKER te da dos cuchillos)|No te lastimes con estos, ¿de acuerdo?
@@ -19508,7 +19508,7 @@ Me estás dando todo lo que tienes.
 
 ### (The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!
 
-### (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)
+### (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(${EThey} perform${Es} a short prayer and a random divine lock comes off)
 
 - (Ask for 2 knives)
 (Pedir 2 cuchillos)
@@ -19690,7 +19690,7 @@ Me estás dando todo lo que tienes.
 
 ### (Move closer, attempting to cuddle)
 
-### (The SPEAKER smiles)|You do, in fact!|(She inches closer)
+### (The SPEAKER smiles)|You do, in fact!|(${EThey} inch${Ees} closer)
 
 ### (The SPEAKER smiles gently)|Aren't you precious~
 
@@ -19868,7 +19868,7 @@ El fabricante de muñecas cae de rodillas al suelo, ¡admitiendo la derrota!
 
 ### Fuuka
 
-- Fuuka surrounds herself in defensive talismans!
+- Fuuka surrounds ${Ethem}self in defensive talismans!
 ¡Fuuka se rodea de talismanes defensivos!
 - Fuuka wraps you tightly in restraints! (+RestraintAdded)
 ¡Fuka te envuelve con fuerza en las ataduras! (+ Restricción agregada)
@@ -19876,19 +19876,19 @@ El fabricante de muñecas cae de rodillas al suelo, ¡admitiendo la derrota!
 ¡Fuka aprieta tus pechos y sonríe! (Daño Recibido)
 ### Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)
 
-- Fuuka surrounds herself in defensive talismans one more time!
+- Fuuka surrounds ${Ethem}self in defensive talismans one more time!
 ¡Fuuka se rodea de talismanes defensivos una vez más!
 - Fuuka wraps you furiously in restraints! (+RestraintAdded)
 ¡Fuuka te envuelve furiosamente en ataduras! (+ Restricción agregada)
-- Fuuka pouts as she tickles you relentlessly! (DamageTaken)
+- Fuuka pouts as ${Ethey} tickle${Es} you relentlessly! (DamageTaken)
 ¡Fuuka hace pucheros mientras te hace cosquillas sin descanso! (Daño Recibido)
 
 
-- (You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?
+- (You find a girl wearing an ornate dress)|(${EThey} glance${Es} at you)|And who might you be?
 (Encuentras a una chica con un vestido adornado)|(Ella te mira)|¿Y quién eres?
 - I should be asking the same of you.
 Yo debería estar preguntando lo mismo de ti.
-- (Growl at her)
+- (Growl at ${Ethem})
 (le gruñe)
 - (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
 (Ella sonríe)|Mi nombre es Fuuka, con las letras de Viento y Canción.|¿Te vas a presentar?
@@ -20078,13 +20078,13 @@ Eso suena genial. Pero, ¿quién eres, señorita?
 (EL SPEAKER se ríe)|No tienes que consentir, querida~
 - I never said I consented to being a pet!
 ¡Nunca dije que consentía en ser una mascota!
-- (Give her a puzzled look and shake your head)
+- (Give ${Ethem} a puzzled look and shake your head)
 (Dale una mirada perpleja y sacude la cabeza)
 - No way!
 ¡De ninguna manera!
 - (Sigh and shrug)
 (Suspiro y encogimiento de hombros)
-- (Attack her without saying anything)
+- (Attack ${Ethem} without saying anything)
 (La ataca sin decir nada)
 
 
@@ -20168,7 +20168,7 @@ Mmmph! (Lucha débilmente)
 
 - (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
 (EL SPEAKER se resiste pero al final usted le fuerza una mordaza en la boca)|¡MMMMMPH!
-- (Gag her)
+- (Gag ${Ethem})
 (Amordazarla)
 
 
@@ -20242,7 +20242,7 @@ F-tarifa? ¿Hay una tarifa?
 
 ### (Sell Whole Stacks of Items)
 
-- Daww! What a cutie!|(She smiles and pats your head gently)
+- Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)
 ¡Diablos! ¡Qué linda!|(Ella sonríe y te da una palmadita en la cabeza)
 
 
@@ -20314,7 +20314,7 @@ mmmmm (Asiente con la cabeza y paga RESCUECOST gp)
 (El SPEAKER muestra un RESTRAINTNAME)|Tus captores son un buen mercado para las restricciones de alta seguridad.|Si te capturan, ¡quizás vean mi logo en este collar!|Es bastante cómodo y seguro,|usted' Terminaré sintiéndome más sumisa cuanto más lo uses.
 - (The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
 (El SPEAKER levanta un NOMBRE DE SUJECIÓN)|¡Tu cuerpo parece una gran valla publicitaria!|¡Este traje te hará tan atractivo que nadie podrá resistirse!|Y en el proceso de, ejem, examinarte,|Serán seguro de ver mi logotipo!
-- (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
+- (The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~
 (La SPEAKER se cruza de brazos y asiente)|¡Buena chica! Sabía que te sincerarías~
 
 
@@ -20326,15 +20326,15 @@ mmmmm (Asiente con la cabeza y paga RESCUECOST gp)
 ¿Qué tal algo más?
 
 
-- Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
+- Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
 ¡Excelente! Por favor, manténganse quietos~|(Ella coloca el RESTRAINTNAME y una foca despierta)|¡Vaya! ¡Menos mal que no vendí esa! Te dejaré quedártela, es mi regalo~
-- Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
+- Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
 ¡Excelente! Por favor, espera~|(Ella coloca el RESTRAINTNAME y no pasa nada)|¡Tenemos un ganador!|Sin embargo, no puedes tenerlo, no hasta que pagues~
-- Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
+- Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(${EThey} place${Es} the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
 Maravilloso. Espero verte ser entregado, er, regresar,|¡Un montón de tesoros en la mano!|(Ella te coloca el NOMBRE DE LA RESTRAINT y el sello se activa. No hay ojo de cerradura.)
-- Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
+- Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
 ¡Está bien! ¿Por qué no te quedas quieto~|(Ella te aparta el pelo y te abrocha el collar)|Ahora sal y encuéntrame algún tesoro~
-- You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
+- You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
 Te va a gustar, te lo garantizo~|(Ella saca el catsuit de un cajón, lo quita el polvo y te ayuda a ponértelo)|(No hay cremallera ni cierre, solo un agujero en el cuello muy elástico)|( Una vez que está puesto y bien ajustado, sientes que el cuello se afloja menos...)|(...y quitar la goma de tu piel se vuelve imposible)|Hermoso. Voy a dejarte ir ahora. ¡Estoy seguro de que tu nueva apariencia atraerá a muchos clientes!
 
 
@@ -20454,9 +20454,9 @@ no lo sientes...
 Cierras los ojos pero las vibraciones evitan que te quedes dormido...
 
 
-- (A SPEAKER lies hogtied in front of you)|(She looks at you with pleading eyes,)|(and mumbles incoherently through her gag)
+- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through her gag)
 (UNA SPEAKER yace amarrada frente a ti)|(Ella te mira con ojos suplicantes)|(y murmura incoherencias a través de su mordaza)
-- (A SPEAKER lies hogtied in front of you)|(She looks at you, mumbling and giggling into her gag)
+- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into her gag)
 (UN SPEAKER yace amarrado frente a ti)|(Ella te mira, murmurando y riéndose en su mordaza)
 - (SPEAKER looks grateful)|Thank you so much|I shall join your party.
 (EL SPEAKER parece agradecido)|Muchas gracias|Me uniré a su grupo.
@@ -20468,7 +20468,7 @@ Cierras los ojos pero las vibraciones evitan que te quedes dormido...
 (EL SPEAKER gime y rueda, sonrojándose profundamente)
 - Untie her
 Desátala
-- Make sure she is tight and secure
+- Make sure ${Ethey} ${Eis} tight and secure
 Asegúrate de que esté firme y segura.
 
 
@@ -20476,7 +20476,7 @@ Asegúrate de que esté firme y segura.
 (UNA SPEAKER choca contigo mientras está inmersa en sus pensamientos)|¡Oh! ¡Hola! Dime, te ves adorable... ¿Te importaría ayudarme a encontrar algo?
 - (The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!
 (El SPEAKER salta arriba y abajo)|¡Ah, maravilloso!|Perdí uno de mis vestidos.|Si pudieras encontrar uno, ponérmelo y traérmelo,|te lo agradecería mucho! ¡Gracias!
-- (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(She snaps a photo of you using a magic crystal)
+- (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(${EThey} snap${Es} a photo of you using a magic crystal)
 (El SPEAKER te mira como un animal rabioso)|¡Guau! ¡Te ves hermosa! ¡Muchas gracias! (Ella te toma una foto usando un cristal mágico)
 - (The SPEAKER giggles)|I never said I'd take it off, did I?
 (El SPEAKER se ríe) Nunca dije que me lo quitaría, ¿verdad?
@@ -20554,7 +20554,7 @@ Dale un Pergamino de Pureza
 
 ### (The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System.
 
-### (The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure she will have time to speak with you if you want to ask her.
+### (The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure ${Ethey} will have time to speak with you if you want to ask her.
 
 ### But why???
 
@@ -20566,7 +20566,7 @@ Dale un Pergamino de Pureza
 
 ### When are these orders from?
 
-### (You anger the SPEAKER. She gags you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?
+### (You anger the SPEAKER. ${EThey} gag${Es} you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?
 
 ### The facility is in ruins! This is pointless!
 
@@ -20580,13 +20580,13 @@ Dale un Pergamino de Pureza
 
 - (You don't have any keys that work on the lock)
 (No tienes ninguna llave que funcione en la cerradura)
-- (You can't help her, bound as tightly as you are...)
+- (You can't help ${Ethem}, bound as tightly as you are...)
 (No puedes ayudarla, tan atado como estás...)
 - (You unlock her, fumbling around for a while with your bound hands)
 (La desbloqueas, buscando a tientas por un rato con tus manos atadas)
 - (You unlock the SPEAKER)|Thank you!|Let's get out of here!
 (Desbloqueas el SPEAKER)|¡Gracias!|¡Salgamos de aquí!
-- (You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+- (You unlock the SPEAKER)|Mmmmph!|(She want${Es} to keep her gag...)
 (Desbloqueas el SPEAKER)|Mmmmph!|(Quiere quedarse con la mordaza...)
 - (You don't have any lockpicks)
 (No tienes ganzúas)
@@ -20596,7 +20596,7 @@ Dale un Pergamino de Pureza
 (No puedes forzar la cerradura con las manos atadas)
 - (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
 (Después de un rato, liberas el SPEAKER)|¡Gracias!|¡A movernos!
-- (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
+- (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} her head when you go for her gag...)
 (Después de un rato, liberas al SPEAKER)|¡Mmmmph!|(Ella niega con la cabeza cuando vas por su mordaza...)
 - (You don't have enough mana for a command word)
 (No tienes suficiente maná para una palabra de comando)
@@ -20604,7 +20604,7 @@ Dale un Pergamino de Pureza
 (Por mucho que lo intentes, tu boca está bien sellada)
 - (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
 (Pronuncias una palabra de comando para liberar al SPEAKER)|¡Muchas gracias!|¡Vamos!
-- (You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+- (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} her gag back on...)
 (Pronuncias una palabra de comando para liberar al SPEAKER)|¡Mmmmph!|(Ella bloquea su mordaza de nuevo...)
 ### (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
 
@@ -20616,7 +20616,7 @@ Usa una llave para desbloquearla.
 
 ### Apologize profusely!
 
-### (The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)
+### (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} is bugged and needs your help to get out)
 
 ### (Unlock her and file a bug report to Ada)
 
@@ -20644,7 +20644,7 @@ Usar una palabra de comando
 ¡Un enemigo te encontró mientras estabas ocupado!
 
 
-- (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
+- (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(${EThey} managed to pick the lock on your cell door)
 (UN SPEAKER te despierta golpeando los barrotes)|¡Despierta! ¡Larguémonos de aquí!|(Se las arregló para forzar la cerradura de la puerta de tu celda)
 ### (A SPEAKER wakes you up by melting the door with acid)|These guys were a piece of cake.|Now let's discover a way out of here!
 
@@ -20718,7 +20718,7 @@ Usar una palabra de comando
 
 ### (Secure NME into the furniture)
 
-### (You lock her into the furniture so that she stays in place)
+### (You lock her into the furniture so that ${Ethey} stay${Es} in place)
 
 
 
@@ -20898,7 +20898,7 @@ El bandido deja tras de sí una trampa furtiva...
 Trampa de damisela
 
 
-- The ENEMYNAME transforms nearby dolls into her subjects!
+- The ENEMYNAME transforms nearby dolls into ${Ptheir} subjects!
 ¡EL NOMBRE DEL ENEMIGO transforma las muñecas cercanas en sus súbditos!
 
 
@@ -20918,7 +20918,7 @@ Golpe directo de goma nuclear
 bomba nuclear de goma
 
 
-- (In the center of the room stands a woman wearing a latex dress)|(Around her are robotic servants, obeying her without a word)|(She has been watching you this entire time)
+- (In the center of the room stands a woman wearing a latex dress)|(Around ${Ethem} are robotic servants, obeying ${Ethem} without a word)|(${EThey} ${Ehas} been watching you this entire time)
 (En el centro de la habitación hay una mujer con un vestido de látex)|(A su alrededor hay sirvientes robóticos que la obedecen sin decir una palabra)|(Te ha estado observando todo este tiempo)
 - And who might you be?
 ¿Y tú quién eres?
@@ -20944,11 +20944,11 @@ Debes ser el fabricante de muñecas.
 ¡Soy famoso!
 - Indeed. And I'm here to bring you down.
 En efecto. Y estoy aquí para derribarte.
-- (Scoff at her)
+- (Scoff at ${Ethem})
 (Se burla de ella)
 
 
-- (The Dollmaker folds her arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
+- (The Dollmaker folds ${Etheir} arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
 (El fabricante de muñecas se cruza de brazos)|En cualquier caso, tu viaje termina aquí.|No aprecio que los sinvergüenzas husmeen en mis dominios.|Yo personalmente te guiaré hacia tu nuevo futuro como muñeca.
 - Do you have the Mistress' Staff?
 ¿Tienes el Bastón de la Maestra?
@@ -20956,7 +20956,7 @@ En efecto. Y estoy aquí para derribarte.
 (El fabricante de muñecas se ríe)|¿Esa baratija?|¡Así que eso es lo que buscas!|De hecho, no la tengo.|Pertenece a cierto archimago.
 - Then you are of no use to me.
 Entonces no me sirves.
-- (The Dollmaker summons a drone to her side)|Such arrogance! I'll have to teach you some manners!
+- (The Dollmaker summons a drone to ${Etheir} side)|Such arrogance! I'll have to teach you some manners!
 (El fabricante de muñecas llama a un dron a su lado)|¡Qué arrogancia! ¡Tendré que enseñarte modales!
 - What a bother.
 ¡Qué molestia!
@@ -20980,7 +20980,7 @@ Siéntete libre de intentarlo.
 Suena divertido... pero realmente necesito ponerme en marcha.
 
 
-- (The Dollmaker folds her arms as she walks over)|All tight and shiny!|You'll be my prized possession~
+- (The Dollmaker folds ${Etheir} arms as she walks over)|All tight and shiny!|You'll be my prized possession~
 (La fabricante de muñecas se cruza de brazos mientras se acerca)|¡Toda firme y brillante!|Serás mi posesión más preciada~
 - (The Dollmaker nods)|Already eager to obey!|So beautiful...
 (El fabricante de muñecas asiente)|¡Ya está ansioso por obedecer!|Tan hermoso...
@@ -20990,19 +20990,19 @@ Suena divertido... pero realmente necesito ponerme en marcha.
 No tengo más remedio que presentar.
 - You will never get away with this!
 ¡Nunca te saldrás con la tuya!
-- (Sigh and be forced to wear her visor)
+- (Sigh and be forced to wear ${Etheir} visor)
 (Suspiro y se ve obligado a usar su visor)
-- (Sigh and be forced to wear her mask)
+- (Sigh and be forced to wear ${Etheir} mask)
 (Suspira y se ve obligada a usar su máscara)
 - (Sigh and be forced to wear whatever she chooses)
 (Suspiro y se ve obligada a usar lo que ella elija)
-- (The Dollmaker places her visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them.
+- (The Dollmaker places ${Etheir} visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them.
 (El fabricante de muñecas coloca su visor sobre tu cara)|(Con un clic, sientes que los sujetadores se cierran alrededor de tu cabeza)|Ahora... tal como está, tengo una tarea para ti, muñeca.|Verás, algunas muñecas tienen estado escapando de mi reino. Quiero que vayas a capturarlos.
 
 
 - (The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower.
 (El fabricante de muñecas de repente se teletransporta)|Hmmph. Parece que tendré que usar mi gran potencia de fuego.
-- (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from her back as she storms toward you!)
+- (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as she storms toward you!)
 (El fabricante de muñecas se hunde en un charco de baba y emerge cerca)|(¡Brazos robóticos brotan de su espalda mientras se precipita hacia ti!)
 
 
@@ -21014,7 +21014,7 @@ No tengo más remedio que presentar.
 (Usa una visera de muñeca)
 - (Wear a doll mask)
 (Usa una máscara de muñeca)
-- (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into her open mouth and she starts mumbling angrily)
+- (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and she starts mumbling angrily)
 (Levantas la máscara del fabricante de muñecas, revelando a una joven haciendo pucheros adentro)|¿Qué estás--|(Le insertas una mordaza en su boca abierta y ella comienza a murmurar con enojo)
 
 
@@ -21226,7 +21226,7 @@ Su visor se atenúa para ayudarlo a concentrarse en su tarea.
 
 - Escaped Doll
 Muñeca escapada
-- You return the doll to her rightful owner.
+- You return the doll to ${Etheir} rightful owner.
 Devuelves la muñeca a su legítimo dueño.
 
 
@@ -26674,13 +26674,13 @@ Guardia firme
 
 ### Chef
 
-### You defeat the chef and claim her prize.
+### You defeat the chef and claim ${Etheir} prize.
 
 ### The chef makes sure you'll never steal again! (DamageTaken)
 
 ### The chef makes sure you'll never steal again! (+RestraintAdded)
 
-### The chef spanks you with her frying pan! (DamageTaken)
+### The chef spanks you with ${Etheir} frying pan! (DamageTaken)
 
 ### As you eat, you look up and notice that someone is not very happy with you.
 
@@ -26810,11 +26810,11 @@ cuerdas de tobillo
 
 ### I have to go return you~
 
-### Good girl~ Let's go again later~
+### Good ${Psub}~ Let's go again later~
 
 ### It's time for walkies!
 
-### That's a good girl!
+### That's a good ${Psub}!
 
 ### I want to keep you longer, but I've got things to do.
 
@@ -27502,9 +27502,9 @@ Cuerda de entrepierna de mitril
 
 ### The fighter knocks you to the ground and binds you! (+RestraintAdded)
 
-### The fighter strikes you with her weapon! (DamageTaken)
+### The fighter strikes you with ${Etheir} weapon! (DamageTaken)
 
-### The fighter takes you down with the back of her weapon! (DamageTaken)
+### The fighter takes you down with the back of ${Etheir} weapon! (DamageTaken)
 
 ### The fighter puts you in a hold and manages to slip on a lock! (DamageTaken)
 
@@ -27514,31 +27514,31 @@ Cuerda de entrepierna de mitril
 
 ### The fighter moans loudly and rolls around on the floor!
 
-### The fighter wraps her arms around you with bindings in hand! (+RestraintAdded)
+### The fighter wraps ${Etheir} arms around you with bindings in hand! (+RestraintAdded)
 
-### The fighter pins you with her weapon and grabs your breast! (DamageTaken)
+### The fighter pins you with ${Etheir} weapon and grabs your breast! (DamageTaken)
 
-### The fighter enchants her weapon and strikes you! (DamageTaken)
+### The fighter enchants ${Etheir} weapon and strikes you! (DamageTaken)
 
-### The fighter smiles lasciviously as she dangles a lock in front of you! (DamageTaken)
+### The fighter smiles lasciviously as ${Ethey} dangle${Es} a lock in front of you! (DamageTaken)
 
-### The fighter enchants her weapon and flies forward!
+### The fighter enchants ${Etheir} weapon and flies forward!
 
 
 
-### The fighter drops her weapon and admits defeat!
+### The fighter drops ${Etheir} weapon and admits defeat!
 
-### The fighter feints and strikes, slapping you with the flat of her blade! (DamageTaken)
+### The fighter feints and strikes, slapping you with the flat of ${Etheir} blade! (DamageTaken)
 
 ### The fighter proudly clicks on a lock! (DamageTaken)
 
 ### The fighter briefly vanishes and ends up behind you!
 
-### The fighter falls on her knees and begs!
+### The fighter falls on ${Etheir} knees and begs!
 
 ### The fighter throws an enchanted binding ring at you! (+RestraintAdded)
 
-### The fighter throws her weapon at you! (DamageTaken)
+### The fighter throws ${Etheir} weapon at you! (DamageTaken)
 
 ### Casting SPNME
 
@@ -27952,13 +27952,13 @@ Cuerda de entrepierna de mitril
 
 ### Lab Assistant
 
-### The assistant envelops herself in her own bubble for protection.
+### The assistant envelops ${Ethem}self in ${Etheir} own bubble for protection.
 
 ### Glue Bomb
 
 ### Glue Technician
 
-### The technician trips and glues herself to the floor.
+### The technician trips and glues ${Ethem}self to the floor.
 
 ### Quite sticky, innit?
 
@@ -28338,7 +28338,7 @@ Ataque a distancia
 
 ### The flame keeper steps away into a fiery portal.
 
-### The flame keeper grabs you, and volcanic restraints emerge from her armor! (+RestraintAdded)
+### The flame keeper grabs you, and volcanic restraints emerge from ${Etheir} armor! (+RestraintAdded)
 
 ### The flame keeper locks a restraint!
 
@@ -29574,7 +29574,7 @@ Ataque a distancia
 
 ### Rubber Elemental
 
-### The rubber elemental's restraints snap onto her and she falls over hogtied.
+### The rubber elemental's restraints snap onto ${Ethem} and ${Ethey} fall${Es} over hogtied.
 
 ### The rubber elemental molds itself into restraints! (+RestraintAdded)
 
@@ -29636,9 +29636,9 @@ Ataque a distancia
 
 ### The Timekeeper
 
-### The Timekeeper releases her grip on the timeline.
+### The Timekeeper releases ${Etheir} grip on the timeline.
 
-### The Timekeeper takes the time to enjoy herself with you... (DamageTaken)
+### The Timekeeper takes the time to enjoy ${Ethem}self with you... (DamageTaken)
 
 ### The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
 
@@ -29774,7 +29774,7 @@ Ataque a distancia
 
 ### Remove the Curse
 
-### Feed this to her
+### Feed this to ${Ethem}
 
 ### Sell for VLU gp
 
@@ -29814,7 +29814,7 @@ Ataque a distancia
 
 ### +AMNT gp
 
-### ENMY lets go of herself for AMNT damage!
+### ENMY lets go of ${Ethem}self for AMNT damage!
 
 ### Sonar
 
@@ -29996,11 +29996,11 @@ Ataque a distancia
 
 ### The ENMY struggles to find words!
 
-### The ENMY buzzes you with her VTY! (DMGDLT)
+### The ENMY buzzes you with ${Etheir} VTY! (DMGDLT)
 
-### The ENMY catches you and teases you with her VTY! (DMGDLT)
+### The ENMY catches you and teases you with ${Etheir} VTY! (DMGDLT)
 
-### The ENMY reaches for her VTY!
+### The ENMY reaches for ${Etheir} VTY!
 
 ### The ENMY sticks a VTY into you! (DMGDLT)
 
@@ -30098,7 +30098,7 @@ Ataque a distancia
 
 ### The gladiator puts you in a hold and binds you! (+RestraintAdded)
 
-### The gladiator chuckles as she spanks your butt! (DamageTaken)
+### The gladiator chuckles as ${Ethey} spank${Es} your butt! (DamageTaken)
 
 ### The gladiator smiles and clicks a lock on you! (DamageTaken)
 
@@ -30122,9 +30122,9 @@ Ataque a distancia
 
 ### The Warden falls flat on the ground, exhausted!
 
-### The Warden strikes you with her whip! (DamageTaken)
+### The Warden strikes you with ${Etheir} whip! (DamageTaken)
 
-### The Warden swings her enchanted whip and conjures locks on your body! (DamageTaken)
+### The Warden swings ${Etheir} enchanted whip and conjures locks on your body! (DamageTaken)
 
 
 
@@ -30148,7 +30148,7 @@ Ataque a distancia
 
 ### ...Zombie girl?
 
-### (SPEAKER tilts her head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too.
+### (SPEAKER tilts ${Etheir} head)|Yes, she was around before Vinlaga.|Her magic was gifted to her by the Goddess,|it is only natural that it works on her too.
 
 ### ...Paladins?
 
@@ -30176,7 +30176,7 @@ Ataque a distancia
 
 ### Who are the prisoners, anyway?
 
-### (SPEAKER folds her arms)|Is it not holy and just to bring down tyrants?
+### (SPEAKER folds ${Etheir} arms)|Is it not holy and just to bring down tyrants?
 
 ### Why did the Goddesses intervene?
 
@@ -30216,7 +30216,7 @@ Ataque a distancia
 
 ### It sounds like the gods are trying to hide something
 
-### (SPEAKER folds her arms)|And what makes you think an old myth would be relevant here?|Would the Archmagus herself lead a rebellion against the divine?
+### (SPEAKER folds ${Etheir} arms)|And what makes you think an old myth would be relevant here?|Would the Archmagus herself lead a rebellion against the divine?
 
 ### Was Sariel Vinlaga the leader of the old civilization?
 
@@ -30250,7 +30250,7 @@ Ataque a distancia
 
 ### That's a shame about your records, I'll be going now.
 
-### Mmpphgh? (Go to pass her)
+### Mmpphgh? (Go to pass ${Ethem})
 
 ### (She smirks)|Not so fast, dear~|You'll have to wear a special collar to pass.
 
@@ -30262,7 +30262,7 @@ Ataque a distancia
 
 ### Why don't you wear it yourself?
 
-### Hmmph. (Scoff at her)
+### Hmmph. (Scoff at ${Ethem})
 
 ### (She frowns)|Watch your tongue~
 
@@ -30328,13 +30328,13 @@ Ataque a distancia
 
 ### I didn't think it would involve a test...
 
-### (SPEAKER readies her whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
+### (SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
 
 ### I will never be collared by you!
 
 ### (Shake your head and scoff)
 
-### (SPEAKER folds her arms)|So be it.
+### (SPEAKER folds ${Etheir} arms)|So be it.
 
 ### Tell me about your collection.
 
@@ -30348,7 +30348,7 @@ Ataque a distancia
 
 ### I would rather fight you.
 
-### (Fight her)
+### (Fight ${Ethem})
 
 ### (SPEAKER shrugs)|Straight and to the point, eh?
 
@@ -30360,11 +30360,11 @@ Ataque a distancia
 
 ### (SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~
 
-### (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(She snaps her fingers and conjures a glowing ring)
+### (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
 
 ### (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your collar~|(She snaps her fingers and conjures a glowing ring)
 
-### (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(She snaps her fingers and conjures a glowing ring)
+### (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
 
 ### Was that magic?
 
@@ -30378,11 +30378,11 @@ Ataque a distancia
 
 ### (SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
 
-### (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
+### (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
 
 ### (Wear her belt anyway)
 
-### (SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
+### (SPEAKER shakes ${Etheir} head as you force a gag into ${Etheir} mouth)|MMMMMPH!
 
 ### The ENMY weakens your grip on your weapon! Enemies may disarm you if you stand too close...
 
@@ -30394,7 +30394,7 @@ Ataque a distancia
 
 ### (The SPEAKER smiles)|Why sure, sweetie, I can help you with that~
 
-### (The SPEAKER grins)|What a good girl!
+### (The SPEAKER grins)|What a good ${Psub}!
 
 ### (The SPEAKER blushes)|Those look like fun!
 
@@ -30576,7 +30576,7 @@ Ataque a distancia
 
 ### The spell congeals into restraints!
 
-### The mage starts channeling her energy!
+### The mage starts channeling ${Ptheir} energy!
 
 
 
@@ -30772,7 +30772,7 @@ Ataque a distancia
 
 ### Poison Dragon Girl
 
-### The dragon girl slashes you with her venomous nails! (DamageTaken)
+### The dragon girl slashes you with ${Etheir} venomous nails! (DamageTaken)
 
 ### The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)
 
@@ -31394,9 +31394,9 @@ Ataque a distancia
 
 ### You pick up a leash.
 
-### You are not in a condition to use a leash on her.
+### You are not in a condition to use a leash on ${Ethem}.
 
-### She refuses to be leashed unless you tie her up!
+### She refuses to be leashed unless you tie ${Ethem} up!
 
 ### You attach a leash to ENMY.
 
@@ -31562,7 +31562,7 @@ Ataque a distancia
 
 ### You're in my way!
 
-### Miss, you're blocking me...
+### ${PHonor}, you're blocking me...
 
 ### Step aside~
 
@@ -31770,7 +31770,7 @@ Ataque a distancia
 
 ### NPC is likely to escape.
 
-### NPC has managed to loosen her bonds.
+### NPC has managed to loosen ${Etheir} bonds.
 
 ### Any
 
@@ -32056,7 +32056,7 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### Ancient Worshipper
 
-### The ancient worshipper repents of her ways.
+### The ancient worshipper repents of ${Etheir} ways.
 
 ### The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
 
@@ -32066,7 +32066,7 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### Ancient Congregant
 
-### The ancient congregant repents of her ways.
+### The ancient congregant repents of ${Etheir} ways.
 
 ### The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
 
@@ -32076,7 +32076,7 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### Ancient Hierophant
 
-### The ancient hierophant repents of her ways.
+### The ancient hierophant repents of ${Etheir} ways.
 
 ### The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
 
@@ -32402,11 +32402,11 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 
 
-### (The Warden perks an eyebrow at the sight of you,|before a wide grin overtakes her face)|Ahhh Fuuka. Chosen by the Goddess?|How does it feel to once again be under a leash?
+### (The Warden perks an eyebrow at the sight of you,|before a wide grin overtakes ${Etheir} face)|Ahhh Fuuka. Chosen by the Goddess?|How does it feel to once again be under a leash?
 
-### Fuuka, take her down.
+### Fuuka, take ${Ethem} down.
 
-### (Send Fuuka to fight her)
+### (Send Fuuka to fight ${Ethem})
 
 ### That is none of your business. Now kneel.
 
@@ -32840,7 +32840,7 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### The psychic link conducts away some of the intensity...
 
-### Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
+### Your linked target lets go of ${Ethem}self, transmitting a wave of pleasure to yourself...
 
 ### FCTN RMTPE
 
@@ -32886,31 +32886,31 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 
 
-### (The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
+### (The SPEAKER sits encased in skintight rubber up to ${Etheir} nose.|Though the latex over ${Etheir} mouth is smooth and flat,|you know from ${Etheir} whimpering moans that ${Etheir} mouth|is totally filled with a gag, useless like the rest of ${Etheir} body.|Some sort of stand affixes ${Etheir} to the floor.)
 
 ### (You don't have any solvents that work on latex)
 
-### (You dissolve her restraints, fumbling around for a while with your bound hands)
+### (You dissolve ${Etheir} restraints, fumbling around for a while with your bound hands)
 
 ### (You rescue the SPEAKER)|Thank you!|Let's get out of here!
 
-### (You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+### (You rescue the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
 
 ### (You are not holding a cutting tool)
 
-### (You cut her restraints, fumbling around for a while with your bound hands)
+### (You cut ${Etheir} restraints, fumbling around for a while with your bound hands)
 
 ### (You don't have enough mana for Remove Slime)
 
 ### (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
 
-### (You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+### (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} locks ${Etheir} gag back on...)
 
 ### Dissolve the latex with a SLVNT
 
-### Cut her out with a sharp tool
+### Cut ${Ethem} out with a sharp tool
 
-### Use Remove Slime to unlock her
+### Use Remove Slime to unlock ${Ethem}
 
 ### Local Saves
 
@@ -32928,7 +32928,7 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### (The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
 
-### (The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+### (The SPEAKER folds ${Etheir} hands together)|${PHonor}, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
 
 ### (The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
 
@@ -33046,7 +33046,7 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### You humiliate the Maid Squire!
 
-### You defeat the Maid Knight! For now... she swears revenge.
+### You defeat the Maid Knight! For now... ${Ethey} swear${Es} revenge.
 
 ### The Squire zips you up in comfy leather gear!
 
@@ -33056,9 +33056,9 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### The Maid Knight secures your restraints!
 
-### The Squire dusts you with her duster plug.
+### The Squire dusts you with ${Etheir} duster plug.
 
-### The Maid Knight sweeps you with her cleaning halberd!
+### The Maid Knight sweeps you with ${Etheir} cleaning halberd!
 
 ### The EnemyName retreats!
 
