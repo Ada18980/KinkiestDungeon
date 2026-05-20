@@ -8004,7 +8004,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		Filters: {"Muzzle":{"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":0.7333333333333334,"red":2.283333333333333,"green":1.7333333333333334,"blue":1,"alpha":2.8000000000000003},"Harness":{"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":3.233333333333333,"red":1,"green":1,"blue":1,"alpha":1},"Collar":{"gamma":1,"saturation":1,"contrast":0.8166666666666667,"brightness":2.8666666666666667,"red":1,"green":1,"blue":1,"alpha":1},"Rim":{"gamma":1.8666666666666667,"saturation":1,"contrast":1,"brightness":3.1666666666666665,"red":1,"green":1,"blue":1,"alpha":1}},
 		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": 1, Pick: -100}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 12, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
 
-	{inventory: true, name: "BasicCollar", debris: "Belts", accessible: true, Asset: "LeatherCollar", Color: [KDBaseBlack, "Default"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 1, weight: 0, escapeChance: {"Struggle": -0.2, "Cut": 0.15, "Remove": 0.5, "Pick": 0.1},
+	{inventory: true, name: "BasicCollar", debris: "Belts", accessible: true, Asset: "LeatherCollar", Color: [KDBaseBlack, "Default"],
+		Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 1, weight: 0,
+		escapeChance: {"Struggle": -0.05, "Cut": 0.15, "Remove": 0.5, "Pick": 0.1},
+		limitChance: {Struggle: 0.15},
 		Model: "LeatherCollar",
 		maxwill: 0.25,
 		struggleBreak: true,

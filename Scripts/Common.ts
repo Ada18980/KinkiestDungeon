@@ -386,6 +386,19 @@ function CommonRandomItemFromList<T>(ItemPrevious: T, ItemList: T[]): T {
 	let NewItem = ItemPrevious;
 	if (!ItemList || ItemList.length == 0) return undefined;
 	while (NewItem == ItemPrevious)
+		NewItem = ItemList[Math.floor(KDRandom() * ItemList.length)];
+	return NewItem;
+}
+/**
+ * Get a random item from a list while making sure not to pick the previous one.
+ * @param ItemPrevious - Previously selected item from the given list
+ * @param ItemList - List for which to pick a random item from
+ * @returns The randomly selected item from the list
+ */
+function UIItemFromList<T>(ItemPrevious: T, ItemList: T[]): T {
+	let NewItem = ItemPrevious;
+	if (!ItemList || ItemList.length == 0) return undefined;
+	while (NewItem == ItemPrevious)
 		NewItem = ItemList[Math.floor(Math.random() * ItemList.length)];
 	return NewItem;
 }

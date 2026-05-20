@@ -942,6 +942,7 @@ KinkyDungeonRestart,"Menu"
 KinkyDungeonRestartConfirm,""
 KinkyDungeonRestartWait,"I will simply wait to see what happens."
 KinkyDungeonRestartQuitNoErase,"Save and return to menu"
+KinkyDungeonRestartQuitInDialogue,"Cannot save during dialogue"
 KinkyDungeonRestartYes,"Give up & delete save"
 KinkyDungeonRestartYesConfirm,"Yes, delete my save file!"
 KinkyDungeonRestartCapture,"Give up and go to jail."
@@ -33509,10 +33510,15 @@ KDOneBarFailMove,Your attempts to move off the stand only twist the plug inside 
 KDHonorificUnit,Unit
 KDHonorificUnit_LC,unit
 KDHonorificMiss,Miss
+KDHonorificMiss_LC,Miss
 KDHonorificMistress,Mistress
 KDHonorificMistress_LC,mistress
 KDHonorificMaster,Master
 KDHonorificMaster_LC,master
+KDHonorificMixx,Mixx
+KDHonorificMixx_LC,mixx
+KDHonorificMixtress,Mixtress
+KDHonorificMixtress_LC,mixtress
 
 KDSubTitleDoll,Doll
 KDSubTitleDoll_LC,doll
@@ -33626,16 +33632,34 @@ KDAlreadyActive,The spell is already active.
 rDollTransform,"(The SPEAKER reaches out with a gentle hand,\npropping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?"
 dDollTransform_Material,"Materials??"
 dDollTransform_MaterialGag,"(Squeak when ${Ethey} say${Es} 'materials')"
+dDollTransformMaterial_Yes,"That actually sounds quite delightful..."
+dDollTransformMaterial_YesGag,"(Nod and moan with delight)"
+dDollTransformMaterial_No,"Y-you don't need to do that..."
+dDollTransformMaterial_NoGag,"(Shake your head nervously)"
+dDollTransformMaterial_Brat,"I am not 'materials'!!!"
+dDollTransformMaterial_BratGag,"(Shake your head and scream into your gag)"
 dDollTransform_Caress,"Hands off!"
 dDollTransform_CaressGag,"(Shake your head angrily as ${Ethey} caress${Es} caress you)"
 dDollTransformCaress_Caress2,"I won't let you!"
 dDollTransformCaress_Caress2Gag,"(Keep shaking your head)"
-dDollTransformCaress_CaressFight,"Oh yeah? Try me! (Enter combat)"
-dDollTransformCaress_CaressFightGag,"(Enter combat with defiance in your eyes)"
+dDollTransformCaress_Caress2_Fight,"Oh yeah? Try me! (Enter combat)"
+dDollTransformCaress_Caress2_FightGag,"(Enter combat with defiance in your eyes)"
+dDollTransformCaress_Caress2_BackDown2,"(Bite your lip and back down)"
+dDollTransformCaress_Caress2_BackDown,"(Remain silent)"
 dDollTransformCaress_CaressWhimper,"(Whimper and give in)"
 dDollTransform_Whimper,"(Whimper pathetically)"
 dDollTransform_Curious,"Your showcase?"
 dDollTransform_CuriousGag,"(Tilt your head with interest)"
+dDollTransformCurious_Yes,"That sounds... most delightful."
+dDollTransformCurious_YesGag,"(Nod)"
+dDollTransformCurious_Yes2,"Indeed- wait, including me!?"
+dDollTransformCurious_Yes2Gag,"(Blush and nod)"
+dDollTransformCurious_Yes2_Yes,"I..."
+dDollTransformCurious_Yes2_YesGag,"(Mumble into your gag)"
+dDollTransformCurious_Yes2_No,"I don't think so..."
+dDollTransformCurious_Yes2_NoGag,"(Shake your head quickly)"
+dDollTransformCurious_No,"I don't like where this is going..."
+dDollTransformCurious_NoGag,"(Shake your head)"
 dDollTransform_Subby,"At your service~"
 dDollTransform_SubbyGag,"(Nod happily)"
 
@@ -33648,3 +33672,20 @@ rDollTransformSubby,"(The SPEAKER gives an approving nod)\nExcellent.\nYou'll be
 
 rDollTransformCaress_Caress2,"(The SPEAKER shrugs)\nYou don't have a choice in the matter.\nNot like that you don't~"
 
+rDollTransformCurious_Yes,"(The SPEAKER smiles)\nTerrific!\nLet's get started then, shall we?"
+rDollTransformCurious_Yes2,"(The SPEAKER smiles and nods)\nWhy of course!\nI can already tell you'll make a lovely addition..."
+rDollTransformCurious_Yes2_No,"(The SPEAKER furrows ${Etheir} brow)\nHmmm?"
+rDollTransformCurious_No,"(The SPEAKER glares at you)\nOh, you don't like my collection?\nNo matter, I'm sure you'll change your mind when you see it."
+
+rDollTransformPart2,"(The SPEAKER starts to circle around you,\nher heels clacking along the floor in perfect rhythm)\nNow then... which part of you shall we work on first..."
+
+dDollTransformPart2_Arms,"My arms, ${Ehonor}."
+dDollTransformPart2_Legs,"Start with my feet and move up."
+dDollTransformPart2_Face,"What happens to my face, ${Ehonor}?"
+dDollTransformPart2_Body,"Why not all at once, ${Ehonor}?"
+dDollTransformPart2_Silent,"(Remain silent and let ${Ethem} do as ${Ethey} please${Es})"
+dDollTransformPart2_Resist,"(Wiggle in place in a futile struggle)"
+
+rDollTransformPart2_Arms,"(The SPEAKER chuckles)\nThe question was rhetorical, but very well.\n(She reaches for your hands, grabbing them as she smiles)\nDid you know that a doll's arms are much more flexible than\nthose of a human? So long as your strings are not too tight...\n(Your arms feel cold, a faint tension tugs at your now-jointed fingers)"
+
+dNext,(...)

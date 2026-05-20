@@ -141,7 +141,7 @@ function KDDrawDialogue(delta: number): void {
 					tt = tt.replace (/\b(?:[Aa]|[Tt]he)\s+SPEAKER/, "SPEAKER");
 				}
 				DrawTextFitKD (tt.replace ("SPEAKER", npc_name),
-					1000, 320 + 45 * i - 25 * text.length, 
+					1000, 320 + DialogueSpacingA * i - DialogueSpacingB * text.length, 
 					900, KDBaseWhite, 
 					"black", 26, undefined, 115);
 			}
@@ -239,6 +239,9 @@ function KDDrawDialogue(delta: number): void {
 		KDGameData.CurrentDialogMsgValue = {};
 	}
 }
+
+let DialogueSpacingA = 40;
+let DialogueSpacingB = DialogueSpacingA/2;
 
 /**
  * @param Amount
@@ -2959,6 +2962,9 @@ function KDAggroViaDialogue(enemy: entity, unaware: boolean, aggroothers: boolea
 function KDIsGenderAmbiguous(player: entity) {
 	return false;
 }
+function KDIsMaster(player: entity) {
+	return false;
+}
 
 /**
  * Replaces mistress with miss, master, etc
@@ -2967,8 +2973,18 @@ function KDIsGenderAmbiguous(player: entity) {
  * @returns 
  */
 function KDGetHonorific(player: entity, lowercase?: boolean) {if (KinkyDungeonPlayerTags.get("Drone") || player?.Enemy?.tags?.robot || player?.Enemy?.tags?.cyborg) return TextGet("KDHonorificUnit"+ (lowercase ? "_LC" : ""));
-	if (player?.player && KinkyDungeonGoddessRep.Ghost < -25) return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMaster" : "KDHonorificMistress")+ (lowercase ? "_LC" : ""));
-	return TextGet("KDHonorificMiss"+ (lowercase ? "_LC" : ""));
+	if (player?.player && (KinkyDungeonStatsChoice.get("Dominant"))) return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMaster" : "KDHonorificMistress")+ (lowercase ? "_LC" : ""));
+	return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMixx" : (KDIsMaster(player) ? "KDHonorificMiss" : "KDHonorificMiss")) + (lowercase ? "_LC" : ""));
+}
+/**
+ * Replaces mistress with miss, master, etc
+ * @param player 
+ * @param lowercase 
+ * @returns 
+ */
+function KDGetHonorificIntimate(player: entity, lowercase?: boolean) {if (KinkyDungeonPlayerTags.get("Drone") || player?.Enemy?.tags?.robot || player?.Enemy?.tags?.cyborg) return TextGet("KDHonorificUnitNode"+ (lowercase ? "_LC" : ""));
+	if (player?.player && (KinkyDungeonStatsChoice.get("Dominant"))) return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMaster" : "KDHonorificMistress")+ (lowercase ? "_LC" : ""));
+	return TextGet((KDIsMaster(player) ? "KDHonorificMaster" : (KDIsGenderAmbiguous(player) ? "KDHonorificMixtress" : "KDHonorificMistress")) + (lowercase ? "_LC" : ""));
 }
 /**
  * replaces things like "good girl" and such with "good enby" or similar
@@ -3105,19 +3121,23 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 		youre: KDGetPronountheyre(player, player == KDPlayer() ? "You" : undefined),
 		youve: KDGetPronountheyve(player, player == KDPlayer() ? "You" : undefined),
 	
+		PHonorinti: KDGetHonorificIntimate(player),
 		PHonor: KDGetHonorific(player),
 		PSub: KDGetSubTitle(player),
 		PDim: KDGetDiminutive(player),
 
+		EHonorinti: KDGetHonorificIntimate(enemy),
 		EHonor: KDGetHonorific(enemy),
 		ESub: KDGetSubTitle(enemy),
 		EDim: KDGetDiminutive(enemy),
 
 		
+		Phonorinti: KDGetHonorificIntimate(player, true),
 		Phonor: KDGetHonorific(player, true),
 		Psub: KDGetSubTitle(player, true),
 		Pdim: KDGetDiminutive(player, true),
 
+		Ehonorinti: KDGetHonorificIntimate(enemy, true),
 		Ehonor: KDGetHonorific(enemy, true),
 		Esub: KDGetSubTitle(enemy, true),
 		Edim: KDGetDiminutive(enemy, true),

@@ -1113,7 +1113,25 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					KinkyDungeonSetFlag("DollTransformDialogue_Mat", 10);
 					return false;
 				},
-				leadsToStage: "",
+				options: {
+					"Brat": {
+						response: "Default",gag: true,
+						leadsToStage: "Caress_Caress2",
+					},
+					"No": {
+						response: "Default",gag: true,
+						leadsToStage: "Caress_Caress2",
+					},
+					"Yes": {
+						response: "Default", gag: true,
+						options: {
+							"Next": {
+								playertext: "Next",
+								leadsToStage: "Part2",
+							},
+						}
+					},
+				}
 			},
 			"Caress": {
 				response: "Default", gag: true,
@@ -1126,7 +1144,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					"Caress2": {
 						response: "Default", gag: true,
 						options: {
-							"CaressFight": {
+							"Fight": {
 								gag: true, playertext: "Default",
 								greyoutFunction: (_gagged, _player) => {
 									return KinkyDungeonHasWill(0.1);
@@ -1139,11 +1157,20 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								},
 								options: {"Leave": {playertext: "Leave", exitDialogue: true}}
 							},
+							"BackDown2": {
+								gagDisabled: true,
+								response: "Default",
+								leadsToStage: "Part2",
+							},
+							"BackDown": {
+								response: "Default",
+								leadsToStage: "Part2",
+							},
 						},
 					},
 					"CaressWhimper": {
 						response: "Default",
-						leadsToStage: "",
+						leadsToStage: "Part2",
 					}
 				}
 			},
@@ -1153,9 +1180,51 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 			"Curious": {
 				response: "Default", gag: true,
+				options: {
+					"Yes": {
+						response: "Default",gag: true,
+						options: {
+							"Next": {
+								playertext: "Next",
+								leadsToStage: "Part2",
+							},
+						}
+					},
+					"Yes2": {
+						response: "Default",gag: true,
+						options: {
+							"No": {
+								response: "Default",gag: true,
+								leadsToStage: "Caress_Caress2",
+							},
+							"Yes": {
+								response: "Default", gag: true,
+								leadsToStage: "Part2",
+							},
+						}
+					},
+					"No": {
+						response: "Default",gag: true,
+						options: {
+							"Next": {
+								playertext: "Next",
+								leadsToStage: "Part2",
+							},
+						}
+					},
+				}
 			},
 			"Subby": {
 				response: "Default", gag: true,
+			},
+			"Part2": {
+				prerequisiteFunction: () => {return false;},
+				response: "Default", gag: true,
+				options: {
+					"Arms": {
+						playertext: "Default", response: "Default",
+					},
+				}
 			},
 		}
 	},

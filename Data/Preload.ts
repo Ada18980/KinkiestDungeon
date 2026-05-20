@@ -408,26 +408,18 @@ KDLoadToggles();
 let linearList = [];
 if (KDToggles.MobileTextures) {
 	linearList.push(...[
-	"TextureAtlas/atlasmobile0.json",
-	"TextureAtlas/atlasmobileA0.json",
-	"TextureAtlas/atlasmobileB0.json",
-	"TextureAtlas/atlasmobileC0.json",
-	"TextureAtlas/atlasmobileD0.json",
-	"TextureAtlas/atlasmobileE0.json",]);
+	"TextureAtlas/models_mobile_0000.json",
+]);
 } else  {
 	linearList.push(...[
-	"TextureAtlas/atlas0.json",
-	"TextureAtlas/atlasA0.json",
-	"TextureAtlas/atlasB0.json",
-	"TextureAtlas/atlasC0.json",
-	"TextureAtlas/atlasD0.json",
-	"TextureAtlas/atlasE0.json",]);
+	"TextureAtlas/models_0000.json",
+]);
 }
 linearList.push(
-	"TextureAtlas/displace0.json");
+	"TextureAtlas/displacement_0000.json");
 
 let nearestList = [
-	"TextureAtlas/game0.json",
+	"TextureAtlas/game_0000.json",
 ]
 
 let CurrentLoading = "";

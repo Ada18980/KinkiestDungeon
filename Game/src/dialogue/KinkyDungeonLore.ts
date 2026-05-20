@@ -69,11 +69,11 @@ function KinkyDungeonNewLore() {
 			}
 		} else {
 			KinkyDungeonSendActionMessage(4, TextGet("ItemPickupLoreOld"), "gray", 2, false, false, undefined, "Ambient");
-			KinkyDungeonCurrentLore = CommonRandomItemFromList("", Object.keys(KDLore.Default));
+			KinkyDungeonCurrentLore = UIItemFromList("", Object.keys(KDLore.Default));
 		}
 		result = true;
 	} else {
-		KinkyDungeonCurrentLore = CommonRandomItemFromList("", Object.keys(KDLore.Default));
+		KinkyDungeonCurrentLore = UIItemFromList("", Object.keys(KDLore.Default));
 		if (!exploredLore[KinkyDungeonCurrentLore]) {
 
 			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), KDBaseWhite, 2, false, false, undefined, "Items");
@@ -89,7 +89,7 @@ function KinkyDungeonNewLore() {
 			}
 		} else {
 			KinkyDungeonSendActionMessage(4, TextGet("ItemPickupLoreOld"), "gray", 2, false, false, undefined, "Ambient");
-			KinkyDungeonCurrentLore = CommonRandomItemFromList("", Object.keys(KDLore.Default));
+			KinkyDungeonCurrentLore = UIItemFromList("", Object.keys(KDLore.Default));
 		}
 	}
 
