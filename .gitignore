@@ -32,6 +32,7 @@
 !/tsconfig.json
 !/README.md
 !/style.css
+!/tools/*
 
 *.wav
 
