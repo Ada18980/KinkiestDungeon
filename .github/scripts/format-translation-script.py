@@ -76,13 +76,13 @@ def parse_translation_file(translation_path):
 def reorder_translations(source_csv, translation_files, output_dir):
     """Reorder translation files based on the order of the original CSV."""
     
-    processed_texts = set()
     
     # Read the original CSV file
     source_data = parse_csv_lines(source_csv)
     
     # Process each translation file
     for trans_file in translation_files:
+        processed_texts = set()
         trans_path = Path(trans_file)
         key_based, text_based = parse_translation_file(trans_path)
         

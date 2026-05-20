@@ -589,9 +589,9 @@ KinkyDungeonSpellNovicePet3,Devoted Pet
 KinkyDungeonSpellDescriptionNovicePet3,"+3 slow reduction total while wearing a petsuit (from +2), but you cannot sprint (from +100% cost) when not wearing a petsuit and slow level is increased by +2 (from +1)."
 KinkyDungeonSpellNovicePetX,Bad Pet
 KinkyDungeonSpellDescriptionNovicePetX,"Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back."
-KinkyDungeonBuffNovicePet,${You} ${Pis} an expert in wearing a petsuit and ${Your} mobility is increased.
-KinkyDungeonBuffNovicePetBad,${You} ${Pis} too used to wearing petsuits! Sprinting is impaired.
-KinkyDungeonBuffNovicePetVeryBad,${You} ${Pis} a disobedient pet. ${You} should put on a petsuit!
+KinkyDungeonBuffNovicePet,${You} ${Yis} an expert in wearing a petsuit and ${Your} mobility is increased.
+KinkyDungeonBuffNovicePetBad,${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
+KinkyDungeonBuffNovicePetVeryBad,${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
 
 KinkyDungeonStatDominant,"Dominant"
 KinkyDungeonStatDescDominant,"They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage."
@@ -13837,7 +13837,7 @@ dBanditQuest_Help,(Show interest)
 
 rPrisonerJail,"(The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)"
 rPrisonerJailNoKeys,"(You don't have any keys that work on the lock)"
-rPrisonerJailUnlockHandsBound,"(You can't help her, bound as tightly as you are...)"
+rPrisonerJailUnlockHandsBound,"(You can't help ${Ethem}, bound as tightly as you are...)"
 rPrisonerJailUnlockSlow,"(You unlock her, fumbling around for a while with your bound hands)"
 rPrisonerJailUnlockDom,"(You unlock the SPEAKER)|Thank you!|Let's get out of here!"
 rPrisonerJailUnlockBrat,"(You unlock the SPEAKER)|...thanks.|No, I wasn't enjoying it or anything..."
@@ -13881,7 +13881,7 @@ rPrisonerJailOther,"(This SPEAKER is a sub, but not YOUR sub!)"
 
 rPrisonerJailOwn,"(The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)"
 rPrisonerJailOwnNoKeys,"(You don't have any keys that work on the lock)"
-rPrisonerJailOwnUnlockHandsBound,"(You can't help her, bound as tightly as you are...)"
+rPrisonerJailOwnUnlockHandsBound,"(You can't help ${Ethem}, bound as tightly as you are...)"
 rPrisonerJailOwnUnlockSlow,"(You unlock her, fumbling around for a while with your bound hands)"
 rPrisonerJailOwnUnlock,"(You unlock the SPEAKER)|Thank you!|Let's get out of here!"
 rPrisonerJailOwnUnlockGagged,"(You unlock the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep her gag...)"
@@ -32783,7 +32783,7 @@ KDLairName,PTRN's RMTPE
 KDLeadsTo,Leads to PLCE
 KDUnknown,???
 
-rWardenCourier,"(You find a girl clad in a pink catsuit and restrained with straps.)|(${EThey} wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'"
+rWardenCourier,"(You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'"
 
 KinkyDungeonDragonLairDefeat1,It becomes hard to resist the dragon's fury...
 KinkyDungeonDragonLairDefeat2,The dragon overwhelms you with sheer force...
@@ -32830,7 +32830,7 @@ rPrisonerLatexNoKeys,"(You don't have any solvents that work on latex)"
 rPrisonerLatexUnlockHandsBound,"(You can't help ${Ethem}, bound as tightly as you are...)"
 rPrisonerLatexUnlockSlow,"(You dissolve ${Etheir} restraints, fumbling around for a while with your bound hands)"
 rPrisonerLatexUnlock,"(You rescue the SPEAKER)|Thank you!|Let's get out of here!"
-rPrisonerLatexUnlockGagged,"(You rescue the SPEAKER)|Mmmmph!|(${EThey} wants to keep ${Etheir} gag...)"
+rPrisonerLatexUnlockGagged,"(You rescue the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)"
 rPrisonerLatexNoCut,"(You are not holding a cutting tool)"
 rPrisonerLatexCutHandsBound,"(You can't pick the lock with your hands bound)"
 rPrisonerLatexCutSlow,"(You cut ${Etheir} restraints, fumbling around for a while with your bound hands)"

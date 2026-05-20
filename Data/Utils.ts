@@ -70,3 +70,19 @@ function GenPlaceholderModelNames() {
 	}
 	return ret;
 }
+
+/** Gets a list of all strings and runs them through pronoun tokens, for use in helping port old translation files forward */
+function getOldPronounPairs() {
+	let map = textProvider.getGroupManager().getGroup(textProvider.defaultGroupId);
+	let defParams = KDGetGenericDialogueParams(KDPlayer());
+	let list = [];
+
+	for (let entry of map.entries()) {
+		if (TextGet(entry[0], defParams) != TextGet(entry[0]))
+			list.push(
+				[TextGet(entry[0], defParams), TextGet(entry[0])]
+			);
+	}
+
+	return list;
+}
