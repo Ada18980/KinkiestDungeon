@@ -1306,11 +1306,11 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 坏宠物
 - Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
 放弃“宠物初学者”特质。只能选一次。如果你再点出这项特质，就没有回头路了。
-- ${You} ${Pis} an expert in wearing a petsuit and ${Your} mobility is increased.
+- ${You} ${Yis} an expert in wearing a petsuit and ${Your} mobility is increased.
 你是穿着宠物服的专家，你的灵活度也得到了提高。
-- ${You} ${Pis} too used to wearing petsuits! Sprinting is impaired.
+- ${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
 你已经穿惯宠物服了！短跑能力受损。
-- ${You} ${Pis} a disobedient pet. ${You} should put on a petsuit!
+- ${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
 你是个不听话的宠物。你应该穿上宠物服！
 
 - Dominant
@@ -2030,6 +2030,7 @@ Roguelike : ‎没有保存代码，只有自动保存
 我会等着看会发生什么。
 - Save and return to menu
 保存并回到主菜单
+# - Cannot save during dialogue
 - Give up & delete save
 放弃并删除存档
 - Yes, delete my save file!
@@ -8317,7 +8318,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 旨在保护佩戴者免受有毒烟雾侵害的呼吸器。
 # :: RestraintGasMaskDesc
 # :: KinkyDungeonInventoryItemGasMaskDesc
-- +50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech.
+- +50 Poison resist. Protects against the effects of poison gas and spores. Affects speech.
 +50 毒素抗性。防止睡眠气体引起的头晕。影响言语。
 # :: RestraintGasMaskDesc2
 # :: KinkyDungeonInventoryItemGasMaskDesc2
@@ -11278,6 +11279,7 @@ RestraintName 上的诅咒解除了！
 # :: cat_Mouth
 # :: l_KoiMouth_Mouth
 # :: m_KoiMouth_l_Mouth
+# :: c_KjusMouth
 # :: l_KjusMouth_Mouth
 # :: m_KiguMask_l_Mouth
 # :: m_ShadowHandsMouth_l_Mouth
@@ -11292,6 +11294,7 @@ RestraintName 上的诅咒解除了！
 - Ears
 耳朵
 # :: KinkyDungeonGroupItemEars
+# :: c_ElfEars
 # :: l_BunnyEars_Ears
 # :: m_BunnyEars_l_Ears
 # :: m_KittyEars_l_Ears
@@ -15639,11 +15642,11 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 探险家之魂 : ‎很高兴见到你，旅行者！
 - Adventurer's Ghost: Hello again, traveler (giggles).
 探险家之魂 : ‎很高兴再次见面，旅行者 ( 咯咯笑 ) 。
-- Adventurer's Ghost: Having fun, girl?
+- Adventurer's Ghost: Having fun, ${Phonor}?
 探险家之魂 : ‎玩得开心吗，姑娘？
-- Adventurer's Ghost: Looking for some trouble, slave?
+- Adventurer's Ghost: Looking for some trouble, ${Pdim}?
 探险家之魂 : ‎你是在给自己找麻烦吗，奴隶？
-- Adventurer's Ghost: I see you, naughty little slave!
+- Adventurer's Ghost: I see you, naughty little ${Pdim}!
 探险家之魂 : ‎我看见你了，淘气的小奴隶！
 
 - Ghost: I can try to help with those, traveler.
@@ -15655,14 +15658,14 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 幽灵 : ‎你现在这个样挺好的，嘿嘿~
 - Ghost: Please don't bother me.
 幽灵 : ‎请不要打扰我。
-- Ghost: A good slave doesn't complain.
+- Ghost: A good ${Psub} doesn't complain.
 幽灵 : ‎一个优秀的奴隶不会抱怨。
 
 - Ghost: What's that? I don't understand.
 幽灵 : ‎那是什么？我不明白。
 - Ghost: Silence is golden.
 幽灵 : ‎沉默是金。
-- Ghost: A good slave doesn't speak until addressed.
+- Ghost: A good ${Psub} doesn't speak until addressed.
 幽灵 : ‎一个好的奴隶在被允许之前不会说话。
 - Ghost: Aww, so helpless~
 幽灵 : ‎哇哦，好无助~
@@ -15876,7 +15879,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 # :: rJailRelease
 
 
-- Good girl.
+- Good ${PSub}.
 乖女孩。
 - You'll be making others happy in no time.
 你很快就会让别人开心。
@@ -16819,13 +16822,12 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailPlaySubFuuka0
 # :: KinkyDungeonRemindJailPlaySubDollmaker0
 # :: KinkyDungeonRemindJailPlaySub0
-- I've been a bad ${Esub}, won't you do something about it?
+- I've been a bad girl, won't you do something about it?
 我是个坏女孩，你能做点什么吗？
 # :: KinkyDungeonRemindJailPlaySubFuuka1
 # :: KinkyDungeonRemindJailPlaySubDollmaker1
 # :: KinkyDungeonRemindJailPlaySubTheWarden1
 # :: KinkyDungeonRemindJailPlaySubSilverWitch1
-# :: KinkyDungeonRemindJailPlaySub1
 - Mmmph... maybe I talk too much...
 嗯嗯……可能是我说太多了……
 # :: KinkyDungeonRemindJailPlaySubFuuka2
@@ -17351,6 +17353,8 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailPlayHelplessSelly2
 # :: KinkyDungeonRemindJailPlayHelplessApprentice2
 # :: KinkyDungeonRemindJailPlayHelplessNecromancer2
+- I've been a bad ${Esub}, won't you do something about it?
+我是个坏女孩，你能做点什么吗？
 - Hey! Where do you think you're going~
 喂！你往哪里逃~
 - You look like you're having fun!
@@ -19544,11 +19548,10 @@ SPL时间到了!
 我要和你玩点好玩的~
 # :: KinkyDungeonRemindJailPlayHunterLeash
 # :: KinkyDungeonRemindJailPlayWolfgirlLeash
-- Watch yourself, ${Psub}~
+- Watch yourself, girl~
 小心点，妹妹~
 # :: KinkyDungeonRemindJailPlayHunterFree
 # :: KinkyDungeonRemindJailPlayWolfgirlFree
-# :: KinkyDungeonRemindJailPlayYenFree
 - Nice find. I'll take it.
 不错的发现。我拿下了。
 # :: KinkyDungeonRemindJailPlayHunterLoot
@@ -19785,6 +19788,8 @@ PTRN，“奈文米尔”的一员。这是我的名片。
 呆在属于你的地方，你这个淘气的女孩。
 - Let's go somewhere more private.
 我们去更私密的地方吧。
+- Watch yourself, ${Psub}~
+小心点，妹妹~
 - Ready or not, here I come.
 无论你是否准备好，我来了。
 - Those sticky fingers belong in a pair of mittens.
@@ -21935,6 +21940,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dTheWardenDom_ProceedGag_Proceed
 # :: dTheWardenDom_Brat_Proceed2
 # :: dTheWardenSub_ProceedGag_Proceed
+# :: dNext
 
 - (The SPEAKER frowns)|Don't lie to me.
 ( SPEAKER 皱眉 ) |别骗我。
@@ -22224,6 +22230,8 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dTheWardenBrat_ProceedGag_Proceed
 # :: dTheWardenSub_Brat_ProceedGag
 # :: dResistanceRobotNegativeGag
+# :: dDollTransformCurious_NoGag
+# :: dDollTransformSubby_NoGag
 
 - Of course ${EHonor}.
 当然，小姐。
@@ -22505,7 +22513,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 
-- (A robotic SPEAKER approaches)|QUERY: Good girl detected:|Restraint desired?
+- (A robotic SPEAKER approaches)|QUERY: Good ${PSub} detected:|Restraint desired?
 ( 机器人 SPEAKER 走近 ) |查询 : ‎发现好女孩 : ‎|想要被束缚吗？
 # :: rOfferAutoTape
 # :: rOfferHiTechCables
@@ -22548,6 +22556,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dOfferHiTechCables_YesGag
 # :: dFuukaPostIntro_NormalGag
 # :: dMaidforceQuest_Help
+# :: dDollTransformCurious_YesGag
 - Negative.
 否定。
 # :: dOfferAutoTape_No
@@ -23554,6 +23563,8 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 其实我在思考...
 - (Shake your head nervously)
 ( 紧张地摇头 )
+# :: dOfferRopesYes_NoGag
+# :: dDollTransformMaterial_NoGag
 
 - Fine. You win.
 好吧。你赢了。
@@ -25116,7 +25127,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( 你发现一个穿着华丽衣服的女孩 ) | ( 她瞥了你一眼 ) |你是谁？
 - I should be asking the same of you.
 这是我要问的。
-- (Growl at ${Ethem})
+- (Growl at her)
 ( 对她咆哮 )
 - (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
 ( 笑 )|我叫风香 (Fuuka)，包含“风”和“歌”的字母。|你要介绍一下自己吗？
@@ -25326,7 +25337,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( SPEAKER咯咯笑 )|不需要你的同意，亲爱的~
 - I never said I consented to being a pet!
 我从来没有说过我同意做宠物！
-- (Give ${Ethem} a puzzled look and shake your head)
+- (Give her a puzzled look and shake your head)
 ( 给她一个疑惑的眼神，然后摇头 )
 - No way!
 没门！
@@ -25334,7 +25345,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( 叹气和耸肩 )
 # :: dFuukaSub_Brat_Proceed2
 # :: dTheWardenSub_Brat_Proceed2
-- (Attack ${Ethem} without saying anything)
+- (Attack her without saying anything)
 ( 二话不说就攻击她 )
 
 - (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
@@ -25433,7 +25444,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( 服从于她 )  ( 获得特殊项圈 )
 - (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
 ( SPEAKER 反抗，但最终你把堵嘴塞进了她的嘴里 ) |MMMMPH！
-- (Gag ${Ethem})
+- (Gag her)
 ( 堵住她的嘴 )
 
 
@@ -25911,6 +25922,7 @@ Mmmph? (行为混乱)
 ( 你帮不了她，毕竟你也被紧紧地绑着… )
 # :: rPrisonerJailUnlockHandsBound
 # :: rPrisonerJailOwnUnlockHandsBound
+# :: rPrisonerLatexUnlockHandsBound
 - (You unlock her, fumbling around for a while with your bound hands)
 ( 你解开了她的锁，用绑着的手摸索了一会儿。 )
 # :: rPrisonerJailUnlockSlow
@@ -26737,6 +26749,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 导出脸部
 - Export Cosplay
 导出 Cosplay
+# - Export Expression
 
 - Gamma
 伽马值
@@ -26834,6 +26847,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 眼
 # :: cat_Eyes
 # :: m_KoiEyes_l_Eyes
+# :: c_KjusEyes
 # :: m_KiguMask_l_Eyes
 # :: m_ShadowHandsEyes_l_Eyes
 # :: m_KoiEyes_l_Eyes
@@ -26873,7 +26887,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: l_HumanEyes_Eyes2
 # :: l_KjusEyes_Eyes2
 # :: l_DaskEyes_Eyes2
-- Cat Brows
+- Simple Brows
 猫眉
 - Right Brow
 右眉
@@ -26893,6 +26907,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 腮红
 # :: l_KoiBlush_Blush
 # :: m_KoiBlush_l_Blush
+# :: c_KjusBlush
 # :: l_KjusBlush_Blush
 # :: m_KoiBlush_l_Blush
 # :: m_KjusBlush_l_Blush
@@ -28961,7 +28976,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_DaskEyes_l_Whites2
 # :: m_BlankEyes_l_Whites2
 # :: m_KjusEyes5_l_Whites2
-- HumanEyes
+- Simple Eyes
 人眼
 - Brows
 眉毛
@@ -28989,19 +29004,20 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_DaskBrows_l_Brows2
 # :: m_DaiBrows1_l_Brows2
 # :: m_DaiBrows2_l_Brows2
-- KjusEyes
+- Kjus Eyes
 Kjus眼
-- KjusBrows
+# - Eyebrows
+- Kjus Brows
 Kjus眉
-- KjusMouth
+- Kjus Mouth
 Kjus嘴
-- KjusBlush
+- Kjus Blush
 Kjus腮红
 - Hikimayu
 黛眉
-- DaskEyes
+- Dask Eyes
 Dask眼
-- ElfEars
+- Elf Ears
 精灵耳
 - ElfFront
 精灵耳(前)
@@ -29011,7 +29027,7 @@ Dask眼
 精灵耳(后)
 # :: l_ElfEars_ElfBack
 # :: m_ElfEars_l_ElfBack
-- ElfEarsLong
+- Elf Ears (Long)
 精灵长耳
 - ElfLongFront
 精灵长耳(前)
@@ -29021,7 +29037,7 @@ Dask眼
 精灵长耳(后)
 # :: l_ElfEarsLong_ElfLongBack
 # :: m_ElfEarsLong_l_ElfLongBack
-- ElfEarsFloppy
+- Elf Ears (Floppy)
 精灵垂耳
 - ElfFloppyFront
 精灵垂耳(前)
@@ -29031,7 +29047,7 @@ Dask眼
 精灵垂耳(后)
 # :: l_ElfEarsFloppy_ElfFloppyBack
 # :: m_ElfEarsFloppy_l_ElfFloppyBack
-- ElfEarrings
+- Elf Earrings
 精灵耳环
 - ElfEarringsFront
 精灵耳环(前)
@@ -29057,11 +29073,8 @@ Dask眼
 # :: l_BunnyEars_InnerEars
 # :: m_BunnyEars_l_EarsInner
 # :: m_MilitaryUniform_l_EarsInner
-- KittyEars
+- Catgirl Ears
 猫耳
-# :: m_KittyEars
-# :: m_LeatherHood_l_KittyEars
-# :: m_FashionLeatherHood_l_KittyEars
 - Kitty
 猫咪
 # :: l_KittyEars_Ears
@@ -29075,11 +29088,8 @@ Dask眼
 猫(内侧)
 # :: l_KittyEars_InnerEars
 # :: m_KittyEars_l_KittyInner
-- WolfEars
+- WolfE ars
 狼娘耳朵
-# :: m_WolfEars
-# :: m_LeatherHood_l_WolfEars
-# :: m_FashionLeatherHood_l_WolfEars
 - Wolf
 狼
 :: l_WolfEars_Ears
@@ -29097,7 +29107,7 @@ Dask眼
 :: l_WolfEars_InnerEars
 狼耳(内侧)
 # :: m_WolfEars_l_WolfInner
-- FoxEars
+- Fox Ears
 狐耳
 - Fox
 狐
@@ -29111,55 +29121,83 @@ Dask眼
 狐(内)
 # :: l_FoxEars_InnerEars
 # :: m_FoxEars_l_FoxInner
-- WolfTail
+- Tail
+尾巴
+# :: c_WolfTail
+# :: m_PointyTail_l_Tail
+# :: m_KittyPetTail_l_Tail
+# :: m_KittyPetTailThin_l_Tail
+# :: m_AuraBang_Left_l_Tail
+# :: m_AuraBang_Right_l_Tail
+# :: m_AuraBang_Left_Back_l_Tail
+# :: m_AuraBang_Right_Back_l_Tail
+# :: m_Hair4_TailLeft_l_Tail
+# :: m_Hair4_TailRight_l_Tail
+# :: m_Hair5_TailLeft_l_Tail
+# :: m_Hair5_TailRight_l_Tail
+# :: m_Hair6_TailLeft_l_Tail
+# :: m_Hair6_TailRight_l_Tail
+# :: m_WolfTail_l_Tail
+# :: m_KittyTail_l_Tail
+# :: m_FoxTail_l_Tail
+# :: m_Fox3Tail_l_Tail
+# :: m_Fox4Tail_l_Tail
+# :: m_Fox5Tail_l_Tail
+# :: m_Fox6Tail_l_Tail
+# :: m_Fox7Tail_l_Tail
+# :: m_MouseTail_l_Tail
+# :: m_MouseTail_l_Tail
+# - Fox Tails
+# - Cat Tails
+- Wolf Tail
 狼尾
-- KittyTail
+- Cat Tail
 猫尾
-- Kitty2Tail
+- Cat 2 Tail
 双猫尾
 - Kitty2
 猫2
 # :: l_Kitty2Tail_Tail2
 # :: m_Kitty2Tail_l_Kitty2
-- FoxTail
+- Fox Tail
 狐尾
-- Fox2Tail
+- Fox 2 Tail
 狐尾2
 - Fox2
 狐2
 # :: l_Fox2Tail_Tail2
 # :: m_Fox2Tail_l_Fox2
-- Fox3Tail
+- Fox 3 Tail
 狐尾3
 - Fox3
 狐3
 # :: l_Fox3Tail_Tail
 # :: m_Fox3Tail_l_Fox3
-- Fox4Tail
+- Fox 4 Tail
 狐尾4
 - Fox4
 狐4
 # :: l_Fox4Tail_Tail
 # :: m_Fox4Tail_l_Fox4
-- Fox5Tail
+- Fox 5 Tail
 狐尾5
 - Fox5
 狐5
 # :: l_Fox5Tail_Tail
 # :: m_Fox5Tail_l_Fox5
-- Fox6Tail
+- Fox 6 Tail
 狐尾6
 - Fox6
 狐6
 # :: l_Fox6Tail_Tail
 # :: m_Fox6Tail_l_Fox6
-- Fox7Tail
+- Fox 7 Tail
 狐尾7
 - Fox7
 狐7
 # :: l_Fox7Tail_Tail
 # :: m_Fox7Tail_l_Fox7
-- CatsuitLower
+- Catsuit Lower
 胶衣(下半身)
 - TorsoLower
 下半身
@@ -29241,7 +29279,7 @@ Dask眼
 # :: m_RubberBoots_l_FootLeft
 # :: m_HeavyMaidKnight_Boots_l_FootLeft
 # :: m_HeavyMaidKnight_l_FootLeft
-- CatsuitUpper
+- Catsuit Upper
 胶衣(上半身)
 - TorsoUpper
 上半身
@@ -39223,6 +39261,14 @@ Aura刘海(右后)
 装饰性皮革面具
 - LeatherHood
 皮革帽
+- WolfEars
+狼娘耳朵
+# :: m_LeatherHood_l_WolfEars
+# :: m_FashionLeatherHood_l_WolfEars
+- KittyEars
+猫耳
+# :: m_LeatherHood_l_KittyEars
+# :: m_FashionLeatherHood_l_KittyEars
 - BunnyEars
 兔耳
 # :: m_LeatherHood_l_BunnyEars
@@ -40605,31 +40651,6 @@ Vents发型
 # - HornR
 - PointyTail
 尖尾巴
-- Tail
-尾巴
-# :: m_PointyTail_l_Tail
-# :: m_KittyPetTail_l_Tail
-# :: m_KittyPetTailThin_l_Tail
-# :: m_AuraBang_Left_l_Tail
-# :: m_AuraBang_Right_l_Tail
-# :: m_AuraBang_Left_Back_l_Tail
-# :: m_AuraBang_Right_Back_l_Tail
-# :: m_Hair4_TailLeft_l_Tail
-# :: m_Hair4_TailRight_l_Tail
-# :: m_Hair5_TailLeft_l_Tail
-# :: m_Hair5_TailRight_l_Tail
-# :: m_Hair6_TailLeft_l_Tail
-# :: m_Hair6_TailRight_l_Tail
-# :: m_WolfTail_l_Tail
-# :: m_KittyTail_l_Tail
-# :: m_FoxTail_l_Tail
-# :: m_Fox3Tail_l_Tail
-# :: m_Fox4Tail_l_Tail
-# :: m_Fox5Tail_l_Tail
-# :: m_Fox6Tail_l_Tail
-# :: m_Fox7Tail_l_Tail
-# :: m_MouseTail_l_Tail
-# :: m_MouseTail_l_Tail
 - WolfEars2
 狼娘耳朵2
 # - EarLeft
@@ -46663,16 +46684,16 @@ RestraintName 失效了！
 # :: KDQuestSucceed_RopeQuest
 # :: KDQuestSucceed_LatexQuest
 # :: KDQuestSucceed_LeatherQuest
-# :: KDQuestSucceedSub_LeatherQuest
 # :: KDQuestSucceed_MetalQuest
 # :: KDQuestSucceed_WillQuest
 # :: KDQuestSucceed_ElementsQuest
 # :: KDQuestSucceed_ConjureQuest
 # :: KDQuestSucceed_IllusionQuest
-- The Goddess calls you a good girl.
+- The Goddess calls you a good ${PSub}.
 女神夸你是个好女孩。
 # :: KDQuestSucceedSub_RopeQuest
 # :: KDQuestSucceedSub_LatexQuest
+# :: KDQuestSucceedSub_LeatherQuest
 # :: KDQuestSucceedSub_MetalQuest
 # :: KDQuestSucceedSub_WillQuest
 # :: KDQuestSucceedSub_ElementsQuest
@@ -46805,6 +46826,7 @@ Kigurumi头壳
 强制贞操带
 - Allow Menu Ingame
 开启游戏内菜单
+# - Rough Treatment
 
 - Prisoner Text
 囚犯文字
@@ -46813,10 +46835,13 @@ Kigurumi头壳
 # - Aphrodisiac-Laced Food
 # - Sleep-Laced Food
 # - Hypnosis
+# - Doll Transformation
+# - Doll Transformation (Sexless)
 
 
 # - Some food items on tables will be laced with a drug that makes your character fall asleep.
 # - Some food items on tables will be laced with a drug that makes your character very distracted.
+# - Removes some dialogue paths that end with your character getting slapped, hair pulled, or otherwise 'beaten.'
 
 - |||This item is marked as Red, which prevents it from appearing in the game.
 |||这种物品被标红，不会出现。
@@ -46829,6 +46854,10 @@ Kigurumi头壳
 
 - Menu Locked
 菜单锁定
+
+
+# - Allows content where the player character gets transformed into a sentient ball jointed doll. Removing this transformation requires a Potion of Humanity.\n\nSetting this to red prevents the dialogue from starting.\nSetting this to Green makes it permanent, as no Potions of Humanity will spawn.
+# - If the player is transformed into a ball-jointed doll, they may be made into one that doesn't have sex organs as a punishment.\n\nSetting this to yellow lets the player always choose.
 
 - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
 允许在游戏过程中使用此菜单（包括“安全词”按钮）。如果你不希望在开始游戏后还能进入此界面修改规则，请将其标红。此选项不会随存档读取而改变。
@@ -51919,7 +51948,7 @@ PTRN 的 RMTPE
 - Leads to PLCE
 通向PLCE
 
-- (You find a girl clad in a pink catsuit and restrained with straps.)|(${EThey} wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'
+- (You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'
 (你发现了一个穿着粉色紧身衣，被拘束着的女孩。)|(她正穿着一个背包，有一个笔记粘在上面)|“我在这里的宠物可以为你捡起拘束具，并将它们送回给你~”|“试着打开设施界面，并存储拘束具！”|"署名：你忠诚的仆人"
 
 - It becomes hard to resist the dragon's fury...
@@ -51962,13 +51991,11 @@ PTRN 的 RMTPE
 (SPEAKER 坐着，被包在上达她的鼻子的紧身橡胶中。|即使她嘴上的乳胶既光滑又平坦，|你通过她呜咽着的呻吟知道，|她的嘴被口塞完全填充着，与她剩余的身体一样无用。|某种台子将她粘在了地板上。)
 - (You don't have any solvents that work on latex)
 (你没有任何对乳胶有用的溶剂)
-- (You can't help ${Ethem}, bound as tightly as you are...)
-( 你帮不了她，毕竟你也被紧紧地绑着… )
 - (You dissolve ${Etheir} restraints, fumbling around for a while with your bound hands)
 (你溶解了她的拘束具，用绑着的手摸索了一会儿。)
 - (You rescue the SPEAKER)|Thank you!|Let's get out of here!
 ( 你解救了 SPEAKER ) |谢谢！|我们从这里出去吧！
-- (You rescue the SPEAKER)|Mmmmph!|(${EThey} wants to keep ${Etheir} gag...)
+- (You rescue the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
 ( 你解救了 SPEAKER ) |呜呜呜！| ( 她想保持自己的堵嘴… )
 - (You are not holding a cutting tool)
 (你的手里没有切割工具)
@@ -52046,7 +52073,6 @@ PTRN 的 RMTPE
 （SPEAKER 首先脱掉你的大部分衣服）
 # :: rStripSearchAccept_1
 # :: rStripSearchCyberAccept_1
-# :: rDollTransformAccept_1
 - (Next, the SPEAKER looks through your weapons)
 （之后，SPEAKER 检查你的武器）
 # :: rStripSearchAccept_1_2
@@ -53050,14 +53076,33 @@ ${Playername}使用了安全词，被传送回关卡起点。
 
 # - Your attempts to move off the stand only twist the plug inside of you.
 
+# - unit
+# :: KDHonorificUnit_LC
+# :: KDSubTitleUnit_LC
 # - Miss
+# :: KDHonorificMiss
+# :: KDHonorificMiss_LC
 # - Mistress
+# - mistress
 # - Master
+# - master
+# - Mixx
+# - mixx
+# - Mixtress
+# - mixtress
 
+# - doll
 # - Girl
+# - girl
+# - submissive
 # - Slave
+# - slave
 # - Brat
+# - brat
+# - toy
 # - Pet
+# - pet
+
 
 - She
 她
@@ -53191,12 +53236,97 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - The spell is already active.
 
 
+# - You have been transformed into a ball-jointed doll
+# - You are already transformed
+# - You are already artificial, and cannot be transformed.
 
-# - (The SPEAKER reaches out with a gentle hand, propping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?
+
+# - (The SPEAKER caresses you by the chin as you remain locked in the stand)\nTruly sad, truly. A good doll should be still...\nNow, my showcase awaits~
+
+# - (The SPEAKER reaches out with a gentle hand,\npropping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?
 # - Materials??
 # - (Squeak when ${Ethey} say${Es} 'materials')
-# - (Whimper when ${Ethey} caress${Es} caress your chin)
+# - That actually sounds quite delightful...
+# - (Nod and moan with delight)
+# - Y-you don't need to do that...
+# - I am not 'materials'!!!
+# - (Shake your head and scream into your gag)
+# - (Shake your head angrily as ${Ethey} caress${Es} caress you)
+# - I won't let you!
+# :: dDollTransformCaress_Caress2
+# :: dDollTransformCurious_No_No
+# - (Keep shaking your head)
+# :: dDollTransformCaress_Caress2Gag
+# :: dDollTransformCurious_No_NoGag
+# - Oh yeah? Try me! (Enter combat)
+# - (Enter combat with defiance in your eyes)
+# - (Bite your lip and back down)
+# - (Remain silent)
+# - (Whimper and give in)
+# - (Whimper pathetically)
+# - (Sigh and leave her to do what she wants)
+# - I... I don't want to be a doll!
+# - (Shake your head in defiance)
 # - Your showcase?
 # - (Tilt your head with interest)
+# - That sounds... most delightful.
+# - Indeed- wait, including me!?
+# - (Blush and nod)
+# - I...
+# - (Mumble into your gag)
+# - I don't think so...
+# - (Shake your head quickly)
+# - I don't like where this is going...
 # - At your service~
+# - Wait actually, I don't want this...
+# - Indeed... let's start!
+# - (Close your eyes and moan)
 
+# - (The SPEAKER smiles and boops your nose)\nThat's you~\nPretty one.
+# - (The SPEAKER pulls back ${Etheir} hand...\nand smacks you across the face)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like...
+# - (The SPEAKER pulls back ${Etheir} hand and merely smiles)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like...
+# - (The SPEAKER lets a sadistic smile slip across ${Etheir} face)\nDon't worry, you'll be a happy little doll soon.\nVery soon...
+# - My showcase is full of lovely dolls.\nLovely dolls just like you will be.\nAren't you excited?
+# - (The SPEAKER gives an approving nod)\nExcellent.\nYou'll be fitting right in with all the other dolls!
+
+# - (The SPEAKER shrugs)\nYou don't have a choice in the matter.\nNot like that you don't~
+
+# - (The SPEAKER smiles)\nTerrific!\nLet's get started then, shall we?
+# - (The SPEAKER smiles and nods)\nWhy of course!\nI can already tell you'll make a lovely addition...
+# - (The SPEAKER furrows ${Etheir} brow)\nHmmm?
+# - (The SPEAKER glares at you)\nOh, you don't like my collection?\nNo matter, I'm sure you'll change your mind when you see it.
+
+# - (The SPEAKER starts to circle around you,\nher heels clacking along the floor in perfect rhythm)\nNow then... which part of you shall we work on first...
+
+# - My arms, ${Ehonor}.
+# - Start with my feet and move up.
+# - What happens to my face, ${Ehonor}?
+# - Why not all at once, ${Ehonor}?
+# - (Remain silent and let ${Ethem} do as ${Ethey} please${Es})
+# - (Wiggle in place in a futile struggle)
+
+# - (The SPEAKER chuckles)\nThe question was rhetorical, but very well.\n(She reaches for your hands, grabbing them as she smiles)\nDid you know that a doll's arms are much more flexible than\nthose of a human? So long as your strings are not too tight...\n(Your arms feel cold, a faint tension tugs at your now-jointed fingers)
+# - (The SPEAKER smiles)\nJust enjoy it, doll~\nIt'll be over soon.\n(The feeling creeps along your body, until it overtakes you completely)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)
+# - (The SPEAKER smiles and grabs you by the chin)\nI see, I see...\nYou must enjoy the thrill, as your whole body slowly goes cold...\n(${EThey} wrap${Es} a leg around yours, as you feel its skin start to harden)
+# - (The SPEAKER steps back as the feeling creeps up your body)\nJust enjoy it, doll~\nIt'll be over soon.\n(The feeling moves up to your core)\n(Then your chest, and your arms, going still)\n(It reaches your face, leaving you cold... no need to breath... no need to worry)\n(Just a doll on a stand...)
+# - (The SPEAKER gives you a kiss on the cheek)\nIt remains just as beautiful, my doll.\n(With a caress of your cheek, your skin starts to feel cold)\n(You still think and feel as before, but changes start to creep down your neck)
+# - (The SPEAKER steps back as the sensation spreads)\nIt's quick, creeping across your whole body, replacing flesh with joints)\n(You are left cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)
+# - (The SPEAKER shrugs)\nIf that is what you like, my doll~\nI'll make it so quick, you won't even notice.\n(As you blink, your body immediately changes, devoid of heat)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)
+# - (The SPEAKER caresses your body)\nAlready so still...\nGood dolls remain still while their maker works on them.\n(The process is slow... gradual...)\n(It is difficult to tell when it began, and when it's over)\n(You're just a doll now...)\n(Cold and still... no need to breath... no need to worry)\n(Content to rest on your stand)
+# - (The SPEAKER puts a hand on your shoulder)\nBe still.\n(As ${Ethey} say${Es} that, your whole body freezes...)\n(It feels... different now.)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)
+
+# - (You feel nothing between your legs...)
+# - (The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?
+# - (The SPEAKER chuckles)\nAll done, little doll~\nYou'll enjoy your new form, I'm sure.
+
+# - (Accept your new form)
+# - (Behold your new form)
+
+
+
+
+
+# - Potion of Humanity
+# - The potion transforms causes your body to grow warm and living.
+# - A potion said to grant the gift of life to an artificial being made of clockwork.
+# - Transforms a doll into a living creature.
