@@ -241,7 +241,7 @@ function KDDrawDialogue(delta: number): void {
 }
 
 let DialogueSpacingA = 40;
-let DialogueSpacingB = DialogueSpacingA/2;
+let DialogueSpacingB = DialogueSpacingA/2 + 5;
 
 /**
  * @param Amount

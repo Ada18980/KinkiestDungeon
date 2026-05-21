@@ -33725,3 +33725,11 @@ dDollTransformPart3_A,"(Accept your new form)"
 dDollTransformPart3_B,"(Behold your new form)"
 
 dNext,(...)
+
+
+
+
+KinkyDungeonInventoryItemPotionHumanity,Potion of Humanity
+KinkyDungeonInventoryItemPotionHumanityUse,The potion transforms causes your body to grow warm and living.
+KinkyDungeonInventoryItemPotionHumanityDesc,"A potion said to grant the gift of life to an artificial being made of clockwork."
+KinkyDungeonInventoryItemPotionHumanityDesc2,"Transforms a doll into a living creature."
