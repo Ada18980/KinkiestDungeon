@@ -1106,11 +1106,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			}
 			if (!KDGameData.CurrentDialogMsgData) KDGameData.CurrentDialogMsgData = {};
 			KDGameData.CurrentDialogMsgValue.GaveBits = KinkyDungeonStatsChoice.get("arousalMode") ? 0 : 1;
+
+			if (KinkyDungeonFlags.get("DollTransform_Resisted")) KDGameData.CurrentDialogMsg = "DollTransformResist";
 			return false;
 		},
 		options: {
 			"Material": {
 				response: "Default", gag: true,
+				prerequisiteFunction: () => {return !KinkyDungeonFlags.get("DollTransform_Resisted");},
 				clickFunction: () => {
 					KinkyDungeonSetFlag("DollTransformDialogue_Mat", 10);
 					return false;
@@ -1149,12 +1152,13 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							"Fight": {
 								gag: true, playertext: "Default",
 								greyoutFunction: (_gagged, _player) => {
-									return KinkyDungeonHasWill(0.1);
+									return KinkyDungeonHasWill(0.1) || KinkyDungeonStatsChoice.get("NoDollTransform");
 								},
 								greyoutTooltip: "KDTextGrayNeedWP",
 								clickFunction: (_gagged, _player) => {
 									KinkyDungeonStartChase(undefined, "Refusal");
 									KDAggroSpeaker();
+									KinkyDungeonSetFlag("DollTransform_Resisted", 300);
 									return false;
 								},
 								options: {"Leave": {playertext: "Leave", exitDialogue: true}}
@@ -1177,10 +1181,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				}
 			},
 			
-			"Whimper": {
-				response: "Default", gag: true,
-			},
 			"Curious": {
+				prerequisiteFunction: () => {return !KinkyDungeonFlags.get("DollTransform_Resisted");},
 				response: "Default", gag: true,
 				options: {
 					"Yes": {
@@ -1208,6 +1210,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					"No": {
 						response: "Default",gag: true,
 						options: {
+							"No": {
+								response: "Default",gag: true,
+								leadsToStage: "Caress_Caress2",
+							},
 							"Next": {
 								playertext: "Next",
 								leadsToStage: "Part2",
@@ -1216,8 +1222,31 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 				}
 			},
+			"Whimper": {
+				response: "Default", gag: true,
+				options: {
+					"No": {
+						response: "Default",gag: true,
+						leadsToStage: "Caress_Caress2",
+					},
+					"Next": {
+						playertext: "Next",
+						leadsToStage: "Part2",
+					},
+				}
+			},
 			"Subby": {
 				response: "Default", gag: true,
+				options: {
+					"Next": {
+						playertext: "Default",
+						leadsToStage: "Part2",
+					},
+					"No": {
+						response: "Default",gag: true,
+						leadsToStage: "Caress_Caress2",
+					},
+				}
 			},
 			"Part2": {
 				prerequisiteFunction: () => {return false;},
@@ -1225,24 +1254,52 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				options: {
 					"Arms": {
 						playertext: "Default", response: "Default",
+						clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
 						options: {
 							"Next": {
 								playertext: "Next", response: "Default",
-								leadsToStage: "Part3",
+								options: {
+									"Next": {
+										playertext: "Next", response: "Default",
+										leadsToStage: "Part3",
+									},
+								}
 							},
 						}
 					},
 					"Legs": {
 						playertext: "Default", response: "Default",
+						clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
 						options: {
 							"Next": {
 								playertext: "Next", response: "Default",
-								leadsToStage: "Part3",
+								options: {
+									"Next": {
+										playertext: "Next", response: "Default",
+										leadsToStage: "Part3",
+									},
+								}
 							},
 						}
 					},
 					"Face": {
 						playertext: "Default", response: "Default",
+						clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
+						options: {
+							"Next": {
+								playertext: "Next", response: "Default",
+								options: {
+									"Next": {
+										playertext: "Next", response: "Default",
+										leadsToStage: "Part3",
+									},
+								}
+							},
+						}
+					},
+					"Body": {
+						playertext: "Default", response: "Default",
+						clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
 						options: {
 							"Next": {
 								playertext: "Next", response: "Default",
@@ -1250,36 +1307,55 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							},
 						}
 					},
-					"Body": {
-						playertext: "Default", response: "Default",
-						leadsToStage: "Part3",
-					},
 					"Silent": {
 						playertext: "Default", response: "Default",
-						leadsToStage: "Part3",
+						clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
+						options: {
+							"Next": {
+								playertext: "Next", response: "Default",
+								leadsToStage: "Part3",
+							},
+						}
 					},
 					"Resist": {
 						playertext: "Default", response: "Default",
-						leadsToStage: "Part3",
+						clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
+						options: {
+							"Next": {
+								playertext: "Next", response: "Default",
+								leadsToStage: "Part3",
+							},
+						}
 					},
 				}
 			},
 			"Part3": {
 				prerequisiteFunction: () => {return false;},
+				enterFunction: () => {
+					if (!KDGameData.CurrentDialogMsgValue.GaveBit) {
+						KDGameData.CurrentDialogMsg = "DollTransformPart3_Bits";
+					}
+					return false;},
+					
 				response: "Default", gag: true,
 				options: {
 					"Bits": {
 						prerequisiteFunction: () => {return !KDGameData.CurrentDialogMsgValue.GaveBits;},
 						clickFunction: () => {KDGameData.CurrentDialogMsgValue.GaveBits = 1; return false;},
 						playertext: "Default", response: "Default",
+						leadsToStage: "Part3"
 					},
 					"A": {
+						clickFunction: () => {KinkyDungeonSetFlag("DollTransform_Done", 50); return false;},
 						prerequisiteFunction: () => {return !!KDGameData.CurrentDialogMsgValue.GaveBits;},
 						playertext: "Default", response: "Default",
+						exitDialogue: true,
 					},
 					"B": {
+						clickFunction: () => {KinkyDungeonSetFlag("DollTransform_Done", 50); return false;},
 						prerequisiteFunction: () => {return !!KDGameData.CurrentDialogMsgValue.GaveBits;},
 						playertext: "Default", response: "Default",
+						exitDialogue: true,
 					},
 				}
 			},
@@ -6230,4 +6306,42 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 function KDShopkeeperMaxHelpPower() {
 	return 10*KDGetEffMaxLevel() + KDDialogueParams.ShopkeeperHelpFeeFreebiePower;
+}
+
+function KDMakeIntoDoll(player: entity) {
+	if (player.player) {
+		if (!KinkyDungeonFlags.get("Transformed")) {
+			if (!KDIsArtificial(player)) {
+				KinkyDungeonSetFlag("Transformed", -1);
+
+				KinkyDungeonStatsChoice.set("SpeciesDoll", true);
+				let body = KinkyDungeonPlayer.Appearance.find((item) => {
+					return item.Model?.Group == "Body"
+				});
+				if (body) {
+					KDGameData.originalBody = JSON.stringify(body);
+					body.Model = ModelDefs.DollBody;
+				}
+
+				let Char = KinkyDungeonPlayer;
+				if (Char == KinkyDungeonPlayer)
+					KinkyDungeonDressSet();
+				KDRefreshCharacter.set(Char, true);
+				KinkyDungeonDressPlayer(Char);
+				
+				KinkyDungeonSendTextMessage(10, TextGet("KDTransformToDoll"), KDBaseLavender);
+			} else {
+				KinkyDungeonSendTextMessage(10, TextGet("KDTransformFailDoll"), KDBaseLavender);
+
+			}
+			
+
+		} else {
+			KinkyDungeonSendTextMessage(10, TextGet("KDTransformFail"), KDBaseLavender)
+
+			
+		}
+	} else {
+		// TODO
+	}
 }

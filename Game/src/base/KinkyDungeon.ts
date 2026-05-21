@@ -574,10 +574,12 @@ interface KDGameDataBase {
 	PreferredJailPointTick?: number,
 
 	HypnoButtons: HypnoButton[],
+	originalBody: string,
 };
 
 
 let KDGameDataBase: KDGameDataBase = {
+	originalBody: "",
 	HypnoButtons: [],
 	PreferredJailPoint: null,
 	PreferredJailPointTick: 0,

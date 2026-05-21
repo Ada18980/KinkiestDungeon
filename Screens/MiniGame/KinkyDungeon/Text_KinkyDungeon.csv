@@ -29617,6 +29617,8 @@ KDConsentItem_Invis,Invisible Restraints
 KDConsentItem_ArousalFood,Aphrodisiac-Laced Food
 KDConsentItem_SleepFood,Sleep-Laced Food
 KDConsentItem_Hypnosis,Hypnosis
+KDConsentItem_DollTransform,Doll Transformation
+KDConsentItem_DollTransformArousal,Doll Transformation (Sexless)
 
 
 KDConsentItemTooltip_SleepFood,"Some food items on tables will be laced with a drug that makes your character fall asleep."
@@ -29629,6 +29631,10 @@ KDConsentItemTooltip_Green,"|||This item is marked as Green, which will make it 
 KDConsentItemTooltip_Check,"|||This item will appear ingame as normal."
 
 KDConsentMenuLocked,Menu Locked
+
+
+KDConsentItemTooltip_DollTransform,"Allows content where the player character gets transformed into a sentient ball jointed doll. Removing this transformation requires a Potion of Humanity.\n\nSetting this to red prevents the dialogue from starting.\nSetting this to Green makes it permanent, as no Potions of Humanity will spawn."
+KDConsentItemTooltip_DollTransformAroused,"If the player is transformed into a ball-jointed doll, they may be made into one that doesn't have sex organs as a punishment.\n\nSetting this to yellow lets the player always choose."
 
 KDConsentItemTooltip_ConsentIngame,"Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot."
 KDConsentItemTooltip_Invis,"Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead."
@@ -33628,6 +33634,12 @@ KDRemoveHypno_Doll,You regain a bit of your sense of self. (-AMNT Stillness)
 KDAlreadyActive,The spell is already active.
 
 
+KDTransformToDoll,You have been transformed into a ball-jointed doll
+KDTransformFail,You are already transformed
+KDTransformFailDoll,"You are already artificial, and cannot be transformed."
+
+
+rDollTransformResist,"(The SPEAKER caresses you by the chin as you remain locked in the stand)\nTruly sad, truly. A good doll should be still...\nNow, my showcase awaits~"
 
 rDollTransform,"(The SPEAKER reaches out with a gentle hand,\npropping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?"
 dDollTransform_Material,"Materials??"
@@ -33648,6 +33660,9 @@ dDollTransformCaress_Caress2_BackDown2,"(Bite your lip and back down)"
 dDollTransformCaress_Caress2_BackDown,"(Remain silent)"
 dDollTransformCaress_CaressWhimper,"(Whimper and give in)"
 dDollTransform_Whimper,"(Whimper pathetically)"
+dDollTransformWhimper_Next,"(Sigh and leave her to do what she wants)"
+dDollTransformWhimper_No,"I... I don't want to be a doll!"
+dDollTransformWhimper_NoGag,"(Shake your head in defiance)"
 dDollTransform_Curious,"Your showcase?"
 dDollTransform_CuriousGag,"(Tilt your head with interest)"
 dDollTransformCurious_Yes,"That sounds... most delightful."
@@ -33660,8 +33675,14 @@ dDollTransformCurious_Yes2_No,"I don't think so..."
 dDollTransformCurious_Yes2_NoGag,"(Shake your head quickly)"
 dDollTransformCurious_No,"I don't like where this is going..."
 dDollTransformCurious_NoGag,"(Shake your head)"
+dDollTransformCurious_No_No,"I won't let you!"
+dDollTransformCurious_No_NoGag,"(Keep shaking your head)"
 dDollTransform_Subby,"At your service~"
 dDollTransform_SubbyGag,"(Nod happily)"
+dDollTransformSubby_No,"Wait actually, I don't want this..."
+dDollTransformSubby_NoGag,"(Shake your head)"
+dDollTransformSubby_Next,"Indeed... let's start!"
+dDollTransformSubby_NextGag,"(Close your eyes and moan)"
 
 rDollTransformMaterial,"(The SPEAKER smiles and boops your nose)\nThat's you~\nPretty one."
 rDollTransformCaress,"(The SPEAKER pulls back ${Etheir} hand...\nand smacks you across the face)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like..."
@@ -33696,10 +33717,11 @@ rDollTransformPart2_Body,"(The SPEAKER shrugs)\nIf that is what you like, my dol
 rDollTransformPart2_Silent,"(The SPEAKER caresses your body)\nAlready so still...\nGood dolls remain still while their maker works on them.\n(The process is slow... gradual...)\n(It is difficult to tell when it began, and when it's over)\n(You're just a doll now...)\n(Cold and still... no need to breath... no need to worry)\n(Content to rest on your stand)"
 rDollTransformPart2_Resist,"(The SPEAKER puts a hand on your shoulder)\nBe still.\n(As ${Ethey} say${Es} that, your whole body freezes...)\n(It feels... different now.)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)"
 
-dDollTransformWhatAboutMyBits,"(You feel nothing between your legs...)"
+dDollTransformPart3_Bits,"(You feel nothing between your legs...)"
 rDollTransformPart3_Bits,"(The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?"
+rDollTransformPart3,"(The SPEAKER chuckles)\nAll done, little doll~\nYou'll enjoy your new form, I'm sure."
 
-dDollTransformToPart3_A,"(Accept your new form)"
-dDollTransformToPart3_B,"(Behold your new form)"
+dDollTransformPart3_A,"(Accept your new form)"
+dDollTransformPart3_B,"(Behold your new form)"
 
 dNext,(...)

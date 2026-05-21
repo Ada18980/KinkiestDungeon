@@ -28,6 +28,7 @@ let KDBasePurple = "#5946b2"; // plum
 // #360ccc // interdimensional blue
 // #5218fa // plum purple
 // #5946b2 // han purple
+let KDBaseLavender = "#9470ef"; // lavender
 let KDBaseGreal = "#00ff88";
 let KDBaseGreen = "#00b548ff";
 // #00ff88 // greenish teal

@@ -265,7 +265,7 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             tooltip: TextGet("KDConsentListDesc_" + "Petsuits"),
     },
     Hypnosis: {
-            name: "ArousalFood",
+            name: "Hypnosis",
             color: KDBaseWhite,
             bordercolor: KDBaseTeal,
             textColor: KDBaseWhite,
@@ -279,6 +279,37 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "Hypnosis"),
             tooltip: TextGet("KDConsentListDesc_" + "Hypnosis"),
     },
+    DollTransform: {
+            name: "DollTransform",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "NoDollTransform",
+            perkYellow: "",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "DollTransform"),
+            tooltip: TextGet("KDConsentListDesc_" + "DollTransform"),
+    },
+    /*DollTransformArousal: {
+            name: "DollTransformArousal",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+            prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode");},
+
+            perkRed: "",
+            perkYellow: "NoDollTransformArousal",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "DollTransformArousal"),
+            tooltip: TextGet("KDConsentListDesc_" + "DollTransformArousal"),
+    },*/
     Bubbles: {
             name: "Bubbles",
             color: KDBaseWhite,
