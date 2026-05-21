@@ -1104,6 +1104,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			if (speaker) {
 				KDCustomExp[speaker.id] = {"BlushPose":"BlushLow","EyesPose":"EyesSly","Eyes2Pose":"Eyes2Sly","MouthPose":"MouthSmile","FearPose":"NoFearPose","BrowsPose":"BrowsNeutral","Brows2Pose":"Brows2Neutral"};
 			}
+			if (!KDGameData.CurrentDialogMsgData) KDGameData.CurrentDialogMsgData = {};
+			KDGameData.CurrentDialogMsgValue.GaveBits = KinkyDungeonStatsChoice.get("arousalMode") ? 0 : 1;
 			return false;
 		},
 		options: {
@@ -1222,6 +1224,61 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				response: "Default", gag: true,
 				options: {
 					"Arms": {
+						playertext: "Default", response: "Default",
+						options: {
+							"Next": {
+								playertext: "Next", response: "Default",
+								leadsToStage: "Part3",
+							},
+						}
+					},
+					"Legs": {
+						playertext: "Default", response: "Default",
+						options: {
+							"Next": {
+								playertext: "Next", response: "Default",
+								leadsToStage: "Part3",
+							},
+						}
+					},
+					"Face": {
+						playertext: "Default", response: "Default",
+						options: {
+							"Next": {
+								playertext: "Next", response: "Default",
+								leadsToStage: "Part3",
+							},
+						}
+					},
+					"Body": {
+						playertext: "Default", response: "Default",
+						leadsToStage: "Part3",
+					},
+					"Silent": {
+						playertext: "Default", response: "Default",
+						leadsToStage: "Part3",
+					},
+					"Resist": {
+						playertext: "Default", response: "Default",
+						leadsToStage: "Part3",
+					},
+				}
+			},
+			"Part3": {
+				prerequisiteFunction: () => {return false;},
+				response: "Default", gag: true,
+				options: {
+					"Bits": {
+						prerequisiteFunction: () => {return !KDGameData.CurrentDialogMsgValue.GaveBits;},
+						clickFunction: () => {KDGameData.CurrentDialogMsgValue.GaveBits = 1; return false;},
+						playertext: "Default", response: "Default",
+					},
+					"A": {
+						prerequisiteFunction: () => {return !!KDGameData.CurrentDialogMsgValue.GaveBits;},
+						playertext: "Default", response: "Default",
+					},
+					"B": {
+						prerequisiteFunction: () => {return !!KDGameData.CurrentDialogMsgValue.GaveBits;},
 						playertext: "Default", response: "Default",
 					},
 				}

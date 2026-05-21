@@ -33687,5 +33687,19 @@ dDollTransformPart2_Silent,"(Remain silent and let ${Ethem} do as ${Ethey} pleas
 dDollTransformPart2_Resist,"(Wiggle in place in a futile struggle)"
 
 rDollTransformPart2_Arms,"(The SPEAKER chuckles)\nThe question was rhetorical, but very well.\n(She reaches for your hands, grabbing them as she smiles)\nDid you know that a doll's arms are much more flexible than\nthose of a human? So long as your strings are not too tight...\n(Your arms feel cold, a faint tension tugs at your now-jointed fingers)"
+rDollTransformPart2_Arms_Next,"(The SPEAKER smiles)\nJust enjoy it, doll~\nIt'll be over soon.\n(The feeling creeps along your body, until it overtakes you completely)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)"
+rDollTransformPart2_Legs,"(The SPEAKER smiles and grabs you by the chin)\nI see, I see...\nYou must enjoy the thrill, as your whole body slowly goes cold...\n(${EThey} wrap${Es} a leg around yours, as you feel its skin start to harden)"
+rDollTransformPart2_Legs_Next,"(The SPEAKER steps back as the feeling creeps up your body)\nJust enjoy it, doll~\nIt'll be over soon.\n(The feeling moves up to your core)\n(Then your chest, and your arms, going still)\n(It reaches your face, leaving you cold... no need to breath... no need to worry)\n(Just a doll on a stand...)"
+rDollTransformPart2_Face,"(The SPEAKER gives you a kiss on the cheek)\nIt remains just as beautiful, my doll.\n(With a caress of your cheek, your skin starts to feel cold)\n(You still think and feel as before, but changes start to creep down your neck)"
+rDollTransformPart2_Face_Next,"(The SPEAKER steps back as the sensation spreads)\nIt's quick, creeping across your whole body, replacing flesh with joints)\n(You are left cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)"
+rDollTransformPart2_Body,"(The SPEAKER shrugs)\nIf that is what you like, my doll~\nI'll make it so quick, you won't even notice.\n(As you blink, your body immediately changes, devoid of heat)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)"
+rDollTransformPart2_Silent,"(The SPEAKER caresses your body)\nAlready so still...\nGood dolls remain still while their maker works on them.\n(The process is slow... gradual...)\n(It is difficult to tell when it began, and when it's over)\n(You're just a doll now...)\n(Cold and still... no need to breath... no need to worry)\n(Content to rest on your stand)"
+rDollTransformPart2_Resist,"(The SPEAKER puts a hand on your shoulder)\nBe still.\n(As ${Ethey} say${Es} that, your whole body freezes...)\n(It feels... different now.)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)"
+
+dDollTransformWhatAboutMyBits,"(You feel nothing between your legs...)"
+rDollTransformPart3_Bits,"(The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?"
+
+dDollTransformToPart3_A,"(Accept your new form)"
+dDollTransformToPart3_B,"(Behold your new form)"
 
 dNext,(...)
