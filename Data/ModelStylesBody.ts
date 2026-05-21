@@ -57,6 +57,12 @@ let KDModelBody: {[_: string]: KinkyDungeonDress} = {
 			Torso: {"gamma":1.2,"saturation":1.0666666666666667,"contrast":1.1,"brightness":1.1666666666666667,"red":0.7333333333333334,"green":0.5166666666666666,"blue":0.5333333333333333,"alpha":1},
 		}},
 	],
+	Julia: [
+		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head: {"gamma":1,"saturation":0,"contrast":0.97,"brightness":1,"red":1.2549019607843137,"green":0.9607843137254902,"blue":0.8823529411764706,"alpha":1},
+			Torso: {"gamma":1,"saturation":0,"contrast":0.97,"brightness":1,"red":1.2549019607843137,"green":0.9607843137254902,"blue":0.8823529411764706,"alpha":1},
+		}},
+	],
 	Salote: [
 		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
 			Head: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.9019607843137255,"green":1.0980392156862746,"blue":1.0392156862745099,"alpha":1},

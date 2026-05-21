@@ -1099,6 +1099,68 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Mizuna",
 		],
 	},
+	Kaisei2: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Kaisei2",
+		],
+		Hairstyle: [
+			"Kaisei2",
+		],
+	},
+	Sofia: {
+		
+		Cosplay: [
+			"Sofia",
+		],
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Sofia",
+		],
+		Hairstyle: [
+			"Sofia",
+		],
+	},
+	Hina: {
+		
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Hina",
+		],
+		Hairstyle: [
+			"Hina",
+		],
+	},
+	Green: {
+		
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Green",
+		],
+		Hairstyle: [
+			"Green",
+		],
+	},
+	It: {
+		
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"It",
+		],
+		Hairstyle: [
+			"It",
+		],
+	},
 	Anarial: {
 		
 		Cosplay: [
@@ -1112,6 +1174,51 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 		],
 		Hairstyle: [
 			"Anarial",
+		],
+	},
+	Julia: {
+		
+		Cosplay: [
+			"Julia",
+		],
+		Bodystyle: [
+			"Julia",
+		],
+		Facestyle: [
+			"Julia",
+		],
+		Hairstyle: [
+			"Julia",
+		],
+	},
+	MayHandel: {
+		
+		Cosplay: [
+			"MayHandel",
+		],
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"MayHandel",
+		],
+		Hairstyle: [
+			"MayHandel",
+		],
+	},
+	Helena: {
+		
+		Cosplay: [
+			"Helena",
+		],
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Helena",
+		],
+		Hairstyle: [
+			"Helena",
 		],
 	},
 	Istoodin: {

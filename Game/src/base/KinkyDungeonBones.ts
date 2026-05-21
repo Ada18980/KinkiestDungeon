@@ -67,6 +67,9 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["WolfOperative", [
+		{name: "It", color: "rgb(13, 197, 59)", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Hey, I don't think I've seen you around here before?",
+			customSprite: "", customOutfit: "It", customStyle: "It"},
 		{name: "Nevermere Director", color: "#96a1a1ff", prisoner: true, free: true,
 			customPlayLine: "", customIntro: "You are lucky! But my sisters are not.", customSprite: "", customOutfit: "Director", customStyle: "Director"},
 		{name: "Mizuna", color: "#f96fe7ff", prisoner: true, free: true,
@@ -164,6 +167,9 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Amelisia", color: "#ff5500", prisoner: true, free: true,
 			customPlayLine: "", customIntro: "I'd love to hear your moans through your gags.", customSprite: ""},
 		{name: "Athena", color: "#7e52cc", prisoner: false, free: true, customPlayLine: "Athena", customIntro: "Hey there cutie!", customSprite: ""},
+		{name: "May Handel", color: "#643F9E", prisoner: false, free: true, customPlayLine: "", customIntro: "Ah! T'would seem another doth enter this place~", customSprite: "",
+			customOutfit: "MayHandel"
+		},
 		{name: "Luce", color: "#2a36b4ff", prisoner: true, free: true, customPlayLine: "Athena", customIntro: "Are you sure you want to be down here, love?", customSprite: "",
 			customOutfit: "Luce", customStyle: "Luce"
 		},
@@ -321,6 +327,10 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Daiseng", color: "#ff9900", prisoner: false, free: true, customPlayLine: "", customIntro: "Do I look like a taxi driver to you?", customSprite: ""},
 		{name: "Matt", color: "#ff0000", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Aurora Kanagawa", color: "#9dd8a0ff", prisoner: false, free: true, customPlayLine: "", customIntro: "Hi. How is your journey in this dungeon?", customSprite: ""},
+		{name: "Laffey", color: "rgb(243, 81, 235)", prisoner: true, free: true,
+			customOutfit: "Laffey",
+			customStyle: "Laffey",
+			customPlayLine: "", customIntro: "The last experiment got out, so be mindful of any crevices you pass!", customSprite: ""},
 		
 		{name: "Luplus Falmele", color: "#22ffff",
 			prisoner: true, free: true,
@@ -353,12 +363,31 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["Demon", [
+		
+		{name: "Akuma", color: "#a43cd7", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Well isn't this swell", customSprite: ""},
 		{name: "PumpkinMB", color: "#3ea2c9", prisoner: true, free: true,
 			customPlayLine: "", customIntro: "Just because my name is pumpkin doesn't mean my name shouldn't be blue!", customSprite: ""},
 	],
 	],
+	["CuffedGirl3", [
+		
+		{name: "Kaisei", color: "#a43cd7", prisoner: true, free: true,
+			customOutfit: "Kaisei2",
+			customStyle: "Kaisei2",
+			customPlayLine: "", customIntro: "", customSprite: ""},
+	],
+	],
+
 	["Maidforce", [
 		
+		{name: "Green", color: "#02c32c", prisoner: false, free: true, customPlayLine: "",
+			customIntro: "Hello cutie, love your outfit!", customSprite: "",
+			customStyle: "Green", customOutfit: "Green",
+		},
+		{name: "Helena", color: "#00ffff", prisoner: true, free: true, customPlayLine: "",
+			customOutfit: "Helena",customStyle: "Helena", 
+			customIntro: "Loneliness has a bitter taste. Allow me to keep you company.", customSprite: ""},
 		{name: "Yumi", color: "#8e8a92ff", prisoner: true, free: true, customPlayLine: "",
 			customOutfit: "Yumi",customStyle: "Yumi", 
 			customIntro: "How do you like my white pantyhose dear~", customSprite: ""},
@@ -420,7 +449,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["MaidforcePara", [
 		{name: "NRNJ", color: "#0055ff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
-		{name: "Alexia ", color: "#9bbcffff", prisoner: true, free: true, customPlayLine: "", customIntro: "Heya, the name's Alexia, how can I be of service today?", customSprite: ""},
+		{name: "Alexia", color: "#9bbcffff", prisoner: true, free: true, customPlayLine: "", customIntro: "Heya, the name's Alexia, how can I be of service today?", customSprite: ""},
 	],
 	],
 	["MaidforceMafia", [
@@ -428,6 +457,10 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["MaidforceMini", [
+		{name: "Sofia", color: "#004475", prisoner: false, free: true, customPlayLine: "",
+			customIntro: "Hiiiii!", customSprite: "",
+			customStyle: "Sofia", customOutfit: "Sofia",
+		},
 		{name: "Gonds", color: "#0055ff", prisoner: true, free: true, customPlayLine: "", customIntro: "Hi there! I'm Gonds!", customSprite: ""},
 	],
 	],
@@ -467,6 +500,7 @@ let KDPatronCustomEnemies = new Map([
 		
 	],
 	],
+	
 	["WitchShock", [
 		{name: "Persephone", color: KDBasePink, prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
@@ -480,6 +514,9 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["WitchSlime", [
+		{name: "May Handel", color: "#643F9E", prisoner: false, free: true, customPlayLine: "", customIntro: "Ah! T'would seem another doth enter this place~", customSprite: "",
+			customOutfit: "MayHandel"
+		},
 		{name: "Kathy Narlato", color: "#4e3da9", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Claire", color: KDBaseNeon, prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Luna", color: "#872eff", prisoner: true, free: true, customPlayLine: "", customIntro: "Hi I'm Luna.", customSprite: ""},
@@ -496,6 +533,13 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["ElementalEarth", [
 		{name: "Entombment", color: "#ffae70", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+	],
+	],
+	["ElementalIce", [
+		{name: "Julia", color: "rgb(109, 104, 255)", prisoner: true, free: true, customPlayLine: "", customIntro: "H-Hello... Please instruct me on what to do, Master.",
+			
+			customOutfit: "Julia",customStyle: "Julia", 
+			customSprite: ""},
 	],
 	],
 	["BanditPet", [
@@ -545,7 +589,11 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["Dollsmith", [
-		{name: "Kiera", color: "#310051", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Hina", color: "#ff6af8", prisoner: false, free: true, customPlayLine: "", customIntro: "Hello my little pet~",
+			customOutfit: "Hina",
+			customStyle: "Hina",
+			customSprite: ""},
+		{name: "Kiera", color: "#520089", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Dollmaker", [
