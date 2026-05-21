@@ -504,15 +504,15 @@ function KDDoDialogue(data: any) {
 				KDGameData.CurrentDialogStage = dialogue.leadsToStage;
 				modded = true;
 			}
-			let Dialogue2 = KDGetDialogue();
-			if (Dialogue2?.enterFunction) {
-				Dialogue2.enterFunction(gagged, KinkyDungeonPlayerEntity, currentStage);
-			}
 			if (modded && !dialogue.dontTouchText) {
 				dialogue = KDGetDialogue();
 				if (dialogue.response) KDGameData.CurrentDialogMsg = dialogue.response;
 				if (dialogue.response == "Default") KDGameData.CurrentDialogMsg = KDGameData.CurrentDialog + KDGameData.CurrentDialogStage;
 				if (gagged && dialogue.responseGag) KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gag";
+			}
+			let Dialogue2 = KDGetDialogue();
+			if (Dialogue2?.enterFunction) {
+				Dialogue2.enterFunction(gagged, KinkyDungeonPlayerEntity, currentStage);
 			}
 		}
 	}

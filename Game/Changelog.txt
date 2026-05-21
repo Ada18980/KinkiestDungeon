@@ -97,6 +97,7 @@ Must do
 - Aiming spells around tight corners should now be more practical
 - When binding NPCs, reds-out buttons that you don't have restraints for in your inventory
 - Hovering over NPC drawing in dialogue now zooms in on the character model
+- Map goals now don't select friendly faction targets to defeat in order to pass the level
 
 Assets:
 - Added doll body type

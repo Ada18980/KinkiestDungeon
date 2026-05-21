@@ -185,7 +185,7 @@ function KinkyDungeonGetEnemy (
 	Index:              string,
 	Tile:               string,
 	requireTags?:       string[],
-	alliances?:         {requireHostile?: string, requireAllied?: string, requireNonHostile?: string},
+	alliances?:         {requireHostile?: string, requireAllied?: string, requireNonHostile?: string, requireNonFriendly?: string},
 	bonusTags?:         Record<string, {bonus: number, mult: number}>,
 	filterTags?:        string[],
 	requireSingleTag?:  string[],
@@ -261,6 +261,7 @@ function KinkyDungeonGetEnemy (
 		if (effLevel >= enemy.minLevel && (!enemy.maxLevel || effLevel < enemy.maxLevel)
 			&& (!filterTags || !filterTags.some((tag) => {return enemy.tags[tag];}))
 			&& (!alliances?.requireHostile || (alliances?.requireHostile == "Player" && !enemy.faction) || (enemy.faction && KDFactionRelation(alliances?.requireHostile, enemy.faction) <= -0.5))
+			&& (!alliances?.requireNonFriendly || (alliances?.requireNonFriendly == "Player" && !enemy.faction) || (enemy.faction && KDFactionRelation(alliances?.requireNonFriendly, enemy.faction) <= 0.1))
 			&& (!alliances?.requireAllied || (alliances?.requireAllied == "Player" && !enemy.faction) || (enemy.faction && KDFactionRelation(alliances?.requireAllied, enemy.faction) > 0.2))
 			&& (!alliances?.requireNonHostile || (alliances?.requireNonHostile == "Player" && !enemy.faction) || (enemy.faction && KDFactionRelation(alliances?.requireNonHostile, enemy.faction) > -0.49))
 			&& (KinkyDungeonGroundTiles.includes(Tile) || !enemy.tags.spawnFloorsOnly)

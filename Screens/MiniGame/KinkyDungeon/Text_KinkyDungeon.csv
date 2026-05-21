@@ -33722,7 +33722,7 @@ rDollTransformPart3_Bits,"(The SPEAKER chuckles)\nAlmost done. Just a matter of.
 rDollTransformPart3,"(The SPEAKER chuckles)\nAll done, little doll~\nYou'll enjoy your new form, I'm sure."
 
 dDollTransformPart3_A,"(Accept your new form)"
-dDollTransformPart3_B,"(Behold your new form)"
+dDollTransformPart3_B,"(...)"
 
 dNext,(...)
 

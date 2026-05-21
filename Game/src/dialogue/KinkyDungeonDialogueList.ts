@@ -1332,7 +1332,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Part3": {
 				prerequisiteFunction: () => {return false;},
 				enterFunction: () => {
-					if (!KDGameData.CurrentDialogMsgValue.GaveBit) {
+					if (!KDGameData.CurrentDialogMsgValue.GaveBits) {
 						KDGameData.CurrentDialogMsg = "DollTransformPart3_Bits";
 					}
 					return false;},
@@ -1343,10 +1343,13 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						prerequisiteFunction: () => {return !KDGameData.CurrentDialogMsgValue.GaveBits;},
 						clickFunction: () => {KDGameData.CurrentDialogMsgValue.GaveBits = 1; return false;},
 						playertext: "Default", response: "Default",
-						leadsToStage: "Part3"
+						leadsToStage: "Part3",
 					},
 					"A": {
-						clickFunction: () => {KinkyDungeonSetFlag("DollTransform_Done", 50); return false;},
+						clickFunction: (gagged, player) => {
+							KDAddSpecialStat(
+								"Hypno_Doll", player, 10, true);
+							KinkyDungeonSetFlag("DollTransform_Done", 50); return false;},
 						prerequisiteFunction: () => {return !!KDGameData.CurrentDialogMsgValue.GaveBits;},
 						playertext: "Default", response: "Default",
 						exitDialogue: true,

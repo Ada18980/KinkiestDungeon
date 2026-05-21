@@ -64,10 +64,15 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 		},
 		worldgenstart: () => {
 			let enemytype = KinkyDungeonGetEnemy([], KDGetEffLevel(),KDCurrIndex(), '0',
-				undefined, undefined, undefined, ["nokillescape"]);
+				undefined, {requireNonFriendly: "Player"}, undefined, ["nokillescape"]);
 			let enemynumber = 3;
 			if (KinkyDungeonStatsChoice.get("extremeMode")) enemynumber = 5;
 			else if (KinkyDungeonStatsChoice.get("hardMode")) enemynumber = 4;
+
+			if (!enemytype) {
+				KDMapData.KillTarget = "BlindZombie";
+				KDMapData.KillQuota = 0;
+			}
 
 			let data = {enemy: enemytype.name, number: enemynumber};
 			KinkyDungeonSendEvent("calcEscapeKillTarget", data);
