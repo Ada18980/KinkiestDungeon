@@ -21940,6 +21940,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dTheWardenDom_ProceedGag_Proceed
 # :: dTheWardenDom_Brat_Proceed2
 # :: dTheWardenSub_ProceedGag_Proceed
+# :: dDollTransformPart3_B
 # :: dNext
 
 - (The SPEAKER frowns)|Don't lie to me.
@@ -53320,7 +53321,6 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - (The SPEAKER chuckles)\nAll done, little doll~\nYou'll enjoy your new form, I'm sure.
 
 # - (Accept your new form)
-# - (Behold your new form)
 
 
 
