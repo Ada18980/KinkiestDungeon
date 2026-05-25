@@ -21906,7 +21906,8 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 - (Leave)
 ( 离开 )
-# - (...)
+- (...)
+（……）
 # :: dPause
 # :: rGenericAllyLetMePass_Leave
 # :: rGenericAllyStayHere_Leave
