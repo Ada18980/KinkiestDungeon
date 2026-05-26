@@ -2953,6 +2953,7 @@ function KDAddSpecialStat(stat: string, entity: entity, amount: number, Msg: boo
 			infinite: true,
 			tags: [stat],
 			text: "0%",
+			auraSprite: "Null",
 		});
 		if (KDSpecialStats[stat]?.BuffEvents) {
 			buff.events = KDSpecialStats[stat].BuffEvents(entity);

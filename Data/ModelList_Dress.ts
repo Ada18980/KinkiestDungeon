@@ -1144,6 +1144,7 @@ AddModel({
 	Name: "MageCollar2",
 	Folder: "Dress",
 	Parent: "MageCollar",
+	Parent2: ["MageTop"],
 	TopLevel: false,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([

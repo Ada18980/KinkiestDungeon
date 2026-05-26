@@ -4,14 +4,14 @@
  * @param x
  * @param y
  */
-function KDGetNearestFactionGuard(x: number, y: number): entity {
-	let condition = (en: entity) => {
+function KDGetNearestFactionGuard(x: number, y: number, condition?: (entity) => boolean): entity {
+	condition = condition || ((en: entity) => {
 		return (KDEnemyHasFlag(en, "mapguard")
 			|| (
 				KDGetFaction(en) == KDGetMainFaction()
 				&& en.Enemy?.tags.jailer
 			)) && !KDHelpless(en) && !KinkyDungeonIsDisabled(en);
-	};
+	});
 
 	if (KinkyDungeonJailGuard()?.aware && condition(KinkyDungeonJailGuard())) return KinkyDungeonJailGuard();
 
@@ -31,6 +31,8 @@ function KDGetNearestFactionGuard(x: number, y: number): entity {
 	}
 	return cand || KinkyDungeonJailGuard();
 }
+
+
 
 /**
  * @param player

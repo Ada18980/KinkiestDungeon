@@ -6518,7 +6518,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							enemy.fx = player.x;
 							enemy.fy = player.y;
 						} else {
-							if (player?.player && KDSoundEnabled() && KDToggles.WarningSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
+							if (player?.player && KDSoundEnabled() && KDToggles.WarningSound && KDDoWarning()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
 						}
 					}
 					if (AIData.refreshWarningTiles && enemy.usingSpecial) enemy.attackPoints = Math.min(enemy.attackPoints, delta);
@@ -7757,7 +7757,14 @@ function KinkyDungeonEnemyTryMove (
 		enemy.fy = enemy.y + Direction.y;
 	}
 
-	if (enemy.movePoints >= enemy.Enemy.movePoints + moveMult) {
+	let moveNeeded = enemy.Enemy.movePoints + moveMult;
+
+	if (enemy == KinkyDungeonLeashingEnemy() && KinkyDungeonLastAction == "Move") {
+		// ... hacky way to reduce clicking when following leash
+		moveNeeded = 1 + moveMult;
+	}
+
+	if (enemy.movePoints >= moveNeeded) {
 		enemy.movePoints = Math.max(0, enemy.movePoints - enemy.Enemy.movePoints + moveMult);
 		let dist = Math.abs(x - KinkyDungeonPlayerEntity.x) + Math.abs(y - KinkyDungeonPlayerEntity.y);
 
@@ -9199,7 +9206,10 @@ function KDGetFallbackJailPoint(direction: number) {
  * @param enemy
  */
 function KDSelfishLeash(enemy: entity): boolean {
+	if (!enemy) return true;
 	if (enemy.faction == "Ambush") return false;
+	if (enemy.Enemy?.Defeat?.alwaysForceJailfaction && KDGetMainFaction() != enemy.Enemy?.Defeat?.jailfaction) return true;
+	if (KDFactionProperties[KDGetFaction(enemy)]?.selfishFaction && KDGetMainFaction() != KDGetFaction(enemy)) return true;
 	return KDEnemyUnfriendlyToMainFaction(enemy) || (
 		(KDGetMainFaction() != (
 			KDFactionProperties[KDGetFaction(enemy)]?.jailFaction
@@ -11213,7 +11223,12 @@ function KDAddFactionForEntity(enemy: entity, forcefaction?: string): string {
 
 function KDIsArtificial(enemy: entity) {
 	if (enemy.player) {
-		return !!KinkyDungeonStatsChoice.get("Artificial");
+		return !!KinkyDungeonFlags.get("Artificial");
 	}
 	return enemy.Enemy?.nonHumanoid || !!enemy.Enemy?.bound || enemy.Enemy?.tags?.artificial;
+}
+
+
+function KDDoWarning() {
+	return !(KinkyDungeonFastWait && !!KinkyDungeonLeashingEnemy());
 }

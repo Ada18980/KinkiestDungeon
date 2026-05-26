@@ -272,7 +272,6 @@ let LAYERS_BASE = [
 	// Corsets that go under harness and poofy skirt
 	"Corset",
 
-	"Bra",
 
 	// Skirts that are slim and follow the shilhouette
 	"SkirtDeco",
@@ -385,6 +384,7 @@ let LAYERS_BASE = [
 	"Option_CrotchRope",
 	"CorsetLiner",
 	"BodysuitOver",
+	"Bra",
 
 	// Panties go here when standing
 	"Panties",

@@ -70,6 +70,61 @@ let KDPotionTypes: Record<string, PotionEffect> = {
 				affected: [],
 			};
 		}
+	},
+	Humanity: {
+		playerEffect: (inv, quantity, user, target, tx, ty) => {
+			if (!KinkyDungeonStatsChoice.get("SpeciesDoll")) {
+				KinkyDungeonSendActionMessage(7, TextGet("KDInvalidTarget_" + KDConsumable(inv).contains),
+				KDBaseOrange, 1);
+				return {success: false, consumed: 0, time: 0, componentfailure: "", miscast: false, affected: []};
+			} else {
+				KinkyDungeonSendActionMessage(7, TextGet("KDUseSelf_" + KDConsumable(inv).contains),
+				KDBaseMint, 2);
+				KDMakeIntoHuman(target)
+
+				return { success: true, consumed: quantity, time: 1, componentfailure: "", miscast: false,
+					affected: [target],
+				};
+			}
+			
+		},
+		entityEffect: (inv, quantity, user, target, tx, ty) => {
+			// buff NPC strength if possible
+			if (target.Enemy?.tags?.dollconvertible) {
+				// TODO
+				if (KDFactionFavorable(KDGetFaction(user), KDGetFaction(target))
+					|| (user == KDPlayer() && KDGetModifiedOpinionID(target.id) > 0)) {
+						KinkyDungeonSendActionMessage(7, TextGet("KDUseTarget_" + KDConsumable(inv).contains)
+						.replace("${Target}", KDEnemyName(target)),
+						KDBaseMint, 2);
+						KDMakeIntoHuman(target)
+
+
+					return {success: true, consumed: 1, time: 1, componentfailure: "", miscast: false,
+						affected: [target],
+					};
+				} else {
+					KinkyDungeonSendActionMessage(7, TextGet("KDUseTargetRefusePotion")
+						.replace("${Target}", KDEnemyName(target)),
+						KDBaseMint, 2);
+
+					return {success: false, consumed: 0, time: 0, componentfailure: "", miscast: false,
+						affected: [],
+					};
+				}
+			} else {
+				KinkyDungeonSendActionMessage(7, TextGet("KDInvalidTarget_" + KDConsumable(inv).contains),
+				KDBaseOrange, 1);
+				return {success: false, consumed: 0, time: 0, componentfailure: "", miscast: false, affected: []};
+			}
+		},
+		tileEffect: (inv, quantity, user, target, tx, ty) => {
+			KinkyDungeonSendActionMessage(7, TextGet("KDUseTile_" + KDConsumable(inv).contains),
+				KDBaseMint, 2);
+			return {success: false, consumed: 1, time: 1, componentfailure: "", miscast: false,
+				affected: [],
+			};
+		}
 	}
 }
 

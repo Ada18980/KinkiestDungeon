@@ -2203,7 +2203,14 @@ function KinkyDungeonDrawGame() {
 
 
 			DrawTextFitKD(TextGet("KinkyDungeonRestartConfirm"), 1250, 400, 1000, KDBaseWhite, "#333333");
-			DrawButtonVis(975, 550, 550, 64, TextGet("KinkyDungeonRestartNo"), KDBaseWhite, "");
+			DrawButtonKDEx("returnbutton", () => {
+				KDResetAlternateInventoryRender();
+				KinkyDungeonDrawState = "Game";
+
+				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+				KinkyDungeonDressPlayer();
+				return true;
+			}, true, 975, 550, 550, 64, TextGet("KinkyDungeonRestartNo"), KDBaseWhite, "");
 			DrawButtonVis(975, 650, 550, 64, TextGet(KDSaveBusy ? "KDSaveBusy"
 				: (KDGameData.CurrentDialog ? "KinkyDungeonRestartQuitInDialogue" : "KinkyDungeonRestartQuitNoErase")
 			), KDBaseWhite, "");
@@ -6157,4 +6164,10 @@ function KDDoStatusFade(delta: number) {
 
 function KDCanConsentIngame() {
 	return !KDConsentArray["ConsentIngame"];
+}
+
+
+function KDPlayerY(): number {
+	// Returns height of the player image on the side of the screen
+	return 0;
 }

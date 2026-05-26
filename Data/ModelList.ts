@@ -1628,6 +1628,68 @@ AddModel({
 	])
 });
 
+
+/*
+AddModel({
+	Name: "FrillSkirt",
+	Folder: "Frill",
+	Parent: "Frill",
+	TopLevel: true,
+	Categories: ["Skirts"],
+	AddPoseConditional: {
+		EncaseTorsoLower: ["Skirt", "LongSkirt"]
+	},
+	Layers: ToLayerMap([
+		{ Name: "Skirt", Layer: "Skirt", Pri: 12,
+			//swaplayerpose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			MorphPoses: {Hogtie: "Closed", Closed: "", Kneel: "Kneel", KneelClosed: "Kneel"},
+			AppendPose: ToMapDupe(["CrotchStrap"]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			Invariant: true,
+			HidePoses: {"SkimpyLower": true},
+		},
+		{ Name: "SkirtOver", Layer: "SkirtOverKneel", Pri: 12,
+			Poses: ToMap([...KNEELPOSES]),
+			TieToLayer: "Skirt",
+			NoOverride: true,
+			AppendPose: ToMapDupe(["CrotchStrap"]),
+			InheritColor: "Skirt",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			//Invariant: true,
+		},
+		{ Name: "SkirtRuffleOver", Layer: "SkirtOverKneel", Pri: 12.1,
+			Poses: ToMap([...KNEELPOSES]),
+			TieToLayer: "Skirt",
+			NoOverride: true,
+			AppendPose: ToMapDupe(["CrotchStrap"]),
+			InheritColor: "Ruffle",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			//Invariant: true,
+		},
+		{ Name: "SkirtBelt", Layer: "Skirt", Pri: 12.1,
+			//swaplayerpose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
+			Poses: ToMap([...LEGPOSES]),
+			TieToLayer: "Skirt", NoOverride: true,
+			InheritColor: "Belt",
+			//MorphPoses: {Hogtie: "Closed", Closed: "", Kneel: "Kneel", KneelClosed: "Kneel"},
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			Invariant: true,
+		},
+		{ Name: "SkirtRuffle", Layer: "Skirt", Pri: 12.1,
+			//swaplayerpose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
+			Poses: ToMap([...LEGPOSES]),
+			TieToLayer: "Skirt", NoOverride: true,
+			InheritColor: "Ruffle",
+			MorphPoses: {Hogtie: "Closed", Closed: "", Kneel: "Kneel", KneelClosed: "Kneel"},
+			AppendPose: ToMapDupe(["CrotchStrap"]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			Invariant: true,
+		},
+	])
+});*/
+
 AddModel({
 	Name: "Witch",
 	Folder: "Witch",

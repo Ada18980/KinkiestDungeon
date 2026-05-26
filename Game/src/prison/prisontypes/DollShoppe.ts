@@ -164,8 +164,8 @@ KDPrisonTypes.DollShoppe = {
 					KDGameData.PrisonerState = "jail";
 				if (KDMapData.Labels && KDMapData.Labels.Deploy) {
 					for (let l of KDMapData.Labels.Deploy) {
-						let tag = KDGetMainFaction() == "Dollsmith" ? "dollsmith" : "cyborg";
-						let Enemy = KinkyDungeonGetEnemy([tag, "robot"], MiniGameKinkyDungeonLevel + 4, 'bel', '0', [tag], undefined, {[tag]: {mult: 4, bonus: 10}}, ["boss"]);
+						let tag = "dressmaker";
+						let Enemy = KinkyDungeonGetEnemy([tag, "dressmaker"], MiniGameKinkyDungeonLevel + 4, 'bel', '0', [tag], undefined, {[tag]: {mult: 4, bonus: 10}}, ["boss"]);
 						if (Enemy && !KinkyDungeonEnemyAt(l.x, l.y)) {
 							let en = DialogueCreateEnemy(l.x, l.y, Enemy.name);
 							//KDProcessCustomPatron(Enemy, en, 0.5, false);
@@ -180,8 +180,8 @@ KDPrisonTypes.DollShoppe = {
 				}
 				if (KDMapData.Labels && KDMapData.Labels.Patrol) {
 					for (let l of KDMapData.Labels.Patrol) {
-						let tag = "robot";
-						let Enemy = KinkyDungeonGetEnemy([tag], MiniGameKinkyDungeonLevel + 4, 'bel', '0', [tag], undefined, {[tag]: {mult: 4, bonus: 10}}, ["boss", "oldrobot", "miniboss", "elite"]);
+						let tag = "dressmaker";
+						let Enemy = KinkyDungeonGetEnemy([tag], MiniGameKinkyDungeonLevel + 4, 'bel', '0', [tag], undefined, {[tag]: {mult: 4, bonus: 10}}, ["boss", "miniboss", "elite"]);
 						if (Enemy && !KinkyDungeonEnemyAt(l.x, l.y)) {
 							let en = DialogueCreateEnemy(l.x, l.y, Enemy.name);
 							//KDProcessCustomPatron(Enemy, en, 0.1, false);
@@ -223,8 +223,8 @@ KDPrisonTypes.DollShoppe = {
 						return "Uniform";
 					}
 
-					if (!KinkyDungeonFlags.get("trainingCD")) {
-						//return "Training";
+					if (!KinkyDungeonFlags.get("transformCD") && !KinkyDungeonStatsChoice.get("NoDollTransform") && !KinkyDungeonFlags.get("Transformed")) {
+						return "Transform";
 					}
 
 					return "Storage";
@@ -394,6 +394,162 @@ KDPrisonTypes.DollShoppe = {
 				return KDSetPrisonState(player, "Jail");
 			},
 		},
+
+		Transform: {name: "Transform",
+			init: (params) => {
+				return "";
+			},
+			update: (delta) => {
+				let player = KinkyDungeonPlayerEntity;
+
+				let label = KDMapData.Labels?.Stand ? KDMapData.Labels.Stand[0] : null;
+				let rad = 3;
+				if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad)) {
+					return KDGoToSubState(player, "TransformTravel");
+				}
+
+				if (!KinkyDungeonFlags.get("transformCD")) {
+					KinkyDungeonSetFlag("transformCD", 3000);
+					KinkyDungeonSetFlag("transformAwait", 15);
+					
+
+					return KDGoToSubState(player, "TransformAwait");
+				}
+
+				// Go to jail state for further processing
+				return KDSetPrisonState(player, "Jail");
+			},
+			updateStack: (delta) => {
+				// Always reveals the thing
+				let label = KDMapData.Labels?.Stand ? KDMapData.Labels.Stand[0] : null;
+				let rad = 5;
+				if (label) {
+					for (let x = label.x - rad; x <= label.x + rad; x++)
+						for (let y = label.y - rad; y <= label.y + rad; y++)
+							KDRevealTile(x, y, 8);
+				}
+			},
+			finally: (delta, currentState, stackPop) => {
+				// Remove all training doors
+				let labels = KDMapData.Labels?.TrainingDoor;
+				if (labels?.length > 0) {
+					for (let td of labels) {
+						if ("dD".includes(KinkyDungeonMapGet(td.x, td.y))) {
+							KinkyDungeonMapSet(td.x, td.y, '2');
+							let door = KinkyDungeonTilesGet(td.x + ',' + td.y);
+							if (door) {
+								delete door.Type;
+								delete door.Lock;
+								delete door.ReLock;
+							}
+						}
+					}
+				}
+			},
+		},
+
+		
+		TransformAwait: {name: "TransformAwait",
+			init: (params) => {
+				return "";
+			},
+			update: (delta) => {
+				let player = KinkyDungeonPlayerEntity;
+				if (!KDPrisonPuppetmasterGuard(player)) {
+
+					
+					let en = DialogueCreateEnemy(KDMapData.EndPosition.x, KDMapData.EndPosition.y, "Puppetmaster");
+					//KDProcessCustomPatron(Enemy, en, 0.5, false);
+					en.AI = "looseguard";
+					en.faction = "Dressmaker";
+					en.keys = true;
+					en.gxx = KDPlayer().x;
+					en.gyy = KDPlayer().y;
+					en.gx = KDPlayer().x;
+					en.gy = KDPlayer().y;
+
+					KDPrisonPuppetmasterGuard(player);
+				}
+
+				if (KinkyDungeonJailGuard() && (KDPrisonIsInFurniture(player)) && KinkyDungeonFlags.get("transformAwait")
+					&& !KinkyDungeonStatsChoice.get("SpeciesDoll")) {
+					let guard = KinkyDungeonJailGuard();
+						
+					let action = "initiateDialogue";
+					if (guard.IntentAction != action && !KDGameData.CurrentDialog) {
+						guard.gx = player.x;
+						guard.gy = player.y;
+						KDIntentEvents[action].trigger(guard, {});
+						guard.intentDialogue = "DollTransform";
+					}
+					
+					
+
+					
+					// Stay in the current state for travel
+					return KDCurrentPrisonState(player);
+
+				}
+				// If we are in uniform we go to the Storage state
+				return KDPopSubstate(player);
+			},
+		},
+		
+		TransformTravel: {name: "TransformTravel",
+			init: (params) => {
+				return "";
+			},
+			update: (delta) => {
+				let player = KinkyDungeonPlayerEntity;
+
+				let label = KDMapData.Labels?.Stand ? KDMapData.Labels.Stand[0] : null;
+				let rad = 3;
+
+				let lostTrack = KDLostJailTrack(player);
+				if (lostTrack == "Unaware") {
+					return KDSetPrisonState(player, "Jail");
+				}
+
+				if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad || !KDPrisonIsInFurniture(player))
+					&& KDPlayerLeashable(player)) {
+					let guard = KDPrisonCommonGuard(player);
+					if (guard) {
+						// Assign the guard to a furniture intentaction
+						let action = "leashToPoint_Furn";
+						if (guard.IntentAction != action) {
+							guard.gx = player.x;
+							guard.gy = player.y;
+							KDIntentEvents[action].trigger(guard, {point: label, radius: 1, target: player});
+						}
+
+						if (lostTrack) {
+							// Any qualifying factors means they know where you should be
+							guard.gx = player.x;
+							guard.gy = player.y;
+							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
+							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+						}
+						if (KinkyDungeonLeashingEnemy() == guard) {
+							// Make the guard focus on leashing more strongly, not attacking or pickpocketing
+							KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
+						}
+						KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
+					} else {
+						// forbidden state
+						return KDPopSubstate(player);
+					}
+
+					// Stay in the current state for travel
+					return KDCurrentPrisonState(player);
+				
+					
+				}
+
+				// End
+				KinkyDungeonSetFlag("transformAwaitFurniture", 6);
+				return KDPopSubstate(player);
+			},
+		},
 		
 		StorageTravel: {name: "StorageTravel",
 			init: (params) => {
@@ -455,3 +611,23 @@ KDPrisonTypes.DollShoppe = {
 		
 	},
 };
+
+
+/**
+ * @param player
+ */
+function KDPrisonPuppetmasterGuard(player: entity, _call: boolean = false, suppressCall: boolean = true): entity {
+	// Suppress standard guard call behavior
+	KinkyDungeonSetFlag("SuppressGuardCall", 10);
+	let guard = KDGetNearestFactionGuard(player.x, player.y, ((en: entity) => {
+		return !!en.Enemy?.tags?.puppeteer && (KDEnemyHasFlag(en, "mapguard")
+			|| (
+				KDGetFaction(en) == KDGetMainFaction()
+				&& en.Enemy?.tags.jailer
+			)) && !KDHelpless(en) && !KinkyDungeonIsDisabled(en);
+	}));
+	if (guard)
+		KDGameData.JailGuard = guard.id;
+
+	return KinkyDungeonJailGuard();
+}

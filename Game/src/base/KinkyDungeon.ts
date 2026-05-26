@@ -575,6 +575,7 @@ interface KDGameDataBase {
 
 	HypnoButtons: HypnoButton[],
 	originalBody: string,
+	Listeners: Record<string, object>,
 };
 
 
@@ -858,6 +859,7 @@ let KDGameDataBase: KDGameDataBase = {
 	oldtitles: [],
 	titlesUnlocked: [],
 	RecentProgress: {},
+	Listeners: {},
 };
 
 // endregion
@@ -3010,7 +3012,7 @@ function KinkyDungeonRun() {
 			CharacterRefresh = () => {KDRefresh = true;};
 			CharacterAppearanceBuildCanvas = () => {};
 
-			if (!KDContextMenu) {
+			if (!KDContextMenu && KinkyDungeonDrawState != "Restart") {
 				if (KDGameData.SleepTurns > 0) {
 					if (CommonTime() > KinkyDungeonSleepTime) {
 						KDGameData.SleepTurns -= 1;
@@ -8311,4 +8313,18 @@ function KDRunnewConsentCheck() {
 			}
 		}
 	}
+}
+
+/** If data is specified, overwrites. Otherwise, does nothing if a listener is already in place. */
+function KDAddListener(name: string, data?: object) {
+	if (!KDGameData.Listeners) {
+		KDGameData.Listeners = {};
+	}
+
+	if (data) {
+		KDGameData.Listeners[name] = data;
+	} else if (!KDGameData.Listeners[name]) {
+		KDGameData.Listeners = {};
+	}
+
 }

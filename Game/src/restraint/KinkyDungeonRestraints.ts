@@ -5273,7 +5273,8 @@ function KinkyDungeonAddRestraint (
 			let ret = KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, false, events, faction, true, Curse, securityEnemy, true, inventoryAs, data, powerBonus);
 			if (ret) {
 				KDUpdateWaitTime(200);
-				KDDoRestraintParticlePlayer(restraint);
+				if (!Link && !Unlink)
+					KDDoRestraintParticlePlayer(restraint);
 				return ret;
 			}
 		}
@@ -5400,7 +5401,8 @@ function KinkyDungeonAddRestraint (
 
 				KDUpdateLinkCaches(item);
 				KDUpdateItemEventCache = true;
-				KDDoRestraintParticlePlayer(restraint);
+				if (!Link && !Unlink)
+					KDDoRestraintParticlePlayer(restraint);
 			} else if ((!Link && !linked) || SwitchItems) {
 				KinkyDungeonCancelFlag = false;
 				// Otherwise, if we did unlink an item, and we are not in the process of linking (very important to prevent loops)

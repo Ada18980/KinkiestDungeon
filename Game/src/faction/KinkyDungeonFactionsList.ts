@@ -10,6 +10,7 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		honor: -1,
 		jailBackupFaction: "Apprentice",
 		jailRoom: "DollShoppe",
+		selfishFaction: true,
 		honor_specific: {
 			Witch: 1,
 		},

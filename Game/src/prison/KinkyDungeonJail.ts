@@ -2502,6 +2502,12 @@ function KDGetHiSecDialogue(enemy: entity): string {
 
 function KDGetLeashFaction(leashEnemy: entity): string {
 	let forceFaction = undefined;
+	
+	if (leashEnemy && KDFactionProperties[KDGetFaction(leashEnemy)]?.selfishFaction && KDGetMainFaction() != KDGetFaction(leashEnemy)) return KDGetFaction(leashEnemy);
+	if (leashEnemy && (leashEnemy.Enemy?.Defeat?.alwaysForceJailfaction || leashEnemy.Enemy?.Defeat?.alwaysForceJailroom)
+		&& leashEnemy.Enemy?.Defeat?.jailroom) {
+		return leashEnemy.Enemy.Defeat.jailfaction || KDGetFaction(leashEnemy);
+	} else
 	if (leashEnemy && KDSelfishLeash(leashEnemy) && (KDFactionProperties[KDGetFaction(leashEnemy)]
 		|| KDFactionProperties[KDGetFactionOriginal(leashEnemy)])) {
 		if (KDFactionProperties[KDGetFaction(leashEnemy)])
@@ -2526,6 +2532,13 @@ function KDGetLeashFaction(leashEnemy: entity): string {
 
 function KDGetLeashJailRoom(leashEnemy: entity): string {
 	let jailRoom = undefined;
+	let faction = "";
+	if (leashEnemy) {
+		if (!KDSelfishLeash(leashEnemy)) faction = KDGetMainFaction();
+		else faction = KDGetFaction(leashEnemy); 
+	} else {
+		faction = KDGetMainFaction();
+	}
 	if (leashEnemy && (!leashEnemy.faction || leashEnemy.Enemy?.Defeat?.alwaysForceJailroom)
 		&& leashEnemy.Enemy?.Defeat?.jailroom) {
 		jailRoom = leashEnemy.Enemy.Defeat.jailroom;
@@ -2535,18 +2548,18 @@ function KDGetLeashJailRoom(leashEnemy: entity): string {
 		jailRoom = KDGetLairs(KDGetWorldMapLocation(KDCurrentWorldSlot),
 			leashEnemy.id)[0];
 	} else if (leashEnemy
-		&& (KDFactionProperties[KDGetFaction(leashEnemy)]?.lairType
-		|| (!KDFactionProperties[KDGetFaction(leashEnemy)]
+		&& (KDFactionProperties[faction]?.lairType
+		|| (!KDFactionProperties[faction]
 		&& KDFactionProperties[KDGetFactionOriginal(leashEnemy)]?.lairType))) {
-		if (KDFactionProperties[KDGetFaction(leashEnemy)]?.lairType)
-			jailRoom = KDFactionProperties[KDGetFaction(leashEnemy)].lairType;
+		if (KDFactionProperties[faction]?.lairType)
+			jailRoom = KDFactionProperties[faction].lairType;
 		else
 			jailRoom = KDFactionProperties[KDGetFactionOriginal(leashEnemy)].lairType
 	} else if (leashEnemy
-		&& (KDFactionProperties[KDGetFaction(leashEnemy)]
+		&& (KDFactionProperties[faction]
 		|| KDFactionProperties[KDGetFactionOriginal(leashEnemy)])) {
-		if (KDFactionProperties[KDGetFaction(leashEnemy)])
-			jailRoom = KDFactionProperties[KDGetFaction(leashEnemy)].jailRoom;
+		if (KDFactionProperties[faction])
+			jailRoom = KDFactionProperties[faction].jailRoom;
 		else
 			jailRoom = KDFactionProperties[KDGetFactionOriginal(leashEnemy)].jailRoom
 	}

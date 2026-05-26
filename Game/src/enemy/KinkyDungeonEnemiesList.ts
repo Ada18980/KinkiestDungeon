@@ -958,7 +958,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
-		visionRadius: 8, blindSight: 8, evasion: 0.3, maxhp: 9, minLevel:0, weight:0.3, movePoints: 1.4, attackPoints: 2, attack: "MeleeBindWill", attackWidth: 3, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
+		visionRadius: 8, blindSight: 8, evasion: 0.3, maxhp: 6, minLevel:0, weight:0.3, movePoints: 1.4, attackPoints: 2, attack: "MeleeBindWill", attackWidth: 3, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 2,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 1, color: KDBaseWhite},
 		],
@@ -5091,7 +5091,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		nonDirectional: true, kite: 1.5,
 		spells: ["LockBullet"], castWhileMoving: true, projectileTargeting: true,
 		spellCooldownMod: 0, spellCooldownMult: 1,
-		visionRadius: 5.5, visionSummoned: 12, maxhp: 6, minLevel: 3, weight:0, movePoints: 2,
+		visionRadius: 5.5, visionSummoned: 12, maxhp: 5, minLevel: 3, weight:0, movePoints: 2,
 		stamina: 5,
 		sprintspeed: 2.0,
 		attackLock: "Purple",
@@ -5832,6 +5832,29 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackWidth: 1, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 3, focusPlayer: true, attackLock: "Purple",
 		terrainTags: {"secondhalf":2, "lastthird":1, "open": 4, "dressmaker": 20, "conjureAnger": 5, "conjureRage": 4, "ropeAnger": 3, "ropeRage": 2}, allFloors: true, shrines: ["Conjure", "Rope"],
 		dropTable: [{name: "RibbonRaw", amount: 7, weight: 14}]},
+
+	{name: "Puppetmaster", nameList: "french", outfit: "Puppetmaster", style: "Water", clusterWith: "dressmaker",
+		bound: "Puppetmaster", playLine: "Dressmaker", faction: "Dressmaker", color: "#e545f7",
+		tags: KDMapInit(["leashing", "antiMagic", "ribbon", "dressmaker", "dolldressmaker", "imprisonable", "kiguRestraints", "guardCall", "boss", "puppetmaster",
+			"jail", "jailer", "conjurer", "acidweakness", "soapresist", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "dressRestraints"]),
+		RestraintFilter: {
+			requiredItems: ["BindingDress", "PotionHumanity"],
+		},
+		stamina: 7,
+		maxblock: 1,
+		
+		Security: {
+			level_key: 2,
+			level_magic: 3,
+		},
+		maxdodge: 1, unlockCommandLevel: 2, unlockCommandCD: 12, 
+		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true, spells: ["Ribbons", "Ribbons", "Ribbons", "RibbonBurst", "EnemyCM1", "EnemyCM_self"],
+		stopToCast: true, spellRdy: true, noKiteWhenHarmless: true, noSpellsWhenHarmless: true,
+		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 35, spellResist: 2, minLevel:0, weight:-2, movePoints: 2.5,
+		attackPoints: 2, attack: "SpellMeleeBindLock", projectileTargeting: true,
+		attackWidth: 1, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 3, focusPlayer: true, attackLock: "Purple",
+		terrainTags: {"secondhalf":2, "lastthird":1, "open": 4, "dressmaker": 20, "puppetmaster": 100, "conjureAnger": 5, "conjureRage": 4, "ropeAnger": 3, "ropeRage": 2}, allFloors: true, shrines: ["Conjure", "Rope"],
+		dropTable: [{name: "RibbonRaw", amount: 20, weight: 14}]},
 	{name: "Nurse", outfit: "Nurse", style: "Earth", clusterWith: "construct", bound: "Nurse", playLine: "Nurse", faction: "Dressmaker", color: "#f135a4",
 		RestraintFilter: {
 			requiredItems: ["AsylumJacket"],

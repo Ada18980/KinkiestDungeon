@@ -2035,12 +2035,7 @@ function KinkyDungeonHandleHUD() {
 			return true;
 		}
 		if (MouseIn(975, 550, 550, 64)) {
-			KDResetAlternateInventoryRender();
-			KinkyDungeonDrawState = "Game";
-
-			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-			KinkyDungeonDressPlayer();
-			return true;
+			
 		} else if (KinkyDungeonIsPlayer() && MouseIn(975, 650, 550, 64)) {
 			if (KDSaveBusy) {
 				if (KDSoundEnabled())

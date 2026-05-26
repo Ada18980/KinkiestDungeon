@@ -50,8 +50,8 @@ function KDAddParticle(x: number, y: number, img: string, _type: string, data: K
 		if (info.time < 0) sprite.visible = false;
 
 		if (info.fadeEase && sprite.visible) {
-			switch (info.fadeEase) {
-				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * info.time / info.lifetime)));}
+			if (info.fadeEase && KDEaseTypes[info.fadeEase]) {
+				sprite.alpha = KDEaseTypes[info.fadeEase](info.time / info.lifetime);
 			}
 		}
 
@@ -63,6 +63,15 @@ function KDAddParticle(x: number, y: number, img: string, _type: string, data: K
 	}
 }
 
+
+let KDEaseTypes: Record<string, (number) => number> = {
+	invcos: (d) => {
+		return Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * d)));
+	},
+	cos2: (d) => {
+		return Math.min(1, Math.max(0, 1 - Math.cos(Math.PI + Math.PI * d)*Math.cos(Math.PI + Math.PI * d)));
+	},
+};
 
 /**
  * @param x
@@ -112,8 +121,9 @@ function KDAddParticleEmitter(x: number, y: number, img: string, imgemitted: str
 		if (emitterinfo.time < 0) sprite.visible = false;
 
 		if (emitterinfo.fadeEase && sprite.visible) {
-			switch (emitterinfo.fadeEase) {
-				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * emitterinfo.time / emitterinfo.lifetime)));}
+			
+			if (emitterinfo.fadeEase && KDEaseTypes[emitterinfo.fadeEase]) {
+				sprite.alpha = KDEaseTypes[emitterinfo.fadeEase](emitterinfo.time / emitterinfo.lifetime);
 			}
 		}
 
@@ -158,14 +168,17 @@ function KDUpdateParticles(main_delta: number) {
 		if (info.time >= 0) sprite.visible = true;
 		if (info.vy) {sprite.position.y += info.vy * delta;}
 		if (info.vx) {sprite.position.x += info.vx * delta;}
+		if (info.angle_delta) {sprite.rotation += info.angle_delta * delta;}
 
 		if (info.sin_x && info.sin_period && sprite.visible) {sprite.position.x += info.sin_x * Math.sin(info.phase + info.sin_period * info.time / info.lifetime) * delta;}
 		if (info.sin_y && info.sin_period && sprite.visible) {sprite.position.y += info.sin_y * Math.sin(info.phase + info.sin_period * info.time / info.lifetime) * delta;}
 
 		if (info.fadeEase && sprite.visible) {
-			switch (info.fadeEase) {
-				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * info.time / info.lifetime)));}
+			
+			if (info.fadeEase && KDEaseTypes[info.fadeEase]) {
+				sprite.alpha = KDEaseTypes[info.fadeEase](info.time / info.lifetime);
 			}
+			
 		}
 
 		if (info.scale != 1 || info.scale_delta) {
@@ -204,17 +217,20 @@ function KDUpdateParticles(main_delta: number) {
 			emitter.time += dd;
 		} else emitter.time += delta;
 
+		if (emitter.time >= 0) sprite.visible = true;
 		if (emitter.vy) {sprite.position.y += emitter.vy * delta;}
 		if (emitter.vx) {sprite.position.x += emitter.vx * delta;}
-		if (emitter.time >= 0) sprite.visible = true;
+		if (emitter.angle_delta) {sprite.rotation += info.angle_delta * delta;}
 
 		if (emitter.sin_x && emitter.sin_period && sprite.visible) {sprite.position.x += emitter.sin_x * Math.sin(emitter.phase + emitter.sin_period * emitter.time / emitter.lifetime) * delta;}
 		if (emitter.sin_y && emitter.sin_period && sprite.visible) {sprite.position.y += emitter.sin_y * Math.sin(emitter.phase + emitter.sin_period * emitter.time / emitter.lifetime) * delta;}
 
 		if (emitter.fadeEase && sprite.visible) {
-			switch (emitter.fadeEase) {
-				case "invcos": {sprite.alpha = Math.min(1, Math.max(0, 1 - Math.cos(2 * Math.PI * emitter.time / emitter.lifetime)));}
+			
+			if (emitter.fadeEase && KDEaseTypes[emitter.fadeEase]) {
+				sprite.alpha = KDEaseTypes[emitter.fadeEase](emitter.time / emitter.lifetime);
 			}
+			
 		}
 
 		if (emitter.scale != 1 || emitter.scale_delta) {
@@ -487,5 +503,35 @@ function KDCreateArousalParticle(pinkChance: number, purpleChance: number) {
 			sin_period: 1.4,
 			phase: 6 * Math.random(),
 			fadeEase: "invcos",
+		});
+}
+
+
+
+let KDTransformParticleCount = 100;
+let KDTransformParticleLifetime = 2750;
+
+function KDAddTransformParticle(x: number, y: number, width: number, height: number, level: number, image: string, angle?: number, baseangle: number = 3.0, anglefactor: number = 3.1) {
+	let Ystart = y;
+	let Xstart = x + Math.random() * width;
+
+	Ystart += height * (1 - level);
+	let lifetime = KDTransformParticleLifetime;
+
+	KDAddParticle(Xstart, Ystart, image, 
+		undefined, {
+			time: -lifetime * level * 0.3,
+			lifetime: lifetime,
+			vx: 0,
+			vy: (-50)/lifetime,
+			zIndex: 1000,
+			phase: 0,
+			scale: 1,
+			scale_delta: (1) / lifetime,
+			fadeEase: "cos2",
+			rotation: angle || 0,
+			angle_delta: (baseangle + (anglefactor*Math.abs(angle) || 0)) / lifetime,
+			width: 72,
+			height: 72,
 		});
 }

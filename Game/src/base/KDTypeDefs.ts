@@ -1373,7 +1373,9 @@ interface enemy extends KDHasTags {
 		furnitureTags?: {tags: string[], count: number}[],
 		jailroom?: string,
 		useLair?: boolean,
-		alwaysForceJailroom?: string,
+		alwaysForceJailroom?: boolean,
+		alwaysForceJailfaction?: boolean,
+		jailfaction?: string,
 		specificRestraints?: {
 			name: string,
 			minlevel: number,
@@ -2017,6 +2019,7 @@ interface entity {
 
 	IntentAction?: string,
 	IntentLeashPoint?: {x: number, y: number, type: string, radius: number, entrance?: boolean},
+	intentDialogue?: string,
 
 	CurrentAction?: string,
 	RemainingJailLeashTourWaypoints?: number,
@@ -3740,6 +3743,7 @@ type KDParticleData = {
 
 	rotation?: number,
 	rotation_spread?: number,
+	angle_delta?: number,
 	//delay?: number,
 
 	vy?: number,
@@ -3776,6 +3780,7 @@ type KDParticleEmitterData = {
 
 	rotation?: number,
 	rotation_spread?: number,
+	angle_delta?: number,
 
 	noFace?: boolean,
 
@@ -4234,6 +4239,8 @@ interface KDCollectionEntry {
 }
 
 interface KDFactionProps {
+	/** They always try to bring you to their jail even if friendly with the room's faction */
+	selfishFaction?: boolean,
 	/** Faction for hisec */
 	jailFaction?: string,
 	/** Name of the room type this faction jails you in. Default is Jail */

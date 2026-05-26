@@ -12854,23 +12854,23 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 
 		
 		"SpeciesDoll": (_e, _data) => {
-			if (KinkyDungeonStatsChoice.has("SpeciesDoll")) {
-					if (!KinkyDungeonFlags.get("SpeciesDollSpell")) {
-						KinkyDungeonSetFlag("SpeciesDollSpell", -1);
-						KinkyDungeonSpells.push(KinkyDungeonFindSpell("SpeciesDoll"));
-						KDRefreshSpellCache = true;
-					}
-				} else if (KinkyDungeonFlags.get("SpeciesDollSpell")) {
-					let index = KinkyDungeonSpells.findIndex((spell) => {
-						return spell.name == "SpeciesDoll";
-					});
-					if (index > 0) {
-						KinkyDungeonSpells.splice(index, 1);
-						KDRefreshSpellCache = true;
-					}
-					
-					KinkyDungeonSetFlag("SpeciesDollSpell", 0);
+			if (KinkyDungeonStatsChoice.get("SpeciesDoll")) {
+				if (!KinkyDungeonFlags.get("SpeciesDollSpell")) {
+					KinkyDungeonSetFlag("SpeciesDollSpell", -1);
+					KinkyDungeonSpells.push(KinkyDungeonFindSpell("SpeciesDoll"));
+					KDRefreshSpellCache = true;
 				}
+			} else if (KinkyDungeonFlags.get("SpeciesDollSpell")) {
+				let index = KinkyDungeonSpells.findIndex((spell) => {
+					return spell.name == "SpeciesDoll";
+				});
+				if (index > 0) {
+					KinkyDungeonSpells.splice(index, 1);
+					KDRefreshSpellCache = true;
+				}
+				
+				KinkyDungeonSetFlag("SpeciesDollSpell", 0);
+			}
 		},
 		"BurningDesire": (_e, _data) => {
 			if (KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax * 0.7 && KinkyDungeonStatsChoice.has("BurningDesire")) {

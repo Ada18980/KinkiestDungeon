@@ -2923,6 +2923,13 @@ AttackDressmakerBind,"The dressmaker has you try on one of ${Etheir} new accesso
 AttackDressmakerLock,"The dressmaker adds a lock 'just to complete the look, you know?'"
 AttackDressmaker,"The dressmaker cuddles your helpless body~ (DamageTaken)"
 
+
+NamePuppetmaster,Puppetmaster
+KillPuppetmaster,"The puppetmaster storms out in a rage."
+AttackPuppetmasterBind,"The puppetmaster has you try on one of ${Etheir} new accessories! (+RestraintAdded)"
+AttackPuppetmasterLock,"The puppetmaster adds a lock 'just to complete the look, you know?'"
+AttackPuppetmaster,"The puppetmaster cuddles your helpless body~ (DamageTaken)"
+
 NameNurse,Nurse
 KillNurse,"The Nurse marks ${Etheir} notes and runs off."
 AttackNurseBind,"The Nurse tries to pacify this rowdy patient! (+RestraintAdded)"
@@ -21278,7 +21285,7 @@ m_BraStraps_l_Straps,Straps
 m_Panties,Panties
 m_Panties_l_Base,Base
 m_Panties_l_Lines,Lines
-m_PantiesBow,PantiesBow
+m_PantiesBow,Bow
 m_PantiesBow_l_Bow,Bow
 m_PantiesStriped,PantiesStriped
 m_PantiesStriped_l_Base,Base
@@ -31083,6 +31090,8 @@ KDRoomType_Warden,"Prison"
 KDRoomType_Dollmaker,"Sorting Room"
 KDRoomType_Jail,"Prison"
 KDRoomType_DragonLair,"Lair"
+KDRoomType_DollShoppe,"Shoppe"
+
 
 KDHotbarTutorial,"Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."
 
@@ -33162,9 +33171,13 @@ KDNotEnoughStamStruggle,"(Need ${Need} SP, have ${Current})"
 KDUseTargetRefusePotion,${Target} refuses to take the potion.
 
 KDInvalidTarget_Strength,Target must have muscles.
+KDInvalidTarget_Humanity,Target must be a doll.
 KDUseTarget_Strength,${Target} gains immense physical strength!
+KDUseTarget_Humanity,${Target} becomes flesh-and-blood!
 KDUseSelf_Strength,You gain immense physical strength!
+KDUseSelf_Humanity,The potion transforms causes your body to grow warm and living!
 KDUseTile_Strength,You dump the potion on the ground and nothing happens.
+KDUseTile_Humanity,This potion cannot be used on the ground!
 KinkyDungeonPotionStrength,You are strong!
 
 KinkyDungeonInventoryItemPotionStrength,Strength Potion
@@ -33638,8 +33651,13 @@ KDTransformToDoll,You have been transformed into a ball-jointed doll
 KDTransformFail,You are already transformed
 KDTransformFailDoll,"You are already artificial, and cannot be transformed."
 
+KDTransformToHuman,You become a flesh-and-blood creature.
+KDTransformFailHuman,That didn't work. Please report this to Ada!
+
 
 rDollTransformResist,"(The SPEAKER caresses you by the chin as you remain locked in the stand)\nTruly sad, truly. A good doll should be still...\nNow, my showcase awaits~"
+
+rDollTransformAlready,"(The SPEAKER smiles at you)\nYou look so gorgeous, lovely doll~"
 
 rDollTransform,"(The SPEAKER reaches out with a gentle hand,\npropping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?"
 dDollTransform_Material,"Materials??"
@@ -33718,7 +33736,8 @@ rDollTransformPart2_Silent,"(The SPEAKER caresses your body)\nAlready so still..
 rDollTransformPart2_Resist,"(The SPEAKER puts a hand on your shoulder)\nBe still.\n(As ${Ethey} say${Es} that, your whole body freezes...)\n(It feels... different now.)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)"
 
 dDollTransformPart3_Bits,"(You feel nothing between your legs...)"
-rDollTransformPart3_Bits,"(The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?"
+rDollTransformPart3_BitsPre,"(You can't help but notice that something's missing...)"
+rDollTransformPart3_Bits,"(The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?\n(After some teasing, ${Ethey} give${Es} you some proper bits and finish the transformation)"
 rDollTransformPart3,"(The SPEAKER chuckles)\nAll done, little doll~\nYou'll enjoy your new form, I'm sure."
 
 dDollTransformPart3_A,"(Accept your new form)"
@@ -33730,6 +33749,6 @@ dNext,(...)
 
 
 KinkyDungeonInventoryItemPotionHumanity,Potion of Humanity
-KinkyDungeonInventoryItemPotionHumanityUse,The potion transforms causes your body to grow warm and living.
+KinkyDungeonInventoryItemPotionHumanityUse,Choose who should drink the potion.
 KinkyDungeonInventoryItemPotionHumanityDesc,"A potion said to grant the gift of life to an artificial being made of clockwork."
 KinkyDungeonInventoryItemPotionHumanityDesc2,"Transforms a doll into a living creature."

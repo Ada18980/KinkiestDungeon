@@ -1223,7 +1223,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				}
 			},
 			"Whimper": {
-				response: "Default", gag: true,
+				response: "Default",
 				options: {
 					"No": {
 						response: "Default",gag: true,
@@ -1333,7 +1333,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				prerequisiteFunction: () => {return false;},
 				enterFunction: () => {
 					if (!KDGameData.CurrentDialogMsgValue.GaveBits) {
-						KDGameData.CurrentDialogMsg = "DollTransformPart3_Bits";
+						KDGameData.CurrentDialogMsg = "DollTransformPart3_BitsPre";
 					}
 					return false;},
 					
@@ -1343,7 +1343,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						prerequisiteFunction: () => {return !KDGameData.CurrentDialogMsgValue.GaveBits;},
 						clickFunction: () => {KDGameData.CurrentDialogMsgValue.GaveBits = 1; return false;},
 						playertext: "Default", response: "Default",
-						leadsToStage: "Part3",
+						leadsToStage: "Part3", dontTouchText: true,
+						// TODO add mode without sex organs
 					},
 					"A": {
 						clickFunction: (gagged, player) => {
@@ -6311,6 +6312,8 @@ function KDShopkeeperMaxHelpPower() {
 	return 10*KDGetEffMaxLevel() + KDDialogueParams.ShopkeeperHelpFeeFreebiePower;
 }
 
+
+let KDDollParticleCount = 3;
 function KDMakeIntoDoll(player: entity) {
 	if (player.player) {
 		if (!KinkyDungeonFlags.get("Transformed")) {
@@ -6322,7 +6325,7 @@ function KDMakeIntoDoll(player: entity) {
 					return item.Model?.Group == "Body"
 				});
 				if (body) {
-					KDGameData.originalBody = JSON.stringify(body);
+					KDGameData.originalBody = body.Model.Name;
 					body.Model = ModelDefs.DollBody;
 				}
 
@@ -6331,6 +6334,17 @@ function KDMakeIntoDoll(player: entity) {
 					KinkyDungeonDressSet();
 				KDRefreshCharacter.set(Char, true);
 				KinkyDungeonDressPlayer(Char);
+				
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DollTransform.ogg");
+
+				for (let i = 0; i < KDTransformParticleCount; i++) {
+					KDAddTransformParticle(
+						0, KDPlayerY(), 500, 1000,
+						i/KDTransformParticleCount,
+						KinkyDungeonRootDirectory + "Particles/Dollification" + Math.floor(Math.random() * KDDollParticleCount) + ".png", 
+						-Math.PI/2 +Math.PI * Math.random()
+					);
+				}
 				
 				KinkyDungeonSendTextMessage(10, TextGet("KDTransformToDoll"), KDBaseLavender);
 			} else {
@@ -6348,3 +6362,61 @@ function KDMakeIntoDoll(player: entity) {
 		// TODO
 	}
 }
+
+
+function KDMakeIntoHuman
+(player: entity) {
+	if (player.player) {
+		if (KinkyDungeonStatsChoice.get("SpeciesDoll")) {
+			if (KDIsArtificial(player)) {
+				KinkyDungeonSetFlag("Transformed", 0);
+
+				KinkyDungeonStatsChoice.delete("SpeciesDoll");
+				let body = KinkyDungeonPlayer.Appearance.find((item) => {
+					return item.Model?.Group == "Body"
+				});
+				if (body) {
+					if (KDGameData.originalBody) {
+						body.Model = ModelDefs[KDGameData.originalBody];
+					} else {
+						body.Model = ModelDefs.SmoothBody;
+					}
+				}
+
+				let Char = KinkyDungeonPlayer;
+				if (Char == KinkyDungeonPlayer)
+					KinkyDungeonDressSet();
+				KDRefreshCharacter.set(Char, true);
+				KinkyDungeonDressPlayer(Char);
+				
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Heartbeat.ogg");
+				let index = KinkyDungeonSpells.findIndex((spell) => {
+					return spell.name == "SpeciesDoll"
+				});
+
+				for (let i = 0; i < KDTransformParticleCount; i++) {
+					KDAddTransformParticle(
+						0, KDPlayerY(), 500, 1000,
+						i/KDTransformParticleCount,
+						KinkyDungeonRootDirectory + "Particles/BecomeHuman.png", 
+						-Math.PI/2 +Math.PI * Math.random()
+					);
+				}
+				
+				KinkyDungeonSendTextMessage(10, TextGet("KDTransformToHuman"), KDBaseLavender);
+			} else {
+				KinkyDungeonSendTextMessage(10, TextGet("KDTransformFailHuman"), KDBaseLavender);
+
+			}
+			
+
+		} else {
+			KinkyDungeonSendTextMessage(10, TextGet("KDTransformFail"), KDBaseLavender)
+
+			
+		}
+	} else {
+		// TODO
+	}
+}
+

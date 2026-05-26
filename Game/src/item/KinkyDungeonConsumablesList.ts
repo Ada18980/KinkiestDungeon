@@ -18,6 +18,12 @@ let KinkyDungeonConsumables: Record<string, consumable> = {
 		rarity: 2, shop: true, type: "target", gagFloor: 0.5, sfx: "PotionDrink"},
 
 
+		
+	"PotionHumanity" : {name: "PotionHumanity", potion: true, itemEffect: "PotionDrink",
+		contains: "Humanity",
+		rarity: 5, shop: false, type: "target", gagFloor: 0, sfx: "PotionDrink"},
+
+
 
 
 	"Ectoplasm" : {name: "Ectoplasm", noHands: true,

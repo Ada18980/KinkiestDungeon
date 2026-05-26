@@ -32,7 +32,7 @@ AddModel({
 	Name: "PantiesBow",
 	Folder: "Panties",
 	Parent: "Panties",
-	TopLevel: true,
+	TopLevel: false,
 	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		{ Name: "Bow", Layer: "Panties", Pri: -24.7,
