@@ -5887,6 +5887,13 @@ Ada 屈服于欲望，跌倒在地~
 - The dressmaker cuddles your helpless body~ (DamageTaken)
 裁缝拥抱你无助的身体~(DamageTaken)
 
+
+# - Puppetmaster
+# - The puppetmaster storms out in a rage.
+# - The puppetmaster has you try on one of ${Etheir} new accessories! (+RestraintAdded)
+# - The puppetmaster adds a lock 'just to complete the look, you know?'
+# - The puppetmaster cuddles your helpless body~ (DamageTaken)
+
 - Nurse
 护士
 - The Nurse marks ${Etheir} notes and runs off.
@@ -27766,7 +27773,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - MaidBow
 女仆领结
 - Bow
-弓
+内裤蝴蝶结
 :: l_MaidBow_Bow
 领结
 :: l_Maid_Bow
@@ -27781,6 +27788,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 领结
 :: m_Maid_l_Bow
 领结
+# :: m_PantiesBow
 :: m_PantiesBow_l_Bow
 蝴蝶结
 :: m_PantiesBowStriped_l_Bow
@@ -39177,8 +39185,6 @@ Aura刘海(右后)
 # :: m_TheRobeOfChastity_l_Lines
 # :: m_TheRobeOfChastityRestraint_l_Lines
 # :: m_TheRobeOfChastityRestraint_l_Lines
-- PantiesBow
-内裤蝴蝶结
 # - PantiesStriped
 # - PantiesInvertedRose
 # - PantiesCherry
@@ -49166,6 +49172,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: KDRoomType_Jail
 - Sorting Room
 分拣室
+# - Shoppe
+
 
 - Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 点击快捷栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的快捷栏保存和加载预设。|这些预设在每一局之间共享。
@@ -52508,12 +52516,16 @@ ${Target} 拒绝使用药水。
 
 - Target must have muscles.
 目标必须有肌肉。
+# - Target must be a doll.
 - ${Target} gains immense physical strength!
 ${Target} 获得了强大的力量！
+# - ${Target} becomes flesh-and-blood!
 - You gain immense physical strength!
 你的肉体获得了强大的力量！
+# - The potion transforms causes your body to grow warm and living!
 - You dump the potion on the ground and nothing happens.
 你把药水倒到地上，什么也没有发生。
+# - This potion cannot be used on the ground!
 - You are strong!
 你感到力大无比！
 
@@ -52521,6 +52533,8 @@ ${Target} 获得了强大的力量！
 力量药水
 - Choose who should drink the potion.
 选择药水的使用对象。
+# :: KinkyDungeonInventoryItemPotionStrengthUse
+# :: KinkyDungeonInventoryItemPotionHumanityUse
 - The bottle is bursting with pressure. The cap is glued on, but you feel as if it will pop off at the slightest touch.
 瓶子里压力极大，几乎要爆裂了。瓶盖被胶水密封，但你觉得哪怕轻轻碰一下，它都会砰地一下弹开。
 - For 50 turns, increase the base damage of physical weapons by 20. Also increases escape power by 5 and gives a bonus to struggle of up to 15, if bonus is below 15.
@@ -53242,8 +53256,13 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - You are already transformed
 # - You are already artificial, and cannot be transformed.
 
+# - You become a flesh-and-blood creature.
+# - That didn't work. Please report this to Ada!
+
 
 # - (The SPEAKER caresses you by the chin as you remain locked in the stand)\nTruly sad, truly. A good doll should be still...\nNow, my showcase awaits~
+
+# - (The SPEAKER smiles at you)\nYou look so gorgeous, lovely doll~
 
 # - (The SPEAKER reaches out with a gentle hand,\npropping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?
 # - Materials??
@@ -53318,7 +53337,8 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - (The SPEAKER puts a hand on your shoulder)\nBe still.\n(As ${Ethey} say${Es} that, your whole body freezes...)\n(It feels... different now.)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)
 
 # - (You feel nothing between your legs...)
-# - (The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?
+# - (You can't help but notice that something's missing...)
+# - (The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?\n(After some teasing, ${Ethey} give${Es} you some proper bits and finish the transformation)
 # - (The SPEAKER chuckles)\nAll done, little doll~\nYou'll enjoy your new form, I'm sure.
 
 # - (Accept your new form)
@@ -53328,6 +53348,5 @@ ${Playername}使用了安全词，被传送回关卡起点。
 
 
 # - Potion of Humanity
-# - The potion transforms causes your body to grow warm and living.
 # - A potion said to grant the gift of life to an artificial being made of clockwork.
 # - Transforms a doll into a living creature.
