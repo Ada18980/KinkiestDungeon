@@ -589,7 +589,7 @@ KinkyDungeonSpellNovicePet3,Devoted Pet
 KinkyDungeonSpellDescriptionNovicePet3,"+3 slow reduction total while wearing a petsuit (from +2), but you cannot sprint (from +100% cost) when not wearing a petsuit and slow level is increased by +2 (from +1)."
 KinkyDungeonSpellNovicePetX,Bad Pet
 KinkyDungeonSpellDescriptionNovicePetX,"Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back."
-KinkyDungeonBuffNovicePet,${You} ${Yis} an expert in wearing a petsuit and ${Your} mobility is increased.
+KinkyDungeonBuffNovicePet,${You} ${Yis} an expert in wearing a petsuit and ${your} mobility is increased.
 KinkyDungeonBuffNovicePetBad,${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
 KinkyDungeonBuffNovicePetVeryBad,${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
 
@@ -1882,6 +1882,12 @@ NameChainWall,Metal Shield
 KillChainWall,"The shield falls to the floor."
 KinkyDungeonSummonSingleChainWall,"A metal shield blocks your way!"
 KinkyDungeonSummonMultiChainWall,"Several metal shields block your way!"
+
+
+NameStringWall,Puppet Strings
+KillStringWall,"The puppet strings snap and hang loose."
+KinkyDungeonSummonSingleStringWall,"A curtain of puppet strings blocks your way!"
+KinkyDungeonSummonMultiStringWall,"A curtain of puppet strings blocks your way!"
 
 NameDecoy,Illusion
 KillDecoy,"The illusion vanishes into thin air."
@@ -29642,6 +29648,7 @@ KDConsentMenuLocked,Menu Locked
 
 KDConsentItemTooltip_DollTransform,"Allows content where the player character gets transformed into a sentient ball jointed doll. Removing this transformation requires a Potion of Humanity.\n\nSetting this to red prevents the dialogue from starting.\nSetting this to Green makes it permanent, as no Potions of Humanity will spawn."
 KDConsentItemTooltip_DollTransformAroused,"If the player is transformed into a ball-jointed doll, they may be made into one that doesn't have sex organs as a punishment.\n\nSetting this to yellow lets the player always choose."
+KDConsentItemTooltip_DollTransform_Green,"|||This item is marked as Green, which prevents Potions of Humanity from spawning, making doll transformation permanent."
 
 KDConsentItemTooltip_ConsentIngame,"Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot."
 KDConsentItemTooltip_Invis,"Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead."
@@ -33172,6 +33179,8 @@ KDUseTargetRefusePotion,${Target} refuses to take the potion.
 
 KDInvalidTarget_Strength,Target must have muscles.
 KDInvalidTarget_Humanity,Target must be a doll.
+KDInvalidTarget_Gagged,Target must not be gagged.
+KDInvalidTargetSelf_Gagged,You must not be gagged.
 KDUseTarget_Strength,${Target} gains immense physical strength!
 KDUseTarget_Humanity,${Target} becomes flesh-and-blood!
 KDUseSelf_Strength,You gain immense physical strength!
@@ -33613,7 +33622,7 @@ KDTheyThem_is,is
 KDTheyThem_are,are
 
 
-KinkyDungeonBuffHypno_DollStat,${You} feel like ${You} ${Yis} nothing but a doll... 
+KinkyDungeonBuffHypno_DollStat,${You} feel like ${you} ${Yis} nothing but a doll... 
 KinkyDungeonBuffHypnosis,"${Youve} fallen into a trance, making suggestions more powerful."
 
 KDHypno_Doll_0,Good doll.
@@ -33703,6 +33712,7 @@ dDollTransformSubby_Next,"Indeed... let's start!"
 dDollTransformSubby_NextGag,"(Close your eyes and moan)"
 
 rDollTransformMaterial,"(The SPEAKER smiles and boops your nose)\nThat's you~\nPretty one."
+rDollTransformMaterial_Yes,"(The SPEAKER chuckles with a sinister expression)\nAn eager one~\nSuch delight!"
 rDollTransformCaress,"(The SPEAKER pulls back ${Etheir} hand...\nand smacks you across the face)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like..."
 rDollTransformCaressAlt,"(The SPEAKER pulls back ${Etheir} hand and merely smiles)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like..."
 rDollTransformWhimper,"(The SPEAKER lets a sadistic smile slip across ${Etheir} face)\nDon't worry, you'll be a happy little doll soon.\nVery soon..."
@@ -33737,7 +33747,7 @@ rDollTransformPart2_Resist,"(The SPEAKER puts a hand on your shoulder)\nBe still
 
 dDollTransformPart3_Bits,"(You feel nothing between your legs...)"
 rDollTransformPart3_BitsPre,"(You can't help but notice that something's missing...)"
-rDollTransformPart3_Bits,"(The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?\n(After some teasing, ${Ethey} give${Es} you some proper bits and finish the transformation)"
+rDollTransformPart3_Bits,"(The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?\n\n(After some teasing, ${Ethey} give${Es} you some proper bits and finish the transformation)"
 rDollTransformPart3,"(The SPEAKER chuckles)\nAll done, little doll~\nYou'll enjoy your new form, I'm sure."
 
 dDollTransformPart3_A,"(Accept your new form)"

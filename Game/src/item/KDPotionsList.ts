@@ -120,7 +120,7 @@ let KDPotionTypes: Record<string, PotionEffect> = {
 		},
 		tileEffect: (inv, quantity, user, target, tx, ty) => {
 			KinkyDungeonSendActionMessage(7, TextGet("KDUseTile_" + KDConsumable(inv).contains),
-				KDBaseMint, 2);
+				KDBaseOrange, 2);
 			return {success: false, consumed: 1, time: 1, componentfailure: "", miscast: false,
 				affected: [],
 			};

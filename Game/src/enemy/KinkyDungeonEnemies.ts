@@ -7759,7 +7759,7 @@ function KinkyDungeonEnemyTryMove (
 
 	let moveNeeded = enemy.Enemy.movePoints + moveMult;
 
-	if (enemy == KinkyDungeonLeashingEnemy() && KinkyDungeonLastAction == "Move") {
+	if (enemy == KinkyDungeonLeashingEnemy() && (KinkyDungeonLastAction == "Move" || KinkyDungeonLastAction == "Wait")) {
 		// ... hacky way to reduce clicking when following leash
 		moveNeeded = 1 + moveMult;
 	}
@@ -9955,6 +9955,9 @@ function KDRemoveFromPartyID(id: number, capture: boolean): boolean {
 	return false;
 }
 
+function KDAddNewEntity(entity: entity, makepersistent?: boolean, dontteleportpersistent?: boolean, noLoadout?: boolean, mapData?: KDMapDataType) {
+	return KDAddEntity(entity, makepersistent, dontteleportpersistent, noLoadout, mapData, true);
+}
 
 /**
  * @param entity
@@ -9962,8 +9965,9 @@ function KDRemoveFromPartyID(id: number, capture: boolean): boolean {
  * @param [dontteleportpersistent] - If true, the game will create a new NPC not a persistent one
  * @param [noLoadout] - if true, will not restock the NPC
  * @param [mapData] - map data to update
+ * @param [creation] - entity was just created
  */
-function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersistent?: boolean, noLoadout?: boolean, mapData?: KDMapDataType): entity {
+function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersistent?: boolean, noLoadout?: boolean, mapData?: KDMapDataType, creation?: boolean): entity {
 
 	entity.visual_x = entity.x;
 	entity.visual_y = entity.y;
@@ -9978,6 +9982,8 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 		loadout: undefined,
 		persistent: makepersistent,
 		mapData: mapData,
+		noLoadout: noLoadout,
+		creation: creation,
 	};
 
 	if (data.enemy)

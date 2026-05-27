@@ -6585,7 +6585,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 							movePoints: 0,
 							attackPoints: 0
 						};
-						KDAddEntity(doll);
+						KDAddNewEntity(doll);
 						en.hp = 0;
 						KinkyDungeonSetEnemyFlag(en, "cap", 2);
 					}
@@ -8807,7 +8807,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 						let point = KinkyDungeonGetNearbyPoint(data.enemy.x, data.enemy.y, true, undefined, true);
 						if (point) {
 							let Enemy = KinkyDungeonGetEnemyByName("ShadowWarrior");
-							KDAddEntity({
+							KDAddNewEntity({
 								summoned: true,
 								rage: Enemy.summonRage ? 9999 : undefined,
 								Enemy: Enemy,
@@ -8929,7 +8929,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 						doll.boundLevel = doll.hp * 11;
 						KinkyDungeonSendTextMessage(8, TextGet("KDDollmakerTooManyDolls"), KDBaseLightGreen, 2);
 					}
-					let entity = KDAddEntity(doll);
+					let entity = KDAddNewEntity(doll);
 					if (entity) {
 						if (e.energyCost) KDChangeCharge(_weapon.name, "weapon", "enemyDmg", - e.energyCost);
 						return entity;
@@ -10766,6 +10766,15 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 
 	},
 	addEntity: {
+		PuppeteerSpawn: (e, enemy, data) => {
+			if (data.enemy == enemy && data.creation
+				&& !KinkyDungeonStatsChoice.get("PermaDoll")
+				&& (KDRandom() < (e.chance || 0)
+					|| KDTrackReward("PotionHumanity", e.chance || 0.25, true))) {
+				if (!enemy.items) enemy.items = [];
+				enemy.items.unshift("PotionHumanity");
+			}
+		},
 		"EpicenterAssignHP": (_e, enemy, data) => {
 			if (enemy == data.enemy) {
 				if (!KDEnemyHasFlag(enemy, "assignedHP")) {

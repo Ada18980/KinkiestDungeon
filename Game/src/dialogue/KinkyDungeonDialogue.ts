@@ -576,7 +576,7 @@ function DialogueCreateEnemy(x: number, y: number, Name: string, persistentid?: 
 	Enemy.visual_x = x;
 	Enemy.visual_y = y;
 
-	return KDAddEntity(Enemy, persistentid != undefined, undefined, noLoadout);
+	return KDAddNewEntity(Enemy, persistentid != undefined, undefined, noLoadout);
 }
 
 /**

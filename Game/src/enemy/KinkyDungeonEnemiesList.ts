@@ -5838,7 +5838,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		tags: KDMapInit(["leashing", "antiMagic", "ribbon", "dressmaker", "dolldressmaker", "imprisonable", "kiguRestraints", "guardCall", "boss", "puppetmaster",
 			"jail", "jailer", "conjurer", "acidweakness", "soapresist", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "dressRestraints"]),
 		RestraintFilter: {
-			requiredItems: ["BindingDress", "PotionHumanity"],
+			requiredItems: ["BindingDress"],
 		},
 		stamina: 7,
 		maxblock: 1,
@@ -5847,6 +5847,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			level_key: 2,
 			level_magic: 3,
 		},
+		events: [
+			{type: "PuppeteerSpawn", trigger: "addEntity", chance: 0.34},
+		],
 		maxdodge: 1, unlockCommandLevel: 2, unlockCommandCD: 12, 
 		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true, spells: ["Ribbons", "Ribbons", "Ribbons", "RibbonBurst", "EnemyCM1", "EnemyCM_self"],
 		stopToCast: true, spellRdy: true, noKiteWhenHarmless: true, noSpellsWhenHarmless: true,

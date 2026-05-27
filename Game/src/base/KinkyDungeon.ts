@@ -576,6 +576,7 @@ interface KDGameDataBase {
 	HypnoButtons: HypnoButton[],
 	originalBody: string,
 	Listeners: Record<string, object>,
+	RewardTracker: Record<string, number>,
 };
 
 
@@ -860,6 +861,9 @@ let KDGameDataBase: KDGameDataBase = {
 	titlesUnlocked: [],
 	RecentProgress: {},
 	Listeners: {},
+	RewardTracker: {
+
+	} ,
 };
 
 // endregion
@@ -8327,4 +8331,24 @@ function KDAddListener(name: string, data?: object) {
 		KDGameData.Listeners = {};
 	}
 
+}
+
+function KDTrackReward(reward: string, amount: number, add: boolean): boolean {
+	if (!KDGameData.RewardTracker) {
+		KDGameData.RewardTracker = {};
+	}
+	if (!KDGameData.RewardTracker[reward]) {
+		KDGameData.RewardTracker[reward] = 0;
+	}
+	if (add) {
+		KDGameData.RewardTracker[reward] += amount;
+		if (KDGameData.RewardTracker[reward] >= 1) {
+			KDGameData.RewardTracker[reward] -= 1;
+			return true;
+		}
+	} else {
+		if (KDGameData.RewardTracker[reward] + amount >= 1) {
+			return true;
+		}
+	}
 }

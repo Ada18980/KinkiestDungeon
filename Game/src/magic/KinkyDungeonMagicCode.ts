@@ -796,7 +796,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					movePoints: 0,
 					attackPoints: 0
 				};
-				if (KDAddEntity(doll)) {
+				if (KDAddNewEntity(doll)) {
 					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name, KDGetGenericDialogueParams(entity, en)), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 
 					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
@@ -850,7 +850,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					movePoints: 0,
 					attackPoints: 0
 				};
-				KDAddEntity(doll);
+				KDAddNewEntity(doll);
 
 				KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				return "Cast";
@@ -937,7 +937,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						movePoints: 0,
 						attackPoints: 0
 					};
-					KDAddEntity(doll);
+					KDAddNewEntity(doll);
 					n += 1;
 				}
 			}

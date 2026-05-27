@@ -1254,9 +1254,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				options: {
 					"Arms": {
 						playertext: "Default", response: "Default",
-						clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
 						options: {
 							"Next": {
+								clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
 								playertext: "Next", response: "Default",
 								options: {
 									"Next": {
@@ -1269,9 +1269,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 					"Legs": {
 						playertext: "Default", response: "Default",
-						clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
 						options: {
 							"Next": {
+								clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
 								playertext: "Next", response: "Default",
 								options: {
 									"Next": {
@@ -1284,9 +1284,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 					"Face": {
 						playertext: "Default", response: "Default",
-						clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
 						options: {
 							"Next": {
+								clickFunction: (gagged, player) => {KDMakeIntoDoll(player); return false;},
 								playertext: "Next", response: "Default",
 								options: {
 									"Next": {
@@ -6368,7 +6368,7 @@ function KDMakeIntoHuman
 (player: entity) {
 	if (player.player) {
 		if (KinkyDungeonStatsChoice.get("SpeciesDoll")) {
-			if (KDIsArtificial(player)) {
+			if (true) { // KDIsArtificial(player)
 				KinkyDungeonSetFlag("Transformed", 0);
 
 				KinkyDungeonStatsChoice.delete("SpeciesDoll");

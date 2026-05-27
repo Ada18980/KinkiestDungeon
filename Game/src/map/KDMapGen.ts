@@ -1402,7 +1402,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 				}
 
 				// we add our loadout after
-				e = KDAddEntity(e, undefined, undefined, true);
+				e = KDAddNewEntity(e, undefined, undefined, true);
 				if (noPlay) {
 					KinkyDungeonSetEnemyFlag(e, "noPlay", -1);
 				}

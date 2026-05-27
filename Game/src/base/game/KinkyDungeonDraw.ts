@@ -3396,7 +3396,7 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 		// Make the prim
 		sprite = new PIXI.Text(Params.wordwrap ?
 			//@ts-ignore
-			Params.Text.replaceAll('|', "\n")
+			Params.Text.replaceAll('|', "\n").replaceAll('\\n', "\n")
 			: Params.Text,
 			{
 				fontFamily : Params.font || KDSelectedFont || KDFontName,

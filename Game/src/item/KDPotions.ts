@@ -54,6 +54,39 @@ function KDAttemptPotion(inv: item, quantity: number, user: entity, target: enti
 ): ItemAttemptResult {
 	let item = KDConsumable(inv);
 
+	if (target == user && KDConsumable(item)?.needMouth) {
+		if (target.player) {
+			if (!KinkyDungeonCanTalk()) {
+				KinkyDungeonSendActionMessage(7, TextGet("KDInvalidTargetSelf_Gagged"),
+					KDBaseOrange, 2);
+				return {
+					success: false,
+					componentfailure: "Mouth",
+					failureChance: 0,
+					miscastChance: 0,
+					miscast: false,
+					time: 0,
+					quantity: 0,
+					delayed: false,
+				};
+			}
+			
+		} else if (!KDEnemyCanTalk(target)) {
+			KinkyDungeonSendActionMessage(7, TextGet("KDInvalidTarget_Gagged"),
+				KDBaseOrange, 2);
+			return {
+				success: false,
+				componentfailure: "Mouth",
+				failureChance: 0,
+				miscastChance: 0,
+				miscast: false,
+				time: 0,
+				quantity: 0,
+				delayed: false,
+			};
+		}
+	}
+	
 	if (KDStandardConsumableHandsCheck(inv, quantity)) {
 		return {
 			success: true,

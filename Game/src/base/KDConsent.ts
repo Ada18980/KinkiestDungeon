@@ -288,7 +288,7 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
 
             perkRed: "NoDollTransform",
             perkYellow: "",
-            perkGreen: "",
+            perkGreen: "PermaDoll",
 
             priority: -10,
             label: TextGet("KDConsentListDesc_" + "DollTransform"),
@@ -795,7 +795,11 @@ function KDDrawConsent(xOffset) {
         if (mouseDown) KDConfirmOverInventoryAction = false;
         if (drawn) {
             DrawTextFitKDgetHeight(
-                TextGet("KDConsentItemTooltip_" + drawn.name) + TextGet("KDConsentItemTooltip_" + (KDConsentArray[drawn.name] || "Check")),
+                TextGet("KDConsentItemTooltip_" + drawn.name) + TextGet(
+                    HasText("KDConsentItemTooltip_" + drawn.name + "_" + (KDConsentArray[drawn.name] || "Check")) ? 
+                        "KDConsentItemTooltip_" + drawn.name + "_" + (KDConsentArray[drawn.name] || "Check")
+                        : "KDConsentItemTooltip_" + (KDConsentArray[drawn.name] || "Check")
+                ),
                 xOffset + 55, yStart + 36, sidebar - 55, KDTextWhite, 
                 undefined, 20, "left",
                 undefined, undefined, undefined, undefined, 

@@ -71,7 +71,7 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 			}
 			KDGameData.JailGuard = guard.id;
 			if (KinkyDungeonEnemyAt(guard.x, guard.y)) KDKickEnemy(KinkyDungeonEnemyAt(guard.x, guard.y));
-			guard = KDAddEntity(guard);
+			guard = KDAddNewEntity(guard);
 			if (KinkyDungeonVisionGet(guard.x, guard.y))
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardAppear").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), KDBaseWhite, 6);
 			KDGameData.GuardTimer = KDGameData.GuardTimerMax;
