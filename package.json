@@ -4,11 +4,13 @@
     "description": "This is the official git repo for Kinky Dungeon.",
     "main": "index.html",
     "scripts": {
-        "build": "tsc",
+        "build": "tsc && npm run pack",
         "buildCont": "tsc -b --watch",
         "buildContWSL": "tsc -b --watch --watchDirectory dynamicprioritypolling --watchFile dynamicPriorityPolling",
         "buildTypes": "tsc --declaration --emitDeclarationOnly --removeComments false",
-        "serve": "http-server"
+        "serve": "http-server",
+        "pack": "python tools/pack.py",
+		"forcepack": "python tools/pack.py rc"
     },
     "author": "Ada18980",
     "license": "All Rights Reserved",
