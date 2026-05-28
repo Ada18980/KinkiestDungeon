@@ -17,7 +17,7 @@ translation_files = [f'Screens/MiniGame/KinkyDungeon/{file}' for file in  [
 replaceMap = [
     [
         "You are an expert in wearing a petsuit and Your mobility is increased.",
-        "${You} ${Yis} an expert in wearing a petsuit and ${Your} mobility is increased."
+        "${You} ${Yis} an expert in wearing a petsuit and ${your} mobility is increased."
     ],
     [
         "You are too used to wearing petsuits! Sprinting is impaired.",

@@ -1278,7 +1278,7 @@ Pусский
 Плохой питомец
 - Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
 Откажитесь от перка "Начинающий питомец". Работает только один раз. Если вы снова возьмете этот перк, пути назад не будет.
-# - ${You} ${Yis} an expert in wearing a petsuit and ${Your} mobility is increased.
+# - ${You} ${Yis} an expert in wearing a petsuit and ${your} mobility is increased.
 - ${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
 Вы слишком привыкли носить костюм питомца! Спринт невозможен.
 - ${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
