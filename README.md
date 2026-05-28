@@ -49,7 +49,7 @@ docker run --rm -it --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node
 (Inside WSL the native filesystem watchers don't see what you are doing on the Windows side, that is why `buildContWSL` task uses polling to see if there are changes)
 
 ## Atlases
-After making any changes to the images in the game, you will need to repack the texture atlases. This can be done by running `npm run pack`.
+After making any changes to the images in the game, you will need to repack the texture atlases. This can be done by running `npm run pack`. It is done automatically when you run `npm run build`, but sometimes you may have no need to recompile the code after only an asset change.
 
 It should take anywhere from 4-10 minutes on a full repack, or less if there aren't major changes to the files.
 
