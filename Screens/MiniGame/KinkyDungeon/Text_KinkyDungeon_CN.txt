@@ -1306,7 +1306,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 坏宠物
 - Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
 放弃“宠物初学者”特质。只能选一次。如果你再点出这项特质，就没有回头路了。
-- ${You} ${Yis} an expert in wearing a petsuit and ${Your} mobility is increased.
+- ${You} ${Yis} an expert in wearing a petsuit and ${your} mobility is increased.
 你是穿着宠物服的专家，你的灵活度也得到了提高。
 - ${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
 你已经穿惯宠物服了！短跑能力受损。
@@ -3946,6 +3946,13 @@ EnemyName 试图束缚你，但被你抵抗了！
 金属盾牌挡住了你的路！
 - Several metal shields block your way!
 几个金属盾牌挡住了你的路！
+
+
+# - Puppet Strings
+# - The puppet strings snap and hang loose.
+# - A curtain of puppet strings blocks your way!
+# :: KinkyDungeonSummonSingleStringWall
+# :: KinkyDungeonSummonMultiStringWall
 
 - Illusion
 幻术
@@ -46866,6 +46873,7 @@ Kigurumi头壳
 
 # - Allows content where the player character gets transformed into a sentient ball jointed doll. Removing this transformation requires a Potion of Humanity.\n\nSetting this to red prevents the dialogue from starting.\nSetting this to Green makes it permanent, as no Potions of Humanity will spawn.
 # - If the player is transformed into a ball-jointed doll, they may be made into one that doesn't have sex organs as a punishment.\n\nSetting this to yellow lets the player always choose.
+# - |||This item is marked as Green, which prevents Potions of Humanity from spawning, making doll transformation permanent.
 
 - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
 允许在游戏过程中使用此菜单（包括“安全词”按钮）。如果你不希望在开始游戏后还能进入此界面修改规则，请将其标红。此选项不会随存档读取而改变。
@@ -52517,6 +52525,8 @@ ${Target} 拒绝使用药水。
 - Target must have muscles.
 目标必须有肌肉。
 # - Target must be a doll.
+# - Target must not be gagged.
+# - You must not be gagged.
 - ${Target} gains immense physical strength!
 ${Target} 获得了强大的力量！
 # - ${Target} becomes flesh-and-blood!
@@ -53216,7 +53226,7 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - are
 
 
-# - ${You} feel like ${You} ${Yis} nothing but a doll... 
+# - ${You} feel like ${you} ${Yis} nothing but a doll... 
 # - ${Youve} fallen into a trance, making suggestions more powerful.
 
 - Good doll.
@@ -53304,6 +53314,7 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - (Close your eyes and moan)
 
 # - (The SPEAKER smiles and boops your nose)\nThat's you~\nPretty one.
+# - (The SPEAKER chuckles with a sinister expression)\nAn eager one~\nSuch delight!
 # - (The SPEAKER pulls back ${Etheir} hand...\nand smacks you across the face)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like...
 # - (The SPEAKER pulls back ${Etheir} hand and merely smiles)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like...
 # - (The SPEAKER lets a sadistic smile slip across ${Etheir} face)\nDon't worry, you'll be a happy little doll soon.\nVery soon...
@@ -53338,7 +53349,7 @@ ${Playername}使用了安全词，被传送回关卡起点。
 
 # - (You feel nothing between your legs...)
 # - (You can't help but notice that something's missing...)
-# - (The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?\n(After some teasing, ${Ethey} give${Es} you some proper bits and finish the transformation)
+# - (The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?\n\n(After some teasing, ${Ethey} give${Es} you some proper bits and finish the transformation)
 # - (The SPEAKER chuckles)\nAll done, little doll~\nYou'll enjoy your new form, I'm sure.
 
 # - (Accept your new form)
