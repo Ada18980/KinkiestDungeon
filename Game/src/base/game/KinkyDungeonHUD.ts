@@ -2043,6 +2043,7 @@ function KinkyDungeonHandleHUD() {
 			} else {
 				KinkyDungeonSaveGame();
 				KinkyDungeonState = "Menu";
+				KinkyDungeonInitialize(0);
 			}
 			//KinkyDungeonAutoWait = true;
 			//KinkyDungeonTempWait = false;

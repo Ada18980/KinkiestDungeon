@@ -499,7 +499,7 @@ AddModel({
 			Sprite: "", // Because pose is called MouthNeutral lol
 			Poses: ToMap(MOUTHPOSES),
 			HidePoses: ToMap(["HideMouth"]),
-			MorphPoses: {"Smile": "CatSmile"},
+			MorphPoses: {"MouthSmile": "MouthCatSmile"},
 		},
 	])
 });

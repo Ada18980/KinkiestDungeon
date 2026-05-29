@@ -2950,6 +2950,9 @@ function GetModelLoc(C: Character, X: number, Y: number, ZoomInit: number = 1, h
 		pos.x = (0.5 * MODELHEIGHT) * Zoom - pos.x;
 		pos.angle = Math.PI - pos.angle;
 	}
+	
+	pos.x += X;
+	pos.y += Y;
 	return pos;
 }
 

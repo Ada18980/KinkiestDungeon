@@ -331,7 +331,7 @@ function KDSendGagParticles(entity: entity): void {
 		// Player
 
 		let lifetime = 2000;
-		let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Mouth", KDToggles.FlipPlayer);
+		let pos = GetHardpointLoc(KinkyDungeonPlayer, KDPlayerPos().x, KDPlayerPos().y, KDCharSize, "Mouth", KDToggles.FlipPlayer);
 		let x = pos.x;
 		let y = pos.y;
 
@@ -426,7 +426,7 @@ function KDSendGagParticles(entity: entity): void {
 function KDCreateVibeParticle() {
 	let lifetime = 500 + Math.random() * 250;
 	// Throw out in favor of new system
-	let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Front", KDToggles.FlipPlayer);
+	let pos = GetHardpointLoc(KinkyDungeonPlayer, KDPlayerPos().x, KDPlayerPos().y, KDCharSize, "Front", KDToggles.FlipPlayer);
 	let x = pos.x;
 	let y = pos.y;
 
@@ -444,7 +444,8 @@ function KDCreateVibeParticle() {
 		else if (breast && (locations.length == 1 || Math.random() < 0.5)) {
 			if (Math.random() > 0.5) forceSide = 1;
 			else forceSide = -1;
-			let pos = forceSide > 0 ? GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastRight", KDToggles.FlipPlayer) : GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastLeft", KDToggles.FlipPlayer);
+			let pos = forceSide > 0 ? GetHardpointLoc(KinkyDungeonPlayer, KDPlayerPos().x, KDPlayerPos().y, KDCharSize, "BreastRight", KDToggles.FlipPlayer)
+				: GetHardpointLoc(KinkyDungeonPlayer, KDPlayerPos().x, KDPlayerPos().y, KDCharSize, "BreastLeft", KDToggles.FlipPlayer);
 			x = pos.x;
 			y = pos.y;
 			vx = ((Math.random() > 0.5) ? -1 : 1) * (0.05 + Math.random()*0.12);

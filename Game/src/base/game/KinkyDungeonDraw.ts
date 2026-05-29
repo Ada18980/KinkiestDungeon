@@ -1756,8 +1756,8 @@ function KinkyDungeonDrawGame() {
 					});
 				}
 				DrawCharacter(KinkyDungeonPlayer, 
-					250 - 250 * KDCharSize , 
-					0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, KDCharSize, 
+					KDPlayerPos().x, 
+					KDPlayerPos().y, KDCharSize, 
 					undefined, undefined, undefined, undefined, KinkyDungeonDrawState == "Game" ? KDGamePlayerZIndex : - 20, KDToggles.FlipPlayer);
 
 			}
@@ -6167,7 +6167,18 @@ function KDCanConsentIngame() {
 }
 
 
-function KDPlayerY(): number {
-	// Returns height of the player image on the side of the screen
+function KDPlayerX(): number {
+	// Returns offset of the player image area on the side of the screen
 	return 0;
+}
+function KDPlayerY(): number {
+	// Returns height of the player image area on the side of the screen
+	return 0;
+}
+
+function KDPlayerPos() {
+	return {
+		x: KDPlayerX() + 250 - 250 * KDCharSize,
+		y: KDPlayerY() + 0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27,
+	}
 }

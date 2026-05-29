@@ -82,8 +82,8 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
         textKey_after: textKey_after,
         width: width,
         clicked: false,
-        callback: callback.name,
-        callbackdata: callback.data,
+        callback: callback?.name,
+        callbackdata: callback?.data,
         player: player,
     };
     if (!x && !y) {

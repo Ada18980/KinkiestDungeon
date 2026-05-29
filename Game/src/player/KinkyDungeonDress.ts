@@ -1361,7 +1361,7 @@ function KinkyDungeonHeadpatModal() {
 		transform: "none",
         //backgroundColor: "#ffffff"
     }
-    let hardpointlocs = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "HeadpatHead", KDToggles.FlipPlayer)
+    let hardpointlocs = GetHardpointLoc(KinkyDungeonPlayer, KDPlayerPos().x, KDPlayerPos().y, KDCharSize, "HeadpatHead", KDToggles.FlipPlayer)
     pxassign.top = `${(windowoffsets.y + (hardpointlocs.y * windowoffsets.heightscale) - ((windowoffsets.canvasheight * 0.05) / 2))}px`;
     pxassign.left = `${(windowoffsets.x + (hardpointlocs.x * windowoffsets.widthscale) - ((windowoffsets.canvaswidth * 0.08) / 2))}px`;
     pxassign.transform = `rotate(${hardpointlocs.angle}rad)`
