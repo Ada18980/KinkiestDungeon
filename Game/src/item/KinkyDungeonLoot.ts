@@ -263,13 +263,22 @@ As for why there are so many restraints in general rather than your typical sort
 */
 
 
-function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Lock?: string, container?: KDContainer): string {
+function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Lock?: string, container?: KDContainer, x?: number, y?: number): string {
+	if (!x || !y) {
+		x = KDPlayer().x;
+		y = KDPlayer().y;
+	}
 	let data = {
+		x: x,
+		y: y,
 		loot: Loot,
 		replacemsg: Replacemsg,
 		lock: Lock,
 	};
 	KinkyDungeonSendEvent("loot", data);
+
+	x = data.x;
+	y = data.y;
 
 
 	Loot = data.loot;
@@ -903,7 +912,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		KinkyDungeonLostItems = newLostItems;
 	}
 	if (KDLootEvents[Loot.name]) {
-		let ret = KDLootEvents[Loot.name](Loot, Floor, Replacemsg, Lock, container);
+		let ret = KDLootEvents[Loot.name](Loot, Floor, Replacemsg, Lock, container, x, y);
 		if (ret.value) value = ret.value;
 		if (ret.Replacemsg) Replacemsg = ret.Replacemsg;
 	}

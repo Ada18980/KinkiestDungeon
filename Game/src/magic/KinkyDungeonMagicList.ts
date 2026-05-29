@@ -2580,6 +2580,10 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		projectileTargeting:true, alwaysCollideTags: ["summonedRock"], onhit:"aoe", block: 20, time: 8,  power: 12, aoe: 1.5, size: 3, delay: 0, lifetime: 1, range: 50, damage: "crush", speed: 1, playerEffect: {name: "Damage"}}, // Throws a blast of ice which stuns the target for 4 turns
 
 
+	{enemySpell: true, name: "ManyRibbons", hitsfx: "MagicSlash", minRange: 0, manacost: 6, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1,
+		type:"inert", onhit:"aoe", time: 5, delay: 5, power: 3, range: 4, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
+		spellcast: {spell: "Ribbons", target: "target", sfx: "Struggle", directional:true, aimAtTarget: true, randomDirection: true, noTargetMoveDir: true, spread: 1, offset: false}, channel: 5},
+
 	{enemySpell: true, name: "Ribbons", color: "#6700ff", noise: 6, sfx: "Struggle", school: "Elements", manacost: 4, components: ["Arms"], level:1, type:"bolt", piercing: true, projectileTargeting:true, castRange: 3, nonVolatile: true, onhit:"", power: 3, delay: 0, range: 4, speed: 4, size: 1, damage: "inert",
 		trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"cast", trailChance: 1.0,
 		trailcast: {spell: "SingleRibbon", target: "onhit", directional:true, offset: false}},
@@ -2783,6 +2787,9 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	},
 
 	{enemySpell: true, name: "Feathers", color: KDBaseWhite, sfx: "Tickle", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"}},
+	{enemySpell: true, name: "Strings", color: "#f5ffe8", sfx: "Struggle", manacost: 4, components: [],
+		level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 3, bind: 7, bindType: "Magic", range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "chain",
+		playerEffect: {name: "StringedUp", count: 1}},
 	{enemySpell: true, name: "NurseBola", color: "#ff2200", sfx: "Miss", manacost: 5, components: ["Arms"],
 		bindType: "Rope",
 		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "NurseBola"}}, // Throws a chain which stuns the target for 1 turn
@@ -3425,7 +3432,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 			duration: 14,
 		},}, // Throws a ball of slime which oozes more slime
 	{enemySpell: true, name: "ManySlimes", sfx: "MagicSlash", minRange: 0, manacost: 4, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
-		spellcast: {spell: "MiniSlime", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 1, offset: false}, channel: 3},
+		spellcast: {spell: "MiniSlime", target: "target", directional:true, randomDirection: true, sfx: "RubberBolt", noTargetMoveDir: true, spread: 1, offset: false}, channel: 3},
 
 	// Bandit trader
 	{enemySpell: true, name: "PoisonDagger", color: "#ff00ff", minRange: 1.5, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, speed: 1,
@@ -3487,8 +3494,12 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "SummonCaptureDrones", landsfx: "Teleport", specialCD: 7, minRange: 0, manacost: 4, components: ["Verbal"], level:4, type:"inert", onhit:"summon",
 		summon: [{name: "SummonedCaptureDrone", count: 1, strict: true, bound: true, time: 90, faction: "Ambush"}], power: 0, time: 15, delay: 3, range: 14, size: 3, aoe: 4.6, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "RopeAttack", hitsfx: "Struggle", manacost: 6, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
-		{name: "LearnedRope", count: 1, chance: 0.5, time: 20, strict: true, bound: true},
-		{name: "UnforseenRope", count: 1, chance: 0.5, time: 20, strict: true, bound: true}
+		{name: "LearnedRope", count: 1, chance: 0.5, time: 20, strict: false, aware: true,bound: true, hidden: true},
+		{name: "UnforseenRope", count: 1, chance: 0.5, time: 20, strict: true, aware: true,bound: true}
+	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
+	{enemySpell: true, name: "PuppetAttack", manacost: 1, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
+		{name: "PuppetSummoned", count: 1, chance: 0.5, time: 80, strict: false, bound: true, hidden: true, aware: true,},
+		{name: "PuppetSummoned", count: 1, chance: 1.0, time: 80, strict: false, bound: true, hidden: true, aware: true,},
 	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
 	{enemySpell: true, name: "GhostAttack", hitsfx: "Evil", manacost: 8, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
 		{name: "Ghost", count: 1, time: 20, strict: true, bound: true, aware: true,},
@@ -3496,6 +3507,10 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "GagGeistAttack", hitsfx: "Evil", castCondition: "NoGag", manacost: 7, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
 		{name: "GagGeist", count: 1, time: 20, strict: true, bound: true, aware: true,},
 	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
+	{enemySpell: true, castCondition: "Defensive", name: "SummonPuppetStrings", noSprite: true, minRange: 0,
+		landsfx: "MagicSlash", manacost: 2, specialCD: 12, components: ["Verbal"], level:4, type:"bolt", onhit:"summon", castRange: 12,
+		summon: [{name: "PuppetStrings", count: 3, time: 0, bound: true, weakBinding: true}], power: 0, time: 10, delay: 1, range: 0.5, size: 1, aoe: 1.5, lifetime: 1, damage: "inert"},
+
 	{enemySpell: true, name: "SummonCrystals", noSprite: true, minRange: 0, landsfx: "Freeze", manacost: 12, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "ChaoticCrystal", teleportTime: 1, count: 3, time: 10, bound: true, weakBinding: true}], power: 0, time: 10, delay: 1, range: 40, size: 1, aoe: 2.01, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonChainWalls", noSprite: true, minRange: 0, landsfx: "MagicSlash", manacost: 2, specialCD: 12, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "ChainWall", count: 3, time: 0, bound: true, weakBinding: true}], power: 0, time: 10, delay: 1, range: 40, size: 1, aoe: 3.5, lifetime: 1, damage: "inert"},
 	{enemySpell: true, name: "SummonForceFields", noSprite: true, minRange: 0, landsfx: "MagicSlash", manacost: 2, specialCD: 12, components: ["Verbal"], level:4, type:"inert", onhit:"summon", summon: [{name: "ForceField", count: 3, time: 0, bound: true, weakBinding: true}], power: 0, time: 10, delay: 1, range: 40, size: 1, aoe: 3.5, lifetime: 1, damage: "inert"},
@@ -4094,6 +4109,16 @@ let KDMagicDefs = {
 
 let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spell) => boolean> = {
 	
+	/** more reactive than other spells */
+	Defensive: (enemy, target) => {
+		if (!target) return true;
+		if (KDistChebyshev(enemy.x - target.x, enemy.y - target.y) < 3) return true;
+		if (target?.player) {
+			return !!KinkyDungeonFlags.has("PlayerCombat");
+		} else {
+			return target.castCooldown > 0;
+		}
+	},
 	"BubblesAllowed": (_enemy, target) => {
 		return !KinkyDungeonStatsChoice.get("BubbleOptout");
 	},

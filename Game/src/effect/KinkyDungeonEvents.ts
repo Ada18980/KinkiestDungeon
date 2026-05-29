@@ -1586,6 +1586,26 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"RestraintBlock": (e, item, _data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: (e.original || "") + item.name + "Block", type: "RestraintBlock", power: e.power, duration: 2, });
 		},
+		
+		"PuppetStringTether": (e, item, _data) => {
+			let player = KDPlayer();
+			let enemy = (player.leash?.x && player.leash?.y) ? KinkyDungeonEnemyAt(player.leash.x, player.leash.y) : undefined;
+			if ((KDGameData.KinkyDungeonLeashedPlayer > 0 && KinkyDungeonLeashingEnemy() && enemy != KinkyDungeonLeashingEnemy())) {
+				return;
+			} else {
+				if (player.leash?.x && player.leash?.y && player.leash.restraintID == item.id && player.leash.reason == "PuppetStringTether" && (!enemy
+					|| (e.requiredTag && !enemy.Enemy.tags[e.requiredTag]) && !enemy.Enemy.tags.dressmaker)) {
+					KDBreakTether(player);
+				} else {
+					// The shadow hands will link to a nearby enemy if possible
+					for (enemy of KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, e.dist)) {
+						if (!e.requiredTag || enemy.Enemy.tags[e.requiredTag]) {
+							KinkyDungeonAttachTetherToEntity(KDRestraint(item).tether || 1.5, enemy, player, "PuppetStringTether", "#afffe7", 3, item);
+						}
+					}
+				}
+			}
+		},
 		"ShadowHandTether": (e, item, _data) => {
 			let player = KDPlayer();
 			let enemy = (player.leash?.x && player.leash?.y) ? KinkyDungeonEnemyAt(player.leash.x, player.leash.y) : undefined;
@@ -2437,6 +2457,14 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"linkItem": (e, item, data) => {
 			if ((data.attack && data.attack.includes("Bind") && (!data.enemy || data.enemy.Enemy.bound) && !data.attack.includes("Suicide"))) {
 				KDLinkItemEvent(e, item, data);
+			}
+		},
+		PuppetStringsTransfer: (e, item, data) => {
+			let player = KDPlayer();
+			if (player?.leash?.restraintID == item.id) {
+				if (data.enemy?.Enemy?.tags?.dressmaker) {
+					player.leash.entity = data.enemy.id;
+				}
 			}
 		},
 	},

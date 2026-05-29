@@ -58,6 +58,33 @@ let KDBeltLink = [...KDBindable, ...KDDevices]; // For ACTUAL belt, not chastity
 /**
  */
 const KinkyDungeonRestraints: restraint[] = [
+	//region misc
+	{removePrison: true, name: "PuppetStrings", Group: "ItemDevices", power: 1, weight: 1,
+		alwaysStruggleable: true,
+		Model: "PuppetStrings",
+		tether: 2.5,
+		restriction: 10,
+		tightType: "Thick",
+		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
+		escapeChance: {"Struggle": 0.1, "Cut": 0.5, "Remove": -0.1},
+		helpChance: {"Struggle": 0.3, "Remove": 0.1},
+		affinity: {
+			Struggle: ["Sharp"],
+			Remove: ["Sharp"],
+		},
+		struggleMinSpeed: {
+			Cut: 2,
+			Struggle: 0.5,
+		},
+		playerTags: {},
+		events: [{trigger: "tick", type: "PuppetStringTether", requiredTag: "strings", chance: 1.0, dist: 1.5}, {
+			trigger: "hit", type: "PuppetStringsTransfer"
+		}],
+		enemyTags: {"puppetstrings":100}, minLevel: 0, allFloors: true, shrine: ["PuppetStrings", "Conjure", "Furniture",],
+	},
+
+	//endregion
+
 	// region Scarf
 	{name: "ScarfArms", unlimited: true, accessible: true, debris: "Fabric", Asset: "DuctTape", Color: "#880022", Group: "ItemArms", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], bindarms: true, power: 0, weight: 0, escapeChance: {"Struggle": 0.5, "Cut": 0.9, "Remove": 0.2},
 		affinity: {Remove: ["Hook"],},
@@ -3064,6 +3091,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		blockfeet: true,
 		enemyTags: {"displaySpell":100, "display": 100, "displaystand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "FeetLinked", "BlockKneel", "DiscourageHogtie"], ignoreSpells: true, removeOnLeash: true,
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
+	
 	{removePrison: true, name: "DollStand", arousalMode: true, Asset: "OneBarPrison", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
 		DefaultLock: "Red",
 		Model: "OneBarPrison",

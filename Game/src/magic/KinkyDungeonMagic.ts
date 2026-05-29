@@ -861,7 +861,7 @@ function KDDoGaggedMiscastFlagEvent(spell: spell, targetX: number, targetY: numb
  * @param [forceFaction]
  * @param [castData]
  */
-function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, enemy: entity, player: any, bullet?: KDBullet, forceFaction?: string, castData?: any): {result: string, data: any} {
+function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: entity, player: any, bullet?: KDBullet, forceFaction?: string, castData?: any): {result: string, data: any} {
 	let entity = KinkyDungeonPlayerEntity;
 	let moveDirection = KinkyDungeonMoveDirection;
 	let flags = {
@@ -883,19 +883,15 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 	}
 
 
-	if (!enemy && !bullet && player) {
-		// Face spell cast direction
-		KDTurnToFace(targetX - KinkyDungeonPlayerEntity.x, targetY - KinkyDungeonPlayerEntity.y);
-	}
 
-	let cp = KinkyDungeoCheckComponents(spell, targetX, targetY, false);
+	let cp = KinkyDungeoCheckComponents(spell, ttX, ttY, false);
 
 	let data = Object.assign({...castData}, {
 		spell: spell,
 		bulletfired: null,
 		target: null,
-		targetX: targetX,
-		targetY: targetY,
+		targetX: ttX,
+		targetY: ttY,
 		originX: KinkyDungeonPlayerEntity.x,
 		originY: KinkyDungeonPlayerEntity.y,
 		flags: flags,
@@ -912,6 +908,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 		manacost: (!enemy && !bullet && player) ? KinkyDungeonGetManaCost(spell) : 0,
 	});
 
+	
 	if (!enemy && !bullet && player && data.components) {
 		let cpp = KinkyDungeoCheckComponentsPartial(data.spell,
 			data.originX,
@@ -928,6 +925,16 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 	if (!enemy && !bullet && player) {
 		KinkyDungeonSendEvent("beforeCast", data);
 	}
+
+	let targetX = data.targetX;
+	let targetY = data.targetY;
+
+
+	if (!enemy && !bullet && player) {
+		// Face spell cast direction
+		KDTurnToFace(targetX - KinkyDungeonPlayerEntity.x, targetY - KinkyDungeonPlayerEntity.y);
+	}
+
 	let tX = targetX;
 	let tY = targetY;
 	let miscast = false;
@@ -1048,7 +1055,18 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 					let slots = [];
 					for (let XX = -1; XX <= 1; XX++) {
 						for (let YY = -1; YY <= 1; YY++) {
-							if ((XX != 0 || YY != 0) && KinkyDungeonNoEnemy(entity.x + XX, entity.y + YY, true) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))) slots.push({x:XX, y:YY});
+							if ((XX != 0 || YY != 0)
+								&& KinkyDungeonNoEnemy(entity.x + XX, entity.y + YY, true)
+								&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))
+								&& KinkyDungeonCheckProjectileClearance(entity.x + XX, entity.y + YY, data.targetX, data.targetY)
+							) slots.push({x:XX, y:YY});
+						}
+					}
+					if (slots.length == 0) {
+						for (let XX = -1; XX <= 1; XX++) {
+							for (let YY = -1; YY <= 1; YY++) {
+								if ((XX != 0 || YY != 0) && KinkyDungeonNoEnemy(entity.x + XX, entity.y + YY, true) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))) slots.push({x:XX, y:YY});
+							}
 						}
 					}
 					if (slots.length > 0) {
@@ -1075,7 +1093,19 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 							for (let YY = -1; YY <= 1; YY++) {
 								if ((XX != 0 || YY != 0) && KinkyDungeonNoEnemy(entity.x + XX, entity.y + YY, true) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))
 									&& (entity.x + XX != tX || entity.y + YY != tY)
-									&& KDistEuclidean(entity.x + XX - tX, entity.y + YY - tY) <= dist + 0.1) slots.push({x:XX, y:YY});
+									&& KDistEuclidean(entity.x + XX - tX, entity.y + YY - tY) <= dist + 0.1
+									&& KinkyDungeonCheckProjectileClearance(entity.x + XX, entity.y + YY, data.targetX, data.targetY)
+								) slots.push({x:XX, y:YY});
+							}
+						}
+						if (slots.length == 0) {
+							for (let XX = -1; XX <= 1; XX++) {
+								for (let YY = -1; YY <= 1; YY++) {
+									if ((XX != 0 || YY != 0) && KinkyDungeonNoEnemy(entity.x + XX, entity.y + YY, true) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(entity.x + XX, entity.y + YY))
+										&& (entity.x + XX != tX || entity.y + YY != tY)
+										&& KDistEuclidean(entity.x + XX - tX, entity.y + YY - tY) <= dist + 0.1
+									) slots.push({x:XX, y:YY});
+								}
 							}
 						}
 						if (slots.length == 0) {

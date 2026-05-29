@@ -1224,6 +1224,8 @@ LootBookshelfKey,"You find a key lying atop an open tome!"
 LootBookshelfBlueKey,"You find a magical key lying atop an open tome!"
 LootBookshelfScroll,"You find a useful scroll wedged between some treatises!"
 LootBookshelfTrap,"You find a glowing book containing a binding spell!"
+LootBookshelfTome,"A book flies off the shelf and opens of its own accord!"
+LootBookshelfTomeFail,"You find nothing of note on the shelf."
 
 LootChestDivineTear,"You discover a golden cookie, wrapped in foil. Beside it are two power crystals."
 LootChestMistressKey,You find a golden key surrounded by strange golden crystals.
@@ -1884,10 +1886,11 @@ KinkyDungeonSummonSingleChainWall,"A metal shield blocks your way!"
 KinkyDungeonSummonMultiChainWall,"Several metal shields block your way!"
 
 
-NameStringWall,Puppet Strings
-KillStringWall,"The puppet strings snap and hang loose."
-KinkyDungeonSummonSingleStringWall,"A curtain of puppet strings blocks your way!"
-KinkyDungeonSummonMultiStringWall,"A curtain of puppet strings blocks your way!"
+NamePuppetStrings,Puppet Strings
+KillPuppetStrings,"The puppet strings snap and hang loose."
+KinkyDungeonSummonSinglePuppetStrings,"A curtain of puppet strings blocks your way!"
+KinkyDungeonSpellSummonPuppetStrings,"Curtain of Strings"
+KinkyDungeonSummonMultiPuppetStrings,"A curtain of puppet strings blocks your way!"
 
 NameDecoy,Illusion
 KillDecoy,"The illusion vanishes into thin air."
@@ -2922,6 +2925,12 @@ KillPuppetLost,"The lost puppet wanders away."
 AttackPuppetLostBind,"The lost puppet reaches out with ${Etheir} strings wrapping around you. (+RestraintAdded)"
 AttackPuppetLostLock,"The lost puppet clicks on a brass lock."
 AttackPuppetLost,"The lost puppet firmly holds and caresses you in its arms. (DamageTaken)"
+
+NamePuppetSummoned,Soulless Puppet
+KillPuppetSummoned,"The soulless puppet wanders away."
+AttackPuppetSummonedBind,"The soulless puppet reaches out with ${Etheir} strings wrapping around you. (+RestraintAdded)"
+AttackPuppetSummonedLock,"The soulless puppet clicks on a brass lock."
+AttackPuppetSummoned,"The soulless puppet firmly holds and caresses you in its arms. (DamageTaken)"
 
 NameDressmaker,Dressmaker
 KillDressmaker,"The dressmaker storms out in a rage."
@@ -7309,6 +7318,7 @@ KinkyDungeonSpellCastDecoy,A shadow of yourself materializes!
 KinkyDungeonSummonSingleDecoy,You create a line on the ground and toss in a lock of your hair!
 
 KinkyDungeonSpellFeathers,Feather Explosion
+KinkyDungeonSpellStrings,Stringing
 
 KinkyDungeonSpellElasticGrip,Elastic Grip
 KinkyDungeonSpellDescriptionElasticGrip,"A latex hand reaches out and pulls an enemy close to you! Base pull strength: 4"
@@ -9152,6 +9162,65 @@ KinkyDungeonRemindJailChaseSkeletonHonor2,"!!!"
 KinkyDungeonRemindJailChaseSkeletonCommandDefend,""
 KinkyDungeonRemindJailChaseSkeletonCommandAssault,""
 KinkyDungeonRemindJailChaseSkeletonCommandBlock,"*marches*"
+
+
+KinkyDungeonRemindJailCastPuppet,"*eyes glow*"
+KinkyDungeonRemindJailMiscastPuppet,"*miscast*"
+KinkyDungeonRemindJailPlayHelplessPuppet0,"*wiggles*"
+KinkyDungeonRemindJailPlayHelplessPuppet1,"*struggles*"
+KinkyDungeonRemindJailPlayHelplessPuppet2,"*rattles*"
+KinkyDungeonRemindJailPlayBratPuppet0,"This is a bug, please report"
+KinkyDungeonRemindJailPlayBratPuppet1,"This is a bug, please report"
+KinkyDungeonRemindJailPlayBratPuppet2,"This is a bug, please report"
+KinkyDungeonRemindJailPlaySubPuppet0,"This is a bug, please report"
+KinkyDungeonRemindJailPlaySubPuppet1,"This is a bug, please report"
+KinkyDungeonRemindJailPlaySubPuppet2,"This is a bug, please report"
+KinkyDungeonRemindJailPlayPuppetFree,"*starts chasing you*"
+KinkyDungeonRemindJailPlayPuppetStruggle,"*tilts head*"
+KinkyDungeonRemindJailPlayPuppetLeash,"*tugs at your body!*"
+KinkyDungeonRemindJailPlayPuppetLoot,"*runs at you*"
+KinkyDungeonRemindJailPlayPuppetKey,"*notices you!*"
+KinkyDungeonRemindJailChasePuppetAlert,"*claps loudly*"
+KinkyDungeonRemindJailPlayPuppet0,"*walks slowly toward you*"
+KinkyDungeonRemindJailPlayPuppet1,"*makes a crooked smile*"
+KinkyDungeonRemindJailPlayPuppet2,"*tilts head*"
+KinkyDungeonRemindJailChasePuppetAttack0,"*is rattled*"
+KinkyDungeonRemindJailChasePuppetAttack1,"*scrabbles slowly by*"
+KinkyDungeonRemindJailChasePuppetAttack2,"*shrieks*"
+KinkyDungeonRemindJailChasePuppetSpell0,"*eyes glow*"
+KinkyDungeonRemindJailChasePuppetSpell1,"*shudders*"
+KinkyDungeonRemindJailChasePuppetSpell2,"*freezes*"
+KinkyDungeonRemindJailChasePuppetSpellItem,"*walks toward you with arms outstretched*"
+KinkyDungeonRemindJailChasePuppetShrine,"*defending the goddess*"
+KinkyDungeonRemindJailChasePuppetChest,"*defends its cache*"
+KinkyDungeonRemindJailChasePuppetOrb,"*lets out a shriek*"
+KinkyDungeonRemindJailChasePuppetJailbreak,"*tries to catch you*"
+KinkyDungeonRemindJailPuppetGrab,"*grabs you*"
+KinkyDungeonRemindJailPuppetDisarm,"*disarms*"
+KinkyDungeonRemindJailPuppetHit,"*is rattled*"
+KinkyDungeonRemindJailPuppetHitPlayer,"*rattles excitedly*"
+KinkyDungeonRemindJailPuppetMiss,"*misses*"
+KinkyDungeonRemindJailPuppetBlock,"*flails uselessly*"
+KinkyDungeonRemindJailPuppetMissedMe,"*trembles*"
+KinkyDungeonRemindJailPuppetBlockedMe,"*trembles*"
+KinkyDungeonRemindJailPuppetLeash,"*tugs on leash*"
+KinkyDungeonRemindJailPuppetPull,"*rattles*"
+KinkyDungeonRemindJailPuppetStun,"*rattles excitedly*"
+KinkyDungeonRemindJailPuppetPickpocket,"*rattles excitedly*"
+KinkyDungeonRemindJailPuppetLock,"*rattles*"
+KinkyDungeonRemindJailPuppetIntro,"*Wears a sign saying 'PTRN'*"
+KinkyDungeonRemindJailChasePuppetDefend0,"!!!"
+KinkyDungeonRemindJailChasePuppetDefend1,"!!!"
+KinkyDungeonRemindJailChasePuppetDefend2,"!!!"
+KinkyDungeonRemindJailChasePuppetDefendHonor0,"!"
+KinkyDungeonRemindJailChasePuppetDefendHonor1,"!"
+KinkyDungeonRemindJailChasePuppetDefendHonor2,"!"
+KinkyDungeonRemindJailChasePuppetHonor0,"!"
+KinkyDungeonRemindJailChasePuppetHonor1,"*rattles*"
+KinkyDungeonRemindJailChasePuppetHonor2,"!!!"
+KinkyDungeonRemindJailChasePuppetCommandDefend,""
+KinkyDungeonRemindJailChasePuppetCommandAssault,""
+KinkyDungeonRemindJailChasePuppetCommandBlock,"*marches*"
 
 KinkyDungeonRemindJailCastCyborg,"Engaging SPL!"
 KinkyDungeonRemindJailMiscastCyborg,"A-Access denied!?"
@@ -32371,6 +32440,7 @@ KinkyDungeonSpellCrystalPuff,Crystallize
 KinkyDungeonSpellNurseBola,Capture Device
 KinkyDungeonSpellNurseSyringe,Sedative
 KinkyDungeonSpellManySlimes,Slime Barrage
+KinkyDungeonSpellManyRibbons,Ribbon Barrage
 KinkyDungeonSpellFuukaOrbMulti,Seal of the 5th Era
 
 
@@ -32379,6 +32449,7 @@ KinkyDungeonSpellOrbHeal,Healing Flash
 KinkyDungeonSpellZombieBuff,Undead Frenzy
 KinkyDungeonSpellEnemyCM1,Command Word
 KinkyDungeonSpellRopeAttack,Rope Ambush
+KinkyDungeonSpellPuppetAttack,my puppets
 KinkyDungeonSpellParasolBuff,Defensive Charm
 KinkyDungeonSpellShieldTheWitch,Shield the Witch
 KinkyDungeonSpellEnemyFlashBomb,Flashbang
@@ -33762,3 +33833,11 @@ KinkyDungeonInventoryItemPotionHumanity,Potion of Humanity
 KinkyDungeonInventoryItemPotionHumanityUse,Choose who should drink the potion.
 KinkyDungeonInventoryItemPotionHumanityDesc,"A potion said to grant the gift of life to an artificial being made of clockwork."
 KinkyDungeonInventoryItemPotionHumanityDesc2,"Transforms a doll into a living creature."
+
+KinkyDungeonPuppetStrings,The strings wrap around your limbs and tug back on you!
+
+KDLibrarianAngry,Hands off the library!
+
+RestraintPuppetStrings,Puppet's Strings
+RestraintPuppetStringsDesc,A set of strings for controlling a puppet.
+RestraintPuppetStringsDesc2,Tethers you to nearby dolls and puppet strings if you pass by.

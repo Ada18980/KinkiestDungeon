@@ -657,6 +657,24 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'X');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
+
+			let player = KDPlayer();
+			let librarians = KDNearbyEnemies(moveX, moveY, 8).filter((en) => {
+				return en.Enemy?.tags?.librarian && !KDAllied(en) && !en.faction && en.aware
+				&& KinkyDungeonCheckLOS(en, player, KDistChebyshev(en.x - player.x, en.y - player.y), 
+				8, false, true)
+			});
+			if (librarians.length > 0) {
+				librarians.forEach((en) => {
+					en.faction = "Enemy";
+					en.hostile = 300;
+					KinkyDungeonSendDialogue(en,
+							TextGet("KDLibrarianAngry", KDGetGenericDialogueParams(KDPlayer(), en))
+								.replace("EnemyName", TextGet("Name" + en.Enemy.name)),
+							KDGetColor(en), 14, 10);
+						KDAddThought(en.id, "Angry", 7, 50);
+				});
+			}
 		} else {
 			KinkyDungeonSendActionMessage(6, TextGet("KDCantTouchThat"), KDBaseOrange,1, false, true);
 		}

@@ -489,3 +489,19 @@ AddModel({
 		},
 	])
 });
+
+
+
+AddModel({
+	Name: "PuppetStrings",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Strings"],
+	Layers: ToLayerMap([
+		{ Name: "PuppetStrings", Layer: "FurnitureBack", Pri: 100,
+			Invariant: true,
+		},
+	])
+});

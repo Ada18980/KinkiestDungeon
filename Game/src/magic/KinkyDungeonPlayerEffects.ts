@@ -379,6 +379,16 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Evil", effect: true};
 	},
+	"StringedUp": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
+		if (KDTestSpellHits(spell, 0.6, 0.25)) {
+			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
+			if (!dmg.happened) return{sfx: "Miss", effect: false};
+			KDAddSpecialStat("Hypno_Doll", KDPlayer(), 1, false); // Add a small amount of corruption
+			KDPlayerEffectRestrain(spell, playerEffect.count, ["puppetstrings"], undefined, false, false, false, false);
+			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonPuppetStrings").KDReplaceOrAddDmg( dmg.string), "yellow", playerEffect.time);
+		}
+		return {sfx: "StringedUp", effect: true};
+	},
 	"BearTrapStun": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};

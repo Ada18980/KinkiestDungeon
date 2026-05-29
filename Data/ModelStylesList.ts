@@ -1161,6 +1161,44 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"It",
 		],
 	},
+	Puppet: {
+		
+		Bodystyle: [
+			"DarkTanDoll",
+			"MidTanDoll",
+			"MaidDoll",
+			"DefaultDoll",
+			"DefaultDoll",
+			"MidDoll",
+			"MidDoll",
+		],
+		Facestyle: [
+			"Puppet",
+		],
+		Cosplay: ["Strings"],
+		Hairstyle: [
+			
+			"Brown1",
+			"Brown2",
+			"Brown3",
+			"Brown4",
+			"LavenderPonytail",
+			"GingerLong",
+			"VeryPeachPonytail",
+			"PeachTwintails",
+			"Water1",
+			"BlueMessy",
+			"BlueLong1",
+			"BlueHime",
+			"BlueBangs",
+			"LightBlueLong",
+			"LightBlueMedium",
+			"LightBlueShort",
+			"BlueBraid",
+			"BlueTwintail",
+			"PurpleLong",
+		],
+	},
 	Anarial: {
 		
 		Cosplay: [

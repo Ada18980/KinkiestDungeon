@@ -2047,7 +2047,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 											scale: 0,
 											color: b.bullet.spell?.color || KDBaseRed,
 										});
-									if (!b.warnings.includes(xx + "," + yy)) {
+									if (show && !b.warnings.includes(xx + "," + yy)) {
 										b.warnings.push(xx + "," + yy);
 										KDAddWarning({
 											source: b.source,
@@ -2806,7 +2806,9 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 					let e = KinkyDungeonSummonEnemy(b.x, b.y,
 						summonType, count, rad, sum.strict,
 						sum.time ? sum.time : undefined, sum.hidden,
-						sum.goToTarget, faction, faction && KDFactionRelation("Player", faction) <= -0.5,
+						sum.goToTarget, faction, (
+							faction && KDFactionRelation("Player", faction) <= -0.5
+						) || !!(KinkyDungeonFindID(b.bullet.source)?.hostile),
 						sum.minRange, sum.aware, undefined, sum.hideTimer, undefined,
 						KDBulletAoEMod(b), sum.bound ? b.bullet.source : undefined, sum.weakBinding, sum.teleportTime,
 						b.ox, b.oy, true

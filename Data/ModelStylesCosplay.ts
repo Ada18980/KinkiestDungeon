@@ -20,6 +20,11 @@ let KDModelCosplay: {[_: string]: KinkyDungeonDress} = {
 			Item: "Glasses", Color: KDBaseWhite, Lost: false, Filters: {"Lens":{"gamma":1,"saturation":0.16666666666666666,"contrast":1.02,"brightness":1,"red":1.0196078431372548,"green":1.0196078431372548,"blue":1.0196078431372548,"alpha":0.4}},
 		},
 	],
+	"Strings": [
+		{
+			Item: "PuppetStrings", Color: KDBaseWhite, Lost: false,
+		},
+	],
 	Sofia: [{"Item":"Fox5Tail","Group":"Ears","Color":"#fffafa","Lost":false,"Filters":{"Fox5":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.3137254901960784,"green":0.3137254901960784,"blue":0.3137254901960784,"alpha":1},"Tail":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.9666666666666667,"red":0.34705882352941175,"green":0.11176470588235293,"blue":0.4,"alpha":1},"Fox":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.9666666666666667,"red":0.34705882352941175,"green":0.11176470588235293,"blue":0.4,"alpha":1}},"Properties":{}}],
 	Laffey: [{"Item":"BunnyEars","Group":"Ears","Color":"#fffafa","Lost":false,"Properties":{}}],
 	Julia: [{"Item":"ElfEars","Group":"ElfEars","Color":"#fffafa","Lost":false,"Filters":{"ElfFront":{"gamma":1,"saturation":0,"contrast":0.97,"brightness":1,"red":1.2549019607843137,"green":0.9607843137254902,"blue":0.8823529411764706,"alpha":1},"ElfBack":{"gamma":1,"saturation":0,"contrast":0.97,"brightness":1,"red":1.2549019607843137,"green":0.9607843137254902,"blue":0.8823529411764706,"alpha":1}}}],

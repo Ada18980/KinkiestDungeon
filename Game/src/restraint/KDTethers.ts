@@ -53,6 +53,18 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 			return KDBoundEffects(entity) > 1 && !KDIsImprisoned(entity);
 		}
 	},
+	PuppetStringTether: (entity) => {
+		if (!(entity.leash.entity && (KinkyDungeonFindID(entity.leash.entity)?.Enemy?.tags?.strings
+			|| KinkyDungeonFindID(entity.leash.entity)?.Enemy?.tags?.dressmaker)))
+			return false;
+		if (entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)
+			&& KinkyDungeonIsDisabled(KinkyDungeonFindID(entity.leash.entity))) return false;
+		if (entity.player) {
+			return !!KinkyDungeonPlayerTags.get("PuppetStrings");
+		} else {
+			return KDBoundEffects(entity) > 1 && !KDIsImprisoned(entity);
+		}
+	},
 	LeashBolt: (entity) => {
 		if (!(entity.leash.entity || !KinkyDungeonFindID(entity.leash.entity)))
 			return false;

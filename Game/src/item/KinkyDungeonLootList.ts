@@ -410,7 +410,8 @@ let KinkyDungeonLootTable = {
 		{name: "scroll_arms", minLevel: 0, weight:1, message:"LootBookshelfScroll", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
 		{name: "scroll_legs", minLevel: 0, weight:1, message:"LootBookshelfScroll", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
 		{name: "scroll_verbal", minLevel: 0, weight:1, message:"LootBookshelfScroll", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
-		{name: "trap_book", minLevel: 1, weight:5, message:"LootBookshelfTrap", messageColor:KDBaseRed, messageTime: 3, allFloors: true},
+		{name: "trap_book", minLevel: 1, weight:3.5, message:"LootBookshelfTrap", messageColor:KDBaseRed, messageTime: 3, allFloors: true},
+		{name: "trap_tome", minLevel: 1, weight:7, message:"LootBookshelfTrap", messageColor:KDBaseRed, messageTime: 3, allFloors: true},
 		{name: "ArcaneTome", minLevel: 0, weapon: "ArcaneTome", weight:1, message:"LootChestWeapon", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true, noweapon: ["ArcaneTome"]},
 		{name: "BondageTome", minLevel: 0, weapon: "BondageTome", weight:2, message:"LootChestWeapon", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true, noweapon: ["BondageTome"]},
 	],
@@ -1508,7 +1509,7 @@ let KinkyDungeonLootTable = {
 };
 
 
-type lootEventFunc = (Loot: any, Floor: number, Replacemsg: string, Lock: string, container?: KDContainer) => { value: number; Replacemsg: string };
+type lootEventFunc = (Loot: any, Floor: number, Replacemsg: string, Lock: string, container?: KDContainer, x?: number, y?: number) => { value: number; Replacemsg: string };
 
 let KDLootEvents: Record<string, lootEventFunc> = {
 	"Armor": (_Loot, _Floor, Replacemsg, _Lock, container) => {
@@ -1525,6 +1526,21 @@ let KDLootEvents: Record<string, lootEventFunc> = {
 			Replacemsg: Replacemsg,
 		};
 	},
+	"trap_tome": (_Loot, _Floor, Replacemsg, _Lock, container, x, y) => {
+		let enemy: enemy = KinkyDungeonGetEnemy(["open", "book"], KDGetEffLevel(), 'lib', '0');
+		if (enemy && KinkyDungeonSummonEnemy(x, y, enemy.name, 1, 2.5)) {
+			return {
+				value: 0,
+				Replacemsg: "LootBookshelfTome",
+			};
+		}
+		
+		return {
+			value: 0,
+			Replacemsg: "LootBookshelfTomeFail",
+		};
+	},
+	
 };
 
 interface KDMinorLootEntry {

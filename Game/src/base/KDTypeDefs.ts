@@ -896,6 +896,9 @@ interface enemy extends KDHasTags {
 		castCooldownUnique?: Record<string, number>,
 		/** Priority for a spell choice */
 		priority?: Record<string, number>,
+		/** Subtracts this from spell cooldown */
+		ignoreMainCD?: Record<string, number>,
+		
 	},
 
 	/** Security levels for accessing chastity */

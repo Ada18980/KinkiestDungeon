@@ -181,6 +181,42 @@ let KDModelBody: {[_: string]: KinkyDungeonDress} = {
 	],
 
 
+
+	"DefaultDoll" : [
+		{Item: "DollBody", Group: "Body", Color: KDBaseWhite, Lost: false},
+	],
+	"MaidDoll": [
+		{Item: "DollBody", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head:{"gamma":0.44999999999999996,"saturation":1.5,"contrast":0.8333333333333333,"brightness":0.8833333333333333,"red":1.2,"green":1.2,"blue":1.1,"alpha":1},
+			Torso:{"gamma":0.44999999999999996,"saturation":1.5,"contrast":0.8333333333333333,"brightness":0.8833333333333333,"red":1.2,"green":1.2,"blue":1.1,"alpha":1},
+			Nipples: {"gamma":1,"saturation":1.6,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.8},
+		}},
+	],
+
+	"MidDoll": [
+		{Item: "DollBody", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head: {"gamma":1,"saturation":2.4333333333333336,"contrast":1,"brightness":0.9333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
+			Torso: {"gamma":1,"saturation":2.4333333333333336,"contrast":1,"brightness":0.9333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
+		}},
+	],
+	"TanDoll" : [
+		{Item: "DollBody", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head: {"gamma":1.2,"saturation":1.0166666666666666,"contrast":1.1,"brightness":1.4333333333333333,"red":0.6166666666666667,"green":0.5166666666666666,"blue":0.5333333333333333,"alpha":1},
+			Torso: {"gamma":1.2,"saturation":1.0166666666666666,"contrast":1.1,"brightness":1.4333333333333333,"red":0.6166666666666667,"green":0.5166666666666666,"blue":0.5333333333333333,"alpha":1},
+		}},
+	],
+	"MidTanDoll" : [
+		{Item: "DollBody", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head: {"gamma":1.2,"saturation":1.0666666666666667,"contrast":1.1,"brightness":1.1666666666666667,"red":0.7333333333333334,"green":0.5166666666666666,"blue":0.5333333333333333,"alpha":1},
+			Torso: {"gamma":1.2,"saturation":1.0666666666666667,"contrast":1.1,"brightness":1.1666666666666667,"red":0.7333333333333334,"green":0.5166666666666666,"blue":0.5333333333333333,"alpha":1},
+		}
+		},
+	],
+	"DarkTanDoll" : [
+		{Item: "DollBody", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {"Torso":{"gamma":1.2,"saturation":0.7833333333333334,"contrast":1.1,"brightness":0.9666666666666667,"red":0.7333333333333334,"green":0.5166666666666666,"blue":0.5333333333333333,"alpha":1},"Head":{"gamma":1.2,"saturation":0.7833333333333334,"contrast":1.1,"brightness":0.9666666666666667,"red":0.7333333333333334,"green":0.5166666666666666,"blue":0.5333333333333333,"alpha":1}}},
+	],
+
+
 	
 	"Maid2": [
 		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {

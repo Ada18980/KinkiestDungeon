@@ -4848,6 +4848,9 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 						enemy.flip = true;
 					}
 				}
+				
+				if (KinkyDungeonEnemyCheckHP(enemy, E, KDMapData)) { E -= 1; continue;}
+
 			}
 		}
 	}
@@ -7341,81 +7344,110 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		&& !AIData.ignore && (!AIData.moved || enemy.Enemy.castWhileMoving) && enemy.Enemy.attack.includes("Spell")
 		&& !AIData.ignoreRanged
 		&& AIType.spell(enemy, player, AIData)
-		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, false, true) && enemy.castCooldown <= 0) {
+		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, false, true)
+		&& (enemy.castCooldown <= 0 || enemy.Enemy?.Magic?.ignoreMainCD)) {
 			AIData.idle = false;
 			let spellchoice: string = null;
 			let spell: spell = null;
 			let spelltarget: entity = undefined;
-
+			let spellOptions = [...enemy.Enemy.spells];
 			let spellPriority = [];
+			let spellOptData = {spellPriority: [], spellOptions: spellOptions, enemy: enemy, player: player, AIData: AIData};
+
+			if (enemy.castCooldown > 0 && enemy.Enemy?.Magic?.ignoreMainCD) {
+				spellOptData.spellOptions = spellOptData.spellOptions.filter((sp) => {
+					return (enemy.castCooldown - (enemy.Enemy.Magic.ignoreMainCD[sp] || 0)) <= 0;
+				})
+			}
+			
 			if (enemy.Enemy.Magic?.priority) {
-				spellPriority = Object.entries(enemy.Enemy.Magic.priority);
-				spellPriority.sort((a, b) => {
+				spellOptData.spellPriority = Object.entries(enemy.Enemy.Magic.priority);
+				spellOptData.spellPriority.sort((a, b) => {
 					return b[1] - a[1];
 				});
 			}
-
-
-			for (let tries = 0; tries < 6 + spellPriority.length; tries++) {
-				spelltarget = null;
-				if (tries < spellPriority.length) {
-					spellchoice = spellPriority[tries][0];
-				} else {
-					spellchoice = enemy.Enemy.spells[Math.floor(KDRandom()*enemy.Enemy.spells.length)];
-				}
-				spell = KinkyDungeonFindSpell(spellchoice, true);
-				if (spell?.targetPlayerOnly && !player.player) spell = null;
-				if (spell && (enemy.blind > 0 && (spell.projectileTargeting)) && !KDCanHearEnemy(enemy, player, 1.2)) spell = null;
-				if (spell && ((!spell.castRange && AIData.playerDist > KDGetSpellRange(spell)) || (spell.castRange && AIData.playerDist > spell.castRange))) spell = null;
-				if (spell && spell.specialCD && enemy.castCooldownSpecial > 0) spell = null;
-				if (spell && enemy.castCooldownUnique && enemy.castCooldownUnique[spell.name] > 0) spell = null;
-				if (spell && spell.noFirstChoice && tries <= 2) spell = null;
-				if (spell && spell.projectileTargeting && !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y, !player.player && !spell.noFF)) spell = null;
-				if (spell && spell.buff) {
-					if (enemy.Enemy.buffallies || spell.buffallies) {
-					// Select a random nearby ally of the enemy
-						let nearAllies = [];
-						for (let e of KDMapData.Entities) {
-							if ((e != enemy || spell.selfbuff) && (!spell.heal || e.hp < e.Enemy.maxhp - spell.power*0.5)
-							&& e.aware && !KinkyDungeonHasBuff(e.buffs, spell.name)
-							&& !e.rage
-							&& ((KDAllied(enemy) && KDAllied(e)) || (!KDHostile(enemy, e)
-								&& KDFactionRelation(KDGetFaction(e), KDGetFaction(enemy)) >= 0.1))
-							&& Math.sqrt((enemy.x - e.x)*(enemy.x - e.x) + (enemy.y - e.y)*(enemy.y - e.y)) < KDGetSpellRange(spell)
-							&& (!spell.castCondition || (KDCastConditions[spell.castCondition] && KDCastConditions[spell.castCondition](enemy, e, spell)))) {
-								let allow = !spell.filterTags;
-								if (spell.filterTags && KDMatchTags(spell.filterTags, e)) allow = true;
-								if (allow)
-									nearAllies.push(e);
-							}
-						}
-						if (nearAllies.length > 0) {
-							let e = nearAllies[Math.floor(KDRandom() * nearAllies.length)];
-							if (e) {
-								spelltarget = e;
-								KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name, KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDBaseWhite, 2,
-									false, false, undefined, "Combat");
-								break;
-							}
-						} else spell = null;
-					} else if (!spell.noSelfBuff) {
-						spelltarget = enemy;
-						if (spell.castCondition && (!KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, enemy, spell))) spell = null;
-					} else spell = null;
-				} else if (spell?.castCondition && (KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, player, spell))) spell = null;
-				let minSpellRange = enemy.Enemy.minSpellRange != undefined ? enemy.Enemy.minSpellRange : (
-					(spell && spell.minRange != undefined) ? spell.minRange : 
-					((spell
-						&& (spell.selfcast
-							|| (enemy.Enemy.selfCast && enemy.Enemy.selfCast[spell.name])
-							|| spell.buff
-							|| (spell.range && KDGetSpellRange(spell) < 1.6))) ? 0 : 1.5)
-				);
-				if (spell && spell.heal && spelltarget.hp >= spelltarget.Enemy.maxhp) spell = null;
-				if (spell && !(!minSpellRange || (AIData.playerDist > minSpellRange))) spell = null;
-				if (spell && !(!spell.minRange || (AIData.playerDist > spell.minRange))) spell = null;
-				if (spell) break;
+			if (enemy.castCooldown > 0 && enemy.Enemy?.Magic?.ignoreMainCD) {
+				spellOptData.spellPriority = spellOptData.spellPriority.filter((sp) => {
+					if (!enemy.Enemy.Magic.ignoreMainCD) return false;
+					return (enemy.castCooldown - (enemy.Enemy.Magic.ignoreMainCD[sp[0]] || 0)) <= 0;
+				})
 			}
+
+			KinkyDungeonSendEvent("enumerateSpellOpts", spellOptData);
+
+			spellOptions = spellOptData.spellOptions;
+			spellPriority = spellOptData.spellPriority;
+			
+
+			if (spellOptions.length > 0 || spellPriority.length > 0) {
+				for (let tries = 0; tries < 6 + spellPriority.length; tries++) {
+					spelltarget = null;
+					if (tries < spellPriority.length) {
+						spellchoice = spellPriority[tries][0];
+					} else if (spellOptions.length > 0) {
+						spellchoice = spellOptions[Math.floor(KDRandom()*spellOptions.length)];
+					}
+					if (spellchoice) {
+						spell = KinkyDungeonFindSpell(spellchoice, true);
+					}
+					if (!spell) continue;
+					
+					if (spell.targetPlayerOnly && !player.player) {spell = null; continue;}
+					if ((enemy.blind > 0 && (spell.projectileTargeting)) && !KDCanHearEnemy(enemy, player, 1.2)) {spell = null; continue;}
+					if (((!spell.castRange && AIData.playerDist > KDGetSpellRange(spell)) || (spell.castRange && AIData.playerDist > spell.castRange))) {spell = null; continue;}
+					if (spell.specialCD && enemy.castCooldownSpecial > 0) {spell = null; continue;}
+					if (enemy.castCooldownUnique && enemy.castCooldownUnique[spell.name] > 0) {spell = null; continue;}
+					if (spell.noFirstChoice && tries <= 2) {spell = null; continue;}
+					if (spell.projectileTargeting && !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y, !player.player && !spell.noFF)) {spell = null; continue;}
+					if (spell.buff) {
+						if (enemy.Enemy.buffallies || spell.buffallies) {
+						// Select a random nearby ally of the enemy
+							let nearAllies = [];
+							for (let e of KDMapData.Entities) {
+								if ((e != enemy || spell.selfbuff) && (!spell.heal || e.hp < e.Enemy.maxhp - spell.power*0.5)
+								&& e.aware && !KinkyDungeonHasBuff(e.buffs, spell.name)
+								&& !e.rage
+								&& ((KDAllied(enemy) && KDAllied(e)) || (!KDHostile(enemy, e)
+									&& KDFactionRelation(KDGetFaction(e), KDGetFaction(enemy)) >= 0.1))
+								&& Math.sqrt((enemy.x - e.x)*(enemy.x - e.x) + (enemy.y - e.y)*(enemy.y - e.y)) < KDGetSpellRange(spell)
+								&& (!spell.castCondition || (KDCastConditions[spell.castCondition] && KDCastConditions[spell.castCondition](enemy, e, spell)))) {
+									let allow = !spell.filterTags;
+									if (spell.filterTags && KDMatchTags(spell.filterTags, e)) allow = true;
+									if (allow)
+										nearAllies.push(e);
+								}
+							}
+							if (nearAllies.length > 0) {
+								let e = nearAllies[Math.floor(KDRandom() * nearAllies.length)];
+								if (e) {
+									spelltarget = e;
+									KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonSpellCast" + spell.name, KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDBaseWhite, 2,
+										false, false, undefined, "Combat");
+									break;
+								}
+							} else {spell = null; continue;}
+						} else if (!spell.noSelfBuff) {
+							spelltarget = enemy;
+							if (spell.castCondition && (!KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, enemy, spell))) {spell = null; continue;}
+						} else {spell = null; continue;}
+					} else if (spell?.castCondition && (KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, player, spell))) {spell = null; continue;}
+					let minSpellRange = enemy.Enemy.minSpellRange != undefined ? enemy.Enemy.minSpellRange : (
+						(spell.minRange != undefined) ? spell.minRange : 
+						((spell
+							&& (spell.selfcast
+								|| (enemy.Enemy.selfCast && enemy.Enemy.selfCast[spell.name])
+								|| spell.buff
+								|| (spell.range && KDGetSpellRange(spell) < 1.6))) ? 0 : 1.5)
+					);
+					if (spell.heal && spelltarget.hp >= spelltarget.Enemy.maxhp) {spell = null; continue;}
+					if (!(!minSpellRange || (AIData.playerDist > minSpellRange))) {spell = null; continue;}
+					if (!(!spell.minRange || (AIData.playerDist > spell.minRange))) {spell = null; continue;}
+					if (spell) break;
+				}
+			}
+
+
+			
 			if (spell && !enemy.Enemy.noMiscast && KDRandom() < KDGetEnemyMiscast(enemy)) {
 				if (player == KinkyDungeonPlayerEntity) KinkyDungeonSendTextMessage(4,
 					TextGet(enemy.Enemy.miscastmsg || "KDEnemyMiscast", KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff88ff", 2,

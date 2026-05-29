@@ -47,6 +47,32 @@ let KDPathConditions : Record<string, PathCondition> = {
 			return -1;
 		},
 	},
+	witchwall: {
+		query: (attemptingNPC: entity, thisNPC: entity) => {
+			// Only Ranks 3 and above can pass through, or witches, or leashers
+			return (KDEnemyRank(attemptingNPC) >= 3
+				|| attemptingNPC.Enemy?.tags.witch)
+			|| KinkyDungeonJailGuard()?.id == attemptingNPC.id
+			|| KinkyDungeonLeashingEnemy()?.id == attemptingNPC.id;
+		},
+		doPassthrough: (attemptingNPC: entity, thisNPC: entity, mapdata: KDMapDataType) => {
+			// They move out of the way
+			return 1;
+		},
+	},
+	puppetstrings: {
+		query: (attemptingNPC: entity, thisNPC: entity) => {
+			// Only Ranks 3 and above can pass through, or witches, or dressmakers
+			return (KDEnemyRank(attemptingNPC) >= 3
+				|| attemptingNPC.Enemy?.tags.dressmaker)
+			|| KinkyDungeonJailGuard()?.id == attemptingNPC.id
+			|| KinkyDungeonLeashingEnemy()?.id == attemptingNPC.id;
+		},
+		doPassthrough: (attemptingNPC: entity, thisNPC: entity, mapdata: KDMapDataType) => {
+			// They move out of the way
+			return 1;
+		},
+	},
 	stonedoor: {
 		query: (attemptingNPC: entity, thisNPC: entity) => {
 			// Only Ranks 3 and above can pass through, or leashers

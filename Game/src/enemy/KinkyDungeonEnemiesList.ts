@@ -295,6 +295,8 @@ let KinkyDungeonEnemies: enemy[] = [
 			"bulwark", "immobile"]),
 		faction: "Witch", immobile: true, spellResist: 0, lowpriority: true, evasion: -100, armor: 3, followRange: 100, AI: "wander", regen: -0.25,
 		visionRadius: 0, maxhp: 5, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+	
+		pathcondition: "witchwall",
 		cueSfx: {
 			Block: "Clang",
 			Resist: "Clang",
@@ -1252,7 +1254,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		dropTable: [{name: "ArcaneTome", weight: 0.5, ignoreInInventory: true}],
 		visionRadius: 6, maxhp: 5, minLevel:3, weight:18, movePoints: 5, attackPoints: 2, attack: "Spell", attackRange: 1, attackWidth: 1, power: 6,
 		terrainTags: {"open": 100, "passage": -7, "elemental": 2}, floors:KDMapInit(["lib"])},
-	{name: "BookSlime", hidetimerbar: true, clusterWith: "book", tags: KDMapInit(["fireweakness", "glueimmune", "blindimmune", "ignoreharmless", "book", "flying", "minor", "ranged", "slashsevereweakness", "acidweakness", "soapweakness", "piercesevereweakness"]), followLeashedOnly: true, armor: 0, followRange: 3, AI: "hunt", guardChance: 0.6, noAlert: true,
+	{name: "BookSlime", hidetimerbar: true, clusterWith: "book", tags: KDMapInit(["fireweakness", "glueimmune", "blindimmune", "ignoreharmless", "book", "flying", "minor",
+		"ranged", "slashsevereweakness", "acidweakness", "soapweakness", "piercesevereweakness"]), followLeashedOnly: true, armor: 0, followRange: 3, AI: "hunt", guardChance: 0.6, noAlert: true,
 		spells: ["WitchSlimeBall", "WitchSlimeBall", "WitchSlime"], spellCooldownMult: 1, spellCooldownMod: 0, sneakthreshold: 0.7, difficulty: 0.05, noSpellLeashing: true,
 		spellResist: 2.0,
 		visionRadius: 6, maxhp: 5, minLevel:2, weight:18, movePoints: 5, attackPoints: 2, attack: "Spell", attackRange: 1, attackWidth: 1, power: 6,
@@ -5584,6 +5587,9 @@ let KinkyDungeonEnemies: enemy[] = [
 				ShieldTheWitch: 5,
 				EnemyEnchantRope: 3,
 			},
+			ignoreMainCD: {
+				ShieldTheWitch: 4,
+			},
 		},
 
 		dropTable: [{name: "RedKey", weight: 1}, {name: "Nothing", weight: 29}]},
@@ -5835,13 +5841,16 @@ let KinkyDungeonEnemies: enemy[] = [
 
 	{name: "Puppetmaster", nameList: "french", outfit: "Puppetmaster", style: "Water", clusterWith: "dressmaker",
 		bound: "Puppetmaster", playLine: "Dressmaker", faction: "Dressmaker", color: "#e545f7",
+		applyFaction: "Dressmaker", 
 		tags: KDMapInit(["leashing", "antiMagic", "ribbon", "dressmaker", "dolldressmaker", "imprisonable", "kiguRestraints", "guardCall", "boss", "puppetmaster",
+			"magicresist",
 			"jail", "jailer", "conjurer", "acidweakness", "soapresist", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "dressRestraints"]),
 		RestraintFilter: {
 			requiredItems: ["BindingDress"],
 		},
 		stamina: 7,
 		maxblock: 1,
+		pathcondition: "puppetstrings",
 		
 		Security: {
 			level_key: 2,
@@ -5851,13 +5860,77 @@ let KinkyDungeonEnemies: enemy[] = [
 			{type: "PuppeteerSpawn", trigger: "addEntity", chance: 0.34},
 		],
 		maxdodge: 1, unlockCommandLevel: 2, unlockCommandCD: 12, 
-		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true, spells: ["Ribbons", "Ribbons", "Ribbons", "RibbonBurst", "EnemyCM1", "EnemyCM_self"],
+		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true,
+		spells: ["Ribbons", "Ribbons", "RibbonBurst", "EnemyCM1", "EnemyCM_self"],
+		Magic: {
+			priority: {
+				"SummonPuppetStrings": 10,
+				"PuppetAttack": 4,
+				"ManyRibbons": 7,
+			},
+			ignoreMainCD: {
+				"SummonPuppetStrings": 5,
+				"PuppetAttack": 3,
+			},
+			castCooldownUnique: {
+				ManyRibbons: 18,
+				PuppetAttack: 5,
+				SummonPuppetStrings: 9,
+			},
+
+		},
 		stopToCast: true, spellRdy: true, noKiteWhenHarmless: true, noSpellsWhenHarmless: true,
 		spellCooldownMult: 1, spellCooldownMod: 0, AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 35, spellResist: 2, minLevel:0, weight:-2, movePoints: 2.5,
 		attackPoints: 2, attack: "SpellMeleeBindLock", projectileTargeting: true,
 		attackWidth: 1, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 3, focusPlayer: true, attackLock: "Purple",
 		terrainTags: {"secondhalf":2, "lastthird":1, "open": 4, "dressmaker": 20, "puppetmaster": 100, "conjureAnger": 5, "conjureRage": 4, "ropeAnger": 3, "ropeRage": 2}, allFloors: true, shrines: ["Conjure", "Rope"],
 		dropTable: [{name: "RibbonRaw", amount: 20, weight: 14}]},
+	
+	{name: "PuppetStrings",
+		tags: KDMapInit(["construct", "flying", "poisonmmune", "soulimmune", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal", "strings",
+			"bulwark", "immobile", "magicresist"]),
+		faction: "Witch", immobile: true, spellResist: -1.5, lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: -0.25,
+		visionRadius: 0, maxhp: 5, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		
+		Resistance: {
+			profile: ["construct"],
+		},
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+		},
+		ondeath: [{type: "spellOnSelf", spell: "Strings"}],
+		terrainTags: {}, floors:KDMapInit([])},
+	
+	{name: "PuppetSummoned", outfit: "Puppet", style: "Puppet", clusterWith: "dressmaker", bound: "PuppetLost", playLine: "Puppet", 
+		applyFaction: "Dressmaker", color: "#c693cc",
+		tags: KDMapInit(["opendoors", "puppetsummoned", "puppet", "submissive", "noshop", "gagged", "alwaysAlert", "imprisonable", "minor", "melee", "strings",
+			"glueresist", "electricresist", "crushweakness", "charmweakness", "pierceresist", "nocapture", "slashresist", "mithrilRope"]),
+		ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  cohesion: 0.9,
+		nopickpocket: true,
+		stamina: 6,
+		master: {type: "Puppetmaster", range: 2.5, loose: true, aggressive: true},
+		sneakThreshold: 2.5, difficulty: 0.05,
+		ignoreflag: ["puppetsummoned"], failAttackflag: ["puppetsummoned"],
+		visionRadius: 7.5, maxhp: 6, minLevel:0, weight:-1000, movePoints: 2.0, spellResist: 1,
+		attackPoints: 3, attack: "MeleeWillSlow", attackWidth: 3, attackRange: 1, power: 2, dmgType: "plush",
+		terrainTags: {},
+		shrines: ["Conjure"], floors:KDMapInit([])},
+	{name: "PuppetLost", outfit: "Puppet", style: "Puppet", clusterWith: "puppet", bound: "PuppetLost", playLine: "Puppet", 
+		applyFaction: "Dressmaker", color: "#c693cc",
+		nameList: "Maid",
+		tags: KDMapInit(["opendoors", "puppetsummoned", "puppet", "submissive", "noshop", "gagged", "alwaysAlert", "imprisonable", "minor", "melee", "strings",
+			"glueresist", "electricresist", "crushweakness", "charmweakness", "pierceresist", "slashresist", "mithrilRope", "leashing"]),
+		ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",  cohesion: 0.9,
+		nopickpocket: true,
+		stamina: 6,
+		master: {type: "Puppetmaster", range: 2.5, loose: true, aggressive: true},
+		sneakThreshold: 2.5, difficulty: 0.1,
+		visionRadius: 7.5, maxhp: 12, minLevel:0, weight:15, movePoints: 2.0, spellResist: 1,
+		attackPoints: 3, attack: "MeleeWillSlow", attackWidth: 3, attackRange: 1, power: 2, dmgType: "plush",
+		terrainTags: {"dressmaker": 20, "conjureAnger": 35, "conjureRage": 20},
+		shrines: ["Conjure"], floors:KDMapInit(["lib", "cat"])},
+
 	{name: "Nurse", outfit: "Nurse", style: "Earth", clusterWith: "construct", bound: "Nurse", playLine: "Nurse", faction: "Dressmaker", color: "#f135a4",
 		RestraintFilter: {
 			requiredItems: ["AsylumJacket"],
@@ -5878,8 +5951,8 @@ let KinkyDungeonEnemies: enemy[] = [
 
 
 
-	{name: "Librarian", nameList: "cyborg", outfit: "Librarian", style: "Water", clusterWith: "construct", bound: "Librarian", playLine: "Librarian", faction: "Dressmaker", color: "#f135a4",
-		tags: KDMapInit(["leashing", "mage", "ice", "metal", "rubber", "vine", "electric", "dressmaker", "miniboss", "jailer", "acidweakness", "soapweakness", "antiMagic", "conjurer", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "lowWeightRibbons", "magicRibbonsHarsh", "gagSpell", "mittensSpell"]),
+	{name: "Librarian", nameList: "cyborg", outfit: "Librarian", style: "Water", clusterWith: "construct", bound: "Librarian", playLine: "Librarian", faction: "Apprentice", color: "#f135a4",
+		tags: KDMapInit(["leashing", "mage", "ice", "metal", "rubber", "vine", "electric", "dressmaker", "miniboss", "jailer", "librarian", "acidweakness", "soapweakness", "antiMagic", "conjurer", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter", "lowWeightRibbons", "magicRibbonsHarsh", "gagSpell", "mittensSpell"]),
 		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true, spells: [
 			"SummonBookSlime",
 			"SummonBookIce",
