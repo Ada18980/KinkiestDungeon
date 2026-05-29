@@ -421,6 +421,7 @@ function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false
 	if (C && NPCTags.get(C)) {
 		NPCTags.delete(C);
 	}
+	if (KDGameData.selectedLabel && KDGameData.selectedLabel[id]) delete KDGameData.selectedLabel[id];
 	KDNPCChar.delete(id);
 	if (deleteSpecial || !KDPersistentNPCs[id + ""] || !KDPersistentNPCs[id + ""].special) {
 		KDPurgeParty(id);

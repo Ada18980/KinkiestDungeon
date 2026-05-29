@@ -383,7 +383,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (KDTestSpellHits(spell, 0.6, 0.25)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return{sfx: "Miss", effect: false};
-			KDAddSpecialStat("Hypno_Doll", KDPlayer(), 1, false); // Add a small amount of corruption
+			KDAddSpecialStat("Hypno_Doll", KDPlayer(), 1, true);
 			KDPlayerEffectRestrain(spell, playerEffect.count, ["puppetstrings"], undefined, false, false, false, false);
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonPuppetStrings").KDReplaceOrAddDmg( dmg.string), "yellow", playerEffect.time);
 		}

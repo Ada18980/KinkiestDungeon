@@ -10545,7 +10545,12 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 		},
 	},
 	"tick": {
-
+		annoy_puppet: (e, enemy, data) => {
+			if (enemy.hostile) {
+				KinkyDungeonSetFlag("annoy_puppet", 3000);
+			}
+		},
+		
 		"FuukaManagement": (e, enemy, _data) => {
 			if (enemy.hostile && !KDGameData.Collection[enemy.id + ""] && !KDEnemyHasFlag(enemy, "fuukaPillars")) {
 				KinkyDungeonSetEnemyFlag(enemy, "fuukaPillars", -1);

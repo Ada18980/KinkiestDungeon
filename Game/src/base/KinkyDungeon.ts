@@ -577,6 +577,7 @@ interface KDGameDataBase {
 	originalBody: string,
 	Listeners: Record<string, object>,
 	RewardTracker: Record<string, number>,
+	selectedLabel: Record<number, KDLabel>,
 };
 
 
@@ -864,6 +865,7 @@ let KDGameDataBase: KDGameDataBase = {
 	RewardTracker: {
 
 	} ,
+	selectedLabel: {},
 };
 
 // endregion

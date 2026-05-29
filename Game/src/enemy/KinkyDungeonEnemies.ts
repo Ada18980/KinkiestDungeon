@@ -10265,7 +10265,7 @@ function KDRemoveEntity(enemy: entity, kill?: boolean, capture?: boolean, noEven
 	if (!noEvent)
 		KinkyDungeonSendEvent("removeEnemy", data);
 
-
+	KDSelectLabel(KDPlayer(), null);
 
 	if (data.cancel) return false;
 	if (data.kill || data.capture) {

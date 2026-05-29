@@ -77,6 +77,8 @@ function KinkyDungeonCreateMap (
 	}
 
 
+	KDSelectLabel(KDPlayer(), null);
+
 	// Setup
 	// Remove enemies if the room isnt main and wont regen
 

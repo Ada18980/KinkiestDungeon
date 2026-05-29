@@ -223,10 +223,16 @@ KDPrisonTypes.DollShoppe = {
 						return "Uniform";
 					}
 
-					if (!KinkyDungeonFlags.get("transformCD") && !KinkyDungeonStatsChoice.get("NoDollTransform") && !KinkyDungeonFlags.get("Transformed")) {
+					if (!KinkyDungeonFlags.get("transformCD") && !KinkyDungeonStatsChoice.get("NoDollTransform") && !KinkyDungeonFlags.get("Transformed")
+						&& (KinkyDungeonFlags.get("annoy_puppet") || KDEntityBuffedStat(player, "Hypno_Doll") > 25)) {
 						return "Transform";
 					}
-
+					
+					if (!KinkyDungeonFlags.get("displayCD")) {
+						KinkyDungeonFlags.set("PrisonStorageTimer", 0);
+						return "Display";
+					}
+					
 					return "Storage";
 				}
 				return "Jail";
@@ -384,9 +390,8 @@ KDPrisonTypes.DollShoppe = {
 					// Stay in the current state, but increment the storage timer, return to jail state if too much
 					KinkyDungeonFlags.set("PrisonStorageTimer", (KinkyDungeonFlags.get("PrisonStorageTimer") || 0) + delta * 2);
 					if (KinkyDungeonFlags.get("PrisonStorageTimer") > 300) {
-						// Go to jail state for training
-						//KinkyDungeonSetFlag("PrisonCyberTrainingFlag", 10);
-						//return KDSetPrisonState(player, "Jail");
+						// Return to jail for figuring out what to do
+						return KDSetPrisonState(player, "Jail");
 					}
 					return KDCurrentPrisonState(player);
 				}
@@ -395,6 +400,149 @@ KDPrisonTypes.DollShoppe = {
 			},
 		},
 
+		
+		StorageTravel: {name: "StorageTravel",
+			init: (params) => {
+				return "";
+			},
+			update: (delta) => {
+				let player = KinkyDungeonPlayerEntity;
+
+				let lostTrack = KDLostJailTrack(player);
+				if (lostTrack == "Unaware") {
+					return KDSetPrisonState(player, "Jail");
+				}
+
+				let jailPointTarget = KDRandomJailPoint(player.x, player.y, ["storage"], undefined, undefined);
+				let jailPointNearest = KinkyDungeonNearestJailPoint(player.x, player.y, ["storage"], undefined, undefined);
+				if (!(jailPointTarget && jailPointTarget.x == player.x && jailPointTarget.y == player.y)
+					&& !(jailPointNearest && jailPointNearest.x == player.x && jailPointNearest.y == player.y))
+				{
+					// We are not in a furniture, so we conscript the guard
+					let guard = KDPrisonCommonGuard(player);
+					if (guard) {
+						// Assign the guard to a furniture intentaction
+						let action = "leashStorage";
+						if (guard.IntentAction != action) {
+							KDIntentEvents[action].trigger(guard, {});
+						}
+
+						if (lostTrack) {
+							// Any qualifying factors means they know where you should be
+							guard.gx = player.x;
+							guard.gy = player.y;
+							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
+							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+						}
+
+						if (KinkyDungeonLeashingEnemy() == guard) {
+							// Make the guard focus on leashing more strongly, not attacking or pickpocketing
+							KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
+						}
+						KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
+					} else {
+						// forbidden state
+						return KDPopSubstate(player);
+					}
+
+					// Stay in the current state for travel
+					return KDCurrentPrisonState(player);
+				}
+
+				// End when the player is settled
+				if (KDPrisonIsInFurniture(player)) {
+					return KDPopSubstate(player);
+				}
+
+				// Stay in the current state
+				return KDCurrentPrisonState(player);
+			},
+		},
+
+		Display: {name: "Display",
+			init: (params) => {
+				return "";
+			},
+			update: (delta) => {
+				let player = KinkyDungeonPlayerEntity;
+
+				let label = KDMapData.Labels?.Display ? KDGetUnoccupiedLabel(KDMapData.Labels.Display, player, true, true) : null;
+				let rad = 3;
+				if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad)) {
+					KDSelectLabel(player, label);
+					KinkyDungeonSetFlag("displayCD", 900);
+					return KDGoToSubState(player, "DisplayTravel");
+				}
+
+				if (KinkyDungeonFlags.get("displayStart")) {
+					// Stay in the current state
+					return KDCurrentPrisonState(player);
+				}
+
+				// Go to jail state for further processing
+				return KDSetPrisonState(player, "Jail");
+			},
+			updateStack: (delta) => {
+			},
+		},
+
+		
+		DisplayTravel: {name: "DisplayTravel",
+			init: (params) => {
+				return "";
+			},
+			update: (delta) => {
+				let player = KinkyDungeonPlayerEntity;
+
+				let label = KDMapData.Labels?.Display ? KDGetUnoccupiedLabel(KDMapData.Labels.Display, player, true, true) : null;
+				let rad = 3;
+
+				let lostTrack = KDLostJailTrack(player);
+				if (lostTrack == "Unaware") {
+					return KDSetPrisonState(player, "Jail");
+				}
+
+				if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad) && KDPlayerLeashable(player)) {
+					KDSelectLabel(player, label);
+					// We are not in a furniture, so we conscript the guard
+					let guard = KDPrisonCommonGuard(player);
+					if (guard) {
+						// Assign the guard to a furniture intentaction
+						let action = "leashToPoint_Furn";
+						if (guard.IntentAction != action) {
+							guard.gx = player.x;
+							guard.gy = player.y;
+							KDIntentEvents[action].trigger(guard, {point: label, radius: 1, target: player});
+						}
+
+						if (lostTrack) {
+							// Any qualifying factors means they know where you should be
+							guard.gx = player.x;
+							guard.gy = player.y;
+							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
+							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+						}
+						if (KinkyDungeonLeashingEnemy() == guard) {
+							// Make the guard focus on leashing more strongly, not attacking or pickpocketing
+							KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
+						}
+						KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
+					} else {
+						// forbidden state
+						return KDPopSubstate(player);
+					}
+
+					// Stay in the current state for travel
+					return KDCurrentPrisonState(player);
+				}
+
+				// End
+				KinkyDungeonSetFlag("displayStart", 300);
+				return KDPopSubstate(player);
+			},
+		},
+		
+
 		Transform: {name: "Transform",
 			init: (params) => {
 				return "";
@@ -402,9 +550,10 @@ KDPrisonTypes.DollShoppe = {
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
 
-				let label = KDMapData.Labels?.Stand ? KDMapData.Labels.Stand[0] : null;
+				let label = KDMapData.Labels?.Stand ? KDGetUnoccupiedLabel(KDMapData.Labels.Stand, player, true, true) : null;
 				let rad = 3;
 				if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad)) {
+					KDSelectLabel(player, label);
 					return KDGoToSubState(player, "TransformTravel");
 				}
 
@@ -420,14 +569,6 @@ KDPrisonTypes.DollShoppe = {
 				return KDSetPrisonState(player, "Jail");
 			},
 			updateStack: (delta) => {
-				// Always reveals the thing
-				let label = KDMapData.Labels?.Stand ? KDMapData.Labels.Stand[0] : null;
-				let rad = 5;
-				if (label) {
-					for (let x = label.x - rad; x <= label.x + rad; x++)
-						for (let y = label.y - rad; y <= label.y + rad; y++)
-							KDRevealTile(x, y, 8);
-				}
 			},
 			finally: (delta, currentState, stackPop) => {
 				// Remove all training doors
@@ -502,7 +643,7 @@ KDPrisonTypes.DollShoppe = {
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
 
-				let label = KDMapData.Labels?.Stand ? KDMapData.Labels.Stand[0] : null;
+				let label = KDMapData.Labels?.Stand ? KDGetUnoccupiedLabel(KDMapData.Labels.Stand, player, true, true) : null;
 				let rad = 3;
 
 				let lostTrack = KDLostJailTrack(player);
@@ -512,6 +653,7 @@ KDPrisonTypes.DollShoppe = {
 
 				if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad || !KDPrisonIsInFurniture(player))
 					&& KDPlayerLeashable(player)) {
+					KDSelectLabel(player, label);
 					let guard = KDPrisonCommonGuard(player);
 					if (guard) {
 						// Assign the guard to a furniture intentaction
@@ -551,64 +693,6 @@ KDPrisonTypes.DollShoppe = {
 			},
 		},
 		
-		StorageTravel: {name: "StorageTravel",
-			init: (params) => {
-				return "";
-			},
-			update: (delta) => {
-				let player = KinkyDungeonPlayerEntity;
-
-				let lostTrack = KDLostJailTrack(player);
-				if (lostTrack == "Unaware") {
-					return KDSetPrisonState(player, "Jail");
-				}
-
-				let jailPointTarget = KDRandomJailPoint(player.x, player.y, ["storage"], undefined, undefined);
-				let jailPointNearest = KinkyDungeonNearestJailPoint(player.x, player.y, ["storage"], undefined, undefined);
-				if (!(jailPointTarget && jailPointTarget.x == player.x && jailPointTarget.y == player.y)
-					&& !(jailPointNearest && jailPointNearest.x == player.x && jailPointNearest.y == player.y))
-				{
-					// We are not in a furniture, so we conscript the guard
-					let guard = KDPrisonCommonGuard(player);
-					if (guard) {
-						// Assign the guard to a furniture intentaction
-						let action = "leashStorage";
-						if (guard.IntentAction != action) {
-							KDIntentEvents[action].trigger(guard, {});
-						}
-
-						if (lostTrack) {
-							// Any qualifying factors means they know where you should be
-							guard.gx = player.x;
-							guard.gy = player.y;
-							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
-							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
-						}
-
-						if (KinkyDungeonLeashingEnemy() == guard) {
-							// Make the guard focus on leashing more strongly, not attacking or pickpocketing
-							KinkyDungeonSetEnemyFlag(guard, "focusLeash", 2);
-						}
-						KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
-					} else {
-						// forbidden state
-						return KDPopSubstate(player);
-					}
-
-					// Stay in the current state for travel
-					return KDCurrentPrisonState(player);
-				}
-
-				// End when the player is settled
-				if (KDPrisonIsInFurniture(player)) {
-					return KDPopSubstate(player);
-				}
-
-				// Stay in the current state
-				return KDCurrentPrisonState(player);
-			},
-		},
-		
 	},
 };
 
@@ -630,4 +714,42 @@ function KDPrisonPuppetmasterGuard(player: entity, _call: boolean = false, suppr
 		KDGameData.JailGuard = guard.id;
 
 	return KinkyDungeonJailGuard();
+}
+
+
+function KDGetUnoccupiedLabel(labels: KDLabel[], entity?: entity, getLabelCurrentlyOn?: boolean, getSelected?: boolean) : KDLabel {
+	labels = labels.filter((label) => {
+		return !KinkyDungeonEntityAt(label.x, label.y) || entity == KinkyDungeonEntityAt(label.x, label.y);
+	});
+
+
+	
+	if (getSelected && entity && KDGetLabel(entity)) {
+		let lb = labels.filter((label) => {
+			return label.x ==  KDGetLabel(entity).x && label.y ==  KDGetLabel(entity).y
+		});
+		if (lb.length > 0)
+			return lb[0];
+	}
+
+	if (getLabelCurrentlyOn && entity) {
+		let lb = labels.filter((label) => {
+			return label.x == entity.x && label.y == entity.y;
+		});
+		if (lb.length > 0)
+			return lb[0];
+	}
+
+	if (labels.length > 0) return CommonRandomItemFromList(null, labels);
+	return null;
+}
+
+function KDSelectLabel(entity: entity, label: KDLabel) {
+	if (!KDGameData.selectedLabel) KDGameData.selectedLabel = {};
+	if (label && !KDGameData.selectedLabel[entity.id]) KDGameData.selectedLabel[entity.id] = label;
+	else delete KDGameData.selectedLabel[entity.id];
+}
+function KDGetLabel(entity: entity) {
+	if (!KDGameData.selectedLabel) KDGameData.selectedLabel = {};
+	return KDGameData.selectedLabel[entity.id];
 }

@@ -5858,6 +5858,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		events: [
 			{type: "PuppeteerSpawn", trigger: "addEntity", chance: 0.34},
+			{type: "annoy_puppet", trigger: "tick"},
 		],
 		maxdodge: 1, unlockCommandLevel: 2, unlockCommandCD: 12, 
 		followLeashedOnly: true, kite: 1.5, kiteChance: 0.3, followRange: 4, castWhileMoving: true,
