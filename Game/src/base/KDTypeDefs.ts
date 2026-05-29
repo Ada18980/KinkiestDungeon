@@ -3642,6 +3642,12 @@ type KDBondageStatus = {
 	immobile: number,
 }
 
+interface KDListener {
+	type: string,
+	id?: string,
+	data: Record<string, any>,
+}
+
 type KDMapTile = {
 	Labels?: Record<string, KDLabel[]>,
     name: string;

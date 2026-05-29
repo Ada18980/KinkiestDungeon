@@ -198,7 +198,7 @@ AddModel({
 	//TopLevel: true,
 	Parent: "Body",
 	Protected: true,
-	Categories: ["Body"],
+	Categories: ["Body", "DollBody"],
 	Folder: "BodyDoll",
 	AddPose: ["Body"],
 	Layers: ToLayerMap([

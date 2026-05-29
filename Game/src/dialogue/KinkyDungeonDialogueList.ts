@@ -1365,6 +1365,46 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 		}
 	},
+	"DollNotification": {
+		response: "Default",
+		options: {
+			Yes: {
+				exitDialogue: true,
+				playertext: "Yes",
+				clickFunction: (_gagged, _player) => {
+					let body = KinkyDungeonPlayer.Appearance.find((item) => {
+						return item.Model?.Group == "Body"
+					});
+					if (body) {
+						KDGameData.originalBody = body.Model.Name;
+						body.Model = ModelDefs.DollBody;
+					}
+
+					let Char = KinkyDungeonPlayer;
+					if (Char == KinkyDungeonPlayer)
+						KinkyDungeonDressSet();
+					KDRefreshCharacter.set(Char, true);
+					KinkyDungeonDressPlayer(Char);
+					
+					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DollTransform.ogg");
+
+					for (let i = 0; i < KDTransformParticleCount; i++) {
+						KDAddTransformParticle(
+							0, KDPlayerY(), 500, 1000,
+							i/KDTransformParticleCount,
+							KinkyDungeonRootDirectory + "Particles/Dollification" + Math.floor(Math.random() * KDDollParticleCount) + ".png", 
+							-Math.PI/2 +Math.PI * Math.random()
+						);
+					}
+					return false;
+				},
+			},
+			No: {
+				exitDialogue: true,
+				playertext: "No",
+			}
+		}
+	},
 	"Tutorial": {
 		response: "Default",
 		clickFunction: (_gagged, _player) => {

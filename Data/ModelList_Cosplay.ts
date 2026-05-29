@@ -397,7 +397,7 @@ AddModel({
 	Folder: "Mouse",
 	TopLevel: false, Parent: "WolfTail",
 	Protected: true,
-	Group: "Ears",
+	Group: "Tail",
 	Categories: ["Tails", "Mouse", "Cosplay"],
 	AddPose: ["Tails", "Mouse", "Cosplay"],
 	Layers: ToLayerMap([
@@ -423,7 +423,7 @@ AddModel({
 	Parent2: ["WolfTail"],
 	TopLevel: true,
 	Protected: true,
-	Group: "Ears",
+	Group: "Tail",
 	Categories: ["Tails", "Kitty", "Cosplay"],
 	AddPose: ["Tails", "Kitty", "Cosplay"],
 	Layers: ToLayerMap([
@@ -439,7 +439,7 @@ AddModel({
 	Parent: "KittyTail",
 	TopLevel: false,
 	Protected: true,
-	Group: "Ears",
+	Group: "Tail",
 	Categories: ["Tails", "Kitty", "Cosplay"],
 	AddPose: ["Tails", "Kitty", "Cosplay"],
 	Layers: ToLayerMap([
@@ -461,7 +461,7 @@ AddModel({
 	Parent2: ["WolfTail"],
 	TopLevel: true,
 	Protected: true,
-	Group: "Ears",
+	Group: "Tail",
 	Categories: ["Tails", "Fox", "Cosplay"],
 	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
@@ -478,7 +478,7 @@ AddModel({
 	Parent: "FoxTail",
 	TopLevel: false,
 	Protected: true,
-	Group: "Ears",
+	Group: "Tail",
 	Categories: ["Tails", "Fox", "Cosplay"],
 	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
@@ -498,7 +498,7 @@ AddModel({
 	Parent: "FoxTail",
 	TopLevel: false,
 	Protected: true,
-	Group: "Ears",
+	Group: "Tail",
 	Categories: ["Tails", "Fox", "Cosplay"],
 	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
@@ -514,7 +514,7 @@ AddModel({
 	Parent: "FoxTail",
 	TopLevel: false,
 	Protected: true,
-	Group: "Ears",
+	Group: "Tail",
 	Categories: ["Tails", "Fox", "Cosplay"],
 	AddPose: ["Tails", "Fox"],
 	Layers: ToLayerMap([
@@ -530,7 +530,7 @@ AddModel({
 	Parent: "FoxTail",
 	TopLevel: false,
 	Protected: true,
-	Group: "Ears",
+	Group: "Tail",
 	Categories: ["Tails", "Fox", "Cosplay"],
 	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
@@ -546,7 +546,7 @@ AddModel({
 	Parent: "FoxTail",
 	TopLevel: false,
 	Protected: true,
-	Group: "Ears",
+	Group: "Tail",
 	Categories: ["Tails", "Fox", "Cosplay"],
 	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([
@@ -562,7 +562,7 @@ AddModel({
 	Parent: "FoxTail",
 	TopLevel: false,
 	Protected: true,
-	Group: "Ears",
+	Group: "Tail",
 	Categories: ["Tails", "Fox", "Cosplay"],
 	AddPose: ["Tails", "Fox", "Cosplay"],
 	Layers: ToLayerMap([

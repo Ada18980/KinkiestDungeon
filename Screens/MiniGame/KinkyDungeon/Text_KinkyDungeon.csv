@@ -27758,6 +27758,11 @@ m_FashionLatexDollMitts,FashionLatexDollMitts
 m_FashionLatexDollMitts_l_Mitten,Mitten
 m_FashionLatexDollMitts_l_Mitten,Mitten
 
+m_KjusMouthBeast,KjusMouthBeast
+m_KjusMouthBeast_l_Mouth,Mouth
+m_PuppetStrings,PuppetStrings
+m_PuppetStrings_l_PuppetStrings,PuppetStrings
+
 m_BunnyEars1,BunnyEars1
 m_BunnyEars1_l_Ears,Ears
 m_BunnyEars1_l_InnerEars,InnerEars
@@ -33841,3 +33846,7 @@ KDLibrarianAngry,Hands off the library!
 RestraintPuppetStrings,Puppet's Strings
 RestraintPuppetStringsDesc,A set of strings for controlling a puppet.
 RestraintPuppetStringsDesc2,Tethers you to nearby dolls and puppet strings if you pass by.
+
+rDollNotification,"It looks like you selected the Doll species perk\nHowever, your character does not have a doll body equipped.\nWould you like to fix that?"
+dYes,(Yes)
+dNo,(No)

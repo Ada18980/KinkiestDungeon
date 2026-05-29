@@ -65,12 +65,14 @@ function KinkyDungeonSendEvent(Event: string, data: any, forceSpell?: spell, for
 	KinkyDungeonSendOutfitEvent(Event, data);
 	KinkyDungeonSendEnemyEvent(Event, data, mapData);
 	KinkyDungeonHandleGenericEvent(Event, data);
+	KinkyDungeonHandleListenerEvent(Event, data);
 	KinkyDungeonSendAltEvent(Event, data);
 	KinkyDungeonSendFacilityEvent(Event, data);
 }
 /** Called during initialization */
 function KinkyDungeonResetEventVariables() {
 	KinkyDungeonHandleGenericEvent("resetEventVar", {});
+	KinkyDungeonHandleListenerEvent("resetEventVar", {});
 }
 /** Called every tick */
 function KinkyDungeonResetEventVariablesTick(delta: number) {
@@ -11807,6 +11809,26 @@ function KinkyDungeonHandleEnemyEvent(Event: string, e: KinkyDungeonEvent, enemy
 
 
 
+/** Return true to end the listener */
+let KDEventMapListener: Record<string, Record<string, Record<string, (listener: string, data: any, listenerdata: any) => boolean | void>>> = {
+	SpeciesChecker: {
+		tick: {
+			checkSpecies: (listener: string, data: any) => {
+				if (KinkyDungeonCurrentTick > 3 && !KDGameData.CurrentDialog) {
+					if (KinkyDungeonStatsChoice.get("SpeciesDoll") && !KinkyDungeonPlayer.Appearance.some((item) => {
+						return item.Model?.Categories.includes("DollBody")
+					})) {
+						KDStartDialog("DollNotification");
+					}
+					
+
+					return true; // end listener
+				}
+			}
+		},
+	},
+}
+
 let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => void>> = {
 	"inventoryTooltip": {
 		"stamdmg": (e, data) => {
@@ -13376,6 +13398,53 @@ function KinkyDungeonHandleGenericEvent(Event: string, data: any) {
 			KDEventMapGeneric[Event][e](e, data);
 	}
 }
+/**
+ * @param Event
+ * @param data
+ */
+function KinkyDungeonHandleListenerEvent(Event: string, data: any) {
+	if (KDGameData.ListenerIndex) {
+		let toRemove: Record<string, boolean> = {};
+		for (let listen of Object.values(KDGameData.ListenerIndex)) {
+			let listener = listen[1].type;
+
+			if (!KDMapHasEvent(KDEventMapListener, listener)) return;
+			if (!KDMapHasEvent(KDEventMapListener[listener], Event)) return;
+			if (KDEventMapListener[listener] && KDEventMapListener[listener][Event]) {
+				for (let e of Object.keys(KDEventMapListener[listener][Event]))
+					if (KDEventMapListener[listener][Event][e](listener, data, KDGameData.ListenerIndex[listener])) {
+						toRemove[listen[0]] = true;
+					}
+			}
+		}
+		for (let listener of Object.keys(toRemove)) {
+			KDRemoveListener(listener);
+		}
+	}
+	
+	if (KDGameData.ListenerList) {
+		let toRemove: Map<KDListener, boolean> = null;
+		for (let listen of KDGameData.ListenerList) {
+			let listener = listen.type;
+
+			if (!KDMapHasEvent(KDEventMapListener, listener)) return;
+			if (!KDMapHasEvent(KDEventMapListener[listener], Event)) return;
+			if (KDEventMapListener[listener] && KDEventMapListener[listener][Event]) {
+				for (let e of Object.keys(KDEventMapListener[listener][Event]))
+					if (KDEventMapListener[listener][Event][e](listener, data, listen.data)) {
+						if (!toRemove) toRemove = new Map();
+						toRemove.set(listen, true);
+					}
+			}
+		}
+		if (toRemove) {
+			KDGameData.ListenerList = KDGameData.ListenerList.filter((listener) => {
+				return !toRemove.get(listener);
+			});
+		}
+	}
+}
+
 
 
 

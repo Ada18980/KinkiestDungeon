@@ -575,7 +575,8 @@ interface KDGameDataBase {
 
 	HypnoButtons: HypnoButton[],
 	originalBody: string,
-	Listeners: Record<string, object>,
+	ListenerIndex: Record<string, KDListener>,
+	ListenerList: KDListener[],
 	RewardTracker: Record<string, number>,
 	selectedLabel: Record<number, KDLabel>,
 };
@@ -861,7 +862,8 @@ let KDGameDataBase: KDGameDataBase = {
 	oldtitles: [],
 	titlesUnlocked: [],
 	RecentProgress: {},
-	Listeners: {},
+	ListenerList: [],
+	ListenerIndex: {},
 	RewardTracker: {
 
 	} ,
@@ -2548,6 +2550,7 @@ function KinkyDungeonRun() {
 			if (!KDToggles.SkipTutorial) {
 				KDStartDialog("Tutorial");
 			}
+			KDAddListener("SpeciesChecker");
 			return true;
 		}, true, 875, 650, 750, 64, TextGet("KinkyDungeonStartGameQuick"), KDBaseWhite, "");
 		DrawButtonKDEx("startGameKinky", () => {
@@ -2561,6 +2564,7 @@ function KinkyDungeonRun() {
 			if (!KDToggles.SkipTutorial) {
 				KDStartDialog("Tutorial");
 			}
+			KDAddListener("SpeciesChecker");
 			return true;
 		}, true, 875, 720, 750, 64, TextGet("KinkyDungeonStartGameKinky"), KDBaseWhite, "");
 		DrawButtonKDEx("startGame", () => {
@@ -2863,6 +2867,7 @@ function KinkyDungeonRun() {
 				if (!KDToggles.SkipTutorial) {
 					KDStartDialog("Tutorial");
 				}
+				KDAddListener("SpeciesChecker");
 			}
 			return true;
 		}, true, 875, 920, 350, 64, TextGet("KinkyDungeonStartGame"), KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= minPoints ? KDBaseWhite : "pink", "");
@@ -8321,18 +8326,36 @@ function KDRunnewConsentCheck() {
 	}
 }
 
-/** If data is specified, overwrites. Otherwise, does nothing if a listener is already in place. */
-function KDAddListener(name: string, data?: object) {
-	if (!KDGameData.Listeners) {
-		KDGameData.Listeners = {};
+/** If id is specified, overwrites. Otherwise, does nothing if a listener is already in place. */
+function KDAddListener(type: string, data?: object, id?: string) {
+
+	if (id) {
+		if (!KDGameData.ListenerIndex) {
+			KDGameData.ListenerIndex = {};
+		}
+		/*KDGameData.ListenerList = KDGameData.ListenerList.filter((listener) => {
+			return listener.id == id;
+		});*/
+		KDGameData.ListenerIndex[id] = {type: type, id: id, data: data};
+		//KDGameData.ListenerList.push(KDGameData.ListenerIndex[id]);
+	} else {
+		if (!KDGameData.ListenerList) {
+			KDGameData.ListenerList = [];
+		}
+		KDGameData.ListenerList.push({type: type, data: data});
 	}
 
-	if (data) {
-		KDGameData.Listeners[name] = data;
-	} else if (!KDGameData.Listeners[name]) {
-		KDGameData.Listeners = {};
+}
+function KDRemoveListener(id: string) {
+	if (KDGameData.ListenerIndex) {
+		delete KDGameData.ListenerIndex[id];
 	}
-
+}
+function KDHasListener(id: string) {
+	if (KDGameData.ListenerIndex) {
+		return !!KDGameData.ListenerIndex[id];
+	}
+	return false;
 }
 
 function KDTrackReward(reward: string, amount: number, add: boolean): boolean {
