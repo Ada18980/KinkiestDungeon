@@ -579,6 +579,11 @@ function KDMoveEntity(enemy: entity, x: number, y: number, willing: boolean, das
 		enemy.x = x;
 		enemy.y = y;
 		if (mapData == KDMapData && (enemy.x != enemy.lastx || enemy.y != enemy.lasty)) KDUpdateEnemyCache = true;
+		
+		enemy.lastx_avg = ((enemy.lastx_avg || 0) + enemy.x)*0.5;
+		enemy.lasty_avg = ((enemy.lasty_avg || 0) + enemy.y)*0.5;
+		if (Math.abs(enemy.lastx_avg - enemy.x) < 0.05) enemy.lastx_avg = enemy.x;
+		if (Math.abs(enemy.lasty_avg - enemy.y) < 0.05) enemy.lasty_avg = enemy.y;
 		enemy.lastx = enemy.x;
 		enemy.lasty = enemy.y;
 		enemy.lastmove = KinkyDungeonCurrentTick;
@@ -635,6 +640,13 @@ function KDStaggerEnemy(enemy: entity) {
 function KDMovePlayer(moveX: number, moveY: number, willing: boolean, sprint?: boolean, forceHitBullets?: boolean, suppressNoise?: boolean, noEvent?: boolean): boolean {
 	KinkyDungeonPlayerEntity.lastx = KinkyDungeonPlayerEntity.x;
 	KinkyDungeonPlayerEntity.lasty = KinkyDungeonPlayerEntity.y;
+
+
+	KinkyDungeonPlayerEntity.lastx_avg = ((KinkyDungeonPlayerEntity.lastx_avg || 0) + KinkyDungeonPlayerEntity.x)*0.5;
+	KinkyDungeonPlayerEntity.lasty_avg = ((KinkyDungeonPlayerEntity.lasty_avg || 0) + KinkyDungeonPlayerEntity.y)*0.5;
+	if (Math.abs(KinkyDungeonPlayerEntity.lastx_avg - KinkyDungeonPlayerEntity.x) < 0.05) KinkyDungeonPlayerEntity.lastx_avg = KinkyDungeonPlayerEntity.x;
+	if (Math.abs(KinkyDungeonPlayerEntity.lasty_avg - KinkyDungeonPlayerEntity.y) < 0.05) KinkyDungeonPlayerEntity.lasty_avg = KinkyDungeonPlayerEntity.y;
+
 	KinkyDungeonPlayerEntity.lastmove = KinkyDungeonCurrentTick;
 	let cancel = {cancelmove: false, returnvalue: false};
 	for (let newTile of Object.values(KDGetEffectTiles(moveX, moveY))) {

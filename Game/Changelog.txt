@@ -111,6 +111,7 @@ Balance:
 - Made ghost possession (pleasure option) have much longer time between teasings
 - Levitating Locks hp reduced from 40 to 25
 - Masterful Lock hp reduced from 100 to 60
+- Enemies can now lead the player when aiming delayed spells and projectiles
 
 5.4.93
 - One bar prisons now are harder to escape if you wear heels

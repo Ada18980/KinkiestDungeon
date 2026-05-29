@@ -861,7 +861,7 @@ function KDDoGaggedMiscastFlagEvent(spell: spell, targetX: number, targetY: numb
  * @param [forceFaction]
  * @param [castData]
  */
-function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: entity, player: any, bullet?: KDBullet, forceFaction?: string, castData?: any): {result: string, data: any} {
+function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: entity, player: any, bullet?: KDBullet, forceFaction?: string, castData?: any, allowLeading?: boolean): {result: string, data: any} {
 	let entity = KinkyDungeonPlayerEntity;
 	let moveDirection = KinkyDungeonMoveDirection;
 	let flags = {
@@ -1166,6 +1166,48 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 			}
 		}
 
+		if (allowLeading && (!spell.noLeading && KDSpellLeadingTypes.includes(spell.type)) && entity) {
+			let target = KinkyDungeonEntityAt(targetX, targetY);
+			let delay = spell.delay;
+			if (spell.type == "bolt" && target && spell.speed > 0.1) {
+				delay = KDistEuclidean(target.x - tX, target.y - tY)/spell.speed;
+			}
+			if (delay > 0.5) {
+				if (target != entity) {
+					let ddx = target.x - (target.lastx_avg || 0);
+					let ddy = target.y - (target.lasty_avg || 0);
+					let dx = Math.sign(ddx) * KDRandomFloor(Math.abs((0.35 + KDRandom() * 0.3) * delay * ddx));
+					let dy = Math.sign(ddy) * KDRandomFloor(Math.abs((0.35 + KDRandom() * 0.3) * delay * ddy));
+					let preserveLOS = KinkyDungeonCheckProjectileClearance(entity.x, entity.y, tX, tY);
+
+					let final_dx = 0;
+					let final_dy = 0;
+					for (let xxx = 1; xxx <= Math.abs(dx); xxx++) {
+						for (let yyy = 1; yyy <= Math.abs(dy); yyy++) {
+							if ((!spell.range || KDistEuclidean(
+								tX + Math.sign(dx) *xxx - entity.x, 
+								tY + Math.sign(dy) *yyy - entity.y) < spell.range + 0.5)
+								&& KinkyDungeonOpenObjects.includes(KinkyDungeonMapGet(
+								tX + Math.sign(dx) *xxx, 
+								tY + Math.sign(dy) *yyy))
+								&& (!preserveLOS || KinkyDungeonCheckProjectileClearance(entity.x, entity.y, 
+								tX + Math.sign(dx) *xxx, 
+								tY + Math.sign(dy) *yyy))) {
+								final_dx = Math.sign(dx) *xxx;
+								final_dy = Math.sign(dy) *yyy;
+								xxx = 1 + Math.abs(dx);
+								yyy = 1 + Math.abs(dy);
+							}
+						}
+					}
+					tX += final_dx;
+					tY += final_dy;
+				}
+			}
+			
+			
+		}
+
 
 		if (spell.type == "bolt") {
 			let size = (spell.size) ? spell.size : 1;
@@ -1192,8 +1234,6 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 				if (moveDirection && (moveDirection.x || moveDirection.y)) {
 					tX += moveDirection.x;
 					tY += moveDirection.y;
-				} else {
-					tX += 1;
 				}
 			}
 			let b = KinkyDungeonLaunchBullet(xx, yy,
@@ -3099,4 +3139,12 @@ function KDDoToggleMiscast(spell: spell, player: entity) : boolean {
 		
 	}
 	return false;
+}
+
+/** enemies will not try to lead these types of spells */
+let KDSpellLeadingTypes = ["dot", "bolt", "inert"];
+
+function KDRandomFloor(num: number) {
+	if (KDRandom() < 0.5) return Math.floor(num);
+	else return Math.ceil(num);
 }

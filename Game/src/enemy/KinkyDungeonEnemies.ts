@@ -7509,7 +7509,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				}
 
 
-				if (spell && KinkyDungeonCastSpell(xx, yy, spell, enemy, player).result == "Cast" && spell.sfx) {
+				if (spell && KinkyDungeonCastSpell(xx, yy, spell, enemy, player, 
+					undefined, undefined, undefined, true).result == "Cast" && spell.sfx) {
 					if (spell?.components?.includes("Verbal")) KinkyDungeonSetEnemyFlag(enemy, "verbalcast", 3);
 					if (!enemy.Enemy.noFlip) {
 						if (Math.sign(xx - enemy.x) < 0) {

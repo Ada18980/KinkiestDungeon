@@ -1981,6 +1981,8 @@ interface entity {
 	targetingY?: number,
 	lastx?: number,
 	lasty?: number,
+	lastx_avg?: number,
+	lasty_avg?: number,
 	fx?: number,
 	fy?: number,
 	action?: string,
@@ -2212,6 +2214,9 @@ interface spell {
 
 	/** bind tags for the spell/bullet */
 	bindTags?: string[],
+
+	/** enemies will not try to lead target */
+	noLeading?: boolean,
 
 	ignoreshield?: boolean,
 	shield_crit?: boolean, // Crit thru shield
