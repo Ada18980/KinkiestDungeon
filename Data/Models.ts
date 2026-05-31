@@ -196,7 +196,7 @@ class ModelContainer {
 					}
 				}
 			}
-			if (body) {
+			if (body?.Filters) {
 				if (!Model.Filters) Model.Filters = {};
 				let Filters = body.Filters;
 				Object.assign(Model.Filters, JSON.parse(JSON.stringify(Filters)));
@@ -2105,7 +2105,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					if (!f) break;
 					let sprite: PIXISprite = (f as any).maskSprite;
 					if (sprite) {
-						if (spr.getBounds().intersects(sprite.getBounds())) {
+						if (spr?.getBounds().intersects(sprite.getBounds())) {
 							if (!cc.getChildByName(sprite.name))
 								cc.addChild(sprite);
 						} else {

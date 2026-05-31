@@ -67,7 +67,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["WolfOperative", [
-		{name: "It", color: "rgb(13, 197, 59)", prisoner: true, free: true,
+		{name: "1969", color: "rgb(13, 197, 59)", prisoner: true, free: true,
 			customPlayLine: "", customIntro: "Hey, I don't think I've seen you around here before?",
 			customSprite: "", customOutfit: "It", customStyle: "It"},
 		{name: "Nevermere Director", color: "#96a1a1ff", prisoner: true, free: true,

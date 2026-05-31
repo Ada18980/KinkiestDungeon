@@ -127,7 +127,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Accept": {gag: true, playertext: "WeaponFoundAccept", response: "GoodGirl", personalities: ["Dom", "Sub", "Robot"],
 				clickFunction: (_gagged, _player) => {
 					if ((KinkyDungeonFlags.get("jailStripSearched") || 0) < KDJailStripSearchTempTime) {
-						KinkyDungeonSetFlag("jailStripSearched", 0);
+						KDResetStripSearch();
 					}
 
 					KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), KDBaseRed, 2);
@@ -238,6 +238,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					if ((KinkyDungeonFlags.get("jailStripSearched") || 0) < KDJailStripSearchTempTime) {
 						KinkyDungeonSetFlag("jailStripSearched", KDJailStripSearchTime);
 					}
+
+					KinkyDungeonSetFlag("stripSearchComplete", 20);
 
 					KDRemovePrisonRestraints();
 

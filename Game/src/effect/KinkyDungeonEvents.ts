@@ -1231,7 +1231,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					let duration = 0;
 					let dollLevel = KDEntityBuffedStat(player, "Hypno_Doll");
 					let key = "KDHypno_Doll_" + Math.floor(KDRandom() * Math.round(
-							KDDollHypnoSuggestions * (0.5 + dollLevel/100)));
+							KDDollHypnoSuggestions * (0.5 + 0.5*dollLevel/100)));
 					if (KDRandom() < 0.6 && KDEntityBuffedStat(player, "Hypnosis") > 25 && KDRandom() < KDEntityBuffedStat(player, "Hypnosis")*0.01) {
 						
 						if (dollLevel > 90 && KDRandom() < 0.25) {

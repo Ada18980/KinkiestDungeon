@@ -1328,6 +1328,35 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			return false;
 		},
 	},
+	"Follow": {
+		// Follow for 2 turns
+		aggressive: true,
+		nonaggressive: true,
+		noplay: true,
+		// This is the basic leash to jail mechanic
+		weight: (enemy, aiData, _allied, hostile, _aggressive) => {
+			return 0;
+		},
+		trigger: (enemy, _aiData) => {
+			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+			enemy.playWithPlayer = 2;
+			enemy.IntentAction = 'Follow';
+			enemy.IntentLeashPoint = undefined;
+		},
+		maintain: (enemy, delta, aiData) => {
+			let player = KDPlayer();
+			if (enemy.aware && KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > 1.5) {
+				enemy.gx = player.x;
+				enemy.gy = player.y;
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+			}
+			return true;
+		},
+		decideAttack: (enemy, delta, AIData) => {
+			return !!KinkyDungeonFlags.get("PlayerCombat");
+		}
+	},
 	"CaptureDemon": {
 		aggressive: true,
 		nonaggressive: true,

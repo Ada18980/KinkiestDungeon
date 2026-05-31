@@ -1784,7 +1784,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 		//nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 
 	} else {
-		KinkyDungeonSetFlag("jailStripSearched", 0);
+		KDResetStripSearch();
 		KDMovePlayer(nearestJail.x + (nearestJail.direction?.x || 0), nearestJail.y + (nearestJail.direction?.y || 0), false);
 
 		if (leasher)
@@ -2653,4 +2653,10 @@ function KDGetFurnitureCriteria(entity: entity): (x: number, y: number, point: K
 	}
 
 
+}
+
+
+function KDResetStripSearch() {
+	KinkyDungeonSetFlag("jailStripSearched", 0);
+	KinkyDungeonSetFlag("stripSearchComplete", 0);
 }

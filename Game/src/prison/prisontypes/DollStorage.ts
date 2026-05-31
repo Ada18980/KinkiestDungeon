@@ -285,9 +285,13 @@ KDPrisonTypes.DollStorage = {
 			},
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
-				KDPrisonCommonGuard(player);
+				let guard = KDPrisonCommonGuard(player);
 
 				if (KDPrisonIsInFurniture(player)) {
+					let action = "Follow";
+					if (guard.IntentAction != action)
+						KDIntentEvents[action].trigger(guard, {});
+					else guard.playWithPlayer = Math.max(guard.playWithPlayer, 3);
 					let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
 					if (uniformCheck.groupsToStrip.length > 0 && !KinkyDungeonFlags.get("failStrip")) {
 						// Create a queue
@@ -313,8 +317,10 @@ KDPrisonTypes.DollStorage = {
 				let guard = KDPrisonCommonGuard(player);
 
 				if (guard && KDPrisonIsInFurniture(player)) {
-					guard.gx = player.x;
-					guard.gy = player.y;
+					let action = "Follow";
+					if (guard.IntentAction != action)
+						KDIntentEvents[action].trigger(guard, {});
+					else guard.playWithPlayer = Math.max(guard.playWithPlayer, 3);
 					KinkyDungeonSetEnemyFlag(guard, "overrideMove", 2);
 					if (KDistChebyshev(guard.x - player.x, guard.y - player.y) < 1.5) {
 						if (KDPrisonIsInFurniture(player)) {
@@ -344,8 +350,10 @@ KDPrisonTypes.DollStorage = {
 
 				if (KDPrisonIsInFurniture(player)) {
 					if (guard) {
-						guard.gx = player.x;
-						guard.gy = player.y;
+						let action = "Follow";
+						if (guard.IntentAction != action)
+							KDIntentEvents[action].trigger(guard, {});
+						else guard.playWithPlayer = Math.max(guard.playWithPlayer, 3);
 						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 2);
 						if (KDistChebyshev(guard.x - player.x, guard.y - player.y) < 1.5) {
 
