@@ -11316,6 +11316,7 @@ RestraintName 上的诅咒解除了！
 # :: m_FangMouth_Double_l_Mouth
 # :: m_FangMouth_l_Mouth
 # :: m_FanglessMouth_l_Mouth
+# :: m_KjusMouthBeast_l_Mouth
 - Ears
 耳朵
 # :: KinkyDungeonGroupItemEars
@@ -43930,6 +43931,11 @@ Aura刘海
 - FashionLatexDollMitts
 装饰性乳胶玩偶束手套
 
+# - KjusMouthBeast
+# - PuppetStrings
+# :: m_PuppetStrings
+# :: m_PuppetStrings_l_PuppetStrings
+
 # - BunnyEars1
 # - BunnyEars2
 # - BunnyEars3
@@ -53463,3 +53469,7 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - Puppet's Strings
 # - A set of strings for controlling a puppet.
 # - Tethers you to nearby dolls and puppet strings if you pass by.
+
+# - It looks like you selected the Doll species perk\nHowever, your character does not have a doll body equipped.\nWould you like to fix that?
+# - (Yes)
+# - (No)
