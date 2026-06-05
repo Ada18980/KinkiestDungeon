@@ -1044,10 +1044,15 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 			if (unidentified && restraint?.original) {
 				restraint = KDRest(restraint.original);
 			}
+
+			
+			let raritystring = KDGetRarityString(item);
+
 			//let pre = (item.type == LooseRestraint || item.type == Restraint) ? "Restraint" : "KinkyDungeonInventoryItem";
 			if (preview
 				&& (item.type != LooseRestraint || (!enchanted || KDRestraint(item).enchanted || KDRestraint(item).showInQuickInv || item.showInQuickInv))
 				&& (!namefilter
+					|| raritystring.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 					|| KDGetItemName(preview.item).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 					|| (item.type == Weapon && TextGet("KinkyDungeonDamageType" + KDWeapon(item)?.type).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase()))
 					|| ((item.type == LooseRestraint || item.type == Restraint) && restraint?.shrine?.some((tag) => {
@@ -1057,7 +1062,12 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 						return TextGet("KinkyDungeonDamageType" + (e.damage || e.kind)).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 						|| e.damage?.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 						|| e.kind?.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
-						|| e.original?.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase());
+						|| e.original?.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
+						|| (e.original && HasText("KDVariableModifier_" + e.original)
+							&& TextGet("KDVariableModifier_" + e.original)
+								.toLocaleLowerCase().includes(
+									namefilter
+										.toLocaleLowerCase()))
 					}
 					)))
 			) {
@@ -1152,20 +1162,29 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 
 	return ret;
 }
+
+interface InventoryHoverObject {
+    type: string;
+    item: item;
+    name: string;
+    TitleTextColor: string;
+    TitleTextColorBack: string;
+    ItemMods: any[];
+}
 /**
  * @param item
  */
-function KDInventoryItemHover(item: any) {
+function KDInventoryItemHover(item: item): InventoryHoverObject {
     let name = item.name;
     let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentified(item);
     let prefix = "KinkyDungeonInventoryItem";
-    let nameText = KDGetItemName(item.item)
+    let nameText = KDGetItemName(item)
     if (item.type == Restraint || item.type == LooseRestraint) {
         prefix = "Restraint";
     }
     let mods = [];
-    if (item.item.events) {
-        item.item.events.forEach((t) => {
+    if (item.events) {
+        item.events.forEach((t) => {
             if (t.trigger == "inventoryTooltip") {
                 if (t.type == "varModifier" && !unidentified) {
                     mods.push({
@@ -1185,7 +1204,7 @@ function KDInventoryItemHover(item: any) {
     let hoverobject = {
         type: "InventoryItem",
         item: item,
-        name: (unidentified ? "Unknown" : nameText),
+        name: nameText,
         TitleTextColor: KDBaseWhite,
         TitleTextColorBack: KDBaseBlack,
         ItemMods: mods
@@ -1690,7 +1709,7 @@ function KDDrawInventoryContainer (
 						filteredInventory[index].item) : KDButtonColor), undefined, undefined, {
 						scaleImage: true,
                     //@ts-ignore // This should have a type assigned to it probably, but I do not know where to trace to make it happy. -Enraa
-					}, KDInventoryItemHover(filteredInventory[index])) && !tooltipitem) {
+					}, KDInventoryItemHover(filteredInventory[index].item)) && !tooltipitem) {
 						tooltipitem = filteredInventory[index];
 					}
 					if (useIcons && filteredInventory[index].preview2)
@@ -3304,7 +3323,7 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
 	if (forceMorph || !(KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group)?.dynamicLink) || item.type == LooseRestraint) {
 		// original: just change restraint in-place
 		let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
-		let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
+		let events = [];//origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 		let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
 		if (prefix) variant.prefix = prefix;
 		if (curse) {
@@ -3337,7 +3356,7 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
 		// here we remove the current item and then add the new one
 
 		let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
-		let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
+		let events = [];//origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 		let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
 		if (prefix) variant.prefix = prefix;
 		if (curse) {
@@ -4141,4 +4160,22 @@ function KDCalculateGoldCost(data: any) {
 	else { 
 		return null 
 	}
+}
+
+function KDGetRarityString(item: item) {
+	let raritystring = "";
+	if (item.type == Restraint || item.type == LooseRestraint) {
+		let restraint = KDRestraint(item);
+		let pp = (restraint.displayPower != undefined ? restraint.displayPower : restraint.power);
+		pp /= 5; // inflection point between 8 (mythic) and 9 (angelic) should be around 47 power
+		raritystring = TextGet("KinkyDungeonRarity" + Math.max(0, Math.min(Math.floor(pp),10)));
+		
+	} else if (item.type == Consumable) {
+		raritystring = TextGet("KinkyDungeonRarity" + KDConsumable(item).rarity);
+	} else if (item.type == Weapon) {
+		raritystring = TextGet("KinkyDungeonRarity" + KDWeapon(item).rarity);
+	} else if (item.type == Outfit) {
+		raritystring = TextGet("KinkyDungeonRarity" + KDOutfit(item).rarity);
+	}
+	return raritystring;
 }

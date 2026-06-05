@@ -1,5 +1,7 @@
 let KDCollectionReleaseSelection: Record<string, boolean> = {};
 
+let KDClipCollectionIndex = true;
+
 // @ts-ignore: squelch error: block-scoped variable used before declaration.
 KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	let tooltip = false;

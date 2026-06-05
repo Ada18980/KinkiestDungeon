@@ -361,6 +361,7 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 	"DollMirror": {name: "DollMirror", damage: 0.7, chance: 5.0, staminacost: 0.2, type: "soul", unarmed: false,
 		rarity: 7, shop: true, sfx: "MirrorShine", magic: true,
 		tags: ["hypno"], noDamagePenalty: true,
+		costMod: -2,
 		nocrit: true,
 		armormult: 0.25,
 		events: [

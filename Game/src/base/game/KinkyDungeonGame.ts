@@ -469,6 +469,7 @@ function KDResetEventData(Data?: any) {
 
 
 function KinkyDungeonInitialize(Level: number, Load?: any) {
+	KDCollectionIndex = 0;
 	KDWorldMap = {};
 	KDMapData = KDDefaultMapData(0, 0);
 	KDCurrentWorldSlot = {x: 0, y: 0};
@@ -3503,6 +3504,13 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	KinkyDungeonUpdateBuffs(delta, false);
 	KinkyDungeonUpdateEnemies(delta, true); //console.log("Enemy Check " + (performance.now() - now));
 	KinkyDungeonSendEvent("afterEnemyTick", {delta: delta, allied: true});
+	
+	for (let E = 0; E < KDMapData.Entities.length; E++) {
+		let enemy = KDMapData.Entities[E];
+		KDUnPackEnemy(enemy);
+		if (KinkyDungeonEnemyCheckHP(enemy, E, KDMapData)) { E -= 1; continue;}
+		if (KDCheckDespawn(enemy, E, KDMapData)) { E -= 1; continue;}
+	}
 	KinkyDungeonUpdateBullets(delta, true); //console.log("Bullets Check " + (performance.now() - now));
 	KinkyDungeonUpdateBulletsCollisions(delta); //console.log("Bullet Check " + (performance.now() - now));
 	KinkyDungeonUpdateEnemies(delta, false); //console.log("Enemy Check " + (performance.now() - now));

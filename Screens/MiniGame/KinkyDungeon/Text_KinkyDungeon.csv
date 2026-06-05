@@ -3655,7 +3655,7 @@ KinkyDungeonObject,"object"
 KinkyDungeonObjectChest,"Chest"
 KinkyDungeonObjectDoor,"Door"
 KinkyDungeonObjectPerkOrb,"Perk Shrine"
-
+KinkyDungeonObjectConveyor,It's a conveyor belt. It conveys.
 
 
 KinkyDungeonCloseDoorDone,"You slam the door and jam it shut!"
@@ -29725,7 +29725,7 @@ KDConsentItemTooltip_DollTransformAroused,"If the player is transformed into a b
 KDConsentItemTooltip_DollTransform_Green,"|||This item is marked as Green, which prevents Potions of Humanity from spawning, making doll transformation permanent."
 
 KDConsentItemTooltip_ConsentIngame,"Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot."
-KDConsentItemTooltip_Invis,"Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead."
+KDConsentItemTooltip_Invis,"Allows some ghosts to place invisible restraints on you. These bind you despite not being directly visible.||If marked as red, these will be replaced with comfy spectral bindings instead."
 KDConsentItemTooltip_PrisonerMarkings,"Allows some restraints to display text such as 'Prisoner' or 'Inmate.'"
 KDConsentItemTooltip_ChastityBra,"Allows chastity bras to be forced onto the player character, which prevent access to nipples and lock toys in.||If marked as yellow, chastity bras will not appear unless the player is wearing nipple toys."
 KDConsentItemTooltip_ChastityBelt,"Allows chastity belts to be forced onto the player character, which prevent access to the lower regions and lock toys in.||If marked as yellow, chastity belts will not appear unless the player is wearing toys or plugs on the lower body."

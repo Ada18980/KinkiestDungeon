@@ -3844,7 +3844,7 @@ function DrawButtonKDExScroll (
 ): boolean
 {
 
-	let params = {
+	let params: KDButtonParamData = {
 		Left,
 		Top,
 		Width,

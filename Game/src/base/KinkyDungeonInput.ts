@@ -1471,6 +1471,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		if (data?.selection) {
 			for (let v of Object.keys(data.selection)) {
 				KDReleaseNPC(parseInt(v), data.player);
+				KDClipCollectionIndex = true;
 			}
 		}
 		KDSortCollection();
@@ -1481,6 +1482,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			for (let v of Object.keys(data.selection)) {
 				if (KDCanRemoveGuest(parseInt(v))) {
 					delete KDGameData.Collection[parseInt(v) + ""];
+				KDClipCollectionIndex = true;
 				}
 			}
 		}
@@ -1492,6 +1494,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			for (let v of Object.keys(data.selection)) {
 				if (KDCanRansom(parseInt(v))) {
 					KDFreeNPCRestraints(parseInt(v), data.player);
+					KDClipCollectionIndex = true;
 
 
 					let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);

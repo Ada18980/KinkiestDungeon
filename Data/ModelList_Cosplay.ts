@@ -81,6 +81,7 @@ AddModel({
 	Group: "Ears",
 	Categories: ["Ears", "Bunny", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Bunny", "Cosplay"],
+	RemovePoses: ["FullHood"],
 	Layers: ToLayerMap([
 		{ Name: "Ears", Layer: "AnimalEars", Pri: 10,
 			Invariant: true,
@@ -107,6 +108,7 @@ AddModel({
 	Group: "Ears",
 	Categories: ["Ears", "Bunny", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Bunny", "Cosplay"],
+	RemovePoses: ["FullHood"],
 	Layers: ToLayerMap([
 		{ Name: "Ear1Right", Layer: "AnimalEarsFront", Pri: 10,
 			Invariant: true,
@@ -142,6 +144,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Ears", "Bunny", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Bunny", "Cosplay"],
+	RemovePoses: ["FullHood"],
 	Layers: ToLayerMap([
 		{ Name: "HalfFlopEar1Right", Layer: "AnimalEarsFront", Pri: 10,
 			Invariant: true,
@@ -176,6 +179,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Ears", "Bunny", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Bunny", "Cosplay"],
+	RemovePoses: ["FullHood"],
 	Layers: ToLayerMap([
 		{ Name: "FlopEar1Right", Layer: "AnimalEarsFront", Pri: 10,
 			Invariant: true,
@@ -212,7 +216,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Ears", "Mouse", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Mouse", "Cosplay"],
-	RemovePoses: ["Hooded"],
+	RemovePoses: ["FullHood"],
 	Layers: ToLayerMap([
 		{ Name: "EarLeftRim", Layer: "AnimalEarsMid", Pri: 5,
 			Invariant: true,
@@ -270,6 +274,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Ears", "Kitty", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Kitty", "Cosplay"],
+	RemovePoses: ["FullHood"],
 	Layers: ToLayerMap([
 		{ Name: "Kitty", Layer: "AnimalEars", Pri: 10,
 			Invariant: true,
@@ -292,6 +297,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Ears", "Wolf", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Wolf", "Cosplay"],
+	RemovePoses: ["FullHood"],
 	Layers: ToLayerMap([
 		{ Name: "Wolf", Layer: "AnimalEars", Pri: 10,
 			Invariant: true,
@@ -314,6 +320,7 @@ AddModel({
 	Group: "Ears",
 	Categories: ["Ears", "Wolf", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Wolf", "Cosplay"],
+	RemovePoses: ["FullHood"],
 	Layers: ToLayerMap([
 		{ Name: "EarLeft", Layer: "AnimalEars", Pri: 9,
 			Invariant: true,
@@ -359,6 +366,7 @@ AddModel({
 	Group: "Ears",
 	Categories: ["Ears", "Fox", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Fox", "Cosplay"],
+	RemovePoses: ["FullHood"],
 	Layers: ToLayerMap([
 		{ Name: "Fox", Layer: "AnimalEars", Pri: 10,
 			Invariant: true,

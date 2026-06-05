@@ -4529,7 +4529,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
 								KDFreeNPC(e, false);
-								KDDefectIfPossible(e);
+								KDTameIfHappy(e);
 								if (e.specialdialogue == "PrisonerJailOwn") delete e.specialdialogue;
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
 									KinkyDungeonSetFlag("embarrassed", 8);
@@ -4635,7 +4635,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								if (KDDialogueEnemy()) {
 									let e = KDDialogueEnemy();
 									KDFreeNPC(e, false);
-									KDDefectIfPossible(e);
+									KDTameIfHappy(e);
 									if (e.specialdialogue == "PrisonerJailOwn") delete e.specialdialogue;
 									KDGameData.CurrentDialogMsg = "PrisonerJailPick" + KDJailPersonality(e);
 									if (e.Enemy.tags.gagged) {

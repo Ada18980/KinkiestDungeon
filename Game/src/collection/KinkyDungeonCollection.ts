@@ -1018,6 +1018,15 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 	}
 
+	if (KDClipCollectionIndex) {
+		KDClipCollectionIndex = true;
+		KDCollectionIndex = Math.max(
+			0,
+			Math.min(
+				KDCollectionIndex,
+				Math.floor(KDGameData.CollectionSorted.length / KDCollectionColumns) * KDCollectionColumns));
+	}
+
 	KDDraw(kdcanvas, kdpixisprites, "collScrollBar",
 		KinkyDungeonRootDirectory + "UI/Checked.png",
 		1775, 125 + 590*(KDCollectionIndex/Math.max(1, KDGameData.CollectionSorted.length)), 60, 60
@@ -1904,6 +1913,18 @@ function KDDefectIfPossible(entity: entity, defectTo: string = "Player"): boolea
 	}
 	return false;
 }
+
+function KDTameIfHappy(e: entity) {
+	if (KDGetModifiedOpinionID(e.id) > 0 || (
+		KDGameData.Collection
+			&& KDGameData.Collection[e.id]
+			&& KDGameData.Collection[e.id].Opinion > 0)) {
+		e.hostile = 0;
+		e.rage = 0;
+	}
+}
+
+
 
 function KDGenCharForCollection(value: KDCollectionEntry, enemyType: enemy) {
 	if (!KDNPCChar.get(value.id)) {

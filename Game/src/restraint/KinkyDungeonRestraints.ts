@@ -3222,7 +3222,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 						restraint.unlockProgress = Math.max(0, restraint.unlockProgress * 0.5 - 0.01);
 					}
 
-				} else if (KinkyDungeonGoddessRep.Ghost < 0 && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()))
+				} else if (!KDRestraint(restraint)?.armor && KinkyDungeonGoddessRep.Ghost < 0 && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()))
 					KinkyDungeonChangeRep("Ghost", 1);
 
 

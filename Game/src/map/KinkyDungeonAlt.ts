@@ -2123,7 +2123,7 @@ function KinkyDungeonCreateDollShoppe(_POI: any, VisitedRooms: any[], _width: nu
 	
 
 
-	let endX = 1 + Math.floor(0.5 * KDRandom() * KDMapData.GridWidth)*2;
+	let endX = 1 + Math.floor(0.5 * KDRandom() * KDMapData.GridWidth - 2)*2;
 	KDMapData.EndPosition = {x: endX, y: 1};
 	KDMapData.StartPosition = {x: KDMapData.EndPosition.x, y: KDMapData.EndPosition.y};
 	KinkyDungeonMapSet(endX, 1, 's');

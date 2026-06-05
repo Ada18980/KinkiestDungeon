@@ -843,8 +843,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				KDTickTraining("Heels", KDGameData.HeelPower > 0,
 					KDGameData.HeelPower <= 0, 4, 25);
 			KinkyDungeonSendDialogue(enemy,
-				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged",
-									KDGetGenericDialogueParams(KDPlayer(), enemy)) + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				KDGetColor(enemy), 14, 10);
 			KDAddThought(enemy.id, "Play", 7, enemy.playWithPlayer);
 
@@ -1085,8 +1085,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				KDTickTraining("Heels", KDGameData.HeelPower > 0,
 					KDGameData.HeelPower <= 0, 4, 25);
 			KinkyDungeonSendDialogue(enemy,
-				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged",
-									KDGetGenericDialogueParams(KDPlayer(), enemy)) + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime",
+									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				KDGetColor(enemy), 14, 10);
 			KDAddThought(enemy.id, "Play", 7, enemy.playWithPlayer);
 

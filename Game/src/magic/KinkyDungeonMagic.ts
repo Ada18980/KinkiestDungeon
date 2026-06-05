@@ -1173,7 +1173,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 				delay = KDistEuclidean(target.x - tX, target.y - tY)/spell.speed;
 			}
 			if (delay > 0.5) {
-				if (target != entity) {
+				if (target && target != entity) {
 					let ddx = target.x - (target.lastx_avg || 0);
 					let ddy = target.y - (target.lasty_avg || 0);
 					let dx = Math.sign(ddx) * KDRandomFloor(Math.abs((0.35 + KDRandom() * 0.3) * delay * ddx));
