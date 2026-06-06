@@ -7469,7 +7469,7 @@ TYPE女神的神泉。
 # :: KinkyDungeonObjectDoor
 # :: m_FutureBox_l_Door
 # - Perk Shrine
-
+# - It's a conveyor belt. It conveys.
 
 
 - You slam the door and jam it shut!
@@ -46975,7 +46975,7 @@ Kigurumi头壳
 
 - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
 允许在游戏过程中使用此菜单（包括“安全词”按钮）。如果你不希望在开始游戏后还能进入此界面修改规则，请将其标红。此选项不会随存档读取而改变。
-- Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead.
+- Allows some ghosts to place invisible restraints on you. These bind you despite not being directly visible.||If marked as red, these will be replaced with comfy spectral bindings instead.
 允许部分幽灵对你施加隐形束缚。尽管看不见实体，但它们依然能牢牢困住你。||如果被标红，这些拘束具会被替换为舒适的灵体束缚。
 - Allows some restraints to display text such as 'Prisoner' or 'Inmate.'
 允许一些拘束具印上例如“囚犯”的文字。
