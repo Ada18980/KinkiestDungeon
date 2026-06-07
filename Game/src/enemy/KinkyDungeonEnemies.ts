@@ -7061,13 +7061,17 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						KinkyDungeonTickBuffTag(enemy, "hit", 1);
 						if (restraintAdd && restraintAdd.length > 0) {
 							msgColor = "#ff8933";
-							bound += KDRunBondageResist(enemy, KDGetFaction(enemy), restraintAdd,(r) => {
+							bound += KDRunBondageResist(enemy, KDGetFaction(enemy), restraintAdd,(r, resist, ignored, power) => {
 								KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: enemy.x - 0.5, y: enemy.y - 0.5}, Color: KDBaseMint, Time: 2, Delay: 0});
+								let balancechange = KDChangeBalanceSrc(
+									enemy.id + "", "defend", "resist", -KDGetBalanceCost_BondageResist(resist, ignored, power), false, true
+								);
 								for (let rep of replace) {
 									if (rep.keyword == "RestraintAdded") rep.value = TextGet("KDRestraintBlockedItem");
 								}
 								if (!r)
-									KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), "#f0dc41", 1,
+									KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal", {
+										BalanceLost: Math.round(100 * balancechange)}), "#f0dc41", 1,
 										false, false, undefined, "Combat");
 								msgColor = "#f0dc41";
 								bound += 1;
@@ -9018,14 +9022,20 @@ function KDRunBondageResist (
 	enemy:                    entity,
 	faction:                  string,
 	restraintsToAdd:          {r: restraint, v: ApplyVariant, iv: string}[],
-	blockFunction:            (r?: any) => void,
+	blockFunction:            (r: restraint, resist: number, ignoredresist: number, power: number) => void,
 	restraintFromInventory?:  string[],
 	spell?:                   spell,
 	Lock?:                    string,
-	Keep?:                    boolean
+	Keep?:                    boolean,
+	ignoreResist?: number,
 ): { r:restraint, v: ApplyVariant, iv: string}[]
 {
 	let restraintblock = KDCalcRestraintBlock();
+	let blockignore: number = undefined;
+	if (ignoreResist) {
+		restraintblock = Math.max(0, restraintblock - ignoreResist);
+	}
+	let blockpower = restraintblock;
 	let restraintpower = 0;
 	for (let r of restraintsToAdd) {
 		if (r)
@@ -9091,7 +9101,8 @@ function KDRunBondageResist (
 				}
 				count += KDRestraint(r).protection;
 			}
-			blockFunction();
+			if (blockignore == undefined) blockignore = KDCalcRestraintBlockIgnore(ignoreResist);
+			blockFunction(undefined, blockpower, blockignore, restraintpower - protection);
 		} else {
 			for (let r of restraintsToAdd) {
 				let bb = 0;
@@ -9136,7 +9147,8 @@ function KDRunBondageResist (
 			}
 		}
 	} else {
-		blockFunction();
+		if (blockignore == undefined) blockignore = KDCalcRestraintBlockIgnore(ignoreResist);
+		blockFunction(undefined, blockpower, blockignore, restraintpower);
 	}
 
 	return added;

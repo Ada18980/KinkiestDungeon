@@ -2655,11 +2655,16 @@ function KDPlayerEffectRestrain (
 	}
 	if (restraintsToAdd.length > 0) {
 		if (allowBondageResist) {
-			let rests = KDRunBondageResist(undefined, faction, restraintsToAdd,(r) => {
+			let rests = KDRunBondageResist(undefined, faction, restraintsToAdd,(r, resist, ignored, power) => {
 				KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: player.x - 0.5, y: player.y - 0.5}, Color: KDBaseMint, Time: 2, Delay: 0});
-
+				let balancechange = KDChangeBalanceSrc(
+					spell.name || options?.enemy?.id, "defend", "resist", 
+					-KDGetBalanceCost_BondageResist(resist, ignored, power), false,
+					true
+				);
 				if (!r)
-					KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal"), KDBaseMint, 1, false, false, undefined, "Combat");
+					KinkyDungeonSendTextMessage(1, TextGet("KDBondageResistBlockTotal", {
+					BalanceLost: Math.round(100 * balancechange)}), KDBaseMint, 1, false, false, undefined, "Combat");
 			}, undefined, spell, Lock, options?.Keep);
 			KinkyDungeonSendEvent("boundBySpell", {player: KinkyDungeonPlayerEntity, restraintsAdded: rests});
 			return rests;

@@ -2059,7 +2059,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 			KinkyDungeonSendActionMessage(10, TextGet("KDStruggleBlocked")
 				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)),
 			KDBaseRed, 2, true);
-			KinkyDungeonLastAction = "Struggle";
+			KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 			KinkyDungeonSendEvent("struggle", {
 				restraint: data.restraint,
 				group: data.struggleGroup,
@@ -2283,7 +2283,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 							+ ".ogg");
 						KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
 							.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
-						KinkyDungeonLastAction = "Struggle";
+						KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 						KinkyDungeonSendEvent("struggle", {
 							restraint: data.restraint,
 							group: data.struggleGroup,
@@ -2317,7 +2317,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 					if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "NeedEdge" + typesuff)
 						.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
-					KinkyDungeonLastAction = "Struggle";
+					KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 					KinkyDungeonSendEvent("struggle", {
 						restraint: data.restraint,
 						group: data.struggleGroup,
@@ -2369,7 +2369,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 						}
 
 						if (KinkyDungeonHasStamina(-data.cost)) {
-							KinkyDungeonLastAction = "Struggle";
+							KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 							KinkyDungeonSendEvent("struggle", {
 								restraint: data.restraint,
 								group: data.struggleGroup,
@@ -2438,7 +2438,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 					if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "NeedEdge" + typesuff)
 						.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
-					KinkyDungeonLastAction = "Struggle";
+					KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 					KinkyDungeonSendEvent("struggle", {
 						restraint: data.restraint,
 						group: data.struggleGroup,
@@ -2473,7 +2473,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 					if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "Strict" + typesuff)
 						.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
-					KinkyDungeonLastAction = "Struggle";
+					KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 					KinkyDungeonSendEvent("struggle", {
 						restraint: data.restraint,
 						group: data.struggleGroup,
@@ -2586,7 +2586,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 
 						if (KinkyDungeonHasStamina(-data.cost)) {
-							KinkyDungeonLastAction = "Struggle";
+							KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 							KinkyDungeonSendEvent("struggle", {
 								restraint: data.restraint,
 								group: data.struggleGroup,
@@ -2639,7 +2639,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 							+ ".ogg");
 						KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
 							.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
-						KinkyDungeonLastAction = "Struggle";
+						KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 						KinkyDungeonSendEvent("struggle", {
 							restraint: data.restraint,
 							group: data.struggleGroup,
@@ -2891,7 +2891,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 					+ ".ogg");
 				KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
 					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), KDBaseRed, 2, true);
-				KinkyDungeonLastAction = "Struggle";
+				KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 				KinkyDungeonSendEvent("struggle", {
 					restraint: restraint,
 					group: struggleGroup,
@@ -2977,7 +2977,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 								+ ".ogg");
 							KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
 								.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), KDBaseRed, 2, true);
-							KinkyDungeonLastAction = "Struggle";
+							KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 							KinkyDungeonSendEvent("struggle", {
 								restraint: restraint,
 								group: struggleGroup,
@@ -2995,7 +2995,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 								+ ".ogg");
 							KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
 								.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), KDBaseRed, 2, true);
-							KinkyDungeonLastAction = "Struggle";
+							KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 							KinkyDungeonSendEvent("struggle", {
 								restraint: restraint,
 								group: struggleGroup,
@@ -3016,7 +3016,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 					// Replace with frustrated moan later~
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Barely")
 						.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), KDBaseRed, 2, true);
-					KinkyDungeonLastAction = "Struggle";
+					KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 					KinkyDungeonSendEvent("struggle", {
 						restraint: restraint,
 						group: struggleGroup,
@@ -3232,7 +3232,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 					struggleType: StruggleType,
 					result: Pass,
 				});
-				KinkyDungeonLastAction = "Struggle";
+				KinkyDungeonLastAction = "Struggle"; KDPauseBalance(5);
 				if (data.noise) {
 					KinkyDungeonMakeNoise(data.noise, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 				}

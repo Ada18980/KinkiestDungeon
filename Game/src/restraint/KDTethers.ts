@@ -289,6 +289,8 @@ function KDBreakAllLeashedTo(entity: entity, reason?: string) {
 	}
 }
 
+let KDLeashTugBalanceAmt = 0.34;
+
 function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, xTo?: number, yTo?: number): boolean {
 
 	if (Entity.player && KinkyDungeonFlags.get("pulled")) return false;
@@ -350,15 +352,21 @@ function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, x
 				}
 				if (Entity.player) {
 					if (KinkyDungeonCanStand() && !KDForcedToGround()) {
-						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KDGameData.SlowMoveTurns);
+						KDChangeBalanceSrc((leash.entity ? "e" + leash.entity : "") || (leash.restraintID ? "r" + leash.restraintID : ""), 
+						"leash", "tug", -KDLeashTugBalanceAmt, false, true);
 						KDChangeWill("leashtug", "restraint", "move", -KDLeashPullCost, false);
 					}
 				} else {
-					Entity.stun = Math.max(Entity.stun || 0, 2);
+					Entity.stun = Math.max(Entity.stun || 0, 3);
 				}
 
 				//return true;
-				if (Entity.player) KinkyDungeonSetFlag("leashtug", 3);
+				if (Entity.player) {
+					if (KinkyDungeonFlags.get("didLeashTug")) {
+						KinkyDungeonSetFlag("leashtug", 3);
+						KinkyDungeonSetFlag("didLeashTug", 5);
+					}
+				}
 				else KinkyDungeonSetEnemyFlag(Entity, "leashtug", 3);
 				exceeded = true;
 			}

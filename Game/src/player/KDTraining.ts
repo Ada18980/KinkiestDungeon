@@ -54,6 +54,22 @@ function KDGetBalanceCost(): number {
 	return KDGameData.HeelPowerEffective * (0.01*mult*5/(5+training) - (0.001));
 }
 
+/** 50 bondage resist halves the balance cost of resisting, per power */
+let KDBaseBondageResistBalanceFactor = 5;
+let KDBaseBondageResistBalanceAmount = 0.025;
+
+function KDGetBalanceCost_BondageResist(resist: number, ignored: number, power: number): number {
+	let numerator = Math.max(resist - ignored, 0);
+	let denominator = KDBaseBondageResistBalanceFactor + numerator;
+
+	let ratio = numerator / denominator;
+
+
+	power = Math.min(Math.max(0, power), 25);
+	if (power < 10) power = Math.ceil(power >= 1.1 ? power*0.33 + 6.67 : 2); // averages
+	return ratio * KDBaseBondageResistBalanceAmount * power;
+}
+
 function KDGetTrainingPercentage(name: string, data: KDTrainingRecord, player: entity, useMin: boolean = false, noSoftScale = false) {
 	if (!data) return 0;
 	let tt = (Math.max(0, data.turns_trained * 1.11

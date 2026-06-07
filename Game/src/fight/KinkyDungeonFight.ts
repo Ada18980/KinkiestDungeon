@@ -582,9 +582,10 @@ function KDPlayerBlockPenalty() {
 function KDRestraintBlockPenalty() {
 	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 	let RestraintBlockPenalty = .1 * KinkyDungeonSlowLevel;
+	if (KDGameData.KneelTurns > 0) RestraintBlockPenalty = Math.max(RestraintBlockPenalty, 0.5);
 	if (KinkyDungeonIsArmsBound(false, true)) RestraintBlockPenalty += .25;
 	if (KinkyDungeonStatFreeze) RestraintBlockPenalty += 0.8;
-	if (KinkyDungeonStatBlind) RestraintBlockPenalty += 0.4;
+	if (KinkyDungeonStatBlind) RestraintBlockPenalty += 0.33;
 
 	RestraintBlockPenalty += KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockPenalty");
 
@@ -599,6 +600,13 @@ function KDCalcRestraintBlock() {
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockProtected");
 
 	return Math.max(val, 0);
+}
+function KDCalcRestraintBlockIgnore(extraignore?: number) {
+	let RestraintBlockIgnore = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlockIgnore");
+	if (extraignore) RestraintBlockIgnore += extraignore;
+	let RestraintBlock = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RestraintBlock");
+
+	return Math.max(0, Math.min(RestraintBlockIgnore, RestraintBlock));
 }
 
 function KinkyDungeonPlayerEvasion(Event?: boolean): number {

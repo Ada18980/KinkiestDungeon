@@ -99,6 +99,7 @@ Must do
 - Hovering over NPC drawing in dialogue now zooms in on the character model
 - Map goals now don't select friendly faction targets to defeat in order to pass the level
 - Added filters for rarities (Divine, Angelic, etc) to the inventory
+- Resisting bondage now reduces your balance
 
 Assets:
 - Added doll body type

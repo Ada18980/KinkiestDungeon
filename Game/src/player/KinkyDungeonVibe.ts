@@ -196,6 +196,7 @@ let KDToggles = {
 	FlashingWarning: true,
 	HypnoOverlay: true,
 	WarningSound: true,
+	ShowDefensiveStats: true,
 };
 
 
@@ -302,6 +303,7 @@ let KDToggleCategories = {
 	AutoWaitDelayed: "UI",
 	
 	WarningSound: "UI",
+	ShowDefensiveStats: "UI",
 };
 
 function KDStopAllVibeSounds(Exceptions?: string[]) {

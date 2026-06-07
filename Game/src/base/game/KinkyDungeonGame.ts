@@ -2718,7 +2718,7 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 				result = "capture";
 			}
 
-			KinkyDungeonLastAction = "Attack";
+			KinkyDungeonLastAction = "Attack"; KDPauseBalance(5);
 			KDGameData.ConfirmAttack = false;
 		}
 	} else {
@@ -3167,7 +3167,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 					}
 				}
 				if (!(KDGameData.KneelTurns > 0))
-					KDGameData.BalancePause = true;
+					KDPauseBalance(5);
 			} else {
 				//KDChangeBalance((KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 				KDGameData.MovePoints = Math.min(KDGameData.MovePoints + 1, 0);

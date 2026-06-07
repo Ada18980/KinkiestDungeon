@@ -295,7 +295,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 		apply: (enemy, _data) => {
 			if (enemy.aware)
 				KinkyDungeonSendDialogue(enemy,
-					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandAssault")
+					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandAssault", KDGetGenericDialogueParams(KDPlayer(), enemy))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 					7, 7, false, true);
 		},
@@ -357,7 +357,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 		apply: (enemy, _data) => {
 			if (enemy.aware || enemy.vp > 0.1)
 				KinkyDungeonSendDialogue(enemy,
-					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandDefend")
+					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandDefend", KDGetGenericDialogueParams(KDPlayer(), enemy))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 					7, 7, false, true);
 		},
@@ -424,7 +424,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 		apply: (enemy, _data) => {
 			if (enemy.aware)
 				KinkyDungeonSendDialogue(enemy,
-					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandBlock")
+					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandBlock", KDGetGenericDialogueParams(KDPlayer(), enemy))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 					7, 7, false, true);
 		},
@@ -645,7 +645,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 		apply: (enemy, _data) => {
 			if (enemy.aware || enemy.vp > 0.1) {
 				KinkyDungeonSendDialogue(enemy,
-					TextGet((KDHelpless(enemy) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + Math.floor(KDRandom() * 3))
+					TextGet((KDHelpless(enemy) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + Math.floor(KDRandom() * 3), KDGetGenericDialogueParams(KDPlayer(), enemy))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 					6, 8, false, true);
 				if (KDEnemyCanTalk(enemy) && (KDHelpless(enemy) || KDBoundEffects(enemy) > 3)) {
@@ -709,7 +709,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 		apply: (enemy, _data) => {
 			if ((enemy.aware || enemy.vp > 0.1) && KDRandom() < 0.45)
 				KinkyDungeonSendDialogue(enemy,
-					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandDefend")
+					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandDefend", KDGetGenericDialogueParams(KDPlayer(), enemy))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 					7, 7, false, true);
 
@@ -826,7 +826,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 		apply: (enemy, _data) => {
 			if ((enemy.aware || enemy.vp > 0.1) && KDRandom() < 0.45)
 				KinkyDungeonSendDialogue(enemy,
-					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandDefend")
+					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandDefend", KDGetGenericDialogueParams(KDPlayer(), enemy))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 					7, 7, false, true);
 
@@ -989,7 +989,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 			if ((enemy.aware || enemy.vp > 0.1) && KDRandom() < 0.45)
 				KinkyDungeonSendDialogue(enemy,
 					TextGet("KinkyDungeonRemindJail"
-						+ (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Leash")
+						+ (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Leash", KDGetGenericDialogueParams(KDPlayer(), enemy))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 						KDGetColor(enemy),
 					7, 7, false, true);

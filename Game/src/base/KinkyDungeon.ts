@@ -503,7 +503,7 @@ interface KDGameDataBase {
 	Shield:				number,
 	ShieldDamage:			number,
 	Balance:			number,
-	BalancePause:			boolean,
+	BalancePause:			number,
 	NPCRestraints:			Record<string, Record<string, NPCRestraint>>
 	Collection:			Record<string, KDCollectionEntry>,
 	CollectionSorted:		KDCollectionEntry[],
@@ -635,7 +635,7 @@ let KDGameDataBase: KDGameDataBase = {
 	RevealedTiles: {},
 	RevealedFog: {},
 	Balance: 1,
-	BalancePause: false,
+	BalancePause: 0,
 	HeelPowerEffective: 1,
 	HeelPower: 1,
 	SlowMoveTurns: 0,
@@ -3051,7 +3051,7 @@ function KinkyDungeonRun() {
 					if (CommonTime() > KinkyDungeonSleepTime) {
 						KDSendInput("tick", {delta: 1}, false, true);
 						KDGameData.PlaySelfTurns -= 1;
-						KDGameData.BalancePause = true;
+						KDPauseBalance(5);
 
 						KDUpdateWaitTime((KinkyDungeonFlags.get("PlayerOrgasm") ? KinkyDungeonOrgasmTime : KinkyDungeonPlaySelfTime) * (0.25 + KDAnimSpeed * 0.75));
 					}
@@ -3061,14 +3061,14 @@ function KinkyDungeonRun() {
 				} else if (KinkyDungeonStatFreeze > 0) {
 					if (CommonTime() > KinkyDungeonSleepTime) {
 						KinkyDungeonStatFreeze -= 1;
-						KDGameData.BalancePause = true;
+						KDPauseBalance(5);
 						KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
 						KDUpdateWaitTime(KinkyDungeonFreezeTime * (0.25 + KDAnimSpeed * 0.75));
 					}
 				} else if (KDGameData.SlowMoveTurns > 0) {
 					if (CommonTime() > KinkyDungeonSleepTime) {
 						KDGameData.SlowMoveTurns -= 1;
-						KDGameData.BalancePause = true;
+						KDPauseBalance(5);
 						KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
 						KDUpdateWaitTime(KinkyDungeonStunTime * (0.35 + KDAnimSpeed * 0.65));
 					}

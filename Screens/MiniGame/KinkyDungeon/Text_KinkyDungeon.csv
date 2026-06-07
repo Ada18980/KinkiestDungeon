@@ -28011,7 +28011,7 @@ KinkyDungeonSpellMiss,You dodge the EnemyName!
 
 KinkyDungeonSpell,Spell
 
-KDBondageResistBlockTotal,"You resist being bound!"
+KDBondageResistBlockTotal,"You resist being bound! (${BalanceLost}% balance)"
 
 KinkyDungeonStatSelfBondage,"Self Bondage Enthusiast"
 KinkyDungeonStatDescSelfBondage,"Start with a basic self-bondage kit."
@@ -33851,3 +33851,8 @@ RestraintPuppetStringsDesc2,Tethers you to nearby dolls and puppet strings if yo
 rDollNotification,"It looks like you selected the Doll species perk\nHowever, your character does not have a doll body equipped.\nWould you like to fix that?"
 dYes,(Yes)
 dNo,(No)
+
+KinkyDungeonStatKnockedDown,On the ground! Bondage Resist reduced by 50%
+KinkyDungeonStatLowBalance,Your balance is low! Consider standing in place to restore it.
+
+KDToggleShowDefensiveStats,Always show defense in buff bar

@@ -763,10 +763,10 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAl
 	)) {
 		if ((KDGameData.HeelPowerEffective > 0 || data.type == "plush") && data.knockbackTypes.includes(data.type)) {
 			let amt = data.dmg;
-			KDChangeBalanceSrc(data.type, "knockback", "dmg", (KDBaseBalanceDmgLevel + KDGameData.HeelPowerEffective) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt*KDFitnessMult(), true);
+			KDChangeBalanceSrc(data.type, "knockback", "dmg", (KDBaseBalanceDmgLevel + KDGameData.HeelPowerEffective) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt*KDFitnessMult(), true, true);
 		} else if (data.knockbackTypesStrong.includes(data.type)) {
 			let amt = data.dmg;
-			KDChangeBalanceSrc(data.type, "knockback", "dmg", (KDBaseBalanceDmgLevel + KDGameData.HeelPowerEffective) / KDBaseBalanceDmgLevel * -KDBalanceDmgMult() * amt*KDFitnessMult(), true);
+			KDChangeBalanceSrc(data.type, "knockback", "dmg", (KDBaseBalanceDmgLevel + KDGameData.HeelPowerEffective) / KDBaseBalanceDmgLevel * -KDBalanceDmgMult() * amt*KDFitnessMult(), true, true);
 		}
 	}
 
@@ -1327,8 +1327,8 @@ function KDChangeWill(src: string, type: string, trig: string, Amount: number, N
 }
 
 
-function KDChangeBalanceSrc(src: string, type: string, trig: string, Amount: number, NoFloater: boolean) {
-	if (KinkyDungeonStatsChoice.get("ClassicHeels")) return 0;
+function KDChangeBalanceSrc(src: string, type: string, trig: string, Amount: number, NoFloater: boolean, allowFall?: boolean) {
+	if (KinkyDungeonStatsChoice.get("ClassicHeels") && src == "heels" && Amount < 0) return 0;
 	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
@@ -1353,7 +1353,7 @@ function KDChangeBalanceSrc(src: string, type: string, trig: string, Amount: num
 	if (!KDGameData.Balance) KDGameData.Balance = 0;
 	let orig = KDGameData.Balance;
 	KDGameData.Balance = Math.min(1, Math.max(0, KDGameData.Balance + Amount));
-	if (Amount < 0) KDGameData.BalancePause = true;
+	if (Amount < 0) KDPauseBalance(3 + Math.min(10, Math.floor(-Amount * 10)));
 
 	data.amountChanged = KDGameData.Balance - orig;
 	KinkyDungeonSendEvent("afterChangeBalance", data);
@@ -1363,11 +1363,15 @@ function KDChangeBalanceSrc(src: string, type: string, trig: string, Amount: num
 		KDOrigBalance = Math.floor(KDGameData.Balance * 100);
 	}
 
+	if (KDGameData.Balance <= 0 && allowFall) {
+		KDTrip(1);
+	}
 
 	if (isNaN(KDGameData.Balance)) {
 		console.trace();
 		KDGameData.Balance = 0;
 	}
+	return data.amountChanged;
 }
 
 function KDChangeCharge(src: string, type: string, trig: string, Amount: number, NoFloater?: boolean) {
@@ -1844,6 +1848,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			auraSprite: "NoWP",
 			type: "EvasionPenalty",
 			power: 1,
+			flashing: true,
 		});
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "NoWP2",
@@ -1864,12 +1869,17 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	KinkyDungeonStatBind = Math.max(0, KinkyDungeonStatBind - delta);
 
 	if (delta > 0) {
+		//@ts-ignore
+		if (KDGameData.BalancePause == true) {
+			KDGameData.BalancePause = 1;
+		}
 		if (!KDGameData.BalancePause)
 			KDChangeBalanceSrc("player", "balance", "tick", (KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 		else {
-			KDChangeBalanceSrc("player", "balance", "tick", (KDGameData.KneelTurns > 0 ? 0.015 : 0.01) * KDGetBalanceRate()*delta, true);
+			KDChangeBalanceSrc("player", "balance", "tick", (5 / (10 + KDGameData.BalancePause))
+				* (KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 		}
-		KDGameData.BalancePause = false;
+		KDGameData.BalancePause = Math.max(0, KDGameData.BalancePause-delta);
 	}
 
 	KinkyDungeonCapStats();
@@ -2365,7 +2375,7 @@ function KinkyDungeonDoTryOrgasm(Bonus?: number, Auto?: number) {
 		KinkyDungeonAlert = Math.max(KinkyDungeonAlert || 0, data.alertRadius); // Alerts nearby enemies because of your moaning~
 		KDGameData.PlaySelfTurns = data.stunTime;
 		// Balance
-		KDChangeBalanceSrc(data.auto ? "auto" : "player", "orgasm", "tryOrgasm", (KDBaseBalanceDmgLevel + KDGameData.HeelPowerEffective) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 4*KDFitnessMult(), true);
+		KDChangeBalanceSrc(data.auto ? "auto" : "player", "orgasm", "tryOrgasm", (KDBaseBalanceDmgLevel + KDGameData.HeelPowerEffective) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 4*KDFitnessMult(), true, true);
 		KinkyDungeonSendEvent("orgasm", data);
 
 		KDAddDenial(KDPlayer(), KDDenialFromOrgasm);
@@ -2630,4 +2640,8 @@ function KDAddDenial(entity: entity, amount: number) {
 		KinkyDungeonExpireBuff(entity, "Denial");
 	}
 	
+}
+
+function KDPauseBalance(turns: number) {
+	KDGameData.BalancePause = Math.max((KDGameData.BalancePause || 0), turns);
 }

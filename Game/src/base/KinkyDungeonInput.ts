@@ -33,7 +33,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		let entity = KinkyDungeonEntityAt(data.tx, data.ty);
 		if (entity?.id == data.id) {
 			KDDoCapture(entity, 0, data.noadvance, data.skip);
-			KinkyDungeonLastAction = "Attack";
+			KinkyDungeonLastAction = "Attack"; KDPauseBalance(5);
 			KinkyDungeonAdvanceTime(1);
 		}
 		return "";
@@ -53,7 +53,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		let entity = KinkyDungeonEntityAt(data.tx, data.ty);
 		if (entity?.id == data.id) {
 			KDDoAttack(entity, data.teasesub, data.attackCost, data.skip);
-			KinkyDungeonLastAction = "Attack";
+			KinkyDungeonLastAction = "Attack"; KDPauseBalance(5);
 			KinkyDungeonAdvanceTime(1);
 		}
 		return "";

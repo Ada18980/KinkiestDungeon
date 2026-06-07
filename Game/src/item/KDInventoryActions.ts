@@ -715,7 +715,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 				KDGameData.InventoryAction = "";
 				KDGameData.InventoryActionContainer = [];
-				KinkyDungeonLastAction = "Cast";
+				KinkyDungeonLastAction = "Cast"; KDPauseBalance(5);
 				KinkyDungeonAdvanceTime(1, true, true);
 			}
 		},

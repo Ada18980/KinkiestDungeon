@@ -2657,14 +2657,11 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 		};
 	}
 
-	if (KDToggleShowAllBuffs) {
-
-
-
-		//}
+	
+	if (KDToggleShowAllBuffs || KDToggles.ShowDefensiveStats) {
 		let evasion = KinkyDungeonPlayerEvasion();
 		let block = KinkyDungeonPlayerBlock();
-		//if (evasion != 1.0) {
+
 		statsDraw.evasion = {
 			text: TextGet("StatEvasion")
 				.replace("Percent", ("") + Math.round((1 - evasion) * 100))
@@ -2675,6 +2672,8 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 			countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? KDBaseWhite : KDBaseRed),
 			category: "info", color: KDBaseWhite, bgcolor: KDBaseBlack, priority: 8
 		};
+		//}
+		
 		statsDraw.block = {
 			text: TextGet("StatBlock")
 				.replace("Percent", ("") + Math.round((1 - block) * 100))
@@ -2687,7 +2686,27 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 		};
 		//}
 	}
+		
+		//}
+		
+		
 
+	if (KDGameData.KneelTurns > 0) {
+		statsDraw.lowbalance = {
+			text: TextGet("KinkyDungeonStatKnockedDown"),
+			icon: "infoKnockedDown",
+			flashing: true,
+			category: "status", color: KDBaseWhite, bgcolor: KDBaseBlack, priority: -50
+		};
+	} else
+	if (KDGameData.Balance < 0.5) {
+		statsDraw.lowbalance = {
+			text: TextGet("KinkyDungeonStatLowBalance"),
+			icon: "infoLowBalance",
+			flashing: true,
+			category: "status", color: KDBaseWhite, bgcolor: KDBaseBlack, priority: -50
+		};
+	}
 
 
 
@@ -2759,7 +2778,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 		statsDraw.b_blind = {text: TextGet("KDStatFreeEyes"), category: "status", icon: "status/freeEyes", color: KDBaseNeon, bgcolor: "#333333", priority: 8};
 	}
 	if (KDGameData.MovePoints < 0) {
-		statsDraw.b_speed = {text: TextGet("KDStatStun"), category: "status", icon: "boundStun", color: KDBaseRed, bgcolor: "#333333", priority: 9};
+		statsDraw.b_speed = {text: TextGet("KDStatStun"), category: "status", icon: "boundStun", color: KDBaseRed, bgcolor: "#333333", priority: 9, flashing: true};
 	} else if (KinkyDungeonSlowLevel > 9) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedImmobile"), category: "status", icon: "boundImmobile", color: KDBaseRed, bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel > 3) {
