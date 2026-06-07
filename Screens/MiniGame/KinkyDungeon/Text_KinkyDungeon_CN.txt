@@ -49745,6 +49745,8 @@ EnemyName 深呼吸，让你周围的空气变得寒冷...
 暗影泡泡
 - The projectile explodes into tight shadow latex, stretching all across your body!
 射弹爆炸成紧密的暗影乳胶，伸展到你的全身！
+# :: KinkyDungeonSpellShadowBubbleBind
+# :: KinkyDungeonSpellShadowBubbleDamage
 - The dragon dances through the shadows!
 龙在阴影中舞动！
 
