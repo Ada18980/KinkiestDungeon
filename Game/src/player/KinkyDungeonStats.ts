@@ -1873,13 +1873,14 @@ function KinkyDungeonUpdateStats(delta: number): void {
 		if (KDGameData.BalancePause == true) {
 			KDGameData.BalancePause = 1;
 		}
-		if (!KDGameData.BalancePause)
+		if (!KDGameData.BalancePause && !KDGameData.BalancePauseImm)
 			KDChangeBalanceSrc("player", "balance", "tick", (KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 		else {
-			KDChangeBalanceSrc("player", "balance", "tick", (5 / (10 + KDGameData.BalancePause))
+			KDChangeBalanceSrc("player", "balance", "tick", (KDGameData.BalancePauseImm ? 0.01 : (5 / (10 + KDGameData.BalancePause)))
 				* (KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 		}
-		KDGameData.BalancePause = Math.max(0, KDGameData.BalancePause-delta);
+		if (KDGameData.BalancePauseImm) KDGameData.BalancePauseImm = false;
+		else KDGameData.BalancePause = Math.max(0, KDGameData.BalancePause-delta);
 	}
 
 	KinkyDungeonCapStats();
@@ -2644,4 +2645,5 @@ function KDAddDenial(entity: entity, amount: number) {
 
 function KDPauseBalance(turns: number) {
 	KDGameData.BalancePause = Math.max((KDGameData.BalancePause || 0), turns);
+	KDGameData.BalancePauseImm = true;
 }

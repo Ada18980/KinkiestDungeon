@@ -59,8 +59,8 @@ let KDBaseBondageResistBalanceFactor = 5;
 let KDBaseBondageResistBalanceAmount = 0.025;
 
 function KDGetBalanceCost_BondageResist(resist: number, ignored: number, power: number): number {
-	let numerator = Math.max(resist - ignored, 0);
-	let denominator = KDBaseBondageResistBalanceFactor + numerator;
+	let numerator = KDBaseBondageResistBalanceFactor;
+	let denominator = KDBaseBondageResistBalanceFactor + Math.max(resist - ignored, 0);
 
 	let ratio = numerator / denominator;
 

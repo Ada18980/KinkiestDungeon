@@ -4868,8 +4868,8 @@ function KDLinkUnder (
 					}
 				}
 				if (!end) {
-					console.log("There was an error! Duplicated restraint");
-					KinkyDungeonSendTextMessage(10, `Error adding ${lk.name}, ${lk.curse}. Please report.`, KDBaseWhite, 12);
+					//console.log("There was an error! Duplicated restraint");
+					//KinkyDungeonSendTextMessage(10, `Error adding ${lk.name}, ${lk.curse}. Please report.`, KDBaseWhite, 12);
 				}
 			}
 

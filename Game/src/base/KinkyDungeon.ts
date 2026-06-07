@@ -504,6 +504,7 @@ interface KDGameDataBase {
 	ShieldDamage:			number,
 	Balance:			number,
 	BalancePause:			number,
+	BalancePauseImm:			boolean,
 	NPCRestraints:			Record<string, Record<string, NPCRestraint>>
 	Collection:			Record<string, KDCollectionEntry>,
 	CollectionSorted:		KDCollectionEntry[],
@@ -636,6 +637,7 @@ let KDGameDataBase: KDGameDataBase = {
 	RevealedFog: {},
 	Balance: 1,
 	BalancePause: 0,
+	BalancePauseImm: false,
 	HeelPowerEffective: 1,
 	HeelPower: 1,
 	SlowMoveTurns: 0,
