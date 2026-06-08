@@ -1984,23 +1984,7 @@ function KinkyDungeonHandleHUD() {
 
 				return true;
 			}
-			if (MouseIn(1100, 300, 300, 64)) {
-
-				KDMovePlayer(KDMapData.EndPosition.x, KDMapData.EndPosition.y, false);
-				KDMapData.KeyQuota=0;
-				KDMapData.ChestQuota=0;
-				for (let enemy of KDMapData.Entities) {
-					if (KDEnemyHasFlag(enemy, "killtarget")) {
-						KinkyDungeonSetEnemyFlag(enemy, "killtarget", 0);
-					}
-				}
-				KDMapData.TrapQuota=0;
-				KDMapData.QuestQuota=0;
-				KDGameData.DragonCaptured = true;
-				KinkyDungeonSetFlag("BossUnlocked", -1);
-				KinkyDungeonUpdateLightGrid = true;
-				return true;
-			} else
+			
 			if (MouseIn(1100, 370, 300, 64)) {
 				KDGameData.PrisonerState = 'parole';
 				return true;

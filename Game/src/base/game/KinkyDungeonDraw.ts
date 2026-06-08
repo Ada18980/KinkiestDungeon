@@ -2067,7 +2067,27 @@ function KinkyDungeonDrawGame() {
 					DrawButtonVis(1600, 100, 100, 64, "Ally", KDBaseWhite, "");
 					DrawButtonVis(1700, 100, 100, 64, "Shop", KDBaseWhite, "");
 					DrawButtonVis(1500, 260, 300, 64, "Add to inventory", KDBaseWhite, "");
-					DrawButtonVis(1100, 300, 300, 64, "Teleport to stairs", KDBaseWhite, "");
+					DrawButtonKDEx("debugtelestairs", () => {
+						KDMapData.KeyQuota=0;
+						KDMapData.ChestQuota=0;
+						for (let enemy of KDMapData.Entities) {
+							if (KDEnemyHasFlag(enemy, "killtarget")) {
+								KinkyDungeonSetEnemyFlag(enemy, "killtarget", 0);
+							}
+						}
+						if (KDMapData.EndPosition.x < 2) KDMapData.EndPosition.x = 2;
+						if (KDMapData.EndPosition.y < 2) KDMapData.EndPosition.x = 2;
+						if (KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(KDMapData.EndPosition.x, KDMapData.EndPosition.y))) {
+							KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, 's');
+						}
+						KDMovePlayer(KDMapData.EndPosition.x, KDMapData.EndPosition.y, false);
+						KDMapData.TrapQuota=0;
+						KDMapData.QuestQuota=0;
+						KDGameData.DragonCaptured = true;
+						KinkyDungeonSetFlag("BossUnlocked", -1);
+						KinkyDungeonUpdateLightGrid = true;
+						return true;
+					}, true, 1100, 300, 300, 64, "Teleport to stairs", KDBaseWhite, "");
 					DrawButtonVis(1500, 320, 300, 64, "Get save code", KDBaseWhite, "");
 					DrawButtonVis(1100, 370, 300, 64, "Enter parole mode", KDBaseWhite, "");
 					DrawButtonKDEx("debugDefeat", (_bdata) => {

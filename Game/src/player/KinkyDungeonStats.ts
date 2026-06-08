@@ -1327,7 +1327,7 @@ function KDChangeWill(src: string, type: string, trig: string, Amount: number, N
 }
 
 
-function KDChangeBalanceSrc(src: string, type: string, trig: string, Amount: number, NoFloater: boolean, allowFall?: boolean) {
+function KDChangeBalanceSrc(src: string, type: string, trig: string, Amount: number, NoFloater: boolean, allowFall?: boolean, forcePauseAmt?: number) {
 	if (KinkyDungeonStatsChoice.get("ClassicHeels") && src == "heels" && Amount < 0) return 0;
 	if (isNaN(Amount)) {
 		console.trace();
@@ -1353,7 +1353,7 @@ function KDChangeBalanceSrc(src: string, type: string, trig: string, Amount: num
 	if (!KDGameData.Balance) KDGameData.Balance = 0;
 	let orig = KDGameData.Balance;
 	KDGameData.Balance = Math.min(1, Math.max(0, KDGameData.Balance + Amount));
-	if (Amount < 0) KDPauseBalance(3 + Math.min(10, Math.floor(-Amount * 10)));
+	if (Amount < 0) KDPauseBalance(forcePauseAmt ? forcePauseAmt : (3 + Math.min(10, Math.floor(-Amount * 10))));
 
 	data.amountChanged = KDGameData.Balance - orig;
 	KinkyDungeonSendEvent("afterChangeBalance", data);
