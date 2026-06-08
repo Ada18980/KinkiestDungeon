@@ -44151,7 +44151,7 @@ Kjus眼5
 你躲开了 EnemyName！
 
 
-- You resist being bound!
+- You resist being bound! (${BalanceLost}% balance)
 你抗拒被束缚！
 
 - Self Bondage Enthusiast
@@ -53475,3 +53475,8 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - It looks like you selected the Doll species perk\nHowever, your character does not have a doll body equipped.\nWould you like to fix that?
 # - (Yes)
 # - (No)
+
+# - On the ground! Bondage Resist reduced by 50%
+# - Your balance is low! Consider standing in place to restore it.
+
+# - Always show defense in buff bar
