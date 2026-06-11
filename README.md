@@ -53,8 +53,6 @@ After making any changes to the images in the game, you will need to repack the 
 
 It should take anywhere from 4-10 minutes on a full repack, or less if there aren't major changes to the files.
 
-Some processors may not have avx2, in which case rename the wxpack.exe to something else and try renaming wxpack_avx.exe to wxpack.exe.
-
 ## Run
 You can start the server with the `npm run serve` command, or with docker:
 ```bash
