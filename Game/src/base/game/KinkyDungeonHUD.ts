@@ -81,6 +81,9 @@ let KDMinBuffX = 0;
 let KDMinBuffXTarget = 1000;
 let KDToggleShowAllBuffs = false;
 
+let KinkyDungeonSelectedBuff = "";
+let KinkyDungeonSelectedBuffEntity = null;
+
 let KDFocusControls = "";
 let KDFocusControlButtons = {
 	"AutoPass": {
@@ -3053,12 +3056,18 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerDenied"), X3, 900 - i * 35, 260, KDBasePink, "#333333"); i++;
 	}
 
+	//KinkyDungeonSelectedBuff = "";
+
 	for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
 		if ((b.aura || b.labelcolor) && b.duration > 0 && !b.hide) {
 			let count = b.maxCount > 1 ? b.maxCount - (b.currentCount ? b.currentCount : 0) : 0;
 			let pri = 0;
 			if (b.duration) pri += Math.min(90, b.duration);
 			if (count) pri += Math.min(10, count);
+			
+			KinkyDungeonSelectedBuff = b.id;
+			KinkyDungeonSelectedBuffEntity = KDPlayer();
+			
 			let t = TextGet("KinkyDungeonBuff" + (b.desc || b.id), KDGetGenericDialogueParams(KDPlayer(), null)) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration >= 1 && b.duration < 1000) ? ` (${b.duration})` : "");
 			if (b.buffTextReplace) {
 				for (let replace of Object.entries(b.buffTextReplace)) {

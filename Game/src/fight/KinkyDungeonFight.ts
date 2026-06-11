@@ -1891,7 +1891,8 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 		let b = KDMapData.Bullets[E];
 		if (CancelUpdates.get(b)) continue;
 
-		if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player")) || (!Allied && !(b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player")))) {
+		if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player"))
+			|| (!Allied && !(b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player")))) {
 			let d = delta;
 			let first = true;
 			let justBorn = false;

@@ -1257,6 +1257,7 @@ function KinkyDungeonDrawGame() {
 							aura_scale_max += 1;
 						}
 					}
+					let alpha = 1;
 					if (aura_scale_max > 0) {
 						let buffs = Object.values(KinkyDungeonPlayerBuffs);
 						buffs = buffs.sort((a, b) => {return b.duration - a.duration;});
@@ -1264,12 +1265,16 @@ function KinkyDungeonDrawGame() {
 							if (b && b.aura && b.duration > 0 && !(b.auraSprite == "Null")) {
 								aura_scale += 1/aura_scale_max;
 								let s = aura_scale;
+								if (KinkyDungeonSelectedBuffEntity == KDPlayer() && b.id == KinkyDungeonSelectedBuff) {
+									alpha = (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed || 0.25)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed || 0.25)) % 1000 / 1000)) : ((performance.now() * (KDAnimSpeed || 0.25)) % 1000 / 1000)) + 0.3);
+								}
 								if (b.noAuraColor) {
 									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "PlayerAura") + ".png",
 										(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
 											zIndex: 2.1,
+											alpha: alpha,
 											//alpha: KDMousePlayableAreaStatusFade,
 										});
 								} else {
@@ -1279,6 +1284,7 @@ function KinkyDungeonDrawGame() {
 										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
 											tint: string2hex(b.aura),
 											zIndex: 2.1,
+											alpha: alpha,
 											//alpha: KDMousePlayableAreaStatusFade
 										});
 								}
@@ -2473,6 +2479,9 @@ function KinkyDungeonDrawGame() {
 		KDDrewEnemyTooltip = "";
 	}
 	KDDrewEnemyTooltipThisFrame = "";
+
+	KinkyDungeonSelectedBuff = "";
+	KinkyDungeonSelectedBuff = null;
 
 }
 
@@ -4987,6 +4996,7 @@ let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, tex
 			}))};
 		},
 	'G': () => {return {color: "#69bf3e", noInspect: true, text: "G"};},
+	'g': () => {return {color: "#aaaaaa", noInspect: true, text: "g", desc: TextGet("KDTileTooltipDescg")};},
 	'B': () => {return {color: "#4444ff", noInspect: true, text: "B"};},
 	'@': () => {return {color: KDBaseWhite, noInspect: true, text: "@"};},
 	'b': () => {return {color: "#aaaaaa", noInspect: true, text: "b"};},

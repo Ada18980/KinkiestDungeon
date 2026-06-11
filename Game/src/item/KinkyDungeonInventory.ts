@@ -1055,6 +1055,11 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 					|| raritystring.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 					|| KDGetItemName(preview.item).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 					|| (item.type == Weapon && TextGet("KinkyDungeonDamageType" + KDWeapon(item)?.type).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase()))
+					|| (item.type == Weapon && KDWeapon(item).tags?.some((tag) => {
+						return tag.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
+					}))|| (item.type == Consumable && KDConsumable(item).tags?.some((tag) => {
+						return tag.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
+					}))
 					|| ((item.type == LooseRestraint || item.type == Restraint) && restraint?.shrine?.some((tag) => {
 						return !InvFilterShrineBlacklist.includes(tag) && tag.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase());
 					}))

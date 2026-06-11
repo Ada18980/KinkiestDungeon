@@ -105,6 +105,8 @@ interface consumable extends NamedAndTyped {
 	type: string,
 	/** used solely for shop */
 	uniqueTags?: string[],
+	/** For info */
+	tags?: string[],
 	shop?: boolean,
 	spell?: string,
 	potion?: boolean,

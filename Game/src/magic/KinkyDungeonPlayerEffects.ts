@@ -2561,7 +2561,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		const healPower = Math.max(0, (playerEffect?.power ?? spell?.power ?? 1) * (playerEffect?.mult ?? 1));
 		const missing = Math.max(0, KinkyDungeonStatWillMax - KinkyDungeonStatWill);
-		const amt = Math.min(healPower, missing, buff.power);
+		const amt = Math.min(healPower, buff.power);
 
 		if (amt > 0) {
 			KDChangeWill("lightheal", "heal", spell?.name || "LightHealDamageWP", amt, false);

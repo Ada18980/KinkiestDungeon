@@ -57,7 +57,7 @@ let KinkyDungeonConsumables: Record<string, consumable> = {
 
 	"DollID" : {name: "DollID", rarity: 0, shop: false,
 		maxInventory: 20, type: "dollID", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
-	"KeyCard" : {name: "KeyCard", rarity: 1, shop: false,
+	"KeyCard" : {name: "KeyCard", tags: ["key"], rarity: 1, shop: false,
 		maxInventory: 20, type: "KeyCard", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
 	"CuffKeys" : {name: "CuffKeys", sneakChance: 0.1, rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
 	"Pick" : {name: "Pick", sneakChance: 0.15, rarity: 0, sub: 0.25, shop: false,
@@ -83,10 +83,10 @@ let KinkyDungeonConsumables: Record<string, consumable> = {
 
 // Separate for organizational purposes
 let KDCookies: Record<string, consumable> = {
-	"Cookie" : {name: "Cookie", rarity: 0, food: true, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
-	"Brownies" : {name: "Brownies", rarity: 1, food: true, shop: true, type: "restore", wp_instant: 3.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 4, gagMax: 0.59, duration: 0, sfx: "Cookie"},
-	"Donut" : {name: "Donut", rarity: 0, shop: true, food: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
-	"CookieJailer" : {name: "CookieJailer", isSubby: true, food: true, rarity: 0, shop: true,
+	"Cookie" : {name: "Cookie", tags: ["food", "will"], rarity: 0, food: true, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
+	"Brownies" : {name: "Brownies", tags: ["food", "will"], rarity: 1, food: true, shop: true, type: "restore", wp_instant: 3.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 4, gagMax: 0.59, duration: 0, sfx: "Cookie"},
+	"Donut" : {name: "Donut", tags: ["food", "will"], rarity: 0, shop: true, food: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
+	"CookieJailer" : {name: "CookieJailer", tags: ["food", "will", "sub"], isSubby: true, food: true, rarity: 0, shop: true,
 		type: "restore", wp_instant: 1.5, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true,
 		delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie",
 		sideEffects: ["subAdd"],
