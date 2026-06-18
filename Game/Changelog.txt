@@ -103,6 +103,7 @@ Must do
 
 Assets:
 - Added doll body type
+- Added doll arm (left) and (right)
 - Added bunny ears
 - Kjus mouth now has a normal smile, the :3 smile is in new version that is the "beast" version
 

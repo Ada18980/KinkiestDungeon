@@ -22397,6 +22397,8 @@ m_OneBarPrisonLatex_l_OneBarTop,OneBarTop
 m_OneBarPrisonLatex_l_OneBarFront,OneBarFront
 m_OneBarPrisonLatex_l_OneBarBack,OneBarBack
 
+m_DollArmLeft,Doll Arm (Left)
+m_DollArmRight,Doll Arm (Right)
 
 m_DollBody,Doll Body
 m_DollBody_l_Head,Head
