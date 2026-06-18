@@ -477,7 +477,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 预览自动路径轨迹
 - Always Show Player Facing
 总是显示玩家朝向
-- Show future learnable spells spells
+- Show future learnable spells
 显示更多可学习的法术
 - Show Player Buff Auras
 显示玩家增益光环
@@ -5205,12 +5205,21 @@ M.F. '女仆长'
 亡魂
 - The revenant pouts as it vanishes.
 亡魂生气的消失了。
+# :: KillMikoGhost
+# :: KillMikoGhost2
 - The revenant restrains you! (+RestraintAdded)
 亡魂束缚了你！ ( +RestraintAdded )
+# :: AttackMikoGhostBind
+# :: AttackMikoGhost2Bind
 - The revenant squeezes your breasts and slows you! (DamageTaken)
 亡魂在揉捏你的胸并减慢你的速度！ ( DamageTaken )
+# :: AttackMikoGhost
+# :: AttackMikoGhost2
 - The revenant grabs you and caresses your tummy! (DamageTaken)
 亡魂抓住了你并抚摸你的肚子！ ( DamageTaken )
+# :: AttackMikoGhostSlow
+# :: AttackMikoGhost2Slow
+# - Faded Revenant
 
 - Skeleton Warrior
 骷髅战士
@@ -40521,6 +40530,8 @@ Aura刘海(右后)
 # :: m_OneBarPrisonSpreader_l_OneBarTop
 # - OneBarPrisonLatex
 
+# - Doll Arm (Left)
+# - Doll Arm (Right)
 
 # - Doll Body
 
@@ -52470,6 +52481,7 @@ NME 由于不够显要，被自动释放
 
 - No Actions Available
 没有可用的行动
+# - Open Container
 - Talk
 交谈
 - Move To
