@@ -214,7 +214,7 @@ NPCステータスを表示する
 自動移動時の経路を表示
 - Always Show Player Facing
 ﾌﾟﾚｲﾔｰｷｬﾗの見ている方向を表示
-- Show more learnable spells
+- Show future learnable spells spells
 習得可能な魔法を全て表示する
 - Show Player Buff Auras
 プレイヤーのオーラ表示

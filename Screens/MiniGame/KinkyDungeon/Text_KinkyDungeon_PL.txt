@@ -332,7 +332,7 @@
 # - Draw Buffs on Side
 # - Show Trajectory on Auto-Path
 # - Always Show Player Facing
-# - Show more learnable spells
+# - Show future learnable spells spells
 # - Show Player Buff Auras
 # - Show Enemy Buff Auras
 # - Minimalist Enemy Auras

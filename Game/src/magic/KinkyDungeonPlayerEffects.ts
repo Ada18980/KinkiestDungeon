@@ -2658,7 +2658,7 @@ function KDPlayerEffectRestrain (
 			let rests = KDRunBondageResist(undefined, faction, restraintsToAdd,(r, resist, ignored, power) => {
 				KDDamageQueue.push({floater: TextGet("KDBlockedRestraint"), Entity: {x: player.x - 0.5, y: player.y - 0.5}, Color: KDBaseMint, Time: 2, Delay: 0});
 				let balancechange = KDChangeBalanceSrc(
-					spell.name || options?.enemy?.id, "defend", "resist", 
+					spell?.name || options?.enemy?.id, "defend", "resist", 
 					-KDGetBalanceCost_BondageResist(resist, ignored, power), false,
 					true
 				);

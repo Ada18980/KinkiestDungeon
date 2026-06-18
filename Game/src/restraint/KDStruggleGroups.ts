@@ -252,7 +252,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
                     }
                 } else KDContextMenu = false;
                 if (KDContextMenu) {
-                    KDContextX = MouseX;
+                    KDContextX = MouseX - 350;
                     KDContextY = MouseY;
                     KDContextStage = "";
                 }

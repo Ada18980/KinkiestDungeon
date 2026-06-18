@@ -451,7 +451,7 @@ Pусский
 Отображение траектории на авто-пути
 - Always Show Player Facing
 Всегда показывать направление, куда смотрит игрок
-- Show more learnable spells
+- Show future learnable spells spells
 Показывать больше заклинаний для изучения
 - Show Player Buff Auras
 Показывать баффы-ауры игрока

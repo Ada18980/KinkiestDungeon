@@ -477,7 +477,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 预览自动路径轨迹
 - Always Show Player Facing
 总是显示玩家朝向
-- Show more learnable spells
+- Show future learnable spells spells
 显示更多可学习的法术
 - Show Player Buff Auras
 显示玩家增益光环

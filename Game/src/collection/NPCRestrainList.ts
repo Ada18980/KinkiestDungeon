@@ -114,9 +114,9 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "Secure", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
 				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Straitjackets", "ChestHarnesses", "Tape", "Belts", "ElbowLink"]},
 			{id: "HeavyBondage", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
-				allowedTags: ["Petsuits", "BindingDress", "Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "Cuffs", "WristLink"]},
+				allowedTags: ["Petsuits", "BindingDress", "Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "WristLink"]},
 			{id: "Wrists", encasedBy: ["ArmEncase", "HeavyBondage"], allowedGroups: ["ItemArms"],
-				allowedTags: ["ArmCuffsBase", "IntricateRopeArms"]},
+				allowedTags: ["ArmCuffsBase", "Cuffs", "IntricateRopeArms"]},
 		]},
 	{id: "Hands", encaseGroup:
 		{id: "HandEncase", encasedBy: ["ArmEncase"], allowedGroups: ["ItemHands"],
@@ -145,7 +145,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			allowedTags: ["Corsets"]},
 		layers: [
 			{id: "Harness", encasedBy: ["Corset",], allowedGroups: ["ItemTorso"],
-				allowedTags: ["Harnesses"]},
+				allowedTags: ["Harnesses", "WaistBelts"]},
 			{id: "HarnessExtra", encasedBy: ["Corset", "ArmEncase"], allowedGroups: ["ItemTorso"],
 				allowedTags: ["ArmbinderHarness", "BoxbinderHarness", "Leotards", "Swimsuits", "LinkArms"]},
 			{id: "HarnessLink", encasedBy: ["Corset",], allowedGroups: ["ItemTorso"],

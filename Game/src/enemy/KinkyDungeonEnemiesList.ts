@@ -6288,6 +6288,17 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxdodge: 0,
 		visionRadius: 30, blindSight: 30, evasion: 9.0, alwaysEvade: true, maxhp: 1, regen: -0.051, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 1, attack: "MeleeWill", attackWidth: 3, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 0,
 		terrainTags: {}, shrines: ["Illusion"], floors:KDMapInit([]), dropTable: [{name: "Ectoplasm", chance: 0.6, weight: 10}],},
+	{name: "MikoGhost2", faction: "Ghost", color: KDBaseWhite, clusterWith: "ghost",
+		tags: KDMapInit(["flying", "fuuka", "ghost", "melee", "glueimmune", "chainimmune", "temporary"]), ethereal: true, ignorechance: 0, armor: 0, followRange: 1, AI: "hunt",
+		specialCD: 7, specialAttack: "Slow",
+		events: [
+			{trigger: "getLights", type: "enemyTorch", power: 2, color: KDBaseWhite},
+		],
+		stamina: 2,
+		maxblock: 0,
+		maxdodge: 0,
+		visionRadius: 30, blindSight: 30, evasion: 1.0, alwaysEvade: true, maxhp: 1, regen: -0.051, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 1, attack: "MeleeWill", attackWidth: 3, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 0,
+		terrainTags: {}, shrines: ["Illusion"], floors:KDMapInit([]), dropTable: [{name: "Ectoplasm", chance: 0.6, weight: 10}],},
 
 	{name: "WardenArcher", nameList: "dragonheart", outfit: "Bandit", style: "GreenHair", bound: "WardenArcher", color: KDBaseMint,
 		playLine: "Adventurer_Sub_Fighter",

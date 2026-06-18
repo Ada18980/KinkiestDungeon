@@ -321,10 +321,10 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 											faction: KDDefaultNPCBindPalette,
 											time: KDLookupID(npcID) ? 1 : 0,
 											player: KDPlayer().id,
+											quantityItem: item,
+											quantityCount: count, 
 										});
-										if (item && !done) {
-											item.quantity -= count;
-										}
+										
 									}
 									
 									
@@ -597,7 +597,7 @@ function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint, No
 			showInQuickInv: KinkyDungeonRestraintVariants[restraints[slot].inventoryVariant] != undefined});
 	}
 	if (restraint) {
-		if (entity && KinkyDungeonDrawState == "Game") {
+		if (entity && KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game") {
 			if (KinkyDungeonVisionGet(entity.x, entity.y) > 0.1)
 				KDDoRestraintParticle(KinkyDungeonFindID(id, KDMapData), KDRestraint(restraint));
 		}

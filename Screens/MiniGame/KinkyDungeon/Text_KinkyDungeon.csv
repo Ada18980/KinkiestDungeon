@@ -151,7 +151,7 @@ KDToggleCenter,Center Player
 KDToggleBuffSide,Draw Buffs on Side
 KDToggleShowPath,Show Trajectory on Auto-Path
 KDToggleShowFacing,Always Show Player Facing
-KDToggleShowSameCatSpells,Show more learnable spells
+KDToggleShowSameCatSpells,Show future learnable spells
 KDTogglePlayerAura,Show Player Buff Auras
 KDToggleEnemyAura,Show Enemy Buff Auras
 KDToggleOutlineAura,Minimalist Enemy Auras
@@ -2557,6 +2557,11 @@ KillMikoGhost,"The revenant pouts as it vanishes."
 AttackMikoGhostBind,"The revenant restrains you! (+RestraintAdded)"
 AttackMikoGhost,"The revenant squeezes your breasts and slows you! (DamageTaken)"
 AttackMikoGhostSlow,"The revenant grabs you and caresses your tummy! (DamageTaken)"
+NameMikoGhost2,Faded Revenant
+KillMikoGhost2,"The revenant pouts as it vanishes."
+AttackMikoGhost2Bind,"The revenant restrains you! (+RestraintAdded)"
+AttackMikoGhost2,"The revenant squeezes your breasts and slows you! (DamageTaken)"
+AttackMikoGhost2Slow,"The revenant grabs you and caresses your tummy! (DamageTaken)"
 
 NameGreaterSkeleton,Skeleton Warrior
 KillGreaterSkeleton,"The skeleton warrior collapses and falls into pieces."
@@ -33154,6 +33159,7 @@ KDWToolsLayerAbbrText,"Layer Text: "
 
 KDContextMenu_None,No Actions Available
 KDContextMenu_Interact,Interact
+KDContextMenu_Chest,Open Container
 KDContextMenu_Talk,Talk
 KDContextMenu_MoveTo,Move To
 KDContextMenu_Stairs,Take Stairs

@@ -119,7 +119,7 @@ let KDObjectClick: Record<string, (x: number, y: number) => boolean> = {
 		if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5) {
 			// Open container
 			let tile = KinkyDungeonTilesGet(x + "," + y);
-			KDUI_CurrentContainer = KDGetContainerFromTile(tile?.container, tile, {x: x, y: y},
+			KDUI_CurrentContainer = KDGetContainerFromTile(tile?.Container || "PlayerChest", tile, {x: x, y: y},
 				KDGetCurrentLocation(),
 				true)?.name;
 			if (KDUI_CurrentContainer) {
@@ -234,7 +234,7 @@ let KDTileInteract: Record<string, (x: number, y: number, dist?: number) => bool
 			KDGameData.InteractTargetY = y;
 			// Open container
 			let tile = KinkyDungeonTilesGet(x + "," + y);
-			KDUI_CurrentContainer = KDGetContainerFromTile(tile?.container, tile, {x: x, y: y},
+			KDUI_CurrentContainer = KDGetContainerFromTile(tile?.Container || "Chest", tile, {x: x, y: y},
 				KDGetCurrentLocation(),
 				true)?.name;
 			if (KDUI_CurrentContainer) {
@@ -247,6 +247,40 @@ let KDTileInteract: Record<string, (x: number, y: number, dist?: number) => bool
 		return false;
 	},
 };
+
+type InteractOverrideCallback = (
+	tile: any,
+	tileType: string,
+	x: number,
+	y: number,
+	draw: boolean,
+	options: string[],
+	optionImages: Record<string, string>,
+	optionActions: Record<string, (mouseX: number, mouseY: number) => void>,
+	optionGrey: Record<string, boolean>,
+	optionText: Record<string, string>,
+	optionColor: Record<string, string>,
+	optionFilter: string[],
+) => void;
+
+let KDInteractOverrides: Record<string, InteractOverrideCallback> = {
+	c: (tile, tileType, x, y, draw, options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter) => {
+		optionImages.Interact = "Chest";
+		optionText.Interact = TextGet("KDContextMenu_Chest");
+	},
+	C: (tile, tileType, x, y, draw, options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter) => {
+		optionImages.Interact = "Chest";
+		optionText.Interact = TextGet("KDContextMenu_Chest");
+		optionActions.Interact = () => {
+			KDCancelAutoWait();
+			KDContextMenu = false;
+			KDSendInput("move", {dir: {
+				x: KinkyDungeonTargetX - KDPlayer().x, y: KinkyDungeonTargetY - KDPlayer().y
+			}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
+		}
+		optionFilter.push("MoveTo");
+	},
+}
 /**
  * Script to handle click in an object's modal
  * tbh should remove this soon

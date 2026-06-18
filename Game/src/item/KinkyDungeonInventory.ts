@@ -669,6 +669,7 @@ function KinkyDungeonInventoryGet(Name: string, container?: KDContainer): item |
 }
 
 /**
+ * Safe from modifying restraints accidentally
  * @param Name
  */
 function KinkyDungeonInventoryGetSafe(Name: string, container?: KDContainer): item | null {

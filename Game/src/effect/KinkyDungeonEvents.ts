@@ -832,7 +832,8 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"MikoGhost": (e, _item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
 				if (data.enemy && data.enemy.lifetime == undefined && data.enemy.playerdmg && !data.enemy.Enemy.tags.ghost && !data.enemy.Enemy.tags.construct) {
-					let ens = KinkyDungeonSummonEnemy(data.enemy.x, data.enemy.y, "MikoGhost", 1, 1.5, true);
+					let ens = KinkyDungeonSummonEnemy(data.enemy.x, data.enemy.y, KDEnemyRank(data.enemy) < 1 ? "MikoGhost2" : "MikoGhost", 1, 1.5, true);
+					
 					KinkyDungeonSendTextMessage(5, TextGet("KDMikoCollarSummmon"), KDBasePurple, 2);
 					return ens;
 				}		
@@ -8066,7 +8067,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 					let duration = 0;
 					let dollLevel = KDEntityBuffedStat(player, "Hypno_Doll");
 					let key = "KDHypno_Doll_" + Math.floor(KDRandom() * Math.round(
-							KDDollHypnoSuggestions * (0.5 + dollLevel/100)));
+							KDDollHypnoSuggestions * (0.5 + 0.5*dollLevel/100)));
 					if (KDRandom() < 0.6 && KDEntityBuffedStat(player, "Hypnosis") > 25 && KDRandom() < KDEntityBuffedStat(player, "Hypnosis")*0.01) {
 						
 						if (dollLevel > 90 && KDRandom() < 0.25) {

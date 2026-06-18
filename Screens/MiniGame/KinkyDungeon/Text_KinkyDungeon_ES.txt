@@ -202,7 +202,7 @@ Animaciones de alta calidad
 
 ### Always Show Player Facing
 
-### Show more learnable spells
+### Show future learnable spells spells
 
 ### Show Player Buff Auras
 

@@ -6079,8 +6079,13 @@ function KDDrawContextMenu(draw: boolean, mouseX: number, mouseY: number,
 	optionGrey: Record<string, boolean>,
 	optionText: Record<string, string>,
 	optionColor: Record<string, string>,
+	optionFilter: string[],
 ): string {
 	let hovered = "";
+	if (optionFilter) optionFilter.forEach((option) => {
+		let ind = options.indexOf(option);
+		if (ind >= 0) options.splice(ind, 1);
+	})
 	if (draw && options.length > 0) {
 
 		let bheight = CommonIsMobile ? 64 : 40;

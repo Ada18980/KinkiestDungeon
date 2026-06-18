@@ -197,7 +197,7 @@ let KDPalettePrefsEnchanted: Record<string, string> = {};
 
 let KinkyDungeonGraphicsQuality = true;
 
-let KDToggleGroups = ["Main", "GFX", "UI", "Clothes", "Keybindings"];
+let KDToggleGroups = ["Main", "GFX", "Clothes", "UI", "Controls", "Keybindings"];
 
 // region Toggles
 
@@ -5400,6 +5400,10 @@ function KDDrawLoadMenu() {
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
 			if (KinkyDungeonLoadGame(LoadMenuCurrentSave, KDToggles.OverrideConsent)) {
+				if (KDToggles.OverrideConsent) {
+					KDToggles.OverrideConsent = false;
+					KDSaveToggles();
+				}
 				KDGenMapCallback = () => {
 					if (KDMapData.Grid == "")
 						KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)],
@@ -6157,6 +6161,10 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
 			if (KinkyDungeonLoadGame(ElementValue("saveInputField"), KDToggles.OverrideConsent)) {
+				if (KDToggles.OverrideConsent) {
+					KDToggles.OverrideConsent = false;
+					KDSaveToggles();
+				}
 				KDSendEvent('loadGame');
 				//KDInitializeJourney(KDJourney);
 				if (KDMapData.Grid == "") KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
@@ -7509,9 +7517,9 @@ function KDDrawToggleTabs(xOffset: number) {
 	let w = 1990 - xOffset;
 	FillRectKD(kdcanvas, kdpixisprites, "maintogglebg", {
 		Left: xOffset,
-		Top: canvasOffsetY_ui - 150,
+		Top: canvasOffsetY_ui - 157,
 		Width: w,
-		Height: 970,
+		Height: 977,
 		Color: KDBaseBlack,
 		LineWidth: 1,
 		zIndex: -19,
@@ -7519,9 +7527,9 @@ function KDDrawToggleTabs(xOffset: number) {
 	});
 	DrawRectKD(kdcanvas, kdpixisprites, "maintogglebg2", {
 		Left: xOffset,
-		Top: canvasOffsetY_ui - 150,
+		Top: canvasOffsetY_ui - 157,
 		Width: w,
-		Height: 970,
+		Height: 977,
 		Color: KDBaseBlack,
 		LineWidth: 1,
 		zIndex: -19,

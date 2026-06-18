@@ -1559,6 +1559,10 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 
 		if (packed) KDPackEnemy(enemy);
 		if (!res) return "Fail";
+		if (data.quantityItem && data.quantityCount) {
+			let item = KinkyDungeonInventoryGetSafe(data.quantityItem.name);
+			if (item) item.quantity = Math.max(0, item.quantity - data.quantityCount);
+		}
 		return "";
 	},
 };
@@ -1567,15 +1571,16 @@ let KDInputTypes: Record<string, (data: any) => string> = {
  */
 function KDProcessInput(type: string, data: any): string {
 	KDUpdateEnemyCache = true;
+	let res = "";
 	
 	if (KDInputTypes[type]) {
-		KDInputTypes[type](data);
+		res = KDInputTypes[type](data);
 	}
 
 	if (data.GameData) {
 		Object.assign(KDGameData, data.GameData);
 	}
-	return "";
+	return res;
 }
 
 function KDSendInput(type: string, data: any, _frame?: boolean, noUpdate?: boolean, process = true): string {

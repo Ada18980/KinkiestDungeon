@@ -5273,7 +5273,7 @@ function KinkyDungeonAddRestraint (
 			let ret = KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, false, events, faction, true, Curse, securityEnemy, true, inventoryAs, data, powerBonus);
 			if (ret) {
 				KDUpdateWaitTime(200);
-				if (!Link && !Unlink)
+				if (!Link && !Unlink && KinkyDungeonState == "Game")
 					KDDoRestraintParticlePlayer(restraint);
 				return ret;
 			}
@@ -5401,7 +5401,7 @@ function KinkyDungeonAddRestraint (
 
 				KDUpdateLinkCaches(item);
 				KDUpdateItemEventCache = true;
-				if (!Link && !Unlink)
+				if (!Link && !Unlink && KinkyDungeonState == "Game")
 					KDDoRestraintParticlePlayer(restraint);
 			} else if ((!Link && !linked) || SwitchItems) {
 				KinkyDungeonCancelFlag = false;
@@ -5838,7 +5838,8 @@ function KinkyDungeonLinkItem (
 				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonLink" + oldItem.name), KDBaseRed, 2,
 					false, false, undefined, "Struggle");
 
-			KDDoRestraintParticlePlayer(newRestraint);
+			if (KinkyDungeonState == "Game")
+				KDDoRestraintParticlePlayer(newRestraint);
 			KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: newItem, host: undefined, keep: Keep, Link: true, UnLink: false, attacker: undefined});
 			KDUpdateItemEventCache = true;
 			return newItem;

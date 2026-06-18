@@ -10,7 +10,7 @@ let KDContextStage = "";
 
 
 
-/** @type {Record<string, (draw: boolean, mouseX: number, mouseY: number, data?: any) =>{options: string[], optionImages: Record<string, string>, optionActions: Record<string, (mouseX: number, mouseY: number) => void>, optionGrey: Record<string, boolean>, optionText: Record<string, string>, optionColor: Record<string, string>}>} */
+/** @type {Record<string, (draw: boolean, mouseX: number, mouseY: number, data?: any) =>{options: string[], optionImages: Record<string, string>, optionActions: Record<string, (mouseX: number, mouseY: number) => void>, optionGrey: Record<string, boolean>, optionText: Record<string, string>, optionColor: Record<string, string>, optionFilter: string[]}>} */
 let KDGetContextActions = {
 	RestraintContext: (draw, mouseX, mouseY, data) => {
 		let options: string[] = [];
@@ -19,6 +19,7 @@ let KDGetContextActions = {
 		let optionGrey: Record<string, boolean> = {};
 		let optionText: Record<string, string> = {};
 		let optionColor: Record<string, string> = {};
+		let optionFilter: string[] = [];
 
 		let item = data?.item;
 		let sg = data?.sg;
@@ -30,7 +31,7 @@ let KDGetContextActions = {
 			index = KDStruggleGroupLinkIndex[KDRestraint(item).Group] || 0;
 		}
 		// TODO allow on NPC restraints
-		KDGetRestraintContextActionsVanilla(item, sg, index, KDPlayer(), KDPlayer(), draw, options, optionImages, optionActions, optionGrey, optionText, optionColor);
+		KDGetRestraintContextActionsVanilla(item, sg, index, KDPlayer(), KDPlayer(), draw, options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter);
 
 		if (options.length==0){
 			options = ["None"];
@@ -38,7 +39,7 @@ let KDGetContextActions = {
 		}
 
 		return {
-			options, optionImages, optionActions, optionGrey, optionText, optionColor
+			options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter
 		};
 	},
 	Game: (draw, mouseX, mouseY, data) => {
@@ -48,10 +49,11 @@ let KDGetContextActions = {
 		let optionGrey: Record<string, boolean> = {};
 		let optionText: Record<string, string> = {};
 		let optionColor: Record<string, string> = {};
+		let optionFilter: string[] = [];
 
 		KinkyDungeonSetTargetLocation(false, KDContextX, KDContextY);
 
-		KDGetGameContextActionsVanilla(draw, options, optionImages, optionActions, optionGrey, optionText, optionColor);
+		KDGetGameContextActionsVanilla(draw, options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter);
 
 		if (options.length==0){
 			options = ["None"];
@@ -59,7 +61,7 @@ let KDGetContextActions = {
 		}
 
 		return {
-			options, optionImages, optionActions, optionGrey, optionText, optionColor
+			options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter
 		};
 	}
 }
@@ -72,7 +74,7 @@ let KDDrawGameContextMenu = {
 		}
 		if (currentHighlightedItem) {
 			let {
-				options, optionImages, optionActions, optionGrey, optionText, optionColor
+				options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter
 			} = KDGetContextActions.RestraintContext(draw, mouseX, mouseY, {
 				item: currentHighlightedItem,
 				sg: currentDrawnSG,
@@ -81,7 +83,7 @@ let KDDrawGameContextMenu = {
 	
 			currentHighlightedItemNoReset = true;
 			let ret = KDDrawContextMenu(draw, mouseX, mouseY, options,
-				optionImages, optionActions, optionGrey, optionText, optionColor);
+				optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter);
 	
 			if (ret) {
 				KDLastStruggleTypeTooltip = ret;
@@ -96,7 +98,7 @@ let KDDrawGameContextMenu = {
 	Game: (draw, mouseX, mouseY) => {
 		let doHighlightItem = () => {
 			let {
-				options, optionImages, optionActions, optionGrey, optionText, optionColor
+				options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter
 			} = KDGetContextActions.RestraintContext(draw, mouseX, mouseY, {
 				item: currentHighlightedItem,
 				sg: currentDrawnSG,
@@ -105,7 +107,7 @@ let KDDrawGameContextMenu = {
 	
 			currentHighlightedItemNoReset = true;
 			let ret = KDDrawContextMenu(draw, mouseX, mouseY, options,
-				optionImages, optionActions, optionGrey, optionText, optionColor);
+				optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter);
 			if (ret) {
 				KDLastStruggleTypeTooltip = ret;
 			}
@@ -124,12 +126,12 @@ let KDDrawGameContextMenu = {
 		}
 
 		let {
-			options, optionImages, optionActions, optionGrey, optionText, optionColor
+			options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter
 		} = KDGetContextActions.Game(draw, mouseX, mouseY, {});
 
 
 		KDDrawContextMenu(draw, mouseX, mouseY, options,
-			optionImages, optionActions, optionGrey, optionText, optionColor);
+			optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter);
 
 		KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule",
 			KinkyDungeonRootDirectory + "TargetSpell.png",
@@ -152,6 +154,7 @@ function KDGetGameContextActionsVanilla(
 	optionGrey: Record<string, boolean>,
 	optionText: Record<string, string>,
 	optionColor: Record<string, string>,
+	optionFilter: string[],
 
 ) {
 	let tileType = KinkyDungeonMapGet(KinkyDungeonTargetX, KinkyDungeonTargetY);
@@ -341,7 +344,7 @@ function KDGetGameContextActionsVanilla(
 		}
 	}
 
-	if (tile?.Type || KDTileInteract[tileType]) {
+	if (tile?.Type || KDTileInteract[tileType] || (KDInteractOverrides[tileType] || (tile?.Type && KDInteractOverrides[tile.Type]))) {
 		// Interact
 		options.push("Interact");
 		optionImages.Interact = "Interact";
@@ -349,6 +352,11 @@ function KDGetGameContextActionsVanilla(
 			KDCancelAutoWait();
 			KDContextMenu = false;
 			KDSendInput("interact", {x: KinkyDungeonTargetX, y: KinkyDungeonTargetY});
+		}
+		if (KDInteractOverrides[tileType] || (tile?.Type && KDInteractOverrides[tile.Type])) {
+			KDInteractOverrides[tileType || tile?.Type](
+				tile, tileType, KinkyDungeonTargetX, KinkyDungeonTargetY, draw, options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter
+			);
 		}
 	}
 
@@ -439,6 +447,7 @@ function KDGetRestraintContextActionsVanilla(
 	optionGrey: Record<string, boolean>,
 	optionText: Record<string, string>,
 	optionColor: Record<string, string>,
+	optionFilter: string[],
 
 ) {
 	if (!item) return;
