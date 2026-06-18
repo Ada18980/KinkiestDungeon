@@ -12222,7 +12222,8 @@ RestraintName 上的诅咒解除了！
 石碑
 # :: KDTileTooltipM
 # :: KDMinimapLabel_Tablet
-
+# - Wall Opening
+# - Takes an extra turn to enter
 
 
 
@@ -15527,9 +15528,9 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 敏感诅咒 : ‎使你更容易被快感冲昏头脑。
 - Curse of Distraction: Multiplies DP gain by 1.5x.
 性奋诅咒 : ‎将性奋值增益提高至1.5 倍
-- Curse of Exhaustion: -25% Stamina regen cap.
+- Curse of Exhaustion: -25% SP regen cap.
 疲劳诅咒 : 体力值上限-25%。
-- Curse of Futility: Multiplies WP gain by 0.5x.
+- Curse of Futility: Multiplies WP gain by 0.7x.
 徒劳诅咒 : ‎将意志力增益降低至0.5 倍
 - Curse of Submission: Gain submissiveness when you lose control of yourself...
 屈服诅咒 : ‎每一次高潮都会让你变得更顺从......
