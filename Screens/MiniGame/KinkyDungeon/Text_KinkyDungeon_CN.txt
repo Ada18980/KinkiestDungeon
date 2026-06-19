@@ -53355,6 +53355,7 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - Beautiful doll.
 # - Graceful doll.
 # - Elegant doll.
+# - Perfect doll.
 
 # - Be still...
 # - A quiet doll...
