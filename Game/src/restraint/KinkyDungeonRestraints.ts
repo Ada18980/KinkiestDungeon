@@ -496,10 +496,26 @@ const KinkyDungeonStrictnessTable = new Map([
 	["ItemFeet", ["ItemBoots"]],
 ]);
 
-let KDProgressiveOrder = {
+let KDProgressiveOrder: Record<string, string[]> = {
 
 };
 
+
+/** Enforces a sort of progression of restraining meant for subduing and capturing a prisoner */
+KDProgressiveOrder['Capture'] = [
+	"ItemArms", // Blocks spells and escaping
+	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemNeck", // Makes you very slow
+	"ItemMouth", // Makes you very slow
+	"ItemTorso", // Usually just makes other restraints harder
+	"ItemHands", // Blocks weapons but no spells
+	"ItemBreast", // Goes well with belts
+	"ItemPelvis", // Chastity is for good girls!
+	"ItemBoots", // Typically doesnt hobble completely
+	"ItemEars", //  Sensory
+	"ItemFeet", // Makes you very slow
+	"ItemHead", // Blind, but does not stop from wielding anything
+];
 
 /** Enforces a sort of progression of restraining loosely based on strictness, useful for progressive stuff like applying curses to zones */
 KDProgressiveOrder['Strict'] = [
@@ -4889,7 +4905,8 @@ function KDLinkUnder (
 
 		if (r) KDUpdateLinkCaches(r);
 		KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: lk, host: linkUnder, keep: Keep, Link: true, UnLink: false, attacker: securityEnemy});
-
+		let sfx = (restraint && KDGetRestraintSFX(restraint)) ? KDGetRestraintSFX(restraint) : "Struggle";
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 	}
 	return ret;
 }
@@ -5450,7 +5467,7 @@ function KinkyDungeonAddRestraint (
 		if (!KinkyDungeonRestraintAdded) {
 			KinkyDungeonRestraintAdded = true;
 			let sfx = (restraint && KDGetRestraintSFX(restraint)) ? KDGetRestraintSFX(restraint) : "Struggle";
-			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
+			if (KDSoundEnabled() && !Unlink) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 		}
 		let end = performance.now();
 		if (KDDebug)
@@ -5627,7 +5644,7 @@ function KinkyDungeonRemoveRestraint(Group: string, Keep?: boolean, Add?: boolea
 					rem.push(...KinkyDungeonRemoveRestraint("ItemNeckRestraints", true, undefined, undefined, Shrine, undefined, Remover, ForceRemove));
 
 				let sfx = (rest && KDGetRemoveSFX(rest)) ? KDGetRemoveSFX(rest) : "Struggle";
-				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
+				if (KDSoundEnabled() && !Add && !UnLink) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 
 				KinkyDungeonCalculateSlowLevel();
 				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -6212,7 +6229,7 @@ function KDChooseRestraintFromListGroupPriWithVariants (
 		}
 
 		if (i == GroupOrder.length - 1 && !cycled) {
-			i = 0;
+			i = -1;
 			cycled = true;
 		}
 	}
@@ -7695,3 +7712,4 @@ function KDDoLockParticlePlayer(lock: string, restraint: restraint, particleDela
 			rotation: 0,
 		});
 }
+

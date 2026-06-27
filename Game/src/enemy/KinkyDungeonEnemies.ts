@@ -6801,8 +6801,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 4);
 
 						} else if (AIData.attack.includes("Bind")
-							&& (((enemy.Enemy.smartBind && !KinkyDungeonFlags.get("PlayerCombat"))
-								|| (!enemy.usingSpecial && !enemy.Enemy.bindOnDisable) || (enemy.usingSpecial && !enemy.Enemy.bindOnDisableSpecial)) || !KinkyDungeonHasWill(0.01) || !KinkyDungeonHasStamina(2.5)
+							&& (((enemy.Enemy.smartBind && !(KinkyDungeonFlags.get("PlayerCombat") > 3))
+								|| (!enemy.usingSpecial && !enemy.Enemy.bindOnDisable) || (enemy.usingSpecial && !enemy.Enemy.bindOnDisableSpecial)) 
+								|| !KinkyDungeonHasWill(0.01) || !KinkyDungeonHasStamina(2.5)
 								|| !KinkyDungeonCanStand() || KDForcedToGround())) {
 
 							if (AIData.addMoreRestraints || AIData.addLeash || enemy.usingSpecial) {
@@ -6838,8 +6839,64 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 									for (let times = 0; times < numTimes; times++) {
 										// Note that higher power enemies get a bonus to the floor restraints appear on
 										let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || (KDDefaultRestraintThresh + (Math.max(0, enemy.Enemy.power - 1) || 0));
-										let rest = KDGetRestraintWithVariants(
-											{tags: KDGetTags(enemy, enemy.usingSpecial)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
+										
+										let rest: {
+											r: restraint;
+											v: ApplyVariant;
+											iv: string;
+										} = undefined;
+
+										if (player.player && KinkyDungeonPlayerTags.get("Cuffs")) {
+											rest = KDChooseRestraintFromListGroupPriWithVariants(
+												KDGetRestraintsEligible(	{tags: KDGetTags(enemy, enemy.usingSpecial)}, 
+													KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
+													KDCurrIndex(),
+													enemy.Enemy.bypass,
+													enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
+													!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
+													false,
+													false,
+													undefined,
+													false,
+													{
+														requireTags: ["Link"]
+													}, enemy, undefined, undefined, undefined, true, undefined, 
+													{
+														allowLowPower: true,
+													}),
+												KDProgressiveOrder.Capture, false)
+										}
+										
+
+										if (!rest)
+											rest = KDChooseRestraintFromListGroupPriWithVariants(
+											KDGetRestraintsEligible(	{tags: KDGetTags(enemy, enemy.usingSpecial)}, 
+												KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
+												KDCurrIndex(),
+												enemy.Enemy.bypass,
+												enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
+												!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
+												!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
+												!KinkyDungeonStatsChoice.has("TightRestraints"),
+												KDGetExtraTags(enemy, enemy.usingSpecial, true),
+												false,
+												{
+													//minPower: rThresh,
+													//onlyLimited: !enemy.Enemy.RestraintFilter?.limitedRestraintsOnly,
+													ignore: [...restraintAdd.map((rst) => {return rst.r.name;})],
+													looseLimit: true,
+													require: enemy.Enemy.RestraintFilter?.unlimitedRestraints ? undefined : enemy.items,
+												}, enemy, undefined, undefined, undefined, true, undefined, 
+												{
+													allowLowPower: KDRandom() < 0.5,
+													extraOptions: enemy.items,
+													willBonus: enemy.Enemy.willBonus,
+													ApplyVariants: true
+												}),
+											KDRandom() < 0.25 ? KDGetProgressiveOrderFun() : KDProgressiveOrder.Capture, true);
+										/*KDGetRestraintWithVariants(
+											{tags: KDGetTags(enemy, enemy.usingSpecial)}, 
+											KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
 											KDCurrIndex(),
 											enemy.Enemy.bypass,
 											enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
@@ -6858,11 +6915,38 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 												allowLowPower: KDRandom() < 0.5,
 												extraOptions: enemy.items,
 												willBonus: enemy.Enemy.willBonus,
-											}, );
+											}, );*/
 
 										if (!rest) {
-											rest = KDGetRestraintWithVariants(
-												{tags: KDGetTags(enemy, enemy.usingSpecial)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
+											rest = KDChooseRestraintFromListGroupPriWithVariants(
+												KDGetRestraintsEligible(	{tags: KDGetTags(enemy, enemy.usingSpecial)}, 
+													KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
+													KDCurrIndex(),
+													enemy.Enemy.bypass,
+													enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
+													!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
+													!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
+													!KinkyDungeonStatsChoice.has("TightRestraints"),
+													KDGetExtraTags(enemy, enemy.usingSpecial, true),
+													false,
+													{
+														maxPower: rThresh + 0.01,
+														looseLimit: true,
+														onlyUnlimited: true,
+														ignore: [...(enemy.items || []), ...restraintAdd.map((rst) => {return rst.r.name;})],
+													}, enemy, undefined, undefined, undefined, true, undefined, 
+													{
+														allowLowPower: KDRandom() < 0.5,
+														//extraOptions: enemy.items,
+														willBonus: enemy.Enemy.willBonus,
+														//ApplyVariants: true
+													}),
+												KDRandom() < 0.15 ? KDGetProgressiveOrderFun() : KDProgressiveOrder.Capture, KDRandom() < 0.75);
+											
+											
+											/*KDGetRestraintWithVariants(
+												{tags: KDGetTags(enemy, enemy.usingSpecial)}, 
+												KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
 												KDCurrIndex(),
 												enemy.Enemy.bypass,
 												enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
@@ -6879,7 +6963,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 												}, enemy, undefined, true, undefined, {
 													allowLowPower: KDRandom() < 0.5,
 													willBonus: enemy.Enemy.willBonus,
-												});
+												});*/
 										} else {
 											restraintFromInventory.push(rest.iv || rest.r.name);
 										}

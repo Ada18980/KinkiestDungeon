@@ -7097,7 +7097,10 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 				if (item.type == Restraint) {
 					let restraint = KinkyDungeonGetRestraintByName(item.name);
 					if (restraint) {
+						let sd = KDToggles.Sound;
+						KDToggles.Sound = false;
 						KinkyDungeonAddRestraint(restraint, 0, true, item.lock, undefined, undefined, undefined, undefined, item.faction, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true); // Add the item
+						KDToggles.Sound = sd;
 						let createdrestraint = KinkyDungeonGetRestraintItem(restraint.Group);
 						if (createdrestraint) createdrestraint.lock = item.lock; // Lock if applicable
 						if (createdrestraint) createdrestraint.events = item.events; // events if applicable
