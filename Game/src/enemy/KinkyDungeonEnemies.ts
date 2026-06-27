@@ -6846,7 +6846,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											iv: string;
 										} = undefined;
 
-										if (player.player && KinkyDungeonPlayerTags.get("Cuffs")) {
+										if (player.player && KinkyDungeonPlayerTags.get("Cuffs") && (!enemy.playWithPlayer || KinkyDungeonAggressive(enemy, player))) {
 											rest = KDChooseRestraintFromListGroupPriWithVariants(
 												KDGetRestraintsEligible(	{tags: KDGetTags(enemy, enemy.usingSpecial)}, 
 													KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
