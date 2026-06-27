@@ -402,6 +402,10 @@ KDPrisonTypes.HighSec = {
 				let player = KinkyDungeonPlayerEntity;
 				let guard = KDPrisonCommonGuard(player);
 				KinkyDungeonSetFlag("noWeaponStop", 10);
+
+				if (KinkyDungeonAggressive(guard, player)) 
+					return KDPopSubstate(player);
+
 				let nearestfurniture = guard ?KinkyDungeonNearestJailPoint(guard.x, guard.y, ["furniture"], 
 					undefined, undefined, true, 
 					KDGetFurnitureCriteria(player)) : null;

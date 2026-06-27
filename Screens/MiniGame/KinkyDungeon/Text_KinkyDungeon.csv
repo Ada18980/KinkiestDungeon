@@ -11992,7 +11992,7 @@ rOfferMithrilYes_Yes,"(The SPEAKER smiles sweetly)|Such a good ${Psub}~|(The RES
 rOfferMithrilYes_No,"(The SPEAKER sagely nods)|As you wish~"
 rOfferMithrilNo,"(The SPEAKER frowns briefly)|I understand~"
 rOfferMithrilForce,"(The SPEAKER leans closer)|Then you can test their escapability!|(The SPEAKER dives towards you!)"
-rOfferMithrilForceYes,"(The SPEAKER shifts her weight back)|I'm afraid I must insist.|(${EThey} ${ETheyThem_is} gripping a RESTRAINT)|(The SPEAKER dives towards you!)"
+rOfferMithrilForceYes,"(The SPEAKER shifts her weight back)|I'm afraid I must insist.|(${EThey} ${Eis} gripping a RESTRAINT)|(The SPEAKER dives towards you!)"
 rOfferMithrilForce_No,"(The SPEAKER rolls past harmlessly)|Oh! So fast~"
 rOfferMithrilForce_Yes,"(The SPEAKER snaps the RESTRAINT on)|There, much better.|Now squirm for me cutie~"
 rOfferMithrilForce_Failure,"(The SPEAKER trips you over)|(Before you can move, the RESTRAINT closes firmly)|Strict, isn't it?~"
@@ -33866,3 +33866,6 @@ KinkyDungeonStatKnockedDown,On the ground! Bondage Resist reduced by 50%
 KinkyDungeonStatLowBalance,Your balance is low! Consider standing in place to restore it.
 
 KDToggleShowDefensiveStats,Always show defense in buff bar
+
+KinkyDungeonBuffSleepy,Sleepy...
+KinkyDungeonBuffPoisonBreath,Toxic spores are making it difficult to move

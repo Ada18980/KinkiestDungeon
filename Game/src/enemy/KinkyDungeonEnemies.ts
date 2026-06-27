@@ -512,7 +512,7 @@ function KDEnemyNearTargetExit(entity: entity, mapData: KDMapDataType): boolean 
 }
 
 
-function KDGetShortcutPosition(target: string, x: number, y: number, mapData: KDMapDataType) {
+function KDGetShortcutPosition(target: string, x: number, y: number, mapData: KDMapDataType) : KDPoint {
 	// Like the below, but filters out any that arent the target
 	let possible: KDPoint[] = [mapData.StartPosition, mapData.EndPosition, ...Object.values(mapData.ShortcutPositions || {})];
 	possible = possible.filter((pos) => {
@@ -5365,10 +5365,19 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 	AIData.damage = enemy.Enemy.dmgType;
 	AIData.power = enemy.Enemy.power + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackPower");
 
-	AIData.targetRestraintLevel = 0.25 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.004 * Math.max(0, KDGetEffSecurityLevel(KDGetFaction(enemy) || KDGetFactionOriginal(enemy)) + 50);
+	AIData.targetRestraintLevel = 0.2 + (enemy.aggro && !enemy.playWithPlayer ? enemy.aggro : 0) + 0.003 * Math.max(0, KDGetEffSecurityLevel(KDGetFaction(enemy) || KDGetFactionOriginal(enemy)) + 50);
 	if (enemy.aggro > 0 && delta > 0 && enemy.aggro > enemy.hp / enemy.Enemy.maxhp) enemy.aggro = enemy.aggro * 0.95;
-	if (KinkyDungeonStatsChoice.has("NoWayOut") || (enemy.playWithPlayer > 0 && !KinkyDungeonAggressive(enemy)) || enemy.hp < enemy.Enemy.maxhp * 0.5 || !KDIsHumanoid(enemy))
+	if ((enemy.playWithPlayer > 0 && !KinkyDungeonAggressive(enemy))
+		|| !AIData.leashing)
 		AIData.targetRestraintLevel = Math.max(0.7, AIData.targetRestraintLevel);
+	else {
+		if (KinkyDungeonStatsChoice.has("NoWayOut"))
+				AIData.targetRestraintLevel = Math.max(0.45, AIData.targetRestraintLevel);
+		AIData.targetRestraintLevel = Math.max(0.25 + 0.32*(1 - enemy.hp/enemy.Enemy.maxhp) + (
+			player?.player ? 0.3 * (KinkyDungeonStatWill/KinkyDungeonStatWillMax) : 0.25
+		), AIData.targetRestraintLevel);
+	}
+	
 	if (enemy.Enemy.Behavior?.thorough) AIData.targetRestraintLevel = Math.max(AIData.targetRestraintLevel, enemy.Enemy.Behavior?.thorough);
 	AIData.addLeash = AIData.leashing && KDBoundPowerLevel >= AIData.targetRestraintLevel
 		&& (!KinkyDungeonPlayerTags.get("Collars") || !KinkyDungeonGetRestraintItem("ItemNeckRestraints"));
@@ -9167,13 +9176,13 @@ function KDAssignLeashPoint(enemy: entity): KDJailPoint {
 	return AIData.nearestJail;
 }
 
-function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
+function KDGetHighSecOutpost(enemy: entity, fromHere?: boolean): string {
 	let forceFaction = KDGetLeashFaction(enemy);
 	let jailroom = KDGetLeashJailRoom(enemy);
 
 	let slot = KDGetWorldMapLocation(KDCurrentWorldSlot);
 	if (!slot)
-        return KDGetFallbackJailPoint(0);
+        return "";
 	let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
 	if (!((slot?.main || "") == KDGameData.RoomType) && !(altRoom &&
 		(
@@ -9205,10 +9214,7 @@ function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
 		);
 
 
-		let pos = KDGetShortcutPosition(outpost || jailroom, enemy.x, enemy.y, KDMapData);
-
-		if (!pos) pos = KDGetFallbackJailPoint(0);
-		return pos;
+		return outpost || jailroom;
 	}
 	let lairType = KDLairTypes[jailroom];
 	let outpost = KDAddOutpost(
@@ -9228,9 +9234,16 @@ function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
 			|| lairType.DefaultEntranceFrom : undefined,
 		true
 	);
+	return outpost || jailroom;
+}
+
+function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
+	let jailroom = KDGetLeashJailRoom(enemy);
+
+	let outpost = KDGetHighSecOutpost(enemy, fromHere);
 
 
-	let pos = KDGetShortcutPosition(outpost || jailroom, enemy.x, enemy.y, KDMapData);
+	let pos: KDPoint = KDGetShortcutPosition(outpost || jailroom, enemy.x, enemy.y, KDMapData);
 
 	if (!pos) pos = KDGetFallbackJailPoint(0);//(altRoom?.nostartstairs && !altRoom?.startatstartpos) ? KDMapData.StartPosition : KDMapData.EndPosition;
 	return pos;

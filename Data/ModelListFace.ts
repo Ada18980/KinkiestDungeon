@@ -284,7 +284,7 @@ AddModel({
 	Folder: "Expressions",
 	TopLevel: true,
 	Protected: true,
-	Group: "Blush",
+	Group: "Fear",
 	Categories: ["Face"],
 	AddPose: ["Fear"],
 	Layers: ToLayerMap([

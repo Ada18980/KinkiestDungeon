@@ -2972,6 +2972,17 @@ function KDIsMaster(player: entity) {
  * @param lowercase 
  * @returns 
  */
+function KDGetHonorificGeneric(player: entity, lowercase?: boolean) {if (KinkyDungeonPlayerTags.get("Drone") || player?.Enemy?.tags?.robot || player?.Enemy?.tags?.cyborg) return TextGet("KDHonorificUnit"+ (lowercase ? "_LC" : ""));
+	
+	return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMixx" : (KDIsMaster(player) ? "KDHonorificMiss" : "KDHonorificMiss")) + (lowercase ? "_LC" : ""));
+}
+
+/**
+ * Replaces mistress with miss, master, etc
+ * @param player 
+ * @param lowercase 
+ * @returns 
+ */
 function KDGetHonorific(player: entity, lowercase?: boolean) {if (KinkyDungeonPlayerTags.get("Drone") || player?.Enemy?.tags?.robot || player?.Enemy?.tags?.cyborg) return TextGet("KDHonorificUnit"+ (lowercase ? "_LC" : ""));
 	if (player?.player && (KinkyDungeonStatsChoice.get("Dominant"))) return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMaster" : "KDHonorificMistress")+ (lowercase ? "_LC" : ""));
 	return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMixx" : (KDIsMaster(player) ? "KDHonorificMiss" : "KDHonorificMiss")) + (lowercase ? "_LC" : ""));
@@ -3125,11 +3136,13 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 		PHonor: KDGetHonorific(player),
 		PSub: KDGetSubTitle(player),
 		PDim: KDGetDiminutive(player),
+		PGen: KDGetHonorificGeneric(player),
 
 		EHonorinti: KDGetHonorificIntimate(enemy),
 		EHonor: KDGetHonorific(enemy),
 		ESub: KDGetSubTitle(enemy),
 		EDim: KDGetDiminutive(enemy),
+		EGen: KDGetHonorificGeneric(enemy),
 
 		
 		Phonorinti: KDGetHonorificIntimate(player, true),

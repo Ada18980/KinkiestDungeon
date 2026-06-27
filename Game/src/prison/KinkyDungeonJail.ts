@@ -1558,9 +1558,10 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 
 	let forceFaction = KDGetLeashFaction(leashEnemy);
 	let jailroom = KDGetLeashJailRoom(leashEnemy);
+	let hisecoutpost = KDGetHighSecOutpost(leashEnemy);
 	let slot = KDGetWorldMapLocation(KDCurrentWorldSlot);
 
-	if (PutInJail && jailroom == KDMapData.RoomType && forceFaction == KDMapData.MapFaction) {
+	if (PutInJail && (hisecoutpost != undefined ? hisecoutpost : jailroom) == KDMapData.RoomType && forceFaction == KDMapData.MapFaction) {
 		PutInJail = false;
 		// Cancel if we are already in the target room!
 	}
@@ -2545,8 +2546,8 @@ function KDGetLeashJailRoom(leashEnemy: entity): string {
 	} else if (leashEnemy && KDSelfishLeash(leashEnemy) && 
 		KDGetWorldMapLocation(KDCurrentWorldSlot) && KDGetLairs(KDGetWorldMapLocation(KDCurrentWorldSlot),
 		leashEnemy.id)?.length > 0) {
-		jailRoom = KDGetLairs(KDGetWorldMapLocation(KDCurrentWorldSlot),
-			leashEnemy.id)[0];
+		jailRoom = KDPersonalAlt[KDGetLairs(KDGetWorldMapLocation(KDCurrentWorldSlot),
+			leashEnemy.id)[0][0]]?.RoomType;
 	} else if (leashEnemy
 		&& (KDFactionProperties[faction]?.lairType
 		|| (!KDFactionProperties[faction]
