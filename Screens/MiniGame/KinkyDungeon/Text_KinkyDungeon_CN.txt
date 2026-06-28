@@ -22948,7 +22948,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 皱起眉头 ) |我明白了~
 - (The SPEAKER leans closer)|Then you can test their escapability!|(The SPEAKER dives towards you!)
 ( SPEAKER 靠得更近 ) |然后你可以测试他们的逃脱能力！| ( SPEAKER 俯冲向你！ )
-- (The SPEAKER shifts her weight back)|I'm afraid I must insist.|(${EThey} ${ETheyThem_is} gripping a RESTRAINT)|(The SPEAKER dives towards you!)
+- (The SPEAKER shifts her weight back)|I'm afraid I must insist.|(${EThey} ${Eis} gripping a RESTRAINT)|(The SPEAKER dives towards you!)
 ( SPEAKER 将她的体重向后转移 ) |恐怕我必须坚持。| ( 她抓住了一件 RESTRAINT ) | ( SPEAKER 向你扑来！ )
 - (The SPEAKER rolls past harmlessly)|Oh! So fast~
 ( SPEAKER 无害地滚过去 ) |哦！真快~
@@ -53494,3 +53494,6 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - Your balance is low! Consider standing in place to restore it.
 
 # - Always show defense in buff bar
+
+# - Sleepy...
+# - Toxic spores are making it difficult to move
