@@ -33,7 +33,7 @@ RestartNeededPL,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.5.0"
+KDVersionStr,"5.5.1"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -28808,7 +28808,7 @@ KDInventoryActionRemoveCurseOrHex,"Purify"
 
 
 KDBondageFailNoTarget,You need to target an NPC
-KDBondageFailInvalidTarget,Target must be bindable and disabled.
+KDBondageFailInvalidTarget,"Must be disabled, or vulnerable and <50% hp"
 KDBondageTarget,Target acquired!
 KinkyDungeonSpellBondage,"Truss em up!"
 KinkyDungeonSpellTargetBondage,"Choose target to bind"
@@ -32182,7 +32182,7 @@ KDBondageFailNoSelect,You can use the quick inventory to bind yourself or others
 KDBondageFailError,Error. Please screenshot and report.
 KDBondageFailCantAdd,"You can't wear that item, regrettably."
 
-KDBondageCondition_HeavyBondage,Must be stunned 3+ turns or fully bound
+KDBondageCondition_HeavyBondage,"Must be stunned 2+ turns, or fully bound"
 KDBondageCondition_Extra,Does not meet conditions
 KDBondageCondition_MissingNPC,Error: Missing NPC (report to Ada!)
 KDBondageCondition_MissingTag1,Requires additional items to equip
@@ -32370,16 +32370,16 @@ KDContainerType_,Chest
 KDContainerType_WardenChest,Warden's Storage
 KDContainerType_PlayerChest,Automated Storage Network
 
-KDAdd1,Store 1 ITMN
-KDTake1,Take 1 ITMN
-KDAdd5,Store 5 ITMN
-KDTake5,Take 5 ITMN
-KDAddAll,Store ALL ITMN
-KDTakeAll,Take ALL ITMN
-KDAddAll1,Store ALL-1 ITMN
-KDTakeAll1,Take ALL-1 ITMN
-KDAddAllExcess,Store Excess ITMN
-KDRefill,Refill ITMN
+KDAdd1,Store 1\nITMN
+KDTake1,Take 1\nITMN
+KDAdd5,Store 5\nITMN
+KDTake5,Take 5\nITMN
+KDAddAll,Store ALL\nITMN
+KDTakeAll,Take ALL\nITMN
+KDAddAll1,Store ALL-1\nITMN
+KDTakeAll1,Take ALL-1\nITMN
+KDAddAllExcess,Store Excess\nITMN
+KDRefill,Refill\nITMN
 KDMaxNum,(Max: ${Num})
 KDMaxNumMinimal,(max ${Num})
 KDTakeEverything,Take Everything
@@ -33869,3 +33869,5 @@ KDToggleShowDefensiveStats,Always show defense in buff bar
 
 KinkyDungeonBuffSleepy,Sleepy...
 KinkyDungeonBuffPoisonBreath,Toxic spores are making it difficult to move
+
+KDMissingEnemyType,An NPC in your collection was missing an enemy type and has been removed

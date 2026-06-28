@@ -2783,6 +2783,26 @@ function KDDoAttack(Enemy: entity, teasesub: boolean, attackCost: number, skip: 
 		skipTurn: false,
 		attackData: damageInfo
 	};
+	if (!KinkyDungeonPlayerDamage.noHands) {
+		let nearby = KDNearbyEnemies(KDPlayer().x, KDPlayer().y, 10, undefined, true)
+			.filter((en) => {return !!en.aware ||
+				(!KinkyDungeonPlayerDamage.silent && KDCanHearSound(en, 8, KDPlayer().x, KDPlayer().y));});
+		let f = "";
+		let c = "Arms";
+		for (let en of nearby) {
+
+			f = "saw_" + c;
+			if (!en.flags || !en.flags[f])
+			KDSetIDFlag(en.id, f, -1);
+		
+			if (!KDGameData.SawFlags) KDGameData.SawFlags = {};
+			let faction = KDGetFaction(en);
+			if (!KDGameData.SawFlags[faction]) KDGameData.SawFlags[faction] = {};
+			KDGameData.SawFlags[faction][c] = (KDGameData.SawFlags[faction][c] || 0) + 1;
+		}
+		
+		
+	}
 	KinkyDungeonSendEvent("beforePlayerLaunchAttack", data);
 	if (attackCost < 0 && KinkyDungeonStatsChoice.has("BerserkerRage")) {
 		KDChangeDistraction("BerserkerRage", "perk", "attack", 0.7 - 0.5 * data.attackCost, false, 0.33);
@@ -2860,6 +2880,10 @@ function KDDoCapture(Enemy: entity, attackCost: number, noadvance: boolean, skip
 		KDGameData.Collection[Enemy.id + ""].status = "";
 		KDSortCollection();
 	}
+
+	let sfx = Enemy.Enemy?.captureSound || "LockHeavyOther";
+    if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
+
 	KDFreeNPC(Enemy);
 	Enemy.hp = 0;
 	KDSetToExpectedBondage(Enemy, 0);
@@ -3347,6 +3371,25 @@ function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _
 
 				if (!data.cancelSprint) {
 					KinkyDungeonSetFlag("sprinted", 2);
+
+					// Make enemies aware that you do sprinting
+					let nearby = KDNearbyEnemies(KDPlayer().x, KDPlayer().y, 10, undefined, true)
+						.filter((en) => {return !!en.aware ||
+							(!KinkyDungeonPlayerDamage.silent && KDCanHearSound(en, 8, KDPlayer().x, KDPlayer().y));});
+					let f = "";
+					let c = "Legs";
+					for (let en of nearby) {
+
+						f = "saw_" + c;
+						if (!en.flags || !en.flags[f])
+						KDSetIDFlag(en.id, f, -1);
+					
+						if (!KDGameData.SawFlags) KDGameData.SawFlags = {};
+						let faction = KDGetFaction(en);
+						if (!KDGameData.SawFlags[faction]) KDGameData.SawFlags[faction] = {};
+						KDGameData.SawFlags[faction][c] = (KDGameData.SawFlags[faction][c] || 0) + 1;
+					}
+
 					KDChangeStamina("sprint", "move", "sprint", data.sprintCost, false, 1);
 					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), KDBaseLightGreen, 2);
 					KDChangeBalanceSrc("sprint", "move", "sprint", -KDGetBalanceCost() * (0.5 + 1 * KDRandom()) * KDBalanceSprintMult*10*KDFitnessMult(), true);
@@ -3397,6 +3440,8 @@ let KDDrawUpdate = 0;
 let KDVisionUpdate = 0;
 
 let KDLastTick = 0;
+
+let KDSawFlagsDecayRate = 0.95;
 
 function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: boolean) {
 	if (delta > 0) {
@@ -3720,6 +3765,20 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 
 	if (!KDGameData.CurrentDialog) {
 		KDCustomExpTmp = {};
+	}
+
+	if (delta > 0) {
+		if (KinkyDungeonFlags.get("PlayerCombat")) KinkyDungeonSetFlag("PlayerCombatRecent", 20);
+		if (KDGameData.SawFlags) {
+			for (let faction in KDGameData.SawFlags) {
+				if (KDGameData.SawFlags[faction]) {
+					for (let flag in KDGameData.SawFlags[faction]) {
+						KDGameData.SawFlags[faction][flag] = KDGameData.SawFlags[faction][flag]*KDSawFlagsDecayRate || 0;
+						if (KDGameData.SawFlags[faction][flag] < 0.01) delete KDGameData.SawFlags[faction][flag];
+					}
+				}
+			}
+		}
 	}
 
 }

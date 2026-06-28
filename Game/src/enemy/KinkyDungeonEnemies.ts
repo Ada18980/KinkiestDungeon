@@ -6801,7 +6801,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 									KDGetGenericDialogueParams(player, enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 4);
 
 						} else if (AIData.attack.includes("Bind")
-							&& (((enemy.Enemy.smartBind && !(KinkyDungeonFlags.get("PlayerCombat") > 3))
+							&& (((enemy.Enemy.smartBind && (!(KinkyDungeonFlags.get("PlayerCombat") > 3) || KDRandom() < 0.4))
 								|| (!enemy.usingSpecial && !enemy.Enemy.bindOnDisable) || (enemy.usingSpecial && !enemy.Enemy.bindOnDisableSpecial)) 
 								|| !KinkyDungeonHasWill(0.01) || !KinkyDungeonHasStamina(2.5)
 								|| !KinkyDungeonCanStand() || KDForcedToGround())) {
@@ -6867,6 +6867,10 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 												KDProgressiveOrder.Capture, false)
 										}
 										
+										let Order = "Capture";
+										if (!rest) {
+											Order = KDGetProgRestraintOrder(enemy, player, AIData);
+										}
 
 										if (!rest)
 											rest = KDChooseRestraintFromListGroupPriWithVariants(
@@ -6893,7 +6897,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 													willBonus: enemy.Enemy.willBonus,
 													ApplyVariants: true
 												}),
-											KDRandom() < 0.25 ? KDGetProgressiveOrderFun() : KDProgressiveOrder.Capture, true);
+											KDProgressiveOrder[Order], true);
 										/*KDGetRestraintWithVariants(
 											{tags: KDGetTags(enemy, enemy.usingSpecial)}, 
 											KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
@@ -6941,7 +6945,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 														willBonus: enemy.Enemy.willBonus,
 														//ApplyVariants: true
 													}),
-												KDRandom() < 0.15 ? KDGetProgressiveOrderFun() : KDProgressiveOrder.Capture, KDRandom() < 0.75);
+												KDProgressiveOrder[Order], KDRandom() < 0.75);
 											
 											
 											/*KDGetRestraintWithVariants(
@@ -11126,24 +11130,38 @@ function KDCanApplyBondage(target: entity, player: entity, extraCondition: (t: e
 		(extraCondition ? extraCondition(target, player) : false)
 			|| (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow")
 				> KDEntityBuffedStat(target, "TimeSlow"))
-			|| (KinkyDungeonIsDisabled(target))
+			|| (KinkyDungeonIsDisabled(target) || (!target.player && target.vulnerable && target.hp <= 0.5*target.Enemy?.maxhp))
 			|| KDWillingBondage(target, player)
 	)) {
 		return false;
 	}
 	
-	if (r && target && !allowSame && KDGetNPCRestraints(target.id)) {
+	if (r && !allowSame && KDNPCRestraintWouldBeOverride(target, player, r)) return false;
+	
+	return player?.player ? true : ((KinkyDungeonIsDisabled(target) || (!target.player && target.vulnerable && target.hp <= 0.5*target.Enemy?.maxhp)));
+}
+
+
+
+/**
+ * @param target
+ * @param player
+ */
+function KDNPCRestraintWouldBeOverride(target: entity, player: entity, r?: restraint): boolean {
+
+	if (r && target && KDGetNPCRestraints(target.id)) {
 			let slot_temp = KDGetNPCBindingSlotForItem(r, target.id)?.sgroup;
 			if (slot_temp && KDGetNPCRestraints(target.id)[slot_temp.id]?.name == r.name
 				&& !KDCanOverwriteNPCRestraint({
 					name: r.name,
 					id: -1,
 					lock: undefined,
-				}, KDGetNPCRestraints(target.id)[slot_temp.id])) return false;
+				}, KDGetNPCRestraints(target.id)[slot_temp.id])) return true;
 		}
 	
-	return player?.player ? true : KinkyDungeonIsDisabled(target);
+	return false;
 }
+
 
 /**
  * @param target
@@ -11378,4 +11396,38 @@ function KDIsArtificial(enemy: entity) {
 
 function KDDoWarning() {
 	return !(KinkyDungeonFastWait && !!KinkyDungeonLeashingEnemy());
+}
+
+
+function KDGetProgRestraintOrder(enemy: entity, player: entity, aiData: KDAIData): string {
+	let Order = "";
+
+	if (KinkyDungeonFlags.get("PlayerCombatRecent") && (!enemy.playWithPlayer || KinkyDungeonAggressive(enemy, player))) {
+		let sawLegs = KDGetSawFlag("Legs", KDGetFaction(enemy)) || 0;
+		let sawMouth = KDGetSawFlag("Verbal", KDGetFaction(enemy)) || 0;
+		let sawArms = KDGetSawFlag("Arms", KDGetFaction(enemy)) || 0;
+
+		if (KinkyDungeonFlags.get("sprinted_recently") || (
+			sawLegs > sawArms && sawLegs >= sawMouth
+		)) {
+			Order = "Immobilize";
+		}
+		else if (sawMouth > sawArms && sawMouth >= sawLegs) {
+			Order = "AntiMage";
+		}
+		else if (sawArms > sawLegs && sawArms >= sawMouth) {
+			Order = "Capture";
+		}
+	}
+
+
+	if (!Order && KDIsBrattyPersonality(enemy)) {
+		Order = "Fun" + Math.floor(3 * KDRandom() + 1);
+	}
+	else if (!Order && KinkyDungeonStatWill / KinkyDungeonStatWillMax < (KinkyDungeonGoddessRep.Ghost + 50)*0.01 || !KinkyDungeonAggressive(enemy, player)) {
+		Order = "Strict";
+	}
+
+
+	return Order || "Capture";
 }

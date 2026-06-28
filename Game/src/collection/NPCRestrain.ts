@@ -95,7 +95,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 					let set = KDSetBindingSlot(sgroup, KDGetEncaseGroupRow(sgroup.id));
 					if (set) {
 						KinkyDungeonCurrentPageInventory = 0;
-					} else {
+					} else if (restraints[sgroup.id]) {
 						KDSendInput("addNPCRestraint", {
 							slot: sgroup.id,
 							id: -1,
@@ -365,7 +365,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			ss = KDDrawInventoryContainer(-165, 100, filteredInventory, filter, filter,
 				(inv: KDFilteredInventoryItem, x, y, w, h) => {
 				if (slot && restraints[slot.id]?.name == inv.item.name) {
-					KDSendInput("addNPCRestraint", {
+					/*KDSendInput("addNPCRestraint", {
 						slot: slot.id,
 						id: -1,
 						restraint: "",
@@ -375,7 +375,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						faction: undefined,
 						time: KDLookupID(npcID) ? 1 : 0,
 						player: KDPlayer().id,
-					});
+					});*/
 				} else {
 
 					let restraint = KDRestraint(inv.item);
@@ -1717,7 +1717,8 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 						(t, p) => (KDQuickBindConditions[rst?.quickBindCondition](
 							t, p,
 							rst,
-							null)) : undefined, rst, false) ? "#63ab3f" : "#f0b541")
+							null)) : undefined, rst, true) ? "#63ab3f" : (!KDNPCRestraintWouldBeOverride(npc, KDPlayer(),
+						rst) ? "#f0b541" : "#e64539"))
 				: KDButtonColor),
 				undefined, true,
 				{

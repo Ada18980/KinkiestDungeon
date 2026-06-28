@@ -517,6 +517,40 @@ KDProgressiveOrder['Capture'] = [
 	"ItemHead", // Blind, but does not stop from wielding anything
 ];
 
+
+/** Prioritizes gagging and arm binding */
+KDProgressiveOrder['AntiMage'] = [
+	"ItemMouth", // Makes you very slow
+	"ItemArms", // Blocks spells and escaping
+	"ItemNeck", // Makes you very slow
+	"ItemHands", // Blocks weapons but no spells
+	"ItemTorso", // Usually just makes other restraints harder
+	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemHead", // Blind, but does not stop from wielding anything
+	"ItemBreast", // Goes well with belts
+	"ItemPelvis", // Chastity is for good girls!
+	"ItemBoots", // Typically doesnt hobble completely
+	"ItemEars", //  Sensory
+	"ItemFeet", // Makes you very slow
+];
+
+
+/** Prioritizes immobilizing*/
+KDProgressiveOrder['Immobilize'] = [
+	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemBoots", // Typically doesnt hobble completely
+	"ItemFeet", // Makes you very slow
+	"ItemArms", // Blocks spells and escaping
+	"ItemNeck", // Makes you very slow
+	"ItemHands", // Blocks weapons but no spells
+	"ItemTorso", // Usually just makes other restraints harder
+	"ItemMouth", // Makes you very slow
+	"ItemHead", // Blind, but does not stop from wielding anything
+	"ItemBreast", // Goes well with belts
+	"ItemPelvis", // Chastity is for good girls!
+	"ItemEars", //  Sensory
+];
+
 /** Enforces a sort of progression of restraining loosely based on strictness, useful for progressive stuff like applying curses to zones */
 KDProgressiveOrder['Strict'] = [
 	"ItemTorso", // Usually just makes other restraints harder

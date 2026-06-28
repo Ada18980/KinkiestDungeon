@@ -6015,7 +6015,10 @@ let KDCustomDrawInvColorFilter = {
 				return "#e64539";
 			}
 			
-			if (slot_temp && KDRowItemIsValid(KDRestraint(inv.item), slot_temp, row_temp, data.restraints))
+			if (slot_temp && KDRowItemIsValid(KDRestraint(inv.item), 
+			slot_temp, 
+			row_temp, 
+			data.restraints))
 				return data.force ? KDTextGray1 : KDCanApplyBondage(data.entity, data.player,
 					inv ? (
 						KDRestraint(inv)?.quickBindCondition ?
@@ -6024,7 +6027,7 @@ let KDCustomDrawInvColorFilter = {
 							KDRestraint(inv),
 							inv)) :
 						undefined
-					) : undefined) ? "#63ab3f" : "#f0b541";
+					) : undefined, KDRestraint(inv.item)) ? "#63ab3f" : "#f0b541";
 			return "#e64539";
 		};
 	},

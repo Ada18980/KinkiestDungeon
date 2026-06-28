@@ -1480,6 +1480,11 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 					f = "saw_" + c;
 					if (!en.flags || !en.flags[f])
 					KDSetIDFlag(en.id, f, -1);
+
+					if (!KDGameData.SawFlags) KDGameData.SawFlags = {};
+					let faction = KDGetFaction(en);
+					if (!KDGameData.SawFlags[faction]) KDGameData.SawFlags[faction] = {};
+					KDGameData.SawFlags[faction][c] = (KDGameData.SawFlags[faction][c] || 0) + 1;
 				}
 			}
 		}
@@ -1493,6 +1498,11 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 					f = "saw_" + c;
 					if (!en.flags || !en.flags[f])
 					KDSetIDFlag(en.id, f, -1);
+				
+					if (!KDGameData.SawFlags) KDGameData.SawFlags = {};
+					let faction = KDGetFaction(en);
+					if (!KDGameData.SawFlags[faction]) KDGameData.SawFlags[faction] = {};
+					KDGameData.SawFlags[faction][c] = (KDGameData.SawFlags[faction][c] || 0) + 1;
 				}
 			}
 		}

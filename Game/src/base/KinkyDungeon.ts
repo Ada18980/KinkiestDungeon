@@ -8010,9 +8010,9 @@ function KDTogglesDraw() {
 					}
 				})
 				return true;
-			}, !KDBusySavingBackup, 
+			}, !KDBusySavingBackup && !KinkyDungeonGameFlag, 
 			PIXIWidth - 235, 900, 200, 64, 
-			TextGet("KDFullBackup"), KDBusySavingBackup ? KDBaseLightGrey : KDBaseWhite,  undefined,  undefined,  undefined, 
+			TextGet("KDFullBackup"), (KDBusySavingBackup || KinkyDungeonGameFlag) ? KDBaseLightGrey : KDBaseWhite,  undefined,  undefined,  undefined, 
 			undefined,  undefined, undefined, undefined, {
 				hoverData: {
 					text: TextGet("KDFullBackupDesc")
@@ -8025,9 +8025,9 @@ function KDTogglesDraw() {
 			DrawButtonKDEx("kdtoggle_load", (b) => {
 				KDLoadBackupDialog();
 				return true;
-			}, !KDBusyLoadingFile, 
+			}, !KDBusyLoadingFile && !KinkyDungeonGameFlag, 
 			PIXIWidth - 450, 900, 200, 64, 
-			TextGet("KDLoadBackup"), KDBusyLoadingFile ? KDBaseLightGrey : KDBaseWhite,  undefined,  undefined,  undefined, 
+			TextGet("KDLoadBackup"), (KDBusySavingBackup || KinkyDungeonGameFlag) ? KDBaseLightGrey : KDBaseWhite,  undefined,  undefined,  undefined, 
 			undefined,  undefined, undefined, undefined, {
 				hoverData: {
 					text: TextGet("KDLoadBackupDesc")

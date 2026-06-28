@@ -1198,7 +1198,7 @@ function KDGetExtraPoses(C: Character): string[] {
 		if (KinkyDungeonPlayerTags.get("LinkFeet")) {
 			poses.push("FeetLinked");
 		}
-		if (KDIsPlayerTethered(KDPlayer())) {
+		if (KDIsPlayerTethered(KDPlayer()) && !!KDPlayer().leash) {
 			poses.push("Pulled");
 		}
 	} else {
@@ -1213,7 +1213,7 @@ function KDGetExtraPoses(C: Character): string[] {
 			let id = KDNPCChar_ID.get(C);
 			let npc = KDLookupID(id);
 			if (npc) {
-				if (KDIsPlayerTethered(npc)) {
+				if (KDIsPlayerTethered(npc) && !!KDPlayer().leash) {
 					poses.push("Pulled");
 				}
 			}

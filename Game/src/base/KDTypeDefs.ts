@@ -837,6 +837,8 @@ interface KDLoadout {name: string, tags?: string[], singletag: string[], singlet
 interface enemy extends KDHasTags {
 	/** allows custom intentactions for capture */
 	captureAction?: string,
+	/** sound played when you capture this entity */
+	captureSound?: string,
 	/** Makes them special persistent */
 	special?: boolean,
 	overrideFactionDefeat?: boolean,

@@ -1409,6 +1409,14 @@ function KDSortCollection() {
 	}
 
 
+	let newCollection = {};
+
+	for (let value of Object.entries(KDGameData.Collection)) {
+		if (!!KinkyDungeonGetEnemyByName(value[1].Enemy)) newCollection[value[0]] = value[1];
+		else KinkyDungeonSendTextMessage(10, TextGet("KDMissingEnemyType"), "#ffffff")
+	}
+
+	KDGameData.Collection = newCollection;
 
 
 	KDGameData.CollectionGuests = 0;

@@ -708,7 +708,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {"secondhalf":1, "lastthird":2, "ropeAnger": 1, "ropeRage": 1, "bountyhunter": 4, "rope": 5}, shrines: ["Rope"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 10}, {name: "Scissors", ignoreInInventory: true, weight: 10}, {name: "EnchKnife", ignoreInInventory: true, weight: 1}, {name: "Rope", weight: 100, ignoreInInventory: true},]},
 
-	{name: "Maidforce", nameList: "maid", faction: "Maidforce", bound: "Maid", outfit: "Maidforce", style: "Maid", clusterWith: "maid", playLine: "SubMaid", color: "#814BB7", tags: KDMapInit(["leashing", "submissive", "tickleweakness", "imprisonable", "opendoors", "human", "minor", "maid", "melee", "ropeRestraints", "ropeRestraints2", "handcuffer", "maidVibeRestraintsLimited", "maidRestraintsLight", "jail", "jailer", "search"]), blindSight: 3, followRange: 1, AI: "hunt",
+	{name: "Maidforce", nameList: "maid", faction: "Maidforce", bound: "Maid", outfit: "Maidforce", style: "Maid", clusterWith: "maid", playLine: "SubMaid", color: "#814BB7",
+		tags: KDMapInit(["leashing", "submissive", "tickleweakness", "imprisonable", "opendoors", "human", "minor", "maid", "melee", "clothRestraints",
+			"ropeRestraints", "ropeRestraints2", "handcuffer", "maidVibeRestraintsLimited", "maidRestraintsLight", "jail", "jailer", "search"]), blindSight: 3, followRange: 1, AI: "hunt",
 		stealth: 3.5, noReveal: true, bindOnDisableSpecial: true, bindOnDisable: true,  events: [
 			{trigger: "tick", type: "secretToy"},
 		],

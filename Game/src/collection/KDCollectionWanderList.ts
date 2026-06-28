@@ -239,7 +239,7 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 							&& !eligibleIDs.includes(e.id)
 							&& !presentIDs.includes(e.id)) {
 								if (!KDIDHasFlag(e.id, "cuddleTime")
-									&& KDistChebyshev(point.x - e.x, point.y - e.y) > 4.5) {
+									&& KDistChebyshev(point.x - e.x, point.y - e.y) < 4.5) {
 										presentIDs.push(e.id);
 										removeIDs.push(e.id);
 								}

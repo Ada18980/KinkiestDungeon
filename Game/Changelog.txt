@@ -76,6 +76,14 @@ Must do
 - Proper stripping
 - species perks
 
+5.5.1
+- Resisting bondage now reduces your balance
+- Enemies will try to prioritize different restraints when hitting you based on what you were most recently doing to them
+- Heavy bondage now requires 2+ turns of stun to apply to enemies, rather than 3+
+- Can now apply bondage on vulnerable NPCs but only if they are below 50% HP, instead of only disabled/quickbind
+- Fixed a bug where management would remove NPCs from stands in summit if they arent in the cuddle lounge
+
+
 5.5.0
 - Added 'Allow Stacking Similar Items' option to disable new logic to make it easier to swap eyes, etc
 - Added Doll species perk
@@ -99,7 +107,6 @@ Must do
 - Hovering over NPC drawing in dialogue now zooms in on the character model
 - Map goals now don't select friendly faction targets to defeat in order to pass the level
 - Added filters for rarities (Divine, Angelic, etc) to the inventory
-- Resisting bondage now reduces your balance
 
 Assets:
 - Added doll body type

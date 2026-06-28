@@ -2865,8 +2865,8 @@ function GetModelLoc(C: Character, X: number, Y: number, ZoomInit: number = 1, h
 	let pos = {x: hp?.X*Zoom || 0, y: hp?.Y*Zoom || 0, angle: hp.Angle};
 
 	let MC = KDCurrentModels.get(C);
-	let StartMods = MC.Mods.get(`${X},${Y},${ZoomInit}`);
-	let EndMods = MC.EndMods.get(`${X},${Y},${ZoomInit}`);
+	let StartMods = MC.Mods.get(`${Math.round(X)},${Math.round(Y)},${ZoomInit}`);
+	let EndMods = MC.EndMods.get(`${Math.round(X)},${Math.round(Y)},${ZoomInit}`);
 	let mods = ModelGetPoseMods(MC.Poses);
 
 	for (let m of StartMods) {
@@ -2968,8 +2968,8 @@ function GetModelLocInverse(C: Character, X: number, Y: number, ZoomInit: number
 	}
 
 	let MC = KDCurrentModels.get(C);
-	let StartMods = MC.Mods.get(`${X},${Y},${ZoomInit}`);
-	let EndMods = MC.EndMods.get(`${X},${Y},${ZoomInit}`);
+	let StartMods = MC.Mods.get(`${Math.round(X)},${Math.round(Y)},${ZoomInit}`);
+	let EndMods = MC.EndMods.get(`${Math.round(X)},${Math.round(Y)},${ZoomInit}`);
 	let mods = ModelGetPoseMods(MC.Poses);
 
 	for (let m of StartMods) {

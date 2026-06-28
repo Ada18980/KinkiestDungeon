@@ -208,7 +208,7 @@ let KDBondageConditions: Record<string, (r: restraint, id: number, willing: bool
 		if (r.quickBindCondition) return "";
 		let enemy = KDGetGlobalEntity(id);
 		if (!enemy) return "MissingNPC"; // Must create an entity
-		return (enemy.stun >= 3 || enemy.freeze >= 3 || KDBoundEffects(enemy) > 3) ? "" : "HeavyBondage";
+		return (enemy.stun >= 2 || enemy.freeze >= 2 || KDBoundEffects(enemy) > 3) ? "" : "HeavyBondage";
 	},
 	Extra: (r, id, willing) => {
 		if (r.quickBindCondition) return "";
