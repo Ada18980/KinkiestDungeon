@@ -45428,7 +45428,7 @@ ${Item} 瞄准
 你需要瞄准一个NPC
 # :: KDBondageFailNoTarget
 # :: KDDisguiseFailNoTarget
-- Target must be bindable and disabled.
+- Must be disabled, or vulnerable and <50% hp
 目标必须可被捆绑并且无法反抗。
 - Target acquired!
 已抓住捆绑目标！
@@ -50903,7 +50903,7 @@ N/A
 - You can't wear that item, regrettably.
 很遗憾，你不能穿戴该物品。
 
-- Must be stunned 3+ turns or fully bound
+- Must be stunned 2+ turns, or fully bound
 必须眩晕 3 个以上回合或完全捆绑
 - Does not meet conditions
 不符合条件
@@ -51196,25 +51196,25 @@ ENMY 解开了 ITMN 的锁!
 - Automated Storage Network
 自动存储网络
 
-- Store 1 ITMN
+- Store 1\nITMN
 储存 1 ITMN
-- Take 1 ITMN
+- Take 1\nITMN
 拿取 1 ITMN
-- Store 5 ITMN
+- Store 5\nITMN
 储存 5 ITMN
-- Take 5 ITMN
+- Take 5\nITMN
 拿取 5 ITMN
-- Store ALL ITMN
+- Store ALL\nITMN
 储存 全部 ITMN
-- Take ALL ITMN
+- Take ALL\nITMN
 拿取 全部 ITMN
-- Store ALL-1 ITMN
+- Store ALL-1\nITMN
 储存 全部-1 ITMN
-- Take ALL-1 ITMN
+- Take ALL-1\nITMN
 拿取 全部-1 ITMN
-- Store Excess ITMN
+- Store Excess\nITMN
 储存多余的 ITMN
-- Refill ITMN
+- Refill\nITMN
 拿取适量的 ITMN
 - (Max: ${Num})
 （最大：${Num}）
@@ -53497,3 +53497,5 @@ ${Playername}使用了安全词，被传送回关卡起点。
 
 # - Sleepy...
 # - Toxic spores are making it difficult to move
+
+# - An NPC in your collection was missing an enemy type and has been removed
