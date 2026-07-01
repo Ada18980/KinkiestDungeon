@@ -7038,7 +7038,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		maxwill: 0.85,
 		allFloors: true,
 		cutVulnerability: 2.0,
-		inventory: true, disassembleAs: "NeoLinkRaw",
+		disassembleAs: "NeoLinkRaw",
 		DefaultLock: "White",
 		unlimited: true,
 		events: [
@@ -7049,7 +7049,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		sfx: "Chain",
 		sfxGroup: "Chains",
 		binding: true,
-		inventory: true, disassembleAs: "NeoLinkRaw",
+		disassembleAs: "NeoLinkRaw",
 		affinity: {Struggle: ["Hook"]},
 		Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindableMinusCuffs],
 		UnderlinkedAlwaysRender: true,
@@ -7098,7 +7098,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		DefaultLock: "White",
 		unlimited: true,
 		cutVulnerability: 2.0,
-		inventory: true, disassembleAs: "ChainRaw",
+		disassembleAs: "ChainRaw",
 		events: [
 			
 			{trigger: "beforeStruggleCalc", type: "saddleDebuff", power: 0.4, inheritLinked: true},
@@ -7153,7 +7153,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		DefaultLock: "White",
 		unlimited: true,
 		cutVulnerability: 2.0,
-		inventory: true, disassembleAs: "ChainRaw",
+		disassembleAs: "ChainRaw",
 		maxLevel: 7,
 		events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
@@ -7178,7 +7178,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		maxwill: 0.2,
 		maxLevel: 7,
 		cutVulnerability: 2.0,
-		inventory: true, disassembleAs: "ChainRaw",
+		disassembleAs: "ChainRaw",
 		DefaultLock: "White",
 		unlimited: true,
 		events: [
@@ -7208,7 +7208,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		maxwill: 0.7,
 		cutVulnerability: 2.0,
 		allFloors: true,
-		inventory: true, disassembleAs: "ChainRaw",
+		disassembleAs: "ChainRaw",
 		DefaultLock: "White",
 		unlimited: true,
 		events: [
@@ -7220,7 +7220,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		sfx: "Chain",
 		sfxGroup: "Chains",
 		binding: true,
-		inventory: true, disassembleAs: "ChainRaw",
+		disassembleAs: "ChainRaw",
 		affinity: {Struggle: ["Hook"]},
 		Type: "Both", LinkableBy: [...KDElbowBind, ...KDBindableMinusCuffs],
 		UnderlinkedAlwaysRender: true,

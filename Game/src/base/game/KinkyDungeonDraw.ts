@@ -1425,7 +1425,7 @@ function KinkyDungeonDrawGame() {
 					if (KinkyDungeonInspect) {
 						KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
 
-						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "TargetSpell.png",
+						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "TargetInspect.png",
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 100,
 							});
@@ -1482,13 +1482,13 @@ function KinkyDungeonDrawGame() {
 						}
 
 						if (KinkyDungeonSpellValid)
-							if (KinkyDungeonTargetingSpell.projectileTargeting) {
+							if (KinkyDungeonTargetingSpell.projectileTargeting === true) {
 								let range = KinkyDungeonTargetingSpell.castRange;
 								if (!range || spellRange > range) range = spellRange;
 								let dist = Math.sqrt((KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x)*(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x)
 									+ (KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)*(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y));
 								let collision = false;
-								let dt = 1/Math.sqrt(Math.max(1, Math.max(0.1, KinkyDungeonTargetingSpell.speed)));
+								let dt = 1/Math.sqrt(Math.max(1, Math.max(0.1, KinkyDungeonTargetingSpell.speed || 0)));
 								
 								let bxx = KinkyDungeonMoveDirection.x;
 								let byy = KinkyDungeonMoveDirection.y;
@@ -5336,6 +5336,24 @@ let KDEffectTileTooltips: Record<string, {color: string, code: (tile: effectTile
 	'LatexThin': {
 		color: "#d952ff",
 		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
+	'LatexBlue': {
+		color: "#5294ff",
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#5294ff");}},
+	'LatexThinBlue': {
+		color: "#5294ff",
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#5294ff");}},
+	'LatexGreen': {
+		color: "#52ff9d",
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#52ff9d");}},
+	'LatexThinGreen': {
+		color: "#52ff9d",
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#52ff9d");}},
+	'LatexPink': {
+		color: "#d952ff",
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
+	'LatexThinPink': {
+		color: "#d952ff",
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
 	'Steam': {
 		color: KDBaseWhite,
 		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, KDBaseWhite);}},
@@ -5447,6 +5465,8 @@ function KDDrawEffectTileTooltip(tile: effectTile, x: number, y: number, offset:
 	return KDDrawTooltip(TooltipList, offset);
 }
 
+let KDInspectTooltipZoomedSize = 600;
+
 function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): number {
 	let TooltipWidth = 300;
 	let TooltipHeight = 0;
@@ -5480,6 +5500,19 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 				tooltipY + YY, TooltipWidth - 2 * pad, listItem.fg, listItem.bg,
 				listItem.size, listItem.center ? "center" : "left", 113);
 		if (listItem.npcSprite) {
+			let spriteX = tooltipX + (listItem.center ? TooltipWidth/2 : pad) - (listItem.size)/4;
+			let spriteY = tooltipY + YY - 9;
+			let spriteW = TooltipWidth;
+			let spriteH = listItem.size;
+			let spriteZoom = NPCTooltipZoomCurrent * (listItem.size)/1000;
+
+			if (listItem.inspect) {
+				spriteX -= TooltipWidth * 1.5;
+				spriteY = (PIXIHeight - KDInspectTooltipZoomedSize)/2
+				spriteW = TooltipWidth * 2;
+				spriteH = KDInspectTooltipZoomedSize;
+				spriteZoom = NPCTooltipZoomCurrent * (KDInspectTooltipZoomedSize)/1000;;
+			}
 
 			// We refresh
 			if (KDDrewEnemyTooltipThisFrame) {
@@ -5492,10 +5525,10 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 					// Add the rectangular area to show
 					mask.beginFill(0xffffff);
 					mask.drawRect(
-						tooltipX + (listItem.center ? TooltipWidth/2 : pad) - (listItem.size)/4,
-						tooltipY + YY - 9,
-						TooltipWidth,
-						listItem.size
+						spriteX,
+						spriteY,
+						spriteW,
+						spriteH
 					);
 					mask.endFill();
 					npcTooltipContainer.mask = mask;
@@ -5514,7 +5547,7 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 			let zoomY = 0;
 			let zoomed = false;
 
-			if (KDGameData.CurrentDialog && MouseIn(
+			if (!listItem.inspect && KDGameData.CurrentDialog && MouseIn(
 				tooltipX + (listItem.center ? TooltipWidth/2 : pad) - (listItem.size)/4,
 				tooltipY + YY - 9,
 				TooltipWidth,
@@ -5547,11 +5580,11 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 			DrawCharacter(listItem.npcSprite,
 				(NPCTooltipZoomCurrent > 1 ? (NPCTooltipZoomCurrent - 1)/(NPCTooltipZoomRatio - 1)* -250 * (TooltipWidth)/500 : 0)
 					+ (NPCTooltipZoomX * 500 * (TooltipWidth)/500)
-					+ tooltipX + (listItem.center ? TooltipWidth/2 : pad) - (listItem.size)/4,
+					+ spriteX,
 				(NPCTooltipZoomCurrent > 1 ? (NPCTooltipZoomCurrent - 1)/(NPCTooltipZoomRatio - 1)* -500 * (listItem.size)/1000 : 0)
 					+ (NPCTooltipZoomY * 1000 * (listItem.size)/1000)
-					+ tooltipY + YY - 9,
-				NPCTooltipZoomCurrent * (listItem.size)/1000, false, 
+					+ spriteY,
+				spriteZoom, false, 
 				npcTooltipContainer, undefined, undefined, 120, false);
 
 		}

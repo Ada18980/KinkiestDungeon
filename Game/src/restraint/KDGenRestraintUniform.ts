@@ -83,8 +83,8 @@ function KDGetByRestraintEligibleEntry(entries: EligibleRestraintEntry[]): Eligi
 	let key_weight: Record<string, number> = {};
 	let key_value: Record<string, EligibleRestraintEntry> = {};
 	for (let en of entries) {
-		key_value[en.restraint?.name + (en.applyVariant || "")] = en;
-		key_weight[en.restraint?.name + (en.applyVariant || "")] = en.weight;
+		key_value[en.restraint?.name + ((en.applyVariant.prefix + en.applyVariant.suffix + en.applyVariant.curse) || "")] = en;
+		key_weight[en.restraint?.name + ((en.applyVariant.prefix + en.applyVariant.suffix + en.applyVariant.curse)  || "")] = Math.max(0, en.weight);
 	}
 
 	return key_value[KDGetByWeight(key_weight)];
@@ -187,7 +187,7 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 									if (tags[tag]) w *= variant[1].enemyTagsMult[tag];
 
 
-							if (w) {
+							if (w > 0) {
 								cache.push({
 									r: restraint,
 									v: KDApplyVariants[variant[0]],

@@ -853,7 +853,7 @@ function KinkyDungeonGetRestraintsWithShrine(shrine: string, ignoreGold?: boolea
  * @param [forceIgnoreNonBinding] - for "Exclusions Apply" perk
  * @returns {number}
  */
-function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: number, recursive?: boolean, noPlayer?: boolean, ignoreGold?: boolean, ignoreShrine?: boolean, Keep?: boolean, forceIgnoreNonBinding?: boolean, forceFavorite?: boolean): number {
+function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: number, recursive?: boolean, noPlayer?: boolean, ignoreGold?: boolean, ignoreShrine?: boolean, Keep?: boolean, forceIgnoreNonBinding?: boolean, forceFavorite?: boolean, Remover?: entity): number {
 	let count = 0;
 
 	let condition = (r: item) => {
@@ -956,7 +956,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: numbe
 	}
 
 
-	KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true, Character: KinkyDungeonPlayer});
+	KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true, Character: KinkyDungeonPlayer, Remover: Remover});
 				
 	return count;
 }
@@ -3647,8 +3647,8 @@ function KDGetRestraintsEligible (
 			if (filter.ignore && filter.ignore.includes(r.r.name)) continue;
 			if (filter.require && !filter.require.includes(r.r.name)) continue;
 		}
-		if ((!LeashingOnly || (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints"))
-			&& (!RequireWill || !restraint.maxwill || willPercent <= restraint.maxwill || (LeashingOnly && (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints")))) {
+		if ((!LeashingOnly || (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints" || restraint.leash))
+			&& (!RequireWill || !restraint.maxwill || willPercent <= restraint.maxwill || (LeashingOnly && (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints" || restraint.leash)))) {
 
 			if (restraint.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode"))
 				continue;
@@ -5011,7 +5011,7 @@ function KinkyDungeonAddRestraintIfWeaker (
 
 		let ret = 0;
 
-		let preserve_tether = restraint.Group == "ItemNeckAccessories" && KDIsPlayerTethered(KinkyDungeonPlayerEntity) && KinkyDungeonLeashingEnemy();
+		let preserve_tether = restraint.leash && KDIsPlayerTethered(KinkyDungeonPlayerEntity) && KinkyDungeonLeashingEnemy();
 		let tether_len = preserve_tether ? KDGetTetherLength(KinkyDungeonPlayerEntity) : 0;
 
 		if (!restraint.good && !restraint.armor) {
@@ -5296,6 +5296,9 @@ function KinkyDungeonAddRestraint (
 	KDStruggleGroupLinkIndex = {};
 	let start = performance.now();
 	let tight = (Tightness) ? Tightness : 0;
+
+	let Remover = securityEnemy;
+
 	if (restraint) {
 		if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return 0;
 		if (restraint.Group == "ItemVulva" && restraint.shrine.includes("Plugs") && KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) return 0;
@@ -5362,7 +5365,7 @@ function KinkyDungeonAddRestraint (
 				
 				KinkyDungeonSetFlag("remove_incidental", 5);
 				KinkyDungeonRemoveRestraint(restraint.Group, Keep && !Link, Link || Unlink, undefined, undefined, 
-					Unlink, undefined, ForceRemove); // r && r.dynamicLink && restraint.name == r.dynamicLink.name
+					Unlink, Remover, ForceRemove); // r && r.dynamicLink && restraint.name == r.dynamicLink.name
 
 				let newR = KinkyDungeonGetRestraintItem(restraint.Group);
 				// Run events AFTER
@@ -5382,7 +5385,7 @@ function KinkyDungeonAddRestraint (
 			// If we did not link an item (or unlink one) then we proceed as normal
 			if (!KinkyDungeonCancelFlag) {
 				KinkyDungeonSetFlag("remove_incidental", 5);
-				KinkyDungeonRemoveRestraint(restraint.Group, Keep, false, undefined, undefined, r && r.dynamicLink&& restraint.name == r.dynamicLink.name);
+				KinkyDungeonRemoveRestraint(restraint.Group, Keep, false, undefined, undefined, r && r.dynamicLink&& restraint.name == r.dynamicLink.name, Remover);
 				if (restraint.remove)
 					for (let remove of restraint.remove) {
 						InventoryRemove(KinkyDungeonPlayer, remove);
@@ -5407,7 +5410,7 @@ function KinkyDungeonAddRestraint (
 
 							if (KDRestraint(removeR).shrine && KDRestraint(removeR).shrine.includes(remove)) {
 								KinkyDungeonSetFlag("remove_incidental", 5);
-								KinkyDungeonRemoveRestraint(KDRestraint(removeR).Group, Keep, false, false, false, false);
+								KinkyDungeonRemoveRestraint(KDRestraint(removeR).Group, Keep, false, false, false, false, Remover);
 							}
 						}
 					}
@@ -5475,7 +5478,7 @@ function KinkyDungeonAddRestraint (
 				if (prevR.events) {
 					for (let e of oldevents) {
 						if (e.trigger == "postRemoval" && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
-							KinkyDungeonHandleInventoryEvent("postRemoval", e, prevR, {item: prevR, Character: KinkyDungeonPlayer, add: eventsAdd, keep: Keep, Link: Link, shrine: undefined});
+							KinkyDungeonHandleInventoryEvent("postRemoval", e, prevR, {item: prevR, Character: KinkyDungeonPlayer, add: eventsAdd, keep: Keep, Link: Link, shrine: undefined, Remover: Remover});
 						}
 					}
 				}
@@ -5569,7 +5572,7 @@ function KinkyDungeonRemoveRestraint(Group: string, Keep?: boolean, Add?: boolea
 
 			if (!KinkyDungeonCancelFlag && !Add && !UnLink) {
 				KDRestraintDebugLog.push("Unlinking " + item.name);
-				let rr = KinkyDungeonUnLinkItem(item, Keep, undefined, ForceRemove);
+				let rr = KinkyDungeonUnLinkItem(item, Keep, undefined, ForceRemove, Remover);
 				if (rr.length > 0) {
 					KinkyDungeonCancelFlag = true;
 					rem.push(...rr);
@@ -5666,7 +5669,7 @@ function KinkyDungeonRemoveRestraint(Group: string, Keep?: boolean, Add?: boolea
 									}
 								}
 							}
-							KinkyDungeonSendEvent("postRemoval", {item: invrest, Character: KinkyDungeonPlayer, add: Add, keep: Keep, shrine: Shrine});
+							KinkyDungeonSendEvent("postRemoval", {item: invrest, Character: KinkyDungeonPlayer, add: Add, keep: Keep, shrine: Shrine, Remover: Remover});
 						}
 					}
 
@@ -5795,11 +5798,11 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem: item, Keep?: boolean, NoEv
 				if (rest.events) {
 					for (let e of rest.events) {
 						if (e.trigger == "postRemoval" && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
-							KinkyDungeonHandleInventoryEvent("postRemoval", e, item, {item: item, id: KinkyDungeonGetItemID(), Character: KinkyDungeonPlayer, keep: Keep, shrine: false, dynamic: true});
+							KinkyDungeonHandleInventoryEvent("postRemoval", e, item, {item: item, id: KinkyDungeonGetItemID(), Character: KinkyDungeonPlayer, keep: Keep, shrine: false, dynamic: true, Remover: Remover});
 						}
 					}
 				}
-				KinkyDungeonSendEvent("postRemoval", {item: rest, keep: Keep, shrine: false, dynamic: true, Character: KinkyDungeonPlayer});
+				KinkyDungeonSendEvent("postRemoval", {item: rest, keep: Keep, shrine: false, dynamic: true, Character: KinkyDungeonPlayer, Remover: Remover});
 			}
 
 			let sfx = (rest && KDGetRemoveSFX(rest)) ? KDGetRemoveSFX(rest) : "Struggle";
@@ -5905,7 +5908,7 @@ function KinkyDungeonLinkItem (
  * @param {boolean} Keep
  * @returns {item[]}
  */
-function KinkyDungeonUnLinkItem(item: item, Keep: boolean, _dynamic?: any, ForceRemove?: boolean): item[] {
+function KinkyDungeonUnLinkItem(item: item, Keep: boolean, _dynamic?: any, ForceRemove?: boolean, Remover?: entity): item[] {
 	//if (!data.add && !data.shrine)
 	// Note: this function is only called on a top level item, remember that for ForceRemove
 
@@ -5922,7 +5925,7 @@ function KinkyDungeonUnLinkItem(item: item, Keep: boolean, _dynamic?: any, Force
 				KDRestraintDebugLog.push("Adding Unlinked " + newRestraint.name);
 				KinkyDungeonAddRestraint(newRestraint, UnLink.tightness, true, UnLink.lock, Keep, undefined, undefined, UnLink?.events, UnLink.faction, true, UnLink.dynamicLink, UnLink.curse, undefined, undefined, UnLink.inventoryVariant, UnLink.data, undefined, undefined, ForceRemove, undefined, UnLink.flags);
 
-				KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true, Character: KinkyDungeonPlayer});
+				KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true, Character: KinkyDungeonPlayer, Remover: Remover});
 				if (KDRestraint(item).UnLink) {
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink" + item.name), KDBaseLightGreen, 2,
 						false, false, undefined, "Struggle");

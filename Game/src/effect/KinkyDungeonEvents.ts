@@ -2286,7 +2286,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				}
 				if (KinkyDungeonPlayerTags.get("Collars")) collar = true;
 				if (!collar) {
-					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, false, false, false);
+					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, true, false, false, undefined, undefined, data.Remover);
 				}
 			}
 		},

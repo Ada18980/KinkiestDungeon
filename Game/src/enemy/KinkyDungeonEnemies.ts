@@ -2563,10 +2563,11 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 			str: "",
 			fg: KDBaseWhite,
 			bg: KDBaseBlack,
-			size: 144,
+			size: KinkyDungeonInspect ? 1 : 144,
 			center: true,
 			npcSprite: KDNPCChar.get(enemy.id),
 			id: enemy.id,
+			inspect: KinkyDungeonInspect
 		});
 	}
 
