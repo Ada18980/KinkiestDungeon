@@ -83,8 +83,8 @@ function KDGetByRestraintEligibleEntry(entries: EligibleRestraintEntry[]): Eligi
 	let key_weight: Record<string, number> = {};
 	let key_value: Record<string, EligibleRestraintEntry> = {};
 	for (let en of entries) {
-		key_value[en.restraint?.name + ((en.applyVariant.prefix + en.applyVariant.suffix + en.applyVariant.curse) || "")] = en;
-		key_weight[en.restraint?.name + ((en.applyVariant.prefix + en.applyVariant.suffix + en.applyVariant.curse)  || "")] = Math.max(0, en.weight);
+		key_value[en.restraint?.name + ((en.applyVariant?.prefix + en.applyVariant?.suffix + en.applyVariant?.curse) || "")] = en;
+		key_weight[en.restraint?.name + ((en.applyVariant?.prefix + en.applyVariant?.suffix + en.applyVariant?.curse)  || "")] = Math.max(0, en.weight);
 	}
 
 	return key_value[KDGetByWeight(key_weight)];
