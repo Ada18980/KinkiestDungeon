@@ -2454,6 +2454,7 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonTargetingSpellWeapon = null;
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
+				KinkyDungeonInspect = false;
 				KinkyDungeonSpellPress = "";
 				KDModalArea = false;
 				KDSetFocusControl("");

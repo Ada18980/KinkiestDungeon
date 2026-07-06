@@ -9266,8 +9266,11 @@ function KDAssignLeashPoint(enemy: entity): KDJailPoint {
 }
 
 function KDGetHighSecOutpost(enemy: entity, fromHere?: boolean): string {
+
 	let forceFaction = KDGetLeashFaction(enemy);
 	let jailroom = KDGetLeashJailRoom(enemy);
+	
+	if (!enemy) return jailroom;
 
 	let slot = KDGetWorldMapLocation(KDCurrentWorldSlot);
 	if (!slot)
