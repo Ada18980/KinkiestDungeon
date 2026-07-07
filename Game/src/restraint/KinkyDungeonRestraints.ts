@@ -7720,7 +7720,7 @@ function KDDoRestraintParticle(entity: entity, restraint: restraint) {
 		zIndex: 10,
 		phase: 0,
 		scale: 0.5,
-		scale_delta: 1 / lifetime,
+		scale_delta: 0.7 / lifetime,
 		fadeEase: "invcos",
 		rotation: 0,
 		width: 72,

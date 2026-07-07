@@ -5953,6 +5953,8 @@ KDEffectTileTooltipLatex,Liquid Latex
 KDEffectTileTooltipLatexDesc,"Engulfs creatures"
 KDEffectTileTooltipLatexThin,Liquid Latex
 KDEffectTileTooltipLatexThinDesc,"Engulfs creatures"
+KDEffectTileTooltipScanning,Scanning Field
+KDEffectTileTooltipScanningDesc,"Detecting disobedience"
 KDEffectTileTooltipLatexBlue,Liquid Latex
 KDEffectTileTooltipLatexBlueDesc,"Engulfs dolls (like you)"
 KDEffectTileTooltipLatexThinBlue,Liquid Latex
@@ -14141,7 +14143,7 @@ KDDialogueRemoteLinkTether,What's this do?
 KDDialogueRemoteLinkTetherNevermere,"That harness you're wearing is quite convenient for me~"
 KDDialogueRemoteLinkTetherAncientRobot,Initiating prisoner lockdown protocol
 KDMsgRemoteLinkCuffs,Your RestraintName suddenly snap together as the EnemyName activates them!
-KDMsgRemoteLinkCHTether,Your harness projects energy tethers between your cuffs EnemyName activates it!
+KDMsgRemoteLinkCHTether,Your harness projects energy tethers between your cuffs as EnemyName activates it!
 
 TurnCounter,"Turn Count: "
 
@@ -33873,3 +33875,5 @@ KinkyDungeonBuffSleepy,Sleepy...
 KinkyDungeonBuffPoisonBreath,Toxic spores are making it difficult to move
 
 KDMissingEnemyType,An NPC in your collection was missing an enemy type and has been removed
+
+KDScanning,SCANNING

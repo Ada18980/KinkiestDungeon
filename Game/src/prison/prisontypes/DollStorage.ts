@@ -51,7 +51,10 @@ KDPrisonTypes.DollStorage = {
 						KinkyDungeonSetEnemyFlag(doll, "tryNotToSwap", 9999);
 						punishDoll.push(doll);
 					} else {
-						
+						if (!KDEnemyHasFlag(doll, "punished")) {
+							delete doll.preferredX;
+							delete doll.preferredY;
+						}
 						KinkyDungeonSetEnemyFlag(gg, "leadawayselect", 2);
 						KinkyDungeonSetEnemyFlag(doll, "leadAway", 9999);
 						KinkyDungeonSetEnemyFlag(doll, "tryNotToSwap", 0);
@@ -74,7 +77,13 @@ KDPrisonTypes.DollStorage = {
 		// For each deleteDoll, pick a guard to pull
 		for (let doll of deleteDoll) {
 			let gg: entity = null;
-			let storage = KDMapData.EndPosition;
+
+			if (!doll.preferredX) {
+				let point = CommonRandomItemFromList(null, KDMapData.Labels.Delete);
+				if (point) doll.preferredX = point.x;
+				if (point) doll.preferredY = point.y;
+			}
+			let storage = doll.preferredX ? {x: doll.preferredX, y: doll.preferredY}  : KDMapData.EndPosition;
 			if (doll.x == storage?.x && doll.y == storage?.y) {doll.hp = 0; continue;}
 			let dist = 11;
 			let canLeash = (guard: entity, dd: number) => {

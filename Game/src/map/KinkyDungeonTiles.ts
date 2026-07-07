@@ -312,15 +312,18 @@ function KDInteractNewTile(newTile: effectTile) {
  * @param [density]
  * @param mod - explosion modifier
  */
-function KDCreateAoEEffectTiles(x: number, y: number, tile: effectTileRef, durationMod?: number, rad?: number, avoidPoint?: { x: number, y: number }, density?: number, mod: string = "") {
+function KDCreateAoEEffectTiles(x: number, y: number, tile: effectTileRef, durationMod?: number, rad?: number, avoidPoint?: { x: number, y: number }, density?: number, mod: string = "",
+	criteria?: (x: number, y: number) => boolean, forEach?: (x: number, y: number, tile: effectTile) => void) {
 	for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
 		for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 			if (    KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x + X, Y + y))
 			    &&  AOECondition(x, y, x+X, y+Y, rad, mod)
 			    &&  (!avoidPoint || avoidPoint.x != X + x || avoidPoint.y != Y + y)
-			    &&  (density == undefined || KDRandom() < density))
+			    &&  (density == undefined || KDRandom() < density)
+				&&  (!criteria || criteria(x + X, y + Y)))
 			{
-				KDCreateEffectTile(x + X, y + Y, tile, durationMod);
+				let tt = KDCreateEffectTile(x + X, y + Y, tile, durationMod);
+				if (forEach) forEach(x + X, y + Y, tt);
 			}
 		}
 }
@@ -362,7 +365,7 @@ function KDRemoveAoEEffectTiles(x: number, y: number, tagsToRemove: string[], ra
  * @param fade
  * @param delta
  */
-function KDApplyAlpha(id: string, alpha: number, fade: string, delta: number) {
+function KDApplyAlpha(id: string, alpha: number, fade: string, delta: number, phase: number = 0) {
 	if (!fade) return 1.0;
 	switch (fade) {
 		case "random": {
@@ -370,13 +373,16 @@ function KDApplyAlpha(id: string, alpha: number, fade: string, delta: number) {
 			return Math.max(0, Math.min(1, alpha + (KDTileModes[id] ? -delta*0.001 : delta*0.001)));
 		}
 		case "sine3000": {
-			return Math.max(0, Math.min(1, .5 + 0.25 * Math.sin(CommonTime()/3000)));
+			return Math.max(0, Math.min(1, .5 + 0.25 * Math.sin(phase + CommonTime()/3000)));
 		}
 		case "sine1000": {
-			return Math.max(0, Math.min(1, .5 + 0.25 * Math.sin(CommonTime()/1000)));
+			return Math.max(0, Math.min(1, .5 + 0.25 * Math.sin(phase + CommonTime()/1000)));
+		}
+		case "scan": {
+			return Math.max(0, Math.min(1, .65 + 0.3 * Math.sin(phase + 6.28 * CommonTime()/600)));
 		}
 		case "ice": {
-			return Math.max(0, Math.min(1, .5 + 0.25 * Math.sin(CommonTime()/2500)));
+			return Math.max(0, Math.min(1, .5 + 0.25 * Math.sin(phase + CommonTime()/2500)));
 		}
 	}
 }
@@ -433,7 +439,7 @@ function KDDrawEffectTiles(_canvasOffsetX: number, _canvasOffsetY: number, CamX:
 				}
 				let op: Record<string, any> = {
 					zIndex: -0.1 + 0.01 * tile.priority,
-					alpha: KDApplyAlpha(tileid, kdpixisprites.get(tileid)?.alpha, tile.fade, delta),
+					alpha: KDApplyAlpha(tileid, kdpixisprites.get(tileid)?.alpha, tile.fade, delta, tile.phase),
 				};
 
 				if (tile.spin) {
@@ -452,7 +458,7 @@ function KDDrawEffectTiles(_canvasOffsetX: number, _canvasOffsetY: number, CamX:
 				}
 				if (tile.yfade) {
 					if (!TileYFade[tileid]) TileYFade[tileid] = KDRandom();
-					TileYFade[tileid] = KDApplyAlpha(tileid, TileYFade[tileid], tile.yfade, delta);
+					TileYFade[tileid] = KDApplyAlpha(tileid, TileYFade[tileid], tile.yfade, delta, tile.phase);
 				}
 				if (tile.colorforcetint) {
 					op.tint = string2hex(tile.colorforcetint);

@@ -3196,20 +3196,22 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			let category = KDControlHarnessCategories[e.kind];
 
 			if (category) {
-				category.activateFunction(e, item, data);
+				if (category.activateFunction(e, item, data)) {
+					if (e.enemyDialogue) {
+						const dialogue = KinkyDungeonGetTextForEnemy(e.enemyDialogue, enemy, undefined, KDPlayer());
+						KinkyDungeonSendDialogue(enemy, dialogue, KDGetColor(enemy), 2, 4);
+					}
+
+					if (e.msg) {
+						const msg = TextGet(e.msg)
+							.replace("RestraintName", TextGet(`Restraint${item.name}`))
+							.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
+						KinkyDungeonSendTextMessage(5, msg, KDBaseOrange, 2);
+					}
+				}
 			}
 
-			if (e.enemyDialogue) {
-				const dialogue = KinkyDungeonGetTextForEnemy(e.enemyDialogue, enemy, undefined, KDPlayer());
-				KinkyDungeonSendDialogue(enemy, dialogue, KDGetColor(enemy), 2, 4);
-			}
-
-			if (e.msg) {
-				const msg = TextGet(e.msg)
-					.replace("RestraintName", TextGet(`Restraint${item.name}`))
-					.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
-				KinkyDungeonSendTextMessage(5, msg, KDBaseOrange, 2);
-			}
+			
 		},
 		"RemoteLinkItem": (e, item, data) => {
 			const enemy = data.enemy;

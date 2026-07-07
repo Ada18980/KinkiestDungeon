@@ -5586,8 +5586,10 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							KDIntentEvents[action].trigger(enemy, {});
 						}
 					}
-				} else 
+				} else if (KDEnemyCanDoJailbreak(enemy, player, delta)) {
 					KinkyDungeonAggroAction('jailbreak', {enemy: enemy, force: true});
+				}
+					
 			else if (KDGameData.PrisonerState == 'parole' && !KinkyDungeonIsArmsBound() && !KDEnemyHasFlag(enemy, "Shop"))
 				KinkyDungeonAggroAction('unrestrained', {enemy: enemy});
 			else if ((KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail') && (KinkyDungeonLastTurnAction == "Struggle" || KinkyDungeonLastAction == "Struggle"))
@@ -11482,4 +11484,45 @@ function KDGetProgRestraintOrder(enemy: entity, player: entity, aiData: KDAIData
 
 
 	return Order || "Capture";
+}
+
+function KDEnemyCanDoJailbreak(enemy: entity, player: entity, delta: number): boolean {
+	if (enemy.Enemy?.Behavior?.scanBeforeAlert && !(KDGameData.PrisonerState == 'chase'
+		|| KDGameData.AlertTimer > 0
+	)) {
+		if (KDEnemyHasFlag(enemy, "scanComplete")) {
+			return true;
+		}
+		if (!KDEnemyHasFlag(enemy, "startScan")) {
+			KinkyDungeonSetEnemyFlag(enemy, "startScan", 6);
+			KinkyDungeonSetEnemyFlag(enemy, "scanIncomplete", 4);
+			KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+			KinkyDungeonSendDialogue(enemy,
+				TextGet("KDScanning"), KDBaseRed,
+				4, 5, false, true);
+			let dist = KDistChebyshev(enemy.x - player.x, enemy.y - player.y);
+			if (dist < 1) dist = 1;
+			for (let i = 1; i <= dist; i++) {
+				let xx = Math.round(enemy.x + (player.x - enemy.x) * i / dist);
+				let yy = Math.round(enemy.y + (player.y - enemy.y) * i / dist);
+				KDCreateAoEEffectTiles(xx, yy, {
+					name: "Scanning",
+				}, 0, Math.max(0.5, Math.round(2 * i / dist)) + 0.02, 
+				undefined, undefined, undefined, (x, y) => {
+					return KinkyDungeonCheckPath(enemy.x, enemy.y, x, y, true, false)
+						&& !KDEffectTileTags(x, y).scan
+				}, (x, y, tile) => {
+					tile.phase = Math.random() * 6;
+				});
+			}
+		}
+		else if (!KDEnemyHasFlag(enemy, "scanIncomplete") && KDEffectTileTags(player.x, player.y).scan) {
+			KinkyDungeonSetEnemyFlag(enemy, "startScan", 0);
+			KinkyDungeonSetEnemyFlag(enemy, "scanIncomplete", 0);
+			KinkyDungeonSetEnemyFlag(enemy, "scanComplete", 10);
+			return true;
+		}
+		return false;
+	}
+	return !enemy.Enemy.Behavior?.noAlert;
 }

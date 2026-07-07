@@ -84,6 +84,15 @@ let KDEffectTiles: Record<string, effectTile> = {
 		affinities: ["Slippery"],
 		tags: ["slippery", "metal", "conductive", "conductcold", "liquidmetal", "terrain", "gluedanger", "nomapgen"],
 	},
+	"Scanning": {
+		name: "Scanning",
+		duration: 6,
+		priority: 100,
+		fade: "scan",
+		brightness: 1,
+		lightColor: 0xff5555,
+		tags: ["scan"],
+	},
 	"LatexThin": {
 		name: "LatexThin",
 		functionName: "Latex",

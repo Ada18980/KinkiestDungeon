@@ -981,6 +981,11 @@ interface enemy extends KDHasTags {
 		ensureGroupTiedArousal?: string[],
 		/** Wont stop tying you until these playertags are fulfilled (arousal mode only)*/
 		ensurePlayerTagArousal?: string[],
+		/** Used for robot scanning */
+		scanBeforeAlert?: boolean,
+		/** Dont jailbreak alert*/
+		noAlert?: boolean,
+		
 	}
 
 	/** This enemy wont appear outside of its designated floors even if it shares the tag */
@@ -2129,6 +2134,7 @@ interface effectTile {
 	spinAngle?: number,
 	colortint?: string,
 	colorforcetint?: string,
+	phase?: number,
 
 };
 
@@ -2144,6 +2150,7 @@ interface effectTileRef {
 	statuses?: Record<string, number>,
 	colortint?: string,
 	colorforcetint?: string,
+	phase?: number,
 };
 
 type KDPerk = {

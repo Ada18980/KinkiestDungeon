@@ -44,8 +44,10 @@ function KDAddParticle(x: number, y: number, img: string, _type: string, data: K
 		sprite.zIndex = info.zIndex;
 
 		if (info.scale != 1 || info.scale_delta) {
-			sprite.scale.x = info.scale;
-			sprite.scale.y = info.scale;
+			if (info.width) sprite.width = info.width * info.scale;
+			else sprite.scale.x = info.scale;
+			if (info.height) sprite.height = info.height * info.scale;
+			else sprite.scale.y = info.scale;
 		}
 		if (info.time < 0) sprite.visible = false;
 
@@ -115,8 +117,10 @@ function KDAddParticleEmitter(x: number, y: number, img: string, imgemitted: str
 		}
 
 		if (emitterinfo.scale != 1 || emitterinfo.scale_delta) {
-			sprite.scale.x = emitterinfo.scale;
-			sprite.scale.y = emitterinfo.scale;
+			if (emitterinfo) sprite.width = emitterinfo.width * emitterinfo.scale;
+			else sprite.scale.x = emitterinfo.scale;
+			if (emitterinfo.height) sprite.height = emitterinfo.height * emitterinfo.scale;
+			else sprite.scale.y = emitterinfo.scale;
 		}
 		if (emitterinfo.time < 0) sprite.visible = false;
 
@@ -182,8 +186,10 @@ function KDUpdateParticles(main_delta: number) {
 		}
 
 		if (info.scale != 1 || info.scale_delta) {
-			sprite.scale.x = info.scale;
-			sprite.scale.y = info.scale;
+			if (info.width) sprite.width = info.width * info.scale;
+			else sprite.scale.x = info.scale;
+			if (info.height) sprite.height = info.height * info.scale;
+			else sprite.scale.y = info.scale;
 			info.scale += delta * info.scale_delta;
 		}
 
@@ -234,8 +240,10 @@ function KDUpdateParticles(main_delta: number) {
 		}
 
 		if (emitter.scale != 1 || emitter.scale_delta) {
-			sprite.scale.x = emitter.scale;
-			sprite.scale.y = emitter.scale;
+			if (emitter) sprite.width = emitter.width * emitter.scale;
+			else sprite.scale.x = emitter.scale;
+			if (emitter.height) sprite.height = emitter.height * emitter.scale;
+			else sprite.scale.y = emitter.scale;
 			emitter.scale += delta * emitter.scale_delta;
 		}
 

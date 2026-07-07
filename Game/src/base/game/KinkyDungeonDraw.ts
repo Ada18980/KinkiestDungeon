@@ -5334,6 +5334,9 @@ let KDEffectTileTooltips: Record<string, {color: string, code: (tile: effectTile
 	'Latex': {
 		color: "#d952ff",
 		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
+	'Scanning': {
+		color: "#ff527a",
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff527a");}},
 	'LatexThin': {
 		color: "#d952ff",
 		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},

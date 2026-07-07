@@ -10041,6 +10041,7 @@ let KDControlHarnessCategories: Record<string, any> = {
 			// If there are any cuffs to upgrade
 			let upgradedTags = ["ControlHArm", "ControlHAnkle", "ControlHLeg"];
 			let addedGroup: Record<string, boolean> = {};
+			let succany = false;
 			if (upgradedTags.some((tag) => {return KinkyDungeonPlayerTags.get(tag) != true;})) {
 				let succ = false;
 				for (let rName of ["CyberHeels", "CyberMittens"]) {
@@ -10059,6 +10060,7 @@ let KDControlHarnessCategories: Record<string, any> = {
 
 				}
 				if (succ) {
+					succany = true;
 					KinkyDungeonSendTextMessage(4,
 						TextGet("KDControlHarnessCuffsActivate"),
 						"White",
@@ -10067,6 +10069,7 @@ let KDControlHarnessCategories: Record<string, any> = {
 				}
 
 			}
+			return succany;
 			//KinkyDungeonSetFlag("ControlHarnessCuffs", 1);
 			//}
 		},
@@ -10091,6 +10094,7 @@ let KDControlHarnessCategories: Record<string, any> = {
 
 			// If there are any cuffs to upgrade
 			let upgradedTags = ["ControlHArm", "ControlHAnkle", "ControlHLeg"];
+			let succany = false
 			let addedGroup: Record<string, boolean> = {};
 			if (upgradedTags.some((tag) => {return KinkyDungeonPlayerTags.get(tag) != true;})) {
 				let succ = false;
@@ -10109,6 +10113,7 @@ let KDControlHarnessCategories: Record<string, any> = {
 
 				}
 				if (succ) {
+					succany = true;
 					KinkyDungeonSendTextMessage(4,
 						TextGet("KDControlHarnessCuffsLink"),
 						"White",
@@ -10117,6 +10122,7 @@ let KDControlHarnessCategories: Record<string, any> = {
 				}
 
 			}
+			return succany;
 			//KinkyDungeonSetFlag("ControlHarnessCuffs", 1);
 			//}
 		},
@@ -10130,7 +10136,7 @@ let KDControlHarnessCategories: Record<string, any> = {
 		activateFunction: (_e: KinkyDungeonEvent, item: item, _data: any, _invItems: item[]) => {
 			if (!KinkyDungeonStatsChoice.get("arousalMode")) return;
 			//if (!KinkyDungeonFlags.get("ControlHarnessCuffs")) {
-
+			let succ = false;
 			// If there are any cuffs to upgrade
 			let fillGroups = ["ItemVulva", "ItemVulvaPiercings", "ItemButt", "ItemNipples"];
 			if (fillGroups.some((group) => {return !KinkyDungeonGetRestraintItem(group);})) {
@@ -10153,10 +10159,12 @@ let KDControlHarnessCategories: Record<string, any> = {
 						KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
 						
 						if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/RobotEngage.ogg");
+						succ = true;
 					}
 				}
 
 			}
+			return succ;
 			//KinkyDungeonSetFlag("ControlHarnessCuffs", 1);
 			//}
 		},

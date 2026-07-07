@@ -215,6 +215,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		evasion: -0.2,
 		maxblock: 1,
 		maxdodge: 0,
+		Behavior: {
+			noAlert: true,
+		},
 		Sound: {
 			baseAmount: 4.5,
 			moveAmount: 4.5,
@@ -239,6 +242,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		evasion: -0.2,
 		maxblock: 1,
 		maxdodge: 0,
+		Behavior: {
+			noAlert: true,
+		},
 		Sound: {
 			baseAmount: 6,
 			moveAmount: 7,
@@ -265,6 +271,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		ondeath: [
 			{type: "WolfServer"}
 		],
+		Behavior: {
+			noAlert: true,
+		},
 		Sound: {
 			baseAmount: 5,
 			moveAmount: 0,
@@ -1652,6 +1661,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		],
 		Behavior: {
 			leashCondition: "dollmakerLeash",
+			scanBeforeAlert: true,
 		},
 		maxblock: 0,
 		maxdodge: 0,
@@ -1682,6 +1692,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		],
 		Behavior: {
 			leashCondition: "dollmakerLeash",
+			scanBeforeAlert: true,
 		},
 		maxblock: 0,
 		maxdodge: 0,
@@ -1712,6 +1723,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#e7cf1a"},
 		],
+		Behavior: {
+			scanBeforeAlert: true,
+		},
 		maxblock: 0,
 		maxdodge: 1,
 		stamina: 2,
@@ -1756,6 +1770,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
+		Behavior: {
+			scanBeforeAlert: true,
+		},
 		Security: {
 			level_key: 1,
 			level_tech: 1,
@@ -1789,6 +1806,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			Block: "Clang",
 			Resist: "SoftShield",
 			Damage: "RobotHit",
+		},
+		Behavior: {
+			scanBeforeAlert: true,
 		},
 		maxblock: 0,
 		maxdodge: 0,
@@ -1827,6 +1847,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			Resist: "SoftShield",
 			Damage: "RobotHit",
 		},
+		Behavior: {
+			scanBeforeAlert: true,
+		},
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
@@ -1857,6 +1880,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		],
 		effect: {
 			effect: {name: "LatexSpray", count: 1, time: 4, power: 2, mult: 2, damage: "glue"},
+		},
+		Behavior: {
+			scanBeforeAlert: true,
 		},
 		spells: ["LatexSpray"], spellCooldownMult: 1, spellCooldownMod: 0, projectileTargeting: true,
 		cueSfx: {
@@ -1894,6 +1920,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		Security: {
 			level_tech: 2,
 		},
+		Behavior: {
+			scanBeforeAlert: true,
+		},
 		maxblock: 0,
 		maxdodge: 3,
 		stamina: 8,
@@ -1930,6 +1959,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#e7cf1a"},
 		],
+		Behavior: {
+			scanBeforeAlert: true,
+		},
 		maxblock: 0,
 		maxdodge: 3,
 		stamina: 8,
@@ -2055,6 +2087,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			Resist: "SoftShield",
 			Damage: "RobotHit",
 		},
+		Behavior: {
+			scanBeforeAlert: true,
+		},
 		stamina: 2,
 		Sound: {
 			baseAmount: 3,
@@ -2092,6 +2127,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			Resist: "SoftShield",
 			Damage: "RobotHit",
 		},
+		Behavior: {
+			noAlert: true,
+		},
 		Sound: {
 			baseAmount: 4,
 			moveAmount: 8,
@@ -2125,6 +2163,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			Block: "Clang",
 			Resist: "SoftShield",
 			Damage: "RobotHit",
+		},
+		Behavior: {
+			scanBeforeAlert: true,
 		},
 		stamina: 2,
 		Sound: {
@@ -2163,6 +2204,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			Resist: "SoftShield",
 			Damage: "RobotHit",
 		},
+		Behavior: {
+			scanBeforeAlert: true,
+		},
 		Sound: {
 			baseAmount: 5,
 			moveAmount: 10,
@@ -2197,6 +2241,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			Block: "Clang",
 			Resist: "SoftShield",
 			Damage: "RobotHit",
+		},
+		Behavior: {
+			scanBeforeAlert: true,
 		},
 		Security: {
 			level_key: 2,
@@ -2235,6 +2282,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			Block: "Clang",
 			Resist: "SoftShield",
 			Damage: "RobotHit",
+		},
+		Behavior: {
+			scanBeforeAlert: true,
 		},
 		Sound: {
 			baseAmount: 5,
@@ -2291,6 +2341,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		ignorechance: 0, armor: 2.5, followRange: 2, AI: "hunt",  cohesion: 0.5, events: [
 			{trigger: "tick", type: "secretToy"},
 		],
+		Behavior: {
+			scanBeforeAlert: true,
+		},
 		maxblock: 0,
 		maxdodge: 3,
 		nopickpocket: true,
@@ -2356,6 +2409,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "tick", type: "LeashWolfgirls", dist: 3.5, chance: 0.3},
 		],
+		Behavior: {
+			noAlert: true,
+		},
 		maxblock: 3,
 		maxdodge: 2,
 		stamina: 6,
@@ -2432,6 +2488,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			moveAmount: 4.5,
 			alertAmount: 12,
 		},
+		Behavior: {
+			noAlert: true,
+		},
 		shield: 5,
 		AI: "hunt",  visionRadius: 9, maxhp: 6, minLevel:0, weight:-4, movePoints: 1.5, cohesion: 1.0, armor: 1.5, spellResist: 1.5,
 		attackPoints: 3, attack: "", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "grope",
@@ -2450,6 +2509,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			baseAmount: 4,
 			moveAmount: 7,
 			alertAmount: 12,
+		},
+		Behavior: {
+			scanBeforeAlert: true,
 		},
 		AI: "hunt",  visionRadius: 9, maxhp: 7, minLevel:0, weight:-3, movePoints: 1, cohesion: 1.0, armor: 1, spellResist: -0.5, evasion: 0.5,
 		attackPoints: 2, attack: "MeleeBind", attackWidth: 2.5, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 1,
