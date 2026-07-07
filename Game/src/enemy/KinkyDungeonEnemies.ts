@@ -33,6 +33,8 @@ let KDDefaultEnemyCastSound = 8;
 let KDDefaultEnemyIdleSound = 2;
 let KDDefaultEnemyAlertSound = 5;
 
+let KDContinueAttackChance = 0.65;
+
 let KDEventableAttackTypes = [
 	"Lock",
 	"Will",
@@ -3787,6 +3789,47 @@ function KinkyDungeonGetRandomEnemyPoint (
  * @param ignoreID  - ignores any entity with this ID standing on a point
  * @param ignoreEntity - Ignores any entity standing on a point
  */
+function KDGetNearestLabel (
+	x:             number,
+	y:             number,
+	typeFilter:    string,
+	maxDist:       number = 1000,
+	navigable:    boolean = true
+): KDLabel
+{
+	if (!KDMapData.Labels) return null;
+	let filtered: KDLabel[] = [];
+	if (typeFilter) {
+		if (!KDMapData.Labels[typeFilter]) return null;
+		for (let l of KDMapData.Labels[typeFilter]) {
+			if (
+				(!navigable || KDPointWanderable(l.x, l.y))
+			) {
+				filtered.push(l);
+			}
+		}
+	}
+
+	let dist = maxDist;
+	let label: KDLabel = null;
+	let dd = dist;
+	for (let l of filtered) {
+		if (KDistChebyshev(l.x - x, l.y - y) > dist) continue;
+		dd = KDistEuclidean(l.x - x, l.y - y);
+		if (dd < dist) {
+			dist = dd;
+			label = l;
+		}
+	}
+	return label;
+}
+
+
+/**
+ * @param entity
+ * @param ignoreID  - ignores any entity with this ID standing on a point
+ * @param ignoreEntity - Ignores any entity standing on a point
+ */
 function KDGetNearestInterestingLabel (
 	x:             number,
 	y:             number,
@@ -5663,15 +5706,16 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					|| KinkyDungeonFlags
 						.get("overrideleashprotection") // The player is leashed but something allows her to be attacked anyway
 					|| ((AIData.addMoreRestraints
-						|| (
+						/*|| (
 							KDPlayer().x == (enemy.fx||0)
 							&& KDPlayer().y == (enemy.fy||0)
-						)
+							&& KDRandom() < KDContinueAttackChance
+						)*/
 						|| (
 							KDPlayer().x == enemy.gx
 							&& KDPlayer().y == enemy.gy
 						)
-						|| enemy.attackPoints > 0
+						|| (enemy.attackPoints > 0 && KDRandom() < KDContinueAttackChance)
 						|| KDEnemyHasFlag(enemy, "playerBlocking"))
 						&& (
 							KDIsPlayerTetheredToLocation(player, enemy.x, enemy.y, enemy) // The player is attached to this enemy
@@ -6972,6 +7016,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 										} else {
 											restraintFromInventory.push(rest.iv || rest.r.name);
 										}
+										
 										if (rest) {
 											replace.push({keyword:"RestraintAdded", value: KDGetRestraintName(rest.r, rest.v)});
 											restraintAdd.push({r: rest.r, v: rest.v, iv: rest.iv});

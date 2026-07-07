@@ -730,6 +730,7 @@ function KDGenMaze(startX: number, startY: number, tile: any, seed: any, _MazeBl
 			if (KDRandom() < endchance && BacktrackLinks[x + ',' + y]) {
 				// This is a dead end, now lets remove it unless its on the border
 				let links: any[] = Object.values(BacktrackLinks[x + ',' + y])
+					//@ts-ignore
 					.filter((link: { x: number; y: number}) => {return !RemoveTiles[link.x + ',' + link.y];});
 				while (links?.length <= 1) {
 					// only go until there are branches
@@ -741,6 +742,7 @@ function KDGenMaze(startX: number, startY: number, tile: any, seed: any, _MazeBl
 						y = links[0].y;
 						links = (links.length > 0 && BacktrackLinks[x + ',' + y]) ?
 							Object.values(BacktrackLinks[x + ',' + y])
+								//@ts-ignore
 								.filter((link: { x: number; y: number}) => {return !RemoveTiles[link.x + ',' + link.y];}) : null;
 					} else {
 						links = null;
@@ -1006,135 +1008,71 @@ let KDTileGen = {
 	},
 	"Cage": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		let storage = false;
-		if (KDMapData.Labels["Storage"]) {
-			for (let label of KDMapData.Labels["Storage"]) {
-				if (label.x == x && label.y == y && label.type == "Storage") {
-					storage = true;
-					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
-				}
-			}
-		}
+		let storage = KDDoJailPointForTile(x, y);
+		
 		if (!storage)
 			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KDGetPervertibleFurniture("Cage", KinkyDungeonStatsChoice.get("MoreKinkyFurniture") ? 0.8 : 0.1)};
 	},
 	"AlwaysCage": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		let storage = false;
-		if (KDMapData.Labels["Storage"]) {
-			for (let label of KDMapData.Labels["Storage"]) {
-				if (label.x == x && label.y == y && label.type == "Storage") {
-					storage = true;
-					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
-				}
-			}
-		}
+		let storage = KDDoJailPointForTile(x, y);
 		if (!storage)
 			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: "Cage"};
 	},
 	"DisplayStand": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		let storage = false;
-		if (KDMapData.Labels["Storage"]) {
-			for (let label of KDMapData.Labels["Storage"]) {
-				if (label.x == x && label.y == y && label.type == "Storage") {
-					storage = true;
-					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
-				}
-			}
-		}
+		
+		let storage = KDDoJailPointForTile(x, y);
 		if (!storage)
 			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: tileGenerator.Furniture};
 	},
 	"OneBarTrap": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		let storage = false;
-		if (KDMapData.Labels["Storage"]) {
-			for (let label of KDMapData.Labels["Storage"]) {
-				if (label.x == x && label.y == y && label.type == "Storage") {
-					storage = true;
-					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
-				}
-			}
-		}
+		
+		let storage = KDDoJailPointForTile(x, y);
 		if (!storage)
 			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarTrap" : "DisplayStand"};
 	},
 	"OneBarVibeTrap": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		let storage = false;
-		if (KDMapData.Labels["Storage"]) {
-			for (let label of KDMapData.Labels["Storage"]) {
-				if (label.x == x && label.y == y && label.type == "Storage") {
-					storage = true;
-					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
-				}
-			}
-		}
+		
+		let storage = KDDoJailPointForTile(x, y);
 		if (!storage)
 			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarVibeTrap" : "DisplayStand"};
 	},
 	"OneBarSpreaderTrap": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		let storage = false;
-		if (KDMapData.Labels["Storage"]) {
-			for (let label of KDMapData.Labels["Storage"]) {
-				if (label.x == x && label.y == y && label.type == "Storage") {
-					storage = true;
-					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
-				}
-			}
-		}
+		
+		let storage = KDDoJailPointForTile(x, y);
 		if (!storage)
 			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarSpreaderTrap" : "DisplayStand"};
 	},
 	"OneBarSpreaderVibeTrap": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		let storage = false;
-		if (KDMapData.Labels["Storage"]) {
-			for (let label of KDMapData.Labels["Storage"]) {
-				if (label.x == x && label.y == y && label.type == "Storage") {
-					storage = true;
-					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
-				}
-			}
-		}
+		
+		let storage = KDDoJailPointForTile(x, y);
 		if (!storage)
 			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: KinkyDungeonStatsChoice.get("arousalMode") ? "OneBarSpreaderVibeTrap" : "DisplayStand"};
 	},
 	"DollStand": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		let storage = false;
-		if (KDMapData.Labels["Storage"]) {
-			for (let label of KDMapData.Labels["Storage"]) {
-				if (label.x == x && label.y == y && label.type == "Storage") {
-					storage = true;
-					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
-				}
-			}
-		}
+		
+		let storage = KDDoJailPointForTile(x, y);
 		if (!storage)
 			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: "DollStandReal"};
 	},
 	"DollStandSpreader": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
-		let storage = false;
-		if (KDMapData.Labels["Storage"]) {
-			for (let label of KDMapData.Labels["Storage"]) {
-				if (label.x == x && label.y == y && label.type == "Storage") {
-					storage = true;
-					KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); break;
-				}
-			}
-		}
+		
+		let storage = KDDoJailPointForTile(x, y);
 		if (!storage)
 			KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
 		return {Type: "Furniture", Furniture: "DollStandSpreaderReal"};
@@ -1151,7 +1089,10 @@ let KDTileGen = {
 	},
 	"Furniture": (x, y, tile, tileGenerator, data) => {
 		//KinkyDungeonMapSet(x, y, tileGenerator.tile);
-		KDMapData.JailPoints.push({x: x, y: y, type: (tileGenerator.jail?.type) || "furniture", radius: (tileGenerator.jail?.radius) || 1});
+		
+		let storage = KDDoJailPointForTile(x, y);
+		if (!storage)
+			KDMapData.JailPoints.push({x: x, y: y, type: (tileGenerator.jail?.type) || "furniture", radius: (tileGenerator.jail?.radius) || 1});
 		return {Type: "Furniture", Furniture: tileGenerator.Furniture};
 	},
 	"Table": (x, y, tile, tileGenerator, data) => {
@@ -1355,4 +1296,21 @@ function KDGetMapTileWithTags(tag: string): KDMapTile[] {
 	}
 
 	return list;
+}
+
+function KDDoJailPointForTile(x: number, y: number) {
+	if (KDMapData.Labels["Storage"]) {
+		for (let label of KDMapData.Labels["Storage"]) {
+			if (label.x == x && label.y == y && label.type == "Storage") {
+				KDMapData.JailPoints.push({x: x, y: y, type: "storage", radius: 1}); return true;
+			}
+		}
+	}
+	if (KDMapData.Labels["Display"]) {
+		for (let label of KDMapData.Labels["Display"]) {
+			if (label.x == x && label.y == y && label.type == "Display") {
+				KDMapData.JailPoints.push({x: x, y: y, type: "display", radius: 1}); return true;
+			}
+		}
+	}
 }

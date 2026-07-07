@@ -2043,16 +2043,21 @@ function KDWanderEnemy(en: entity) {
  * Moves an enemy to a random position on the map
  * @param e
  */
-function KDKickEnemy(e: entity, minDist: number = 10, force: boolean = false) {
+function KDKickEnemy(e: entity, minDist: number = 10, force: boolean = false, prefDist?: number) {
 	if (!e.Enemy.tags.temporary || force) {
 		if (!e.Enemy.tags.prisoner && !KDEnemyHasFlag(e, "imprisoned")) {
 			let p = (e.spawnX != undefined && e.spawnY != undefined
 				&& (!e.homeCoord || (KDCompareLocation(e.homeCoord, KDGetCurrentLocation())))
 			) ? {x: e.spawnX, y: e.spawnY} : undefined;
 			if (!p  ||  KDistEuclidean (e.x - (e.spawnX != undefined ? e.spawnX : e.x),
-				                    e.y - (e.spawnY != undefined ? e.spawnY : e.y)) < minDist)
+				                    e.y - (e.spawnY != undefined ? e.spawnY : e.y)) < minDist
+								|| prefDist)
 			{
-				p = KinkyDungeonGetRandomEnemyPoint(true);
+				if (prefDist) {
+					p = KinkyDungeonGetNearbyPoint(e.x, e.y, true, e, prefDist < 2, true);
+				}
+				if (!prefDist || !p)
+					p = KinkyDungeonGetRandomEnemyPoint(true);
 			}
 			if (p) {
 				e.x = p.x;

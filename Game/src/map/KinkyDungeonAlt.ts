@@ -2123,7 +2123,7 @@ function KinkyDungeonCreateDollShoppe(_POI: any, VisitedRooms: any[], _width: nu
 	
 
 
-	let endX = 1 + Math.floor(0.5 * KDRandom() * (KDMapData.GridWidth - 2))*2;
+	let endX = 1 + Math.floor(0.1 + 0.3 * KDRandom() * (KDMapData.GridWidth - 2))*2;
 	KDMapData.EndPosition = {x: endX, y: 1};
 	KDMapData.StartPosition = {x: KDMapData.EndPosition.x, y: KDMapData.EndPosition.y};
 	KinkyDungeonMapSet(endX, 1, 's');
@@ -2134,13 +2134,15 @@ function KinkyDungeonCreateDollShoppe(_POI: any, VisitedRooms: any[], _width: nu
 	for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
 		for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
 			if (Math.abs(X - endX) > 2) { // make sure center passage is clear
-				if (KinkyDungeonMapGet(X, Y) == '0' || (X == KDMapData.EndPosition.x && Y == KDMapData.EndPosition.y)) {
+				if (KinkyDungeonMapGet(X, Y) == '0' || (X == KDMapData.EndPosition.x && Y == KDMapData.EndPosition.y)
+					) {
 					let found = false;
 					for (let YY = Math.max(1, Y - 3);
 							!found && YY < KDMapData.GridHeight - 1 && YY <= Y + 3; YY++) {
 						for (let XX = Math.max(1, X - 3);
 							!found && XX < KDMapData.GridWidth - 1 && XX <= X + 3; XX++) {
-							if (KinkyDungeonMapGet(XX, YY) != '0') {
+							if (KinkyDungeonMapGet(XX, YY) != '0'
+								|| KDMapData.Labels.BackDoor.some((door) => {return Math.abs(door.x - X) < 2;})) {
 								found = true;
 							}
 						}

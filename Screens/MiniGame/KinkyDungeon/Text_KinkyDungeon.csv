@@ -2624,6 +2624,8 @@ KinkyDungeonSummonSingleSlimeMold,A mobile cyst emerges from the slime mold nest
 
 NameFactoryDoll,Factory Doll
 KillFactoryDoll,"The doll is subdued."
+NamePrettyDoll,Pretty Doll
+KillPrettyDoll,"The doll is subdued."
 NameFreeDoll,Freed Doll
 KillFreeDoll,"The doll returns to ${Etheir} place."
 

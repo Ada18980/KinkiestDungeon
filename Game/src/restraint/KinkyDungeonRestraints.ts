@@ -506,6 +506,8 @@ KDProgressiveOrder['Capture'] = [
 	"ItemArms", // Blocks spells and escaping
 	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
 	"ItemNeck", // Makes you very slow
+	"ItemNeckAccessories",
+	"ItemNeckRestraints",
 	"ItemMouth", // Makes you very slow
 	"ItemTorso", // Usually just makes other restraints harder
 	"ItemHands", // Blocks weapons but no spells
@@ -523,6 +525,8 @@ KDProgressiveOrder['AntiMage'] = [
 	"ItemMouth", // Makes you very slow
 	"ItemArms", // Blocks spells and escaping
 	"ItemNeck", // Makes you very slow
+	"ItemNeckAccessories",
+	"ItemNeckRestraints",
 	"ItemHands", // Blocks weapons but no spells
 	"ItemTorso", // Usually just makes other restraints harder
 	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
@@ -541,7 +545,9 @@ KDProgressiveOrder['Immobilize'] = [
 	"ItemBoots", // Typically doesnt hobble completely
 	"ItemFeet", // Makes you very slow
 	"ItemArms", // Blocks spells and escaping
-	"ItemNeck", // Makes you very slow
+	"ItemNeck", 
+	"ItemNeckAccessories",
+	"ItemNeckRestraints",
 	"ItemHands", // Blocks weapons but no spells
 	"ItemTorso", // Usually just makes other restraints harder
 	"ItemMouth", // Makes you very slow
@@ -564,6 +570,9 @@ KDProgressiveOrder['Strict'] = [
 	"ItemMouth", // Blocks spells and potions
 	"ItemFeet", // Makes you very slow
 	"ItemArms", // Blocks spells and escaping
+	"ItemNeck", 
+	"ItemNeckAccessories",
+	"ItemNeckRestraints",
 ];
 
 /** A funner restraining order, starting with non-impactful then locking down spells and finally sealing in helplessness */
@@ -576,6 +585,9 @@ KDProgressiveOrder['Fun1'] = [
 	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
 	"ItemNipples", // Chastity is for good girls!
 	"ItemBreast", // Goes well with belts
+	"ItemNeck", 
+	"ItemNeckAccessories",
+	"ItemNeckRestraints",
 	"ItemHead", // Blind, but does not stop from wielding anything
 	"ItemEars", //  Sensory
 	"ItemBoots", // Typically doesnt hobble completely
@@ -598,6 +610,9 @@ KDProgressiveOrder['Fun2'] = [
 	"ItemArms", // Blocks spells and escaping
 	"ItemBreast", // Goes well with belts
 	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemNeck", 
+	"ItemNeckAccessories",
+	"ItemNeckRestraints",
 	"ItemHead", // Blind, but does not stop from wielding anything
 	"ItemFeet", // Makes you very slow
 	"ItemEars", //  Sensory
@@ -611,6 +626,9 @@ KDProgressiveOrder['Fun3'] = [
 	"ItemHands", // Blocks weapons but no spells
 	"ItemArms", // Blocks spells and escaping
 	"ItemLegs", // Typically doesnt hobble completely, but sometimes does (hobbleskirts)
+	"ItemNeck", 
+	"ItemNeckAccessories",
+	"ItemNeckRestraints",
 	"ItemBoots", // Typically doesnt hobble completely
 	"ItemHead", // Blind, but does not stop from wielding anything
 	"ItemFeet", // Makes you very slow
@@ -6252,7 +6270,7 @@ function KDChooseRestraintFromListGroupPriWithVariants (
 				let restraint = rest.restraint;
 				let weight = rest.weight;
 				restraintWeights.push({restraint: restraint, variant: rest.variant, weight: restraintWeightTotal, iv: rest.inventoryVariant});
-				weight += restraint.weight;
+				weight += rest.weight;
 				restraintWeightTotal += Math.max(0, weight);
 			}
 

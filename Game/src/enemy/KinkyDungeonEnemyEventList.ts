@@ -240,7 +240,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			let res = true;
 			if (enemy.IntentLeashPoint) {
 				
-				let furniture = KinkyDungeonNearestJailPoint(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y, ["furniture"]);
+				let furniture = KinkyDungeonNearestJailPoint(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y, [enemy.IntentLeashPointType || "furniture"]);
 				if (furniture && furniture.x == enemy.IntentLeashPoint.x && furniture.y == enemy.IntentLeashPoint.y) {
 					res = KDSettlePlayerInFurniture(enemy, (aiData as KDAIData),
 						undefined, undefined, undefined, furniture);
@@ -631,7 +631,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				if (!KDLeashConditions[enemy.Enemy.Behavior.leashCondition].check(enemy, (aiData as KDAIData).player))
 					return 0;
 			}
+
 			let player = KDPlayer();
+			if (player == KDPlayer() && KinkyDungeonFlags.get("nojail")) return 0;
 			if (KinkyDungeonLeashingEnemy() && KinkyDungeonLeashingEnemy() != enemy) return 0;
 			return (hostile
 				&& (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing)
@@ -1501,6 +1503,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 function KDResetIntent(enemy: entity, _aiData?: KDEventDataBoolean) {
 	enemy.IntentLeashPoint = null;
 	enemy.IntentAction = "";
+	delete enemy.IntentLeashPointType;
 	delete enemy.intentDialogue;
 }
 
@@ -1520,7 +1523,7 @@ function KDSettlePlayerInFurniture(enemy: entity, _aiData: KDAIData, tags?: stri
 
 	let ee = KinkyDungeonEnemyAt(nearestfurniture.x, nearestfurniture.y);
 	if (ee && ee != enemy) {
-		KDKickEnemy(ee, undefined, true);
+		KDKickEnemy(ee, undefined, true, 1.5);
 	}
 	if (enemy.x == nearestfurniture.x && enemy.y == nearestfurniture.y)
 		KDMoveEntity(enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,

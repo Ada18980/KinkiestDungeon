@@ -891,6 +891,13 @@ let KDTE_Brush: Record<string, (brush: any, curr: string, noSwap: boolean) => vo
 				break;
 			}
 		}
+		for (let p of KDMapData.JailPoints) {
+			if (p.x == KinkyDungeonTargetX && p.y == KinkyDungeonTargetY) {
+				KDMapData.JailPoints.splice(KDMapData.JailPoints.indexOf(p), 1);
+				break;
+			}
+		}
+		
 		delete KDMapData.EffectTiles[KinkyDungeonTargetX + "," + KinkyDungeonTargetY];
 	},
 	"tile": (brush, curr, noSwap) => {
@@ -1380,15 +1387,27 @@ function KDTE_LoadTile(name: any, loadedTile?: KDMapTile) {
 	KDMapData.Tiles = KDObjFromMapArray(nt.Tiles);
 	KDMapData.TilesSkin = KDObjFromMapArray(nt.Skin);
 	KDMapData.JailPoints = [];
-	for (let j of nt.Jail) {
+	let alreadyJail = {};
+	let newJail = [];
+	for (let j of nt.Jail.reverse()) {
 		let jp : any = {};
+		if (!alreadyJail[j.x + "," + j.y] && (!!KinkyDungeonTilesGet(j.x + "," + j.y)?.Furniture || KinkyDungeonMapGet(j.x,j.y) == 'a')) {
+			alreadyJail[j.x + "," + j.y] = true;
+		} else continue;
 		KDMapData.JailPoints.push(Object.assign(jp, j));
 		if (KDMapData.Labels["Storage"]) {
 			for (let label of KDMapData.Labels["Storage"]) {
 				if (label.x == jp.x && label.y == jp.y && label.type == "Storage") jp.type = "storage";
 			}
 		}
+		if (KDMapData.Labels["Display"]) {
+			for (let label of KDMapData.Labels["Display"]) {
+				if (label.x == jp.x && label.y == jp.y && label.type == "Display") jp.type = "display";
+			}
+		}
+		newJail.unshift(j);
 	}
+	nt.Jail = newJail;
 	let array = KDObjFromMapArray(nt.effectTiles);
 	for (let tile of Object.entries(array)) {
 		KinkyDungeonEffectTilesSet(tile[0], KDObjFromMapArray(tile[1]));
