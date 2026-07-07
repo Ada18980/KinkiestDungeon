@@ -163,7 +163,14 @@ KDPrisonTypes.DollShoppe = {
 			if (gg) {
 				if (dist < 2.5 || doll.leash?.entity == gg.id) {
 					// Move the doll toward the nearest storage
-					let storage = KinkyDungeonNearestJailPoint(gg.x, gg.y, ["display"], undefined, undefined, true);
+					if (!doll.preferredX) {
+						let point = KDRandomJailPoint(doll.x, doll.y, ["display"],
+							undefined, undefined, undefined, undefined, undefined, true
+						);
+						if (point) doll.preferredX = point.x;
+						if (point) doll.preferredY = point.y;
+					}
+					let storage = KinkyDungeonNearestJailPoint(doll.preferredX || doll.x, doll.preferredY || doll.y, ["display"], undefined, undefined, true);
 					if (storage) {
 						if (dist < 1.5 && KDistChebyshev(gg.x - storage.x, gg.y - storage.y) < 1.5) {
 							KDMoveEntity(doll, storage.x, storage.y, false, false, false, false);
@@ -245,7 +252,12 @@ KDPrisonTypes.DollShoppe = {
 
 		
 		for (let en of idleGuards) {
-			if (!KDEnemyHasFlag(en, "patrol")) {
+			if (!KDEnemyHasFlag(en, "patrol")
+				&& !KDEnemyHasFlag(en, "idlegselect")
+				&& !KDEnemyHasFlag(en, "overrideMove")
+				&& !KDEnemyHasFlag(en, "despawn")
+				&& en != KinkyDungeonJailGuard()
+				&& en != KinkyDungeonLeashingEnemy()) {
 				KinkyDungeonSetEnemyFlag(en, "patrol", 100 + Math.floor(KDRandom() * 200));
 				let point = CommonRandomItemFromList(null, KDMapData.Labels.Patrol);
 				if (point) {

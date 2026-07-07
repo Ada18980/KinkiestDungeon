@@ -2142,7 +2142,9 @@ function KinkyDungeonCreateDollShoppe(_POI: any, VisitedRooms: any[], _width: nu
 						for (let XX = Math.max(1, X - 3);
 							!found && XX < KDMapData.GridWidth - 1 && XX <= X + 3; XX++) {
 							if (KinkyDungeonMapGet(XX, YY) != '0'
-								|| KDMapData.Labels.BackDoor.some((door) => {return Math.abs(door.x - X) < 2;})) {
+								|| KDMapData.Labels.BackDoor.some((door) => {return Math.abs(door.x - X) < 2;})
+								|| KDMapData.Labels.Deploy.some((door) => {return Math.abs(door.x - X) < 2;})
+								|| KDMapData.Labels.Patrol.some((door) => {return Math.abs(door.x - X) < 2;})) {
 								found = true;
 							}
 						}

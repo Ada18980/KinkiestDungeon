@@ -1981,6 +1981,10 @@ interface entity {
 	tempitems?: string[],
 	x: number,
 	y: number,
+	/** use for jailing */
+	preferredX?: number,
+	/** use for jailing */
+	preferredY?: number,
 	targetingX?: number,
 	targetingY?: number,
 	lastx?: number,

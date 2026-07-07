@@ -166,7 +166,7 @@ function KinkyDungeonNearestJailPoint(x: number, y: number, filter?: string[], a
  * @param [qualified] - Exclude jails where the player doesnt meet conditions
  * @param [unnocupied] - No enemy in the jail
  */
-function KDRandomJailPoint(x: number, y: number, filter?: string[], any?: boolean, qualified?: boolean, unnocupied?: boolean, criteria?: (x, y, point) => boolean, maxTime: number = 300): KDJailPoint {
+function KDRandomJailPoint(x: number, y: number, filter?: string[], any?: boolean, qualified?: boolean, unnocupied?: boolean, criteria?: (x, y, point) => boolean, maxTime: number = 300, npc?: boolean): KDJailPoint {
 	let filt = filter ? filter : ["jail", "dropoff"];
 	let dist = 100000;
 	let point = null;
@@ -191,14 +191,17 @@ function KDRandomJailPoint(x: number, y: number, filter?: string[], any?: boolea
 			undefined, undefined, false)
 			&& KDIsImprisoned(KinkyDungeonEntityAt(p.x, p.y))) continue;
 
-		if (KDGameData.PreferredJailPoint?.x == p.x
-			&& KDGameData.PreferredJailPoint?.y == p.y
-			&& KDGameData.PreferredJailPointTick + maxTime >= KinkyDungeonCurrentTick
-		) {
-			KDGameData.PreferredJailPoint = p;
-			KDGameData.PreferredJailPointTick = KinkyDungeonCurrentTick;
-			return p;
+		if (!npc) {
+			if (KDGameData.PreferredJailPoint?.x == p.x
+				&& KDGameData.PreferredJailPoint?.y == p.y
+				&& KDGameData.PreferredJailPointTick + maxTime >= KinkyDungeonCurrentTick
+			) {
+				KDGameData.PreferredJailPoint = p;
+				KDGameData.PreferredJailPointTick = KinkyDungeonCurrentTick;
+				return p;
+			}
 		}
+		
 		toCheck.push(p);
 	}
 
