@@ -6055,7 +6055,11 @@ KDTileTooltip+,Empty Fixture
 KDTileTooltip=,Filled Fixture
 KDTileTooltipM,Tablet
 KDTileTooltipg,Wall Opening
+KDTileTooltip],Pink Haze
+KDTileTooltip[,Spore Cloud
 KDTileTooltipDescg,Takes an extra turn to enter
+KDTileTooltipDesc],Increases distraction
+KDTileTooltipDesc[,Causes drowsiness
 
 
 
