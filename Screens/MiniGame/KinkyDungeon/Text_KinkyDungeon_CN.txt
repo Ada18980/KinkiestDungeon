@@ -5330,6 +5330,9 @@ M.F. '女仆长'
 工厂玩偶
 - The doll is subdued.
 玩偶被制服了。
+# :: KillFactoryDoll
+# :: KillPrettyDoll
+# - Pretty Doll
 - Freed Doll
 自由玩偶
 - The doll returns to ${Etheir} place.
@@ -12018,6 +12021,8 @@ RestraintName 上的诅咒解除了！
 它会吞噬一切生物
 # :: KDEffectTileTooltipLatexDesc
 # :: KDEffectTileTooltipLatexThinDesc
+# - Scanning Field
+# - Detecting disobedience
 - Engulfs dolls (like you)
 它会吞噬像你一样的玩偶
 # :: KDEffectTileTooltipLatexBlueDesc
@@ -12232,7 +12237,11 @@ RestraintName 上的诅咒解除了！
 # :: KDTileTooltipM
 # :: KDMinimapLabel_Tablet
 # - Wall Opening
+# - Pink Haze
+# - Spore Cloud
 # - Takes an extra turn to enter
+# - Increases distraction
+# - Causes drowsiness
 
 
 
@@ -26426,7 +26435,7 @@ FOODMSG| ( 它邀请你分享它的美食 )
 启动囚犯封锁协议
 - Your RestraintName suddenly snap together as the EnemyName activates them!
 随着 EnemyName 激活你的RestraintName，它们突然扣在了一起！
-- Your harness projects energy tethers between your cuffs EnemyName activates it!
+- Your harness projects energy tethers between your cuffs as EnemyName activates it!
 你的束具在你的手铐之间投射能量绳索， EnemyName 会激活它！
 
 - Turn Count: 
@@ -53499,3 +53508,5 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - Toxic spores are making it difficult to move
 
 # - An NPC in your collection was missing an enemy type and has been removed
+
+# - SCANNING
