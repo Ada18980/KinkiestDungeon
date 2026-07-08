@@ -30458,7 +30458,7 @@ KDBalanceGettingUp,"Getting up in AMNT turns..."
 KDBalance,"Balance: AMNT%"
 KDBalanceNoSprint,"Balance: AMNT% (Sprinting Disabled!!!)"
 KDTrip,You lose your balance and fall over!!!
-KDBalanceTraining,Training Level: AMNT
+KDBalanceTraining,Heels Training: AMNT
 
 KDInventoryActionUse,Use One
 KDInventoryActionEquip,Equip

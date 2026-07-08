@@ -326,6 +326,8 @@ function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, f
 				KinkyDungeonChangeRep("Ghost", -5 * repMult - GuiltAmount*KDGuiltMult);
 			KinkyDungeonChangeRep("Prisoner", 10 * repMult + GuiltAmount*KDGuiltMult);
 
+			KinkyDungeonSetFlag("jailbroke", 3);
+
 			KDGameData.Guilt = Math.max(0, (KDGameData.Guilt || 0) - GuiltAmount);
 			KDGameData.PrisonerState = "chase";
 			KinkyDungeonInterruptSleep();
@@ -357,7 +359,10 @@ function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, f
 							KinkyDungeonSendDialogue(e, TextGet("KinkyDungeonRemindJailChase" + suff + index,
 									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + e.Enemy.name)), KDGetColor(e), 7, (!KDGameData.PrisonerState) ? 3 : 5);
 					}
-					if (!e.hostile) e.hostile = KDMaxAlertTimerAggro;
+					if (!e.hostile) {
+						e.hostile = KDMaxAlertTimerAggro;
+						KinkyDungeonSetFlag("aggroed", 3);
+					}
 					else KDMakeHostile(e);//e.hostile = Math.max(KDMaxAlertTimerAggro, e.hostile);
 					e.ceasefire = undefined;
 				}
@@ -366,13 +371,24 @@ function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, f
 	}
 
 	if (enemy && KDFactionRelation(KDGetFaction(enemy), "Jail") > -0.1 && !enemy.Enemy.tags.peaceful) {
-		if (!enemy.hostile) KDMakeHostile(enemy);//enemy.hostile = KDMaxAlertTimerAggro;
+		if (!enemy.hostile) {
+			KDMakeHostile(enemy);//enemy.hostile = KDMaxAlertTimerAggro;
+						KinkyDungeonSetFlag("aggroed", 3);
+		}
 		else KDMakeHostile(enemy);//Math.max(KDMaxAlertTimerAggro, enemy.hostile);
 		enemy.ceasefire = undefined;
 	}
 	if (Type && enemy?.hostile && (enemy.Enemy.tags.jail || enemy.Enemy.tags.jailer || KDGetEnemyPlayLine(enemy))) {
 		let suff = KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) + Type : Type;
 		let index = (Type == "Attack" || Type == "Spell") ? ("" + Math.floor(Math.random() * 3)) : "";
+
+		if (KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'parole') {
+			if (!KinkyDungeonFlags.get("recent_jb")) {
+
+				KinkyDungeonSetFlag("jailbroke", 4);
+				KinkyDungeonSetFlag("recent_jb", 14);
+			}
+		}
 
 		if (!enemy.dialogue || !enemy.dialogueDuration)
 			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailChase" + suff + index,

@@ -173,6 +173,26 @@ function KDGetRandomEscapeMethod(RoomType: string, MapMod: string, Level: number
  * @param x
  * @param y
  */
+function KDEffectTileTagTime(x: number, y: number, tag: string, mapData?: KDMapDataType): number {
+	let ret = 0
+	let tiles = KDGetEffectTiles(x, y, mapData);
+	if (tiles) {
+		for (let ti of Object.values(tiles)) {
+			if (ti.tags) {
+				for (let t of ti.tags) {
+					if (t == tag) ret = Math.max(ret, ti.duration + (ti.pauseDuration || 0));
+				}
+			}
+		}
+	}
+
+	return ret;
+}
+/**
+ * Creates combined record of tags
+ * @param x
+ * @param y
+ */
 function KDEffectTileTags(x: number, y: number, mapData?: KDMapDataType): Record<string, boolean> {
 	let ret: Record<string, boolean> = {};
 	let tiles = KDGetEffectTiles(x, y, mapData);

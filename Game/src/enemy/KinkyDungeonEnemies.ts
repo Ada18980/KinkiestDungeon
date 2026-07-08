@@ -5992,7 +5992,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		);
 
 
-	if (!AIData.startedDialogue) {
+	if (!AIData.startedDialogue && !KDEnemyHasFlag(enemy, "nomove")) {
 		if (
 			!AIType.beforemove(enemy, player, AIData)
 			&& (
@@ -11494,12 +11494,13 @@ function KDEnemyCanDoJailbreak(enemy: entity, player: entity, delta: number): bo
 			return true;
 		}
 		if (!KDEnemyHasFlag(enemy, "startScan")) {
-			KinkyDungeonSetEnemyFlag(enemy, "startScan", 6);
-			KinkyDungeonSetEnemyFlag(enemy, "scanIncomplete", 4);
-			KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+			KinkyDungeonSetEnemyFlag(enemy, "startScan", 7);
+			KinkyDungeonSetEnemyFlag(enemy, "scanIncomplete", 3);
+			KinkyDungeonSetEnemyFlag(enemy, "nomove", 4);
+			KinkyDungeonSetFlag("scanned", 5);
 			KinkyDungeonSendDialogue(enemy,
 				TextGet("KDScanning"), KDBaseRed,
-				4, 5, false, true);
+				4, 3, false, true);
 			let dist = KDistChebyshev(enemy.x - player.x, enemy.y - player.y);
 			if (dist < 1) dist = 1;
 			for (let i = 1; i <= dist; i++) {
@@ -11510,7 +11511,7 @@ function KDEnemyCanDoJailbreak(enemy: entity, player: entity, delta: number): bo
 				}, 0, Math.max(0.5, Math.round(2 * i / dist)) + 0.02, 
 				undefined, undefined, undefined, (x, y) => {
 					return KinkyDungeonCheckPath(enemy.x, enemy.y, x, y, true, false)
-						&& !KDEffectTileTags(x, y).scan
+						&& KDEffectTileTagTime(x, y, "scan") < 5
 				}, (x, y, tile) => {
 					tile.phase = Math.random() * 6;
 				});
