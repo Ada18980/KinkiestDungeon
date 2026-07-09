@@ -6574,7 +6574,7 @@ TargetRestraint 上的锁孔几乎够不到......
 
 - The TargetRestraint is too secure to struggle out.
 TargetRestraint 安全性太高了，无法挣脱。
-- You groan in frustration as you realize the TargetRestraint is too tight to escape.
+- You groan in frustration as you realize the TargetRestraint is too strong to escape.
 你不甘地呻吟着，意识到TargetRestraint实在太紧，无法挣脱。
 - The TargetRestraint tightens itself as you try to squeeze out!
 TargetRestraint 会在你尝试挣脱时自动收紧！
@@ -48205,7 +48205,7 @@ AMNT 回合后起身...
 平衡 : ‎AMNT% ( 冲刺已禁用！！！ )
 - You lose your balance and fall over!!!
 你失去平衡摔倒了！
-- Training Level: AMNT
+- Heels Training: AMNT
 训练等级 : ‎AMNT
 
 - Favorite
