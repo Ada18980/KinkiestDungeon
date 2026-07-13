@@ -478,7 +478,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Always Show Player Facing
 总是显示玩家朝向
 - Show future learnable spells
-显示更多可学习的法术
+显示未来可学习的法术
 - Show Player Buff Auras
 显示玩家增益光环
 - Show Enemy Buff Auras
@@ -27016,7 +27016,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: l_KjusEyes_Eyes2
 # :: l_DaskEyes_Eyes2
 - Simple Brows
-猫眉
+简单眉毛
 - Right Brow
 右眉
 # :: l_KoiBrows_Brows
