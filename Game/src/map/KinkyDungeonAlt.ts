@@ -2165,6 +2165,24 @@ function KinkyDungeonCreateDollShoppe(_POI: any, VisitedRooms: any[], _width: nu
 		KinkyDungeonTilesSet("2,11", {RoomType: "JourneyFloor"});
 		KinkyDungeonSetFlag("fg", -1);
 	}
+
+	if (KDMapData.Labels.BackDoor)
+		for (let p of KDMapData.Labels.BackDoor) {
+			KinkyDungeonMapSetForce(p.x, p.y - 1, 'D');
+		}
+
+	if (KDMapData.Labels.Display)
+		for (let p of KDMapData.Labels.Display) {
+			KDCreateEffectTile(p.x, p.y, {
+				name: "Light"
+			}, 0);
+		}
+	/*if (KDMapData.Labels.Entrance)
+		for (let p of KDMapData.Labels.Entrance) {
+			KinkyDungeonMapSet(p.x, p.y + 1, 'D');
+		}*/
+
+
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 }

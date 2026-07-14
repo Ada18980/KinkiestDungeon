@@ -4,6 +4,8 @@ let KDDialogueData = {
 	CurrentDialogueIndex: 0,
 };
 
+let KDBuyPrisonerThreshold = 25;
+
 /**
  * Milliseconds during which clicks are ignored to avoid inadverdent clicking
  */
@@ -681,6 +683,20 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 		leadsToStage: "",
 	};
 	dialog.options.Shop = {playertext: name + "Shop", response: "Default",
+		greyoutFunction: (_gagged, _player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				if (KDGameData.PrisonerState != "jail" && KDGameData.PrisonerState != "parole") return true;
+				let opinion = KDGetModifiedOpinionID(enemy.id);
+				
+				let enemyFactionRep = 50 * KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction());
+				return opinion >= enemyFactionRep + KDBuyPrisonerThreshold;
+			}
+			return false;
+		},
+		greyoutCustomTooltip(gagged, player) {
+			return "KDCantBuyPrison";
+		},
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
@@ -702,6 +718,20 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 		exitDialogue: true,
 	};
 	dialog.options.ShopBuy = {playertext: name + "ShopBuy", response: "Default",
+		greyoutFunction: (_gagged, _player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				if (KDGameData.PrisonerState != "jail" && KDGameData.PrisonerState != "parole") return true;
+				let opinion = KDGetModifiedOpinionID(enemy.id);
+				
+				let enemyFactionRep = 50 * KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction());
+				return opinion >= enemyFactionRep + KDBuyPrisonerThreshold;
+			}
+			return false;
+		},
+		greyoutCustomTooltip(gagged, player) {
+			return "KDCantBuyPrison";
+		},
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {

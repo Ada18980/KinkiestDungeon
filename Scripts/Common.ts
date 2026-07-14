@@ -390,6 +390,26 @@ function CommonRandomItemFromList<T>(ItemPrevious: T, ItemList: T[]): T {
 	return NewItem;
 }
 /**
+ * Get a random item from a list
+ * @param ItemList - List for which to pick a random item from
+ * @returns The randomly selected item from the list
+ */
+function KDRandomItem<T>(ItemList: T[]): T {
+	if (!ItemList || ItemList.length == 0) return undefined;
+	return ItemList[Math.floor(KDRandom() * ItemList.length)];
+}
+/**
+ * Get a random item from a list, using Math.random
+ * @param ItemList - List for which to pick a random item from
+ * @returns The randomly selected item from the list
+ */
+function KDRandomItemMath<T>(ItemList: T[]): T {
+	if (!ItemList || ItemList.length == 0) return undefined;
+	return ItemList[Math.floor(Math.random() * ItemList.length)];
+}
+
+
+/**
  * Get a random item from a list while making sure not to pick the previous one.
  * @param ItemPrevious - Previously selected item from the given list
  * @param ItemList - List for which to pick a random item from

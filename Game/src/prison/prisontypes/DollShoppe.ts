@@ -7,6 +7,10 @@ KDPrisonTypes.DollShoppe = {
 			KinkyDungeonSetFlag("noPlay", 12);
 		}
 
+		// admirers
+		let admirers: entity[] = [];
+		let idleadmirers: entity[] = [];
+
 		// Assign guards to deal with idle dolls
 		let idleDoll: entity[] = [];
 		let punishDoll: entity[] = [];
@@ -20,9 +24,16 @@ KDPrisonTypes.DollShoppe = {
 					KinkyDungeonSetEnemyFlag(en, "punishdoll", 9999);
 				} else
 					idleDoll.push(en);
-			} else if (en.faction == "Enemy" && en.Enemy?.tags.jailer && en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy() && (en.idle || KDEnemyHasFlag(en, "idleg"))) {
+			} else if (en.faction == "Enemy" && en.Enemy?.tags.jailer && en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy()
+				&& !KDEnemyHasFlag(en, "despawn")
+				&& (en.idle || KDEnemyHasFlag(en, "idleg"))) {
 				idleGuard.push(en);
 				KinkyDungeonSetEnemyFlag(en, "idleg", 2);
+			} else if (en.faction == "Adventurer" && en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy() && !KDEnemyHasFlag(en, "despawn")) {
+				admirers.push(en);
+				if (!KDEnemyHasFlag(en, "admiring"))
+					idleadmirers.push(en);
+				KinkyDungeonSetEnemyFlag(en, "admirer", 30);
 			}
 		}
 		// For each idle doll, pick a guard to pull
@@ -177,6 +188,9 @@ KDPrisonTypes.DollShoppe = {
 							KDTieUpEnemy(doll, 100, "Latex", undefined, false, 0);
 							KinkyDungeonSetEnemyFlag(doll, "punished", Math.floor(KDRandom() *500) + 200);
 							KinkyDungeonSetEnemyFlag(doll, "tryNotToSwap", 500);
+							gg.gx = gg.x;
+							gg.gy = gg.y;
+							gg.movePoints = 0;
 						} else {
 							KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
 							KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
@@ -217,9 +231,14 @@ KDPrisonTypes.DollShoppe = {
 		if (guardCount > 15) {
 			for (let en of idleGuards) {
 				KinkyDungeonSetEnemyFlag(en, "despawn", 300);
+				KinkyDungeonSetEnemyFlag(en, "vis_despawn", 300);
 				KinkyDungeonSetEnemyFlag(en, "wander", 300);
 				en.gx = KDMapData.EndPosition.x;
 				en.gy = KDMapData.EndPosition.y;
+				
+				en.despawnX = KDMapData.EndPosition.x;
+				en.despawnY = KDMapData.EndPosition.y;
+				en.goToDespawn = true;
 			}
 		} else if (!KinkyDungeonFlags.get("guardspawn")) {
 			// TODO replace with map flags
@@ -229,12 +248,13 @@ KDPrisonTypes.DollShoppe = {
 
 			if (KDMapData.Labels && KDMapData.Labels.Deploy?.length > 0) {
 				let l = KDMapData.Labels.Deploy[Math.floor(KDRandom() * KDMapData.Labels.Deploy.length)];
+				let sl = KDMapData.Labels.BackDoor[Math.floor(KDRandom() * KDMapData.Labels.BackDoor.length)];
 				let tag = "dressmaker";
 				let Enemy = KinkyDungeonGetEnemy([tag, "dressmaker"], MiniGameKinkyDungeonLevel + 4, 'lib', '0', [tag], undefined, {[tag]: {mult: 4, bonus: 10}}, ["boss"]);
-				if (Enemy && !KinkyDungeonEnemyAt(l.x, l.y)
-					&& KDistChebyshev(KDPlayer().x - l.x, KDPlayer().y - l.y)
+				if (Enemy && !KinkyDungeonEnemyAt(sl.x, sl.y)
+					&& KDistChebyshev(KDPlayer().x - sl.x, KDPlayer().y - sl.y)
 					> 7) {
-					let en = DialogueCreateEnemy(l.x, l.y, Enemy.name);
+					let en = DialogueCreateEnemy(sl.x, sl.y, Enemy.name);
 					//KDProcessCustomPatron(Enemy, en, 0.5, false);
 					en.AI = "looseguard";
 					en.faction = "Enemy";
@@ -248,6 +268,90 @@ KDPrisonTypes.DollShoppe = {
 				}
 			}
 		}
+
+
+
+		for (let admirer of admirers) {
+			admirer.AI = "wander";
+			if (!KDEnemyHasFlag(admirer, "admiring") || (
+				!KinkyDungeonEntityAt(admirer.gx, admirer.gy)
+				|| !KDHelpless(KinkyDungeonEntityAt(admirer.gx, admirer.gy))
+			)) {
+				let nearestdist = KDMapData.GridWidth
+				let nearestDoll: entity = null;
+				for (let doll of [...idleDoll, KDPlayer()]) {
+					let dist = KDistChebyshev(doll.x - admirer.x, doll.y - admirer.y);
+					if (dist < nearestdist) {
+						let storage = KinkyDungeonNearestJailPoint(doll.preferredX || doll.x, doll.preferredY || doll.y, 
+							["display"], undefined, undefined, false);
+						if (storage?.x == doll.x && storage?.y == doll.y && 
+							((doll.player && KDPrisonIsInFurniture(doll))
+							|| (!doll.player && KDHelpless(doll)))
+						) {
+							nearestDoll = doll;
+							nearestdist = dist;
+						}
+					}
+				}
+
+				if (nearestDoll) {
+					let doll = nearestDoll;
+
+					KinkyDungeonSetEnemyFlag(admirer, "admiring");
+					admirer.gxx = doll.x;
+					admirer.gyy = doll.y + 1;
+					admirer.gx = doll.x;
+					admirer.gy = doll.y + 1;
+					admirer.AI = "looseguard";
+
+				}
+			}
+		}
+
+
+		if (admirers.filter((en) => {return !KDHelpless(en);}).length > 6) {
+
+			for (let en of admirers) {
+
+				if (!KDEnemyHasFlag(en, "admiring")) {
+					let label = KDMapData.EndPosition;
+					if (KDMapData.Labels.Entrance?.length > 0)
+						label = KDRandomItem(KDMapData.Labels.Entrance) || label;
+					KinkyDungeonSetEnemyFlag(en, "despawn", 300);
+				KinkyDungeonSetEnemyFlag(en, "vis_despawn", 300);
+					KinkyDungeonSetEnemyFlag(en, "wander", 300);
+					en.gx = label.x;
+					en.gy = label.y;
+					
+					en.despawnX = label.x;
+					en.despawnY = label.y;
+					en.goToDespawn = true;
+					break;
+				}
+				
+			}
+		} else if (!KinkyDungeonFlags.get("admirerspawn")) {
+			// TODO replace with map flags
+			// spawn a new one
+			KinkyDungeonSetFlag("admirerspawn", 10);
+
+
+			if (KDMapData.Labels && KDMapData.Labels.Entrance?.length > 0) {
+				let l = KDMapData.Labels.Entrance[Math.floor(KDRandom() * KDMapData.Labels.Entrance.length)];
+				let Enemy = KinkyDungeonGetEnemy(["adventurer"], MiniGameKinkyDungeonLevel + 4, 'lib', '0', ["adventurer"],
+					undefined, {["adventurer"]: {mult: 4, bonus: 10}}, ["boss"]);
+				if (Enemy && !KinkyDungeonEnemyAt(l.x, l.y)
+					&& KDistChebyshev(KDPlayer().x - l.x, KDPlayer().y - l.y)
+					> 7) {
+					let en = DialogueCreateEnemy(l.x, l.y, Enemy.name);
+					//KDProcessCustomPatron(Enemy, en, 0.5, false);
+					en.AI = "wander";
+					en.faction = "Adventurer";
+				}
+			}
+		}
+
+
 
 
 		
@@ -880,7 +984,7 @@ function KDGetUnoccupiedLabel(labels: KDLabel[], entity?: entity, getLabelCurren
 function KDSelectLabel(entity: entity, label: KDLabel) {
 	if (!KDGameData.selectedLabel) KDGameData.selectedLabel = {};
 	if (label && !KDGameData.selectedLabel[entity.id]) KDGameData.selectedLabel[entity.id] = label;
-	else delete KDGameData.selectedLabel[entity.id];
+	else if (!label) delete KDGameData.selectedLabel[entity.id];
 }
 function KDGetLabel(entity: entity) {
 	if (!KDGameData.selectedLabel) KDGameData.selectedLabel = {};

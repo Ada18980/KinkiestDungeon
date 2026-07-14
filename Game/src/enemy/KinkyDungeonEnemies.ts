@@ -503,6 +503,7 @@ function KDEnemyCanDespawn(id: number, mapData: KDMapDataType, PMDist?: number):
 	return !KDEnemyHasFlag(entity, "no_pers_wander")
 		&& (mapData != KDMapData
 		|| (KinkyDungeonVisionGet(entity.x, entity.y) < 0.1
+		|| KDEnemyHasFlag(entity, "vis_despawn")
 		|| KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) >= KDDespawnDistance)
 		|| (PMDist != undefined ? PMDist < KDDespawnPartyDist : KDEnemyNearTargetExit(entity, mapData)));
 }
@@ -4644,7 +4645,9 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 					else {
 						KinkyDungeonSetEnemyFlag(enemy, "targ_npc", 1);
 					}
-					if (KinkyDungeonAggressive(enemy, player)) {
+					if (KinkyDungeonAggressive(enemy, player) && player
+						&& (KDistChebyshev(player.x - enemy.x, player.y - enemy.y) < Math.max(4, enemy.Enemy.visionRadius || 0)
+						|| (enemy.aware && player.player))) {
 						KinkyDungeonSetEnemyFlag(enemy, "aggression", 1);
 						if (!player.player)
 							KinkyDungeonSetEnemyFlag(player, "targeted_by_npc", 1);
@@ -10431,7 +10434,7 @@ function KDRemoveEntity(enemy: entity, kill?: boolean, capture?: boolean, noEven
 	if (!noEvent)
 		KinkyDungeonSendEvent("removeEnemy", data);
 
-	KDSelectLabel(KDPlayer(), null);
+	KDSelectLabel(enemy, null);
 
 	if (data.cancel) return false;
 	if (data.kill || data.capture) {

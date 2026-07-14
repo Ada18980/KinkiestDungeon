@@ -63,6 +63,7 @@ KDPrisonTypes.HighSec = {
 				&& en.Enemy?.tags.jailer
 				&& en != KinkyDungeonJailGuard()
 				&& en != KinkyDungeonLeashingEnemy()
+				 && !KDEnemyHasFlag(en, "despawn")
 				&& (en.idle || KDEnemyHasFlag(en, "idleg"))
 				&& !en.goToDespawn) {
 				idleGuard.push(en);
@@ -97,8 +98,11 @@ KDPrisonTypes.HighSec = {
 					despawning += 1;
 					KinkyDungeonSetEnemyFlag(en, "despawn", 300);
 					KinkyDungeonSetEnemyFlag(en, "wander", 300);
+					KinkyDungeonSetEnemyFlag(en, "vis_despawn", 300);
 					en.gx = KDMapData.EndPosition.x;
 					en.gy = KDMapData.EndPosition.y;
+					en.despawnX = KDMapData.EndPosition.x;
+					en.despawnY = KDMapData.EndPosition.y;
 					en.goToDespawn = true;
 					if (despawning > max) break;
 				}

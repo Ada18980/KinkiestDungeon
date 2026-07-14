@@ -18,7 +18,9 @@ KDPrisonTypes.DollStorage = {
 					KinkyDungeonSetEnemyFlag(en, "punishdoll", 9999);
 				} else
 					idleDoll.push(en);
-			} else if (en.faction == "Enemy" && en.Enemy?.tags.jailer && en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy() && (en.idle || KDEnemyHasFlag(en, "idleg"))) {
+			} else if (en.faction == "Enemy" && en.Enemy?.tags.jailer && en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy()
+				 && !KDEnemyHasFlag(en, "despawn")
+				&& (en.idle || KDEnemyHasFlag(en, "idleg"))) {
 				idleGuard.push(en);
 				KinkyDungeonSetEnemyFlag(en, "idleg", 2);
 			}
@@ -216,9 +218,13 @@ KDPrisonTypes.DollStorage = {
 		if (guardCount > 8) {
 			for (let en of idleGuards) {
 				KinkyDungeonSetEnemyFlag(en, "despawn", 300);
+				KinkyDungeonSetEnemyFlag(en, "vis_despawn", 300);
 				KinkyDungeonSetEnemyFlag(en, "wander", 300);
 				en.gx = KDMapData.EndPosition.x;
 				en.gy = KDMapData.EndPosition.y;
+				en.despawnX = KDMapData.EndPosition.x;
+				en.despawnY = KDMapData.EndPosition.y;
+				en.goToDespawn = true;
 			}
 		} else if (!KinkyDungeonFlags.get("guardspawn")) {
 			// TODO replace with map flags

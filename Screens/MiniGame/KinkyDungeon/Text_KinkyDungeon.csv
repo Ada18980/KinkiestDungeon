@@ -33881,3 +33881,5 @@ KinkyDungeonBuffPoisonBreath,Toxic spores are making it difficult to move
 KDMissingEnemyType,An NPC in your collection was missing an enemy type and has been removed
 
 KDScanning,SCANNING
+
+KDCantBuyPrison,Unavailable while you are a prisoner.

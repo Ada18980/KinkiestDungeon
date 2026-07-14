@@ -436,6 +436,15 @@ let KDEffectTiles: Record<string, effectTile> = {
 		lightColor: 0xFFF600,
 		tags: ["light", "holy"],
 	},
+	"Light": {
+		name: "Light",
+		duration: 9999,
+		infinite: true,
+		priority: 50,
+		brightness: 2.5,
+		lightColor: 0xffffff,
+		tags: ["light"],
+	},
 
 	"TeleportPlate": {
 		name: "TeleportPlate",
