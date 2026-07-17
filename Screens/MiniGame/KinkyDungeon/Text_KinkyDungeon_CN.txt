@@ -53510,3 +53510,5 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - An NPC in your collection was missing an enemy type and has been removed
 
 # - SCANNING
+
+# - Unavailable while you are a prisoner.
