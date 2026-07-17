@@ -2233,6 +2233,13 @@ interface spell {
 
 	/** enemies will not try to lead target */
 	noLeading?: boolean,
+	/** multiplies the leading by this amount */
+	leadingMult?: number,
+	/** cannot lead more than the spell's AoE */
+	mustIncludeAoE?: boolean,
+	/** cannot lead more than the spell's AoE */
+	leadaoe?: number,
+	
 
 	ignoreshield?: boolean,
 	shield_crit?: boolean, // Crit thru shield

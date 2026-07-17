@@ -33883,3 +33883,7 @@ KDMissingEnemyType,An NPC in your collection was missing an enemy type and has b
 KDScanning,SCANNING
 
 KDCantBuyPrison,Unavailable while you are a prisoner.
+
+KDMouseHole,It's a little hole in the wall where a mouse lives. Perhaps you could drop an item here.
+KDMouseHoleSuccess,The mouse takes your item and brings something interesting!
+KDMouseHoleFail,"The mouse steals your item and runs back into the hole."

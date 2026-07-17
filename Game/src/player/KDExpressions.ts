@@ -945,8 +945,11 @@ let KDExpressions: Record<string, KDExpression> = {
 				let id = KDNPCChar_ID.get(C);
 				if (id) {
 					let opinion = KDGetModifiedOpinionID(id);
-					if (opinion >= -15 && opinion <= 15)
-						return true;
+					if (opinion >= -15 && opinion <= 15)	{
+						let entity = KDGetCharacterEntity(C);
+						return entity && ((entity.distraction > 0.01 * entity.Enemy.maxhp && entity.distraction < 0.5 * entity.Enemy.maxhp)
+							|| (!KDGameData.PrisonerState && KDIsBrattyPersonality(entity)));
+					}
 				}
 			}
 			return (KDGameData.PrisonerState == "jail" || KDGameData.PrisonerState == "parole"
@@ -975,8 +978,10 @@ let KDExpressions: Record<string, KDExpression> = {
 				let id = KDNPCChar_ID.get(C);
 				if (id) {
 					let opinion = KDGetModifiedOpinionID(id);
-					if (opinion >= -15 && opinion <= 15)
-						return true;
+					if (opinion >= -15 && opinion <= 15) {
+						let entity = KDGetCharacterEntity(C);
+						return entity && entity.distraction > 0.5 * entity.Enemy.maxhp;
+					}
 				}
 			}
 			return (KinkyDungeonFlags.get("embarrassed")

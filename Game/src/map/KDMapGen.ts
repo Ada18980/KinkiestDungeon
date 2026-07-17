@@ -137,6 +137,9 @@ function KinkyDungeonCreateMap (
 			room: KDGameData.RoomType,
 		});
 
+		
+		KinkyDungeonSendEvent("afterChangeMap", {delta: 1});
+
 		KDGameData.ShortcutIndex = KDGameData.RoomType;
 		return {
 			newMapDataObject: KDMapData,
@@ -778,6 +781,9 @@ function KinkyDungeonCreateMap (
 		mapY: worldLocation.y,
 		room: KDGameData.RoomType,
 	});
+
+	
+	KinkyDungeonSendEvent("afterChangeMap", {delta: 1});
 
 	KDGameData.ShortcutIndex = KDGameData.RoomType;
 	return {

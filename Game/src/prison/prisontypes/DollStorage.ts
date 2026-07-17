@@ -176,7 +176,7 @@ KDPrisonTypes.DollStorage = {
 						if (dist < 1.5 && KDistChebyshev(gg.x - storage.x, gg.y - storage.y) < 1.5) {
 							KinkyDungeonSetEnemyFlag(doll, "punished", Math.floor(KDRandom() *500) + 200);
 							KDMoveEntity(doll, storage.x, storage.y, false, false, false, false);
-							KDTieUpEnemy(doll, 100, "Latex", undefined, false, 0);
+							KDTieUpEnemy(doll, (doll.Enemy.maxhp || doll.hp) * (1 + KDNPCStruggleThreshMult(doll)) - (doll.boundLevel || 0), "Latex", undefined, false, 0);
 							KinkyDungeonSetEnemyFlag(doll, "tryNotToSwap", 500);
 						} else {
 							KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
@@ -229,7 +229,18 @@ KDPrisonTypes.DollStorage = {
 		} else if (!KinkyDungeonFlags.get("guardspawn")) {
 			// TODO replace with map flags
 			// spawn a new one
-			KinkyDungeonSetFlag("guardspawn", 10);
+			if (KinkyDungeonFlags.get("shiftchange")) {
+				KinkyDungeonSetFlag("guardspawn", 4);
+			} else {
+				KinkyDungeonSetFlag("guardspawn", 40);
+			}
+
+			if (!KinkyDungeonFlags.get("onshift")) {
+				if (!KinkyDungeonFlags.get("shiftchange")) {
+					KinkyDungeonSetFlag("shiftchange", 100, -1);
+					KinkyDungeonSetFlag("onshift", 1000, -1);
+				}
+			}
 
 
 			if (KDMapData.Labels && KDMapData.Labels.Deploy?.length > 0) {

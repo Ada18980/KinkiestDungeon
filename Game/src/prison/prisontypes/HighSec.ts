@@ -83,7 +83,7 @@ KDPrisonTypes.HighSec = {
 				if (en.Enemy.tags.jailer) guardCount += 1;
 			}
 		}
-		if (guardCount > 8) {
+		if (guardCount > 6) {
 			let max = guardCount * 0.2;
 			let despawning = 0;
 			for (let en of idleGuards) {
@@ -110,7 +110,19 @@ KDPrisonTypes.HighSec = {
 		} else if (!KinkyDungeonFlags.get("guardspawn")) {
 			// TODO replace with map flags
 			// spawn a new one
-			KinkyDungeonSetFlag("guardspawn", 20);
+			if (KinkyDungeonFlags.get("shiftchange")) {
+				KinkyDungeonSetFlag("guardspawn", 4);
+			} else {
+				KinkyDungeonSetFlag("guardspawn", 80);
+			}
+
+			if (!KinkyDungeonFlags.get("onshift")) {
+				if (!KinkyDungeonFlags.get("shiftchange")) {
+					KinkyDungeonSetFlag("shiftchange", 100, -1);
+					KinkyDungeonSetFlag("onshift", 1000, -1);
+				}
+			}
+			
 
 
 			if (KDMapData.Labels && KDMapData.Labels.Deploy?.length > 0) {

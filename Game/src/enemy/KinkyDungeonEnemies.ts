@@ -275,8 +275,16 @@ function KinkyDungeonSetFlag(Flag: string, Duration: number, Floors?: number) {
 			if (!KDGameData.TempFlagFloorTicks)
 				KDGameData.TempFlagFloorTicks = {};
 			// handle optional floor count flag setting logic
-			if (!KDGameData.TempFlagFloorTicks[Flag] || KDGameData.TempFlagFloorTicks[Flag] < Floors) {
-				KDGameData.TempFlagFloorTicks[Flag] = Floors;
+			// positive = only on tick
+			// negative = any floor change
+			if (Floors < 0 && (!KDGameData.TempFlagFloorTicks[Flag] || KDGameData.TempFlagFloorTicks[Flag] < 0)) {
+				if (!KDGameData.TempFlagFloorTicks[Flag] || KDGameData.TempFlagFloorTicks[Flag] > Floors) {
+					KDGameData.TempFlagFloorTicks[Flag] = Floors;
+				}
+			} else {
+				if (!KDGameData.TempFlagFloorTicks[Flag] || KDGameData.TempFlagFloorTicks[Flag] < Floors) {
+					KDGameData.TempFlagFloorTicks[Flag] = Floors;
+				}
 			}
 			if (Floors === 0) {
 				delete KDGameData.TempFlagFloorTicks[Flag];

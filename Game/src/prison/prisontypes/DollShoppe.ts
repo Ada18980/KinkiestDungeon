@@ -185,7 +185,7 @@ KDPrisonTypes.DollShoppe = {
 					if (storage) {
 						if (dist < 1.5 && KDistChebyshev(gg.x - storage.x, gg.y - storage.y) < 1.5) {
 							KDMoveEntity(doll, storage.x, storage.y, false, false, false, false);
-							KDTieUpEnemy(doll, 100, "Latex", undefined, false, 0);
+							KDTieUpEnemy(doll, (doll.Enemy.maxhp || doll.hp) * (1 + KDNPCStruggleThreshMult(doll)) - (doll.boundLevel || 0), "Latex", undefined, false, 0);
 							KinkyDungeonSetEnemyFlag(doll, "punished", Math.floor(KDRandom() *500) + 200);
 							KinkyDungeonSetEnemyFlag(doll, "tryNotToSwap", 500);
 							gg.gx = gg.x;
@@ -243,7 +243,18 @@ KDPrisonTypes.DollShoppe = {
 		} else if (!KinkyDungeonFlags.get("guardspawn")) {
 			// TODO replace with map flags
 			// spawn a new one
-			KinkyDungeonSetFlag("guardspawn", 10);
+			if (KinkyDungeonFlags.get("shiftchange")) {
+				KinkyDungeonSetFlag("guardspawn", 4);
+			} else {
+				KinkyDungeonSetFlag("guardspawn", 80);
+			}
+
+			if (!KinkyDungeonFlags.get("onshift")) {
+				if (!KinkyDungeonFlags.get("shiftchange")) {
+					KinkyDungeonSetFlag("shiftchange", 100, -1);
+					KinkyDungeonSetFlag("onshift", 1000, -1);
+				}
+			}
 
 
 			if (KDMapData.Labels && KDMapData.Labels.Deploy?.length > 0) {
@@ -272,7 +283,6 @@ KDPrisonTypes.DollShoppe = {
 
 
 		for (let admirer of admirers) {
-			admirer.AI = "wander";
 			if (!KDEnemyHasFlag(admirer, "admiring") || (
 				!KinkyDungeonEntityAt(admirer.gx, admirer.gy)
 				|| !KDHelpless(KinkyDungeonEntityAt(admirer.gx, admirer.gy))
@@ -304,6 +314,20 @@ KDPrisonTypes.DollShoppe = {
 					admirer.gy = doll.y + 1;
 					admirer.AI = "looseguard";
 
+				} else if (KDMapData.Labels.Display) {
+					if (!KDEnemyHasFlag(admirer, "newdisplay")) {
+						let label = KDRandomItem(KDMapData.Labels.Display);
+						if (label) {
+							KinkyDungeonSetEnemyFlag(admirer, "newdisplay");
+							admirer.gxx = label.x;
+							admirer.gyy = label.y + 1;
+							admirer.gx = label.x;
+							admirer.gy = label.y + 1;
+							admirer.AI = "looseguard";
+						}
+					}
+				} else {
+					admirer.AI = "wander";
 				}
 			}
 		}

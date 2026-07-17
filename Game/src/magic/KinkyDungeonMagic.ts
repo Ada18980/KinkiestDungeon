@@ -1180,6 +1180,20 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 					let dy = Math.sign(ddy) * KDRandomFloor(Math.abs((0.35 + KDRandom() * 0.3) * delay * ddy));
 					let preserveLOS = KinkyDungeonCheckProjectileClearance(entity.x, entity.y, tX, tY);
 
+
+					if (spell.leadingMult) {
+						dx *= spell.leadingMult;
+						dy *= spell.leadingMult;
+					}
+					if (spell.mustIncludeAoE) {
+						let dist = KDistEuclidean(dx, dy);
+						let maxd = Math.max(1, spell.leadaoe || spell.aoe || 0);
+						if (dist > maxd) {
+							dx *= maxd / dist;
+							dy *= maxd / dist;
+						}
+					}
+
 					let final_dx = 0;
 					let final_dy = 0;
 					for (let xxx = 1; xxx <= Math.abs(dx); xxx++) {
