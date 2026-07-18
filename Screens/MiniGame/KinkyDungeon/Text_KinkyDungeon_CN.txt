@@ -53512,3 +53512,7 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - SCANNING
 
 # - Unavailable while you are a prisoner.
+
+# - It's a little hole in the wall where a mouse lives. Perhaps you could drop an item here.
+# - The mouse takes your item and brings something interesting!
+# - The mouse steals your item and runs back into the hole.
