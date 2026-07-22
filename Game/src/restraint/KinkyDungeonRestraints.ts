@@ -3430,7 +3430,10 @@ type eligibleRestraintOptions = {
 	dontPreferVariant?:  boolean;
 	allowLowPower?:      boolean;
 	ForceDeep?:          boolean;
+	/** wont override anything */
 	noOverpower?: boolean;
+	/** wont override furniture */
+	noOverpowerMetaTags?: boolean,
 	/** Only use with KDGetRestraintWithVariants */
 	extraOptions?:       string[];
 	inventoryWeight?: 	 number;
@@ -3663,7 +3666,7 @@ function KDGetRestraintsEligible (
 			addedVar = false;
 			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined,
 				options?.ForceDeep || KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
-				options?.noOverpower, securityEnemy, useAugmented, curse, augmentedInventory)) {
+				options?.noOverpower, securityEnemy, useAugmented, curse, augmentedInventory, undefined, options)) {
 				if (restraint.playerTags)
 					for (let tag in restraint.playerTags)
 						if ((!agnostic || KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) r.w += restraint.playerTags[tag];
@@ -3696,7 +3699,7 @@ function KDGetRestraintsEligible (
 						&& (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined,
 							KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
 							options?.noOverpower, securityEnemy, useAugmented, curse, augmentedInventory,
-							KDApplyVariants[variant[0]].powerBonus))) {
+							KDApplyVariants[variant[0]].powerBonus, options))) {
 
 						let w = r.w * (variant[1].weightMult || 1) + (variant[1].weightMod || 0);
 
@@ -4447,6 +4450,10 @@ function KDGetLockImageRoot(lock: string): string {
 	return KinkyDungeonRootDirectory + `Locks/${lock}.png`;
 }
 
+interface CanAddRestraintOptions extends eligibleRestraintOptions {
+
+}
+
 /**
  * @param restraint
  * @param Bypass
@@ -4474,6 +4481,7 @@ function KDCanAddRestraint (
 	curse?:               string,
 	augmentedInventory?:  string[],
 	powerBonus:           number = 0,
+	options?: CanAddRestraintOptions
 ): boolean
 {
 	if (!restraint) {
@@ -4489,6 +4497,7 @@ function KDCanAddRestraint (
 	if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return false;
 	if (restraint.Group == "ItemVulva" && restraint.shrine.includes("Plugs") && KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) return false;
 
+	if (restraint.Group == "ItemDevices" && options?.noOverpowerMetaTags) noOverpower = true; 
 
 	//if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
 	//if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
@@ -4515,7 +4524,8 @@ function KDCanAddRestraint (
 			for (let blockedtag of Object.entries(metadata.blockedtags)) {
 				if (rPower == undefined)
 					rPower = KDRestraintPower(restraint, undefined, Lock, curse) + powerBonus;
-				if (KDValidateTagForRestraint(blockedtag[0], restraint) && (noOverpower || rPower < blockedtag)) {
+				if (KDValidateTagForRestraint(blockedtag[0], restraint)
+					&& (noOverpower || rPower < blockedtag[1] || options?.noOverpowerMetaTags)) {
 					return false;
 				}
 			}

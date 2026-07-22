@@ -371,6 +371,7 @@ KDPrisonTypes.DollShoppe = {
 					//KDProcessCustomPatron(Enemy, en, 0.5, false);
 					en.AI = "wander";
 					en.faction = "Adventurer";
+					en.specialdialogue = "DollShoppeVisitor";
 				}
 			}
 		}

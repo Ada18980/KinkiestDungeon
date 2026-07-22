@@ -297,7 +297,8 @@ function KDDefaultPrereqs(enemy: entity, AIData: any, dist: number, maxdist: num
 				undefined,
 				undefined,
 				{
-					allowLowPower: true
+					allowLowPower: true,
+					noOverpowerMetaTags: true,
 				}) != undefined)
 			&& (KinkyDungeonStatsChoice.get("Undeniable") || !KDIsBrat(enemy) || force);
 }

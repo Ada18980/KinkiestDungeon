@@ -33891,17 +33891,159 @@ KDMouseHole,It's a little hole in the wall where a mouse lives. Perhaps you coul
 KDMouseHoleSuccess,The mouse takes your item and brings something interesting!
 KDMouseHoleFail,"The mouse steals your item and runs back into the hole."
 
-rDollShoppeVisitor,"(The SPEAKER visits the doll shoppe, ${Etheir} eye${Es} hanging over you with a smug gaze)"
-dDollShoppeVisitorBeCute,(Be cute and presentable)
-dDollShoppeVisitorBeStill,(Be a still doll)
-dDollShoppeVisitorBeBrat,(Try to ignore ${Ethem})
-dDollShoppeVisitorBeAngry,(Struggle uselessly against your bindings)
-dDollShoppeVisitorBeBought,(Be enticing)
-dDollShoppeVisitorAttack,(Lash out at ${Ethem}) (Will aggro)
+rDollShoppeVisitor,"(The SPEAKER looks at you)|Well if it isn't another lovely doll~"
+rDollShoppeVisitorVoyeur,"(The SPEAKER walks along from doll to doll, ${Etheir} eye${Es} hanging over you with a smug gaze)"
+rDollShoppeVisitorDom,"(The SPEAKER visits the doll shoppe, ${Etheir} eye${Es} lingering on you in their search for the perfect doll)"
+rDollShoppeVisitorSub,"(The SPEAKER stops near you, looking at you with deep interest and a blush on ${Etheir} face)"
+rDollShoppeVisitorBrat,"(The SPEAKER glances at you, ${Etheir} head giving a little tilt as they flash a smile)|Why hello, doll."
+rDollShoppeVisitorRobot,"(The SPEAKER stops and scans you)"
+
+dDollShoppeVisitor_BeCute,(Be cute and presentable)
+dDollShoppeVisitor_BeStill,(Be a still doll)
+dDollShoppeVisitor_BeBrat,(Ignore ${Ethem} and try to look away)
+dDollShoppeVisitor_BeAngry,(Struggle uselessly against your bindings)
+dDollShoppeVisitor_BeBought,(Be enticing)
+dDollShoppeVisitor_Attack,(Lash out at ${Ethem}) (Will aggro)
 dDollShoppeVisitorAttack_Confirm,(You have to try!)
 dDollShoppeVisitorAttack_GiveUp,(Reconsider)
 
-rDollShoppeVisitorBeCute_Success,(The SPEAKER gushes over how adorable you are)
+rDollShoppeVisitorBeCute_Success,"(The SPEAKER gushes over how adorable you are)|Oh gods, ${Ptheyre} so cute!|Looks like I've come to the right place~"
+rDollShoppeVisitorBeCute_SuccessLate,"(The SPEAKER chuckles)|There we go, that's better. Good girl~"
+rDollShoppeVisitorBeCute_Fail,"(The SPEAKER smiles)|Not quite my type. But cute."
+rDollShoppeVisitorBeCute_FailLate,"(The SPEAKER shakes ${Etheir} head)|I'll have a look at the other dolls."
+
+rDollShoppeVisitorBeStill_Success,"(The SPEAKER gives an approving nod)|A lovely, still, doll. Excellent."
+rDollShoppeVisitorBeStill_SuccessLate,"(The SPEAKER cants ${Etheir} head and smiles)|There we go. A proper doll should be still."
+rDollShoppeVisitorBeStill_Fail,"(The SPEAKER shakes ${Etheir} head|I prefer a little more... personality."
+rDollShoppeVisitorBeStill_FailLate,"(The SPEAKER tilts ${Etheir} head)|Interesting."
+
+rDollShoppeVisitorBeBrat_Success,"(The SPEAKER smirks)|How lovely it will be to break you in, ${Pdim}."
+rDollShoppeVisitorBeBrat_SuccessLate,"(The SPEAKER smiles)|That's better. Show some spirit!"
+rDollShoppeVisitorBeBrat_Fail,"(The SPEAKER shakes ${Etheir} head)|I see this one needs breaking in."
+rDollShoppeVisitorBeBrat_FailLate,"(The SPEAKER chuckles)|A bit shy, aren't you?"
+
+rDollShoppeVisitorBeAngry_Success,"(The SPEAKER flashes an evil grin)|That's right ${Pdim}. Keep struggling. There's no escape."
+rDollShoppeVisitorBeAngry_SuccessLate,"(The SPEAKER grins)|Relax, ${Pdim}, you're not going anywhere. Just give in~"
+rDollShoppeVisitorBeAngry_Fail,"(The SPEAKER shakes ${Etheir} head)|That's not how a doll should be."
+rDollShoppeVisitorBeAngry_FailLate,"(The SPEAKER laughs)|A feisty one. Cute."
+
+
+
+rDollShoppeVisitorBeCute_SuccessVoyeur,"(The SPEAKER watches you for a while, forming a pleasant expression on ${Etheir} face)|What have we here? Quite the pretty one."
+rDollShoppeVisitorBeCute_SuccessLateVoyeur,"(The SPEAKER's expression slowly forms a smile)"
+rDollShoppeVisitorBeCute_FailVoyeur,"(The SPEAKER yawns, and then smiles)"
+rDollShoppeVisitorBeCute_FailLateVoyeur,"(The SPEAKER watches you and pats you on the head)"
+
+rDollShoppeVisitorBeStill_SuccessVoyeur,"(The SPEAKER watches you for a long, long, time. A smile forms on ${Etheir} satisfied face)|A great time to go window shopping, I see~"
+rDollShoppeVisitorBeStill_SuccessLateVoyeur,"(The SPEAKER's expression slowly forms a smile)"
+rDollShoppeVisitorBeStill_FailVoyeur,"(The SPEAKER watches you for a bit, expecting you to do something.)|(${EThey} lose${Es} interest after a while)"
+rDollShoppeVisitorBeStill_FailLateVoyeur,"(The SPEAKER watches you, tilting ${Etheir} head.)"
+
+rDollShoppeVisitorBeBrat_SuccessVoyeur,"(The SPEAKER giggles to ${Ethem}self)|A blushy one. I quite enjoy watching cuties like you."
+rDollShoppeVisitorBeBrat_SuccessLateVoyeur,"(The SPEAKER flashes a smug grin before moving on)"
+rDollShoppeVisitorBeBrat_FailVoyeur,"(The SPEAKER smiles, and shrugs)"
+rDollShoppeVisitorBeBrat_FailLateVoyeur,"(The SPEAKER watches you intently)"
+
+rDollShoppeVisitorBeAngry_SuccessVoyeur,"(The SPEAKER watches you struggle with great amusement)|Keep struggling, dear, you'll get there eventually!|Or perhaps not, but it's fun to see you try~"
+rDollShoppeVisitorBeAngry_SuccessLateVoyeur,"(The SPEAKER watches you struggle with great amusement)"
+rDollShoppeVisitorBeAngry_FailVoyeur,"(The SPEAKER yawns as you struggle)"
+rDollShoppeVisitorBeAngry_FailLateVoyeur,"(The SPEAKER watches you with a slight grin)"
+
+
+
+
+
+rDollShoppeVisitorBeCute_SuccessDom,"(The SPEAKER moves closer and holds your chin)|Absolutely adorable. I like you~"
+rDollShoppeVisitorBeCute_SuccessLateDom,"(The SPEAKER steps closer and corrects your posture to look even cuter)|Much better!"
+rDollShoppeVisitorBeCute_FailDom,"(The SPEAKER holds a finger to ${Etheir} chin, inspecting you closely)|Very cute... but not quite what I'm looking for."
+rDollShoppeVisitorBeCute_FailLateDom,"(The SPEAKER tilts ${Etheir} head and smiles)|Cute."
+
+rDollShoppeVisitorBeStill_SuccessDom,"(The SPEAKER inspects your pose carefully and nods with approval)|Very good. An ideal doll."
+rDollShoppeVisitorBeStill_SuccessLateDom,"(The SPEAKER watches you with a smile)|Good."
+rDollShoppeVisitorBeStill_FailDom,"(The SPEAKER seems interested in your restraints)|You should struggle, ${Pdim}. It'd be nice to see you squirm."
+rDollShoppeVisitorBeStill_FailLateDom,"(The SPEAKER holds your chin and runs a hand along your body, smiling)"
+
+rDollShoppeVisitorBeBrat_SuccessDom,"(The SPEAKER reaches over and grabs you by the forehead)|Look at me, ${Pdim}. Brats like you should be broken in, made to squirm,|until you know. Your. Place."
+rDollShoppeVisitorBeBrat_SuccessDomBlind,"(The SPEAKER reaches over and grabs you by the forehead)|${Pdim}, you should pay more attention.|You know, brats like you ought to be taught a lesson~"
+rDollShoppeVisitorBeBrat_SuccessLateDom,"(The SPEAKER smirks)|That's cute.|If I had the time, I'd train you myself, but ahh~"
+rDollShoppeVisitorBeBrat_FailDom,"(The SPEAKER sighs)|A brat who doesn't know her place.|I'm sure you'll find someone to train you soon enough."
+rDollShoppeVisitorBeBrat_FailLateDom,"(The SPEAKER smiles)|A brat who doesn't know her place."
+
+rDollShoppeVisitorBeAngry_SuccessDom,"(The SPEAKER smiles warmly)|A ${Psub} like you belongs in restrains.|Strictly tied.|Unable to move an inch."
+rDollShoppeVisitorBeAngry_SuccessLateDom,"(The SPEAKER chuckles)|No point in struggling, ${Psub}.|Just give in, won't you~?"
+rDollShoppeVisitorBeAngry_FailDom,"(The SPEAKER smirks)|Let's check your restraints... Making sure they're nice and tight."
+rDollShoppeVisitorBeAngry_FailLateDom,"(The SPEAKER chuckles)|It is a good thing you are restrained."
+
+
+
+
+
+rDollShoppeVisitorBeCute_SuccessSub,"(The SPEAKER smiles and blushes)|Cute ${Psub}."
+rDollShoppeVisitorBeCute_SuccessLateSub,"(The SPEAKER pats your head as ${Ethey} pass${Ees} by)"
+rDollShoppeVisitorBeCute_FailSub,"(The SPEAKER smiles)|Your motivation is admirable but you have much to learn~"
+rDollShoppeVisitorBeCute_FailLateSub,(The SPEAKER smiles and shrugs)
+
+rDollShoppeVisitorBeStill_SuccessSub,"(The SPEAKER nods in approval)|You make a very good doll, ${Psub}."
+rDollShoppeVisitorBeStill_SuccessLateSub,"(The SPEAKER gives a little giggle as ${Ethey} pass${Ees} by)"
+rDollShoppeVisitorBeStill_FailSub,"(The SPEAKER nods once)|I admire your dedication~"
+rDollShoppeVisitorBeStill_FailLateSub,(The SPEAKER smiles at your dedication to being a doll on display)
+
+rDollShoppeVisitorBeBrat_SuccessSub,"(The SPEAKER looks curious)|Oh? You look like a ${Pdim} who needs some training..."
+rDollShoppeVisitorBeBrat_SuccessLateSub,"(The SPEAKER smiles)|Needs training... hehe~"
+rDollShoppeVisitorBeBrat_FailSub,"(The SPEAKER crosses ${Etheir} arms)|Be a good ${Pdim} and show some respect."
+rDollShoppeVisitorBeBrat_FailLateSub,"(The SPEAKER giggles and shrugs)"
+
+rDollShoppeVisitorBeAngry_SuccessSub,"(The SPEAKER looks curious)|Oh? You look like a ${Pdim} who needs some training..."
+rDollShoppeVisitorBeAngry_SuccessLateSub,"(The SPEAKER smiles)|Needs training... hehe~"
+rDollShoppeVisitorBeAngry_FailSub,"(The SPEAKER crosses ${Etheir} arms)|Be a good ${Pdim} and behave."
+rDollShoppeVisitorBeAngry_FailLateSub,"(The SPEAKER smiles and shrugs)"
+
+
+
+
+
+rDollShoppeVisitorBeCute_SuccessBrat,"(The SPEAKER grabs your head and leans in, a wide smile growing on ${Etheir} face)|SO CUTE!|(${EThey} give${Ees} you headpats repeatedly)"
+rDollShoppeVisitorBeCute_SuccessLateBrat,"(The SPEAKER pats you on the head)|Adorable. Be good, okay?"
+rDollShoppeVisitorBeCute_FailBrat,"(The SPEAKER giggles)|Cute, but not quite my style~"
+rDollShoppeVisitorBeCute_FailLateBrat,"(The SPEAKER smiles)|Cute."
+
+rDollShoppeVisitorBeStill_SuccessBrat,"(The SPEAKER reaches out almost to touch your chest,|${Etheir} hand hovering just above your still body)|Good doll~"
+rDollShoppeVisitorBeStill_SuccessLateBrat,"(The SPEAKER smiles)|Good, still, doll."
+rDollShoppeVisitorBeStill_FailBrat,"(The SPEAKER hums)|The pose could use some work..."
+rDollShoppeVisitorBeStill_FailLateBrat,"(The SPEAKER chuckles)|Being on display is getting to your head, eh?"
+
+rDollShoppeVisitorBeBrat_SuccessBrat,"(The SPEAKER grabs your chin and points your head toward ${Ethem})|I think I'd enjoy showing you your place..."
+rDollShoppeVisitorBeBrat_SuccessLateBrat,"(The SPEAKER folds ${Etheir} arms and smiles)|I like your spirit."
+rDollShoppeVisitorBeBrat_FailBrat,"(The SPEAKER tilts ${Etheir} head)|Do you think this will get you anywhere?|(${EThey} smile and hold up your chin)"
+rDollShoppeVisitorBeBrat_FailLateBrat,"(The SPEAKER smiles)|Better start begging~"
+
+rDollShoppeVisitorBeAngry_SuccessBrat,"(The SPEAKER grabs your shoulder to stop you moving)|Oh, cutie, you won't be going anywhere.|Except perhaps with me, hehe~"
+rDollShoppeVisitorBeAngry_SuccessLateBrat,"(The SPEAKER chuckles)|Cute. Keep trying, ${Pdim}.|I'm sure you'll get out if you try hard enough... heh~"
+rDollShoppeVisitorBeAngry_FailBrat,"(The SPEAKER laughts)|You won't be going anywhere with that attitude~"
+rDollShoppeVisitorBeAngry_FailLateBrat,"(The SPEAKER giggles)|You're not going anywhere~"
+
+
+
+
+rDollShoppeVisitorBeCute_SuccessRobot,"(The SPEAKER makes a beep of approval)|Cute behavior has been noted, logged, and approved.|Good girl."
+rDollShoppeVisitorBeCute_SuccessLateRobot,"(The SPEAKER pauses)|Subject cuteness within expected bounds.|Good girl."
+rDollShoppeVisitorBeCute_FailRobot,"(The SPEAKER makes a loud noise resembling an error message)|Subject does not conform to expected standards.|Suggest corrective training."
+rDollShoppeVisitorBeCute_FailLateRobot,"(The SPEAKER pauses)|Subject continues to defy protocol."
+
+rDollShoppeVisitorBeBrat_SuccessRobot,"(The SPEAKER makes a beep of approval)|Behavior has been noted, logged, and found to be within acceptable bounds.|Good girl."
+rDollShoppeVisitorBeBrat_SuccessLateRobot,"(The SPEAKER pauses)|Subject behavior within expected parameters.|Good girl."
+rDollShoppeVisitorBeBrat_FailRobot,"(The SPEAKER makes a loud noise resembling an error message)|Subject does not conform to expected standards.|Suggest corrective training."
+rDollShoppeVisitorBeBrat_FailLateRobot,"(The SPEAKER pauses)|Subject continues to defy protocol."
+
+rDollShoppeVisitorBeAngry_SuccessRobot,"(The SPEAKER makes a beep of approval)|Subject resists as expected.|Noting and proceeding."
+rDollShoppeVisitorBeAngry_SuccessLateRobot,"(The SPEAKER pauses)|Subject resists as expected.|Proceeding."
+rDollShoppeVisitorBeAngry_FailRobot,"(The SPEAKER makes a loud noise resembling an error message)|Subject continues to resist capture.|Propose intense corrective measures."
+rDollShoppeVisitorBeAngry_FailLateRobot,"(The SPEAKER pauses)|Subject continues to resist, despite lack of capability.|Logical error."
+
+rDollShoppeVisitorBeStill_SuccessRobot,"(The SPEAKER makes a beep of approval)|No movement detected. This has been logged.|Good girl."
+rDollShoppeVisitorBeStill_SuccessLateRobot,"(The SPEAKER pauses)|Subject has corrected unwanted behavior.|Good girl."
+rDollShoppeVisitorBeStill_FailRobot,"(The SPEAKER makes a loud noise resembling an error message)|Subject does not respond to stimuli in an expected manner.|Suggest additional stimulation."
+rDollShoppeVisitorBeStill_FailLateRobot,"(The SPEAKER pauses)|Subject does not act when prompted.|This is not acceptable."
 
 
 KDNeedHighOpinionToBeBought,${EThey} do${Ees}n't like you enough to make you ${Etheir}'s.

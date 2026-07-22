@@ -197,6 +197,17 @@ function KinkyDungeonAttachTetherToEntity(dist: number, entity: entity, player: 
 			priority: priority,
 			restraintID: item?.id,
 		};
+		if (player.player) {
+			for (let inv of KinkyDungeonAllRestraint()) {
+				if (KDRestraint(inv).removeOnLeash) {
+					KinkyDungeonRemoveRestraint(KDRestraint(inv).Group, false);
+					if (KDRestraint(inv).Group == "ItemDevices") {
+						KDReleaseDueToLeashFlags(player);
+					}
+				}
+			}
+		}
+		
 		return player.leash;
 	}
 	return undefined;
@@ -329,8 +340,7 @@ function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, x
 				if (KDRestraint(inv).removeOnLeash) {
 					KinkyDungeonRemoveRestraint(KDRestraint(inv).Group, false);
 					if (KDRestraint(inv).Group == "ItemDevices") {
-						KinkyDungeonSetFlag("Released", 15);
-						KinkyDungeonSetFlag("nojailbreak", 15);
+						KDReleaseDueToLeashFlags(Entity);
 					}
 				}
 			}
@@ -490,4 +500,10 @@ function KDWillingLeash(entity: entity): boolean {
 	return entity?.personality != undefined
 				&& KDLeashablePersonalities[entity.personality]
 				&& KDLeashablePersonalities[entity.personality](entity, KDPlayer());
+}
+
+
+function KDReleaseDueToLeashFlags(player: entity) {
+	KinkyDungeonSetFlag("Released", 15);
+	KinkyDungeonSetFlag("nojailbreak", 15);
 }

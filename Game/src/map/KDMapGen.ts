@@ -961,9 +961,18 @@ function KinkyDungeonGetAllies(): entity[] {
  */
 function KDIsImprisoned(enemy: entity): boolean {
 	if (enemy?.player) {
-		return KDPrisonIsInFurniture(enemy) || KinkyDungeonPlayerInCell(true, true);
+		return KDPrisonIsInFurniture(enemy);// || KinkyDungeonPlayerInCell(true, true);
 	}
 	return enemy && KDEntityHasFlag(enemy, "imprisoned");
+}
+/**
+ * @param enemy
+ */
+function KDIsImprisonedOrJailed(enemy: entity): boolean {
+	if (enemy?.player) {
+		return KDPrisonIsInFurniture(enemy) || KinkyDungeonPlayerInCell(true, true);
+	}
+	return enemy && KDEntityHasFlag(enemy, "imprisoned"); // todo add later if prisoners get to free roam
 }
 
 
