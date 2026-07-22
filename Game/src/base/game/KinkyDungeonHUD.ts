@@ -3715,7 +3715,7 @@ function KDDrawStruggleGroups() {
 				FillRectKD(kdcanvas, kdpixisprites, "selectedBG", {
 					Left: 510, Top: MY - 20, Width: 740,
 					Height: lastO * lineSize + 40,
-					Color: KDBaseBlack, alpha: 0.7, zIndex: 110
+					Color: KDBaseBlack, alpha: 0.7, zIndex: 149
 				});
 			}
 
