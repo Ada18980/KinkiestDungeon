@@ -303,7 +303,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Mouse Shortcuts
 鼠标快捷操作
 
-# - Hypnosis Screen Wobble
+- Hypnosis Screen Wobble
+催眠时屏幕晃动
 
 - Replace struggle icons with menu
 将挣扎按钮替换为菜单
@@ -320,7 +321,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 
 - Play sound when targeted by attacks
 被锁定为攻击目标时播放警告声
-# - Allow Stacking Similar Items
+- Allow Stacking Similar Items
+允许堆叠相似物品
 - Show Minimap Labels
 显示小地图标签
 - Auto loot all from chests
@@ -422,7 +424,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 眩晕时闪屏
 - Map Particles
 地图粒子效果
-# - Restraint Particles
+- Restraint Particles
+拘束具粒子
 - Distraction Particles
 性奋粒子
 - Vibration Particles
@@ -651,7 +654,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 女神的声望永远不会超过25。
 
 - Submissive
-顺从者
+Sub
 # :: KinkyDungeonStat10
 # :: KDPersonalitySub
 # :: KDPlayerTitle_Submissive
@@ -2032,7 +2035,8 @@ Roguelike : ‎没有保存代码，只有自动保存
 我会等着看会发生什么。
 - Save and return to menu
 保存并回到主菜单
-# - Cannot save during dialogue
+- Cannot save during dialogue
+对话时无法保存
 - Give up & delete save
 放弃并删除存档
 - Yes, delete my save file!
@@ -2298,7 +2302,7 @@ Devious Dungeon Challenge 已启用。
 # :: m_PointyAntennae_l_Left
 # :: m_PointyHorns_l_Left
 - Right
-右
+右　
 # :: KinkyDungeonKeyRight
 # :: m_SmoothHeels_l_Right
 # :: m_PointyAntennae_l_Right
@@ -5177,7 +5181,7 @@ M.F. '女仆长'
 - The High Cleric locks ${Ethem}self in ritual bondage as punishment for failure.
 高级祭司将自己锁缚在仪式性束缚中作为失职的惩罚。
 - The High Cleric holds up ${Etheir} staff and you feel intense vibrations throughout your body! (DamageTaken)
-随着高级祭司举起她的法杖，你感觉到强烈的振动传遍了你的身体！(DamageTaken)
+随着高级祭司举起${Etheir}法杖，你感觉到强烈的振动传遍了你的身体！(DamageTaken)
 - The High Cleric summons animated restraints to bind you! (+RestraintAdded)
 高级祭司召唤出了活化拘束具来捆绑你！(+RestraintAdded)
 - A flurry of mummy wrappings encase you and stun you! (DamageTaken)
@@ -5894,11 +5898,16 @@ Ada 屈服于欲望，跌倒在地~
 - You bring the kidnapper to justice!
 你把绑匪绳之以法！
 
-# - Lost Puppet
-# - The lost puppet wanders away.
-# - The lost puppet reaches out with ${Etheir} strings wrapping around you. (+RestraintAdded)
-# - The lost puppet clicks on a brass lock.
-# - The lost puppet firmly holds and caresses you in its arms. (DamageTaken)
+- Lost Puppet
+迷失的木偶
+- The lost puppet wanders away.
+迷失的木偶游荡而去。
+- The lost puppet reaches out with ${Etheir} strings wrapping around you. (+RestraintAdded)
+迷失的木偶伸出手，用${Etheir}丝带缠绕着你。（+RestraintAdded）
+- The lost puppet clicks on a brass lock.
+迷失的木偶锁上了一把黄铜锁。
+- The lost puppet firmly holds and caresses you in its arms. (DamageTaken)
+丢失的木偶紧紧抱着你，温柔着抚摸着。(DamageTaken)
 
 # - Soulless Puppet
 # - The soulless puppet wanders away.
@@ -5918,11 +5927,16 @@ Ada 屈服于欲望，跌倒在地~
 裁缝拥抱你无助的身体~(DamageTaken)
 
 
-# - Puppetmaster
-# - The puppetmaster storms out in a rage.
-# - The puppetmaster has you try on one of ${Etheir} new accessories! (+RestraintAdded)
-# - The puppetmaster adds a lock 'just to complete the look, you know?'
-# - The puppetmaster cuddles your helpless body~ (DamageTaken)
+- Puppetmaster
+傀儡师
+- The puppetmaster storms out in a rage.
+傀儡师怒气冲冲地冲了出去。
+- The puppetmaster has you try on one of ${Etheir} new accessories! (+RestraintAdded)
+傀儡师让你试戴${Etheir}的新饰品之一！（+RestraintAdded）
+- The puppetmaster adds a lock 'just to complete the look, you know?'
+傀儡师加了一把锁，“只是为了让它看起来更完整，你懂的？”
+- The puppetmaster cuddles your helpless body~ (DamageTaken)
+傀儡师拥抱你无助的身体~(DamageTaken) 
 
 - Nurse
 护士
@@ -7480,7 +7494,8 @@ TYPE女神的神泉。
 门
 # :: KinkyDungeonObjectDoor
 # :: m_FutureBox_l_Door
-# - Perk Shrine
+- Perk Shrine
+特质神泉
 # - It's a conveyor belt. It conveys.
 
 
@@ -7954,11 +7969,14 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintOneBarVibeTrapDesc2
 # :: RestraintOneBarSpreaderVibeTrapDesc2
 
-# - One Bar Prison (S)
-# - A pole and frame, ankles locked in place so that escape is completely impossible for the girl mounted on it.
+- One Bar Prison (S)
+罚站桩(S)
+- A pole and frame, ankles locked in place so that escape is completely impossible for the girl mounted on it.
+一根桩子和框架，女孩被固定在上面，脚踝被锁住，根本无法逃脱。
 # :: RestraintOneBaSpreaderTrapDesc
 # :: RestraintOneBarSpreaderVibeTrapDesc
-# - One Bar Heaven (S)
+- One Bar Heaven (S)
+舒适桩(S)
 
 
 
@@ -7988,13 +8006,17 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintDollStandDesc2
 # :: RestraintOneBarDesc2
 
-# - A stand for keeping dolls comfortable when they're not being played with.
+- A stand for keeping dolls comfortable when they're not being played with.
+一个为在无人玩耍玩偶时让玩偶保持其舒适状态的支架。
 # :: RestraintDollStandRealDesc
 # :: RestraintDollStandSpreaderRealDesc
-# - It can be locked in place, and is difficult to dismount when wearing high heeled shoes.
+- It can be locked in place, and is difficult to dismount when wearing high heeled shoes.
+它可以固定在原地，同时在穿着高跟鞋时很难将其拆下。
 
-# - Doll Stand (S)
-# - The subject is locked in place and unable to move an inch.
+- Doll Stand (S)
+玩偶架(S)
+- The subject is locked in place and unable to move an inch.
+支架主体被锁定在原位，无法动弹分毫。
 
 
 
@@ -11728,7 +11750,7 @@ RestraintName 上的诅咒解除了！
 - Butt Plug
 肛塞
 - Legs
-腿部
+腿
 # :: KinkyDungeonGroupItemLegs
 # :: KDShortCompLegs
 # :: KinkyDungeonColumnLegs
@@ -15918,9 +15940,9 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - You've been a good ${Psub}. I hope you don't make the same mistake again.|You can leave.
 你表现得很好。希望你不会再犯同样的错误。|你可以走了。
 - That's a good ${Psub}. Now behave yourself, okay?|You're free to go.
-真是个好女孩。现在要乖乖的，好吗？|你可以走了。
+真是个好${Psub}。现在要乖乖的，好吗？|你可以走了。
 - Looks like you got yourself in a bind!|(${EThey} pat${Es} your butt playfully)|You're free to go!
-看起来你陷入了捆境！|（她开玩笑地拍拍你的屁股）|你可以走了！
+看起来你陷入了捆境！|（${EThey}开玩笑地拍拍你的屁股）|你可以走了！
 # :: rJailRelease3
 # :: rJailRelease
 
@@ -17897,7 +17919,7 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailPlayHelplessSkeleton1
 # :: KinkyDungeonRemindJailPlayHelplessPuppet1
 - *rattles*
-*惊恐*
+*嘎吱响*
 # :: KinkyDungeonRemindJailPlayHelplessSkeleton2
 # :: KinkyDungeonRemindJailSkeletonPull
 # :: KinkyDungeonRemindJailSkeletonLock
@@ -18011,7 +18033,7 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailSkeletonMiss
 # :: KinkyDungeonRemindJailPuppetMiss
 - *flails uselessly*
-*毫无用处的连枷*
+*无助地挥舞四肢*
 # :: KinkyDungeonRemindJailSkeletonBlock
 # :: KinkyDungeonRemindJailPuppetBlock
 - *trembles*
@@ -18021,11 +18043,11 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailPuppetMissedMe
 # :: KinkyDungeonRemindJailPuppetBlockedMe
 - *tugs on leash*
-*拉扯皮带*
+*拉扯牵引绳*
 # :: KinkyDungeonRemindJailSkeletonLeash
 # :: KinkyDungeonRemindJailPuppetLeash
 - *Wears a sign saying 'PTRN'*
-*佩戴 'PTRN' 名牌*
+*佩戴写着 'PTRN' 标牌*
 # :: KinkyDungeonRemindJailSkeletonIntro
 # :: KinkyDungeonRemindJailPuppetIntro
 - !!!
@@ -22281,7 +22303,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (Nod enthusiastically)
 ( 热情点头 )
 - (Shake your head)
-（摇头）
+( 摇头 )
 # :: dOfferDress_NoGag
 # :: dOfferDressYes_NoGag
 # :: dOfferKigu_NoGag
@@ -26064,7 +26086,7 @@ Mmmph? (行为混乱)
 - (You unlock the SPEAKER)|Appreciate the rescue!|'twas fun while it lasted...
 ( 你解救了 SPEAKER ) |谢谢！|虽然被捆着的时候也很舒服…
 - (You unlock the SPEAKER)|Thank you ${PGen}!
-( 你解救了 SPEAKER ) |感谢您，女士！
+( 你解救了 SPEAKER ) |感谢您，${PGen}！
 - (You unlock your SPEAKER)|...at your command.
 ( 你解救了你的 SPEAKER ) |…听候您的吩咐。
 - (You unlock your SPEAKER)|Hmmpf... are you letting me go?
@@ -26082,7 +26104,7 @@ Mmmph? (行为混乱)
 - (After a while, you free the SPEAKER)|That was fun!|Er--|Thanks, I mean!
 （过了一会儿，你救出了 SPEAKER）|我刚才还享受着呢！|额——|我的意思是，谢谢你！
 - (After a while, you free the SPEAKER)|Mmph... thank you ${PGen}!
-（过了一会儿，你救出了 SPEAKER）|唔…感谢您，女士！
+（过了一会儿，你救出了 SPEAKER）|唔…感谢您，${PGen}！
 - (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
 ( 过了一会儿，你解开了 SPEAKER ) |谢谢|让我们开始行动！
 # :: rPrisonerLatexCut
@@ -26103,7 +26125,7 @@ Mmmph? (行为混乱)
 - (After a while, you free the SPEAKER)|For a moment there I thought it was too much for you~
 （过了一会儿，你救出了 SPEAKER）|刚才我还以为这对你来说太困难了呢~
 - (After a while, you free the SPEAKER)|Thank you ${PGen}!|Your lockpicking skills are impeccable!
-（过了一会儿，你救出了 SPEAKER）|感谢您女士！|真是无可挑剔的撬锁手法！
+（过了一会儿，你救出了 SPEAKER）|感谢您${PGen}！|真是无可挑剔的撬锁手法！
 - (After a while, you free the SPEAKER)|Mmph, that took forever~
 （过了一会儿，你救出了 SPEAKER）|唔…那可花了老长时间呢~
 - (After a while, you free the SPEAKER)|Are you supposed to be here?|(${EThey} giggle${Es})
@@ -26265,7 +26287,8 @@ FOODMSG| ( 它邀请你分享它的美食 )
 ( 吃完食物你感觉到你的意志力在上升 )
 - (Being gagged as you are you cannot enjoy the food)
 ( 被塞住嘴的时候无法享受食物 )
-# - (Artificial beings don't need to eat)
+- (Artificial beings don't need to eat)
+（人造生命不需要进食）
 # :: rTableFoodEatDoll
 # :: KDFoodEatDoll
 - (You steal the food, hoping nobody will notice...)
@@ -26287,7 +26310,7 @@ FOODMSG| ( 它邀请你分享它的美食 )
 # :: KinkyDungeonFoodIceCreamPoisoned
 # :: KinkyDungeonFoodIceCreamArousal
 - (You smell delicious pizza)
-(你闻到了美味的披萨)
+( 你闻到美味的披萨的味道 )
 # :: KinkyDungeonFoodPizza
 # :: KinkyDungeonFoodPizzaPoisoned
 # :: KinkyDungeonFoodPizzaArousal
@@ -26877,7 +26900,8 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 导出脸部
 - Export Cosplay
 导出 Cosplay
-# - Export Expression
+- Export Expression
+导出表情
 
 - Gamma
 伽马值
@@ -29135,7 +29159,8 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_DaiBrows2_l_Brows2
 - Kjus Eyes
 Kjus眼
-# - Eyebrows
+- Eyebrows
+眉毛
 - Kjus Brows
 Kjus眉
 - Kjus Mouth
@@ -29276,8 +29301,10 @@ Dask眼
 # :: m_Fox7Tail_l_Tail
 # :: m_MouseTail_l_Tail
 # :: m_MouseTail_l_Tail
-# - Fox Tails
-# - Cat Tails
+- Fox Tails
+狐尾
+- Cat Tails
+猫尾
 - Wolf Tail
 狼尾
 - Cat Tail
@@ -33830,7 +33857,7 @@ V形比基尼
 # :: m_JacketHeavyLeotard_l_LatexUpper
 # :: m_JacketExtraLeotard_l_LatexUpper
 - Legbinder
-束腿套
+绑腿
 # :: m_Legbinder
 # :: m_Legbinder_l_Legbinder
 # :: m_Legbinder_l_Legbinder
@@ -43655,7 +43682,8 @@ Vents发型
 秘密勋章
 :: m_MilitaryUniform_l_Secret
 秘密勋章
-# - Unit
+- Unit
+单位
 # :: m_MilitaryUniform_l_Unit
 # :: m_CyberPetsuit_l_Unit
 # :: m_CyberPetsuit_l_Unit
@@ -44401,7 +44429,7 @@ Kjus眼5
 - This pleases me.
 我觉得不错。
 - Thank you ${PHonor}! I won't bother you anymore.
-谢谢你小姐！我不会再烦扰你了。
+谢谢你${PHonor}！我不会再烦扰你了。
 - --Exception cleared. Awaiting orders.
 --错误移除。等待指令。
 
@@ -45961,9 +45989,12 @@ LKTYP 锁锁在了你的一个拘束具上！
 照明
 - Illumination: This weapon is a light source.
 照明 : ‎该武器是一个光源。
-# - Mesmerizing
-# - Mesmerizing: This item has mind-altering effects.
-# - Damaging
+- Mesmerizing
+迷魂
+- Mesmerizing: This item has mind-altering effects.
+迷魂: 该物品具有改变心智的效果。
+- Damaging
+伤害
 - Damage Type: 
 伤害类型：
 
@@ -46966,15 +46997,20 @@ Kigurumi头壳
 囚犯文字
 - Invisible Restraints
 隐形拘束具
-# - Aphrodisiac-Laced Food
-# - Sleep-Laced Food
-# - Hypnosis
+- Aphrodisiac-Laced Food
+催情食物
+- Sleep-Laced Food
+催眠食物
+- Hypnosis
+催眠
 # - Doll Transformation
 # - Doll Transformation (Sexless)
 
 
-# - Some food items on tables will be laced with a drug that makes your character fall asleep.
-# - Some food items on tables will be laced with a drug that makes your character very distracted.
+- Some food items on tables will be laced with a drug that makes your character fall asleep.
+桌上的某些食物会含有使你的角色陷入睡眠的药物。
+- Some food items on tables will be laced with a drug that makes your character very distracted.
+桌上的某些食物会含有使你的角色陷入性奋的药物。
 # - Removes some dialogue paths that end with your character getting slapped, hair pulled, or otherwise 'beaten.'
 
 - |||This item is marked as Red, which prevents it from appearing in the game.
@@ -47054,7 +47090,8 @@ Kigurumi头壳
 耳塞削弱了玩家的听力。
 - Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
 将针对玩家的大部分“电击”伤害替换为“电刺激”伤害，造成快感而非痛苦。
-# - Allows the player character to get hypnotized, listening to suggestions which alter behavior.
+- Allows the player character to get hypnotized, listening to suggestions which alter behavior.
+允许玩家角色陷入催眠状态，聆听那些能够改变行为的建议。
 
 - Palette
 调色板
@@ -49299,7 +49336,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: KDRoomType_Jail
 - Sorting Room
 分拣室
-# - Shoppe
+- Shoppe
+玩偶商
 
 
 - Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
@@ -50896,7 +50934,8 @@ N/A
 
 - Select a Binding Slot
 选择一个拘束插槽
-# - Select Binding Material
+- Select Binding Material
+选择拘束材料
 
 - Cost: 
 花费：
@@ -50926,7 +50965,8 @@ N/A
 与另一件物品不兼容
 - Incompatible with existing items
 与已存在的物品不兼容
-# - Already tied with that
+- Already tied with that
+已拘束对象
 
 - The conjured RSTN vanishes as you remove it.
 变出的 RSTN 会在你移除它时消失。
@@ -51222,9 +51262,9 @@ ENMY 解开了 ITMN 的锁!
 - Take ALL-1\nITMN
 拿取全部-1\nITMN
 - Store Excess\nITMN
-储存多余的 ITMN
+储存多余的\nITMN
 - Refill\nITMN
-拿取适量的 ITMN
+拿取适量的\nITMN
 - (Max: ${Num})
 （最大：${Num}）
 - (max ${Num})
@@ -52177,7 +52217,7 @@ PTRN 的 RMTPE
 - (The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
 （SPEAKER 轻抚你的身体）|你身上好像有些危险物品。|囚犯可不该带这些东西呢~
 - (The SPEAKER folds ${Etheir} hands together)|${PHonor}, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
-（SPEAKER 双手交叉）|小姐，我得确保你没带任何危险物品。|现在我要搜身了。
+（SPEAKER 双手交叉）|${PHonor}，我得确保你没带任何危险物品。|现在我要对你进行搜身。
 - (The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
 （SPEAKER 直视着你）|你以为你带着这些能蒙混过关？
 # :: rStripSearchDom
@@ -52191,7 +52231,7 @@ PTRN 的 RMTPE
 # :: rStripSearchRobot
 # :: rStripSearchCyberRobot
 - Yes, ${EHonor}... (Begin search and confiscation)
-是的，小姐……（开始搜身）
+是的，${EHonor}……（开始搜身）
 # :: dStripSearch_Accept
 # :: dStripSearchCyber_Accept
 - Mmph... (Nod politely) (Begin search and confiscation)
@@ -52227,15 +52267,17 @@ PTRN 的 RMTPE
 # :: rStripSearchAccept_1_2_3_End
 # :: rStripSearchCyberAccept_1_2_3_End
 - (The search is complete)|Alright ${PHonor}, please behave, okay?
-（搜身完成）|好了，小姐，乖乖配合，可以吗？
+（搜身完成）|好了，${PHonor}，乖乖配合，可以吗？
 # :: rStripSearchAccept_1_2_3_EndSub
 # :: rStripSearchCyberAccept_1_2_3_EndSub
 
 
 
 
-# - (The SPEAKER scans you with a handheld device)|Hmm, I've detected something dangerous on you.|Dolls like you need to be harmless and docile,|so let's get to fixing that, shall we?
-# - (The SPEAKER scans you with a handheld device)|${PHonor}, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+- (The SPEAKER scans you with a handheld device)|Hmm, I've detected something dangerous on you.|Dolls like you need to be harmless and docile,|so let's get to fixing that, shall we?
+（SPEAKER 用手持设备扫描了你）|嗯，我在你身上检测到了危险物品。|像你这样的玩偶需要做到无害且顺从，|所以，我们来处理一下这个问题，好吗？
+- (The SPEAKER scans you with a handheld device)|${PHonor}, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+（SPEAKER 用手持设备扫描了你）|${PHonor}，我得确保你没带任何危险物品。|现在我要对你进行搜身。
 
 
 
@@ -52351,25 +52393,25 @@ PTRN 的 RMTPE
 
 
 - Maid Squire
-女仆扈从
+女仆侍从
 - Maid Knight
 女仆骑士
 - You humiliate the Maid Squire!
-你羞辱了女仆扈从！
+你羞辱了女仆侍从！
 - You defeat the Maid Knight! For now... ${Ethey} swear${Es} revenge.
-你打败了女仆骑士！至少暂时打败了... 她发誓要复仇。
+你打败了女仆骑士！至少暂时打败了... ${Ethey}发誓要一定会复仇。
 - The Squire zips you up in comfy leather gear!
-女仆扈从将你包裹在舒适的皮质装备中。
+女仆侍从将你包裹在舒适的皮质装备中。
 - The Maid Knight places you in strict bondage!
 女仆骑士将你绑在了严格的拘束中！
 - The Squire secures your restraints!
-女仆扈从固定了你身上的拘束具！
+女仆侍从扣紧了你身上的拘束具！
 - The Maid Knight secures your restraints!
 女仆骑士固定了你身上的拘束具！
 - The Squire dusts you with ${Etheir} duster plug.
-女仆扈从用她的鸡毛掸子口塞刷了刷你！
+女仆侍从用${Etheir}掸子口塞在你身上拂了拂。
 - The Maid Knight sweeps you with ${Etheir} cleaning halberd!
-女仆骑士用她的清洁戟刷了刷你！
+女仆骑士用${Etheir}清洁长戟扫向你！
 
 - The EnemyName retreats!
 EnemyName 撤退了！
@@ -52613,7 +52655,7 @@ NME 由于不够显要，被自动释放
 - (SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~
 （SPEAKER 咯咯笑）|啊，但是我需要全部的五件！|即使你没穿在身上，|呵呵~
 - (SPEAKER smiles as ${Ethey} unlock${Es} your restraints with ${Etheir} key)|I hope you had a great time in them~
-( SPEAKER 微笑着用她的钥匙解开了你的束缚 )|我希望你在里面度过了美好的时光~
+( SPEAKER 微笑着用${Etheir}钥匙解开了你的束缚 )|我希望你在里面度过了美好的时光~
 
 
 - The chest contained an angry latex kitty!
@@ -52648,18 +52690,22 @@ ${Target} 拒绝使用药水。
 
 - Target must have muscles.
 目标必须有肌肉。
-# - Target must be a doll.
+- Target must be a doll.
+目标必须是一个玩偶。
 # - Target must not be gagged.
 # - You must not be gagged.
 - ${Target} gains immense physical strength!
 ${Target} 获得了强大的力量！
-# - ${Target} becomes flesh-and-blood!
+- ${Target} becomes flesh-and-blood!
+${Target}化为了血肉之躯！
 - You gain immense physical strength!
 你的肉体获得了强大的力量！
-# - The potion transforms causes your body to grow warm and living!
+- The potion transforms causes your body to grow warm and living!
+药水的作用使你的身体变得温暖且充满活力！
 - You dump the potion on the ground and nothing happens.
 你把药水倒到地上，什么也没有发生。
-# - This potion cannot be used on the ground!
+- This potion cannot be used on the ground!
+这种药水不能对地面使用！
 - You are strong!
 你感到力大无比！
 
@@ -53192,7 +53238,7 @@ Boss
 - Only usable ingame.
 仅限游戏内使用。
 - ${Playername} used ${Etheir} safeword and was transported to the beginning of the level.
-${Playername}使用了安全词，被传送回关卡起点。
+${Playername}使用了${Etheir}安全词，被传送回关卡起点。
 
 
 - Artificial
@@ -53218,40 +53264,61 @@ ${Playername}使用了安全词，被传送回关卡起点。
 
 - After eating the ${Food}, you start to feel dizzy...
 吃完${Food}后，你开始感到头晕……
-# - After eating the ${Food}, you start to feel heated~
+- After eating the ${Food}, you start to feel heated~
+吃完${Food}后，你开始感到燥热……
 
-# - Will not restore willpower because you are artificial.
-# - Will not restore willpower because target is artificial.
-# - No wp res
+- Will not restore willpower because you are artificial.
+不会恢复意志力，因为你是人造的。
+- Will not restore willpower because target is artificial.
+无法恢复意志力，因为目标是人造的。
+- No wp res
+无wp资源
 
-# - Your attempts to move off the stand only twist the plug inside of you.
+- Your attempts to move off the stand only twist the plug inside of you.
+你试图从支架上挪开的举动，只会让你体内的塞子搅动得更厉害。
 
-# - unit
+- unit
+单位
 # :: KDHonorificUnit_LC
 # :: KDSubTitleUnit_LC
-# - Miss
+- Miss
+小姐
 # :: KDHonorificMiss
 # :: KDHonorificMiss_LC
-# - Mistress
-# - mistress
-# - Master
-# - master
+- Mistress
+女王
+- mistress
+女王
+- Master
+主人
+- master
+主人
 # - Mixx
 # - mixx
 # - Mixtress
 # - mixtress
 
-# - doll
-# - Girl
-# - girl
-# - submissive
-# - Slave
-# - slave
+- doll
+玩偶
+- Girl
+女孩
+- girl
+女孩
+- submissive
+Sub
+- Slave
+奴隶
+- slave
+奴隶
 # - Brat
-# - brat
-# - toy
-# - Pet
-# - pet
+- brat
+Brat
+- toy
+玩具
+- Pet
+宠物
+- pet
+宠物
 
 
 - She
@@ -53352,41 +53419,64 @@ ${Playername}使用了安全词，被传送回关卡起点。
 是
 
 
-# - ${You} are being affected by doll magic... 
+- ${You} are being affected by doll magic... 
+${You}正受到玩偶魔法的影响...
 # - ${Youve} fallen into a trance, making suggestions more powerful.
 
 - Good doll.
 好玩偶。
-# - Good doll...
-# - Pretty doll.
-# - Lovely doll.
-# - Quiet doll.
-# - Cute doll.
-# - Polite doll.
-# - Beautiful doll.
-# - Graceful doll.
-# - Elegant doll.
+- Good doll...
+好玩偶...
+- Pretty doll.
+漂亮的玩偶。
+- Lovely doll.
+可爱的玩偶。
+- Quiet doll.
+安静的玩偶。
+- Cute doll.
+可爱的玩偶。
+- Polite doll.
+礼貌的玩偶。
+- Beautiful doll.
+美丽的玩偶。
+- Graceful doll.
+优雅的玩偶。
+- Elegant doll.
+精美的玩偶。
 # - Perfect doll.
 
-# - Be still...
-# - A quiet doll...
-# - I'm not a doll.
-# - I'm not a doll!
+- Be still...
+安静点......
+- A quiet doll...
+一个安静的玩偶……
+- I'm not a doll.
+我不是玩偶。
+- I'm not a doll!
+我不是玩偶！
 - I'm a doll!
 我是玩偶！
-# - I am a doll.
+- I am a doll.
+我是玩偶。
 
-# - ${You} ${Yis} silenced, unable to cast spells easily.
+- ${You} ${Yis} silenced, unable to cast spells easily.
+${You}陷入沉默，无法轻易施展法术。
 
-# - Doll's Mirror
-# - Reflects the face of a doll.
-# - Those who hold it feel a compulsion to look at it. Surely nothing will come of it, though.\n\nCan be turned toward enemies to deal psychic damage, but cannot critically hit. Ignores 75% of magical armor.
-# - You pick up an doll's mirror.
+- Doll's Mirror
+玩偶之镜
+- Reflects the face of a doll.
+反射出玩偶的面容。
+- Those who hold it feel a compulsion to look at it. Surely nothing will come of it, though.\n\nCan be turned toward enemies to deal psychic damage, but cannot critically hit. Ignores 75% of magical armor.
+持有它的人会不由自主地想要注视它。不过，肯定不会发生什么事的。\n\n可以指向敌人以造成灵能伤害，但无法造成暴击。无视75%的魔法护甲。
+- You pick up an doll's mirror.
+你捡起了一面玩偶的镜子。
 
-# - You feel just like a pretty, still doll... (+AMNT Stillness)
-# - You regain a bit of your sense of self. (-AMNT Stillness)
+- You feel just like a pretty, still doll... (+AMNT Stillness)
+你感觉就像一个漂亮、静止的玩偶……(+AMNT Stillness)
+- You regain a bit of your sense of self. (-AMNT Stillness)
+你找回了一点自我意识。(-AMNT Stillness)
 
-# - The spell is already active.
+- The spell is already active.
+法术已生效。
 
 
 # - You have been transformed into a ball-jointed doll
@@ -53401,44 +53491,78 @@ ${Playername}使用了安全词，被传送回关卡起点。
 
 # - (The SPEAKER smiles at you)\nYou look so gorgeous, lovely doll~
 
-# - (The SPEAKER reaches out with a gentle hand,\npropping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?
-# - Materials??
-# - (Squeak when ${Ethey} say${Es} 'materials')
-# - That actually sounds quite delightful...
-# - (Nod and moan with delight)
-# - Y-you don't need to do that...
-# - I am not 'materials'!!!
-# - (Shake your head and scream into your gag)
-# - (Shake your head angrily as ${Ethey} caress${Es} caress you)
-# - I won't let you!
+- (The SPEAKER reaches out with a gentle hand,\npropping up your chin)\nWell well, what do we have here?\nSome gorgeous new materials for my showcase?
+(SPEAKER温柔地伸出手，托起你的下巴)\n哎呀呀，这是什么？\n是一些为我的陈列柜准备的华丽新素材吗？
+- Materials??
+材料??
+- (Squeak when ${Ethey} say${Es} 'materials')
+（当${Ethey}说“材料”时发出吱吱声）
+- That actually sounds quite delightful...
+那听起来确实相当令人愉快……
+- (Nod and moan with delight)
+（点头并发出愉悦的呻吟）
+- Y-you don't need to do that...
+你……你没必要那么做……
+- I am not 'materials'!!!
+我不是“材料”！！！
+- (Shake your head and scream into your gag)
+（摇头并隔着口塞尖叫）
+- (Shake your head angrily as ${Ethey} caress${Es} caress you)
+（愤怒地摇头，躲开${Ethey}对你的抚摸）
+- I won't let you!
+我不会让你得逞的！
 # :: dDollTransformCaress_Caress2
 # :: dDollTransformCurious_No_No
-# - (Keep shaking your head)
+- (Keep shaking your head)
+（不停地摇头）
 # :: dDollTransformCaress_Caress2Gag
 # :: dDollTransformCurious_No_NoGag
-# - Oh yeah? Try me! (Enter combat)
-# - (Enter combat with defiance in your eyes)
-# - (Bite your lip and back down)
-# - (Remain silent)
-# - (Whimper and give in)
-# - (Whimper pathetically)
-# - (Sigh and leave her to do what she wants)
-# - I... I don't want to be a doll!
-# - (Shake your head in defiance)
-# - Your showcase?
-# - (Tilt your head with interest)
-# - That sounds... most delightful.
-# - Indeed- wait, including me!?
-# - (Blush and nod)
-# - I...
-# - (Mumble into your gag)
-# - I don't think so...
-# - (Shake your head quickly)
-# - I don't like where this is going...
-# - At your service~
-# - Wait actually, I don't want this...
-# - Indeed... let's start!
-# - (Close your eyes and moan)
+- Oh yeah? Try me! (Enter combat)
+哦是吗？有本事就来试试！（进入战斗）
+- (Enter combat with defiance in your eyes)
+（眼中带着蔑视进入战斗）
+- (Bite your lip and back down)
+（咬住嘴唇并退后）
+- (Remain silent)
+（保持沉默）
+- (Whimper and give in)
+（呜咽着屈服）
+- (Whimper pathetically)
+（可怜地呜咽）
+- (Sigh and leave her to do what she wants)
+（叹了口气，任由她做想做的事）
+- I... I don't want to be a doll!
+我……我不想成为玩偶！
+- (Shake your head in defiance)
+（摇摇头表示拒绝）
+- Your showcase?
+你的陈列柜？
+- (Tilt your head with interest)
+（饶有兴致地歪了歪头）
+- That sounds... most delightful.
+那听起来……真是太令人愉快了。
+- Indeed- wait, including me!?
+确实，等等，包括我在内！？
+- (Blush and nod)
+（脸红并点头）
+- I...
+我……
+- (Mumble into your gag)
+（隔着口塞嘟囔）
+- I don't think so...
+我不这么认为...
+- (Shake your head quickly)
+（猛烈摇头）
+- I don't like where this is going...
+我不喜欢这样……
+- At your service~
+为您服务~
+- Wait actually, I don't want this...
+等等，其实我并不想这样……
+- Indeed... let's start!
+确实……我们开始吧！
+- (Close your eyes and moan)
+（闭上眼睛，发出呻吟声）
 
 # - (The SPEAKER smiles and boops your nose)\nThat's you~\nPretty one.
 # - (The SPEAKER chuckles with a sinister expression)\nAn eager one~\nSuch delight!
@@ -53479,7 +53603,8 @@ ${Playername}使用了安全词，被传送回关卡起点。
 # - (The SPEAKER chuckles)\nAlmost done. Just a matter of... the finishing touch~\n(A hand slides down between your legs as the SPEAKER smiles)\nShall I give you the means to experience pleasure...\nOr do I just let you... simmer in those feelings without end~?\n\n(After some teasing, ${Ethey} give${Es} you some proper bits and finish the transformation)
 # - (The SPEAKER chuckles)\nAll done, little doll~\nYou'll enjoy your new form, I'm sure.
 
-# - (Accept your new form)
+- (Accept your new form)
+（接受你的新形态）
 
 
 
