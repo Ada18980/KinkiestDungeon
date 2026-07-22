@@ -3799,6 +3799,7 @@ type ButtonOptions = {
 	spritealpha?: number,
 	bordercolor?: string,
 	fillcolor?: string,
+	highlightcolor?: string,
 	
 	/// Custom data passed to onHover callback
 	hoverData?:   any;
@@ -3924,7 +3925,7 @@ function DrawButtonVisTo (
 			Top: Top + pad,
 			Width: Width - 2 * pad + 1,
 			Height: Height - 2 * pad + 1,
-			Color: KDHighlightColor,
+			Color: options?.highlightcolor || KDHighlightColor,
 			LineWidth: 2,
 			zIndex: zIndex + 0.005,
 		});

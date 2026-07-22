@@ -23,9 +23,28 @@ let KDBalanceAttackMult = 0.4;
 let KDBalanceCastArmsMult = 1;
 let KDBalanceCastLegsMult = 3;
 
-let KinkyDungeonGagMumbleChanceRestraint = 0.4;
+let KDNumberOfGagMsg = 5;
+let KDNumberOfPlugMsg = 3;
+
+let KDNumberOfBraMsg = 3;
+let KDNumberOfBeltMsg = 3;
+let KDNumberOfClampMsg = 3;
+let KDNumberOfClampVMsg = 2;
+
+let KinkyDungeonBraMumbleChance = 0.04;
+let KinkyDungeonBeltMumbleChance = 0.015;
+let KinkyDungeonClampMumbleChance = 0.07;
+let KinkyDungeonClampVMumbleChance = 0.07;
+
+
+let KinkyDungeonGagMumbleChanceRestraint = 0.3;
 let KinkyDungeonGagMumbleChance = 0.02;
 let KinkyDungeonGagMumbleChancePerRestraint = 0.0025;
+let KinkyDungeonGagMumbleChancePerRestraintMax = 0.05;
+
+let KinkyDungeonPlugThoughChance = 0.02;
+let KinkyDungeonPlugThoughChancePerRestraint = 0.0025;
+let KinkyDungeonPlugThoughChancePerRestraintMax = 0.05;
 
 let MiniGameKinkyDungeonCheckpoint = "grv";
 let MiniGameKinkyDungeonLevel = -1;
@@ -2674,10 +2693,13 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 	let talk = KDTalkToEnemy(Enemy);
 	if (KinkyDungeonHasStamina(Math.abs(attackCost), true) || talk) {
 		if (talk) {
-			let d = Enemy.Enemy.specialdialogue ? Enemy.Enemy.specialdialogue : "GenericAlly";
+			let d = (Enemy.Enemy.specialdialogue
+				&& (!KDSpecialDialogueCondition[Enemy.Enemy.specialdialogue]
+					|| KDSpecialDialogueCondition[Enemy.Enemy.specialdialogue](Enemy, KDPlayer()))) ? Enemy.Enemy.specialdialogue : "GenericAlly";
 			if ((!Enemy.specialdialogue && !Enemy.prisondialogue) && KDIsImprisoned(Enemy)) d = "PrisonerJailBug";
 			else if (Enemy.prisondialogue && KDIsImprisoned(Enemy)) d = Enemy.prisondialogue; // Special dialogue override
-			else if (Enemy.specialdialogue) d = Enemy.specialdialogue; // Special dialogue override
+			else if (Enemy.specialdialogue && (!KDSpecialDialogueCondition[Enemy.specialdialogue]
+					|| KDSpecialDialogueCondition[Enemy.specialdialogue](Enemy, KDPlayer()))) d = Enemy.specialdialogue; // Special dialogue override
 			if (d || ((!Enemy.lifetime || Enemy.lifetime > 9000) && !Enemy.Enemy.tags.notalk)) { // KDAllied(Enemy)
 
 				KDStartDialog(d, Enemy.Enemy.name, true, Enemy.personality, Enemy);
@@ -2808,7 +2830,7 @@ function KDDoAttack(Enemy: entity, teasesub: boolean, attackCost: number, skip: 
 		KDChangeDistraction("BerserkerRage", "perk", "attack", 0.7 - 0.5 * data.attackCost, false, 0.33);
 	}
 	if (KDGameData.HeelPowerEffective > 0)
-		KDChangeBalanceSrc("heels", "debuff", "attack", data.attackCost * KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceAttackMult*10*KDFitnessMult(), true, true, 1);
+		KDChangeBalanceSrc("heels", "debuff", "attack", data.attackCost * KDGetBalanceCost("attack") * (0.75 + 0.5 * KDRandom()) * KDBalanceAttackMult*10*KDFitnessMult(), true, true, 1);
 
 	let origHP = Enemy.hp;
 	if (KinkyDungeonAttackEnemy(data.target, data.attackData, undefined, undefined, KinkyDungeonPlayerDamage)) {
@@ -3129,7 +3151,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 								}
 								if (KDGameData.HeelPowerEffective > 0 && !KDGameData.Crouch ) {
 
-									KDChangeBalanceSrc("heels", "debuff", "move", -KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult)*moveMult, true, true, 1);
+									KDChangeBalanceSrc("heels", "debuff", "move", -KDGetBalanceCost("move") * (0.75 + 0.5 * KDRandom()) * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult)*moveMult, true, true, 1);
 								} else {
 									//KDChangeBalance((KDGameData.KneelTurns > 0 ? 0.5 : 0.25) * KDGetBalanceRate()*delta, true);
 								}
@@ -3392,7 +3414,7 @@ function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _
 
 					KDChangeStamina("sprint", "move", "sprint", data.sprintCost, false, 1);
 					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), KDBaseLightGreen, 2);
-					KDChangeBalanceSrc("sprint", "move", "sprint", -KDGetBalanceCost() * (0.5 + 1 * KDRandom()) * KDBalanceSprintMult*10*KDFitnessMult(), true);
+					KDChangeBalanceSrc("sprint", "move", "sprint", -KDGetBalanceCost("sprint") * (0.5 + 1 * KDRandom()) * KDBalanceSprintMult*10*KDFitnessMult(), true);
 					KinkyDungeonSetFlag("sprint", 2);
 					if (KinkyDungeonSlowLevel < 2) {
 						// Move faster
@@ -3633,28 +3655,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 		if (!KinkyDungeonSendActionMessage(1, TextGet(msg), KDBaseForest, 1, true))
 			KinkyDungeonSendTextMessage(1, TextGet(msg), KDBaseForest, 1, true);
 	}
-	let gagchance = KinkyDungeonGagMumbleChance;
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv))
-			gagchance += KinkyDungeonGagMumbleChancePerRestraint;
-	}
-	if (!KinkyDungeonCanTalk() && KDRandom() < gagchance) {
-		let msg = "KinkyDungeonGagMumble";
-		let gagMsg = Math.floor(KDRandom() * 5);
-		const GagEffect = KinkyDungeonGagTotal() * 5;
-		gagMsg += GagEffect;
-		gagMsg = Math.max(0, Math.min(7, Math.floor(gagMsg)));
-
-		if (KDRandom() < KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax) msg = "KinkyDungeonGagMumbleAroused";
-
-		msg = msg + gagMsg;
-
-		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), KDBaseWhite, 2, 0);
-
-		if (KDToggles.GagParticles) {
-			KDSendGagParticles(KDPlayer());
-		}
-	}
+	KDDoMumble(KDPlayer(), false);
 	let end = performance.now();
 	if (KDDebug) console.log(`Tick ${KinkyDungeonCurrentTick} took ${(end - start)} milliseconds.`);
 
@@ -4309,8 +4310,12 @@ function KDCanPassEnemy(_player: entity, Enemy: entity, force?: boolean, ignoreI
 				(KDGameData.FocusControlToggle.AutoPassAllies || !(KDAllied(Enemy))) &&
 				(KDGameData.FocusControlToggle.AutoPassNeutral || !(!KDAllied(Enemy) && !KDAllied(Enemy))) &&
 				(KDGameData.FocusControlToggle.AutoPassShop || !(KDEnemyHasFlag(Enemy, "Shop"))) &&
-				(KDGameData.FocusControlToggle.AutoPassSpecial || !(Enemy.specialdialogue ||
-					(Enemy.prisondialogue && KDIsImprisoned(Enemy)) || Enemy.Enemy.specialdialogue)) &&
+				(KDGameData.FocusControlToggle.AutoPassSpecial || !((Enemy.specialdialogue
+					 && (!KDSpecialDialogueCondition[Enemy.specialdialogue] || KDSpecialDialogueCondition[Enemy.specialdialogue](Enemy, _player))
+				) ||
+					(Enemy.prisondialogue && KDIsImprisoned(Enemy)) || ((Enemy.specialdialogue
+					 && (!KDSpecialDialogueCondition[Enemy.specialdialogue] || KDSpecialDialogueCondition[Enemy.specialdialogue](Enemy, _player)))
+				))) &&
 				(KDGameData.FocusControlToggle.AutoPassSummons || !(Enemy.Enemy.allied))
 			)
 		))) || (
@@ -4626,4 +4631,144 @@ interface KDFailMoveData  {
 	moveX: number,
 	moveY: number,
 	cancelSprint: boolean,
+}
+
+
+/**
+ * 
+ * @param player 
+ * @param cancel - for mods to pass if they want to add things that override, inter-mod compatibility to prevent things tied to this from being disabled
+ */
+function KDDoMumble(player: entity, cancel: boolean) {
+	if (!cancel) {
+		let plugChance = 0;
+		let plugCount = 0;
+
+		let braChance = 0;
+		let beltChance = 0;
+		let clampChance = 0;
+		let clampVChance = 0;
+
+		let gagchance = KinkyDungeonGagMumbleChance;
+		for (let inv of KinkyDungeonAllRestraint()) {
+			if (KDRestraint(inv) && gagchance + KinkyDungeonGagMumbleChancePerRestraint < KinkyDungeonGagMumbleChancePerRestraintMax)
+				gagchance += KinkyDungeonGagMumbleChancePerRestraint;
+			if (KDRestraint(inv).plugSize) {
+				plugCount += 1;
+				
+				if (plugChance + KDRestraint(inv).plugSize * KinkyDungeonPlugThoughChancePerRestraint < KinkyDungeonPlugThoughChancePerRestraintMax) {
+					plugChance += KDRestraint(inv).plugSize * KinkyDungeonPlugThoughChancePerRestraintMax;
+					
+				}
+			}
+			if (KDRestraint(inv).chastitybra) {
+				braChance = KinkyDungeonBraMumbleChance;
+			}
+			if (KDRestraint(inv).chastity) {
+				beltChance = KinkyDungeonBeltMumbleChance;
+			}
+			if (KDRestraint(inv).nipplevibe) {
+				clampVChance = KinkyDungeonClampVMumbleChance;
+			} else if (KDRestraint(inv).nippleclamp) {
+				clampChance = KinkyDungeonClampMumbleChance;
+			}
+		}
+		let done = false;
+
+		if (!done && KDRandom() < clampVChance) {
+			done = true;
+			let msg = "KDRandomText_ClampV";
+			let nn = KDNumberOfClampVMsg;
+			let gagMsg = Math.floor(KDRandom() * nn);
+			
+			msg = msg + gagMsg;
+
+			
+			KinkyDungeonSendTextMessage(3, TextGet(msg), 
+				KDVibeTextColor, 4, true);
+		}if (!done && (KinkyDungeonLastAction == "Move" || KinkyDungeonLastAction == "Struggle") && braChance == 0 && KDRandom() < clampChance) {
+			done = true;
+			let msg = "KDRandomText_Clamp";
+			let nn = KDNumberOfClampMsg;
+			let gagMsg = Math.floor(KDRandom() * nn);
+			
+			msg = msg + gagMsg;
+
+			
+			KinkyDungeonSendTextMessage(3, TextGet(msg), 
+				KDVibeTextColor, 4, true);
+		}
+		if (!done && plugChance == 0 && KDRandom() < beltChance) {
+			done = true;
+			let msg = "KDRandomText_Belt";
+			let nn = KDNumberOfBeltMsg;
+			let gagMsg = Math.floor(KDRandom() * nn);
+			
+			msg = msg + gagMsg;
+
+			
+			KinkyDungeonSendTextMessage(3, TextGet(msg), 
+				KDVibeTextColor, 4, true);
+		}
+		
+		if (!done && KDRandom() < braChance) {
+			done = true;
+			let msg = "KDRandomText_Bra";
+			let nn = KDNumberOfBraMsg;
+			let gagMsg = Math.floor(KDRandom() * nn);
+			
+			msg = msg + gagMsg;
+
+			
+			KinkyDungeonSendTextMessage(3, TextGet(msg), 
+				KDVibeTextColor, 4, true);
+		}
+
+		if (!done && plugChance > 0) {
+			plugChance += KinkyDungeonPlugThoughChance;
+
+			if (KDRandom() < plugChance) {
+				//done = true;
+				gagchance += 0.3;
+				let msg = "KDRandomText_Plug" + (plugCount > 1 ? "s" : "");
+				let nn = KDNumberOfPlugMsg;
+				if ((KinkyDungeonLastAction == "Move" || KinkyDungeonLastAction == "Struggle") && plugChance + KinkyDungeonPlugThoughChancePerRestraint > KinkyDungeonPlugThoughChance + KinkyDungeonPlugThoughChancePerRestraintMax) {
+					nn += 2;
+				}
+				let gagMsg = Math.floor(KDRandom() * nn);
+				
+				msg = msg + gagMsg;
+
+				
+				KinkyDungeonSendTextMessage(0.1, TextGet(msg), 
+				KDVibeTextColor, 4, true);
+
+			}
+
+
+		}
+
+
+		if (!done && !KinkyDungeonCanTalk() && KDRandom() < gagchance) {
+			done = true;
+			let msg = "KinkyDungeonGagMumble";
+			let gagMsg = Math.floor(KDRandom() * KDNumberOfGagMsg);
+			const GagEffect = KinkyDungeonGagTotal() * 5;
+			gagMsg += GagEffect;
+			gagMsg = Math.max(0, Math.min(7, Math.floor(gagMsg)));
+
+			if (KDRandom() < KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax) msg = "KinkyDungeonGagMumbleAroused";
+
+			msg = msg + gagMsg;
+
+			KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), KDBaseWhite, 2, 0);
+
+			if (KDToggles.GagParticles) {
+				KDSendGagParticles(KDPlayer());
+			}
+		}
+	}
+
+
+	
 }

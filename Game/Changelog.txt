@@ -84,6 +84,8 @@ Must do
 - Fixed a bug where management would remove NPCs from stands in summit if they arent in the cuddle lounge
 - Fixed crash when casting anti magic gag on enemies
 - While inspecting, enemy paperdolls show up much larger in tooltips
+- Being next to a wall reduces balance loss from most actions and doubles balance regeneration while standing
+- Adventurers now browse the 'wares' of the doll shoppe
 
 5.5.0
 - Added 'Allow Stacking Similar Items' option to disable new logic to make it easier to swap eyes, etc

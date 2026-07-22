@@ -441,6 +441,9 @@ interface KDRestraintPropsBase {
 		Unlock?: string,
 		Destroy?: string,
 	}
+
+	nippleclamp?: boolean,
+	nipplevibe?: boolean,
 	/** Remove sound */
 	sfxRemove?: string,
 	/** Equip sound */
@@ -1850,6 +1853,11 @@ interface entity {
 	strugglePoints?: number,
 
 	partyLeader?: number,
+
+	/** the enemy's 'type' that they prefer */
+	preferredSubType?: string,
+	/** the enemy's 'type' that they prefer */
+	preferredDomType?: string,
 
 	/** BindStun is a mechanic that reduces the struggle rate based on how much bondage is added
 	 * Each turn it is reduced by 10% of enemy current hp, 10% of bindStun, or 2.5% of max hp, whichever is more

@@ -97,7 +97,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		Model: "TapeArms",
 		addTag: ["HandsBehind"],
-		enemyTags: {"scarfRestraints":2}, playerTags: {"ItemArmsFull":2}, minLevel: 0, allFloors: true, shrine: ["Rope", "Tape", "Boxties", ]},
+		enemyTags: {"scarfRestraints":2}, playerTags: {"ItemArmsFull":2}, minLevel: 0, allFloors: true, shrine: ["Rope", "Tape", "Boxties", "Scarf"]},
 	{name: "ScarfLegs", unlimited: true, accessible: true, debris: "Fabric", OverridePriority: 25.1, Asset: "DuctTape", Color: "#880022", Group: "ItemLegs", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], hobble: 1,
 		addTag: ["FeetLinked"], power: 0, weight: 0, escapeChance: {"Struggle": 0.5, "Cut": 0.9, "Remove": 0.2},
 		affinity: {Remove: ["Hook"],},
@@ -110,7 +110,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		Model: "TapeLegs",
 		maxwill: 0.4,
-		enemyTags: {"scarfRestraints":2}, playerTags: {"ItemLegsFull":2}, minLevel: 0, allFloors: true, shrine: ["Rope", "Tape"]},
+		enemyTags: {"scarfRestraints":2}, playerTags: {"ItemLegsFull":2}, minLevel: 0, allFloors: true, shrine: ["Rope", "Tape", "Scarf"]},
 	{name: "ScarfFeet", unlimited: true, accessible: true, debris: "Fabric", Asset: "DuctTape", Color: "#880022", Group: "ItemFeet", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], blockfeet: true, addTag: ["FeetLinked"],power: 0, weight: 0, escapeChance: {"Struggle": 0.5, "Cut": 0.9, "Remove": 0.2},
 		affinity: {Remove: ["Hook"],},
 		Filters: {
@@ -122,7 +122,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		sfxGroup: "Ropes",
 		Model: "TapeAnkles",
 		maxwill: 0.1,
-		enemyTags: {"scarfRestraints":2}, playerTags: {"ItemFeetFull":2}, minLevel: 0, allFloors: true, shrine: ["Rope", "Tape"]},
+		enemyTags: {"scarfRestraints":2}, playerTags: {"ItemFeetFull":2}, minLevel: 0, allFloors: true, shrine: ["Rope", "Tape", "Scarf"]},
 	// Simple cloth stuff
 	{name: "ScarfGag", unlimited: true, Asset: "ScarfGag", debris: "Fabric", accessible: true, gag: 0.3, Type: "OTN", Color: "#880022", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 0.1, weight: 2, escapeChance: {"Struggle": 0.5, "Cut": 1.0, "Remove": 0.8},
 		affinity: {Remove: ["Hook"],},
@@ -134,7 +134,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Cloth: {color: "LightNeutral", override: false},
 		},
 		Model: "ClothOTM",
-		enemyTags: {"scarfRestraints":8, "ropeAuxiliary": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Gags", "Tape"]},
+		enemyTags: {"scarfRestraints":8, "ropeAuxiliary": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Gags", "Tape", "Scarf"]},
 	{name: "ScarfBlindfold", unlimited: true, Asset: "ScarfBlindfold", debris: "Fabric", accessible: true, Color: "#880022", Group: "ItemHead", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], power: 0.1, weight: 2, escapeChance: {"Struggle": 0.5, "Cut": 1.0, "Remove": 0.8},
 		affinity: {Struggle: ["Sticky", "Hook"], Remove: ["Hook"],},
 		Filters: {
@@ -145,7 +145,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Cloth: {color: "LightNeutral", override: false},
 		},
 		Model: "ClothBlindfold",
-		blindfold: 2, enemyTags: {"scarfRestraints":8, "ropeAuxiliary": 1, "blindfoldSpell": 0.1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Blindfolds", "Tape"]},
+		blindfold: 2, enemyTags: {"scarfRestraints":8, "ropeAuxiliary": 1, "blindfoldSpell": 0.1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Blindfolds", "Tape", "Scarf"]},
 	// endregion
 
 	// region Kigu
@@ -2369,7 +2369,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			}
 		],
 		addPose: ["PreferWristtie"],
-		maxwill: 0.5, enemyTags: {"dressRestraints" : 10, "bindingDress": 10}, playerTagsMult: {"ItemArmsEmpty": 0.05}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["BindingDress", "Rope", "Block_ItemHands", "HandsBehind"]},
+		maxwill: 0.5, enemyTags: {"dressRestraints" : 10, "bindingDress": 10}, playerTagsMult: {"ItemArmsEmpty": 0.05}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["BindingDress", "Dress", "Rope", "Block_ItemHands", "HandsBehind"]},
 	{inventory: true, trappable: true, name: "DressGag", debris: "Fabric", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], Asset: "HarnessBallGag",
 		Model: "SmoothBallGagHarnessSecure",
 		Filters: {
@@ -2389,14 +2389,14 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		gag: 0.65, Type: "Tight", Color: ["#8762c7", "Default"], Group: "ItemMouth", power: 8, strictness: 0.2, weight: 5, magic: true,
 		escapeChance: {"Struggle": -0.2, "Cut": 0.2, "Remove": 0.2, "Pick": 0.2},
-		maxwill: 0.6, enemyTags: {"dressRestraints":3, forceAntiMagic: -100}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["Rope", "BallGags", "Gags"]},
+		maxwill: 0.6, enemyTags: {"dressRestraints":3, forceAntiMagic: -100}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["Dress", "Rope", "BallGags", "Gags"]},
 	{inventory: true, trappable: true, name: "DressMuzzle", debris: "Fabric", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Asset: "MuzzleGag", gag: 0.3, Color: ["#6B48E0", "#39339c"], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 9, strictness: 0.3, weight: 1, magic: true,
 		Model: "GagFabric",
 		Filters: {
 			Fabric: {"gamma":1.8833333333333333,"saturation":1,"contrast":0.9833333333333333,"brightness":0.7166666666666667,"red":1.4333333333333333,"green":1.0166666666666666,"blue":2.183333333333333,"alpha":1},
 		},
 		escapeChance: {"Struggle": -0.4, "Cut": 0.15, "Remove": 0.2, "Pick": 0.1}, DefaultLock: "Blue",
-		maxwill: 0.1, enemyTags: {"dressRestraints":3, "dressGags": 3}, playerTags: {"ItemMouthEmpty": -10}, minLevel: 6, allFloors: true, shrine: ["FlatGags", "Rope", "Gags"]},
+		maxwill: 0.1, enemyTags: {"dressRestraints":3, "dressGags": 3}, playerTags: {"ItemMouthEmpty": -10}, minLevel: 6, allFloors: true, shrine: ["Dress", "FlatGags", "Rope", "Gags"]},
 
 
 
@@ -2412,7 +2412,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		restriction: 7,
 		LinkableBy: KDCorsetLink, strictness: 0.1, Color: ["#473488"], Group: "ItemTorso", power: 8, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": -0.2, "Pick": 0.15}, helpChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.025}, struggleMinSpeed: {"Remove": 0.05}, struggleMaxSpeed: {"Remove": 0.1},
-		failSuffix: {"Remove": "Corset"}, enemyTags: {"dressRestraints": 1, "dressUniform": 12}, playerTags: {"ItemTorsoFull": -5, "conjureAnger": 2, "conjureRage": 2}, minLevel: 0, allFloors: true, shrine: ["Corsets", "Latex", "HeavyCorsets"],
+		failSuffix: {"Remove": "Corset"}, enemyTags: {"dressRestraints": 1, "dressUniform": 12}, playerTags: {"ItemTorsoFull": -5, "conjureAnger": 2, "conjureRage": 2}, minLevel: 0, allFloors: true, shrine: ["Dress", "Corsets", "Latex", "HeavyCorsets"],
 
 	},
 
@@ -2432,7 +2432,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		escapeChance: {"Struggle": -0.5, "Cut": -0.05, "Remove": 0.4, "Pick": 0.15}, bypass: true,
 		maxwill: 0.9, enemyTags: {"dressRestraints" : 10, "dressUniform" : 10},
-		playerTags: {"ItemNipplesEmpty": -4, "FreeBoob": -1000}, minLevel: 0, allFloors: true, shrine: ["ChastityBras", "Rope"]},
+		playerTags: {"ItemNipplesEmpty": -4, "FreeBoob": -1000}, minLevel: 0, allFloors: true, shrine: ["Dress", "ChastityBras", "Rope"]},
 
 	{inventory: true, name: "AsylumJacket", debris: "Belts", Asset: "HighSecurityStraitJacket", Modules: [1, 2, 3], Color: ["#333333", "#333333", '#808080', '#808080'],
 		LinkableBy: [...KDJacketLink],
@@ -4408,7 +4408,9 @@ const KinkyDungeonRestraints: restraint[] = [
 
 	// Nipple vibes - these generally trigger on attack
 	{inventory: true, arousalMode: true, name: "NippleClamps", Asset: "HeartPasties", Color: "Default", Group: "ItemNipples", power: 3, weight: 0,
+		nippleclamp: true,
 		vibeLocation: "ItemNipples",
+		nipplevibe: true,
 		Model: "NippleClamps",
 		limited: true,
 		escapeChance: {"Struggle": -10, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, failSuffix: {"Struggle": "Clamps"},
@@ -4419,7 +4421,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		]},
 	{inventory: true, arousalMode: true, name: "NippleClamps2", Asset: "HeartPasties", Color: "Default", Group: "ItemNipples", power: 4, weight: 0,
 		vibeLocation: "ItemNipples",
+		nippleclamp: true,
 		Model: "VibePiercings",
+		nipplevibe: true,
 		limited: true,
 		escapeChance: {"Struggle": -10, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, failSuffix: {"Struggle": "Clamps"},
 		maxwill: 0.25, enemyTags: {"dressRestraints" : 3, "genericToys": 3, "maidRestraints": 2, "maidRestraintsLight": 1, "roboAngry": 10, "toyTeaseMid": 2, "teasetoys": 2}, playerTags: {"NoVibes": -1000}, minLevel: 4, allFloors: true, shrine: ["Vibes", "Toys", "Piercings"], linkedVibeTags: ["teaser", "piercings"],
@@ -4430,6 +4434,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		]},
 	{inventory: true, arousalMode: true, name: "NippleWeights", Asset: "HeartPasties", Color: "Default", Group: "ItemNipples", power: 4, weight: 0,
 		Model: "NippleWeights",
+		nippleclamp: true,
 		limited: true,
 		escapeChance: {"Struggle": -10, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, failSuffix: {"Struggle": "Clamps"},
 		maxwill: 1.0, enemyTags: {"obsidianRestraints" : 3, "bandit": 0.1, "genericToys": 1, "toyTease": 2}, playerTags: {"NoVibes": -1000}, minLevel: 3, allFloors: true, shrine: ["Weights", "Toys"],
@@ -4441,6 +4446,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, arousalMode: true, name: "NippleClamps3", Asset: "HeartPasties", Color: "Default", Group: "ItemNipples", power: 5, weight: 0,
 		LinkableBy: ["Weights"],
 		vibeLocation: "ItemNipples",
+		nipplevibe: true,
 		Model: "RingVibes",
 		limited: true,
 		escapeChance: {"Struggle": -10, "Cut": -0.05, "Remove": 0.5, "Pick": 0.25}, failSuffix: {"Struggle": "Clamps"},
@@ -10300,3 +10306,55 @@ let KDSFXGroups: Record<string, KDSFXGroup> = {
 	},
 };
 
+
+
+let KDNPCRestraintBondageTypesByTag: Record<string, {tagname: string, priority: number}> = {
+	Tape: {
+		tagname: "Tape",
+		priority: 5,
+	},
+	Metal: {
+		tagname: "Metal",
+		priority: 4,
+	},
+	Latex: {
+		tagname: "Slime",
+		priority: 3,
+	},
+	Leather: {
+		tagname: "Leather",
+		priority: 2,
+	},
+	Rope: {
+		tagname: "Rope",
+		priority: 1,
+	},
+	Ribbons: {
+		tagname: "Ribbons",
+		priority: 5,
+	},
+	ClothGag: {
+		tagname: "Fabric",
+		priority: 10,
+	},
+	ClothBlindfold: {
+		tagname: "Fabric",
+		priority: 10,
+	},
+	Scarf: {
+		tagname: "Fabric",
+		priority: 10,
+	},
+	Dress: {
+		tagname: "Dress",
+		priority: 5,
+	},
+	Vine: {
+		tagname: "Vine",
+		priority: 5,
+	},
+	Ice: {
+		tagname: "Ice",
+		priority: 5,
+	},
+};

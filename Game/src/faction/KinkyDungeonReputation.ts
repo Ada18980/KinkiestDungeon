@@ -286,7 +286,7 @@ function KinkyDungeonChangeFactionRep(Rep: string, Amount: number): boolean {
  * @param Rep
  * @param Amount
  */
-function KinkyDungeonChangeRep(Rep: string, Amount: number): boolean {
+function KinkyDungeonChangeRep(Rep: string, Amount: number, player?: entity): boolean {
 	let data = {
 		Rep: Rep,
 		Amount: Amount,

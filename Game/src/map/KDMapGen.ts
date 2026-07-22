@@ -960,6 +960,9 @@ function KinkyDungeonGetAllies(): entity[] {
  * @param enemy
  */
 function KDIsImprisoned(enemy: entity): boolean {
+	if (enemy?.player) {
+		return KDPrisonIsInFurniture(enemy) || KinkyDungeonPlayerInCell(true, true);
+	}
 	return enemy && KDEntityHasFlag(enemy, "imprisoned");
 }
 

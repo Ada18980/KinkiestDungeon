@@ -300,10 +300,10 @@ function KDRestraintBondageMult(item: Named, target: entity): number {
  * gets a restraint
  * @param item
  */
-function KDRestraintBondageType(item: Named): string {
+function KDRestraintBondageType(item: Named, initdata?: any): string {
 	let r = KDRestraint(item);
 	if (r) {
-		let data = {
+		let data = initdata || {
 			item: item,
 			restraint: r,
 			type: "",
@@ -313,31 +313,13 @@ function KDRestraintBondageType(item: Named): string {
 		// Stock methodology
 		if (r.shrine) {
 			for (let s of r.shrine) {
-				switch (s) {
-					case "Metal":
-						data.type = s;
-						data.overridePriority = 4;
-						break;
-					case "Latex":
-						data.type = "Slime";
-						data.overridePriority = 3;
-						break;
-					case "Rope":
-						data.type = s;
-						data.overridePriority = 1;
-						break;
-					case "Leather":
-						data.type = s;
-						data.overridePriority = 2;
-						break;
-					case "Vine":
-						data.type = s;
-						data.overridePriority = 5;
-						break;
-					case "Ice":
-						data.type = s;
-						data.overridePriority = 5;
-						break;
+				
+				if (KDNPCRestraintBondageTypesByTag[s]) {
+					let entry = KDNPCRestraintBondageTypesByTag[s];
+					if (entry.priority > data.overridePriority) {
+						data.type = entry.tagname;
+						data.overridePriority = entry.priority;
+					}
 				}
 			}
 			if (r.magic && data.overridePriority < 4) {

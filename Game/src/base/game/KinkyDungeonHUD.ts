@@ -1223,7 +1223,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 			24, "left", 110, 0.9);
 		KinkyDungeonBarTo(kdstatusboard, 1000, BalanceOffset + 8 - BalanceSpacing*(II), 500, 12, 100*KDGameData.Balance,
 			"#4fd658", "#283540", KDGameData.Balance * 100, "#ffee83",
-			KDSteps(KDGameData.Balance, -KDGetBalanceCost()*1.5), "#283540", "#4fd658");
+			KDSteps(KDGameData.Balance, -KDGetBalanceCost("move")*1.5), "#283540", "#4fd658");
 
 		if (!KDGameData.Training) KDGameData.Training = {};
 		DrawTextFitKDTo(kdstatusboard, TextGet("KDBalanceTraining")
@@ -1281,17 +1281,20 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		if (DrawButtonKDEx("SetTransparentBullets", (_bdata) => {
 			if (KDStatusToggle) {
 				if (!KDBulletTransparency) {
-					KDBulletTransparency = true;
-				} else {
 					KDStatusToggle = false;
+				} else {
+					KDBulletTransparency = false;
 				}
 			} else {
-				KDBulletTransparency = false;
-				KDStatusToggle = true;
+				if (!KDBulletTransparency) {
+					KDBulletTransparency = true;
+				} else {
+					KDStatusToggle = true;
+				}
 			}
 			return true;
 		}, true, 720, 925, 60, 60, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/BulletTransparency" +
-			((KDBulletTransparency && KDStatusToggle) ? "All" : (KDStatusToggle ? "Only" : "None"))
+			((!KDBulletTransparency && KDStatusToggle) ? "All" : (KDStatusToggle ? "Only" : (!KDBulletTransparency ? "Bullet" : "None")))
 		+".png", "", false, false,
 		KDButtonColor, undefined, undefined)) str = "KDBulletTransparency";
 	}

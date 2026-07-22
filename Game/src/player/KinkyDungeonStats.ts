@@ -1326,6 +1326,12 @@ function KDChangeWill(src: string, type: string, trig: string, Amount: number, N
 	return amountChanged;
 }
 
+let KDBalanceLossHalvedByWall = {
+	"sprint": true,
+	"attack": true,
+	"move": true,
+	"cast": true,
+}
 
 function KDChangeBalanceSrc(src: string, type: string, trig: string, Amount: number, NoFloater: boolean, allowFall?: boolean, forcePauseAmt?: number) {
 	if (KinkyDungeonStatsChoice.get("ClassicHeels") && src == "heels" && Amount < 0) return 0;
@@ -1346,6 +1352,8 @@ function KDChangeBalanceSrc(src: string, type: string, trig: string, Amount: num
 		),
 		amountChanged: 0,
 	};
+
+	
 	KinkyDungeonSendEvent("changeBalance", data);
 	NoFloater = data.NoFloater;
 	Amount = data.Amount * data.mult;
@@ -1669,7 +1677,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	let distractionRate = KDGetDistractionRate(delta);
 
 	if (delta > 0 && KinkyDungeonVibeLevel > 0) {
-		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonVibing" + Math.max(0, Math.min(5, Math.round(KinkyDungeonVibeLevel)))), "#ff88ff", 2, true, true);
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonVibing" + Math.max(0, Math.min(5, Math.round(KinkyDungeonVibeLevel)))), KDVibeTextColor, 2, true, true);
 	}
 	let arousalPercent = distractionRate > 0 && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionLower ? 0.01 : 0;
 

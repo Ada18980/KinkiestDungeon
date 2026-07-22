@@ -1437,9 +1437,9 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 						KinkyDungeonSendEvent("playerCast", data);
 						if (KDGameData.HeelPowerEffective > 0) {
 							if (spell.components?.includes("Arms"))
-								KDChangeBalanceSrc(KinkyDungeonPlayerDamage?.name, "debuff", "wepSpecial", -KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceCastArmsMult, true);
+								KDChangeBalanceSrc(KinkyDungeonPlayerDamage?.name, "debuff", "wepSpecial", -KDGetBalanceCost("cast") * (0.75 + 0.5 * KDRandom()) * KDBalanceCastArmsMult, true);
 							if (spell.components?.includes("Legs"))
-								KDChangeBalanceSrc(KinkyDungeonPlayerDamage?.name, "debuff", "wepSpecial", -KDGetBalanceCost() * (0.5 + 1.0 * KDRandom()) * KDBalanceCastLegsMult, true);
+								KDChangeBalanceSrc(KinkyDungeonPlayerDamage?.name, "debuff", "wepSpecial", -KDGetBalanceCost("cast") * (0.5 + 1.0 * KDRandom()) * KDBalanceCastLegsMult, true);
 						}
 						if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + spell.school.toLowerCase(), 1);
 						KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast", 1);
@@ -1550,9 +1550,9 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 		KinkyDungeonSendEvent("playerCast", data);
 		if (KDGameData.HeelPowerEffective > 0) {
 			if (spell.components?.includes("Arms"))
-				KDChangeBalanceSrc(spell?.name, "debuff", "cast", -KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceCastArmsMult, true);
+				KDChangeBalanceSrc(spell?.name, "debuff", "cast", -KDGetBalanceCost("cast") * (0.75 + 0.5 * KDRandom()) * KDBalanceCastArmsMult, true);
 			if (spell.components?.includes("Legs"))
-				KDChangeBalanceSrc(spell?.name, "debuff", "cast", -KDGetBalanceCost() * (0.5 + 1.0 * KDRandom()) * KDBalanceCastLegsMult, true);
+				KDChangeBalanceSrc(spell?.name, "debuff", "cast", -KDGetBalanceCost("cast") * (0.5 + 1.0 * KDRandom()) * KDBalanceCastLegsMult, true);
 		}
 		//let cost = spell.staminacost ? spell.staminacost : KinkyDungeonGetCost(spell.level);
 

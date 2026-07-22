@@ -12,6 +12,76 @@ let KDStrictPersonalities = [
 let KDLoosePersonalities = [
 	"Sub",
 ];
+let KDBratPersonalities = [
+	"Brat",
+];
+
+
+
+let KDPreferredSubTypeWeights: Record<string, ((enemy: entity, player?: entity) => number)[]> = {
+	PillowPrincess: [
+		(en) => {
+			return KDLoosePersonalities.includes(KDGetPersonality(en)) ? 2 : (
+				KDStrictPersonalities.includes(KDGetPersonality(en)) ? 5 : 0.1
+			);
+		},
+	],
+	Cute: [
+		(en) => {
+			return KDBratPersonalities.includes(KDGetPersonality(en)) ? 0.25 : (
+				KDLoosePersonalities.includes(KDGetPersonality(en)) ? 2 : 1
+			);
+		},
+	],
+	Brat: [
+		(en) => {
+			return KDBratPersonalities.includes(KDGetPersonality(en)) ? 3 : (
+				KDStrictPersonalities.includes(KDGetPersonality(en)) ? 3 : 0
+			);
+		},
+	],
+	Rough: [
+		(en) => {
+			return KDLoosePersonalities.includes(KDGetPersonality(en)) ? 2 : (
+				KDStrictPersonalities.includes(KDGetPersonality(en)) ? 3 : 0
+			);
+		},
+	],
+}
+
+
+
+let KDPreferredDomTypeWeights: Record<string, ((enemy: entity, player?: entity) => number)[]> = {
+	Protocol: [
+		(en) => {
+			return KDLoosePersonalities.includes(KDGetPersonality(en)) ? 4: (
+				KDStrictPersonalities.includes(KDGetPersonality(en)) ? 2 : 2
+			);
+		},
+	],
+	Strict: [
+		(en) => {
+			return KDBratPersonalities.includes(KDGetPersonality(en)) ? 2.25 : (
+				KDLoosePersonalities.includes(KDGetPersonality(en)) ? 2 : 1.5
+			);
+		},
+	],
+	Gentle: [
+		(en) => {
+			return KDLoosePersonalities.includes(KDGetPersonality(en)) ? 5 : (
+				KDStrictPersonalities.includes(KDGetPersonality(en)) ? 1 : 0.5
+			);
+		},
+	],
+	Mean: [
+		(en) => {
+			return KDBratPersonalities.includes(KDGetPersonality(en)) ? 5 : (
+				KDStrictPersonalities.includes(KDGetPersonality(en)) ? 2 : 1
+			);
+		},
+	],
+}
+
 
 let KDEnemyPersonalities = {
 	"": {weight: 10,
@@ -175,4 +245,38 @@ function KDGetPersonalityType(Enemy: enemy): string {
  */
 function KDJailPersonality(enemy: entity): string {
 	return (enemy.personality && KDJailPersonalities[enemy.personality]) ? enemy.personality : "";
+}
+
+function KDEnemyGetPreferredSubType(en: entity, player?: entity, cache?: boolean): string {
+	if (en.preferredSubType) return en.preferredSubType;
+	let weights : Record<string, number> = {};
+
+	for (let type in KDPreferredSubTypeWeights) {
+		let w = 0;
+		for (let item of KDPreferredSubTypeWeights[type]) {
+			w += item(en, player);
+		}
+	}
+
+	let val = KDGetByWeight(weights) || "Cute";
+
+	if (cache) en.preferredSubType = val;
+	return val;
+}
+
+function KDEnemyGetPreferredDomType(en: entity, player?: entity, cache?: boolean): string {
+	if (en.preferredDomType) return en.preferredDomType;
+	let weights : Record<string, number> = {};
+
+	for (let type in KDPreferredDomTypeWeights) {
+		let w = 0;
+		for (let item of KDPreferredDomTypeWeights[type]) {
+			w += item(en, player);
+		}
+	}
+
+	let val = KDGetByWeight(weights) || "Cute";
+
+	if (cache) en.preferredDomType = val;
+	return val;
 }

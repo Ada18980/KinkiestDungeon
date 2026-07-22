@@ -32354,6 +32354,9 @@ KDBindType_Slime,Slime
 KDBindType_Tape,Tape
 KDBindType_Vine,Vine
 KDBindType_Ice,Ice
+KDBindType_Dress,Dress
+KDBindType_Cloth,Cloth
+KDBindType_Ribbons,Magic Ribbons
 KDBindType_Furniture,Furniture
 
 KDSaving,Saving...
@@ -33887,3 +33890,45 @@ KDCantBuyPrison,Unavailable while you are a prisoner.
 KDMouseHole,It's a little hole in the wall where a mouse lives. Perhaps you could drop an item here.
 KDMouseHoleSuccess,The mouse takes your item and brings something interesting!
 KDMouseHoleFail,"The mouse steals your item and runs back into the hole."
+
+rDollShoppeVisitor,"(The SPEAKER visits the doll shoppe, ${Etheir} eye${Es} hanging over you with a smug gaze)"
+dDollShoppeVisitorBeCute,(Be cute and presentable)
+dDollShoppeVisitorBeStill,(Be a still doll)
+dDollShoppeVisitorBeBrat,(Try to ignore ${Ethem})
+dDollShoppeVisitorBeAngry,(Struggle uselessly against your bindings)
+dDollShoppeVisitorBeBought,(Be enticing)
+dDollShoppeVisitorAttack,(Lash out at ${Ethem}) (Will aggro)
+dDollShoppeVisitorAttack_Confirm,(You have to try!)
+dDollShoppeVisitorAttack_GiveUp,(Reconsider)
+
+rDollShoppeVisitorBeCute_Success,(The SPEAKER gushes over how adorable you are)
+
+
+KDNeedHighOpinionToBeBought,${EThey} do${Ees}n't like you enough to make you ${Etheir}'s.
+
+KDRandomText_Plugs0,"It's hard to take your mind off the plugs inside of you..."
+KDRandomText_Plugs1,"The plugs inside you are really stimulating."
+KDRandomText_Plugs2,"The plugs filling your holes make your mind wander."
+KDRandomText_Plugs3,"You notice the plugs inside you as you move."
+KDRandomText_Plugs4,"The plugs move around inside of you, stimulating you with each move."
+
+KDRandomText_Plug0,"It's hard not to think about the plug inside of you..."
+KDRandomText_Plug1,"The plug inside of you is really stimulating."
+KDRandomText_Plug2,"The plug in your body is quite noticeable."
+KDRandomText_Plug3,"You notice the plug inside you as you move."
+KDRandomText_Plug4,"A plug moves around inside of you, stimulating you with every move."
+
+KDRandomText_Bra0,"Your nipples lightly chafe against the inside of your bra."
+KDRandomText_Bra1,"Your chastity bra squeezes your breasts gently."
+KDRandomText_Bra2,"Your confined breasts jiggle inside your chastity bra."
+
+KDRandomText_Belt0,"Your belt taunts you with a lack of sensation between your legs."
+KDRandomText_Belt1,"Your chastity belt rubs between your thighs."
+KDRandomText_Belt2,"The chastity belt between your legs sits secure with no way out."
+
+KDRandomText_Clamp0,"A weight on your nipples reminds you of the toys attached."
+KDRandomText_Clamp1,"The toys on your nipples gently tug with each motion."
+KDRandomText_Clamp2,"A light pressure on each nipple keeps you constantly aware of the toys."
+
+KDRandomText_ClampV0,"Your nipple stay sensitive from the gentle buzz of your toys."
+KDRandomText_ClampV1,"A gentle buzz reminds you of the toys on your nipples."

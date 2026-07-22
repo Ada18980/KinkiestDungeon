@@ -464,10 +464,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			slot_temp, row_temp, restraints))
 				return KDTextGray1;
 			return "#e64539";
-		});
+		}, undefined, undefined, KDHighlightColor, KDBaseWhite);
 		}
-
-
 
 
 		if (currentItem) {
@@ -1166,7 +1164,7 @@ function KDReturnNPCItem(item: item, container?: Record<string, item>) {
 }
 
 function KDGetRestraintBondageStats(item: Named, target: entity): KDBondageStats {
-	let level = Math.max(KDRestraint(item)?.power || 0, 1);
+	let level = Math.max(KDRestraint(item)?.power || 0, 0.5);
 	let type = KDRestraintBondageType(item) || "Leather";
 	let mult = KDRestraintBondageMult(item, target) || 0;
 	let conditions = KDRestraintBondageConditions(item);
@@ -1175,7 +1173,7 @@ function KDGetRestraintBondageStats(item: Named, target: entity): KDBondageStats
 		level: level,
 		type: type,
 		mult: mult,
-		amount: mult*level,
+		amount: mult*Math.sqrt(2*level),
 		conditions: conditions,
 	};
 }
@@ -1722,6 +1720,8 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 				: KDButtonColor),
 				undefined, true,
 				{
+					bordercolor: KDHighlightColor,
+					highlightcolor: KDBaseWhite,
 					scaleImage: true,
 					centered: true,
 					hotkey: hotkey ? KDHotkeyToText(hotkey) : undefined,
@@ -1890,6 +1890,8 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 						canAddcallback(KDRest(item.restraint)) ? "#63ab3f" : "#f0b541"),
 					undefined, true,
 					{
+						bordercolor: KDHighlightColor,
+						highlightcolor: KDBaseWhite,
 						scaleImage: true,
 						centered: true,
 						hotkey: hotkey ? KDHotkeyToText(hotkey) : undefined,

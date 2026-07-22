@@ -3995,6 +3995,16 @@ let KDSpecialBondage: Record<string, KDBondage> = {
 		mageStruggleBoost: 1.75,
 		enemyBondageMult: 0.8,
 	},
+	
+	"Ribbons": {
+		priority: -6,
+		color: "#f054ba",
+		struggleRate: 0.6,
+		powerStruggleBoost: 1.0,
+		healthStruggleBoost: 1.0,
+		mageStruggleBoost: 1.75,
+		enemyBondageMult: 0.8,
+	},
 	"Leather": {
 		priority: 0,
 		color: "#ad2f45",
@@ -4037,6 +4047,24 @@ let KDSpecialBondage: Record<string, KDBondage> = {
 		healthStruggleBoost: 1.0,
 		mageStruggleBoost: 1.4,
 		enemyBondageMult: 2.0,
+	},
+	"Dress": {
+		priority: 4,
+		color: "#c492e8",
+		struggleRate: 0.8,
+		powerStruggleBoost: 1.2,
+		healthStruggleBoost: 1.3,
+		mageStruggleBoost: 1.4,
+		enemyBondageMult: 1.1,
+	},
+	"Cloth": {
+		priority: -5,
+		color: "#c9c2cd",
+		struggleRate: 3,
+		powerStruggleBoost: 1.2,
+		healthStruggleBoost: 1.2,
+		mageStruggleBoost: 1.1,
+		enemyBondageMult: 1.8,
 	},
 	"Metal": {
 		priority: 10,

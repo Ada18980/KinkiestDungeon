@@ -1603,6 +1603,8 @@ function KDDrawInventoryContainer (
 	colorcallback?:     (item: KDFilteredInventoryItem) => string,
 	prefix: string = "",
 	nosearch?: boolean,
+	highlightcolor?: string,
+	bordercolor?: string,
 ): {selected: KDFilteredInventoryItem, tooltipitem: KDFilteredInventoryItem}
 {
 	if (prefix) {
@@ -1614,7 +1616,8 @@ function KDDrawInventoryContainer (
 
 	let tooltipitem = null;
 
-
+	if (!highlightcolor) highlightcolor = KDHighlightColor;
+	if (!bordercolor) bordercolor = KDBaseLightGrey;
 
 
 
@@ -1714,6 +1717,8 @@ function KDDrawInventoryContainer (
 						KDInventoryAction[KDGameData.InventoryAction].highlight(KDPlayer(),
 						filteredInventory[index].item) : KDButtonColor), undefined, undefined, {
 						scaleImage: true,
+						bordercolor: bordercolor,
+						highlightcolor: highlightcolor,
                     //@ts-ignore // This should have a type assigned to it probably, but I do not know where to trace to make it happy. -Enraa
 					}, KDInventoryItemHover(filteredInventory[index].item)) && !tooltipitem) {
 						tooltipitem = filteredInventory[index];

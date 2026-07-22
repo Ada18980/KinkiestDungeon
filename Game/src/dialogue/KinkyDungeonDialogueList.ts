@@ -1131,6 +1131,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 					"Yes": {
 						response: "Default", gag: true,
+						clickFunction: (gagged, player) => {
+							KinkyDungeonChangeRep("Ghost", 5, player);
+							return true;
+						},
 						options: {
 							"Next": {
 								playertext: "Next",
@@ -1142,9 +1146,11 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 			"Caress": {
 				response: "Default", gag: true,
-				clickFunction: () => {
+				clickFunction: (gagged, player) => {
 					if (KinkyDungeonStatsChoice.get("NoRough"))
 						KDGameData.CurrentDialogMsg = "DollTransformCaressAlt";
+
+						KinkyDungeonChangeRep("Ghost", -5, player);
 					return false;
 				},
 				options: {
@@ -1189,6 +1195,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				options: {
 					"Yes": {
 						response: "Default",gag: true,
+						clickFunction: (gagged, player) => {
+							KinkyDungeonChangeRep("Ghost", 5, player);
+							return true;
+						},
 						options: {
 							"Next": {
 								playertext: "Next",
@@ -1200,10 +1210,18 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						response: "Default",gag: true,
 						options: {
 							"No": {
+							clickFunction: (gagged, player) => {
+								KinkyDungeonChangeRep("Ghost", -5, player);
+								return true;
+							},
 								response: "Default",gag: true,
 								leadsToStage: "Caress_Caress2",
 							},
 							"Yes": {
+							clickFunction: (gagged, player) => {
+								KinkyDungeonChangeRep("Ghost", 5, player);
+								return true;
+							},
 								response: "Default", gag: true,
 								leadsToStage: "Part2",
 							},
@@ -1226,6 +1244,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 			"Whimper": {
 				response: "Default",
+				clickFunction: (gagged, player) => {
+					//KinkyDungeonChangeRep("Dominant", -5, player);
+					return true;
+				},
 				options: {
 					"No": {
 						response: "Default",gag: true,
@@ -1239,6 +1261,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 			"Subby": {
 				response: "Default", gag: true,
+				clickFunction: (gagged, player) => {
+					KinkyDungeonChangeRep("Ghost", 10, player);
+					return true;
+				},
 				options: {
 					"Next": {
 						playertext: "Default",
@@ -1858,6 +1884,62 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 		}
 	},
+	DollShoppeVisitor: {
+		response: "Default",
+		clickFunction: (_gagged, player) => {
+
+			let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+			if (en) {
+				KDGameData.CurrentDialogMsgValue.OriginalSpeaker = en.id;
+			}
+
+			return false;
+		},
+		options: {
+			"BeCute": {
+				playertext: "Default",
+				clickFunction: (gagged, player) => {
+					let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+					if (en) {
+						let mytypeofdoll = KDEnemyGetPreferredSubType(en, player);
+						if (mytypeofdoll == "Cute") {
+							KDGameData.CurrentDialogMsg = "DollShoppeVisitorBeCute_Success";
+						}
+					}
+					
+					return true;
+				},
+				options: {
+					"Back": {
+						playertext: "Pause", 
+						leadsToStage: "",
+					}
+				}
+			},
+			"Attack": {
+				playertext: "Default",
+				greyoutFunction: (_gagged, _player) => {
+					return KinkyDungeonHasWill(0.1) || KinkyDungeonStatsChoice.get("NoDollTransform");
+				},
+				greyoutTooltip: "KDTextGrayNeedWP",
+				options: {
+					"Confirm": {playertext: "Default", 
+						clickFunction: (_gagged, _player) => {
+						KinkyDungeonStartChase(undefined, "Refusal");
+						KDAggroSpeaker();
+						return false;
+					}, exitDialogue: true},
+					
+					"GiveUp": {
+						playertext: "Default", 
+						leadsToStage: "",
+					}
+				}
+			},
+		}
+	},
+
+	
 	"Furniture": {
 		response: "Default",
 		clickFunction: (_gagged, player) => {
@@ -2058,7 +2140,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								en.Enemy.name, true,
 								en.personality, en);
 							return true;
-						} else if (en.specialdialogue) {
+						} else if (en.specialdialogue && (!KDSpecialDialogueCondition[en.specialdialogue] || KDSpecialDialogueCondition[en.specialdialogue](en, _player))) {
 							KDStartDialog(en.specialdialogue,
 								en.Enemy.name, true,
 								en.personality, en);
@@ -6462,3 +6544,10 @@ function KDMakeIntoHuman
 	}
 }
 
+
+
+let KDSpecialDialogueCondition : Record<string, (en: entity, player: entity) => boolean> = {
+	DollShoppeVisitor: (en, player) => {
+		return KDIsImprisoned(player) && (!player?.player || en.aware);
+	},
+}

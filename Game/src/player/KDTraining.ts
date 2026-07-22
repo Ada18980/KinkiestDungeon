@@ -38,17 +38,27 @@ function KDGetRecoverBalance(): number {
 }
 
 function KDGetBalanceRate(): number {
-	return (0.15 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RegenBalance")) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RegenBalanceMult"));
+	let mult = 1;
+	if (KinkyDungeonCanStand() && KinkyDungeonGetAffinity(false, "Wall", undefined, undefined)) {
+		mult *= 2;
+	}
+	return mult * (0.15 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RegenBalance")) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RegenBalanceMult"));
 }
 function KDTripDuration(): number {
 	let mult = 4 / (4 + KDGetHeelTraining());
 	return Math.max(2, Math.round(5 * mult));
 }
 
-function KDGetBalanceCost(): number {
+function KDGetBalanceCost(trig: string): number {
 	let mult = 1;//KinkyDungeonStatsChoice.has("HeelWalker") ? 0.5 : 1;
 	if (KinkyDungeonStatsChoice.get("PoorBalance")) mult *= 1.7;
-	if (!KinkyDungeonIsArmsBound()) mult *= 0.5;
+	if (!KinkyDungeonIsArmsBound()) mult *= 0.6;
+
+	if (trig && KDBalanceLossHalvedByWall[trig]) {
+		if (KinkyDungeonGetAffinity(false, "Wall", undefined, undefined)) {
+			mult *= 0.6;
+		}
+	}
 
 	let training = KDGetHeelTraining();
 	return KDGameData.HeelPowerEffective * (0.01*mult*5/(5+training) - (0.001));
