@@ -5223,7 +5223,8 @@ M.F. '女仆长'
 亡魂抓住了你并抚摸你的肚子！ ( DamageTaken )
 # :: AttackMikoGhostSlow
 # :: AttackMikoGhost2Slow
-# - Faded Revenant
+- Faded Revenant
+黯淡亡魂
 
 - Skeleton Warrior
 骷髅战士
@@ -5336,7 +5337,8 @@ M.F. '女仆长'
 玩偶被制服了。
 # :: KillFactoryDoll
 # :: KillPrettyDoll
-# - Pretty Doll
+- Pretty Doll
+漂亮的玩偶
 - Freed Doll
 自由玩偶
 - The doll returns to ${Etheir} place.
@@ -7496,7 +7498,8 @@ TYPE女神的神泉。
 # :: m_FutureBox_l_Door
 - Perk Shrine
 特质神泉
-# - It's a conveyor belt. It conveys.
+- It's a conveyor belt. It conveys.
+这是传送带，它负责传送。
 
 
 - You slam the door and jam it shut!
@@ -10624,6 +10627,7 @@ RestraintName 上的诅咒解除了！
 魔法丝带
 # :: RestraintRibbonRaw
 # :: KinkyDungeonSpellSingleRibbon
+# :: KDBindType_Ribbons
 - Magically sealed ribbons to teach intruders a lesson.
 用魔法密封的丝带给入侵者一个教训。
 - The magic is powerful enough to ward off most blades, creating a true predicament for one who is trapped by these.
@@ -12259,8 +12263,10 @@ RestraintName 上的诅咒解除了！
 # :: KDTileTooltipM
 # :: KDMinimapLabel_Tablet
 # - Wall Opening
-# - Pink Haze
-# - Spore Cloud
+- Pink Haze
+粉色迷雾
+- Spore Cloud
+孢子云
 # - Takes an extra turn to enter
 # - Increases distraction
 # - Causes drowsiness
@@ -16433,7 +16439,7 @@ AMNT% 的概率命中你
 - Suspicious
 开始怀疑
 - Notices you!
-注意到你了！
+注意到你！
 - Unaware
 没发现你
 - Items carried:
@@ -17956,12 +17962,12 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailPlaySkeletonLeash
 # :: KinkyDungeonRemindJailPlayPuppetLeash
 - *runs at you*
-*冲着你跑*
+*朝你冲来*
 # :: KinkyDungeonRemindJailPlaySkeletonLoot
 # :: KinkyDungeonRemindJailPlaySkeleton2
 # :: KinkyDungeonRemindJailPlayPuppetLoot
 - *notices you!*
-*注意到你了！*
+*注意到你！*
 # :: KinkyDungeonRemindJailPlaySkeletonKey
 # :: KinkyDungeonRemindJailPlayPuppetKey
 - *claps loudly*
@@ -17979,7 +17985,7 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailChasePuppetAttack0
 # :: KinkyDungeonRemindJailPuppetHit
 - *scrabbles slowly by*
-*缓慢地拼字*
+*缓慢地爬行*
 # :: KinkyDungeonRemindJailChaseSkeletonAttack1
 # :: KinkyDungeonRemindJailChasePuppetAttack1
 - *shrieks*
@@ -18029,7 +18035,7 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailPuppetStun
 # :: KinkyDungeonRemindJailPuppetPickpocket
 - *misses*
-*错过*
+*未命中*
 # :: KinkyDungeonRemindJailSkeletonMiss
 # :: KinkyDungeonRemindJailPuppetMiss
 - *flails uselessly*
@@ -18078,16 +18084,22 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailChasePuppetCommandBlock
 
 
-# - *eyes glow*
+- *eyes glow*
+*双眼放光*
 # :: KinkyDungeonRemindJailCastPuppet
 # :: KinkyDungeonRemindJailChasePuppetSpell0
-# - *tilts head*
+- *tilts head*
+*歪头*
 # :: KinkyDungeonRemindJailPlayPuppetStruggle
 # :: KinkyDungeonRemindJailPlayPuppet2
-# - *walks slowly toward you*
-# - *makes a crooked smile*
-# - *shudders*
-# - *freezes*
+- *walks slowly toward you*
+*缓慢地向你走来*
+- *makes a crooked smile*
+*露出歪嘴一笑*
+- *shudders*
+*打了个寒颤*
+- *freezes*
+*僵住了*
 
 - Engaging SPL!
 正在启动SPL!
@@ -28157,6 +28169,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_UniformShirt_l_Dress
 # :: m_MilitaryUniform_l_Dress
 # :: m_LightMaidKnight_Top_l_Dress
+# :: KDBindType_Dress
 - WitchBlouse
 女巫衬衫
 - BlouseLiner
@@ -33914,6 +33927,7 @@ V形比基尼
 # :: m_FashionClothOTN_l_Cloth
 # :: m_FashionClothOTM_l_Cloth
 # :: KDItemFilter_Restraint_Cloth
+# :: KDBindType_Cloth
 - BlindfoldBasic
 基础眼罩
 # - Basic
@@ -46991,7 +47005,8 @@ Kigurumi头壳
 强制贞操带
 - Allow Menu Ingame
 开启游戏内菜单
-# - Rough Treatment
+- Rough Treatment
+粗暴对待
 
 - Prisoner Text
 囚犯文字
@@ -47003,32 +47018,38 @@ Kigurumi头壳
 催眠食物
 - Hypnosis
 催眠
-# - Doll Transformation
-# - Doll Transformation (Sexless)
+- Doll Transformation
+玩偶化
+- Doll Transformation (Sexless)
+玩偶化(无性)
 
 
 - Some food items on tables will be laced with a drug that makes your character fall asleep.
 桌上的某些食物会含有使你的角色陷入睡眠的药物。
 - Some food items on tables will be laced with a drug that makes your character very distracted.
 桌上的某些食物会含有使你的角色陷入性奋的药物。
-# - Removes some dialogue paths that end with your character getting slapped, hair pulled, or otherwise 'beaten.'
+- Removes some dialogue paths that end with your character getting slapped, hair pulled, or otherwise 'beaten.'
+移除一些会导致你的角色被扇耳光、拽头发或以其他方式“殴打”的对话。
 
 - |||This item is marked as Red, which prevents it from appearing in the game.
-|||这种物品被标红，不会出现。
+|||该对象被标红，不会出现。
 - |||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention.
-|||这种物品被标黄，出现的更少，但不会完全移除。
+|||该对象被标黄，出现的更少，但不会完全移除。
 - |||This item is marked as Green, which will make it appear more often.
-||这种物品被标绿，出现的更多。
+||该对象被标绿，出现的更多。
 - |||This item will appear ingame as normal.
-|||这种物品会正常出现。
+|||该对象会正常出现。
 
 - Menu Locked
 菜单锁定
 
 
-# - Allows content where the player character gets transformed into a sentient ball jointed doll. Removing this transformation requires a Potion of Humanity.\n\nSetting this to red prevents the dialogue from starting.\nSetting this to Green makes it permanent, as no Potions of Humanity will spawn.
-# - If the player is transformed into a ball-jointed doll, they may be made into one that doesn't have sex organs as a punishment.\n\nSetting this to yellow lets the player always choose.
-# - |||This item is marked as Green, which prevents Potions of Humanity from spawning, making doll transformation permanent.
+- Allows content where the player character gets transformed into a sentient ball jointed doll. Removing this transformation requires a Potion of Humanity.\n\nSetting this to red prevents the dialogue from starting.\nSetting this to Green makes it permanent, as no Potions of Humanity will spawn.
+允许玩家角色转变为具有自我意识的球体关节玩偶。解除该状态需要使用人类药水。\n\n如果被标红，会阻止转化的开始\n如果被标绿，不会生成任何人类药水，使玩偶化变为永久状态。
+- If the player is transformed into a ball-jointed doll, they may be made into one that doesn't have sex organs as a punishment.\n\nSetting this to yellow lets the player always choose.
+如果玩家角色被转化为球体关节玩偶，作为惩罚，可能被制成没有性器官的玩偶。\n\n如果被标黄，玩家将始终拥有选择权
+- |||This item is marked as Green, which prevents Potions of Humanity from spawning, making doll transformation permanent.
+|||该对象被标绿，这将阻止人类药水生成，使玩偶化变为永久状态。
 
 - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
 允许在游戏过程中使用此菜单（包括“安全词”按钮）。如果你不希望在开始游戏后还能进入此界面修改规则，请将其标红。此选项不会随存档读取而改变。
@@ -49803,7 +49824,7 @@ EnemyName 深呼吸，让你周围的空气变得寒冷...
 - Shadow Bubble
 暗影泡泡
 - The projectile explodes into tight shadow latex, stretching all across your body!
-射弹爆炸成紧密的暗影乳胶，伸展到你的全身！
+飞弹爆炸成致密的暗影乳胶，在你的全身蔓延！
 # :: KinkyDungeonSpellShadowBubbleBind
 # :: KinkyDungeonSpellShadowBubbleDamage
 - The dragon dances through the shadows!
@@ -52482,6 +52503,8 @@ EnemyName 设法蠕动着离开了视野！
 , 层
 # -  NG+
 # -  the 
+:: KDClassSaveLabel
+‎ 
 
 - Recolor
 重新着色
@@ -53421,7 +53444,8 @@ Brat
 
 - ${You} are being affected by doll magic... 
 ${You}正受到玩偶魔法的影响...
-# - ${Youve} fallen into a trance, making suggestions more powerful.
+- ${Youve} fallen into a trance, making suggestions more powerful.
+${Youve}陷入了恍惚状态，使得心理暗示更具影响力。
 
 - Good doll.
 好玩偶。
@@ -53443,7 +53467,8 @@ ${You}正受到玩偶魔法的影响...
 优雅的玩偶。
 - Elegant doll.
 精美的玩偶。
-# - Perfect doll.
+- Perfect doll.
+完美的玩偶。
 
 - Be still...
 安静点......
@@ -53479,15 +53504,19 @@ ${You}陷入沉默，无法轻易施展法术。
 法术已生效。
 
 
-# - You have been transformed into a ball-jointed doll
-# - You are already transformed
-# - You are already artificial, and cannot be transformed.
+- You have been transformed into a ball-jointed doll
+你已经被转化成了一个球体关节玩偶。
+- You are already transformed
+你已经完成了转化
+- You are already artificial, and cannot be transformed.
+你已经是人造生命了，无法被转化。
 
 # - You become a flesh-and-blood creature.
 # - That didn't work. Please report this to Ada!
 
 
-# - (The SPEAKER caresses you by the chin as you remain locked in the stand)\nTruly sad, truly. A good doll should be still...\nNow, my showcase awaits~
+- (The SPEAKER caresses you by the chin as you remain locked in the stand)\nTruly sad, truly. A good doll should be still...\nNow, my showcase awaits~
+(SPEAKER轻抚着你的下巴，你被锁在架子上。)\n真是可悲，一个好的玩偶就该一动不动……\n现在，我的陈列柜正等待着呢~
 
 # - (The SPEAKER smiles at you)\nYou look so gorgeous, lovely doll~
 
@@ -53564,33 +53593,54 @@ ${You}陷入沉默，无法轻易施展法术。
 - (Close your eyes and moan)
 （闭上眼睛，发出呻吟声）
 
-# - (The SPEAKER smiles and boops your nose)\nThat's you~\nPretty one.
+- (The SPEAKER smiles and boops your nose)\nThat's you~\nPretty one.
+(SPEAKER微笑着轻轻戳了一下你的鼻子)\n那就是你～\n漂亮的小家伙。
 # - (The SPEAKER chuckles with a sinister expression)\nAn eager one~\nSuch delight!
-# - (The SPEAKER pulls back ${Etheir} hand...\nand smacks you across the face)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like...
-# - (The SPEAKER pulls back ${Etheir} hand and merely smiles)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like...
-# - (The SPEAKER lets a sadistic smile slip across ${Etheir} face)\nDon't worry, you'll be a happy little doll soon.\nVery soon...
-# - My showcase is full of lovely dolls.\nLovely dolls just like you will be.\nAren't you excited?
-# - (The SPEAKER gives an approving nod)\nExcellent.\nYou'll be fitting right in with all the other dolls!
+- (The SPEAKER pulls back ${Etheir} hand...\nand smacks you across the face)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like...
+(SPEAKER抽回了${Etheir}的手\n然后甩了你一记耳光。)\n一个好的${Psub}是不该抗拒${Ptheir}创造者的触碰的。\n别担心，你很快就会明白什么是完美的静止了……
+- (The SPEAKER pulls back ${Etheir} hand and merely smiles)\nA good ${Psub} shouldn't resist ${Ptheir} maker's touch.\nDon't worry, you'll soon learn what perfect stillness is like...
+(SPEAKER抽回了${Etheir}的手，笑了笑。)\n一个好的${Psub}是不该抗拒${Ptheir}创造者的触碰的。\n别担心，你很快就会明白什么是完美的静止了……
+- (The SPEAKER lets a sadistic smile slip across ${Etheir} face)\nDon't worry, you'll be a happy little doll soon.\nVery soon...
+(SPEAKER的脸上露出一丝残忍的微笑)\n别担心，你很快就会成为一个快乐的小玩偶了。\n很快……
+- My showcase is full of lovely dolls.\nLovely dolls just like you will be.\nAren't you excited?
+我的展示柜里摆满了可爱的玩偶。\n这些玩偶就像你未来那样。\n你不感到兴奋吗？
+- (The SPEAKER gives an approving nod)\nExcellent.\nYou'll be fitting right in with all the other dolls!
+(SPEAKER赞许地点了点头。)\n太棒了。\n你会很快融入其他玩偶之中的！
 
-# - (The SPEAKER shrugs)\nYou don't have a choice in the matter.\nNot like that you don't~
+- (The SPEAKER shrugs)\nYou don't have a choice in the matter.\nNot like that you don't~
+(SPEAKER耸了耸肩)\n你对此别无选择。\n可不是像你那样想的哦～
 
-# - (The SPEAKER smiles)\nTerrific!\nLet's get started then, shall we?
-# - (The SPEAKER smiles and nods)\nWhy of course!\nI can already tell you'll make a lovely addition...
-# - (The SPEAKER furrows ${Etheir} brow)\nHmmm?
-# - (The SPEAKER glares at you)\nOh, you don't like my collection?\nNo matter, I'm sure you'll change your mind when you see it.
+- (The SPEAKER smiles)\nTerrific!\nLet's get started then, shall we?
+(SPEAKER微笑)\n太棒了！\n那么我们开始吧，好吗？
+- (The SPEAKER smiles and nods)\nWhy of course!\nI can already tell you'll make a lovely addition...
+(SPEAKER微笑着点头)\n当然可以！\n我已经可以看出，你会成为非常出色的一员……
+- (The SPEAKER furrows ${Etheir} brow)\nHmmm?
+(SPEAKER皱起了${Etheir}眉头)\n嗯？
+- (The SPEAKER glares at you)\nOh, you don't like my collection?\nNo matter, I'm sure you'll change your mind when you see it.
+(SPEAKER瞪着你)\n哦，你不喜欢我的收藏吗？\n没关系，我相信等你见到它时，一定会改变主意的。
 
-# - (The SPEAKER starts to circle around you,\nher heels clacking along the floor in perfect rhythm)\nNow then... which part of you shall we work on first...
+- (The SPEAKER starts to circle around you,\nher heels clacking along the floor in perfect rhythm)\nNow then... which part of you shall we work on first...
+(SPEAKER开始围着你转圈，\n高跟鞋有节奏地敲击着地板)\n那么……我们要先处理你身上的哪个部位呢……
 
-# - My arms, ${Ehonor}.
-# - Start with my feet and move up.
-# - What happens to my face, ${Ehonor}?
-# - Why not all at once, ${Ehonor}?
-# - (Remain silent and let ${Ethem} do as ${Ethey} please${Es})
-# - (Wiggle in place in a futile struggle)
+- My arms, ${Ehonor}.
+我的双臂，${Ehonor}。
+- Start with my feet and move up.
+从我的脚开始一直向上。
+- What happens to my face, ${Ehonor}?
+我的脸怎么样，${Ehonor}？
+- Why not all at once, ${Ehonor}?
+为什么不一次性完成呢，${Ehonor}？
+- (Remain silent and let ${Ethem} do as ${Ethey} please${Es})
+(保持沉默，让${Ethem}决定)
+- (Wiggle in place in a futile struggle)
+(在原地扭动，做着徒劳的挣扎)
 
-# - (The SPEAKER chuckles)\nThe question was rhetorical, but very well.\n(She reaches for your hands, grabbing them as she smiles)\nDid you know that a doll's arms are much more flexible than\nthose of a human? So long as your strings are not too tight...\n(Your arms feel cold, a faint tension tugs at your now-jointed fingers)
-# - (The SPEAKER smiles)\nJust enjoy it, doll~\nIt'll be over soon.\n(The feeling creeps along your body, until it overtakes you completely)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)
-# - (The SPEAKER smiles and grabs you by the chin)\nI see, I see...\nYou must enjoy the thrill, as your whole body slowly goes cold...\n(${EThey} wrap${Es} a leg around yours, as you feel its skin start to harden)
+- (The SPEAKER chuckles)\nThe question was rhetorical, but very well.\n(She reaches for your hands, grabbing them as she smiles)\nDid you know that a doll's arms are much more flexible than\nthose of a human? So long as your strings are not too tight...\n(Your arms feel cold, a faint tension tugs at your now-jointed fingers)
+(SPEAKER轻笑一声)\n这个问题是反问，不过也罢。\n(她伸出双手，笑着抓住了你的手)\n你知道吗？玩偶的手臂比人类的要灵活得多。\n只要线拉得不那么紧……\n(你的双臂感到一阵冰凉，一种微妙的张力正拉扯着你现在已经变成关节状的手指)
+- (The SPEAKER smiles)\nJust enjoy it, doll~\nIt'll be over soon.\n(The feeling creeps along your body, until it overtakes you completely)\n(Cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)
+(SPEAKER微笑着)\n尽情享受吧，玩偶~\n很快就会结束的。\n(那种感觉顺着你的身体蔓延，直到将你彻底吞噬)\n(冰冷而静止……无需呼吸……无需担忧 )\n(只是架子上的一个玩偶…… )
+- (The SPEAKER smiles and grabs you by the chin)\nI see, I see...\nYou must enjoy the thrill, as your whole body slowly goes cold...\n(${EThey} wrap${Es} a leg around yours, as you feel its skin start to harden)
+(SPEAKER微笑着捏住你的下巴)\n我明白了……\n你一定很享受那种全身逐渐变冷的刺激感吧……\n(${EThey})用腿缠住你的腿，你感觉到它的皮肤开始变硬)
 # - (The SPEAKER steps back as the feeling creeps up your body)\nJust enjoy it, doll~\nIt'll be over soon.\n(The feeling moves up to your core)\n(Then your chest, and your arms, going still)\n(It reaches your face, leaving you cold... no need to breath... no need to worry)\n(Just a doll on a stand...)
 # - (The SPEAKER gives you a kiss on the cheek)\nIt remains just as beautiful, my doll.\n(With a caress of your cheek, your skin starts to feel cold)\n(You still think and feel as before, but changes start to creep down your neck)
 # - (The SPEAKER steps back as the sensation spreads)\nIt's quick, creeping across your whole body, replacing flesh with joints)\n(You are left cold and still... no need to breath... no need to worry)\n(Just a doll on a stand...)
@@ -53622,24 +53672,225 @@ ${You}陷入沉默，无法轻易施展法术。
 # - A set of strings for controlling a puppet.
 # - Tethers you to nearby dolls and puppet strings if you pass by.
 
-# - It looks like you selected the Doll species perk\nHowever, your character does not have a doll body equipped.\nWould you like to fix that?
-# - (Yes)
-# - (No)
+- It looks like you selected the Doll species perk\nHowever, your character does not have a doll body equipped.\nWould you like to fix that?
+看起来你选择了玩偶物种特质，\n但你的角色尚未装备玩偶身体。\n你想修复这个问题吗？
+- (Yes)
+( 是 )
+- (No)
+( 否 )
 
 # - On the ground! Bondage Resist reduced by 50%
 # - Your balance is low! Consider standing in place to restore it.
 
 # - Always show defense in buff bar
 
-# - Sleepy...
-# - Toxic spores are making it difficult to move
+- Sleepy...
+好困……
+- Toxic spores are making it difficult to move
+有毒的孢子让你行动困难
 
-# - An NPC in your collection was missing an enemy type and has been removed
+- An NPC in your collection was missing an enemy type and has been removed
+你收藏中的一个NPC缺少了敌人类型，已被移除。
 
-# - SCANNING
+- SCANNING
+正在扫描
 
-# - Unavailable while you are a prisoner.
+- Unavailable while you are a prisoner.
+在囚禁期间不可用。
 
-# - It's a little hole in the wall where a mouse lives. Perhaps you could drop an item here.
-# - The mouse takes your item and brings something interesting!
-# - The mouse steals your item and runs back into the hole.
+- It's a little hole in the wall where a mouse lives. Perhaps you could drop an item here.
+那是一个老鼠居住的小洞，或许你可以在这里放点东西。
+- The mouse takes your item and brings something interesting!
+老鼠拿走了你的物品，并带回了一些有趣的东西！
+- The mouse steals your item and runs back into the hole.
+老鼠偷走了你的物品并跑回了洞里。
+
+# - (The SPEAKER looks at you)|Well if it isn't another lovely doll~
+# - (The SPEAKER walks along from doll to doll, ${Etheir} eye${Es} hanging over you with a smug gaze)
+# - (The SPEAKER visits the doll shoppe, ${Etheir} eye${Es} lingering on you in their search for the perfect doll)
+# - (The SPEAKER stops near you, looking at you with deep interest and a blush on ${Etheir} face)
+# - (The SPEAKER glances at you, ${Etheir} head giving a little tilt as they flash a smile)|Why hello, doll.
+# - (The SPEAKER stops and scans you)
+
+# - (Be cute and presentable)
+# - (Be a still doll)
+# - (Ignore ${Ethem} and try to look away)
+# - (Struggle uselessly against your bindings)
+# - (Be enticing)
+# - (Lash out at ${Ethem}) (Will aggro)
+# - (You have to try!)
+# - (Reconsider)
+
+# - (The SPEAKER gushes over how adorable you are)|Oh gods, ${Ptheyre} so cute!|Looks like I've come to the right place~
+# - (The SPEAKER chuckles)|There we go, that's better. Good girl~
+# - (The SPEAKER smiles)|Not quite my type. But cute.
+# - (The SPEAKER shakes ${Etheir} head)|I'll have a look at the other dolls.
+
+# - (The SPEAKER gives an approving nod)|A lovely, still, doll. Excellent.
+# - (The SPEAKER cants ${Etheir} head and smiles)|There we go. A proper doll should be still.
+# - (The SPEAKER shakes ${Etheir} head|I prefer a little more... personality.
+# - (The SPEAKER tilts ${Etheir} head)|Interesting.
+
+# - (The SPEAKER smirks)|How lovely it will be to break you in, ${Pdim}.
+# - (The SPEAKER smiles)|That's better. Show some spirit!
+# - (The SPEAKER shakes ${Etheir} head)|I see this one needs breaking in.
+# - (The SPEAKER chuckles)|A bit shy, aren't you?
+
+# - (The SPEAKER flashes an evil grin)|That's right ${Pdim}. Keep struggling. There's no escape.
+# - (The SPEAKER grins)|Relax, ${Pdim}, you're not going anywhere. Just give in~
+# - (The SPEAKER shakes ${Etheir} head)|That's not how a doll should be.
+# - (The SPEAKER laughs)|A feisty one. Cute.
+
+
+
+# - (The SPEAKER watches you for a while, forming a pleasant expression on ${Etheir} face)|What have we here? Quite the pretty one.
+# - (The SPEAKER's expression slowly forms a smile)
+# :: rDollShoppeVisitorBeCute_SuccessLateVoyeur
+# :: rDollShoppeVisitorBeStill_SuccessLateVoyeur
+# - (The SPEAKER yawns, and then smiles)
+# - (The SPEAKER watches you and pats you on the head)
+
+# - (The SPEAKER watches you for a long, long, time. A smile forms on ${Etheir} satisfied face)|A great time to go window shopping, I see~
+# - (The SPEAKER watches you for a bit, expecting you to do something.)|(${EThey} lose${Es} interest after a while)
+# - (The SPEAKER watches you, tilting ${Etheir} head.)
+
+# - (The SPEAKER giggles to ${Ethem}self)|A blushy one. I quite enjoy watching cuties like you.
+# - (The SPEAKER flashes a smug grin before moving on)
+# - (The SPEAKER smiles, and shrugs)
+# - (The SPEAKER watches you intently)
+
+# - (The SPEAKER watches you struggle with great amusement)|Keep struggling, dear, you'll get there eventually!|Or perhaps not, but it's fun to see you try~
+# - (The SPEAKER watches you struggle with great amusement)
+# - (The SPEAKER yawns as you struggle)
+# - (The SPEAKER watches you with a slight grin)
+
+
+
+
+
+# - (The SPEAKER moves closer and holds your chin)|Absolutely adorable. I like you~
+# - (The SPEAKER steps closer and corrects your posture to look even cuter)|Much better!
+# - (The SPEAKER holds a finger to ${Etheir} chin, inspecting you closely)|Very cute... but not quite what I'm looking for.
+# - (The SPEAKER tilts ${Etheir} head and smiles)|Cute.
+
+# - (The SPEAKER inspects your pose carefully and nods with approval)|Very good. An ideal doll.
+# - (The SPEAKER watches you with a smile)|Good.
+# - (The SPEAKER seems interested in your restraints)|You should struggle, ${Pdim}. It'd be nice to see you squirm.
+# - (The SPEAKER holds your chin and runs a hand along your body, smiling)
+
+# - (The SPEAKER reaches over and grabs you by the forehead)|Look at me, ${Pdim}. Brats like you should be broken in, made to squirm,|until you know. Your. Place.
+# - (The SPEAKER reaches over and grabs you by the forehead)|${Pdim}, you should pay more attention.|You know, brats like you ought to be taught a lesson~
+# - (The SPEAKER smirks)|That's cute.|If I had the time, I'd train you myself, but ahh~
+# - (The SPEAKER sighs)|A brat who doesn't know her place.|I'm sure you'll find someone to train you soon enough.
+# - (The SPEAKER smiles)|A brat who doesn't know her place.
+
+# - (The SPEAKER smiles warmly)|A ${Psub} like you belongs in restrains.|Strictly tied.|Unable to move an inch.
+# - (The SPEAKER chuckles)|No point in struggling, ${Psub}.|Just give in, won't you~?
+# - (The SPEAKER smirks)|Let's check your restraints... Making sure they're nice and tight.
+# - (The SPEAKER chuckles)|It is a good thing you are restrained.
+
+
+
+
+
+# - (The SPEAKER smiles and blushes)|Cute ${Psub}.
+# - (The SPEAKER pats your head as ${Ethey} pass${Ees} by)
+# - (The SPEAKER smiles)|Your motivation is admirable but you have much to learn~
+# - (The SPEAKER smiles and shrugs)
+# :: rDollShoppeVisitorBeCute_FailLateSub
+# :: rDollShoppeVisitorBeAngry_FailLateSub
+
+# - (The SPEAKER nods in approval)|You make a very good doll, ${Psub}.
+# - (The SPEAKER gives a little giggle as ${Ethey} pass${Ees} by)
+# - (The SPEAKER nods once)|I admire your dedication~
+# - (The SPEAKER smiles at your dedication to being a doll on display)
+
+# - (The SPEAKER looks curious)|Oh? You look like a ${Pdim} who needs some training...
+# :: rDollShoppeVisitorBeBrat_SuccessSub
+# :: rDollShoppeVisitorBeAngry_SuccessSub
+# - (The SPEAKER smiles)|Needs training... hehe~
+# :: rDollShoppeVisitorBeBrat_SuccessLateSub
+# :: rDollShoppeVisitorBeAngry_SuccessLateSub
+# - (The SPEAKER crosses ${Etheir} arms)|Be a good ${Pdim} and show some respect.
+# - (The SPEAKER giggles and shrugs)
+
+# - (The SPEAKER crosses ${Etheir} arms)|Be a good ${Pdim} and behave.
+
+
+
+
+
+# - (The SPEAKER grabs your head and leans in, a wide smile growing on ${Etheir} face)|SO CUTE!|(${EThey} give${Ees} you headpats repeatedly)
+# - (The SPEAKER pats you on the head)|Adorable. Be good, okay?
+# - (The SPEAKER giggles)|Cute, but not quite my style~
+# - (The SPEAKER smiles)|Cute.
+
+# - (The SPEAKER reaches out almost to touch your chest,|${Etheir} hand hovering just above your still body)|Good doll~
+# - (The SPEAKER smiles)|Good, still, doll.
+# - (The SPEAKER hums)|The pose could use some work...
+# - (The SPEAKER chuckles)|Being on display is getting to your head, eh?
+
+# - (The SPEAKER grabs your chin and points your head toward ${Ethem})|I think I'd enjoy showing you your place...
+# - (The SPEAKER folds ${Etheir} arms and smiles)|I like your spirit.
+# - (The SPEAKER tilts ${Etheir} head)|Do you think this will get you anywhere?|(${EThey} smile and hold up your chin)
+# - (The SPEAKER smiles)|Better start begging~
+
+# - (The SPEAKER grabs your shoulder to stop you moving)|Oh, cutie, you won't be going anywhere.|Except perhaps with me, hehe~
+# - (The SPEAKER chuckles)|Cute. Keep trying, ${Pdim}.|I'm sure you'll get out if you try hard enough... heh~
+# - (The SPEAKER laughts)|You won't be going anywhere with that attitude~
+# - (The SPEAKER giggles)|You're not going anywhere~
+
+
+
+
+# - (The SPEAKER makes a beep of approval)|Cute behavior has been noted, logged, and approved.|Good girl.
+# - (The SPEAKER pauses)|Subject cuteness within expected bounds.|Good girl.
+# - (The SPEAKER makes a loud noise resembling an error message)|Subject does not conform to expected standards.|Suggest corrective training.
+# :: rDollShoppeVisitorBeCute_FailRobot
+# :: rDollShoppeVisitorBeBrat_FailRobot
+# - (The SPEAKER pauses)|Subject continues to defy protocol.
+# :: rDollShoppeVisitorBeCute_FailLateRobot
+# :: rDollShoppeVisitorBeBrat_FailLateRobot
+
+# - (The SPEAKER makes a beep of approval)|Behavior has been noted, logged, and found to be within acceptable bounds.|Good girl.
+# - (The SPEAKER pauses)|Subject behavior within expected parameters.|Good girl.
+
+# - (The SPEAKER makes a beep of approval)|Subject resists as expected.|Noting and proceeding.
+# - (The SPEAKER pauses)|Subject resists as expected.|Proceeding.
+# - (The SPEAKER makes a loud noise resembling an error message)|Subject continues to resist capture.|Propose intense corrective measures.
+# - (The SPEAKER pauses)|Subject continues to resist, despite lack of capability.|Logical error.
+
+# - (The SPEAKER makes a beep of approval)|No movement detected. This has been logged.|Good girl.
+# - (The SPEAKER pauses)|Subject has corrected unwanted behavior.|Good girl.
+# - (The SPEAKER makes a loud noise resembling an error message)|Subject does not respond to stimuli in an expected manner.|Suggest additional stimulation.
+# - (The SPEAKER pauses)|Subject does not act when prompted.|This is not acceptable.
+
+
+# - ${EThey} do${Ees}n't like you enough to make you ${Etheir}'s.
+
+# - It's hard to take your mind off the plugs inside of you...
+# - The plugs inside you are really stimulating.
+# - The plugs filling your holes make your mind wander.
+# - You notice the plugs inside you as you move.
+# - The plugs move around inside of you, stimulating you with each move.
+
+# - It's hard not to think about the plug inside of you...
+# - The plug inside of you is really stimulating.
+# - The plug in your body is quite noticeable.
+# - You notice the plug inside you as you move.
+# - A plug moves around inside of you, stimulating you with every move.
+
+# - Your nipples lightly chafe against the inside of your bra.
+# - Your chastity bra squeezes your breasts gently.
+# - Your confined breasts jiggle inside your chastity bra.
+
+# - Your belt taunts you with a lack of sensation between your legs.
+# - Your chastity belt rubs between your thighs.
+# - The chastity belt between your legs sits secure with no way out.
+
+# - A weight on your nipples reminds you of the toys attached.
+# - The toys on your nipples gently tug with each motion.
+# - A light pressure on each nipple keeps you constantly aware of the toys.
+
+# - Your nipple stay sensitive from the gentle buzz of your toys.
+# - A gentle buzz reminds you of the toys on your nipples.
