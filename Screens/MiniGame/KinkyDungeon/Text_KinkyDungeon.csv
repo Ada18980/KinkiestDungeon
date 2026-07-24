@@ -33892,10 +33892,10 @@ KDMouseHoleSuccess,The mouse takes your item and brings something interesting!
 KDMouseHoleFail,"The mouse steals your item and runs back into the hole."
 
 rDollShoppeVisitor,"(The SPEAKER looks at you)|Well if it isn't another lovely doll~"
-rDollShoppeVisitorVoyeur,"(The SPEAKER walks along from doll to doll, ${Etheir} eye${Es} hanging over you with a smug gaze)"
-rDollShoppeVisitorDom,"(The SPEAKER visits the doll shoppe, ${Etheir} eye${Es} lingering on you in their search for the perfect doll)"
-rDollShoppeVisitorSub,"(The SPEAKER stops near you, looking at you with deep interest and a blush on ${Etheir} face)"
-rDollShoppeVisitorBrat,"(The SPEAKER glances at you, ${Etheir} head giving a little tilt as they flash a smile)|Why hello, doll."
+rDollShoppeVisitorVoyeur,"(The SPEAKER walks along from doll to doll,|${Etheir} eye${Es} hanging over you with a smug gaze)"
+rDollShoppeVisitorDom,"(The SPEAKER visits the doll shoppe, ${Etheir} eye${Es}|lingering on you in their search for the perfect doll)"
+rDollShoppeVisitorSub,"(The SPEAKER stops near you, looking at you|with deep interest and a blush on ${Etheir} face)"
+rDollShoppeVisitorBrat,"(The SPEAKER glances at you,|${Etheir} head giving a little tilt as ${Ethey} flash${Ees} a smile)|Why hello, doll."
 rDollShoppeVisitorRobot,"(The SPEAKER stops and scans you)"
 
 dDollShoppeVisitor_BeCute,(Be cute and presentable)

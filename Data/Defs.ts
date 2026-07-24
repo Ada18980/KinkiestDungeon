@@ -141,6 +141,7 @@ let LAYERS_BASE = [
 
 	"WrapChest",
 	"HarnessOver",
+	"ArmsCrossedStraps",
 	"BindChest",
 	"NeckCorsetOver",
 	"BustierCollar",
@@ -199,6 +200,7 @@ let LAYERS_BASE = [
 
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
+	"UnderbustChestStrap",
 	"BeltCharmSide",
 	"BeltArmor",
 	"BeltCharm",

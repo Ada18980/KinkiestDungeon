@@ -11022,10 +11022,11 @@ function KDEnemyStruggleTurn(enemy: entity, delta: number, allowStruggleAlwaysTh
 				enemy.strugglePoints += delta;
 			} else if (result != "Struggle") {
 				if (struggleNPCTarget.inv.conjured && result == "Remove") result = "ConjuredRemove";
-				KinkyDungeonSendTextMessage(3, TextGet("KDNPCEscape" + result)
-					.replace("ENMY", KDEnemyName(enemy))
-					.replace("ITMN", KDGetItemName(struggleNPCTarget.inv, Restraint)),
-				KDBaseWhite, 2);
+				if (KinkyDungeonVisionGet(enemy.x, enemy.y) > 0.1)
+					KinkyDungeonSendTextMessage(3, TextGet("KDNPCEscape" + result)
+						.replace("ENMY", KDEnemyName(enemy))
+						.replace("ITMN", KDGetItemName(struggleNPCTarget.inv, Restraint)),
+					KDBaseWhite, 2);
 				delete enemy.strugglePoints;
 			}
 		} else {
