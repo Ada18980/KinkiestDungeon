@@ -1444,7 +1444,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		},
 		maintain: (enemy, delta, aiData) => {
 			let player = KDPlayer();
-			if (enemy.aware && KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > 1.5) {
+			if ((enemy.aware || KDEnemyHasFlag(enemy, "sent")) && KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > 1.5) {
 				enemy.gx = player.x;
 				enemy.gy = player.y;
 				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);

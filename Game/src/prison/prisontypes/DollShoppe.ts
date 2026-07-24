@@ -544,6 +544,7 @@ KDPrisonTypes.DollShoppe = {
 					KinkyDungeonSetFlag("nojail", 10);
 					KinkyDungeonSetFlag("SuppressGuardCall", 10);
 					let action = "Follow";
+					KinkyDungeonSetEnemyFlag(guard, "sent", 10);
 					if (guard.IntentAction != action)
 						KDIntentEvents[action].trigger(guard, {});
 					else guard.playWithPlayer = Math.max(guard.playWithPlayer, 3);
@@ -573,6 +574,7 @@ KDPrisonTypes.DollShoppe = {
 
 				if (guard && KDPrisonIsInFurniture(player)) {
 					let action = "Follow";
+					KinkyDungeonSetEnemyFlag(guard, "sent", 10);
 					if (guard.IntentAction != action)
 						KDIntentEvents[action].trigger(guard, {});
 					else guard.playWithPlayer = Math.max(guard.playWithPlayer, 3);
@@ -606,6 +608,7 @@ KDPrisonTypes.DollShoppe = {
 				if (KDPrisonIsInFurniture(player)) {
 					if (guard) {
 						let action = "Follow";
+						KinkyDungeonSetEnemyFlag(guard, "sent", 10);
 						if (guard.IntentAction != action)
 							KDIntentEvents[action].trigger(guard, {});
 						else guard.playWithPlayer = Math.max(guard.playWithPlayer, 3);
