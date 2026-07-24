@@ -571,8 +571,31 @@ function KinkyDungeonGetJailRestraintsForGroup(Group: string, jailRestraintList?
  * @param r
  */
 function KDJailCondition(r: KDJailRestraint): boolean {
-	if (r.Condition && KDJailConditions[r.Condition]) {
-		return KDJailConditions[r.Condition](r);
+	if (r.Condition && KDJailConditions[r.Condition] && !KDJailConditions[r.Condition](r)) {
+		return false;
+	}
+	if (r.Conditions) {
+		for (let Condition of r.Conditions) {
+			if (Condition && KDJailConditions[Condition] && !KDJailConditions[Condition](r)) {
+				return false;
+			}
+		}
+	}
+	if (r.flags) {
+		let player = KDPlayer()
+		for (let flag of r.flags) {
+			if (!KinkyDungeonFlags.get(flag)) {
+				return false;
+			}
+		}
+	}
+	if (r.noflags) {
+		let player = KDPlayer()
+		for (let flag of r.noflags) {
+			if (KinkyDungeonFlags.get(flag)) {
+				return false;
+			}
+		}
 	}
 	return true;
 }

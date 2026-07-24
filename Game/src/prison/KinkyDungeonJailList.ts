@@ -1,6 +1,8 @@
 "use strict";
 
 let KDBaseJailTickSub = 0.5;
+let KDNumberOfJailRandoms = 4;
+let KDJailRandomTimer = 1000;
 
 let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => number, trigger: (guard: any, xx: any, yy: any) => void}> = {
 	"spawnGuard": {
@@ -760,7 +762,6 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "LatexOTNGagHeavy", Level: 60},
 			{Name: "LatexCorset", Level: 65},
 			{Name: "LatexLegbinder", Level: 80},
-			{Name: "KiguMaskSmile", Level: 100, Condition: "NoKigu"},
 			{Name: "ExpCollar", Level: 120},
 			{Name: "LatexTransportJacket", Level: 120, Condition: "LessJackets", Priority: "MoreJackets"},
 		],
@@ -889,6 +890,9 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 		parole: true,
 		restraints: [
 			{Name: "TrapBoots", Level: -50},
+			{Name: "KiguMaskSmile", Level: 0, Conditions: ["NoKigu", "Kigu"], flags: ["Random1/4"]},
+			{Name: "KiguMask", Level: 0, Conditions: ["NoKigu", "Kigu"], flags: ["Random2/4"]},
+			{Name: "KiguMaskEmbarrassed", Level: 0, Conditions: ["NoKigu", "Kigu"], flags: ["Random3/4"]},
 		],
 	},
 	"mithrilRestraints": {
@@ -938,7 +942,6 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "DressCorset", Level: 60},
 			{Name: "DressMuzzle", Level: 60},
 			{Name: "MagicBelt", Level: 80, Condition: "ChastityBelt"},
-			{Name: "KiguMaskSmile", Level: 100, Condition: "NoKigu"},
 		],
 	},
 };
@@ -952,12 +955,32 @@ KDJailOutfits.angel = JSON.parse(JSON.stringify(KDJailOutfits.celestialRopes));
 KDJailOutfits.robot = JSON.parse(JSON.stringify(KDJailOutfits.dollsmith));
 KDJailOutfits.cyborg = JSON.parse(JSON.stringify(KDJailOutfits.dollsmith));
 
+
+function KDShouldUpdateJailFlags(player: entity): boolean {
+	return !KinkyDungeonFlags.get("JailRandom");
+}
+
+function KDRerollJailFlags(player: entity) {
+	for (let i = 2; i <= KDNumberOfJailRandoms; i++) {
+		let id = Math.ceil(KDRandom()* i) ;
+		for (let ii = 1; ii <= i; ii++) {
+			KinkyDungeonSetFlag("Random" + ii + '/' + i, ii == id ? -1 : 0);
+		}
+	}
+	KinkyDungeonSetFlag("JailRandom", 1000);
+}
+
 let KDJailConditions: Record<string, (r: KDJailRestraint) => boolean> = {
 	Mage: (_r) => {
 		return KinkyDungeonStatManaMax > 17;
 	},
 	Warrior: (_r) => {
 		return KinkyDungeonStatWillMax > 17;
+	},
+
+	
+	Kigu: (_r) => {
+		return KinkyDungeonFlags.get("displayCD") > 0;
 	},
 	Rogue: (_r) => {
 		return KinkyDungeonStatStaminaMax > 17;

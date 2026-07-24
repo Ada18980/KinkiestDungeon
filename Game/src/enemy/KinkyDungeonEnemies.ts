@@ -305,6 +305,9 @@ function KinkyDungeonUpdateFlags(delta: number) {
 			KDTickFlagsRestraint(inv.item, delta);
 		}
 	}
+	if (KDShouldUpdateJailFlags(KDPlayer())) {
+		KDRerollJailFlags(KDPlayer());
+	}
 }
 
 function KinkyDungeonGetPatrolPoint(index: number, radius: number, Tiles: string) {

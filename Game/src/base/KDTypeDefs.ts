@@ -3555,7 +3555,7 @@ interface KDAIData extends KDAITriggerData {
 	playEvent?: boolean,
 }
 
-interface KDJailRestraint {Name: string, Level: number, Variant?: string, Condition?: string, Priority?: string, Lock?: string};
+interface KDJailRestraint {Name: string, Level: number, Variant?: string, Condition?: string, Conditions?: string[], flags?: string[], noflags?: string[], Priority?: string, Lock?: string};
 
 type KDEventDataBoolean = KDEventTriggerDataPoint | KDAIData;
 

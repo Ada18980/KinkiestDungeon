@@ -269,7 +269,7 @@ AddModel({
 AddModel({
 	Name: "KittyEars",
 	Folder: "Ears",
-	TopLevel: false, Parent: "ElfEars",
+	TopLevel: false, Parent: "KittyEars",
 	Group: "Ears",
 	Protected: true,
 	Categories: ["Ears", "Kitty", "Face", "Cosplay"],
@@ -290,9 +290,42 @@ AddModel({
 });
 
 AddModel({
-	Name: "WolfEars",
+	Name: "Kitty_Ears",
 	Folder: "Ears",
 	TopLevel: false, Parent: "ElfEars",
+	Group: "Ears",
+	Protected: true,
+	Categories: ["Ears", "Kitty", "Face", "Cosplay"],
+	AddPose: ["AnimalEars", "Kitty", "Cosplay"],
+	RemovePoses: ["FullHood"],
+	Layers: ToLayerMap([
+		{ Name: "KittyR", Layer: "AnimalEars", Pri: 10,
+			Invariant: true,
+			InheritColor: "EarR",
+		},
+		{ Name: "KittyInnerR", Layer: "AnimalEars", Pri: 10.1,
+			Invariant: true,
+			TieToLayer: "KittyR",
+			NoOverride: true,
+			InheritColor: "InnerEarR",
+		},
+		{ Name: "KittyL", Layer: "AnimalEars", Pri: 10,
+			Invariant: true,
+			InheritColor: "EarL",
+		},
+		{ Name: "KittyInnerL", Layer: "AnimalEars", Pri: 10.1,
+			Invariant: true,
+			TieToLayer: "KittyL",
+			NoOverride: true,
+			InheritColor: "InnerEarL",
+		},
+	])
+});
+
+AddModel({
+	Name: "WolfEars",
+	Folder: "Ears",
+	TopLevel: false, Parent: "WolfEars",
 	Group: "Ears",
 	Protected: true,
 	Categories: ["Ears", "Wolf", "Face", "Cosplay"],
@@ -308,6 +341,40 @@ AddModel({
 			TieToLayer: "Wolf",
 			NoOverride: true,
 			InheritColor: "InnerEars",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "Wolf_Ears",
+	Folder: "Ears",
+	TopLevel: false, Parent: "ElfEars",
+	Group: "Ears",
+	Protected: true,
+	Categories: ["Ears", "Wolf", "Face", "Cosplay"],
+	AddPose: ["AnimalEars", "Wolf", "Cosplay"],
+	RemovePoses: ["FullHood"],
+	Layers: ToLayerMap([
+		{ Name: "WolfL", Layer: "AnimalEars", Pri: 10,
+			Invariant: true,
+			InheritColor: "EarR",
+		},
+		{ Name: "WolfInnerL", Layer: "AnimalEars", Pri: 10.1,
+			Invariant: true,
+			TieToLayer: "WolfL",
+			NoOverride: true,
+			InheritColor: "InnerEarL",
+		},
+		{ Name: "WolfR", Layer: "AnimalEars", Pri: 10,
+			Invariant: true,
+			InheritColor: "EarR",
+		},
+		{ Name: "WolfInnerR", Layer: "AnimalEars", Pri: 10.1,
+			Invariant: true,
+			TieToLayer: "WolfR",
+			NoOverride: true,
+			InheritColor: "InnerEarR",
 		},
 	])
 });
@@ -361,7 +428,7 @@ AddModel({
 AddModel({
 	Name: "FoxEars",
 	Folder: "Ears",
-	TopLevel: false, Parent: "ElfEars",
+	TopLevel: false, Parent: "FoxEars",
 	Protected: true,
 	Group: "Ears",
 	Categories: ["Ears", "Fox", "Face", "Cosplay"],
@@ -377,6 +444,40 @@ AddModel({
 			TieToLayer: "Fox",
 			NoOverride: true,
 			InheritColor: "InnerEars",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "Fox_Ears",
+	Folder: "Ears",
+	TopLevel: false, Parent: "ElfEars",
+	Protected: true,
+	Group: "Ears",
+	Categories: ["Ears", "Fox", "Face", "Cosplay"],
+	AddPose: ["AnimalEars", "Fox", "Cosplay"],
+	RemovePoses: ["FullHood"],
+	Layers: ToLayerMap([
+		{ Name: "FoxR", Layer: "AnimalEars", Pri: 10,
+			Invariant: true,
+			InheritColor: "EarR",
+		},
+		{ Name: "FoxInnerR", Layer: "AnimalEars", Pri: 10.1,
+			Invariant: true,
+			TieToLayer: "FoxR",
+			NoOverride: true,
+			InheritColor: "InnerEarR",
+		},
+		{ Name: "FoxL", Layer: "AnimalEars", Pri: 10,
+			Invariant: true,
+			InheritColor: "EarL",
+		},
+		{ Name: "FoxInner", Layer: "AnimalEars", Pri: 10.1,
+			Invariant: true,
+			TieToLayer: "FoxL",
+			NoOverride: true,
+			InheritColor: "InnerEarL",
 		},
 	])
 });

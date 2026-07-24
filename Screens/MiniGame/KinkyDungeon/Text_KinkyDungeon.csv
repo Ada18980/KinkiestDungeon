@@ -5099,13 +5099,17 @@ RestraintMaidMuzzle,Maid Security Gag
 RestraintMaidMuzzleDesc,"A muzzle with a long, mouth-filling plug that muffles speech completely."
 RestraintMaidMuzzleDesc2,"Reinforced and secured with a disc lock to ensure unruly maids don't skip their duty."
 
-RestraintKiguMask,Suspicious Mask
+RestraintKiguMask,Doll Mask (Excited)
 RestraintKiguMaskDesc2,"A well-fitted mask, covering your entire head neatly and locking in place."
 RestraintKiguMaskDesc,"It has eyeholes for you to somewhat see out of, but blocks access to the face."
 
-RestraintKiguMaskSmile,Happy Face
+RestraintKiguMaskSmile,Doll Mask (Smiling)
 RestraintKiguMaskSmileDesc2,"Just put on a happy face and enjoy it."
 RestraintKiguMaskSmileDesc,"It has eyeholes for you to somewhat see out of, but blocks access to the face."
+
+RestraintKiguMaskEmbarrassed,Doll Mask (Nervous)
+RestraintKiguMaskEmbarrassedDesc2,"Don't be shy~"
+RestraintKiguMaskEmbarrassedDesc,"It has eyeholes for you to somewhat see out of, but blocks access to the face."
 
 RestraintLeatherHood,Sensory Hood
 RestraintLeatherHoodDesc2,"A well-fitted hood that covers your head and muffles sounds."
@@ -14811,15 +14815,24 @@ l_Earrings_EarringsBack,EarringsBack
 m_BunnyEars,Latex Bunny Ears
 l_BunnyEars_Ears,Ears
 l_BunnyEars_InnerEars,EarsInner
-m_KittyEars,Catgirl Ears
-l_KittyEars_Ears,Kitty
-l_KittyEars_InnerEars,KittyInner
-m_WolfEars,WolfE ars
-l_WolfEars_Ears,Wolf
-l_WolfEars_InnerEars,WolfInner
-m_FoxEars,Fox Ears
-l_FoxEars_Ears,Fox
-l_FoxEars_InnerEars,FoxInner
+m_Kitty_Ears,Cat Ears
+l_Kitty_Ears_Ears,Kitty
+l_Kitty_Ears_InnerEars,KittyInner
+m_KittyEars,Catgirl Ears (Same Color)
+l_KittyEars_Ears,Ears
+l_KittyEars_InnerEars,Inner
+m_Wolf_Ears,Wolf Ears
+l_Wolf_Ears_Ears,Wolf
+l_Wolf_Ears_InnerEars,WolfInner
+m_WolfEars,Wolfgirl Ears (Same Color)
+l_WolfEars_Ears,Ears
+l_WolfEars_InnerEars,Inner
+m_Fox_Ears,Fox Ears
+l_Fox_Ears_Ears,Fox
+l_Fox_Ears_InnerEars,FoxInner
+m_FoxEars,Foxgirl Ears (Same Color)
+l_FoxEars_Ears,Ears
+l_FoxEars_InnerEars,Inner
 c_WolfTail,Tail
 c_FoxTail,Fox Tails
 c_KittyTail,Cat Tails
@@ -31928,6 +31941,7 @@ KDDialogue_StepAsideBrat,"You're in my way!"
 KDDialogue_StepAsideSub,"${PHonor}, you're blocking me..."
 KDDialogue_StepAsideDom,"Step aside~"
 KDDialogue_StepAsideRobot,"Path blocked by citizen."
+KDDialogue_StepAsideVoyeur,"Please step aside~"
 KDDialogue_StepAsideGagged,"*Bumps into you*"
 
 

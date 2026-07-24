@@ -465,7 +465,7 @@ KDPrisonTypes.DollShoppe = {
 
 				if (KDPrisonTick(player)) {
 
-					let uniformCheck = KDPrisonGetGroups(player, ["dressmaker"], "Purple", KDJAILPOWER);
+					let uniformCheck = KDPrisonGetGroups(player, ["dressmaker", "dressRestraints"], "Purple", KDJAILPOWER);
 					if ((uniformCheck.groupsToStrip.length > 0 && !KinkyDungeonFlags.get("failStrip")) || uniformCheck.itemsToApply.length > 0) {
 						return "Uniform";
 					}
@@ -548,7 +548,7 @@ KDPrisonTypes.DollShoppe = {
 					if (guard.IntentAction != action)
 						KDIntentEvents[action].trigger(guard, {});
 					else guard.playWithPlayer = Math.max(guard.playWithPlayer, 3);
-					let uniformCheck = KDPrisonGetGroups(player, ["dressmaker"], "Purple", KDJAILPOWER);
+					let uniformCheck = KDPrisonGetGroups(player, ["dressmaker", "dressRestraints"], "Purple", KDJAILPOWER);
 					if (uniformCheck.groupsToStrip.length > 0 && !KinkyDungeonFlags.get("failStrip")) {
 						// Create a queue
 						KDGoToSubState(player, "UniformApply");
@@ -642,14 +642,14 @@ KDPrisonTypes.DollShoppe = {
 				}
 
 				if (KDPrisonIsInFurniture(player)) {
-					let uniformCheck = KDPrisonGetGroups(player, ["dressmaker"], "Purple", KDJAILPOWER);
+					let uniformCheck = KDPrisonGetGroups(player, ["dressmaker", "dressRestraints"], "Purple", KDJAILPOWER);
 					if (uniformCheck.itemsToApply.length > 0) {
 						return KDGoToSubState(player, "Uniform");
 					}
 
 					// Stay in the current state, but increment the storage timer, return to jail state if too much
 					KinkyDungeonFlags.set("PrisonStorageTimer", (KinkyDungeonFlags.get("PrisonStorageTimer") || 0) + delta * 2);
-					if (KinkyDungeonFlags.get("PrisonStorageTimer") > 100 + KDRandom() * 200) {
+					if (KinkyDungeonFlags.get("PrisonStorageTimer") > 100 && (KDRandom() < 0.01 || KinkyDungeonFlags.get("PrisonStorageTimer") > 300)) {
 						// Return to jail for figuring out what to do
 						return KDSetPrisonState(player, "Jail");
 					}
@@ -733,6 +733,8 @@ KDPrisonTypes.DollShoppe = {
 				if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad)) {
 					KDSelectLabel(player, label);
 					KinkyDungeonSetFlag("displayCD", 900);
+					KDRerollJailFlags(player);
+					KinkyDungeonSetFlag("JailRandom", 900); // reroll the random masks
 					return KDGoToSubState(player, "DisplayTravel");
 				}
 
