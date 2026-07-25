@@ -10349,7 +10349,7 @@ RestraintName 上的诅咒解除了！
 - Reinforced and secured with a disc lock to ensure unruly maids don't skip their duty.
 用圆盘锁加固和固定，以确保不守规矩的女仆不会玩忽职守。
 
-- Suspicious Mask
+- Doll Mask (Excited)
 可疑的面具
 - A well-fitted mask, covering your entire head neatly and locking in place.
 一款严丝合缝的头壳，能完美包裹并牢牢锁住你的整个头部。
@@ -10357,11 +10357,15 @@ RestraintName 上的诅咒解除了！
 它留有眼孔供你勉强看清外界，但却完全阻隔了对脸部的触碰。
 # :: RestraintKiguMaskDesc
 # :: RestraintKiguMaskSmileDesc
+# :: RestraintKiguMaskEmbarrassedDesc
 
-- Happy Face
+- Doll Mask (Smiling)
 欢愉之面
 - Just put on a happy face and enjoy it.
 戴上这副笑脸，沉溺于这份快乐吧。
+
+# - Doll Mask (Nervous)
+# - Don't be shy~
 
 - Sensory Hood
 感官剥夺头套
@@ -11360,6 +11364,10 @@ RestraintName 上的诅咒解除了！
 # :: KinkyDungeonGroupItemEars
 # :: c_ElfEars
 # :: l_BunnyEars_Ears
+# :: l_KittyEars_Ears
+:: l_WolfEars_Ears
+狼耳
+# :: l_FoxEars_Ears
 # :: m_BunnyEars_l_Ears
 # :: m_KittyEars_l_Ears
 # :: m_WolfEars_l_Ears
@@ -29240,11 +29248,10 @@ Dask眼
 # :: l_BunnyEars_InnerEars
 # :: m_BunnyEars_l_EarsInner
 # :: m_MilitaryUniform_l_EarsInner
-- Catgirl Ears
-猫耳
+# - Cat Ears
 - Kitty
 猫咪
-# :: l_KittyEars_Ears
+# :: l_Kitty_Ears_Ears
 # :: l_KittyTail_Tail
 # :: l_Kitty2Tail_Tail1
 # :: m_KittyEars_l_Kitty
@@ -29253,14 +29260,21 @@ Dask眼
 # :: KDMinimapLabel_C_kitty
 - KittyInner
 猫(内侧)
-# :: l_KittyEars_InnerEars
+# :: l_Kitty_Ears_InnerEars
 # :: m_KittyEars_l_KittyInner
-- WolfE ars
-狼娘耳朵
+# - Catgirl Ears (Same Color)
+# - Inner
+# :: l_KittyEars_InnerEars
+:: l_WolfEars_InnerEars
+狼耳(内侧)
+# :: l_FoxEars_InnerEars
+:: m_SlayerCape_l_Inner
+内衬
+# :: m_MilitaryUniform_l_Inner
+# - Wolf Ears
 - Wolf
 狼
-:: l_WolfEars_Ears
-狼耳
+# :: l_Wolf_Ears_Ears
 :: l_WolfTail_Tail
 狼尾
 :: m_Wolf
@@ -29271,14 +29285,14 @@ Dask眼
 狼尾
 - WolfInner
 狼(内)
-:: l_WolfEars_InnerEars
-狼耳(内侧)
+# :: l_Wolf_Ears_InnerEars
 # :: m_WolfEars_l_WolfInner
+# - Wolfgirl Ears (Same Color)
 - Fox Ears
 狐耳
 - Fox
 狐
-# :: l_FoxEars_Ears
+# :: l_Fox_Ears_Ears
 # :: l_FoxTail_Tail
 # :: l_Fox2Tail_Tail1
 # :: m_FoxEars_l_Fox
@@ -29286,8 +29300,9 @@ Dask眼
 # :: m_Fox2Tail_l_Fox
 - FoxInner
 狐(内)
-# :: l_FoxEars_InnerEars
+# :: l_Fox_Ears_InnerEars
 # :: m_FoxEars_l_FoxInner
+# - Foxgirl Ears (Same Color)
 - Tail
 尾巴
 # :: c_WolfTail
@@ -42257,10 +42272,6 @@ Vents发型
 领结
 :: m_BindingDress_l_Tie
 蝴蝶结
-# - Inner
-:: m_SlayerCape_l_Inner
-内衬
-# :: m_MilitaryUniform_l_Inner
 # - LeftButton
 :: m_SlayerCape_l_LeftButton
 左肩纽扣
@@ -50577,6 +50588,7 @@ ${PHonor}，你挡住我了……
 请让开~
 - Path blocked by citizen.
 道路被市民阻挡。
+# - Please step aside~
 - *Bumps into you*
 *撞到你*
 
@@ -53710,10 +53722,10 @@ ${You}陷入沉默，无法轻易施展法术。
 老鼠偷走了你的物品并跑回了洞里。
 
 # - (The SPEAKER looks at you)|Well if it isn't another lovely doll~
-# - (The SPEAKER walks along from doll to doll, ${Etheir} eye${Es} hanging over you with a smug gaze)
-# - (The SPEAKER visits the doll shoppe, ${Etheir} eye${Es} lingering on you in their search for the perfect doll)
-# - (The SPEAKER stops near you, looking at you with deep interest and a blush on ${Etheir} face)
-# - (The SPEAKER glances at you, ${Etheir} head giving a little tilt as they flash a smile)|Why hello, doll.
+# - (The SPEAKER walks along from doll to doll,|${Etheir} eye${Es} hanging over you with a smug gaze)
+# - (The SPEAKER visits the doll shoppe, ${Etheir} eye${Es}|lingering on you in their search for the perfect doll)
+# - (The SPEAKER stops near you, looking at you|with deep interest and a blush on ${Etheir} face)
+# - (The SPEAKER glances at you,|${Etheir} head giving a little tilt as ${Ethey} flash${Ees} a smile)|Why hello, doll.
 # - (The SPEAKER stops and scans you)
 
 # - (Be cute and presentable)
