@@ -222,8 +222,13 @@ KDPrisonTypes.HighSec = {
 					}
 
 				}
+
 				KinkyDungeonHandleJailSpawns(delta, KDRandom() < 0.9);
 
+				if (KDGameData.PrisonerState == 'parole') 
+					return KDSetPrisonState(player, "Jail");
+
+			
 
 				let lostTrack = KDLostJailTrackCell(player);
 				if (lostTrack == "Unaware") {
@@ -530,6 +535,10 @@ KDPrisonTypes.HighSec = {
 			},
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
+
+				if (KDGameData.PrisonerState == 'parole') 
+					return KDPopSubstate(player)
+
 				KDPrisonCommonGuard(player, undefined, false);
 
 

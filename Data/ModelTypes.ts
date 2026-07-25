@@ -306,6 +306,7 @@ type LayerPropertiesType = {
 	EraseAmount?: number,
 	NoLoss?: string,
 	HideRestraintsTags?: string[],
+	UnderwearType?: string,
 }
 
 interface Namable {

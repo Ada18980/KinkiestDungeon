@@ -352,6 +352,29 @@ AddModel({
 });
 
 
+
+AddModel({
+	Name: "SpiritbondCollar",
+	Parent: "SteelCollar",
+	Folder: "Collars",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Spiritbond", Layer: "Collar", Pri: 60,
+			Invariant: true,
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "SpiritbondRunes", Layer: "Collar", Pri: 60.1,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "Spiritbond",
+			InheritColor: "Runes",
+		},
+	])
+});
+
+
 AddModel({
 	Name: "IronBelt",
 	Folder: "Cuffs",
@@ -372,6 +395,7 @@ AddModel({
 
 
 
+AddModel(GetModelFashionVersion("SpiritbondCollar", true));
 AddModel(GetModelFashionVersion("IronCollar", true));
 AddModel(GetModelFashionVersion("IronCollarClip", true));
 AddModel(GetModelFashionVersion("IronBelt", true));

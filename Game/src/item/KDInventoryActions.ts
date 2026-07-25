@@ -189,8 +189,8 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 	"Recolor": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[8]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[8];},
-		icon: (_player, _item) => {
-			return "InventoryAction/Recolor";
+		icon: (_player, item) => {
+			return item.forceFaction ? "InventoryAction/RecolorSet" : "InventoryAction/Recolor";
 		},
 		valid: (_player, _item) => {
 			return true;

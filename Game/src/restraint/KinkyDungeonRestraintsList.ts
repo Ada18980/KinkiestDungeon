@@ -2663,6 +2663,37 @@ const KinkyDungeonRestraints: restraint[] = [
 		minLevel: 0, allFloors: true, shrine: ["Legbinders", "Leather", "Rope"]},
 	//endregion
 
+	// region Spiritbond
+
+	{inventory: true, curse: "SpiritbondCollar", name: "SpiritbondCollar", 
+		Group: "ItemNeck",
+		alwaysRender: true,
+		alwaysAccessible: true,
+		accessible: true,
+		LinkAll: true,
+		noDupe: true,
+		magic: true,
+		power: 60, weight: 0, difficultyBonus: 2,
+		Model: "SpiritbondCollar",
+		sfxGroup: "Handcuffs",
+		struggleBreak: true,
+		special: true,
+		factionFilters: {
+			Runes: {color: "Highlight", override: true,},
+			Collar: {color: "LightNeutral", override: true,},
+		},
+		escapeChance: {"Struggle": -100, "Cut": -10, "Remove": -100},
+		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true,
+		shrine: ["Collars"],
+		unlimited: true,
+		spiritbond: true,
+		events: [{trigger: "onWear", type: "SpiritbondCollar"},
+			{trigger: "tick", type: "SpiritbondCollar"},
+			{trigger: "tickAfter", type: "SpiritbondCollar"},
+		],
+	},
+	// endregion
+
 	//region Fuuka's stuff
 	{inventory: true, curse: "GhostLock", name: "MikoCollar", Asset: "HighCollar", Color: ["White", "#AA2222"],Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],magic: true, power: 40, weight: 0, difficultyBonus: 10,
 		Model: "MikoCollar",
@@ -2857,6 +2888,8 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, name: "MithrilCollar", Asset: "ShinySteelCollar", Color: ['#C9B883', '#C9B883'], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9,
 		weight: -2,
 		Model: "ElfCollarRestraint",
+		
+		sfxGroup: "Handcuffs",
 		Filters: {
 			Collar: {"gamma":1,"saturation":0,"contrast":1,"brightness":1.5,"red":1,"green":1,"blue":1,"alpha":1},
 		},
@@ -6168,6 +6201,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		weight: -2, escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		maxwill: 0.25, enemyTags: {"obsidianRestraints":4, "obsidianCollar": 4, "obsidianNoCuffs": -1000, "obsidianLessCuffs": -3.9, "obsidianCuffs":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Collars", "Obsidian", "Elements", "HighCollars"],
 		Model: "SteelCollarRunes",
+		sfxGroup: "Handcuffs",
 		struggleBreak: true,
 		tightType: "Secure",
 		Filters: {
@@ -8062,6 +8096,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		unlimited: true, enemyTags: {"leashing":0.001, "maidCollar":-1, "dragonRestraints":-1, "mithrilRestraints": -1}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, maxLevel: 3, allFloors: true, shrine: ["Collars", "Will"]},
 	{inventory: true, name: "SteelCollar", accessible: true, Asset: "SlenderSteelCollar", Color: ["Default"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 3, weight: 0, escapeChance: {"Struggle": -0.5, "Cut": -0.4, "Remove": 0.5, "Pick": 0.05},
 		Model: "WolfCollarRestraint",
+		sfxGroup: "Handcuffs",
 		struggleBreak: true,
 		linkCategory: "BasicCollar", linkSize: 0.51,
 		tightType: "Secure",
@@ -8077,6 +8112,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		unlimited: true, enemyTags: {"leashing":0.001, "maidCollar":-1, "dragonRestraints":-1, "mithrilRestraints": -1, 'shopCollar': 10}, playerTags: {"ItemNeckFull":-2, "Unchained": -1, "Damsel": 1}, minLevel: 2, allFloors: true, shrine: ["Collars", "Elements"]},
 	{inventory: true, name: "MagicCollar", debris: "Belts", accessible: true, Asset: "LeatherCollar", Color: [KDBaseBlack, "#6E5B38"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 2, weight: 0, magic: true, escapeChance: {"Struggle": -0.5, "Cut": -0.1, "Remove": 0.25, "Pick": 0.05},
 		Model: "SteelCollarRunes",
+		sfxGroup: "Handcuffs",
 		struggleBreak: true,
 		tightType: "Secure",
 		linkCategory: "BasicCollar", linkSize: 0.51,
@@ -8111,6 +8147,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "QuakeCollar", accessible: true, Asset: "SlenderSteelCollar", Color: ["#6E5B38"],
 		Group: "ItemNeck", power: 55, weight: 0, escapeChance: {"Struggle": -10, "Cut": -10, "Remove": 0.5, "Pick": 0.1},
 		Model: "QuakeCollar",
+		sfxGroup: "Handcuffs",
 		struggleBreak: true,
 		curse: "MistressKey",
 		enchanted: true,
@@ -8129,6 +8166,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.5, "Pick": 0.15},
 		potionCollar: true, allowPotions: true,
 		Model: "MageCollar",
+		sfxGroup: "Handcuffs",
 		struggleBreak: true,
 		value: 500,
 		tightType: "Secure",
@@ -8335,6 +8373,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		special: true,
 		struggleBreak: true,
 		Model: "StardustCollar",
+		sfxGroup: "Handcuffs",
 		tightType: "Secure",
 		Filters: {
 			"Collar": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":0.3,"red":1.4,"green":1,"blue":3.95,"alpha":1},
@@ -8353,6 +8392,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		special: true,
 		struggleBreak: true,
 		Model: "StardustCollar",
+		sfxGroup: "Handcuffs",
 		tightType: "Secure",
 		Filters: {
 			"Collar": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1.0,"red":1.4,"green":1,"blue":1.9, "alpha":1},

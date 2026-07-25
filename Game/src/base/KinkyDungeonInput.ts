@@ -16,6 +16,29 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		return KinkyDungeonMove(data.dir, data.delta, data.AllowInteract,
 			 data.SuppressSprint, data.forceSprint) ? "move" : "nomove";
 	},
+	"setrestraintpalette": (data) => {
+		let currentItem = data.currentItem;
+		let player = data.player;
+		let palette = data.palette;
+		let item = KDFindRestraint(KDPlayer(), currentItem, data.filter);
+		if (item) {
+			
+			if (item.forceFaction == palette) {
+				delete currentItem.forceFaction;
+				delete item.forceFaction;
+			} else {
+				currentItem.forceFaction = palette;
+				currentItem.faction = palette;
+				item.forceFaction = palette;
+				item.faction = palette;
+			}
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer();
+			return "";
+		}
+		return "";
+	},
 	"movestairs": (data) => {
 		KDInteracting = false;
 		KinkyDungeonToggleAutoPass = data.AutoPass;

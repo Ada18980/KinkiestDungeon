@@ -65,7 +65,7 @@ let KDReturnButtonXX = 1450;
 
 let KDIntenseFilter = null;
 
-let KDButtonHovering = false;
+let KDButtonHovering = 0;
 
 let KDDistractionFlashTime = 700;
 let KDDistractionFlashStrengthTime = 200;
@@ -3929,7 +3929,7 @@ function DrawButtonVisTo (
 			LineWidth: 2,
 			zIndex: zIndex + 0.005,
 		});
-		KDButtonHovering = true;
+		KDButtonHovering = 2;
 	}
 
 	// Draw the text or image
@@ -5794,16 +5794,20 @@ function KDPointInModalArea(X: number, Y: number): boolean {
 
 function KDPointInPlayableArea(X: number, Y: number): boolean {
 	if (KDContextMenu && PointIn(X, Y, KDContextXX, KDContextYY, KDContextW, KDContextH)) return false;
+	if (KinkyDungeonDrawState == "Game" && KDGameData.CurrentDialog && PointIn(X, Y, 
+		PIXIWidth/2 - KDDialogueButtonWidth * 0.6, KDDialogueButtonY - 50, 
+		KDDialogueButtonWidth * 1.2, KDDialogueButtonSpacing * KDMaxDialogue + 50)) return false;
 	return PointIn(X, Y, canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)
-		&& !PointIn(X, Y, 0, 0, 500, 1000)
-		&& !PointIn(X, Y, 1940, 0, 70, 1000)
-		&& !PointIn(X, Y, 0, 920, 2000, 100)
-		&& !PointIn(X, Y, 1730, 255, 255, 150)
+		&& !PointIn(X, Y, 0, 0, 500, PIXIHeight)
+		&& !PointIn(X, Y, PIXIWidth-60, 0, 70, PIXIHeight)
+		&& !PointIn(X, Y, 0, 920, PIXIWidth, 100)
+		&& !PointIn(X, Y, PIXIWidth-270, 255, 255, 150)
 		&& (!KDModalArea || !PointIn(X, Y, KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height));
 }
 
 function KDMouseInPlayableArea(): boolean {
 	if (KDContextMenu && MouseIn(KDContextXX, KDContextYY, KDContextW, KDContextH)) return false;
+	
 	return KDPointInPlayableArea(MouseX, MouseY)
 		&& !KDButtonHovering;
 }

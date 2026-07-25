@@ -2523,7 +2523,8 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 					KDBaseBlack, undefined, undefined, {zIndex: zIndex,});
 				}
 
-				if (MouseIn(PartyX, PartyY, PartyDy, PartyDy)) {
+				if (MouseIn(PartyX, PartyY, PartyDy, PartyDy)
+					&& (!KDGameData.CurrentDialog || KDGetSpeaker()?.id != PM?.id)) {
 					tooltips.push((offset: number) => KDDrawEnemyTooltip(PM, offset, false));
 				}
 
@@ -3071,7 +3072,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 			KinkyDungeonSelectedBuff = b.id;
 			KinkyDungeonSelectedBuffEntity = KDPlayer();
 			
-			let t = TextGet("KinkyDungeonBuff" + (b.desc || b.id), KDGetGenericDialogueParams(KDPlayer(), null)) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration >= 1 && b.duration < 1000) ? ` (${b.duration})` : "");
+			let t = TextGet("KinkyDungeonBuff" + (b.desc || b.id)) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration >= 1 && b.duration < 1000) ? ` (${b.duration})` : "");
 			if (b.buffTextReplace) {
 				for (let replace of Object.entries(b.buffTextReplace)) {
 					t = t.replace(replace[0], (replace as [string , string])[1]);
@@ -3198,7 +3199,9 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 				zIndex: 159,
 				alpha: 0.5,
 			});
-			DrawTextFitKD(stat.text, side ? XX + 100 : minXX, side ? YY : tooltipY, 1000, stat.color,
+			
+			let params = KDGetGenericDialogueParams(KDPlayer(), null);
+			DrawTextFitKD(TextProvider.applyTemplate(stat.text, params), side ? XX + 100 : minXX, side ? YY : tooltipY, 1000, stat.color,
 				KDBaseBlack, 22, "left", 160, 1.0, 8);
 			tooltip = true;
 			if (stat.click) {

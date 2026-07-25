@@ -80,6 +80,26 @@ let KDCurses: Record<string, KDCursedDef> = {
 			return true;
 		},
 	},
+	
+	"SpiritbondCollar" : {
+		powerMult: 20,
+		lock: true,
+		level: 60,
+		weight: (_item) => {
+			return 1;
+		},
+		condition: (_item) => {
+			return KinkyDungeonItemCount("Ectoplasm") >= 25;
+		},
+		remove: (_item, _host, _specialMethod) => {
+		},
+		entityCanUnlock(entity, player, data) {
+			return false;
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+	},
 	"DollLock" : {
 		powerMult: 4,
 		lock: true,

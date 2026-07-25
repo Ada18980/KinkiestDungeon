@@ -1535,7 +1535,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		"density" : 9,
 		"crackchance" : 0.12,
 		"barchance" : 0.1,
-		"brightness" : 1,
+		"brightness" : 4,
 		"chestcount" : 7,
 		"chargerchance": 0.8,
 		"litchargerchance": 0.2,

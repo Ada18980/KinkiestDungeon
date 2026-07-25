@@ -533,6 +533,7 @@ interface KDRestraintPropsBase {
 	/** Can be linked by items with this shrine category */
 	LinkableBy?: string[],
 	DefaultLock?: string,
+	spiritbond?: boolean,
 	HideDefaultLock?: boolean,
 	Link?: string,
 	UnLink?: string,
@@ -2675,6 +2676,8 @@ interface KinkyDialogue {
 	tags?: string[];
 	singletag?: string[];
 	excludeTags?: string[];
+	/** Always shows an NPC as "the X" instead of their name */
+	alwaysEnemyTypeName?: boolean,
 	/** Shows the quick inventory */
 	inventory?: boolean;
 	/** Function to play when clicked. If not specified, nothing happens.  Bool is whether or not to abort current click*/
@@ -2864,6 +2867,16 @@ interface KDFilteredInventoryItem {
     previewcolor?: string;
     previewcolorbg?: string;
     key?: string;
+}
+
+type itemPreviewEntry = {
+	name:             string;
+	item:             item;
+	preview:          string;
+	preview2?:        string;
+	previewcolor?:    string;
+	previewcolorbg?:  string;
+	key?:             string;
 }
 
 interface KDInventoryActionDef {
@@ -3482,6 +3495,8 @@ interface KDAIData extends KDAITriggerData {
 
 	/** The enemy is ABLE to aggro the target, either due to aggression or dominant play */
 	canAggro?: boolean,
+	/** The enemy is ABLE to tease the target, either due to aggression or dominant play */
+	canTeaseAggro?: boolean,
 	/** The enemy actually aggros the target and will make attacks */
 	wantsToAttack?: boolean,
 	wantsToTease?: boolean,

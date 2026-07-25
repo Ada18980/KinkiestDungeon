@@ -1133,7 +1133,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						response: "Default", gag: true,
 						clickFunction: (gagged, player) => {
 							KinkyDungeonChangeRep("Ghost", 5, player);
-							return true;
+							return false;
 						},
 						options: {
 							"Next": {
@@ -1197,7 +1197,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						response: "Default",gag: true,
 						clickFunction: (gagged, player) => {
 							KinkyDungeonChangeRep("Ghost", 5, player);
-							return true;
+							return false;
 						},
 						options: {
 							"Next": {
@@ -1212,7 +1212,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							"No": {
 							clickFunction: (gagged, player) => {
 								KinkyDungeonChangeRep("Ghost", -5, player);
-								return true;
+								return false;
 							},
 								response: "Default",gag: true,
 								leadsToStage: "Caress_Caress2",
@@ -1220,7 +1220,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							"Yes": {
 							clickFunction: (gagged, player) => {
 								KinkyDungeonChangeRep("Ghost", 5, player);
-								return true;
+								return false;
 							},
 								response: "Default", gag: true,
 								leadsToStage: "Part2",
@@ -1246,7 +1246,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				response: "Default",
 				clickFunction: (gagged, player) => {
 					//KinkyDungeonChangeRep("Dominant", -5, player);
-					return true;
+					return false;
 				},
 				options: {
 					"No": {
@@ -1263,7 +1263,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				response: "Default", gag: true,
 				clickFunction: (gagged, player) => {
 					KinkyDungeonChangeRep("Ghost", 10, player);
-					return true;
+					return false;
 				},
 				options: {
 					"Next": {
@@ -1901,6 +1901,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				if (KDEnemyHasFlag(en, "failedBuyRequest")) {
 					KDGameData.CurrentDialogMsgValue.Impressed = -1;
 				}  
+				KDGetName(en.id);
 			}
 
 			return false;
@@ -1914,12 +1915,148 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			}
 		},
 		options: {
+			"BeBought": {
+				playertext: "Default",
+				prerequisiteFunction: (_gagged, _player) => {
+					return !!KDGameData.CurrentDialogMsgValue.Impressed;
+				},
+				greyoutFunction: (_gagged, _player) => {
+					return KDGameData.Party.length < KDGameData.MaxParty && KDGameData.CurrentDialogMsgValue.Impressed > 0 && !KinkyDungeonFlags.get("Spiritbound");
+				},
+				greyoutCustomTooltip(gagged, player) {
+					if (KDGameData.CurrentDialogMsgValue.Impressed < 0) {
+						return "KDCantBeBought_Dislike";
+					}
+					if (KinkyDungeonFlags.get("Spiritbound")) {
+						return "KDCantBeBought_Alreadybound";
+					}
+					return "KDCantBeBought_Party";
+				},
+				clickFunction: (_gagged, _player) => {
+					let en = KinkyDungeonFindID(KDGameData.CurrentDialogMsgValue.OriginalSpeaker);
+					let pp = KDGetPersonality(en);
+					if (!KDBuyerPersonalities_Comment.includes(pp)) pp = "";
+						KDGameData.CurrentDialogMsg = "DollShoppeVisitorBuyout" + pp;
+					KDCustomExp[en.id] = {"BlushPose":"BlushMedium","EyesPose":"EyesNeutral","Eyes2Pose":"Eyes2Neutral","MouthPose":"MouthSmile","FearPose":"NoFearPose","BrowsPose":"BrowsNeutral","Brows2Pose":"Brows2Neutral"};
+				
+					return false;
+				},
+				
+				options: {
+					"Leave": {
+						playertext: "Pause", 
+						prerequisiteFunction: (_gagged, _player) => {
+							let en = KinkyDungeonFindID(KDGameData.CurrentDialogMsgValue.OriginalSpeaker);
+							let pp = KDGetPersonality(en);
+							return !KDBuyerPersonalities.includes(pp);
+						},
+						leadsToStage: "",
+					},
+					"Continue": {
+						playertext: "Continue", response: "Default",
+						prerequisiteFunction: (_gagged, _player) => {
+							let en = KinkyDungeonFindID(KDGameData.CurrentDialogMsgValue.OriginalSpeaker);
+							let pp = KDGetPersonality(en);
+							return KDBuyerPersonalities.includes(pp);
+						},
+						clickFunction: (gagged, player) => {
+							
+							let point = KinkyDungeonGetNearbyPoint(KDPlayer().x, KDPlayer().y);
+							let npc = point ? DialogueBringNearbyEnemy(point.x, point.y, 25, false, (e) => {
+								return !KDHelpless(e) && !(KDGetLeashedToCount(e) > 0) && !KinkyDungeonIsDisabled(e)
+									&& e.Enemy?.name == "Dressmaker"
+							}, true) : DialogueGetEnemy("Dressmaker");
+							if (!npc) {
+								npc = DialogueCreateEnemy(point.x, point.y, "Dressmaker")
+							}
+							npc.aware = true;
+							KDGameData.CurrentDialogEntity = npc;
+							KDGameData.CurrentDialogMsgSpeaker = npc.Enemy.name;
+							KDGameData.CurrentDialogMsgID = npc.id;
+							KDCustomExp[npc.id] = {
+								"BlushPose":"BlushNone",
+								"EyesPose":"EyesSly",
+								"Eyes2Pose":"Eyes2Sly",
+								"MouthPose":"MouthSmile",
+								"FearPose":"NoFearPose",
+								"BrowsPose":"BrowsSly",
+								"Brows2Pose":"Brows2Sly"};
+
+							KDQuickGenNPC(npc, true);
+
+							return false;
+						},
+						alwaysEnemyTypeName: true,
+						options: {
+							"Continue": {
+								alwaysEnemyTypeName: true,
+								playertext: "Continue", response: "Default",
+								prerequisiteFunction: (_gagged, _player) => {
+									let en = KinkyDungeonFindID(KDGameData.CurrentDialogMsgValue.OriginalSpeaker);
+									let pp = KDGetPersonality(en);
+									return KDBuyerPersonalities.includes(pp);
+								},
+								clickFunction: (gagged, player) => {
+									
+									let en = KinkyDungeonFindID(KDGameData.CurrentDialogMsgValue.OriginalSpeaker);
+									KDGameData.CurrentDialogEntity = en;
+									KDGameData.CurrentDialogMsgSpeaker = en.Enemy?.name;
+									KDGameData.CurrentDialogMsgID = KDGameData.CurrentDialogMsgValue.OriginalSpeaker;
+									if (en) {
+										let added = KinkyDungeonAddRestraintIfWeaker("SpiritbondCollar",0, true, "",
+											true, false, undefined, undefined, true, undefined,
+											en, false, undefined, {npc: en.id}
+										);
+										if (added && KDAddToParty(en)) {
+											KDRemoveLeashRemovedRestraints(player);
+											KinkyDungeonSetFlag("Spiritbound", 2);
+											KDGameData.PrisonerState = 'parole';
+											KinkyDungeonSetFlag("noPlay", 12);
+											return false;
+										}
+									}
+
+									KDGameData.CurrentDialogMsg = "DollShoppeVisitorBuyout_ContinueFail";
+									KDGameData.CurrentDialogStage = "";
+									return true;
+								},
+								options: {
+									"Accept": {
+										playertext: "AcceptMistress", 
+										clickFunction: (gagged, player) => {
+											if (player.player) {
+												KDGameData.MistressID = KDGameData.CurrentDialogMsgValue.OriginalSpeaker;
+											}
+											KinkyDungeonChangeRep("Ghost", 25);
+											return false;
+										},
+										exitDialogue: true,
+									},
+									"Reject": {
+										playertext: "RejectMistress", 
+										clickFunction: (gagged, player) => {
+											KinkyDungeonChangeRep("Ghost", -20);
+											return false;
+										},
+										exitDialogue: true,
+									},
+									"Neutral": {
+										playertext: "NeutralMistress", 
+										exitDialogue: true,
+									},
+								},
+							},
+						},
+					},
+					
+				}
+			},
 			"BeCute": {
 				playertext: "Default",
 				clickFunction: (gagged, player) => {
 					KDDoDollShoppeVisitorImpress( KinkyDungeonFindID(KDGameData.CurrentDialogMsgValue.OriginalSpeaker), 
 					player, gagged, "BeCute", ["Cute", "Elegant"]);
-					return true;
+					return false;
 				},
 				options: {
 					"Back": {
@@ -1933,7 +2070,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (gagged, player) => {
 					KDDoDollShoppeVisitorImpress( KinkyDungeonFindID(KDGameData.CurrentDialogMsgValue.OriginalSpeaker), 
 					player, gagged, "BeStill", ["PillowPrincess", "Elegant"]);
-					return true;
+					return false;
 				},
 				options: {
 					"Back": {
@@ -1951,7 +2088,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						&& KinkyDungeonStatBlind > 0) {
 							KDGameData.CurrentDialogMsg = "DollShoppeVisitorBeBrat_SuccessDomBlind";
 						}
-					return true;
+					return false;
 				},
 				options: {
 					"Back": {
@@ -1965,7 +2102,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (gagged, player) => {
 					KDDoDollShoppeVisitorImpress( KinkyDungeonFindID(KDGameData.CurrentDialogMsgValue.OriginalSpeaker), 
 					player, gagged, "BeAngry", ["Rough"]);
-					return true;
+					return false;
 				},
 				options: {
 					"Back": {
@@ -6622,9 +6759,11 @@ function KDDoDollShoppeVisitorImpress(en: entity, player: entity, gagged: boolea
 			if (!KDBuyerPersonalities_Comment.includes(pp)) pp = "";
 			if (KDGameData.CurrentDialogMsgValue.Impressed < 0) {
 				KDGameData.CurrentDialogMsg = "DollShoppeVisitor" + dialogue + "_SuccessLate" + pp;
+				KDCustomExp[en.id] = {"BlushPose":"BlushMedium","EyesPose":"EyesSly","Eyes2Pose":"Eyes2Sly","MouthPose":"MouthSmile","FearPose":"NoFearPose","BrowsPose":"BrowsAnnoyed","Brows2Pose":"Brows2Annoyed"}
 			} else {
 				KDGameData.CurrentDialogMsg = "DollShoppeVisitor" + dialogue + "_Success" + pp;
 				KDGameData.CurrentDialogMsgValue.Impressed = 1;
+				KDCustomExp[en.id] = {"BlushPose":"BlushMedium","EyesPose":"EyesSurprised","Eyes2Pose":"Eyes2Surprised","MouthPose":"MouthSmile","FearPose":"NoFearPose","BrowsPose":"BrowsNeutral","Brows2Pose":"Brows2Neutral"};
 				KinkyDungeonSetEnemyFlag(en, "succeededBuyRequest", -1);
 			}
 			
@@ -6633,11 +6772,14 @@ function KDDoDollShoppeVisitorImpress(en: entity, player: entity, gagged: boolea
 			if (!KDBuyerPersonalities_Comment.includes(pp)) pp = "";
 			if (KDGameData.CurrentDialogMsgValue.Impressed > 0) {
 				KDGameData.CurrentDialogMsg = "DollShoppeVisitor" + dialogue + "_Fail" + pp;
+				KDCustomExp[en.id] = {"BlushPose":"BlushLow","EyesPose":"EyesNeutral","Eyes2Pose":"Eyes2Neutral","MouthPose":"MouthEmbarrassed","FearPose":"NoFearPose","BrowsPose":"BrowsAnnoyed","Brows2Pose":"Brows2Annoyed"}
 			} else if (KDGameData.CurrentDialogMsgValue.Impressed < 0) {
 				KDGameData.CurrentDialogMsg = "DollShoppeVisitor" + dialogue + "_FailLate" + pp;
+				KDCustomExp[en.id] = {"BlushPose":"","EyesPose":"EyesAngry","Eyes2Pose":"Eyes2Angry","MouthPose":"MouthSmile","FearPose":"NoFearPose","BrowsPose":"BrowsAnnoyed","Brows2Pose":"Brows2Annoyed"}
 			} else {
 				KDGameData.CurrentDialogMsg = "DollShoppeVisitor" + dialogue + "_Fail" + pp;
 				KDGameData.CurrentDialogMsgValue.Impressed = -1;
+				KDCustomExp[en.id] = {"BlushPose":"","EyesPose":"EyesDazed","Eyes2Pose":"Eyes2Dazed","MouthPose":"MouthFrown","FearPose":"NoFearPose","BrowsPose":"BrowsAnnoyed","Brows2Pose":"Brows2Annoyed"}
 				KinkyDungeonSetEnemyFlag(en, "failedBuyRequest", -1);
 			}
 		}

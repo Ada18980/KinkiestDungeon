@@ -10,6 +10,11 @@ let KDBuyPrisonerThreshold = 25;
  * Milliseconds during which clicks are ignored to avoid inadverdent clicking
  */
 let KDDialogueDelay = 400;
+let KDDialogueButtonWidth = 600;
+let KDDialogueButtonHeight = 50;
+let KDDialogueButtonX = 700;
+let KDDialogueButtonY = 450;
+let KDDialogueButtonSpacing = 60;
 
 
 /**
@@ -133,9 +138,16 @@ function KDDrawDialogue(delta: number): void {
 					}
 				}
 				/*  Try to eliminate any redundant "the".  */
-				const npc_name = TextGet ("Name" + KDGameData.CurrentDialogMsgSpeaker);
+				let npc_name = TextGet ("Name" + KDGameData.CurrentDialogMsgSpeaker);
+				let isnamed = false;
+				if (!dialogue.alwaysEnemyTypeName && ((KDIsNPCPersistent(KDGameData.CurrentDialogMsgID)
+					&& KDGetPersistentNPC(KDGameData.CurrentDialogMsgID)?.Name)
+					|| KDGameData.CurrentDialogEntity?.CustomName)) {
+						npc_name = KDGetName(KDGameData.CurrentDialogMsgID);
+						isnamed = true;
+					}
 				const re_the_npc = /^[Tt]he\s+/;	// Anchored to beginning of string.
-				if (re_the_npc.test (npc_name)) {
+				if (isnamed || re_the_npc.test (npc_name)) {
 					/*
 					 * NPC name starts with "The ".  Chop out redundant "A " or "The "
 					 * from dialog, if present.
@@ -183,7 +195,7 @@ function KDDrawDialogue(delta: number): void {
 											enemy: KDGetSpeaker()?.id});
 								}
 								return true;
-							}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50,
+							}, KinkyDungeonDialogueTimer < CommonTime(), KDDialogueButtonX, KDDialogueButtonY + II * KDDialogueButtonSpacing, KDDialogueButtonWidth, KDDialogueButtonHeight,
 							(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(
 								entries[i][1].greyoutCustomTooltip
 								? entries[i][1].greyoutCustomTooltip(gagged, KDPlayer())
@@ -193,9 +205,10 @@ function KDDrawDialogue(delta: number): void {
 							KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined,
 							undefined, !!entries[i][1].image, {
 								zIndex: 122,
-								scaleImage: entries[i][1].image ? true : undefined
+								scaleImage: entries[i][1].image ? true : undefined,
+								alpha: 0.8
 							});
-							if (MouseIn(700, 450 + II * 60, 600, 50)) KDDialogueData.CurrentDialogueIndex = II;
+							if (MouseIn(700, 450 + II * 60, KDDialogueButtonWidth, KDDialogueButtonHeight)) KDDialogueData.CurrentDialogueIndex = II;
 						}
 
 						II += 1;
@@ -460,7 +473,7 @@ function KDDoDialogue(data: any) {
 		KDGameData.CurrentDialogMsgID = data.enemy;
 		if (KDGameData.CurrentDialogEntity?.id != KDGameData.CurrentDialogMsgID)
 			KDGameData.CurrentDialogEntity = null;
-		//KDGameData.CurrentDialogEntity = KDGetGlobalEntity(data.enemy);
+		KDGameData.CurrentDialogEntity = KDGetGlobalEntity(data.enemy);
 	} else {
 		KDGameData.CurrentDialogMsgID = 0;
 		KDGameData.CurrentDialogEntity = null;
@@ -1565,6 +1578,10 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			}
 			return false;
 		},
+		greyoutFunction: (g, player) => {
+			return KDCanRemovePartyMember(player, KDGameData.CurrentDialogMsgID);
+		},
+		greyoutTooltip: "KDGenericCantRemoveParty",
 		leadsToStage: "", dontTouchText: true,
 	};
 	KDAllyDialog[name] = {name: name, tags: requireTags, singletag: requireSingleTag, excludeTags: excludeTags, weight: weight};
@@ -2664,12 +2681,13 @@ clickFunction: (_gagged, _player) => {
  * @param radius
  * @param [unaware]
  */
-function DialogueBringNearbyEnemy(x: number, y: number, radius: number, unaware?: boolean): entity {
+function DialogueBringNearbyEnemy(x: number, y: number, radius: number, unaware?: boolean, criteria?: (enemy) => boolean, noDefaultCriteria?: boolean): entity {
 	let nearby = KDNearbyEnemies(x, y, radius);
 	for (let e of nearby) {
-		if (!KDHelpless(e)
-			//&& KDistChebyshev(x - e.x, y - e.y) <= radius
-			&& KinkyDungeonAggressive(e)
+		if ((!criteria || criteria(e))
+			&& (noDefaultCriteria || (
+				!KDHelpless(e)
+				&& KinkyDungeonAggressive(e)))
 			&& !KDIsImmobile(e) && !e.Enemy.tags.temporary
 			&& (!KDAIType[KDGetAI(e)]?.ambush || e.ambushtrigger)
 			&& (!unaware || !e.aware)) {
@@ -3167,55 +3185,26 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 		PSub: KDGetSubTitle(player),
 		PDim: KDGetDiminutive(player),
 		PGen: KDGetHonorificGeneric(player),
-
-		EHonorinti: KDGetHonorificIntimate(enemy),
-		EHonor: KDGetHonorific(enemy),
-		ESub: KDGetSubTitle(enemy),
-		EDim: KDGetDiminutive(enemy),
-		EGen: KDGetHonorificGeneric(enemy),
-
-		
 		Phonorinti: KDGetHonorificIntimate(player, true),
 		Phonor: KDGetHonorific(player, true),
 		Psub: KDGetSubTitle(player, true),
 		Pdim: KDGetDiminutive(player, true),
-
-		Ehonorinti: KDGetHonorificIntimate(enemy, true),
-		Ehonor: KDGetHonorific(enemy, true),
-		Esub: KDGetSubTitle(enemy, true),
-		Edim: KDGetDiminutive(enemy, true),
-
-
 		PTheir: KDGetPronounTheir(player),
 		PThem: KDGetPronounThem(player),
 		PThey: KDGetPronounThey(player),
-		ETheir: KDGetPronounTheir(enemy),
-		EThem: KDGetPronounThem(enemy),
-		EThey: KDGetPronounThey(enemy),
 		PTheyre: KDGetPronounTheyre(player),
 		PTheyve: KDGetPronounTheyve(player),
-		ETheyre: KDGetPronounTheyre(enemy),
-		ETheyve: KDGetPronounTheyve(enemy),
-		
 		Ptheir: KDGetPronountheir(player),
 		Pthem: KDGetPronounthem(player),
 		Pthey: KDGetPronounthey(player),
-		Etheir: KDGetPronountheir(enemy),
-		Ethem: KDGetPronounthem(enemy),
-		Ethey: KDGetPronounthey(enemy),
 		Ptheyre: KDGetPronountheyre(player),
 		Ptheyve: KDGetPronountheyve(player),
-		Etheyre: KDGetPronountheyre(enemy),
-		Etheyve: KDGetPronountheyve(enemy),
-
-		Es: KDGetTheyThem_s(enemy),
-		Ps: KDGetTheyThem_s(player),
-		Ees: KDGetTheyThem_es(enemy),
-		Pes: KDGetTheyThem_es(player),
-		Ehas: KDGetTheyThem_has(enemy),
-		Phas: KDGetTheyThem_has(player),
-		Eis: KDGetTheyThem_is(enemy),
 		Pis: KDGetTheyThem_is(player),
+		Phas: KDGetTheyThem_has(player),
+		Pes: KDGetTheyThem_es(player),
+		Ps: KDGetTheyThem_s(player),
+
+		
 		
 		Yis: KDGetTheyThem_is(player, player == KDPlayer() ? "You" : undefined),
 		Yhas: KDGetTheyThem_has(player, player == KDPlayer() ? "You" : undefined),
@@ -3223,7 +3212,66 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 		Yes: KDGetTheyThem_es(player, player == KDPlayer() ? "You" : undefined),
 	};
 
+	let enemystuff = enemy ? {
+		EHonorinti: KDGetHonorificIntimate(enemy),
+		EHonor: (KDGameData.MistressID == enemy?.id) ? KDGetHonorificIntimate(enemy) : KDGetHonorific(enemy),
+		EHonorconditional: KDIsSubbier(player, enemy)
+			? ((KDGameData.MistressID == enemy?.id) ? KDGetHonorificIntimate(enemy) : KDGetHonorific(enemy))
+			: "",
+		ESub: KDGetSubTitle(enemy),
+		EDim: KDGetDiminutive(enemy),
+		EGen: KDGetHonorificGeneric(enemy),
+		Ehonorinti: KDGetHonorificIntimate(enemy, true),
+		Ehonor: KDGetHonorific(enemy, true),
+		Esub: KDGetSubTitle(enemy, true),
+		Edim: KDGetDiminutive(enemy, true),
+		ETheir: KDGetPronounTheir(enemy),
+		EThem: KDGetPronounThem(enemy),
+		EThey: KDGetPronounThey(enemy),
+		ETheyre: KDGetPronounTheyre(enemy),
+		ETheyve: KDGetPronounTheyve(enemy),
+		Etheir: KDGetPronountheir(enemy),
+		Ethem: KDGetPronounthem(enemy),
+		Ethey: KDGetPronounthey(enemy),
+		Etheyre: KDGetPronountheyre(enemy),
+		Etheyve: KDGetPronountheyve(enemy),
+		Es: KDGetTheyThem_s(enemy),
+		Ees: KDGetTheyThem_es(enemy),
+		Ehas: KDGetTheyThem_has(enemy),
+		Eis: KDGetTheyThem_is(enemy),
+	} : null;
+	if (enemystuff) 
+		Object.assign(params, enemystuff);
+
 	if (extraparams)
 		Object.assign(params, extraparams);
 	return params;
+}
+
+function KDCanRemovePartyMember(player: entity, id: number) {
+	let data = {
+		player: player,
+		id: id,
+		allowed: true,
+		reason: "",
+	}
+
+	KinkyDungeonSendEvent("canKickParty", data);
+	if (data.allowed) {
+		if (KinkyDungeonFlags.get("Spiritbound") && id && id == KDGetSpiritBondID_General(player)) {
+			data.allowed = false;
+			data.reason = "Spiritbond";
+		}
+	}
+
+	return data.allowed;
+
+}
+
+/** Is the player subbier */
+function KDIsSubbier(player: entity, enemy: entity) {
+	if (!enemy || KinkyDungeonGoddessRep.Ghost < -25 || KDCanDom(enemy)) {
+		return false;
+	}
+	return KinkyDungeonGoddessRep.Ghost > -25 && !KDCanDom(enemy, false, -0.3); // If player cant dominate them with that bonus, then...
 }

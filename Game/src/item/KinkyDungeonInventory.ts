@@ -826,15 +826,6 @@ function KinkyDungeonAllWeapon(): item[] {
 }
 return null;*/
 
-type itemPreviewEntry = {
-	name:             string;
-	item:             item;
-	preview:          string;
-	preview2?:        string;
-	previewcolor?:    string;
-	previewcolorbg?:  string;
-	key?:             string;
-}
 
 /**
  * @param item
@@ -3569,6 +3560,7 @@ function KDGetInventoryVariant(variant: KDRestraintVariant, prefix: string = "",
 	let q = quantity;
 	return {faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,};
 }
+
 /**
  * Adds an inventory variant to the player's inventory
  * @param variant
@@ -3625,6 +3617,71 @@ function KDEquipInventoryVariant (
 	if (variant.events)
 		events = [...variant.events];
 	return KinkyDungeonAddRestraintIfWeaker(origRestraint,
+		Tightness, Bypass, Lock, Keep, Trapped,
+		events, faction, Deep, curse,
+		securityEnemy, useAugmentedPower, newname,
+		data, undefined, undefined,
+		powerBonus, NoActionPrune
+	);
+}
+
+
+/**
+ * Adds an inventory variant to the player's inventory
+ * @param variant
+ * @param [prefix]
+ * @param [Tightness]
+ * @param [Bypass]
+ * @param [Lock]
+ * @param [Keep]
+ * @param [Trapped]
+ * @param [faction]
+ * @param [Deep] - whether or not it can go deeply in the stack
+ * @param [curse] - Curse to apply
+ * @param [securityEnemy] - Bypass is treated separately for these groups
+ * @param [useAugmentedPower] - Augment power to keep consistency
+ * @param [inventoryAs] - inventoryAs for the item
+ * @param [ID]
+ * @param [suffix]
+ * @param [powerBonus]
+ */
+function KDEquipRestraintVariant (
+	variant:             KDRestraintVariant,
+	prefix:              string = "",
+	Tightness?:          number,
+	Bypass?:             boolean,
+	Lock?:               string,
+	Keep?:               boolean,
+	Trapped?:            boolean,
+	faction?:            string,
+	Deep?:               boolean,
+	curse?:              string,
+	securityEnemy?:      entity,
+	useAugmentedPower?:  boolean,
+	_inventoryAs?:       string,
+	ID:                  string = "",
+	suffix:              string = "",
+	powerBonus:          number = 0,
+	NoActionPrune:		 boolean = false,
+	data?: any,
+): item
+{
+	KDUpdateItemEventCache = true;
+	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
+	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
+	let newname = prefix + variant.template + (ID || (KinkyDungeonGetItemID() + "")) + (curse ? curse : "");
+	if (prefix) variant.prefix = prefix;
+	if (suffix) variant.suffix = suffix;
+	if (curse) {
+		variant = JSON.parse(JSON.stringify(variant));
+		variant.curse = curse;
+	}
+	if (powerBonus) variant.power = powerBonus;
+	if (!KinkyDungeonRestraintVariants[newname])
+		KinkyDungeonRestraintVariants[newname] = variant;
+	if (variant.events)
+		events = [...variant.events];
+	return KDAddRestraintItem(origRestraint,
 		Tightness, Bypass, Lock, Keep, Trapped,
 		events, faction, Deep, curse,
 		securityEnemy, useAugmentedPower, newname,

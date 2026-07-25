@@ -72,6 +72,7 @@
         "Game/src/map/KinkyDungeonEscapeList.ts",
         "Game/src/item/KDCurse.ts",
         "Game/src/restraint/KinkyDungeonRestraints.ts",
+        "Game/src/restraint/KDSpiritbond.ts",
         "Game/src/restraint/special/Masterwork.ts",
         "Game/src/restraint/special/LatexKitty.ts",
         "Game/src/restraint/KDTethers.ts",

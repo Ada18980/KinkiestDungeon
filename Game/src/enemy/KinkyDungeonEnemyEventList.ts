@@ -864,6 +864,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 	"TempLeash": {
 		aggressive: false,
 		nonaggressive: true,
+		noplay: true,
 		//play: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, aiData, _allied, _hostile, _aggressive) => {
@@ -906,13 +907,15 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			KinkyDungeonSendDialogue(enemy,
 				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime",
 									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
-				KDGetColor(enemy), 14, 10);
+				KDGetColor(enemy), 20, 10);
 			KDAddThought(enemy.id, "Play", 7, enemy.playWithPlayer);
 
 		},
 		maintain: (enemy, _delta, aiData) => {
-			if (!KDHostile(enemy))
+			if (!KDHostile(enemy)) {
 				KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 12);
+				KinkyDungeonSetEnemyFlag(enemy, "notouchie", 2);
+			}
 
 			if (!KinkyDungeonFlags.has("TempLeash")
 				|| !(KinkyDungeonPlayerTags.get("Collars")
@@ -981,7 +984,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 							KinkyDungeonSendDialogue(enemy,
 								TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Leashed",
 									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
-								KDGetColor(enemy), 5, 10);
+								KDGetColor(enemy), 10, 10);
 
 							KDAddThought(enemy.id, "Happy", 6, enemy.playWithPlayer);
 						}
@@ -989,6 +992,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 						// We will wander more than usual
 						KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 						KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+
+						if (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) < 1.5)
+							KinkyDungeonSetEnemyFlag(enemy, "tryNotToSwap", 6);
 						if (enemy.idle || (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) < 4)) {
 							KDResetGuardSpawnTimer();
 							let player = KDPlayer();
@@ -1773,7 +1779,7 @@ function KDApplyFurnitureRestraint(x: number, y: number, player: entity) {
 function KDIsInNonLeashableFurniture(player: entity) {
 	if (!player?.player) return KDIsImprisoned(player);
 	else if (player) {
-		return KDIsImprisoned(player) && !KDDynamicLinkList(KinkyDungeonGetRestraintItem("ItemDevices")).every((item) => {
+		return KDIsImprisoned(player) && !KDDynamicLinkList(KinkyDungeonGetRestraintItem("ItemDevices"), true).every((item) => {
 			return KDRestraint(item)?.removeOnLeash
 		});
 	}

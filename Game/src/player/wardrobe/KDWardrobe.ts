@@ -2994,6 +2994,7 @@ function KDGetLayerPropFields(): Record<keyof LayerPropertiesType, string> {
 		EraseAmount: "1",
 		NoLoss: "0",
 		HideRestraintsTags: ",",
+		UnderwearType: "0",
 	};
 }
 

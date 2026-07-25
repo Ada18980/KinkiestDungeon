@@ -782,7 +782,18 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (item == data.item) {
 				// Ne
 			}
-		}
+		},
+		"SpiritbondCollar": (_e, item, data) => {
+			if (item == data.item) {
+				let player = KDPlayer();
+				let en = KDGetSpiritBondEntity(KDPlayer(), item);
+				if (en) {
+
+				} else {
+
+				}
+			}
+		},
 	},
 	"afterDress": {
 		"PrisonerJacket": (_e, item, _data) => {
@@ -1218,6 +1229,21 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		}
 	},
 	"tick": {
+		
+		"SpiritbondCollar": (_e, item, data) => {
+			let player = KDPlayer();
+			let id = KDGetSpiritBondID(KDPlayer(), item);
+			if (KDGetPersistentNPC(id)) {
+				KinkyDungeonSetFlag("Spiritbound", 2);
+			} else {
+				KinkyDungeonRemoveRestraintSpecific(item, false, undefined,
+					true, undefined, undefined, undefined,
+					true
+				);
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Fwoosh.ogg", undefined, _e.vol);
+				KinkyDungeonSendTextMessage(10, TextGet("KDSpiritbondEnd"), KDBaseCursedRed)
+			}
+		},
 		/** for stuff like binding dress, doll stand, etc that get equipped */
 		"DollHypno_Passive": (e, item, data) => {
 			if (data?.delta > 0) {
@@ -11205,7 +11231,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 				if (!e.chance || KDRandom() < e.chance) {
 					if (!KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
 						// Apply eager buff to make the shopkeeper fast
-						KinkyDungeonApplyBuffToEntity(enemy, KDEager);
+						KinkyDungeonApplyBuffToEntity(enemy, KDSpeedy);
 						// Go to leash the player
 						enemy.gx = KinkyDungeonPlayerEntity.x;
 						enemy.gy = KinkyDungeonPlayerEntity.y;

@@ -4136,6 +4136,11 @@ RestraintBasicLeash,Leash
 RestraintBasicLeashDesc,"A leash made from a strong material."
 RestraintBasicLeashDesc2,"Functions as a handle for moving unruly prisoners."
 
+RestraintSpiritbondCollar,Spiritbound Collar
+RestraintSpiritbondCollarDesc,"A collar carved with glyphs that describe a spiritual connection. While you wear it, the collar will drain your willpower, mana, and stamina to empower your spiritbond."
+RestraintSpiritbondCollarDesc2,"It's sealed magically around your neck, and binds you to your spiritbond. The only way to remove it is to take the key from them."
+KDSpiritbondEnd,"The spiritbond collar falls from your neck."
+
 RestraintPrisonVibe,Prisoner Plug
 RestraintPrisonVibeDesc,"A teaser to keep you occupied."
 RestraintPrisonVibeDesc2,"Buzzes on spellcast, and periodically as well."
@@ -7944,6 +7949,11 @@ KinkyDungeonCurseUnlockWill,"Feeling determined, you override the seal and relea
 KinkyDungeonCurseInfoGhostLock,"The lock is protected by a revenant seal. You'll need 25 ectoplasm to disenchant it."
 KinkyDungeonCurseStruggleGhostLock,"Your fingers pass right through the collar. Pity your neck doesn't pass through it."
 KinkyDungeonCurseUnlockGhostLock,"You channel ghastly energy into the lock and break the seal!!!"
+
+
+KinkyDungeonCurseInfoSpiritbondCollar,"The collar marks you as spiritbound. You cannot remove it yourself."
+KinkyDungeonCurseStruggleSpiritbondCollar,"The collar is sealed around your neck. The runes flash a sinister light as you struggle"
+KinkyDungeonCurseUnlockSpiritbondCollar,"You bring the collar close to the jeweled key and will it to release."
 
 KinkyDungeonCurseInfoDollLock,"It would take many lifetimes to crack the code. You'll have to find another way to break the program..."
 KinkyDungeonCurseStruggleDollLock,"You tug against the straps to no avail."
@@ -12391,7 +12401,7 @@ rOfferChastityYes,"(The SPEAKER grins)|Wonderful! You see, I've just recently ac
 rOfferChastityYes_Yes,"(The SPEAKER blushes as ${Ethey} lock${Es} the belt around your waist)|I'm enjoying this more than I thought I would~"
 rOfferChastityYes_No,"(The SPEAKER smiles)|Enjoy your freedom while it lasts~"
 rOfferChastityNo,"(The SPEAKER shrugs)|That's okay, just thought I'd ask."
-rOfferChastityForce,"(The SPEAKER rubs the smooth metal seductively)|Are you sure?|Adventurers need to take care of themselves.|You don't want to lose control of yourself and run into some curse,|do you?"
+rOfferChastityForce,"(The SPEAKER rubs the smooth metal seductively)|Are you sure?|Adventurers need to take care of themselves.|You don't want to lose control of yourself and|run into some curse... or do you?"
 rOfferChastityForceYes,"(The SPEAKER gives an evil smile)|What if I wasn't asking?"
 rOfferChastityForce_No,"(The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~"
 rOfferChastityForce_Yes,"(The SPEAKER blushes as ${Ethey} lock${Es} the RESTRAINT onto you)|There we go~"
@@ -13413,24 +13423,24 @@ rGenericAllyFlirt_LeashWalkSub,"(The SPEAKER blushes)|Sure! I'll make sure you d
 rGenericAllyFlirt_LeashWalkBrat,"(The SPEAKER giggles)|Time for walkies!"
 rGenericAllyFlirt_LeashWalkRobot,"(The SPEAKER calculates)|Routing coordinates..."
 
-dGenericAllyHelpMe,"(Ask her for help)"
-dGenericAllyHelpMe_Confirm,"(Ask her for help)"
+dGenericAllyHelpMe,"(Ask ${Ethem} for help)"
+dGenericAllyHelpMe_Confirm,"(Ask ${Ethem} for help)"
 dGenericAllyHelpMe_Leave,"(Never mind...)"
-rGenericAllyHelpMe,"(Are you sure? She might see you as being submissive)"
+rGenericAllyHelpMe,"(Are you sure? ${EThey} might see you as being submissive)"
 rGenericAllyHelpMe_Fail,"(The SPEAKER prefers you the way you are)"
 rGenericAllyHelpMe_Confirm,"(The SPEAKER will help you out of your restraints)"
 rGenericAllyHelpMe_Leave,"(You decide to deal with your problems yourself.)"
-dGenericAllyHelpMeCommandWord,"(Plead with her to unlock you with a Command Word)"
+dGenericAllyHelpMeCommandWord,"(Plead with ${Ethem} to unlock you with a Command Word)"
 dGenericAllyHelpMeCommandWord_Confirm,"(Yes!)"
 dGenericAllyHelpMeCommandWord_Leave,"(Never mind...)"
-rGenericAllyHelpMeCommandWord,"(Are you sure? She might see you as being submissive)"
-rGenericAllyHelpMeCommandWord_Fail,"(The SPEAKER would rather 'conserve her mana')"
+rGenericAllyHelpMeCommandWord,"(Are you sure? ${EThey} might see you as being submissive)"
+rGenericAllyHelpMeCommandWord_Fail,"(The SPEAKER would rather 'conserve ${Ethem} mana')"
 rGenericAllyHelpMeCommandWord_Confirm,"(The SPEAKER utters a command word on you)"
 rGenericAllyHelpMeCommandWord_Leave,"(Your magical locks continue to restrain you.)"
-dGenericAllyHelpMeKey,"(Plead with her to unlock your restraints)"
+dGenericAllyHelpMeKey,"(Plead with ${Ethem} to unlock your restraints)"
 dGenericAllyHelpMeKey_Confirm,"(Yes!)"
 dGenericAllyHelpMeKey_Leave,"(Never mind...)"
-rGenericAllyHelpMeKey,"(Are you sure? She might see you as being submissive)"
+rGenericAllyHelpMeKey,"(Are you sure? ${EThey} might see you as being submissive)"
 rGenericAllyHelpMeKey_Fail,"(The SPEAKER would rather not give up a magic key)"
 rGenericAllyHelpMeKey_NoKey,"(The SPEAKER doesn't have any keys)"
 rGenericAllyHelpMeKey_Confirm,"(The SPEAKER giggles and gives you a key)"
@@ -13440,25 +13450,27 @@ rGenericAllyDontHelpMe,"(Confirm? You will have to ask again to get help.)"
 dGenericAllyDontHelpMe_Confirm,"(Stop receiving help)"
 dGenericAllyDontHelpMe_Leave,"(Never mind...)"
 rGenericAllyDontHelpMe_Confirm,"(The SPEAKER will no longer help you.)"
-rGenericAllyDontHelpMe_Leave,"(You sigh as you realize you really need her help.)"
-dGenericAllyRemoveParty,"(Kick her out of your party)"
-rGenericAllyRemoveParty,"(Confirm? She will stop following you)"
+rGenericAllyDontHelpMe_Leave,"(You sigh as you realize you really need ${Etheir} help.)"
+dGenericAllyRemoveParty,"(Kick ${Ethem} out of your party)"
+rGenericAllyRemoveParty,"(Confirm? ${EThey} will stop following you)"
 dGenericAllyRemoveParty_Confirm,"(Remove from party)"
 dGenericAllyRemoveParty_Leave,"(Never mind...)"
 rGenericAllyRemoveParty_Confirm,"(The SPEAKER understands.)"
-rGenericAllyRemoveParty_Leave,"(You decide to keep her.)"
-dGenericAllyJoinParty,"(Add her to your party)"
-rGenericAllyJoinParty,"(Confirm? She will follow you across floors. You can only have 3 party members)"
+rGenericAllyRemoveParty_Leave,"(You decide to keep ${Ethem}.)"
+dGenericAllyJoinParty,"(Add ${Ethem} to your party)"
+rGenericAllyJoinParty,"(Confirm? ${EThey} will follow you across floors. You can only have 3 party members)"
 dGenericAllyJoinParty_Confirm,"(Add to party)"
 dGenericAllyJoinParty_Leave,"(Never mind...)"
 rGenericAllyJoinParty_Confirm,"(The SPEAKER is happy to join you)"
 rGenericAllyJoinParty_Leave,"(You decide not to.)"
 
+KDGenericCantRemoveParty,(Cannot remove party member)
+
 dGenericAllyShop,"(Sell items)"
 dGenericAllyShopBuy,"(Buy items)"
 
-dGenericAllyLeash,"(Pick up her leash)"
-dGenericAllyReleaseLeash,"(Release her leash)"
+dGenericAllyLeash,"(Pick up ${Etheir} leash)"
+dGenericAllyReleaseLeash,"(Release ${Etheir} leash)"
 
 NameDollmakerBoss1,"Dollmaker"
 KillDollmakerBoss1,"The Dollmaker throws a device to the ground, teleporting her instantly!"
@@ -31878,6 +31890,7 @@ KDPropField_DisplaceAmount,Displace Amount
 KDPropField_EraseAmount,Erase Amount
 KDPropField_NoLoss,NoLoss
 KDPropField_HideRestraintsTags,HideRestraintsTags
+KDPropField_UnderwearType,Bra/Panty/Sock/None
 
 KDPropField_HideRestraintTags,HideRestraintTags
 
@@ -33912,6 +33925,21 @@ rDollShoppeVisitorSub,"(The SPEAKER stops near you, looking at you|with deep int
 rDollShoppeVisitorBrat,"(The SPEAKER glances at you,|${Etheir} head giving a little tilt as ${Ethey} flash${Ees} a smile)|Why hello, doll."
 rDollShoppeVisitorRobot,"(The SPEAKER stops and scans you)"
 
+rDollShoppeVisitorBuyout,"(The SPEAKER eyes you with great interest)|You're quite the interesting one.|I think I'll keep you~"
+rDollShoppeVisitorBuyoutDom,"(The SPEAKER eyes you with great interest)|I've decided to take you as my own.|You will be a good ${Psub} and obay, right?"
+rDollShoppeVisitorBuyoutBrat,"(The SPEAKER eyes you with great interest)|I think I'll take you for myself.|Ready to be collared?|(${EThey} smirk${Es} at you)"
+rDollShoppeVisitorBuyoutVoyeur,"(The SPEAKER smiles at you)|An excellent item.|It's too bad I'm not in the market for one..."
+rDollShoppeVisitorBuyoutSub,"(The SPEAKER bows politely)|You're a good ${Psub}.|Hopefully you find someone... nice~"
+rDollShoppeVisitorBuyoutRobot,"(The SPEAKER beeps)|Please continue good behavior."
+
+rDollShoppeVisitorBeBought_Continue,"(A SPEAKER appears to facilitate)|I'm glad you've taken a liking to one of our dolls.|I'm sure ${Pthey} will make an excellent addition to your party."
+rDollShoppeVisitorBeBought_Continue_Continue,"(The SPEAKER locks a collar on you.|It glows with magical runes, flashing brightly as|the SPEAKER holds a jeweled key to ${Ethem}self.|You feel ${Etheir} energy flow into you, and yours into ${Ethem})"
+rDollShoppeVisitorBuyout_ContinueFail,"(The SPEAKER tries to lock a collar on you,|but ${Ethey} frown${Es} with a sour expression on ${Etheir} face)|Looks like someone already owns you.|Be a good ${Pdim} and tell them I said hello, okay?"
+
+dAcceptMistress,(Accept ${Ethem} as your ${EHonorinti})
+dRejectMistress,"(Resist, despite being unable to stop ${Ethem})"
+dNeutralMistress,"(...)"
+
 dDollShoppeVisitor_BeCute,(Be cute and presentable)
 dDollShoppeVisitor_BeStill,(Be a still doll)
 dDollShoppeVisitor_BeBrat,(Ignore ${Ethem} and try to look away)
@@ -34016,7 +34044,7 @@ rDollShoppeVisitorBeAngry_FailLateSub,"(The SPEAKER smiles and shrugs)"
 
 
 
-rDollShoppeVisitorBeCute_SuccessBrat,"(The SPEAKER grabs your head and leans in, a wide smile growing on ${Etheir} face)|SO CUTE!|(${EThey} give${Ees} you headpats repeatedly)"
+rDollShoppeVisitorBeCute_SuccessBrat,"(The SPEAKER grabs your head and leans in, a wide smile growing on ${Etheir} face)|SO CUTE!|(${EThey} give${Es} you headpats repeatedly)"
 rDollShoppeVisitorBeCute_SuccessLateBrat,"(The SPEAKER pats you on the head)|Adorable. Be good, okay?"
 rDollShoppeVisitorBeCute_FailBrat,"(The SPEAKER giggles)|Cute, but not quite my style~"
 rDollShoppeVisitorBeCute_FailLateBrat,"(The SPEAKER smiles)|Cute."
@@ -34060,7 +34088,9 @@ rDollShoppeVisitorBeStill_FailRobot,"(The SPEAKER makes a loud noise resembling 
 rDollShoppeVisitorBeStill_FailLateRobot,"(The SPEAKER pauses)|Subject does not act when prompted.|This is not acceptable."
 
 
-KDNeedHighOpinionToBeBought,${EThey} do${Ees}n't like you enough to make you ${Etheir}'s.
+KDCantBeBought_Dislike,"You didn't leave a good first impression"
+KDCantBeBought_Party,"Requires an empty party slot"
+KDCantBeBought_Alreadybound,"You are already spiritbound"
 
 KDRandomText_Plugs0,"It's hard to take your mind off the plugs inside of you..."
 KDRandomText_Plugs1,"The plugs inside you are really stimulating."

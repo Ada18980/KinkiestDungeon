@@ -77,6 +77,7 @@ Must do
 - species perks
 
 5.5.1
+- Added "Bra/Panty/Sock/None" field to expert tools, allowing to specify the type of underwear an item is. Currently unused, but will be used for future stripping mechanics
 - Resisting bondage now reduces your balance
 - Enemies will try to prioritize different restraints when hitting you based on what you were most recently doing to them
 - Heavy bondage now requires 2+ turns of stun to apply to enemies, rather than 3+
@@ -86,6 +87,8 @@ Must do
 - While inspecting, enemy paperdolls show up much larger in tooltips
 - Being next to a wall reduces balance loss from most actions and doubles balance regeneration while standing
 - Adventurers now browse the 'wares' of the doll shoppe
+- Fixed a bug where setting palette of restraints did nothing
+- Enemies playing with the player will only attack occasionally, rather than constantly, and won't try to apply too many restraints
 
 5.5.0
 - Added 'Allow Stacking Similar Items' option to disable new logic to make it easier to swap eyes, etc

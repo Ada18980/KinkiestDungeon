@@ -462,6 +462,8 @@ KDPrisonTypes.DollShoppe = {
 				if (lostTrack == "Unaware") {
 					return KDSetPrisonState(player, "Jail");
 				}
+				if (KDGameData.PrisonerState == 'parole') 
+					return KDSetPrisonState(player, "Jail");
 
 				if (KDPrisonTick(player)) {
 
@@ -633,6 +635,11 @@ KDPrisonTypes.DollShoppe = {
 			},
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
+
+				if (KDGameData.PrisonerState == 'parole') 
+					return KDPopSubstate(player)
+
+
 				KDPrisonCommonGuard(player);
 				let jailPoint = KinkyDungeonNearestJailPoint(player.x, player.y, ["storage"]);
 				
@@ -727,6 +734,10 @@ KDPrisonTypes.DollShoppe = {
 			},
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
+
+				
+				if (KDGameData.PrisonerState == 'parole') 
+					return KDPopSubstate(player)
 
 				let label = KDMapData.Labels?.Display ? KDGetUnoccupiedLabel(KDMapData.Labels.Display, player, true, true) : null;
 				let rad = 3;

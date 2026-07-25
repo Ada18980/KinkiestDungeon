@@ -108,6 +108,12 @@ const KDEager: KDBuff = {
 		{type: "ApplyVuln", duration: 1, power: -1.0, trigger: "tickAfter"},
 	]
 };
+const KDSpeedy: KDBuff = {
+	id: "Eager", type: "MoveSpeed", power: 1.0, duration: 1, events: [
+		{type: "ApplyVuln", duration: 1, trigger: "tick"},
+		{type: "ApplyVuln", duration: 1, power: -1.0, trigger: "tickAfter"},
+	]
+};
 const KDMasochist: KDBuff = {
 	id: "Masochist", type: "DamageAmp", power: -1, duration: 1
 };

@@ -18,7 +18,11 @@ function KinkyDungeonAggressive(enemy?: entity, player?: entity): boolean {
 		return false;
 	}
 	// Non player mode
-	return KDHostile(enemy, player);
+	return KDHostile(enemy, player) && (!!enemy.hostile || !!player.hostile || (
+		KDGetFaction(enemy) != "Player"
+		&& KDGetFaction(player) != "Player") || (
+		(KinkyDungeonAggressive(player) && !player.playWithPlayer)
+	));
 }
 
 /**

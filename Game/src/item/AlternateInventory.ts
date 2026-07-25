@@ -18,18 +18,7 @@ let KDAlternateInventoryScreens: {[_:string] : (selected: KDFilteredInventoryIte
 		KDDrawCustomPalettes(KDGetPalettes(KinkyDungeonPlayer), KinkyDungeonPlayer.ID + "_",
 		1300, 250, KDPaletteWidth, 72,
 			currentItem?.forceFaction != undefined ? currentItem?.forceFaction || "" : "-1", (palette) => {
-
-			if (currentItem) {
-				if (currentItem.forceFaction == palette) {
-					delete currentItem.forceFaction;
-				} else {
-					currentItem.forceFaction = palette;
-					currentItem.faction = palette;
-				}
-				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-				KinkyDungeonCheckClothesLoss = true;
-				KinkyDungeonDressPlayer();
-			}
+			KDSendInput("setrestraintpalette", {currentItem: currentItem, player: KDPlayer(), palette: palette, filter: KinkyDungeonCurrentFilter});
 
 		}, "KDSetRestraintPaletteSelect");
 

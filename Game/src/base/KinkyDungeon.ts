@@ -580,6 +580,7 @@ interface KDGameDataBase {
 	ListenerList: KDListener[],
 	RewardTracker: Record<string, number>,
 	selectedLabel: Record<number, KDLabel>,
+	MistressID: number,
 };
 
 
@@ -870,6 +871,7 @@ let KDGameDataBase: KDGameDataBase = {
 
 	} ,
 	selectedLabel: {},
+	MistressID: 0,
 };
 
 // endregion
@@ -1504,7 +1506,7 @@ function KinkyDungeonRun() {
 	if (!mouseDown)
 		mouseHoldTaken = "";
 
-	KDButtonHovering = false;
+	if (KDButtonHovering > 0) KDButtonHovering--;
 	KDCurrentHoverButton = null;
 
 	if (KDSaveQueue.length > 8) {
