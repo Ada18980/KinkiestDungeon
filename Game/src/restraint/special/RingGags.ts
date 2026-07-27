@@ -2,6 +2,9 @@
  * RingGags systems — base-game port (Sax)
  * Global script for tsc outFile (no export/import).
  * Loaded after KinkyDungeonRestraintsList via tsconfig files[].
+ *
+ * State lives in RG_State (module-level), NOT on KDGameData,
+ * so we do not need to extend KDGameDataBase.
  */
 
 "use strict";
@@ -23,6 +26,25 @@ var RingGagEvents = [
 	{ trigger: "postRemoval", type: "ringGagCleanup", inheritLinked: true },
 ];
 
+/** Runtime drool/breath state (not persisted on KDGameDataBase). */
+var RG_State = {
+	DroolCooldown: 0,
+	DroolDuration: 0,
+	DroolStage: 0,
+	DroolEpisode: 0,
+	BoundWipeFailCount: 0,
+	Cycling: false,
+	CycleIndex: 0,
+	CurrentOverlay: 0,
+	BreathActive: false,
+	WasStuffed: false,
+	DryingCooldown: 0,
+	PrevX: -1,
+	PrevY: -1,
+	PreferredDroolSFX: 1,
+	_inited: false,
+};
+
 function RG_RandInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -38,31 +60,33 @@ function RG_ShouldShowBreath(stamina, staminaMax, distraction, distractionMax) {
 }
 
 function RG_InitState() {
-	if (KDGameData.RG_DroolCooldown == null)
-		KDGameData.RG_DroolCooldown = RG_RandInt(RG_COOLDOWNS["1"][0], RG_COOLDOWNS["1"][1]);
-	if (KDGameData.RG_DroolDuration == null) KDGameData.RG_DroolDuration = 0;
-	if (KDGameData.RG_DroolStage == null) KDGameData.RG_DroolStage = 0;
-	if (KDGameData.RG_DroolEpisode == null) KDGameData.RG_DroolEpisode = 0;
-	if (KDGameData.RG_BoundWipeFailCount == null) KDGameData.RG_BoundWipeFailCount = 0;
-	if (KDGameData.RG_Cycling == null) KDGameData.RG_Cycling = false;
-	if (KDGameData.RG_CycleIndex == null) KDGameData.RG_CycleIndex = 0;
-	if (KDGameData.RG_CurrentOverlay == null) KDGameData.RG_CurrentOverlay = 0;
-	if (KDGameData.RG_BreathActive == null) KDGameData.RG_BreathActive = false;
-	if (KDGameData.RG_WasStuffed == null) KDGameData.RG_WasStuffed = false;
-	if (KDGameData.RG_DryingCooldown == null) KDGameData.RG_DryingCooldown = 0;
-	if (KDGameData.RG_PrevX == null) KDGameData.RG_PrevX = -1;
-	if (KDGameData.RG_PrevY == null) KDGameData.RG_PrevY = -1;
+	if (RG_State._inited) return;
+	RG_State._inited = true;
+	RG_State.DroolCooldown = RG_RandInt(RG_COOLDOWNS["1"][0], RG_COOLDOWNS["1"][1]);
+	RG_State.DroolDuration = 0;
+	RG_State.DroolStage = 0;
+	RG_State.DroolEpisode = 0;
+	RG_State.BoundWipeFailCount = 0;
+	RG_State.Cycling = false;
+	RG_State.CycleIndex = 0;
+	RG_State.CurrentOverlay = 0;
+	RG_State.BreathActive = false;
+	RG_State.WasStuffed = false;
+	RG_State.DryingCooldown = 0;
+	RG_State.PrevX = -1;
+	RG_State.PrevY = -1;
+	RG_State.PreferredDroolSFX = 1;
 }
 function RG_ClearState() {
-	KDGameData.RG_DroolStage = 0;
-	KDGameData.RG_DroolDuration = 0;
-	KDGameData.RG_Cycling = false;
-	KDGameData.RG_CycleIndex = 0;
-	KDGameData.RG_DryingCooldown = 0;
-	KDGameData.RG_BoundWipeFailCount = 0;
-	KDGameData.RG_CurrentOverlay = 0;
-	KDGameData.RG_BreathActive = false;
-	KDGameData.RG_DroolCooldown = RG_RandInt(RG_COOLDOWNS["1"][0], RG_COOLDOWNS["1"][1]);
+	RG_State.DroolStage = 0;
+	RG_State.DroolDuration = 0;
+	RG_State.Cycling = false;
+	RG_State.CycleIndex = 0;
+	RG_State.DryingCooldown = 0;
+	RG_State.BoundWipeFailCount = 0;
+	RG_State.CurrentOverlay = 0;
+	RG_State.BreathActive = false;
+	RG_State.DroolCooldown = RG_RandInt(RG_COOLDOWNS["1"][0], RG_COOLDOWNS["1"][1]);
 }
 
 function RG_HasOpenGag() {
@@ -102,71 +126,87 @@ function RG_GetDroolLockItem() {
 }
 
 function RG_SilentAddRestraint(name) {
-	var oF = (typeof KinkyDungeonSendFloater !== "undefined") ? KinkyDungeonSendFloater : null;
-	var oA = (typeof AudioPlayInstantSoundKD !== "undefined") ? AudioPlayInstantSoundKD : null;
-	if (oF) KinkyDungeonSendFloater = function () {};
-	if (oA) AudioPlayInstantSoundKD = function () {};
-	var r;
-	try { r = KinkyDungeonAddRestraintIfWeaker(name, 0, true, undefined, false); }
-	finally {
-		if (oF) KinkyDungeonSendFloater = oF;
-		if (oA) AudioPlayInstantSoundKD = oA;
+	var g = (typeof globalThis !== "undefined") ? globalThis : (typeof window !== "undefined" ? window : {});
+	var oF = g.KinkyDungeonSendFloater;
+	var oA = g.AudioPlayInstantSoundKD;
+	var oT = g.KinkyDungeonSendTextMessage;
+	var oM = g.KinkyDungeonSendActionMessage;
+	if (typeof oF === "function") g.KinkyDungeonSendFloater = function () {};
+	if (typeof oA === "function") g.AudioPlayInstantSoundKD = function () {};
+	if (typeof oT === "function") g.KinkyDungeonSendTextMessage = function () {};
+	if (typeof oM === "function") g.KinkyDungeonSendActionMessage = function () {};
+	var r = null;
+	try {
+		r = KinkyDungeonAddRestraintIfWeaker(name, 0, true, undefined, false);
+	} catch (_e) {
+		r = null;
+	} finally {
+		if (typeof oF === "function") g.KinkyDungeonSendFloater = oF;
+		if (typeof oA === "function") g.AudioPlayInstantSoundKD = oA;
+		if (typeof oT === "function") g.KinkyDungeonSendTextMessage = oT;
+		if (typeof oM === "function") g.KinkyDungeonSendActionMessage = oM;
 	}
 	return r;
 }
 function RG_SilentRemoveRestraint(group) {
-	var oF = (typeof KinkyDungeonSendFloater !== "undefined") ? KinkyDungeonSendFloater : null;
-	var oA = (typeof AudioPlayInstantSoundKD !== "undefined") ? AudioPlayInstantSoundKD : null;
-	if (oF) KinkyDungeonSendFloater = function () {};
-	if (oA) AudioPlayInstantSoundKD = function () {};
-	try { KinkyDungeonRemoveRestraint(group, false, false, true); }
+	var g = (typeof globalThis !== "undefined") ? globalThis : (typeof window !== "undefined" ? window : {});
+	var oF = g.KinkyDungeonSendFloater;
+	var oA = g.AudioPlayInstantSoundKD;
+	var oT = g.KinkyDungeonSendTextMessage;
+	if (typeof oF === "function") g.KinkyDungeonSendFloater = function () {};
+	if (typeof oA === "function") g.AudioPlayInstantSoundKD = function () {};
+	if (typeof oT === "function") g.KinkyDungeonSendTextMessage = function () {};
+	try {
+		KinkyDungeonRemoveRestraint(group, false, false, true);
+	} catch (_e) { /* ignore */ }
 	finally {
-		if (oF) KinkyDungeonSendFloater = oF;
-		if (oA) AudioPlayInstantSoundKD = oA;
+		if (typeof oF === "function") g.KinkyDungeonSendFloater = oF;
+		if (typeof oA === "function") g.AudioPlayInstantSoundKD = oA;
+		if (typeof oT === "function") g.KinkyDungeonSendTextMessage = oT;
 	}
 }
 
 function RG_SetDroolOverlay(stage) {
-	if (stage === KDGameData.RG_CurrentOverlay) return;
-	if (KDGameData.RG_CurrentOverlay > 0) RG_SilentRemoveRestraint("RingGagDroolFX");
+	if (stage === RG_State.CurrentOverlay) return;
+	if (RG_State.CurrentOverlay > 0) RG_SilentRemoveRestraint("RingGagDroolFX");
 	if (stage >= 1 && stage <= 4) {
 		var visual = RG_RandomDroolVisual();
-		KDGameData.RG_PreferredDroolSFX = visual;
+		RG_State.PreferredDroolSFX = visual;
 		RG_SilentAddRestraint("RingGagDroolS" + visual + "FX");
 	}
-	KDGameData.RG_CurrentOverlay = stage;
+	RG_State.CurrentOverlay = stage;
 }
 function RG_SetBreathOverlay(show) {
-	if (show === KDGameData.RG_BreathActive) return;
+	if (show === RG_State.BreathActive) return;
 	if (!show) RG_SilentRemoveRestraint("RingGagBreathFX");
 	else RG_SilentAddRestraint("RingGagBreathFX");
-	KDGameData.RG_BreathActive = show;
+	RG_State.BreathActive = show;
 }
 
 function RG_TickHandler(_e, _item, data) {
 	RG_InitState();
 	var armsBound = typeof KinkyDungeonIsArmsBound === "function" && KinkyDungeonIsArmsBound();
-	var episodeActive = KDGameData.RG_DroolDuration > 0;
+	var episodeActive = RG_State.DroolDuration > 0;
 	var stuffed = RG_IsStuffed() || !RG_HasOnlyOpenGags();
 	var droolEnabled = RG_HasOpenGag() && RG_HasOnlyOpenGags();
 	var hasDroolLock = RG_GetDroolLockItem() !== null;
 	var maxStage = hasDroolLock ? 4 : 2;
 
-	var prevStuffed = KDGameData.RG_WasStuffed;
-	KDGameData.RG_WasStuffed = stuffed;
+	var prevStuffed = RG_State.WasStuffed;
+	RG_State.WasStuffed = stuffed;
 	if (stuffed && !prevStuffed) {
-		KDGameData.RG_DroolDuration = 0;
-		KDGameData.RG_DryingCooldown = RG_RandInt(RG_COOLDOWNS["1"][0], RG_COOLDOWNS["1"][1]);
+		RG_State.DroolDuration = 0;
+		RG_State.DryingCooldown = RG_RandInt(RG_COOLDOWNS["1"][0], RG_COOLDOWNS["1"][1]);
 	}
 
-	var movedThisTick = false, prevTileX = KDGameData.RG_PrevX, prevTileY = KDGameData.RG_PrevY, movementBonus = 0;
+	var movedThisTick = false, prevTileX = RG_State.PrevX, prevTileY = RG_State.PrevY, movementBonus = 0;
 	if (typeof KinkyDungeonPlayerEntity !== "undefined") {
 		var px = KinkyDungeonPlayerEntity.x, py = KinkyDungeonPlayerEntity.y;
-		if (KDGameData.RG_PrevX >= 0 && (px !== KDGameData.RG_PrevX || py !== KDGameData.RG_PrevY)) {
+		if (RG_State.PrevX >= 0 && (px !== RG_State.PrevX || py !== RG_State.PrevY)) {
 			movedThisTick = true; movementBonus = 1;
-			prevTileX = KDGameData.RG_PrevX; prevTileY = KDGameData.RG_PrevY;
+			prevTileX = RG_State.PrevX; prevTileY = RG_State.PrevY;
 		}
-		KDGameData.RG_PrevX = px; KDGameData.RG_PrevY = py;
+		RG_State.PrevX = px; RG_State.PrevY = py;
 	}
 
 	var breathActive = false;
@@ -180,7 +220,7 @@ function RG_TickHandler(_e, _item, data) {
 	RG_SetBreathOverlay(breathActive);
 
 	if (!droolEnabled) {
-		if (KDGameData.RG_DroolStage > 0 || KDGameData.RG_CurrentOverlay > 0 || KDGameData.RG_BreathActive) {
+		if (RG_State.DroolStage > 0 || RG_State.CurrentOverlay > 0 || RG_State.BreathActive) {
 			RG_SilentRemoveRestraint("RingGagDroolFX");
 			RG_SilentRemoveRestraint("RingGagBreathFX");
 			RG_SetDroolOverlay(0);
@@ -189,19 +229,19 @@ function RG_TickHandler(_e, _item, data) {
 		return;
 	}
 
-	if (!hasDroolLock && (KDGameData.RG_Cycling || KDGameData.RG_DroolStage > 2)) {
-		var clamped = Math.min(KDGameData.RG_DroolStage, 2);
-		KDGameData.RG_DroolStage = clamped;
-		KDGameData.RG_Cycling = false;
-		KDGameData.RG_CycleIndex = 0;
-		KDGameData.RG_BoundWipeFailCount = 0;
+	if (!hasDroolLock && (RG_State.Cycling || RG_State.DroolStage > 2)) {
+		var clamped = Math.min(RG_State.DroolStage, 2);
+		RG_State.DroolStage = clamped;
+		RG_State.Cycling = false;
+		RG_State.CycleIndex = 0;
+		RG_State.BoundWipeFailCount = 0;
 		RG_SetDroolOverlay(clamped);
 	}
 
-	if (KDGameData.RG_DroolStage > 0 && !stuffed && movedThisTick && prevTileX >= 0) {
+	if (RG_State.DroolStage > 0 && !stuffed && movedThisTick && prevTileX >= 0) {
 		var puddleChance = 0;
 		if (hasDroolLock) puddleChance = 0.6;
-		else if (KDGameData.RG_DroolStage === 2 && armsBound) puddleChance = 0.1;
+		else if (RG_State.DroolStage === 2 && armsBound) puddleChance = 0.1;
 		if (puddleChance > 0 && Math.random() < puddleChance) {
 			try {
 				if (typeof KDCreateEffectTile === "function")
@@ -212,20 +252,20 @@ function RG_TickHandler(_e, _item, data) {
 
 	if (stuffed) {
 		var dryFloor = hasDroolLock ? 2 : 0;
-		if (KDGameData.RG_DroolStage > dryFloor) {
-			KDGameData.RG_DryingCooldown -= 1;
-			if (KDGameData.RG_DryingCooldown <= 0) {
-				var prevStage = KDGameData.RG_DroolStage - 1;
-				KDGameData.RG_DroolStage = prevStage;
+		if (RG_State.DroolStage > dryFloor) {
+			RG_State.DryingCooldown -= 1;
+			if (RG_State.DryingCooldown <= 0) {
+				var prevStage = RG_State.DroolStage - 1;
+				RG_State.DroolStage = prevStage;
 				RG_SetDroolOverlay(prevStage);
 				if (prevStage > dryFloor) {
 					var dcd = RG_COOLDOWNS[String(prevStage + 1)] || RG_COOLDOWNS["1"];
-					KDGameData.RG_DryingCooldown = RG_RandInt(dcd[0], dcd[1]);
+					RG_State.DryingCooldown = RG_RandInt(dcd[0], dcd[1]);
 				} else {
-					KDGameData.RG_BoundWipeFailCount = 0;
-					KDGameData.RG_Cycling = false;
-					KDGameData.RG_CycleIndex = 0;
-					KDGameData.RG_DroolCooldown = RG_RandInt(RG_COOLDOWNS["1"][0], RG_COOLDOWNS["1"][1]);
+					RG_State.BoundWipeFailCount = 0;
+					RG_State.Cycling = false;
+					RG_State.CycleIndex = 0;
+					RG_State.DroolCooldown = RG_RandInt(RG_COOLDOWNS["1"][0], RG_COOLDOWNS["1"][1]);
 				}
 			}
 		}
@@ -233,40 +273,40 @@ function RG_TickHandler(_e, _item, data) {
 	}
 
 	if (!episodeActive) {
-		KDGameData.RG_DroolCooldown -= 1 + movementBonus;
-		if (KDGameData.RG_DroolCooldown <= 0) {
-			var nextStage, isCycling = !!KDGameData.RG_Cycling;
+		RG_State.DroolCooldown -= 1 + movementBonus;
+		if (RG_State.DroolCooldown <= 0) {
+			var nextStage, isCycling = !!RG_State.Cycling;
 			if (isCycling) {
-				nextStage = RG_CYCLE[KDGameData.RG_CycleIndex % RG_CYCLE.length];
-				KDGameData.RG_CycleIndex += 1;
-				KDGameData.RG_DroolDuration = RG_RandInt(RG_DURATIONS.cycle[0], RG_DURATIONS.cycle[1]);
+				nextStage = RG_CYCLE[RG_State.CycleIndex % RG_CYCLE.length];
+				RG_State.CycleIndex += 1;
+				RG_State.DroolDuration = RG_RandInt(RG_DURATIONS.cycle[0], RG_DURATIONS.cycle[1]);
 			} else {
-				nextStage = KDGameData.RG_DroolStage + 1;
+				nextStage = RG_State.DroolStage + 1;
 				if (nextStage > maxStage) nextStage = maxStage;
 				if (hasDroolLock && nextStage < 2) nextStage = 2;
 				var du = RG_DURATIONS[String(nextStage)] || RG_DURATIONS["1"];
-				KDGameData.RG_DroolDuration = RG_RandInt(du[0], du[1]);
+				RG_State.DroolDuration = RG_RandInt(du[0], du[1]);
 			}
-			KDGameData.RG_DroolStage = nextStage;
-			KDGameData.RG_DroolEpisode += 1;
+			RG_State.DroolStage = nextStage;
+			RG_State.DroolEpisode += 1;
 			RG_SetDroolOverlay(nextStage);
 		}
 	} else {
-		KDGameData.RG_DroolDuration -= 1;
-		if (KDGameData.RG_DroolDuration <= 0) {
-			KDGameData.RG_DroolEpisode += 1;
-			if (armsBound) KDGameData.RG_BoundWipeFailCount += 1;
-			if (hasDroolLock && KDGameData.RG_DroolStage >= 4 && !KDGameData.RG_Cycling) {
-				KDGameData.RG_Cycling = true;
-				KDGameData.RG_CycleIndex = 0;
+		RG_State.DroolDuration -= 1;
+		if (RG_State.DroolDuration <= 0) {
+			RG_State.DroolEpisode += 1;
+			if (armsBound) RG_State.BoundWipeFailCount += 1;
+			if (hasDroolLock && RG_State.DroolStage >= 4 && !RG_State.Cycling) {
+				RG_State.Cycling = true;
+				RG_State.CycleIndex = 0;
 			}
 			var cd;
-			if (KDGameData.RG_Cycling) cd = RG_COOLDOWNS.cycle;
+			if (RG_State.Cycling) cd = RG_COOLDOWNS.cycle;
 			else {
-				var next = Math.min(KDGameData.RG_DroolStage + 1, maxStage);
+				var next = Math.min(RG_State.DroolStage + 1, maxStage);
 				cd = RG_COOLDOWNS[String(next)] || RG_COOLDOWNS[String(maxStage)];
 			}
-			KDGameData.RG_DroolCooldown = RG_RandInt(cd[0], cd[1]);
+			RG_State.DroolCooldown = RG_RandInt(cd[0], cd[1]);
 		}
 	}
 }
@@ -333,32 +373,43 @@ function RG_CosmeticRestraints() {
 	for (var i = 1; i <= 4; i++) {
 		list.push({
 			inventory: false, name: "RingGagDroolS" + i + "FX", Asset: "RingGags", preview: "RingGags",
-			Model: "RingGagDroolS" + i, Group: "RingGagDroolFX", power: 0, weight: 0,
-			escapeChance: { Remove: 10 }, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
+			Model: "RingGagDroolS" + i, Group: "RingGagDroolFX",
+			power: -10, weight: 0, maxwill: 0, noDupe: true,
+			escapeChance: { Struggle: -100, Cut: -100, Remove: -100, Pick: -100 },
+			limitChance: { Struggle: 1, Cut: 1, Remove: 1, Pick: 1 },
+			enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
 		});
 	}
 	list.push({
 		inventory: false, name: "RingGagBreathFX", Asset: "RingGags", preview: "RingGags",
-		Model: "RingGagBreathOverlay", Group: "RingGagBreathFX", power: 0, weight: 0,
-		escapeChance: { Remove: 10 }, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
+		Model: "RingGagBreathOverlay", Group: "RingGagBreathFX",
+		power: -10, weight: 0, maxwill: 0, noDupe: true,
+		escapeChance: { Struggle: -100, Cut: -100, Remove: -100, Pick: -100 },
+		limitChance: { Struggle: 1, Cut: 1, Remove: 1, Pick: 1 },
+		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: [],
 	});
 	return list;
 }
 
 var RG_Registered = false;
 function RG_Register() {
-	if (RG_Registered) return;
+	if (RG_Registered) return true;
+	if (typeof KinkyDungeonRestraints === "undefined" || !Array.isArray(KinkyDungeonRestraints)) {
+		return false;
+	}
 	RG_Registered = true;
 
 	var restraints = RG_CoreRestraints().concat(RG_CosmeticRestraints());
-	if (typeof KinkyDungeonRestraints !== "undefined" && Array.isArray(KinkyDungeonRestraints)) {
-		for (var ri = 0; ri < restraints.length; ri++) {
-			var r = restraints[ri];
-			var exists = false;
-			for (var j = 0; j < KinkyDungeonRestraints.length; j++) {
-				if (KinkyDungeonRestraints[j].name === r.name) { exists = true; break; }
-			}
-			if (!exists) KinkyDungeonRestraints.push(r);
+	var added = 0;
+	for (var ri = 0; ri < restraints.length; ri++) {
+		var r = restraints[ri];
+		var exists = false;
+		for (var j = 0; j < KinkyDungeonRestraints.length; j++) {
+			if (KinkyDungeonRestraints[j].name === r.name) { exists = true; break; }
+		}
+		if (!exists) {
+			KinkyDungeonRestraints.push(r);
+			added++;
 		}
 	}
 
@@ -367,6 +418,10 @@ function RG_Register() {
 			var t = RG_RESTRAINT_TEXT[ti];
 			KinkyDungeonAddRestraintText(t.name, t.display, t.flavor, t.func);
 		}
+		for (var ci = 1; ci <= 4; ci++) {
+			KinkyDungeonAddRestraintText("RingGagDroolS" + ci + "FX", "", "", "");
+		}
+		KinkyDungeonAddRestraintText("RingGagBreathFX", "", "", "");
 	} else if (typeof addTextKey === "function") {
 		for (var tj = 0; tj < RG_RESTRAINT_TEXT.length; tj++) {
 			var tt = RG_RESTRAINT_TEXT[tj];
@@ -374,13 +429,38 @@ function RG_Register() {
 			addTextKey("Restraint" + tt.name + "Desc", tt.flavor);
 			addTextKey("Restraint" + tt.name + "Desc2", tt.func);
 		}
+		for (var cj = 1; cj <= 4; cj++) {
+			addTextKey("RestraintRingGagDroolS" + cj + "FX", "");
+			addTextKey("RestraintRingGagDroolS" + cj + "FXDesc", "");
+			addTextKey("RestraintRingGagDroolS" + cj + "FXDesc2", "");
+		}
+		addTextKey("RestraintRingGagBreathFX", "");
+		addTextKey("RestraintRingGagBreathFXDesc", "");
+		addTextKey("RestraintRingGagBreathFXDesc2", "");
 	}
 
 	if (typeof KinkyDungeonRefreshRestraintsCache === "function") {
 		KinkyDungeonRefreshRestraintsCache();
 	}
 	RG_RegisterEvents();
+	if (typeof console !== "undefined" && console.log) {
+		console.log("[RingGags] Registered " + added + " restraints (list size=" + KinkyDungeonRestraints.length + ")");
+	}
+	return true;
 }
 
-// Runs after KinkyDungeonRestraintsList (see tsconfig order)
 RG_Register();
+
+(function RG_DeferredRegister() {
+	var tries = 0;
+	function tick() {
+		if (RG_Register()) return;
+		tries++;
+		if (tries < 40) {
+			if (typeof setTimeout === "function") setTimeout(tick, 250);
+		} else if (typeof console !== "undefined" && console.warn) {
+			console.warn("[RingGags] Failed to register: KinkyDungeonRestraints never became available");
+		}
+	}
+	if (typeof setTimeout === "function") setTimeout(tick, 0);
+})();
