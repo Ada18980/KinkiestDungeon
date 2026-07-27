@@ -8534,6 +8534,11 @@ RestraintName 上的诅咒解除了！
 - Functions as a handle for moving unruly prisoners.
 用于控制和移动不守规矩的囚犯。
 
+# - Spiritbound Collar
+# - A collar carved with glyphs that describe a spiritual connection. While you wear it, the collar will drain your willpower, mana, and stamina to empower your spiritbond.
+# - It's sealed magically around your neck, and binds you to your spiritbond. The only way to remove it is to take the key from them.
+# - The spiritbond collar falls from your neck.
+
 - Prisoner Plug
 囚犯塞
 - A teaser to keep you occupied.
@@ -15676,6 +15681,11 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - You channel ghastly energy into the lock and break the seal!!!
 你将可怕的能量引导到锁中并打破密封！！！
 
+
+# - The collar marks you as spiritbound. You cannot remove it yourself.
+# - The collar is sealed around your neck. The runes flash a sinister light as you struggle
+# - You bring the collar close to the jeweled key and will it to release.
+
 - It would take many lifetimes to crack the code. You'll have to find another way to break the program...
 破解密码需要好几辈子的时间。你必须找到另一种方法来破坏程序......
 - You tug against the straps to no avail.
@@ -22111,6 +22121,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dTheWardenSub_ProceedGag_Proceed
 # :: dDollTransformPart3_B
 # :: dNext
+# :: dNeutralMistress
 
 - (The SPEAKER frowns)|Don't lie to me.
 ( SPEAKER 皱眉 ) |别骗我。
@@ -23590,7 +23601,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 (SPEAKER 微笑)|趁自由还在，好好享受吧~
 - (The SPEAKER shrugs)|That's okay, just thought I'd ask.
 (SPEAKER 耸了耸肩)|没关系，我只是想问问。
-- (The SPEAKER rubs the smooth metal seductively)|Are you sure?|Adventurers need to take care of themselves.|You don't want to lose control of yourself and run into some curse,|do you?
+- (The SPEAKER rubs the smooth metal seductively)|Are you sure?|Adventurers need to take care of themselves.|You don't want to lose control of yourself and|run into some curse... or do you?
 (SPEAKER 诱惑地摩擦光滑的金属）|你确定吗？|探险家们得保护好自己。|你可不想被快感夺走，然后被某种诅咒缠住，|没错吧？
 - (The SPEAKER gives an evil smile)|What if I wasn't asking?
 (SPEAKER 露出邪恶的微笑）|如果我不是请求呢？
@@ -25152,11 +25163,11 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER calculates)|Routing coordinates...
 ( SPEAKER 计算中 ) |路径坐标...
 
-- (Ask her for help)
+- (Ask ${Ethem} for help)
 ( 向她寻求帮助 )
 # :: dGenericAllyHelpMe
 # :: dGenericAllyHelpMe_Confirm
-- (Are you sure? She might see you as being submissive)
+- (Are you sure? ${EThey} might see you as being submissive)
 ( 你确定吗？她可能认为你是顺从的 )
 # :: rGenericAllyHelpMe
 # :: rGenericAllyHelpMeCommandWord
@@ -25167,19 +25178,19 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 将帮助你摆脱束缚 )
 - (You decide to deal with your problems yourself.)
 ( 你决定自己处理你的问题。 )
-- (Plead with her to unlock you with a Command Word)
+- (Plead with ${Ethem} to unlock you with a Command Word)
 ( 恳求她用指令解锁你 )
 - (Yes!)
 ( 是的！ )
 # :: dGenericAllyHelpMeCommandWord_Confirm
 # :: dGenericAllyHelpMeKey_Confirm
-- (The SPEAKER would rather 'conserve her mana')
+- (The SPEAKER would rather 'conserve ${Ethem} mana')
 ( SPEAKER 宁愿“保存她的法力” )
 - (The SPEAKER utters a command word on you)
 ( SPEAKER 对你发出指令 )
 - (Your magical locks continue to restrain you.)
 ( 你的魔法锁继续束缚着你。 )
-- (Plead with her to unlock your restraints)
+- (Plead with ${Ethem} to unlock your restraints)
 ( 恳求她松开你的束缚 )
 - (The SPEAKER would rather not give up a magic key)
 ( SPEAKER 不想为了你使用魔法钥匙 )
@@ -25197,21 +25208,21 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( 确定吗？你将不得不再次询问以获得帮助。 )
 - (The SPEAKER will no longer help you.)
 ( SPEAKER 将不再帮助你。 )
-- (You sigh as you realize you really need her help.)
+- (You sigh as you realize you really need ${Etheir} help.)
 ( 当你意识到你真的需要她的帮助时，你叹了口气。 )
-- (Kick her out of your party)
+- (Kick ${Ethem} out of your party)
 ( 把她踢出你的队伍 )
-- (Confirm? She will stop following you)
+- (Confirm? ${EThey} will stop following you)
 ( 确认吗？她将不再会跟随你 )
 - (Remove from party)
 ( 从队伍中移除 )
 - (The SPEAKER understands.)
 ( SPEAKER 明白。 )
-- (You decide to keep her.)
+- (You decide to keep ${Ethem}.)
 ( 你决定留下她。 )
-- (Add her to your party)
+- (Add ${Ethem} to your party)
 ( 将她添加到你的队伍中 )
-- (Confirm? She will follow you across floors. You can only have 3 party members)
+- (Confirm? ${EThey} will follow you across floors. You can only have 3 party members)
 ( 确认吗？她会跟着你穿过楼层。你最多能带上 3 名队员 )
 - (Add to party)
 ( 添加到队伍 )
@@ -25220,14 +25231,16 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (You decide not to.)
 ( 你决定不这样做。 )
 
+# - (Cannot remove party member)
+
 - (Sell items)
 ( 出售物品 )
 - (Buy items)
 ( 购买物品 )
 
-- (Pick up her leash)
+- (Pick up ${Etheir} leash)
 (牵起她的皮带)
-- (Release her leash)
+- (Release ${Etheir} leash)
 (松开她的皮带)
 
 - Dollmaker
@@ -50480,6 +50493,7 @@ Y 轴
 无损
 - HideRestraintsTags
 隐藏拘束具标签
+# - Bra/Panty/Sock/None
 
 - HideRestraintTags
 隐藏拘束具标签
@@ -53728,6 +53742,20 @@ ${You}陷入沉默，无法轻易施展法术。
 # - (The SPEAKER glances at you,|${Etheir} head giving a little tilt as ${Ethey} flash${Ees} a smile)|Why hello, doll.
 # - (The SPEAKER stops and scans you)
 
+# - (The SPEAKER eyes you with great interest)|You're quite the interesting one.|I think I'll keep you~
+# - (The SPEAKER eyes you with great interest)|I've decided to take you as my own.|You will be a good ${Psub} and obay, right?
+# - (The SPEAKER eyes you with great interest)|I think I'll take you for myself.|Ready to be collared?|(${EThey} smirk${Es} at you)
+# - (The SPEAKER smiles at you)|An excellent item.|It's too bad I'm not in the market for one...
+# - (The SPEAKER bows politely)|You're a good ${Psub}.|Hopefully you find someone... nice~
+# - (The SPEAKER beeps)|Please continue good behavior.
+
+# - (A SPEAKER appears to facilitate)|I'm glad you've taken a liking to one of our dolls.|I'm sure ${Pthey} will make an excellent addition to your party.
+# - (The SPEAKER locks a collar on you.|It glows with magical runes, flashing brightly as|the SPEAKER holds a jeweled key to ${Ethem}self.|You feel ${Etheir} energy flow into you, and yours into ${Ethem})
+# - (The SPEAKER tries to lock a collar on you,|but ${Ethey} frown${Es} with a sour expression on ${Etheir} face)|Looks like someone already owns you.|Be a good ${Pdim} and tell them I said hello, okay?
+
+# - (Accept ${Ethem} as your ${EHonorinti})
+# - (Resist, despite being unable to stop ${Ethem})
+
 # - (Be cute and presentable)
 # - (Be a still doll)
 # - (Ignore ${Ethem} and try to look away)
@@ -53836,7 +53864,7 @@ ${You}陷入沉默，无法轻易施展法术。
 
 
 
-# - (The SPEAKER grabs your head and leans in, a wide smile growing on ${Etheir} face)|SO CUTE!|(${EThey} give${Ees} you headpats repeatedly)
+# - (The SPEAKER grabs your head and leans in, a wide smile growing on ${Etheir} face)|SO CUTE!|(${EThey} give${Es} you headpats repeatedly)
 # - (The SPEAKER pats you on the head)|Adorable. Be good, okay?
 # - (The SPEAKER giggles)|Cute, but not quite my style~
 # - (The SPEAKER smiles)|Cute.
@@ -53882,7 +53910,9 @@ ${You}陷入沉默，无法轻易施展法术。
 # - (The SPEAKER pauses)|Subject does not act when prompted.|This is not acceptable.
 
 
-# - ${EThey} do${Ees}n't like you enough to make you ${Etheir}'s.
+# - You didn't leave a good first impression
+# - Requires an empty party slot
+# - You are already spiritbound
 
 # - It's hard to take your mind off the plugs inside of you...
 # - The plugs inside you are really stimulating.
