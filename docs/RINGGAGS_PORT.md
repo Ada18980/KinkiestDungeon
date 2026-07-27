@@ -11,25 +11,36 @@ and breath SFX work **without** the mod enabled.
 
 ## Phases
 
-### Phase 1 — Assets
-Copy into the repo (then run `npm run pack` for atlases):
+### Phase 1 — Assets ✅ (package ready)
 
-| Mod path | Base path |
-|----------|-----------|
-| `Models/RingGags/**` | `Models/RingGags/**` |
-| `Models/PlugGags/**` (open variants) | `Models/PlugGags/**` |
-| `Models/SFX/**` | `Models/SFX/**` |
-| `Models/Common/**` | `Models/Common/**` |
-| `Audio/*.ogg` | `Game/Audio/` |
-| `EffectTiles/DroolPuddle.png` | `Game/EffectTiles/` |
-| `Buffs/opengag_debuff.png` | `Game/Buffs/` |
-| `InventoryAction/Plug.png`, `Unplug.png` | `Game/InventoryAction/` |
-| `Items/Restraint/RingGags.png` | `Game/Items/Restraint/` |
+**Binary package:** `RingGags-Phase1-Assets.zip` (from the port workspace)
+
+Extract **at the repository root** so paths match:
+
+```bash
+# from repo root (feature/ringgags-port checked out)
+unzip -o RingGags-Phase1-Assets.zip
+# optional: remove the list file from root if extracted there
+rm -f PHASE1_ASSET_LIST.txt
+npm run pack   # rebuild texture atlases after Models/ changes
+```
+
+| Category | Repo path | Count |
+|----------|-----------|-------|
+| Drool/breath SFX sprites | `Models/SFX/` | 8 |
+| Ring gag models | `Models/RingGags/` | 16 |
+| Plug/open gag models | `Models/PlugGags/` | 24 |
+| Common | `Models/Common/` | 2 |
+| Audio (drip/gulp/unplug) | `Game/Audio/` | 21 |
+| Buff / effect tile / icons | `Game/Buffs`, `EffectTiles`, `InventoryAction`, `Items/Restraint` | 5 |
+
+Full path list: `docs/RINGGAGS_PHASE1_ASSETS.txt`
+
+**Note:** Mod `TextureAtlas/` is **not** copied. Base game uses `npm run pack` over `Models/`.
 
 ### Phase 2 — Models + restraints
 - Register models in `Data/` model lists
-- Add restraint entries in `Game/src/restraint/KinkyDungeonRestraintsList.ts`
-  or keep definitions in `Game/src/restraint/special/RingGags.ts` and register from there
+- Add restraint entries via `Game/src/restraint/special/RingGags.ts` + list hooks
 
 ### Phase 3 — Drool + breath systems
 Implement in `Game/src/restraint/special/RingGags.ts`:
@@ -40,21 +51,18 @@ Implement in `Game/src/restraint/special/RingGags.ts`:
   - Huffing: stamina < 25% of max
   - Aroused: distraction ≥ 40% of max
 
-Hook via core event maps (not mod-only `KDEventMapInventory` patterns that rely on mod load).
-
 ### Phase 4 — Plug/unplug + specials
-- Open variants of existing plug/muzzle gags
-- Inventory Plug/Unplug actions
-- CriersRing, TongueTrap, IncantorsMouthpiece, cyber behaviors, NPC swap
+- Open variants, inventory actions, CriersRing, TongueTrap, etc.
 
 ### Phase 5 — Polish
-Particles, drool puddles, messages, text keys, atlas rebuild, playtest.
+Particles, puddles, messages, build, playtest.
 
 ## Status
 
 - [x] Branch created from `5.5-Main`
-- [x] Port plan + TypeScript skeleton committed
-- [ ] Phase 1 assets
+- [x] Port plan + TypeScript skeleton
+- [x] Phase 1 asset package + manifest (`docs/RINGGAGS_PHASE1_ASSETS.txt`)
+- [ ] Phase 1 binaries committed in-repo (apply zip locally, then `git add Models Game/...`)
 - [ ] Phase 2 models/restraints
 - [ ] Phase 3 drool/breath logic
 - [ ] Phase 4 plug/specials
