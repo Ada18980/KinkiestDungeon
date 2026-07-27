@@ -11,51 +11,40 @@ Integrate RingGags into vanilla so gags + drool/breath SFX work **without** the 
 ## Phases
 
 ### Phase 1 — Assets ✅
-Extract `RingGags-Phase1-Assets.zip` at repo root, then `npm run pack`.
-See `docs/RINGGAGS_PHASE1_ASSETS.txt`.
+Extract `RingGags-Phase1-Assets.zip` at repo root → `npm run pack`.
 
 ### Phase 2 — Models + restraints ✅
+`Data/ModelList_RingGags.ts` + restraint defs in `RingGags.ts` via `RG_Register()`.
 
-| File | Role |
-|------|------|
-| `Data/ModelList_RingGags.ts` | AddModel for ring/spider/open/SFX overlays |
-| `Game/src/restraint/special/RingGags.ts` | Restraint defs + `RG_Register()` |
+### Phase 3 — Drool + breath ✅
 
-**Wire-up:** Ensure `RG_Register()` runs after `KinkyDungeonRestraints` is populated.
-If the module loads too early, call it from restraint init (e.g. end of
-`KinkyDungeonRestraintsList.ts` or main game boot):
+Implemented in `Game/src/restraint/special/RingGags.ts`:
 
-```ts
-import { RG_Register } from "./special/RingGags";
-// after restraints array is ready:
-RG_Register();
-```
+| System | Behavior |
+|--------|----------|
+| **Drool logical** | Cooldown → episode S1→S2 (→S4 + cycle if DroolLock) |
+| **Drool visual** | Random DroolS1–S4 every `RG_SetDroolOverlay` |
+| **Breath** | Open mouth only + (stamina &lt;50% / &lt;25% or distraction ≥40%) |
+| **Stuffed** | Non-open gag over open → dry down stages |
+| **Puddles** | Chance on tile left when stage &gt; 0 |
+| **Cleanup** | `postRemoval` clears overlays when no OpenGag left |
 
-`Data/ModelList_*.ts` files are loaded with the rest of Data; no extra import
-if your build already includes all `Data/*.ts`.
-
-**Registered restraints (Phase 2):**  
-RingGag, HarnessRingGag, LargeRingGag, HugeRingGag, LatexRingGag,
-DragonscaleRingGag, HighsecSpiderGag, MagicSpiderGag, GoodGirlGag,
-CriersRing, TongueTrap, IncantorsMouthpiece + cosmetic DroolS1–4FX / BreathFX.
-
-### Phase 3 — Drool + breath systems
-Tick handlers for random drool visual + breath (tired/huff/aroused).
+Event types on restraints: `tick` → `ringGagEffects`, `postRemoval` → `ringGagCleanup`.
 
 ### Phase 4 — Plug/unplug + specials
-Open variants of existing plugs, inventory actions, curses.
+Open variants of plugs, inventory Plug/Unplug, DroolLock curse registration, CriersRing curse roll, NPC swap.
 
 ### Phase 5 — Polish
-Particles, puddles, messages, full playtest.
+Particles/strands, messages, effect-tile trip, full playtest.
 
 ## Status
 
-- [x] Branch + plan + skeleton
-- [x] Phase 1 asset package + manifest
-- [x] Phase 2 models + core restraints
-- [ ] Phase 1 binaries in git (local unzip + commit)
-- [ ] Explicit `RG_Register()` call site if auto-init fails
-- [ ] Phase 3 drool/breath logic
+- [x] Branch + plan
+- [x] Phase 1 asset package
+- [x] Phase 2 models + restraints
+- [x] Phase 3 drool + breath tick/overlay
+- [ ] Phase 1 binaries committed locally
+- [ ] Explicit `RG_Register()` if auto-init fails
 - [ ] Phase 4 plug/specials
 - [ ] Phase 5 polish + build
 
