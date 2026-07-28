@@ -38,12 +38,12 @@ After installation run `npm i && npm run build` in the root folder of the projec
 
 OR if you have Docker you can use Node's docker image to do the building for you. In the root folder run
 ```bash
-docker run --rm --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node:23-slim bash -c 'npm i && npm run build'
+docker run --rm --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node:24-trixie-slim bash -c 'apt-get update && apt-get install -y python3 python-is-python3 libwebp7 && npm i && npm run build'
 ```
 
 When you are developing the game you might want to run compilation each time you modify a file (so you do not have to switch to the terminal screen to run `npm run build` by hand). The `npm run buildCont` command does this for you. If you want the same with docker use the following:
 ```bash
-docker run --rm -it --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node:23-slim bash -c 'npm i && npm run buildContWSL'
+docker run --rm -it --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node:24-slim bash -c 'npm i && npm run buildContWSL'
 ```
 
 (Inside WSL the native filesystem watchers don't see what you are doing on the Windows side, that is why `buildContWSL` task uses polling to see if there are changes)
@@ -58,7 +58,7 @@ For more info on wtxpack, see the source code here: https://git.warp.tf/wtxpck.g
 ## Run
 You can start the server with the `npm run serve` command, or with docker:
 ```bash
-docker run --rm -it --name kdrunner -v "$PWD":/usr/src/app -w /usr/src/app -p 8080:8080 node:23-slim npm run serve
+docker run --rm -it --name kdrunner -v "$PWD":/usr/src/app -w /usr/src/app -p 8080:8080 node:24-slim npm run serve
 ```
 
 Afterwards open http://localhost:8080 in your browser of choice. Press ctrl+c in the terminal to stop the server when you are done.
