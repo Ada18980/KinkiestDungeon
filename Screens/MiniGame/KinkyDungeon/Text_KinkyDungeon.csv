@@ -1075,7 +1075,7 @@ KinkyDungeonCancel,"Cancel"
 KinkyDungeonFilter,"Filter"
 
 KinkyDungeonLoadModWarning1,"DANGER: Loading a mod will execute ARBITRARY CODE on your machine."
-KinkyDungeonLoadModWarning2,"Like connecting to a server, etc. Only load mods from a TRUSTED source."
+KinkyDungeonLoadModWarning2,"(e.g. connecting to a server and sending data) Only load mods from a TRUSTED source."
 
 KinkyDungeonKeyUp,Up
 KinkyDungeonKeyDown,Down
@@ -9615,7 +9615,7 @@ KinkyDungeonRemindJailPlaySubNurse0,"It's your turn, dear~"
 KinkyDungeonRemindJailPlaySubNurse1,"Looks like I'm the patient now~"
 KinkyDungeonRemindJailPlaySubNurse2,"I've been an unruly nurse..."
 KinkyDungeonRemindJailPlayNurse0,"It's time for your shot..."
-KinkyDungeonRemindJailPlayNurse1,"Why are you out of your cell?"
+KinkyDungeonRemindJailPlayNurse1,"Why are you out of your cell~?"
 KinkyDungeonRemindJailPlayNurse2,"You need my help!"
 KinkyDungeonRemindJailPlayNurseStruggle,"Those are supposed to keep you still you know..."
 KinkyDungeonRemindJailPlayNurseLeash,"You've got an appointment scheduled."
