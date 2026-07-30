@@ -10,6 +10,7 @@ let KDCollectionTabStatus = "";
 let KDCollectionTabStatusOptions = ["", "Guest"];
 let KDPromotableStatus = ["", "Guest"];
 let KDSummonableStatus = ["Servant", "Guest"];
+let CollectionZoominDebug = true;
 
 let KDFacilityCollectionDataTypes = [
 	"Prisoners",
@@ -314,6 +315,7 @@ function KDAddCollection(enemy: entity, type?: string, status?: string, servantc
 		let entry: KDCollectionEntry = {
 			id: enemy.id,
 			name: KDGetPersistentNPC(enemy.id).Name,
+			pronoun: KDGetPersistentNPC(enemy.id).pronoun,
 			sprite: (enemy.CustomSprite) || enemy.Enemy.name,
 			// @ts-ignore
 			customSprite: (enemy.CustomSprite),
@@ -333,6 +335,7 @@ function KDAddCollection(enemy: entity, type?: string, status?: string, servantc
 		};
 		enemy.CustomName = entry.name;
 		enemy.CustomNameColor = entry.color;
+		enemy.CustomPronoun = entry.pronoun
 
 		// Custom outfit
 		if (!status && enemy.outfitBound) entry.outfit = enemy.outfitBound;
@@ -444,6 +447,7 @@ function KDGetCharacterEntity(C: Character): entity {
 let KDRenameNPC = false;
 
 let KDToggleBigView = false;
+let KDToggleCollectionInfo = false;
 
 /**
  * @param value
@@ -458,7 +462,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		Left: x,
 		Top: y,
 		Width: 440,
-		Height: KDToggleBigView ? 830 : 730,
+		Height: KDToggleBigView || KDToggleCollectionInfo ? 830 : 730,
 		Color: KDBaseBlack,
 		LineWidth: 1,
 		zIndex: -20,
@@ -468,23 +472,26 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		Left: x,
 		Top: y,
 		Width: 440,
-		Height: KDToggleBigView ? 830 : 730,
+		Height: KDToggleBigView || KDToggleCollectionInfo ? 830 : 730,
 		Color: "#888888",
 		LineWidth: 1,
 		zIndex: -19,
 		alpha: 0.9
 	});
 
+	let II = 0;
+	let spacing = 90;
 	if (DrawButtonKDEx("toggleBig", () => {
 		KDToggleBigView = !KDToggleBigView;
 		return true;
-	}, true, x - 90, y, 80, 80, "", KDBaseWhite,
+	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/vision.png", undefined, undefined,
 		!KDToggleBigView, KDButtonColorIntense, undefined, undefined, {
 			centered: true
 		})) {
 
-		DrawTextFitKD(TextGet("KDZoomNPC"), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
+		DrawTextFitKD(TextGet("KDZoomNPC"), x - 100, y + spacing * (II-0.5), 500, 
+		KDBaseWhite, KDTextGray0, undefined, "right");
 	}
 	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", () => {
 		if (KDSoundEnabled())
@@ -553,12 +560,25 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
 		KDDressWardrobeChar(KDSpeakerNPC, true);
 		return true;
-	}, true, x - 90, y + 90, 80, 80, "", KDBaseWhite,
+	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Dress.png", undefined, undefined,
 		true, KDButtonColorIntense, undefined, undefined, {
 			centered: true
 		})) {
-		DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
+		DrawTextFitKD(TextGet("KDDressNPC"), x -100, y + spacing * (II-0.5), 500, 
+		KDBaseWhite, KDTextGray0, undefined, "right");
+	}
+	if (DrawButtonKDEx("toggleInfo", () => {
+		KDToggleCollectionInfo = !KDToggleCollectionInfo;
+		return true;
+	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
+		KinkyDungeonRootDirectory + "UI/CollectionInfo.png", undefined, undefined,
+		!KDToggleCollectionInfo, KDButtonColorIntense, undefined, undefined, {
+			centered: true
+		})) {
+
+		DrawTextFitKD(TextGet("KDInfoNPC"), x - 100, y + spacing * (II-0.5), 500, 
+		KDBaseWhite, KDTextGray0, undefined, "right");
 	}
 
 	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("renameNPC", () => {
@@ -566,12 +586,13 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Unlock" + ".ogg");
 		KDRenameNPC = !KDRenameNPC;
 		return true;
-	}, true, x - 90, y + 180, 80, 80, "", KDBaseWhite,
+	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Rename.png", undefined, undefined,
 		!KDRenameNPC, KDButtonColorIntense, undefined, undefined, {
 			centered: true
 		})) {
-		DrawTextFitKD(TextGet("KDRenameNPC"), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
+		DrawTextFitKD(TextGet("KDRenameNPC"), x - 100, y + spacing * (II-0.5), 500, 
+		KDBaseWhite, KDTextGray0, undefined, "right");
 	}
 
 
@@ -604,6 +625,17 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 
 	if (KDRenameNPC) {
+		KDDrawPronounPicker(
+			x + 220 + KDHUDGlobals.PronounPicker_CollectionOptions.offX, y + 50 + 20, KDGameGlobals.Pronouns, 
+			value.pronoun|| "She", (pronoun) => {
+				
+				KDSendInput("renamenpc", {
+					id: value.id,
+					newPronoun: pronoun,
+				});
+			}, KDHUDGlobals.PronounPicker_CollectionOptions
+		);
+		
 		let TF = KDTextField("RenameNPC", x + 220 - 150, y + 50 - 36, 300,
 			36, "text", "", "45");
 		if (TF.Created) {
@@ -614,68 +646,125 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 				});
 			};
 		}
-		if (value.origname)
+		if (value.origname || value.origpronoun)
 			DrawButtonKDEx("resetname", () => {
 				KDRenameNPC = false;
 				KDSendInput("renamenpc", {
 					id: value.id,
 					newName: value.origname,
+					newPronoun: value.origpronoun || ""
 				});
 				return true;
-			}, true, x + 220 - 130, y + 50 + 18, 260, 24, TextGet("KDRenameOrigNPC")
-				.replace("NME", value.origname), KDBaseWhite);
+			}, true, x + 220 - 130, y + 50 + 70, 260, 24, 
+			TextGet("KDRenameOrigNPC")
+				.replace("NME", value.origname != undefined ? value.origname : value.name), KDBaseWhite);
 	}
-	else DrawTextFitKD(value.name, x + 220, y + 50 + ((tab || index) ? 0 : -12), 500,
+	else {
+		DrawTextFitKD(value.name, x + 220, y + 50 + ((tab || index) ? 0 : -12), 500,
 		KDBaseWhite,
 		(value.color && value.color != "#ffffff") ? value.color : KDTextGray05,
 		36);
+	}
 
 
 	if (!KDToggleBigView) {
-		let II = 0;
-		DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 - 25 + 20*II++, 500, KDBaseWhite, KDTextGray05, 24);
 
-		if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.has(value.Faction)))
-			DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
-		else II++;
+		if (KDToggleCollectionInfo) {
+			let II = -2;
+			DrawTextFitKD(TextGet("KDCollectionInfo_Type") + TextGet("Name" + enemyType.name), x + 20, 
+			y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
+			DrawTextFitKD(TextGet("KDCollectionInfo_Pronouns") + TextGet("KDPronoun_" + (value.pronoun || "")), 
+			x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 
-		let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/KDOpinionThreshold)));
-		let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion) + ` (${Math.round(KDGetModifiedOpinionID(value.id))})`;
-		DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
+			if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.has(value.Faction)))
+				DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), 
+			x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
+			else II++;
 
-		if (KDIsNPCPersistent(value.id)) {
-			if (KDGetPersistentNPC(value.id)?.captured) {
-				str = TextGet((KDGetPersistentNPC(value.id)?.captureFaction) ? "KDLastNPCLocationCaptured" : "KDLastNPCLocationCapturedNone")
-					.replace("FCTN", TextGet("KinkyDungeonFaction" + KDGetPersistentNPC(value.id)?.captureFaction));
+			let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/KDOpinionThreshold)));
+			let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion) + ` (${Math.round(KDGetModifiedOpinionID(value.id))})`;
+			DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
+			DrawTextFitKD(TextGet("KDCollectionInfo_Personality") + TextGet("KDPersonality" + value.personality), x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
+
+			if (KDIsNPCPersistent(value.id)) {
+				if (KDGetPersistentNPC(value.id)?.captured) {
+					str = TextGet((KDGetPersistentNPC(value.id)?.captureFaction) ? "KDLastNPCLocationCaptured" : "KDLastNPCLocationCapturedNone")
+						.replace("FCTN", TextGet("KinkyDungeonFaction" + KDGetPersistentNPC(value.id)?.captureFaction));
+					DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
+				}
+			}
+
+			let npcLoc = KDGetNPCLocation(value.id);
+			if (npcLoc) {
+				let currLoc = KDGetCurrentLocation();
+				let dungeon = npcLoc.room || KDGameData.JourneyMap[npcLoc.mapX + ',' + npcLoc.mapY]?.Checkpoint || 'grv';
+				str = TextGet((KDCompareLocation(currLoc, npcLoc) && KinkyDungeonFindID(value.id)) ? "KDLastNPCLocationSame" :
+				(KDCompareLocation(currLoc, npcLoc) ? "KDLastNPCLocationNotSpawned" : "KDLastNPCLocation"))
+					.replace("FLR", npcLoc.mapY + "")
+					.replace("LOC", KDPersonalAlt[npcLoc.room]
+						? KDGetLairName(npcLoc.room)
+						: TextGet("DungeonName" + dungeon));
 				DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 			}
-		}
 
+			/*DrawTextFitKD(TextGet("KDPronoun_" + (value.pronoun || "")), x + 220, y + 50 + ((tab || index) ? 0 : -12) + 24, 500,
+				KDBaseWhite,
+				undefined,
+				12);*/
+		} else {
 
+			let II = 0;
+			DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 - 25 + 20*II++, 500, KDBaseWhite, KDTextGray05, 24);
 
-		let npcLoc = KDGetNPCLocation(value.id);
-		if (npcLoc) {
-			let currLoc = KDGetCurrentLocation();
-			let dungeon = npcLoc.room || KDGameData.JourneyMap[npcLoc.mapX + ',' + npcLoc.mapY]?.Checkpoint || 'grv';
-			str = TextGet((KDCompareLocation(currLoc, npcLoc) && KinkyDungeonFindID(value.id)) ? "KDLastNPCLocationSame" :
-			(KDCompareLocation(currLoc, npcLoc) ? "KDLastNPCLocationNotSpawned" : "KDLastNPCLocation"))
-				.replace("FLR", npcLoc.mapY + "")
-				.replace("LOC", KDPersonalAlt[npcLoc.room]
-					? KDGetLairName(npcLoc.room)
-					: TextGet("DungeonName" + dungeon));
+			if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.has(value.Faction)))
+				DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
+			else II++;
+
+			let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/KDOpinionThreshold)));
+			let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion) + ` (${Math.round(KDGetModifiedOpinionID(value.id))})`;
 			DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
-		}
-		if (KDDrawNPCBars(value, x + 0, y + 730, 440) > 0)
-			if (KDGameData.Collection[value.id + ""] && value.escapegrace) {
-				let icon = "escapegrace";
-				KDDraw(kdcanvas, kdpixisprites, value.name + "_escp," + value.id,
-					KinkyDungeonRootDirectory + "UI/" + icon + ".png",
-					x - 72,
-					y + 730,
-					72, 72, undefined, {
-						zIndex: 110
-					});
+
+			if (KDIsNPCPersistent(value.id)) {
+				if (KDGetPersistentNPC(value.id)?.captured) {
+					str = TextGet((KDGetPersistentNPC(value.id)?.captureFaction) ? "KDLastNPCLocationCaptured" : "KDLastNPCLocationCapturedNone")
+						.replace("FCTN", TextGet("KinkyDungeonFaction" + KDGetPersistentNPC(value.id)?.captureFaction));
+					DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
+				}
 			}
+
+			let npcLoc = KDGetNPCLocation(value.id);
+			if (npcLoc) {
+				let currLoc = KDGetCurrentLocation();
+				let dungeon = npcLoc.room || KDGameData.JourneyMap[npcLoc.mapX + ',' + npcLoc.mapY]?.Checkpoint || 'grv';
+				str = TextGet((KDCompareLocation(currLoc, npcLoc) && KinkyDungeonFindID(value.id)) ? "KDLastNPCLocationSame" :
+				(KDCompareLocation(currLoc, npcLoc) ? "KDLastNPCLocationNotSpawned" : "KDLastNPCLocation"))
+					.replace("FLR", npcLoc.mapY + "")
+					.replace("LOC", KDPersonalAlt[npcLoc.room]
+						? KDGetLairName(npcLoc.room)
+						: TextGet("DungeonName" + dungeon));
+				DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
+			}
+
+			
+		
+			if (KDDrawNPCBars(value, x + 0, y + 730, 440) > 0)
+				if (KDGameData.Collection[value.id + ""] && value.escapegrace) {
+					let icon = "escapegrace";
+					KDDraw(kdcanvas, kdpixisprites, value.name + "_escp," + value.id,
+						KinkyDungeonRootDirectory + "UI/" + icon + ".png",
+						x - 72,
+						y + 730,
+						72, 72, undefined, {
+							zIndex: 110
+						});
+				}
+
+		}
+		
+		
+
+
+
 	}
 
 
@@ -692,6 +781,28 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 	if (KDSpeakerNPC) {
 		if (KinkyDungeonCheckClothesLoss || KDRefreshCharacter.get(KDSpeakerNPC)) {
+			if (collectionNPCContainer.mask) {
+				let oldmask = collectionNPCContainer.mask;
+				collectionNPCContainer.mask = null;
+				//@ts-ignore
+				oldmask.destroy();
+			}
+
+			// Create a graphics object to define our mask
+			let mask = new PIXI.Graphics();
+			// Add the rectangular area to show
+			mask.beginFill(0xffffff);
+
+			mask.drawRect(
+				x,
+				y,
+				440,
+				830
+			);
+			mask.endFill();
+			collectionNPCContainer.mask = mask;
+
+
 			if (!NPCTags.get(KDSpeakerNPC)) {
 				NPCTags.set(KDSpeakerNPC, new Map());
 			}
@@ -700,12 +811,78 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		}
 		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, 
 			KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
-		DrawCharacter(KDSpeakerNPC,
+
+		
+
+		if (KDToggleBigView && CollectionZoominDebug) {
+			let zoomX = 0;
+			let zoomY = 0;
+			let zoomed = false;
+			let width = 440;
+			let height = KDToggleBigView || KDToggleCollectionInfo ? 830 : 730;
+			let spriteX = x + 20 + (KDToggleBigView ? 0 : 100);
+			let spriteY = y + 60;
+			
+			let spriteZoom = NPCTooltipZoomCurrent * (800)/1000;
+
+			if (MouseIn(
+				x,
+				y,
+				width,
+				height
+			)) {
+				zoomX = 0.8 - 1.6*(MouseX - (x))/width;
+				zoomY = 1 - 2*(MouseY - (y))/height;
+				zoomed = true;
+				NPCTooltipZoomIn = true;
+
+				if (NPCTooltipZoomCurrent == NPCTooltipZoomRatio) {
+					NPCTooltipZoomX = zoomX;
+					NPCTooltipZoomY = zoomY;
+				} else {
+					if (NPCTooltipZoomCurrent < NPCTooltipZoomRatio) {
+						NPCTooltipZoomCurrent = Math.min(NPCTooltipZoomRatio, NPCTooltipZoomCurrent + 2.4 * KDDrawDelta*0.001);
+					}
+
+
+					if (NPCTooltipZoomX > zoomX) NPCTooltipZoomX = Math.max(zoomX, NPCTooltipZoomX - 2.4 * KDDrawDelta*0.001);
+					else if (NPCTooltipZoomX < zoomX) NPCTooltipZoomX = Math.min(zoomX, NPCTooltipZoomX + 2.4 * KDDrawDelta*0.001);
+					if (NPCTooltipZoomY > zoomY) NPCTooltipZoomY = Math.max(zoomY, NPCTooltipZoomY - 2.4 * KDDrawDelta*0.001);
+					else if (NPCTooltipZoomY < zoomY) NPCTooltipZoomY = Math.min(zoomY, NPCTooltipZoomY + 2.4 * KDDrawDelta*0.001);
+				}
+			}
+
+
+			
+
+			let mesh = DrawCharacter(KDSpeakerNPC,
+				 (NPCTooltipZoomX * 500 * (width)/500)
+					+ spriteX,
+				(NPCTooltipZoomY * 1000 * (height)/1000)
+					+ spriteY,
+				KDToggleBigView ? (800/1000) : (400/1000), false, 
+				collectionNPCContainer, undefined, undefined, 120, false);
+			if (mesh) {
+				mesh.scale.x = spriteZoom;
+				mesh.scale.y = spriteZoom;
+			}
+		} else DrawCharacter(KDSpeakerNPC,
 			x + 20 + (KDToggleBigView ? 0 : 100),
 			y + 60,
 			KDToggleBigView ? (800/1000) : (400/1000), true, undefined, PIXI.SCALE_MODES.NEAREST, [], undefined, false);
 
-		if (!KDToggleBigView) {
+		if (NPCTooltipZoomIn) {
+			NPCTooltipZoomIn = false;
+		} else {
+			NPCTooltipZoomCurrent = Math.max(1, NPCTooltipZoomCurrent - 1.4 * KDDrawDelta*0.001);
+			if (NPCTooltipZoomX > 0) NPCTooltipZoomX = Math.max(0, NPCTooltipZoomX - 1.4 * KDDrawDelta*0.001);
+			else if (NPCTooltipZoomX < 0) NPCTooltipZoomX = Math.min(0, NPCTooltipZoomX + 1.4 * KDDrawDelta*0.001);
+			if (NPCTooltipZoomY > 0) NPCTooltipZoomY = Math.max(0, NPCTooltipZoomY - 1.4 * KDDrawDelta*0.001);
+			else if (NPCTooltipZoomY < 0) NPCTooltipZoomY = Math.min(0, NPCTooltipZoomY + 1.4 * KDDrawDelta*0.001);
+		}
+
+
+		if (!KDToggleBigView && !KDToggleCollectionInfo) {
 			let III = 0;
 			let buttonSpacing = 85;
 

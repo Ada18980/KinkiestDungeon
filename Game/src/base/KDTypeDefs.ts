@@ -856,6 +856,10 @@ interface enemy extends KDHasTags {
 
 	nameList?: string,
 
+	
+	/** Pronoun list */
+	pronouns?: Record<string, number>,
+
 	/** Multiplier to tease damage */
 	teaseMod?: number,
 
@@ -1922,6 +1926,7 @@ interface entity {
 	created?: boolean,
 	/** Creation script has run */
 	ranOnSpawn?: boolean,
+
 	
 
 	/** Amount of sound the entity is currently producing */
@@ -2930,6 +2935,7 @@ interface KinkyDungeonSave {
 
 		outfit: string,
 		name: string,
+		pronoun: string,
 		level: number,
 		sp: string,
 		mp: string,
@@ -4261,6 +4267,8 @@ interface KDCollectionEntry {
 	name: string,
 	refreshSprite?: boolean,
 	origname?: string,
+	origpronoun?: string,
+	pronoun?: string,
 	color: string,
 	type: string,
 	sprite: string,

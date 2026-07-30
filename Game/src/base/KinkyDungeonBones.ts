@@ -1462,6 +1462,7 @@ function KDProcessCustomPatron(Enemy: enemy, e: entity, chanceBoost: number, mak
 			e.CustomName = custom.name;
 			e.CustomNameColor = custom.color;
 			e.CustomSprite = custom.customSprite;
+			e.CustomPronoun = custom.customPronoun
 			if (custom.customPlayLine) {
 				e.playLine = custom.customPlayLine;
 			}
@@ -1486,6 +1487,54 @@ function KDProcessCustomPatron(Enemy: enemy, e: entity, chanceBoost: number, mak
 	return undefined;
 }
 
+
+function KDEnemyRollPronouns(enemy: entity, force?: string): string {
+	if (!enemy) return undefined;
+	let NPC = KDIsNPCPersistent(enemy.id) ? KDGetPersistentNPC(enemy.id) : undefined
+	if (!enemy.CustomName && enemy.CustomPronoun == undefined) {
+		if (NPC?.pronoun != undefined) {
+			enemy.CustomPronoun = NPC.pronoun;
+		} else if (!NPC) {
+			if (force) {
+				enemy.CustomPronoun = force;
+			}
+			else enemy.CustomPronoun = KDGeneratePronoun(enemy);
+		}
+	}
+	return enemy.CustomPronoun
+}
+
+function KDGeneratePronoun(enemy: entity) {
+	let pronouns: Record<string, number> = {
+		"": 1.0,
+	}
+
+	let force: string = undefined;
+
+	let data = {
+		entity: enemy,
+		pronouns: pronouns,
+		force: force,
+		custom: false,
+	}
+	if (enemy.Enemy?.pronouns) {
+		data.pronouns = enemy.Enemy.pronouns;
+		data.custom = true;
+	} else {
+		if (!enemy.Enemy?.nonHumanoid) data.pronouns = {It: 1.0};
+		else {
+			pronouns.They = KDEnemyGlobals.Pronoun_TheyThemChance;
+			if (KDIsSubmissive(enemy)) {
+				pronouns.It = KDEnemyGlobals.Pronoun_Subby_ItChance;
+			}
+		}
+	}
+
+	KinkyDungeonSendEvent("genPronouns", data);
+
+	if (data.force) return data.force;
+	return KDGetByWeight(data.pronouns);
+}
 
 /**
  * @param pets

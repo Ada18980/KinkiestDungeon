@@ -268,6 +268,14 @@ let KDInteractOverrides: Record<string, InteractOverrideCallback> = {
 		optionImages.Interact = "Chest";
 		optionText.Interact = TextGet("KDContextMenu_Chest");
 	},
+	d: (tile, tileType, x, y, draw, options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter) => {
+		optionImages.Interact = "CloseDoor";
+		optionText.Interact = TextGet("KDContextMenu_CloseDoor");
+	},
+	D: (tile, tileType, x, y, draw, options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter) => {
+		optionImages.Interact = "OpenDoor";
+		optionText.Interact = TextGet("KDContextMenu_OpenDoor");
+	},
 	C: (tile, tileType, x, y, draw, options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter) => {
 		optionImages.Interact = "Chest";
 		optionText.Interact = TextGet("KDContextMenu_Chest");

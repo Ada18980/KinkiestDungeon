@@ -1897,6 +1897,7 @@ function KinkyDungeonRun() {
 			|| (localStorage.getItem('KDLastSaveSlot') !== null && loadedsaveslots[parseInt(localStorage.getItem('KDLastSaveSlot')) - 1])) ? KDBaseWhite : "pink", "");
 			DrawButtonKDEx("GameStart", () => {
 				KinkyDungeonState = "Name";
+				KDGameData.PlayerPronoun = localStorage.getItem('KDLastPronoun');
 				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 4;
 				let emptySlot = undefined;
 				for (var i = 1; i <= (saveSlotsPerPage*maxSaveSlotPages); i++) {
@@ -2695,16 +2696,21 @@ function KinkyDungeonRun() {
 	} if (KinkyDungeonState == "Name") {
 		if (KDSaveSlot < 1) KDSaveSlot = 1;
 
-		DrawTextFitKD(TextGet("KDName"), 975 + 550/2, 150, 550, KDBaseWhite, KDTextGray1, 32, "center");
+		DrawTextFitKD(TextGet("KDName"), 975 + 550/2, 125, 550, KDBaseWhite, KDTextGray1, 32, "center");
 
 		let NF = KDTextField("PlayerNameField",
-			975, 250, 550, 64
+			975, 160, 550, 64
 		);
 		if (NF.Created) {
 			ElementValue("PlayerNameField",
 				localStorage.getItem("PlayerName") || "Ada"
 			);
 		}
+		
+		KDDrawPronounPicker(975 + 550/2, 250, KDGameGlobals.Pronouns, KDGameData.PlayerPronoun, (pronoun) => {
+			KDGameData.PlayerPronoun = pronoun;
+			localStorage.setItem('KDLastPronoun', pronoun);
+		});
 		KDDrawWardrobeButton();
 
 		DrawButtonKDEx("randomName", () => {
@@ -5078,10 +5084,13 @@ function KDDrawLoadMenu() {
 	if (loadedSaveforPreview?.KDGameData) {
 		// Player Name and Class
 		DrawTextFitKD(loadedSaveforPreview.KDGameData.PlayerName, CombarXX + 680, YYstart + 630, 400, KDBaseWhite, undefined, 40);
+		
+		DrawTextFitKD(TextGet("KDPronoun_" + (loadedSaveforPreview.KDGameData.PlayerPronoun || "")), 
+			CombarXX + 680, YYstart + 655, 400, KDBaseWhite, undefined, 12);
 		if (loadedSaveforPreview.KDGameData.Class)
 			DrawTextFitKD(
 				TextGet("KinkyDungeonStatMC_" + loadedSaveforPreview.KDGameData.Class),
-				CombarXX + 680, YYstart + 665, 400, KDBaseWhite, undefined, 28);
+				CombarXX + 680, YYstart + 670, 400, KDBaseWhite, undefined, 28);
 
 		// Player Paper Doll
 		if (ModelPreviewLoaded) {
@@ -6847,6 +6856,7 @@ function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
 
 		outfit: KDGameData.Outfit,
 		name: KDGameData.PlayerName,
+		pronoun: KDGameData.PlayerPronoun,
 		level: MiniGameKinkyDungeonLevel,
 		sp: Math.round(KinkyDungeonStatStamina * 10) + '/' + KinkyDungeonStatStaminaMax * 10,
 		mp: Math.round(KinkyDungeonStatMana * 10) + '/' + KinkyDungeonStatManaMax * 10,

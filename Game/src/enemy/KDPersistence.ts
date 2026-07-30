@@ -3,6 +3,8 @@ interface KDPersistentNPC {
 	Name: string,
 	id: number,
 	entity: entity,
+	/** pronoun */
+	pronoun?: string,
 	/** the 'true form' of an NPC, stored and used only by scripts */
 	trueEntity?: entity,
 	mapX: number, mapY: number,

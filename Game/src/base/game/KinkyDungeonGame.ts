@@ -1,5 +1,11 @@
 "use strict";
 
+let KDGameGlobals = {
+	/*
+	Currently supported pronouns
+	*/
+	Pronouns: ["She", "They", "It"],
+};
 
 let KDFocusableTextFields = [
 	"PerksFilter",
@@ -4772,3 +4778,4 @@ function KDDoMumble(player: entity, cancel: boolean) {
 
 	
 }
+

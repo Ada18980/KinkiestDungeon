@@ -77,6 +77,7 @@ Must do
 - species perks
 
 5.5.1
+- Added pronoun selection to players and NPCs in collection
 - Added "Bra/Panty/Sock/None" field to expert tools, allowing to specify the type of underwear an item is. Currently unused, but will be used for future stripping mechanics
 - Resisting bondage now reduces your balance
 - Enemies will try to prioritize different restraints when hitting you based on what you were most recently doing to them

@@ -1,6 +1,11 @@
 "use strict";
 
 
+let KDEnemyGlobals = {
+	Pronoun_TheyThemChance: 0.1,
+	Pronoun_Subby_ItChance: 0.1,
+};
+
 let KDTooltipListExtraCutoff = 17;
 let KDTooltipListExtraCutoffHigh = 30;
 let KDTooltipListExtraPage = 10;

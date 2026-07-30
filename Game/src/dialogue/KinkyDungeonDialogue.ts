@@ -591,6 +591,8 @@ function DialogueCreateEnemy(x: number, y: number, Name: string, persistentid?: 
 	Enemy.visual_x = x;
 	Enemy.visual_y = y;
 
+	KDEnemyRollPronouns(Enemy);
+
 	return KDAddNewEntity(Enemy, persistentid != undefined, undefined, noLoadout);
 }
 

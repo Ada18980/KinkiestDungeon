@@ -804,27 +804,66 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	},
 	"renamenpc": (data) => {
 			let origname = KDGameData.Collection[data.id]?.origname;
-			if (KDGameData.Collection[data.id]
-				&& KDGameData.Collection[data.id].name != data.newName) {
-				if (!origname) origname = KDGameData.Collection[data.id].name;
-				KDGameData.Collection[data.id].name = data.newName;
-			}
-			if (KDPersistentNPCs[data.id]
-				&& KDPersistentNPCs[data.id].Name != data.newName) {
-				if (!origname) origname = KDPersistentNPCs[data.id].Name;
-				KDPersistentNPCs[data.id].Name = data.newName;
-			}
-			if (KDPersistentNPCs[data.id]?.entity
-				&& KDPersistentNPCs[data.id].entity.CustomName != data.newName) {
-				if (!origname) origname = KDPersistentNPCs[data.id].entity.CustomName;
-				KDPersistentNPCs[data.id].entity.CustomName = data.newName;
-			}
-			if (KDPersistentNPCs[data.id]?.trueEntity
-				&& KDPersistentNPCs[data.id].trueEntity.CustomName != data.newName) {
-				if (!origname) origname = KDPersistentNPCs[data.id].trueEntity.CustomName;
-				KDPersistentNPCs[data.id].trueEntity.CustomName = data.newName;
-			}
+			let origpronoun = KDGameData.Collection[data.id]?.origpronoun;
 
+			
+			
+			if (data.newName) {
+				if (KDGameData.Collection[data.id]
+					&& KDGameData.Collection[data.id].name != data.newName) {
+					if (!origname) origname = KDGameData.Collection[data.id].name;
+					KDGameData.Collection[data.id].name = data.newName;
+				}
+				if (KDPersistentNPCs[data.id]
+					&& KDPersistentNPCs[data.id].Name != data.newName) {
+					if (!origname) origname = KDPersistentNPCs[data.id].Name;
+					KDPersistentNPCs[data.id].Name = data.newName;
+				}
+				if (KDPersistentNPCs[data.id]?.entity
+					&& KDPersistentNPCs[data.id].entity.CustomName != data.newName) {
+					if (!origname) origname = KDPersistentNPCs[data.id].entity.CustomName;
+					KDPersistentNPCs[data.id].entity.CustomName = data.newName;
+				}
+				if (KDPersistentNPCs[data.id]?.trueEntity
+					&& KDPersistentNPCs[data.id].trueEntity.CustomName != data.newName) {
+					if (!origname) origname = KDPersistentNPCs[data.id].trueEntity.CustomName;
+					KDPersistentNPCs[data.id].trueEntity.CustomName = data.newName;
+				}
+			}
+			
+
+
+			if (data.newPronoun) {
+				if (KDPersistentNPCs[data.id]?.entity
+					&& KDPersistentNPCs[data.id].entity.CustomPronoun != data.newPronoun) {
+					if (!origpronoun) origpronoun = KDPersistentNPCs[data.id].entity.CustomPronoun;
+					KDPersistentNPCs[data.id].entity.CustomPronoun = data.newPronoun;
+				}
+				
+				if (KDPersistentNPCs[data.id]?.trueEntity
+					&& KDPersistentNPCs[data.id].trueEntity.CustomPronoun != data.newPronoun) {
+					if (!origpronoun) origpronoun = KDPersistentNPCs[data.id].trueEntity.CustomPronoun;
+					KDPersistentNPCs[data.id].trueEntity.CustomPronoun = data.newPronoun;
+				}
+				if (KDPersistentNPCs[data.id]
+					&& KDPersistentNPCs[data.id].pronoun != data.newPronoun) {
+					if (!origpronoun) origpronoun = KDPersistentNPCs[data.id].pronoun;
+					KDPersistentNPCs[data.id].pronoun = data.newPronoun;
+				}
+				if (KDGameData.Collection[data.id]
+					&& KDGameData.Collection[data.id].pronoun != data.newPronoun) {
+					if (!origpronoun) origpronoun = KDGameData.Collection[data.id].pronoun;
+					KDGameData.Collection[data.id].pronoun = data.newPronoun;
+				}
+			}
+			
+			
+
+			if (origpronoun) {
+				if (KDGameData.Collection[data.id]) {
+					KDGameData.Collection[data.id].origpronoun = origpronoun;
+				}
+			}
 			if (origname) {
 				if (KDGameData.Collection[data.id]) {
 					KDGameData.Collection[data.id].origname = origname;

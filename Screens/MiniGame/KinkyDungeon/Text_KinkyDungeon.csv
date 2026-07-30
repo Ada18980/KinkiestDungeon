@@ -33199,6 +33199,8 @@ KDWToolsLayerAbbrText,"Layer Text: "
 
 KDContextMenu_None,No Actions Available
 KDContextMenu_Interact,Interact
+KDContextMenu_CloseDoor,Close Door
+KDContextMenu_OpenDoor,Open Door
 KDContextMenu_Chest,Open Container
 KDContextMenu_Talk,Talk
 KDContextMenu_MoveTo,Move To
@@ -34118,3 +34120,14 @@ KDRandomText_Clamp2,"A light pressure on each nipple keeps you constantly aware 
 
 KDRandomText_ClampV0,"Your nipple stay sensitive from the gentle buzz of your toys."
 KDRandomText_ClampV1,"A gentle buzz reminds you of the toys on your nipples."
+
+KDPronoun_,"She/Her"
+KDPronoun_She,"She/Her"
+KDPronoun_They,"They/Them"
+KDPronoun_It,"It/Its"
+
+KDInfoNPC,Detailed Info
+
+KDCollectionInfo_Type,"Class: "
+KDCollectionInfo_Pronouns,"Pronouns: "
+KDCollectionInfo_Personality,"Personality: "

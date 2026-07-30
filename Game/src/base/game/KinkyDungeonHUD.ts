@@ -3,6 +3,19 @@ let KDUISmoothness = 6;
 
 let KDInteracting = false;
 
+let KDHUDGlobals = {
+	PronounPicker_SpacingX: 170,
+	PronounPicker_Fontsize: 18,
+	PronounPicker_Size: 50,
+	PronounPicker_ShowInCollectionByDefault: true,
+	PronounPicker_CollectionOptions: {
+		spacing: 150,
+		fontsize: 16,
+		size: 42,
+		offX: 25,
+	},
+};
+
 let KinkyDungeonStruggleGroups: StruggleGroup[] = [];
 let KinkyDungeonStruggleGroupsBase = [
 	"ItemDevices",
@@ -3873,4 +3886,24 @@ let KDAlreadyEquippedWeaponErrorIcon = "GrabClosed";
 
 function KDDrawResourcesQuick() {
 	return !KinkyDungeonTargetingSpell;
+}
+
+function KDDrawPronounPicker(X: number, Y: number, list: string[], current: string, callback: (pronoun: string) => void, params?: Record<string, number|string>) {
+	let count = list.length;
+	let i = 0;
+	let spacing = params?.spacing as number || KDHUDGlobals.PronounPicker_SpacingX;
+	let size = params?.size as number || KDHUDGlobals.PronounPicker_Size;
+	let fontsize = params?.fontsize as number || KDHUDGlobals.PronounPicker_Fontsize;
+	let textcolor = params?.color as string || KDTextWhite;
+	for (let pronoun of list) {
+		DrawCheckboxKDEx("pronounlist" + X + pronoun, 
+			(d) => {
+				callback(pronoun);
+				return true;
+			}, true, X - (!params?.vertical ? (0.5 * (count) * spacing - spacing * i++) : (spacing * 0.5)), 
+			Y + (params?.vertical ? params.spacingY as number * i++ : 0), 
+			size, size, TextGet("KDPronoun_" + pronoun), (!pronoun && !current) || current == pronoun, undefined, textcolor, undefined, {
+				fontSize: fontsize
+			});
+	}
 }

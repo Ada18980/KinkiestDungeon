@@ -126,6 +126,8 @@ let kdlightmapGFX = null;
 
 let npcTooltipContainer = new PIXI.Container();
 npcTooltipContainer.zIndex = 120;
+let collectionNPCContainer = new PIXI.Container();
+collectionNPCContainer.zIndex = 120;
 
 let kdbrightnessmap = null;
 let kdbrightnessmapGFX = null;
@@ -247,6 +249,7 @@ kdcanvas.addChild(kdpalettecontainer);
 kdcanvas.addChild(kdBGMask);
 
 kdcanvas.addChild(npcTooltipContainer);
+kdcanvas.addChild(collectionNPCContainer);
 
 //kdcanvas.addChild(new PIXI.Sprite(kdlightmap));
 
@@ -5511,14 +5514,14 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 			let spriteY = tooltipY + YY - 9;
 			let spriteW = TooltipWidth;
 			let spriteH = listItem.size;
-			let spriteZoom = NPCTooltipZoomCurrent * (listItem.size)/1000;
+			let spriteZoom = NPCTooltipZoomCurrent;
 
 			if (listItem.inspect) {
 				spriteX -= TooltipWidth * 1.5;
 				spriteY = (PIXIHeight - KDInspectTooltipZoomedSize)/2
 				spriteW = TooltipWidth * 2;
 				spriteH = KDInspectTooltipZoomedSize;
-				spriteZoom = NPCTooltipZoomCurrent * (KDInspectTooltipZoomedSize)/1000;;
+				spriteZoom = NPCTooltipZoomCurrent;
 			}
 
 			// We refresh
@@ -5526,6 +5529,13 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 				if (!KDDrewEnemyTooltip) {
 					KDRefreshCharacter.set(listItem.npcSprite, true);
 
+					
+					if (npcTooltipContainer.mask) {
+						let oldmask = npcTooltipContainer.mask;
+						npcTooltipContainer.mask = null;
+						//@ts-ignore
+						oldmask.destroy();
+					}
 					
 					// Create a graphics object to define our mask
 					let mask = new PIXI.Graphics();
@@ -5584,15 +5594,21 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 
 			
 
-			DrawCharacter(listItem.npcSprite,
-				(NPCTooltipZoomCurrent > 1 ? (NPCTooltipZoomCurrent - 1)/(NPCTooltipZoomRatio - 1)* -250 * (TooltipWidth)/500 : 0)
-					+ (NPCTooltipZoomX * 500 * (TooltipWidth)/500)
-					+ spriteX,
-				(NPCTooltipZoomCurrent > 1 ? (NPCTooltipZoomCurrent - 1)/(NPCTooltipZoomRatio - 1)* -500 * (listItem.size)/1000 : 0)
-					+ (NPCTooltipZoomY * 1000 * (listItem.size)/1000)
-					+ spriteY,
-				spriteZoom, false, 
+			let xx = (NPCTooltipZoomX * 500 * (TooltipWidth)/500)
+					+ spriteX;
+			let yy = (NPCTooltipZoomY * 1000 * (listItem.size)/1000)
+					+ spriteY;
+			let mesh = DrawCharacter(listItem.npcSprite,
+				xx,
+				yy,
+				(listItem.size)/1000, false, 
 				npcTooltipContainer, undefined, undefined, 120, false);
+
+			if (mesh) {
+				let zum = (listItem.size)/1000;
+				mesh.scale.x = spriteZoom;
+				mesh.scale.y = spriteZoom;
+			}
 
 		}
 		YY += extra + listItem.size;
