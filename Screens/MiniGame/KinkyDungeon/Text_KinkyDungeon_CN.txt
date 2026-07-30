@@ -1335,13 +1335,17 @@ ${You}是个不听话的宠物，应该穿上宠物服！
 - All factions are hostile and united against you.
 所有派系都对你敌对并联合起来反对你。
 - Bandit
+强盗装
+:: KinkyDungeonStatBandit
 强盗
-# :: KinkyDungeonStatBandit
-# :: NamePrisonerBandit
-# :: NameBandit
+:: NamePrisonerBandit
+强盗
+:: NameBandit
+强盗
 :: m_Bandit
 强盗装
-# :: KDPaletteBandit
+:: KDPaletteBandit
+强盗
 - Start friendly to bandits, and hostile to most other factions.
 开局与强盗派系友好，但是其他大多数派系会对你充满敌意。
 
@@ -2288,7 +2292,7 @@ Devious Dungeon Challenge 已启用。
 
 - DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
 【警告】加载模组具有危险性，因为模组可在你的计算机上执行任何代码，
-- Like connecting to a server, etc. Only load mods from a TRUSTED source.
+- (e.g. connecting to a server and sending data) Only load mods from a TRUSTED source.
 比如连接到未知服务器等，请只加载来源可信赖的模组。
 
 - Up
@@ -2302,7 +2306,7 @@ Devious Dungeon Challenge 已启用。
 # :: m_PointyAntennae_l_Left
 # :: m_PointyHorns_l_Left
 - Right
-右　
+右
 # :: KinkyDungeonKeyRight
 # :: m_SmoothHeels_l_Right
 # :: m_PointyAntennae_l_Right
@@ -2948,8 +2952,9 @@ Devious Dungeon Challenge 已启用。
 旧日文明使用的神秘装置，现已耗尽充能。
 
 - Gold
+金色部分
+:: KinkyDungeonInventoryItemGold
 金币
-# :: KinkyDungeonInventoryItemGold
 :: m_DivineGag_l_Gold
 金色部分
 :: m_FashionDivineGag_l_Gold
@@ -7085,7 +7090,7 @@ TargetRestraint 太结实了，不会破……
 # :: m_RubberHands_l_Rubber
 # :: KDPaletteRubber
 - Crystal
-结晶
+水晶
 :: KinkyCrystalLockType
 水晶
 :: m_LaceCorset_l_Crystal
@@ -11548,7 +11553,7 @@ RestraintName 上的诅咒解除了！
 # :: m_LatexCorsetFullCrossRestraint_l_Bra
 # :: m_LatexCorsetFullCrossRestraint_l_Bra
 - Belt
-皮带
+腰带
 :: KinkyDungeonGroupItemPelvis
 腰带
 :: l_WarriorBelt_Belt
@@ -11742,7 +11747,7 @@ RestraintName 上的诅咒解除了！
 # :: m_ProtoBelt_l_Plug
 # :: m_FashionProtoBelt_l_Plug
 - Vibe
-震动
+振动单元
 # :: KinkyDungeonGroupItemVulvaPiercings
 :: m_NippleClamps_l_Vibe
 振动单元
@@ -11767,7 +11772,7 @@ RestraintName 上的诅咒解除了！
 - Butt Plug
 肛塞
 - Legs
-腿
+腿部
 # :: KinkyDungeonGroupItemLegs
 # :: KDShortCompLegs
 # :: KinkyDungeonColumnLegs
@@ -12247,7 +12252,7 @@ RestraintName 上的诅咒解除了！
 - Ghostly Adventurer
 幽灵探险家
 - Button
-按钮
+纽扣
 # :: KDTileTooltip@
 :: m_SlayerCollar_l_Button
 纽扣
@@ -16532,7 +16537,7 @@ AMNT% 的概率命中你
 - Poison Gas
 毒气
 - Charm
-魅惑
+吊坠
 :: KinkyDungeonDamageTypecharm
 魅惑
 :: m_DragonNecklace_l_Charm
@@ -18858,7 +18863,7 @@ SPL。
 我曾经是一个不守规矩的护士...
 - It's time for your shot...
 是时候开枪了...
-- Why are you out of your cell?
+- Why are you out of your cell~?
 你为什么离开牢房？
 - You need my help!
 你需要我的帮助！
@@ -27147,7 +27152,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 - Labcoat
 实验服
 - Shoulders
-肩膀
+肩部
 :: l_Labcoat_Shoulders
 肩部
 :: m_Labcoat_l_Shoulders
@@ -27322,7 +27327,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 - ChainShirt
 链甲背心
 - ShirtChest
-衬衫胸部
+链甲背心胸部
 :: l_ChainShirt_ShirtChest
 上衣胸部
 :: l_ChainArmor_ShirtChest
@@ -28238,7 +28243,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 - WitchSkirt
 女巫长裙
 - SkirtBelt
-裙腰带
+战裙腰带
 # :: l_WitchSkirt_SkirtBelt
 # :: l_Witch_SkirtBelt
 :: m_WitchSkirt_l_SkirtBelt
@@ -28285,7 +28290,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_Dragonheart_l_BustierChest
 # :: m_WarriorBustierRestraint_l_BustierChest
 - Bustier
-紧身胸衣
+护胸
 :: l_WarriorBustier_Bustier
 护胸
 :: l_Dragonheart_Bustier
@@ -28344,7 +28349,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_ZombieHat_l_ZombieHatBand
 # :: m_ZombieHat_l_ZombieHatBand
 - ZombieChestTalisman
-僵尸胸部护符
+僵尸胸部护身符
 # :: m_ZombieChestTalisman
 # :: l_ZombieChestTalisman_ZombieChestTalisman
 # :: m_ZombieChestTalisman_l_ZombieChestTalisman
@@ -28563,7 +28568,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_HeavyMaidKnight_l_Ribbon
 # :: KDItemFilter_Restraint_Ribbon
 - RibbonBelt
-丝带绳衣
+腰封
 :: l_Ribbon_RibbonBelt
 腰封
 :: l_Robes_RibbonBelt
@@ -28577,7 +28582,8 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 腰封
 :: m_Robes_l_RibbonBelt
 腰封
-# - RibbonBack
+- RibbonBack
+腰封背后
 :: l_Ribbon_RibbonBack
 背后
 # :: l_Robes_RibbonBack
@@ -28613,7 +28619,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 - HairBowFrilly
 蝴蝶结褶边(发)
 - BowFrills
-蝴蝶结褶边
+领结褶边
 # :: l_HairBowFrilly_BowFrills
 :: m_Maid_l_BowFrills
 领结褶边
@@ -29275,8 +29281,10 @@ Dask眼
 猫(内侧)
 # :: l_Kitty_Ears_InnerEars
 # :: m_KittyEars_l_KittyInner
-# - Catgirl Ears (Same Color)
-# - Inner
+- Catgirl Ears (Same Color)
+猫耳
+- Inner
+内衬
 # :: l_KittyEars_InnerEars
 :: l_WolfEars_InnerEars
 狼耳(内侧)
@@ -29286,8 +29294,9 @@ Dask眼
 # :: m_MilitaryUniform_l_Inner
 # - Wolf Ears
 - Wolf
-狼
-# :: l_Wolf_Ears_Ears
+狼尾
+:: l_Wolf_Ears_Ears
+狼耳
 :: l_WolfTail_Tail
 狼尾
 :: m_Wolf
@@ -29300,7 +29309,8 @@ Dask眼
 狼(内)
 # :: l_Wolf_Ears_InnerEars
 # :: m_WolfEars_l_WolfInner
-# - Wolfgirl Ears (Same Color)
+- Wolfgirl Ears (Same Color)
+狼娘耳朵
 - Fox Ears
 狐耳
 - Fox
@@ -29315,7 +29325,8 @@ Dask眼
 狐(内)
 # :: l_Fox_Ears_InnerEars
 # :: m_FoxEars_l_FoxInner
-# - Foxgirl Ears (Same Color)
+- Foxgirl Ears (Same Color)
+狐耳
 - Tail
 尾巴
 # :: c_WolfTail
@@ -29561,7 +29572,7 @@ Dask眼
 - BanditKnee
 强盗护膝
 - Knee
-膝盖
+护膝
 :: m_BanditKnee_l_Knee
 护膝
 :: m_Bandit_l_Knee
@@ -29599,7 +29610,7 @@ Dask眼
 # :: m_FashionKittyPetHarnessGagMouth_l_Stripe
 # :: m_FashionKittyPetHarnessGagMouthSeamless_l_Stripe
 - SkirtOver
-裙摆
+短裙(叠加层)
 :: m_MaidSkirt_l_SkirtOver
 短裙(叠加层)
 :: m_Maid_l_SkirtOver
@@ -30025,7 +30036,7 @@ Dask眼
 - LeatherGloves
 皮手套
 - RibbonFarBack
-后背丝带(远)
+腰封背后(后层)
 :: m_Ribbon_l_RibbonFarBack
 背后(后层)
 :: m_Robes_l_RibbonFarBack
@@ -30943,7 +30954,7 @@ V形比基尼
 # :: m_BindingDress_l_LaceCrotchPanelLace
 # :: m_Dress_l_LaceCrotchPanelLace
 - DressSkirt
-礼服裙
+连衣裙裙体
 :: m_DressSkirt
 常服长裙
 :: m_ChineseDress_l_DressSkirt
@@ -31003,7 +31014,7 @@ V形比基尼
 # :: m_BlouseSkirt_l_BlouseSkirt
 # :: m_BlouseSkirt_l_BlouseSkirt
 - BlouseSkirtOverKneel
-衬衫下摆(跪姿叠加层)
+衬衫短裙(跪姿叠加层)
 # :: m_DressBlouseBust_l_BlouseSkirtOverKneel
 # :: m_DressBlouse_l_BlouseSkirtOverKneel
 # :: m_Dress_l_BlouseSkirtOverKneel
@@ -31123,7 +31134,8 @@ V形比基尼
 # :: m_LeatherHeels_l_LeatherLeft
 # :: m_FashionLeatherMittens_l_LeatherLeft
 # :: m_FashionLeatherPawMittens_l_LeatherLeft
-# - BandLeft
+- BandLeft
+松紧带(左)
 :: m_LeatherMittenLeft_l_BandLeft
 绑带(左)
 :: m_LeatherPawMittenLeft_l_BandLeft
@@ -31215,7 +31227,8 @@ V形比基尼
 # :: m_LeatherHeels_l_LeatherRight
 # :: m_FashionLeatherMittens_l_LeatherRight
 # :: m_FashionLeatherPawMittens_l_LeatherRight
-# - BandRight
+- BandRight
+松紧带(右)
 :: m_LeatherMittenRight_l_BandRight
 绑带(右)
 :: m_LeatherPawMittenRight_l_BandRight
@@ -31440,7 +31453,8 @@ V形比基尼
 # :: m_RubyNecklaceRestraint_l_Gem
 - ElfSkirtBack
 精灵短裙(背后)
-# - SkirtBack
+- SkirtBack
+裙子(背后)
 :: m_ElfSkirtBack_l_SkirtBack
 短裙(背后)
 :: m_ElfSkirt_l_SkirtBack
@@ -31462,7 +31476,7 @@ V形比基尼
 - ElfSkirt
 精灵裙
 - SkirtBand
-短裙饰带
+短裙腰带
 # :: m_ElfSkirt_l_SkirtBand
 # :: m_Elf_l_SkirtBand
 # :: m_ElfSkirt_l_SkirtBand
@@ -31662,7 +31676,7 @@ V形比基尼
 - RopeHarness
 绳束衣
 - Harness
-束衣
+马具绑带
 # :: m_RopeHarness_l_Harness
 # :: m_RibbonHarness_l_Harness
 # :: m_Harness
@@ -32704,7 +32718,7 @@ V形比基尼
 # :: m_WolfHarnessLowerRestraint_l_HarnessHardwareLower
 # :: m_WolfHarnessRestraint_l_HarnessHardwareLower
 - WolfHarness
-狼娘束衣
+狼娘束衣部分
 # :: m_WolfHarness
 :: m_WolfArmbinder_l_WolfHarness
 狼娘束衣部分
@@ -32713,7 +32727,7 @@ V形比基尼
 - WolfCuffsAnklesLeft
 狼娘脚踝铐(左)
 - BandAnkleLeft
-左踝饰带
+左踝绑带
 # :: m_WolfCuffsAnklesLeft_l_BandAnkleLeft
 # :: m_WolfCuffsAnkles_l_BandAnkleLeft
 :: m_CuffsAnklesLeft_l_BandAnkleLeft
@@ -32751,7 +32765,7 @@ V形比基尼
 - WolfCuffsAnklesRight
 狼娘脚踝铐(右)
 - BandAnkleRight
-右踝饰带
+右踝绑带
 # :: m_WolfCuffsAnklesRight_l_BandAnkleRight
 # :: m_WolfCuffsAnkles_l_BandAnkleRight
 :: m_CuffsAnklesRight_l_BandAnkleRight
@@ -32820,7 +32834,7 @@ V形比基尼
 - CuffsWristLeft
 皮革腕铐(左)
 - BandWristLeft
-左腕饰带
+左腕绑带
 :: m_CuffsWristLeft_l_BandWristLeft
 左腕绑带
 :: m_CuffsWrists_l_BandWristLeft
@@ -32879,7 +32893,7 @@ V形比基尼
 - CuffsWristRight
 皮革腕铐(右)
 - BandWristRight
-右腕饰带
+右腕绑带
 :: m_CuffsWristRight_l_BandWristRight
 右腕绑带
 :: m_CuffsWrists_l_BandWristRight
@@ -32940,7 +32954,7 @@ V形比基尼
 - CuffsElbowLeft
 皮革肘铐(左)
 - BandElbowLeft
-左肘饰带
+左肘绑带
 :: m_CuffsElbowLeft_l_BandElbowLeft
 左肘绑带
 :: m_CuffsElbows_l_BandElbowLeft
@@ -32999,7 +33013,7 @@ V形比基尼
 - CuffsElbowRight
 皮革肘铐(右)
 - BandElbowRight
-右肘饰带
+右肘绑带
 :: m_CuffsElbowRight_l_BandElbowRight
 右肘绑带
 :: m_CuffsElbows_l_BandElbowRight
@@ -33084,7 +33098,7 @@ V形比基尼
 - CuffsThighLeft
 皮革腿铐(左)
 - BandThighLeft
-左腿饰带
+左腿绑带
 :: m_CuffsThighLeft_l_BandThighLeft
 左腿绑带
 :: m_CuffsThigh_l_BandThighLeft
@@ -33126,7 +33140,7 @@ V形比基尼
 - CuffsThighRight
 皮革腿铐(右)
 - BandThighRight
-右腿饰带
+右腿绑带
 :: m_CuffsThighRight_l_BandThighRight
 右腿绑带
 :: m_CuffsThigh_l_BandThighRight
@@ -33561,7 +33575,8 @@ V形比基尼
 # :: m_ProtoBelt_l_ProtoLock
 # :: m_FashionProtoBelt_l_ProtoLock
 # - SmoothArmbinder
-# - BinderLeft
+- BinderLeft
+束手套(左)
 :: m_SmoothArmbinder_l_BinderLeft
 束手套(左)
 :: m_Armbinder_l_BinderLeft
@@ -33600,7 +33615,8 @@ V形比基尼
 束手套(左)
 :: m_FestiveArmbinder_l_BinderLeft
 束手套(左)
-# - BinderRight
+- BinderRight
+束手套(右)
 :: m_SmoothArmbinder_l_BinderRight
 束手套(右)
 :: m_Armbinder_l_BinderRight
@@ -33898,7 +33914,7 @@ V形比基尼
 # :: m_JacketHeavyLeotard_l_LatexUpper
 # :: m_JacketExtraLeotard_l_LatexUpper
 - Legbinder
-绑腿
+束腿套
 # :: m_Legbinder
 # :: m_Legbinder_l_Legbinder
 # :: m_Legbinder_l_Legbinder
@@ -34711,7 +34727,8 @@ V形比基尼
 # - LargeBallGagHarnessSecure
 - PanelGag
 皮革面板口塞
-# - Panel
+- Panel
+口塞面板
 :: m_PanelGag_l_Panel
 口塞面板
 :: m_PanelGagHarness_l_Panel
@@ -35090,7 +35107,8 @@ V形比基尼
 # - SegmentedLargeBallGagHarnessSecure
 - SciFiBallGag
 赛博口球
-# - TopRim
+- TopRim
+顶部屏幕边框
 :: m_SciFiBallGag_l_TopRim
 顶部屏幕边框
 :: m_EnhancedSciFiBallGag_l_TopRim
@@ -35297,7 +35315,8 @@ V形比基尼
 改良赛博口球
 - AdvancedSciFiBallGag
 高级赛博口球
-# - HarnessRim
+- HarnessRim
+两侧屏幕边框
 :: m_AdvancedSciFiBallGag_l_HarnessRim
 两侧屏幕边框
 :: m_UltimateSciFiBallGag_l_HarnessRim
@@ -35358,7 +35377,8 @@ V形比基尼
 两侧屏幕边框
 # :: m_FashionSciFiPlugMuzzle_l_HarnessRim
 # :: m_FashionAdvancedSciFiPlugMuzzle_l_HarnessRim
-# - HarnessDisplay
+- HarnessDisplay
+两侧屏幕
 :: m_AdvancedSciFiBallGag_l_HarnessDisplay
 两侧屏幕
 :: m_UltimateSciFiBallGag_l_HarnessDisplay
@@ -35705,16 +35725,18 @@ V形比基尼
 # - FullVisorRimRestraint
 - GasMask
 防毒面具
-# - Valves
-:: m_GasMask_l_Valves
-气阀
-:: m_GasMaskRestraint_l_Valves
+- Valves
 气阀
 :: m_GasMask_l_Valves
 气阀
 :: m_GasMaskRestraint_l_Valves
 气阀
-# - Center
+:: m_GasMask_l_Valves
+气阀
+:: m_GasMaskRestraint_l_Valves
+气阀
+- Center
+中部
 :: m_GasMask_l_Center
 中部
 :: m_GasMaskRestraint_l_Center
@@ -35727,16 +35749,18 @@ V形比基尼
 # :: m_FashionDivineBra_l_Center
 # :: m_DivineBraRunic_l_Center
 # :: m_FashionDivineBraRunic_l_Center
-# - Nose
-:: m_GasMask_l_Nose
-鼻部
-:: m_GasMaskRestraint_l_Nose
+- Nose
 鼻部
 :: m_GasMask_l_Nose
 鼻部
 :: m_GasMaskRestraint_l_Nose
 鼻部
-# - Plugs
+:: m_GasMask_l_Nose
+鼻部
+:: m_GasMaskRestraint_l_Nose
+鼻部
+- Plugs
+滤芯
 :: m_GasMask_l_Plugs
 滤芯
 :: m_GasMaskRestraint_l_Plugs
@@ -36056,7 +36080,7 @@ Aura刘海(右后)
 - ChainSkirt2
 链甲战裙(无侧板)
 - SkirtBeltDeco
-裙腰带装饰
+战裙腰带装饰
 :: m_ChainSkirt2_l_SkirtBeltDeco
 战裙腰带装饰
 :: m_ChainSkirt_l_SkirtBeltDeco
@@ -36068,7 +36092,7 @@ Aura刘海(右后)
 :: m_ChainSkirtRestraint_l_SkirtBeltDeco
 战裙腰带装饰
 - SkirtBeltRivets
-裙腰带铆钉
+战裙腰带铆钉
 :: m_ChainSkirt2_l_SkirtBeltRivets
 战裙腰带铆钉
 :: m_ChainSkirt_l_SkirtBeltRivets
@@ -36079,7 +36103,8 @@ Aura刘海(右后)
 战裙腰带铆钉
 :: m_ChainSkirtRestraint_l_SkirtBeltRivets
 战裙腰带铆钉
-# - Skirt2
+- Skirt2
+链甲前裙
 :: m_ChainSkirt2_l_Skirt2
 链甲前裙
 :: m_ChainSkirt_l_Skirt2
@@ -36170,12 +36195,14 @@ Aura刘海(右后)
 # :: m_FashionKittyPetSteelCollar_l_CollarStripe
 - SailorCollarFull
 水手服衣领(完整)
-# - Bust
+- Bust
+衣领本体
 :: m_SailorCollarFull_l_Bust
 衣领本体
 :: m_Sailor_l_Bust
 衣领本体
-# - BustStripe
+- BustStripe
+衣领本体条纹
 :: m_SailorCollarFull_l_BustStripe
 衣领本体条纹
 :: m_Sailor_l_BustStripe
@@ -36777,13 +36804,14 @@ Aura刘海(右后)
 # :: m_Mage_l_MageCollarTie
 # :: m_BindingDress_l_MageCollarTie
 - Mage
-法师
+法师装
 :: m_Mage
 法师装
 # :: KDFilterFiltersMage
 - ChineseDress
 旗袍
-# - Highlights
+- Highlights
+高光部分
 :: m_ChineseDress_l_Highlights
 旗袍饰边
 :: m_ChineseBra_l_Highlights
@@ -36816,7 +36844,8 @@ Aura刘海(右后)
 高光部分
 :: KDPaletteLayer_Highlight
 高亮
-# - DressSkirtOverKneel
+- DressSkirtOverKneel
+旗袍臀部(跪姿叠加层)
 :: m_ChineseDress_l_DressSkirtOverKneel
 旗袍臀部(跪姿叠加层)
 - ChineseBra
@@ -37934,7 +37963,7 @@ Aura刘海(右后)
 # :: m_FashionCyberCuffsAnklesRight_l_DisplayAnkleRight
 # :: m_FashionCyberCuffsAnkles_l_DisplayAnkleRight
 - LockAnkleRight
-右踝锁图标
+右踝锁
 :: m_CyberCuffsAnklesRight_l_LockAnkleRight
 右踝锁图标
 :: m_CyberCuffsAnkles_l_LockAnkleRight
@@ -38421,25 +38450,25 @@ Aura刘海(右后)
 - ClothTopBand
 布背心(饰带)
 - TopBandChest
-背心胸部饰带
+背心饰带(胸部)
 # :: m_ClothTopBand_l_TopBandChest
 # :: m_ClothBraBand_l_TopBandChest
 :: m_Ninja_l_TopBandChest
 背心饰带(胸部)
 - TopBandRimChest
-背心胸部饰边
+背心饰边(胸部)
 # :: m_ClothTopBand_l_TopBandRimChest
 # :: m_ClothBraBand_l_TopBandRimChest
 :: m_Ninja_l_TopBandRimChest
 背心饰边(胸部)
 - TopBand
-背心饰带
+背心饰带(下部)
 # :: m_ClothTopBand_l_TopBand
 # :: m_ClothBraBand_l_TopBand
 :: m_Ninja_l_TopBand
 背心饰带(下部)
 - TopBandRim
-背心饰边
+背心饰边(下部)
 # :: m_ClothTopBand_l_TopBandRim
 # :: m_ClothBraBand_l_TopBandRim
 :: m_Ninja_l_TopBandRim
@@ -38863,7 +38892,8 @@ Aura刘海(右后)
 屏幕(左腿)
 - NippleClamps
 振动器乳夹
-# - Clamps
+- Clamps
+乳夹
 :: m_NippleClamps_l_Clamps
 乳夹
 :: m_NippleClampsRestraint_l_Clamps
@@ -38872,7 +38902,8 @@ Aura刘海(右后)
 乳夹
 :: m_VibePiercingsRestraint_l_Clamps
 乳夹
-# - ClampsBullet
+- ClampsBullet
+乳夹振动单元
 :: m_NippleClamps_l_ClampsBullet
 乳夹振动单元
 :: m_NippleClampsRestraint_l_ClampsBullet
@@ -38885,12 +38916,14 @@ Aura刘海(右后)
 振动器乳夹拘束
 - RingVibes
 自震乳环
-# - Rings
+- Rings
+乳环
 :: m_RingVibes_l_Rings
 乳环
 :: m_RingVibesRestraint_l_Rings
 乳环
-# - RingsBullet
+- RingsBullet
+乳环振动单元
 :: m_RingVibes_l_RingsBullet
 乳环振动单元
 :: m_RingVibesRestraint_l_RingsBullet
@@ -39897,7 +39930,8 @@ Aura刘海(右后)
 # - ChestGold
 # :: m_TheRobeOfChastity_l_ChestGold
 # :: m_TheRobeOfChastityRestraint_l_ChestGold
-# - Plate
+- Plate
+侧板
 # :: m_TheRobeOfChastity_l_Plate
 # :: m_TheRobeOfChastityRestraint_l_Plate
 :: m_ChainSkirt_l_Plate
@@ -40379,7 +40413,7 @@ Aura刘海(右后)
 - MilitaryUniform_Hat
 军队制服(帽子)
 - Hat
-帽子
+帽檐(前)
 # :: m_MilitaryUniform_Hat_l_Hat
 # :: m_MilitaryUniform_l_Hat
 # :: m_SantaHat_l_Hat
@@ -40642,7 +40676,8 @@ Aura刘海(右后)
 人嘴
 - SantaHat
 圣诞帽
-# - HatBack
+- HatBack
+帽檐(后)
 # :: m_SantaHat_l_HatBack
 :: m_RoundHat_l_HatBack
 帽檐(后)
@@ -40667,7 +40702,7 @@ Aura刘海(右后)
 # :: m_FashionFestiveHarness_l_Fluff
 # :: m_FashionFestiveHarness_l_Fluff
 - Orb
-宝球
+绒布球
 :: m_SantaHat_l_Orb
 绒布球
 # :: KDMinimapLabel_Orb
@@ -40818,7 +40853,8 @@ Vents发型
 尖呆毛
 - RoundHat
 圆顶帽
-# - HatTop
+- HatTop
+帽顶
 :: m_RoundHat_l_HatTop
 帽顶
 - TopHatSmall
@@ -40859,7 +40895,8 @@ Vents发型
 # - HairclipUpper
 - ChainPanties
 链甲内裤
-# - PantiesChain
+- PantiesChain
+内裤链甲
 :: m_ChainPanties_l_PantiesChain
 内裤链甲
 :: m_ChainPanties2_l_PantiesChain
@@ -41420,7 +41457,8 @@ Vents发型
 # :: m_Hair4_l_Hair
 # :: m_Hair5_l_Hair
 # :: m_Hair6_l_Hair
-# - Bang
+- Bang
+刘海
 :: m_AuraBang_Left_l_Bang
 刘海
 :: m_AuraBang_Right_l_Bang
@@ -41437,7 +41475,8 @@ Vents发型
 # - RightPuff
 # :: m_Hair2_RightPuff_l_RightPuff
 # :: m_MouseEars_l_RightPuff
-# - Under
+- Under
+胸托
 # :: m_Hair3_l_Under
 # :: m_Hair3_Short_l_Under
 # :: m_Hair5_l_Under
@@ -41465,7 +41504,8 @@ Vents发型
 # - EarringRight
 # :: m_ElfEarrings_l_EarringRight
 # :: m_Earrings_l_EarringRight
-# - Cups
+- Cups
+罩杯
 :: m_Bra_l_Cups
 罩杯
 :: m_BraStriped_l_Cups
@@ -41511,12 +41551,13 @@ Vents发型
 # :: m_Kitty2Tail_l_Tail1
 # :: m_Fox2Tail_l_Tail1
 - Bikini
-比基尼
+链甲胸衣
 :: m_ChainBikini_l_Bikini
 链甲胸衣
 :: m_ChainBikiniRestraint_l_Bikini
 链甲胸衣
-# - Insignia
+- Insignia
+腰带扣
 :: m_ChainSkirt2_l_Insignia
 腰带扣
 :: m_ChainSkirt2Restraint_l_Insignia
@@ -41541,7 +41582,8 @@ Vents发型
 # :: m_HighSecBlindfold_l_Rivets
 # :: m_FashionHighSecBlindfold_l_Rivets
 # :: m_HighSecBlindfoldRestraint_l_Rivets
-# - Ruffle
+- Ruffle
+花边
 :: m_WitchSkirt_l_Ruffle
 裙摆褶边
 :: m_WitchSkirt_l_Ruffle
@@ -42278,17 +42320,19 @@ Vents发型
 # :: m_WolfCuffs_l_BaseMetal
 # :: m_Thumbcuffs_l_BaseMetal
 - Tie
-领结
+蝴蝶结
 :: m_MageCollar2_l_Tie
 领结
 :: m_Mage_l_Tie
 领结
 :: m_BindingDress_l_Tie
 蝴蝶结
-# - LeftButton
+- LeftButton
+左肩纽扣
 :: m_SlayerCape_l_LeftButton
 左肩纽扣
-# - RightButton
+- RightButton
+右肩纽扣
 :: m_SlayerCape_l_RightButton
 右肩纽扣
 - Waistband
@@ -42400,7 +42444,7 @@ Vents发型
 # :: m_FashionLatexMittens_l_Zipper
 # :: m_FashionLatexMittens_l_Zipper
 - Cap
-盖子
+帽顶
 # :: m_CyberLongMittenLeft_l_Cap
 # :: m_CyberLongMittenLeft_l_Cap
 # :: m_CyberLongMittenRight_l_Cap
@@ -42765,7 +42809,8 @@ Vents发型
 # - Buckles
 # :: m_BuckleCorset_l_Buckles
 # :: m_BuckleCorsetRestraint_l_Buckles
-# - Underskirt
+- Underskirt
+百褶裙里层
 :: m_StripedSkirt_l_Underskirt
 百褶裙里层
 :: m_StripedSkirt_l_Underskirt
@@ -43169,7 +43214,7 @@ Vents发型
 # :: m_SteelChastityBra_Padlock_l_LockPin
 # :: m_FashionSteelChastityBra_Padlock_l_LockPin
 - Binder
-束套
+束手套
 :: m_FestiveArmbinder_l_Binder
 束手套
 :: m_FestiveArmbinder_l_Binder
@@ -43288,7 +43333,8 @@ Vents发型
 束手套
 :: m_FashionSleepsackJacket_l_Binder
 束手套
-# - BinderStraps
+- BinderStraps
+束手套绑带
 :: m_Armbinder_l_BinderStraps
 束手套绑带
 :: m_Armbinder_l_BinderStraps
@@ -43363,7 +43409,7 @@ Vents发型
 # :: m_FashionHighSecBlindfold_l_StrapHardware
 # :: m_HighSecBlindfoldRestraint_l_StrapHardware
 - Shoe
-鞋
+鞋身
 :: m_BalletHeels_l_Shoe
 鞋身
 :: m_BalletHeels_l_Shoe
@@ -43476,7 +43522,8 @@ Vents发型
 鞋身
 :: m_HighSecBalletHeelsRestraint_l_Shoe
 鞋身
-# - Sole
+- Sole
+鞋底
 :: m_BalletHeels_l_Sole
 鞋底
 :: m_BalletHeels_l_Sole
@@ -43624,7 +43671,8 @@ Vents发型
 装饰高级腿铐
 
 
-# - Suit
+- Suit
+宠物服
 :: m_ElitePetsuit_l_Suit
 宠物服
 :: m_ElitePetsuit_l_Suit
@@ -43715,7 +43763,8 @@ Vents发型
 圆圈
 # :: m_MilitaryUniform_Hat_l_Circle
 # :: m_MilitaryUniform_l_Circle
-# - Secret
+- Secret
+秘密勋章
 :: m_MilitaryUniform_Hat_l_Secret
 秘密勋章
 :: m_MilitaryUniform_l_Secret
@@ -43903,7 +43952,8 @@ Aura刘海
 # :: m_NeoLinkArms_l_LinkLeft
 # :: m_FashionNeoLinkArmLeft_l_LinkLeft
 # :: m_FashionNeoLinkArms_l_LinkLeft
-# - HardwareLeft
+- HardwareLeft
+金属环(左)
 # :: m_NeoLinkArmLeft_l_HardwareLeft
 # :: m_NeoLinkArms_l_HardwareLeft
 # :: m_FashionNeoLinkArmLeft_l_HardwareLeft
@@ -43922,7 +43972,8 @@ Aura刘海
 # :: m_NeoLinkArms_l_LinkRight
 # :: m_FashionNeoLinkArmRight_l_LinkRight
 # :: m_FashionNeoLinkArms_l_LinkRight
-# - HardwareRight
+- HardwareRight
+金属环(右)
 # :: m_NeoLinkArmRight_l_HardwareRight
 # :: m_NeoLinkArms_l_HardwareRight
 # :: m_FashionNeoLinkArmRight_l_HardwareRight
