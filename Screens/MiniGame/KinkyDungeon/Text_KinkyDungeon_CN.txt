@@ -1336,12 +1336,16 @@ ${You}是个不听话的宠物，应该穿上宠物服！
 所有派系都对你敌对并联合起来反对你。
 - Bandit
 强盗装
-# :: KinkyDungeonStatBandit
-# :: NamePrisonerBandit
-# :: NameBandit
+:: KinkyDungeonStatBandit
+强盗
+:: NamePrisonerBandit
+强盗
+:: NameBandit
+强盗
 :: m_Bandit
 强盗装
-# :: KDPaletteBandit
+:: KDPaletteBandit
+强盗
 - Start friendly to bandits, and hostile to most other factions.
 开局与强盗派系友好，但是其他大多数派系会对你充满敌意。
 
@@ -2949,7 +2953,8 @@ Devious Dungeon Challenge 已启用。
 
 - Gold
 金色部分
-# :: KinkyDungeonInventoryItemGold
+:: KinkyDungeonInventoryItemGold
+金币
 :: m_DivineGag_l_Gold
 金色部分
 :: m_FashionDivineGag_l_Gold
@@ -28350,13 +28355,13 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_ZombieChestTalisman_l_ZombieChestTalisman
 # :: m_ZombieChestTalisman_l_ZombieChestTalisman
 - ZombieTalisman
-僵尸护身符
+僵尸护符
 # :: m_ZombieTalisman
 # :: l_ZombieTalisman_ZombieTalisman
 # :: m_ZombieTalisman_l_ZombieTalisman
 # :: m_ZombieTalisman_l_ZombieTalisman
 - ZombieTalismanBent
-僵尸护身符(贴歪)
+僵尸护符(贴歪)
 # :: m_ZombieTalismanBent
 # :: l_ZombieTalismanBent_ZombieTalismanBent
 # :: m_ZombieTalismanBent_l_ZombieTalismanBent
@@ -29290,7 +29295,8 @@ Dask眼
 # - Wolf Ears
 - Wolf
 狼尾
-# :: l_Wolf_Ears_Ears
+:: l_Wolf_Ears_Ears
+狼耳
 :: l_WolfTail_Tail
 狼尾
 :: m_Wolf
