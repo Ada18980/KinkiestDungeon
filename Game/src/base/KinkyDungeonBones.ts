@@ -1521,7 +1521,7 @@ function KDGeneratePronoun(enemy: entity) {
 		data.pronouns = enemy.Enemy.pronouns;
 		data.custom = true;
 	} else {
-		if (!enemy.Enemy?.nonHumanoid) data.pronouns = {It: 1.0};
+		if (enemy.Enemy?.nonHumanoid) data.pronouns = {It: 1.0};
 		else {
 			pronouns.They = KDEnemyGlobals.Pronoun_TheyThemChance;
 			if (KDIsSubmissive(enemy)) {

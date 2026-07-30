@@ -1594,6 +1594,13 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				if (!nearestfurniture) {
 					enemy.IntentAction = '';
 					enemy.IntentLeashPoint = null;
+				} else {
+					if (KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) < 3.5) {
+						KinkyDungeonSetEnemyFlag(enemy, "forceattack", 2);
+						KinkyDungeonSetEnemyFlag(enemy, "forcetease", 2);
+						KinkyDungeonSetEnemyFlag(enemy, "dontfocusleash", 2);
+						
+					}
 				}
 			}
 			return false;

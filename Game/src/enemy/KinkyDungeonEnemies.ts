@@ -5722,7 +5722,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 	if (!AIData.aggressive && player.player && (enemy.playWithPlayer || (intentAction && intentAction.forceattack))) AIData.ignore = false;
 
-	AIData.canAggro = player && (((AIData.hostile && (AIData.aggressive && !KDEnemyHasFlag(enemy, "notouchie")))
+	AIData.canAggro = player && (((AIData.hostile && ((AIData.aggressive && !KDEnemyHasFlag(enemy, "notouchie")) || KDEnemyHasFlag(enemy, "forceattack")))
 		|| (player.player && enemy.playWithPlayer && !AIData.domMe && !KDEnemyHasFlag(enemy, "notouchie") && !KDEnemyHasFlag(enemy, "satisfied")))
 		|| (!player.player && (
 			!player.Enemy
@@ -5730,7 +5730,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			|| enemy.rage > 0)));
 			
 	AIData.canTeaseAggro = player && (((AIData.hostile && (AIData.aggressive || !KDEnemyHasFlag(enemy, "notouchie")))
-		|| (player.player && enemy.playWithPlayer && !AIData.domMe && !KDEnemyHasFlag(enemy, "notouchie")))
+		|| (player.player && enemy.playWithPlayer && (!AIData.domMe || KDEnemyHasFlag(enemy, "forcetease")) && !KDEnemyHasFlag(enemy, "notouchie")))
 		|| (!player.player && (
 			!player.Enemy
 			|| KDHostile(player)
@@ -5751,6 +5751,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							&& KDPlayer().y == (enemy.fy||0)
 							&& KDRandom() < KDContinueAttackChance
 						)*/
+						|| KDEnemyHasFlag(enemy, "forceattack")
 						|| (
 							KDPlayer().x == enemy.gx
 							&& KDPlayer().y == enemy.gy
@@ -6095,7 +6096,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			AIData.focusOnLeash = (enemy.Enemy.noLeash) ? false : (
 			(!KinkyDungeonFlags.has("PlayerCombat") && KDEnemyHasFlag(enemy, "focusLeash")) || (
 				enemy == KinkyDungeonLeashingEnemy()
-				&& !AIData.addLeash && (
+				&& !AIData.addLeash && !KDEnemyHasFlag(enemy, "dontfocusleash") && (
 					!AIData.addMoreRestraints
                 || !KinkyDungeonAggressive(enemy, KinkyDungeonPlayerEntity)
 				|| !AIData.wantsToAttack
