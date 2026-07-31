@@ -7210,6 +7210,8 @@ TargetRestraint 太结实了，不会破……
 你正在拼命地跳！
 - Close Door
 关门
+# :: KinkyDungeonCloseDoor
+# :: KDContextMenu_CloseDoor
 - Unlock
 开锁
 # :: KinkyDungeonUnlockDoor
@@ -12215,6 +12217,7 @@ RestraintName 上的诅咒解除了！
 打开的门
 # :: KDTileTooltipd
 # :: KDTileTooltipz
+# :: KDContextMenu_OpenDoor
 - Bed
 床
 # :: KDTileTooltipB
@@ -54001,3 +54004,15 @@ ${You}陷入沉默，无法轻易施展法术。
 你的乳头因为玩具轻柔的震动而保持着敏感。
 - A gentle buzz reminds you of the toys on your nipples.
 轻微的嗡嗡声提醒着你乳头上的玩具。
+
+# - She/Her
+# :: KDPronoun_
+# :: KDPronoun_She
+# - They/Them
+# - It/Its
+
+# - Detailed Info
+
+# - Class: 
+# - Pronouns: 
+# - Personality: 
