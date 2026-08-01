@@ -1000,35 +1000,52 @@ function KinkyDungeonDrawPerkOrb() {
 				
                 DrawTextFitKD(TextGet("KinkyDungeonStat" + KinkyDungeonStatsPresets[p].id), KDModalArea_x + (360 * i) + 25, textoffset, 300, perkraritycolor, (KinkyDungeonStatsPresets[p].cost < 0) ? KDTextRed1: KDTextGray2, 30, "left");
                 textoffset += 30
-                let perktextsplits = TextGet("KinkyDungeonStatDesc" + KinkyDungeonStatsPresets[p].id).split(" ");
-                perktextsplits = perktextsplits.reduce((prev, currword) => {
-                    let currentlength = prev[prev.length - 1].length;
-                    if ((currentlength + currword.length + 1) > 36 && (currentlength > 0)) {
-                        prev.push(currword)
-                    }
-                    else {
-                        prev[prev.length - 1] = (currentlength > 0) ? `${prev[prev.length - 1]} ${currword}` : currword
-                    }
-                    return prev;
-                }, ['']);
-                if (KinkyDungeonStatsPresets[p].cost < 0) {
-                    FillRectKD(kdcanvas, kdpixisprites, `bg_${i}_debuffperk_${p}`, {
-                        Left: KDModalArea_x + (360 * i) + 10,
-                        Top: textoffset - 55,
-                        Width: 330,
-                        Height: 50 + (perktextsplits.length * 25),
-                        Color: KDTextRedBG,
-                        LineWidth: 5,
-                        zIndex: 60.3,
-                        alpha: 1.0
-                    })
-                }
-                perktextsplits.forEach((tsplit) => {
-                    DrawTextFitKD(tsplit, KDModalArea_x + (360 * i) + 30, textoffset, 300, KDBaseWhite, KDTextGray2, 16, "left");
-                    textoffset += 25
-                })
-
-                textoffset += 20
+				let perktext = TextGet("KinkyDungeonStatDesc" + KinkyDungeonStatsPresets[p].id);
+				let perktextHasCJK = CharacterCheckerHasCJK(perktext);
+				let perktextsplits = [];
+				let perktextheight = 0;
+				if (perktextHasCJK) {
+					// Pixi can wrap CJK text character by character when word wrapping is enabled.
+					perktextheight = DrawTextFitKDgetHeight(perktext,
+						KDModalArea_x + (360 * i) + 30, textoffset, 300,
+						KDBaseWhite, KDTextGray2, 16, "left", 110, 1.0,
+						undefined, undefined, undefined, true, "top") + 20;
+				} else {
+					perktextsplits = perktext.split(" ");
+					perktextsplits = perktextsplits.reduce((prev, currword) => {
+						let currentlength = prev[prev.length - 1].length;
+						if ((currentlength + currword.length + 1) > 36 && (currentlength > 0)) {
+							prev.push(currword)
+						}
+						else {
+							prev[prev.length - 1] = (currentlength > 0) ? `${prev[prev.length - 1]} ${currword}` : currword
+						}
+						return prev;
+					}, ['']);
+					perktextheight = perktextsplits.length * 25;
+				}
+				if (KinkyDungeonStatsPresets[p].cost < 0) {
+					FillRectKD(kdcanvas, kdpixisprites, `bg_${i}_debuffperk_${p}`, {
+						Left: KDModalArea_x + (360 * i) + 10,
+						Top: textoffset - 55,
+						Width: 330,
+						Height: 50 + perktextheight,
+						Color: KDTextRedBG,
+						LineWidth: 5,
+						zIndex: 60.3,
+						alpha: 1.0
+					})
+				}
+				if (!perktextHasCJK) {
+					perktextsplits.forEach((tsplit) => {
+						DrawTextFitKD(tsplit, KDModalArea_x + (360 * i) + 30, textoffset, 300, KDBaseWhite, KDTextGray2, 16, "left");
+						textoffset += 25
+					})
+				} else {
+					textoffset += perktextheight;
+				}
+				
+				textoffset += 20
             })
             textoffset += 15
         }
