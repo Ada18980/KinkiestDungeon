@@ -3201,6 +3201,7 @@ function DrawTextFitKDgetHeight(
 	font?:		string,
 	wordwrap: 	boolean = false,
 	valign?: 	string,
+	lineHeight?: number,
 ): number {
 	//does the job of both DrawTextFitKD and DrawTextFitKDTo because editing the output of DrawTextFitKDTo would lead to a lot of changes
 	if (!Text) return 0;
@@ -3221,7 +3222,8 @@ function DrawTextFitKDgetHeight(
 		unique: unique,
 		font: font,
 		wordwrap: wordwrap,
-		valign: valign
+		valign: valign,
+		lineHeight: lineHeight
 	})[1];//return the height
 }
 
@@ -3241,6 +3243,7 @@ type TextParamsType = {
 	font?:     string,
 	wordwrap?: boolean,
 	valign?: 	string,
+	lineHeight?: number,
 }
 
 /**
@@ -3444,7 +3447,8 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 				padding: 5,
 				wordWrap: Params.wordwrap,
 				wordWrapWidth: Params.Width,
-				breakWords: Params.wordwrap && CharacterCheckerHasCJK(Params.Text) // Ensure that CJK characters can wrap word.
+				breakWords: Params.wordwrap && CharacterCheckerHasCJK(Params.Text), // Ensure that CJK characters can wrap word.
+				lineHeight: Params.lineHeight,
 			}
 		);
 
