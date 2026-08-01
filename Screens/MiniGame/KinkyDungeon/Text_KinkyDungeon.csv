@@ -4141,6 +4141,10 @@ RestraintSpiritbondCollarDesc,"A collar carved with glyphs that describe a spiri
 RestraintSpiritbondCollarDesc2,"It's sealed magically around your neck, and binds you to your spiritbond. The only way to remove it is to take the key from them."
 KDSpiritbondEnd,"The spiritbond collar falls from your neck."
 
+KDSpiritbond_DrainMana,"Your collar drains your mana to heal your spiritbond!"
+KDSpiritbond_DrainWill,"Your collar drains your willpower to heal your spiritbond!"
+KDSpiritbond_DrainStamina,"Your collar drains your mana to strengthen your spiritbond!"
+
 RestraintPrisonVibe,Prisoner Plug
 RestraintPrisonVibeDesc,"A teaser to keep you occupied."
 RestraintPrisonVibeDesc2,"Buzzes on spellcast, and periodically as well."
