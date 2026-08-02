@@ -8546,6 +8546,10 @@ RestraintName 上的诅咒解除了！
 # - It's sealed magically around your neck, and binds you to your spiritbond. The only way to remove it is to take the key from them.
 # - The spiritbond collar falls from your neck.
 
+# - Your collar drains ${MPAmount} mana to heal your spiritbond!
+# - Your collar drains ${WPAmount} willpower to heal your spiritbond!
+# - Your collar drains ${SPAmount} stamina to strengthen your spiritbond!
+
 - Prisoner Plug
 囚犯塞
 - A teaser to keep you occupied.
