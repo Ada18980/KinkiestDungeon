@@ -866,7 +866,7 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
 	}
 
 	for (let e of allies) {
-		KDAddEntity(e, true, undefined, true);
+		let ent = KDAddEntity(e, true, undefined, true);
 	}
 
 	for (let e of KinkyDungeonGetAllies()) {

@@ -1801,6 +1801,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 			guard.aware = true;
 			guard.gx = guard.x;
 			guard.gy = guard.y;
+			KDResetIntent(leasher);
 			let action = "leashCell";
 			if (guard.IntentAction != action) {
 				KDIntentEvents[action].trigger(guard, {});

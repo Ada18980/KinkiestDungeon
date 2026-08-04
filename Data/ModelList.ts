@@ -133,6 +133,10 @@ AddModel({
 			InheritColor: "TorsoUpper",
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES], "Hogtie"),
 			GlobalDefaultOverride: ToMap(["Hogtie", "Front", "Crossed"]),
+			ErasePoses: ["HideHands"],
+			EraseLayers: {RightHand: true},
+			EraseSprite: "HideBoxtieHand",
+			EraseInvariant: true,
 			//AppendPose: ToMapDupe(["Hogtie"]),
 			//AppendPoseRequire: ToMap(["Wristtie"]),
 		},
@@ -188,7 +192,7 @@ AddModel({
 		},
 		{ Name: "Chest", Layer: "CatsuitChest", Pri: 1,
 			InheritColor: "TorsoUpper",
-			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			//GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
 
 	])
@@ -206,7 +210,7 @@ AddModel({
 		},
 		{ Name: "Chest", Layer: "CatsuitChest", Pri: 1,
 			InheritColor: "TorsoUpper",
-			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			//GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
 
 	])
@@ -265,6 +269,10 @@ AddModel({
 			InheritColor: "TorsoUpper",
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES], "Hogtie"),
 			GlobalDefaultOverride: ToMap(["Hogtie", "Front", "Crossed"]),
+			ErasePoses: ["HideHands"],
+			EraseLayers: {RightHand: true},
+			EraseSprite: "HideBoxtieHand",
+			EraseInvariant: true,
 			//AppendPose: ToMapDupe(["Hogtie"]),
 			//AppendPoseRequire: ToMap(["Wristtie"]),
 		},
@@ -320,7 +328,7 @@ AddModel({
 		},
 		{ Name: "Chest", Layer: "CatsuitChest", Pri: 1,
 			InheritColor: "TorsoUpper",
-			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			//GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
 
 	])
@@ -367,7 +375,11 @@ AddModel({
 		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
 	},
 	Layers: ToLayerMap([
-		...GetModelLayersNoOverride("CatsuitUpper"),
+		...GetModelLayersNoOverrideCB("CatsuitUpper", (layer) => {
+			if (layer.Name == "Chest" || layer.Name == "TorsoUpper") {
+				layer.Sprite = "Trans" + layer.Name;
+			}
+		}),
 	]),
 });
 AddModel({
@@ -381,7 +393,11 @@ AddModel({
 		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
 	},
 	Layers: ToLayerMap([
-		...GetModelLayersNoOverride("CatsuitUpperCropped"),
+		...GetModelLayersNoOverrideCB("CatsuitUpperCropped", (layer) => {
+			if (layer.Name == "Chest" || layer.Name == "TorsoUpper") {
+				layer.Sprite = "Trans" + layer.Name;
+			}
+		}),
 	]),
 });
 
@@ -445,7 +461,11 @@ AddModel({
 		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
 	},
 	Layers: ToLayerMap([
-		...GetModelLayersNoOverride("Catsuit"),
+		...GetModelLayersNoOverrideCB("Catsuit", (layer) => {
+			if (layer.Name == "Chest" || layer.Name == "TorsoUpper") {
+				layer.Sprite = "Trans" + layer.Name;
+			}
+		}),
 	]),
 });
 

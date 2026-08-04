@@ -788,7 +788,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				let player = KDPlayer();
 				let en = KDGetSpiritBondEntity(KDPlayer(), item);
 				if (en) {
-
+					
 				} else {
 
 				}

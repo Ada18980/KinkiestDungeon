@@ -276,6 +276,13 @@ function GetModelLayersNoOverride(ModelName: string, PrependString?: string, App
 	}
 	return [];
 }
+function GetModelLayersNoOverrideCB(ModelName: string, cb: (layer: ModelLayer) => void, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number, layerSwap?: string, Folder?: string): ModelLayer[] {
+	let layers = GetModelLayersNoOverride(ModelName, PrependString, AppendString, InheritColor, PriBonus, layerSwap, Folder);
+	for (let layer of layers) {
+		cb(layer);
+	}
+	return layers;
+}
 function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: ModelLayer[], Parent?: string, TopLevel?: boolean, ExtraProps?: object): Model {
 	if (ModelDefs[BaseModel]) {
 		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));

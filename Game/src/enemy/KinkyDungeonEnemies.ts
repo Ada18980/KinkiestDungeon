@@ -10270,6 +10270,7 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 			npc.y = data.y;
 			npc.visual_x = npc.x;
 			npc.visual_y = npc.y;
+			KDClearNPCMovement(npc);
 			if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
 				KDGetPersistentNPC(data.enemy.id).collect = false;
 			if (KDIsNPCPersistent(data.enemy.id)) {
@@ -10306,6 +10307,7 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 			}
 			npc.entity.x = data.x;
 			npc.entity.y = data.y;
+			KDClearNPCMovement(npc.entity);
 
 			KDUpdateEnemyCache = true;
 			if (KDIsNPCPersistent(data.enemy.id)) {
@@ -10320,6 +10322,8 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 	if (KDMapData == mapData) {
 		KDUnPackEnemy(data.enemy);
 	}
+	
+	KDClearNPCMovement(data.enemy);
 	mapData.Entities.push(data.enemy);
 	if (!noLoadout)
 		KDSetLoadout(data.enemy, data.loadout);
@@ -11598,4 +11602,20 @@ function KDEnemyCanDoJailbreak(enemy: entity, player: entity, delta: number): bo
 		return false;
 	}
 	return !enemy.Enemy.Behavior?.noAlert;
+}
+
+
+function KDClearNPCMovement(entity: entity) {
+	delete entity.gx;
+	delete entity.gy;
+	delete entity.gxx;
+	delete entity.gyy;
+	delete entity.spawnX;
+	delete entity.spawnY;
+	delete entity.despawnX;
+	delete entity.despawnY;
+	delete entity.goToDespawn;
+	delete entity.path;
+	delete entity.IntentLeashPoint;
+	KDResetMoveFlags(entity);
 }
