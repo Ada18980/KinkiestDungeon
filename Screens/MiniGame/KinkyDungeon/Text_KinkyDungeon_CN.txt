@@ -2293,7 +2293,7 @@ Devious Dungeon Challenge 已启用。
 - DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
 【警告】加载模组具有危险性，因为模组可在你的计算机上执行任何代码，
 - (e.g. connecting to a server and sending data) Only load mods from a TRUSTED source.
-比如连接到未知服务器等，请只加载来源可信赖的模组。
+（比如将你的数据发送到某个服务器）请只加载来源可信赖的模组。
 
 - Up
 上
@@ -8546,6 +8546,10 @@ RestraintName 上的诅咒解除了！
 # - It's sealed magically around your neck, and binds you to your spiritbond. The only way to remove it is to take the key from them.
 # - The spiritbond collar falls from your neck.
 
+# - Your collar drains ${MPAmount} mana to heal your spiritbond!
+# - Your collar drains ${WPAmount} willpower to heal your spiritbond!
+# - Your collar drains ${SPAmount} stamina to strengthen your spiritbond!
+
 - Prisoner Plug
 囚犯塞
 - A teaser to keep you occupied.
@@ -10362,7 +10366,7 @@ RestraintName 上的诅咒解除了！
 用圆盘锁加固和固定，以确保不守规矩的女仆不会玩忽职守。
 
 - Doll Mask (Excited)
-可疑的面具
+玩偶面罩（兴奋脸）
 - A well-fitted mask, covering your entire head neatly and locking in place.
 一款严丝合缝的头壳，能完美包裹并牢牢锁住你的整个头部。
 - It has eyeholes for you to somewhat see out of, but blocks access to the face.
@@ -10372,11 +10376,12 @@ RestraintName 上的诅咒解除了！
 # :: RestraintKiguMaskEmbarrassedDesc
 
 - Doll Mask (Smiling)
-欢愉之面
+玩偶面罩（微笑脸）
 - Just put on a happy face and enjoy it.
 戴上这副笑脸，沉溺于这份快乐吧。
 
-# - Doll Mask (Nervous)
+- Doll Mask (Nervous)
+玩偶面罩（紧张脸）
 # - Don't be shy~
 
 - Sensory Hood
@@ -12214,7 +12219,7 @@ RestraintName 上的诅咒解除了！
 # :: KDTileTooltipD
 # :: KDTileTooltipZ
 - Open Door
-打开的门
+开门
 # :: KDTileTooltipd
 # :: KDTileTooltipz
 # :: KDContextMenu_OpenDoor
@@ -18867,7 +18872,7 @@ SPL。
 - It's time for your shot...
 是时候开枪了...
 - Why are you out of your cell~?
-你为什么离开牢房？
+你为什么离开牢房~？
 - You need my help!
 你需要我的帮助！
 - Those are supposed to keep you still you know...
@@ -54005,13 +54010,17 @@ ${You}陷入沉默，无法轻易施展法术。
 - A gentle buzz reminds you of the toys on your nipples.
 轻微的嗡嗡声提醒着你乳头上的玩具。
 
-# - She/Her
+- She/Her
+她
 # :: KDPronoun_
 # :: KDPronoun_She
-# - They/Them
-# - It/Its
+- They/Them
+他们
+- It/Its
+它
 
-# - Detailed Info
+- Detailed Info
+详细信息
 
 # - Class: 
 # - Pronouns: 
