@@ -6,6 +6,7 @@ let KDSelectedGenericBindItem = "";
 let UpdateRestraintBindingData = true;
 let KDNPCRestraintBindingData: Record<string, string[]> = {};
 
+let KDCurrentItemClickTextX = 570;
 interface NPCRestraint extends Named {
 	name: string,
 	inventoryVariant?: string,
@@ -470,14 +471,14 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		if (currentItem) {
 			DrawTextFitKD(TextGet("KDCurrentItem") + KDGetItemNameString(currentItem.name),
-			x + 720, 130, 500, KDBaseWhite, KDTextGray1,
+			x + KDCurrentItemClickTextX, 130, 600, KDBaseWhite, KDTextGray1,
 			36, "center"
 			);
 		}
 
 		if (ss?.tooltipitem) {
 			DrawTextFitKD(TextGet("KDCurrentItem2") + KDGetItemName(ss.tooltipitem.item),
-			x + 720, 180, 500, KDBaseWhite, KDTextGray1,
+			x + KDCurrentItemClickTextX, 180, 600, KDBaseWhite, KDTextGray1,
 			36, "center"
 			);
 		}
@@ -1476,6 +1477,7 @@ interface KDDrawGenericRestrainCategoriesData {
 	highlightedItem: string,
 	colCounter: number,
 	matsPerRow: number,
+	toff: number,
 
 }
 
@@ -1543,7 +1545,7 @@ function KDDrawGenericRestrainCategories(data: KDDrawGenericRestrainCategoriesDa
 			)) {
 				DrawTextFitKD(TextGet("KDCurrentItemRaw")
 					+ KDGetItemNameString(cat.raw || cat.consumableRaw),
-					data.x + data.secondXX + KDGenericBindSpacing, 180, 500, KDBaseWhite, KDTextGray1,
+					data.x + KDCurrentItemClickTextX + data.toff, 180, 500, KDBaseWhite, KDTextGray1,
 				36, "center"
 				);
 				data.highlightedItem = "Null";
@@ -1607,7 +1609,8 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 		YY: YY,
 		categoryItem: categoryItem,
 		highlightedItem: highlightedItem,
-		colCounter: colCounter
+		colCounter: colCounter,
+		toff: toff,
 	}
 	KDDrawGenericRestrainCategories(catdata, slot);
 	showCategories = catdata.showCategories;
@@ -1731,7 +1734,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 				if (!highlightedItem) {
 					DrawTextFitKD(TextGet(KDSelectedGenericBindItem == item.restraint ? "KDCurrentItem2" : "KDCurrentItem3")
 					+ KDGetItemNameString(item.restraint),
-					x + secondXX + toff, 180, 500, KDBaseWhite, KDTextGray1,
+					x + KDCurrentItemClickTextX + toff, 180, 500, KDBaseWhite, KDTextGray1,
 					36, "center"
 					);
 					highlightedItem = item.restraint;
@@ -1802,7 +1805,8 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 			YY: YY,
 			categoryItem: categoryItem,
 			highlightedItem: highlightedItem,
-			colCounter: colCounter
+			colCounter: colCounter,
+			toff: toff,
 		}
 		KDDrawGenericRestrainCategories(catdata, slot);
 		showCategories = catdata.showCategories;
@@ -1901,7 +1905,7 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 					if (!highlightedItem) {
 						DrawTextFitKD(TextGet(KDSelectedGenericBindItem == item.restraint ? "KDCurrentItem2" : "KDCurrentItem3")
 						+ KDGetItemNameString(item.restraint),
-						x + secondXX + KDGenericBindSpacing + toff, 180, 500, KDBaseWhite, KDTextGray1,
+						x + KDCurrentItemClickTextX + toff, 180, 500, KDBaseWhite, KDTextGray1,
 						36, "center"
 						);
 						highlightedItem = item.restraint;

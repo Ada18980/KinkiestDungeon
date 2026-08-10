@@ -2722,13 +2722,13 @@ let KDLogFilterDefault = {
 	TotalDamage: false,
 }
 
-function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boolean = false, width: number = KDMsgWidthMin) {
+function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boolean = false, width: number = KDMsgWidthMin, heightBonus = 0, subLines = 0) {
 	if (!NoLog) {
 		DrawButtonKDEx("logtog", (_bdata) => {
 			KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle;
 			KDLogIndex = 0;
 			return true;
-		}, true, KDMsgWidthMin + KDMsgX + shiftx + 70, 4, 52, 52, "", KDBaseWhite,
+		}, true, KDMsgWidthMin + KDMsgX + shiftx + 70, heightBonus + 4, 52, 52, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + (KinkyDungeonMessageToggle ? "UI/LogUp.png" : "UI/LogDown.png"), undefined, undefined, !KinkyDungeonMessageToggle, undefined, undefined, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[0]),
 			hotkeyPress: KinkyDungeonKeyToggle[0],
@@ -2745,9 +2745,9 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 		let filterCols = 2;
 		let yyy = KDLogFilters.length * spacing/filterCols + 30;
 		if (!KinkyDungeonTargetingSpell
-			&& MouseIn(KDMsgWidthMin + KDMsgX + shiftx + 70, 0, 300, yyy) && !KDModalArea) {
+			&& MouseIn(KDMsgWidthMin + KDMsgX + shiftx + 70, heightBonus + 0, 300, yyy) && !KDModalArea) {
 			let filterX = KDMsgWidthMin + KDMsgX + shiftx + 70 + 60;
-			let filterY = 4;
+			let filterY = heightBonus + 4;
 			let ii = 0;
 			for (let filter of KDLogFilters) {
 				if (!KDGameData.LogFilters) KDGameData.LogFilters = {};
@@ -2773,17 +2773,17 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 	if (!KinkyDungeonMessageToggle || NoLog) {
 		let zLevel = KDModalArea ? 50 : undefined;
 		let i = 0;
-		if (!MouseIn(KDMsgX + shiftx + (KDMsgWidth - KDMsgWidthMin)/2, 0, KDMsgWidthMin, 62 + KDLogDist*(2 + KDMaxConsoleMsg)) || KinkyDungeonDrawState != "Game") {
+		if (!MouseIn(KDMsgX + shiftx + (KDMsgWidth - KDMsgWidthMin)/2, heightBonus + 0, KDMsgWidthMin, 62 + KDLogDist*(2 + (KDMaxConsoleMsg - subLines))) || KinkyDungeonDrawState != "Game") {
 			let msg2nd = [];
 			let ignoreMSG = [];
 			let spacing = KDLogDist;
 			if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, width, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
+				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + shiftx + KDMsgWidth/2, heightBonus + 15 + spacing * i, width, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
 				ignoreMSG.push(KinkyDungeonActionMessage);
 				i++;
 			}
 			if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, width, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
+				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + shiftx + KDMsgWidth/2, heightBonus + 15 + spacing * i, width, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
 				ignoreMSG.push(KinkyDungeonTextMessage);
 				i++;
 			}
@@ -2814,7 +2814,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 				let alpha = 1;
 				let alphamin = 0.4;
 				for (let msg of msg2nd) {
-					if (i > KDMaxConsoleMsg || (KinkyDungeonDrawState != "Game" && i > 3)) break;
+					if (i > (KDMaxConsoleMsg - subLines) || (KinkyDungeonDrawState != "Game" && i > 3)) break;
 					if (alpha > 0) {
 						if (msg.filter && KDGameData.LogFilters && KDGameData.LogFilters[msg.filter] == false) {
 							continue;
@@ -2822,8 +2822,8 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 						if (msg.antifilter && KDGameData.LogFilters && KDGameData.LogFilters[msg.antifilter] == true) {
 							continue;
 						}
-						alpha = Math.max(0, Math.min(1, 2.0 - i / KDMaxConsoleMsg)) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
-						DrawTextFitKD(msg.text, KDMsgX + shiftx + KDMsgWidth/2, 15 + spacing * i, width, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
+						alpha = Math.max(0, Math.min(1, 2.0 - i / (KDMaxConsoleMsg - subLines))) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
+						DrawTextFitKD(msg.text, KDMsgX + shiftx + KDMsgWidth/2, heightBonus + 15 + spacing * i, width, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
 						i++;
 					}
 				}
@@ -2834,7 +2834,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 			if (i > 0)
 				FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
 					Left: KDMsgX + shiftx + (KDMsgWidth - KDMsgWidthMin)/2,
-					Top: 0,
+					Top: heightBonus + 0,
 					Width: KDMsgWidthMin,
 					Height: 22 + KDLogDist*(i),
 					Color: KDBaseBlack,
@@ -2848,7 +2848,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 		if (!noBG)
 			FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
 				Left: KDMsgX + shiftx,
-				Top: 0,
+				Top: heightBonus + 0,
 				Width: KDMsgWidth,
 				Height: KDLogTopPad + KDLogHeight,
 				Color: KDTextGray0,
@@ -2867,7 +2867,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 			}
 
 			let col = log.color;
-			DrawTextFitKD(log.text, KDMsgX + shiftx + KDMsgWidth/2, KDLogTopPad + ii * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, KDMSGFontSize, undefined, 101);
+			DrawTextFitKD(log.text, KDMsgX + shiftx + KDMsgWidth/2, heightBonus + KDLogTopPad + ii * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, KDMSGFontSize, undefined, 101);
 			ii++;
 		}
 		if (KinkyDungeonMessageLog.length > KDMaxLog) {
@@ -2875,13 +2875,13 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 				if (KDLogIndex > 0)
 					KDLogIndex = Math.max(0, KDLogIndex - KDLogIndexInc);
 				return true;
-			}, true, 1500, 20, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png");
+			}, true, 1500, heightBonus + 20, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png");
 			//KDMsgX + shiftx + KDMsgWidth/2 - 45, KDLogTopPad + KDLogHeight + 10
 			DrawButtonKDEx("logscrolldown", (_bdata) => {
 				if (KDLogIndex < KinkyDungeonMessageLog.length - KDMaxLog)
 					KDLogIndex = Math.min(Math.max(0, KinkyDungeonMessageLog.length - KDMaxLog), KDLogIndex + KDLogIndexInc);
 				return true;
-			}, true,1500, 60, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png");
+			}, true,1500, heightBonus + 60, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png");
 
 			if (KinkyDungeonMessageLog.length > KDMaxLog * 100) {
 				KinkyDungeonMessageLog.splice(0, KDMaxLog * 100 - KinkyDungeonMessageLog.length);
@@ -3430,7 +3430,7 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 			sprite.destroy(true);
 		}
 		// Make the prim
-		sprite = new PIXI.Text(Params.wordwrap ?
+		sprite = new PIXI.Text(Params.wordwrap || Params.Text.includes('|') || Params.Text.includes('\\n') ?
 			//@ts-ignore
 			Params.Text.replaceAll('|', "\n").replaceAll('\\n', "\n")
 			: Params.Text,

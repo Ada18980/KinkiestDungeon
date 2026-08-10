@@ -474,6 +474,41 @@ let KDQuests: Record<string, KDQuest> = {
 		}
 	},
 
+	"Mistress": {
+		name: "Mistress",
+		npc: "DollmakerBoss1",
+		customNPC: (player) => {
+			let npc = KDPersistentNPCs[KDGameData.MistressID];
+			if (npc) {
+				return npc.entity?.Enemy?.name;
+			}
+		},
+		text: (player) => {
+			let npc = KDPersistentNPCs[KDGameData.MistressID];
+			if (npc)
+				return [TextGet("KDQuest_Mistress", KDGetGenericDialogueParams(player, npc.entity))];
+			else return [TextGet("KDQuest_MistressFail")];
+		},
+		visible: true,
+		oncancel: (player) => {
+			delete KDGameData.MistressID;
+			return true;
+		},
+		tick: (player) => {
+			let npc = KDPersistentNPCs[KDGameData.MistressID];
+			if (!npc) KDRemoveQuest("Mistress", true, false, true);
+		},
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
+			return 0;
+		},
+		worldgenstart: () => {
+			
+		},
+		prerequisite: (_RoomType, _MapMod, _data, _currentQuestList) => {
+			return false;
+		}
+	},
+
 
 	"Nawashi": {
 		name: "Nawashi",
@@ -1155,7 +1190,8 @@ function KinkyDungeonDrawQuest() {
 							KDBaseWhite, KDTextGray0, (questtext.length > 1 && i == 0 ? 32 : 24), "left");
 					
 					}
-					KDDraw(kdcanvas, kdpixisprites, "kdquest" + q, KinkyDungeonRootDirectory + "Enemies/" + KDQuests[q]?.npc + ".png",
+					KDDraw(kdcanvas, kdpixisprites, "kdquest" + q, KinkyDungeonRootDirectory + "Enemies/" + 
+						(KDQuests[q].customNPC ? KDQuests[q].customNPC(KDPlayer()) : "") || KDQuests[q]?.npc + ".png",
 						xStart + xOffset + 100, yStart + (II-KDQuestsIndex)*spacing - 36, 72, 72);
 					if (DrawButtonKDEx("kdquestquit" + q, (_b) => {
 						if (!KDQuests[q]?.nocancel)

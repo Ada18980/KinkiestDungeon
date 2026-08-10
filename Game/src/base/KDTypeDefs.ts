@@ -2659,6 +2659,7 @@ interface KDQuest {
 	oncancel?: (player: entity, force: boolean, intentional: boolean, success: boolean) => boolean;
 	priority?: (player: entity) => number;
 	text?: (player: entity) => string[];
+	customNPC?: (player: entity) => string;
 	npc: string;
 	visible: boolean;
 	nocancel?: boolean,

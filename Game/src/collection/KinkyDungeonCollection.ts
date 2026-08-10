@@ -182,7 +182,7 @@ function KinkyDungeonDrawBondage(xOffset = -125) {
 		KDResetAlternateInventoryRender();
 	}
 
-	KinkyDungeonDrawMessages(true, 550, true, 600);
+	KinkyDungeonDrawMessages(true);
 	//KDDrawInventoryTabs(xOffset);
 }
 

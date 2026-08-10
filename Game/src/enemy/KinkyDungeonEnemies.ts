@@ -6285,7 +6285,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				if (
 					// We are not where we want to be
 					(Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0)
-					&& (!KinkyDungeonEntityAt(enemy.x, enemy.y) || KDEnemyRank(KinkyDungeonEntityAt(enemy.x, enemy.y)) < KDEnemyRank(enemy)
+					&& (!KinkyDungeonEntityAt(enemy.gx, enemy.gy) || KDEnemyRank(KinkyDungeonEntityAt(enemy.gx, enemy.gy)) < KDEnemyRank(enemy)
 						|| KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) > 1.5)) {
 						for (let T = 0; T < 8; T++) {
 							let dir = KDGetDir(enemy, {x: enemy.gx, y: enemy.gy}, KinkyDungeonGetDirection);

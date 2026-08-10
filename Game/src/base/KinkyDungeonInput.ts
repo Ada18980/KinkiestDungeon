@@ -1234,6 +1234,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	},
 	"cancelParty": (data) => {
 		if (data.enemy) {
+			if (!KDCanRemovePartyMember(data.player, data.enemy.id)) return "Fail";
 			let enemy = KinkyDungeonFindID(data.enemy.id);
 			if (!enemy && KDGameData.Party) enemy = KDGameData.Party.find((entity) => {return entity.id == data.enemy.id;});
 			if (enemy) {

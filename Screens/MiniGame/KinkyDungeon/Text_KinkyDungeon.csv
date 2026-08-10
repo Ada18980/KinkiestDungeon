@@ -29600,7 +29600,7 @@ rTutorialContinue_Continue_Continue_Continue_Continue_Continue_Continue_Continue
 KDNavGame,Game
 KDNavQuit,Menu
 
-
+KDInvFilterLimt,search...
 KDInvFilter,Search ITMNS:
 KDInvFilterQ,Search Items:
 KDMagicFilter,Search Spells:
@@ -30184,6 +30184,8 @@ KillDirtPile,You clear out the dirt pile
 KDDirtPileSurprise,A ENMY was lurking inside the dirt pile!
 KDNotEnoughDirtPiles,"You skipped your duty and left some dirt missing in the last level!"
 
+KDQuest_Mistress,"You are currently referring to ${EName} as your ${EHonorinti}."
+KDQuest_MistressFail,"..."
 KDQuest_EscapedDoll,"The Dollmaker does not take no for an answer."
 KDQuest_FuukaPet,"Fuuka's shrine maidens would like to have a word with you."
 KDQuest_Nawashi,"Your instructor will meet with you at regular intervals for further training."
@@ -34135,3 +34137,7 @@ KDInfoNPC,Detailed Info
 KDCollectionInfo_Type,"Class: "
 KDCollectionInfo_Pronouns,"Pronouns: "
 KDCollectionInfo_Personality,"Personality: "
+
+KDStartWear_PutOn,You start putting on a ${ItemName}
+KDStartWear_LockOn,You start locking on a ${ItemName}
+KDStartWear_Lock,You put a ${LockName} on your ${ItemName}

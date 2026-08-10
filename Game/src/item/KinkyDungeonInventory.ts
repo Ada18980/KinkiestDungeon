@@ -3,7 +3,11 @@
 
 let KDPreventAccidentalClickTime = 0;
 let KDInventoryActionSpacing = 76;
-let KDInventoryActionPerRow = 7;
+let KDInventoryActionPerRow = 9;
+let KDDefaultYOffForInventoryContainer = -94; // 224
+let KDDefaultYOffForInventoryInfo = -94;
+let KDDefaultXOffForInventoryInfo = 0;
+let KDBaseInventoryOffset = 90 + canvasOffsetY_ui;
 
 
 let KinkyDungeonFilters = [
@@ -1596,7 +1600,7 @@ function KDDrawInventoryContainer (
 	nosearch?: boolean,
 	highlightcolor?: string,
 	bordercolor?: string,
-): {selected: KDFilteredInventoryItem, tooltipitem: KDFilteredInventoryItem}
+): {selected: KDFilteredInventoryItem, tooltipitem: KDFilteredInventoryItem, drewIAText: boolean}
 {
 	if (prefix) {
 		if (KinkyDungeonCurrentPageContainer >= filteredInventory.length) KinkyDungeonCurrentPageContainer = 0;
@@ -1616,6 +1620,7 @@ function KDDrawInventoryContainer (
 		prefix ? KinkyDungeonCurrentPageContainer
 			: KinkyDungeonCurrentPageInventory
 	];
+	let drewIAText = false;
 	if (filteredInventory) {
 		let useIcons = KDInventoryUseIconConfig[filter];
 		let rowsShort = useIcons ? 4 : 1;
@@ -1633,16 +1638,18 @@ function KDDrawInventoryContainer (
 		if (!KDRenderAlternateInventory(selected, xOffset, yOffset, prefix)) {
 
 			if (!nosearch) {
-				DrawTextFitKD(
-					TextGet("KDInvFilter")
-						.replace("ITMNS", TextGet("KinkyDungeonCategoryFilter" + CurrentFilter)),
-					1460 + xOffset + 350/2, yOffset + 150 - 20, 200, KDBaseWhite, KDTextGray0, 18, "center");
-				let TF = KDTextField(prefix + "InvFilter", 1460 + xOffset, yOffset + 150, 350, 54, "text", "", "45");
+				/*DrawTextFitKD(
+					,
+					1460 + xOffset + 350/2, yOffset + 150, 200, KDBaseWhite, KDTextGray0, 18, "center");*/
+				let TF = KDTextField(prefix + "InvFilter", 1460 + xOffset, yOffset + 480*KinkyDungeonBookScale + 100, 
+					350, 54, "text", "", "45");
 				if (TF.Created) {
 					KDInvFilter = "";
 					TF.Element.oninput = (_event: any) => {
 						KDInvFilter = ElementValue("InvFilter");
 					};
+					TF.Element.placeholder = TextGet("KDInvFilterLimt")
+						.replace("ITMNS", TextGet("KinkyDungeonCategoryFilter" + CurrentFilter));
 				}
 			}
 
@@ -1692,11 +1699,12 @@ function KDDrawInventoryContainer (
 
 						if (itemcallback) itemcallback(filteredInventory[index],
 							canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135,
-							yOffset + canvasOffsetY_ui + 50 + b_height * yy,
+							yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy,
 							b_width-padding, b_height-padding, diff
 						);
 						return true;
-					}, true, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy,
+					}, true, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, 
+					yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy,
 					b_width-padding, b_height-padding,
 					useIcons ? ("") : (text + suff),
 					KDBaseWhite,//useIcons ? KDBaseWhite : index == KinkyDungeonCurrentPageInventory ? KDBaseWhite : "#888888",
@@ -1716,14 +1724,18 @@ function KDDrawInventoryContainer (
 					}
 					if (useIcons && filteredInventory[index].preview2)
 						KDDraw(kdcanvas, kdpixisprites, prefix + "invchoice_2_" + i,
-							filteredInventory[index].preview2, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+							filteredInventory[index].preview2, 
+							canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, 
+							yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy, b_width-padding, b_height-padding,
 							undefined, {
 								zIndex: 100.1,
 								alpha: 0.9,
 							});
 					if (filteredInventory[index].previewcolor) {
 						KDDraw(kdcanvas, kdpixisprites, prefix + "invchoice_halo" + i,
-							KinkyDungeonRootDirectory + "UI/ItemAura.png", canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+							KinkyDungeonRootDirectory + "UI/ItemAura.png", 
+							canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, 
+							yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy, b_width-padding, b_height-padding,
 							undefined, {
 								zIndex: 100.003,
 								tint: string2hex(filteredInventory[index].previewcolor),
@@ -1732,7 +1744,7 @@ function KDDrawInventoryContainer (
 					}
 					if (filteredInventory[index].previewcolorbg) {
 						KDDraw(kdcanvas, kdpixisprites, prefix + "invchoice_halobg" + i,
-							KinkyDungeonRootDirectory + "UI/ItemAuraBG.png", canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+							KinkyDungeonRootDirectory + "UI/ItemAuraBG.png", canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy, b_width-padding, b_height-padding,
 							undefined, {
 								zIndex: 100.002,
 								tint: string2hex(filteredInventory[index].previewcolorbg),
@@ -1742,7 +1754,7 @@ function KDDrawInventoryContainer (
 					if (KDGameData.ItemPriority && KDGameData.ItemPriority[filteredInventory[index].item?.inventoryVariant || filteredInventory[index].item?.name] > 0) {
 						KDDraw(kdcanvas, kdpixisprites, prefix + "invchoice_star" + i,
 							KinkyDungeonRootDirectory + "UI/Star.png",
-							canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy, undefined, undefined,
+							canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy, undefined, undefined,
 							undefined, {
 								zIndex: 100.2,
 							});
@@ -1750,22 +1762,24 @@ function KDDrawInventoryContainer (
 					if (filteredInventory[index].key) {
 						KDDraw(kdcanvas, kdpixisprites, prefix + "invchoice_key" + i,
 							KinkyDungeonRootDirectory + filteredInventory[index].key + ".png",
-							canvasOffsetX_ui + xOffset + xx * b_width + b_width - 36 + 640*KinkyDungeonBookScale + 135, yOffset + 4 + canvasOffsetY_ui + 50 + b_height * yy, 28, 28,
+							canvasOffsetX_ui + xOffset + xx * b_width + b_width - 36 + 640*KinkyDungeonBookScale + 135, yOffset + 4 + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy, 28, 28,
 							undefined, {
 								zIndex: 100.2,
 							});
 					}
 					if (filteredInventory[index].item.quantity != undefined) {
-						DrawTextKD("" + filteredInventory[index].item.quantity, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 140, yOffset + canvasOffsetY_ui + 50 + b_height * yy + 18, KDBaseWhite, undefined, 18, "left");
+						DrawTextKD("" + filteredInventory[index].item.quantity, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 140, yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy + 18, KDBaseWhite, undefined, 18, "left");
 					}
 
 					if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.itemlabel
 						&& (!KDInventoryAction[KDGameData.InventoryAction].show || KDInventoryAction[KDGameData.InventoryAction].show(KDPlayer(), filteredInventory[index].item))
 						&& (!KDInventoryAction[KDGameData.InventoryAction].valid || KDInventoryAction[KDGameData.InventoryAction].valid(KDPlayer(), filteredInventory[index].item))
-					)
+					) {
+						drewIAText = true;
 						DrawTextFitKD(KDInventoryAction[KDGameData.InventoryAction].itemlabel(KinkyDungeonPlayerEntity, filteredInventory[index].item),
-							36 + canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 140, yOffset + canvasOffsetY_ui + 50 + b_height * yy + (useIcons ? 72 : 36) - 9,  72, KDInventoryAction[KDGameData.InventoryAction].itemlabelcolor ? KDInventoryAction[KDGameData.InventoryAction].itemlabelcolor(KinkyDungeonPlayerEntity, filteredInventory[index].item) : KDBaseWhite,
+							36 + canvasOffsetX_ui + xOffset + xx * b_width + 140, yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy + (useIcons ? 72 : 36) - 9,  72, KDInventoryAction[KDGameData.InventoryAction].itemlabelcolor ? KDInventoryAction[KDGameData.InventoryAction].itemlabelcolor(KinkyDungeonPlayerEntity, filteredInventory[index].item) : KDBaseWhite,
 							KDTextGray0, 18, "center");
+					}
 				} else {
 					if (i + (prefix ? KinkyDungeonContainerOffset : KinkyDungeonInventoryOffset) > filteredInventory.length + numRows*3) {
 						if (prefix) {
@@ -1787,7 +1801,8 @@ function KDDrawInventoryContainer (
 					}, (_bdata) => {
 						//KinkyDungeonCurrentPageInventory = index;
 						return true;
-					}, true, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
+					}, true, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, 
+					yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy, b_width-padding, b_height-padding,
 					"",
 					KDBaseWhite,
 					"",
@@ -1800,7 +1815,7 @@ function KDDrawInventoryContainer (
 
 					/*FillRectKD(kdcanvas, kdpixisprites, "kdInvEmptySpot" + i, {
 						Left: canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135,
-						Top: canvasOffsetY_ui + 50 + b_height * yy,
+						Top: KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + b_height * yy,
 						Width: b_width-padding,
 						Height: b_height-padding,
 						Color: KDTextGray1,
@@ -1824,7 +1839,8 @@ function KDDrawInventoryContainer (
 				}
 				return true;
 			}, true,
-			canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 526, yOffset + canvasOffsetY_ui, 90, 44, "", KinkyDungeonInventoryOffset > 0 ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Up.png",
+			canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 526, 
+			yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer - 50, 90, 44, "", KinkyDungeonInventoryOffset > 0 ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Up.png",
 			undefined, undefined, undefined, undefined, undefined, undefined, {
 				hotkey: KDHotkeyToText(KDInventoryDrawContainerHotkeys[prefix] ?
 					KDInventoryDrawContainerHotkeys[prefix].up() : KinkyDungeonKey[4]),
@@ -1843,7 +1859,8 @@ function KDDrawInventoryContainer (
 				}
 				return true;
 			}, true,
-			canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 526, yOffset + 480*KinkyDungeonBookScale + canvasOffsetY_ui - 4, 90, 44, "", ((prefix ? KinkyDungeonContainerOffset : KinkyDungeonInventoryOffset) + 24 < filteredInventory.length) ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Down.png",
+			canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 526, 
+			yOffset + 480*KinkyDungeonBookScale + 100, 90, 44, "", ((prefix ? KinkyDungeonContainerOffset : KinkyDungeonInventoryOffset) + 24 < filteredInventory.length) ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Down.png",
 			undefined, undefined, undefined, undefined, undefined, undefined, {
 				hotkey: KDHotkeyToText(KDInventoryDrawContainerHotkeys[prefix] ?
 					KDInventoryDrawContainerHotkeys[prefix].down() : KinkyDungeonKey[6]),
@@ -1887,7 +1904,7 @@ function KDDrawInventoryContainer (
 				}, (_bdata) => {
 					KDFilterIndex[CurrentFilter] = scroll(-1);
 					return true;
-				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
+				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + 40 * yy, 159, 36,
 				"", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png", undefined, undefined, !activeUp,
 				KDTextGray1, 20, undefined, {
 					centered: true,
@@ -1904,7 +1921,7 @@ function KDDrawInventoryContainer (
 				}, (_bdata) => {
 					KDFilterIndex[CurrentFilter] = scroll(1);
 					return true;
-				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
+				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + 40 * yy, 159, 36,
 				"", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png", undefined, undefined, !activeDown,
 				KDTextGray1, 20, undefined, {
 					centered: true,
@@ -1934,7 +1951,7 @@ function KDDrawInventoryContainer (
 						);
 					}
 					return true;
-				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
+				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + 40 * yy, 159, 36,
 				show ? TextGet("KDFilterFilters" + filters[i][0]) : "", (show && filters[i][1]) ? KDBaseWhite : "#aaaaaa", undefined, undefined, undefined, (!show || !filters[i][1]),
 				KDTextGray1, 20);
 			}
@@ -1942,7 +1959,7 @@ function KDDrawInventoryContainer (
 
 		}
 	}
-	return {selected: selected, tooltipitem: tooltipitem};
+	return {selected: selected, tooltipitem: tooltipitem, drewIAText: drewIAText};
 }
 
 function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters = [], spacing = 65) {
@@ -1978,7 +1995,9 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 				KinkyDungeonCurrentPageInventory = 0;
 				KinkyDungeonCurrentPageContainer = 0;
 				return true;
-			}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 55, yOffset + canvasOffsetY_ui + 115 + II*spacing, 180, spacing - 10,
+			}, true, 
+			canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 55, 
+			yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + II*spacing, 180, spacing - 10,
 			TextGet("KinkyDungeonCategoryFilter" + KDFilters[I]),
 				(KinkyDungeonCurrentFilter == KDFilters[I]) ? KDBaseWhite : col, "", "");
 
@@ -1989,19 +2008,20 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 }
 
 let KD_invactiontextwidth = 800;
-let KD_invactiontextanchorx_offset = 500;
-let KD_invactiontextanchory = 170;
+let KD_invactiontextanchorx_offset = 1400;
+let KD_invactiontextanchory = 80;
 
 function KinkyDungeonDrawInventory() {
 	let xOffset = -125;
 	//KinkyDungeonDrawMessages(true, 550, true, 600);
 
+	
 	let container = KDInventoryActionContainer(KDPlayer());
 
 	KDDrawInventoryTabs(xOffset, true);
 	let ffilters = container ? container.filters : undefined;
 
-	KDDrawInventoryFilters(xOffset, undefined, ffilters);
+	KDDrawInventoryFilters(xOffset + 487, 160, ffilters);
 	let filter = KinkyDungeonCurrentFilter;
 	if (KDFilterTransform[KinkyDungeonCurrentFilter]) filter = KDFilterTransform[KinkyDungeonCurrentFilter];
 	let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter,
@@ -2009,8 +2029,7 @@ function KinkyDungeonDrawInventory() {
 		container?.items, undefined, false
 	);
 
-
-	let ss = KDDrawInventoryContainer(xOffset, 0, filteredInventory, filter, KinkyDungeonCurrentFilter);
+	let ss = KDDrawInventoryContainer(xOffset - 200, 0, filteredInventory, filter, KinkyDungeonCurrentFilter);
 	let selected = ss.selected;
 	KDDrawHotbarBottom(selected, undefined, undefined, -432, true);
 
@@ -2050,7 +2069,7 @@ function KinkyDungeonDrawInventory() {
 	}
 
 	if (KinkyDungeonDrawInventorySelected(filteredInventory[KinkyDungeonCurrentPageInventory],
-		undefined, undefined, xOffset) && !KDAlternateInventoryRender()) {
+		undefined, undefined, xOffset, KDDefaultYOffForInventoryInfo) && !KDAlternateInventoryRender()) {
 
 		let inventoryActions: string[] = [];
 
@@ -2068,8 +2087,8 @@ function KinkyDungeonDrawInventory() {
 		}
 
 		if (inventoryActions.length > 0) {
-			let XX = canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 2 + 18;
-			let YY = canvasOffsetY_ui + 483*KinkyDungeonBookScale - 5 + 52;
+			let XX = canvasOffsetX_ui + xOffset + 70;
+			let YY = 34 + 483*KinkyDungeonBookScale - 5 + 38;
 			let YYTooltip = YY - 30;
 			let II = 0;
 			for (let action of inventoryActions) {
@@ -2132,78 +2151,21 @@ function KinkyDungeonDrawInventory() {
 				}
 
 			}
-		} else {
-
-			if (filter == Restraint) {
-				let item = filteredInventory[KinkyDungeonCurrentPageInventory].item;
-				let itemIndex = KDGetItemLinkIndex(item, false);
-				DrawButtonKDEx("struggleItem", (_bdata) => {
-					if (itemIndex >= 0 && KDCanStruggle(item)) {
-						let r = KDRestraint(item);
-						let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
-						KDSendInput("struggle", {group: sg.group, index: itemIndex, type: "Struggle"});
-					}
-					return true;
-				}, itemIndex >= 0 && KDCanStruggle(item), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 275, 55, TextGet("KinkyDungeonStruggle"),
-				(itemIndex >= 0 && KDCanRemove(item)) ? KDBaseWhite : "#888888", "", "");
-				DrawButtonKDEx("removeItem", (_bdata) => {
-					if (itemIndex >= 0 && KDCanRemove(item)) {
-						let r = KDRestraint(item);
-						let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
-						KDSendInput("struggle", {group: sg.group, index: itemIndex, type: (item.lock) ? "Unlock" : "Remove"});
-					}
-					return true;
-				}, itemIndex >= 0 && KDCanRemove(item), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale + 60, 275, 55, TextGet("KinkyDungeon" + ((item.lock) ? "Unlock" : "Remove")),
-				(itemIndex >= 0 && KDCanRemove(item)) ? KDBaseWhite : "#888888", "", "");
-
-				if (KDGameData.InventoryAction) {
-					DrawButtonKDEx("inventoryAction", (_bdata) => {
-						KDSendInput("inventoryAction", {player: KDPlayer(),
-							container: KDInventoryActionContainer(KDPlayer()),
-							item: filteredInventory[KinkyDungeonCurrentPageInventory].item});
-						return true;
-					}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 325, canvasOffsetY_ui + 483*KinkyDungeonBookScale + 60, 275, 55,
-						KDInventoryAction[KDGameData.InventoryAction] && KDInventoryAction[KDGameData.InventoryAction].text ? KDInventoryAction[KDGameData.InventoryAction].text(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) : TextGet("KDInventoryAction" + KDGameData.InventoryAction),
-						KDInventoryAction[KDGameData.InventoryAction] && KDInventoryAction[KDGameData.InventoryAction].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)
-						? KDBaseWhite : "#888888",
-						"", "", undefined, undefined, undefined, undefined, undefined, {
-							hotkey: KDInventoryAction[KDGameData.InventoryAction].hotkey ? KDInventoryAction[KDGameData.InventoryAction].hotkey() : undefined,
-							hotkeyPress: KDInventoryAction[KDGameData.InventoryAction].hotkeyPress ? KDInventoryAction[KDGameData.InventoryAction].hotkeyPress() : undefined,
-						});
-				}
-			}
 		}
 
 	}
+
+	
+
+	if (!(
+		ss.drewIAText
+	))
+	KinkyDungeonDrawMessages(true, 0, false, undefined, 50, 2);
+
+
 	if (KinkyDungeonCurrentPageInventory >= filteredInventory.length)
 		KinkyDungeonCurrentPageInventory = Math.max(0, KinkyDungeonCurrentPageInventory - 1);
 
-	if (KinkyDungeonCurrentPageInventory > 0) {
-		DrawButtonKDEx("invlastpage", (_bdata) => {
-			if (KinkyDungeonCurrentPageInventory > 0) {
-				KinkyDungeonCurrentPageInventory -= 1;
-				return true;
-			}
-			return true;
-		}, true, canvasOffsetX_ui + xOffset + 100 + 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 50, TextGet("KinkyDungeonBookLastPage"), KDBaseWhite, "", "", undefined, true, KDButtonColor,
-		undefined, undefined, {
-			hotkey: KDHotkeyToText(KinkyDungeonKey[1]),
-			hotkeyPress: KinkyDungeonKey[1],
-		});
-	}
-	if (KinkyDungeonCurrentPageInventory < filteredInventory.length-1) {
-		DrawButtonKDEx("invnextpage", (_bdata) => {
-			if (KinkyDungeonCurrentPageInventory < filteredInventory.length-1) {
-				KinkyDungeonCurrentPageInventory += 1;
-				return true;
-			}
-			return true;
-		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 375, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 50, TextGet("KinkyDungeonBookNextPage"), KDBaseWhite, "", "", undefined, true, KDButtonColor,
-		undefined, undefined, {
-			hotkey: KDHotkeyToText(KinkyDungeonKey[3]),
-			hotkeyPress: KinkyDungeonKey[3],
-		});
-	}
 
 }
 

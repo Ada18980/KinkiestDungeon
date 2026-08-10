@@ -2519,7 +2519,7 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 
 				if (selected) {
 					DrawButtonKDExTo(kdstatusboard, "PM" + i + "remove", (_bdata) => {
-						KDSendInput("cancelParty", {enemy: PM});
+						KDSendInput("cancelParty", {enemy: PM, player: KinkyDungeonPlayerEntity});
 						return true;
 					}, true, PartyX + 170, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/X.png", undefined, false, false,
 					KDBaseBlack, undefined, undefined, {zIndex: zIndex,});
@@ -2564,7 +2564,7 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 
 					if (selected) {
 						DrawButtonKDExTo(kdstatusboard, "PM" + i + "remove", (_bdata) => {
-							KDSendInput("cancelParty", {enemy: PM});
+							KDSendInput("cancelParty", {enemy: PM, player: KinkyDungeonPlayerEntity});
 							return true;
 						}, true, PartyX + 170, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/X.png", undefined, false, false,
 						KDBaseBlack, undefined, undefined, {zIndex: zIndex,});

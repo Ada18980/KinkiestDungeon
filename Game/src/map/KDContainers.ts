@@ -124,7 +124,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	let filter = KinkyDungeonCurrentFilter;
 	let container = KDGameData.Containers[name];
 
-	KDDrawInventoryFilters(xOffset - 120, -20 - 40 + 7 * filters.length, filters,
+	KDDrawInventoryFilters(xOffset - 120,50 + 7 * filters.length, filters,
 		["All"], 60);
 
 	let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
@@ -132,7 +132,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	);
 
 	DrawTextFitKD(TextGet("KDContainerType_" + container?.type),
-		xOffset + 1600, 270, 500, KDBaseWhite, undefined, 28, undefined, 70);
+		xOffset + 1600, 232, 500, KDBaseWhite, undefined, 28, undefined, 70);
 
 	//DrawTextFitKD("<->",
 	//	xOffset + 1300, 750, 200, KDBaseWhite, undefined, 48, undefined, 70);
@@ -373,7 +373,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				}
 
 				return true;
-			}, InvToTransfer.length > 0, 655, 920, 175, 60,
+			}, InvToTransfer.length > 0, 720, 920, 225, 60,
 			TextGet("KDDepositEverything"),
 			InvToTransfer.length > 0 ? KDBaseWhite : "#999999", undefined, undefined, undefined, true,
 			KDButtonColor, undefined, undefined, {
@@ -403,7 +403,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				}
 
 				return true;
-			}, InvToTransferExcess.length > 0, 465, 920, 175, 60,
+			}, InvToTransferExcess.length > 0, 465, 920, 225, 60,
 			TextGet("KDDepositEverythingExcess"),
 			InvToTransferExcess.length > 0 ? KDBaseWhite : "#999999", undefined, undefined, undefined, true,
 			KDButtonColor, undefined, undefined, {
@@ -420,7 +420,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				}
 
 				return true;
-			}, InvToTransfer2.length > 0, 1490, 920, 175, 60,
+			}, InvToTransfer2.length > 0, 1555, 920, 225, 60,
 			TextGet("KDTakeEverything"),
 			InvToTransfer2.length > 0 ? KDBaseWhite : "#999999", undefined, undefined, undefined, true,
 			KDButtonColor, undefined, undefined, {
@@ -452,7 +452,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 
 
 				return true;
-			}, InvToTransferExcess2.length > 0, 1300, 920, 175, 60,
+			}, InvToTransferExcess2.length > 0, 1300, 920, 225, 60,
 			TextGet("KDTakeEverythingExcess"),
 				InvToTransferExcess2.length > 0 ? KDBaseWhite : "#999999", undefined, undefined, undefined, true,
 			KDButtonColor, undefined, undefined, {
