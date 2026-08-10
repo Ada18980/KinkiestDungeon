@@ -427,8 +427,16 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 function KDRenderTooltip(button: KDButtonParamData) {
 	if (button.hoverData) {
 		DrawTextFitKD(button.hoverData,
-			button.Left, button.Top - 30, 300,
+			button.Left, button.Top - 70, 300,
 			KDBaseWhite, "#0c0c0c", undefined, "center");
+		return;
+	}
+}
+function KDRenderTooltipRed(button: KDButtonParamData) {
+	if (button.hoverData) {
+		DrawTextFitKD(button.hoverData,
+			button.Left, button.Top - 70, 300,
+			"#ffaeae", "#0c0c0c", undefined, "center");
 		return;
 	}
 }

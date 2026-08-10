@@ -368,6 +368,7 @@ function KDDrawSavedColors(X: number, y: number, max: number, C: Character): voi
 		DrawButtonKDExTo(kdpalettecontainer, "SavedColorCopy" + ii, (_bdata) => {
 			if (KinkyDungeonReplaceColorConfirm != (ii + 1)) {
 				KinkyDungeonReplaceColorConfirm = (ii + 1);
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 				return true;
 			}
 			if (filters && KDSelectedModel) {
@@ -376,17 +377,18 @@ function KDDrawSavedColors(X: number, y: number, max: number, C: Character): voi
 			}
 			return true;
 		}, true, 
-		X + spacing * i + 32 - 48+ (KinkyDungeonReplaceColorConfirm == ((ii + 1) + 1) ? Math.round(Math.random() * 3 - 1) : 0), 
+		X + spacing * i + 32 - 48+ (KinkyDungeonReplaceColorConfirm == (ii + 1) ? Math.round(Math.random() * 3 - 1) : 0), 
 		Y + 64+ (KinkyDungeonReplaceColorConfirm == (ii + 1) ? Math.round(Math.random() * 3 - 1) : 0), 
 		48, 48, "", 
 		KDBaseWhite, KinkyDungeonRootDirectory + "UI/savedColor_copy.png", undefined, false, 
 		KinkyDungeonReplaceColorConfirm != (ii + 1), undefined, undefined, undefined, {
-			onHover: KDRenderTooltip,
+			onHover: KDRenderTooltipRed,
 			hoverData: TextGet("KDCopyColor")
 		});
 		DrawButtonKDExTo(kdpalettecontainer, "SavedColorPaste" + ii, (_bdata) => {
 			if (KinkyDungeonReplaceColorConfirm != -(ii + 1)) {
 				KinkyDungeonReplaceColorConfirm = -(ii + 1);
+                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 				return true;
 			}
 			if (filters && KDSelectedModel) {
