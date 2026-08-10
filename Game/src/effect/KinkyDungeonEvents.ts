@@ -1263,6 +1263,9 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"SpiritbondCollar": (_e, item, data) => {
 			let player = KDPlayer();
 			let id = KDGetSpiritBondID(KDPlayer(), item);
+			// TODO add the heal functionality
+			// TODO make the spiritbound stop attacking you sooner than normal, and also take less damage from you
+			// TODO check behavior of your dominant leashing you to jail, it seemed bugged last time I checked
 			if (KDGetPersistentNPC(id)) {
 				KinkyDungeonSetFlag("Spiritbound", 2);
 			} else {
