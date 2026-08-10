@@ -326,7 +326,7 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 
 	if (!KDPatched) DrawButtonKDEx("quitbutton", (_b) => {
 		KinkyDungeonDrawState = "Restart";
-		KDConfirmDeleteSave = false;
+		KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 		if (KDDebugMode) {
 			ElementCreateTextArea("DebugEnemy");
 			ElementValue("DebugEnemy", "Maidforce");
@@ -424,6 +424,14 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 
 }
 
+function KDRenderTooltip(button: KDButtonParamData) {
+	if (button.hoverData) {
+		DrawTextFitKD(button.hoverData,
+			button.Left, button.Top - 30, 300,
+			KDBaseWhite, "#0c0c0c", undefined, "center");
+		return;
+	}
+}
 function KDRenderHotbarTooltip(button: KDButtonParamData) {
 	if (button.hoverData) {
 		if (!KDToggles.HotbarTooltips) {
@@ -1883,7 +1891,7 @@ function KinkyDungeonHandleHUD() {
 	} else if (KinkyDungeonDrawState == "Perks2") {
 		if (MouseIn(1650, 920, 300, 64)) {
 			KinkyDungeonDrawState = "Restart";
-			KDConfirmDeleteSave = false;
+			KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 			if (KDDebugMode) {
 				ElementCreateTextArea("DebugEnemy");
 				ElementValue("DebugEnemy", "Maidforce");
@@ -2054,7 +2062,7 @@ function KinkyDungeonHandleHUD() {
 			//KDUpdateWaitTime(500);
 			return true;
 		}
-		KDConfirmDeleteSave = false;
+		KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 		return true;
 	}
 
@@ -2197,7 +2205,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 
 		} else {
 			KinkyDungeonDrawState = "Restart";
-			KDConfirmDeleteSave = false;
+			KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 			if (KDDebugMode) {
 				ElementCreateTextArea("DebugEnemy");
 				ElementValue("DebugEnemy", "Maidforce");

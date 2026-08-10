@@ -2471,7 +2471,7 @@ function KinkyDungeonGameKeyDown() {
 					break;}*/
 				case KinkyDungeonKeyMenu[4]: {
 					KinkyDungeonDrawState = "Restart";
-					KDConfirmDeleteSave = false;
+					KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 					if (KDDebugMode) {
 						ElementCreateTextArea("DebugEnemy");
 						ElementValue("DebugEnemy", "Maidforce");

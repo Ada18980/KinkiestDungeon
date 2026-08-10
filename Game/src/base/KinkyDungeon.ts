@@ -1298,7 +1298,7 @@ function KinkyDungeonLoad(): void {
 					// We also press it for 100 msec
 					(async function() {
 						KinkyDungeonGameKey.keyPressed[9] = true;
-						KDConfirmDeleteSave = false;
+						KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 						await sleep(100);
 						KinkyDungeonGameKey.keyPressed[9] = false;
 					})();
@@ -1933,7 +1933,7 @@ function KinkyDungeonRun() {
 				/*KinkyDungeonState = "Load";*/
 				KinkyDungeonState = "LoadSlots";
 
-				KDConfirmDeleteSave = false;
+				KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 				KDPreviewModel = Object.assign({}, KinkyDungeonPlayer);
 				KDPreviewModel.ID = KinkyDungeonPlayer.ID + 1; // Ensure a unique id.
 				KinkyDungeonDBLoad(0).then((code) => {
@@ -2733,7 +2733,7 @@ function KinkyDungeonRun() {
 			} else {
 				KDSaveSlot = (saveSlotsPerPage*maxSaveSlotPages);
 			}
-			KDConfirmDeleteSave = false;
+			KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 			return true;
 		}, true, 1350, 350, 64, 64, '<', KDBaseWhite);
 		// Label for the button
@@ -2746,7 +2746,7 @@ function KinkyDungeonRun() {
 			} else {
 				KDSaveSlot = 1;
 			}
-			KDConfirmDeleteSave = false;
+			KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 			return true;
 		}, true, 1450, 350, 64, 64, '>', KDBaseWhite);
 
@@ -2758,7 +2758,7 @@ function KinkyDungeonRun() {
 				loadedsaveNames[KDSaveSlot-1] ? loadedsaveNames[KDSaveSlot-1] : ""
 			), 1550, 385, 440, KDBaseRed, undefined, 36, "left");
 		} else {
-			KDConfirmDeleteSave = false;
+			KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 		}
 
 		// draw 8 slots with names if they're already occupied
@@ -2802,7 +2802,7 @@ function KinkyDungeonRun() {
 				KDConfirmDeleteSave = true;
                 if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 			} else {
-				KDConfirmDeleteSave = false;
+				KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 				localStorage.setItem("PlayerName", ElementValue("PlayerNameField") || "Ada");
 				localStorage.setItem("KDLastSaveSlot", KDSaveSlot.toString());
 				KDGameData.PlayerName = ElementValue("PlayerNameField") || "Ada";
@@ -4841,7 +4841,7 @@ function KDDrawLoadMenu() {
 					KinkyDungeonDressModelPreview();
 				}
 
-				KDConfirmDeleteSave = false;
+				KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 
 
 				return true;
@@ -4858,7 +4858,7 @@ function KDDrawLoadMenu() {
                 	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 						KDDeleteSaveIndex = num;
 					} else {
-						KDConfirmDeleteSave = false;
+						KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 						KinkyDungeonDBDelete(num);
 						loadedsaveslots[num - 1] = null;
 					}
@@ -4930,7 +4930,7 @@ function KDDrawLoadMenu() {
                     ModelPreviewLoaded = false;
                     KinkyDungeonDressModelPreview();
                 }
-                KDConfirmDeleteSave = false;
+                KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
                 KDConfirmUpload = false;
                 return true;
             }, true, CombarXX + 160, YY, 240, 64, TextGet("KDSaveSlotButton") + i, KDBaseWhite, "");
@@ -4947,7 +4947,7 @@ function KDDrawLoadMenu() {
                         KDDeleteSaveIndex = num;
                     }
                     else {
-                        KDConfirmDeleteSave = false;
+                        KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
                         KinkyDungeonDBDelete(num * -1);
 						// @ts-ignore
                         localStorage.setItem(`KDCloudLastSync${i - 1}`, 10)
@@ -6410,12 +6410,20 @@ function KDClick(event: MouseEvent) {
 	} else
 	if (KinkyDungeonHandleClick(event)) {
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+	} else {
+		KDCancelConfirms();
 	}
 	if (KinkyDungeonReplaceConfirm > 0) KinkyDungeonReplaceConfirm -= 1;
+
 
 	//if (origState != KinkyDungeonState || origDrawState != origDrawState) {
 	lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 100;
 	//}
+}
+
+function KDCancelConfirms() {
+	// just the one for now to avoid causing other problems
+	KinkyDungeonReplaceColorConfirm = -999;
 }
 
 /**
@@ -6740,7 +6748,7 @@ let KinkyDungeonGameKey: any = {
 				case KinkyDungeonGameKey.KEY_SKIP:
 					if(!KinkyDungeonGameKey.keyPressed[9]){
 						KinkyDungeonGameKey.keyPressed[9] = true;
-						KDConfirmDeleteSave = false;
+						KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 					}
 					break;
 			}

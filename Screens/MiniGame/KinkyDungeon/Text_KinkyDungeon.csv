@@ -34190,3 +34190,6 @@ KDStartWear_Lock,You put a ${LockName} on your ${ItemName}
 
 KDSpiritbound_Disable,"The spiritbond collar fades, but stays on. Now would be the time to remove it."
 KDSpiritbound_Enable,"The spiritbond collar glows brightly on your neck."
+
+KDCopyColor,Copy Color
+KDPasteColor,Paste to Layer

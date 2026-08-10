@@ -2679,7 +2679,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		struggleBreak: true,
 		special: true,
 		factionFilters: {
-			Runes: {color: "Highlight", override: false,},
+			Runes: {color: "Highlight", override: true,},
+			Glow: {color: "Highlight", override: false,},
 			Collar: {color: "LightNeutral", override: true,},
 		},
 		escapeChance: {"Struggle": -100, "Cut": -10, "Remove": -100},

@@ -4,6 +4,7 @@
 
 let KDConfirmType = "";
 let KinkyDungeonReplaceConfirm = 0;
+let KinkyDungeonReplaceColorConfirm = -999;
 
 let lastFastPaletteUpdate = 0;
 
@@ -365,13 +366,29 @@ function KDDrawSavedColors(X: number, y: number, max: number, C: Character): voi
 			]
 		});
 		DrawButtonKDExTo(kdpalettecontainer, "SavedColorCopy" + ii, (_bdata) => {
+			if (KinkyDungeonReplaceColorConfirm != (ii + 1)) {
+				KinkyDungeonReplaceColorConfirm = (ii + 1);
+				return true;
+			}
 			if (filters && KDSelectedModel) {
 				KDSavedColors[ii] = Object.assign({}, filters);
 				localStorage.setItem("kdcolorfilters", JSON.stringify(KDSavedColors));
 			}
 			return true;
-		}, true, X + spacing * i + 32 - 48, Y + 64, 48, 48, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/savedColor_copy.png", undefined, false, true);
+		}, true, 
+		X + spacing * i + 32 - 48+ (KinkyDungeonReplaceColorConfirm == ((ii + 1) + 1) ? Math.round(Math.random() * 3 - 1) : 0), 
+		Y + 64+ (KinkyDungeonReplaceColorConfirm == (ii + 1) ? Math.round(Math.random() * 3 - 1) : 0), 
+		48, 48, "", 
+		KDBaseWhite, KinkyDungeonRootDirectory + "UI/savedColor_copy.png", undefined, false, 
+		KinkyDungeonReplaceColorConfirm != (ii + 1), undefined, undefined, undefined, {
+			onHover: KDRenderTooltip,
+			hoverData: TextGet("KDCopyColor")
+		});
 		DrawButtonKDExTo(kdpalettecontainer, "SavedColorPaste" + ii, (_bdata) => {
+			if (KinkyDungeonReplaceColorConfirm != -(ii + 1)) {
+				KinkyDungeonReplaceColorConfirm = -(ii + 1);
+				return true;
+			}
 			if (filters && KDSelectedModel) {
 				Object.assign(filters, KDSavedColors[ii]);
 				KDChangeWardrobe(C);
@@ -380,7 +397,15 @@ function KDDrawSavedColors(X: number, y: number, max: number, C: Character): voi
 				KDCurrentModels.get(C).Models.set(KDSelectedModel.Name, JSON.parse(JSON.stringify(KDSelectedModel)));
 			}
 			return true;
-		}, true, X + spacing * i + 32 + 0, Y + 64, 48, 48, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/savedColor_paste.png", undefined, false, true);
+		}, true, 
+		X + spacing * i + 32 + 0 + (KinkyDungeonReplaceColorConfirm == -(ii + 1) ? Math.round(Math.random() * 3 - 1) : 0), 
+		Y + 64+ (KinkyDungeonReplaceColorConfirm == -(ii + 1) ? Math.round(Math.random() * 3 - 1) : 0), 
+		48, 48, "", 
+		KDBaseWhite, KinkyDungeonRootDirectory + "UI/savedColor_paste.png", undefined, false, 
+		KinkyDungeonReplaceColorConfirm != -(ii + 1), undefined, undefined, undefined, {
+			onHover: KDRenderTooltip,
+			hoverData: TextGet("KDPasteColor")
+		});
 	}
 }
 
@@ -1961,7 +1986,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				KinkyDungeonConfigAppearance = true;
 			}
 
-			KinkyDungeonReplaceConfirm = 0;
+			KinkyDungeonReplaceColorConfirm = -999; KinkyDungeonReplaceConfirm = 0;
 			return true;
 		} else {
 			KDConfirmType = "strip";
@@ -1992,7 +2017,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	DrawButtonKDEx("KDWardrobeCancel", (_bdata) => {
 		if (KDConfirmType == "revert" && KinkyDungeonReplaceConfirm > 0) {
 			KDSelectedModel = null;
-			KinkyDungeonReplaceConfirm = 0;
+			KinkyDungeonReplaceColorConfirm = -999; KinkyDungeonReplaceConfirm = 0;
 
 			if (KDWardrobeRevertCallback) KDWardrobeRevertCallback();
 			else
@@ -2018,7 +2043,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					KDOutfitInfo[KDCurrentOutfit] = ElementValue("KDOutfitName");
 					KDSaveOutfitInfo();
 				}
-				KinkyDungeonReplaceConfirm = 0;
+				KinkyDungeonReplaceColorConfirm = -999; KinkyDungeonReplaceConfirm = 0;
 				localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit,
 					LZString.compressToBase64(
 						CharacterAppearanceStringify(C || KinkyDungeonPlayer,
@@ -2061,7 +2086,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					KDInitProtectedGroups(KinkyDungeonPlayer);
 					UpdateModels(KinkyDungeonPlayer);
 					KinkyDungeonConfigAppearance = true;
-					KinkyDungeonReplaceConfirm = 0;
+					KinkyDungeonReplaceColorConfirm = -999; KinkyDungeonReplaceConfirm = 0;
 				} else if (C == KDSpeakerNPC) {
 					let value = KDNPCStyle.get(KDSpeakerNPC);
 					if (!value) return false;
@@ -2297,7 +2322,7 @@ function KDSaveCodeOutfit(C: Character, clothesOnly: boolean = false): void {
 		KinkyDungeonDressPlayer(C, true);
 		KDInitProtectedGroups(C);
 		KinkyDungeonConfigAppearance = true;
-		KinkyDungeonReplaceConfirm = 0;
+		KinkyDungeonReplaceColorConfirm = -999; KinkyDungeonReplaceConfirm = 0;
 
 		// Then decompresses
 		CharacterAppearanceRestore(C, decompressed, clothesOnly, !clothesOnly);

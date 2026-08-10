@@ -792,10 +792,10 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					if (!data.Filters) {
 						data.Filters = {};
 					}
-					if (data.Filters.Runes) {
-						data.Filters.Runes.brightness = 1.5;
+					if (data.Filters.Glow) {
+						data.Filters.Glow.alpha = 1;
 					} else
-					data.Filters.Runes = {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":2.1372549019607843,"green":0.6274509803921569,"blue":0.3333333333333333,"alpha":1.55};
+					data.Filters.Glow = {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1};
 
 					if (data.item.data) {
 						if (!data.item.data.drewGlow) {
@@ -812,6 +812,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 						data.Filters = {};
 					}
 					data.Filters.Runes = {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.5098039215686274,"green":0.5098039215686274,"blue":0.5098039215686274,"alpha":1};
+					data.Filters.Glow = {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0};
 
 					if (data.item.data) {
 						if (data.item.data.drewGlow) {

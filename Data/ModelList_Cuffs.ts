@@ -365,11 +365,17 @@ AddModel({
 			Invariant: true,
 			InheritColor: "BaseMetal",
 		},
-		{ Name: "SpiritbondRunes", Layer: "Collar", Pri: 60.1,
+		{ Name: "SpiritbondRunes", Layer: "Collar", Pri: 60.2,
 			Invariant: true,
 			NoOverride: true,
 			TieToLayer: "Spiritbond",
 			InheritColor: "Runes",
+		},
+		{ Name: "SpiritbondGlow", Layer: "Collar", Pri: 60.1,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "Spiritbond",
+			InheritColor: "Glow",
 		},
 	])
 });
