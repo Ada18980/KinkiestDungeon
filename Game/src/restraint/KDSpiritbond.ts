@@ -1,8 +1,16 @@
-function KDGetSpiritBondEntity(player: entity, item: item): entity {
+function KDGetSpiritBondEntityLocal(player: entity, item: item): entity {
     let id = item?.data?.npc;
 
     if (id) {
         return KinkyDungeonFindID(id);
+    }
+    return null;
+}
+function KDGetSpiritBondEntity(player: entity, item: item): entity {
+    let id = item?.data?.npc;
+
+    if (id) {
+        return KDGetGlobalEntity(id);
     }
     return null;
 }

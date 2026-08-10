@@ -86,10 +86,12 @@ let KDCurses: Record<string, KDCursedDef> = {
 		lock: true,
 		level: 60,
 		weight: (_item) => {
-			return 1;
+			return 0;
 		},
-		condition: (_item) => {
-			return KinkyDungeonItemCount("Ectoplasm") >= 25;
+		condition: (item) => {
+			let en = KDGetSpiritBondEntity(KDPlayer(), item);
+			let enLoc = KDGetSpiritBondEntityLocal(KDPlayer(), item);
+			return !en || ((!KDGameData.MistressID || KDGameData.MistressID != en.id) && !enLoc && KinkyDungeonItemCount("BlueKey") >= 1);
 		},
 		remove: (_item, _host, _specialMethod) => {
 		},
@@ -98,6 +100,14 @@ let KDCurses: Record<string, KDCursedDef> = {
 		},
 		entityDoUnlock(entity, player, data) {
 			return true;
+		},
+		customInfo: (item, Curse) => {
+			let en = KDGetSpiritBondEntity(KDPlayer(), item);
+			if (KDGameData.MistressID && en && en.id == KDGameData.MistressID) {
+				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfoMistress" + Curse), KDBaseWhite, 2);
+			} else {
+				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse), KDBaseWhite, 2);
+			}
 		},
 	},
 	"DollLock" : {

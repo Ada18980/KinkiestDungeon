@@ -1,6 +1,6 @@
 let KDAlternateInventoryScreens: {[_:string] : (selected: KDFilteredInventoryItem, xOffset: number, yOffset: number, prefix: string) => boolean} = {
 	ConfigHotbar: (selected: KDFilteredInventoryItem, xOffset: number, yOffset: number, prefix: string) => {
-		KDDrawHotbar(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 15, yOffset + canvasOffsetY_ui + 50, selected.item.name, (I) => {
+		KDDrawHotbar(690 + xOffset + 640*KinkyDungeonBookScale - 15, yOffset + canvasOffsetY_ui + 50, selected.item.name, (I) => {
 			if (KinkyDungeonConsumableChoices[I] || KinkyDungeonWeaponChoices[I] || KinkyDungeonArmorChoices[I] || KinkyDungeonSpellChoices[I] >= 0) {
 				KDSendInput("spellRemove", {I:I});
 			} else {
@@ -10,7 +10,7 @@ let KDAlternateInventoryScreens: {[_:string] : (selected: KDFilteredInventoryIte
 		DrawButtonKDEx(prefix + "KDBack", (_bdata) => {
 			KDConfigHotbar = !KDConfigHotbar;
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 185, yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale - 250, 190, 55, TextGet("KDBack"), KDBaseWhite, "");
+		}, true, 690 + xOffset + 640*KinkyDungeonBookScale + 185, yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale - 250, 190, 55, TextGet("KDBack"), KDBaseWhite, "");
 		return true;
 	},
 	ConfigPalette: (selected: KDFilteredInventoryItem, xOffset: number, yOffset: number, prefix: string) => {
@@ -30,7 +30,7 @@ let KDAlternateInventoryScreens: {[_:string] : (selected: KDFilteredInventoryIte
 					KDSaveToggles();
 					return true;
 				}, true,
-				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40,
+				720 + xOffset + 640*KinkyDungeonBookScale + 40,
 				yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 70, 50, 50,
 				TextGet("KDSavePaletteRestraint"),
 				(currentItem.forceFaction == undefined && KDPalettePrefs[KDRestraint(currentItem)?.name] == undefined)
@@ -44,7 +44,7 @@ let KDAlternateInventoryScreens: {[_:string] : (selected: KDFilteredInventoryIte
 					KDSaveToggles();
 					return true;
 				}, true,
-				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40,
+				720 + xOffset + 640*KinkyDungeonBookScale + 40,
 				yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 130, 50, 50,
 				TextGet("KDSavePaletteRestraintEnch"),
 				(currentItem.forceFaction == undefined && KDPalettePrefsEnchanted[KDRestraint(currentItem)?.name] == undefined)
@@ -57,7 +57,7 @@ let KDAlternateInventoryScreens: {[_:string] : (selected: KDFilteredInventoryIte
 		DrawButtonKDEx(prefix + "KDBack", (_bdata) => {
 			KDConfigRestraintColor = !KDConfigRestraintColor;
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 185,
+		}, true, 720 + xOffset + 640*KinkyDungeonBookScale + 185,
 		yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 0, 190, 55, TextGet("KDBack"), KDBaseWhite, "");
 
 		return true;
@@ -68,10 +68,11 @@ let KDAlternateInventoryScreens: {[_:string] : (selected: KDFilteredInventoryIte
 			let currentItem: item = selected.item;
 
 			KDDrawGenericCharacterRestrainingUI(
-				Object.values(KDRestraintGenericTypes), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 250,
+				Object.values(KDRestraintGenericTypes), 710 + xOffset + 640*KinkyDungeonBookScale - 250,
 				yOffset + canvasOffsetY_ui + 100, undefined, // TODO support currentItem
-				undefined, -1, undefined, currentItem, false, undefined,
-				2, 8, 260,
+				undefined, -1, undefined, currentItem, false, 
+				undefined,
+				2, 8, -45,
 				(currentItem, restraint, item, count) => {
 					// Add new one
 					if (KDCanAddRestraint(
@@ -109,7 +110,7 @@ let KDAlternateInventoryScreens: {[_:string] : (selected: KDFilteredInventoryIte
 		DrawButtonKDEx(prefix + "KDBack", (_bdata) => {
 			KDResetAlternateInventoryRender();
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 185,
+		}, true, 720 + xOffset + 640*KinkyDungeonBookScale + 185,
 		yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 0, 190, 55, TextGet("KDBack"), KDBaseWhite, "");
 
 		return true;

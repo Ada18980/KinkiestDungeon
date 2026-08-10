@@ -2690,7 +2690,7 @@ function KDEase(value: number): number {
 
 let KinkyDungeonMessageToggle = false;
 let KinkyDungeonMessageLog = [];
-let KDLogDist = 24;
+let KDLogDist = 22;
 let KDMSGFontSize = 20;
 let KDLogHeight = 700;
 let KDMaxLog = Math.floor(700/KDLogDist);

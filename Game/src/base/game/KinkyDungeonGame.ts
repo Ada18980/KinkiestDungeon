@@ -3960,7 +3960,7 @@ function KDAddAppearance (
  */
 function KDAddModel (
 	C:           Character,
-	_Group:      string,
+	Group:      string,
 	ItemModel:   Model,
 	NewColor:    string | string[],
 	filters:     Record<string, LayerFilter>,
@@ -3972,8 +3972,14 @@ function KDAddModel (
 
 	// Unlike the stock function, we do NOT remove the previous one
 	let data = {
+		C: C,
 		color: NewColor,
+		Group: Group,
 		item: item,
+		Model: ItemModel != null ? JSON.parse(JSON.stringify(ItemModel)) : null,
+		Filters: filters,
+		Properties: Properties,
+		factionFilters: factionFilters,
 	};
 
 	KinkyDungeonSendEvent("onWear", data);
@@ -3981,13 +3987,13 @@ function KDAddModel (
 	// Add the new item to the character appearance
 	if (ItemModel != null) {
 		const NA: Item = {
-			Model: JSON.parse(JSON.stringify(ItemModel)),
+			Model: data.Model,
 			Difficulty: 0,//parseInt((ItemModel.Difficulty == null) ? 0 : ItemModel.Difficulty) + parseInt(DifficultyFactor),
 			Color: data.color,
 			Property: undefined,
-			Filters: filters,
-			Properties: Properties,
-			factionFilters: factionFilters,
+			Filters: data.Filters,
+			Properties: data.Properties,
+			factionFilters: data.factionFilters,
 		};
 		NA.Model.Filters = NA.Filters || NA.Model.Filters;
 		NA.Model.Properties = NA.Properties || NA.Model.Properties;

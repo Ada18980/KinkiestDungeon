@@ -2026,6 +2026,12 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										clickFunction: (gagged, player) => {
 											if (player.player) {
 												KDGameData.MistressID = KDGameData.CurrentDialogMsgValue.OriginalSpeaker;
+												KDAddQuest("Mistress");
+												
+												if (!KinkyDungeonFlags.get("tut_mistress")) {
+													KinkyDungeonSendTextMessage(10, TextGet("KDTut_Mistress"), KDTutorialColor, 10);
+													KinkyDungeonSetFlag("tut_mistress", -1);
+												}
 											}
 											KinkyDungeonChangeRep("Ghost", 25);
 											return false;

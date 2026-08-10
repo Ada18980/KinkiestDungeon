@@ -873,6 +873,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					return 0;
 			}
 			let player = KDPlayer();
+			if (KDGameData.MistressID && enemy.id != KDGameData.MistressID) return 0;
 			if (KDIsInNonLeashableFurniture(player)) return 0;
 			return ((aiData as KDAIData)?.playerDist < 6.99
 				&& enemy != KinkyDungeonJailGuard()

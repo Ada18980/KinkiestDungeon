@@ -786,11 +786,40 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"SpiritbondCollar": (_e, item, data) => {
 			if (item == data.item) {
 				let player = KDPlayer();
-				let en = KDGetSpiritBondEntity(KDPlayer(), item);
+				let en = KDGetSpiritBondEntityLocal(KDPlayer(), item);
 				if (en) {
-					
-				} else {
+					// make the collar glow
+					if (!data.Filters) {
+						data.Filters = {};
+					}
+					if (data.Filters.Runes) {
+						data.Filters.Runes.brightness = 1.5;
+					} else
+					data.Filters.Runes = {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":2.1372549019607843,"green":0.6274509803921569,"blue":0.3333333333333333,"alpha":1.55};
 
+					if (data.item.data) {
+						if (!data.item.data.drewGlow) {
+							KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+							data.item.data.drewGlow = true;
+							KinkyDungeonSendTextMessage(6, TextGet("KDSpiritbound_Enable"), KDBaseYellow, 2);
+						}
+					} else {
+						// irrelevant, shouldnt be the case
+					}
+				} else {
+					// make the runes dark
+					if (!data.Filters) {
+						data.Filters = {};
+					}
+					data.Filters.Runes = {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.5098039215686274,"green":0.5098039215686274,"blue":0.5098039215686274,"alpha":1};
+
+					if (data.item.data) {
+						if (data.item.data.drewGlow) {
+							KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+							data.item.data.drewGlow = false;
+							KinkyDungeonSendTextMessage(6, TextGet("KDSpiritbound_Disable"), KDBaseGreal, 2);
+						}
+					}
 				}
 			}
 		},

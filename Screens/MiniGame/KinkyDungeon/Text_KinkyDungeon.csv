@@ -7955,9 +7955,10 @@ KinkyDungeonCurseStruggleGhostLock,"Your fingers pass right through the collar. 
 KinkyDungeonCurseUnlockGhostLock,"You channel ghastly energy into the lock and break the seal!!!"
 
 
-KinkyDungeonCurseInfoSpiritbondCollar,"The collar marks you as spiritbound. You cannot remove it yourself."
+KinkyDungeonCurseInfoSpiritbondCollar,"The collar marks you as spiritbound. It requires a magic key, and the spiritbond to be absent."
+KinkyDungeonCurseInfoMistressSpiritbondCollar,"The collar marks you as spiritbound. It cannot be removed while your Dominant controls you."
 KinkyDungeonCurseStruggleSpiritbondCollar,"The collar is sealed around your neck. The runes flash a sinister light as you struggle"
-KinkyDungeonCurseUnlockSpiritbondCollar,"You bring the collar close to the jeweled key and will it to release."
+KinkyDungeonCurseUnlockSpiritbondCollar,"You bring the collar close to the magic key and will it to release."
 
 KinkyDungeonCurseInfoDollLock,"It would take many lifetimes to crack the code. You'll have to find another way to break the program..."
 KinkyDungeonCurseStruggleDollLock,"You tug against the straps to no avail."
@@ -27122,6 +27123,50 @@ m_FashionHighSecCuffsThigh_l_Cuff,Cuff
 m_FashionHighSecCuffsThigh_l_Band,Band
 m_FashionHighSecCuffsThigh_l_Hardware,Hardware
 m_FashionHighSecCuffsThigh_l_ThighLink,ThighLink
+m_DollArmRight_l_RightArm,RightArm
+m_DollArmRight_l_RightArm,RightArm
+m_DollArmRight_l_RightArm,RightArm
+m_DollArmRight_l_RightArm,RightArm
+m_DollArmRight_l_RightArm,RightArm
+m_DollArmLeft_l_LeftArm,LeftArm
+m_DollArmLeft_l_LeftArm,LeftArm
+m_DollArmLeft_l_LeftArm,LeftArm
+m_DollArmLeft_l_LeftArm,LeftArm
+m_DollArmLeft_l_LeftArm,LeftArm
+m_Kitty_Ears_l_EarR,EarR
+m_Kitty_Ears_l_InnerEarR,InnerEarR
+m_Kitty_Ears_l_EarL,EarL
+m_Kitty_Ears_l_InnerEarL,InnerEarL
+m_Wolf_Ears_l_EarR,EarR
+m_Wolf_Ears_l_InnerEarL,InnerEarL
+m_Wolf_Ears_l_EarR,EarR
+m_Wolf_Ears_l_InnerEarR,InnerEarR
+m_Fox_Ears_l_EarR,EarR
+m_Fox_Ears_l_InnerEarR,InnerEarR
+m_Fox_Ears_l_EarL,EarL
+m_Fox_Ears_l_InnerEarL,InnerEarL
+m_KiguMaskEmbarrassed,KiguMaskEmbarrassed
+m_KiguMaskEmbarrassed_l_Head,Head
+m_KiguMaskEmbarrassed_l_Eyes,Eyes
+m_KiguMaskEmbarrassed_l_Eyes2,Eyes2
+m_KiguMaskEmbarrassed_l_Lock,Lock
+m_KiguMaskEmbarrassed_l_EyesWhites,EyesWhites
+m_KiguMaskEmbarrassed_l_MouthEmbarrassed,MouthEmbarrassed
+m_KiguMaskEmbarrassed_l_BlushMedium,BlushMedium
+m_FashionKiguMaskEmbarrassed,FashionKiguMaskEmbarrassed
+m_FashionKiguMaskEmbarrassed_l_Head,Head
+m_FashionKiguMaskEmbarrassed_l_Eyes,Eyes
+m_FashionKiguMaskEmbarrassed_l_Eyes2,Eyes2
+m_FashionKiguMaskEmbarrassed_l_Lock,Lock
+m_FashionKiguMaskEmbarrassed_l_EyesWhites,EyesWhites
+m_FashionKiguMaskEmbarrassed_l_MouthEmbarrassed,MouthEmbarrassed
+m_FashionKiguMaskEmbarrassed_l_BlushMedium,BlushMedium
+m_SpiritbondCollar,SpiritbondCollar
+m_SpiritbondCollar_l_BaseMetal,BaseMetal
+m_SpiritbondCollar_l_Runes,Runes
+m_FashionSpiritbondCollar,FashionSpiritbondCollar
+m_FashionSpiritbondCollar_l_BaseMetal,BaseMetal
+m_FashionSpiritbondCollar_l_Runes,Runes
 
 
 m_ShockModule_l_Display,Display
@@ -28847,7 +28892,7 @@ KDInventoryActionRemoveCurseOrHex,"Purify"
 KDBondageFailNoTarget,You need to target an NPC
 KDBondageFailInvalidTarget,"Must be disabled, or vulnerable and <50% hp"
 KDBondageTarget,Target acquired!
-KinkyDungeonSpellBondage,"Truss em up!"
+KinkyDungeonSpellBondage,"Bind"
 KinkyDungeonSpellTargetBondage,"Choose target to bind"
 KinkyDungeonSpellCastBondage,"Target Acquired!"
 KinkyDungeonSpellDescriptionBondage,"Designates the target for bondage and allows you to apply items from the inventory. Can only be applied to entities that are willing or disabled. Some items require higher levels of incapacitation to be applied"
@@ -32845,6 +32890,7 @@ KinkyDungeonSpellOneBarMissile,One Bar Missile
 KDTut_RestraintContext,Right click on a restraint's name to open a context menu.
 KDTut_RestraintContext2,There is also an option in HUD settings to replace the small buttons with a context menu.
 
+KDTut_Mistress,"Your character now has a dominant. You can end this relation in Journal -> Quests"
 KDTut_Taunt,"You've been taunted, leaving the angry zone will stun you!"
 KDTut_TauntFail,"You moved out of the taunt zone, and are now punished!"
 rTauntFail,"The warrior's taunt effect forces you to stay in a certain area.|If you move out of the area, you are stunned,|as you have just been."
@@ -33945,7 +33991,7 @@ rDollShoppeVisitorBeBought_Continue_Continue,"(The SPEAKER locks a collar on you
 rDollShoppeVisitorBuyout_ContinueFail,"(The SPEAKER tries to lock a collar on you,|but ${Ethey} frown${Es} with a sour expression on ${Etheir} face)|Looks like someone already owns you.|Be a good ${Pdim} and tell them I said hello, okay?"
 
 dAcceptMistress,(Accept ${Ethem} as your ${EHonorinti})
-dRejectMistress,"(Resist, despite being unable to stop ${Ethem})"
+dRejectMistress,"(Continue normally)"
 dNeutralMistress,"(...)"
 
 dDollShoppeVisitor_BeCute,(Be cute and presentable)
@@ -34141,3 +34187,6 @@ KDCollectionInfo_Personality,"Personality: "
 KDStartWear_PutOn,You start putting on a ${ItemName}
 KDStartWear_LockOn,You start locking on a ${ItemName}
 KDStartWear_Lock,You put a ${LockName} on your ${ItemName}
+
+KDSpiritbound_Disable,"The spiritbond collar fades, but stays on. Now would be the time to remove it."
+KDSpiritbound_Enable,"The spiritbond collar glows brightly on your neck."

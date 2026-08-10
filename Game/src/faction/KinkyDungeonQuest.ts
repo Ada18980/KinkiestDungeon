@@ -491,6 +491,8 @@ let KDQuests: Record<string, KDQuest> = {
 		},
 		visible: true,
 		oncancel: (player) => {
+			// Currently this does not allow CNC scenarios. 
+			// TODO consent option that requires the mistress to be your prisoner, or gone, to cancel
 			delete KDGameData.MistressID;
 			return true;
 		},
@@ -1191,7 +1193,7 @@ function KinkyDungeonDrawQuest() {
 					
 					}
 					KDDraw(kdcanvas, kdpixisprites, "kdquest" + q, KinkyDungeonRootDirectory + "Enemies/" + 
-						(KDQuests[q].customNPC ? KDQuests[q].customNPC(KDPlayer()) : "") || KDQuests[q]?.npc + ".png",
+						((KDQuests[q].customNPC ? KDQuests[q].customNPC(KDPlayer()) : "") || KDQuests[q]?.npc) + ".png",
 						xStart + xOffset + 100, yStart + (II-KDQuestsIndex)*spacing - 36, 72, 72);
 					if (DrawButtonKDEx("kdquestquit" + q, (_b) => {
 						if (!KDQuests[q]?.nocancel)

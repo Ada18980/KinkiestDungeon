@@ -345,7 +345,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 							}
 
 				}
-			}, null, true, showAll, showAll ? KDGenericMatsPerRowShowAll : KDGenericMatsPerRow, KDGenericBindsPerRow);
+			}, null, true, showAll, 
+			showAll ? KDGenericMatsPerRowShowAll : KDGenericMatsPerRow, KDGenericBindsPerRow);
 
 		} else {
 			let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
