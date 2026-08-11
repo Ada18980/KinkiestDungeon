@@ -670,7 +670,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			block_phys: 2,
 		},
 		stamina: 2,
-		specialCDonAttack: false, visionRadius: 6, maxhp: 20, minLevel:4, weight:15, movePoints: 3, attackPoints: 3, attack: "MeleeBindLock",
+		specialCDonAttack: false, visionRadius: 6, maxhp: 20, minLevel:3, weight:15, movePoints: 3, attackPoints: 3, attack: "MeleeBindLock",
 		attackWidth: 1, attackRange: 1, power: 2, dmgType: "grope", fullBoundBonus: 3, specialWidth: 5, specialRange: 1,
 		terrainTags: {"secondhalf":5, "zombieTrap": 20, "lastthird":5}, shrines: ["Will"], floors:KDMapInit(["grv", "tmb"]), dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "Sword", weight: 3.5, ignoreInInventory: true},]},
 	{name: "NawashiZombie", pronouns: {It: 100}, bound: "NawashiZombie", style: "Zombie", outfit: "Zombie", playLine: "Zombie", clusterWith: "zombie", tags: KDMapInit(["leashing", "zombie", "zombieTrap", "melee", "elite", "fireweakness", "unflinching", "ropeRestraints", "ropeRestraints2", "meleeweakness", "hunter"]),

@@ -474,6 +474,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		},
 	},
 	"Use": {
+		doubleSize: true,
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeyEnter[0]);},
 		hotkeyPress: () => {return KinkyDungeonKeyEnter[0];},
 		icon: (_player, _item) => {

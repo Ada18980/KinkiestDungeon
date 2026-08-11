@@ -29220,6 +29220,7 @@ KDWeaponTagD_damage,"Damage Type: "
 KinkyDungeonSpellOffhand,"Dual Wield"
 KinkyDungeonSpellDescriptionOffhand,"Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand."
 
+KDInventoryActionUse,"Use"
 KDInventoryActionOffhand,"Equip Offhand"
 KDInventoryActionRemoveOffhand,"Remove Offhand"
 
