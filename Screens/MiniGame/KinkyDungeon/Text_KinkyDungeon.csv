@@ -32463,6 +32463,7 @@ KDContainerBack_Facilities,Back to Facilities
 KDContainerBack_Game,Back to Game
 KDContainerBack_Restart,Back to Menu
 
+KDContainerFilters," <- Filters -> "
 KDContainerType_Self,Your Inventory
 KDContainerType_Chest,Chest
 KDContainerType_,Chest

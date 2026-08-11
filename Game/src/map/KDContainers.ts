@@ -64,6 +64,8 @@ function KDGetContainerFromTile(name: string, tile: any,
 	return KDGameData.Containers[id];
 }
 
+/** -1 is player, 0 is categories, 1 is chest */
+let KDContainerFocus = -1;
 
 function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Outfit], invMsg?: string) {
 	let x = 1225 + xOffset;
@@ -125,14 +127,45 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	let container = KDGameData.Containers[name];
 
 	KDDrawInventoryFilters(xOffset - 120,95 + 7 * filters.length, filters,
-		["All"], 90, 3);
+		["All"], 90, 3, KDContainerFocus == 0 ? KinkyDungeonKey[0] : "", KDContainerFocus == 0 ? KinkyDungeonKey[2] : "");
 
 	let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
 		undefined, filters
 	);
+	
+	DrawButtonKDEx("dummy_containerFocus<-", 
+		() => {
+			if (KDContainerFocus > -1) KDContainerFocus--;
+			KDRefreshInventoryList = true;
+			return true;
+		}, true, -1000, -1000, 10, 10, "", KDTextWhite,
+		undefined,undefined,undefined,undefined,undefined,undefined,undefined,
+		 {
+			hotkey: KDHotkeyToText(KinkyDungeonKey[4]),
+			hotkeyPress: KinkyDungeonKey[4],
+
+		})
+	DrawButtonKDEx("dummy_containerFocus->", 
+		() => {
+			if (KDContainerFocus < 1) KDContainerFocus++;
+			KDRefreshInventoryList = true;
+			return true;
+		}, true, -1000, -1000, 10, 10, "", KDTextWhite,
+		undefined,undefined,undefined,undefined,undefined,undefined,undefined,
+		 {
+			hotkey: KDHotkeyToText(KinkyDungeonKey[5]),
+			hotkeyPress: KinkyDungeonKey[5],
+		})
 
 	DrawTextFitKD(TextGet("KDContainerType_" + container?.type),
-		xOffset + 1600, 232, 500, KDBaseWhite, undefined, 28, undefined, 70);
+		xOffset + 1945, 232, 500, KDContainerFocus == 1 ? KDBaseWhite : KDBaseLightGrey, 
+		undefined, 28, "right", 70);
+	DrawTextFitKD(KDHotkeyToText(KinkyDungeonKey[4]) + TextGet("KDContainerFilters") + KDHotkeyToText(KinkyDungeonKey[5]),
+		xOffset + 1245, 232, 500, KDContainerFocus == 0 ? KDBaseWhite : KDBaseLightGrey, 
+		undefined, 28, undefined, 70);
+	DrawTextFitKD(TextGet("KDContainerType_Self"),
+		xOffset + 550, 232, 500, KDContainerFocus == -1 ? KDBaseWhite : KDBaseLightGrey, 
+		undefined, 28, "left", 70);
 
 	//DrawTextFitKD("<->",
 	//	xOffset + 1300, 750, 200, KDBaseWhite, undefined, 48, undefined, 70);
@@ -140,7 +173,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	let YourInv = invMsg ? {
 		selected: null,
 		tooltipItem: null,
-	} : KDDrawInventoryContainer(-1000, 100, filteredInventory, filter, filter,
+	} : KDDrawInventoryContainer(-1045, 100, filteredInventory, filter, filter,
 	(inv: KDFilteredInventoryItem, x, y, w, h, different) => {
 		if (!different && !KDUI_Container_LastSelected) {
 			transferItem(inv.item);
@@ -148,7 +181,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		KDUI_Container_LastSelected = "";
 	}, (inv) => {
 		return (inv.item.type == Weapon && inv.item.name == KinkyDungeonPlayerWeapon) ? "#e64539" : KDTextGray1;
-	}, "");
+	}, "", undefined, undefined, undefined, KDContainerFocus == -1);
 
 	if (invMsg) {
 		DrawTextFitKD(TextGet(invMsg),
@@ -168,7 +201,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		KDUI_Container_LastSelected = "Chest";
 	}, (inv) => {
 		return (KinkyDungeonInventoryGetWeapon(inv.item.name)) ? "#e64539" : KDTextGray1;
-	}, "Chest", true);
+	}, "Chest", true, undefined, undefined, KDContainerFocus == 1);
 
 
 	let selectedItem = KDUI_Container_LastSelected == "Chest" ?
@@ -283,6 +316,8 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		// Take all
 		// Take 5
 
+		let fs = 18;
+
 		DrawButtonKDEx(
 			"takeAllExcess", () => {
 				let q = selectedItem.item.quantity;
@@ -294,7 +329,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 			}, true, 1020, 600 + ii++*spacing, 200, spacing - 10,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDRefill" : "KDAddAllExcess").replace("ITMN", KDGetItemName(item)),
 			KDBaseWhite, undefined, undefined, undefined, true,
-			KDButtonColor, undefined, undefined, {
+			KDButtonColor, fs, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[0]),
 				hotkeyPress: KinkyDungeonKeySpell[0],
 			}
@@ -308,7 +343,8 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				return true;
 			}, true, 1020, 600 + ii++*spacing, 200, spacing - 10,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTake1" : "KDAdd1").replace("ITMN", KDGetItemName(item)),
-			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, 
+			fs, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[1]),
 				hotkeyPress: KinkyDungeonKeySpell[1],
 			}
@@ -321,7 +357,8 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				return true;
 			}, true, 1020, 600 + ii++*spacing, 200, spacing - 10,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTake5" : "KDAdd5").replace("ITMN", KDGetItemName(item)),
-			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, 
+			fs, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[2]),
 				hotkeyPress: KinkyDungeonKeySpell[2],
 			}
@@ -335,7 +372,8 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				return true;
 			}, true, 1020, 600 + ii++*spacing, 200, spacing - 10,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTakeAll" : "KDAddAll").replace("ITMN", KDGetItemName(item)),
-			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, 
+			fs, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[3]),
 				hotkeyPress: KinkyDungeonKeySpell[3],
 			}
@@ -349,7 +387,8 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				return true;
 			}, true, 1020, 600 + ii++*spacing, 200, spacing - 10,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTakeAll1" : "KDAddAll1").replace("ITMN", KDGetItemName(item)),
-			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, 
+			fs, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[4]),
 				hotkeyPress: KinkyDungeonKeySpell[4],
 			}

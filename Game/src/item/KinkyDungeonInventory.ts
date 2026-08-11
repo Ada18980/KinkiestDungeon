@@ -8,6 +8,7 @@ let KDDefaultYOffForInventoryContainer = -94; // 224
 let KDDefaultYOffForInventoryInfo = -94;
 let KDDefaultXOffForInventoryInfo = 0;
 let KDBaseInventoryOffset = 90 + canvasOffsetY_ui;
+let KDRefreshInventoryList = false;
 
 
 let KinkyDungeonFilters = [
@@ -1581,6 +1582,7 @@ function KDDrawInventoryContainer (
 	nosearch?: boolean,
 	highlightcolor?: string,
 	bordercolor?: string,
+	focused = true
 ): {selected: KDFilteredInventoryItem, tooltipitem: KDFilteredInventoryItem, drewIAText: boolean}
 {
 	if (prefix) {
@@ -1650,7 +1652,7 @@ function KDDrawInventoryContainer (
 			let listID = xOffset + ',' + yOffset + ',' + prefix;
 
 			
-			if (ShouldUpdateList(listID)) {
+			if (KDRefreshInventoryList || ShouldUpdateList(listID)) {
 				let list: ProgressListData[] = KDEnumerateProgressItems();
 				PopulateList(listID, 
 					canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 135, 
@@ -1659,16 +1661,16 @@ function KDDrawInventoryContainer (
 					Math.ceil(totalheight / b_height), 
 					KDDecimate(filteredInventory, numRows), false
 				);
+				if (KDRefreshInventoryList) {
+					KDFixScrollableList(listID);
+				KDRefreshInventoryList = false;
+				}
 			}
 
-			let hotkeyUp = KDInventoryDrawContainerHotkeys[prefix] ?
-					KDInventoryDrawContainerHotkeys[prefix].up() : KinkyDungeonKey[0];
-			let hotkeyDown = KDInventoryDrawContainerHotkeys[prefix] ?
-					KDInventoryDrawContainerHotkeys[prefix].down() : KinkyDungeonKey[2];
-			let hotkeyLeft = KDInventoryDrawContainerHotkeys[prefix] ?
-					KDInventoryDrawContainerHotkeys[prefix].left() : KinkyDungeonKey[1];
-			let hotkeyRight = KDInventoryDrawContainerHotkeys[prefix] ?
-					KDInventoryDrawContainerHotkeys[prefix].right() : KinkyDungeonKey[3];
+			let hotkeyUp = focused ? KinkyDungeonKey[0] : "";
+			let hotkeyDown = focused ? KinkyDungeonKey[2] : "";
+			let hotkeyLeft = focused ? KinkyDungeonKey[1] : "";
+			let hotkeyRight = focused ? KinkyDungeonKey[3] : "";
 			let currentPage = (prefix ? KinkyDungeonCurrentPageContainer : KinkyDungeonCurrentPageInventory);
 			let drawn: ProgressListData = KDDrawScrollableList(listID, true, (
 				container: PIXIContainer,
@@ -2016,14 +2018,17 @@ function KDDrawInventoryContainer (
 	return {selected: selected, tooltipitem: tooltipitem, drewIAText: drewIAText};
 }
 
-function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters = [], spacing = 93, perColumn = 6) : string {
+function KDDrawInventoryFilters(xOffset, yOffset = 0, skipfilters = [], addFilters = [], spacing = 93, perColumn = 6, hotkeyUp = "Default", hotkeyDown = "Default") : string {
+
+	if (hotkeyUp == "Default") hotkeyUp = KinkyDungeonKey[5];
+	if (hotkeyDown == "Default") hotkeyDown = KinkyDungeonKey[7];
 
 	let defaultIndex = 0;
 	//if (KinkyDungeonFilterInventory(KinkyDungeonFilters[0], undefined, undefined, undefined, undefined, KDInvFilter).length == 0) {
 	//	defaultIndex = 1;
 	//}
 
-	let KDFilters = [...addFilters, ...KinkyDungeonFilters];
+	let KDFilters = [...addFilters, ...(KinkyDungeonFilters).filter((f) => {return !skipfilters.includes(f)})];
 	let retlabel = "";
 
 	let selected = "";
@@ -2032,7 +2037,6 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 	let YY = 0;
 	let XX = 0;
 	for (let I = 0; I < KDFilters.length; I++) {
-		if (filters.includes(KDFilters[I])) continue;
 		if (!first) first = KDFilters[I];
 		let dim = true;
 		let col = KDTextGray2;
@@ -2060,14 +2064,14 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 			if (KinkyDungeonCurrentFilter == KDFilters[(I + 1) % (KDFilters.length)]) {
 				Object.assign(opts, {
 					
-					hotkey: KDHotkeyToText(KinkyDungeonKey[5]),
-					hotkeyPress: KinkyDungeonKey[5],
+					hotkey: KDHotkeyToTextSilent(hotkeyUp),
+					hotkeyPress: hotkeyUp,
 				})
 			} else if (KinkyDungeonCurrentFilter == KDFilters[I == 0 ? KDFilters.length - 1 : I - 1]) {
 				Object.assign(opts, {
 					
-					hotkey: KDHotkeyToText(KinkyDungeonKey[7]),
-					hotkeyPress: KinkyDungeonKey[7],
+					hotkey: KDHotkeyToTextSilent(hotkeyDown),
+					hotkeyPress: hotkeyDown,
 				})
 			}
 
@@ -2077,9 +2081,11 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 				KinkyDungeonCurrentPageInventory = 0;
 				KinkyDungeonCurrentPageContainer = 0;
 
-				for (let list of Object.values(KDScrollableListDataset)) {
-					list.lastUpdated = 0; // update all scrollable lists
+				for (let values of Object.values(KDScrollableListDataset)) {
+					values.lastUpdated = 0;
 				}
+
+				KDRefreshInventoryList = true;
 				return true;
 			}, true, 
 			canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 55 + XX*spacing, 

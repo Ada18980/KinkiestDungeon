@@ -5841,6 +5841,10 @@ function KDHotkeyToText(hotkey: string): string {
 	if (!hotkey) return "---";
 	return hotkey.replace("Digit", "").replace("Key", "").replace("Control", "Ctrl");
 }
+function KDHotkeyToTextSilent(hotkey: string): string {
+	if (!hotkey) return undefined;
+	return hotkey.replace("Digit", "").replace("Key", "").replace("Control", "Ctrl");
+}
 
 
 

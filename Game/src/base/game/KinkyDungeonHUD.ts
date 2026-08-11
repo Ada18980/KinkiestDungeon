@@ -2206,7 +2206,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goQuit", (_bdata) => {
 		KDResetAlternateInventoryRender();
-		if (skip == 0) {
+		if (skip == bindex) {
 			KinkyDungeonDrawState = "Game";
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
@@ -2238,7 +2238,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 	}); bindex++; bInc();
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goInv", (_bdata) => {
 		KDResetAlternateInventoryRender();
-		if (skip == 1)
+		if (skip == bindex)
 			KinkyDungeonDrawState = "Game";
 		else
 			KDShowInventory(null);
@@ -2252,7 +2252,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 	}); bindex++; bInc();
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goSpells", (_bdata) => {
 		KDResetAlternateInventoryRender();
-		if (skip == 2)
+		if (skip == bindex)
 			KinkyDungeonDrawState = "Game";
 		else
 			KinkyDungeonDrawState = "MagicSpells";
@@ -2270,7 +2270,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 	if (skip == bindex) logtxt = TextGet("KDNavGame");
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goLog", (_bdata) => {
 		KDResetAlternateInventoryRender();
-		if (skip == 3)
+		if (skip == bindex)
 			KinkyDungeonDrawState = "Game";
 		else {
 			KinkyDungeonDrawState = "Quest";
@@ -2287,7 +2287,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 	if (KDGameData.Collection && Object.entries(KDGameData.Collection).length > 0) {
 		DrawButtonKDEx((skip == bindex) ? "goGame" : "goCollection", (_bdata) => {
 			KDResetAlternateInventoryRender();
-			if (skip == 1)
+			if (skip == bindex)
 				KinkyDungeonDrawState = "Game";
 			else
 				KinkyDungeonDrawState = "Collection";

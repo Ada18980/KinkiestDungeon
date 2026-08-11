@@ -20,6 +20,7 @@ interface KDScrollableListData {
     items: any[],
     lastUpdated: number,
     updateInterval: number,
+	lastDrawn: number
 }
 let KDScrollableListExp = 4;
 let KDScrollableListMin = 4;
@@ -62,7 +63,8 @@ function PopulateList(name: string, x: number, y: number, w: number, h: number, 
 			zIndex: z,
 			max: list.length - 1,
 			min: 0,
-			num_per_page: num_per_page
+			num_per_page: num_per_page,
+			lastDrawn: 0,
 		};
 	} else {
 		let index = KDScrollableListDataset[name].index;
@@ -71,6 +73,7 @@ function PopulateList(name: string, x: number, y: number, w: number, h: number, 
 		let click_hold_y = KDScrollableListDataset[name].click_hold_y;
 		let click_hold_y_index = KDScrollableListDataset[name].click_hold_y_index;
 		let lastUpdated = KDScrollableListDataset[name].lastUpdated;
+		let lastDrawn = KDScrollableListDataset[name].lastDrawn;
 
 		KDScrollableListDataset[name] = {
 			allowWrap: allowWrap,
@@ -89,7 +92,8 @@ function PopulateList(name: string, x: number, y: number, w: number, h: number, 
 			zIndex: z,
 			max: list.length - 1,
 			min: 0,
-			num_per_page: num_per_page
+			num_per_page: num_per_page,
+			lastDrawn: lastDrawn,
 		};
 
 	}
@@ -118,7 +122,7 @@ function KDScrollScrollableLists(mouseX: number, mouseY: number, scrollAmount: n
 	let highest = "";
 	for (let name in KDScrollableListDataset) {
         let list = KDScrollableListDataset[name];
-        if (list) {
+        if (list && list.lastDrawn > CommonTime() - 100) {
 			if (list.zIndex > highestZ) {
 				if (PointIn(mouseX, mouseY, list.x, list.y, list.w, list.h)) {
 					highestZ = list.zIndex;
@@ -191,6 +195,8 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string, pad: number = 4): any {
 	let list = KDScrollableListDataset[name];
 	let container = kdcanvas;
+
+	list.lastDrawn = CommonTime();
 	
 	
 	if (useContainer != undefined) {
