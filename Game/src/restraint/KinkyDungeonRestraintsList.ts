@@ -10004,7 +10004,6 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Asset: "Boots1",
 	Model: "PlateBootsRestraint",
 	AssetGroup: "Shoes",
-	Color: ["#444444", "#222222"],
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
@@ -10018,8 +10017,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	addPose: ["BootsArmor"],
 	noRenderPose: ["NoBootsArmor"],
 	factionFilters: {
-		ShoeLeft: {color: "LightNeutral", override: true},
-		ShoeRight: {color: "LightNeutral", override: true},
+		BootLeft: {color: "LightNeutral", override: true},
+		BootRight: {color: "LightNeutral", override: true},
 	},
 
 	armor: true, bypass: true,

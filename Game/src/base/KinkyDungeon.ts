@@ -8393,8 +8393,10 @@ function KDDrawWardrobeButton() {
 			CharacterRefresh(KinkyDungeonPlayer);
 		}
 		KinkyDungeonNewDress = true;
+		KDOriginalValue = "";
 
 		CharacterReleaseTotal(KinkyDungeonPlayer);
+		KinkyDungeonDressSet(KinkyDungeonPlayer);
 		KinkyDungeonDressPlayer();
 		KinkyDungeonConfigAppearance = true;
 		if (appearance) {

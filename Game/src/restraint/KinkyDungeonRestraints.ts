@@ -7623,20 +7623,8 @@ function KDDoEquipDelayed(data: any, player: entity): string {
 		let customEq = KDRestraint(loose).customEquip || "";
 		let msg = "KinkyDungeonSelfBondage" + customEq;
 		if (!customEq) {
-			if (KDRestraint(loose).Group == "ItemVulvaPiercings" || KDRestraint(loose).Group == "ItemVulva" || KDRestraint(loose).Group == "ItemButt") {
-				if (KinkyDungeonIsChaste(false)) {
-					msg = "KinkyDungeonSelfBondagePlug";
-				}
-			} else if (KDRestraint(loose).Group == "Item") {
-				if (KinkyDungeonIsChaste(true)) {
-					msg = "KinkyDungeonSelfBondageNipple";
-				}
-			} else if (KDRestraint(loose).enchanted) {
-				msg = "KinkyDungeonSelfBondageEnchanted";
-			}
+			msg = KDCustomEquipMsg(loose) || msg;
 		}
-
-		KinkyDungeonSendTextMessage(10, TextGet(msg).replace("RestraintName", TextGet("Restraint" + KDRestraint(loose).name)), "yellow", 1);
 
 		return msg;
 	} else {
@@ -7934,4 +7922,40 @@ function KDFindRestraint(player: entity, item: item, filter: string = Restraint)
 	}
 	
 	return null;
+}
+
+function KDCustomEquipMsg(item: item) {
+	let msg = "";
+	if (KDRestraint(item).Group == "ItemVulvaPiercings" || KDRestraint(item).Group == "ItemVulva" || KDRestraint(item).Group == "ItemButt") {
+		if (KinkyDungeonIsChaste(false)) {
+			msg = "KinkyDungeonSelfBondagePlug";
+		}
+	} else if (KDRestraint(item).Group == "Item") {
+		if (KinkyDungeonIsChaste(true)) {
+			msg = "KinkyDungeonSelfBondageNipple";
+		}
+	} else if (KDRestraint(item).enchanted) {
+		msg = "KinkyDungeonSelfBondageEnchanted";
+	} else if (KDRestraint(item).armor) {
+		msg = "KinkyDungeonSelfBondageArmor";
+	}
+	return msg
+}
+
+function KDCustomEquipMsgRestraint(restraint: restraint) {
+	let msg = "";
+	if (restraint.Group == "ItemVulvaPiercings" || restraint.Group == "ItemVulva" || restraint.Group == "ItemButt") {
+		if (KinkyDungeonIsChaste(false)) {
+			msg = "KinkyDungeonSelfBondagePlug";
+		}
+	} else if (restraint.Group == "Item") {
+		if (KinkyDungeonIsChaste(true)) {
+			msg = "KinkyDungeonSelfBondageNipple";
+		}
+	} else if (restraint.enchanted) {
+		msg = "KinkyDungeonSelfBondageEnchanted";
+	} else if (restraint.armor) {
+		msg = "KinkyDungeonSelfBondageArmor";
+	}
+	return msg
 }

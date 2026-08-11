@@ -307,6 +307,16 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		data.player = KDPlayer().id;
 
 		let maxtime = data.duration || KDGetEquipDuration(newItem.name, KDPlayer());
+		
+		let customEq = newItem.customEquip || "";
+		let msg = "KinkyDungeonSelfBondage" + customEq;
+		if (!customEq) {
+			msg = KDCustomEquipMsgRestraint(newItem) || msg;
+		}
+
+		KinkyDungeonSendTextMessage(10, TextGet(msg).replace("RestraintName", TextGet("Restraint" + newItem.name)), "yellow", 1);
+
+
 		for (let i = 1; i <= maxtime; i++)
 			KDAddDelayedAction({
 				data: data,
@@ -363,6 +373,16 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		data.player = KDPlayer().id;
 
 		let maxtime = KDGetEquipDuration(newItem.name, KDPlayer());
+		
+		let customEq = KDRestraint(newItem).customEquip || "";
+		let msg = "KinkyDungeonSelfBondage" + customEq;
+		if (!customEq) {
+			msg = KDCustomEquipMsgRestraint(newItem) || msg;
+		}
+
+		KinkyDungeonSendTextMessage(10, TextGet(msg).replace("RestraintName", 
+			TextGet("Restraint" + newItem.name)), "yellow", 1);
+
 		for (let i = 1; i <= maxtime; i++)
 			KDAddDelayedAction({
 				data: data,
