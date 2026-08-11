@@ -170,7 +170,7 @@ let KinkyDungeonKeyEnter = ['Enter'];
 let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['R',];
 let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
-let KinkyDungeonKeyMenu = ['V', 'I', 'M', 'L', "Home"]; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection, Pause, Journey
+let KinkyDungeonKeyMenu = ['V', 'I', 'M', 'L', "Home", "End"]; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection, Pause, Journey
 let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'", 'N', 'K', '~']; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch, Buffs
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
@@ -267,7 +267,7 @@ let KDDefaultKB = {
 	Magic: KinkyDungeonKeyMenu[2],
 	Log: KinkyDungeonKeyMenu[3],
 	//Quest: KinkyDungeonKeyMenu[5],
-	//Collection: KinkyDungeonKeyMenu[6],
+	Collection: KinkyDungeonKeyMenu[5],
 	//Facilities: KinkyDungeonKeyMenu[7],
 	Restart: KinkyDungeonKeyMenu[4],
 	//JourneyMap: KinkyDungeonKeyMenu[9],
@@ -1447,6 +1447,8 @@ let KDErrorText = "";
 let KDErrorTextTime = 0;
 let KDErrorTextTime_DELAY = 2500;
 
+let KDLastHoverButton: KDButtonParamData = null;
+/** Use LastHoverButton to give a chance for other things to render */
 let KDCurrentHoverButton: KDButtonParamData = null;
 let KDCurrentHoverBox: KDButtonParamData;
 
@@ -1507,6 +1509,7 @@ function KinkyDungeonRun() {
 		mouseHoldTaken = "";
 
 	if (KDButtonHovering > 0) KDButtonHovering--;
+	KDLastHoverButton = KDCurrentHoverButton;
 	KDCurrentHoverButton = null;
 
 	if (KDSaveQueue.length > 8) {
@@ -3476,6 +3479,7 @@ interface KDButtonPressData {
 
 interface KDButtonParamData {
 	Left: number,
+	name: string,
 	Top: number,
 	Width: number,
 	Height: number,
@@ -3485,11 +3489,13 @@ interface KDButtonParamData {
 	scrollfunc?: (amount: number) => void,
 	hotkeyPress?: string, 
 	contextMenu?: string,
+	nonplayable?: boolean,
 	hoverData?: any,
 	onHover?: (button: KDButtonParamData) => void,
   Hover?: any
 }
 
+/** For most things use LastButtonsCache as buttons might not have been rendered yet this frame. Will lag a frame behind but eh. */
 let KDButtonsCache: Record<string, KDButtonParamData> = {
 };
 let KDHoldButtonsCache: Record<string, KDButtonParamData> = {
@@ -3533,6 +3539,7 @@ function DrawButtonKD (
 ): void
 {
 	let params = {
+		name,
 		Left,
 		Top,
 		Width,
@@ -3543,7 +3550,7 @@ function DrawButtonKD (
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton || params.priority > KDCurrentHoverButton.priority) {
+		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
             KDCurrentHoverButton = params;
             KDCurrentHoverBox = params;
         }
@@ -3606,21 +3613,25 @@ function DrawHoldButtonKDExTo (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	any,
+	priority: number = 0
 ): boolean
 {
 	let params = {
+		name,
 		Left,
 		Top,
 		Width,
 		Height,
 		enabled,
 		func,
-		priority: (options?.zIndex || 0),
+		priority: priority,
 		hotkeyPress: options?.hotkeyPress,
+		nonplayable: options?.nonplayable,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		
+		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) KDCurrentHoverButton = params;
 		else Disabled = true;
 	}
 	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
@@ -3683,21 +3694,23 @@ function DrawButtonKDEx (
 ): boolean
 {
 	let params = {
+		name,
 		Left,
 		Top,
 		Width,
 		Height,
 		enabled,
 		func,
-		priority: (options?.zIndex || 0),
+		priority: (options?.zIndex || 100),
 		hotkeyPress: options?.hotkeyPress,
 		hoverData: options?.hoverData,
 		onHover: options?.onHover,
+		nonplayable: options?.nonplayable,
     Hover,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton || params.priority > KDCurrentHoverButton.priority) {
+		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
             KDCurrentHoverButton = params;
             KDCurrentHoverBox = params;
         }
@@ -3776,21 +3789,24 @@ function DrawButtonKDExContext (
 {
 
 	let params = {
+		name,
 		Left,
 		Top,
 		Width,
 		Height,
 		enabled,
 		func,
-		priority: (options?.zIndex || 0),
+		priority: (options?.zIndex || 100),
 		hotkeyPress: options?.hotkeyPress,
 		contextMenu: contextMenu,
 		hoverData: options?.hoverData,
 		onHover: options?.onHover,
+		nonplayable: options?.nonplayable,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		
+		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) KDCurrentHoverButton = params;
 		else Disabled = true;
 	}
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
@@ -3855,22 +3871,24 @@ function DrawButtonKDExScroll (
 {
 
 	let params: KDButtonParamData = {
+		name,
 		Left,
 		Top,
 		Width,
 		Height,
 		enabled,
 		func,
-		priority: (options?.zIndex || 0),
+		priority: (options?.zIndex || 100),
 		scrollfunc: scrollfunc,
 		hotkeyPress: options?.hotkeyPress,
 		hoverData: options?.hoverData,
 		onHover: options?.onHover,
+		nonplayable: options?.nonplayable,
     Hover,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton || params.priority > KDCurrentHoverButton.priority) {
+		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
             KDCurrentHoverButton = params;
             KDCurrentHoverBox = params;
         }
@@ -3929,23 +3947,26 @@ function DrawButtonKDExTo (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	any,
+	priority = 0,
 ): boolean
 {
 	let params = {
+		name,
 		Left,
 		Top,
 		Width,
 		Height,
 		enabled,
 		func,
-		priority: (options?.zIndex || 0),
+		priority: priority,//(options?.zIndex || 0),
 		hotkeyPress: options?.hotkeyPress,
 		hoverData: options?.hoverData,
 		onHover: options?.onHover,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
-		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		
+		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {KDCurrentHoverButton = params;}
 		else Disabled = true;
 	}
 	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
@@ -4222,7 +4243,7 @@ function KDProcessButtons() {
 		}
 	}
 	if (buttons.length > 0) {
-		buttons = buttons.sort((a, b) => {return b.priority - a.priority;});
+		buttons = buttons.sort((a, b) => {return (b.priority || 0) - (a.priority || 0);});
 		return buttons[0].func({
 			source: "mouse"
 		});
@@ -4527,6 +4548,7 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.Magic,
 		KinkyDungeonKeybindings.Log,
 		KinkyDungeonKeybindings.Restart,
+		KinkyDungeonKeybindings.Collection,
 		/*KinkyDungeonKeybindings.Reputation,
 		KinkyDungeonKeybindings.Quest,
 		KinkyDungeonKeybindings.Collection,

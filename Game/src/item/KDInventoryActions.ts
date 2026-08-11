@@ -733,6 +733,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		icon: (_player, _item) => {
 			return "InventoryAction/Offhand";
 		},
+		doubleSize: true,
 		valid: (player, item) => {
 			if (!(item?.type == Weapon && KDCanOffhand(item))) return false;
 			if (KDInventoryActionContainer(player)) return false;
@@ -765,6 +766,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		icon: (_player, _item) => {
 			return "InventoryAction/RemoveOffhand";
 		},
+		doubleSize: true,
 		valid: (player, item) => {
 			if (KDInventoryActionContainer(player)) return false;
 			return KDGameData.Offhand == item.name;

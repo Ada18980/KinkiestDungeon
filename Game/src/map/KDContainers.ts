@@ -471,7 +471,11 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		KDBaseWhite, undefined
 	)
 
-	KDDrawInventoryTabs(xOffset);
+	if (KDUI_ContainerBackScreen == "Facilities") {
+		KDDrawCollectionTabs(xOffset);
+	} else {
+		KDDrawInventoryTabs(xOffset);
+	}
 }
 
 

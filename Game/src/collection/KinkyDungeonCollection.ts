@@ -169,7 +169,7 @@ function KinkyDungeonDrawCollection(xOffset: number = -125) {
 	}
 
 	//KinkyDungeonDrawMessages(true, 550, true, 600);
-	KDDrawInventoryTabs(xOffset);
+	KDDrawCollectionTabs(xOffset);
 }
 function KinkyDungeonDrawBondage(xOffset = -125) {
 	let x = 1225 + xOffset;
@@ -1422,6 +1422,14 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 			XX = x;
 			YY += KDCollectionSpacing;
 		} else XX += KDCollectionSpacing;
+	}
+
+	if (rendered.length == 0 && KDCollectionIndex > 0) {
+		KDCollectionIndex = Math.max(0, KDCollectionIndex - KDCollectionColumns);
+	}
+	
+	if (rendered.length == 0 && KDCollectionIndex == 0 && KDCollectionTabStatus == '' && KDGameData.Party && KDGameData.Party.length > 0) {
+		KDCollectionTabStatus = 'Guest'; // auto go to guests
 	}
 	// Iterate thru guests array
 	YY = y;

@@ -1992,11 +1992,11 @@ function KinkyDungeonDrawGame() {
 			KinkyDungeonDrawPlayerNameInMenus()
 			KinkyDungeonDrawTitles();
 		} else if (KinkyDungeonDrawState == "Collection") {
-			KDDrawNavBar(1);
+			KDDrawNavBar(4);
 			KinkyDungeonDrawPlayerNameInMenus()
 			KinkyDungeonDrawCollection();
 		} else if (KinkyDungeonDrawState == "Facilities") {
-			KDDrawNavBar(1);
+			KDDrawNavBar(4);
 			KinkyDungeonDrawPlayerNameInMenus()
 			KinkyDungeonDrawFacilities();
 		}  else if (KinkyDungeonDrawState == "Progress") {
@@ -3807,6 +3807,8 @@ type ButtonOptions = {
 	bordercolor?: string,
 	fillcolor?: string,
 	highlightcolor?: string,
+	/** hovering in here counts as not being in playable area */
+	nonplayable?: boolean,
 	
 	/// Custom data passed to onHover callback
 	hoverData?:   any;
@@ -4117,12 +4119,13 @@ function DrawCheckboxKDExTo (
 	Disabled:     boolean = false,
 	TextColor:    string = KDTextGray0,
 	CheckImage:  string = "UI/Checked.png",
-	options?:     ButtonOptions
+	options?:     ButtonOptions,
+	priority = 0,
 ): void
 {
 	DrawTextFitKDTo(canvas, Text, Left + 10 + Width, Top + Height/2+1, options?.maxWidth || 1000, TextColor, "#333333", options?.fontSize, "left");
 	DrawButtonKDExTo(canvas, name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : KDBaseWhite, IsChecked ? (KinkyDungeonRootDirectory + CheckImage) : "", null, Disabled,
-		undefined, undefined, undefined, undefined, options);
+		undefined, undefined, undefined, undefined, options, priority);
 }
 
 
@@ -5817,6 +5820,7 @@ function KDPointInPlayableArea(X: number, Y: number): boolean {
 	if (KinkyDungeonDrawState == "Game" && KDGameData.CurrentDialog && PointIn(X, Y, 
 		PIXIWidth/2 - KDDialogueButtonWidth * 0.6, KDDialogueButtonY - 50, 
 		KDDialogueButtonWidth * 1.2, KDDialogueButtonSpacing * KDMaxDialogue + 50)) return false;
+		
 	return PointIn(X, Y, canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)
 		&& !PointIn(X, Y, 0, 0, 500, PIXIHeight)
 		&& !PointIn(X, Y, PIXIWidth-60, 0, 70, PIXIHeight)
@@ -5827,6 +5831,7 @@ function KDPointInPlayableArea(X: number, Y: number): boolean {
 
 function KDMouseInPlayableArea(): boolean {
 	if (KDContextMenu && MouseIn(KDContextXX, KDContextYY, KDContextW, KDContextH)) return false;
+
 	
 	return KDPointInPlayableArea(MouseX, MouseY)
 		&& !KDButtonHovering;

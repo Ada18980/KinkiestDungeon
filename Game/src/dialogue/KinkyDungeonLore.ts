@@ -605,15 +605,13 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 	}
 	let scrollFunc = (amount: number) => {
 		switch (KinkyDungeonDrawState) {
-			case  "Inventory": KinkyDungeonDrawState = amount < 0 ? "Facilities"  : "Collection"; break;
-			case  "Collection": KinkyDungeonDrawState = amount < 0 ? "Inventory"  : "Facilities"; break;
-			case  "Facilities": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Progress"; break;
-			case  "Progress": KinkyDungeonDrawState = amount < 0 ? "Facilities"  : "Inventory"; break;
+			case  "Inventory": KinkyDungeonDrawState = amount < 0 ? "Progress"  : "Progress"; break;
+			case  "Progress": KinkyDungeonDrawState = amount < 0 ? "Inventory"  : "Inventory"; break;
 		}
 	};
 	let xxstart = 560;
 	let yy = 6;
-	let num = 4;
+	let num = 2;
 	let width = 1100 / num;
 	let II = 0;
 
@@ -627,6 +625,57 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyTab[II]),
 		hotkeyPress: KinkyDungeonKeyTab[II],
 	}); II++;
+	DrawButtonKDExScroll("TabProgress", scrollFunc, (b) => {
+		KinkyDungeonDrawState = "Progress";
+		return true;
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonProgress"), KDBaseWhite, undefined, undefined, undefined,
+	KinkyDungeonDrawState != "Progress", KDButtonColor, undefined, undefined,
+{
+		hotkey: KDHotkeyToText(KinkyDungeonKeyTab[II]),
+		hotkeyPress: KinkyDungeonKeyTab[II],
+	}); II++;
+
+
+}
+
+
+
+function KDDrawCollectionTabs(xOffset: number, drawBG: boolean = true): void {
+	if (drawBG) {
+		FillRectKD(kdcanvas, kdpixisprites, "mainlorebg", {
+			Left: canvasOffsetX_ui + xOffset,
+			Top: 4,
+			Width: 1965 - (canvasOffsetX_ui),
+			Height: 1000 - (4),
+			Color: KDInvBG,
+			LineWidth: 1,
+			zIndex: -19,
+			alpha: 0.7
+		});
+		DrawRectKD(kdcanvas, kdpixisprites, "mainlorebg2", {
+			Left: canvasOffsetX_ui + xOffset,
+			Top: 4,
+			Width: 1965 - (canvasOffsetX_ui),
+			Height: 1000 - (4),
+			Color: KDBaseBlack,
+			LineWidth: 1,
+			zIndex: -19,
+			alpha: 0.9
+		});
+	}
+	let scrollFunc = (amount: number) => {
+		switch (KinkyDungeonDrawState) {
+			case  "Collection": KinkyDungeonDrawState = amount < 0 ? "Facilities"  : "Facilities"; break;
+			case  "Facilities": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Collection"; break;
+		}
+	};
+	let xxstart = 560;
+	let yy = 6;
+	let num = 2;
+	let width = 1100 / num;
+	let II = 0;
+
+
 	DrawButtonKDExScroll("TabCollection", scrollFunc, (_b) => {
 		KinkyDungeonDrawState = "Collection";
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -649,17 +698,6 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyTab[II]),
 		hotkeyPress: KinkyDungeonKeyTab[II],
 	}); II++;
-	DrawButtonKDExScroll("TabProgress", scrollFunc, (b) => {
-		KinkyDungeonDrawState = "Progress";
-		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonProgress"), KDBaseWhite, undefined, undefined, undefined,
-	KinkyDungeonDrawState != "Progress", KDButtonColor, undefined, undefined,
-{
-		hotkey: KDHotkeyToText(KinkyDungeonKeyTab[II]),
-		hotkeyPress: KinkyDungeonKeyTab[II],
-	}); II++;
-
-
 }
 
 /**

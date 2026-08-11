@@ -101,7 +101,7 @@ function KinkyDungeonDrawFacilities(xOffset = -125) {
 	}
 
 
-	KDDrawInventoryTabs(xOffset);
+	KDDrawCollectionTabs(xOffset);
 }
 
 

@@ -2463,7 +2463,7 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells"; break;
 				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Logbook" ? "Game" : "Logbook"; break;
 				//case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Quest" ? "Game" : "Quest"; break;
-				//case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage") ? "Game" : "Collection"; break;
+				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage") ? "Game" : "Collection"; break;
 				//case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Facilities" ? "Game" : "Facilities"; break;
 				/*case KinkyDungeonKeyMenu[9]: {
 					KinkyDungeonDrawState = KinkyDungeonDrawState == "JourneyMap" ? "Game" : "JourneyMap";
@@ -2509,7 +2509,7 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = "Logbook"; break;
 				//case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Quest";
 				//	KDSortQuests(KDPlayer()); break;
-				//case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = "Collection"; break;
+				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Collection"; break;
 				//case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = "Facilities"; break;
 				/*case KinkyDungeonKeyMenu[9]: {
 					KinkyDungeonDrawState = "JourneyMap"; 
