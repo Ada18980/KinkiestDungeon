@@ -285,8 +285,8 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		KDBaseWhite, KinkyDungeonRootDirectory + (horizontal ? "Left" : "Up") + scrollSuff + ".png", undefined, 
 		undefined, true, undefined, undefined, undefined, {
 				centered: true,
-				//hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
-				//hotkeyPressed: scrollhotkeyUp,
+				hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
+				hotkeyPress: scrollhotkeyUp,
 			});
 		DrawButtonKDEx(name + "downbtn", (_b) => {
 			KDScrollScrollableList(name, 1);
@@ -298,8 +298,8 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		KDBaseWhite, KinkyDungeonRootDirectory + (horizontal ? "Right" : "Down") + scrollSuff + ".png", undefined, 
 		undefined, true, undefined, undefined, undefined, {
 				centered: true,
-				//hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
-				//hotkeyPressed: scrollhotkeyDown,
+				hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
+				hotkeyPress: scrollhotkeyDown,
 			});
 
 
@@ -349,14 +349,37 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	if (list) {
 		let diff = Math.round(list.index - list.visual_index);
 		let diffReal = (list.index - list.visual_index);
+		let drawnFirst = false;
+		let drawnLast = false;
 		for (let i = -1 - diff; i <= list.num_per_page - diff; i++) {
 			if (list.items[i + list.index]) {
-				if (drawCallback(container, i >= 0 && i <= list.num_per_page, list.items[i + list.index], i + list.index,
+				if (drawCallback(container, ( i >= 0 && i <= list.num_per_page), list.items[i + list.index], i + list.index,
 						i + diffReal,
 						list.selectedindex == i + list.index, lastSelectedIndex, list)) {
 					list.selectedindex = i + list.index;
 					selected = list.items[i + list.index];
 				}
+				if (i + list.index == 0) drawnFirst = true;
+				if (i + list.index == list.items.length - 1) drawnLast = true;
+			}
+		}
+
+		if (!drawnFirst) {
+			let i = -list.index;
+			if (drawCallback(container, ( i >= 0 && i <= list.num_per_page), list.items[i + list.index], i + list.index,
+					i + diffReal,
+					list.selectedindex == i + list.index, lastSelectedIndex, list)) {
+				list.selectedindex = i + list.index;
+				selected = list.items[i + list.index];
+			}
+		}
+		if (!drawnLast) {
+			let i = -list.index + list.items.length - 1;
+			if (drawCallback(container, ( i >= 0 && i <= list.num_per_page), list.items[i + list.index], i + list.index,
+					i + diffReal,
+					list.selectedindex == i + list.index, lastSelectedIndex, list)) {
+				list.selectedindex = i + list.index;
+				selected = list.items[i + list.index];
 			}
 		}
 	}

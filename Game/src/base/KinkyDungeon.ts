@@ -3900,6 +3900,92 @@ function DrawButtonKDExScroll (
 	return MouseIn(Left,Top,Width,Height);
 }
 
+
+
+/**
+ * Draws a button component
+ * @param name - Name of the button element
+ * @param func - Whether or not you can click on it
+ * @param enabled - Whether or not you can click on it
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Label - Text to display in the button
+ * @param Color - Color of the component
+ * @param [Image] - URL of the image to draw inside the button, if applicable
+ * @param [HoveringText] - Text of the tooltip, if applicable
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [NoBorder] - Disables border
+ * @param [FillColor] - BG color
+ * @param [FontSize] - Font size
+ * @param [ShiftText] - Shift text to make room for the button
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha] - Dont show text backgrounds
+ * @param [options.zIndex] - zIndex
+ * @param [options.scaleImage] - zIndex
+ * @param [options.centered] - centered
+ * @param [options.centerText] - centered
+ * @param [options.tint] - tint
+ * @param [options.hotkey] - hotkey
+ * @param [options.hotkeyPress] - hotkey
+ * @returns - Whether or not the mouse is in the button
+ */
+function DrawButtonKDExScrollTo (
+	Container:	any,
+	name:		string,
+	scrollfunc:	(amount: number) => boolean | void,
+	func:		(bdata: any) => boolean,
+	enabled:	boolean,
+	Left:		number,
+	Top:		number,
+	Width:		number,
+	Height:		number,
+	Label:		string,
+	Color:		string,
+	Image?:		string | string[],
+	HoveringText?:	string,
+	Disabled?:	boolean,
+	NoBorder?:	boolean,
+	FillColor?:	string,
+	FontSize?:	number,
+	ShiftText?:	boolean,
+	options?:	any,
+  Hover?:      Function,
+): boolean
+{
+
+	let params: KDButtonParamData = {
+		name,
+		Left,
+		Top,
+		Width,
+		Height,
+		enabled,
+		func,
+		priority: (options?.zIndex || 100),
+		scrollfunc: scrollfunc,
+		hotkeyPress: options?.hotkeyPress,
+		hoverData: options?.hoverData,
+		onHover: options?.onHover,
+		nonplayable: options?.nonplayable,
+    Hover,
+	};
+	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover) {
+		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
+            KDCurrentHoverButton = params;
+            KDCurrentHoverBox = params;
+        }
+		else {Disabled = true; hover = false;}
+	}
+	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	KDButtonsCache[name] = params
+	if (hover && options?.onHover) options.onHover(params);
+	return MouseIn(Left,Top,Width,Height);
+}
+
 /**
  * Draws a button component
  * @param Container - Container to draw to
@@ -5108,7 +5194,7 @@ function KDDrawLoadMenu() {
 		DrawTextFitKD(loadedSaveforPreview.KDGameData.PlayerName, CombarXX + 680, YYstart + 630, 400, KDBaseWhite, undefined, 40);
 		
 		DrawTextFitKD(TextGet("KDPronoun_" + (loadedSaveforPreview.KDGameData.PlayerPronoun || "")), 
-			CombarXX + 680, YYstart + 655, 400, KDBaseWhite, undefined, 12);
+			CombarXX + 680, YYstart + 650, 400, KDBaseWhite, undefined, 12);
 		if (loadedSaveforPreview.KDGameData.Class)
 			DrawTextFitKD(
 				TextGet("KinkyDungeonStatMC_" + loadedSaveforPreview.KDGameData.Class),
@@ -8431,4 +8517,20 @@ function KDTrackReward(reward: string, amount: number, add: boolean): boolean {
 			return true;
 		}
 	}
+}
+
+function KDDecimate(list: any[], perList = 10): any[] {
+	let ret = [];
+
+	for (let i = 0; i <= Math.floor(list.length / perList); i++) {
+		let rett = [];
+		for (let ii = 0; ii < perList; ii++) {
+			if ((i * perList + ii) < list.length) {
+				rett.push(list[i * perList + ii]);
+			}
+		}
+		if (rett.length > 0)
+			ret.push(rett);
+	}
+	return ret;
 }

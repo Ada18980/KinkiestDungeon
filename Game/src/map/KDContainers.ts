@@ -124,8 +124,8 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	let filter = KinkyDungeonCurrentFilter;
 	let container = KDGameData.Containers[name];
 
-	KDDrawInventoryFilters(xOffset - 120,50 + 7 * filters.length, filters,
-		["All"], 60);
+	KDDrawInventoryFilters(xOffset - 120,95 + 7 * filters.length, filters,
+		["All"], 90, 3);
 
 	let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
 		undefined, filters

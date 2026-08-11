@@ -80,6 +80,8 @@ Must do
 - Added pronoun selection to players and NPCs in collection
 - Added "Bra/Panty/Sock/None" field to expert tools, allowing to specify the type of underwear an item is. Currently unused, but will be used for future stripping mechanics
 - Resisting bondage now reduces your balance
+- Made soem changes to loadouts so now offhand weapons are included, whole quick inv looks a bit more organized
+- Rearranged the regular inventory
 - Enemies will try to prioritize different restraints when hitting you based on what you were most recently doing to them
 - Heavy bondage now requires 2+ turns of stun to apply to enemies, rather than 3+
 - Can now apply bondage on vulnerable NPCs but only if they are below 50% HP, instead of only disabled/quickbind
