@@ -16250,6 +16250,7 @@ EnemyName 离开并锁上了她身后的牢房。
 你确定要进入下一层吗？  ( 点击自己确认 )
 
 
+# - You start putting on the the RestraintName.
 - You shudder as you apply the RestraintName to yourself...
 当你给自己装备 RestraintName 时，你不寒而栗……
 - You insert the RestraintName and close your belt's shield over it, with a click as it locks in place.
@@ -46165,6 +46166,8 @@ LKTYP 锁锁在了你的一个拘束具上！
 - Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.
 装备副手武器，以获得光源、护甲或额外暴击伤害等被动效果。|盗贼不能在副手使用重型或大型武器。|法师只能在副手使用魔法武器；副手使用双手、重型或大型魔法武器时，减速等级 +1。
 
+- Use
+使用一个
 - Equip Offhand
 装备副手
 - Remove Offhand
@@ -51409,6 +51412,7 @@ ENMY 解开了 ITMN 的锁!
 - Back to Facilities
 返回设施
 
+# -  <- Filters -> 
 - Your Inventory
 你的库存
 - Warden's Storage
