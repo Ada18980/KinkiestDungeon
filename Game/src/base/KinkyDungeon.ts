@@ -1512,6 +1512,8 @@ function KinkyDungeonRun() {
 	KDLastHoverButton = KDCurrentHoverButton;
 	KDCurrentHoverButton = null;
 
+	KDCullDominantColors();
+
 	if (KDSaveQueue.length > 8) {
 		// uh...
 		KDSaveQueue = [KDSaveQueue[KDSaveQueue.length-1]];

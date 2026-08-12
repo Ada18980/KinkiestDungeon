@@ -5885,10 +5885,10 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 		if (!KDPIXIPaletteFilters.get(paletteID + value[0]))
 			KDPIXIPaletteFilters.set(paletteID + value[0],
 				[
-					new PIXI.filters.AdjustmentFilter(value[1].DarkNeutral),
-					new PIXI.filters.AdjustmentFilter(value[1].LightNeutral),
-					new PIXI.filters.AdjustmentFilter(value[1].Highlight),
-					new PIXI.filters.AdjustmentFilter(value[1].Catsuit),
+					KDGetFilter(value[1].DarkNeutral),
+					KDGetFilter(value[1].LightNeutral),
+					KDGetFilter(value[1].Highlight),
+					KDGetFilter(value[1].Catsuit),
 				]);
 		KDDraw(kdpalettecontainer, kdpixisprites, "palette" + value[0],
 			KinkyDungeonRootDirectory + "UI/greyColor.png",
@@ -6291,5 +6291,23 @@ function KDPlayerPos() {
 	return {
 		x: KDPlayerX() + 250 - 250 * KDCharSize,
 		y: KDPlayerY() + 0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27,
+	}
+}
+
+function KDGetFilter(filter: LayerFilter) {
+	if (filter?.hue != null && filter?.hue >= 0) {
+		return new HSLFilter({
+			alpha: filter.alpha == null ? 1 : filter.alpha, 
+			hue: filter.hue,
+			lightness: filter.brightness,
+			contrast: filter.contrast,
+			saturation: Math.max(-1, Math.min(
+				filter.saturation - 1, 1)),
+			auto: !(filter.colorize > 0.5),
+			colorize: filter.colorize > 0.5
+
+		});
+	} else {
+		return new PIXI.filters.AdjustmentFilter(filter);
 	}
 }

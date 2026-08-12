@@ -23,6 +23,7 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: {"KneelClosed": true},
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			InheritColor: "Shorts",
 			//MorphPoses: {Hogtie: "Hogtie"},
 		},
 	])

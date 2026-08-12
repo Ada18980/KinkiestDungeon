@@ -4979,7 +4979,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 								let suff = KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) + h : h;
 								let index = ("" + Math.floor(Math.random() * 3));
 
-								if ((!enemy.dialogue || !enemy.dialogueDuration) && !enemy.playWithPlayer)
+								if ((!enemy.dialogueDuration) && !enemy.playWithPlayer)
 									KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailChase" + suff + index,
 									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 7, (!KDGameData.PrisonerState) ? 3 : 5);
 							}
@@ -5716,7 +5716,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 									KDGetGenericDialogueParams(player, enemy))
 		)
 			.replace("EnemyName", TextGet("Name" + enemy.Enemy.name))
-			.replace("PTRN", enemy.CustomName), KDGetColor(enemy), 12, 10);
+			.replace("PTRN", enemy.CustomName), KDGetColor(enemy), 12, 10, undefined, undefined, true, false);
 		KinkyDungeonSetEnemyFlag(enemy, "PatronIntro", 9999);
 	}
 

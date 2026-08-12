@@ -906,7 +906,7 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAl
 
 function KinkyDungeonUpdateDialogue(entity: entity, delta: number) {
 	if (KDGameData.SlowMoveTurns < 1 && !KinkyDungeonStatFreeze && !KDGameData.PlaySelfTurns)
-		if (entity.dialogue) {
+		if (entity.dialogueDuration) {
 			if (entity.dialogueDuration > delta) {
 				entity.dialogueDuration = Math.max(0, entity.dialogueDuration - delta);
 			} else {
@@ -924,18 +924,34 @@ function KinkyDungeonUpdateDialogue(entity: entity, delta: number) {
  * @param [force]
  * @param [nooverride]
  */
-function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: string, duration: number, priority: number, force?: boolean, nooverride?: boolean): void {
+function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: string, duration: number, priority: number, force?: boolean, nooverride?: boolean, forceConstant?: boolean, forceImportant?: boolean): void {
+	let important = forceImportant || (priority && priority > 7);
+	if (forceImportant != undefined && !forceImportant) important = false;
+	let constant = forceConstant || !KDCanHearEnemy(KDPlayer(), entity);
+	if (forceConstant != undefined && !forceConstant) constant = false;
+
+	
 	if (!force && !KDEnemyCanTalk(entity) && !entity.player) {
 		if (!entity.Enemy.nonHumanoid && entity.Enemy.bound) {
 			let suff = "";
 			if (KDIsBrattyPersonality(entity)) suff = "Brat";
 			else if (KDIsSubbyPersonality(entity)) suff = "Sub";
-			entity.dialogue = TextGet("KinkyDungeonRemindJailPlay" + suff + "Gagged" + Math.floor(KDRandom() * 3));
-			entity.dialogueColor = color;
-			entity.dialogueDuration = 4;
-			entity.dialoguePriority = 1;
+			if (constant) {
+				entity.dialogue = TextGet("KinkyDungeonRemindJailPlay" + suff + "Gagged" + Math.floor(KDRandom() * 3));
+				entity.dialogueColor = color;
+				entity.dialogueDuration = 4;
+				entity.dialoguePriority = 1;
+			} else {
+				entity.dialogue = "";
+				entity.dialogueColor = color;
+				entity.dialogueDuration = 4;
+				entity.dialoguePriority = 1;
+				KinkyDungeonSendFloater(entity, TextGet("KinkyDungeonRemindJailPlay" + suff + "Gagged" + Math.floor(KDRandom() * 3)), 
+					color, 1.5 + 0.5*duration);
+			}
 			if (dialogue && KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
-				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${entity.dialogue}`, color, 0, false, false, entity, "Dialogue");
+				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${entity.dialogue}`, 
+				color, 0, false, false, entity, important ? undefined : "Dialogue");
 			}
 			KDEnemyAddSound(entity, 7);
 			if (KDRandom() < 0.5)
@@ -943,11 +959,20 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 		}
 		return;
 	}
-	if (!entity.dialogue || !entity.dialoguePriority || entity.dialoguePriority <= priority + (nooverride ? 1 : 0)) {
-		entity.dialogue = dialogue;
-		entity.dialogueColor = color;
-		entity.dialogueDuration = duration;
-		entity.dialoguePriority = priority;
+	if (!entity.dialogueDuration || !entity.dialoguePriority || entity.dialoguePriority <= priority + (nooverride ? 1 : 0)) {
+		if (constant) {
+			entity.dialogue = dialogue;
+			entity.dialogueColor = color;
+			entity.dialogueDuration = duration;
+			entity.dialoguePriority = priority;
+		} else {
+			entity.dialogue = "";
+			entity.dialogueColor = color;
+			entity.dialogueDuration = duration;
+			entity.dialoguePriority = priority;
+			KinkyDungeonSendFloater(entity, dialogue, 
+				color, 3 + 0.7*duration);
+		}
 		if (!entity.player) {
 			KDEnemyAddSound(entity, 12);
 			if (dialogue && KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {

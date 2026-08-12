@@ -1844,7 +1844,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let fh = containerID + fhash;
 
 				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
-					((KDAdjustmentFilterCache.get(fh)) || [adjustFilter(m.Filters[l.InheritColor || l.Name])])
+					((KDAdjustmentFilterCache.get(fh)) || [KDGetFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
 				if (filter && !KDAdjustmentFilterCache.get(fh)) {
 					KDAdjustmentFilterCache.set(containerID + FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
@@ -1859,7 +1859,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						if (refreshfilters) {
 							KDAdjustmentFilterCache.delete(containerID + FilterHash(ef));
 						}
-						f = new PIXI.filters.AdjustmentFilter(ef);
+						f = KDGetFilter(ef);
 						f.multisample = 0;
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
@@ -2662,7 +2662,8 @@ function UpdateModels(C: Character, Xray?: string[], customFaction?: string) {
 							let origFilters = filters[f[0]];
 							//@ts-ignore
 							if (!filters[f[0]]) filters[f[0]] = {};
-							filters[f[0]].saturation = 0;
+							filters[f[0]].saturation = GetPalette(C, faction)[f[1].color].hue >= -1 ? 
+								GetPalette(C, faction)[f[1].color].saturation : 0;
 							filters[f[0]].contrast = (origFilters)
 								? origFilters.contrast : 1;
 							filters[f[0]].gamma = (origFilters)
@@ -2672,6 +2673,8 @@ function UpdateModels(C: Character, Xray?: string[], customFaction?: string) {
 							filters[f[0]].red = GetPalette(C, faction)[f[1].color].red;
 							filters[f[0]].blue = GetPalette(C, faction)[f[1].color].blue;
 							filters[f[0]].green = GetPalette(C, faction)[f[1].color].green;
+							filters[f[0]].hue = GetPalette(C, faction)[f[1].color].hue;
+							filters[f[0]].colorize = GetPalette(C, faction)[f[1].color].colorize;
 						}
 						if (f[1].desaturate) {
 							filters[f[0]].saturation = 0;
@@ -3233,11 +3236,6 @@ function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) 
 	return modified;
 }
 
-function adjustFilter(filter) {
-	let f = new PIXI.filters.AdjustmentFilter(filter);
-
-	return f;
-}
 
 
 class Transform {

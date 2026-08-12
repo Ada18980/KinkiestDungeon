@@ -116,6 +116,7 @@ let KDToggles = {
 	ChastityBraOption: false,
 	SimpleColorPicker: true,
 	PaletteColorPicker: false,
+	HSL: true,
 	TransparentUI: false,
 	Center: false,
 	TurnCounter: false,
@@ -292,6 +293,7 @@ let KDToggleCategories = {
 	NoOutfitPalette: "none",
 
 	PaletteColorPicker: "none",
+	HSL: "none",
 
 	IgnoreApplyCharPalette: "none",
 	AlwaysApplyCharPalette: "none",

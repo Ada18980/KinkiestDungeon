@@ -22,7 +22,7 @@ let documentcache: Map<Element, documentCacheObject_KD> = new Map();
 function ElementValue(ID: string, Value: string | null = null): string {
 	const e = document.getElementById(ID) as HTMLInputElement;
 	if (!e) {
-		console.error("ElementValue called on a missing element: " + ID.toString);
+		//console.error("ElementValue called on a missing element: " + ID.toString);
 		return "";
 	}
 

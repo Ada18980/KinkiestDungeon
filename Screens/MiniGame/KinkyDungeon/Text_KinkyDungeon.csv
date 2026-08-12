@@ -14422,12 +14422,15 @@ KDCreateExpression,Export Expression
 
 KDColorSlidergamma,Gamma
 KDColorSlidersaturation,Original Color
+KDColorSliderHSLSat,Saturation
 KDColorSlidercontrast,Contrast
 KDColorSliderbrightness,Brightness
+KDColorSlidercolorize,Colorize
 KDColorSliderred,Red
 KDColorSlidergreen,Green
 KDColorSliderblue,Blue
 KDColorSlideralpha,Transparency
+KDColorSliderhue,Hue
 KDResetLayer,Reset Layer!
 KDResetLayerProps,Reset Properties!
 KDExportAllLayers,Export All Layers
@@ -29619,6 +29622,10 @@ KDFilters,Item Color
 KDItemMenu,Item Catalog
 KDLayers,Layers:
 KDColorHex,Hex Code:
+KDColorHSL,HSL
+KDColorRGB,RGB
+
+
 
 KDHideRest,Toggle Struggle UI Mode
 KDSetPose,Change Character Pose
@@ -33452,7 +33459,7 @@ KDPaletteLayer_Catsuit,Catsuit
 KDPaletteLayer_DarkNeutral,Dark
 KDPaletteLayer_LightNeutral,Light
 
-KDWardrobeOverridePaletteLayer,Override Brightness
+KDWardrobeOverridePaletteLayer,Brightness from Palette
 KDWardrobeDesaturatePaletteLayer,Desaturate
 
 

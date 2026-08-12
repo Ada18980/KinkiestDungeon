@@ -355,7 +355,7 @@ function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, f
 						let suff = KDGetEnemyPlayLine(e) ? KDGetEnemyPlayLine(e) + h : h;
 						let index = ("" + Math.floor(Math.random() * 3));
 
-						if (!e.dialogue || !e.dialogueDuration)
+						if (!e.dialogueDuration)
 							KinkyDungeonSendDialogue(e, TextGet("KinkyDungeonRemindJailChase" + suff + index,
 									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + e.Enemy.name)), KDGetColor(e), 7, (!KDGameData.PrisonerState) ? 3 : 5);
 					}
@@ -390,7 +390,7 @@ function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, f
 			}
 		}
 
-		if (!enemy.dialogue || !enemy.dialogueDuration)
+		if (!enemy.dialogueDuration)
 			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailChase" + suff + index,
 									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 4, (!KDGameData.PrisonerState) ? 3 : 5);
 	}
@@ -1063,7 +1063,8 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 							//KinkyDungeonChangeRep("Ghost", 8);
 						}
 						KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index,
-									KDGetGenericDialogueParams(KDPlayer(), KinkyDungeonJailGuard())).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#e7cf1a", 4, 9);
+									KDGetGenericDialogueParams(KDPlayer(), KinkyDungeonJailGuard())).replace("EnemyName", 
+										TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#e7cf1a", 4, 9, true, undefined, true, true);
 					}
 					if (KDGameData.HeelPower > 0)
 						KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0),

@@ -281,6 +281,8 @@ type LayerFilter = {
     green: number;
     blue: number;
     alpha: number;
+	hue?: number,
+	colorize?: number,
 }
 
 type LayerPropertiesType = {

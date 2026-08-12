@@ -523,7 +523,8 @@ function KinkyDungeonDressPlayer (
 													let origFilters = filters[f[0]];
 													//@ts-ignore
 													if (!filters[f[0]]) filters[f[0]] = {};
-													filters[f[0]].saturation = 0;
+													filters[f[0]].saturation = GetPalette(C, faction)[f[1].color].hue >= -1 ? 
+														GetPalette(C, faction)[f[1].color].saturation : 0;
 													filters[f[0]].contrast = (origFilters)
 														? origFilters.contrast : 1;
 													filters[f[0]].gamma = (origFilters)
@@ -533,6 +534,8 @@ function KinkyDungeonDressPlayer (
 													filters[f[0]].red = GetPalette(C, faction)[f[1].color].red;
 													filters[f[0]].blue = GetPalette(C, faction)[f[1].color].blue;
 													filters[f[0]].green = GetPalette(C, faction)[f[1].color].green;
+													filters[f[0]].hue = GetPalette(C, faction)[f[1].color].hue;
+													filters[f[0]].colorize = GetPalette(C, faction)[f[1].color].colorize;
 												}
 												if (f[1].desaturate) {
 													filters[f[0]].saturation = 0;
@@ -594,7 +597,8 @@ function KinkyDungeonDressPlayer (
 												let origFilters = filters[f[0]];
 												//@ts-ignore
 												if (!filters[f[0]]) filters[f[0]] = {};
-												filters[f[0]].saturation = 0;
+												filters[f[0]].saturation = GetPalette(C, faction)[f[1].color].hue >= -1 ? 
+													GetPalette(C, faction)[f[1].color].saturation : 0;
 												filters[f[0]].contrast = (origFilters)
 													? origFilters.contrast : 1;
 												filters[f[0]].gamma = (origFilters)
@@ -604,6 +608,8 @@ function KinkyDungeonDressPlayer (
 												filters[f[0]].red = GetPalette(C, faction)[f[1].color].red;
 												filters[f[0]].blue = GetPalette(C, faction)[f[1].color].blue;
 												filters[f[0]].green = GetPalette(C, faction)[f[1].color].green;
+												filters[f[0]].hue = GetPalette(C, faction)[f[1].color].hue;
+												filters[f[0]].colorize = GetPalette(C, faction)[f[1].color].colorize;
 											}
 											if (f[1].desaturate) {
 												filters[f[0]].saturation = 0;
@@ -1078,7 +1084,8 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 					} else {
 						let origFilters = filters[f[0]];
 						if (!filters[f[0]]) filters[f[0]] = {};
-						filters[f[0]].saturation = 0;
+						filters[f[0]].saturation = GetPalette(C, faction)[f[1].color].hue >= -1 ? 
+							GetPalette(C, faction)[f[1].color].saturation : 0;
 						filters[f[0]].contrast = (origFilters)
 							? origFilters.contrast : 1;
 						filters[f[0]].gamma = (origFilters)
@@ -1088,6 +1095,8 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 						filters[f[0]].red = GetPalette(C, faction)[f[1].color].red;
 						filters[f[0]].blue = GetPalette(C, faction)[f[1].color].blue;
 						filters[f[0]].green = GetPalette(C, faction)[f[1].color].green;
+						filters[f[0]].hue = GetPalette(C, faction)[f[1].color].hue;
+						filters[f[0]].colorize = GetPalette(C, faction)[f[1].color].colorize;
 					}
 					if (f[1].desaturate) {
 						filters[f[0]].saturation = 0;
