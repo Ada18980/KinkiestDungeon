@@ -66,6 +66,7 @@ let KDAIType: Record<string, AIType> = {
 			if (KinkyDungeonAlert && aiData.playerDist < Math.max(4, aiData.visionRadius)) {
 				enemy.gx = KinkyDungeonPlayerEntity.x;
 				enemy.gy = KinkyDungeonPlayerEntity.y;
+				KDUpdateMoveToEntity(enemy);
 			} else {
 				// Short distance
 				let ex = enemy.x;

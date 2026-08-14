@@ -398,6 +398,7 @@ KDPrisonTypes.HighSec = {
 						// Any qualifying factors means they know where you should be
 						guard.gx = player.x;
 						guard.gy = player.y;
+						KDUpdateMoveToEntity(guard);
 						KinkyDungeonSetEnemyFlag(guard, "wander", 30)
 						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 					}
@@ -461,6 +462,7 @@ KDPrisonTypes.HighSec = {
 				if (guard && (!nearestfurniture || KDPrisonIsInFurniture(player))) {
 					guard.gx = player.x;
 					guard.gy = player.y;
+					KDUpdateMoveToEntity(guard);
 					KinkyDungeonSetEnemyFlag(guard, "overrideMove", 2);
 					if (KDistChebyshev(guard.x - player.x, guard.y - player.y) < 1.5) {
 						if (!nearestfurniture || KDPrisonIsInFurniture(player)) {
@@ -513,6 +515,7 @@ KDPrisonTypes.HighSec = {
 						// Any qualifying factors means they know where you should be
 						guard.gx = player.x;
 						guard.gy = player.y;
+						KDUpdateMoveToEntity(guard);
 						KinkyDungeonSetEnemyFlag(guard, "wander", 30)
 						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 					}
@@ -590,6 +593,7 @@ KDPrisonTypes.HighSec = {
 							// Any qualifying factors means they know where you should be
 							guard.gx = player.x;
 							guard.gy = player.y;
+							KDUpdateMoveToEntity(guard);
 							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
 							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 						}

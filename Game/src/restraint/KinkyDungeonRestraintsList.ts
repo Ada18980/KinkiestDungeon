@@ -353,6 +353,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.1, "Cut": 1.0, "Remove": -0.5},
 		Model: "BubbleHead",
 		tightType: "Thick",
+		sfxGroup: "Bubble",
 		events: [
 			{trigger: "postApply", type: "BubbleCombine", count: 3, inheritLinked: true},
 		],
@@ -362,6 +363,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.1, "Cut": 1.0, "Remove": -0.5},
 		Model: "BubbleArms",
 		tightType: "Thick",
+		sfxGroup: "Bubble",
 		events: [
 			{trigger: "postApply", type: "BubbleCombine", count: 3, inheritLinked: true},
 		],
@@ -373,6 +375,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.1, "Cut": 1.0, "Remove": -0.5},
 		Model: "BubbleLegs",
 		tightType: "Thick",
+		sfxGroup: "Bubble",
 		events: [
 			{trigger: "postApply", type: "BubbleCombine", count: 3, inheritLinked: true},
 		],
@@ -2903,7 +2906,9 @@ const KinkyDungeonRestraints: restraint[] = [
 	{removePrison: true, name: "LatexCube", Asset: "VacCube", Color: ["#ff77ff"], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
 		Model: "LatexCube",
 		addTag: ["ForceKneel", "BlockHogtie"],
+		sfxGroup: "Rubber",
 		tightType: "Thick",
+		cutVulnerability: 1.5,
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": -.2},
 		helpChance: {"Remove": 0.5, "Pick": 0.5, "Unlock": 1.0},
 		enemyTags: {"latexcube":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex"], ignoreSpells: true, removeOnLeash: true,
@@ -2914,6 +2919,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		hobble: 3,
 		heelpower: 10,
 		tightType: "Thick",
+		sfxGroup: "Bubble",
 		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
 		limitChance: {
 			Cut: 0,
@@ -2929,6 +2935,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		struggleMinSpeed: {
 			Cut: 3,
 		},
+		cutVulnerability: 2,
 		events: [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
@@ -2940,6 +2947,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		hobble: 3,
 		heelpower: 10,
 		tightType: "Thick",
+		sfxGroup: "Bubble",
 		addTag: ["ForceKneel", "BlockHogtie"],
 		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
 		affinity: {
@@ -2954,7 +2962,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		struggleMinSpeed: {
 			Cut: 3,
 		},
-		escapeChance: {"Struggle": 0, "Cut": 0.4, "Remove": .3},
+		cutVulnerability: 2,
+		escapeChance: {"Struggle": 0, "Cut": 0.5, "Remove": .3},
 		helpChance: {"Struggle": 0.2, "Pick": 1.0, "Remove": .2},
 		events: [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
@@ -2970,6 +2979,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		bindarms: true,
 		restriction: 15,
 		tightType: "Thick",
+		sfxGroup: "RubberBubble",
 		addTag: ["ForceKneel", "BlockHogtie"],
 		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
 		escapeChance: {"Struggle": -0.3, "Cut": 0.5, "Remove": -.5},
@@ -2984,6 +2994,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		struggleMinSpeed: {
 			Cut: 2,
 		},
+		cutVulnerability: 2,
 		events: [
 			//{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.4, sfx: "RubberBolt", inheritLinked: true},
@@ -2997,6 +3008,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		bindarms: true,
 		restriction: 30,
 		tightType: "Thick",
+		sfxGroup: "RubberBubble",
 		addTag: ["ForceKneel", "BlockHogtie"],
 		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
 		escapeChance: {"Struggle": -0.3, "Cut": 0.5, "Remove": -.5},
@@ -3010,6 +3022,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			LatexSphereCutaway: {color: "Catsuit", override: false},
 			LatexSphereCutawayBack: {color: "Catsuit", override: false},
 		},
+		cutVulnerability: 2,
 		events: [
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
@@ -3026,6 +3039,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		DefaultLock: "Cyber",
 		addTag: ["BlockHogtie"],
 		tightType: "Secure",
+		sfx: "FutureLock",
 		factionFilters: {
 			Display: {color: "Highlight", override: false},
 			DoorNumeral: {color: "Highlight", override: false},
@@ -5912,6 +5926,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Model: "BallSuit", LinkableBy: ["Container"],renderWhenLinked: ["Container"],
 		bindarms: true,
 		restriction: 30,
+		sfxGroup: "RubberBubble",
 		tightType: "Thick",
 		addTag: ["ForceKneel", "BlockHogtie"],
 		failSuffix: {Remove: "Bubble", Struggle: "Bubble", Cut: "Bubble"},
@@ -10308,6 +10323,51 @@ let KDSFXGroups: Record<string, KDSFXGroup> = {
 			Destroy: "Rubber4",
 		},
 		sfxRemove: "Rubber1",
+	},
+	
+	"Bubble": {
+		sfx: "Bubble",
+		sfxEscape: {
+			Struggle: "Rubber3",
+			Cut: "Rubber4",
+			Remove: "Rubber3",
+			Pick: "Pick",
+			Unlock: "Unlock",
+			NoWill: "Rubber2",
+			NoStamina: "Rubber2",
+			NoMagic: "Rubber2",
+		},
+		sfxFinishEscape: {
+			Struggle: "BubblePop",
+			Cut: "BubblePop",
+			Remove: "BubblePop",
+			Pick: "BubblePop",
+			Unlock: "BubblePop",
+			Destroy: "BubblePop",
+		},
+		sfxRemove: "BubblePop",
+	},
+	"RubberBubble": {
+		sfx: "Rubber2",
+		sfxEscape: {
+			Struggle: "Rubber3",
+			Cut: "Rubber4",
+			Remove: "Rubber3",
+			Pick: "Pick",
+			Unlock: "Unlock",
+			NoWill: "Rubber2",
+			NoStamina: "Rubber2",
+			NoMagic: "Rubber2",
+		},
+		sfxFinishEscape: {
+			Struggle: "BubblePop",
+			Cut: "BubblePop",
+			Remove: "BubblePop",
+			Pick: "BubblePop",
+			Unlock: "BubblePop",
+			Destroy: "BubblePop",
+		},
+		sfxRemove: "BubblePop",
 	},
 	"Leather": {
 		sfx: "ZipUp",

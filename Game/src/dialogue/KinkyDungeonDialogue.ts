@@ -2719,6 +2719,7 @@ function DialogueBringSpecific(x: number, y: number, enemy: entity): entity {
 			enemy.path = undefined;
 			enemy.gx = x;
 			enemy.gy = y;
+			KDUpdateMoveToEntity(enemy);
 			return enemy;
 		}
 	}

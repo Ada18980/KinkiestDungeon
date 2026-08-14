@@ -5866,6 +5866,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				if (!KDEnemyHasFlag(enemy, "NoFollow")) {
 					enemy.gx = KinkyDungeonPlayerEntity.x;
 					enemy.gy = KinkyDungeonPlayerEntity.y;
+					KDUpdateMoveToEntity(enemy);
 				}
 			} else if (
 				// Dont chase the player if ignoring
@@ -5889,6 +5890,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 						enemy.gx = player.x;
 						enemy.gy = player.y;
+						KDUpdateMoveToEntity(enemy);
+						KDUpdateMoveToEntity(enemy);
 
 					} else {
 
@@ -5944,6 +5947,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 									} else {
 										e.gx = player.x;
 										e.gy = player.y;
+										
+										KDUpdateMoveToEntity(e);
 									}
 
 								}
@@ -6030,6 +6035,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		);
 
 
+	if (!KinkyDungeonEntityAt(enemy.gx_ent, enemy.gy_ent)
+		|| (enemy.g_ent_id && KinkyDungeonEntityAt(enemy.gx_ent, enemy.gy_ent)?.id != enemy.g_ent_id)) {
+			delete enemy.gx_ent;
+			delete enemy.gy_ent;
+			delete enemy.g_ent_id;
+
+	}
+
 	if (!AIData.startedDialogue && !KDEnemyHasFlag(enemy, "nomove")) {
 		if (
 			!AIType.beforemove(enemy, player, AIData)
@@ -6070,6 +6083,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					if (KDEnemyHasFlag(enemy, "Defensive") && !KDEnemyHasFlag(enemy, "StayHere") && !KDEnemyHasFlag(enemy, "dontChase")) {
 						enemy.gx = KinkyDungeonPlayerEntity.x;
 						enemy.gy = KinkyDungeonPlayerEntity.y;
+						KDUpdateMoveToEntity(enemy);
 					}
 					if (KDEnemyHasFlag(enemy, "StayHere") && (KDEnemyHasFlag(enemy, "Defensive") && !KinkyDungeonFlags.get("PlayerCombat")))
 						AIData.dontFollow = true;
@@ -6273,6 +6287,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						if (enemy.x == enemy.gx && enemy.y == enemy.gy) {
 							enemy.gx = player.x;
 							enemy.gy = player.y;
+							KDUpdateMoveToEntity(enemy);
 						}
 					}
 
@@ -6286,8 +6301,12 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				if (
 					// We are not where we want to be
 					(Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0)
-					&& (!KinkyDungeonEntityAt(enemy.gx, enemy.gy) || KDEnemyRank(KinkyDungeonEntityAt(enemy.gx, enemy.gy)) < KDEnemyRank(enemy)
-						|| KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) > 1.5)) {
+					&& ((!KinkyDungeonEntityAt(enemy.gx, enemy.gy)
+						|| (KDEnemyRank(KinkyDungeonEntityAt(enemy.gx, enemy.gy)) < KDEnemyRank(enemy))
+						|| KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) > 1.5)) && (
+							enemy.gx != enemy.gx_ent
+							&& enemy.gy != enemy.gy_ent
+						)) {
 						for (let T = 0; T < 8; T++) {
 							let dir = KDGetDir(enemy, {x: enemy.gx, y: enemy.gy}, KinkyDungeonGetDirection);
 							let splice = false;
@@ -6421,6 +6440,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					if (KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) > 1.5) {
 						enemy.gx = KDPlayer().x;
 						enemy.gy = KDPlayer().y;
+						KDUpdateMoveToEntity(enemy);
 					} else {
 						enemy.gx = enemy.x;
 						enemy.gy = enemy.y;
@@ -6467,6 +6487,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 										if (KinkyDungeonAlert && AIData.playerDist < Math.max(4, AIData.visionRadius)) {
 											enemy.gx = KinkyDungeonPlayerEntity.x;
 											enemy.gy = KinkyDungeonPlayerEntity.y;
+											KDUpdateMoveToEntity(enemy);
 										} else {
 											// Short distance
 											let ex = enemy.x;
@@ -11619,4 +11640,12 @@ function KDClearNPCMovement(entity: entity) {
 	delete entity.path;
 	delete entity.IntentLeashPoint;
 	KDResetMoveFlags(entity);
+}
+
+function KDUpdateMoveToEntity(entity: entity) {
+	entity.gx_ent = entity.gx;
+	entity.gy_ent = entity.gy;
+	if (KinkyDungeonEntityAt(entity.gx, entity.gy)) {
+		entity.g_ent_id = KinkyDungeonEntityAt(entity.gx, entity.gy).id;
+	}
 }

@@ -321,6 +321,7 @@ let KDQuests: Record<string, KDQuest> = {
 									else ee.AI = KDGetAIOverride(ee, 'patrol');
 									ee.gx = KinkyDungeonPlayerEntity.x;
 									ee.gy = KinkyDungeonPlayerEntity.y;
+									KDUpdateMoveToEntity(ee);
 									KDRunCreationScript(ee, KDGetCurrentLocation());
 								}
 							}
@@ -338,6 +339,7 @@ let KDQuests: Record<string, KDQuest> = {
 									else ee.AI = KDGetAIOverride(ee, 'patrol');
 									ee.gx = KinkyDungeonPlayerEntity.x;
 									ee.gy = KinkyDungeonPlayerEntity.y;
+									KDUpdateMoveToEntity(ee);
 									KDRunCreationScript(ee, KDGetCurrentLocation());
 								}
 							}

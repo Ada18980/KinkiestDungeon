@@ -1038,10 +1038,12 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 			} else {
 				KinkyDungeonJailGuard().gx = KinkyDungeonPlayerEntity.x;
 				KinkyDungeonJailGuard().gy = KinkyDungeonPlayerEntity.y;
+				KDUpdateMoveToEntity(KinkyDungeonJailGuard());
 			}
 		} else if (!KDGetTetherLength(KinkyDungeonPlayerEntity)) {
 			KinkyDungeonJailGuard().gx = KinkyDungeonPlayerEntity.x;
 			KinkyDungeonJailGuard().gy = KinkyDungeonPlayerEntity.y;
+				KDUpdateMoveToEntity(KinkyDungeonJailGuard());
 			if (playerDist < 1.5) {
 				KinkyDungeonAttachTetherToEntity(2, KinkyDungeonJailGuard(), player);
 			}
@@ -1096,6 +1098,7 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 				if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions == 3 && KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints > 1) KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints = 1;
 				KinkyDungeonJailGuard().gx = KinkyDungeonPlayerEntity.x;
 				KinkyDungeonJailGuard().gy = KinkyDungeonPlayerEntity.y;
+				KDUpdateMoveToEntity(KinkyDungeonJailGuard());
 				KinkyDungeonUpdateTether(0, true, KinkyDungeonPlayerEntity);
 			} else {
 

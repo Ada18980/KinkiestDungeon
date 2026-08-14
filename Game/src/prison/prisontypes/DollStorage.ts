@@ -66,6 +66,7 @@ KDPrisonTypes.DollStorage = {
 					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
 					gg.gx = doll.x;
 					gg.gy = doll.y;
+					KDUpdateMoveToEntity(gg);
 				}
 			}
 		}
@@ -136,6 +137,7 @@ KDPrisonTypes.DollStorage = {
 					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
 					gg.gx = doll.x;
 					gg.gy = doll.y;
+					KDUpdateMoveToEntity(gg);
 				}
 			}
 		}
@@ -201,6 +203,7 @@ KDPrisonTypes.DollStorage = {
 					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
 					gg.gx = doll.x;
 					gg.gy = doll.y;
+					KDUpdateMoveToEntity(gg);
 				}
 			}
 		}
@@ -372,6 +375,7 @@ KDPrisonTypes.DollStorage = {
 						// Any qualifying factors means they know where you should be
 						guard.gx = player.x;
 						guard.gy = player.y;
+						KDUpdateMoveToEntity(guard);
 						KinkyDungeonSetEnemyFlag(guard, "wander", 30)
 						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 					}
@@ -677,6 +681,7 @@ KDPrisonTypes.DollStorage = {
 							// Any qualifying factors means they know where you should be
 							guard.gx = player.x;
 							guard.gy = player.y;
+							KDUpdateMoveToEntity(guard);
 							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
 							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 						}
@@ -728,6 +733,7 @@ KDPrisonTypes.DollStorage = {
 						if (guard.IntentAction != action) {
 							guard.gx = player.x;
 							guard.gy = player.y;
+							KDUpdateMoveToEntity(guard);
 							KDIntentEvents[action].trigger(guard, {point: label, radius: 1, target: player});
 						}
 
@@ -735,6 +741,7 @@ KDPrisonTypes.DollStorage = {
 							// Any qualifying factors means they know where you should be
 							guard.gx = player.x;
 							guard.gy = player.y;
+							KDUpdateMoveToEntity(guard);
 							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
 							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 						}

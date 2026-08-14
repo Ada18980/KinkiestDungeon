@@ -2016,6 +2016,10 @@ interface entity {
 	path?: {x: number, y: number}[],
 	gx?: number,
 	gy?: number,
+	/** will not try to path thru this entity */
+	gx_ent?: number,
+	gy_ent?: number,
+	g_ent_id?: number,
 	despawnX?: number,
 	despawnY?: number,
 	goToDespawn?: boolean,

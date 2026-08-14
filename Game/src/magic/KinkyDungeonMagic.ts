@@ -700,6 +700,7 @@ function KinkyDungeonMakeNoiseSignal(enemy: entity, mult: number = 1, hideShockw
 		{
 			e.gx = enemy.x;
 			e.gy = enemy.y;
+			KDUpdateMoveToEntity(enemy);
 			e.action = "investigatesignal";
 			KinkyDungeonSetEnemyFlag(e, "");
 			KDAddThought(e.id, "Search", 2, 2 + 3*KDistEuclidean(e.x - data.x, e.y - data.y));

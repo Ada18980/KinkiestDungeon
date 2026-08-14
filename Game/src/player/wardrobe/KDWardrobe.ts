@@ -384,9 +384,10 @@ function KDDrawSavedColors(X: number, y: number, max: number, C: Character): voi
 		X + spacing * i + 32 - 48+ (KinkyDungeonReplaceColorConfirm == (ii + 1) ? Math.round(Math.random() * 3 - 1) : 0), 
 		Y + 64+ (KinkyDungeonReplaceColorConfirm == (ii + 1) ? Math.round(Math.random() * 3 - 1) : 0), 
 		48, 48, "", 
-		KDBaseWhite, KinkyDungeonRootDirectory + "UI/savedColor_copy.png", undefined, false, 
+		KDBaseWhite, KinkyDungeonRootDirectory + "UI/savedColor_copy.png", undefined, !filters, 
 		KinkyDungeonReplaceColorConfirm != (ii + 1), undefined, undefined, undefined, {
 			onHover: KDRenderTooltipRed,
+			tint: filters ? 0xffffff : 0x888888,
 			hoverData: TextGet("KDCopyColor")
 		});
 		DrawButtonKDExTo(kdpalettecontainer, "SavedColorPaste" + ii, (_bdata) => {
@@ -3334,7 +3335,7 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 				ColorPickerFilterCode[id] = (1 - h + l) + "," + s;
 				ColorPickerFilter[id].destroy();
 				ColorPickerFilter[id] = KDGetFilter({
-					brightness: l,
+					brightness: 1,
 					saturation: 1,
 					hue: 0,
 					gamma: 1,

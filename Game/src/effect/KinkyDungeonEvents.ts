@@ -10639,6 +10639,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 						if (!en.aware && enemy.aware) {
 							en.gx = KinkyDungeonPlayerEntity.x;
 							en.gy = KinkyDungeonPlayerEntity.y;
+							KDUpdateMoveToEntity(en);
 							KDMakeHostile(en, KDMaxAlertTimerAggro);
 						}
 					}
@@ -10682,6 +10683,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 									en.vp = 4;
 									en.gx = KinkyDungeonPlayerEntity.x;
 									en.gy = KinkyDungeonPlayerEntity.y;
+									KDUpdateMoveToEntity(en);
 									count += 1;
 								}
 							}
@@ -10747,6 +10749,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 								// Move toward
 								enemy.gx = en.x;
 								enemy.gy = en.y;
+								KDUpdateMoveToEntity(enemy);
 							}
 						}
 					}
@@ -10849,6 +10852,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 						} else {
 							enemy.gx = target.x;
 							enemy.gy = target.y;
+							KDUpdateMoveToEntity(enemy);
 						}
 					}
 				}
@@ -11268,6 +11272,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 						// Go to leash the player
 						enemy.gx = KinkyDungeonPlayerEntity.x;
 						enemy.gy = KinkyDungeonPlayerEntity.y;
+						KDUpdateMoveToEntity(enemy);
 						if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5) {
 							// Attach leash
 							let newAdd = KinkyDungeonGetRestraint({ tags: ["leashing"] }, 0, 'grv');

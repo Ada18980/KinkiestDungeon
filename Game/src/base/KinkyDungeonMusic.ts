@@ -182,6 +182,7 @@ function KDUpdateMusic() {
 
 }
 
+let KDGlobalMusicMult = 0.7;
 let KDMusicBusy = false;
 let KDMusicForce = false;
 
@@ -190,6 +191,7 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 	if (Volume == undefined) {
 		Volume = KDSoundEnabled() && KDToggles.Music ? KDMusicVolume * KDMusicVolumeMult : 0;
 	}
+	Volume *= KDGlobalMusicMult;
 	KDMusicBusy = true;
 
 	// Start the new sound

@@ -236,6 +236,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 		handle: (guard, _xx, _yy) => {
 			guard.gx = KinkyDungeonPlayerEntity.x;
 			guard.gy = KinkyDungeonPlayerEntity.y;
+			KDUpdateMoveToEntity(guard);
 		},
 	},
 	"jailTease": {
@@ -266,6 +267,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 				} else {
 					guard.gx = KinkyDungeonPlayerEntity.x;
 					guard.gy = KinkyDungeonPlayerEntity.y;
+					KDUpdateMoveToEntity(guard);
 				}
 
 			}
@@ -364,6 +366,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.CurrentAction = "jailWander";
 					guard.gx = KinkyDungeonPlayerEntity.x;
 					guard.gy = KinkyDungeonPlayerEntity.y;
+					KDUpdateMoveToEntity(guard);
 					KDGameData.GuardApplyTime = 0;
 				} else if (oldRestraintItem) {
 					KinkyDungeonSetFlag("suspendJailTick", 2);
@@ -375,15 +378,18 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.CurrentAction = "jailWander";
 					guard.gx = KinkyDungeonPlayerEntity.x;
 					guard.gy = KinkyDungeonPlayerEntity.y;
+					KDUpdateMoveToEntity(guard);
 					KDGameData.GuardApplyTime = 0;
 				}
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
+				KDUpdateMoveToEntity(guard);
 			} else {
 				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
 				KDGameData.GuardApplyTime = 0;
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
+				KDUpdateMoveToEntity(guard);
 			}
 		},
 	},
@@ -421,6 +427,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.CurrentAction = "jailWander";
 					guard.gx = KinkyDungeonPlayerEntity.x;
 					guard.gy = KinkyDungeonPlayerEntity.y;
+					KDUpdateMoveToEntity(guard);
 					KDGameData.GuardApplyTime = 0;
 				} else if (newRestraint) {
 					KinkyDungeonSetFlag("suspendJailTick", 2);
@@ -433,11 +440,13 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 				}
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
+				KDUpdateMoveToEntity(guard);
 			} else {
 				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 7);
 				KDGameData.GuardApplyTime = 0;
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
+				KDUpdateMoveToEntity(guard);
 			}
 		},
 	},
@@ -470,6 +479,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.CurrentAction = "jailWander";
 					guard.gx = KinkyDungeonPlayerEntity.x;
 					guard.gy = KinkyDungeonPlayerEntity.y;
+					KDUpdateMoveToEntity(guard);
 					KDGameData.GuardApplyTime = 0;
 				} else if (oldRestraintItem) {
 					KinkyDungeonSetFlag("suspendJailTick", 2);
@@ -485,11 +495,13 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 				}
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
+				KDUpdateMoveToEntity(guard);
 			} else {
 				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
 				KDGameData.GuardApplyTime = 0;
 				guard.gx = KinkyDungeonPlayerEntity.x;
 				guard.gy = KinkyDungeonPlayerEntity.y;
+				KDUpdateMoveToEntity(guard);
 			}
 		},
 	},

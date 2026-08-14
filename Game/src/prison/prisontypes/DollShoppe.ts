@@ -75,6 +75,7 @@ KDPrisonTypes.DollShoppe = {
 					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
 					gg.gx = doll.x;
 					gg.gy = doll.y;
+					KDUpdateMoveToEntity(gg);
 				}
 			}
 		}
@@ -140,6 +141,7 @@ KDPrisonTypes.DollShoppe = {
 					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
 					gg.gx = doll.x;
 					gg.gy = doll.y;
+					KDUpdateMoveToEntity(gg);
 				}
 			}
 		}
@@ -214,6 +216,7 @@ KDPrisonTypes.DollShoppe = {
 					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
 					gg.gx = doll.x;
 					gg.gy = doll.y;
+					KDUpdateMoveToEntity(gg);
 				}
 			}
 		}
@@ -313,6 +316,7 @@ KDPrisonTypes.DollShoppe = {
 					admirer.gx = doll.x;
 					admirer.gy = doll.y + 1;
 					admirer.AI = "looseguard";
+					KDUpdateMoveToEntity(admirer);
 
 				} else if (KDMapData.Labels.Display) {
 					if (!KDEnemyHasFlag(admirer, "newdisplay")) {
@@ -519,6 +523,7 @@ KDPrisonTypes.DollShoppe = {
 						// Any qualifying factors means they know where you should be
 						guard.gx = player.x;
 						guard.gy = player.y;
+						KDUpdateMoveToEntity(guard);
 						KinkyDungeonSetEnemyFlag(guard, "wander", 30)
 						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 					}
@@ -700,6 +705,7 @@ KDPrisonTypes.DollShoppe = {
 							// Any qualifying factors means they know where you should be
 							guard.gx = player.x;
 							guard.gy = player.y;
+							KDUpdateMoveToEntity(guard);
 							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
 							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 						}
@@ -789,6 +795,7 @@ KDPrisonTypes.DollShoppe = {
 						if (guard.IntentAction != action) {
 							guard.gx = player.x;
 							guard.gy = player.y;
+							KDUpdateMoveToEntity(guard);
 							KDIntentEvents[action].trigger(guard, {point: label, radius: 1, target: player});
 							guard.IntentLeashPointType = "display";
 						}
@@ -797,6 +804,7 @@ KDPrisonTypes.DollShoppe = {
 							// Any qualifying factors means they know where you should be
 							guard.gx = player.x;
 							guard.gy = player.y;
+							KDUpdateMoveToEntity(guard);
 							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
 							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 						}
@@ -886,6 +894,7 @@ KDPrisonTypes.DollShoppe = {
 					en.gyy = KDPlayer().y;
 					en.gx = KDPlayer().x;
 					en.gy = KDPlayer().y;
+					KDUpdateMoveToEntity(en);
 
 					KDPrisonPuppetmasterGuard(player);
 				}
@@ -898,6 +907,7 @@ KDPrisonTypes.DollShoppe = {
 					if (guard.IntentAction != action && !KDGameData.CurrentDialog) {
 						guard.gx = player.x;
 						guard.gy = player.y;
+						KDUpdateMoveToEntity(guard);
 						KDIntentEvents[action].trigger(guard, {});
 						guard.intentDialogue = "DollTransform";
 					}
@@ -939,6 +949,7 @@ KDPrisonTypes.DollShoppe = {
 						if (guard.IntentAction != action) {
 							guard.gx = player.x;
 							guard.gy = player.y;
+							KDUpdateMoveToEntity(guard);
 							KDIntentEvents[action].trigger(guard, {point: label, radius: 1, target: player});
 						}
 
@@ -946,6 +957,7 @@ KDPrisonTypes.DollShoppe = {
 							// Any qualifying factors means they know where you should be
 							guard.gx = player.x;
 							guard.gy = player.y;
+							KDUpdateMoveToEntity(guard);
 							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
 							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
 						}

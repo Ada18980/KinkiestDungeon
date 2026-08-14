@@ -280,6 +280,7 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 							}
 							entity.gx = entity.x;
 							entity.gy = entity.y;
+							KDUpdateMoveToEntity(entity);
 						} else {
 							let pp = KinkyDungeonGetNearbyPoint(prisoner.x, prisoner.y, true, undefined, true);
 							if (!pp) pp = KinkyDungeonGetNearbyPoint(prisoner.x, prisoner.y, true, undefined, undefined);
