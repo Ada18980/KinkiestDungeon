@@ -26960,10 +26960,12 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 伽马值
 - Original Color
 原色
+# - Saturation
 - Contrast
 对比度
 - Brightness
 亮度
+# - Colorize
 - Red
 红色
 # :: KDColorSliderred
@@ -26978,6 +26980,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: KDMinimapLabel_C_blue
 - Transparency
 透明度
+# - Hue
 - Reset Layer!
 重置图层！
 - Reset Properties!
@@ -46847,6 +46850,10 @@ RestraintName 失效了！
 图层：
 - Hex Code:
 十六进制颜色码 : ‎
+# - HSL
+# - RGB
+
+
 
 - Toggle Struggle UI Mode
 切换挣扎 UI 模式
@@ -53002,7 +53009,7 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 :: KDPaletteLayer_DarkNeutral
 暗部
 
-- Override Brightness
+- Brightness from Palette
 覆盖亮度
 - Desaturate
 去饱和
