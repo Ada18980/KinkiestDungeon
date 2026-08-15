@@ -58,4 +58,23 @@ let KDPersistentScriptList: Record<string, PersistentNPCScript> = {
 			return true;
 		},
 	},
+
+	/** follows the player always */
+	PartyMember: {
+		cooldown: 40,
+		filter: (id, mapData) => {
+			let npc = KDGetPersistentNPC(id);
+			return KinkyDungeonCurrentTick > (npc.nextScriptTick || 0);
+		},
+		chance: (id, mapData) => {
+			return 1;
+		},
+		doScript: (id, mapData, entity) => {
+			let npc = KDGetPersistentNPC(id);
+			if (!npc.data) npc.data = {};
+			npc.data.wanderTarget = KDGetCurrentLocation();
+			// TODO make it so they look for clues to the player
+			return true;
+		},
+	},
 };

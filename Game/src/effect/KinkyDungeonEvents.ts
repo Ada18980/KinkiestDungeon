@@ -800,8 +800,6 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					if (data.item.data) {
 						if (!data.item.data.drewGlow) {
 							KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-							data.item.data.drewGlow = true;
-							KinkyDungeonSendTextMessage(6, TextGet("KDSpiritbound_Enable"), KDBaseYellow, 2);
 						}
 					} else {
 						// irrelevant, shouldnt be the case
@@ -814,11 +812,10 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					data.Filters.Runes = {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.5098039215686274,"green":0.5098039215686274,"blue":0.5098039215686274,"alpha":1};
 					data.Filters.Glow = {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0};
 
+					
 					if (data.item.data) {
 						if (data.item.data.drewGlow) {
 							KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-							data.item.data.drewGlow = false;
-							KinkyDungeonSendTextMessage(6, TextGet("KDSpiritbound_Disable"), KDBaseGreal, 2);
 						}
 					}
 				}
@@ -1275,6 +1272,28 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Fwoosh.ogg", undefined, _e.vol);
 				KinkyDungeonSendTextMessage(10, TextGet("KDSpiritbondEnd"), KDBaseCursedRed)
+			}
+
+			let en = KDGetSpiritBondEntityLocal(player, item);
+			if (en) {
+				// make the collar glow
+				
+
+				if (item.data) {
+					if (!item.data.drewGlow) {
+						item.data.drewGlow = true;
+						KinkyDungeonSendTextMessage(6, TextGet("KDSpiritbound_Enable"), KDBaseYellow, 2);
+					}
+				} else {
+					// irrelevant, shouldnt be the case
+				}
+			} else {
+				if (item.data) {
+					if (item.data.drewGlow) {
+						item.data.drewGlow = false;
+						KinkyDungeonSendTextMessage(6, TextGet("KDSpiritbound_Disable"), KDBaseGreal, 2);
+					}
+				}
 			}
 		},
 		/** for stuff like binding dress, doll stand, etc that get equipped */
@@ -3802,7 +3821,65 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 			}
 		},
 	},
+	"canAttack": {
+		"FriendlyFireDebuff": (e, buff, entity, data) => {
+			let player = KDPlayer()
+			if ((data.dmg == undefined || data.dmg > 0) && player == entity
+					&& (KDGetFaction(data.enemy) == "Player"
+						|| KDGameData.Party?.some((pm) => {
+							return pm.id == data.enemy.id;
+						}))) {
+				if (buff.power >= 100 && data.allowed && data.allowedPri < 9) {
+					data.allowed = false;
+					data.msg = "KDFriendlyFireCant";
+					data.allowedPri = 9;
+				}
+			}
+		},
+	},
+	"canBind": {
+		"FriendlyFireDebuff": (e, buff, entity, data: KDCanApplyBondageData) => {
+			let player = KDPlayer()
+			if (player == entity
+					&& (KDGetFaction(data.enemy) == "Player"
+						|| KDGameData.Party?.some((pm) => {
+							return pm.id == data.enemy.id;
+						}))) {
+				if (buff.power >= 100 && data.allowed && data.allowedPri < 9) {
+					data.allowed = false;
+					data.msg = "KDFriendlyFireCant";
+					data.allowedPri = 9;
+				}
+			}
+		},
+	},
+	"beforePlayerLaunchAttack": {
+		"FriendlyFireDebuff": (e, buff, entity, data) => {
+			let player = KDPlayer()
+			if (player == entity && (KDGetFaction(data.enemy) == "Player"
+						|| KDGameData.Party?.some((pm) => {
+							return pm.id == data.enemy.id;
+						}))) {
+				if (buff.power >= 100 && data.allowed && data.allowedPri < 9) {
+					data.missMsg = "KDFriendlyFireCant";
+				}
+			}
+		},
+	},
 	"beforeDamageEnemy": {
+		
+		"FriendlyFireDebuff": (e, buff, entity, data) => {
+			if (data.dmg > 0 && data.enemy == entity
+					&& (KDGetFaction(data.enemy) == "Player"
+						|| KDGameData.Party?.some((pm) => {
+							return pm.id == entity.id;
+						}))) {
+				if (!e.chance || KDRandom() < e.chance) {
+					data.dmg *= buff.power * e.power;
+					data.time *= buff.power * e.power;
+				}
+			}
+		},
 		"StaffStormEcho": (e, buff, entity, data) => {
 			if (data.enemy && (!data.flags || !data.flags.includes("EchoDamage")) && data.dmg > 0 && (!e.damage || e.damage == data.type)) {
 				if (!e.chance || KDRandom() < e.chance) {

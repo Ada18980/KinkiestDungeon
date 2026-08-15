@@ -779,6 +779,13 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			if (!enemy || (enemy.aware && !enemy.playWithPlayer)) return true;
 			return false;
 		},
+		greyoutFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			return KDCanAttackEnemy(enemy, player, undefined, undefined, undefined)
+		},
+		greyoutCustomTooltip: (g, p) => {
+			return "KDCantAttack";
+		},
 		options: {
 			"Confirm": {playertext: name + "Attack_Confirm", response: "Default",
 				clickFunction: (_gagged, _player) => {
@@ -2969,6 +2976,7 @@ function KDUntieEnemy(enemy: entity, amount: number, includeConjured: boolean = 
 
 
 function KDAggroViaDialogue(enemy: entity, unaware: boolean, aggroothers: boolean) {
+	KinkyDungeonSetFlag("PlayerCombat", 8);
 	if (unaware) {
 		// sneak attack
 		if (!enemy.Enemy.allied) {
@@ -2985,6 +2993,7 @@ function KDAggroViaDialogue(enemy: entity, unaware: boolean, aggroothers: boolea
 				let faction = KDGetFactionOriginal(enemy);
 				if (faction == "Player") {
 					enemy.faction = "Enemy"; // They become an enemy
+					enemy.factionorig = "Player";
 				} else if (!KinkyDungeonHiddenFactions.has(faction) && !enemy.Enemy.tags?.scenery) {
 					KinkyDungeonChangeRep("Ghost", -5);
 					KinkyDungeonChangeFactionRep(faction, -0.06);
@@ -2998,6 +3007,10 @@ function KDAggroViaDialogue(enemy: entity, unaware: boolean, aggroothers: boolea
 			if (!enemy.Enemy.allied) {
 				KDMakeHostile(enemy);
 				let faction = KDGetFactionOriginal(enemy);
+				if (faction == "Player") {
+					enemy.faction = "Enemy"; // They become an enemy
+					enemy.factionorig = "Player";
+				} else 
 				if (!KinkyDungeonHiddenFactions.has(faction)) {
 					KinkyDungeonChangeRep("Ghost", -5);
 				}

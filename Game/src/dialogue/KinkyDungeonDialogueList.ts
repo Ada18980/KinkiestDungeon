@@ -1885,6 +1885,12 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 		}
 	},
 	AllyPunish: {
+		clickFunction: (gagged, player) => {
+			KDAddSpecialStat("FriendlyFire", player, 20, true);
+
+			return false;
+		},
+
 		options: {
 			"Leave": {
 				playertext: "Leave", response: "Default",
@@ -2018,7 +2024,11 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 											en, false, undefined, {npc: en.id}
 										);
 										if (added && KDAddToParty(en)) {
-											KDRemoveLeashRemovedRestraints(player);
+											KDRemoveLeashRemovedRestraints(player)
+											delete en.despawnX;
+											delete en.goToDespawn;
+											delete en.despawnY;
+											delete en.specialdialogue;
 											KinkyDungeonSetFlag("Spiritbound", 2);
 											KDGameData.PrisonerState = 'parole';
 											KinkyDungeonSetFlag("noPlay", 12);

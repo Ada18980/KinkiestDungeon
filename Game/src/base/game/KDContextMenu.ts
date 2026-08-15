@@ -207,15 +207,25 @@ function KDGetGameContextActionsVanilla(
 			options.push("Aggro");
 			optionText.Aggro = TextGet("KDContextMenu_" + (unaware ? "AggroSneak" : (aggroothers ? "Aggro" : "Retaliate")));
 			optionImages.Aggro = unaware ? "AggroSneak" : (aggroothers ? "Aggro" : "Retaliate");
-			let rng = 1.5; // TODO weapon range for stuff like spears
-			//optionGrey.Aggro = KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) > rng;
-			optionActions.Aggro = () => {
-				KDCancelAutoWait();
-				if (KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) <= rng)
-					KDSendInput("doaggro", {
-						tx: entity.x, ty: entity.y, id: entity.id, unaware: unaware, aggroothers: aggroothers
-					})
+			if (!KDCanAttackEnemy(entity, KDPlayer(), undefined, undefined, undefined)) {
+				optionGrey.Aggro = true;
+				optionText.Aggro = TextGet("KDCantAttack");
+				
+				optionActions.Aggro = () => {
+					// eh
+				}
+			} else {
+				let rng = 1.5; // TODO weapon range for stuff like spears
+				//optionGrey.Aggro = KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) > rng;
+				optionActions.Aggro = () => {
+					KDCancelAutoWait();
+					if (KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) <= rng)
+						KDSendInput("doaggro", {
+							tx: entity.x, ty: entity.y, id: entity.id, unaware: unaware, aggroothers: aggroothers
+						})
+				}
 			}
+			
 
 
 		} else {

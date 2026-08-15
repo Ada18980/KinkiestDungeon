@@ -1639,6 +1639,8 @@ function KinkyDungeonDisarm(Enemy: entity, suff?: string): boolean {
  * @param [forceWeapon] - for events
  */
 function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: number, bullet?: any, weapon?: weapon, forceWeapon?: item): boolean {
+
+	
 	let disarm = false;
 	if ((Damage && !Damage.nodisarm) && Enemy.Enemy && Enemy.Enemy.disarm && Enemy.disarmflag > 0) {
 		if (Enemy.stun > 0 || Enemy.freeze > 0 || Enemy.blind > 0 || Enemy.teleporting > 0 || (Enemy.playWithPlayer && !Enemy.hostile)) Enemy.disarmflag = 0;
@@ -1669,8 +1671,22 @@ function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: num
 		buffdmg: buffdmg,
 		vulnConsumed: Enemy.vulnerable > 0,
 		critical: false,
+		msg: "",
+		allowed: true,
+		allowedPri: 0,
 		vulnerable: (Enemy.vulnerable || (KDHostile(Enemy) && !Enemy.aware)) && dmg && !dmg.novulnerable && (!Enemy.Enemy.tags || !Enemy.Enemy.tags.nonvulnerable),
 	};
+
+	
+	KinkyDungeonSendEvent("canAttack", predata, undefined, predata.forceWeapon);
+
+	if (!predata.allowed) {
+		KinkyDungeonSendActionMessage(10, TextGet(predata.msg,
+			KDGetGenericDialogueParams(KDPlayer(), predata.enemy)),
+			KDBaseRed, 2);
+		return false;
+	}
+
 	KinkyDungeonSendEvent("beforePlayerAttack", predata, undefined, predata.forceWeapon);
 
 	if (predata.buffdmg) dmg.damage = Math.max(0, dmg.damage + predata.buffdmg);
@@ -1775,6 +1791,37 @@ function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: num
 		KinkyDungeonSetEnemyFlag(Enemy, "removeVuln", 1);
 	}
 	return predata.eva;
+}
+
+function KDCanAttackEnemy(enemy: entity, player: entity, bullet?: any, weapon?: weapon, forceWeapon?: item) {
+
+
+	let buffdmg = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg");
+	let channel = KinkyDungeonPlayerDamage?.channel || 0;
+	let slow = KinkyDungeonPlayerDamage?.channelslow || 0;
+
+	let predata = {
+		weapon: weapon,
+		forceWeapon: forceWeapon,
+		bullet: bullet,
+		channel: channel,
+		slow: slow,
+		targetX: enemy.x,
+		targetY: enemy.y,
+		enemy: enemy,
+		buffdmg: buffdmg,
+		vulnConsumed: enemy.vulnerable > 0,
+		critical: false,
+		msg: "",
+		allowed: true,
+		allowedPri: 0,
+		vulnerable: (enemy.vulnerable || (KDHostile(enemy) && !enemy.aware)) && (!enemy.Enemy.tags || !enemy.Enemy.tags.nonvulnerable),
+		query: true,
+	};
+	
+	KinkyDungeonSendEvent("canAttack", predata, undefined, predata.forceWeapon);
+
+	return predata.allowed;
 }
 
 // TODO: Type defininition

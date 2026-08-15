@@ -13,6 +13,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		weight: (enemy, _aiData, allied, hostile, _aggressive) => {
 			if (allied) return 0;
 			if (enemy.faction == "Player") return 0;
+			if (enemy.factionorig == "Player") return 0;
 			if (!enemy.Enemy.tags.leashing) return 0;
 			if (KinkyDungeonFlags.get("Released")) return 0;
 			if (KDGameData.PrisonerState == 'jail') return 0;
@@ -500,17 +501,16 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 	},
 	
 	"allyPunishPlayer": {
-		play: true,
 		aggressive: true,
 		nonaggressive: true,
 		noMassReset: true,
 		// This will make the enemy want to leash you
 		weight: (enemy, _aiData, _allied, _hostile, _aggressive) => {
-			return enemy.hostile && enemy.faction == "Player" ? 10000 : 0;
+			return enemy.hostile && (enemy.faction == "Player" || enemy.factionorig == "Player") ? 10000 : 0;
 		},
 		trigger: (enemy, aiData) => {
 			KDResetIntent(enemy, aiData);
-			enemy.IntentAction = 'initiateDialogue';
+			enemy.IntentAction = 'allyPunishPlayer';
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 140);
 			//let nearestfurniture = KDRandomJailPoint(enemy.x, enemy.y, ["storage"]);
 			//enemy.IntentLeashPoint = nearestfurniture;
@@ -770,6 +770,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		// This is the basic leash to jail mechanic
 		weight: (enemy, aiData, _allied, hostile, _aggressive) => {
 			if (enemy.faction == "Player") return 0;
+			if (enemy.factionorig == "Player") return 0;
+			
 			//if (KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) return 0;
 			if (enemy.Enemy?.Behavior?.leashCondition) {
 				if (!KDLeashConditions[enemy.Enemy.Behavior.leashCondition].check(enemy, (aiData as KDAIData).player))
@@ -1015,6 +1017,15 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (!KDHostile(enemy)) {
 				KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 12);
 				KinkyDungeonSetEnemyFlag(enemy, "notouchie", 2);
+			}
+
+			if ((aiData as KDAIData).aggressive) {
+				KDAddThought(enemy.id, "Angry", 4, 1);
+				enemy.IntentAction = '';
+				enemy.IntentLeashPoint = null;
+				enemy.playWithPlayer = 0;
+				enemy.playWithPlayerCD = 3;
+				KDResetAllIntents();
 			}
 
 			if (!KinkyDungeonFlags.has("TempLeash")
@@ -1500,6 +1511,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		// This is the basic leash to jail mechanic
 		weight: (enemy, aiData, _allied, hostile, _aggressive) => {
 			if (enemy.faction == "Player") return 0;
+			if (enemy.factionorig == "Player") return 0;
 			if (enemy.Enemy?.Behavior?.leashCondition) {
 				if (!KDLeashConditions[enemy.Enemy.Behavior.leashCondition].check(enemy, (aiData as KDAIData).player))
 					return 0;
@@ -1576,6 +1588,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		// This is the basic leash to jail mechanic
 		weight: (enemy, _aiData, _allied, hostile, _aggressive) => {
 			if (enemy.faction == "Player") return 0;
+			if (enemy.factionorig == "Player") return 0;
 			return hostile && (enemy.Enemy.tags.leashing && enemy.Enemy.tags.demon) && KDPlayerLeashed(KinkyDungeonPlayerEntity) ? 2000 : 0;
 		},
 		trigger: (enemy, _aiData) => {
@@ -1627,6 +1640,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		// This will make the enemy want to leash you
 		weight: (enemy, aiData, _allied, hostile, _aggressive) => {
 			if (enemy.faction == "Player") return 0;
+			if (enemy.factionorig == "Player") return 0;
 			if (!enemy.Enemy.tags.leashing) return 0;
 			if (KinkyDungeonLeashingEnemy() && KinkyDungeonLeashingEnemy() != enemy) return 0;
 			if (KinkyDungeonFlags.get("Released")) return 0;

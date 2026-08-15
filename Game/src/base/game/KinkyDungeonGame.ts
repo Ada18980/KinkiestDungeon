@@ -2806,10 +2806,13 @@ function KDDoAttack(Enemy: entity, teasesub: boolean, attackCost: number, skip: 
 		orighp: Enemy.hp,
 		origbinding: Enemy.boundLevel,
 		target: Enemy,
+		enemy: Enemy,
 		attackCost: attackCost,
 		attackCostOrig: KinkyDungeonPlayerDamage.staminacost ? -KinkyDungeonPlayerDamage.staminacost : 0,
 		skipTurn: false,
-		attackData: damageInfo
+		attackData: damageInfo,
+		missMsg: "KDAttackMiss",
+		atkMsg: "",
 	};
 	if (!KinkyDungeonPlayerDamage.noHands) {
 		let nearby = KDNearbyEnemies(KDPlayer().x, KDPlayer().y, 10, undefined, true)
@@ -2859,14 +2862,14 @@ function KDDoAttack(Enemy: entity, teasesub: boolean, attackCost: number, skip: 
 	if (dmgTotal > 0) {
 		let atk = bondageTotal > 0 ? "KDAttackBind" : "KDAttack";
 		KinkyDungeonSendActionMessage(3.5,
-			TextGet(atk)
+			TextGet(data.atkMsg || atk)
 				.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name))
 				.replace("DamageDealt", "" + Math.round(dmgTotal * 10))
 				.replace("BondageDealt", "" + Math.round(bondageTotal * 10)),
 			KDBaseWhite, 2, undefined, undefined, undefined, "TotalDamage");
 	} else {
 		KinkyDungeonSendActionMessage(3.5,
-			TextGet("KDAttackMiss").replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("DamageDealt", "" + Math.round(dmgTotal * 10)),
+			TextGet(data.missMsg).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("DamageDealt", "" + Math.round(dmgTotal * 10)),
 			KDBaseWhite, 2, undefined, undefined, undefined, "Action", "Combat");
 	}
 

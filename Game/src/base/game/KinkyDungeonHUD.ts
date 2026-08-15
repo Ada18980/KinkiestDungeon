@@ -3132,7 +3132,11 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 			KinkyDungeonSelectedBuff = b.id;
 			KinkyDungeonSelectedBuffEntity = KDPlayer();
 			
-			let t = TextGet("KinkyDungeonBuff" + (b.desc || b.id)) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration >= 1 && b.duration < 1000) ? ` (${b.duration})` : "");
+			let t = TextGet("KinkyDungeonBuff" + (b.desc || b.id), {
+				PowerInt: Math.round(b.power),
+				Power: Math.round(b.power * 100) / 100
+			}) + (count ? ` ${count}/${b.maxCount}` : "")
+				+ ((b.duration >= 1 && b.duration < 1000) ? ` (${b.duration})` : "");
 			if (b.buffTextReplace) {
 				for (let replace of Object.entries(b.buffTextReplace)) {
 					t = t.replace(replace[0], (replace as [string , string])[1]);

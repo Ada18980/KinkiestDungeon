@@ -316,7 +316,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				if (KDCanBind(en)) {
 					//KDGameData.InventoryAction = "Bondage";
 
-					let canApply = KDCanApplyBondage(en, entity,
+					let canApply = KDCanApplyBondageMsg(en, entity,
 						KinkyDungeonTargetingSpellItem ? (
 							KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition ?
 							(t: entity, p: entity) => (KDQuickBindConditions[KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition](

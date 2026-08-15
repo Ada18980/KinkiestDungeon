@@ -290,7 +290,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 					}
 				} else {
 					// Add new one
-					if (!KDLookupID(npcID) || KDCanApplyBondage(KDLookupID(npcID), KDPlayer(),
+					if (!KDLookupID(npcID) || KDCanApplyBondageMsg(KDLookupID(npcID), KDPlayer(),
 						restraint.quickBindCondition ?
 							(t, p) => (KDQuickBindConditions[restraint.quickBindCondition](
 								t, p,
@@ -382,7 +382,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 					let restraint = KDRestraint(inv.item);
 					// Add new one
-					if (!KDLookupID(npcID) || KDCanApplyBondage(KDLookupID(npcID), KDPlayer(),
+					if (!KDLookupID(npcID) || KDCanApplyBondageMsg(KDLookupID(npcID), KDPlayer(),
 					restraint.quickBindCondition ?
 						(t, p) => (KDQuickBindConditions[restraint.quickBindCondition](
 							t, p,

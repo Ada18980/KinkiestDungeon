@@ -2030,6 +2030,8 @@ interface entity {
 	/** Indicates that an enemy has been modified and does not eliminate enemy data */
 	modified?: boolean,
 	faction?: string,
+	factionorig?: string,
+	
 	allied?: number,
 	ceasefire?: number,
 	bind?: number,
@@ -3567,6 +3569,7 @@ interface KDAIData extends KDAITriggerData {
 	playerDistDirectional?: number,
 	canSensePlayer?: boolean,
 	canSeePlayer?: boolean,
+	canNoticePlayer?: boolean,
 	canSeePlayerChase?: boolean,
 	canSeePlayerMedium?: boolean,
 	canSeePlayerClose?: boolean,

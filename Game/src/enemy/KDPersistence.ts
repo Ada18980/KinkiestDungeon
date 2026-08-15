@@ -768,6 +768,13 @@ function KDSpawnPersistentNPCs(coord: WorldCoord, searchEntities: boolean): numb
 			let PNPC = KDGetPersistentNPC(id, undefined, false);
 			if (PNPC && !PNPC.spawned && IsPNPCActive(PNPC)) {
 				let spawnAI = PNPC.spawnAI || "Default";
+				
+				if (KDGameData.Party && KDGameData.Party.some((pm) => {
+					return pm.id == PNPC.id;
+				})) {
+					spawnAI = "Default";
+				}
+
 				let AI = KDPersistentSpawnAIList[spawnAI];
 				if (AI && AI.filter(id, data)) {
 					if (AI.chance(id, data) > KDRandom()) {
@@ -799,6 +806,11 @@ function KDRunPersistentNPCScripts(coord: WorldCoord, searchEntities: boolean): 
 			let PNPC = KDGetPersistentNPC(id, undefined, false);
 			if (PNPC && IsPNPCActive(PNPC)) { //  && !PNPC.spawned
 				let specialScript = PNPC.specialScript || "";
+				if (KDGameData.Party && KDGameData.Party.some((pm) => {
+					return pm.id == PNPC.id;
+				})) {
+					specialScript = "PartyMember";
+				}
 				let AI = KDPersistentScriptList[specialScript];
 				if (AI && AI.filter(id, data)) {
 					if (AI.chance(id, data) > KDRandom()) {

@@ -13241,19 +13241,21 @@ KinkyDungeonBuffGhostDealPleasure,"You've made a deal, which lurks deep inside y
 rGenericAlly,"(You approach the SPEAKER)"
 dGenericAllyAttack,"(Threaten)"
 rGenericAllyAttack,"(Really attack?)"
-dGenericAllyAttack_Confirm,"(Attack her)"
+dGenericAllyAttack_Confirm,"(Attack ${Ethem})"
 dGenericAllyAttack_Leave,"(Never mind...)"
 rGenericAllyAttack_Leave,"(You decide not to)"
 
+KDCantAttack,Can't Attack
+
 dGenericAllyAttackPlay,"(Retaliate)"
 rGenericAllyAttackPlay,"(Really attack? You will be justified and won't take an immediate rep penalty)"
-dGenericAllyAttackPlay_Confirm,"(Attack her)"
+dGenericAllyAttackPlay_Confirm,"(Attack ${Ethem})"
 dGenericAllyAttackPlay_Leave,"(Never mind...)"
 rGenericAllyAttackPlay_Leave,"(You decide not to)"
 
 dGenericAllyAttackUnaware,"(Sneak Attack)"
 rGenericAllyAttackUnaware,"(Really attack? Target is unaware and will be stunned 1 turn.)"
-dGenericAllyAttackUnaware_Confirm,"(Attack her)"
+dGenericAllyAttackUnaware_Confirm,"(Attack ${Ethem})"
 dGenericAllyAttackUnaware_Leave,"(Never mind...)"
 rGenericAllyAttackUnaware_Leave,"(You decide not to)"
 
@@ -31781,6 +31783,12 @@ KDLatexIntegrationDebuff0,"Your latex layer adheres to latex, making struggling 
 KDLatexIntegrationDebuff1,"The item sticks to your rubber layer, making it harder to pull off..."
 KDLatexIntegrationDebuff2,"The item hugs your layer tightly, adhering firmly!"
 KinkyDungeonBuffLatexIntegrationStat,"Your skin is covered in a layer of latex, making escape from cyber restraints harder!"
+KDBuffName_LatexIntegrationStat,Latex Integration
+
+KinkyDungeonBuffFriendlyFireStat,"Party Submission: Friendly fire is reduced by ${PowerInt}%"
+KDBuffName_FriendlyFireStat,Party Submission
+KDFriendlyFireCant,You can't attack party members due to 'Party Submission'
+
 
 KinkyDungeonStatExclusionsApply,"Some Exclusions Apply"
 KinkyDungeonStatDescExclusionsApply,"Goddess shrines do not remove non-binding restraints such as harnesses and cuffs."
@@ -31932,11 +31940,14 @@ KDAddCorruption,You feel a corrupting influence... (+AMNT Corruption)
 KDRemoveCorruption,You feel a restoring influence! (-AMNT Corruption)
 KDAddLatexIntegration,Sticky latex fuses itself to your skin! (+AMNT LatexIntegration)
 KDRemoveLatexIntegration,The latex starts to detach from your skin... (-AMNT Latex Integration)
+KDAddFriendlyFire,Your party member dominates you... (+AMNT Party Submission)
+KDRemoveFriendlyFire,You get the impression you're better off in charge... (-AMNT Party Submission)
 
 tut_AccuracyClose1,"While you have an evasion penalty, even clumsy enemies..."
 tut_AccuracyClose2,"... will get an accuracy bonus against you in melee range."
 
-KinkyDungeonBuffCorruptionStat,You are more likely to succumb to curses.
+KinkyDungeonBuffCorruptionStat,Corruption: You are more likely to succumb to curses.
+KDBuffName_CorruptionStat,Corruption
 
 KDPropField_XOffset,X Offset
 KDPropField_YOffset,Y Offset
@@ -33291,6 +33302,7 @@ KDContextMenu_Tease,Capture
 KDContextMenu_Aggro,Aggress
 KDContextMenu_AggroSneak,Sneak Attack
 KDContextMenu_Retaliate,Retaliate
+KDContextMenu_Peace,Can't Attack
 KDContextMenu_Shoot,Shoot
 KDContextMenu_Shoothitorspell,Ranged Attack
 KDContextMenu_Shootattack,Ranged Attack
@@ -34006,8 +34018,8 @@ rDollShoppeVisitorBuyoutVoyeur,"(The SPEAKER smiles at you)|An excellent item.|I
 rDollShoppeVisitorBuyoutSub,"(The SPEAKER bows politely)|You're a good ${Psub}.|Hopefully you find someone... nice~"
 rDollShoppeVisitorBuyoutRobot,"(The SPEAKER beeps)|Please continue good behavior."
 
-rDollShoppeVisitorBeBought_Continue,"(A SPEAKER appears to facilitate)|I'm glad you've taken a liking to one of our dolls.|I'm sure ${Pthey} will make an excellent addition to your party."
-rDollShoppeVisitorBeBought_Continue_Continue,"(The SPEAKER locks a collar on you.|It glows with magical runes, flashing brightly as|the SPEAKER holds a jeweled key to ${Ethem}self.|You feel ${Etheir} energy flow into you, and yours into ${Ethem})"
+rDollShoppeVisitorBeBought_Continue,"(A SPEAKER appears to facilitate, presenting a runic collar)|I'm glad you've taken a liking to one of our dolls.|I'm sure ${Pthey} will make an excellent addition to your party."
+rDollShoppeVisitorBeBought_Continue_Continue,"(The SPEAKER locks the collar on you ${Ethem}self.|It glows with magical runes, flashing brightly as|the SPEAKER holds a jeweled key to ${Ethem}self.|You feel ${Etheir} energy flow into you, and yours into ${Ethem})"
 rDollShoppeVisitorBuyout_ContinueFail,"(The SPEAKER tries to lock a collar on you,|but ${Ethey} frown${Es} with a sour expression on ${Etheir} face)|Looks like someone already owns you.|Be a good ${Pdim} and tell them I said hello, okay?"
 
 dAcceptMistress,(Accept ${Ethem} as your ${EHonorinti})

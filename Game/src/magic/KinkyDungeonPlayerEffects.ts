@@ -2929,6 +2929,20 @@ let KDSpecialStats: Record<string, SpecialStat> = {
 		},
 		BuffTags: ["hypnostat"],
 	},
+	FriendlyFire: {
+		PerFloor: (_player, _amount) => {
+			return 10;
+		},
+		BuffTags: ["submissive"],
+		BuffEvents: (_player) => {
+			return [
+				{trigger: "beforeDamageEnemy", type: "FriendlyFireDebuff", power: 0.01},
+				{trigger: "canBind", type: "FriendlyFireDebuff"},
+				{trigger: "canAttack", type: "FriendlyFireDebuff"},
+				{trigger: "beforePlayerLaunchAttack", type: "FriendlyFireDebuff"},
+			];
+		}
+	},
 	LatexIntegration: {
 		PerFloor: (_player, amount) => {
 			return Math.max(0, Math.floor(10 - 0.1 * amount)); // 0 at 100

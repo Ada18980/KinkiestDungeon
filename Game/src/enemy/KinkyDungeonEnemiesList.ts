@@ -7307,6 +7307,9 @@ let SpecialPersistentScriptSettingList: Record<string, (npc: KDPersistentNPC, en
 	MaidKnightAndSquire: (npc: KDPersistentNPC, enemy: enemy) => {
 		return "MaidKnightAndSquire";
 	},
+	PartyMember: (npc: KDPersistentNPC, enemy: enemy) => {
+		return "PartyMember";
+	},
 }
 let SpawnAISettingList: Record<string, (npc: KDPersistentNPC, enemy: enemy) => string> = {
 	Default: (npc: KDPersistentNPC, enemy: enemy) => {
