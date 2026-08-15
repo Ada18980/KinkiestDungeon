@@ -3488,6 +3488,15 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 		KDPlayer().sound = Math.max(Math.max(0, (KDPlayer().sound || 0)*0.75 - 2*delta), loudest);
 	}
 
+	if (KDGameData.Party) {
+		let neww: entity[] = [];
+		for (let en of KDGameData.Party) {
+			let enn = KDGetGlobalEntity(en.id);
+			if (enn) neww.push(enn);
+		}
+		KDGameData.Party = neww;
+	}
+
 	KDUpdateFog = true;
 	KDLastTick = performance.now();
 

@@ -34162,6 +34162,9 @@ rDollShoppeVisitorBeStill_FailRobot,"(The SPEAKER makes a loud noise resembling 
 rDollShoppeVisitorBeStill_FailLateRobot,"(The SPEAKER pauses)|Subject does not act when prompted.|This is not acceptable."
 
 
+rAllyPunish,"(The SPEAKER grabs you by the collar)|(You dont't have it in you to resist)|What did you think you were going to accomplish, ${Pdim}?|You know this means I have to punish you~|(WIP)"
+
+
 KDCantBeBought_Dislike,"You didn't leave a good first impression"
 KDCantBeBought_Party,"Requires an empty party slot"
 KDCantBeBought_Alreadybound,"You are already spiritbound"

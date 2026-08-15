@@ -1884,6 +1884,16 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 		}
 	},
+	AllyPunish: {
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		},
+		response: "Default",
+
+	},
 	DollShoppeVisitor: {
 		response: "Default",
 		clickFunction: (_gagged, player) => {

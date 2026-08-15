@@ -1160,7 +1160,7 @@ function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: 
 function KDAnimEnemy(Entity: entity): { offX: number, offY: number } {
 	let offX = 0;
 	let offY = 0;
-	let offamount = 0.25;
+	let offamount = 0.1;
 	let resetAnim = true;
 
 
@@ -4253,6 +4253,15 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 
 	let timeDelta = KinkyDungeonFlags.get('TimeSlowTick') ? 1 : maindelta;
 	let enemyDelta = {};
+	if (KDGameData.Party)
+		for (let en of KDGameData.Party) {
+			if (!en.hostile) {
+				if (en.faction != "Player") {
+					en.faction = "Player";
+					KDUpdatePersistentNPC(en.id);
+				}
+			}
+		}
 	for (let entity of KDMapData.Entities) {
 		if (!entity.Enemy?.maxhp)
 			KDUnPackEnemy(entity);
