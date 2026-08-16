@@ -24904,7 +24904,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( 威胁 )
 - (Really attack?)
 ( 真的要攻击？ )
-- (Attack her)
+- (Attack ${Ethem})
 ( 攻击她 )
 # :: dGenericAllyAttack_Confirm
 # :: dGenericAllyAttackPlay_Confirm
@@ -24930,6 +24930,10 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: rGenericAllyAttack_Leave
 # :: rGenericAllyAttackPlay_Leave
 # :: rGenericAllyAttackUnaware_Leave
+
+# - Can't Attack
+# :: KDCantAttack
+# :: KDContextMenu_Peace
 
 - (Retaliate)
 ( 报复 )
@@ -50325,6 +50329,12 @@ ESCP 强度 : ‎AMNT
 该物品紧紧地包裹着你的表层，粘得很牢固！
 - Your skin is covered in a layer of latex, making escape from cyber restraints harder!
 你的皮肤上覆盖着一层乳胶，让你更难摆脱赛博拘束！
+# - Latex Integration
+
+# - Party Submission: Friendly fire is reduced by ${PowerInt}%
+# - Party Submission
+# - You can't attack party members due to 'Party Submission'
+
 
 - Some Exclusions Apply
 有限移除
@@ -50574,14 +50584,17 @@ ENMY 请求帮助！
 粘性乳胶与你的皮肤融合到一起了！(+AMNT LatexIntegration)
 - The latex starts to detach from your skin... (-AMNT Latex Integration)
 乳胶开始从你的皮肤上脱落... (-AMNT Latex Integration)
+# - Your party member dominates you... (+AMNT Party Submission)
+# - You get the impression you're better off in charge... (-AMNT Party Submission)
 
 - While you have an evasion penalty, even clumsy enemies...
 虽然你有逃避惩罚，但即使是笨拙的敌人......
 - ... will get an accuracy bonus against you in melee range.
 ... 将在近战范围内对你的准确度获得加成。
 
-- You are more likely to succumb to curses.
+- Corruption: You are more likely to succumb to curses.
 你更容易被诅咒。
+# - Corruption
 
 - X Offset
 X 补偿
@@ -53885,8 +53898,8 @@ ${You}陷入沉默，无法轻易施展法术。
 # - (The SPEAKER bows politely)|You're a good ${Psub}.|Hopefully you find someone... nice~
 # - (The SPEAKER beeps)|Please continue good behavior.
 
-# - (A SPEAKER appears to facilitate)|I'm glad you've taken a liking to one of our dolls.|I'm sure ${Pthey} will make an excellent addition to your party.
-# - (The SPEAKER locks a collar on you.|It glows with magical runes, flashing brightly as|the SPEAKER holds a jeweled key to ${Ethem}self.|You feel ${Etheir} energy flow into you, and yours into ${Ethem})
+# - (A SPEAKER appears to facilitate, presenting a runic collar)|I'm glad you've taken a liking to one of our dolls.|I'm sure ${Pthey} will make an excellent addition to your party.
+# - (The SPEAKER locks the collar on you ${Ethem}self.|It glows with magical runes, flashing brightly as|the SPEAKER holds a jeweled key to ${Ethem}self.|You feel ${Etheir} energy flow into you, and yours into ${Ethem})
 # - (The SPEAKER tries to lock a collar on you,|but ${Ethey} frown${Es} with a sour expression on ${Etheir} face)|Looks like someone already owns you.|Be a good ${Pdim} and tell them I said hello, okay?
 
 # - (Accept ${Ethem} as your ${EHonorinti})
@@ -54044,6 +54057,9 @@ ${You}陷入沉默，无法轻易施展法术。
 # - (The SPEAKER pauses)|Subject has corrected unwanted behavior.|Good girl.
 # - (The SPEAKER makes a loud noise resembling an error message)|Subject does not respond to stimuli in an expected manner.|Suggest additional stimulation.
 # - (The SPEAKER pauses)|Subject does not act when prompted.|This is not acceptable.
+
+
+# - (The SPEAKER grabs you by the collar)|(You dont't have it in you to resist)|What did you think you were going to accomplish, ${Pdim}?|You know this means I have to punish you~|(WIP)
 
 
 # - You didn't leave a good first impression
