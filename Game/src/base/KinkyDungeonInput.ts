@@ -790,6 +790,8 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	"safeword": (data) => {
 		// todo multiple players?
 		let player = KDPlayer();
+		KinkyDungeonFlags.set("safeword", 1);
+		KinkyDungeonFlags.set("safeword_recent", 10);
 
 		let msg = TextGet("KDSafwordMsg", {
 			Playername: KDGameData.PlayerName,
@@ -818,6 +820,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			KinkyDungeonPlayerEntity.visual_x = KinkyDungeonPlayerEntity.x;
 			KinkyDungeonPlayerEntity.visual_y = KinkyDungeonPlayerEntity.y;
 		}
+
 		KDKickEnemies(undefined, true, MiniGameKinkyDungeonLevel)
 		
 		return "";

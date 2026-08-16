@@ -2533,6 +2533,20 @@ function KDDrawMinimap(MinimapX: number, MinimapY: number) {
 	kdminimap.x = MinimapX;
 	kdminimap.y = MinimapY;
 }
+interface drawPMIconsData {
+	player: entity,
+	PM: entity,
+	barHeight: number,
+	PartyX: number,
+	PartyY: number,
+	PartyDy: number,
+	zIndex: number,
+	TopRightPri: number,
+	TopLeftPri: number,
+	BottomRightPri: number,
+	BottomLeftPri: number,
+	canRemove: boolean
+}
 /**
  * Draws the party member display
  * @param {number} PartyX
@@ -2543,17 +2557,54 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 	if (KDGameData.Party && KinkyDungeonDrawState == "Game") {
 		let PartyDy = 72;
 		let PartyPad = 8;
+		let barHeight = 10;
 		let zIndex = KDToggleShowAllBuffs ? 149 : 152;
+
+		let drawIcons = (PM, PartyX, PartyY, PartyDy) => {
+			let data: drawPMIconsData = {
+				player: KDPlayer(),
+				PM: PM,
+				barHeight: barHeight,
+				PartyX: PartyX,
+				PartyY: PartyY,
+				PartyDy: PartyDy,
+				zIndex: zIndex,
+				TopRightPri: -1,
+				TopLeftPri: -1,
+				BottomRightPri: -1,
+				BottomLeftPri: -1,
+				canRemove: KDCanRemovePartyMember(KDPlayer(), PM.id)
+			}
+			KinkyDungeonSendEvent("drawPMIcons", data);
+			if (KDGameData.MistressID == PM.id && data.TopRightPri < 0) {
+				KDDraw(kdstatusboard, kdpixisprites, "PM" + PM.id + ",Domme", KinkyDungeonRootDirectory + "UI/HeartShil.png",
+					PartyX + PartyDy - 18, PartyY + barHeight, undefined, undefined, undefined, {
+							zIndex: data.zIndex + 1,
+							tint: 0x999999
+						}
+				);
+			}
+			if (!data.canRemove && data.TopLeftPri < 0) {
+				KDDraw(kdstatusboard, kdpixisprites, "PM" + PM.id + ",Lock", KinkyDungeonRootDirectory + "UI/LockShil.png",
+					PartyX, PartyY + barHeight, undefined, undefined, undefined, {
+							zIndex: data.zIndex + 1,
+							tint: 0x999999
+						}
+				);
+			}
+		};
 
 		for (let i = 0; i < KDGameData.Party.length; i++) {
 			let PM = KinkyDungeonFindID(KDGameData.Party[i].id);
 			if (PM) {
 				KDDrawEnemySprite(kdstatusboard, PM, 
 					PartyX/PartyDy, PartyY/PartyDy, 
-					0, 0, true, zIndex, "PM", PartyDy);
+					0, 0, true, zIndex + 2, "PM", PartyDy);
 				KinkyDungeonBarTo(kdstatusboard, PartyX, PartyY,
-					PartyDy, 10, PM.visual_hp / PM.Enemy.maxhp * 100, KDBaseMint, KDBaseRed, undefined, undefined, undefined, undefined, undefined, zIndex + 0.05);
+					PartyDy, barHeight, PM.visual_hp / PM.Enemy.maxhp * 100, KDBaseMint, KDBaseRed, undefined, undefined, undefined, undefined, undefined, zIndex + 0.05);
 
+				drawIcons(PM, PartyX, PartyY, PartyDy);
+				
 				let selected = (PM.buffs?.AllySelect?.duration > 0);
 
 				DrawButtonKDExTo(kdstatusboard, "PM" + i + "click", (_bdata) => {
@@ -2599,6 +2650,8 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 					);
 					KinkyDungeonBarTo(kdstatusboard, PartyX, PartyY,
 						PartyDy, 10, PM.visual_hp / PM.Enemy.maxhp * 100, KDBaseMint, KDBaseRed, undefined, undefined, undefined, undefined, undefined, zIndex + 0.05);
+
+					drawIcons(PM, PartyX, PartyY, PartyDy);
 
 					let selected = (PM.buffs?.AllySelect?.duration > 0);
 

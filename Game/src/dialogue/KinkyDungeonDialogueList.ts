@@ -1962,6 +1962,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					"Leave": {
 						playertext: "Pause", 
 						prerequisiteFunction: (_gagged, _player) => {
+							if (KinkyDungeonStatsChoice.get("NoForcedOwner")) return true;
 							let en = KinkyDungeonFindID(KDGameData.CurrentDialogMsgValue.OriginalSpeaker);
 							let pp = KDGetPersonality(en);
 							return !KDBuyerPersonalities.includes(pp);
@@ -1971,6 +1972,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					"Continue": {
 						playertext: "Continue", response: "Default",
 						prerequisiteFunction: (_gagged, _player) => {
+							if (KinkyDungeonStatsChoice.get("NoForcedOwner")) return false;
 							let en = KinkyDungeonFindID(KDGameData.CurrentDialogMsgValue.OriginalSpeaker);
 							let pp = KDGetPersonality(en);
 							return KDBuyerPersonalities.includes(pp);
@@ -2042,10 +2044,17 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								},
 								options: {
 									"Accept": {
+										prerequisiteFunction: (gagged, player) => {
+											return !KinkyDungeonStatsChoice.get("NoPlayerOwner");
+										},
 										playertext: "AcceptMistress", 
 										clickFunction: (gagged, player) => {
 											if (player.player) {
 												KDGameData.MistressID = KDGameData.CurrentDialogMsgValue.OriginalSpeaker;
+												if (KDGameData.Collection[KDGameData.MistressID]) {
+													KDGameData.Collection[KDGameData.MistressID].status = "Guest";
+													KDGameData.Collection[KDGameData.MistressID].oldstatus = "Guest";
+												}
 												KDAddQuest("Mistress");
 												
 												if (!KinkyDungeonFlags.get("tut_mistress")) {
@@ -2059,6 +2068,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										exitDialogue: true,
 									},
 									"Reject": {
+										prerequisiteFunction: (gagged, player) => {
+											return !KinkyDungeonStatsChoice.get("ForcedOwner");
+										},
 										playertext: "RejectMistress", 
 										clickFunction: (gagged, player) => {
 											KinkyDungeonChangeRep("Ghost", -20);
@@ -2067,6 +2079,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										exitDialogue: true,
 									},
 									"Neutral": {
+										prerequisiteFunction: (gagged, player) => {
+											return !KinkyDungeonStatsChoice.get("ForcedOwner");
+										},
 										playertext: "NeutralMistress", 
 										exitDialogue: true,
 									},

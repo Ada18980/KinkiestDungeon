@@ -264,6 +264,36 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "Petsuits"),
             tooltip: TextGet("KDConsentListDesc_" + "Petsuits"),
     },
+    ForcedOwner: {
+            name: "ForcedOwner",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "",
+            perkYellow: "NoForcedOwner",
+            perkGreen: "ForcedOwner",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "ForcedOwner"),
+            tooltip: TextGet("KDConsentListDesc_" + "ForcedOwner"),
+    },
+    PlayerOwner: {
+            name: "PlayerOwner",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "NoPlayerOwner",
+            perkYellow: "",
+            perkGreen: "StrongPlayerOwner",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "PlayerOwner"),
+            tooltip: TextGet("KDConsentListDesc_" + "PlayerOwner"),
+    },
     Hypnosis: {
             name: "Hypnosis",
             color: KDBaseWhite,
@@ -294,6 +324,7 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "DollTransform"),
             tooltip: TextGet("KDConsentListDesc_" + "DollTransform"),
     },
+    
     /*DollTransformArousal: {
             name: "DollTransformArousal",
             color: KDBaseWhite,
@@ -759,7 +790,7 @@ function KDDrawConsent(xOffset) {
     undefined, undefined, hotkeyUp, hotkeyDown,
         0.3, 1, KDUIColor);
 
-    if (DrawButtonKDEx("removeGuest", (_b) => {
+    if (DrawButtonKDEx("useSafeword", (_b) => {
 			if (!KDConfirmOverInventoryAction) {
 				KDConfirmOverInventoryAction = true;
                 if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");

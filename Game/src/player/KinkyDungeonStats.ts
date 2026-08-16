@@ -950,7 +950,7 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 					color, 1.5 + 0.5*duration);
 			}
 			if (dialogue && KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
-				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${entity.dialogue}`, 
+				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, 
 				color, 0, false, false, entity, important ? undefined : "Dialogue");
 			}
 			KDEnemyAddSound(entity, 7);
@@ -973,10 +973,10 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 			KinkyDungeonSendFloater(entity, dialogue, 
 				color, 3 + 0.7*duration);
 		}
-		if (!entity.player) {
+		if (!entity.player && dialogue) {
 			KDEnemyAddSound(entity, 12);
 			if (dialogue && KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
-				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${entity.dialogue}`, color, 0, false, false, entity, "Dialogue");
+				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, color, 0, false, false, entity, "Dialogue");
 			}
 			KDAllowDialogue = false;
 		}
@@ -1163,7 +1163,7 @@ function KDChangeDesire(src: string, type: string, trig: string, Amount: number,
 	return amountChanged;
 }
 
-function KDChangeStamina(src: string, type: string, trig: string, Amount: number, NoFloater?: boolean, Pause?: number, NoSlow?: boolean, minimum: number = 0, slowFloor: number = 5, Regen: boolean = false) {
+function KDChangeStamina(src: string, type: string, trig: string, Amount: number, NoFloater?: boolean, Pause?: number, NoSlow?: boolean, minimum: number = 0, slowFloor: number = 5, Regen: boolean = false): number {
 
 	if (isNaN(Amount)) {
 		console.trace();
@@ -1207,6 +1207,7 @@ function KDChangeStamina(src: string, type: string, trig: string, Amount: number
 	KinkyDungeonStatStamina = Math.min(
 		Math.max(minLevel, KinkyDungeonStatStamina),
 		Amount > 0 ? Math.max(stamPre, data.Cap) : KinkyDungeonStatStamina);
+	if (KinkyDungeonStatStamina < 0) KinkyDungeonStatStamina = 0;
 	if (!NoFloater && Math.abs(KDOrigStamina - Math.floor(KinkyDungeonStatStamina * 10)) >= 0.99) {
 		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatStamina * 10) - KDOrigStamina,
 		"#44ff66", undefined, undefined, " sp", undefined, Amount > 0 ? "+" : undefined);
@@ -1223,6 +1224,7 @@ function KDChangeStamina(src: string, type: string, trig: string, Amount: number
 		console.trace();
 		KinkyDungeonStatStamina = 0;
 	}
+	return KinkyDungeonStatStamina - stamPre;
 }
 /**
  * @param Amount
@@ -1232,7 +1234,7 @@ function KDChangeStamina(src: string, type: string, trig: string, Amount: number
  * @param [spill]
  */
 function KDChangeMana(src: string, type: string, trig: string, Amount: number,
-	NoFloater?: boolean, PoolAmount?: number, Pause?: boolean, spill?: boolean, minimum: number = 0) {
+	NoFloater?: boolean, PoolAmount?: number, Pause?: boolean, spill?: boolean, minimum: number = 0): number {
 
 	if (isNaN(Amount)) {
 		console.trace();
@@ -1292,6 +1294,10 @@ function KDChangeMana(src: string, type: string, trig: string, Amount: number,
 		console.trace();
 		KinkyDungeonStatMana = 0;
 	}
+
+	KinkyDungeonCapStats();
+	return manaAmt;
+
 }
 function KDChangeWill(src: string, type: string, trig: string, Amount: number, NoFloater?: boolean, minimum: number = 0): number {
 

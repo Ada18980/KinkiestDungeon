@@ -2729,7 +2729,7 @@ function KinkyDungeonRun() {
 			}
 			ElementValue("PlayerNameField", name);
 			return true;
-		}, true, 1550, 250, 200, 64, TextGet("KDRandom"), KDBaseWhite, "");
+		}, true, 1550, 160, 200, 64, TextGet("KDRandom"), KDBaseWhite, "");
 
 		// Left to decrement
 		DrawButtonKDEx(`SaveButtonL`, (_bdata) => {

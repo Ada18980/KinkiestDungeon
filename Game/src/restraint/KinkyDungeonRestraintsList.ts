@@ -2691,9 +2691,11 @@ const KinkyDungeonRestraints: restraint[] = [
 		shrine: ["Collars"],
 		unlimited: true,
 		spiritbond: true,
-		events: [{trigger: "onWear", type: "SpiritbondCollar"},
+		events: [
+			{trigger: "onWear", type: "SpiritbondCollar"},
 			{trigger: "tick", type: "SpiritbondCollar"},
 			{trigger: "tickAfter", type: "SpiritbondCollar"},
+			{trigger: "drawPMIcons", type: "Linked"}
 		],
 	},
 	// endregion

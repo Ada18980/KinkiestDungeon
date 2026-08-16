@@ -4141,9 +4141,6 @@ RestraintSpiritbondCollarDesc,"A collar carved with glyphs that describe a spiri
 RestraintSpiritbondCollarDesc2,"It's sealed magically around your neck, and binds you to your spiritbond. The only way to remove it is to take the key from them."
 KDSpiritbondEnd,"The spiritbond collar falls from your neck."
 
-KDSpiritbond_DrainMana,"Your collar drains ${MPAmount} mana to heal your spiritbond!"
-KDSpiritbond_DrainWill,"Your collar drains ${WPAmount} willpower to heal your spiritbond!"
-KDSpiritbond_DrainStamina,"Your collar drains ${SPAmount} stamina to strengthen your spiritbond!"
 
 RestraintPrisonVibe,Prisoner Plug
 RestraintPrisonVibeDesc,"A teaser to keep you occupied."
@@ -13246,6 +13243,7 @@ dGenericAllyAttack_Leave,"(Never mind...)"
 rGenericAllyAttack_Leave,"(You decide not to)"
 
 KDCantAttack,Can't Attack
+KDSpiritbondDrain,Your ${ItemName} drains ${Amount} ${Stat} to heal ${Name}!
 
 dGenericAllyAttackPlay,"(Retaliate)"
 rGenericAllyAttackPlay,"(Really attack? You will be justified and won't take an immediate rep penalty)"
@@ -29780,6 +29778,8 @@ KDRed,Red
 KDYellow,Yellow
 KDGreen,Green
 
+KDConsentItem_PlayerOwner,Player Ownership
+KDConsentItem_ForcedOwner,Player Slavery
 KDConsentItem_PlugFront,Front Plugs
 KDConsentItem_PlugRear,Rear Plugs
 KDConsentItem_DollTerminal,Cyber Dollification
@@ -29830,6 +29830,10 @@ KDConsentItemTooltip_Check,"|||This item will appear ingame as normal."
 
 KDConsentMenuLocked,Menu Locked
 
+KDConsentItemTooltip_PlayerOwner,"Allows the player to accept an NPC as an owner under certain circumstances. Normally, this can be ended at any time,|but setting this option to Green removes that agency from the player requiring the NPC to be captured and in the player's collection to remove as owner."
+KDConsentItemTooltip_PlayerOwner_Green,"|||This item is marked as Green, which prevents the player from removing an NPC owner without first capturing them.||Using your Safeword also gives you a window where you can remove them from the Quest menu."
+
+KDConsentItemTooltip_ForcedOwner,"By default, the player must choose to enter slavery scenarios. Setting this to green takes away agency and removes the player's choice in the matter.|Setting to yellow removes options that lead to slavery-like scenarios such as the Spiritbond Collar."
 
 KDConsentItemTooltip_DollTransform,"Allows content where the player character gets transformed into a sentient ball jointed doll. Removing this transformation requires a Potion of Humanity.\n\nSetting this to red prevents the dialogue from starting.\nSetting this to Green makes it permanent, as no Potions of Humanity will spawn."
 KDConsentItemTooltip_DollTransformAroused,"If the player is transformed into a ball-jointed doll, they may be made into one that doesn't have sex organs as a punishment.\n\nSetting this to yellow lets the player always choose."
@@ -30251,6 +30255,7 @@ KDDirtPileSurprise,A ENMY was lurking inside the dirt pile!
 KDNotEnoughDirtPiles,"You skipped your duty and left some dirt missing in the last level!"
 
 KDQuest_Mistress,"You are currently referring to ${EName} as your ${EHonorinti}."
+KDQuest_MistressTry,"To remove ${EName}, capture ${Ethem} as a prisoner and store ${Ethem} in your collection."
 KDQuest_MistressFail,"..."
 KDQuest_EscapedDoll,"The Dollmaker does not take no for an answer."
 KDQuest_FuukaPet,"Fuuka's shrine maidens would like to have a word with you."
@@ -34228,3 +34233,8 @@ KDSpiritbound_Enable,"The spiritbond collar glows brightly on your neck."
 
 KDCopyColor,Copy Color
 KDPasteColor,Paste to Layer
+
+KDSP,SP
+KDWP,WP
+KDDP,DP
+KDMP,MP

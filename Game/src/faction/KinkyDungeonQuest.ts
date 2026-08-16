@@ -487,14 +487,25 @@ let KDQuests: Record<string, KDQuest> = {
 		},
 		text: (player) => {
 			let npc = KDPersistentNPCs[KDGameData.MistressID];
-			if (npc)
+			if (npc) {
+				if (KinkyDungeonFlags.get("triedToRemoveOnwer")) {
+					return [TextGet("KDQuest_MistressTry", KDGetGenericDialogueParams(player, npc.entity))];
+				}
 				return [TextGet("KDQuest_Mistress", KDGetGenericDialogueParams(player, npc.entity))];
+			}
 			else return [TextGet("KDQuest_MistressFail")];
 		},
 		visible: true,
-		oncancel: (player) => {
-			// Currently this does not allow CNC scenarios. 
-			// TODO consent option that requires the mistress to be your prisoner, or gone, to cancel
+		oncancel: (player, force) => {
+			if (!force && KinkyDungeonStatsChoice.get("StrongPlayerOwner") && !KinkyDungeonFlags.get("safeword_recent")) {
+				let NPC = KDGetPersistentNPC(KDGameData.MistressID);
+				if (NPC) {
+					if (!KDGameData.Collection[NPC.id] || NPC.captured || !NPC.collect || !!KDGameData.Collection[NPC.id].status) {
+						KinkyDungeonSetFlag("triedToRemoveOnwer", 2);
+						return false;
+					}
+				}
+			}
 			delete KDGameData.MistressID;
 			return true;
 		},

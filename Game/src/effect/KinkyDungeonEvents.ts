@@ -46,6 +46,13 @@ interface ShockwaveData {
 	sprite: string,
 }
 
+let KDSpiritbond_Ratio_SP = 0.25;
+let KDSpiritbond_Ratio_MP = 2;
+let KDSpiritbond_Ratio_WP = 10;
+let KDSpiritbond_Speed = 1; // per turn when not below half
+let KDSpiritbond_Speed_Untie = 0.12;
+let KDSpiritbond_Speed_UntieFight = 0.05;
+
 let KDEventData = Object.assign({}, KDEventDataBase);
 
 function KDMapHasEvent(map: Record<string, any>, event: string) {
@@ -777,6 +784,23 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				});
 		},
 	},
+	"drawPMIcons": {
+		"Linked": (e, item, data: drawPMIconsData) => {
+			if (data.PM.id == item.data?.npc) {
+				if (data.BottomLeftPri < 10) {
+					data.BottomLeftPri = 10;
+					KDDraw(kdstatusboard, kdpixisprites, "PM" + data.PM.id + ",Linked", 
+						KinkyDungeonRootDirectory + "UI/Spiritbond.png",
+						data.PartyX, data.PartyY + data.PartyDy - 26, undefined, undefined, undefined, {
+							zIndex: data.zIndex + 1,
+							tint: 0x999999
+						}
+					);
+				}
+				
+			}
+		},
+	},
 	"onWear": {
 		"setSkinColor": (_e, item, data) => {
 			if (item == data.item) {
@@ -1260,9 +1284,16 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"SpiritbondCollar": (_e, item, data) => {
 			let player = KDPlayer();
 			let id = KDGetSpiritBondID(KDPlayer(), item);
-			// TODO add the heal functionality
-			// TODO make the spiritbound stop attacking you sooner than normal, and also take less damage from you
-			// TODO check behavior of your dominant leashing you to jail, it seemed bugged last time I checked
+			// upgrades your spiritbond if she is too weak
+			let minimumHP = 20 + KDGetEffLevel();
+			if (KDGetPersistentNPC(id)?.entity?.Enemy?.maxhp < minimumHP) {
+				let e = KDGetPersistentNPC(id)?.entity;
+				e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
+				e.Enemy.maxhp = minimumHP + 1;
+				e.modified = true;
+				KDUpdatePersistentNPC(id);
+			}
+
 			if (KDGetPersistentNPC(id)) {
 				KinkyDungeonSetFlag("Spiritbound", 2);
 			} else {
@@ -1276,6 +1307,68 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 
 			let en = KDGetSpiritBondEntityLocal(player, item);
 			if (en) {
+				// heal
+
+				if (en.hp < en.Enemy?.maxhp && data.delta > 0) {
+					let needed = en.Enemy.maxhp - en.hp;
+					let speed = en.hp > en.Enemy.maxhp * 0.5 ? KDSpiritbond_Speed : en.Enemy.maxhp * 0.5;
+					needed = Math.min(needed, speed, en.Enemy.maxhp - en.hp);
+					let ratio_sp = KDSpiritbond_Ratio_SP;
+					let ratio_mp = KDSpiritbond_Ratio_MP;
+					let ratio_wp = KDSpiritbond_Ratio_WP;
+
+					let origneeded = needed;
+					if (KinkyDungeonHasStamina(KinkyDungeonStatStaminaMax * 0.4)) {
+						needed += ratio_sp * Math.min(0, KDChangeStamina(item.id + "", "item", "spiritbond", -needed/ratio_sp));
+						KDHealNPC(en, origneeded - Math.max(needed, 0), player.id, undefined);
+						if (needed < origneeded) KinkyDungeonSendTextMessage(4, TextGet("KDSpiritbondDrain", {
+							Amount: Math.round(10*((origneeded - Math.max(needed, 0)))/ratio_sp),
+							ItemName: KDGetItemName(item),
+							Stat: TextGet("KDSP"),
+							Name: KDEnemyName(en)
+						}), 
+							KDBaseYellow, 2);
+					}
+					
+					if (needed > 0) {
+						if (KinkyDungeonHasMana(3.0)) {
+							origneeded = needed;
+							needed += ratio_mp * Math.min(0, KDChangeMana(item.id + "", "item", "spiritbond", -needed/ratio_mp));
+							KDHealNPC(en, origneeded - Math.max(needed, 0), player.id, undefined);
+							if (needed < origneeded) KinkyDungeonSendTextMessage(4, TextGet("KDSpiritbondDrain", {
+								Amount: Math.round(10*((origneeded - Math.max(needed, 0)))/ratio_mp),
+								ItemName: KDGetItemName(item),
+								Stat: TextGet("KDMP"),
+								Name: KDEnemyName(en)
+							}), 
+								KDBaseYellow, 2);
+						}
+						
+						if (needed > 0) {
+							origneeded = needed;
+							needed += ratio_wp * Math.min(0, KDChangeWill(item.id + "", "item", "spiritbond", -needed/ratio_wp));
+							KDHealNPC(en, origneeded - Math.max(needed, 0), player.id, undefined);
+							if (needed < origneeded) KinkyDungeonSendTextMessage(4, TextGet("KDSpiritbondDrain", {
+								Amount: Math.round(10*((origneeded - Math.max(needed, 0)))/ratio_wp),
+								ItemName: KDGetItemName(item),
+								Stat: TextGet("KDWP"),
+								Name: KDEnemyName(en)
+							}), 
+								KDBaseYellow, 2);
+							if (needed > 0 && (!KDHelpless(en) && !en.hostile && !KDIsImprisoned(en))) {
+								// still heals as long as not helpless, and they arent hostile
+								KDHealNPC(en, Math.min(KDSpiritbond_Speed, needed), -1, undefined);
+							}
+						}
+					}
+					// also helps them struggle
+					if (en.boundLevel > 0) {
+						KDUntieEnemy(en, en.boundLevel * (en.hostile ? KDSpiritbond_Speed_UntieFight : KDSpiritbond_Speed_Untie), false, false);
+					}
+					
+				}
+
+
 				// make the collar glow
 				
 
