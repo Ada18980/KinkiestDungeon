@@ -959,7 +959,7 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 		}
 		return;
 	}
-	if (!entity.dialogueDuration || !entity.dialoguePriority || entity.dialoguePriority <= priority + (nooverride ? 1 : 0)) {
+	if (!entity.dialogueDuration || !entity.dialoguePriority || entity.dialoguePriority < priority + (nooverride ? 0 : 1)) {
 		if (constant) {
 			entity.dialogue = dialogue;
 			entity.dialogueColor = color;
