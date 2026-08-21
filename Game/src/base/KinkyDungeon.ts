@@ -3494,7 +3494,7 @@ interface KDButtonParamData {
 	nonplayable?: boolean,
 	hoverData?: any,
 	onHover?: (button: KDButtonParamData) => void,
-  Hover?: any
+  Hover?: InventoryHoverObject
 }
 
 /** For most things use LastButtonsCache as buttons might not have been rendered yet this frame. Will lag a frame behind but eh. */
@@ -3537,7 +3537,7 @@ function DrawButtonKD (
 	HoveringText?:	string,
 	Disabled?:	boolean,
 	NoBorder?:	boolean,
-    Hover?:      Function,
+    Hover?:      InventoryHoverObject,
 ): void
 {
 	let params = {
@@ -3692,7 +3692,7 @@ function DrawButtonKDEx (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	ButtonOptions,
-  Hover?:      Function,
+  Hover?:      InventoryHoverObject,
 ): boolean
 {
 	let params = {
@@ -3868,7 +3868,7 @@ function DrawButtonKDExScroll (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	any,
-  Hover?:      Function,
+  Hover?:      InventoryHoverObject,
 ): boolean
 {
 
@@ -3954,7 +3954,7 @@ function DrawButtonKDExScrollTo (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	any,
-  Hover?:      Function,
+  Hover?:      InventoryHoverObject,
 ): boolean
 {
 
@@ -4036,6 +4036,7 @@ function DrawButtonKDExTo (
 	ShiftText?:	boolean,
 	options?:	any,
 	priority = 0,
+	Hover?: InventoryHoverObject,
 ): boolean
 {
 	let params = {
@@ -4050,12 +4051,19 @@ function DrawButtonKDExTo (
 		hotkeyPress: options?.hotkeyPress,
 		hoverData: options?.hoverData,
 		onHover: options?.onHover,
+		Hover,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (hover) {
 		
-		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {KDCurrentHoverButton = params;}
-		else Disabled = true;
+		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
+			KDCurrentHoverButton = params;
+			KDCurrentHoverBox = params;
+		}
+		else {
+			Disabled = true;
+			hover = false;
+		}
 	}
 	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
 	KDButtonsCache[name] = params;
