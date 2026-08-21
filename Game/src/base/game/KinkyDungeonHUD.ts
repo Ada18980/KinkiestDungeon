@@ -1648,7 +1648,11 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		}
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, actionbarHeight, "", playColor,
-	KinkyDungeonRootDirectory + (KinkyDungeonCanTryOrgasm() ? "UI/LetGo.png" : (KDGameData.OrgasmTurns > KinkyDungeonOrgasmTurnsCrave ? "UI/Edged.png" : "UI/Play.png")),
+	KinkyDungeonRootDirectory + (KinkyDungeonCanTryOrgasm() ? 
+		(KinkyDungeonChastityMult() > 0.75 ? "UI/LetGoChastity.png" : "UI/LetGo.png")
+		: (KDGameData.OrgasmTurns > KinkyDungeonOrgasmTurnsCrave ? 
+		(KinkyDungeonChastityMult() > 0.75 ? "UI/EdgedChastity.png" : "UI/Edged.png")
+		: (KinkyDungeonChastityMult() > 0.75 ? "UI/PlayChastity.png" : "UI/Play.png"))),
 	undefined, undefined, !KinkyDungeonCanTryOrgasm(), KDTextGray05, undefined, false, {
 		alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[8]),
@@ -2577,17 +2581,19 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 			}
 			KinkyDungeonSendEvent("drawPMIcons", data);
 			if (KDGameData.MistressID == PM.id && data.TopRightPri < 0) {
-				KDDraw(kdstatusboard, kdpixisprites, "PM" + PM.id + ",Domme", KinkyDungeonRootDirectory + "UI/HeartShil.png",
+				KDDraw(kdstatusboard, kdpixisprites, "PM" + PM.id + ",Domme", 
+					KinkyDungeonRootDirectory + "UI/HeartShil.png",
 					PartyX + PartyDy - 18, PartyY + barHeight, undefined, undefined, undefined, {
-							zIndex: data.zIndex + 1,
+							zIndex: data.zIndex + 3,
 							tint: 0x999999
 						}
 				);
 			}
 			if (!data.canRemove && data.TopLeftPri < 0) {
-				KDDraw(kdstatusboard, kdpixisprites, "PM" + PM.id + ",Lock", KinkyDungeonRootDirectory + "UI/LockShil.png",
+				KDDraw(kdstatusboard, kdpixisprites, "PM" + PM.id + ",Lock", 
+					KinkyDungeonRootDirectory + "UI/LockShil.png",
 					PartyX, PartyY + barHeight, undefined, undefined, undefined, {
-							zIndex: data.zIndex + 1,
+							zIndex: data.zIndex + 3,
 							tint: 0x999999
 						}
 				);
@@ -2597,6 +2603,8 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 		for (let i = 0; i < KDGameData.Party.length; i++) {
 			let PM = KinkyDungeonFindID(KDGameData.Party[i].id);
 			if (PM) {
+				let PMForTooltip = PM; // SCOPE ISSUES
+					let player = KDPlayer();
 				KDDrawEnemySprite(kdstatusboard, PM, 
 					PartyX/PartyDy, PartyY/PartyDy, 
 					0, 0, true, zIndex + 2, "PM", PartyDy);
@@ -2608,25 +2616,25 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 				let selected = (PM.buffs?.AllySelect?.duration > 0);
 
 				DrawButtonKDExTo(kdstatusboard, "PM" + i + "click", (_bdata) => {
-					KDSendInput("select", {enemy: PM});
+					KDSendInput("select", {enemy: PMForTooltip});
 					return true;
 				}, true, PartyX, PartyY, PartyDy, PartyDy, "", KDButtonColor, undefined, undefined, false, !selected,
 				KDBaseBlack, undefined, undefined, {zIndex: zIndex - 0.1,});
 
 				if (selected) {
 					DrawButtonKDExTo(kdstatusboard, "PM" + i + "remove", (_bdata) => {
-						KDSendInput("cancelParty", {enemy: PM, player: KinkyDungeonPlayerEntity});
+						KDSendInput("cancelParty", {enemy: PMForTooltip, player: player});
 						return true;
 					}, true, PartyX + 170, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/X.png", undefined, false, false,
 					KDBaseBlack, undefined, undefined, {zIndex: zIndex,});
 					DrawButtonKDExTo(kdstatusboard, "PM" + i + "come", (_bdata) => {
-						KDSendInput("onMe", {enemy: PM, player: KinkyDungeonPlayerEntity});
+						KDSendInput("onMe", {enemy: PMForTooltip, player: player});
 						return true;
 					}, true, PartyX + 90, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + ((!KDEnemyHasFlag(PM, "NoFollow")) ? "UI/Recall.png" : "UI/Disperse.png"), undefined, false, false,
 					KDBaseBlack, undefined, undefined, {zIndex: zIndex,});
 
 					DrawButtonKDExTo(kdstatusboard, "PM" + i + "choose", (_bdata) => {
-						KDSendInput("selectOnly", {enemy: PM});
+						KDSendInput("selectOnly", {enemy: PMForTooltip});
 						return true;
 					}, true, PartyX + 130, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Select.png", undefined, false, false,
 					KDBaseBlack, undefined, undefined, {zIndex: zIndex,});
@@ -2635,16 +2643,21 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 				if (MouseIn(PartyX, PartyY, PartyDy, PartyDy)
 					&& KDLastHoverButton?.name == "PM" + i + "click"
 					&& (!KDGameData.CurrentDialog || KDGetSpeaker()?.id != PM?.id)) {
-					tooltips.push((offset: number) => KDDrawEnemyTooltip(PM, offset, false));
+					tooltips.push((offset: number) => KDDrawEnemyTooltip(PMForTooltip, offset, false));
 				}
 
 			} else {
 				PM = KDGameData.Party[i];
 				if (PM) {
-					KDDrawEnemySprite(kdstatusboard, PM, PartyX/PartyDy, PartyY/PartyDy, 0, 0, true, zIndex, "PM");
-					KDDraw(kdstatusboard, kdpixisprites, "pmFailFind" + PM.id, KinkyDungeonRootDirectory + "Spells/SpellFail.png",
+					let PMForTooltip = PM; // SCOPE ISSUES
+					let player = KDPlayer();
+					KDDrawEnemySprite(kdstatusboard, PM, 
+						PartyX/PartyDy, PartyY/PartyDy, 0, 0, true, 
+						zIndex + 2, "PM", PartyDy);
+					KDDraw(kdstatusboard, kdpixisprites, "pmFailFind" + PM.id, 
+						KinkyDungeonRootDirectory + "UI/NPCJail.png",
 						PartyX, PartyY, PartyDy, PartyDy, undefined, {
-							zIndex: zIndex + 0.1,
+							zIndex: zIndex + 1,
 							alpha: 0.5,
 						},
 					);
@@ -2656,14 +2669,14 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 					let selected = (PM.buffs?.AllySelect?.duration > 0);
 
 					DrawButtonKDExTo(kdstatusboard, "PM" + i + "click", (_bdata) => {
-						KDSendInput("select", {enemy: PM});
+						KDSendInput("select", {enemy: PMForTooltip});
 						return true;
 					}, true, PartyX, PartyY, PartyDy, PartyDy, "", KDButtonColor, undefined, undefined, false, !selected,
 					KDBaseBlack, undefined, undefined, {zIndex: zIndex - 0.1,});
 
 					if (selected) {
 						DrawButtonKDExTo(kdstatusboard, "PM" + i + "remove", (_bdata) => {
-							KDSendInput("cancelParty", {enemy: PM, player: KinkyDungeonPlayerEntity});
+							KDSendInput("cancelParty", {enemy: PMForTooltip, player: player});
 							return true;
 						}, true, PartyX + 170, PartyY, 38, 38, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/X.png", undefined, false, false,
 						KDBaseBlack, undefined, undefined, {zIndex: zIndex,});
@@ -2672,7 +2685,7 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 
 					if (MouseIn(PartyX, PartyY, PartyDy, PartyDy)
 						&& KDLastHoverButton?.name == "PM" + i + "click") {
-						tooltips.push((offset: number) => KDDrawEnemyTooltip(PM, offset, false));
+						tooltips.push((offset: number) => KDDrawEnemyTooltip(PMForTooltip, offset, false));
 					}
 				}
 

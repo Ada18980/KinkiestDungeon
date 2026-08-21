@@ -392,6 +392,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 
 	"StartCyberDollStorage": {startPriority: 1000, category: "Boss", id: "StartCyberDollStorage", cost: -0.5, locked: true, buff: true, tags: ["start"]},
 	"StartCyberDoll": {startPriority: 7, category: "Boss", id: "StartCyberDoll", cost: -2.5, locked: true, tags: ["start"]},
+	"DollShoppeStart": {startPriority: 7, category: "Boss", id: "StartCyberDoll", cost: -2.5, locked: true, tags: ["start"]},
 
 	"DollmakerVisor": {startPriority: 31, category: "Boss", id: "DollmakerVisor", cost: -1, block: ["DollmakerMask"], locked: true, tags: ["start"]},
 	"DollmakerMask": {startPriority: 31, category: "Boss", id: "DollmakerMask", cost: -1, block: ["DollmakerVisor"], locked: true, tags: ["start"]},

@@ -959,7 +959,7 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 		}
 		return;
 	}
-	if (!entity.dialogueDuration || !entity.dialoguePriority || entity.dialoguePriority < priority + (nooverride ? 0 : 1)) {
+	if (!entity.dialogueDuration || !entity.dialoguePriority || entity.dialoguePriority < priority + (nooverride ? 0 : .1)) {
 		if (constant) {
 			entity.dialogue = dialogue;
 			entity.dialogueColor = color;
@@ -1650,7 +1650,8 @@ function KinkyDungeonUpdateStats(delta: number): void {
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id:"BoundPower",
 			type: "Evasion",
-			duration: 1,
+			constant: true, duration: 1,
+			
 			power: KDBoundPowerLevel * KDBoundPowerMult,
 		});
 	}

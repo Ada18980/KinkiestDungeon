@@ -16,7 +16,9 @@ const KDAim3: KDBuff = {
 	id: "Aim3",
 	type: "AttackSlow", power: 2, duration: 1};
 
-const KDConduction: KDBuff = {id: "Conduction", type: "event", aura: "#ffff88", noAuraColor: true, auraSprite: "Conduction", power: 7.0, player: true, duration: 5, enemies: true, range: 2.99, events: [
+const KDConduction: KDBuff = {id: "Conduction", type: "event", aura: "#ffff88",
+	scale: 1,
+	noAuraColor: true, auraSprite: "Conduction", power: 7.0, player: true, duration: 5, enemies: true, range: 2.99, events: [
 	{type: "RemoveConduction", duration: 1, trigger: "tick"},
 	{type: "Conduction", power: 0.5, duration: 5, damage: "electric", aoe: 3.99, trigger: "playerTakeDamage"},
 	{type: "Conduction", power: 0.5, duration: 5, damage: "electric", aoe: 3.99, trigger: "beforeDamageEnemy"},

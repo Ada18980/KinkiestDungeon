@@ -8523,7 +8523,7 @@ function KDTrackReward(reward: string, amount: number, add: boolean): boolean {
 	}
 }
 
-function KDDecimate(list: any[], perList = 10): any[] {
+function KDSplitIntoSublists(list: any[], perList = 10): any[] {
 	let ret = [];
 
 	for (let i = 0; i <= Math.floor(list.length / perList); i++) {

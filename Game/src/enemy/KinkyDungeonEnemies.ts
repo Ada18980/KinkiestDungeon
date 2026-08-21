@@ -957,7 +957,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 											(tx + (enemy.offX || 0) - CamX)*KinkyDungeonGridSizeDisplay - (w - KinkyDungeonGridSizeDisplay)/2,
 											(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
 											w, h, undefined, {
-												zIndex: 2,
+												zIndex: b.zIndex || -0.1,
 											});
 									} else {
 										KDDraw(kdenemyboard, kdpixisprites, enemy.id + "," + b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "Aura") + ".png",
@@ -967,7 +967,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 											KinkyDungeonGridSizeDisplay * (1 + s) * 0.67,
 											undefined, {
 												tint: string2hex(b.aura),
-												zIndex: 2,
+												zIndex: b.zIndex || -0.1,
 											});
 									}
 								}
@@ -1356,13 +1356,7 @@ function KinkyDungeonDrawEnemiesStatus(canvasOffsetX: number, canvasOffsetY: num
 			&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KDCanSeeEnemy(enemy, playerDist)) {
 			let bindLevel = KDBoundEffects(enemy);
 			if (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KDHelpless(enemy) || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1) && !KDEnemyHidden(enemy) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak", true) > 0)) {
-				if (enemy.stun > 0) {
-					KDDraw(kdenemystatusboard, kdpixisprites, "stun" + enemy.id, KinkyDungeonRootDirectory + "Conditions/Stun.png",
-						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
-						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
-							zIndex: 2.1,
-						});
-				}
+				
 				if (KDToggles.ShowNPCStatuses || (MouseIn((tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay) && KDMouseInPlayableArea())) {
 					if (enemy.silence > 1 && !helpless) {
@@ -1386,82 +1380,92 @@ function KinkyDungeonDrawEnemiesStatus(canvasOffsetX: number, canvasOffsetY: num
 								zIndex: 2.1,
 							});
 					}
+					if (enemy.freeze > 0) {
+						// e
+					} else 
+					if (enemy.stun > 0) {
+						KDDraw(kdenemystatusboard, kdpixisprites, "stun" + enemy.id, KinkyDungeonRootDirectory + "Conditions/Stun.png",
+							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
+							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+								zIndex: 2.1,
+							});
+					} else
 					if (enemy.bind > 1 && bindLevel < 4) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "bind" + enemy.id, KinkyDungeonRootDirectory + "Conditions/Bind.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.11,
 							});
-					}
-					if ((enemy.slow > 1 || KinkyDungeonGetBuffedStat(enemy.buffs, "MoveSpeed", true) < 0) && bindLevel < 4) {
+					} else
+					if ((enemy.slow > 1 || KinkyDungeonGetBuffedStat(enemy.buffs, "MoveSpeed", true, true) < 0) && bindLevel < 4) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "spd" + enemy.id, KinkyDungeonRootDirectory + "Conditions/Slow.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.1,
 							});
 					}
-					if (KinkyDungeonGetBuffedStat(enemy.buffs, "AttackDmg", true) > 0) {
+					if (KinkyDungeonGetBuffedStat(enemy.buffs, "AttackDmg", true, true) > 0) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "atkb" + enemy.id, KinkyDungeonRootDirectory + "Conditions/Buff.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.1,
 							});
 					}
-					if (KinkyDungeonGetBuffedStat(enemy.buffs, "AttackDmg", true) < 0 && bindLevel < 4) {
+					if (KinkyDungeonGetBuffedStat(enemy.buffs, "AttackDmg", true, true) < 0 && bindLevel < 4) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "atkdb" + enemy.id, KinkyDungeonRootDirectory + "Conditions/Debuff.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.1,
 							});
 					}
-					if (KinkyDungeonGetBuffedStat(enemy.buffs, "SpellResist") < 0 && enemy.Enemy.spellResist > 0) {
+					if (KinkyDungeonGetBuffedStat(enemy.buffs, "SpellResist", undefined, true) < 0 && enemy.Enemy.spellResist > 0) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "spresd" + enemy.id, KinkyDungeonRootDirectory + "Conditions/ShieldDebuff.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.1,
 							});
-					} else if (KinkyDungeonGetBuffedStat(enemy.buffs, "SpellResist") > 0) {
+					} else if (KinkyDungeonGetBuffedStat(enemy.buffs, "SpellResist", undefined, true) > 0) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "spres" + enemy.id, KinkyDungeonRootDirectory + "Conditions/ShieldBuff.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.1,
 							});
 					}
-					if (KinkyDungeonGetBuffedStat(enemy.buffs, "Armor") < 0 && enemy.Enemy.armor > 0) {
+					if (KinkyDungeonGetBuffedStat(enemy.buffs, "Armor", undefined, true) < 0 && enemy.Enemy.armor > 0) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "armd" + enemy.id, KinkyDungeonRootDirectory + "Conditions/ArmorDebuff.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.11,
 							});
-					} else if (KinkyDungeonGetBuffedStat(enemy.buffs, "Armor") > 0) {
+					} else if (KinkyDungeonGetBuffedStat(enemy.buffs, "Armor", undefined, true) > 0) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "arm" + enemy.id, KinkyDungeonRootDirectory + "Conditions/ArmorBuff.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.11,
 							});
 					}
-					if (KinkyDungeonGetBuffedStat(enemy.buffs, "Evasion") > 0) {
+					if (KinkyDungeonGetBuffedStat(enemy.buffs, "Evasion", undefined, true) > 0) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "evab" + enemy.id, KinkyDungeonRootDirectory + "Conditions/EvasionBuff.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.1,
 							});
 					}
-					if (KinkyDungeonGetBuffedStat(enemy.buffs, "Block") > 0) {
+					if (KinkyDungeonGetBuffedStat(enemy.buffs, "Block", undefined, true) > 0) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "blkb" + enemy.id, KinkyDungeonRootDirectory + "Conditions/BlockBuff.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.1,
 							});
 					}
-					if (KinkyDungeonGetBuffedStat(enemy.buffs, "DamageReduction") > 0) {
+					if (KinkyDungeonGetBuffedStat(enemy.buffs, "DamageReduction", undefined, true) > 0) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "shield" + enemy.id, KinkyDungeonRootDirectory + "Conditions/ShieldBuff.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 2.1,
 							});
 					}
-					if (KinkyDungeonGetBuffedStat(enemy.buffs, "DamageAmp", true) > 0) {
+					if (KinkyDungeonGetBuffedStat(enemy.buffs, "DamageAmp", true, true) > 0) {
 						KDDraw(kdenemystatusboard, kdpixisprites, "amp" + enemy.id, KinkyDungeonRootDirectory + "Conditions/DamageAmp.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
@@ -2559,6 +2563,7 @@ let KDCurrentEnemyTooltip: entity = null;
  * @param offset
  */
 function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): number {
+	let packed = KDUnPackEnemy(enemy);
 	let analyze = KDGameData.Collection[enemy.id + ""] || KinkyDungeonFlags.get("AdvTooltips") || KDHasSpell("ApprenticeKnowledge");
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
@@ -3117,6 +3122,8 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 			TooltipList.push(...extraList);
 		}
 	}
+
+	if (packed) KDPackEnemy(enemy);
 
 	return KDDrawTooltip(TooltipList, offset);
 }

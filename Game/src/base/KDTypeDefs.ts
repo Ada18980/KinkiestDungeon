@@ -1783,6 +1783,8 @@ interface KDBuff {
 	training?: string,
 	id: string,
 	power?: number,
+	zIndex?: number,
+	scale?: number,
 	/** when the buff expires, it instead has its duration reset and either 1 subtracted from its power, or resetDurationPower subtracted. Once power reaches 0 it disappears*/
 	
 	resetDurationPower?: number,
@@ -1791,6 +1793,10 @@ interface KDBuff {
 	type?: string,
 	duration?: number,
 	infinite?: boolean,
+	/**
+	 * indicates a buff is refreshed constantly by effect
+	 */
+	constant?: boolean,
 	aura?: HexColor,
 	range?: number,
 	currentCount?: number,

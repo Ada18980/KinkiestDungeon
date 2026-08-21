@@ -198,6 +198,9 @@ kdUItext.sortableChildren = true;
 let kdstatusboard = new PIXI.Container();
 kdstatusboard.zIndex = 5;
 kdstatusboard.sortableChildren = true;
+let kdstatusboardunder = new PIXI.Container();
+kdstatusboardunder.zIndex = -0.1;
+kdstatusboardunder.sortableChildren = true;
 let kdfloatercanvas = new PIXI.Container();
 kdfloatercanvas.zIndex = 200;
 kdfloatercanvas.sortableChildren = false;
@@ -241,6 +244,8 @@ let kdpalettecontainer = new PIXI.Container();
 kdcanvas.sortableChildren = true;
 kdpalettecontainer.sortableChildren = true;
 kdcanvas.addChild(kdstatusboard);
+kdcanvas.addChild(kdstatusboardunder);
+
 kdcanvas.addChild(kdenemystatusboard);
 kdcanvas.addChild(kdUItext);
 kdcanvas.addChild(kdminimap);
@@ -260,7 +265,6 @@ kdgameboard.addChild(kdgamefogsmoothDark);
 
 if (StandalonePatched) {
 
-	statusOffset -= 20;
 	kdgameboard.addChild(kdgamefog);
 	//kdgameboard.addChild(kdgamefogmask);
 	kdcanvas.addChild(kdgameboard);
@@ -1268,25 +1272,26 @@ function KinkyDungeonDrawGame() {
 							if (b && b.aura && b.duration > 0 && !(b.auraSprite == "Null")) {
 								aura_scale += 1/aura_scale_max;
 								let s = aura_scale;
+								if (b.scale) s = b.scale;
 								if (KinkyDungeonSelectedBuffEntity == KDPlayer() && b.id == KinkyDungeonSelectedBuff) {
 									alpha = (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed || 0.25)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed || 0.25)) % 1000 / 1000)) : ((performance.now() * (KDAnimSpeed || 0.25)) % 1000 / 1000)) + 0.3);
 								}
 								if (b.noAuraColor) {
-									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "PlayerAura") + ".png",
+									KDDraw(b.zIndex > 0 ? kdstatusboard : kdstatusboardunder, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "PlayerAura") + ".png",
 										(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
-											zIndex: 2.1,
+											zIndex: b.zIndex || -0.1,
 											alpha: alpha,
 											//alpha: KDMousePlayableAreaStatusFade,
 										});
 								} else {
-									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "PlayerAura") + ".png",
+									KDDraw(b.zIndex > 0 ? kdstatusboard : kdstatusboardunder, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "PlayerAura") + ".png",
 										(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
 											tint: string2hex(b.aura),
-											zIndex: 2.1,
+											zIndex: b.zIndex || -0.1,
 											alpha: alpha,
 											//alpha: KDMousePlayableAreaStatusFade
 										});
@@ -1312,62 +1317,67 @@ function KinkyDungeonDrawGame() {
 						});
 				}
 
+				if (KinkyDungeonStatFreeze > 0) {
+					KDDraw(kdstatusboard, kdpixisprites, "c_freeze", KinkyDungeonRootDirectory + "Conditions/Freeze.png",
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
+						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
+				} else
+				if (KinkyDungeonStatBlind > 0 || KDGameData.SlowMoveTurns > 0) {
+					KDDraw(kdstatusboard, kdpixisprites, "c_stun", KinkyDungeonRootDirectory + "Conditions/Stun.png",
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
+						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
+				} else
+				if (KinkyDungeonStatBind > 0) {
+					KDDraw(kdstatusboard, kdpixisprites, "c_bind", KinkyDungeonRootDirectory + "Conditions/Bind.png",
+						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
+						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
+				} else
 				if ((KDGameData.MovePoints < 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowLevel") > 0) && KinkyDungeonSlowLevel < 10) {
 					KDDraw(kdstatusboard, kdpixisprites, "c_slow", KinkyDungeonRootDirectory + "Conditions/Slow.png",
 						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
-				if (KinkyDungeonStatBlind > 0) {
-					KDDraw(kdstatusboard, kdpixisprites, "c_stun", KinkyDungeonRootDirectory + "Conditions/Stun.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
-						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
-				}
-				if (KinkyDungeonStatFreeze > 0) {
-					KDDraw(kdstatusboard, kdpixisprites, "c_freeze", KinkyDungeonRootDirectory + "Conditions/Freeze.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
-						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
-				}
-				if (KinkyDungeonStatBind > 0) {
-					KDDraw(kdstatusboard, kdpixisprites, "c_bind", KinkyDungeonRootDirectory + "Conditions/Bind.png",
-						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
-						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
-				}
-				if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak") > 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowDetection") > 0) {
+
+
+				if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak", undefined, true) > 0
+				|| KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowDetection", undefined, true) > 0) {
 					KDDraw(kdstatusboard, kdpixisprites, "c_sneak", KinkyDungeonRootDirectory + "Conditions/Sneak.png",
 						(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
-						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 30 + statusOffset,
+						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
+
 				if (KDToggles.PlayerAura && (KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade)) {
-					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg") > 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackAcc") > 0) {
+					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg", undefined, true) > 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackAcc") > 0) {
 						KDDraw(kdstatusboard, kdpixisprites, "c_buff", KinkyDungeonRootDirectory + "Conditions/Buff.png",
 							(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 							(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
-					}
-					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg") < 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackAcc") < 0) {
+					} else
+					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg", undefined, true) < 0
+					|| KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackAcc", undefined, true) < 0) {
 						KDDraw(kdstatusboard, kdpixisprites, "c_dbuff", KinkyDungeonRootDirectory + "Conditions/Debuff.png",
 							(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 							(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 					}
-					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion") > 0) {
+					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Evasion", undefined, true) > 0) {
 						KDDraw(kdstatusboard, kdpixisprites, "c_eva", KinkyDungeonRootDirectory + "Conditions/EvasionBuff.png",
 							(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 							(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 					}
-					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block") > 0) {
+					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Block", undefined, true) > 0) {
 						KDDraw(kdstatusboard, kdpixisprites, "c_blk", KinkyDungeonRootDirectory + "Conditions/BlockBuff.png",
 							(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 							(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 					}
-					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellResist") > 0) {
+					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellResist", undefined, true) > 0) {
 						KDDraw(kdstatusboard, kdpixisprites, "c_shield", KinkyDungeonRootDirectory + "Conditions/ShieldBuff.png",
 							(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 							(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
@@ -1375,7 +1385,7 @@ function KinkyDungeonDrawGame() {
 								zIndex: 0.01,
 							});
 					}
-					else if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellResist") < 0) {
+					else if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellResist", undefined, true) < 0) {
 						KDDraw(kdstatusboard, kdpixisprites, "c_shield", KinkyDungeonRootDirectory + "Conditions/ShieldDeuff.png",
 							(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 							(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
@@ -1383,18 +1393,18 @@ function KinkyDungeonDrawGame() {
 								zIndex: 0.01,
 							});
 					}
-					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor") > 0) {
+					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor", undefined, true) > 0) {
 						KDDraw(kdstatusboard, kdpixisprites, "c_arm", KinkyDungeonRootDirectory + "Conditions/ArmorBuff.png",
 							(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 							(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
-					} else if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor") < 0) {
+					} else if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Armor", undefined, true) < 0) {
 						KDDraw(kdstatusboard, kdpixisprites, "c_armd", KinkyDungeonRootDirectory + "Conditions/ArmorDebuff.png",
 							(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 							(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 					}
-					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "DamageAmp") > 0) {
+					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "DamageAmp", undefined, true) > 0) {
 						KDDraw(kdstatusboard, kdpixisprites, "c_amp", KinkyDungeonRootDirectory + "Conditions/DamageAmp.png",
 							(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 							(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay + statusOffset,
@@ -6269,6 +6279,7 @@ function KDDoStatusFade(delta: number) {
 	KDMousePlayableAreaStatusFade = Math.min(KDMousePlayableAreaStatusFade, KDMouseOtherStatusFade);
 	kdenemystatusboard.alpha = KDMouseOtherStatusFade;
 	kdstatusboard.alpha = KDMouseOtherStatusFade;
+	kdstatusboardunder.alpha = KDMouseOtherStatusFade;
 	kdwarningboardOver.alpha = KDMousePlayableAreaStatusFade;
 	kdwarningboard.alpha = KDMousePlayableAreaStatusFade;
 }
