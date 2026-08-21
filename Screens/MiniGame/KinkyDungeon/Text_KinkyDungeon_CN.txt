@@ -8547,9 +8547,6 @@ RestraintName 上的诅咒解除了！
 # - It's sealed magically around your neck, and binds you to your spiritbond. The only way to remove it is to take the key from them.
 # - The spiritbond collar falls from your neck.
 
-# - Your collar drains ${MPAmount} mana to heal your spiritbond!
-# - Your collar drains ${WPAmount} willpower to heal your spiritbond!
-# - Your collar drains ${SPAmount} stamina to strengthen your spiritbond!
 
 - Prisoner Plug
 囚犯塞
@@ -24934,6 +24931,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # - Can't Attack
 # :: KDCantAttack
 # :: KDContextMenu_Peace
+# - Your ${ItemName} drains ${Amount} ${Stat} to heal ${Name}!
 
 - (Retaliate)
 ( 报复 )
@@ -47112,6 +47110,8 @@ RestraintName 失效了！
 - Yellow
 黄色
 
+# - Player Ownership
+# - Player Slavery
 - Front Plugs
 前庭玩具
 - Rear Plugs
@@ -47206,6 +47206,10 @@ Kigurumi头壳
 - Menu Locked
 菜单锁定
 
+# - Allows the player to accept an NPC as an owner under certain circumstances. Normally, this can be ended at any time,|but setting this option to Green removes that agency from the player requiring the NPC to be captured and in the player's collection to remove as owner.
+# - |||This item is marked as Green, which prevents the player from removing an NPC owner without first capturing them.||Using your Safeword also gives you a window where you can remove them from the Quest menu.
+
+# - By default, the player must choose to enter slavery scenarios. Setting this to green takes away agency and removes the player's choice in the matter.|Setting to yellow removes options that lead to slavery-like scenarios such as the Spiritbond Collar.
 
 - Allows content where the player character gets transformed into a sentient ball jointed doll. Removing this transformation requires a Potion of Humanity.\n\nSetting this to red prevents the dialogue from starting.\nSetting this to Green makes it permanent, as no Potions of Humanity will spawn.
 允许玩家角色转变为具有自我意识的球体关节玩偶。解除该状态需要使用人类药水。\n\n如果被标红，会阻止转化的开始\n如果被标绿，不会生成任何人类药水，使玩偶化变为永久状态。
@@ -47924,6 +47928,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 你在上一层中玩忽职守，遗漏了一些泥土忘记清理！
 
 # - You are currently referring to ${EName} as your ${EHonorinti}.
+# - To remove ${EName}, capture ${Ethem} as a prisoner and store ${Ethem} in your collection.
 - The Dollmaker does not take no for an answer.
 玩偶师不会接受 '不' 的回答。
 - Fuuka's shrine maidens would like to have a word with you.
@@ -54128,3 +54133,9 @@ ${You}陷入沉默，无法轻易施展法术。
 
 # - Copy Color
 # - Paste to Layer
+
+# - SP
+# - WP
+# - DP
+- MP
+法力值
