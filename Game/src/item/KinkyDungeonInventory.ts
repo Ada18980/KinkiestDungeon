@@ -1753,8 +1753,7 @@ function KDDrawInventoryContainer (
 								highlightcolor: highlightcolor,
 								hotkey: hk ? KDHotkeyToText(hk) : undefined,
 								hotkeyPress: hk,
-							//@ts-ignore // This should have a type assigned to it probably, but I do not know where to trace to make it happy. -Enraa
-							}, KDInventoryItemHover(filteredInventory[index].item)) && !tooltipitem) {
+							}, 0, KDInventoryItemHover(filteredInventory[index].item)) && !tooltipitem) {
 								tooltipitem = filteredInventory[index];
 							}
 							if (useIcons && filteredInventory[index].preview2)
