@@ -938,8 +938,8 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 
 									let o = {filters: [KDGetOutlineFilter(string2hex(b.aura), 1.0, 0.1, 1)], zIndex: -1 - s};
 
-									let w = (1 + 0.25 * s) * (enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay);//(1 + 0.25 * s) *
-									let h = (1 + 0.25 * s) * (enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay);
+									let w = (1 + 0.1 * s) * (enemy.Enemy.GFX?.spriteWidth || KinkyDungeonGridSizeDisplay);//(1 + 0.25 * s) *
+									let h = (1 + 0.1 * s) * (enemy.Enemy.GFX?.spriteHeight || KinkyDungeonGridSizeDisplay);
 
 									let spr = KDDraw(kdenemyboard, kdpixisprites, enemy.id + "," + b.id, KinkyDungeonRootDirectory + dir + sp + ".png",
 										(tx + (enemy.offX || 0) - CamX)*KinkyDungeonGridSizeDisplay - ((enemy.flip ? -1 : 1) * w - KinkyDungeonGridSizeDisplay)/2,
@@ -1612,10 +1612,14 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, enemy.Enemy.color ? {
 								tint: string2hex(enemy.Enemy.color),
-								zIndex: -2,
+								zIndex: -3,
 								
 								alpha: alphamult,
-							} : undefined);
+							} : {
+								zIndex: -3,
+								
+								alpha: alphamult,
+							});
 				}
 			}
 			if (enemy.weakBinding) { //  || enemy.specialBinding
@@ -2133,11 +2137,21 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 					if (KDCanDodge(enemy)) {
 						if (enemy.dodges >= 1) {
 							let pipY = 15 + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay;
+							let pipX = 7 + (xx - CamX)*KinkyDungeonGridSizeDisplay;
 							let pipSpacing = 0.5 * (KinkyDungeonGridSizeDisplay-25)/2;
 							for (let pip = 0; pip + 1 <= enemy.dodges && pip < 2; pip++) {
-								if (pip == 1 || enemy.dodges < 2)
+								if (pip == 1 || enemy.dodges < 2) {
+									DrawCircleKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpipb" + pip, {
+										Left: canvasOffsetX + pipX,
+										Top: pipY + 1,
+										Width: 10,
+										Height: 10,
+										Color: KDBaseBlack,
+										zIndex: 9.9,
+										LineWidth: 2,
+									});
 									DrawCircleKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip" + pip, {
-										Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
+										Left: canvasOffsetX + pipX,
 										Top: pipY,
 										Width: 10,
 										Height: 10,
@@ -2145,10 +2159,19 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 										zIndex: 10,
 										LineWidth: 2,
 									});
-								else {
-									DrawCrossKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip+" + pip, {
-										Left: canvasOffsetX + 15 + (xx - CamX)*KinkyDungeonGridSizeDisplay,
+								} else {
+									DrawCrossKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpipb+" + pip, {
+										Left: canvasOffsetX + pipX,
 										Top: pipY + 4,
+										Width: 6,
+										Height: 6,
+										Color: KDBaseBlack,
+										zIndex: 9.9,
+										LineWidth: 2,
+									});
+									DrawCrossKD(kdenemystatusboard, kdpixisprites, enemy.id + "Dpip+" + pip, {
+										Left: canvasOffsetX + pipX,
+										Top: pipY + 4 + 1,
 										Width: 6,
 										Height: 6,
 										Color: KDBaseWhite,
