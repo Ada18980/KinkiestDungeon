@@ -5053,22 +5053,24 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 			if (newState && newState != KDMapData.PrisonState) {
 				if (prisonType.states[prisonState].finally) prisonType.states[prisonState].finally(timeDelta, newState, false);
 				KDMapData.PrisonState = newState;
-				KinkyDungeonSendEvent("postPrisonStateForce", {delta: timeDelta});
+				prisonState = newState;
+				KinkyDungeonSendEvent("postPrisonStateForce", {delta: timeDelta, newState: prisonState, oldState: prisonState});
 			}
 			if (KDMapData.PrisonStateStack?.length > 0) {
 				for (let s of KDMapData.PrisonStateStack) {
 					if (prisonType.states[s].updateStack) prisonType.states[s].updateStack(timeDelta);
 				}
-				KinkyDungeonSendEvent("postPrisonUpdateStack", {delta: timeDelta});
+				KinkyDungeonSendEvent("postPrisonUpdateStack", {delta: timeDelta, state: prisonState});
 			}
 			if (prisonState) {
+				let oldState = prisonState;
 				newState = prisonType.states[prisonState].update(timeDelta);
 				if (newState != KDMapData.PrisonState) {
 					if (prisonType.states[prisonState].finally) prisonType.states[prisonState].finally(timeDelta, newState, false);
 					KDMapData.PrisonState = newState;
-					KinkyDungeonSendEvent("postPrisonStateChange", {delta: timeDelta});
+					KinkyDungeonSendEvent("postPrisonStateChange", {delta: timeDelta, newState: prisonState, oldState: oldState});
 				}
-				KinkyDungeonSendEvent("postPrisonUpdate", {delta: timeDelta});
+				KinkyDungeonSendEvent("postPrisonUpdate", {delta: timeDelta, state: prisonState, oldState: oldState});
 			}
 		} else {
 			KinkyDungeonHandleJailSpawns(maindelta);
