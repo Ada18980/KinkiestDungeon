@@ -58,7 +58,14 @@ function PopulateList(name: string, x: number, y: number, w: number, h: number, 
 		KDScrollableListDataset[name] = dataset;
 	}
 	Object.assign(dataset, {x, y, w, h, zIndex, num_per_page, items, allowWrap});
-	dataset.max = Math.max(0, items.length - dataset.num_per_page); // if we scroll past this we'll have empty rows
+	/*
+	 * If we prevent scrolling past index `length - num_per_page`, no empty rows will occur.
+	 * However if the list size is not evenly divisible by row size, this can cause the final
+	 * row to get cut off by the remainder when scrolling to the bottom. Add 1 to avoid that.
+	 * For evenly-divisible cases this produces 1 empty row which is a helpful indicator that
+	 * you're at the bottom of the list and can't scroll further.
+	 */
+	dataset.max = Math.max(0, items.length - dataset.num_per_page) + 1;
 	if (dataset.index > dataset.max) {
 		dataset.index = dataset.max;
 	}
