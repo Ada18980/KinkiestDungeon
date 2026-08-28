@@ -196,6 +196,27 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		else container = KDPIXIScrollableListContainers[name];
 	}
 
+	// the entire bar, inclusive of up/down buttons
+	const barX = horizontal ? list.x : (list.x + list.w - scrollbarSize);
+	const barY = horizontal ? (list.y + list.h - scrollbarSize) : list.y;
+	const barW = scrollbarSize;
+	const barH = list.h;
+
+	const upX = barX;
+	const upY = barY;
+	const upW = scrollbarSize;
+	const upH = scrollbarSize;
+
+	const downX = barX + (horizontal ? (list.w - scrollbarSize) : 0);
+	const downY = barY + (horizontal ? 0 : (list.h - scrollbarSize));
+	const downW = upW;
+	const downH = upH;
+
+	const gutterX = upX + (horizontal ? upW : 0);
+	const gutterY = upY + (horizontal ? 0 : upH);
+	const gutterW = barW - (horizontal ? (upW + downW) : 0);
+	const gutterH = barH - (horizontal ? 0 : (upH + downH));
+
 	if (drawBG) {
 		if (alphaborder > 0 || alphaborder == undefined)
 			DrawRectKD(container, kdpixisprites, name + "borderbg", {
@@ -225,10 +246,10 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			kdpixisprites,
 			name + "scrollBg",
 			{
-				Left: list.x + list.w - scrollbarSize,
-				Top: list.y,
-				Width: scrollbarSize,
-				Height: list.h + pad,
+				Left: barX,
+				Top: barY,
+				Width: barW + (horizontal ? 0 : pad),
+				Height: barH, // TODO may need padding. test when we have a horizontal case
 				Color: "#181a1c",
 				alpha: 1.0,
 				LineWidth: 2,
@@ -238,14 +259,13 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	}
 
 	// draw the scrollbar
+
 	DrawButtonKDEx(
-		name + "upbtn",
-		(): boolean => KDScrollScrollableList(name, -1),
-		true,
-		list.x + list.w - scrollbarSize,
-		list.y,
-		scrollbarSize,
-		scrollbarSize,
+		name + "upbtn", (): boolean => KDScrollScrollableList(name, -1), true,
+		upX,
+		upY,
+		upW,
+		upH,
 		"",
 		KDBaseWhite,
 		`${KinkyDungeonRootDirectory}Up${scrollSuff}.png`,
@@ -266,10 +286,10 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		name + "downbtn",
 		(): boolean => KDScrollScrollableList(name, 1),
 		true,
-		list.x + list.w - scrollbarSize,
-		list.y + list.h - scrollbarSize,
-		scrollbarSize,
-		scrollbarSize,
+		downX,
+		downY,
+		downW,
+		downH,
 		"",
 		KDBaseWhite,
 		`${KinkyDungeonRootDirectory}Down${scrollSuff}.png`,
@@ -286,12 +306,6 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		}
 	);
 
-	const gutterTop = list.y + scrollbarSize;
-	const gutterHeight = list.h - scrollbarSize * 2;
-
-	const tabLeft = list.x + list.w - scrollbarSize;
-	const tabWidth = scrollbarSize;
-
 	/*
 	 * The scroll tab scales logarithmically between its minimum and maximum sizes.
 	 * Its size decreases quickly at first and slows as page count grows.
@@ -301,31 +315,38 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	 * The minimum size is reached after the specified limit.
 	 *
 	 * Once we know how big the tab is, we can determine where its center is for the current index.
+	 * As much as possible of this math is done horizontal-agnostically to reduce complexity.
 	 */
 	const PAGE_SCALING_LIMIT = 10;
 	const pages = Clamp(list.items.length / list.num_per_page, 1, PAGE_SCALING_LIMIT);
 	const scale = 1 - Math.log(pages) / Math.log(PAGE_SCALING_LIMIT);
-	const tabMaxSize = gutterHeight;
-	const tabMinSize = scrollbarSize;
-	const tabHeight = LinearScale(scale, tabMinSize, tabMaxSize);
 
-	const tabCenterMin = gutterTop + tabHeight / 2;
-	const tabCenterMax = gutterTop + gutterHeight - tabHeight / 2;
+	const tabThickness = Math.min(gutterW, gutterH);
+	const tabMinLength = tabThickness;
+	const tabMaxLength = Math.max(gutterW, gutterH);
+	const tabLength = LinearScale(scale, tabMinLength, tabMaxLength);
+
+	const tabCenterMin = (horizontal ? gutterX : gutterY) + tabLength / 2;
+	const tabCenterMax = tabCenterMin + tabMaxLength - tabLength;
 	const tabCenter = list.max == 0 ?
 		// avoid division by 0. if max = 0, then it's not scrollable so the tab is the full height
 		LinearScale(0.5, tabCenterMin, tabCenterMax) :
 		LinearScale(list.index / list.max, tabCenterMin, tabCenterMax);
-	const tabTop = tabCenter - tabHeight / 2;
+
+	const tabX = horizontal ? (tabCenter - tabLength / 2) : gutterX;
+	const tabY = horizontal ? gutterY : (tabCenter - tabLength / 2);
+	const tabW = horizontal ? tabLength : tabThickness;
+	const tabH = horizontal ? tabThickness : tabLength;
 
 	FillRectKD(
 		container,
 		kdpixisprites,
 		name + "scrollTab",
 		{
-			Left: tabLeft,
-			Top: tabTop,
-			Width: tabWidth,
-			Height: tabHeight,
+			Left: tabX,
+			Top: tabY,
+			Width: tabW,
+			Height: tabH,
 			Color: KDStrongHighlightColor,
 			alpha: 0.9,
 			LineWidth: 0,
@@ -344,10 +365,10 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			return mouseHoldTaken == data?.button?.name;
 		}),
 		true,
-		list.x + list.w - scrollbarSize,
-		gutterTop,
-		scrollbarSize,
-		gutterHeight,
+		gutterX,
+		gutterY,
+		gutterW,
+		gutterH,
 		"",
 		KDBaseWhite,
 		"",
@@ -363,7 +384,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 
 	if (list.items.length > list.num_per_page) {
 		if (mouseHoldTaken == scrollGutterName) {
-			const scale = Clamp(MouseY - gutterTop, 0, gutterHeight) / gutterHeight;
+			const scale = Clamp(MouseY - gutterY, 0, gutterH) / gutterH;
 			list.index = Math.round(LinearScale(scale, 0, list.max));
 		} else {
 			const scrollDragName = name + "_drag";
