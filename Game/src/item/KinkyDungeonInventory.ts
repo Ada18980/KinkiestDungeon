@@ -1876,7 +1876,7 @@ function KDDrawInventoryContainer (
 
 				
 				return Math.floor(currentPage/numRows) == listRow;
-			}, undefined, false, undefined, undefined, 
+			}, false, false, undefined, undefined, 
 			"", "");
 
 

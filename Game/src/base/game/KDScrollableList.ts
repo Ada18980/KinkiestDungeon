@@ -219,6 +219,22 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 				LineWidth: 2,
 				zIndex: - 0.9,
 			});
+	} else {
+		FillRectKD(
+			container,
+			kdpixisprites,
+			name + "scrollBg",
+			{
+				Left: list.x + list.w - scrollbarSize,
+				Top: list.y,
+				Width: scrollbarSize,
+				Height: list.h + pad,
+				Color: "#181a1c",
+				alpha: 1.0,
+				LineWidth: 2,
+				zIndex: -1.1,
+			}
+		);
 	}
 
 	// draw the scrollbar
@@ -247,7 +263,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	);
 
 	DrawButtonKDEx(
-		name + "upbtn",
+		name + "downbtn",
 		(): boolean => KDScrollScrollableList(name, 1),
 		true,
 		list.x + list.w - scrollbarSize,
@@ -312,7 +328,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			Height: tabHeight,
 			Color: KDStrongHighlightColor,
 			alpha: 0.9,
-			LineWidth: 2,
+			LineWidth: 0,
 			zIndex: -0.9,
 		}
 	);
