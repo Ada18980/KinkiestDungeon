@@ -4341,7 +4341,8 @@ function KDProcessButtons() {
 	if (buttons.length > 0) {
 		buttons = buttons.sort((a, b) => {return (b.priority || 0) - (a.priority || 0);});
 		return buttons[0].func({
-			source: "mouse"
+			source: "mouse",
+			button: buttons[0],
 		});
 	}
 
@@ -4360,7 +4361,8 @@ function KDProcessHoldButtons() {
 	if (buttons.length > 0) {
 		buttons = buttons.sort((a, b) => {return b.priority - a.priority;});
 		return buttons[0].func({
-			source: "mouse"
+			source: "mouse",
+			button: buttons[0],
 		});
 	}
 

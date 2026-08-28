@@ -10,9 +10,6 @@ interface KDScrollableListData {
 	zIndex: number,
 	allowWrap: boolean,
     visual_index: number,
-    /** MouseX */
-    click_hold_y: number,
-    click_hold_y_index: number,
     max: number,
     min: number,
 	/** which one is selected */
@@ -22,7 +19,7 @@ interface KDScrollableListData {
     updateInterval: number,
 	lastDrawn: number
 }
-let KDScrollableListExp = 4;
+let KDScrollableListExp = 10;
 let KDScrollableListMin = 4;
 
 let KDScrollBarSpacingW = 0.63;
@@ -44,62 +41,27 @@ function ForceUpdateList(name: string) {
 		KDScrollableListDataset[name].lastUpdated = 0;
 	}
 }
-function PopulateList(name: string, x: number, y: number, w: number, h: number, z: number, num_per_page: number, list: any[], allowWrap?: boolean): KDScrollableListData {
-	if (!KDScrollableListDataset[name]) {
-		KDScrollableListDataset[name] = {
-			allowWrap: allowWrap,
-			x: x,
-			y: y,
-			w: w,
-			h: h,
-			click_hold_y: 0,
-			click_hold_y_index: 0,
+function PopulateList(name: string, x: number, y: number, w: number, h: number, zIndex: number, num_per_page: number, items: any[], allowWrap?: boolean): KDScrollableListData {
+	let dataset = KDScrollableListDataset[name];
+	if (!dataset) {
+		dataset = {
 			index: 0,
 			selectedindex: 0,
 			visual_index: 0,
-			items: [],
+			min: 0,
 			lastUpdated: 0,
-			updateInterval: 500,
-			zIndex: z,
-			max: list.length - 1,
-			min: 0,
-			num_per_page: num_per_page,
 			lastDrawn: 0,
-		};
-	} else {
-		let index = KDScrollableListDataset[name].index;
-		let selectedindex = KDScrollableListDataset[name].selectedindex;
-		let vindex = KDScrollableListDataset[name].visual_index;
-		let click_hold_y = KDScrollableListDataset[name].click_hold_y;
-		let click_hold_y_index = KDScrollableListDataset[name].click_hold_y_index;
-		let lastUpdated = KDScrollableListDataset[name].lastUpdated;
-		let lastDrawn = KDScrollableListDataset[name].lastDrawn;
-
-		KDScrollableListDataset[name] = {
-			allowWrap: allowWrap,
-			x: x,
-			y: y,
-			w: w,
-			h: h,
-			click_hold_y: click_hold_y,
-			click_hold_y_index: click_hold_y_index,
-			index: index,
-			selectedindex: selectedindex,
-			visual_index: vindex,
-			items: [],
-			lastUpdated: lastUpdated,
 			updateInterval: 500,
-			zIndex: z,
-			max: list.length - 1,
-			min: 0,
-			num_per_page: num_per_page,
-			lastDrawn: lastDrawn,
-		};
-
+		} as any;
+		KDScrollableListDataset[name] = dataset;
 	}
-	KDScrollableListDataset[name].items = list;
-	KDScrollableListDataset[name].lastUpdated = CommonTime();
-	return KDScrollableListDataset[name];
+	Object.assign(dataset, {x, y, w, h, zIndex, num_per_page, items, allowWrap});
+	dataset.max = Math.max(0, items.length - dataset.num_per_page); // if we scroll past this we'll have empty rows
+	if (dataset.index > dataset.max) {
+		dataset.index = dataset.max;
+	}
+	dataset.lastUpdated = CommonTime();
+	return dataset;
 }
 
 function KDFixScrollableList(name: string, pad = 3): boolean {
@@ -153,10 +115,7 @@ function KDScrollScrollableList(name: string, amount: number) {
 		list.index = list.max;
 	}
 	else {
-		list.index = Math.max(
-			Math.min(list.index + amount, 
-				Math.max(list.min, list.max - Math.max(0, Math.ceil(list.num_per_page*.3)))), 
-				list.min);
+		list.index = Clamp(list.index + amount, list.min, list.max);
 	}
 	return list.index != origIndex;
 }
@@ -180,6 +139,15 @@ function KDUpdateScrollableLists(delta: number) {
 
 let KDPIXIScrollableListContainers : Record<string, PIXIContainer> = {
 
+}
+
+function Clamp(x: number, min: number, max: number): number {
+	return Math.max(min, Math.min(max, x));
+}
+
+function LinearScale(percent: number, min: number, max: number): number {
+	percent = Clamp(percent, 0, 1);
+	return min + (max - min) * percent;
 }
 
 /** return function of callback is if this is selected or not */
@@ -244,109 +212,136 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			});
 	}
 
+	const scrollTabName = name + "scrollTab"
+	const scrollGutterName = name + "scrollGutter";
+
 	// draw the scrollbar
-	if (scrollbarSize > 0 && list.items.length > 0) {
-		let spacing = horizontal ? (list.w - scrollbarSize*2) * (1/list.items.length) : ((list.h - scrollbarSize*2) * (1/list.items.length));
-		FillRectKD(container, kdpixisprites, name + "scrollb", {
-			Left: list.x + (horizontal ? scrollbarSize + spacing * list.visual_index : list.w - scrollbarSize * KDScrollBarSpacingW),
-			Top: list.y + (horizontal ? list.h - scrollbarSize * KDScrollBarSpacingW : scrollbarSize + spacing * list.visual_index) + 3,
-			Width: (!horizontal) ? scrollbarSize * KDScrollBarW - 1 : (Math.max(1, 
-				Math.min((list.w - scrollbarSize*2) - spacing * list.visual_index, 
-			(list.w - scrollbarSize*2) * (list.num_per_page-1)/list.items.length) - 7)),
-			Height: horizontal ? scrollbarSize * KDScrollBarW - 1 : (Math.max(1, 
-				Math.min((list.h - scrollbarSize*2) - spacing * list.visual_index, 
-			(list.h - scrollbarSize*2) * (list.num_per_page-1)/list.items.length) - 7)),
+	DrawButtonKDEx(
+		name + "upbtn",
+		(): boolean => KDScrollScrollableList(name, -1),
+		true,
+		list.x + list.w - scrollbarSize,
+		list.y,
+		scrollbarSize,
+		scrollbarSize,
+		"",
+		KDBaseWhite,
+		`${KinkyDungeonRootDirectory}Up${scrollSuff}.png`,
+		undefined,
+		undefined,
+		true,
+		undefined,
+		undefined,
+		undefined,
+		{
+			centered: true,
+			hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
+			hotkeyPress: scrollhotkeyUp,
+		},
+	);
+
+	DrawButtonKDEx(
+		name + "upbtn",
+		(): boolean => KDScrollScrollableList(name, 1),
+		true,
+		list.x + list.w - scrollbarSize,
+		list.y + list.h - scrollbarSize,
+		scrollbarSize,
+		scrollbarSize,
+		"",
+		KDBaseWhite,
+		`${KinkyDungeonRootDirectory}Down${scrollSuff}.png`,
+		undefined,
+		undefined,
+		true,
+		undefined,
+		undefined,
+		undefined,
+		{
+			centered: true,
+			hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
+			hotkeyPress: scrollhotkeyDown,
+		}
+	);
+
+	const gutterTop = list.y + scrollbarSize;
+	const gutterHeight = list.h - scrollbarSize * 2;
+
+	const tabLeft = list.x + list.w - scrollbarSize;
+	const tabWidth = scrollbarSize;
+
+	/*
+	 * The scroll tab scales logarithmically between its minimum and maximum sizes.
+	 * Its size decreases quickly at first and slows as page count grows.
+	 * Linear scale results in a a scroll bar that's too big and awkward for low page counts.
+	 *
+	 * Content that doesn't need to be scrolled (i.e., <= 1 page) uses the maximum.
+	 * The minimum size is reached after the specified limit.
+	 *
+	 * Once we know how big the tab is, we can determine where its center is for the current index.
+	 */
+	const PAGE_SCALING_LIMIT = 10;
+	const pages = Clamp(list.items.length / list.num_per_page, 1, PAGE_SCALING_LIMIT);
+	const scale = 1 - Math.log(pages) / Math.log(PAGE_SCALING_LIMIT);
+	const tabMaxSize = gutterHeight;
+	const tabMinSize = scrollbarSize;
+	const tabHeight = LinearScale(scale, tabMinSize, tabMaxSize);
+
+	const tabCenterMin = gutterTop + tabHeight / 2;
+	const tabCenterMax = gutterTop + gutterHeight - tabHeight / 2;
+	const tabCenter = list.max == 0 ?
+		// avoid division by 0. if max = 0, then it's not scrollable so the tab is the full height
+		LinearScale(0.5, tabCenterMin, tabCenterMax) :
+		LinearScale(list.index / list.max, tabCenterMin, tabCenterMax);
+	const tabTop = tabCenter - tabHeight / 2;
+
+	FillRectKD(
+		container,
+		kdpixisprites,
+		scrollTabName,
+		{
+			Left: tabLeft,
+			Top: tabTop,
+			Width: tabWidth,
+			Height: tabHeight,
 			Color: KDStrongHighlightColor,
 			alpha: 0.9,
 			LineWidth: 2,
-			zIndex: - 0.9,
-		});
-		DrawHoldButtonKDExTo(container, name + "scrollbtn", (_b) => {
-			if (!mouseHoldTaken || mouseHoldTaken == name + "_scroll") {
-				mouseHoldTaken = name + "_scroll";
-				/*let mouseDelta = horizontal ? (MouseX - (scrollbarSize + list.x)) : (MouseY - (scrollbarSize + list.y));
-				mouseDelta /= horizontal ? list.w : list.h;
-				mouseDelta = Math.max(0, Math.min(mouseDelta, 1));
-				list.index = Math.max(
-				Math.min(Math.round(list.items.length * mouseDelta - list.num_per_page/2), 
-					Math.max(list.min, list.max - Math.max(0, Math.ceil(list.num_per_page*.3)))), 
-					list.min);*/
-				return true;
-			}
-			return false;
-		}, true, 
-		list.x + (horizontal ? scrollbarSize : list.w - scrollbarSize), 
-		list.y + (horizontal ? list.h - scrollbarSize : scrollbarSize) + 3,
-		horizontal ? (list.w - scrollbarSize*2) : scrollbarSize, horizontal ? scrollbarSize : (list.h - scrollbarSize*2), "", 
-		KDBaseWhite, "", undefined, 
-		true, true);
-
-		DrawButtonKDEx(name + "upbtn", (_b) => {
-			KDScrollScrollableList(name, -1);
-			return true;
-		}, true, 
-		list.x + (horizontal ? 0 : list.w - scrollbarSize), 
-		list.y + (horizontal ? list.h - scrollbarSize : 0), 
-		scrollbarSize, scrollbarSize, "", 
-		KDBaseWhite, KinkyDungeonRootDirectory + (horizontal ? "Left" : "Up") + scrollSuff + ".png", undefined, 
-		undefined, true, undefined, undefined, undefined, {
-				centered: true,
-				hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
-				hotkeyPress: scrollhotkeyUp,
-			});
-		DrawButtonKDEx(name + "downbtn", (_b) => {
-			KDScrollScrollableList(name, 1);
-			return true;
-		}, true, 
-		list.x + list.w - scrollbarSize, 
-		list.y + list.h - scrollbarSize, 
-		scrollbarSize, scrollbarSize, "", 
-		KDBaseWhite, KinkyDungeonRootDirectory + (horizontal ? "Right" : "Down") + scrollSuff + ".png", undefined, 
-		undefined, true, undefined, undefined, undefined, {
-				centered: true,
-				hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
-				hotkeyPress: scrollhotkeyDown,
-			});
-
-
-	}
-
-	// draw the items
-	if (list.items.length > 0 && (mouseHoldTaken == name + "_scroll")) {
-		let mouseDelta = horizontal ? (MouseX - (scrollbarSize + list.x)) : (MouseY - (scrollbarSize + list.y));
-		mouseDelta /= horizontal ? list.w : list.h;
-		mouseDelta = Math.max(0, Math.min(mouseDelta, 1));
-		list.index = Math.max(
-		Math.min(Math.round(list.items.length * mouseDelta - list.num_per_page/2), 
-			Math.max(list.min, list.max - Math.max(0, Math.ceil(list.num_per_page*.3)))), 
-			list.min);
-	}
-	else if (list.items.length > 0 && (!mouseHoldTaken || mouseHoldTaken == name + "_drag")) {
-		let spacing = horizontal ? (list.w - scrollbarSize*2) * (list.num_per_page/list.items.length) : ((list.h - scrollbarSize*2) * (list.num_per_page/list.items.length));
-		if (mouseDown && !list.click_hold_y) {
-			if (MouseIn(list.x, list.y, list.w - scrollbarSize, list.h)) {
-				list.click_hold_y = (horizontal ? MouseX : MouseY);
-				list.click_hold_y_index = list.index;
-			}
-		} else if (!mouseDown) {
-			list.click_hold_y = 0;
-		} else {
-			if (Math.abs(list.click_hold_y - (horizontal ? MouseX : MouseY)) > 50) {
-				MouseClicked = true;
-				mouseHoldTaken = name + "_drag";
-			}
-			
-
-			list.index = Math.min(Math.max(list.min, list.max - Math.max(0, Math.ceil(list.num_per_page*.3))), 
-			Math.max(list.min,
-				Math.round(list.click_hold_y_index + (list.click_hold_y - (horizontal ? MouseX : MouseY))/spacing)
-			));
-			list.visual_index = Math.min(list.max, 
-			Math.max(list.min - Math.max(0, Math.ceil(list.num_per_page*.3)),
-				list.click_hold_y_index + (list.click_hold_y - (horizontal ? MouseX : MouseY))/spacing
-			));
+			zIndex: -0.9,
 		}
+	);
+	DrawHoldButtonKDExTo(
+		container,
+		scrollGutterName,
+		((data: any): boolean => {
+			if (mouseHoldTaken == "") {
+				mouseHoldTaken = data?.button?.name;
+			}
+			return mouseHoldTaken == data?.button?.name;
+		}),
+		true,
+		list.x + list.w - scrollbarSize,
+		gutterTop,
+		scrollbarSize,
+		gutterHeight,
+		"",
+		KDBaseWhite,
+		"",
+		undefined,
+		false,
+		true,
+		undefined,
+		undefined,
+		undefined,
+		undefined,
+		2
+	);
+
+	if (list.items.length > list.num_per_page && mouseHoldTaken == scrollGutterName) {
+		const scale = Clamp(MouseY - gutterTop, 0, gutterHeight) / gutterHeight;
+		list.index = Math.round(LinearScale(scale, 0, list.max));
 	}
+
 
 	let lastSelectedIndex = list.selectedindex;	
 
