@@ -10,6 +10,8 @@ interface KDScrollableListData {
 	zIndex: number,
 	allowWrap: boolean,
     visual_index: number,
+    click_hold_y: number,
+    click_hold_y_index: number,
     max: number,
     min: number,
 	/** which one is selected */
@@ -212,9 +214,6 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			});
 	}
 
-	const scrollTabName = name + "scrollTab"
-	const scrollGutterName = name + "scrollGutter";
-
 	// draw the scrollbar
 	DrawButtonKDEx(
 		name + "upbtn",
@@ -298,7 +297,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	FillRectKD(
 		container,
 		kdpixisprites,
-		scrollTabName,
+		name + "scrollTab",
 		{
 			Left: tabLeft,
 			Top: tabTop,
@@ -310,6 +309,8 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			zIndex: -0.9,
 		}
 	);
+
+	const scrollGutterName = name + "scrollGutter";
 	DrawHoldButtonKDExTo(
 		container,
 		scrollGutterName,
@@ -337,9 +338,45 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		2
 	);
 
-	if (list.items.length > list.num_per_page && mouseHoldTaken == scrollGutterName) {
-		const scale = Clamp(MouseY - gutterTop, 0, gutterHeight) / gutterHeight;
-		list.index = Math.round(LinearScale(scale, 0, list.max));
+	if (list.items.length > list.num_per_page) {
+		if (mouseHoldTaken == scrollGutterName) {
+			const scale = Clamp(MouseY - gutterTop, 0, gutterHeight) / gutterHeight;
+			list.index = Math.round(LinearScale(scale, 0, list.max));
+		} else {
+			const scrollDragName = name + "_drag";
+			if (!mouseDown) {
+				list.click_hold_y = 0;
+			} else if (list.click_hold_y == 0) {
+				if (mouseHoldTaken == "" && MouseIn(list.x, list.y, list.w - scrollbarSize, list.h)) {
+					list.click_hold_y = MouseY;
+					list.click_hold_y_index = list.index;
+				}
+			} else if (["", scrollDragName].includes(mouseHoldTaken)) {
+				/*
+				 * PAGES_PER_SWIPE is the number of full pages to scroll when dragging across the entire length of the list,
+				 * before any adjustments or rounding are taken into consideration.
+				 *
+				 * When list length is small, e.g., num_per_page + 1, getting offset to be rounded up is difficult.
+				 * Add a bonus to the percent for small list lengths to coerce it to round up.
+				 * The bonus starts at MAX_BONUS at low (<1.5) page count and quickly becomes negligible as page count increases.
+				 */
+				const PAGES_PER_SWIPE = 2.5;
+				const MAX_BONUS = 0.25;
+				const bonus = MAX_BONUS / (1 + ((pages - 1) / (1 + MAX_BONUS)) ^ PAGES_PER_SWIPE);
+
+				const delta = MouseY - list.click_hold_y;
+				const percent = Math.abs(delta) / list.h + bonus;
+				const offset = Math.round(percent * PAGES_PER_SWIPE * list.num_per_page);
+
+				if (offset > 0) {
+					if (mouseHoldTaken == "") {
+						mouseHoldTaken = scrollDragName;
+					} else {
+						list.index = Clamp(list.click_hold_y_index + -Math.sign(delta) * offset, list.min, list.max);
+					}
+				}
+			}
+		}
 	}
 
 
