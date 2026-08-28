@@ -6871,6 +6871,18 @@ let KinkyDungeonGameKey: any = {
 						KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 					}
 					break;
+				case "PageUp":
+					KDMouseWheel({
+						deltaX: 0,
+						deltaY: -1,
+					} as WheelEvent);
+					break;
+				case "PageDown":
+					KDMouseWheel({
+						deltaX: 0,
+						deltaY: 1,
+					} as WheelEvent);
+					break;
 			}
 		}
 	},
