@@ -1876,7 +1876,7 @@ function KDDrawInventoryContainer (
 
 				
 				return Math.floor(currentPage/numRows) == listRow;
-			}, undefined, false, undefined, undefined, 
+			}, false, false, undefined, undefined, 
 			"", "");
 
 
@@ -2099,15 +2099,13 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, skipfilters = [], addFilte
 				KinkyDungeonCurrentFilter != KDFilters[I], KDButtonColor, undefined, undefined,
 			opts);
 
-			if (KinkyDungeonCurrentFilter == KDFilters[I]) {
-				DrawTextFitKD(label, 
-					canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 55 + XX*spacing
-						+ ((KinkyDungeonCurrentFilter == KDFilters[I] && perColumn >= 6) ? 110 : 90)/2, 
-				yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + YY*spacing + 80, 
-				((KinkyDungeonCurrentFilter == KDFilters[I] && perColumn >= 6) ? 110 : 90), KDBaseWhite, 
-				KDBaseBlack, 16, undefined,
-				110);
-			}
+			DrawTextFitKD(label,
+				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 55 + XX*spacing
+					+ ((KinkyDungeonCurrentFilter == KDFilters[I] && perColumn >= 6) ? 110 : 90)/2,
+			yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + YY*spacing + 80,
+			((KinkyDungeonCurrentFilter == KDFilters[I] && perColumn >= 6) ? 110 : 90), KDBaseWhite,
+			KDBaseBlack, 16, undefined,
+			110);
 
 		}
 
