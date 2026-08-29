@@ -356,7 +356,7 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
                     for (let tag of listt) {
                         if (yy + 18 < height - 50) {
                             yy += 8;
-                            let xx = DrawTextFitKD(TextGet("KDProgressTag_" + tag.key, tag.keyparams), 
+                            let xx = RetDrawTextFitKD(TextGet("KDProgressTag_" + tag.key, tag.keyparams), 
                                 x + 50, yy, width * 0.5, KDTextWhite, 
                                 KDTextGray0, 18, "left");
                             DrawTextFitKD((tag.value > 0 ? "+" : "") + tag.value, 

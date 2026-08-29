@@ -1002,7 +1002,7 @@ function KinkyDungeonDrawPerkOrb() {
                 textoffset += 20
 				let perktext = TextGet("KinkyDungeonStatDesc" + KinkyDungeonStatsPresets[p].id);
 
-				let perktextheight = DrawTextFitKDgetHeight(perktext, KDModalArea_x + (360 * i) + 30, textoffset, 300, KDBaseWhite, KDTextGray2, 16, "left", 110, 1.0, undefined, undefined, undefined, true, "top", 22) + 20;
+				let perktextheight = RetDrawTextFitKDgetHeight(perktext, KDModalArea_x + (360 * i) + 30, textoffset, 300, KDBaseWhite, KDTextGray2, 16, "left", 110, 1.0, undefined, undefined, undefined, true, "top", 22) + 20;
 				if (KinkyDungeonStatsPresets[p].cost < 0) {
 					FillRectKD(kdcanvas, kdpixisprites, `bg_${i}_debuffperk_${p}`, {
 						Left: KDModalArea_x + (360 * i) + 10,

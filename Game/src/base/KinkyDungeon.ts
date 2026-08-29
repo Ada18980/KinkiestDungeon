@@ -1683,7 +1683,7 @@ function KinkyDungeonRun() {
 		let ii = 0;
 		let h = size * txt.length;
 		for (let t of txt) {
-			w = Math.max(w, DrawTextFitKD(
+			w = Math.max(w, RetDrawTextFitKD(
 				t, MouseX, MouseY - 15 - h + size * ii++, 1000, KDBaseYellow, KDBaseBlack, size, "center", 250
 			));
 		}
@@ -3392,7 +3392,7 @@ function KDPurgeSpriteRelatedFilters(sprite: PIXISprite | PIXITexture) {
 function KDCullSprites(): void {
 	if (!KDlastCull.get(kdpixisprites)) KDlastCull.set(kdpixisprites, 0);
 	let cull = CommonTime() > ((KDlastCull.get(kdpixisprites) || 0) + KDGetCullTime());
-	let containersToPurge = new Map();
+	//let containersToPurge = new Map();
 	for (let sprite of kdpixisprites.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0]) || KDForceAllCull) {
 			if (cull && !sprite[1].destroyed) {
@@ -3403,16 +3403,16 @@ function KDCullSprites(): void {
 				if (sprite[1].removeChildren) sprite[1].removeChildren();
 				if (sprite[1].destroy) {
 					if (!sprite[1].destroyed) {
-						//if (sprite[1].clear) sprite[1].clear();
-						//sprite[1].destroy();
-						if (sprite[1].parent) {
+						if (sprite[1].clear) sprite[1].clear();
+						else sprite[1].destroy();
+						/*if (sprite[1].parent) {
 							if (!containersToPurge.get(sprite[1].parent)) {
 								containersToPurge.set(sprite[1].parent, new Map());
 							}
 							containersToPurge.get(sprite[1].parent).set(sprite[1], true);
 						} else {
 							sprite[1].destroy();
-						}
+						}*/
 					}
 				} else {
 					if (sprite[1].removeFromParent) sprite[1].removeFromParent();
@@ -3422,7 +3422,7 @@ function KDCullSprites(): void {
 			}
 		}// else sprite[1].visible = true;
 	}
-	for (let entry of containersToPurge.entries()) {
+	/*for (let entry of containersToPurge.entries()) {
 		if (entry[0].children) {
 			let newChildren = [];
 			for (let child of entry[0].children) {
@@ -3441,20 +3441,14 @@ function KDCullSprites(): void {
 	for (let entry of containersToPurge.entries()) {
 		for (let child of entry[1].keys()) {
 			child.destroy();
-			/*let start = performance.now();
-			child.destroy();
-			let end = performance.now();
-			if (end - start > 0.6) {
-				let a = 1;
-			}*/
 		}
-	}
+	}*/
 	if (cull) KDlastCull.set(kdpixisprites, CommonTime());
 }
 function KDCullSpritesList(list: Map<string, any>): void {
 	if (!KDlastCull.get(list)) KDlastCull.set(list, 0);
 	let cull = CommonTime() > ((KDlastCull.get(list) || 0) + KDGetCullTime());
-	let containersToPurge = new Map();
+	//let containersToPurge = new Map();
 	for (let sprite of list.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0]) || KDForceAllCull) {
 			if (cull && !sprite[1].destroyed) {
@@ -3466,16 +3460,16 @@ function KDCullSpritesList(list: Map<string, any>): void {
 				KDPurgeSpriteRelatedFilters(sprite[1]);
 				if (sprite[1].destroy) {
 					if (!sprite[1].destroyed) {
-						//if (sprite[1].clear) sprite[1].clear();
-						//sprite[1].destroy();
-						if (sprite[1].parent) {
+						if (sprite[1].clear) sprite[1].clear();
+						else sprite[1].destroy();
+						/*if (sprite[1].parent) {
 							if (!containersToPurge.get(sprite[1].parent)) {
 								containersToPurge.set(sprite[1].parent, new Map());
 							}
 							containersToPurge.get(sprite[1].parent).set(sprite[1], true);
 						} else {
 							sprite[1].destroy();
-						}
+						}*/
 					}
 				} else {
 					if (sprite[1].removeFromParent) sprite[1].removeFromParent();
@@ -3486,7 +3480,7 @@ function KDCullSpritesList(list: Map<string, any>): void {
 		}// else sprite[1].visible = true;
 	}
 	
-	for (let entry of containersToPurge.entries()) {
+	/*for (let entry of containersToPurge.entries()) {
 		if (entry[0].children) {
 			let newChildren = [];
 			for (let child of entry[0].children) {
@@ -3505,7 +3499,7 @@ function KDCullSpritesList(list: Map<string, any>): void {
 		for (let child of entry[1].keys()) {
 			child.destroy();
 		}
-	}
+	}*/
 	if (cull) KDlastCull.set(list, CommonTime());
 }
 

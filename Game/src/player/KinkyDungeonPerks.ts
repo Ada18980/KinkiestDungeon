@@ -1121,7 +1121,7 @@ function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 							unique: true,
 						});
 					if (MouseIn(XX, YY, KDPerksButtonWidth, KDPerksButtonHeight)) {
-						let h = DrawTextFitKDgetHeight(TextGet("KinkyDungeonStatDesc" + (stat[1].id)), 1000, 150, 1500, KDTextWhite, KDTextGray1, undefined, undefined, 110, 1.0, undefined, undefined, undefined, true);
+						let h = RetDrawTextFitKDgetHeight(TextGet("KinkyDungeonStatDesc" + (stat[1].id)), 1000, 150, 1500, KDTextWhite, KDTextGray1, undefined, undefined, 110, 1.0, undefined, undefined, undefined, true);
 						console.log(h);
 						let bottom = 150 + h / 2
 						let top = 150 - h / 2

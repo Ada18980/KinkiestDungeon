@@ -3642,7 +3642,7 @@ function KDDrawStruggleGroups() {
 						// Nope
 					} else if (StruggleType != "ContextMenu") {
 						let O = lastO;
-						let pentext = DrawTextKD(TextGet("KDItemDifficulty").replace("AMNT",
+						let pentext = RetDrawTextKD(TextGet("KDItemDifficulty").replace("AMNT",
 							Math.max(0,
 								Math.round(100 *
 									(0.01 * (item.tightness || 0)
@@ -3777,7 +3777,7 @@ function KDDrawStruggleGroups() {
 
 
 						let extraInfo = KDToggles.ShowExtraStruggle && amntPerc ? ` (${amntPerc})` : "";
-						let xlen = DrawTextKD(TextGet("KDItemStruggle" + (StruggleType)).replace("AMNT",
+						let xlen = RetDrawTextKD(TextGet("KDItemStruggle" + (StruggleType)).replace("AMNT",
 							amnt
 						).replace("ESCP", TextGet("KDEscape" + StruggleType))
 						+ extraInfo,
