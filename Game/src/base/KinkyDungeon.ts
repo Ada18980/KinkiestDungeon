@@ -1683,7 +1683,7 @@ function KinkyDungeonRun() {
 		let ii = 0;
 		let h = size * txt.length;
 		for (let t of txt) {
-			w = Math.max(w, DrawTextFitKD(
+			w = Math.max(w, RetDrawTextFitKD(
 				t, MouseX, MouseY - 15 - h + size * ii++, 1000, KDBaseYellow, KDBaseBlack, size, "center", 250
 			));
 		}
@@ -3392,47 +3392,114 @@ function KDPurgeSpriteRelatedFilters(sprite: PIXISprite | PIXITexture) {
 function KDCullSprites(): void {
 	if (!KDlastCull.get(kdpixisprites)) KDlastCull.set(kdpixisprites, 0);
 	let cull = CommonTime() > ((KDlastCull.get(kdpixisprites) || 0) + KDGetCullTime());
+	//let containersToPurge = new Map();
 	for (let sprite of kdpixisprites.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0]) || KDForceAllCull) {
-			if (cull) {
-				if (sprite[1].parent) {
-					sprite[1].parent.removeChild(sprite[1]);
-				}
+			if (cull && !sprite[1].destroyed) {
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 				kdpixisprites.delete(sprite[0]);
 				delete sprite[1].filters;
 				KDPurgeSpriteRelatedFilters(sprite[1]);
-				if (sprite[1].destroy && !sprite[1].destroyed) {
-					if (sprite[1].clear) sprite[1].clear();
-					sprite[1].destroy();
+				if (sprite[1].removeChildren) sprite[1].removeChildren();
+				if (sprite[1].destroy) {
+					if (!sprite[1].destroyed) {
+						if (sprite[1].clear) sprite[1].clear();
+						else sprite[1].destroy();
+						/*if (sprite[1].parent) {
+							if (!containersToPurge.get(sprite[1].parent)) {
+								containersToPurge.set(sprite[1].parent, new Map());
+							}
+							containersToPurge.get(sprite[1].parent).set(sprite[1], true);
+						} else {
+							sprite[1].destroy();
+						}*/
+					}
+				} else {
+					if (sprite[1].removeFromParent) sprite[1].removeFromParent();
 				}
-
-			} else sprite[1].visible = false;
+			} else {
+				sprite[1].visible = false;
+			}
 		}// else sprite[1].visible = true;
 	}
+	/*for (let entry of containersToPurge.entries()) {
+		if (entry[0].children) {
+			let newChildren = [];
+			for (let child of entry[0].children) {
+				if (!entry[1].get(child)) {
+					newChildren.push(child);
+				} else {
+					child.oldparent = child.parent;
+					child.parent = null;
+				}
+			}
+			entry[0].children = newChildren;
+		}
+
+	}
+	
+	for (let entry of containersToPurge.entries()) {
+		for (let child of entry[1].keys()) {
+			child.destroy();
+		}
+	}*/
 	if (cull) KDlastCull.set(kdpixisprites, CommonTime());
-
-
 }
 function KDCullSpritesList(list: Map<string, any>): void {
 	if (!KDlastCull.get(list)) KDlastCull.set(list, 0);
 	let cull = CommonTime() > ((KDlastCull.get(list) || 0) + KDGetCullTime());
+	//let containersToPurge = new Map();
 	for (let sprite of list.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0]) || KDForceAllCull) {
-			if (cull) {
-				sprite[1].parent.removeChild(sprite[1]);
+			if (cull && !sprite[1].destroyed) {
+				//if (sprite[1].removeFromParent) sprite[1].removeFromParent();
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 				list.delete(sprite[0]);
 				delete sprite[1].filters;
+				if (sprite[1].removeChildren) sprite[1].removeChildren();
 				KDPurgeSpriteRelatedFilters(sprite[1]);
-				if (sprite[1].destroy && !sprite[1].destroyed) {
-					if (sprite[1].clear) sprite[1].clear();
-					sprite[1].destroy();
+				if (sprite[1].destroy) {
+					if (!sprite[1].destroyed) {
+						if (sprite[1].clear) sprite[1].clear();
+						else sprite[1].destroy();
+						/*if (sprite[1].parent) {
+							if (!containersToPurge.get(sprite[1].parent)) {
+								containersToPurge.set(sprite[1].parent, new Map());
+							}
+							containersToPurge.get(sprite[1].parent).set(sprite[1], true);
+						} else {
+							sprite[1].destroy();
+						}*/
+					}
+				} else {
+					if (sprite[1].removeFromParent) sprite[1].removeFromParent();
 				}
+				
 
 			} else sprite[1].visible = false;
 		}// else sprite[1].visible = true;
 	}
+	
+	/*for (let entry of containersToPurge.entries()) {
+		if (entry[0].children) {
+			let newChildren = [];
+			for (let child of entry[0].children) {
+				if (!entry[1].get(child)) {
+					newChildren.push(child);
+				} else {
+					child.parent = null;
+				}
+			}
+			entry[0].children = newChildren;
+		}
+
+	}
+	
+	for (let entry of containersToPurge.entries()) {
+		for (let child of entry[1].keys()) {
+			child.destroy();
+		}
+	}*/
 	if (cull) KDlastCull.set(list, CommonTime());
 }
 
@@ -3558,7 +3625,7 @@ function DrawButtonKD (
         }
 		else {Disabled = true; hover = false;}
 	}
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder);
+	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, undefined, undefined, undefined, undefined, undefined,undefined, name);
 	KDButtonsCache[name] = params;
 }
 
@@ -3636,7 +3703,7 @@ function DrawHoldButtonKDExTo (
 		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) KDCurrentHoverButton = params;
 		else Disabled = true;
 	}
-	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
 	KDHoldButtonsCache[name] = params
 	return MouseIn(Left,Top,Width,Height);
 }
@@ -3718,7 +3785,7 @@ function DrawButtonKDEx (
         }
 		else {Disabled = true; hover = false;}
 	}
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
 	KDButtonsCache[name] = params
 	if (hover && options?.onHover) options.onHover(params);
 	return MouseIn(Left,Top,Width,Height);
@@ -3811,7 +3878,7 @@ function DrawButtonKDExContext (
 		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) KDCurrentHoverButton = params;
 		else Disabled = true;
 	}
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
 	KDButtonsCache[name] = params;
 	if (hover && options?.onHover) options.onHover(params);
 	return MouseIn(Left,Top,Width,Height);
@@ -3896,7 +3963,7 @@ function DrawButtonKDExScroll (
         }
 		else {Disabled = true; hover = false;}
 	}
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
 	KDButtonsCache[name] = params
 	if (hover && options?.onHover) options.onHover(params);
 	return MouseIn(Left,Top,Width,Height);
@@ -3982,7 +4049,7 @@ function DrawButtonKDExScrollTo (
         }
 		else {Disabled = true; hover = false;}
 	}
-	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
 	KDButtonsCache[name] = params
 	if (hover && options?.onHover) options.onHover(params);
 	return MouseIn(Left,Top,Width,Height);
@@ -4065,7 +4132,7 @@ function DrawButtonKDExTo (
 			hover = false;
 		}
 	}
-	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
 	KDButtonsCache[name] = params;
 	if (hover && options?.onHover) options.onHover(params);
 	return MouseIn(Left,Top,Width,Height);

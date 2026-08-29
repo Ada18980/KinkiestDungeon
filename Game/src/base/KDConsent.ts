@@ -737,7 +737,9 @@ function KDDrawConsent(xOffset) {
         DrawTextFitKDTo(container, TextGet("KDConsentItem_" + item.name,
             item.data), 
             list.x + 25 + (horizontal ? visualIndex * 80 : 0), list.y + listspacing/2 + (horizontal ? 0 : visualIndex * 80), 
-            w - 80, item.textColor, undefined, undefined, "left")
+            w - 80, item.textColor, undefined, undefined, "left",
+            undefined, undefined, undefined, undefined, undefined, undefined, 
+            "tx|" + item.name + "_label_scrollist")
 		   
         ii = 0;
         let hh = 64;

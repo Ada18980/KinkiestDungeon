@@ -1799,8 +1799,8 @@ function KDDrawInventoryContainer (
 							if (filteredInventory[index].key) {
 								KDDraw(container, kdpixisprites, prefix + "invchoice_key" + index,
 									KinkyDungeonRootDirectory + filteredInventory[index].key + ".png",
-									list.x + xx * b_width - 36, 
-									list.y + b_height * (yy + visualIndex) + 4, 28, 28,
+									list.x + xx * b_width, 
+									list.y + b_height * (yy + visualIndex) , 28, 28,
 									undefined, {
 										zIndex: 100.2,
 									});
@@ -1808,7 +1808,10 @@ function KDDrawInventoryContainer (
 							if (filteredInventory[index].item.quantity != undefined) {
 								DrawTextFitKDTo(container, "" + filteredInventory[index].item.quantity, 
 									list.x + xx * b_width + 5, 
-									list.y + b_height * (yy + visualIndex) + 18, b_width, KDBaseWhite, undefined, 18, "left");
+									list.y + b_height * (yy + visualIndex) + 18, undefined, KDBaseWhite, 
+									undefined, 18, "left", undefined, 
+									undefined, undefined,
+									undefined, undefined, undefined, prefix + "invchoice_quantity" + index);
 							}
 
 							if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.itemlabel
@@ -2001,6 +2004,17 @@ function KDDrawInventoryContainer (
 						} else {
 							KinkyDungeonInventoryOffset = 0;
 						}*/
+						
+
+						KinkyDungeonCurrentPageInventory = 0;
+						KinkyDungeonCurrentPageContainer = 0;
+
+						for (let values of Object.values(KDScrollableListDataset)) {
+							values.lastUpdated = 0;
+						}
+
+						KDRefreshInventoryList = true;
+						
 						KinkyDungeonFilterInventory(CurrentFilter, undefined, undefined, undefined, filters[i][0], KDInvFilter,
 							undefined, undefined, false
 						);
@@ -2103,7 +2117,8 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, skipfilters = [], addFilte
 				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 55 + XX*spacing
 					+ ((KinkyDungeonCurrentFilter == KDFilters[I] && perColumn >= 6) ? 110 : 90)/2,
 			yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer + YY*spacing + 80,
-			((KinkyDungeonCurrentFilter == KDFilters[I] && perColumn >= 6) ? 110 : 90), KDBaseWhite,
+			((KinkyDungeonCurrentFilter == KDFilters[I] && perColumn >= 6) ? 110 : 90), 
+			KinkyDungeonCurrentFilter != KDFilters[I] ? KDBaseLightGrey : KDBaseWhite,
 			KDBaseBlack, 16, undefined,
 			110);
 
@@ -2154,7 +2169,7 @@ function KinkyDungeonDrawInventory() {
 				let invactiontextwidth = KD_invactiontextwidth;
 				let invactiontextanchorx = KD_invactiontextanchorx_offset + invactiontextwidth/2 + xOffset;
 				let invactiontextanchory = KD_invactiontextanchory;
-				let width = DrawTextFitKD(TextGet("KDInventoryActionInfo_" + KDGameData.InventoryAction, 
+				let width = RetDrawTextFitKD(TextGet("KDInventoryActionInfo_" + KDGameData.InventoryAction, 
 					KDGameData.InventoryActionTokens), 
 				invactiontextanchorx,
 				invactiontextanchory, invactiontextwidth, 
