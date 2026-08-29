@@ -2556,7 +2556,8 @@ function KDGetStruggleData(data: KDStruggleData): string {
 				data.escapeChance *= 0.5;
 				data.limitChance *= 0.6; // Compensate by reducing limit chance a little
 			} else {
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedGrip"), KDBaseRed, 2, true);
+				if (!data.query)
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedGrip"), KDBaseRed, 2, true);
 				data.escapeChance *= 0.0;
 			}
 		} else if (data.hasAffinity) data.escapeChance *= 0.5;

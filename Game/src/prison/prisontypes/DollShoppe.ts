@@ -477,7 +477,7 @@ KDPrisonTypes.DollShoppe = {
 					}
 
 					if (!KinkyDungeonFlags.get("transformCD") && !KinkyDungeonStatsChoice.get("NoDollTransform") && !KinkyDungeonFlags.get("Transformed")
-						&& (KinkyDungeonFlags.get("annoy_puppet") || KDEntityBuffedStat(player, "Hypno_Doll") > 25)) {
+						&& (KDCanBeDolled(player))) {
 						return "Transform";
 					}
 					
@@ -1042,4 +1042,10 @@ function KDSelectLabel(entity: entity, label: KDLabel) {
 function KDGetLabel(entity: entity) {
 	if (!KDGameData.selectedLabel) KDGameData.selectedLabel = {};
 	return KDGameData.selectedLabel[entity.id];
+}
+
+function KDCanBeDolled(player: entity) {
+	return KinkyDungeonFlags.get("annoy_puppet")
+		|| KDFactionRelation("Player", "Dressmaker") <= KDREPHOSTILE 
+		|| KDEntityBuffedStat(player, "Hypno_Doll") > 10;
 }

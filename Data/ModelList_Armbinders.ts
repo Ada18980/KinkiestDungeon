@@ -15,6 +15,7 @@ AddModel({
 	Parent: "SantaHat",
 	AddPose: ["HideHands"],
 	Categories: ["Restraints", "Latex", "Binders"],
+	HideLayers: ["BindElbowLeft"],
 	Layers: ToLayerMap([
 		{ Name: "BinderLeft", Layer: "BindArmLeft", Pri: 32.1,
 			HideWhenOverridden: true,
@@ -22,7 +23,7 @@ AddModel({
 			InheritColor: "Binder",
 			DisplacementSprite: "BinderLeft",
 			DisplaceLayers: ToMap(["Arms"]),
-			DisplaceAmount: 100,
+			DisplaceAmount: 250,
 		},
 		{ Name: "BinderRight", Layer: "BindArmRight", Pri: 32.1,
 			HideWhenOverridden: true,
@@ -30,7 +31,7 @@ AddModel({
 			InheritColor: "Binder",
 			DisplacementSprite: "BinderRight",
 			DisplaceLayers: ToMap(["Arms"]),
-			DisplaceAmount: 100,
+			DisplaceAmount: 250,
 		},
 		{ Name: "BinderStrapLeft", Layer: "BindArmLeft", Pri: 32,
 			NoOverride: true,
@@ -55,6 +56,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
+	HideLayers: ["BindElbowLeft"],
 	Categories: ["Restraints", "Latex", "Binders"],
 	Layers: ToLayerMap([
 		{ Name: "BinderLeft", Layer: "BindArmLeft", Pri: 30,
@@ -63,7 +65,7 @@ AddModel({
 			InheritColor: "Binder",
 			DisplacementSprite: "BinderLeft",
 			DisplaceLayers: ToMap(["Arms"]),
-			DisplaceAmount: 100,
+			DisplaceAmount: 250,
 		},
 		{ Name: "BinderRight", Layer: "BindArmRight", Pri: 30,
 			HideWhenOverridden: true,
@@ -71,7 +73,7 @@ AddModel({
 			InheritColor: "Binder",
 			DisplacementSprite: "BinderRight",
 			DisplaceLayers: ToMap(["Arms"]),
-			DisplaceAmount: 100,
+			DisplaceAmount: 250,
 		},
 	])
 });
@@ -85,6 +87,7 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Leather", "Binders"],
 	AddPose: ["HideHands"],
+	HideLayers: ["BindElbowLeft"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SmoothArmbinder"),
 		{ Name: "StrapsLeft", Layer: "BindArmLeft", Pri: 31,
@@ -111,6 +114,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
+	HideLayers: ["BindElbowLeft"],
 	Categories: ["Restraints", "Leather", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Armbinder"),
@@ -129,6 +133,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
+	HideLayers: ["BindElbowLeft"],
 	Categories: ["Restraints", "Latex", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SmoothArmbinder"),
@@ -147,6 +152,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
+	HideLayers: ["BindElbowLeft"],
 	Categories: ["Restraints", "Leather", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Armbinder"),
@@ -165,6 +171,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
+	HideLayers: ["BindElbowLeft"],
 	Categories: ["Restraints", "Latex", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SmoothArmbinder"),
@@ -183,6 +190,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
+	HideLayers: ["BindElbowLeft"],
 	Categories: ["Restraints", "Leather", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Armbinder"),
@@ -202,6 +210,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
+	HideLayers: ["BindElbowLeft"],
 	Categories: ["Restraints", "Latex", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SmoothArmbinder"),
@@ -223,6 +232,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
+	HideLayers: ["BindElbowLeft"],
 	Categories: ["Restraints", "Leather", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Armbinder"),
