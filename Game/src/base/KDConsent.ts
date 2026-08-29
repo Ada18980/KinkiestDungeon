@@ -714,7 +714,7 @@ function KDDrawConsent(xOffset) {
         let list: ConsentListData[] = KDEnumerateConsentList(undefined, undefined, KDShowConsents);
         PopulateList(MainList, x, yStart, horizontal ? h : wList, 
             horizontal ? wList : h, 50, 
-            Math.round(h/spacing), 
+            Math.floor(h/spacing),
             list, false
         );
     }

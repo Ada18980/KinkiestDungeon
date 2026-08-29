@@ -1658,7 +1658,7 @@ function KDDrawInventoryContainer (
 					canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 135, 
 					yOffset + KDBaseInventoryOffset + KDDefaultYOffForInventoryContainer, 
 					totalwidth + 40, totalheight, 50, 
-					Math.ceil(totalheight / b_height), 
+					Math.floor(totalheight / b_height),
 					KDSplitIntoSublists(filteredInventory, numRows), false
 				);
 				if (KDRefreshInventoryList) {
