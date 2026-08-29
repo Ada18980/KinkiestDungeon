@@ -127,7 +127,7 @@ function KDDrawDialogue(delta: number): void {
 		if (!dialogue.drawFunction || !dialogue.drawFunction(gagged, KinkyDungeonPlayerEntity, delta)) {
 			let dialogueParams = KDGetGenericDialogueParams(KinkyDungeonPlayerEntity, KinkyDungeonFindID(
 				KDGameData.CurrentDialogEntity?.id || 0
-			));
+			) || KDGameData.CurrentDialogEntity);
 			// Type the message
 			let text = TextGet("r" + KDGameData.CurrentDialogMsg, dialogueParams).split(/\||\\n|\n/);
 			for (let i = 0; i < text.length; i++) {
@@ -195,7 +195,10 @@ function KDDrawDialogue(delta: number): void {
 											enemy: KDGetSpeaker()?.id});
 								}
 								return true;
-							}, KinkyDungeonDialogueTimer < CommonTime(), KDDialogueButtonX, KDDialogueButtonY + II * KDDialogueButtonSpacing, KDDialogueButtonWidth, KDDialogueButtonHeight,
+							}, KinkyDungeonDialogueTimer < CommonTime(), 
+							KDDialogueButtonX, 
+							KDDialogueButtonY + II * KDDialogueButtonSpacing, 
+							KDDialogueButtonWidth, KDDialogueButtonHeight,
 							(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(
 								entries[i][1].greyoutCustomTooltip
 								? entries[i][1].greyoutCustomTooltip(gagged, KDPlayer())

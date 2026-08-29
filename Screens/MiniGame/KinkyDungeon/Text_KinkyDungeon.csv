@@ -2948,6 +2948,13 @@ AttackDressmakerLock,"The dressmaker adds a lock 'just to complete the look, you
 AttackDressmaker,"The dressmaker cuddles your helpless body~ (DamageTaken)"
 
 
+NameTailor,Tailor
+KillTailor,"The tailor storms out in a rage."
+AttackTailorBind,"The tailor alters your outfit to include more restraints! (+RestraintAdded)"
+AttackTailorLock,"The tailor alters your outfit to include more locks!"
+AttackTailor,"The tailor cuddles your helpless body~ (DamageTaken)"
+
+
 NamePuppetmaster,Puppetmaster
 KillPuppetmaster,"The puppetmaster storms out in a rage."
 AttackPuppetmasterBind,"The puppetmaster has you try on one of ${Etheir} new accessories! (+RestraintAdded)"
@@ -31650,7 +31657,7 @@ rOrielHello,"(Oriel smiles)|Good!|I miss Sariel, though..."
 
 KDPersonalizedRoom,RMNME of CHTRNME the ENMYNME
 
-KDItemsTightness,"The item is TTT, and will get looser as you progress."
+KDItemsTightness,"The item is TTT. Struggling will loosen it."
 
 KDTightness0,somewhat tight
 KDTightness2,rather tight
@@ -34241,3 +34248,4 @@ KDSP,SP
 KDWP,WP
 KDDP,DP
 KDMP,MP
+
