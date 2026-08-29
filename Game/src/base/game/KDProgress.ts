@@ -162,12 +162,16 @@ function KDDrawProgressList(xOffset) {
         DrawTextFitKDTo(container, TextGet("KDProgressItem_" + item.name,
             item.data), 
             list.x + 20 + w*0.5 + (horizontal ? visualIndex * 80 : 0), list.y + 20 + (horizontal ? 0 : visualIndex * 80), 
-            w - 80, item.textColor)
+            w - 80, item.textColor, undefined, undefined, undefined,
+            undefined, undefined, undefined, undefined, undefined, undefined, 
+            "tx|" + item.name + "_label_scrollist")
 		if (item.level != undefined)
 			DrawTextFitKDTo(container, "" + item.level, 
 				list.x + 32 + (horizontal ? visualIndex * 80 : 0), list.y + 38 + (horizontal ? 0 : visualIndex * 80),
 				w - 10, item.textColor, undefined, 48, "center", 
-				100.5, 0.4)
+				100.5, 0.4,
+                undefined, undefined, undefined, undefined, 
+                "tx|" + item.name + "_label_scrollist_level")
        
         DrawRectKD(container, kdpixisprites, "MainProgressSelect" + item.name + "pbborder", {
             Color: item.bordercolor,

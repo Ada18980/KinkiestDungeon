@@ -1808,7 +1808,9 @@ function KDDrawInventoryContainer (
 							if (filteredInventory[index].item.quantity != undefined) {
 								DrawTextFitKDTo(container, "" + filteredInventory[index].item.quantity, 
 									list.x + xx * b_width + 5, 
-									list.y + b_height * (yy + visualIndex) + 18, b_width, KDBaseWhite, undefined, 18, "left");
+									list.y + b_height * (yy + visualIndex) + 18, b_width, KDBaseWhite, 
+									undefined, 18, "left", undefined, undefined, undefined,
+								undefined, undefined, undefined, prefix + "invchoice_quantity" + index);
 							}
 
 							if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.itemlabel

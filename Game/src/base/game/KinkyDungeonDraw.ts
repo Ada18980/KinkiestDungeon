@@ -3134,8 +3134,9 @@ function DrawBoxKD(Left: number, Top: number, Width: number, Height: number, Col
  * @returns - Nothing
  */
 function DrawBoxKDTo(Container: PIXIContainer, Left: number, Top: number, Width: number, Height: number, Color: string,
-	NoBorder?: boolean, Alpha?: number, zIndex: number = 90, bordercolor?: string): void {
-	FillRectKD(Container || kdcanvas, kdpixisprites, "box" + Left + "," + Top + "," + Width + "," + Height + Color + zIndex, {
+	NoBorder?: boolean, Alpha?: number, zIndex: number = 90, bordercolor?: string, name?: string): void {
+	FillRectKD(Container || kdcanvas, kdpixisprites, name ? name + "fill"
+		: ("box" + Left + "," + Top + "," + Width + "," + Height + Color + zIndex), {
 		Left: Left,
 		Top: Top,
 		Width: Width,
@@ -3147,7 +3148,8 @@ function DrawBoxKDTo(Container: PIXIContainer, Left: number, Top: number, Width:
 	});
 
 	if (!NoBorder) {
-		DrawRectKD(Container || kdcanvas, kdpixisprites, "boxBorder" + Left + "," + Top + "," + Width + "," + Height + zIndex, {
+		DrawRectKD(Container || kdcanvas, kdpixisprites, name ? name + "border"
+			: ("boxBorder" + Left + "," + Top + "," + Width + "," + Height + zIndex), {
 			Left: Left,
 			Top: Top,
 			Width: Width,
@@ -3287,12 +3289,13 @@ function DrawTextFitKDTo (
 	border:     number = undefined,
 	unique:     boolean = undefined,
 	font?: 		string,
-	wordwrap:	boolean = false
+	wordwrap:	boolean = false,
+	id?: string
 ): number {
 	if (!Text) return 0;
 	let alignment = Align ? Align : "center";
 
-	return DrawTextVisKD(Container || kdcanvas, kdpixisprites, "tx|" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
+	return DrawTextVisKD(Container || kdcanvas, kdpixisprites, id ? id : ("tx|" + Text + (!unique ? "," + X + "," + Y : "_unique")), {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -3871,10 +3874,11 @@ function DrawButtonVis (
 	ShiftText?:    boolean,
 	Stretch?:      boolean,
 	zIndex:        number = 100,
-	options?:      ButtonOptions
+	options?:      ButtonOptions,
+	name?: string
 ): void
 {
-	DrawButtonVisTo(kdcanvas, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex, options);
+	DrawButtonVisTo(kdcanvas, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex, options, name);
 }
 
 
@@ -3926,7 +3930,8 @@ function DrawButtonVisTo (
 	ShiftText?:    boolean,
 	Stretch?:      boolean,
 	zIndex:        number = 100,
-	options?:      ButtonOptions
+	options?:      ButtonOptions,
+	name?: string
 ): void
 {
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
@@ -3934,12 +3939,14 @@ function DrawButtonVisTo (
 		DrawBoxKDTo(Container, Left, Top, Width, Height,
 			options?.fillcolor != undefined ? options.fillcolor : (FillColor ? FillColor : (hover ? (KDTextGray2) : KDButtonColor)),
 			NoBorder, options?.alpha || KDBaseButtonAlpha, zIndex,
-			options?.bordercolor != undefined ? options.bordercolor : undefined
+			options?.bordercolor != undefined ? options.bordercolor : undefined, name + "_|||box"
 		);
 	if (hover) {
 		let pad = 1;
 		// Draw the button rectangle (makes the background color cyan if the mouse is over it)
-		DrawRectKD(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "out", {
+		DrawRectKD(Container || kdcanvas, kdpixisprites, name ? name + "_|||hover" : (
+			Left + "," + Top + Image + "w" + Width + "h" + Height + "out"
+		), {
 			Left: Left + pad,
 			Top: Top + pad,
 			Width: Width - 2 * pad + 1,
@@ -3966,7 +3973,9 @@ function DrawButtonVisTo (
 			};
 			if (options?.tint) o['tint'] = options.tint;
 			if (options?.spritealpha) o['alpha'] = options.spritealpha;
-			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + imgPath + "w" + Width + "h" + Height,
+			KDDraw(Container || kdcanvas, kdpixisprites, name ? name + "_|||sprite" : (
+				Left + "," + Top + imgPath + "w" + Width + "h" + Height
+			),
 				imgPath, Left, Top,
 				Math.min(Height, Width), Math.min(Height, Width), undefined, o);
 		} else {
@@ -3979,7 +3988,9 @@ function DrawButtonVisTo (
 			let centered = options?.centered
 				|| (img.orig.width > Width
 				&& img.orig.height > Height)
-			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + imgPath + "w" + Width + "h" + Height,
+			KDDraw(Container || kdcanvas, kdpixisprites, name ? name + "_|||spritestre" : (
+				Left + "," + Top + imgPath + "w" + Width + "h" + Height
+			),
 				imgPath, (centered ? Width/2 - img.orig.width/2 : 2) + Left,
 				Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
 		}
@@ -3990,7 +4001,9 @@ function DrawButtonVisTo (
 	if ((HoveringText) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
 		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0),
 			Top + Math.floor(Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
-			KDBaseWhite, undefined, undefined, undefined, zIndex + 1, undefined, undefined, undefined, KDButtonFont);
+			KDBaseWhite, undefined, undefined, undefined, zIndex + 1, 
+			undefined, undefined, undefined, KDButtonFont, undefined, 
+			name ? name + "_|||texthover" : undefined);
 		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
 	} else if (Label)
 		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0),
@@ -3999,7 +4012,8 @@ function DrawButtonVisTo (
 			(options && options.noTextBG) ? "none" : undefined,
 			FontSize, undefined, zIndex + 0.009, options?.textalpha, 
 			undefined,
-			options?.unique, KDButtonFont, options?.wrap);
+			options?.unique, KDButtonFont, options?.wrap,
+			name ? name + "_|||text" : undefined);
 		
 		
 
@@ -4009,7 +4023,8 @@ function DrawButtonVisTo (
 			Top + (size / 2) + 2, Width*0.7,
 			KDBaseVLightGrey,
 			(options && options.noTextBG) ? "none" : undefined,
-			size, "right", zIndex + 0.02, options?.textalpha, undefined, undefined, KDButtonFont);
+			size, "right", zIndex + 0.02, options?.textalpha, undefined, 
+			undefined, KDButtonFont, undefined, name ? name + "_|||hotkey" : undefined);
 	}
 }
 
