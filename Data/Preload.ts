@@ -581,17 +581,17 @@ async function load() {
 
 	//KDLoadingMax = 100;
 	
-	await LoadTextureAtlas(nearestList, PIXI.SCALE_MODES.NEAREST);
+	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
 	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
 	//await PreloadDisplacement(displacementList);
 	// Load everything twice... for good measure
 
 	setTimeout(() => {
-		LoadTextureAtlas(nearestList, PIXI.SCALE_MODES.NEAREST);
+		LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
 		LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
 	}, 700);
 
-	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
+	PIXI.BaseTexture.defaultOptions.scaleMode = KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR;
 
 }
 

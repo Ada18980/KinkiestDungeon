@@ -155,7 +155,7 @@ KDToggleShowSameCatSpells,Show future learnable spells
 KDTogglePlayerAura,Show Player Buff Auras
 KDToggleEnemyAura,Show Enemy Buff Auras
 KDToggleOutlineAura,Minimalist Enemy Auras
-KDToggleNearestNeighbor,Pixelated GFX (needs restart)
+KDToggleNearestNeighbor,Pixel Scaling (needs restart)
 KDToggleAutoCrouchOnTrip,Auto-Crouch when Tripped
 KDToggleRetroAnim,Retro Animations
 KDToggleFlipStatusBars,Flip Status Bars

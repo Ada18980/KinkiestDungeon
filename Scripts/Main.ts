@@ -28,7 +28,10 @@ let OGVSupported = false;
 })();
 
 
-let resolution = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
+function KDGetResolutionIndex() {
+	return (parseFloat(localStorage.getItem("KDResolution")) > KDResolutionList.length-1 ? 0 : parseFloat(localStorage.getItem("KDResolution"))) || 0;
+}
+let resolution = KDResolutionList[KDGetResolutionIndex()];
 
 KinkyDungeonSetupCrashHandler();
 

@@ -133,7 +133,7 @@ let kdbrightnessmap = null;
 let kdbrightnessmapGFX = null;
 
 if (StandalonePatched) {
-	let res = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
+	let res = KDResolutionList[KDGetResolutionIndex()];
 	kdbrightnessmapGFX = new PIXI.Container();
 	kdbrightnessmap = PIXI.RenderTexture.create({ width: res > 1 ? 2047 : 2000, height: res > 1 ? 1023 : 1000,});
 
