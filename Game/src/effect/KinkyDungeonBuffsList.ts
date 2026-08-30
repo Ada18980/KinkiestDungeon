@@ -209,7 +209,7 @@ const KDToy: KDBuff = {
 	]
 };
 const KDPlugged: KDBuff = {
-	id: "Plugged", type: "Plug", power: 1.0, aura: "#dddddd", auraSprite: "Plugged", player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, tags: ["plugged"], events: [
+	id: "Plugged", type: "Plug", power: 1.0, showCondition: ["SinglePlug"], aura: "#dddddd", auraSprite: "Plugged", player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, tags: ["plugged"], events: [
 		{type: "Distract", power: 0.2, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick", prereq: "NoChastity"},
 	]
@@ -335,3 +335,10 @@ let KDBuffClick: Record<string, (buff: KDBuff, entity: entity, data: any) => voi
 		}
 	},
 };
+
+
+let KDBuffShowConditions: Record<string, (enemy: entity, buff: KDBuff) => boolean> = {
+	SinglePlug: (enemy, buff) => {
+		return !KDEntityGetBuff(enemy, KDDoublePlugged.id);
+	}
+}

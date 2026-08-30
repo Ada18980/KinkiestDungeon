@@ -932,7 +932,9 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 						for (let b of buffs) {
 							if (b && b.aura && b.duration > 0 && !(b.auraSprite == "Null") && (b.showHelpless || !KDHelpless(enemy))) {
 								let s = aura_scale;
-								if (StandalonePatched && KDToggles.OutlineAura && !(b.noAuraColor && b.auraSprite)) {
+								if (b.showCondition && !b.showCondition.every((condition) => {return KDBuffShowConditions[condition](enemy, b);}))
+									continue;
+								if (StandalonePatched && KDToggles.OutlineAura && !(b.noAuraColor || b.auraSprite)) {
 
 
 
@@ -11793,3 +11795,4 @@ function KDEnemyHoldingStill(enemy: entity) {
 		&& !enemy.movePoints
 		&& (!enemy.IntentLeashPoint);
 }
+

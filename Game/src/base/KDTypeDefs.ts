@@ -1835,6 +1835,7 @@ interface KDBuff {
 	buffSpriteSpecific?: string,
 	click?: string,
 	disableTypes?: string[],
+	showCondition?: string[],
 	sfxApply?: string,
 	onlyAlly?: boolean,
 	noAlly?: boolean,
