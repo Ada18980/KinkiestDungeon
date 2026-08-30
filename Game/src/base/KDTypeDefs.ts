@@ -2255,6 +2255,9 @@ interface BulletTickData {
 interface spell {
 	nocrit?: boolean,
 
+	/** for spells with type Special, determines whether the sfx plays on the target's location or the caster (default: target) */
+	sfxOnCaster?: boolean,
+
 	/** bind tags for the spell/bullet */
 	bindTags?: string[],
 

@@ -106,7 +106,7 @@ let KDCurrentFade = 1;
 let KDMusicFadeTime = 2500; // 2 seconds
 let KDMusicFadeInTime = 2500; // 2 seconds
 let KDMusicTickRate = 100;
-let KDCurrentMusicSound: HTMLAudioElement = null;
+let KDCurrentMusicSound: HTMLAudioElement | KDFModWrapper = null;
 let KDCurrentMusicSoundUpdate = null;
 let allowMusic = navigator.userAgent.includes('Electron');
 
@@ -164,7 +164,7 @@ function KDUpdateMusic() {
 
 
 		let globalVolume = KDSoundEnabled() && KDToggles.Music ? KDMusicVolume * KDMusicVolumeMult : 0;
-		if (globalVolume > 0 && (!KDCurrentMusicSound || KDCurrentMusicSound.ended || KDCurrentMusicSound.paused || (!KDCurrentSong && KDCurrentFade == 0))) {
+		if (globalVolume > 0 && (!KDCurrentMusicSound || KDCurrentMusicSound.ended || (!CommonIsFMOD && KDCurrentMusicSound.paused) || (!KDCurrentSong && KDCurrentFade == 0))) {
 			KDPlayMusic(KDNewSong, globalVolume);
 		}
 		else if (!KDMusicForce && KDCurrentMusicSound && KDCurrentSong && !Object.keys(KDMusic).includes(KDCurrentSong)) {
@@ -196,7 +196,7 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 
 	// Start the new sound
 	let addNewListener = !KDCurrentMusicSound;
-	let audio = KDCurrentMusicSound || GetNewAudio();
+	let audio = (CommonIsFMOD ? null : KDCurrentMusicSound) || GetNewAudio();
 	let vol = (typeof Volume != 'undefined' ? Volume : 1.0);
 	KDCurrentMusicSound = audio;
 	KDCurrentMusicSoundUpdate = true;
@@ -214,10 +214,11 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 	}
 
 
-	if (addNewListener)
+	if (addNewListener) {
+		let a = audio;
 		audio.addEventListener('ended', function () {
-			this.currentTime = 0;
-			this.play();
+			a.currentTime = 0;
+			a.play();
 			lastKDMusicTick = performance.now() - 100;
 			// Current audio is now stale--chance of not being stale though
 			if (KDRandom() < KDMusicLoopTracksChance[KDCurrentSong]) {
@@ -228,6 +229,7 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 				KDNewSong = "";
 			}
 		}, false);
+	}
 
 	if (OGVSupported) {
 		audio.play();
@@ -242,13 +244,16 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 			KDNewSong = "";
 			KDMusicBusy = false;
 		} catch(error) {
+			// @ts-ignore
 			if (error.name === 'NotAllowedError') {
 				// Music will try to play again after a user gesture (onclick event)
 				console.log('Autoplay is blocked by browser policy.');
 				allowMusic = false;
 				KDMusicBusy = false;
 			} else {
+				// @ts-ignore
 				console.log('An error occurred while trying to play ' + Sound + " -- ", error.message);
+				// @ts-ignore
 				KDSendMusicToast("Error playing " + Sound + ": " + error.message); // This shouldn't happen, but now you'll get a bug report.
 				KDMusicBusy = false;
 			}
@@ -283,8 +288,14 @@ function KDEndMusic() {
 	KDCurrentSong = "";
 	KDNewSong = "";
 	if (KDCurrentMusicSound) {
-		KDCurrentMusicSound.pause();
-		KDCurrentMusicSound.currentTime = 0;
+		// @ts-ignore
+		if (CommonIsFMOD && KDCurrentMusicSound.end) {
+			// @ts-ignore
+			KDCurrentMusicSound.end();
+		} else {
+			KDCurrentMusicSound.pause();
+			KDCurrentMusicSound.currentTime = 0;
+		}
 		KDCurrentMusicSoundUpdate = true;
 	}
 }

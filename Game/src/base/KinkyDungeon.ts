@@ -107,6 +107,7 @@ let param_branch = pp.has('branch') ? pp.get('branch') : "";
 let param_test = pp.has('test') ? pp.get('test') : "";
 let param_localhost = pp.has('localhost') ? pp.get('localhost') : "";
 let TestMode = param_test || param_branch || param_localhost || ServerURL == 'https://bc-server-test.herokuapp.com/';
+let AllowFMOD = !(pp.has('noFMOD') ? pp.get('noFMOD') : "");
 
 let KDDebugMode = TestMode != false;
 let KDDebug = false;
@@ -7616,6 +7617,12 @@ class KDFModWrapper {
 	private cb = null;
 	private looped: boolean;
 
+	private point: KDPoint = null;
+
+	set location(value: KDPoint) {
+		this.point = value;
+	}
+
 	get volume(): number {
 		return this.vol;
 	}
@@ -7681,6 +7688,14 @@ class KDFModWrapper {
 				if (this.looped) {
 					// @ts-ignore
 					this.channel.setLoopCount(-1);
+					this.looped = false;
+				}
+
+				if (this.point) {
+					// @ts-ignore
+					let result = this.channel.setPan(Math.max(-1, Math.min(1, this.point.x * 0.2)));
+					KDCheckFMODResult(result);
+					this.point = null;
 				}
 
 				if (this.cb) {
@@ -7697,6 +7712,7 @@ class KDFModWrapper {
 							return FMOD.RESULT.OK;
 						});
 					KDCheckFMODResult(result);
+					this.cb = null;
 				} else {
 					// @ts-ignore
 					result = this.channel.setCallback((channelcontrol, controltype, callbacktype, commanddata1, commanddata2) => 
@@ -7759,6 +7775,26 @@ class KDFModWrapper {
 			KDCheckFMODResult(result);
 		}
 	}
+	get paused(): boolean{
+		
+		if (this.channel) {
+			let output: any = {};
+			// @ts-ignore
+			let result = this.channel.getPaused(output);
+			KDCheckFMODResult(result);
+			return output.val;
+		}
+		return true;
+	}
+
+	end() {
+		if (this.channel) {
+			let result = this.channel.stop();
+			KDCheckFMODResult(result);
+			this.ended = true;
+		}
+	}
+	ended = false;
 
 	get src(): string {
 		return this.source;
@@ -7823,21 +7859,33 @@ function GetNonFMODAudio() {
 	}
 }
 
-function AudioPlayInstantSoundKD(Path: string, volume?: number, pan?: number) {
+function AudioPlayInstantSoundKD(Path: string, volume?: number, location?: KDPoint) {
 	if (!KDSoundEnabled()) return false;
 	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : 1);
 	if (vol > 0) {
 		let src = KDModFiles[Path] || Path;
 		let audio = kdSoundCache.has(src) ? kdSoundCache.get(src) : GetNewAudio();
+		let created = false;
 		if (!kdSoundCache.has(src))  {
 			audio.src = src;
 			kdSoundCache.set(src, audio);
+			created = true;
+		} 
+		if (CommonIsFMOD) {
+			audio.volume = Math.min(vol, 1);
+			if (location) {
+				audio.location = location;
+			}
+			audio.play();
 		} else {
-			audio.pause();
-			audio.currentTime = 0;
+			if (!created) {
+				audio.pause();
+				audio.currentTime = 0;
+			}
+			audio.volume = Math.min(vol, 1);
+			audio.play();
 		}
-		audio.volume = Math.min(vol, 1);
-		audio.play();
+		
 	}
 }
 

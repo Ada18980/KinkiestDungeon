@@ -82,6 +82,8 @@ function KDCheckFMODResult(result): boolean
 	return true;
 }
 
+let AllowFMOD = true;
+
 
 async function FMODAfter() {
 	console.log("Running FMOD Init")
@@ -122,10 +124,12 @@ window.onload = function() {
 	Character = [];
 	CharacterNextId = 1;
 	CharacterReset(0);
-	//@ts-ignore
-	//let API = window.kdAPI;
-	//if (API)
-	FMODModule(KDFMOD);
+	if (AllowFMOD) {
+		//@ts-ignore
+		let API = window.kdAPI;
+		if (API || TestMode)
+			FMODModule(KDFMOD);
+	}
 
 
 	CurrentCharacter = null;

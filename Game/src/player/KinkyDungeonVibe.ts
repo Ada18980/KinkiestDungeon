@@ -320,8 +320,12 @@ function KDStopAllVibeSounds(Exceptions?: string[]) {
 				let audio = loc[1];
 				if (audio.sound) audio.sound = "";
 				if (audio.Audio) {
-					audio.Audio.pause();
-					audio.Audio.currentTime = 0;
+					if (CommonIsFMOD && audio.Audio.end) {
+						audio.Audio.end();
+					} else {
+						audio.Audio.pause();
+						audio.Audio.currentTime = 0;
+					}
 				}
 				loc[1].update = true;
 			}
@@ -341,8 +345,12 @@ function KDUpdateVibeSound(Location: string, Sound: string, Volume: number) {
 	if (prev != Sound) {
 		if (prev && KDVibeSounds[Location].Audio && !KDVibeSounds[Location].update) {
 			// Stop the previous sound
-			KDVibeSounds[Location].Audio.pause();
-			KDVibeSounds[Location].Audio.currentTime = 0;
+			if (CommonIsFMOD && KDVibeSounds[Location].Audio.end) {
+				KDVibeSounds[Location].Audio.end();
+			} else {
+				KDVibeSounds[Location].Audio.pause();
+				KDVibeSounds[Location].Audio.currentTime = 0;
+			}
 			//KDVibeSounds[Location].update = true;
 		}
 		if (Sound && !KDVibeSounds[Location].update) {
@@ -364,8 +372,12 @@ function KDUpdateVibeSound(Location: string, Sound: string, Volume: number) {
 	}
 	if (!Sound && KDVibeSounds[Location].Audio && !KDVibeSounds[Location].update) {
 		// Stop the previous sound
-		KDVibeSounds[Location].Audio.pause();
-		KDVibeSounds[Location].Audio.currentTime = 0;
+		if (CommonIsFMOD && KDVibeSounds[Location].Audio.end) {
+			KDVibeSounds[Location].Audio.end();
+		} else {
+			KDVibeSounds[Location].Audio.pause();
+			KDVibeSounds[Location].Audio.currentTime = 0;
+		}
 		KDVibeSounds[Location].update = true;
 	}
 	if (Volume != undefined && KDVibeSounds[Location] && KDVibeSounds[Location].Audio) {

@@ -437,7 +437,7 @@ function KDApplyBuff(list: Record<string, KDBuff>, origbuff: KDBuff, changes: Re
 		KinkyDungeonExpireBuff(entity, id);
 		return null;
 	} else {
-		if (!list[id] && buff.sfxApply) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + buff.sfxApply + ".ogg");
+		if (!list[id] && buff.sfxApply) KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/" + buff.sfxApply + ".ogg", KDPlayer(), entity);
 		if (!list[id]
 			|| (list[id].power >= 0 && buff.power >= list[id].power)
 			|| (list[id].power < 0

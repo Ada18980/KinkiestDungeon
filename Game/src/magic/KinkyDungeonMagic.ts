@@ -862,7 +862,8 @@ function KDDoGaggedMiscastFlagEvent(spell: spell, targetX: number, targetY: numb
  * @param [forceFaction]
  * @param [castData]
  */
-function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: entity, player: any, bullet?: KDBullet, forceFaction?: string, castData?: any, allowLeading?: boolean): {result: string, data: any} {
+function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: entity, player: any, bullet?: KDBullet,
+	forceFaction?: string, castData?: any, allowLeading?: boolean): {result: string, data: any, location: KDPoint} {
 	let entity = KinkyDungeonPlayerEntity;
 	let moveDirection = KinkyDungeonMoveDirection;
 	let flags = {
@@ -978,7 +979,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 			KinkyDungeonSendEvent("miscast", data);
 			KinkyDungeonSetFlag("miscast", 1);
 
-			return {result: "Miscast", data: data};
+			return {result: "Miscast", data: data, location: entity};
 		}
 	} else if (!enemy && !bullet && player) {
 		if (!spell.noCastMsg && (spell.noCastMsg === false || spell.type != "special"))
@@ -1394,7 +1395,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 				}
 			}
 			if (!casted)
-				return {result: "Fail", data: data};
+				return {result: "Fail", data: data, location: {x: targetX, y: targetY}};
 		} else if (spell.type == "special" || spell.special) {
 			let ret = KinkyDungeonSpellSpecials[spell.special](spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast);
 			if (ret == "Miscast") {
@@ -1402,7 +1403,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 				KinkyDungeonSendEvent("miscast", data);
 				KinkyDungeonSetFlag("miscast", 1);
 
-				return {result: "Miscast", data: data};
+				return {result: "Miscast", data: data, location: entity};
 			}
 			if (ret) {
 				if (!enemy && !bullet && player) {
@@ -1421,7 +1422,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 								let energyCost = KinkyDungeonPlayerDamage.special.energyCost;
 								if (KDGameData.AncientEnergyLevel < energyCost) {
 									if (!KinkyDungeonPlayerDamage.special.noSkip)
-										return {result: "Fail", data: data};
+										return {result: "Fail", data: data, location: entity};
 								} else {
 									if (energyCost) KDChangeCharge(KinkyDungeonPlayerDamage?.name, "weapon", "wepSpecial", - energyCost);
 								}
@@ -1466,7 +1467,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 
 
 				}
-				return {result: ret, data: data};
+				return {result: ret, data: data, location: spell.sfxOnCaster ? entity : {x: targetX, y: targetY}};
 			}
 		}
 	}
@@ -1533,7 +1534,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 			let special = KinkyDungeonPlayerDamage ? KinkyDungeonPlayerDamage.special : null;
 			if (special) {
 				let energyCost = KinkyDungeonPlayerDamage.special.energyCost;
-				if (KDGameData.AncientEnergyLevel < energyCost) return {result: "Fail", data: data};
+				if (KDGameData.AncientEnergyLevel < energyCost) return {result: "Fail", data: data, location: entity};
 				if (energyCost) KDChangeCharge(KinkyDungeonPlayerDamage?.name, "weapon", "wepSpecial", - energyCost);
 
 				KinkyDungeonSendEvent("playerCastSpecial", data);
@@ -1584,7 +1585,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 		KinkyDungeonSendEvent("spellCast", data);
 	}
 
-	return {result: "Cast", data: data};
+	return {result: "Cast", data: data, location: data.bulletfired || entity};
 }
 
 function KinkyDungeonClickSpellChoice(I: number, CurrentSpell: number) {

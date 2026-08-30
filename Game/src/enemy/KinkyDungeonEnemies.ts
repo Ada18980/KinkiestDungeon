@@ -2381,7 +2381,8 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 						if (enemy.vulnerable > 0)
 							KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_vuln", KinkyDungeonRootDirectory + "Conditions/" + (
 								KDToughArmor(enemy) ? "VulnerableBlocked" : "Vulnerable") + ".png",
-							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
+							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, 
+							canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 22,
 							});
@@ -7812,8 +7813,12 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				}
 
 
-				if (spell && KinkyDungeonCastSpell(xx, yy, spell, enemy, player, 
-					undefined, undefined, undefined, true).result == "Cast" && spell.sfx) {
+				let res = null;
+				if (spell) {
+					res = KinkyDungeonCastSpell(xx, yy, spell, enemy, player, 
+					undefined, undefined, undefined, true);
+				}
+				if (spell && res.result == "Cast" && spell.sfx) {
 					if (spell?.components?.includes("Verbal")) KinkyDungeonSetEnemyFlag(enemy, "verbalcast", 3);
 					if (!enemy.Enemy.noFlip) {
 						if (Math.sign(xx - enemy.x) < 0) {
@@ -7823,7 +7828,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						}
 					}
 					if (enemy.Enemy.suicideOnSpell) enemy.hp = 0;
-					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + spell.sfx + ".ogg", enemy);
+					KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/" + spell.sfx + ".ogg", KDPlayer(), {
+						x: res.location?.x || enemy.x, y: res.location?.y || enemy.y
+					});
 				}
 
 				KinkyDungeonSendEvent("enemyCast", {
@@ -7831,6 +7838,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					player: player, AIData: AIData,
 					tx: xx,
 					ty: yy,
+					castResult: res,
 				});
 
 				if (KDRandom() < actionDialogueChanceIntense)
