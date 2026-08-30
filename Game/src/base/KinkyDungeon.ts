@@ -6098,6 +6098,7 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 	KinkyDungeonNewGame = 0;
 	let cp = KinkyDungeonMapIndex.grv;
 	KDUpdateHardMode();
+	if (!Load) KinkyDungeonNewDress = true;
 	KinkyDungeonInitialize(1, Load);
 	MiniGameKinkyDungeonCheckpoint = "grv";
 	KDMapData.Grid = "";
