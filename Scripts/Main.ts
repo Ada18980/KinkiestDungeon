@@ -82,7 +82,6 @@ function KDCheckFMODResult(result): boolean
 	return true;
 }
 
-let AllowFMOD = true;
 
 
 async function FMODAfter() {
