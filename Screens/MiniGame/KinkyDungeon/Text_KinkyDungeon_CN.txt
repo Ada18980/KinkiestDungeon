@@ -5864,6 +5864,8 @@ M.F. '女仆长'
 
 - Tailor
 裁缝
+# :: NameDressmakerQuest
+# :: NameTailor
 - You rob the tailor!
 你抢了裁缝！
 
@@ -5938,6 +5940,12 @@ Ada 屈服于欲望，跌倒在地~
 裁缝加了一把锁，“为了完成造型，你懂的~”
 - The dressmaker cuddles your helpless body~ (DamageTaken)
 裁缝拥抱你无助的身体~(DamageTaken)
+
+
+# - The tailor storms out in a rage.
+# - The tailor alters your outfit to include more restraints! (+RestraintAdded)
+# - The tailor alters your outfit to include more locks!
+# - The tailor cuddles your helpless body~ (DamageTaken)
 
 
 - Puppetmaster
@@ -50138,7 +50146,7 @@ Mmmph mmm! (帮帮我！)
 - RMNME of CHTRNME the ENMYNME
 ENMYNME CHTRNME 的 RMNME
 
-- The item is TTT, and will get looser as you progress.
+- The item is TTT. Struggling will loosen it.
 此物品TTT，随着你的进度会变得更宽松。
 
 - somewhat tight
@@ -54143,3 +54151,4 @@ ${You}陷入沉默，无法轻易施展法术。
 # - DP
 - MP
 法力值
+
