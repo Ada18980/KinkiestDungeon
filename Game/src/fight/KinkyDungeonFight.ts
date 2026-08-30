@@ -1051,7 +1051,7 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 			else if (buffreduction && predata.dmgDealt > 0) {
 				predata.dmgDealt = Math.max(predata.dmgDealt - buffreduction, 0);
 				KinkyDungeonTickBuffTag(Enemy, "damageTaken", 1);
-				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Shield.ogg");
+				KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/Shield.ogg", KDPlayer(), Enemy);
 			}
 
 			if (!predata.blocked)
@@ -1069,8 +1069,12 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 
 			KinkyDungeonSendEvent("duringDamageEnemy", predata, undefined, predata.forceWeapon);
 
-			if (Spell && Spell.hitsfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + Spell.hitsfx + ".ogg");
-			else if (!(Spell && Spell.hitsfx) && predata.dmgDealt > 0 && bullet) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DealDamage.ogg");
+			if (Spell && Spell.hitsfx) KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/" + Spell.hitsfx + ".ogg",
+				KDPlayer(), Enemy
+			);
+			else if (!(Spell && Spell.hitsfx) && predata.dmgDealt > 0 && bullet)
+				KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/DealDamage.ogg",
+				KDPlayer(), Enemy);
 			if (!predata.blocked && !KinkyDungeonIgnoreBlockTypes.includes(predata.type) && predata.dmgDealt >= 1 && !predata.noblock && Enemy.blocks >= 1 && KDCanBlock(Enemy)) {
 				let blockCount = 1;
 				Enemy.blocks -= 1;
@@ -1926,7 +1930,8 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 
 					let res = KinkyDungeonCastSpell(xx, yy, castingSpell, undefined, undefined, b);
 					if (res.data?.bulletfired) res.data.bulletfired.collisionUpdate = true;
-					if (b.bullet.cast.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + b.bullet.cast.sfx + ".ogg");
+					if (b.bullet.cast.sfx) KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/" + b.bullet.cast.sfx + ".ogg", KDPlayer(),
+					{x: xx, y: yy});
 				}
 			}
 		}

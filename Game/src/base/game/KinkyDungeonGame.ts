@@ -390,6 +390,11 @@ function KDAlreadyOpened(x: number, y: number): boolean {
 }
 
 function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number) {
+	if (entity) {
+		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol);
+
+		return;
+	}
 	if (KDSoundEnabled() && !KinkyDungeonSFX.includes(src)) {
 		if (!entity || KinkyDungeonVisionGet(entity.x, entity.y) > 0) {
 			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
@@ -398,6 +403,29 @@ function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number) {
 		}
 	}
 }
+function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPoint, vol?: number) {
+	if (KDSoundEnabled() && !KinkyDungeonSFX.includes(src)) {
+		if (!vol) vol = 1;
+		if (point) {
+			vol *= 1 - 0.1*KDistEuclidean(player.x - point.x, player.y - point.y);
+			if (KinkyDungeonVisionGet(point.x, point.y) > 0) {
+				//vol *= 1;
+			} else {
+				vol *= 0.5;
+				// TODO add muted sfx if FMOD
+			}
+		}
+		if (vol > 0) {
+			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
+			AudioPlayInstantSoundKD(src, vol, point ? {
+				x: point.x - player.x, y: point.y - player.y
+			} : undefined);
+			KinkyDungeonSFX.push(src);
+		}
+	}
+}
+
+
 
 function KinkyDungeonSetCheckPoint(Checkpoint?: string, _AutoSave?: any, _suppressCheckPoint?: any) {
 	if (Checkpoint != undefined) MiniGameKinkyDungeonCheckpoint = Checkpoint;
@@ -3253,7 +3281,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 							targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon,
 						});
 					if (res.result == "Cast" && sp.sfx) {
-						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sp.sfx + ".ogg");
+						KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/" + sp.sfx + ".ogg", KDPlayer(), {x: moveX, y: moveY});
 					}
 					if (res.result != "Fail" && !sp.quick) {
 						KinkyDungeonAdvanceTime(res.data.delta);

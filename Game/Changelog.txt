@@ -76,6 +76,9 @@ Must do
 - Proper stripping
 - species perks
 
+5.5.2
+- Added FMOD sound engine with panning for some SFX (offline ver. only)
+
 5.5.1
 - Added pronoun selection to players and NPCs in collection
 - Added "Bra/Panty/Sock/None" field to expert tools, allowing to specify the type of underwear an item is. Currently unused, but will be used for future stripping mechanics

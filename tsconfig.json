@@ -4,6 +4,8 @@
         // Library .d.ts files
         "Scripts/lib/LZString.d.ts",
 
+        "Scripts/lib/fmod.d.ts",
+
         // BC and KD .d.ts files
         "Scripts/Typedef.ts",
         "Game/src/base/KDTypeDefs.ts",
