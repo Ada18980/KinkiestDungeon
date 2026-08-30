@@ -933,7 +933,10 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 							if (b && b.aura && b.duration > 0 && !(b.auraSprite == "Null") && (b.showHelpless || !KDHelpless(enemy))) {
 								let s = aura_scale;
 								if (b.showCondition && !b.showCondition.every((condition) => {return KDBuffShowConditions[condition](enemy, b);}))
+								{
+									aura_scale += 1/aura_scale_max;
 									continue;
+								}
 								if (StandalonePatched && KDToggles.OutlineAura && !(b.noAuraColor || b.auraSprite)) {
 
 
