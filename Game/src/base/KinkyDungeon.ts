@@ -4138,7 +4138,12 @@ function DrawButtonKDExTo (
 	return MouseIn(Left,Top,Width,Height);
 }
 
-function KDMouseWheel (event: WheelEvent): void {
+interface KDDeltaScrollEvent {
+	deltaY: number,
+	deltaX: number,
+}
+
+function KDMouseWheel (event: KDDeltaScrollEvent): void {
 	if (!KDProcessButtonScroll(event.deltaY)) {
 		// If we fail we dilate the buttons vertically
 		if (KDProcessButtonScroll(event.deltaY, 15)) return;
@@ -6844,8 +6849,29 @@ window.addEventListener('mouseup', function(event) {
 	LastHoldTime = CommonTime() - HoldStartTime;
 });
 window.addEventListener('wheel', function(event) {
-	KDMouseWheel(event);
+	KDScrollCapacitorX += event.deltaX;
+	KDScrollCapacitorY += event.deltaY;
+
+	if (Math.abs(KDScrollCapacitorX) >= KDScrollCapacitorFactor
+		|| Math.abs(KDScrollCapacitorY) >= KDScrollCapacitorFactor) {
+
+		KDMouseWheel({
+			deltaX: Math.abs(KDScrollCapacitorX) >= KDScrollCapacitorFactor ?
+				KDScrollCapacitorX : 0,
+			deltaY: Math.abs(KDScrollCapacitorY) >= KDScrollCapacitorFactor ?
+				KDScrollCapacitorY : 0,
+		});
+		if (Math.abs(KDScrollCapacitorX) >= KDScrollCapacitorFactor)
+			KDScrollCapacitorX = 0;
+		if (Math.abs(KDScrollCapacitorY) >= KDScrollCapacitorFactor)
+			KDScrollCapacitorY = 0;
+	}
+	
 });
+
+let KDScrollCapacitorFactor = 100;
+let KDScrollCapacitorX = 0;
+let KDScrollCapacitorY = 0;
 
 
 /**
