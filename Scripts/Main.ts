@@ -123,9 +123,9 @@ window.onload = function() {
 	CharacterNextId = 1;
 	CharacterReset(0);
 	//@ts-ignore
-	let API = window.kdAPI;
-	if (API)
-		FMODModule(KDFMOD);
+	//let API = window.kdAPI;
+	//if (API)
+	FMODModule(KDFMOD);
 
 
 	CurrentCharacter = null;

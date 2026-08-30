@@ -1504,6 +1504,9 @@ let KDLastScrollableListUpdate = 0;
 let mouseHoldTaken = "";
 
 function KinkyDungeonRun() {
+	if (KDFmodSystem) {
+		KDFmodSystem.update();
+	}
 	documentcache = new Map();
 	if (!mouseDown)
 		mouseHoldTaken = "";
@@ -7628,10 +7631,6 @@ class KDFModWrapper {
 	}
 	set loop(value: boolean) {
 		this.looped = value;
-		if (this.channel) {
-			// @ts-ignore
-			this.channel.setLoopCount(value ? -1 : 0);
-		}
 	}
 
 	
@@ -7656,27 +7655,96 @@ class KDFModWrapper {
 		if (!this.channel) return;
 		if (type == 'ended') {
 			this.cb = listener;
-			// @ts-ignore
-			let result = this.channel.setCallback((channelcontrol, controltype, callbacktype, commanddata1, commanddata2) => 
-				{
-					if (callbacktype === FMOD.CHANNELCONTROL_CALLBACK_TYPE.END)
-					{
-						this.cb();
-						this.channel = null;
-					}
-
-					return FMOD.RESULT.OK;
-				});
-			KDCheckFMODResult(result);
 		}
 	}
 
 	public play() {
-		if (this.channel) {
-			// @ts-ignore
-			let result = this.channel.setPaused(false);
-			KDCheckFMODResult(result);
+		let value = this.src;
+		
+		var channelOut: any = {};
+
+
+    	var outval: any = {};
+		var result;
+
+		let gSound = kdSoundCache[value];
+
+		let doIt = () => {
+			result = KDFmodSystem.playSound(gSound,
+			null, true, channelOut);
+			if (KDCheckFMODResult(result)) {
+				this.channel = channelOut.val;
+				//@ts-ignore
+				this.channel.setVolume(this.vol);
+
+				if (this.looped) {
+					// @ts-ignore
+					this.channel.setLoopCount(-1);
+				}
+
+				if (this.cb) {
+					// @ts-ignore
+					result = this.channel.setCallback((channelcontrol, controltype, callbacktype, commanddata1, commanddata2) => 
+						{
+							if (callbacktype === FMOD.CHANNELCONTROL_CALLBACK_TYPE.END)
+							{
+								this.cb();
+								console.log("End")
+								this.channel = null;
+							}
+
+							return FMOD.RESULT.OK;
+						});
+					KDCheckFMODResult(result);
+				} else {
+					// @ts-ignore
+					result = this.channel.setCallback((channelcontrol, controltype, callbacktype, commanddata1, commanddata2) => 
+						{
+							if (callbacktype === FMOD.CHANNELCONTROL_CALLBACK_TYPE.END)
+							{
+								console.log("End")
+								this.channel = null;
+							}
+
+							return FMOD.RESULT.OK;
+						});
+					KDCheckFMODResult(result);
+				}
+
+				
+				// @ts-ignore
+				result = this.channel.setPaused(false);
+				KDCheckFMODResult(result);
+
+			}
 		}
+
+		if (!gSound) {
+			fetch(value)
+				.then(res => res.blob())
+				.then((blob) => {
+					var exinfo = KDFMOD.CREATESOUNDEXINFO();
+					// Create a sound that loops
+					let fr = new FileReader();
+					fr.addEventListener('load', (event) => {
+						//@ts-ignore
+						let chars: any = new Uint8Array(event.target.result);
+						exinfo.length = chars.length;
+
+						result = KDFmodSystem.createSound(chars.buffer, FMOD.MODE.LOOP_OFF | FMOD.MODE.OPENMEMORY, exinfo, outval);
+						delete chars.buffer;
+						if (!KDCheckFMODResult(result)) return;
+						gSound = outval.val;
+						
+
+						doIt();
+						kdSoundCache[value] = outval.val;
+					})
+					fr.readAsArrayBuffer(blob);
+				})
+			
+			
+		} else doIt();
 		return new Promise((resolve, reject)=> {
 			//dummy
 			resolve(null)
@@ -7696,48 +7764,11 @@ class KDFModWrapper {
 	}
 	set src(value: string) {
 		this.source = value;
-		var channelOut: any = {};
-
 
     	var outval: any = {};
 		var result;
 
 		let gSound = kdSoundCache[value];
-
-		let doIt = () => {
-			result = KDFmodSystem.playSound(gSound,
-			null, true, channelOut);
-			if (KDCheckFMODResult(result)) {
-				this.channel = channelOut.val;
-				//@ts-ignore
-				this.channel.setVolume(this.vol);
-
-				if (this.cb) {
-					// @ts-ignore
-					result = this.channel.setCallback((channelcontrol, controltype, callbacktype, commanddata1, commanddata2) => 
-						{
-							if (callbacktype === FMOD.CHANNELCONTROL_CALLBACK_TYPE.END)
-							{
-								this.cb();
-								this.channel = null;
-							}
-
-							return FMOD.RESULT.OK;
-						});
-					KDCheckFMODResult(result);
-				}
-
-				// @ts-ignore
-				result = this.channel.setPaused(false);
-				KDCheckFMODResult(result);
-
-				
-				setTimeout(() => {
-					console.log(this.currentTime)
-				}, 1000)
-
-			}
-		}
 
 		if (!gSound) {
 			fetch(value)
@@ -7759,14 +7790,13 @@ class KDFModWrapper {
 						gSound = outval.val;
 						
 
-						doIt();
 						kdSoundCache[value] = outval.val;
 					})
 					fr.readAsArrayBuffer(blob);
 				})
 			
 			
-		} else doIt();
+		}
 
 	}
 
