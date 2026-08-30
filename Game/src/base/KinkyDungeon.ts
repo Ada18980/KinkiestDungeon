@@ -6965,10 +6965,20 @@ let KinkyDungeonGameKey: any = {
 					}
 					break;
 				case "PageUp":
-					KDPageScrollableLists(-1);
+					if (!KDPageScrollableLists(-1)) {
+						KDMouseWheel({
+							deltaX: 0,
+							deltaY: -100,
+						});
+					}
 					break;
 				case "PageDown":
-					KDPageScrollableLists(1);
+					if (!KDPageScrollableLists(1)) {
+						KDMouseWheel({
+							deltaX: 0,
+							deltaY: 100,
+						});
+					}
 					break;
 			}
 		}
@@ -7647,7 +7657,16 @@ class KDFModWrapper {
 		if (type == 'ended') {
 			this.cb = listener;
 			// @ts-ignore
-			let result = this.channel.setCallback(this.cb)
+			let result = this.channel.setCallback((channelcontrol, controltype, callbacktype, commanddata1, commanddata2) => 
+				{
+					if (callbacktype === FMOD.CHANNELCONTROL_CALLBACK_TYPE.END)
+					{
+						this.cb();
+						this.channel = null;
+					}
+
+					return FMOD.RESULT.OK;
+				});
 			KDCheckFMODResult(result);
 		}
 	}
@@ -7695,13 +7714,23 @@ class KDFModWrapper {
 
 				if (this.cb) {
 					// @ts-ignore
-					result = this.channel.setCallback(this.cb);
+					result = this.channel.setCallback((channelcontrol, controltype, callbacktype, commanddata1, commanddata2) => 
+						{
+							if (callbacktype === FMOD.CHANNELCONTROL_CALLBACK_TYPE.END)
+							{
+								this.cb();
+								this.channel = null;
+							}
+
+							return FMOD.RESULT.OK;
+						});
 					KDCheckFMODResult(result);
 				}
 
 				// @ts-ignore
 				result = this.channel.setPaused(false);
 				KDCheckFMODResult(result);
+
 				
 				setTimeout(() => {
 					console.log(this.currentTime)
@@ -7719,14 +7748,16 @@ class KDFModWrapper {
 					let fr = new FileReader();
 					fr.addEventListener('load', (event) => {
 						//@ts-ignore
-						var chars: any = new Uint8Array(event.target.result);
+						let chars: any = new Uint8Array(event.target.result);
 						exinfo.length = chars.length;
 
 
 						exinfo.userdata = 12345;
 						result = KDFmodSystem.createSound(chars.buffer, FMOD.MODE.LOOP_OFF | FMOD.MODE.OPENMEMORY, exinfo, outval);
+						delete chars.buffer;
 						if (!KDCheckFMODResult(result)) return;
 						gSound = outval.val;
+						
 
 						doIt();
 						kdSoundCache[value] = outval.val;

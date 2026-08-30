@@ -98,12 +98,13 @@ function KDHighestScrollableList(x?: number, y?: number): string {
 	return highest;
 }
 
-function KDPageScrollableLists(direction: number): void {
+function KDPageScrollableLists(direction: number): boolean {
 	const highest = KDHighestScrollableList();
 	const list = KDScrollableListDataset[highest];
 	if (list) {
 		KDScrollScrollableList(highest, direction * list.num_per_page - 1);
 	}
+	return !!highest;
 }
 
 function KDScrollScrollableLists(mouseX: number, mouseY: number, scrollAmount: number): boolean {

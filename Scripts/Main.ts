@@ -92,13 +92,18 @@ async function FMODAfter() {
 
 	
     result = KDFmodSystem.init(1024, FMOD.INITFLAGS.NORMAL, null);
+	
 	KDCheckFMODResult(result);
 	
 	CommonIsFMOD = true;
 	console.log("FMOD Init successful")
 };  
 var KDFMOD: FMOD = {
-	onRuntimeInitialized: FMODAfter
+	onRuntimeInitialized: FMODAfter,
+	// @ts-ignore
+	INITIAL_MEMORY: 64*1024*1024,
+	// @ts-ignore
+	window: window
 };
 var KDFmodSystem: FMOD.System = null;
 
@@ -117,7 +122,10 @@ window.onload = function() {
 	Character = [];
 	CharacterNextId = 1;
 	CharacterReset(0);
-	FMODModule(KDFMOD);
+	//@ts-ignore
+	let API = window.kdAPI;
+	if (API)
+		FMODModule(KDFMOD);
 
 
 	CurrentCharacter = null;
