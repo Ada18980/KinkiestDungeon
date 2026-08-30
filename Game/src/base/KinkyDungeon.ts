@@ -6965,16 +6965,10 @@ let KinkyDungeonGameKey: any = {
 					}
 					break;
 				case "PageUp":
-					KDMouseWheel({
-						deltaX: 0,
-						deltaY: -1,
-					} as WheelEvent);
+					KDPageScrollableLists(-1);
 					break;
 				case "PageDown":
-					KDMouseWheel({
-						deltaX: 0,
-						deltaY: 1,
-					} as WheelEvent);
+					KDPageScrollableLists(1);
 					break;
 			}
 		}
