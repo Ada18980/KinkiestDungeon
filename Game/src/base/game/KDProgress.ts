@@ -141,7 +141,7 @@ function KDDrawProgressList(xOffset) {
     if (ShouldUpdateList(MainList)) {
         let list: ProgressListData[] = KDEnumerateProgressItems();
         PopulateList(MainList, x + xOffset, yStart, horizontal ? h : wList, horizontal ? wList : h, 50, 
-            Math.round(h/spacing), 
+            Math.floor(h/spacing),
             list, false
         );
     }
