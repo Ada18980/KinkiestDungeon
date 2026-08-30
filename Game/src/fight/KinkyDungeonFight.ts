@@ -3934,7 +3934,7 @@ function KDBindEnemyWithTags(id: number, tags: string[],
 	allowVariants: boolean = true, maxAdded: number = 10, faction: string = "", overrideWill?: number): string[] {
 	let entity = KDGetGlobalEntity(id);
 	let addedItems: string[] = [];
-	if (entity) {
+	if (entity && KDCanBind(entity)) {
 		let maxBinding = (entity.boundLevel || 0) + amount;
 		let expected = KDGetExpectedBondageAmountTotal(id, entity);
 		let regenEligible = () => {

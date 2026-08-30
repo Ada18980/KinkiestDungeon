@@ -511,3 +511,4 @@ function KDEntityGetBuff(entity: entity, buffId: string): KDBuff {
 		return KinkyDungeonGetbuff(KinkyDungeonPlayerBuffs, buffId);
 	} else return KinkyDungeonGetbuff(entity.buffs, buffId);
 }
+
