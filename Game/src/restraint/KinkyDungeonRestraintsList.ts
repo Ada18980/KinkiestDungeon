@@ -3163,7 +3163,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true},
 			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
-		enemyTags: {"dollstandSpell":100, "dollstand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Dollstand"], ignoreSpells: true, removeOnLeash: true,
+		enemyTags: {"dollstandSpell":100, "dollstand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Dollstand", "BlockKneel", "DiscourageHogtie"], ignoreSpells: true, removeOnLeash: true,
 	},
 
 	{removePrison: true, name: "DollStandReal",
@@ -3179,7 +3179,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [
 			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.35, inheritLinked: true},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
-		enemyTags: {"dollstandreal": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "DollStands"],
+		enemyTags: {"dollstandreal": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "DollStands", "BlockKneel", "DiscourageHogtie"],
 		ignoreSpells: true, removeOnLeash: true,
 	},
 	{removePrison: true, name: "DollStandSpreaderReal",
@@ -3210,7 +3210,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		],
 		
 		removeShrine: ["Hogties"],
-		enemyTags: {"dollstandrealspreader": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "DollStands"],
+		enemyTags: {"dollstandrealspreader": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "DollStands", "BlockKneel", "DiscourageHogtie"],
 		ignoreSpells: true, removeOnLeash: true,
 	},
 
@@ -3227,7 +3227,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true}, 
 			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
-		enemyTags: {"dollstandSpell":100, "latexdollstand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex", "Dollstand"], ignoreSpells: true, removeOnLeash: true,
+		enemyTags: {"dollstandSpell":100, "latexdollstand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex", "Dollstand", "BlockKneel", "DiscourageHogtie"], ignoreSpells: true, removeOnLeash: true,
 	},
 	{removePrison: true, name: "OneBarTrap",
 		Group: "ItemDevices", power: 3, weight: 1, immobile: true, alwaysStruggleable: true,
@@ -3258,7 +3258,7 @@ const KinkyDungeonRestraints: restraint[] = [
 
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"onebarprison":1000, "onebarprisonvibe":1}, playerTags: {"arousalMode": -1000, arousalModePlugNoFront: -1000}, minLevel: 0, allFloors: true,
-		shrine: ["OneBar", "Furniture"], removeOnLeash: true,
+		shrine: ["OneBar", "Furniture", "BlockKneel", "DiscourageHogtie"], removeOnLeash: true,
 	},
 	{removePrison: true, name: "OneBarVibeTrap",
 		Group: "ItemDevices", power: 3, weight: 1, immobile: true, alwaysStruggleable: true,
@@ -3296,7 +3296,7 @@ const KinkyDungeonRestraints: restraint[] = [
 
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"onebarprisonvibe":1000}, playerTags: {"arousalMode": -1000, arousalModePlugNoFront: -1000}, minLevel: 0, allFloors: true,
-		shrine: ["OneBar", "Furniture"], removeOnLeash: true,
+		shrine: ["OneBar", "Furniture", "BlockKneel", "DiscourageHogtie"], removeOnLeash: true,
 	},
 	{removePrison: true, name: "OneBarSpreaderTrap",
 		Group: "ItemDevices", power: 3, weight: 1, immobile: true, alwaysStruggleable: true,
@@ -3335,7 +3335,7 @@ const KinkyDungeonRestraints: restraint[] = [
 
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"onebarprisonspreader":1000, "onebarprisonvibespreader":1}, playerTags: {"arousalMode": -1000, arousalModePlugNoFront: -1000}, minLevel: 0, allFloors: true,
-		shrine: ["OneBar", "Furniture"], removeOnLeash: true,
+		shrine: ["OneBar", "Furniture", "BlockKneel", "DiscourageHogtie"], removeOnLeash: true,
 	},
 	{removePrison: true, name: "OneBarSpreaderVibeTrap",
 		Group: "ItemDevices", power: 3, weight: 1, immobile: true, alwaysStruggleable: true,
@@ -3379,7 +3379,7 @@ const KinkyDungeonRestraints: restraint[] = [
 
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"onebarprisonvibespreader":1000}, playerTags: {"arousalMode": -1000, arousalModePlugNoFront: -1000}, minLevel: 0, allFloors: true,
-		shrine: ["OneBar", "Furniture"], removeOnLeash: true,
+		shrine: ["OneBar", "Furniture", "BlockKneel", "DiscourageHogtie"], removeOnLeash: true,
 	},
 
 	{removePrison: true, name: "OneBar", arousalMode: true, Asset: "OneBarPrison",
@@ -3397,7 +3397,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true},
 			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
-		enemyTags: {"onebar":1000}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["OneBar"],
+		enemyTags: {"onebar":1000}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["OneBar", "BlockKneel", "DiscourageHogtie"],
 		removeOnLeash: true,
 	},
 	{removePrison: true, name: "OneBarStand", Asset: "OneBarPrison", Color: ['Default'],
@@ -3418,7 +3418,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"onebar":1000}, playerTags: {"arousalMode": -1000}, minLevel: 0, allFloors: true,
-		shrine: ["OneBar"], removeOnLeash: true,
+		shrine: ["OneBar", "BlockKneel", "DiscourageHogtie"], removeOnLeash: true,
 	},
 
 	{removePrison: true, name: "DollStandSFW", Group: "ItemDevices", power: 5, weight: 1,

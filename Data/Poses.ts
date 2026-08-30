@@ -46,7 +46,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		rotation: 0,
 		pri_rotation: 2,
 		offset_x: 0,
-		offset_y: 0.1,
+		offset_y: 0.2,
 		pri_offsetx: 3,
 		pri_offsety: 3,
 		global_default: "Closed",
@@ -63,7 +63,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 			rotation: -90,
 			rotation_x_anchor: .5*MODELWIDTH,
 			rotation_y_anchor: .5*MODELHEIGHT,
-			offset_x: 0.68*MODELWIDTH,
+			offset_x: 0.5*MODELWIDTH,
 			offset_y: 0.6*MODELHEIGHT,
 		}
 		]
