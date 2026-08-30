@@ -466,6 +466,7 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 					let tsprite = PIXI.Sprite.from(KDTex(t, scale_mode == PIXI.SCALE_MODES.NEAREST));
 					let rt = PIXI.RenderTexture.create(
 						{ width: 100, height: 100,
+							scaleMode: scale_mode,
 							resolution: 1});
 
 					PIXIapp.renderer.render(tsprite, {
@@ -579,17 +580,18 @@ async function load() {
 	PIXI.Assets.load("Logo.png");
 
 	//KDLoadingMax = 100;
-	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
+	
+	await LoadTextureAtlas(nearestList, PIXI.SCALE_MODES.NEAREST);
 	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
 	//await PreloadDisplacement(displacementList);
 	// Load everything twice... for good measure
 
 	setTimeout(() => {
-		LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
+		LoadTextureAtlas(nearestList, PIXI.SCALE_MODES.NEAREST);
 		LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
 	}, 700);
 
-	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
+	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
 
 }
 

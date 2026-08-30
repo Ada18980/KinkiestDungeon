@@ -608,14 +608,14 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 
 	if (!MC.Update.has(containerID)) {
 		let flippedPoses = DrawModelProcessPoses(MC, extraPoses, flip);
-
+		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		let modified = DrawCharacterModels(containerID,
 			MC, X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25,
 			Y + Zoom * MODEL_SCALE * MODELHEIGHT/2,
 			(Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
 			MC.Containers.get(containerID), refreshfilters, flip, EndMods);
-		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
+		
 		MC.Mods.set(containerID, StartMods);
 		MC.EndMods.set(containerID, EndMods);
 		MC.Update.add(containerID);

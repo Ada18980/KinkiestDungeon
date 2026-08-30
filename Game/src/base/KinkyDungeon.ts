@@ -1053,6 +1053,7 @@ function KDReloadMainData(force: boolean) {
 			let parsed = parseInt(localStorage.getItem("KDResolution"));
 			if (parsed != undefined) {
 				KDResolutionListIndex = parsed;
+				if (KDResolutionListIndex > KDResolutionList.length) KDResolutionListIndex = 0;
 				KDResolution = KDResolutionList[KDResolutionListIndex];
 			}
 		}
@@ -6591,6 +6592,7 @@ function KDClick(event: MouseEvent) {
 		KDIntroStage += 1;
 		if (KDIntroStage > KDIntroProgress.length) {
 			KinkyDungeonState = "Menu";
+			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 			
 			KDCheckedConsentAtStartup = false;
 			KDUpdatedSeenConsents = false;
@@ -8587,9 +8589,9 @@ function KDTogglesDraw() {
 
 		if (KDToggleTab == "Main") {
 			if (StandalonePatched) {
-				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 100) + "%", KDBaseWhite, "",
-					() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 100 + "%",
-					() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 100 + "%");
+				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 50) + "%", KDBaseWhite, "",
+					() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 50 + "%",
+					() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 50 + "%");
 				YY += YYd;
 				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDGamma") + " " + (Math.round(KDGamma * 100) + "%"), KDBaseWhite, "",
 					() => KDGammaList[(KDGammaListIndex + KDGammaList.length - 1) % KDGammaList.length] * 100 + "%",

@@ -1103,9 +1103,6 @@ function KinkyDungeonDrawGame() {
 	KDDrawMinimap(1990-KDMinimapWCurrent, 25);
 	KDDrawPartyMembers(500 + ((KDToggles.BuffSide && !KDToggleShowAllBuffs) ? 60 : 0), 500 + ((KDToggles.BuffSide && KDToggleShowAllBuffs) ? 175 : 0), tooltips);
 
-	if (StandalonePatched)
-		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
-
 
 
 	let wt = 50;
@@ -4611,10 +4608,11 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 				let lightColor = (StandalonePatched && KDToggles.LightmapFilter) ? 0xfffafa : KDGetLightColor(RX, RY);
 
 				KDDraw(kdmapboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
-					(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+					(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
+					 KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -2,
 						tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
-					});
+					}, undefined, undefined, undefined, true);
 				if (sprite2)
 					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
@@ -4704,10 +4702,6 @@ function KDDraw (
 	};
 	if (!sprite) {
 		// Load the texture
-		if (Nearest) {
-			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
-		} else
-			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 		let tex = KDTex(Image, Nearest);
 
 		if (tex) {
@@ -4721,9 +4715,6 @@ function KDDraw (
 			Map.set(id, sprite);
 			// Add it to the container
 			Container.addChild(sprite);
-		}
-		if (Nearest) {
-			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 		}
 	}
 	if (sprite) {
@@ -4924,10 +4915,6 @@ function KDDrawRT (
 	};
 	let mergeFilters = false;
 	if (!sprite) {
-		// Load the texture
-		if (Nearest && StandalonePatched) {
-			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
-		}
 		let tex = KDGetOrMakeRenderTexture(Image, Nearest, filterid, baseFilters,
 			force, useAtlas, resolution);
 
@@ -4950,9 +4937,6 @@ function KDDrawRT (
 			// Add it to the container
 			if (autoAdd)
 				Container.addChild(sprite);
-		}
-		if (Nearest && StandalonePatched) {
-			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 		}
 	}
 	if (sprite && sprite.texture && sprite.texture.orig) {
@@ -5042,7 +5026,8 @@ function KDTex(Image: string, Nearest?: boolean): PIXITexture {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
 	if (errorImg[KDModFiles[Image] || Image]) return null;
 	try {
-		let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST) : PIXI.Texture.from(KDModFiles[Image] || Image);
+		let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST)
+		: PIXI.Texture.from(KDModFiles[Image] || Image);
 		if (!tex) {
 			errorImg[KDModFiles[Image] || Image] = true;
 		} else {
