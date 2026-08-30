@@ -7598,7 +7598,168 @@ function sfc32(a: number, b: number, c: number, d: number) {
 
 let kdSoundCache: Map<string, HTMLAudioElement> = new Map();
 
+let KDFmod_Sound_Cache: Record<string, FMOD.Sound> = {};
+
+class KDFModWrapper {
+	private vol = 1;
+	private source = "";
+	public sound: any = null;
+	private channel: FMOD.Channel = null;
+	private cb = null;
+	private looped: boolean;
+
+	get volume(): number {
+		return this.vol;
+	}
+	set volume(value: number) {
+		this.vol = value;
+
+		if (this.channel) {
+			// @ts-ignore
+			this.channel.setVolume(this.vol);
+		}
+	}
+	get loop(): boolean {
+		return this.looped;
+	}
+	set loop(value: boolean) {
+		this.looped = value;
+		if (this.channel) {
+			// @ts-ignore
+			this.channel.setLoopCount(value ? -1 : 0);
+		}
+	}
+
+	
+	get currentTime(): number {
+		if (this.channel) {
+			let output: any = {};
+			// @ts-ignore
+			let result = this.channel.getPosition(output, FMOD.TIMEUNIT.MS);
+			KDCheckFMODResult(result);
+			return output.val * 0.001;
+		}
+		return 0;
+	}
+	set currentTime(value: number) {
+		if (this.channel) {
+			// @ts-ignore
+			let result = this.channel.setPosition(value * 1000, FMOD.TIMEUNIT.MS);
+			KDCheckFMODResult(result);
+		}
+	}
+	public addEventListener(type, listener) {
+		if (!this.channel) return;
+		if (type == 'ended') {
+			this.cb = listener;
+			// @ts-ignore
+			let result = this.channel.setCallback(this.cb)
+			KDCheckFMODResult(result);
+		}
+	}
+
+	public play() {
+		if (this.channel) {
+			// @ts-ignore
+			let result = this.channel.setPaused(false);
+			KDCheckFMODResult(result);
+		}
+		return new Promise((resolve, reject)=> {
+			//dummy
+			resolve(null)
+			});
+	}
+	public pause() {
+		
+		if (this.channel) {
+			// @ts-ignore
+			let result = this.channel.setPaused(true);
+			KDCheckFMODResult(result);
+		}
+	}
+
+	get src(): string {
+		return this.source;
+	}
+	set src(value: string) {
+		this.source = value;
+		var channelOut: any = {};
+
+
+    	var outval: any = {};
+		var result;
+
+		let gSound = kdSoundCache[value];
+
+		let doIt = () => {
+			result = KDFmodSystem.playSound(gSound,
+			null, true, channelOut);
+			if (KDCheckFMODResult(result)) {
+				this.channel = channelOut.val;
+				//@ts-ignore
+				this.channel.setVolume(this.vol);
+
+				if (this.cb) {
+					// @ts-ignore
+					result = this.channel.setCallback(this.cb);
+					KDCheckFMODResult(result);
+				}
+
+				// @ts-ignore
+				result = this.channel.setPaused(false);
+				KDCheckFMODResult(result);
+				
+				setTimeout(() => {
+					console.log(this.currentTime)
+				}, 1000)
+
+			}
+		}
+
+		if (!gSound) {
+			fetch(value)
+				.then(res => res.blob())
+				.then((blob) => {
+					var exinfo = KDFMOD.CREATESOUNDEXINFO();
+					// Create a sound that loops
+					let fr = new FileReader();
+					fr.addEventListener('load', (event) => {
+						//@ts-ignore
+						var chars: any = new Uint8Array(event.target.result);
+						exinfo.length = chars.length;
+
+
+						exinfo.userdata = 12345;
+						result = KDFmodSystem.createSound(chars.buffer, FMOD.MODE.LOOP_OFF | FMOD.MODE.OPENMEMORY, exinfo, outval);
+						if (!KDCheckFMODResult(result)) return;
+						gSound = outval.val;
+
+						doIt();
+						kdSoundCache[value] = outval.val;
+					})
+					fr.readAsArrayBuffer(blob);
+				})
+			
+			
+		} else doIt();
+
+	}
+
+	KDFModWrapper() {
+
+	}
+}
+
 function GetNewAudio() {
+	if (CommonIsFMOD) {
+		return new KDFModWrapper();
+	} else if (OGVSupported) {
+		return new OGVPlayer();
+	} else {
+		return new Audio();
+	}
+}
+function GetNonFMODAudio() {
 	if (OGVSupported) {
 		return new OGVPlayer();
 	} else {
@@ -7606,7 +7767,7 @@ function GetNewAudio() {
 	}
 }
 
-function AudioPlayInstantSoundKD(Path: string, volume?: number) {
+function AudioPlayInstantSoundKD(Path: string, volume?: number, pan?: number) {
 	if (!KDSoundEnabled()) return false;
 	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : 1);
 	if (vol > 0) {
