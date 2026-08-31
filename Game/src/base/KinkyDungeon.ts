@@ -297,7 +297,7 @@ let KDDefaultKB = {
 //endregion
 
 let KDZoomIndex = 4;
-let KDZoomLevels = [6, 4, 2, 0, -1, -1.75, -3.25];
+let KDZoomLevels = [6, 4, 2, 0, -1, -2, -3];
 
 let KinkyDungeonRootDirectory = "Game/";
 
@@ -6104,7 +6104,10 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 	KinkyDungeonNewGame = 0;
 	let cp = KinkyDungeonMapIndex.grv;
 	KDUpdateHardMode();
-	if (!Load) KinkyDungeonNewDress = true;
+	//let Override = KDToggles.OverrideOutfit;
+	//KDToggles.OverrideOutfit = false;
+	if (!Load || KDToggles.OverrideOutfit)
+		KinkyDungeonNewDress = true;
 	KinkyDungeonInitialize(1, Load);
 	MiniGameKinkyDungeonCheckpoint = "grv";
 	KDMapData.Grid = "";
@@ -6130,6 +6133,7 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 		KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], "JourneyFloor", "", MiniGameKinkyDungeonLevel, false, Load);
 		KDInitPerks();
 	}
+	//KDToggles.OverrideOutfit = Override;
 	KinkyDungeonState = "Game";
 
 	if (KinkyDungeonKeybindings) {
