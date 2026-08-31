@@ -488,7 +488,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 显示敌人增益光环
 - Minimalist Enemy Auras
 极简敌人光环
-- Pixelated GFX (needs restart)
+- Pixel Scaling (needs restart)
 像素化图像特效 ( 需重启 )
 - Auto-Crouch when Tripped
 绊倒时自动蹲下
