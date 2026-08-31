@@ -7,6 +7,8 @@ let lastExtraTooltipCycleTimeAuto_ManualDelay = 30000;
 let KDGamePlayerZIndex = 6;
 let KDMenuPlayerZIndex = 6;;
 
+let KDCenterPlayerOffset = 6;
+
 
 interface KDLight {
 	x: number,
@@ -1163,12 +1165,12 @@ function KinkyDungeonDrawGame() {
 			let OX = KDInspectCamera.x - (KinkyDungeonPlayerEntity.x||0);
 			let OY = KDInspectCamera.y - (KinkyDungeonPlayerEntity.y||0);
 
-			let CamX = KinkyDungeonPlayerEntity.x - (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay/36)) - Math.floor(KinkyDungeonGridWidthDisplay/2) + OX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
+			let CamX = KinkyDungeonPlayerEntity.x - (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay/72 * KDCenterPlayerOffset)) - Math.floor(KinkyDungeonGridWidthDisplay/2) + OX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
 			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2) + OY;// Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
 
 
 			let CamX_offsetVis = (KinkyDungeonInspect ? KDInspectCamera.x : KinkyDungeonPlayerEntity.visual_x)
-				- (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay/36)) - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
+				- (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay/72 * KDCenterPlayerOffset)) - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
 			let CamY_offsetVis = (KinkyDungeonInspect ? KDInspectCamera.y : KinkyDungeonPlayerEntity.visual_y) - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
 
 
@@ -1463,7 +1465,7 @@ function KinkyDungeonDrawGame() {
 							str = TextGet("KDCasting").replace("SPNME", TextGet("KinkyDungeonSpell" + KinkyDungeonTargetingSpell.name));
 						}
 						DrawTextKD(str,
-							PIXIWidth/2 + (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay*2)), 90,
+							PIXIWidth/2 + (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay*(KDCenterPlayerOffset + 0.5))), 90,
 							KDBaseLightBlue, undefined, undefined, undefined, 100.1
 						);
 
@@ -4608,7 +4610,7 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 				let lightColor = (StandalonePatched && KDToggles.LightmapFilter) ? 0xfffafa : KDGetLightColor(RX, RY);
 
 				KDDraw(kdmapboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
-					(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
+					Math.round(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, Math.round(-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 					 KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -2,
 						tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,

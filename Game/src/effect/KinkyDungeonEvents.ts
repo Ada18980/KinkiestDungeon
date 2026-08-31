@@ -13586,6 +13586,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 	},
 	"afterDress": {
 		"clickHeadPat": (_e, data) => {
+			if (data.Character != KinkyDungeonPlayer) return;
 			const id = "kinky-dungeon-headpat-modal";
 			if (KDToggles.Headpats && (KinkyDungeonState == 'Game') && (KinkyDungeonDrawState == 'Game')) {
 				KinkyDungeonHeadpatModal()

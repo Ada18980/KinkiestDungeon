@@ -297,7 +297,7 @@ let KDDefaultKB = {
 //endregion
 
 let KDZoomIndex = 4;
-let KDZoomLevels = [6, 4, 2, 0, -1, -2, -3];
+let KDZoomLevels = [6, 4, 2, 0, -1, -1.75, -3.25];
 
 let KinkyDungeonRootDirectory = "Game/";
 
