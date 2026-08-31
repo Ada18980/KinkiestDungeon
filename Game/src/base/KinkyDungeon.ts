@@ -107,7 +107,7 @@ let param_branch = pp.has('branch') ? pp.get('branch') : "";
 let param_test = pp.has('test') ? pp.get('test') : "";
 let param_localhost = pp.has('localhost') ? pp.get('localhost') : "";
 let TestMode = param_test || param_branch || param_localhost || ServerURL == 'https://bc-server-test.herokuapp.com/';
-let AllowFMOD = !(pp.has('noFMOD') ? pp.get('noFMOD') : "");
+let AllowFMOD = !(pp.has('nofmod') ? pp.get('nofmod') : "");
 
 let KDDebugMode = TestMode != false;
 let KDDebug = false;
@@ -5605,6 +5605,7 @@ function KDDrawLoadMenu() {
 			KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
 			KinkyDungeonNewGame = 0;
 			KDMapData.Grid = "";
+			if (KDToggles.OverrideOutfit) KinkyDungeonNewDress = true;
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
 			if (KinkyDungeonLoadGame(LoadMenuCurrentSave, KDToggles.OverrideConsent)) {
@@ -6367,6 +6368,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 			KDMapData.Grid = "";
 			if (!KDToggles.OverrideOutfit)
 				KinkyDungeonConfigAppearance = false;
+			if (KDToggles.OverrideOutfit) KinkyDungeonNewDress = true;
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
 			if (KinkyDungeonLoadGame(ElementValue("saveInputField"), KDToggles.OverrideConsent)) {
@@ -7310,6 +7312,7 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 					KinkyDungeonPlayer.Palette = saveData.saveStat.Palette;
 					KinkyDungeonPlayer.metadata = saveData.saveStat.metadata;
 					UpdateModels(KinkyDungeonPlayer);
+					
 				}
 			}
 			if (saveData.stats) {
@@ -7486,7 +7489,19 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 			KinkyDungeonSetMaxStats();
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KDNaked = false;
+			if (KDToggles.OverrideOutfit) {
+				KinkyDungeonNewDress = true;
+				CharacterReleaseTotal(KinkyDungeonPlayer);
+				KinkyDungeonDressSet();
+				CharacterNaked(KinkyDungeonPlayer);
+				KinkyDungeonInitializeDresses();
+				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+			}
 			KinkyDungeonDressPlayer();
+			if (KDToggles.OverrideOutfit) {
+				KDInitProtectedGroups(KinkyDungeonPlayer);
+				CharacterRefresh(KinkyDungeonPlayer);
+			}
 			KDRefresh = true;
 			KDUpdateEnemyCache = true;
 			if (KDGameData.Journey)
