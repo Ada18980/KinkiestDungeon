@@ -28,6 +28,7 @@ let KinkyDungeonStruggleGroupsBase = [
 	"ItemHands",
 	"ItemBreast",
 	"ItemNipples",
+	"ItemNipplesPiercings",
 	"ItemTorso",
 	"ItemPelvis",
 	"ItemVulvaPiercings",

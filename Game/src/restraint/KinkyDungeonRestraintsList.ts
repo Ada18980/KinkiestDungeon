@@ -10210,7 +10210,7 @@ let KDControlHarnessCategories: Record<string, any> = {
 			//if (!KinkyDungeonFlags.get("ControlHarnessCuffs")) {
 			let succ = false;
 			// If there are any cuffs to upgrade
-			let fillGroups = ["ItemVulva", "ItemVulvaPiercings", "ItemButt", "ItemNipples"];
+			let fillGroups = ["ItemVulva", "ItemVulvaPiercings", "ItemButt", "ItemNipples", "ItemNipplesPiercings"];
 			if (fillGroups.some((group) => {return !KinkyDungeonGetRestraintItem(group);})) {
 				let Mode = CommonRandomItemFromList("", ["Edge", "Deny", "Fullpower"]);
 				if (KinkyDungeonGetRestraintItem("ItemVulva")) Mode = "Extra";
@@ -10243,7 +10243,7 @@ let KDControlHarnessCategories: Record<string, any> = {
 		updateFunction: (_e: KinkyDungeonEvent, _item: item, data: any, invItems: item[]) => {
 			if (!KinkyDungeonStatsChoice.get("arousalMode")) return;
 
-			let fillGroups = ["ItemVulva", "ItemVulvaPiercings", "ItemButt", "ItemNipples"];
+			let fillGroups = ["ItemVulva", "ItemVulvaPiercings", "ItemButt", "ItemNipples", "ItemNipplesPiercings"];
 			if (fillGroups.some((group) => {return !KinkyDungeonGetRestraintItem(group);})) {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDControlHarnessChastityUpdate")

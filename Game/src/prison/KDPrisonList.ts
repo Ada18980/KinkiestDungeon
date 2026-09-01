@@ -24,6 +24,7 @@ let KDPRISONGROUPS = [
 	],
 	[
 		"ItemNipples",
+		"ItemNipplesPiercings",
 		"ItemVulva",
 		"ItemButt",
 		"ItemVulvaPiercings",

@@ -137,7 +137,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 				allowedTags: ["Vibes"], requirePerk: "arousalMode"},
 			{id: "NippleWeight", encasedBy: ["ChastityBra"], allowedGroups: ["ItemNipples"],
 				allowedTags: ["Weights"], requirePerk: "arousalMode"},
-			{id: "Piercings", encasedBy: ["ChastityBra"], allowedGroups: ["ItemNipples"],
+			{id: "Piercings", encasedBy: ["ChastityBra"], allowedGroups: ["ItemNipples", "ItemNipplesPiercings"],
 				allowedTags: ["Piercings"], requirePerk: "arousalModePiercing"},
 		]},
 	{id: "Torso", encaseGroup:

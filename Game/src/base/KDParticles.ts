@@ -441,7 +441,7 @@ function KDCreateVibeParticle() {
 	let locations = KDSumVibeLocations();
 	let vx = ((Math.random() > 0.5) ? -1 : 1) * (0.1 + Math.random()*0.15);
 	let vy = -.15 + Math.random() * .3;
-	let breast = locations.includes("ItemBreast") || locations.includes("ItemNipples");
+	let breast = locations.includes("ItemBreast") || locations.includes("ItemNipples") || locations.includes("ItemNipplesPiercings");
 	let cli = (locations.includes("ItemVulvaPiercings") || locations.includes("ItemPelvis"));
 	let forceSide = 0;
 	if (breast || cli) {

@@ -637,7 +637,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDRest(item)?.bindarms) return 1;
 					if (KDRest(item)?.bindhands) return 2;
 					if (KDRest(item)?.armor) return 40;
-					if (["ItemArms", "ItemHands", "ItemBoots", "ItemHead", "ItemVulva", "ItemVulvaPiercings", "ItemNipples"].includes(KDRest(item)?.Group)) return 13;
+					if (["ItemArms", "ItemHands", "ItemBoots", "ItemHead", "ItemVulva", "ItemVulvaPiercings", "ItemNipples", "ItemNipplesPiercings"].includes(KDRest(item)?.Group)) return 13;
 					return 3;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
@@ -665,7 +665,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("ElementalDmg")) return 0;
 					if (!KinkyDungeonMeleeDamageTypes.includes(KinkyDungeonWeapons[item]?.type)) return 0;
-					if (["ItemArms", "ItemHands", "ItemBoots", "ItemHead", "ItemVulva", "ItemVulvaPiercings", "ItemNipples"].includes(KDRest(item)?.Group)) return 20;
+					if (["ItemArms", "ItemHands", "ItemBoots", "ItemHead", "ItemVulva", "ItemVulvaPiercings", "ItemNipples", "ItemNipplesPiercings"].includes(KDRest(item)?.Group)) return 20;
 					return 14;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {

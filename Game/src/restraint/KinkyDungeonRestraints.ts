@@ -584,6 +584,7 @@ KDProgressiveOrder['Fun2'] = [
 	"ItemButt", // Chastity is for good girls!
 	"ItemVulvaPiercings", // Chastity is for good girls!
 	"ItemNipples", // Chastity is for good girls!
+	"ItemNipplesPiercings",
 	"ItemTorso", // Usually just makes other restraints harder
 	"ItemPelvis", // Chastity is for good girls!
 	"ItemMouth", // Blocks spells and potions
@@ -620,6 +621,7 @@ KDProgressiveOrder['Fun3'] = [
 	"ItemButt", // Chastity is for good girls!
 	"ItemVulvaPiercings", // Chastity is for good girls!
 	"ItemNipples", // Chastity is for good girls!
+	"ItemNipplesPiercings",
 ];
 
 function KDGetProgressiveOrderFun() {
@@ -3999,14 +4001,14 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 		if (KinkyDungeonStatsChoice.get("NoSenseDep")) playerTags.set("NoSenseDep", true);
 		if (KinkyDungeonStatsChoice.get("NoHood")) playerTags.set("NoHood", true);
 		if (KinkyDungeonStatsChoice.get("FreeBoob2")) playerTags.set("FreeBoob", true);
-		if (KinkyDungeonStatsChoice.get("FreeBoob1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("FreeBoob", true);
+		if (KinkyDungeonStatsChoice.get("FreeBoob1") && !(KinkyDungeonPlayerTags.get("ItemNipples") || KinkyDungeonPlayerTags.get("ItemNipplesPiercings"))) playerTags.set("FreeBoob", true);
 		if (KinkyDungeonStatsChoice.get("NoBelt2")) playerTags.set("NoBelt", true);
 		if (KinkyDungeonStatsChoice.get("NoBelt1")
 			&& !KinkyDungeonPlayerTags.get("ItemVulva")
 			&& !KinkyDungeonPlayerTags.get("ItemVulvaPiercings")
 			&& !KinkyDungeonPlayerTags.get("ItemButt")) playerTags.set("NoBelt", true);
 		if (KinkyDungeonStatsChoice.get("NoBelt2")) playerTags.set("NoBelt", true);
-		if (KinkyDungeonStatsChoice.get("NoBelt1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("NoBelt", true);
+		if (KinkyDungeonStatsChoice.get("NoBelt1") && !(KinkyDungeonPlayerTags.get("ItemNipples") || KinkyDungeonPlayerTags.get("ItemNipplesPiercings"))) playerTags.set("NoBelt", true);
 		if (KinkyDungeonStatsChoice.get("NoKigu")) playerTags.set("NoKigu", true);
 		if (KinkyDungeonStatsChoice.get("NoBlindfolds")) playerTags.set("NoBlindfolds", true);
 		if (KinkyDungeonStatsChoice.get("NoPet")) playerTags.set("NoPet", true);
