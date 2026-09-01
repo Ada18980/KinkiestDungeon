@@ -726,15 +726,20 @@ function KinkyDungeonMakeNoiseSignal(enemy: entity, mult: number = 1, hideShockw
  * @returns {entity[]} enemies who heard it
  */
 function KinkyDungeonMakeNoise(radius: number, noiseX: number, noiseY: number, hideShockwave?: boolean,
-	attachToEntity?: boolean): entity[] {
+	attachToEntity?: boolean, nosound?: boolean): entity[] {
+	if (nosound == undefined) {
+		nosound == !hideShockwave;
+	}
 	let data = {
 		radius: radius,
 		x: noiseX,
 		y: noiseY,
 		enemiesHeard: [],
 		particle: !hideShockwave,
+		nosound: nosound,
 	};
 	KinkyDungeonSendEvent("beforeNoise", data);
+
 
 	if (attachToEntity) {
 		let entity = KinkyDungeonEntityAt(noiseX, noiseY);
@@ -762,6 +767,10 @@ function KinkyDungeonMakeNoise(radius: number, noiseX: number, noiseY: number, h
 		}
 	}
 	KinkyDungeonSendEvent("afterNoise", data);
+	if (!data.nosound && KDToggles.SoundNotification) {
+		if (KDSoundEnabled()) KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/SoundShockwave.ogg", KDPlayer(), 
+		data,  Math.min(data.radius * 0.09 + 0.1, 1));
+	}
 	return data.enemiesHeard;
 }
 

@@ -154,6 +154,7 @@ KDToggleShowFacing,Always Show Player Facing
 KDToggleShowSameCatSpells,Show future learnable spells
 KDTogglePlayerAura,Show Player Buff Auras
 KDToggleEnemyAura,Show Enemy Buff Auras
+KDToggleSoundNotification,Noise Sound Effect
 KDToggleOutlineAura,Minimalist Enemy Auras
 KDToggleNearestNeighbor,Pixel Scaling (needs restart)
 KDToggleAutoCrouchOnTrip,Auto-Crouch when Tripped

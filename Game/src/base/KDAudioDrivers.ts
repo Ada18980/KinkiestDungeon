@@ -1,5 +1,5 @@
 // @ts-nocheck
-let KDWebAudio = null;
+let KDWebAudio: AudioContext = null;
 let AllowFMOD = (KDSearchParams.has('fmod') ? KDSearchParams.get('fmod') : "");
 
 
@@ -77,7 +77,10 @@ window.addEventListener('load', () => {
 	}
 
 });
-	
+
+/**
+ * @deprecated
+ */
 class KDFModWrapper {
 	private vol = 1;
 	private source = "";
@@ -306,7 +309,4 @@ class KDFModWrapper {
 
 	}
 
-	KDFModWrapper() {
-
-	}
 }

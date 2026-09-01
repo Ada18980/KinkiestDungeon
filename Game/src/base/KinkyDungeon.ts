@@ -7632,13 +7632,16 @@ function AudioPlayInstantSoundKD(Path: string, volume?: number, location?: KDPoi
 	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : 1);
 	if (vol > 0) {
 		let src = KDModFiles[Path] || Path;
-		let audio = kdSoundCache.has(src) ? kdSoundCache.get(src) : GetNewAudio();
+		let audio = (!KDWebAudio && kdSoundCache.has(src)) ? kdSoundCache.get(src) : GetNewAudio();
 		let created = false;
-		if (!kdSoundCache.has(src))  {
+		if (!KDWebAudio && !kdSoundCache.has(src))  {
 			audio.src = src;
 			kdSoundCache.set(src, audio);
 			created = true;
-		} 
+		} else if (KDWebAudio) {
+			audio.src = src;
+			audio.temp = true;
+		}
 		if (CommonIsFMOD) {
 			audio.volume = Math.min(vol, 1);
 			if (location) {
@@ -7649,6 +7652,9 @@ function AudioPlayInstantSoundKD(Path: string, volume?: number, location?: KDPoi
 			if (!created) {
 				audio.pause();
 				audio.currentTime = 0;
+			}
+			if (location) {
+				audio.location = location;
 			}
 			audio.volume = Math.min(vol, 1);
 			audio.play();
@@ -8070,7 +8076,21 @@ let KDFocusSounds = setInterval(() => {
 }, 100);
 
 function KDSoundEnabled() {
-	return KDToggles.Sound && (!KDToggles.SoundOffWhenMin || !KDMinimized);
+	let enabled = KDToggles.Sound && (!KDToggles.SoundOffWhenMin || !KDMinimized);
+	if (KDWebAudio) {
+
+		if (enabled && KDWebAudio.state === "suspended") {
+			KDWebAudio.resume().then(() => {
+				console.log("Audio "+KDWebAudio.state)
+			});
+			
+		} else if (!enabled && KDWebAudio.state === "running") {
+			KDWebAudio.suspend().then(() => {
+				console.log("Audio " + KDWebAudio.state)
+			});
+		}
+	}
+	return enabled;
 }
 
 async function RunGenMapCallback() {

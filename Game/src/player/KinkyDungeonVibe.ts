@@ -12,9 +12,9 @@ KinkyDungeonPlayerVibratedLocationItemButt,Rear
 KinkyDungeonPlayerVibratedLocationItemBoots,Feet*/
 
 let KDVibeSounds = {
-	"ItemVulva": {sound: "", Audio: null, update: false},
-	"ItemButt": {sound: "", Audio: null, update: false},
-	"ItemNipples": {sound: "", Audio: null, update: false, vol: 0.5},
+	"ItemVulva": {sound: "", Audio: null, update: false, height: 0.8},
+	"ItemButt": {sound: "", Audio: null, update: false, height: 1},
+	"ItemNipples": {sound: "", Audio: null, update: false, vol: 0.5, height: 0.25},
 };
 
 let KDVibeSoundRedirect = {
@@ -197,6 +197,7 @@ let KDToggles = {
 	FlashingWarning: true,
 	HypnoOverlay: true,
 	WarningSound: true,
+	SoundNotification: true,
 	ShowDefensiveStats: true,
 };
 
@@ -305,6 +306,7 @@ let KDToggleCategories = {
 	AutoWaitDelayed: "Controls",
 	
 	WarningSound: "UI",
+	SoundNotification: "UI",
 	ShowDefensiveStats: "UI",
 };
 
@@ -360,6 +362,11 @@ function KDUpdateVibeSound(Location: string, Sound: string, Volume: number) {
 			if (KDVibeSounds[Location].vol) vol *= KDVibeSounds[Location].vol;
 			KDVibeSounds[Location].Audio = audio;
 			KDVibeSounds[Location].update = true;
+			KDVibeSounds[Location].Audio.vibe = KDVibeSounds[Location].height * ((
+				KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game"
+			) ? 1.0 : 0.7);
+			KDVibeSounds[Location].Audio.location = {x: 0, y: 10 * KDVibeSounds[Location].height};
+			
 			if (KDPatched) {
 				audio.crossOrigin = "Anonymous";
 				audio.src = Sound;
@@ -367,6 +374,7 @@ function KDUpdateVibeSound(Location: string, Sound: string, Volume: number) {
 				audio.src = KDModFiles[Sound] || Sound;
 			audio.volume = Math.min(vol, 1);
 			audio.loop = true;
+
 			audio.play();
 		}
 	}
@@ -392,7 +400,9 @@ function KDUpdateVibeSounds() {
 	let vibe = KDGameData.CurrentVibration;
 	let sound = KDGameData.CurrentVibration?.sound || "Vibe1";
 	if (vibe && KinkyDungeonState == "Game" && KDSoundEnabled()) {
-		let globalVolume = KDToggles.VibeSounds ? KDVibeVolume * (KinkyDungeonDrawState == "Game" ? 1 : 0.5) : 0;
+		let globalVolume = KDToggles.VibeSounds ? KDVibeVolume * (
+			KDWebAudio ? 1 : (KinkyDungeonDrawState == "Game" ? 0.45 : 0.75)
+		) : 0;
 		let locations = KDSumVibeLocations();
 		KDStopAllVibeSounds(locations);
 
@@ -423,13 +433,20 @@ function KDUpdateVibeSounds() {
 			if (KinkyDungeonVibeLevel <= 0) {
 				power = "Off";
 			}
+			let Location = KDVibeSoundRedirect[location] ? KDVibeSoundRedirect[location] : "ItemVulva";
 			if (power != "Off") {
+				if (KDVibeSounds[Location]?.Audio) {
+					KDVibeSounds[Location].Audio.vibe = KDVibeSounds[Location].height * (
+						(KinkyDungeonState == "Game"
+							&& KinkyDungeonDrawState == "Game"
+						) ? 1.0 : 0.7);
+				}
 				if (vibe.location.length > 0 && vibe.location[0] == location) {
 					//let finalSound = sound;//(KDVibeSoundRedirect[location] && KDVibeSound[KDVibeSoundRedirect[location]]) ? KDVibeSound[KDVibeSoundRedirect[location]] : "Vibe1";
-					KDUpdateVibeSound(KDVibeSoundRedirect[location] ? KDVibeSoundRedirect[location] : "ItemVulva", KinkyDungeonRootDirectory + `Audio/${sound}_${power}.ogg`, globalVolume);
+					KDUpdateVibeSound(Location, KinkyDungeonRootDirectory + `Audio/${sound}_${power}.ogg`, globalVolume);
 				}
 			} else
-				KDUpdateVibeSound(KDVibeSoundRedirect[location] ? KDVibeSoundRedirect[location] : "ItemVulva", "", globalVolume);
+				KDUpdateVibeSound(Location, "", globalVolume);
 		}
 
 	} else {

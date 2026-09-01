@@ -9680,20 +9680,25 @@ function KDDefaultSound(enemy: entity): number {
  * @param amount
  * @param [novisual]
  */
-function KDEnemyAddSound(enemy: entity, amount: number, novisual: boolean = false, desc?: string, forcemult?: number) {
+function KDEnemyAddSound(enemy: entity, amount: number, novisual: boolean = false, desc?: string, forcemult?: number, nosound?: boolean) {
+	if (nosound == undefined) {
+		nosound == !novisual;
+	}
 	if (enemy.sound == undefined) enemy.sound = 0;
 	let prevSound = enemy.sound || 0;
 
 	let data = {
 		enemy: enemy,
 		amount: amount,
-		base: enemy.Enemy.Sound?.baseAmount != undefined ? enemy.Enemy.Sound?.baseAmount : KDDefaultEnemyIdleSound
+		base: enemy.Enemy.Sound?.baseAmount != undefined ? enemy.Enemy.Sound?.baseAmount : KDDefaultEnemyIdleSound,
+		novisual: novisual,
+		nosound: nosound
 	};
 	KinkyDungeonSendEvent("enemySoundAdd", data);
 
 	enemy.sound = Math.max(data.base, data.amount);
 
-	if (!novisual) {
+	if (!data.novisual) {
 		let mult = 0.25;
 		// Draw a visual shockwave to help the player realize
 		if (forcemult != undefined) mult = forcemult;
@@ -9729,6 +9734,11 @@ function KDEnemyAddSound(enemy: entity, amount: number, novisual: boolean = fals
 						radius: Math.min(4, vol) * 0.3 + 0.25,
 						sprite: "Particles/ShockwaveEnemy.png",
 					});
+				}
+				
+				if (!data.nosound && KDToggles.SoundNotification) {
+					if (KDSoundEnabled()) KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/SoundShockwave.ogg", KDPlayer(), 
+					enemy,  Math.min(vol * 0.04 + 0.05, 1));
 				}
 
 			}
