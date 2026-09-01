@@ -4,8 +4,6 @@
         // Library .d.ts files
         "Scripts/lib/LZString.d.ts",
 
-        "Scripts/lib/fmod.d.ts",
-
         // BC and KD .d.ts files
         "Scripts/Typedef.ts",
         "Game/src/base/KDTypeDefs.ts",
@@ -43,6 +41,8 @@
         "Game/src/map/KinkyDungeonEditor.ts",
         "Game/src/map/KinkyDungeonEditorGen.ts",
         "Game/src/base/KinkyDungeonErrors.ts",
+        "Game/src/base/KDAudioDrivers.ts",
+        "Game/src/base/KDWebAudio.ts",
         "Game/src/base/KinkyDungeon.ts",
         "Game/src/base/KDRender.ts",
         "Game/src/map/KDMapGen.ts",
@@ -281,7 +281,6 @@
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "lib": ["DOM", "ES2020"],
-        //"ignoreDeprecations": "6.0",
         "strictNullChecks": false,
         "noImplicitAny": false,
     },

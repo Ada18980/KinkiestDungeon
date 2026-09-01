@@ -1,31 +1,9 @@
 //import * as PIXI from "pixi.js"
 //import { Viewport } from "../node_modules/pixi-viewport/dist/Viewport";
 
-declare const OGVCompat: any
-declare const OGVPlayer: any
 
 const PIXIWidth = 2000;
 const PIXIHeight = 1000;
-let isSafari = (navigator.userAgent.indexOf('Safari') != -1
-	&& navigator.userAgent.indexOf('Chrome') == -1);
-let OGVSupported = false;
-(() => {
-	if (isSafari) {
-		var head = document.getElementsByTagName('head')[0];
-		var script = document.createElement('script');
-	
-		script.type = 'text/javascript';
-	
-		script.src = "Scripts/lib/ogvjs-1.9.0/ogv.js";
-	
-		head.appendChild(script).onload = () => {
-			
-			OGVSupported = OGVCompat.supported('OGVPlayer');
-		};
-	
-	}
-	
-})();
 
 
 function KDGetResolutionIndex() {
@@ -70,46 +48,7 @@ let ticker = PIXI.Ticker.shared;
 let CommonIsFMOD = false;
 
 
-// Simple error checking function for all FMOD return values.
-function KDCheckFMODResult(result): boolean
-{
-    if (result != FMOD.RESULT.OK)
-    {
-        var msg = "Error!!! '" + KDFMOD.ErrorString(result) + "'";
 
-        alert(msg);
-
-        throw msg;
-		return false;
-    }
-	return true;
-}
-
-
-
-async function FMODAfter() {
-	console.log("Running FMOD Init")
-	let output : any = {};
-	let result = KDFMOD.System_Create(output);
-	KDCheckFMODResult(result);
-	if (output.val != null) KDFmodSystem = output.val;
-
-	
-    result = KDFmodSystem.init(1024, FMOD.INITFLAGS.NORMAL, null);
-	
-	KDCheckFMODResult(result);
-	
-	CommonIsFMOD = true;
-	console.log("FMOD Init successful")
-};  
-var KDFMOD: FMOD = {
-	onRuntimeInitialized: FMODAfter,
-	// @ts-ignore
-	INITIAL_MEMORY: 64*1024*1024,
-	// @ts-ignore
-	window: window
-};
-var KDFmodSystem: FMOD.System = null;
 
 window.onload = function() {
 	KinkyDungeonRootDirectory = "Game/";
@@ -126,13 +65,6 @@ window.onload = function() {
 	Character = [];
 	CharacterNextId = 1;
 	CharacterReset(0);
-	if (AllowFMOD) {
-		//@ts-ignore
-		let API = window.kdAPI;
-		if (API || TestMode)
-			FMODModule(KDFMOD);
-	}
-
 
 	CurrentCharacter = null;
 

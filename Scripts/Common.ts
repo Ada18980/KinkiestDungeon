@@ -16,6 +16,11 @@ const GameVersionFormat = /^R([0-9]+)(?:(Alpha|Beta)([0-9]+)?)?$/;
 let CommonVersionUpdated = false;
 let CommonTouchList = null;
 
+const KDSearchParams = new URLSearchParams(window.location.search);
+let isSafari = (navigator.userAgent.indexOf('Safari') != -1
+	&& navigator.userAgent.indexOf('Chrome') == -1);
+	
+
 /**
  * An enum encapsulating possible chatroom message substitution tags. Character name substitution tags are interpreted
  * in chatrooms as follows (assuming the character name is Ben987):

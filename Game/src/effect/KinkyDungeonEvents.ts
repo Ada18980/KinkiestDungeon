@@ -10816,7 +10816,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 
 				}
 			}
-			if (enemy.hostile && !KDGameData.Collection[enemy.id + ""] && !KDEnemyHasFlag(enemy, "wardenReleasedPrisoners")) {
+			if (KDHostile(enemy) && KinkyDungeonAggressive(enemy) && !KDGameData.Collection[enemy.id + ""] && !KDEnemyHasFlag(enemy, "wardenReleasedPrisoners")) {
 				KinkyDungeonSetEnemyFlag(enemy, "wardenReleasedPrisoners", -1);
 				let count = 0;
 				for (let en of KDMapData.Entities) {
@@ -10825,8 +10825,9 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 					}
 				}
 				let boost = 0;
-				if (enemy.hp < enemy.Enemy.maxhp * 0.5) boost += 1;
-				if (enemy.hp < enemy.Enemy.maxhp * 0.25) boost += 1;
+				if (enemy.Enemy.name == "TheWarden1") boost += 1;
+				if (enemy.Enemy.name == "TheWarden2") boost += 1;
+				if (KinkyDungeonStatsChoice.get("hardMode")) boost += 1;
 				if (count < e.count + boost || (KinkyDungeonNewGame > 0 && count < 3)) {
 					let filter = "";
 					if (e.count == 1 && !(KinkyDungeonNewGame > 0)) {
