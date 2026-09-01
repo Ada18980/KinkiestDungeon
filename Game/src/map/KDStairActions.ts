@@ -133,7 +133,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 					if (KDGameData.PriorJailbreaks > 0) KDGameData.PriorJailbreaksDecay = (KDGameData.PriorJailbreaksDecay + 1) || 1;
 
 					if (MiniGameKinkyDungeonLevel > 1) {
-						
+
 						KDAdvanceOneFloor();
 					}
 
@@ -167,7 +167,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 			let movedUp = MiniGameKinkyDungeonLevel > KDGameData.HighestLevelCurrent;
 			KDGameData.HighestLevelCurrent = Math.max(KDGameData.HighestLevelCurrent || 1, MiniGameKinkyDungeonLevel);
 			KDGameData.HighestLevel = Math.max(KDGameData.HighestLevel || 1, MiniGameKinkyDungeonLevel);
-			
+
 
 			//if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)) {
 			let MapMod = data.mapMod;
@@ -264,15 +264,18 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 
 function KDPostStairSave() {
 	if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3
-			if ((!KinkyDungeonStatsChoice.get("saveMode"))) {
-				let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
+		if ((!KinkyDungeonStatsChoice.get("saveMode"))) {
+			(async() => {
+				let saveData = await KinkyDungeonCompressSave (JSON.stringify (KinkyDungeonSaveGame (true)), SaveType.Game);
 				KinkyDungeonState = "Save";
 				KDTextArea("saveDataField", 750, 100, 1000, 230);
 				ElementValue("saveDataField", saveData);
-			} else KinkyDungeonSaveGame();
-		}
-		else KinkyDungeonSaveGame();
- }
+			})();
+		} else KinkyDungeonSaveGame();
+	}
+	else KinkyDungeonSaveGame();
+}
+
 function KinkyDungeonHandleStairs(toTile: string, suppressCheckPoint?: boolean) {
 	if (KinkyDungeonFlags.get("stairslocked")) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDStairsLocked").replace("NMB", "" + KinkyDungeonFlags.get("stairslocked")), KDBaseWhite, 1);

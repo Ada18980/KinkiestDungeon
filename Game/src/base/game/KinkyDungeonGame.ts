@@ -220,7 +220,7 @@ function KDDefaultMapData(mapX: number, mapY: number, RoomType: string = "", Map
 		mapY: mapY,
 
 		RepopulateQueue: [],
-		
+
 
 		ExpStair: {},
 		TilesAlternate: {},
@@ -521,7 +521,7 @@ function KDResetEventData(Data?: any) {
 
 
 
-function KinkyDungeonInitialize(Level: number, Load?: any) {
+async function KinkyDungeonInitialize(Level: number, Load?: any) {
 	KDCollectionIndex = 0;
 	KDWorldMap = {};
 	KDMapData = KDDefaultMapData(0, 0);
@@ -557,9 +557,10 @@ function KinkyDungeonInitialize(Level: number, Load?: any) {
 
 	KinkyDungeonDressSet();
 	// Refresh the character
-	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer,
-		KDGetCharMetadata(KinkyDungeonPlayer)
-	), false, true);
+	await CharacterAppearanceRestore (KinkyDungeonPlayer,
+	                                  CharacterAppearanceStringify (KinkyDungeonPlayer,
+	                                                                KDGetCharMetadata(KinkyDungeonPlayer)),
+	                                  false, true);
 	KinkyDungeonDrawState = "Game";
 	KDResetAlternateInventoryRender();
 	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -1563,7 +1564,7 @@ let KDFood: Record<string, KDFoodData> = {
 		OnEat: "PoisonedFood",
 		Weight: 2,
 	},
-	
+
 	IceCreamArousal: {
 		Food: "IceCreamArousal",
 		Weight: 2,
@@ -1593,7 +1594,7 @@ let KDOnEatScripts: Record<string, (x: number, y: number, tile: any, food: KDFoo
 		}), KDBaseRed, 8);
 		KinkyDungeonApplyBuffToEntity(KDPlayer(), KDArousalOverTime);
 		KinkyDungeonApplyBuffToEntity(KDPlayer(), KDArousalOverTime2);
-		
+
 		let sfx = "Damage";
 		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 	},
@@ -1708,7 +1709,7 @@ function KinkyDungeonPlaceFood(foodChance: number, width: number, height: number
 					Weights.push({event: obj, weight: WeightTotal});
 					WeightTotal += obj.Weight;
 				}
-				
+
 			}
 
 			let selection = KDRandom() * WeightTotal;
@@ -2540,7 +2541,7 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Collection"; break;
 				//case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = "Facilities"; break;
 				/*case KinkyDungeonKeyMenu[9]: {
-					KinkyDungeonDrawState = "JourneyMap"; 
+					KinkyDungeonDrawState = "JourneyMap";
 					KDGameData.UseJourneyTarget = false;
 					break;}*/
 				case KinkyDungeonKeySkip[0]:
@@ -2853,14 +2854,14 @@ function KDDoAttack(Enemy: entity, teasesub: boolean, attackCost: number, skip: 
 			f = "saw_" + c;
 			if (!en.flags || !en.flags[f])
 			KDSetIDFlag(en.id, f, -1);
-		
+
 			if (!KDGameData.SawFlags) KDGameData.SawFlags = {};
 			let faction = KDGetFaction(en);
 			if (!KDGameData.SawFlags[faction]) KDGameData.SawFlags[faction] = {};
 			KDGameData.SawFlags[faction][c] = (KDGameData.SawFlags[faction][c] || 0) + 1;
 		}
-		
-		
+
+
 	}
 	KinkyDungeonSendEvent("beforePlayerLaunchAttack", data);
 	if (attackCost < 0 && KinkyDungeonStatsChoice.has("BerserkerRage")) {
@@ -3114,7 +3115,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 							if (newDelta > 0) {
 								if (Enemy && allowPass) {
 									// push by default
-									
+
 									let pushTile = (KinkyDungeonFlags.has("PassthroughAll") || KDEnemyHasFlag(Enemy, "passthrough"))
 										? undefined
 										: KDGetPushTile(Enemy, dx, dy);
@@ -3442,7 +3443,7 @@ function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _
 						f = "saw_" + c;
 						if (!en.flags || !en.flags[f])
 						KDSetIDFlag(en.id, f, -1);
-					
+
 						if (!KDGameData.SawFlags) KDGameData.SawFlags = {};
 						let faction = KDGetFaction(en);
 						if (!KDGameData.SawFlags[faction]) KDGameData.SawFlags[faction] = {};
@@ -3617,7 +3618,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	KinkyDungeonUpdateBuffs(delta, false);
 	KinkyDungeonUpdateEnemies(delta, true); //console.log("Enemy Check " + (performance.now() - now));
 	KinkyDungeonSendEvent("afterEnemyTick", {delta: delta, allied: true});
-	
+
 	for (let E = 0; E < KDMapData.Entities.length; E++) {
 		let enemy = KDMapData.Entities[E];
 		KDUnPackEnemy(enemy);
@@ -3981,8 +3982,8 @@ function KDAddAppearance (
 		C.Appearance.push(NA);
 		return NA;
 	}
-	
-		
+
+
 	return null;
 }
 
@@ -4408,7 +4409,7 @@ function KDSprintCost(sprintdata?: any, sprintCost?: number, accountForSlow: boo
 		boost: 0,
 		sprintCostOverride: sprintCost,
 	};
-	data.cost = (-KDSprintCostBase - KDSprintCostSlowLevel[Math.min(KDSprintCostSlowLevel.length-1, 
+	data.cost = (-KDSprintCostBase - KDSprintCostSlowLevel[Math.min(KDSprintCostSlowLevel.length-1,
 		Math.round(KinkyDungeonSlowLevel))] + (
 			(accountForSlow && KinkyDungeonSlowLevel > 1) ? -KDSprintAdjustSlowed : 0
 		));
@@ -4687,8 +4688,8 @@ interface KDFailMoveData  {
 
 
 /**
- * 
- * @param player 
+ *
+ * @param player
  * @param cancel - for mods to pass if they want to add things that override, inter-mod compatibility to prevent things tied to this from being disabled
  */
 function KDDoMumble(player: entity, cancel: boolean) {
@@ -4707,10 +4708,10 @@ function KDDoMumble(player: entity, cancel: boolean) {
 				gagchance += KinkyDungeonGagMumbleChancePerRestraint;
 			if (KDRestraint(inv).plugSize) {
 				plugCount += 1;
-				
+
 				if (plugChance + KDRestraint(inv).plugSize * KinkyDungeonPlugThoughChancePerRestraint < KinkyDungeonPlugThoughChancePerRestraintMax) {
 					plugChance += KDRestraint(inv).plugSize * KinkyDungeonPlugThoughChancePerRestraintMax;
-					
+
 				}
 			}
 			if (KDRestraint(inv).chastitybra) {
@@ -4732,22 +4733,22 @@ function KDDoMumble(player: entity, cancel: boolean) {
 			let msg = "KDRandomText_ClampV";
 			let nn = KDNumberOfClampVMsg;
 			let gagMsg = Math.floor(KDRandom() * nn);
-			
+
 			msg = msg + gagMsg;
 
-			
-			KinkyDungeonSendTextMessage(3, TextGet(msg), 
+
+			KinkyDungeonSendTextMessage(3, TextGet(msg),
 				KDVibeTextColor, 4, true);
 		}if (!done && (KinkyDungeonLastAction == "Move" || KinkyDungeonLastAction == "Struggle") && braChance == 0 && KDRandom() < clampChance) {
 			done = true;
 			let msg = "KDRandomText_Clamp";
 			let nn = KDNumberOfClampMsg;
 			let gagMsg = Math.floor(KDRandom() * nn);
-			
+
 			msg = msg + gagMsg;
 
-			
-			KinkyDungeonSendTextMessage(3, TextGet(msg), 
+
+			KinkyDungeonSendTextMessage(3, TextGet(msg),
 				KDVibeTextColor, 4, true);
 		}
 		if (!done && plugChance == 0 && KDRandom() < beltChance) {
@@ -4755,24 +4756,24 @@ function KDDoMumble(player: entity, cancel: boolean) {
 			let msg = "KDRandomText_Belt";
 			let nn = KDNumberOfBeltMsg;
 			let gagMsg = Math.floor(KDRandom() * nn);
-			
+
 			msg = msg + gagMsg;
 
-			
-			KinkyDungeonSendTextMessage(3, TextGet(msg), 
+
+			KinkyDungeonSendTextMessage(3, TextGet(msg),
 				KDVibeTextColor, 4, true);
 		}
-		
+
 		if (!done && KDRandom() < braChance) {
 			done = true;
 			let msg = "KDRandomText_Bra";
 			let nn = KDNumberOfBraMsg;
 			let gagMsg = Math.floor(KDRandom() * nn);
-			
+
 			msg = msg + gagMsg;
 
-			
-			KinkyDungeonSendTextMessage(3, TextGet(msg), 
+
+			KinkyDungeonSendTextMessage(3, TextGet(msg),
 				KDVibeTextColor, 4, true);
 		}
 
@@ -4788,11 +4789,11 @@ function KDDoMumble(player: entity, cancel: boolean) {
 					nn += 2;
 				}
 				let gagMsg = Math.floor(KDRandom() * nn);
-				
+
 				msg = msg + gagMsg;
 
-				
-				KinkyDungeonSendTextMessage(0.1, TextGet(msg), 
+
+				KinkyDungeonSendTextMessage(0.1, TextGet(msg),
 				KDVibeTextColor, 4, true);
 
 			}
@@ -4822,6 +4823,5 @@ function KDDoMumble(player: entity, cancel: boolean) {
 	}
 
 
-	
-}
 
+}
