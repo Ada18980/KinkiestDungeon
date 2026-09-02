@@ -3245,18 +3245,6 @@ function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) 
 }
 
 
-function KDClearModelContainerContainer(MC: ModelContainer, containerID: string) {
-	let modified = false;
-	let Container = MC.Containers.get(containerID);
-	// Cull sprites that weren't drawn yet
-	for (let sprite of Container.SpriteList.entries()) {
-		sprite[1].removeFromParent();
-		Container.SpriteList.delete(sprite[0]);
-		KDSpritesToCull.push(sprite[1]);
-	}
-}
-
-
 
 class Transform {
 	ox: number = 0;

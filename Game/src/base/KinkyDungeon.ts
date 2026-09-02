@@ -1632,10 +1632,10 @@ function KinkyDungeonRun() {
 		if (CommonTime() > lastGlobalRefresh + GlobalRefreshInterval) {
 			
 			lastGlobalRefresh = CommonTime();
+			KDGlobalFilterCacheRefresh = true;
 			
-			if (KinkyDungeonDrawState != "Game" && KinkyDungeonState != "Game") {
+			if (KinkyDungeonDrawState != "Game" || KinkyDungeonState != "Game") {
 				refresh = true;
-				KDGlobalFilterCacheRefresh = true;
 			}
 		}
 
@@ -1647,7 +1647,6 @@ function KinkyDungeonRun() {
 				
 
 				if (!MC.ContainersDrawn.has(Container[0]) && Container[1]) {
-					KDClearModelContainerContainer(MC, Container[0]);
 					Container[1].Mesh.parent.removeChild(Container[1].Container);
 					MC.Containers.delete(Container[0]);
 					MC.Update.delete(Container[0])
@@ -3376,12 +3375,16 @@ function KDGetCullTime() {
 }
 
 function KDPurgeFilterSprites() {
+	let newM = new Map();
 	for (let entry of kdFilterSprites.entries()) {
 		//@ts-ignore
-		if (entry[0].destroyed || entry[0].parent === null || !entry[0].baseTexture) {
+		if (entry[0].destroyed || entry[0].parent === null || entry[0].parent?.parent === null || !entry[0].baseTexture) {
 			KDPurgeSpriteRelatedFilters(entry[0]);
-		}
+		} else newM.set(entry[0], entry[1]);
+		
+		
 	}
+	kdFilterSprites = newM;
 }
 
 function KDPurgeSpriteRelatedFilters(sprite: PIXISprite | PIXITexture) {
@@ -3408,7 +3411,7 @@ function KDCullSprites(): void {
 				if (sprite[1].removeChildren) sprite[1].removeChildren();
 				if (sprite[1].destroy) {
 					if (!sprite[1].destroyed) {
-						if (sprite[1].clear) sprite[1].clear();
+						if (sprite[1].clear) {sprite[1].clear(); sprite[1].removeFromParent();}
 						else sprite[1].destroy();
 						/*if (sprite[1].parent) {
 							if (!containersToPurge.get(sprite[1].parent)) {
@@ -3465,7 +3468,7 @@ function KDCullSpritesList(list: Map<string, any>): void {
 				KDPurgeSpriteRelatedFilters(sprite[1]);
 				if (sprite[1].destroy) {
 					if (!sprite[1].destroyed) {
-						if (sprite[1].clear) sprite[1].clear();
+						if (sprite[1].clear)  {sprite[1].clear(); sprite[1].removeFromParent();}
 						else sprite[1].destroy();
 						/*if (sprite[1].parent) {
 							if (!containersToPurge.get(sprite[1].parent)) {
