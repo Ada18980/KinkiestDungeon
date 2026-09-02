@@ -1644,8 +1644,10 @@ function KinkyDungeonRun() {
 
 			// Cull containers that werent drawn this turn
 			for (let Container of MC.Containers.entries()) {
+				
 
 				if (!MC.ContainersDrawn.has(Container[0]) && Container[1]) {
+					KDClearModelContainerContainer(MC, Container[0]);
 					Container[1].Mesh.parent.removeChild(Container[1].Container);
 					MC.Containers.delete(Container[0]);
 					MC.Update.delete(Container[0])

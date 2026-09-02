@@ -182,7 +182,7 @@ function KDUpdateMusic() {
 
 }
 
-let KDGlobalMusicMult = 0.7;
+let KDGlobalMusicMult = 0.5;
 let KDMusicBusy = false;
 let KDMusicForce = false;
 

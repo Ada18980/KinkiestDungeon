@@ -625,6 +625,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 
 		modified = KDCullModelContainerContainer(MC, containerID) || modified;
 
+
 		// We only refresh if it actually needs to be updated
 		if (!MC.ForceUpdate.has(containerID)) modified = true; // Force refresh if we are forced to
 
@@ -3225,7 +3226,7 @@ function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) 
 	for (let sprite of Container.SpriteList.entries()) {
 		if ((!Container.SpritesDrawn.has(sprite[0]) && sprite[1])) {
 			if (cull) {
-				sprite[1].parent.removeChild(sprite[1]);
+				sprite[1].removeFromParent();
 				Container.SpriteList.delete(sprite[0]);
 				KDSpritesToCull.push(sprite[1]);
 			} else sprite[1].visible = false;
@@ -3234,6 +3235,18 @@ function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) 
 	}
 	if (cull) KDlastCull.set(containerID, CommonTime());
 	return modified;
+}
+
+
+function KDClearModelContainerContainer(MC: ModelContainer, containerID: string) {
+	let modified = false;
+	let Container = MC.Containers.get(containerID);
+	// Cull sprites that weren't drawn yet
+	for (let sprite of Container.SpriteList.entries()) {
+		sprite[1].removeFromParent();
+		Container.SpriteList.delete(sprite[0]);
+		KDSpritesToCull.push(sprite[1]);
+	}
 }
 
 
