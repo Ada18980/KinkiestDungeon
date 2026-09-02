@@ -676,7 +676,7 @@ function KinkyDungeonMakeNoiseSignal(enemy: entity, mult: number = 1, hideShockw
 		mult: mult,
 		bonus: 0,
 		bonusafter: 2,
-		radius: 5,
+		radius: 4,
 		x: enemy.x,
 		y: enemy.y,
 		enemiesHeard: [],
@@ -708,7 +708,7 @@ function KinkyDungeonMakeNoiseSignal(enemy: entity, mult: number = 1, hideShockw
 		}
 	}
 
-	KinkyDungeonMakeNoise(data.radius, enemy.x, enemy.y, !data.particle, true);
+	KinkyDungeonMakeNoise(data.radius, enemy.x, enemy.y, !data.particle, true,);
 
 
 

@@ -1012,7 +1012,7 @@ function KDSpawnLootTrap(x: number, y: number, _trap: any, _mult: number, durati
 	}
 	if (spawned > 0) {
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
-		KinkyDungeonMakeNoise(12, x, y);
+		KinkyDungeonMakeNoise(12, x, y, false, undefined, true);
 		KinkyDungeonSendTextMessage(10, TextGet("LootChestTrap"), KDBaseOrange, 2);
 	}
 }

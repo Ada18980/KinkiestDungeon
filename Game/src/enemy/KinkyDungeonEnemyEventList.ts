@@ -1779,7 +1779,7 @@ function KDSettlePlayerInFurniture(enemy: entity, _aiData: KDAIData, tags?: stri
 			if (!res) {
 				return false;
 			}
-			KinkyDungeonMakeNoise(10, nearestfurniture.x, nearestfurniture.y);
+			KinkyDungeonMakeNoise(10, nearestfurniture.x, nearestfurniture.y, true);
 		}
 
 		KDResetAllAggro();

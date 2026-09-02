@@ -1078,7 +1078,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				if (alreadyDone < e.count) {
 					alreadyDone += e.mult * data.dmg;
 					KDItemDataSet(item, "popDamage", alreadyDone);
-					KinkyDungeonMakeNoise(14, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+					KinkyDungeonMakeNoise(12, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, undefined, true);
 					KinkyDungeonSendTextMessage(4, TextGet("KDDamageBubbleProgress").replace("RestraintName", TextGet("Restraint" + item.name)), KDBaseMint, 2);
 				} else {
 					KDRemoveThisItem(item, undefined, undefined, undefined, undefined, true);
