@@ -3104,14 +3104,12 @@ function KDGetMoveDirection() {
 /**
  * Sets the move direction based on MOUSE location
  */
-function KinkyDungeonSetMoveDirection(Movement?: boolean) {
+function KinkyDungeonSetMoveDirection() {
 
 	let point = KDGetMoveDirection();
 
 
-	KDSendInput("setMoveDirection", {dir: Movement ? KinkyDungeonGetDirection(
-		point.x - KinkyDungeonPlayerEntity.x,
-		point.y - KinkyDungeonPlayerEntity.y) : KDGetDirGeometric(
+	KDSendInput("setMoveDirection", {dir: KDGetDirGeometric(
 		point.x - KinkyDungeonPlayerEntity.x,
 		point.y - KinkyDungeonPlayerEntity.y)}, true, true);
 
