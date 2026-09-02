@@ -483,8 +483,83 @@ AddModel({
 	Categories: ["Restraints", "Accessories"],
 	AddPose: ["NeoBelt", "NeoWaistBelt"],
 	Layers: ToLayerMap([
-		...GetModelLayers("IronBelt", "", "", "BaseMetal", 0.6),
-		...GetModelLayers("IronBelt", "Rim", "", "Rim", 0.5),
+		{ Name: "WBelt", Layer: "BeltBondage", Pri: 15.2,
+			PrependLayerPrefix: {ChastityOption2: "Option2_", ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			DisplacementSprite: "TightBelt",
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["TightChastityBelt"]),
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "WBeltPadlock", Layer: "BeltBondage", Pri: 15.24,
+			PrependLayerPrefix: {ChastityOption2: "Option2_", ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "Lock",
+			TieToLayer: "Belt",
+		},
+		{ Name: "WBeltPadlockPin", Layer: "BeltBondage", Pri: 15.28,
+			PrependLayerPrefix: {ChastityOption2: "Option2_", ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "LockPin",
+			TieToLayer: "Belt",
+		},
+	])
+});
+
+AddModel({
+	Name: "NeoSteelBeltSegu",
+	Folder: "SteelCuffs",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	AddPose: ["NeoBelt", "NeoWaistBelt"],
+	Layers: ToLayerMap([
+		{ Name: "WBelt", Layer: "BeltBondage", Pri: 15.1,
+			PrependLayerPrefix: {ChastityOption2: "Option2_", ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			DisplacementSprite: "TightBelt",
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["TightChastityBelt"]),
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "WBeltSegu", Layer: "BeltBondage", Pri: 15.15,
+			PrependLayerPrefix: {ChastityOption2: "Option2_", ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "Lock",
+			TieToLayer: "Belt",
+		},
+	])
+});
+
+AddModel({
+	Name: "NeoSteelBeltRadial",
+	Folder: "SteelCuffs",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Accessories"],
+	AddPose: ["NeoBelt", "NeoWaistBelt"],
+	Layers: ToLayerMap([
+		{ Name: "WBelt", Layer: "ChastityBelt", Pri: 15,
+			PrependLayerPrefix: {ChastityOption2: "Option2_", ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			DisplacementSprite: "TightBelt",
+			DisplaceAmount: 100,
+			DisplaceLayers: ToMap(["TightChastityBelt"]),
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "WBeltRadial", Layer: "ChastityBelt", Pri: 15.05,
+			PrependLayerPrefix: {ChastityOption2: "Option2_", ChastityOption: "Option_"},
+			Invariant: true,
+			DisplacementInvariant: true,
+			InheritColor: "Lock",
+			TieToLayer: "Belt",
+		},
 	])
 });
 
@@ -493,6 +568,8 @@ AddModel({
 
 AddModel(GetModelFashionVersion("NeoSteelCollar", true));
 AddModel(GetModelFashionVersion("NeoSteelBelt", true));
+AddModel(GetModelFashionVersion("NeoSteelBeltSegu", true));
+AddModel(GetModelFashionVersion("NeoSteelBeltRadial", true));
 AddModel(GetModelFashionVersion("SteelCuffsWristLeft", true));
 AddModel(GetModelFashionVersion("SteelCuffsWristRight", true));
 AddModel(GetModelFashionVersion("SteelCuffsWrists", true));

@@ -10,6 +10,7 @@ let KDMenuPlayerZIndex = 6;;
 let KDCenterPlayerOffset = 6;
 
 let KDFastPathWidth = 5;
+let KDFastPathWidthSlowed = 1.5;
 
 
 interface KDLight {
@@ -1606,6 +1607,8 @@ function KinkyDungeonDrawGame() {
 								if (path?.length > 1) {
 									dist *= path.length;
 								}
+								let dashed = KinkyDungeonSlowLevel > 1;
+								let slowed = KDGameData.MovePoints < 0;
 								if (KDGameData.MovePoints < 0) {
 									if (path?.length > 1) {
 										dist -= Math.min(0, KDGameData.MovePoints + 1);
@@ -1619,29 +1622,30 @@ function KinkyDungeonDrawGame() {
 								DrawTextKD("x" + dist, (KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 								
 								if (path?.length > 0 && KDToggles.ShowPath && !(KinkyDungeonTargetX == KDPlayer().x && KinkyDungeonTargetY == KDPlayer().y)) {
+									
 									let lastP = KDPlayer();
 									let color = KinkyDungeonFastMoveSuppress ? 0xff5555 : 0xffaaaa;
 									let ii = 0;
 									for (let p of path) {
 										KDPathGraphics.lineStyle({
-											width: KDFastPathWidth,
+											width: slowed ? KDFastPathWidthSlowed : (dashed ? KDFastPathWidth : (KDFastPathWidth-1)),
 											color: color,
-											alpha: 0.8,
 											cap: PIXI.LINE_CAP.ROUND,
 											join: PIXI.LINE_JOIN.ROUND,
 											miterLimit: KDFastPathWidth});
 										let edgeNode = p == path[0] || p == path[path.length-1];
-										let fixedp = (p == path[0]) ? KDPathFixP_Edge(lastP, p) : 
-											(!edgeNode ? KDPathFixP_MiddleA(lastP, p) :
-												KDPathFixP_Middle(lastP, p))
-										KDPathGraphics.moveTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
+										let fixedp = (p == path[0]) ? ((dashed && path.length == 1) ? KDPathFixP_DashStart(lastP, p) : KDPathFixP_Edge(lastP, p)) : 
+											(dashed ? (!edgeNode ? KDPathFixP_MiddleA(lastP, p) :
+												KDPathFixP_Middle(lastP, p)) : KDPathFixP_MiddleSolid(lastP))
+										if (dashed || p == path[0])
+											KDPathGraphics.moveTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
 										
 										fixedp = (p == path[path.length-1]) ? KDPathFixP_Edge(p, lastP) : 
-											(!edgeNode ? KDPathFixP_MiddleB(lastP, p) :
-												KDPathFixP_Middle(p, lastP))
+											(dashed ? (!edgeNode ? KDPathFixP_MiddleB(lastP, p) :
+												KDPathFixP_Middle(p, lastP)) : KDPathFixP_MiddleSolid(p))
 										KDPathGraphics.lineTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
 									
-										if (!edgeNode) {
+										if (!edgeNode && dashed) {
 											
 											fixedp = KDPathFixP_MiddleA(p, lastP);
 											KDPathGraphics.moveTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
@@ -6588,4 +6592,11 @@ function KDPathFixP_MiddleB(p: KDPoint, lastP: KDPoint) {
 }
 function KDPathFixP_Edge(p: KDPoint, lastP: KDPoint) {
 	return {x: p.x + (p.x > lastP.x ? -.167 : (p.x < lastP.x ? 1.167 : 0.5)), y: p.y + (p.y > lastP.y ? -.167 : (p.y < lastP.y ? 1.167 : 0.5))};
+}
+function KDPathFixP_DashStart(p: KDPoint, lastP: KDPoint) {
+	return {x: p.x + (p.x > lastP.x ? 0 : (p.x < lastP.x ? 1 : 0.5)), y: p.y + (p.y > lastP.y ? 0 : (p.y < lastP.y ? 1 : 0.5))};
+}
+
+function KDPathFixP_MiddleSolid(p: KDPoint) {
+	return {x: p.x + 0.5, y: p.y + 0.5}
 }

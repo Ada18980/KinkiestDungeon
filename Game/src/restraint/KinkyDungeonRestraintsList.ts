@@ -4218,7 +4218,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {"trap":10, 'machineChastity': 2, "maidRestraints": 9, "maidRestraintsLight": 6,
 			"genericChastity": 32, "blacksteelRestraints": 12, "blacksteelchastity": 50, "chastitySpell": 30,},
 		playerTags: {"ItemVulvaEmpty" : -4, "ItemVulvaPiercingsEmpty" : -4, "NoBelt": -1000}, minLevel: 9,
-		allFloors: true, shrine: ["NeoBelt", "ChastityBelts", "Blacksteel", "Chastity", "Metal"]},
+		allFloors: true, shrine: ["NeoBelt", "NeoChastityBelt", "ChastityBelts", "Blacksteel", "Chastity", "Metal"]},
 	{inventory: true, arousalMode: true, trappable: true, name: "BlacksteelWBelt",
 		Group: "ItemTorso",
 		power: 7, weight: 0, DefaultLock: "Blue",
@@ -4240,10 +4240,15 @@ const KinkyDungeonRestraints: restraint[] = [
 		maxwill: 0.85, escapeChance: {"Struggle": -0.6, "Cut": -0.50, "Remove": 10.0, "Pick": 0.2},
 		enemyTags: {"trap":10, "blacksteelRestraints": 12, "blacksteelCuffs": 1},
 		playerTags: {"NeoBelt" : -1000}, minLevel: 7,
+		
+		requireNoTagToEquip: ["NeoChastityBelt"],
+		blockRestraintsWithTag: ["NeoChastityBelt"],
+		allowOverrideBasedOnTagFilters: ["NeoChastityBelt"],
+
 		LinkAll: true,
 		AlwaysLinkable: true,
 		linkCategory: "WaistBelt", linkSize: 0.6,
-		allFloors: true, shrine: ["WaistBelts", "NeoBelt", "Blacksteel", "Chastity", "Metal"]},
+		allFloors: true, shrine: ["WaistBelts", "NeoBelt", "Blacksteel", "Metal"]},
 	{inventory: true, arousalMode: true, trappable: true, name: "BlacksteelBra", Asset: "FuturisticBra2", OverridePriority: 26, Color: ['#333333', '#999999', '#333333', '#333333', '#999999', '#333333'], Group: "ItemBreast",
 		Model: "SteelChastityBra_Padlock",
 		factionFilters: {
@@ -4283,14 +4288,14 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {"trap":10, 'machineChastity': .2, "maidRestraints": 9, "maidRestraintsLight": 6,
 			"genericChastity": 32, "steelRestraints": 12, "steelchastity": 50, "chastitySpell": 30,},
 		playerTags: {"ItemVulvaEmpty" : -4, "ItemVulvaPiercingsEmpty" : -4, "NoBelt": -1000}, minLevel: 4,
-		allFloors: true, shrine: ["NeoBelt", "ChastityBelts", "Chastity", "Steel", "Metal"]},
+		allFloors: true, shrine: ["NeoBelt", "NeoChastityBelt", "ChastityBelts", "Chastity", "Steel", "Metal"]},
 	{inventory: true, arousalMode: true, trappable: true, name: "SteelWBelt",
 		Group: "ItemTorso",
 		power: 6, weight: 0, DefaultLock: "HiSec",
 		Security: {
 			level_key: 1,
 		},
-		Model: "NeoSteelBelt",
+		Model: "NeoSteelBeltRadial",
 		factionFilters: {
 			Lock: {color: "Highlight", override: true},
 			BaseMetal: {color: "DarkNeutral", override: false},
@@ -4300,6 +4305,12 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {"trap":10, "steelRestraints": 12, "steelCuffs": 1, "steelWBelt": 100},
 		playerTags: {"NeoBelt" : -1000}, minLevel: 0,
 		LinkAll: true,
+
+		
+		requireNoTagToEquip: ["NeoChastityBelt"],
+		blockRestraintsWithTag: ["NeoChastityBelt"],
+		allowOverrideBasedOnTagFilters: ["NeoChastityBelt"],
+
 		AlwaysLinkable: true,
 		linkCategory: "WaistBelt", linkSize: 0.6,
 		allFloors: true, shrine: ["WaistBelts", "Steel", "NeoBelt", "Metal", ]},
@@ -4416,7 +4427,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		escapeChance: {"Struggle": -0.5, "Cut": -0.125, "Remove": 10.0, "Pick": 0.1},
 		enemyTags: {"genericChastity": 8, "ornateChastity": 8}, playerTags: {"NoBelt": -1000}, minLevel: 4,
-		allFloors: true, shrine: ["NeoBelt", "Chastity", "Metal", "ChastityBelts", "Ornate"]},
+		allFloors: true, shrine: ["NeoBelt", "NeoChastityBelt", "Chastity", "Metal", "ChastityBelts", "Ornate"]},
 	{inventory: true, arousalMode: true, trappable: true, name: "TrapBra2", Asset: "FuturisticBra2", OverridePriority: 26, Color: ['#5E5E6B', '#F8BD01', '#5E5E6B', '#5E5E6B', '#F8BD01', '#5E5E6B'], Group: "ItemBreast",
 		chastitybra: true, power: 9, weight: 1, DefaultLock: "Gold",
 		Security: {
@@ -7506,7 +7517,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	//region Warden
 
 	{inventory: true, name: "WardenBelt", Asset: "Default", Color: "Default",
-		Model: "NeoSteelBelt",
+		Model: "NeoSteelBeltSegu",
 		UnderlinkedAlwaysRender: true,
 		Filters: {
 			//BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
@@ -7542,7 +7553,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		]
 	},
 	{inventory: true, name: "WardenBelt2", Asset: "Default", Color: "Default",
-		Model: "NeoSteelBelt",
+		Model: "NeoSteelBeltSegu",
 		UnderlinkedAlwaysRender: true,
 		Filters: {
 			//BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},

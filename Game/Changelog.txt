@@ -77,7 +77,11 @@ Must do
 - species perks
 
 5.5.2
-- Added FMOD sound engine with panning for some SFX (offline ver. only)
+- Added WebAudio support for better sound quality
+- Added sound muting effect with vibrators
+- Memory leak fixes with inventory screen
+- Improvements to scrollable lists by fjarn-skaggl 
+- New graphic for auto path; autopathing now has only one functioning mode rather than the confusing 3 options before
 
 5.5.1
 - Added pronoun selection to players and NPCs in collection

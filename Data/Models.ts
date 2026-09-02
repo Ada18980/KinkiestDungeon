@@ -1053,6 +1053,13 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				if (l.HideOverrideLayer)
 					MC.HighestPriority[l.HideOverrideLayer] = Math.max(MC.HighestPriority[l.HideOverrideLayer] || -500, pri || -500);
 			}
+			if (l.ExtraOverrideLayers) {
+				for (let hideGroup of l.ExtraOverrideLayers) {
+					for (let hideLayer of Object.keys(LayerGroups[hideGroup])) {
+						MC.HighestPriority[hideLayer] = Math.max(MC.HighestPriority[hideLayer] || -500, pri || -500);
+					}
+				}
+			}
 		}
 	}
 
