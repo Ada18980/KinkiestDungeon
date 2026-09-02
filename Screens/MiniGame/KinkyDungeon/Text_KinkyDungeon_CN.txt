@@ -486,6 +486,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 显示玩家增益光环
 - Show Enemy Buff Auras
 显示敌人增益光环
+# - Noise Sound Effect
 - Minimalist Enemy Auras
 极简敌人光环
 - Pixel Scaling (needs restart)
