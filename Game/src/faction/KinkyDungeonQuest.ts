@@ -1303,13 +1303,13 @@ function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFu
 				QuestRoom: KDMapData.RoomType,
 			});
 			KDMapData.QuestsAccepted++;
-			KinkyDungeonSetFlag(Name, -1, -1);
+			KinkyDungeonSetFlag(Name, -1, 1);
 			spawnFunction(Goddess, Name);
 		},
 		worldgenstart: () => {
 		},
 		tick: (delta) => {
-			if (KDMapData.RoomType == "PerkRoom") {
+			if (!KinkyDungeonFlags.get(Name)) {
 				KDRemoveQuest(Name, false, false, false);
 				KinkyDungeonChangeRep(Goddess, -KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestFail_" + Name), KDBaseWhite, 1);

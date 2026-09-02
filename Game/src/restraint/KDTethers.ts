@@ -256,6 +256,7 @@ function KDBreakTether(player: entity, mapData?: KDMapDataType): boolean {
 
 function KinkyDungeonDrawTethers(CamX: number, CamY: number) {
 	KDTetherGraphics.clear();
+	
 	if (!KDGameBoardAddedTethers) {
 		kdgameboard.addChild(KDTetherGraphics);
 		KDGameBoardAddedTethers = true;

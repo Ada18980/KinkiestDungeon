@@ -512,11 +512,11 @@ let KDBaseDamageTypes = {
 	distractionTypesStrong:["tickle", "grope", "charm", "souldrain", "happygas", "estim"],
 	teaseTypes: ["grope", "charm", "plush"],
 	staminaTypesWeak:["drain", "stun", "fire", "glue", "chain", "tickle", "electric", "shock"],
-	staminaTypesStrong:["ice", "frost", "poison", "crush", "souldrain"],
+	staminaTypesStrong:["ice", "frost", "poison", "poisongas", "crush", "souldrain"],
 	manaTypesWeak:["electric", "estim", "drain"],
 	manaTypesStrong:[],
 	willTypesVeryWeak:["tickle", "souldrain"],
-	willTypesWeak:["ice", "frost", "poison", "stun", "electric", "estim", "acid", "soap", "grope", "pierce", "slash", "crush", "unarmed", "glue", "chain"],
+	willTypesWeak:["ice", "frost", "poison", "poisongas", "stun", "electric", "estim", "acid", "soap", "grope", "pierce", "slash", "crush", "unarmed", "glue", "chain"],
 	willTypesStrong:["cold", "fire", "charm", "soul", "pain", "shock", "plush", "arcane"],
 };
 
@@ -944,8 +944,8 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 			} else {
 				entity.dialogue = "";
 				entity.dialogueColor = color;
-				entity.dialogueDuration = 4;
-				entity.dialoguePriority = 1;
+				entity.dialogueDuration = duration;
+				entity.dialoguePriority = 10;
 				KinkyDungeonSendFloater(entity, TextGet("KinkyDungeonRemindJailPlay" + suff + "Gagged" + Math.floor(KDRandom() * 3)), 
 					color, 1.5 + 0.5*duration);
 			}

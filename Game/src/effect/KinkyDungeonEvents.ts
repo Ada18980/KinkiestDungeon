@@ -12810,8 +12810,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			if (KDGameData.TempFlagFloorTicks)
 				for (let f of Object.entries(KDGameData.TempFlagFloorTicks)) {
 					if (!KinkyDungeonFlags.get(f[0])) delete KDGameData.TempFlagFloorTicks[f[0]];
-					else if (KinkyDungeonFlags.get(f[0]) < 0) {
-						if (f[1] < data.delta) KDGameData.TempFlagFloorTicks[f[0]] = KDGameData.TempFlagFloorTicks[f[0]] + data.delta;
+					else if (KDGameData.TempFlagFloorTicks[f[0]] < 0) {
+						if (f[1] < -data.delta) KDGameData.TempFlagFloorTicks[f[0]] = KDGameData.TempFlagFloorTicks[f[0]] + data.delta;
 						else {
 							KinkyDungeonSetFlag(f[0], 0);
 							delete KDGameData.TempFlagFloorTicks[f[0]];
@@ -12825,7 +12825,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			if (KDGameData.TempFlagFloorTicks)
 				for (let f of Object.entries(KDGameData.TempFlagFloorTicks)) {
 					if (!KinkyDungeonFlags.get(f[0])) delete KDGameData.TempFlagFloorTicks[f[0]];
-					else if (KinkyDungeonFlags.get(f[0]) > 0) {
+					else if (KDGameData.TempFlagFloorTicks[f[0]] > 0) {
 						if (f[1] > data.delta) KDGameData.TempFlagFloorTicks[f[0]] = KDGameData.TempFlagFloorTicks[f[0]] - data.delta;
 						else {
 							KinkyDungeonSetFlag(f[0], 0);

@@ -9,6 +9,8 @@ let KDMenuPlayerZIndex = 6;;
 
 let KDCenterPlayerOffset = 6;
 
+let KDFastPathWidth = 5;
+
 
 interface KDLight {
 	x: number,
@@ -86,6 +88,13 @@ let KDBreathAnimTime = 1400;
 let KDFlipPlayer = false;
 
 let KDBaseButtonAlpha = 0.5;
+
+
+
+let KDGameBoardAddedPathGFX = false;
+let KDPathGraphics = new PIXI.Graphics;
+KDPathGraphics.zIndex = 101;
+
 
 // PIXI experimental
 let pixiview: HTMLCanvasElement = null;
@@ -1428,6 +1437,7 @@ function KinkyDungeonDrawGame() {
 				KDDrawUpdate = 0;
 				KinkyDungeonSuppressSprint = false;
 
+				KDPathGraphics.visible = false;
 
 
 				// Draw targeting reticule
@@ -1564,13 +1574,22 @@ function KinkyDungeonDrawGame() {
 						&& (KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0))) {
 						KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
 
+						KDPathGraphics.visible = true;
+						
+						if (!KDGameBoardAddedPathGFX) {
+							kdstatusboard.addChild(KDPathGraphics);
+							KDGameBoardAddedPathGFX = true;
+						}
+						KDPathGraphics.clear();
 
 						let allowFog = KDAllowFog();
 						if (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || (allowFog && KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0)
 							|| KDistChebyshev(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) < 1.5) {
-							KDDraw(kdstatusboard, kdpixisprites, "ui_movereticule" + KinkyDungeonTargetX + "," + KinkyDungeonTargetY, KinkyDungeonRootDirectory + "Target" + KDGetTargetRetType(KinkyDungeonTargetX, KinkyDungeonTargetY) + ".png",
+							KDDraw(kdstatusboard, kdpixisprites, "ui_movereticule" + KinkyDungeonTargetX + "," + KinkyDungeonTargetY, 
+								KinkyDungeonRootDirectory + "Target" + KDGetTargetRetType(KinkyDungeonTargetX, KinkyDungeonTargetY) + ".png",
 								(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 									zIndex: 100,
+								tint: KinkyDungeonFastMoveSuppress ? 0xff7777 : 0xffffff
 								});
 							if (KinkyDungeonSlowLevel < 10) {
 								//if (!KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY)
@@ -1598,14 +1617,52 @@ function KinkyDungeonDrawGame() {
 								}
 								dist = Math.ceil(Math.max(0, dist));
 								DrawTextKD("x" + dist, (KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
-								if (path && KDToggles.ShowPath)
+								
+								if (path?.length > 0 && KDToggles.ShowPath && !(KinkyDungeonTargetX == KDPlayer().x && KinkyDungeonTargetY == KDPlayer().y)) {
+									let lastP = KDPlayer();
+									let color = KinkyDungeonFastMoveSuppress ? 0xff5555 : 0xffaaaa;
+									let ii = 0;
 									for (let p of path) {
-										if (p.x != KinkyDungeonTargetX || p.y != KinkyDungeonTargetY)
+										KDPathGraphics.lineStyle({
+											width: KDFastPathWidth,
+											color: color,
+											alpha: 0.8,
+											cap: PIXI.LINE_CAP.ROUND,
+											join: PIXI.LINE_JOIN.ROUND,
+											miterLimit: KDFastPathWidth});
+										let edgeNode = p == path[0] || p == path[path.length-1];
+										let fixedp = (p == path[0]) ? KDPathFixP_Edge(lastP, p) : 
+											(!edgeNode ? KDPathFixP_MiddleA(lastP, p) :
+												KDPathFixP_Middle(lastP, p))
+										KDPathGraphics.moveTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
+										
+										fixedp = (p == path[path.length-1]) ? KDPathFixP_Edge(p, lastP) : 
+											(!edgeNode ? KDPathFixP_MiddleB(lastP, p) :
+												KDPathFixP_Middle(p, lastP))
+										KDPathGraphics.lineTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
+									
+										if (!edgeNode) {
+											
+											fixedp = KDPathFixP_MiddleA(p, lastP);
+											KDPathGraphics.moveTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
+											
+											fixedp = KDPathFixP_MiddleB(p, lastP);
+											KDPathGraphics.lineTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
+										
+										}
+										lastP = p;
+										/**
+										if (p.x != KinkyDungeonTargetX || p.y != KinkyDungeonTargetY) {
 											KDDraw(kdstatusboard, kdpixisprites, `ui_movereticule_${p.x},${p.y}`, KinkyDungeonRootDirectory + "UI/PathDisplay.png",
 												(p.x - CamX)*KinkyDungeonGridSizeDisplay, (p.y - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 													zIndex: 100,
+													tint: KinkyDungeonFastMoveSuppress ? 0xff7777 : 0xffffff
 												});
+										}
+										*/
+											
 									}
+								}
 								//}
 							}
 						}
@@ -3047,11 +3104,14 @@ function KDGetMoveDirection() {
 /**
  * Sets the move direction based on MOUSE location
  */
-function KinkyDungeonSetMoveDirection() {
+function KinkyDungeonSetMoveDirection(Movement?: boolean) {
 
 	let point = KDGetMoveDirection();
 
-	KDSendInput("setMoveDirection", {dir: KDGetDirGeometric(
+
+	KDSendInput("setMoveDirection", {dir: Movement ? KinkyDungeonGetDirection(
+		point.x - KinkyDungeonPlayerEntity.x,
+		point.y - KinkyDungeonPlayerEntity.y) : KDGetDirGeometric(
 		point.x - KinkyDungeonPlayerEntity.x,
 		point.y - KinkyDungeonPlayerEntity.y)}, true, true);
 
@@ -6057,7 +6117,7 @@ function KDHotkeyToTextSilent(hotkey: string): string {
 function KDGetTargetRetType(x: number, y: number): string {
 	let enemy = KinkyDungeonEnemyAt(x, y);
 
-	if (enemy) {
+	if (enemy && KinkyDungeonVisionGet(x, y) > 0.1) {
 		let agg = KinkyDungeonAggressive(enemy);
 		if (KDCanPassEnemy(KinkyDungeonPlayerEntity, enemy) &&
 			(!agg || KDHelpless(enemy))) return "Pass";
@@ -6069,7 +6129,7 @@ function KDGetTargetRetType(x: number, y: number): string {
 	}
 
 	let tile = KinkyDungeonMapGet(x, y);
-	if (KDInteractableTiles.includes(tile) && !(KinkyDungeonMovableTilesEnemy.includes(tile))) return "Action";
+	if (KinkyDungeonFogGet(x, y) > 0 && KDInteractableTiles.includes(tile) && !(KinkyDungeonMovableTilesEnemy.includes(tile))) return "Action";
 	return "Move";
 }
 
@@ -6517,4 +6577,17 @@ function KDGetFilter(filter: LayerFilter) {
 	} else {
 		return new PIXI.filters.AdjustmentFilter(filter);
 	}
+}
+
+function KDPathFixP_Middle(p: KDPoint, lastP: KDPoint) {
+	return {x: p.x + (p.x > lastP.x ? 0.33 : (p.x < lastP.x ? 0.67: 0.5)), y: p.y + (p.y > lastP.y ? 0.33 : (p.y < lastP.y ? 0.67 : 0.5))}
+}
+function KDPathFixP_MiddleA(p: KDPoint, lastP: KDPoint) {
+	return {x: p.x + (p.x > lastP.x ? 0.167 : (p.x < lastP.x ? 0.833: 0.5)), y: p.y + (p.y > lastP.y ? 0.167 : (p.y < lastP.y ? 0.833 : 0.5))}
+}
+function KDPathFixP_MiddleB(p: KDPoint, lastP: KDPoint) {
+	return {x: p.x + (p.x > lastP.x ? 0.33 : (p.x < lastP.x ? 0.67: 0.5)), y: p.y + (p.y > lastP.y ? 0.33 : (p.y < lastP.y ? 0.67 : 0.5))}
+}
+function KDPathFixP_Edge(p: KDPoint, lastP: KDPoint) {
+	return {x: p.x + (p.x > lastP.x ? -.167 : (p.x < lastP.x ? 1.167 : 0.5)), y: p.y + (p.y > lastP.y ? -.167 : (p.y < lastP.y ? 1.167 : 0.5))};
 }

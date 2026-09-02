@@ -16,6 +16,8 @@ let KDHUDGlobals = {
 	},
 };
 
+
+
 let KinkyDungeonStruggleGroups: StruggleGroup[] = [];
 let KinkyDungeonStruggleGroupsBase = [
 	"ItemDevices",
@@ -108,11 +110,6 @@ let KDFocusControlButtons = {
 		Shop: false,
 		Special: false,
 	},
-	"AutoPath": {
-		SuppressBeforeCombat: true,
-		SuppressDuringCombat: true,
-		StepDuringCombat: false,
-	},
 	"AutoWait": {
 		Slow: false,
 		Normal: true,
@@ -121,8 +118,6 @@ let KDFocusControlButtons = {
 	},
 };
 let KDFocusControlButtonsExclude = {
-	AutoPathStepDuringCombat: ["AutoPathSuppressDuringCombat"],
-	AutoPathSuppressDuringCombat: ["AutoPathStepDuringCombat"],
 	AutoWaitSlow: ["AutoWaitNormal", "AutoWaitFast", "AutoWaitVeryFast"],
 	AutoWaitFast: ["AutoWaitNormal", "AutoWaitSlow", "AutoWaitVeryFast"],
 	AutoWaitVeryFast: ["AutoWaitNormal", "AutoWaitFast", "AutoWaitSlow"],
@@ -1545,9 +1540,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	}
 
 	if (DrawButtonKDEx("toggleFastMove", (_bdata) => {
-		if (!KinkyDungeonFastMoveSuppress)
-			KinkyDungeonFastMove = !KinkyDungeonFastMove;
-		KinkyDungeonFastMoveSuppress = false;
+		KinkyDungeonFastMove = !KinkyDungeonFastMove;
 		KinkyDungeonFastMovePath = [];
 		KDSetFocusControl("AutoPath");
 		return true;

@@ -2458,7 +2458,7 @@ AttackBanditMerchantBind,"The dealer uses some high-quality restraints on you! (
 AttackBanditMerchantLock,"The dealer smiles and applies a lock! (DamageTaken)"
 AttackBanditMerchant,"The dealer kisses and gropes your body! (DamageTaken)"
 KDPoisonDagger,"That dagger was laced with something..."
-KDPoisonDaggerNA,"The dagger that hits you is poisoned, but it doesn't affect you."
+KDPoisonDaggerNA,"The dagger that hits you is poisoned, but it has minimal effect."
 KinkyDungeonLustBomb,"You hear a shattering of glass, suddenly the air around you feels thick and moist..."
 KinkyDungeonSpellPoisonDagger,Poison Dagger
 KinkyDungeonSpellLustBomb,Lust Bomb
@@ -3259,7 +3259,7 @@ KinkyDungeonStruggleUnlockNoUnknownKey,"You don't have a key for this lock."
 KinkyDungeonStruggleCantPickBlueLock,"The lock seems to be magical and rejects all picking attempts!"
 KinkyDungeonStruggleCantPickGoldLock,"The lock is definitely magical and forces your pick out!"
 KinkyDungeonStruggleCantPickDivineLock,"The lock is divine. A mortal shouldn't even try to pick it."
-KinkyDungeonStruggleUnlockNoDivineKey,"You must perform your quest! Don't even think of unlocking it..."
+KinkyDungeonStruggleUnlockNoDivineKey,"You must complete a divine quest to unlock this."
 KinkyDungeonStruggleCantPickDivine2Lock,"The lock is divine. A mortal shouldn't even try to pick it."
 KinkyDungeonStruggleUnlockNoDivine2Key,"You're not sure a key for this even exists in the mortal realm."
 KinkyDungeonStruggleCantPickRubberLock,"The lock is made of solid rubber. You can't pick that."
@@ -7440,7 +7440,7 @@ KinkyDungeonSpellSporesHappy,Enticing Spores
 KinkyDungeonSpores,"You inhale some spores, and feel a bit sleepy..."
 KinkyDungeonSporesHappy,"The spores make you feel excited!"
 KinkyDungeonSporesSick,"The toxic spores make you feel faint..."
-KinkyDungeonSporesNA,"The spores do not affect you."
+KinkyDungeonSporesNA,"The spores have minimal effects."
 
 
 KinkyDungeonSpellHairpin,Magic Hairpin
@@ -31519,7 +31519,7 @@ KinkyDungeonSummonSingleDragonFlower,A magical flower sprouts out of the ground!
 KinkyDungeonSummonSingleIceWall,A wall of ice rises from the ground!
 KinkyDungeonSummonMultiIceWall,A wall of ice rises from the ground!
 KDPoisonBreath,The dragon's breath poisons you!
-KDPoisonBreathImmune,The dragon's breath does not affect you.
+KDPoisonBreathImmune,The dragon's breath has minimal effect.
 KDPoisonSlash,The dragon girl strikes you with poisonous razor leaves!
 KDDragonFlowerSpores,The flower releases soporific spores!
 KinkyDungeonSpellCastDragonFlowerSpores,The flower releases soporific spores!

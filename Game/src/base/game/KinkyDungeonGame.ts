@@ -2151,7 +2151,7 @@ function KinkyDungeonClickGame(event: MouseEvent, _Level?: number) {
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
 			} else {
-				KinkyDungeonSetMoveDirection();
+				KinkyDungeonSetMoveDirection(!KinkyDungeonTargetingSpell);
 
 				if (KinkyDungeonTargetingSpell) {
 					if (KDMouseInPlayableArea()) {

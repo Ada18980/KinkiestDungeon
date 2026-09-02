@@ -1839,7 +1839,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 	"DragonFlowerSpores": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
-		if (!dmg.happened) return{sfx: "Shield", effect: false};
+		if (!dmg.happened) return {sfx: "Shield", effect: false};
 		if (KDIsImmuneToSpores(_target)) {
 			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 			return {sfx: "", effect: false};
@@ -2353,13 +2353,14 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Miss", effect: effect};
 	},
-	"TrapSleepDart": (_target, _damage, _playerEffect, _spell, _faction, _bullet, _entity) => {
+	"TrapSleepDart": (target, _damage, _playerEffect, _spell, _faction, _bullet, _entity) => {
 		let effect = false;
-		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrapSleepDart"), KDBaseRed, 8);
-		KinkyDungeonApplyBuffToEntity(KDPlayer(), KDPoisonSleep);
-		KinkyDungeonAlert = 5;
-		effect = true;
-		return {sfx: "Damage", effect: effect};
+		if (!KDIsImmuneToDrugs(target)) {
+			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrapSleepDart"), KDBaseRed, 8);
+			KinkyDungeonApplyBuffToEntity(KDPlayer(), KDPoisonSleep);
+			effect = true;
+		}
+		return {sfx: effect ? "Damage" : "Shield", effect: effect};
 	},
 	"Drench": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
 		let effect = false;
@@ -3010,17 +3011,11 @@ function KDAddSpecialStat(stat: string, entity: entity, amount: number, Msg: boo
 
 
 function KDIsImmuneToSpores(entity: entity) {
-	if (entity == KDPlayer()) {
-		return !!KinkyDungeonStatsChoice.get("Artificial") || KDEntityBuffedStat(entity, "SporeImmunity") > 0.99;
-	}
+	return KDIsArtificial(entity) || KDEntityBuffedStat(entity, "SporeImmunity") > 0.99
 }
 function KDIsImmuneToGas(entity: entity) {
-	if (entity == KDPlayer()) {
-		return !!KinkyDungeonStatsChoice.get("Artificial") || KDEntityBuffedStat(entity, "GasImmunity") > 0.99;
-	}
+	return KDIsArtificial(entity) || KDEntityBuffedStat(entity, "GasImmunity") > 0.99;
 }
 function KDIsImmuneToDrugs(entity: entity) {
-	if (entity == KDPlayer()) {
-		return !!KinkyDungeonStatsChoice.get("Artificial") || KDEntityBuffedStat(entity, "DrugImmunity") > 0.99;
-	}
+	return KDIsArtificial(entity) || KDEntityBuffedStat(entity, "DrugImmunity") > 0.99;
 }
