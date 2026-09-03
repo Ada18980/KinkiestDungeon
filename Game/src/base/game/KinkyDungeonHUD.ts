@@ -2059,6 +2059,10 @@ function KinkyDungeonHandleHUD() {
 			} else {
 				KinkyDungeonSaveGame();
 				KinkyDungeonState = "Menu";
+				let itt = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+				if (itt) {
+					CharacterAppearanceRestore(KinkyDungeonPlayer, itt, false);
+				}
 				KinkyDungeonInitialize(0);
 			}
 			//KinkyDungeonAutoWait = true;

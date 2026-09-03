@@ -5611,6 +5611,16 @@ function KDDrawLoadMenu() {
 			if (KDToggles.OverrideOutfit) KinkyDungeonNewDress = true;
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
+			
+
+			if (KDToggles.OverrideOutfit) {
+				KinkyDungeonNewDress = true;
+				CharacterReleaseTotal(KinkyDungeonPlayer);
+				KinkyDungeonDressSet();
+				CharacterNaked(KinkyDungeonPlayer);
+				KinkyDungeonInitializeDresses();
+				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+			}
 			if (KinkyDungeonLoadGame(LoadMenuCurrentSave, KDToggles.OverrideConsent)) {
 				if (KDToggles.OverrideConsent) {
 					KDToggles.OverrideConsent = false;
@@ -6115,6 +6125,17 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 	MiniGameKinkyDungeonCheckpoint = "grv";
 	KDMapData.Grid = "";
 	if (Load) {
+		
+
+		if (KDToggles.OverrideOutfit) {
+			KinkyDungeonNewDress = true;
+			CharacterReleaseTotal(KinkyDungeonPlayer);
+			KinkyDungeonDressSet();
+			CharacterNaked(KinkyDungeonPlayer);
+			KinkyDungeonInitializeDresses();
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+		}
+
 		KinkyDungeonLoadGame(undefined, true);
 		KDSendEvent('loadGame');
 	} else {
@@ -6378,6 +6399,18 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 			if (KDToggles.OverrideOutfit) KinkyDungeonNewDress = true;
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
+
+			
+
+			if (KDToggles.OverrideOutfit) {
+				KinkyDungeonNewDress = true;
+				CharacterReleaseTotal(KinkyDungeonPlayer);
+				KinkyDungeonDressSet();
+				CharacterNaked(KinkyDungeonPlayer);
+				KinkyDungeonInitializeDresses();
+				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+			}
+
 			if (KinkyDungeonLoadGame(ElementValue("saveInputField"), KDToggles.OverrideConsent)) {
 				if (KDToggles.OverrideConsent) {
 					KDToggles.OverrideConsent = false;
@@ -7359,6 +7392,7 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 
 			KDInitInventory();
 
+
 			for (let item of saveData.inventory) {
 				if (item.type == Restraint) {
 					let restraint = KinkyDungeonGetRestraintByName(item.name);
@@ -7496,14 +7530,6 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 			KinkyDungeonSetMaxStats();
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KDNaked = false;
-			if (KDToggles.OverrideOutfit) {
-				KinkyDungeonNewDress = true;
-				CharacterReleaseTotal(KinkyDungeonPlayer);
-				KinkyDungeonDressSet();
-				CharacterNaked(KinkyDungeonPlayer);
-				KinkyDungeonInitializeDresses();
-				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-			}
 			KinkyDungeonDressPlayer();
 			if (KDToggles.OverrideOutfit) {
 				KDInitProtectedGroups(KinkyDungeonPlayer);

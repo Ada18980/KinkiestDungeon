@@ -547,6 +547,7 @@ function KinkyDungeonInitialize(Level: number, Load?: any) {
 	CharacterReleaseTotal(KinkyDungeonPlayer);
 	KDResetData();
 	KDResetEventData();
+	KDInitInventory();
 	//Object.assign(KDGameData, KDGameDataBase);
 
 	KinkyDungeonRefreshRestraintsCache();
