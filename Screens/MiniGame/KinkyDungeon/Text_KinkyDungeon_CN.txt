@@ -5043,7 +5043,7 @@ M.F. '女仆长'
 黑商亲吻并抚摸你的身体！ ( DamageTaken )
 - That dagger was laced with something...
 那把匕首上沾着什么东西……
-- The dagger that hits you is poisoned, but it doesn't affect you.
+- The dagger that hits you is poisoned, but it has minimal effect.
 你被带毒的匕首击中了，但是毒对你没有效果。
 - You hear a shattering of glass, suddenly the air around you feels thick and moist...
 你听到玻璃破碎的声音，身边的空气突然变得粘稠而潮湿……
@@ -6506,7 +6506,7 @@ AttackName 击中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害, 伤�
 此锁为神圣之锁，凡人不应尝试撬动。
 # :: KinkyDungeonStruggleCantPickDivineLock
 # :: KinkyDungeonStruggleCantPickDivine2Lock
-- You must perform your quest! Don't even think of unlocking it...
+- You must complete a divine quest to unlock this.
 你必须完成你的任务！否则就别想解锁…
 - You're not sure a key for this even exists in the mortal realm.
 你甚至不确定人间是否存在这把钥匙。
@@ -14733,7 +14733,7 @@ EnemyName 使用发光护符来增强不死生物的物理护甲和速度！
 孢子让你感到兴奋！
 - The toxic spores make you feel faint...
 有毒的孢子让你感到头晕目眩……
-- The spores do not affect you.
+- The spores have minimal effects.
 孢子对你没有效果。
 
 
@@ -49910,7 +49910,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: KinkyDungeonSummonMultiIceWall
 - The dragon's breath poisons you!
 龙息让你中毒！
-- The dragon's breath does not affect you.
+- The dragon's breath has minimal effect.
 龙息对你没有效果。
 - The dragon girl strikes you with poisonous razor leaves!
 龙娘使用带毒锋利叶片攻击你！
