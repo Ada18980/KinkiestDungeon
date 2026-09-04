@@ -3,9 +3,7 @@ let kdSoundCache: Map<string, HTMLAudioElement> = new Map();
 
 
 const KDWebAudioSFXBuffers: Map<string, Promise<AudioBuffer>> = new Map();
-const KDWebAudioSFXVoices: Set<WebAudioWrapper> = new Set();
 const KDWebAudioSFXErrors: Set<string> = new Set();
-const KDWebAudioSFXMaxVoices = 64;
 
 let KDWebAudiooldOnload = window.onload;
 
