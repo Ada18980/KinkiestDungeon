@@ -407,7 +407,7 @@ function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPo
 	if (KDSoundEnabled() && !KinkyDungeonSFX.includes(src)) {
 		if (!vol) vol = 1;
 		if (point) {
-			vol *= 1 - 0.1*KDistEuclidean(player.x - point.x, player.y - point.y);
+			vol *= 1 - 0.1*Math.min(5, 0.6 * KDistEuclidean(player.x - point.x, player.y - point.y));
 			if (KinkyDungeonVisionGet(point.x, point.y) > 0) {
 				//vol *= 1;
 			} else {
@@ -4643,12 +4643,13 @@ function KDFastMoveTo(xx: number, yy: number): number {
 		&& (KinkyDungeonVisionGet(xx, yy) > 0
 			|| KinkyDungeonFogGet(xx, yy) > 0
 			|| KDistChebyshev(KinkyDungeonPlayerEntity.x - xx, KinkyDungeonPlayerEntity.y - yy) < 1.5)) {
-		let requireLight = KinkyDungeonVisionGet(xx, yy) > 0;
 		let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, xx, yy,
 			true, false, false,
 			KDToggles.FastMoveDoors ? KinkyDungeonMovableTilesSmartEnemy : KinkyDungeonMovableTilesEnemy,
-			requireLight, false, true,
-			undefined, false, undefined, false, true, KDToggles.FastMovePassable);
+			false, false, true,
+			undefined, false, undefined, false, true, 
+			KDToggles.FastMovePassable, undefined, undefined, true, 
+			KDAutoPathEnemyWeight);
 		if (path) {
 			KDSetFocusControl("");
 			KinkyDungeonFastMovePath = path;
