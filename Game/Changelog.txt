@@ -82,6 +82,7 @@ Must do
 - Memory leak fixes with inventory screen
 - Improvements to scrollable lists by fjarn-skaggl 
 - New graphic for auto path; autopathing now has only one functioning mode rather than the confusing 3 options before
+- Added Auto-Sprint when Slowed toggle
 
 5.5.1
 - Added pronoun selection to players and NPCs in collection

@@ -52,7 +52,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Latex"],
-	AddPose: ["UprightHogtie", "PreferKneel", "ShiftRight"],
+	AddPose: ["BubbleHogtie", "PreferKneel", "ShiftRight"],
 	Layers: ToLayerMap([
 		{ Name: "BubbleSquishy", Layer: "FurnitureFront", Pri: -50,
 			Invariant: true,
@@ -75,7 +75,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Latex"],
-	AddPose: ["UprightHogtie", "PreferKneel", "ShiftRight"],
+	AddPose: ["BubbleHogtie", "PreferKneel", "ShiftRight"],
 	Layers: ToLayerMap([
 		{ Name: "LatexSphere", Layer: "FurnitureFront", Pri: 21,
 			Invariant: true,
@@ -107,7 +107,7 @@ AddModel({
 	Categories: ["Restraints","Furniture", "Latex"],
 	AddPose: ["ForceHogtie"],
 	AddPoseConditional: {
-		BallsuitTip: ["UprightHogtie"],
+		BallsuitTip: ["BubbleHogtie"],
 	},
 	AddPoseIf: {
 		BallsuitTip: ["TippedHogtie"],

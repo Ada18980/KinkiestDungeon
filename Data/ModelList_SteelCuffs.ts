@@ -477,7 +477,7 @@ AddModel({
 
 AddModel({
 	Name: "NeoSteelBelt",
-	Folder: "SteelCuffs",
+	Folder: "SteelChastity",
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],
@@ -511,7 +511,7 @@ AddModel({
 
 AddModel({
 	Name: "NeoSteelBeltSegu",
-	Folder: "SteelCuffs",
+	Folder: "SteelChastity",
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],
@@ -538,7 +538,7 @@ AddModel({
 
 AddModel({
 	Name: "NeoSteelBeltRadial",
-	Folder: "SteelCuffs",
+	Folder: "SteelChastity",
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],

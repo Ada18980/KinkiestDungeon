@@ -7965,7 +7965,7 @@ KinkyDungeonCurseUnlockGhostLock,"You channel ghastly energy into the lock and b
 
 
 KinkyDungeonCurseInfoSpiritbondCollar,"The collar marks you as spiritbound. It requires a magic key, and the spiritbond to be absent."
-KinkyDungeonCurseInfoMistressSpiritbondCollar,"The collar marks you as spiritbound. It cannot be removed while your Dominant controls you."
+KinkyDungeonCurseInfoMistressSpiritbondCollar,"The collar cannot be removed while your Dominant controls you. (See Quest log)"
 KinkyDungeonCurseStruggleSpiritbondCollar,"The collar is sealed around your neck. The runes flash a sinister light as you struggle"
 KinkyDungeonCurseUnlockSpiritbondCollar,"You bring the collar close to the magic key and will it to release."
 
@@ -29643,6 +29643,7 @@ KDSetPose,Change Character Pose
 KDBulletTransparency,Toggle UI Transparency
 KDXRay,X-Ray Vision
 KDQuickInv,Show Quick Inventory
+KDToggleAutoSprint,Auto-Sprint when Slowed
 KDToggleSkipTutorial,Skip Tutorial
 KDToggleModCompat,Mod Compat Mode (requires reload)
 KDToggleFlashingWarning,Flashing Warning Tiles

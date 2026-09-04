@@ -580,10 +580,12 @@ interface KDGameDataBase {
 	RewardTracker: Record<string, number>,
 	selectedLabel: Record<number, KDLabel>,
 	MistressID: number,
+	AutoSprintTriggered: boolean,
 };
 
 
 let KDGameDataBase: KDGameDataBase = {
+	AutoSprintTriggered: false,
 	originalBody: "",
 	HypnoButtons: [],
 	PreferredJailPoint: null,

@@ -2175,7 +2175,7 @@ function KinkyDungeonClickGame(event: MouseEvent, _Level?: number) {
 						KinkyDungeonTargetingSpellWeapon = null;
 					}
 				} else if (KinkyDungeonIsPlayer() && KDMouseInPlayableArea()) {
-					let fastMove = KinkyDungeonFastMove && !KinkyDungeonToggleAutoSprint;
+					let fastMove = KinkyDungeonFastMove && !(!KinkyDungeonSuppressSprint && KinkyDungeonToggleAutoSprint && KDCanSprint());
 					if (fastMove && KDistChebyshev(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) > 0.5
 					&& (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0
 						|| KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0
@@ -3829,6 +3829,28 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 		}
 	}
 
+	if (KinkyDungeonInDanger(false)) {
+		KinkyDungeonSetFlag("danger", KDDangerTime);
+	}
+	
+
+	if (KDToggles.AutoSprint) {
+		if (!KDGameData.AutoSprintTriggered) {
+			if (KDPlayerIsSlowedMovementOnly() && KinkyDungeonInDanger()) {
+				KDGameData.AutoSprintTriggered = true;
+				KinkyDungeonToggleAutoSprint = true;
+				KinkyDungeonSuppressSprint = false;
+			}
+		} else if (KDGameData.AutoSprintTriggered && !KDPlayerIsSlowedMovementOnly()) {
+			KDGameData.AutoSprintTriggered = false;
+			KinkyDungeonToggleAutoSprint = false;
+			KinkyDungeonSuppressSprint = false
+		} else if (KDGameData.AutoSprintTriggered && !KinkyDungeonToggleAutoSprint) {
+				KDGameData.AutoSprintTriggered = false;
+		}
+	} else if (KDGameData.AutoSprintTriggered) {
+		KDGameData.AutoSprintTriggered = false;
+	}
 }
 let KDEntityFlagCache = new Map();
 let KDUpdateEntityFlagCache = false;

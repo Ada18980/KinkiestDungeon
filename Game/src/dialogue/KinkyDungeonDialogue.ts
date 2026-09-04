@@ -1064,6 +1064,10 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 						KinkyDungeonSetEnemyFlag(enemy, "forcePlay", 20);
 						KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 20);
 						KinkyDungeonSetEnemyFlag(enemy, "allyPlay", 80);
+						KinkyDungeonSetEnemyFlag(enemy, "flirting", 80);
+						KinkyDungeonSetEnemyFlag(enemy, "satisfied", 0);
+						KinkyDungeonSetEnemyFlag(enemy, "restraintsatisfied", 0);
+
 						enemy.aware = true;
 						enemy.gx = enemy.x;
 						enemy.gy = enemy.y;

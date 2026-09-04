@@ -728,6 +728,8 @@ function KDInitPerks() {
 	}
 	if (!magicHands)
 		KinkyDungeonStatsChoice.delete("MagicHands");
+
+	KinkyDungeonUpdateStats(0);
 }
 
 let KDPerkStart = {

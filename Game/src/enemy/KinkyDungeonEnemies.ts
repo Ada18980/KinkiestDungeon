@@ -676,7 +676,10 @@ function KDGetNearestExitTo(roomTo: string, mapX: number, mapY: number, x: numbe
 	return null;
 }
 
-function KinkyDungeonInDanger() {
+let KDDangerTime = 2;
+
+function KinkyDungeonInDanger(allowFlag: boolean = true) {
+	if (allowFlag && KinkyDungeonFlags.get("danger")) return true;
 	if (KDGetWarnings(KDPlayer().x, KDPlayer().y).length > 0) {
 		if (KDSoundEnabled() && KDToggles.WarningSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
 		return true;
@@ -700,13 +703,18 @@ function KinkyDungeonInDanger() {
 					|| !enemy.Enemy.stealth
 					|| KinkyDungeonSeeAll
 					|| playerDist <= enemy.Enemy.stealth + 0.1)
+				&& !enemy.Enemy.tags?.harmless
 				&& !KDEnemyHidden(enemy)
 				&& !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
 				if (((!KDHelpless(enemy) && KinkyDungeonAggressive(enemy))
 						|| (playerDist < 1.5 && !KDIsImprisoned(enemy)))) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 &&
 						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
-						return KDCanSeeEnemy(enemy) || KDCanHearEnemy(KDPlayer(), enemy);
+						let ret = KDCanSeeEnemy(enemy) || KDCanHearEnemy(KDPlayer(), enemy);
+						if (ret) {
+							
+							return true;
+						}
 					}
 				}
 			}
@@ -730,7 +738,7 @@ let KDInDanger = false;
 function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number, CamX: number, CamY: number) {
 	let reenabled2 = false;
 	let wasInDanger = KDInDanger;
-	KDInDanger = false;
+	KDInDanger = !!KinkyDungeonFlags.get("danger");
 
 	if (!KinkyDungeonFastMove) {
 		KinkyDungeonFastMovePath = [];
@@ -960,6 +968,11 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 	}
 	if (KinkyDungeonFastMove) {
 		if (KDInDanger) {
+			if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+					KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+				} else {
+					KinkyDungeonFastMovePath = [];
+				}
 			KinkyDungeonFastMoveSuppress = true;
 		} else {
 			KinkyDungeonFastMoveSuppress = false;
@@ -7401,14 +7414,19 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							restraintsatisfaction: 0,
 
 						};
-						if (enemy.playWithPlayer) {
-							data.satisfaction = 3;
+						if (enemy.playWithPlayer && (!KDEntityHasFlag(enemy, "flirting") || KinkyDungeonFlags.get("PlayerCombat"))) {
+							data.satisfaction = 2.95;
 							if (data.restraintsAdded?.length > 0) {
 								
-								data.satisfaction += 1 * data.restraintsAdded.length;
-								data.satisfaction += 30 * data.restraintsAdded.length;
+								let mult = KDGetRestraintLevel(player);
+								mult *= mult;
+
+								data.satisfaction += Math.min(0.1, mult) * 1 * data.restraintsAdded.length;
+								data.restraintsatisfaction += mult * 20 * data.restraintsAdded.length;
 
 							}
+							data.satisfaction = Math.ceil(data.satisfaction);
+							data.restraintsatisfaction = Math.ceil(data.restraintsatisfaction);
 						}
 						KinkyDungeonSendEvent("beforeDamage", data);
 						KDDelayedActionPrune(["Hit"]);
@@ -7547,7 +7565,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							KinkyDungeonSetEnemyFlag(enemy, "satisfied", data.satisfaction);
 						}
 						if (data.restraintsatisfaction) {
-							KinkyDungeonSetEnemyFlag(enemy, "restraintsatisfied", data.satisfaction);
+							KinkyDungeonSetEnemyFlag(enemy, "restraintsatisfied", data.restraintsatisfaction);
 						}
 						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg", enemy);
 						text = data.text;
@@ -8942,6 +8960,9 @@ function KDPlayerIsImmobilized() {
 function  KDPlayerIsSlowed() {
 	return KinkyDungeonSlowLevel > 1 || KDPlayerIsStunned() || KinkyDungeonSleepiness > 0
 		|| (KDGameData.MovePoints < 0 || KDGameData.KneelTurns > 0);
+}
+function  KDPlayerIsSlowedMovementOnly() {
+	return KinkyDungeonSlowLevel > 1 || KDGameData.MovePoints < 0;
 }
 
 
@@ -11777,3 +11798,12 @@ function KDEnemyHoldingStill(enemy: entity) {
 		&& (!enemy.IntentLeashPoint);
 }
 
+
+/**
+ * Supposed to get a general idea of how restrained the player is, [0, 1]
+ * @param player 
+ * @returns 
+ */
+function KDGetRestraintLevel(player: entity): number {
+	if (player?.player) return KDBoundPowerLevel; // TODO
+}

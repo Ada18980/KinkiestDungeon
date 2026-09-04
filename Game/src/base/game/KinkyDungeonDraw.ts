@@ -4,13 +4,14 @@ let lastExtraTooltipCycleTimeAuto = 0;
 let lastExtraTooltipCycleTimeAuto_Delay = 1500;
 let lastExtraTooltipCycleTimeAuto_ManualDelay = 30000;
 
-let KDGamePlayerZIndex = 6;
-let KDMenuPlayerZIndex = 6;;
+let KDGamePlayerZIndex = 4.5;
+let KDMenuPlayerZIndex = 4.5;
 
 let KDCenterPlayerOffset = 6;
 
 let KDFastPathWidth = 5;
 let KDFastPathWidthSlowed = 1.5;
+
 
 
 interface KDLight {
@@ -64,6 +65,7 @@ let KDRecentRepIndex = 0;
 
 let KDWallReplacers = "14f6,dDzZbgS";
 
+/** For suppressing sprint reticule in one case */
 let KinkyDungeonSuppressSprint = true;
 
 let KDReturnButtonXX = 1450;
@@ -1436,7 +1438,14 @@ function KinkyDungeonDrawGame() {
 
 				KinkyDungeonSendEvent("draw",{update: KDDrawUpdate, CamX:CamX, CamY:CamY, CamX_offset: StandalonePatched ? CamX_offsetVis : CamX_offset, CamY_offset: StandalonePatched ? CamY_offsetVis : CamY_offset});
 				KDDrawUpdate = 0;
-				KinkyDungeonSuppressSprint = false;
+				let SuppressSprintTo = (KinkyDungeonFastMovePath?.length > 0);
+				if (KinkyDungeonSuppressSprint != SuppressSprintTo) {
+					KDSendInput("setAutoSprint", {
+						Auto: KDGameData.AutoSprintTriggered,
+						Sprint: KinkyDungeonToggleAutoSprint,
+						Suppress: SuppressSprintTo,
+					})
+				}
 
 				KDPathGraphics.visible = false;
 
@@ -1674,7 +1683,15 @@ function KinkyDungeonDrawGame() {
 						let xx = KinkyDungeonMoveDirection.x + KinkyDungeonPlayerEntity.x;
 						let yy = KinkyDungeonMoveDirection.y + KinkyDungeonPlayerEntity.y;
 						if (KinkyDungeonSlowLevel < 2 && MouseIn(canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)) {
-							KinkyDungeonSuppressSprint = true;
+							let SuppressSprintTo = true;
+							
+							if (KinkyDungeonSuppressSprint != SuppressSprintTo) {
+								KDSendInput("setAutoSprint", {
+									Auto: KDGameData.AutoSprintTriggered,
+									Sprint: KinkyDungeonToggleAutoSprint,
+									Suppress: SuppressSprintTo,
+								})
+							}
 						}
 						if (!KinkyDungeonSuppressSprint && KinkyDungeonToggleAutoSprint && (KDCanSprint())) {
 							if (KinkyDungeonMoveDirection.x || KinkyDungeonMoveDirection.y) {

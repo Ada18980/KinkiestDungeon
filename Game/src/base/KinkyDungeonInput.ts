@@ -16,6 +16,12 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		return KinkyDungeonMove(data.dir, data.delta, data.AllowInteract,
 			 data.SuppressSprint, data.forceSprint) ? "move" : "nomove";
 	},
+	setAutoSprint: (data) => {
+		KinkyDungeonToggleAutoSprint = data.Sprint;
+		KDGameData.AutoSprintTriggered = data.AUto;
+		KinkyDungeonSuppressSprint = data.Suppress;
+		return "";
+	},
 	"setrestraintpalette": (data) => {
 		let currentItem = data.currentItem;
 		let player = data.player;

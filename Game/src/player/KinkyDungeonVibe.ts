@@ -199,6 +199,8 @@ let KDToggles = {
 	WarningSound: true,
 	SoundNotification: true,
 	ShowDefensiveStats: true,
+	
+	AutoSprint: true,
 };
 
 
@@ -216,6 +218,7 @@ let KDToggleCategories = {
 	HotbarTooltips: "UI",
 	FastMovePassable: "Controls",
 	FastMoveDoors: "Controls",
+	AutoSprint: "Controls",
 	MMLabels: "UI",
 	RawDP: "UI",
 	Backgrounds: "GFX",
