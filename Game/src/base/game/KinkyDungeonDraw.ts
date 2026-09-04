@@ -12,7 +12,7 @@ let KDCenterPlayerOffset = 6;
 let KDFastPathWidth = 5;
 let KDFastPathWidthSlowed = 1.5;
 
-
+let KDAutoPathEnemyWeight = 6;
 
 interface KDLight {
 	x: number,
@@ -1607,12 +1607,14 @@ function KinkyDungeonDrawGame() {
 								let diststart = Math.max(1, Math.round(KinkyDungeonSlowLevel));
 								let dist = diststart;
 								//let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
-								let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
+								//let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
 								let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY,
 									true, false, false,
 									KDToggles.FastMoveDoors ? KinkyDungeonMovableTilesSmartEnemy : KinkyDungeonMovableTilesEnemy,
-									requireLight, false, true,
-									undefined, false, undefined, false, true, KDToggles.FastMovePassable);
+									false, false, true,
+									undefined, false, undefined, false, true, 
+									KDToggles.FastMovePassable, undefined, undefined, true, 
+									KDAutoPathEnemyWeight);
 								if (path?.length > 1) {
 									dist *= path.length;
 								}

@@ -708,7 +708,7 @@ function KinkyDungeonInDanger(allowFlag: boolean = true) {
 				&& !enemy.Enemy.tags?.harmless
 				&& !KDEnemyHidden(enemy)
 				&& !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
-				if (((!KDHelpless(enemy) && KinkyDungeonAggressive(enemy))
+				if ((KDEnemyIsThreatening(enemy, KDPlayer(), enemy.aware ? playerDist * 0.5 : playerDist)
 						|| (playerDist < 1.5 && !KDIsImprisoned(enemy)))) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 &&
 						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
@@ -806,7 +806,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 			&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KDCanSeeEnemy(enemy, playerDist)) {
 			if (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KDAllied(enemy) || KDHelpless(enemy) || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1) && !KDEnemyHidden(enemy) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak", true) > 0 && playerDist > 1.5)) {
 				enemy.revealed = true;
-				if (((KinkyDungeonAggressive(enemy) && playerDist <= 6.9) || (playerDist < 1.5 && enemy.playWithPlayer))) {
+				if (KDEnemyIsThreatening(enemy, KDPlayer(), playerDist)) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KinkyDungeonFastMove &&
 						!enemy.Enemy.tags.harmless
 						&& !KDIsImprisoned(enemy) && !(KDHelpless(enemy)
@@ -11810,4 +11810,9 @@ function KDEnemyHoldingStill(enemy: entity) {
  */
 function KDGetRestraintLevel(player: entity): number {
 	if (player?.player) return KDBoundPowerLevel; // TODO
+}
+
+function KDEnemyIsThreatening(enemy: entity, player: entity, playerDist?: number) {
+	if (playerDist == undefined) playerDist = KDistChebyshev(enemy.x - player.x, enemy.y - player.y);
+	return ((!KDHelpless(enemy) && KinkyDungeonAggressive(enemy, player) && playerDist <= 6.9) || (playerDist < 1.5 && enemy.playWithPlayer))
 }

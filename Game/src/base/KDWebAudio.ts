@@ -207,6 +207,7 @@ class WebAudioWrapper {
 			.then(() => {
 				this.node = this.getNode();
 				this.node.then((node) => {
+					if (this.looping) node.loop = true;
 					node.start(startZero ? 0 : (this.startTime - KDWebAudio.currentTime));
 					this.started = true;
 					node.connect(KDWebAudio.destination);
@@ -220,6 +221,7 @@ class WebAudioWrapper {
 		return new Promise<void>((resolve) => {
 			resolve(this.node.then((node) => {
 				this.node.then((node) => {
+					if (this.looping) node.loop = true;
 					node.start(startZero ? 0 : (this.startTime - KDWebAudio.currentTime));
 					this.started = true;
 					node.connect(KDWebAudio.destination);
