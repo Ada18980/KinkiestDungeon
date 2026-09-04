@@ -6,6 +6,8 @@ let KDEnemyGlobals = {
 	Pronoun_Subby_ItChance: 0.1,
 };
 
+let KDStopAutoSound = "ClickError";
+
 let KDTooltipListExtraCutoff = 17;
 let KDTooltipListExtraCutoffHigh = 30;
 let KDTooltipListExtraPage = 10;
@@ -773,7 +775,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 				
 				if (!KinkyDungeonAutoWait)
 					if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
-						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KDStopAutoSound + ".ogg");
 				KinkyDungeonFastStruggle = false;
 				KinkyDungeonFastStruggleGroup = "";
 				KinkyDungeonFastStruggleType = "";
@@ -814,7 +816,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 						
 							if (!KinkyDungeonAutoWait)
 								if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress)
-									KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
+									KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KDStopAutoSound + ".ogg");
 							if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
 								KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
 							} else {
@@ -828,7 +830,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
 						if (!KinkyDungeonAutoWait)
 							if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
-								KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
+								KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KDStopAutoSound + ".ogg");
 						KinkyDungeonFastStruggle = false;
 						KinkyDungeonFastStruggleGroup = "";
 						KinkyDungeonFastStruggleType = "";
@@ -981,7 +983,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 	
 	if (!KinkyDungeonAutoWait)
 		if (reenabled2 && KinkyDungeonFastStruggle) {
-			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KDStopAutoSound + ".ogg");
 		}
 }
 
@@ -10940,9 +10942,11 @@ function KDGetUnassignedGuardTiles(type = "Patrol", ignoreNegative = false) {
  * @param enemy
  */
 function KDCanIdleFidget(enemy: entity): boolean {
-	return enemy?.idle && !enemy.Enemy?.nonDirectional && !enemy.Enemy?.tags?.nofidget
+		return enemy?.idle && !enemy.Enemy?.nonDirectional && !enemy.Enemy?.tags?.nofidget
 		&& (!KDEnemyHasFlag(enemy, "fidget") || KDEntityHasBuffTags(enemy, "adren"))
-		&& !KDEnemyHasFlag(enemy, "nofidget");
+		&& !KDEnemyHasFlag(enemy, "nofidget")
+		&& ((!KDAIType[KDGetAI(enemy)]
+			|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger))));
 }
 
 function KDRescueRepGain(en: entity) {

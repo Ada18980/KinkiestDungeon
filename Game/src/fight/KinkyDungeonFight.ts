@@ -1828,8 +1828,6 @@ function KDCanAttackEnemy(enemy: entity, player: entity, bullet?: any, weapon?: 
 	return predata.allowed;
 }
 
-// TODO: Type defininition
-let KDBulletWarnings: Record<string, any>[] = [];
 let KDUniqueBulletHits = new Map();
 
 
@@ -1937,7 +1935,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 		}
 	}
 	if (Allied && delta > 0) {
-		KDBulletWarnings = [];
+		KDGameData.BulletWarnings = [];
 	}
 	for (let E = 0; E < KDMapData.Bullets.length; E++) {
 		let b = KDMapData.Bullets[E];
@@ -2099,8 +2097,8 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 						for (let xx = bx - Math.floor(rad); xx <= bx + Math.ceil(rad); xx++) {
 							for (let yy = by - Math.floor(rad); yy <= by + Math.ceil(rad); yy++) {
 								if (AOECondition(bx, by, xx, yy, rad, KDBulletAoEMod(b))) {
-									if (show && !KDBulletWarnings.some((w) => {return w.x == xx && w.y == yy;}))
-										KDBulletWarnings.push({
+									if (show && !KDGameData.BulletWarnings.some((w) => {return w.x == xx && w.y == yy;}))
+										KDGameData.BulletWarnings.push({
 											x: xx,
 											y: yy,
 											x_orig: b.xx,
@@ -2223,7 +2221,7 @@ function KinkyDungeonParseExtraWarningTiles(delta: number) {
 			KinkyDungeonExtraWarningTiles[i].delay -= delta;
 		}
 		else {
-			KDBulletWarnings.push(Object.assign({}, KinkyDungeonExtraWarningTiles[i].warning));
+			KDGameData.BulletWarnings.push(Object.assign({}, KinkyDungeonExtraWarningTiles[i].warning));
 		}
 		KinkyDungeonExtraWarningTiles[i].duration -= delta;
 		if (KinkyDungeonExtraWarningTiles[i].duration <= 0) {
@@ -3435,7 +3433,7 @@ function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, C
 	let flashindex = 0;
 
 	if (KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade)
-		for (let t of KDBulletWarnings) {
+		for (let t of KDGameData.BulletWarnings) {
 	
 			let alphamult = KDToggles.FlashingWarning ? Math.cos(
 				2 * Math.PI * ((flashindex++*KDWarningFlashBPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1;

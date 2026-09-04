@@ -293,7 +293,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 			return Math.max(0, 100 - 35 * KDAssaulters - (KDEnemyRank(enemy) * 20));
 		},
 		apply: (enemy, _data) => {
-			if (enemy.aware)
+			if (enemy.aware )
 				KinkyDungeonSendDialogue(enemy,
 					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandAssault", KDGetGenericDialogueParams(KDPlayer(), enemy))
 						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),

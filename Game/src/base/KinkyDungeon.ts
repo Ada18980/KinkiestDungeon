@@ -581,11 +581,13 @@ interface KDGameDataBase {
 	selectedLabel: Record<number, KDLabel>,
 	MistressID: number,
 	AutoSprintTriggered: boolean,
+	BulletWarnings: Record<string, any>[],
 };
 
 
 let KDGameDataBase: KDGameDataBase = {
 	AutoSprintTriggered: false,
+	BulletWarnings: [],
 	originalBody: "",
 	HypnoButtons: [],
 	PreferredJailPoint: null,
@@ -7314,6 +7316,8 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 			if (!KDGameData.NamesGenerated) KDGameData.NamesGenerated = {};
 			if (!KDGameData.Containers) KDGameData.Containers = {};
 			if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
+			if (!KDGameData.BulletWarnings) KDGameData.BulletWarnings = [];
+			
 
 			InitFacilities();
 

@@ -360,7 +360,7 @@ function KDUpdateVibeSound(Location: string, Sound: string, Volume: number) {
 		}
 		if (Sound && !KDVibeSounds[Location].update) {
 			// Start the new sound
-			let audio = GetNewAudio();
+			let audio = KDVibeSounds[Location].Audio || GetNewAudio();
 			let vol = (Volume != undefined ? Volume : 1.0);
 			if (KDVibeSounds[Location].vol) vol *= KDVibeSounds[Location].vol;
 			KDVibeSounds[Location].Audio = audio;
