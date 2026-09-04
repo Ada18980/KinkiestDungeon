@@ -1,6 +1,12 @@
 
 let kdSoundCache: Map<string, HTMLAudioElement> = new Map();
 
+
+const KDWebAudioSFXBuffers: Map<string, Promise<AudioBuffer>> = new Map();
+const KDWebAudioSFXVoices: Set<WebAudioWrapper> = new Set();
+const KDWebAudioSFXErrors: Set<string> = new Set();
+const KDWebAudioSFXMaxVoices = 64;
+
 let KDWebAudiooldOnload = window.onload;
 
 
@@ -34,12 +40,25 @@ function GetMusicAudio() {
     return element;
 }
 
-
+function KDLoadWebAudioSFX(src: string): Promise<AudioBuffer> {
+	let pending = KDWebAudioSFXBuffers.get(src);
+	if (!pending) {
+		pending = fetch(src)
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(`HTTP ${response.status} while loading ${src}`);
+				}
+				return response.arrayBuffer();
+			})
+			.then((data) => KDWebAudio.decodeAudioData(data));
+		KDWebAudioSFXBuffers.set(src, pending);
+	}
+	return pending;
+}
 
 class WebAudioWrapper {
 	private vol = 1;
-	public sound: HTMLAudioElement = null;
-    public node: MediaElementAudioSourceNode = null;
+    public node: Promise<AudioBufferSourceNode> = null;
 
 	private point: KDPoint = null;
     public nodes: any[] = null;
@@ -49,10 +68,15 @@ class WebAudioWrapper {
     public panner: PannerNode = null;
     public lpf: BiquadFilterNode = null;
     public hpf: BiquadFilterNode = null;
+    public gain: GainNode = null;
+	public paused: boolean = false;
+	private startTime = 0;
+	private source: string = null;
 
     private refreshNodeGraph() {
         if (this.nodes) {
-            this.node.disconnect();
+			if (this.node)
+           		this.node.then((node) => node.disconnect());
             for (let node of this.nodes) {
                 node.disconnect();
             }
@@ -61,7 +85,8 @@ class WebAudioWrapper {
                 node.connect(last);
                 last = node;
             }
-            this.node.connect(last);
+			if (this.node)
+            	this.node.then((node) => node.connect(last));
         }
 
     }
@@ -85,6 +110,7 @@ class WebAudioWrapper {
                 this.nodes = this.nodes.filter((node) => {
                     return node != this.panner;
                 })
+				this.nodes.push(panner);
             } else {
                 this.nodes = [panner];
             }
@@ -110,6 +136,7 @@ class WebAudioWrapper {
                 this.nodes = this.nodes.filter((node) => {
                     return node != this.lpf;
                 })
+				this.nodes.push(filter);
             } else {
                 this.nodes = [filter];
             }
@@ -124,68 +151,164 @@ class WebAudioWrapper {
 	}
 	set volume(value: number) {
 		this.vol = value;
-        this.sound.volume = value;
+		
+        if (this.gain) {
+            this.gain.gain.setValueAtTime(value, this.currentTime + 0.01);
+        } else {
+            // creates and adds a panner node
+            let filter = new GainNode(KDWebAudio, {
+                gain: value,
+            });
+            if (this.nodes) {
+                this.nodes = this.nodes.filter((node) => {
+                    return node != this.gain;
+                })
+				this.nodes.unshift(filter);
+            } else {
+                this.nodes = [filter];
+            }
+            this.refreshNodeGraph() 
+            this.gain = filter;
+        }
 	}
+	private looping: boolean;
 	get loop(): boolean {
-		return this.sound.loop;
+		return this.looping;
 	}
 	set loop(value: boolean) {
-        this.sound.loop = true;
+		this.looping = value;
+		this.node.then((node) => node.loop = value);
 	}
 
 	get currentTime(): number {
-		return this.sound.currentTime;
+		return KDWebAudio.currentTime - this.startTime;
 	}
 	set currentTime(value: number) {
-		this.sound.currentTime = value;
+		if (value == 0) this.startTime = 0;
+		else this.startTime = KDWebAudio.currentTime + value;
 	}
 	public addEventListener(type, listener) {
-		this.sound.addEventListener(type, listener);
+		this.node.then((node) => node.addEventListener(type, listener));
 	}
 
-	public play() {
-		return this.sound.play();
+	public play(): Promise<void> {
+		let startZero = false;
+		if (this.startTime == 0) {
+			startZero = true;
+			this.startTime = KDWebAudio.currentTime;
+		}
+		this.paused = false;
+		
+		if (this.node != null) {
+			return this.node.then((node) => {
+				if (this.started) {
+					node.stop();
+					node.disconnect();
+				}
+			})
+			.then(() => {
+				this.node = this.getNode();
+				this.node.then((node) => {
+					node.start(startZero ? 0 : (this.startTime - KDWebAudio.currentTime));
+					this.started = true;
+					node.connect(KDWebAudio.destination);
+					this.refreshNodeGraph();
+				})
+			}
+		)
+
+		}
+
+		return new Promise<void>((resolve) => {
+			resolve(this.node.then((node) => {
+				this.node.then((node) => {
+					node.start(startZero ? 0 : (this.startTime - KDWebAudio.currentTime));
+					this.started = true;
+					node.connect(KDWebAudio.destination);
+					this.refreshNodeGraph();
+				});
+			}));
+		});
+		
 	}
+	private started = false;
 	public pause() {
-        this.sound.pause();
-	}
-	get paused(): boolean{
-		return this.sound.paused;
+		this.paused = true;
+		
+		if (this.node != null) {
+			this.node.then((node) => {
+				if (this.started) {
+					node.stop();
+					node.disconnect();
+				}
+			})
+			.then(() => this.node = this.getNode())
+		}
 	}
 
 	end() {
-		this.sound.remove();
-		this.node.disconnect();
+		if (this.node != null)
+			this.node.then((node) => {
+				if (this.started) {
+					node.stop();
+					node.disconnect();
+				}
+			})
+		
         if (this.nodes)
             for (let node of this.nodes) {
                 node.disconnect();
             }
+		this.nodes = null;
+		this.panner = null;
+		this.lpf = null;
+		this.hpf = null;
+		this.gain = null;
+		this.ended = true;
 	}
 	ended = false;
 
 	get src(): string {
-		return this.sound.src;
+		return this.source;
 	}
 	set src(value: string) {
-        this.sound.src = value;
+        this.source = value;
+		
+		this.node = this.getNode();
 	}
 
     set temp(value: boolean) {
-		this.sound.addEventListener('ended', (element) => {
-			this.sound.remove();
-			this.node.disconnect();
-            if (this.nodes)
-                for (let node of this.nodes) {
-                    node.disconnect();
-                }
-            });
+		if (value) this.node.then((node) => node.addEventListener('ended', () => this.end(), {once: true}));
     }
 
+	async getNode(): Promise<AudioBufferSourceNode> {
+		if (this.node != null)
+			await this.node.then((node) => {
+					if (this.started) {
+						node.stop();
+						node.disconnect();
+					}
+				})
+		this.started = false;
+		this.node = new Promise(async (resolve, reject) => {
+			await KDLoadWebAudioSFX(this.source).then((buffer) => {
+				let node = new AudioBufferSourceNode(KDWebAudio, {
+					buffer: buffer
+				});
+				resolve(node);
+			}).catch((error) => {
+				KDWebAudioSFXBuffers.delete(this.source);
+				if (!KDWebAudioSFXErrors.has(this.source)) {
+					KDWebAudioSFXErrors.add(this.source);
+					console.warn(`Unable to play sound effect ${this.source}:`, error);
+				}
+				reject(new AudioBufferSourceNode(KDWebAudio));
+			});
+		});
+		
+		return this.node;
+	}
+
 	constructor() {
-        this.sound = new Audio();
-        this.node = new MediaElementAudioSourceNode(KDWebAudio, {
-          mediaElement: this.sound,
-        });
-        this.node.connect(KDWebAudio.destination);
 	}
 }

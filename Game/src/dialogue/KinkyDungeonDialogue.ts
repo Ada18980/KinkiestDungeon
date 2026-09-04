@@ -111,7 +111,7 @@ function KDDrawDialogue(delta: number): void {
 		KinkyDungeonDrawState = "Game";
 		KDResetAlternateInventoryRender();
 
-		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+		//KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		// Get the current dialogue and traverse down the tree
 		let dialogue = KDGetDialogue();
@@ -450,7 +450,6 @@ function KDStartDialog(Dialogue: string, Speaker?: string, Click?: boolean, Pers
 	KinkyDungeonDrawState = "Game";
 	KDResetAlternateInventoryRender();
 	KDDialogueData.CurrentDialogueIndex = 0;
-
 
 	KDDoDialogue({dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});
 	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
