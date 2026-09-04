@@ -3397,8 +3397,8 @@ function KDGetSpriteGroup(pri: number): string {
 
 function KDGetStringHash(str: string): number {
 	let sum = 0;
-	for (let c of str) {
-		sum += c.charCodeAt(0);
+	for (let i = 0; i < str.length; ++i) {
+		sum += str.charCodeAt(i);
 	}
 	return sum;
 }
