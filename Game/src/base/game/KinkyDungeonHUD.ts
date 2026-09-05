@@ -3318,19 +3318,21 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 
 		if (!tooltip && MouseIn(XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize)
 			&& !KinkyDungeonShowInventory) {
-			FillRectKD(kdcanvas, kdpixisprites, "buffttDesc", {
-				Left: (side ? XX + 100 : minXX) - 10,
-				Top: (side ? YY : tooltipY) - 17,
-				Width: 1020,
-				Height: 32,
-				Color: "#222222",
-				zIndex: 159,
-				alpha: 0.5,
-			});
+			
 			
 			let params = KDGetGenericDialogueParams(KDPlayer(), null);
-			DrawTextFitKD(TextProvider.applyTemplate(stat.text, params), side ? XX + 100 : minXX, side ? YY : tooltipY, 1000, stat.color,
+			let size = RetDrawTextFitKD(TextProvider.applyTemplate(stat.text, params), side ? XX + 100 : minXX, side ? YY : tooltipY, 1000, stat.color,
 				KDBaseBlack, 22, "left", 160, 1.0, 8);
+			FillRectKD(kdcanvas, kdpixisprites, "buffttDesc", {
+				Left: (side ? XX + 100 : minXX) - 10,
+				Top: (side ? YY : tooltipY) - 25,
+				Width: size + 20,
+				Height: 48,
+				Color: "#111111",
+				zIndex: 159,
+				alpha: 0.92,
+			});
+			
 			tooltip = true;
 			if (stat.click) {
 				DrawButtonKDEx("statHighlight" + II, (_bdata) => {
