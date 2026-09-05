@@ -11,20 +11,16 @@ let KDWebAudiooldOnload = window.onload;
 
 window.addEventListener('load', () => {
 	
-	if (!AllowFMOD) {
-        // @ts-ignore
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-		KDWebAudio = new AudioContext();
-	}
+	// @ts-ignore
+	const AudioContext = window.AudioContext || window.webkitAudioContext;
+	KDWebAudio = new AudioContext();
 
 });
 	
 
 function GetNewAudio() {
     let element = null;
-	if (CommonIsFMOD) {
-		element = new KDFModWrapper();
-	} else element = GetMusicAudio();
+	element = GetMusicAudio();
     return element;
 }
 function GetMusicAudio() {

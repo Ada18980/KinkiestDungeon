@@ -45,7 +45,6 @@ PIXIapp.stage.addChild(kdcanvas);
 PIXIapp.stage.addChild(kdui);
 
 let ticker = PIXI.Ticker.shared;
-let CommonIsFMOD = false;
 
 
 

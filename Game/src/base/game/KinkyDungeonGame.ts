@@ -433,7 +433,7 @@ function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPo
 				//vol *= 1;
 			} else {
 				vol *= 0.5;
-				// TODO add muted sfx if FMOD
+				// TODO add muted sfx if WebAudio
 			}
 		}
 		if (vol > 0) {

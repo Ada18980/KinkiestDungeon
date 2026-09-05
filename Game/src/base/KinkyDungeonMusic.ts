@@ -106,7 +106,7 @@ let KDCurrentFade = 1;
 let KDMusicFadeTime = 2500; // 2 seconds
 let KDMusicFadeInTime = 2500; // 2 seconds
 let KDMusicTickRate = 100;
-let KDCurrentMusicSound: HTMLAudioElement | KDFModWrapper = null;
+let KDCurrentMusicSound: HTMLAudioElement | WebAudioWrapper = null;
 let KDCurrentMusicSoundUpdate = null;
 let allowMusic = navigator.userAgent.includes('Electron');
 
@@ -164,7 +164,7 @@ function KDUpdateMusic() {
 
 
 		let globalVolume = KDSoundEnabled() && KDToggles.Music ? KDMusicVolume * KDMusicVolumeMult : 0;
-		if (globalVolume > 0 && (!KDCurrentMusicSound || KDCurrentMusicSound.ended || (!CommonIsFMOD && KDCurrentMusicSound.paused) || (!KDCurrentSong && KDCurrentFade == 0))) {
+		if (globalVolume > 0 && (!KDCurrentMusicSound || KDCurrentMusicSound.ended || (KDCurrentMusicSound.paused) || (!KDCurrentSong && KDCurrentFade == 0))) {
 			KDPlayMusic(KDNewSong, globalVolume);
 		}
 		else if (!KDMusicForce && KDCurrentMusicSound && KDCurrentSong && !Object.keys(KDMusic).includes(KDCurrentSong)) {
@@ -196,7 +196,7 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 
 	// Start the new sound
 	let addNewListener = !KDCurrentMusicSound;
-	let audio = (CommonIsFMOD ? null : KDCurrentMusicSound) || GetNewAudio();
+	let audio = (KDCurrentMusicSound) || GetNewAudio();
 	let vol = (typeof Volume != 'undefined' ? Volume : 1.0);
 	KDCurrentMusicSound = audio;
 	KDCurrentMusicSoundUpdate = true;

@@ -1511,9 +1511,6 @@ function KinkyDungeonRun() {
 	
 	KinkyDungeonSFX_Frame = new Set();
 
-	if (KDFmodSystem) {
-		KDFmodSystem.update();
-	}
 	documentcache = new Map();
 	if (!mouseDown)
 		mouseHoldTaken = "";
@@ -7682,23 +7679,15 @@ function AudioPlayInstantSoundKD(Path: string, volume?: number, location?: KDPoi
 			audio.src = src;
 			audio.temp = true;
 		}
-		if (CommonIsFMOD) {
-			audio.volume = Math.min(vol, 1);
-			if (location) {
-				audio.location = location;
-			}
-			audio.play();
-		} else {
-			if (!created) {
-				audio.pause();
-				audio.currentTime = 0;
-			}
-			if (location) {
-				audio.location = location;
-			}
-			audio.volume = Math.min(vol, 1);
-			audio.play();
+		if (!created) {
+			audio.pause();
+			audio.currentTime = 0;
 		}
+		if (location) {
+			audio.location = location;
+		}
+		audio.volume = Math.min(vol, 1);
+		audio.play();
 		
 	}
 }
