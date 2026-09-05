@@ -7669,7 +7669,7 @@ function AudioPlayInstantSoundKD(Path: string, volume?: number, location?: KDPoi
 	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : 1);
 	if (vol > 0) {
 		let src = KDModFiles[Path] || Path;
-		let audio = (!KDWebAudio && kdSoundCache.has(src)) ? kdSoundCache.get(src) : GetNewAudio();
+		let audio = (!KDWebAudio && kdSoundCache.has(src)) ? kdSoundCache.get(src) : GetNewAudio(src);
 		let created = false;
 		if (!KDWebAudio && !kdSoundCache.has(src))  {
 			audio.src = src;

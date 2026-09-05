@@ -4,26 +4,35 @@ let kdSoundCache: Map<string, HTMLAudioElement> = new Map();
 
 const KDWebAudioSFXBuffers: Map<string, Promise<AudioBuffer>> = new Map();
 const KDWebAudioSFXVoices: Set<WebAudioWrapper> = new Set();
+let KDWebAudioMaxVoices = 64;
 const KDWebAudioSFXErrors: Set<string> = new Set();
 
 let KDWebAudiooldOnload = window.onload;
-
 
 window.addEventListener('load', () => {
 	
 	// @ts-ignore
 	const AudioContext = window.AudioContext || window.webkitAudioContext;
-	KDWebAudio = new AudioContext();
+	KDWebAudio = new OggmentedAudioContext();
 
 });
 	
 
-function GetNewAudio() {
+function GetMusicAudio() {
     let element = null;
-	element = GetMusicAudio();
+	element = GetNewAudio();
     return element;
 }
-function GetMusicAudio() {
+function GetNewAudio(src?: string) {
+	if (src) {
+		if (KDWebAudioSFXVoices.size >= KDWebAudioMaxVoices) {
+			for (let oldest of KDWebAudioSFXVoices.values()) {
+				oldest.end();
+				KDWebAudioSFXVoices.delete(oldest);
+				break;
+			}
+		}
+	}
     let element = null;
     if (KDWebAudio) {
         element = new WebAudioWrapper();
@@ -31,6 +40,9 @@ function GetMusicAudio() {
 		element = new OGVPlayer();
 	} else {
 		element = new Audio();
+	}
+	if (src && element) {
+		KDWebAudioSFXVoices.add(element);
 	}
     return element;
 }
