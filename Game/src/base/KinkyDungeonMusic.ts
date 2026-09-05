@@ -217,16 +217,17 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 	if (addNewListener) {
 		let a = audio;
 		audio.addEventListener('ended', function () {
-			a.currentTime = 0;
-			a.play();
 			lastKDMusicTick = performance.now() - 100;
 			// Current audio is now stale--chance of not being stale though
 			if (KDRandom() < KDMusicLoopTracksChance[KDCurrentSong]) {
 				KDCurrentLoops += 1;
+				a.currentTime = 0;
+				a.play();
 			} else {
 				KDMusicForce = false;
-				KDCurrentSong = "";
-				KDNewSong = "";
+				//KDCurrentSong = "";
+				//KDNewSong = "";
+				KDEndMusic();
 			}
 		}, false);
 	}
@@ -288,10 +289,10 @@ function KDEndMusic() {
 	KDCurrentSong = "";
 	KDNewSong = "";
 	if (KDCurrentMusicSound) {
-		// @ts-ignore
-		if (CommonIsFMOD && KDCurrentMusicSound.end) {
+		if (KDWebAudio) {
 			// @ts-ignore
 			KDCurrentMusicSound.end();
+			KDCurrentMusicSound = null;
 		} else {
 			KDCurrentMusicSound.pause();
 			KDCurrentMusicSound.currentTime = 0;

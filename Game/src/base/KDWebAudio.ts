@@ -187,8 +187,15 @@ class WebAudioWrapper {
 		if (value == 0) this.startTime = 0;
 		else this.startTime = KDWebAudio.currentTime + value;
 	}
+	listener = null;
 	public addEventListener(type, listener) {
-		this.node.then((node) => node.addEventListener(type, listener));
+		if (type == 'ended') {
+			this.listener = listener;
+			this.node.then((node) => {node.onended = listener});
+
+		} else {
+			this.node.then((node) => node.addEventListener(type, listener));
+		}
 	}
 
 	public play(): Promise<void> {
@@ -280,7 +287,7 @@ class WebAudioWrapper {
 	}
 
     set temp(value: boolean) {
-		if (value) this.node.then((node) => node.addEventListener('ended', () => this.end(), {once: true}));
+		if (value) this.node.then((node) => {node.onended = () => {this.end()}});
     }
 
 	async getNode(): Promise<AudioBufferSourceNode> {
@@ -297,6 +304,9 @@ class WebAudioWrapper {
 				let node = new AudioBufferSourceNode(KDWebAudio, {
 					buffer: buffer
 				});
+				if (this.listener) {
+					node.onended = this.listener;
+				}
 				resolve(node);
 			}).catch((error) => {
 				KDWebAudioSFXBuffers.delete(this.source);
