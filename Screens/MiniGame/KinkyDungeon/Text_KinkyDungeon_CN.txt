@@ -15710,7 +15710,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 
 
 # - The collar marks you as spiritbound. It requires a magic key, and the spiritbond to be absent.
-# - The collar marks you as spiritbound. It cannot be removed while your Dominant controls you.
+# - The collar cannot be removed while your Dominant controls you. (See Quest log)
 # - The collar is sealed around your neck. The runes flash a sinister light as you struggle
 # - You bring the collar close to the magic key and will it to release.
 
@@ -46880,6 +46880,7 @@ RestraintName 失效了！
 视觉透视
 - Show Quick Inventory
 显示快速背包
+# - Auto-Sprint when Slowed
 - Skip Tutorial
 跳过教程
 - Mod Compat Mode (requires reload)
