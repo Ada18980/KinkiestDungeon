@@ -393,12 +393,14 @@ function KDAlreadyOpened(x: number, y: number): boolean {
 let KDSoundsPlayedThisFrame 
 
 function KinkyDungeonPlaySound_SingleFrame(src: string, entity?: entity, vol?: number) {
-	if (entity) {
+	if (KinkyDungeonSFX.has(src)) return;
+	if (KDGetEntityRestraintList) {
 		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol);
 
+		KinkyDungeonSFX_Frame.add(src);
 		return;
 	}
-	if (KDSoundEnabled() && !KinkyDungeonSFX_Frame.has(src)) {
+	if (KDSoundEnabled()) {
 		if (!entity || KinkyDungeonVisionGet(entity.x, entity.y) > 0) {
 			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
 			AudioPlayInstantSoundKD(src, vol);
@@ -408,20 +410,22 @@ function KinkyDungeonPlaySound_SingleFrame(src: string, entity?: entity, vol?: n
 }
 
 function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number) {
+	if (KinkyDungeonSFX.has(src)) return;
 	if (entity) {
 		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol);
 
+		KinkyDungeonSFX.add(src);
 		return;
 	}
 	if (KDSoundEnabled()) {
-		if (!entity || KinkyDungeonVisionGet(entity.x, entity.y) > 0) {
-			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
-			AudioPlayInstantSoundKD(src, vol);
-		}
+		/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
+		AudioPlayInstantSoundKD(src, vol);
+		KinkyDungeonSFX.add(src);
 	}
 }
 function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPoint, vol?: number) {
-	if (KDSoundEnabled() && !KinkyDungeonSFX.has(src)) {
+	if (KinkyDungeonSFX.has(src)) return;
+	if (KDSoundEnabled()) {
 		if (!vol) vol = 1;
 		if (point) {
 			vol *= 1 - 0.1*Math.min(5, 0.6 * KDistEuclidean(player.x - point.x, player.y - point.y));
