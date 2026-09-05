@@ -1508,6 +1508,9 @@ let KDLastScrollableListUpdate = 0;
 let mouseHoldTaken = "";
 
 function KinkyDungeonRun() {
+	
+	KinkyDungeonSFX_Frame = new Set();
+
 	if (KDFmodSystem) {
 		KDFmodSystem.update();
 	}

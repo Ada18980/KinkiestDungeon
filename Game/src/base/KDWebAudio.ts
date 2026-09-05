@@ -3,6 +3,7 @@ let kdSoundCache: Map<string, HTMLAudioElement> = new Map();
 
 
 const KDWebAudioSFXBuffers: Map<string, Promise<AudioBuffer>> = new Map();
+const KDWebAudioSFXVoices: Set<WebAudioWrapper> = new Set();
 const KDWebAudioSFXErrors: Set<string> = new Set();
 
 let KDWebAudiooldOnload = window.onload;
@@ -79,7 +80,8 @@ class WebAudioWrapper {
                 node.disconnect();
             }
             let last = KDWebAudio.destination;
-            for (let node of this.nodes.reverse()) {
+            for (let i = this.nodes.length - 1; i >= 0; i--) {
+				let node = this.nodes[i];
                 node.connect(last);
                 last = node;
             }

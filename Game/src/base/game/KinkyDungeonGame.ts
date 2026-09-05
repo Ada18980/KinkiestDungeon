@@ -192,7 +192,8 @@ let KinkyDungeonJailLeashX = 3;
 
 let KinkyDungeonSaveInterval = 10;
 
-let KinkyDungeonSFX = [];
+let KinkyDungeonSFX: Set<string> = new Set();
+let KinkyDungeonSFX_Frame: Set<string> = new Set();
 
 
 function KDIsStairExplored(x, y) {
@@ -389,22 +390,38 @@ function KDAlreadyOpened(x: number, y: number): boolean {
 	return false;
 }
 
+let KDSoundsPlayedThisFrame 
+
+function KinkyDungeonPlaySound_SingleFrame(src: string, entity?: entity, vol?: number) {
+	if (entity) {
+		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol);
+
+		return;
+	}
+	if (KDSoundEnabled() && !KinkyDungeonSFX_Frame.has(src)) {
+		if (!entity || KinkyDungeonVisionGet(entity.x, entity.y) > 0) {
+			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
+			AudioPlayInstantSoundKD(src, vol);
+			KinkyDungeonSFX_Frame.add(src);
+		}
+	}
+}
+
 function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number) {
 	if (entity) {
 		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol);
 
 		return;
 	}
-	if (KDSoundEnabled() && !KinkyDungeonSFX.includes(src)) {
+	if (KDSoundEnabled()) {
 		if (!entity || KinkyDungeonVisionGet(entity.x, entity.y) > 0) {
 			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
 			AudioPlayInstantSoundKD(src, vol);
-			KinkyDungeonSFX.push(src);
 		}
 	}
 }
 function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPoint, vol?: number) {
-	if (KDSoundEnabled() && !KinkyDungeonSFX.includes(src)) {
+	if (KDSoundEnabled() && !KinkyDungeonSFX.has(src)) {
 		if (!vol) vol = 1;
 		if (point) {
 			vol *= 1 - 0.1*Math.min(5, 0.6 * KDistEuclidean(player.x - point.x, player.y - point.y));
@@ -420,7 +437,7 @@ function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPo
 			AudioPlayInstantSoundKD(src, vol, point ? {
 				x: point.x - player.x, y: point.y - player.y
 			} : undefined);
-			KinkyDungeonSFX.push(src);
+			KinkyDungeonSFX.add(src);
 		}
 	}
 }
@@ -3568,7 +3585,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	}
 	KDRecentRepIndex = 0;
 	KinkyDungeonRestraintAdded = false;
-	KinkyDungeonSFX = [];
+	KinkyDungeonSFX = new Set();
 	KDPlayerHitBy = [];
 
 	KinkyDungeonUpdateAngel(delta);
