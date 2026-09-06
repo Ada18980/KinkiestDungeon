@@ -1115,11 +1115,11 @@ function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: 
 			kdpixisprites.set("xspr_" + enemy.id + id, {}); // Hijack pixisprites due to desired functionality
 			kdSpritesDrawn.set("xspr_" + enemy.id + id, true);
 
-			let size = Math.max(w, h);
+			let scale = Math.max(w, h);
 			DrawCharacter(char,
-				(tx + (enemy.offX || 0) - CamX)*size - (1)*(w - size)/2 + size * 0.25,
-				(ty + (enemy.offY || 0) - CamY)*size - (h - size)/2+ size/6,
-				size/1100, false, board, undefined, CHIBIMOD, zIndex || 0, enemy.flip && !StaticView, undefined, "spr_" + enemy.id + id, CHIBIMODEND);
+				(tx + (enemy.offX || 0) - CamX)*size - (1)*(w - size)/2 + scale * 0.25,
+				(ty + (enemy.offY || 0) - CamY)*size - (h - size)/2+ scale/6,
+				scale/1100, false, board, undefined, CHIBIMOD, zIndex || 0, enemy.flip && !StaticView, undefined, "spr_" + enemy.id + id, CHIBIMODEND);
 
 		} else {
 			let spr = KDDraw(board, kdpixisprites, "spr_" + enemy.id + id, KinkyDungeonRootDirectory + dir + sp + ".png",
@@ -7985,7 +7985,7 @@ function KinkyDungeonNoEnemyExceptSub(x: number, y: number, Player: boolean, Ene
 	let e = KinkyDungeonEnemyAt(x, y, mapData);
 	if (e && e.Enemy) {
 		if (e.Enemy.master && Enemy && Enemy.Enemy && e.Enemy.master.type == Enemy.Enemy.name) return true;
-		let seniority = Enemy ? KinkyDungeonCanSwapWith(e, Enemy) : false;
+		let seniority = (Enemy && !Enemy.player) ? KinkyDungeonCanSwapWith(e, Enemy) : false; // TODO allow player to swap?
 		return seniority;
 	}
 	if (!mapData) mapData = KDMapData;

@@ -4668,7 +4668,7 @@ function KDFastMoveTo(xx: number, yy: number): number {
 			true, false, false,
 			KDToggles.FastMoveDoors ? KinkyDungeonMovableTilesSmartEnemy : KinkyDungeonMovableTilesEnemy,
 			false, false, true,
-			undefined, false, undefined, false, true, 
+			KDPlayer(), false, undefined, false, true, 
 			KDToggles.FastMovePassable, undefined, undefined, true, 
 			KDAutoPathEnemyWeight);
 		if (path) {

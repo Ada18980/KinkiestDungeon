@@ -1612,13 +1612,13 @@ function KinkyDungeonDrawGame() {
 									true, false, false,
 									KDToggles.FastMoveDoors ? KinkyDungeonMovableTilesSmartEnemy : KinkyDungeonMovableTilesEnemy,
 									false, false, true,
-									undefined, false, undefined, false, true, 
+									KDPlayer(), false, undefined, false, true, 
 									KDToggles.FastMovePassable, undefined, undefined, true, 
 									KDAutoPathEnemyWeight);
 								if (path?.length > 1) {
 									dist *= path.length;
 								}
-								let dashed = KinkyDungeonSlowLevel > 1;
+								let allDashed = KinkyDungeonSlowLevel > 1;
 								let slowed = KDGameData.MovePoints < 0;
 								if (KDGameData.MovePoints < 0) {
 									if (path?.length > 1) {
@@ -1638,6 +1638,9 @@ function KinkyDungeonDrawGame() {
 									let color = KinkyDungeonFastMoveSuppress ? 0xff5555 : 0xffaaaa;
 									let ii = 0;
 									for (let p of path) {
+										let singleDash = !allDashed && KDTileSlows(KDPlayer(), p.x, p.y);
+										let lastSingleDash = !allDashed && KDTileSlows(KDPlayer(), lastP.x, lastP.y);
+										let dashed = allDashed;
 										KDPathGraphics.lineStyle({
 											width: slowed ? KDFastPathWidthSlowed : (dashed ? KDFastPathWidth : (KDFastPathWidth-1)),
 											color: color,
@@ -1645,18 +1648,18 @@ function KinkyDungeonDrawGame() {
 											join: PIXI.LINE_JOIN.ROUND,
 											miterLimit: KDFastPathWidth});
 										let edgeNode = p == path[0] || p == path[path.length-1];
-										let fixedp = (p == path[0]) ? ((dashed && path.length == 1) ? KDPathFixP_DashStart(lastP, p) : KDPathFixP_Edge(lastP, p)) : 
-											(dashed ? (!edgeNode ? KDPathFixP_MiddleA(lastP, p) :
+										let fixedp = (p == path[0]) ? (((dashed || lastSingleDash) && path.length == 1) ? KDPathFixP_DashStart(lastP, p) : KDPathFixP_Edge(lastP, p)) : 
+											(dashed || lastSingleDash ? (!edgeNode ? KDPathFixP_MiddleA(lastP, p) :
 												KDPathFixP_Middle(lastP, p)) : KDPathFixP_MiddleSolid(lastP))
-										if (dashed || p == path[0])
+										if (dashed || lastSingleDash || p == path[0])
 											KDPathGraphics.moveTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
 										
 										fixedp = (p == path[path.length-1]) ? KDPathFixP_Edge(p, lastP) : 
-											(dashed ? (!edgeNode ? KDPathFixP_MiddleB(lastP, p) :
+											(dashed || singleDash ? (!edgeNode ? KDPathFixP_MiddleB(lastP, p) :
 												KDPathFixP_Middle(p, lastP)) : KDPathFixP_MiddleSolid(p))
 										KDPathGraphics.lineTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
 									
-										if (!edgeNode && dashed) {
+										if (!edgeNode && (dashed || singleDash)) {
 											
 											fixedp = KDPathFixP_MiddleA(p, lastP);
 											KDPathGraphics.moveTo((fixedp.x - CamX)*KinkyDungeonGridSizeDisplay, (fixedp.y - CamY)*KinkyDungeonGridSizeDisplay);
@@ -6618,4 +6621,18 @@ function KDPathFixP_DashStart(p: KDPoint, lastP: KDPoint) {
 
 function KDPathFixP_MiddleSolid(p: KDPoint) {
 	return {x: p.x + 0.5, y: p.y + 0.5}
+}
+
+function KDTileSlows(entity: entity, x: number, y: number) {
+	let tags = KDEffectTileTags(x, y);
+	if (tags.slow) {
+		return true;
+	}
+	if (tags.ice && !KDChillWalk(entity)) {
+		return true;
+	}
+	if ((tags.slime || tags.latex || tags.glue) && !KDSlimeWalker(entity)) {
+		return true;
+	}
+	return "gW".includes(KinkyDungeonMapGet(x, y));
 }

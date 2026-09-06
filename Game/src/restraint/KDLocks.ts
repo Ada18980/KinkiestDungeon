@@ -5,6 +5,7 @@
 let KDLocks: Record<string, KDLockType> = {
 	None: {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return Enemy?.Enemy?.tags.rubber || Enemy?.Enemy?.tags.slime || Enemy?.Enemy?.tags.latex;
 		},
 		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
@@ -75,6 +76,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"Rubber": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return Enemy?.Enemy?.tags.rubber || Enemy?.Enemy?.tags.slime || Enemy?.Enemy?.tags.latex;
 		},
 		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
@@ -145,6 +147,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"Crystal": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return Enemy?.Enemy?.tags.crystal || Enemy?.Enemy?.tags.chaos || Enemy?.Enemy?.tags.elemental;
 		},
 		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
@@ -228,6 +231,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"ExCrystal": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 0 || Enemy?.Enemy?.tags.crystal || Enemy?.Enemy?.tags.chaos || Enemy?.Enemy?.tags.elemental;
 		},
 		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
@@ -325,6 +329,7 @@ let KDLocks: Record<string, KDLockType> = {
 			KDCyberActions(tile, player, 20);
 		},
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || Enemy?.Enemy?.tags.dollsmith || Enemy?.Enemy?.tags.cyberaccess || KDEnemyHasFlag(Enemy, "cyberaccess");
 		},
 
@@ -420,6 +425,7 @@ let KDLocks: Record<string, KDLockType> = {
 			KDCyberActions(tile, player, 50);
 		},
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || Enemy?.Enemy?.tags.dollsmith || Enemy?.Enemy?.tags.cyberaccess || KDEnemyHasFlag(Enemy, "cyberaccess");
 		},
 
@@ -613,6 +619,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	White: {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 0;
 		},
 		filter: (_Guaranteed, Floor, _AllowGold, _Type) => {
@@ -700,6 +707,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"Red": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 1;
 		},
 		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
@@ -781,6 +789,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"Red_Med": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 1;
 		},
 		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
@@ -862,6 +871,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"Red_Hi": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 1;
 		},
 		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
@@ -943,6 +953,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"HiSec": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 2;
 		},
 		filter: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
@@ -1107,6 +1118,7 @@ let KDLocks: Record<string, KDLockType> = {
 
 	"Disc": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 2;
 		},
 		filter: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
@@ -1191,6 +1203,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"Blue": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 3 || (Enemy?.Enemy?.unlockCommandLevel > 1 && KDEnemyCanTalk(Enemy));
 		},
 		filter: (_Guaranteed, Floor, _AllowGold, Type, _Data) => {
@@ -1276,6 +1289,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"Gold": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 3 || Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || (Enemy?.Enemy?.unlockCommandLevel > 2 && KDEnemyCanTalk(Enemy));
 		},
 		filter: (_Guaranteed, Floor, AllowGold, _Type, _Data) => {
@@ -1372,6 +1386,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"Divine": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 4 || Enemy?.Enemy?.tags.angel || Enemy?.Enemy?.tags.holy;
 		},
 		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
@@ -1451,6 +1466,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"Divine2": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 4 || Enemy?.Enemy?.tags.angel || Enemy?.Enemy?.tags.holy;
 		},
 		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
@@ -1528,6 +1544,7 @@ let KDLocks: Record<string, KDLockType> = {
 	},
 	"Purple": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			if (Enemy?.player) return false;
 			return KDEnemyRank(Enemy) > 3 || (Enemy?.Enemy?.unlockCommandLevel > 0 &&KDEnemyCanTalk(Enemy));
 		},
 		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {

@@ -224,6 +224,7 @@ class WebAudioWrapper {
 			.then(() => {
 				this.node = this.getNode();
 				this.node.then((node) => {
+					if (this.ended) return;
 					if (this.looping) node.loop = true;
 					node.start(startZero ? 0 : (this.startTime - KDWebAudio.currentTime));
 					this.started = true;
@@ -238,6 +239,7 @@ class WebAudioWrapper {
 		return new Promise<void>((resolve) => {
 			resolve(this.node.then((node) => {
 				this.node.then((node) => {
+					if (this.ended) return;
 					if (this.looping) node.loop = true;
 					node.start(startZero ? 0 : (this.startTime - KDWebAudio.currentTime));
 					this.started = true;
@@ -264,6 +266,7 @@ class WebAudioWrapper {
 	}
 
 	end() {
+		this.ended = true;
 		if (this.node != null)
 			this.node.then((node) => {
 				if (this.started) {
@@ -281,7 +284,6 @@ class WebAudioWrapper {
 		this.lpf = null;
 		this.hpf = null;
 		this.gain = null;
-		this.ended = true;
 	}
 	ended = false;
 

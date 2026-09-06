@@ -255,6 +255,9 @@ function KinkyDungeonFindPath (
 							}
 							if (!ignoreTrafficLaws) {
 								if (KDEffectTileTagsLoc(loc)?.danger) costBonus += 12;
+								if (Enemy) {
+									if (KDTileSlows(Enemy, xx, yy)) costBonus += 3;
+								}
 								else if (tile == "V" && !(MapTile?.Sfty)) costBonus = 14;
 								else if (tile == "N") costBonus = 30;
 								else if (tile == "D") costBonus = 3;

@@ -99,8 +99,8 @@ KDToggleOverrideOutfitAbbr,Override Outfit
 KDToggleOverrideConsentAbbr,Load Consent from Save
 KDToggleSaveOutfit,Save Outfits within Save Files
 KDToggleShowNPCSprites,Show free characters on map
-KDToggleShowJailedNPCSprites,Detailed jailed NPCs (experimental)
-KDToggleShowPatronNPCSprites,Detailed unique NPCs (experimental)
+KDToggleShowJailedNPCSprites,Detailed jailed NPCs
+KDToggleShowPatronNPCSprites,Detailed unique NPCs
 KDToggleShowServantNPCSprites,Detailed servants in collection
 KDToggleShowOtherNPCSprites,Detailed prisoners/guests in collection
 KDToggleStruggleBars,Show Struggle Bars
@@ -112,6 +112,7 @@ KDToggleNoForceGreet,No Forced Greetings
 KDToggleShowZoom,Show Zoom Buttons
 KDToggleShowRestraintOnHover,Show Restraint Info on Escape Hover
 KDToggleForceWarnings,Always Show Warnings
+KDToggleArrowWarnings,Show Bullet Arrows
 KDToggleEnableMinimap,Always Show Minimap
 KDToggleSound,Enable Sound
 KDToggleDrool,Drool/Tears
@@ -2961,6 +2962,11 @@ KillPuppetmaster,"The puppetmaster storms out in a rage."
 AttackPuppetmasterBind,"The puppetmaster has you try on one of ${Etheir} new accessories! (+RestraintAdded)"
 AttackPuppetmasterLock,"The puppetmaster adds a lock 'just to complete the look, you know?'"
 AttackPuppetmaster,"The puppetmaster cuddles your helpless body~ (DamageTaken)"
+NamePuppeteer,Puppeteer
+KillPuppeteer,"The puppeteer storms out in a rage."
+AttackPuppeteerBind,"The puppeteer has you try on one of ${Etheir} new accessories! (+RestraintAdded)"
+AttackPuppeteerLock,"The puppeteer adds a lock 'just to complete the look, you know?'"
+AttackPuppeteer,"The puppeteer cuddles your helpless body~ (DamageTaken)"
 
 NameNurse,Nurse
 KillNurse,"The Nurse marks ${Etheir} notes and runs off."
@@ -4528,10 +4534,10 @@ RestraintMagicGagLargeDesc2,"You absolutely can't enunciate your spells properly
 RestraintMagicGag2,Magic Ball Gag
 RestraintMagicGag2Desc,"A gag enchanted with magic. It grows to fill your mouth so you can hardly speak. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength."
 RestraintMagicGag2Desc2,"It's brimming with conjured energy. A normal knife won't work here!"
-RestraintAntiMagicGag,Anti-Magic Gag
+RestraintAntiMagicGag,Mana Absorbing Gag
 RestraintAntiMagicGagDesc,"A gag designed to cripple mages. It's made of a squishy rubbery material."
 RestraintAntiMagicGagDesc2,"It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate."
-RestraintAntiMagicGag2,Anti-Mage Gag
+RestraintAntiMagicGag2,Mana Draining Gag
 RestraintAntiMagicGag2Desc,"A gag designed to cripple experienced spellcasters. It's made of a magic-absorbing rubber."
 RestraintAntiMagicGag2Desc2,"You feel the energy flowing out of you! When it drains 100 mana it will transform into an ordinary gag and inflate."
 RestraintTrapBoots,Ballet Heels
@@ -13323,68 +13329,12 @@ rGenericAllyDefensive,"(The SPEAKER will stay close to you or its assigned posit
 dGenericAllyFlirt,"(Flirting)"
 rGenericAllyFlirt,"(The SPEAKER smiles)|This will be fun!"
 rGenericAllyFlirtDom,"(The SPEAKER grins)|I will make sure you enjoy yourself~"
+rGenericAllyFlirtVoyeur,"(The SPEAKER smirks)|I do enjoy seeing you in trouble..."
 rGenericAllyFlirtSub,"(The SPEAKER blushes)|Mmm~ Let's do this!"
 rGenericAllyFlirtBrat,"(The SPEAKER backs up)|I'm not in trouble, am I?"
 rGenericAllyFlirtRobot,"(The SPEAKER beeps)|This unit does not know how to respond..."
 rGenericAllyFlirtGagged,"(The SPEAKER moans)|Mmmmmph~"
 rGenericAllyFlirtNoBrain,"(The SPEAKER appears too busy to discuss with you)"
-
-
-KDDialogue_CuddleStart_,""
-KDDialogue_CuddleStart_Gagged,""
-KDDialogue_CuddleStart_Robot,""
-KDDialogue_CuddleStart_Dom,""
-KDDialogue_CuddleStart_Brat,""
-KDDialogue_CuddleStart_Sub,""
-
-KDDialogue_CuddleEnd_,""
-KDDialogue_CuddleEnd_Gagged,""
-KDDialogue_CuddleEnd_Robot,End of line.
-KDDialogue_CuddleEnd_Dom,""
-KDDialogue_CuddleEnd_Brat,*slaps your butt*
-KDDialogue_CuddleEnd_Sub,""
-
-KDDialogue_CuddleRunAway_,""
-KDDialogue_CuddleRunAway_Gagged,""
-KDDialogue_CuddleRunAway_Robot,Error. Subject not complying?
-KDDialogue_CuddleRunAway_Dom,""
-KDDialogue_CuddleRunAway_Brat,""
-KDDialogue_CuddleRunAway_Sub,""
-
-KDDialogue_CuddleChastity_,"Got yourself locked up, huh? Better go be good now~"
-KDDialogue_CuddleChastity_Gagged,"*Bumps up against your chastity and sighs*"
-KDDialogue_CuddleChastity_Robot,"Pleasure controls detected."
-KDDialogue_CuddleChastity_Dom,"You've been a bad girl, haven't you? *taps on your chastity gear*"
-KDDialogue_CuddleChastity_Brat,"Such a naughty girl, getting yourself all locked up like that!"
-KDDialogue_CuddleChastity_Sub,"I-I know you want release, but you're in this gear for a reason~"
-
-KDDialogue_ToyPlayStart_,""
-KDDialogue_ToyPlayStart_Gagged,""
-KDDialogue_ToyPlayStart_Robot,""
-KDDialogue_ToyPlayStart_Dom,""
-KDDialogue_ToyPlayStart_Brat,""
-KDDialogue_ToyPlayStart_Sub,""
-
-KDDialogue_ToyPlayEnd_,""
-KDDialogue_ToyPlayEnd_Gagged,""
-KDDialogue_ToyPlayEnd_Robot,End of line.
-KDDialogue_ToyPlayEnd_Dom,Had fun?~
-KDDialogue_ToyPlayEnd_Brat,*turns the toy off and giggles*
-KDDialogue_ToyPlayEnd_Sub,""
-
-KDDialogue_ToyPlayRunAway_,""
-KDDialogue_ToyPlayRunAway_Gagged,""
-KDDialogue_ToyPlayRunAway_Robot,Error. Subject not complying?
-KDDialogue_ToyPlayRunAway_Dom,""
-KDDialogue_ToyPlayRunAway_Brat,""
-KDDialogue_ToyPlayRunAway_Sub,""
-
-KDDialogue_ToyPlayChastity_,"Got yourself locked up, huh? Better go be good now~"
-KDDialogue_ToyPlayChastity_Gagged,"*bumps up against your chastity and sighs*"
-KDDialogue_ToyPlayChastity_Robot,"Pleasure controls detected."
-KDDialogue_ToyPlayChastity_Dom,"You've been a bad girl, haven't you? *taps on your chastity gear*"
-KDDialogue_ToyPlayChastity_Brat,"Such a naughty girl, getting yourself all locked up like that!"
-KDDialogue_ToyPlayChastity_Sub,"I-I know you want release, but you're in this gear for a reason~"
 
 dGenericAllyFlirt_Cuddle,"Don't I look quite cuddly?"
 dGenericAllyFlirt_CuddleGag,"(Move closer, attempting to cuddle)"
@@ -13393,7 +13343,6 @@ rGenericAllyFlirt_CuddleDom,"(The SPEAKER smiles gently)|Aren't you precious~"
 rGenericAllyFlirt_CuddleSub,"(The SPEAKER looks flustered)|Well, it's been a long day...|I could use a hug..."
 rGenericAllyFlirt_CuddleBrat,"(The SPEAKER smirks and reaches for your body)"
 rGenericAllyFlirt_CuddleRobot,"(The SPEAKER makes a beeping noise)|Loading cuddle module..."
-
 
 dGenericAllyFlirt_BondageOffer,"Got something for me?"
 dGenericAllyFlirt_BondageOfferGag,"(Present your body to her~)"
@@ -13415,7 +13364,6 @@ rGenericAllyFlirt_PlayRequestSub,"(The SPEAKER blushes)|Oh... let me check."
 rGenericAllyFlirt_PlayRequestBrat,"(The SPEAKER smirks)|Be careful what you ask for~"
 rGenericAllyFlirt_PlayRequestGagged,"(The SPEAKER giggles)|Mmmph~"
 rGenericAllyFlirt_PlayRequestRobot,"(The SPEAKER pauses)|Calculating strictness threshold..."
-
 
 dGenericAllyFlirt_Release,"You look quite distracted..."
 dGenericAllyFlirt_ReleaseGag,"(Help her with her distraction)"
@@ -34251,3 +34199,62 @@ KDWP,WP
 KDDP,DP
 KDMP,MP
 
+
+
+
+
+KDDialogue_CuddleStart_,""
+KDDialogue_CuddleStart_Gagged,""
+KDDialogue_CuddleStart_Robot,""
+KDDialogue_CuddleStart_Dom,""
+KDDialogue_CuddleStart_Brat,""
+KDDialogue_CuddleStart_Sub,""
+
+KDDialogue_CuddleEnd_,""
+KDDialogue_CuddleEnd_Gagged,""
+KDDialogue_CuddleEnd_Robot,End of line.
+KDDialogue_CuddleEnd_Dom,""
+KDDialogue_CuddleEnd_Brat,*slaps your butt*
+KDDialogue_CuddleEnd_Sub,""
+
+KDDialogue_CuddleRunAway_,""
+KDDialogue_CuddleRunAway_Gagged,""
+KDDialogue_CuddleRunAway_Robot,Error. Subject not complying?
+KDDialogue_CuddleRunAway_Dom,""
+KDDialogue_CuddleRunAway_Brat,""
+KDDialogue_CuddleRunAway_Sub,""
+
+KDDialogue_CuddleChastity_,"Got yourself locked up, huh? Better go be good now~"
+KDDialogue_CuddleChastity_Gagged,"*Bumps up against your chastity and sighs*"
+KDDialogue_CuddleChastity_Robot,"Pleasure controls detected."
+KDDialogue_CuddleChastity_Dom,"You've been a bad girl, haven't you? *taps on your chastity gear*"
+KDDialogue_CuddleChastity_Brat,"Such a naughty girl, getting yourself all locked up like that!"
+KDDialogue_CuddleChastity_Sub,"I-I know you want release, but you're in this gear for a reason~"
+
+KDDialogue_ToyPlayStart_,""
+KDDialogue_ToyPlayStart_Gagged,""
+KDDialogue_ToyPlayStart_Robot,""
+KDDialogue_ToyPlayStart_Dom,""
+KDDialogue_ToyPlayStart_Brat,""
+KDDialogue_ToyPlayStart_Sub,""
+
+KDDialogue_ToyPlayEnd_,""
+KDDialogue_ToyPlayEnd_Gagged,""
+KDDialogue_ToyPlayEnd_Robot,End of line.
+KDDialogue_ToyPlayEnd_Dom,Had fun?~
+KDDialogue_ToyPlayEnd_Brat,*turns the toy off and giggles*
+KDDialogue_ToyPlayEnd_Sub,""
+
+KDDialogue_ToyPlayRunAway_,""
+KDDialogue_ToyPlayRunAway_Gagged,""
+KDDialogue_ToyPlayRunAway_Robot,Error. Subject not complying?
+KDDialogue_ToyPlayRunAway_Dom,""
+KDDialogue_ToyPlayRunAway_Brat,""
+KDDialogue_ToyPlayRunAway_Sub,""
+
+KDDialogue_ToyPlayChastity_,"Got yourself locked up, huh? Better go be good now~"
+KDDialogue_ToyPlayChastity_Gagged,"*bumps up against your chastity and sighs*"
+KDDialogue_ToyPlayChastity_Robot,"Pleasure controls detected."
+KDDialogue_ToyPlayChastity_Dom,"You've been a bad girl, haven't you? *taps on your chastity gear*"
+KDDialogue_ToyPlayChastity_Brat,"Such a naughty girl, getting yourself all locked up like that!"
+KDDialogue_ToyPlayChastity_Sub,"I-I know you want release, but you're in this gear for a reason~"

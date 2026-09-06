@@ -6957,8 +6957,13 @@ function KDChangeRestraintType(item: item, type: string, name: string) {
 		KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].template = name;
 	}
 	if ((item.inventoryVariant || !KinkyDungeonRestraintVariants[item.inventoryVariant || item.name])
-		&& item.inventoryVariant != item.name)
+		&& item.inventoryVariant != item.name) {
 		KDChangeItemName(item, type, name);
+		
+		KDSwapEventsForItem(item, 
+			KDRestraint(item), 
+			KinkyDungeonGetRestraintByName(name));
+	}
 }
 
 
@@ -7765,6 +7770,8 @@ function KDGetBaseLimitChance(StruggleType: string) {
 
 /** mutates and returns a reference to the events */
 function KDSwapEvents(events: KinkyDungeonEvent[], oldRestraint: restraint, newRestraint: restraint) {
+
+	
 	if (!events) return undefined;
 
 
@@ -7786,6 +7793,28 @@ function KDSwapEvents(events: KinkyDungeonEvent[], oldRestraint: restraint, newR
 	}
 	
 	return events;
+}
+
+
+/** mutates and returns a reference to the events */
+function KDSwapEventsForItem(item: item, oldRestraint: restraint, newRestraint: restraint) {
+	let variant: KDRestraintVariant = null;
+	if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name])
+		variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
+
+	let events: KinkyDungeonEvent[] = [];
+
+	if (variant?.events)
+		events = [...variant.events];
+	else events = item.events || KDRestraint(item)?.events || null;
+
+	if (!events) return undefined;
+
+	let ret = KDSwapEvents(events, oldRestraint, newRestraint);
+	item.events = events
+
+	KDUpdateItemEventCache = true;
+	return ret;
 }
 
 function KDTest_ListRestraintsWithFeetLinked() {

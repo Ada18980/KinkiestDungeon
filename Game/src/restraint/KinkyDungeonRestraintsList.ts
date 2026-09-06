@@ -4718,11 +4718,11 @@ const KinkyDungeonRestraints: restraint[] = [
 		gag: 0.15, Type: "Tight", Color: ["Default", "#92e8c0"], Group: "ItemMouth", DefaultLock: "Purple", magic: true, power: 6, weight: 2,
 		escapeChance: {"Struggle": -0.3, "Cut": 0.04, "Remove": 0.45, "Pick": 0.15},
 		events: [
-			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 8, power: 0.4},
+			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 10, power: 0.4, restraint: "TrapGagLarge"},
 			{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}
 		],
 		//"ballGagRestraintsMagic" : 2, "antiMagic": 6
-		enemyTags: {}, playerTags: {}, minLevel: 3, maxLevel: 7, allFloors: true, shrine: ["Illusion", "BallGags", "Leather" , "Gags", "Conjure"]},
+		enemyTags: {"antiMagic": 5}, playerTags: {}, minLevel: 3, maxLevel: 7, allFloors: true, shrine: ["Illusion", "BallGags", "Leather" , "Gags", "Conjure"]},
 	{inventory: true, name: "AntiMagicGag2", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
 		Model: "BallGag",
 		sfxGroup: "Leather",
@@ -4734,10 +4734,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.4, "Cut": -0.02, "Remove": 0.4, "Pick": 0.12},
 		events: [
 			{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"},
-			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 30, power: 0.4},
+			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 25, power: 0.4, restraint: "MagicGagLarge"},
 		],
 		//"ballGagRestraintsMagic" : 0.3, "antiMagic": 2
-		enemyTags: {}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Illusion", "BallGags", "Latex" , "Gags", "Conjure"]},
+		enemyTags: {"antiMagic": 5}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Illusion", "BallGags", "Latex" , "Gags", "Conjure"]},
 
 	// Generic stronger gag
 	{inventory: true, trappable: true, name: "PanelGag", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Asset: "DeepthroatGag", gag: 0.7,

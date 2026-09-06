@@ -151,7 +151,7 @@ let KDToggles = {
 	NoDmgFloaters: false,
 	NoForceGreet: false,
 	StruggleBars: true,
-	ShowJailedNPCSprites: true,
+	ShowJailedNPCSprites: false,
 	ShowPatronNPCSprites: true,
 	ShowServantNPCSprites: false,
 	ShowOtherNPCSprites: false,
@@ -201,11 +201,13 @@ let KDToggles = {
 	ShowDefensiveStats: true,
 	
 	AutoSprint: true,
+	ArrowWarnings: true,
 };
 
 
 
 let KDToggleCategories = {
+	ArrowWarnings: "UI",
 	StackOutfitItems: "Clothes",
 	OverrideConsent: "none",
 	FlashingWarning: "UI",

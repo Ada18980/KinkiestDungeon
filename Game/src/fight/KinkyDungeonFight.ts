@@ -1,8 +1,13 @@
 "use strict";
+
 let KinkyDungeonKilledEnemy = null;
 let KinkyDungeonAlert = 0;
 
+let KDBulletWarningThickness = 3;
+
 let KDMaxPreviousWeapon = 4;
+let KDBulletWarningGFX = new PIXI.Graphics();
+kdwarningboardOver.addChild(KDBulletWarningGFX)
 
 let KDMINDAMAGENOISE = 2;
 let KDDMGSOUNDMULT = 1.5;
@@ -2094,6 +2099,24 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 					}
 					if ((!(outOfTime || outOfRange) || (b.bullet.spell?.alwaysWarn)) && checkCollision) {
 						let rad = b.bullet.aoe ? b.bullet.aoe : ((b.bullet.spell && b.bullet.spell.aoe && b.bullet.name == b.bullet.spell.name) ? b.bullet.spell.aoe : 0);
+						if (show) {
+							if (b.vx || b.vy) {
+								let arrowLen = KDistEuclidean(b.vx, b.vy);
+								if (arrowLen >= 0.5) {
+									KDGameData.BulletWarnings.push({
+										x_orig: b.xx,
+										y_orig: b.yy,
+										arrowLen: arrowLen,
+										vx: b.vx,
+										vy: b.vy,
+										xx: b.xx,
+										yy: b.yy,
+										color: b.bullet.spell?.color || KDBaseRed,
+									});
+									
+								}
+							}
+						}
 						for (let xx = bx - Math.floor(rad); xx <= bx + Math.ceil(rad); xx++) {
 							for (let yy = by - Math.floor(rad); yy <= by + Math.ceil(rad); yy++) {
 								if (AOECondition(bx, by, xx, yy, rad, KDBulletAoEMod(b))) {
@@ -3414,8 +3437,13 @@ let KDWarningFlashPerDelta = 250; // ms
 let KDWarningFlashBPerDelta = 90; // ms
 let KDWarningFlashSpeed = 1.5;
 
+let KDBulletArrowWarningStart = 0.6;
+let KDBulletArrowWarningStep = 0.25;
+let KDBulletWarningAlpha = 0.05;
+let KDBulletWarningAroowAngle = 30*180/Math.PI;
 
 function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, CamX: number, CamY: number) {
+	KDBulletWarningGFX.clear();
 	let delta = CommonTime() - KDLastFightDelta;
 	KDLastFightDelta = CommonTime();
 	for (let damage of KDDamageQueue) {
@@ -3434,6 +3462,65 @@ function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, C
 
 	if (KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade)
 		for (let t of KDGameData.BulletWarnings) {
+			if (t.arrowLen) {
+				if (!KDToggles.ArrowWarnings) continue;
+				let arrowLen = t.arrowLen;
+				let vx = t.vx;
+				let vy = t.vy;
+				let visual_x = t.xx;
+				let visual_y = t.yy;
+				KDBulletWarningGFX.lineStyle({
+					width: KDBulletWarningThickness,
+					color: t.color,
+					alpha: KDBulletWarningAlpha,
+					cap: PIXI.LINE_CAP.ROUND,
+					join: PIXI.LINE_JOIN.ROUND,
+					miterLimit: KDFastPathWidth});
+				let dd = KDBulletArrowWarningStep;
+				for (let d = KDBulletArrowWarningStart; d <= arrowLen; d += dd) {
+					if (d + dd > arrowLen) {
+						let x2 = visual_x + 0.5 + (d+dd*.8) * vx / arrowLen;
+						let y2 = visual_y + 0.5 + (d+dd*.8) * vy / arrowLen;
+						let x4 = x2;
+						let y4 = y2;
+
+						let x1 = x2;
+						let y1 = y2;
+
+						let x3 = x4;
+						let y3 = y4;
+
+						// now we angle things
+						let angle = Math.atan2(vy, vx);
+						let a1 = angle + KDBulletWarningAroowAngle;
+						let a2 = angle - KDBulletWarningAroowAngle;
+						x4 += dd * 0.1 * (Math.cos(a2))
+						y4 += dd * 0.1 * (Math.sin(a2))
+						x2 += dd * 0.1 * (Math.cos(a1))
+						y2 += dd * 0.1 * (Math.sin(a1))
+						x3 += dd * 0.5 * (Math.cos(a2))
+						y3 += dd * 0.5 * (Math.sin(a2))
+						x1 += dd * 0.5 * (Math.cos(a1))
+						y1 += dd * 0.5 * (Math.sin(a1))
+
+						KDBulletWarningGFX.moveTo((x1 - CamX)*KinkyDungeonGridSizeDisplay, (y1 - CamY)*KinkyDungeonGridSizeDisplay)
+						KDBulletWarningGFX.lineTo((x2 - CamX)*KinkyDungeonGridSizeDisplay, (y2 - CamY)*KinkyDungeonGridSizeDisplay)
+
+						KDBulletWarningGFX.moveTo((x3 - CamX)*KinkyDungeonGridSizeDisplay, (y3 - CamY)*KinkyDungeonGridSizeDisplay)
+						KDBulletWarningGFX.lineTo((x4 - CamX)*KinkyDungeonGridSizeDisplay, (y4 - CamY)*KinkyDungeonGridSizeDisplay)
+					} else {
+						let x1 = visual_x + 0.5 + d * vx / arrowLen;
+						let y1 = visual_y + 0.5 + d * vy / arrowLen;
+						KDBulletWarningGFX.moveTo((x1 - CamX)*KinkyDungeonGridSizeDisplay, (y1 - CamY)*KinkyDungeonGridSizeDisplay)
+						
+						let x2 = visual_x + 0.5 + (d+dd*0.5) * vx / arrowLen;
+						let y2 = visual_y + 0.5 + (d+dd*0.5) * vy / arrowLen;
+						KDBulletWarningGFX.lineTo((x2 - CamX)*KinkyDungeonGridSizeDisplay, (y2 - CamY)*KinkyDungeonGridSizeDisplay)
+					}
+
+				}
+				continue;
+			}
 	
 			let alphamult = KDToggles.FlashingWarning ? Math.cos(
 				2 * Math.PI * ((flashindex++*KDWarningFlashBPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1;

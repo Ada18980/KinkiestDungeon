@@ -1701,6 +1701,18 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					KDItemDataSet(item, "manaDrained", alreadyDone);
 				}
 			} else {
+				if (e.restraint && KDRestraint(item).name != e.restraint) {
+					KDChangeRestraintType(item, Restraint, e.restraint);
+					if (KinkyDungeonRestraintVariants[item.name]) {
+						for (let ee of KinkyDungeonRestraintVariants[item.name].events) {
+							if (ee.type == e.type && ee.restraint == e.restraint) {
+								delete ee.restraint;
+							}
+						}
+					}
+					delete e.restraint;
+					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg")
+				}
 				KDChangeMana(item.name, "restraint", "tick", -e.power * multiplier * (e.mult || 0));
 			}
 			// else {KDChangeItemName(item, item.type, "MagicGag2");}
