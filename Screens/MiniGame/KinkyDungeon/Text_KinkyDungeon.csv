@@ -4088,7 +4088,7 @@ KinkyDungeonInventoryItemPotionCollarDesc,"An ancient device that allows direct 
 KinkyDungeonInventoryItemPotionCollarDesc2,"Also allows fitting of a leash."
 RestraintSlimeWalkers,Slime Walkers
 RestraintSlimeWalkersDesc,"A pair of heels coated in a nonstick material."
-RestraintSlimeWalkersDesc2,"They will slow you down, but you can walk on slime without getting stuck!"
+RestraintSlimeWalkersDesc2,"They will slow you down, but you can walk on slime without getting stuck! (having >45 Glue Resist also enables slime walking)"
 KinkyDungeonInventoryItemSlimeWalkers,Slime Walkers
 KinkyDungeonInventoryItemSlimeWalkersDesc,"A pair of heels coated in a nonstick material."
 KinkyDungeonInventoryItemSlimeWalkersDesc2,"They will slow you down, but you can walk on slime without getting stuck!"

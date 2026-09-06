@@ -1175,7 +1175,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				tags: ["removeNewMap", "removeDefeat"],
 				power: -2,
 				type: "RestraintBlock",
-				aura: "#ffd6676", auraSprite: "AuraSeal",
+				aura: "#ffd667", auraSprite: "AuraSeal",
 				buffSprite: true,
 			});
 		},  (tt) => {
