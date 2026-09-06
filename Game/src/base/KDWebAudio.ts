@@ -284,6 +284,10 @@ class WebAudioWrapper {
 		this.lpf = null;
 		this.hpf = null;
 		this.gain = null;
+		let wrapper = this;
+		if (KDWebAudioSFXVoices.has(wrapper)) {
+			KDWebAudioSFXVoices.delete(wrapper)
+		}
 	}
 	ended = false;
 
@@ -314,9 +318,14 @@ class WebAudioWrapper {
 				let node = new AudioBufferSourceNode(KDWebAudio, {
 					buffer: buffer
 				});
+				let wrapper = this;
 				if (this.listener) {
 					node.onended = this.listener;
-				}
+				} else node.onended = () => {
+					if (KDWebAudioSFXVoices.has(wrapper)) {
+						KDWebAudioSFXVoices.delete(wrapper)
+					}
+				};
 				resolve(node);
 			}).catch((error) => {
 				KDWebAudioSFXBuffers.delete(this.source);
