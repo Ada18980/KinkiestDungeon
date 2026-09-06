@@ -1394,7 +1394,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		undefined, undefined, undefined, undefined, undefined,
 		{
 			hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[0]),
-		})) str = "KDQuickInv";
+		}) && !KinkyDungeonShowInventory) str = "KDQuickInv";
 
 	}
 	
@@ -1508,13 +1508,15 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		);
 	}*/
 
+	let actionBar2nDOffset = 64;
+
 
 	// Crouch button
 	if (DrawButtonKDEx("toggleCrouch", (_bdata) => {
 		KDSendInput("crouch", {});
 
 		return true;
-	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - 80, actionBarWidth, actionbarHeight, "", "",
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - actionBar2nDOffset, actionBarWidth, actionbarHeight, "", "",
 	KinkyDungeonRootDirectory + (KDGameData.Crouch ? "UI/CrouchOn.png" : "UI/CrouchOff.png"),
 	undefined, undefined, !KDGameData.Crouch, KDTextGray05, undefined, false, {alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[9]),
@@ -1530,7 +1532,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 			KDSetFocusControl("");
 		}
 		return true;
-	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - 80, actionBarWidth, actionbarHeight, "", "",
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - actionBar2nDOffset, actionBarWidth, actionbarHeight, "", "",
 	KinkyDungeonRootDirectory + (KinkyDungeonToggleAutoPass ? "UI/Pass.png" : "UI/NoPass.png"),
 	undefined, undefined, !KinkyDungeonToggleAutoPass, KDTextGray05, undefined, false, {alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[1]),
@@ -1544,7 +1546,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		KinkyDungeonFastMovePath = [];
 		KDSetFocusControl("AutoPath");
 		return true;
-	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - 80, actionBarWidth, actionbarHeight,
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - actionBar2nDOffset, actionBarWidth, actionbarHeight,
 	"", "", KinkyDungeonRootDirectory + (KinkyDungeonFastMove ? "FastMove" : "FastMoveOff") + ".png",
 	undefined, undefined, !KinkyDungeonFastMove, KDTextGray05, undefined, false, {alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[4]),
@@ -1558,7 +1560,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		if (!KinkyDungeonControlsEnabled()) return false;
 		KDAutoStruggleClick();
 		return true;
-	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - 80, actionBarWidth, actionbarHeight, "", "",
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - actionBar2nDOffset, actionBarWidth, actionbarHeight, "", "",
 	KinkyDungeonRootDirectory + ("UI/AutoStruggle.png"), undefined, undefined, !KinkyDungeonAutoWaitStruggle, KDTextGray05, undefined, false,
 	{
 		alpha: 1.0,
@@ -1571,7 +1573,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		KinkyDungeonUpdateLightGrid = true; // Rerender since cam moved
 		KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 		return true;
-	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - 80, actionBarWidth, actionbarHeight,
+	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY - actionBar2nDOffset, actionBarWidth, actionbarHeight,
 	"", "", KinkyDungeonRootDirectory + (KinkyDungeonInspect ? "UI/Inspect" : "UI/Inspect") + ".png",
 	undefined, undefined, !KinkyDungeonInspect, KDTextGray05, undefined, false, {alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[5]),
@@ -1583,16 +1585,16 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	if (!KDToggles.TransparentUI) {
 		DrawRectKD(
 			kdcanvas, kdpixisprites, "actionborder", {
-				Left: actionBarXX-5, Top: actionBarYY - 5 - 80, Width: actionBarSpacing*5 + 5,
-				Height: actionbarHeight + 25 +80,
+				Left: actionBarXX-5, Top: actionBarYY - 5 - actionBar2nDOffset, Width: actionBarSpacing*5 + 5,
+				Height: actionbarHeight + 25 +actionBar2nDOffset,
 				Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -2,
 				LineWidth: 2,
 			}
 		);
 		FillRectKD(
 			kdcanvas, kdpixisprites, "actionbg", {
-				Left: actionBarXX-5, Top: actionBarYY - 5 -80, Width: actionBarSpacing*5 + 5,
-				Height: actionbarHeight + 25 +80,
+				Left: actionBarXX-5, Top: actionBarYY - 5 -actionBar2nDOffset, Width: actionBarSpacing*5 + 5,
+				Height: actionbarHeight + 25 +actionBar2nDOffset,
 				Color: KDUIColor, alpha: KDUIAlpha, zIndex: -1
 			}
 		);
