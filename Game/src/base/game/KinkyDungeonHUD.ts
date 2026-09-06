@@ -408,13 +408,13 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 		DrawButtonKDEx("mainZoomIn", () => {
 			KDChangeZoom(-1);
 			return true;
-		}, true, PIXIWidth - 210, PIXIHeight * 0.5 - 50, 42, 42, undefined, KDBaseWhite,
-		KinkyDungeonRootDirectory + "UI/ZoomIn.png");
+		}, true, PIXIWidth - 96, KDNavBarStart - 48, 42, 42, undefined, KDBaseWhite,
+		KinkyDungeonRootDirectory + "UI/ZoomIn.png", undefined, false, true);
 		DrawButtonKDEx("mainZoomOut", () => {
 			KDChangeZoom(1);
 			return true;
-		}, true, PIXIWidth - 210, PIXIHeight * 0.5 - 50 + 48, 42, 42, undefined, KDBaseWhite,
-		KinkyDungeonRootDirectory + "UI/ZoomOut.png");
+		}, true, PIXIWidth - 52, KDNavBarStart - 48, 42, 42, undefined, KDBaseWhite,
+		KinkyDungeonRootDirectory + "UI/ZoomOut.png", undefined, false, true);
 	}
 
 }
@@ -2187,22 +2187,24 @@ function KDGetItemLinkHost(inv: item): item {
 	return null;
 }
 
+let KDNavBarStart = 452; // was 432
+
 /**
  * @param skip - Skips the button being drawn in this instance
  */
 function KDDrawNavBar(skip: number, _quit: boolean = false) {
-	let by = 432;
-	let bwidth = 140;
+	let by = KDNavBarStart;
+	let bheight = 55;
+	let bwidth = KinkyDungeonDrawState == "Game" ? bheight : 140;
 	let bx = 2000 - 10 - bwidth;
 	let bspacing = 5;
 	let bindex = 0;
-	let bheight = 55;
 
 	let bInc = () => {
 		by += bheight + bspacing;
 	};
 
-
+	let NoButtonText = KinkyDungeonDrawState == "Game";
 
 	{let bb = bindex;
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goQuit", (_bdata) => {
@@ -2233,7 +2235,8 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		return true;
-	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KDNavQuit"), KDBaseWhite,
+	}, true, bx, by, bwidth, bheight, 
+	NoButtonText ? "" : TextGet((skip == bindex) ? "KDNavGame" : "KDNavQuit"), KDBaseWhite,
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_menu.png"), undefined, undefined, false, "", 24, true,
 	{
 		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[4]),
@@ -2249,7 +2252,8 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		return true;
-	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonInventory"), KDBaseWhite,
+	}, true, bx, by, bwidth, bheight, 
+	NoButtonText ? "" : TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonInventory"), KDBaseWhite,
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_inventory.png"), undefined, undefined, false, "", 24, true,
 	{
 		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[1]),
@@ -2266,7 +2270,8 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		return true;
-	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonMagic"), KDBaseWhite,
+	}, true, bx, by, bwidth, bheight, 
+	NoButtonText ? "" : TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonMagic"), KDBaseWhite,
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_spells.png"), undefined, undefined, false, "", 24, true,
 	{
 		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[2]),
@@ -2288,7 +2293,8 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		return true;
-	}, true, bx, by, bwidth, bheight, logtxt, KDBaseWhite,
+	}, true, bx, by, bwidth, bheight, 
+	NoButtonText ? "" : logtxt, KDBaseWhite,
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_logbook.png"), undefined, undefined, false, "", 24, true, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[3]),
 	}); bindex++; bInc();}
@@ -2305,7 +2311,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 			KinkyDungeonDressPlayer();
 			return true;
 		}, true, bx, by, bwidth, bheight, 
-		TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonCollection"), KDBaseWhite,
+		NoButtonText ? "" : (TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonCollection")), KDBaseWhite,
 		KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_collection.png"), 
 		undefined, undefined, false, "", 24, true,
 		{
