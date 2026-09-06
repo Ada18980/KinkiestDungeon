@@ -1,6 +1,8 @@
 
 let kdSoundCache: Map<string, HTMLAudioElement> = new Map();
 
+let KDPanningFactor = .15;
+
 
 const KDWebAudioSFXBuffers: Map<string, Promise<AudioBuffer>> = new Map();
 const KDWebAudioSFXVoices: Set<WebAudioWrapper> = new Set();
@@ -110,8 +112,8 @@ class WebAudioWrapper {
             // creates and adds a panner node
             let panner = new PannerNode(KDWebAudio, {
                 panningModel: "HRTF",
-                positionX: Math.max(-1, Math.min(1, this.point.x * 0.2)),
-                positionY: Math.max(-1, Math.min(1, this.point.y * 0.2)),
+                positionX: Math.max(-1, Math.min(1, this.point.x * KDPanningFactor)),
+                positionY: Math.max(-1, Math.min(1, this.point.y * KDPanningFactor)),
                 rolloffFactor: this.rolloff,
             });
             if (this.nodes) {
