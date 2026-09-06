@@ -404,18 +404,7 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 	KDDrawSpellChoices();
 	KDDrawNavBar(-1);
 
-	if (KDToggles.ShowZoom) {
-		DrawButtonKDEx("mainZoomIn", () => {
-			KDChangeZoom(-1);
-			return true;
-		}, true, PIXIWidth - 96, KDNavBarStart - 48, 42, 42, undefined, KDBaseWhite,
-		KinkyDungeonRootDirectory + "UI/ZoomIn.png", undefined, false, true);
-		DrawButtonKDEx("mainZoomOut", () => {
-			KDChangeZoom(1);
-			return true;
-		}, true, PIXIWidth - 52, KDNavBarStart - 48, 42, 42, undefined, KDBaseWhite,
-		KinkyDungeonRootDirectory + "UI/ZoomOut.png", undefined, false, true);
-	}
+	
 
 }
 
@@ -1671,7 +1660,8 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		}
 		return true;
 	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, actionbarHeight, "", "",
-	KinkyDungeonRootDirectory + (KDGameData.KinkyDungeonLeashedPlayer ? "UI/WaitJail.png" : "UI/Wait.png"), undefined, undefined, !KinkyDungeonAutoWait, KDTextGray05,
+	KinkyDungeonRootDirectory + (KDGameData.KinkyDungeonLeashedPlayer ? "UI/WaitJail.png" : "UI/Wait.png"), undefined,
+	 undefined, !KinkyDungeonAutoWait, KDTextGray05,
 	undefined, false, {
 		alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[6]),
@@ -1688,10 +1678,13 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
         KDSendInput("noise", {});
         return true;
     }, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, actionbarHeight, "", "#aaaaaa",
-    KinkyDungeonRootDirectory + ("UI/Help.png"), undefined, undefined, true, KDTextGray05, undefined, false, {
-        spritealpha: Math.max(0.1, Math.min(1, ((KDCanCallGuardHelp(KDPlayer())) && (KDAnimSpeed))
-			? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
-			: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)),
+    KinkyDungeonRootDirectory + ("UI/Help.png"), undefined, undefined, true, 
+	KDTextGray05, undefined, false, {
+		alpha: 1.0,
+        spritealpha: Math.max(0.1, Math.min(1, 
+			((KDCanCallGuardHelp(KDPlayer())) && (KDAnimSpeed))
+				? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+				: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)),
         hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[7]),
         hotkeyPress: KinkyDungeonKeyToggle[7],
     })) str = "KDHelp";
@@ -1732,7 +1725,8 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 
 	actionBarII = 0;
 	if (str) {
-		DrawTextFitKD(TextGet(str), Math.min(1700, Math.max(700, MouseX)), 750, 250, KDBaseWhite, undefined, 18);
+		DrawTextFitKD(TextGet(str), Math.min(1700, Math.max(700, MouseX)), 
+		PIXIHeight - 300, 250, KDBaseWhite, undefined, 18);
 	}
 
 	//}
@@ -2498,9 +2492,28 @@ let KDMMLabels_Chest = true;
 let KDMMLabels_Shrine = true;
 let KDMMLabels_Other = true;
 
-function KDDrawMinimap(MinimapX: number, MinimapY: number) {
+function KDDrawMinimap(MinimapX: number, MinimapY: number, ZoomIcons: boolean = true) {
+	let zIndex = (KDExpandMinimap || MouseIn(MinimapX, MinimapY, KDMinimapWidth()+21, KDMinimapHeight()+21)) ? 150 : 90;
+		
+	if (ZoomIcons && KDToggles.ShowZoom && !KDExpandMinimap && !KinkyDungeonMessageToggle) {
+		DrawButtonKDEx("mainZoomIn", () => {
+			KDChangeZoom(-1);
+			return true;
+		}, true, MinimapX - 50, 
+		MinimapY, 42, 42, undefined, KDBaseWhite,
+		KinkyDungeonRootDirectory + "UI/ZoomIn.png", undefined, false, true, undefined, undefined, undefined, {
+			zIndex: zIndex - 1,
+		});
+		DrawButtonKDEx("mainZoomOut", () => {
+			KDChangeZoom(1);
+			return true;
+		}, true, MinimapX - 50, 
+		MinimapY + 48, 42, 42, undefined, KDBaseWhite,
+		KinkyDungeonRootDirectory + "UI/ZoomOut.png", undefined, false, true, undefined, undefined, undefined, {
+			zIndex: zIndex - 1,
+		});
+	}
 	if (kdminimap.visible) {
-		let zIndex = (KDExpandMinimap || MouseIn(MinimapX, MinimapY, KDMinimapWidth()+21, KDMinimapHeight()+21)) ? 150 : 90;
 		if (KDExpandMinimap) {
 			KDDrawMMButtons(MinimapX, MinimapY, zIndex);
 			KDDrawRightMMButtons(MinimapX, MinimapY, zIndex, KDMinimapWidth()+21);
@@ -3336,7 +3349,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 				Top: (side ? YY : tooltipY) - 25,
 				Width: size + 20,
 				Height: 48,
-				Color: "#111111",
+				Color: "#0b0b0b",
 				zIndex: 159,
 				alpha: 0.92,
 			});

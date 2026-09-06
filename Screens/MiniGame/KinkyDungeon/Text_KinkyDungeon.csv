@@ -1005,7 +1005,7 @@ KinkyDungeonTryOrgasm,"Let go..."
 KDLetGo,"Let go..."
 KDPlay,"Play with yourself"
 KDSleep,"Go to sleep"
-KDHelp,"Call for Help!!!"
+KDHelp,"Call for Help!"
 KDWait,"Wait until interrupted"
 KDAutoStruggle,"Auto-struggle"
 KDAutoPath,"Auto-path"
@@ -29585,7 +29585,7 @@ KDColorHSL,HSL
 KDColorRGB,RGB
 
 
-
+KDLogFilterExpand,Expand Log to view Filters
 KDHideRest,Toggle Struggle UI Mode
 KDSetPose,Change Character Pose
 KDBulletTransparency,Toggle UI Transparency
@@ -29595,6 +29595,7 @@ KDToggleAutoSprint,Auto-Sprint when Slowed
 KDToggleSkipTutorial,Skip Tutorial
 KDToggleModCompat,Mod Compat Mode (requires reload)
 KDToggleFlashingWarning,Flashing Warning Tiles
+KDToggleCenteredLog,Centered Message Log
 
 rTutorial,"Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?"
 dTutorial_LeaveAndDisable,(Leave and Disable Tutorial)

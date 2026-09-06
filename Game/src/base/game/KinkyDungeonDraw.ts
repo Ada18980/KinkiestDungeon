@@ -2793,7 +2793,7 @@ let KDLogIndexInc = 3;
 
 let KDMsgWidth = 800;
 let KDMsgWidthMin = 800;
-let KDMsgX = 720;
+let KDMsgX = 620; // 720
 let KDMsgFadeTime = 10;
 
 let KDMaxConsoleMsg = 6;
@@ -2835,10 +2835,16 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 		let spacing = 51;
 		let size = 48;
 		let filterCols = 2;
+		let filterX = KDMsgWidthMin + KDMsgX + shiftx + 70 + 60;
 		let yyy = KDLogFilters.length * spacing/filterCols + 30;
-		if (!KinkyDungeonTargetingSpell
-			&& MouseIn(KDMsgWidthMin + KDMsgX + shiftx + 70, heightBonus + 0, 300, yyy) && !KDModalArea) {
-			let filterX = KDMsgWidthMin + KDMsgX + shiftx + 70 + 60;
+		if (MouseIn(KDMsgWidthMin + KDMsgX + shiftx + 70, heightBonus + 0, 300, yyy)
+			&& !KinkyDungeonTargetingSpell && !KDModalArea
+			&& !KDExpandMinimap && !KinkyDungeonMessageToggle) {
+			DrawTextFitKD(TextGet("KDLogFilterExpand"), 
+						filterX, 20, 300, 
+						KDBaseWhite, KDTextGray1, 16, "left");
+		}
+		if (KinkyDungeonMessageToggle) {
 			let filterY = heightBonus + 4;
 			let ii = 0;
 			for (let filter of KDLogFilters) {
@@ -2855,7 +2861,8 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 						//hotkeyPress: KinkyDungeonKeyToggle[0],
 						scaleImage: true,
 					})) {
-					DrawTextFitKD(TextGet("KDLogFilter" + filter), filterX + spacing * (ii%filterCols), yyy, 300, KDBaseWhite, KDTextGray1, 14, "right");
+					DrawTextFitKD(TextGet("KDLogFilter" + filter), 
+					filterX, yyy, 300, KDBaseWhite, KDTextGray1, 14, "left");
 				}
 				ii++;
 			}
@@ -2870,12 +2877,18 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 			let ignoreMSG = [];
 			let spacing = KDLogDist;
 			if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + shiftx + KDMsgWidth/2, heightBonus + 15 + spacing * i, width, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
+				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + shiftx + (KDToggles.CenteredLog ? KDMsgWidth/2 : 0), 
+					heightBonus + 15 + spacing * i, 
+					width, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, 
+					KDToggles.CenteredLog ? "center" : "left", zLevel);
 				ignoreMSG.push(KinkyDungeonActionMessage);
 				i++;
 			}
 			if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
-				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + shiftx + KDMsgWidth/2, heightBonus + 15 + spacing * i, width, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, undefined, zLevel);
+				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + shiftx + (KDToggles.CenteredLog ? KDMsgWidth/2 : 0), 
+				heightBonus + 15 + spacing * i, 
+					width, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, 
+					KDToggles.CenteredLog ? "center" : "left", zLevel);
 				ignoreMSG.push(KinkyDungeonTextMessage);
 				i++;
 			}
@@ -2915,7 +2928,15 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 							continue;
 						}
 						alpha = Math.max(0, Math.min(1, 2.0 - i / (KDMaxConsoleMsg - subLines))) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
-						DrawTextFitKD(msg.text, KDMsgX + shiftx + KDMsgWidth/2, heightBonus + 15 + spacing * i, width, msg.color, KDTextGray1, KDMSGFontSize, undefined, zLevel, alphamin + (1 - alphamin) * alpha);
+						DrawTextFitKD(msg.text, KDMsgX + shiftx + (KDToggles.CenteredLog ? KDMsgWidth/2 : 0), 
+						heightBonus + 15 + spacing * i, 
+							width, msg.color, KDTextGray1, KDMSGFontSize, 
+							KDToggles.CenteredLog ? "center" : "left", zLevel, alphamin + (1 - alphamin) * alpha);
+						if (msg.time && (msg.time - KinkyDungeonCurrentTick < 0))
+							DrawTextFitKD("(" + (msg.time - KinkyDungeonCurrentTick) + ")", KDMsgX + shiftx + KDMsgWidth, 
+								heightBonus + 15 + spacing * i, 
+								width, KDTextGray3, KDBaseBlack, KDMSGFontSize - 4, 
+								"right", zLevel, alphamin + (1 - alphamin) * alpha);
 						i++;
 					}
 				}
@@ -2959,7 +2980,17 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 			}
 
 			let col = log.color;
-			DrawTextFitKD(log.text, KDMsgX + shiftx + KDMsgWidth/2, heightBonus + KDLogTopPad + ii * KDLogDist + KDLogDist/2, KDMsgWidth, col, KDTextGray1, KDMSGFontSize, undefined, 101);
+			DrawTextFitKD(log.text, KDMsgX + shiftx + (KDToggles.CenteredLog ? KDMsgWidth/2 : 0), 
+				heightBonus + KDLogTopPad + ii * KDLogDist + KDLogDist/2, 
+				KDMsgWidth, col, KDTextGray1, KDMSGFontSize, 
+				KDToggles.CenteredLog ? "center" : "left", 101);
+				
+			if (log.time && (log.time - KinkyDungeonCurrentTick < 0))
+				DrawTextFitKD("(" + (log.time - KinkyDungeonCurrentTick) + ")", 
+				KDMsgX + shiftx + KDMsgWidth, 
+					heightBonus + KDLogTopPad + ii * KDLogDist + KDLogDist/2, 
+					KDMsgWidth, KDTextGray3, KDBaseBlack, KDMSGFontSize - 4, 
+					"right", 101);
 			ii++;
 		}
 		if (KinkyDungeonMessageLog.length > KDMaxLog) {

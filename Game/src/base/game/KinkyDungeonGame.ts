@@ -2652,9 +2652,17 @@ function KinkyDungeonSendTextMessage(priority: number, text: string, color: stri
 	if (entity && KinkyDungeonVisionGet(entity.x, entity.y) < 1) return false;
 	if (text) {
 		if (!noPush)
-			if (!noDupe || KinkyDungeonMessageLog.length == 0 || !KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1] || text != KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text) {
+			if (!noDupe
+				|| KinkyDungeonMessageLog.length == 0
+				|| !KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1]
+				|| text != KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text) {
 				if (KDLogIndex > 0) KDLogIndex += 1;
 				KinkyDungeonMessageLog.push({text: text, color: color, time: KinkyDungeonCurrentTick, filter: filter});
+			} else if (
+				KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1]
+				&& text == KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text
+			) {
+				KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].time = KinkyDungeonCurrentTick;
 			}
 
 		if ( priority >= KinkyDungeonTextMessagePriority || KinkyDungeonActionMessageTime < 0.5) {
@@ -2674,9 +2682,17 @@ function KinkyDungeonSendActionMessage(priority: number, text: string, color: st
 	if (entity && KinkyDungeonVisionGet(entity.x, entity.y) < 1) return false;
 	if (text) {
 		if (!noPush)
-			if (!noDupe || KinkyDungeonMessageLog.length == 0 || !KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1] || text != KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text){
+			if (!noDupe
+				|| KinkyDungeonMessageLog.length == 0
+				|| !KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1]
+				|| text != KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text){
 				if (KDLogIndex > 0) KDLogIndex += 1;
 				KinkyDungeonMessageLog.push({text: text, color: color, time: KinkyDungeonCurrentTick, filter: filter, antifilter: antifilter});
+			} else if (
+				KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1]
+				&& text == KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].text
+			) {
+				KinkyDungeonMessageLog[KinkyDungeonMessageLog.length-1].time = KinkyDungeonCurrentTick;
 			}
 		if ( priority >= KinkyDungeonActionMessagePriority || KinkyDungeonActionMessageTime < 0.5) {
 			KinkyDungeonActionMessageTime = time;
