@@ -7664,7 +7664,7 @@ function sfc32(a: number, b: number, c: number, d: number) {
 
 
 
-function AudioPlayInstantSoundKD(Path: string, volume?: number, location?: KDPoint) {
+function AudioPlayInstantSoundKD(Path: string, volume?: number, location?: KDPoint, reverbMult?: number, reverbDamp?: number) {
 	if (!KDSoundEnabled()) return false;
 	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : 1);
 	if (vol > 0) {
@@ -7687,6 +7687,9 @@ function AudioPlayInstantSoundKD(Path: string, volume?: number, location?: KDPoi
 			audio.location = location;
 		}
 		audio.volume = Math.min(vol, 1);
+		// Note: reverb ALWAYS last
+		if (reverbMult) audio.reverbMult = reverbMult;
+		if (reverbDamp) audio.reverbDamp = reverbDamp;
 		audio.play();
 		
 	}

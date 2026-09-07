@@ -92,6 +92,7 @@ let KDToggles = {
 	VibeSounds: true,
 	Music: true,
 	Sound: true,
+	Reverb: true,
 	//HighResDisplacement: false,
 	MobileTextures: CommonIsMobile,
 	//OptRender: false,//!CommonIsMobile, // experimental, for now

@@ -769,7 +769,7 @@ function KinkyDungeonMakeNoise(radius: number, noiseX: number, noiseY: number, h
 	KinkyDungeonSendEvent("afterNoise", data);
 	if (!data.nosound && KDToggles.SoundNotification) {
 		if (KDSoundEnabled()) KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/SoundShockwave.ogg", KDPlayer(), 
-		data,  Math.min(data.radius * 0.09 + 0.1, 1));
+		data,  Math.min(data.radius * 0.09 + 0.1, 1), false);
 	}
 	return data.enemiesHeard;
 }

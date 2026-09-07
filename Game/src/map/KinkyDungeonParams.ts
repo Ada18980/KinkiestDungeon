@@ -602,6 +602,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		successorPositive: {
 			jngWild: 1,
 		},
+		reverbMult: 0.2,
 		successorSame: {
 			jng: 1,
 		},
@@ -2304,6 +2305,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 	},
 
 	"cst":{// Coast
+		reverbMult: 0.1,
 		curseTags: ["trap", "latexRestraints", "latexRestraintsHeavy"],
 		worldGenCode: () => {
 			for (let X = 1; X < KDMapData.GridWidth - 1; X++) {

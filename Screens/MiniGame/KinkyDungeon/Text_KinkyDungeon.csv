@@ -8235,7 +8235,9 @@ KinkyDungeonDeny9,"The toys stop just before you lose yourself."
 KinkyDungeonDeny10,"The toys deny you a chance to finish."
 
 KinkyDungeonChastityDeny,"You try to pleasure yourself, but your chastity belt prevents you!"
+KinkyDungeonChastityDenyCorner,"You rub your belt against the corner to no avail."
 KinkyDungeonPlaySelf,"You play with yourself..."
+KinkyDungeonPlaySelfCorner,"You play with yourself, rubbing yourself on the corner..."
 KinkyDungeonPlaySelfAutomatic,"You let your hands wander for a moment..."
 KinkyDungeonPlaySelfAutomaticBound,"You squirm your hips and whimper in your bindings..."
 KinkyDungeonPlaySelfAutomaticPurity,"Your instincts are getting the better of you..."
@@ -8244,6 +8246,9 @@ KinkyDungeonOrgasmAutomatic,"You are unable to control yourself."
 KinkyDungeonPlaySelfVibeWand,"You play with yourself using the magic wand..."
 KinkyDungeonPlaySelfPurity,"You would never do such a thing."
 KinkyDungeonPlaySelfBound,"You try to rub your erogenous zones by squirming your legs..."
+KinkyDungeonPlaySelfBoundCorner,"You grind against the corner trying to pleasure yourself..."
+KinkyDungeonPlaySelfBoundChastityCorner,"You grind your belt against the corner, accomplishing very little..."
+KinkyDungeonPlaySelfBoundChastity,"You grind your belt against the corner in an effort to pleasure yourself..."
 KinkyDungeonOrgasmExhaustion0,"Your will is draining as you crave release, but can't quite get there without help..."
 KinkyDungeonOrgasmExhaustion1,"Your will is draining as your heart beats faster and your body trembles..."
 KinkyDungeonOrgasmExhaustion2,"Your will is draining as you simmer just under the edge..."
@@ -29596,6 +29601,7 @@ KDToggleSkipTutorial,Skip Tutorial
 KDToggleModCompat,Mod Compat Mode (requires reload)
 KDToggleFlashingWarning,Flashing Warning Tiles
 KDToggleCenteredLog,Centered Message Log
+KDToggleReverb,Reverb Sound Effects
 
 rTutorial,"Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?"
 dTutorial_LeaveAndDisable,(Leave and Disable Tutorial)

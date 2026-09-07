@@ -9721,7 +9721,7 @@ function KDEnemyAddSound(enemy: entity, amount: number, novisual: boolean = fals
 				
 				if (!data.nosound && KDToggles.SoundNotification) {
 					if (KDSoundEnabled()) KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "Audio/SoundShockwave.ogg", KDPlayer(), 
-					enemy,  Math.min(vol * 0.04 + 0.05, 1));
+					enemy,  Math.min(vol * 0.04 + 0.05, 1), false);
 				}
 
 			}

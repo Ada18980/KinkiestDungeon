@@ -77,6 +77,13 @@ class WebAudioWrapper {
     public panner: PannerNode = null;
     public lpf: BiquadFilterNode = null;
     public hpf: BiquadFilterNode = null;
+    public reverbgain: GainNode = null;
+    public reverbfilter: BiquadFilterNode = null;
+	
+	
+	public reverbMult = 0;
+	public reverbDamp = 0;
+
     public gain: GainNode = null;
 	public paused: boolean = false;
 	private startTime = 0;
@@ -95,6 +102,9 @@ class WebAudioWrapper {
                 node.connect(last);
                 last = node;
             }
+			if (this.reverbgain && this.node) {
+				this.node.then((node) => node.connect(this.reverbgain));
+			}
 			if (this.node)
             	this.node.then((node) => node.connect(last));
         }
@@ -285,6 +295,8 @@ class WebAudioWrapper {
 		this.panner = null;
 		this.lpf = null;
 		this.hpf = null;
+		this.reverbgain = null;
+		this.reverbfilter = null;
 		this.gain = null;
 		let wrapper = this;
 		if (KDWebAudioSFXVoices.has(wrapper)) {
@@ -328,7 +340,34 @@ class WebAudioWrapper {
 						KDWebAudioSFXVoices.delete(wrapper)
 					}
 				};
-				resolve(node);
+
+				if (this.reverbMult) {
+					if (this.reverbgain) {
+						this.reverbgain.disconnect();
+					}
+
+					// creates and adds a panner node
+					KDCreateReverb(KDWebAudio, this.reverbMult, this.reverbDamp).then(
+						(filter) => {
+							let reverbgain = new GainNode(KDWebAudio, {
+								gain: this.reverbMult * this.vol
+							})
+							this.reverbgain = reverbgain;
+							let reverbfilter = new BiquadFilterNode(KDWebAudio, {
+								frequency: this.reverbMult < 0 ? Math.max(50, 500 - 400 * -this.reverbMult)
+									: Math.min(5000, 500 + 2000 * this.reverbMult),
+								type: this.reverbMult < 0 ? "lowpass" : "highpass",
+								gain: 0,
+								Q: 10,
+							})
+							this.reverbfilter = reverbfilter;
+							reverbfilter.connect(reverbgain);
+							reverbgain.connect(filter);
+							node.connect(reverbgain);
+							resolve(node);
+						}
+					);
+				} else resolve(node);
 			}).catch((error) => {
 				KDWebAudioSFXBuffers.delete(this.source);
 				if (!KDWebAudioSFXErrors.has(this.source)) {
@@ -344,4 +383,22 @@ class WebAudioWrapper {
 
 	constructor() {
 	}
+}
+
+let KDGlobalConvolveNode = null;
+
+let KDImpulseReverb = "Large Wide Echo Hall";
+async function KDCreateReverb(context: AudioContext, mult: number, damp: number) {
+	if (KDGlobalConvolveNode) return KDGlobalConvolveNode;
+	let convolver = context.createConvolver();
+
+	// load impulse response from file
+	let response = await fetch(KinkyDungeonRootDirectory + "Audio/Impulse/"+ KDImpulseReverb + ".wav");
+	let arraybuffer = await response.arrayBuffer();
+	convolver.buffer = await context.decodeAudioData(arraybuffer);
+
+	KDGlobalConvolveNode = convolver;
+	KDGlobalConvolveNode.connect(context.destination);
+
+	return KDGlobalConvolveNode;
 }

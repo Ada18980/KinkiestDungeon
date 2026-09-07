@@ -673,6 +673,10 @@ type outfitKey = string
 type mapKey = string
 
 interface floorParams {
+	/* Open areas don't do reverb, due to squishy */
+	reverbMult?: number,
+	/* For wooden areas make this higher */
+	reverbDamp?: number,
 	/** Weighted list of successor tileset, positive X */
 	successorPositive: Record<string, number>;
 	/** Weighted list of successor tileset, negative X */

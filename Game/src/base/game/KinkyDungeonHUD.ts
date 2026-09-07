@@ -2183,7 +2183,7 @@ function KDGetItemLinkHost(inv: item): item {
 	return null;
 }
 
-let KDNavBarStart = 452; // was 432
+let KDNavBarStart = 432; // was 432
 
 /**
  * @param skip - Skips the button being drawn in this instance

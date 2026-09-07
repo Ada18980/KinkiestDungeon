@@ -2264,13 +2264,14 @@ function KinkyDungeonDoPlayWithSelf(tease?: number): number {
 	if (data.playMsg) {
 		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfMsg) {
 			KinkyDungeonSendActionMessage(10, TextGet(KinkyDungeonPlayerDamage.playSelfMsg), "#FF5BE9", 4);
-		} else if (KinkyDungeonIsArmsBound()) {
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPlaySelfBound"), "#FF5BE9", 4);
 		} else if (KinkyDungeonChastityMult() > 0.9) {
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChastityDeny"), "#FF5BE9", 4);
-		} else KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPlaySelf"), "#FF5BE9", 4);
-		if (affinity)
-			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonPlayCorner"), "#9bd45d", 4);
+			 if (KinkyDungeonIsArmsBound()) {
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPlaySelfBoundChastity" + (affinity ? "Corner" : "")), "#FF5BE9", 4);
+			}
+			else KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChastityDeny" + (affinity ? "Corner" : "")), "#FF5BE9", 4);
+		} else if (KinkyDungeonIsArmsBound()) {
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPlaySelfBound" + (affinity ? "Corner" : "")), "#FF5BE9", 4);
+		} else  KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPlaySelf" + (affinity ? "Corner" : "")), "#FF5BE9", 4);
 	}
 	KDGameData.PlaySelfTurns = data.playTime;
 	KinkyDungeonSetFlag("PlayWithSelf", KDGameData.PlaySelfTurns + 3);

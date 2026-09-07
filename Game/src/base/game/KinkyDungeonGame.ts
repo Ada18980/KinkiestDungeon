@@ -409,10 +409,10 @@ function KinkyDungeonPlaySound_SingleFrame(src: string, entity?: entity, vol?: n
 	}
 }
 
-function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number) {
+function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number, reverb: boolean = true) {
 	if (KinkyDungeonSFX.has(src)) return;
 	if (entity) {
-		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol);
+		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol, reverb);
 
 		KinkyDungeonSFX.add(src);
 		return;
@@ -423,7 +423,11 @@ function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number) {
 		KinkyDungeonSFX.add(src);
 	}
 }
-function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPoint, vol?: number) {
+
+let KDBaseReverbPerTile = 0.01;
+let KDBaseReverbDampPerTile = -0.0025;
+let KDReverbDist = 10;
+function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPoint, vol?: number, reverb: boolean = true) {
 	if (KinkyDungeonSFX.has(src)) return;
 	if (KDSoundEnabled()) {
 		if (!vol) vol = 1;
@@ -437,10 +441,46 @@ function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPo
 			}
 		}
 		if (vol > 0) {
+			let reverbMult = 0;
+			let reverbDamp = 0;
+			if (reverb && point && KDToggles.Reverb) {
+				
+				let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+				let drawFloor = altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
+				
+				reverbMult = KDGetPropagationFunc(point, KDReverbDist, 
+					(tile: KDTile, previous: number, first: boolean, age: number) => {
+						let tileType = KinkyDungeonMapGet(tile.x, tile.y);
+						let val = (first || KinkyDungeonOpenObjects.includes(tileType))
+							? KDBaseReverbPerTile : 0;
+						if (val) {
+							let skin = KDGetSkin(tile.x, tile.y, drawFloor)
+							if (skin.reverbMult) val *= skin.reverbMult;
+						}
+						return {added: val * age/KDReverbDist, mult: val ? (KinkyDungeonMovableTilesEnemy.includes(tileType) ? 1 : 0.5) : 0};
+				});
+
+				reverbMult *= reverbMult;
+				reverbMult = Math.max(reverbMult - 0.33, 0);
+
+				reverbDamp = KDGetPropagationFunc(point, KDReverbDist, 
+					(tile: KDTile, previous: number, first: boolean, age: number) => {
+					let tileType = KinkyDungeonMapGet(tile.x, tile.y);
+					let val = (first || KinkyDungeonOpenObjects.includes(tileType))
+						? (((first || KinkyDungeonMovableTilesEnemy.includes(tileType)) ? 0.25: 2 ) * KDBaseReverbDampPerTile) : 0;
+					if (val) {
+						let skin = KDGetSkin(tile.x, tile.y, drawFloor)
+						if (skin.reverbDamp) val *= skin.reverbDamp;
+					}
+					return {added: val * age/KDReverbDist, mult: val ? (KinkyDungeonMovableTilesEnemy.includes(tileType) ? 1 : 0.5) : 0};
+				});
+				console.log(reverbDamp)
+
+			}
 			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
 			AudioPlayInstantSoundKD(src, vol, point ? {
 				x: point.x - player.x, y: point.y - player.y
-			} : undefined);
+			} : undefined, Math.min(reverbMult, 1), reverbDamp);
 			KinkyDungeonSFX.add(src);
 		}
 	}
@@ -3181,11 +3221,11 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 								moved = true;
 								if (KDSoundEnabled()) {
 									if (quick) {
-										KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
+										KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg", KDPlayer());
 									} else {
 										if (moveObject == 'w' || moveObject == 'W')
-											KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/FootstepWater.ogg");
-										else KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Footstep.ogg");
+											KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/FootstepWater.ogg", KDPlayer());
+										else KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Footstep.ogg", KDPlayer());
 									}
 
 								}
@@ -4886,3 +4926,58 @@ function KDDoMumble(player: entity, cancel: boolean) {
 	
 }
 
+
+
+function KDGetSkin(x: number, y: number, defaultFloor?: string): floorParams {
+	if (!defaultFloor) {
+		let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+		defaultFloor = altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
+	}
+	let skin: floorParams = (KDMapData.TilesSkin && KDMapData.TilesSkin[x + ',' + y])
+		? KinkyDungeonMapParams[
+			KinkyDungeonMapIndex[KDMapData.TilesSkin[x + ',' + y].skin]
+			|| KDMapData.TilesSkin[x + ',' + y].skin
+			] || KinkyDungeonMapParams[KinkyDungeonMapIndex[defaultFloor] || defaultFloor]
+		: KinkyDungeonMapParams[KinkyDungeonMapIndex[defaultFloor] || defaultFloor];
+		return skin;
+}
+
+function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDTile, previous: number, first: boolean, age: number) => {added: number, mult: number}): number {
+	let checkTiles = [{point: point, mult: 1}];
+	let checkedTiles: Record<string, number> = {};
+	let checkedTilesAge: Record<string, number> = {};
+	let accumulated = 0;
+
+	let first = true;
+
+	while (checkTiles.length > 0) {
+		let tile = checkTiles[0].point;
+		let age = checkedTilesAge[tile.x + ',' + tile.y] || 0;
+		let values = callback(tile, checkedTiles[tile.x + ',' + tile.y] || checkTiles[0].mult, first, age);
+		first = false;
+		
+		if (values.mult > 0) {
+			// spread
+			if (age <= dist)
+				age += 1
+				for (let tt of KDNearbyMapTiles(tile.x, tile.y, 1.5)) {
+					if ((checkedTiles[tt.x + ',' + tt.y] == undefined || checkedTiles[tt.x + ',' + tt.y] < values.mult)
+						&& (checkedTilesAge[tt.x + ',' + tt.y] || dist) > age
+					) {
+						if (checkedTiles[tt.x + ',' + tt.y] == undefined) checkTiles.push({
+							point: tt,
+							mult: values.mult
+						});
+						checkedTiles[tt.x + ',' + tt.y] = values.mult;
+						if (age < dist)
+							checkedTilesAge[tt.x + ',' + tt.y] = age;
+					}
+				}
+			accumulated += values.added * values.mult; // bigger dist counts more
+		}
+
+		checkTiles.splice(0, 1);
+	}
+
+	return accumulated;
+}

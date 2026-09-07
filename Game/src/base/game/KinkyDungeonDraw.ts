@@ -2793,7 +2793,7 @@ let KDLogIndexInc = 3;
 
 let KDMsgWidth = 800;
 let KDMsgWidthMin = 800;
-let KDMsgX = 620; // 720
+let KDMsgX = 640; // 720
 let KDMsgFadeTime = 10;
 
 let KDMaxConsoleMsg = 6;
@@ -2946,9 +2946,9 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 		if (!noBG)
 			if (i > 0)
 				FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
-					Left: KDMsgX + shiftx + (KDMsgWidth - KDMsgWidthMin)/2,
+					Left: KDMsgX + shiftx + (KDMsgWidth - KDMsgWidthMin)/2 - 4,
 					Top: heightBonus + 0,
-					Width: KDMsgWidthMin,
+					Width: KDMsgWidthMin + 4,
 					Height: 22 + KDLogDist*(i),
 					Color: KDBaseBlack,
 					LineWidth: 1,
@@ -2960,9 +2960,9 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 	} else {
 		if (!noBG)
 			FillRectKD(kdcanvas, kdpixisprites, "msglogbg", {
-				Left: KDMsgX + shiftx,
+				Left: KDMsgX + shiftx - 4,
 				Top: heightBonus + 0,
-				Width: KDMsgWidth,
+				Width: KDMsgWidth + 4,
 				Height: KDLogTopPad + KDLogHeight,
 				Color: KDTextGray0,
 				LineWidth: 1,
