@@ -226,6 +226,18 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KinkyDungeonRemindJailChaseMushyCommandDefend
 # :: KinkyDungeonRemindJailChaseMushyCommandBlock
 # :: KinkyDungeonRemindJailChaseApprenticeDefendHonor2
+# :: KinkyDungeonCurseUnlockOrgasmResist
+# :: KinkyDungeonCurseUnlockOrgasmForced
+# :: KDEscapeMinimap_Pass_None
+# :: KinkyDungeonStat
+# :: KinkyDungeonStatDesc
+# :: KinkyDungeonStat
+# :: KinkyDungeonStatDesc
+# :: ResistType
+# :: AREA7-LOSTTEMPLE-AMBIENT.ogg
+# :: KDHardMode0
+# :: KDMinimapLabel_+
+# :: KDMinimapLabel_=
 # :: KDDialogue_CuddleStart_
 # :: KDDialogue_CuddleStart_Gagged
 # :: KDDialogue_CuddleStart_Robot
@@ -255,18 +267,6 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDDialogue_ToyPlayRunAway_Dom
 # :: KDDialogue_ToyPlayRunAway_Brat
 # :: KDDialogue_ToyPlayRunAway_Sub
-# :: KinkyDungeonCurseUnlockOrgasmResist
-# :: KinkyDungeonCurseUnlockOrgasmForced
-# :: KDEscapeMinimap_Pass_None
-# :: KinkyDungeonStat
-# :: KinkyDungeonStatDesc
-# :: KinkyDungeonStat
-# :: KinkyDungeonStatDesc
-# :: ResistType
-# :: AREA7-LOSTTEMPLE-AMBIENT.ogg
-# :: KDHardMode0
-# :: KDMinimapLabel_+
-# :: KDMinimapLabel_=
 
 - Backup loaded!
 备份已加载！
@@ -376,9 +376,9 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 将服装数据附加到存档内
 - Show free characters on map
 在地图上显示自由的角色
-- Detailed jailed NPCs (experimental)
+- Detailed jailed NPCs
 高清被监禁的 NPC（实验性）
-- Detailed unique NPCs (experimental)
+- Detailed unique NPCs
 高清独特 NPC（实验性）
 - Detailed servants in collection
 高清收藏中的仆人
@@ -402,6 +402,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 悬停在挣扎按钮时显示束缚信息
 - Always Show Warnings
 总是显示警告
+# - Show Bullet Arrows
 - Always Show Minimap
 总是显示小地图
 - Enable Sound
@@ -2155,7 +2156,7 @@ Devious Dungeon Challenge 已启用。
 # :: KinkyDungeonTryOrgasm
 # :: KDLetGo
 
-- Call for Help!!!
+- Call for Help!
 呼救!!!
 - Wait until interrupted
 等待至被打断
@@ -5959,6 +5960,11 @@ Ada 屈服于欲望，跌倒在地~
 傀儡师加了一把锁，“只是为了让它看起来更完整，你懂的？”
 - The puppetmaster cuddles your helpless body~ (DamageTaken)
 傀儡师拥抱你无助的身体~(DamageTaken) 
+# - Puppeteer
+# - The puppeteer storms out in a rage.
+# - The puppeteer has you try on one of ${Etheir} new accessories! (+RestraintAdded)
+# - The puppeteer adds a lock 'just to complete the look, you know?'
+# - The puppeteer cuddles your helpless body~ (DamageTaken)
 
 - Nurse
 护士
@@ -8375,10 +8381,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 一双涂有不粘胶或粘液材料的高跟鞋。
 # :: RestraintSlimeWalkersDesc
 # :: KinkyDungeonInventoryItemSlimeWalkersDesc
+- They will slow you down, but you can walk on slime without getting stuck! (having >45 Glue Resist also enables slime walking)
+它们会减慢你的速度，但你可以在粘液上行走而不会被黏住！
 - They will slow you down, but you can walk on slime without getting stuck!
 它们会减慢你的速度，但你可以在粘液上行走而不会被黏住！
-# :: RestraintSlimeWalkersDesc2
-# :: KinkyDungeonInventoryItemSlimeWalkersDesc2
 
 
 - Duster Gag
@@ -9439,13 +9445,13 @@ RestraintName 上的诅咒解除了！
 一个被附魔的口球。它会长到填满你的嘴巴，所以你几乎不能说话。可以以一半的强度应用于虚弱的目标或上一回合施展过口头咒语的人。
 - It's brimming with conjured energy. A normal knife won't work here!
 它充满了魔法能量。普通的刀在这里是行不通的！
-- Anti-Magic Gag
+- Mana Absorbing Gag
 反魔法口塞
 - A gag designed to cripple mages. It's made of a squishy rubbery material.
 旨在削弱法师的口塞。它由柔软的橡胶材料制成。
 - It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate.
 它被封印着快速吸收法力的魔法咒语！当它耗尽 40 点法力时，它会变成一个普通的口塞并膨胀。
-- Anti-Mage Gag
+- Mana Draining Gag
 反法师口塞
 - A gag designed to cripple experienced spellcasters. It's made of a magic-absorbing rubber.
 旨在削弱经验丰富的法师的口塞。它是由吸魔橡胶制成的。
@@ -25041,6 +25047,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 微笑 )|这会很有趣！
 - (The SPEAKER grins)|I will make sure you enjoy yourself~
 ( SPEAKER 笑 ) |我一定会让你玩得开心~
+# - (The SPEAKER smirks)|I do enjoy seeing you in trouble...
 - (The SPEAKER blushes)|Mmm~ Let's do this!
 ( SPEAKER 脸红了 ) |嗯~我们就这么做吧！
 - (The SPEAKER backs up)|I'm not in trouble, am I?
@@ -25051,53 +25058,6 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 呻吟 ) |嗯嗯呜呜~
 - (The SPEAKER appears too busy to discuss with you)
 ( SPEAKER 似乎太忙了，无法与您讨论)
-
-
-
-- End of line.
-行尾。
-# :: KDDialogue_CuddleEnd_Robot
-# :: KDDialogue_ToyPlayEnd_Robot
-- *slaps your butt*
-*拍打你的屁股*
-
-- Error. Subject not complying?
-错误。受试者不遵守？
-# :: KDDialogue_CuddleRunAway_Robot
-# :: KDDialogue_ToyPlayRunAway_Robot
-
-- Got yourself locked up, huh? Better go be good now~
-把自己关起来了，是吗？最好现在就去好好表现~
-# :: KDDialogue_CuddleChastity_
-# :: KDDialogue_ToyPlayChastity_
-- *Bumps up against your chastity and sighs*
-*蹭了蹭你的贞操带，叹了口气*
-- Pleasure controls detected.
-检测到愉悦控制。
-# :: KDDialogue_CuddleChastity_Robot
-# :: KDDialogue_ToyPlayChastity_Robot
-- You've been a bad girl, haven't you? *taps on your chastity gear*
-你一直是个坏女孩，不是吗*轻敲你的贞操装备*
-# :: KDDialogue_CuddleChastity_Dom
-# :: KDDialogue_ToyPlayChastity_Dom
-- Such a naughty girl, getting yourself all locked up like that!
-这么淘气的女孩，把自己关起来了！
-# :: KDDialogue_CuddleChastity_Brat
-# :: KDDialogue_ToyPlayChastity_Brat
-- I-I know you want release, but you're in this gear for a reason~
-我知道你想要解脱，但你穿这种衣服是有原因的~
-# :: KDDialogue_CuddleChastity_Sub
-# :: KDDialogue_ToyPlayChastity_Sub
-
-
-- Had fun?~
-玩得开心吗~
-- *turns the toy off and giggles*
-*关掉玩具，咯咯地笑*
-
-
-- *bumps up against your chastity and sighs*
-*蹭了蹭你的贞操带，叹了口气*
 
 - Don't I look quite cuddly?
 我看起来不是很可爱吗？
@@ -25113,7 +25073,6 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 傻笑着伸手去摸你的身体)
 - (The SPEAKER makes a beeping noise)|Loading cuddle module...
 ( SPEAKER 发出嘟嘟声)|正在加载拥抱模块...
-
 
 - Got something for me?
 有东西给我吗？
@@ -25152,7 +25111,6 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( 和她一起玩 )
 - (The SPEAKER giggles)|Mmmph~
 ( SPEAKER 咯咯地笑着 ) |Mmmph~
-
 
 - You look quite distracted...
 你看起来很性奋...
@@ -46869,7 +46827,7 @@ RestraintName 失效了！
 # - RGB
 
 
-
+# - Expand Log to view Filters
 - Toggle Struggle UI Mode
 切换挣扎 UI 模式
 - Change Character Pose
@@ -46887,6 +46845,7 @@ RestraintName 失效了！
 模组兼容模式 ( 需要重启 )
 - Flashing Warning Tiles
 警告格子闪烁
+# - Centered Message Log
 
 - Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
 欢迎来到淫荡地牢！您似乎是第一次来到这里，|您想了解一下界面的简要介绍吗？
@@ -54154,3 +54113,52 @@ ${You}陷入沉默，无法轻易施展法术。
 - MP
 法力值
 
+
+
+
+
+
+- End of line.
+行尾。
+# :: KDDialogue_CuddleEnd_Robot
+# :: KDDialogue_ToyPlayEnd_Robot
+- *slaps your butt*
+*拍打你的屁股*
+
+- Error. Subject not complying?
+错误。受试者不遵守？
+# :: KDDialogue_CuddleRunAway_Robot
+# :: KDDialogue_ToyPlayRunAway_Robot
+
+- Got yourself locked up, huh? Better go be good now~
+把自己关起来了，是吗？最好现在就去好好表现~
+# :: KDDialogue_CuddleChastity_
+# :: KDDialogue_ToyPlayChastity_
+- *Bumps up against your chastity and sighs*
+*蹭了蹭你的贞操带，叹了口气*
+- Pleasure controls detected.
+检测到愉悦控制。
+# :: KDDialogue_CuddleChastity_Robot
+# :: KDDialogue_ToyPlayChastity_Robot
+- You've been a bad girl, haven't you? *taps on your chastity gear*
+你一直是个坏女孩，不是吗*轻敲你的贞操装备*
+# :: KDDialogue_CuddleChastity_Dom
+# :: KDDialogue_ToyPlayChastity_Dom
+- Such a naughty girl, getting yourself all locked up like that!
+这么淘气的女孩，把自己关起来了！
+# :: KDDialogue_CuddleChastity_Brat
+# :: KDDialogue_ToyPlayChastity_Brat
+- I-I know you want release, but you're in this gear for a reason~
+我知道你想要解脱，但你穿这种衣服是有原因的~
+# :: KDDialogue_CuddleChastity_Sub
+# :: KDDialogue_ToyPlayChastity_Sub
+
+
+- Had fun?~
+玩得开心吗~
+- *turns the toy off and giggles*
+*关掉玩具，咯咯地笑*
+
+
+- *bumps up against your chastity and sighs*
+*蹭了蹭你的贞操带，叹了口气*
