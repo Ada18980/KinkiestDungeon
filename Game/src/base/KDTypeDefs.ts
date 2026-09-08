@@ -677,6 +677,8 @@ interface floorParams {
 	reverbMult?: number,
 	/* For wooden areas make this higher */
 	reverbDamp?: number,
+	/** impulse sound used */
+	reverbSound?: string,
 	/** Weighted list of successor tileset, positive X */
 	successorPositive: Record<string, number>;
 	/** Weighted list of successor tileset, negative X */

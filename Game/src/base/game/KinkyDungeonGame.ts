@@ -390,102 +390,6 @@ function KDAlreadyOpened(x: number, y: number): boolean {
 	return false;
 }
 
-let KDSoundsPlayedThisFrame 
-
-function KinkyDungeonPlaySound_SingleFrame(src: string, entity?: entity, vol?: number) {
-	if (KinkyDungeonSFX.has(src)) return;
-	if (KDGetEntityRestraintList) {
-		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol);
-
-		KinkyDungeonSFX_Frame.add(src);
-		return;
-	}
-	if (KDSoundEnabled()) {
-		if (!entity || KinkyDungeonVisionGet(entity.x, entity.y) > 0) {
-			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
-			AudioPlayInstantSoundKD(src, vol);
-			KinkyDungeonSFX_Frame.add(src);
-		}
-	}
-}
-
-function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number, reverb: boolean = true) {
-	if (KinkyDungeonSFX.has(src)) return;
-	if (entity) {
-		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol, reverb);
-
-		KinkyDungeonSFX.add(src);
-		return;
-	}
-	if (KDSoundEnabled()) {
-		/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
-		AudioPlayInstantSoundKD(src, vol);
-		KinkyDungeonSFX.add(src);
-	}
-}
-
-let KDBaseReverbPerTile = 0.01;
-let KDBaseReverbDampPerTile = -0.0025;
-let KDReverbDist = 10;
-function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPoint, vol?: number, reverb: boolean = true) {
-	if (KinkyDungeonSFX.has(src)) return;
-	if (KDSoundEnabled()) {
-		if (!vol) vol = 1;
-		if (point) {
-			vol *= 1 - 0.1*Math.min(5, 0.6 * KDistEuclidean(player.x - point.x, player.y - point.y));
-			if (KinkyDungeonVisionGet(point.x, point.y) > 0) {
-				//vol *= 1;
-			} else {
-				vol *= 0.5;
-				// TODO add muted sfx if WebAudio
-			}
-		}
-		if (vol > 0) {
-			let reverbMult = 0;
-			let reverbDamp = 0;
-			if (reverb && point && KDToggles.Reverb) {
-				
-				let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
-				let drawFloor = altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
-				
-				reverbMult = KDGetPropagationFunc(point, KDReverbDist, 
-					(tile: KDTile, previous: number, first: boolean, age: number) => {
-						let tileType = KinkyDungeonMapGet(tile.x, tile.y);
-						let val = (first || KinkyDungeonOpenObjects.includes(tileType))
-							? KDBaseReverbPerTile : 0;
-						if (val) {
-							let skin = KDGetSkin(tile.x, tile.y, drawFloor)
-							if (skin.reverbMult) val *= skin.reverbMult;
-						}
-						return {added: val * age/KDReverbDist, mult: val ? (KinkyDungeonMovableTilesEnemy.includes(tileType) ? 1 : 0.5) : 0};
-				});
-
-				reverbMult *= reverbMult;
-				reverbMult = Math.max(reverbMult - 0.33, 0);
-
-				reverbDamp = KDGetPropagationFunc(point, KDReverbDist, 
-					(tile: KDTile, previous: number, first: boolean, age: number) => {
-					let tileType = KinkyDungeonMapGet(tile.x, tile.y);
-					let val = (first || KinkyDungeonOpenObjects.includes(tileType))
-						? (((first || KinkyDungeonMovableTilesEnemy.includes(tileType)) ? 0.25: 2 ) * KDBaseReverbDampPerTile) : 0;
-					if (val) {
-						let skin = KDGetSkin(tile.x, tile.y, drawFloor)
-						if (skin.reverbDamp) val *= skin.reverbDamp;
-					}
-					return {added: val * age/KDReverbDist, mult: val ? (KinkyDungeonMovableTilesEnemy.includes(tileType) ? 1 : 0.5) : 0};
-				});
-				console.log(reverbDamp)
-
-			}
-			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
-			AudioPlayInstantSoundKD(src, vol, point ? {
-				x: point.x - player.x, y: point.y - player.y
-			} : undefined, Math.min(reverbMult, 1), reverbDamp);
-			KinkyDungeonSFX.add(src);
-		}
-	}
-}
-
 
 
 function KinkyDungeonSetCheckPoint(Checkpoint?: string, _AutoSave?: any, _suppressCheckPoint?: any) {
@@ -4953,7 +4857,7 @@ function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDT
 	while (checkTiles.length > 0) {
 		let tile = checkTiles[0].point;
 		let age = checkedTilesAge[tile.x + ',' + tile.y] || 0;
-		let values = callback(tile, checkedTiles[tile.x + ',' + tile.y] || checkTiles[0].mult, first, age);
+		let values = callback(tile, checkedTiles[tile.x + ',' + tile.y] != undefined ? checkedTiles[tile.x + ',' + tile.y] : checkTiles[0].mult, first, age);
 		first = false;
 		
 		if (values.mult > 0) {
@@ -4962,7 +4866,7 @@ function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDT
 				age += 1
 				for (let tt of KDNearbyMapTiles(tile.x, tile.y, 1.5)) {
 					if ((checkedTiles[tt.x + ',' + tt.y] == undefined || checkedTiles[tt.x + ',' + tt.y] < values.mult)
-						&& (checkedTilesAge[tt.x + ',' + tt.y] || dist) > age
+						&& (checkedTilesAge[tt.x + ',' + tt.y] || dist) >= age
 					) {
 						if (checkedTiles[tt.x + ',' + tt.y] == undefined) checkTiles.push({
 							point: tt,

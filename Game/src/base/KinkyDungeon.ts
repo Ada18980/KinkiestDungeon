@@ -7663,38 +7663,6 @@ function sfc32(a: number, b: number, c: number, d: number) {
 
 
 
-
-function AudioPlayInstantSoundKD(Path: string, volume?: number, location?: KDPoint, reverbMult?: number, reverbDamp?: number) {
-	if (!KDSoundEnabled()) return false;
-	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : 1);
-	if (vol > 0) {
-		let src = KDModFiles[Path] || Path;
-		let audio = (!KDWebAudio && kdSoundCache.has(src)) ? kdSoundCache.get(src) : GetNewAudio(src);
-		let created = false;
-		if (!KDWebAudio && !kdSoundCache.has(src))  {
-			audio.src = src;
-			kdSoundCache.set(src, audio);
-			created = true;
-		} else if (KDWebAudio) {
-			audio.src = src;
-			audio.temp = true;
-		}
-		if (!created) {
-			audio.pause();
-			audio.currentTime = 0;
-		}
-		if (location) {
-			audio.location = location;
-		}
-		audio.volume = Math.min(vol, 1);
-		// Note: reverb ALWAYS last
-		if (reverbMult) audio.reverbMult = reverbMult;
-		if (reverbDamp) audio.reverbDamp = reverbDamp;
-		audio.play();
-		
-	}
-}
-
 /**
  * From https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0
  */

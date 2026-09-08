@@ -21,6 +21,60 @@ let KDCornerTiles = {
  * Updates local tiles such as conveyors
  */
 let KDTileUpdateFunctionsLocal: Record<string, (delta: number, X?: number, Y?: number) => void> = {
+	"L" : (delta, x, y) => { // Barrel
+
+		let entity = KinkyDungeonEntityAt(x, y);
+		if (!entity) return;
+
+		if (entity != KDPlayer()) {
+			entity.slow = Math.max(entity.slow || 0, 1);
+			return;
+		}
+
+		if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)
+			&& KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture) {
+			let furn = KDFurniture[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture];
+			if (furn) {
+				furn.tickFunction(delta);
+			}
+		} else {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "barrel",
+				type: "SlowDetection",
+				duration: 1,
+				power: 9.0,
+				player: true,
+				enemies: true,
+				endSleep: true,
+				maxCount: 1,
+				tags: ["SlowDetection", "move", "cast"],
+			});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "barrel3",
+				type: "Sneak",
+				duration: 1,
+				power: 1.95,
+				player: true,
+				enemies: true,
+				endSleep: true,
+				maxCount: 1,
+				tags: ["Sneak", "darkness", "move", "cast"],
+			});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "barrel2",
+				type: "SlowLevel",
+				duration: 1,
+				power: 1,
+				player: true,
+				enemies: true,
+				endSleep: true,
+				maxCount: 1,
+				tags: ["Slow", "move", "cast"],
+			});
+			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonBarrel"), KDBaseLightGreen, 1, true);
+		}
+		return true;
+	},
 	"]": (delta, X, Y) => {// Happy Gas!
 		
 		if (delta > 0)
@@ -383,51 +437,7 @@ let KDTileUpdateFunctions: Record<string, (delta: number) => boolean> = {
 		KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSporeGas"), "pink", 1);
 		return true;
 	},
-	"L" : (delta) => { // Barrel
-		if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)
-			&& KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture) {
-			let furn = KDFurniture[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture];
-			if (furn) {
-				furn.tickFunction(delta);
-			}
-		} else {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: "barrel",
-				type: "SlowDetection",
-				duration: 1,
-				power: 9.0,
-				player: true,
-				enemies: true,
-				endSleep: true,
-				maxCount: 1,
-				tags: ["SlowDetection", "move", "cast"],
-			});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: "barrel3",
-				type: "Sneak",
-				duration: 1,
-				power: 1.95,
-				player: true,
-				enemies: true,
-				endSleep: true,
-				maxCount: 1,
-				tags: ["Sneak", "darkness", "move", "cast"],
-			});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: "barrel2",
-				type: "SlowLevel",
-				duration: 1,
-				power: 1,
-				player: true,
-				enemies: true,
-				endSleep: true,
-				maxCount: 1,
-				tags: ["Slow", "move", "cast"],
-			});
-			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonBarrel"), KDBaseLightGreen, 1, true);
-		}
-		return true;
-	},
+	
 	"c" : (delta) => { // Unopened chest
 		if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)
 			&& KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).Furniture) {
@@ -457,17 +467,6 @@ let KDTileUpdateFunctions: Record<string, (delta: number) => boolean> = {
 				endSleep: true,
 				maxCount: 1,
 				tags: ["Sneak", "darkness", "move", "cast"],
-			});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: "barrel2",
-				type: "SlowLevel",
-				duration: 1,
-				power: 1,
-				player: true,
-				enemies: true,
-				endSleep: true,
-				maxCount: 1,
-				tags: ["Slow", "move", "cast"],
 			});
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonBarrelChest"), KDBaseLightGreen, 1, true);
 		}

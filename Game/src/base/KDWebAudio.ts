@@ -83,6 +83,7 @@ class WebAudioWrapper {
 	
 	public reverbMult = 0;
 	public reverbDamp = 0;
+	public reverbSound = "";
 
     public gain: GainNode = null;
 	public paused: boolean = false;
@@ -295,6 +296,10 @@ class WebAudioWrapper {
 		this.panner = null;
 		this.lpf = null;
 		this.hpf = null;
+		if (this.reverbgain)
+			this.reverbgain.disconnect();
+		if (this.reverbfilter)
+			this.reverbfilter.disconnect();
 		this.reverbgain = null;
 		this.reverbfilter = null;
 		this.gain = null;
@@ -315,7 +320,8 @@ class WebAudioWrapper {
 	}
 
     set temp(value: boolean) {
-		if (value) this.node.then((node) => {node.onended = () => {this.end()}});
+		let wrapper = this;
+		if (value) this.listener = () => {wrapper.end()};
     }
 
 	async getNode(): Promise<AudioBufferSourceNode> {
@@ -347,7 +353,7 @@ class WebAudioWrapper {
 					}
 
 					// creates and adds a panner node
-					KDCreateReverb(KDWebAudio, this.reverbMult, this.reverbDamp).then(
+					KDCreateReverb(KDWebAudio, this.reverbSound).then(
 						(filter) => {
 							let reverbgain = new GainNode(KDWebAudio, {
 								gain: this.reverbMult * this.vol
@@ -385,20 +391,184 @@ class WebAudioWrapper {
 	}
 }
 
-let KDGlobalConvolveNode = null;
+let KDGlobalConvolveNodes: Record<string, ConvolverNode> = {};
 
-let KDImpulseReverb = "Large Wide Echo Hall";
-async function KDCreateReverb(context: AudioContext, mult: number, damp: number) {
-	if (KDGlobalConvolveNode) return KDGlobalConvolveNode;
+
+async function KDCreateReverb(context: AudioContext, impulse: string) {
+	if (!impulse) impulse = KDImpulseReverbDefault;
+
+
+	if (KDGlobalConvolveNodes[impulse]) return KDGlobalConvolveNodes[impulse];
 	let convolver = context.createConvolver();
 
 	// load impulse response from file
-	let response = await fetch(KinkyDungeonRootDirectory + "Audio/Impulse/"+ KDImpulseReverb + ".wav");
+	let response = await fetch(KinkyDungeonRootDirectory + "Audio/Impulse/"+ impulse + ".wav");
 	let arraybuffer = await response.arrayBuffer();
 	convolver.buffer = await context.decodeAudioData(arraybuffer);
 
-	KDGlobalConvolveNode = convolver;
-	KDGlobalConvolveNode.connect(context.destination);
+	KDGlobalConvolveNodes[impulse] = convolver;
+	KDGlobalConvolveNodes[impulse].connect(context.destination);
 
-	return KDGlobalConvolveNode;
+	return KDGlobalConvolveNodes[impulse];
+}
+
+
+
+function AudioPlayInstantSoundKD(Path: string, volume?: number, location?: KDPoint, reverbMult?: number, reverbDamp?: number, reverbSound?: string) {
+	if (!KDSoundEnabled()) return false;
+	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : 1);
+	if (vol > 0) {
+		let src = KDModFiles[Path] || Path;
+		let audio = (!KDWebAudio && kdSoundCache.has(src)) ? kdSoundCache.get(src) : GetNewAudio(src);
+		let created = false;
+		if (!KDWebAudio && !kdSoundCache.has(src))  {
+			audio.src = src;
+			kdSoundCache.set(src, audio);
+			created = true;
+		} else if (KDWebAudio) {
+			audio.src = src;
+			audio.temp = true;
+		}
+		if (!created) {
+			audio.pause();
+			audio.currentTime = 0;
+		}
+		if (location) {
+			audio.location = location;
+		}
+		audio.volume = Math.min(vol, 1);
+		// Note: reverb ALWAYS last
+		if (reverbMult) audio.reverbMult = reverbMult;
+		if (reverbDamp) audio.reverbDamp = reverbDamp;
+		if (reverbSound) audio.reverbSound = reverbSound;
+		audio.play();
+		
+	}
+}
+
+
+function KinkyDungeonPlaySound_SingleFrame(src: string, entity?: entity, vol?: number, reverbSound?: string) {
+	if (KinkyDungeonSFX.has(src)) return;
+	if (KDGetEntityRestraintList) {
+		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol, !!reverbSound, reverbSound);
+
+		KinkyDungeonSFX_Frame.add(src);
+		return;
+	}
+	if (KDSoundEnabled()) {
+		if (!entity || KinkyDungeonVisionGet(entity.x, entity.y) > 0) {
+			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
+			AudioPlayInstantSoundKD(src, vol);
+			KinkyDungeonSFX_Frame.add(src);
+		}
+	}
+}
+
+function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number, reverb: boolean = true, reverbSound?: string) {
+	if (KinkyDungeonSFX.has(src)) return;
+	if (entity) {
+		KinkyDungeonPlaySoundLocation(src, KDPlayer(), entity, vol, reverb, reverbSound);
+
+		KinkyDungeonSFX.add(src);
+		return;
+	}
+	if (KDSoundEnabled()) {
+		/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
+		AudioPlayInstantSoundKD(src, vol);
+		KinkyDungeonSFX.add(src);
+	}
+}
+
+let KDGlobalReverbMod = 1.2;
+let KDBaseReverbPerTile = 0.01;
+let KDBaseReverbDampPerTile = -0.0025;
+let KDReverbDist = 10;
+let KDReverbFloor = 0.01;
+let KDReverbDampeningObject = 0.95;
+let KDReverbWallObject = 0.85;
+let KDImpulseReverbDefault = "Large Wide Echo Hall";
+let KDReverbWeightingDistance = 0.3;
+let KDReverbClampThresh = 0.22;
+let KDReverbClampAmount = 0.34;
+function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPoint, vol?: number, reverb: boolean = true, reverbSound?: string) {
+	if (KinkyDungeonSFX.has(src)) return;
+	if (KDSoundEnabled()) {
+		if (!vol) vol = 1;
+		if (point) {
+			vol *= 1 - 0.1*Math.min(5, 0.6 * KDistEuclidean(player.x - point.x, player.y - point.y));
+			if (KinkyDungeonVisionGet(point.x, point.y) > 0) {
+				//vol *= 1;
+			} else {
+				vol *= 0.5;
+				// TODO add muted sfx if WebAudio
+			}
+		}
+		if (vol > 0) {
+			let reverbMult = 0;
+			let reverbDamp = 0;
+			if (reverb && point && KDToggles.Reverb) {
+				
+				let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+				let drawFloor = altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
+				
+				if (!reverbSound && KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]) {
+					if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSound)
+						reverbSound = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSound;
+				}
+
+				let dist = KDReverbDist;
+
+				reverbMult = KDGetPropagationFunc(point, dist, 
+					(tile: KDTile, previous: number, first: boolean, age: number) => {
+						let tileType = KinkyDungeonMapGet(tile.x, tile.y);
+						let val = (first || KinkyDungeonOpenObjects.includes(tileType))
+							? KDBaseReverbPerTile : 0;
+						if (val) {
+							let skin = KDGetSkin(tile.x, tile.y, drawFloor)
+							if (skin.reverbMult) val *= skin.reverbMult;
+						}
+						let dd = KDistChebyshev(tile.x - point.x, tile.y - point.y);
+						val *= (1-KDReverbWeightingDistance) + KDReverbWeightingDistance * dd / dist;
+						let mult = 1;
+						if (!(tile.x == point.x && tile.y == point.y))
+							for (let neighbor of KDNearbyMapTiles(tile.x, tile.y, 1.5)) {
+								if (!KinkyDungeonOpenObjects.includes(neighbor.tile)) {
+									mult *= KDReverbWallObject;
+								} else if (!KinkyDungeonMovableTilesEnemy.includes(neighbor.tile)) {
+									mult *= KDReverbDampeningObject;
+								}
+							}
+						return {added: val * previous,
+							mult: val ? (mult * previous) : 0};
+				});
+
+
+				if (reverbMult > KDReverbClampThresh) reverbMult = KDReverbClampThresh + (reverbMult - KDReverbClampThresh) * KDReverbClampAmount;
+				reverbMult *= KDGlobalReverbMod;
+
+				console.log(reverbMult)
+
+				reverbMult = Math.max(reverbMult - KDReverbFloor, 0);
+
+				reverbDamp = KDGetPropagationFunc(point, dist, 
+					(tile: KDTile, previous: number, first: boolean, age: number) => {
+					let tileType = KinkyDungeonMapGet(tile.x, tile.y);
+					let val = (first || KinkyDungeonOpenObjects.includes(tileType))
+						? (((first || KinkyDungeonMovableTilesEnemy.includes(tileType)) ? 0.25: 2 ) * KDBaseReverbDampPerTile) : 0;
+					if (val) {
+						let skin = KDGetSkin(tile.x, tile.y, drawFloor)
+						if (skin.reverbDamp) val *= skin.reverbDamp;
+					}
+					return {added: val * age/dist, mult: val ? (KinkyDungeonMovableTilesEnemy.includes(tileType) ? 1 : 0.5) : 0};
+				});
+				//console.log(reverbDamp)
+
+			}
+			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
+			AudioPlayInstantSoundKD(src, vol, point ? {
+				x: point.x - player.x, y: point.y - player.y
+			} : undefined, Math.min(reverbMult, 1), reverbDamp, reverbSound);
+			KinkyDungeonSFX.add(src);
+		}
+	}
 }

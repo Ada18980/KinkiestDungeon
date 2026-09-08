@@ -53,7 +53,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 		"setpieces": [],
 
-
+		reverbSound: "Direct Cabinet N1"
 	},
 	"shoppe":{
 		curseTags: ["trap"],
@@ -71,6 +71,68 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			"GENERIC-DOLLRACK.ogg": 4,
 			//"Shopping.ogg": 10,
 		},
+
+		reverbSound: "Direct Cabinet N1",
+		reverbMult: 4,
+
+		"background" : "RainyForstPathNight",
+		"openness" : 3, // Openness of rooms
+		"density" : 3, // Density of tunnels (inverse of room spawn chance)
+		"crackchance" : 0.07,
+		"barchance" : 0.2,
+		"brightness" : 7,
+		"chestcount" : 5,
+		"shrinecount" : 16,
+		"shrinechance" : 0.75,
+		"ghostchance" : 1,
+		"doorchance" : 0.67,
+		"nodoorchance" : 0.1,
+		"doorlockchance" : -0.1,
+		"trapchance" : 0.5,
+		"grateChance" : 0.4,
+		"rubblechance" : 0.4,
+		"brickchance" : 0.1,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 0.7, // If a forbidden gold chance is generated. Otherwise a silver chest will appear
+		"forbiddenGreaterChance" : 0.33, // Chance after a forbidden area is generated with a restraint, otherwise its a lesser gold chest
+		"torchchance": 0.35,
+		"torchchanceboring": 1.0,
+
+		tagModifiers: {},
+		enemyTags: [],
+
+		"traps": [],
+		"min_width" : 4,
+		"max_width" : 7,
+		"min_height" : 4,
+		"max_height" : 6,
+		"defeat_outfit": "Prisoner",
+		"shrines": [],
+
+		"setpieces": [],
+
+
+	},
+
+	"shrine":{
+		curseTags: ["trap"],
+		successorNegative: {
+			menu: 1.0,
+		},
+		successorPositive: {
+			menu: 1.0,
+		},
+		successorSame: {
+			menu: 1.0,
+		},
+		color: KDBaseWhite,
+		music: {
+			"GENERIC-DOLLRACK.ogg": 4,
+			//"Shopping.ogg": 10,
+		},
+
+		reverbSound: "Narrow Bumpy Space",
+		reverbMult: 3, // more than usual
 
 		"background" : "RainyForstPathNight",
 		"openness" : 3, // Openness of rooms
@@ -710,6 +772,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			tmp: 0.9,
 			ore: 0.1,
 		},
+		reverbSound: "Large Long Echo Hall",
 		color: "#757575",
 		"background" : "SpookyForest",
 		"openness" : 2,
@@ -1411,6 +1474,8 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			ore: 0.8,
 			tmp: 0.2,
 		},
+		reverbSound: "St Nicolaes Church",
+		reverbMult: 1.4,
 		color: "#524fb8",
 		"background" : "SpookyForest",
 		"openness" : 2,
@@ -1642,6 +1707,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		successorSame: {
 			bel: 1.0,
 		},
+		reverbSound: "Parking Garage",
 		color: "#ffee83",
 		"background" : "SpookyForest",
 		"openness" : 1,
@@ -1757,6 +1823,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		successorSame: {
 			bel: 1.0,
 		},
+		reverbSound: "Parking Garage",
 		color: "#ffee83",
 		"background" : "SpookyForest",
 		"openness" : 1,
@@ -1858,6 +1925,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		successorSame: {
 			bel: 1.0,
 		},
+		reverbSound: "Parking Garage",
 		color: "#ffee83",
 		"background" : "SpookyForest",
 		"openness" : 1,
@@ -1975,6 +2043,8 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		successorSame: {
 			bel: 1.0,
 		},
+		reverbSound: "Greek 7 Echo Hall", // kinda more metallic
+		reverbMult: 2,
 		color: "#c52f45",
 		"background" : "SpookyForest",
 		"openness" : 1,
@@ -2212,6 +2282,8 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		successorSame: {
 			DemonTransition: 1.0,
 		},
+		reverbSound: "On a Star",
+		reverbMult: 5,
 		color: "#222222",
 		shadowColor: 0x010203,
 		"background" : "Dungeon",

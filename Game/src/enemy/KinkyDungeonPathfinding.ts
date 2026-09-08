@@ -260,8 +260,7 @@ function KinkyDungeonFindPath (
 								}
 								else if (tile == "V" && !(MapTile?.Sfty)) costBonus = 14;
 								else if (tile == "N") costBonus = 30;
-								else if (tile == "D") costBonus = 3;
-								else if (tile == "d") costBonus = -2;
+								else if (tile == "D") costBonus = 2.5;
 								else if (tile == "g") costBonus = 5;
 								else if (tile == "L") costBonus = 4;
 								else if (tile == "T") costBonus = 2;
