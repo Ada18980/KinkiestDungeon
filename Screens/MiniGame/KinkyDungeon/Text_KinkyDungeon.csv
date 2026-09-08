@@ -526,7 +526,9 @@ KDDoorknobAttract,"Someone hears you banging and opens the door from the other s
 KDDoorknobAttractArms,"Someone notices you fiddling with the door and opens it from the other side!"
 KDDoorknobSuccess,"The door squeaks open as the latch wasn't fully engaged."
 KDDoorknobSuccessArms,"You grab the doorknob with your wrists and flex it open."
-KDDoorknobFeet,You use your flexible feet to open the door.
+KDDoorknobFeet,"You use your flexible feet to open the door."
+KDDoorknobPsychic,"You use your psychic abilities to open the door."
+KDDoorknobTelekinetic,"You use your telekinetic abilities to open the door."
 
 KinkyDungeonStatSelfMiscast,"Poor Technique"
 KinkyDungeonStatDescSelfMiscast,"Instead of fizzling, most miscasted projectiles and AoE spells will target you instead."
