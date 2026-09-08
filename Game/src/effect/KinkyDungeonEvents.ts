@@ -6845,7 +6845,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 		},
 		"Frustration": (_e, _spell, _data) => {
 			for (let en of KDMapData.Entities) {
-				if (en.Enemy.bound && !en.Enemy.nonHumanoid && en.buffs && KDEntityBuffedStat(en, "Chastity")) {
+				if (en.Enemy.bound && !en.Enemy.nonHumanoid && !(en.Enemy.name == "PetChastity") && en.buffs && KDEntityBuffedStat(en, "Chastity")) {
 					if (KDHelpless(en) && !KDIsImprisoned(en)) {
 						let Enemy = KinkyDungeonGetEnemyByName("PetChastity");
 						let doll = {
