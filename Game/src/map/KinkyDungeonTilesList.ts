@@ -1854,15 +1854,15 @@ function KDAttemptDoor(moveX: number, moveY: number) {
 		|| !KinkyDungeonIsHandsBound(true, true, 0.45);
 	if (!open) {
 		if (KinkyDungeonCanUseFeet(false)) {
-		    KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFeet"), KDBaseMint, 2);
-		    open = true;
-		  } else if (KinkyDungeonStatsChoice.get("Psychic")) {
-		    KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobPsychic"), KDBaseMint, 2);
-		    open = true;
-		  } else if (KinkyDungeonPlayerDamage.telekinetic) {
-		    KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobTelekinetic"), KDBaseMint, 2);
-		    open = true;
-		  } else {
+			KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFeet"), KDBaseMint, 2);
+			open = true;
+		} else if (KinkyDungeonStatsChoice.get("Psychic")) {
+			KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobPsychic"), KDBaseMint, 2);
+			open = true;
+		} else if (KinkyDungeonPlayerDamage.telekinetic) {
+			KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobTelekinetic"), KDBaseMint, 2);
+			open = true;
+		} else {
 			let grace = 0;
 			if (KinkyDungeonFlags.get("failUnfairFirst") && !KinkyDungeonFlags.get("failUnfair")) grace = 0.4;
 			let armsbound = KinkyDungeonIsArmsBound(true, true);
