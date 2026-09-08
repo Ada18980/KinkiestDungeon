@@ -281,8 +281,10 @@ function KinkyDungeonFindPath (
 									dx = lowest.x-lowest_old.x;
 									dy = lowest.y-lowest_old.y;
 									if (dx != x || dy != y) {
-										costBonus += 0.45;
-									} else costBonus += 0.11;
+										costBonus += 0.41;
+									} else costBonus += 0.1;
+								} else {
+									costBonus += 0.4;
 								}
 							}
 							succ.set(xx + "," + yy, {x: xx, y: yy,
