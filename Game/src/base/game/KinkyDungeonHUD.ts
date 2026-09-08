@@ -2495,7 +2495,7 @@ let KDMMLabels_Other = true;
 function KDDrawMinimap(MinimapX: number, MinimapY: number, ZoomIcons: boolean = true) {
 	let zIndex = (KDExpandMinimap || MouseIn(MinimapX, MinimapY, KDMinimapWidth()+21, KDMinimapHeight()+21)) ? 150 : 90;
 		
-	if (ZoomIcons && KDToggles.ShowZoom && !KDExpandMinimap && !KinkyDungeonMessageToggle) {
+	if (kdminimap.visible && ZoomIcons && KDToggles.ShowZoom && !KDExpandMinimap && !KinkyDungeonMessageToggle) {
 		DrawButtonKDEx("mainZoomIn", () => {
 			KDChangeZoom(-1);
 			return true;
