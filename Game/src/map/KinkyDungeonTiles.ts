@@ -709,7 +709,7 @@ function KDMovePlayer(moveX: number, moveY: number, willing: boolean, sprint?: b
 	if (!noEvent)
 		KinkyDungeonSendEvent("playerMove", data);
 	if (data.sound > 0) {
-		KinkyDungeonMakeNoise(data.sound, data.moveX, data.moveY);
+		KinkyDungeonMakeNoise(data.sound, data.moveX, data.moveY, false, false, true);
 	}
 	if (!cancel.cancelmove) {
 		KDCheckCollideableBullets(KinkyDungeonPlayerEntity, forceHitBullets);

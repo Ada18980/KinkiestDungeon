@@ -2390,7 +2390,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 			}
 		};
 		if (data.noise) {
-			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y, false, false, true);
 		}
 		KDMapData.Bullets.push(newB);
 		KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
@@ -2426,7 +2426,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 			KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
 		}
 		if (data.noise) {
-			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y, false, false, true);
 		}
 		if (b.bullet.spell) {
 			let aoe = b.bullet.spell.aoe || 0.5;
@@ -2510,7 +2510,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 		KinkyDungeonUpdateSingleBulletVisual(newB, false, d);
 
 		if (data.noise) {
-			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y, false, false, true);
 		}
 
 		if (b.bullet.effectTile) {
@@ -2521,7 +2521,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 			if (!(b.bullet.spell && (b.bullet.spell.piercing || (b.bullet.spell.pierceEnemies && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(b.x, b.y)))))) {
 				let ind = KDMapData.Bullets.indexOf(b);
 				if (data.noise) {
-					KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+					KinkyDungeonMakeNoise(data.noise, b.x, b.y, false, false, true);
 				}
 				if (ind > -1)
 					KDMapData.Bullets.splice(ind, 1);
@@ -2628,7 +2628,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 					KDMapData.Bullets.push(newB);
 
 					if (data.noise) {
-						KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+						KinkyDungeonMakeNoise(data.noise, b.x, b.y, false, false, true);
 					}
 					KinkyDungeonUpdateSingleBulletVisual(newB, false, dd);
 				}
@@ -2688,7 +2688,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 		KinkyDungeonUpdateSingleBulletVisual(newB, false);
 
 		if (data.noise) {
-			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y, false, false, true);
 		}
 
 		if (b.bullet.spell && (b.bullet.spell.playerEffect || b.bullet.playerEffect) && AOECondition(b.x, b.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, b.bullet.spell.aoe, KDBulletAoEMod(b))) {
@@ -2720,7 +2720,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 		let cast = b.bullet.spell.spellcasthit;
 		let rad = b.bullet.spell.aoe || 0;
 		if (data.noise) {
-			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y, false, false, true);
 		}
 		if (cast.countPerCast) {
 			for (let cc = 0; cc < cast.countPerCast; cc++) {
@@ -2801,7 +2801,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 			KDMapData.Bullets.push(newB);
 			KinkyDungeonUpdateSingleBulletVisual(newB, false);
 			if (data.noise) {
-				KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+				KinkyDungeonMakeNoise(data.noise, b.x, b.y, false, false, true);
 			}
 
 			if (KinkyDungeonEnemyAt(b.x, b.y)) {
@@ -2861,7 +2861,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 		}
 	} else if (b.bullet.hit == "summon") {
 		if (data.noise) {
-			KinkyDungeonMakeNoise(data.noise, b.x, b.y);
+			KinkyDungeonMakeNoise(data.noise, b.x, b.y, false, false, true);
 		}
 		if (b.bullet.effectTile) {
 			KDCreateAoEEffectTiles(b.x, b.y, b.bullet.effectTile, b.bullet.effectTileDurationMod, (b.bullet.spell?.effectTileAoE || b.bullet.spell?.aoe || 0.5), undefined, b.bullet.spell?.effectTileDensity, KDBulletAoEMod(b));

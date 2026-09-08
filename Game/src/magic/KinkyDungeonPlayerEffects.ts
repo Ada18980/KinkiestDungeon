@@ -880,7 +880,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			aura: "#ff6767", auraSprite: "AuraSeal",
 			buffSprite: true,
 		});
-		KinkyDungeonMakeNoise(10, target.x, target.y);
+		KinkyDungeonMakeNoise(10, target.x, target.y, false, false, true);
 		KinkyDungeonSendTextMessage(8, TextGet("KDShadowSeal"), "#aa55ff", 4);
 		return {sfx: "Evil", effect: true};
 	},

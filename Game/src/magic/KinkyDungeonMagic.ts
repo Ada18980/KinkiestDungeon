@@ -80,7 +80,7 @@ let KDSpellComponentTypes: Record<string, KDSpellComponent> = {
 		cast: (_spell, data) => {
 			KinkyDungeonSetFlag("verbalspell", 1);
 			if (data.originX && data.originY)
-				KinkyDungeonMakeNoise(4, data.originX, data.originY, false, true);
+				KinkyDungeonMakeNoise(4, data.originX, data.originY, false, true, true);
 		}
 	},
 	"Arms": {

@@ -1874,7 +1874,7 @@ function KDAttemptDoor(moveX: number, moveY: number) {
 					KinkyDungeonSetFlag("failUnfair", 5);
 					KinkyDungeonSetFlag("failUnfairFirst", 10);
 				}
-				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Locked.ogg");
+				if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Locked.ogg", KDPlayer());
 			}
 		}
 	}
