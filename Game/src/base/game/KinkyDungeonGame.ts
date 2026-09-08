@@ -3817,17 +3817,17 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 
 	if (KDToggles.AutoSprint) {
 		if (!KDGameData.AutoSprintTriggered) {
-			if (KDPlayerIsSlowedMovementOnly() && KinkyDungeonInDanger()) {
+			if (KDAutoSprintCriteria(KDPlayer()) && KinkyDungeonInDanger()) {
 				KDGameData.AutoSprintTriggered = true;
 				KinkyDungeonToggleAutoSprint = true;
 				KinkyDungeonSuppressSprint = false;
 			}
-		} else if (KDGameData.AutoSprintTriggered && !KDPlayerIsSlowedMovementOnly()) {
+		} else if (KDGameData.AutoSprintTriggered && !KDAutoSprintCriteria(KDPlayer())) {
 			KDGameData.AutoSprintTriggered = false;
 			KinkyDungeonToggleAutoSprint = false;
 			KinkyDungeonSuppressSprint = false
 		} else if (KDGameData.AutoSprintTriggered && !KinkyDungeonToggleAutoSprint) {
-				KDGameData.AutoSprintTriggered = false;
+			KDGameData.AutoSprintTriggered = false;
 		}
 	} else if (KDGameData.AutoSprintTriggered) {
 		KDGameData.AutoSprintTriggered = false;
@@ -4884,4 +4884,10 @@ function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDT
 	}
 
 	return accumulated;
+}
+
+function KDAutoSprintCriteria(player: entity) : boolean {
+	if (KinkyDungeonLeashingEnemy() || !KinkyDungeonFlags.get("PlayerCombat")) return false;
+
+	return KDPlayerIsSlowedMovementOnly();
 }

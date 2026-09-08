@@ -1,3 +1,5 @@
+let KDDollShoppeVisitorTags = ["adventurer", "maid", "witch", "dragonheart", "nevermere", "librarian", "puppetmaster"];
+
 KDPrisonTypes.DollShoppe = {
 	name: "DollShoppe",
 	default_state: "Jail",
@@ -29,7 +31,7 @@ KDPrisonTypes.DollShoppe = {
 				&& (en.idle || KDEnemyHasFlag(en, "idleg"))) {
 				idleGuard.push(en);
 				KinkyDungeonSetEnemyFlag(en, "idleg", 2);
-			} else if (en.faction == "Adventurer" && en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy() && !KDEnemyHasFlag(en, "despawn")) {
+			} else if (en.specialdialogue == "DollShoppeVisitor" && en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy() && !KDEnemyHasFlag(en, "despawn")) {
 				admirers.push(en);
 				if (!KDEnemyHasFlag(en, "admiring"))
 					idleadmirers.push(en);
@@ -56,12 +58,13 @@ KDPrisonTypes.DollShoppe = {
 				}
 			}
 			if (gg) {
+				KinkyDungeonSetEnemyFlag(gg, "leashPrisoner", 3);
 				if (dist < 1.5) {
 					// Set the doll as a punishment doll or delete it if there are too many
 					
 					if (punishDoll.length < 20 && !KDEnemyHasFlag(doll, "punished")) {
 						KinkyDungeonSetEnemyFlag(doll, "punishdoll", 9999);
-						KinkyDungeonSetEnemyFlag(doll, "punished", Math.floor(KDRandom() *500) + 200);
+						//KinkyDungeonSetEnemyFlag(doll, "punished", Math.floor(KDRandom() *500) + 200);
 						KinkyDungeonSetEnemyFlag(doll, "tryNotToSwap", 9999);
 						punishDoll.push(doll);
 					} else {
@@ -149,7 +152,7 @@ KDPrisonTypes.DollShoppe = {
 		// For each punishment doll, pick a guard to pull
 		for (let doll of punishDoll) {
 			let gg: entity = null;
-			let storage = KinkyDungeonNearestJailPoint(doll.x, doll.y, ["display"], undefined, undefined);
+			let storage = KinkyDungeonNearestJailPoint(doll.preferredX || doll.x, doll.preferredY || doll.y, ["display"], undefined, undefined);
 			if (doll.x == storage?.x && doll.y == storage?.y) {
 				KinkyDungeonSetEnemyFlag(doll, "punished", Math.floor(KDRandom() *500) + 200);
 				continue;
@@ -366,8 +369,13 @@ KDPrisonTypes.DollShoppe = {
 
 			if (KDMapData.Labels && KDMapData.Labels.Entrance?.length > 0) {
 				let l = KDMapData.Labels.Entrance[Math.floor(KDRandom() * KDMapData.Labels.Entrance.length)];
-				let Enemy = KinkyDungeonGetEnemy(["adventurer"], MiniGameKinkyDungeonLevel + 4, 'lib', '0', ["adventurer"],
-					undefined, {["adventurer"]: {mult: 4, bonus: 10}}, ["boss"]);
+				let bonusTags = {};
+				for (let tag of KDDollShoppeVisitorTags) {
+					bonusTags[tag] = {mult: 4, bonus: 10};
+				}
+				let Enemy = KinkyDungeonGetEnemy(
+					[...KDDollShoppeVisitorTags], MiniGameKinkyDungeonLevel + 4, 'lib', '0', ["jail"],
+					undefined, bonusTags, ["boss", "minor", "submissive"], ["elite", "miniboss", "adventurer", "jailer"]);
 				if (Enemy && !KinkyDungeonEnemyAt(l.x, l.y)
 					&& KDistChebyshev(KDPlayer().x - l.x, KDPlayer().y - l.y)
 					> 7) {

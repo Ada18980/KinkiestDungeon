@@ -6161,7 +6161,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						ignore: enemy.items,
 					}, enemy, undefined, true))));
 
-			AIData.SlowLeash = !KinkyDungeonAggressive(enemy, player) && KDEntityHasFlag(player, "leashtug");
+			// Trying to move will make them leash you faster
+			AIData.SlowLeash = !KinkyDungeonAggressive(enemy, player) && KDEntityHasFlag(player, "leashtug")
+				&& !(KinkyDungeonLastAction == "Wait" || KinkyDungeonLastAction == "Move");
 			AIData.moveTowardPlayer =
 				// We can move
 				!KDIsImmobile(enemy)
