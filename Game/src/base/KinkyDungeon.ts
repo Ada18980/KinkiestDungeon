@@ -6167,7 +6167,7 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 	if (KinkyDungeonKeybindings) {
 		KDCommitKeybindings();
 	}
-	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
+	if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg", KDPlayer(), 0.65);
 
 
 

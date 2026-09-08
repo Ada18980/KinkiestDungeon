@@ -359,17 +359,23 @@ class WebAudioWrapper {
 								gain: this.reverbMult * this.vol
 							})
 							this.reverbgain = reverbgain;
-							let reverbfilter = new BiquadFilterNode(KDWebAudio, {
-								frequency: this.reverbMult < 0 ? Math.max(50, 500 - 400 * -this.reverbMult)
+							let reverbfilter = Math.abs(this.reverbDamp) > KDReverbFilterDampFloor ? new BiquadFilterNode(KDWebAudio, {
+								frequency: this.reverbDamp < 0 ? Math.max(50, 500 - 400 * -this.reverbDamp)
 									: Math.min(5000, 500 + 2000 * this.reverbMult),
-								type: this.reverbMult < 0 ? "lowpass" : "highpass",
+								type: this.reverbDamp < 0 ? "lowpass" : "highpass",
 								gain: 0,
-								Q: 10,
-							})
-							this.reverbfilter = reverbfilter;
-							reverbfilter.connect(reverbgain);
-							reverbgain.connect(filter);
-							node.connect(reverbgain);
+								Q: 20,
+							}) : null;
+							if (reverbfilter) {
+								this.reverbfilter = reverbfilter;
+								reverbfilter.connect(reverbgain);
+								reverbgain.connect(filter);
+								node.connect(reverbfilter);
+
+							} else {
+								reverbgain.connect(filter);
+								node.connect(reverbgain);
+							}
 							resolve(node);
 						}
 					);
@@ -481,16 +487,21 @@ function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number, rever
 
 let KDGlobalReverbMod = 1.2;
 let KDBaseReverbPerTile = 0.01;
-let KDBaseReverbDampPerTile = -0.0025;
+let KDBaseReverbDampPerTile = 0.01;
 let KDReverbDist = 10;
-let KDReverbFloor = 0.01;
+let KDReverbFloor = 0.05;
 let KDReverbDampeningObject = 0.95;
 let KDReverbWallObject = 0.85;
 let KDImpulseReverbDefault = "Large Wide Echo Hall";
+let KDReverbSoundLow = "Small Drum Room";
 let KDReverbWeightingDistance = 0.3;
 let KDReverbClampThresh = 0.22;
 let KDReverbClampAmount = 0.34;
-function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPoint, vol?: number, reverb: boolean = true, reverbSound?: string) {
+let KDBaseReverbBoost = 0.1;
+let KDReverbFilterDampFloor = 0.01;
+
+let KDReverbSoundLowThresh = 0.3;
+function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPoint, vol?: number, reverb: boolean = true, reverbSound?: string, reverbBoost?: number) {
 	if (KinkyDungeonSFX.has(src)) return;
 	if (KDSoundEnabled()) {
 		if (!vol) vol = 1;
@@ -506,15 +517,36 @@ function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPo
 		if (vol > 0) {
 			let reverbMult = 0;
 			let reverbDamp = 0;
+			let reverbThresh = KDReverbFloor;
 			if (reverb && point && KDToggles.Reverb) {
 				
 				let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 				let drawFloor = altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 				
-				if (!reverbSound && KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]) {
-					if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSound)
-						reverbSound = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSound;
+				let reverbSoundLow = KDReverbSoundLow;
+				let reverbSoundLowThresh = KDReverbSoundLowThresh;
+				let reverbBoostLow = reverbBoost;
+
+				if (!reverbSound) {
+					if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]) {
+						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSound)
+							reverbSound = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSound;
+						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbBoost)
+							reverbBoost = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbBoost;
+						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbThresh)
+							reverbThresh = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbThresh;
+						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSoundLow)
+							reverbSoundLow = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSoundLow;
+						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbBoostLow)
+							reverbBoostLow = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbBoostLow;
+						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSoundLowThresh)
+							reverbSoundLowThresh = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSoundLowThresh;
+					}
+					if (reverbBoost == undefined) reverbBoost = KDBaseReverbBoost
+					if (reverbBoostLow == undefined) reverbBoostLow = KDBaseReverbBoost
 				}
+
+				
 
 				let dist = KDReverbDist;
 
@@ -542,13 +574,27 @@ function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPo
 							mult: val ? (mult * previous) : 0};
 				});
 
+				let low = false;
+				if (reverbMult < reverbSoundLowThresh) {
+					reverbSound = reverbSoundLow;
+					low = true;
+				}
 
 				if (reverbMult > KDReverbClampThresh) reverbMult = KDReverbClampThresh + (reverbMult - KDReverbClampThresh) * KDReverbClampAmount;
 				reverbMult *= KDGlobalReverbMod;
 
-				console.log(reverbMult)
+				reverbMult = Math.max(reverbMult - reverbThresh, 0);
 
-				reverbMult = Math.max(reverbMult - KDReverbFloor, 0);
+				if (low) {
+					if (reverbBoostLow && reverbMult > 0) {
+						reverbMult += reverbBoostLow;
+					}
+				} else {
+					if (reverbBoost && reverbMult > 0) {
+						reverbMult += reverbBoost;
+					}
+				}
+				
 
 				reverbDamp = KDGetPropagationFunc(point, dist, 
 					(tile: KDTile, previous: number, first: boolean, age: number) => {

@@ -679,6 +679,17 @@ interface floorParams {
 	reverbDamp?: number,
 	/** impulse sound used */
 	reverbSound?: string,
+	/** impulse sound used at low reverb levels*/
+	reverbSoundLow?: string,
+	reverbSoundLowThresh?: number,
+	/** boosts reverb if it's above the thresh*/
+	reverbBoost?: number,
+	/** boosts reverb if it's above the thresh*/
+	reverbBoostLow?: number,
+	/** cuts off reverb below this value */
+	reverbThresh?: number,
+
+	
 	/** Weighted list of successor tileset, positive X */
 	successorPositive: Record<string, number>;
 	/** Weighted list of successor tileset, negative X */

@@ -74,6 +74,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 		reverbSound: "Direct Cabinet N1",
 		reverbMult: 4,
+		reverbDamp: -1,
 
 		"background" : "RainyForstPathNight",
 		"openness" : 3, // Openness of rooms
@@ -184,6 +185,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			bandit: 1.0,
 		},
 		color: KDBaseWhite,
+		reverbDamp: -1,
 		music: {
 			"Ada18980_SmokingIsBadForYou.ogg": 4,
 		},
@@ -1139,6 +1141,13 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			cry: 0.8,
 			jng: 0.2,
 		},
+		reverbSound: "Large Bottle Hall",
+		reverbSoundLow: "Highly Damped Large Room",
+		reverbSoundLowThresh: 0.3,
+		reverbDamp: 0.5,
+		reverbMult: 0.85,
+		reverbBoostLow: 0.4,
+		reverbThresh: 0.01,
 		color: "#4fa4b8",
 		"background" : "MagicSchoolEscape",
 		"openness" : 6,
@@ -1253,6 +1262,13 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			cav: 0.8,
 			cry: 0.2,
 		},
+		reverbSound: "Large Bottle Hall",
+		reverbSoundLow: "Highly Damped Large Room",
+		reverbSoundLowThresh: 0.3,
+		reverbDamp: 0.5,
+		reverbMult: 0.85,
+		reverbBoostLow: 0.4,
+		reverbThresh: 0.01,
 		color: "#536a60",
 		"background" : "MagicSchoolEscape",
 		"openness" : 6,
@@ -1595,6 +1611,8 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		successorSame: {
 			bel: 1.0,
 		},
+		
+		reverbDamp: -1,
 		color: "#f183ff",
 		"background" : "SpookyForest",
 		"openness" : 1,
