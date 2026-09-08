@@ -503,7 +503,7 @@ function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, x
 					
 					
 				}
-			}
+			} break;
 		}
 		return exceeded;
 	}
