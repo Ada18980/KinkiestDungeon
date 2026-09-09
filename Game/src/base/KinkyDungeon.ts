@@ -1051,6 +1051,14 @@ function KDReloadMainData(force: boolean) {
 		KinkyDungeonBones = localStorage.getItem("KinkyDungeonBones") != undefined ? localStorage.getItem("KinkyDungeonBones") : KinkyDungeonBones;
 		KDBGColor = localStorage.getItem("KDBGColor") != undefined ? localStorage.getItem("KDBGColor") : KDBaseBlack;
 
+		
+		if (localStorage.getItem("KDStruggleDrawMode")) {
+			let parsed = parseInt(localStorage.getItem("KDStruggleDrawMode"));
+			if (parsed != undefined) {
+				KDStruggleDrawMode = parsed;
+			}
+		}
+
 		if (localStorage.getItem("KDResolution")) {
 			let parsed = parseInt(localStorage.getItem("KDResolution"));
 			if (parsed != undefined) {

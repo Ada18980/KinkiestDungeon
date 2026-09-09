@@ -616,7 +616,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 
 	} else {
 		let filters = (Model.Filters ? Model.Filters[KDCurrentLayer] : undefined) || KDColorSliders;
-		YY = KDDrawColorPicker("Default", KDCurrentLayer, filters, Model.Filters, YY, X,
+		YY = KDDrawColorPicker("Default", C, KDCurrentLayer, filters, Model.Filters, YY, X,
 			300,
 			() => {
 				if (Model.Filters && Model.Filters[KDCurrentLayer]) {
@@ -1706,7 +1706,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			
 			let top = 100;
 			let X = 1625;
-			let res = KDDrawColorPicker("Default", palettelayer, palette[palettelayer], palette, 
+			let res = KDDrawColorPicker("Default", C, palettelayer, palette[palettelayer], palette, 
 				top, X,
 				300);
 				
@@ -1733,7 +1733,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 
 				}
 				return true;
-			}, true, X + 10, top, 300/2 - 10, 30, 
+			}, true, X + 300/2 + 10, YY - 40 - 83, 300/2 - 10, 30, 
 			TextGet("KDResetAllLayers"), KDTextWhite);
 
 
@@ -3093,7 +3093,8 @@ function KDAbbreviate(str: string, context?: string) {
 	return str;
 }
 
-function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: LayerFilter, targetFilters: Record<string, LayerFilter>, YY: number, X = 0,
+function KDDrawColorPicker(id: string, 
+	C: Character, currentLayerName: string, targetFilter: LayerFilter, targetFilters: Record<string, LayerFilter>, YY: number, X = 0,
 	width: number = 300,
 	callback_reset?: () => void,
 	callback_paste?: (parsed: LayerFilter) => void,
@@ -3107,7 +3108,7 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 	/** Required to show the palette picker */
 	pid?: string,
 	factionFilterDef?: FactionFilterDef,
-	debug?: boolean
+	debug?: boolean,
 
 ): {YY: number, updated: boolean} {
 	let targ_filter = targetFilter;
@@ -3516,6 +3517,11 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 				else targetFilters[currentLayerName].colorize = 1;
 				ElementValue("KDCopyFilter", JSON.stringify(targetFilters[currentLayerName]));
 				lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+
+				if (C) {
+					KDRefreshCharacter.set(C, true);
+					KDDressWardrobeChar(C);
+				}
 				return true;
 			}, true, 
 			X + width/4, 
@@ -3539,6 +3545,10 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 			ElementValue("KDCopyFilter", JSON.stringify(targetFilters[currentLayerName]));
 			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 			targetFilters[currentLayerName].colorize = 1;
+			if (C) {
+				KDRefreshCharacter.set(C, true);
+				KDDressWardrobeChar(C);
+			}
 			return true;
 		}, true, 
 		X + width/2, 
@@ -3555,6 +3565,10 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 			targetFilters[currentLayerName].colorize = 0;
 			ElementValue("KDCopyFilter", JSON.stringify(targetFilters[currentLayerName]));
 			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+			if (C) {
+				KDRefreshCharacter.set(C, true);
+				KDDressWardrobeChar(C);
+			}
 			return true;
 		}, true, 
 		X + width/2, 

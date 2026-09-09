@@ -1858,7 +1858,9 @@ function KDAttemptDoor(moveX: number, moveY: number) {
 			open = true;
 		} else {
 			let grace = 0;
-			if (KinkyDungeonFlags.get("failUnfairFirst") && !KinkyDungeonFlags.get("failUnfair")) grace = 0.4;
+			if (KinkyDungeonFlags.get("failUnfairFirst") && (!KinkyDungeonFlags.get("failUnfair") || 
+				(KinkyDungeonStatsChoice.get("Psychic") && !KinkyDungeonFlags.get("failUnfairPsychic")))) grace = 0.4;
+			if (KinkyDungeonFlags.get("failUnfair") && KinkyDungeonStatsChoice.get("Psychic")) grace += 0.1;
 			let armsbound = KinkyDungeonIsArmsBound(true, true);
 			if (KDRandom() - grace < (armsbound ? KDDoorKnobChance : KDDoorKnobChanceArms)) {
 				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobSuccess" + ((armsbound) ? "" : "Arms")), KDBaseMint, 2);
@@ -1871,6 +1873,8 @@ function KDAttemptDoor(moveX: number, moveY: number) {
 				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFail" + (armsbound ? "" : "Arms")), KDBaseRed, 2);
 				KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
 				if (!KinkyDungeonFlags.get("failUnfairFirst")) {
+					if (KinkyDungeonStatsChoice.get("Psychic"))
+						KinkyDungeonSetFlag("failUnfairPsychic", 2);
 					KinkyDungeonSetFlag("failUnfair", 5);
 					KinkyDungeonSetFlag("failUnfairFirst", 10);
 				}

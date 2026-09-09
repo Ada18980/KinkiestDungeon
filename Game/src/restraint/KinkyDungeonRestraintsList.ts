@@ -4149,8 +4149,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		remove: ["Shoes"],
 		sfxGroup: "Leather",
 		factionFilters: {
-			Sole: {color: "LightNeutral", override: true},
-			Shoe: {color: "DarkNeutral", override: true},
+			Sole: {color: "LightNeutral", override: false},
+			Shoe: {color: "DarkNeutral", override: false},
 		},
 		Model: "BalletHeelsRestraint",
 		maxwill: 0.9, escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.4, "Pick": 0.4}, enemyTags: {"trap":100, "leatherHeels": 8}, playerTags: {},
@@ -4163,7 +4163,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		
 		factionFilters: {
 			Sole: {color: "Highlight", override: false},
-			Shoe: {color: "DarkNeutral", override: true},
+			Shoe: {color: "DarkNeutral", override: false},
 		},
 		Model: "BalletHeelsRestraint",
 		escapeChance: {"Struggle": -0.5, "Cut": 0.1, "Remove": 10, "Pick": 0.0}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["BalletHeels", "Heels", "Boots"]},

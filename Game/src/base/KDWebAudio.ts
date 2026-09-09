@@ -522,25 +522,28 @@ function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPo
 				
 				let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 				let drawFloor = altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
+				if (altType?.soundParams) {
+					drawFloor = altType?.soundParams;
+				}
 				
 				let reverbSoundLow = KDReverbSoundLow;
 				let reverbSoundLowThresh = KDReverbSoundLowThresh;
 				let reverbBoostLow = reverbBoost;
 
 				if (!reverbSound) {
-					if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)]) {
-						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSound)
-							reverbSound = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSound;
-						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbBoost)
-							reverbBoost = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbBoost;
-						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbThresh)
-							reverbThresh = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbThresh;
-						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSoundLow)
-							reverbSoundLow = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSoundLow;
-						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbBoostLow)
-							reverbBoostLow = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbBoostLow;
-						if (KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSoundLowThresh)
-							reverbSoundLowThresh = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)].reverbSoundLowThresh;
+					if (drawFloor) {
+						if (KinkyDungeonMapParams[drawFloor].reverbSound)
+							reverbSound = KinkyDungeonMapParams[drawFloor].reverbSound;
+						if (KinkyDungeonMapParams[drawFloor].reverbBoost)
+							reverbBoost = KinkyDungeonMapParams[drawFloor].reverbBoost;
+						if (KinkyDungeonMapParams[drawFloor].reverbThresh)
+							reverbThresh = KinkyDungeonMapParams[drawFloor].reverbThresh;
+						if (KinkyDungeonMapParams[drawFloor].reverbSoundLow)
+							reverbSoundLow = KinkyDungeonMapParams[drawFloor].reverbSoundLow;
+						if (KinkyDungeonMapParams[drawFloor].reverbBoostLow)
+							reverbBoostLow = KinkyDungeonMapParams[drawFloor].reverbBoostLow;
+						if (KinkyDungeonMapParams[drawFloor].reverbSoundLowThresh)
+							reverbSoundLowThresh = KinkyDungeonMapParams[drawFloor].reverbSoundLowThresh;
 					}
 					if (reverbBoost == undefined) reverbBoost = KDBaseReverbBoost
 					if (reverbBoostLow == undefined) reverbBoostLow = KDBaseReverbBoost

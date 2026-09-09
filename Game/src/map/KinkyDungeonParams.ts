@@ -72,8 +72,8 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			//"Shopping.ogg": 10,
 		},
 
-		reverbSound: "Direct Cabinet N1",
-		reverbMult: 4,
+		reverbSound: "French 18th Century Salon",
+		reverbSoundLow: "Direct Cabinet N1",
 		reverbDamp: -1,
 
 		"background" : "RainyForstPathNight",
@@ -1612,7 +1612,10 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			bel: 1.0,
 		},
 		
+		reverbSound: "Masonic Lodge",
+		reverbSoundLow: "French 18th Century Salon",
 		reverbDamp: -1,
+		reverbMult: 0.15,
 		color: "#f183ff",
 		"background" : "SpookyForest",
 		"openness" : 1,

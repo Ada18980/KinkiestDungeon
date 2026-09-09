@@ -54,7 +54,7 @@ let KDDrawStruggleIcon = {
 	[KDDrawStruggleEnum["STRUGGLE"]]: "Struggle",
 	[KDDrawStruggleEnum["NONE"]]: "True",
 };
-let KinkyDungeonDrawStruggle = KDDrawStruggleEnum.ALMOSTALL;
+let KDStruggleDrawMode = KDDrawStruggleEnum.ALMOSTALL;
 let KDPlayerSetPose = false;
 let KDToggleXRay = 0;
 let KDBulletTransparency = false;
@@ -1267,11 +1267,12 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	}
 
 	if (DrawButtonKDEx("RestHide", (_bdata) => {
-		KinkyDungeonDrawStruggle += 1;
-		if (KinkyDungeonDrawStruggle > KDDrawMaxStruggle) KinkyDungeonDrawStruggle = 0;
+		KDStruggleDrawMode += 1;
+		if (KDStruggleDrawMode > KDDrawMaxStruggle) KDStruggleDrawMode = 0;
+		localStorage.setItem("KDStruggleDrawMode", "" + KDStruggleDrawMode);
 		return true;
 	}, true, 510, 925, 60, 60, "", KinkyDungeonStruggleGroups.length > 0 ? KDBaseWhite : "#333333", KinkyDungeonRootDirectory + "Hide" + (
-		KDDrawStruggleIcon[KinkyDungeonDrawStruggle] || "False") + ".png", "")) str = "KDHideRest";
+		KDDrawStruggleIcon[KDStruggleDrawMode] || "False") + ".png", "")) str = "KDHideRest";
 	if (MouseIn(0, 0, 500, 1000) || MouseIn(500, 900, 320, 200) || KDPlayerSetPose || KDToggleXRay) {
 		if (StandalonePatched) {
 			if (DrawButtonKDEx("SetPose", (_bdata) => {
@@ -1342,7 +1343,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 					resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
 			resourcesIndex--;
 
-			if ((KDShowQuickInv() && !KDToggleShowAllBuffs) || (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.FULL || KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE || MouseIn(0, 0, 500, 1000))) {
+			if ((KDShowQuickInv() && !KDToggleShowAllBuffs) || (KDStruggleDrawMode == KDDrawStruggleEnum.FULL || KDStruggleDrawMode == KDDrawStruggleEnum.STRUGGLE || MouseIn(0, 0, 500, 1000))) {
 				KDDraw(kdcanvas, kdpixisprites, "pick", KinkyDungeonRootDirectory + "Items/Pick.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
 					zIndex: 90
 				});
@@ -3424,7 +3425,7 @@ function KDDrawStruggleGroups() {
 	} else {
 		currentHighlightedItemNoReset = false;
 	}
-	if (!KDShowQuickInv() && ((KinkyDungeonDrawStruggle > 0 ||
+	if (!KDShowQuickInv() && ((KDStruggleDrawMode > 0 ||
 		((currentHighlightedItem) || MouseIn(0, 0, 500, 1000))) && KinkyDungeonStruggleGroups))
 		for (let sg of KinkyDungeonStruggleGroups) {
 			let ButtonWidth = 48;
@@ -3451,8 +3452,8 @@ function KDDrawStruggleGroups() {
 					|| (!currentHighlightedItem && MouseIn(((!sg.left) ? (260) : 0), 
 					y, 
 					500, (ButtonWidth))))
-					|| KinkyDungeonDrawStruggle == KDDrawStruggleEnum.NONE
-					|| KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE)) {
+					|| KDStruggleDrawMode == KDDrawStruggleEnum.NONE
+					|| KDStruggleDrawMode == KDDrawStruggleEnum.STRUGGLE)) {
 
 					renderedButtons = true;
 					//let r = KDRestraint(item);
@@ -3873,17 +3874,17 @@ function KDDrawStruggleGroups() {
 				});
 			}
 
-			let mini = (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.MOST && 
+			let mini = (KDStruggleDrawMode == KDDrawStruggleEnum.MOST && 
 					!((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
 					|| MouseIn(0, 0, 500, 1000)))
-				|| (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.ALMOSTALL && 
+				|| (KDStruggleDrawMode == KDDrawStruggleEnum.ALMOSTALL && 
 					!((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
 					|| MouseIn(0, y, 500, ButtonWidth)))
-				|| (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE && 
+				|| (KDStruggleDrawMode == KDDrawStruggleEnum.STRUGGLE && 
 					!(((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
 					|| MouseIn(((!sg.left) ? (260) : 0), 
 					y, 
-					500, (ButtonWidth))) || KinkyDungeonDrawStruggle > 2));
+					500, (ButtonWidth))) || KDStruggleDrawMode > 2));
 
 			let color = KDBaseWhite;
 			//if (item && (item.lock || KDGetCurse(item)) {color = "#ffaadd";}

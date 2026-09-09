@@ -213,6 +213,8 @@ interface AltType {
 	guardType?: string,
 	/** Visual skin */
 	skin?: string,
+	/**  Use for sound design effects like reverb */
+	soundParams?: string,
 	/** Does not use the skin music */
 	useDefaultMusic?: boolean,
 	/** Increased number of enemies */
@@ -591,6 +593,7 @@ let alts: Record<string, AltType> = {
 			dollshoppe: true,
 		},
 		skin: "shoppe",
+		soundParams: "DollShoppe",
 		musicParams: "DollShoppe",
 		lightParams: "DollShoppe",
 		useGenParams: "DollShoppe",

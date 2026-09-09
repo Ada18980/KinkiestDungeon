@@ -73,7 +73,7 @@ let KinkyDungeonFactionFilters: Record<string, Record<string, LayerFilter>> = {
 	"Dressmaker": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":0.91,"brightness":1,"red":2.1372549019607843,"green":1.1764705882352942,"blue":3.1176470588235294,"alpha":1},
 		DarkNeutral: {"gamma":0.8333333333333333,"saturation":0.1,"contrast":1.03,"brightness":1,"red":2.372549019607843,"green":1.7058823529411764,"blue":3.2941176470588234,"alpha":1},
-		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.83,"brightness":1,"red":5,"green":0.5686274509803921,"blue":1.8823529411764706,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0.88,"contrast":1.1,"brightness":2.033333333333333,"red":5,"green":0.5686274509803921,"blue":1.8823529411764706,"alpha":1,"hue":308.40000000000003,"colorize":1},
 		Highlight: {"gamma":0.5333333333333333,"saturation":0,"contrast":2.05,"brightness":1.2833333333333332,"red":1,"green":1,"blue":1,"alpha":1},
 	},
 	"Dollsmith": {
