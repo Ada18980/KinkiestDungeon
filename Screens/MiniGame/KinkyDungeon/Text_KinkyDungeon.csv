@@ -13066,7 +13066,7 @@ rShopBuy_NoMoneyRobot,"(The SPEAKER beeps)|Insufficient currency."
 
 dShopBuySell,(Look at what ${Ethey} want${Es} to buy)
 dShopBuyAttack,You're giving me everything you have.
-dShopBuyAttackGag,(Flail threateningly at her)
+dShopBuyAttackGag,(Flail threateningly at ${Ethem})
 dShopBuyAttack_Confirm,(Do it)
 dShopBuyAttack_Leave,(Back off)
 

@@ -752,7 +752,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return enemy.items?.length > 0;
+				return KDHasShopBuy(enemy);
 			}
 			return false;
 		},
@@ -1979,7 +1979,7 @@ function KDShopBuyDialogue(name: string): KinkyDialogue {
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return KDEnemyHasFlag(enemy, "Shop");
+				return KDHasShopSell(enemy)
 			}
 			return false;
 		},
@@ -3296,4 +3296,12 @@ function KDIsSubbier(player: entity, enemy: entity) {
 		return false;
 	}
 	return KinkyDungeonGoddessRep.Ghost > -25 && !KDCanDom(enemy, false, -0.3); // If player cant dominate them with that bonus, then...
+}
+
+
+function KDHasShopBuy(enemy: entity) {
+	return enemy.items?.length > 0 && !enemy.Enemy.nonHumanoid && !!enemy.Enemy.bound;
+}
+function KDHasShopSell(enemy: entity) {
+	return KDEnemyHasFlag(enemy, "Shop");
 }
