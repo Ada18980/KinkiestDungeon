@@ -3084,7 +3084,7 @@ interface KinkyDungeonSave {
 	perksmode?: number,
 	easymode?: number,
 	progressionmode?: string,
-	KinkyDungeonDrawStruggle: number,
+	KDStruggleDrawMode: number,
 
 	faction: Record<string, Record<string, number>>;
 }
