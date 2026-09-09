@@ -39,20 +39,20 @@ let KinkyDungeonStruggleGroupsBase = [
 	"ItemFeet",
 	"ItemBoots",
 ];
-let KDDrawStruggleEnum = {
-	ALMOSTALL: 1,
-	MOST: 2,
-	FULL: 0,
-	STRUGGLE: 3,
-	NONE: 4,
+enum KDDrawStruggleEnum {
+	ALMOSTALL = 1,
+	MOST = 2,
+	FULL = 0,
+	STRUGGLE = 3,
+	NONE = 4,
 };
 let KDDrawMaxStruggle = 4;
 let KDDrawStruggleIcon = {
-	[KDDrawStruggleEnum["ALMOSTALL"]]: "AlmostAll",
-	[KDDrawStruggleEnum["MOST"]]: "Most",
-	[KDDrawStruggleEnum["FULL"]]: "Full",
-	[KDDrawStruggleEnum["STRUGGLE"]]: "Struggle",
-	[KDDrawStruggleEnum["NONE"]]: "True",
+	[KDDrawStruggleEnum.ALMOSTALL]: "AlmostAll",
+	[KDDrawStruggleEnum.MOST]: "Most",
+	[KDDrawStruggleEnum.FULL]: "Full",
+	[KDDrawStruggleEnum.STRUGGLE]: "Struggle",
+	[KDDrawStruggleEnum.NONE]: "True",
 };
 let KinkyDungeonDrawStruggle = KDDrawStruggleEnum.ALMOSTALL;
 let KDPlayerSetPose = false;

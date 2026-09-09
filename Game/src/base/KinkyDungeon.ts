@@ -7122,6 +7122,7 @@ function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
 	save.seed = KinkyDungeonSeed;
 	save.statchoice = Array.from(KinkyDungeonStatsChoice);
 	//save.mapIndex = KinkyDungeonMapIndex;
+	save.KinkyDungeonDrawStruggle = KinkyDungeonDrawStruggle;
 
 	save.flags = Array.from(KinkyDungeonFlags);
 	save.KDCommanderRoles = Array.from(KDCommanderRoles);
@@ -7303,6 +7304,7 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 			if (saveData.rescued != undefined) KinkyDungeonRescued = saveData.rescued;
 			if (saveData.aid != undefined) KinkyDungeonAid = saveData.aid;
 			if (saveData.KDCurrentWorldSlot) KDCurrentWorldSlot = saveData.KDCurrentWorldSlot;
+			if (saveData.KinkyDungeonDrawStruggle !== undefined) KinkyDungeonDrawStruggle = saveData.KinkyDungeonDrawStruggle;
 
 
 			KDOrigStamina = KinkyDungeonStatStamina*10;
