@@ -8716,3 +8716,10 @@ function KDSplitIntoSublists(list: any[], perList = 10): any[] {
 	}
 	return ret;
 }
+
+function KDGoToScreen(screen: string) {
+	if (screen == "Collection") {
+		KDResetCollectionScreen();
+	}
+	KinkyDungeonDrawState = screen;
+}
