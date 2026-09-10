@@ -76,6 +76,10 @@ Must do
 - Proper stripping
 - species perks
 
+5.5.3
+- Removed friendly fire from most allied abilities, though not all, and not own abilities
+- 
+
 5.5.2
 - Added WebAudio support for better sound quality
 - Added sound muting effect with vibrators

@@ -2690,7 +2690,7 @@ function KDPlayerEffectRestrain (
 }
 
 function KDTestSpellHitsNoFF(player: entity, entity: entity, spell: spell, allowEvade: number = 0, allowBlock: number = 1) {
-	if (!entity || spell.friendlyfire || (!spell.noFF && (player != KDPlayer() && !KDAllied(player)) && !KDAllied(entity))) {
+	if (entity == player || !entity || spell.friendlyfire || (!spell.noFF && (player != KDPlayer() && !KDAllied(player)) && !KDAllied(entity))) {
 		return KDTestSpellHits(spell, allowEvade, allowBlock);
 	}
 	return false;

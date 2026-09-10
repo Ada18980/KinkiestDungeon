@@ -2024,6 +2024,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "EnemyEnchantRope", castCondition: "EnemyEnchantRope", color: KDBaseRed, tags: ["rope", "utility", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "Freeze", school: "Conjure", manacost: 5.5, components: ["Verbal"],
 		level:1, type:"inert", onhit:"aoe", evadeable: false, noblock: true, power: 1.0, range: 2.99, size: 3, lifetime: 1, aoe: 1.5, damage: "arcane", delay: 1,
 		playerEffect: {name: "EnchantRope", power: 1},
+		friendlyfire: true,
 		events: [
 			{type: "EnchantRope", trigger: "bulletHitEnemy", mult: 0.5, power: 1},
 		]},
@@ -2031,6 +2032,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "EnemyEnchantRope2", castCondition: "EnemyEnchantRope2", color: "#92e8c0", tags: ["rope", "utility", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "Freeze", school: "Conjure", manacost: 5.5, components: ["Verbal"],
 		level:1, type:"inert", onhit:"aoe", evadeable: false, noblock: true, power: 1.0, range: 2.99, size: 3, lifetime: 1, aoe: 1.5, damage: "arcane", delay: 1,
 		playerEffect: {name: "EnchantRope", power: 3},
+		friendlyfire: true,
 		events: [
 			{type: "EnchantRope", trigger: "bulletHitEnemy", mult: 1.0, power: 3},
 		]},
@@ -2038,6 +2040,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "EnemyEnchantRope3", castCondition: "EnemyEnchantRope3", color: "#92e8c0", tags: ["rope", "utility", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "Freeze", school: "Conjure", manacost: 5.5, components: ["Verbal"],
 		level:1, type:"inert", onhit:"aoe", evadeable: false, noblock: true, power: 1.0, range: 2.99, size: 3, lifetime: 1, aoe: 1.5, damage: "arcane", delay: 1,
 		playerEffect: {name: "EnchantRope", power: 4},
+		friendlyfire: true,
 		events: [
 			{type: "EnchantRope", trigger: "bulletHitEnemy", mult: 1.0, power: 4},
 		]},
@@ -2623,6 +2626,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		hitColor: 0xfffafa, hitLight: 7,
 		noise: 4,
 		faction: "Trap",
+		friendlyfire: true,
 		hitevents: [
 			{type: "BlindAll", trigger: "bulletHitEnemy", time: 9},
 		],
