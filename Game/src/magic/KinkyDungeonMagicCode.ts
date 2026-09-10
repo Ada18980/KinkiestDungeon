@@ -800,7 +800,6 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name, KDGetGenericDialogueParams(entity, en)), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 
 					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
-					KDChangeCharge(spell.name, "spell", "cast", 0.05);
 					return "Cast";
 				}
 				

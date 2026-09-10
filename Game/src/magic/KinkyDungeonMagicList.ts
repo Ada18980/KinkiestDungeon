@@ -1379,7 +1379,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 
 		{name: "DisplayStand", prerequisite: "ApprenticeMetal", tags: ["metal", "summon", "utility", "petsuit"], sfx: "Magic", school: "Conjure", manacost: 1, components: [], level:1,
 			type:"special", special: "DisplayStand",
-			onhit:"", time:0, power: 0.0, range: 2.99, size: 1, aoe: 0.5, damage: "glue"},
+			onhit:"", time:0, power: 0.0, range: 4.5, size: 1, aoe: 0.5, damage: "glue"},
 
 		{name: "RopeBoltLaunch", tags: ["rope", "bolt", "binding", "offense"], prerequisite: "ApprenticeRope", sfx: "MagicSlash", school: "Conjure",
 			manacost: 3, components: ["Verbal"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 1, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
