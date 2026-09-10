@@ -4313,7 +4313,7 @@ function KinkyDungeonAttemptQuickRestraint(Name: string): boolean {
 	//KDCloseQuickInv();
 	if (KinkyDungeonDrawState == "Inventory") {
 		KDResetAlternateInventoryRender();
-		KinkyDungeonDrawState = "Game";
+		KDGoToScreen("Game");
 	}
 	if (item) {
 		KinkyDungeonTargetingSpell = KDBondageSpell;

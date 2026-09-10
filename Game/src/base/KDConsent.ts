@@ -802,7 +802,7 @@ function KDDrawConsent(xOffset) {
 				});
                 KinkyDungeonPreviousState = "";
                 KinkyDungeonState = "Game";
-                KinkyDungeonDrawState = "Game";
+                KDGoToScreen("Game");
 				KDConfirmOverInventoryAction = false;
 			}
 			if (KDSoundEnabled())

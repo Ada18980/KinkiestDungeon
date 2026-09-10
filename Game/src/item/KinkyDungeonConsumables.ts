@@ -428,7 +428,7 @@ function KinkyDungeonConsumableEffect(Consumable: consumable, type: string, inv:
 		KDStunTurns(1, true);
 	} else if (type == "targetspell") {
 		KDCloseQuickInv();
-		if (KinkyDungeonDrawState == "Inventory") KinkyDungeonDrawState = "Game";
+		if (KinkyDungeonDrawState == "Inventory") KDGoToScreen("Game");
 		KinkyDungeonTargetingSpell = KinkyDungeonFindSpell(Consumable.spell, true);
 		KinkyDungeonTargetingSpellItem = Consumable;
 		KinkyDungeonTargetingSpellWeapon = null;
@@ -577,7 +577,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 
 			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 
@@ -613,7 +613,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 
 			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
@@ -626,7 +626,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 
 			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
@@ -642,7 +642,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 
 		KDResetAlternateInventoryRender();
 		if (KinkyDungeonTextMessageTime > 0)
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 
 
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -761,7 +761,7 @@ function KDTargetConsumable(inv: item, Quantity: number, itemEffect?: string): I
 	let range = KDGetPotionRange(inv, itemEffect);
 	KDCloseQuickInv();
 	if (KinkyDungeonDrawState == "Inventory") {
-		KinkyDungeonDrawState = "Game";
+		KDGoToScreen("Game");
 		KDResetAlternateInventoryRender();
 	}
 	KinkyDungeonTargetingSpell =
@@ -816,7 +816,7 @@ function KDStandardConsumableHandsCheck(item: item, Quantity: number): boolean {
 
 			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
@@ -829,7 +829,7 @@ function KDStandardConsumableHandsCheck(item: item, Quantity: number): boolean {
 
 			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
@@ -845,7 +845,7 @@ function KDStandardConsumableHandsCheck(item: item, Quantity: number): boolean {
 
 		KDResetAlternateInventoryRender();
 		if (KinkyDungeonTextMessageTime > 0)
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 
 
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);

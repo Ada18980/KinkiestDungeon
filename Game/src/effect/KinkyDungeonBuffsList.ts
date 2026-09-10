@@ -303,7 +303,7 @@ let KDCustomBuff: Record<string, (entity: entity, buff: KDBuff) => void> = {
  */
 let KDBuffClick: Record<string, (buff: KDBuff, entity: entity, data: any) => void> = {
 	"Training": (_buff, entity, data) => {
-		KinkyDungeonDrawState = "Progress";
+		KDGoToScreen("Progress");
 		if (data?.training) {
 			KDCurrentProgressMainSelection = "Training" + data.training;
 		}

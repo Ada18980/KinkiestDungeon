@@ -2058,22 +2058,22 @@ function KinkyDungeonDrawGame() {
 		} else if (KinkyDungeonDrawState == "Magic") {
 			KDDrawNavBar(-2);
 			KinkyDungeonDrawPlayerNameInMenus()
-			//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), KDBaseWhite, "", "");
+			//DrawButtonKDEx("return", (bdata) => {KDGoToScreen("Game"); return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), KDBaseWhite, "", "");
 			KinkyDungeonDrawMagic();
 		} else if (KinkyDungeonDrawState == "MagicSpells") {
-			//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), KDBaseWhite, "", "");
+			//DrawButtonKDEx("return", (bdata) => {KDGoToScreen("Game"); return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), KDBaseWhite, "", "");
 			KDDrawNavBar(2);
 			KinkyDungeonDrawPlayerNameInMenus()
 			KinkyDungeonDrawMagicSpells();
 		} else if (KinkyDungeonDrawState == "Inventory") {
-			//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), KDBaseWhite, "", "");
+			//DrawButtonKDEx("return", (bdata) => {KDGoToScreen("Game"); return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), KDBaseWhite, "", "");
 			KDDrawNavBar(1);
 			KinkyDungeonDrawPlayerNameInMenus()
 			KinkyDungeonDrawInventory();
 		} else if (KinkyDungeonDrawState == "Logbook") {
 			KDDrawNavBar(3);
 			KinkyDungeonDrawPlayerNameInMenus()
-			//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), KDBaseWhite, "", "");
+			//DrawButtonKDEx("return", (bdata) => {KDGoToScreen("Game"); return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), KDBaseWhite, "", "");
 			KinkyDungeonDrawLore();
 		} else if (KinkyDungeonDrawState == "Quest") {
 			KDDrawNavBar(3);
@@ -2103,7 +2103,7 @@ function KinkyDungeonDrawGame() {
 
 
 		else if (KinkyDungeonDrawState == "Reputation") {
-			//DrawButtonKDEx("return", (bdata) => {KinkyDungeonDrawState = "Game"; return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), KDBaseWhite, "", "");
+			//DrawButtonKDEx("return", (bdata) => {KDGoToScreen("Game"); return true;}, true, KDReturnButtonXX, 925, 165, 60, TextGet("KinkyDungeonGame"), KDBaseWhite, "", "");
 			KDDrawNavBar(3);
 			KinkyDungeonDrawPlayerNameInMenus()
 			KinkyDungeonDrawReputation();
@@ -2206,7 +2206,7 @@ function KinkyDungeonDrawGame() {
                         )
                         KinkyDungeonTargetingSpellItem = null;
                         KinkyDungeonTargetingSpellWeapon = null;
-                        KinkyDungeonDrawState = "Game"
+                        KDGoToScreen("Game")
 						KDResetAlternateInventoryRender();
                         return true;
                     }, true, 500, 96, 145, 48, "Defeat", KDBaseWhite, "");
@@ -2225,7 +2225,7 @@ function KinkyDungeonDrawGame() {
                         )
                         KinkyDungeonTargetingSpellItem = null;
                         KinkyDungeonTargetingSpellWeapon = null;
-                        KinkyDungeonDrawState = "Game"
+                        KDGoToScreen("Game")
 						KDResetAlternateInventoryRender();
                         return true;
                     }, true, 655, 96, 145, 48, "Bind", KDBaseWhite, "");
@@ -2260,7 +2260,7 @@ function KinkyDungeonDrawGame() {
 						KDGetContainer("PlayerChest", undefined, undefined, true, KDPlayerChestFilters);
 
 						KDUI_ContainerBackScreen = KinkyDungeonDrawState;
-						KinkyDungeonDrawState = "Container",
+						KDGoToScreen("Container"),
 						KinkyDungeonCurrentFilter = "All";
 						KDUI_CurrentContainer = "PlayerChest";
 						return true;
@@ -2326,7 +2326,7 @@ function KinkyDungeonDrawGame() {
 			DrawTextFitKD(TextGet("KinkyDungeonRestartConfirm"), 1250, 400, 1000, KDBaseWhite, "#333333");
 			DrawButtonKDEx("returnbutton", () => {
 				KDResetAlternateInventoryRender();
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 
 				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 				KinkyDungeonDressPlayer();
@@ -2508,7 +2508,7 @@ function KinkyDungeonDrawGame() {
 					KDContextMenu = false;
 				}
 			} else if (KinkyDungeonDrawState == "Magic") {
-				KinkyDungeonDrawState = "MagicSpells";
+				KDGoToScreen("MagicSpells");
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
@@ -2516,11 +2516,11 @@ function KinkyDungeonDrawGame() {
 				KDContextMenu = false;
 			} else if ((KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage")
 					&& (KDCollectionTab || KDCurrentRestrainingTarget || KDCurrentFacilityTarget)) {
-				KDCollectionTab = "";
+				KDResetCollectionScreen();
 				if (KDCurrentFacilityTarget) {
 					KDCurrentFacilityTarget = "";
 					KDFacilityCollectionCallback = null;
-					KinkyDungeonDrawState = "Facilities";
+					KDGoToScreen("Facilities");
 				}
 				KDCurrentRestrainingTarget = 0;
 				KinkyDungeonGameKey.keyPressed[9] = false;
@@ -2541,7 +2541,7 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonInspect = false;
 				KDInteracting = false;
 				KinkyDungeonUpdateLightGrid = true;
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 				KDResetAlternateInventoryRender();
 				KinkyDungeonMessageToggle = false;
 				KinkyDungeonTargetingSpell = null;

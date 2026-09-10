@@ -47,7 +47,7 @@ let KDCustomCancels = [
 			return KDGameData.InventoryAction == "Recycle" && KinkyDungeonDrawState == "Inventory";
 		},
 		cancel: () => {
-			KinkyDungeonDrawState = "Facilities";
+			KDGoToScreen("Facilities");
 			KinkyDungeonGameKey.keyPressed[9] = false;
 			KinkyDungeonKeybindingCurrentKey = '';
 			return true;
@@ -59,7 +59,7 @@ let KDCustomCancels = [
 			return KinkyDungeonDrawState == "Container";
 		},
 		cancel: () => {
-			KinkyDungeonDrawState = KDUI_ContainerBackScreen || "Game";
+			KDGoToScreen(KDUI_ContainerBackScreen || "Game");
 			KinkyDungeonGameKey.keyPressed[9] = false;
 			KinkyDungeonKeybindingCurrentKey = '';
 			return true;
@@ -80,3 +80,4 @@ let KDCustomCancels = [
 		},
 	}
 ];
+

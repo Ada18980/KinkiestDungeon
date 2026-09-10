@@ -17,7 +17,7 @@ function KDDrawWarden(x: number, y: number, width: number): number {
 		DrawButtonKDEx(
 			"chestbutton", () => {
 				KDUI_ContainerBackScreen = KinkyDungeonDrawState;
-				KinkyDungeonDrawState = "Container",
+				KDGoToScreen("Container"),
 				KinkyDungeonCurrentFilter = "All";
 				KDUI_CurrentContainer = "WardenChest";
 			}, true, x + 900, yy + 60, 80, 80, "", KDBaseWhite,

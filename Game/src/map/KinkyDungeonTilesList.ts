@@ -627,7 +627,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 						}
 					} else {
 						KDUI_ContainerBackScreen = KinkyDungeonDrawState;
-						KinkyDungeonDrawState = "Container";
+						KDGoToScreen("Container");
 						KinkyDungeonCurrentFilter = "All";
 						KDUI_Container_LastSelected = "Chest";
 					}

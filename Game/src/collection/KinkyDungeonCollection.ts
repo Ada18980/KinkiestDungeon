@@ -178,7 +178,7 @@ function KinkyDungeonDrawBondage(xOffset = -125) {
 	if (en && KDCanBind(en)) {
 		KDDrawCollectionRestrain(KDCurrentRestrainingTarget, x + xOffset, 150);
 	} else {
-		KinkyDungeonDrawState = "Game";
+		KDGoToScreen("Game");
 		KDResetAlternateInventoryRender();
 	}
 
@@ -1682,7 +1682,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 					if (KDNPCChar.get(en.id))
 						KDRefreshCharacter.set(KDNPCChar.get(en.id), true);
 					KDUpdatePersistentNPC(en.id, true);
-					//KinkyDungeonDrawState = "Game";
+					//KDGoToScreen("Game");
 					KinkyDungeonAdvanceTime(1);
 				}
 			}
@@ -1745,7 +1745,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 						if (KDNPCChar.get(en.id))
 							KDRefreshCharacter.set(KDNPCChar.get(en.id), true);
 						KDUpdatePersistentNPC(en.id, true);
-						//KinkyDungeonDrawState = "Game";
+						//KDGoToScreen("Game");
 						KinkyDungeonAdvanceTime(1);
 					}
 				}
@@ -2167,4 +2167,11 @@ function KDGenCharForCollection(value: KDCollectionEntry, enemyType: enemy) {
 		}
 		KDRefreshCharacter.set(KDSpeakerNPC, true);
 	} 
+}
+
+function KDResetCollectionScreen(screen = "") {
+	KDCollectionTab = screen;
+	KDCurrentFacilityTarget = "";
+	KDFacilityCollectionCallback = null;
+	KinkyDungeonCheckClothesLoss = true;
 }

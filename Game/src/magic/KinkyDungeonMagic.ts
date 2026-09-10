@@ -1628,11 +1628,11 @@ function KinkyDungeonHandleMagic(): boolean {
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = null;
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 			KDResetAlternateInventoryRender();
 		}
 	} else if (KinkyDungeonPreviewSpell && MouseIn(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40, canvasOffsetY_ui + 125, 225, 60)) {
-		if (KinkyDungeonPreviewSpell.hideLearned) KinkyDungeonDrawState = "MagicSpells";
+		if (KinkyDungeonPreviewSpell.hideLearned) KDGoToScreen("MagicSpells");
 		KDSendInput("spellLearn", {SpellName: KinkyDungeonPreviewSpell.name});
 		return true;
 	}
@@ -2191,7 +2191,7 @@ function KinkyDungeonListSpells(Mode: string): spell {
 									let ind = KinkyDungeonSpellIndex(spell.name);
 									if (!KinkyDungeonSpellChoices.includes(ind)) {
 										KinkyDungeonClickSpellChoice(KDSwapSpell, ind);
-										KinkyDungeonDrawState = "Game";
+										KDGoToScreen("Game");
 										KDResetAlternateInventoryRender();
 									}
 								}
@@ -2377,7 +2377,7 @@ function KinkyDungeonSetPreviewSpell(spell: spell) {
 	let index = KinkyDungeonSpellIndex(spell.name);
 	KinkyDungeonPreviewSpell = index >= 0 ? null : spell;
 	if (!KinkyDungeonPreviewSpell) KinkyDungeonCurrentPage = index;
-	KinkyDungeonDrawState = "Magic";
+	KDGoToScreen("Magic");
 }
 
 function KinkyDungeonGetCompList(spell: spell): string {

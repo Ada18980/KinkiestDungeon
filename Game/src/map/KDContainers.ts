@@ -504,7 +504,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 
 	DrawButtonKDEx(
 		"backbutton", () => {
-			KinkyDungeonDrawState = KDUI_ContainerBackScreen ? KDUI_ContainerBackScreen : "Game";
+			KDGoToScreen(KDUI_ContainerBackScreen ? KDUI_ContainerBackScreen : "Game");
 			return true;
 		}, true, 1020, 920, 200, 64, TextGet("KDContainerBack_" + KDUI_ContainerBackScreen),
 		KDBaseWhite, undefined

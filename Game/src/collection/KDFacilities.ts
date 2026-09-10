@@ -290,10 +290,10 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 				DrawButtonKDEx(facility + "serv" + i, (b) => {
 					KDCurrentFacilityTarget = facility;
 					KDCurrentFacilityCollectionType = ["Servants", "Prisoners"];
-					KinkyDungeonDrawState = "Collection";
+					KDGoToScreen("Collection");
 					if (KDNPCChar.get(servant))
 						KDRefreshCharacter.set(KDNPCChar.get(servant), true);
-					KDCollectionTab = "";
+					KDResetCollectionScreen();
 					KDCollectionSelected = servant;
 					KDResetCollectionUI();
 					KDFacilityCollectionCallback = setCallback;
@@ -315,10 +315,10 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 				DrawButtonKDEx(facility + "pris" + i, (b) => {
 					KDCurrentFacilityTarget = facility;
 					KDCurrentFacilityCollectionType = ["Servants", "Prisoners"];
-					KinkyDungeonDrawState = "Collection";
+					KDGoToScreen("Collection");
 					if (KDNPCChar.get(prisoner))
 						KDRefreshCharacter.set(KDNPCChar.get(prisoner), true);
-					KDCollectionTab = "";
+					KDResetCollectionScreen();
 					KDCollectionSelected = prisoner;
 					KDResetCollectionUI();
 					KDFacilityCollectionCallback = setCallback;

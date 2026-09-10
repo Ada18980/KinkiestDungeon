@@ -124,7 +124,7 @@ let KDObjectClick: Record<string, (x: number, y: number) => boolean> = {
 				true)?.name;
 			if (KDUI_CurrentContainer) {
 				KDUI_ContainerBackScreen = KinkyDungeonDrawState;
-				KinkyDungeonDrawState = "Container";
+				KDGoToScreen("Container");
 				KinkyDungeonCurrentFilter = "All";
 				KDUI_Container_LastSelected = KDUI_CurrentContainer;
 				return true;
@@ -239,7 +239,7 @@ let KDTileInteract: Record<string, (x: number, y: number, dist?: number) => bool
 				true)?.name;
 			if (KDUI_CurrentContainer) {
 				KDUI_ContainerBackScreen = KinkyDungeonDrawState;
-				KinkyDungeonDrawState = "Container";
+				KDGoToScreen("Container");
 				KinkyDungeonCurrentFilter = "All";
 				KDUI_Container_LastSelected = KDUI_CurrentContainer;
 				return true;
@@ -909,7 +909,7 @@ function KDDrawOrb() {
 	DrawButtonKDEx("orbspellrandom", (_b) => {
 		let shrine = Object.keys(KinkyDungeonShrineBaseCosts)[Math.floor(KDRandom() * Object.keys(KinkyDungeonShrineBaseCosts).length)];
 		KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 0.9 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
-		KinkyDungeonDrawState = "Game";
+		KDGoToScreen("Game");
 		KDResetAlternateInventoryRender();
 		return true;
 	}, true,  XX, yPad + KDModalArea_y + spacing * i - 27 + 30, 250, spacing - 8, TextGet("KinkyDungeonSurpriseMe"), KDBaseWhite, undefined, undefined, undefined, false, KDTextGray2);

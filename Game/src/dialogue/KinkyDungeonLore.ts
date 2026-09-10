@@ -515,7 +515,7 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 	let width = 1100 / num;
 	let II = 0;
 	DrawButtonKDExScroll("TabLore", scrollFunc, (_b) => {
-		KinkyDungeonDrawState = "Logbook";
+		KDGoToScreen("Logbook");
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonLog"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Logbook", KDButtonColor, undefined, undefined,
@@ -524,7 +524,7 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 		hotkeyPress: KinkyDungeonKeyTab[II],
 	}); II++;
 	DrawButtonKDExScroll("TabRep", scrollFunc, (_b) => {
-		KinkyDungeonDrawState = "Reputation";
+		KDGoToScreen("Reputation");
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonReputation"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Reputation", KDButtonColor, undefined, undefined,
@@ -533,7 +533,7 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 		hotkeyPress: KinkyDungeonKeyTab[II],
 	}); II++;
 	DrawButtonKDExScroll("TabQuest", scrollFunc, (_b) => {
-		KinkyDungeonDrawState = "Quest";
+		KDGoToScreen("Quest");
 		KDSortQuests(KDPlayer());
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonQuest"), KDBaseWhite, undefined, undefined, undefined,
@@ -543,7 +543,7 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 		hotkeyPress: KinkyDungeonKeyTab[II],
 	}); II++;
 	DrawButtonKDExScroll("TabJourneyMap", scrollFunc, (_b) => {
-		KinkyDungeonDrawState = "JourneyMap";
+		KDGoToScreen("JourneyMap");
 		KDGameData.UseJourneyTarget = false;
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonJourneyMap"), KDBaseWhite, undefined, undefined, undefined,
@@ -554,7 +554,7 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 	}); II++;
 	if (KDPlayerTitlesEnabled) {
 		DrawButtonKDExScroll("TabTitles", scrollFunc, (_b) => {
-			KinkyDungeonDrawState = "Titles";
+			KDGoToScreen("Titles");
 			return true;
 		}, true, xxstart + II * width, yy, width - 10, 40, TextGet("KDPlayerTitlesTabText"), KDBaseWhite, undefined, undefined, undefined, 
 		KinkyDungeonDrawState != "Titles", KDButtonColor, undefined, undefined,
@@ -564,12 +564,12 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 	}); II++;
 	}
 	/*DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
-		KinkyDungeonDrawState = "Collection";
+		KDGoToScreen("Collection");
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonCollection"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Collection", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabFacilities", scrollFunc, (b) => {
-		KinkyDungeonDrawState = "Facilities";
+		KDGoToScreen("Facilities");
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonFacilities"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Facilities", KDButtonColor); II++;
@@ -626,7 +626,7 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 		hotkeyPress: KinkyDungeonKeyTab[II],
 	}); II++;
 	DrawButtonKDExScroll("TabProgress", scrollFunc, (b) => {
-		KinkyDungeonDrawState = "Progress";
+		KDGoToScreen("Progress");
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonProgress"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Progress", KDButtonColor, undefined, undefined,
@@ -677,11 +677,9 @@ function KDDrawCollectionTabs(xOffset: number, drawBG: boolean = true): void {
 
 
 	DrawButtonKDExScroll("TabCollection", scrollFunc, (_b) => {
-		KinkyDungeonDrawState = "Collection";
+		KDGoToScreen("Collection");
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-		KDCollectionTab = "";
-		KDCurrentFacilityTarget = "";
-		KDFacilityCollectionCallback = null;
+		KDResetCollectionScreen();
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonCollection"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Collection", KDButtonColor, undefined, undefined,
@@ -690,7 +688,7 @@ function KDDrawCollectionTabs(xOffset: number, drawBG: boolean = true): void {
 		hotkeyPress: KinkyDungeonKeyTab[II],
 	}); II++;
 	DrawButtonKDExScroll("TabFacilities", scrollFunc, (b) => {
-		KinkyDungeonDrawState = "Facilities";
+		KDGoToScreen("Facilities");
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonFacilities"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Facilities", KDButtonColor, undefined, undefined,

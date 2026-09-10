@@ -239,13 +239,13 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 		KinkyDungeonInventoryAddOutfit(Item.name);
 	} else if (Item.name == "Heart") {
 		if (KinkyDungeonStatDistractionMax >= KDMaxStat && KinkyDungeonStatStaminaMax >= KDMaxStat && KinkyDungeonStatManaMax >= KDMaxStat && KinkyDungeonStatWillMax >= KDMaxStat) {
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 			KDChangeStamina("tablet", "restore", "interact", 10);
 			KDChangeMana("tablet", "restore", "interact", 5);
 			KDChangeWill("tablet", "restore", "interact", 5.0);
 			KDGameData.HeartTaken = true;
 		} else if (KinkyDungeonIsPlayer()) {
-			KinkyDungeonDrawState = "Heart";
+			KDGoToScreen("Heart");
 			KinkyDungeonInterruptSleep();
 			KinkyDungeonDialogueTimer = CommonTime() + 700;
 			KinkyDungeonSetFlag("NoDialogue", 3);
@@ -396,7 +396,7 @@ function KinkyDungeonDrawHeart() {
 	DrawButtonVis(1550, 700, 250, 60, TextGet("KinkyDungeonHeartWill"), KinkyDungeonStatWillMax < KDMaxStat ? KDBaseWhite : "#999999");
 
 	DrawButtonKDEx("discardheart", (_bdata) => {
-		KinkyDungeonDrawState = "Game";
+		KDGoToScreen("Game");
 		return true;
 	}, CommonTime() > KinkyDungeonDialogueTimer, 1000, 850, 450, 60, TextGet("KinkyDungeonHeartDiscard"), KinkyDungeonStatWillMax < KDMaxStat ? KDBaseWhite : "#999999");
 }
@@ -405,16 +405,16 @@ function KinkyDungeonHandleHeart() {
 	if (CommonTime() > KinkyDungeonDialogueTimer) {
 		if (MouseIn(650, 700, 250, 60) && KinkyDungeonStatDistractionMax < KDMaxStat) {
 			KDSendInput("heart", {type: "AP"});
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 		} else if (MouseIn(950, 700, 250, 60) && KinkyDungeonStatStaminaMax < KDMaxStat) {
 			KDSendInput("heart", {type: "SP"});
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 		} else if (MouseIn(1250, 700, 250, 60) && KinkyDungeonStatManaMax < KDMaxStat) {
 			KDSendInput("heart", {type: "MP"});
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 		} else if (MouseIn(1550, 700, 250, 60) && KinkyDungeonStatWillMax < KDMaxStat) {
 			KDSendInput("heart", {type: "WP"});
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 		}
 	}
 

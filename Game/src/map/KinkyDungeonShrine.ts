@@ -831,7 +831,7 @@ function KinkyDungeonGetMapShrines(Dict: any) {
 
 function KinkyDungeonTakeOrb(Amount: number, X: number, Y: number) {
 	KinkyDungeonSetFlag("NoDialogue", 3);
-	KinkyDungeonDrawState = "Orb";
+	KDGoToScreen("Orb");
 	KinkyDungeonOrbAmount = Amount;
 	KDOrbX = X;
 	KDOrbY = Y;
@@ -861,7 +861,7 @@ function KinkyDungeonDrawOrb() {
 			let color = KDBarColor(value);
 			DrawButtonKDEx("orbspell" + shrine, (_b) => {
 				KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 1 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 				KDResetAlternateInventoryRender();
 				return true;
 			}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), KDBaseWhite);
@@ -877,13 +877,13 @@ function KinkyDungeonDrawOrb() {
 	DrawButtonKDEx("orbspellrandom", (_b) => {
 		let shrine = Object.keys(KinkyDungeonShrineBaseCosts)[Math.floor(KDRandom() * Object.keys(KinkyDungeonShrineBaseCosts).length)];
 		KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 0.9 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
-		KinkyDungeonDrawState = "Game";
+		KDGoToScreen("Game");
 		KDResetAlternateInventoryRender();
 		return true;
 	}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonSurpriseMe"), KDBaseWhite);
 	i += 2;
 	DrawButtonKDEx("cancelorb", (_bdata) => {
-		KinkyDungeonDrawState = "Game";
+		KDGoToScreen("Game");
 		KDResetAlternateInventoryRender();
 		return true;
 	}, true, canvasOffsetX_ui + 525, yPad + canvasOffsetY_ui + spacing * i, 425, 55, TextGet("KinkyDungeonCancel"), KDBaseWhite);
@@ -908,7 +908,7 @@ function KinkyDungeonTakePerk(Amount: number, X: number, Y: number) {
 	KDPerkOrbPerks = KinkyDungeonTilesGet(X + "," + Y).Perks;
 	KDPerkOrbBondage = KinkyDungeonTilesGet(X + "," + Y).Bondage;
 	KDPerkOrbMethod = KinkyDungeonTilesGet(X + "," + Y).Method;
-	//KinkyDungeonDrawState = "PerkOrb";
+	//KDGoToScreen("PerkOrb");
 	KinkyDungeonOrbAmount = Amount;
 	KDOrbX = X;
 	KDOrbY = Y;

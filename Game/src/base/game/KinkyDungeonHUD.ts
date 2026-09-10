@@ -320,7 +320,7 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 
 
 	if (!KDPatched) DrawButtonKDEx("quitbutton", (_b) => {
-		KinkyDungeonDrawState = "Restart";
+		KDGoToScreen("Restart");
 		KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 		if (KDDebugMode) {
 			ElementCreateTextArea("DebugEnemy");
@@ -547,7 +547,7 @@ function KDDrawSpellChoices() {
 		let buttonPad = 80;
 		if (KinkyDungeonSpellChoices[i] >= 0)
 			DrawButtonKDEx("changespell" + i, (bdata) => {
-				KinkyDungeonDrawState = "MagicSpells";
+				KDGoToScreen("MagicSpells");
 				KDSwapSpell = index;
 				return true;
 			}, true, 1650 + (90 - buttonWidth), 40 + i*KinkyDungeonSpellChoiceOffset, buttonWidth, buttonWidth, "", KDBaseWhite, KinkyDungeonRootDirectory + "ChangeSpell.png", undefined, undefined, true);*/
@@ -1892,7 +1892,7 @@ function KinkyDungeonHandleHUD() {
 		return KinkyDungeonHandleLore();
 	} else if (KinkyDungeonDrawState == "Perks2") {
 		if (MouseIn(1650, 920, 300, 64)) {
-			KinkyDungeonDrawState = "Restart";
+			KDGoToScreen("Restart");
 			KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 			if (KDDebugMode) {
 				ElementCreateTextArea("DebugEnemy");
@@ -2021,7 +2021,7 @@ function KinkyDungeonHandleHUD() {
 		}
 
 		if (MouseIn(1650, 900, 300, 64)) {
-			KinkyDungeonDrawState = "Perks2";
+			KDGoToScreen("Perks2");
 			return true;
 		}
 
@@ -2035,7 +2035,7 @@ function KinkyDungeonHandleHUD() {
 			if (KDConfirmDeleteSave) {
 				KDSendInput("defeat", {});
 				KDResetAlternateInventoryRender();
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 
 
 				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -2208,12 +2208,12 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		KDResetAlternateInventoryRender();
 		
 		if (skip == bb) {
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 
 		} else {
-			KinkyDungeonDrawState = "Restart";
+			KDGoToScreen("Restart");
 			KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 			if (KDDebugMode) {
 				ElementCreateTextArea("DebugEnemy");
@@ -2243,7 +2243,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		KDResetAlternateInventoryRender();
 		
 		if (skip == bb)
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 		else
 			KDShowInventory(null);
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -2260,9 +2260,9 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		KDResetAlternateInventoryRender();
 		
 		if (skip == bb)
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 		else
-			KinkyDungeonDrawState = "MagicSpells";
+			KDGoToScreen("MagicSpells");
 
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
@@ -2281,9 +2281,9 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		KDResetAlternateInventoryRender();
 		
 		if (skip == bb)
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 		else {
-			KinkyDungeonDrawState = "Quest";
+			KDGoToScreen("Quest");
 			KDSortQuests(KDPlayer());
 			KinkyDungeonUpdateLore(localStorage.getItem("kdexpLore") ? JSON.parse(localStorage.getItem("kdexpLore")) : {Cover: 1});
 		}
@@ -2301,9 +2301,11 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 			KDResetAlternateInventoryRender();
 			
 			if (skip == bb)
-				KinkyDungeonDrawState = "Game";
-			else
-				KinkyDungeonDrawState = "Collection";
+				KDGoToScreen("Game");
+			else {
+				KDGoToScreen("Collection");
+				KDResetCollectionScreen();
+			}
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 			return true;

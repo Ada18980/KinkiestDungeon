@@ -8039,8 +8039,9 @@ KinkyDungeonTrapSpawnRopeKraken,"A large, wriggling mess of ropes fall from the 
 KinkyDungeonTrapSpawnVinePlant,"A rune of growth causes several plants to quickly sprout nearby."
 KinkyDungeonTrapSpawnDragon,"You are ambushed by dragonhearts!"
 KinkyDungeonTrapSpawnDragonLeader,"You are ambushed by dragonhearts!"
-KinkyDungeonTrapSpawnDrone,"A pack of drones descends from the ceiling!"
-KinkyDungeonTrapSpawnOldDrone,"A pack of drones drops from the ceiling!"
+KinkyDungeonTrapSpawnDrone,"A drone descends from the ceiling!"
+KinkyDungeonTrapSpawnOldDrone,"A drone falls from the ceiling with a thud!"
+KinkyDungeonTrapSpawnOldDroneMulti,"A pack of drones drops from the ceiling!"
 KinkyDungeonTrapSpawnCaptureBot,"You hear sirens as a group of robots closes in!"
 KinkyDungeonTrapSpawnDressmaker,"You stumble upon a group of mages wanting to play dress-up!"
 KinkyDungeonTrapSpawnLibrarian,"You step on an open book, only to find a furious librarian staring you down!"
@@ -31932,21 +31933,21 @@ KDPropField_Rotation,Rotation
 KDPropField_LayerBonus,Layer Bonus
 KDPropField_SuppressDynamic,NoDynamicArmor (0/1)
 KDPropField_AddPose,"AddPose (e.g Locked, CrotchStrap)"
-KDPropField_DontAddPose,DontAddPose
+KDPropField_DontAddPose,DontAddTag
 KDPropField_HideOverridden,HideOverridden (0/1)
 KDPropField_NoOverride,NoOverride (0/1)
-KDPropField_ExtraHidePoses,Hide Pose (e.g. Xray)
-KDPropField_ExtraRequirePoses,Require Pose (e.g. ChestArmor)
-KDPropField_ExtraHidePrefixPose,Hide Prefix (e.g Encase)
-KDPropField_ExtraHidePrefixPoseSuffix,Hide Suffix (e.g TorsoUpper)
+KDPropField_ExtraHidePoses,Hide if Tag (e.g. Xray)
+KDPropField_ExtraRequirePoses,Require Tag (e.g. ChestArmor)
+KDPropField_ExtraHidePrefixPose,Hide if Prefix (e.g Encase)
+KDPropField_ExtraHidePrefixPoseSuffix,Hide if Suffix (e.g TorsoUpper)
 KDPropField_Protected,Protected
 KDPropField_DisplaceAmount,Displace Amount
 KDPropField_EraseAmount,Erase Amount
-KDPropField_NoLoss,NoLoss
-KDPropField_HideRestraintsTags,HideRestraintsTags
+KDPropField_NoLoss,No Loss
+KDPropField_HideRestraintsTags,Hide restraints with tag
 KDPropField_UnderwearType,Bra/Panty/Sock/None
 
-KDPropField_HideRestraintTags,HideRestraintTags
+KDPropField_HideRestraintTags,Hide Restraint Tags
 
 KinkyDungeonLoadFromFile,Load from File
 KinkyDungeonSaveToFile,Save to File

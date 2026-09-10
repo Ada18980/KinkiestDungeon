@@ -1693,10 +1693,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 					let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 					if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
-						KinkyDungeonDrawState = "Collection";
-						KDCollectionTab = "Dropoff";
-						KDCurrentFacilityTarget = "";
-						KDFacilityCollectionCallback = null;
+						KDGoToScreen("Collection");
+						KDResetCollectionScreen("Dropoff");
 						KinkyDungeonCheckClothesLoss = true;
 					}
 
@@ -2274,11 +2272,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
 					if (tile?.Furniture) {
-						KinkyDungeonDrawState = "Collection";
-						KDCollectionTab = "Imprison";
-						KDCurrentFacilityTarget = "";
-						KDFacilityCollectionCallback = null;
-						KinkyDungeonCheckClothesLoss = true;
+						KDGoToScreen("Collection");
+						KDResetCollectionScreen("Imprison");
 					}
 
 					return false;
@@ -2522,7 +2517,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 					KinkyDungeonSetFlag("storageChestOpened", -1);
 					KDUI_ContainerBackScreen = KinkyDungeonDrawState;
-					KinkyDungeonDrawState = "Container",
+					KDGoToScreen("Container"),
 					KinkyDungeonCurrentFilter = "All";
 					KDUI_CurrentContainer = "PlayerChest";
 					return false;

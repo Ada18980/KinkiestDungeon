@@ -751,7 +751,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			KDGameData.OffhandOld = item.name;
 			KinkyDungeonAdvanceTime(1, true, true);
 			//if (KDGameData.InventoryAction == "Offhand")
-			//	KinkyDungeonDrawState = "Game";
+			//	KDGoToScreen("Game");
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 		},
@@ -815,7 +815,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			KDGameData.AttachedWep = item.name;
 			KinkyDungeonAdvanceTime(1, true, true);
 			KDStunTurns(4, true);
-			KinkyDungeonDrawState = "Game";
+			KDGoToScreen("Game");
 			KDResetAlternateInventoryRender();
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();

@@ -526,7 +526,7 @@ function KinkyDungeonInitialize(Level: number, Load?: any) {
 	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer,
 		KDGetCharMetadata(KinkyDungeonPlayer)
 	), false, true);
-	KinkyDungeonDrawState = "Game";
+	KDGoToScreen("Game");
 	KDResetAlternateInventoryRender();
 	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 	KinkyDungeonCheckClothesLoss = true;
@@ -2368,7 +2368,7 @@ function KinkyDungeonGameKeyDown() {
 			} else if (KinkyDungeonCurrentPageInventory > 0) {
 				KinkyDungeonCurrentPageInventory -= 1;
 			} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 				KDResetAlternateInventoryRender();
 
 				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -2387,10 +2387,10 @@ function KinkyDungeonGameKeyDown() {
 				}
 			} else if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey) {
 				if (KinkyDungeonPreviewSpell) {
-					if (KinkyDungeonPreviewSpell.hideLearned) KinkyDungeonDrawState = "MagicSpells";
+					if (KinkyDungeonPreviewSpell.hideLearned) KDGoToScreen("MagicSpells");
 					KDSendInput("spellLearn", {SpellName: KinkyDungeonPreviewSpell.name});
 				}
-				else KinkyDungeonDrawState = "MagicSpells";
+				else KDGoToScreen("MagicSpells");
 			}
 		} else if ((KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage")
 				&& (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey)) {
@@ -2440,7 +2440,7 @@ function KinkyDungeonGameKeyDown() {
 				KDClickButton("spellsDown");
 			}
 			else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
-				KinkyDungeonDrawState = "Game";
+				KDGoToScreen("Game");
 				KDResetAlternateInventoryRender();
 
 
@@ -2464,7 +2464,7 @@ function KinkyDungeonGameKeyDown() {
 					KDGameData.UseJourneyTarget = false;
 					break;}*/
 				case KinkyDungeonKeyMenu[4]: {
-					KinkyDungeonDrawState = "Restart";
+					KDGoToScreen("Restart");
 					KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 					if (KDDebugMode) {
 						ElementCreateTextArea("DebugEnemy");
@@ -2498,20 +2498,23 @@ function KinkyDungeonGameKeyDown() {
 				// QuikInv, Inventory, Reputation, Magic, Log
 				case KinkyDungeonKeyMenu[0]: KinkyDungeonShowInventory = !KinkyDungeonShowInventory; break;
 				case KinkyDungeonKeyMenu[1]: KDShowInventory(null); break;
-				//case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = "Reputation"; break;
-				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = "MagicSpells"; break;
-				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = "Logbook"; break;
-				//case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Quest";
+				//case KinkyDungeonKeyMenu[2]: KDGoToScreen("Reputation"); break;
+				case KinkyDungeonKeyMenu[2]: KDGoToScreen("MagicSpells"); break;
+				case KinkyDungeonKeyMenu[3]: KDGoToScreen("Logbook"); break;
+				//case KinkyDungeonKeyMenu[5]: KDGoToScreen("Quest");
 				//	KDSortQuests(KDPlayer()); break;
-				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Collection"; break;
-				//case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = "Facilities"; break;
+				case KinkyDungeonKeyMenu[5]: {
+					KDGoToScreen("Collection");
+					KDResetCollectionScreen();
+				} break;
+				//case KinkyDungeonKeyMenu[7]: KDGoToScreen("Facilities"); break;
 				/*case KinkyDungeonKeyMenu[9]: {
-					KinkyDungeonDrawState = "JourneyMap"; 
+					KDGoToScreen("JourneyMap"); 
 					KDGameData.UseJourneyTarget = false;
 					break;}*/
 				case KinkyDungeonKeySkip[0]:
 				case KinkyDungeonKeyMenu[4]:
-					KinkyDungeonDrawState = "Game"; break;
+					KDGoToScreen("Game"); break;
 			}
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;

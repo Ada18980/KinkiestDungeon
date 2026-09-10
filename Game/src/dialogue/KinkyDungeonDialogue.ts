@@ -108,7 +108,7 @@ function KDDrawDialogue(delta: number): void {
 	});
 
 	if (KDGameData.CurrentDialog && !(KDGameData.SlowMoveTurns > 0)) {
-		KinkyDungeonDrawState = "Game";
+		KDGoToScreen("Game");
 		KDResetAlternateInventoryRender();
 
 		//KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -447,7 +447,7 @@ function KDStartDialog(Dialogue: string, Speaker?: string, Click?: boolean, Pers
 	KinkyDungeonDialogueTimer = CommonTime() + KDDialogueDelay + KDGameData.SlowMoveTurns * 200;
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
-	KinkyDungeonDrawState = "Game";
+	KDGoToScreen("Game");
 	KDResetAlternateInventoryRender();
 	KDDialogueData.CurrentDialogueIndex = 0;
 
@@ -548,7 +548,7 @@ function KDStartDialogInput(Dialogue: string, Speaker?: string, Click?: boolean,
 	KinkyDungeonDialogueTimer = CommonTime() + 700 + KDGameData.SlowMoveTurns * 200;
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
-	KinkyDungeonDrawState = "Game";
+	KDGoToScreen("Game");
 	KDResetAlternateInventoryRender();
 	KDDialogueData.CurrentDialogueIndex = 0;
 	KDSendInput("dialogue", {dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});

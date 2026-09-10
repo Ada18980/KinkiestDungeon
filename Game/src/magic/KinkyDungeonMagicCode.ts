@@ -342,7 +342,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 							)?.raw || null;
 
 							KDCurrentRestrainingTarget = en.id;
-							KinkyDungeonDrawState = "Bondage";
+							KDGoToScreen("Bondage");
 							// Select non wrists
 							UpdateRestraintBindingData = true;
 							KDNPCBindingSelectedSlot = null;
@@ -368,7 +368,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 											KDBaseRed, 1, true);
 
 										KDCurrentRestrainingTarget = en.id;
-										KinkyDungeonDrawState = "Bondage";
+										KDGoToScreen("Bondage");
 										// Hover the new item
 										KDNPCBindingGeneric = false;
 										UpdateRestraintBindingData = true;
@@ -415,7 +415,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 									KDBaseRed, 1, true);
 
 								KDCurrentRestrainingTarget = en.id;
-								KinkyDungeonDrawState = "Bondage";
+								KDGoToScreen("Bondage");
 								KinkyDungeonSetFlag("quickBind", 1);
 								// Hover the new item
 								KDNPCBindingGeneric = false;
@@ -433,7 +433,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					} else {
 
 						KDCurrentRestrainingTarget = en.id;
-						KinkyDungeonDrawState = "Bondage";
+						KDGoToScreen("Bondage");
 
 						// Select non wrists
 						UpdateRestraintBindingData = true;

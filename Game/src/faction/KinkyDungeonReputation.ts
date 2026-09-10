@@ -439,7 +439,7 @@ function KinkyDungeonDrawReputation() {
 						DrawButtonKDEx("rep_rescue" + rep, (_bdata) => {
 							if (KinkyDungeonCanRescue(rep, value)) {
 								if (KDSendInput("rescue", {rep: rep, value: value}) != "FailRescue") {
-									KinkyDungeonDrawState = "Game";
+									KDGoToScreen("Game");
 									KDResetAlternateInventoryRender();
 									KDRepSelectionMode = "";
 								}
