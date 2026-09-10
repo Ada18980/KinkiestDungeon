@@ -2793,6 +2793,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 
 	{enemySpell: true, name: "Feathers", color: KDBaseWhite, sfx: "Tickle", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "tickle", playerEffect: {name: "Damage"}},
 	{enemySpell: true, name: "Strings", color: "#f5ffe8", sfx: "Struggle", manacost: 4, components: [],
+		noFF: true,
 		level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 3, bind: 7, bindType: "Magic", range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "chain",
 		playerEffect: {name: "StringedUp", count: 1}},
 	{enemySpell: true, name: "NurseBola", color: "#ff2200", sfx: "Miss", manacost: 5, components: ["Arms"],
@@ -2801,6 +2802,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "NurseSyringe", color: "#ff00ff", minRange: 1.5, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, speed: 1,
 		type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "pain", playerEffect: {name: "NurseSyringe", power: 4, type: "poison", time: 8},},
 	{enemySpell: true, name: "RibbonBurst", color: "#ff00ff", sfx: "MagicSlash", manacost: 5, minRange: 0,
+		noFF: true,
 		components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 4, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings",  text: "KinkyDungeonTrapBindingsRibbons", tags: ["magicRibbons"], power: 3, damage: "chain", count: 2, noGuard: true}},
 	{enemySpell: true, name: "Spores", bulletSpin: 0.1, color: "#6733aa", sfx: "MagicSlash",
 		manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 3, range: 6, size: 3, aoe: 1.5, lifetime: 1,
