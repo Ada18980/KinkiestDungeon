@@ -50,17 +50,35 @@ class OggmentedAudioContext extends (window.AudioContext || window.webkitAudioCo
     });
   }
 
-  // tries the wasm vorbis decoder first,
-  // falls back to the native implementation
+  // tries the native implementation first,
+  // if that fails, we use oggmented to load
+  // If safari, it always uses oggmented and we pray default works if that fails
   decodeAudioData(buffer, callback) {
     const decode = resolve => {
-      OggmentedWASM().then(oggmented => {
-        try {
-          oggmented.decodeOggData(buffer, resolve);
-        } catch {
-          super.decodeAudioData(buffer, resolve);
-        }
-      });
+      if (isSafari) {
+        OggmentedWASM().then(oggmented => {
+          try {
+            oggmented.decodeOggData(buffer, resolve);
+          } catch {
+            console.log("error loading:");
+            console.log(buffer);
+            super.decodeAudioData(buffer, resolve)
+          }
+        });
+      } else {
+        super.decodeAudioData(buffer, resolve).then(() => {return;}, (rejected) => {
+          if (rejected) {
+            OggmentedWASM().then(oggmented => {
+              try {
+                oggmented.decodeOggData(buffer, resolve);
+              } catch {
+                console.log("error loading:");
+                console.log(buffer);
+              }
+              });
+          }
+        });
+      }
     };
 
     if (callback) {
