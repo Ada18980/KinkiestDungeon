@@ -2452,17 +2452,10 @@ function KinkyDungeonGameKeyDown() {
 			switch (KinkyDungeonKeybindingCurrentKey) {
 				// QuikInv, Inventory, Reputation, Magic, Log
 				case KinkyDungeonKeyMenu[0]: KinkyDungeonShowInventory = !KinkyDungeonShowInventory; break;
-				case KinkyDungeonKeyMenu[1]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Inventory" ? "Game" : "Inventory"; break;
-				//case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Reputation" ? "Game" : "Reputation"; break;
-				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells"; break;
-				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Logbook" ? "Game" : "Logbook"; break;
-				//case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Quest" ? "Game" : "Quest"; break;
-				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage") ? "Game" : "Collection"; break;
-				//case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Facilities" ? "Game" : "Facilities"; break;
-				/*case KinkyDungeonKeyMenu[9]: {
-					KinkyDungeonDrawState = KinkyDungeonDrawState == "JourneyMap" ? "Game" : "JourneyMap";
-					KDGameData.UseJourneyTarget = false;
-					break;}*/
+				case KinkyDungeonKeyMenu[1]: KDGoToScreen(KinkyDungeonDrawState == "Inventory" ? "Game" : "Inventory", KinkyDungeonDrawState == "Game"); break;
+				case KinkyDungeonKeyMenu[2]: KDGoToScreen(KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells", KinkyDungeonDrawState == "Game"); break;
+				case KinkyDungeonKeyMenu[3]: KDGoToScreen(KinkyDungeonDrawState = KinkyDungeonDrawState == "Logbook" ? "Game" : "Logbook", KinkyDungeonDrawState == "Game"); break;
+				case KinkyDungeonKeyMenu[5]: KDGoToScreen(KinkyDungeonDrawState = (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage") ? "Game" : "Collection", KinkyDungeonDrawState == "Game"); break;
 				case KinkyDungeonKeyMenu[4]: {
 					KDGoToScreen("Restart");
 					KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
@@ -2505,7 +2498,7 @@ function KinkyDungeonGameKeyDown() {
 				//	KDSortQuests(KDPlayer()); break;
 				case KinkyDungeonKeyMenu[5]: {
 					KDGoToScreen("Collection");
-					KDResetCollectionScreen();
+					
 				} break;
 				//case KinkyDungeonKeyMenu[7]: KDGoToScreen("Facilities"); break;
 				/*case KinkyDungeonKeyMenu[9]: {

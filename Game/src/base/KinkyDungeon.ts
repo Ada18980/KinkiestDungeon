@@ -8717,8 +8717,8 @@ function KDSplitIntoSublists(list: any[], perList = 10): any[] {
 	return ret;
 }
 
-function KDGoToScreen(screen: string) {
-	if (screen == "Collection") {
+function KDGoToScreen(screen: string, noReset?: boolean) {
+	if (!noReset) {
 		KDResetCollectionScreen();
 	}
 	KinkyDungeonDrawState = screen;

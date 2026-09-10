@@ -2,7 +2,7 @@
 
 
 let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: any, spell: spell, faction: string, bullet: any, entity: entity) => {sfx: string, effect: boolean}> = {
-	"MagicRope": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"MagicRope": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (dmg.happened) {
 			let roped = KDPlayerEffectRestrain(spell, playerEffect.count || 2, playerEffect.tags, undefined, false, false, false, false);
@@ -15,7 +15,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Shield", effect: false};
 	},
-	"Disrobe": (_target, _damage, _playerEffect, _spell, _faction, _bullet, entity) => {
+	"Disrobe": (target, _damage, _playerEffect, _spell, _faction, _bullet, entity) => {
 		let strip = false;
 		let CurrentDress = KinkyDungeonCurrentDress;
 		let DressList = KDGetDressList()[CurrentDress];
@@ -37,7 +37,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "", effect: false};
 	},
-	"EnvDamage": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"EnvDamage": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage, flags: playerEffect?.flags}, bullet);
 		if (dmg.happened) {
 			KinkyDungeonSendTextMessage(Math.min(playerEffect.power, 5), TextGet("KinkyDungeonDamageSelf").KDReplaceOrAddDmg(dmg.string), KDBaseRed, 1);
@@ -46,7 +46,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: undefined, effect: false};
 	},
-	"GhostHaunt": (target, _damage, _playerEffect, _spell, _faction, _bullet, _entity) => {
+	"GhostHaunt": (target, _damage, _playerEffect, _spell, _faction, _bullet, entity) => {
 		let count = 1;
 		if (target?.player && KDEntityBuffedStat(target, "Haunting")) {
 			count = KDEntityBuffedStat(target, "Haunting") + 1;
@@ -64,7 +64,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			});
 		return {sfx: "Evil", effect: true};
 	},
-	"ObserverBeam": (target, _damage, _playerEffect, spell, _faction, bullet, _entity) => {
+	"ObserverBeam": (target, _damage, _playerEffect, spell, _faction, bullet, entity) => {
 		// If you are hit then the shadow is called
 		for (let en of KDMapData.Entities) {
 			if (en.Enemy?.tags?.obsAttract) {
@@ -110,7 +110,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 	},
 	
 	"RubberPull": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
-		if (KDTestSpellHits(spell, 1.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (dmg.happened) {
@@ -137,7 +137,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "RubberHit", effect: true};
 	},
-	LatexKitty: (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
+	LatexKitty: (target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
 		let applied = "";
 		let dmg: {
 			happened: number;
@@ -191,7 +191,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: (!applied) ? "" : "LockHeavy", effect: !!applied};
 	},
 
-	LatexKittyCursed: (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
+	LatexKittyCursed: (target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
 		let applied = false;
 		// check if theres an item we can curse
 		let eligibleCurseRestraints = KDAllRestraintDynamicList().filter((item) => {
@@ -223,12 +223,12 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let firstResult = {sfx: (!applied) ? "" : "Magic", effect: !!applied}
 		if (applied) {return firstResult}
 		// do standard latex kitty
-		let result = KDPlayerEffects.LatexKitty(_target, _damage, playerEffect, _spell, _faction, _bullet, entity);
+		let result = KDPlayerEffects.LatexKitty(target, _damage, playerEffect, _spell, _faction, _bullet, entity);
 		return {sfx: result.sfx, effect: result.effect || canCurse};
 	},
 	
 
-	"Masterwork": (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
+	"Masterwork": (target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
 		let applied = "";
 		let dmg: {
 			happened: number;
@@ -263,7 +263,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: dmg ? "DealDamage" : "LockHeavy", effect: true};
 	},
-	"TheShadowCurse": (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
+	"TheShadowCurse": (target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
 		let applied = "";
 
 		for (let i = 0; i < playerEffect.count; i++) {
@@ -296,7 +296,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Evil", effect: true};
 	},
-	"CursingCircle": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"CursingCircle": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 
 		if (dmg.happened) {
@@ -342,7 +342,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Shield", effect: false};
 	},
-	"MaidChastity": (_target, _damage, playerEffect, spell, faction, _bullet, _entity) => {
+	"MaidChastity": (target, _damage, playerEffect, spell, faction, _bullet, entity) => {
 
 		if (KinkyDungeonFlags.get("ChastityBelts")) {
 			// Tease the player
@@ -352,7 +352,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				if (dmg.happened) return {sfx: "Vibe", effect: true}; return {sfx: undefined, effect: false};
 			}*/
 		} else {
-			if (KDTestSpellHits(spell, 1.0, 1.0)) {
+			if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 1.0)) {
 				let restrained = false;
 				for (let i = 0; i < 4; i++) {
 					let restraintAdd = KinkyDungeonGetRestraint({tags: ["maidVibeRestraints"]}, KDGetEffLevel() + (playerEffect.level || 0), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -369,8 +369,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: undefined, effect: false};
 	},
-	"ShadowBolt": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+	"ShadowBolt": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KDRandom() < 0.5) KDAddSpecialStat("Corruption", KDPlayer(), 1, false); // Add a small amount of corruption
@@ -379,8 +379,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Evil", effect: true};
 	},
-	"StringedUp": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.6, 0.25)) {
+	"StringedUp": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.6, 0.25)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return{sfx: "Miss", effect: false};
 			KDAddSpecialStat("Hypno_Doll", KDPlayer(), 1, true);
@@ -389,7 +389,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "StringedUp", effect: true};
 	},
-	"BearTrapStun": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"BearTrapStun": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 		KDStunTurns(playerEffect.time);
@@ -397,8 +397,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Clang", effect: true};
 	},
-	"LatexSpray": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.5, 0.0)) {
+	"LatexSpray": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
@@ -430,8 +430,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Fwoosh", effect: true};
 	},
-	"RubberBolt": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+	"RubberBolt": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KDPlayerEffectRestrain(spell, playerEffect.count, ["redLatexBasic"], "Dollsmith", false, false, false, false);
@@ -441,8 +441,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Dollify", effect: true};
 	},
-	"RestrainingBolt": (target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+	"RestrainingBolt": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return {sfx: "Shield", effect: false};
 			let restrain = KDPlayerEffectRestrain(spell, playerEffect.count, ["wardenCuffs"], "Warden", false, false, false, false);
@@ -479,8 +479,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Miss", effect: false};
 	},
-	"MagicMissile": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+	"MagicMissile": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return {sfx: "Shield", effect: false};
 			let restrain = KDPlayerEffectRestrain(spell, playerEffect.count, ["wardenCuffs"], "Warden", false, false, false, false);
@@ -500,8 +500,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Miss", effect: false};
 	},
-	"EncaseBolt": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+	"EncaseBolt": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let rest = KDPlayerEffectRestrain(spell, playerEffect.count, ["redlatexEncaseRandom"], "Dollsmith", false, false, false, false);
@@ -513,8 +513,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Dollify", effect: true};
 	},
-	"EnemyWindBlast": (target, damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 1.0, 1.0)) {
+	"EnemyWindBlast": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let dist = playerEffect.dist;
@@ -532,7 +532,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "Fwosh", effect: true};
 	},
 	"PushAway": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
-		if (KDTestSpellHits(spell, 1.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (dmg.happened) {
@@ -551,8 +551,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Fwosh", effect: true};
 	},
-	"GravityPull": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 1.0, 0.0)) {
+	"GravityPull": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 0.0)) {
 			let dist = playerEffect.dist;
 			for (let i = 0; i < dist; i++) {
 				let dd = KDistEuclidean(KinkyDungeonPlayerEntity.x - bullet.x, KinkyDungeonPlayerEntity.y - bullet.y);
@@ -573,8 +573,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Evil", effect: true};
 	},
-	"LatexBubble": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.5, 0.0)) {
+	"LatexBubble": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
@@ -611,8 +611,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Fwosh", effect: true};
 	},
-	"LatexBall": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.5, 0.0)) {
+	"LatexBall": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
@@ -649,8 +649,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Fwosh", effect: true};
 	},
-	"WaterBubble": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.5, 0.0)) {
+	"WaterBubble": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KinkyDungeonPlayerBuffs.WaterBubble|| KinkyDungeonPlayerBuffs.WaterBubble2 || playerEffect.power > 4) {
@@ -668,13 +668,13 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Fwosh", effect: true};
 	},
-	"EncaseBoltDrone": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+	"EncaseBoltDrone": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KDGameData.MovePoints >= 0) {
 
-				KDDoSlow(_target, 1);
+				KDDoSlow(target, 1);
 				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBoltDroneSlow").KDReplaceOrAddDmg( dmg.string), "yellow", 1);
 			} else {
 				let rest = KDPlayerEffectRestrain(spell, playerEffect.count, ["redlatexEncaseRandom"], "Dollsmith",
@@ -689,7 +689,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Dollify", effect: true};
 	},
-	"RubberMissile": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"RubberMissile": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 		let rest = KDPlayerEffectRestrain(spell, playerEffect.count, ["redlatexEncaseRandom"], "Dollsmith");
@@ -700,8 +700,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Lightning", effect: true};
 	},
-	"ObsidianBolt": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+	"ObsidianBolt": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KDPlayerEffectRestrain(spell, playerEffect.count, ["obsidianRestraints"], "Elemental", false, false, false, false);
@@ -711,8 +711,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Evil", effect: true};
 	},
-	"MithrilBolt": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+	"MithrilBolt": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KDPlayerEffectRestrain(spell, playerEffect.count, ["mithrilRope"], "Elemental", false, false, false, false);
@@ -722,8 +722,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Evil", effect: true};
 	},
-	"LockBullet": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 1.0, 1.0)) {
+	"LockBullet": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 1.0)) {
 
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (dmg.happened) {
@@ -758,8 +758,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "LockHeavy", effect: true};
 	},
-	"CelestialBolt": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+	"CelestialBolt": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KDPlayerEffectRestrain(spell, playerEffect.count, ["celestialRopes"], "Angel", false, false, false, false);
@@ -769,7 +769,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Evil", effect: true};
 	},
-	"BoundByFate": (_target, _damage, playerEffect, _spell, _faction, bullet, _entity) => {
+	"BoundByFate": (target, _damage, playerEffect, _spell, _faction, bullet, entity) => {
 		KDCreateAoEEffectTiles(
 			bullet.x,
 			bullet.y,
@@ -785,7 +785,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Evil", effect: true};
 	},
-	"StarBondage": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"StarBondage": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (dmg.happened) {
 			KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
@@ -794,7 +794,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Evil", effect: true};
 	},
-	"Taunted": (_target, _damage, playerEffect, _spell, _faction, bullet, _entity) => {
+	"Taunted": (target, _damage, playerEffect, _spell, _faction, bullet, entity) => {
 		let ent = (bullet?.bullet?.source ? KinkyDungeonFindID(bullet.bullet.source) : null) || bullet;
 		KDCreateAoEEffectTiles(
 			ent.x,
@@ -811,7 +811,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Evil", effect: true};
 	},
-	"TauntShame": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"TauntShame": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 
 		KinkyDungeonSendTextMessage(7, TextGet("KDTauntPunishment").KDReplaceOrAddDmg( dmg.string), KDBaseRed, 1);
@@ -821,8 +821,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Tickle", effect: true};
 	},
-	"MoonBondage": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
-		if (KDTestSpellHits(spell, 0.0, 0.2)) {
+	"MoonBondage": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 0.2)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
@@ -831,7 +831,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Evil", effect: true};
 	},
-	"FuukaOrb": (_target, _damage, _playerEffect, _spell, _faction, _bullet, _entity) => {
+	"FuukaOrb": (target, _damage, _playerEffect, _spell, _faction, _bullet, entity) => {
 		KDTripleBuffKill("FuukaOrb", KinkyDungeonPlayerEntity, 300, (_tt) => {
 			// Nothing!
 		}, "Sealing", (tt) => {
@@ -870,7 +870,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}, );
 		return {sfx: "Evil", effect: true};
 	},
-	"ShadowSeal": (target, _damage, _playerEffect, _spell, _faction, _bullet, _entity) => {
+	"ShadowSeal": (target, _damage, _playerEffect, _spell, _faction, _bullet, entity) => {
 		KinkyDungeonApplyBuffToEntity(target, {
 			id: "ShadowSeal",
 			duration: 10,
@@ -884,7 +884,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		KinkyDungeonSendTextMessage(8, TextGet("KDShadowSeal"), "#aa55ff", 4);
 		return {sfx: "Evil", effect: true};
 	},
-	"SlimeEngulf": (_target, _damage, playerEffect, _spell, faction, _bullet, _entity) => {
+	"SlimeEngulf": (target, _damage, playerEffect, _spell, faction, _bullet, entity) => {
 		let restraintAdd = KinkyDungeonGetRestraint({tags: ["slimeRestraintsRandom"]}, KDGetEffLevel() + playerEffect.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 		if (!restraintAdd) {
 			KDTripleBuffKill("SlimeEngulfEnd", KinkyDungeonPlayerEntity, 6, (_tt) => {
@@ -922,7 +922,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "RubberBolt", effect: false};
 	},
-	"SarcoEngulf": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"SarcoEngulf": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
@@ -944,7 +944,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "MagicSlash", effect: effect};
 	},
 
-	"HexLatex": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"HexLatex": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
@@ -970,7 +970,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "MagicSlash", effect: effect};
 	},
-	"SarcoHex": (_target, _damage, _playerEffect, spell, faction, _bullet, _entity) => {
+	"SarcoHex": (target, _damage, _playerEffect, spell, faction, _bullet, entity) => {
 		let restraintAdd = KinkyDungeonGetRestraint({tags: ["mummyRestraints"]}, 100, "tmb");
 		if (!restraintAdd && !KinkyDungeonPlayerTags.get("Sarcophagus")) {
 			KDTripleBuffKill("SarcoHexEnd", KinkyDungeonPlayerEntity, 6, (_tt) => {
@@ -1002,9 +1002,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Struggle", effect: false};
 	},
-	"Bind": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"Bind": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 1.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage(
 				{damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet,
 			true);
@@ -1029,9 +1029,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Miss", effect: effect};
 	},
-	"AmpuleBlue": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"AmpuleBlue": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 1.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			effect = true;
@@ -1070,9 +1070,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "Miss", effect: effect};
 
 	},
-	"Hairpin": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"Hairpin": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.2, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.2, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (!KinkyDungeonGetRestraintItem("ItemEyes"))
@@ -1083,7 +1083,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "Miss", effect: effect};
 	},
 
-	"Blind": (_target, _damage, playerEffect, _spell, _faction, _bullet, _entity) => {
+	"Blind": (target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
 		let effect = false;
 		if (Math.round(
 			playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "lightDamageResist"))
@@ -1100,13 +1100,13 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Damage", effect: effect};
 	},
-	"DamageNoMsg": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"DamageNoMsg": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (dmg.happened) effect = true;
 		return {sfx: "DamageWeak", effect: effect};
 	},
-	"Ignition": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"Ignition": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
@@ -1114,9 +1114,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		KinkyDungeonSendTextMessage(playerEffect.power, TextGet("KinkyDungeonBuffIgniteDamage").KDReplaceOrAddDmg(dmg.string), KDBaseRed, 1);
 		return {sfx: "FireSpell", effect: effect};
 	},
-	"IceBolt": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"IceBolt": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
@@ -1128,7 +1128,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Bones", effect: effect};
 	},
-	"WardenOrb": (_target, _damage, _playerEffect, _spell, _faction, _bullet, _entity) => {
+	"WardenOrb": (target, _damage, _playerEffect, _spell, _faction, _bullet, entity) => {
 		let effect = false;
 		KDTripleBuffKill("WardenOrb", KinkyDungeonPlayerEntity, 12, (tt) => {
 			if (KinkyDungeonFlags.get("wardenorb_done")) {
@@ -1145,7 +1145,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				aura: "#ffd667", auraSprite: "AuraSeal",
 				buffSprite: true,
 			});
-			KDPlayerEffects.Bind(_target, _damage, _playerEffect, _spell, _faction, _bullet, _entity);
+			KDPlayerEffects.Bind(target, _damage, _playerEffect, _spell, _faction, _bullet, entity);
 		}, "WardenOrb", (tt) => {
 			if (tt?.player) {
 				if (KinkyDungeonFlags.get("wardenorb_done")) {
@@ -1193,14 +1193,14 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				aura: "#ffd667", auraSprite: "AuraSeal",
 				buffSprite: true,
 			});
-			KDPlayerEffects.Bind(_target, _damage, _playerEffect, _spell, _faction, _bullet, _entity);
+			KDPlayerEffects.Bind(target, _damage, _playerEffect, _spell, _faction, _bullet, entity);
 			
 		}, );
 		return {sfx: effect ? "Evil" : "", effect: effect};
 	},
-	"WitchBoulder": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"WitchBoulder": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 1.0, 0.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
@@ -1212,7 +1212,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Miss", effect: effect};
 	},
-	"Damage": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"Damage": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
@@ -1220,9 +1220,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		effect = true;
 		return {sfx: undefined, effect: effect};
 	},
-	LeashBolt: (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	LeashBolt: (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["leashing"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1232,10 +1232,10 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLeashBolt").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
 				effect = true;
 			} else {
-				if (_entity && !_target.leash) {
-					let dd = KDistChebyshev(_entity.x - _target.x, _entity.y - _target.y);
+				if (entity && !target.leash) {
+					let dd = KDistChebyshev(entity.x - target.x, entity.y - target.y);
 					if (dd < 4.5)
-						KinkyDungeonAttachTetherToEntity(dd, _entity, _target, "LeashBolt", "#a0affe", 3);
+						KinkyDungeonAttachTetherToEntity(dd, entity, target, "LeashBolt", "#a0affe", 3);
 				}
 
 				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
@@ -1248,9 +1248,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "ArmorHit", effect: effect};
 	},
 
-	"SingleChain": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"SingleChain": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["chainRestraints"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1269,9 +1269,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "ArmorHit", effect: effect};
 	},
-	"SingleMagicBind": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"SingleMagicBind": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let restraintAdd = KinkyDungeonGetRestraint({tags: playerEffect.tags}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1288,9 +1288,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "ArmorHit", effect: effect};
 	},
 
-	"RubberBullets": (_target, _damage, playerEffect, spell, faction, bullet, _entity) => {
+	"RubberBullets": (target, _damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0.2)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.2)) {
 			let dmg = spell.power ? KinkyDungeonDealDamage({damage: playerEffect.power || spell.power, type: playerEffect.damage || spell.damage}, bullet) : {happened: 0, string: "null"};
 			if (spell.power && !dmg) return {sfx: "Shield", effect: false};
 			if (KDRandom() < 0.25 && KinkyDungeonStatWill < KinkyDungeonStatWillMax/2) {
@@ -1307,9 +1307,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Miss", effect: effect};
 	},
-	"RubberSniper": (_target, _damage, playerEffect, spell, faction, bullet, _entity) => {
+	"RubberSniper": (target, _damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0.2)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.2)) {
 			let dmg = spell.power ? KinkyDungeonDealDamage({damage: playerEffect.power || spell.power, type: playerEffect.damage || spell.damage}, bullet) : {happened: 0, string: "null"};
 			if (spell.power && !dmg) return {sfx: "Shield", effect: false};
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["captureFoamRandom"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1327,9 +1327,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Miss", effect: effect};
 	},
-	"HeatBlast": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"HeatBlast": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
@@ -1341,14 +1341,14 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "MetalBang", effect: effect};
 	},
-	"RobotShock": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"RobotShock": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: KinkyDungeonStatsChoice.get("Estim") ? "estim" : "electric"}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KinkyDungeonStatsChoice.get("Estim")) {
-				KDChangeDistraction(spell ? spell.name : (_entity ? "enemy" + _entity.id : (bullet ? bullet.spriteID || "bullet" : "")),
-				_entity ? "enemy" : (spell ? "spell" : (bullet ? "bullet" : "")), "playerEffect", playerEffect?.power || spell?.power, false, 0.3);
+				KDChangeDistraction(spell ? spell.name : (entity ? "enemy" + entity.id : (bullet ? bullet.spriteID || "bullet" : "")),
+				entity ? "enemy" : (spell ? "spell" : (bullet ? "bullet" : "")), "playerEffect", playerEffect?.power || spell?.power, false, 0.3);
 			} else {
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
 			}
@@ -1360,9 +1360,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Shield", effect: effect};
 	},
-	"MysticShock": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"MysticShock": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
@@ -1374,7 +1374,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Shield", effect: effect};
 	},
-	CageDrop: (_target, _damage, _playerEffect, spell, faction, _bullet, _entity) => {
+	CageDrop: (target, _damage, _playerEffect, spell, faction, _bullet, entity) => {
 		let restraintAdd = KinkyDungeonGetRestraint({tags: ["cage"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 		if (restraintAdd) {
 			KDPlayerEffectRestrain(spell, 1, ["cage"], faction, false, true, false, false);
@@ -1384,9 +1384,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "MetalHit", effect: true};
 	},
-	"CrystalBind": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"CrystalBind": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			for (let i = 0; i < (playerEffect.count || 1); i++) {
@@ -1406,7 +1406,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "MetalHit", effect: effect};
 	},
-	"CrystalEncase": (_target, _damage, _playerEffect, spell, faction, _bullet, _entity) => {
+	"CrystalEncase": (target, _damage, _playerEffect, spell, faction, _bullet, entity) => {
 		let effect = false;
 		let restraintAdd = KinkyDungeonGetRestraint({tags: ["crystalRestraints"]}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 		if (!restraintAdd) {
@@ -1423,7 +1423,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Freeze", effect: effect};
 	},
-	"IceEncase": (_target, _damage, _playerEffect, spell, faction, _bullet, _entity) => {
+	"IceEncase": (target, _damage, _playerEffect, spell, faction, _bullet, entity) => {
 		let effect = false;
 		let restraintAdd = KinkyDungeonGetRestraint({tags: ["iceRestraints"]}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 		if (!restraintAdd) {
@@ -1440,7 +1440,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Freeze", effect: effect};
 	},
-	"ShadowEncase": (_target, _damage, _playerEffect, spell, faction, _bullet, enemy) => {
+	"ShadowEncase": (target, _damage, _playerEffect, spell, faction, _bullet, enemy) => {
 		let effect = false;
 		let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || (KDDefaultRestraintThresh + (Math.max(0, enemy.Enemy.power - 1) || 0));
 		let rest = KDGetRestraintWithVariants(
@@ -1494,7 +1494,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Freeze", effect: effect};
 	},
-	"VineSuspend": (_target, _damage, _playerEffect, spell, faction, _bullet, _entity) => {
+	"VineSuspend": (target, _damage, _playerEffect, spell, faction, _bullet, entity) => {
 		let effect = false;
 		let restraintAdd = KinkyDungeonGetRestraint({tags: ["vineRestraints"]}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 		if (!restraintAdd) {
@@ -1511,9 +1511,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Freeze", effect: effect};
 	},
-	"CoronaShock": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"CoronaShock": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 0.5)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["celestialRopes"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1533,7 +1533,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Shield", effect: effect};
 	},
-	"RemoveLowLevelRope": (_target, _damage, _playerEffect, spell, _faction, _bullet, _entity) => {
+	"RemoveLowLevelRope": (target, _damage, _playerEffect, spell, _faction, _bullet, entity) => {
 		let effect = false;
 		let restraints = [];
 		for (let inv of KinkyDungeonAllRestraint()) {
@@ -1549,13 +1549,13 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "", effect: effect};
 	},
 
-	"MiniSlime": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"MiniSlime": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45 && KDRandom() < 0.33) {
-				KDDoSlow(_target, 1);
+				KDDoSlow(target, 1);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonMiniSlime2").KDReplaceOrAddDmg( dmg.string), KDBaseRed, 2);
 			} else
 				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonMiniSlime").KDReplaceOrAddDmg( dmg.string), KDBaseRed, 1);
@@ -1564,7 +1564,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "RubberBolt", effect: effect};
 	},
-	"EnchantRope": (_target, _damage, playerEffect, spell, _faction, _bullet, _entity) => {
+	"EnchantRope": (target, _damage, playerEffect, spell, _faction, _bullet, entity) => {
 		let effect = false;
 		let transmuteLevel = 0;
 		if (KinkyDungeonPlayerTags.get("RopeSnake")) {
@@ -1581,7 +1581,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 
 		if (transmuteLevel > 0) {
-			if (KDTestSpellHits(spell, 0.0, 1.0)) {
+			if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 
 
 				if (transmuteLevel > 1) {
@@ -1622,9 +1622,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "MagicSlash", effect: effect};
 	},
 
-	"SlimeBubble": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"SlimeBubble": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.5)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45) {
@@ -1634,7 +1634,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 					effect = true;
 				}
-				KDDoSlow(_target, 1);
+				KDDoSlow(target, 1);
 			}
 			let restraintAdd2 = KinkyDungeonGetRestraint({tags: ["slimebubble"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd2) {
@@ -1648,9 +1648,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "RubberBolt", effect: effect};
 	},
-	"Slime": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"Slime": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.5)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45) {
@@ -1660,7 +1660,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 					effect = true;
 				}
-				KDDoSlow(_target, 1);
+				KDDoSlow(target, 1);
 			}
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSlime").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
 
@@ -1668,9 +1668,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "RubberBolt", effect: effect};
 	},
-	"LiquidMetalPatch": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"LiquidMetalPatch": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 1.0, 0.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage, flags: ["EnvDamage"]}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45 && (KDGameData.KneelTurns > 0 || KDGameData.SlowMoveTurns || KDGameData.MovePoints < 0 || KinkyDungeonStatWill == 0)) {
@@ -1687,9 +1687,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "RubberBolt", effect: effect};
 	},
-	"LiquidMetalEngulf": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"LiquidMetalEngulf": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 1.0, 0.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 1) {
@@ -1704,7 +1704,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				}
 
 
-				KDDoSlow(_target, 1);
+				KDDoSlow(target, 1);
 			}
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLiquidMetalEngulf").KDReplaceOrAddDmg( dmg.string), "#aaaaaa", playerEffect.time);
 
@@ -1713,7 +1713,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "RubberBolt", effect: effect};
 	},
 
-	"SporesHappy": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"SporesHappy": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
@@ -1721,9 +1721,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		effect = true;
 		return {sfx: "Damage", effect: effect};
 	},
-	"Flummox": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"Flummox": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
@@ -1742,15 +1742,15 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Shield", effect: effect};
 	},
-	"SporesSick": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"SporesSick": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDIsImmuneToSpores(_target)) {
+		if (KDIsImmuneToSpores(target)) {
 			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA"), "#4fd658", 2);
 			return {sfx: "", effect: effect};
 		}
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
-		if (KDIsImmuneToSpores(_target)) {
+		if (KDIsImmuneToSpores(target)) {
 				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 			return {sfx: "", effect: false};
 		} else {
@@ -1760,15 +1760,15 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		effect = true;
 		return {sfx: "Damage", effect: effect};
 	},
-	"PoisonDagger": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"PoisonDagger": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
 			
-			if (KDIsImmuneToDrugs(_target)) {
+			if (KDIsImmuneToDrugs(target)) {
 				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDaggerNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 				return {sfx: "", effect: false};
 			} else {
@@ -1792,11 +1792,11 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "ClangLight", effect: effect};
 	},
-	"Spores": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"Spores": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
-		if (KDIsImmuneToSpores(_target)) {
+		if (KDIsImmuneToSpores(target)) {
 				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 			return {sfx: "", effect: false};
 		} else {
@@ -1808,12 +1808,12 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				return {sfx: "Damage", effect: effect};
 	},
 
-	"PoisonBreath": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"PoisonBreath": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 
-		if (KDIsImmuneToDrugs(_target) || KDIsImmuneToGas(_target)) {
+		if (KDIsImmuneToDrugs(target) || KDIsImmuneToGas(target)) {
 			KinkyDungeonSendTextMessage(6, TextGet("KDPoisonBreathImmune").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 			return {sfx: "", effect: false};
 		} else {
@@ -1836,11 +1836,11 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "Damage", effect: effect};
 	},
 
-	"DragonFlowerSpores": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"DragonFlowerSpores": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return {sfx: "Shield", effect: false};
-		if (KDIsImmuneToSpores(_target)) {
+		if (KDIsImmuneToSpores(target)) {
 			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSporesNA").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 			return {sfx: "", effect: false};
 		} else {
@@ -1864,13 +1864,13 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "Damage", effect: effect};
 	},
 
-	"PoisonSlash": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"PoisonSlash": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 		KinkyDungeonSendTextMessage(6, TextGet("KDPoisonSlash").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 
-		if (KDIsImmuneToDrugs(_target)) {
+		if (KDIsImmuneToDrugs(target)) {
 			// lol
 			return {sfx: "", effect: false};
 		} else {
@@ -1894,7 +1894,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 	},
 
 
-	"SlimeTrap": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"SlimeTrap": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		let slimeWalker = false;
 		for (let inv of KinkyDungeonAllRestraint()) {
@@ -1903,7 +1903,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				break;
 			}
 		}
-		if (!slimeWalker && KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (!slimeWalker && KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
@@ -1922,9 +1922,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "RubberBolt", effect: effect};
 	},
-	"NurseBola": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"NurseBola": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["nurseCuffRestraints"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1939,9 +1939,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "WoodBlock", effect: effect};
 	},
-	"BanditBola": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"BanditBola": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
@@ -1962,9 +1962,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Miss", effect: effect};
 	},
-	"SingleRope": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"SingleRope": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
@@ -1984,9 +1984,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Miss", effect: effect};
 	},
-	"RestrainingDevice": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"RestrainingDevice": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.2, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.2, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let added = [];
@@ -2013,7 +2013,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Clang", effect: effect};
 	},
-	"Glue": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"Glue": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 
 		if (playerEffect.power) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
@@ -2044,11 +2044,11 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "RubberHit", effect: effect};
 	},
-	"RopeEngulf": (_target, _damage, playerEffect, spell, faction, _bullet, _entity) => {
+	"RopeEngulf": (target, _damage, playerEffect, spell, faction, _bullet, entity) => {
 
 
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.5)) {
 			let added = [];
 			for (let i = 0; i < playerEffect.power; i++) {
 				let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeAuxiliary", "clothRestraints", "tapeRestraints"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -2108,7 +2108,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Miss", effect: effect};
 	},
-	"Hogtie": (_target, _damage, playerEffect, spell, faction, _bullet, _entity) => {
+	"Hogtie": (target, _damage, playerEffect, spell, faction, _bullet, entity) => {
 		let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraintsHogtie"]},
 			KDGetEffLevel() + (playerEffect?.power || spell?.power || 1),
 			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -2119,9 +2119,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Struggle", effect: false};
 	},
-	"RopeEngulfWeak": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"RopeEngulfWeak": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.5)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
@@ -2156,9 +2156,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Miss", effect: effect};
 	},
-	"VineEngulf": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"VineEngulf": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.5)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let added = [];
@@ -2188,7 +2188,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Miss", effect: effect};
 	},
-	"ObsidianEngulf": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"ObsidianEngulf": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
@@ -2214,9 +2214,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		effect = true;
 		return {sfx: "Evil", effect: effect};
 	},
-	"CharmWraps": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"CharmWraps": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.5)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
@@ -2252,11 +2252,11 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Shield", effect: effect};
 	},
-	"EnchantedArrow": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"EnchantedArrow": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 
 		let effect = false;
 
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let added = [];
@@ -2287,10 +2287,10 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Miss", effect: effect};
 	},
-	"TrapBindings": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"TrapBindings": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 
-		if (KDTestSpellHits(spell, 0.5, 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.5)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage,}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let added = [];
@@ -2324,12 +2324,12 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Miss", effect: effect};
 	},
-	"NurseSyringe": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"NurseSyringe": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			if (KDIsImmuneToDrugs(_target)) {
+			if (KDIsImmuneToDrugs(target)) {
 				KinkyDungeonSendTextMessage(6, TextGet("KDImmuneToSyringe").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 			
 				return {sfx: "", effect: false};
@@ -2353,7 +2353,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Miss", effect: effect};
 	},
-	"TrapSleepDart": (target, _damage, _playerEffect, _spell, _faction, _bullet, _entity) => {
+	"TrapSleepDart": (target, _damage, _playerEffect, _spell, _faction, _bullet, entity) => {
 		let effect = false;
 		if (!KDIsImmuneToDrugs(target)) {
 			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrapSleepDart"), KDBaseRed, 8);
@@ -2362,7 +2362,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: effect ? "Damage" : "Shield", effect: effect};
 	},
-	"Drench": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"Drench": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 
 		let dmg = (spell.power > 0 && spell.damage != 'inert') ?
@@ -2378,9 +2378,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Damage", effect: effect};
 	},
-	"LustBomb": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"LustBomb": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg) return {sfx: "Shield", effect: false};
 
@@ -2391,9 +2391,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Damage", effect: effect};
 	},
-	"TrapLustCloud": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"TrapLustCloud": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg) return {sfx: "Shield", effect: false};
 
@@ -2404,9 +2404,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Damage", effect: effect};
 	},
-	"TrapSPCloud": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"TrapSPCloud": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg) return {sfx: "Shield", effect: false};
 
@@ -2422,9 +2422,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 
 
-	"ShadowBind": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"ShadowBind": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.5)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg) return {sfx: "Shield", effect: false};
 			KinkyDungeonStatBind = Math.max(0, playerEffect.time);
@@ -2434,7 +2434,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Miss", effect: effect};
 	},
-	"DamageIfChill": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"DamageIfChill": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let sfx = "";
 		let dmg = {happened: 1, string: TextGet("KDNoDamage")};
@@ -2447,11 +2447,11 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: sfx, effect: effect};
 	},
-	"Chill": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"Chill": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let sfx = "";
 		let dmg = {happened: 1, string: TextGet("KDNoDamage")};
-		if (KDTestSpellHits(spell, (bullet?.vx || bullet?.vy) ? 0 : 0.5, (bullet?.vx || bullet?.vy) ? 0.5 : 0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, (bullet?.vx || bullet?.vy) ? 0 : 0.5, (bullet?.vx || bullet?.vy) ? 0.5 : 0)) {
 			if (playerEffect.power > 0 && !KinkyDungeonFlags.get("chill")) {
 				dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			}
@@ -2473,11 +2473,11 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "Shield", effect: effect};
 	},
 	/** Similar to Chill but blockable */
-	"ChillProj": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"ChillProj": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
 		let sfx = "";
 		let dmg = {happened: 1, string: TextGet("KDNoDamage")};
-		if (KDTestSpellHits(spell, 0, (bullet?.vx || bullet?.vy) ? 1.0 : 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0, (bullet?.vx || bullet?.vy) ? 1.0 : 0.5)) {
 			if (playerEffect.power > 0 && !KinkyDungeonFlags.get("chill")) {
 				dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			}
@@ -2498,9 +2498,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		
 		return {sfx: "Shield", effect: effect};
 	},
-	"Freeze": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"Freeze": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, (bullet?.vx || bullet?.vy) ? 0 : 0.5, (bullet?.vx || bullet?.vy) ? 1.0 : 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, (bullet?.vx || bullet?.vy) ? 0 : 0.5, (bullet?.vx || bullet?.vy) ? 1.0 : 0.5)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg) return {sfx: "Shield", effect: false};
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonFreeze").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
@@ -2513,11 +2513,11 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Shield", effect: effect};
 	},
-	"ShadowStrike": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+	"ShadowStrike": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 
 
-		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg) return {sfx: "Shield", effect: false};
 			effect = true;
@@ -2531,14 +2531,14 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Miss", effect: effect};
 	},
-	"Shock": (_target, _damage, playerEffect, spell, _faction, bullet, _entity) => {
+	"Shock": (target, _damage, playerEffect, spell, _faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHits(spell, 0.5, 0.0)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: KinkyDungeonStatsChoice.get("Estim") ? "estim" : "electric"}, bullet);
 			if (!dmg) return {sfx: "Shield", effect: false};
 			if (KinkyDungeonStatsChoice.get("Estim")) {
-				KDChangeDistraction(_entity ? "enemy" + _entity.id : (spell ? spell.name : (bullet ? bullet.spriteID || "bullet" : "")),
-				_entity ? "enemy" : (spell ? "spell" : (bullet ? "bullet" : "")), "playerEffect", playerEffect?.power || spell?.power, false, 0.35);
+				KDChangeDistraction(entity ? "enemy" + entity.id : (spell ? spell.name : (bullet ? bullet.spriteID || "bullet" : "")),
+				entity ? "enemy" : (spell ? "spell" : (bullet ? "bullet" : "")), "playerEffect", playerEffect?.power || spell?.power, false, 0.35);
 			} else {
 				if (Math.round(
 					playerEffect.time * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "electricDamageResist"))
@@ -2555,8 +2555,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Crackling", effect: effect};
 	},
-	"LightHealDamageWP": (_target, _damage, playerEffect, spell, _faction, _bullet, _entity) => {
-		const player = _entity?.player ? _entity : KDPlayer();
+	"LightHealDamageWP": (target, _damage, playerEffect, spell, _faction, _bullet, entity) => {
+		const player = entity?.player ? entity : KDPlayer();
 		const buff = KDEntityGetBuff(player, "DamageWP");
 		if (!buff || buff.power <= 0) return { sfx: "Shield", effect: false };
 
@@ -2689,6 +2689,13 @@ function KDPlayerEffectRestrain (
 	return [];
 }
 
+function KDTestSpellHitsNoFF(player: entity, entity: entity, spell: spell, allowEvade: number = 0, allowBlock: number = 1) {
+	if (!entity || spell.friendlyfire || (!spell.noFF && (player != KDPlayer() && !KDAllied(player)) && !KDAllied(entity))) {
+		return KDTestSpellHits(spell, allowEvade, allowBlock);
+	}
+	return false;
+}
+
 
 function KDTestSpellHits(spell: spell, allowEvade: number = 0, allowBlock: number = 1): boolean {
 	let player = KinkyDungeonPlayerEntity;
@@ -2753,11 +2760,11 @@ function KDTripleBuffKill (
 	Name:          string,
 	Target:        entity,
 	time:          number,
-	FinalEffect:   (target: entity) => void  = (_target) => { KinkyDungeonPassOut() },
+	FinalEffect:   (target: entity) => void  = (target) => { KinkyDungeonPassOut() },
 	buffType:      string = "Blindness",
-	FirstEffect:   (target: entity) => void  = (_target) => {},
-	SecondEffect:  (target: entity) => void  = (_target) => {},
-	ThirdEffect:   (target: entity) => void  = (_target) => {},
+	FirstEffect:   (target: entity) => void  = (target) => {},
+	SecondEffect:  (target: entity) => void  = (target) => {},
+	ThirdEffect:   (target: entity) => void  = (target) => {},
 ): void
 {
 	let buff1 = {id: Name + "1", type: buffType, duration: time + 3, power: 1.0, player: true, tags: ["passout"]};

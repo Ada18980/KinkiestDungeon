@@ -677,7 +677,7 @@ function KDDrawCollectionTabs(xOffset: number, drawBG: boolean = true): void {
 
 
 	DrawButtonKDExScroll("TabCollection", scrollFunc, (_b) => {
-		KDGoToScreen("Collection");
+		KDGoToScreen("Collection", true);
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KDResetCollectionScreen();
 		return true;
@@ -688,7 +688,7 @@ function KDDrawCollectionTabs(xOffset: number, drawBG: boolean = true): void {
 		hotkeyPress: KinkyDungeonKeyTab[II],
 	}); II++;
 	DrawButtonKDExScroll("TabFacilities", scrollFunc, (b) => {
-		KDGoToScreen("Facilities");
+		KDGoToScreen("Facilities", true);
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonFacilities"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Facilities", KDButtonColor, undefined, undefined,
