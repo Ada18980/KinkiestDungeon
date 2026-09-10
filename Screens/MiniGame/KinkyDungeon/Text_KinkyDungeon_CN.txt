@@ -1134,7 +1134,7 @@ Sub
 对敌人的拘束力提高 30%。
 - Pacifist
 和平主义者
-- All damage dealt to humanoid enemies is reduced by 90% except teasing damage and pain/grope/tickle/charm/psychic/chain/glue.
+- Damage to humanoid enemies is reduced by 90% except teasing damage and pain, grope, tickle, charm, psychic, chain, glue, plush, and soap.
 对人形敌人造成的所有伤害都会降低 90%，但挑逗和疼痛/抚摸/挠痒/魅惑/灵能/锁链/胶体伤害除外。
 - Curse Seeker
 诅咒探索者
@@ -15840,6 +15840,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 # :: KinkyDungeonTrapSpawnDragonLeader
 - A pack of drones descends from the ceiling!
 一群无人机从天花板上飞了下来！
+# - A pack of drones drops from the ceiling!
 - You hear sirens as a group of robots closes in!
 当一群机器人逼近时，你会听到警报声！
 - You stumble upon a group of mages wanting to play dress-up!
@@ -24582,10 +24583,8 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 把你所有东西都交给我。
 # :: dShopBuyAttack
 # :: dItemShopAttack
-- (Flail threateningly at her)
+- (Flail threateningly at ${Ethem})
 ( 威胁性地殴打她 )
-# :: dShopBuyAttackGag
-# :: dItemShopAttackGag
 - (Do it)
 ( 来吧 )
 # :: dShopBuyAttack_Confirm
@@ -24802,6 +24801,8 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 - (Look at what ${Ethey} ${Ehas} to sell)
 ( 看看${Ethey}都卖什么 )
+- (Flail threateningly at her)
+( 威胁性地殴打她 )
 - (Sell Item0 for ItemCost0 gp) (Owned: AMNT0)
 ( 以 ItemCost0 gp 出售 Item0 ) ( 持有 AMNT0 个 )
 - (Sell Item1 for ItemCost1 gp) (Owned: AMNT1)
