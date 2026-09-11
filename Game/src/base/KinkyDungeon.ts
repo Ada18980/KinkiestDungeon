@@ -4312,7 +4312,7 @@ function KDFunctionJourneyMapScroll(amount: number): boolean {
 	return false;
 }
 function KDFunctionSpellPageScroll(amount: number): boolean {
-	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" ) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && !KDCurrentScrollableListHover) {
 		if (amount > 0) {
 			KDCycleSpellPage(false, true);
 		} else {
