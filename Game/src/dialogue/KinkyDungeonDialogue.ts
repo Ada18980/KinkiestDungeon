@@ -404,15 +404,12 @@ function KDAllySpeaker(Turns: number, Follow: boolean) {
 function KDAggroSpeaker(Turns: number = 300, NoAlertFlag: boolean = false) {
 	let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 	if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-		if (!(enemy.hostile > 0)) {
-			enemy.hostile = Turns;
-		} else enemy.hostile = Math.max(enemy.hostile, Turns);
+		KDMakeHostile(enemy, Turns, NoAlertFlag);
 		if (NoAlertFlag) {
 			KinkyDungeonSetEnemyFlag(enemy, "nosignalothers", Turns);
 		}
 	}
 }
-
 
 // Success chance for a basic dialogue
 function KDBasicDialogueSuccessChance(checkResult: number): number {
@@ -3011,12 +3008,11 @@ function KDAggroViaDialogue(enemy: entity, unaware: boolean, aggroothers: boolea
 		} else {
 			// retaliate
 			if (!enemy.Enemy.allied) {
-				KDMakeHostile(enemy);
+				KDMakeHostile(enemy, undefined, true);
 				let faction = KDGetFactionOriginal(enemy);
 				if (faction == "Player") {
-					enemy.faction = "Enemy"; // They become an enemy
-					enemy.factionorig = "Player";
-				} else 
+					// eee
+				} else
 				if (!KinkyDungeonHiddenFactions.has(faction)) {
 					KinkyDungeonChangeRep("Ghost", -5);
 				}

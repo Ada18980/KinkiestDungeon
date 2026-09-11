@@ -1527,7 +1527,8 @@ function KinkyDungeonDrawInventorySelected (
 		for (let N = 0; N < textSplit.length; N++) {
 			DrawTextFitKD(textSplit[N],
 				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, 
-				yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 25, 640*KinkyDungeonBookScale/2.5, KDBookText, KDTextTan, 20, undefined, 130); i++;}
+				yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 25 + KDGetDescOffset(item), 
+				640*KinkyDungeonBookScale/2.5, KDBookText, KDTextTan, 20, undefined, 130); i++;}
 	}
 	i = 0;
 	for (let N = 0; N < data.extraLinesPre.length; N++) {
@@ -4412,4 +4413,8 @@ function KDFindHotkeyInGrid(index: number, currentPage: number, gridList: any[],
 			&& index == currentPage - numColumns + (Math.floor(gridList.length/numColumns) * numColumns))))) hk = hotkeyUp;
 
 	return hk;
+}
+
+function KDGetDescOffset(item: itemPreviewEntry) {
+	return ((item.item?.type == Weapon) ? 10 : 0);
 }

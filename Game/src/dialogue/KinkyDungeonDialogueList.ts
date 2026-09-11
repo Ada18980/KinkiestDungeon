@@ -1165,7 +1165,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								greyoutTooltip: "KDTextGrayNeedWP",
 								clickFunction: (_gagged, _player) => {
 									KinkyDungeonStartChase(undefined, "Refusal");
-									KDAggroSpeaker();
+									KDAggroSpeaker(undefined, true);
 									KinkyDungeonSetFlag("DollTransform_Resisted", 300);
 									return false;
 								},

@@ -128,7 +128,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		let item = KinkyDungeonGetRestraintItem(data.group);
 		if (data.index) {
-			let surfaceItems = KDDynamicLinkListSurface(item);
+			let surfaceItems = KDDynamicLinkList(item, true);
 			if (surfaceItems[data.index])
 				item = surfaceItems[data.index];
 			else console.log("Error! Please report the item combination and screenshot to Ada!");
@@ -144,7 +144,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		let item = KinkyDungeonGetRestraintItem(data.group);
 		if (data.index) {
-			let surfaceItems = KDDynamicLinkListSurface(item);
+			let surfaceItems = KDDynamicLinkList(item, true);
 			if (surfaceItems[data.index])
 				item = surfaceItems[data.index];
 			else console.log("Error! Please report the item combination and screenshot to Ada!");

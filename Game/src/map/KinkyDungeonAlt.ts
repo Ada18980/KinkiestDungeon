@@ -2724,9 +2724,16 @@ function KinkyDungeonCreatePerkRoom(POI: any, VisitedRooms: any[], width: number
 	let perksplaced = 0;
 	if (!KinkyDungeonStatsChoice.get("noperks")) {
 		let perkCount = 3;
+		let guaranteedNoPerkIfBondageOnly = Math.floor(KDRandom() * perkCount);
 		let perks: Record<string, boolean> = {};
 		for (let i = 0; i < perkCount; i++) {
 			let newperks = KinkyDungeonStatsChoice.get("perksdebuff") ? KDGetRandomPerks(perks, true) : KDGetRandomPerks(perks);
+			
+			if (KinkyDungeonStatsChoice.get("perkBondageOnly")) {
+				if (KDRandom() < 0.33 || i == guaranteedNoPerkIfBondageOnly) {
+					newperks = [];
+				}
+			}
 			let bondage = KDGetPerkShrineBondage(newperks);
 			//let boss = KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel + 1);
 			let method = "";
@@ -2735,16 +2742,15 @@ function KinkyDungeonCreatePerkRoom(POI: any, VisitedRooms: any[], width: number
 			//else
 			//method = "Boss";
 
-			if (newperks.length > 0) {
-				KinkyDungeonMapSet(p1x + i * 2, py, 'P');
-				KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks,
-					Light: 5,
-					lightColor: 0xffff88,
-					Bondage: bondage, Method: method, Type: "PerkOrb"});
-				perksplaced += 1;
-				for (let p of newperks) {
-					perks[p] = true;
-				}
+			KinkyDungeonMapSet(p1x + i * 2, py, 'P');
+			KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {
+				Perks: newperks,
+				Light: 5,
+				lightColor: 0xffff88,
+				Bondage: bondage, Method: method, Type: "PerkOrb"});
+			perksplaced += 1;
+			for (let p of newperks) {
+				perks[p] = true;
 			}
             if (!KDMapData.PerkShrines) { KDMapData.PerkShrines = [] }
             KDMapData.PerkShrines.push(`${p1x + i * 2},${py}`)

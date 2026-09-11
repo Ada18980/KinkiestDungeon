@@ -77,7 +77,9 @@ Must do
 - species perks
 
 5.5.3
-- 
+- Added perk "Layers Under Layers" which enables the excessive restraint stacking behavior you all love
+- Refusing bondage offer no longer causes all enemies nearby to become hostile
+- Added perk shrine more which offers bondage-only shrines at times
 
 5.5.2
 - Added WebAudio support for better sound quality

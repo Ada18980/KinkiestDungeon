@@ -924,19 +924,23 @@ function KinkyDungeonUpdateDialogue(entity: entity, delta: number) {
  * @param [force]
  * @param [nooverride]
  */
-function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: string, duration: number, priority: number, force?: boolean, nooverride?: boolean, forceConstant?: boolean, forceImportant?: boolean): void {
+function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: string, duration: number, priority: number,
+	force?: boolean, nooverride?: boolean, forceConstant?: boolean, forceImportant?: boolean, forceFloater?: boolean) {
 	let important = forceImportant || (priority && priority > 7);
 	if (forceImportant != undefined && !forceImportant) important = false;
 	let constant = forceConstant || !KDCanHearEnemy(KDPlayer(), entity);
 	if (forceConstant != undefined && !forceConstant) constant = false;
+	if (!color) color = KDGetColor(entity);
 
 	
 	if (!force && !KDEnemyCanTalk(entity) && !entity.player) {
-		if (!entity.Enemy.nonHumanoid && entity.Enemy.bound) {
+		if (!entity.Enemy.nonHumanoid && entity.Enemy.bound
+				&& (forceFloater || !entity.dialogueDuration || !entity.dialoguePriority || entity.dialoguePriority < priority + (nooverride ? 0 : .1))
+		) {
 			let suff = "";
 			if (KDIsBrattyPersonality(entity)) suff = "Brat";
 			else if (KDIsSubbyPersonality(entity)) suff = "Sub";
-			if (constant) {
+			if (constant && !forceFloater) {
 				entity.dialogue = TextGet("KinkyDungeonRemindJailPlay" + suff + "Gagged" + Math.floor(KDRandom() * 3));
 				entity.dialogueColor = color;
 				entity.dialogueDuration = 4;
@@ -959,8 +963,8 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 		}
 		return;
 	}
-	if (!entity.dialogueDuration || !entity.dialoguePriority || entity.dialoguePriority < priority + (nooverride ? 0 : .1)) {
-		if (constant) {
+	if (forceFloater || !entity.dialogueDuration || !entity.dialoguePriority || entity.dialoguePriority < priority + (nooverride ? 0 : .1)) {
+		if (constant && !forceFloater) {
 			entity.dialogue = dialogue;
 			entity.dialogueColor = color;
 			entity.dialogueDuration = duration;
@@ -1060,7 +1064,9 @@ function KDChangeDistraction(src: string, type: string, trig: string, Amount: nu
 		amount = Math.max(amount, amount * 0.5 + 0.5 * KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax);
 		amount = Math.round(10 * amount);
 
-		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet("KinkyDungeonChangeDistraction" + (KinkyDungeonCanTalk() ? "" : "Gag") + amount), "#ff00ff", 2, 1);
+		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, 
+			TextGet("KinkyDungeonChangeDistraction" + (KinkyDungeonCanTalk() ? "" : "Gag") + amount),
+			 "#ff00ff", 2, 1, undefined, true);
 		KDOrigDistraction = Math.max(0, Math.floor(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * 100));
 	}
 
@@ -1131,7 +1137,9 @@ function KDChangeDesire(src: string, type: string, trig: string, Amount: number,
 		amount = Math.max(amount, amount * 0.5 + 0.5 * KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax);
 		amount = Math.round(10 * amount);
 
-		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet("KinkyDungeonChangeDistraction" + (KinkyDungeonCanTalk() ? "" : "Gag") + amount), "#ff00ff", 2, 1);
+		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, 
+			TextGet("KinkyDungeonChangeDistraction" + (KinkyDungeonCanTalk() ? "" : "Gag") + amount),
+			"#ff00ff", 2, 1, undefined, true);
 
 		KDOrigDesire = Math.max(0, Math.floor(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax * 100));
 	}

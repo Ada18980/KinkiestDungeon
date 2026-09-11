@@ -289,7 +289,7 @@ function KDAutoStruggleEvaluate(player: entity) {
 
 	// First get actions with an itemweight
 	for (let inv of KinkyDungeonAllRestraint()) {
-		let items = KDDynamicLinkListSurface(inv);
+		let items = KDDynamicLinkList(inv, true);
 		let link = items[0];
 		let index = 0;
 		let group = KDRestraint(inv).Group;

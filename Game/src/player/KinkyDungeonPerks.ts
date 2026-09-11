@@ -307,6 +307,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	//"SearchParty": {category: "Enemies", id: 51, cost: -1},
 	"NoWayOut": {category: "Restraints", id: 52, cost: -1},
 	"TightRestraints": {category: "Restraints", id: 54, cost: -0.5},
+	"StackRestraints": {category: "Restraints", id: "StackRestraints", cost: -0.5},
 	"KinkyPrison":  {category: "Restraints", id: "KinkyPrison", cost: -0.5},
 	"MagicHands": {category: "Restraints", id: "MagicHands", cost: -1.5},
 	"KeepOutfit":  {category: "Restraints", id: "KeepOutfit", cost: 0},

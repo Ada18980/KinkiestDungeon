@@ -5227,14 +5227,18 @@ function KDRunRegularJailDefeatAttempt(CDE: entity, allowMain: boolean = true, r
 let KDCustomDefeat: string = "";
 let KDCustomDefeatEnemy: entity = null;
 
-function KDMakeHostile(enemy: entity, timer?: number) {
+function KDMakeHostile(enemy: entity, timer?: number, noAggroOthers?: boolean) {
 	if (!timer) timer = KDMaxAlertTimerAggro;
 	if (!enemy.hostile) enemy.hostile = timer;
 	else enemy.hostile = Math.max(enemy.hostile, timer);
-	if (KDGetFaction(enemy) == "Player") {
+	if (KDGetFactionOriginal(enemy) == "Player") {
 		enemy.faction = "Enemy"; // this otherwise becomes very fucked up
 		enemy.factionorig = "Player";
 	}
+	if (noAggroOthers) {
+		KinkyDungeonSetEnemyFlag(enemy, "relatiation_noaggro", timer);
+	}
+	
 	delete enemy.ceasefire;
 	delete enemy.allied;
 }
@@ -5758,8 +5762,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			|| KDHostile(player)
 			|| enemy.rage > 0)));
 			
-	AIData.canTeaseAggro = player && (((AIData.hostile && (AIData.aggressive || !KDEnemyHasFlag(enemy, "notouchie")))
-		|| (player.player && enemy.playWithPlayer && (!AIData.domMe || KDEnemyHasFlag(enemy, "forcetease")) && !KDEnemyHasFlag(enemy, "notouchie")))
+	AIData.canTeaseAggro = player
+		&& (
+		((AIData.hostile && (AIData.aggressive
+				|| KDEnemyHasFlag(enemy, "forcetease")
+				|| !KDEnemyHasFlag(enemy, "notouchie")))
+			|| (player.player && enemy.playWithPlayer
+				&& (KDEnemyHasFlag(enemy, "forcetease")
+				|| !KDEnemyHasFlag(enemy, "notouchie"))))
 		|| (!player.player && (
 			!player.Enemy
 			|| KDHostile(player)
@@ -5808,7 +5818,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			: false
 	);
 	AIData.wantsToTease = AIData.canTeaseAggro && (
-		(player.player && enemy.playWithPlayer && !KinkyDungeonAggressive(enemy) && !AIData.domMe && !KDEnemyHasFlag(enemy, "notouchie"))
+		(player.player && enemy.playWithPlayer && !KinkyDungeonAggressive(enemy)
+		&& (KDEnemyHasFlag(enemy, "forcetease")
+			|| !KDEnemyHasFlag(enemy, "notouchie")))
 		&& (!player.player // NPCs will aggro NPCs no questions asked
 			|| ( // However there are situations where the player will not get attacked
 				( // In order to be attacked the player must fulfill one of these conditions
@@ -6642,10 +6654,11 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		&& AIType.attack(enemy, player, AIData)
 		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.range, !enemy.Enemy.projectileAttack, !enemy.Enemy.projectileAttack);
 	let first = true;
-	AIData.canTease = (!AIData.canAttack || (enemy.attackPoints < 1 && !KDEnemyHasFlag(enemy, "attacked")))
+	AIData.canTease = (!AIData.canAttack
+			|| (enemy.attackPoints < 1 && !KDEnemyHasFlag(enemy, "attacked")))
 		&& !(enemy.disarm > 0)
 		&& AIData.wantsToTease
-		&& (!player?.player)
+		&& (player?.player)
 		&& ((enemy.aware && (!player.player || enemy.vp > 0.25)
 			&& KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
 		&& (AIData.attack.includes("Melee") || (enemy.Enemy.tags && AIData.leashing && !KinkyDungeonHasWill(0.1)))
@@ -9863,7 +9876,7 @@ function KDIsFlying(enemy: entity): boolean {
  * @param enemy
  */
 function KDEnemyCanSignal(enemy: entity): boolean {
-	return !enemy.Enemy.tags?.nosignal;
+	return !enemy.Enemy.tags?.nosignal && !KDEnemyHasFlag(enemy, "nosignalothers");
 }
 
 /**
@@ -10882,8 +10895,9 @@ function KDGetTeaseAttack(enemy: entity, player: entity, AData: KDAIData): KDTea
 	return null;
 }
 
-function KDBasicTeaseAttack(enemy: entity, player: entity, noglobal?: boolean, dist: number = 1.5): boolean {
+function KDBasicTeaseAttack(enemy: entity, player: entity, aiData: KDAIData, noglobal?: boolean, dist: number = 1.5): boolean {
 	return  player.player
+		&& (!aiData.domMe || KDEnemyHasFlag(enemy, "forcetease"))
 	    &&  KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < dist
 	    &&  !KDEnemyHasFlag(enemy, "teaseAtkCD")
 	    &&  (noglobal || !KinkyDungeonFlags.get("globalteaseAtkCD"))

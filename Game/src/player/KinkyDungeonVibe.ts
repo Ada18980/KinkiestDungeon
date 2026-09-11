@@ -84,7 +84,7 @@ let KDToggles = {
 	StackOutfitItems: false,
 	SpellBook: false,
 	ShowRestraintOnHover: false,
-	BuffSide: true,
+	BuffSide: false,
 	//HiResModel: false,
 	Fullscreen: false,
 	SkipIntro: false,

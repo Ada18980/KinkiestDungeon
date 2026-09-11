@@ -383,7 +383,7 @@ KinkyDungeonStat51,"Search Party"
 KinkyDungeonStatDesc51,"More enemies spawn during sleep."
 
 KinkyDungeonStat52,"No Way Out"
-KinkyDungeonStatDesc52,"Enemies will always use the tightest restraints possible regardless of willpower. +10 Security level."
+KinkyDungeonStatDesc52,"Enemies will always use the tightest restraints possible regardless of willpower and will try to stack many restraints. +10 starting Security level."
 KinkyDungeonStat53,"Deft Footwork"
 KinkyDungeonStatDesc53,"You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance."
 KinkyDungeonStatPoorForm,"Poor Form"
@@ -395,7 +395,10 @@ KinkyDungeonStatDescSomaticPlus,"You can cast arm spells using just your fingers
 
 
 KinkyDungeonStat54,"Well-Equipped"
-KinkyDungeonStatDesc54,"Restraints and traps that are limited by level appear sooner, and enemies stack more restraints in general. +10 security level."
+KinkyDungeonStatDesc54,"Restraints and traps that are limited by level appear sooner. +10 starting security level."
+
+KinkyDungeonStatStackRestraints,"Layers Under Layers"
+KinkyDungeonStatDescStackRestraints,"Many restraints that are otherwise improbable can now be stacked. +10 starting security level."
 
 KinkyDungeonStat55,"Quick-Draw"
 KinkyDungeonStatDesc55,"Switching weapons and spells does not take a turn."
@@ -8556,9 +8559,11 @@ KDPerkBondageMode,"Perk Shrine Bondage:"
 KinkyDungeonPerkBondageMode0,Never
 KinkyDungeonPerkBondageMode1,Sometimes
 KinkyDungeonPerkBondageMode2,Always
+KinkyDungeonPerkBondageMode3,Only
 KinkyDungeonPerkBondageModeDesc0,"Perk shrines will not offer bondage as part of the deal."
 KinkyDungeonPerkBondageModeDesc1,"Bondage will sometimes be offered alongside perks."
 KinkyDungeonPerkBondageModeDesc2,"Perk shrines are always accompanied by bondage."
+KinkyDungeonPerkBondageModeDesc3,"Perk shrines sometimes offer only bondage."
 
 
 KDPerkBondageVisMode,"Perk Shrine Bondage Info:"
@@ -11647,7 +11652,7 @@ rPrisonIntroNewLife_Brat,"(The SPEAKER chuckles)|Hah, looks like you've got lots
 rPrisonIntroNewLife_Pout,"(The SPEAKER giggles)|Don't worry, you'll come to enjoy it soon enough."
 rPrisonIntroNewLife_Sub,"(The SPEAKER smiles)|Heh, looks like you'll be fitting right in."
 
-rPrisonIntroRules,"(The SPEAKER chuckles)|You're probably wondering what's in store for you.|It's simple: You behave and do as you're told.|Eventually you will get to roam around.|Don't you dare try to steal anything."
+rPrisonIntroRules,"(The SPEAKER chuckles)|You're probably wondering what's in store for you.|It's simple: You behave and do as you're told.|Eventually we may let you wander around as a toy,|if you're a good ${Pdim} and behave."
 rPrisonIntroRules_Brat,"(The SPEAKER chuckles)|Feisty, aren't you?|Looks like it's going to be an extended stay for you~"
 rPrisonIntroRules_Pout,"(The SPEAKER giggles and returns to her work)"
 rPrisonIntroRules_Sub,"(The SPEAKER smiles)|Looks like you'll get the hang of it pretty quickly!"
@@ -30718,6 +30723,8 @@ KDTeaseAttackResist_Headpat,"The ENMY tries to pat you on the head but decides n
 KDTeaseAttack_ShoulderMassage,The ENMY behind you gives your shoulders a nice massage! (DMGDLT)
 KDTeaseAttackResist_ShoulderMassage,"The ENMY reaches for your shoulders but you slip free!"
 KDTeaseAttack_Praise,The ENMY calls you cute! (DMGDLT)
+KDPraiseDialogue,Cute!
+KDPraiseDialogueFail,*blushes*
 KDTeaseAttackResist_Praise,"The ENMY blushes at your cuteness!"
 KDTeaseAttack_Insult,The ENMY makes fun of you! (DMGDLT)
 KDTeaseAttackResist_Insult,"The ENMY struggles to find words!"
@@ -34267,3 +34274,4 @@ KDDialogue_ToyPlayChastity_Robot,"Pleasure controls detected."
 KDDialogue_ToyPlayChastity_Dom,"You've been a bad girl, haven't you? *taps on your chastity gear*"
 KDDialogue_ToyPlayChastity_Brat,"Such a naughty girl, getting yourself all locked up like that!"
 KDDialogue_ToyPlayChastity_Sub,"I-I know you want release, but you're in this gear for a reason~"
+

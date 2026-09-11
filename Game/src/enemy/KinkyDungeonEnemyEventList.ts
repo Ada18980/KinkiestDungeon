@@ -1019,6 +1019,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (!KDHostile(enemy)) {
 				KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 12);
 				KinkyDungeonSetEnemyFlag(enemy, "notouchie", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "forcetease", 2);
 			}
 
 			if ((aiData as KDAIData).aggressive) {

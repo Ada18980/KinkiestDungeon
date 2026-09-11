@@ -45,12 +45,12 @@ enum KDDrawStruggleEnum {
 	FULL = 0,
 	STRUGGLE = 3,
 	NONE = 4,
+
 };
 let KDDrawMaxStruggle = 4;
 let KDDrawStruggleIcon = {
 	[KDDrawStruggleEnum.ALMOSTALL]: "AlmostAll",
 	[KDDrawStruggleEnum.MOST]: "Most",
-	[KDDrawStruggleEnum.FULL]: "Full",
 	[KDDrawStruggleEnum.STRUGGLE]: "Struggle",
 	[KDDrawStruggleEnum.NONE]: "True",
 };
@@ -387,7 +387,7 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 	KDDrawStruggleGroups();
 	KDDrawStatusBars(1790, 340, 200);
 	KinkyDungeonDrawActionBar(1780, 166);
-	if (!KinkyDungeonTargetingSpell) {
+	if (!KinkyDungeonTargetingSpell && !MouseIn(0, 0, 500, PIXIHeight)) {
 		if (KDToggles.BuffSide)
 			KDProcessBuffIcons(510, 82, true);
 		else
@@ -1343,7 +1343,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 					resourcesX + 60, MouseY, KDBaseWhite, "#333333", 24, "left");
 			resourcesIndex--;
 
-			if ((KDShowQuickInv() && !KDToggleShowAllBuffs) || (KDStruggleDrawMode == KDDrawStruggleEnum.FULL || KDStruggleDrawMode == KDDrawStruggleEnum.STRUGGLE || MouseIn(0, 0, 500, 1000))) {
+			if ((KDShowQuickInv() && !KDToggleShowAllBuffs) || (KDStruggleDrawMode == KDDrawStruggleEnum.STRUGGLE || MouseIn(0, 0, 500, 1000))) {
 				KDDraw(kdcanvas, kdpixisprites, "pick", KinkyDungeonRootDirectory + "Items/Pick.png", resourcesX, resourcesY + resourcesIndex*resourceSpacing, 50, 50, undefined, {
 					zIndex: 90
 				});
@@ -2104,6 +2104,8 @@ function KinkyDungeonUpdateStruggleGroups() {
 
 	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 
+	let surfaceGroups: Record<string, item[]> = {};
+
 	for (let S = 0; S < struggleGroups.length; S++) {
 		let sg = struggleGroups[S];
 		let Group = sg;
@@ -2111,6 +2113,9 @@ function KinkyDungeonUpdateStruggleGroups() {
 		let restraint = KinkyDungeonGetRestraintItem(Group);
 
 		if (restraint) {
+			if (!surfaceGroups[KDRestraint(restraint)?.Group]) {
+				surfaceGroups[KDRestraint(restraint)?.Group] = KDDynamicLinkListSurface(restraint);
+			}
 			KinkyDungeonStruggleGroups.push(
 				{
 					group:Group,
@@ -2168,7 +2173,7 @@ function KDCanRemove(item: item): boolean {
  */
 function KDGetItemLinkIndex(inv: item, _allowInaccessible?: boolean): number {
 	let item = KinkyDungeonGetRestraintItem(KDRestraint(inv).Group);
-	let surfaceItems = KDDynamicLinkListSurface(item);
+	let surfaceItems = KDDynamicLinkList(item, true);
 	return surfaceItems.indexOf(inv);
 }
 /**
@@ -3427,7 +3432,10 @@ function KDDrawStruggleGroups() {
 	} else {
 		currentHighlightedItemNoReset = false;
 	}
-	if (!KDShowQuickInv() && ((KDStruggleDrawMode > 0 ||
+	
+	KDStruggleGroupHighlightedItem = null;
+	if (KDStruggleDrawMode != KDDrawStruggleEnum.FULL && !KDShowQuickInv() &&
+		(((KDStruggleDrawMode > 0 && KDStruggleDrawMode != KDDrawStruggleEnum.NONE) ||
 		((currentHighlightedItem) || MouseIn(0, 0, 500, 1000))) && KinkyDungeonStruggleGroups))
 		for (let sg of KinkyDungeonStruggleGroups) {
 			let ButtonWidth = 48;
@@ -3441,6 +3449,7 @@ function KDDrawStruggleGroups() {
 			let surfaceItems = [];
 			let dynamicList = [];
 			let noRefreshlists = false;
+
 
 
 			i = 0;
@@ -3500,15 +3509,41 @@ function KDDrawStruggleGroups() {
 				}
 			};
 
-			if (KDStruggleGroupLinkIndex[sg.group] && item && item.dynamicLink) {
+			let stackDrawn = 0;
+			let blocked = false;
+
+			if (item) {
 				surfaceItems = KDDynamicLinkListSurface(item);
 				dynamicList = KDDynamicLinkList(item, true);
+
+
+
+
+				KDDrawScrollableItemList(x + 3, y + 5, ButtonWidth, 
+					ButtonWidth * KDScrollableStruggleSectionNum, sg,
+					item, 
+					KDDynamicLinkList(KinkyDungeonGetRestraintItem(sg.group), true), 
+					KDDynamicLinkListSurface(KinkyDungeonGetRestraintItem(sg.group)));
+			}
+			
+
+
+
+			if (KDStruggleGroupLinkIndex[sg.group] && item && item.dynamicLink) {
 				noRefreshlists = true;
-				if (!KDStruggleGroupLinkIndex[sg.group] || KDStruggleGroupLinkIndex[sg.group] >= surfaceItems.length) {
+				if (!KDStruggleGroupLinkIndex[sg.group] || KDStruggleGroupLinkIndex[sg.group] >= dynamicList.length) {
 					KDStruggleGroupLinkIndex[sg.group] = 0;
 				}
-				item = surfaceItems[KDStruggleGroupLinkIndex[sg.group]];
-			} else if (KDStruggleGroupLinkIndex[sg.group] > 0) delete KDStruggleGroupLinkIndex[sg.group];
+				item = dynamicList[KDStruggleGroupLinkIndex[sg.group]];
+				blocked = !surfaceItems.includes(item);
+			} else if (KDStruggleGroupLinkIndex[sg.group] > 0) {
+				delete KDStruggleGroupLinkIndex[sg.group];
+				blocked = false;
+			}
+
+
+
+			
 			if (((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
 				|| (!currentHighlightedItem && MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth+3)))) && sg) {
 
@@ -3544,40 +3579,76 @@ function KDDrawStruggleGroups() {
 				// 1 = grey
 				// 2 = white
 				if (dynamicList.length > 0 || (item && item.dynamicLink)) {
+
+					
 					if (!noRefreshlists) {
 						surfaceItems = KDDynamicLinkListSurface(item);
 						dynamicList = KDDynamicLinkList(item, true);
 					}
-					if (surfaceItems.length <= 1) {
+
+					
+
+					if (dynamicList.length <= 1) {
 						// Delete if there are no additional surface items
 						delete KDStruggleGroupLinkIndex[sg.group];
 						drawLayers = 1;
 					} else {
-						if (!KDStruggleGroupLinkIndex[sg.group] || KDStruggleGroupLinkIndex[sg.group] >= surfaceItems.length) {
+						if (!KDStruggleGroupLinkIndex[sg.group] || KDStruggleGroupLinkIndex[sg.group] >= dynamicList.length) {
 							KDStruggleGroupLinkIndex[sg.group] = 0;
 						}
-						item = surfaceItems[KDStruggleGroupLinkIndex[sg.group]];
+						if (KDStruggleGroupHighlightedItem)
+							item = KDStruggleGroupHighlightedItem;
+						else item = dynamicList[KDStruggleGroupLinkIndex[sg.group]];
 
 						drawLayers = 2;
 					}
 
 					let O = OInit + 1;
 					let drawn = false;
+					let dListIndex = dynamicList.findIndex((it) => {return it == item});
+					let minimumDrawSkip = dynamicList.length > KDDrawLayeredStackMaxNum - 2 ? 
+						(dListIndex - KDDrawLayeredStackMaxNum/2 + 1): 0;
+					let drawnSoFar = 0;
+
+
 					for (let d of dynamicList) {
 						//if (d != item)//KDRestraint(item) && (!KDRestraint(item).UnLink || d.name != KDRestraint(item).UnLink))
 						//{
-						drawn = true;
-						let msg = KDGetItemName(d);//TextGet("Restraint" + d.name);
-						let ic = d.lock;
-						if (KDGetCurse(d)) ic = KDCurses[KDGetCurse(d)]?.customIcon_hud || "Curse";
-
-						if (ic) {
-							KDDraw(kdcanvas, kdpixisprites, "dynlist" + d.name + ic + O, KinkyDungeonRootDirectory + `Locks/${ic}.png`,
-								530 + 1, MY - lineSize/2 + O * lineSize + 1, lineSize - 2, lineSize - 2, undefined, {zIndex: 150});
+						let dotdotdot = false;
+						if (drawnSoFar < minimumDrawSkip) {
+							if (drawnSoFar < minimumDrawSkip - 1) {drawnSoFar++; continue;};
+							dotdotdot = true;
 						}
-						DrawTextKD(msg, 530 + lineSize, MY + O * lineSize, d == item ? KDBaseWhite : (surfaceItems.includes(d) ? "#999999" : "#aa5555"), "#333333", fontSize, "left", 150);
 
-						if ((d.struggleProgress > 0 || d.cutProgress > 0)) {
+						if (drawnSoFar >= minimumDrawSkip + KDDrawLayeredStackMaxNum/2+2) {
+							if (drawnSoFar == minimumDrawSkip + KDDrawLayeredStackMaxNum/2+2) {
+								dotdotdot = true;
+							} else continue;
+						}
+
+						drawn = true;
+						drawnSoFar++;
+						if (dotdotdot) {
+							DrawTextKD("...", 530 + lineSize, MY + O * lineSize, 
+							"#999999", "#333333", 
+							fontSize, "left", 150);
+
+						} else {
+							let msg = KDGetItemName(d);//TextGet("Restraint" + d.name);
+							let ic = d.lock;
+							if (KDGetCurse(d)) ic = KDCurses[KDGetCurse(d)]?.customIcon_hud || "Curse";
+
+							if (ic) {
+								KDDraw(kdcanvas, kdpixisprites, "dynlist" + d.name + ic + O, KinkyDungeonRootDirectory + `Locks/${ic}.png`,
+									530 + 1, MY - lineSize/2 + O * lineSize + 1, lineSize - 2, lineSize - 2, undefined, {zIndex: 150});
+							}
+							DrawTextKD(msg, 530 + lineSize, MY + O * lineSize, 
+							d == item ? KDBaseWhite : (surfaceItems.includes(d) ? "#999999" : "#aa5555"), "#333333", fontSize, "left", 150);
+
+
+						}
+						
+						if (!dotdotdot && (d.struggleProgress > 0 || d.cutProgress > 0)) {
 							if (d.struggleProgress > 0)
 								FillRectKD(kdcanvas, kdpixisprites, "Hovprogress"+d.id, {
 									Left: 530 + lineSize + (d.cutProgress ? 5 : 1) + 250*(d.cutProgress || 0),
@@ -3641,8 +3712,8 @@ function KDDrawStruggleGroups() {
 
 				if (!currentDrawnSG) {
 					currentDrawnSG = sg;
-					currentDrawnSGlayers = surfaceItems;
-					currentDrawnSGLength = surfaceItems.length;
+					currentDrawnSGlayers = dynamicList;
+					currentDrawnSGLength = dynamicList.length;
 				}
 
 				if (!currentHighlightedItem)
@@ -3655,7 +3726,7 @@ function KDDrawStruggleGroups() {
 				}
 				lastO++;
 
-				if (StruggleType && !sg.blocked) {
+				if (StruggleType && !sg.blocked && !blocked) {
 					// @ts-ignore
 					let struggleData: KDStruggleData = {};
 					KinkyDungeonStruggle(KDRestraint(item).Group, StruggleType, data.struggleIndex, true, struggleData);
@@ -3834,15 +3905,23 @@ function KDDrawStruggleGroups() {
 
 				if (lastO) lastO += 1;
 
+				let maxStrictnessItems = KDDrawStrictnessItemsMaxNum;
+
 				if (item && KDRestraint(item) && KinkyDungeonStrictness(false, KDRestraint(item).Group, item)) {
 					let strictItems = KinkyDungeonGetStrictnessItems(KDRestraint(item).Group, item);
 					let O = lastO + 1;
 					let drawn = false;
+					let drawnItems = 0;
 					for (let s of strictItems) {
+						if (drawnItems > maxStrictnessItems) {
+							drawnItems++;
+							continue;
+						}
 						drawn = true;
-						let msg = KDGetItemNameString(s);//TextGet("Restraint" + s);
+						let msg = drawnItems == maxStrictnessItems ? "..." : KDGetItemNameString(s);//TextGet("Restraint" + s);
 						DrawTextKD(msg, 530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left");
 						O++;
+						drawnItems++;
 					}
 					let lastlastO = O;
 					O = lastO;
@@ -3854,7 +3933,7 @@ function KDDrawStruggleGroups() {
 					lastO = O;
 
 				}
-				if (item.tightness > 0 && !KDGetCurse(item) && (KDRestraint(item).escapeChance?.Struggle < 1 || KDRestraint(item).escapeChance?.Remove < 1)) {
+				if (item.tightness > 0 && !blocked && !KDGetCurse(item) && (KDRestraint(item).escapeChance?.Struggle < 1 || KDRestraint(item).escapeChance?.Remove < 1)) {
 					if (!sg.blocked) {
 						let O = lastO;
 						DrawTextKD(TextGet("KDItemsTightness").replace("TTT",
@@ -3890,21 +3969,13 @@ function KDDrawStruggleGroups() {
 
 			let color = KDBaseWhite;
 			//if (item && (item.lock || KDGetCurse(item)) {color = "#ffaadd";}
-			let icon = item.lock;
-			if (KDGetCurse(item)) icon = KDCurses[KDGetCurse(item)]?.customIcon_hud || "Curse";
-			if (!icon && sg.blocked) icon = "Blocked";
+			
 
-			if (icon) {
-				KDDraw(kdcanvas, kdpixisprites, "icon" + sg.name + icon, KinkyDungeonRootDirectory + `Locks/${icon}.png`,
-					x + 3, y + 5 + (mini ? ButtonWidth/2 : 0), (mini ? ButtonWidth/2 : ButtonWidth) - 10, (mini ? ButtonWidth/2 : ButtonWidth) - 10, undefined, {zIndex: 70});
-			}
-
-			let GroupText = (sg.name && item) ? (KDGetItemName(item)) : ( TextGet("KinkyDungeonGroup"+ sg.group)); // The name of the group to draw.
-
-			if (!mini)
+			/*if (!mini)
 				DrawTextFitKD(GroupText, x + (icon? ButtonWidth : 0) + ((!sg.left) ? ButtonWidth - (drawLayers ? ButtonWidth : 0) : 0), y + ButtonWidth/2, 250 - (icon ? ButtonWidth : 0), color, "#333333", 24, sg.left ? "left" : "right");
 			else {
-				KDDraw(kdcanvas, kdpixisprites, "iconrest" + sg.name + GroupText, KDGetItemPreview(item).preview,
+				KDDraw(kdcanvas, kdpixisprites, "iconrest" + sg.name + GroupText, 
+					KDGetItemPreview(item).preview,
 					x + 3, y + 5, ButtonWidth, ButtonWidth, undefined, {zIndex: 69});
 				//KDDraw(kdcanvas, kdpixisprites, "iconrest2" + sg.name + GroupText, KDGetItemPreview(item).preview2,
 				//x + 3, y + 5, ButtonWidth, ButtonWidth, undefined, {zIndex: 69.1});
@@ -3914,17 +3985,21 @@ function KDDrawStruggleGroups() {
 				KDDraw(kdcanvas, kdpixisprites, "layers" + sg.name, KinkyDungeonRootDirectory + "Layers.png",
 					x + (sg.left ? 250 : 12), y, 48, 48, undefined, {zIndex: 70});
 
-			}
-			DrawButtonKDEx("surfaceItems"+sg.group, (_bdata) => {
-				if (drawLayers && surfaceItems.length > 1 && MouseInKD("surfaceItems"+sg.group)) {
+			}*/
+			/*DrawButtonKDEx("surfaceItems"+sg.group, (_bdata) => {
+				if (drawLayers && dynamicList.length > 1 && MouseInKD("surfaceItems"+sg.group)) {
 					if (!KDStruggleGroupLinkIndex[sg.group]) KDStruggleGroupLinkIndex[sg.group] = 1;
 					else KDStruggleGroupLinkIndex[sg.group] = KDStruggleGroupLinkIndex[sg.group] + 1;
 				}
 				return true;
-			}, drawLayers == 2, x + (sg.left ? 0 : 12), y, mini ? 48 : 250, 48, "", drawLayers == 2 ? KDBaseWhite : "#888888", "", "", undefined, !(drawLayers == 2), KDTextGray05, 24, undefined, {
+			}, drawLayers == 2, x + (sg.left ? 0 : 12), y, 
+			mini ? 48 : 250, 48, "", 
+			drawLayers == 2 ? KDBaseWhite : "#888888", "", "", 
+			undefined, !(drawLayers == 2), KDTextGray05, 
+			24, undefined, {
 				zIndex: 40,
 				alpha: 0.1,
-			});
+			});*/
 			if (KDToggles.StruggleBars && !mini && (item.struggleProgress > 0 || item.cutProgress > 0)) {
 				if (item.struggleProgress > 0)
 					FillRectKD(kdcanvas, kdpixisprites, "progress"+sg.group, {
@@ -3957,6 +4032,8 @@ function KDDrawStruggleGroups() {
 			}
 		}
 
+	
+	KDScrollMovedStruggleItem = false;
 	KDLastStruggleTypeTooltip = ""; // consume it
 }
 
@@ -4048,3 +4125,104 @@ function KDDrawPronounPicker(X: number, Y: number, list: string[], current: stri
 			});
 	}
 }
+
+let KDDrawLayeredStackMaxNum = 6;
+let KDDrawStrictnessItemsMaxNum = 3;
+let KDScrollMovedStruggleItem = false;
+
+function KDDrawScrollableItemList(x: number, y: number, size: number, width: number, sg: StruggleGroup, item: item, dynamicList: item[],
+	surfaceItems: item[], zIndex: number = 50) {
+
+	let listID = x + y + KDRestraint(item).Group;
+	let doFix = false;
+	if (KinkyDungeonCheckClothesLoss || KDScrollMovedStruggleItem || ShouldUpdateList(listID)) {
+		let list: ProgressListData[] = KDEnumerateProgressItems();
+		PopulateList(listID, 
+			x, 
+			y, 
+			width, size, zIndex, 
+			Math.floor(width / size),
+			dynamicList, false, true
+		);
+		if (KinkyDungeonCheckClothesLoss || KDScrollMovedStruggleItem) {
+			doFix = true;
+		}
+	}
+	//@ts-ignore
+	let drawn: item = KDDrawScrollableList(listID, true, (
+		container: PIXIContainer,
+		isClickable: boolean,
+		listItem: item,
+		listRow: number,
+		visualIndex: number,
+		isSelected: boolean,
+		selectedIndex: number,
+		list: KDScrollableListData)  => {
+		let selected = dynamicList[KDStruggleGroupLinkIndex[sg.group]] == listItem;
+
+		if (listItem) {
+
+			let icon = listItem.lock;
+			if (KDGetCurse(listItem)) icon = KDCurses[KDGetCurse(listItem)]?.customIcon_hud || "Curse";
+			if (!icon && sg.blocked) icon = "Blocked";
+
+			if (icon) {
+				KDDraw(container, kdpixisprites, "icon" + sg.name + icon, KinkyDungeonRootDirectory + `Locks/${icon}.png`,
+					list.x + visualIndex * size, list.y, size/2 - 10, 
+					size/2 - 10, undefined, {zIndex: zIndex + 1});
+			}
+			if (!surfaceItems.findIndex((it) => {
+				return it.id == listItem.id;
+			})) {
+				KDDraw(container, kdpixisprites, "iconblocked" + sg.name + icon + listItem.id, 
+					KinkyDungeonRootDirectory + `Locks/Blocked.png`,
+					list.x + visualIndex * size, list.y, size, 
+					size, undefined, {zIndex: zIndex + 2});
+			}
+
+			let GroupText = (sg.name && item) ? (KDGetItemName(item)) : ( TextGet("KinkyDungeonGroup"+ sg.group)); // The name of the group to draw.
+
+
+
+			if (DrawButtonKDExTo(container, listID + "_item_" + listItem.id, (bdata) => {
+
+					if (dynamicList.length > 1) {
+						KDStruggleGroupLinkIndex[sg.group] = dynamicList.findIndex((it) => {
+							return it.id == listItem.id;
+						});
+					} else {
+						KDStruggleGroupLinkIndex[sg.group] = 0;
+					}
+
+				return true;
+
+			}, true, list.x + visualIndex * size, list.y, size, size,
+			"", KDBaseWhite, KDGetItemPreview(listItem).preview, undefined,
+			false, 
+			!selected || (currentDrawnSG != sg) || KDCurrentScrollableListHover?.id == listID, 
+			KDBaseBlack, undefined, 
+			undefined, {
+				unique: true,
+				scaleImage: true,
+				zIndex: zIndex,
+				alpha: KDStruggleGroupBGAlpha,
+			})) {
+				// draw the hover thing
+				KDStruggleGroupHighlightedItem = listItem;
+			}
+		}
+		
+
+		
+		return selected;
+	}, false, true, 4, undefined, 
+	"", "", undefined, undefined, undefined, undefined, false);
+
+	if (doFix) {
+		KDFixScrollableList(listID, 2);
+	}
+}
+
+let KDScrollableStruggleSectionNum = 3.5;
+let KDStruggleGroupBGAlpha = 0.5;
+let KDStruggleGroupHighlightedItem = null;

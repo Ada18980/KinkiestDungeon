@@ -10,6 +10,23 @@
 
 // Power is a scale of how powerful the restraint is supposed to be. It should roughly match the difficulty of the item, but can be higher for special items. Power 10 or higher might be totally impossible to struggle out of.
 
+/** These linkcategories are removed when running LayersUnderLayers */
+let KDLayersUnderLayersRestraintFilters: {
+	LChastityBra: 1,
+	LChastityBelt: 1,
+	LMouthGag: 1,
+	LCuffs: 1,
+	LShoes: 1,
+	LBlindfold: 1,
+	LCollar: 1,
+	
+	LArms: 1,
+	LLegbinder: 1,
+	LCorset: 1,
+	LMuzzle: 1,
+
+};
+
 let KDCutAdditionalLimitChance = 0.05;
 let KDAllyLimitChanceRedMult = 0.5;
 let KDAllyLimitChanceRedFlat = 0.05;
@@ -1265,6 +1282,22 @@ function KinkyDungeonWallCrackAndKnife(Message: boolean): boolean {
  * Determines if the entire dynamic item tree has at least one inaccessable item
  * @param item
  */
+function KDIsItemBlocked(item: item): boolean {
+	let base = KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group);
+	if (base) {
+		return KDDynamicLinkListSurface(base).findIndex((it) => {
+			return it.id == item.id;
+		}) < 0;
+	}
+
+	return false;
+}
+
+
+/**
+ * Determines if the entire dynamic item tree has at least one inaccessable item
+ * @param item
+ */
 function KDIsItemAccessible(item: item): boolean {
 	let base = KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group);
 	if (base) {
@@ -2052,7 +2085,7 @@ function KDGetDynamicItem(group: string, index: number) {
 	let restraint = KinkyDungeonGetRestraintItem(group);
 	let host = restraint;
 	if (index) {
-		let surfaceItems = KDDynamicLinkListSurface(restraint);
+		let surfaceItems = KDDynamicLinkList(restraint, true);
 		let dynamicItems = KDDynamicLinkList(restraint, true);
 		if (surfaceItems[index]) {
 			restraint = surfaceItems[index];
@@ -2099,8 +2132,11 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	// Experimental ==> all escape chance increased by 1-progress%, all limit chance increased by the same amount
 
 
-	if (KDGroupBlocked(data.struggleGroup) && !KDRestraint(data.restraint).alwaysStruggleable) {
+	if ((KDGroupBlocked(data.struggleGroup) && !KDRestraint(data.restraint).alwaysStruggleable)
+		|| (
+		KDIsItemBlocked(data.restraint) && !KDRestraint(data.restraint).alwaysStruggleable)) {
 		data.escapeChance = 0;
+		data.blocked = true;
 		if (!data.query) {
 			if (KDSoundEnabled()) KinkyDungeonPlaySound_SingleFrame(KinkyDungeonRootDirectory + "Audio/"
 				+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint).Blocked) ?
@@ -2758,10 +2794,9 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 	let restraint = KinkyDungeonGetRestraintItem(struggleGroup);
 	let host = restraint;
 	if (index) {
-		let surfaceItems = KDDynamicLinkListSurface(restraint);
 		let dynamicItems = KDDynamicLinkList(restraint, true);
-		if (surfaceItems[index]) {
-			restraint = surfaceItems[index];
+		if (dynamicItems[index]) {
+			restraint = dynamicItems[index];
 			for (let h_item of dynamicItems) {
 				if (h_item.dynamicLink == restraint) {
 					host = h_item;
@@ -3250,7 +3285,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 			}
 			if ((suff == "" || (Pass == "Fail" && suff == data.failSuffix)) && (Pass == "Fail" || Pass == "Success") && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
 
-			if (Pass != "Success")
+			if (Pass != "Success" && !data.blocked)
 				KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + Pass + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), (Pass == "Success") ? KDBaseLightGreen : KDBaseRed, 2);
 
 			if (KinkyDungeonHasStamina(-data.cost)) {
@@ -7284,10 +7319,17 @@ function KDDynamicLinkListSurface(item: item): item[] {
  */
 function KDLinkSize(restraint: restraint, index?: number): number {
 	if (index != undefined && restraint.linkSizes) {
+		if (restraint.linkCategories) {
+			if (KDLayersUnderLayersRestraintFilters[restraint.linkCategories[index]]) {
+				return 0;
+			}
+		}
 		return restraint.linkSizes[index];
 	}
 	return restraint.linkSize ? restraint.linkSize : 1;
 }
+
+
 
 /**
  * @param item
@@ -7570,7 +7612,7 @@ function KDAddFurnitureRestraintSet(entity: entity, restraintSet: Record<string,
 					undefined,
 					false,
 					false,
-					!KinkyDungeonStatsChoice.has("TightRestraints"),
+					!KinkyDungeonStatsChoice.has("NoWayOut"),
 					undefined,
 					false,
 					undefined, undefined, undefined, true);

@@ -387,6 +387,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 	// Door lock, trap
 	{name: "DoorLock",
+		nonDirectional: true,
 		tags: KDMapInit(["construct", "soulimmune", "melee", "noknockback", "unstoppable", "temporary",
 			"bulwark", "nonvulnerable", "nobrain", "nosignal", "immobile", "poisonimmune",
 			"soulimmune",
@@ -400,11 +401,13 @@ let KinkyDungeonEnemies: enemy[] = [
 
 	{name: "EarthenMonolith", tags: KDMapInit(["construct", "poisonimmune", "soulimmune", "player", "playerinstakill", "noknockback", "melee", "temporary", "notalk", "immobile", "summonedRock", "fireresist", "nonvulnerable", "nobrain", "nosignal"]), immobile: true, spellResist: 1.0, faction: "Rock", lowpriority: true, evasion: -100, armor: 2.5, followRange: 100, AI: "wander", regen: -0.25,
 		visionRadius: 0, maxhp: 5, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		nonDirectional: true,
 		terrainTags: {}, floors:KDMapInit([])},
 
 	{name: "Wall",
 		tags: KDMapInit(["construct", "player", "playerinstakill", "noknockback", "melee", "temporary", "notalk", "nonvulnerable", "immobile",
 			"bulwark", "nobrain", "nosignal"]),
+		nonDirectional: true,
 		immobile: true, spellResist: 4, allied: true, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander", regen: -1.0,
 		Resistance: {
 			profile: ["construct"],
@@ -412,6 +415,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		visionRadius: 0, maxhp: 15, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "WallDoor",
+		nonDirectional: true,
 		tags: KDMapInit(["construct", "player", "playerinstakill", "noknockback", "melee", "temporary", "notalk",
 			"bulwark", "nonvulnerable", "immobile", "nobrain", "nosignal"]),
 		immobile: true, spellResist: 4, allied: true, lowpriority: true, evasion: -100, armor: 2.5, followRange: 100, AI: "wander", regen: -0.8,
@@ -422,6 +426,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "StaticSphere", tags: KDMapInit(["construct", "flying", "poisonimmune", "silenceimmune", "blindimmune", "soulimmune", "player", "playerinstakill", "noknockback", "melee", "electricImmune", "nowet", "immobile", "temporary", "notalk", "nonvulnerable", "nobrain", "nosignal"]), immobile: true, spellResist: 4, allied: true, lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander",
 		visionRadius: 0, maxhp: 20, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		nonDirectional: true,
 		terrainTags: {}, floors:KDMapInit([]),
 		events: [
 			{type: "CastSpellNearbyEnemy", trigger: "afterEnemyTick", spell: "StaticSphereStrike", aoe: 1.5, player: false},
@@ -6977,7 +6982,7 @@ let KDSpecialConditions: Record<string, SpecialCondition> = {
 					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 					!(enemy.Enemy.ignoreStaminaForBinds || (true && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 					false,
-					!(KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
+					!(KinkyDungeonStatsChoice.has("NoWayOut") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
 					KDGetExtraTags(enemy, true, true),
 					false,
 					{
