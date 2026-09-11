@@ -36,7 +36,7 @@
 - Next
 下一页
 - Music: kocaeli, EchoZero|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline, KD CN Localization|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, Riotmode, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-音乐: kocaeli, EchoZero|受缚敌人图像: Song|俄语翻译: Osiris|汉语翻译: Alexthymia, Mitki, Timeline, KD CN Localization|韩语和日语翻译: Phantasm|代码: Ellie, Demopans, Aelie|美术: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+音乐: kocaeli, EchoZero|受缚敌人图像: Song|俄语翻译: Osiris|汉语翻译: Alexthymia, Mitki, Timeline, KD CN Localization|韩语和日语翻译: Phantasm|代码: Ellie, Demopans, Aelie|美术: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, Riotmode, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
 - Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
 Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||艺 术 家 与 灵 感 来 源|Hotel01 - https://www.pixiv.net/en/users/5944252 - 画了非常棒的狼娘|spark utamaro - 想到了带有感知力的振动器这个主意
 
@@ -377,9 +377,9 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Show free characters on map
 在地图上显示自由的角色
 - Detailed jailed NPCs
-高清被监禁的 NPC（实验性）
+高清的被监禁 NPC
 - Detailed unique NPCs
-高清独特 NPC（实验性）
+高清的独特 NPC
 - Detailed servants in collection
 高清收藏中的仆人
 - Detailed prisoners/guests in collection
@@ -402,7 +402,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 悬停在挣扎按钮时显示束缚信息
 - Always Show Warnings
 总是显示警告
-# - Show Bullet Arrows
+- Show Bullet Arrows
+显示子弹箭头
 - Always Show Minimap
 总是显示小地图
 - Enable Sound
@@ -487,11 +488,12 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 显示玩家增益光环
 - Show Enemy Buff Auras
 显示敌人增益光环
-# - Noise Sound Effect
+- Noise Sound Effect
+噪音音效
 - Minimalist Enemy Auras
 极简敌人光环
 - Pixel Scaling (needs restart)
-像素化图像特效 ( 需重启 )
+像素缩放 ( 需重启 )
 - Auto-Crouch when Tripped
 绊倒时自动蹲下
 - Retro Animations
@@ -1135,7 +1137,7 @@ Sub
 - Pacifist
 和平主义者
 - Damage to humanoid enemies is reduced by 90% except teasing damage and pain, grope, tickle, charm, psychic, chain, glue, plush, and soap.
-对人形敌人造成的所有伤害都会降低 90%，但挑逗和疼痛/抚摸/挠痒/魅惑/灵能/锁链/胶体伤害除外。
+对人形敌人造成的伤害降低 90%，但挑逗、疼痛、抚摸、挠痒、魅惑、灵能、锁链、胶体、绒织和皂化伤害除外。
 - Curse Seeker
 诅咒探索者
 - When you pick up cursed armor or restraints from chests, they equip automatically if able.
@@ -1394,15 +1396,15 @@ ${You}是个不听话的宠物，应该穿上宠物服！
 - Untapped Strength
 潜力
 - Gain 0.5% struggle power per floor.
-楼层每 +1，挣扎强度 +0.5%。
+楼层每 +1，挣脱能力 +0.5%。
 - Bound by Gravity
 身陷重渊
 - Lose 0.5% struggle power per floor.
-楼层每 +1，挣扎强度 -0.5%。
+楼层每 +1，挣脱能力 -0.5%。
 - Painful Choice
 两害相权
 - Struggle power is halved, but gain back 10% per slot you are restrained in (up to 150%). Toys don't count.
-挣扎强度减半，但每个被束缚的身体部位（不包括玩具）提供 10% 挣扎加成，最高 150%。
+挣脱能力减半，但每个被束缚的身体部位（不包括玩具）提供 10% 挣扎加成，最高 150%。
 - No Kigurumi Masks
 没有KIG面具
 - Removes face-mimicking masks from the game.
@@ -2157,7 +2159,7 @@ Devious Dungeon Challenge 已启用。
 # :: KDLetGo
 
 - Call for Help!
-呼救!!!
+呼救！
 - Wait until interrupted
 等待至被打断
 - Auto-struggle
@@ -2423,7 +2425,7 @@ Devious Dungeon Challenge 已启用。
 隐藏子弹
 
 - Quick Inventory
-快速物品栏
+快捷物品栏
 - Inventory
 背包
 # :: KinkyDungeonKeyInventory
@@ -5045,7 +5047,7 @@ M.F. '女仆长'
 - That dagger was laced with something...
 那把匕首上沾着什么东西……
 - The dagger that hits you is poisoned, but it has minimal effect.
-你被带毒的匕首击中了，但是毒对你没有效果。
+刺中你的匕首涂有毒素，但几乎没起效。
 - You hear a shattering of glass, suddenly the air around you feels thick and moist...
 你听到玻璃破碎的声音，身边的空气突然变得粘稠而潮湿……
 - Poison Dagger
@@ -6513,7 +6515,7 @@ AttackName 击中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害, 伤�
 # :: KinkyDungeonStruggleCantPickDivineLock
 # :: KinkyDungeonStruggleCantPickDivine2Lock
 - You must complete a divine quest to unlock this.
-你必须完成你的任务！否则就别想解锁…
+你必须完成一项神圣任务才能解锁它。
 - You're not sure a key for this even exists in the mortal realm.
 你甚至不确定人间是否存在这把钥匙。
 - The lock is made of solid rubber. You can't pick that.
@@ -8382,7 +8384,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintSlimeWalkersDesc
 # :: KinkyDungeonInventoryItemSlimeWalkersDesc
 - They will slow you down, but you can walk on slime without getting stuck! (having >45 Glue Resist also enables slime walking)
-它们会减慢你的速度，但你可以在粘液上行走而不会被黏住！
+它们会减慢你的速度，但你可以在粘液上行走而不会被黏住！( 拥有超过45的胶体抗性也能让你在粘液上行走 )
 - They will slow you down, but you can walk on slime without getting stuck!
 它们会减慢你的速度，但你可以在粘液上行走而不会被黏住！
 
@@ -8550,7 +8552,7 @@ RestraintName 上的诅咒解除了！
 - A collar made with magically enchanted materials. It is protected by the blessing of Bast.
 用魔法材料制成的项圈。它受到猫女神祝福的保护。
 - Leash
-牵绳
+牵引绳
 # :: RestraintBasicLeash
 # :: m_Leash
 # :: m_Leash_l_Leash
@@ -9446,13 +9448,13 @@ RestraintName 上的诅咒解除了！
 - It's brimming with conjured energy. A normal knife won't work here!
 它充满了魔法能量。普通的刀在这里是行不通的！
 - Mana Absorbing Gag
-反魔法口塞
+法力吸收口塞
 - A gag designed to cripple mages. It's made of a squishy rubbery material.
 旨在削弱法师的口塞。它由柔软的橡胶材料制成。
 - It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate.
 它被封印着快速吸收法力的魔法咒语！当它耗尽 40 点法力时，它会变成一个普通的口塞并膨胀。
 - Mana Draining Gag
-反法师口塞
+法力枯竭口塞
 - A gag designed to cripple experienced spellcasters. It's made of a magic-absorbing rubber.
 旨在削弱经验丰富的法师的口塞。它是由吸魔橡胶制成的。
 - You feel the energy flowing out of you! When it drains 100 mana it will transform into an ordinary gag and inflate.
@@ -14740,7 +14742,7 @@ EnemyName 使用发光护符来增强不死生物的物理护甲和速度！
 - The toxic spores make you feel faint...
 有毒的孢子让你感到头晕目眩……
 - The spores have minimal effects.
-孢子对你没有效果。
+孢子的影响微乎其微。
 
 
 - Magic Hairpin
@@ -15838,8 +15840,9 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 你被龙之心伏击了！
 # :: KinkyDungeonTrapSpawnDragon
 # :: KinkyDungeonTrapSpawnDragonLeader
-- A pack of drones descends from the ceiling!
+- A drone descends from the ceiling!
 一群无人机从天花板上飞了下来！
+# - A drone falls from the ceiling with a thud!
 # - A pack of drones drops from the ceiling!
 - You hear sirens as a group of robots closes in!
 当一群机器人逼近时，你会听到警报声！
@@ -23644,7 +23647,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER shrugs)|That's okay, just thought I'd ask.
 (SPEAKER 耸了耸肩)|没关系，我只是想问问。
 - (The SPEAKER rubs the smooth metal seductively)|Are you sure?|Adventurers need to take care of themselves.|You don't want to lose control of yourself and|run into some curse... or do you?
-(SPEAKER 诱惑地摩擦光滑的金属）|你确定吗？|探险家们得保护好自己。|你可不想被快感夺走，然后被某种诅咒缠住，|没错吧？
+(SPEAKER 诱惑地摩擦光滑的金属）|你确定吗？|探险家们得保护好自己。|你也不想被快感夺走，然后被某种诅咒缠住，|还是说，你想这样？
 - (The SPEAKER gives an evil smile)|What if I wasn't asking?
 (SPEAKER 露出邪恶的微笑）|如果我不是请求呢？
 - (The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~
@@ -24584,7 +24587,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: dShopBuyAttack
 # :: dItemShopAttack
 - (Flail threateningly at ${Ethem})
-( 威胁性地殴打她 )
+( 威胁性地殴打${Ethem} )
 - (Do it)
 ( 来吧 )
 # :: dShopBuyAttack_Confirm
@@ -24927,7 +24930,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (Really attack?)
 ( 真的要攻击？ )
 - (Attack ${Ethem})
-( 攻击她 )
+( 攻击${Ethem} )
 # :: dGenericAllyAttack_Confirm
 # :: dGenericAllyAttackPlay_Confirm
 # :: dGenericAllyAttackUnaware_Confirm
@@ -25163,11 +25166,11 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 计算中 ) |路径坐标...
 
 - (Ask ${Ethem} for help)
-( 向她寻求帮助 )
+( 向${Ethem}寻求帮助 )
 # :: dGenericAllyHelpMe
 # :: dGenericAllyHelpMe_Confirm
 - (Are you sure? ${EThey} might see you as being submissive)
-( 你确定吗？她可能认为你是顺从的 )
+( 你确定吗？${EThey}可能认为你是顺从者 )
 # :: rGenericAllyHelpMe
 # :: rGenericAllyHelpMeCommandWord
 # :: rGenericAllyHelpMeKey
@@ -25178,19 +25181,19 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (You decide to deal with your problems yourself.)
 ( 你决定自己处理你的问题。 )
 - (Plead with ${Ethem} to unlock you with a Command Word)
-( 恳求她用指令解锁你 )
+( 恳求${Ethem}用指令解锁你 )
 - (Yes!)
 ( 是的！ )
 # :: dGenericAllyHelpMeCommandWord_Confirm
 # :: dGenericAllyHelpMeKey_Confirm
 - (The SPEAKER would rather 'conserve ${Ethem} mana')
-( SPEAKER 宁愿“保存她的法力” )
+( SPEAKER 宁愿“保存${Ethem}的法力” )
 - (The SPEAKER utters a command word on you)
 ( SPEAKER 对你发出指令 )
 - (Your magical locks continue to restrain you.)
 ( 你的魔法锁继续束缚着你。 )
 - (Plead with ${Ethem} to unlock your restraints)
-( 恳求她松开你的束缚 )
+( 恳求${Ethem}松开你的束缚 )
 - (The SPEAKER would rather not give up a magic key)
 ( SPEAKER 不想为了你使用魔法钥匙 )
 - (The SPEAKER doesn't have any keys)
@@ -25208,21 +25211,21 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER will no longer help you.)
 ( SPEAKER 将不再帮助你。 )
 - (You sigh as you realize you really need ${Etheir} help.)
-( 当你意识到你真的需要她的帮助时，你叹了口气。 )
+( 当你意识到真的需要${Etheir}的帮助时，你叹了口气。 )
 - (Kick ${Ethem} out of your party)
-( 把她踢出你的队伍 )
+( 把${Ethem}踢出你的队伍 )
 - (Confirm? ${EThey} will stop following you)
-( 确认吗？她将不再会跟随你 )
+( 确认吗？${EThey}将不再跟随你 )
 - (Remove from party)
 ( 从队伍中移除 )
 - (The SPEAKER understands.)
 ( SPEAKER 明白。 )
 - (You decide to keep ${Ethem}.)
-( 你决定留下她。 )
+( 你决定留下${Ethem}。 )
 - (Add ${Ethem} to your party)
-( 将她添加到你的队伍中 )
+( 将${Ethem}添加到你的队伍中 )
 - (Confirm? ${EThey} will follow you across floors. You can only have 3 party members)
-( 确认吗？她会跟着你穿过楼层。你最多能带上 3 名队员 )
+( 确认吗？${EThey}会跟着你穿过楼层。你最多能带上 3 名队员 )
 - (Add to party)
 ( 添加到队伍 )
 - (The SPEAKER is happy to join you)
@@ -25238,9 +25241,9 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( 购买物品 )
 
 - (Pick up ${Etheir} leash)
-(牵起她的皮带)
+(拿起${Etheir}牵引绳)
 - (Release ${Etheir} leash)
-(松开她的皮带)
+(松开${Etheir}牵引绳)
 
 - Dollmaker
 玩偶师
@@ -45469,9 +45472,9 @@ RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 随着快感的涌动，你感受到你那被诅咒的束缚收紧、加强！
 
 - Corruption: While in the shadows, you slowly gain corruption.
-堕落 : ‎在阴影中，你会慢慢得堕落。
+腐化 : ‎身处阴影中时，你会缓慢获得腐化。
 - Your willpower gain and struggle power is less effective due to your corruption.
-你的意志力增益和挣脱能力会因为你的腐化而变得不那么有效。
+你的意志力获取和挣脱能力因为你的腐化而降低。
 
 - Seduction: Gain distraction after taking damage.
 诱惑 : ‎受到伤害后开始性奋。
@@ -46149,7 +46152,7 @@ LKTYP 锁锁在了你的一个拘束具上！
 装备副手武器，以获得光源、护甲或额外暴击伤害等被动效果。|盗贼不能在副手使用重型或大型武器。|法师只能在副手使用魔法武器；副手使用双手、重型或大型魔法武器时，减速等级 +1。
 
 - Use
-使用一个
+使用
 - Equip Offhand
 装备副手
 - Remove Offhand
@@ -46693,9 +46696,9 @@ LKTYP 锁锁在了你的一个拘束具上！
 # - Cancel Dual Wield
 
 - Include\nWeapons
-包括武器
+包括\n武器
 - Merge\nArmor
-合并盔甲
+合并\n盔甲
 
 
 - The NPC does not have enough money left!
@@ -46843,19 +46846,22 @@ RestraintName 失效了！
 - X-Ray Vision
 视觉透视
 - Show Quick Inventory
-显示快速背包
-# - Auto-Sprint when Slowed
+显示快捷物品栏
+- Auto-Sprint when Slowed
+减速时自动冲刺
 - Skip Tutorial
 跳过教程
 - Mod Compat Mode (requires reload)
 模组兼容模式 ( 需要重启 )
 - Flashing Warning Tiles
 警告格子闪烁
-# - Centered Message Log
-# - Reverb Sound Effects
+- Centered Message Log
+居中消息日志
+- Reverb Sound Effects
+混响音效
 
 - Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
-欢迎来到淫荡地牢！您似乎是第一次来到这里，|您想了解一下界面的简要介绍吗？
+欢迎来到Kinky Dungeon！您似乎是第一次来到这里，|您想了解一下界面的简要介绍吗？
 - (Leave and Disable Tutorial)
 ( 离开并关闭教程 )
 - (Yes Please!)
@@ -47090,8 +47096,10 @@ RestraintName 失效了！
 - Yellow
 黄色
 
-# - Player Ownership
-# - Player Slavery
+- Player Ownership
+玩家归属
+- Player Slavery
+玩家奴役
 - Front Plugs
 前庭玩具
 - Rear Plugs
@@ -47186,10 +47194,13 @@ Kigurumi头壳
 - Menu Locked
 菜单锁定
 
-# - Allows the player to accept an NPC as an owner under certain circumstances. Normally, this can be ended at any time,|but setting this option to Green removes that agency from the player requiring the NPC to be captured and in the player's collection to remove as owner.
-# - |||This item is marked as Green, which prevents the player from removing an NPC owner without first capturing them.||Using your Safeword also gives you a window where you can remove them from the Quest menu.
+- Allows the player to accept an NPC as an owner under certain circumstances. Normally, this can be ended at any time,|but setting this option to Green removes that agency from the player requiring the NPC to be captured and in the player's collection to remove as owner.
+允许玩家在某些情况下接受一名NPC作为主人。正常情况下，这一关系可随时结束，|但将此标绿会剥夺玩家的这一自主权，要求必须先将该NPC捕获并置于玩家的收藏中，才能解除其主人身份。
+- |||This item is marked as Green, which prevents the player from removing an NPC owner without first capturing them.||Using your Safeword also gives you a window where you can remove them from the Quest menu.
+|||该对象被标绿，这会阻止玩家在未先捕获该NPC的情况下解除其主人身份。||使用安全词也会给你一个窗口期，让你可以在任务菜单中解除他们。
 
-# - By default, the player must choose to enter slavery scenarios. Setting this to green takes away agency and removes the player's choice in the matter.|Setting to yellow removes options that lead to slavery-like scenarios such as the Spiritbond Collar.
+- By default, the player must choose to enter slavery scenarios. Setting this to green takes away agency and removes the player's choice in the matter.|Setting to yellow removes options that lead to slavery-like scenarios such as the Spiritbond Collar.
+默认情况下，玩家必须选择是否进入奴役场景。将其标绿会剥夺玩家的自主权，使其无法就此做出选择。|将其标黄会移除会导致类似奴役场景的选项，例如“灵魂羁绊项圈”。
 
 - Allows content where the player character gets transformed into a sentient ball jointed doll. Removing this transformation requires a Potion of Humanity.\n\nSetting this to red prevents the dialogue from starting.\nSetting this to Green makes it permanent, as no Potions of Humanity will spawn.
 允许玩家角色转变为具有自我意识的球体关节玩偶。解除该状态需要使用人类药水。\n\n如果被标红，会阻止转化的开始\n如果被标绿，不会生成任何人类药水，使玩偶化变为永久状态。
@@ -49878,7 +49889,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - The dragon's breath poisons you!
 龙息让你中毒！
 - The dragon's breath has minimal effect.
-龙息对你没有效果。
+龙息的效果微乎其微。
 - The dragon girl strikes you with poisonous razor leaves!
 龙娘使用带毒锋利叶片攻击你！
 - The flower releases soporific spores!
@@ -50115,7 +50126,7 @@ Mmmph mmm! (帮帮我！)
 ENMYNME CHTRNME 的 RMNME
 
 - The item is TTT. Struggling will loosen it.
-此物品TTT，随着你的进度会变得更宽松。
+物品TTT，挣扎会松开它。
 
 - somewhat tight
 有点紧
@@ -50515,7 +50526,7 @@ ENMY 请求帮助！
 - You ready the leash...
 你准备好了皮带...
 - You pick up a leash.
-你拿起一条皮带。
+你拿起一条牵引绳。
 
 - You are not in a condition to use a leash on ${Ethem}.
 你现在的状况不适合给${Ethem}系牵引绳。
@@ -50562,9 +50573,9 @@ ENMY 请求帮助！
 你的皮带太多了！
 
 - You feel a corrupting influence... (+AMNT Corruption)
-你受到了一些腐化... (+AMNT Corruption)
+你受到一股腐化影响……（+AMNT 腐化）
 - You feel a restoring influence! (-AMNT Corruption)
-你受到了一些恢复！ (-AMNT Corruption)
+你受到一股恢复影响！（-AMNT 腐化）
 - Sticky latex fuses itself to your skin! (+AMNT LatexIntegration)
 粘性乳胶与你的皮肤融合到一起了！(+AMNT LatexIntegration)
 - The latex starts to detach from your skin... (-AMNT Latex Integration)
@@ -50578,8 +50589,9 @@ ENMY 请求帮助！
 ... 将在近战范围内对你的准确度获得加成。
 
 - Corruption: You are more likely to succumb to curses.
-你更容易被诅咒。
-# - Corruption
+腐化：你更容易屈服于诅咒。
+- Corruption
+腐化
 
 - X Offset
 X 补偿
@@ -50601,19 +50613,19 @@ Y 轴
 无动态护甲(0或1)
 - AddPose (e.g Locked, CrotchStrap)
 添加姿势（例如 Locked，CrotchStrap）
-- DontAddPose
+- DontAddTag
 不添加姿势
 - HideOverridden (0/1)
 隐藏覆盖(0或1)
 - NoOverride (0/1)
 无覆盖(0或1）
-- Hide Pose (e.g. Xray)
+- Hide if Tag (e.g. Xray)
 造型隐藏(例如X射线)
-- Require Pose (e.g. ChestArmor)
+- Require Tag (e.g. ChestArmor)
 造型显示(例如ChestArmor)
-- Hide Prefix (e.g Encase)
+- Hide if Prefix (e.g Encase)
 隐藏前缀(例如 Encase)
-- Hide Suffix (e.g TorsoUpper)
+- Hide if Suffix (e.g TorsoUpper)
 隐藏后缀(例如TorsoUpper)
 - Protected
 受保护的
@@ -50621,13 +50633,13 @@ Y 轴
 位移量
 - Erase Amount
 擦除量
-- NoLoss
+- No Loss
 无损
-- HideRestraintsTags
+- Hide restraints with tag
 隐藏拘束具标签
 # - Bra/Panty/Sock/None
 
-- HideRestraintTags
+- Hide Restraint Tags
 隐藏拘束具标签
 
 - Load from File
@@ -51419,7 +51431,7 @@ ENMY 解开了 ITMN 的锁!
 
 # -  <- Filters -> 
 - Your Inventory
-你的库存
+你的背包
 - Warden's Storage
 典狱长储藏室
 - Automated Storage Network
@@ -53008,7 +53020,7 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 暗部
 
 - Brightness from Palette
-覆盖亮度
+调色板亮度
 - Desaturate
 去饱和
 
@@ -53516,15 +53528,15 @@ Brat
 # :: KDPro_SheHave
 
 - They
-它们
+TA
 - Them
-它们
+TA
 - Their
-它们的
+TA的
 - They're
-它们
+TA
 - They've
-它们
+TA
 
 - You
 你
@@ -53560,15 +53572,15 @@ Brat
 # :: KDPro_SheHaveLC
 
 - they
-它们
+TA
 - them
-它们
+TA
 - their
-它们的
+TA的
 - they're
-它们
+TA
 - they've
-它们
+TA
 
 - you
 你
@@ -53846,7 +53858,8 @@ ${You}陷入沉默，无法轻易施展法术。
 # - On the ground! Bondage Resist reduced by 50%
 # - Your balance is low! Consider standing in place to restore it.
 
-# - Always show defense in buff bar
+- Always show defense in buff bar
+始终在增益栏显示防御
 
 - Sleepy...
 好困……
@@ -54093,7 +54106,7 @@ ${You}陷入沉默，无法轻易施展法术。
 # :: KDPronoun_
 # :: KDPronoun_She
 - They/Them
-他们
+TA
 - It/Its
 它
 
