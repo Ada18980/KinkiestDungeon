@@ -6163,7 +6163,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 					!(enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 					!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
-					!KinkyDungeonStatsChoice.has("TightRestraints"),
+					!KinkyDungeonStatsChoice.has("NoWayOut"),
 					KDGetExtraTags(enemy, enemy.usingSpecial, true),
 					false,
 					{
@@ -7057,7 +7057,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 												enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 												!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 												!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
-												!KinkyDungeonStatsChoice.has("TightRestraints"),
+												!KinkyDungeonStatsChoice.has("NoWayOut"),
 												KDGetExtraTags(enemy, enemy.usingSpecial, true),
 												false,
 												{
@@ -7082,7 +7082,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 											!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 											!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
-											!KinkyDungeonStatsChoice.has("TightRestraints"),
+											!KinkyDungeonStatsChoice.has("NoWayOut"),
 											KDGetExtraTags(enemy, enemy.usingSpecial, true),
 											false,
 											{
@@ -7106,7 +7106,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 													enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 													!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 													!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
-													!KinkyDungeonStatsChoice.has("TightRestraints"),
+													!KinkyDungeonStatsChoice.has("NoWayOut"),
 													KDGetExtraTags(enemy, enemy.usingSpecial, true),
 													false,
 													{
@@ -7132,7 +7132,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 												enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 												!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 												!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
-												!KinkyDungeonStatsChoice.has("TightRestraints"),
+												!KinkyDungeonStatsChoice.has("NoWayOut"),
 												KDGetExtraTags(enemy, enemy.usingSpecial, true),
 												false,
 												{
@@ -9080,7 +9080,7 @@ function KDDetermineBaseRestCount(enemy: entity, restMult: number): number {
 	else if (enemy.Enemy.tags.elite) rCount += 2;
 	else if (!enemy.Enemy.tags.minor) rCount += 1;
 	if (enemy.Enemy.RestraintFilter?.bonusRestraints) rCount += enemy.Enemy.RestraintFilter?.bonusRestraints;
-	if (KinkyDungeonStatsChoice.has("TightRestraints")) {
+	if (KinkyDungeonStatsChoice.has("NoWayOut")) {
 		rCount *= 2;
 		rCount += 1;
 	}
@@ -9272,7 +9272,7 @@ function KDGetTags(enemy: entity, removeSpecial: boolean): Record<string, boolea
 
 		let effLevel = KDGetEffLevel();
 
-		if (KinkyDungeonStatsChoice.has("TightRestraints")) {
+		if (KinkyDungeonStatsChoice.has("NoWayOut")) {
 			effLevel *= KDTightRestraintsMult;
 			effLevel += KDTightRestraintsMod;
 		}
@@ -9302,7 +9302,7 @@ function KDGetExtraTags(enemy: entity, useSpecial: boolean, useGlobalExtra: bool
 	if (addOn) {
 		/*let effLevel = KDGetEffLevel();
 
-		if (KinkyDungeonStatsChoice.has("TightRestraints")) {
+		if (KinkyDungeonStatsChoice.has("NoWayOut")) {
 			effLevel *= KDTightRestraintsMult;
 			effLevel += KDTightRestraintsMod;
 		}*/

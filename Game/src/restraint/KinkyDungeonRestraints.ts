@@ -11,7 +11,7 @@
 // Power is a scale of how powerful the restraint is supposed to be. It should roughly match the difficulty of the item, but can be higher for special items. Power 10 or higher might be totally impossible to struggle out of.
 
 /** These linkcategories are removed when running LayersUnderLayers */
-let KDLayersUnderLayersRestraintFilters: {
+let KDLayersUnderLayersRestraintFilters = {
 	LChastityBra: 1,
 	LChastityBelt: 1,
 	LMouthGag: 1,
@@ -19,7 +19,7 @@ let KDLayersUnderLayersRestraintFilters: {
 	LShoes: 1,
 	LBlindfold: 1,
 	LCollar: 1,
-	
+
 	LArms: 1,
 	LLegbinder: 1,
 	LCorset: 1,

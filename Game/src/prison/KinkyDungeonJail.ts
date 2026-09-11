@@ -550,7 +550,7 @@ function KinkyDungeonGetJailRestraintsForGroup(Group: string, jailRestraintList?
 							KDCanAddRestraint(KinkyDungeonGetRestraintByName(r.Name),
 								KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
 								lock,
-								!KinkyDungeonStatsChoice.has("TightRestraints") ? true : undefined,
+								!KinkyDungeonStatsChoice.has("NoWayOut") ? true : undefined,
 								undefined,
 								KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined,
 								KinkyDungeonJailGuard(), false, undefined, undefined,
@@ -854,7 +854,7 @@ function KinkyDungeonMissingJailUniform() {
 				KDCanAddRestraint(rest,
 					KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
 					undefined,
-					!KinkyDungeonStatsChoice.has("TightRestraints") ? true : undefined,
+					!KinkyDungeonStatsChoice.has("NoWayOut") ? true : undefined,
 					undefined,
 					KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, KinkyDungeonJailGuard(), false, undefined, undefined, (jrest.variant && KDApplyVariants[jrest.variant]?.powerBonus) ? KDApplyVariants[jrest.variant].powerBonus : 0)
 				&& (!currentItem.dynamicLink || !KDDynamicLinkList(currentItem, true).some((item) => {return rest.name == item.name;})))

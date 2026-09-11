@@ -1450,7 +1450,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 			false,
 			false,
-			!KinkyDungeonStatsChoice.has("TightRestraints"),
+			!KinkyDungeonStatsChoice.has("NoWayOut"),
 			KDGetExtraTags(enemy, enemy.usingSpecial, true),
 			false,
 			{
@@ -1468,7 +1468,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 				false,
 				false,
-				!KinkyDungeonStatsChoice.has("TightRestraints"),
+				!KinkyDungeonStatsChoice.has("NoWayOut"),
 				KDGetExtraTags(enemy, enemy.usingSpecial, true),
 				false,
 				{
