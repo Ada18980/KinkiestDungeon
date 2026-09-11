@@ -3429,6 +3429,8 @@ type AIType = {
 	resetguardposition: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Whether enemy attacks */
 	attack: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
+	/** Whether enemy teasees */
+	tease: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** whether enemy casts spells */
 	spell: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** This function executes before wander location changes. Return True to override wander behavior */
@@ -3628,6 +3630,8 @@ type EnemyEvent = {
 	noplay?: boolean,
 	/** This event wont get cleared by mass resets, like when you are deposited into a cage */
 	noMassReset?: boolean,
+	/** Determines if the enemy will tease you */
+	decideTease?: (enemy: entity, target: entity, AIData: KDEventDataBoolean, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
 	/** Determines if the enemy will attack you */
 	decideAttack?: (enemy: entity, target: entity, AIData: KDEventDataBoolean, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
 	/** Determines if the enemy will cast spells */
@@ -4435,7 +4439,7 @@ type KDTeaseAttack = {
 	blockable: boolean,
 	dodgeable: boolean,
 	/** Allows this to be added to the list */
-	filter: (enemy: entity, player: entity, AIData: KDAIData) => boolean,
+	filter: (enemy: entity, player: entity, AIData: KDAIData, query?: boolean) => boolean,
 	/** Returns true if it connects, false otherwise if blocked/ignored somehow */
 	apply: (enemy: entity, player: entity, AIData: KDAIData, blocked: boolean, evaded: boolean, damageMod: number) => boolean,
 };

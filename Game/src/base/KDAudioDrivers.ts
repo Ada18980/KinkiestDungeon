@@ -49,34 +49,31 @@ class OggmentedAudioContext extends (window.AudioContext || window.webkitAudioCo
         );
     });
   }
+ 
+  loadedOggmented = false;
 
   // tries the native implementation first,
   // if that fails, we use oggmented to load
   // If safari, it always uses oggmented and we pray default works if that fails
   decodeAudioData(buffer, callback) {
     const decode = resolve => {
-      if (isSafari) {
+      if (this.loadedOggmented) {
         OggmentedWASM().then(oggmented => {
           try {
             oggmented.decodeOggData(buffer, resolve);
           } catch {
-            console.log("error loading:");
+            console.log("error loading oggmented:");
             console.log(buffer);
             super.decodeAudioData(buffer, resolve)
           }
         });
       } else {
-        super.decodeAudioData(buffer, resolve).then(() => {return;}, (rejected) => {
-          if (rejected) {
-            OggmentedWASM().then(oggmented => {
-              try {
-                oggmented.decodeOggData(buffer, resolve);
-              } catch {
-                console.log("error loading:");
-                console.log(buffer);
-              }
-              });
-          }
+        super.decodeAudioData(buffer, resolve, () => {
+          OggmentedWASM().then(oggmented => {
+            console.log("error loading with webaudio:");
+            console.log(buffer);
+            oggmented.decodeOggData(buffer, resolve);
+          });
         });
       }
     };

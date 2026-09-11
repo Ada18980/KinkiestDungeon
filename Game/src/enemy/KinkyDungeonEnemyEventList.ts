@@ -817,6 +817,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		maintain: (enemy, delta, aiData) => {
 			let player = KDPlayer();
 			let tethered = KDIsPlayerTethered(KinkyDungeonPlayerEntity);
+			KinkyDungeonSetFlag("TeaseOnLeash", 2);
 			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 1.5 && !tethered && KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
 				if (KDIsInNonLeashableFurniture(player)) {
 					KDAddThought(enemy.id, "Confused", 4, 1);
@@ -947,6 +948,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				KinkyDungeonAggroAction('attack', {enemy: enemy});
 				return false;
 			}
+			KinkyDungeonSetFlag("TeaseOnLeash", 2);
 			if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 5.5) {
 
 				KinkyDungeonSetEnemyFlag(enemy, "nobind", 2);
@@ -1027,6 +1029,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				enemy.playWithPlayerCD = 3;
 				KDResetAllIntents();
 			}
+			KinkyDungeonSetFlag("TeaseOnLeash", 2);
 
 			if (!KinkyDungeonFlags.has("TempLeash")
 				|| !(KinkyDungeonPlayerTags.get("Collars")
@@ -1293,6 +1296,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (!KDHostile(enemy))
 				KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 12);
 
+			KinkyDungeonSetFlag("TeaseOnLeash", 2);
 			if (!KinkyDungeonFlags.has("TempLeash") || !(KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints"))) {
 				if (!(KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")) || KDGameData.PrisonerState != 'jail') {
 					enemy.IntentAction = '';
@@ -1528,6 +1532,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]);
 		},
 		arrive: (enemy, aiData) => {
+			KinkyDungeonSetFlag("TeaseOnLeash", 2);
 			if (KDGameData.PrisonerState == 'parole' && !KDSelfishLeash(enemy)) {
 				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake",
 									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
@@ -1623,6 +1628,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (!enemy.IntentLeashPoint || !KDEffectTileTags(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y).demonportal || !KDPlayerLeashed(KinkyDungeonPlayerEntity)) {
 				return false;
 			}
+			KinkyDungeonSetFlag("TeaseOnLeash", 2);
 			KDResetIntent(enemy, aiData);
 			KDBreakTether(KinkyDungeonPlayerEntity);
 			if (KinkyDungeonAutoWait) {
@@ -1701,6 +1707,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				}// else enemy.playWithPlayer += delta;
 			}
 			let player = KDPlayer();
+			KinkyDungeonSetFlag("TeaseOnLeash", 2);
 			
 			if (!enemy.IntentLeashPoint) {
 					if (!KDEntityHasFlag(enemy, "intent_startChecking")) {

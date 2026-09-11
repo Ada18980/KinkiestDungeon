@@ -5811,8 +5811,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		(player.player && enemy.playWithPlayer && !KinkyDungeonAggressive(enemy) && !AIData.domMe && !KDEnemyHasFlag(enemy, "notouchie"))
 		&& (!player.player // NPCs will aggro NPCs no questions asked
 			|| ( // However there are situations where the player will not get attacked
-				!AIData.ignore // For example if the player is ignored
-				&& ( // In order to be attacked the player must fulfill one of these conditions
+				( // In order to be attacked the player must fulfill one of these conditions
 					( // The most common is that the player is not currently leashed
 						!KDGameData.KinkyDungeonLeashedPlayer
 						|| !KDIsPlayerTethered(player))
@@ -5822,13 +5821,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					|| KDIsPlayerTetheredToLocation(player, enemy.x, enemy.y, enemy) // The player is attached to this enemy
 					|| enemy.id == KinkyDungeonLeashingEnemy()?.id // The player is being leashed by this enemy
 					|| KinkyDungeonFlags.has("PlayerCombat") // If the player is fighting back
+					|| KinkyDungeonFlags.has("TeaseOnLeash") // If the player is fighting back
 				// Basically the result of all this is that only the leashing enemy will attack a leashed player
 				// Unless the player is resisting being leashed
 				)
 			)) ?
 			// If we meet the above conditions, we still have to consult whether or not the intent action gates it
-			((intentAction?.decideAttack) ?
-				(intentAction.decideAttack(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive))
+			((intentAction?.decideTease) ?
+				(intentAction.decideTease(enemy, player, AIData, AIData.allied, AIData.hostile, AIData.aggressive))
 				: true)
 			// Otherwise if we dont meet the conditions we dont want to attack
 			: false
@@ -6642,17 +6642,16 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		&& AIType.attack(enemy, player, AIData)
 		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.range, !enemy.Enemy.projectileAttack, !enemy.Enemy.projectileAttack);
 	let first = true;
-	AIData.canTease = !AIData.canAttack
+	AIData.canTease = (!AIData.canAttack || (enemy.attackPoints < 1 && !KDEnemyHasFlag(enemy, "attacked")))
 		&& !(enemy.disarm > 0)
 		&& AIData.wantsToTease
-		&& (!player?.player || !enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KinkyDungeonLeashingEnemy()?.id == enemy.id || KinkyDungeonFlags.get("overrideleashprotection"))
-		&& (enemy.warningTiles.length > 0 || (enemy.aware && (!player.player || enemy.vp > 0.25) && KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
-		&& !AIData.ignore
-		&& (!minRange || (AIData.playerDist > minRange))
+		&& (!player?.player)
+		&& ((enemy.aware && (!player.player || enemy.vp > 0.25)
+			&& KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
 		&& (AIData.attack.includes("Melee") || (enemy.Enemy.tags && AIData.leashing && !KinkyDungeonHasWill(0.1)))
-		&& (!AIData.ignoreRanged || AIData.playerDist < 1.5)
-		&& AIType.attack(enemy, player, AIData)
-		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.range, !enemy.Enemy.projectileAttack, !enemy.Enemy.projectileAttack);
+		//&& (!AIData.ignoreRanged || AIData.playerDist < 1.5)
+		&& AIType.tease(enemy, player, AIData)
+		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, !enemy.Enemy.projectileAttack, !enemy.Enemy.projectileAttack);
 
 	if (player.player && !AIData.canAttack && AIData.canTease && enemy.playWithPlayer && !KinkyDungeonAggressive(enemy)) {
 		KDOperateTease();
@@ -6739,6 +6738,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				}
 
 				KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", enemy.Enemy?.attackPoints || 2);
+				KinkyDungeonSetEnemyFlag(enemy, "attacked", 2);
 
 				KDEnemyAddSound(enemy, enemy.Enemy.Sound?.attackAmount != undefined ? enemy.Enemy.Sound?.attackAmount : KDDefaultEnemyAttackSound);
 
@@ -10882,9 +10882,9 @@ function KDGetTeaseAttack(enemy: entity, player: entity, AData: KDAIData): KDTea
 	return null;
 }
 
-function KDBasicTeaseAttack(enemy: entity, player: entity, noglobal?: boolean): boolean {
+function KDBasicTeaseAttack(enemy: entity, player: entity, noglobal?: boolean, dist: number = 1.5): boolean {
 	return  player.player
-	    &&  KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < 1.5
+	    &&  KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < dist
 	    &&  !KDEnemyHasFlag(enemy, "teaseAtkCD")
 	    &&  (noglobal || !KinkyDungeonFlags.get("globalteaseAtkCD"))
 	    &&  !KinkyDungeonIsDisabled(enemy)

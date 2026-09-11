@@ -27,11 +27,11 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 		name: "Praise",
 		priority: 1,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, _aiData) => {
-			return KDBasicTeaseAttack(enemy, player)
+		filter: (enemy, player, _aiData, query) => {
+			return KDBasicTeaseAttack(enemy, player, true, 4.5)
 				&& KDEnemyCanTalk(enemy)
 				&& (
-					KinkyDungeonGoddessRep.Ghost + 50 >= 75
+					KinkyDungeonGoddessRep.Ghost + 50 >= (query ? 0 : KDRandom())*50 + 25
 				);
 		},
 		apply: (enemy, player, _aiData, blocked, evaded, damagemod) => {
@@ -146,11 +146,12 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 		name: "VibeToy",
 		priority: 1.25,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, _aiData) => {
+		filter: (enemy, player, aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& !KDPlayerFacingAway(player, enemy)
 				&& !KDIsDisarmed(enemy)
 				&& KDHasArms(enemy)
+				&& !aiData.ignore
 				&& (
 					(KDPlayerIsSlowed()
 					|| (enemy.playWithPlayer && !KinkyDungeonAggressive(enemy) && !KDPlayerFacingAway(player, enemy)))
@@ -193,11 +194,12 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 		name: "InsertToy",
 		priority: 3,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, _aiData) => {
+		filter: (enemy, player, aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& !KDIsDisarmed(enemy)
 				&& KDHasArms(enemy)
+				&& !aiData.ignore
 				&& (
 					KDGetVibeToys(enemy).length > 0
 					&& KDGetVibeToys(enemy).some((toy) => {
@@ -243,11 +245,12 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 		name: "AddStuffing",
 		priority: 3,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, _aiData) => {
+		filter: (enemy, player, aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& !KDIsDisarmed(enemy)
 				&& KDHasArms(enemy)
+				&& !aiData.ignore
 				&& (
 					!KDPlayerFacingAway(player, enemy)
 					&& KinkyDungeonFlags.get("verbalspell")
@@ -286,11 +289,12 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 		name: "AddGag",
 		priority: 4,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, _aiData) => {
+		filter: (enemy, player, aiData) => {
 			if (KDBasicTeaseAttack(enemy, player)
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& !KDIsDisarmed(enemy)
 				&& KDHasArms(enemy)
+				&& !aiData.ignore
 				&& (
 					KinkyDungeonFlags.get("verbalspell")
 					&& KinkyDungeonPlayerTags.get("GagNecklance")
@@ -695,6 +699,8 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 		filter: (enemy, player, aiData) => {
 			if (KDBasicTeaseAttack(enemy, player, true)
 				&& !KinkyDungeonIsSlowed(enemy)
+				&& !aiData.ignore
+				&& aiData.wantsToAttack
 				&& (
 					aiData.attack.includes("Bind")
 					&& enemy.Enemy.bound
