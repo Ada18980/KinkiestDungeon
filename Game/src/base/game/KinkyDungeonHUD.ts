@@ -387,10 +387,11 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 	KDDrawStruggleGroups();
 	KDDrawStatusBars(1790, 340, 200);
 	KinkyDungeonDrawActionBar(1780, 166);
-	if (!KinkyDungeonTargetingSpell && !MouseIn(0, 0, 500, PIXIHeight)) {
-		if (KDToggles.BuffSide)
-			KDProcessBuffIcons(510, 82, true);
-		else
+	if (!KinkyDungeonTargetingSpell) {
+		if (KDToggles.BuffSide) {
+			if (!MouseIn(0, 0, 500, PIXIHeight))
+				KDProcessBuffIcons(510, 82, true);
+		} else
 			KDProcessBuffIcons(830, 995 - 72 - 36 - 24);
 	}
 	
