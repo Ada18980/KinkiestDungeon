@@ -39,6 +39,7 @@ let KinkyDungeonStruggleGroupsBase = [
 	"ItemFeet",
 	"ItemBoots",
 ];
+/**The names are messed up */
 enum KDDrawStruggleEnum {
 	ALMOSTALL = 1,
 	MOST = 2,
@@ -48,9 +49,10 @@ enum KDDrawStruggleEnum {
 
 };
 let KDDrawMaxStruggle = 4;
+/**The names are messed up */
 let KDDrawStruggleIcon = {
-	[KDDrawStruggleEnum.ALMOSTALL]: "AlmostAll",
-	[KDDrawStruggleEnum.MOST]: "Most",
+	[KDDrawStruggleEnum.ALMOSTALL]: "Most",
+	[KDDrawStruggleEnum.MOST]: "AlmostAll",
 	[KDDrawStruggleEnum.STRUGGLE]: "Struggle",
 	[KDDrawStruggleEnum.NONE]: "True",
 };
@@ -3522,7 +3524,10 @@ function KDDrawStruggleGroups() {
 
 
 				KDDrawScrollableItemList(x + 3, y + 5, ButtonWidth, 
-					ButtonWidth * KDScrollableStruggleSectionNum, sg,
+					ButtonWidth * (
+						(KDStruggleDrawMode != KDDrawStruggleEnum.MOST
+							|| highlightSG
+						) ? KDScrollableStruggleSectionNum : 1.5), sg,
 					item, 
 					KDDynamicLinkList(KinkyDungeonGetRestraintItem(sg.group), true), 
 					KDDynamicLinkListSurface(KinkyDungeonGetRestraintItem(sg.group)), 
@@ -4149,7 +4154,7 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 			y, 
 			width, size, zIndex, 
 			Math.floor(width / size),
-			dynamicList, false, true
+			dynamicList, false, true, 50
 		);
 		if (KinkyDungeonCheckClothesLoss || KDScrollMovedStruggleItem) {
 			doFix = true;

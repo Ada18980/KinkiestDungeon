@@ -22,6 +22,7 @@ interface KDScrollableListData {
     updateInterval: number,
 	lastDrawn: number,
 	drawAll?: boolean,
+	redraw?: boolean,
 }
 let KDScrollableListExp = 10;
 let KDScrollableListMin = 4;
@@ -45,7 +46,8 @@ function ForceUpdateList(name: string) {
 		KDScrollableListDataset[name].lastUpdated = 0;
 	}
 }
-function PopulateList(name: string, x: number, y: number, w: number, h: number, zIndex: number, num_per_page: number, items: any[], allowWrap?: boolean, drawAll?: boolean): KDScrollableListData {
+function PopulateList(name: string, x: number, y: number, w: number, h: number, zIndex: number, num_per_page: number, items: any[],
+	allowWrap?: boolean, drawAll?: boolean, updateInterval: number = 500): KDScrollableListData {
 	let dataset = KDScrollableListDataset[name];
 	if (!dataset) {
 		dataset = {
@@ -56,12 +58,17 @@ function PopulateList(name: string, x: number, y: number, w: number, h: number, 
 			min: 0,
 			lastUpdated: 0,
 			lastDrawn: 0,
-			updateInterval: 500,
+			updateInterval: updateInterval,
 			drawAll: drawAll,
 		} as any;
 		KDScrollableListDataset[name] = dataset;
 	}
+	let xx = dataset.x;
+	let yy = dataset.y;
+	let ww = dataset.w;
+	let hh = dataset.h;
 	Object.assign(dataset, {x, y, w, h, zIndex, num_per_page, items, allowWrap});
+	if (x != xx || y != yy || w != ww || h != hh) dataset.redraw = true;
 	dataset.max = Math.max(0, items.length - dataset.num_per_page);
 	if (dataset.index > dataset.max) {
 		dataset.index = dataset.max;
@@ -197,6 +204,11 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	
 	
 	if (useContainer != undefined) {
+		if (KDPIXIScrollableListContainers[name] && list.redraw) {
+			list.redraw = false;
+			KDPIXIScrollableListContainers[name].destroy();
+			delete KDPIXIScrollableListContainers[name];
+		}
 		if (!KDPIXIScrollableListContainers[name]) {
 			KDPIXIScrollableListContainers[name] = new PIXI.Container();
 			container = KDPIXIScrollableListContainers[name];
