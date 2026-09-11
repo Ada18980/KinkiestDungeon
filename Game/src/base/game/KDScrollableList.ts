@@ -175,6 +175,9 @@ function KDUpdateScrollableLists(delta: number) {
 let KDPIXIScrollableListContainers : Record<string, PIXIContainer> = {
 
 }
+let KDPIXIScrollableListMasks : Record<string, any> = {
+
+}
 
 function KDClamp(x: number, min: number, max: number): number {
 	return Math.max(min, Math.min(max, x));
@@ -204,10 +207,23 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	
 	
 	if (useContainer != undefined) {
-		if (KDPIXIScrollableListContainers[name] && list.redraw) {
+		if (KDPIXIScrollableListMasks[name] && KDPIXIScrollableListContainers[name] && list.redraw) {
 			list.redraw = false;
-			KDPIXIScrollableListContainers[name].destroy();
-			delete KDPIXIScrollableListContainers[name];
+			KDPIXIScrollableListMasks[name].destroy();
+			delete KDPIXIScrollableListMasks[name];
+
+			container = KDPIXIScrollableListContainers[name];
+
+			// Create a graphics object to define our mask
+			let mask = new PIXI.Graphics();
+			// Add the rectangular area to show
+			mask.beginFill(0xffffff);
+			mask.drawRect(list.x - pad, list.y - pad, list.w + 2*pad, list.h + 2*pad);
+			mask.endFill();
+			container.mask = mask;
+			container.addChild(mask);
+			KDPIXIScrollableListMasks[name] = mask;
+
 		}
 		if (!KDPIXIScrollableListContainers[name]) {
 			KDPIXIScrollableListContainers[name] = new PIXI.Container();
@@ -224,6 +240,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			mask.endFill();
 			container.mask = mask;
 			container.addChild(mask);
+			KDPIXIScrollableListMasks[name] = mask;
 		}
 		else container = KDPIXIScrollableListContainers[name];
 	}

@@ -762,7 +762,9 @@ let KDPerkStart = {
 		if (!KDHasSpell("ZeroResistance")) KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
 	},
 	QuakeCollar: () =>{
-		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("QuakeCollar"), 0, true, undefined, false, undefined, undefined, undefined, true);
+		if (!KDAddRestraintItem(KinkyDungeonGetRestraintByName("QuakeCollar"), 1, true, undefined, false, undefined, undefined, undefined, true)) {
+			KinkyDungeonInventoryAddLoose("QuakeCollar");
+		}
 	},
 	WardenBelt: () =>{
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("WardenBelt"), 0, true, undefined, false, undefined, undefined, undefined, true);

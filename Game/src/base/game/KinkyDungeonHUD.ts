@@ -4211,7 +4211,7 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 			}, true, list.x + visualIndex * size, list.y, size, size,
 			"", KDBaseWhite, KDGetItemPreview(listItem).preview, undefined,
 			false, 
-			!selected || !(highlightSG) || KDCurrentScrollableListHover?.id == listID, 
+			!selected || !(highlightSG),// || KDCurrentScrollableListHover?.id == listID, 
 			KDBaseBlack, undefined, 
 			undefined, {
 				unique: true,

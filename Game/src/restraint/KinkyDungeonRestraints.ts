@@ -14,16 +14,16 @@
 let KDLayersUnderLayersRestraintFilters = {
 	LChastityBra: 1,
 	LChastityBelt: 1,
-	LMouthGag: 1,
+	LMouthGag: 1, // Allow only one that will fit inside the mouth guaranteed
 	LCuffs: 1,
 	LShoes: 1,
 	LBlindfold: 1,
 	LCollar: 1,
-
 	LArms: 1,
 	LLegbinder: 1,
 	LCorset: 1,
-	LMuzzle: 1,
+	LPanel: 1, // allow harness straps under muzzle
+	LMuzzle: 1, // Muzzle without harness straps
 
 };
 
