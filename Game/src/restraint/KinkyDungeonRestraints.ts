@@ -4763,7 +4763,10 @@ function KDCheckLinkSize(currentRestraint: item, restraint: restraint, bypass?: 
 	return (linkCategories.length == 0 || linkCategories.every((lc, index) => {return KDLinkCategorySize(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group),
 		lc, ignoreItem, power) + KDLinkSize(restraint, index) <= (NoStack ? 0.01 : 1.0);})
 	)
-		&& ((linkCategories.length > 0 && !restraint.noDupe)
+		&& ((linkCategories.length > 0 && !restraint.noDupe && (!restraint.linkCategories
+			|| (KinkyDungeonStatsChoice.get("StackRestraints") && restraint.linkCategories.every((cat) => {
+				return !KDLayersUnderLayersRestraintFilters[cat]
+			}))))
 			|| !KDDynamicLinkList(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), true).some((item) => {
 				if (restraint.name == KDRestraint(item).name && (!ignoreItem || ignoreItem?.id != item.id)) {
 					// Note: return false means succeed
@@ -7319,7 +7322,7 @@ function KDDynamicLinkListSurface(item: item): item[] {
  */
 function KDLinkSize(restraint: restraint, index?: number): number {
 	if (index != undefined && restraint.linkSizes) {
-		if (restraint.linkCategories) {
+		if (restraint.linkCategories && KinkyDungeonStatsChoice.get("StackRestraints")) {
 			if (KDLayersUnderLayersRestraintFilters[restraint.linkCategories[index]]) {
 				return 0;
 			}

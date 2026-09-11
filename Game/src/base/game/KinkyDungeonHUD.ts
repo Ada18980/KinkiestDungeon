@@ -3511,6 +3511,8 @@ function KDDrawStruggleGroups() {
 
 			let stackDrawn = 0;
 			let blocked = false;
+			let highlightSG = ((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
+				|| (!currentHighlightedItem && MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth+3))));
 
 			if (item) {
 				surfaceItems = KDDynamicLinkListSurface(item);
@@ -3518,12 +3520,16 @@ function KDDrawStruggleGroups() {
 
 
 
-
 				KDDrawScrollableItemList(x + 3, y + 5, ButtonWidth, 
 					ButtonWidth * KDScrollableStruggleSectionNum, sg,
 					item, 
 					KDDynamicLinkList(KinkyDungeonGetRestraintItem(sg.group), true), 
-					KDDynamicLinkListSurface(KinkyDungeonGetRestraintItem(sg.group)));
+					KDDynamicLinkListSurface(KinkyDungeonGetRestraintItem(sg.group)), 
+					undefined,
+					highlightSG
+				);
+				if (KDStruggleGroupHighlightedItem && KDRestraint(KDStruggleGroupHighlightedItem)?.Group
+					== sg.group) currentHighlightedItem = KDStruggleGroupHighlightedItem;
 			}
 			
 
@@ -3544,16 +3550,16 @@ function KDDrawStruggleGroups() {
 
 
 			
-			if (((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
-				|| (!currentHighlightedItem && MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth+3)))) && sg) {
+			if (highlightSG && sg) {
 
 
 
 				//if (MouseY < y) {
 				if (KDToggles.ShowRestraintOnHover || 
 					((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
-					|| MouseIn(0, 0, 250, 1000)))
-					KinkyDungeonDrawInventorySelected(KDGetItemPreview(item), false, true, 700);
+					|| highlightSG))
+					KinkyDungeonDrawInventorySelected(
+						KDGetItemPreview(currentHighlightedItem || item), false, true, 700);
 				//}
 				if (!currentHighlightedItem)
 					currentHighlightedItem = item;
@@ -4131,7 +4137,7 @@ let KDDrawStrictnessItemsMaxNum = 3;
 let KDScrollMovedStruggleItem = false;
 
 function KDDrawScrollableItemList(x: number, y: number, size: number, width: number, sg: StruggleGroup, item: item, dynamicList: item[],
-	surfaceItems: item[], zIndex: number = 50) {
+	surfaceItems: item[], zIndex: number = 50, highlightSG?: boolean) {
 
 	let listID = x + y + KDRestraint(item).Group;
 	let doFix = false;
@@ -4171,9 +4177,9 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 					list.x + visualIndex * size, list.y, size/2 - 10, 
 					size/2 - 10, undefined, {zIndex: zIndex + 1});
 			}
-			if (!surfaceItems.findIndex((it) => {
+			if (surfaceItems.findIndex((it) => {
 				return it.id == listItem.id;
-			})) {
+			}) < 0) {
 				KDDraw(container, kdpixisprites, "iconblocked" + sg.name + icon + listItem.id, 
 					KinkyDungeonRootDirectory + `Locks/Blocked.png`,
 					list.x + visualIndex * size, list.y, size, 
@@ -4199,7 +4205,7 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 			}, true, list.x + visualIndex * size, list.y, size, size,
 			"", KDBaseWhite, KDGetItemPreview(listItem).preview, undefined,
 			false, 
-			!selected || (currentDrawnSG != sg) || KDCurrentScrollableListHover?.id == listID, 
+			!selected || !(highlightSG) || KDCurrentScrollableListHover?.id == listID, 
 			KDBaseBlack, undefined, 
 			undefined, {
 				unique: true,
