@@ -942,7 +942,7 @@ Sub
 
 - No Way Out
 无路可逃
-- Enemies will always use the tightest restraints possible regardless of willpower. +10 Security level.
+- Enemies will always use the tightest restraints possible regardless of willpower and will try to stack many restraints. +10 starting Security level.
 无论意志力如何，敌人总是会使用最严格的拘束具来完全束缚你。+10 警戒等级。
 - Deft Footwork
 健步如飞
@@ -964,8 +964,11 @@ Sub
 
 - Well-Equipped
 设备精良
-- Restraints and traps that are limited by level appear sooner, and enemies stack more restraints in general. +10 security level.
+- Restraints and traps that are limited by level appear sooner. +10 starting security level.
 有楼层数限制的拘束具和陷阱会更早出现，并且敌人通常会储备更多的拘束具。+10 警戒等级。
+
+# - Layers Under Layers
+# - Many restraints that are otherwise improbable can now be stacked. +10 starting security level.
 
 - Quick-Draw
 快速拔刀
@@ -16802,12 +16805,14 @@ EnemyName 设法带着你的物品撤退了！
 偶尔
 - Always
 总是
+# - Only
 - Perk shrines will not offer bondage as part of the deal.
 特质神泉不会提供束缚
 - Bondage will sometimes be offered alongside perks.
 有时，束缚会与特质一起提供
 - Perk shrines are always accompanied by bondage.
 特质神泉总会提供束缚
+# - Perk shrines sometimes offer only bondage.
 
 
 - Perk Shrine Bondage Info:
@@ -22256,7 +22261,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER smiles)|Heh, looks like you'll be fitting right in.
 ( SPEAKER 微笑 )|嘿嘿，看来你很快就适应了。
 
-- (The SPEAKER chuckles)|You're probably wondering what's in store for you.|It's simple: You behave and do as you're told.|Eventually you will get to roam around.|Don't you dare try to steal anything.
+- (The SPEAKER chuckles)|You're probably wondering what's in store for you.|It's simple: You behave and do as you're told.|Eventually we may let you wander around as a toy,|if you're a good ${Pdim} and behave.
 （SPEAKER轻笑）|你可能想知道为你准备了什么。|很简单：‎你按照别人的吩咐行事和做事。|最终你可以四处走动。|别想着尝试偷东西。
 - (The SPEAKER chuckles)|Feisty, aren't you?|Looks like it's going to be an extended stay for you~
 ( SPEAKER 轻笑 ) |挺有活力，不是吗？|看起来你会待很长时间~
@@ -48720,6 +48725,8 @@ ENMY 试图拍拍你的头，但想了想还是算了。
 ENMY 伸手抓住你的肩膀，但你却逃脱了！
 - The ENMY calls you cute! (DMGDLT)
 ENMY 称赞你很可爱！(DMGDLT)
+# - Cute!
+# - *blushes*
 - The ENMY blushes at your cuteness!
 ENMY 因为你太可爱而脸红！
 - The ENMY makes fun of you! (DMGDLT)
@@ -54182,3 +54189,4 @@ TA
 
 - *bumps up against your chastity and sighs*
 *蹭了蹭你的贞操带，叹了口气*
+
