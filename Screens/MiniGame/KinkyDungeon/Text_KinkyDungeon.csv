@@ -28768,7 +28768,7 @@ KinkyDungeonSpellCastCursingCircle2,"A cursing sigil appears on the ground!"
 
 RestraintCursedCollar,Moondust Collar
 RestraintCursedCollarDesc,"'You thought you could run forever, didn't you? Fate has a way of always catching up to you...'"
-RestraintCursedCollarDesc2,"Cannot be removed while you are wearing other Star Cursed items."
+RestraintCursedCollarDesc2,"Cannot be removed while you are wearing other Moon Cursed items."
 RestraintCursedCollar2,Stardust Collar
 RestraintCursedCollar2Desc,"'You thought you could run forever, didn't you? Fate has a way of always catching up to you...'"
 RestraintCursedCollar2Desc2,"Cannot be removed while you are wearing other Star Cursed items."
@@ -34275,3 +34275,6 @@ KDDialogue_ToyPlayChastity_Dom,"You've been a bad girl, haven't you? *taps on yo
 KDDialogue_ToyPlayChastity_Brat,"Such a naughty girl, getting yourself all locked up like that!"
 KDDialogue_ToyPlayChastity_Sub,"I-I know you want release, but you're in this gear for a reason~"
 
+
+
+KDToggleStruggleScroll,Show Scroll Buttons in Struggle UI

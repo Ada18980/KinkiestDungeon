@@ -3443,7 +3443,7 @@ function KDDrawStruggleGroups() {
 		for (let sg of KinkyDungeonStruggleGroups) {
 			let ButtonWidth = 48;
 			let x = 5 + ((!sg.left) ? (490 - ButtonWidth) : 0);
-			let y = 10 + sg.y * (ButtonWidth + 4); // Originally 46
+			let y = 6 + sg.y * (ButtonWidth + 3); // Originally 46
 
 			let item = KinkyDungeonGetRestraintItem(sg.group);
 			let drawLayers = 0;
@@ -3523,17 +3523,47 @@ function KDDrawStruggleGroups() {
 
 
 
-				KDDrawScrollableItemList(x + 3, y + 5, ButtonWidth, 
+				let ret = KDDrawScrollableItemList(x + 3, y + 5, ButtonWidth, 
 					ButtonWidth * (
 						(KDStruggleDrawMode != KDDrawStruggleEnum.MOST
 							|| highlightSG
-						) ? KDScrollableStruggleSectionNum : 1.5), sg,
+						) ? (KDScrollableStruggleSectionNum + (
+							KDToggles.StruggleScroll ? -1 : 0
+						)) : 1.5), sg,
 					item, 
 					KDDynamicLinkList(KinkyDungeonGetRestraintItem(sg.group), true), 
 					KDDynamicLinkListSurface(KinkyDungeonGetRestraintItem(sg.group)), 
 					undefined,
 					highlightSG
 				);
+				if (KDToggles.StruggleScroll && highlightSG && dynamicList.length > 1) {
+					DrawButtonKDEx("scrollableStruggleGroup_left", (bdata) => {
+						if ((KDStruggleGroupLinkIndex[currentDrawnSG.group] > 0)) KDStruggleGroupLinkIndex[currentDrawnSG.group] -= 1;
+						setTimeout(() => {
+							KDFixScrollableList(ret.id);
+						}, 50);
+						return true;
+					}, true, x + 3 + 1 + ret.width, y + 5, 
+					ButtonWidth/2, ButtonWidth, 
+					undefined, KDBaseWhite, KinkyDungeonRootDirectory + "LeftSmall.png",
+					undefined, undefined, true, undefined, undefined, undefined, {
+						centered: true,
+					}
+					);
+					DrawButtonKDEx("scrollableStruggleGroup_Right", (bdata) => {
+						if ((KDStruggleGroupLinkIndex[currentDrawnSG.group] < currentDrawnSGLength - 1)) KDStruggleGroupLinkIndex[currentDrawnSG.group] += 1;
+						setTimeout(() => {
+							KDFixScrollableList(ret.id);
+						}, 50);
+						return true;
+					}, true, x + 3 + 2 + ButtonWidth/2 + ret.width, y + 5, 
+					ButtonWidth/2, ButtonWidth, 
+					undefined, KDBaseWhite, KinkyDungeonRootDirectory + "RightSmall.png",
+					undefined, undefined, true, undefined, undefined, undefined, {
+						centered: true,
+					}
+					);
+				}
 				if (KDStruggleGroupHighlightedItem && KDRestraint(KDStruggleGroupHighlightedItem)?.Group
 					== sg.group) currentHighlightedItem = KDStruggleGroupHighlightedItem;
 			}
@@ -4210,7 +4240,7 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 
 			}, true, list.x + visualIndex * size, list.y, size, size,
 			"", KDBaseWhite, KDGetItemPreview(listItem).preview, undefined,
-			false, 
+			!MouseIn(x, y, width, size), 
 			!selected || !(highlightSG),// || KDCurrentScrollableListHover?.id == listID, 
 			KDBaseBlack, undefined, 
 			undefined, {
@@ -4233,8 +4263,11 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 	if (doFix) {
 		KDFixScrollableList(listID, 2);
 	}
+
+	return {drawn: drawn, id: listID, width: Math.min(width, dynamicList.length*size)};
+
 }
 
-let KDScrollableStruggleSectionNum = 3.5;
+let KDScrollableStruggleSectionNum = 6.4;
 let KDStruggleGroupBGAlpha = 0.5;
 let KDStruggleGroupHighlightedItem = null;

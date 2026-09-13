@@ -204,12 +204,14 @@ let KDToggles = {
 	AutoSprint: true,
 	ArrowWarnings: true,
 	CenteredLog: false,
+	StruggleScroll: !CommonIsMobile,
 };
 
 
 
 let KDToggleCategories = {
 	CenteredLog: "UI",
+	StruggleScroll: "UI",
 	ArrowWarnings: "UI",
 	StackOutfitItems: "Clothes",
 	OverrideConsent: "none",
