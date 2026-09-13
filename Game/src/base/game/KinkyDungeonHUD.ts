@@ -3546,8 +3546,9 @@ function KDDrawStruggleGroups() {
 					}, true, x + 3 + 1 + ret.width, y + 5, 
 					ButtonWidth/2, ButtonWidth, 
 					undefined, KDBaseWhite, KinkyDungeonRootDirectory + "LeftSmall.png",
-					undefined, undefined, true, undefined, undefined, undefined, {
+					undefined, undefined, true, KDBaseBlack, undefined, undefined, {
 						centered: true,
+						alpha: KDStruggleGroupBGAlpha,
 					}
 					);
 					DrawButtonKDEx("scrollableStruggleGroup_Right", (bdata) => {
@@ -3559,8 +3560,9 @@ function KDDrawStruggleGroups() {
 					}, true, x + 3 + 2 + ButtonWidth/2 + ret.width, y + 5, 
 					ButtonWidth/2, ButtonWidth, 
 					undefined, KDBaseWhite, KinkyDungeonRootDirectory + "RightSmall.png",
-					undefined, undefined, true, undefined, undefined, undefined, {
+					undefined, undefined, true, KDBaseBlack, undefined, undefined, {
 						centered: true,
+						alpha: KDStruggleGroupBGAlpha,
 					}
 					);
 				}
@@ -3617,6 +3619,8 @@ function KDDrawStruggleGroups() {
 
 				let OInit = lastO;
 
+
+
 				// 0 = no draw
 				// 1 = grey
 				// 2 = white
@@ -3648,8 +3652,20 @@ function KDDrawStruggleGroups() {
 					let O = OInit + 1;
 					let drawn = false;
 					let dListIndex = dynamicList.findIndex((it) => {return it == item});
+
 					let minimumDrawSkip = dynamicList.length > KDDrawLayeredStackMaxNum - 2 ? 
 						(dListIndex - KDDrawLayeredStackMaxNum/2 + 1): 0;
+
+					let maxOneSide = KDDrawLayeredStackMaxNum/2;
+					if (dynamicList.length > maxOneSide && (KDStruggleGroupLinkIndex[sg.group] || 0) < maxOneSide) {
+						maxOneSide += maxOneSide - KDStruggleGroupLinkIndex[sg.group]
+						minimumDrawSkip = Math.max(minimumDrawSkip - KDStruggleGroupLinkIndex[sg.group], 0);
+					} else if (dynamicList.length > maxOneSide && (dynamicList.length - (KDStruggleGroupLinkIndex[sg.group] || 0)) < maxOneSide) {
+						maxOneSide += maxOneSide - (dynamicList.length - (KDStruggleGroupLinkIndex[sg.group] || 0))
+						minimumDrawSkip = Math.max(minimumDrawSkip - (dynamicList.length - (KDStruggleGroupLinkIndex[sg.group] || 0)), 0);
+					}
+
+						
 					let drawnSoFar = 0;
 
 
@@ -4250,8 +4266,10 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 				zIndex: zIndex,
 				alpha: KDStruggleGroupBGAlpha,
 			})) {
-				// draw the hover thing
-				KDStruggleGroupHighlightedItem = listItem;
+				if (MouseIn(x, y, width, size)) {
+					// draw the hover thing
+					KDStruggleGroupHighlightedItem = listItem;
+				}
 			}
 		}
 		
@@ -4270,5 +4288,5 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 }
 
 let KDScrollableStruggleSectionNum = 6.4;
-let KDStruggleGroupBGAlpha = 0.5;
+let KDStruggleGroupBGAlpha = 0.6;
 let KDStruggleGroupHighlightedItem = null;
