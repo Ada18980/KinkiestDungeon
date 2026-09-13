@@ -948,6 +948,7 @@ function KDGetRestraintPreviewImage(restraint: restraint): string {
 			`Assets/Female3DCG/${restraint.Group}/Preview/${restraint.Asset}.png`*/
 }
 
+let KDBaseInventoryQuickNum = 300;
 
 /**
  * @param Filter
@@ -958,7 +959,7 @@ function KDGetRestraintPreviewImage(restraint: restraint): string {
  * @param [namefilter]
  */
 function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignoreHidden?: boolean, ignoreFilters?: boolean, click?: string, namefilter?: string,
-	overrideInventory?: Record<string, item>, ignoreFilterList: string[] = [], ignoreAutoFilter: boolean = true
+	overrideInventory?: Record<string, item>, ignoreFilterList: string[] = [], ignoreAutoFilter: boolean = true, quick?: number, additionalFilterCallback?: (item: itemPreviewEntry, entriesCheckedSoFar: number) => boolean
 ): itemPreviewEntry[] {
 	let filter_orig = Filter;
 	if (KDFilterTransform[Filter]) Filter = KDFilterTransform[Filter];
@@ -971,6 +972,7 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 		: (Filter == Restraint ? KinkyDungeonAllRestraintDynamic().map((inv) => {return inv.item;})
 		: Array.from(KinkyDungeonInventory.get(Filter).values())));
 	if (values) {
+		let iii = 0;
 		for (let item of values) {
 			if (ignoreHidden && KDGameData.HiddenItems && KDGameData.HiddenItems[item.inventoryVariant || item.name]) continue;
 
@@ -1124,7 +1126,10 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 					}
 				}
 
-				ret.push(preview);
+				if (!additionalFilterCallback || additionalFilterCallback(preview, iii++))
+					ret.push(preview);
+				if (ret.length >= quick)
+					return ret;
 			}
 			/*if (item.dynamicLink) {
 				let link = item.dynamicLink;
@@ -2058,7 +2063,7 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, skipfilters = [], addFilte
 			false, false, 
 			true, undefined, undefined, 
 			undefined, undefined,
-			false
+			false, 1
 		).length > 0) {
 			dim = false;
 		}

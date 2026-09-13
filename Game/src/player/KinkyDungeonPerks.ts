@@ -1127,12 +1127,12 @@ function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 						});
 					if (MouseIn(XX, YY, KDPerksButtonWidth, KDPerksButtonHeight)) {
 						let h = RetDrawTextFitKDgetHeight(TextGet("KinkyDungeonStatDesc" + (stat[1].id)), 1000, 150, 1500, KDTextWhite, KDTextGray1, undefined, undefined, 110, 1.0, undefined, undefined, undefined, true);
-						console.log(h);
+						//console.log(h);
 						let bottom = 150 + h / 2
 						let top = 150 - h / 2
 						DrawTextFitKD(TextGet("KinkyDungeonStatCost").replace("AMOUNT",
 							Math.round(KDPERKCOSTMULT * KDGetPerkCost(stat[1])) + ""), 1000, h < 80 ? bottom + 10: top - 15, 1400, KDTextWhite, KDTextGray1);
-						console.log(h < 80 ? bottom + 10: top - 15);
+						//console.log(h < 80 ? bottom + 10: top - 15);
 						tooltip = true;
 					}
 				}

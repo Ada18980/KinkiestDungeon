@@ -79,7 +79,13 @@ function KinkyDungeonFindConsumableOrBasic(Name: string): consumable | any {
 }
 
 function KinkyDungeonGetInventoryItem(Name: string, Filter: string = Consumable): itemPreviewEntry {
-	let Filtered = KinkyDungeonFilterInventory(Filter);
+	let Filtered = KinkyDungeonFilterInventory(Filter, undefined, undefined,
+		undefined, undefined, undefined, undefined, undefined,
+		undefined, 1, (inv) => {
+			return inv.name == Name;
+		}
+
+	);
 	for (let item of Filtered) {
 		if (item.name == Name) return item;
 	}

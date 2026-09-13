@@ -67,6 +67,12 @@ function KDGetContainerFromTile(name: string, tile: any,
 /** -1 is player, 0 is categories, 1 is chest */
 let KDContainerFocus = -1;
 
+
+let KDContainerFilteredInventory_1 = null;
+let KDContainerFilteredInventory_2 = null;
+let KDContainerFilteredInventory_Time = 0;
+let KDContainerFilteredInventory_Delay = 200;
+
 function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Outfit], invMsg?: string) {
 	let x = 1225 + xOffset;
 	let takeItem = (inv: item) => {
@@ -129,9 +135,19 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	KDDrawInventoryFilters(xOffset - 120,95 + 7 * filters.length, filters,
 		["All"], 90, 3, KDContainerFocus == 0 ? KinkyDungeonKey[0] : "", KDContainerFocus == 0 ? KinkyDungeonKey[2] : "");
 
-	let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
-		undefined, filters
+
+	let resetLists = false;
+	if (CommonTime() > KDContainerFilteredInventory_Time + KDContainerFilteredInventory_Delay || KDRefreshInventoryList) {
+		KDContainerFilteredInventory_1 = null;
+		KDContainerFilteredInventory_2 = null;
+		resetLists = true;
+
+	}
+	let filteredInventory = KDContainerFilteredInventory_1 || KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
+		undefined, filters, undefined
 	);
+	KDContainerFilteredInventory_1 = filteredInventory;
+
 	
 	DrawButtonKDEx("dummy_containerFocus<-", 
 		() => {
@@ -176,6 +192,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	} : KDDrawInventoryContainer(-1045, 100, filteredInventory, filter, filter,
 	(inv: KDFilteredInventoryItem, x, y, w, h, different) => {
 		if (!different && !KDUI_Container_LastSelected) {
+			KDContainerFilteredInventory_Time = 0;
 			transferItem(inv.item);
 		}
 		KDUI_Container_LastSelected = "";
@@ -189,13 +206,18 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 
 	}
 
-	let filteredInventory2 = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
-		KDGameData.Containers[name]?.items
+	let filteredInventory2 = KDContainerFilteredInventory_2 || KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, 
+		undefined, KDInvFilter,
+		KDGameData.Containers[name]?.items, undefined, undefined
 	);
+	KDContainerFilteredInventory_2 = filteredInventory2;
+
+	if (resetLists) KDContainerFilteredInventory_Time = CommonTime();
 
 	let ContainerInv = KDDrawInventoryContainer(-165, 100, filteredInventory2, filter, filter,
 		(inv: KDFilteredInventoryItem, x, y, w, h, different) => {
 		if (!different && KDUI_Container_LastSelected) {
+			KDContainerFilteredInventory_Time = 0;
 			takeItem(inv.item);
 		}
 		KDUI_Container_LastSelected = "Chest";

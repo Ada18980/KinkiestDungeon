@@ -77,13 +77,12 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				let groups = slot.allowedGroups;
 				KDNPCRestraintBindingData[sgroup.id] = [];
 				let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
-				undefined, undefined, true
-				);
-
-				filteredInventory = filteredInventory.filter((inv) => {
+				undefined, undefined, true, KDBaseInventoryQuickNum, (inv) => {
 					return groups.includes(KDRestraint(inv.item)?.Group)
 						&& slot.allowedTags.some((tag) => {return KDRestraint(inv.item)?.shrine.includes(tag);});
-				});
+				}
+				);
+
 				for (let item of filteredInventory) {
 					KDNPCRestraintBindingData[sgroup.id].push(item.name);
 				}
@@ -349,20 +348,17 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			showAll ? KDGenericMatsPerRowShowAll : KDGenericMatsPerRow, KDGenericBindsPerRow);
 
 		} else {
+			let slotted = slot;
 			let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
-				undefined, undefined, true
+				undefined, undefined, true, KDBaseInventoryQuickNum, (inv) => {
+					if (slotted) {
+						return groups.includes(KDRestraint(inv.item)?.Group)
+							&& slot.allowedTags.some((tag) => {return KDRestraint(inv.item)?.shrine.includes(tag);});
+					} else {
+						return !KDRestraint(inv.item)?.shrine?.includes("Raw");
+					}
+				}
 			);
-
-			if (slot)
-				filteredInventory = filteredInventory.filter((inv) => {
-					return groups.includes(KDRestraint(inv.item)?.Group)
-						&& slot.allowedTags.some((tag) => {return KDRestraint(inv.item)?.shrine.includes(tag);});
-				});
-			else filteredInventory = filteredInventory.filter((inv) => {
-					return !KDRestraint(inv.item)?.shrine?.includes("Raw");
-				});
-
-
 
 			ss = KDDrawInventoryContainer(-165, 100, filteredInventory, filter, filter,
 				(inv: KDFilteredInventoryItem, x, y, w, h) => {

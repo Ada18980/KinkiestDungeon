@@ -3718,7 +3718,7 @@ function KDDrawStruggleGroups() {
 
 					lastO = O;
 					O = OInit;
-					if (drawn) {
+					if (drawnSoFar > 1) {
 						DrawTextKD(TextGet("KinkyDungeonItemsUnderneathTotal"), 530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150);
 					}
 					O = lastO + 1;

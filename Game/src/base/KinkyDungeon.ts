@@ -7563,6 +7563,18 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 
 			if (typeof KDGameData.PreviousWeapon == 'string') KDGameData.PreviousWeapon = ["Unarmed", "Unarmed", "Unarmed", "Unarmed"];
 
+			// validating chests
+			if (KDGameData.Containers)
+				for (let chest of Object.values(KDGameData.Containers)) {
+					let newItems = {};
+					for (let entry in chest.items) {
+						if (KDItem(chest.items[entry])) {
+							newItems[entry] = chest.items[entry];
+						}
+					}
+					chest.items = newItems;
+				}
+
 			KinkyDungeonSetMaxStats();
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KDNaked = false;
