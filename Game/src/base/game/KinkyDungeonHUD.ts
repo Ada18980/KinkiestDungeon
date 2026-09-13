@@ -3654,6 +3654,7 @@ function KDDrawStruggleGroups() {
 
 
 					for (let d of dynamicList) {
+						if (dynamicList.length <= 1) break;
 						//if (d != item)//KDRestraint(item) && (!KDRestraint(item).UnLink || d.name != KDRestraint(item).UnLink))
 						//{
 						let dotdotdot = false;
