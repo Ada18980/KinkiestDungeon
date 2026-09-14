@@ -45440,12 +45440,12 @@ AMNT 统计
 '你以为你可以永远奔跑，不是吗？ 命运总有办法追上你……'
 # :: RestraintCursedCollarDesc
 # :: RestraintCursedCollar2Desc
-- Cannot be removed while you are wearing other Star Cursed items.
+- Cannot be removed while you are wearing other Moon Cursed items.
 当你穿着其他星咒物品时无法移除。
-# :: RestraintCursedCollarDesc2
-# :: RestraintCursedCollar2Desc2
 - Stardust Collar
 星尘项圈
+- Cannot be removed while you are wearing other Star Cursed items.
+当你穿着其他星咒物品时无法移除。
 
 - The cursed seal on the RestraintName vanishes into a brief veil of stardust.
 RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
@@ -54190,3 +54190,6 @@ TA
 - *bumps up against your chastity and sighs*
 *蹭了蹭你的贞操带，叹了口气*
 
+
+
+# - Show Scroll Buttons in Struggle UI
