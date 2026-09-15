@@ -13286,7 +13286,7 @@ dGenericAllyAttackUnaware_Confirm,"(Attack ${Ethem})"
 dGenericAllyAttackUnaware_Leave,"(Never mind...)"
 rGenericAllyAttackUnaware_Leave,"(You decide not to)"
 
-dGenericAllyLetMePass,"(Move through her space)"
+dGenericAllyLetMePass,"(Move through ${Etheir} space)"
 dGenericAllyLetMePass_Confirm,"(Swap with this unit)"
 dGenericAllyLetMePass_ConfirmAll,"(Swap with all units)"
 dGenericAllyLetMePass_ConfirmPush,"(Push this unit)"
