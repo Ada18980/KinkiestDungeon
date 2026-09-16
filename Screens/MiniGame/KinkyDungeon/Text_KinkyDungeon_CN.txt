@@ -24976,7 +24976,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (Really attack? Target is unaware and will be stunned 1 turn.)
 ( 真的要攻击？目标浑然不觉，晕眩1回合。 )
 
-- (Move through her space)
+- (Move through ${Etheir} space)
 （越过她）
 - (Swap with this unit)
 （越过这个单位）
