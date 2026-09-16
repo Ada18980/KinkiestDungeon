@@ -480,8 +480,14 @@ async function KDExecuteMods() {
 										res = res.replace(new RegExp(escapedKey, 'g'), compat[1]);
 									  }
 								}
-								let evaluated = await eval(res);
-								resolve(evaluated);
+								try {
+									let evaluated = await eval(res);
+									resolve(evaluated);
+								} catch {
+									KDToggles.AutoLoadMods = false;
+									KDSaveToggles();
+									reject(null);
+								}
 							}
 						};
 						reader.readAsText(readfile);
