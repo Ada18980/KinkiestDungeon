@@ -388,8 +388,10 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 显示挣脱进度
 - Allow Suspicious Mods
 允许可疑模组
-- Auto Load Mods (offline only)
-自动加载模组 ( 仅离线版 )
+- Auto Load Mods
+自动加载模组
+# :: KDToggleAutoLoadMods
+# :: KDAutoLoadMods
 - Classic Inventory Background
 经典物品页面背景
 - Skip Intro
@@ -48628,8 +48630,6 @@ ENMY 高潮了，${Ethem}受到 AMNT 伤害！
 - Choose default outfit palette:
 选择装备默认调色:
 
-- Auto Load Mods
-自动加载模组
 - SUSPICIOUS MOD DETECTED
 检测到可疑模组
 
