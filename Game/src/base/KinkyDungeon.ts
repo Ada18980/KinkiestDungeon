@@ -1589,13 +1589,19 @@ function KinkyDungeonRun() {
 				VersionPatch = 0;
 			}
 
-
-			if (KDToggles.AutoLoadMods) {
-				if (!KDGetMods) {
-					KDGetMods = true;
-					KDGetModsLoad(true);
-				}
-			}
+            if (localStorage.getItem(`KDLastModLoaded`)) {
+                // A mod caused the game to stop responding last time we loaded them, throw an error window and disable autoload
+                KinkyDungeonShowModLoadFailedModal(localStorage.getItem(`KDLastModLoaded`))
+                localStorage.removeItem(`KDLastModLoaded`)
+            }
+            else {
+                if (KDToggles.AutoLoadMods) {
+                    if (!KDGetMods) {
+                        KDGetMods = true;
+                        KDGetModsLoad(true);
+                    }
+                }
+            }
 		}
 	}
 
