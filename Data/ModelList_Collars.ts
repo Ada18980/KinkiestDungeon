@@ -172,7 +172,7 @@ AddModel({
 		{ Name: "TrackingModuleDisplay", Layer: "CollarAcc", Pri: 40,
 			Invariant: true,
 			InheritColor: "Display",
-			TieToLayer: "Module",
+			TieToLayer: "TrackingModule",
 			NoOverride: true,
 			HidePoses: {HideModuleRight: true},
 		},

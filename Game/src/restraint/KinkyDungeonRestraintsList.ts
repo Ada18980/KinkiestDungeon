@@ -2324,7 +2324,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Model: "ShockModule",
 		factionFilters: {
 			Module: {color: "LightNeutral", override: true},
-			ModuleDisplay: {color: "Highlight", override: false},
+			Display: {color: "Highlight", override: false},
 		},
 		DefaultLock: "Red_Hi",
 		struggleBreak: true,
@@ -2346,7 +2346,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		DefaultLock: "Red_Hi",
 		factionFilters: {
 			Module: {color: "LightNeutral", override: true},
-			ModuleDisplay: {color: "Highlight", override: false},
+			Display: {color: "Highlight", override: false},
 		},
 		struggleBreak: true,
 		maxwill: 0.35, enemyTags: {"controlHarness":5, "roboPrisoner" : 100, "cyberdollrestraints" : 10, "trackingmodule": 10},
