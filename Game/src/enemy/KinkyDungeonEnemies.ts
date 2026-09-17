@@ -11123,9 +11123,10 @@ function KDBlockedByPlayer(enemy: entity, dir: { x: number, y: number, delta: nu
 		KinkyDungeonSetEnemyFlag(enemy, "playerBlocking", 6);
 		if (!KinkyDungeonGetRestraintItem("ItemDevices") && !KDIsPlayerTetheredToEntity(player, enemy)
 			&& (noLeashOverride || (enemy.gx != player.x && enemy.gy != player.y))) {
-			if (dialogue)KinkyDungeonSendDialogue(enemy, TextGet("KDDialogue_StepAside" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || "")), KDGetGenericDialogueParams(KDPlayer(), enemy))
+			if (dialogue)KinkyDungeonSendDialogue(enemy, TextGet("KDDialogue_StepAside" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || "")),
+			 KDGetGenericDialogueParams(KDPlayer(), enemy))
 				.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
-			KDGetColor(enemy), 3, 10);
+			KDGetColor(enemy), 3, 10, undefined, true);
 			return true;
 		}
 			

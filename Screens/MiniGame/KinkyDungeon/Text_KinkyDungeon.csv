@@ -105,7 +105,7 @@ KDToggleShowServantNPCSprites,Detailed servants in collection
 KDToggleShowOtherNPCSprites,Detailed prisoners/guests in collection
 KDToggleStruggleBars,Show Struggle Bars
 KDToggleAllowSusMods,Allow Suspicious Mods
-KDToggleAutoLoadMods,Auto Load Mods (offline only)
+KDToggleAutoLoadMods,Auto Load Mods
 KDToggleSpellBook,Classic Inventory Background
 KDToggleSkipIntro,Skip Intro
 KDToggleNoForceGreet,No Forced Greetings

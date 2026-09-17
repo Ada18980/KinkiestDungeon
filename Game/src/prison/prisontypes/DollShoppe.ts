@@ -471,7 +471,7 @@ KDPrisonTypes.DollShoppe = {
 
 
 				let lostTrack = KDLostJailTrack(player);
-				if (lostTrack == "Unaware") {
+				if (KDNoInteractResults.includes(lostTrack)) {
 					return KDSetPrisonState(player, "Jail");
 				}
 				if (KDGameData.PrisonerState == 'parole') 
@@ -512,7 +512,7 @@ KDPrisonTypes.DollShoppe = {
 
 
 				let lostTrack = KDLostJailTrack(player);
-				if (lostTrack == "Unaware") {
+				if (KDNoInteractResults.includes(lostTrack)) {
 					return KDSetPrisonState(player, "Jail");
 				}
 
@@ -691,7 +691,7 @@ KDPrisonTypes.DollShoppe = {
 				let player = KinkyDungeonPlayerEntity;
 
 				let lostTrack = KDLostJailTrack(player);
-				if (lostTrack == "Unaware") {
+				if (KDNoInteractResults.includes(lostTrack)) {
 					return KDSetPrisonState(player, "Jail");
 				}
 
@@ -789,7 +789,7 @@ KDPrisonTypes.DollShoppe = {
 				let rad = 3;
 
 				let lostTrack = KDLostJailTrack(player);
-				if (lostTrack == "Unaware") {
+				if (KDNoInteractResults.includes(lostTrack)) {
 					return KDSetPrisonState(player, "Jail");
 				}
 
@@ -943,7 +943,7 @@ KDPrisonTypes.DollShoppe = {
 				let rad = 3;
 
 				let lostTrack = KDLostJailTrack(player);
-				if (lostTrack == "Unaware") {
+				if (KDNoInteractResults.includes(lostTrack)) {
 					return KDSetPrisonState(player, "Jail");
 				}
 

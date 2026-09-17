@@ -932,6 +932,8 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 	if (forceConstant != undefined && !forceConstant) constant = false;
 	if (!color) color = KDGetColor(entity);
 
+	if (entity?.dialogue == dialogue && entity?.dialogueDuration) return;
+
 	
 	if (!force && !KDEnemyCanTalk(entity) && !entity.player) {
 		if (!entity.Enemy.nonHumanoid && entity.Enemy.bound

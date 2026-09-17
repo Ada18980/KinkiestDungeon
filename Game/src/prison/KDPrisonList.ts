@@ -107,8 +107,9 @@ let KDPrisonTypes: Record<string, KDPrisonType> = {
 function KDLostJailTrack(player) {
 	let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
 	let rad = 4;
+	if (player?.player && !KDGameData.PrisonerState) return "NotJailed";
 	if (label && KDistChebyshev(player.x - label.x, player.y - label.y) < rad) return "InTraining";
-	if (KinkyDungeonPlayerTags.get("Furniture")) return "Furniture";
+	if (player?.player && KinkyDungeonPlayerTags.get("Furniture")) return "Furniture";
 	if (!KinkyDungeonLeashingEnemy()) {
 		let unaware = true;
 		for (let en of KDMapData.Entities) {
@@ -132,6 +133,7 @@ function KDLostJailTrack(player) {
 function KDLostJailTrackCell(player) {
 	let label = KDMapData.Labels?.Training ? KDMapData.Labels.Training[0] : null;
 	let rad = 4;
+	if (player?.player && !KDGameData.PrisonerState) return "NotJailed";
 	if (label && KDistChebyshev(player.x - label.x, player.y - label.y) < rad) return "InTraining";
 	if (KinkyDungeonInJail(KDJailFilters)) return "InCell";
 	if (KinkyDungeonPlayerTags.get("Furniture")) return "Furniture";

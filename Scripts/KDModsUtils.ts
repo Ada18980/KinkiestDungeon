@@ -33,6 +33,9 @@ const batchSaveMods = async (files: File[]) => {
 const autoLoadMods = async () => {
 	const modList = getOnlineModNameList();
 	const loadModList: File[] = [];
+	KDToggles.AutoLoadMods = false;
+	KDSaveToggles();
+	localStorage.setItem("modLoadFailed", "true");
 
 	for (const modName of modList) {
 		const res = await KinkyDungeonModLoad(modName);
@@ -40,6 +43,10 @@ const autoLoadMods = async () => {
 			loadModList.push(res);
 		}
 	}
+	
+	localStorage.removeItem("modLoadFailed");
+	KDToggles.AutoLoadMods = true;
+	KDSaveToggles();
 
 	if (loadModList.length) onlineModsLoaded = true;
 

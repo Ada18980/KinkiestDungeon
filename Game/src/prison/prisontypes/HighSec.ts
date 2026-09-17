@@ -231,7 +231,7 @@ KDPrisonTypes.HighSec = {
 			
 
 				let lostTrack = KDLostJailTrackCell(player);
-				if (lostTrack == "Unaware") {
+				if (KDNoInteractResults.includes(lostTrack)) {
 					return KDSetPrisonState(player, "Jail");
 				}
 
@@ -379,7 +379,7 @@ KDPrisonTypes.HighSec = {
 
 
 				let lostTrack = KDLostJailTrack(player);
-				if (lostTrack == "Unaware") {
+				if (KDNoInteractResults.includes(lostTrack)) {
 					return KDSetPrisonState(player, "Jail");
 				}
 
@@ -487,7 +487,7 @@ KDPrisonTypes.HighSec = {
 				KinkyDungeonSetFlag("noWeaponStop", 10);
 
 				let lostTrack = KDLostJailTrack(player);
-				if (lostTrack == "Unaware") {
+				if (KDNoInteractResults.includes(lostTrack)) {
 					return KDSetPrisonState(player, "Jail");
 				}
 				let guard = KDPrisonCommonGuard(player);
@@ -574,7 +574,7 @@ KDPrisonTypes.HighSec = {
 				let player = KinkyDungeonPlayerEntity;
 
 				let lostTrack = KDLostJailTrack(player);
-				if (lostTrack == "Unaware") {
+				if (KDNoInteractResults.includes(lostTrack)) {
 					return KDSetPrisonState(player, "Jail");
 				}
 
@@ -624,3 +624,5 @@ KDPrisonTypes.HighSec = {
 		},
 	},
 };
+
+let KDNoInteractResults = ["Unaware", "NotJailed"];
