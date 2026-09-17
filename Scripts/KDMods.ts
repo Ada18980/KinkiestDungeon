@@ -356,7 +356,6 @@ async function KDExecuteMods() {
 
 	await KDUpdateModInfo();
 
-
 	if (KDOffline) {
 		let mods = [];
 		for (let file of KDModLoadOrder.map((ent) => {return ent.mod;})) {
@@ -389,6 +388,7 @@ async function KDExecuteMods() {
 
 	let processMod = async (mod) => {
 		console.log(`Loading ${mod.name}`)
+        localStorage.setItem(`KDLastModLoaded`, mod.name)
 		let fileloader = Promise.resolve(null);
 		let entries = await model.getEntries(mod.mod, {});
 
@@ -469,7 +469,7 @@ async function KDExecuteMods() {
 					// Eval js files. eval() is dangerous. Don't load untrusted mods.
 					await new Promise((resolve,reject) => {
 						reader.onload = async function(event) {
-							console.log("EXECUTING MOD FILE " + file);
+							console.log("EXECUTING MOD FILE " + file);                       
 							if (typeof event.target.result === "string") {
 								//@ts-ignore
 								let res = event.target.result;
@@ -552,11 +552,106 @@ async function KDExecuteMods() {
 	KDAwaitingModLoad = false;
 
 	KinkyDungeonSendEvent("afterLoadMods", {});
+    localStorage.removeItem(`KDLastModLoaded`)
 
 	// reload the player
 	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 	KinkyDungeonCheckClothesLoss = true;
 	KinkyDungeonDressPlayer();
+}
+
+function KinkyDungeonShowModLoadFailedModal(errormod: string) {
+    let modtext = ``;
+    if (localStorage.getItem(`KinkyDungeonModList`)) {
+        removeModFromOnlineList(errormod.replace(".zip", ``));
+        modtext = `and has been removed from automatically loading. Please refresh the game (F5)!`
+    }
+
+    const id = 'kinky-dungeon-moderror-report'
+
+    if (document.querySelector(`#${id}`)) {
+        return;
+    }
+
+    const backdrop = document.createElement("div");
+	backdrop.id = id;
+	Object.assign(backdrop.style, {
+		position: "fixed",
+		inset: 0,
+		backgroundColor: "#000000a0",
+		fontFamily: "'Arial', sans-serif",
+		fontSize: "1.8vmin",
+		lineHeight: 1.6,
+	});
+
+	const modal = document.createElement("div");
+	Object.assign(modal.style, {
+		position: "absolute",
+		display: "flex",
+		flexFlow: "column nowrap",
+		width: "90vw",
+		maxWidth: "600px",
+		maxHeight: "90vh",
+		overflow: "hidden",
+		backgroundColor: "#282828",
+		color: "#fafafa",
+		left: "50%",
+		top: "50%",
+		transform: "translate(-50%, -50%)",
+		padding: "1rem",
+		borderRadius: "2px",
+		boxShadow: "1px 1px 40px -8px #ffffff80",
+	});
+	backdrop.appendChild(modal);
+
+    const heading = document.createElement("h1");
+	Object.assign(heading.style, {
+		display: "flex",
+		flexFlow: "row nowrap",
+		alignItems: "center",
+		justifyContent: "space-around",
+		textAlign: "center",
+	});
+	/*heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));
+	heading.appendChild(KinkyDungeonErrorImage("Wolfgirl"));
+	heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));*/
+	heading.appendChild(document.createTextNode("Error Loading Mods"));
+	/*heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));
+	heading.appendChild(KinkyDungeonErrorImage("Wolfgirl"));
+	heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));*/
+	modal.appendChild(heading);
+
+	const hr = document.createElement("hr");
+	Object.assign(hr.style, {
+		border: `1px solid ${KDBorderColor}`,
+		margin: "0 0 1.5em",
+	});
+	modal.appendChild(hr);
+
+	modal.appendChild(KinkyDungeonErrorPreamble([
+		"Kinky Dungeon failed to load mods last time it was running. ",
+		"Automatic mod loading has been disabled for this session.",
+        "The mod that caused the crash on loading was ",
+        errormod,
+        modtext
+	]));
+
+    const buttons = document.createElement("div");
+	Object.assign(buttons.style, {
+		display: "flex",
+		flexFlow: "row wrap",
+		justifyContent: "flex-end",
+		gap: "1em",
+	});
+	modal.appendChild(buttons);
+
+	const closeButton = KinkyDungeonErrorModalButton("Close");
+	closeButton.addEventListener("click", () => {
+		backdrop.remove();
+	});
+	buttons.appendChild(closeButton);
+
+	document.body.appendChild(backdrop);
 }
 
 function KDDrawModConfigs() {

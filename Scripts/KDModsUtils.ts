@@ -9,6 +9,17 @@ const getOnlineModNameList = () => {
 	return modList;
 };
 
+const removeModFromOnlineList = (modname: string) => {
+    let modList: string[] = JSON.parse(localStorage.getItem(kdModList) || "[]");
+    if (!Array.isArray(modList)) modList = [];
+    console.log(modname)
+    if (modList.includes(modname)) {
+        modList.splice(modList.indexOf(modname), 1)
+    }
+    localStorage.setItem(`KinkyDungeonModList`, JSON.stringify(modList))
+    localStorage.removeItem(`KDLastModLoaded`)
+}
+
 // save mods to indexedDB
 const batchSaveMods = async (files: File[]) => {
 	const modList = getOnlineModNameList();
