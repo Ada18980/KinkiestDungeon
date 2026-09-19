@@ -196,7 +196,7 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 
 	// Start the new sound
 	let addNewListener = !KDCurrentMusicSound;
-	let audio = (KDCurrentMusicSound) || GetNewAudio();
+	let audio = (KDCurrentMusicSound && !KDCurrentMusicSound?.ended) ? KDCurrentMusicSound : GetNewAudio();
 	let vol = (typeof Volume != 'undefined' ? Volume : 1.0);
 	KDCurrentMusicSound = audio;
 	KDCurrentMusicSoundUpdate = true;
@@ -232,7 +232,7 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 		}, false);
 	}
 
-	if (OGVSupported) {
+	if (OGVSupported && !KDWebAudio) {
 		audio.play();
 		try {
 			KDCurrentLoops = 0;

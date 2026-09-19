@@ -6,6 +6,40 @@ let KDButtplugServer: string = KDButtplugDefaultAddress;
 let KDButtplugBatteryCheckTime = 0;
 let KDButtplugBatteryCheckInterval = 1000 * 60 * 15; // 15 minute intervals
 let KDButtplugLowBattery = 30;
+let KDXtoysWebhook = "";
+
+function KDLoadToysIntegration() {
+	
+	if (localStorage.getItem("ButtplugConnected")) {
+		KDButtplugServer = localStorage.getItem("ButtplugConnected");
+		setTimeout(() => {
+			KDStartButtplug(true);
+		}, 1000);
+
+		
+	}
+
+    if (localStorage.getItem("KDXtoysWebhook")) {
+        KDXtoysWebhook = localStorage.getItem("KDXtoysWebhook");
+    }
+	
+}
+
+interface KDXtoysPayload {
+    data?: any,
+    /** number */
+    amount?: string,
+}
+
+async function KDXtoys_Send(action: string, data: KDXtoysPayload) {
+    let webhookID = KDXtoysWebhook;
+    if (KDToggles.Buttplug && webhookID) {
+        const params = new URLSearchParams({ ...(data ?? {}), action })
+        const url = `https://webhook.xtoys.app/${webhookID}?${params.toString()}`
+        await fetch(url)
+    }
+}
+
 
 function KDUpdateButtplug() {
 	if (KDToggles.Buttplug) {
@@ -45,6 +79,7 @@ function KDStartButtplug(scan?: boolean) {
 	if (!KDButtplugClient) {
 		KDButtplugClient = new Buttplug.ButtplugClient(KDButtplugServer, {
             autoReconnect: true,
+            clientName: "Kinky Dungeon"
         });
         //@ts-ignore
 		KDButtplugEngine = new ButtplugPatterns.PatternEngine(KDButtplugClient);        
@@ -54,8 +89,8 @@ function KDStartButtplug(scan?: boolean) {
             KDUpdateButtplugList = true;
 
             if (device.canOutput("Vibrate")) {
-                await device.vibrate(0.5);
-                setTimeout(() => device.stop(), 2000);
+                await device.vibrate(0.25);
+                setTimeout(() => device.stop(), 300);
                 KDButtplugDevices[KDGetButtplugDeviceId(device)] = {
                     id: device.name,
                     name: device.displayName ?? device.name,
@@ -175,7 +210,7 @@ function KDDrawButtplugTab(centerX?: number) {
     DrawTextFitKD(TextGet("KDButtplugInfo"), 
     centerX, 140, 1200, KDBaseWhite, undefined, undefined, "center");
 
-    let TF = KDTextField("KDButtplugAddress", centerX - 400, 220, 800, 40);
+    let TF = KDTextField("KDButtplugAddress", centerX - 400, 220, 800, 40, undefined, undefined, "500");
     if (TF.Created) {
 		//@ts-ignore
         TF.Element.placeholder = KDButtplugDefaultAddress;
@@ -186,6 +221,22 @@ function KDDrawButtplugTab(centerX?: number) {
             }
         }
     }
+
+    
+    DrawTextFitKD(TextGet("KDXtoysWebhookID"), 
+    centerX, PIXIHeight - 140, 1200, KDBaseWhite, undefined, undefined, "center");
+
+    TF = KDTextField("KDXToysID", centerX - 400, PIXIHeight - 100, 800, 40, undefined, undefined, "500");
+    if (TF.Created) {
+        ElementValue("KDXToysID", KDXtoysWebhook);
+        TF.Element.oninput = (ev) => {
+            KDXtoysWebhook = ElementValue("KDXToysID") || "";
+            localStorage.setItem("KDXtoysWebhook", KDXtoysWebhook);
+        }
+    }
+
+
+
     DrawTextFitKD(TextGet(KDButtplugClient?.connected ? "KDConnected" : "KDNotConnected"), 
     centerX, 285, 1200, KDButtplugClient?.connected ? KDBaseLightGreen : KDBaseLightGrey, undefined, undefined, "center");
 
@@ -217,7 +268,7 @@ function KDDrawButtplugTab(centerX?: number) {
     let listX = centerX - 500;
     let listY = 480;
     let listW = 1000;
-    let listH = PIXIHeight - listY - 50;
+    let listH = PIXIHeight - listY - 210;
 	if (KDUpdateButtplugList || ShouldUpdateList(listID)) {
         KDUpdateButtplugList = false;
 		PopulateList(listID, 

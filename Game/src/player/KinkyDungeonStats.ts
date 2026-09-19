@@ -503,6 +503,7 @@ function KinkyDungeonInterruptSleep() {
 }
 
 let KDBaseDamageTypes = {
+	shockTypes: ["estim", "electric"],
 	knockbackTypes: ["fire", "electric", "shock", "tickle", "cold", "slash", "grope", "pierce", "soul", "plush", "charm"],
 	knockbackTypesStrong: ["blast", "stun", "crush", "soap", "poison", "pain", "arcane"],
 	arouseTypes: ["grope", "plush", "charm", "happygas"],
@@ -670,6 +671,7 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAl
 		dmgShield: 0,
 		noInterrupt: noInterrupt || Damage.noInterrupt,
 	};
+	
 
 	KDDoPerkDamageTypeChanges(data);
 	let types = ["pain", "electric", "slash", "pierce", "crush", "fire", "ice", "frost", "acid", "arcane", "stun", "blast"];
@@ -802,6 +804,13 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAl
 			} else {
 				KinkyDungeonTeaseLevel += amt * (1 + (0.01 * (KinkyDungeonGoddessRep.Passion + 50) || 0));
 			}
+		}
+
+		if (KDBaseDamageTypes.shockTypes.includes(data.type)) {
+			KDXtoys_Send("shock", {
+				amount: data.dmg + "",
+				data: {},
+			})
 		}
 
 		if (data.distractionTypesWeak.includes(data.type)) {

@@ -1256,15 +1256,9 @@ function KinkyDungeonLoad(): void {
 		zIndex: -115,
 	});
 
-	
-	if (localStorage.getItem("ButtplugConnected")) {
-		KDButtplugServer = localStorage.getItem("ButtplugConnected");
-		setTimeout(() => {
-			KDStartButtplug(true);
-		}, 1000);
 
-		
-	}
+	KDLoadToysIntegration();
+	
 
 	KDStartTime = CommonTime();
 
