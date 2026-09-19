@@ -33347,6 +33347,12 @@ dAdaMasterwork_Masterwork,Do you know how I can get out of Masterwork restraints
 dAdaMasterwork_MasterworkGag,(Struggle in your masterwork restraints)
 rAdaMasterworkMasterwork,"(SPEAKER glares at your body)|Ah! My Masterwork set!|I remember these, they were quite the treat--|er, tricky to get off!|You'll need to collect all five pieces before it unlocks."
 
+dAdaMasterwork_MasterworkQuestion,Have you heard of the rare Masterwork set?
+rAdaMasterworkMasterworkQuestion,"(A smug smile forms across Ada's face)|Ehem~|I'm actually the one who made those~|If you get stuck in one, you'll have to keep wearing it,| at least until you find the rest of the set!"
+
+dAdaMasterwork_Wiggle,(Wiggle and make gagged moans)
+rAdaMasterworkWiggle,"(Ada chuckles)|I'd totally take advantage of you right now if you wanted it,|But I'm quite busy developing, you see..."
+
 dAdaMasterwork_MasterworkUnlock,Can you unlock my Masterwork restraints?
 dAdaMasterwork_MasterworkUnlockGag,(Present your masterwork restraints)
 rAdaMasterworkUnlockFail,"(SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~"

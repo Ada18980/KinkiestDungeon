@@ -4368,6 +4368,24 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			return false;
 		},
 		options: {
+			"MasterworkQuestion": {
+				gagDisabled: true,
+				playertext: "Default",
+				response: "Default",
+				clickFunction: () => {
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true
+			},
+			"Wiggle": {
+				gagRequired: true,
+				playertext: "Default",
+				response: "Default",
+				clickFunction: () => {
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true
+			},
 			"Masterwork": {
 				gag: true,
 				playertext: "Default",
@@ -4375,6 +4393,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: () => {
 					KDGameData.MasterworkIntro = true;
 					return false;
+				},
+				prerequisiteFunction: (gagged, player) => {
+					return KDCountMasterworks(player, true, false) > 0;
 				},
 				leadsToStage: "", dontTouchText: true
 			},
