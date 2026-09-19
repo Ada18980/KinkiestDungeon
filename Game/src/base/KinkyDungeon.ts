@@ -1008,6 +1008,8 @@ function KDLoadToggles() {
 		if (loaded[t] != undefined)
 			KDToggles[t] = loaded[t];
 	}
+
+	KDUpdateButtplug();
 }
 function KDSaveToggles() {
 	localStorage.setItem("KDToggles", JSON.stringify(KDToggles));
@@ -1020,7 +1022,10 @@ function KDSaveToggles() {
 		console.log(e);
 		KDSendMusicToast(TextGet("KDErrorPalettes"));
 	}
+
+	KDUpdateButtplug();
 }
+
 
 async function KDMigrateSaveToNewSystem() {
 	// Refresh saves
@@ -1035,6 +1040,7 @@ async function KDMigrateSaveToNewSystem() {
 		KinkyDungeonDBSave(1, localStorage.getItem('KinkyDungeonSave'));
 	}
 }
+
 
 
 function KDReloadMainData(force: boolean) {
@@ -1250,6 +1256,15 @@ function KinkyDungeonLoad(): void {
 		zIndex: -115,
 	});
 
+	
+	if (localStorage.getItem("ButtplugConnected")) {
+		KDButtplugServer = localStorage.getItem("ButtplugConnected");
+		setTimeout(() => {
+			KDStartButtplug(true);
+		}, 1000);
+
+		
+	}
 
 	KDStartTime = CommonTime();
 
@@ -1335,6 +1350,7 @@ function KinkyDungeonLoad(): void {
 	KinkyDungeonGameKey.load();
 
 	if (!KinkyDungeonIsPlayer()) KinkyDungeonGameRunning = false;
+
 
 	if (!KinkyDungeonGameRunning) {
 		KDReloadMainData(false);
@@ -1605,6 +1621,9 @@ function KinkyDungeonRun() {
 		}
 	}
 
+
+	
+	KDRunButtplug();
 
 	KDJourneyGraphics.clear();
 	KDJourneyGraphicsLower.clear();
@@ -3344,8 +3363,13 @@ function KinkyDungeonRun() {
 	}
 
 
-	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings")) {
-		if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
+	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings") || !KDCurrentKeyBindSet) {
+		if (KDCurrentKeyBindSet && (KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings")) {
+			KinkyDungeonKeybindingsTemp[KDCurrentKeyBindSet] = KinkyDungeonKeybindingCurrentKey;
+			KDCurrentKeyBindSet = "";
+		} else {
+			KDCurrentKeyBindSet = "";
+			if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
 
 			if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) {
 				if (KinkyDungeonKeybindingCurrentKey)
@@ -3365,9 +3389,11 @@ function KinkyDungeonRun() {
 			}*/
 
 
-			if (KinkyDungeonKeybindingCurrentKey)
+			if (KinkyDungeonKeybindingCurrentKey) {
 				KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
+			}
 			KinkyDungeonKeybindingCurrentKey = '';
+		}
 		}
 	}
 
@@ -7786,8 +7812,8 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 		}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Diff"), KDBaseWhite, undefined, undefined, undefined,
 		KinkyDungeonState != "Diff", KDButtonColor, undefined, undefined,
 	{
-			hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
-			hotkeyPress: KinkyDungeonKeySpell[ii],
+			hotkey: KDHotkeyToText(KinkyDungeonKeyTab[ii]),
+			hotkeyPress: KinkyDungeonKeyTab[ii],
 		});
 		ii++;
 		DrawButtonKDEx("TabChallenge", (_b) => {
@@ -7797,8 +7823,8 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 		}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Challenge"), KDBaseWhite, undefined, undefined, undefined,
 		KinkyDungeonState != "Challenge", KDButtonColor, undefined, undefined,
 	{
-			hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
-			hotkeyPress: KinkyDungeonKeySpell[ii],
+			hotkey: KDHotkeyToText(KinkyDungeonKeyTab[ii]),
+			hotkeyPress: KinkyDungeonKeyTab[ii],
 		});
 		ii++;
 		DrawButtonKDEx("TabConsent", (_b) => {
@@ -7809,8 +7835,8 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 		}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Consent"), KDBaseWhite, undefined, undefined, undefined,
 		KinkyDungeonState != "CConsent", KDButtonColor, undefined, undefined,
 	{
-			hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
-			hotkeyPress: KinkyDungeonKeySpell[ii],
+			hotkey: KDHotkeyToText(KinkyDungeonKeyTab[ii]),
+			hotkeyPress: KinkyDungeonKeyTab[ii],
 		});
 		ii++;
 	}
@@ -7878,7 +7904,10 @@ function KDDrawToggleTabs(xOffset: number) {
 			return true;
 		}, true, xOffset + II * w / list.length, 10, w / list.length - 4, 40,
 		TextGet("KDToggleTab" + tab), KDBaseWhite, undefined, undefined, undefined,
-		KDToggleTab != tab, KDButtonColor);
+		KDToggleTab != tab, KDButtonColor, undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySpell[II]),
+			hotkeyPress: KinkyDungeonKeySpell[II],
+		});
 		II++;
 	}
 }
@@ -8175,8 +8204,78 @@ function KDReloadChallenge() {
 
 
 
-let KDCustomToggleTab = {
+let KDCustomToggleTab: Record<string, () => void > = {
+	Keybindings: () => {
+		// Draw temp start screen
+		DrawButtonKDEx("KBBack", () => {
+			KinkyDungeonKeybindings = Object.assign({}, KinkyDungeonKeybindingsTemp);
+			if (KinkyDungeonGameFlag) {
+				KinkyDungeonState = "Game";
+				if (KinkyDungeonKeybindings) {
+					KDCommitKeybindings();
+				}
+			} else KinkyDungeonState = "Menu";
+			localStorage.setItem("KinkyDungeonKeybindings", JSON.stringify(KinkyDungeonKeybindings));
+			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
+			return true;
+		}, true, 1450, 780, 350, 64, TextGet("GameReturnToMenu"), KDBaseWhite, "");
+
+		// Draw temp start screen
+		DrawButtonKDEx("KBBack2", () => {
+			KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindings);
+			if (KinkyDungeonGameFlag) {
+				KinkyDungeonState = "Game";
+			} else KinkyDungeonState = "Menu";
+			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
+			return true;
+		}, true, 1450, 700, 350, 64, TextGet("GameReturnToMenu2"), KDBaseWhite, "");
+
+		// Draw temp start screen
+		DrawButtonKDEx("KDReset", () => {
+			KinkyDungeonKeybindingsTemp = Object.assign({}, KDDefaultKB);
+			return true;
+		}, true, 1450, 500, 350, 64, TextGet("KDResetKeys"), KDBaseWhite, "");
+
+
+		// Draw key buttons
+
+		let maxY = 850;
+
+		let sY = 80;
+
+		let X = 500;
+		let Y = sY;
+		let dX = 300;
+		let dY = 40;
+		let pad = 1;
+		let xpad = 15;
+
+		for (let key of Object.keys(KDDefaultKB)) {
+			let txt = KDOptionFilter ? TextGet("KinkyDungeonKey" + key).toLocaleLowerCase() : "";
+
+			if (KDOptionFilter != "" && !(txt == KDOptionFilter.toLocaleLowerCase() || txt.includes(KDOptionFilter.toLocaleLowerCase())))continue;
+			DrawButtonKDEx("KB" + key, 
+				() => {KDCurrentKeyBindSet = key; return true;}, KinkyDungeonKeybindingCurrentKey != '',
+				X, Y, dX, dY, TextGet("KinkyDungeonKey" + key) + ": '" + (KinkyDungeonKeybindingsTemp[key]) + "'",
+				KinkyDungeonKeybindingsTemp[key] == KinkyDungeonKeybindingCurrentKey ? KDBaseWhite : "#aaaaaa", "", undefined, undefined, true, KDButtonColor);
+
+			Y += dY + pad;
+			if (Y > maxY) {
+				Y = sY;
+				X += dX + xpad;
+			}
+		}
+
+		if (KDCurrentKeyBindSet)
+			DrawTextKD(TextGet("KinkyDungeonCurrentPress") + ": '" + (TextGet("KinkyDungeonKey" + KDCurrentKeyBindSet)) + "'", 1250, 900, KDBaseWhite, KDTextGray2);
+
+		DrawTextKD(TextGet("KinkyDungeonCurrentPressInfo"), 1250, 950, KDBaseWhite, KDTextGray2);
+	
+	}
 };
+
+let KDCurrentKeyBindSet = "";
+
 /** Milliseconds to pause when player is settled in something, to allow clicking to disable wait */
 let KDBaseDelayWaitTime = 1250;
 function KDDelayWaitTime() : number {
@@ -8275,72 +8374,7 @@ function KDTogglesDraw() {
 			KDOptionFilter = ElementValue("OptionFilter");
 		};
 	}
-
-	if (KDToggleTab == "Keybindings") {
-		// Draw temp start screen
-		DrawButtonKDEx("KBBack", () => {
-			KinkyDungeonKeybindings = Object.assign({}, KinkyDungeonKeybindingsTemp);
-			if (KinkyDungeonGameFlag) {
-				KinkyDungeonState = "Game";
-				if (KinkyDungeonKeybindings) {
-					KDCommitKeybindings();
-				}
-			} else KinkyDungeonState = "Menu";
-			localStorage.setItem("KinkyDungeonKeybindings", JSON.stringify(KinkyDungeonKeybindings));
-			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
-			return true;
-		}, true, 1450, 780, 350, 64, TextGet("GameReturnToMenu"), KDBaseWhite, "");
-
-		// Draw temp start screen
-		DrawButtonKDEx("KBBack2", () => {
-			KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindings);
-			if (KinkyDungeonGameFlag) {
-				KinkyDungeonState = "Game";
-			} else KinkyDungeonState = "Menu";
-			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
-			return true;
-		}, true, 1450, 700, 350, 64, TextGet("GameReturnToMenu2"), KDBaseWhite, "");
-
-		// Draw temp start screen
-		DrawButtonKDEx("KDReset", () => {
-			KinkyDungeonKeybindingsTemp = Object.assign({}, KDDefaultKB);
-			return true;
-		}, true, 1450, 500, 350, 64, TextGet("KDResetKeys"), KDBaseWhite, "");
-
-
-		// Draw key buttons
-
-		let maxY = 850;
-
-		let sY = 80;
-
-		let X = 500;
-		let Y = sY;
-		let dX = 300;
-		let dY = 40;
-		let pad = 1;
-		let xpad = 15;
-
-		for (let key of Object.keys(KDDefaultKB)) {
-			let txt = KDOptionFilter ? TextGet("KinkyDungeonKey" + key).toLocaleLowerCase() : "";
-
-			if (KDOptionFilter != "" && !(txt == KDOptionFilter.toLocaleLowerCase() || txt.includes(KDOptionFilter.toLocaleLowerCase())))continue;
-			DrawButtonKDEx("KB" + key, () => {KinkyDungeonKeybindingsTemp[key] = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-				X, Y, dX, dY, TextGet("KinkyDungeonKey" + key) + ": '" + (KinkyDungeonKeybindingsTemp[key]) + "'",
-				KinkyDungeonKeybindingsTemp[key] == KinkyDungeonKeybindingCurrentKey ? KDBaseWhite : "#aaaaaa", "", undefined, undefined, true, KDButtonColor);
-
-			Y += dY + pad;
-			if (Y > maxY) {
-				Y = sY;
-				X += dX + xpad;
-			}
-		}
-
-		if (KinkyDungeonKeybindingCurrentKey)
-			DrawTextKD(TextGet("KinkyDungeonCurrentPress") + ": '" + (KinkyDungeonKeybindingCurrentKey) + "'", 1250, 900, KDBaseWhite, KDTextGray2);
-
-		DrawTextKD(TextGet("KinkyDungeonCurrentPressInfo"), 1250, 950, KDBaseWhite, KDTextGray2);
-	} else if (KDCustomToggleTab[KDToggleTab]) {
+	if (KDCustomToggleTab[KDToggleTab]) {
 		KDCustomToggleTab[KDToggleTab]();
 	} else {
 		if (KDToggleTab == "Main") {

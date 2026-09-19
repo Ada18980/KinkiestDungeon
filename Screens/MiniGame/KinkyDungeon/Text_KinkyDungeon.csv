@@ -57,7 +57,9 @@ KDToggleTabMain,Main
 KDToggleTabUI,UI
 KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
+KDToggleTabButtplug,Buttplug.io
 KDToggleTabMouseShortcuts,Mouse Shortcuts
+KDToggleButtplug,Buttplug.io Integration
 
 KDToggleHypnoOverlay,Hypnosis Screen Wobble
 
@@ -1154,8 +1156,8 @@ KinkyDungeonKeyLog,Journal
 KinkyDungeonKeyRestart,Pause Menu
 KinkyDungeonKeyFacilities,Facilities
 
-KinkyDungeonCurrentPress,"Current Key Pressed"
-KinkyDungeonCurrentPressInfo,"Press a key, then press a button to set that key"
+KinkyDungeonCurrentPress,"Currently Setting: "
+KinkyDungeonCurrentPressInfo,"Select a keybind, then press a button to set that key"
 
 CurrentLevel,"Floor FLOORNUMBER: DUNGEONNAME"
 CurrentGold,""
@@ -34279,3 +34281,13 @@ KDDialogue_ToyPlayChastity_Sub,"I-I know you want release, but you're in this ge
 
 
 KDToggleStruggleScroll,Show Scroll Buttons in Struggle UI
+
+KDButtplugInfo,"Make sure that Intiface Central is installed.\nWith the intiface server running, type your address in the box below and hit 'Connect'.\nDon't forget to start scanning for devices!"
+KDConnect,Connect
+KDDisconnect,Disconnect
+
+KDNotConnected,Not Connected
+KDConnected,Connected!
+KDButtplugDisconnected,"Buttplug has disconnected. Reason: "
+KDButtplugConnected,"Buttplug inserted!"
+KDButtplugFoundDevice,"Found buttplug.io device: "

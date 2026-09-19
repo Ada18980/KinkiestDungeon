@@ -1648,6 +1648,7 @@ function KDDrawInventoryContainer (
 					TF.Element.oninput = (_event: any) => {
 						KDInvFilter = ElementValue("InvFilter");
 					};
+					//@ts-ignore
 					TF.Element.placeholder = TextGet("KDInvFilterLimt")
 						.replace("ITMNS", TextGet("KinkyDungeonCategoryFilter" + CurrentFilter));
 				}

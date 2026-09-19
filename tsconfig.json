@@ -44,6 +44,7 @@
         "Game/src/base/KDAudioDrivers.ts",
         "Game/src/base/KDWebAudio.ts",
         "Game/src/base/KinkyDungeon.ts",
+        "Game/src/base/KDButtplug.ts",
         "Game/src/base/KDRender.ts",
         "Game/src/map/KDMapGen.ts",
         "Game/src/base/game/KinkyDungeonGame.ts",
@@ -266,7 +267,7 @@
         "Game/src/player/KDPlayerTitles.ts"
     ],
     "compilerOptions": {
-        "target": "es2020",
+        "target": "es2022",
         "sourceMap": true,
         "inlineSources": true,
         "outFile": "./out/main.js",
@@ -280,11 +281,14 @@
 
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "lib": ["DOM", "ES2020"],
+        "lib": ["DOM", "ESNext.Disposable", "ES2022"],
         "strictNullChecks": false,
         "noImplicitAny": false,
     },
     "watchOptions": {
         "excludeDirectories": ["**/node_modules", "_build"],
-    }
+    },
+    "include": [
+        "Scripts/lib/buttplug.d.ts"
+    ]
 }

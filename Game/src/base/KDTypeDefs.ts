@@ -20,6 +20,7 @@ interface KDOutfitMetadata {
 
 interface FactionFilterDef {color: string, override?: boolean, desaturate?: boolean};
 
+
 /** Kinky Dungeon Typedefs*/
 interface item extends NamedAndTyped {
 	/** Which NPC its on */
@@ -4476,6 +4477,8 @@ declare const PIXI: typeof import('pixi.js') & typeof import('pixi.js-legacy') &
 	// But that doesn't work, and this does.
 	filters: typeof import('pixi-filters'),
 };
+
+
 
 // We can't refer to a type as `PIXI.Container`, nor `typeof PIXI.Container`, but `import(pixi.js).Container` does work
 type PIXIContainer = import('pixi.js').Container;

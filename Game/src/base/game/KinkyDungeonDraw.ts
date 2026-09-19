@@ -3766,6 +3766,8 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 				wordWrapWidth: Params.Width,
 				breakWords: Params.wordwrap && CharacterCheckerHasCJK(Params.Text), // Ensure that CJK characters can wrap word.
 				lineHeight: Params.lineHeight,
+				//@ts-ignore
+				align: Params?.align
 			}
 		);
 
@@ -5997,8 +5999,9 @@ function KDTextArea(Name: string, Left: number, Top: number, Width: number, Heig
  * @param [MaxLength]
  * @param [TextSize]
  */
-function KDTextField(Name: string, Left: number, Top: number, Width: number, Height: number, Type: string = "text", Value: string = "", MaxLength: string = "30", TextSize?: number) {
-	let Element = KDTempElements.get(Name);
+function KDTextField(Name: string, Left: number, Top: number, Width: number, Height: number, Type: string = "text", Value: string = "", MaxLength: string = "30",
+	TextSize?: number) {
+	let Element: HTMLElement | any = KDTempElements.get(Name);
 	let created = false;
 	if (!Element) {
 		ElementCreateInput(Name, Type, Value, MaxLength);

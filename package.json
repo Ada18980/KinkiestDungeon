@@ -10,17 +10,21 @@
         "buildTypes": "tsc --declaration --emitDeclarationOnly --removeComments false",
         "serve": "http-server",
         "pack": "python tools/pack.py",
-		"forcepack": "python tools/pack.py rc"
+        "forcepack": "python tools/pack.py rc"
     },
     "author": "Ada18980",
     "license": "All Rights Reserved",
     "private": true,
     "devDependencies": {
         "@typescript/lib-dom": "npm:@types/web@^0.0.151",
+        "esbuild": "^0.28.2",
         "http-server": "^14.1.1",
         "pixi-filters": "5.2.0",
         "pixi.js": "^7.2.1",
         "pixi.js-legacy": "^7.2.1",
         "typescript": "^5.6.0"
+    },
+    "dependencies": {
+        "@zendrex/buttplug.js": "^0.5.0"
     }
 }

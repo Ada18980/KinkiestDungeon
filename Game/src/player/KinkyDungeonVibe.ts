@@ -205,6 +205,7 @@ let KDToggles = {
 	ArrowWarnings: true,
 	CenteredLog: false,
 	StruggleScroll: !CommonIsMobile,
+	Buttplug: false,
 };
 
 
