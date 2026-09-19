@@ -208,11 +208,16 @@ class WebAudioWrapper {
 		if (value == 0) this.startTime = 0;
 		else this.startTime = KDWebAudio.currentTime + value;
 	}
-	listener = null;
+	listeners = null;
 	public addEventListener(type, listener) {
 		if (type == 'ended') {
-			this.listener = listener;
-			this.node.then((node) => {node.onended = listener});
+			if (!this.listeners) this.listeners = [];
+			this.listeners.push(listener);
+			this.node.then((node) => {node.onended = () => {
+				for (let l of this.listeners) {
+					l();
+				}
+			}});
 
 		} else {
 			this.node.then((node) => node.addEventListener(type, listener));
@@ -279,6 +284,7 @@ class WebAudioWrapper {
 	}
 
 	end() {
+		if (this.ended) return;
 		this.ended = true;
 		if (this.node != null)
 			this.node.then((node) => {
@@ -321,7 +327,7 @@ class WebAudioWrapper {
 
     set temp(value: boolean) {
 		let wrapper = this;
-		if (value) this.listener = () => {wrapper.end()};
+		if (value) this.listeners = [() => {wrapper.end()}];
     }
 
 	async getNode(): Promise<AudioBufferSourceNode> {
@@ -339,12 +345,18 @@ class WebAudioWrapper {
 					buffer: buffer
 				});
 				let wrapper = this;
-				if (this.listener) {
-					node.onended = this.listener;
+				if (this.listeners) {
+					node.onended = () => {
+						for (let l of this.listeners) {
+							l();
+						}
+						this.end();
+					};
 				} else node.onended = () => {
 					if (KDWebAudioSFXVoices.has(wrapper)) {
 						KDWebAudioSFXVoices.delete(wrapper)
 					}
+					this.end();
 				};
 
 				if (this.reverbMult) {

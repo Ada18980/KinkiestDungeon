@@ -284,6 +284,9 @@
         "lib": ["DOM", "ESNext.Disposable", "ES2022"],
         "strictNullChecks": false,
         "noImplicitAny": false,
+        "paths": {
+            "@zendrex/buttplug.js/patterns": ["./node_modules/@zendrex/buttplug.js/dist/patterns/index.d.mts"]
+        }
     },
     "watchOptions": {
         "excludeDirectories": ["**/node_modules", "_build"],

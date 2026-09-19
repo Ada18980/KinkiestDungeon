@@ -34289,5 +34289,13 @@ KDDisconnect,Disconnect
 KDNotConnected,Not Connected
 KDConnected,Connected!
 KDButtplugDisconnected,"Buttplug has disconnected. Reason: "
-KDButtplugConnected,"Buttplug inserted!"
-KDButtplugFoundDevice,"Found buttplug.io device: "
+KDButtplugConnected,"Buttplug.io library inserted!"
+KDButtplugFoundDevice,"Buttplug.io device inserted: "
+KDButtplugLostDevice,"Buttplug.io device removed: "
+KDButtplugLowBattery,"Buttplug.io device ${DEVICE} has low battery"
+
+KDButtplugCategory_Battery,Battery
+KDButtplugCategory_ItemButt,Rear
+KDButtplugCategory_ItemVulva,Front
+KDButtplugCategory_ItemNipples,Nipples
+

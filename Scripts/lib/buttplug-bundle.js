@@ -827,8 +827,8 @@
     const end = source.endsWith("$") ? source.length - 1 : source.length;
     return source.slice(start, end);
   }
-  function floatSafeRemainder(val, step) {
-    const ratio = val / step;
+  function floatSafeRemainder(val, step2) {
+    const ratio = val / step2;
     const roundedRatio = Math.round(ratio);
     const tolerance = 4 * Number.EPSILON * Math.max(Math.abs(ratio), 1);
     if (Math.abs(ratio - roundedRatio) < tolerance)
@@ -22224,6 +22224,583 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
     }
   };
 
+  // node_modules/@zendrex/buttplug.js/dist/patterns/index.mjs
+  var patterns_exports = {};
+  __export(patterns_exports, {
+    EASING_FUNCTIONS: () => EASING_FUNCTIONS,
+    EASING_VALUES: () => EASING_VALUES,
+    PRESETS: () => PRESETS,
+    PRESET_NAMES: () => PRESET_NAMES,
+    PatternEngine: () => PatternEngine,
+    listPresets: () => listPresets
+  });
+  var EASING_VALUES = [
+    "linear",
+    "easeIn",
+    "easeOut",
+    "easeInOut",
+    "step"
+  ];
+  var EasingSchema = external_exports.enum(EASING_VALUES);
+  var clamp = (t) => Math.min(1, Math.max(0, t));
+  var linear = (t) => clamp(t);
+  var easeIn = (t) => clamp(t) ** 3;
+  var easeOut = (t) => 1 - (1 - clamp(t)) ** 3;
+  var easeInOut = (t) => {
+    const c = clamp(t);
+    return c < 0.5 ? 4 * c ** 3 : 1 - (-2 * c + 2) ** 3 / 2;
+  };
+  var step = (t) => clamp(t) < 1 ? 0 : 1;
+  var EASING_FUNCTIONS = {
+    linear,
+    easeIn,
+    easeOut,
+    easeInOut,
+    step
+  };
+  var PRESET_NAMES = [
+    "pulse",
+    "wave",
+    "ramp_up",
+    "ramp_down",
+    "heartbeat",
+    "surge",
+    "stroke"
+  ];
+  var PresetPatternSchema = external_exports.object({
+    type: external_exports.literal("preset"),
+    preset: external_exports.enum(PRESET_NAMES),
+    intensity: external_exports.number().min(0).max(1).optional(),
+    speed: external_exports.number().min(0.25).max(4).optional(),
+    loop: external_exports.union([external_exports.boolean(), external_exports.number().int().positive()]).optional()
+  });
+  var MOTOR_OUTPUT_TYPES = [
+    "Vibrate",
+    "Rotate",
+    "RotateWithDirection",
+    "Oscillate",
+    "Constrict"
+  ];
+  var PRESETS = {
+    pulse: {
+      description: "Square wave on/off",
+      outputTypes: MOTOR_OUTPUT_TYPES,
+      tracks: [[
+        {
+          value: 0,
+          duration: 0
+        },
+        {
+          value: 1,
+          duration: 0
+        },
+        {
+          value: 1,
+          duration: 500
+        },
+        {
+          value: 0,
+          duration: 0
+        },
+        {
+          value: 0,
+          duration: 500
+        }
+      ]],
+      loop: true
+    },
+    wave: {
+      description: "Smooth sine wave oscillation",
+      outputTypes: MOTOR_OUTPUT_TYPES,
+      tracks: [[
+        {
+          value: 0,
+          duration: 0
+        },
+        {
+          value: 0.5,
+          duration: 500,
+          easing: "easeInOut"
+        },
+        {
+          value: 1,
+          duration: 500,
+          easing: "easeInOut"
+        },
+        {
+          value: 0.5,
+          duration: 500,
+          easing: "easeInOut"
+        },
+        {
+          value: 0,
+          duration: 500,
+          easing: "easeInOut"
+        }
+      ]],
+      loop: true
+    },
+    ramp_up: {
+      description: "Gradual increase to maximum",
+      outputTypes: MOTOR_OUTPUT_TYPES,
+      tracks: [[{
+        value: 0,
+        duration: 0
+      }, {
+        value: 1,
+        duration: 3e3,
+        easing: "easeIn"
+      }]],
+      loop: false
+    },
+    ramp_down: {
+      description: "Gradual decrease to zero",
+      outputTypes: MOTOR_OUTPUT_TYPES,
+      tracks: [[{
+        value: 1,
+        duration: 0
+      }, {
+        value: 0,
+        duration: 3e3,
+        easing: "easeOut"
+      }]],
+      loop: false
+    },
+    heartbeat: {
+      description: "Ba-bump heartbeat rhythm",
+      outputTypes: MOTOR_OUTPUT_TYPES,
+      tracks: [[
+        {
+          value: 0,
+          duration: 0
+        },
+        {
+          value: 1,
+          duration: 0
+        },
+        {
+          value: 1,
+          duration: 100
+        },
+        {
+          value: 0.3,
+          duration: 50
+        },
+        {
+          value: 0.8,
+          duration: 0
+        },
+        {
+          value: 0.8,
+          duration: 100
+        },
+        {
+          value: 0,
+          duration: 0
+        },
+        {
+          value: 0,
+          duration: 750
+        }
+      ]],
+      loop: true
+    },
+    surge: {
+      description: "Build to peak then release",
+      outputTypes: MOTOR_OUTPUT_TYPES,
+      tracks: [[
+        {
+          value: 0.1,
+          duration: 0
+        },
+        {
+          value: 0.7,
+          duration: 2e3,
+          easing: "easeIn"
+        },
+        {
+          value: 1,
+          duration: 500
+        },
+        {
+          value: 1,
+          duration: 1e3
+        },
+        {
+          value: 0.1,
+          duration: 1500,
+          easing: "easeOut"
+        }
+      ]],
+      loop: false
+    },
+    stroke: {
+      description: "Full-range position strokes",
+      outputTypes: ["Position", "HwPositionWithDuration"],
+      tracks: [[
+        {
+          value: 0,
+          duration: 0,
+          easing: "easeInOut"
+        },
+        {
+          value: 1,
+          duration: 1e3,
+          easing: "easeInOut"
+        },
+        {
+          value: 0,
+          duration: 1e3,
+          easing: "easeInOut"
+        }
+      ]],
+      loop: true
+    }
+  };
+  function listPresets() {
+    return Object.entries(PRESETS).map(([name, def]) => ({
+      name,
+      description: def.description,
+      outputTypes: def.outputTypes,
+      defaultLoop: def.loop
+    }));
+  }
+  function resolveTracks(device, descriptor, featureIndex) {
+    if (descriptor.type === "preset") return resolvePresetTracks(device, descriptor, featureIndex);
+    return resolveCustomTracks(device, descriptor);
+  }
+  function resolvePresetTracks(device, descriptor, featureIndex) {
+    const preset = PRESETS[descriptor.preset];
+    if (!preset) throw new DeviceError(device.index, `Unknown preset: ${descriptor.preset}`);
+    const intensity = descriptor.intensity ?? 1;
+    const speed = descriptor.speed ?? 1;
+    const matchingFeatures = [];
+    for (const outputType of preset.outputTypes) {
+      const features = outputsByType(device.features, outputType);
+      for (const feature of features) if (featureIndex === void 0 || feature.index === featureIndex) matchingFeatures.push({
+        feature,
+        outputType
+      });
+    }
+    if (featureIndex !== void 0 && matchingFeatures.length === 0) throw new DeviceError(device.index, `Feature at index ${featureIndex} is not compatible with preset "${descriptor.preset}"`);
+    const tracks = [];
+    for (const [i, match] of matchingFeatures.entries()) {
+      const presetTrack = preset.tracks[i % preset.tracks.length];
+      if (!presetTrack) continue;
+      const keyframes = presetTrack.map((kf) => ({
+        value: kf.value * intensity,
+        duration: speed > 0 ? kf.duration / speed : kf.duration,
+        easing: kf.easing ?? "linear"
+      }));
+      tracks.push({
+        featureIndex: match.feature.index,
+        outputType: match.outputType,
+        keyframes,
+        range: match.feature.range,
+        durationRange: match.feature.durationRange,
+        clockwise: true
+      });
+    }
+    return tracks;
+  }
+  function resolveCustomTracks(device, descriptor) {
+    const intensity = descriptor.intensity ?? 1;
+    const tracks = [];
+    for (const track of descriptor.tracks) {
+      const feature = track.outputType ? device.features.outputs.find((f) => f.index === track.featureIndex && f.type === track.outputType) : device.features.outputs.find((f) => f.index === track.featureIndex);
+      if (!feature) throw new DeviceError(device.index, `No output feature at index ${track.featureIndex}${track.outputType ? ` with type "${track.outputType}"` : ""}`);
+      const keyframes = track.keyframes.map((kf) => ({
+        value: kf.value * intensity,
+        duration: kf.duration,
+        easing: kf.easing ?? "linear"
+      }));
+      tracks.push({
+        featureIndex: feature.index,
+        outputType: feature.type,
+        keyframes,
+        range: feature.range,
+        durationRange: feature.durationRange,
+        clockwise: track.clockwise ?? true
+      });
+    }
+    return tracks;
+  }
+  function interpolateKeyframes(keyframes, elapsed) {
+    let accumulated = 0;
+    const first = keyframes[0];
+    if (!first) return 0;
+    let value = first.value;
+    for (const kf of keyframes) {
+      if (kf.duration === 0) {
+        if (elapsed >= accumulated) value = kf.value;
+        continue;
+      }
+      const prevValue = value;
+      if (elapsed < accumulated + kf.duration) {
+        const t = (elapsed - accumulated) / kf.duration;
+        return clampNormalized(prevValue + (kf.value - prevValue) * EASING_FUNCTIONS[kf.easing](t));
+      }
+      accumulated += kf.duration;
+      value = kf.value;
+    }
+    return clampNormalized(value);
+  }
+  function buildScalarCommand(track, value, deviceIndex) {
+    if (track.outputType === "RotateWithDirection") return { RotateWithDirection: {
+      Value: value,
+      Clockwise: track.clockwise
+    } };
+    if (track.outputType === "HwPositionWithDuration") throw new DeviceError(deviceIndex, `Unsupported output type in pattern: ${track.outputType}`);
+    return { [track.outputType]: { Value: value } };
+  }
+  function cycleDuration(tracks) {
+    let max = 0;
+    for (const track of tracks) {
+      let total = 0;
+      for (const kf of track.keyframes) total += kf.duration;
+      if (total > max) max = total;
+    }
+    return max;
+  }
+  function evaluateScalarTrack(state, track, elapsed, device, onError) {
+    const { keyframes, featureIndex, range } = track;
+    const mapped = mapToRange(interpolateKeyframes(keyframes, elapsed), range);
+    if (state.lastSentValues.get(featureIndex) === mapped) return;
+    const command = buildScalarCommand(track, mapped, state.deviceIndex);
+    device.output({
+      featureIndex,
+      command
+    }).catch((err) => {
+      state.lastSentValues.delete(featureIndex);
+      onError(err);
+    });
+    state.lastSentValues.set(featureIndex, mapped);
+  }
+  function evaluatePositionTrack(state, track, elapsed, device, onError) {
+    const { keyframes, featureIndex, range, durationRange } = track;
+    let accumulated = 0;
+    let activeIndex = 0;
+    for (const [i, kf2] of keyframes.entries()) {
+      if (kf2.duration === 0 && elapsed >= accumulated) {
+        if (state.lastSentKeyframeIndex.get(featureIndex) !== i) {
+          const command2 = { HwPositionWithDuration: {
+            Position: mapToRange(kf2.value, range),
+            Duration: 0
+          } };
+          device.output({
+            featureIndex,
+            command: command2
+          }).catch((err) => onError(err));
+          state.lastSentKeyframeIndex.set(featureIndex, i);
+        }
+        activeIndex = i;
+        continue;
+      }
+      if (elapsed < accumulated + kf2.duration) {
+        activeIndex = i;
+        break;
+      }
+      accumulated += kf2.duration;
+      activeIndex = i;
+    }
+    const kf = keyframes[activeIndex];
+    if (!kf || kf.duration === 0) return;
+    if (state.lastSentKeyframeIndex.get(featureIndex) === activeIndex) return;
+    const mappedValue = mapToRange(kf.value, range);
+    let duration3 = kf.duration;
+    if (durationRange) duration3 = Math.max(durationRange[0], Math.min(durationRange[1], duration3));
+    const command = { HwPositionWithDuration: {
+      Position: mappedValue,
+      Duration: duration3
+    } };
+    device.output({
+      featureIndex,
+      command
+    }).catch((err) => onError(err));
+    state.lastSentKeyframeIndex.set(featureIndex, activeIndex);
+  }
+  var KeyframeSchema = external_exports.object({
+    value: external_exports.number().min(0).max(1),
+    duration: external_exports.number().int().nonnegative(),
+    easing: EasingSchema.optional()
+  });
+  var TrackSchema = external_exports.object({
+    featureIndex: external_exports.number().int().nonnegative(),
+    keyframes: external_exports.array(KeyframeSchema).min(1),
+    clockwise: external_exports.boolean().optional(),
+    outputType: OutputTypeSchema.optional()
+  });
+  var CustomPatternSchema = external_exports.object({
+    type: external_exports.literal("custom"),
+    tracks: external_exports.array(TrackSchema).min(1),
+    intensity: external_exports.number().min(0).max(1).optional(),
+    loop: external_exports.union([external_exports.boolean(), external_exports.number().int().positive()]).optional()
+  });
+  var PatternDescriptorSchema = external_exports.discriminatedUnion("type", [PresetPatternSchema, CustomPatternSchema]);
+  var PatternEngine = class PatternEngine2 {
+    static DEFAULT_TIMEOUT_MS = 18e5;
+    static DEFAULT_TICK_INTERVAL_MS = 50;
+    client;
+    patterns = /* @__PURE__ */ new Map();
+    defaultTimeout;
+    unsubDisconnect;
+    unsubDeviceRemoved;
+    disposed = false;
+    constructor(client, options) {
+      this.client = client;
+      this.defaultTimeout = options?.defaultTimeout ?? PatternEngine2.DEFAULT_TIMEOUT_MS;
+      this.unsubDisconnect = client.on("connection.disconnected", () => {
+        this.stopMatchingPatterns("disconnect");
+      });
+      this.unsubDeviceRemoved = client.on("device.removed", ({ data: { device } }) => {
+        this.stopMatchingPatterns("deviceRemoved", device.index);
+      });
+    }
+    play(target, pattern, options) {
+      const deviceIndex = typeof target === "number" ? target : target.index;
+      if (this.disposed) throw new DeviceError(deviceIndex, "PatternEngine has been disposed");
+      const descriptor = this.buildDescriptor(pattern, options);
+      const parsed = PatternDescriptorSchema.parse(descriptor);
+      const resolvedDevice = typeof target === "number" ? this.client.getDevice(target) : target;
+      if (!resolvedDevice) throw new DeviceError(deviceIndex, `Device at index ${deviceIndex} not found`);
+      const tracks = resolveTracks(resolvedDevice, parsed, options?.featureIndex);
+      if (tracks.length === 0) throw new DeviceError(deviceIndex, "No compatible features found on device");
+      for (const state2 of this.patterns.values()) if (state2.deviceIndex === deviceIndex) this.stopPattern(state2, "manual");
+      const presetDefaultLoop = parsed.type === "preset" ? PRESETS[parsed.preset].loop : false;
+      const loop = parsed.loop ?? presetDefaultLoop;
+      let remainingLoops;
+      if (loop === true) remainingLoops = Number.POSITIVE_INFINITY;
+      else if (typeof loop === "number") remainingLoops = loop;
+      else remainingLoops = 1;
+      const id = crypto.randomUUID();
+      const tickInterval = options?.tickInterval ?? PatternEngine2.DEFAULT_TICK_INTERVAL_MS;
+      const now = performance.now();
+      const state = {
+        id,
+        deviceIndex,
+        descriptor: parsed,
+        tracks,
+        loop,
+        remainingLoops,
+        startedAt: now,
+        stopped: false,
+        timerId: null,
+        safetyTimerId: null,
+        tickInterval,
+        expectedTickTime: now,
+        lastSentValues: /* @__PURE__ */ new Map(),
+        lastSentKeyframeIndex: /* @__PURE__ */ new Map(),
+        options: options ?? {}
+      };
+      this.patterns.set(id, state);
+      const timeout = options?.timeout ?? this.defaultTimeout;
+      if (timeout > 0) state.safetyTimerId = setTimeout(() => this.stopPattern(state, "timeout"), timeout);
+      state.timerId = setTimeout(() => this.tick(state, resolvedDevice), 0);
+      return Promise.resolve(id);
+    }
+    stop(patternId) {
+      const state = this.patterns.get(patternId);
+      if (!state) return Promise.resolve();
+      this.stopPattern(state, "manual");
+      return Promise.resolve();
+    }
+    stopAll() {
+      return this.stopMatchingPatterns("manual");
+    }
+    stopByDevice(deviceIndex) {
+      return this.stopMatchingPatterns("manual", deviceIndex);
+    }
+    dispose() {
+      if (this.disposed) return;
+      this.disposed = true;
+      this.unsubDisconnect();
+      this.unsubDeviceRemoved();
+      this.stopMatchingPatterns("manual");
+    }
+    list() {
+      const now = performance.now();
+      return [...this.patterns.values()].map((state) => ({
+        id: state.id,
+        deviceIndex: state.deviceIndex,
+        featureIndices: state.tracks.map((t) => t.featureIndex),
+        descriptor: state.descriptor,
+        startedAt: state.startedAt,
+        elapsed: now - state.startedAt
+      }));
+    }
+    listPresets() {
+      return listPresets();
+    }
+    tick(state, device) {
+      if (state.stopped) return;
+      const now = performance.now();
+      const elapsed = now - state.startedAt;
+      const duration3 = cycleDuration(state.tracks);
+      const cycleComplete = duration3 > 0 && elapsed >= duration3;
+      const cycleElapsed = cycleComplete ? duration3 : elapsed;
+      const onError = (err) => this.handleOutputError(state, err);
+      for (const track of state.tracks) if (track.outputType === "HwPositionWithDuration") evaluatePositionTrack(state, track, cycleElapsed, device, onError);
+      else evaluateScalarTrack(state, track, cycleElapsed, device, onError);
+      if (cycleComplete) if (state.remainingLoops === Number.POSITIVE_INFINITY) {
+        state.startedAt += duration3;
+        state.lastSentKeyframeIndex.clear();
+      } else if (state.remainingLoops > 1) {
+        state.remainingLoops--;
+        state.startedAt += duration3;
+        state.lastSentKeyframeIndex.clear();
+      } else {
+        this.stopPattern(state, "complete", true);
+        return;
+      }
+      const drift = now - state.expectedTickTime;
+      const nextDelay = Math.max(0, state.tickInterval - drift);
+      state.expectedTickTime = now + nextDelay;
+      state.timerId = setTimeout(() => this.tick(state, device), nextDelay);
+    }
+    handleOutputError(state, err) {
+      if (err instanceof DeviceError || err instanceof ProtocolError) this.stopPattern(state, "error");
+    }
+    buildDescriptor(pattern, options) {
+      if (typeof pattern === "string") return {
+        type: "preset",
+        preset: pattern,
+        intensity: options?.intensity,
+        speed: options?.speed,
+        loop: options?.loop
+      };
+      if (Array.isArray(pattern)) return {
+        type: "custom",
+        tracks: pattern,
+        intensity: options?.intensity,
+        loop: options?.loop
+      };
+      return pattern;
+    }
+    stopMatchingPatterns(reason, deviceIndex) {
+      const patterns = deviceIndex === void 0 ? [...this.patterns.values()] : [...this.patterns.values()].filter((s) => s.deviceIndex === deviceIndex);
+      for (const state of patterns) this.stopPattern(state, reason);
+      return patterns.length;
+    }
+    stopPattern(state, reason, complete = false) {
+      if (state.stopped) return;
+      state.stopped = true;
+      if (state.timerId !== null) {
+        clearTimeout(state.timerId);
+        state.timerId = null;
+      }
+      if (state.safetyTimerId !== null) {
+        clearTimeout(state.safetyTimerId);
+        state.safetyTimerId = null;
+      }
+      this.patterns.delete(state.id);
+      const device = this.client.getDevice(state.deviceIndex);
+      if (device) for (const track of state.tracks) device.stop({ featureIndex: track.featureIndex }).catch(() => void 0);
+      if (complete) state.options.onComplete?.(state.id);
+      state.options.onStop?.(state.id, reason);
+    }
+  };
+
   // Scripts/lib/buttplug-entry.ts
   globalThis.Buttplug = dist_exports;
+  globalThis.ButtplugPatterns = patterns_exports;
 })();

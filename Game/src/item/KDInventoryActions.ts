@@ -68,7 +68,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 						if (KDDebugLink) {
 							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 						} else {
-							if (!currentItem) return true;
+							if (!currentItem) return !KDGroupBlocked(KDRestraint(newItem).Group);
 							//linkable = KDCurrentItemLinkable(currentItem, newItem);
 							linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
 

@@ -125,7 +125,8 @@ function KDScrollScrollableLists(mouseX: number, mouseY: number, scrollAmount: n
 	if (highest) {
 		let list = KDScrollableListDataset[highest];
 		if (list) {
-			return KDScrollScrollableList(highest, scrollAmount)
+			KDScrollScrollableList(highest, scrollAmount)
+			return true;
 		}
 	}
 	return false;

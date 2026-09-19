@@ -218,7 +218,8 @@ function KDDrawProgressList(xOffset) {
                 : null),
             });
         return KDCurrentProgressMainSelection == item.name;
-    }, undefined, horizontal, undefined, undefined, hotkeyUp, hotkeyDown);
+    }, undefined, horizontal, undefined, undefined, 
+    hotkeyUp, hotkeyDown);
 
     if (drawn?.drawType && KDProgressDrawTypes[drawn.drawType]) {
         KDProgressDrawTypes[drawn.drawType](kdcanvas, 0, "MainProgressDraw", drawn, drawn.drawData, horizontal ? x + xOffset : (x + xOffset + wList + wpad),

@@ -8203,7 +8203,9 @@ function KDReloadChallenge() {
 }
 
 
-
+let KDDontDrawToggleFilter: Record<string, boolean> = {
+	Buttplug: true,
+};
 let KDCustomToggleTab: Record<string, () => void > = {
 	Keybindings: () => {
 		// Draw temp start screen
@@ -8364,16 +8366,20 @@ function KDResetPlayerTags(player?: entity) {
 function KDTogglesDraw() {
 	KDDrawToggleTabs(500);
 
-	DrawTextFitKD(
-		TextGet("KDOptionFilter"),
-		700, 890, 300, KDBaseWhite, KDTextGray0, 18, "center");
-	let TF = KDTextField("OptionFilter", 550, 910,  300, 45, "text", "", "45");
-	if (TF.Created) {
-		KDOptionFilter = "";
-		TF.Element.oninput = (_event: any) => {
-			KDOptionFilter = ElementValue("OptionFilter");
-		};
+	if (!KDDontDrawToggleFilter[KDToggleTab]) {
+		DrawTextFitKD(
+			TextGet("KDOptionFilter"),
+			700, 890, 300, KDBaseWhite, KDTextGray0, 18, "center");
+		let TF = KDTextField("OptionFilter", 550, 910,  300, 45, "text", "", "45");
+		if (TF.Created) {
+			KDOptionFilter = "";
+			TF.Element.oninput = (_event: any) => {
+				KDOptionFilter = ElementValue("OptionFilter");
+			};
+		}
+
 	}
+	
 	if (KDCustomToggleTab[KDToggleTab]) {
 		KDCustomToggleTab[KDToggleTab]();
 	} else {
