@@ -8,6 +8,8 @@ let KDGenMapCallback: () => string = null;
 let KDOptionFilter = "";
 let KDConsentFilter = "";
 let LaunchedMenu = false;
+/** Listing pronouns depends on the language atm */
+let KDLanguagesThatShowPronoun = ['', 'EN'];
 
 
 // Modders look here!
@@ -5342,8 +5344,9 @@ function KDDrawLoadMenu() {
 		// Player Name and Class
 		DrawTextFitKD(loadedSaveforPreview.KDGameData.PlayerName, CombarXX + 680, YYstart + 630, 400, KDBaseWhite, undefined, 40);
 		
-		DrawTextFitKD(TextGet("KDPronoun_" + (loadedSaveforPreview.KDGameData.PlayerPronoun || "")), 
-			CombarXX + 680, YYstart + 650, 400, KDBaseWhite, undefined, 12);
+		if (KDLanguagesThatShowPronoun.includes(TranslationLanguage))
+			DrawTextFitKD(TextGet("KDPronoun_" + (loadedSaveforPreview.KDGameData.PlayerPronoun || "")), 
+				CombarXX + 680, YYstart + 650, 400, KDBaseWhite, undefined, 12);
 		if (loadedSaveforPreview.KDGameData.Class)
 			DrawTextFitKD(
 				TextGet("KinkyDungeonStatMC_" + loadedSaveforPreview.KDGameData.Class),

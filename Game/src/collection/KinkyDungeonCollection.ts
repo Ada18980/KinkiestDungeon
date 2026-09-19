@@ -673,8 +673,10 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			let II = -2;
 			DrawTextFitKD(TextGet("KDCollectionInfo_Type") + TextGet("Name" + enemyType.name), x + 20, 
 			y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
-			DrawTextFitKD(TextGet("KDCollectionInfo_Pronouns") + TextGet("KDPronoun_" + (value.pronoun || "")), 
-			x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
+			
+			if (KDLanguagesThatShowPronoun.includes(TranslationLanguage))
+				DrawTextFitKD(TextGet("KDCollectionInfo_Pronouns") + TextGet("KDPronoun_" + (value.pronoun || "")), 
+				x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 
 			if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.has(value.Faction)))
 				DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), 

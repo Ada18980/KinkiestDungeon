@@ -754,7 +754,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		noplay: true,
 		// This is the basic leash to jail mechanic
 		weight: (_enemy, _aiData, _allied, _hostile, _aggressive) => {
-			return 100;
+			return KDCanDoBasicCapture(_enemy, _aiData, _allied, _hostile, _aggressive) ? 100 : 0;
 		},
 		trigger: (enemy, _aiData) => {
 			enemy.playWithPlayer = 0;
@@ -791,7 +791,13 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		)
 				&& !KDEnemyHasFlag(enemy, "dontChase")) ?
 				((KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])
-					&& !KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"])) ? 0 : 100)
+					&& !KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"])) ? 0 : (
+
+						KDCanDoBasicCapture(enemy, aiData, 
+							_allied, hostile, _aggressive) ? 100 : 0
+
+
+					))
 			: 0;
 		},
 		trigger: (enemy, _aiData) => {
@@ -1595,7 +1601,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		weight: (enemy, _aiData, _allied, hostile, _aggressive) => {
 			if (enemy.faction == "Player") return 0;
 			if (enemy.factionorig == "Player") return 0;
-			return hostile && (enemy.Enemy.tags.leashing && enemy.Enemy.tags.demon) && KDPlayerLeashed(KinkyDungeonPlayerEntity) ? 2000 : 0;
+			return KDCanCaptureDemon(enemy, _aiData, _allied, hostile, _aggressive) ? 200000 : 0;
 		},
 		trigger: (enemy, _aiData) => {
 			let point = KinkyDungeonGetRandomEnemyPointCriteria((x,y) => {
@@ -1922,4 +1928,14 @@ function KDIsInNonLeashableFurniture(player: entity) {
 		});
 	}
 	return false;
+}
+
+function KDCanCaptureDemon(enemy: entity, aiData: KDEventDataBoolean, allied: boolean, hostile: boolean, aggressive: boolean) {
+	return hostile && (enemy.Enemy.tags.leashing && enemy.Enemy.tags.demon) && KDPlayerLeashed(KinkyDungeonPlayerEntity);
+}
+
+/** Filters off if an enemy can do a special capture type, like demons, and prevents regular capture */
+function KDCanDoBasicCapture(enemy: entity, aiData: KDEventDataBoolean, allied: boolean, hostile: boolean, aggressive: boolean) {
+	if (KDCanCaptureDemon(enemy, aiData, allied, hostile, aggressive)) return false;
+	return true;
 }
