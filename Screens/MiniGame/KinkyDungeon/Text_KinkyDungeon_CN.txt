@@ -2564,6 +2564,7 @@ Devious Dungeon Challenge 已启用。
 - Dark Passageway
 黑暗通道
 # :: DungeonNameElevatorEgyptian
+# :: DungeonNameElevatorEgyptian2
 # :: KDSideRoom_ElevatorEgyptian
 # :: KDSideRoom_ElevatorEgyptian2
 - Caldera Beach
