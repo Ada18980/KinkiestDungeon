@@ -2516,12 +2516,12 @@ function KinkyDungeonDrawGame() {
 				KDContextMenu = false;
 			} else if ((KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage")
 					&& (KDCollectionTab || KDCurrentRestrainingTarget || KDCurrentFacilityTarget)) {
-				KDResetCollectionScreen();
 				if (KDCurrentFacilityTarget) {
 					KDCurrentFacilityTarget = "";
 					KDFacilityCollectionCallback = null;
 					KDGoToScreen("Facilities");
 				}
+				KDResetCollectionScreen();
 				KDCurrentRestrainingTarget = 0;
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';

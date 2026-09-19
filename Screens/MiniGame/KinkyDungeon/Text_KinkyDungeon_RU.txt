@@ -9331,7 +9331,7 @@ Dооr
 Она периодически слабо вибрирует. Тип: Поддразнивание, Отрицание
 - Torment Plug
 Мучительная пробка
-- A sizeable plug that will make your life unbearably pleasurable...
+- A sizeable plug that will make your life unbearably pleasurable.
 Большая пробка, которая сделает вашу жизнь невыносимо приятной...
 # :: RestraintTrapPlug3Desc
 # :: RestraintTrapPlug4Desc
@@ -9343,7 +9343,7 @@ Dооr
 Наслаждайся этим, пока можешь. Тип: Удовольствие, Удержание на грани
 - Intense Training Plug
 Интенсивная тренировочная пробка
-- An energetic plug that will make your life unbearably pleasurable...
+- An energetic plug that will make your life unbearably pleasurable.
 Энергичная пробка, которая сделает вашу жизнь невыносимо приятной...
 - You're going to have the time of your life. Type: Pleasure, and lots of it
 У вас будет лучшее время в вашей жизни. Тип: Удовольствие, много удовольствия

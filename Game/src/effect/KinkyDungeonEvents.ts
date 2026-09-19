@@ -12819,6 +12819,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 	},
 	"afterChangeMap": {
 		"TempFlagFloorTicksNeg": (_e, data) => {
+			KinkyDungeonSetFlag("LeashToPrison", 0);
 			if (KDGameData.TempFlagFloorTicks)
 				for (let f of Object.entries(KDGameData.TempFlagFloorTicks)) {
 					if (!KinkyDungeonFlags.get(f[0])) delete KDGameData.TempFlagFloorTicks[f[0]];

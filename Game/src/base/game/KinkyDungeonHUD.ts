@@ -4270,7 +4270,8 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 					// draw the hover thing
 					KDStruggleGroupHighlightedItem = listItem;
 					DrawTextFitKD(KDGetItemName(listItem), 
-					list.x + visualIndex * size, list.y - size * 0.11, 300, KDBaseWhite, undefined, 12, "left", 120)
+					list.x + visualIndex * size, list.y - size * 0.13, 300, KDBaseWhite, 
+					KDBaseBlack, 18, "left", 120)
 				}
 			}
 		}

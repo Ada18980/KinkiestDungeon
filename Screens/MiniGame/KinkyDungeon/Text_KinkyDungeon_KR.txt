@@ -7228,7 +7228,7 @@ Level RestraintLevel(Rarity)
 
 - Torment Plug
 토먼트 플러그
-- A sizeable plug that will make your life unbearably pleasurable...
+- A sizeable plug that will make your life unbearably pleasurable.
 당신의 삶을 참을 수 없을 정도로 즐겁게 만들어 줄 커다란 플러그...
 ### It vibrates strongly periodically and has a denial setting. Type: Denial
 
@@ -7238,7 +7238,7 @@ Level RestraintLevel(Rarity)
 
 ### Intense Training Plug
 
-### An energetic plug that will make your life unbearably pleasurable...
+### An energetic plug that will make your life unbearably pleasurable.
 
 ### You're going to have the time of your life. Type: Pleasure, and lots of it
 

@@ -288,12 +288,12 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 			for (let i = 0; i < ms; i++) {
 				let servant = servants[i];
 				DrawButtonKDEx(facility + "serv" + i, (b) => {
+					KDGoToScreen("Collection");
+					KDResetCollectionScreen();
 					KDCurrentFacilityTarget = facility;
 					KDCurrentFacilityCollectionType = ["Servants", "Prisoners"];
-					KDGoToScreen("Collection");
 					if (KDNPCChar.get(servant))
 						KDRefreshCharacter.set(KDNPCChar.get(servant), true);
-					KDResetCollectionScreen();
 					KDCollectionSelected = servant;
 					KDResetCollectionUI();
 					KDFacilityCollectionCallback = setCallback;
@@ -313,12 +313,12 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 			for (let i = 0; i < mp; i++) {
 				let prisoner = prisoners[i];
 				DrawButtonKDEx(facility + "pris" + i, (b) => {
+					KDGoToScreen("Collection");
+					KDResetCollectionScreen();
 					KDCurrentFacilityTarget = facility;
 					KDCurrentFacilityCollectionType = ["Servants", "Prisoners"];
-					KDGoToScreen("Collection");
 					if (KDNPCChar.get(prisoner))
 						KDRefreshCharacter.set(KDNPCChar.get(prisoner), true);
-					KDResetCollectionScreen();
 					KDCollectionSelected = prisoner;
 					KDResetCollectionUI();
 					KDFacilityCollectionCallback = setCallback;

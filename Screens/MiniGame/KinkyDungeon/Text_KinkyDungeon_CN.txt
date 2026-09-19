@@ -9682,7 +9682,7 @@ RestraintName 上的诅咒解除了！
 它周期性地微弱振动。类型 : ‎戏弄、拒绝
 - Torment Plug
 折磨塞
-- A sizeable plug that will make your life unbearably pleasurable...
+- A sizeable plug that will make your life unbearably pleasurable.
 一个相当大的塞子，会让你的生活变得难以忍受......
 # :: RestraintTrapPlug3Desc
 # :: RestraintTrapPlug4Desc
@@ -9694,7 +9694,7 @@ RestraintName 上的诅咒解除了！
 且享受，且珍惜。类型 : ‎快感、寸止
 - Intense Training Plug
 强化训练塞
-- An energetic plug that will make your life unbearably pleasurable...
+- An energetic plug that will make your life unbearably pleasurable.
 一个震动幅度相当大的塞子，会让你的生活变得难以忍受......
 - You're going to have the time of your life. Type: Pleasure, and lots of it
 你将会度过一生中最美好的时光。类型 : ‎快感，而且很多
