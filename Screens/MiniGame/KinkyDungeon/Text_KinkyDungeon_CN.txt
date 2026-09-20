@@ -300,8 +300,10 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 按键绑定
 # :: KDToggleTabKeybindings
 # :: GameConfigKeys
+# - Buttplug/Xtoys
 - Mouse Shortcuts
 鼠标快捷操作
+# - Toy Integration
 
 - Hypnosis Screen Wobble
 催眠时屏幕晃动
@@ -1744,6 +1746,7 @@ EnemyName对TargetName念出了一个口令！
 # :: m_Body_l_Nipples
 # :: m_DollBody_l_Nipples
 # :: m_SmoothBody_l_Nipples
+# :: KDButtplugCategory_ItemNipples
 - Breasts
 胸
 - Panties
@@ -1779,8 +1782,11 @@ EnemyName对TargetName念出了一个口令！
 # :: m_CapeRestraint_l_Front
 # :: m_CapeRestraint_l_Front
 # :: m_Aura_Bang_l_Front
+# :: KDButtplugCategory_ItemVulva
 - Rear
 后部
+# :: KinkyDungeonPlayerVibratedLocationItemButt
+# :: KDButtplugCategory_ItemButt
 - Feet
 脚
 # :: KinkyDungeonPlayerVibratedLocationItemBoots
@@ -2456,9 +2462,9 @@ Devious Dungeon Challenge 已启用。
 # :: KinkyDungeonKeyFacilities
 # :: KinkyDungeonFacilities
 
-- Current Key Pressed
+- Currently Setting: 
 当前按键
-- Press a key, then press a button to set that key
+- Select a keybind, then press a button to set that key
 按下一个按键，然后按一个按钮来设置该按键
 
 - Floor FLOORNUMBER: DUNGEONNAME
@@ -52851,6 +52857,12 @@ NME 由于不够显要，被自动释放
 - (SPEAKER glares at your body)|Ah! My Masterwork set!|I remember these, they were quite the treat--|er, tricky to get off!|You'll need to collect all five pieces before it unlocks.
 （SPEAKER 盯着你的身体）|啊！我的极品套装！|我记得，想把它们脱下来没那么容易！|你需要集齐全部五件才能解锁。
 
+# - Have you heard of the rare Masterwork set?
+# - (A smug smile forms across Ada's face)|Ehem~|I'm actually the one who made those~|If you get stuck in one, you'll have to keep wearing it,| at least until you find the rest of the set!
+
+# - (Wiggle and make gagged moans)
+# - (Ada chuckles)|I'd totally take advantage of you right now if you wanted it,|But I'm quite busy developing, you see...
+
 - Can you unlock my Masterwork restraints?
 你能解锁我的极品拘束吗？
 - (Present your masterwork restraints)
@@ -54194,3 +54206,19 @@ TA
 
 
 # - Show Scroll Buttons in Struggle UI
+
+# - Make sure that Intiface Central is installed.\nWith the intiface server running, type your address in the box below and hit 'Connect'.\nDon't forget to start scanning for devices!
+# - Connect
+# - Disconnect
+
+# - Not Connected
+# - Connected!
+# - Buttplug has disconnected. Reason: 
+# - Buttplug.io library inserted!
+# - Buttplug.io device inserted: 
+# - Buttplug.io device removed: 
+# - Buttplug.io device ${DEVICE} has low battery
+
+# - Battery
+
+# - Paste your Xtoys webhook ID here and the game will post messages|Supported actions: 'shock'
