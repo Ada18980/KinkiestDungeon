@@ -4057,7 +4057,9 @@ RestraintExpBoots,Rubber Ballet Heels
 RestraintExpBootsDesc,"A pair of strict boots for making pets more manageable. A skilled person can still walk in these."
 RestraintExpBootsDesc2,"They are reinforced with top-quality hardened latex."
 
-
+RestraintLeatherCatsuit,Leather Catsuit
+RestraintLeatherCatsuitDesc,FIXME
+RestraintLeatherCatsuitDesc2,FIXME
 
 RestraintHighsecArmbinder,High-Security Armbinder
 RestraintHighsecArmbinderDesc,"An armbinder enclosing your hands and arms completely, making your hands useless."
@@ -14917,6 +14919,19 @@ m_TransparentCatsuit_l_FootLeftHogtie,FootLeftHogtie
 m_TransparentCatsuit_l_LegRight,LegRight
 m_TransparentCatsuit_l_LegLeft,LegLeft
 m_TransparentCatsuit_l_Butt,Butt
+m_LeatherCatsuit,LeatherCatsuit
+m_LeatherCatsuitRestraint,LeatherCatsuitRestraint
+m_LeatherCatsuitLeotard,LeatherCatsuitLeotard
+m_LeatherCatsuit_l_TorsoUpper,TorsoUpper
+m_LeatherCatsuit_l_TorsoLower,TorsoLower
+m_LeatherCatsuitUpper,LeatherCatsuitUpper
+m_LeatherCatsuitLower,LeatherCatsuitLower
+m_LeatherCatsuitUpper_l_TorsoUpper,TorsoUpper
+m_LeatherCatsuitLower_l_TorsoLower,TorsoLower
+m_LeatherCatsuitRestraint_l_TorsoUpper,TorsoUpper
+m_LeatherCatsuitRestraint_l_TorsoLower,TorsoLower
+m_LeatherCatsuitLeotard_l_TorsoUpper,TorsoUpper
+m_LeatherCatsuitLeotard_l_TorsoLower,TorsoLower
 m_Labcoat_l_Shoulders,Shoulders
 m_Labcoat_l_ShouldersHogtie,ShouldersHogtie
 m_Labcoat_l_Coat,Coat
