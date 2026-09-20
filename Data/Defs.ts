@@ -346,7 +346,7 @@ let LAYERS_BASE = [
 	"TightPantsLeft",
 	
 	"StockingLeftKneel", "StockingLeft",
-	"FootLeft",
+	"FootLeft", // unused
 	"LegLeft",
 
 	
@@ -457,7 +457,7 @@ let LAYERS_BASE = [
 	// Lower body underwear
 	"TightPantsRight",
 	"StockingRight",
-	"FootRight",
+	"FootRight", // unused
 	"LegRight",
 
 	"CorsetUnder", // Corsets go here when wearing pants
@@ -878,7 +878,6 @@ let LayerGroups = {
 	"Heels": ToMap([
 		"OverShoes",
 		"OverSocks",
-		"FootLeft",
 		"StockingLeftKneel", "StockingLeft",
 		"FootLeft",
 		"LegLeft",
