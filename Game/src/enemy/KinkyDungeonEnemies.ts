@@ -9869,7 +9869,7 @@ function KDOverrideIgnore(enemy: entity, player: entity): boolean {
  * @param enemy
  */
 function KDIsFlying(enemy: entity): boolean {
-	return enemy.Enemy.tags?.flying || KDEnemyHasFlag(enemy, "flying");
+	return enemy.Enemy?.tags?.flying || KDEnemyHasFlag(enemy, "flying");
 }
 
 /**
