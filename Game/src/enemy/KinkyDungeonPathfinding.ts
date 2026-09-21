@@ -56,13 +56,13 @@ let KDPathfindingCacheFails = 0;
 
 let KDPFTrim = 40;
 
-function KDWiredDoorPathable(triggerX: number, triggerY: number, doorX: number, doorY: number): boolean {
+function KDWiredDoorPathable(triggerX: number, triggerY: number, tile?: string, doorX?: number, doorY?: number, ): boolean {
 	if (triggerX == doorX && triggerY == doorY) {
 		// a trigger on top of the door would be unreachable
 		return false;
 	}
 
-	const door = KinkyDungeonTilesGet(`${doorX},${doorY}`);
+	const door = tile || KinkyDungeonTilesGet(`${doorX},${doorY}`);
 	switch (door?.wireType) {
 	case "AutoDoor_HoldOpen":
 	case "AutoDoor_Open":
@@ -71,30 +71,14 @@ function KDWiredDoorPathable(triggerX: number, triggerY: number, doorX: number, 
 		// not a supported door
 		return false;
 	}
-	let hasWire = false;
-	let effects = KDMapData.EffectTiles[`${triggerX},${triggerY}`];
-	for (let e of Object.keys(effects || [])) {
-		if (e == "Wire" || (e == "WireHoriz" && triggerX != doorX) || (e == "WireVert" && triggerY != doorY)) {
-			hasWire = true;
-			break;
-		}
-	}
-	if (!hasWire) {
+	let effects = KDEffectTileTags(triggerX, triggerY);
+	if (!effects.wire) {
 		// door is adjacent to a trigger but not wired to it
 		return false;
 	}
 
-	effects = KDMapData.EffectTiles[`${triggerX},${triggerY}`];
-	for (let e of Object.keys(effects || [])) {
-		switch (e) {
-		case "PressurePlateHold":
-		case "PressurePlate":
-			return true;
-		}
-	}
-
-	// did not find a directly-adjacent door trigger
-	return false;
+	// find a directly-adjacent door trigger
+	return !!effects.pathplate;
 }
 
 /**
@@ -191,6 +175,12 @@ function KinkyDungeonFindPath (
 	let xx = 0;
 	let yy = 0;
 	let loc = "";
+	/** non-smart enemies that cant usedoors won't path through autodoors either
+	 * TBD on whether I want this sort of behavior- 
+	 * Also if there is an Enemy that is flying, it won't path through autodoors since pressureplates don't trigger on flying
+	 * Again TBD since I feel like levitating enemies should be able to press those
+	*/
+	let allowWiredDoors = TilesTemp.includes('D') && (!Enemy || !KDIsFlying(Enemy)); 
 
 	while(open.size > 0) {
 		// Trim if it takes too long
@@ -225,7 +215,7 @@ function KinkyDungeonFindPath (
 						let tile = (xx == endx && yy == endy) ? "" : KinkyDungeonMapGet(xx, yy);
 						MapTile = KinkyDungeonTilesGet(loc);
 						let locIndex = `${lowLoc},${endx},${endy},${tileShort}`;
-						const useWiredDoor = KDWiredDoorPathable(lowest.x, lowest.y, xx, yy);
+						const useWiredDoor = allowWiredDoors && KDWiredDoorPathable(lowest.x, lowest.y, tile);
 						// If we have found the end
 						if (xx == endx && yy == endy) {
 							closed.set(lowLoc, lowest);

@@ -373,7 +373,7 @@ let KDEffectTiles: Record<string, effectTile> = {
 		name: "PressurePlate",
 		duration: 9999, infinite: true,
 		priority: 50,
-		tags: ["wire"],
+		tags: ["wire", "pathplate"],
 	},
 	"PressurePlateOneUse": {
 		name: "PressurePlateOneUse",
@@ -385,13 +385,13 @@ let KDEffectTiles: Record<string, effectTile> = {
 		name: "PressurePlateActive",
 		duration: 2,
 		priority: 51,
-		tags: ["ppactive"],
+		tags: ["ppactive", "pathplate"],
 	},
 	"PressurePlateHold": {
 		name: "PressurePlateHold",
 		duration: 9999, infinite: true,
 		priority: 50,
-		tags: ["wire"],
+		tags: ["wire", "pathplate"],
 	},
 
 
