@@ -56,6 +56,47 @@ let KDPathfindingCacheFails = 0;
 
 let KDPFTrim = 40;
 
+function KDWiredDoorPathable(triggerX: number, triggerY: number, doorX: number, doorY: number): boolean {
+	if (triggerX == doorX && triggerY == doorY) {
+		// a trigger on top of the door would be unreachable
+		return false;
+	}
+
+	const door = KinkyDungeonTilesGet(`${doorX},${doorY}`);
+	switch (door?.wireType) {
+	case "AutoDoor_HoldOpen":
+	case "AutoDoor_Open":
+		break;
+	default:
+		// not a supported door
+		return false;
+	}
+	let hasWire = false;
+	let effects = KDMapData.EffectTiles[`${triggerX},${triggerY}`];
+	for (let e of Object.keys(effects || [])) {
+		if (e == "Wire" || (e == "WireHoriz" && triggerX != doorX) || (e == "WireVert" && triggerY != doorY)) {
+			hasWire = true;
+			break;
+		}
+	}
+	if (!hasWire) {
+		// door is adjacent to a trigger but not wired to it
+		return false;
+	}
+
+	effects = KDMapData.EffectTiles[`${triggerX},${triggerY}`];
+	for (let e of Object.keys(effects || [])) {
+		switch (e) {
+		case "PressurePlateHold":
+		case "PressurePlate":
+			return true;
+		}
+	}
+
+	// did not find a directly-adjacent door trigger
+	return false;
+}
+
 /**
  * @param startx - the start position
  * @param starty - the start position
@@ -184,6 +225,7 @@ function KinkyDungeonFindPath (
 						let tile = (xx == endx && yy == endy) ? "" : KinkyDungeonMapGet(xx, yy);
 						MapTile = KinkyDungeonTilesGet(loc);
 						let locIndex = `${lowLoc},${endx},${endy},${tileShort}`;
+						const useWiredDoor = KDWiredDoorPathable(lowest.x, lowest.y, xx, yy);
 						// If we have found the end
 						if (xx == endx && yy == endy) {
 							closed.set(lowLoc, lowest);
@@ -232,7 +274,7 @@ function KinkyDungeonFindPath (
 							} else return undefined;
 						}
 						// Give up and add to the test array
-						else if (TilesTemp.includes(tile)
+						else if ((TilesTemp.includes(tile) || useWiredDoor)
 							&& (!RequireLight || KinkyDungeonVisionGet(xx, yy) > 0)
 							&& (!RequireFog || KinkyDungeonVisionGet(xx, yy) > 0 || KinkyDungeonFogGet(xx, yy) > 0)
 							&& (ignoreLocks || !MapTile || !MapTile.Lock || (Enemy && KDLocks[MapTile.Lock].canNPCPass(xx, yy, MapTile, Enemy)))
@@ -243,7 +285,7 @@ function KinkyDungeonFindPath (
 									|| KinkyDungeonNoEnemyExceptSub(xx, yy, false, Enemy)
 									|| (allowPassable && KDCanPassEnemy(KDPlayer(), KinkyDungeonEnemyAt(xx, yy))))))
 							&& (!blockPlayer || KinkyDungeonPlayerEntity.x != xx || KinkyDungeonPlayerEntity.y != yy)
-							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]))) {
+							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]) || useWiredDoor)) {
 							costBonus = 0;
 							if (EnemyWeight) {
 								if (!(((needDoorMemory && KinkyDungeonVisionGet(xx, yy) <= 0.1)

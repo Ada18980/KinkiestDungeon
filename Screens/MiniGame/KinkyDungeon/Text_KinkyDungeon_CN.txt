@@ -8324,7 +8324,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - They are reinforced with top-quality hardened latex.
 采用顶级硬化乳胶加固。
 
-
+# - Leather Catsuit
+# - FIXME
+# :: RestraintLeatherCatsuitDesc
+# :: RestraintLeatherCatsuitDesc2
 
 - High-Security Armbinder
 高安全性单手套
@@ -29430,6 +29433,10 @@ Dask眼
 # :: m_CatsuitLower_l_TorsoLower
 # :: m_Catsuit_l_TorsoLower
 # :: m_TransparentCatsuit_l_TorsoLower
+# :: m_LeatherCatsuit_l_TorsoLower
+# :: m_LeatherCatsuitLower_l_TorsoLower
+# :: m_LeatherCatsuitRestraint_l_TorsoLower
+# :: m_LeatherCatsuitLeotard_l_TorsoLower
 # :: m_WolfTorsoLower_l_TorsoLower
 # :: m_Wolf_l_TorsoLower
 # :: m_SlimeTorsoLower_l_TorsoLower
@@ -29512,6 +29519,10 @@ Dask眼
 # :: m_CatsuitUpper_l_TorsoUpper
 # :: m_Catsuit_l_TorsoUpper
 # :: m_TransparentCatsuit_l_TorsoUpper
+# :: m_LeatherCatsuit_l_TorsoUpper
+# :: m_LeatherCatsuitUpper_l_TorsoUpper
+# :: m_LeatherCatsuitRestraint_l_TorsoUpper
+# :: m_LeatherCatsuitLeotard_l_TorsoUpper
 # :: m_WolfTorsoUpper_l_TorsoUpper
 # :: m_Wolf_l_TorsoUpper
 # :: m_SlimeTorsoUpper_l_TorsoUpper
@@ -29568,6 +29579,11 @@ Dask眼
 # :: m_CatsuitRestraint_l_TorsoUpper
 - TransparentCatsuit
 透明全包胶衣
+# - LeatherCatsuit
+# - LeatherCatsuitRestraint
+# - LeatherCatsuitLeotard
+# - LeatherCatsuitUpper
+# - LeatherCatsuitLower
 - ShortsLeft
 短裤(跪姿叠加层)
 # :: m_BanditShorts_l_ShortsLeft
