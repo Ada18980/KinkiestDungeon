@@ -258,6 +258,7 @@ AddModel({
 		},
 	])
 });
+
 AddModel({
 	Name: "Fluffy",
 	Folder: "Hair",
