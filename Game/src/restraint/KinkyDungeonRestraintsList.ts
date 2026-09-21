@@ -59,40 +59,6 @@ let KDBeltLink = [...KDBindable, ...KDDevices]; // For ACTUAL belt, not chastity
  */
 const KinkyDungeonRestraints: restraint[] = [
 	//region misc
-	{
-		name: "LeatherCatsuit",
-		Model: "LeatherCatsuitRestraint",
-		Asset: "SeamlessCatsuit",
-		factionColor: [[0]],
-		AssetGroup: "Suit",
-		Group: "ItemTorso",
-		Color: ["#3873C3"],
-		sfxGroup: "Leather",
-		inventory: true,
-		LinkAll: true,
-		noDupe: true,
-		inaccessible: true,
-		alwaysAccessible: true,
-		renderWhenLinked: ["Corsets", "Harnesses", ...KDBindable, "Latex", "Leather", "Metal", "Rope"],
-		renderExcept: ["Catsuits"],
-		alwaysRender: true,
-		factionFilters: {
-			TorsoLower: {color: "DarkNeutral", override: false},
-			TorsoUpper: {color: "DarkNeutral", override: false},
-		},
-		linkCategory: "Catsuits",
-		linkSize: 0.75,
-		restriction: 3,
-		power: 8.5,
-		weight: 0,
-		escapeChance: {"Struggle": -1.2, "Cut": -0.5, "Remove": 0.025},
-		enemyTags: {"leatherRestraintsHeavy" : 1.4, "leatherRestraints" : 2, "highsecRestraints": 3},
-		playerTags: {},
-		minLevel: 7,
-		allFloors: true,
-		shrine: ["Catsuits", "Leather", "Suits"],
-		events: [],
-	},
 	{removePrison: true, name: "PuppetStrings", Group: "ItemDevices", power: 1, weight: 1,
 		alwaysStruggleable: true,
 		Model: "PuppetStrings",
@@ -118,6 +84,8 @@ const KinkyDungeonRestraints: restraint[] = [
 	},
 
 	//endregion
+
+
 
 	// region Scarf
 	{name: "ScarfArms", unlimited: true, accessible: true, debris: "Fabric", Asset: "DuctTape", Color: "#880022", Group: "ItemArms", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], bindarms: true, power: 0, weight: 0, escapeChance: {"Struggle": 0.5, "Cut": 0.9, "Remove": 0.2},
@@ -4060,6 +4028,47 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {}, playerTags: {"NoBelt": -1000}, minLevel: 0, allFloors: true, shrine: ["NeoBelt", "Chastity", "Metal", "ChastityBelts", "Ornate"]},
 	//endregion
 
+
+
+	//region leather
+
+	{
+		name: "LeatherCatsuit",
+		Model: "LeatherCatsuitRestraint",
+		Asset: "SeamlessCatsuit",
+		factionColor: [[0]],
+		AssetGroup: "Suit",
+		Group: "ItemTorso",
+		Color: ["#3873C3"],
+		sfxGroup: "Leather",
+		inventory: true,
+		LinkAll: true,
+		noDupe: true,
+		inaccessible: true,
+		alwaysAccessible: true,
+		renderWhenLinked: ["Corsets", "Harnesses", ...KDBindable, "Latex", "Leather", "Metal", "Rope"],
+		renderExcept: ["Catsuits"],
+		alwaysRender: true,
+		factionFilters: {
+			TorsoLower: {color: "DarkNeutral", override: false},
+			TorsoUpper: {color: "DarkNeutral", override: false},
+		},
+		linkCategory: "Catsuits",
+		linkSize: 0.75,
+		restriction: 3,
+		power: 8.5,
+		weight: 0,
+		escapeChance: {"Struggle": -1.2, "Cut": -0.5, "Remove": 0.025},
+		enemyTags: {"leatherRestraintsHeavy" : 1.4, "leatherRestraints" : 2, "highsecRestraints": 3},
+		playerTags: {},
+		minLevel: 7,
+		allFloors: true,
+		shrine: ["Catsuits", "Leather", "Suits"],
+		events: [],
+	},
+
+	//endregion
+
 	//region Trap items. Note that traps do not respect stamina, so its okay for these to have reasonable maxwill
 	{alwaysRender: true, inventory: true, name: "TrapArmbinderHarness", debris: "Belts", Asset: "LeatherHarness", accessible: true, Color: "Default", Group: "ItemTorso", OverridePriority: 26, LinkableBy: [...KDHarnessLink], power: 3, strictness: 0.1,
 		weight: 0,
@@ -6054,6 +6063,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTags: {"ItemVulvaEmpty" : -50, "ItemVulvaPiercingsEmpty" : -50, "NoBelt": -1000}, minLevel: 0, allFloors: true, shrine: ["Chastity", "Metal", "ChastityBelts", "Illusion"]},
 
 	//endregion
+
 
 	//region Dragon
 	{inventory: true, name: "DragonArmbinder", debris: "Belts", inaccessible: true, Asset: "BoxTieArmbinder", strictness: 0.08,
