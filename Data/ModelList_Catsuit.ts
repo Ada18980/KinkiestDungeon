@@ -503,7 +503,6 @@ AddModel({
 			Name: "LegLeft",
 			Layer: "LegLeft",
 			Pri: 2,
-			InheritColor: "TorsoLower",
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			NoOverride: true,
