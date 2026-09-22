@@ -1255,8 +1255,6 @@ let LayerGroups = {
 	
 	"CatsuitUpper": ToMap([
 		"CatsuitChest",
-		"ArmLeft",
-		"ArmRight",
 		"TorsoUpper",
 	]),
 	"CatsuitLower": ToMap([
