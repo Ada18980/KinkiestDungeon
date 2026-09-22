@@ -28064,6 +28064,11 @@ m_TransparentLeatherLeotard_l_TorsoUpper,Torso Upper
 m_TransparentLeatherLeotard_l_TorsoLower,Torso Lower
 m_TransparentLeatherLeotard_l_TorsoUpper,Torso Upper
 
+m_MaidBow_l_Collar,Collar
+m_MaidBow_l_Bell,Bell
+m_Maid_l_Collar,Collar
+m_Maid_l_Bell,Bell
+
 
 KDHideItems,Hide Items
 KDSortItems,Sort Items
