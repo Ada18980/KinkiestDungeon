@@ -3354,7 +3354,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 			
 			let params = KDGetGenericDialogueParams(KDPlayer(), null);
 			let size = RetDrawTextFitKD(TextProvider.applyTemplate(stat.text, params), side ? XX + 100 : minXX, side ? YY : tooltipY, 1000, stat.color,
-				KDBaseBlack, 22, "left", 160, 1.0, 8);
+				KDBaseBlack, 22, "left", 160, 1.0, 8).x;
 			FillRectKD(kdcanvas, kdpixisprites, "buffttDesc", {
 				Left: (side ? XX + 100 : minXX) - 10,
 				Top: (side ? YY : tooltipY) - 25,

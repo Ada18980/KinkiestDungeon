@@ -1649,7 +1649,8 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		},
 
 		music: {
-			"GENERIC-DOLLRACK.ogg": 20,
+			"Dressmaker-Shop.ogg": 30,
+			"NightMarket.ogg": 20,
 		},
 
 		tagModifiers: {

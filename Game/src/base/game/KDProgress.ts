@@ -359,7 +359,7 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
                             yy += 8;
                             let xx = RetDrawTextFitKD(TextGet("KDProgressTag_" + tag.key, tag.keyparams), 
                                 x + 50, yy, width * 0.5, KDTextWhite, 
-                                KDTextGray0, 18, "left");
+                                KDTextGray0, 18, "left").x;
                             DrawTextFitKD((tag.value > 0 ? "+" : "") + tag.value, 
                                 x + 50 + xx + 10, yy, width * 0.1, item.color, 
                                 KDTextGray0, 18, "left");

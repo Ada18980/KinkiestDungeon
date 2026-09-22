@@ -1722,7 +1722,7 @@ function KinkyDungeonRun() {
 		for (let t of txt) {
 			w = Math.max(w, RetDrawTextFitKD(
 				t, MouseX, MouseY - 15 - h + size * ii++, 1000, KDBaseYellow, KDBaseBlack, size, "center", 250
-			));
+			).x);
 		}
 
 		DrawBoxKD(MouseX - w/2 - 10, MouseY - 30 - h - 5, w + 20, 15 + h, KDBGColor, false, 0.7, 249)
@@ -3857,15 +3857,30 @@ function DrawButtonKDEx (
 	return MouseIn(Left,Top,Width,Height);
 }
 
+let KDTooltipZ = 115;
+let KDTooltipPadX = 16;
+let KDTooltipPadY = 10;
 
 function KDRenderMouseTooltip(button: KDButtonParamData) {
 	if (button.hoverData) {
 		let ttwidth = button.hoverData.width || 900;
 		let ttheight = button.hoverData.height || 100;
 		let offsets = KDGetBoxShiftOffset(MouseX - ttwidth/2, MouseY - ttheight/2, ttwidth, ttheight);
-		DrawTextFitKD(button.hoverData.text,
+		let size = RetDrawTextFitKD(button.hoverData.text,
 			MouseX + offsets.x, MouseY + offsets.y - ttheight/2, ttwidth,
-			KDBaseWhite, "#333333", undefined, "center");
+			KDBaseWhite, undefined, undefined, "center", KDTooltipZ + .1);
+		size.x += KDTooltipPadX;
+		size.y += KDTooltipPadY;
+		FillRectKD(kdcanvas, kdpixisprites, "tooltipbox_" + button.name, {
+			Color: KDBaseDarkGrey,
+			alpha: 0.95,
+			Left: MouseX + offsets.x - size.x/2,
+			Top: MouseY + offsets.y - ttheight/2 - size.y/2,
+			Width: size.x,
+			Height: size.y,
+			zIndex: KDTooltipZ,
+		})
+		
 	}
 }
 

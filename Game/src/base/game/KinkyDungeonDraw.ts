@@ -3385,7 +3385,7 @@ function RetDrawTextFitKD (
 	unique:     boolean = undefined,
 	font?:		string,
 	wordwrap: 	boolean = false
-): number {
+): KDPoint {
 	return RetDrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, 
 		BackColor, FontSize, Align, zIndex, alpha, 
 		border, unique, font, wordwrap);
@@ -3544,13 +3544,13 @@ function RetDrawTextFitKDTo (
 	font?: 		string,
 	wordwrap:	boolean = false,
 	id?: string
-): number {
+): KDPoint {
 	
 	if (id) unique = true;
-	if (!Text) return 0;
+	if (!Text) return {x: 0, y: 0};
 	let alignment = Align ? Align : "center";
 
-	return DrawTextVisKD(Container || kdcanvas, kdpixisprites, id ? id : ("tx|" + Text + (!unique ? "," + X + "," + Y : "_unique")), {
+	let ret = DrawTextVisKD(Container || kdcanvas, kdpixisprites, id ? id : ("tx|" + Text + (!unique ? "," + X + "," + Y : "_unique")), {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -3566,7 +3566,8 @@ function RetDrawTextFitKDTo (
 		font: font,
 		wordwrap: wordwrap,
 		return: true
-	})[0];
+	});
+	return {x: ret[0], y: ret[1]};
 }
 
 

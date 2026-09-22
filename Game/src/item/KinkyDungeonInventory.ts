@@ -2181,7 +2181,7 @@ function KinkyDungeonDrawInventory() {
 				invactiontextanchorx,
 				invactiontextanchory, invactiontextwidth, 
 				KDBaseWhite,
-					KDTextGray0, undefined, "center");
+					KDTextGray0, undefined, "center").x;
 				DrawButtonKDEx("invActionCancel_", (_bdata) => {
 						KDSendInput("inventoryAction",
 							{action: "",

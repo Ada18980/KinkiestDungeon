@@ -639,9 +639,6 @@ let KinkyDungeonLootTable = {
 		{name: "EssenceNecklace", minLevel: 1, weight:4, message:"LootEssenceNecklace",
 			armor: "EssenceNecklace",
 			messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["EssenceNecklace"]},
-		{name: "ArcaneCrystal", minLevel: 5, weight:3, weapon: "ArcaneCrystal",
-			noweapon: ["ArcaneCrystal"], message:"LootChestWeapon",
-			messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
 		{name: "DollMirror", weaponlist: "DollMirror", minRarity: 7, maxRarity: 10, enchantlist: "CommonTrinket", enchantchance: 1.0, minLevel: 0, weight:0.5, message:"LootChestWeapon", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
 		
 		{name: "spell_illusion_low", magic: true, minLevel: 0, weight: 0.75, message:"LootChestSpell", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true, prerequisites: ["UnlearnedIllusion", "lowlevel"]}, // lowlevel is spell levels 1-2

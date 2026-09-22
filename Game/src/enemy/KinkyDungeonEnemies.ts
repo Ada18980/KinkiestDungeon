@@ -8888,7 +8888,7 @@ function KinkyDungeonGetLoadoutForEnemy(enemy: entity, guaranteed: boolean): str
 	let loadout_list: Record<string, number> = {};
 	for (let s of Object.values(KDLoadouts)) {
 		let end = false;
-		if (s.tags) {
+		if (!end && s.tags) {
 			for (let t of s.tags) {
 				if (!enemy.Enemy.tags[t]) {
 					end = true;
@@ -8896,7 +8896,8 @@ function KinkyDungeonGetLoadoutForEnemy(enemy: entity, guaranteed: boolean): str
 				}
 			}
 		}
-		if (s.forbidtags) {
+		if (s.chance && KDRandom() > s.chance) end = true; 
+		if (!end && s.forbidtags) {
 			for (let t of s.forbidtags) {
 				if (enemy.Enemy.tags[t]) {
 					end = true;
