@@ -536,6 +536,7 @@ AddModel({
 			Pri: 2,
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "Front", "Crossed"]),
+			NoOverride: true,
 		},
 		{
 			Name: "ArmLeft",
@@ -551,6 +552,7 @@ AddModel({
 			InheritColor: "ArmRight",
 			Poses: ToMap(FOREARMPOSES),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossArmRight"},
 		},
 		{
 			Name: "ForeArmLeft",
@@ -559,6 +561,7 @@ AddModel({
 			InheritColor: "ArmLeft",
 			Poses: ToMap(FOREARMPOSES),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossArmLeft"},
 		},
 		{
 			Name: "TorsoUpper",
@@ -685,6 +688,7 @@ AddModel({
 			InheritColor: "ArmRight",
 			Poses: ToMap(FOREARMPOSES),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossArmRight"},
 			NoOverride: true,
 		},
 		{
@@ -694,6 +698,7 @@ AddModel({
 			InheritColor: "ArmLeft",
 			Poses: ToMap(FOREARMPOSES),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossArmLeft"},
 			NoOverride: true,
 		},
 		{
