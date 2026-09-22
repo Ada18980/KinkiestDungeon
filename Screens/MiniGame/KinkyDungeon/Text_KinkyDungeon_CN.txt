@@ -8325,9 +8325,8 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 采用顶级硬化乳胶加固。
 
 # - Leather Catsuit
-# - FIXME
-# :: RestraintLeatherCatsuitDesc
-# :: RestraintLeatherCatsuitDesc2
+# - A catsuit made from high-quality leather, perfectly tailored to your body.
+# - Slightly restrictive and rather unbreathable, but otherwise does not prevent access.
 
 - High-Security Armbinder
 高安全性单手套
@@ -29470,6 +29469,14 @@ Dask眼
 # :: m_TransparentCatsuitLowerLowRise_l_TorsoLower
 # :: m_TransparentCatsuitLowerLowRise_l_TorsoLower
 # :: m_TransparentCatsuitLowerLowRise_l_TorsoLower
+# :: m_TransparentLeatherCatsuitLower_l_TorsoLower
+# :: m_TransparentLeatherCatsuitLower_l_TorsoLower
+# :: m_TransparentLeatherCatsuitLower_l_TorsoLower
+# :: m_TransparentLeatherCatsuitLower_l_TorsoLower
+# :: m_TransparentLeatherCatsuit_l_TorsoLower
+# :: m_TransparentLeatherCatsuit_l_TorsoLower
+# :: m_TransparentLeatherCatsuit_l_TorsoLower
+# :: m_TransparentLeatherCatsuit_l_TorsoLower
 # :: m_CatsuitRestraint_l_TorsoLower
 # :: m_CatsuitRestraint_l_TorsoLower
 # :: m_CatsuitRestraint_l_TorsoLower
@@ -29565,6 +29572,18 @@ Dask眼
 # :: m_TransparentCatsuitUpperCropped_l_TorsoUpper
 # :: m_TransparentCatsuitUpperCropped_l_TorsoUpper
 # :: m_TransparentCatsuitUpperCropped_l_TorsoUpper
+# :: m_TransparentLeatherCatsuitUpper_l_TorsoUpper
+# :: m_TransparentLeatherCatsuitUpper_l_TorsoUpper
+# :: m_TransparentLeatherCatsuitUpper_l_TorsoUpper
+# :: m_TransparentLeatherCatsuitUpper_l_TorsoUpper
+# :: m_TransparentLeatherCatsuitUpper_l_TorsoUpper
+# :: m_TransparentLeatherCatsuitUpper_l_TorsoUpper
+# :: m_TransparentLeatherCatsuit_l_TorsoUpper
+# :: m_TransparentLeatherCatsuit_l_TorsoUpper
+# :: m_TransparentLeatherCatsuit_l_TorsoUpper
+# :: m_TransparentLeatherCatsuit_l_TorsoUpper
+# :: m_TransparentLeatherCatsuit_l_TorsoUpper
+# :: m_TransparentLeatherCatsuit_l_TorsoUpper
 # :: m_CatsuitRestraint_l_TorsoUpper
 # :: m_CatsuitRestraint_l_TorsoUpper
 # :: m_CatsuitRestraint_l_TorsoUpper
@@ -30486,6 +30505,12 @@ kigurumi头壳
 # :: m_LatexDollMittsLong_l_Lock
 # :: m_LatexDollMittsLong_l_Lock
 # :: m_LatexDollMittsLong_l_Lock
+# :: m_NeoSteelBelt_l_Lock
+# :: m_NeoSteelBeltSegu_l_Lock
+# :: m_NeoSteelBeltRadial_l_Lock
+# :: m_FashionNeoSteelBelt_l_Lock
+# :: m_FashionNeoSteelBeltSegu_l_Lock
+# :: m_FashionNeoSteelBeltRadial_l_Lock
 - EyesWhites
 眼白
 # :: m_KiguMask_l_EyesWhites
@@ -42359,6 +42384,10 @@ Vents发型
 # :: m_Thumbcuffs_l_BaseMetal
 # :: m_SpiritbondCollar_l_BaseMetal
 # :: m_FashionSpiritbondCollar_l_BaseMetal
+# :: m_NeoSteelBeltSegu_l_BaseMetal
+# :: m_NeoSteelBeltRadial_l_BaseMetal
+# :: m_FashionNeoSteelBeltSegu_l_BaseMetal
+# :: m_FashionNeoSteelBeltRadial_l_BaseMetal
 - Tie
 蝴蝶结
 :: m_MageCollar2_l_Tie
@@ -42768,6 +42797,8 @@ Vents发型
 # :: m_LatexDollMittsLong_l_Glow
 # :: m_LatexDollMittsLong_l_Glow
 # :: m_LatexDollMittsLong_l_Glow
+# :: m_SpiritbondCollar_l_Glow
+# :: m_FashionSpiritbondCollar_l_Glow
 - UpperCuff
 上部铐具
 # :: m_CyberLongMittenLeft_l_UpperCuff
@@ -43255,6 +43286,8 @@ Vents发型
 # :: m_FashionSteelChastityBelt_Padlock_l_LockPin
 # :: m_SteelChastityBra_Padlock_l_LockPin
 # :: m_FashionSteelChastityBra_Padlock_l_LockPin
+# :: m_NeoSteelBelt_l_LockPin
+# :: m_FashionNeoSteelBelt_l_LockPin
 - Binder
 束手套
 :: m_FestiveArmbinder_l_Binder
@@ -44180,6 +44213,14 @@ Aura刘海
 鞋底（右）
 # :: m_HighSecBalletHeels_l_SoleRight
 # :: m_HighSecBalletHeelsRestraint_l_SoleRight
+
+# - TransparentLeatherCatsuitLower
+# - TransparentLeatherCatsuitUpper
+# - TransparentLeatherCatsuit
+# - NeoSteelBeltSegu
+# - NeoSteelBeltRadial
+# - FashionNeoSteelBeltSegu
+# - FashionNeoSteelBeltRadial
 
 - LeatherShorts
 皮短裤
