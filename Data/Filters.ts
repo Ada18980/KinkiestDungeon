@@ -753,7 +753,7 @@ function KDGetDominantColor(input: PIXIRenderTexture, index: any): number {
                     if (a > 0) {
                         let hsl = rgbToHsl(r/255, g/255, b/255);
                         hue += 360 * hsl[2] * Math.max(Math.min(hsl[1], 1), 0);
-                        total += a * Math.max(Math.min(hsl[1], 1), 0);
+                        total += a/255 * Math.max(Math.min(hsl[1], 1), 0);
                     }
                     
                 }
