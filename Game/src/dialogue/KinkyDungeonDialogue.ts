@@ -3182,7 +3182,7 @@ function KDGetTheyThem_is(player: entity, override?: string) {
 		return TextGet("KDTheyThem_are");
 	} else return TextGet("KDTheyThem_is")
 }
-function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?: Record<string, string>): Record<string, string> {
+function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?: Record<string, string>, UseYouWhenReferenced: boolean = KDUSEYOUWHENREFERENCED): Record<string, string> {
 	let params: Record<string, string> = {
 		PName: KDEnemyName(player),
 		EName: KDEnemyName(enemy),
@@ -3197,6 +3197,10 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 		your: KDGetPronountheir(player, player == KDPlayer() ? "You" : undefined),
 		youre: KDGetPronountheyre(player, player == KDPlayer() ? "You" : undefined),
 		youve: KDGetPronountheyve(player, player == KDPlayer() ? "You" : undefined),
+		Yis: KDGetTheyThem_is(player, player == KDPlayer() ? "You" : undefined),
+		Yhas: KDGetTheyThem_has(player, player == KDPlayer() ? "You" : undefined),
+		Ys: KDGetTheyThem_s(player, player == KDPlayer() ? "You" : undefined),
+		Yes: KDGetTheyThem_es(player, player == KDPlayer() ? "You" : undefined),
 	
 		PHonorinti: KDGetHonorificIntimate(player),
 		PHonor: KDGetHonorific(player),
@@ -3224,10 +3228,6 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 
 		
 		
-		Yis: KDGetTheyThem_is(player, player == KDPlayer() ? "You" : undefined),
-		Yhas: KDGetTheyThem_has(player, player == KDPlayer() ? "You" : undefined),
-		Ys: KDGetTheyThem_s(player, player == KDPlayer() ? "You" : undefined),
-		Yes: KDGetTheyThem_es(player, player == KDPlayer() ? "You" : undefined),
 	};
 
 	let enemystuff = enemy ? {
@@ -3258,8 +3258,27 @@ function KDGetGenericDialogueParams(player: entity, enemy?: entity, extraparams?
 		Ehas: KDGetTheyThem_has(enemy),
 		Eis: KDGetTheyThem_is(enemy),
 	} : null;
-	if (enemystuff) 
+	if (enemystuff) {
+		// if enemy is the player we use You instead
+		if (enemy?.id == KDPlayer()?.id && UseYouWhenReferenced) {
+			enemystuff.EThey = params.You;
+			enemystuff.Ethey = params.you;
+			enemystuff.ETheyre = params.Youre;
+			enemystuff.Etheyre = params.youre;
+			enemystuff.ETheyve = params.Youve;
+			enemystuff.Etheyve = params.youve;
+			enemystuff.ETheir = params.Your;
+			enemystuff.Etheir = params.your;
+			enemystuff.EThem = params.YouObj;
+			enemystuff.Ethem = params.youObj;
+			enemystuff.Eis = params.Yis;
+			enemystuff.Ehas = params.Yhas;
+			enemystuff.Ees = params.Yes;
+			enemystuff.Es = params.Ys;
+		}
+
 		Object.assign(params, enemystuff);
+	}
 
 	if (extraparams)
 		Object.assign(params, extraparams);
@@ -3288,6 +3307,7 @@ function KDCanRemovePartyMember(player: entity, id: number) {
 
 /** Is the player subbier */
 function KDIsSubbier(player: entity, enemy: entity) {
+	if (player?.id == enemy?.id) return false; // Philisophical question of our time: Can you be subbier than yourself
 	if (!enemy || KinkyDungeonGoddessRep.Ghost < -25 || KDCanDom(enemy)) {
 		return false;
 	}
@@ -3301,3 +3321,6 @@ function KDHasShopBuy(enemy: entity) {
 function KDHasShopSell(enemy: entity) {
 	return KDEnemyHasFlag(enemy, "Shop");
 }
+
+/** When enemies refer to player in third person for ex */
+let KDUSEYOUWHENREFERENCED = false;
