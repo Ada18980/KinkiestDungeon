@@ -824,6 +824,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 	DrawButtonKDEx("tab_ColorPickerSimple", (_b) => {
 		KDToggles.SimpleColorPicker = true;
 		KDToggles.PaletteColorPicker = false;
+		KDSaveToggles();
 		KDPropsSlider = false;
 		return true;
 	}, true, X - 240, YY + 40, 140, 30, TextGet("KDColorPickerSimple"), 
@@ -831,6 +832,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 		KDToggles.PaletteColorPicker || KDPropsSlider || !KDToggles.SimpleColorPicker, KDButtonColor);
 	DrawButtonKDEx("tab_ColorPickerPalette", (_b) => {
 		KDToggles.PaletteColorPicker = true;
+		KDSaveToggles();
 		KDPropsSlider = false;
 		return true;
 	}, true, X - 240 + 290, YY + 40, 140, 30, 
@@ -840,6 +842,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 	DrawButtonKDEx("tab_ColorPickerAdvanced", (_b) => {
 		KDToggles.SimpleColorPicker = false;
 		KDToggles.PaletteColorPicker = false;
+		KDSaveToggles();
 		KDPropsSlider = false;
 		return true;
 	}, true, X - 240 + 145, YY + 40, 140, 30, TextGet("KDColorPickerAdvanced"), KDBaseWhite, undefined, undefined, undefined,
@@ -847,6 +850,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 	DrawButtonKDEx("tab_ColorPickerProperties", (_b) => {
 		KDPropsSlider = true;
 		KDToggles.PaletteColorPicker = false;
+		KDSaveToggles();
 		return true;
 	}, true, X - 240 + 435, YY + 40, 140, 30, TextGet("KDColorPickerProperties"), KDBaseWhite, undefined, undefined, undefined,
 	!KDPropsSlider, KDButtonColor);
