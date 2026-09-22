@@ -481,7 +481,7 @@ AddModel({
 		{
 			Name: "TorsoLower",
 			Layer: "TorsoLower",
-			Pri: 1,
+			Pri: 2,
 			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
 			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
@@ -491,7 +491,7 @@ AddModel({
 		{
 			Name: "LegRight",
 			Layer: "LegRight",
-			Pri: 1,
+			Pri: 2,
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			NoOverride: true,
@@ -499,7 +499,7 @@ AddModel({
 		{
 			Name: "LegLeft",
 			Layer: "LegLeft",
-			Pri: 1,
+			Pri: 2,
 			InheritColor: "TorsoLower",
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
@@ -508,7 +508,7 @@ AddModel({
 		{
 			Name: "Butt",
 			Layer: "Butt",
-			Pri: 1,
+			Pri: 2,
 			InheritColor: "LegLeft",
 			Poses: ToMap(KNEELPOSES),
 		},
@@ -526,21 +526,21 @@ AddModel({
 		{
 			Name: "ArmRight",
 			Layer: "ArmRight",
-			Pri: 1,
+			Pri: 2,
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "Front", "Crossed"]),
 		},
 		{
 			Name: "ArmLeft",
 			Layer: "ArmLeft",
-			Pri: 1,
+			Pri: 2,
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "Front", "Crossed"]),
 		},
 		{
 			Name: "ForeArmRight",
 			Layer: "ForeArmRight",
-			Pri: 1,
+			Pri: 2,
 			InheritColor: "ArmRight",
 			Poses: ToMap(FOREARMPOSES),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -548,7 +548,7 @@ AddModel({
 		{
 			Name: "ForeArmLeft",
 			Layer: "ForeArmLeft",
-			Pri: 1,
+			Pri: 2,
 			InheritColor: "ArmLeft",
 			Poses: ToMap(FOREARMPOSES),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -556,7 +556,7 @@ AddModel({
 		{
 			Name: "TorsoUpper",
 			Layer: "TorsoUpper",
-			Pri: 1,
+			Pri: 2,
 			InheritColor: "TorsoUpper",
 			AppendPose: {Up: "Up", Crossed: "Crossed", Front: "Front", Boxtie: "Boxtie", Wristtie: "Wristtie", Yoked: "Yoked"},
 			DisplaceAmount: 150,
@@ -567,7 +567,7 @@ AddModel({
 		{
 			Name: "Chest",
 			Layer: "CatsuitChest",
-			Pri: 1,
+			Pri: 2,
 			InheritColor: "TorsoUpper",
 		},
 	]),
@@ -604,7 +604,7 @@ AddModel({
 		{
 			Name: "TorsoLower",
 			Layer: "TorsoLower",
-			Pri: 1,
+			Pri: 3,
 			InheritColor: "TorsoLower",
 			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
 			DisplaceAmount: 150,
@@ -616,7 +616,7 @@ AddModel({
 		{
 			Name: "LegRight",
 			Layer: "LegRight",
-			Pri: 1,
+			Pri: 3,
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			NoOverride: true,
@@ -624,7 +624,7 @@ AddModel({
 		{
 			Name: "LegLeft",
 			Layer: "LegLeft",
-			Pri: 1,
+			Pri: 3,
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			NoOverride: true,
@@ -632,7 +632,7 @@ AddModel({
 		{
 			Name: "Butt",
 			Layer: "Butt",
-			Pri: 1,
+			Pri: 3,
 			InheritColor: "LegLeft",
 			Poses: ToMap(KNEELPOSES),
 			NoOverride: true,
@@ -657,7 +657,7 @@ AddModel({
 		{
 			Name: "ArmRight",
 			Layer: "ArmRight",
-			Pri: 1,
+			Pri: 3,
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "Front", "Crossed"]),
 			NoOverride: true,
@@ -665,7 +665,7 @@ AddModel({
 		{
 			Name: "ArmLeft",
 			Layer: "ArmLeft",
-			Pri: 1,
+			Pri: 3,
 			Poses: ToMapSubtract(ARMPOSES, [...HIDEARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "Front", "Crossed"]),
 			NoOverride: true,
@@ -673,7 +673,7 @@ AddModel({
 		{
 			Name: "ForeArmRight",
 			Layer: "ForeArmRight",
-			Pri: 1,
+			Pri: 3,
 			InheritColor: "ArmRight",
 			Poses: ToMap(FOREARMPOSES),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -682,7 +682,7 @@ AddModel({
 		{
 			Name: "ForeArmLeft",
 			Layer: "ForeArmLeft",
-			Pri: 1,
+			Pri: 3,
 			InheritColor: "ArmLeft",
 			Poses: ToMap(FOREARMPOSES),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -691,7 +691,7 @@ AddModel({
 		{
 			Name: "TorsoUpper",
 			Layer: "TorsoUpper",
-			Pri: 1,
+			Pri: 3,
 			InheritColor: "TorsoUpper",
 			AppendPose: {Up: "Up", Crossed: "Crossed", Front: "Front", Boxtie: "Boxtie", Wristtie: "Wristtie", Yoked: "Yoked"},
 			DisplaceAmount: 150,
@@ -703,7 +703,7 @@ AddModel({
 		{
 			Name: "Chest",
 			Layer: "CatsuitChest",
-			Pri: 1,
+			Pri: 3,
 			InheritColor: "TorsoUpper",
 			NoOverride: true,
 		},
@@ -756,7 +756,7 @@ AddModel({
 		{
 			Name: "LeotardUpper",
 			Layer: "TorsoUpper",
-			Pri: 1,
+			Pri: 5,
 			InheritColor: "TorsoUpper",
 			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
@@ -766,7 +766,7 @@ AddModel({
 		{
 			Name: "LeotardLower",
 			Layer: "TorsoLower",
-			Pri: 1,
+			Pri: 5,
 			InheritColor: "TorsoLower",
 			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
@@ -776,7 +776,7 @@ AddModel({
 		{
 			Name: "Chest",
 			Layer: "CatsuitChest",
-			Pri: 1,
+			Pri: 5,
 			InheritColor: "TorsoUpper",
 		},
 	]),
