@@ -1881,7 +1881,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		KDRefreshCharacter.set(C, true);
 		KDDressWardrobeChar(C);
 		return true;
-	}, true, 715, 875, 240, 50, TextGet("KDSetPalette"), KDBaseWhite,
+	}, true, 715, 875, 240, 50, TextGet(KDShowCharacterPalette ? "KinkyDungeonBack" : "KDSetPalette"), KDBaseWhite,
 	KinkyDungeonRootDirectory + "UI/SetPalette.png", "", false, false,
 	undefined, undefined, true, o);
 
@@ -3561,7 +3561,7 @@ function KDDrawColorPicker(id: string,
 
 				if (C) {
 					KDRefreshCharacter.set(C, true);
-					KDDressWardrobeChar(C);
+					//KDDressWardrobeChar(C);
 					if (updateFunc)
 						updateFunc(targetFilters[currentLayerName]);
 				}
@@ -3598,7 +3598,7 @@ function KDDrawColorPicker(id: string,
 			
 			if (C) {
 				KDRefreshCharacter.set(C, true);
-				KDDressWardrobeChar(C);
+				//KDDressWardrobeChar(C);
 				if (updateFunc)
 					updateFunc(targetFilters[currentLayerName]);
 			}
@@ -3620,7 +3620,7 @@ function KDDrawColorPicker(id: string,
 			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 			if (C) {
 				KDRefreshCharacter.set(C, true);
-				KDDressWardrobeChar(C);
+				//KDDressWardrobeChar(C);
 				if (updateFunc)
 					updateFunc(targetFilters[currentLayerName]);
 			}
