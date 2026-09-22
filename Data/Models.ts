@@ -1054,10 +1054,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					MC.HighestPriority[l.HideOverrideLayer] = Math.max(MC.HighestPriority[l.HideOverrideLayer] || -500, pri || -500);
 			}
 			if (l.ExtraOverrideLayers) {
-				for (let hideGroup of l.ExtraOverrideLayers) {
-					for (let hideLayer of Object.keys(LayerGroups[hideGroup])) {
-						MC.HighestPriority[hideLayer] = Math.max(MC.HighestPriority[hideLayer] || -500, pri || -500);
-					}
+				for (let hideLayer of l.ExtraOverrideLayers) {
+					MC.HighestPriority[hideLayer] = Math.max(MC.HighestPriority[hideLayer] || -500, pri || -500);
 				}
 			}
 		}
@@ -2068,13 +2066,11 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						// note: zoom is multiplied by MODEL_SCALE so here it cancels
 						let RT = ContainerContainer.Submeshes.get(sg)?.rt
 							|| PIXI.RenderTexture.create({ width: MODELWIDTH * 2 * Zoom, height: MODELHEIGHT * 2 * Zoom,
-								resolution: resolution});
+								resolution: resolution, scaleMode: PIXI.SCALE_MODES.LINEAR});
 						let Mesh = ModelGetMaxMeshWarp(MC.Poses, sg, "pri_basic", "BasicMesh") ?
 							new PIXI.SimplePlane(RT, 30, 30)
 							: new PIXI.SimplePlane(RT, 2, 2);
-						
-						
-						
+												
 						Mesh.zIndex = -ModelLayers[metaLayerForward[sg][metaLayerForward[sg].length - 1]] - LAYER_INCREMENT;
 						ContainerContainer.Mesh.addChild(Mesh);
 						ContainerContainer.Submeshes.set(sg, {mesh: Mesh, rt: RT, container: cc,

@@ -188,6 +188,7 @@ AddModel({
 			AppendPose: {Up: "Up"},
 		},
 		{ Name: "Chest", Layer: "CatsuitChest", Pri: 1,
+			ExtraOverrideLayers: ["Chest", "ChestUpper"],
 			InheritColor: "TorsoUpper",
 			//GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
@@ -206,6 +207,7 @@ AddModel({
 			InheritColor: "TorsoUpper",
 		},
 		{ Name: "Chest", Layer: "CatsuitChest", Pri: 1,
+			ExtraOverrideLayers: ["Chest", "ChestUpper"],
 			InheritColor: "TorsoUpper",
 			//GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
@@ -325,6 +327,7 @@ AddModel({
 			AppendPose: {Up: "Up"},
 		},
 		{ Name: "Chest", Layer: "CatsuitChest", Pri: 1,
+			ExtraOverrideLayers: ["Chest", "ChestUpper"],
 			InheritColor: "TorsoUpper",
 			//GlobalDefaultOverride: ToMap(["Hogtie"]),
 		},
@@ -483,10 +486,6 @@ AddModel({
 			Layer: "TorsoLower",
 			Pri: 2,
 			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
-			DisplaceAmount: 150,
-			DisplaceLayers: ToMap(["CorsetTorso"]),
-			DisplacementSprite: "CorsetSquishTight",
-			DisplacementInvariant: true,
 		},
 		{
 			Name: "LegRight",
@@ -495,6 +494,10 @@ AddModel({
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			NoOverride: true,
+			EraseAmount: 100,
+			EraseInvariant: true,
+			EraseSprite: "EraseCoreLower",
+			EraseLayers: {CatsuitLegRight: true},
 		},
 		{
 			Name: "LegLeft",
@@ -504,6 +507,10 @@ AddModel({
 			Poses: ToMap(LEGPOSES),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			NoOverride: true,
+			EraseAmount: 100,
+			EraseInvariant: true,
+			EraseSprite: "EraseCoreLower2",
+			EraseLayers: {CatsuitLegLeft: true},
 		},
 		{
 			Name: "Butt",
@@ -559,16 +566,21 @@ AddModel({
 			Pri: 2,
 			InheritColor: "TorsoUpper",
 			AppendPose: {Up: "Up", Crossed: "Crossed", Front: "Front", Boxtie: "Boxtie", Wristtie: "Wristtie", Yoked: "Yoked"},
-			DisplaceAmount: 150,
-			DisplaceLayers: ToMap(["CorsetTorso"]),
-			DisplacementSprite: "CorsetSquishTight",
-			DisplacementInvariant: true,
+			EraseAmount: 100,
+			EraseInvariant: true,
+			EraseSprite: "EraseCoreUpper",
+			EraseLayers: {CatsuitUpper: true}
 		},
 		{
 			Name: "Chest",
 			Layer: "CatsuitChest",
+			ExtraOverrideLayers: ["Chest", "ChestUpper"],
 			Pri: 2,
 			InheritColor: "TorsoUpper",
+			EraseAmount: 100,
+			EraseInvariant: true,
+			EraseSprite: "EraseCoreChest",
+			EraseLayers: {CatsuitChest: true}
 		},
 	]),
 });
@@ -607,10 +619,6 @@ AddModel({
 			Pri: 3,
 			InheritColor: "TorsoLower",
 			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
-			DisplaceAmount: 150,
-			DisplaceLayers: ToMap(["CorsetTorso"]),
-			DisplacementSprite: "CorsetSquishTight",
-			DisplacementInvariant: true,
 			NoOverride: true,
 		},
 		{
@@ -694,10 +702,6 @@ AddModel({
 			Pri: 3,
 			InheritColor: "TorsoUpper",
 			AppendPose: {Up: "Up", Crossed: "Crossed", Front: "Front", Boxtie: "Boxtie", Wristtie: "Wristtie", Yoked: "Yoked"},
-			DisplaceAmount: 150,
-			DisplaceLayers: ToMap(["CorsetTorso"]),
-			DisplacementSprite: "CorsetSquishTight",
-			DisplacementInvariant: true,
 			NoOverride: true,
 		},
 		{
@@ -746,7 +750,7 @@ AddModel({
 });
 
 AddModel({
-	Name: "LeatherCatsuitLeotard",
+	Name: "LeatherLeotard",
 	TopLevel: true,
 	Categories: ["Suits"],
 	Folder: "LeatherCatsuit",
@@ -758,20 +762,50 @@ AddModel({
 			Layer: "TorsoUpper",
 			Pri: 5,
 			InheritColor: "TorsoUpper",
-			DisplaceAmount: 150,
-			DisplaceLayers: ToMap(["CorsetTorso"]),
-			DisplacementSprite: "CorsetSquishTight",
-			DisplacementInvariant: true,
 		},
 		{
 			Name: "LeotardLower",
 			Layer: "TorsoLower",
 			Pri: 5,
 			InheritColor: "TorsoLower",
-			DisplaceAmount: 150,
-			DisplaceLayers: ToMap(["CorsetTorso"]),
-			DisplacementSprite: "CorsetSquishTight",
-			DisplacementInvariant: true,
+		},
+		{
+			Name: "Chest",
+			Layer: "CatsuitChest",
+			ExtraOverrideLayers: ["Chest", "ChestUpper"],
+			Pri: 5,
+			InheritColor: "TorsoUpper",
+			EraseAmount: 100,
+			EraseInvariant: true,
+			EraseSprite: "EraseCoreChest",
+			EraseLayers: {CatsuitChest: true}
+		},
+	]),
+});
+AddModel({
+	Name: "TransparentLeatherLeotard",
+	TopLevel: false,
+	Parent: "LeatherLeotard",
+	Categories: ["Suits"],
+	Folder: "LeatherCatsuit",
+	Group: "LeatherCatsuit",
+	AddPose: ["HideNipples"],
+	Filters: {
+		TorsoUpper: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.65,"hue":-1,"colorize":0},
+		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.65,"hue":-1,"colorize":0}
+	},
+	Layers: ToLayerMap([
+		{
+			Name: "LeotardUpper",
+			Layer: "TorsoUpper",
+			Pri: 5,
+			InheritColor: "TorsoUpper",
+		},
+		{
+			Name: "LeotardLower",
+			Layer: "TorsoLower",
+			Pri: 5,
+			InheritColor: "TorsoLower",
 		},
 		{
 			Name: "Chest",

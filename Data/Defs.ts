@@ -1252,6 +1252,35 @@ let LayerGroups = {
 		"TorsoLower",
 		"Torso",
 	]),
+	
+	"CatsuitUpper": ToMap([
+		"CatsuitChest",
+		"ArmLeft",
+		"ArmRight",
+		"TorsoUpper",
+	]),
+	"CatsuitLower": ToMap([
+		"FootRightKneel",
+		"FootLeftHogtie",
+		"FootLeft",
+		"LegLeft",
+		"FootRight",
+		"LegRight",
+		"TorsoLower",
+	]),
+	"CatsuitLegLeft": ToMap([
+		"FootRightKneel",
+		"FootLeft",
+		"LegLeft",
+	]),
+	"CatsuitLegRight": ToMap([
+		"FootRightKneel",
+		"FootRight",
+		"LegRight",
+	]),
+	"CatsuitChest": ToMap([
+		"CatsuitChest",
+	]),
 	"TightChastityBelt": ToMap([
 		"CorsetLiner",
 		// Skirts that dont follow shilhouette and are puffy
