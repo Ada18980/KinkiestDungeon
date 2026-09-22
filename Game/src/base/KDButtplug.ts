@@ -29,6 +29,10 @@ interface KDXtoysPayload {
     data?: any,
     /** number */
     amount?: string,
+    front?: string,
+    panties?: string,
+    rear?: string,
+    nipples?: string,
 }
 
 async function KDXtoys_Send(action: string, data: KDXtoysPayload) {

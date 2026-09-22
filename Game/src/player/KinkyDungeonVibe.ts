@@ -13,13 +13,14 @@ KinkyDungeonPlayerVibratedLocationItemBoots,Feet*/
 
 let KDVibeSounds = {
 	"ItemVulva": {sound: "", Audio: null, update: false, height: 0.8},
+	"ItemVulvaPiercings": {sound: "", Audio: null, update: false, height: 0.7},
 	"ItemButt": {sound: "", Audio: null, update: false, height: 1},
 	"ItemNipples": {sound: "", Audio: null, update: false, vol: 0.5, height: 0.25},
 };
 
 let KDVibeSoundRedirect = {
 	"ItemVulva": "ItemVulva",
-	"ItemVulvaPiercings": "ItemNipples", // TODO add softer piercings sound
+	"ItemVulvaPiercings": "ItemVulvaPiercings", // TODO add softer piercings sound
 	"ItemButt": "ItemButt",
 	"ItemNipplesPiercings": "ItemNipples",
 	"ItemNipples": "ItemNipples",
@@ -34,6 +35,7 @@ let KDVibeSound = {
 	"ItemButt": ["Vibe2"],
 	//"ItemNipplesPiercings": "ItemNipples",
 	"ItemNipples": ["Vibe3"],
+	"ItemVulvaPiercings": ["Vibe3"],
 	//"ItemBreast": "ItemNipples", // TODO add massager sound
 	//"ItemBoots": "ItemNipples", // TODO add foot tickler sound
 };
@@ -687,6 +689,25 @@ function KinkyDungeonStartVibration (
 		VibeModifiers: vibeMods ? vibeMods : [],
 	};
 
+	
+	if (KDGameData.CurrentVibration && KDXtoysWebhook && KDToggles.Buttplug) {
+		KDXtoys_Send('vibestart', {
+			amount: KDGameData.CurrentVibration.intensity + "",
+			front: KDGameData.CurrentVibration.location?.some(loc => {
+				return KDVibeSoundRedirect[loc] == "ItemVulva"
+			}) ? "1" : undefined,
+			panties: KDGameData.CurrentVibration.location?.some(loc => {
+				return KDVibeSoundRedirect[loc] == "ItemVulvaPiercings"
+			}) ? "1" : undefined,
+			nipples: KDGameData.CurrentVibration.location?.some(loc => {
+				return KDVibeSoundRedirect[loc] == "ItemNipples"
+			}) ? "1" : undefined,
+			rear: KDGameData.CurrentVibration.location?.some(loc => {
+				return KDVibeSoundRedirect[loc] == "ItemButt"
+			}) ? "1" : undefined,
+		});
+	}
+
 	if (!KDGameData.TimeSinceLastVibeStart) KDGameData.TimeSinceLastVibeStart = {};
 	KDGameData.TimeSinceLastVibeStart[name] = 0;
 
@@ -842,6 +863,23 @@ function KinkyDungeonCalculateVibeLevel(delta: number) {
 		if (cease) {
 			if (!KDGameData.TimeSinceLastVibeEnd) KDGameData.TimeSinceLastVibeEnd = {};
 			KDGameData.TimeSinceLastVibeEnd[KDGameData.CurrentVibration.name] = 0;
+			if (KDGameData.CurrentVibration && KDXtoysWebhook && KDToggles.Buttplug) {
+				KDXtoys_Send('vibestop', {
+					amount: KDGameData.CurrentVibration.intensity + "",
+					front: KDGameData.CurrentVibration.location?.some(loc => {
+						return KDVibeSoundRedirect[loc] == "ItemVulva"
+					}) ? "1" : undefined,
+					panties: KDGameData.CurrentVibration.location?.some(loc => {
+						return KDVibeSoundRedirect[loc] == "ItemVulvaPiercings"
+					}) ? "1" : undefined,
+					nipples: KDGameData.CurrentVibration.location?.some(loc => {
+						return KDVibeSoundRedirect[loc] == "ItemNipples"
+					}) ? "1" : undefined,
+					rear: KDGameData.CurrentVibration.location?.some(loc => {
+						return KDVibeSoundRedirect[loc] == "ItemButt"
+					}) ? "1" : undefined,
+				});
+			}
 			KDGameData.CurrentVibration = null;
 		}
 	}
@@ -929,6 +967,24 @@ function KinkyDungeonEndVibration() {
 		} else {
 			if (!KDGameData.TimeSinceLastVibeEnd) KDGameData.TimeSinceLastVibeEnd = {};
 			KDGameData.TimeSinceLastVibeEnd[KDGameData.CurrentVibration.name] = 0;
+			
+			if (KDGameData.CurrentVibration && KDXtoysWebhook && KDToggles.Buttplug) {
+				KDXtoys_Send('vibestop', {
+					amount: KDGameData.CurrentVibration.intensity + "",
+					front: KDGameData.CurrentVibration.location?.some(loc => {
+						return KDVibeSoundRedirect[loc] == "ItemVulva"
+					}) ? "1" : undefined,
+					panties: KDGameData.CurrentVibration.location?.some(loc => {
+						return KDVibeSoundRedirect[loc] == "ItemVulvaPiercings"
+					}) ? "1" : undefined,
+					nipples: KDGameData.CurrentVibration.location?.some(loc => {
+						return KDVibeSoundRedirect[loc] == "ItemNipples"
+					}) ? "1" : undefined,
+					rear: KDGameData.CurrentVibration.location?.some(loc => {
+						return KDVibeSoundRedirect[loc] == "ItemButt"
+					}) ? "1" : undefined,
+				});
+			}
 			KDGameData.CurrentVibration = null;
 		}
 	}

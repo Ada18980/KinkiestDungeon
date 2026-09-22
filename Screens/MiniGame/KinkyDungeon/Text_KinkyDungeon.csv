@@ -34359,7 +34359,8 @@ KDButtplugLowBattery,"Buttplug.io device ${DEVICE} has low battery"
 
 KDButtplugCategory_Battery,Battery
 KDButtplugCategory_ItemButt,Rear
+KDButtplugCategory_ItemVulvaPiercings,Panties
 KDButtplugCategory_ItemVulva,Front
 KDButtplugCategory_ItemNipples,Nipples
 
-KDXtoysWebhookID,Paste your Xtoys webhook ID here and the game will post messages|Supported actions: 'shock'
+KDXtoysWebhookID,"Paste your Xtoys webhook ID here and the game will post messages|Supported actions: 'shock', 'vibestart', 'vibestop'"
