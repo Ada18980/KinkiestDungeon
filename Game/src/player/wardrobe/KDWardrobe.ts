@@ -747,7 +747,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 					Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
 				Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * max;
 				
-				if (KDToggles.HSL && (Model.Filters[KDCurrentLayer].hue == -1 || !Model.Filters[KDCurrentLayer].hue)) 
+				if (KDToggles.HSL && (Model.Filters[KDCurrentLayer].hue <= -1 || !Model.Filters[KDCurrentLayer].hue)) 
 					Model.Filters[KDCurrentLayer].hue = 0;
 				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
 				UpdateModels(C);
@@ -815,6 +815,17 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 			C?.metadata?.palette || C.Palette || "", C?.ID + "_",
 			Model.factionFilters ? Model.factionFilters[KDCurrentLayer] : undefined,
 			!!TestMode,
+			(filters) => {
+				KDChangeWardrobe(C);
+				if (!Model.Filters) Model.Filters = {};
+				if (!Model.Filters[KDCurrentLayer])
+					Model.Filters[KDCurrentLayer] = Object.assign({}, filters || KDColorSliders);
+
+				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+				lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+				ForceRefreshModels(C);
+				UpdateModels(C);
+			}
 		).YY;
 	}
 
@@ -1704,15 +1715,41 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				
 			}
 		}
+
+		let UpdateFunc = () => {
+			if (KDPIXIPaletteFilters.has(pid + selectedPalette))
+				KDPIXIPaletteFilters.delete(pid + selectedPalette)
+			if (!C.metadata) {
+				C.metadata = DefaultOutfitMetadata();
+			}
+			if (palette && Object.values(palette).length > 0) {
+				if (!C.metadata.customColors) C.metadata.customColors = {};
+				if (!C.metadata.customColors[selectedPalette]) 
+					C.metadata.customColors[selectedPalette] = KDCurrentCharacterPalettes[selectedPalette] || {};
+				C.metadata.customColors[selectedPalette][palettelayer] = palette[palettelayer];
+			} else {
+				delete C.metadata.customColors[selectedPalette];
+				delete KDCurrentCharacterPalettes[selectedPalette];
+			}
+			for (let palette in C.metadata.customColors) {
+				// finally update
+				KDCurrentCharacterPalettes[palette] = C.metadata.customColors[palette];
+			}
+			KDRefreshCharacter.set(C, true);
+			KDDressWardrobeChar(C);
+		}
 		
 		if (palette && selectedPalette) {
 
 			
 			let top = 100;
 			let X = 1625;
-			let res = KDDrawColorPicker("Default", C, palettelayer, palette[palettelayer], palette, 
+			let res = KDDrawColorPicker("Default", C, palettelayer, palette[palettelayer],
+				palette, 
 				top, X,
-				300);
+				300, undefined, undefined, undefined, undefined, undefined, undefined,
+				undefined, undefined, undefined, undefined, undefined, undefined, 
+				UpdateFunc);
 				
 			DrawButtonKDEx("tab_ColorPickerSimple", (_b) => {
 				KDToggles.SimpleColorPicker = true;
@@ -1780,26 +1817,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			}
 			
 			if (res.updated) {
-				if (KDPIXIPaletteFilters.has(pid + selectedPalette))
-					KDPIXIPaletteFilters.delete(pid + selectedPalette)
-				if (!C.metadata) {
-					C.metadata = DefaultOutfitMetadata();
-				}
-				if (palette && Object.values(palette).length > 0) {
-					if (!C.metadata.customColors) C.metadata.customColors = {};
-					if (!C.metadata.customColors[selectedPalette]) 
-						C.metadata.customColors[selectedPalette] = KDCurrentCharacterPalettes[selectedPalette] || {};
-					C.metadata.customColors[selectedPalette][palettelayer] = palette[palettelayer];
-				} else {
-					delete C.metadata.customColors[selectedPalette];
-					delete KDCurrentCharacterPalettes[selectedPalette];
-				}
-				for (let palette in C.metadata.customColors) {
-					// finally update
-					KDCurrentCharacterPalettes[palette] = C.metadata.customColors[palette];
-				}
-				KDRefreshCharacter.set(C, true);
-				KDDressWardrobeChar(C);
+				UpdateFunc();
 			};
 		}
 		if (temporary || temporaryNoLayer) {
@@ -1901,6 +1919,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	let clickButton = (index: number) => {
 		return (_bdata: any) => {
 			KDSelectedModel = null;
+			KDPIXIPaletteFilters.clear();
 			if (C == KinkyDungeonPlayer) {
 				KDOutfitStore[KDCurrentOutfit] = LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer,
 					KDGetCharMetadata(C || KinkyDungeonPlayer)
@@ -3113,6 +3132,7 @@ function KDDrawColorPicker(id: string,
 	pid?: string,
 	factionFilterDef?: FactionFilterDef,
 	debug?: boolean,
+	updateFunc?: Function
 
 ): {YY: number, updated: boolean} {
 	let targ_filter = targetFilter;
@@ -3386,6 +3406,7 @@ function KDDrawColorPicker(id: string,
 
 		let dist = KDistEuclidean(MouseX - (X + radius), MouseY - (YY + radius));
 		if ((mouseDown && dist * 0.8 < radius) || force) {
+			KDToggles.HSL = true;
 			let hue = Math.max(0, 0.5 + 0.5 * Math.min(1, Math.atan2(
 				-MouseY + (YY + radius),
 				-MouseX + (X + radius)) / Math.PI));
@@ -3446,6 +3467,12 @@ function KDDrawColorPicker(id: string,
 
 		YY += 300;
 	} else {
+		// load existing filter
+		if (isNaN(targ_filter.hue)) KDToggles.HSL = false;
+		else if (targ_filter.hue >= 0) KDToggles.HSL = true;
+		// Default
+		else if (targ_filter.hue == -1) KDToggles.HSL = !KDToggles.ForceRGB;
+		
 		for (let key of Object.keys(KDColorSliders)) {
 			if (KDToggles.HSL) {
 				if (key == 'red'
@@ -3470,7 +3497,13 @@ function KDDrawColorPicker(id: string,
 			if (key == 'alpha' && KDToggles.HSL) {
 				max = 2;
 			}
-			DrawTextFitKD(TextGet(txtstr) + ": " + (amt), X + width/2, YY, width, KDBaseWhite, KDBaseBlack, 20);
+
+			if (key == 'hue' && isNaN(amt)) KDToggles.HSL = false;
+			
+			DrawTextFitKD(TextGet(txtstr) + ": " + 
+				((key == 'hue' && (amt < 0 || isNaN(amt))) ? TextGet("KDNotSet") : amt), 
+				X + width/2, YY, width, 
+			KDBaseWhite, KDBaseBlack, 20);
 			KinkyDungeonBar(X, YY - 15, width, 30, targ_filter[key]/max*100, KDColorSliderColor[key] || KDBaseWhite, KDBaseBlack);
 			if ((mouseDown) && MouseIn(X, YY - 15, width, 30)) {
 				MouseClicked = false;
@@ -3484,7 +3517,7 @@ function KDDrawColorPicker(id: string,
 						if (!targetFilters[currentLayerName])
 							targetFilters[currentLayerName] = Object.assign({}, KDColorSliders);
 						targetFilters[currentLayerName][key] = ((MouseX - X) / width) * max;
-						if (KDToggles.HSL && (targetFilters[currentLayerName].hue == -1 || !targetFilters[currentLayerName].hue)) 
+						if (KDToggles.HSL && (targetFilters[currentLayerName].hue <= -1 || !targetFilters[currentLayerName].hue)) 
 							targetFilters[currentLayerName].hue = 0;
 						let maxNorm = Math.max(1.5, Math.max(
 							targetFilters[currentLayerName].red,
@@ -3518,13 +3551,19 @@ function KDDrawColorPicker(id: string,
 				if (!targetFilters[currentLayerName])
 					targetFilters[currentLayerName] = Object.assign({}, KDColorSliders);
 				if (targetFilters[currentLayerName].colorize > 0.5) targetFilters[currentLayerName].colorize = 0;
-				else targetFilters[currentLayerName].colorize = 1;
+				else {
+					targetFilters[currentLayerName].saturation = 1;
+					targetFilters[currentLayerName].colorize = 1;
+				}
+				
 				ElementValue("KDCopyFilter", JSON.stringify(targetFilters[currentLayerName]));
 				lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 
 				if (C) {
 					KDRefreshCharacter.set(C, true);
 					KDDressWardrobeChar(C);
+					if (updateFunc)
+						updateFunc(targetFilters[currentLayerName]);
 				}
 				return true;
 			}, true, 
@@ -3543,15 +3582,25 @@ function KDDrawColorPicker(id: string,
 			if (!targetFilters) targetFilters = {};
 			if (!targetFilters[currentLayerName])
 				targetFilters[currentLayerName] = Object.assign({}, KDColorSliders);
+			
+			if ((targetFilters[currentLayerName].red != targetFilters[currentLayerName].green
+				|| targetFilters[currentLayerName].green != targetFilters[currentLayerName].blue
+				|| targetFilters[currentLayerName].blue != targetFilters[currentLayerName].red)
+				&& targetFilters[currentLayerName].saturation < 0.1)
+				targetFilters[currentLayerName].saturation = 1; // color detected
+
 			targetFilters[currentLayerName].hue = 0;
 			if (targetFilters[currentLayerName].saturation > 2) targetFilters[currentLayerName].saturation = 2;
 			if (targetFilters[currentLayerName].alpha > 2) targetFilters[currentLayerName].alpha = 2;
 			ElementValue("KDCopyFilter", JSON.stringify(targetFilters[currentLayerName]));
 			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 			targetFilters[currentLayerName].colorize = 1;
+			
 			if (C) {
 				KDRefreshCharacter.set(C, true);
 				KDDressWardrobeChar(C);
+				if (updateFunc)
+					updateFunc(targetFilters[currentLayerName]);
 			}
 			return true;
 		}, true, 
@@ -3565,13 +3614,15 @@ function KDDrawColorPicker(id: string,
 			if (!targetFilters) targetFilters = {};
 			if (!targetFilters[currentLayerName])
 				targetFilters[currentLayerName] = Object.assign({}, KDColorSliders);
-			targetFilters[currentLayerName].hue = -1;
+			targetFilters[currentLayerName].hue = -2;
 			targetFilters[currentLayerName].colorize = 0;
 			ElementValue("KDCopyFilter", JSON.stringify(targetFilters[currentLayerName]));
 			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 			if (C) {
 				KDRefreshCharacter.set(C, true);
 				KDDressWardrobeChar(C);
+				if (updateFunc)
+					updateFunc(targetFilters[currentLayerName]);
 			}
 			return true;
 		}, true, 

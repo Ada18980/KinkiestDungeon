@@ -14414,6 +14414,7 @@ KDResetAllLayers,Reset All Layers
 KDExportAllProps,Export All Props
 KDCopyLayer,Copy
 KDPasteLayer,Paste
+KDNotSet,Not Set
 
 KDTooltipItems,Items on Ground:
 
@@ -29698,7 +29699,7 @@ KDLayers,Layers:
 KDColorHex,Hex Code:
 KDColorHSL,HSL
 KDColorRGB,RGB
-
+KDToggleForceRGB,Default to RGB color picker
 
 KDLogFilterExpand,Expand Log to view Filters
 KDHideRest,Toggle Struggle UI Mode

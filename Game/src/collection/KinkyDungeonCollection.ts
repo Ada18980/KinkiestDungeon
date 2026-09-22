@@ -498,6 +498,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
 		//KDSpeakerNPC = null;
 		KinkyDungeonState = "Wardrobe";
+			KDPIXIPaletteFilters.clear();
 		KDCanRevertFlag = value.customOutfit != undefined;
 		ForceRefreshModels(KDSpeakerNPC);
 		KDOriginalValue = "";

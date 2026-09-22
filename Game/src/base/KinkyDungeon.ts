@@ -2252,6 +2252,7 @@ function KinkyDungeonRun() {
 			DrawButtonKDEx("loadclothes", (_b) => {
 				KDSaveCodeOutfit(Char, true);
 				KinkyDungeonState = "Wardrobe";
+				KDPIXIPaletteFilters.clear();
 				KDCanRevertFlag = false;
 				//KDWardrobeCallback = null;
 				//KDWardrobeRevertCallback = null;
@@ -6500,6 +6501,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 			KDRefreshCharacter.set(Char, true);
 			KinkyDungeonDressPlayer(Char, true);
 			KinkyDungeonState = "Wardrobe";
+			KDPIXIPaletteFilters.clear();
 			KDCanRevertFlag = false;
 			//KDWardrobeCallback = null;
 			//KDWardrobeRevertCallback = null;
@@ -6511,6 +6513,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 			if (StandalonePatched) {
 				KDRestoreOutfit();
 				KinkyDungeonState = "Wardrobe";
+				KDPIXIPaletteFilters.clear();
 				KDCanRevertFlag = false;
 				KDWardrobeCallback = null;
 				KDWardrobeRevertCallback = null;
@@ -8616,6 +8619,7 @@ function KDDrawWardrobeButton() {
 			KDSpeakerNPC = null;
 			KinkyDungeonPreviousState = KinkyDungeonState;
 			KinkyDungeonState = "Wardrobe";
+			KDPIXIPaletteFilters.clear();
 			KDCanRevertFlag = false;
 			KDWardrobeCallback = null;
 			KDWardrobeRevertCallback = null;

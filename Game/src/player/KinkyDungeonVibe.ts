@@ -120,6 +120,7 @@ let KDToggles = {
 	SimpleColorPicker: true,
 	PaletteColorPicker: false,
 	HSL: true,
+	ForceRGB: false,
 	TransparentUI: false,
 	Center: false,
 	TurnCounter: false,
@@ -308,6 +309,7 @@ let KDToggleCategories = {
 
 	PaletteColorPicker: "none",
 	HSL: "none",
+	ForceRGB: "Clothes",
 
 	IgnoreApplyCharPalette: "none",
 	AlwaysApplyCharPalette: "none",
