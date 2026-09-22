@@ -28059,6 +28059,11 @@ m_FashionNeoAnkleLink_l_AnkleLinkHardware,AnkleLinkHardware
 m_CyberPetsuit_l_Unit,Unit
 m_CyberPetsuit_l_Unit,Unit
 
+m_TransparentLeatherLeotard,Transparent Leather Leotard
+m_TransparentLeatherLeotard_l_TorsoUpper,Torso Upper
+m_TransparentLeatherLeotard_l_TorsoLower,Torso Lower
+m_TransparentLeatherLeotard_l_TorsoUpper,Torso Upper
+
 
 KDHideItems,Hide Items
 KDSortItems,Sort Items

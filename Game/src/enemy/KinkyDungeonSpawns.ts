@@ -280,10 +280,12 @@ function KinkyDungeonGetEnemy (
 			else rst = true;
 			if (rt && rst) {
 				let weight = enemy.weight + weightBonus;
-				if (enemy.terrainTags.increasingWeight)
-					weight += enemy.terrainTags.increasingWeight * Math.floor(Level/KDLevelsPerCheckpoint);
-				for (let tag of tags)
-					if (enemy.terrainTags[tag]) weight += enemy.terrainTags[tag];
+				if (enemy.terrainTags) {
+					if (enemy.terrainTags.increasingWeight)
+						weight += enemy.terrainTags.increasingWeight * Math.floor(Level/KDLevelsPerCheckpoint);
+					for (let tag of tags)
+						if (enemy.terrainTags[tag]) weight += enemy.terrainTags[tag];
+				}
 
 				if (enemy.weightMult) weightMulti *= enemy.weightMult;
 
