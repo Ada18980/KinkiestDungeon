@@ -1771,6 +1771,7 @@ EnemyName对TargetName念出了一个口令！
 # :: m_Dress_l_Panties
 # :: m_BindingDress_l_Panties
 # :: KDFilterFiltersPanties
+# :: KDButtplugCategory_ItemVulvaPiercings
 - Front
 正面
 # :: KinkyDungeonPlayerVibratedLocationItemVulva
@@ -8544,6 +8545,8 @@ RestraintName 上的诅咒解除了！
 # :: m_HighSecCollar_l_Collar
 # :: m_FashionHighSecCollar_l_Collar
 # :: m_HighSecCollarRestraint_l_Collar
+# :: m_MaidBow_l_Collar
+# :: m_Maid_l_Collar
 - A classy leather collar.
 优雅的皮革项圈。
 - Allows fitting of a leash.
@@ -26993,6 +26996,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 复制
 - Paste
 粘贴
+# - Not Set
 
 - Items on Ground:
 地面物品：
@@ -27165,8 +27169,13 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 胶衣
 - Torso Lower
 躯干下部
+# :: l_Catsuit_TorsoLower
+# :: m_TransparentLeatherLeotard_l_TorsoLower
 - Torso Upper
 躯干上部
+# :: l_Catsuit_TorsoUpper
+# :: m_TransparentLeatherLeotard_l_TorsoUpper
+# :: m_TransparentLeatherLeotard_l_TorsoUpper
 - Labcoat
 实验服
 - Shoulders
@@ -28790,6 +28799,16 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_MilitaryUniform_Sleeves_l_ArmRight
 # :: m_MilitaryJacket_l_ArmRight
 # :: m_MilitaryUniform_l_ArmRight
+# :: m_LeatherCatsuitUpper_l_ArmRight
+# :: m_LeatherCatsuitUpper_l_ArmRight
+# :: m_LeatherCatsuit_l_ArmRight
+# :: m_LeatherCatsuit_l_ArmRight
+# :: m_TransparentLeatherCatsuitUpper_l_ArmRight
+# :: m_TransparentLeatherCatsuitUpper_l_ArmRight
+# :: m_TransparentLeatherCatsuit_l_ArmRight
+# :: m_TransparentLeatherCatsuit_l_ArmRight
+# :: m_LeatherCatsuitRestraint_l_ArmRight
+# :: m_LeatherCatsuitRestraint_l_ArmRight
 - ArmLeft
 左臂
 # :: m_Body_l_ArmLeft
@@ -28833,6 +28852,16 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_MilitaryUniform_Sleeves_l_ArmLeft
 # :: m_MilitaryJacket_l_ArmLeft
 # :: m_MilitaryUniform_l_ArmLeft
+# :: m_LeatherCatsuitUpper_l_ArmLeft
+# :: m_LeatherCatsuitUpper_l_ArmLeft
+# :: m_LeatherCatsuit_l_ArmLeft
+# :: m_LeatherCatsuit_l_ArmLeft
+# :: m_TransparentLeatherCatsuitUpper_l_ArmLeft
+# :: m_TransparentLeatherCatsuitUpper_l_ArmLeft
+# :: m_TransparentLeatherCatsuit_l_ArmLeft
+# :: m_TransparentLeatherCatsuit_l_ArmLeft
+# :: m_LeatherCatsuitRestraint_l_ArmLeft
+# :: m_LeatherCatsuitRestraint_l_ArmLeft
 - ShoulderRight
 右肩
 # :: m_Body_l_ShoulderRight
@@ -29041,6 +29070,13 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_RubberLegs_l_LegLeft
 # :: m_Hobbleskirt_l_LegLeft
 # :: m_SmoothHeels_l_LegLeft
+# :: m_LeatherCatsuitLower_l_LegLeft
+# :: m_LeatherCatsuit_l_LegLeft
+# :: m_TransparentLeatherCatsuitLower_l_LegLeft
+# :: m_TransparentLeatherCatsuitLower_l_LegLeft
+# :: m_TransparentLeatherCatsuit_l_LegLeft
+# :: m_TransparentLeatherCatsuit_l_LegLeft
+# :: m_LeatherCatsuitRestraint_l_LegLeft
 # :: m_LeatherPants_l_LegLeft
 - FootRightKneel
 右足(跪姿)
@@ -29125,6 +29161,11 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_RubberLegs_l_LegRight
 # :: m_Hobbleskirt_l_LegRight
 # :: m_SmoothHeels_l_LegRight
+# :: m_LeatherCatsuitLower_l_LegRight
+# :: m_LeatherCatsuit_l_LegRight
+# :: m_TransparentLeatherCatsuitLower_l_LegRight
+# :: m_TransparentLeatherCatsuit_l_LegRight
+# :: m_LeatherCatsuitRestraint_l_LegRight
 - Butt
 臀部
 :: m_Body_l_Butt
@@ -42956,6 +42997,8 @@ Vents发型
 # :: m_LeatherCollarBow_l_Bell
 # :: m_FashionLeatherCollarBell_l_Bell
 # :: m_FashionLeatherCollarBow_l_Bell
+# :: m_MaidBow_l_Bell
+# :: m_Maid_l_Bell
 - LockPlate
 锁板
 # :: m_DivineCuffsWristLeft_l_LockPlate
@@ -43637,6 +43680,7 @@ Vents发型
 # :: m_DivineMuzzleClean_l_Clips
 # :: m_FashionDivineMuzzleClean_l_Clips
 
+
 - HighSecBlindfold
 高安全性眼罩
 # - HarnessL
@@ -44241,6 +44285,9 @@ Kjus眼5
 # - AnkleLinkHardware
 # :: m_NeoAnkleLink_l_AnkleLinkHardware
 # :: m_FashionNeoAnkleLink_l_AnkleLinkHardware
+
+# - Transparent Leather Leotard
+
 
 
 - Hide Items
@@ -46905,7 +46952,7 @@ RestraintName 失效了！
 十六进制颜色码 : ‎
 # - HSL
 # - RGB
-
+# - Default to RGB color picker
 
 # - Expand Log to view Filters
 - Toggle Struggle UI Mode
@@ -49990,8 +50037,11 @@ EchoZero - 机械完美
 # :: MachinedPerfection_Loopable.ogg
 - Kocaeli - Doll Storage
 Kocaeli - 《玩偶柜》
+# - Kocaeli - Dressmaker Shop
+# - Kocaeli - Bandit Auction
 - Kocaeli - Doll Sorting Area
 Kocaeli - 《玩偶分拣区》
+# - Kocaeli - Night Market
 - Kocaeli - Factory
 Kocaeli - 《工厂》
 - Kocaeli - AAA
@@ -54278,4 +54328,4 @@ TA
 
 # - Battery
 
-# - Paste your Xtoys webhook ID here and the game will post messages|Supported actions: 'shock'
+# - Paste your Xtoys webhook ID here and the game will post messages|Supported actions: 'shock', 'vibestart', 'vibestop'
