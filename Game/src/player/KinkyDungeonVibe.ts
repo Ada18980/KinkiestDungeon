@@ -201,6 +201,7 @@ let KDToggles = {
 	FlashingWarning: true,
 	HypnoOverlay: true,
 	WarningSound: true,
+	SoundAutoPathEnd: true,
 	SoundNotification: true,
 	ShowDefensiveStats: true,
 	
@@ -321,6 +322,7 @@ let KDToggleCategories = {
 	AutoWaitDelayed: "Controls",
 	
 	WarningSound: "UI",
+	SoundAutoPathEnd: "UI",
 	SoundNotification: "UI",
 	ShowDefensiveStats: "UI",
 };

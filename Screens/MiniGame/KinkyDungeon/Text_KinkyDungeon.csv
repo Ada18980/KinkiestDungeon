@@ -69,7 +69,7 @@ KDToggleFastMoveDoors,Auto-path through Doors
 
 KDToggleBindPercent,Show Enemy Binding as %
 KDToggleAutoWaitDelayed,Auto-wait Through Delayed Actions
-
+KDToggleSoundAutoPathEnd,Play sound if Auto-Path interrupted
 
 KDToggleWarningSound,Play sound when targeted by attacks
 KDToggleStackOutfitItems,Allow Stacking Similar Items

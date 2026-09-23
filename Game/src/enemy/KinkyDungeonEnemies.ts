@@ -6,7 +6,7 @@ let KDEnemyGlobals = {
 	Pronoun_Subby_ItChance: 0.1,
 };
 
-let KDStopAutoSound = "ClickError";
+let KDStopAutoSound = "EnemySpotted";
 
 let KDTooltipListExtraCutoff = 17;
 let KDTooltipListExtraCutoffHigh = 30;
@@ -774,7 +774,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 			if (KinkyDungeonFastStruggle) {
 				
 				if (!KinkyDungeonAutoWait)
-					if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
+					if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2 && KDToggles.SoundAutoPathEnd)
 						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KDStopAutoSound + ".ogg");
 				KinkyDungeonFastStruggle = false;
 				KinkyDungeonFastStruggleGroup = "";
@@ -815,7 +815,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 						if (!KinkyDungeonFlags.get("startPath")) {
 						
 							if (!KinkyDungeonAutoWait)
-								if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress)
+								if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && KDToggles.SoundAutoPathEnd)
 									KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KDStopAutoSound + ".ogg");
 							if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
 								KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
@@ -829,7 +829,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 						!enemy.Enemy.tags.harmless &&
 						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
 						if (!KinkyDungeonAutoWait)
-							if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
+							if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2 && KDToggles.SoundAutoPathEnd)
 								KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KDStopAutoSound + ".ogg");
 						KinkyDungeonFastStruggle = false;
 						KinkyDungeonFastStruggleGroup = "";
@@ -982,7 +982,7 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 	}
 	
 	if (!KinkyDungeonAutoWait)
-		if (reenabled2 && KinkyDungeonFastStruggle) {
+		if (reenabled2 && KinkyDungeonFastStruggle && KDToggles.SoundAutoPathEnd) {
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KDStopAutoSound + ".ogg");
 		}
 }
