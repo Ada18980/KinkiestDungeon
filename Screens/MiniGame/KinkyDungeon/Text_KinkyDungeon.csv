@@ -32554,6 +32554,7 @@ KDBindType_Dress,Dress
 KDBindType_Cloth,Cloth
 KDBindType_Ribbons,Magic Ribbons
 KDBindType_Furniture,Furniture
+KDBindType_Remove,Will be struggled next floor
 
 KDSaving,Saving...
 KDSaved,Game Saved

@@ -1661,7 +1661,8 @@ function KinkyDungeonBarTo (
 	notches:     number[] = undefined,
 	notchcolor:  string = KDBaseWhite,
 	notchbg:     string = KDBaseWhite,
-	zIndex:      number = 55
+	zIndex:      number = 55,
+	alpha?: number
 )
 {
 	if (value < 0) value = 0;
@@ -1678,6 +1679,7 @@ function KinkyDungeonBarTo (
 			Color: KDBaseBlack,
 			LineWidth: 1,
 			zIndex: zIndex+value*0.0001,
+			alpha: alpha,
 		});
 	FillRectKD(canvas, kdpixisprites, id + '2', {
 		Left: reverse ? x - 2 + w - Math.floor((w - 4) * value / 100) : x + 2,
@@ -1687,6 +1689,7 @@ function KinkyDungeonBarTo (
 		Color: foreground,
 		LineWidth: 1,
 		zIndex: zIndex + .1,
+		alpha: alpha,
 	});
 	if (background != "none")
 		FillRectKD(canvas, kdpixisprites, id + '3', {
@@ -1697,6 +1700,7 @@ function KinkyDungeonBarTo (
 			Color: background,
 			LineWidth: 1,
 			zIndex: zIndex + .2,
+			alpha: alpha,
 		});
 	if (orig != undefined)
 		FillRectKD(canvas, kdpixisprites, id + '4', {
@@ -1713,6 +1717,7 @@ function KinkyDungeonBarTo (
 			Color: origColor,
 			LineWidth: 1,
 			zIndex: zIndex + .3,
+			alpha: alpha,
 		});
 	if (notches) {
 		for (let n of notches) {

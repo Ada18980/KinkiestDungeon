@@ -1938,6 +1938,8 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 	let defaultSpeed = KDIsImprisoned(enemy) || !KinkyDungeonFindID(enemy.id);
 
 	let tooltip = "";
+	let tooltipPri = -10000;
+
 	let tooltipcolor = KDBaseWhite;
 	let tooltipAmt = 0;
 	let II = 0;
@@ -1957,9 +1959,21 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 		for (let i = 0; i < bindingBars && i < maxBars; i++) {
 			if (i > 0) II++;
 			let mod = visualbond - bindAmpMod * futureBound.boundLevel;
+			let frac = Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp);
+			if (MouseIn(x, y + yy - spacing*II,width * frac, height)) {
+					tooltipPri = -1000;
+					tooltip = "KDBindType_Remove";
+					tooltipcolor = KDBaseWhite;
+					tooltipAmt = Math.round((visualbond - i * enemy.Enemy.maxhp));
+				}
 			// Part that will be struggled out of
 			KinkyDungeonBarTo(kdcanvas, x, y + yy - spacing*II,
-				width, height, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, KDBaseWhite, "#222222");
+				width, height, frac * 100, KDBaseWhite, "#222222");
+			// Flashing Alpha component
+			KinkyDungeonBarTo(kdcanvas, x, y + yy - spacing*II,
+				width, height, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, 
+				KDBaseRed, "#222222", undefined, undefined, undefined, undefined, undefined, undefined,
+			0.1 + 0.4 * (1 + Math.sin(2 / 1500 * Math.PI * (CommonTime() % 1500))));
 			// Separator between part that will be struggled and not
 			KinkyDungeonBarTo(kdcanvas, 1 + x, y + yy - spacing*II,
 				width, height, Math.min(1, (visualbond - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
@@ -1995,15 +2009,19 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 				let b = bondage[bi];
 				// Filter out anything that doesnt fit currently
 				if (b.level > i * enemy.Enemy.maxhp) {
+					let frac = Math.min(1, (Math.max(0, b.level - i * enemy.Enemy.maxhp)) / enemy.Enemy.maxhp);
 					bcolor = KDSpecialBondage[b.name] ? KDSpecialBondage[b.name].color : "#ffae70";
 					// Struggle bars themselves
-					if (MouseIn(x, y + yy - spacing*II,width, height)) {
-						tooltip = "KDBindType_" + b.name;
-						tooltipcolor = bcolor;
-						tooltipAmt = b.level;
+					if (MouseIn(x, y + yy - spacing*II,width * frac, height)) {
+						if (b.pri >= tooltipPri) {
+							tooltipPri = b.pri;
+							tooltip = "KDBindType_" + b.name;
+							tooltipcolor = bcolor;
+							tooltipAmt = b.level;
+						}
 					}
 					KinkyDungeonBarTo(kdcanvas, x, y + yy - spacing*II,
-						width, height, Math.min(1, (Math.max(0, b.level - i * enemy.Enemy.maxhp)) / enemy.Enemy.maxhp) * 100, bcolor, "none",
+						width, height, frac * 100, bcolor, "none",
 						undefined, undefined, bars ? [0.25, 0.5, 0.75] : undefined, bars ? "#85522c" : undefined, bars ? "#85522c" : undefined, 57.5 + b.pri*0.01);
 					bars = true;
 				}
@@ -2013,7 +2031,20 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 		}
 		enemy.Enemy = oldEnemy;
 		if (tooltip) {
-			DrawTextFitKD(TextGet(tooltip) + ` (${Math.round(10 * tooltipAmt)})`, MouseX, MouseY - 25, 250, tooltipcolor, KDBaseBlack);
+			let size = RetDrawTextFitKD(TextGet(tooltip) + ` (${Math.round(10 * tooltipAmt)})`, MouseX, MouseY - 25, 
+			450, tooltipcolor, KDBaseBlack, 24, undefined, KDTooltipZ + 0.1);
+			
+			size.x += KDTooltipPadX;
+			size.y += KDTooltipPadY;
+			FillRectKD(kdcanvas, kdpixisprites, "struggletooltip__collection", {
+				Color: KDBaseDarkGrey,
+				alpha: 0.95,
+				Left: MouseX + 0 - size.x/2,
+				Top: MouseY - 25 - size.y/2,
+				Width: size.x,
+				Height: size.y,
+				zIndex: KDTooltipZ,
+			})
 		}
 		return bindingBars;
 	}

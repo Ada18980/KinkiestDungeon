@@ -10745,15 +10745,15 @@ let KDNPCRestraintBondageTypesByTag: Record<string, {tagname: string, priority: 
 		priority: 5,
 	},
 	ClothGag: {
-		tagname: "Fabric",
+		tagname: "Cloth",
 		priority: 10,
 	},
 	ClothBlindfold: {
-		tagname: "Fabric",
+		tagname: "Cloth",
 		priority: 10,
 	},
 	Scarf: {
-		tagname: "Fabric",
+		tagname: "Cloth",
 		priority: 10,
 	},
 	Dress: {
