@@ -194,6 +194,7 @@ let KDToggles = {
 	HotbarTooltips: true,
 	ShowExtraStruggle: false,
 	InvLimit: true,
+	NativeCompression: false,
 	Headpats: false,
 	ExtraBuffRow: true,
 	StruggleContext: false,
@@ -206,7 +207,7 @@ let KDToggles = {
 	EnemyShockwave: true,
 	MinorSoundDesc: false,
 	ShowDefensiveStats: true,
-	
+
 	AutoSprint: true,
 	ArrowWarnings: true,
 	CenteredLog: false,
@@ -324,11 +325,12 @@ let KDToggleCategories = {
 	HideArmorWardrobe: "none",
 	BindPercent: "UI",
 	AutoWaitDelayed: "Controls",
-	
+
 	WarningSound: "UI",
 	SoundAutoPathEnd: "UI",
 	SoundNotification: "UI",
 	ShowDefensiveStats: "UI",
+	NativeCompression: "Main",
 };
 
 function KDStopAllVibeSounds(Exceptions?: string[]) {
@@ -342,7 +344,7 @@ function KDStopAllVibeSounds(Exceptions?: string[]) {
 	}
 	for (let loc of Object.entries(KDVibeSounds)) {
 		if (!Exceptions || !EE.includes(loc[0])) {
-			
+
 			if (Exceptions && KDButtplugEngine)
 				for (let entry of Object.entries(KDButtplugDevices)) {
 					if (!entry[1]) continue;
@@ -469,7 +471,7 @@ function KDButtplugEngineUpdate(Location: string, Sound: string) {
 			}
 		}
 	}
-	
+
 }
 function KDUpdateVibeSound(Location: string, Sound: string, Volume: number) {
 	KDButtplugEngineUpdate(Location, Sound);
@@ -502,7 +504,7 @@ function KDUpdateVibeSound(Location: string, Sound: string, Volume: number) {
 					KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game"
 				) ? 1.0 : 0.7);
 			KDVibeSounds[Location].Audio.location = {x: 0, y: 10 * (KDVibeSounds[Location].height || 0)};
-			
+
 			audio.src = KDModFiles[Sound] || Sound;
 			audio.volume = Math.min(vol, 1);
 			audio.loop = !KDToggles.Buttplug; // If buttplug is on, we need sync
@@ -705,7 +707,7 @@ function KinkyDungeonStartVibration (
 		VibeModifiers: vibeMods ? vibeMods : [],
 	};
 
-	
+
 	if (KDGameData.CurrentVibration && KDXtoysWebhook && KDToggles.Buttplug) {
 		KDXtoys_Send('vibestart', {
 			amount: KDGameData.CurrentVibration.intensity + "",
@@ -983,7 +985,7 @@ function KinkyDungeonEndVibration() {
 		} else {
 			if (!KDGameData.TimeSinceLastVibeEnd) KDGameData.TimeSinceLastVibeEnd = {};
 			KDGameData.TimeSinceLastVibeEnd[KDGameData.CurrentVibration.name] = 0;
-			
+
 			if (KDGameData.CurrentVibration && KDXtoysWebhook && KDToggles.Buttplug) {
 				KDXtoys_Send('vibestop', {
 					amount: KDGameData.CurrentVibration.intensity + "",
