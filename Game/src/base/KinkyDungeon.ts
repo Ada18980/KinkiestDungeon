@@ -3094,7 +3094,8 @@ function KinkyDungeonRun() {
 		if (ElementValue("saveDataField"))
 			DrawButtonKDEx(
 				"saveToFile", () => {
-					downloadFile((ElementValue("savename") || KDGameData.PlayerName || "Save") + KDSAVEEXTENSION, ElementValue("saveDataField"));
+					const ext = KDToggles.NativeCompression  ? KDSAVEEXTENSION_GZ  : KDSAVEEXTENSION;
+					downloadFile((ElementValue("savename") || KDGameData.PlayerName || "Save") + ext, ElementValue("saveDataField"));
 					return true;
 				}, true, 875, 650, 350, 64, TextGet("KinkyDungeonSaveToFile"), KDBaseWhite, ""
 			);
@@ -3899,7 +3900,7 @@ function KDRenderMouseTooltip(button: KDButtonParamData) {
 			Height: size.y,
 			zIndex: KDTooltipZ,
 		})
-		
+
 	}
 }
 
@@ -7335,8 +7336,9 @@ interface SaveWorkerMsg {
 let KDSaveTimeout = 600000; // 10 minutes
 async function KinkyDungeonCompressSave(save: string, type = SaveType.Game): Promise<string> {
 	if (window.Worker) {
+		const op = KDToggles.NativeCompression  ? 'cmp'  : 'cmp-legacy';
 		const workerMsg: SaveWorkerMsg = {
-			op:	'cmp',
+			op:	op,
 			type:	type,
 			data:	save
 		};
@@ -7365,34 +7367,36 @@ async function KinkyDungeonCompressSave(save: string, type = SaveType.Game): Pro
 		 * IMPORTANT: Keep this block in sync with saveworker.js.
 		 */
 		console.log('Your browser doesn\'t support web workers.');
-		const mime_type = `application/vnd.straightlaced.kinkydungeon.save.${type.toString()}+gzip;version=2`;
-		try {
-			// Blob.  CompressionStream discards MIME-type; we'll add it later.
-			const save_b_js = new Blob ([save]);
-			const save_pipe = save_b_js.stream().pipeThrough (new CompressionStream ('gzip'));
+		if (KDToggles.NativeCompression) {
+			const mime_type = `application/vnd.straightlaced.kinkydungeon.save.${type.toString()}+gzip;version=2`;
+			try {
+				// Blob.  CompressionStream discards MIME-type; we'll add it later.
+				const save_b_js = new Blob ([save]);
+				const save_pipe = save_b_js.stream().pipeThrough (new CompressionStream ('gzip'));
 
-			// Compressed blob.
-			const resp = new Response (save_pipe, { headers: [["Content-Type", mime_type ]]});
-			const save_b_z = await resp.blob();
+				// Compressed blob.
+				const resp = new Response (save_pipe, { headers: [["Content-Type", mime_type ]]});
+				const save_b_z = await resp.blob();
 
-			// Snarfed from MDN Web docs.
-			async function toBase64DataURL (blob: Blob): Promise<string> {
-				return await new Promise ((resolve, reject) => {
-					const reader = Object.assign (new FileReader(), {
-						onload:  () => resolve (reader.result as string),
-						onerror: () => reject (reader.error)
+				// Snarfed from MDN Web docs.
+				async function toBase64DataURL (blob: Blob): Promise<string> {
+					return await new Promise ((resolve, reject) => {
+						const reader = Object.assign (new FileReader(), {
+							onload:  () => resolve (reader.result as string),
+							onerror: () => reject (reader.error)
+						});
+						reader.readAsDataURL (blob);
 					});
-					reader.readAsDataURL (blob);
-				});
+				}
+
+				const save_z64 = await toBase64DataURL (save_b_z);
+
+				return save_z64;
+			} catch (err) {
+				console.log (`Caught ${err}; falling back to LZString...`);
 			}
-
-			const save_z64 = await toBase64DataURL (save_b_z);
-
-			return save_z64;
-		} catch (err) {
-			console.log (`Caught ${err}; falling back to LZString...`);
-			return LZString.compressToBase64 (save);
 		}
+		return LZString.compressToBase64 (save);
 	}
 }
 
@@ -8095,7 +8099,8 @@ function KinkyDungeonMultiplayerUpdate(_delay) {
 }
 
 let saveFile = null;
-let KDSAVEEXTENSION = '.kdsave';
+let KDSAVEEXTENSION = '.kdsave';	// LZString-compressed saves
+let KDSAVEEXTENSION_GZ = '.kdsav2';	// gzip-compressed saves
 let KDOUTFITEXTENSION = '.kdoutfit';
 let KDBACKUPEXTENSION = '.kdsettings';
 let KDOUTFITBACKUP = '.kdcharbackup';
@@ -8104,7 +8109,10 @@ let KDSaveName = "";
 function KDLoadSave(files) {
 	for (let f of files) {
 		if (f && f.name) {
-			if (f.name.endsWith(KDSAVEEXTENSION) || f.name.endsWith('.txt')) {
+			if (    f.name.endsWith(KDSAVEEXTENSION)
+			    ||  f.name.endsWith(KDSAVEEXTENSION_GZ)
+			    ||  f.name.endsWith('.txt'))
+			{
 				let str = "";
 				KDSaveName = f.name;
 				try {
