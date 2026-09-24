@@ -319,7 +319,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 以百分比形式显示敌人的拘束
 - Auto-wait Through Delayed Actions
 自动等待略过有延时的行动
-
+# - Play sound if Auto-Path interrupted
 
 - Play sound when targeted by attacks
 被锁定为攻击目标时播放警告声
