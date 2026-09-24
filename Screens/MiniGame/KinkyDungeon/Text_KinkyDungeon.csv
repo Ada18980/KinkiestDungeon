@@ -11679,7 +11679,7 @@ dPrisonIntroRules_SubGag,"(Giggle and wiggle your body)"
 
 
 
-rPrisonRepeat,"(The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You know we don't take no for an answer."
+rPrisonRepeat,"(The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You shouldn't have tried to escape, you know~"
 
 rPrisonRepeatSmile,"(The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!"
 rPrisonRepeatSmile_Correct,"(The SPEAKER frowns)|I know exactly what you need..."
