@@ -831,6 +831,8 @@ let KinkyDungeonFactionRelationsBase : Record<string, Record<string, number>> = 
 	},
 	"Jail": {
 		// Dummy faction, used for deciding if a faction will attack you as a prisoner
+		// -.25 means they respect you in cell but will take you if outside
+		// -1 means they will ignore jail status
 	},
 	"Slime": {
 		Jail: -1,

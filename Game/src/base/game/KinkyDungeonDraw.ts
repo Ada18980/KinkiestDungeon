@@ -6620,7 +6620,7 @@ function KDPlayerPos() {
 	}
 }
 
-function KDGetFilter(filter: LayerFilter) {
+function KDGetFilter(filter: LayerFilter, auto: boolean = true) {
 	if (filter?.hue != null && filter?.hue >= 0) {
 		return new HSLFilter({
 			alpha: filter.alpha == null ? 1 : filter.alpha, 
@@ -6629,7 +6629,7 @@ function KDGetFilter(filter: LayerFilter) {
 			contrast: filter.contrast,
 			saturation: Math.max(-1, Math.min(
 				filter.saturation - 1, 1)),
-			auto: !(filter.colorize > 0.5),
+			auto: auto && !(filter.colorize > 0.5),
 			colorize: filter.colorize > 0.5
 
 		});

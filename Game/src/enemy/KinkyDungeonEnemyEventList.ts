@@ -929,7 +929,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (!KDEnemyCanTalk(enemy) || !enemy.Enemy?.bound) return 0;
 			if (KinkyDungeonFlags.get("PlayerCombat") || KinkyDungeonFlags.get("ToyedWith")) return 0;
 			return (hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && !KDEnemyHasFlag(enemy, "dontChase")) ?
-				KDBoundPowerLevel * 10 + (KinkyDungeonFlags.get("CallForHelp") ? 40 : 0)
+				KDBoundPowerLevel * 100 + (KinkyDungeonFlags.get("CallForHelp") ? 40 : 0)
 			: 0;
 		},
 		trigger: (enemy, _aiData) => {
@@ -961,10 +961,27 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				KinkyDungeonSetEnemyFlag(enemy, "noleash", 2);
 				KinkyDungeonSetEnemyFlag(enemy, "nosteal", 2);
 				KinkyDungeonSetEnemyFlag(enemy, "alwayswill", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "nocast", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "nospecial", 2);
 
 				enemy.gx = KinkyDungeonPlayerEntity.x;
 				enemy.gy = KinkyDungeonPlayerEntity.y;
 				KDUpdateMoveToEntity(enemy);
+				KinkyDungeonSetEnemyFlag(enemy, "alwaystease", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "forcetease", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "noglobaltease", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", 0);
+
+				if (!KDEnemyHasFlag(enemy, "toyWithDialogue")) {
+					KinkyDungeonSetEnemyFlag(enemy, "toyWithDialogue", 3);
+					
+					KinkyDungeonSendDialogue(enemy,
+						TextProvider.applyTemplate(KDGetToyWithDialogue(enemy, KDPlayer()),
+											KDGetGenericDialogueParams(KDPlayer(), enemy)).replace(
+												"EnemyName", TextGet("Name" + enemy.Enemy.name)),
+						KDGetColor(enemy), 3, 9);
+
+				}
 				return true;
 			}
 			return false;

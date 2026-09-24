@@ -587,7 +587,7 @@ function KDPlayerBlockPenalty() {
 function KDRestraintBlockPenalty() {
 	if (KinkyDungeonFlags.get("ZeroResistance")) return 1000;
 	let RestraintBlockPenalty = .1 * KinkyDungeonSlowLevel;
-	if (KDGameData.KneelTurns > 0) RestraintBlockPenalty = Math.max(RestraintBlockPenalty, 0.5);
+	if (KDIsOnKnees(KDPlayer())) RestraintBlockPenalty = Math.max(RestraintBlockPenalty, 0.5);
 	if (KinkyDungeonIsArmsBound(false, true)) RestraintBlockPenalty += .25;
 	if (KinkyDungeonStatFreeze) RestraintBlockPenalty += 0.8;
 	if (KinkyDungeonStatBlind) RestraintBlockPenalty += 0.33;

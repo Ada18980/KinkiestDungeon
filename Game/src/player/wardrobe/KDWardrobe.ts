@@ -3399,9 +3399,9 @@ function KDDrawColorPicker(id: string,
 
 		KDDraw(kdcanvas, kdpixisprites, "colorpicker",
 			KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300,
-			undefined, {
-				filters: [ColorPickerFilter[id]],
-			});
+			undefined, 
+			//{filters: [ColorPickerFilter[id]]}
+		);
 
 
 		let dist = KDistEuclidean(MouseX - (X + radius), MouseY - (YY + radius));

@@ -5018,7 +5018,9 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 
 		let alertingFaction = false;
 		for (let f of KDGameData.HostileFactions) {
-			if (KDFactionRelation("Jail", f) > -0.01 && KDFactionRelation("Chase", f) > -0.01) {
+			if ((KDFactionRelation("Jail", f) > -0.01 && KDFactionRelation("Chase", f) > -0.01) || 
+				!KDSelfishLeashFaction(f)
+			) {
 				alertingFaction = true;
 			}
 		}
@@ -5530,7 +5532,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		}
 
 	}
-	let specialCondition = enemy.Enemy.specialAttack != undefined && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinRange || AIData.playerDist > enemy.Enemy.specialMinRange);
+	let specialCondition = enemy.Enemy.specialAttack != undefined && !KDEnemyHasFlag(enemy, "nospecial") && (!enemy.specialCD || enemy.specialCD <= 0) && (!enemy.Enemy.specialMinRange || AIData.playerDist > enemy.Enemy.specialMinRange);
 	let specialConditionSpecial = (enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialCondition) ? KDSpecialConditions[enemy.Enemy.specialCondition].criteria(enemy, AIData) : true;
 
 	let updateSpecial = () => {
@@ -5774,7 +5776,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				|| !KDEnemyHasFlag(enemy, "notouchie")))
 			|| (player.player && enemy.playWithPlayer
 				&& (KDEnemyHasFlag(enemy, "forcetease")
-				|| !KDEnemyHasFlag(enemy, "notouchie"))))
+				|| !KDEnemyHasFlag(enemy, "notouchie")))
+			|| (player.player && (KDEnemyHasFlag(enemy, "alwaystease"))))
 		|| (!player.player && (
 			!player.Enemy
 			|| KDHostile(player)
@@ -5823,9 +5826,11 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			: false
 	);
 	AIData.wantsToTease = AIData.canTeaseAggro && (
-		(player.player && enemy.playWithPlayer && !KinkyDungeonAggressive(enemy)
+		(player.player && ((enemy.playWithPlayer && !KinkyDungeonAggressive(enemy)
 		&& (KDEnemyHasFlag(enemy, "forcetease")
-			|| !KDEnemyHasFlag(enemy, "notouchie")))
+			|| !KDEnemyHasFlag(enemy, "notouchie")))) || (
+				KDEnemyHasFlag(enemy, "alwaystease")
+			))
 		&& (!player.player // NPCs will aggro NPCs no questions asked
 			|| ( // However there are situations where the player will not get attacked
 				( // In order to be attacked the player must fulfill one of these conditions
@@ -5833,6 +5838,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						!KDGameData.KinkyDungeonLeashedPlayer
 						|| !KDIsPlayerTethered(player))
 					|| KDEnemyHasFlag(enemy, "forcetease")
+					|| KDEnemyHasFlag(enemy, "alwaystease")
 					|| KinkyDungeonFlags
 						.get("overrideleashprotection") // The player is leashed but something allows her to be attacked anyway
 					|| KDIsPlayerTetheredToLocation(player, enemy.x, enemy.y, enemy) // The player is attached to this enemy
@@ -6671,7 +6677,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		&& AIType.tease(enemy, player, AIData)
 		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, !enemy.Enemy.projectileAttack, !enemy.Enemy.projectileAttack);
 
-	if (player.player && !AIData.canAttack && AIData.canTease && enemy.playWithPlayer && !KinkyDungeonAggressive(enemy)) {
+	if (player.player && !AIData.canAttack && AIData.canTease && ((enemy.playWithPlayer && !KinkyDungeonAggressive(enemy)
+		|| KDEntityHasFlag(enemy, "alwaysTease")))) {
 		KDOperateTease();
 	}
 	while (AIData.canAttack && (first || enemy.attackBonus > 0)) {//Player is adjacent
@@ -8851,6 +8858,17 @@ function KDIsBrattyPersonality(entity: entity): boolean {
 	}
 	return false;
 }
+/**
+ * is this entity objectively bratty
+ * @param entity
+ */
+function KDIsRobotPersonality(entity: entity): boolean {
+	if (entity && !entity.player) {
+		if (KDEnemyPersonalities[entity.personality]?.robot || KDEnemyHasFlag(entity, "forcerobot")) return true;
+	}
+	return false;
+}
+
 
 /**
  * Is this entity bratty to the player
@@ -8982,11 +9000,12 @@ function KDPlayerIsImmobilized() {
 
 function  KDPlayerIsSlowed() {
 	return KinkyDungeonSlowLevel > 1 || KDPlayerIsStunned() || KinkyDungeonSleepiness > 0
-		|| (KDGameData.MovePoints < 0 || KDGameData.KneelTurns > 0);
+		|| (KDGameData.MovePoints < 0 || KDIsOnKnees(KDPlayer()));
 }
 function  KDPlayerIsSlowedMovementOnly() {
 	return KinkyDungeonSlowLevel > 1 || KDGameData.MovePoints < 0;
 }
+
 
 
 function KDEnemyReallyAware(enemy: entity, player: any): boolean {
@@ -9590,6 +9609,32 @@ function KDSelfishLeash(enemy: entity): boolean {
 		&& (KDFactionRelation(KDGetFaction(enemy), "Jail") < -0.2));
 }
 
+/**
+ * Assigns the point an enemy leashes the player to indirectly
+ * @param enemy
+ */
+function KDSelfishLeashFaction(faction: string): boolean {
+	if (!faction) return true;
+	if (faction == "Ambush") return false;
+	if (KDFactionProperties[faction]?.selfishFaction && KDGetMainFaction() != faction) return true;
+	return KDFactionUnfriendlyToMainFaction(faction) || (
+		(KDGetMainFaction() != (
+			KDFactionProperties[faction]?.jailFaction
+				|| faction
+		))
+		&& (KDFactionRelation(faction, "Jail") < -0.2));
+}
+
+/**
+ * Enemy is not friendly to the jail faction
+ * @param enemy
+ */
+function KDFactionUnfriendlyToMainFaction(faction: string): boolean {
+	if (!faction) return false;
+	let mainFaction = KDGetMainFaction();
+	return faction != mainFaction
+		&& KDFactionRelation(faction, mainFaction) < -0.05;
+}
 /**
  * Enemy is not friendly to the jail faction
  * @param enemy
@@ -10903,10 +10948,10 @@ function KDGetTeaseAttack(enemy: entity, player: entity, AData: KDAIData): KDTea
 
 function KDBasicTeaseAttack(enemy: entity, player: entity, aiData: KDAIData, noglobal?: boolean, dist: number = 1.5): boolean {
 	return  player.player
-		&& (!aiData.domMe || KDEnemyHasFlag(enemy, "forcetease"))
+		&& (!aiData.domMe || KDEnemyHasFlag(enemy, "forcetease") || KDEnemyHasFlag(enemy, "alwaystease"))
 	    &&  KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < dist
 	    &&  !KDEnemyHasFlag(enemy, "teaseAtkCD")
-	    &&  (noglobal || !KinkyDungeonFlags.get("globalteaseAtkCD"))
+	    &&  (noglobal || !KinkyDungeonFlags.get("globalteaseAtkCD") || KDEnemyHasFlag(enemy, "noglobaltease"))
 	    &&  !KinkyDungeonIsDisabled(enemy)
 	    &&  !(enemy.vulnerable > 0)
 		&&  (player.player ? !KinkyDungeonFlags.get("teleported") : !KDEnemyHasFlag(player, "teleported"))
@@ -11838,4 +11883,105 @@ function KDGetRestraintLevel(player: entity): number {
 function KDEnemyIsThreatening(enemy: entity, player: entity, playerDist?: number) {
 	if (playerDist == undefined) playerDist = KDistChebyshev(enemy.x - player.x, enemy.y - player.y);
 	return ((!KDHelpless(enemy) && KinkyDungeonAggressive(enemy, player) && playerDist <= 6.9) || (playerDist < 1.5 && enemy.playWithPlayer))
+}
+
+interface KDTeaseDialogueType {
+	key: string,
+	weight: (enemy: entity, player: entity, preferredSubType: string) => number,
+	text: (key: string, enemy: entity, player: entity, preferredSubType: string) => string
+};
+
+let KD_ToyWithTeases: Record<string, KDTeaseDialogueType> = {
+	Gagged: {
+		key: "Gagged",
+		weight: (enemy, player, preferredSubType) => {
+			return KDEnemyCanTalk(enemy) ? 0 : 100000;
+		},
+		text: (key, enemy, player, preferredSubType) => {
+			return TextGet("KDDialogue_ToyWith_" + key + Math.floor(KDRandom() * 3));
+		},
+	},
+	Neutral: {
+		key: "Neutral",
+		weight: (enemy, player, preferredSubType) => {
+			return 10;
+		},
+		text: (key, enemy, player, preferredSubType) => {
+			return TextGet("KDDialogue_ToyWith_" + key + Math.floor(KDRandom() * 5));
+		},
+	},
+	Harsh: {
+		key: "Harsh",
+		weight: (enemy, player, preferredSubType) => {
+			return KinkyDungeonStatsChoice.get("NoRough") ? 0 : (preferredSubType == "Rough" ? 30 : 0);
+		},
+		text: (key, enemy, player, preferredSubType) => {
+			let rand = KDRandom() * (!KinkyDungeonCanStand(player) ? 2 : 3);
+			return TextGet("KDDialogue_ToyWith_" + key + Math.floor(rand));
+		},
+	},
+	Cute: {
+		key: "Cute",
+		weight: (enemy, player, preferredSubType) => {
+			return KDPreferredSubTypeWeights[preferredSubType]?.iscute ? 10 : 0;
+		},
+		text: (key, enemy, player, preferredSubType) => {
+			return TextGet("KDDialogue_ToyWith_" + key + Math.floor(KDRandom() * 3));
+		},
+	},
+	PlayerBrat: {
+		key: "PlayerBrat",
+		weight: (enemy, player, preferredSubType) => {
+			return (KinkyDungeonFlags.get("PlayerCombat") > 0
+			|| KinkyDungeonLastAction == "Struggle"
+			|| KinkyDungeonLastTurnAction == "Struggle"
+			|| KinkyDungeonLastAction == "Move"
+			|| KinkyDungeonLastTurnAction == "Move"
+			|| KinkyDungeonFlags.get("sprinted_recently")) ? 25 : 0;
+		},
+		text: (key, enemy, player, preferredSubType) => {
+			return TextGet("KDDialogue_ToyWith_" + key + Math.floor(KDRandom() * 3));
+		},
+	},
+	Robot: {
+		key: "Robot",
+		weight: (enemy, player, preferredSubType) => {
+			return KDIsRobotPersonality(enemy) ? 10000 : 0;
+		},
+		text: (key, enemy, player, preferredSubType) => {
+			return TextGet("KDDialogue_ToyWith_" + key + Math.floor(KDRandom() * 3));
+		},
+	},
+
+}
+
+/** Gets untemplated dialogue */
+function KDGetToyWithDialogue(enemy: entity, player: entity) : string {
+	let preferredSubType = KDEnemyGetPreferredSubType(enemy, player);
+	let availableTeases: Record<string, number> = {};
+	let maxTease = 0;
+	let eps = 0.051;
+	let availableTeases2: Record<string, number> = {};
+
+	for (let tease of Object.keys(KD_ToyWithTeases)) {
+		let w = KD_ToyWithTeases[tease].weight(enemy, player, preferredSubType);
+		if (w > 0) {
+			availableTeases[tease] = w;
+			maxTease = Math.max(maxTease, w);
+		}
+	}
+	for (let tease of Object.entries(availableTeases)) {
+		if (tease[1] >= maxTease * eps) {
+			availableTeases2[tease[0]] = tease[1];
+		}
+	}
+
+	let text = "";
+	let tease = KDGetByWeight(availableTeases2);
+	if (tease && KD_ToyWithTeases[tease]) {
+		text = KD_ToyWithTeases[tease].text(KD_ToyWithTeases[tease].key, enemy, player, preferredSubType);
+	}
+	
+
+	return text;
 }

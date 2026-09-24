@@ -268,7 +268,7 @@ function KDAllowUseItems(Message: boolean, _x?: number, _y?: number): boolean {
 	let ret = (!KinkyDungeonStatsChoice.get("CantTouchThat") || (KinkyDungeonBlindLevel < 1 && KinkyDungeonStatsChoice.get("Psychic"))) || KinkyDungeonHasHelp() || !(KinkyDungeonIsArmsBound() && !KinkyDungeonCanUseFeet() && KinkyDungeonIsHandsBound(false, true, 0.01));
 
 	if (!ret && KinkyDungeonCanTalk()) {
-		if (KDGameData.KneelTurns > 0) {return true;}
+		if (KDIsOnKnees(KDPlayer())) {return true;}
 		if (Message) KinkyDungeonSendActionMessage(7, TextGet( "KDMouthGround"), "#ffaa44", 3, undefined, true);
 	}
 	if (Message && !ret && KinkyDungeonStatsChoice.get("Psychic")) KinkyDungeonSendActionMessage(7, 

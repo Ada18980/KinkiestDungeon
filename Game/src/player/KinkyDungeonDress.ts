@@ -653,7 +653,7 @@ function KinkyDungeonDressPlayer (
 		let AllowedLegPoses = StandalonePatched ? KDGetAvailablePosesLegs(Character, customPlayerTags) : [];
 
 		if (Character == KinkyDungeonPlayer) {
-			if (!KinkyDungeonPlayerTags.get("LieDown") && (KDGameData.KneelTurns > 0 || KDGameData.SleepTurns > 0)) {
+			if (!KinkyDungeonPlayerTags.get("LieDown") && (KDIsOnKnees(KDPlayer()) || KDGameData.SleepTurns > 0)) {
 				if (StandalonePatched) {
 					// Force player into being on the ground
 					let newLegPoses = AllowedLegPoses.filter((element) => {return !STANDPOSES.includes(element);});

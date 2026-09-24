@@ -1673,7 +1673,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 0.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage, flags: ["EnvDamage"]}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45 && (KDGameData.KneelTurns > 0 || KDGameData.SlowMoveTurns || KDGameData.MovePoints < 0 || KinkyDungeonStatWill == 0)) {
+			if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") < 0.45 && (KDIsOnKnees(KDPlayer()) || KDGameData.SlowMoveTurns || KDGameData.MovePoints < 0 || KinkyDungeonStatWill == 0)) {
 				let restraintAdd = KinkyDungeonGetRestraint({tags: ["liquidMetalRestraints"]}, KDGetEffLevel() + playerEffect?.power || spell?.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 				if (restraintAdd) {
 					KDPlayerEffectRestrain(spell, 1, ["liquidMetalRestraints"], faction);

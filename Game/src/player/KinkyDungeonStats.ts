@@ -1660,7 +1660,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	if (KinkyDungeonIsHandsBound(false, false, 0.99)) KDBoundPowerLevel += 0.075;
 	KDBoundPowerLevel += 0.1 * KinkyDungeonChastityMult();
 	KDBoundPowerLevel += 0.2 * KinkyDungeonGagTotal();
-	if (KDGameData.KneelTurns > 0) {
+	if (KDIsOnKnees(KDPlayer())) {
 		if (KinkyDungeonSlowLevel > 2) KDBoundPowerLevel += 0.15;
 	} else KDBoundPowerLevel += 0.15 * Math.max(0, Math.min(1, KinkyDungeonSlowLevel / 2));
 	KDBoundPowerLevel += 0.1 * Math.max(0, Math.min(1, KDGameData.HeelPowerEffective / 4));
@@ -1933,10 +1933,10 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			KDGameData.BalancePause = 1;
 		}
 		if (!KDGameData.BalancePause && !KDGameData.BalancePauseImm)
-			KDChangeBalanceSrc("player", "balance", "tick", (KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
+			KDChangeBalanceSrc("player", "balance", "tick", (KDIsOnKnees(KDPlayer()) ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 		else {
 			KDChangeBalanceSrc("player", "balance", "tick", (KDGameData.BalancePauseImm ? 0.01 : (5 / (10 + KDGameData.BalancePause)))
-				* (KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
+				* (KDIsOnKnees(KDPlayer()) ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 		}
 		if (KDGameData.BalancePauseImm) KDGameData.BalancePauseImm = false;
 		else KDGameData.BalancePause = Math.max(0, KDGameData.BalancePause-delta);
@@ -2083,8 +2083,20 @@ function KinkyDungeonLegsBlocked() {
 	return KinkyDungeonFlags.get("BoundFeet");
 }
 
-function KinkyDungeonCanStand() {
-	return !KDIsKneeling() && !KDIsHogtied() && !(KDGameData.KneelTurns > 0);
+
+function KDIsOnKnees(player: entity) {
+	if (player?.player) {
+		return KDGameData.KneelTurns > 0;
+	} else if (player?.bind || KDHelpless(player)) {
+		return true;
+	}
+	return false;
+}
+
+function KinkyDungeonCanStand(player?: entity) {
+	if (player?.player || !player) {
+		return !KDIsKneeling() && !KDIsHogtied() && !KDIsOnKnees(KDPlayer());
+	} else return !KDIsOnKnees(player)
 }
 function KinkyDungeonCanKneel() {
 	return true;

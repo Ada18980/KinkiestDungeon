@@ -39,8 +39,8 @@ let KDBuyerPersonalities_Comment = [
 
 
 
-let KDPreferredSubTypeWeights: Record<string, ((enemy: entity, player?: entity) => number)[]> = {
-	PillowPrincess: [
+let KDPreferredSubTypeWeights: Record<string, {iscute: boolean, getters: ((enemy: entity, player?: entity) => number)[]}> = {
+	PillowPrincess: {iscute: true, getters: [
 		(en) => {
 			if (KDGetPersonality(en) == "Voyeur") return 0.1;
 			if (KDGetPersonality(en) == "Protocol") return 10;
@@ -49,8 +49,8 @@ let KDPreferredSubTypeWeights: Record<string, ((enemy: entity, player?: entity) 
 				KDStrictPersonalities.includes(KDGetPersonality(en)) ? 5 : 0.1
 			);
 		},
-	],
-	Cute: [
+	]},
+	Cute: {iscute: true, getters: [
 		(en) => {
 			if (KDGetPersonality(en) == "Voyeur") return 3;
 			if (KDGetPersonality(en) == "Protocol") return 6;
@@ -58,16 +58,16 @@ let KDPreferredSubTypeWeights: Record<string, ((enemy: entity, player?: entity) 
 				KDLoosePersonalities.includes(KDGetPersonality(en)) ? 2 : 1
 			);
 		},
-	],
-	Brat: [
+	]},
+	Brat: {iscute: true, getters: [
 		(en) => {
 			if (KDGetPersonality(en) == "Voyeur") return 3;
 			return KDBratPersonalities.includes(KDGetPersonality(en)) ? 3 : (
 				KDStrictPersonalities.includes(KDGetPersonality(en)) ? 3 : 0
 			);
 		},
-	],
-	Rough: [
+	]},
+	Rough: {iscute: true, getters: [
 		(en) => {
 			if (KDGetPersonality(en) == "Voyeur") return 3;
 			if (KDGetPersonality(en) == "Sub") return 0;
@@ -75,7 +75,7 @@ let KDPreferredSubTypeWeights: Record<string, ((enemy: entity, player?: entity) 
 				KDStrictPersonalities.includes(KDGetPersonality(en)) ? 3 : 0
 			);
 		},
-	],
+	]},
 }
 
 
@@ -131,6 +131,7 @@ let KDEnemyPersonalities = {
 		strict: false,
 		brat: false,
 		submissiveness: 0.25,
+		robot: true,
 		tags: {
 			"robot": 200,
 			"cyborg": -200,
@@ -320,7 +321,7 @@ function KDEnemyGetPreferredSubType(en: entity, player?: entity, cache?: boolean
 
 	for (let type in KDPreferredSubTypeWeights) {
 		let w = 0;
-		for (let item of KDPreferredSubTypeWeights[type]) {
+		for (let item of KDPreferredSubTypeWeights[type].getters) {
 			w += item(en, player);
 		}
 	}

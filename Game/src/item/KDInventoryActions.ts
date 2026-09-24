@@ -725,7 +725,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (!KinkyDungeonHasMana(KDGameData.InventoryActionManaCost) || !(KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0)) {
+				if (!KinkyDungeonHasMana(KDGameData.InventoryActionManaCost) || !(KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks, true).length > 0)) {
 					return true;
 				}
 			}
