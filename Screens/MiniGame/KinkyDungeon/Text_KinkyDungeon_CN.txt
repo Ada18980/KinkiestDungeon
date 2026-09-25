@@ -17656,6 +17656,7 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailGaggedLock
 # :: KinkyDungeonRemindJailPlaySubGaggedMummy2
 # :: KinkyDungeonRemindJailGaggedMummyLock
+# :: KDDialogue_ToyWith_Gagged0
 - *looks at you nervously*
 *紧张地看着你*
 - *giggles*
@@ -17667,6 +17668,7 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailPlayBratZombie2
 # :: KinkyDungeonRemindJailPlayZombie0
 # :: KinkyDungeonRemindJailChaseZombieCommandBlock
+# :: KDDialogue_ToyWith_Gagged2
 - *giggles eagerly*
 *急切地咯咯笑*
 # - Mmmph?
@@ -17850,6 +17852,8 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailGaggedMummyMissedMe
 # :: KinkyDungeonRemindJailGaggedMummyBlockedMe
 # - Mmmm~
+# :: KinkyDungeonRemindJailPlayGaggedMummyLeash
+# :: KDDialogue_ToyWith_Gagged1
 - *glows with anger*
 *因愤怒而发光*
 - *Her headpiece says 'PTRN'*
@@ -20892,6 +20896,7 @@ Nya！需要朋友帮忙吗？
 # :: KinkyDungeonRemindJailElementalHitPlayer
 # :: KinkyDungeonRemindJailDragonGirlHitPlayer
 # :: KinkyDungeonRemindJailAngelHitPlayer
+# :: KDDialogue_ToyWith_Harsh0
 - It's over, human. You've lost.
 已经结束了，人类。你输了。
 # :: KinkyDungeonRemindJailElementalLeash
@@ -22315,7 +22320,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 
-- (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You know we don't take no for an answer.
+- (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You shouldn't have tried to escape, you know~
 ( SPEAKER 在你的牢房里接近你 ) |又回来了，是吗？傻${Pdim}。|你知道我们不会停你的回答的。
 
 - (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
@@ -50871,6 +50876,22 @@ ${PHonor}，你挡住我了……
 - *Bumps into you*
 *撞到你*
 
+# - Nothing but a toy.
+# - On your knees, ${Psub}!
+# - I'm gonna have so much fun with you!
+# - Such an adorable ${Pdim}!
+# - Cute~!
+# - Aren't you a treat~
+# - How utterly helpless.
+# - Perhaps you enjoy it?
+# - Be a good toy for me.
+# - Just give in, it'll make this all easier~
+# - Did you really think you could escape?
+# - Let's put you in your place.
+# - Struggle all you want~
+# - Query Status: Cute
+# - Threat Assessment: Minimal
+# - Good ${Pdim} detected~
 
 
 - Cyber Hogtie Tether
@@ -51525,6 +51546,7 @@ N/A
 强光
 - Knocked Out
 击倒
+# - Will be struggled next floor
 
 - Saving...
 保存中...
