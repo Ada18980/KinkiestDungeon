@@ -82,6 +82,11 @@ Must do
 - Added perk "Layers Under Layers" which enables the excessive restraint stacking behavior you all love
 - Added 'Default to RGB Color Picker' option to Character options
 - Color picker type now defaults to RGB
+- Reworked a lot of faction color palettes
+- Added more depth to 'toying with you' behavior
+- Fixed bugs relating to infinite jailing
+- Made tease attacks somewhat more common
+- Verbal tease attacks can now be said from a distance
 - Refusing bondage offer no longer causes all enemies nearby to become hostile
 - Added perk shrine more which offers bondage-only shrines at times
 
