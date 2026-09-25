@@ -18,7 +18,7 @@ interface KDOutfitMetadata {
 	customColors: Record<string, Record<string, LayerFilter>>,
 }
 
-interface FactionFilterDef {color: string, override?: boolean, desaturate?: boolean};
+interface FactionFilterDef {color: string, override?: boolean, desaturate?: boolean, overridehsl?: boolean, overridergb?: boolean};
 
 
 /** Kinky Dungeon Typedefs*/

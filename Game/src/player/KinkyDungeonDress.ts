@@ -517,7 +517,10 @@ function KinkyDungeonDressPlayer (
 											let C = Character;
 											let faction = customFaction;
 											if (GetPalette(C, faction)[f[1].color]) {
-												if (f[1].override) {
+												if (f[1].override
+													|| (f[1].overridehsl && GetPalette(C, faction)[f[1].color].hue >= -1)
+													|| (f[1].overridergb && !(GetPalette(C, faction)[f[1].color].hue >= -1))
+												) {
 													filters[f[0]] = GetPalette(C, faction)[f[1].color];
 												} else {
 													let origFilters = filters[f[0]];
@@ -537,7 +540,7 @@ function KinkyDungeonDressPlayer (
 													filters[f[0]].hue = GetPalette(C, faction)[f[1].color].hue;
 													filters[f[0]].colorize = GetPalette(C, faction)[f[1].color].colorize;
 												}
-												if (f[1].desaturate) {
+												if (f[1].desaturate && (filters[f[0]].hue < 0 || isNaN(filters[f[0]].hue))) {
 													filters[f[0]].saturation = 0;
 												}
 											}
@@ -591,7 +594,9 @@ function KinkyDungeonDressPlayer (
 										let C = Character;
 										let faction = customFaction;
 										if (GetPalette(C, faction)[f[1].color]) {
-											if (f[1].override) {
+											if (f[1].override
+													|| (f[1].overridehsl && GetPalette(C, faction)[f[1].color].hue >= -1)
+													|| (f[1].overridergb && !(GetPalette(C, faction)[f[1].color].hue >= -1))) {
 												filters[f[0]] = GetPalette(C, faction)[f[1].color];
 											} else {
 												let origFilters = filters[f[0]];
@@ -611,7 +616,7 @@ function KinkyDungeonDressPlayer (
 												filters[f[0]].hue = GetPalette(C, faction)[f[1].color].hue;
 												filters[f[0]].colorize = GetPalette(C, faction)[f[1].color].colorize;
 											}
-											if (f[1].desaturate) {
+											if (f[1].desaturate && (filters[f[0]].hue < 0 || isNaN(filters[f[0]].hue))) {
 												filters[f[0]].saturation = 0;
 											}
 										}
@@ -1079,7 +1084,9 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 		if (restraint.factionFilters && faction && GetPalette(C, faction)) {
 			for (let f of Object.entries(restraint.factionFilters)) {
 				if (GetPalette(C, faction)[f[1].color]) {
-					if (f[1].override) {
+					if (f[1].override
+							|| (f[1].overridehsl && GetPalette(C, faction)[f[1].color].hue >= -1)
+							|| (f[1].overridergb && !(GetPalette(C, faction)[f[1].color].hue >= -1))) {
 						filters[f[0]] = GetPalette(C, faction, !f[1].desaturate, !f[1].desaturate)[f[1].color];
 					} else {
 						let origFilters = filters[f[0]];
@@ -1098,7 +1105,7 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 						filters[f[0]].hue = GetPalette(C, faction)[f[1].color].hue;
 						filters[f[0]].colorize = GetPalette(C, faction)[f[1].color].colorize;
 					}
-					if (f[1].desaturate) {
+					if (f[1].desaturate && (filters[f[0]].hue < 0 || isNaN(filters[f[0]].hue))) {
 						filters[f[0]].saturation = 0;
 					}
 				}

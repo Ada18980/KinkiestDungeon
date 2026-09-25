@@ -2656,17 +2656,20 @@ function UpdateModels(C: Character, Xray?: string[], customFaction?: string) {
 			let filters = A.Filters;
 
 			if (customFaction && clothes.factionFilters && GetPalette(C, customFaction)) {
-				filters = structuredClone(A.Filters) || {}; // clone to avoid poisoning original Appearance array
+				filters = structuredClone(A.Model.Filters || A.Filters) || {}; // clone to avoid poisoning original Appearance array
 				for (let f of Object.entries(clothes.factionFilters)) {
 					let faction = customFaction;
 					if (GetPalette(C, faction)[f[1].color]) {
-						if (f[1].override) {
+						if (f[1].override
+							|| (f[1].overridehsl && GetPalette(C, faction)[f[1].color].hue >= -1)
+							|| (f[1].overridergb && !(GetPalette(C, faction)[f[1].color].hue >= -1))
+						) {
 							filters[f[0]] = GetPalette(C, faction)[f[1].color];
 						} else {
 							let origFilters = filters[f[0]];
 							//@ts-ignore
 							if (!filters[f[0]]) filters[f[0]] = {};
-							filters[f[0]].saturation = GetPalette(C, faction)[f[1].color].hue >= -1 ? 
+							filters[f[0]].saturation = GetPalette(C, faction)[f[1].color].hue >= 0 ? 
 								GetPalette(C, faction)[f[1].color].saturation : 0;
 							filters[f[0]].contrast = (origFilters)
 								? origFilters.contrast : 1;
@@ -2680,7 +2683,7 @@ function UpdateModels(C: Character, Xray?: string[], customFaction?: string) {
 							filters[f[0]].hue = GetPalette(C, faction)[f[1].color].hue;
 							filters[f[0]].colorize = GetPalette(C, faction)[f[1].color].colorize;
 						}
-						if (f[1].desaturate) {
+						if (f[1].desaturate && (filters[f[0]].hue < 0 || isNaN(filters[f[0]].hue))) {
 							filters[f[0]].saturation = 0;
 						}
 					}

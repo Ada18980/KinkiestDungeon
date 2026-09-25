@@ -19,7 +19,7 @@ let KinkyDungeonFactionFilters: Record<string, Record<string, LayerFilter>> = {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8833333333333333,"brightness":1.5666666666666669,"red":4.216666666666667,"green":0.7166666666666667,"blue":0.7000000000000001,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
-		Highlight: {"gamma":0.6833333333333333,"saturation":1.5,"contrast":1.0833333333333335,"brightness":1.2166666666666668,"red":2.5333333333333337,"green":0.7666666666666666,"blue":0.8500000000000001,"alpha":1,"hue":7.2,"colorize":1},
+		Highlight: {"gamma":1,"saturation":0.9,"contrast":.75,"brightness":1.25,"red":1,"green":1, "blue":1,"alpha":1,"hue":7.2,"colorize":1},
 	},
 	"Maidforce": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
