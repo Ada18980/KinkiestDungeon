@@ -79,6 +79,7 @@ function KDSetServantSpawnTemplate(e: entity) {
 		e.faction = "Player";
 		KDNPCRefreshBondage(e.id, 0, true);
 		KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
+		KinkyDungeonSetEnemyFlag(e, "FollowMe", 0);
 		e.hp = e.Enemy.maxhp;
 		e.hostile = undefined;
 		e.rage = undefined;

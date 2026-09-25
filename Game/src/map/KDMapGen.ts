@@ -1432,6 +1432,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 				let custom = KDProcessCustomPatron(Enemy, e, (clusterLeader) ? 1.0 : (!currentCluster ? 0.1 : 0.0), true);
 				let incrementCount = 1;
 				KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
+				KinkyDungeonSetEnemyFlag(e, "FollowMe", 0);
 				let shop = KinkyDungeonGetShopForEnemy(e, false);
 				if (shop) {
 					KinkyDungeonSetEnemyFlag(e, "Shop", -1);

@@ -6121,7 +6121,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			AIData.dontFollow = false;
 
 			if (AIType.follower(enemy, player, AIData)) {
-				if (KDAllied(enemy) && player.player) {
+				if (KDAllied(enemy) && player.player && (KDEnemyDoesFollow(enemy) || KDEnemyHasFlag(enemy, "FollowMe"))) {
 					if (!KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "StayHere")) {
 						AIData.allyFollowPlayer = true;
 					} else {
@@ -11984,4 +11984,8 @@ function KDGetToyWithDialogue(enemy: entity, player: entity) : string {
 	
 
 	return text;
+}
+
+function KDEnemyDoesFollow(enemy: entity) {
+	return KDIsInPartyID(enemy.id) || enemy.Enemy.allied;
 }

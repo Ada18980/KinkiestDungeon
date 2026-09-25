@@ -606,6 +606,9 @@ KDPrisonTypes.DollStorage = {
 
 						for (let xx of [label.x + 3, label.x - 3]) {
 							let e = DialogueCreateEnemy(xx, label.y, "LatexSprayer");
+							KinkyDungeonPlaySoundLocation(KinkyDungeonRootDirectory + "HydraulicUnlock.ogg", KDPlayer(), {
+								x: xx, y: label.y
+							}, 1.0, true);
 							e.faction = "Ambush";
 							e.vp = 2;
 							e.aware = true;

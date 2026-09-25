@@ -495,6 +495,7 @@ function KinkyDungeonHandleWanderingSpawns(delta: number) {
 						let e: entity = {tracking: true, summoned: true, faction: qq ? qq.faction : undefined, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, shield: Enemy.shield, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 						e = KDAddNewEntity(e);
 						KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
+						KinkyDungeonSetEnemyFlag(e, "FollowMe", 0);
 						let shop = KinkyDungeonGetShopForEnemy(e);
 						if (shop) {
 							KinkyDungeonSetEnemyFlag(e, "Shop", -1);

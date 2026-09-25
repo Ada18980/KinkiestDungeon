@@ -3478,6 +3478,7 @@ type eligibleRestraintOptions = {
 	/** Reduce target willpower by this much */
 	willBonus?: 		 number;
 	suppressTightPerk?: boolean;
+	ignoreCurrentGroups?: string[],
 }
 
 /**
@@ -4595,6 +4596,8 @@ function KDCanAddRestraint (
 		if (!pass) return false;
 	}*/
 	if (!r) r = KinkyDungeonGetRestraintItem(restraint.Group);
+	if (r && options?.ignoreCurrentGroups && options.ignoreCurrentGroups.some(grp => {return grp == KDRestraint(r)?.Group}))
+		r = null;
 	// NoLink here because we do it later with augment
 	let power = (KinkyDungeonRestraintPower(r, true, restraint, Lock, curse) * (r && useAugmentedPower ? Math.max(0.9, KDRestraintPowerMult(KinkyDungeonPlayerEntity, KDRestraint(r), augmentedInventory)) : 1));
 	let linkUnder = KDGetLinkUnder(r, restraint, Bypass, NoStack, Deep, securityEnemy, Lock, curse, powerBonus, !noOverpower);

@@ -1333,7 +1333,9 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return KDAllied(enemy) && KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "Shop");
+				return KDAllied(enemy)
+				&& (KDEnemyHasFlag(enemy, "NoFollow") || !KDEnemyDoesFollow(enemy))
+				&& !KDEnemyHasFlag(enemy, "Shop");
 			}
 			return false;
 		},
@@ -1344,6 +1346,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 					&& (KDRandom() < (70 - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 50 : 0))/100 * 0.35 * KDEnemyHelpfulness(enemy) || enemy.Enemy.allied)
 				) {
 					KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
+					KinkyDungeonSetEnemyFlag(enemy, "FollowMe", -1);
 				} else {
 					KDGameData.CurrentDialogMsg = name + "StayHere_Fail";
 					KinkyDungeonSetEnemyFlag(enemy, "NoStay", 100);
@@ -1586,6 +1589,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
+				KinkyDungeonSetEnemyFlag(enemy, "FollowMe", 0);
 				KDRemoveFromParty(enemy, false);
 			}
 			return false;

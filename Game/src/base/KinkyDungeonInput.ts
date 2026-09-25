@@ -1269,6 +1269,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			if (enemy) {
 				if (enemy.buffs?.AllySelect) KinkyDungeonExpireBuff(enemy, "AllySelect")
 				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
+				KinkyDungeonSetEnemyFlag(enemy, "FollowMe", 0);
 				KDRemoveFromParty(enemy, false);
 				KinkyDungeonSendTextMessage(10, TextGet("KDOrderRemove").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), KDBaseWhite, 1);
 
@@ -1287,6 +1288,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 				KinkyDungeonSendTextMessage(10, TextGet("KDOrderOnMe").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), KDBaseWhite, 1);
 			} else {
 				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
+				KinkyDungeonSetEnemyFlag(enemy, "FollowMe", 0);
 				KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
 				KinkyDungeonSendTextMessage(10, TextGet("KDOrderDisperse").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), KDBaseWhite, 1);
 			}

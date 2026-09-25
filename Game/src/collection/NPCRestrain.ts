@@ -842,7 +842,11 @@ function KDNPCRestraintTieUp(id: number, restraint: NPCRestraint, mult: number =
 		KDValidateEscapeGrace(KDGameData.Collection[id + ""]);
 }
 
-function KDCanEquipItemOnNPC(r: restraint, id: number, willing: boolean, lock: string, curse: string, allowSame: boolean = false): string {
+interface KDCanEquipItemOnNPCOptions {
+	ignoreCurrentGroups?: string[],
+}
+
+function KDCanEquipItemOnNPC(r: restraint, id: number, willing: boolean, lock: string, curse: string, allowSame: boolean = false, options?: KDCanEquipItemOnNPCOptions): string {
 	if (!r) return "n/a";
 	let enemy = KDGetGlobalEntity(id);
 	// TODO make this function work on player too
@@ -872,12 +876,16 @@ function KDCanEquipItemOnNPC(r: restraint, id: number, willing: boolean, lock: s
 		if (!allowSame && KDGetNPCRestraints(id)) {
 			let slot_temp = KDGetNPCBindingSlotForItem(r, id)?.sgroup;
 			if (slot_temp && KDGetNPCRestraints(id)[slot_temp.id]?.name == r.name
-				&& !KDCanOverwriteNPCRestraint({
+				&& (!KDCanOverwriteNPCRestraint({
 					name: r.name,
 					lock: lock,
 					curse: curse,
 					id: -1,
-				}, KDGetNPCRestraints(id)[slot_temp.id])) return "Same";
+				}, KDGetNPCRestraints(id)[slot_temp.id])) && (!options?.ignoreCurrentGroups || !options.ignoreCurrentGroups.some(
+					(grp) => {
+						return KDGetNPCRestraints(id)[slot_temp.id] && KDRestraint(KDGetNPCRestraints(id)[slot_temp.id])?.Group == grp
+					}
+				))) return "Same";
 		}
 
 		return "";

@@ -1837,7 +1837,7 @@ function KinkyDungeonRun() {
 		KDDrawMods();
 
 		if (onlineModsDeleted) {
-			DrawTextKD(TextGet("RestartNeeded" + (localStorage.getItem("BondageClubLanguage") || "EN")), 1840, 300, KDBaseElectricBlue, KDTextGray2, 48);
+			DrawTextKD(TextGet("RestartNeeded" + (localStorage.getItem("BondageClubLanguage") || "EN")), 1740, 200, KDBaseElectricBlue, KDTextGray2, 36);
 		}
 
 	} else if (KinkyDungeonState == "Credits") {

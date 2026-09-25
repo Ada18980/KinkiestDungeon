@@ -7689,6 +7689,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				for (let en of list)
 					if (en && en.buffs?.AllySelect) {
 						KinkyDungeonSetEnemyFlag(en, "NoFollow", -1);
+						KinkyDungeonSetEnemyFlag(en, "FollowMe", 0);
 					}
 			}
 		},
@@ -12677,6 +12678,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 						if (!e.CustomName)
 							KDProcessCustomPatron(Enemy, e, 0.2, true);
 						KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
+						KinkyDungeonSetEnemyFlag(e, "FollowMe", 0);
 						let shop = KinkyDungeonGetShopForEnemy(e, false);
 						if (shop) {
 							KinkyDungeonSetEnemyFlag(e, "Shop", -1);
@@ -12747,6 +12749,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 						if (!e.CustomName)
 							KDProcessCustomPatron(Enemy, e, 0.2, true);
 						KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
+						KinkyDungeonSetEnemyFlag(e, "FollowMe", 0);
 						let shop = KinkyDungeonGetShopForEnemy(e, false);
 						if (shop) {
 							KinkyDungeonSetEnemyFlag(e, "Shop", -1);
