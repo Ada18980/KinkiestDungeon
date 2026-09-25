@@ -4072,6 +4072,16 @@ let KDSpecialBondage: Record<string, KDBondage> = {
 		mageStruggleBoost: 1.1,
 		enemyBondageMult: 1.8,
 	},
+	/** Fabric is DEPRECATED DO NOT USE */
+	"Fabric": {
+		priority: -5,
+		color: "#c9c2cd",
+		struggleRate: 3,
+		powerStruggleBoost: 1.2,
+		healthStruggleBoost: 1.2,
+		mageStruggleBoost: 1.1,
+		enemyBondageMult: 1.8,
+	},
 	"Metal": {
 		priority: 10,
 		color: "#aaaaaa",
