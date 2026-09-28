@@ -3227,7 +3227,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 			KinkyDungeonSelectedBuff = b.id;
 			KinkyDungeonSelectedBuffEntity = KDPlayer();
 			
-			let t = TextGet("KinkyDungeonBuff" + (b.desc || b.id), {
+			let t = TextGet("KDBuffDesc_" + (b.desc || b.id), {
 				PowerInt: Math.round(b.power),
 				Power: Math.round(b.power * 100) / 100
 			}) + (count ? ` ${count}/${b.maxCount}` : "")
@@ -3236,6 +3236,10 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				for (let replace of Object.entries(b.buffTextReplace)) {
 					t = t.replace(replace[0], (replace as [string , string])[1]);
 				}
+			}
+
+			if (HasText("KDBuffName_" + (b.desc || b.id)) && TextGet("KDBuffName_" + (b.desc || b.id))) {
+				t = TextGet("KDBuffName_" + (b.desc || b.id)) + ": " + t;
 			}
 			statsDraw[b.id] = {
 				text: t,
@@ -3251,7 +3255,6 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				flashing: b.flashing,
 				click: b.click,
 			};
-			//DrawTextFitKD(TextGet("KinkyDungeonBuff" + b.id) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : ""), 790, 900 - i * 35, 275, b.aura ? b.aura : b.labelcolor, "#333333"); i++;
 		}
 
 	}
