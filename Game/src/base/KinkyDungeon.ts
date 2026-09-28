@@ -8245,13 +8245,19 @@ let KDCustomToggleTab: Record<string, () => void > = {
 			} else KinkyDungeonState = "Menu";
 			//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
 			return true;
-		}, true, 1450, 700, 350, 64, TextGet("GameReturnToMenu2"), KDBaseWhite, "");
+		}, true, 1450, 700, 350, 64, TextGet("GameReturnToMenu2"), 
+		KDBaseWhite, "", undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		});
 
 		// Draw temp start screen
 		DrawButtonKDEx("KDReset", () => {
 			KinkyDungeonKeybindingsTemp = Object.assign({}, KDDefaultKB);
 			return true;
 		}, true, 1450, 500, 350, 64, TextGet("KDResetKeys"), KDBaseWhite, "");
+
 
 
 		// Draw key buttons
@@ -8286,7 +8292,7 @@ let KDCustomToggleTab: Record<string, () => void > = {
 		if (KDCurrentKeyBindSet)
 			DrawTextKD(TextGet("KinkyDungeonCurrentPress") + ": '" + (TextGet("KinkyDungeonKey" + KDCurrentKeyBindSet)) + "'", 1250, 900, KDBaseWhite, KDTextGray2);
 
-		DrawTextKD(TextGet("KinkyDungeonCurrentPressInfo"), 1250, 950, KDBaseWhite, KDTextGray2);
+		DrawTextKD(TextGet("KinkyDungeonCurrentPressInfo"), 1450, 950, KDBaseWhite, KDTextGray2);
 	
 	}
 };

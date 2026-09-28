@@ -341,6 +341,7 @@ function KDStopAllVibeSounds(Exceptions?: string[]) {
 			
 			if (Exceptions && KDButtplugEngine)
 				for (let entry of Object.entries(KDButtplugDevices)) {
+					if (!entry[1]) continue;
 					if (!Exceptions || !Exceptions.some((tag) => {
 						return entry[1]["Enabled_" + tag];
 					})) {
@@ -425,6 +426,7 @@ function KDButtplugEngineUpdate(Location: string, Sound: string) {
 	for (let Location of Locations) {
 		if (KDButtplugEngine && KDToggles.Buttplug) {
 			for (let entry of Object.entries(KDButtplugDevices)) {
+				if (!entry[1]) continue;
 				if (entry[1]["Enabled_" + Location]) {
 					for (let device of KDButtplugClient.devices) {
 						if (!entry[1]) continue;
@@ -434,8 +436,13 @@ function KDButtplugEngineUpdate(Location: string, Sound: string) {
 									if (entry[1].pattern != Sound) {
 										let patt: ButtplugPatterns.PatternDescriptor = Object.assign({}, pattern);
 										if (device.features.outputs.length < 2) {
-											//@ts-ignore
-											patt.tracks = [patt.tracks[0]];
+											if (KDMergedVibeSounds[entry[1].pattern]) {
+												//@ts-ignore
+												patt.tracks = KDMergedVibeSounds[entry[1].pattern];
+											} else {
+												//@ts-ignore
+												patt.tracks = [patt.tracks[0]];
+											}
 										}
 										KDButtplugEngine.play(device, patt);
 										entry[1].pattern = Sound

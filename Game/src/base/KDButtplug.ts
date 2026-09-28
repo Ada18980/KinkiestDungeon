@@ -211,10 +211,11 @@ function KDDrawButtplugTab(centerX?: number) {
     if (centerX == undefined) {
         centerX = 500 + (PIXIWidth - 500)/2;
     }
+    let addressOff = 300;
     DrawTextFitKD(TextGet("KDButtplugInfo"), 
     centerX, 140, 1200, KDBaseWhite, undefined, undefined, "center");
 
-    let TF = KDTextField("KDButtplugAddress", centerX - 400, 220, 800, 40, undefined, undefined, "500");
+    let TF = KDTextField("KDButtplugAddress", centerX - 400 - addressOff, 220, 800, 40, undefined, undefined, "500");
     if (TF.Created) {
 		//@ts-ignore
         TF.Element.placeholder = KDButtplugDefaultAddress;
@@ -228,9 +229,9 @@ function KDDrawButtplugTab(centerX?: number) {
 
     
     DrawTextFitKD(TextGet("KDXtoysWebhookID"), 
-    centerX, PIXIHeight - 140, 1200, KDBaseWhite, undefined, undefined, "center");
+    centerX, PIXIHeight - 240, 1200, KDBaseWhite, undefined, undefined, "center");
 
-    TF = KDTextField("KDXToysID", centerX - 400, PIXIHeight - 100, 800, 40, undefined, undefined, "500");
+    TF = KDTextField("KDXToysID", centerX - 400, PIXIHeight - 200, 800, 40, undefined, undefined, "500");
     if (TF.Created) {
         ElementValue("KDXToysID", KDXtoysWebhook);
         TF.Element.oninput = (ev) => {
@@ -239,10 +240,27 @@ function KDDrawButtplugTab(centerX?: number) {
         }
     }
 
+    
+    DrawButtonKDEx("KBBackOptions", () => {
+        KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
+        if (KinkyDungeonGameFlag) {
+            KinkyDungeonState = "Game";
+        } else KinkyDungeonState = "Menu";
+        
+        KDOptionFilter = "";
+        KDConsentFilter = "";
+        //ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
+        return true;
+    }, true, 975, 900, 550, 64, TextGet("GameReturnToMenuFromOptions"), KDBaseWhite, "", undefined, undefined, undefined, undefined,
+    undefined, undefined, {
+        hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+        hotkeyPress: KinkyDungeonKeySkip[0],
+    }
+    );
 
 
     DrawTextFitKD(TextGet(KDButtplugClient?.connected ? "KDConnected" : "KDNotConnected"), 
-    centerX, 285, 1200, KDButtplugClient?.connected ? KDBaseLightGreen : KDBaseLightGrey, undefined, undefined, "center");
+    centerX - addressOff, 285, 1200, KDButtplugClient?.connected ? KDBaseLightGreen : KDBaseLightGrey, undefined, undefined, "center");
 
 
     DrawButtonKDEx("KDBPConnect", async (bdata) => {
@@ -251,7 +269,7 @@ function KDDrawButtplugTab(centerX?: number) {
         }
         return true;
     }, true, 
-    centerX - 200 - 320/2, 350, 320, 60, TextGet("KDConnect"), 
+    centerX + 400 - addressOff + 90, 210, 220, 60, TextGet("KDConnect"), 
         KDButtplugClient?.connected ? KDBaseLightGrey : KDBaseWhite
     )
     DrawButtonKDEx("KDBPDConnect", (bdata) => {
@@ -261,7 +279,7 @@ function KDDrawButtplugTab(centerX?: number) {
         }
         return true;
     }, true, 
-    centerX + 200 - 320/2, 350, 320, 60, TextGet("KDDisconnect"), 
+    centerX + 400 - addressOff + 90 + 250, 210, 220, 60, TextGet("KDDisconnect"), 
         KDButtplugClient?.connected ? KDBaseWhite : KDBaseLightGrey
     )
 
@@ -270,9 +288,9 @@ function KDDrawButtplugTab(centerX?: number) {
     let listID = "KDButtplugList";
     let rowSize = 100;
     let listX = centerX - 500;
-    let listY = 480;
+    let listY = 360;
     let listW = 1000;
-    let listH = PIXIHeight - listY - 210;
+    let listH = PIXIHeight - listY - 310;
 	if (KDUpdateButtplugList || ShouldUpdateList(listID)) {
         KDUpdateButtplugList = false;
 		PopulateList(listID, 
@@ -322,7 +340,7 @@ function KDDrawButtplugTab(centerX?: number) {
             DrawTextFitKDTo(container, Math.round(deviceSetting.battery) + "%", 
             listX + widthBatt, listY + (visualIndex + 0.5) * rowSize, listW * 0.1, deviceSetting.battery < KDButtplugLowBattery ?
                 KDBaseRed : (deviceSetting.battery > 100 - KDButtplugLowBattery ? KDBaseGreal : KDBaseWhite), 
-            undefined, undefined, "left", undefined, undefined, undefined, 
+            undefined, undefined, "center", undefined, undefined, undefined, 
             true, undefined, undefined, listItem.index + listItem.name + "Batt");
 
 
@@ -409,7 +427,7 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe1_Weak.ogg"] = {
                 { value: 0, duration: 0, easing: "step"},
                 { value: 0.5, duration: 100, easing: "linear"},
                 { value: 0.03, duration: 100, easing: "linear"},
-                { value: 0.5, duration: 100, easing: "linear"},
+                { value: 0.1, duration: 100, easing: "linear"},
                 { value: 0.03, duration: 100, easing: "linear"},
                 { value: 0.7, duration: 1000, easing: "linear"},
                 { value: 0, duration: 100, easing: "linear"},
@@ -419,7 +437,7 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe1_Weak.ogg"] = {
             featureIndex: 1,
             keyframes: [
                 { value: 0, duration: 0, easing: "step"},
-                { value: 0.5, duration: 100, easing: "linear"},
+                { value: 0.1, duration: 100, easing: "linear"},
                 { value: 0.03, duration: 100, easing: "linear"},
                 { value: 0.5, duration: 100, easing: "linear"},
                 { value: 0.03, duration: 100, easing: "linear"},
@@ -438,7 +456,7 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe1_Strong.ogg"] = {
             featureIndex: 0,
             keyframes: [
                 { value: 0, duration: 0, easing: "step"},
-                { value: 1, duration: 100, easing: "linear"},
+                { value: .25, duration: 100, easing: "linear"},
                 { value: 0.1, duration: 100, easing: "linear"},
                 { value: 1, duration: 100, easing: "linear"},
                 { value: 0.1, duration: 100, easing: "linear"},
@@ -453,7 +471,7 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe1_Strong.ogg"] = {
                 { value: 0, duration: 0, easing: "step"},
                 { value: 1, duration: 100, easing: "linear"},
                 { value: 0.1, duration: 100, easing: "linear"},
-                { value: 1, duration: 100, easing: "linear"},
+                { value: 0.25, duration: 100, easing: "linear"},
                 { value: 0.1, duration: 100, easing: "linear"},
                 { value: 1, duration: 100, easing: "linear"},
                 { value: 1, duration: 900},
@@ -470,7 +488,7 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe1_Medium.ogg"] = {
             featureIndex: 0,
             keyframes: [
                 { value: 0, duration: 0, easing: "step"},
-                { value: 0.95, duration: 100, easing: "linear"},
+                { value: 0.1, duration: 100, easing: "linear"},
                 { value: 0.1, duration: 100, easing: "linear"},
                 { value: 0.95, duration: 100, easing: "linear"},
                 { value: 0.1, duration: 100, easing: "linear"},
@@ -485,7 +503,7 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe1_Medium.ogg"] = {
                 { value: 0, duration: 0, easing: "step"},
                 { value: 0.95, duration: 100, easing: "linear"},
                 { value: 0.1, duration: 100, easing: "linear"},
-                { value: 0.95, duration: 100, easing: "linear"},
+                { value: 0.1, duration: 100, easing: "linear"},
                 { value: 0.1, duration: 100, easing: "linear"},
                 { value: 0.6, duration: 100, easing: "linear"},
                 { value: 0.6, duration: 900},
@@ -506,11 +524,13 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe2_Weak.ogg"] = {
                 { value: 0.35, duration: 938*1, easing: "step"},
                 { value: 0, duration: 100*1, easing: "linear"},
                 { value: 0, duration: 200*1, easing: "step"},
+                { value: 0, duration: 1498, easing: "step"},
             ],
         },
         {
             featureIndex: 1,
             keyframes: [
+                { value: 0, duration: 1498, easing: "step"},
                 { value: 0, duration: 100*1, easing: "step"},
                 { value: 0.35, duration: 160*1, easing: "linear"},
                 { value: 0.35, duration: 938*1, easing: "step"},
@@ -531,11 +551,13 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe2_Medium.ogg"] = {
                 { value: 0.65, duration: 150, easing: "linear"},
                 { value: 0.65, duration: 1000, easing: "step"},
                 { value: 0, duration: 600, easing: "step"},
+                { value: 0, duration: 1850, easing: "step"},
             ],
         },
         {
             featureIndex: 1,
             keyframes: [
+                { value: 0, duration: 1850, easing: "step"},
                 { value: 0, duration: 100, easing: "step"},
                 { value: 0.65, duration: 150, easing: "linear"},
                 { value: 0.65, duration: 1000, easing: "step"},
@@ -555,12 +577,13 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe2_Strong.ogg"] = {
                 { value: 1, duration: Math.round(200*.86), easing: "linear"},
                 { value: 1, duration: Math.round(1000*.86), easing: "step"},
                 { value: 0, duration: Math.round(100*.86), easing: "step"},
+                { value: 0, duration: Math.round(1300*.86), easing: "step"},
             ],
         },
         {
             featureIndex: 1,
             keyframes: [
-                { value: 0, duration: 0, easing: "step"},
+                { value: 0, duration: Math.round(1300*.86), easing: "step"},
                 { value: 1, duration: Math.round(200*.86), easing: "linear"},
                 { value: 1, duration: Math.round(1000*.86), easing: "step"},
                 { value: 0, duration: Math.round(100*.86), easing: "step"},
@@ -576,25 +599,25 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe3_Strong.ogg"] = {
         {
             featureIndex: 0,
             keyframes: [
-                { value: 0, duration: Math.round(330 * .86), easing: "step"},
+                { value: 0, duration: Math.round(230 * .86), easing: "step"},
                 { value: 1, duration: Math.round(220 * .86), easing: "step"},
                 { value: 0, duration: Math.round(150 * .86), easing: "step"},
                 { value: 0, duration: Math.round(400 * .86), easing: "step"},
                 { value: 0, duration: Math.round(160 * .86), easing: "step"},
                 { value: 1, duration: Math.round(520 * .86), easing: "step"},
-                { value: 0, duration: Math.round(100 * .86), easing: "step"},
+                { value: 0, duration: Math.round(555 * .86), easing: "step"},
             ],
         },
         {
             featureIndex: 1,
             keyframes: [
-                { value: 0, duration: Math.round(330 * .86), easing: "step"},
+                { value: 0, duration: Math.round(230 * .86), easing: "step"},
                 { value: 0, duration: Math.round(220 * .86), easing: "step"},
                 { value: 0, duration: Math.round(150 * .86), easing: "step"},
                 { value: 1, duration: Math.round(400 * .86), easing: "step"},
                 { value: 0, duration: Math.round(160 * .86), easing: "step"},
                 { value: 1, duration: Math.round(520 * .86), easing: "step"},
-                { value: 0, duration: Math.round(100 * .86), easing: "step"},
+                { value: 0, duration: Math.round(555 * .86), easing: "step"},
             ],
         },
     ],
@@ -608,21 +631,21 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe3_Medium.ogg"] = {
         {
             featureIndex: 0,
             keyframes: [
-                { value: 0, duration: 400, easing: "step"},
+                { value: 0, duration: 380, easing: "step"},
                 { value: 1, duration: 400, easing: "step"},
-                { value: 0, duration: 850, easing: "step"},
+                { value: 0, duration: 780, easing: "step"},
                 { value: 0, duration: 400, easing: "step"},
-                { value: 0, duration: 450, easing: "step"},
+                { value: 0, duration: 400, easing: "step"},
             ],
         },
         {
             featureIndex: 1,
             keyframes: [
+                { value: 0, duration: 380, easing: "step"},
                 { value: 0, duration: 400, easing: "step"},
-                { value: 0, duration: 400, easing: "step"},
-                { value: 0, duration: 850, easing: "step"},
+                { value: 0, duration: 780, easing: "step"},
                 { value: 1, duration: 400, easing: "step"},
-                { value: 0, duration: 450, easing: "step"},
+                { value: 0, duration: 400, easing: "step"},
             ],
         },
     ],
@@ -635,19 +658,144 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe3_Weak.ogg"] = {
         {
             featureIndex: 0,
             keyframes: [
-                { value: 0.0, duration: 140, easing: "step"},
+                { value: 0.0, duration: 40, easing: "step"},
                 { value: 1, duration: 800, easing: "step"},
                 { value: 0.0, duration: 860, easing: "step"},
                 { value: 0.0, duration: 140, easing: "step"},
                 { value: 0, duration: 800, easing: "step"},
-                { value: 0.0, duration: 860, easing: "step"},
+                { value: 0.0, duration: 960, easing: "step"},
             ],
         },
         {
             featureIndex: 1,
             keyframes: [
-                { value: 0.0, duration: 140, easing: "step"},
+                { value: 0.0, duration: 40, easing: "step"},
                 { value: 0, duration: 800, easing: "step"},
+                { value: 0.0, duration: 860, easing: "step"},
+                { value: 0.0, duration: 140, easing: "step"},
+                { value: 1, duration: 800, easing: "step"},
+                { value: 0.0, duration: 960, easing: "step"},
+            ],
+        },
+    ],
+    loop: true
+};
+// validate all sounds
+// also validate merged sounds with ferri
+
+
+let KDMergedVibeSounds = {
+    [KinkyDungeonRootDirectory + "Audio/Vibe1_Weak.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0, duration: 0, easing: "step"},
+                { value: 0.5, duration: 100, easing: "linear"},
+                { value: 0.03, duration: 100, easing: "linear"},
+                { value: 0.5, duration: 100, easing: "linear"},
+                { value: 0.03, duration: 100, easing: "linear"},
+                { value: 0.7, duration: 1000, easing: "linear"},
+                { value: 0, duration: 100, easing: "linear"},
+            ],
+        },
+    ],
+    [KinkyDungeonRootDirectory + "Audio/Vibe1_Strong.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0, duration: 0, easing: "step"},
+                { value: 1, duration: 100, easing: "linear"},
+                { value: 0.1, duration: 100, easing: "linear"},
+                { value: 1, duration: 100, easing: "linear"},
+                { value: 0.1, duration: 100, easing: "linear"},
+                { value: 1, duration: 100, easing: "linear"},
+                { value: 1, duration: 900},
+                { value: 0, duration: 100, easing: "linear"},
+            ],
+        },
+    ],
+    [KinkyDungeonRootDirectory + "Audio/Vibe1_Medium.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0, duration: 0, easing: "step"},
+                { value: 0.95, duration: 100, easing: "linear"},
+                { value: 0.1, duration: 100, easing: "linear"},
+                { value: 0.95, duration: 100, easing: "linear"},
+                { value: 0.1, duration: 100, easing: "linear"},
+                { value: 0.6, duration: 100, easing: "linear"},
+                { value: 0.6, duration: 900},
+                { value: 0, duration: 100, easing: "linear"},
+            ],
+        },
+    ],
+    [KinkyDungeonRootDirectory + "Audio/Vibe2_Weak.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0, duration: 100*1, easing: "step"},
+                { value: 0.35, duration: 160*1, easing: "linear"},
+                { value: 0.35, duration: 938*1, easing: "step"},
+                { value: 0, duration: 100*1, easing: "linear"},
+                { value: 0, duration: 200*1, easing: "step"},
+            ],
+        },
+    ],
+    [KinkyDungeonRootDirectory + "Audio/Vibe2_Medium.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0, duration: 100, easing: "step"},
+                { value: 0.65, duration: 150, easing: "linear"},
+                { value: 0.65, duration: 1000, easing: "step"},
+                { value: 0, duration: 600, easing: "step"},
+            ],
+        },
+    ],
+    [KinkyDungeonRootDirectory + "Audio/Vibe2_Strong.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0, duration: 0, easing: "step"},
+                { value: 1, duration: Math.round(200*.86), easing: "linear"},
+                { value: 1, duration: Math.round(1000*.86), easing: "step"},
+                { value: 0, duration: Math.round(100*.86), easing: "step"},
+            ],
+        },
+    ],
+
+    [KinkyDungeonRootDirectory + "Audio/Vibe3_Strong.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0, duration: Math.round(230 * .86), easing: "step"},
+                { value: 1, duration: Math.round(220 * .86), easing: "step"},
+                { value: 0, duration: Math.round(150 * .86), easing: "step"},
+                { value: 1, duration: Math.round(400 * .86), easing: "step"},
+                { value: 0, duration: Math.round(160 * .86), easing: "step"},
+                { value: 1, duration: Math.round(520 * .86), easing: "step"},
+                { value: 0, duration: Math.round(555 * .86), easing: "step"},
+            ],
+        },
+    ],
+    [KinkyDungeonRootDirectory + "Audio/Vibe3_Medium.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0, duration: 300, easing: "step"},
+                { value: 1, duration: 300, easing: "step"},
+                { value: 0, duration: 850, easing: "step"},
+                { value: 1, duration: 300, easing: "step"},
+                { value: 0, duration: 600, easing: "step"},
+            ],
+        },
+    ],
+    [KinkyDungeonRootDirectory + "Audio/Vibe3_Weak.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0.0, duration: 140, easing: "step"},
+                { value: 1, duration: 800, easing: "step"},
                 { value: 0.0, duration: 860, easing: "step"},
                 { value: 0.0, duration: 140, easing: "step"},
                 { value: 1, duration: 800, easing: "step"},
@@ -655,5 +803,4 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe3_Weak.ogg"] = {
             ],
         },
     ],
-    loop: true
-};
+}
