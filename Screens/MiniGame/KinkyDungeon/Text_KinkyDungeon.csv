@@ -981,12 +981,12 @@ KDBuffDesc_WardenOrb,Marked for Collection. Getting hit by more orbs will put yo
 KDBuffDesc_Quickness,Phase Dance active. Your next move is instant.
 KDBuffDesc_CombatManeuverQuick,Combat Maneuver active. Your next move is instant.
 
-KDBuffDesc_CorruptionStat,Corruption: You are more likely to succumb to curses.
+KDBuffDesc_CorruptionStat,You are more likely to succumb to curses.
 
 KDBuffDesc_ElementalBuff,Your elemental damage is increased!
 KDBuffDesc_ElementalResist,Your elemental resistance is increased!
 
-KDBuffDesc_FriendlyFireStat,"Party Submission: Friendly fire is reduced by ${PowerInt}%"
+KDBuffDesc_FriendlyFireStat,"Friendly fire is reduced by ${PowerInt}%"
 KDBuffDesc_LatexIntegrationStat,"Your skin is covered in a layer of latex, making escape from cyber restraints harder!"
 KDBuffDesc_Taunted,"Defeat all taunting enemies or stay within the tiles to avoid shame!"
 
@@ -1016,7 +1016,7 @@ KDBuffDesc_WaterBubble,"Magical water reduces your accuracy and slows you signif
 KDBuffDesc_BattleTrance,You attack twice!
 KDBuffDesc_CombatManeuver,You gain a free move from Combat Maneuvers!
 
-KDBuffDesc_NoWP,"Surrender: Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist."
+KDBuffDesc_NoWP,"Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist."
 
 KDBuffDesc_LatexBubble,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
 KDBuffDesc_LatexBall,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
@@ -1042,13 +1042,13 @@ KDBuffDesc_Cursed,"A dark energy lurks within you."
 
 KDBuffDesc_GhostDeal,"You've made a deal... your freedom now in exchange for your freedom later..."
 KDBuffDesc_GhostDealPleasure,"You've made a deal, which lurks deep inside you~"
-KDBuffDesc_e_OrgasmResist,"Mental Resistance: You cannot orgasm except by choice or below 10% WP. Click to toggle."
-KDBuffDesc_d_OrgasmResist,"Mental Resistance: You are allowing yourself to let go. Click to toggle."
+KDBuffDesc_e_OrgasmResist,"You cannot orgasm except by choice or below 10% WP. Click to toggle."
+KDBuffDesc_d_OrgasmResist,"You are allowing yourself to let go. Click to toggle."
 KDBuffDesc_BoundByFate,Stepping outside of the indicated tiles will result in punishment!
 
 KDBuffDesc_Haunted,A playful ghost now accompanies you on your journey.
 
-KDBuffDesc_DildoBatBuff,"Intense Vibrations: The Blade of Ejahl deals bonus charm damage!!!"
+KDBuffDesc_DildoBatBuff,"The Blade of Ejahl deals bonus charm damage!!!"
 
 
 
@@ -1069,42 +1069,42 @@ KDBuffDesc_TabletElements,-50% MP Cost (Elements)
 KDBuffDesc_TabletConjure,-50% MP Cost (Conjuration)
 KDBuffDesc_TabletIllusion,-50% MP Cost (Illusion)
 
-KDBuffDesc_Conduction,"Conductive: When you or an enemy takes electric damage, the other takes half of it as well!"
-KDBuffDesc_LightningRod,"Lightning Rod: Gain significantly boosted electric resist."
-KDBuffDesc_Drenched,"Drenched: Grants fire resist, ice/electric weakness, and makes you conductive."
+KDBuffDesc_Conduction,"When you or an enemy takes electric damage, the other takes half of it as well!"
+KDBuffDesc_LightningRod,"Gain significantly boosted electric resist."
+KDBuffDesc_Drenched,"Grants fire resist, ice/electric weakness, and makes you conductive."
 
-KDBuffDesc_Chilled,"Chilled: The cold makes it hard to move! You are slowed."
-KDBuffDesc_Slimed,"Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage."
-KDBuffDesc_Unsteady,"Unsteady: You're on loose footing. You are easier to hit and are slowed."
-KDBuffDesc_Unsteady2,"Unsteady: You're on loose footing. You are easier to hit and are slowed."
+KDBuffDesc_Chilled,"The cold makes it hard to move! You are slowed."
+KDBuffDesc_Slimed,"It's sticky and dense! You are slowed and 30% more vulnerable to glue damage."
+KDBuffDesc_Unsteady,"You're on loose footing. You are easier to hit and are slowed."
+KDBuffDesc_Unsteady2,"You're on loose footing. You are easier to hit and are slowed."
 KDBuffDesc_ChillWalk,Ignore Ice Tiles
 
-KDBuffDesc_Ignite,"Ignited: You are dealing fire damage to yourself and nearby enemies!"
+KDBuffDesc_Ignite,"You are dealing fire damage to yourself and nearby enemies!"
 KDBuffDesc_Burning,"You are on fire and taking damage!"
 
-KDBuffDesc_ShrineElements,"Divine Punishment: Deals bonus damage when you hit an enemy."
-KDBuffDesc_ShrineConjure,"Divine Protection: Automatically blocks the next 3 times an enemy tries to bind you."
-KDBuffDesc_ShrineIllusion,"Divine Cunning: You turn invisible briefly after attacking."
+KDBuffDesc_ShrineElements,"Deals bonus damage when you hit an enemy."
+KDBuffDesc_ShrineConjure,"Automatically blocks the next 3 times an enemy tries to bind you."
+KDBuffDesc_ShrineIllusion,"You turn invisible briefly after attacking."
 
 KDBuffDesc_AvatarFire,-MP Cost (Fire)
 KDBuffDesc_AvatarAir,-MP Cost (Air)
 KDBuffDesc_AvatarWater,-MP Cost (Water)
 KDBuffDesc_AvatarEarth,-MP Cost (Earth)
 
-KDBuffDesc_SlimeForm,"Slime Form: You gain bonuses and can slip through bars!"
-KDBuffDesc_Shroud2,"Shroud: Visibility decreased, evasion increased."
-KDBuffDesc_Camo,"Camouflage: While next to a wall, you are very hard to see."
-KDBuffDesc_StoneSkin,"Stone Skin: Increased armor."
-KDBuffDesc_ShadowBlade,"Darkblade: Increased damage."
-KDBuffDesc_Shield,"Runic Ward: Increased Magic Armor."
-KDBuffDesc_GreaterInvisibility,"Great Invisibility: It is impossible for enemies to see you."
-KDBuffDesc_Invisibility,"Invisibility: It is very difficult for enemies to see you."
-KDBuffDesc_LesserInvisibility,"Lesser Invisibility: It is harder for enemies to see you."
-KDBuffDesc_Cutting,"FULL POWER: Cutting power increased."
-KDBuffDesc_Slippery,"Graceful: Struggling power increased."
-KDBuffDesc_IronBlood,"Iron Blood: Reduced melee cost, increased mana costs."
-KDBuffDesc_Sleepy,"Sleepy: You are sluggish and have a hard time keeping your eyes open."
-KDBuffDesc_Evasion,"Afterimage: Evasion greatly increased."
+KDBuffDesc_SlimeForm,"You gain bonuses and can slip through bars!"
+KDBuffDesc_Shroud2,"Visibility decreased, evasion increased."
+KDBuffDesc_Camo,"While next to a wall, you are very hard to see."
+KDBuffDesc_StoneSkin,"Increased armor."
+KDBuffDesc_ShadowBlade,"Increased damage."
+KDBuffDesc_Shield,"Increased Magic Armor."
+KDBuffDesc_GreaterInvisibility,"It is impossible for enemies to see you."
+KDBuffDesc_Invisibility,"It is very difficult for enemies to see you."
+KDBuffDesc_LesserInvisibility,"It is harder for enemies to see you."
+KDBuffDesc_Cutting,"Cutting power increased."
+KDBuffDesc_Slippery,"Struggling power increased."
+KDBuffDesc_IronBlood,"Reduced melee cost, increased mana costs."
+KDBuffDesc_Sleepy,"You are sluggish and have a hard time keeping your eyes open."
+KDBuffDesc_Evasion,"Evasion greatly increased."
 KDBuffDesc_SlimeMimic,"We did it! We made ourselves invisible--mmmmph!!!"
 KDBuffDesc_d_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
 KDBuffDesc_DisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
@@ -1131,13 +1131,13 @@ KDBuffDesc_Hypnosis,"${Youve} fallen into a trance, making suggestions more powe
 KDBuffDesc_StraitjacketBolt,"Struggling power is greatly reduced."
 KDBuffDesc_Lockdown,"Struggling power is greatly reduced."
 
-KDBuffDesc_ScrollVerbal,"Verbose: You can cast verbal spells while gagged."
-KDBuffDesc_ScrollArms,"Dextrous: You can cast arm spells while tied up."
-KDBuffDesc_ScrollLegs,"Spell Dance: You can cast leg spells while tied up."
+KDBuffDesc_ScrollVerbal,"You can cast verbal spells while gagged."
+KDBuffDesc_ScrollArms,"You can cast arm spells while tied up."
+KDBuffDesc_ScrollLegs,"You can cast leg spells while tied up."
 
-KDBuffDesc_BondageBusterCharge,"Bondage Buster: Lazor is charging..."
-KDBuffDesc_KatanaCharge,"Katana: Patience is key..."
-KDBuffDesc_StormCharge,"Stormbreaker: You have the Power."
+KDBuffDesc_BondageBusterCharge,"Lazor is charging..."
+KDBuffDesc_KatanaCharge,"Patience is key..."
+KDBuffDesc_StormCharge,"You have the Power."
 
 
 

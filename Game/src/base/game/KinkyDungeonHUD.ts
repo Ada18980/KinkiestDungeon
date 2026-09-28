@@ -3227,7 +3227,8 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 			KinkyDungeonSelectedBuff = b.id;
 			KinkyDungeonSelectedBuffEntity = KDPlayer();
 			
-			let t = TextGet("KDBuffDesc_" + (b.desc || b.id), {
+			// Compat with old formatting
+			let t = TextGet(HasText("KDBuffDesc_" + (b.desc || b.id)) ? "KDBuffDesc_" + (b.desc || b.id) : ("KinkyDungeonBuff" + (b.desc || b.id)), {
 				PowerInt: Math.round(b.power),
 				Power: Math.round(b.power * 100) / 100
 			}) + (count ? ` ${count}/${b.maxCount}` : "")
