@@ -85,6 +85,14 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: Intro4BC
 # :: KinkyDungeonStatT
 # :: KinkyDungeonStatDescT
+# :: KDBuffName_InnerPowerArcaneStore
+# :: KDBuffName_Cursed
+# :: KDBuffName_GhostDeal
+# :: KDBuffName_GhostDealPleasure
+# :: KDBuffName_NovicePet
+# :: KDBuffName_NovicePetBad
+# :: KDBuffName_NovicePetVeryBad
+# :: KDBuffName_LatexKittyCurseTick
 # :: KinkyDungeonGameSave
 # :: KinkyDungeonRestartConfirm
 # :: End
@@ -1116,6 +1124,8 @@ Sub
 
 - Quickness
 迅疾闪现
+# :: KinkyDungeonStatQuickness
+# :: KDBuffName_Quickness
 - Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space without ticking the clock.
 4回合不动后获得"敏捷"，"敏捷"状态下可以瞬间移动 1 格。
 
@@ -1270,6 +1280,8 @@ Sub
 再生之风现在可以恢复你意志力上限的 25%
 - Mental Defiance
 精神反抗
+# :: KinkyDungeonSpellFirstWind
+# :: KDBuffName_TraineeWP
 - Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP.
 被动：因寸止、高潮、挑逗伤害而失去意志力时积累"反抗"，最多与性奋值相等。切换：当意志力小于25%时，快速将"反抗"转化为意志力。
 - Mental Fortitude
@@ -1327,12 +1339,6 @@ Sub
 坏宠物
 - Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
 放弃“宠物初学者”特质。只能选一次。如果你再点出这项特质，就没有回头路了。
-- ${You} ${Yis} an expert in wearing a petsuit and ${your} mobility is increased.
-${You}是穿着宠物服的专家，${your}灵活度得到提高。
-- ${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
-${You}已经穿惯宠物服了！导致奔跑能力下降。
-- ${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
-${You}是个不听话的宠物，应该穿上宠物服！
 
 - Dominant
 支配者
@@ -1660,6 +1666,7 @@ ${You}是个不听话的宠物，应该穿上宠物服！
 - Mana Burst
 法力爆发
 # :: KinkyDungeonStatDistractionCast
+# :: KDBuffName_ManaBurst
 # :: KinkyDungeonSpellManaBurst
 - While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge.
 当性奋值为 100% 时，施法失败概率 -100%，但一次消耗过多的法力值可能会导致高潮。
@@ -1693,12 +1700,8 @@ DAMAGEDEALT 点电击伤害传导到你身上！
 在水的存在下，RestraintName更容易解开！
 - You slip on the floor!
 你在地板上滑倒了！
-- The air around you is ablaze! (-DamageDealt SP)
-你周围的空气在燃烧！ (-DamageDealt SP)
-- The Goddess of Illusions shrouds you in shadows!
-幻术女神将你笼罩在阴影中！
-- You struggle against your bonds, but a magical force resists!
-你努力挣扎着摆脱束缚，但有一股魔力阻碍着你！
+
+
 - The ropes squeeze you tighter and tighter...
 绳索越来越紧……
 - Your body sinks deeper into a sea of bindings...
@@ -1881,8 +1884,368 @@ EnemyName对TargetName念出了一个口令！
 - Your mouth is totally filled! You can't drink potions and can't cast verbal spells!
 你的嘴巴被堵的死死的，无法施放言语法术和饮用药剂！
 
-- Spell Empowerment!
-法术强化！
+- Corruption
+腐化
+# - Latex Integration
+# - Party Submission
+- Psychic Link
+心灵链接
+# :: KDBuffName_PsychicLink
+# :: KinkyDungeonSpellPsychicLink
+- Shock Collar
+电击项圈
+# :: KDBuffName_ShockCollarCD
+# :: KinkyDungeonSpellShockCollar
+# - Warden's Lockdown
+- Combat Maneuver
+战斗机动
+# :: KDBuffName_CombatManeuverQuick
+# :: KDBuffName_CombatManeuver
+# :: KinkyDungeonSpellCombatManeuver
+# - Elemental Charge
+# - Elemental Resistance
+# - Taunted
+- Analysis
+分析
+# :: KDBuffName_Analyze
+# :: KDBuffName_MagicalSight
+# :: KDBuffDesc_Analyze
+# - Shield of Unclarity
+# - Phase
+- Break Free
+挣脱
+# :: KDBuffName_BreakFree
+# :: KinkyDungeonSpellBreakFree
+- Raise Defenses
+提高防御
+# :: KDBuffName_RaiseDefenses
+# :: KinkyDungeonSpellRaiseDefenses
+- Double Accel
+双重加速
+# :: KDBuffName_Quickness2
+# :: KinkyDungeonSpellQuickness2
+- Triple Accel
+三重加速
+# :: KDBuffName_Quickness3
+# :: KinkyDungeonSpellQuickness3
+- Quad Accel
+四重加速
+# :: KDBuffName_Quickness4
+# :: KinkyDungeonSpellQuickness4
+- Time Stop
+完全加速
+# :: KDBuffName_Quickness5
+# :: KinkyDungeonSpellQuickness5
+# - Sealed by Shadows
+# - Fuuka's Seal
+# - Bubbled
+- Battle Trance
+战斗回响
+# :: KDBuffName_BattleTrance
+# :: KinkyDungeonSpellBattleTrance
+- Surrender
+投降
+# :: KDBuffName_NoWP
+# :: KDPlayerTitle_OutofWillpower
+# - Latex Bubbled
+# - Ballsuit
+# - Inner Power Recharging
+- Chaotic Overflow
+混沌溢出
+# :: KDBuffName_ChaoticOverflow
+# :: KinkyDungeonSpellChaoticOverflow
+- Akashic Conflux
+以太超流
+# :: KDBuffName_AkashicConflux
+# :: KinkyDungeonSpellAkashicConflux
+- Hard to Catch
+难以捕捉
+# :: KDBuffName_RogueEscape
+# :: KinkyDungeonSpellRogueEscape
+# - High Value Target
+- Arcane Energy
+奥术能量
+# :: KDBuffName_ArcaneEnergy
+# :: KDArcaneEnergy
+- Battle Rhythm
+战斗节拍
+# :: KDBuffName_BattleRhythm
+# :: KinkyDungeonSpellBattleRhythm
+# - Forced Submission
+# - Curse of Distraction
+- Corrupted
+堕落
+# :: KDBuffName_Corrupted
+# :: KDPersonalityCorrupt
+# - Cursing Circle
+- Mental Resistance
+心理抵抗
+# :: KDBuffName_e_OrgasmResist
+# :: KDBuffName_d_OrgasmResist
+# :: KinkyDungeonSpellOrgasmResist
+# :: KDControlHarnessChastityMode_Fullpower
+# - Bound by Fate
+# - Haunted
+# - Intense Vibrations
+- Upcast
+聚力
+# :: KDBuffName_Empower
+# :: KinkyDungeonFilterupcast
+- Light
+光
+# :: KDBuffName_Light
+:: KinkyDungeonFilterlight
+光
+:: KinkyDungeonSpellLight
+光
+:: KDFilterFiltersLight
+轻型
+:: KDWeaponTag_light
+轻型
+:: KDPaletteLayer_LightNeutral
+亮部
+# - Poisoned
+# - Blessing of Latex
+# - Blessing of Leather
+# - Blessing of Metal
+# - Blessing of Rope
+# - Blessing of Restoration
+# - Blessing of Elements
+# - Blessing of Conjuration
+# - Blessing of Illusion
+# - Conductive
+- Lightning Rod
+避雷针
+# :: KDBuffName_LightningRod
+# :: KinkyDungeonSpellLightningRod
+# - Drenched
+# - Chilled
+# - Slimed
+# - Unsteady
+# :: KDBuffName_Unsteady
+# :: KDBuffName_Unsteady2
+# - Chill Walk
+# - Ignited
+# :: KDBuffName_Ignite
+# :: KDBuffName_IgniteDamage
+# - On Fire
+# - Divine Punishment
+# - Divine Protection
+# - Divine Cunning
+# - Blessing of Flame
+# - Blessing of Air
+# - Blessing of Water
+# - Blessing of Earth
+# - Slime Form
+- Shroud
+影雾
+# :: KDBuffName_Shroud2
+# :: KinkyDungeonSpellShroud
+- Camouflage
+拟态
+# :: KDBuffName_Camo
+# :: KinkyDungeonSpellCamo
+- Stone Skin
+石肤术
+# :: KDBuffName_StoneSkin
+# :: KinkyDungeonSpellStoneSkin
+- Darkblade
+暗影之刃
+# :: KDBuffName_ShadowBlade
+# :: KinkyDungeonSpellShadowBlade
+- Runic Ward
+符文盾
+# :: KDBuffName_Shield
+# :: KinkyDungeonSpellShield
+# - Great Invisibility
+- Invisibility
+隐形
+# :: KDBuffName_Invisibility
+# :: KinkyDungeonSpellInvisibility
+- Lesser Invisibility
+次级隐形
+# :: KDBuffName_LesserInvisibility
+# :: KinkyDungeonSpellLesserInvisibility
+# - FULL POWER
+# - Graceful
+- Iron Blood
+铁血
+# :: KDBuffName_IronBlood
+# :: KinkyDungeonSpellIronBlood
+# - Sleepy
+- Afterimage
+残像
+# :: KDBuffName_Evasion
+# :: KinkyDungeonSpellEvasion
+- Convincing Disguise
+令人信服的伪装
+# :: KDBuffName_SlimeMimic
+# :: KDBuffName_d_SlimeMimic
+# :: KinkyDungeonSpellSlimeMimic
+# - Disenchanted
+- Leather Package
+皮革包裹
+# :: KDBuffName_LeatherBurst
+# :: KinkyDungeonSpellLeatherBurst
+- Sagitta
+天剑
+# :: KDBuffName_SagittaAssault
+# :: KinkyDungeonSpellSagitta
+# - Devoted Focus
+# - Shadowstep
+# - Lockdown
+# - Drowsy
+- Poison Breath
+毒息
+# :: KDBuffName_PoisonBreath
+# :: KinkyDungeonSpellPoisonBreath
+- Silenced
+沉默
+# :: KDBuffName_Silenced
+# :: KDStatusTooltipEnemySilence
+# - Good Doll
+# - Trance
+# - Locked Down
+# :: KDBuffName_StraitjacketBolt
+# :: KDBuffName_Lockdown
+# - Verbose
+# - Dextrous
+# - Spell Dance
+# - Bondage Buster
+- Katana
+武士刀
+# :: KDBuffName_KatanaCharge
+# :: KinkyDungeonInventoryItemKatana
+- Stormbreaker
+风暴之锤
+# :: KDBuffName_StormCharge
+# :: KinkyDungeonInventoryItemStormBreaker
+
+
+
+- -100% miscast chance, but casting spells can send you over the edge.
+施法失败概率 -100%，但一次消耗过多的法力值可能会导致高潮。
+
+- You are psychically connected!
+你们有心灵感应！
+- You've used Shock Collar recently and it costs more DP.
+你最近使用了电击项圈，它现在将会消耗更多的性奋值。
+
+- Marked for Collection. Getting hit by more orbs will put you on a stand. Reduces Bondage resist.
+捕获标记。被更多球体命中会让你被束缚在罚站桩上。削弱束缚抗性。
+
+- Phase Dance active. Your next move is instant.
+相位之舞激活。你的下一步行动不消耗回合。
+- Combat Maneuver active. Your next move is instant.
+战斗机动激活。你的下一步行动不消耗回合。
+
+# - You are more likely to succumb to curses.
+
+- Your elemental damage is increased!
+你的元素伤害增加了！
+- Your elemental resistance is increased!
+你的元素抵抗增加了！
+
+# - Friendly fire is reduced by ${PowerInt}%
+- Your skin is covered in a layer of latex, making escape from cyber restraints harder!
+你的皮肤上覆盖着一层乳胶，让你更难摆脱赛博拘束！
+- Defeat all taunting enemies or stay within the tiles to avoid shame!
+击败所有嘲讽的敌人，或留在方格内以避免被羞辱！
+
+
+- You have formed a mental barrier...
+你已经形成了一个精神屏障...
+
+# - +50 Evasion
+
+- Your struggle power is greatly increased!!!
+你的挣脱能力大大增强！！！
+
+- Your defenses are raised!
+你的防御力提高了！
+
+- Time is slowed by 2x
+时间减慢了 2 倍
+- Time is slowed by 3x
+时间减慢了 3 倍
+- Time is slowed by 4x
+时间减慢了 4 倍
+- Time has come to a halt...
+时光骤然停滞……
+
+
+- You are F A S T
+你 超 越 了 光 速
+
+- Shadowy magic is restricting you!
+暗影魔法正在束缚你！
+- You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
+你被风香的护符弹幕击中了。风香的魔法束缚了你！
+
+- An item has increased your spell damage!
+一件物品增加了你的法术伤害！
+- Magical water reduces your accuracy and slows you significantly!
+魔法水会降低你的命中率并显着减慢你的速度！
+- You attack twice!
+你攻击了两次！
+- You gain a free move from Combat Maneuvers!
+你可以通过战斗机动获得一次自由行动！
+
+# - Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist.
+
+- The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range.
+你周围的乳胶会限制你的攻击，减少 30% 的物理伤害并降低你的可视范围。
+# :: KDBuffDesc_LatexBubble
+# :: KDBuffDesc_LatexBall
+
+- As you are low on mana, you are unable to store Arcane Energy.
+由于你的法力不足，你无法储存奥术能量。
+- You are recharging your next mana cost reduction.
+你正在为下一次的法力消耗减少充能。
+
+- Chaotic energy flows through you! You have a bad feeling about this...
+混乱的能量在你体内流动！你有一种不好的预感……
+- You can ignore Arm, Leg, and Verbal components!
+你可以忽略手臂、腿和言语部分！
+
+- Struggling is improved and escape is quicker!
+挣扎能力提升，逃跑速度更快！
+
+- You sense that a high value target is near.
+你感觉到一个高价值目标正在靠近。
+
+- Arcane Energy is stored by casting spells, up to 100% Max mana.
+奥术能量可通过施展法术来储存，奥术能量上限为 100% 法力值上限
+- Battle Rhythm is gained by spending stamina through attacks, up to 40 total.
+战斗节拍是通过攻击消耗体力来获得的，总共最多 40 点
+- You must submit! Moving away from an enemy at 0 WP will bind you!
+你必须屈服！0 意志力时逃离敌人将会束缚你！
+- Having taken damage, your distraction is increasing...
+受到伤害后，你的注意力越来越分散......
+- Your willpower gain and struggle power is less effective due to your corruption.
+你的意志力获取和挣脱能力因为你的腐化而降低。
+# - You are in the process of being cursed.
+
+- A dark energy lurks within you.
+一股黑暗能量潜伏在你的内心。
+
+- You've made a deal... your freedom now in exchange for your freedom later...
+你和幽灵做了交易……用未来的自由换取当下的自由……
+- You've made a deal, which lurks deep inside you~
+你与幽灵的契约，深深潜伏在了你的体内~
+# - You cannot orgasm except by choice or below 10% WP. Click to toggle.
+# - You are allowing yourself to let go. Click to toggle.
+- Stepping outside of the indicated tiles will result in punishment!
+走出指定的地块将会受到惩罚！
+
+- A playful ghost now accompanies you on your journey.
+现在，一个顽皮的幽灵将陪伴你踏上旅程。
+
+# - The Blade of Ejahl deals bonus charm damage!!!
+
+
+
+# - You are able to cast higher level versions of spells.
 
 - Let there be light!
 要有光！
@@ -1890,8 +2253,7 @@ EnemyName对TargetName念出了一个口令！
 - You're seeing things...
 你看到了一些东西...
 
-- You've been poisoned!
-你中毒了！
+# - You're starting to feel drowsy.
 
 - -50% MP Cost (Latex)
 乳胶法术的法力消耗减少 50% [ ⁧[
@@ -1910,35 +2272,25 @@ EnemyName对TargetName念出了一个口令！
 - -50% MP Cost (Illusion)
 幻术的法力消耗减少 50% [ ⁧[
 
-- Conductive: When you or an enemy takes electric damage, the other takes half of it as well!
-导电 : ‎当你或敌人受到电击伤害时，另一方也会承受被攻击个体受到的50%电击伤害！
-- Lightning Rod: Gain significantly boosted electric resist.
-避雷针 : ‎大幅增加电击抗性
-- Drenched: Grants fire resist, ice/electric weakness, and makes you conductive.
-潮湿 : ‎提高火焰抗性，但降低对寒冰和电击的抗性，并获得导电
+# - When you or an enemy takes electric damage, the other takes half of it as well!
+# - Gain significantly boosted electric resist.
+# - Grants fire resist, ice/electric weakness, and makes you conductive.
 
-- Chilled: The cold makes it hard to move! You are slowed.
-寒冷 : ‎寒冷使得移动变得困难，降低移动速度
-- Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
-粘液覆盖 : ‎浓稠而又黏糊糊粘液覆盖在你身上，降低 30% 胶体抗性和移动速度
-- Unsteady: You're on loose footing. You are easier to hit and are slowed.
-不稳定 : ‎你站在不牢固的地面上，降低移动速度，且更容易被击中
-# :: KinkyDungeonBuffUnsteady
-# :: KinkyDungeonBuffUnsteady2
+# - The cold makes it hard to move! You are slowed.
+# - It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
+# - You're on loose footing. You are easier to hit and are slowed.
+# :: KDBuffDesc_Unsteady
+# :: KDBuffDesc_Unsteady2
 - Ignore Ice Tiles
 忽略寒冰地块
 
-- Ignited: You are dealing fire damage to yourself and nearby enemies!
-燃烧 : ‎你正对自己和附近的敌人造成火焰伤害！
+# - You are dealing fire damage to yourself and nearby enemies!
 - You are on fire and taking damage!
 你正在燃烧并受到伤害！
 
-- Divine Punishment: Deals bonus damage when you hit an enemy.
-神圣惩戒 : ‎当你击中敌人时，造成额外的伤害
-- Divine Protection: Automatically blocks the next 3 times an enemy tries to bind you.
-神圣守护 : 自动阻挡敌人接下来三次试图束缚你的攻击。
-- Divine Cunning: You turn invisible briefly after attacking.
-神圣之灵 : ‎你在攻击后短暂变得隐形
+# - Deals bonus damage when you hit an enemy.
+# - Automatically blocks the next 3 times an enemy tries to bind you.
+# - You turn invisible briefly after attacking.
 
 - -MP Cost (Fire)
 减少火焰法术的 MP 消耗
@@ -1949,34 +2301,20 @@ EnemyName对TargetName念出了一个口令！
 - -MP Cost (Earth)
 减少岩法术的 MP 消耗
 
-- Slime Form: You gain bonuses and can slip through bars!
-粘液形态 : ‎你获得一些加成，并能穿过栅栏
-- Shroud: Visibility decreased, evasion increased.
-影雾：增加隐蔽性和闪避。
-- Camouflage: While next to a wall, you are very hard to see.
-伪装 : ‎靠近墙壁时，你很难被其他生物察觉到
-- Stone Skin: Increased armor.
-石肤 : ‎增加护甲
-- Darkblade: Increased damage.
-暗影之刃 : ‎增加伤害
-- Runic Ward: Increased Magic Armor.
-符文盾 : ‎增加魔法护甲
-- Great Invisibility: It is impossible for enemies to see you.
-高级隐形 : ‎敌人无法看到你
-- Invisibility: It is very difficult for enemies to see you.
-隐形 : ‎敌人很难看到你
-- Lesser Invisibility: It is harder for enemies to see you.
-次级隐身 : ‎敌人较难看到你
-- FULL POWER: Cutting power increased.
-充满能量 : ‎切割能力提高
-- Graceful: Struggling power increased.
-优雅 : ‎挣扎能力提高
-- Iron Blood: Reduced melee cost, increased mana costs.
-铁血 : ‎减少近战体力消耗，但增加施放法术的法力消耗
-- Sleepy: You are sluggish and have a hard time keeping your eyes open.
-困倦: 你感到行动迟缓，眼皮沉重。
-- Afterimage: Evasion greatly increased.
-残像 : ‎闪避大幅增加
+# - You gain bonuses and can slip through bars!
+# - Visibility decreased, evasion increased.
+# - While next to a wall, you are very hard to see.
+# - Increased armor.
+# - Increased damage.
+# - Increased Magic Armor.
+# - It is impossible for enemies to see you.
+# - It is very difficult for enemies to see you.
+# - It is harder for enemies to see you.
+# - Cutting power increased.
+# - Struggling power increased.
+# - Reduced melee cost, increased mana costs.
+# - You are sluggish and have a hard time keeping your eyes open.
+# - Evasion greatly increased.
 - We did it! We made ourselves invisible--mmmmph!!!
 我们做到了！我们让自己隐形了--mmmmph!!!
 - You are not currently attempting to disguise yourself. Click to reenable.
@@ -1992,30 +2330,50 @@ EnemyName对TargetName念出了一个口令！
 你储存了意志力。
 - You have consumed a mote of essence, granting miscast chance reduction.
 你消耗了一颗精华微粒，减少了施法失误概率。
+
+- The air around you is ablaze! (-DamageDealt SP)
+你周围的空气在燃烧！ (-DamageDealt SP)
+- The Goddess of Illusions shrouds you in shadows!
+幻术女神将你笼罩在阴影中！
+- You struggle against your bonds, but a magical force resists!
+你努力挣扎着摆脱束缚，但有一股魔力阻碍着你！
+- ${You} ${Yis} an expert in wearing a petsuit and ${your} mobility is increased.
+${You}是穿着宠物服的专家，${your}灵活度得到提高。
+- ${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
+${You}已经穿惯宠物服了！导致奔跑能力下降。
+- ${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
+${You}是个不听话的宠物，应该穿上宠物服！
+- Sleepy...
+好困……
+- Toxic spores are making it difficult to move
+有毒的孢子让你行动困难
+- ${You} ${Yis} silenced, unable to cast spells easily.
+${You}陷入沉默，无法轻易施展法术。
+- This is the total amount of Latex Kitty Curse you possess.
+这是你所拥有的乳胶猫娘诅咒的总量。
+# - ${You} you're starting to feel just like a doll... 
+- ${Youve} fallen into a trance, making suggestions more powerful.
+${Youve}陷入了恍惚状态，使得心理暗示更具影响力。
+
+
+# - Struggling power is greatly reduced.
+# :: KDBuffDesc_StraitjacketBolt
+# :: KDBuffDesc_Lockdown
+
+# - You can cast verbal spells while gagged.
+# - You can cast arm spells while tied up.
+# - You can cast leg spells while tied up.
+
+# - Lazor is charging...
+# - Patience is key...
+# - You have the Power.
+
+
+
 - You recapture an essence mote and concentrate on its essence!
 你重捕了一个精华微粒，并集中在了它的精华上！
 - Choose an essence mote to absorb.
 选择吸取一个精华微粒。
-
-- Locked Down: Struggling power is greatly reduced.
-锁定 : ‎挣扎能力大幅降低
-# :: KinkyDungeonBuffStraitjacketBolt
-# :: KinkyDungeonBuffLockdown
-
-- Verbose: You can cast verbal spells while gagged.
-言灵无碍 : ‎你可以在佩戴口球的情况下施放言语法术
-- Dextrous: You can cast arm spells while tied up.
-手法巧妙: 你可以在手臂被捆绑的情况下施放需要手臂的法术
-- Spell Dance: You can cast leg spells while tied up.
-舞步神通 : ‎你可以在双腿被捆绑的情况下施放需要腿部的法术
-
-- Bondage Buster: Lazor is charging...
-束缚破坏者: ‎激光正在充能中...
-- Katana: Patience is key...
-武士刀: ‎耐心是关键...
-- Stormbreaker: You have the Power.
-风暴克星 : ‎你拥有力量
-
 - Game Setup:
 游戏设置
 - Beginner: Get a save code every 3 levels, autosave after each floor
@@ -3411,8 +3769,6 @@ Devious Dungeon Challenge 已启用。
 - You pick up a dagger.
 你拾起一把匕首。
 
-- Katana
-武士刀
 - She who strikes first, hits second.
 先发制人，后发制于人。
 - Deals slash damage. Deals up to 50 bonus damage by waiting 10 turns between attacks.
@@ -3429,8 +3785,6 @@ Devious Dungeon Challenge 已启用。
 - You pick up Shadow's Edge.
 你拾起了一把暗影之刃。
 
-- Stormbreaker
-风暴之锤
 - I have the power! Taking electric damage charges you (1 turn/10dmg).
 赐予我力量吧！受到电击伤害会充能 ( 每1回合/10点伤害 ) 。
 - Deals impact damage. Deals bonus electric damage in an area when charged, up to +40. Gives +100 Electric Resist when held. (can be wielded offhand to apply the Electric Resist)
@@ -6203,8 +6557,6 @@ EnemyName 用 NewRestraintName 拘束你
 命运之线闪闪发光，缠绕着你！
 - Many shining strings surround you!
 许多闪亮的丝线围绕着你！
-- Stepping outside of the indicated tiles will result in punishment!
-走出指定的地块将会受到惩罚！
 - Bindings of Fate
 命运之缚
 
@@ -9706,7 +10058,7 @@ RestraintName 上的诅咒解除了！
 - Intense Training Plug
 强化训练塞
 - An energetic plug that will make your life unbearably pleasurable.
-一个震动幅度相当大的塞子，会让你的生活变得难以忍受......
+一个震动幅度相当大的塞子，会让你的生活变得难以忍受。
 - You're going to have the time of your life. Type: Pleasure, and lots of it
 你将会度过一生中最美好的时光。类型 : ‎快感，而且很多
 
@@ -12429,8 +12781,6 @@ Ars烟火
 排除进阶
 - Passive
 被动
-- Upcast
-聚力
 - Buffs
 增益
 - DoT
@@ -12473,18 +12823,6 @@ Ars烟火
 预测
 - Alteration
 变化
-- Light
-光
-:: KinkyDungeonFilterlight
-光
-:: KinkyDungeonSpellLight
-光
-:: KDFilterFiltersLight
-轻型
-:: KDWeaponTag_light
-轻型
-:: KDPaletteLayer_LightNeutral
-亮部
 - Shadow
 暗影
 # :: KinkyDungeonFiltershadow
@@ -12622,8 +12960,6 @@ Ars烟火
 击败非人形敌人会导致藤蔓在其空间内暂时发芽。
 
 
-- Battle Rhythm
-战斗节拍
 - Stores 10% of the stamina cost of attacks as Rhythm, up to a total of 40. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking.
 将攻击消耗的体力的 10%储存为节拍，最多储存 40 个节拍。当你的节拍超过 10 时，你会获得 +10 格挡和闪避。此外。敌人对你的基本准确度会降低相当于你的节拍的百分比。如果攻击因此而未命中或被格挡，将消耗数值为敌人攻击力的 25% 的节拍值。不攻击时节拍 衰减。
 
@@ -12632,13 +12968,9 @@ Ars烟火
 - Spend 40 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
 花费 40 意志力 即可完全恢复体力，并且体力增益增加 30%，持续 20 回合。 如果你的意志力因此而变为 0，你将被眩晕 2 回合。
 
-- Battle Trance
-战斗回响
 - While at 40 Battle Rhythm, you attack twice per turn.
 当战斗节拍达到 40 时，你每回合可以攻击两次。
 
-- Combat Maneuver
-战斗机动
 - When Battle Trance is active, you gain a free move if the target is defeated before the second attack hits.
 当战斗回响激活时，如果目标在第二次攻击命中之前被击败，你将获得一次自由移动。
 
@@ -12699,16 +13031,8 @@ Ars烟火
 - You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total) and 50% less willpower.
 你很难满足。 高潮时消耗的体力会降低 50%  ( 总计 75% ) 和 意志力消耗降低50% 。
 
-- Mental Resistance
-心理抵抗
-# :: KinkyDungeonSpellOrgasmResist
-# :: KDControlHarnessChastityMode_Fullpower
 - +100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
 +100 精神与魅惑抗性。当你的意志力高于 10% 或有护盾时，你不会不自觉地高潮（点击效果图标可切换）。在处于寸止状态时，意志力消耗速度减慢 70%。
-- Mental Resistance: You cannot orgasm except by choice or below 10% WP. Click to toggle.
-坚定意志：除非自愿或意志力小于 10%，否则无法高潮。点击以切换。
-- Mental Resistance: You are allowing yourself to let go. Click to toggle.
-坚定意志 : 你随意允许自己高潮。点击以切换。
 
 
 - Way of Discipline
@@ -13080,8 +13404,6 @@ Ars烟火
 - Shadow Heel
 暗影高跟鞋
 
-- Runic Ward
-符文盾
 - Gives yourself or a creature a magic shield for 50 turns, granting +30 Magic Armor.
 对自身或其他个体施加魔法护盾，持续 50 回合，获得 +30 魔法护甲。
 - You whisper a word of protection!
@@ -13089,8 +13411,6 @@ Ars烟火
 - Choose creature to shield
 选择施加护盾的个体
 
-- Afterimage
-残像
 - Massively increases a creature's evasion for 5 attacks. Expires after 25 turns.
 大幅增加个体下 5 次被攻击时的闪避。 25回合后失效。
 - Your movements intensify!
@@ -13679,8 +13999,6 @@ Ars烟火
 - While standing on slime/latex, you can cast rubber spells without components.
 当你站在粘液/乳胶上时，你可以在施法部位被限制时释放橡胶法术。
 
-- Convincing Disguise
-令人信服的伪装
 - While standing still on slime, or fully bound with at least one latex item, you are harder to notice. Each latex restraint you are wearing increases this amount. Can be toggled off by clicking the buff icon.
 当你站在粘液上，或既被堵嘴，又被绑住手臂，又被减速，又至少穿着一件乳胶拘束具时，敌人很难发现你。穿戴的乳胶拘束具越多，效果越强。可以通过点击 buff 图标来开启/关闭。
 
@@ -13711,8 +14029,6 @@ Ars烟火
 寒冰牢狱
 - Freezing an enemy applies 10 binding per turn of freeze added, plus brings the enemy to a minimum of 20% binding.
 冻结敌人，使敌人的拘束值至少达到 20%，每冻结一回合还会增加 10% 束缚。
-- Lightning Rod
-避雷针
 - After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
 在施放消耗法力的风或电法术后，变得导电并获得 300% 的电击抗性，持续 3 回合。
 - When enabled, enemies in chastity become angry Frustrated Pets when becoming helpless.
@@ -13785,8 +14101,6 @@ Ars烟火
 - Select center of a a 3x3 AoE
 选择施放区域 ( 3x3 )
 
-- Leather Package
-皮革包裹
 - After conjuring a leather restraint, you can conjure up to three more without advancing time.
 在召唤出皮革拘束具后，可在同一回合内继续召唤 3 个拘束具。
 
@@ -14121,8 +14435,6 @@ Ars烟火
 - You slowly charge up a powerful flash!
 你缓慢地释放出一道强力的闪光！
 
-- Shroud
-影雾
 - Sleep Gas
 睡眠气体
 - Select where to center the shroud (SpellArea radius)
@@ -14132,8 +14444,6 @@ Ars烟火
 - You exhale a misty shroud
 你呼出一层朦胧的雾
 
-- Invisibility
-隐形
 - Select which creature to buff
 选择要增强的生物
 # :: KinkyDungeonSpellTargetInvisibility
@@ -14326,13 +14636,9 @@ Ars烟火
 - You speak a powerful command word!
 你的命令铿锵有力！
 
-- Lesser Invisibility
-次级隐形
 - You become semitransparent!
 你变得半透明！
 
-- Camouflage
-拟态
 - Select yourself
 选择自己
 # :: KinkyDungeonSpellTargetCamo
@@ -14342,8 +14648,6 @@ Ars烟火
 - You pose in a clandestine manner.
 你摆出了一个隐秘的姿势。
 
-- Darkblade
-暗影之刃
 - Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower.
 使目标生物在 Duration 回合内或下 5 次攻击中伤害增加 20。
 - You call forth dark runes on your weapon and arms!
@@ -14426,15 +14730,11 @@ Ars烟火
 - You hover with reduced effect from bindings.
 您悬停时捆绑的效果会减弱。
 
-- Iron Blood
-铁血
 - Channel 4 turns: Reduces SP cost of melee attacks by 30%, but increases MP cost of spells by 15%. Ends on recast.
 吟唱4回合后 : 近战攻击体力消耗 -30%，但释放法术时法力消耗 +15%，再次使用时停止。
 - Your skin glows a pale red!
 你的皮肤发出淡红色的光芒！
 
-- Stone Skin
-石肤术
 - Make the targeted creature (or yourself) gain +20 armor for Duration turns
 使自身或目标生物在 Duration 回合内获得 +20 物理护甲。
 - Your skin takes on the appearance of cracked earth!
@@ -16542,8 +16842,6 @@ AMNT% 的概率命中你
 痴呆
 - Snared
 受困
-- Silenced
-沉默
 - Disarmed
 缴械
 - Blinded
@@ -24939,11 +25237,6 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 不要
 # :: dGhostNegotiatePossess_Cancel
 # :: dGhostNegotiatePossessPleasure_Cancel
-
-- You've made a deal... your freedom now in exchange for your freedom later...
-你和幽灵做了交易……用未来的自由换取当下的自由……
-- You've made a deal, which lurks deep inside you~
-你与幽灵的契约，深深潜伏在了你的体内~
 
 
 
@@ -44508,8 +44801,6 @@ Kjus眼5
 - Restores 30% willpower. Takes a few turns to eat.
 恢复30%意志力。需要几回合食用。
 
-- A playful ghost now accompanies you on your journey.
-现在，一个顽皮的幽灵将陪伴你踏上旅程。
 - The ghost haunting you decides to have a little fun! (+RestraintAdded)
 困扰你的幽灵决定找点乐子！ ( +RestraintAdded )
 - The ghost you made a deal with decides to have a little fun! (+RestraintAdded)
@@ -45250,8 +45541,7 @@ ${PHonor}，该散步了。
 
 - A dark energy enters your body... (DamageDealt)
 黑暗能量进入你的身体...... ( DamageDealt )
-- A dark energy lurks within you.
-一股黑暗能量潜伏在你的内心。
+
 - You succumb to a dark desire... (+RestraintAdded)
 你屈服于黑暗的欲望...... ( +RestraintAdded )
 
@@ -45332,9 +45622,6 @@ ${PHonor}，该散步了。
 造成抚摸伤害。每次击中可花费 40 点能量来增加魅惑伤害，持续 10 回合。
 - You retrieve the Blade of Ejahl.
 你取回了“埃贾尔”之刃。
-
-- Intense Vibrations: The Blade of Ejahl deals bonus charm damage!!!
-强烈振动 : ‎火焰之刃造成额外的魅惑伤害！！！
 - The Blade of Fla-peh buzzes with great power!
 火焰之刃嗡嗡作响，威力巨大！
 - 40 charge to deal 30 charm damage per hit for 10 turns.
@@ -45540,8 +45827,6 @@ AMNT 统计
 地面上出现了一道诅咒符印！
 # :: KinkyDungeonSpellCastCursingCircle
 # :: KinkyDungeonSpellCastCursingCircle2
-- You are being cursed!!!
-你被诅咒了！！！
 
 - Star-Cursed Epicenter
 星咒核心
@@ -45590,15 +45875,11 @@ RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 
 - Corruption: While in the shadows, you slowly gain corruption.
 腐化 : ‎身处阴影中时，你会缓慢获得腐化。
-- Your willpower gain and struggle power is less effective due to your corruption.
-你的意志力获取和挣脱能力因为你的腐化而降低。
 
 - Seduction: Gain distraction after taking damage.
 诱惑 : ‎受到伤害后开始性奋。
 - Taking damage fills your minds with cursed thoughts...
 受到伤害会让你的脑海中充满被诅咒的想法......
-- Having taken damage, your distraction is increasing...
-受到伤害后，你的注意力越来越分散......
 
 - Punishment: When you defeat an enemy, you are stunned briefly and enemies are attracted.
 惩罚 : ‎当你击败敌人时，你会短暂昏迷并吸引敌人。
@@ -45609,8 +45890,6 @@ RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 屈服 : ‎在 0 意志力时，如果你离开敌方存在，你就会受到束缚。
 - Dark Voice: Kneel before your mistress.
 黑暗之声 : 在你的女主人面前跪下。
-- You must submit! Moving away from an enemy at 0 WP will bind you!
-你必须屈服！0 意志力时逃离敌人将会束缚你！
 
 - Denial: -10 WP when you try to Let Go. At 0 WP you cannot orgasm.
 拒绝 : ‎当你尝试高潮时 -10 意志力。 意志力为 0 时你将无法达到性高潮。
@@ -45896,11 +46175,6 @@ Aether, 宇宙的守护者
 - Oblivion, Keeper of Secrets
 Oblivion, 秘密的守护者
 
-- Arcane Energy is stored by casting spells, up to 100% Max mana.
-奥术能量可通过施展法术来储存，奥术能量上限为 100% 法力值上限
-- Battle Rhythm is gained by spending stamina through attacks, up to 40 total.
-战斗节拍是通过攻击消耗体力来获得的，总共最多 40 点
-
 - Arcane Blast
 奥术冲击
 - When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. Casting this spell consumes it to deal up to 25% Max Mana as Arcane damage. Pierces enemies and walls.
@@ -45914,8 +46188,6 @@ Oblivion, 秘密的守护者
 超级暴击！
 - Surprise Bondage!
 突袭束缚！
-- Arcane Energy
-奥术能量
 - Rhythm
 节奏
 - You avoid the attack in a flurry of impressive maneuvers!
@@ -45925,9 +46197,6 @@ Oblivion, 秘密的守护者
 奥术屏障
 - When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 10% Max Mana.
 当你通过施法消耗法力时，将法力转化储存为 40% 奥术能量，奥术能量上限为 100% 法力值上限。启用此法术后，奥术能量将以 1:2 的比例缓慢转化为等于 10% 法力值上限的护盾。
-
-- You sense that a high value target is near.
-你感觉到一个高价值目标正在靠近。
 
 - You push yourself beyond physical limits!
 你超越了身体的极限！
@@ -45947,28 +46216,19 @@ Oblivion, 秘密的守护者
 - Trap spells always critically strike.
 陷阱法术总是会造成暴击。
 
-- Hard to Catch
-难以捕捉
 - Adjacent NPCs count as corners/hooks for purposes of escaping. After being restrained, escape speed and power is increased for 12 turns (escape power is increased by +20% plus 2% of Bondage Resist). Removed if you restrain yourself.
 相邻的NPC被视为用于逃生的角落/钩子。被束缚后，逃跑速度和力量增加12回合 ( 挣脱能力增加+20%，加上2%的束缚抗性 ) 。如果你自缚的话，就会被移除。
 
-- Struggling is improved and escape is quicker!
-挣扎能力提升，逃跑速度更快！
-
-- Akashic Conflux
-以太超流
 - Costs 100 Arcane Energy and refunds 100 Mana. Bringing memories to life, you call upon your magical knowledge to ignore arm, leg, and verbal spell components for 3 turns.
 花费 100 奥术能量并返还 100 法力。将记忆带入生活，无需手臂、腿和言语即可进行施法，持续 3 回合。
-- You can ignore Arm, Leg, and Verbal components!
-你可以忽略手臂、腿和言语部分！
+
+
 - Magical whisperings circle around you, enabling you to cast spells without components!
 魔法低语围绕在你周围，使你能够在无法进行任何行动的情况下施展法术！
 - You don't have enough Arcane Energy. You need AMNT.
 你没有足够的奥术能量。你需要 AMNT。
 
 
-- Chaotic Overflow
-混沌溢出
 - Draw upon 35 WP to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
 汲取 35 点意志力来完全恢复你的法力并在持续时无视施法部位要求。这股能量是不可控的，所以会产生某些后果……
 - Chaotic energy flows through you!!!
@@ -45981,9 +46241,6 @@ Oblivion, 秘密的守护者
 你已经充满了混沌能量！
 - Chaotic energy overtakes you, crystallizing into physical form...
 混乱的能量笼罩着你，结晶成物理形态……
-
-- Chaotic energy flows through you! You have a bad feeling about this...
-混乱的能量在你体内流动！你有一种不好的预感……
 
 
 - You find a shimmering macaron.
@@ -46015,11 +46272,6 @@ Oblivion, 秘密的守护者
 选择要解除诅咒的束缚
 - You don't have any restraints that can be removed
 你没有任何可以解除的束缚
-
-- As you are low on mana, you are unable to store Arcane Energy.
-由于你的法力不足，你无法储存奥术能量。
-- You are recharging your next mana cost reduction.
-你正在为下一次的法力消耗减少充能。
 
 
 
@@ -46148,11 +46400,6 @@ LKTYP 锁锁在了你的一个拘束具上！
 一个乳胶球包围着你并膨胀起来，密封住你的脖子！
 - A ball of latex envelops you!
 一个乳胶球包围着你！
-- The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range.
-你周围的乳胶会限制你的攻击，减少 30% 的物理伤害并降低你的可视范围。
-# :: KinkyDungeonBuffLatexBubble
-# :: KinkyDungeonBuffLatexBall
-
 - Latex Ball
 乳胶球
 
@@ -46429,9 +46676,6 @@ LKTYP 锁锁在了你的一个拘束具上！
 # :: KDAddToHotbar
 # :: KDInventoryActionHotbar
 
-- Surrender: Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist.
-投降 : ‎你的意志力为0，对挣扎、阻挡、闪避、束缚抵抗给予巨额惩罚。
-
 - Unbound Keybindings! -->
 存在未绑定的按键! -->
 - You've not enough keys!!! -->
@@ -46681,12 +46925,6 @@ LKTYP 锁锁在了你的一个拘束具上！
 一团神奇的水开始在你周围形成！
 - The gap in the bubble closes, and you are fully sealed within the bubble!
 气泡中的缝隙闭合，你完全密封在气泡中！
-- Magical water reduces your accuracy and slows you significantly!
-魔法水会降低你的命中率并显着减慢你的速度！
-- You attack twice!
-你攻击了两次！
-- You gain a free move from Combat Maneuvers!
-你可以通过战斗机动获得一次自由行动！
 
 - Access denied.
 拒绝访问。
@@ -46842,9 +47080,6 @@ NPC 没有足够的钱了！
 - Hundreds of years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
 数百年后，一群探险家们发现了一座充满古老科技的失落岛屿。|现在，无数外来者涌入废墟寻找财富和智慧...|...却对很久以前被封印在里面的狡猾秘密一无所知。
 
-- An item has increased your spell damage!
-一件物品增加了你的法术伤害！
-
 - AMNT ice damage/turn vs. Frozen
 AMNT 冰冻伤害/回合 vs. 冰冻
 - AMNT shadow bleed (10 turns)
@@ -46860,13 +47095,11 @@ AMNT 暗影流血 ( 10 回合 )
 你被风香的护符击中了。风香的魔法让你变得迟钝！！
 - You were hit by one of Fuuka's talismans. Fuuka's magic renders you helpless!!!
 你被风香的护符击中了。风香的魔法让你束手无策！！！
-- You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
-你被风香的护符弹幕击中了。风香的魔法束缚了你！
 
 - Sealing Shadows
 封印暗影
-- Shadowy magic is restricting you!
-暗影魔法正在束缚你！
+
+
 - A powerful seal holds you in place temporarily!!!
 强大的封印将你暂时固定在原地！！！
 
@@ -47602,33 +47835,18 @@ BOSS 房已清空！
 相位之舞
 - For 3 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal. Can miscast unlike many self-targeted spells.
 在 3 回合内，你的移动不会使时间流动。攻击或施法仍算作一回合，时间也会正常流动。与其他许多以自身为目标的法术不同，该法术可能会施法失败。
-- You are F A S T
-你 超 越 了 光 速
 
-- Double Accel
-双重加速
 - Slow down time by 1/2 for 10 turns (world time). Stamina regens 50% slower.
 时间减慢 1/2，持续 10 回合 ( 世界时间 ) 。体力恢复速度减慢 50%。
-- Time is slowed by 2x
-时间减慢了 2 倍
-- Triple Accel
-三重加速
+
 - Slow down time by 1/3 for 10 turns (world time). Stamina regens 75% slower.
 时间减慢 1/3，持续 10 回合 ( 世界时间 ) 。体力恢复速度减慢 75%。
-- Time is slowed by 3x
-时间减慢了 3 倍
-- Quad Accel
-四重加速
+
 - Slow down time by 1/4 for 10 turns (world time). Stamina does not regen.
 时间减慢 1/4，持续 10 回合 ( 世界时间 ) 。体力不会恢复。
-- Time is slowed by 4x
-时间减慢了 4 倍
-- Total Accel
-完全加速
-- Stop time 10 turns (world time). Stamina does not regen.
+
+- Stop time for 10 turns (world time). Stamina does not regen.
 在 10 回合内暂停时间 ( 世界时间 ) 。体力不会恢复
-- Time has come to a halt...
-时光骤然停滞……
 
 - Time slows down by 2x!
 时间慢了 2 倍！
@@ -47644,7 +47862,7 @@ BOSS 房已清空！
 四重加速！
 - Time has ceased to pass.
 时间已经停止流逝。
-- Total Accel!
+- Time Stop!
 完全加速！
 
 - You begin to move at lightning speed!
@@ -47685,16 +47903,12 @@ ENMY表现出惊人的抵抗力，将伤害减少了 PCNT%。
 # :: KDNoDamage
 
 
-- Raise Defenses
-提高防御
 - Spend 90 stamina to shield yourself from damage equal to your Block. Lasts 10 turns or until you attack.
 花费 90 点体力来保护自己免受等同于格挡值的伤害。持续 10 回合或直到你攻击为止。
 - Evasive Maneuvers
 机动躲避
 - While active, you evade almost all attacks, but your stamina is drained by 50 per turn plus 10 per slow level. The base stamina cost is reduced by your Evasion.
 开启时，你可以躲避几乎所有攻击，但你的体力每回合会消耗 50 点，加每减速等级 10 点。基础体力消耗会因躲避而减少。
-- Break Free
-挣脱
 - Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Resist. Lasts 60 turns or until your willpower reaches 0.
 消耗20个战斗节拍，挣脱能力+20%，束缚抵抗增加1%。持续60回合或直到你的意志力达到0。
 - Problem Solving
@@ -47715,9 +47929,6 @@ ENMY表现出惊人的抵抗力，将伤害减少了 PCNT%。
 
 - You raise your defences!
 你提高防御！
-- Your defenses are raised!
-你的防御力提高了！
-
 
 - You don't have the will to break free.
 你没有挣脱束缚的意志。
@@ -47725,9 +47936,6 @@ ENMY表现出惊人的抵抗力，将伤害减少了 PCNT%。
 你的战斗节拍还不够。你需要20。
 - You channel your fighting spirit into your desire for freedom!
 你将你的战斗精神转化为你对自由的渴望！
-- Your struggle power is greatly increased!!!
-你的挣脱能力大大增强！！！
-
 - The teleportation partially succeeds due to an obstruction, placing you near the intended point.
 由于阻碍，传送部分成功，使你接近预定地点。
 - The teleportation fizzles due to obstruction.
@@ -47843,9 +48051,6 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 连招
 - Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
 战斗节拍将等比例减少武器攻击所需要的体力。
-
-- +50 Evasion from using Phase
-使用相位时 +50 闪避
 
 - Blade Dance
 剑舞
@@ -48165,9 +48370,6 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - You have the mental clarity but not the magical clarity! (not enough mana)
 你的精神很清晰，但对魔法却很迷茫！ ( 法力值不足 )
 
-- You have formed a mental barrier...
-你已经形成了一个精神屏障...
-
 
 - Desire Burst
 欲望爆发
@@ -48256,8 +48458,6 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 选择发射武器的方向。
 
 
-- Sagitta
-天剑
 - Fire a projectile. If this projectile hits an enemy, make one attack against an enemy for 10+40% weapon damage. +5 mana cost if wielding a Heavy weapon.
 发射一柄天剑。命中敌人时造成 10 点 + 40% 的武器伤害。使用重型武器时 +5 法力消耗。
 - You unleash a deadly projectile!
@@ -48430,9 +48630,6 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 计时员会花时间和你一起享受时光...... ( DamageTaken )
 - The Timekeeper enacts judgement for disrupting time! (+RestraintAdded)
 计时员对扰乱时间做出判决！ ( +RestraintAdded )
-
-- Analysis
-分析
 
 - You pick up a latex projector
 你拿起一台乳胶投射仪
@@ -48679,8 +48876,6 @@ ENMY 高潮了，${Ethem}受到 AMNT 伤害！
 攻受兼具
 - Bratty
 不顺从
-- Corrupted
-堕落
 - Feral
 野性
 
@@ -49555,8 +49750,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - The Gladiator insults you, filling you with the need to face them!
 角斗士侮辱了你，使你迫切地想要与其一决高下！
-- Defeat all taunting enemies or stay within the tiles to avoid shame!
-击败所有嘲讽的敌人，或留在方格内以避免被羞辱！
+
+
 - Degrading Taunts
 侮辱性嘲讽
 - You failed to come up with a proper comeback!
@@ -50017,8 +50212,6 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 花释放催眠孢子！
 # :: KDDragonFlowerSpores
 # :: KinkyDungeonSpellCastDragonFlowerSpores
-- Poison Breath
-毒息
 
 - Vines reach from the ceiling and lift you into the air!
 藤蔓从天花板伸出，将你带到空中！
@@ -50447,12 +50640,9 @@ ESCP 强度 : ‎AMNT
 该物品会粘在你的橡胶层上，使其更难拔出...
 - The item hugs your layer tightly, adhering firmly!
 该物品紧紧地包裹着你的表层，粘得很牢固！
-- Your skin is covered in a layer of latex, making escape from cyber restraints harder!
-你的皮肤上覆盖着一层乳胶，让你更难摆脱赛博拘束！
-# - Latex Integration
 
-# - Party Submission: Friendly fire is reduced by ${PowerInt}%
-# - Party Submission
+
+
 # - You can't attack party members due to 'Party Submission'
 
 
@@ -50496,11 +50686,6 @@ ESCP 强度 : ‎AMNT
 DRTN 回合获得 AMNT% DMG 伤害
 - Gain AMNT DMG Resist for DRTN turns
 DRTN 回合获得 AMNT DMG 抗性
-- Your elemental damage is increased!
-你的元素伤害增加了！
-- Your elemental resistance is increased!
-你的元素抵抗增加了！
-
 
 - The overgrown monolith contains an ancient blessing.
 这块杂草丛生的巨石蕴含着古老的祝福。
@@ -50712,10 +50897,6 @@ ENMY 请求帮助！
 - ... will get an accuracy bonus against you in melee range.
 ... 将在近战范围内对你的准确度获得加成。
 
-- Corruption: You are more likely to succumb to curses.
-腐化：你更容易屈服于诅咒。
-- Corruption
-腐化
 
 - X Offset
 X 补偿
@@ -51238,11 +51419,6 @@ N/A
 
 - [EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
 [经验 : AMNT/LMT][进入下一层 +NXT 经验] 高跟鞋训练可以提高你的平衡能力，防止你摔倒
-
-- Phase Dance active. Your next move is instant.
-相位之舞激活。你的下一步行动不消耗回合。
-- Combat Maneuver active. Your next move is instant.
-战斗机动激活。你的下一步行动不消耗回合。
 
 - The furniture space is occupied
 家具空间被占用
@@ -52298,9 +52474,6 @@ ENMY 解开了 ITMN 的锁!
 - Generating Map...
 生成地图中...
 
-- Marked for Collection. Getting hit by more orbs will put you on a stand. Reduces Bondage resist.
-捕获标记。被更多球体命中会让你被束缚在罚站桩上。削弱束缚抗性。
-
 - Mystic wrappings constrict around your body!
 神秘的丝带紧紧包裹了你的身体！
 
@@ -52399,8 +52572,6 @@ ENMY 解开了 ITMN 的锁!
 - The burst of desire overwhelms you!
 欲望的爆发将你淹没！
 
-- Psychic Link
-心灵链接
 - Deals 20 Psychic damage, then creates a psychic link between you and a single target for 50 turns, splitting distraction gain between the two of you. Requires that you and the target be able to see each other.
 造成 20 点灵能伤害，并在你与一个目标间创建心灵链接，持续 50 回合，使性奋增长在你们二人间均分。你和目标必须能够看见对方。
 - Target a non-blinded enemy.
@@ -52410,8 +52581,6 @@ ENMY 解开了 ITMN 的锁!
 - The psychic link ends between you and the ENMY.
 你和 ENMY 间的心灵链接结束了。
 
-- Shock Collar
-电击项圈
 - Condense your aroused thoughts into stimulating electricity, consuming 30 DP to zap anyone that's currently holding your leash for 40 e-stim damage. 25% chance to stun for a long time, otherwise stuns briefly. Subsequent uses cost 2x the DP.
 将你糟糕的想法凝结为刺激性的电流，消耗30性奋值，对任何正在拿着你的牵绳的人造成40刺激电流伤害。有25%的概率使其长时间眩晕，否则会短时间眩晕。再次使用消耗双倍的性奋值。
 - You must be leashed by someone to use this.
@@ -52420,11 +52589,6 @@ ENMY 解开了 ITMN 的锁!
 你的分心值还不够。
 - You zap your leasher!
 你挣脱了牵引者！
-
-- You are psychically connected!
-你们有心灵感应！
-- You've used Shock Collar recently and it costs more DP.
-你最近使用了电击项圈，它现在将会消耗更多的性奋值。
 
 
 - Essence Crystal
@@ -52449,8 +52613,8 @@ ENMY 解开了 ITMN 的锁!
 你的性奋值达到了临界点！ -100%施法失败几率。
 - While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
 当性奋值为 100% 时，施法失败概率 -100%，但一次消耗过多的法力值可能会导致高潮。
-- -100% miscast chance, but casting spells can send you over the edge.
-施法失败概率 -100%，但一次消耗过多的法力值可能会导致高潮。
+
+
 - The psychic link conducts away some of the intensity...
 心灵链接传导走了高潮的一些强度...
 - Your linked target lets go of ${Ethem}self, transmitting a wave of pleasure to yourself...
@@ -53159,9 +53323,6 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 - The curse will deal 25% damage as residual curse transfers.
 在残余诅咒转移时，该诅咒造成 25% 的伤害。
 
-- This is the total amount of Latex Kitty Curse you possess.
-这是你所拥有的乳胶猫娘诅咒的总量。
-
 # - Dark
 :: KDPaletteLayer_DarkNeutral
 暗部
@@ -53363,8 +53524,6 @@ Boss
 法力告竭
 - Unlocked by reaching 0 mana pool and under 15 mana.
 解锁方式：法力池达到0并且法力小于15。
-- Surrender
-投降
 - Unlocked by reaching 0 willpower.
 解锁方式：意志力达到0。
 - Only Way To Go is Up
@@ -53760,12 +53919,6 @@ TA
 - are
 是
 
-
-- ${You} are being affected by doll magic... 
-${You}正受到玩偶魔法的影响...
-- ${Youve} fallen into a trance, making suggestions more powerful.
-${Youve}陷入了恍惚状态，使得心理暗示更具影响力。
-
 - Good doll.
 好玩偶。
 - Good doll...
@@ -53801,9 +53954,6 @@ ${Youve}陷入了恍惚状态，使得心理暗示更具影响力。
 我是玩偶！
 - I am a doll.
 我是玩偶。
-
-- ${You} ${Yis} silenced, unable to cast spells easily.
-${You}陷入沉默，无法轻易施展法术。
 
 - Doll's Mirror
 玩偶之镜
@@ -54008,10 +54158,6 @@ ${You}陷入沉默，无法轻易施展法术。
 - Always show defense in buff bar
 始终在增益栏显示防御
 
-- Sleepy...
-好困……
-- Toxic spores are making it difficult to move
-有毒的孢子让你行动困难
 
 - An NPC in your collection was missing an enemy type and has been removed
 你收藏中的一个NPC缺少了敌人类型，已被移除。
