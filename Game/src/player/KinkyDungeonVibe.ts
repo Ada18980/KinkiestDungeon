@@ -34,7 +34,7 @@ let KDVibeSound = {
 	//"ItemVulvaPiercings": "ItemNipples", // TODO add softer piercings sound
 	"ItemButt": ["Vibe2"],
 	//"ItemNipplesPiercings": "ItemNipples",
-	"ItemNipples": ["Vibe3"],
+	"ItemNipples": ["Vibe_Tease"],
 	"ItemVulvaPiercings": ["Vibe3"],
 	//"ItemBreast": "ItemNipples", // TODO add massager sound
 	//"ItemBoots": "ItemNipples", // TODO add foot tickler sound

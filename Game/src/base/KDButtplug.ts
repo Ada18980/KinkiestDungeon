@@ -680,11 +680,154 @@ KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe3_Weak.ogg"] = {
     ],
     loop: true
 };
+
+
+
+KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe_Tease_Weak.ogg"] = {
+    type: "custom",
+    tracks: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0.0, duration: 10, easing: "step"},
+                { value: 0.6, duration: 250, easing: "easeInOut"},
+                { value: 0.0, duration: 240, easing: "step"},
+                { value: 0.0, duration: 5000, easing: "step"},
+            ],
+        },
+        {
+            featureIndex: 1,
+            keyframes: [
+                { value: 0.0, duration: 10, easing: "step"},
+                { value: 0.6, duration: 250, easing: "easeInOut"},
+                { value: 0.0, duration: 240, easing: "step"},
+                { value: 0.0, duration: 5000, easing: "step"},
+            ],
+        },
+    ],
+    loop: true
+};
+KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe_Tease_Medium.ogg"] = {
+    type: "custom",
+    tracks: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0.0, duration: 10, easing: "step"},
+                { value: 1, duration: 250, easing: "easeInOut"},
+                { value: 0.1, duration: 50, easing: "easeOut"},
+                { value: 0.0, duration: 340, easing: "step"},
+                { value: 0.0, duration: 5100, easing: "step"},
+            ],
+        },
+        {
+            featureIndex: 1,
+            keyframes: [
+                { value: 0.0, duration: 10, easing: "step"},
+                { value: 0.1, duration: 150, easing: "easeInOut"},
+                { value: 0.1, duration: 200, easing: "step"},
+                { value: .85, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 140, easing: "step"},
+                { value: 0.0, duration: 5100, easing: "step"},
+            ],
+        },
+    ],
+    loop: true
+};
+KDVibeSoundsPatternMap[KinkyDungeonRootDirectory + "Audio/Vibe_Tease_Strong.ogg"] = {
+    type: "custom",
+    tracks: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0.0, duration: 10, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.1, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.1, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.1, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 100, easing: "step"},
+                { value: 0.0, duration: 4300, easing: "step"},
+            ],
+        },
+        {
+            featureIndex: 1,
+            keyframes: [
+                { value: 0.0, duration: 10, easing: "step"},
+                { value: 0.1, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.1, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.1, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 100, easing: "step"},
+                { value: 0.0, duration: 4300, easing: "step"},
+            ],
+        },
+    ],
+    loop: true
+};
 // validate all sounds
 // also validate merged sounds with ferri
 
 
 let KDMergedVibeSounds = {
+    [KinkyDungeonRootDirectory + "Audio/Vibe_Tease_Strong.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0.0, duration: 10, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 150, easing: "step"},
+                { value: 0.9, duration: 150, easing: "easeInOut"},
+                { value: 0.0, duration: 400, easing: "step"},
+                { value: 0.0, duration: 4000, easing: "step"},
+            ],
+        },
+    ],
+    [KinkyDungeonRootDirectory + "Audio/Vibe_Tease_Weak.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0.0, duration: 10, easing: "step"},
+                { value: 0.6, duration: 250, easing: "easeInOut"},
+                { value: 0.0, duration: 240, easing: "step"},
+                { value: 0.0, duration: 5000, easing: "step"},
+            ],
+        },
+    ],
+    [KinkyDungeonRootDirectory + "Audio/Vibe_Tease_Medium.ogg"]: [
+        {
+            featureIndex: 0,
+            keyframes: [
+                { value: 0.0, duration: 10, easing: "step"},
+                { value: 1, duration: 250, easing: "easeIn"},
+                { value: 0, duration: 100, easing: "easeOut"},
+                { value: 0.85, duration: 150, easing: "easeIn"},
+                { value: 0.0, duration: 240, easing: "easeOut"},
+                { value: 0.0, duration: 5000, easing: "step"},
+            ],
+        },
+    ],
     [KinkyDungeonRootDirectory + "Audio/Vibe1_Weak.ogg"]: [
         {
             featureIndex: 0,

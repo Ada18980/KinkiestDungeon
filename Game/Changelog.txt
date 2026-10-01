@@ -89,6 +89,7 @@ Must do
 - Verbal tease attacks can now be said from a distance
 - Refusing bondage offer no longer causes all enemies nearby to become hostile
 - Added perk shrine more which offers bondage-only shrines at times
+- New mildly infuriating sound/vibe pattern for nipple vibes
 
 5.5.2
 - Added WebAudio support for better sound quality
