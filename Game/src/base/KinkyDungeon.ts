@@ -6614,7 +6614,8 @@ function KDMenuTogglesClick() {
 				KDResolutionConfirm = true;
                 if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 				localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
-				PIXIapp.renderer.resolution = KDResolution;
+
+				KDUpdateScreen();
 			}
 			YY += YYd;
 			if (MouseIn(CombarXX, YY, 350, 64)) {
@@ -8824,4 +8825,13 @@ function KDGoToScreen(screen: string, noReset?: boolean) {
 		KDResetCollectionScreen();
 	}
 	KinkyDungeonDrawState = screen;
+}
+
+function KDUpdateScreen() {
+	resolution = KDResolution
+	PIXIapp.renderer.resolution = resolution;
+				
+	PIXIapp.renderer.resize(PIXIWidth * resolution, PIXIHeight * resolution);
+	PIXIapp.view.width = PIXIWidth * resolution;
+	PIXIapp.view.height = PIXIHeight * resolution;
 }

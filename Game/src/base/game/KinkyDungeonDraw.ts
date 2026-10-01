@@ -4413,6 +4413,11 @@ function DrawCheckboxKDEx (
 	options?:     ButtonOptions
 ): void
 {
+	if (!options) {
+		options = {
+			scaleImage: false,
+		};
+	}
 	DrawTextFitKD(Text, Left + 10 + Width, Top + Height/2+1, options?.maxWidth || 1000, TextColor, "#333333", options?.fontSize, "left");
 	DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : KDBaseWhite, IsChecked ? (KinkyDungeonRootDirectory + CheckImage) : "", null, Disabled,
 		undefined, undefined, undefined, undefined, options);

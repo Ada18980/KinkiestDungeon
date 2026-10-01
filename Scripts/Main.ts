@@ -15,7 +15,7 @@ KinkyDungeonSetupCrashHandler();
 
 var PIXIapp = new PIXI.Application({
 	//view: document.getElementById("MainCanvas"),
-	antialias: false,
+	antialias: true,
 	powerPreference: 'high-performance',
 	resolution: resolution,//KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0],
 	width: PIXIWidth,
