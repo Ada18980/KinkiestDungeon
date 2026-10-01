@@ -6614,6 +6614,7 @@ function KDMenuTogglesClick() {
 				KDResolutionConfirm = true;
                 if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 				localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
+				PIXIapp.renderer.resolution = KDResolution;
 			}
 			YY += YYd;
 			if (MouseIn(CombarXX, YY, 350, 64)) {
@@ -8484,7 +8485,8 @@ function KDTogglesDraw() {
 
 		if (KDToggleTab == "Main") {
 			if (StandalonePatched) {
-				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 50) + "%", KDBaseWhite, "",
+				DrawBackNextButtonVis(CombarXX, YY, 350, 64, 
+					TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 50) + "%", KDBaseWhite, "",
 					() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 50 + "%",
 					() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 50 + "%");
 				YY += YYd;
