@@ -2836,8 +2836,8 @@ window.addEventListener('mousemove', function(event) {
 	//console.log("WardrobeTools.ks - KDWToolsDraggingDelta: "+KDWToolsDraggingDelta);
 	if (KDWToolsDraggingEnabled && KDWToolsIsDraggingNow) {
 		//scaled to the window size
-		KDWToolsDraggingDelta.x += event.movementX * CanvasWidth / PIXICanvas.clientWidth;
-		KDWToolsDraggingDelta.y += event.movementY * CanvasHeight / PIXICanvas.clientHeight;
+		KDWToolsDraggingDelta.x += event.movementX * PIXIWidth / PIXICanvas.clientWidth;
+		KDWToolsDraggingDelta.y += event.movementY * PIXIHeight / PIXICanvas.clientHeight;
 		KDWToolsDraggingRefresh = true;
 	}
 });

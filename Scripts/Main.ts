@@ -2,14 +2,16 @@
 //import { Viewport } from "../node_modules/pixi-viewport/dist/Viewport";
 
 
-const PIXIWidth = 2000;
-const PIXIHeight = 1000;
+let PIXIWidth = 2000;
+let PIXIHeight = 1000;
 
 
 function KDGetResolutionIndex() {
 	return (parseFloat(localStorage.getItem("KDResolution")) > KDResolutionList.length-1 ? 0 : parseFloat(localStorage.getItem("KDResolution"))) || 0;
 }
 let resolution = KDResolutionList[KDGetResolutionIndex()];
+let origRes = resolution;
+
 
 KinkyDungeonSetupCrashHandler();
 
@@ -18,9 +20,62 @@ var PIXIapp = new PIXI.Application({
 	antialias: false,
 	powerPreference: 'high-performance',
 	resolution: resolution,//KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0],
-	width: PIXIWidth,
-	height: PIXIHeight,
 });
+//@ts-ignore
+PIXIapp.view.setAttribute("id", "MainCanvas");
+
+let KDMax_Aspect_Ratio = 2.0;
+let KDMinWidth = 2000;
+
+window.onresize = function (event){
+	resize();
+}
+
+
+function resize() {
+
+	setWindowSize(window.innerWidth, window.innerHeight);
+}
+
+function setWindowSize(width: number, height: number) {
+	let ratio = width / (Math.max(1, height));
+	if (ratio < 0.01) ratio = 0.01;
+
+	let useHeightForRes = false;
+
+	if (ratio > KDMax_Aspect_Ratio) {
+		ratio = KDMax_Aspect_Ratio;
+		useHeightForRes = true;
+	}
+
+
+	if (width < KDMinWidth) {
+		width = KDMinWidth;
+	}
+
+	
+	
+	PIXIHeight = Math.ceil(PIXIWidth/ratio);
+
+	
+	let alteredRes = origRes;
+
+	if (useHeightForRes) {
+		resolution = alteredRes * height/PIXIHeight;
+	} else {
+		resolution = alteredRes * width/PIXIWidth;
+	}
+
+	resolution = Math.max(resolution, origRes);
+
+	PIXIapp.renderer.resolution = resolution;
+
+
+	
+	PIXIapp.renderer.resize(PIXIWidth * resolution, PIXIHeight * resolution);
+	PIXIapp.view.width = PIXIWidth * resolution;
+	PIXIapp.view.height = PIXIHeight * resolution;
+}
 
 //PIXI.settings.RESOLUTION = resolution;
 PIXI.settings.FILTER_RESOLUTION = resolution;
@@ -92,6 +147,8 @@ window.onload = function() {
 	});
 
 	PIXIapp.stage.interactiveChildren = false;
+
+	resize();
 
 	(PIXIapp.renderer as PIXIRenderer).gl.canvas.addEventListener('webglcontextlost', () => {
 		console.error('WebGl context lost');
@@ -222,8 +279,8 @@ function MouseMove(event: MouseEvent, allowOffsetting: boolean): void {
 		}
 		
 		// && (document.activeElement?.id == "MainCanvas" || document.activeElement?.id == PIXICanvas?.id || document.activeElement?.id == '')
-		MouseX = Math.round((event.offsetX) * 2000 / PIXICanvas.clientWidth) + ol;
-		MouseY = Math.round((event.offsetY) * 1000 / PIXICanvas.clientHeight) + ot;
+		MouseX = Math.round((event.offsetX) * PIXIWidth / PIXICanvas.clientWidth) + ol;
+		MouseY = Math.round((event.pageY) * PIXIHeight / PIXICanvas.clientHeight) + ot;
 	}
 }
 

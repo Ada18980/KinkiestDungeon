@@ -89,8 +89,6 @@ let KDClipboardDisabled = window.location.host.includes('itch.zone');
 
 
 
-let CanvasWidth = 2000;
-let CanvasHeight = 1000;
 let KDStartTime = 0;
 let KDEasterEgg = Math.random() < 0.01;
 
@@ -1254,7 +1252,8 @@ function KinkyDungeonLoad(): void {
 			KDClipboardDisabled = true;
 	}
 	// Preload
-	KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/BrickWall.png", 0, 0, CanvasWidth, CanvasHeight, undefined, {
+	KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/BrickWall.png", 0, 0, 
+		PIXIWidth, PIXIHeight, undefined, {
 		zIndex: -115,
 	});
 
@@ -1757,7 +1756,8 @@ function KinkyDungeonRun() {
 		let BG = KDStateBG[KinkyDungeonState] ||
 			(KinkyDungeonState == "Consent" || KinkyDungeonState == "Intro" || KinkyDungeonState == "Logo" || KinkyDungeonState == "Game") ? "Logo" : "BrickWall";
 		if (StandalonePatched) {
-			KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".png" : ".jpg"), 0, 0, CanvasWidth, CanvasHeight, undefined, {
+			KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".png" : ".jpg"), 0, 0, 
+			PIXIWidth, PIXIHeight, undefined, {
 				zIndex: -115,
 			});
 		} else {
@@ -6832,11 +6832,11 @@ window.addEventListener('mousedown', function(event) {
 	LongHoldPinged = false;
 
 	if (PIXICanvas) {
-		HoldStartPosX = Math.round((event.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
-		HoldStartPosY = Math.round((event.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
+		HoldStartPosX = Math.round((event.offsetX - PIXICanvas.offsetLeft) * PIXIWidth / PIXICanvas.clientWidth);
+		HoldStartPosY = Math.round((event.pageY - PIXICanvas.offsetTop) * PIXIHeight / PIXICanvas.clientHeight);
 	} else if (MainCanvas) {
-		HoldStartPosX = Math.round((event.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
-		HoldStartPosY = Math.round((event.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+		HoldStartPosX = Math.round((event.offsetX - MainCanvas.canvas.offsetLeft) * PIXIWidth / MainCanvas.canvas.clientWidth);
+		HoldStartPosY = Math.round((event.pageY - MainCanvas.canvas.offsetTop) * PIXIHeight / MainCanvas.canvas.clientHeight);
 	}
 
 	if (!CommonIsMobile)
@@ -6850,11 +6850,11 @@ window.addEventListener('touchstart', function(event) {
 	//if (CommonIsMobile) {
 	let touch = event.touches[0];
 	if (PIXICanvas) {
-		MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
-		MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
+		MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * PIXIWidth / PIXICanvas.clientWidth);
+		MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * PIXIHeight / PIXICanvas.clientHeight);
 	} else if (MainCanvas) {
-		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
-		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * PIXIWidth / MainCanvas.canvas.clientWidth);
+		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * PIXIHeight / MainCanvas.canvas.clientHeight);
 	}
 	//CommonClick(event);
 	CommonTouchList = event.touches;
@@ -6868,11 +6868,11 @@ window.addEventListener('touchmove', function(event) {
 	let startedInPlayableArea = KDMouseInPlayableArea();
 
 	if (PIXICanvas) {
-		MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
-		MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
+		MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * PIXIWidth / PIXICanvas.clientWidth);
+		MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * PIXIHeight / PIXICanvas.clientHeight);
 	} else if (MainCanvas) {
-		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
-		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * PIXIWidth / MainCanvas.canvas.clientWidth);
+		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * PIXIHeight / MainCanvas.canvas.clientHeight);
 	}
 
 	if (!HoldMoved) {
