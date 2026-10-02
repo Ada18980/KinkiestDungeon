@@ -556,7 +556,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 
 - Game Resolution:
 游戏分辨率 :‎
-- Resolution (needs reload):
+- Resolution:
 分辨率 ( 需要重载 ) :‎
 - Toy Volume:
 玩具音量 :‎
