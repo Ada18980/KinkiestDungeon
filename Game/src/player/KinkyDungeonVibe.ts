@@ -11,11 +11,11 @@ KinkyDungeonPlayerVibratedLocationItemVulva,Front
 KinkyDungeonPlayerVibratedLocationItemButt,Rear
 KinkyDungeonPlayerVibratedLocationItemBoots,Feet*/
 
-let KDVibeSounds = {
+let KDVibeSounds: Record<string, {sound: string, Audio: any, update: boolean, vol?: number, height?: number}> = {
 	"ItemVulva": {sound: "", Audio: null, update: false, height: 0.8},
 	"ItemVulvaPiercings": {sound: "", Audio: null, update: false, height: 0.7},
 	"ItemButt": {sound: "", Audio: null, update: false, height: 1},
-	"ItemNipples": {sound: "", Audio: null, update: false, vol: 0.5, height: 0.25},
+	"ItemNipples": {sound: "", Audio: null, update: false, vol: 0.6, height: 0.1},
 };
 
 let KDVibeSoundRedirect = {
@@ -493,10 +493,11 @@ function KDUpdateVibeSound(Location: string, Sound: string, Volume: number) {
 			if (KDVibeSounds[Location].vol) vol *= KDVibeSounds[Location].vol;
 			KDVibeSounds[Location].Audio = audio;
 			KDVibeSounds[Location].update = true;
-			KDVibeSounds[Location].Audio.vibe = KDVibeSounds[Location].height * ((
-				KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game"
-			) ? 1.0 : 0.7);
-			KDVibeSounds[Location].Audio.location = {x: 0, y: 10 * KDVibeSounds[Location].height};
+			if (KDVibeSounds[Location].height)
+				KDVibeSounds[Location].Audio.vibe = (KDVibeSounds[Location].height) * ((
+					KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game"
+				) ? 1.0 : 0.7);
+			KDVibeSounds[Location].Audio.location = {x: 0, y: 10 * (KDVibeSounds[Location].height || 0)};
 			
 			audio.src = KDModFiles[Sound] || Sound;
 			audio.volume = Math.min(vol, 1);
@@ -561,7 +562,7 @@ function KDUpdateVibeSounds() {
 			}
 			let Location = KDVibeSoundRedirect[location] ? KDVibeSoundRedirect[location] : "ItemVulva";
 			if (power != "Off") {
-				if (KDVibeSounds[Location]?.Audio) {
+				if (KDVibeSounds[Location]?.Audio && KDVibeSounds[Location].height) {
 					KDVibeSounds[Location].Audio.vibe = KDVibeSounds[Location].height * (
 						(KinkyDungeonState == "Game"
 							&& KinkyDungeonDrawState == "Game"

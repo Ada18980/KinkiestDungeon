@@ -144,11 +144,11 @@ class WebAudioWrapper {
 	set vibe(height: number) {        
         
         if (this.lpf) {
-            this.lpf.frequency.setValueAtTime(150 - height * 90, 0);
+            this.lpf.frequency.setValueAtTime(550 - height * 490, 0);
         } else {
             // creates and adds a panner node
             let filter = new BiquadFilterNode(KDWebAudio, {
-                frequency: 150 - height * 90,
+                frequency: 550 - height * 490,
                 type: "lowpass",
                 gain: 0,
                 Q: 5,
