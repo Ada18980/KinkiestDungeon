@@ -1070,7 +1070,7 @@ function KDAdvanceOneFloor() {
 		KinkyDungeonChangeRep("Conjure", -1);
 		KinkyDungeonChangeRep("Illusion", -1);
 	}
-	
+
 	if (KDGameData.PrisonerState == "jail") {
 		KDGameData.PrisonerState = "";
 		// Increase security if escaping jail
