@@ -31180,8 +31180,8 @@ dTheWardenDefensive_Brat_ProceedGag,"(Pout)"
 dTheWardenDefensive_Brat_Proceed2,"(...)"
 dTheWarden_Brat,"That's a shame about your records, I'll be going now."
 dTheWarden_BratGag,"Mmpphgh? (Go to pass ${Ethem})"
-rTheWardenBrat,"(She smirks)|Not so fast, dear~|You'll have to wear a special collar to pass."
-dTheWardenBrat_Question,I won't wear anyone's collar!
+rTheWardenBrat,"(She smirks)|Not so fast, dear~|You'll have to wear a special belt to pass."
+dTheWardenBrat_Question,I won't wear anyone's belt!
 rTheWardenBrat_Question,"(She smirks)|Tsk tsk. Then you won't pass."
 rTheWardenBrat_Question_Collar,"(She giggles)|How cute!|You're so used to yours that you forgot about it~"
 dTheWardenBrat_Question_Proceed,"(...)"
@@ -31189,7 +31189,7 @@ dTheWardenBrat_Proceed,Why don't you wear it yourself?
 dTheWardenBrat_ProceedGag,Hmmph. (Scoff at ${Ethem})
 rTheWardenBrat_ProceedGag,"(She frowns)|Watch your tongue~"
 dTheWardenBrat_ProceedGag_Proceed,"(Shake your head)"
-rTheWardenBrat_Brat,"(She frowns)|I do not wear collars."
+rTheWardenBrat_Brat,"(She frowns)|I do not wear belts."
 dTheWardenBrat_Brat,You'd be better off wearing mine instead.
 dTheWardenBrat_Brat_Proceed,"You're missing out~"
 dTheWardenBrat_Brat_ProceedGag,"(Giggle)"
@@ -31234,8 +31234,8 @@ dTheWardenSub_Brat_ProceedGag,"(Shake your head)"
 dTheWardenSub_Brat_Proceed2,"(Sigh and shrug)"
 dTheWarden_Attack,(Attack ${Ethem} without saying anything)
 
-rTheWardenPostIntro,"(SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~"
-dTheWardenPostIntro_Brat,"I will never be collared by you!"
+rTheWardenPostIntro,"(SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special belt.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~"
+dTheWardenPostIntro_Brat,"I will never be belted by you!"
 dTheWardenPostIntro_BratGag,"(Shake your head and scoff)"
 rTheWardenPostIntro_Brat,"(SPEAKER folds ${Etheir} arms)|So be it."
 dTheWardenPostIntro_Zombie,"Tell me about your collection."
