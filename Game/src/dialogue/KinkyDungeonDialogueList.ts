@@ -4625,7 +4625,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Help": {
 				playertext: "Default", response: "Default",
 				personalities: ["Sub"],
-				clickFunction: (_gagged, _player) => {
+				clickFunction: (_gagged, player) => {
 					if (KDDialogueEnemy()) {
 						let e = KDDialogueEnemy();
 						KDRemoveEntity(KDDialogueEnemy(), false);
@@ -4636,7 +4636,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							for (let enemy of KDMapData.Entities) {
 								if (enemy.Enemy.tags.bandit) {
 									if (enemy.hostile && enemy.hostile < 9000) {
-										enemy.hostile = 0;
+										KDResetAggro(e, player);
 									}
 									enemy.ceasefire = 300;
 								}

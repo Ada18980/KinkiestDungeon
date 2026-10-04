@@ -1,6 +1,6 @@
 "use strict";
 
-let KDFactionNoCollection = ["Ambush"];
+let KDFactionNoCollection = ["Ambush", "Training"];
 
 
 /**
@@ -368,6 +368,7 @@ let KDHiddenFactions = [
 	"KinkyConstruct",
 	"Boss",
 	"Ambush",
+	"Training",
 	"Rage",
 	"Ghost",
 	"Trap",
@@ -468,6 +469,7 @@ let KDPiousFactions = {
 let KinkyDungeonTooltipFactions = [
 	"Rebel",
 	"Ambush",
+	"Training",
 	"Delinquent",
 	"DubiousWitch",
 	"Extraplanar",
@@ -816,6 +818,12 @@ let KinkyDungeonFactionRelationsBase : Record<string, Record<string, number>> = 
 		// Dummy faction, used for deciding if a faction will make you go On The Run
 	},
 	"Ambush": {
+		Player: -1.0,
+		Jail: -0.25,
+
+		Chase: -1,
+	},
+	"Training": {
 		Player: -1.0,
 		Jail: -0.25,
 

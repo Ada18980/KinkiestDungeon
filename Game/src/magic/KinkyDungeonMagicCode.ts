@@ -2585,8 +2585,8 @@ function KDRescueSlime(en: entity, rescuer: entity) {
 			en.Enemy = JSON.parse(JSON.stringify(enemyType));
 		}
 		en.hp = Math.min(en.Enemy.maxhp, en.hp);
+		KDResetAggro(en);
 		en.faction = KDGetFaction(rescuer);
-		en.hostile = 0;
 	}
 }
 

@@ -3690,7 +3690,7 @@ function KDHealRepChange(enemy: entity, amount: number) {
 	// De-aggro an enemy if you heal them to full
 	if (enemy.hostile && amount > 0) {
 		if (enemy.hp >= enemy.Enemy.maxhp - 0.5) {
-			enemy.hostile = 0;
+			KDResetAggro(enemy);
 		}
 	} else if ((!enemy.allied || enemy.allied <= 400) && amount > 0) {
 		// Befriend enemies if you save them

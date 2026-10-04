@@ -1,5 +1,7 @@
 "use strict";
 
+let KDTemporaryFactions = ["Ambush"];
+
 /** Affects security level based on owning faction */
 let KDMainFactionSecurityMod = 35;
 
@@ -1271,7 +1273,7 @@ function KinkyDungeonPassOut(noteleport?: boolean) {
 
 
 	for (let e of  KDMapData.Entities) {
-		if (e.hostile < 9000) e.hostile = 0;
+		if (e.hostile < 9000) KDResetAggro(e);
 		if (e.vp > 0) e.vp = 0;
 		if (e.aware) e.aware = false;
 		if (e.maxlifetime && e.maxlifetime < 9000) e.lifetime = 0;
@@ -2015,7 +2017,7 @@ function KDKickEnemies(nearestJail: any, ignoreAware: boolean, Level: number, no
 						KDSetToExpectedBondage(e, -1);
 					}
 				}
-				if (e.hostile < 9000) e.hostile = 0;
+				if (e.hostile < 9000) KDResetAggro(e);
 				if (e.playWithPlayer > 0) {
 					e.playWithPlayer = 0;
 					e.playWithPlayerCD = 10;
@@ -2067,11 +2069,25 @@ function KDResetAllAggro(player?: entity, ceasefire?: number): void {
 	KDGameData.HostileFactions = [];
 	for (let e of KDMapData.Entities) {
 		if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset) {
-			e.hostile = 0;
-			if (ceasefire) e.ceasefire = Math.max(e.ceasefire || 0, ceasefire);
+			KDResetAggro(e, player, ceasefire);
 		}
 	}
 }
+
+
+function KDResetAggro(e: entity, player?: entity, ceasefire?: number): void {
+	if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset) {
+		e.hostile = 0;
+		if (KDTemporaryFactions.includes(KDGetFaction(e))) {
+			if (e.factionorig || e.Enemy?.faction) {
+				e.faction = e.factionorig || e.Enemy?.faction;
+			} else delete e.faction;
+		}
+		if (ceasefire) e.ceasefire = Math.max(e.ceasefire || 0, ceasefire);
+	}
+}
+
+
 function KDForceWanderFar(player: any, radius: number = 10) {
 	let enemies = KDNearbyEnemies(player.x, player.y, radius);
 	for (let en of enemies) {

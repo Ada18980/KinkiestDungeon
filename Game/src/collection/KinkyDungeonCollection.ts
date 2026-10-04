@@ -2147,7 +2147,7 @@ function KDTameIfHappy(e: entity) {
 		KDGameData.Collection
 			&& KDGameData.Collection[e.id]
 			&& KDGameData.Collection[e.id].Opinion > 0)) {
-		e.hostile = 0;
+		KDResetAggro(e, KDPlayer());
 		e.rage = 0;
 	}
 }

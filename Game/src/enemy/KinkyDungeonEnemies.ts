@@ -10670,7 +10670,7 @@ function KDRemoveEntity(enemy: entity, kill?: boolean, capture?: boolean, noEven
 		KDDropStolenItems(enemy, data.mapData);
 		enemy.items = [];
 		enemy.playerdmg = undefined;
-		enemy.hostile = 0;
+		KDResetAggro(enemy, undefined);
 		enemy.ceasefire = 0;
 		if (KDEnemyHasFlag(enemy, "killtarget")) KDSetIDFlag(enemy.id, "killtarget", 0);
 		KinkyDungeonRemoveBuffsWithTag(enemy, ["removeOnRemove"]);
@@ -11048,7 +11048,7 @@ function KDRescueEnemy(rescueType: string, en: entity, makePlayer: boolean = tru
 				en.Enemy = JSON.parse(JSON.stringify(enemyType));
 			}
 			en.hp = Math.min(en.Enemy.maxhp, en.hp);
-			en.hostile = 0;
+			KDResetAggro(en, KDPlayer());
 			if (makePlayer)
 				en.faction = "Player";
 			return true;

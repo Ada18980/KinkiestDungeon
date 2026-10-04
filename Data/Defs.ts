@@ -635,6 +635,11 @@ let LayerGroups = {
 	]),
 	"ChestBinding": ToMap([
 		"Chest",
+		"Chestplate",
+		"BraChest",
+		"BustierChest",
+		"ShirtChest",
+		"WrapChest",
 		//"Shirt",
 		//"ShirtOver",
 	]),

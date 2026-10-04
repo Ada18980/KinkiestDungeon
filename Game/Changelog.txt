@@ -95,6 +95,7 @@ Must do
 - Warden cuff links are significantly easier to remove
 - Added shopkeeper option to remove divine locks
 - Added Shopkeeper Favors earned each time you get a portal
+- Can now attack ambushers (e.g. from traps) without incurring the wrath of local faction
 
 5.5.2
 - Added WebAudio support for better sound quality
