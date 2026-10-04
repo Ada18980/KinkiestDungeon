@@ -3244,7 +3244,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		helpChance: {"Remove": 0.8, "Pick": 0.35, "Unlock": 0.8},
 		removeShrine: ["Hogties"],
 		events: [
-			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.35, inheritLinked: true},
 			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"dollstandSpell":100, "dollstand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Dollstand", "BlockKneel", "DiscourageHogtie"], ignoreSpells: true, removeOnLeash: true,
@@ -3261,7 +3261,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		helpChance: {"Remove": 0.8, "Pick": 0.35, "Unlock": 1.0},
 		removeShrine: ["Hogties"],
 		events: [
-			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.35, inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.45, inheritLinked: true},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"dollstandreal": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "DollStands", "BlockKneel", "DiscourageHogtie"],
 		ignoreSpells: true, removeOnLeash: true,
@@ -3308,7 +3308,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		helpChance: {"Remove": 0.8, "Pick": 0.35, "Unlock": 0.8},
 		removeShrine: ["Hogties"],
 		events: [
-			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true}, 
+			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.35, inheritLinked: true}, 
 			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"dollstandSpell":100, "latexdollstand": 100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Latex", "Dollstand", "BlockKneel", "DiscourageHogtie"], ignoreSpells: true, removeOnLeash: true,
@@ -3331,7 +3331,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		allowOverrideBasedOnTagFilters: ["ForceKneel", "ForceHogtie"],
 
 		events: [
-			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.35, inheritLinked: true},
 
 			{trigger: "tick", type: "cageDebuff", inheritLinked: true},
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04},
@@ -3364,7 +3364,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		allowOverrideBasedOnTagFilters: ["ForceKneel", "ForceHogtie"],
 
 		events: [
-			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.35, inheritLinked: true},
 
 			{trigger: "tick", type: "cageDebuff", inheritLinked: true},
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04},
@@ -3478,7 +3478,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		removeShrine: ["Hogties"],
 		DefaultLock: "White",
 		events: [
-			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true},
+			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.35, inheritLinked: true},
 			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"onebar":1000}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["OneBar", "BlockKneel", "DiscourageHogtie"],
@@ -3498,7 +3498,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		removeShrine: ["Hogties"],
 		DefaultLock: "White",
 		events: [
-			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.25, inheritLinked: true}, 
+			{trigger: "beforeStruggleCalc", type: "onebardebuff", power: 0.35, inheritLinked: true}, 
 			{trigger: "failMove", type: "OneBarFailMove", inheritLinked: true, power: 0.5},
 			{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
 		enemyTags: {"onebar":1000}, playerTags: {"arousalMode": -1000}, minLevel: 0, allFloors: true,

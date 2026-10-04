@@ -3065,7 +3065,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 
 		"onebardebuff": (e, item, data) => {
-			if (data.restraint && data.struggleType === "Struggle" && item != data.restraint
+			if (data.restraint && data.struggleType === "Struggle" && item == data.restraint
 				&& KDGameData.HeelPower > 0) {
 				let amt = e.power ? e.power : 0.075;
 				if (KDGameData.HeelPower < 10) {
@@ -3075,7 +3075,9 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				}
 				data.escapePenalty += amt;
 				if (!data.query)
-					KinkyDungeonSendTextMessage(8, TextGet("KDOneBarDebuff" + Math.floor(KDRandom() * 3)), "#38a2c3", 2, true);
+					KinkyDungeonSendTextMessage(8, 
+				TextGet("KDOneBarDebuff" + Math.floor(KDRandom() * 3)), 
+				KDBaseYellow, 2, true);
 			}
 		},
 		
