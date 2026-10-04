@@ -2068,21 +2068,20 @@ function KDResetAllIntents(nonHostileOnly?: boolean, endPlay: number = 30, _play
 function KDResetAllAggro(player?: entity, ceasefire?: number): void {
 	KDGameData.HostileFactions = [];
 	for (let e of KDMapData.Entities) {
-		if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset) {
-			KDResetAggro(e, player, ceasefire);
-		}
+		KDResetAggro(e, player, ceasefire);
 	}
 }
 
 
 function KDResetAggro(e: entity, player?: entity, ceasefire?: number): void {
+	
+	if (!KDIntentEvents[e.IntentAction]?.noMassReset && KDTemporaryFactions.includes(KDGetFaction(e))) {
+		if (e.factionorig || e.Enemy?.faction) {
+			e.faction = e.factionorig || e.Enemy?.faction;
+		} else delete e.faction;
+	}
 	if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset) {
 		e.hostile = 0;
-		if (KDTemporaryFactions.includes(KDGetFaction(e))) {
-			if (e.factionorig || e.Enemy?.faction) {
-				e.faction = e.factionorig || e.Enemy?.faction;
-			} else delete e.faction;
-		}
 		if (ceasefire) e.ceasefire = Math.max(e.ceasefire || 0, ceasefire);
 	}
 }

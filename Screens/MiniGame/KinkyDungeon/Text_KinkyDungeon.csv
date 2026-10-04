@@ -32602,6 +32602,7 @@ KDCurrentGold,Current Gold: GP
 KDNA,n/a
 
 KDTrainingLevelHeels,"[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels."
+KDTrainingLevelCorset,"[EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamila penalty from corsets."
 
 KDOccupied,"The furniture space is occupied"
 KDCombatManeuver,"Combat Maneuver: Your next move is instant."
@@ -34036,10 +34037,12 @@ KDPlayerTitle_LostInSpace,Lost in Space
 KDPlayerTitleDesc_LostInSpace,Unlocked by stepping into a dimensional rift willingly... or not!
 
 KDProgressItem_TrainingHeels,Heel Training
+KDProgressItem_TrainingCorset,Corset Training
 
 KDProgressUnselected,Select a progress item to show details
 
-KDProgress_Training_Heels,"Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions, reducing XP gain by a multiplier."
+KDProgress_Training_Corset,"Corset training affects the level of max stamina penalty incurred from wearing a corset. Levels are gained by spending stamina while wearing a corset.\nTraining failure occurs if you are not wearing a corset when you spend stamina."
+KDProgress_Training_Heels,"Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions."
 KDProgressCurrent,"Current Progress: "
 KDProgressMilestones,"Milestones:"
 KDProgressBonusProgress,"Bonus Progress (gained next Floor):"
