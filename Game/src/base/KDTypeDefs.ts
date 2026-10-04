@@ -3669,6 +3669,8 @@ type KDLockType = {
 	lockmult: number;
 	sfx?: string;
 	sfxvol?: number;
+	sfxremove?: string;
+	sfxremovevol?: number;
 
 	penalty?: Record<string, number>;
 

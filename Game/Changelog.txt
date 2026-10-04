@@ -92,6 +92,9 @@ Must do
 - New mildly infuriating sound/vibe pattern for nipple vibes
 - Shrine bondage now applies "Contract" locks which cant be removed by the shopkeeper
 - Reduced cost of removing warden gear to 6 spell points
+- Warden cuff links are significantly easier to remove
+- Added shopkeeper option to remove divine locks
+- Added Shopkeeper Favors earned each time you get a portal
 
 5.5.2
 - Added WebAudio support for better sound quality

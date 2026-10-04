@@ -1380,7 +1380,7 @@ let KDLocks: Record<string, KDLockType> = {
 				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonGoldLockRemove"), "yellow", 2);
 			}
 		},
-		shrineImmune: true,
+		shrineImmune: true, shopImmune: true,
 
 		// Command word
 		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock

@@ -3788,7 +3788,7 @@ KinkyHiSecLockType,"Secure"
 KinkyMasterworkLockType,"Masterwork"
 KinkyDiscLockType,"Disc"
 KinkyRubberLockType,"Rubber"
-KinkyDivineLockType,"Divine"
+KinkyDivineLockType,"Quest"
 KinkyDivine2LockType,"Divine"
 KinkyCrystalLockType,"Crystal"
 KinkyWhiteLockType,"Simple"
@@ -3809,7 +3809,7 @@ KinkyDiscLock,"Disc Lock"
 KinkyRubberLock,"Rubber Lock"
 KinkyGoldLock,"Ancient Lock"
 KinkyGoldPlusLock,"Contract Lock"
-KinkyDivineLock,"Divine Lock"
+KinkyDivineLock,"Quest Lock"
 KinkyDivine2Lock,"Divine Lock"
 KinkyCrystalLock,"Crystal Lock"
 KinkyWhiteLock,"Simple Lock"
@@ -13901,11 +13901,15 @@ dShopkeeperRescue_Accept,"Yes please!"
 dShopkeeperRescue_Refuse,"Actually I was having fun..."
 
 rShopkeeperStart,"(The SPEAKER, your longtime friend, smiles)|Well well, if it isn't you again!|I see that you've decided to challenge the dungeon again.|Don't forget to bring some gold back with you,|there's a fee for rescue~"
+rShopkeeperStartFavors,"(The SPEAKER smiles)|Welcome welcome.|You've been quite the customer~|(Current Favors: ${FAVORS})"
 
 dShopkeeperStart_Help,"Can you help with these restraints?"
 dShopkeeperStart_HelpGag,"Pfffmmm hhmmph mmph... (Please Help Me)"
+dShopkeeperStart_HelpDivine,"Can you help with my divine locks?"
+dShopkeeperStart_HelpDivineGag,"Mmmmphh... (Help with divine locks)"
 rShopkeeperStartHelp,"No can do! Even I can't get those off of you."
 rShopkeeperStartHelpGoldPlus,"No can do!|If you're wondering about those fancy gold-colored locks,|Well... a contract is a contract~"
+rShopkeeperStartHelpDivine,"Wow, you got yourself into a tight mess, haven't you...\nWell I'm sure you're in those for a reason, sweetie~"
 dShopkeeperStart_Danger,"Caught by...?"
 rShopkeeperStartDanger,"Hah!|You've been here a million times!|You obviously know how dangerous it is, yes?"
 dShopkeeperStart_Fee,"F-fee? There's a fee?"
@@ -13919,6 +13923,10 @@ dShopkeeperStartShop_SellBulk,(Sell Whole Stacks of Items)
 dShopkeeperStartShop_SellStorage,(Sell from your storage)
 dShopkeeperStart_Gag,"Mmmph!"
 rShopkeeperStartGag,"Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)"
+dShopkeeperStart_DivineAsk,"How are you removing these divine restraints anyway?"
+rShopkeeperStartDivineAsk,"(${EThey} wink${Es}, a smirk stretching across ${Etheir} face)|That's a trade secret, sweetie~"
+
+
 
 dShopkeeperStart_Buy,"Do you have anything for sale?"
 dShopkeeperStart_BuyGag,"(Look around for items to buy)"
@@ -13976,11 +13984,25 @@ rShopkeeperTeleportDebt_Catsuit_No,"Your choice~|Not everyone is up to putting t
 
 
 
+rShopkeeperOfferHelpDivine,"(The SPEAKER takes a look at your locks)|Hum, it's not generally okay to mess with divine contracts...|However, I know a few tricks myself. And I do take care of my customers~|(Current Favors: ${FAVORS})"
+dShopkeeperOfferHelpDivine_Pay,"Please get these off me. (Pay ${FAVORCOST} favors)"
+dShopkeeperOfferHelpDivine_PayGag,"(Nod your head) (Pay ${FAVORCOST} favors)"
+dShopkeeperOfferHelpDivine_LeaveSub,"I should respect the divine... (Leave)"
+dShopkeeperOfferHelpDivine_Leave,"I'll think about it. (Leave)"
+dShopkeeperOfferHelpDivine_LeaveGag,"Mmmph. (Leave)"
+rShopkeeperOfferHelpDivinePay,"(The SPEAKER snaps ${Etheir} fingers)|Let's get to it, then!|(${EThey} scribe${Es} a couple of magical circles over your body,|then press${Es} ${Etheir} hand into your body with a magical glow.|Your locks click free and vanish into the air)|Just the locks, of course, unless you have other business~"
+
 rShopkeeperOfferHelp,"(The SPEAKER pats you down and makes sure you're okay)|I can definitely help with those!|But as you know, I help a lot of adventurers just like you.|You know what, I'll give you a discount!|That'll be RESCUECOST gold pieces!"
 
 dShopkeeperOfferHelp_Pay,"Right! Here's RESCUECOST gp."
 dShopkeeperOfferHelp_PayGag,"Mmmph. (Nod your head and pay RESCUECOST gp)"
 rShopkeeperOfferHelpPay,"(The SPEAKER smiles)|Pleasure doing business with ya~"
+
+dShopkeeperOfferHelp_PayFavor,"Do it for a friend? (-${FAVORCOST} Favors. Current: ${FAVORS}}"
+dShopkeeperOfferHelp_PayFavorGag,"(Make a pleading face) (-${FAVORCOST} Favors. Current: ${FAVORS}}"
+rShopkeeperOfferHelpPayFavor,"(The SPEAKER rolls ${Etheir} eyes, but smiles)|Alright alright~"
+
+
 
 dShopkeeperOfferHelp_Tab,"Mind adding it to my tab?"
 dShopkeeperOfferHelp_TabGag,"(Shake your head regrettably.)"
@@ -30606,7 +30628,7 @@ KDDistractionBurst_NoMana,"You have the desire but not the mana!"
 
 
 
-KDDivineLockReminder,Your divine-locked restraints can only be removed by completing a shrine quest.
+KDDivineLockReminder,Quest-locked restraints can only be removed by completing a shrine quest.
 
 KDCursedGoddess,The Goddess hates you. That won't work.
 

@@ -1337,12 +1337,12 @@ function KinkyDungeonDrawInventorySelected (
 			DrawTextKD(TextGet("KinkyDungeonRestraintLevel").replace("RestraintLevel", "" + Math.max(1, restraint.displayPower != undefined ? restraint.displayPower : restraint.power)).replace("Rarity", TextGet("KinkyDungeonRarity" + Math.max(0, Math.min(Math.floor(pp),10)))),
 				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, 
 				yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 408, KDBookText, KDTextTan, 22, undefined, 130);
-			DrawTextKD(
-			restraint.escapeChance ? ((item.item.lock && !KDGetCurse(item.item)) ? (TextGet(
+			DrawTextKD(((item.item.type == Restraint && KDGetCurse(item.item)) ? TextGet("KinkyCursed") :
+			restraint.escapeChance ? ((item.item.lock) ? (TextGet(
 				"KinkyLocked") + " " + TextGet("Kinky" + item.item.lock + "LockType")) :
 				(restraint.DefaultLock && !restraint.HideDefaultLock ? (TextGet("KinkyLocked") + " " + TextGet("Kinky" + restraint.DefaultLock + "LockType")) :
-				((item.item.type == Restraint && KDGetCurse(item.item)) ? TextGet("KinkyCursed") : TextGet("KinkyUnlocked"))))
-			: (restraint.escapeChance.Pick != null ? TextGet("KinkyLockable") : TextGet("KinkyNonLockable")),
+				(TextGet("KinkyUnlocked"))))
+			: (restraint.escapeChance.Pick != null ? TextGet("KinkyLockable") : TextGet("KinkyNonLockable"))),
 			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, 
 			yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 375, KDBookText, KDTextTan, 30, undefined, 130);
 

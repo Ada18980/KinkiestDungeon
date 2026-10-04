@@ -431,12 +431,17 @@ function KinkyDungeonPayShrine(type: string, mult: number = 1) {
 				});
 			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = KDRewardProgramBase;
 			if (!KDGameData.ShopRewardProgram) KDGameData.ShopRewardProgram = 0;
-			if (point && "02".includes(KinkyDungeonMapGet(point.x, point.y))
-				&& KDGameData.ShopRewardProgram > KDGameData.ShopRewardProgramThreshold) {
-				KDGameData.ShopRewardProgram = 0;
+			if (KDGameData.ShopRewardProgram > KDGameData.ShopRewardProgramThreshold) {
+				KDGameData.ShopRewardProgram -= KDGameData.ShopRewardProgramThreshold;
 				KDGameData.ShopRewardProgramThreshold += KDRewardProgramScaling;
-				KinkyDungeonMapSet(point.x, point.y, ';');
-				KinkyDungeonTilesSet("" + (point.x) + "," + (point.y), {Portal: "CommercePortal", Light: 5, lightColor: 0xffff88});
+				if (KDGameData.ShopkeeperFavors == undefined) KDGameData.ShopkeeperFavors = 0;
+				KDGameData.ShopkeeperFavors++;
+				if (!KinkyDungeonFlags.get("commercePortal") &&  point && "02".includes(KinkyDungeonMapGet(point.x, point.y))) {
+					KinkyDungeonMapSet(point.x, point.y, ';');
+					KinkyDungeonSetFlag("commercePortal", 300, -1);
+					KinkyDungeonTilesSet("" + (point.x) + "," + (point.y), {Portal: "CommercePortal", Light: 5, lightColor: 0xffff88});
+				}
+				
 			}
 
 			rep = item.rarity + 1;

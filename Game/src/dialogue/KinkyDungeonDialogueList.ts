@@ -11,6 +11,8 @@ let KDDialogueParams = {
 	ChefChance: 0.1,
 	KDTableFlipWP: 1,
 	MasterworkCount: 5,
+	ShopkeeperFavorsToRemoveNormal: 1,
+	ShopkeeperFavorsToRemoveDivine: 4,
 };
 
 /**
@@ -3800,9 +3802,12 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					+ (KDDialogueParams.ShopkeeperHelpFeePerPower * (KDGetTotalRestraintPower(
 						KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false, false, false)
 						|| 1)))),
+				"${FAVORCOST}": KDDialogueParams.ShopkeeperFavorsToRemoveNormal,
 			};
 			KDGameData.CurrentDialogMsgData = {
 				"RESCUECOST": "" + Math.round(KDGameData.CurrentDialogMsgValue.RESCUECOST),
+				"${FAVORCOST}": "" + KDDialogueParams.ShopkeeperFavorsToRemoveNormal,
+				"${FAVORS}": "" + KDGameData.ShopkeeperFavors,
 			};
 			return false;
 		},
@@ -3814,6 +3819,33 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				},
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonGold -= KDGameData.CurrentDialogMsgValue.RESCUECOST;
+					KDRemoveRestraintsWithShrine("Rope", undefined, true, false, 
+						KDShopkeeperCriteria(_player), false, true);
+					KDRemoveRestraintsWithShrine("Leather", undefined, true, false, 
+						KDShopkeeperCriteria(_player), false, true);
+					KDRemoveRestraintsWithShrine("Metal", undefined, true, false, 
+						KDShopkeeperCriteria(_player), false, true);
+					KDRemoveRestraintsWithShrine("Latex", undefined, true, false, 
+						KDShopkeeperCriteria(_player), false, true);
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"PayFavor": {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (_gagged, _player) => {
+					return KDGameData.ShopkeeperFavors > 0;
+				},
+				greyoutFunction: (_gagged, _player) => {
+					return KDGameData.ShopkeeperFavors >= KDGameData.CurrentDialogMsgValue["${FAVORCOST}"];
+				},
+				clickFunction: (_gagged, _player) => {
+					KDGameData.ShopkeeperFavors -= KDGameData.CurrentDialogMsgValue["${FAVORCOST}"];
 					KDRemoveRestraintsWithShrine("Rope", undefined, true, false, 
 						KDShopkeeperCriteria(_player), false, true);
 					KDRemoveRestraintsWithShrine("Leather", undefined, true, false, 
@@ -4149,17 +4181,88 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 		}
 	},
+	"ShopkeeperOfferHelpDivine": {
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			let speaker = KDGetSpeaker();
+			if (speaker) KinkyDungeonSetEnemyFlag(speaker, "removeddivine");
+			KDGameData.CurrentDialogMsgData = {
+				"${FAVORS}": "" + KDGameData.ShopkeeperFavors,
+				"${FAVORCOST}": "" + KDDialogueParams.ShopkeeperFavorsToRemoveDivine,
+			};
+			KDGameData.CurrentDialogMsgValue = {
+				"${FAVORS}": KDGameData.ShopkeeperFavors,
+				"${FAVORCOST}": KDDialogueParams.ShopkeeperFavorsToRemoveDivine,
+			};
+
+			return false;
+		},
+		options: {
+			"Pay": {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (_gagged, _player) => {
+					return KDGameData.ShopkeeperFavors >= KDGameData.CurrentDialogMsgValue["${FAVORCOST}"];
+				},
+				clickFunction: (_gagged, _player) => {
+					KDGameData.ShopkeeperFavors -= KDGameData.CurrentDialogMsgValue["${FAVORCOST}"];
+					let lockedRestraints = KinkyDungeonPlayerGetRestraintsWithLocks(["Divine2", "Divine"]);
+					for (let item of lockedRestraints) {
+						KinkyDungeonLock(item, "", false, false, false, false);
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						clickFunction: (_gagged, _player) => {
+							KDStartDialog("ShopkeeperStart", KDGetSpeaker()?.Enemy.name, 
+							true, KDGetSpeaker()?.personality, KDGetSpeaker());
+							return false;
+						}
+					},
+				}
+			},
+			"LeaveSub": {
+				response: "Default",
+				gagDisabled: true,
+				clickFunction: (_gagged, _player) => {
+					KDStartDialog("ShopkeeperStart", KDGetSpeaker()?.Enemy.name, 
+					true, KDGetSpeaker()?.personality, KDGetSpeaker());
+					return false;
+				}
+			},
+			"Leave": {
+				response: "Default",
+				gag: true,
+				clickFunction: (_gagged, _player) => {
+					KDStartDialog("ShopkeeperStart", KDGetSpeaker()?.Enemy.name, 
+					true, KDGetSpeaker()?.personality, KDGetSpeaker());
+					return false;
+				}
+			},
+		}
+	},
 	"ShopkeeperStart": {
 		response: "Default",
 		clickFunction: (_gagged, _player) => {
 			if (!KDGameData.ShopkeeperFee) KDGameData.ShopkeeperFee = 0;
 			KDGameData.CurrentDialogMsgValue = {
+				"${FAVORS}": KDGameData.ShopkeeperFavors,
+				"${FAVORCOST}": KDDialogueParams.ShopkeeperFavorsToRemoveDivine,
 				"RESCUECOST": Math.round(Math.sqrt(KDPriceGougingValueMult(_player)) * 
 					(KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1))))),
 			};
 			KDGameData.CurrentDialogMsgData = {
+				"${FAVORS}": "" + KDGameData.ShopkeeperFavors,
+				"${FAVORCOST}": "" + KDDialogueParams.ShopkeeperFavorsToRemoveDivine,
 				"RESCUECOST": "" + Math.round(Math.sqrt(KDPriceGougingValueMult(_player))*(KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1))))),
 			};
+
+			if (KDGameData.ShopkeeperFavors) {
+				KDGameData.CurrentDialogMsg = "ShopkeeperStartFavors";
+				return true;
+			}
+
 			return false;
 		},
 		options: {
@@ -4238,6 +4341,50 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					})) {
 						KDGameData.CurrentDialogMsg = "ShopkeeperStartHelpGoldPlus"; 
 						return true;
+					}
+					return false;
+				},
+				options: {
+					"Return": {
+						playertext: "Return", response: "Default",
+						leadsToStage: "",
+					},
+				}
+			},
+			"HelpDivine": {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (_gagged, _player) => {
+					return KinkyDungeonAllRestraintDynamic().some((element) => {
+						return !KDRestraint(element.item)?.armor && !KDRestraint(element.item)?.good;
+					});
+				},
+				clickFunction: (_gagged, _player) => {
+					if (KinkyDungeonPlayerGetRestraintsWithLocks(["Divine2", "Divine"]).length > 0
+						&& KDGameData.ShopkeeperFavors >= KDGameData.CurrentDialogMsgValue["${FAVORCOST}"]) {
+						let e = KDGetSpeaker();
+						KDStartDialog("ShopkeeperOfferHelpDivine", e.Enemy.name, true, e.personality, e);
+						return true;
+					}
+					return false;
+				},
+				options: {
+					"Return": {
+						playertext: "Return", response: "Default",
+						leadsToStage: "",
+					},
+				}
+			},
+			"DivineAsk": {
+				playertext: "Default", response: "Default",
+				gagDisabled: true,
+				prerequisiteFunction: (gagged, _player) => {
+					let speaker = KDGetSpeaker();
+					if (speaker && KDEntityHasFlag(speaker, "removeddivine")) return true;
+					return false;
+				},
+				clickFunction: (gagged, _player) => {
+					if (gagged) {
+						KDGameData.CurrentDialogMsg = "ShopkeeperStartShopGag";
 					}
 					return false;
 				},

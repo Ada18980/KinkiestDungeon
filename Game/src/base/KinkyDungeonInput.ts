@@ -762,7 +762,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 
 		KDChangeMana(x + ',' + y,"map", "interact", KinkyDungeonStatManaMax * 0.5, false, 0, false, true);
 		KDSendStatus('goddess', data.type, 'shrineDrink');
-		KinkyDungeonAggroAction('shrine', {});
+		//KinkyDungeonAggroAction('shrine', {});
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 
 		KinkyDungeonAdvanceTime(1, true);
@@ -770,10 +770,10 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 
 		if (KinkyDungeonGoddessRep[data.type] <= -45) {
 			//Cursed
-			KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, 5);
-		} else
-			KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, slimed ? 1.5 : 1);
-
+			KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, 2);
+		} else if (KinkyDungeonGoddessRep[data.type] <= KDANGER) {
+			KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, 1);
+		}
 		KDMapData.PoolUses += 1;
 
 		KinkyDungeonSendEvent("afterShrineDrink", {x: data.x, y: data.y, tile: data.tile});
@@ -792,13 +792,19 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 
 		let x =  data.targetTile.split(',')[0];
 		let y =  data.targetTile.split(',')[1];
-		KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, 1.0);
+		if (KinkyDungeonGoddessRep[data.type] <= -45) {
+			//Cursed
+			KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, 2);
+		} else if (KinkyDungeonGoddessRep[data.type] <= KDANGER) {
+			KDSummonRevengeMobs(parseInt(x), parseInt(y), tile.type, 1.0);
+		}
+		
 
 		// KinkyDungeonStatsChoice.get("Blessed")
 		KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonPoolBottle"), "#AAFFFF", 2);
 		KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("PotionMana"), 1);
 		KDSendStatus('goddess', data.type, 'shrineBottle');
-		KinkyDungeonAggroAction('shrine', {});
+		//KinkyDungeonAggroAction('shrine', {});
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/PotionDrink.ogg");
 
 		KDMapData.PoolUses += 1;

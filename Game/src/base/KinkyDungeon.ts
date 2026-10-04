@@ -584,10 +584,12 @@ interface KDGameDataBase {
 	MistressID: number,
 	AutoSprintTriggered: boolean,
 	BulletWarnings: Record<string, any>[],
+	ShopkeeperFavors: number,
 };
 
 
 let KDGameDataBase: KDGameDataBase = {
+	ShopkeeperFavors: 0,
 	AutoSprintTriggered: false,
 	BulletWarnings: [],
 	originalBody: "",

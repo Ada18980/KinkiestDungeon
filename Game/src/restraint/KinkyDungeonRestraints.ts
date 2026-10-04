@@ -737,6 +737,12 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 		if (!cancel) {
 			if (item.lock) KDDoLockParticlePlayer("Unlock", KDRestraint(item), particleDelay);
 			item.lock = lock;
+			
+			if (item.lock && !noSound) {
+				let sfx = KDLocks[lock]?.sfxremove != undefined ? KDLocks[lock].sfxremove : "Unlock";
+				let vol = KDLocks[lock]?.sfxremovevol != undefined ? KDLocks[lock].sfxremovevol : 1;
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg", undefined, vol);
+			}
 			if (!NoEvent) {
 				if (item.events) {
 					for (let e of item.events) {
@@ -6366,10 +6372,10 @@ function KinkyDungeonUnLinkItem(item: item, Keep: boolean, _dynamic?: any, Force
 				KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true, Character: KinkyDungeonPlayer, Remover: Remover});
 				if (KDRestraint(item).UnLink) {
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink" + item.name), KDBaseLightGreen, 2,
-						false, false, undefined, "Struggle");
-				} else
+						true, false, undefined, "Struggle");
+				}/* else
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink"), KDBaseLightGreen, 2,
-						false, false, undefined, "Struggle");
+						false, false, undefined, "Struggle");*/
 				return [item];
 			}
 		}
