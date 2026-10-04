@@ -959,7 +959,8 @@ function KinkyDungeonDrawPerkOrb() {
                 }
                 if (bondage) {
                     for (let b of bondage) {
-                        KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(b), 20, true, "Gold", true);
+                        KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(b), 
+						20, true, "GoldPlus", true);
                     }
                 }
                 if (method) {

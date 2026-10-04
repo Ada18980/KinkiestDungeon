@@ -1366,7 +1366,7 @@ function KDGetPerkShrineBondage(perks: string[]): string[] {
 					if (i > 0)
 						randTheme();
 					restraints = KDGetRestraintsEligible({tags: [theme, theme+"Heavy", theme+"Chastity"]}, KDGetEffLevel(), KDCurrIndex(),
-						true, "Gold");
+						true, "GoldPlus");
 					restraints = restraints.filter((r) => {
 						return !ret.includes(r.restraint.name);
 					});

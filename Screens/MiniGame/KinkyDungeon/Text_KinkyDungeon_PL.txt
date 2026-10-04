@@ -34165,7 +34165,7 @@
 # - The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
 # - The restraint won't budge.
 # :: KinkyDungeonCurseStruggleSpellLock1
-# :: KinkyDungeonCurseStruggleSpellLock8
+# :: KinkyDungeonCurseStruggleSpellLock6
 # - You perform a ritual to unlock the item!
 
 

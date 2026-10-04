@@ -809,6 +809,30 @@ function KinkyDungeonSingleRestraintMatchesShrine(
 		KDRestraint(item).shrine.includes(shrine);
 }
 
+
+/**
+ * Whether a single item shall be matched by a shrine
+ * @param item
+ * @param shrine
+ * @param ignoreGold Gold locks don't prevent shrine matching
+ *   even if they are shrineImmune
+ * @param ignoreShrine Curses and noShrine flag on items don't
+ *   prevent shrine matching.
+ * @param forceIgnoreNonBinding - for "Exclusions Apply" perk
+ */
+function KDSingleRestraintMatchesShrine(
+	item: item,
+	shrine: string,
+	criteria: (item: item) => boolean,
+	ignoreShrine: boolean,
+	forceIgnoreNonBinding: boolean,
+): boolean
+{
+	return KDAllowTagMatch(item, criteria, ignoreShrine, forceIgnoreNonBinding) &&
+		KDRestraint(item).shrine &&
+		KDRestraint(item).shrine.includes(shrine);
+}
+
 /**
  * @param item
  * @param ignoreGold
@@ -820,6 +844,20 @@ function KinkyDungeonAllowTagMatch(item: item, ignoreGold: boolean, ignoreShrine
 		(!forceIgnoreNonBinding || KDIsBinding(item))
 		&& KinkyDungeonCurseOrItemAllowMatch(item, ignoreShrine)
 		&& KinkyDungeonLockAllowMatch(item, ignoreGold)
+	);
+}
+
+/**
+ * @param item
+ * @param ignoreGold
+ * @param ignoreShrine
+ * @param forceIgnoreNonBinding
+ */
+function KDAllowTagMatch(item: item, criteria: (item: item) => boolean, ignoreShrine: boolean, forceIgnoreNonBinding: boolean): boolean {
+	return (
+		(!forceIgnoreNonBinding || KDIsBinding(item))
+		&& KinkyDungeonCurseOrItemAllowMatch(item, ignoreShrine)
+		&& (!criteria || criteria(item))
 	);
 }
 
@@ -841,6 +879,7 @@ function KinkyDungeonLockAllowMatch(item: item, ignoreGold: boolean): boolean {
 	return ignoreGold || !KDLocks[item.lock]?.shrineImmune;
 }
 
+
 /**
  * @param shrine
  * @param [ignoreGold]
@@ -861,6 +900,38 @@ function KinkyDungeonGetRestraintsWithShrine(shrine: string, ignoreGold?: boolea
 			let link = item.dynamicLink;
 			while (link) {
 				if (KinkyDungeonSingleRestraintMatchesShrine(link, shrine, ignoreGold, ignoreShrine, forceIgnoreNonBinding)) {
+					if (!ignoreFavorite || !(KDGameData.ItemPriority[link.inventoryVariant || link.name] > 9))
+						ret.push(link);
+				}
+				link = link.dynamicLink;
+			}
+		}
+	}
+
+	return ret;
+}
+
+
+/**
+ * @param shrine
+ * @param [ignoreGold]
+ * @param [recursive]
+ * @param [ignoreShrine]
+ * @param [forceIgnoreNonBinding] - for "Exclusions Apply" perk
+ */
+function KDGetRestraintsWithShrine(shrine: string, criteria?: (item: item) => boolean, recursive?: boolean, ignoreShrine?: boolean,
+	forceIgnoreNonBinding?: boolean, ignoreFavorite?: boolean): item[] {
+	let ret: item[] = [];
+
+	for (let item of KinkyDungeonAllRestraint()) {
+		if (KDSingleRestraintMatchesShrine(item, shrine, criteria, ignoreShrine, forceIgnoreNonBinding)) {
+			if (!ignoreFavorite || !(KDGameData.ItemPriority[item.inventoryVariant || item.name] > 9))
+				ret.push(item);
+		}
+		if (recursive) {
+			let link = item.dynamicLink;
+			while (link) {
+				if (KDSingleRestraintMatchesShrine(link, shrine, criteria, ignoreShrine, forceIgnoreNonBinding)) {
 					if (!ignoreFavorite || !(KDGameData.ItemPriority[link.inventoryVariant || link.name] > 9))
 						ret.push(link);
 				}
@@ -916,6 +987,121 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: numbe
 		if (recursive && count < (maxCount ? maxCount : 100)) {
 			// Get all items, including dynamically linked ones
 			items = KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, true,
+				ignoreShrine, forceIgnoreNonBinding);
+			items = items.filter((r) => {
+				return (forceFavorite || !(KDGameData.ItemPriority[r.inventoryVariant || r.name] > 9));
+			});
+			// Get the most powerful item
+			item = items.length > 0 ? items.reduce((prev, current) => {
+				return ((
+					(KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)))
+					? prev : current)
+			}) : null;
+			if (item) {
+				let groupItem = KinkyDungeonGetRestraintItem(KDRestraint(item).Group);
+				if (groupItem == item) {
+					if (item.curse && KDCurses[item.curse]) {
+						let res = KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+						KinkyDungeonSendEvent("removeCurse", {
+							curse: item.curse,
+							unlock: true,
+							result: res,
+							item: item,
+						});
+					}
+					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+					item.curse = undefined;
+					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+					}
+					KinkyDungeonRemoveRestraint(KDRestraint(item).Group, Keep, false, false, true, undefined, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
+					KDSendStatus('escape', item.name, "shrine_" + shrine);
+					count++;
+				} else {
+					let host = groupItem;
+					let link = host.dynamicLink;
+					while (link) {
+						if (link == item) {
+							if (item.curse && KDCurses[item.curse]) {
+								let res = KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+								KinkyDungeonSendEvent("removeCurse", {
+									curse: item.curse,
+									unlock: true,
+									result: res,
+									item: item,
+								});
+							}
+							let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+							item.curse = undefined;
+							if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+								KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+							}
+							KinkyDungeonRemoveDynamicRestraint(host, Keep, false, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
+							KDSendStatus('escape', item.name, "shrine_" + shrine);
+							count++;
+							link = null;
+						} else {
+							host = link;
+							link = link.dynamicLink;
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true, Character: KinkyDungeonPlayer, Remover: Remover});
+				
+	return count;
+}
+
+
+/**
+ * @param shrine
+ * @param [forceIgnoreNonBinding] - for "Exclusions Apply" perk
+ * @returns {number}
+ */
+function KDRemoveRestraintsWithShrine(shrine: string, maxCount?: number, recursive?: boolean, noPlayer?: boolean,
+	criteria?: (item: item) => boolean, ignoreShrine?: boolean, Keep?: boolean, forceIgnoreNonBinding?: boolean, forceFavorite?: boolean, Remover?: entity): number {
+	let count = 0;
+
+	let condition = (r: item) => {
+		return (forceFavorite || !(KDGameData.ItemPriority[r.inventoryVariant || r.name] > 9))
+				&& KDSingleRestraintMatchesShrine(r, shrine, criteria, ignoreShrine, forceIgnoreNonBinding);
+	};
+
+	for (let i = 0; i < (maxCount ? maxCount : 100); i++) {
+		let items: item[] = (recursive ?
+			KDAllRestraintDynamicList() : KinkyDungeonAllRestraint()).filter((r) => {
+				return condition(r);
+			});
+		// Get the most powerful item
+		let item = items.length > 0 ? items.reduce((prev, current) => (KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)) ? prev : current) : null;
+		item = item ? KinkyDungeonGetRestraintItem(KDRestraint(item).Group) : undefined; // get top level
+		if (item && condition(item)) {
+			if (item.curse && KDCurses[item.curse]) {
+				let res = KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+				KinkyDungeonSendEvent("removeCurse", {
+					curse: item.curse,
+					unlock: true,
+					result: res,
+					item: item,
+				});
+			}
+			let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+			item.curse = undefined;
+			if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+				KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+			}
+			KinkyDungeonRemoveRestraint(KDRestraint(item).Group, Keep, false, false, true, undefined, !noPlayer ? KinkyDungeonPlayerEntity : undefined);
+			KDSendStatus('escape', item.name, "shrine_" + shrine);
+			count++;
+		}
+
+		if (recursive && count < (maxCount ? maxCount : 100)) {
+			// Get all items, including dynamically linked ones
+			items = KDGetRestraintsWithShrine(shrine, criteria, true,
 				ignoreShrine, forceIgnoreNonBinding);
 			items = items.filter((r) => {
 				return (forceFavorite || !(KDGameData.ItemPriority[r.inventoryVariant || r.name] > 9));

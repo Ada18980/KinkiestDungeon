@@ -3466,10 +3466,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonGold -= KDGameData.ShopkeeperFee;
 					KDGameData.ShopkeeperFee = 0;
-					KinkyDungeonRemoveRestraintsWithShrine("Rope", undefined, true, false, true, false, true);
-					KinkyDungeonRemoveRestraintsWithShrine("Leather", undefined, true, false, true, false, true);
-					KinkyDungeonRemoveRestraintsWithShrine("Metal", undefined, true, false, true, false, true);
-					KinkyDungeonRemoveRestraintsWithShrine("Latex", undefined, true, false, true, false, true);
+					KDRemoveRestraintsWithShrine("Rope", undefined, true, 
+						false, KDShopkeeperCriteria(_player), false, true);
+					KDRemoveRestraintsWithShrine("Leather", undefined, true, 
+						false, KDShopkeeperCriteria(_player), false, true);
+					KDRemoveRestraintsWithShrine("Metal", undefined, true, 
+						false, KDShopkeeperCriteria(_player), false, true);
+					KDRemoveRestraintsWithShrine("Latex", undefined, true, 
+						false, KDShopkeeperCriteria(_player), false, true);
 					return false;
 				},
 				options: {
@@ -3766,10 +3770,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						clickFunction: (_gagged, _player) => {
 							KinkyDungeonGold -= KDGameData.ShopkeeperFee;
 							KDGameData.ShopkeeperFee = 0;
-							KinkyDungeonRemoveRestraintsWithShrine("Rope", undefined, true, false, true, false, true);
-							KinkyDungeonRemoveRestraintsWithShrine("Leather", undefined, true, false, true, false, true);
-							KinkyDungeonRemoveRestraintsWithShrine("Metal", undefined, true, false, true, false, true);
-							KinkyDungeonRemoveRestraintsWithShrine("Latex", undefined, true, false, true, false, true);
+							KDRemoveRestraintsWithShrine("Rope", undefined, true, 
+								false, KDShopkeeperCriteria(_player), false, true);
+							KDRemoveRestraintsWithShrine("Leather", undefined, true, 
+								false, KDShopkeeperCriteria(_player), false, true);
+							KDRemoveRestraintsWithShrine("Metal", undefined, true, 
+								false, KDShopkeeperCriteria(_player), false, true);
+							KDRemoveRestraintsWithShrine("Latex", undefined, true, 
+								false, KDShopkeeperCriteria(_player), false, true);
 							return false;
 						},
 						options: {
@@ -3806,10 +3814,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				},
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonGold -= KDGameData.CurrentDialogMsgValue.RESCUECOST;
-					KinkyDungeonRemoveRestraintsWithShrine("Rope", undefined, true, false, true, false, true);
-					KinkyDungeonRemoveRestraintsWithShrine("Leather", undefined, true, false, true, false, true);
-					KinkyDungeonRemoveRestraintsWithShrine("Metal", undefined, true, false, true, false, true);
-					KinkyDungeonRemoveRestraintsWithShrine("Latex", undefined, true, false, true, false, true);
+					KDRemoveRestraintsWithShrine("Rope", undefined, true, false, 
+						KDShopkeeperCriteria(_player), false, true);
+					KDRemoveRestraintsWithShrine("Leather", undefined, true, false, 
+						KDShopkeeperCriteria(_player), false, true);
+					KDRemoveRestraintsWithShrine("Metal", undefined, true, false, 
+						KDShopkeeperCriteria(_player), false, true);
+					KDRemoveRestraintsWithShrine("Latex", undefined, true, false, 
+						KDShopkeeperCriteria(_player), false, true);
 					return false;
 				},
 				options: {
@@ -3888,10 +3900,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						KDGameData.CurrentDialogMsg = "ShopkeeperOfferHelpTabRetryRestrained";
 					} else {
 						KinkyDungeonSetFlag("Collateral", -1, 1);
-						KinkyDungeonRemoveRestraintsWithShrine("Rope", undefined, true, false, true, false, true);
-						KinkyDungeonRemoveRestraintsWithShrine("Leather", undefined, true, false, true, false, true);
-						KinkyDungeonRemoveRestraintsWithShrine("Metal", undefined, true, false, true, false, true);
-						KinkyDungeonRemoveRestraintsWithShrine("Latex", undefined, true, false, true, false, true);
+						KDRemoveRestraintsWithShrine("Rope", undefined, true, false, 
+							KDShopkeeperCriteria(_player), false, true);
+						KDRemoveRestraintsWithShrine("Leather", undefined, true, false, 
+							KDShopkeeperCriteria(_player), false, true);
+						KDRemoveRestraintsWithShrine("Metal", undefined, true, false, 
+							KDShopkeeperCriteria(_player), false, true);
+						KDRemoveRestraintsWithShrine("Latex", undefined, true, false, 
+							KDShopkeeperCriteria(_player), false, true);
 						KDGameData.CurrentDialogStage = "Debt";
 						KDGameData.CurrentDialogMsg = "ShopkeeperOfferHelpDebt";
 					}
@@ -4108,10 +4124,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						},
 						clickFunction: (_gagged, _player) => {
 							KinkyDungeonGold -= KDGameData.CurrentDialogMsgValue.RESCUECOST;
-							KinkyDungeonRemoveRestraintsWithShrine("Rope", undefined, true, false, true, false, true);
-							KinkyDungeonRemoveRestraintsWithShrine("Leather", undefined, true, false, true, false, true);
-							KinkyDungeonRemoveRestraintsWithShrine("Metal", undefined, true, false, true, false, true);
-							KinkyDungeonRemoveRestraintsWithShrine("Latex", undefined, true, false, true, false, true);
+							KDRemoveRestraintsWithShrine("Rope", undefined, true, false, 
+								KDShopkeeperCriteria(_player), false, true);
+							KDRemoveRestraintsWithShrine("Leather", undefined, true, false, 
+								KDShopkeeperCriteria(_player), false, true);
+							KDRemoveRestraintsWithShrine("Metal", undefined, true, false, 
+								KDShopkeeperCriteria(_player), false, true);
+							KDRemoveRestraintsWithShrine("Latex", undefined, true, false, 
+								KDShopkeeperCriteria(_player), false, true);
 							return false;
 						},
 						options: {
@@ -4202,16 +4222,21 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					});
 				},
 				clickFunction: (_gagged, _player) => {
-					if (KinkyDungeonGetRestraintsWithShrine("Metal", true, 
+					if (KDGetRestraintsWithShrine("Metal", KDShopkeeperCriteria(_player), 
 						true, false, false, true).length > 0
-						|| KinkyDungeonGetRestraintsWithShrine("Latex", true, 
+						|| KDGetRestraintsWithShrine("Latex", KDShopkeeperCriteria(_player), 
 							true, false, false, true).length > 0
-						|| KinkyDungeonGetRestraintsWithShrine("Leather", true, 
+						|| KDGetRestraintsWithShrine("Leather", KDShopkeeperCriteria(_player), 
 							true, false, false, true).length > 0
-						|| KinkyDungeonGetRestraintsWithShrine("Rope", true, 
+						|| KDGetRestraintsWithShrine("Rope", KDShopkeeperCriteria(_player), 
 							true, false, false, true).length > 0) {
 						let e = KDGetSpeaker();
 						KDStartDialog("ShopkeeperOfferHelp", e.Enemy.name, true, e.personality, e);
+						return true;
+					} else if (KDAllRestraintDynamicList()?.some((item) => {
+						return item.lock == "GoldPlus";
+					})) {
+						KDGameData.CurrentDialogMsg = "ShopkeeperStartHelpGoldPlus"; 
 						return true;
 					}
 					return false;
@@ -6998,4 +7023,10 @@ function KDDoDollShoppeVisitorImpress(en: entity, player: entity, gagged: boolea
 			}
 		}
 	}
+}
+
+function KDShopkeeperCriteria(player?: entity) {
+	return (item: item) => {
+		return !(item.lock && KDLocks[item.lock]?.shopImmune);
+	};
 }

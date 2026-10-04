@@ -158,7 +158,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 			return true;
 		},
 	},
-	"SpellLock8" : {
+	"SpellLock6" : {
 		powerMult: 4,
 		lock: true,
 		level: 12,
@@ -176,7 +176,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 			}
 		},
 		customInfo: (item, Curse) => {
-			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
+			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 6;
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse)
 				.replace("RestraintName", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item).name))
 				.replace("AMNT", "" + (amount)),

@@ -90,6 +90,8 @@ Must do
 - Refusing bondage offer no longer causes all enemies nearby to become hostile
 - Added perk shrine more which offers bondage-only shrines at times
 - New mildly infuriating sound/vibe pattern for nipple vibes
+- Shrine bondage now applies "Contract" locks which cant be removed by the shopkeeper
+- Reduced cost of removing warden gear to 6 spell points
 
 5.5.2
 - Added WebAudio support for better sound quality

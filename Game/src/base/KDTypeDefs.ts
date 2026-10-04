@@ -3695,6 +3695,7 @@ type KDLockType = {
 
 	levelStart: (item) => void;
 	shrineImmune: boolean;
+	shopImmune?: boolean,
 
 	commandlevel: number;
 	commandable: boolean;
