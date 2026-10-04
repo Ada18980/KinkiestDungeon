@@ -616,6 +616,18 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		}
 		return "";
 	},
+	"pickup": (data) => {
+		KDDelayedActionPrune(["Action", "World"]);
+		let tick = KinkyDungeonCurrentTick;
+		let fail = !KDPickup(data.x, data.y);
+		if (KinkyDungeonCurrentTick > tick || fail) {
+			if (KDTurnToFace(data.x, data.y)
+				&& (KinkyDungeonStatsChoice.get("DirectionSlow") || KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
+				KinkyDungeonAdvanceTime(1);
+			}
+		}
+		return "";
+	},
 	"shrineBuy": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		KinkyDungeonShopIndex = data.shopIndex;
@@ -1713,8 +1725,6 @@ function KDProcessInputs(ReturnResult?: boolean): string {
 function KDInteract(x: number, y: number, dist?: number): boolean {
 	if (dist == undefined) dist = KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y);
 	KinkyDungeonSendEvent("beforeInteract", {x:x, y: y});
-	if (dist < 1.5 && !KinkyDungeonEntityAt(x, y, false, undefined, undefined, false))
-		KinkyDungeonItemCheck(x, y, MiniGameKinkyDungeonLevel, true);
 	KDInteracting = false;
 	let tile = KinkyDungeonTilesGet(x + ',' + y);
 	if (tile?.Type) {
@@ -1762,5 +1772,15 @@ function KDInteract(x: number, y: number, dist?: number): boolean {
 		}
 	}
 	KinkyDungeonSendEvent("afterInteractFail", {x:x, y: y});
+	return false;
+}
+
+
+
+function KDPickup(x: number, y: number): boolean {
+	if ((!KinkyDungeonEntityAt(x, y, false, undefined, undefined, false)
+		|| !KDHostile(KinkyDungeonEntityAt(x, y, false, undefined, undefined, false))))
+		KinkyDungeonItemCheck(x, y, MiniGameKinkyDungeonLevel, true);
+	
 	return false;
 }

@@ -196,6 +196,8 @@ interface KDRestraintPropsBase {
 	minLevel?: number,
 	allFloors?: boolean,
 	cloneTag?: string,
+	cloneLock?: string,
+	cloneLockUpgrade?: string,
 
 	escapeChance?: KDEscapeChanceList,
 
@@ -1502,6 +1504,8 @@ interface enemy extends KDHasTags {
 	noSpellDuringAttack?: boolean,
 	/** Base faction of this enemy, overridden by the entity faction */
 	faction?: string,
+	/** negates the friendlyfire tag on spells */
+	alwaysNoFF?: boolean,
 	/** Can rescue with the following */
 	rescueTo?: {
 		Unlock?: string,
@@ -3663,6 +3667,8 @@ type KDLockType = {
 
 	consume_key: boolean;
 	lockmult: number;
+	sfx?: string;
+	sfxvol?: number;
 
 	penalty?: Record<string, number>;
 

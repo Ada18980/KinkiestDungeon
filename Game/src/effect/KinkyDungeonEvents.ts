@@ -2140,10 +2140,38 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				}
 			}
 
-			let r = KinkyDungeonGetRestraint({ tags: newtags }, 24, "grv", true, undefined);
-			if (r) {
-				KinkyDungeonAddRestraintIfWeaker(r, MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, undefined, false, undefined, undefined, item.faction || e.kind, true);
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + r.name)), KDBaseLightBlue, 2);
+			let lock = KDRestraint(item).cloneLock;
+			let lockable = lock ? KDLockableRestraints(true, false, undefined, lock) : undefined;
+			let upgradelock = KDRestraint(item).cloneLockUpgrade;
+			let upgraded = false;
+			let r = KinkyDungeonGetRestraint({ tags: newtags }, 24, "grv", true, lock);
+			if (r && !(lockable?.length > 0)) {
+				KinkyDungeonAddRestraintIfWeaker(r, MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, 
+					true, lock, false, undefined, undefined, item.faction || e.kind, true);
+				KinkyDungeonSendTextMessage(5, 
+					TextGet("KinkyDungeonLivingSpread", KDGetGenericDialogueParams(KDPlayer()))
+						.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+						.replace("+RestraintAdded", 
+							TextGet("Restraint" + r.name)), KDBaseLightBlue, 2);
+			} else if ((lock && lockable.length > 0)
+				|| (upgradelock && KDLockableRestraints(true, false, undefined, upgradelock).length > 0)) {
+				let lockable = KDLockableRestraints(true, false, undefined, lock);
+				if (lockable.length == 0) {
+					lockable = KDLockableRestraints(true, false, undefined, upgradelock);
+					lock = upgradelock;
+				}
+				upgraded = true;
+				let item = CommonRandomItemFromList(null, lockable);
+				KinkyDungeonLock(item, lock);
+				KinkyDungeonSendTextMessage(5, 
+					TextGet("KinkyDungeonLivingLock", 
+						KDGetGenericDialogueParams(KDPlayer(), undefined, {
+						LockType: TextGet("Kinky" + lock + "Lock"),
+						RestraintName: KDGetItemName(item)
+					}))
+					.replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), 
+					KDBaseLightBlue, 2);
+				
 			} else {
 				KDItemDataSet(item, "livingTimer", 10);
 				return;
@@ -2151,6 +2179,9 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 
 			//Spread accelerates as you get more of that type
 			let frequency = e.frequencyMax;
+			
+			// Double speed if we're locking
+			if (upgraded) frequency *= 0.5;
 
 			for (let inv of KinkyDungeonAllRestraintDynamic()) {
 				let found = false;
@@ -2169,7 +2200,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (frequency < e.frequencyMin)
 				frequency = e.frequencyMin;
 
-			if (!r) {
+			if (!r && !upgraded) {
 				frequency = 100;
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingDormant").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), KDBaseLightBlue, 2);
 			}
@@ -4484,7 +4515,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 			if (buff.power > 0 && entity.player && (!e.chance || KDRandom() < e.chance || KinkyDungeonFlags.get("GhostDeal_Lock"))) {
 				let tags = ["comfyRestraints", "trap"];
 				let lockies = KDRandom() < 0.67;
-				let lockable =  lockies ? KinkyDungeonPlayerGetLockableRestraints() : undefined;
+				let lockable =  lockies ? KDLockableRestraints() : undefined;
 				if (lockable?.length > 0) {
 
 					if (!KinkyDungeonFlags.has("GhostDeal") || KinkyDungeonFlags.get("GhostDeal") < 10 || KinkyDungeonFlags.get("GhostDeal_Lock")) {
@@ -10897,6 +10928,9 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 		"BossAssignFaction": (e, enemy, _data) => {
 			if (!enemy.faction && !KDGameData.Collection[enemy.id + ""] && !KinkyDungeonIsDisabled(enemy) && KDBoundEffects(enemy) < 4) {
 				if (enemy.hostile || KDMapData.Entities.some((en) => { return en.Enemy.tags?.stageBoss && en.hostile; })) enemy.faction = e.kind;
+			} else if (enemy.ceasefire && enemy.faction != "Player") {
+				enemy.faction = "Boss";
+				enemy.ceasefire = 0;
 			}
 		},
 		"DeleteCurse": (e, enemy, data) => {

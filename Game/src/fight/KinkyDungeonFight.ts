@@ -3192,7 +3192,7 @@ function KDBulletAoECanHitEntity(bullet: KDBullet, enemy: entity): boolean {
 		return (bullet.reflected
 			|| KDEntityHasFlag(enemy, "takeFF")
 			|| (!bullet.bullet.spell || !bullet.bullet.faction
-				|| bullet.bullet.spell.friendlyfire
+				|| (bullet.bullet.spell.friendlyfire && !enemy.Enemy?.alwaysNoFF && enemy.id != bullet.source)
 				|| (!KDFactionFavorable(bullet.bullet.faction, enemy)
 					&& (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
 				|| (!KDFactionHostile(bullet.bullet.faction, enemy) && (bullet.bullet.damage && bullet.bullet.damage.type == "heal"))
@@ -3223,7 +3223,7 @@ function KDBulletCanHitEntity(bullet: KDBullet, enemy: entity, inWarningOnly?: b
 		return (enemy.x == bullet.x && enemy.y == bullet.y) && (bullet.reflected || overrideCollide
 			|| KDEntityHasFlag(enemy, "takeFF")
 			|| (!bullet.bullet.spell || !bullet.bullet.faction
-				|| bullet.bullet.spell.friendlyfire
+				|| (bullet.bullet.spell.friendlyfire && !enemy.Enemy?.alwaysNoFF && enemy.id != bullet.source)
 				|| (!KDFactionFavorable(bullet.bullet.faction, enemy)
 					&& (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
 				|| (!KDFactionHostile(bullet.bullet.faction, enemy) && (bullet.bullet.damage && bullet.bullet.damage.type == "heal"))

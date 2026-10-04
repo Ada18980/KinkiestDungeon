@@ -707,8 +707,9 @@ function KinkyDungeonIsLockable(restraint: restraint): boolean {
  * @param [pick]
  */
 function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Link: boolean = false,
-	pick: boolean = false, normalUnlock?: boolean, remover?: entity, particleDelay?: number): void {
+	pick: boolean = false, normalUnlock?: boolean, remover?: entity, particleDelay?: number, noSound?: boolean): void {
 	KDUpdateItemEventCache = true;
+	if (noSound == undefined) noSound = particleDelay == -1;
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
 			if (KDLocks[lock] && KDLocks[lock].doLock) KDLocks[lock].doLock({item: item, link: Link});
@@ -716,6 +717,12 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 				item.lock = lock;
 
 			item.pickProgress = 0;
+			
+			if (!noSound) {
+				let sfx = KDLocks[lock]?.sfx != undefined ? KDLocks[lock].sfx : "LockLight";
+				let vol = KDLocks[lock]?.sfxvol != undefined ? KDLocks[lock].sfxvol : 1;
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg", undefined, vol);
+			}
 			
 			KDDoLockParticlePlayer(lock, KDRestraint(item), particleDelay);
 		}
@@ -1037,11 +1044,35 @@ function KinkyDungeonUnlockRestraintsWithShrine(shrine: string): number {
 	return count;
 }
 
+/**
+ * 
+ * @deprecated
+ */
 function KinkyDungeonPlayerGetLockableRestraints(): item[] {
+	/**
 	let ret: item[] = [];
 
 	for (let item of KinkyDungeonAllRestraint()) {
 		if (!item.lock && !KDGetCurse(item) && KDRestraint(item).escapeChance && KDRestraint(item).escapeChance.Pick != undefined) {
+			ret.push(item);
+		}
+	}
+
+	 */
+	return KDLockableRestraints(true, true);
+}
+
+
+function KDLockableRestraints(dynamic: boolean = true, accessible: boolean = false, criteria?: (item) => boolean, lock?: string): item[] {
+	let ret: item[] = [];
+
+	for (let item of dynamic ? KDAllRestraintDynamicList() : KinkyDungeonAllRestraint()) {
+		if (criteria && !criteria(item)) continue;
+		if (accessible && KDIsItemBlocked(item)) continue;
+		if ((!item.lock
+			|| lock == "Any"
+			|| (lock && (KDLocks[lock].lockmult > (KDLocks[item.lock]?.lockmult || 0)))
+		) && !KDGetCurse(item) && KDRestraint(item).escapeChance && KDRestraint(item).escapeChance.Pick != undefined) {
 			ret.push(item);
 		}
 	}
@@ -1283,6 +1314,7 @@ function KinkyDungeonWallCrackAndKnife(Message: boolean): boolean {
  * @param item
  */
 function KDIsItemBlocked(item: item): boolean {
+	if (KDGroupBlocked(KDRestraint(item).Group)) return true;
 	let base = KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group);
 	if (base) {
 		return KDDynamicLinkListSurface(base).findIndex((it) => {
@@ -1295,7 +1327,6 @@ function KDIsItemBlocked(item: item): boolean {
 
 
 /**
- * Determines if the entire dynamic item tree has at least one inaccessable item
  * @param item
  */
 function KDIsItemAccessible(item: item): boolean {
@@ -2132,9 +2163,8 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	// Experimental ==> all escape chance increased by 1-progress%, all limit chance increased by the same amount
 
 
-	if ((KDGroupBlocked(data.struggleGroup) && !KDRestraint(data.restraint).alwaysStruggleable)
-		|| (
-		KDIsItemBlocked(data.restraint) && !KDRestraint(data.restraint).alwaysStruggleable)) {
+	if (
+		KDIsItemBlocked(data.restraint) && !KDRestraint(data.restraint).alwaysStruggleable) {
 		data.escapeChance = 0;
 		data.blocked = true;
 		if (!data.query) {
@@ -3855,7 +3885,7 @@ function KinkyDungeonGetRestraint (
 	useAugmented?:        boolean,
 	augmentedInventory?:  string[],
 	options?:             eligibleRestraintOptions
-)
+): restraint
 {
 	let restraintWeightTotal = 0;
 	let restraintWeights = [];

@@ -729,7 +729,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			if (dmg.happened) {
 				//KDPlayerEffectRestrain(spell, playerEffect.count, ["mithrilRope"], "Elemental", false, false, false, false);
 
-				let Lockable = KinkyDungeonPlayerGetLockableRestraints();
+				let Lockable = KDLockableRestraints(true, true);
 				let Lstart = 0;
 				let Lmax = Lockable.length-1;
 				let locked = false;

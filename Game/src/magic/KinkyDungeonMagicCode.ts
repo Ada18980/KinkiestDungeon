@@ -659,7 +659,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			return "Cast";
 		} else if (en && en.player) {
-			let lockable = KinkyDungeonPlayerGetLockableRestraints();
+			let lockable = KDLockableRestraints();
 			if (lockable.length > 0) {
 				if (_miscast) return "Miscast";
 				for (let item of lockable) {

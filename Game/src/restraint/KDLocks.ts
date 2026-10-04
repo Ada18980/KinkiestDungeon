@@ -86,6 +86,8 @@ let KDLocks: Record<string, KDLockType> = {
 			return 0;
 		},
 
+		sfx: "Rubber4",
+
 		consume_key: false,
 		lockmult: 1.1,
 		// Picking
@@ -163,6 +165,8 @@ let KDLocks: Record<string, KDLockType> = {
 		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		pick_speed: 1.5, // Multiplies the picking rate
 		pick_diff: -0.1, // Added to the item's pick difficulty
+
+		sfx: "LockMagic",
 
 		canPick: (_data) => {
 			return false;
@@ -339,6 +343,7 @@ let KDLocks: Record<string, KDLockType> = {
 		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 0;
 		},
+		sfx: "FutureLock",
 
 		consume_key: false,
 		lockmult: 2.9,
@@ -435,6 +440,7 @@ let KDLocks: Record<string, KDLockType> = {
 		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 0;
 		},
+		sfx: "FutureLock",
 
 		consume_key: false,
 		lockmult: 3.15,
@@ -538,6 +544,7 @@ let KDLocks: Record<string, KDLockType> = {
 			"Struggle": 0.35,
 			"Cut": 0.35,
 		},
+		sfx: "FutureLock",
 
 		consume_key: false,
 		lockmult: 3.5,
@@ -1219,6 +1226,7 @@ let KDLocks: Record<string, KDLockType> = {
 			"Struggle": 0.1,
 			"Cut": 0.15,
 		},
+		sfx: "LockMagic",
 
 		// Picking
 		pickable: false, // rather than calling the function (which could vary) this is for classifying the lock
@@ -1556,6 +1564,8 @@ let KDLocks: Record<string, KDLockType> = {
 
 		consume_key: false,
 		lockmult: 2.2,
+		
+		sfx: "LockMagic",
 
 		// Picking
 		pickable: false, // rather than calling the function (which could vary) this is for classifying the lock

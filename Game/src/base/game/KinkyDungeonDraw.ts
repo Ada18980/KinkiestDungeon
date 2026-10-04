@@ -2791,8 +2791,8 @@ let KDLogTopPad = 25;
 let KDLogIndex = 0;
 let KDLogIndexInc = 3;
 
-let KDMsgWidth = 800;
-let KDMsgWidthMin = 800;
+let KDMsgWidth = 840;
+let KDMsgWidthMin = 840;
 let KDMsgX = 640; // 720
 let KDMsgFadeTime = 10;
 
@@ -2879,7 +2879,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 			if (KinkyDungeonActionMessageTime > 0 && KinkyDungeonActionMessageNoPush) {
 				DrawTextFitKD(KinkyDungeonActionMessage, KDMsgX + shiftx + (KDToggles.CenteredLog ? KDMsgWidth/2 : 0), 
 					heightBonus + 15 + spacing * i, 
-					width, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, 
+					width - 40, KinkyDungeonActionMessageColor, KDTextGray1, KDMSGFontSize, 
 					KDToggles.CenteredLog ? "center" : "left", zLevel);
 				ignoreMSG.push(KinkyDungeonActionMessage);
 				i++;
@@ -2887,7 +2887,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 			if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessageNoPush) {
 				DrawTextFitKD(KinkyDungeonTextMessage, KDMsgX + shiftx + (KDToggles.CenteredLog ? KDMsgWidth/2 : 0), 
 				heightBonus + 15 + spacing * i, 
-					width, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, 
+					width - 40, KinkyDungeonTextMessageColor, KDTextGray1, KDMSGFontSize, 
 					KDToggles.CenteredLog ? "center" : "left", zLevel);
 				ignoreMSG.push(KinkyDungeonTextMessage);
 				i++;
@@ -2930,7 +2930,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 						alpha = Math.max(0, Math.min(1, 2.0 - i / (KDMaxConsoleMsg - subLines))) * (1 - Math.max(0, Math.min(1, Math.max(0, KinkyDungeonCurrentTick - msg.time - 1)/KDMsgFadeTime)));
 						DrawTextFitKD(msg.text, KDMsgX + shiftx + (KDToggles.CenteredLog ? KDMsgWidth/2 : 0), 
 						heightBonus + 15 + spacing * i, 
-							width, msg.color, KDTextGray1, KDMSGFontSize, 
+							width - 40, msg.color, KDTextGray1, KDMSGFontSize, 
 							KDToggles.CenteredLog ? "center" : "left", zLevel, alphamin + (1 - alphamin) * alpha);
 						if (msg.time && (msg.time - KinkyDungeonCurrentTick < 0))
 							DrawTextFitKD("(" + (msg.time - KinkyDungeonCurrentTick) + ")", KDMsgX + shiftx + KDMsgWidth, 
@@ -2982,7 +2982,7 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 			let col = log.color;
 			DrawTextFitKD(log.text, KDMsgX + shiftx + (KDToggles.CenteredLog ? KDMsgWidth/2 : 0), 
 				heightBonus + KDLogTopPad + ii * KDLogDist + KDLogDist/2, 
-				KDMsgWidth, col, KDTextGray1, KDMSGFontSize, 
+				KDMsgWidth - 40, col, KDTextGray1, KDMSGFontSize, 
 				KDToggles.CenteredLog ? "center" : "left", 101);
 				
 			if (log.time && (log.time - KinkyDungeonCurrentTick < 0))
@@ -2998,13 +2998,13 @@ function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boo
 				if (KDLogIndex > 0)
 					KDLogIndex = Math.max(0, KDLogIndex - KDLogIndexInc);
 				return true;
-			}, true, 1500, heightBonus + 20, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png");
+			}, true, 1500, heightBonus + 60, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png");
 			//KDMsgX + shiftx + KDMsgWidth/2 - 45, KDLogTopPad + KDLogHeight + 10
 			DrawButtonKDEx("logscrolldown", (_bdata) => {
 				if (KDLogIndex < KinkyDungeonMessageLog.length - KDMaxLog)
 					KDLogIndex = Math.min(Math.max(0, KinkyDungeonMessageLog.length - KDMaxLog), KDLogIndex + KDLogIndexInc);
 				return true;
-			}, true,1500, heightBonus + 60, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png");
+			}, true,1500, heightBonus + 100, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png");
 
 			if (KinkyDungeonMessageLog.length > KDMaxLog * 100) {
 				KinkyDungeonMessageLog.splice(0, KDMaxLog * 100 - KinkyDungeonMessageLog.length);

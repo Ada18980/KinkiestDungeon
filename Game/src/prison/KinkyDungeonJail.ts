@@ -839,7 +839,7 @@ function KinkyDungeonLockableItems(): item[] {
 		}
 	}
 	return items;*/
-	return KinkyDungeonPlayerGetLockableRestraints();
+	return KDLockableRestraints(false);
 }
 
 function KinkyDungeonMissingJailUniform() {
@@ -2056,11 +2056,13 @@ function KDResetAllIntents(nonHostileOnly?: boolean, endPlay: number = 30, _play
 
 	}
 }
-function KDResetAllAggro(_player?: void): void {
+function KDResetAllAggro(player?: entity, ceasefire?: number): void {
 	KDGameData.HostileFactions = [];
 	for (let e of KDMapData.Entities) {
-		if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset)
+		if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset) {
 			e.hostile = 0;
+			if (ceasefire) e.ceasefire = Math.max(e.ceasefire || 0, ceasefire);
+		}
 	}
 }
 function KDForceWanderFar(player: any, radius: number = 10) {

@@ -6967,8 +6967,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							}
 						}
 
-						if (AIData.attack.includes("Lock") && KinkyDungeonPlayerGetLockableRestraints().length > 0) {
-							let Lockable = KinkyDungeonPlayerGetLockableRestraints();
+						if (AIData.attack.includes("Lock") && KDLockableRestraints(true, true).length > 0) {
+							let Lockable = KDLockableRestraints(true, true);
 							let Lstart = 0;
 							let Lmax = Lockable.length-1;
 							if (!enemy.Enemy.attack.includes("LockAll")) {

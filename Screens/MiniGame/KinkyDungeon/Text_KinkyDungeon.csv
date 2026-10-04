@@ -2064,7 +2064,8 @@ KinkyDungeonSlimeSpread,"The slime is spreading over your body!!!"
 KinkyDungeonSlimeHarden,"The slime starts to harden over your skin..."
 
 KinkyDungeonLivingSpread,"The RESTRAINTNAME creates more bindings out of thin air! (+RestraintAdded)"
-KinkyDungeonLivingAppear,"A RESTRAINTNAME has appeared around your neck!  Beware of additional restraints!"
+KinkyDungeonLivingLock,"The RESTRAINTNAME conjures a ${LockType} on ${your} ${RestraintName}"
+KinkyDungeonLivingAppear,"A RESTRAINTNAME has appeared around ${your} neck!  Beware of additional restraints!"
 KinkyDungeonLivingDormant,"The RESTRAINTNAME has run out of bindings to add and has gone dormant for a period of time."
 
 NameAngel,Angel
@@ -31069,6 +31070,22 @@ RestraintWardenBelt2,Belt of Privilege
 RestraintWardenBelt2Desc,"You've defeated the Warden, proving that you are worthy to take what you want."
 RestraintWardenBelt2Desc2,"A golden belt that marks you as a person of great import. -50% rep penalty for breaking orbs."
 
+RestraintWardenCollar,Warden's Collar
+RestraintWardenCollarDesc,"You may go on your way, but only for as long as your freedom is useful to her."
+RestraintWardenCollarDesc2,"A golden collar that enforces respect for the Goddesses. Breaking spell orbs results in a punishment."
+
+RestraintWardenCollar2,Collar of Privilege
+RestraintWardenCollar2Desc,"You've defeated the Warden, proving that you are worthy to take what you want."
+RestraintWardenCollar2Desc2,"A golden collar that marks you as a person of great import. -50% rep penalty for breaking orbs."
+
+RestraintWardenCBelt,Warden's Chastity Belt
+RestraintWardenCBeltDesc,"You may go on your way, but only for as long as your freedom is useful to her."
+RestraintWardenCBeltDesc2,"A golden chastity belt that enforces respect for the Goddesses. Breaking spell orbs results in a punishment."
+
+RestraintWardenCBelt2,Chastity Belt of Privilege
+RestraintWardenCBelt2Desc,"You've defeated the Warden, proving that you are worthy to take what you want."
+RestraintWardenCBelt2Desc2,"A golden chastity belt that marks you as a person of great import. -50% rep penalty for breaking orbs."
+
 NameWardenArcher,"Sharpshooter"
 KillWardenArcher,"You teach the warden's servant a lesson."
 AttackWardenArcherBind,"The sharpshooter pulls your arms behind your back! (+RestraintAdded)"
@@ -31180,8 +31197,8 @@ dTheWardenDefensive_Brat_ProceedGag,"(Pout)"
 dTheWardenDefensive_Brat_Proceed2,"(...)"
 dTheWarden_Brat,"That's a shame about your records, I'll be going now."
 dTheWarden_BratGag,"Mmpphgh? (Go to pass ${Ethem})"
-rTheWardenBrat,"(She smirks)|Not so fast, dear~|You'll have to wear a special collar to pass."
-dTheWardenBrat_Question,I won't wear anyone's collar!
+rTheWardenBrat,"(She smirks)|Not so fast, dear~|You'll have to wear a special ${Restraint} to pass."
+dTheWardenBrat_Question,I won't wear anyone's ${Restraint}!
 rTheWardenBrat_Question,"(She smirks)|Tsk tsk. Then you won't pass."
 rTheWardenBrat_Question_Collar,"(She giggles)|How cute!|You're so used to yours that you forgot about it~"
 dTheWardenBrat_Question_Proceed,"(...)"
@@ -31189,7 +31206,7 @@ dTheWardenBrat_Proceed,Why don't you wear it yourself?
 dTheWardenBrat_ProceedGag,Hmmph. (Scoff at ${Ethem})
 rTheWardenBrat_ProceedGag,"(She frowns)|Watch your tongue~"
 dTheWardenBrat_ProceedGag_Proceed,"(Shake your head)"
-rTheWardenBrat_Brat,"(She frowns)|I do not wear collars."
+rTheWardenBrat_Brat,"(She frowns)|I do not wear ${Restraints}."
 dTheWardenBrat_Brat,You'd be better off wearing mine instead.
 dTheWardenBrat_Brat_Proceed,"You're missing out~"
 dTheWardenBrat_Brat_ProceedGag,"(Giggle)"
@@ -31234,8 +31251,18 @@ dTheWardenSub_Brat_ProceedGag,"(Shake your head)"
 dTheWardenSub_Brat_Proceed2,"(Sigh and shrug)"
 dTheWarden_Attack,(Attack ${Ethem} without saying anything)
 
-rTheWardenPostIntro,"(SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~"
-dTheWardenPostIntro_Brat,"I will never be collared by you!"
+KDWardenRestraint_Collar,collar
+KDWardenRestraints_Collar,collars
+KDWardenRestrained_Collar,collared
+KDWardenRestraint_ChastityBelt,chastity belt
+KDWardenRestraints_ChastityBelt,chastity belts
+KDWardenRestrained_ChastityBelt,belted
+KDWardenRestraint_Belt,restraint
+KDWardenRestraints_Belt,restraint
+KDWardenRestrained_Belt,restrained
+
+rTheWardenPostIntro,"(SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special ${Restraint}.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~"
+dTheWardenPostIntro_Brat,"I will never be ${Restrained} by you!"
 dTheWardenPostIntro_BratGag,"(Shake your head and scoff)"
 rTheWardenPostIntro_Brat,"(SPEAKER folds ${Etheir} arms)|So be it."
 dTheWardenPostIntro_Zombie,"Tell me about your collection."
@@ -31266,15 +31293,15 @@ dTheWardenLose_AcceptGag,"Mmmph. (Submit)"
 dTheWardenLose_Deny,"I won't submit to you!"
 dTheWardenLose_DenyGag,"Mmmph! (Struggle weakly)"
 dTheWardenLose_Continue1,"(Sigh and accept your fate)"
-dTheWardenLose_Continue2,"(Accept the belt eagerly)"
-dTheWardenLose_Continue3,"(Accept the belt begrudgingly)"
-rTheWardenLoseFinish,"(SPEAKER presents you with your 'reward'...)|(It closes around your waist seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained."
+dTheWardenLose_Continue2,"(Accept the ${Restraint} eagerly)"
+dTheWardenLose_Continue3,"(Accept the ${Restraint} begrudgingly)"
+rTheWardenLoseFinish,"(SPEAKER presents you with your 'reward'...)|(It closes around you seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained."
 
 rTheWardenStage2,"(SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really believe it would be this easy?"
 
 rTheWardenWin,"(SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~"
 rTheWardenWinAccept,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps ${Etheir} fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it."
-dTheWardenWin_Accept,"(Wear ${Etheir} waist belt anyway)"
+dTheWardenWin_Accept,"(Wear ${Etheir} ${Restraint} anyway)"
 rTheWardenWinGag,"(SPEAKER shakes ${Etheir} head as you force a gag into ${Etheir} mouth)|MMMMMPH!"
 dTheWardenWin_Gag,"(Gag ${Ethem})"
 
@@ -33547,6 +33574,7 @@ KDWToolsLayerAbbrText,"Layer Text: "
 
 KDContextMenu_None,No Actions Available
 KDContextMenu_Interact,Interact
+KDContextMenu_Pickup,Pick Up
 KDContextMenu_CloseDoor,Close Door
 KDContextMenu_OpenDoor,Open Door
 KDContextMenu_Chest,Open Container

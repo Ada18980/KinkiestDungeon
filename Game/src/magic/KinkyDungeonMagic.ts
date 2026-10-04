@@ -1614,7 +1614,6 @@ function KinkyDungeonClickItemChoice(I: number, name: string) {
 }
 
 function KinkyDungeonHandleMagic(): boolean {
-	//if (KinkyDungeonPlayer.CanInteract()) { // Allow turning pages
 	let xOffset = -125;
 
 

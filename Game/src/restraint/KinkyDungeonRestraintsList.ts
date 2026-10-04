@@ -2776,7 +2776,8 @@ const KinkyDungeonRestraints: restraint[] = [
 	// endregion
 
 	//region Fuuka's stuff
-	{inventory: true, curse: "GhostLock", name: "MikoCollar", Asset: "HighCollar", Color: ["White", "#AA2222"],Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],magic: true, power: 40, weight: 0, difficultyBonus: 10,
+	{inventory: true, curse: "GhostLock", name: "MikoCollar", Asset: "HighCollar", Color: ["White", "#AA2222"],
+		Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],magic: true, power: 40, weight: 0, difficultyBonus: 10,
 		Model: "MikoCollar",
 		struggleBreak: true,
 		special: true,
@@ -2791,17 +2792,19 @@ const KinkyDungeonRestraints: restraint[] = [
 		unlimited: true,
 		events: [{trigger: "kill", type: "MikoGhost", inheritLinked: true}],
 	},
-	{inventory: true, curse: "GhostLock", name: "MikoCollar2", Asset: "HighCollar", Color: ["White", "#AA2222"],Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],magic: true, power: 40, weight: 0, difficultyBonus: 10,
+	{inventory: true, curse: "GhostLock", name: "MikoCollar2", Asset: "HighCollar", Color: ["White", "#AA2222"],
+		Group: "ItemNeck", magic: true, power: 40, weight: 0, difficultyBonus: 10,
 		Model: "MikoCollar",
 		struggleBreak: true,
 		special: true,
+		LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],
 		linkCategory: "SpecialCollar",
+		linkSize: 0.99,
 		factionFilters: {
 			Rim: {color: "Highlight", override: true,},
 			Neck: {color: "DarkNeutral", override: true,},
 			Collar: {color: "Highlight", override: true,},
 		},
-		linkSize: 0.99,
 		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100},
 		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars"],
 		linkCategories: ["LBossCollar"], linkSizes: [0.99],
@@ -4351,13 +4354,16 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {"trap":10, 'machineChastity': 2, "maidRestraints": 6, "maidRestraintsLight": 6, "genericChastity": 12, "chastitySpell": 10,},
 		linkCategories: ["LChastityBelt"], linkSizes: [0.99],
 		playerTags: {"ItemVulvaEmpty" : -4, "ItemVulvaPiercingsEmpty" : -4, "NoBelt": -1000}, minLevel: 0, allFloors: true, shrine: ["Chastity", "Metal", "ChastityBelts"]},
-	{inventory: true, arousalMode: true, trappable: true, name: "BlacksteelBelt", Asset: "PolishedChastityBelt", OverridePriority: 26, Color: "#333333", Group: "ItemPelvis", chastity: true,
+	{inventory: true, arousalMode: true, trappable: true, name: "BlacksteelBelt", Asset: "PolishedChastityBelt", OverridePriority: 26,
+		Color: "#333333", Group: "ItemPelvis", chastity: true,
 		power: 10, weight: 0, DefaultLock: "Blue",
 		Security: {
 			level_tech: 1,
 			level_key: 2,
 		},
 		Model: "SteelChastityBelt_Padlock",
+
+
 		LinkableBy: ["Wrapping", "Ornate"],
 		factionFilters: {
 			Lock: {color: "Highlight", override: true},
@@ -6505,11 +6511,14 @@ const KinkyDungeonRestraints: restraint[] = [
 		unlimited: true,
 		struggleBreak: true,
 		tightType: "Secure",
+		cloneLock: "Blue",
 		linkCategories: ["LCollar"], linkSizes: [0.99],
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars", "Metal"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["banditMagicRestraints"], cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
-	{inventory: true, name: "BanditLegCuffs", debris: "Chains", accessible: true, Asset: "OrnateLegCuffs", LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"], Type: "Chained", Color: ["#aaaaaa", "#e7cf1a", KDBaseRed], Group: "ItemLegs", hobble: 1, power: 7, weight: 0,
+	{inventory: true, name: "BanditLegCuffs", debris: "Chains", accessible: true, Asset: "OrnateLegCuffs",
+		LinkableBy: ["Legbinders", "Hobbleskirts", "Belts", "Ties"], Type: "Chained",
+		Color: ["#aaaaaa", "#e7cf1a", KDBaseRed], Group: "ItemLegs", hobble: 1, power: 7, weight: 0,
 		Model: "ShacklesThigh",
 		struggleBreak: true,
 		Filters: {
@@ -7798,6 +7807,8 @@ const KinkyDungeonRestraints: restraint[] = [
 
 		accessible: true,
 		cloneTag: "wardenCuffs",
+		cloneLock: "Red",
+		cloneLockUpgrade: "Blue",
 		special: true,
 
 		debris: "Chains",
@@ -7805,13 +7816,13 @@ const KinkyDungeonRestraints: restraint[] = [
 		LinkableBy: [...KDBeltLink], renderWhenLinked: [...KDBeltLink],
 
 		curse: "SpellLock8",
-		power: 26, weight: 100, DefaultLock: "Gold",
+		power: 26, weight: 1, DefaultLock: "Gold",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
 		struggleBreak: true,
 		tightType: "Secure",
 
-		maxwill: 0.6, enemyTags: {"wardenBelt":10}, playerTags: {}, minLevel: 0, allFloors: true,
+		enemyTags: {"wardenRestraint":1}, playerTags: {}, minLevel: 0, allFloors: true,
 		shrine: ["NeoBelt", "Belt", "Warden"],
 		events: [
 			{trigger: "tick", type: "livingRestraints", tags: [], cloneTags: [], inheritLinked: true,
@@ -7837,13 +7848,212 @@ const KinkyDungeonRestraints: restraint[] = [
 		AlwaysLinkable: true,
 
 		curse: "SpellLock8",
-		power: 26, weight: 100, DefaultLock: "Gold",
+		power: 26, weight: 1, DefaultLock: "Gold",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
 		struggleBreak: true,
 		tightType: "Secure",
 
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["NeoBelt", "Belt", "Warden"],
+		enemyTags: {wardenRestraintPos: 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["NeoBelt", "Belt", "Warden"],
+		events: [
+			{type: "Buff", trigger: "tick", power: 1, buffType: "DivinePrivilege", inheritLinked: true,},
+		],
+	},
+
+	
+	{inventory: true, name: "WardenCBelt", Asset: "Default", Color: "Default",
+		UnderlinkedAlwaysRender: true,
+		Filters: {
+			//BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+			//Rim: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+			BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+		},
+
+
+
+
+
+		Security: {
+			level_key: 4,
+			level_magic: 4,
+		},
+		Model: "SteelChastityBelt_Segu",
+
+		LinkableBy: ["Wrapping", "Ornate"],
+
+		playerTags: {"NoBelt": -1000},
+		linkCategories: ["LChastityBelt"], linkSizes: [0.99],
+		shrine: ["NeoBelt", "NeoChastityBelt", "ChastityBelts", "Chastity", "Belt", "Warden", "SupremeBelt"],
+		Group: "ItemPelvis",
+		chastity: true,
+
+		arousalMode: true,
+
+
+		accessible: true,
+		cloneTag: "wardenCuffs",
+		cloneLock: "Red",
+		cloneLockUpgrade: "Blue",
+		special: true,
+
+		debris: "Chains",
+
+		curse: "SpellLock8",
+		power: 26, weight: 1, DefaultLock: "Gold",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		struggleBreak: true,
+		tightType: "Secure",
+
+		enemyTags: {"wardenRestraint":100},minLevel: 0, allFloors: true,
+		events: [
+			{trigger: "tick", type: "livingRestraints", tags: [], cloneTags: [], inheritLinked: true,
+				frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.9, count: 4}
+		]
+	},
+	{inventory: true, name: "WardenCBelt2", Asset: "Default", Color: "Default",
+		UnderlinkedAlwaysRender: true,
+		Filters: {
+			//BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+			//Rim: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+			BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+		},
+
+
+
+		Security: {
+			level_key: 4,
+			level_magic: 4,
+		},
+		Model: "SteelChastityBelt_Segu",
+
+		LinkableBy: ["Wrapping", "Ornate"],
+
+		playerTags: {"NoBelt": -1000},
+		linkCategories: ["LChastityBelt"], linkSizes: [0.99],
+		shrine: ["NeoBelt", "NeoChastityBelt", "ChastityBelts", "Chastity", "Belt", "Warden", "SupremeBelt"],
+		Group: "ItemPelvis",
+		chastity: true,
+
+		arousalMode: true,
+
+
+		cloneTag: "wardenCuffs",
+		accessible: true,
+		special: true,
+
+		debris: "Chains",
+		AlwaysLinkable: true,
+
+		curse: "SpellLock8",
+		power: 26, weight: 1, DefaultLock: "Gold",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		struggleBreak: true,
+		tightType: "Secure",
+
+		enemyTags: {wardenRestraintPos: 100}, minLevel: 0, allFloors: true,
+		events: [
+			{type: "Buff", trigger: "tick", power: 1, buffType: "DivinePrivilege", inheritLinked: true,},
+		],
+	},
+
+
+	
+	{inventory: true, name: "WardenCollar", Asset: "Default", Color: "Default",
+		UnderlinkedAlwaysRender: true,
+		Filters: {
+			//BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+			//Rim: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+			BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+		},
+
+
+
+
+
+		Security: {
+			level_key: 4,
+			level_magic: 4,
+		},
+		Model: "NeoSteelCollar",
+
+		struggleBreak: true,
+		special: true,
+
+		playerTags: {},
+		linkCategories: ["LBossCollar"], linkSizes: [0.99],
+		shrine: ["Collars", "Belt", "Warden"],
+		Group: "ItemNeck",
+
+
+		LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],
+		linkCategory: "SpecialCollar",
+		linkSize: 0.99,
+
+
+		accessible: true,
+		cloneTag: "wardenCuffs",
+		cloneLock: "Red",
+		cloneLockUpgrade: "Blue",
+
+		debris: "Chains",
+
+		curse: "SpellLock8",
+		power: 40, weight: 1, DefaultLock: "Gold",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		tightType: "Secure",
+
+		enemyTags: {"wardenRestraint":10000},minLevel: 0, allFloors: true,
+		events: [
+			{trigger: "tick", type: "livingRestraints", tags: [], cloneTags: [], inheritLinked: true,
+				frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.9, count: 4}
+		]
+	},
+	{inventory: true, name: "WardenCollar2", Asset: "Default", Color: "Default",
+		UnderlinkedAlwaysRender: true,
+		Filters: {
+			//BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+			//Rim: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+			BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+		},
+
+
+
+		Security: {
+			level_key: 4,
+			level_magic: 4,
+		},
+		Model: "NeoSteelCollar",
+
+		
+		LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],
+		linkCategory: "SpecialCollar",
+		linkSize: 0.99,
+
+		struggleBreak: true,
+		special: true,
+		playerTags: {},
+		linkCategories: ["LBossCollar"], linkSizes: [0.99],
+		shrine: ["Collars", "Belt", "Warden"],
+		Group: "ItemNeck",
+
+
+
+		cloneTag: "wardenCuffs",
+		accessible: true,
+
+		debris: "Chains",
+		AlwaysLinkable: true,
+
+		curse: "SpellLock8",
+		power: 40, weight: 1, DefaultLock: "Gold",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
+		unlimited: true,
+		tightType: "Secure",
+
+		enemyTags: {wardenRestraintPos: 10000}, minLevel: 0, allFloors: true,
 		events: [
 			{type: "Buff", trigger: "tick", power: 1, buffType: "DivinePrivilege", inheritLinked: true,},
 		],

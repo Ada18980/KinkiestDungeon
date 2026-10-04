@@ -3076,6 +3076,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 
 	{enemySpell: true, name: "RestrainingBolt",  bindType: "Magic",
 		color: "#ffaa57", sfx: "Miss",
+		friendlyfire: true,
 		hitsfx: "FireSpell", manacost: 3, components: ["Arms"], level: 1, type:"bolt",
 		projectileTargeting:true, slowStart: true, onhit:"", power: 3, bind: 2.5, delay: 0,
 		range: 10.5, damage: "chain",
@@ -3154,6 +3155,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		hitSpin: 2, bulletSpin: 1.4,
 		minRange: 0,
 		bulletLifetime: 12,
+		friendlyfire: true,
 		noDirectionOffset: true,
 		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 0.9, dist: 15, count: 0.2, limit: 0},],
 		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2.4, delay: 0, range: 12, damage: "arcane", speed: 2, playerEffect: {name: "MagicMissile", count: 1, dist: 1, sfx: "MagicSlash"}},

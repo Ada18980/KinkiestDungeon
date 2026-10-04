@@ -369,6 +369,16 @@ function KDGetGameContextActionsVanilla(
 			);
 		}
 	}
+	if (KDMapData.GroundItems?.some((itm) => {return itm.x == KinkyDungeonTargetX && itm.y == KinkyDungeonTargetY;})) {
+		// Pickup
+		options.push("Pickup");
+		optionImages.Interact = "Pickup";
+		optionActions.Pickup = () => {
+			KDCancelAutoWait();
+			KDContextMenu = false;
+			KDSendInput("pickup", {x: KinkyDungeonTargetX, y: KinkyDungeonTargetY});
+		}
+	}
 
 	if (!tile?.Type && (!entity || (entity.player && KinkyDungeonStairTiles.includes(tileType)))
 		&& KDInteractableTiles.includes(tileType)) {
