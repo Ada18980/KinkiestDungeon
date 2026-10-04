@@ -6726,11 +6726,62 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				},
 				exitDialogue: true,
 			},
-			"Accept": {
+			"AcceptCollar": {
 				playertext: "Default", response: "Default",
+				prerequisiteFunction: (gagged, player) => {
+					return KDCanAddRestraint(KinkyDungeonGetRestraintByName("WardenCollar2"), 
+					true, undefined, false);
+				},
 				clickFunction: (_gagged, _player) => {
 					
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.itemName), 0, true);
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("WardenCollar2"), 0, true);
+					KinkyDungeonAddGold(1000);
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("WardenBelt");
+						KDUnlockPerk("CommonWarden");
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"AcceptBelt": {
+				playertext: "Default", response: "Default",
+				prerequisiteFunction: (gagged, player) => {
+					return KDCanAddRestraint(KinkyDungeonGetRestraintByName("WardenBelt2"), 
+					true, undefined, false);
+				},
+				clickFunction: (_gagged, _player) => {
+					
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("WardenBelt2"), 
+					0, true);
+					KinkyDungeonAddGold(1000);
+					if (KinkyDungeonIsPlayer()) {
+						KDUnlockPerk("WardenBelt");
+						KDUnlockPerk("CommonWarden");
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"AcceptCBelt": {
+				playertext: "Default", response: "Default",
+				prerequisiteFunction: (gagged, player) => {
+					return KDCanAddRestraint(KinkyDungeonGetRestraintByName("WardenCBelt2"), 
+					true, undefined, false);
+				},
+				clickFunction: (_gagged, _player) => {
+					
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("WardenCBelt2"), 0, true);
 					KinkyDungeonAddGold(1000);
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("WardenBelt");

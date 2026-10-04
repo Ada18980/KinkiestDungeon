@@ -5563,8 +5563,12 @@ function KDAddRestraintForce (
 			let ret = KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, false, events, faction, true, Curse, securityEnemy, true, inventoryAs, data, powerBonus);
 			if (ret) {
 				KDUpdateWaitTime(200);
-				if (!Link && !Unlink && KinkyDungeonState == "Game")
+				if (!Link && !Unlink && KinkyDungeonState == "Game") {
 					KDDoRestraintParticlePlayer(restraint);
+					
+					KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, `+${TextGet("Restraint" + restraint.name)}!`, "pink", 5, true);
+					KDRecentRepIndex += 1;
+				}
 				return ret;
 			}
 		}
@@ -5652,8 +5656,7 @@ function KDAddRestraintForce (
 						}
 					}
 
-				KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, `+${TextGet("Restraint" + restraint.name)}!`, "pink", 5, true);
-				KDRecentRepIndex += 1;
+				
 
 				let item: item = {
 					name: restraint.name,
@@ -5693,8 +5696,12 @@ function KDAddRestraintForce (
 
 				KDUpdateLinkCaches(item);
 				KDUpdateItemEventCache = true;
-				if (!Link && !Unlink && KinkyDungeonState == "Game")
+				if (!Link && !Unlink && KinkyDungeonState == "Game") {
 					KDDoRestraintParticlePlayer(restraint);
+					
+					KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, `+${TextGet("Restraint" + restraint.name)}!`, "pink", 5, true);
+					KDRecentRepIndex += 1;
+				}
 			} else if ((!Link && !linked) || SwitchItems) {
 				KinkyDungeonCancelFlag = false;
 				// Otherwise, if we did unlink an item, and we are not in the process of linking (very important to prevent loops)
@@ -6130,8 +6137,15 @@ function KinkyDungeonLinkItem (
 				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonLink" + oldItem.name), KDBaseRed, 2,
 					false, false, undefined, "Struggle");
 
-			if (KinkyDungeonState == "Game")
+			if (KinkyDungeonState == "Game") {
 				KDDoRestraintParticlePlayer(newRestraint);
+				
+				KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, 
+					`+${TextGet("Restraint" + newRestraint.name)}!`, "pink", 
+					5, true);
+				KDRecentRepIndex += 1;
+			}
+			
 			KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: newItem, host: undefined, keep: Keep, Link: true, UnLink: false, attacker: undefined});
 			KDUpdateItemEventCache = true;
 			return newItem;
