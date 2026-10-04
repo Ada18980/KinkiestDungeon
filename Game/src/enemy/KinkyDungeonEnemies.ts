@@ -11177,7 +11177,7 @@ function KDBlockedByPlayer(enemy: entity, dir: { x: number, y: number, delta: nu
 			if (dialogue)KinkyDungeonSendDialogue(enemy, TextGet("KDDialogue_StepAside" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || "")),
 			 KDGetGenericDialogueParams(KDPlayer(), enemy))
 				.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
-			KDGetColor(enemy), 3, 10, undefined, true);
+			KDGetColor(enemy), 3, 1, undefined, true);
 			return true;
 		}
 			

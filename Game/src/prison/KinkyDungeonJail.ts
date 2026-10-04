@@ -343,11 +343,18 @@ function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, f
 						|| (KDFactionAllied(faction ? faction : KDGetFaction(enemy),
 							e, undefined,
 							-KDOpinionRepMod(e, KDPlayer())) // We lower the strength of faction alliances based on opinion
-							&& KDGetHonor(
+							&& (
+								KDGetHonor(
 								KDGetFaction(e),
-								faction ? faction : KDGetFaction(enemy)) < 0.1))))
+								faction ? faction : KDGetFaction(enemy)) < 0.1)
+								// can attack ambushers without problem
+								&& KDFactionRelation(KDGetFaction(enemy), "Chase") > -0.5
+								&& KDFactionRelation(KDGetFaction(e), "Chase") > -0.5
+							))))
 				&& (!enemy || !enemy.Enemy.tags.peaceful)
-				&& (e == enemy || KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, 7, 8, false, false))) {
+				&& (e == enemy
+					|| KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, 7, 
+						8, false, false))) {
 				if (!enemy || e == enemy || cansignal) {
 					if (!(e.hostile > 0) &&
 						(e.Enemy.tags.jail || e.Enemy.tags.jailer || KDGetEnemyPlayLine(e))) {

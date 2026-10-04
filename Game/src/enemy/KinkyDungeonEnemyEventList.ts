@@ -710,7 +710,10 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					suff = "Sub" + suff;
 			}
 			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + index,
-									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 12, 3);
+									KDGetGenericDialogueParams(KDPlayer(), enemy))
+									.replace("EnemyName", 
+										TextGet("Name" + enemy.Enemy.name)), 
+										KDGetColor(enemy), 12, 3);
 		},
 	},
 	"freeFurniture": {

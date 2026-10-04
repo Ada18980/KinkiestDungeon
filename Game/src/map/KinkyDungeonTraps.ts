@@ -268,8 +268,10 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 		}*/
 		let radius = tile.Power > 4 ? 4 : 2;
 		let Enemy = (tile.FilterBackup && tile.FilterTag && KinkyDungeonPlayerTags.get(tile.FilterTag)) ? tile.FilterBackup : tile.Enemy;
+		let faction = tile.Faction || "Ambush";
 		let created = KinkyDungeonSummonEnemy(
-			x, y, Enemy, tile.Power, radius, true, undefined, undefined, true, tile.Faction || "Ambush", (!tile.Faction || tile.Hostile) && true, 1.5, true);
+			x, y, Enemy, tile.Power, radius, true, undefined, undefined, true, 
+			faction, (!tile.Faction || tile.Hostile) && true, 1.5, true);
 		for (let en of created) {
 			if (tile.teleportTime) {
 				en.teleporting = 1+tile.teleportTime;
