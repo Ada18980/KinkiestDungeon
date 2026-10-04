@@ -2215,6 +2215,18 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 	},
 	"tickAfter": {
+		"RemoveOnDisenchant": (e, item, data) => {
+			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);
+			if (KDEntityBuffedStat(player, "Disenchant") >= 1) {
+				let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
+				item.curse = undefined;
+				if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
+					KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
+				}
+				KinkyDungeonLock(item, "");
+				KinkyDungeonSendTextMessage(5, TextGet("KDRemoveOnDisenchant").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), KDBaseLightGreen, 2);
+			}
+		},
 		"RobeOfChastity": (e, item, data) => {
 			if (data.delta < 0.1) return;
 			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);

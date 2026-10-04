@@ -497,6 +497,8 @@ function KDGetRestraintContextActionsVanilla(
 			if (button.allowed) {
 				options.push(button.type);
 				optionImages[button.type] = button.image || button.type;
+				if (button.text)
+					optionText[button.type] = button.text;
 				optionActions[button.type] = button.action;
 			}
 		}

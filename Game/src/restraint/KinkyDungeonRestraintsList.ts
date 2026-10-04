@@ -7815,7 +7815,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Group: "ItemTorso",
 		LinkableBy: [...KDBeltLink], renderWhenLinked: [...KDBeltLink],
 
-		curse: "SpellLock6",
+		curse: "SpellLock3",
 		power: 26, weight: 1, DefaultLock: "Gold",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
@@ -7847,7 +7847,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		LinkableBy: [...KDBeltLink], renderWhenLinked: [...KDBeltLink],
 		AlwaysLinkable: true,
 
-		curse: "SpellLock6",
+		curse: "SpellLock3",
 		power: 26, weight: 1, DefaultLock: "Gold",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
@@ -7898,7 +7898,7 @@ const KinkyDungeonRestraints: restraint[] = [
 
 		debris: "Chains",
 
-		curse: "SpellLock6",
+		curse: "SpellLock3",
 		power: 26, weight: 1, DefaultLock: "Gold",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
@@ -7945,7 +7945,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		debris: "Chains",
 		AlwaysLinkable: true,
 
-		curse: "SpellLock6",
+		curse: "SpellLock3",
 		power: 26, weight: 1, DefaultLock: "Gold",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
@@ -7999,7 +7999,7 @@ const KinkyDungeonRestraints: restraint[] = [
 
 		debris: "Chains",
 
-		curse: "SpellLock6",
+		curse: "SpellLock3",
 		power: 40, weight: 1, DefaultLock: "Gold",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,
@@ -8047,7 +8047,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		debris: "Chains",
 		AlwaysLinkable: true,
 
-		curse: "SpellLock6",
+		curse: "SpellLock3",
 		power: 40, weight: 1, DefaultLock: "Gold",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},
 		unlimited: true,

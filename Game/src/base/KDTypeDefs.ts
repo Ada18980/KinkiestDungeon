@@ -3928,7 +3928,7 @@ interface KDCursedDef {
 	/** This curse keeps events with the curse property from vanishing */
 	activatecurse?: boolean,
 	/** custom icon for removing (failure) */
-	customIcon_RemoveFailure?: string,
+	customIcon_RemoveInfo?: string,
 	/** custom icon for removing (success) */
 	customIcon_RemoveSuccess?: string,
 	/** custom icon for the struggle groups display */
@@ -3941,8 +3941,13 @@ interface KDCursedDef {
 	customInfo?: (item: item, Curse?: string) => void,
 	onApply?: (item: item, host?: item) => void,
 	condition: (item: item) => boolean,
+	/** Make sure to fill altIcon */
+	condition2?: (item: item) => boolean,
+	altIcon?: string,
+	altText?: (item: item) => string,
+	unlockText?: (item: item) => string,
 	/** Can return a boolean. True means the item is removed, if unlocked */
-	remove: (item: item, host: item, specialMethod: boolean) => boolean | void, events?: KinkyDungeonEvent[]
+	remove: (item: item, host: item, specialMethod: boolean, index?: number) => boolean | void, events?: KinkyDungeonEvent[]
 
 	entityCanUnlock: (entity: entity, player: entity, data: KDLockEntityCanUnlockData) => boolean;
 	entityDoUnlock: (entity: entity, player: entity, data: KDLockEntityDoUnlockData) => boolean;

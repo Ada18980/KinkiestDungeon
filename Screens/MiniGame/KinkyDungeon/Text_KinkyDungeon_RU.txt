@@ -47968,7 +47968,7 @@ RSTRT чувствуется немного свободнее!
 - The restraint won't budge.
 Ограничитель даже не сдвигается.
 # :: KinkyDungeonCurseStruggleSpellLock1
-# :: KinkyDungeonCurseStruggleSpellLock6
+# :: KinkyDungeonCurseStruggleSpellLock3
 - You perform a ritual to unlock the item!
 Вы проводите ритуал, чтобы разблокировать предмет!
 

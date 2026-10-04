@@ -3570,7 +3570,7 @@ function KDDrawStruggleGroups() {
 					}
 					);
 				}
-				if (KDStruggleGroupHighlightedItem && KDRestraint(KDStruggleGroupHighlightedItem)?.Group
+				if (KDStruggleGroupHighlightedItem && (!currentHighlightedItem || !KDContextMenu) && KDRestraint(KDStruggleGroupHighlightedItem)?.Group
 					== sg.group) currentHighlightedItem = KDStruggleGroupHighlightedItem;
 			}
 			
@@ -3797,7 +3797,7 @@ function KDDrawStruggleGroups() {
 					if (struggleData.lockType && (StruggleType == "Unlock" && !struggleData.lockType.canUnlock(struggleData))
 						|| (StruggleType == "Pick" && struggleData.lockType && !struggleData.lockType.canPick(struggleData))) {
 						// Nope
-					} else if (StruggleType != "ContextMenu") {
+					} else if (StruggleType != "ContextMenu" && KDStruggleTypeShowDifficulty.includes(StruggleType)) {
 						let O = lastO;
 						let pentext = RetDrawTextKD(TextGet("KDItemDifficulty").replace("AMNT",
 							Math.max(0,
@@ -4297,3 +4297,11 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 let KDScrollableStruggleSectionNum = 6.4;
 let KDStruggleGroupBGAlpha = 0.6;
 let KDStruggleGroupHighlightedItem = null;
+
+let KDStruggleTypeShowDifficulty = [
+	"Struggle",
+	"Cut",
+	"Unlock",
+	"Pick",
+	"Remove"
+]

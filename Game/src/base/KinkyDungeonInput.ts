@@ -154,7 +154,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	},
 	"curseUnlock": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
-		KinkyDungeonCurseUnlock(data.group, data.index, data.curse);
+		KinkyDungeonCurseUnlock(data.group, data.index, data.curse, data.alt);
 		return "";
 	},
 	"toggleSpell": (data) => {

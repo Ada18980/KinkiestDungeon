@@ -364,8 +364,9 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 	"CurseUnlock": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[4]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[4];},
-		icon: (_player, _item) => {
-			return "InventoryAction/CurseUnlock";
+		icon: (_player, item) => {
+			return "InventoryAction/" + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess)
+				? KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess : "CurseUnlock");
 		},
 		show: (_player, item) => {
 			return !!KDGetCurse(item);
@@ -382,6 +383,35 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				let r = KDRestraint(item);
 				let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 				KDSendInput("curseUnlock", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
+			}
+		},
+		cancel: (_player, _delta) => {
+			return false; // NA for default actions
+		},
+	},
+	"CurseUnlock2": {
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[4]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[4];},
+		icon: (_player, item) => {
+			return "InventoryAction/" + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].altIcon)
+			? KDCurses[KDGetCurse(item)].altIcon : "CurseUnlock");
+		},
+		show: (_player, item) => {
+			return !!KDGetCurse(item);
+		},
+		valid: (_player, item) => {
+			return !KinkyDungeonCurseAvailable_Alt(item, (KDGetCurse(item)));
+		},
+		invalidtooltip: (player, item) => {
+			return KinkyDungeonCurseAvailable_Alt(item, (KDGetCurse(item)));
+		},
+		click: (_player, item) => {
+			let itemIndex = KDGetItemLinkIndex(item, false);
+			if (itemIndex >= 0 && !KinkyDungeonCurseAvailable_Alt(item, (KDGetCurse(item)))) {
+				let r = KDRestraint(item);
+				let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
+				KDSendInput("curseUnlock", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group],
+					curse: (KDGetCurse(item)), alt: 1});
 			}
 		},
 		cancel: (_player, _delta) => {

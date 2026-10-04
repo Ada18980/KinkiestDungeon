@@ -17,7 +17,8 @@ interface KDStruggleGroupReturn {
     allowed: boolean,
     type: string,
     action?: (bdata) => boolean,
-    image?: string
+    image?: string,
+    text?: string,
 }
 
 let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, query: boolean, target: entity, entity: entity) => KDStruggleGroupReturn>  = {
@@ -79,7 +80,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 		if (allowed) {
 			DrawButtonKDEx("sgCurseInfo" + button_index + sg.group, (_b) => {
 				return action(_b);
-			}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", KDBaseWhite, KinkyDungeonRootDirectory + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveFailure) ? KDCurses[KDGetCurse(item)].customIcon_RemoveFailure : "CurseInfo") + ".png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true});
+			}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", KDBaseWhite, KinkyDungeonRootDirectory + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveInfo) ? KDCurses[KDGetCurse(item)].customIcon_RemoveInfo : "CurseInfo") + ".png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true});
             i++;
 		} 
 		return {i: i, 
@@ -94,18 +95,69 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 				return true;
 			}
         if (query) {
-            return {
+            let ret: KDStruggleGroupReturn = {
                 i: 9, // repurpose i as priority
                 allowed: allowed,
                 image: "CurseUnlock",
                 type: "CurseUnlock",
                 action: action,
             };
+            
+            if (KDGetCurse(data.item) && KDCurses[KDGetCurse(data.item)].customIcon_RemoveSuccess) {
+                ret.image = "CustomStruggle/" + (KDGetCurse(data.item) ? KDCurses[KDGetCurse(data.item)].customIcon_RemoveSuccess : "");
+            }
+            if (KDGetCurse(data.item) && KDCurses[KDGetCurse(data.item)].unlockText) {
+                ret.text = KDCurses[KDGetCurse(data.item)].unlockText(item);
+            }
+            return ret;
         }
 		if (allowed) {
 			DrawButtonKDEx("sgCurseUnlock" + button_index + sg.group, (_b) => {
 				return action(_b);
-			}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", KDBaseWhite, KinkyDungeonRootDirectory + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess) ? KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess : "CurseUnlock") + ".png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true});
+			}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, 
+            ButtonWidth, ButtonWidth, "", KDBaseWhite, 
+            KinkyDungeonRootDirectory
+                + "CustomStruggle/" + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess)
+                ? KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess : "CurseUnlock") + ".png", 
+                "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true});
+            i++;
+		}
+		return {i: i, allowed: allowed, type: "CurseUnlock"};
+	},
+    CurseUnlock2: (data, i, query, target, entity) => {
+		let {btn, StruggleType, x, y, ButtonWidth, sg, button_index, item} = {...data};
+        let allowed = (KDGetCurse(data?.item))
+            && !KinkyDungeonCurseAvailable_Alt(data?.item, (KDGetCurse(data?.item)));
+        let action = !allowed ? null : (_b) => {
+				KDSendInput("curseUnlock", {group: sg.group, alt: 1, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
+				return true;
+			}
+        if (query) {
+            let ret: KDStruggleGroupReturn = {
+                i: 9, // repurpose i as priority
+                allowed: allowed,
+                image: "CurseUnlock",
+                type: "CurseUnlock2",
+                action: action,
+            };
+            if (KDGetCurse(data.item) && KDCurses[KDGetCurse(data.item)].altIcon) {
+                ret.image = "CustomStruggle/" + (KDGetCurse(data.item) ? KDCurses[KDGetCurse(data.item)].altIcon : "");
+            }
+            if (KDGetCurse(data.item) && KDCurses[KDGetCurse(data.item)].altText) {
+                ret.text = KDCurses[KDGetCurse(data.item)].altText(item);
+            }
+            return ret;
+        }
+		if (allowed) {
+			DrawButtonKDEx("sgCurseUnlock_2" + button_index + sg.group, (_b) => {
+				return action(_b);
+			}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), 
+            y, ButtonWidth, ButtonWidth, "", KDBaseWhite, 
+            KinkyDungeonRootDirectory
+                + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].altIcon)
+                    ? "CustomStruggle/" + KDCurses[KDGetCurse(item)].altIcon
+                    : "CurseUnlock") + ".png", 
+            "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true});
             i++;
 		}
 		return {i: i, allowed: allowed, type: "CurseUnlock"};
@@ -268,9 +320,9 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 
 function KDGetStruggleButtons(data: KDStruggleButtonGetData) {
 	if (KDToggles.StruggleContext) return ["ContextMenu"];
-	return ["Struggle", "CurseInfo", "CurseUnlock", "Cut", "Remove", "Pick"];
+	return ["Struggle", "CurseInfo", "CurseUnlock", "CurseUnlock2", "Cut", "Remove", "Pick"];
 }
 
 function KDGetStruggleContextMenu(item: item, sg: StruggleGroup, target: entity, entity: entity) {
-	return ["Struggle", "CurseInfo", "CurseUnlock", "Cut", "Remove", "Pick"];
+	return ["Struggle", "CurseInfo", "CurseUnlock", "CurseUnlock2", "Cut", "Remove", "Pick"];
 }

@@ -37,6 +37,9 @@ let KDInventoryActionsDefault: Record<string, (item: item) => string[]> = {
 			}
 		} else {
 			ret.push("CurseUnlock", "CurseInfo", "CurseStruggle");
+			if (KDCurses[KDGetCurse(item)]?.condition2) {
+				ret.splice(1, 0, "CurseUnlock2");
+			}
 			//if (!KinkyDungeonCurseAvailable(item, KDGetCurse(item))) ret.push("CurseUnlock");
 		}
 		ret.push("Recolor");
@@ -1335,7 +1338,8 @@ function KinkyDungeonDrawInventorySelected (
 				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, 
 				yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 408, KDBookText, KDTextTan, 22, undefined, 130);
 			DrawTextKD(
-			restraint.escapeChance ? (item.item.lock ? (TextGet("KinkyLocked") + " " + TextGet("Kinky" + item.item.lock + "LockType")) :
+			restraint.escapeChance ? ((item.item.lock && !KDGetCurse(item.item)) ? (TextGet(
+				"KinkyLocked") + " " + TextGet("Kinky" + item.item.lock + "LockType")) :
 				(restraint.DefaultLock && !restraint.HideDefaultLock ? (TextGet("KinkyLocked") + " " + TextGet("Kinky" + restraint.DefaultLock + "LockType")) :
 				((item.item.type == Restraint && KDGetCurse(item.item)) ? TextGet("KinkyCursed") : TextGet("KinkyUnlocked"))))
 			: (restraint.escapeChance.Pick != null ? TextGet("KinkyLockable") : TextGet("KinkyNonLockable")),

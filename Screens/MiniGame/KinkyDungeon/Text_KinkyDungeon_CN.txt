@@ -50523,7 +50523,7 @@ ENMYNME CHTRNME 的 RMNME
 - The restraint won't budge.
 束缚不会动摇。
 # :: KinkyDungeonCurseStruggleSpellLock1
-# :: KinkyDungeonCurseStruggleSpellLock6
+# :: KinkyDungeonCurseStruggleSpellLock3
 - You perform a ritual to unlock the item!
 你执行了一个仪式来解锁该物品！
 

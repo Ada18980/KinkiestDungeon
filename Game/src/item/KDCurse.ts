@@ -135,18 +135,39 @@ let KDCurses: Record<string, KDCursedDef> = {
 		},
 	},
 	"SpellLock1" : {
-		powerMult: 2.8,
+		powerMult: 2.2,
 		lock: true,
 		level: 4,
 		weight: (_item) => {
 			return 1;
 		},
 		condition: (_item) => {
-			return KinkyDungeonSpellPoints > 0;
+			return KinkyDungeonStatMana >= 20;
 		},
-		remove: (_item, _host, _specialMethod) => {
-			if (!_specialMethod)
-				KinkyDungeonSpellPoints -= 1;
+		condition2: (_item) => {
+			return KinkyDungeonItemCount("PotionMana") > 0;
+		},
+		altText: (_item) => {
+			return TextGet("KDContextMenu_CurseUnlockPotionMana");
+		},
+		unlockText: (_item) => {
+			return TextGet("KDContextMenu_CurseUnlockOverload");
+		},
+		altIcon: "PotionMana",
+		customIcon_RemoveSuccess: "Overload",
+
+		remove: (item, _host, _specialMethod, index) => {
+			if (!_specialMethod) {
+				if (index == 1) {
+					KDChangeConsumable(item.name, "curse", "uncurse",
+			 		KDConsumable({name: "PotionMana"}), -1);
+					
+				} else {
+					KDChangeMana("Mana", "curse", "uncurse", -20, false, 0, true, true);
+					
+				}
+			}
+				
 		},
 		entityCanUnlock(entity, player, data) {
 			return !KDHelpless(entity) && 
@@ -157,8 +178,12 @@ let KDCurses: Record<string, KDCursedDef> = {
 		entityDoUnlock(entity, player, data) {
 			return true;
 		},
+		events: [
+			{type: "RemoveOnDisenchant", trigger: "tickAfter", kind: "CurseExtinguish"},
+			
+		],
 	},
-	"SpellLock6" : {
+	"SpellLock3" : {
 		powerMult: 4,
 		lock: true,
 		level: 12,
@@ -166,17 +191,17 @@ let KDCurses: Record<string, KDCursedDef> = {
 			return 1;
 		},
 		condition: (_item) => {
-			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
+			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 2 : 3;
 			return KinkyDungeonSpellPoints >= amount;
 		},
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod) {
-				let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
+				let amount = KinkyDungeonStatsChoice.get("randomMode") ? 2 : 3;
 				KinkyDungeonSpellPoints -= amount;
 			}
 		},
 		customInfo: (item, Curse) => {
-			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 6;
+			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 2 : 3;
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse)
 				.replace("RestraintName", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item).name))
 				.replace("AMNT", "" + (amount)),
@@ -300,7 +325,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 		powerMult: 4,
 		lock: true,
 		noShrine: true,
-		customIcon_RemoveFailure: "Locks/Gold",
+		customIcon_RemoveInfo: "Locks/Gold",
 		level: 10,
 		blockable: true,
 		weight: (_item) => {
@@ -979,13 +1004,23 @@ function KinkyDungeonCurseAvailable(item: item, Curse: string) {
 	}
 	return "FailCondition";
 }
+function KinkyDungeonCurseAvailable_Alt(item: item, Curse: string) {
+	if (KDCurses[Curse] && KDCurses[Curse].condition2 && KDCurses[Curse].condition2(item)) {
+		return (KDCurses[Curse].blockable && (
+			KDGroupBlocked(KDRestraint(item)?.Group)
+			|| !KDIsItemAccessible(item)
+		)) ? "Blocked" : "";
+	}
+	return "FailCondition";
+}
+
 
 /**
  * @param group
  * @param index
  * @param Curse
  */
-function KinkyDungeonCurseUnlock(group: string, index: number, Curse: string) {
+function KinkyDungeonCurseUnlock(group: string, index: number, Curse: string, removeType?: number) {
 	let unlock = true;
 	let keep = true;
 	let restraint = KinkyDungeonGetRestraintItem(group);
@@ -1007,7 +1042,7 @@ function KinkyDungeonCurseUnlock(group: string, index: number, Curse: string) {
 
 	if (KDCurses[Curse]) {
 		//unlock = KDCurses[Curse].alwaysRemoveOnUnlock || !KDGroupBlocked(group);
-		let res = KDCurses[Curse].remove(restraint, host, false);
+		let res = KDCurses[Curse].remove(restraint, host, false, removeType);
 		if (typeof res === "boolean") {
 			unlock = res;
 		}
