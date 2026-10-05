@@ -54,7 +54,10 @@ let LAYERS_BASE = [
 	"Mouth",
 	"Blush",
 	"Fear",
+	"HeadphoneFront",
 	"Head",
+	"HeadphoneBack",
+	"Mic",
 
 
 	"InflatableArms",

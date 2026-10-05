@@ -4435,13 +4435,43 @@ function KDGetDescOffset(item: itemPreviewEntry) {
 }
 
 function KDDrawExtraItemInfo(item: itemPreviewEntry, xOffset: number, yOffset: number, player: entity) {
-
+	let yy = 0;
 	if (KDRestraint(item.item)?.corset)
 		DrawTextKD(TextGet("KDCorsetDesc", {
 			FRACTION: Math.round(KDRestraint(item.item)?.corset * 100 * KDCorsetSPReductionMult(player)),
+			}) + (KDGagReductionMult(player) < 1 ? TextGet("KDRestraintDescBaseTag", {
+				FRACTIONORIG: Math.round(KDRestraint(item.item)?.corset),
+			}): ""),
+			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), 
+			yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 435 + (20 * yy--),
+			KDBookText, KDTextTan, 22,
+			 undefined, 130);
+	if (KDRestraint(item.item)?.gag)
+		DrawTextKD(TextGet("KDGagDesc", {
+			FRACTION: Math.round(KDRestraint(item.item)?.gag * 100 * KDGagReductionMult(player)),
+			}) + (KDGagReductionMult(player) < 1 ? TextGet("KDRestraintDescBaseTag", {
+				FRACTIONORIG: Math.round(KDRestraint(item.item)?.gag * 100),
+			}): ""),
+			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), 
+			yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 435 + (20 * yy--),
+			KDBookText, KDTextTan, 22,
+			 undefined, 130);
+	if (KDRestraint(item.item)?.deaf)
+		DrawTextKD(TextGet("KDDeafDesc", {
+			FRACTION: Math.round(KDRestraint(item.item)?.deaf * 10),
 			}),
 			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), 
-			yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 435,
+			yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 435 + (20 * yy--),
+			KDBookText, KDTextTan, 22,
+			 undefined, 130);
+	if (KDRestraint(item.item)?.blindfold)
+		DrawTextKD(TextGet("KDBlindDesc", {
+			FRACTION: Math.round(KDRestraint(item.item)?.blindfold * 10) / (KDSensesTrainingBoost(player, false)),
+			}) + (KDGagReductionMult(player) < 1 ? TextGet("KDRestraintDescBaseTag", {
+				FRACTIONORIG: Math.round(KDRestraint(item.item)?.blindfold * 10),
+			}): ""),
+			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), 
+			yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 435 + (20 * yy--),
 			KDBookText, KDTextTan, 22,
 			 undefined, 130);
 			
@@ -4453,6 +4483,23 @@ function KDCorsetSPReductionMult(player: entity, buffs: boolean = true) : number
 
 	mult *= 0.9**( (KDGameData.Training?.Corset?.training_stage || 0) + KDEntityBuffedStat(player, "CorsetTraining"));
 
+
+	return mult;
+}
+
+function KDGagReductionMult(player: entity, buffs: boolean = true) : number {
+	let mult = 1;
+
+	mult *= 0.91**( (KDGameData.Training?.Gag?.training_stage || 0) + KDEntityBuffedStat(player, "GagTraining"));
+
+
+	return mult;
+}
+
+function KDSensesTrainingBoost(player: entity, buffs: boolean = true) : number {
+	let mult = 1;
+
+	mult += 0.05 * ((KDGameData.Training?.Senses?.training_stage || 0) + KDEntityBuffedStat(player, "SensesTraining"));
 
 	return mult;
 }

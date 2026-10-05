@@ -727,6 +727,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			if (tile) {
 				KinkyDungeonMapSet(tile.x, tile.y, "$");
 				KinkyDungeonTilesSet(tile.x + "," + tile.y, {Type: "Angel", Light: 5, lightColor: 0xfffafa});
+				KDAddGagXP("Angel", KDPlayer());
 				KDStartDialog("AngelHelp","Angel", true, "");
 			}
 			KDGameData.RescueFlag = true;
@@ -1137,6 +1138,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 				if (tile) {
 					KinkyDungeonMapSet(tile.x, tile.y, "$");
 					KinkyDungeonTilesSet(tile.x + "," + tile.y, {Type: "Angel", Light: 5, lightColor: 0xfffafa});
+					KDAddGagXP("Angel", KDPlayer());
 					KDStartDialog("AngelHelp","Angel", true, "");
 				}
 				KDGameData.RescueFlag = true;

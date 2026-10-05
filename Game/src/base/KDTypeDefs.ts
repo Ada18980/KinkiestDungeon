@@ -189,6 +189,7 @@ interface KDRestraintPropsBase {
 	noShrine?:boolean,
 	/** This item is beneficial and player wont try to struggle from it */
 	good?: boolean,
+	blockedBy?: string[],
 
 	inventory?: boolean,
 	power?: number,
@@ -629,6 +630,10 @@ interface restraint extends KDRestraintProps {
 	deaf?: number,
 
 	Color?: string[] | string,
+	/** Having a tool does not help you */
+	noTool?: boolean
+	/** Being flexible does not help you */
+	noFlex?: boolean
 
 	/** Descriptor for tightness, e.g. Secure, Thick */
 	tightType?: string,

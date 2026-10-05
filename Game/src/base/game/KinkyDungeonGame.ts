@@ -437,6 +437,9 @@ function KinkyDungeonNewGamePlus(increaseDiff: boolean): void {
 		}
 	}
 
+	// Reset this. its okay if it gives a slight training boost from seeing your allies again...
+	KDGameData.SeenEntities = {};
+
 	if (increaseDiff) {
 		if (KinkyDungeonStatsChoice.get("hardMode")) {
 			KinkyDungeonStatsChoice.set("extremeMode", true);
@@ -3814,6 +3817,8 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	if (KinkyDungeonInDanger(false)) {
 		KinkyDungeonSetFlag("danger", KDDangerTime);
 	}
+
+	KDTickSensesTraining(KDPlayer());
 	
 
 	if (KDToggles.AutoSprint) {
@@ -3837,6 +3842,28 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 let KDEntityFlagCache = new Map();
 let KDUpdateEntityFlagCache = false;
 
+
+function KDTickSensesTraining(player?: entity) {
+	let trainingLevel = KinkyDungeonBlindLevel + KDDeafLevel();
+	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
+	for (let enemy of nearby) {
+		if (!KDGameData.SeenEntities) KDGameData.SeenEntities = {};
+
+		if (KDGameData.SeenEntities[enemy.id]) continue;
+		if (!KDHostile(enemy)) continue;
+		let playerDist = Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y));
+		let canSee = KinkyDungeonVisionGet(enemy.x, enemy.y) && KDCanSeeEnemy(enemy, playerDist);
+		let canHear = KDCanHearEnemy(KinkyDungeonPlayerEntity, enemy);
+
+		if (!canSee && canHear) {
+			KDGameData.SeenEntities[enemy.id] = true;
+			KDTickTraining("Senses", trainingLevel > 0, trainingLevel == 0, 
+				KDSensesTrainingMult, 1 + trainingLevel*.1);
+		} else if (canSee) {
+			KDGameData.SeenEntities[enemy.id] = true;
+		}
+	}
+}
 
 function KDGetEntityFlagCache() {
 	if (!KDEntityFlagCache || KDUpdateEntityFlagCache) {

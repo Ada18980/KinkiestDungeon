@@ -588,6 +588,7 @@ interface KDGameDataBase {
 	AutoSprintTriggered: boolean,
 	BulletWarnings: Record<string, any>[],
 	ShopkeeperFavors: number,
+	SeenEntities?: Record<string, boolean>,
 };
 
 
@@ -884,6 +885,7 @@ let KDGameDataBase: KDGameDataBase = {
 	} ,
 	selectedLabel: {},
 	MistressID: 0,
+	SeenEntities: {},
 };
 
 // endregion

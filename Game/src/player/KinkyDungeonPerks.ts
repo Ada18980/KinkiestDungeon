@@ -377,13 +377,19 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"SelfBondage": {category: "Start", id: "SelfBondage", cost: 0, tags: ["start"]},
 	"HeelTraining": {category: "Start", id: "HeelTraining", cost: 0, tags: ["start"]},
 	"CorsetTraining": {category: "Start", id: "CorsetTraining", cost: 0, tags: ["start"]},
+	"SensesTraining": {category: "Start", id: "SensesTraining", cost: 0, tags: ["start"]},
+	"GagTraining": {category: "Start", id: "GagTraining", cost: 0, tags: ["gag"]},
 	"ClassicHeels": {category: "Toggles", id: "ClassicHeels", cost: 0, tags: ["start"], blocktags: ["heels"]},
 
 	"MasteryHeels": {category: "Training", id: "MasteryHeels", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
-	"MasteryCorset": {category: "Training", id: "MasteryHeels", cost: -1, tags: ["corset"]},
+	"MasteryCorset": {category: "Training", id: "MasteryCorset", cost: -1, tags: ["corset"]},
+	"MasteryGag": {category: "Training", id: "MasteryGag", cost: -1, tags: ["gag"]},
+	"MasterySenses": {category: "Training", id: "MasterySenses", cost: -1, tags: ["senses"]},
 	"PoorBalance": {category: "Combat", id: "PoorBalance", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
 	"HeadStartHeels": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "heels"], block: ["ClassicHeels"]},
 	"HeadStartCorset": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "corset"]},
+	"HeadStartGag": {category: "Training", id: "HeadStartGag", cost: 1, tags: ["start", "gag"]},
+	"HeadStartSenses": {category: "Training", id: "HeadStartSenses", cost: 1, tags: ["start", "senses"]},
 
 	"Hogtied": {startPriority: 50, category: "Start", id: "Hogtied", cost: -0.5, tags: ["start"]},
 	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2.0, outfit: "Obsidian", tags: ["start"]},
@@ -813,6 +819,7 @@ let KDPerkStart = {
 		KinkyDungeonInventoryAddLoose("TrapCuffs");
 		KinkyDungeonInventoryAddLoose("TrapGag");
 		KinkyDungeonInventoryAddLoose("TrapBlindfold");
+		KinkyDungeonInventoryAddLoose("TrapEarplugs");
 		KinkyDungeonInventoryAddLoose("TrapArmbinder");
 		KinkyDungeonInventoryAddLoose("RopeSnakeArmsBoxtie");
 		KinkyDungeonInventoryAddLoose("RopeSnakeArmsWrist");
@@ -845,6 +852,19 @@ let KDPerkStart = {
 		KinkyDungeonInventoryAddLoose("TrainingHeels");
 
 	},
+	HeadStartSenses: () =>{
+		KDGameData.Training.Senses = {
+			best_ratio: 0,
+			training_points: 0,
+			training_stage: 5,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+		KinkyDungeonInventoryAddLoose("LeatherHood");
+		//KinkyDungeonInventoryAddLoose("TrapEarplugs");
+
+	},
 	CorsetTraining: () =>{
 		KDGameData.Training.Corset = {
 			best_ratio: 0,
@@ -854,9 +874,34 @@ let KDPerkStart = {
 			turns_total: 0,
 			turns_trained: 0,
 		};
+		KinkyDungeonAddRestraintIfWeaker("DressCorset", 20, true, "HiSec", false, undefined, undefined, undefined, true);
+
 	},
 	HeadStartCorset: () =>{
 		KDGameData.Training.Corset = {
+			best_ratio: 0,
+			training_points: 0,
+			training_stage: 5,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+
+	},
+	GagTraining: () =>{
+		KDGameData.Training.Gag = {
+			best_ratio: 0,
+			training_points: 0,
+			training_stage: 0,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+		KinkyDungeonAddRestraintIfWeaker("TrapGagLarge", 20, true, "HiSec", false, undefined, undefined, undefined, true);
+
+	},
+	HeadStartGag: () =>{
+		KDGameData.Training.Gag = {
 			best_ratio: 0,
 			training_points: 0,
 			training_stage: 5,

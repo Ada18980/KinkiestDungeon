@@ -418,6 +418,9 @@ function DisposeCharacter(C: Character, resort: boolean = true, deleteSpecial: b
 }
 function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false, deletePersistent = true): void {
 	let C = KDNPCChar.get(id);
+	if (KDGameData.SeenEntities) {
+		delete KDGameData.SeenEntities[id];
+	}
 	if (C && KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {
 			if (Container.Container.parent)

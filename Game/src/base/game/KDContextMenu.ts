@@ -205,7 +205,11 @@ function KDGetGameContextActionsVanilla(
 			}
 
 			options.push("Aggro");
-			optionText.Aggro = TextGet("KDContextMenu_" + (unaware ? "AggroSneak" : (aggroothers ? "Aggro" : "Retaliate")));
+			if (KinkyDungeonChestConfirm) {
+				optionText.Aggro = TextGet("KDContextMenu_AggroConfirm");
+			}
+			else
+				optionText.Aggro = TextGet("KDContextMenu_" + (unaware ? "AggroSneak" : (aggroothers ? "Aggro" : "Retaliate")));
 			optionImages.Aggro = unaware ? "AggroSneak" : (aggroothers ? "Aggro" : "Retaliate");
 			if (!KDCanAttackEnemy(entity, KDPlayer(), undefined, undefined, undefined)) {
 				optionGrey.Aggro = true;
@@ -220,9 +224,14 @@ function KDGetGameContextActionsVanilla(
 				optionActions.Aggro = () => {
 					KDCancelAutoWait();
 					if (KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) <= rng)
-						KDSendInput("doaggro", {
-							tx: entity.x, ty: entity.y, id: entity.id, unaware: unaware, aggroothers: aggroothers
-						})
+						if (KinkyDungeonChestConfirm) {
+							KDSendInput("doaggro", {
+								tx: entity.x, ty: entity.y, id: entity.id, unaware: unaware, aggroothers: aggroothers
+							})
+						} else {
+							KinkyDungeonChestConfirm = true;
+                			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
+						}
 				}
 			}
 			

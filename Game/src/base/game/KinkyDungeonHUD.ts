@@ -2914,7 +2914,9 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 	if (gag >= 0.99) {
 		statsDraw.b_gag = {text: TextGet("KDStatGagFull"), category: "status", icon: "boundGagFull", color: KDBaseRed, bgcolor: "#333333", priority: 7};
 	} else if (gag > 0) {
-		statsDraw.b_gag = {text: TextGet("KDStatGag"), category: "status", icon: "boundGag", color: KDBaseRed, bgcolor: "#333333", priority: 7};
+		statsDraw.b_gag = {text: TextGet("KDStatGag", {
+			AMOUNT: Math.round(gag * 100) + "%"
+		}), category: "status", icon: "boundGag", color: KDBaseRed, bgcolor: "#333333", priority: 7};
 	} else if (KDToggleShowAllBuffs) {
 		statsDraw.b_gag = {text: TextGet("KDStatFreeMouth"), category: "status", icon: "status/freeMouth", color: KDBaseNeon, bgcolor: "#333333", priority: 7};
 	}

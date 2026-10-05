@@ -13,6 +13,7 @@ interface ProgressListData {
     name: string,
     data?: Record<string, string>,
     progress: number,
+    progressghost: number,
     color: string,
     failcolor?: string,
     bordercolor: string,
@@ -64,8 +65,9 @@ function KDEnumerateTrainingProgress(data: ProgressListEventData) {
             data.trainings.push({
                 name: "Training" + type,
                 progress: points/lvl,
+                progressghost: (points + next)/lvl,
                 color: KDTrainingTypeProperties[type].color,
-                bordercolor: KDBaseTeal,
+                bordercolor: KDTrainingTypeProperties[type].color,
                 textColor: KDBaseWhite,
                 failcolor: skipped == 0 ? KDBaseGreal : KDBaseRed,
                 level: Math.floor(KDGameData.Training ? (KDGameData.Training[type]?.training_stage || 0) : 0),
@@ -163,7 +165,7 @@ function KDDrawProgressList(xOffset) {
 		let w = list.w - 40;
         DrawTextFitKDTo(container, TextGet("KDProgressItem_" + item.name,
             item.data), 
-            list.x + 20 + w*0.5 + (horizontal ? visualIndex * 80 : 0), list.y + 20 + (horizontal ? 0 : visualIndex * 80), 
+            list.x + 20 + w*0.5 + (horizontal ? visualIndex * 80 : 0), list.y + 25 + (horizontal ? 0 : visualIndex * 80), 
             w - 80, item.textColor, undefined, undefined, undefined,
             undefined, undefined, undefined, undefined, undefined, undefined, 
             "tx|" + item.name + "_label_scrollist")
@@ -195,6 +197,17 @@ function KDDrawProgressList(xOffset) {
             alpha: 0.9,
             LineWidth: 1
         });
+        if (item.progressghost)
+            FillRectKD(container, kdpixisprites, "MainProgressSelectGhost" + item.name + "pbfill", {
+                Color: item.color,
+                Left: list.x + 60 + (horizontal ? visualIndex * 80 : 0),
+                Height: 11,
+                Top: list.y + 50 + (horizontal ? 0 : visualIndex * 80),
+                Width: (w - 70) * Math.min(1, item.progressghost),
+                zIndex: 100.5,
+                alpha: 0.15,
+                LineWidth: 1
+            });
         DrawButtonKDExTo(container, "MainProgressSelect" + item.name, 
             (bdata) => {
                 KDCurrentProgressMainSelection = it.name;
@@ -374,7 +387,9 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
                                 x + 50, yy, width * 0.5, tag.last ? KDTextGraymid : KDTextWhite, 
                                 KDTextGray0, 18, "left").x;
                             DrawTextFitKD((tag.value > 0 ? "+" : "") + tag.value, 
-                                x + 50 + xx + 10, yy, width * 0.1, tag.last ? KDTextGraymidlow : item.color, 
+                                x + 50 + xx + 10, yy, width * 0.1, tag.last ? KDTextGraymidlow : (
+                                    tag.value > 0 ? item.color : KDBaseRed
+                                ), 
                                 KDTextGray0, 18, "left");
                             if (tag.desc) {
                                 DrawTextFitKD(TextGet("KDProgressTagDesc_" + tag.desc, tag.descparams), 

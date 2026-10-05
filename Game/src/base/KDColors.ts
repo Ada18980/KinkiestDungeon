@@ -14,6 +14,7 @@ let KDBasePink = "#ff66cc"; // rose pink
 // #e25098; // raspaberry
 // #ff66cc // rose pink
 // #cc2f7b; // slime pink
+let KDBaseReddishPink = "#cc2f7b";
 // #ff8888 // Bondage Club pink
 let KDBaseLime = "#c1f9a2"; // menthol
 // #39ff14; // neon green
@@ -90,6 +91,7 @@ let KDGoodColor = "#77ff99";
 
 
 let KDColorList = {
+    KDBaseReddishPink: KDBaseReddishPink,
     KDTextWhite: KDBaseWhite,
     KDTextGray3: KDTextGray3,
     KDTextGraymid: KDTextGraymid,

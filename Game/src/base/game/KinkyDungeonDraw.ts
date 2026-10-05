@@ -2492,9 +2492,7 @@ function KinkyDungeonDrawGame() {
 				KDGoToScreen("MagicSpells");
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
-				KinkyDungeonInspect = false;
-				KDInteracting = false;
-				KDContextMenu = false;
+				KDCancelConfirmBasic();
 			} else if ((KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage")
 					&& (KDCollectionTab || KDCurrentRestrainingTarget || KDCurrentFacilityTarget)) {
 				if (KDCurrentFacilityTarget) {
@@ -2506,40 +2504,16 @@ function KinkyDungeonDrawGame() {
 				KDCurrentRestrainingTarget = 0;
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
-				KinkyDungeonInspect = false;
-				KDInteracting = false;
-				KDContextMenu = false;
+				KDCancelConfirmBasic();
 			} else if (KDAlternateInventoryRender()) {
 				KDResetAlternateInventoryRender();
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
-				KinkyDungeonInspect = false;
-				KDInteracting = false;
-				KDContextMenu = false;
+				KDCancelConfirmBasic();
 			} else {
-				KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
-				KDPlayerSetPose = false;
-				KinkyDungeonInspect = false;
-				KDInteracting = false;
-				KinkyDungeonUpdateLightGrid = true;
-				KDGoToScreen("Game");
-				KDResetAlternateInventoryRender();
-				KinkyDungeonMessageToggle = false;
-				KinkyDungeonTargetingSpell = null;
-				KinkyDungeonTargetingSpellItem = null;
-				KinkyDungeonTargetingSpellWeapon = null;
-				KinkyDungeonTargetTile = null;
-				KinkyDungeonTargetTileLocation = "";
-				KinkyDungeonInspect = false;
-				KinkyDungeonSpellPress = "";
-				KDModalArea = false;
-				KDSetFocusControl("");
-				KDCloseQuickInv();
-				KDRepSelectionMode = "";
+				KDCancelConfirmAllGame();
+				
 				KinkyDungeonGameKey.keyPressed[9] = false;
-				KinkyDungeonKeybindingCurrentKey = '';
-				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-				KinkyDungeonDressPlayer();
 			}
 		}
 	}
@@ -6651,4 +6625,37 @@ function KDTileSlows(entity: entity, x: number, y: number) {
 		return true;
 	}
 	return "gW".includes(KinkyDungeonMapGet(x, y));
+}
+
+function KDCancelConfirmAllGame() {
+	KinkyDungeonChestConfirm = false;
+	KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
+	KDPlayerSetPose = false;
+	KinkyDungeonInspect = false;
+	KDInteracting = false;
+	KinkyDungeonUpdateLightGrid = true;
+	KDGoToScreen("Game");
+	KDResetAlternateInventoryRender();
+	KinkyDungeonMessageToggle = false;
+	KinkyDungeonTargetingSpell = null;
+	KinkyDungeonTargetingSpellItem = null;
+	KinkyDungeonTargetingSpellWeapon = null;
+	KinkyDungeonTargetTile = null;
+	KinkyDungeonTargetTileLocation = "";
+	KinkyDungeonInspect = false;
+	KinkyDungeonSpellPress = "";
+	KDModalArea = false;
+	KDSetFocusControl("");
+	KDCloseQuickInv();
+	KDRepSelectionMode = "";
+	KinkyDungeonKeybindingCurrentKey = '';
+	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+	KinkyDungeonDressPlayer();
+}
+
+function KDCancelConfirmBasic() {
+	KinkyDungeonChestConfirm = false;
+	KinkyDungeonInspect = false;
+	KDInteracting = false;
+	KDContextMenu = false;
 }

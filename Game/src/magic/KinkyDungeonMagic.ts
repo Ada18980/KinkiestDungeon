@@ -71,14 +71,16 @@ let KDSpellComponentTypes: Record<string, KDSpellComponent> = {
 		},
 		partialMiscastChance: (_spell, _x, _y) => {
 			let gagTotal = (KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() > 0) ? 1.0 : KinkyDungeonGagTotal();
-			if (KinkyDungeonStatsChoice.get("SmoothTalker") && gagTotal < 0.99) gagTotal = 0;
+			if (KinkyDungeonStatsChoice.get("SmoothTalker") && gagTotal < 0.5) gagTotal = 0;
 			return Math.max(0, Math.min(1, gagTotal));
 		},
 		partialMiscastType: (_spell, _x, _y) => {
 			return "Gagged";
 		},
-		cast: (_spell, data) => {
+		cast: (spell, data) => {
+			let gagTotal = KinkyDungeonGagTotal(false, 1, true);
 			KinkyDungeonSetFlag("verbalspell", 1);
+			KDTickTraining("Gag", gagTotal > 0, gagTotal == 0, KDGagTrainingMult * (spell.manacost + 1), 1 + gagTotal);
 			if (data.originX && data.originY)
 				KinkyDungeonMakeNoise(4, data.originX, data.originY, false, true, true);
 		}

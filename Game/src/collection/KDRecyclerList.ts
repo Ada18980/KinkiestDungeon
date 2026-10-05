@@ -46,6 +46,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("TrapBoots", "Leather", ""),
 			KDAutoGenRestraintBlueprint("TrapGag", "Leather", ""),
 			KDAutoGenRestraintBlueprint("TrapBlindfold", "Leather", ""),
+			KDAutoGenRestraintBlueprint("TrapEarplugs", "Rope", ""),
 			KDAutoGenRestraintBlueprint("PanelGag", "Leather", ""),
 			KDAutoGenRestraintBlueprint("PanelPlugGag", "Leather", ""),
 			KDAutoGenRestraintBlueprint("PanelPlugGagHarness", "Leather", ""),
@@ -253,6 +254,8 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 
 
 			KDAutoGenRestraintBlueprint("SteelMuzzleGag", "Metal", ""),
+
+			//KDAutoGenRestraintBlueprint("CyberHeadphones", "Metal", ""),
 		]
 	},
 	Chastity: {

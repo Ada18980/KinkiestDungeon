@@ -4,6 +4,8 @@ let KDBaseTrainingMinRatioPercent = 0.5;
 let KDTrainingTypes = [
 	"Heels",
 	"Corset",
+	"Gag",
+	"Senses",
 ];
 
 let KDTrainingTypeProperties: Record<string, KDTrainingProps> = {
@@ -21,6 +23,20 @@ let KDTrainingTypeProperties: Record<string, KDTrainingProps> = {
 		prereq: (player) => {return true;},
 		effectVal: (player) => {
 			return "-" + Math.round(-100 * (1 - KDCorsetSPReductionMult(player, false))) + "%";
+		},
+	},
+	Gag: {
+		color: KDBaseReddishPink,
+		prereq: (player) => {return true;},
+		effectVal: (player) => {
+			return "-" + Math.round(100 * (1 - KDGagReductionMult(player, false))) + "%";
+		},
+	},
+	Senses: {
+		color: KDBaseLightGrey,
+		prereq: (player) => {return true;},
+		effectVal: (player) => {
+			return "+" + Math.round(100 * (KDSensesTrainingBoost(player, false))) + "%";
 		},
 	},
 }
@@ -159,7 +175,11 @@ function KDAdvanceSingleTraining(training: string, player: entity) {
 
 function KDCheckLevelUp(training: string, player: entity) {
 	let data = KDGameData.Training[training];
-	while (data.training_points > data.training_stage + 1) {
+	let costmult = 1;
+	if (player?.player && KinkyDungeonStatsChoice.get("Mastery" + training)) {
+		costmult *= 2;
+	}
+	while (data.training_points > (data.training_stage + 1) * costmult) {
 
 		KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, 
 			TextGet("KDLevelUpStat", {
@@ -238,7 +258,7 @@ function KDAddFlatTraining(Name: string, amount: number, player?: entity): void 
 	if (amount > 0)
 		KDGameData.Training[Name].training_points += amount;
 	else 
-		KDGameData.Training[Name].training_points = Math.max(KDGameData.Training[Name].training_points - amount);
+		KDGameData.Training[Name].training_points = Math.max((KDGameData.Training[Name].training_points || 0) - amount);
 	
 	KDCheckLevelUp(Name, player);
 }
@@ -249,7 +269,7 @@ let KDTrainingSoftScale = 10;
 
 
 function KDAddLeashWalkXP(player: entity) {
-	let xp = 1 + .25 * KDGameData.Training["Heels"]?.training_stage;
+	let xp = 1 + .25 * (KDGameData.Training["Heels"]?.training_stage || 0);
 	if (AddProgressFloor("Training", "Heels", 
 		{
 			key: "Heels_LeashWalk",
@@ -262,4 +282,33 @@ function KDAddLeashWalkXP(player: entity) {
 			value: Math.round(xp * 100)}, false)) {
 			KDAddFlatTraining("Heels", xp);
 		}
+}
+
+function KDAddGagXP(type: string, player: entity, xp?: number) {
+	xp = xp == undefined ? 0 + .25 * (KDGameData.Training["Gag"]?.training_stage || 1) : xp;
+	let gagTotal = KinkyDungeonGagTotal(false, 1, true);
+	for (let dat of [
+		{thresh: 0, tag: "None", xp: -xp},
+		{thresh: 0.25, tag: "Light", xp: xp},
+		{thresh: 0.5, tag: "Medium", xp: xp},
+		{thresh: 0.75, tag: "Heavy", xp: xp},
+	]) {
+		if (dat.thresh == 0) {
+			KDTickTraining("Gag", gagTotal > 0, gagTotal == 0, KDGagTrainingMult * 10, 1 + gagTotal);
+		}
+		if (((dat.thresh > 0 && gagTotal >= dat.thresh) || (
+			(dat.thresh == 0 && gagTotal == 0)
+		)) && AddProgressFloor("Training", "Gag", 
+			{
+				key: "Gag_" + type + dat.tag,
+				tag: type + dat.tag,
+				data: {
+					level: KDGameData.Training["Gag"]?.training_stage,
+					floor: KDGameData.HighestLevelCurrent,
+				},
+				desc: "OncePerFloor",
+				value: Math.round(dat.xp * 100)}, false)) {
+				KDAddFlatTraining("Gag", dat.xp);
+			}
+	}
 }

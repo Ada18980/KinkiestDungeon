@@ -729,7 +729,7 @@ KinkyDungeonCantUsePotionsKneelNoMouth,"Without hands, and with your mouth occup
 KinkyDungeonStatIncantation,"Can't Hear You!"
 KinkyDungeonStatDescIncantation,"Being gagged blocks you from casting verbal spells regardless of gag power."
 KinkyDungeonStatSmoothTalker,"Smooth Talker"
-KinkyDungeonStatDescSmoothTalker,"Being gagged does not increase your miscast chance for verbal spells unless fully gagged, and reduces gag power by 20%."
+KinkyDungeonStatDescSmoothTalker,"Being gagged does not increase verbal miscast chance unless over 50% gagged, and reduces gag power by 20%."
 
 KinkyDungeonStatUnmasked,"Unmasked"
 KinkyDungeonStatDescUnmasked,"Hoods and full-face covering masks do not appear, but blindfolds are more powerful."
@@ -846,7 +846,7 @@ KDStatFreeEyes,"Your vision is clear."
 KDStatFreeHands,"Your hands are unobstructed."
 KDStatFreeArms,"Your arms are free to move as you please."
 KDStatFreeLegs,"Your legs are free and unimpeded."
-KDStatGag,"You are gagged! Verbal miscast chance is increased and your potions are less effective!"
+KDStatGag,"You are ${AMOUNT} gagged! Verbal miscast chance is increased and potions are less effective!"
 KDStatGagFull,"Your mouth is totally filled! You can't drink potions and can't cast verbal spells!"
 
 KDBuffName_CorruptionStat,Corruption
@@ -2096,7 +2096,11 @@ KinkyDungeonAngelDefeated,"Angel: MMMMMPHH!!!"
 KinkyDungeonAngelUnlock,"(The angel looks puzzled and unlocks your divine restraints)"
 
 KDGenericAttack,attack
-KDCorsetDesc,Reduces maximum SP by ${FRACTION}%
+KDRestraintDescBaseTag," (${FRACTIONORIG}% base)"
+KDCorsetDesc,Reduces max SP by ${FRACTION}%
+KDGagDesc,Gag strength: ${FRACTION}%
+KDDeafDesc,Deaf level: ${FRACTION}%
+KDBlindDesc,Blind level: ${FRACTION}%
 
 KDArmorBlock,"The EnemyName pulls away your ArmorName!!!"
 KDArmorBlockBug,"There was a bug removing your ArmorName. Please report!"
@@ -3547,8 +3551,8 @@ KinkyDungeonUseCrackLegs,You use your feet to place the knife into a crack!
 KinkyDungeonNeedCrack,"You glare at the crack in the wall as you realize you couldn't maneuver the knife if you tried."
 KinkyDungeonNeedGrip,You can't hold your knife like this...
 
-KinkyDungeonStruggleStruggleImpossible,"The TargetRestraint is too secure to struggle out."
-KinkyDungeonStruggleStruggleImpossibleAroused,"You groan in frustration as you realize the TargetRestraint is too strong to escape."
+KinkyDungeonStruggleStruggleImpossible,"The TargetRestraint is too strong to struggle out of."
+KinkyDungeonStruggleStruggleImpossibleAroused,"The TargetRestraint is too strong to squirm out of, no matter the effort."
 KinkyDungeonStruggleStruggleImpossible2,"The TargetRestraint tightens itself as you try to squeeze out!"
 KinkyDungeonStruggleStruggleImpossible3,"You will need someone's help to squeeze out of the TargetRestraint."
 KinkyDungeonStruggleStruggleImpossibleGoddess,"The TargetRestraint flashes magically as the Goddess' curse resists your efforts!"
@@ -3704,6 +3708,8 @@ KinkyDungeonStruggleRemoveImpossibleTapeAroused,"You groan in frustration as you
 KinkyDungeonStruggleRemoveImpossibleBoundTape,"You can't grip the edges to peel the TargetRestraint off!"
 KinkyDungeonStruggleRemoveImpossibleBoundTapeAroused,"You make a futile attempt to rub the TargetRestraint off."
 
+
+
 KinkyDungeonStruggleRemoveFailMagicChain,"You try to wiggle off the TargetRestraint..."
 KinkyDungeonStruggleRemoveFailMagicChainAroused,"You squirm trying to get the TargetRestraint to fall off..."
 KinkyDungeonStruggleRemoveImpossibleMagicChain,"The TargetRestraint are magical and wrap themselves back around you of their own accord."
@@ -3750,6 +3756,22 @@ KinkyDungeonStruggleStruggleImpossibleClamps,"That would really hurt..."
 KinkyDungeonStruggleStruggleImpossibleClampsAroused,"You realize that would really hurt..."
 KinkyDungeonStruggleStruggleImpossibleBoundClamps,"The TargetRestraint tug on your nipples as you squirm!"
 KinkyDungeonStruggleStruggleImpossibleBoundClampsAroused,"The TargetRestraint tug on your nipples as you squirm!"
+
+
+KinkyDungeonStruggleStruggleFailEarplugs,"You rub your head trying to dislodge the TargetRestraint..."
+KinkyDungeonStruggleStruggleFailEarplugsAroused,"You hopelessly rub your head trying to dislodge the TargetRestraint..."
+KinkyDungeonStruggleStruggleImpossibleEarplugs,"The TargetRestraint are too far in your ears to dislodge."
+KinkyDungeonStruggleStruggleImpossibleEarplugsAroused,"The TargetRestraint are too far in your ears to dislodge."
+KinkyDungeonStruggleStruggleImpossibleEarplugsBound,"You rub your head trying to dislodge the TargetRestraint..."
+KinkyDungeonStruggleStruggleImpossibleEarplugsBoundAroused,"You rub your head trying to dislodge the TargetRestraint..."
+
+
+KinkyDungeonStruggleRemoveFailEarplugs,"You reach in to remove the earplugs..."
+KinkyDungeonStruggleRemoveFailEarplugsAroused,"You reach in to remove the earplugs..."
+KinkyDungeonStruggleRemoveImpossibleEarplugs,"You can't reach the TargetRestraint."
+KinkyDungeonStruggleRemoveImpossibleEarplugsAroused,"You can't reach the TargetRestraint no matter how hard you try."
+KinkyDungeonStruggleRemoveImpossibleEarplugsBound,"You rub your head trying to dislodge the TargetRestraint..."
+KinkyDungeonStruggleRemoveImpossibleEarplugsBoundAroused,"You rub your head trying to dislodge the TargetRestraint..."
 
 
 
@@ -4783,6 +4805,14 @@ RestraintTrapLegironsDesc2,"The lock doesn't seem very complicated."
 RestraintTrapBlindfold,Blindfold
 RestraintTrapBlindfoldDesc,"A leather strap secured onto your face and blocking vision."
 RestraintTrapBlindfoldDesc2,"You can still see through the gap around your nose."
+
+RestraintTrapEarplugs,Earplugs
+RestraintTrapEarplugsDesc,"Soft padded earplugs for both work and kinky purposes."
+RestraintTrapEarplugsDesc2,"They can be removed if you have hands."
+
+RestraintCyberHeadphones,Cyber Headphones
+RestraintCyberHeadphonesDesc,"Headphones designed for totally non-kinky purposes. They have excellent sound isolation, which makes them good for that though..."
+RestraintCyberHeadphonesDesc2,"Locks in place with a specialized headband. Reinforced with steel boning to ensure durability."
 
 
 RestraintHighsecBlindfold,High-Security Blindfold
@@ -30815,14 +30845,14 @@ KinkyDungeonStatDescGagTraining,"Start locked in a gag with no gag training."
 KinkyDungeonStatCorsetTraining,"Corset Training"
 KinkyDungeonStatDescCorsetTraining,"Start locked in a corset with no corset training."
 KinkyDungeonStatSensesTraining,"Sensory Training"
-KinkyDungeonStatDescSensesTraining,"Start locked in a blindfold and headphones with no Sensory training."
+KinkyDungeonStatDescSensesTraining,"Start locked in a sensory hood with no Sensory training."
 
 KinkyDungeonStatMasteryHeels,"Hard to Master: Heels"
 KinkyDungeonStatDescMasteryHeels,"Heel training is significantly slower."
 KinkyDungeonStatMasteryGags,"Hard to Master: Gags"
 KinkyDungeonStatDescMasteryGags,"Gag training is significantly slower."
-KinkyDungeonStatMasteryCorsets,"Hard to Master: Corsets"
-KinkyDungeonStatDescMasteryCorsets,"Corset training is significantly slower."
+KinkyDungeonStatMasteryCorset,"Hard to Master: Corsets"
+KinkyDungeonStatDescMasteryCorset,"Corset training is significantly slower."
 KinkyDungeonStatMasterySenses,"Hard to Master: Sensory"
 KinkyDungeonStatDescMasterySenses,"Sensory training is significantly slower."
 
@@ -32612,11 +32642,6 @@ KDRansomValue,Ransom Value: GP
 KDCurrentGold,Current Gold: GP
 KDNA,n/a
 
-KDTrainingLevelHeels,"[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels."
-KDTrainingLevelCorset,"[EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamina penalty from corsets."
-
-KDEffTraining_Heels,Balance Costs:
-KDEffTraining_Corset,Corset Penalty:
 
 KDOccupied,"The furniture space is occupied"
 KDCombatManeuver,"Combat Maneuver: Your next move is instant."
@@ -33641,6 +33666,7 @@ KDContextMenu_Attack,Attack
 KDContextMenu_Capture,Capture
 KDContextMenu_Tease,Capture
 KDContextMenu_Aggro,Aggress
+KDContextMenu_AggroConfirm,Are you sure?
 KDContextMenu_AggroSneak,Sneak Attack
 KDContextMenu_Retaliate,Retaliate
 KDContextMenu_Peace,Can't Attack
@@ -34050,13 +34076,30 @@ KDPlayerTitleDesc_Cursed,Unlocked by wearing any cursed restraint or armor.
 KDPlayerTitle_LostInSpace,Lost in Space
 KDPlayerTitleDesc_LostInSpace,Unlocked by stepping into a dimensional rift willingly... or not!
 
+
+KDTrainingLevelHeels,"[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels."
+KDTrainingLevelCorset,"[EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamina penalty from corsets."
+KDTrainingLevelGag,"[EXP: AMNT/LMT, +NXT next floor] Gag training reduces your overall gag level."
+KDTrainingLevelSenses,"[EXP: AMNT/LMT, +NXT next floor] Senses training increases hearing radius and reduces blindfold effectiveness."
+
+KDEffTraining_Heels,Balance Costs:
+KDEffTraining_Corset,Corset Penalty:
+KDEffTraining_Gag,Gag Strength:
+KDEffTraining_Senses,Perception:
+KDEffTraining_Pleasure,WP Loss from Orgasm:
+KDEffTraining_Edge,WP Loss from Edging:
+
 KDProgressItem_TrainingHeels,Heel Training
 KDProgressItem_TrainingCorset,Corset Training
+KDProgressItem_TrainingGag,Gag Training
+KDProgressItem_TrainingSenses,Senses Training
 
 KDProgressUnselected,Select a progress item to show details
 
 KDProgress_Training_Corset,"Corset training affects the level of max stamina penalty incurred from wearing a corset. Levels are gained by spending stamina while wearing a corset.\nTraining failure occurs if you are not wearing a corset when you spend stamina."
+KDProgress_Training_Gag,"Gag training affects the effective strength of gags, allowing you to ignore lower level gags. Levels are gained by talking to NPCs, flirting, and casting verbal spells.\nTraining failure occurs if you are not wearing a gag when you perform actions."
 KDProgress_Training_Heels,"Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions."
+KDProgress_Training_Senses,"Senses training affects your hearing ability and the effectiveness of blindfolds. Levels are gained by detecting enemies by sound before visually spotting them.\nTraining failure occurs you spot enemies while neither blindfolded nor deafened."
 KDProgressCurrent,"Current Progress:"
 KDProgressMilestones,"Milestones:"
 KDProgressBonusProgress,"Bonus Progress (per floor):"
@@ -34065,8 +34108,30 @@ KDProgressRecentModifiers,"Recent Modifiers:"
 
 KDAnyLevel,Any Level
 
+
+KDProgressTag_Gag_FlirtNone,Flirted without a gag
+KDProgressTag_Gag_FlirtLight,Flirted while lightly gagged
+KDProgressTag_Gag_FlirtMedium,Flirted while moderately gagged
+KDProgressTag_Gag_FlirtHeavy,Flirted while heavily gagged
+
+KDProgressTag_Gag_ShopNone,Bought/sold without a gag
+KDProgressTag_Gag_ShopLight,Bought/sold while lightly gagged
+KDProgressTag_Gag_ShopMedium,Bought/sold while moderately gagged
+KDProgressTag_Gag_ShopHeavy,Bought/sold while heavily gagged
+
+KDProgressTag_Gag_AngelNone,Prayed without a gag
+KDProgressTag_Gag_AngelLight,Prayed while lightly gagged
+KDProgressTag_Gag_AngelMedium,Prayed while moderately gagged
+KDProgressTag_Gag_AngelHeavy,Prayed while heavily gagged
+
+
+
+
+
 KDProgressTag_Heels_LeashWalk,Went on a leash walk:
 KDProgressTagDesc_Heels_LeashWalk,(Max once per floor)
+KDProgressTagDesc_OncePerFloor,(Max once per floor)
+KDProgressTagDesc_OncePerLevel,(Max once per level)
 KDProgressTagDesc_Level,Training Level ${Level}
 
 KDOptionFilter,"Filter Toggles:"

@@ -14,6 +14,8 @@ let KinkyDungeonSlimeParts = [
 let KDAlertCD = 5;
 let KDHeelPowerGrowthExponent = 0.5;//sqrt
 let KDCorsetTrainingMult = 0.001;
+let KDGagTrainingMult = 0.05;
+let KDSensesTrainingMult = 0.1;
 
 let KDEventDataReset = {
 

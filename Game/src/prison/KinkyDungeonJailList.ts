@@ -594,6 +594,7 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "LegShackles", Level: 35},
 			{Name: "HighsecLegbinder", Level: 35},
 			{Name: "TrapBlindfold", Level: 35, Condition: "NoBlindfolds"},
+			{Name: "TrapEarplugs", Level: 99, Condition: "NoEarplugs"},
 			{Name: "HighsecBallGag", Level: 40},
 			{Name: "HighsecShackles", Level: 40},
 			{Name: "TrapArmbinder", Level: 40, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
@@ -1035,6 +1036,9 @@ let KDJailConditions: Record<string, (r: KDJailRestraint) => boolean> = {
 	},
 	NoBlindfolds: (_r) => {
 		return !KinkyDungeonStatsChoice.get("NoBlindfolds");
+	},
+	NoEarplugs: (_r) => {
+		return !KinkyDungeonStatsChoice.get("NoEarplugs");
 	},
 	LessArmbinders: (_r) => {
 		return !KinkyDungeonStatsChoice.get("Less_Armbinders")

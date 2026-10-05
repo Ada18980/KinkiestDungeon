@@ -401,6 +401,21 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "SenseDep"),
             tooltip: TextGet("KDConsentListDesc_" + "SenseDep"),
     },
+    Earplugs: {
+            name: "Earplugs",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "NoEarplugs",
+            perkYellow: "",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "Earplugs"),
+            tooltip: TextGet("KDConsentListDesc_" + "Earplugs"),
+    },
     Kigu: {
             name: "Kigu",
             color: KDBaseWhite,
