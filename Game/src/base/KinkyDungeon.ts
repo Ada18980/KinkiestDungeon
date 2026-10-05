@@ -513,6 +513,9 @@ interface KDGameDataBase {
 	HeelPowerEffective:			number,
 	/** actual, based on worn */
 	HeelPower:			number,
+	CorsetPowerEffective:			number,
+	/** actual, based on worn */
+	CorsetPower:			number,
 	visionAdjust:			number,
 	visionAdjustBlind:		number,
 	visionBlind:			number,
@@ -589,6 +592,8 @@ interface KDGameDataBase {
 
 
 let KDGameDataBase: KDGameDataBase = {
+	CorsetPower: 0,
+	CorsetPowerEffective: 0,
 	ShopkeeperFavors: 0,
 	AutoSprintTriggered: false,
 	BulletWarnings: [],

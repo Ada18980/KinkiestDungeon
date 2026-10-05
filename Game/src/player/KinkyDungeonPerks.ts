@@ -376,11 +376,14 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 
 	"SelfBondage": {category: "Start", id: "SelfBondage", cost: 0, tags: ["start"]},
 	"HeelTraining": {category: "Start", id: "HeelTraining", cost: 0, tags: ["start"]},
+	"CorsetTraining": {category: "Start", id: "CorsetTraining", cost: 0, tags: ["start"]},
 	"ClassicHeels": {category: "Toggles", id: "ClassicHeels", cost: 0, tags: ["start"], blocktags: ["heels"]},
 
 	"MasteryHeels": {category: "Training", id: "MasteryHeels", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
+	"MasteryCorset": {category: "Training", id: "MasteryHeels", cost: -1, tags: ["corset"]},
 	"PoorBalance": {category: "Combat", id: "PoorBalance", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
 	"HeadStartHeels": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "heels"], block: ["ClassicHeels"]},
+	"HeadStartCorset": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "corset"]},
 
 	"Hogtied": {startPriority: 50, category: "Start", id: "Hogtied", cost: -0.5, tags: ["start"]},
 	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2.0, outfit: "Obsidian", tags: ["start"]},

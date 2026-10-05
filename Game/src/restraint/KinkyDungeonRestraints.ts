@@ -2041,8 +2041,8 @@ function KinkyDungeonPickAttempt(): boolean {
 	}
 	KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonAttemptPick" + Pass).replace("TargetRestraint", TextGet("KinkyDungeonObject" + (KinkyDungeonTargetTile.Type || "Lock"))), (Pass == "Success") ? KDBaseLightGreen : KDBaseRed, 1);
 	if (chargecosts) {
-		KDChangeStamina(KinkyDungeonTargetTileLocation, "map", "pick", cost, true);
-		KDChangeWill(KinkyDungeonTargetTileLocation, "map", "pick", wcost);
+		KDChangeStamina("player", "pick", KinkyDungeonTargetTileLocation, cost, true);
+		KDChangeWill("player", "pick", KinkyDungeonTargetTileLocation, wcost);
 	}
 	KinkyDungeonSetFlag("tryescaping", 3);
 	return Pass == "Success";
@@ -2689,8 +2689,8 @@ function KDGetStruggleData(data: KDStruggleData): string {
 								KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), KDTutorialColor, 10);
 							}
 
-							KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
-							KDChangeWill(data.struggleGroup, data.struggleType, "struggle", data.wcost);
+							KDChangeStamina("player", data.struggleType, data.struggleGroup, data.cost, true, 1);
+							KDChangeWill("player", data.struggleType, data.struggleGroup, data.wcost);
 							if (KinkyDungeonStatsChoice.get("BondageLover") && !KDRestraint(data.restraint)?.armor) KDChangeDistraction(
 								"BondageLover", "perk", "struggle", KDBondageLoverAmount, false, 0.1);
 						}
@@ -2906,8 +2906,8 @@ function KDGetStruggleData(data: KDStruggleData): string {
 								KinkyDungeonSetFlag("tut_shrinebondage", -1);
 								KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), KDTutorialColor, 10);
 							}
-							KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
-							KDChangeWill(data.struggleGroup, data.struggleType, "struggle", data.wcost);
+							KDChangeStamina("player", data.struggleType, data.struggleGroup, data.cost, true, 1);
+							KDChangeWill("player", data.struggleType, data.struggleGroup, data.wcost);
 							if (KinkyDungeonStatsChoice.get("BondageLover") && !KDRestraint(data.restraint)?.armor)
 								KDChangeDistraction("BondageLover", "perk", "struggle", KDBondageLoverAmount, false, 0.1);
 						}
@@ -3511,8 +3511,8 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 				KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + Pass + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), (Pass == "Success") ? KDBaseLightGreen : KDBaseRed, 2);
 
 			if (KinkyDungeonHasStamina(-data.cost)) {
-				KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
-				KDChangeWill(data.struggleGroup, data.struggleType, "struggle", data.wcost);
+				KDChangeStamina("player", data.struggleType, data.struggleGroup, data.cost, true, 1);
+				KDChangeWill("player", data.struggleType, data.struggleGroup, data.wcost);
 				if (KinkyDungeonStatsChoice.get("BondageLover") && !KDRestraint(data.restraint)?.armor)
 					KDChangeDistraction("BondageLover", "perk", "struggle", KDBondageLoverAmount, false, 0.1);
 

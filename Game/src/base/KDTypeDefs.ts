@@ -459,6 +459,8 @@ interface KDRestraintPropsBase {
 	showInQuickInv?: boolean,
 	/** The item is a chastity belt */
 	chastity?: boolean,
+	/** the item has a corset strictness */
+	corset?: number,
 	/** The item is a chastity bra */
 	chastitybra?: boolean,
 	/** The item is a piercing */

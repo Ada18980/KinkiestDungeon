@@ -7,6 +7,11 @@ let KDGameGlobals = {
 	Pronouns: ["She", "They", "It"],
 };
 
+let KDIntentionalSPSpendSrc = [
+	"player",
+
+];
+
 let KDFocusableTextFields = [
 	"PerksFilter",
 	"InvFilter",
@@ -2845,7 +2850,7 @@ function KDDoAttack(Enemy: entity, teasesub: boolean, attackCost: number, skip: 
 		KDChangeDistraction("BerserkerRage", "perk", "attack", 0.7 - 0.5 * data.attackCost, false, 0.33);
 	}
 	if (KDGameData.HeelPowerEffective > 0)
-		KDChangeBalanceSrc("heels", "debuff", "attack", data.attackCost * KDGetBalanceCost("attack") * (0.75 + 0.5 * KDRandom()) * KDBalanceAttackMult*10*KDFitnessMult(), true, true, 1);
+		KDChangeBalanceSrc("heels", "debuff", "attack", data.attackCost * KDGetBalanceCost("attack", KDPlayer()) * (0.75 + 0.5 * KDRandom()) * KDBalanceAttackMult*10*KDFitnessMult(), true, true, 1);
 
 	let origHP = Enemy.hp;
 	if (KinkyDungeonAttackEnemy(data.target, data.attackData, undefined, undefined, KinkyDungeonPlayerDamage)) {
@@ -2880,7 +2885,7 @@ function KDDoAttack(Enemy: entity, teasesub: boolean, attackCost: number, skip: 
 	}
 
 	if (data.skipTurn) skip = 1;
-	KDChangeStamina("attack", "weapon", "attack", data.attackCost, false, 1);
+	KDChangeStamina("player", "weapon", "attack", data.attackCost, false, 1);
 	KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "attack", 1);
 	if (!KinkyDungeonPlayerDamage.noHands) {
 		KinkyDungeonSetFlag("armattack", 1);
@@ -2911,7 +2916,7 @@ function KDDoCapture(Enemy: entity, attackCost: number, noadvance: boolean, skip
 		KDSetIDFlag(Enemy.id, "capOpPen", -1);
 		KDAddOpinionPersistent(Enemy.id, -50);
 	}
-	KDChangeStamina("capture", "capture", "attack", attackCost, false, 1);
+	KDChangeStamina("player", "capture", "attack", attackCost, false, 1);
 	KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "capture", 1);
 	if (KDGameData.Collection[Enemy.id + ""]) {
 		KDGameData.Collection[Enemy.id + ""].status = "";
@@ -3161,12 +3166,12 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 							if (moved) {
 								if (KinkyDungeonSlowLevel > 1 || (!KinkyDungeonStatsChoice.has("HeelWalker") && KinkyDungeonSlowLevel > 0)) {
 									if (KinkyDungeonSlowLevel < 10) {
-										KDChangeStamina("slow", "debuff", "move", moveMult * (KinkyDungeonStatStaminaRegenPerSlowLevel * KinkyDungeonSlowLevel) * delta, false, moveMult, true);
+										KDChangeStamina("player", "debuff", "move", moveMult * (KinkyDungeonStatStaminaRegenPerSlowLevel * KinkyDungeonSlowLevel) * delta, false, moveMult, true);
 									}
 								}
 								if (KDGameData.HeelPowerEffective > 0 && !KDGameData.Crouch ) {
 
-									KDChangeBalanceSrc("heels", "debuff", "move", -KDGetBalanceCost("move") * (0.75 + 0.5 * KDRandom()) * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult)*moveMult, true, true, 1);
+									KDChangeBalanceSrc("player", "debuff", "move", -KDGetBalanceCost("move", KDPlayer()) * (0.75 + 0.5 * KDRandom()) * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult)*moveMult, true, true, 1);
 								} else {
 									//KDChangeBalance((KDGameData.KneelTurns > 0 ? 0.5 : 0.25) * KDGetBalanceRate()*delta, true);
 								}
@@ -3427,9 +3432,9 @@ function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _
 						KDGameData.SawFlags[faction][c] = (KDGameData.SawFlags[faction][c] || 0) + 1;
 					}
 
-					KDChangeStamina("sprint", "move", "sprint", data.sprintCost, false, 1);
+					KDChangeStamina("player", "move", "sprint", data.sprintCost, false, 1);
 					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), KDBaseLightGreen, 2);
-					KDChangeBalanceSrc("sprint", "move", "sprint", -KDGetBalanceCost("sprint") * (0.5 + 1 * KDRandom()) * KDBalanceSprintMult*10*KDFitnessMult(), true);
+					KDChangeBalanceSrc("player", "move", "sprint", -KDGetBalanceCost("sprint", KDPlayer()) * (0.5 + 1 * KDRandom()) * KDBalanceSprintMult*10*KDFitnessMult(), true);
 					KinkyDungeonSetFlag("sprint", 2);
 					if (KinkyDungeonSlowLevel < 2) {
 						// Move faster

@@ -1820,6 +1820,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		factionFilters: {
 			Corset: {color: "Catsuit", override: false},
 		},
+		corset: 0.4,
 		Filters: {"HeavyCorset":{"gamma":1,"saturation":1,"contrast":1,"brightness":1.35,"red":1,"green":1,"blue":1,"alpha":1},"Corset":{"gamma":1.3,"saturation":0.9333333333333333,"contrast":1.2166666666666668,"brightness":2.2333333333333334,"red":1,"green":1,"blue":1,"alpha":1}},
 		restriction: 10,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.15, "Pick": 0.3},
@@ -2478,6 +2479,8 @@ const KinkyDungeonRestraints: restraint[] = [
 			Stripes: {color: "LightNeutral", override: true},
 			Crystal: {color: "Highlight", override: true},
 		},
+		
+		corset: 0.5,
 		restriction: 7,
 		linkCategories: ["LCorset"], linkSizes: [0.99],
 		LinkableBy: KDCorsetLink, strictness: 0.1, Color: ["#473488"], Group: "ItemTorso", power: 8, weight: 0,
@@ -3632,6 +3635,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			GarterLeft: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
 			GarterRight: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
 		},
+		corset: 0.6,
 		factionFilters: {
 			Corset: {color: "Catsuit", override: true},
 			Hardware: {color: "Highlight", override: false},
@@ -9970,6 +9974,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	alwaysKeep: true,
 	alwaysRender: true,
 	UnderlinkedAlwaysRender: true,
+	corset: 0.1,
 	escapeChance: {
 		"Struggle": 0.1,
 		"Cut": 0.1,
@@ -10050,6 +10055,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	alwaysRender: true,
 	UnderlinkedAlwaysRender: true,
 	inventory: true,
+	corset: 0.2,
 	escapeChance: {
 		"Struggle": -50,
 		"Cut": -50,

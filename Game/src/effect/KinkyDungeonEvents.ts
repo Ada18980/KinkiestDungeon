@@ -13,6 +13,7 @@ let KinkyDungeonSlimeParts = [
 ];
 let KDAlertCD = 5;
 let KDHeelPowerGrowthExponent = 0.5;//sqrt
+let KDCorsetTrainingMult = 0.001;
 
 let KDEventDataReset = {
 
@@ -12145,6 +12146,16 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			}
 		},
 	},
+	
+	"changeStamina": {
+		"corset": (e, data) => {
+			if (KDGameData.CorsetPowerEffective > 0) {
+				let capMult = 1 - (KDGameData.CorsetPowerEffective * KDCorsetSPReductionMult(data.player));
+				if (data.Cap > 0 && data.regen)
+					data.Cap *= capMult;
+			}
+		},
+	},
 	"perkOrb": {
 		"Cursed": (_e, data) => {
 			if (data?.perks?.includes("Cursed")) {
@@ -12956,7 +12967,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 	"playerAttack": {
 		"trainHeels": (_e, data) => {
 			if (KDHostile(data.enemy) && KDIsHumanoid(data.enemy)) {
-				KDTickTraining("Heels", KDGameData.HeelPowerEffective > 0 && !(KDGameData.KneelTurns > 0), KDGameData.HeelPower <= 0 && !KinkyDungeonGetRestraintItem("ItemBoots"), 1.5);
+				KDTickTraining("Heels", KDGameData.HeelPowerEffective > 0 && !(KDGameData.KneelTurns > 0), 
+				KDGameData.HeelPower <= 0 && !KinkyDungeonGetRestraintItem("ItemBoots"), 1.5);
 			}
 		},
 		"GroundedInReality": (_e, data) => {

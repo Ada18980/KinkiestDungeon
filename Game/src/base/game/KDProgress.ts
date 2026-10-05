@@ -36,6 +36,7 @@ interface ProgressListDrawData {
     type: string,
     name: string,
     progressString: string,
+    effectString: string,
     bonusprogress?: string,
     failpercentage?: string,
 }
@@ -56,6 +57,7 @@ function KDEnumerateTrainingProgress(data: ProgressListEventData) {
                 type: "Training",
                 name: type,
                 progressString: KDGetTrainingXPString(points, lvl),
+                effectString: KDTrainingTypeProperties[type].effectVal ? KDTrainingTypeProperties[type].effectVal(data.player) : "",
                 bonusprogress: "+" + Math.round(next * 100),
                 failpercentage: Math.round(10000*(skipped / Math.max(total, points + skipped, 0.000001)))/100 + "%",
             };
@@ -267,12 +269,21 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
                 DrawTextFitKD(textSplit[i], 
                     x + 50, y + 25 + i * (fsize+1), width - 100, KDTextWhite, KDTextGray0, fsize, "left")
             }
+
+            if (drawData.effectString) {
+                DrawTextFitKD(TextGet("KDEff" + drawData.type + "_" + drawData.name), 
+                        x + width/2 + 20, y + 105, 400, KDTextWhite, 
+                        KDTextGray0, 24, "right");
+                DrawTextFitKD(drawData.effectString, 
+                        x + width/2 + 40, y + 105, 400, item.color, 
+                        KDTextGray0, 24, "left");
+            }
             
             DrawRectKD(container, kdpixisprites, id + "pb1border", {
                 Color: item.bordercolor,
                 Left: x + 40,
                 Height: 24,
-                Top: y + 120,
+                Top: y + 130,
                 Width: width - 80,
                 zIndex: z + 102,
                 alpha: 0.9,
@@ -282,7 +293,7 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
                 Color: item.color,
                 Left: x + 40,
                 Height: 24,
-                Top: y + 120,
+                Top: y + 130,
                 Width: (width - 80) * item.progress,
                 zIndex: z + 101,
                 alpha: 0.9,

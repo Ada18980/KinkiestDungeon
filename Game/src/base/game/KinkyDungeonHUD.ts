@@ -1239,7 +1239,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 			24, "left", 110, 0.9);
 		KinkyDungeonBarTo(kdstatusboard, 1000, BalanceOffset + 8 - BalanceSpacing*(II), 500, 12, 100*KDGameData.Balance,
 			"#4fd658", "#283540", KDGameData.Balance * 100, "#ffee83",
-			KDSteps(KDGameData.Balance, -KDGetBalanceCost("move")*1.5), "#283540", "#4fd658");
+			KDSteps(KDGameData.Balance, -KDGetBalanceCost("move", KDPlayer())*1.5), "#283540", "#4fd658");
 
 		if (!KDGameData.Training) KDGameData.Training = {};
 		DrawTextFitKDTo(kdstatusboard, TextGet("KDBalanceTraining")

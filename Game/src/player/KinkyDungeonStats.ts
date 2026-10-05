@@ -1243,6 +1243,13 @@ function KDChangeStamina(src: string, type: string, trig: string, Amount: number
 		console.trace();
 		KinkyDungeonStatStamina = 0;
 	}
+	if (KinkyDungeonStatStamina < stamPre && src && (
+		KDIntentionalSPSpendSrc.includes(src)
+	)) {
+		let amt = KDCorsetTrainingMult * (stamPre - KinkyDungeonStatStamina);
+		KDTickTraining("Corset", KDGameData.CorsetPower > 0, !KDGameData.CorsetPower, 
+			amt + (KDGameData.CorsetPower), 1 + KDGameData.CorsetPower * 2);
+	}
 	return KinkyDungeonStatStamina - stamPre;
 }
 /**
@@ -1826,7 +1833,9 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	// Slowness calculation
 	KinkyDungeonCalculateSlowLevel(delta);
 	KDGameData.HeelPowerEffective = KinkyDungeonCalculateHeelLevel(delta);
+	KDGameData.CorsetPowerEffective = KinkyDungeonCalculateCorsetLevel(delta);
 	KDGameData.HeelPower = KinkyDungeonCalculateHeelLevel(delta, true);
+	KDGameData.CorsetPower = KinkyDungeonCalculateCorsetLevel(delta, true);
 	let sleepRate = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sleepiness")
 		+ (KDIsImmuneToGas(KDPlayer()) ? 0 : (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessGas")
 			* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2)))
@@ -2117,6 +2126,20 @@ function KinkyDungeonCalculateHeelLevel(_delta: number, overrideKneel?: boolean)
 		Math.pow(heelpower, 0.75)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelPower")
 		+ Math.max(0, KinkyDungeonSleepiness));
+}
+
+
+function KinkyDungeonCalculateCorsetLevel(delta: number, baseAmount?: boolean): number {
+	let corsetpower = 0;
+	for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
+		let inv = inv2.item;
+		if ((KDRestraint(inv)?.corset)) {
+			corsetpower = Math.max(corsetpower, KDRestraint(inv)?.corset);
+		}
+	}
+	return Math.max(0,
+		Math.pow(corsetpower, 0.75)
+		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "CorsetPower"));
 }
 
 function KinkyDungeonCalculateSlowLevel(delta?: number) {

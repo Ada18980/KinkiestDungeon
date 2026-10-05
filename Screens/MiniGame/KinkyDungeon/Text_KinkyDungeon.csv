@@ -2096,6 +2096,7 @@ KinkyDungeonAngelDefeated,"Angel: MMMMMPHH!!!"
 KinkyDungeonAngelUnlock,"(The angel looks puzzled and unlocks your divine restraints)"
 
 KDGenericAttack,attack
+KDCorsetDesc,Reduces maximum SP by ${FRACTION}%
 
 KDArmorBlock,"The EnemyName pulls away your ArmorName!!!"
 KDArmorBlockBug,"There was a bug removing your ArmorName. Please report!"
@@ -4163,8 +4164,8 @@ RestraintBindingDress,Binding Dress
 RestraintBindingDressDesc,"It's a devious dress! I hope your elbows are flexible~"
 RestraintBindingDressDesc2,"So many laces! It would take quite a while to put this on normally. That's what magic is for!"
 RestraintDressCorset,Ornamental Corset
-RestraintDressCorsetDesc,"Your figure looks gorgeous in this~"
-RestraintDressCorsetDesc2,"It's so tight you won't be able to undo the laces yourself, dear!"
+RestraintDressCorsetDesc,"Your figure looks gorgeous in this, but not so much your athletic capabilities."
+RestraintDressCorsetDesc2,"The laces are impressively tight, the boning is steel but ultimately it's made of delicate fabric. You wouldn't possibly cut it, would you?"
 
 RestraintDressGag,Fancy Ball Gag
 RestraintDressGagDesc,"A cute ball gag that fills your mouth right up!"
@@ -32614,6 +32615,9 @@ KDNA,n/a
 KDTrainingLevelHeels,"[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels."
 KDTrainingLevelCorset,"[EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamina penalty from corsets."
 
+KDEffTraining_Heels,Balance Costs:
+KDEffTraining_Corset,Corset Penalty:
+
 KDOccupied,"The furniture space is occupied"
 KDCombatManeuver,"Combat Maneuver: Your next move is instant."
 
@@ -34053,9 +34057,9 @@ KDProgressUnselected,Select a progress item to show details
 
 KDProgress_Training_Corset,"Corset training affects the level of max stamina penalty incurred from wearing a corset. Levels are gained by spending stamina while wearing a corset.\nTraining failure occurs if you are not wearing a corset when you spend stamina."
 KDProgress_Training_Heels,"Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions."
-KDProgressCurrent,"Current Progress: "
+KDProgressCurrent,"Current Progress:"
 KDProgressMilestones,"Milestones:"
-KDProgressBonusProgress,"Bonus Progress (gained next Floor):"
+KDProgressBonusProgress,"Bonus Progress (per floor):"
 KDProgressFailPercentage,"Mistakes Made:"
 KDProgressRecentModifiers,"Recent Modifiers:"
 

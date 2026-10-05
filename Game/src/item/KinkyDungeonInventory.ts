@@ -1208,13 +1208,16 @@ function KDInventoryItemHover(item: item): InventoryHoverObject {
  * @param [xOffset]
  */
 function KinkyDungeonDrawInventorySelected (
-	 item:           {name: any, item: item, preview: string, preview2?: string, key?: string},
+	 item:           itemPreviewEntry,
 	noscroll?:       boolean,
 	_treatAsHover?:  boolean,
 	xOffset:         number = 0,
 	yOffset:         number = 0
 )
 {
+
+	let player = KDPlayer();
+
 	if (!noscroll) {
 		if (KDToggles.SpellBook) {
 			KDTextTan = KDTextTanSB;
@@ -1345,6 +1348,8 @@ function KinkyDungeonDrawInventorySelected (
 			: (restraint.escapeChance.Pick != null ? TextGet("KinkyLockable") : TextGet("KinkyNonLockable"))),
 			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, 
 			yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 375, KDBookText, KDTextTan, 30, undefined, 130);
+
+			KDDrawExtraItemInfo(item, xOffset, yOffset, player);
 
 			let goddesses = "";
 			if (restraint.shrine)
@@ -2102,7 +2107,7 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, skipfilters = [], addFilte
 				})
 			}
 
-			DrawButtonKDEx("categoryfilter" + I, (_bdata) => {
+			DrawButtonKDEx("categoryfilter" + I + "." + dim, (_bdata) => {
 				KinkyDungeonCurrentFilter = KDFilters[I];
 
 				KinkyDungeonCurrentPageInventory = 0;
@@ -4427,4 +4432,27 @@ function KDFindHotkeyInGrid(index: number, currentPage: number, gridList: any[],
 
 function KDGetDescOffset(item: itemPreviewEntry) {
 	return ((item.item?.type == Weapon) ? 10 : 0);
+}
+
+function KDDrawExtraItemInfo(item: itemPreviewEntry, xOffset: number, yOffset: number, player: entity) {
+
+	if (KDRestraint(item.item)?.corset)
+		DrawTextKD(TextGet("KDCorsetDesc", {
+			FRACTION: Math.round(KDRestraint(item.item)?.corset * 100 * KDCorsetSPReductionMult(player)),
+			}),
+			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), 
+			yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 435,
+			KDBookText, KDTextTan, 22,
+			 undefined, 130);
+			
+	
+}
+
+function KDCorsetSPReductionMult(player: entity, buffs: boolean = true) : number {
+	let mult = 1;
+
+	mult *= 0.9**( (KDGameData.Training?.Corset?.training_stage || 0) + KDEntityBuffedStat(player, "CorsetTraining"));
+
+
+	return mult;
 }

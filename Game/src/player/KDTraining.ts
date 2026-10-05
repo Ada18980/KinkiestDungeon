@@ -3,27 +3,44 @@ let KDBaseTrainingMinRatioPercent = 0.5;
 
 let KDTrainingTypes = [
 	"Heels",
+	"Corset",
 ];
+
+let KDTrainingTypeProperties: Record<string, KDTrainingProps> = {
+	Heels: {
+		color: KDBaseTeal,
+		prereq: (player) => {return true;},
+		effectVal: (player) => {
+			let mult = 100 * KDHeelTrainingMult(player, KDHeelTrainingEffectMultBase, false);
+			return "-" + Math.round(100 - 100 * mult) + "%";
+		}
+		
+	},
+	Corset: {
+		color: KDBaseGreen,
+		prereq: (player) => {return true;},
+		effectVal: (player) => {
+			return "-" + Math.round(-100 * (1 - KDCorsetSPReductionMult(player, false))) + "%";
+		},
+	},
+}
+
 interface KDTrainingProps {
 	color: string,
 	showBuff?: boolean,
 	dontShowProgress?: boolean,
 	prereq: (player: entity) => boolean,
+	effectVal: (player: entity) => string,
+	
 	calc_xpnext?: (player: entity) => number,
 	calc_xpmax?: (player: entity) => number,
 	
 	
 }
-let KDTrainingTypeProperties: Record<string, KDTrainingProps> = {
-	Heels: {
-		color: KDBaseGreal,
-		prereq: (player) => {return true;}
-	},
-}
 
-function KDGetHeelTraining(): number {
+function KDGetHeelTraining(buffs: boolean = true): number {
 	if (!KDGameData.Training) KDGameData.Training = {};
-	return (KDGameData.Training?.Heels?.training_stage || 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelTraining");
+	return (KDGameData.Training?.Heels?.training_stage || 0) + (buffs ? KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelTraining") : 0);
 }
 
 function KDTrip(delta: number) {
@@ -49,8 +66,10 @@ function KDTripDuration(): number {
 	return Math.max(2, Math.round(5 * mult));
 }
 
-function KDGetBalanceCost(trig: string): number {
-	let mult = 1;//KinkyDungeonStatsChoice.has("HeelWalker") ? 0.5 : 1;
+let KDHeelTrainingEffectMultBase = 1;
+
+function KDGetBalanceCost(trig: string, player: entity): number {
+	let mult = KDHeelTrainingEffectMultBase;//KinkyDungeonStatsChoice.has("HeelWalker") ? 0.5 : 1;
 	if (KinkyDungeonStatsChoice.get("PoorBalance")) mult *= 1.7;
 	if (!KinkyDungeonIsArmsBound()) mult *= 0.6;
 
@@ -60,8 +79,12 @@ function KDGetBalanceCost(trig: string): number {
 		}
 	}
 
-	let training = KDGetHeelTraining();
-	return KDGameData.HeelPowerEffective * (0.01*mult*5/(5+training) - (0.001));
+	return KDGameData.HeelPowerEffective * (KDHeelTrainingMult(player, mult) - (0.001));
+}
+
+function KDHeelTrainingMult(player: entity, mult: number, buffs: boolean = true) {
+	let training = KDGetHeelTraining(buffs);
+	return 0.01*mult*10/(10+training);
 }
 
 /** 50 bondage resist halves the balance cost of resisting, per power */

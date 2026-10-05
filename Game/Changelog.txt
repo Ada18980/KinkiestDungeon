@@ -81,6 +81,7 @@ Must do
 - Added Buttplug.io and Xtoys support
 - Added perk "Layers Under Layers" which enables the excessive restraint stacking behavior you all love
 - Added 'Default to RGB Color Picker' option to Character options
+- Added Corset Training
 - Color picker type now defaults to RGB
 - Reworked a lot of faction color palettes
 - Added more depth to 'toying with you' behavior
