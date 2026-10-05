@@ -9383,7 +9383,7 @@ function KDRunBondageResist (
 			restraintpower += Math.max(1, r.r.power);
 	}
 	let added: { r:restraint, v: ApplyVariant, iv: string}[] = [];
-	let name = enemy ? TextGet("Name" + enemy.Enemy.name) : (spell ? TextGet("KinkyDungeonSpell" + spell.name) : "");
+	let name = enemy ? TextGet("Name" + enemy.Enemy.name) : (spell ? TextGet("KinkyDungeonSpell" + spell.name) : TextGet("KDGenericAttack"));
 	if (enemy && ((enemy.Enemy.power * 0.5) || 0) < KDGameData.Shield) {
 		restraintblock = -1;
 	} else if (spell && (spell.power*0.5 || 0) < KDGameData.Shield) {
