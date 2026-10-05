@@ -526,7 +526,7 @@ AddModel({
 			NoOverride: true,
 		},
 		{ Name: "TorsoUpper", Layer: "Bodysuit", Pri: 30,
-			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			//HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			Invariant: true,
 			InheritColor: "Cloth",
 		},

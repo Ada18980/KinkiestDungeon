@@ -3605,6 +3605,10 @@ function KDDrawStruggleGroups() {
 					KinkyDungeonDrawInventorySelected(
 						KDGetItemPreview(currentHighlightedItem || item), false, true, 700);
 				//}
+
+				if (!KDStruggleGroupHighlightedItem) {
+
+				}
 				if (!currentHighlightedItem)
 					currentHighlightedItem = item;
 				let data = {
@@ -3676,7 +3680,7 @@ function KDDrawStruggleGroups() {
 
 
 					for (let d of dynamicList) {
-						if (dynamicList.length <= 1) break;
+						if (dynamicList.length == 0) break;
 						//if (d != item)//KDRestraint(item) && (!KDRestraint(item).UnLink || d.name != KDRestraint(item).UnLink))
 						//{
 						let dotdotdot = false;
@@ -4198,6 +4202,7 @@ let KDScrollMovedStruggleItem = false;
 function KDDrawScrollableItemList(x: number, y: number, size: number, width: number, sg: StruggleGroup, item: item, dynamicList: item[],
 	surfaceItems: item[], zIndex: number = 50, highlightSG?: boolean) {
 
+	
 	let listID = x + y + KDRestraint(item).Group;
 	let doFix = false;
 	if (KinkyDungeonCheckClothesLoss || KDScrollMovedStruggleItem || ShouldUpdateList(listID)) {
@@ -4213,6 +4218,7 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 			doFix = true;
 		}
 	}
+	let hoverCallback = null;
 	//@ts-ignore
 	let drawn: item = KDDrawScrollableList(listID, true, (
 		container: PIXIContainer,
@@ -4223,7 +4229,7 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 		isSelected: boolean,
 		selectedIndex: number,
 		list: KDScrollableListData)  => {
-		let selected = dynamicList[KDStruggleGroupLinkIndex[sg.group]] == listItem;
+		let selected = dynamicList[KDStruggleGroupLinkIndex[sg.group] || 0] == listItem;
 
 		if (listItem) {
 
@@ -4247,7 +4253,7 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 
 			let GroupText = (sg.name && item) ? (KDGetItemName(item)) : ( TextGet("KinkyDungeonGroup"+ sg.group)); // The name of the group to draw.
 
-
+			let hover = false;
 
 			if (DrawButtonKDExTo(container, listID + "_item_" + listItem.id, (bdata) => {
 
@@ -4272,15 +4278,28 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 				zIndex: zIndex,
 				alpha: KDStruggleGroupBGAlpha,
 			})) {
-				if (MouseIn(x, y, width, size)) {
-					// draw the hover thing
-					KDStruggleGroupHighlightedItem = listItem;
-					DrawTextFitKD(KDGetItemName(listItem), 
-					list.x + visualIndex * size, list.y - size * 0.13, 300, KDBaseWhite, 
-					KDBaseBlack, 18, "left", 120)
-				}
+				hover = true;
 			}
+			if ((hover && MouseIn(x, y, width, size))
+					|| (KDStruggleDrawMode == KDDrawStruggleEnum.STRUGGLE && (
+					!KDStruggleGroupHighlightedItem && selected))) {
+					// draw the hover tooltip
+
+					if (MouseIn(x, y, width, size))
+						KDStruggleGroupHighlightedItem = listItem;
+
+					let item = listItem;
+
+					hoverCallback = () => {
+						DrawTextFitKD(KDGetItemName(item), 
+						list.x + visualIndex * size, list.y + ((list.y < 20 || KDStruggleDrawMode == KDDrawStruggleEnum.STRUGGLE) ? 1 : -1) * size * 0.13, 300, KDBaseWhite, 
+						KDBaseBlack, 18, "left", 120)
+					}
+
+					
+				}
 		}
+
 		
 
 		
@@ -4288,6 +4307,7 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 	}, false, true, 4, undefined, 
 	"", "", undefined, undefined, undefined, undefined, false);
 
+	if (hoverCallback) hoverCallback();
 	if (doFix) {
 		KDFixScrollableList(listID, 2);
 	}

@@ -171,7 +171,7 @@ KDToggleNipplePiercingsHide,Hide Nipple Piercings
 KDToggleForcePalette,Use default palette when no outfit is worn
 KDToggleRestraintPalette,Apply worn restraint palettes to player
 KDToggleFlipPlayer,Flip Player Display
-KDToggleGreyscaleBlindness,Grayscale when Blind
+KDToggleGreyscaleBlindness,Greyscale when Blind
 KDToggleFastFloaters,Faster Floater Fade
 KDToggleNoDmgFloaters,No Damage Floaters
 KDToggleDynamicArmor,Dynamic Armor (must hide armor)
