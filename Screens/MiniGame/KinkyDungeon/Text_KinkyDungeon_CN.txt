@@ -3101,7 +3101,6 @@ Devious Dungeon Challenge 已启用。
 - Divine
 神圣
 # :: KinkyDungeonRarity10
-# :: KinkyDivineLockType
 # :: KinkyDivine2LockType
 # :: KDFilterFiltersDivine
 # :: KDPaletteGoddess
@@ -4255,7 +4254,8 @@ EnemyName 没有命中你！
 
 - The RESTRAINTNAME creates more bindings out of thin air! (+RestraintAdded)
 RESTRAINTNAME 凭空创建了更多束缚！ ( +RestraintAdded )
-- A RESTRAINTNAME has appeared around your neck!  Beware of additional restraints!
+# - The RESTRAINTNAME conjures a ${LockType} on ${your} ${RestraintName}
+- A RESTRAINTNAME has appeared around ${your} neck!  Beware of additional restraints!
 一个 RESTRAINTNAME 出现在你的脖子上！当心额外的束缚！
 - The RESTRAINTNAME has run out of bindings to add and has gone dormant for a period of time.
 RESTRAINTNAME 已经没有可添加的束缚了，将进入一段休眠期。
@@ -6875,6 +6875,8 @@ AttackName 击中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害, 伤�
 这把锁似乎有魔力，挫败了所有的撬锁尝试！
 - The lock is definitely magical and forces your pick out!
 这把锁绝对是魔法造物，强行推开了你的撬锁器！
+# :: KinkyDungeonStruggleCantPickGoldLock
+# :: KinkyDungeonStruggleCantPickGoldPlusLock
 - The lock is divine. A mortal shouldn't even try to pick it.
 此锁为神圣之锁，凡人不应尝试撬动。
 # :: KinkyDungeonStruggleCantPickDivineLock
@@ -7477,6 +7479,8 @@ TargetRestraint 太结实了，不会破……
 # :: m_RubberHands_l_Rubber
 # :: m_RubberHands_l_Rubber
 # :: KDPaletteRubber
+- Quest
+神圣
 - Crystal
 水晶
 :: KinkyCrystalLockType
@@ -7523,6 +7527,7 @@ TargetRestraint 太结实了，不会破……
 # :: KinkyGoldLockType
 # :: KDItemFilter_Restraint_Ancient
 # :: KDFilterFiltersAncient
+# - Contract
 - Simple Lock
 简易锁
 # :: KinkyWhiteLock
@@ -7540,10 +7545,12 @@ TargetRestraint 太结实了，不会破……
 圆盘锁
 - Rubber Lock
 橡胶锁
+# - Ancient Lock
+# - Contract Lock
+- Quest Lock
+神圣锁
 - Divine Lock
 神圣锁
-# :: KinkyDivineLock
-# :: KinkyDivine2Lock
 - Crystal Lock
 水晶锁
 - Runic Lock
@@ -7607,6 +7614,7 @@ TargetRestraint 太结实了，不会破……
 # :: KDEscapeUnlock
 # :: KDContextMenu_Unlock
 # :: KDContextMenu_CurseUnlock
+# :: KDContextMenu_CurseUnlock2
 - Command
 命令
 # :: KinkyDungeonUnlockDoorPurple
@@ -8180,6 +8188,7 @@ Zora的船员
 很生气
 - Surprise!
 惊喜！
+# - Training System
 - Fierce Debater
 激烈的辩手
 # :: KinkyDungeonFactionDebate
@@ -25986,14 +25995,18 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 
 - (The SPEAKER, your longtime friend, smiles)|Well well, if it isn't you again!|I see that you've decided to challenge the dungeon again.|Don't forget to bring some gold back with you,|there's a fee for rescue~
 ( SPEAKER，你的老朋友，微笑 ) |好吧好吧，如果不是你的话！|我看到你决定再次挑战地牢。|别忘了带一些金币回来，| 救援是要收费的~
+# - (The SPEAKER smiles)|Welcome welcome.|You've been quite the customer~|(Current Favors: ${FAVORS})
 
 - Can you help with these restraints?
 你能帮助挣脱这些束缚吗？
 - Pfffmmm hhmmph mmph... (Please Help Me)
 呜呜呜 哼嗯嗯 嗯嗯嗯...  ( 请帮帮我 )
+# - Can you help with my divine locks?
+# - Mmmmphh... (Help with divine locks)
 - No can do! Even I can't get those off of you.
 没办法啊！ 就连我也无法把它们从你身上拿走。
-
+# - No can do!|If you're wondering about those fancy gold-colored locks,|Well... a contract is a contract~
+# - Wow, you got yourself into a tight mess, haven't you...\nWell I'm sure you're in those for a reason, sweetie~
 - Caught by...?
 被……抓住了？
 - Hah!|You've been here a million times!|You obviously know how dangerous it is, yes?
@@ -26018,6 +26031,10 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 （从存储系统出售）
 - Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)
 呜哇！好可爱啊OwO！| ( ${EThey}微笑着轻轻拍拍你的头 )
+# - How are you removing these divine restraints anyway?
+# - (${EThey} wink${Es}, a smirk stretching across ${Etheir} face)|That's a trade secret, sweetie~
+
+
 
 - Do you have anything for sale?
 你们有东西卖吗？
@@ -26174,8 +26191,22 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 
 
 
+# - (The SPEAKER takes a look at your locks)|Hum, it's not generally okay to mess with divine contracts...|However, I know a few tricks myself. And I do take care of my customers~|(Current Favors: ${FAVORS})
+# - Please get these off me. (Pay ${FAVORCOST} favors)
+# - (Nod your head) (Pay ${FAVORCOST} favors)
+# - I should respect the divine... (Leave)
+# - I'll think about it. (Leave)
+# - Mmmph. (Leave)
+# - (The SPEAKER snaps ${Etheir} fingers)|Let's get to it, then!|(${EThey} scribe${Es} a couple of magical circles over your body,|then press${Es} ${Etheir} hand into your body with a magical glow.|Your locks click free and vanish into the air)|Just the locks, of course, unless you have other business~
+
 - (The SPEAKER pats you down and makes sure you're okay)|I can definitely help with those!|But as you know, I help a lot of adventurers just like you.|You know what, I'll give you a discount!|That'll be RESCUECOST gold pieces!
 ( SPEAKER 拍了拍你并确保你没事 ) |我绝对能帮忙处理！|但如你所知，我帮助了很多像你一样的探险家们。|你猜怎么着，我会给你打个折！|只要 RESCUECOST 金币！
+
+
+# - Do it for a friend? (-${FAVORCOST} Favors. Current: ${FAVORS}}
+# - (Make a pleading face) (-${FAVORCOST} Favors. Current: ${FAVORS}}
+# - (The SPEAKER rolls ${Etheir} eyes, but smiles)|Alright alright~
+
 
 
 - (The SPEAKER rubs her chin)|Sorry ${PGen}!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
@@ -26821,6 +26852,8 @@ FOODMSG| ( 它邀请你分享它的美食 )
 它似乎正在发挥作用！ 你 RESTRAINTNAME 上的封印被削弱了。
 - The cursed seal on your RESTRAINTNAME disappears.
 你的 RESTRAINTNAME 上的诅咒封印消失了。
+# :: KDRemoveOnDmgType
+# :: KDRemoveOnDisenchant
 - You are moved along by the conveyor...
 你被传送带移动着......
 - Strange machinery begins sealing you in shiny latex!
@@ -48388,7 +48421,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 
 
 
-- Your divine-locked restraints can only be removed by completing a shrine quest.
+- Quest-locked restraints can only be removed by completing a shrine quest.
 你的神圣锁束缚只能通过完成神泉的任务来解开。
 
 - The Goddess hates you. That won't work.
@@ -48674,6 +48707,8 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 开始时，在没有经过堵嘴训练的情况下佩戴一件上锁的口塞。
 - Corset Training
 束腰训练
+# :: KinkyDungeonStatCorsetTraining
+# :: KDProgressItem_TrainingCorset
 - Start locked in a corset with no corset training.
 开始时，在没有经过束腰训练的情况下穿戴一件上锁的束腰。
 - Sensory Training
@@ -49148,6 +49183,9 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 典狱长的腰带
 - You may go on your way, but only for as long as your freedom is useful to her.
 你可以继续走你的路，但前提是你的自由对她有用。
+# :: RestraintWardenBeltDesc
+# :: RestraintWardenCollarDesc
+# :: RestraintWardenCBeltDesc
 - A golden belt that enforces respect for the Goddesses. Breaking spell orbs results in a punishment.
 一条金色腰带，用来表达对女神的敬意。破坏宝珠会受到惩罚。
 
@@ -49155,8 +49193,23 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 特权腰带
 - You've defeated the Warden, proving that you are worthy to take what you want.
 你已经打败了典狱长，证明你有资格得到你想要的东西。
+# :: RestraintWardenBelt2Desc
+# :: RestraintWardenCollar2Desc
+# :: RestraintWardenCBelt2Desc
 - A golden belt that marks you as a person of great import. -50% rep penalty for breaking orbs.
 一条金腰带，标志着您是一位重要人物。打破宝珠的声誉惩罚 -50%。
+
+# - Warden's Collar
+# - A golden collar that enforces respect for the Goddesses. Breaking spell orbs results in a punishment.
+
+# - Collar of Privilege
+# - A golden collar that marks you as a person of great import. -50% rep penalty for breaking orbs.
+
+# - Warden's Chastity Belt
+# - A golden chastity belt that enforces respect for the Goddesses. Breaking spell orbs results in a punishment.
+
+# - Chastity Belt of Privilege
+# - A golden chastity belt that marks you as a person of great import. -50% rep penalty for breaking orbs.
 
 - Sharpshooter
 神射手
@@ -49338,9 +49391,9 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 你的记录太糟糕了，我现在要走了。
 - Mmpphgh? (Go to pass ${Ethem})
 Mmpphgh? ( 从${Ethem}身边走过 )
-- (She smirks)|Not so fast, dear~|You'll have to wear a special collar to pass.
+- (She smirks)|Not so fast, dear~|You'll have to wear a special ${Restraint} to pass.
 ( 她笑了 ) |别那么快，亲爱的~|你得戴上特殊的项圈才能通过。
-- I won't wear anyone's collar!
+- I won't wear anyone's ${Restraint}!
 我不会戴任何人的项圈！
 - (She smirks)|Tsk tsk. Then you won't pass.
 ( 她笑了 ) |啧啧，那你就过不了关了。
@@ -49352,7 +49405,7 @@ Mmpphgh? ( 从${Ethem}身边走过 )
 Hmmph. ( 嘲笑${Ethem} )
 - (She frowns)|Watch your tongue~
 ( 她皱眉 ) |注意你的言辞~
-- (She frowns)|I do not wear collars.
+- (She frowns)|I do not wear ${Restraints}.
 ( 她皱起眉头 ) |我不戴项圈。
 - You'd be better off wearing mine instead.
 你最好还是穿我的。
@@ -49417,9 +49470,20 @@ Mmmph! ( 热切地点头 )
 - I didn't think it would involve a test...
 我不认为这会涉及测试...
 
-- (SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special collar.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
+# - collar
+# - collars
+# - collared
+# - chastity belt
+# - chastity belts
+# - belted
+# - restraint
+# :: KDWardenRestraint_Belt
+# :: KDWardenRestraints_Belt
+# - restrained
+
+- (SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special ${Restraint}.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
 ( SPEAKER挥动着${Etheir}鞭子)|请允许我做一个正式的自我介绍|我是守护者，是受神命的审判官兼执行者。|那些进入这座山的人都是在我的监视下进入的|为了确保这一点，我制作了一个特殊的项圈|这将确保你不会玷污圣地|如果你接受，我可以让你通过~
-- I will never be collared by you!
+- I will never be ${Restrained} by you!
 我永远不会被你套牢！
 - (Shake your head and scoff)
 (摇头嘲笑)
@@ -49463,11 +49527,11 @@ Mmmph! ( 热切地点头 )
 我输了。现在该怎么办？
 - I won't submit to you!
 我不会向你屈服的！
-- (Accept the belt eagerly)
+- (Accept the ${Restraint} eagerly)
 ( 急切地接受项圈 )
-- (Accept the belt begrudgingly)
+- (Accept the ${Restraint} begrudgingly)
 ( 勉强接受项圈 )
-- (SPEAKER presents you with your 'reward'...)|(It closes around your waist seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
+- (SPEAKER presents you with your 'reward'...)|(It closes around you seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
 （SPEAKER 向你展示你的“奖励”……）|（它无缝地围绕着你的腰部）|现在……你将被允许自由行动，|但前提是你接受了足够的训练。
 
 - (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really believe it would be this easy?
@@ -49475,10 +49539,15 @@ Mmmph! ( 热切地点头 )
 
 - (SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
 ( SPEAKER 蹲下 ) |最令人印象深刻...|我很少输给探险家...|我很想最终得到你~
+# - (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps ${Etheir} fingers and tosses you a glowing collar)|This is a special one, reserved for those with divine privilege.|You've earned it.
 - (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps ${Etheir} fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
 ( SPEAKER看起来很惊讶 ) |我没想到你会如此……顺从。| ( ${EThey}打了个响指，扔给你一条发光的贞操带 ) |这是一条特殊的贞操带，只留给拥有神圣特权的人。|这是你应得的。
+# :: rTheWardenWinAcceptBelt
+# :: rTheWardenWinAcceptCBelt
+# - (Wear ${Etheir} collar anyway)
 - (Wear ${Etheir} waist belt anyway)
 （无论如何都要穿上${Etheir}贞操带）
+# - (Wear ${Etheir} chastity belt anyway)
 - (SPEAKER shakes ${Etheir} head as you force a gag into ${Etheir} mouth)|MMMMMPH!
 ( SPEAKER摇了摇头，随后你强行将口塞塞入${Etheir}嘴巴 ) |MMMMMPH!
 
@@ -50518,14 +50587,15 @@ ENMYNME CHTRNME 的 RMNME
 
 
 
-- The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
+- The seal can be disenchanted, or overloaded with a 200 MP or a Mana Potion.
 这把锁被忏悔封印保护着。若要解锁它，你必须支付 1 技能点。
 - The restraint won't budge.
 束缚不会动摇。
 # :: KinkyDungeonCurseStruggleSpellLock1
 # :: KinkyDungeonCurseStruggleSpellLock3
-- You perform a ritual to unlock the item!
+- You overload the seal with your own mana!
 你执行了一个仪式来解锁该物品！
+# - You pour a mana potion on the seal to overload it!
 
 
 - The lock is protected by a seal of repentance. To unlock it you must pay AMNT spell points!
@@ -51419,6 +51489,7 @@ N/A
 
 - [EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
 [经验 : AMNT/LMT][进入下一层 +NXT 经验] 高跟鞋训练可以提高你的平衡能力，防止你摔倒
+# - [EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamila penalty from corsets.
 
 - The furniture space is occupied
 家具空间被占用
@@ -53032,6 +53103,7 @@ NME 由于不够显要，被自动释放
 
 - No Actions Available
 没有可用的行动
+# - Pick Up
 # - Open Container
 - Talk
 交谈
@@ -53072,6 +53144,12 @@ NME 由于不够显要，被自动释放
 
 - Inspect Lock
 检查解锁条件
+
+
+# - Overload
+# - Pour Mana Potion
+
+
 
 - (Already slept here)
 (已经睡过一次了)
@@ -53703,7 +53781,8 @@ Boss
 - Select a progress item to show details
 选择一项进度以显示更多细节
 
-- Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions, reducing XP gain by a multiplier.
+# - Corset training affects the level of max stamina penalty incurred from wearing a corset. Levels are gained by spending stamina while wearing a corset.\nTraining failure occurs if you are not wearing a corset when you spend stamina.
+- Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions.
 高跟鞋训练影响你穿着高跟鞋时保持平衡的能力。穿着高跟鞋移动以提升训练进度。\n如果不穿高跟鞋，训练会失败，减少部分经验值。
 - Current Progress: 
 当前进度：
