@@ -66,7 +66,51 @@ let KDBaseCursedRed = "#f52358";
 
 let KDVibeTextColor = "#ff88ff";
 
+
+let KDTextWhite = KDBaseWhite;
+let KDTextGray3 = "#aaaaaa";
+let KDTextGraymid = "#888888";
+let KDTextGraymidlow = "#666666";
+let KDBookTextNew = "#efefef";
+let KDTextTanNew = "#222222";
+let KDBookTextSB = KDBaseBlack;
+let KDTextTanSB = "#d6cbc5";
+let KDBookText = KDBookTextNew;
+let KDTextTan = KDTextTanNew;
+let KDTextGray2 = "#333333";
+let KDTextGray1 = "#111111";
+let KDTextGray05 = "#030303";
+let KDTextGray0 = KDBaseBlack;
+let KDTextGreen1 = "#001100";
+let KDTextBlue1 = "#000011";
+let KDTextRed1 = "#110000";
+let KDTextRedBG = "#551616";
+let KDCurseColor = "#ff55aa";
+let KDGoodColor = "#77ff99";
+
+
 let KDColorList = {
+    KDTextWhite: KDBaseWhite,
+    KDTextGray3: KDTextGray3,
+    KDTextGraymid: KDTextGraymid,
+    KDTextGraymidlow: KDTextGraymidlow,
+    KDBookTextNew: KDBookTextNew,
+    KDTextTanNew: KDTextTanNew,
+    KDBookTextSB: KDBaseBlack,
+    KDTextTanSB: KDTextTanSB,
+    KDBookText: KDBookTextNew,
+    KDTextTan: KDTextTanNew,
+    KDTextGray2: KDTextGray2,
+    KDTextGray1: KDTextGray1,
+    KDTextGray05: KDTextGray05,
+    KDTextGray0: KDBaseBlack,
+    KDTextGreen1: KDTextGreen1,
+    KDTextBlue1: KDTextBlue1,
+    KDTextRed1: KDTextRed1,
+    KDTextRedBG: KDTextRedBG,
+    KDCurseColor: KDCurseColor,
+    KDGoodColor: KDGoodColor,
+
     KDBaseLightGrey: KDBaseLightGrey,
     KDBaseDarkGrey: KDBaseDarkGrey,
     KDBaseBlack: KDBaseBlack,

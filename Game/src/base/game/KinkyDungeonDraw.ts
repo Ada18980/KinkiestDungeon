@@ -293,25 +293,6 @@ kdparticles.sortableChildren = false;
 kdcanvas.addChild(kdparticles);
 //kdgameboard.addChild(kdparticles);
 
-let KDTextWhite = KDBaseWhite;
-let KDTextGray3 = "#aaaaaa";
-let KDTextGraymid = "#888888";
-let KDBookTextNew = "#efefef";
-let KDTextTanNew = "#222222";
-let KDBookTextSB = KDBaseBlack;
-let KDTextTanSB = "#d6cbc5";
-let KDBookText = KDBookTextNew;
-let KDTextTan = KDTextTanNew;
-let KDTextGray2 = "#333333";
-let KDTextGray1 = "#111111";
-let KDTextGray05 = "#030303";
-let KDTextGray0 = KDBaseBlack;
-let KDTextGreen1 = "#001100";
-let KDTextBlue1 = "#000011";
-let KDTextRed1 = "#110000";
-let KDTextRedBG = "#551616";
-let KDCurseColor = "#ff55aa";
-let KDGoodColor = "#77ff99";
 
 let KDTutorialColor = KDBaseCyan;
 

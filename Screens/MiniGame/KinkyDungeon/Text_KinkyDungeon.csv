@@ -28527,36 +28527,42 @@ KinkyDungeonJailerDomLeashed,"That's better! Now stay close to me~"
 KinkyDungeonJailerDomLeashEndSoon,"Looks like our time is coming to an end..."
 KinkyDungeonJailerDomLeashEndReturn,"Time to bring you back to your place~"
 KinkyDungeonJailerDomLeashEndNow,"You've been quite adorable! Until next time~"
+KinkyDungeonJailerDomLeashEndEarly,"I'll get back to you in a moment..."
 
 KinkyDungeonJailerSubLeashTime,"It's time for your walk, ${PHonor}."
 KinkyDungeonJailerSubLeashed,"Now let's see, where to go..."
 KinkyDungeonJailerSubLeashEndSoon,"I think we've reached a stopping point."
 KinkyDungeonJailerSubLeashEndReturn,"I have to put you back now~"
 KinkyDungeonJailerSubLeashEndNow,"It's been fun playing with you ${PHonor}!"
+KinkyDungeonJailerSubLeashEndEarly,"We can finish your walk later, ${PHonor}!"
 
 KinkyDungeonJailerGaggedLeashTime,"(reaches for your leash)"
 KinkyDungeonJailerGaggedLeashed,"(holds your leash firmly)"
 KinkyDungeonJailerGaggedLeashEndSoon,"Mmmmph~"
 KinkyDungeonJailerGaggedLeashEndReturn,"(giggles)"
 KinkyDungeonJailerGaggedLeashEndNow,"(waves goodbye)"
+KinkyDungeonJailerGaggedLeashEndEarly,"Mmmmph!!"
 
 KinkyDungeonJailerLeashTime,"Why don't we go for a walk?"
 KinkyDungeonJailerLeashed,"That's better! Now come along~"
 KinkyDungeonJailerLeashEndSoon,"This has been lots of fun!"
 KinkyDungeonJailerLeashEndReturn,"I have to go return you~"
 KinkyDungeonJailerLeashEndNow,"Good ${Psub}~ Let's go again later~"
+KinkyDungeonJailerLeashEndEarly,"We can finish your walk later, ${PHonor}."
 
 KinkyDungeonJailerBratLeashTime,"It's time for walkies!"
 KinkyDungeonJailerBratLeashed,"That's a good ${Psub}!"
 KinkyDungeonJailerBratLeashEndSoon,"I want to keep you longer, but I've got things to do."
 KinkyDungeonJailerBratLeashEndReturn,"It's time to go back to your little house~"
 KinkyDungeonJailerBratLeashEndNow,"(pats you on the head)"
+KinkyDungeonJailerBratLeashEndEarly,"Looks like trouble, ${PHonor}!"
 
 KinkyDungeonJailerRobotLeashTime,"It is time for your mandatory exercise."
 KinkyDungeonJailerRobotLeashed,"Please maintain proximity."
 KinkyDungeonJailerRobotLeashEndSoon,"Progress Level: 90%"
 KinkyDungeonJailerRobotLeashEndReturn,"Exercise complete. Returning to storage."
 KinkyDungeonJailerRobotLeashEndNow,"Uploading logs to database. Error... no connection."
+KinkyDungeonJailerRobotLeashEndEarly,"Exercise postponed."
 
 NameMimicLatex,Latex Mimic
 KillMimicLatex,"The latex mimic melts into a shiny puddle."
@@ -30797,6 +30803,8 @@ KDAutoChest,The chest opens on its own.
 
 KDMouthGround,"You can't use your hands for that, but you can crouch to use your mouth."
 
+KDLevelUpStat,${STAT} Level Up!
+
 KinkyDungeonStatHeelTraining,"Heel Training"
 KinkyDungeonStatDescHeelTraining,"Start locked in a pair of heels with no heel training."
 KinkyDungeonStatGagTraining,"Gag Training"
@@ -32602,7 +32610,7 @@ KDCurrentGold,Current Gold: GP
 KDNA,n/a
 
 KDTrainingLevelHeels,"[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels."
-KDTrainingLevelCorset,"[EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamila penalty from corsets."
+KDTrainingLevelCorset,"[EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamina penalty from corsets."
 
 KDOccupied,"The furniture space is occupied"
 KDCombatManeuver,"Combat Maneuver: Your next move is instant."
@@ -34051,7 +34059,8 @@ KDProgressRecentModifiers,"Recent Modifiers:"
 
 KDAnyLevel,Any Level
 
-KDProgressTag_TrHeels_LeashWalk,Went on a leash walk:
+KDProgressTag_Heels_LeashWalk,Went on a leash walk:
+KDProgressTagDesc_Heels_LeashWalk,(Max once per floor)
 KDProgressTagDesc_Level,Training Level ${Level}
 
 KDOptionFilter,"Filter Toggles:"

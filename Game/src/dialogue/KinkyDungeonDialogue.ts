@@ -1050,7 +1050,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 				prerequisiteFunction: (_gagged, _player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-						return (KinkyDungeonCanPlay(enemy)) && !enemy.playWithPlayer;
+						return (KinkyDungeonCanPlay(enemy, true)) && !enemy.playWithPlayer;
 					}
 					return false;
 				},
@@ -1196,11 +1196,11 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						if (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) return false;
-						return (KinkyDungeonCanPlay(enemy) && KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints") && !enemy.playWithPlayer) == true;
+						return (KinkyDungeonCanPlay(enemy, true) && KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints") && !enemy.playWithPlayer) == true;
 					}
 					return false;
 				},
-				clickFunction: (_gagged, _player) => {
+				clickFunction: (_gagged, player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KinkyDungeonSetEnemyFlag(enemy, "allowLeashWalk", -1);
@@ -1219,9 +1219,6 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 						enemy.playWithPlayer = 12;
 						enemy.playWithPlayerCD = 40;
 						enemy.IntentAction = 'TempLeash';
-						if (KDGameData.HeelPower > 0)
-							KDTickTraining("Heels", KDGameData.HeelPower > 0,
-								KDGameData.HeelPower <= 0, 4, 25);
 						KinkyDungeonSendDialogue(enemy,
 							TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime", KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 							KDGetColor(enemy), 14, 10);

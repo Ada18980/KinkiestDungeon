@@ -55,7 +55,7 @@ function KDEnumerateTrainingProgress(data: ProgressListEventData) {
             let drawData: ProgressListDrawTrainingData = {
                 type: "Training",
                 name: type,
-                progressString: Math.round(points*100) + "/" + Math.round(lvl * 100),
+                progressString: KDGetTrainingXPString(points, lvl),
                 bonusprogress: "+" + Math.round(next * 100),
                 failpercentage: Math.round(10000*(skipped / Math.max(total, points + skipped, 0.000001)))/100 + "%",
             };
@@ -354,14 +354,16 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
                     listt.push(...KDGameData.RecentProgress[drawData.type + "_" + drawData.name].currentLevelList);
                     listt.push(...KDGameData.RecentProgress[drawData.type + "_" + drawData.name].currentFloorList);
                     listt.push(...KDGameData.RecentProgress[drawData.type + "_" + drawData.name].lastFloorList);
+                    if (KDGameData.RecentProgress[drawData.type + "_" + drawData.name].lastLevelList)
+                        listt.push(...KDGameData.RecentProgress[drawData.type + "_" + drawData.name].lastLevelList);
                     for (let tag of listt) {
                         if (yy + 18 < height - 50) {
                             yy += 8;
                             let xx = RetDrawTextFitKD(TextGet("KDProgressTag_" + tag.key, tag.keyparams), 
-                                x + 50, yy, width * 0.5, KDTextWhite, 
+                                x + 50, yy, width * 0.5, tag.last ? KDTextGraymid : KDTextWhite, 
                                 KDTextGray0, 18, "left").x;
                             DrawTextFitKD((tag.value > 0 ? "+" : "") + tag.value, 
-                                x + 50 + xx + 10, yy, width * 0.1, item.color, 
+                                x + 50 + xx + 10, yy, width * 0.1, tag.last ? KDTextGraymidlow : item.color, 
                                 KDTextGray0, 18, "left");
                             if (tag.desc) {
                                 DrawTextFitKD(TextGet("KDProgressTagDesc_" + tag.desc, tag.descparams), 
@@ -397,44 +399,69 @@ interface ProgressTag {
     tag: string,
     desc: string,
     value: number,
+    data?: any,
+    last?: boolean,
 }
 
 interface ProgressRecord {
     currentFloorList: ProgressTag[],
     lastFloorList: ProgressTag[],
     currentLevelList: ProgressTag[],
+    lastLevelList: ProgressTag[],
 }
 
-function AddProgressFloor(type: string, name: string, item: ProgressTag, force: boolean): boolean {
+function AddProgressFloor(type: string, name: string, item: ProgressTag, force: boolean, replace?: boolean): boolean {
     if (!KDGameData.RecentProgress) KDGameData.RecentProgress = {};
     let id = type + "_" + name;
     if (!KDGameData.RecentProgress[id]) KDGameData.RecentProgress[id] = {
         currentFloorList: [],
         lastFloorList: [],
         currentLevelList: [],
+        lastLevelList: [],
     };
 
     if (force || !KDGameData.RecentProgress[id].currentFloorList.some((litem) => {
         return litem.tag == item.tag;
     })) {
-        KDGameData.RecentProgress[id].currentFloorList.push(item);
+        if (replace && KDGameData.RecentProgress[id].currentFloorList.findIndex((litem) => {
+            return litem.tag == item.tag;
+        }) >= 0) {
+            let index = KDGameData.RecentProgress[id].currentFloorList.findIndex((litem) => {
+                return litem.tag == item.tag;
+            });
+            KDGameData.RecentProgress[id].currentFloorList[index] = item;
+
+        } else {
+            KDGameData.RecentProgress[id].currentFloorList.push(item);
+        }
         return true;
     }
     return false;
 }
-function AddProgressLevel(type: string, name: string, item: ProgressTag, force: boolean): boolean {
+function AddProgressLevel(type: string, name: string, item: ProgressTag, force: boolean, replace?: boolean): boolean {
     if (!KDGameData.RecentProgress) KDGameData.RecentProgress = {};
     let id = type + "_" + name;
     if (!KDGameData.RecentProgress[id]) KDGameData.RecentProgress[id] = {
         currentFloorList: [],
         lastFloorList: [],
         currentLevelList: [],
+        lastLevelList: [],
     };
 
     if (force || !KDGameData.RecentProgress[id].currentLevelList.some((litem) => {
         return litem.tag != item.tag;
     })) {
-        KDGameData.RecentProgress[id].currentLevelList.push(item);
+        if (replace && KDGameData.RecentProgress[id].currentLevelList.findIndex((litem) => {
+            return litem.tag == item.tag;
+        }) >= 0) {
+            let index = KDGameData.RecentProgress[id].currentLevelList.findIndex((litem) => {
+                return litem.tag == item.tag;
+            });
+            KDGameData.RecentProgress[id].currentLevelList[index] = item;
+
+        } else {
+            KDGameData.RecentProgress[id].currentLevelList.push(item);
+        }
         return true;
     }
     return false;
@@ -446,13 +473,28 @@ function TickProgressRecord() {
         for (let record in KDGameData.RecentProgress) {
             let current = KDGameData.RecentProgress[record];
             current.lastFloorList = current.currentFloorList;
+            for (let itm of current.lastFloorList) {
+                itm.last = true;
+            }
+            current.currentFloorList = [];
         }
     }
 }
-/** Ticks the progress record one floor */
+/** Ticks the progress record one level */
 function LevelUpProgressRecord(type: string, name: string) {
     if (KDGameData.RecentProgress) {
         let id = type + "_" + name;
-        if (KDGameData.RecentProgress[id]) KDGameData.RecentProgress[id].currentLevelList = [];
+        
+        if (KDGameData.RecentProgress[id]) {
+            KDGameData.RecentProgress[id].lastLevelList = KDGameData.RecentProgress[id].currentLevelList;
+            for (let itm of KDGameData.RecentProgress[id].lastLevelList) {
+                itm.last = true;
+            }
+            KDGameData.RecentProgress[id].currentLevelList = [];
+        }
     }
+}
+
+function KDGetTrainingXPString(points: number, lvl: number) {
+    return Math.round(points*100) + "/" + Math.round(lvl * 100);
 }

@@ -110,21 +110,44 @@ function KDGetTrainingMinRatioPercentTick(name: string, data: KDTrainingRecord, 
  */
 function KDAdvanceTraining(player: entity): void {
 	if (!KDGameData.Training) KDGameData.Training = {};
-	for (let entry of Object.entries(KDGameData.Training)) {
-		//let training = entry[0];
-		let data = entry[1];
-		if (data.turns_total == 0) continue; // No advance
-		let trainingPercentage = KDGetTrainingPercentage(entry[0], data, player, true);
-		data.training_points += 1 * trainingPercentage;
-		data.turns_total = 0;
-		data.turns_skipped = 0;
-		data.turns_trained = 0;
-		data.best_ratio = 0;
+	for (let entry of Object.keys(KDGameData.Training)) {
+		KDAdvanceSingleTraining(entry, player);
+		
 
-		while (data.training_points > data.training_stage + 1) {
-			data.training_stage += 1;
-			data.training_points -= data.training_stage;
-		}
+	}
+	TickProgressRecord();
+}
+
+function KDAdvanceSingleTraining(training: string, player: entity) {
+	let data = KDGameData.Training[training];
+	//let training = entry[0];
+	if (data.turns_total == 0) return; // No advance
+	let trainingPercentage = KDGetTrainingPercentage(
+		training, data, player, true);
+	data.training_points += 1 * trainingPercentage;
+	data.turns_total = 0;
+	data.turns_skipped = 0;
+	data.turns_trained = 0;
+	data.best_ratio = 0;
+
+	KDCheckLevelUp(training, player);
+	
+}
+
+function KDCheckLevelUp(training: string, player: entity) {
+	let data = KDGameData.Training[training];
+	while (data.training_points > data.training_stage + 1) {
+
+		KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, 
+			TextGet("KDLevelUpStat", {
+				STAT: TextGet("KDProgressItem_Training" + training)
+			}), KDBaseWhite, 5, true);
+		KDRecentRepIndex += 1;
+
+		data.training_stage += 1;
+		data.training_points -= data.training_stage;
+
+		LevelUpProgressRecord("Training", training);
 	}
 }
 
@@ -136,8 +159,9 @@ function KDAdvanceTraining(player: entity): void {
  * @param total
  * @param bonus - Multiplier for turns trained or skipped
  */
-function KDTickTraining(Name: string, trained: boolean, skipped: boolean, total: number, bonus: number = 1): void {
-	let player = KDPlayer();
+function KDTickTraining(Name: string, trained: boolean,
+	skipped: boolean, total: number, bonus: number = 1, player?: entity): void {
+	if (!player) player = KDPlayer();
 	if (!KDGameData.Training) KDGameData.Training = {};
 	if (!KDGameData.Training[Name]) {
 		KDGameData.Training[Name] = {
@@ -167,5 +191,52 @@ function KDTickTraining(Name: string, trained: boolean, skipped: boolean, total:
 	}
 }
 
+/**
+ * for player ONLY
+ * @param Name
+ * @param trained
+ * @param skipped
+ * @param total
+ * @param bonus - Multiplier for turns trained or skipped
+ */
+function KDAddFlatTraining(Name: string, amount: number, player?: entity): void {
+	if (!player) player = KDPlayer();
+	if (!KDGameData.Training) KDGameData.Training = {};
+	if (!KDGameData.Training[Name]) {
+		KDGameData.Training[Name] = {
+			best_ratio: 0,
+			training_points: 0,
+			training_stage: 0,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+	}
+	if (amount > 0)
+		KDGameData.Training[Name].training_points += amount;
+	else 
+		KDGameData.Training[Name].training_points = Math.max(KDGameData.Training[Name].training_points - amount);
+	
+	KDCheckLevelUp(Name, player);
+}
+
+
 /** This many training turns are requred, any less is scaled down by this amount */
 let KDTrainingSoftScale = 10;
+
+
+function KDAddLeashWalkXP(player: entity) {
+	let xp = 1 + .25 * KDGameData.Training["Heels"]?.training_stage;
+	if (AddProgressFloor("Training", "Heels", 
+		{
+			key: "Heels_LeashWalk",
+			tag: "LeashWalk",
+			data: {
+				level: KDGameData.Training["Heels"]?.training_stage,
+				floor: KDGameData.HighestLevelCurrent,
+			},
+			desc: "Heels_LeashWalk",
+			value: Math.round(xp * 100)}, false)) {
+			KDAddFlatTraining("Heels", xp);
+		}
+}

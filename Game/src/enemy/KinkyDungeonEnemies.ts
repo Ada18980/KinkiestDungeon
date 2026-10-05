@@ -4850,6 +4850,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 						&& !enemy.IntentAction
 						&& !enemy.CurrentAction
 						&& (!enemy.action || !KDEnemyAction[enemy.action]?.holdleash)
+						&& (!enemy.IntentAction || !KDIntentEvents[enemy.IntentAction]?.holdleash)
 						&& !enemy.IntentLeashPoint
 						&& !KinkyDungeonFlags.get("PlayerDommed")
 						&& !KinkyDungeonAggressive(enemy, KinkyDungeonPlayerEntity)

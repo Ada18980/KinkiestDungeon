@@ -171,10 +171,10 @@ function KDCalcPlayChance(playChance: number, enemy: entity): number {
 /**
  * @param enemy
  */
-function KinkyDungeonCanPlay(enemy: entity): boolean {
+function KinkyDungeonCanPlay(enemy: entity, assumeAlly?: boolean): boolean {
 
 	return (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail' || (!KDHostile(enemy)
-		&& !(KDAllied(enemy) && !KDEnemyHasFlag(enemy, "allyPlay"))))
+		&& !(!assumeAlly && KDAllied(enemy) && !KDEnemyHasFlag(enemy, "allyPlay"))))
 		&& (enemy.ambushtrigger || !KDAIType[KDGetAI(enemy)] || !KDAIType[KDGetAI(enemy)].ambush)
 		&& !enemy.Enemy.Behavior?.noPlay
 		&& enemy.hp > 0.52;
@@ -968,6 +968,8 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 
 			if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions < 1) {
 				let item = "CookieJailer";
+				KDAddLeashWalkXP(KDPlayer());
+
 				KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerReleaseGoodGirl",
 									KDGetGenericDialogueParams(KDPlayer(), KinkyDungeonJailGuard())).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#e7cf1a", 4, 9);
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonJailerReleaseGoodGirlMsg")
@@ -1077,9 +1079,8 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 									KDGetGenericDialogueParams(KDPlayer(), KinkyDungeonJailGuard())).replace("EnemyName", 
 										TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#e7cf1a", 4, 9, true, undefined, true, true);
 					}
-					if (KDGameData.HeelPower > 0)
-						KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0),
-							KDGameData.HeelPower <= 0, 2, 20);
+					KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0),
+							KDGameData.HeelPower <= 0, 2, 4);
 				}
 			}
 			KinkyDungeonJailGuardGetLeashWaypoint(xx, yy, type);

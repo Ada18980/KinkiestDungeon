@@ -3629,6 +3629,8 @@ interface KDEventTriggerDataPoint {point: KDPoint, radius: number, target: entit
 type EnemyEvent = {
 	/** Extremely important for leash events */
 	overrideIgnore?: boolean,
+	/** don't let go of leashes when idle */
+	holdleash?: boolean,
 	forceattack?: boolean,
 	aggressive?: boolean,
 	nonaggressive?: boolean,
