@@ -203,6 +203,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		},
 	},
 	"GenericBondage": {
+		doubleSize: true,
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[0]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[0];},
 		icon: (_player, _item) => {

@@ -176,19 +176,20 @@ KDFilterFilters[LooseRestraint] = {
 	Cuffs: false,
 	Collars: false,
 	Gags: false,
-	Boots: false,
-
-	Chains: false,
-	Mittens: false,
-	Harnesses: false,
-	Corsets: false,
-	ChastityBelts: false,
-	ChastityBras: false,
+	Blindfolds: false,
 	Armbinders: false,
 	Boxbinders: false,
 	Straitjackets: false,
+	Mittens: false,
+	Boots: false,
+	Harnesses: false,
+	Corsets: false,
+	Chastity: false,
 	Legbinders: false,
 	Cyber: false,
+	Sensedep: false,
+	Leashes: false,
+	Chains: false,
 	Devices: false,
 	Disassemble: false,
 	Raw: false,
@@ -270,6 +271,9 @@ let KDSpecialFilters: Record<string, Record<string, (item: item, handle: boolean
 		QuickBind: (item, _handle) => {
 			return KDRestraint(item)?.quickBindCondition != undefined;
 		},
+		Chastity: (item, _handle) => {
+			return !!KDRestraint(item)?.chastity || !!KDRestraint(item)?.chastitybra;
+		},
 		Harness: (item, _handle) => {
 			return KDRestraint(item)?.shrine?.includes("Harness") != undefined;
 		},
@@ -280,6 +284,10 @@ let KDSpecialFilters: Record<string, Record<string, (item: item, handle: boolean
 		Devices: (item, _handle) => {
 			return KDRestraint(item)?.shrine?.includes("Devices") != undefined
 				|| KDRestraint(item)?.shrine?.includes("Modules") != undefined;
+		},
+		Sensedep: (item, _handle) => {
+			return !!KDRestraint(item)?.blindfold
+				|| !!KDRestraint(item)?.deaf;
 		},
 	},
 	armor: {
@@ -4439,7 +4447,7 @@ function KDDrawExtraItemInfo(item: itemPreviewEntry, xOffset: number, yOffset: n
 	if (KDRestraint(item.item)?.corset)
 		DrawTextKD(TextGet("KDCorsetDesc", {
 			FRACTION: Math.round(KDRestraint(item.item)?.corset * 100 * KDCorsetSPReductionMult(player)),
-			}) + (KDGagReductionMult(player) < 1 ? TextGet("KDRestraintDescBaseTag", {
+			}) + (KDCorsetSPReductionMult(player) < 1 ? TextGet("KDRestraintDescBaseTag", {
 				FRACTIONORIG: Math.round(KDRestraint(item.item)?.corset),
 			}): ""),
 			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), 
@@ -4467,7 +4475,7 @@ function KDDrawExtraItemInfo(item: itemPreviewEntry, xOffset: number, yOffset: n
 	if (KDRestraint(item.item)?.blindfold)
 		DrawTextKD(TextGet("KDBlindDesc", {
 			FRACTION: Math.round(KDRestraint(item.item)?.blindfold * 10) / (KDSensesTrainingBoost(player, false)),
-			}) + (KDGagReductionMult(player) < 1 ? TextGet("KDRestraintDescBaseTag", {
+			}) + (KDSensesTrainingBoost(player) > 1 ? TextGet("KDRestraintDescBaseTag", {
 				FRACTIONORIG: Math.round(KDRestraint(item.item)?.blindfold * 10),
 			}): ""),
 			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), 
