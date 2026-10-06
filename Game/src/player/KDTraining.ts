@@ -334,7 +334,7 @@ function KDCorsetSPReductionMult(player: entity, buffs: boolean = true) : number
 		priority: 0,
 	}
 
-	if (KinkyDungeonStatsChoice.get("Artificial")) {
+	if (KinkyDungeonFlags.get("Artificial")) {
 		data.mult *= 0.1;
 	}
 
