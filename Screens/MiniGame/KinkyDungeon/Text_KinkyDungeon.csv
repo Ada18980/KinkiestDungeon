@@ -849,295 +849,248 @@ KDStatFreeLegs,"Your legs are free and unimpeded."
 KDStatGag,"You are ${AMOUNT} gagged! Verbal miscast chance is increased and potions are less effective!"
 KDStatGagFull,"Your mouth is totally filled! You can't drink potions and can't cast verbal spells!"
 
+
+
 KDBuffName_CorruptionStat,Corruption
-KDBuffName_LatexIntegrationStat,Latex Integration
-KDBuffName_FriendlyFireStat,Party Submission
-KDBuffName_ManaBurst,Mana Burst
-KDBuffName_PsychicLink,Psychic Link
-KDBuffName_ShockCollarCD,Shock Collar
-KDBuffName_WardenOrb,Warden's Lockdown
-KDBuffName_Quickness,Quickness
-KDBuffName_CombatManeuverQuick,Combat Maneuver
-KDBuffName_ElementalBuff,Elemental Charge
-KDBuffName_ElementalResist,Elemental Resistance
-KDBuffName_Taunted,Taunted
-KDBuffName_Analyze,Analysis
-KDBuffName_DistractionShield,Shield of Unclarity
-KDBuffName_PhaseEvasion,Phase
-KDBuffName_BreakFree,Break Free
-KDBuffName_RaiseDefenses,Raise Defenses
-KDBuffName_Quickness2,Double Accel
-KDBuffName_Quickness3,Triple Accel
-KDBuffName_Quickness4,Quad Accel
-KDBuffName_Quickness5,Time Stop
-KDBuffName_ShadowSeal,Sealed by Shadows
-KDBuffName_FuukaOrb,Fuuka's Seal
-KDBuffName_WaterBubble,Bubbled
-KDBuffName_BattleTrance,Battle Trance
-KDBuffName_CombatManeuver,Combat Maneuver
-KDBuffName_NoWP,Surrender
-KDBuffName_LatexBubble,Latex Bubbled
-KDBuffName_LatexBall,Ballsuit
-KDBuffName_InnerPowerArcaneStore,""
-KDBuffName_ManaRegenSuspend,Inner Power Recharging
-KDBuffName_ChaoticOverflow,Chaotic Overflow
-KDBuffName_AkashicConflux,Akashic Conflux
-KDBuffName_RogueEscape,Hard to Catch
-KDBuffName_HighValueFound,High Value Target
-KDBuffName_ArcaneEnergy,Arcane Energy
-KDBuffName_BattleRhythm,Battle Rhythm
-KDBuffName_ForcedSubmission,Forced Submission
-KDBuffName_CursedDistract,Curse of Distraction
-KDBuffName_Corrupted,Corrupted
-KDBuffName_CursingCircle,Cursing Circle
-KDBuffName_Cursed,""
-KDBuffName_GhostDeal,""
-KDBuffName_GhostDealPleasure,""
-KDBuffName_e_OrgasmResist,Mental Resistance
-KDBuffName_d_OrgasmResist,Mental Resistance
-KDBuffName_BoundByFate,Bound by Fate
-KDBuffName_Haunted,Haunted
-KDBuffName_DildoBatBuff,Intense Vibrations
-KDBuffName_Empower,Upcast
-KDBuffName_Light,Light
-KDBuffName_MagicalSight,Analysis
-KDBuffName_PoisonDagger,Poisoned
-KDBuffName_TabletLatex,Blessing of Latex
-KDBuffName_TabletLeather,Blessing of Leather
-KDBuffName_TabletMetal,Blessing of Metal
-KDBuffName_TabletRope,Blessing of Rope
-KDBuffName_TabletWill,Blessing of Restoration
-KDBuffName_TabletElements,Blessing of Elements
-KDBuffName_TabletConjure,Blessing of Conjuration
-KDBuffName_TabletIllusion,Blessing of Illusion
-KDBuffName_Conduction,Conductive
-KDBuffName_LightningRod,Lightning Rod
-KDBuffName_Drenched,Drenched
-KDBuffName_Chilled,Chilled
-KDBuffName_Slimed,Slimed
-KDBuffName_Unsteady,Unsteady
-KDBuffName_Unsteady2,Unsteady
-KDBuffName_ChillWalk,Chill Walk
-KDBuffName_Ignite,Ignited
-KDBuffName_Burning,On Fire
-KDBuffName_ShrineElements,Divine Punishment
-KDBuffName_ShrineConjure,Divine Protection
-KDBuffName_ShrineIllusion,Divine Cunning
-KDBuffName_AvatarFire,Blessing of Flame
-KDBuffName_AvatarAir,Blessing of Air
-KDBuffName_AvatarWater,Blessing of Water
-KDBuffName_AvatarEarth,Blessing of Earth
-KDBuffName_SlimeForm,Slime Form
-KDBuffName_Shroud2,Shroud
-KDBuffName_Camo,Camouflage
-KDBuffName_StoneSkin,Stone Skin
-KDBuffName_ShadowBlade,Darkblade
-KDBuffName_Shield,Runic Ward
-KDBuffName_GreaterInvisibility,Great Invisibility
-KDBuffName_Invisibility,Invisibility
-KDBuffName_LesserInvisibility,Lesser Invisibility
-KDBuffName_Cutting,FULL POWER
-KDBuffName_Slippery,Graceful
-KDBuffName_IronBlood,Iron Blood
-KDBuffName_Sleepy,Sleepy
-KDBuffName_Evasion,Afterimage
-KDBuffName_SlimeMimic,Convincing Disguise
-KDBuffName_d_SlimeMimic,Convincing Disguise
-KDBuffName_DisenchantSelf,Disenchanted
-KDBuffName_LeatherBurst,Leather Package
-KDBuffName_SagittaAssault,Sagitta
-KDBuffName_TraineeWP,Mental Defiance
-KDBuffName_DistractionCast,Devoted Focus
-KDBuffName_IgniteDamage,Ignited
-KDBuffName_ShrineIllusionTrigger,Shadowstep
-KDBuffName_LockdownTry,"Lockdown"
-KDBuffName_NovicePet,""
-KDBuffName_NovicePetBad,""
-KDBuffName_NovicePetVeryBad,""
-KDBuffName_Sleepy,Drowsy
-KDBuffName_PoisonBreath,Poison Breath
-KDBuffName_Silenced,Silenced
-KDBuffName_LatexKittyCurseTick,""
-KDBuffName_Hypno_DollStat,Good Doll
-KDBuffName_Hypnosis,Trance
-KDBuffName_StraitjacketBolt,Locked Down
-KDBuffName_Lockdown,Locked Down
-KDBuffName_ScrollVerbal,Verbose
-KDBuffName_ScrollArms,Dextrous
-KDBuffName_ScrollLegs,Spell Dance
-KDBuffName_BondageBusterCharge,Bondage Buster
-KDBuffName_KatanaCharge,Katana
-KDBuffName_StormCharge,Stormbreaker
-
-
-
-KDBuffDesc_ManaBurst,"-100% miscast chance, but casting spells can send you over the edge."
-
-KDBuffDesc_PsychicLink,You are psychically connected!
-KDBuffDesc_ShockCollarCD,You've used Shock Collar recently and it costs more DP.
-
-KDBuffDesc_WardenOrb,Marked for Collection. Getting hit by more orbs will put you on a stand. Reduces Bondage resist.
-
-KDBuffDesc_Quickness,Phase Dance active. Your next move is instant.
-KDBuffDesc_CombatManeuverQuick,Combat Maneuver active. Your next move is instant.
-
 KDBuffDesc_CorruptionStat,You are more likely to succumb to curses.
-
-KDBuffDesc_ElementalBuff,Your elemental damage is increased!
-KDBuffDesc_ElementalResist,Your elemental resistance is increased!
-
-KDBuffDesc_FriendlyFireStat,"Friendly fire is reduced by ${PowerInt}%"
+KDBuffName_LatexIntegrationStat,Latex Integration
 KDBuffDesc_LatexIntegrationStat,"Your skin is covered in a layer of latex, making escape from cyber restraints harder!"
+KDBuffName_FriendlyFireStat,Party Submission
+KDBuffDesc_FriendlyFireStat,"Friendly fire is reduced by ${PowerInt}%"
+KDBuffName_ManaBurst,Mana Burst
+KDBuffDesc_ManaBurst,"-100% miscast chance, but casting spells can send you over the edge."
+KDBuffName_PsychicLink,Psychic Link
+KDBuffDesc_PsychicLink,You are psychically connected!
+KDBuffName_ShockCollarCD,Shock Collar
+KDBuffDesc_ShockCollarCD,You've used Shock Collar recently and it costs more DP.
+KDBuffName_WardenOrb,Warden's Lockdown
+KDBuffDesc_WardenOrb,Marked for Collection. Getting hit by more orbs will put you on a stand. Reduces Bondage resist.
+KDBuffName_Quickness,Quickness
+KDBuffDesc_Quickness,Phase Dance active. Your next move is instant.
+KDBuffName_CombatManeuverQuick,Combat Maneuver
+KDBuffDesc_CombatManeuverQuick,Combat Maneuver active. Your next move is instant.
+KDBuffName_ElementalBuff,Elemental Charge
+KDBuffDesc_ElementalBuff,Your elemental damage is increased!
+KDBuffName_ElementalResist,Elemental Resistance
+KDBuffDesc_ElementalResist,Your elemental resistance is increased!
+KDBuffName_Taunted,Taunted
 KDBuffDesc_Taunted,"Defeat all taunting enemies or stay within the tiles to avoid shame!"
-
+KDBuffName_Analyze,Analysis
 KDBuffDesc_Analyze,Analysis
-
+KDBuffName_DistractionShield,Shield of Unclarity
 KDBuffDesc_DistractionShield,"You have formed a mental barrier..."
-
+KDBuffName_PhaseEvasion,Phase
 KDBuffDesc_PhaseEvasion,+50 Evasion
-
+KDBuffName_BreakFree,Break Free
 KDBuffDesc_BreakFree,Your struggle power is greatly increased!!!
-
+KDBuffName_RaiseDefenses,Raise Defenses
 KDBuffDesc_RaiseDefenses,Your defenses are raised!
-
+KDBuffName_Quickness2,Double Accel
 KDBuffDesc_Quickness2,"Time is slowed by 2x"
+KDBuffName_Quickness3,Triple Accel
 KDBuffDesc_Quickness3,"Time is slowed by 3x"
+KDBuffName_Quickness4,Quad Accel
 KDBuffDesc_Quickness4,"Time is slowed by 4x"
+KDBuffName_Quickness5,Time Stop
 KDBuffDesc_Quickness5,"Time has come to a halt..."
-
-
-KDBuffDesc_Quickness,"You are F A S T"
-
+KDBuffName_ShadowSeal,Sealed by Shadows
 KDBuffDesc_ShadowSeal,"Shadowy magic is restricting you!"
+KDBuffName_FuukaOrb,Fuuka's Seal
 KDBuffDesc_FuukaOrb,"You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!"
+KDBuffName_WaterBubble,Bubbled
+KDBuffDesc_WaterBubble,"Magical water reduces your accuracy and slows you significantly!"
+KDBuffName_BattleTrance,Battle Trance
+KDBuffDesc_BattleTrance,You attack twice!
+KDBuffName_CombatManeuver,Combat Maneuver
+KDBuffDesc_CombatManeuver,You gain a free move from Combat Maneuvers!
+KDBuffName_NoWP,Surrender
+KDBuffDesc_NoWP,"Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist."
+KDBuffName_LatexBubble,Latex Bubbled
+KDBuffDesc_LatexBubble,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
+KDBuffName_LatexBall,Ballsuit
+KDBuffDesc_LatexBall,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
+KDBuffName_InnerPowerArcaneStore,""
+KDBuffDesc_InnerPowerArcaneStore,"As you are low on mana, you are unable to store Arcane Energy."
+KDBuffName_ManaRegenSuspend,Inner Power Recharging
+KDBuffDesc_ManaRegenSuspend,"You are recharging your next mana cost reduction."
+KDBuffName_ChaoticOverflow,Chaotic Overflow
+KDBuffDesc_ChaoticOverflow,"Chaotic energy flows through you! You have a bad feeling about this..."
+KDBuffName_AkashicConflux,Akashic Conflux
+KDBuffDesc_AkashicConflux,"You can ignore Arm, Leg, and Verbal components!"
+KDBuffName_RogueEscape,Hard to Catch
+KDBuffDesc_RogueEscape,Struggling is improved and escape is quicker!
+KDBuffName_HighValueFound,High Value Target
+KDBuffDesc_HighValueFound,You sense that a high value target is near.
+KDBuffName_ArcaneEnergy,Arcane Energy
+KDBuffDesc_ArcaneEnergy,"Arcane Energy is stored by casting spells, up to 100% Max mana."
+KDBuffName_BattleRhythm,Battle Rhythm
+KDBuffDesc_BattleRhythm,"Battle Rhythm is gained by spending stamina through attacks, up to 40 total."
+KDBuffName_ForcedSubmission,Forced Submission
+KDBuffDesc_ForcedSubmission,"You must submit! Moving away from an enemy at 0 WP will bind you!"
+KDBuffName_CursedDistract,Curse of Distraction
+KDBuffDesc_CursedDistract,"Having taken damage, your distraction is increasing..."
+KDBuffName_Corrupted,Corrupted
+KDBuffDesc_Corrupted,"Your willpower gain and struggle power is less effective due to your corruption."
+KDBuffName_CursingCircle,Cursing Circle
+KDBuffDesc_CursingCircle,"You are in the process of being cursed."
+KDBuffName_Cursed,""
+KDBuffDesc_Cursed,"A dark energy lurks within you."
+KDBuffName_GhostDeal,""
+KDBuffDesc_GhostDeal,"You've made a deal... your freedom now in exchange for your freedom later..."
+KDBuffName_GhostDealPleasure,""
+KDBuffDesc_GhostDealPleasure,"You've made a deal, which lurks deep inside you~"
+KDBuffName_e_OrgasmResist,Mental Resistance
+KDBuffDesc_e_OrgasmResist,"You cannot orgasm except by choice or below 10% WP. Click to toggle."
+KDBuffName_d_OrgasmResist,Mental Resistance
+KDBuffDesc_d_OrgasmResist,"You are allowing yourself to let go. Click to toggle."
+KDBuffName_BoundByFate,Bound by Fate
+KDBuffDesc_BoundByFate,Stepping outside of the indicated tiles will result in punishment!
+KDBuffName_Haunted,Haunted
+KDBuffDesc_Haunted,A playful ghost now accompanies you on your journey.
+KDBuffName_DildoBatBuff,Intense Vibrations
+KDBuffDesc_DildoBatBuff,"The Blade of Ejahl deals bonus charm damage!!!"
+KDBuffName_Empower,Upcast
+KDBuffDesc_Empower,"You are able to cast higher level versions of spells."
+KDBuffName_Light,Light
+KDBuffDesc_Light,"Let there be light!"
+KDBuffName_MagicalSight,Analysis
+KDBuffDesc_MagicalSight,"You're seeing things..."
+KDBuffName_PoisonDagger,Poisoned
+KDBuffDesc_PoisonDagger,"You're starting to feel drowsy."
+KDBuffName_TabletLatex,Blessing of Latex
+KDBuffDesc_TabletLatex,-50% MP Cost (Latex)
+KDBuffName_TabletLeather,Blessing of Leather
+KDBuffDesc_TabletLeather,-50% MP Cost (Leather)
+KDBuffName_TabletMetal,Blessing of Metal
+KDBuffDesc_TabletMetal,-50% MP Cost (Metal)
+KDBuffName_TabletRope,Blessing of Rope
+KDBuffDesc_TabletRope,-50% MP Cost (Rope)
+KDBuffName_TabletWill,Blessing of Restoration
+KDBuffDesc_TabletWill,Regeneration
+KDBuffName_TabletElements,Blessing of Elements
+KDBuffDesc_TabletElements,-50% MP Cost (Elements)
+KDBuffName_TabletConjure,Blessing of Conjuration
+KDBuffDesc_TabletConjure,-50% MP Cost (Conjuration)
+KDBuffName_TabletIllusion,Blessing of Illusion
+KDBuffDesc_TabletIllusion,-50% MP Cost (Illusion)
+KDBuffName_Conduction,Conductive
+KDBuffDesc_Conduction,"When you or an enemy takes electric damage, the other takes half of it as well!"
+KDBuffName_LightningRod,Lightning Rod
+KDBuffDesc_LightningRod,"Gain significantly boosted electric resist."
+KDBuffName_Drenched,Drenched
+KDBuffDesc_Drenched,"Grants fire resist, ice/electric weakness, and makes you conductive."
+KDBuffName_Chilled,Chilled
+KDBuffDesc_Chilled,"The cold makes it hard to move! You are slowed."
+KDBuffName_Slimed,Slimed
+KDBuffDesc_Slimed,"It's sticky and dense! You are slowed and 30% more vulnerable to glue damage."
+KDBuffName_Unsteady,Unsteady
+KDBuffDesc_Unsteady,"You're on loose footing. You are easier to hit and are slowed."
+KDBuffName_Unsteady2,Unsteady
+KDBuffDesc_Unsteady2,"You're on loose footing. You are easier to hit and are slowed."
+KDBuffName_ChillWalk,Chill Walk
+KDBuffDesc_ChillWalk,Ignore Ice Tiles
+KDBuffName_Ignite,Ignited
+KDBuffDesc_Ignite,"You are dealing fire damage to yourself and nearby enemies!"
+KDBuffName_Burning,On Fire
+KDBuffDesc_Burning,"You are on fire and taking damage!"
+KDBuffName_ShrineElements,Divine Punishment
+KDBuffDesc_ShrineElements,"Deals bonus damage when you hit an enemy."
+KDBuffName_ShrineConjure,Divine Protection
+KDBuffDesc_ShrineConjure,"Automatically blocks the next 3 times an enemy tries to bind you."
+KDBuffName_ShrineIllusion,Divine Cunning
+KDBuffDesc_ShrineIllusion,"You turn invisible briefly after attacking."
+KDBuffName_AvatarFire,Blessing of Flame
+KDBuffDesc_AvatarFire,-MP Cost (Fire)
+KDBuffName_AvatarAir,Blessing of Air
+KDBuffDesc_AvatarAir,-MP Cost (Air)
+KDBuffName_AvatarWater,Blessing of Water
+KDBuffDesc_AvatarWater,-MP Cost (Water)
+KDBuffName_AvatarEarth,Blessing of Earth
+KDBuffDesc_AvatarEarth,-MP Cost (Earth)
+KDBuffName_SlimeForm,Slime Form
+KDBuffDesc_SlimeForm,"You gain bonuses and can slip through bars!"
+KDBuffName_Shroud2,Shroud
+KDBuffDesc_Shroud2,"Visibility decreased, evasion increased."
+KDBuffName_Camo,Camouflage
+KDBuffDesc_Camo,"While next to a wall, you are very hard to see."
+KDBuffName_StoneSkin,Stone Skin
+KDBuffDesc_StoneSkin,"Increased armor."
+KDBuffName_ShadowBlade,Darkblade
+KDBuffDesc_ShadowBlade,"Increased damage."
+KDBuffName_Shield,Runic Ward
+KDBuffDesc_Shield,"Increased Magic Armor."
+KDBuffName_GreaterInvisibility,Great Invisibility
+KDBuffDesc_GreaterInvisibility,"It is impossible for enemies to see you."
+KDBuffName_Invisibility,Invisibility
+KDBuffDesc_Invisibility,"It is very difficult for enemies to see you."
+KDBuffName_LesserInvisibility,Lesser Invisibility
+KDBuffDesc_LesserInvisibility,"It is harder for enemies to see you."
+KDBuffName_Cutting,FULL POWER
+KDBuffDesc_Cutting,"Cutting power increased."
+KDBuffName_Slippery,Graceful
+KDBuffDesc_Slippery,"Struggling power increased."
+KDBuffName_IronBlood,Iron Blood
+KDBuffDesc_IronBlood,"Reduced melee cost, increased mana costs."
+KDBuffName_Sleepy,Sleepy
+KDBuffDesc_Sleepy,"You are sluggish and have a hard time keeping your eyes open."
+KDBuffName_Evasion,Afterimage
+KDBuffDesc_Evasion,"Evasion greatly increased."
+KDBuffName_SlimeMimic,Convincing Disguise
+KDBuffDesc_SlimeMimic,"We did it! We made ourselves invisible--mmmmph!!!"
+KDBuffName_d_SlimeMimic,Convincing Disguise
+KDBuffDesc_d_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
+KDBuffName_DisenchantSelf,Disenchanted
+KDBuffDesc_DisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
+KDBuffName_LeatherBurst,Leather Package
+KDBuffDesc_LeatherBurst,"You can launch another leather restraint instantly!"
+KDBuffName_SagittaAssault,Sagitta
+KDBuffDesc_SagittaAssault,"You can launch another Sagitta instantly!"
+KDBuffName_TraineeWP,Mental Defiance
+KDBuffDesc_TraineeWP,You have stored willpower.
+KDBuffName_DistractionCast,Devoted Focus
+KDBuffDesc_DistractionCast,"You have consumed a mote of essence, granting miscast chance reduction."
+KDBuffName_IgniteDamage,Ignited
+KDBuffDesc_IgniteDamage,The air around you is ablaze! (-DamageDealt SP)
+KDBuffName_ShrineIllusionTrigger,Shadowstep
+KDBuffDesc_ShrineIllusionTrigger,"The Goddess of Illusions shrouds you in shadows!"
+KDBuffName_LockdownTry,"Lockdown"
+KDBuffDesc_LockdownTry,"You struggle against your bonds, but a magical force resists!"
+KDBuffName_NovicePet,""
+KDBuffDesc_NovicePet,${You} ${Yis} an expert in wearing a petsuit and ${your} mobility is increased.
+KDBuffName_NovicePetBad,""
+KDBuffDesc_NovicePetBad,${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
+KDBuffName_NovicePetVeryBad,""
+KDBuffDesc_NovicePetVeryBad,${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
+KDBuffName_Sleepy,Drowsy
+KDBuffDesc_Sleepy,Sleepy...
+KDBuffName_PoisonBreath,Poison Breath
+KDBuffDesc_PoisonBreath,Toxic spores are making it difficult to move
+KDBuffName_Silenced,Silenced
+KDBuffDesc_Silenced,"${You} ${Yis} silenced, unable to cast spells easily."
+KDBuffName_LatexKittyCurseTick,""
+KDBuffDesc_LatexKittyCurseTick,This is the total amount of Latex Kitty Curse you possess.
+KDBuffName_Hypno_DollStat,Good Doll
+KDBuffDesc_Hypno_DollStat,${You} you're starting to feel just like a doll... 
+KDBuffName_Hypnosis,Trance
+KDBuffDesc_Hypnosis,"${Youve} fallen into a trance, making suggestions more powerful."
+KDBuffName_StraitjacketBolt,Locked Down
+KDBuffDesc_StraitjacketBolt,"Struggling power is greatly reduced."
+KDBuffName_Lockdown,Locked Down
+KDBuffDesc_Lockdown,"Struggling power is greatly reduced."
+KDBuffName_ScrollVerbal,Verbose
+KDBuffDesc_ScrollVerbal,"You can cast verbal spells while gagged."
+KDBuffName_ScrollArms,Dextrous
+KDBuffDesc_ScrollArms,"You can cast arm spells while tied up."
+KDBuffName_ScrollLegs,Spell Dance
+KDBuffDesc_ScrollLegs,"You can cast leg spells while tied up."
+KDBuffName_BondageBusterCharge,Bondage Buster
+KDBuffDesc_BondageBusterCharge,"Lazor is charging..."
+KDBuffName_KatanaCharge,Katana
+KDBuffDesc_KatanaCharge,"Patience is key..."
+KDBuffName_StormCharge,Stormbreaker
+KDBuffDesc_StormCharge,"You have the Power."
 
 KDBuffDesc_SpellDamageBuff,An item has increased your spell damage!
-KDBuffDesc_WaterBubble,"Magical water reduces your accuracy and slows you significantly!"
-KDBuffDesc_BattleTrance,You attack twice!
-KDBuffDesc_CombatManeuver,You gain a free move from Combat Maneuvers!
-
-KDBuffDesc_NoWP,"Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist."
-
-KDBuffDesc_LatexBubble,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
-KDBuffDesc_LatexBall,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
-
-KDBuffDesc_InnerPowerArcaneStore,"As you are low on mana, you are unable to store Arcane Energy."
-KDBuffDesc_ManaRegenSuspend,"You are recharging your next mana cost reduction."
-
-KDBuffDesc_ChaoticOverflow,"Chaotic energy flows through you! You have a bad feeling about this..."
-KDBuffDesc_AkashicConflux,"You can ignore Arm, Leg, and Verbal components!"
-
-KDBuffDesc_RogueEscape,Struggling is improved and escape is quicker!
-
-KDBuffDesc_HighValueFound,You sense that a high value target is near.
-
-KDBuffDesc_ArcaneEnergy,"Arcane Energy is stored by casting spells, up to 100% Max mana."
-KDBuffDesc_BattleRhythm,"Battle Rhythm is gained by spending stamina through attacks, up to 40 total."
-KDBuffDesc_ForcedSubmission,"You must submit! Moving away from an enemy at 0 WP will bind you!"
-KDBuffDesc_CursedDistract,"Having taken damage, your distraction is increasing..."
-KDBuffDesc_Corrupted,"Your willpower gain and struggle power is less effective due to your corruption."
-KDBuffDesc_CursingCircle,"You are in the process of being cursed."
-
-KDBuffDesc_Cursed,"A dark energy lurks within you."
-
-KDBuffDesc_GhostDeal,"You've made a deal... your freedom now in exchange for your freedom later..."
-KDBuffDesc_GhostDealPleasure,"You've made a deal, which lurks deep inside you~"
-KDBuffDesc_e_OrgasmResist,"You cannot orgasm except by choice or below 10% WP. Click to toggle."
-KDBuffDesc_d_OrgasmResist,"You are allowing yourself to let go. Click to toggle."
-KDBuffDesc_BoundByFate,Stepping outside of the indicated tiles will result in punishment!
-
-KDBuffDesc_Haunted,A playful ghost now accompanies you on your journey.
-
-KDBuffDesc_DildoBatBuff,"The Blade of Ejahl deals bonus charm damage!!!"
-
-
-
-KDBuffDesc_Empower,"You are able to cast higher level versions of spells."
-
-KDBuffDesc_Light,"Let there be light!"
-
-KDBuffDesc_MagicalSight,"You're seeing things..."
-
-KDBuffDesc_PoisonDagger,"You're starting to feel drowsy."
-
-KDBuffDesc_TabletLatex,-50% MP Cost (Latex)
-KDBuffDesc_TabletLeather,-50% MP Cost (Leather)
-KDBuffDesc_TabletMetal,-50% MP Cost (Metal)
-KDBuffDesc_TabletRope,-50% MP Cost (Rope)
-KDBuffDesc_TabletWill,Regeneration
-KDBuffDesc_TabletElements,-50% MP Cost (Elements)
-KDBuffDesc_TabletConjure,-50% MP Cost (Conjuration)
-KDBuffDesc_TabletIllusion,-50% MP Cost (Illusion)
-
-KDBuffDesc_Conduction,"When you or an enemy takes electric damage, the other takes half of it as well!"
-KDBuffDesc_LightningRod,"Gain significantly boosted electric resist."
-KDBuffDesc_Drenched,"Grants fire resist, ice/electric weakness, and makes you conductive."
-
-KDBuffDesc_Chilled,"The cold makes it hard to move! You are slowed."
-KDBuffDesc_Slimed,"It's sticky and dense! You are slowed and 30% more vulnerable to glue damage."
-KDBuffDesc_Unsteady,"You're on loose footing. You are easier to hit and are slowed."
-KDBuffDesc_Unsteady2,"You're on loose footing. You are easier to hit and are slowed."
-KDBuffDesc_ChillWalk,Ignore Ice Tiles
-
-KDBuffDesc_Ignite,"You are dealing fire damage to yourself and nearby enemies!"
-KDBuffDesc_Burning,"You are on fire and taking damage!"
-
-KDBuffDesc_ShrineElements,"Deals bonus damage when you hit an enemy."
-KDBuffDesc_ShrineConjure,"Automatically blocks the next 3 times an enemy tries to bind you."
-KDBuffDesc_ShrineIllusion,"You turn invisible briefly after attacking."
-
-KDBuffDesc_AvatarFire,-MP Cost (Fire)
-KDBuffDesc_AvatarAir,-MP Cost (Air)
-KDBuffDesc_AvatarWater,-MP Cost (Water)
-KDBuffDesc_AvatarEarth,-MP Cost (Earth)
-
-KDBuffDesc_SlimeForm,"You gain bonuses and can slip through bars!"
-KDBuffDesc_Shroud2,"Visibility decreased, evasion increased."
-KDBuffDesc_Camo,"While next to a wall, you are very hard to see."
-KDBuffDesc_StoneSkin,"Increased armor."
-KDBuffDesc_ShadowBlade,"Increased damage."
-KDBuffDesc_Shield,"Increased Magic Armor."
-KDBuffDesc_GreaterInvisibility,"It is impossible for enemies to see you."
-KDBuffDesc_Invisibility,"It is very difficult for enemies to see you."
-KDBuffDesc_LesserInvisibility,"It is harder for enemies to see you."
-KDBuffDesc_Cutting,"Cutting power increased."
-KDBuffDesc_Slippery,"Struggling power increased."
-KDBuffDesc_IronBlood,"Reduced melee cost, increased mana costs."
-KDBuffDesc_Sleepy,"You are sluggish and have a hard time keeping your eyes open."
-KDBuffDesc_Evasion,"Evasion greatly increased."
-KDBuffDesc_SlimeMimic,"We did it! We made ourselves invisible--mmmmph!!!"
-KDBuffDesc_d_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
-KDBuffDesc_DisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
-KDBuffDesc_LeatherBurst,"You can launch another leather restraint instantly!"
-KDBuffDesc_SagittaAssault,"You can launch another Sagitta instantly!"
-
-KDBuffDesc_TraineeWP,You have stored willpower.
-KDBuffDesc_DistractionCast,"You have consumed a mote of essence, granting miscast chance reduction."
-
-KDBuffDesc_IgniteDamage,The air around you is ablaze! (-DamageDealt SP)
-KDBuffDesc_ShrineIllusionTrigger,"The Goddess of Illusions shrouds you in shadows!"
-KDBuffDesc_LockdownTry,"You struggle against your bonds, but a magical force resists!"
-KDBuffDesc_NovicePet,${You} ${Yis} an expert in wearing a petsuit and ${your} mobility is increased.
-KDBuffDesc_NovicePetBad,${You} ${Yis} too used to wearing petsuits! Sprinting is impaired.
-KDBuffDesc_NovicePetVeryBad,${You} ${Yis} a disobedient pet. ${You} should put on a petsuit!
-KDBuffDesc_Sleepy,Sleepy...
-KDBuffDesc_PoisonBreath,Toxic spores are making it difficult to move
-KDBuffDesc_Silenced,"${You} ${Yis} silenced, unable to cast spells easily."
-KDBuffDesc_LatexKittyCurseTick,This is the total amount of Latex Kitty Curse you possess.
-KDBuffDesc_Hypno_DollStat,${You} you're starting to feel just like a doll... 
-KDBuffDesc_Hypnosis,"${Youve} fallen into a trance, making suggestions more powerful."
-
-
-KDBuffDesc_StraitjacketBolt,"Struggling power is greatly reduced."
-KDBuffDesc_Lockdown,"Struggling power is greatly reduced."
-
-KDBuffDesc_ScrollVerbal,"You can cast verbal spells while gagged."
-KDBuffDesc_ScrollArms,"You can cast arm spells while tied up."
-KDBuffDesc_ScrollLegs,"You can cast leg spells while tied up."
-
-KDBuffDesc_BondageBusterCharge,"Lazor is charging..."
-KDBuffDesc_KatanaCharge,"Patience is key..."
-KDBuffDesc_StormCharge,"You have the Power."
 
 
 
@@ -34154,7 +34107,7 @@ KDSafwordMsg,${Playername} used ${Etheir} safeword and was transported to the be
 
 
 KinkyDungeonSpellSpeciesDoll,Artificial
-KinkyDungeonSpellDescriptionSpeciesDoll,"As an artificial being, gain:\n+900 poison resist\n+Resistance to gases and spores\n+Unaffected by sleep darts or sedation, not including magic sleep.\n-Eating food does not restore willpower"
+KinkyDungeonSpellDescriptionSpeciesDoll,"As an artificial being, gain:\n+900 poison resist\n+Resistance to gases and spores\n+Unaffected by sleep darts or sedation, not including magic sleep.\n-Eating food does not restore willpower\n-90% less stamina penalty from corsets"
 
 KinkyDungeonStatSpeciesDoll,"Doll"
 KinkyDungeonStatDescSpeciesDoll,"This character is nothing but a doll, granting the Artificial passive and preventing sleep in beds, but allowing sleep on non-cage furniture."
