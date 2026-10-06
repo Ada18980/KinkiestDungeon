@@ -29780,6 +29780,9 @@ AttackKeeperEarthLock,"The earth keeper locks a restraint!"
 AttackKeeperEarthSlow,"The earth keeper knocks you away with a powerful kick!"
 AttackKeeperEarth,"The earth keeper massages you gently! (DamageTaken)"
 KDKeeperKick,"The earth keeper knocks you away with a strong kick! (DamageTaken)"
+KDElementalSong,"The song captivates you and draws you closer! (DamageTaken)"
+KDElementalSongDeaf,"The song has no effect as your hearing is deafened."
+
 
 NameKeeperFire,Flame Keeper
 KillKeeperFire,"The flame keeper steps away into a fiery portal."

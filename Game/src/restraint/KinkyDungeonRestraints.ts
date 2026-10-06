@@ -7371,7 +7371,9 @@ function KDGetRemoveSFX(restraint: Named) {
  * @param level
  */
 function KDHasRemovableCurse(item: item, level: number): boolean {
-	if (item.curse && KDCurses[item.curse] && KDCurses[item.curse].level <= level) {
+	if (item.curse && KDCurses[item.curse] && KDCurses[item.curse].level <= level
+		&& !KDCurses[item.curse].noPurify
+	) {
 		return true;
 	}
 	return false;

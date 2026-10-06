@@ -117,8 +117,8 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 			}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, 
             ButtonWidth, ButtonWidth, "", KDBaseWhite, 
             KinkyDungeonRootDirectory
-                + "CustomStruggle/" + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess)
-                ? KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess : "CurseUnlock") + ".png", 
+                + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess)
+                ? "CustomStruggle/" + KDCurses[KDGetCurse(item)].customIcon_RemoveSuccess : "CurseUnlock") + ".png", 
                 "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true});
             i++;
 		}

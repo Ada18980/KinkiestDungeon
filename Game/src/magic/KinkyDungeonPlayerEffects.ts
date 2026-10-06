@@ -531,6 +531,32 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 		return {sfx: "Fwosh", effect: true};
 	},
+	"PullToward": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 1.0)) {
+			if (KDDeafLevel() > 0) {
+				KinkyDungeonSendTextMessage(4, TextGet((playerEffect.msg || "KDElementalSong") + "Deaf"), "#1ae4e7", 1);
+
+				return{sfx: "Shield", effect: false};
+			}
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			if (!dmg.happened) return{sfx: "Shield", effect: false};
+			if (dmg.happened) {
+				let dist = playerEffect.dist;
+				for (let i = 0; i < dist; i++) {
+					if (KDistChebyshev(entity.x - target.x, entity.y - target.y) <= 1.5) break;
+					let newX = target.x + Math.round(1 * Math.sign(entity.x - target.x));
+					let newY = target.y + Math.round(1 * Math.sign(entity.y - target.y));
+					if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
+					&& (dist == 1 || KinkyDungeonCheckProjectileClearance(target.x, target.y, newX, newY))) {
+						KDMovePlayer(newX, newY, false);
+					}
+				}
+				KinkyDungeonSendTextMessage(4, TextGet(playerEffect.msg || "KDElementalSong").KDReplaceOrAddDmg( dmg.string), "#1ae4e7", 1);
+			}
+
+		}
+		return {sfx: "Fwosh", effect: true};
+	},
 	"PushAway": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
 		if (KDTestSpellHitsNoFF(target, entity, spell, 1.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);

@@ -328,6 +328,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 		lock: true,
 		noShrine: true,
 		noShop: true,
+		noPurify: true,
 		customIcon_RemoveInfo: "Locks/Gold",
 		level: 10,
 		blockable: true,

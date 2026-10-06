@@ -74,6 +74,7 @@
         "Game/src/enemy/KinkyDungeonEnemyTeaseAttacks.ts",
         "Game/src/map/KinkyDungeonEscapeList.ts",
         "Game/src/item/KDCurse.ts",
+        "Game/src/item/KDCurseBuffs.ts",
         "Game/src/restraint/KinkyDungeonRestraints.ts",
         "Game/src/restraint/KDSpiritbond.ts",
         "Game/src/restraint/special/Masterwork.ts",
