@@ -41,6 +41,7 @@ let KDTrainingTypeProperties: Record<string, KDTrainingProps> = {
 	},
 }
 
+
 interface KDTrainingProps {
 	color: string,
 	showBuff?: boolean,
@@ -311,4 +312,94 @@ function KDAddGagXP(type: string, player: entity, xp?: number) {
 				KDAddFlatTraining("Gag", dat.xp);
 			}
 	}
+}
+
+
+interface KDCorsetSPRedEventData {
+    level: number;
+    buff: number;
+	buffmult: number;
+    mult: number;
+    exponent: number;
+    priority: number;
+}
+function KDCorsetSPReductionMult(player: entity, buffs: boolean = true) : number {
+
+	let data: KDCorsetSPRedEventData = {
+		level: (KDGameData.Training?.Corset?.training_stage || 0),
+		buff: KDEntityBuffedStat(player, "CorsetTraining"),
+		buffmult: 1,
+		mult: 1,
+		exponent: .9,
+		priority: 0,
+	}
+
+	if (KinkyDungeonStatsChoice.get("Artificial")) {
+		data.mult *= 0.1;
+	}
+
+	KinkyDungeonSendEvent("calcCorsetSPRed", data);
+
+	if (data.exponent != 1)
+		data.mult *= data.exponent**((data.level + data.buff) * data.buffmult);
+
+
+	return data.mult;
+}
+
+
+interface KDGagRedEventData {
+    level: number;
+    buff: number;
+	buffmult: number;
+    mult: number;
+    exponent: number;
+    priority: number;
+}
+
+function KDGagReductionMult(player: entity, buffs: boolean = true) : number {
+	let data: KDGagRedEventData = {
+		level: (KDGameData.Training?.Gag?.training_stage || 0),
+		buff: KDEntityBuffedStat(player, "GagTraining"),
+		buffmult: 1,
+		mult: 1,
+		exponent: .91,
+		priority: 0,
+	}
+
+	KinkyDungeonSendEvent("calcGagRed", data);
+
+	if (data.exponent != 1)
+		data.mult *= data.exponent**((data.level + data.buff) * data.buffmult);
+
+
+	return data.mult;
+}
+
+
+interface KDSensesEventData {
+    level: number;
+    buff: number;
+	buffmult: number;
+    mult: number;
+    boost: number;
+    priority: number;
+}
+
+function KDSensesTrainingBoost(player: entity, buffs: boolean = true) : number {
+	let data: KDSensesEventData = {
+		level: (KDGameData.Training?.Senses?.training_stage || 0),
+		buff: KDEntityBuffedStat(player, "SensesTraining"),
+		buffmult: 1,
+		mult: 1,
+		boost: 0.05,
+		priority: 0,
+	}
+
+	KinkyDungeonSendEvent("calcGagRed", data);
+
+	if (data.boost) data.mult += data.boost * ((data.level + data.buff) * data.buffmult)
+	
+
+	return data.mult;
 }

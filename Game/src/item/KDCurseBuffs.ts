@@ -19,6 +19,9 @@ let KDMajorCurses: Record<string, KDMajorCurse> = {
             duration: 9999,
             infinite: true,
             aura: "Null",
+            events: [
+                
+            ]
         },
         level: 5,
         filter: (player) => {

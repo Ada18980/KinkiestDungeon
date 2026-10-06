@@ -4486,28 +4486,3 @@ function KDDrawExtraItemInfo(item: itemPreviewEntry, xOffset: number, yOffset: n
 	
 }
 
-function KDCorsetSPReductionMult(player: entity, buffs: boolean = true) : number {
-	let mult = 1;
-
-	mult *= 0.9**( (KDGameData.Training?.Corset?.training_stage || 0) + KDEntityBuffedStat(player, "CorsetTraining"));
-
-
-	return mult;
-}
-
-function KDGagReductionMult(player: entity, buffs: boolean = true) : number {
-	let mult = 1;
-
-	mult *= 0.91**( (KDGameData.Training?.Gag?.training_stage || 0) + KDEntityBuffedStat(player, "GagTraining"));
-
-
-	return mult;
-}
-
-function KDSensesTrainingBoost(player: entity, buffs: boolean = true) : number {
-	let mult = 1;
-
-	mult += 0.05 * ((KDGameData.Training?.Senses?.training_stage || 0) + KDEntityBuffedStat(player, "SensesTraining"));
-
-	return mult;
-}
