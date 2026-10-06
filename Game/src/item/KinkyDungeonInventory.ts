@@ -4448,7 +4448,7 @@ function KDDrawExtraItemInfo(item: itemPreviewEntry, xOffset: number, yOffset: n
 		DrawTextKD(TextGet("KDCorsetDesc", {
 			FRACTION: Math.round(KDRestraint(item.item)?.corset * 100 * KDCorsetSPReductionMult(player)),
 			}) + (KDCorsetSPReductionMult(player) < 1 ? TextGet("KDRestraintDescBaseTag", {
-				FRACTIONORIG: Math.round(KDRestraint(item.item)?.corset),
+				FRACTIONORIG: Math.round(KDRestraint(item.item)?.corset * 100),
 			}): ""),
 			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), 
 			yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 435 + (20 * yy--),
