@@ -528,7 +528,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 应用已佩戴的束缚的调色板
 - Flip Player Display
 翻转玩家显示
-- Grayscale when Blind
+- Greyscale when Blind
 失明时视野变成黑白
 - Faster Floater Fade
 漂浮文字更快消散
@@ -1617,7 +1617,7 @@ Sub
 无论等级如何，堵嘴类装备都会阻止你施放言语类咒语。
 - Smooth Talker
 油嘴滑舌
-- Being gagged does not increase your miscast chance for verbal spells unless fully gagged, and reduces gag power by 20%.
+- Being gagged does not increase verbal miscast chance unless over 50% gagged, and reduces gag power by 20%.
 除非你的嘴被完全堵住，否则堵嘴不会增加你念错咒语的几率，并且会降低 20% 堵嘴的强度。
 
 - Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
@@ -1879,7 +1879,7 @@ EnemyName对TargetName念出了一个口令！
 你的手臂可以自由伸展。
 - Your legs are free and unimpeded.
 你的双腿自由而无阻。
-- You are gagged! Verbal miscast chance is increased and your potions are less effective!
+- You are ${AMOUNT} gagged! Verbal miscast chance is increased and potions are less effective!
 你的嘴巴被口球堵住了，施放言语法术的失败几率增加，而且药剂的效果减弱！
 - Your mouth is totally filled! You can't drink potions and can't cast verbal spells!
 你的嘴巴被堵的死死的，无法施放言语法术和饮用药剂！
@@ -3428,7 +3428,7 @@ Devious Dungeon Challenge 已启用。
 法力药水
 - You sip the mana potion and feel empowered.
 你啜饮着法力药水，感到充满能量。
-- A rare essence used by mages to recover their strength.
+- A rare essence used by mages to recover their strength. More talented mages absorb more of the power.
 法师用来恢复力量的稀有精华。
 - Restores 50% max MP instantly. Excess mana goes into the mana pool.
 立即恢复 50% 最大法力。多余的法力将被存入法力池中。
@@ -4307,6 +4307,13 @@ RESTRAINTNAME 已经没有可添加的束缚了，将进入一段休眠期。
 
 - (The angel looks puzzled and unlocks your divine restraints)
 ( 天使一脸疑惑，解开你的神圣束缚 )
+
+# - attack
+# -  (${FRACTIONORIG}% base)
+# - Reduces max SP by ${FRACTION}%
+# - Gag strength: ${FRACTION}%
+# - Deaf level: ${FRACTION}%
+# - Blind level: ${FRACTION}%
 
 - The EnemyName pulls away your ArmorName!!!
 EnemyName 扯下了你的 ArmorName！！！
@@ -6983,9 +6990,9 @@ TargetRestraint 上的锁孔几乎够不到......
 - You can't hold your knife like this...
 你不能这样握刀...
 
-- The TargetRestraint is too secure to struggle out.
+- The TargetRestraint is too strong to struggle out of.
 TargetRestraint 安全性太高了，无法挣脱。
-- You groan in frustration as you realize the TargetRestraint is too strong to escape.
+- The TargetRestraint is too strong to squirm out of, no matter the effort.
 你沮丧地呻吟着，意识到TargetRestraint实在太紧，根本无法挣脱。
 - The TargetRestraint tightens itself as you try to squeeze out!
 TargetRestraint 会在你尝试挣脱时自动收紧！
@@ -7274,6 +7281,8 @@ TargetRestraint 与你的皮肤贴得太紧！
 - You make a futile attempt to rub the TargetRestraint off.
 你徒劳地尝试摩擦掉 TargetRestraint。
 
+
+
 - You try to wiggle off the TargetRestraint...
 你尝试挣脱 TargetRestraint...
 - You squirm trying to get the TargetRestraint to fall off...
@@ -7357,6 +7366,25 @@ TargetRestraint 牢牢地密封包裹住你的身体。
 你蠕动时，TargetRestraint 会强行拉动你的乳头！
 # :: KinkyDungeonStruggleStruggleImpossibleBoundClamps
 # :: KinkyDungeonStruggleStruggleImpossibleBoundClampsAroused
+
+
+# - You rub your head trying to dislodge the TargetRestraint...
+# :: KinkyDungeonStruggleStruggleFailEarplugs
+# :: KinkyDungeonStruggleStruggleImpossibleEarplugsBound
+# :: KinkyDungeonStruggleStruggleImpossibleEarplugsBoundAroused
+# :: KinkyDungeonStruggleRemoveImpossibleEarplugsBound
+# :: KinkyDungeonStruggleRemoveImpossibleEarplugsBoundAroused
+# - You hopelessly rub your head trying to dislodge the TargetRestraint...
+# - The TargetRestraint are too far in your ears to dislodge.
+# :: KinkyDungeonStruggleStruggleImpossibleEarplugs
+# :: KinkyDungeonStruggleStruggleImpossibleEarplugsAroused
+
+
+# - You reach in to remove the earplugs...
+# :: KinkyDungeonStruggleRemoveFailEarplugs
+# :: KinkyDungeonStruggleRemoveFailEarplugsAroused
+# - You can't reach the TargetRestraint.
+# - You can't reach the TargetRestraint no matter how hard you try.
 
 
 
@@ -8480,9 +8508,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 真多系带啊！穿上这件衣服一般要花费很长时间，但这就是魔法派上用场的时候了！
 - Ornamental Corset
 装饰束腰
-- Your figure looks gorgeous in this~
+- Your figure looks gorgeous in this, but not so much your athletic capabilities.
 你的身材看起来真漂亮〜
-- It's so tight you won't be able to undo the laces yourself, dear!
+- The laces are impressively tight, the boning is steel but ultimately it's made of delicate fabric. You wouldn't possibly cut it, would you?
 哎呀！这个绑带太紧了，你自己解不开！
 
 - Fancy Ball Gag
@@ -9894,6 +9922,17 @@ RestraintName 上的诅咒解除了！
 # :: RestraintTrapBlindfoldDesc2
 # :: RestraintClothBlindfoldDesc2
 # :: RestraintScarfBlindfoldDesc2
+
+- Earplugs
+耳塞
+# :: RestraintTrapEarplugs
+# :: KDConsentItem_Earplugs
+# - Soft padded earplugs for both work and kinky purposes.
+# - They can be removed if you have hands.
+
+# - Cyber Headphones
+# - Headphones designed for totally non-kinky purposes. They have excellent sound isolation, which makes them good for that though...
+# - Locks in place with a specialized headband. Reinforced with steel boning to ensure durability.
 
 
 - High-Security Blindfold
@@ -14480,6 +14519,8 @@ Ars烟火
 
 - Chastity
 贞操带
+# :: KinkyDungeonSpellChastity
+# :: KDFilterFiltersChastity
 - Target must be disabled, submissive, or in your party.
 目标必须是无法抵抗的，顺从的，或在你的队伍中。
 - Select which creature to lock in a belt
@@ -16015,7 +16056,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 
 - You overload the magical seal, causing it to vanish and release the item.
 你使魔法封印过载，导致它消失并解开该物品。
-- The item is magically sealed, requiring 200 mana to unlock it (includes mana from mana pool).
+- This is a magic seal, requiring a mana potion or 150 MP to unlock it.
 该物品被魔法封印，需要 200 点法力才能解锁 ( 包括法力池中的法力 ) 。
 - You tug on the item, but the magic can't be broken with anything other than brute force.
 你拉扯着物品，但除了蛮力之外，任何其他力量都无法打破魔法。
@@ -45023,6 +45064,7 @@ Kjus眼5
 是时候带你回到原处了~
 - You've been quite adorable! Until next time~
 你真是太可爱了！下次见~
+# - I'll get back to you in a moment...
 
 - It's time for your walk, ${PHonor}.
 ${PHonor}，该散步了。
@@ -45034,6 +45076,7 @@ ${PHonor}，该散步了。
 我现在必须把你带回去了~
 - It's been fun playing with you ${PHonor}!
 和你一起玩很有趣，${PHonor}！
+# - We can finish your walk later, ${PHonor}!
 
 - (reaches for your leash)
 ( 伸手去拉你的牵绳 )
@@ -45043,6 +45086,7 @@ ${PHonor}，该散步了。
 ( 咯咯笑 )
 - (waves goodbye)
 ( 挥手告别 )
+# - Mmmmph!!
 
 - Why don't we go for a walk?
 我们为什么不去散步呢？
@@ -45054,6 +45098,7 @@ ${PHonor}，该散步了。
 我得去还你~
 - Good ${Psub}~ Let's go again later~
 好${Psub}~ 我们一会儿再去吧~
+# - We can finish your walk later, ${PHonor}.
 
 - It's time for walkies!
 该走了！
@@ -45065,6 +45110,7 @@ ${PHonor}，该散步了。
 是时候回你的小房子了~
 - (pats you on the head)
 ( 拍拍你的头 )
+# - Looks like trouble, ${PHonor}!
 
 - It is time for your mandatory exercise.
 是时候进行强制性锻炼了。
@@ -45076,6 +45122,7 @@ ${PHonor}，该散步了。
 练习完毕。返回存储。
 - Uploading logs to database. Error... no connection.
 正在将日志上传到数据库。错误...没有连接。
+# - Exercise postponed.
 
 - Latex Mimic
 乳胶模仿者
@@ -45142,6 +45189,13 @@ ${PHonor}，该散步了。
 捆缚
 - Gags
 堵嘴物
+# :: KDFilterFiltersGags
+# :: KDFilterFiltersGags
+- Blindfolds
+眼罩
+# :: KDFilterFiltersBlindfolds
+# :: KDConsentItem_Blindfolds
+# - Sensory
 - Harnesses
 绳束衣
 - Mittens
@@ -45156,6 +45210,7 @@ ${PHonor}，该散步了。
 贞操带
 - C. Bras
 贞操文胸
+# - Leashes
 - Maid
 女仆
 # :: KDFilterFiltersMaid
@@ -47514,8 +47569,6 @@ Kigurumi头壳
 泡泡
 - Ball Suits
 球形束缚
-- Blindfolds
-眼罩
 - Yokes and Spreaders
 枷锁和分腿器
 - Straitjackets
@@ -47526,8 +47579,6 @@ Kigurumi头壳
 头套
 - Full-face Masks
 全脸面罩
-- Earplugs
-耳塞
 - Painful Shocks
 剧烈电击
 - Sensory Deprivation
@@ -48695,6 +48746,8 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - You can't use your hands for that, but you can crouch to use your mouth.
 你不能用手来做这件事，但你可以蹲下来用嘴。
 
+# - ${STAT} Level Up!
+
 - Heel Training
 高跟鞋训练
 # :: KinkyDungeonStatHeelTraining
@@ -48703,6 +48756,8 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 开始时，在没有进行高跟鞋训练的情况下穿戴一双上锁的芭蕾高跟鞋。
 - Gag Training
 堵嘴训练
+# :: KinkyDungeonStatGagTraining
+# :: KDProgressItem_TrainingGag
 - Start locked in a gag with no gag training.
 开始时，在没有经过堵嘴训练的情况下佩戴一件上锁的口塞。
 - Corset Training
@@ -48713,7 +48768,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 开始时，在没有经过束腰训练的情况下穿戴一件上锁的束腰。
 - Sensory Training
 感官训练
-- Start locked in a blindfold and headphones with no Sensory training.
+- Start locked in a sensory hood with no Sensory training.
 开始时，在没有进行感官训练的情况下佩戴一套锁定的耳罩和耳机。
 
 - Hard to Master: Heels
@@ -51487,9 +51542,6 @@ NPC不可用
 - n/a
 N/A
 
-- [EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
-[经验 : AMNT/LMT][进入下一层 +NXT 经验] 高跟鞋训练可以提高你的平衡能力，防止你摔倒
-# - [EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamila penalty from corsets.
 
 - The furniture space is occupied
 家具空间被占用
@@ -53131,6 +53183,7 @@ NME 由于不够显要，被自动释放
 # :: KDContextMenu_Tease
 - Aggress
 威胁
+# - Are you sure?
 - Sneak Attack
 偷袭
 - Retaliate
@@ -53778,17 +53831,34 @@ Boss
 解锁方式：( 非 ) 自愿踏入维度裂隙。
 
 
+- [EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
+[经验 : AMNT/LMT][进入下一层 +NXT 经验] 高跟鞋训练可以提高你的平衡能力，防止你摔倒
+# - [EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamina penalty from corsets.
+# - [EXP: AMNT/LMT, +NXT next floor] Gag training reduces your overall gag level.
+# - [EXP: AMNT/LMT, +NXT next floor] Senses training increases hearing radius and reduces blindfold effectiveness.
+
+# - Balance Costs:
+# - Corset Penalty:
+# - Gag Strength:
+# - Perception:
+# - WP Loss from Orgasm:
+# - WP Loss from Edging:
+
+# - Senses Training
+
 - Select a progress item to show details
 选择一项进度以显示更多细节
 
 # - Corset training affects the level of max stamina penalty incurred from wearing a corset. Levels are gained by spending stamina while wearing a corset.\nTraining failure occurs if you are not wearing a corset when you spend stamina.
+# - Gag training affects the effective strength of gags, allowing you to ignore lower level gags. Levels are gained by talking to NPCs, flirting, and casting verbal spells.\nTraining failure occurs if you are not wearing a gag when you perform actions.
 - Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions.
 高跟鞋训练影响你穿着高跟鞋时保持平衡的能力。穿着高跟鞋移动以提升训练进度。\n如果不穿高跟鞋，训练会失败，减少部分经验值。
-- Current Progress: 
+# - Senses training affects your hearing ability and the effectiveness of blindfolds. Levels are gained by detecting enemies by sound before visually spotting them.\nTraining failure occurs you spot enemies while neither blindfolded nor deafened.
+- Current Progress:
 当前进度：
 - Milestones:
 里程碑：
-- Bonus Progress (gained next Floor):
+- Bonus Progress (per floor):
 获得进度（进入下一层时结算）：
 - Mistakes Made:
 累计失误：
@@ -53798,8 +53868,32 @@ Boss
 - Any Level
 任何等级
 
+
+# - Flirted without a gag
+# - Flirted while lightly gagged
+# - Flirted while moderately gagged
+# - Flirted while heavily gagged
+
+# - Bought/sold without a gag
+# - Bought/sold while lightly gagged
+# - Bought/sold while moderately gagged
+# - Bought/sold while heavily gagged
+
+# - Prayed without a gag
+# - Prayed while lightly gagged
+# - Prayed while moderately gagged
+# - Prayed while heavily gagged
+
+
+
+
+
 - Went on a leash walk:
 牵绳散步: 
+# - (Max once per floor)
+# :: KDProgressTagDesc_Heels_LeashWalk
+# :: KDProgressTagDesc_OncePerFloor
+# - (Max once per level)
 - Training Level ${Level}
 训练等级 ${Level}
 
