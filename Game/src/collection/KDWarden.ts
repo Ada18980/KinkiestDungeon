@@ -165,6 +165,7 @@ function KDUpdateWarden(delta: number) {
 									faction: testItem.faction,
 									restraint: testItem.name,
 									restraintid: testItem.id,
+									data: testItem.data,
 									lock: "",
 									variant: undefined,
 									events: testItem.events,

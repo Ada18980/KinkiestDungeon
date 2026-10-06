@@ -3625,7 +3625,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 											events: events,
 										};
 										if (curs) {
-											events.push(...KDEventHexModular[curs].events({variant: variant}));
+											events.push(...KDEventHexModular[curs].events({variant: variant, seed: KDGetRandomSeed(null)}));
 										}
 										KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 											KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
@@ -3675,7 +3675,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										events: events,
 									};
 									if (curs) {
-										events.push(...KDEventHexModular[curs].events({variant: variant}));
+										events.push(...KDEventHexModular[curs].events({variant: variant, seed: KDGetRandomSeed(null)}));
 									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
@@ -3720,7 +3720,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										events: events,
 									};
 									if (curs) {
-										events.push(...KDEventHexModular[curs].events({variant: variant}));
+										events.push(...KDEventHexModular[curs].events({variant: variant, seed: KDGetRandomSeed(null)}));
 									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
@@ -3765,7 +3765,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										events: events,
 									};
 									if (curs) {
-										events.push(...KDEventHexModular[curs].events({variant: variant}));
+										events.push(...KDEventHexModular[curs].events({variant: variant, seed: KDGetRandomSeed(null)}));
 									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
@@ -4016,7 +4016,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 											events: events,
 										};
 										if (curs) {
-											events.push(...KDEventHexModular[curs].events({variant: variant}));
+											events.push(...KDEventHexModular[curs].events({variant: variant, seed: KDGetRandomSeed(null)}));
 										}
 										KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 											KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
@@ -4065,7 +4065,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										events: events,
 									};
 									if (curs) {
-										events.push(...KDEventHexModular[curs].events({variant: variant}));
+										events.push(...KDEventHexModular[curs].events({variant: variant, seed: KDGetRandomSeed(null)}));
 									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
@@ -4110,7 +4110,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										events: events,
 									};
 									if (curs) {
-										events.push(...KDEventHexModular[curs].events({variant: variant}));
+										events.push(...KDEventHexModular[curs].events({variant: variant, seed: KDGetRandomSeed(null)}));
 									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));
@@ -4155,7 +4155,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										events: events,
 									};
 									if (curs) {
-										events.push(...KDEventHexModular[curs].events({variant: variant}));
+										events.push(...KDEventHexModular[curs].events({variant: variant, seed: KDGetRandomSeed(null)}));
 									}
 									KDEquipInventoryVariant(variant, "", 0, true, "", true, false, "Shopkeeper", true,
 										KDGetByWeight(KinkyDungeonGetCurseByListWeighted(["Common"], "", false, 0, 20)));

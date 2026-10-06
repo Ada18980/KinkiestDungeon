@@ -145,6 +145,14 @@ function KDGetWeaponVariant(item: item): KDWeaponVariant {
 	return KinkyDungeonWeaponVariants[item.inventoryVariant || item.inventoryAs || item.name];
 }
 
+
+/**
+ * @param item
+ */
+function KDGetVariant(item: item): KDWeaponVariant {
+	return KDGetRestraintVariant(item) || KDGetWeaponVariant(item) || KDGetConsumableVariant(item);
+}
+
 let KDInventoryUseIconConfig: Record<string, boolean> = {};
 KDInventoryUseIconConfig[Weapon] = true;
 KDInventoryUseIconConfig[Consumable] = true;
@@ -3634,7 +3642,8 @@ function KDGiveConsumableVariant(variant: KDConsumableVariant, prefix: string = 
  * @param [powerBonus]
  * @param [quantity]
  */
-function KDReturnInventoryVariant(variant: KDRestraintVariant, prefix: string = "", curse: string = undefined, ID: string = "", forceName?: string, suffix: string = "", faction: string = "", powerBonus?: number, quantity: number = 1): item {
+function KDReturnInventoryVariant(variant: KDRestraintVariant, prefix: string = "", curse: string = undefined, ID: string = "", forceName?: string,
+	suffix: string = "", faction: string = "", powerBonus?: number, quantity: number = 1, data?: any): item {
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 	let newname = forceName ? forceName : (prefix + variant.template + (ID || (KinkyDungeonGetItemID() + "")) + (curse ? curse : ""));
@@ -3650,7 +3659,7 @@ function KDReturnInventoryVariant(variant: KDRestraintVariant, prefix: string = 
 	if (variant.events)
 		events = [...variant.events];
 	let q = quantity;
-	return {faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,};
+	return {faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(), data: data, type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,};
 }
 
 
@@ -3666,7 +3675,9 @@ function KDReturnInventoryVariant(variant: KDRestraintVariant, prefix: string = 
  * @param [powerBonus]
  * @param [quantity]
  */
-function KDGiveInventoryVariant(variant: KDRestraintVariant, prefix: string = "", curse: string = undefined, ID: string = "", forceName?: string, suffix: string = "", faction: string = "", powerBonus?: number, quantity: number = 1, container?: KDContainer) {
+function KDGiveInventoryVariant(variant: KDRestraintVariant, prefix: string = "", curse: string = undefined, ID: string = "",
+	forceName?: string, suffix: string = "", faction: string = "", powerBonus?: number, quantity: number = 1, container?: KDContainer,
+	data?: any) {
 	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
 	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
 	let newname = forceName ? forceName : (prefix + variant.template + (ID || (KinkyDungeonGetItemID() + "")) + (curse ? curse : ""));
@@ -3686,11 +3697,15 @@ function KDGiveInventoryVariant(variant: KDRestraintVariant, prefix: string = ""
 		if (container.items[newname]) {
 			container.items[newname].quantity = (container.items[newname].quantity || 1) + 1;
 		} else {
-			container.items[newname] = {faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,};
+			container.items[newname] = {faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(),
+				data: data,
+				type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,};
 		}
 	} else {
 		if (KinkyDungeonInventoryGet(newname)) q = KinkyDungeonInventoryGet(newname).quantity + quantity;
-		KinkyDungeonInventoryAdd({faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,});
+		KinkyDungeonInventoryAdd({faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(),
+			data: data,
+			type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,});
 	}
 }
 
@@ -3890,7 +3905,8 @@ function KDGiveItem(name: string, quantity: number = 1): boolean {
 		return true;
 	} else if (KinkyDungeonRestraintVariants[name]) {
 		let variant = KinkyDungeonRestraintVariants[name];
-		KDGiveInventoryVariant(variant, undefined, variant.curse, undefined, name, KinkyDungeonRestraintVariants[name].suffix, undefined, undefined, quantity);
+		KDGiveInventoryVariant(variant, undefined, variant.curse, undefined, 
+			name, KinkyDungeonRestraintVariants[name].suffix, undefined, undefined, quantity);
 		return true;
 	} else if (KDRest(name)) {
 		let restraint = KDRest(name);

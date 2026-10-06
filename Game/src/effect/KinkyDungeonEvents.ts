@@ -1178,7 +1178,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				//newvariant.events = KDSwapEvents(newvariant, oldRestraint, newRestraint);
 				if (!data.trimTrigger)
 					newvariant.events = newvariant.events.filter((event) => { return event.trigger != "CurseTransform"; });
-				newvariant.events = [...newvariant.events, ...KDEventHexModular[selection].events({ variant: newvariant })];
+				newvariant.events = [...newvariant.events, ...KDEventHexModular[selection].events({ variant: newvariant, seed: KDGetRandomSeed(item)})];
 				if (data.trimTrigger)
 					newvariant.events = newvariant.events.filter((event) => { return event.trigger != "CurseTransform"; });
 				if (curse) {

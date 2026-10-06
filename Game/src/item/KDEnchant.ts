@@ -168,9 +168,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDRest(item)?.hobble) return 20;
 					return 3;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 4);
-					let amt = 7 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.75));
+					let Random = KDRandomGen(data.seed);
+					let amt = 7 + Math.round((0.4 + 0.6*Random()) * 4 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "Evasion", trigger: "tick", type: "evasionBuff", power: amt/100, inheritLinked: true},
@@ -193,9 +194,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDWeapon({name: item})?.crit > KDDefaultCrit) return 10;
 					return 4;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
-					let amt = 7 + Math.round((0.4 + 0.6*KDRandom()) * 8 * Math.pow(power, 0.75));
+					let Random = KDRandomGen(data.seed);
+					let amt = 7 + Math.round((0.4 + 0.6*Random()) * 8 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "Accuracy", trigger: "calcEvasion", type: "IsMagic"},
@@ -214,9 +216,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDRest(item)?.bindarms) return 1;
 					return 24;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
-					let amt = 6 + Math.round((0.4 + 0.6*KDRandom()) * 8 * Math.pow(power, 0.75));
+					let Random = KDRandomGen(data.seed);
+					let amt = 6 + Math.round((0.4 + 0.6*Random()) * 8 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "Accuracy", trigger: "tick", type: "AccuracyBuff", power: amt/100, inheritLinked: true},
@@ -242,9 +245,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (!KDRest(item)?.armor) return 15;
 					return 4;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 2);
-					let amt = 5 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.5));
+					let Random = KDRandomGen(data.seed);
+					let amt = 5 + Math.round((0.4 + 0.6*Random()) * 4 * Math.pow(power, 0.5));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					amt = Math.pow(amt, 0.9);
 					return [
@@ -267,9 +271,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDWeapon({name: item})?.type == "ice" || KDWeapon({name: item})?.type == "frost") return 100;
 					return 15;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
-					let amt = 1 + Math.round((0.4 + 0.6*KDRandom()) * 2 * Math.pow(power, 0.6));
+					let Random = KDRandomGen(data.seed);
+					let amt = 1 + Math.round((0.4 + 0.6*Random()) * 2 * Math.pow(power, 0.6));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "AoEDamageFrozen", trigger: "calcEvasion", type: "IsMagic"},
@@ -297,9 +302,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDWeapon({name: item})?.type == "cold") return 100;
 					return 20;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
-					let amt = 4 + Math.round((0.4 + 0.6*KDRandom()) * 5 * Math.pow(power, 0.7));
+					let Random = KDRandomGen(data.seed);
+					let amt = 4 + Math.round((0.4 + 0.6*Random()) * 5 * Math.pow(power, 0.7));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ShadowBleed", type: "ShadowBleed", trigger: "afterPlayerAttack", time: 10, power: 0.1 * amt, damage: "cold"},
@@ -323,9 +329,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (allEnchant.includes("SpellWard")) return 0;
 					return KinkyDungeonWeapons[item]?.magic ? 12 : 2 + (KinkyDungeonWeapons[item]?.tags?.includes("shield") ? 30 : 0);
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
-					let amt = 7 + Math.round((0.4 + 0.6*KDRandom()) * 20 * Math.pow(power, 0.6));
+					let Random = KDRandomGen(data.seed);
+					let amt = 7 + Math.round((0.4 + 0.6*Random()) * 20 * Math.pow(power, 0.6));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "SpellWard", trigger: "calcEvasion", type: "IsMagic"},
@@ -342,9 +349,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDRest(item)?.magic) return 40;
 					return 5;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
-					let amt = 3 + Math.round((0.4 + 0.6*KDRandom()) * 3 * Math.pow(power, 0.75));
+					let Random = KDRandomGen(data.seed);
+					let amt = 3 + Math.round((0.4 + 0.6*Random()) * 3 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "SpellWard", trigger: "tick", type: "spellWardBuff", power: amt/10, inheritLinked: true},
@@ -367,9 +375,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDRest(item)?.armor || KDRest(item)?.good) return 10;
 					return 0;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 5);
-					let amt = 10 + Math.round((0.4 + 0.6*KDRandom()) * 8 * Math.pow(power, 0.75));
+					let Random = KDRandomGen(data.seed);
+					let amt = 10 + Math.round((0.4 + 0.6*Random()) * 8 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "BondageResist", trigger: "tick", type: "RestraintBlock", power: amt/10, inheritLinked: true},
@@ -392,7 +401,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemRarity(item), 4);
-					let amt = 14 + Math.round((0.4 + 0.6*KDRandom()) * 11 * Math.pow(power, 0.75));
+					let Random = KDRandomGen(data.seed);
+					let amt = 14 + Math.round((0.4 + 0.6*Random()) * 11 * Math.pow(power, 0.75));
 					let types = ['fire', 'ice', 'soap', "acid", 'glue', 'chain', 'grope', 'crush', 'cold', 'electric', 'poison', 'soul', 'tickle'];
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -413,7 +423,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 4);
-					let amt = 10 + Math.round((0.4 + 0.6*KDRandom()) * 10 * Math.pow(power, 0.75));
+					let Random = KDRandomGen(data.seed);
+					let amt = 10 + Math.round((0.4 + 0.6*Random()) * 10 * Math.pow(power, 0.75));
 					let types = ['fire', 'ice', "soap" ,'acid', 'glue', 'chain', 'grope', 'crush', 'cold', 'electric', 'poison', 'soul', 'tickle'];
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -441,7 +452,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 2);
-					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.75));
+					let Random = KDRandomGen(data.seed);
+					let amt = 2 + Math.round((0.4 + 0.6*Random()) * 4 * Math.pow(power, 0.75));
 					let types = ['fire', 'ice', 'soap', 'slash', 'pierce', 'unarmed', 'pain', 'cold', 'glue', 'chain', 'tickle', 'crush', 'electric', 'soul', 'charm'];
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 
@@ -468,9 +480,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDWep(item)?.magic) return 8;
 					return 3;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 2);
-					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.7));
+					let Random = KDRandomGen(data.seed);
+					let amt = 2 + Math.round((0.4 + 0.6*Random()) * 4 * Math.pow(power, 0.7));
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaCost", trigger: "calcEfficientMana", type: "ManaCost", power: amt*0.01, inheritLinked: true},
@@ -491,9 +504,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDRest(item)?.armor) return 8;
 					return 3;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 2);
-					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.7));
+					let Random = KDRandomGen(data.seed);
+					let amt = 2 + Math.round((0.4 + 0.6*Random()) * 4 * Math.pow(power, 0.7));
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaCost", trigger: "calcEfficientMana", type: "ManaCost", power: amt*0.01, inheritLinked: true},
@@ -523,7 +537,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
-					let amt = 3 + Math.round((0.4 + 0.6*KDRandom()) * 6 * Math.pow(power, 0.85));
+					let Random = KDRandomGen(data.seed);
+					let amt = 3 + Math.round((0.4 + 0.6*Random()) * 6 * Math.pow(power, 0.85));
 					let types = ['air', 'earth', 'fire', 'water', 'electric', 'ice', 'latex', 'metal', 'rope', 'leather', 'light', 'shadow', 'stealth', 'summon', 'knowledge', 'arrow'];
 
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
@@ -556,7 +571,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					},
 					events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 						let power = Math.max(KDGetItemPower(item), 3);
-						let amt = 1.4 + Math.round((0.4 + 0.6*KDRandom()) * 3 * Math.pow(power, 0.65));
+					let Random = KDRandomGen(data.seed);
+						let amt = 1.4 + Math.round((0.4 + 0.6*Random()) * 3 * Math.pow(power, 0.65));
 	
 						amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 						return [
@@ -587,7 +603,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
-					let amt = 1.8 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.65));
+					let Random = KDRandomGen(data.seed);
+					let amt = 1.8 + Math.round((0.4 + 0.6*Random()) * 4 * Math.pow(power, 0.65));
 
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
@@ -612,9 +629,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDRest(item)?.magic) return 12;
 					return 6;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
-					let amt = 0.5 + Math.round((0.4 + 0.6*KDRandom()) * 1.5 * Math.pow(power, 0.5));
+					let Random = KDRandomGen(data.seed);
+					let amt = 0.5 + Math.round((0.4 + 0.6*Random()) * 1.5 * Math.pow(power, 0.5));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaRegenOnKill", trigger: "capture", type: "ManaBounty", power: amt * 0.1, inheritLinked: true},
@@ -642,7 +660,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
-					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.5));
+					let Random = KDRandomGen(data.seed);
+					let amt = 2 + Math.round((0.4 + 0.6*Random()) * 4 * Math.pow(power, 0.5));
 					let types = ['fire', 'ice', 'soap', 'acid', 'cold', 'electric', 'stun', 'soul'];
 
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
@@ -670,7 +689,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
-					let amt = 3 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.7));
+					let Random = KDRandomGen(data.seed);
+					let amt = 3 + Math.round((0.4 + 0.6*Random()) * 4 * Math.pow(power, 0.7));
 					let types = ['fire', 'ice', "soap", 'acid', 'cold', 'electric', 'stun', 'soul'];
 
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
@@ -685,14 +705,15 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				filter: (_item, _allEnchant) => {
 					return true;
 				},
-				weight: (item, allEnchant, _data) => {
+				weight: (item, allEnchant, data) => {
 					if (allEnchant.includes("ElementalDmg")) return 0;
 					if (KDRest(item)?.armor) return 11;
 					return 8;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
-					let amt = 0.8 + Math.round((0.4 + 0.6*KDRandom()) * 2.8 * Math.pow(power, 0.4));
+					let Random = KDRandomGen(data.seed);
+					let amt = 0.8 + Math.round((0.4 + 0.6*Random()) * 2.8 * Math.pow(power, 0.4));
 					let types = ['fire', 'ice', "soap", 'acid', 'cold', 'electric', 'stun', 'soul'];
 
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
@@ -717,9 +738,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDWep(item)?.magic) return 12;
 					return 6;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
-					let amt = 25 + Math.round((0.4 + 0.6*KDRandom()) * 10 * Math.pow(power, 0.75));
+					let Random = KDRandomGen(data.seed);
+					let amt = 25 + Math.round((0.4 + 0.6*Random()) * 10 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaRegen", trigger: "afterCalcManaPool", type: "MultManaPoolRegen", power: 1 + amt*0.01, inheritLinked: true},
@@ -735,9 +757,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDRest(item)?.gag) return 20;
 					return 12;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
-					let amt = 15 + Math.round((0.4 + 0.6*KDRandom()) * 10 * Math.pow(power, 0.75));
+					let Random = KDRandomGen(data.seed);
+					let amt = 15 + Math.round((0.4 + 0.6*Random()) * 10 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaRegen", trigger: "afterCalcManaPool", type: "MultManaPoolRegen", power: 1 + amt*0.01, inheritLinked: true},
@@ -761,9 +784,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDRest(item)?.bindhands) return 1;
 					return 18;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
-					let amt = 1.5 + Math.round((0.4 + 0.6*KDRandom()) * 3.5 * Math.pow(power, 0.33));
+					let Random = KDRandomGen(data.seed);
+					let amt = 1.5 + Math.round((0.4 + 0.6*Random()) * 3.5 * Math.pow(power, 0.33));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "BaseDamageBuffMelee", trigger: "beforePlayerAttack", type: "AmpDamage", prereq: "damageType", kind: "melee", power: amt*.01, inheritLinked: true},
@@ -790,9 +814,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (KDRest(item)?.heelpower) return 5;
 					return 3;
 				},
-				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
-					let amt = 1.8 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.4));
+					let Random = KDRandomGen(data.seed);
+					let amt = 1.8 + Math.round((0.4 + 0.6*Random()) * 4 * Math.pow(power, 0.4));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "BaseDamageBuffMagic", trigger: "beforePlayerAttack", type: "AmpDamage", prereq: "damageType", kind: "magic", power: amt*.01, inheritLinked: true},
@@ -804,7 +829,13 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 };
 
 function KDGetItemPower(item: string): number {
-	return KinkyDungeonGetRestraintByName(item)?.displayPower || KinkyDungeonGetRestraintByName(item)?.power || 0;
+	let bonus = Math.max(
+		(KinkyDungeonGetRestraintByName(item)?.corset * 3) || 0,
+		(KinkyDungeonGetRestraintByName(item)?.gag * 3) || 0,
+		(KinkyDungeonGetRestraintByName(item)?.blindfold) || 0,
+		(KinkyDungeonGetRestraintByName(item)?.deaf * 0.5) || 0,
+	);
+	return bonus + KinkyDungeonGetRestraintByName(item)?.power || 0;
 }
 
 function KDGetItemRarity(item: string): number {
@@ -820,59 +851,72 @@ function KDGetItemRarity(item: string): number {
  * @param data
  * @param types
  */
-function KDEnchantDetermineKind(_item: string, _Loot: any, _curse: string, _primaryEnchantment: string, _enchantments: string[], data: KDHexEnchantEventsData, types: string[]): string {
+function KDEnchantDetermineKind(item: string, _Loot: any, _curse: string, _primaryEnchantment: string, _enchantments: string[], data: KDHexEnchantEventsData, types: string[]): string {
 	let type = CommonRandomItemFromList("", types);
+	let Random = KDRandomGen(data.seed)
+	for (let i = 10; i > 0; i--) Random(); // randomize it a bunch
 	if (data?.variant?.events) {
 		for (let event of data?.variant?.events) {
-			if (types.includes(event.kind) && KDRandom() < 0.8) {
+			if (types.includes(event.kind) && Random() < 0.8) {
 				return event.kind;
-			} else if (types.includes(event.damage) && KDRandom() < 0.8) {
+			} else if (types.includes(event.damage) && Random() < 0.8) {
 				return event.damage;
-			} else if (event.kind == "melee" && KDRandom() < 0.8) {
+			} else if (event.kind == "melee" && Random() < 0.8) {
 				types.filter((typ) => {return KinkyDungeonMeleeDamageTypes.includes(typ);});
 				return CommonRandomItemFromList("", types) || type;
-			} else if (event.kind == "magic" && KDRandom() < 0.8) {
+			} else if (event.kind == "magic" && Random() < 0.8) {
 				types.filter((typ) => {return !KinkyDungeonMeleeDamageTypes.includes(typ);});
 				return CommonRandomItemFromList("", types) || type;
 			}
-			else if (event.kind == "latex" && types.includes('glue') && KDRandom() < 0.8) {
+			else if (event.kind == "latex" && types.includes('glue') && Random() < 0.8) {
 				return 'glue';
-			} else if (event.kind == "glue" && types.includes('latex') && KDRandom() < 0.8) {
+			} else if (event.kind == "glue" && types.includes('latex') && Random() < 0.8) {
 				return 'latex';
 			}
-			else if ((event.kind == "leather" || event.kind == "rope" || event.kind == "metal") && types.includes('chain') && KDRandom() < 0.8) {
+			else if ((event.kind == "leather" || event.kind == "rope" || event.kind == "metal") && types.includes('chain') && Random() < 0.8) {
 				return 'chain';
-			} else if (event.kind == "chain" && KDRandom() < 0.8) {
+			} else if (event.kind == "chain" && Random() < 0.8) {
 				if (types.includes('leather')) return 'leather';
 				if (types.includes('metal')) return 'leather';
 				if (types.includes('rope')) return 'leather';
 			}
-			else if (event.kind == "water" && types.includes('soap') && KDRandom() < 0.8) {
+			else if (event.kind == "water" && types.includes('soap') && Random() < 0.8) {
 				return 'soap';
-			} else if (event.kind == "soap" && types.includes('water') && KDRandom() < 0.8) {
+			} else if (event.kind == "soap" && types.includes('water') && Random() < 0.8) {
 				return 'water';
 			}
-			else if (event.kind == "earth" && types.includes('crush') && KDRandom() < 0.8) {
+			else if (event.kind == "earth" && types.includes('crush') && Random() < 0.8) {
 				return 'crush';
-			} else if (event.kind == "crush" && types.includes('earth') && KDRandom() < 0.8) {
+			} else if (event.kind == "crush" && types.includes('earth') && Random() < 0.8) {
 				return 'earth';
 			}
-			else if (event.kind == "air" && types.includes('stun') && KDRandom() < 0.8) {
+			else if (event.kind == "air" && types.includes('stun') && Random() < 0.8) {
 				return 'stun';
-			} else if (event.kind == "stun" && types.includes('air') && KDRandom() < 0.8) {
+			} else if (event.kind == "stun" && types.includes('air') && Random() < 0.8) {
 				return 'air';
 			}
-			else if (event.kind == "light" && types.includes('holy') && KDRandom() < 0.8) {
+			else if (event.kind == "light" && types.includes('holy') && Random() < 0.8) {
 				return 'holy';
-			} else if (event.kind == "holy" && types.includes('light') && KDRandom() < 0.8) {
+			} else if (event.kind == "holy" && types.includes('light') && Random() < 0.8) {
 				return 'light';
 			}
-			else if (event.kind == "shadow" && types.includes('cold') && KDRandom() < 0.8) {
+			else if (event.kind == "shadow" && types.includes('cold') && Random() < 0.8) {
 				return 'cold';
-			} else if (event.kind == "cold" && types.includes('shadow') && KDRandom() < 0.8) {
+			} else if (event.kind == "cold" && types.includes('shadow') && Random() < 0.8) {
 				return 'shadow';
 			}
 		}
 	}
 	return type;
+}
+
+
+function KDGetRandomSeed(item: item, set: boolean = true): string {
+	let seed: string = item ? KDItemDataQuery(item, "seed") : null;
+	if (!seed) {
+		seed = (Math.random() * 4284967296).toString();
+		if (set)
+			KDItemDataSet(item, "seed", seed);
+	}
+	return seed;
 }

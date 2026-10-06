@@ -361,6 +361,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 			Replacemsg = Replacemsg.replace("SpellLearned", TextGet("KinkyDungeonSpell" + Loot.spell));
 	}
 	else if (Loot.armor || Loot.armortags) {
+		let seed = KDGetRandomSeed(null);
 		let armor = Loot.armor;
 		let hexed = Loot.hexlist && (Loot.hexchance == undefined || KDRandom() < Loot.hexchance + (Loot.hexscale|| 0) * levelPercent || (Loot.nouncursed && !Loot.enchantlist && KinkyDungeonInventoryGet(Loot.nouncursed)));
 		let forceequip = Loot.forceEquip || (hexed && (Loot.forceEquipCursed || KinkyDungeonStatsChoice.get("CurseSeeker"))) || (!hexed && (Loot.forceEquipUncursed));
@@ -421,24 +422,31 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 				events: events,
 			};
 			if (hexVariant) {
-				events.push(...KDEventHexModular[hexVariant].events({variant: variant}));
+				events.push(...KDEventHexModular[hexVariant].events({variant: variant, seed: seed }));
 			}
 			for (let c of hex_extra) {
-				events.push(...KDEventHexModular[c].events({variant: variant}));
+				events.push(...KDEventHexModular[c].events({variant: variant, seed: seed}));
 			}
 			if (enchantVariant) {
-				events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.restraint].events(armor, Loot, hexVariant, enchantVariant, enchant_extra, {variant: variant}));
+				events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.restraint].events(
+					armor, Loot, hexVariant, enchantVariant, enchant_extra, {variant: variant, seed: seed}));
 			}
 			for (let e of enchant_extra) {
-				events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(armor, Loot, hexVariant, enchantVariant, enchant_extra, {variant: variant}));
+				events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(
+					armor, Loot, hexVariant, enchantVariant, enchant_extra, {variant: variant, seed: seed}));
 			}
 
 			let equipped = 0;
 			if (forceequip) {
-				equipped = KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false, Loot.faction || (unlockcurse ? "Curse" : undefined), true, unlockcurse, undefined, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
+				equipped = KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false, 
+					Loot.faction || (unlockcurse ? "Curse" : undefined), true, unlockcurse, undefined,
+					 false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix,
+					undefined, undefined, {seed: seed});
 			}
 			if (!equipped) {
-				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, Loot.faction || (unlockcurse ? "Curse" : undefined), undefined, undefined, container);
+				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined,
+					undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, Loot.faction || (unlockcurse ? "Curse" : undefined),
+					 undefined, undefined, container, {seed: seed});
 			} else {
 				KinkyDungeonSendTextMessage(10, TextGet("KDCursedChestEquip" + (unlockcurse ? "Cursed" : ""))
 					.replace("NEWITM", TextGet("Restraint" + variant.template)),

@@ -7695,8 +7695,13 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 	return false;
 }
 
+function KDRandomGen(seed: string) {
+	return sfc32(xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)());
+}
+
 let KinkyDungeonSeed = (Math.random() * 4294967296).toString();
-let KDRandom = sfc32(xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)());
+let KDRandom = KDRandomGen(KinkyDungeonSeed);
+
 
 /**
  * @param {boolean} Native Decides whether or not to use native KDRandom to randomize

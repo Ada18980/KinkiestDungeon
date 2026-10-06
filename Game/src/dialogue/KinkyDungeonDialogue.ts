@@ -2868,6 +2868,7 @@ function DialogueAddCursedEnchantedHexed(
 	Lock?: string,
 ): item {
 
+	let seed = (Math.random() * 4274967296).toString();
 	let unlockcurse = null;
 	let hexVariant = "";
 	let enchantVariant = "";
@@ -2913,31 +2914,37 @@ function DialogueAddCursedEnchantedHexed(
 		};
 		if (!!(unlockcurse ? undefined : Lock)) variant.lock = Lock;
 		if (hexVariant) {
-			events.push(...KDEventHexModular[hexVariant].events({variant: variant}));
+			events.push(...KDEventHexModular[hexVariant].events({variant: variant, seed: seed}));
 		}
 		for (let c of hex_extra) {
-			events.push(...KDEventHexModular[c].events({variant: variant}));
+			events.push(...KDEventHexModular[c].events({variant: variant, seed: seed}));
 		}
 		if (enchantVariant) {
-			events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.restraint].events(restraint.name, undefined, hexVariant, enchantVariant, enchant_extra, {variant: variant}));
+			events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.restraint].events(
+				restraint.name, undefined, hexVariant, enchantVariant, enchant_extra, {variant: variant, seed: seed}));
 		}
 		for (let e of enchant_extra) {
-			events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(restraint.name, undefined, hexVariant, enchantVariant, enchant_extra, {variant: variant}));
+			events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(
+				restraint.name, undefined, hexVariant, enchantVariant, enchant_extra, {variant: variant, seed: seed}));
 		}
 
 		if (returnOnly) {
 			return KDReturnInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix,
 				(enemy ? KDGetFaction(enemy) : undefined) || (unlockcurse ? "Curse" : undefined),
-				undefined, 1);
+				undefined, 1, {seed: seed});
 		} else {
 			if (inventory) {
 				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix,
 					(enemy ? KDGetFaction(enemy) : undefined) || (unlockcurse ? "Curse" : undefined),
-					undefined, 1);
+					undefined, 1, undefined, {seed: seed});
 
 			} else {
 				KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, unlockcurse ? undefined : Lock, true, false,
-					(enemy ? KDGetFaction(enemy) : undefined) || (unlockcurse ? "Curse" : undefined), true, unlockcurse, enemy, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
+					(enemy ? KDGetFaction(enemy) : undefined) || (unlockcurse ? "Curse" : undefined), 
+					true, unlockcurse, enemy, false, 
+					undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, 
+					undefined, undefined,
+					{seed: seed});
 
 			}
 		}

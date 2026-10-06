@@ -382,6 +382,8 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 											faction: KinkyDungeonTargetingSpellItem.faction,
 											restraint: KinkyDungeonTargetingSpellItem.name,
 											restraintid: KinkyDungeonTargetingSpellItem.id,
+											data: KinkyDungeonTargetingSpellItem.data,
+											seed: KinkyDungeonTargetingSpellItem.seed,
 											lock: "",
 											variant: undefined,
 											events: KinkyDungeonTargetingSpellItem.events,

@@ -3211,7 +3211,6 @@ function DrawBoxKDTo(Container: PIXIContainer, Left: number, Top: number, Width:
 		Width: Width,
 		Height: Height,
 		Color: Color,
-		LineWidth: 1,
 		zIndex: zIndex,
 		alpha: Alpha != undefined ? Alpha : 1,
 	});
@@ -3224,8 +3223,8 @@ function DrawBoxKDTo(Container: PIXIContainer, Left: number, Top: number, Width:
 			Width: Width,
 			Height: Height,
 			Color: bordercolor || KDBorderColor,
-			LineWidth: 1,
-			zIndex: zIndex + 0.003,
+			LineWidth: 1.1,
+			zIndex: zIndex + 0.005,
 		});
 	}
 }

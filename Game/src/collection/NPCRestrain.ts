@@ -13,12 +13,15 @@ interface NPCRestraint extends Named {
 	events?: KinkyDungeonEvent[],
 	powerbonus?: number,
 	lock: string,
+	data?: any,
 	variant?: string,
 	curse?: string,
 	id: number,
 	faction?: string,
 	conjured?: boolean,
 	flags?: Record<string, number>,
+	/** random seed used for enchants */
+	seed?: number,
 }
 
 function KDNPCRestraintSlotOrder(): string[] {
@@ -402,6 +405,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 									id: inv.item.id,
 									restraint: inv.item.name,
 									restraintid: inv.item.id,
+									data: inv.item.data,
 									lock: "",
 									npc: npcID,
 									faction: KDDefaultNPCBindPalette || inv.item.faction,
@@ -822,10 +826,12 @@ interface SetNPCRestraintData extends NPCRestraint {
 slot: string,
 restraint: string,
 restraintid: number,
+data?: any,
 npc: number,
 player: number,
 force?: boolean,
 noInventory?: boolean,
+seed?: number,
 }
 
 function KDNPCRestraintTieUp(id: number, restraint: NPCRestraint, mult: number = 1) {
@@ -972,6 +978,7 @@ function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<st
 
 			let size = KDNPCRestraintSize(restraint, slot, row);
 			let id = data.restraintid > 0 ? data.restraintid : KinkyDungeonGetItemID();
+
 			let slotsToFill = KDNPCRestraintValidLayers(restraint, slot, row, rests, id);
 
 			if (slotsToFill.length >= size) {
@@ -980,6 +987,8 @@ function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<st
 					name: data.restraint,
 					id: id,
 					faction: data.faction,
+					seed: data.seed,
+					data: data.data,
 
 					inventoryVariant: data.inventoryVariant,
 					powerbonus: data.inventoryVariant ? KinkyDungeonRestraintVariants[data.inventoryVariant]?.power : data.powerbonus,
