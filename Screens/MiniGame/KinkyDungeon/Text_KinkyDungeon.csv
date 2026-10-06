@@ -1675,7 +1675,7 @@ KinkyDungeonInventoryItem2Dynamite,Dynamite x2
 KinkyDungeonInventoryItem2C4,Plastic Explosive x2
 KinkyDungeonInventoryItemPotionMana,Mana Potion
 KinkyDungeonInventoryItemPotionManaUse,You sip the mana potion and feel empowered.
-KinkyDungeonInventoryItemPotionManaDesc,"A rare essence used by mages to recover their strength."
+KinkyDungeonInventoryItemPotionManaDesc,"A rare essence used by mages to recover their strength. More talented mages absorb more of the power."
 KinkyDungeonInventoryItemPotionManaDesc2,"Restores 50% max MP instantly. Excess mana goes into the mana pool."
 KinkyDungeonInventoryItemManaOrb,Mana Orb
 KinkyDungeonInventoryItemManaOrbUse,You clutch the mana orb and feel its energy.
@@ -8209,7 +8209,7 @@ KinkyDungeonCurseInfoBlueLock,"The item is inscribed with mystical runes. Maybe 
 KinkyDungeonCurseStruggleBlueLock,"The lock-shaped rune flashes as you realize struggling is pointless."
 
 KinkyDungeonCurseUnlockMana,"You overload the magical seal, causing it to vanish and release the item."
-KinkyDungeonCurseInfoMana,"The item is magically sealed, requiring 200 mana to unlock it (includes mana from mana pool)."
+KinkyDungeonCurseInfoMana,"This is a magic seal, requiring a mana potion or 150 MP to unlock it."
 KinkyDungeonCurseStruggleMana,"You tug on the item, but the magic can't be broken with anything other than brute force."
 
 KinkyDungeonCurseUnlockTemplate,""

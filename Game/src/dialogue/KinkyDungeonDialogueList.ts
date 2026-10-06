@@ -587,6 +587,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				},
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonInventoryAddWeapon("Knife");
+					if (KDGameData.AngelCurrentRep) {
+						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -2);
+					}
 					KinkyDungeonSetFlag("AngelHelped", 5);
 					return false;
 				},
@@ -599,6 +602,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				},
 				clickFunction: (_gagged, _player) => {
 					KDAddConsumable("Pick", 3);
+					
+					if (KDGameData.AngelCurrentRep) {
+						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -2);
+					}
 					KinkyDungeonSetFlag("AngelHelped", 5);
 					return false;
 				},
@@ -611,6 +618,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				},
 				clickFunction: (_gagged, _player) => {
 					KDAddConsumable("BlueKey", 1);
+					
+					if (KDGameData.AngelCurrentRep) {
+						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -4);
+					}
 					KinkyDungeonSetFlag("AngelHelped", 5);
 					return false;
 				},
@@ -624,6 +635,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, _player) => {
 					let lockedRestraints = KinkyDungeonPlayerGetRestraintsWithLocks(["Divine2"]);
 					if (KDGetBlessings().length > 0 && lockedRestraints.length > 0) {
+						
+						if (KDGameData.AngelCurrentRep) {
+							KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -4);
+						}
 						let luckyItem = lockedRestraints[Math.floor(KDRandom() * lockedRestraints.length)];
 						KinkyDungeonLock(luckyItem, "", false, false, false, false);
 						KinkyDungeonSetFlag("AngelHelped", 5);
@@ -637,7 +652,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				},
 				leadsToStage: "", dontTouchText: true,
 			},
-			"Leave": {playertext: "Leave", exitDialogue: true},
+			"Leave": {
+				clickFunction: (_gagged, _player) => {
+					if (KDGameData.AngelCurrentRep) {
+						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -6);
+					}
+					return false;
+				},
+				playertext: "Leave", exitDialogue: true},
 		}
 	},
 

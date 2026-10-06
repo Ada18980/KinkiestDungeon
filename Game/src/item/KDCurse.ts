@@ -135,7 +135,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 		},
 	},
 	"SpellLock1" : {
-		powerMult: 2.2,
+		powerMult: 2,
 		lock: true,
 		level: 4,
 		weight: (_item) => {
@@ -606,12 +606,34 @@ let KDCurses: Record<string, KDCursedDef> = {
 		weight: (_item) => {
 			return 10;
 		},
+
 		condition: (_item) => {
-			return KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 20;
+			return KinkyDungeonStatMana >= 15;
 		},
-		remove: (_item, _host, _specialMethod) => {
-			if (!_specialMethod)
-				KDChangeMana("Mana", "curse", "uncurse", -20, false, 0, true, true);
+		condition2: (_item) => {
+			return KinkyDungeonItemCount("PotionMana") > 0;
+		},
+		altText: (_item) => {
+			return TextGet("KDContextMenu_CurseUnlockPotionMana");
+		},
+		unlockText: (_item) => {
+			return TextGet("KDContextMenu_CurseUnlockOverload");
+		},
+		altIcon: "PotionMana",
+		customIcon_RemoveSuccess: "Overload",
+
+		remove: (item, _host, _specialMethod, index) => {
+			if (!_specialMethod) {
+				if (index == 1) {
+					KDChangeConsumable(item.name, "curse", "uncurse",
+			 		KDConsumable({name: "PotionMana"}), -1);
+					
+				} else {
+					KDChangeMana("Mana", "curse", "uncurse", -15, false, 0, true, true);
+					
+				}
+			}
+				
 		},
 		entityCanUnlock(entity, player, data) {
 			return !KDHelpless(entity) && 

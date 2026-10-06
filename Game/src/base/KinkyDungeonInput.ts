@@ -721,10 +721,10 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		KDDelayedActionPrune(["Action", "World"]);
 		let tiles = KinkyDungeonRescueTiles();
 		if (tiles.length > 0) {
-			KDSendStatus('goddess', data.type, 'helpRescue');
-			KinkyDungeonChangeRep(data.type, -10);
+			
 			tile = tiles[Math.floor(tiles.length * KDRandom())];
 			if (tile) {
+				KDGameData.AngelCurrentRep = data.type;
 				KinkyDungeonMapSet(tile.x, tile.y, "$");
 				KinkyDungeonTilesSet(tile.x + "," + tile.y, {Type: "Angel", Light: 5, lightColor: 0xfffafa});
 				KDAddGagXP("Angel", KDPlayer());
@@ -1133,9 +1133,9 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			let tiles = KinkyDungeonRescueTiles();
 			if (tiles.length > 0) {
 				KDSendStatus('goddess', data.rep, 'helpRescue');
-				KinkyDungeonChangeRep(data.rep, -10);
 				let tile = tiles[Math.floor(tiles.length * KDRandom())];
 				if (tile) {
+					KDGameData.AngelCurrentRep = data.rep;
 					KinkyDungeonMapSet(tile.x, tile.y, "$");
 					KinkyDungeonTilesSet(tile.x + "," + tile.y, {Type: "Angel", Light: 5, lightColor: 0xfffafa});
 					KDAddGagXP("Angel", KDPlayer());
@@ -1149,21 +1149,6 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			KDSendStatus('goddess', data.rep, 'helpNoRescue');
 			return "FailRescue";
 		}
-	},
-	"penance": (data) => {
-		KDGameData.KinkyDungeonPenance = true;
-		KDGameData.KDPenanceMode = "";
-		KDGameData.KDPenanceStage = 0;
-		KDGameData.KDPenanceStageEnd = 0;
-		KDGameData.AngelCurrentRep = data.rep;
-		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonPenanceHappen"), KDBasePurple, 4);
-		KDGameData.KinkyDungeonPenanceCostCurrent = KinkyDungeonPenanceCosts[data.rep] ? KinkyDungeonPenanceCosts[data.rep] : KinkyDungeonPenanceCostDefault;
-		if (KinkyDungeonGold >= KDGameData.KinkyDungeonPenanceCostCurrent) {
-			if (KinkyDungeonPenanceCosts[data.rep]) KinkyDungeonPenanceCosts[data.rep] += KinkyDungeonPenanceCostGrowth;
-			else KinkyDungeonPenanceCosts[data.rep] = KinkyDungeonPenanceCostDefault + KinkyDungeonPenanceCostGrowth;
-		}
-		KDSendStatus('goddess', data.rep, 'helpPenance');
-		return "";
 	},
 	"spellChoice": (data) => {
 		KDDelayedActionPrune(["Action", "SwitchSpell"]);

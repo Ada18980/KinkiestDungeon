@@ -99,6 +99,7 @@ Must do
 - Added Shopkeeper Favors earned each time you get a portal
 - Can now attack ambushers (e.g. from traps) without incurring the wrath of local faction
 - Leash training now grants flat XP based on current training level
+- Angels now only reduce rep when you receive the help rather than when the dialogue starts
 
 5.5.2
 - Added WebAudio support for better sound quality
