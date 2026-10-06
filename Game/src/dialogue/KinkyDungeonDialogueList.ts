@@ -7205,6 +7205,7 @@ function KDDoDollShoppeVisitorImpress(en: entity, player: entity, gagged: boolea
 
 function KDShopkeeperCriteria(player?: entity) {
 	return (item: item) => {
-		return !(item.lock && KDLocks[item.lock]?.shopImmune);
+		return !(item.lock && KDLocks[item.lock]?.shopImmune)
+		&& !(KDGetCurse(item) && KDCurses[KDGetCurse(item)]?.noShop);
 	};
 }

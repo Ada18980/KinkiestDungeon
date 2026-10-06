@@ -3930,6 +3930,8 @@ interface KDCursedDef {
 	blockable?: boolean,
 	/** Restraints with this curse are unremovable via shrine */
 	noShrine?: boolean,
+	/** Restraints with this curse are unremovable via shopkeeper */
+	noShop?: boolean,
 	/** This curse is treated as a type of lock, for display purposes */
 	lock?: boolean,
 	/** Power multiplier of the curse, similar to a lock's lockmult */
