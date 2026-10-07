@@ -4251,7 +4251,7 @@ interface KDEnchantmentType {
 }
 
 interface KDHexEnchantEventsData {
-	variant: {events: KinkyDungeonEvent[], template: string},
+	variant?: {events: KinkyDungeonEvent[], template: string},
 	seed: string,
 }
 interface KDHexEnchantWeightData {

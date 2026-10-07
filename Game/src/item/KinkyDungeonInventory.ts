@@ -3577,7 +3577,7 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
  * @param [forceName]
  * @param [suffix]
  */
-function KDGiveWeaponVariant(variant: KDWeaponVariant, prefix: string = "", forceName?: string, suffix: string = "", container?: KDContainer) {
+function KDGiveWeaponVariant(variant: KDWeaponVariant, prefix: string = "", forceName?: string, suffix: string = "", container?: KDContainer, data?: any) {
 	let origWeapon = KinkyDungeonFindWeapon(variant.template);
 	let events = origWeapon.events ? JSON.parse(JSON.stringify(origWeapon.events)) : [];
 	let newname = forceName ? forceName : (prefix + variant.template + KinkyDungeonGetItemID());
@@ -3592,11 +3592,11 @@ function KDGiveWeaponVariant(variant: KDWeaponVariant, prefix: string = "", forc
 		if (container.items[newname]) {
 			container.items[newname].quantity = (container.items[newname].quantity || 1) + 1;
 		} else {
-			container.items[newname] = {name: newname, id: KinkyDungeonGetItemID(), type: Weapon, events:events, quantity: q, showInQuickInv: true,};
+			container.items[newname] = {name: newname, id: KinkyDungeonGetItemID(), type: Weapon, events:events, data: data, quantity: q, showInQuickInv: true,};
 		}
 	} else {
 		if (KinkyDungeonInventoryGet(newname)) q = KinkyDungeonInventoryGet(newname).quantity + 1;
-		KinkyDungeonInventoryAdd({name: newname, id: KinkyDungeonGetItemID(), type: Weapon, events:events, quantity: q, showInQuickInv: true,});
+		KinkyDungeonInventoryAdd({name: newname, id: KinkyDungeonGetItemID(), type: Weapon, data: data, events:events, quantity: q, showInQuickInv: true,});
 	}
 }
 

@@ -5037,6 +5037,7 @@ function KDCheckLinkSize(currentRestraint: item, restraint: restraint, bypass?: 
  */
 function KDApplyVarToInvVar(restraint: restraint, variant: ApplyVariant): KDRestraintVariant {
 	let events = [];
+	let seed = KDGetRandomSeed(null);
 	let restvar = {
 		template: restraint.name,
 		events: events,
@@ -5044,7 +5045,7 @@ function KDApplyVarToInvVar(restraint: restraint, variant: ApplyVariant): KDRest
 		noKeep: variant.noKeep,
 	};
 	for (let e of variant.hexes) {
-		events.push(...JSON.parse(JSON.stringify(KDEventHexModular[e].events({variant: restvar}))));
+		events.push(...JSON.parse(JSON.stringify(KDEventHexModular[e].events({variant: restvar, seed: seed}))));
 	}
 	for (let e of variant.enchants) {
 		/*
@@ -5054,7 +5055,7 @@ function KDApplyVarToInvVar(restraint: restraint, variant: ApplyVariant): KDRest
 		 */
 		events.push(...JSON.parse(JSON.stringify(
 			KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(
-				restraint.name, undefined, undefined, variant.enchants[0], variant.enchants.slice(1) /* , {variant: variant} */))));
+				restraint.name, undefined, undefined, variant.enchants[0], variant.enchants.slice(1) , {seed: seed} ))));
 	}
 	return restvar;
 }

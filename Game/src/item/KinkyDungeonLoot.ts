@@ -290,6 +290,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 	let value = 0;
 
 	if (Loot.weapon || Loot.weaponlist) {
+		let seed = KDGetRandomSeed(null);
 		let weapon = Loot.weapon;
 
 		if (Loot.weaponlist) weapon = KDGetByWeight(KinkyDungeonGetWeaponsByListWeighted(Loot.weaponlist, false, (Loot.minRarity || 0), (Loot.maxRarity || 4))) || weapon;
@@ -315,16 +316,19 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		if (enchantVariant) {
 			let events: KinkyDungeonEvent[] = JSON.parse(JSON.stringify(KDWeapon({name: weapon}).events || []));
 			if (enchantVariant) {
-				events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.weapon].events(weapon, Loot, "", undefined, enchant_extra));
+				events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.weapon].events(weapon, Loot, "", undefined,
+					enchant_extra, {seed: seed}));
 			}
 			for (let e of enchant_extra) {
-				events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.weapon].events(weapon, Loot, "", enchantVariant, enchant_extra));
+				events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.weapon].events(weapon, Loot, "",
+					enchantVariant, enchant_extra, {seed: seed}));
 			}
 			let variant: KDWeaponVariant = {
 				template: weapon,
 				events: events,
 			};
-			KDGiveWeaponVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, container);
+			KDGiveWeaponVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, undefined, 
+				KDEventEnchantmentModular[enchantVariant]?.suffix, container, {seed: seed});
 
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("WeaponAcquired", (enchantVariant ? TextGet("KDVarPrefEnchanted") : "") + ' ' + TextGet("KinkyDungeonInventoryItem" + weapon));

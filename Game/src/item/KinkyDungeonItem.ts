@@ -203,7 +203,9 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 		}
 	} else if (KDWeapon(Item)) {
 		if (KinkyDungeonWeaponVariants[Item.name]) {
-			KDGiveWeaponVariant(KinkyDungeonWeaponVariants[Item.name], undefined, Item.name);
+			KDGiveWeaponVariant(KinkyDungeonWeaponVariants[Item.name], undefined, Item.name, undefined, undefined, 
+				Item.data
+			);
 			color = "#aaaaff";
 			name = "Generic";
 			replace = TextGet("KinkyDungeonInventoryItem" + KinkyDungeonWeaponVariants[Item.name].template);

@@ -915,7 +915,7 @@ function KDGetRandomSeed(item: item, set: boolean = true): string {
 	let seed: string = item ? KDItemDataQuery(item, "seed") : null;
 	if (!seed) {
 		seed = (Math.random() * 4284967296).toString();
-		if (set)
+		if (set && item)
 			KDItemDataSet(item, "seed", seed);
 	}
 	return seed;
