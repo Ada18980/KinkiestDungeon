@@ -341,7 +341,7 @@ function KinkyDungeonPayShrine(type: string, mult: number = 1) {
 	} else if (type == "Elements" || type == "Illusion" || type == "Conjure") {
 		ShrineMsg = TextGet("KinkyDungeonPayShrineBuff" + type).replace("SCHOOL", TextGet("KinkyDungeonSpellsSchool" + type));
 		if (type == "Elements") {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "ShrineElements",
 				type: "event",
 				maxCount: 10,
@@ -354,7 +354,7 @@ function KinkyDungeonPayShrine(type: string, mult: number = 1) {
 				],
 			});
 		} else if (type == "Conjure") {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "ShrineConjure",
 				type: "bondageImmune",
 				maxCount: 3,
@@ -366,10 +366,10 @@ function KinkyDungeonPayShrine(type: string, mult: number = 1) {
 					//{trigger: "beforeAttack", type: "CounterattackSpell", spell: "ArcaneStrike", requiredTag: "shrineConjure", prereq: "hit-hostile"},
 				],
 			});
-			//KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure2", type: "SpellResist", maxCount: 10, tags: ["defense", "shrineConjure", "bondageResist"], power: 5, duration: 9999});
-			//KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure3", type: "Armor", maxCount: 10, tags: ["defense", "shrineConjure", "bondageResist"], power: 5, duration: 9999});
+			//KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure2", type: "SpellResist", maxCount: 10, tags: ["defense", "shrineConjure", "bondageResist"], power: 5, duration: 9999});
+			//KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "ShrineConjure3", type: "Armor", maxCount: 10, tags: ["defense", "shrineConjure", "bondageResist"], power: 5, duration: 9999});
 		} else if (type == "Illusion") {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "ShrineIllusion",
 				type: "event",
 				maxCount: 10,

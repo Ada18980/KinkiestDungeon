@@ -1239,7 +1239,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	"select": (data) => {
 		if (data.enemy && KDAllied(data.enemy)) {
 			if (data.enemy.buffs?.AllySelect?.duration > 0) KinkyDungeonExpireBuff(data.enemy, "AllySelect")
-			else KinkyDungeonApplyBuffToEntity(data.enemy, {
+			else KDApplyBuffToEntity(data.enemy, {
 				id: "AllySelect",
 				aura: KDBaseWhite,
 				auraSprite: "Select",
@@ -1253,7 +1253,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	"selectOnly": (data) => {
 		for (let e of KDMapData.Entities) {
 			if (e.id != data.enemy?.id && e.buffs?.AllySelect) KinkyDungeonExpireBuff(e, "AllySelect")
-			else if (e.id == data.enemy?.id) KinkyDungeonApplyBuffToEntity(e, {
+			else if (e.id == data.enemy?.id) KDApplyBuffToEntity(e, {
 				id: "AllySelect",
 				aura: KDBaseWhite,
 				auraSprite: "Select",
@@ -1388,19 +1388,19 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 					let Willmulti = 1.0;
 					Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
 
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill", type: "restore_mp", power: Manamulti*0.5, duration: 20});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill2", type: "restore_sp", power: multi*0.5, duration: 20});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill3", type: "restore_wp", power: Willmulti*0.15, duration: 10});
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill", type: "restore_mp", power: Manamulti*0.5, duration: 20});
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill2", type: "restore_sp", power: multi*0.5, duration: 20});
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletWill3", type: "restore_wp", power: Willmulti*0.15, duration: 10});
 				} else if (tile.Name == "Determination") {
 					if (KinkyDungeonStatWill >= KinkyDungeonStatWillMax) {
 						full = true;
 					} else {
 						let Willmulti = 1.0;
 						Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletDetermination", type: "restore_wp", power: Willmulti*0.30, duration: 10});
+						KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "TabletDetermination", type: "restore_wp", power: Willmulti*0.30, duration: 10});
 					}
 				} else {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity,
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity,
 						{id: "Tablet" + tile.Name, aura: KDGoddessColor(tile.Name), type: "event", duration: 9999, infinite: true, power: 2, player: true, enemies: false, maxCount: 3, tags: ["cast_" + tile.Name.toLowerCase(), "trigger_" + tile.Name.toLowerCase()], events: [
 							{trigger: "calcMana", type: "Tablet", requiredTag: tile.Name.toLowerCase(), power: 0.5},
 						]}

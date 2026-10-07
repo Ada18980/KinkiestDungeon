@@ -4409,13 +4409,13 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 				let status = KDRestraintBondageStatus(item);
 
 				if (status.belt) {
-					KinkyDungeonApplyBuffToEntity(enemy, KDChastity);
+					KDApplyBuffToEntity(enemy, KDChastity);
 				}
 				if (status.toy) {
-					KinkyDungeonApplyBuffToEntity(enemy, KDToy);
+					KDApplyBuffToEntity(enemy, KDToy);
 				}
 				if (status.plug) {
-					KinkyDungeonApplyBuffToEntity(enemy, KDEntityBuffedStat(enemy, "Plug") > 0 ? KDDoublePlugged : KDPlugged);
+					KDApplyBuffToEntity(enemy, KDEntityBuffedStat(enemy, "Plug") > 0 ? KDDoublePlugged : KDPlugged);
 				}
 				if (status.blind) {
 					enemy.blind = Math.max(enemy.blind || 0, status.blind);
@@ -4433,7 +4433,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 					enemy.disarm = Math.max(enemy.disarm || 0, status.disarm);
 				}
 				if (status.reduceaccuracy) {
-					KinkyDungeonApplyBuffToEntity(enemy,
+					KDApplyBuffToEntity(enemy,
 						KDRestraintReduceAccuracy,
 						{
 							power: status.reduceaccuracy,
@@ -6480,7 +6480,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				&& KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > 4
 				&& !KDEnemyHasFlag(enemy, "targ_npc")
 				&& !KDEnemyHasFlag(enemy, "targeted_by_npc")) {
-				KinkyDungeonApplyBuffToEntity(enemy, KDSpeedy);
+				KDApplyBuffToEntity(enemy, KDSpeedy);
 			}
 
 			if ((allyHoming || !KDEnemyHasFlag(enemy, "Defensive"))
@@ -7879,9 +7879,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 	}
 
 	if (enemy.playWithPlayer > 0 && !AIData.aggressive) {
-		KinkyDungeonApplyBuffToEntity(enemy, KDEager);
+		KDApplyBuffToEntity(enemy, KDEager);
 		if (AIData.domMe)
-			KinkyDungeonApplyBuffToEntity(enemy, KDMasochist);
+			KDApplyBuffToEntity(enemy, KDMasochist);
 	}
 
 	if (enemy.usingSpecial && (AIData.idle || (AIData.moved && !enemy.Enemy.attackWhileMoving)) && enemy.Enemy.specialCDonAttack) {
@@ -10073,7 +10073,7 @@ function KDGetAITypeOverride(Enemy: enemy, index: string): string {
  * @param enemy
  */
 function KDMakeHighValue(enemy: entity) {
-	KinkyDungeonApplyBuffToEntity(enemy, {
+	KDApplyBuffToEntity(enemy, {
 		id: "HighValue",
 		type: "MoveSpeed",
 		power: 0.1,
@@ -10090,7 +10090,7 @@ function KDMakeHighValue(enemy: entity) {
 
 	// MS bonus
 	if (KDRandom() * 0.5) {
-		KinkyDungeonApplyBuffToEntity(enemy, {
+		KDApplyBuffToEntity(enemy, {
 			id: "HighValue_MS",
 			type: "MoveSpeed",
 			power: 0.1 * Math.ceil(KDRandom()*10),
@@ -10100,7 +10100,7 @@ function KDMakeHighValue(enemy: entity) {
 
 	// AS bonus
 	if (KDRandom() * 0.5) {
-		KinkyDungeonApplyBuffToEntity(enemy, {
+		KDApplyBuffToEntity(enemy, {
 			id: "HighValue_AS",
 			type: "AttackSpeed",
 			power: 0.1 * Math.ceil(KDRandom()*10),

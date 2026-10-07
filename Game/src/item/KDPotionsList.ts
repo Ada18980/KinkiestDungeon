@@ -4,7 +4,7 @@ let KDPotionTypes: Record<string, PotionEffect> = {
 		playerEffect: (inv, quantity, user, target, tx, ty) => {
 			KinkyDungeonSendActionMessage(7, TextGet("KDUseSelf_" + KDConsumable(inv).contains),
 			KDBaseMint, 2);
-			KinkyDungeonApplyBuffToEntity(target,
+			KDApplyBuffToEntity(target,
 				{id: "PotionStrength", aura: "#ff8800", type: "BoostStruggle_Struggle", duration: 50, power: 0.05,
 					events: [
 						{trigger: "beforePlayerAttack", type: "BoostDamage", prereq: "damageType", kind: "melee", power: 2},
@@ -28,13 +28,13 @@ let KDPotionTypes: Record<string, PotionEffect> = {
 						KinkyDungeonSendActionMessage(7, TextGet("KDUseTarget_" + KDConsumable(inv).contains)
 						.replace("${Target}", KDEnemyName(target)),
 						KDBaseMint, 2);
-						KinkyDungeonApplyBuffToEntity(target,
+						KDApplyBuffToEntity(target,
 							{id: "PotionStrength", aura: "#ff8800",
 								type: "StrugglePower", duration: 50, power: 0.5,
 								tags: ["struggle"]},
 						);
 						if (KinkyDungeonMeleeDamageTypes.includes(target.Enemy.dmgType || "grope")) {
-							KinkyDungeonApplyBuffToEntity(target,
+							KDApplyBuffToEntity(target,
 								{id: "PotionStrength2",
 									type: "AttackDmg", duration: 50, power: 2.0,
 									tags: ["struggle"]},

@@ -55,10 +55,10 @@ function KinkyDungeonHandleTilesEnemy(enemy: entity, _delta: number): void {
 			let b3 = Object.assign({}, KDDrenched3);
 			b3.duration = 6;
 
-			KinkyDungeonApplyBuffToEntity(enemy, b1);
-			KinkyDungeonApplyBuffToEntity(enemy, b2);
-			KinkyDungeonApplyBuffToEntity(enemy, b3);
-			KinkyDungeonApplyBuffToEntity(enemy, KDSlowedSlightly);
+			KDApplyBuffToEntity(enemy, b1);
+			KDApplyBuffToEntity(enemy, b2);
+			KDApplyBuffToEntity(enemy, b3);
+			KDApplyBuffToEntity(enemy, KDSlowedSlightly);
 
 
 		}
@@ -743,7 +743,7 @@ function KDSlip(dir: { x: number, y: number }): boolean {
 	if (maxReached) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDSlipIce"), "yellow", maxReached + 1);
 		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, 1);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Slipping", type: "none", power: 1.0, duration: 1,});
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Slipping", type: "none", power: 1.0, duration: 1,});
 		return true;
 	}
 	return false;

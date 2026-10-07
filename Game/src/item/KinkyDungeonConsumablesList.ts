@@ -206,7 +206,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity,
 			KinkyDungeonChangeRep("Ghost", amount);
 		} else {
 			let power =
-			KinkyDungeonApplyBuffToEntity(entity, {
+			KDApplyBuffToEntity(entity, {
 				id: Consumable.name,
 				type: "submissiveness",
 				power: Math.max(0, (Consumable.data.subPower as number) + (KDRandom() * (Consumable.data.subPowerVar as number))),
@@ -242,10 +242,10 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity,
 			if (Consumable.ap_instant) KDChangeDistraction(Consumable.name, "restore", "consumable", Consumable.ap_instant * Distmulti * gagMult, false, Consumable.arousalRatio ? Consumable.arousalRatio : 0);
 
 			KinkyDungeonCalculateMiscastChance();
-			if (Consumable.mp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionMana", type: "restore_mp", power: Consumable.mp_gradual/Consumable.duration * gagMult * Manamulti, duration: Consumable.duration});
-			if ((!Consumable.food || !KDIsArtificial(entity)) &&Consumable.wp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionWill", type: "restore_wp", power: Consumable.wp_gradual/Consumable.duration * gagMult * Willmulti, duration: Consumable.duration});
-			if (Consumable.sp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionStamina", type: "restore_sp", power: Consumable.sp_gradual/Consumable.duration * gagMult * multi, duration: Consumable.duration});
-			if (Consumable.ap_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionFrigid", type: "restore_ap", power: Consumable.ap_gradual/Consumable.duration * gagMult * Distmulti, duration: Consumable.duration});
+			if (Consumable.mp_gradual) KDApplyBuffToEntity(entity, {id: "PotionMana", type: "restore_mp", power: Consumable.mp_gradual/Consumable.duration * gagMult * Manamulti, duration: Consumable.duration});
+			if ((!Consumable.food || !KDIsArtificial(entity)) &&Consumable.wp_gradual) KDApplyBuffToEntity(entity, {id: "PotionWill", type: "restore_wp", power: Consumable.wp_gradual/Consumable.duration * gagMult * Willmulti, duration: Consumable.duration});
+			if (Consumable.sp_gradual) KDApplyBuffToEntity(entity, {id: "PotionStamina", type: "restore_sp", power: Consumable.sp_gradual/Consumable.duration * gagMult * multi, duration: Consumable.duration});
+			if (Consumable.ap_gradual) KDApplyBuffToEntity(entity, {id: "PotionFrigid", type: "restore_ap", power: Consumable.ap_gradual/Consumable.duration * gagMult * Distmulti, duration: Consumable.duration});
 
 			if ((Consumable.food && !KDIsArtificial(entity)) && (Consumable.wp_instant || Consumable.wp_gradual)) {
 				KinkyDungeonSendTextMessage(3, TextGet("KDFoodEatDoll"), KDBaseRed, 1);
@@ -256,10 +256,10 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity,
 				KDEnemyCanTalk(entity) ? 0 : 1
 			)))) : 1.0;
 
-			if (Consumable.mp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionMana", type: "restore_mp", power: Consumable.mp_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
-			if ((!Consumable.food || !KDIsArtificial(entity)) &&Consumable.wp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionWill", type: "restore_wp", power: Consumable.wp_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
-			if (Consumable.sp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionStamina", type: "restore_sp", power: Consumable.sp_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
-			if (Consumable.ap_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionFrigid", type: "restore_ap", power: Consumable.ap_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
+			if (Consumable.mp_gradual) KDApplyBuffToEntity(entity, {id: "PotionMana", type: "restore_mp", power: Consumable.mp_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
+			if ((!Consumable.food || !KDIsArtificial(entity)) &&Consumable.wp_gradual) KDApplyBuffToEntity(entity, {id: "PotionWill", type: "restore_wp", power: Consumable.wp_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
+			if (Consumable.sp_gradual) KDApplyBuffToEntity(entity, {id: "PotionStamina", type: "restore_sp", power: Consumable.sp_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
+			if (Consumable.ap_gradual) KDApplyBuffToEntity(entity, {id: "PotionFrigid", type: "restore_ap", power: Consumable.ap_gradual/Consumable.duration * gagMult, duration: Consumable.duration});
 
 		}
 

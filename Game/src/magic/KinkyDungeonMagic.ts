@@ -353,7 +353,7 @@ function KDEmpower(_data: any, _entity: any) {
 		KinkyDungeonTargetingSpellWeapon = null;
 		// Success, we upcast
 		let newLevel = Math.min(KDMaxEmpower, Level + 1);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 			id: "Empower",
 			aura: "#aaaaff",
 			type: "SpellEmpower",
@@ -1387,7 +1387,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 			if (Math.sqrt((KinkyDungeonPlayerEntity.x - targetX) * (KinkyDungeonPlayerEntity.x - targetX) + (KinkyDungeonPlayerEntity.y - targetY) * (KinkyDungeonPlayerEntity.y - targetY)) <= aoe) {
 				for (let buff of spell.buffs) {
 					if (buff.player) {
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff);
+						KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff);
 						if (KinkyDungeonPlayerEntity.x == targetX && KinkyDungeonPlayerEntity.y == targetY) data.target = KinkyDungeonPlayerEntity;
 						casted = true;
 					}
@@ -1398,7 +1398,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 					for (let buff of spell.buffs) {
 						if (!spell.filterTags || KDMatchTags(spell.filterTags, e)) {
 							if (!e.buffs) e.buffs = {};
-							KinkyDungeonApplyBuffToEntity(e, buff);
+							KDApplyBuffToEntity(e, buff);
 							if (e.x == targetX && e.y == targetY) data.target = e;
 							casted = true;
 						}

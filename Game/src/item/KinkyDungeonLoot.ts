@@ -364,7 +364,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("SpellLearned", TextGet("KinkyDungeonSpell" + Loot.spell));
 	}
-	else if (Loot.armor || Loot.armortags) {
+	if (Loot.armor || Loot.armortags) {
 		let seed = KDGetRandomSeed(null);
 		let armor = Loot.armor;
 		let hexed = Loot.hexlist && (Loot.hexchance == undefined || KDRandom() < Loot.hexchance + (Loot.hexscale|| 0) * levelPercent || (Loot.nouncursed && !Loot.enchantlist && KinkyDungeonInventoryGet(Loot.nouncursed)));
@@ -923,6 +923,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		}
 		KinkyDungeonLostItems = newLostItems;
 	}
+	
 	if (KDLootEvents[Loot.name]) {
 		let ret = KDLootEvents[Loot.name](Loot, Floor, Replacemsg, Lock, container, x, y);
 		if (ret.value) value = ret.value;

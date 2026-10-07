@@ -1345,13 +1345,13 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 							.replace("AMNT", "" + Math.round(100 * enemy.boundLevel / enemy.Enemy.maxhp)),
 						KDBaseWhite, 1);
 					if (status.belt) {
-						KinkyDungeonApplyBuffToEntity(enemy, KDChastity);
+						KDApplyBuffToEntity(enemy, KDChastity);
 					}
 					if (status.toy) {
-						KinkyDungeonApplyBuffToEntity(enemy, KDToy);
+						KDApplyBuffToEntity(enemy, KDToy);
 					}
 					if (status.plug) {
-						KinkyDungeonApplyBuffToEntity(enemy, KDEntityBuffedStat(enemy, "Plug") > 0 ? KDDoublePlugged : KDPlugged);
+						KDApplyBuffToEntity(enemy, KDEntityBuffedStat(enemy, "Plug") > 0 ? KDDoublePlugged : KDPlugged);
 					}
 					if (status.blind) {
 						enemy.blind = Math.max(enemy.blind || 0, status.blind);
@@ -1372,7 +1372,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 						enemy.disarm = Math.max(enemy.disarm || 0, status.disarm);
 					}
 					if (status.reduceaccuracy) {
-						KinkyDungeonApplyBuffToEntity(enemy,
+						KDApplyBuffToEntity(enemy,
 							KDRestraintReduceAccuracy,
 							{
 								power: status.reduceaccuracy,

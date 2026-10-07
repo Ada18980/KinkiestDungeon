@@ -35,7 +35,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
 				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
 				if (power >= 2) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -46,7 +46,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -58,7 +58,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "move", "cast"],
 					});
 				} else if (power >= 1) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -69,7 +69,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -102,7 +102,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
 				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
 				if (power >= 2) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -113,7 +113,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -125,7 +125,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "move", "cast"],
 					});
 				} else if (power >= 1) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -136,7 +136,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -173,7 +173,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
 				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
 				if (power >= 2) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -184,7 +184,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -196,7 +196,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "move", "cast"],
 					});
 				} else if (power >= 1) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -207,7 +207,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -337,7 +337,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
 				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
 				if (power >= 2) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -348,7 +348,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -360,7 +360,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "darkness", "move", "cast"],
 					});
 				} else if (power >= 1) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -371,7 +371,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -429,7 +429,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
 				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
 				if (power >= 2) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -440,7 +440,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -452,7 +452,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "darkness", "move", "cast"],
 					});
 				} else if (power >= 1) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -463,7 +463,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -496,7 +496,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
 				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
 				if (power >= 2) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -507,7 +507,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,
@@ -519,7 +519,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						tags: ["Sneak", "darkness", "move", "cast"],
 					});
 				} else if (power >= 1) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
 						type: "SlowDetection",
 						duration: 1,
@@ -530,7 +530,7 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 						maxCount: 1,
 						tags: ["SlowDetection", "move", "cast"],
 					});
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage2",
 						type: "Sneak",
 						duration: 1,

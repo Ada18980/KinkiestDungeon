@@ -615,7 +615,7 @@ KDPrisonTypes.DollStorage = {
 							e.hostile = KinkyDungeonFlags.get("latexTraining");
 							e.summoned = false; // They can drop loot
 							KinkyDungeonSetEnemyFlag(e, "noignore", KinkyDungeonFlags.get("latexTraining"));
-							KinkyDungeonApplyBuffToEntity(e, KDTrainingUnit); // Training unit
+							KDApplyBuffToEntity(e, KDTrainingUnit); // Training unit
 						}
 
 						//Create training doors

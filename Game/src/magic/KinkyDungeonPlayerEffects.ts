@@ -51,7 +51,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (target?.player && KDEntityBuffedStat(target, "Haunting")) {
 			count = KDEntityBuffedStat(target, "Haunting") + 1;
 		}
-		KinkyDungeonApplyBuffToEntity(target,
+		KDApplyBuffToEntity(target,
 			{
 				id: "Haunted",
 				type: "Haunting",
@@ -89,7 +89,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				if (target?.player && KDEntityBuffedStat(target, "Cursed")) {
 					count = Math.min(10, KDEntityBuffedStat(target, "Cursed") + 1);
 				}
-				KinkyDungeonApplyBuffToEntity(target,
+				KDApplyBuffToEntity(target,
 					{
 						id: "Cursed",
 						type: "Cursed",
@@ -310,7 +310,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			if (applyCurse) {
 				if (!KinkyDungeonPlayerBuffs.CursingCircle && corruption < 100) {
 					KinkyDungeonSendTextMessage(9, TextGet("KDEpicenterCurseEffectStart"), "#8E72AA", playerEffect.time);
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "CursingCircle",
 						aura: "#8E72AA",
 						type: "CursingCircle",
@@ -617,7 +617,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			}
 
 
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "LatexBubble",
 				aura: "#2789cd", auraSprite: "LatexBubble",
 				noAuraColor: true,
@@ -627,7 +627,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				duration: playerEffect.time,
 				tags: ["debuff"],
 			});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "LatexBubble2",
 				type: "Blindness",
 				power: 4,
@@ -655,7 +655,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			}
 
 
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "LatexBubble",
 				aura: "#2789cd", auraSprite: "LatexBubble",
 				noAuraColor: true,
@@ -665,7 +665,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				duration: playerEffect.time,
 				tags: ["debuff"],
 			});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "LatexBubble2",
 				type: "Blindness",
 				power: 4,
@@ -805,7 +805,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			}, 0, 2.5, undefined, undefined, undefined);
 
 		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonBoundByFate"), "yellow", playerEffect.time);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDBoundByFate, {
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, KDBoundByFate, {
 			duration: playerEffect.time,
 		});
 
@@ -831,7 +831,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			}, 0, Math.max(2.5, 1.5 + KDistEuclidean(ent.x - KinkyDungeonPlayerEntity.x, ent.y - KinkyDungeonPlayerEntity.y)), undefined, undefined, undefined);
 
 		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonTaunted"), "yellow", playerEffect.time);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDTaunted, {
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, KDTaunted, {
 			duration: playerEffect.time,
 		});
 
@@ -862,7 +862,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			// Nothing!
 		}, "Sealing", (tt) => {
 			if (tt?.player) {
-				KinkyDungeonApplyBuffToEntity(tt, {
+				KDApplyBuffToEntity(tt, {
 					id: "FuukaOrb",
 					duration: 100,
 					tags: ["removeNewMap", "removeDefeat"],
@@ -873,7 +873,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				});
 			}
 		}, (tt) => {
-			KinkyDungeonApplyBuffToEntity(tt, {
+			KDApplyBuffToEntity(tt, {
 				id: "FuukaOrb",
 				duration: 200,
 				tags: ["removeNewMap", "removeDefeat"],
@@ -884,7 +884,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			});
 		},  (tt) => {
 
-			KinkyDungeonApplyBuffToEntity(tt, {
+			KDApplyBuffToEntity(tt, {
 				id: "FuukaOrb",
 				duration: 300,
 				tags: ["removeNewMap", "removeDefeat"],
@@ -897,7 +897,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "Evil", effect: true};
 	},
 	"ShadowSeal": (target, _damage, _playerEffect, _spell, _faction, _bullet, entity) => {
-		KinkyDungeonApplyBuffToEntity(target, {
+		KDApplyBuffToEntity(target, {
 			id: "ShadowSeal",
 			duration: 10,
 			tags: ["removeNewMap", "removeDefeat"],
@@ -1162,7 +1162,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			}
 			KinkyDungeonSetFlag("wardenorb_done", 1);
 			effect = true;
-			KinkyDungeonApplyBuffToEntity(tt, {
+			KDApplyBuffToEntity(tt, {
 				id: "WardenOrb",
 				duration: 90,
 				tags: ["removeNewMap", "removeDefeat"],
@@ -1179,7 +1179,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				}
 				KinkyDungeonSetFlag("wardenorb_done", 1);
 				effect = true;
-				KinkyDungeonApplyBuffToEntity(tt, {
+				KDApplyBuffToEntity(tt, {
 					id: "WardenOrb",
 					duration: 70,
 					tags: ["removeNewMap", "removeDefeat"],
@@ -1195,7 +1195,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			}
 			KinkyDungeonSetFlag("wardenorb_done", 1);
 			effect = true;
-			KinkyDungeonApplyBuffToEntity(tt, {
+			KDApplyBuffToEntity(tt, {
 				id: "WardenOrb",
 				duration: 80,
 				tags: ["removeNewMap", "removeDefeat"],
@@ -1210,7 +1210,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			}
 			KinkyDungeonSetFlag("wardenorb_done", 1);
 			effect = true;
-			KinkyDungeonApplyBuffToEntity(tt, {
+			KDApplyBuffToEntity(tt, {
 				id: "WardenOrb",
 				duration: 90,
 				tags: ["removeNewMap", "removeDefeat"],
@@ -1752,7 +1752,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (KDTestSpellHitsNoFF(target, entity, spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "Flummox",
 				type: "Flummox",
 				duration: 5,
@@ -1800,7 +1800,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			} else {
 				KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDagger").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 				// TODO make this get more intense over time
-				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "PoisonDagger",
 					aura: "#22ff44",
 					type: "SleepinessPoison",
@@ -1846,7 +1846,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			KinkyDungeonSendTextMessage(6, TextGet("KDPoisonBreath").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 			// TODO make this get more intense over time
 			let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "PoisonBreath",
 				aura: "#22ff44",
 				type: "SleepinessPoison",
@@ -1874,7 +1874,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			KinkyDungeonSendTextMessage(6, TextGet("KDDragonFlowerSpores").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 			// TODO make this get more intense over time
 			let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "PoisonBreath",
 				aura: "#22ff44",
 				type: "SleepinessPoison",
@@ -1902,7 +1902,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		} else {
 			// TODO make this get more intense over time
 			let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "PoisonBreath",
 				aura: "#22ff44",
 				type: "SleepinessPoison",
@@ -2115,16 +2115,16 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 						KinkyDungeonPassOut();
 					} else if (KinkyDungeonPlayerBuffs[buff2.id]) {
 						KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRopeEngulfEnd3"), KDBaseRed, 5);
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff3);
+						KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
+						KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
+						KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff3);
 					}  else if (KinkyDungeonPlayerBuffs[buff1.id]) {
 						KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRopeEngulfEnd2"), KDBaseRed, 4);
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
+						KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
+						KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
 					} else {
 						KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonRopeEngulfEnd1"), KDBaseRed, 4);
-						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
+						KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
 					}
 				}
 
@@ -2361,7 +2361,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				return {sfx: "", effect: false};
 			} else {
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNurseSyringe").KDReplaceOrAddDmg( dmg.string), KDBaseRed, 8);
-				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "NurseSyringe",
 					aura: "#22ff44",
 					type: "SleepinessPoison",
@@ -2383,7 +2383,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let effect = false;
 		if (!KDIsImmuneToDrugs(target)) {
 			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrapSleepDart"), KDBaseRed, 8);
-			KinkyDungeonApplyBuffToEntity(KDPlayer(), KDPoisonSleep);
+			KDApplyBuffToEntity(KDPlayer(), KDPoisonSleep);
 			effect = true;
 		}
 		return {sfx: effect ? "Damage" : "Shield", effect: effect};
@@ -2399,7 +2399,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		KinkyDungeonSendTextMessage(4, TextGet("KDEffectDrench").KDReplaceOrAddDmg( dmg.string), "#9999ff", 3);
 		for (let b of spell.buffs) {
 			if (b.id.includes("Drenched")) {
-				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, b);
+				KDApplyBuffToEntity(KinkyDungeonPlayerEntity, b);
 			}
 		}
 		return {sfx: "Damage", effect: effect};
@@ -2801,18 +2801,18 @@ function KDTripleBuffKill (
 		FinalEffect(Target);
 	} else if (KinkyDungeonPlayerBuffs[buff2.id]) {
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "3"), KDBaseRed, time + 1);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff3);
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff3);
 		ThirdEffect(Target);
 	}  else if (KinkyDungeonPlayerBuffs[buff1.id]) {
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "2"), KDBaseRed, time);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
 		SecondEffect(Target);
 	} else {
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "1"), KDBaseRed, time);
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
 		FirstEffect(Target);
 	}
 }
@@ -2923,7 +2923,7 @@ if (!String.prototype.KDReplaceOrAddDmg) {
  * @param damage
  */
 function KDApplyBubble(entity: entity, time: number, damage: number = 0) {
-	KinkyDungeonApplyBuffToEntity(entity, {
+	KDApplyBuffToEntity(entity, {
 		id: "WaterBubble",
 		aura: "#2789cd", auraSprite: "WaterBubble",
 		noAuraColor: true,
@@ -2933,7 +2933,7 @@ function KDApplyBubble(entity: entity, time: number, damage: number = 0) {
 		duration: time,
 		tags: ["debuff"],
 	});
-	KinkyDungeonApplyBuffToEntity(entity, {
+	KDApplyBuffToEntity(entity, {
 		id: "WaterBubble2",
 		type: "SlowLevel",
 		power: 3,
@@ -3007,7 +3007,7 @@ function KDAddSpecialStat(stat: string, entity: entity, amount: number, Msg: boo
 	let buff = KDEntityGetBuff(entity, stat + "Stat");
 	let initial_amt = buff?.power;
 	if (!buff) {
-		buff = KinkyDungeonApplyBuffToEntity(entity, {
+		buff = KDApplyBuffToEntity(entity, {
 			id: stat + "Stat",
 			aura: color,
 			buffSprite: true,

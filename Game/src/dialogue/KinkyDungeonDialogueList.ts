@@ -695,7 +695,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							tile.GhostDecision = 0;
 							KinkyDungeonSetFlag("GhostDeal", 200);
 
-							KinkyDungeonApplyBuffToEntity(player,
+							KDApplyBuffToEntity(player,
 							{
 								id: "GhostDeal",
 								type: "GhostDeal",
@@ -731,7 +731,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
 							tile.GhostDecision = 0;
 
-							KinkyDungeonApplyBuffToEntity(player,
+							KDApplyBuffToEntity(player,
 							{
 								id: "GhostDealPleasure",
 								type: "GhostDealPleasure",

@@ -235,7 +235,7 @@ function KinkyDungeonUpdateBuffs(delta: number, endFloor: boolean): void {
 			for (let buff of b.bullet.spell.buffs) {
 
 				if (buff.player && buff.range >= Math.sqrt((KinkyDungeonPlayerEntity.x - b.x) * (KinkyDungeonPlayerEntity.x - b.x) + (KinkyDungeonPlayerEntity.y - b.y) * (KinkyDungeonPlayerEntity.y - b.y))) {
-					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff);
+					KDApplyBuffToEntity(KinkyDungeonPlayerEntity, buff);
 				}
 				if (buff.enemies) {
 					let nearby = KDNearbyEnemies(b.x, b.y, buff.range);
@@ -245,7 +245,7 @@ function KinkyDungeonUpdateBuffs(delta: number, endFloor: boolean): void {
 							&& (!b.bullet.spell.filterTags || b.bullet.spell.filterTags.some((tag: string) => {return enemy.Enemy.tags[tag];}))
 							//&& buff.range >= Math.sqrt((enemy.x - b.x) * (enemy.x - b.x) + (enemy.y - b.y) * (enemy.y - b.y))
 						) {
-							KinkyDungeonApplyBuffToEntity(enemy, buff);
+							KDApplyBuffToEntity(enemy, buff);
 						}
 					}
 
@@ -396,12 +396,23 @@ function KDUpdateBuffStatMemo(list: Record<string, KDBuff>, stat: string): void 
 }
 
 /**
+ * @deprecated
  * @param {entity} entity Target entity to add the buff to
  * @param {KDBuff} origbuff The base buff to apply
  * @param {Record<string, any>} [changes] Additional changes to the base buff
  * @returns {KDBuff} The newly added KDBuff
  */
 function KinkyDungeonApplyBuffToEntity(entity: entity, origbuff: KDBuff, changes?: Record<string, any>): KDBuff {
+	return KDApplyBuffToEntity(entity, origbuff, changes)
+}
+
+/**
+ * @param {entity} entity Target entity to add the buff to
+ * @param {KDBuff} origbuff The base buff to apply
+ * @param {Record<string, any>} [changes] Additional changes to the base buff
+ * @returns {KDBuff} The newly added KDBuff
+ */
+function KDApplyBuffToEntity(entity: entity, origbuff: KDBuff, changes?: Record<string, any>): KDBuff {
 	if (entity && entity.player) {
 		return KDApplyBuff(KinkyDungeonPlayerBuffs, origbuff, changes, entity);
 	} else if (entity) {

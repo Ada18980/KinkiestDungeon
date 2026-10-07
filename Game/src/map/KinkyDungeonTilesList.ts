@@ -38,7 +38,7 @@ let KDTileUpdateFunctionsLocal: Record<string, (delta: number, X?: number, Y?: n
 				furn.tickFunction(delta);
 			}
 		} else {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "barrel",
 				type: "SlowDetection",
 				duration: 1,
@@ -49,7 +49,7 @@ let KDTileUpdateFunctionsLocal: Record<string, (delta: number, X?: number, Y?: n
 				maxCount: 1,
 				tags: ["SlowDetection", "move", "cast"],
 			});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "barrel3",
 				type: "Sneak",
 				duration: 1,
@@ -60,7 +60,7 @@ let KDTileUpdateFunctionsLocal: Record<string, (delta: number, X?: number, Y?: n
 				maxCount: 1,
 				tags: ["Sneak", "darkness", "move", "cast"],
 			});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "barrel2",
 				type: "SlowLevel",
 				duration: 1,
@@ -262,7 +262,7 @@ let KDBondageMachineFunctions: Record<string, KDBondageMachineFunc> = {
 			KDTieUpEnemy(entity, 4.0, "Latex", "glue");
 			if (KDBoundEffects(entity) > 2 ) {
 				KDTieUpEnemy(entity, 4.0, "Latex", "glue");
-				KinkyDungeonApplyBuffToEntity(entity, KDEncasedDoll);
+				KDApplyBuffToEntity(entity, KDEncasedDoll);
 			}
 			if (KDBoundEffects(entity) < 1 ) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
@@ -413,7 +413,7 @@ function KDBasicRestraintsMachine_Player(tags: string[], count: number, msg: str
  */
 let KDTileUpdateFunctions: Record<string, (delta: number) => boolean> = {
 	"W": (_delta) => { // Happy Gas!
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDWaterSlow);
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, KDWaterSlow);
 		KinkyDungeonSendTextMessage(5, TextGet("KDWaterIsWet"), "#4fa4b8", 1);
 		return true;
 	},
@@ -446,7 +446,7 @@ let KDTileUpdateFunctions: Record<string, (delta: number) => boolean> = {
 				furn.tickFunction(delta);
 			}
 		} else {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "barrel",
 				type: "SlowDetection",
 				duration: 1,
@@ -457,7 +457,7 @@ let KDTileUpdateFunctions: Record<string, (delta: number) => boolean> = {
 				maxCount: 1,
 				tags: ["SlowDetection", "move", "cast"],
 			});
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "barrel3",
 				type: "Sneak",
 				duration: 1,
@@ -877,7 +877,7 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 				radius: 1,
 				sprite: "Particles/PinkGlow.png",
 			});
-			KinkyDungeonApplyBuffToEntity(_entity, {
+			KDApplyBuffToEntity(_entity, {
 				id: "DistractionCast",
 				type: "MiscastChance",
 				power: -1,
@@ -906,7 +906,7 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 				radius: 1,
 				sprite: "Particles/PinkGlow.png",
 			});
-			KinkyDungeonApplyBuffToEntity(_entity, {
+			KDApplyBuffToEntity(_entity, {
 				id: "DistractionCast",
 				type: "MiscastChance",
 				power: -1,
@@ -1005,7 +1005,7 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 					KinkyDungeonSendTextMessage(10, TextGet("KDLatexHelp1"), KDBaseWhite, 12, undefined, undefined, undefined, "");
 					KinkyDungeonSetFlag("1stLatex", -1);
 				}
-				KinkyDungeonApplyBuffToEntity(entity, KDSlimed);
+				KDApplyBuffToEntity(entity, KDSlimed);
 				return true;
 			}
 		}
@@ -1022,7 +1022,7 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 					KinkyDungeonSendTextMessage(10, TextGet("KDLatexHelp1"), KDBaseWhite, 12, undefined, undefined, undefined, "");
 					KinkyDungeonSetFlag("1stLatex", -1);
 				}
-				KinkyDungeonApplyBuffToEntity(entity, KDSlimed);
+				KDApplyBuffToEntity(entity, KDSlimed);
 				return true;
 			}
 		}
@@ -1034,7 +1034,7 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 		} else if (!KDEntityHasBuff(entity, "Drenched")) {
 			let slimeWalker = KDSlimeWalker(entity);
 			if (!slimeWalker) {
-				KinkyDungeonApplyBuffToEntity(entity, KDSlimed, {
+				KDApplyBuffToEntity(entity, KDSlimed, {
 					aurasprite: "Glued",
 				});
 				return true;
@@ -1056,7 +1056,7 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 						KinkyDungeonSendTextMessage(10, TextGet("KDLatexHelp1"), KDBaseWhite, 12, undefined, undefined, undefined, "");
 						KinkyDungeonSetFlag("1stLatex", -1);
 					}
-					KinkyDungeonApplyBuffToEntity(entity, KDSlimed);
+					KDApplyBuffToEntity(entity, KDSlimed);
 					result = true;
 				}
 			}
@@ -1088,7 +1088,7 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 							flags: ["DoT"]
 						}, false, true, undefined, undefined, undefined, "Rage");
 						if (entity.boundLevel >= entity.Enemy.maxhp) {
-							KinkyDungeonApplyBuffToEntity(entity, KDEncased);
+							KDApplyBuffToEntity(entity, KDEncased);
 						}
 					}
 				}
@@ -1153,7 +1153,7 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 							flags: ["DoT"]
 						}, false, true, undefined, undefined, undefined, "Rage");
 						if (entity.boundLevel >= entity.Enemy.maxhp) {
-							KinkyDungeonApplyBuffToEntity(entity, KDEncasedMetal);
+							KDApplyBuffToEntity(entity, KDEncasedMetal);
 						}
 					}
 				}
@@ -1169,7 +1169,7 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 	},
 	"Ice": (_delta, entity, _tile) => {
 		if ((!entity.player && !entity.Enemy.tags.ice && !entity.Enemy.tags.nofreeze) || (entity.player && !KDChillWalk(entity)))
-			KinkyDungeonApplyBuffToEntity(entity, KDChilled);
+			KDApplyBuffToEntity(entity, KDChilled);
 		if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
 			KinkyDungeonSetFlag("slipped", 1);
@@ -1190,9 +1190,9 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 				KinkyDungeonSetFlag("slipped", 1);
 			}
 		} else if (KDWettable(entity)) {
-			KinkyDungeonApplyBuffToEntity(entity, KDDrenched);
-			KinkyDungeonApplyBuffToEntity(entity, KDDrenched2);
-			KinkyDungeonApplyBuffToEntity(entity, KDDrenched3);
+			KDApplyBuffToEntity(entity, KDDrenched);
+			KDApplyBuffToEntity(entity, KDDrenched2);
+			KDApplyBuffToEntity(entity, KDDrenched3);
 		}
 		return true;
 	},
@@ -1586,10 +1586,10 @@ let KDEffectTileMoveOnFunctions: Record<string, (entity: entity, tile: effectTil
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else if (!entity.Enemy || (!entity.Enemy.tags.earth && !entity.Enemy.tags.unstoppable)) {
-			KinkyDungeonApplyBuffToEntity(entity, KDUnsteady);
+			KDApplyBuffToEntity(entity, KDUnsteady);
 			if (entity.player) {
-				KinkyDungeonApplyBuffToEntity(entity, KDUnsteady2);
-				KinkyDungeonApplyBuffToEntity(entity, KDUnsteady3);
+				KDApplyBuffToEntity(entity, KDUnsteady2);
+				KDApplyBuffToEntity(entity, KDUnsteady3);
 			} else if (!entity.Enemy || !entity.Enemy.tags.unflinching) {
 				if (!entity.vulnerable) entity.vulnerable = 1;
 				else entity.vulnerable = Math.max(entity.vulnerable, 1);
@@ -1619,10 +1619,10 @@ let KDEffectTileMoveOnFunctions: Record<string, (entity: entity, tile: effectTil
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else if (!entity.Enemy || (!entity.Enemy.tags.earth && !entity.Enemy.tags.unstoppable)) {
-			KinkyDungeonApplyBuffToEntity(entity, KDUnsteady);
+			KDApplyBuffToEntity(entity, KDUnsteady);
 			if (entity.player) {
-				KinkyDungeonApplyBuffToEntity(entity, KDUnsteady2);
-				KinkyDungeonApplyBuffToEntity(entity, KDUnsteady3);
+				KDApplyBuffToEntity(entity, KDUnsteady2);
+				KDApplyBuffToEntity(entity, KDUnsteady3);
 			} else if (!entity.Enemy || !entity.Enemy.tags.unflinching) {
 				if (!entity.vulnerable) entity.vulnerable = 1;
 				else entity.vulnerable = Math.max(entity.vulnerable, 1);

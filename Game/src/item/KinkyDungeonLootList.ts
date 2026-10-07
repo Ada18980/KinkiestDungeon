@@ -1537,8 +1537,29 @@ let KDLootEvents: Record<string, lootEventFunc> = {
 			Replacemsg: "LootBookshelfTomeFail",
 		};
 	},
+	"DollMirror": (_Loot, _Floor, Replacemsg, _Lock, container, x, y) => {
+		let player = KDPlayer();
+
+		let chance = KinkyDungeonFlags.get("DollMirrorFirst") ? KDDollMirrorChanceFirst : KDDollMirrorChance;
+
+		if (KDRandom() < chance) {
+			// Basic major curse application code
+			let curse = KDGetMajorCurse(player, ["doll"]);
+			if (curse && KDMajorCurses[curse]) KDMajorCurses[curse].onApply(player);
+		}
+
+		KinkyDungeonSetFlag("DollMirrorFirst", -1);
+
+		return {
+			value: 0,
+			Replacemsg: "",
+		};
+	},
 	
 };
+
+let KDDollMirrorChanceFirst = 0.8;
+let KDDollMirrorChance = 0.25;
 
 interface KDMinorLootEntry {
 	rarity: number,

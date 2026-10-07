@@ -444,7 +444,7 @@ function KinkyDungeonConsumableEffect(Consumable: consumable, type: string, inv:
 		if (!KinkyDungeonStatsChoice.get("LostTechnology"))
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSourceSpent, 1);
 	} else if (type == "buff") {
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: Consumable.name, type: Consumable.buff, power: Consumable.power, duration: Consumable.duration, aura: Consumable.aura});
+		KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: Consumable.name, type: Consumable.buff, power: Consumable.power, duration: Consumable.duration, aura: Consumable.aura});
 	} else if (type == "recharge") {
 		//KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
 		//KinkyDungeonAddGold(-Consumable.rechargeCost);
