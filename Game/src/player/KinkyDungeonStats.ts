@@ -975,7 +975,7 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, 
 				color, 0, false, false, entity, important ? undefined : "Dialogue");
 			}
-			KDEnemyAddSound(entity, 7);
+			KDEnemyAddSound(entity, 7, undefined, (KDToggles.MinorSoundDesc ? TextGet("KDAmbSound_Speech") : undefined));
 			if (KDRandom() < 0.5)
 				KDSendGagParticles(entity);
 		}
@@ -996,7 +996,8 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 				color, 3 + 0.7*duration);
 		}
 		if (!entity.player && dialogue) {
-			KDEnemyAddSound(entity, 12);
+			KDEnemyAddSound(entity, 12, undefined, 
+				(KDToggles.MinorSoundDesc ? TextGet("KDAmbSound_Speech") : undefined));
 			if (dialogue && KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
 				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, color, 0, false, false, entity, "Dialogue");
 			}

@@ -1146,6 +1146,8 @@ function KinkyDungeonDrawGame() {
 
 	if (KinkyDungeonDrawState == "Game") {
 		let tooltip = "";
+		let tooltipX = 0;
+		let tooltipY = 0;
 		if ((KinkyDungeonIsPlayer() || (KinkyDungeonGameData && CommonTime() < KinkyDungeonNextDataLastTimeReceived + KinkyDungeonNextDataLastTimeReceivedTimeout))) {
 
 
@@ -1243,6 +1245,8 @@ function KinkyDungeonDrawGame() {
 				KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_offsetVis);
 
 				tooltip = spriteRes.tooltip;
+				tooltipX = spriteRes.tooltipX;
+				tooltipY = spriteRes.tooltipY;
 				KinkyDungeonForceRender = spriteRes.KinkyDungeonForceRender;
 
 
@@ -1968,7 +1972,10 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonDrawTethers(CamX+CamX_offset, CamY+CamY_offset);
 
 				if (tooltip && KDMouseInPlayableArea()) {
-					DrawTextFitKD(tooltip, MouseX, MouseY - KinkyDungeonGridSizeDisplay/2, 200, KDBaseWhite, KDTextGray2);
+					DrawTextFitKD(tooltip, 
+						canvasOffsetX + (tooltipX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, 
+						canvasOffsetY + (tooltipY - CamY)*KinkyDungeonGridSizeDisplay, 
+						200, KDBaseWhite, KDTextGray2);
 				}
 			}
 
@@ -4567,6 +4574,8 @@ function DrawBackNextButtonVis (
  */
 function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset: number, _CamX_offsetVis: number, _CamY_offsetVis: number, Debug?: boolean): any {
 	let tooltip = "";
+	let tooltipX = 0;
+	let tooltipY = 0;
 	let KinkyDungeonForceRender = "";
 	let KinkyDungeonForceRenderFloor = "";
 
@@ -4721,8 +4730,11 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 				}
 				if (KinkyDungeonVisionGet(RX, RY) > 0
 					&& (KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "A" || KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "M")
-					&& MouseIn(canvasOffsetX + (-CamX_offset + X)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)) {
+					&& MouseIn(canvasOffsetX + (-CamX_offset + X)*KinkyDungeonGridSizeDisplay, 
+					canvasOffsetY + (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)) {
 					tooltip = TextGet("KinkyDungeon" + KinkyDungeonTilesGet(RX + "," + RY).Type + "Tooltip").replace("SHRINETYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTilesGet(RX + "," + RY).Name));
+					tooltipX = RX;
+					tooltipY = RY;
 				}
 			}
 		}
@@ -4731,6 +4743,8 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 
 	return {
 		tooltip: tooltip,
+		tooltipX: tooltipX,
+		tooltipY: tooltipY,
 		KinkyDungeonForceRender: KinkyDungeonForceRender,
 	};
 }

@@ -203,6 +203,8 @@ let KDToggles = {
 	WarningSound: true,
 	SoundAutoPathEnd: true,
 	SoundNotification: true,
+	EnemyShockwave: true,
+	MinorSoundDesc: false,
 	ShowDefensiveStats: true,
 	
 	AutoSprint: true,
@@ -215,6 +217,8 @@ let KDToggles = {
 
 
 let KDToggleCategories = {
+	MinorSoundDesc: "UI",
+	EnemyShockwave:"UI",
 	CenteredLog: "UI",
 	StruggleScroll: "UI",
 	ArrowWarnings: "UI",

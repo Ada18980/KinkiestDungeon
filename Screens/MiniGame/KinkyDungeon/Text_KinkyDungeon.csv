@@ -13453,7 +13453,6 @@ rAngelHelp,"(The SPEAKER appears in a flash of light)|I come in the name of the 
 rAngelHelpKnife,"(The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?"
 rAngelHelpPick,"(The SPEAKER gives you three picks)|I don't know how you plan to use these..."
 rAngelHelpBlueKey,"(The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable."
-rAngelHelpBlueKey,"(The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable."
 rAngelHelpDivineFail,"(The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*"
 rAngelHelpDivineQuest,"(The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!"
 rAngelHelpDivine,"(The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(${EThey} perform${Es} a short prayer and a random divine lock comes off)"
@@ -13927,7 +13926,7 @@ dShopkeeperStart_HelpCurseGag,"Mmmmphh... (Help with major curse)"
 rShopkeeperStartHelp,"No can do! Even I can't get those off of you."
 rShopkeeperStartHelpGoldPlus,"No can do!|If you're wondering about those fancy gold-colored locks,|Well... a contract is a contract~"
 rShopkeeperStartHelpDivine,"Wow, you got yourself into a tight mess, haven't you...\nWell I'm sure you're in those for a reason, sweetie~"
-rShopkeeperStartHelpCurse,"(The SPEAKER gently lifts your, and looks at you)|(${ETheir} gaze is fully clinical, but thorough)|Mmm, that's some bad energy.|I'm sorry sweetie, but I can't risk taking on that curse myself."
+rShopkeeperStartHelpCurse,"(The SPEAKER gently lifts your chin, and looks at you)|(${ETheir} gaze is fully clinical, but thorough)|Mmm, that's some bad energy.|I'm sorry sweetie, but I can't risk taking on that curse myself."
 dShopkeeperStart_Danger,"Caught by...?"
 rShopkeeperStartDanger,"Hah!|You've been here a million times!|You obviously know how dangerous it is, yes?"
 dShopkeeperStart_Fee,"F-fee? There's a fee?"
@@ -29967,6 +29966,7 @@ KDToggleModCompat,Mod Compat Mode (requires reload)
 KDToggleFlashingWarning,Flashing Warning Tiles
 KDToggleCenteredLog,Centered Message Log
 KDToggleReverb,Reverb Sound Effects
+KDToggleEnemyShockwave,Sound Particles for Enemy Movement
 
 rTutorial,"Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?"
 dTutorial_LeaveAndDisable,(Leave and Disable Tutorial)
@@ -33588,7 +33588,20 @@ AttackMaidKnightHeavy,The Maid Knight sweeps you with ${Etheir} cleaning halberd
 KDMaidKnightRetreat,The EnemyName retreats!
 KDMaidKnightRetreatBound,The EnemyName manages to squirm out of sight!
 
+KDToggleMinorSoundDesc,Minor sound descriptions
 
+KDAmbSound_Attack,combat
+KDAmbSound_Move,footsteps
+KDAmbSound_MoveFlying,hovering
+KDAmbSound_Alarm,alarm
+KDAmbSound_Idle,noise
+KDAmbSound_Speech,muffled speech
+KDAmbSound_CastMagic,combat
+KDAmbSound_CastTech,combat
+KDAmbSound_Cast,combat
+KDAmbSound_Attack,attacking
+KDAmbSound_Move,movement
+KDAmbSound_Alarm,alarm
 KDAmbSound_ServerHum,servers humming...
 KDAmbSound_Slime,bouncy noises
 KDAmbSound_SlimeLarge,goopy noises

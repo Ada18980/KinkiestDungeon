@@ -7012,6 +7012,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Group: "ItemFeet", power: 4, weight: 0,
 		struggleMult: {"Struggle": 0.4, "Remove": 0.3, "Cut": 10},
 		escapeChance: {"Struggle": 0.0, "Cut": 0.35, "Remove": 0},
+		helpChance: {"Remove": 0.25},
 		affinity: {Remove: ["Hook"], Struggle: ["Hook"]},
 		disassembleAs: "RopeSnakeRaw",
 		sfxGroup: "Ropes",

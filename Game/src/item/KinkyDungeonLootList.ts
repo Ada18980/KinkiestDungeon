@@ -670,7 +670,7 @@ let KinkyDungeonLootTable = {
 		...KDEnchantedRestraints,
 	],
 	"lessergold": [
-		{name: "DollMirror", weaponlist: "DollMirror", maxRarity: 8, enchantlist: "CommonTrinket", enchantchance: 1.0, minLevel: 0, weight:0.25, message:"LootChestWeapon", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
+		{name: "DollMirror", weaponlist: "DollMirror", maxRarity: 8, enchantlist: "CommonTrinket", enchantchance: 1.0, minLevel: 0, weight:0.5, message:"LootChestWeapon", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
 		
 		...KDGoldArmor, ...KDGoldArmor2,
 		{name: "RobeOfChastity", arousalMode: true, minLevel: 0, weight:4, message:"LootChestArmor",
