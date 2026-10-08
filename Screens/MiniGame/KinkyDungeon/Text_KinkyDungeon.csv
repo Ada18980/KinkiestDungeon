@@ -34110,7 +34110,7 @@ KDProgressUnselected,Select a progress item to show details
 KDProgress_Training_Corset,"Corset training affects the level of max stamina penalty incurred from wearing a corset. Levels are gained by spending stamina while wearing a corset.\nTraining failure occurs if you are not wearing a corset when you spend stamina."
 KDProgress_Training_Gag,"Gag training affects the effective strength of gags, allowing you to ignore lower level gags. Levels are gained by talking to NPCs, flirting, and casting verbal spells.\nTraining failure occurs if you are not wearing a gag when you perform actions."
 KDProgress_Training_Heels,"Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions."
-KDProgress_Training_Senses,"Senses training affects your hearing ability and the effectiveness of blindfolds. Levels are gained by detecting enemies by sound before visually spotting them.\nTraining failure occurs you spot enemies while neither blindfolded nor deafened."
+KDProgress_Training_Senses,"Senses training affects your hearing ability and the effectiveness of blindfolds. Levels are gained by detecting enemies by sound before visually spotting them, or by spotting enemies while blindfolded.\nTraining failure occurs you spot enemies while neither blindfolded nor deafened."
 KDProgressCurrent,"Current Progress:"
 KDProgressMilestones,"Milestones:"
 KDProgressBonusProgress,"Bonus Progress (per floor):"

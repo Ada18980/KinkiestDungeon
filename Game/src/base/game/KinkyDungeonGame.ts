@@ -3861,8 +3861,8 @@ function KDTickSensesTraining(player?: entity) {
 				KDSensesTrainingMult * 2, 4 + trainingLevel*.4);
 		} else if (canSee) {
 			KDGameData.SeenEntities[enemy.id] = true;
-			KDTickTraining("Senses", trainingLevel > 0, trainingLevel == 0, 
-				KDSensesTrainingMult, 1 + trainingLevel*.1);
+			KDTickTraining("Senses", KinkyDungeonBlindLevel > 0, KinkyDungeonBlindLevel == 0, 
+				KDSensesTrainingMult, 1 + KinkyDungeonBlindLevel*.1);
 		}
 	}
 }
