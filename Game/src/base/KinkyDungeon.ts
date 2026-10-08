@@ -1269,6 +1269,8 @@ function KinkyDungeonLoad(): void {
 
 
 	KDLoadToysIntegration();
+
+	currentSavePage = parseInt(localStorage.getItem("KDCurrentSavePage")) || 0;
 	
 
 	KDStartTime = CommonTime();
@@ -1996,9 +1998,21 @@ function KinkyDungeonRun() {
 						loadedsaveslots[num - 1] = code;
 
 						let decoded = LZString.decompressFromBase64(code);
+						let parse = JSON.parse(decoded);
 						if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName)
 							loadedsaveNames[num - 1] =
 								JSON.parse(decoded)?.KDGameData?.PlayerName;
+
+						if (decoded && parse?.KDGameData?.HighestLevelCurrent)
+							loadedsaveFloors[num - 1] =
+								parse.KDGameData.HighestLevelCurrent;
+								
+						if (decoded && parse?.KDGameData?.Class)
+							loadedsaveClasses[num - 1] =
+								parse.KDGameData.Class;
+						if (decoded && (parse?.npp ||  parse?.stats?.npp))
+							loadedsaveNG[num - 1] =
+								(parse?.npp ||  parse?.stats?.npp);
 					});
 				}
 
@@ -5091,6 +5105,7 @@ function KDDrawLoadMenu() {
 		DrawButtonKDEx(`PreviousPage`, (_bdata) => {
 			// when on page 0 and going left, wrap over to last page
 			currentSavePage = (currentSavePage - 1) < 0 ? maxSaveSlotPages - 1 : currentSavePage - 1;
+			localStorage.setItem("KDCurrentSavePage", "" + currentSavePage);
 			return true;
 		}, true, CombarXX + saveSlotXOffset + (saveSlotWidth/2) - slotPageBtnWidth - 35, YYstart - 20, slotPageBtnWidth, slotPageBtnWidth, '<', "#ffffff");
 		// page number / max pages displayed as text
@@ -5101,6 +5116,7 @@ function KDDrawLoadMenu() {
 		DrawButtonKDEx(`NextPage`, (_bdata) => {
 			// when on last page and going right, wrap to 0th page
 			currentSavePage = (currentSavePage + 1) % maxSaveSlotPages;
+			localStorage.setItem("KDCurrentSavePage", "" + currentSavePage);
 			return true;
 		}, true, CombarXX + saveSlotXOffset + (saveSlotWidth/2) + 35, YYstart - 20, slotPageBtnWidth, slotPageBtnWidth, '>', "#ffffff");
 
@@ -5109,6 +5125,13 @@ function KDDrawLoadMenu() {
 		for (let i = startSaveSlot; i < endSaveSlot; i++) {
 			let num = (i);
 			// Slot button
+			let slot = i;
+			let slotText = slot + ". " + (((loadedsaveNames[slot-1] ? loadedsaveNames[slot - 1] : "")
+					+ (loadedsaveClasses[slot-1] ? TextGet("KDClassSaveLabel") + TextGet("KinkyDungeonStatMC_" + loadedsaveClasses[slot-1]) : "")
+					+ (loadedsaveFloors[slot-1] ? TextGet("KDFloorSaveLabel") + loadedsaveFloors[slot-1] : "")
+					+ (loadedsaveNG[slot-1] ? TextGet("KDNGSaveLabel") + loadedsaveNG[slot-1] : "")
+				) || (TextGet("KDSaveSlotButton") + i));
+			
 			DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
 				console.log("Pressed button for save slot " + num);
 				loadedSaveforPreview = null;
@@ -5129,7 +5152,8 @@ function KDDrawLoadMenu() {
 
 
 				return true;
-			}, true, CombarXX + saveSlotXOffset, YY, saveSlotWidth, 64, TextGet("KDSaveSlotButton") + i, KDBaseWhite, "");
+			}, true, CombarXX + saveSlotXOffset, YY, saveSlotWidth, 64,
+			 slotText, KDBaseWhite, "");
 			// Selected arrow if the currently selected slot matches
 			if (num == LoadMenuCurrentSlot) {
 				DrawTextFitKD(`<--`, CombarXX + 430, YY + 35, 50, KDBaseWhite, undefined, 40);
@@ -5196,9 +5220,18 @@ function KDDrawLoadMenu() {
 			YY += YYd;
 		}
 	}
+
+	// CLOUD GAMES
 	else {
         for (let i = 1; i < 3; i++) {
             let num = (i);
+			// make it show name
+			let slot = i;
+			let slotText = slot + ". " + (((loadedsaveNames[slot-1] ? loadedsaveNames[slot - 1] : "")
+					+ (loadedsaveClasses[slot-1] ? TextGet("KDClassSaveLabel") + TextGet("KinkyDungeonStatMC_" + loadedsaveClasses[slot-1]) : "")
+					+ (loadedsaveFloors[slot-1] ? TextGet("KDFloorSaveLabel") + loadedsaveFloors[slot-1] : "")
+					+ (loadedsaveNG[slot-1] ? TextGet("KDNGSaveLabel") + loadedsaveNG[slot-1] : "")
+				) || (TextGet("KDSaveSlotButton") + i));
             DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
 				// Slot button
                 console.log("Pressed button for save slot " + num);
@@ -5217,7 +5250,8 @@ function KDDrawLoadMenu() {
                 KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
                 KDConfirmUpload = false;
                 return true;
-            }, true, CombarXX + 160, YY, 240, 64, TextGet("KDSaveSlotButton") + i, KDBaseWhite, "");
+            }, true, CombarXX + 160, YY, 240, 64, 
+			slotText, KDBaseWhite, "");
 			// Selected arrow if the currently selected slot matches
             if (num == LoadMenuCurrentSlot) {
                 DrawTextFitKD(`<--`, CombarXX + 430, YY + 35, 50, KDBaseWhite, undefined, 40);

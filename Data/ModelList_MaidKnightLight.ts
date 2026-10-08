@@ -150,6 +150,9 @@ AddModel({
 			InheritColor: "Top",
 			Poses: ToMap([...ARMPOSES]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 			//Invariant: true,
 		},
 

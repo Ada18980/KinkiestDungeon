@@ -1392,6 +1392,9 @@ AddModel({
 			MorphPoses: {Yoked: "Yoked"},
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			Invariant: true,
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 	])
 });
@@ -1889,6 +1892,9 @@ AddModel({
 			InheritColor: "Bra",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			HideWhenOverridden: true,
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 	])
 });
