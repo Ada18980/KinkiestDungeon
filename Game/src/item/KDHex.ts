@@ -157,7 +157,7 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 		events: (_data) => [
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Futility"},
-			{type: "multWillPos", trigger: "changeWill", power: 0.5, inheritLinked: true, curse: true, original: "Futility"},
+			{type: "multWillPosCurse", trigger: "changeWill", power: 0.7, inheritLinked: true, curse: true, original: "Futility"},
 			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futile", color: KDBaseRed, inheritLinked: true, original: "Futility"},
 			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Futile", color: KDBaseRed, inheritLinked: true, original: "Futility"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},

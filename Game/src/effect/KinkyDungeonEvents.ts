@@ -697,10 +697,15 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 		"CurseSubmission": (e, item, data) => {
 			if (data.player == KinkyDungeonPlayerEntity) {
-				KinkyDungeonChangeRep("Ghost", e.power);
-				KinkyDungeonSendTextMessage(3, TextGet("KDSubmissionCurseApply")
-					.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
-					, "#ceaaed", 10);
+				if (KDEntityBuffedStat(KDPlayer(), "ResistCharm")) {
+						KinkyDungeonSendTextMessage(7, TextGet("KDSubmissionCurseResist"), "#f339a9", 3);
+					} else {
+						KinkyDungeonChangeRep("Ghost", e.power);
+						KinkyDungeonSendTextMessage(3, TextGet("KDSubmissionCurseApply")
+							.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+							, "#ceaaed", 10);
+					}
+				
 			}
 		},
 		"PunishEvent": (e, item, data) => {
@@ -770,6 +775,18 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"multWillPos": (e, _item, data) => {
 			if (data.Amount > 0)
 				data.Amount *= e.power;
+		},
+		"multWillPosCurse": (e, item, data) => {
+			if (data.Amount > 0) {
+				if (KDEntityBuffedStat(KDPlayer(), "ResistCharm")) {
+					if (data.Amount > 4)
+					KinkyDungeonSendTextMessage(7, TextGet("KDCursedFutileResist")
+						.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+				, "#f339a9", 3);
+				} else {
+					data.Amount *= e.power;
+				}
+			}
 		},
 	},
 	"changeStamina": {
@@ -917,10 +934,16 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			// if (item.player == data.player)
 			if (data.enemy?.Enemy.tags.escapeddoll) KinkyDungeonSetFlag("DollmakerGrace", 70);
 		},
-		"CursedPunishment": (e, _item, data) => {
+		"CursedPunishment": (e, item, data) => {
 			if (data.enemy && data.enemy.lifetime == undefined && data.enemy.playerdmg && data.enemy.Enemy.bound && !data.enemy.Enemy.nonHumanoid) {
-				KDStunTurns(e.time, false);
-				KinkyDungeonSendTextMessage(8, TextGet("KDCursedPunishment"), "#9074ab", e.time);
+				if (KDEntityBuffedStat(KDPlayer(), "ResistCharm")) {
+					KinkyDungeonSendTextMessage(7, TextGet("KDCursedPunishmentResist")
+					.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+					,"#f339a9", 3);
+				}  else {
+					KDStunTurns(e.time, false);
+					KinkyDungeonSendTextMessage(8, TextGet("KDCursedPunishment"), "#9074ab", e.time);
+				}
 				KinkyDungeonMakeNoise(e.dist, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 				return true;
 			}
@@ -1955,9 +1978,15 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"crystalDrain": (e, _item, data) => {
 			if (!data.delta) return;
 			if (e.power) {
+				if (KDEntityBuffedStat(KDPlayer(), "ResistCharm")) {
+					KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrystalDrainResist"), 
+					"#f339a9", 2, true);
+					return false;
+				}  
 				KDChangeMana("crystal", "restraint", "tick", e.power);
 				KDChangeDistraction("crystal", "restraint", "tick", -e.power * KDBuffResist(KinkyDungeonPlayerBuffs, "soul"), false, 0.1);
-				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrystalDrain"), KDBaseLightBlue, 2, true);
+				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrystalDrain"), KDBaseLightBlue, 2,
+				 true);
 			}
 		},
 		"shadowDrain": (e, _item, data) => {
@@ -2296,16 +2325,24 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				}
 			}
 		},
-		"CursedSubmission": (e, _item, _data) => {
+		"CursedSubmission": (e, item, _data) => {
 			if (KinkyDungeonStatWill < 0.1) {
 				if (KinkyDungeonLastTurnAction == "Move"
 					&& KDEntityBuffedStat(KinkyDungeonPlayerEntity, "ForcedSubmission", true) > 0
 					&& KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, e.dist, KinkyDungeonPlayerEntity).length == 0) {
+					
 					// Condition for if you are near an enemy
 					KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["CursedSubmission"]);
-					// Submit!!!
-					KinkyDungeonSendTextMessage(7, TextGet("KDCursedSubmission"), "#9074ab", 3);
-					KDPlayerEffectRestrain(undefined, e.count, e.tags, "Ghost", false, true, false, false, false);
+					if (KDEntityBuffedStat(KDPlayer(), "ResistCharm")) {
+						KinkyDungeonSendTextMessage(7, TextGet("KDCursedSubmissionResist")
+						.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+						,"#f339a9", 3);
+					} else {
+						// Submit!!!
+						KinkyDungeonSendTextMessage(7, TextGet("KDCursedSubmission"), "#9074ab", 3);
+						KDPlayerEffectRestrain(undefined, e.count, e.tags, "Ghost", false, true, false, false, false);
+					}
+					
 				} else if (KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
 					KDEntityBuffedStat(KinkyDungeonPlayerEntity, "ForcedSubmission") ? e.dist : 1.5,
 					KinkyDungeonPlayerEntity).filter((en) => { return en.Enemy?.bound && !en.Enemy.nonHumanoid; }).length > 0) {
@@ -2947,6 +2984,13 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"PunishPlayer": (e, item, data) => {
 			if (data.restraint && item === data.restraint) {
 				if (KDRandom() < e.chance || (KDGameData.WarningLevel > (e.count || 2) && KDRandom() < e.warningchance)) {
+					if (KDEntityBuffedStat(KDPlayer(), "ResistCharm")) {
+						KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonPunishPlayerResist")
+						.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+						,"#f339a9", 3);
+						KDGameData.WarningLevel += 1;
+						return false;
+					}  
 					if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
 						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
@@ -3322,6 +3366,14 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"PunishPlayer": (e, item, data) => {
 			if (item.type === Restraint && data.targetX && data.targetY && data.enemy && !(data.enemy && data.enemy.Enemy && KDAllied(data.enemy)) && (!KinkyDungeonHiddenFactions.has(KDGetFaction(data.enemy)) || KDGetFaction(data.enemy) == "Enemy")) {
 				if (KDRandom() < e.chance || (KDGameData.WarningLevel > (e.count || 2) && KDRandom() < e.warningchance)) {
+					
+					if (KDEntityBuffedStat(KDPlayer(), "ResistCharm")) {
+						KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonPunishPlayerResist")
+						.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+						,"#f339a9", 3);
+						KDGameData.WarningLevel += 1;
+						return false;
+					}  
 					if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
 						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
@@ -3336,6 +3388,12 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"cursePunish": (e, item, data) => {
 			if (item.type === Restraint && data.targetX && data.targetY && data.enemy && !(data.enemy && data.enemy.Enemy && KDAllied(data.enemy)) && (!KinkyDungeonHiddenFactions.has(KDGetFaction(data.enemy)) || KDGetFaction(data.enemy) == "Enemy")) {
 				if (!e.chance || KDRandom() < e.chance) {
+					if (KDEntityBuffedStat(KDPlayer(), "ResistCharm")) {
+						KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonPunishPlayerResist")
+						.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+						,"#f339a9", 3);
+						return false;
+					}  
 					if (e.stun) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
 						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
@@ -3653,6 +3711,14 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"PunishPlayer": (e, item, data) => {
 			if (data.spell && item.type === Restraint && (!e.punishComponent || (data.spell.components && data.spell.components.includes(e.punishComponent)))) {
 				if (KDRandom() < e.chance || (KDGameData.WarningLevel > (e.count || 2) && KDRandom() < e.warningchance)) {
+					
+					if (KDEntityBuffedStat(KDPlayer(), "ResistCharm")) {
+						KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonPunishPlayerResist")
+						.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+						,"#f339a9", 3);
+						KDGameData.WarningLevel += 1;
+						return false;
+					}  
 					if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
 						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
@@ -3667,6 +3733,12 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"cursePunish": (e, item, data) => {
 			if (data.spell && item.type === Restraint && (!e.punishComponent || (data.spell.components && data.spell.components.includes(e.punishComponent)))) {
 				if (!e.chance || KDRandom() < e.chance) {
+					if (KDEntityBuffedStat(KDPlayer(), "ResistCharm")) {
+						KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonPunishPlayerResist")
+						.replace("RESTRAINTNAME", TextGet("Restraint" + item.name))
+						,"#f339a9", 3);
+						return false;
+					}  
 					if (e.stun) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
 						KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
@@ -3907,6 +3979,21 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 				buff.duration = 1;
 			}
 		},
+		
+		
+		"DollMirrorCurse": (_e, buff, entity, data) => {
+			// removed when the player advances a floor without the mirror in inventory
+			if (!KDEntityBuffedStat(entity, "ResistCharm")) {
+				let weapon = KinkyDungeonInventoryGet(buff.data?.weaponname);
+				if (!weapon) {
+					KinkyDungeonExpireBuff(entity, buff.id);
+					KinkyDungeonSendTextMessage(10, TextGet("KDDollMirrorCurseLift", {
+						Weapon: KDGetItemNameString(buff.data.weaponname)
+					}), "#6b37cc", 4);
+					if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Fwoosh.ogg");
+				}
+			}
+		},
 	},
 
 	"calcEscapePenalty": {
@@ -3934,10 +4021,24 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		},
 	},
 	"expireBuff": {
+		"DollMirrorCurse": (_e, buff, entity, data) => {
+			if (buff.id == data.buff && entity.player) {
+				let weapon = KinkyDungeonInventoryGet(buff.data?.weaponname);
+				if (weapon) {
+					if (KinkyDungeonPlayerWeapon == weapon.name) {
+						// force unequip
+						KDSendInput("unequipWeapon", {
+							weapon: weapon.name,
+						})
+						
+					}
+				}	
+			}
+		},
 		"poisonSleep": (_e, buff, entity, data) => {
-			if (KDIsImmuneToDrugs(entity)) return;
+			if (buff != data.buff || KDIsImmuneToDrugs(entity)) return;
 			//if (KDIsImmuneToSleep(entity)) return;
-			if (buff == data.buff && entity.player) {
+			if (entity.player) {
 				KDStunTurns(Math.round(12 * KinkyDungeonMultiplicativeStat(
 					KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, 
@@ -4439,6 +4540,57 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		},
 	},
 	"tick": {
+		
+		"DollMirrorCurse": (_e, buff, entity, data) => {
+			// doll curse is paused while player is resisting compulsions
+			// removed when the player advances a floor without the mirror in inventory
+			if (!KDEntityBuffedStat(entity, "ResistCharm")) {
+				// scan in reverse for the most recently added doll mirror
+				let weapon = KinkyDungeonInventoryGet(buff.data?.weaponname);
+				if (weapon && KinkyDungeonCanUseWeapon(undefined, undefined, KDWeapon({name: buff.data?.weaponname}))) {
+					
+					
+					if (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail' || 
+						KinkyDungeonLeashingEnemy() != null
+					) {
+						if (KinkyDungeonPlayerWeapon == weapon.name) {
+							// force equip
+							if (!buff.aura) buff.auraSprite = "Null";
+							if (!buff.aura) buff.buffSprite = true;
+							if (!buff.aura) buff.aura = "#6b37cc";
+							
+							KinkyDungeonSendTextMessage(10, TextGet("KDDollMirrorCurseUnequip", {
+								Weapon: KDGetItemNameString(buff.data.weaponname)
+							}), "#6b37cc", 4);
+							if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Fwoosh.ogg");
+							
+
+							KDSendInput("unequipWeapon", {
+								weapon: weapon.name,
+							})
+							
+						}
+					} else {
+						if (KinkyDungeonPlayerWeapon != weapon.name) {
+							
+							// force equip
+							if (!buff.aura) buff.auraSprite = "Null";
+							if (!buff.aura) buff.buffSprite = true;
+							if (!buff.aura) buff.aura = "#6b37cc";
+							KinkyDungeonSendTextMessage(10, TextGet("KDDollMirrorCurseEquip", {
+								Weapon: KDGetItemNameString(buff.data.weaponname)
+							}), "#6b37cc", 4);
+							if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Evil.ogg");
+							
+							KDSendInput("switchWeapon", {
+								weapon: weapon.name,
+							})
+						}
+					}
+
+				}
+			}
+		},
 		"poisonSleep": (_e, buff, entity, data) => {
 			if (KDIsImmuneToDrugs(entity)) return;
 			if (entity.player) {
@@ -5508,7 +5660,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				if (data.spell.components) {
 					let failedcomp = [];
 					for (let comp of data.spell.components) {
-						if (!KDSpellComponentTypes[comp].check(spell, data.x, data.y)) {
+						if (!KDSpellComponentTypes[comp].check(spell, data.x, data.y, KDPlayer())) {
 							failedcomp.push(comp);
 						}
 					}

@@ -49,6 +49,9 @@ AddModel({
 			NoOverride: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
 			Invariant: true,
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 		{
 			Name: "BustStripe", Layer: "ShirtChest", Pri: -99.9,
@@ -104,6 +107,9 @@ AddModel({
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
 			AppendPose: {Chesttied: "Chesttied"},
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 	])
 });

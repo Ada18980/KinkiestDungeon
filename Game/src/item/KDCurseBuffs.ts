@@ -1,8 +1,8 @@
 interface KDMajorCurse {
     name: string,
     level: number,
-    filter: (player: entity) => boolean,
-    onApply: (player: entity) => boolean,
+    filter: (player: entity, data?: any) => boolean,
+    onApply: (player: entity, data?: any) => boolean,
     weights: Record<string, number>;
 }
 
@@ -20,19 +20,24 @@ let KDMajorCurses: Record<string, KDMajorCurse> = {
             generic: 10,
         },
         level: 5,
-        filter: (player) => {
+        filter: (player, data) => {
             // Can stack with major curses, but not weapon curses
             return Object.values(KDGetBuffsWithTag(player, "weaponcurse")).length == 0;
         },
-        onApply: (player) => {
+        onApply: (player, data) => {
 			KDApplyBuffToEntity(player, {
                 id: "DollMirrorCurse",
                 duration: 9999,
                 infinite: true,
+                buffSprite: true,
+                data: {
+                    weaponname: data?.weapon?.name
+                },
                 //aura: "Null", // this will get added to make the buff visible after it "awakens"
-                tags: ["majorcurse", "weaponcurse"],
+                tags: ["majorcurse", "weaponcurse", "majorcurse_angel"],
                 events: [
-                    {trigger: "tick", type: "DollMirrorCurse", time: Math.ceil(10 + KDRandom() * 30)}
+                    {trigger: "tick", type: "DollMirrorCurse", time: Math.ceil(10 + KDRandom() * 30)},
+                    {trigger: "tickFlags", type: "DollMirrorCurse"},
                 ]
             });
             return true;

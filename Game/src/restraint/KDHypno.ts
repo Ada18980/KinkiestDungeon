@@ -17,6 +17,7 @@ interface HypnoButton {
     callback?: string,
     callbackdata?: any,
     player?: number,
+    zIndex?: number
 }
 
 let KDDollHypnoSuggestions = 10;
@@ -85,6 +86,7 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
         callback: callback?.name,
         callbackdata: callback?.data,
         player: player,
+        zIndex: KDRandom(),
     };
     if (!x && !y) {
         setPoint(button);
@@ -140,6 +142,7 @@ function KDDrawHypnoButton(button: HypnoButton, x: number, y: number, alpha: num
         KDButtonColor, undefined, undefined, {
             alpha: alpha * 0.4,
             textalpha: alpha,
+            zIndex: 100 + button.zIndex || 0
         })) {
         if (button.textKey_after) {
             button.textKey = button.textKey_after;

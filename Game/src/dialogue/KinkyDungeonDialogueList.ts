@@ -13,6 +13,7 @@ let KDDialogueParams = {
 	MasterworkCount: 5,
 	ShopkeeperFavorsToRemoveNormal: 1,
 	ShopkeeperFavorsToRemoveDivine: 4,
+	ShopkeeperFavorsToRemoveCurse: 5,
 };
 
 /**
@@ -588,7 +589,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonInventoryAddWeapon("Knife");
 					if (KDGameData.AngelCurrentRep) {
-						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -2);
+						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -1);
 					}
 					KinkyDungeonSetFlag("AngelHelped", 5);
 					return false;
@@ -604,7 +605,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					KDAddConsumable("Pick", 3);
 					
 					if (KDGameData.AngelCurrentRep) {
-						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -2);
+						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -1);
 					}
 					KinkyDungeonSetFlag("AngelHelped", 5);
 					return false;
@@ -620,7 +621,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					KDAddConsumable("BlueKey", 1);
 					
 					if (KDGameData.AngelCurrentRep) {
-						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -4);
+						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -3);
 					}
 					KinkyDungeonSetFlag("AngelHelped", 5);
 					return false;
@@ -648,6 +649,27 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						else
 							KDGameData.CurrentDialogMsg = "AngelHelpDivineFail";
 					}
+					return false;
+				},
+				
+				leadsToStage: "", dontTouchText: true,
+			},
+			"Curse": {
+				playertext: "Default", response: "AngelHelpCurse",
+				gag: true,
+				prerequisiteFunction: (_gagged, player) => {
+					return !KinkyDungeonFlags.get("AngelHelped")
+						&& Object.values(KDGetBuffsWithTag(player, "majorcurse_angel")).length > 0;
+				},
+				clickFunction: (_gagged, player) => {
+					KinkyDungeonRemoveBuffsWithTag(player, ["majorcurse_angel"]);
+					if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Fwoosh.ogg");
+
+					
+					if (KDGameData.AngelCurrentRep) {
+						KinkyDungeonChangeRep(KDGameData.AngelCurrentRep, -14);
+					}
+					KinkyDungeonSetFlag("AngelHelped", 5);
 					return false;
 				},
 				leadsToStage: "", dontTouchText: true,
@@ -4231,7 +4253,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Pay": {
 				playertext: "Default", response: "Default", gag: true,
 				prerequisiteFunction: (_gagged, _player) => {
-					return KDGameData.ShopkeeperFavors >= KDGameData.CurrentDialogMsgValue["${FAVORCOST}"];
+					return KDGameData.ShopkeeperFavors >= KDGameData.CurrentDialogMsgValue["${FAVORCOST}"]
+					&& KinkyDungeonAllRestraintDynamic().some((element) => {
+						return !KDRestraint(element.item)?.armor && !KDRestraint(element.item)?.good;
+					});
 				},
 				clickFunction: (_gagged, player) => {
 					KDGameData.ShopkeeperFavors -= KDGameData.CurrentDialogMsgValue["${FAVORCOST}"];
@@ -4273,6 +4298,58 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 		}
 	},
+
+	"ShopkeeperOfferHelpCurse": {
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			let speaker = KDGetSpeaker();
+			if (speaker) KinkyDungeonSetEnemyFlag(speaker, "removedcurse");
+			KDGameData.CurrentDialogMsgData = {
+				"${FAVORS}": "" + KDGameData.ShopkeeperFavors,
+				"${FAVORCOST}": "" + KDDialogueParams.ShopkeeperFavorsToRemoveCurse,
+			};
+			KDGameData.CurrentDialogMsgValue = {
+				"${FAVORS}": KDGameData.ShopkeeperFavors,
+				"${FAVORCOST}": KDDialogueParams.ShopkeeperFavorsToRemoveCurse,
+			};
+
+			return false;
+		},
+		options: {
+			"Pay": {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (_gagged, player) => {
+					return KDGameData.ShopkeeperFavors >= KDGameData.CurrentDialogMsgValue["${FAVORCOST}"]
+						&& Object.values(KDGetBuffsWithTag(player, "majorcurse_angel")).length > 0;
+				},
+				clickFunction: (_gagged, player) => {
+					KDGameData.ShopkeeperFavors -= KDGameData.CurrentDialogMsgValue["${FAVORCOST}"];
+					KDAddGagXP("Shop", player);
+					KinkyDungeonRemoveBuffsWithTag(player, ["majorcurse_angel"])
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						clickFunction: (_gagged, _player) => {
+							KDStartDialog("ShopkeeperStart", KDGetSpeaker()?.Enemy.name, 
+							true, KDGetSpeaker()?.personality, KDGetSpeaker());
+							return false;
+						}
+					},
+				}
+			},
+			"Leave": {
+				response: "Default",
+				gag: true,
+				clickFunction: (_gagged, _player) => {
+					KDStartDialog("ShopkeeperStart", KDGetSpeaker()?.Enemy.name, 
+					true, KDGetSpeaker()?.personality, KDGetSpeaker());
+					return false;
+				}
+			},
+		}
+	},
 	"ShopkeeperStart": {
 		response: "Default",
 		clickFunction: (_gagged, _player) => {
@@ -4280,12 +4357,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			KDGameData.CurrentDialogMsgValue = {
 				"${FAVORS}": KDGameData.ShopkeeperFavors,
 				"${FAVORCOST}": KDDialogueParams.ShopkeeperFavorsToRemoveDivine,
+				"${FAVORCOSTCURSE}": KDDialogueParams.ShopkeeperFavorsToRemoveCurse,
 				"RESCUECOST": Math.round(Math.sqrt(KDPriceGougingValueMult(_player)) * 
 					(KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1))))),
 			};
 			KDGameData.CurrentDialogMsgData = {
 				"${FAVORS}": "" + KDGameData.ShopkeeperFavors,
 				"${FAVORCOST}": "" + KDDialogueParams.ShopkeeperFavorsToRemoveDivine,
+				"${FAVORCOSTCURSE}": "" + KDDialogueParams.ShopkeeperFavorsToRemoveCurse,
 				"RESCUECOST": "" + Math.round(Math.sqrt(KDPriceGougingValueMult(_player))*(KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1))))),
 			};
 
@@ -4342,6 +4421,27 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							return false;
 						},
 					},*/
+					"Return": {
+						playertext: "Return", response: "Default",
+						leadsToStage: "",
+					},
+				}
+			},
+			"HelpCurse": {
+				playertext: "Default", response: "Default", gag: true,
+				prerequisiteFunction: (_gagged, player) => {
+					return Object.values(KDGetBuffsWithTag(player, "majorcurse_angel")).length > 0;
+				},
+				clickFunction: (_gagged, player) => {
+					if (Object.values(KDGetBuffsWithTag(player, "majorcurse_angel")).length > 0
+						&& KDGameData.ShopkeeperFavors >= KDGameData.CurrentDialogMsgValue["${FAVORCOSTCURSE}"]) {
+						let e = KDGetSpeaker();
+						KDStartDialog("ShopkeeperOfferHelpCurse", e.Enemy.name, true, e.personality, e);
+						return true;
+					}
+					return false;
+				},
+				options: {
 					"Return": {
 						playertext: "Return", response: "Default",
 						leadsToStage: "",

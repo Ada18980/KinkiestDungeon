@@ -225,7 +225,7 @@ AddModel({
 			Sprite: "LeafBra",
 			NoOverride: true,
 			EraseAmount: 100,
-			EraseSprite: "LaceChest",
+			EraseSprite: "LaceChest", EraseInvariant: true,
 			EraseLayers: ToMap(["CorsetBra"]),
 		},
 		{ Name: "VineBra", Layer: "BraChest", Pri: 35.1,

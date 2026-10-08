@@ -4013,20 +4013,20 @@ type KDConsumableVariant = {
 
 interface KDSpellComponent {
 	/** Returns true if the component is ignored in this case even for partial applications */
-	ignore: (spell: spell, x: number, y: number) => boolean,
+	ignore: (spell: spell, x: number, y: number, player: entity) => boolean,
 	/** Returns true if the spell can be cast, or false otherwise */
-	check: (spell: spell, x: number, y: number) => boolean,
+	check: (spell: spell, x: number, y: number, player: entity) => boolean,
 	/** Run when the spell is cast */
-	cast?: (spell: spell, data: any) => void,
+	cast?: (spell: spell, data: any, player: entity) => void,
 	/** Get the name of the component when hovering over spell icon */
-	stringShort: (ret: string) => string,
+	stringShort: (ret: string, player: entity) => string,
 	/** Get the name of the component in the spell description */
-	stringLong: (spell: spell) => string,
+	stringLong: (spell: spell, player: entity) => string,
 
 	/** Returns the component's partial miscast chance, such as from being gagged or wearing heels */
-	partialMiscastChance: (spell: spell, x: number, y: number) => number,
+	partialMiscastChance: (spell: spell, x: number, y: number, player: entity) => number,
 	/** Returns the message suffix for failing due to a partial miscast chance */
-	partialMiscastType: (spell: spell, x: number, y: number) => string,
+	partialMiscastType: (spell: spell, x: number, y: number, player: entity) => string,
 
 }
 

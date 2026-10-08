@@ -17,7 +17,7 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Cups",
 			EraseAmount: 100,
-			EraseSprite: "LaceChest",
+			EraseSprite: "LaceChest", EraseInvariant: true,
 			EraseLayers: ToMap(["CorsetBra"]),
 		},
 		{ Name: "BraRim", Layer: "BraChest", Pri: -34.9,

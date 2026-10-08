@@ -78,6 +78,9 @@ AddModel({
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
 			AppendPose: {Chesttied: "Chesttied"},
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 	])
 });

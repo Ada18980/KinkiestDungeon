@@ -26,6 +26,9 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
 			HidePoses: ToMap(["EncaseTorsoUpper"]),
 			InheritColor: "Jacket",
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 		{ Name: "DressSkirt", Layer: "SkirtOver", Pri: 31,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
@@ -222,6 +225,9 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
 			HidePoses: ToMap(["EncaseTorsoUpper"]),
 			InheritColor: "Shirt",
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 	])
 });

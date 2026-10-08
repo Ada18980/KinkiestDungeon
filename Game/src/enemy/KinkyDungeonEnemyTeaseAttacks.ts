@@ -17,6 +17,8 @@ let KDTeaseAttackLists: KDTeaseAttackListsType = {
 		"AddGag",
 		"Disarm",
 		"Pickpocket",
+		
+		"GoodDoll",
 		/*,
 		"AddCarabiner",*/
 	],
@@ -40,12 +42,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(0.5 + 1.5 * (KinkyDungeonGoddessRep.Ghost + 50)/100), type: "soul"}, 
 			undefined, undefined, undefined, undefined, "tease");
-			let index = Math.floor(Math.random() * 3);
-			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DamageWeak.ogg");
-			KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailPlay" + suff + index,
-									KDGetGenericDialogueParams(player, enemy))
-				.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 2, 3);
 
 			if (dmg.happened) {
 				KinkyDungeonSetFlag("praised1", Math.round(3 + KDRandom() * 5));
@@ -68,6 +65,90 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 					"#ff9999", 1);
 				KinkyDungeonSendDialogue(enemy, 
 					TextGet("KDPraiseDialogueFail",
+									KDGetGenericDialogueParams(player, enemy)),
+								undefined, 2, 1, undefined, undefined, undefined, undefined,
+							true);
+			}
+
+			return true;
+		},
+	},
+	GoodDoll: {
+		name: "GoodDoll",
+		priority: 4,
+		blockable: true, dodgeable: true,
+		filter: (enemy, player, aiData, query) => {
+			let a = 1;
+			return (player.player
+				&& ((aiData.aggressive)
+					|| ((!aiData.domMe
+						|| KDEnemyHasFlag(enemy, "forcetease")
+						|| KDEnemyHasFlag(enemy, "alwaystease"))))
+				&&  KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < 4.5
+				&&  !KinkyDungeonIsDisabled(enemy)
+				&&  (player.player ? !KinkyDungeonFlags.get("teleported") : !KDEnemyHasFlag(player, "teleported"))
+			)
+				&& KDEnemyCanTalk(enemy)
+				&& !KinkyDungeonFlags.get("gooddoll1")
+				&& (
+					(KinkyDungeonFlags.get("PlayerCombat")
+						|| KinkyDungeonLastAction == "Move"
+						|| KinkyDungeonLastTurnAction == "Move")
+					&& !player.leash
+					&& enemy.Enemy?.tags && (
+						enemy.Enemy.tags.mage
+						|| enemy.Enemy.tags.dressmaker
+						|| enemy.Enemy.tags.librarian
+						|| enemy.Enemy.tags.puppetmaster
+						|| enemy.Enemy.tags.witch
+						|| enemy.Enemy.tags.apprentice
+					)
+					&& KDEntityBuffedStat(player, "Hypno_Doll") >= 10
+				);
+		},
+		apply: (enemy, player, aiData, blocked, evaded, damagemod) => {
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
+			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
+
+			if (KDEntityBuffedStat(player, "ResistCharm") || 
+				KDRandom()* 100 > KDEntityBuffedStat(player, "Hypno_Doll")) {
+				blocked = true;
+				//KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Shield.ogg");
+
+			} else {
+				KDStunTurns(3);
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Fwoosh.ogg");
+			}
+
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage(
+				{damage: damagemod*(0.5 + 1.5 * (KinkyDungeonGoddessRep.Ghost + 50)/100), type: "soul"}, 
+			undefined, undefined, undefined, undefined, "tease");
+
+			
+
+			if (dmg.happened) {
+				KinkyDungeonSetFlag("gooddoll1", Math.round(50 - KDEntityBuffedStat(player, "Hypno_Doll") * 0.4 + KDRandom() * 5));
+				KinkyDungeonSendTextMessage(4,
+					TextGet("KDTeaseAttack_GoodDoll", KDGetGenericDialogueParams(player, enemy))
+						.replace("ENMY", TextGet("Name" + enemy.Enemy.name))
+						.replace("DMGDLT", dmg.string),
+					"#ff9999", 1);
+				KinkyDungeonSendDialogue(enemy, 
+					TextGet("KDGoodDollDialogue",
+									KDGetGenericDialogueParams(player, enemy)),
+								undefined, 2, 1, undefined, undefined, undefined, undefined,
+							true);
+
+			} else {
+				KinkyDungeonSetFlag("gooddoll1", Math.round(25 - KDEntityBuffedStat(player, "Hypno_Doll") * 0.24 + KDRandom() * 5));
+				
+				KinkyDungeonSendTextMessage(4,
+					TextGet("KDTeaseAttackResist_GoodDoll", KDGetGenericDialogueParams(player, enemy))
+						.replace("ENMY", TextGet("Name" + enemy.Enemy.name))
+						+ TextGet("ResistType" + (blocked ? "Block" : (evaded ? "Dodge" : ""))),
+					"#ff9999", 1);
+				KinkyDungeonSendDialogue(enemy, 
+					TextGet("KDGoodDollDialogueFail",
 									KDGetGenericDialogueParams(player, enemy)),
 								undefined, 2, 1, undefined, undefined, undefined, undefined,
 							true);

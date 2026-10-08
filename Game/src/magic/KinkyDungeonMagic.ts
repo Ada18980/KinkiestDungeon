@@ -173,8 +173,45 @@ let KDSpellComponentTypes: Record<string, KDSpellComponent> = {
 			KinkyDungeonSetFlag("visionspell", 1);
 		}
 	},
+	"Mental": {
+		stringShort: (_ret) => {
+			return TextGet("KDShortCompMental");
+		},
+		stringLong: (_spell) => {
+			return TextGet("KinkyDungeonComponentsMental");
+		},
+		check: (_spell, _x, _y, player) => {
+			if ((KinkyDungeonStatDistractionMax - KinkyDungeonStatDistraction) < KDGetMentalComponentThresh(player)
+				&& !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoMentalComp") > 0)) return false;
+			return true;
+		},
+		ignore: (_spell, _x, _y) => {
+			return (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "NoMentalComp") > 0);
+		},
+		partialMiscastChance: (_spell, _x, _y, player) => {
+			let distraction = (KinkyDungeonStatDistractionMax - KinkyDungeonStatDistraction);
+			let thresh = KDGetMentalComponentPartialThresh(player);
+			if (distraction < thresh && thresh > 0) {
+				return distraction / thresh;
+			}
+			return 0;
+		},
+		partialMiscastType: (_spell, _x, _y) => {
+			return "Mental";
+		},
+		cast: (_spell, _data) => {
+			KinkyDungeonSetFlag("mentalspell", 1);
+		}
+	},
 
 };
+
+function KDGetMentalComponentThresh(player: entity) {
+	return 4;
+}
+function KDGetMentalComponentPartialThresh(player: entity) {
+	return 8;
+}
 
 function KinkyDungeonSearchSpell(list: spell[], name: string): spell {
 	for (let spell of list) {
@@ -375,9 +412,9 @@ function KinkyDungeoCheckComponentsPartial(spell: spell, x: number, y: number, i
 
 	if (spell.components)
 		for (let comp of spell.components) {
-			if (includeFull && !KDSpellComponentTypes[comp].check(spell, x, y)) {
+			if (includeFull && !KDSpellComponentTypes[comp].check(spell, x, y, KDPlayer())) {
 				failedcompFull.push(comp);
-			} else if (KDSpellComponentTypes[comp].partialMiscastChance(spell, x, y) > 0) {
+			} else if (KDSpellComponentTypes[comp].partialMiscastChance(spell, x, y, KDPlayer()) > 0) {
 				failedcomp.push(comp);
 			}
 		}
@@ -406,6 +443,7 @@ function KinkyDungeoCheckComponents(spell: spell, x?: number, y?: number, noOver
 		spell: spell,
 		components: spell.components,
 		failed: failedcomp,
+		player: KDPlayer(),
 		x: x || KinkyDungeonPlayerEntity.x,
 		y: y || KinkyDungeonPlayerEntity.y};
 
@@ -414,7 +452,7 @@ function KinkyDungeoCheckComponents(spell: spell, x?: number, y?: number, noOver
 
 	if (data.components)
 		for (let comp of data.components) {
-			if (!KDSpellComponentTypes[comp].check(spell, x, y)) {
+			if (!KDSpellComponentTypes[comp].check(spell, x, y, data.player)) {
 				failedcomp.push(comp);
 			}
 		}
@@ -442,7 +480,7 @@ function KDSpellIgnoreComp(spell: spell, x?: number, y?: number, components?: st
 	let ignore = true;
 	if (components || spell?.components) {
 		for (let c of components || spell.components) {
-			if (!KDSpellComponentTypes[c]?.ignore || !KDSpellComponentTypes[c].ignore(spell, x, y)) ignore = false;
+			if (!KDSpellComponentTypes[c]?.ignore || !KDSpellComponentTypes[c].ignore(spell, x, y, KDPlayer())) ignore = false;
 		}
 	}
 
@@ -792,12 +830,12 @@ function KDDoGaggedMiscastFlag(data: any, components: string[]) {
 
 	if (!KDSpellIgnoreComp(data.spell)) {
 		for (let c of components || data.components || data.spell.components) {
-			if (KDSpellComponentTypes[c]?.partialMiscastChance && KDSpellComponentTypes[c].check(data.spell, data.targetX, data.targetY)) {
-				let partialMiscastChance = KDSpellComponentTypes[c].partialMiscastChance(data.spell, data.targetX, data.targetY);
+			if (KDSpellComponentTypes[c]?.partialMiscastChance && KDSpellComponentTypes[c].check(data.spell, data.targetX, data.targetY, KDPlayer())) {
+				let partialMiscastChance = KDSpellComponentTypes[c].partialMiscastChance(data.spell, data.targetX, data.targetY, KDPlayer());
 				if (partialMiscastChance > 0) {
 					if (lastPartialChance == 0 || KDRandom() < partialMiscastChance) {
 						lastPartialChance = partialMiscastChance;
-						data.gaggedMiscastType = KDSpellComponentTypes[c].partialMiscastType(data.spell, data.targetX, data.targetY);
+						data.gaggedMiscastType = KDSpellComponentTypes[c].partialMiscastType(data.spell, data.targetX, data.targetY, KDPlayer());
 					}
 					data.flags.miscastChance = data.flags.miscastChance + Math.max(0, 1 - data.flags.miscastChance) * (partialMiscastChance);
 					data.gaggedMiscastFlag = true;
@@ -833,12 +871,12 @@ function KDDoGaggedMiscastFlagEvent(spell: spell, targetX: number, targetY: numb
 	let gaggedMiscastFlag = false;
 	if (!KDSpellIgnoreComp(spell)) {
 		for (let c of components || spell.components) {
-			if (KDSpellComponentTypes[c]?.partialMiscastChance && KDSpellComponentTypes[c].check(spell, targetX, targetY)) {
-				let partialMiscastChance = KDSpellComponentTypes[c].partialMiscastChance(spell, targetX, targetY);
+			if (KDSpellComponentTypes[c]?.partialMiscastChance && KDSpellComponentTypes[c].check(spell, targetX, targetY, KDPlayer())) {
+				let partialMiscastChance = KDSpellComponentTypes[c].partialMiscastChance(spell, targetX, targetY, KDPlayer());
 				if (partialMiscastChance > 0) {
 					if (lastPartialChance == 0 || KDRandom() < partialMiscastChance) {
 						lastPartialChance = partialMiscastChance;
-						gaggedMiscastType = KDSpellComponentTypes[c].partialMiscastType(spell, targetX, targetY);
+						gaggedMiscastType = KDSpellComponentTypes[c].partialMiscastType(spell, targetX, targetY, KDPlayer());
 					}
 					miscastChance = miscastChance + Math.max(0, 1 - miscastChance) * (partialMiscastChance);
 					gaggedMiscastFlag = true;
@@ -1471,7 +1509,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 						if (spell.components) {
 							for (let comp of spell.components) {
 								if (KDSpellComponentTypes[comp].cast)
-									KDSpellComponentTypes[comp].cast(spell, data);
+									KDSpellComponentTypes[comp].cast(spell, data, KDPlayer());
 							}
 						}
 						KinkyDungeonSendEvent("afterPlayerCast", data);
@@ -1590,7 +1628,7 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 		if (spell.components) {
 			for (let comp of spell.components) {
 				if (KDSpellComponentTypes[comp].cast)
-					KDSpellComponentTypes[comp].cast(spell, data);
+					KDSpellComponentTypes[comp].cast(spell, data, KDPlayer());
 			}
 		}
 		KinkyDungeonSendEvent("afterPlayerCast", data);
@@ -2390,7 +2428,7 @@ function KinkyDungeonGetCompList(spell: spell): string {
 	if (spell.components)
 		for (let c of spell.components) {
 			if (ret) ret = ret + "/";
-			ret = ret + (KDSpellComponentTypes[c].stringShort(ret));
+			ret = ret + (KDSpellComponentTypes[c].stringShort(ret, KDPlayer()));
 		}
 
 	//if (ret)
@@ -3055,7 +3093,7 @@ function KDDrawSpellInfo(showbg: boolean, xOffset: number, yOffset: number, spel
 		if (spell.components?.length > 0) {
 
 			for (let comp of spell.components) {
-				DrawTextKD(KDSpellComponentTypes[comp].stringLong(spell), 
+				DrawTextKD(KDSpellComponentTypes[comp].stringLong(spell, KDPlayer()), 
 				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), 
 				canvasOffsetY_ui + yOffset + 483*KinkyDungeonBookScale/2 + 215 - 35*i, KDBookText, KDTextTan, 24); i++;
 			}

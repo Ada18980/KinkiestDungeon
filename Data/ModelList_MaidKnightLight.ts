@@ -32,6 +32,9 @@ AddModel({
 			HidePoses: ToMap(["EncaseTorsoUpper"]),
 			InheritColor: "Dress",
 			MorphPoses: {Front: "Boxtie", Crossed: "Boxtie"},
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 		{ Name: "DressSkirt", Layer: "SkirtOver", Pri: 4,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
@@ -168,6 +171,9 @@ AddModel({
 			HidePoses: ToMap(["EncaseTorsoUpper"]),
 			InheritColor: "Dress",
 			MorphPoses: {Front: "Boxtie", Crossed: "Boxtie"},
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 	])
 });

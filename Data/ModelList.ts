@@ -303,6 +303,9 @@ AddModel({
 			HidePoseConditional: [
 				["DynamicArmor", "TorsoArmor", "SuppressDynamic"],
 			],
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 	])
 });
@@ -322,6 +325,9 @@ AddModel({
 			HidePoseConditional: [
 				["DynamicArmor", "TorsoArmor", "SuppressDynamic"],
 			],
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 	])
 });
@@ -759,6 +765,9 @@ AddModel({
 			InheritColor: "Blouse",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			Invariant: true,
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 	])
 });
@@ -1006,6 +1015,9 @@ AddModel({
 			MorphPoses: {Up: "Up"},
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			Invariant: true,
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 	])
 });
@@ -1400,6 +1412,9 @@ AddModel({
 			InheritColor: "Bustier",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			HideWhenOverridden: true,
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
 		},
 		{ Name: "BustierChestRim", Layer: "ShirtChest", Pri: 15.1,
 			Invariant: true,

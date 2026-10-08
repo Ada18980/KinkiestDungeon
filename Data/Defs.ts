@@ -643,6 +643,8 @@ let LayerGroups = {
 		"BustierChest",
 		"ShirtChest",
 		"WrapChest",
+		"BindChestLower",
+		"Option_BindChestLower",
 		//"Shirt",
 		//"ShirtOver",
 	]),
@@ -1603,6 +1605,7 @@ let LayerGroups = {
 		"BraChestDeco",
 		"BraChest",
 		"BindChestLower",
+		"Option_BindChestLower",
 	]),
 	"ShirtCutoffBra": ToMap([
 		"Chest",

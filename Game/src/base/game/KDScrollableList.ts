@@ -200,7 +200,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	isSelected: boolean,
 	selectedIndex: number,
 	list: KDScrollableListData) => boolean, drawBG = true, horizontal = false, scrollbarSize = 36,
-	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string, pad: number = 4, scrollButtons: boolean = true): any {
+	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string, pad: number = 4, scrollButtons: boolean = true, scrollbarSize2 = undefined, scrollBarColor?: string, scrollbarClickable: boolean = true): any {
 	let list = KDScrollableListDataset[name];
 	let container = kdcanvas;
 
@@ -248,8 +248,8 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 
 	const barX = horizontal ? list.x : (list.x + list.w - scrollbarSize);
 	const barY = horizontal ? (list.y + list.h - scrollbarSize) : list.y;
-	const barW = scrollbarSize;
-	const barH = list.h;
+	const barW = horizontal ? (scrollbarSize2 ? scrollbarSize2 : list.w) : scrollbarSize;
+	const barH = horizontal ? scrollbarSize : (scrollbarSize2 ? scrollbarSize2 : list.h);
 
 	const upX = barX;
 	const upY = barY;
@@ -391,7 +391,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			}
 			return mouseHoldTaken == data?.button?.name;
 		}),
-		true,
+		scrollbarClickable,
 		tabX,
 		tabY,
 		tabW,
@@ -400,9 +400,9 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		KDBaseWhite,
 		"",
 		undefined,
-		false,
+		!scrollbarClickable,
 		true,
-		KDStrongHighlightColor,
+		scrollBarColor || KDStrongHighlightColor,
 		undefined,
 		undefined,
 		{alpha: 0.9},
@@ -419,7 +419,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			}
 			return mouseHoldTaken == data?.button?.name;
 		}),
-		true,
+		scrollbarClickable,
 		gutterX,
 		gutterY,
 		gutterW,
@@ -428,7 +428,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		KDBaseWhite,
 		"",
 		undefined,
-		false,
+		!scrollbarClickable,
 		true,
 		undefined,
 		undefined,

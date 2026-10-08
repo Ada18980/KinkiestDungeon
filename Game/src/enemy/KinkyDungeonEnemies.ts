@@ -6678,8 +6678,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		&& AIType.tease(enemy, player, AIData)
 		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, !enemy.Enemy.projectileAttack, !enemy.Enemy.projectileAttack);
 
-	if (player.player && !AIData.canAttack && AIData.canTease && ((enemy.playWithPlayer && !KinkyDungeonAggressive(enemy)
-		|| KDEntityHasFlag(enemy, "alwaysTease")))) {
+	if (player.player && AIData.canTease) {// && ((enemy.playWithPlayer && !KinkyDungeonAggressive(enemy) || KDEntityHasFlag(enemy, "alwaysTease"))
 		KDOperateTease();
 	}
 	while (AIData.canAttack && (first || enemy.attackBonus > 0)) {//Player is adjacent
@@ -10949,6 +10948,7 @@ function KDGetTeaseAttack(enemy: entity, player: entity, AData: KDAIData): KDTea
 
 function KDBasicTeaseAttack(enemy: entity, player: entity, aiData: KDAIData, noglobal?: boolean, dist: number = 1.5): boolean {
 	return  player.player
+		&& (enemy.playWithPlayer && !KinkyDungeonAggressive(enemy) || KDEntityHasFlag(enemy, "alwaysTease"))
 		&& (!aiData.domMe || KDEnemyHasFlag(enemy, "forcetease") || KDEnemyHasFlag(enemy, "alwaystease"))
 	    &&  KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < dist
 	    &&  !KDEnemyHasFlag(enemy, "teaseAtkCD")

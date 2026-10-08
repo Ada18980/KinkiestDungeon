@@ -527,9 +527,11 @@ function KDInvAddWeapon(container: KDContainer | null, Name: string) {
 	if (container) {
 		container.items[Name] = {name:Name, type:Weapon, events: Object.assign([],
 			KinkyDungeonWeapons[Name].events), id: KinkyDungeonGetItemID()};
+		return container.items[Name];
 	} else {
 		if (!KinkyDungeonInventoryGetWeapon(Name) && KinkyDungeonWeapons[Name])
 			KinkyDungeonInventoryAdd({name:Name, type:Weapon, events: Object.assign([], KinkyDungeonWeapons[Name].events), id: KinkyDungeonGetItemID()});
+		return KinkyDungeonInventoryGetWeapon(Name);
 	}
 }
 
@@ -541,6 +543,7 @@ function KDInvAddLoose(container: KDContainer | null, Name: string, UnlockCurse?
 		} else {
 			container.items[Name].quantity = (container.items[Name].quantity || 1) + quantity;
 		}
+		return container.items[Name];
 	} else {
 		if (!KinkyDungeonInventoryGetLoose(Name) || UnlockCurse)
 			KinkyDungeonInventoryAdd({faction: faction, name: Name, type: LooseRestraint, curse: UnlockCurse,
@@ -548,6 +551,7 @@ function KDInvAddLoose(container: KDContainer | null, Name: string, UnlockCurse?
 		else {
 			KinkyDungeonInventoryGetLoose(Name).quantity += quantity;
 		}
+		return KinkyDungeonInventoryGetLoose(Name);
 	}
 }
 
@@ -3527,6 +3531,8 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
 			item.inventoryVariant = newname;
 		}
 		KDUpdateItemEventCache = true;
+
+		return item;
 	} else {
 		// here we remove the current item and then add the new one
 
@@ -3566,6 +3572,8 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
 		);
 
 		KDUpdateItemEventCache = true;
+		
+		return KinkyDungeonInventoryGet(newname);
 	}
 	
 }
@@ -3594,9 +3602,11 @@ function KDGiveWeaponVariant(variant: KDWeaponVariant, prefix: string = "", forc
 		} else {
 			container.items[newname] = {name: newname, id: KinkyDungeonGetItemID(), type: Weapon, events:events, data: data, quantity: q, showInQuickInv: true,};
 		}
+		return container.items[newname];
 	} else {
 		if (KinkyDungeonInventoryGet(newname)) q = KinkyDungeonInventoryGet(newname).quantity + 1;
 		KinkyDungeonInventoryAdd({name: newname, id: KinkyDungeonGetItemID(), type: Weapon, data: data, events:events, quantity: q, showInQuickInv: true,});
+		return KinkyDungeonInventoryGet(newname);
 	}
 }
 
@@ -3625,9 +3635,11 @@ function KDGiveConsumableVariant(variant: KDConsumableVariant, prefix: string = 
 		} else {
 			container.items[newname] = {name: newname, id: KinkyDungeonGetItemID(), type: Consumable, events:events, quantity: q, showInQuickInv: true,};
 		}
+		return container.items[newname];
 	} else {
 		if (KinkyDungeonInventoryGet(newname)) q = KinkyDungeonInventoryGet(newname).quantity + Quantity;
 		KinkyDungeonInventoryAdd({name: newname, id: KinkyDungeonGetItemID(), type: Consumable, events:events, quantity: q, showInQuickInv: true,});
+		return KinkyDungeonInventoryGet(newname);
 	}
 }
 /**
@@ -3701,11 +3713,13 @@ function KDGiveInventoryVariant(variant: KDRestraintVariant, prefix: string = ""
 				data: data,
 				type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,};
 		}
+		return container.items[newname];
 	} else {
 		if (KinkyDungeonInventoryGet(newname)) q = KinkyDungeonInventoryGet(newname).quantity + quantity;
 		KinkyDungeonInventoryAdd({faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(),
 			data: data,
 			type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,});
+		return KinkyDungeonInventoryGet(newname);
 	}
 }
 

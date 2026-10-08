@@ -851,6 +851,8 @@ KDStatGagFull,"Your mouth is totally filled! You can't drink potions and can't c
 
 
 
+KDBuffName_DollMirrorCurse,Doll Mirror's Curse
+KDBuffDesc_DollMirrorCurse,"A certain mirror has captivated you, and you can no longer stop looking..."
 KDBuffName_CorruptionStat,Corruption
 KDBuffDesc_CorruptionStat,You are more likely to succumb to curses.
 KDBuffName_LatexIntegrationStat,Latex Integration
@@ -1041,6 +1043,10 @@ KDBuffName_d_SlimeMimic,Convincing Disguise
 KDBuffDesc_d_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
 KDBuffName_DisenchantSelf,Disenchanted
 KDBuffDesc_DisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
+KDBuffName_ResistCharm,Resist Charm
+KDBuffDesc_ResistCharm,"You are unaffected by curses and charming effects."
+
+
 KDBuffName_LeatherBurst,Leather Package
 KDBuffDesc_LeatherBurst,"You can launch another leather restraint instantly!"
 KDBuffName_SagittaAssault,Sagitta
@@ -1069,7 +1075,7 @@ KDBuffName_Silenced,Silenced
 KDBuffDesc_Silenced,"${You} ${Yis} silenced, unable to cast spells easily."
 KDBuffName_LatexKittyCurseTick,""
 KDBuffDesc_LatexKittyCurseTick,This is the total amount of Latex Kitty Curse you possess.
-KDBuffName_Hypno_DollStat,Good Doll
+KDBuffName_Hypno_DollStat,Stillness
 KDBuffDesc_Hypno_DollStat,${You} you're starting to feel just like a doll... 
 KDBuffName_Hypnosis,Trance
 KDBuffDesc_Hypnosis,"${Youve} fallen into a trance, making suggestions more powerful."
@@ -6316,16 +6322,19 @@ KDShortCompVerbal,"Verbal"
 KDShortCompArms,"Arms"
 KDShortCompLegs,"Legs"
 KDShortCompVision,"Vision"
+KDShortCompMental,"Mental"
 
 KinkyDungeonComponents,"Components: "
 KinkyDungeonComponentsVerbal,"Verbal"
 KinkyDungeonComponentsArms,"Arm Movements"
 KinkyDungeonComponentsLegs,"Leg Gestures"
 KinkyDungeonComponentsVision,"Vision"
+KinkyDungeonComponentsMental,"Mental"
 KinkyDungeonComponentsFailVerbal,"You mumble incoherently trying to cast the spell..."
 KinkyDungeonComponentsFailArms,"You wiggle uselessly trying to cast the spell..."
 KinkyDungeonComponentsFailLegs,"Your feet are too clumsy to perform the magic gesture..."
 KinkyDungeonComponentsFailVision,"You are unable to see, so you can't target this spell..."
+KinkyDungeonComponentsFailMental,"Arousal breaks focus. You are too distracted to cast this spell..."
 
 KinkyDungeonBookNextPage,Next Page
 KinkyDungeonBookLastPage,Last Page
@@ -6384,7 +6393,7 @@ KinkyDungeonFilterlatex,Latex
 KinkyDungeonFilterrope,Rope
 KinkyDungeonFilterleather,Leather
 KinkyDungeonFilterstealth,Stealth
-KinkyDungeonFilterprojection,Projection
+KinkyDungeonFilterprojection,Enchantment
 KinkyDungeonFilteralteration,Alteration
 KinkyDungeonFilterlight,Light
 KinkyDungeonFiltershadow,Shadow
@@ -6412,6 +6421,7 @@ KinkyDungeonSpellMiscast,You fail to concentrate on the spell and it fizzles!
 KinkyDungeonSpellMiscastGagged,Your gag causes you to mispronounce the magic words!
 KinkyDungeonSpellMiscastPoorForm,You are too clumsy to perform the leg movements!
 KinkyDungeonSpellMiscastVision,You can't get a good look at the target!
+KinkyDungeonSpellMiscastMental,Your mind wanders and the spell fizzles!
 KinkyDungeonSpellMiscastLegs,You trip up while casting the spell!
 KinkyDungeonSpellMiscastBug,You miscast the spell because of a bug. Please report.
 KinkyDungeonSpellMiscastArms,You wave your arms around and make the wrong symbol with your hands!
@@ -6422,6 +6432,7 @@ KinkyDungeonSpellMiscastFingers,Your restrained fingers can't make the magic gly
 KinkyDungeonIceDrain,The ice drains your concentration! Your mana and stamina are slipping away!
 KinkyDungeonCrystalDrain,"A strange, chaotic energy flows into you! Your will is weakened and your mana fades!"
 KinkyDungeonTickleDrain,"Something gently, constantly tickles you!"
+KinkyDungeonCrystalDrainResist,"You resist the mental drain of the crystal energy... for now."
 
 KinkyDungeonSpellShatterAmpule,The ampule shatters on impact!
 KinkyDungeonSpellShatterAmpuleGreen,The gas ampule shatters on impact!
@@ -6542,7 +6553,7 @@ KinkyDungeonSpellApprenticeLight,Blessing of Light
 KinkyDungeonSpellDescriptionApprenticeLight,Unlocks light spells. Learn Flash. Gain significantly increased resistance to blinding from bright lights.
 KinkyDungeonSpellApprenticeMystery,Blessing of Obscurity
 KinkyDungeonSpellDescriptionApprenticeMystery,Unlocks invisibility spells. Learn Camouflage.
-KinkyDungeonSpellApprenticeProjection,Projection Magic
+KinkyDungeonSpellApprenticeProjection,Enchantment Magic
 KinkyDungeonSpellDescriptionApprenticeProjection,Unlocks illusory spells. Learn Summon Decoy.
 KinkyDungeonSpellApprenticeAlteration,Alteration Magic
 KinkyDungeonSpellDescriptionApprenticeAlteration,Unlocks alteration spells. Learn Confuse.
@@ -7347,6 +7358,8 @@ KinkyDungeonSpellTargetCommandDisenchant,Select an area
 KinkyDungeonSpellDescriptionCommandDisenchant,"Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Cast on self to disenchant bindings."
 KinkyDungeonSpellCastCommandDisenchant,"You say a command word, siphoning the magic from nearby constructs!"
 
+
+
 KinkyDungeonSpellCommandVibrate,CMD: Vibrate
 KinkyDungeonSpellTargetCommandVibrate,Select an area
 KinkyDungeonSpellDescriptionCommandVibrate,"Target a large area. Enemies with plugs or toys are teased for Duration turns, taking charm damage each turn."
@@ -7369,6 +7382,12 @@ KinkyDungeonSpellTargetCommandSlime,Select a creature or yourself
 KinkyDungeonSpellDescriptionCommandSlime,"Remove Slime and Encasement from target creatures in an area. Also removes slime from self."
 KinkyDungeonSpellCastCommandSlime,"You issue a command to the slime!"
 KinkyDungeonSpellCastFailCommandSlime,"You whisper a command word, but the slime is already hardened and won't budge..."
+
+
+KinkyDungeonSpellResistCharm,Resist Charm
+KinkyDungeonSpellTargetResistCharm,Select a target
+KinkyDungeonSpellDescriptionResistCharm,"Target self or another creature. Adds +100 Charm Resist and Psychic Resist for Duration turns.\n\nOn self: Also blocks mental compulsion effects on yourself such as weapon curses for the duration."
+KinkyDungeonSpellCastResistCharm,"You impose your will, forming a mental ward."
 
 
 KinkyDungeonSpellBindVine,Binding Vines
@@ -7734,6 +7753,8 @@ KinkyDungeonCelestialPunish2,"Your restraints squeeze you painfully without merc
 KinkyDungeonCrystalPunish0,"The crystals emit a powerful energy!"
 KinkyDungeonCrystalPunish1,"You feel your body overflow with energy..."
 KinkyDungeonCrystalPunish2,"The crystals react to your struggle attempts with a strange energy!"
+
+
 
 KinkyDungeonSpellCastFromBook,Cast Spell (XXX turn delay)
 
@@ -8131,6 +8152,8 @@ curseInfoFutile,"Curse of Futility: Multiplies WP gain by 0.7x."
 curseInfoSubmission,"Curse of Submission: Gain submissiveness when you lose control of yourself..."
 curseInfoDormant,"The curse is dormant, waiting for the time to strike..."
 KDSubmissionCurseApply,"Your RESTRAINTNAME glows pink as you feel your mind attacked by hypnotic forces!"
+KDSubmissionCurseResist,"Your RESTRAINTNAME glows pink, but you resist its hypnotic attack!"
+KDCursedFutileResist,"Your RESTRAINTNAME glows red, but you resist its mental effects!"
 
 KDcurseRestrain,"The item is cursed! Several restraints appear on your body!"
 KDcurseRestrainFail,"The item is cursed, but you are so trussed up you hear only sinister laughter..."
@@ -8478,6 +8501,7 @@ KinkyDungeonPunishPlayer,Your RestraintName punishes you for your behavior!
 KinkyDungeonPunishPlayerHarsh,Your RestraintName punishes you and warns you with a harsh beep!
 KinkyDungeonPunishPlayerCurse,"Your RestraintName emits a red flash, causing you to feel faint!"
 KinkyDungeonPunishPlayerArmor,"Your armor makes noise as you move around!"
+KinkyDungeonPunishPlayerResist,You resist your RESTRAINTNAME as it tries to punish you!
 KinkyDungeonAlertEnemies,Your RestraintName lets out an alert!
 
 
@@ -13429,14 +13453,18 @@ rAngelHelp,"(The SPEAKER appears in a flash of light)|I come in the name of the 
 rAngelHelpKnife,"(The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?"
 rAngelHelpPick,"(The SPEAKER gives you three picks)|I don't know how you plan to use these..."
 rAngelHelpBlueKey,"(The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable."
+rAngelHelpBlueKey,"(The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable."
 rAngelHelpDivineFail,"(The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*"
 rAngelHelpDivineQuest,"(The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!"
 rAngelHelpDivine,"(The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(${EThey} perform${Es} a short prayer and a random divine lock comes off)"
+rAngelHelpCurse,"(The SPEAKER looks mildly horrified)|This is what happens when you stray from the divine.|The malicious powers will never give you what you truly desire.|(${EThey} make${Es} a prayer and the curse is lifted)"
 
-dAngelHelp_Knife,(Ask for 2 knives)
-dAngelHelp_Pick,(Ask for 3 lockpicks)
-dAngelHelp_BlueKey,(Ask for a magic key)
-dAngelHelp_Divine,(Ask for help with a divine lock)
+dAngelHelp_Knife,(Ask for a knife) (7 rep)
+dAngelHelp_Pick,(Ask for 3 lockpicks) (7 rep)
+dAngelHelp_BlueKey,(Ask for a magic key) (9 rep)
+dAngelHelp_Curse,"Please, I'm cursed! (20 rep)"
+dAngelHelp_CurseGag,(Ask for help with a curse) (20 rep)
+dAngelHelp_Divine,(Ask for help with a divine lock) (10 rep)
 
 KinkyDungeonAngelNoSpace,There is no valid space next to you!
 
@@ -13894,9 +13922,12 @@ dShopkeeperStart_Help,"Can you help with these restraints?"
 dShopkeeperStart_HelpGag,"Pfffmmm hhmmph mmph... (Please Help Me)"
 dShopkeeperStart_HelpDivine,"Can you help with my divine locks?"
 dShopkeeperStart_HelpDivineGag,"Mmmmphh... (Help with divine locks)"
+dShopkeeperStart_HelpCurse,"Can you help me? I'm cursed..."
+dShopkeeperStart_HelpCurseGag,"Mmmmphh... (Help with major curse)"
 rShopkeeperStartHelp,"No can do! Even I can't get those off of you."
 rShopkeeperStartHelpGoldPlus,"No can do!|If you're wondering about those fancy gold-colored locks,|Well... a contract is a contract~"
 rShopkeeperStartHelpDivine,"Wow, you got yourself into a tight mess, haven't you...\nWell I'm sure you're in those for a reason, sweetie~"
+rShopkeeperStartHelpCurse,"(The SPEAKER gently lifts your, and looks at you)|(${ETheir} gaze is fully clinical, but thorough)|Mmm, that's some bad energy.|I'm sorry sweetie, but I can't risk taking on that curse myself."
 dShopkeeperStart_Danger,"Caught by...?"
 rShopkeeperStartDanger,"Hah!|You've been here a million times!|You obviously know how dangerous it is, yes?"
 dShopkeeperStart_Fee,"F-fee? There's a fee?"
@@ -13978,6 +14009,16 @@ dShopkeeperOfferHelpDivine_LeaveSub,"I should respect the divine... (Leave)"
 dShopkeeperOfferHelpDivine_Leave,"I'll think about it. (Leave)"
 dShopkeeperOfferHelpDivine_LeaveGag,"Mmmph. (Leave)"
 rShopkeeperOfferHelpDivinePay,"(The SPEAKER snaps ${Etheir} fingers)|Let's get to it, then!|(${EThey} scribe${Es} a couple of magical circles over your body,|then press${Es} ${Etheir} hand into your body with a magical glow.|Your locks click free and vanish into the air)|Just the locks, of course, unless you have other business~"
+
+
+
+rShopkeeperOfferHelpCurse,"(The SPEAKER gently lifts your, and looks at you)|(${ETheir} gaze is fully clinical, but thorough)|Yep, that's some bad energy~|It's a bit risky, but I can help you, since you've helped me.|(Current Favors: ${FAVORS})"
+dShopkeeperOfferHelpCurse_Pay,"Please get it off. (Pay ${FAVORCOST} favors)"
+dShopkeeperOfferHelpCurse_PayGag,"(Nod your head) (Pay ${FAVORCOST} favors)"
+dShopkeeperOfferHelpCurse_Leave,"I'll think about it. (Leave)"
+dShopkeeperOfferHelpCurse_LeaveGag,"Mmmph. (Leave)"
+rShopkeeperOfferHelpCursePay,"(The SPEAKER snaps ${Etheir} fingers)|Alright. Now hold still and don't let your mind wander...|(${EThey} scribe${Es} a magical circle on the floor and have you step in.|With a flash, you feel the curse lifted,|as the energy disperses into the air."
+
 
 rShopkeeperOfferHelp,"(The SPEAKER pats you down and makes sure you're okay)|I can definitely help with those!|But as you know, I help a lot of adventurers just like you.|You know what, I'll give you a discount!|That'll be RESCUECOST gold pieces!"
 
@@ -29132,9 +29173,11 @@ KDCursedDistractActivate,"Taking damage fills your minds with cursed thoughts...
 
 curseInfoCursedPunishment,"Punishment: When you defeat an enemy, you are stunned briefly and enemies are attracted."
 KDCursedPunishment,"Dark Voice: You are supposed to be a slave!"
+KDCursedPunishmentResist,"You resist the compulsion to submit."
 
-curseInfoCursedSubmission,"Submission: At 0 WP, you are restrained if you leave the presence of a hostile."
-KDCursedSubmission,"Dark Voice: Kneel before your mistress."
+curseInfoCursedSubmission,"Submission: At 0 WP, you are compelled and bound if you leave the presence of an enemy."
+KDCursedSubmission,"Dark Voice: Kneel!"
+KDCursedSubmissionResist,"You resist the compulsion to submit."
 
 curseInfoCursedDenial,"Denial: -10 WP when you try to Let Go. At 0 WP you cannot orgasm."
 KDCursedDenialDeny0,"Dark Voice: Not yet."
@@ -29735,6 +29778,7 @@ AttackKeeperEarth,"The earth keeper massages you gently! (DamageTaken)"
 KDKeeperKick,"The earth keeper knocks you away with a strong kick! (DamageTaken)"
 KDElementalSong,"The song captivates you and draws you closer! (DamageTaken)"
 KDElementalSongDeaf,"The song has no effect as your hearing is deafened."
+KDElementalSongResist,"You resist the captivating music."
 
 
 NameKeeperFire,Flame Keeper
@@ -30810,8 +30854,8 @@ KinkyDungeonStatDescSensesTraining,"Start locked in a sensory hood with no Senso
 
 KinkyDungeonStatMasteryHeels,"Hard to Master: Heels"
 KinkyDungeonStatDescMasteryHeels,"Heel training is significantly slower."
-KinkyDungeonStatMasteryGags,"Hard to Master: Gags"
-KinkyDungeonStatDescMasteryGags,"Gag training is significantly slower."
+KinkyDungeonStatMasteryGag,"Hard to Master: Gags"
+KinkyDungeonStatDescMasteryGag,"Gag training is significantly slower."
 KinkyDungeonStatMasteryCorset,"Hard to Master: Corsets"
 KinkyDungeonStatDescMasteryCorset,"Corset training is significantly slower."
 KinkyDungeonStatMasterySenses,"Hard to Master: Sensory"
@@ -30819,10 +30863,10 @@ KinkyDungeonStatDescMasterySenses,"Sensory training is significantly slower."
 
 KinkyDungeonStatHeadStartHeels,"Head Start: Heels"
 KinkyDungeonStatDescHeadStartHeels,"Start at Heel training level 5."
-KinkyDungeonStatHeadStartGags,"Head Start: Gags"
-KinkyDungeonStatDescHeadStartGags,"Start at Gag training level 5."
-KinkyDungeonStatHeadStartCorsets,"Head Start: Corsets"
-KinkyDungeonStatDescHeadStartCorsets,"Start at Corset training level 5."
+KinkyDungeonStatHeadStartGag,"Head Start: Gags"
+KinkyDungeonStatDescHeadStartGag,"Start at Gag training level 5."
+KinkyDungeonStatHeadStartCorset,"Head Start: Corsets"
+KinkyDungeonStatDescHeadStartCorset,"Start at Corset training level 5."
 KinkyDungeonStatHeadStartSenses,"Head Start: Sensory"
 KinkyDungeonStatDescHeadStartSenses,"Start at Sensory training level 5."
 
@@ -31030,6 +31074,12 @@ KDTeaseAttack_Praise,The ENMY calls you cute! (DMGDLT)
 KDPraiseDialogue,Cute!
 KDPraiseDialogueFail,*blushes*
 KDTeaseAttackResist_Praise,"The ENMY blushes at your cuteness!"
+
+KDTeaseAttack_GoodDoll,"The ENMY tells you to be still, and your body freezes! (DMGDLT)"
+KDGoodDollDialogue,"Be still, doll~"
+KDGoodDollDialogueFail,*Be still...*
+KDTeaseAttackResist_GoodDoll,"The ENMY tells you to be still, but it has no effect."
+
 KDTeaseAttack_Insult,The ENMY makes fun of you! (DMGDLT)
 KDTeaseAttackResist_Insult,"The ENMY struggles to find words!"
 KDTeaseAttack_VibeToy,The ENMY buzzes you with ${Etheir} VTY! (DMGDLT)
@@ -33995,8 +34045,8 @@ KDPlayerTitle_SpellMasteryLight,Mistress of Light
 KDPlayerTitleDesc_SpellMasteryLight,Unlocked by learning every spell under Blessing of Light.
 KDPlayerTitle_SpellMasteryObscurity,Mistress of Obscurity
 KDPlayerTitleDesc_SpellMasteryObscurity,Unlocked by learning every spell under Blessing of Obscurity.
-KDPlayerTitle_SpellMasteryProjection,Mistress of Projection
-KDPlayerTitleDesc_SpellMasteryProjection,Unlocked by learning every spell under Projection Magic.
+KDPlayerTitle_SpellMasteryProjection,Mistress of Enchantment
+KDPlayerTitleDesc_SpellMasteryProjection,Unlocked by learning every spell under Enchantment Magic.
 KDPlayerTitle_SpellMasteryKnowledge,Mistress of Knowledge
 KDPlayerTitleDesc_SpellMasteryKnowledge,Unlocked by learning every spell under Arcane Knowledge.
 KDPlayerTitle_SpellMasterySummon,Mistress of Summoning
@@ -34238,6 +34288,10 @@ ItemPickupDollMirror,"You pick up a doll's mirror."
 
 KDAddHypno_Doll,"You feel just like a pretty, still doll... (+AMNT Stillness)"
 KDRemoveHypno_Doll,You regain a bit of your sense of self. (-AMNT Stillness)
+
+KDDollMirrorCurseLift,The curse of the ${Weapon} fades away...
+KDDollMirrorCurseEquip,"The ${Weapon} compels you to wield it, and stare into it..."
+KDDollMirrorCurseUnequip,The ${Weapon} puts itself away to keep itself safe...
 
 KDAlreadyActive,The spell is already active.
 
@@ -34690,3 +34744,5 @@ KDButtplugCategory_ItemVulva,Front
 KDButtplugCategory_ItemNipples,Nipples
 
 KDXtoysWebhookID,"Paste your Xtoys webhook ID here and the game will post messages|Supported actions: 'shock', 'vibestart', 'vibestop'"
+
+

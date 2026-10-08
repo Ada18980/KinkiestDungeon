@@ -31,7 +31,7 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Cloth",
 			EraseAmount: 100,
-			EraseSprite: "LaceChest",
+			EraseSprite: "LaceChest", EraseInvariant: true,
 			EraseLayers: ToMap(["ShirtCutoffBra"]),
 		},
 		{ Name: "Bra", Layer: "Shirt", Pri: 30,

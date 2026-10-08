@@ -84,6 +84,8 @@ Must do
 - Added Corset Training
 - Added Gag Training (weakened Smooth Talker's effect to compensate for the synergy)
 - Color picker type now defaults to RGB
+- School of Projection renamed to School of Enchantment
+- Added 'Resist Charm' spell which suppresses a lot of curse effects and gives charm/psychic resist
 - Reworked a lot of faction color palettes
 - Added more depth to 'toying with you' behavior
 - Fixed bugs relating to infinite jailing

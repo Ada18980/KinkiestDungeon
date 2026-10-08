@@ -180,7 +180,7 @@ let KinkyDungeonLearnableSpells = [
 		// Legs
 		["HolyOrb", "ShadowDance", "Evasion", "Camo", "Decoy"],
 		// Passive
-		["Analyze", "TheShadowWithin", "TrueSight", "EnemySense"],
+		["Analyze", "TheShadowWithin", "TrueSight", "EnemySense", "ResistCharm"],
 	],
 
 ];
@@ -1819,6 +1819,15 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			trailspawnaoe: 1.5, trailPower: 0, trailLifetime: 1, trailHit: "", trailDamage:"inert", trail:"lingering", trailChance: 0.4},
 		{name: "Decoy", tags: ["summon", "utility", "stealth", "defense"], prerequisite: "ApprenticeProjection", sfx: "MagicSlash", school: "Illusion", manacost: 6, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "Decoy", count: 1, time: 20}], power: 0, time: 20, delay: -1, range: 4, size: 1, aoe: 0, lifetime: 1, damage: "fire"},
 
+		{name: "ResistCharm", tags: ["shield", "defense", "buff", "projection"], prerequisite: "ApprenticeProjection", sfx: "MagicSlash", school: "Illusion",
+			manacost: 3, components: ["Mental"], mustTarget: true, level:1, type:"buff",
+			buffs: [
+				{id: "ResistCharm", type: "ResistCharm", buffSprite: true, aura: "#042857", duration: 200, power: 1.0, player: true, enemies: true, tags: ["defense", "anticurse"]},
+				{id: "ResistCharm", type: "charmDamageResist", duration: 200, power: 10.0, player: true, enemies: true, tags: ["defense", "damageTaken"]},
+				{id: "ResistCharm", type: "charmDamageResist", duration: 200, power: 10.0, player: true, enemies: true, tags: ["defense", "damageTaken"]},
+			], onhit:"", time:200, power: 0, range: 2, size: 1, damage: ""},
+		
+		
 		{name: "HolyOrb", prerequisite: "ApprenticeLight", tags: ["light", "summon", "defense"], sfx: "MagicSlash", school: "Illusion", manacost: 14, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "HolyOrb", count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: -1, range: 3.5, size: 1, aoe: 0.5, lifetime: 1, damage: "inert"},
 
 		{name: "ShadowWarrior", prerequisite: "ApprenticeShadow", tags: ["summon", "offense", "shadow", "dot"], sfx: "MagicSlash", school: "Illusion", manacost: 10, components: ["Verbal"], noTargetEnemies: true, noTargetPlayer: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "ShadowWarrior", count: 1, time: 12}], power: 6, time: 12, delay: -1, range: 3.5, size: 1, aoe: 0, lifetime: 1, damage: "inert"},

@@ -4304,7 +4304,7 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 
 		
 		return selected;
-	}, false, true, 4, undefined, 
+	}, false, true, 0, undefined, 
 	"", "", undefined, undefined, undefined, undefined, false);
 
 	if (hoverCallback) hoverCallback();

@@ -1506,7 +1506,18 @@ let KinkyDungeonLootTable = {
 };
 
 
-type lootEventFunc = (Loot: any, Floor: number, Replacemsg: string, Lock: string, container?: KDContainer, x?: number, y?: number) => { value: number; Replacemsg: string };
+interface KDLootEventCustomData {
+	x: number,
+	y: number,
+	loot: string,
+	replacemsg: string,
+	lock: string,
+	itemAdded?: item,
+	spellAdded?: spell,
+
+}
+
+type lootEventFunc = (Loot: any, Floor: number, Replacemsg: string, Lock: string, container?: KDContainer, x?: number, y?: number, data?: KDLootEventCustomData) => { value: number; Replacemsg: string };
 
 let KDLootEvents: Record<string, lootEventFunc> = {
 	"Armor": (_Loot, _Floor, Replacemsg, _Lock, container) => {
@@ -1537,7 +1548,7 @@ let KDLootEvents: Record<string, lootEventFunc> = {
 			Replacemsg: "LootBookshelfTomeFail",
 		};
 	},
-	"DollMirror": (_Loot, _Floor, Replacemsg, _Lock, container, x, y) => {
+	"DollMirror": (_Loot, _Floor, Replacemsg, _Lock, container, x, y, data) => {
 		let player = KDPlayer();
 
 		let chance = KinkyDungeonFlags.get("DollMirrorFirst") ? KDDollMirrorChanceFirst : KDDollMirrorChance;
@@ -1545,7 +1556,7 @@ let KDLootEvents: Record<string, lootEventFunc> = {
 		if (KDRandom() < chance) {
 			// Basic major curse application code
 			let curse = KDGetMajorCurse(player, ["doll"]);
-			if (curse && KDMajorCurses[curse]) KDMajorCurses[curse].onApply(player);
+			if (curse && KDMajorCurses[curse]) KDMajorCurses[curse].onApply(player, {weapon: data?.itemAdded});
 		}
 
 		KinkyDungeonSetFlag("DollMirrorFirst", -1);
