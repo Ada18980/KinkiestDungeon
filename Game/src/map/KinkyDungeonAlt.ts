@@ -593,6 +593,7 @@ let alts: Record<string, AltType> = {
 			dollshoppe: true,
 		},
 		skin: "shoppe",
+		faction: "Dressmaker",
 		soundParams: "DollShoppe",
 		musicParams: "DollShoppe",
 		lightParams: "DollShoppe",

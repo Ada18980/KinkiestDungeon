@@ -259,7 +259,7 @@ function KDAddFlatTraining(Name: string, amount: number, player?: entity): void 
 	if (amount > 0)
 		KDGameData.Training[Name].training_points += amount;
 	else 
-		KDGameData.Training[Name].training_points = Math.max((KDGameData.Training[Name].training_points || 0) - amount);
+		KDGameData.Training[Name].training_points = Math.max((KDGameData.Training[Name].training_points || 0) + amount);
 	
 	KDCheckLevelUp(Name, player);
 }

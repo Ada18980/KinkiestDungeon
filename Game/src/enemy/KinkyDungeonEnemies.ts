@@ -10712,7 +10712,7 @@ function KDRemoveEntity(enemy: entity, kill?: boolean, capture?: boolean, noEven
 	if (KDIsNPCPersistent(enemy.id) && KDGetPersistentNPC(enemy.id)) {
 		//KDGetPersistentNPC(enemy.id).jailed = undefined;
 		KDGetPersistentNPC(enemy.id).spawned = undefined;
-	}
+	} else DisposeEntity(enemy.id, false); // non-persistent gets snapped from existence
 
 	let index = forceIndex != undefined ? forceIndex : data.mapData.Entities.findIndex((entity) => {return entity.id == data.enemy.id;});
 	if (index >= 0)

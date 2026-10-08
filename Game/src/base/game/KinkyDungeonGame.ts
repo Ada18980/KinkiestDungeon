@@ -3848,7 +3848,7 @@ function KDTickSensesTraining(player?: entity) {
 	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
 	for (let enemy of nearby) {
 		if (!KDGameData.SeenEntities) KDGameData.SeenEntities = {};
-
+		if (enemy.temporary || enemy.maxlifetime) continue;
 		if (KDGameData.SeenEntities[enemy.id]) continue;
 		if (!KDHostile(enemy)) continue;
 		let playerDist = Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y));
@@ -3857,10 +3857,12 @@ function KDTickSensesTraining(player?: entity) {
 
 		if (!canSee && canHear) {
 			KDGameData.SeenEntities[enemy.id] = true;
-			KDTickTraining("Senses", trainingLevel > 0, trainingLevel == 0, 
-				KDSensesTrainingMult, 1 + trainingLevel*.1);
+			KDTickTraining("Senses", true, false, 
+				KDSensesTrainingMult * 2, 4 + trainingLevel*.4);
 		} else if (canSee) {
 			KDGameData.SeenEntities[enemy.id] = true;
+			KDTickTraining("Senses", trainingLevel > 0, trainingLevel == 0, 
+				KDSensesTrainingMult, 1 + trainingLevel*.1);
 		}
 	}
 }

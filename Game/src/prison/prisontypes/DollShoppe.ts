@@ -26,7 +26,7 @@ KDPrisonTypes.DollShoppe = {
 					KinkyDungeonSetEnemyFlag(en, "punishdoll", 9999);
 				} else
 					idleDoll.push(en);
-			} else if (en.faction == "Enemy" && en.Enemy?.tags.jailer && en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy()
+			} else if (en.faction == "Dressmaker" && en.Enemy?.tags.jailer && en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy()
 				&& !KDEnemyHasFlag(en, "despawn")
 				&& (en.idle || KDEnemyHasFlag(en, "idleg"))) {
 				idleGuard.push(en);
@@ -228,7 +228,7 @@ KDPrisonTypes.DollShoppe = {
 		let idleGuards: entity[] = [];
 		let guardCount = 0;
 		for (let en of KDMapData.Entities) {
-			if (en.faction == "Enemy" && !(en.Enemy?.tags?.prisoner || en.Enemy?.tags?.formerprisoner) ) {
+			if (en.faction == "Dressmaker" && !(en.Enemy?.tags?.prisoner || en.Enemy?.tags?.formerprisoner) ) {
 				if (en != KinkyDungeonJailGuard() && en != KinkyDungeonLeashingEnemy() && (en.idle && !KDEnemyHasFlag(en, "idlegselect")))
 					idleGuards.push(en);
 				if (en.Enemy.tags.jailer) guardCount += 1;
@@ -274,7 +274,7 @@ KDPrisonTypes.DollShoppe = {
 					let en = DialogueCreateEnemy(sl.x, sl.y, Enemy.name);
 					//KDProcessCustomPatron(Enemy, en, 0.5, false);
 					en.AI = "looseguard";
-					en.faction = "Enemy";
+					en.faction = "Dressmaker";
 					en.keys = true;
 					en.gxx = l.x;
 					en.gyy = l.y;
@@ -429,7 +429,7 @@ KDPrisonTypes.DollShoppe = {
 							let en = DialogueCreateEnemy(l.x, l.y, Enemy.name);
 							//KDProcessCustomPatron(Enemy, en, 0.5, false);
 							en.AI = "looseguard";
-							en.faction = "Enemy";
+							en.faction = "Dressmaker";
 							en.keys = true;
 							KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
 							KinkyDungeonSetEnemyFlag(en, "cyberaccess", -1);
@@ -445,7 +445,7 @@ KDPrisonTypes.DollShoppe = {
 							let en = DialogueCreateEnemy(l.x, l.y, Enemy.name);
 							//KDProcessCustomPatron(Enemy, en, 0.1, false);
 							en.AI = "hunt";
-							en.faction = "Enemy";
+							en.faction = "Dressmaker";
 							en.keys = true;
 							KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
 							KinkyDungeonSetEnemyFlag(en, "cyberaccess", -1);
