@@ -535,7 +535,7 @@ AddModel({
 			Layer: "Butt",
 			Pri: 2,
 			// InheritColor: "LegLeft",
-			InheritColor: "TorsoLower",
+			InheritColor: "LegLeft",
 			Poses: ToMap(KNEELPOSES),
 		},
 	]),
