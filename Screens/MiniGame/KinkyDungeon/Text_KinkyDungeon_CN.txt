@@ -557,7 +557,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Game Resolution:
 游戏分辨率 :‎
 - Resolution:
-分辨率 ( 需要重载 ) :‎
+分辨率 :‎
 - Toy Volume:
 玩具音量 :‎
 - Music Volume:
@@ -955,7 +955,7 @@ Sub
 - No Way Out
 无路可逃
 - Enemies will always use the tightest restraints possible regardless of willpower and will try to stack many restraints. +10 starting Security level.
-无论意志力如何，敌人总是会使用最严格的拘束具来完全束缚你。+10 警戒等级。
+敌人会无视意志力，始终使用最紧的拘束具，并会尝试叠加多个拘束具来完全束缚你。+10 初始警戒等级。
 - Deft Footwork
 健步如飞
 - You ignore some consequences of being mildly slowed from heels or slime, and you can cast Leg spells while slowed significantly at 50% miscast chance.
@@ -977,7 +977,7 @@ Sub
 - Well-Equipped
 设备精良
 - Restraints and traps that are limited by level appear sooner. +10 starting security level.
-有楼层数限制的拘束具和陷阱会更早出现，并且敌人通常会储备更多的拘束具。+10 警戒等级。
+受楼层限制的拘束具和陷阱会更早出现。+10 初始警戒等级。
 
 # - Layers Under Layers
 # - Many restraints that are otherwise improbable can now be stacked. +10 starting security level.
@@ -1618,7 +1618,7 @@ Sub
 - Smooth Talker
 油嘴滑舌
 - Being gagged does not increase verbal miscast chance unless over 50% gagged, and reduces gag power by 20%.
-除非你的嘴被完全堵住，否则堵嘴不会增加你念错咒语的几率，并且会降低 20% 堵嘴的强度。
+除非你的嘴被堵住超过 50%，否则堵嘴不会增加你念错咒语的几率。并会降低 20% 堵嘴强度。
 
 - Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
 头罩和全脸面具将不会出现，但眼罩的效果更强。
@@ -1880,12 +1880,14 @@ EnemyName对TargetName念出了一个口令！
 - Your legs are free and unimpeded.
 你的双腿自由而无阻。
 - You are ${AMOUNT} gagged! Verbal miscast chance is increased and potions are less effective!
-你的嘴巴被口球堵住了，施放言语法术的失败几率增加，而且药剂的效果减弱！
+你的嘴巴被${AMOUNT}堵住了，施放言语法术的失败几率增加，而且药水的效果降低！
 - Your mouth is totally filled! You can't drink potions and can't cast verbal spells!
 你的嘴巴被堵的死死的，无法施放言语法术和饮用药剂！
 
 
 
+# - Doll Mirror's Curse
+# - A certain mirror has captivated you, and you can no longer stop looking...
 - Corruption
 腐化
 # - You are more likely to succumb to curses.
@@ -1970,7 +1972,7 @@ EnemyName对TargetName念出了一个口令！
 - Time is slowed by 4x
 时间减慢了 4 倍
 - Time Stop
-完全加速
+时间停止
 # :: KDBuffName_Quickness5
 # :: KinkyDungeonSpellQuickness5
 - Time has come to a halt...
@@ -2239,6 +2241,12 @@ EnemyName对TargetName念出了一个口令！
 # - Disenchanted
 - Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
 你的身上的拘束具被祛魔了，切割时会被视为非魔法物品。
+# - Resist Charm
+# :: KDBuffName_ResistCharm
+# :: KinkyDungeonSpellResistCharm
+# - You are unaffected by curses and charming effects.
+
+
 - Leather Package
 皮革包裹
 # :: KDBuffName_LeatherBurst
@@ -2287,7 +2295,7 @@ ${You}是个不听话的宠物，应该穿上宠物服！
 ${You}陷入沉默，无法轻易施展法术。
 - This is the total amount of Latex Kitty Curse you possess.
 这是你所拥有的乳胶猫娘诅咒的总量。
-# - Good Doll
+# - Stillness
 # - ${You} you're starting to feel just like a doll... 
 # - Trance
 - ${Youve} fallen into a trance, making suggestions more powerful.
@@ -2774,9 +2782,9 @@ Devious Dungeon Challenge 已启用。
 # :: KinkyDungeonFacilities
 
 - Currently Setting: 
-当前按键
+当前设置 : 
 - Select a keybind, then press a button to set that key
-按下一个按键，然后按一个按钮来设置该按键
+选择一个按键绑定，然后按下键盘来设置该按键
 
 - Floor FLOORNUMBER: DUNGEONNAME
 第 FLOORNUMBER 层 : DUNGEONNAME
@@ -3381,7 +3389,7 @@ Devious Dungeon Challenge 已启用。
 - You sip the mana potion and feel empowered.
 你啜饮着法力药水，感到充满能量。
 - A rare essence used by mages to recover their strength. More talented mages absorb more of the power.
-法师用来恢复力量的稀有精华。
+法师用来恢复力量的稀有精华，天赋越高的法师吸收的力量越多。
 - Restores 50% max MP instantly. Excess mana goes into the mana pool.
 立即恢复 50% 最大法力。多余的法力将被存入法力池中。
 - Mana Orb
@@ -4206,9 +4214,10 @@ EnemyName 没有命中你！
 
 - The RESTRAINTNAME creates more bindings out of thin air! (+RestraintAdded)
 RESTRAINTNAME 凭空创建了更多束缚！ ( +RestraintAdded )
-# - The RESTRAINTNAME conjures a ${LockType} on ${your} ${RestraintName}
+- The RESTRAINTNAME conjures a ${LockType} on ${your} ${RestraintName}
+RESTRAINTNAME在${your}${RestraintName}上召唤出一个${LockType}
 - A RESTRAINTNAME has appeared around ${your} neck!  Beware of additional restraints!
-一个 RESTRAINTNAME 出现在你的脖子上！当心额外的束缚！
+一个RESTRAINTNAME出现在${your}脖子上！当心额外的束缚！
 - The RESTRAINTNAME has run out of bindings to add and has gone dormant for a period of time.
 RESTRAINTNAME 已经没有可添加的束缚了，将进入一段休眠期。
 
@@ -6943,9 +6952,9 @@ TargetRestraint 上的锁孔几乎够不到......
 你不能这样握刀...
 
 - The TargetRestraint is too strong to struggle out of.
-TargetRestraint 安全性太高了，无法挣脱。
+TargetRestraint太紧了，无法挣脱。
 - The TargetRestraint is too strong to squirm out of, no matter the effort.
-你沮丧地呻吟着，意识到TargetRestraint实在太紧，根本无法挣脱。
+TargetRestraint实在太紧了，无论怎么努力都无法挣脱。
 - The TargetRestraint tightens itself as you try to squeeze out!
 TargetRestraint 会在你尝试挣脱时自动收紧！
 - You will need someone's help to squeeze out of the TargetRestraint.
@@ -8461,9 +8470,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Ornamental Corset
 装饰束腰
 - Your figure looks gorgeous in this, but not so much your athletic capabilities.
-你的身材看起来真漂亮〜
+你的身材穿上这件衣服看起来真漂亮，只是运动能力没有那么出色了。
 - The laces are impressively tight, the boning is steel but ultimately it's made of delicate fabric. You wouldn't possibly cut it, would you?
-哎呀！这个绑带太紧了，你自己解不开！
+束带紧得惊人，支撑用的是钢，但终究还是精致织物制成。你总不会想把它剪断吧？
 
 - Fancy Ball Gag
 精致口球
@@ -10616,7 +10625,7 @@ RestraintName 上的诅咒解除了！
 - Living Blacksteel Collar
 活体黑钢项圈
 - A collar made of a hardened steel alloy, chemically treated to be stainless, that adjusts itself to your neck.
-一种由硬化钢合金制成的项圈，经过化学处理，可以适应你的颈部。
+由硬化钢合金制成的项圈，经化学处理以保持不锈，可以自动贴合你的颈部。
 - It will occasionally cause blacksteel to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of blacksteel you have on you.
 时不时会凭空生出黑钢铐拘束佩戴者。身上黑钢铐的数量越多，生效越快。
 
@@ -10922,14 +10931,14 @@ RestraintName 上的诅咒解除了！
 - Living Ice Collar
 活体冰项圈
 - A collar made of enchanted ice that adjusts itself to your neck. It won't melt on its own, and the ice chills you to the bone...
-一个由魔法冰制成的项圈，可以根据你的脖子进行调整。它不会自己融化，冰会让你彻骨发冷...
+由附魔冰晶制成的项圈，可以自动贴合你的颈部。它不会自行融化，冰冷刺骨……
 - It will occasionally cause ice to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of ice you have on you.
 时不时会凭空生出冰束具拘束佩戴者。身上冰束具的数量越多，生效越快。
 
 - Ice Cuffs
 冰铐
 - They're made of enchanted ice. They won't melt on their own, and the ice chills you to the bone...
-它们是由魔法冰制成的。它们不会自行融化，但冰确实会让你感到寒冷刺骨……
+由附魔冰晶制成的项圈。它不会自行融化，冰冷刺骨……
 # :: RestraintIceArmCuffsDesc2
 # :: RestraintIceArmCuffs2Desc2
 # :: RestraintIceArmCuffs3Desc2
@@ -12714,6 +12723,9 @@ Ars烟火
 视野
 # :: KDShortCompVision
 # :: KinkyDungeonComponentsVision
+# - Mental
+# :: KDShortCompMental
+# :: KinkyDungeonComponentsMental
 
 - Components: 
 施法部位：
@@ -12729,6 +12741,7 @@ Ars烟火
 你的脚太笨拙了，无法施展魔法！
 - You are unable to see, so you can't target this spell...
 你什么都看不见，根本没法瞄准法术…
+# - Arousal breaks focus. You are too distracted to cast this spell...
 
 - Next Page
 下一页
@@ -12819,7 +12832,7 @@ Ars烟火
 捆绑
 - Stealth
 隐形
-- Projection
+- Enchantment
 预测
 - Alteration
 变化
@@ -12896,6 +12909,7 @@ Ars烟火
 你的腿部动作太笨拙了！
 - You can't get a good look at the target!
 你看不清目标在哪！
+# - Your mind wanders and the spell fizzles!
 - You trip up while casting the spell!
 你施咒时绊倒了！
 - You miscast the spell because of a bug. Please report.
@@ -12913,6 +12927,7 @@ Ars烟火
 一股奇异的、混沌的能量涌入你的体内！你的体力被削弱，你的法力在消逝！
 - Something gently, constantly tickles you!
 有什么东西温柔地、不断地挠你的痒痒！
+# - You resist the mental drain of the crystal energy... for now.
 
 - The ampule shatters on impact!
 安瓿瓶一碰就碎了！
@@ -13108,7 +13123,7 @@ Ars烟火
 隐身祝福
 - Unlocks invisibility spells. Learn Camouflage.
 解锁隐形幻术。并习得幻术 “拟态”。
-- Projection Magic
+- Enchantment Magic
 投影魔法
 - Unlocks illusory spells. Learn Summon Decoy.
 允许学习投影幻术 并习得幻术 “召唤诱饵”
@@ -14470,7 +14485,7 @@ Ars烟火
 你念出咒语，目标被魔法锁束缚！
 
 - Chastity
-贞操带
+贞洁
 # :: KinkyDungeonSpellChastity
 # :: KDFilterFiltersChastity
 - Target must be disabled, submissive, or in your party.
@@ -14501,7 +14516,7 @@ Ars烟火
 # :: KinkyDungeonSpellTargetCommandVibrateVibeRemote
 # :: KinkyDungeonSpellTargetCommandVibrateBagOfGoodies
 - Creates an area which applies Chastity constantly to any enemy with any amount of binding that steps inside.
-创建一个区域，对踏入该区域的任何敌人持续装备贞操带。
+创建一个区域，踏入该区域的带有束缚效果的敌人将受到“贞洁”效果的影响。
 - You conjure a realm of absolute purity.
 你召唤出一片绝对贞洁领域。
 
@@ -14529,6 +14544,8 @@ Ars烟火
 瞄准范围大。永久减慢构造体速度，降低攻击速度 50%，并造成 30 点暗影伤害。到达 3 个或更多目标时退还 50% 的法力值。对自身施放以分解束缚。
 - You say a command word, siphoning the magic from nearby constructs!
 你念出咒语，开始从附近的构装体中抽取魔力！
+
+
 
 - CMD: Vibrate
 指令 : ‎震动
@@ -14565,6 +14582,11 @@ Ars烟火
 你向粘液发出指令！
 - You whisper a command word, but the slime is already hardened and won't budge...
 你低声说出指令，但粘液已经变硬了，纹丝不动...
+
+
+# - Select a target
+# - Target self or another creature. Adds +100 Charm Resist and Psychic Resist for Duration turns.\n\nOn self: Also blocks mental compulsion effects on yourself such as weapon curses for the duration.
+# - You impose your will, forming a mental ward.
 
 
 - Binding Vines
@@ -15206,6 +15228,8 @@ SummonCount 只僵尸从地面中涌现！
 - The crystals react to your struggle attempts with a strange energy!
 水晶会以一种奇怪的能量对你的挣扎尝试做出反应！
 
+
+
 - Cast Spell (XXX turn delay)
 施法 ( XXX 回合延迟 )
 
@@ -15836,11 +15860,11 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - I was being chased by something fast and heavy, and it was about to crush me when I tossed an Ice Shard behind me. It stopped and I didn't care to look back.
 我被一个又快又重的东西追了上来，当我在身后扔出一块寒冰碎片时，它正要压死我。它停了下来，我不想回头。
 - I was walking in the library when I got attacked by a magic book! Fortunately my sword seemed to dispatch it quickly, and I used my spear to stab another one shortly after.
-我在图书馆散步的时候被魔法书袭击了！幸好我的剑似乎很快就将它击散了，不久后我又用长矛刺了另一根。
+我正在图书馆里走着，突然被一本魔法书袭击了！幸好我的剑迅速解决了它，不久后我又用长矛刺穿了另一本。
 - SOMEBODY STABBED MY FROG AND I AM PISSED.
 有人刺伤了我的青蛙，我很生气。
 - I don't think it's necessary to tell people that dragons resist fire... right?
-我认为没有必要告诉人们龙抗火……对吧？
+我觉得没必要告诉人们龙能抵抗火焰……对吧？
 - I've been studying the dragonheart's weaknesses. So far I've found that the ones bearing the powers of ice dragons are actually weak to fire unlike the others, and the ones who summon crystals to block attacks are nonetheless unable to grab a spear to stop it from reaching them.
 我一直在研究龙之心的弱点。到现在我发现，拥有冰龙之力的人，其实跟其他人不一样，他们怕火，而那些召唤水晶来格挡攻击的人却无法抓住长矛来阻止它。
 
@@ -15849,7 +15873,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - (Pg. 54 from Catherine Willows' journal): The post-collapse civilization sought immortality, but they knew that the technologies of the old civilization were a danger to them. So they turned to another school of thought: Magic.
 ( 凯瑟琳·韦罗斯 ( Catherine Willows ) 日记第 54 页 )  : ‎大崩溃后的文明渴望获得永生，但他们意识到，对于他们而言，旧日文明的技术是一种危险。所以他们转向了另一条道路：魔法。
 - (Pg. 55 from Catherine Willows' journal): Silk wrappings, enchanted with ten-thousand microscopic runes per cubit, were sufficient to protect their bodies from ageing for millennia. What they didn't realize was that the magic didn't protect their souls.
-( 凯瑟琳·韦罗斯 ( Catherine Willows ) 日记第 55 页 )  : 丝绸裹巾，每腕尺刻有一万个微小的符文，足以保护他们的身体在千年之内免于衰老。他们没有意识到的是，魔法并不能保护他们的灵魂。
+( 凯瑟琳·韦罗斯 ( Catherine Willows ) 日记第 55 页 )  : 缠绕着万枚微观符文、受附魔的丝带，足以让她们的躯体千年不老。她们未曾察觉的是，这魔法并未护住她们的灵魂。
 - (Pg. 56 from Catherine Willows' journal): They have no clue what they are doing anymore. To them, this is just another one of their ten-thousand dreams across the aeons. They can no longer tell reality from imagination.
 ( 凯瑟琳·韦罗斯 ( Catherine Willows ) 日记第 56 页 )  : ‎他们不再知道自己在做什么。对于他们来说，这不过是他们千古万劫中的又一个梦想而已。他们不再能够区分现实和想象。
 - Ninjas aren't so tough to fight when their hands are tied behind their back. Good thing I had my pet slime with me~
@@ -15861,7 +15885,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - (It's a copy of an ancient illustration, depicting a cat goddess, an elven goddess, and two groups of catgirls. One group is smiling and standing on pedestals. The other group is frowning and wearing armor meant for war. It looks unfinished, like the author was suddenly grabbed from behind while drawing it)
 ( 这是一幅古代插图的复制品，描绘了一位猫女神，一位精灵女神和两组猫女。一组微笑着站在基座上，另一组皱着眉头穿着战争用的盔甲。它看起来未完成，就像作者在画的时候突然被人从后面抱住 )
 - (It's an interlinear translation of an ancient letter) Your highness, I have delivered to you the prisoners that you have asked. They are the worst of the worst--thieves, slanderers, sorcerers and seducers. But I must inquire, why is it that we must wrap them in silken scarves, worth twenty gold pieces each? Surely they are being handed over to be disciplined, not to be anointed?
-( 这是一封古信的行间翻译 ) 殿下，您所要求的囚犯我已经交给您了。他们是最坏中的最坏的人——小偷、诽谤者、巫师和诱惑者。但我要问，为什么一定要给他们裹上每条价值二十金币的丝巾呢？难道他们被交给人是为了接受纪律，而不是为了受膏抹吗？
+( 这是一封古信的行间翻译 ) 殿下，您所要求的囚犯我已送到。他们是最坏中的最坏——小偷、诽谤者、巫师和诱奸者。但我想问，为何我们要用每条价值二十金币的丝巾将他们裹起来？他们肯定是交来受罚的，而不是受膏的吧？
 - (It's a record of an interview)|ME: Why are you like this?|MUMMY: Because we are blessed!|ME: Blessed? You've been wrapped up for thousands of years!|MUMMY: A thousand years is nothing compared to the glory that will come!|ME: Why do you have to be wrapped up? There are plenty of you who aren't...|MUMMY: The chosen ones will inherit the land when the goddess returns.
 (采访记录）|我 : 你为什么这样？木乃伊 : 因为我们被祝福了！|我:祝福吗?你被包裹了几千年！木乃伊 : 与即将到来的荣耀相比，千年不算什么！我 : 你为什么要裹得严严实实的？你们中有很多人不是……木乃伊 : 当女神回来时，被选中的人将继承土地。
 - (It's a record of an interview)|ME: Which goddess are you referring to? The goddess of restoration?|MUMMY: The blessed kitty.. she was promised to rule over the lesser goddesses.|ME: Lesser goddesses? Which ones?|MUMMY: YOUR goddesses. The ones you humans created that should not be. Ours is the true offspring of the creators, a goddess created to rule!
@@ -15934,7 +15958,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Curse of Illumination: Produces light and makes you easier to see.
 照明诅咒 : ‎产生光并让你更容易被敌人看到。
 - Curse of Attraction: Women find you irresistible.
-吸引力诅咒 : ‎女人觉得你无法抗拒
+魅惑诅咒 : 女性觉得你令人无法抗拒。
 - Curse of Animation: Causes loose restraints to animate and attack you!
 活力诅咒 : ‎松动的束缚会活跃起来并攻击你
 - Curse of Sensitivity: Makes it easier to lose control of yourself.
@@ -15951,6 +15975,8 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 诅咒正处于休眠状态，等待着降临的时刻……
 - Your RESTRAINTNAME glows pink as you feel your mind attacked by hypnotic forces!
 当你感觉自己的思想受到催眠力量攻击时，你的 RESTRAINTNAME 会发出粉红色的光芒！
+# - Your RESTRAINTNAME glows pink, but you resist its hypnotic attack!
+# - Your RESTRAINTNAME glows red, but you resist its mental effects!
 
 - The item is cursed! Several restraints appear on your body!
 该物品被诅咒了！你的身上出现了数道束缚！
@@ -16002,14 +16028,14 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - You hold the key to the item and it comes loose, draining the key's energy.
 你拿着物品的钥匙，它松开了，但是钥匙的能量耗尽了。
 - The item is inscribed with mystical runes. Maybe you need a powerful key to unlock it.
-该物品刻有神秘符文。也许你需要一把强大的钥匙来解锁它。
+该物品刻有神秘符文，也许你需要一把强大的钥匙来解锁它。
 - The lock-shaped rune flashes as you realize struggling is pointless.
 当你意识到挣扎毫无意义时，锁形符文就会闪烁。
 
 - You overload the magical seal, causing it to vanish and release the item.
 你使魔法封印过载，导致它消失并解开该物品。
 - This is a magic seal, requiring a mana potion or 150 MP to unlock it.
-该物品被魔法封印，需要 200 点法力才能解锁 ( 包括法力池中的法力 ) 。
+这是一个魔法封印，需要一瓶法力药水或 150 点 MP 才能解开。
 - You tug on the item, but the magic can't be broken with anything other than brute force.
 你拉扯着物品，但除了蛮力之外，任何其他力量都无法打破魔法。
 
@@ -16056,7 +16082,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 项圈吸收了足够的能量，然后打开！
 
 - That item can't be used.
-那个道具不能使用。
+该物品无法使用。
 - You're not sure how to use this key.
 你不确定如何使用这个钥匙。
 - As soon as you touch the key, all of your gold locks fade to blue!
@@ -16160,7 +16186,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 # :: KinkyDungeonTrapSpawnDragon
 # :: KinkyDungeonTrapSpawnDragonLeader
 - A drone descends from the ceiling!
-一群无人机从天花板上飞了下来！
+一架无人机从天花板降下！
 # - A drone falls from the ceiling with a thud!
 # - A pack of drones drops from the ceiling!
 - You hear sirens as a group of robots closes in!
@@ -16474,7 +16500,7 @@ EnemyName 离开并锁上了她身后的牢房。
 你大口喘着气，身体完全受快感摆布！
 
 - You close your eyes and breathe rapidly in anticipation...
-你闭上眼睛，急切地呼吸着期待……
+你闭上眼睛，满怀期待地急促呼吸……
 - You tilt your head back and moan as your heart beats faster...
 当你的心跳加快时，你将头向后仰并呻吟……
 - You groan with pleasure as you approach the edge...
@@ -16572,6 +16598,7 @@ EnemyName 离开并锁上了她身后的牢房。
 你的 RestraintName 发出红色闪光，让你感到晕眩！
 - Your armor makes noise as you move around!
 当你四处走动时，你的盔甲会发出噪音！
+# - You resist your RESTRAINTNAME as it tries to punish you!
 - Your RestraintName lets out an alert!
 你的 RestraintName 发出警报！
 
@@ -17916,7 +17943,7 @@ EnemyName 设法带着你的物品撤退了！
 - I'm joining in!
 我要加入！
 - Hang on, I'm coming!
-快点，我来了！
+等等，我来了！
 - I'm here!
 我在这！
 - Here I come!
@@ -18727,7 +18754,7 @@ SPL已激活。
 - Some kind of miscalculation has occurred;
 出现了某种判断失误；
 - This was unforeseen;
-这是没有预料到的；
+这是出乎意料的；
 - Unit is retreating;
 部队正在撤退；
 - Activating self-preservation instincts;
@@ -19144,7 +19171,7 @@ SPL。
 - Put that back!
 把它放回去！
 - There's nothing to learn from that, you ignorant buffoon.
-你个无知的小丑，从中没什么可以学习到的。
+你个无知的蠢货，那里面没什么可学的。
 - Don't dive into someone else's belongings!
 不要潜入别人的东西里去！
 - You've destroyed an ancient artifact, imbecile!
@@ -19313,7 +19340,7 @@ SPL。
 - It's time for your daily dose of cuddling~
 又到了每日拥抱的时间了~
 - I diagnose you with excessive subbiness.
-我诊断你过于卑鄙。
+我诊断你患有过度顺从症。
 - Seems like you've caught a case of female hysteria...
 看来你得了女性歇斯底里症……
 - I diagnose you with a case of bratty behavior...
@@ -22581,7 +22608,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 微笑 )|嘿嘿，看来你很快就适应了。
 
 - (The SPEAKER chuckles)|You're probably wondering what's in store for you.|It's simple: You behave and do as you're told.|Eventually we may let you wander around as a toy,|if you're a good ${Pdim} and behave.
-（SPEAKER轻笑）|你可能想知道为你准备了什么。|很简单：‎你按照别人的吩咐行事和做事。|最终你可以四处走动。|别想着尝试偷东西。
+（SPEAKER轻笑）|你大概在想自己会有什么下场。|很简单：‎乖乖听话，照吩咐做。|最终我们也许会放你像个玩具一样四处走动，|只要你是个好${Pdim}，乖乖的。
 - (The SPEAKER chuckles)|Feisty, aren't you?|Looks like it's going to be an extended stay for you~
 ( SPEAKER 轻笑 ) |挺有活力，不是吗？|看起来你会待很长时间~
 - (The SPEAKER giggles and returns to her work)
@@ -22621,7 +22648,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 - (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You shouldn't have tried to escape, you know~
-( SPEAKER 在你的牢房里接近你 ) |又回来了，是吗？傻${Pdim}。|你知道我们不会停你的回答的。
+( SPEAKER走近你的牢房 ) |又回来了，是吗？傻${Pdim}。|你不该试图逃跑的，你知道的~
 
 - (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
 ( SPEAKER 回以微笑 ) |哦，这对你来说是一个游戏？|那么也许我应该让你觉得更有趣...| ( 她离开并带着一些玩具回来... ) |现在别动！
@@ -22836,7 +22863,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 - (The SPEAKER looks at you with a philosophical outlook)|Have you ever felt like you wanted to be...|Transformed?
-( SPEAKER 用一种哲学的眼光看着你 ) |你有没有想过你想要……|转变？
+( SPEAKER带着一种哲学家的神情看着你 ) |你是否曾感觉自己想要……|转变？
 - (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
 ( SPEAKER 从她的跨包里拿出一个奇怪的面具 ) |好吧，我这里有答案......
 - (The SPEAKER nods seriously)|My hypothesis was correct...
@@ -24304,7 +24331,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 （SPEAKER 以一阵迅猛的速度把你按倒在地）|（${EThey}把你塞进了宠物服里）|好了。这就是对你无礼行为的惩罚~
 
 - Yes! I love the blessed kitty!
-是的！我爱被祝福的可爱小猫！
+是的！我喜欢这只受祝福的小猫！
 - No, you guys are a bunch of weirdos.
 不，你们是一群怪人。
 
@@ -24900,7 +24927,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER frowns)|What does this look like, a charity?
 ( SPEAKER 皱起眉头 ) |你觉得我看起来像什么，慈善机构？
 - (The SPEAKER smiles)|You'll have to secure that by other means, I think~
-( SPEAKER 微笑 )|我想你必须通过其他方式来确保这一点~
+( SPEAKER微笑 )|我想你必须通过其他方式来确保这一点~
 - (The SPEAKER beeps)|Insufficient currency.
 ( SPEAKER 发出蜂鸣声 ) |货币不足。
 
@@ -25186,14 +25213,17 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 似乎对你的困境印象深刻)|我不会妨碍你和你的任务！
 - (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(${EThey} perform${Es} a short prayer and a random divine lock comes off)
 ( SPEAKER 看上去对你的困境印象深刻)|既然你受到女神的祝福，我可以帮助你|(${EThey}做了一个简短的祷告，一把随机的神圣锁应声而开)
+# - (The SPEAKER looks mildly horrified)|This is what happens when you stray from the divine.|The malicious powers will never give you what you truly desire.|(${EThey} make${Es} a prayer and the curse is lifted)
 
-- (Ask for 2 knives)
+- (Ask for a knife) (7 rep)
 ( 要2把刀 )
-- (Ask for 3 lockpicks)
+- (Ask for 3 lockpicks) (7 rep)
 ( 要 3 个撬锁工具 )
-- (Ask for a magic key)
+- (Ask for a magic key) (9 rep)
 ( 要一把魔法钥匙 )
-- (Ask for help with a divine lock)
+# - Please, I'm cursed! (20 rep)
+# - (Ask for help with a curse) (20 rep)
+- (Ask for help with a divine lock) (10 rep)
 (请求帮助解锁神圣锁)
 
 - There is no valid space next to you!
@@ -25291,7 +25321,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( 真的要攻击？目标浑然不觉，晕眩1回合。 )
 
 - (Move through ${Etheir} space)
-（越过她）
+（越过${Etheir}）
 - (Swap with this unit)
 （越过这个单位）
 - (Swap with all units)
@@ -25638,7 +25668,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - What kind of name is that?
 那是什么名字？
 - (SPEAKER frowns)|It means Windsong!|I bet yours isn't anywhere near as cool.
-( SPEAKER 皱眉 )|它的意思是风之歌！|我敢打赌你的根本没有这么酷。
+( SPEAKER皱眉 )|它的意思是风之歌！|我敢打赌你的根本没有这么酷。
 - (SPEAKER looks enraged)|Because names and meanings are different things!|My name uses the script from the Old Civilization!|You're just a poser!
 ( SPEAKER 看起来很生气 )|因为名字和意义是不同的东西！|我的名字使用了旧日文明的文字！|你个不学无术之徒！
 - Why not just call yourself Windsong?
@@ -25859,7 +25889,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 - (Glare at her and scoff)
 ( 瞪着她并嗤之以鼻 )
 - (SPEAKER makes a big grin)|I take it that you wish to challenge me?|Very well!|Come at me!
-( SPEAKER 咧嘴一笑 )|我知道你想挑战我？|很好！|来吧！
+( SPEAKER咧嘴一笑 )|我知道你想挑战我？|很好！|来吧！
 - About those 'reincarnated ones'...
 至于那些'转世者'……
 - You have no power over me
@@ -25996,10 +26026,13 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 呜呜呜 哼嗯嗯 嗯嗯嗯...  ( 请帮帮我 )
 # - Can you help with my divine locks?
 # - Mmmmphh... (Help with divine locks)
+# - Can you help me? I'm cursed...
+# - Mmmmphh... (Help with major curse)
 - No can do! Even I can't get those off of you.
 没办法啊！ 就连我也无法把它们从你身上拿走。
 # - No can do!|If you're wondering about those fancy gold-colored locks,|Well... a contract is a contract~
 # - Wow, you got yourself into a tight mess, haven't you...\nWell I'm sure you're in those for a reason, sweetie~
+# - (The SPEAKER gently lifts your chin, and looks at you)|(${ETheir} gaze is fully clinical, but thorough)|Mmm, that's some bad energy.|I'm sorry sweetie, but I can't risk taking on that curse myself.
 - Caught by...?
 被……抓住了？
 - Hah!|You've been here a million times!|You obviously know how dangerous it is, yes?
@@ -26187,10 +26220,23 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 # - (The SPEAKER takes a look at your locks)|Hum, it's not generally okay to mess with divine contracts...|However, I know a few tricks myself. And I do take care of my customers~|(Current Favors: ${FAVORS})
 # - Please get these off me. (Pay ${FAVORCOST} favors)
 # - (Nod your head) (Pay ${FAVORCOST} favors)
+# :: dShopkeeperOfferHelpDivine_PayGag
+# :: dShopkeeperOfferHelpCurse_PayGag
 # - I should respect the divine... (Leave)
 # - I'll think about it. (Leave)
+# :: dShopkeeperOfferHelpDivine_Leave
+# :: dShopkeeperOfferHelpCurse_Leave
 # - Mmmph. (Leave)
+# :: dShopkeeperOfferHelpDivine_LeaveGag
+# :: dShopkeeperOfferHelpCurse_LeaveGag
 # - (The SPEAKER snaps ${Etheir} fingers)|Let's get to it, then!|(${EThey} scribe${Es} a couple of magical circles over your body,|then press${Es} ${Etheir} hand into your body with a magical glow.|Your locks click free and vanish into the air)|Just the locks, of course, unless you have other business~
+
+
+
+# - (The SPEAKER gently lifts your, and looks at you)|(${ETheir} gaze is fully clinical, but thorough)|Yep, that's some bad energy~|It's a bit risky, but I can help you, since you've helped me.|(Current Favors: ${FAVORS})
+# - Please get it off. (Pay ${FAVORCOST} favors)
+# - (The SPEAKER snaps ${Etheir} fingers)|Alright. Now hold still and don't let your mind wander...|(${EThey} scribe${Es} a magical circle on the floor and have you step in.|With a flash, you feel the curse lifted,|as the energy disperses into the air.
+
 
 - (The SPEAKER pats you down and makes sure you're okay)|I can definitely help with those!|But as you know, I help a lot of adventurers just like you.|You know what, I'll give you a discount!|That'll be RESCUECOST gold pieces!
 ( SPEAKER 拍了拍你并确保你没事 ) |我绝对能帮忙处理！|但如你所知，我帮助了很多像你一样的探险家们。|你猜怎么着，我会给你打个折！|只要 RESCUECOST 金币！
@@ -26413,7 +26459,7 @@ Mmmph? (行为混乱)
 - (The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System.
 (SPEAKER双手抱胸)|奥丽尔(Oriel)夫人的指令很明确：|任何未登入系统的人，都得被装载入系统。
 - (The SPEAKER pauses for a moment, then speaks)|I'm just following Mistress Oriel's orders.|I'm sure ${Ethey} will have time to speak with you if you want to ask her.
-( SPEAKER 停顿了一会儿，然后说话)|我只是在听从奥丽尔夫人的命令|如果你想询问的话，我相信${Ethey}会有时间和你谈谈的。
+( SPEAKER停顿片刻，然后说道 )|我只是在听从奥丽尔夫人的命令|如果你想询问的话，我相信${Ethey}会有时间和你谈谈的。
 - But why???
 但是为什么呢？？？
 - (The SPEAKER frowns)|You should be thankful.|Without Mistress Oriel, we'd all be dead!|Probably...
@@ -26771,7 +26817,7 @@ FOODMSG| ( 它邀请你分享它的美食 )
 - (Mystic energies spring forth from the ground)|(Standing here will fully replenish your passive mana pool)|(One use only)
 ( 神秘能量从地面涌出 ) | ( 站在这里将完全补充你的被动法力池 ) | ( 仅限一次使用 )
 - (You step on the magical fissure and its energies absorb into you)|(Afterward, the ground crackles and fizzles, but no energy is left.)
-( 你踩到魔法的石头，它的能量吸收到你身上 ) | ( 之后，地面噼啪作响，但没有留下任何能量。 )
+( 你踏上魔法裂隙，其能量被吸入你体内 )|( 随后，地面噼啪作响，嘶嘶冒泡，但已无能量残留。)
 - (Recharge your mana pool)
 ( 补充你的法力池 )
 
@@ -27079,7 +27125,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 - A magnetic link keeping your wrists secured together.
 磁力链条将你的手腕固定在一起。
 - Your cuffs detach with a beep!
-铐子随着 '嘟' 的一声解开了！
+手铐随着 '哔' 的一声脱落了！
 - Your elbows snap together as the cuffs engage fully!
 当铐子完全链接时，你的肘部会被锁在一起！
 
@@ -27099,7 +27145,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 - A magnetic link keeping your elbows pressed tightly together!
 磁力链条将你的肘部紧紧地压在一起！
 - Your elbows detach with a beep!
-肘部随着 '嘟' 的一声解开了！
+肘铐随着 '嘟' 的一声脱落了！
 
 
 - Doll Gag
@@ -45925,10 +45971,13 @@ RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 惩罚 : ‎当你击败敌人时，你会短暂昏迷并吸引敌人。
 - Dark Voice: You are supposed to be a slave!
 黑暗之声 : ‎你应沦为奴隶！
+# - You resist the compulsion to submit.
+# :: KDCursedPunishmentResist
+# :: KDCursedSubmissionResist
 
-- Submission: At 0 WP, you are restrained if you leave the presence of a hostile.
+- Submission: At 0 WP, you are compelled and bound if you leave the presence of an enemy.
 屈服 : ‎在 0 意志力时，如果你离开敌方存在，你就会受到束缚。
-- Dark Voice: Kneel before your mistress.
+- Dark Voice: Kneel!
 黑暗之声 : 在你的女主人面前跪下。
 
 - Denial: -10 WP when you try to Let Go. At 0 WP you cannot orgasm.
@@ -46370,7 +46419,7 @@ TargetEnemy 抵抗捆绑并减少受到的 AMNT 捆绑！
 - Choose target to steal from
 选择要窃取的目标
 - Steals a helpless enemy's clothes, adding a great deal of distraction to her and stealing her disguise for yourself. Until you recast this on yourself, you gain a stealth bonus against members of the same faction.
-窃取完全束缚的敌人的衣服，给她增添了很大的性奋值，并窃取了她的伪装。直到你对自己重新施展此技能之前，你对同一阵营的成员都会获得隐身加成。
+窃取完全束缚的敌人的衣物，使其增加大量性奋值。并伪装成她，直到你对自己重新施展此技能之前，你对同一阵营的成员都会获得隐身加成。
 
 
 
@@ -46937,6 +46986,7 @@ LKTYP 锁锁在了你的一个拘束具上！
 大地守护者用力一脚将你踢飞！ ( DamageTaken )
 # - The song captivates you and draws you closer! (DamageTaken)
 # - The song has no effect as your hearing is deafened.
+# - You resist the captivating music.
 
 
 - Flame Keeper
@@ -47252,6 +47302,7 @@ RestraintName 失效了！
 居中消息日志
 - Reverb Sound Effects
 混响音效
+# - Sound Particles for Enemy Movement
 
 - Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
 欢迎来到Kinky Dungeon！您似乎是第一次来到这里，|您想了解一下界面的简要介绍吗？
@@ -47885,7 +47936,7 @@ BOSS 房已清空！
 时间减慢 1/4，持续 10 回合 ( 世界时间 ) 。体力不会恢复。
 
 - Stop time for 10 turns (world time). Stamina does not regen.
-在 10 回合内暂停时间 ( 世界时间 ) 。体力不会恢复
+时间停止 10 回合 ( 世界时间 ) ，但不会恢复体力。
 
 - Time slows down by 2x!
 时间慢了 2 倍！
@@ -47902,7 +47953,7 @@ BOSS 房已清空！
 - Time has ceased to pass.
 时间已经停止流逝。
 - Time Stop!
-完全加速！
+时间停止！
 
 - You begin to move at lightning speed!
 你开始以闪电般的速度移动！
@@ -47964,7 +48015,7 @@ ENMY表现出惊人的抵抗力，将伤害减少了 PCNT%。
 你准备躲避！！！
 
 - Your expertise and skill provide you with additional tool effectiveness! (+AMOUNT%)
-你的专业知识和技能为您提供了额外的工具效率！ ( +AMOUNT% )
+你的专长和技能为您提供了额外的工具效率！ ( +AMOUNT% )
 
 - You raise your defences!
 你提高防御！
@@ -48346,7 +48397,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Invisible Legbinder
 隐形束腿套
 - It's a legbinder, but invisible!
-这是个束腿套，但是是隐形的！
+这是个束腿套，但它是隐形的！
 - This is starting to get cruel...
 这一切开始变得残酷……
 
@@ -48428,7 +48479,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 
 
 - Quest-locked restraints can only be removed by completing a shrine quest.
-你的神圣锁束缚只能通过完成神泉的任务来解开。
+任务锁定的拘束具只能通过完成神泉任务来解除。
 
 - The Goddess hates you. That won't work.
 女神讨厌你。那是行不通的。
@@ -48724,7 +48775,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Sensory Training
 感官训练
 - Start locked in a sensory hood with no Sensory training.
-开始时，在没有进行感官训练的情况下佩戴一套锁定的耳罩和耳机。
+开始时，在没有进行感官训练的情况下被锁在感官剥夺头套内。
 
 - Hard to Master: Heels
 难以掌握 : ‎高跟鞋
@@ -49079,6 +49130,12 @@ ENMY 称赞你很可爱！(DMGDLT)
 # - *blushes*
 - The ENMY blushes at your cuteness!
 ENMY 因为你太可爱而脸红！
+
+# - The ENMY tells you to be still, and your body freezes! (DMGDLT)
+# - Be still, doll~
+# - *Be still...*
+# - The ENMY tells you to be still, but it has no effect.
+
 - The ENMY makes fun of you! (DMGDLT)
 ENMY 取笑你！(DMGDLT)
 - The ENMY struggles to find words!
@@ -49192,7 +49249,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 - Warden's Belt
 典狱长的腰带
 - You may go on your way, but only for as long as your freedom is useful to her.
-你可以继续走你的路，但前提是你的自由对她有用。
+你可以上路了，但仅限于你的自由对她还有用的时候。
 # :: RestraintWardenBeltDesc
 # :: RestraintWardenCollarDesc
 # :: RestraintWardenCBeltDesc
@@ -49320,7 +49377,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 - Tell me about your collection
 告诉我你的收藏
 - (SPEAKER smiles pleasantly)|It's a fitting reward, isn't it?|Long ago, this mountain was home to a vicious empire.|Machines went out to sea, bringing back countless prisoners.|As commander of the invasion, I earned this title!
-( SPEAKER 愉快地微笑 ) |这是一个合适的奖励，不是吗？|很久以前，这座山是一个邪恶帝国的家园。|机器出海，带回了无数的囚犯。|作为入侵的指挥官，我赢得了这个头衔！
+( SPEAKER愉快地微笑 ) |这是一个合适的奖励，不是吗？|很久以前，这座山是一个邪恶帝国的家园。|机器出海，带回了无数的囚犯。|作为入侵的指挥官，我赢得了这个头衔！
 - (SPEAKER grins)|When we stormed the prisons, we encountered many fierce defenders.|Many of them now reside in these halls, earning their rightful punishment.
 ( SPEAKER 笑了 ) |当我们袭击监狱时，我们遇到了许多凶猛的防守者。|他们中的许多人现在住在这些大厅里，接受应有的惩罚。
 - Who are the prisoners, anyway?
@@ -49376,7 +49433,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 - (SPEAKER scoffs)|I'd love to have a word with your sources~
 ( SPEAKER 嘲笑 ) |我很想和你的消息来源谈谈~
 - I have it on good authority that Vinlaga is here.
-我有充分的证据证明 文拉加(Vinlaga) 就在这里。
+我有充分的证据证明文拉加 ( Vinlaga ) 就在这里。
 - (SPEAKER smirks)|Don't believe everything you hear~
 ( SPEAKER 笑了 ) |不要相信你听到的一切~
 - Maybe you're right.
@@ -49402,9 +49459,9 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 - Mmpphgh? (Go to pass ${Ethem})
 Mmpphgh? ( 从${Ethem}身边走过 )
 - (She smirks)|Not so fast, dear~|You'll have to wear a special ${Restraint} to pass.
-( 她笑了 ) |别那么快，亲爱的~|你得戴上特殊的项圈才能通过。
+( 她笑了 ) |别急，亲爱的~|你得戴上特殊的${Restraint}才能通过。
 - I won't wear anyone's ${Restraint}!
-我不会戴任何人的项圈！
+我不会戴任何人的${Restraint}！
 - (She smirks)|Tsk tsk. Then you won't pass.
 ( 她笑了 ) |啧啧，那你就过不了关了。
 - (She giggles)|How cute!|You're so used to yours that you forgot about it~
@@ -49416,7 +49473,7 @@ Hmmph. ( 嘲笑${Ethem} )
 - (She frowns)|Watch your tongue~
 ( 她皱眉 ) |注意你的言辞~
 - (She frowns)|I do not wear ${Restraints}.
-( 她皱起眉头 ) |我不戴项圈。
+( 她皱起眉头 ) |我不戴${Restraints}。
 - You'd be better off wearing mine instead.
 你最好还是穿我的。
 - You're missing out~
@@ -49492,9 +49549,9 @@ Mmmph! ( 热切地点头 )
 # - restrained
 
 - (SPEAKER readies ${Etheir} whip)|Allow me to introduce myself properly.|I am The Warden, divinely appointed judge and enforcer.|Those who enter this mountain do so under my watchful eye.|To ensure this, I have crafted a special ${Restraint}.|It will ensure that you do not defile the holy places.|I can let you through if you accept it~
-( SPEAKER挥动着${Etheir}鞭子)|请允许我做一个正式的自我介绍|我是守护者，是受神命的审判官兼执行者。|那些进入这座山的人都是在我的监视下进入的|为了确保这一点，我制作了一个特殊的项圈|这将确保你不会玷污圣地|如果你接受，我可以让你通过~
+( SPEAKER挥动着${Etheir}鞭子)|请允许我做一个正式的自我介绍|我是守护者，是受神命的审判官兼执行者。|那些进入这座山的人都是在我的监视下进入的|为了确保这一点，我制作了一个特殊的${Restraint}|这将确保你不会玷污圣地|如果你接受，我可以让你通过~
 - I will never be ${Restrained} by you!
-我永远不会被你套牢！
+我永远不会被你${Restrained}！
 - (Shake your head and scoff)
 (摇头嘲笑)
 - (SPEAKER folds ${Etheir} arms)|So be it.
@@ -49526,11 +49583,11 @@ Mmmph! ( 热切地点头 )
 - (SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~
 ( SPEAKER 笑了 ) |非常令人印象深刻。|虽然你输掉了这场战斗，但你的表现令人钦佩~
 - (SPEAKER smiles)|I will let you pass so long as you wear my emblem.|(${EThey} snaps ${Etheir} fingers and conjures a glowing band)
-( SPEAKER微笑 )|只要你戴上我的项圈，我就会让你过去。| ( ${EThey}打了个响指，变出一个发光的圆环 )
+( SPEAKER微笑 )|只要你戴上我的徽章，我就会让你过去。| ( ${EThey}打了个响指，变出一个发光的圆环 )
 - (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
 （SPEAKER咯咯笑）|那么你的旅程就到此为止了。|我猜你不想那样。|那么，至于你的惩罚嘛~|（她打了个响指，变出一个发光的圆环）
 - (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(${EThey} snaps ${Etheir} fingers and conjures a glowing band)
-( SPEAKER轻笑了一声) |当然是魔法~|谁说指挥官就一定得手无寸铁？| ( 她打了个响指，变出了一个发光的圆环) )
+( SPEAKER轻笑了一声) |当然是魔法~|谁说指挥官就一定得手无寸铁？| ( 她打了个响指，变出了一个发光的带子) )
 - Was that magic?
 那是魔法吗？
 - I've lost. Now what?
@@ -49538,11 +49595,11 @@ Mmmph! ( 热切地点头 )
 - I won't submit to you!
 我不会向你屈服的！
 - (Accept the ${Restraint} eagerly)
-( 急切地接受项圈 )
+( 急切地接受${Restraint} )
 - (Accept the ${Restraint} begrudgingly)
-( 勉强接受项圈 )
+( 勉强接受${Restraint} )
 - (SPEAKER presents you with your 'reward'...)|(It closes around you seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
-（SPEAKER 向你展示你的“奖励”……）|（它无缝地围绕着你的腰部）|现在……你将被允许自由行动，|但前提是你接受了足够的训练。
+（SPEAKER向你展示你的“奖励”……）|（它无缝地围绕着你的腰部）|现在……你将被允许自由行动，|但前提是你接受了足够的训练。
 
 - (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really believe it would be this easy?
 ( SPEAKER 用金属栅栏网挡住你 ) |非常令人印象深刻！|但你真的认为会那么容易吗？
@@ -49969,9 +50026,9 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: RestraintFluffothHoodDesc
 # :: KinkyDungeonInventoryItemFluffothHoodDesc
 - When distraction reaches 90%, emit a wave of soft energies that envelops a 5x5 area. Deals 40 plush damage and snares for 3 turns. Recharges when your distraction goes below 50%. 5 turn internal cooldown.
-当性奋值达到 90% 时，发射一波柔和的能量波，覆盖 5x5 范围内的目标。造成 40 点绒织伤害并持续 3 回合。干扰低于 50% 时重新充能。 5 回合体内冷却。
+当性奋值达到 90% 时，发射一波柔和的能量波，覆盖 5x5 范围内的目标。造成 40 点绒织伤害并持续 3 回合。当你的性奋值降至50%以下时重新充能，5 回合体内冷却。
 - When distraction is over 90%, emit a wave of soft energies that envelops a 5x5 area. Deals 30 plush damage and snares for 3 turns. Recharges when your distraction goes below 50%. 5 turn internal cooldown.
-当性奋值超过 90% 时，发射一波柔和的能量波，覆盖 5x5 范围内的目标。造成 30 点绒织伤害并持续 3 回合。干扰低于 50% 时重新充能。 5 回合体内冷却。
+当性奋值超过 90% 时，发射一波柔和的能量波，覆盖 5x5 范围内的目标。造成 40 点绒织伤害并持续 3 回合。当你的性奋值降至50%以下时重新充能，5 回合体内冷却。
 - You find a sinister hood made of soft plush.
 你发现了一个由柔软的毛绒制成的阴险头套
 
@@ -50371,7 +50428,7 @@ Kocaeli - 《1》
 - Ice Orb
 冰珠
 - The EnemyName breathes in deeply, causing the air around you to chill...
-EnemyName 深呼吸，让你周围的空气变得寒冷...
+EnemyName深吸了一口气，使你周围的空气变得寒冷……
 
 - Shadow Bubble
 暗影泡泡
@@ -50598,13 +50655,13 @@ ENMYNME CHTRNME 的 RMNME
 
 
 - The seal can be disenchanted, or overloaded with a 200 MP or a Mana Potion.
-这把锁被忏悔封印保护着。若要解锁它，你必须支付 1 技能点。
+该封印可以被解除，也可以通过消耗 200点 MP或一瓶法力药水来使其过载。
 - The restraint won't budge.
 束缚不会动摇。
 # :: KinkyDungeonCurseStruggleSpellLock1
 # :: KinkyDungeonCurseStruggleSpellLock3
 - You overload the seal with your own mana!
-你执行了一个仪式来解锁该物品！
+你用自己的法力让封印过载了！
 # - You pour a mana potion on the seal to overload it!
 
 
@@ -51005,13 +51062,13 @@ Y 轴
 - NoOverride (0/1)
 无覆盖(0或1）
 - Hide if Tag (e.g. Xray)
-造型隐藏(例如X射线)
+隐藏标签 ( 例如 Xray )
 - Require Tag (e.g. ChestArmor)
-造型显示(例如ChestArmor)
+显示标签 ( 例如 ChestArmor )
 - Hide if Prefix (e.g Encase)
-隐藏前缀(例如 Encase)
+隐藏前缀 ( 例如 Encase )
 - Hide if Suffix (e.g TorsoUpper)
-隐藏后缀(例如TorsoUpper)
+隐藏后缀 ( 例如 TorsoUpper )
 - Protected
 受保护的
 - Displace Amount
@@ -52157,7 +52214,7 @@ ENMY 解开了 ITMN 的锁!
 - Cover
 扉页
 - I am writing this journal in the off chance that I do not return from the Agarthan ruins. If you find this, please make an effort to deliver it back to the surface for the good of all the women lured in by its secrets.
-我写下这篇日记是为了防止我没能从阿加莎废墟回来。如果有人发现了这本日记，请努力将它送回地面，以造福所有被地下城的秘密所诱惑的女性。
+我写下这篇日记，是抱着万一我无法从阿加莎遗迹归来的打算。如果你发现了它，请尽力把它送回地表，为了所有被地下城的秘密所诱惑的女性。
 - Catherine Willows' Journal (preface)
 凯瑟琳·韦罗斯的日记（序言）
 - Willows 0
@@ -52994,7 +53051,22 @@ EnemyName 撤退了！
 - The EnemyName manages to squirm out of sight!
 EnemyName 设法蠕动着离开了视野！
 
+# - Minor sound descriptions
 
+# - combat
+# :: KDAmbSound_Attack
+# :: KDAmbSound_CastMagic
+# :: KDAmbSound_CastTech
+# :: KDAmbSound_Cast
+# - footsteps
+# - hovering
+# - alarm
+# :: KDAmbSound_Alarm
+# :: KDAmbSound_Alarm
+# - noise
+# - muffled speech
+# - attacking
+# - movement
 - servers humming...
 服务器嗡嗡地响着...
 - bouncy noises
@@ -53720,9 +53792,9 @@ Boss
 隐身女王
 - Unlocked by learning every spell under Blessing of Obscurity.
 解锁方式：习得所有 隐身祝福 系的法术。
-- Mistress of Projection
+- Mistress of Enchantment
 投影女王
-- Unlocked by learning every spell under Projection Magic.
+- Unlocked by learning every spell under Enchantment Magic.
 解锁方式：习得所有 投影魔法 系的法术。
 - Mistress of Knowledge
 知识女神
@@ -53805,10 +53877,11 @@ Boss
 选择一项进度以显示更多细节
 
 # - Corset training affects the level of max stamina penalty incurred from wearing a corset. Levels are gained by spending stamina while wearing a corset.\nTraining failure occurs if you are not wearing a corset when you spend stamina.
-# - Gag training affects the effective strength of gags, allowing you to ignore lower level gags. Levels are gained by talking to NPCs, flirting, and casting verbal spells.\nTraining failure occurs if you are not wearing a gag when you perform actions.
+- Gag training affects the effective strength of gags, allowing you to ignore lower level gags. Levels are gained by talking to NPCs, flirting, and casting verbal spells.\nTraining failure occurs if you are not wearing a gag when you perform actions.
+堵嘴训练会影响口塞的有效强度，使你能够无视较低等级口塞。等级可通过与NPC交谈、调情和施放言语法术获得。\n如果在执行动作时未佩戴口塞，会发生训练失败。
 - Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions.
 高跟鞋训练影响你穿着高跟鞋时保持平衡的能力。穿着高跟鞋移动以提升训练进度。\n如果不穿高跟鞋，训练会失败，减少部分经验值。
-# - Senses training affects your hearing ability and the effectiveness of blindfolds. Levels are gained by detecting enemies by sound before visually spotting them.\nTraining failure occurs you spot enemies while neither blindfolded nor deafened.
+# - Senses training affects your hearing ability and the effectiveness of blindfolds. Levels are gained by detecting enemies by sound before visually spotting them, or by spotting enemies while blindfolded.\nTraining failure occurs you spot enemies while neither blindfolded nor deafened.
 - Current Progress:
 当前进度：
 - Milestones:
@@ -54096,6 +54169,10 @@ TA
 你感觉就像一个漂亮、静止的玩偶……(+AMNT Stillness)
 - You regain a bit of your sense of self. (-AMNT Stillness)
 你找回了一点自我意识。(-AMNT Stillness)
+
+# - The curse of the ${Weapon} fades away...
+# - The ${Weapon} compels you to wield it, and stare into it...
+# - The ${Weapon} puts itself away to keep itself safe...
 
 - The spell is already active.
 法术已生效。
@@ -54623,3 +54700,5 @@ TA
 # - Battery
 
 # - Paste your Xtoys webhook ID here and the game will post messages|Supported actions: 'shock', 'vibestart', 'vibestop'
+
+
