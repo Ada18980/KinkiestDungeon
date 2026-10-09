@@ -2698,10 +2698,15 @@ function KDApplyJailOutfit() {
 	KinkyDungeonDressPlayer();
 }
 
-function KDGetFurnitureCriteria(entity: entity): (x: number, y: number, point: KDJailPoint) => boolean {
+function KDGetFurnitureCriteria(entity: entity, enemy?: entity, unoccupied: boolean = true): (x: number, y: number, point: KDJailPoint) => boolean {
 	// returns TRUE if no furniture present--thats gonna be filtered elsewhere
+	let unocc = unoccupied;
 	if (entity.id == KDPlayer().id) {
 		return (x: number, y: number, point: KDJailPoint) => {
+			if (unocc) {
+				let en = KinkyDungeonEntityAt(x, y);
+				if (en && en != enemy) return false;
+			}
 			let furniture: string = KinkyDungeonTilesGet(x + "," + y)?.Furniture;
 			let restrainttags : string[] = point.restrainttags;
 			if (!restrainttags && furniture && KDFurniture[furniture]?.restraintTag) restrainttags = [KDFurniture[furniture]?.restraintTag];
@@ -2717,6 +2722,10 @@ function KDGetFurnitureCriteria(entity: entity): (x: number, y: number, point: K
 	} else {
 		let id = entity.id;
 		return (x: number, y: number, point: KDJailPoint) => {
+			if (unocc) {
+				let en = KinkyDungeonEntityAt(x, y);
+				if (en && en != enemy) return false;
+			}
 			let furniture: string = KinkyDungeonTilesGet(x + "," + y)?.Furniture;
 			let restrainttags : string[] = point.restrainttags;
 			if (!restrainttags && furniture && KDFurniture[furniture]?.restraintTag) restrainttags = [KDFurniture[furniture]?.restraintTag];

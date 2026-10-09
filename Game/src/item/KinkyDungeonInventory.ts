@@ -4504,7 +4504,7 @@ function KDDrawExtraItemInfo(item: itemPreviewEntry, xOffset: number, yOffset: n
 			 undefined, 130);
 	if (KDRestraint(item.item)?.blindfold)
 		DrawTextKD(TextGet("KDBlindDesc", {
-			FRACTION: Math.round(KDRestraint(item.item)?.blindfold * 10) / (KDSensesTrainingBoost(player, false)),
+			FRACTION: Math.round(KDRestraint(item.item)?.blindfold * 10 / (KDSensesTrainingBoost(player, false))),
 			}) + (KDSensesTrainingBoost(player) > 1 ? TextGet("KDRestraintDescBaseTag", {
 				FRACTIONORIG: Math.round(KDRestraint(item.item)?.blindfold * 10),
 			}): ""),

@@ -430,7 +430,7 @@ KDPrisonTypes.HighSec = {
 
 				let nearestfurniture = guard ?KinkyDungeonNearestJailPoint(guard.x, guard.y, ["furniture"], 
 					undefined, undefined, true, 
-					KDGetFurnitureCriteria(player)) : null;
+					KDGetFurnitureCriteria(player, guard)) : null;
 				// End when the player is settled
 				if (!nearestfurniture || KDPrisonIsInFurniture(player) && !KinkyDungeonFlags.get("jailStripSearched")) {
 					if (!KinkyDungeonFlags.get("stripSearchComplete")) {
@@ -458,7 +458,7 @@ KDPrisonTypes.HighSec = {
 				KinkyDungeonSetFlag("noWeaponStop", 10);
 				let nearestfurniture = guard ?KinkyDungeonNearestJailPoint(guard.x, guard.y, ["furniture"], 
 					undefined, undefined, true, 
-					KDGetFurnitureCriteria(player)) : null;
+					KDGetFurnitureCriteria(player, guard)) : null;
 				if (guard && (!nearestfurniture || KDPrisonIsInFurniture(player))) {
 					guard.gx = player.x;
 					guard.gy = player.y;
@@ -493,7 +493,7 @@ KDPrisonTypes.HighSec = {
 				let guard = KDPrisonCommonGuard(player);
 				let nearestfurniture = guard ?KinkyDungeonNearestJailPoint(guard.x, guard.y, ["furniture"], 
 					undefined, undefined, true, 
-					KDGetFurnitureCriteria(player)) : null;
+					KDGetFurnitureCriteria(player, guard)) : null;
 				// End when the player is settled
 				if (!nearestfurniture || KDPrisonIsInFurniture(player)) {
 					if (guard) KDResetIntent(guard);

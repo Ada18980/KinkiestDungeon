@@ -31,7 +31,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (KinkyDungeonFlags.get("LeashToPrison")) mult = hostile ? 0 : 0.1;
 			let player = KDPlayer();
 			if (KDIsInNonLeashableFurniture(player)) return 0;
-			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, false, KDGetFurnitureCriteria(player, enemy));
 			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) < 14 ? (mult * 40 * (KDGameData.PrisonerState == 'parole' ? 0 : 1)) : 0;
 		},
 		trigger: (enemy, aiData) => {
@@ -39,7 +39,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.IntentAction = 'leashFurniture';
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 140);
 			let player = KDPlayer();
-			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, false, KDGetFurnitureCriteria(player, enemy));
 			enemy.IntentLeashPoint = nearestfurniture;
 			enemy.playWithPlayer = 22;
 			KDSetPlayCD(enemy, 3);
@@ -111,7 +111,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gx = enemy.IntentLeashPoint.x;
 					enemy.gy = enemy.IntentLeashPoint.y;
 					let player = KDPlayer();
-					let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+					let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, false, KDGetFurnitureCriteria(player, enemy));
 					if (!nearestfurniture) {
 						enemy.IntentAction = '';
 						enemy.IntentLeashPoint = null;
@@ -1162,9 +1162,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 						if (enemy.idle || (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) < 4)) {
 							KDResetGuardSpawnTimer();
 							let player = KDPlayer();
-							let furn = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+							let furn = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, false, KDGetFurnitureCriteria(player, enemy));
 							let jail =  KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
-							let newPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail", "furniture"], undefined, undefined, undefined, KDGetFurnitureCriteria(player));
+							let newPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail", "furniture"], undefined, undefined, undefined, KDGetFurnitureCriteria(player, enemy));
 							if (newPoint) {
 								enemy.keys = true;
 								enemy.gx = newPoint.x;
@@ -1187,7 +1187,12 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 												let lastx = KinkyDungeonPlayerEntity.x;
 												let lasty = KinkyDungeonPlayerEntity.y;
 												KDMovePlayer(point.x, point.y, false);
-												KDMoveEntity(enemy, lastx, lasty, true);
+												let pp = KinkyDungeonGetNearbyPoint(point.x, point.y);
+												if (pp) {
+													KDMoveEntity(enemy, pp.x, pp.y,
+													true, undefined, undefined, true);
+												} else 
+													KDMoveEntity(enemy, lastx, lasty, true);
 												KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 												KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
 												let newPoint2 = KinkyDungeonGetRandomEnemyPoint(true,
@@ -1448,7 +1453,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 						if (enemy.idle || (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) < 4)) {
 							KDResetGuardSpawnTimer();
 							let player = KDPlayer();
-							let furn = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+							let furn = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, false, KDGetFurnitureCriteria(player, enemy));
 							let jail =  KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
 							let newPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail", "furniture"], undefined, undefined, undefined, KDGetFurnitureCriteria(player));
 							if (newPoint) {
@@ -1623,7 +1628,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake",
 									KDGetGenericDialogueParams(KDPlayer(), enemy)).replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
 				KDBreakTether(KinkyDungeonPlayerEntity);
-				if (enemy.IntentLeashPoint)
+				if (enemy.IntentLeashPoint) 
 					KDMovePlayer(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y, false, false);
 				KDResetIntent(enemy, aiData);
 				if (KinkyDungeonAutoWait) {
@@ -1749,14 +1754,14 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			let player = KDPlayer();
 			
 			if (KDIsInNonLeashableFurniture(player)) return 0;
-			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, false, KDGetFurnitureCriteria(player, enemy));
 			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) <= 14 ? (hostile ? 120 : ((aiData as KDAIData).domMe ? 0 : 40)) : 0;
 		},
 		trigger: (enemy, aiData) => {
 			KDResetIntent(enemy, aiData);
 			enemy.IntentAction = 'leashFurnitureAggressive';
 			let player = KDPlayer();
-			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, false, KDGetFurnitureCriteria(player, enemy));
 			enemy.IntentLeashPoint = nearestfurniture;
 
 			KDAddThought(enemy.id, "Jail", 5, 3);
@@ -1805,7 +1810,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 			} else {
-				let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(player));
+				let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, false, KDGetFurnitureCriteria(player, enemy));
 				if (!nearestfurniture) {
 					enemy.IntentAction = '';
 					enemy.IntentLeashPoint = null;
@@ -1845,7 +1850,7 @@ function KDResetIntent(enemy: entity, _aiData?: KDEventDataBoolean) {
  */
 function KDSettlePlayerInFurniture(enemy: entity, _aiData: KDAIData, tags?: string[], guardDelay: number = 24, ftype: string[] = ["furniture"], forceFurniture?: KDJailPoint): boolean {
 	let nearestfurniture = forceFurniture || KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ftype, undefined, 
-		undefined, undefined, KDGetFurnitureCriteria(KDPlayer()));
+		undefined, undefined, KDGetFurnitureCriteria(KDPlayer(), enemy));
 	let tile = KinkyDungeonTilesGet(nearestfurniture.x + "," + nearestfurniture.y);
 	let type = tile ? tile.Furniture : undefined;
 
@@ -1853,9 +1858,15 @@ function KDSettlePlayerInFurniture(enemy: entity, _aiData: KDAIData, tags?: stri
 	if (ee && ee != enemy) {
 		KDKickEnemy(ee, undefined, true, 1.5);
 	}
-	if (enemy.x == nearestfurniture.x && enemy.y == nearestfurniture.y)
-		KDMoveEntity(enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
+	if (enemy.x == nearestfurniture.x && enemy.y == nearestfurniture.y) {
+		let point = KinkyDungeonGetNearbyPoint(nearestfurniture.x, nearestfurniture.y);
+		if (point) {
+			KDMoveEntity(enemy, point.x, point.y,
 			true, undefined, undefined, true);
+		} else KDMoveEntity(enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
+			true, undefined, undefined, true);
+	}
+		
 
 	KDMovePlayer(nearestfurniture.x, nearestfurniture.y, false);
 	if (KinkyDungeonPlayerEntity.x == nearestfurniture.x && KinkyDungeonPlayerEntity.y == nearestfurniture.y) {
