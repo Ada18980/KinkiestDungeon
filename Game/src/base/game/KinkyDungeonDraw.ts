@@ -1580,11 +1580,12 @@ function KinkyDungeonDrawGame() {
 						let allowFog = KDAllowFog();
 						if (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || (allowFog && KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0)
 							|| KDistChebyshev(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) < 1.5) {
+							let retType = KDGetTargetRetType(KinkyDungeonTargetX, KinkyDungeonTargetY);
 							KDDraw(kdstatusboard, kdpixisprites, "ui_movereticule" + KinkyDungeonTargetX + "," + KinkyDungeonTargetY, 
-								KinkyDungeonRootDirectory + "Target" + KDGetTargetRetType(KinkyDungeonTargetX, KinkyDungeonTargetY) + ".png",
+								KinkyDungeonRootDirectory + "Target" + retType + ".png",
 								(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 									zIndex: 100,
-								tint: KinkyDungeonFastMoveSuppress ? 0xff7777 : 0xffffff
+								tint: retType && KinkyDungeonFastMoveSuppress ? 0xff7777 : 0xffffff
 								});
 							if (KinkyDungeonSlowLevel < 10) {
 								//if (!KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY)

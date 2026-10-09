@@ -138,7 +138,7 @@ let KDToggles = {
 	GreyscaleBlindness: true,
 	NearestNeighbor: true,
 	LazyWalk: false,
-	ShiftLatch: true,
+	ShiftLatch: false,
 	Nipples: false,
 	NippleToysOption: false,
 	NippleToysHide: false,

@@ -11784,8 +11784,15 @@ function KDIsArtificial(enemy: entity) {
 	if (enemy.player) {
 		return !!KinkyDungeonFlags.get("Artificial");
 	}
-	return enemy.Enemy?.nonHumanoid || !enemy.Enemy?.bound || enemy.Enemy?.tags?.artificial;
+	return enemy.Enemy?.nonHumanoid || !enemy.Enemy?.bound
+		|| (enemy.Enemy?.tags &&
+			KDArtificialTags.some((tag) => {return enemy.Enemy.tags;}));
 }
+let KDArtificialTags = [
+	"artificial",
+	"puppet",
+	"robot"
+];
 
 
 function KDDoWarning() {

@@ -2526,7 +2526,7 @@ function KinkyDungeonGameKeyDown() {
 }
 
 
-
+let KDLatchtime = 250;
 
 function KinkyDungeonGameKeyUp(lastPress: number): boolean {
 	//if (KDGameData.CurrentDialog) return;
@@ -2539,7 +2539,8 @@ function KinkyDungeonGameKeyUp(lastPress: number): boolean {
 	// Holding for a minute = fail
 	if (delta > 60000) return;
 	// tap = fail
-	if (delta < 250 && !(KDToggles.ShiftLatch && !KinkyDungeonKeybindingCurrentKey.includes("Shift") && KinkyDungeonKeybindingCurrentKeyRelease.includes("Shift"))) return;
+	if (delta < KDLatchtime && !(KDToggles.ShiftLatch
+		&& (CommonTime() - (lastPress[KinkyDungeonKeybindingCurrentKeyRelease] || CommonTime()) > KDLatchtime) && KinkyDungeonKeybindingCurrentKeyRelease.includes("Shift"))) return;
 
 	if (KDCustomKeyUp.some((c) => {return c(KinkyDungeonKeybindingCurrentKey);})) return true;
 	else if (KinkyDungeonState == "Game") {

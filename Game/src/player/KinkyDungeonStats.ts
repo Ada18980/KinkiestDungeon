@@ -1256,7 +1256,7 @@ function KDChangeStamina(src: string, type: string, trig: string, Amount: number
 	)) {
 		let amt = KDCorsetTrainingMult * (stamPre - KinkyDungeonStatStamina);
 		KDTickTraining("Corset", KDGameData.CorsetPower > 0, !KDGameData.CorsetPower, 
-			amt + (KDGameData.CorsetPower), 1 + KDGameData.CorsetPower * 2);
+			amt + (KDGameData.CorsetPower), 0.3 + KDGameData.CorsetPower * 2.7);
 	}
 	return KinkyDungeonStatStamina - stamPre;
 }

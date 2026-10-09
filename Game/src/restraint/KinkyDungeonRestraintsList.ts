@@ -1182,6 +1182,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTagsMult: {ItemPelvisEmpty: 0.33},
 		tightType: "Secure",
 		chastitybra: true, power: 15, weight: 0,
+		corset: .3,
 		Model: "BraCyber",
 		factionFilters: {
 			Display: {color: "Highlight", override: false, overridehsl: true, overridergb: false},
@@ -1209,6 +1210,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Model: "FutureHarness",
 		tightType: "Secure",
 		harness: true,
+		corset: .1,
 		unlimited: true,
 		factionFilters: {
 			Display: {color: "Highlight", override: false, overridehsl: true, overridergb: false},
@@ -2496,6 +2498,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		weight: 2,
 		Model: "LaceBraDeco",
 		playerTagsMult: {ItemPelvisEmpty: 0.33},
+		corset: .1,
 		factionFilters: {
 			BraCups: {color: "DarkNeutral", override: true},
 			BraBase: {color: "LightNeutral", override: true},
@@ -4441,6 +4444,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Rim: {color: "Highlight", override: true},
 
 		},
+		corset: .2,
 		Filters: {
 			Lock: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			Lining: {"gamma":1,"saturation":0,"contrast":2.033333333333333,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -4510,6 +4514,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Rim: {color: "Highlight", override: true},
 
 		},
+		corset: .2,
 		chastitybra: true, power: 6, weight: 3,
 		DefaultLock: "HiSec",
 		Security: {
@@ -4633,6 +4638,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			level_magic: 2,
 			level_key: 3,
 		},
+		corset: .2,
 		Model: "SteelChastityBra_Radial",
 		factionFilters: {
 			Lock: {color: "Highlight", override: true},
@@ -8595,6 +8601,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		chastitybra: true,
 		power: 49,
 		weight: 0,
+		corset: .25,
 		Model: "DivineBra",
 		DefaultLock: "Divine2",
 		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": 1, Pick: -100}, enemyTags: {"divinebra": 10},
@@ -8617,6 +8624,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		chastitybra: true,
 		power: 49,
 		weight: 0,
+		corset: .25,
 		Model: "DivineBraRunic",
 		DefaultLock: "Divine2",
 		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": 1, Pick: -100}, enemyTags: {"divinebra": 10},
@@ -9016,7 +9024,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			level_magic: 4,
 			level_tech: 4,
 		},
-
+		corset: .25,
 		Model: "SteelChastityBra_Segu",
 		Filters: {
 			Lock: {"gamma":1,"saturation":0.06666666666666667,"contrast":2,"brightness":1.25,"red":1,"green":3.7,"blue":4.566666666666666,"alpha":1},
