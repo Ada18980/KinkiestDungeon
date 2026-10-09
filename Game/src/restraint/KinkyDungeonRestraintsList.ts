@@ -1182,7 +1182,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTagsMult: {ItemPelvisEmpty: 0.33},
 		tightType: "Secure",
 		chastitybra: true, power: 15, weight: 0,
-		corset: .3,
+		corset: .2,
 		Model: "BraCyber",
 		factionFilters: {
 			Display: {color: "Highlight", override: false, overridehsl: true, overridergb: false},

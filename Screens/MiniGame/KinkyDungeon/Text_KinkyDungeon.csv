@@ -821,8 +821,8 @@ KinkyDungeonPlayerDamageBuff,"You deal PERCENT more DAMAGETYPE damage."
 KinkyDungeonPlayerBindBuff,"Your bindings are PERCENT more effective."
 KinkyDungeonPlayerDamage,"Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA."
 KinkyDungeonPlayerPlugged,"Plugged!"
-KinkyDungeonPlayerPluggedExtreme,"Plugged up!!!"
-KinkyDungeonPlayerDenied,"Denied! You won't be getting off that easy~"
+KinkyDungeonPlayerPluggedExtreme,"Plugged!!!"
+KinkyDungeonPlayerDenied,"Denied! You won't be getting off that easy~ (Denial Level: ${Denial}%)"
 KinkyDungeonPlayerVibrated0,"Teasing vibrations..."
 KinkyDungeonPlayerVibrated1,"Gentle vibrations..."
 KinkyDungeonPlayerVibrated2,"Mild vibrations..."
@@ -1986,7 +1986,7 @@ KinkyDungeonVibing3,Your toys are buzzing strongly!
 KinkyDungeonVibing4,Your toys vibrate intensely!
 KinkyDungeonVibing5,The vibration is torturous!
 
-KinkyDungeonPlayerEdged,"Edged!"
+KinkyDungeonPlayerEdged,"Edged! (Denial Level: ${Denial}%"
 KinkyDungeonPlayerStatisfied,"Satisfied. Miscast chance is reduced."
 
 

@@ -3202,7 +3202,9 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerStatisfied"), X3, 900 - i * 35, 260, KDBasePink, "#333333"); i++;
 	} else if (KDGameData.OrgasmTurns > KinkyDungeonOrgasmTurnsCrave) {
 		statsDraw.sex = {
-			text: TextGet("KinkyDungeonPlayerEdged"),
+			text: TextGet("KinkyDungeonPlayerEdged", {
+				Denial: Math.round(KDEntityBuffedStat(KDPlayer(), "DenialBonus"))
+			}),
 			icon: "Edged",
 			category: "kinky", color: KDBaseRed, bgcolor: "#333333", priority: 7,
 		};
@@ -3210,7 +3212,9 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 	}
 	if (KDGameData.CurrentVibration  && KDGameData.CurrentVibration.denyTimeLeft > 0) {
 		statsDraw.deny = {
-			text: TextGet("KinkyDungeonPlayerDenied"),
+			text: TextGet("KinkyDungeonPlayerDenied", {
+				Denial: Math.round(KDEntityBuffedStat(KDPlayer(), "DenialBonus"))
+			}),
 			icon: "Denied",
 			category: "kinky", color: KDBaseRed, bgcolor: "#333333", priority: 12,
 		};

@@ -102,6 +102,7 @@ Must do
 - Can now attack ambushers (e.g. from traps) without incurring the wrath of local faction
 - Leash training now grants flat XP based on current training level
 - Angels now only reduce rep when you receive the help rather than when the dialogue starts
+- Being denied for a long time now only gives a bonus to minimum orgasm chance if you have willpower
 
 5.5.2
 - Added WebAudio support for better sound quality
