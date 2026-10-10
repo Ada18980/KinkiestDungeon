@@ -274,14 +274,16 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
         });
 
         if (drawData) {
-            let mult = KDGetFontMult();
-            let textSplit = KinkyDungeonWordWrap(TextGet("KDProgress_" + drawData.type + "_" + drawData.name), 28*mult, 80*mult).split('\n');
+            // let mult = KDGetFontMult();
+            // let textSplit = KinkyDungeonWordWrap(TextGet("KDProgress_" + drawData.type + "_" + drawData.name), 28*mult, 80*mult).split('\n');
             let fsize = 18;
 
-            for (let i = 0; i < textSplit.length; i++) {
-                DrawTextFitKD(textSplit[i], 
-                    x + 50, y + 25 + i * (fsize+1), width - 100, KDTextWhite, KDTextGray0, fsize, "left")
-            }
+            DrawTextFitKDgetHeight(TextGet("KDProgress_" + drawData.type + "_" + drawData.name), x + 50, y + 10, width - 100, KDTextWhite, KDTextGray0, fsize, "left",110, 1.0, undefined, undefined, undefined, true, "top", 22);
+
+            // for (let i = 0; i < textSplit.length; i++) {
+            //     DrawTextFitKD(textSplit[i], 
+            //         x + 50, y + 25 + i * (fsize+1), width - 100, KDTextWhite, KDTextGray0, fsize, "left")
+            // }
 
             if (drawData.effectString) {
                 DrawTextFitKD(TextGet("KDEff" + drawData.type + "_" + drawData.name), 
