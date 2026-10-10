@@ -494,7 +494,7 @@ KDPrisonTypes.DollShoppe = {
 						return "Display";
 					}
 
-					if (KDSoundEnabled() && KDMusicVolume > 0 && KDCurrentSong == "Dressmaker-Shop.ogg") {
+					if (KDSoundEnabled() && KDMusicVolume > 0 && KDCurrentSong != "Dressmaker-Shop.ogg") {
 						KDPlayMusic("Dressmaker-Shop.ogg", undefined, true);
 					}
 					
