@@ -6382,12 +6382,32 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				if (
 					// We are not where we want to be
 					(Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0)
-					&& (!KinkyDungeonEntityAt(enemy.gx, enemy.gy)
+					&& (
+						// OR there is no entity there
+						!KinkyDungeonEntityAt(enemy.gx, enemy.gy)
+						// OR we are higher rank than it and it's not THE entity we are approaching via scripted interaction
 						|| (KDEnemyRank(KinkyDungeonEntityAt(enemy.gx, enemy.gy)) < KDEnemyRank(enemy))
-						|| (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) > 1.5 && (
-							enemy.gx != enemy.gx_ent
-							&& enemy.gy != enemy.gy_ent
-						)))) {
+						// we are not adjacent to the end square and it's either
+						|| (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) > 1.5
+							&& (
+							// THE entity we are approaching via scripted interaction
+							(enemy.gx == enemy.gx_ent
+							&& enemy.gy == enemy.gy_ent)
+							// the enemy is set to overrideMove
+							|| KDEntityHasFlag(enemy, "overrideMove")
+							// a point the enemy cant see
+							|| (KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) > AIData.visionRadius
+								|| !KinkyDungeonCheckPath(
+								enemy.x, enemy.y, enemy.gx, enemy.gy, true,
+								false, 1, true
+							))
+						)))
+						) {
+						// The result: enemies will just not attempt to go to a post if they can't occupy it,
+						// Unless: 
+						// the occupier is targeted
+						// the enemy doesnt see the occupier
+						// The occupier is forcemoved
 						for (let T = 0; T < 8; T++) {
 							let dir = KDGetDir(enemy, {x: enemy.gx, y: enemy.gy}, KinkyDungeonGetDirection);
 							let splice = false;
@@ -10185,6 +10205,7 @@ function KDGetSpecialBuffList(enemy: entity, types: string[]): Record<string, nu
  * @param enemy
  */
 function KDEnemyRank(enemy: entity): number {
+	if (enemy.player) return 0;
 	let tags = enemy.Enemy?.tags;
 	if (tags) {
 		if (tags.stageBoss) return 5;

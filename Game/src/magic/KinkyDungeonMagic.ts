@@ -1755,6 +1755,14 @@ function KinkyDungeonDetectLanguageForMaxWidth(str: string, maxWidthTranslate: n
 }
 
 // https://stackoverflow.com/questions/14484787/wrap-text-in-javascript
+/**
+ * Use DrawTextFitKDgetHeight instead
+ * @deprecated
+ * @param str 
+ * @param maxWidthTranslate 
+ * @param maxWidthEnglish 
+ * @returns 
+ */
 function KinkyDungeonWordWrap(str: string, maxWidthTranslate: number, maxWidthEnglish: number): string {
 	let newLineStr = "\n";
 	let res = '';

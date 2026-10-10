@@ -493,6 +493,10 @@ KDPrisonTypes.DollShoppe = {
 						KinkyDungeonFlags.set("PrisonStorageTimer", 0);
 						return "Display";
 					}
+
+					if (KDSoundEnabled() && KDMusicVolume > 0 && KDCurrentSong == "Dressmaker-Shop.ogg") {
+						KDPlayMusic("Dressmaker-Shop.ogg", undefined, true);
+					}
 					
 					return "Storage";
 				}
@@ -757,6 +761,8 @@ KDPrisonTypes.DollShoppe = {
 				let rad = 3;
 				if (label && (KDistEuclidean(label.x - player.x, label.y - player.y) > rad)) {
 					KDSelectLabel(player, label);
+					if (!KinkyDungeonFlags.get("displayCD"))
+						KDPlayMusic("NightMarket.ogg", undefined, true);
 					KinkyDungeonSetFlag("displayCD", 900);
 					KDRerollJailFlags(player);
 					KinkyDungeonSetFlag("JailRandom", 900); // reroll the random masks

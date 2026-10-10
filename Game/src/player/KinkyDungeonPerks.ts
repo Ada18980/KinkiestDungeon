@@ -900,6 +900,18 @@ let KDPerkStart = {
 		KinkyDungeonAddRestraintIfWeaker("TrapGagLarge", 20, true, "HiSec", false, undefined, undefined, undefined, true);
 
 	},
+	SensesTraining: () =>{
+		KDGameData.Training.Gag = {
+			best_ratio: 0,
+			training_points: 0,
+			training_stage: 0,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+		KinkyDungeonAddRestraintIfWeaker("LeatherHood", 20, true, "HiSec", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("LeatherMask", 20, true, "HiSec", false, undefined, undefined, undefined, true);
+	},
 	HeadStartGag: () =>{
 		KDGameData.Training.Gag = {
 			best_ratio: 0,

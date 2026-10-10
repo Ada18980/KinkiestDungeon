@@ -10993,7 +10993,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 	},
 	"tick": {
 		annoy_puppet: (e, enemy, data) => {
-			if (enemy.hostile) {
+			if (enemy.hostile && enemy.playerdmg > 5) {
 				KinkyDungeonSetFlag("annoy_puppet", 3000);
 			}
 		},

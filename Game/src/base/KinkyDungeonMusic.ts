@@ -238,10 +238,12 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 			KDCurrentLoops = 0;
 			//KDCurrentFade = 1;
 	
+			if (TextGet(Sound) && KDLastSong != Sound)
+				KDSendMusicToast(TextGet(Sound));
+			
 			KDLastSong = Sound;
 			KDCurrentSong = Sound;
-			if (TextGet(Sound))
-				KDSendMusicToast(TextGet(Sound));
+
 			KDNewSong = "";
 			KDMusicBusy = false;
 		} catch(error) {
@@ -263,10 +265,11 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 		audio.play().then(() => {
 			KDCurrentLoops = 0;
 			//KDCurrentFade = 1;
-	
+			
+			if (TextGet(Sound) && KDLastSong != Sound)
+				KDSendMusicToast(TextGet(Sound));
 			KDLastSong = Sound;
 			KDCurrentSong = Sound;
-			KDSendMusicToast(TextGet(Sound));
 			KDNewSong = "";
 			KDMusicBusy = false;
 		}).catch((error) => {
