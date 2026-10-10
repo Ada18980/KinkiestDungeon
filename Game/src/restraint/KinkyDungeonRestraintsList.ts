@@ -4063,6 +4063,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		factionFilters: {
 			TorsoLower: {color: "DarkNeutral", override: false},
 			TorsoUpper: {color: "DarkNeutral", override: false},
+			ArmLeft: {color: "DarkNeutral", override: false},
+			ArmRight: {color: "DarkNeutral", override: false},
+			LegLeft: {color: "DarkNeutral", override: false},
+			LegRight: {color: "DarkNeutral", override: false},
 		},
 		linkCategory: "Catsuits",
 		linkSize: 0.75,
