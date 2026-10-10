@@ -1759,6 +1759,12 @@ function KinkyDungeonActivateWeaponSpell(instant = false) {
 			KinkyDungeonCrystalWarningTime = CommonTime();
 			return true;
 		}
+		let staminaCost =  KinkyDungeonPlayerDamage.special.minStamina || KinkyDungeonPlayerDamage.special.staminaCost;
+		if (staminaCost && !KinkyDungeonHasStamina(staminaCost)) {
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonInsufficientStamina"), KDBaseRed, 1);
+			KinkyDungeonCrystalWarningTime = CommonTime();
+			return true;
+		}
 		if (KinkyDungeonPlayerDamage.special.prereq && KDPrereqs[KinkyDungeonPlayerDamage.special.prereq] && !KDPrereqs[KinkyDungeonPlayerDamage.special.prereq](KinkyDungeonPlayerEntity, undefined, {})) {
 			KinkyDungeonSendActionMessage(8, TextGet("KDPrereqFail" + KinkyDungeonPlayerDamage.special.prereq), KDBaseRed, 1);
 			return true;

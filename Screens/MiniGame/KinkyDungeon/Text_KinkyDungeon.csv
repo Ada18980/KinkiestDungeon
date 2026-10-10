@@ -11796,6 +11796,7 @@ KinkyDungeonRemindJailChaseZombieCommandAssault,"Come... here..."
 KinkyDungeonRemindJailChaseZombieCommandBlock,"*giggles*"
 
 KinkyDungeonInsufficientEnergy,"Out of charge. Use a crystal to recharge."
+KinkyDungeonInsufficientStamina,"Not enough stamina."
 KinkyDungeonSpecialDragonslaver,Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to launch binding belts
 KinkyDungeonSpecialTheEncaser,"25 charge to enter Slime Form for 25 turns, and create slime around yourself."
 KinkyDungeonSpecialFourSeasons,"50 charge to reduce mana cost of next fire, earth, air, and water spell by 50 (once for each element)"

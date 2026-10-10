@@ -1475,6 +1475,15 @@ function KinkyDungeonCastSpell(ttX: number, ttY: number, spell: spell, enemy: en
 								} else {
 									if (energyCost) KDChangeCharge(KinkyDungeonPlayerDamage?.name, "weapon", "wepSpecial", - energyCost);
 								}
+								let staminaCost = KinkyDungeonPlayerDamage.special.minStamina || KinkyDungeonPlayerDamage.special.staminaCost;
+								if (!KinkyDungeonHasStamina(staminaCost)) {
+									if (!KinkyDungeonPlayerDamage.special.noSkip)
+										return {result: "Fail", data: data, location: entity};
+								} else {
+									if (KinkyDungeonPlayerDamage.special.staminaCost) KDChangeStamina(
+										KinkyDungeonPlayerDamage?.name, "weapon", "wepSpecial", 
+										- KinkyDungeonPlayerDamage.special.staminaCost);
+								}
 								KinkyDungeonSendEvent("playerCastSpecial", data);
 								KinkyDungeonSendEvent("afterPlayerCastSpecial", data);
 							}

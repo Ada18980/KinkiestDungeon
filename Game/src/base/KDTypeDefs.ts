@@ -1643,6 +1643,8 @@ interface KDWeaponSpecial {
     selfCast?: boolean;
     requiresEnergy?: boolean;
     energyCost?: number;
+    staminaCost?: number;
+    minStamina?: number;
     range?: number;
 }
 
