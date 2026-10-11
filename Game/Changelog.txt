@@ -76,6 +76,9 @@ Must do
 - Proper stripping
 - species perks
 
+5.5.4
+- Resin is easier to crack
+
 5.5.3
 - Added Leather catsuit (thanks fjarnskaggl for editing work)
 - Added Buttplug.io and Xtoys support

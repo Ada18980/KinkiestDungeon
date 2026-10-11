@@ -309,7 +309,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 										TextGet("KDBondageCondition_" + condition),
 										KDBaseRed, 1, true);
 								} else {
-									let slot_temp = slot || KDGetNPCBindingSlotForItem(restraint, npcID).sgroup;
+									let slot_temp = slot || KDGetNPCBindingSlotForItem(restraint, npcID)?.sgroup;
 									if (slot_temp) {
 										let done = KDSendInput("addNPCRestraint", {
 											slot: slot_temp.id,
@@ -398,7 +398,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 								TextGet("KDBondageCondition_" + condition),
 								KDBaseRed, 1, true);
 						} else {
-							let slot_temp = slot || KDGetNPCBindingSlotForItem(restraint, npcID).sgroup;
+							let slot_temp = slot || KDGetNPCBindingSlotForItem(restraint, npcID)?.sgroup;
 							if (slot_temp) {
 								KDSendInput("addNPCRestraint", {
 									slot: slot_temp.id,
