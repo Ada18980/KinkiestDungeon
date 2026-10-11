@@ -824,7 +824,7 @@ AddModel({
 		{
 			Name: "LeotardUpper",
 			Layer: "TorsoUpper",
-			Pri: 2,
+			Pri: 5,
 			InheritColor: "TorsoUpper",
 			EraseAmount: 100,
 			EraseInvariant: true,
@@ -834,7 +834,7 @@ AddModel({
 		{
 			Name: "LeotardLower",
 			Layer: "TorsoLower",
-			Pri: 2,
+			Pri: 5,
 			InheritColor: "TorsoLower",
 			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Hogtie"},
 		},
@@ -842,7 +842,7 @@ AddModel({
 			Name: "Chest",
 			Layer: "CatsuitChest",
 			ExtraOverrideLayers: ["Chest", "ChestUpper"],
-			Pri: 2,
+			Pri: 5,
 			InheritColor: "TorsoUpper",
 			EraseAmount: 100,
 			EraseInvariant: true,
