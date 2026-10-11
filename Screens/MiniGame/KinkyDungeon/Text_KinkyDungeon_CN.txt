@@ -3952,7 +3952,7 @@ Devious Dungeon Challenge 已启用。
 # :: KinkyDungeonNoWeapon
 # :: KinkyDungeonDamageTypeunarmed
 - Fight with your hands and feet. Counts as teasing if arms are free. 50% chance to stun target if the target is disarmed.
-以手脚攻击。如果手臂未被束缚，则视为挑逗攻击。如果目标处于缴械状态，有50%的几率使其眩晕。
+用身体攻击敌人。如果手臂未被束缚，则视为挑逗攻击。如果目标处于缴械状态，有50%的几率使其眩晕。
 - Deals unarmed damage.
 造成肘击伤害。
 - Sword
@@ -22605,6 +22605,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 - Out of charge. Use a crystal to recharge.
 能量耗尽，请使用水晶进行充能。
+# - Not enough stamina.
 - Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to launch binding belts
 瞄准敌人 : ‎用驯龙者攻击。瞄准一个格子 : ‎花费 8 点能量来发射捆绑带
 - 25 charge to enter Slime Form for 25 turns, and create slime around yourself.
@@ -54235,7 +54236,7 @@ Boss
 - Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions.
 高跟鞋训练影响你穿着越来越高的高跟鞋时保持平衡的能力。通过穿着高跟鞋移动获得训练进度。\n如果在执行操作时未穿着高跟鞋，训练就会失败。
 - Senses training affects your hearing ability and the effectiveness of blindfolds. Levels are gained by detecting enemies by sound before visually spotting them, or by spotting enemies while blindfolded.\nTraining failure occurs you spot enemies while neither blindfolded nor deafened.
-感官训练会影响你的听力以及眼罩的效果。通过在视觉发现敌人之前先通过声音探测到敌人，或在蒙眼时发现敌人获得训练进度。\n如果在视力和听力均未受限的情况下发现敌人，训练就会失败。
+感官训练会影响你的听觉以及佩戴眼罩时的视觉。通过在借助视觉发现敌人之前，先凭借声音探测到敌人，或在视力受限时发现敌人获得训练进度。\n如果在视力和听力均未受限的情况下发现敌人，训练就会失败。
 - Current Progress:
 当前进度 : 
 - Milestones:
