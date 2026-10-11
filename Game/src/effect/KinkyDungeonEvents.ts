@@ -867,7 +867,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 	},
 	"afterDress": {
-		"PrisonerJacket": (_e, item, _data) => {
+		/*"PrisonerJacket": (_e, item, _data) => {
 			if (!StandalonePatched)
 				for (let A = 0; A < KinkyDungeonPlayer.Appearance.length; A++) {
 					let asset = KinkyDungeonPlayer.Appearance[A].Asset;
@@ -908,7 +908,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 						};
 					}
 				}
-		},
+		},*/
 	},
 	"kill": {
 		"MikoGhost": (e, _item, data) => {

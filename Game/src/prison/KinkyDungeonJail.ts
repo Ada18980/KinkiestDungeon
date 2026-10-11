@@ -2003,14 +2003,42 @@ function KDKickEnemies(nearestJail: any, ignoreAware: boolean, Level: number, no
 				if (!nearestJail || (e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags.prisoner && !e.Enemy.tags.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
 					if (!e.leash && !KDIsImmobile(e))
 						if (!already.get(e) && (!nearestJail || KDistChebyshev(e.x - nearestJail.x, e.y - nearestJail.y) <= 4 || (e.aware || e.vp > 0.01 || e.aggro > 0))) {
-							let p = KinkyDungeonGetRandomEnemyPoint(true);
-							if (p) {
-								e.x = p.x;
-								e.y = p.y;
-								e.path = undefined;
-								e.gx = e.x;
-								e.gy = e.y;
-								KDUpdateEnemyCache = true;
+							if (e.spawnX || e.spawnY) {
+								let p = KinkyDungeonEntityAt(e.spawnX, e.spawnY) ? {
+										x: e.gxx, y: e.gyy
+									}
+									: KinkyDungeonGetNearbyPoint(e.spawnX, e.spawnY);
+								if (p) {
+									e.x = p.x;
+									e.y = p.y;
+									e.path = undefined;
+									e.gx = e.x;
+									e.gy = e.y;
+									KDUpdateEnemyCache = true;
+								}
+							} else if (KDGetAI(e) && KDAIType[KDGetAI(e)]?.guard && (e.gxx || e.gyy)) {
+								let p = KinkyDungeonEntityAt(e.gxx, e.gyy) ? {
+										x: e.gxx, y: e.gyy
+									}
+									: KinkyDungeonGetNearbyPoint(e.gxx, e.gyy);
+								if (p) {
+									e.x = p.x;
+									e.y = p.y;
+									e.path = undefined;
+									e.gx = e.x;
+									e.gy = e.y;
+									KDUpdateEnemyCache = true;
+								}
+							} else {
+								let p = KinkyDungeonGetRandomEnemyPoint(true);
+								if (p) {
+									e.x = p.x;
+									e.y = p.y;
+									e.path = undefined;
+									e.gx = e.x;
+									e.gy = e.y;
+									KDUpdateEnemyCache = true;
+								}
 							}
 						}
 
