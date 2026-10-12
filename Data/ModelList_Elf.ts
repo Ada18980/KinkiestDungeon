@@ -205,12 +205,10 @@ AddModel({
 		...GetModelLayers("Sandals", undefined, undefined, undefined, -7),
 		{ Name: "CrystalShoeLeft", Layer: "ShoeLeft", Pri: -6,
 			Poses: ToMap(["Closed", "Spread"]),
-			HideWhenOverridden: true,
 			TieToLayer: "ShoeLeft", NoOverride: true,
 		},
 		{ Name: "CrystalShoeRight", Layer: "ShoeRight", Pri: 6,
 			Poses: ToMap(["Closed", "Spread"]),
-			HideWhenOverridden: true,
 			TieToLayer: "ShoeRight", NoOverride: true,
 		},
 	])
