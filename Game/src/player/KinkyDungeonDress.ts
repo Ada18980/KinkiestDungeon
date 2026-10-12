@@ -1149,7 +1149,7 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 					type = restraint.changeRenderType[key];
 				}
 			}
-			placed.Property = {Type: type, Modules: restraint.Modules, Difficulty: restraint.power, LockedBy: inv.lock || (KDGetCurse(inv) && KDCurses[KDGetCurse(inv)].lock) ? "MetalPadlock" : undefined};
+			placed.Property = {Type: type, Difficulty: restraint.power, LockedBy: inv.lock || (KDGetCurse(inv) && KDCurses[KDGetCurse(inv)].lock) ? "MetalPadlock" : undefined};
 		}
 		return;
 	}
