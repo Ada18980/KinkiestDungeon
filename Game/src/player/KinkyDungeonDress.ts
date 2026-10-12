@@ -1065,18 +1065,18 @@ function KDCharacterAppearanceNaked(C: Character): void {
 function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string = undefined, forceCustomFaction?: boolean): void {
 	if (StandalonePatched) {
 		let restraint = KDRestraint(inv);
-		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
+		let AssetGroup = restraint.Group;
 		let faction = (inv.forceFaction != undefined) ? inv.forceFaction : (((forceCustomFaction || !inv.faction) && customFaction) ? customFaction : (inv.faction ? inv.faction : ""));
 				
 		// faction color system
-		let filters =  (restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters) ?
-			JSON.parse(JSON.stringify(restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters))
+		let filters =  (restraint.Filters || (ModelDefs[restraint.Model])?.Filters) ?
+			JSON.parse(JSON.stringify(restraint.Filters || (ModelDefs[restraint.Model])?.Filters))
 			: {};
-		let Properties =  (restraint.Properties || (ModelDefs[restraint.Model || restraint.Asset])?.Properties) ?
-			JSON.parse(JSON.stringify(restraint.Properties || (ModelDefs[restraint.Model || restraint.Asset])?.Properties))
+		let Properties =  (restraint.Properties || (ModelDefs[restraint.Model])?.Properties) ?
+			JSON.parse(JSON.stringify(restraint.Properties || (ModelDefs[restraint.Model])?.Properties))
 			: {};
-		let factionFilters =  (restraint.factionFilters || (ModelDefs[restraint.Model || restraint.Asset])?.factionFilters) ?
-			JSON.parse(JSON.stringify(restraint.factionFilters || (ModelDefs[restraint.Model || restraint.Asset])?.factionFilters))
+		let factionFilters =  (restraint.factionFilters || (ModelDefs[restraint.Model])?.factionFilters) ?
+			JSON.parse(JSON.stringify(restraint.factionFilters || (ModelDefs[restraint.Model])?.factionFilters))
 			: {};
 		if (!forceCustomFaction) factionFilters = undefined; // not for restraints, those are defined by restraint
 
@@ -1136,7 +1136,7 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 		let placed: Item = null;
 
 		if (!restraint.armor || KDToggles.DrawArmor) {
-			placed = KDAddModel(C, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], "", data.Filters,
+			placed = KDAddModel(C, AssetGroup, ModelDefs[restraint.Model], "", data.Filters,
 				 inv, data.Properties, data.factionFilters);
 		}
 

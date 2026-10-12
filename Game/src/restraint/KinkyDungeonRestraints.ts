@@ -6018,7 +6018,7 @@ function KinkyDungeonRemoveRestraint(Group: string, Keep?: boolean, Add?: boolea
 	for (let item of KinkyDungeonAllRestraint()) {
 		const rest = KinkyDungeonRestraintsCache.get(item.name);
 		if (rest.Group == Group) {
-			let AssetGroup = rest && rest.AssetGroup ? rest.AssetGroup : Group;
+			let AssetGroup = rest && rest.Group ? rest.Group : Group;
 			if (!NoEvent)
 				KinkyDungeonSendEvent("remove", {item: rest, add: Add, keep: Keep, shrine: Shrine});
 
@@ -6884,7 +6884,7 @@ function KDAddCuffVariants (
 			}
 			let props: KDRestraintPropsBase = {
 				Model: CuffModels[cuffPart] || (origRestraint.Model + ModelSuffix + (cuffInfo.ModelSuffix || "")),
-				Asset: CuffAssets[cuffPart] || (origRestraint.Asset),
+				//Asset: CuffAssets[cuffPart] || (origRestraint.Asset),
 				power: origRestraint.power + addPower,
 				shrine: shrine,
 				enemyTags: enemyTags,

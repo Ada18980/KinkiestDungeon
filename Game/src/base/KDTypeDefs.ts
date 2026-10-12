@@ -351,14 +351,10 @@ interface KDRestraintPropsBase {
 	alwaysStruggleable?: boolean,
 	/** Model to use in standalone. Defaults to Asset */
 	Model?: string,
-	Asset?: string,
 	/** Sell price of the item */
 	value?: number,
-	/** Used for when the visual asset in BC is different from the actual group of the item*/
-	AssetGroup?: string,
 	/** Dont render item if has the tags */
 	hideTags?: string[],
-	Color?: string[] | string,
 	/** Maximum level, wont be used at this or higher. Inclusive. */
 	maxLevel?: number,
 	/** Determines the floors the restraint can appear on */
@@ -466,6 +462,20 @@ interface KDRestraintPropsBase {
 	chastity?: boolean,
 	/** the item has a corset strictness */
 	corset?: number,
+	
+	deaf?: number,
+
+	/** Having a tool does not help you */
+	noTool?: boolean
+	/** Being flexible does not help you */
+	noFlex?: boolean
+
+	/** Descriptor for tightness, e.g. Secure, Thick */
+	tightType?: string,
+
+	/** multiplies cut depth AFTER calculation */
+	cutVulnerability?: number,
+
 	/** The item is a chastity bra */
 	chastitybra?: boolean,
 	/** The item is a piercing */
@@ -602,8 +612,6 @@ interface KDRestraintPropsBase {
 	enchanted?: boolean,
 	/** Whether or not this is special in some way*/
 	special?: boolean,
-	/** Faction color index */
-	factionColor?: number[][],
 
 	/** Determines if it gets hidden by the 'Hide Armor' option */
 	armor?: boolean,
@@ -631,19 +639,6 @@ interface restraint extends KDRestraintProps {
 	weight: number,
 	minLevel: number,
 
-	deaf?: number,
-
-	Color?: string[] | string,
-	/** Having a tool does not help you */
-	noTool?: boolean
-	/** Being flexible does not help you */
-	noFlex?: boolean
-
-	/** Descriptor for tightness, e.g. Secure, Thick */
-	tightType?: string,
-
-	/** multiplies cut depth AFTER calculation */
-	cutVulnerability?: number,
 
 	escapeChance: KDEscapeChanceList,
 
@@ -829,12 +824,8 @@ interface overrideDisplayItem {
 	Group: string,
 	/** Standalone model */
 	Model?: string,
-	/** Color */
-	Color: string[]|string,
 	/** Filters */
 	Filters?: Record<string, LayerFilter>,
-	/** Faction color index */
-	factionColor?: number[][],
 	/** Faction filter index */
 	factionFilters?: Record<string, {color: string, override: boolean}>,
 	/** Property for BC compat */
