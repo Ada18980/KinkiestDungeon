@@ -219,6 +219,12 @@ AddModel({
 			NoOverride: true,
 			TieToLayer: "BowCorset"
 		},
+		{ Name: "BowCorsetBow", Layer: "ChestDeco", Pri: -9,
+			Invariant: true,
+			InheritColor: "Bow",
+			NoOverride: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+		},
 	])
 });
 AddModel({
@@ -301,7 +307,6 @@ AddModel({
 
 
 AddModel(GetModelRestraintVersion("BowCorset", true));
-AddModel(GetModelRestraintVersion("BowCorsetBow", true));
 AddModel(GetModelRestraintVersion("BowCorsetOverbust", true));
 AddModel(GetModelRestraintVersion("BowCorsetOverbustBow", true));
 AddModel(GetModelRestraintVersion("BowCorsetLongOverbust", true));

@@ -811,6 +811,14 @@ AddModel({
 			DisplacementSprite: "CorsetSquish",
 			DisplacementInvariant: true,
 		},
+		{ Name: "Buttons", Layer: "Bustier", Pri: 25.1,
+			//SwapLayerPose: {Pants: "CorsetUnder"},
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			NoOverride: true,
+			Invariant: true,
+			TieToLayer: "Corset"
+		},
 	])
 });
 AddModel({
@@ -823,11 +831,16 @@ AddModel({
 		...GetModelLayers("MaidCorset"),
 		{ Name: "CorsetStraps", Layer: "Straps", Pri: 1,
 			Poses: ToMap([...ARMPOSES]),
+			InheritColor: "Straps",
 			MorphPoses: {Boxtie: "Boxtie", Wristtie: "Boxtie"},
 			Invariant: true,
 		},
 	])
 });
+
+
+AddModel(GetModelRestraintVersion("MaidCorsetFull", false),);
+AddModel(GetModelRestraintVersion("MaidCorset", false),);
 
 
 

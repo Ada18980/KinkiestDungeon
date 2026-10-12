@@ -536,8 +536,6 @@ interface KDRestraintPropsBase {
 	addPoseIfTopLevel?: string[],
 	forbidPose?: string[],
 	removePose?: string[],
-	OverridePriority?: number,
-	Modules?: number[],
 	/** When added to the inventory, is added as a different item instead. Good for multiple stages of the same item, like cuffs */
 	inventoryAs?: string,
 	/** When added to the inventory by self, is added as a different item instead. Good for multiple stages of the same item, like cuffs */
@@ -2227,6 +2225,8 @@ type KDPerk = {
 	outfit?: string,
 	require?: string,
 	costGroup?: string,
+	/** Minimum cost after factoring costgroup */
+	costMin?: number,
 	startPriority?: number,
 	requireArousal?: boolean,
 }

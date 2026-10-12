@@ -381,10 +381,10 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"GagTraining": {category: "Start", id: "GagTraining", cost: 0, tags: ["gag"]},
 	"ClassicHeels": {category: "Toggles", id: "ClassicHeels", cost: 0, tags: ["start"], blocktags: ["heels"]},
 
-	"MasteryHeels": {category: "Training", id: "MasteryHeels", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
-	"MasteryCorset": {category: "Training", id: "MasteryCorset", cost: -1, tags: ["corset"]},
-	"MasteryGag": {category: "Training", id: "MasteryGag", cost: -1, tags: ["gag"]},
-	"MasterySenses": {category: "Training", id: "MasterySenses", cost: -1, tags: ["senses"]},
+	"MasteryHeels": {category: "Training", id: "MasteryHeels", cost: -1, tags: ["heels"], block: ["ClassicHeels"], costGroup: "mastery", costMin: -0.5},
+	"MasteryCorset": {category: "Training", id: "MasteryCorset", cost: -1, tags: ["corset"], costGroup: "mastery", costMin: -0.5},
+	"MasteryGag": {category: "Training", id: "MasteryGag", cost: -1, tags: ["gag"], costGroup: "mastery", costMin: -0.5},
+	"MasterySenses": {category: "Training", id: "MasterySenses", cost: -1, tags: ["senses"], costGroup: "mastery", costMin: -0.5},
 	"PoorBalance": {category: "Combat", id: "PoorBalance", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
 	"HeadStartHeels": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "heels"], block: ["ClassicHeels"]},
 	"HeadStartCorset": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "corset"]},
@@ -557,7 +557,7 @@ function KDGetPerkCost(perk: KDPerk): number {
 			costGroups[KinkyDungeonStatsPresets[p].costGroup] = KinkyDungeonStatsPresets[p].cost;
 		}
 	}
-	if (costGroups[perk.costGroup] != undefined && perk.cost >= costGroups[perk.costGroup]) return 0;
+	if (costGroups[perk.costGroup] != undefined && perk.cost >= costGroups[perk.costGroup]) return perk.costMin || 0;
 	else return perk.cost;
 }
 
@@ -874,7 +874,7 @@ let KDPerkStart = {
 			turns_total: 0,
 			turns_trained: 0,
 		};
-		KinkyDungeonAddRestraintIfWeaker("DressCorset", 20, true, "HiSec", false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("TrainingCorset", 20, true, "HiSec", false, undefined, undefined, undefined, true);
 
 	},
 	HeadStartCorset: () =>{

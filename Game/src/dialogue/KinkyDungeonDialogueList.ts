@@ -2071,6 +2071,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 											en, false, undefined, {npc: en.id}
 										);
 										if (added && KDAddToParty(en)) {
+											
+											KDUnlockPerk("DollShoppeStart");
 											KDRemoveLeashRemovedRestraints(player)
 											delete en.despawnX;
 											delete en.goToDespawn;
@@ -7161,6 +7163,7 @@ function KDMakeIntoDoll(player: entity) {
 				KinkyDungeonSetFlag("Transformed", -1);
 
 				KinkyDungeonStatsChoice.set("SpeciesDoll", true);
+				KDUnlockPerk("DollShoppeStart");
 				let body = KinkyDungeonPlayer.Appearance.find((item) => {
 					return item.Model?.Group == "Body"
 				});

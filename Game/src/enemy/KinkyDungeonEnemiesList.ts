@@ -296,7 +296,9 @@ let KinkyDungeonEnemies: enemy[] = [
 
 	// End Quest NPC
 
-	{name: "DirtPile", tags: KDMapInit(["poisonmmune", "soulimmune", "dirt", "immobile", "noknockback", "melee", "nofidget", "notalk", "nonvulnerable", "nobrain", "nosignal", "acidweakness", "soapsevereweakness"]),
+	{name: "DirtPile", tags: KDMapInit(["poisonmmune", "soulimmune", "dirt", "immobile", "noknockback", "melee",
+		"peaceful",
+		"nofidget", "notalk", "nonvulnerable", "nobrain", "nosignal", "acidweakness", "soapsevereweakness"]),
 		faction: "Door", spellResist: -3, lowpriority: true, evasion: -100, armor: -1, followRange: 100, AI: "wander",
 		visionRadius: 0, maxhp: 4, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		ondeath: [

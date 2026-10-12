@@ -4144,9 +4144,12 @@ KDBedTrapSleepsackLiedown,"The sheets snap up around you, encasing you in straps
 RestraintBindingDress,Binding Dress
 RestraintBindingDressDesc,"It's a devious dress! I hope your elbows are flexible~"
 RestraintBindingDressDesc2,"So many laces! It would take quite a while to put this on normally. That's what magic is for!"
-RestraintDressCorset,Ornamental Corset
-RestraintDressCorsetDesc,"Your figure looks gorgeous in this, but not so much your athletic capabilities."
-RestraintDressCorsetDesc2,"The laces are impressively tight, the boning is steel but ultimately it's made of delicate fabric. You wouldn't possibly cut it, would you?"
+RestraintDressCorset,Costume Corset
+RestraintDressCorsetDesc,"A mostly decorative corset that nonetheless somewhat restricts your breathing capabilities."
+RestraintDressCorsetDesc2,"It's not overly tight due to the resin boning, but it's so pretty you wouldn't want to damage it, would you?"
+RestraintDressCorset2,Ornamental Corset
+RestraintDressCorset2Desc,"Your figure looks gorgeous in this, but not so much your athletic capabilities."
+RestraintDressCorset2Desc2,"The laces are impressively tight, the boning is steel but ultimately it's made of delicate fabric. You wouldn't possibly cut it, would you?"
 
 RestraintDressGag,Fancy Ball Gag
 RestraintDressGagDesc,"A cute ball gag that fills your mouth right up!"
@@ -4758,6 +4761,9 @@ RestraintTrapBootsDesc2,"These will take some getting used to."
 RestraintTrainingHeels,Training Heels
 RestraintTrainingHeelsDesc,"A pair of unreasonably high heels owned by you personally."
 RestraintTrainingHeelsDesc2,"These will take some getting used to."
+RestraintTrainingCorset,Training Corset
+RestraintTrainingCorsetDesc,"An unreasonably tight corset owned by you personally."
+RestraintTrainingCorsetDesc2,"This will take some getting used to."
 RestraintTrapLegirons,Leg Irons
 RestraintTrapLegironsDesc,"A pair of solid steel cuffs connecting your ankles inescapably."
 RestraintTrapLegironsDesc2,"The lock doesn't seem very complicated."
@@ -28001,6 +28007,38 @@ m_FashionPumpkinVineHarness_l_FlowerR,FlowerR
 m_FashionPumpkinVineHarness_l_BudL,BudL
 m_FashionPumpkinVineHarness_l_BudR,BudR
 
+m_TransparentLeatherLeotard,TransparentLeatherLeotard
+m_TransparentLeatherLeotard_l_TorsoUpper,TorsoUpper
+m_TransparentLeatherLeotard_l_TorsoLower,TorsoLower
+m_TransparentLeatherLeotard_l_TorsoUpper,TorsoUpper
+m_MaidCorset_l_Buttons,Buttons
+m_MaidCorsetFull_l_Buttons,Buttons
+m_MaidCorsetFull_l_Straps,Straps
+m_MaidCorsetFullRestraint,MaidCorsetFullRestraint
+m_MaidCorsetFullRestraint_l_Corset,Corset
+m_MaidCorsetFullRestraint_l_Buttons,Buttons
+m_MaidCorsetFullRestraint_l_Straps,Straps
+m_MaidCorsetRestraint,MaidCorsetRestraint
+m_MaidCorsetRestraint_l_Corset,Corset
+m_MaidCorsetRestraint_l_Buttons,Buttons
+m_Maid_l_Buttons,Buttons
+m_Maid_l_Straps,Straps
+m_BowCorset_l_Bow,Bow
+m_BowCorsetOverbust_l_Bow,Bow
+m_BowCorsetRestraint_l_Bow,Bow
+m_BowCorsetOverbustRestraint_l_Bow,Bow
+m_Headphones,Headphones
+m_Headphones_l_Band,Band
+m_Headphones_l_Mic,Mic
+m_Headphones_l_Headphone,Headphone
+m_Headphones_l_HeadphoneGlow1,HeadphoneGlow1
+m_Headphones_l_HeadphoneGlow2,HeadphoneGlow2
+m_Headphones_l_MicGlow,MicGlow
+m_LeatherMaskRestraint,LeatherMaskRestraint
+m_LeatherMaskRestraint_l_Hood,Hood
+m_LeatherMaskRestraint_l_HoodCollar,HoodCollar
+m_LeatherMaskRestraint_l_Gag,Gag
+m_LeatherMaskRestraint_l_Blindfold,Blindfold
 
 m_Aura_Bang,Aura_Bang
 m_Aura_Bang_l_Front,Front
