@@ -3888,7 +3888,8 @@ KinkyDungeonObjectChest,"Chest"
 KinkyDungeonObjectDoor,"Door"
 KinkyDungeonObjectPerkOrb,"Perk Shrine"
 KinkyDungeonObjectConveyor,It's a conveyor belt. It conveys.
-KinkyDungeonObjectDollTerminal,A passage to the deeper levels of the Facility.
+KinkyDungeonObjectDollTerminal,A chute to an unknown part of the Facility.
+KinkyDungeonObjectBondageMachine,A machine for the automatic binding of its occupants.
 
 
 KinkyDungeonCloseDoorDone,"You slam the door and jam it shut!"

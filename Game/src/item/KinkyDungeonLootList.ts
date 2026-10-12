@@ -1539,13 +1539,13 @@ let KDLootEvents: Record<string, lootEventFunc> = {
 		if (enemy && KinkyDungeonSummonEnemy(x, y, enemy.name, 1, 2.5)) {
 			return {
 				value: 0,
-				Replacemsg: "LootBookshelfTome",
+				Replacemsg: TextGet("LootBookshelfTome"),
 			};
 		}
 		
 		return {
 			value: 0,
-			Replacemsg: "LootBookshelfTomeFail",
+			Replacemsg: TextGet("LootBookshelfTomeFail"),
 		};
 	},
 	"DollMirror": (_Loot, _Floor, Replacemsg, _Lock, container, x, y, data) => {
