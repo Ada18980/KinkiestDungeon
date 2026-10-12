@@ -852,9 +852,9 @@ AddModel({
 	]),
 });
 AddModel({
-	Name: "TransparentLeatherLeotard",
+	Name: "TransparentLeatherCatsuitLeotard",
 	TopLevel: false,
-	Parent: "LeatherLeotard",
+	Parent: "LeatherCatsuitLeotard",
 	Categories: ["Suits"],
 	Folder: "LeatherCatsuit",
 	Group: "LeatherCatsuit",
@@ -875,6 +875,7 @@ AddModel({
 			Layer: "TorsoLower",
 			Pri: 5,
 			InheritColor: "TorsoLower",
+			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Hogtie"},
 		},
 		{
 			Name: "Chest",
