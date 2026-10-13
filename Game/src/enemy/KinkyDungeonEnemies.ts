@@ -6702,7 +6702,6 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 	let first = true;
 	AIData.canTease = (!AIData.canAttack
 			|| (enemy.attackPoints < 1 && !KDEnemyHasFlag(enemy, "attacked")))
-		&& !(enemy.disarm > 0)
 		&& AIData.wantsToTease
 		&& (player?.player)
 		&& ((enemy.aware && (!player.player || enemy.vp > 0.25)
@@ -10997,6 +10996,7 @@ function KDGetTeaseAttack(enemy: entity, player: entity, AData: KDAIData): KDTea
 
 function KDBasicTeaseAttack(enemy: entity, player: entity, aiData: KDAIData, noglobal?: boolean, dist: number = 1.5): boolean {
 	return  player.player
+		&& !(enemy.disarm > 0)
 		&& (enemy.playWithPlayer && !KinkyDungeonAggressive(enemy) || KDEntityHasFlag(enemy, "alwaysTease"))
 		&& (!aiData.domMe || KDEnemyHasFlag(enemy, "forcetease") || KDEnemyHasFlag(enemy, "alwaystease"))
 	    &&  KDistChebyshev(enemy.x-player.x, enemy.y - player.y) < dist
