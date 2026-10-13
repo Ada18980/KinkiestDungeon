@@ -8041,8 +8041,9 @@ TYPE女神的神泉。
 特质神泉
 - It's a conveyor belt. It conveys.
 这是传送带，它负责传送。
-- A passage to the deeper levels of the Facility.
+- A chute to an unknown part of the Facility.
 通往设施更深层级的通道。
+# - A machine for the automatic binding of its occupants.
 
 
 - You slam the door and jam it shut!
@@ -8618,6 +8619,12 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 这是一件不寻常的衣服！希望你的手肘足够柔韧~
 - So many laces! It would take quite a while to put this on normally. That's what magic is for!
 真多系带啊！穿上这件衣服一般要花费很长时间，但这就是魔法派上用场的时候了！
+- Costume Corset
+装饰束腰
+- A mostly decorative corset that nonetheless somewhat restricts your breathing capabilities.
+你的身材穿上这件衣服看起来真漂亮，只是运动能力没有那么出色了。
+- It's not overly tight due to the resin boning, but it's so pretty you wouldn't want to damage it, would you?
+束带紧得惊人，支撑用的是钢，但终究还是精致织物制成。你总不会想把它剪断吧？
 - Ornamental Corset
 装饰束腰
 - Your figure looks gorgeous in this, but not so much your athletic capabilities.
@@ -9996,6 +10003,9 @@ RestraintName 上的诅咒解除了！
 训练高跟鞋
 - A pair of unreasonably high heels owned by you personally.
 你个人拥有的一双高得离谱的高跟鞋。
+# - Training Corset
+# - An unreasonably tight corset owned by you personally.
+# - This will take some getting used to.
 - Leg Irons
 脚镣
 - A pair of solid steel cuffs connecting your ankles inescapably.
@@ -10031,6 +10041,7 @@ RestraintName 上的诅咒解除了！
 # :: m_FashionHarnessBlindfold_l_Blindfold
 # :: m_HighSecBlindfold_l_Blindfold
 # :: m_FashionHighSecBlindfold_l_Blindfold
+# :: m_LeatherMaskRestraint_l_Blindfold
 # :: m_HighSecBlindfoldRestraint_l_Blindfold
 # :: KDBindNPCSlot_InterHead
 # :: KDBindNPCSlot_OuterHead
@@ -28621,6 +28632,10 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 蝴蝶结
 # :: m_LeatherCollarBow_l_Bow
 # :: m_FashionLeatherCollarBow_l_Bow
+# :: m_BowCorset_l_Bow
+# :: m_BowCorsetOverbust_l_Bow
+# :: m_BowCorsetRestraint_l_Bow
+# :: m_BowCorsetOverbustRestraint_l_Bow
 :: KDWeaponTag_bow
 弓
 - MaidCorset
@@ -28676,6 +28691,8 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_HighSecCorset_l_Corset
 # :: m_HighSecCorsetRestraint_l_Corset
 # :: m_HighSecCorsetRestraint_l_Corset
+# :: m_MaidCorsetFullRestraint_l_Corset
+# :: m_MaidCorsetRestraint_l_Corset
 # :: m_HighSecCorsetNoCrotch_l_Corset
 # :: m_HighSecCorsetNoCrotch_l_Corset
 # :: m_HighSecCorsetNoCrotchRestraint_l_Corset
@@ -30109,6 +30126,7 @@ Dask眼
 # :: m_TransparentCatsuitLowerLowRise_l_TorsoLower
 # :: m_TransparentCatsuitLowerLowRise_l_TorsoLower
 # :: m_TransparentCatsuitLowerLowRise_l_TorsoLower
+# :: m_TransparentLeatherLeotard_l_TorsoLower
 # :: m_TransparentLeatherCatsuitLower_l_TorsoLower
 # :: m_TransparentLeatherCatsuitLower_l_TorsoLower
 # :: m_TransparentLeatherCatsuitLower_l_TorsoLower
@@ -30212,6 +30230,8 @@ Dask眼
 # :: m_TransparentCatsuitUpperCropped_l_TorsoUpper
 # :: m_TransparentCatsuitUpperCropped_l_TorsoUpper
 # :: m_TransparentCatsuitUpperCropped_l_TorsoUpper
+# :: m_TransparentLeatherLeotard_l_TorsoUpper
+# :: m_TransparentLeatherLeotard_l_TorsoUpper
 # :: m_TransparentLeatherCatsuitUpper_l_TorsoUpper
 # :: m_TransparentLeatherCatsuitUpper_l_TorsoUpper
 # :: m_TransparentLeatherCatsuitUpper_l_TorsoUpper
@@ -37443,6 +37463,7 @@ Aura刘海(右后)
 # :: m_HighSecCuffsFull_l_Band
 # :: m_HighSecCuffsFull_l_Band
 # :: m_HighSecCuffsFull_l_Band
+# :: m_Headphones_l_Band
 # :: m_HighSecCollarRestraint_l_Band
 # :: m_WolfCuffsAnklesRestraint_l_Band
 # :: m_WolfCuffsAnklesRestraint_l_Band
@@ -40049,6 +40070,9 @@ Aura刘海(右后)
 # :: m_FashionSleepsackJacket_l_Straps
 # :: m_FashionSleepsackJacket_l_Straps
 # :: m_FashionSleepsackJacket_l_Straps
+# :: m_MaidCorsetFull_l_Straps
+# :: m_MaidCorsetFullRestraint_l_Straps
+# :: m_Maid_l_Straps
 # :: m_LatexDollMittsLong_l_Straps
 # :: m_LatexDollMittsLong_l_Straps
 # :: m_LatexDollMittsLong_l_Straps
@@ -40162,6 +40186,7 @@ Aura刘海(右后)
 # :: m_FashionLeatherMask_l_Hood
 # :: m_LeatherHood_l_Hood
 # :: m_FashionLeatherHood_l_Hood
+# :: m_LeatherMaskRestraint_l_Hood
 - Gag
 口塞
 # :: m_LeatherMask_l_Gag
@@ -40188,6 +40213,7 @@ Aura刘海(右后)
 # :: m_NeckCorsetGag_l_Gag
 # :: m_ShinyLatexMuzzleRestraint_l_Gag
 # :: m_NeckCorsetGagRestraint_l_Gag
+# :: m_LeatherMaskRestraint_l_Gag
 # :: KDBindNPCSlot_InterGag
 - FashionLeatherMask
 装饰性皮革面具
@@ -40683,6 +40709,11 @@ Aura刘海(右后)
 按钮
 # :: m_GothicSkirt_l_Buttons
 # :: m_GothicSkirtLace_l_Buttons
+# :: m_MaidCorset_l_Buttons
+# :: m_MaidCorsetFull_l_Buttons
+# :: m_MaidCorsetFullRestraint_l_Buttons
+# :: m_MaidCorsetRestraint_l_Buttons
+# :: m_Maid_l_Buttons
 # - HemLower
 # :: m_GothicSkirt_l_HemLower
 # :: m_GothicSkirtLace_l_HemLower
@@ -41080,6 +41111,7 @@ Aura刘海(右后)
 # :: m_FashionLeatherMask_l_HoodCollar
 # :: m_LeatherHood_l_HoodCollar
 # :: m_FashionLeatherHood_l_HoodCollar
+# :: m_LeatherMaskRestraint_l_HoodCollar
 # - BigBallTeethFang
 # :: m_LargeBallGag_l_BigBallTeethFang
 # :: m_LargeBallGagHarness_l_BigBallTeethFang
@@ -44699,6 +44731,18 @@ Vents发型
 # :: m_FashionPumpkinVineHarness_l_BudR
 # - FashionPumpkinVineHarness
 
+# - TransparentLeatherLeotard
+# :: m_TransparentLeatherLeotard
+# :: m_TransparentLeatherCatsuitLeotard
+# - MaidCorsetFullRestraint
+# - MaidCorsetRestraint
+# - Headphones
+# - Mic
+# - Headphone
+# - HeadphoneGlow1
+# - HeadphoneGlow2
+# - MicGlow
+# - LeatherMaskRestraint
 
 - Aura_Bang
 Aura刘海
@@ -44885,7 +44929,6 @@ Kjus眼5
 # :: m_NeoAnkleLink_l_AnkleLinkHardware
 # :: m_FashionNeoAnkleLink_l_AnkleLinkHardware
 
-# - TransparentLeatherLeotard
 
 
 
