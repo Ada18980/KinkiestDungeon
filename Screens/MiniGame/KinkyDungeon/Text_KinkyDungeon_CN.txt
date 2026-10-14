@@ -724,25 +724,25 @@ Sub
 - Brawler
 格斗大师
 - Unarmed attacks deal +10 damage and being bound does not decrease unarmed damage.
-肘击伤害 +10，被束缚不会减少肘击伤害。
+空手攻击伤害 +10，被束缚不会减少肘击伤害。
 
 - Way of the Squish
-轻抚之肘
+轻抚之手
 - Unarmed attacks deal grope damage against humans.
-肘击会对人类造成抚摸伤害。
+空手攻击会对人类造成抚摸伤害。
 - Way of the Spank
-疼痛之肘
+疼痛之手
 - Unarmed attacks deal pain damage against humans.
-肘击会对人类造成疼痛伤害。
+空手攻击会对人类造成疼痛伤害。
 - Way of the Feather
-搔痒之肘
+搔痒之手
 - Unarmed attacks deal tickle damage against humans.
-肘击会对人类造成挠痒伤害。
+空手攻击会对人类造成挠痒伤害。
 
 - Harmless
 手脚无力
 - Unarmed attacks deal half damage and cost 2x as much stamina.
-肘击仅造成一半伤害并消耗 2 倍的体力。
+空手攻击仅造成一半伤害并消耗 2 倍的体力。
 
 
 - Clumsy
@@ -3947,14 +3947,14 @@ Devious Dungeon Challenge 已启用。
 - Deals fire damage. Provides light.
 造成火焰伤害。可以提供光亮。
 - Unarmed
-肘击
+空手
 # :: KinkyDungeonInventoryItemUnarmed
 # :: KinkyDungeonNoWeapon
 # :: KinkyDungeonDamageTypeunarmed
 - Fight with your hands and feet. Counts as teasing if arms are free. 50% chance to stun target if the target is disarmed.
-用身体攻击敌人。如果手臂未被束缚，则视为挑逗攻击。如果目标处于缴械状态，有50%的几率使其眩晕。
+以手脚攻击敌人。如果手臂未被束缚，则视为挑逗攻击。如果目标处于缴械状态，有50%的几率使其眩晕。
 - Deals unarmed damage.
-造成肘击伤害。
+造成空手攻击伤害。
 - Sword
 剑
 - the steel is strong, and the blade true.
@@ -14165,15 +14165,15 @@ Ars烟火
 - Martial Arts I
 武术 I
 - Unarmed strikes gain 15% accuracy and -10% stamina cost.
-肘击提高 15% 命中率并且 -10% 的体力消耗。
+空手攻击提高 15% 命中率并且 -10% 的体力消耗。
 - Martial Arts II
 武术 II
 - Unarmed strikes gain 20% accuracy (35% total) and -15% stamina cost (25% total).
-肘击提高 20% 命中率 ( 总计 35% ) 并且 -15% 的体力消耗 ( 总计 25% ) 。
+空手攻击提高 20% 命中率 ( 总计 35% ) 并且 -15% 的体力消耗 ( 总计 25% ) 。
 - Martial Arts III
 武术 III
 - Unarmed strikes gain 25% accuracy (60% total) and -25% stamina cost (50% total).
-肘击提高 25% 命中率 ( 总计 60% ) 并且 -25% 的体力消耗 ( 总计 50% ) 。
+空手攻击提高 25% 命中率 ( 总计 60% ) 并且 -25% 的体力消耗 ( 总计 50% ) 。
 
 - Precise Critical
 精准暴击
@@ -41437,7 +41437,7 @@ Aura刘海(右后)
 # :: m_FashionFestiveHarness_l_Fluff
 # :: m_FashionFestiveHarness_l_Fluff
 - Orb
-绒布球
+法珠
 :: m_SantaHat_l_Orb
 绒布球
 # :: KDMinimapLabel_Orb
@@ -48837,11 +48837,11 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Kinetic Slash
 念动斩
 - Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 80% weapon damage. Counts as an attack. +10 mana cost if wielding a Heavy weapon.
-命令装备的武器（不支持肘击或无需用手的武器）直线挥击，对途中敌人造成 20 点 + 80% 的武器伤害。记作一次攻击。使用重型武器时 +10 法力消耗。
+命令装备的武器（不支持空手攻击或无需用手的武器）直线挥击，对途中敌人造成 20 点 + 80% 的武器伤害。记作一次攻击。使用重型武器时 +10 法力消耗。
 - You swing!
 你命令武器攻击！
 - Choose where to swing (must not be unarmed or hands free weapon)
-选择挥动的位置 ( 不得使用肘击或无需通过手臂即可使用的武器 )
+选择挥动的位置 ( 不得使用空手攻击或无需通过手臂即可使用的武器 )
 
 
 - Kinetic Lance
@@ -53858,7 +53858,7 @@ ${EnemyName} 格挡了 ${Amount} 点 ${Type} 伤害。
 - The Latex Kitty curse on the RestraintName relaxes and releases you.
 RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 - The curse's strength is AMNT. Deal glue damage via unarmed attacks to weaken the curse.
-诅咒的强度为 AMNT。通过肘击来造成胶体伤害以削弱诅咒。
+诅咒的强度为 AMNT。通过空手攻击来造成胶体伤害以削弱诅咒。
 - The Curse of the Latex Kitty keeps this tightly wrapped around you.
 乳胶猫娘诅咒使它紧紧地包裹着你。
 - You transfer some of your ${Item}'s curse to ${Target}.
