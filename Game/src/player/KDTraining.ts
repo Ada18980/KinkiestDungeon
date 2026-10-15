@@ -182,7 +182,7 @@ function KDCheckLevelUp(training: string, player: entity) {
 	}
 	while (data.training_points > (data.training_stage + 1) * costmult) {
 
-		KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, 
+		KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * KDFloaterSpacingOverride}, 
 			TextGet("KDLevelUpStat", {
 				STAT: TextGet("KDProgressItem_Training" + training)
 			}), KDBaseWhite, 5, true);

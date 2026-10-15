@@ -81,6 +81,7 @@ Must do
 
 5.5.3
 - Added Leather catsuit (thanks fjarnskaggl for editing work)
+- Added Gothic Bra/Panties
 - Added Buttplug.io and Xtoys support
 - Added perk "Layers Under Layers" which enables the excessive restraint stacking behavior you all love
 - Added 'Default to RGB Color Picker' option to Character options

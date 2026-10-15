@@ -527,6 +527,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		OldSubmeshes = data.ContainerInfo.Submeshes;
 		for (let submesh of OldSubmeshes.values()) {
 			KDMeshToDestroy.push(submesh.mesh);
+			//submesh.mesh.texture.destroy();
+			//KDRenderTexToDestroy.push(submesh.mesh.texture);
 		}
 		MC.Update.delete(containerID);
 		MC.Refresh.delete(containerID);
@@ -536,6 +538,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		MC.Containers.get(containerID).Container.destroy();
 		//MC.Containers.get(containerID).Mesh.destroy();
 		KDMeshToDestroy.push(MC.Containers.get(containerID).Mesh);
+		//MC.Containers.get(containerID).Mesh.texture.destroy();
 		KDRenderTexToDestroy.push(MC.Containers.get(containerID).RenderTexture);
 		/*for (let submesh of MC.Containers.get(containerID).Submeshes.values()) {
 			KDMeshToDestroy.push(submesh.mesh);

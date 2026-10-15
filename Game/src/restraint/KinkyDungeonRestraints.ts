@@ -5773,7 +5773,7 @@ function KDAddRestraintForce (
 				if (!Link && !Unlink && KinkyDungeonState == "Game") {
 					KDDoRestraintParticlePlayer(restraint);
 					
-					KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, `+${TextGet("Restraint" + restraint.name)}!`, "pink", 5, true);
+					KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * KDFloaterSpacingOverride}, `+${TextGet("Restraint" + restraint.name)}!`, "pink", 5, true);
 					KDRecentRepIndex += 1;
 				}
 				return ret;
@@ -5906,7 +5906,7 @@ function KDAddRestraintForce (
 				if (!Link && !Unlink && KinkyDungeonState == "Game") {
 					KDDoRestraintParticlePlayer(restraint);
 					
-					KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, `+${TextGet("Restraint" + restraint.name)}!`, "pink", 5, true);
+					KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * KDFloaterSpacingOverride}, `+${TextGet("Restraint" + restraint.name)}!`, "pink", 5, true);
 					KDRecentRepIndex += 1;
 				}
 			} else if ((!Link && !linked) || SwitchItems) {
@@ -6347,7 +6347,7 @@ function KinkyDungeonLinkItem (
 			if (KinkyDungeonState == "Game") {
 				KDDoRestraintParticlePlayer(newRestraint);
 				
-				KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * 40}, 
+				KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * KDFloaterSpacingOverride}, 
 					`+${TextGet("Restraint" + newRestraint.name)}!`, "pink", 
 					5, true);
 				KDRecentRepIndex += 1;

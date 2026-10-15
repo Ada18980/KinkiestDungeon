@@ -3520,11 +3520,6 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 
 	KDGameData.WarningTiles = {};
 
-	if (delta > 0 && CommonTime() > lastFloaterRefresh + 1000) {
-		KDEntitiesFloaterRegisty = new Map();
-		lastFloaterRefresh = CommonTime();
-	}
-
 
 
 	let pauseTime = false;

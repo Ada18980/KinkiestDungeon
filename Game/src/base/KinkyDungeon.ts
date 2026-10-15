@@ -3337,6 +3337,13 @@ function KinkyDungeonRun() {
 	KDCullSprites();
 	KDCullRTList(kdRTcache);
 	KDCullTexList(kdTexcache);
+	
+	if (CommonTime() > lastFloaterRefresh + KDFloaterRefreshTime) {
+		KDEntitiesFloaterRegisty = new Map();
+		lastFloaterRefresh = CommonTime();
+
+	}
+
 
 
 

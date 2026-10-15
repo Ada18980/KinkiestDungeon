@@ -30002,6 +30002,7 @@ KDXRay,X-Ray Vision
 KDQuickInv,Show Quick Inventory
 KDToggleAutoSprint,Auto-Sprint when Slowed
 KDToggleSkipTutorial,Skip Tutorial
+KDToggleThighVibe,Visible Vibrating Toys
 KDToggleModCompat,Mod Compat Mode (requires reload)
 KDToggleFlashingWarning,Flashing Warning Tiles
 KDToggleCenteredLog,Centered Message Log

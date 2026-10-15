@@ -257,6 +257,8 @@ function KDRepBarColor(value: number) {
 	return color;
 }
 
+let KDRepIndexShiftAMT
+
 /**
  * @param Rep
  * @param Amount
@@ -275,7 +277,7 @@ function KinkyDungeonChangeFactionRep(Rep: string, Amount: number): boolean {
 
 	if (curr != last) {
 		let amount = 0.5*(Amount > 0 ? Math.ceil : Math.floor)((curr - last)*10000)/100; // 0.5% due to the fact that the scale is -1 to +1 but it gets mapped from 0 to 100%
-		KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonFaction" + Rep)} rep`, KDBaseWhite, 5, true);
+		KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * KDFloaterSpacingOverride}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonFaction" + Rep)} rep`, KDBaseWhite, 5, true);
 		KDRecentRepIndex += 1;
 	}
 
@@ -310,7 +312,7 @@ function KinkyDungeonChangeRep(Rep: string, Amount: number, player?: entity): bo
 		if (Math.abs(KinkyDungeonGoddessRep[Rep] - start) > 0.1) {
 			let value = KinkyDungeonGoddessRep[Rep] - start;
 			let amount = Math.round((value)*10)/10;
-			KinkyDungeonSendFloater({x: 700, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonShrine" + Rep)} ${!KDStatRep.includes(Rep) ? TextGet("KDRep") : ""}`, KDBaseWhite, 5, true);
+			KinkyDungeonSendFloater({x: 700, y: 800 - KDRecentRepIndex * KDFloaterSpacingOverride}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonShrine" + Rep)} ${!KDStatRep.includes(Rep) ? TextGet("KDRep") : ""}`, KDBaseWhite, 5, true);
 			KDRecentRepIndex += 1;
 		}
 

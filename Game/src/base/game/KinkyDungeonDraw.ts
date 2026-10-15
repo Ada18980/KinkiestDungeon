@@ -2600,7 +2600,7 @@ function KDCanAttack() {
 	return KinkyDungeonHasStamina(Math.abs(attackCost), true);
 }
 
-let KinkyDungeonFloaters = [];
+let KinkyDungeonFloaters: KDFloater[] = [];
 let KinkyDungeonLastFloaterTime = 0;
 
 let KDTimescale = 0.004;
@@ -2610,6 +2610,8 @@ let KDBulletSpeed = 40;
 let KDEntitiesFloaterRegisty = new Map();
 /// @ts-ignore   Weird tsserver error about `KinkyDungeonGridSizeDisplay` being used before being defined.  `tsc` doesn't seem to care.
 let KDFloaterSpacing = 18 / KinkyDungeonGridSizeDisplay;
+let KDFloaterSpacingOverride = 18;
+let KDFloaterRefreshTime = 1000;
 
 function KinkyDungeonSendFloater(Entity: entity, Amount: number | string, Color: string, Time?: number, LocationOverride?: boolean, suff: string = "", size?: number, prefix?: string) {
 	if (Entity.x && Entity.y) {
@@ -2618,24 +2620,40 @@ function KinkyDungeonSendFloater(Entity: entity, Amount: number | string, Color:
 		KDEntitiesFloaterRegisty.set(Entity, II);
 		let floaterMult = KDToggles.FastFloaters ? 0.33 : 1;
 		let stringFloaterMult = KDToggles.FastFloaters ? 0.7 : 1;
-		let floater = {
-			x: Entity.x + 0.5,// + Math.random(),
-			y: Entity.y - (II - 1) * KDFloaterSpacing,// + Math.random(),
+		let floater: KDFloater = {
+			x: Entity.x + (LocationOverride ? 0 : 0.5) + (II - 1) * (LocationOverride ? KDFloaterSpacingOverride : KDFloaterSpacing),// + Math.random(),
+			y: Entity.y + (II - 1) * (LocationOverride ? KDFloaterSpacingOverride : KDFloaterSpacing),// + Math.random(),
 			override: LocationOverride,
 			speed: 30,// + (Time ? Time : 0) + Math.random()*10,
 			t: 0,
 			color: Color,
 			size: size,
+			id: KDFloaterID++,
 			text: "" + ((typeof Amount === "string") ? Amount : (prefix || "") + Math.round(Amount * 10)/10) + suff,
 			lifetime: Time ? stringFloaterMult*Time : ((typeof Amount === "string") ? stringFloaterMult*4 : floaterMult*((Amount < 3) ? 2 : (Amount > 5 ? 3 : 2))),
 		};
 		KinkyDungeonFloaters.push(floater);
+		if (KDFloaterID > 1000000000) KDFloaterID = 0;
 	}
+}
+
+interface KDFloater {
+	x: number,
+	y: number,
+	speed: number,
+	override: boolean,
+	t: number,
+	color: string,
+	size: number,
+	text: string,
+	lifetime: number,
+	id: number,
 }
 
 let KDFloaterGridRes = 10; // How many sections the screen is split into
 let KDFloaterGridCache: Record<string, number> = {};
 let KDFloaterGridWipedOutAlpha = 0.25;
+let KDFloaterID = 0;
 
 function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean = false) {
 	let delta = CommonTime() - KinkyDungeonLastFloaterTime;
@@ -2659,7 +2677,7 @@ function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean =
 		if (i <= max && (floater.override || !onlyAbs)) {
 			let x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
 			let y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
-			let overlap = false;
+			/*let overlap = false;
 			let overlapAmount = 9;
 			for (let iii = -overlapAmount; iii < overlapAmount; iii += 2) {
 				if (KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)]
@@ -2688,7 +2706,7 @@ function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean =
 				if (!KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)])
 					KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)] = {};
 				KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)][Math.round(y + iii)] = true;
-			}
+			}*/
 			let alpha = KDEase(floater.t / floater.lifetime);
 
 			KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
@@ -2719,7 +2737,8 @@ function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean =
 			DrawTextFitKDTo(kdfloatercanvas, floater.text,
 				x, y - floater.speed*floater.t/floatermult,
 				1000, floater.color, KDTextGray1, floater.size || 20, undefined,
-				undefined, alpha);
+				undefined, alpha, undefined, undefined, undefined,
+				undefined, "KDFloater_" + floater.id);
 		}
 		if (floater.t < floater.lifetime) {
 			newFloaters.push(floater);
