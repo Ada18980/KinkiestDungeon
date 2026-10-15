@@ -8042,8 +8042,9 @@ TYPE女神的神泉。
 - It's a conveyor belt. It conveys.
 这是传送带，它负责传送。
 - A chute to an unknown part of the Facility.
-通往设施更深层级的通道。
-# - A machine for the automatic binding of its occupants.
+通往设施中未知区域的管道。
+- A machine for the automatic binding of its occupants.
+一种自动束缚其乘员的机器。
 
 
 - You slam the door and jam it shut!
@@ -8620,17 +8621,17 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - So many laces! It would take quite a while to put this on normally. That's what magic is for!
 真多系带啊！穿上这件衣服一般要花费很长时间，但这就是魔法派上用场的时候了！
 - Costume Corset
-装饰束腰
+服饰束腰
 - A mostly decorative corset that nonetheless somewhat restricts your breathing capabilities.
-你的身材穿上这件衣服看起来真漂亮，只是运动能力没有那么出色了。
+一件主要起装饰作用的束腰，尽管如此，仍会在一定程度上限制你的呼吸能力。
 - It's not overly tight due to the resin boning, but it's so pretty you wouldn't want to damage it, would you?
-束带紧得惊人，支撑用的是钢，但终究还是精致织物制成。你总不会想把它剪断吧？
+因为有树脂鱼骨支撑，倒也不会太勒。不过它这么漂亮，你总不会想弄坏它吧？
 - Ornamental Corset
 装饰束腰
 - Your figure looks gorgeous in this, but not so much your athletic capabilities.
-你的身材穿上这件衣服看起来真漂亮，只是运动能力没有那么出色了。
+虽然你穿上这件束腰后运动能力没有那么出色，但你的身材搭配它看起来十分漂亮。
 - The laces are impressively tight, the boning is steel but ultimately it's made of delicate fabric. You wouldn't possibly cut it, would you?
-束带紧得惊人，支撑用的是钢，但终究还是精致织物制成。你总不会想把它剪断吧？
+这件束腰使用精致织物制成，支撑鱼骨用的是钢，束带紧得惊人，你总不会想把它剪烂吧？
 
 - Fancy Ball Gag
 精致口球
@@ -10003,9 +10004,12 @@ RestraintName 上的诅咒解除了！
 训练高跟鞋
 - A pair of unreasonably high heels owned by you personally.
 你个人拥有的一双高得离谱的高跟鞋。
-# - Training Corset
-# - An unreasonably tight corset owned by you personally.
-# - This will take some getting used to.
+- Training Corset
+训练用束腰
+- An unreasonably tight corset owned by you personally.
+一件属于你的，紧得离谱的束腰。
+- This will take some getting used to.
+这需要一些时间来适应。
 - Leg Irons
 脚镣
 - A pair of solid steel cuffs connecting your ankles inescapably.
@@ -47594,6 +47598,7 @@ RestraintName 失效了！
 减速时自动冲刺
 - Skip Tutorial
 跳过教程
+# - Visible Vibrating Toys
 - Mod Compat Mode (requires reload)
 模组兼容模式 ( 需要重启 )
 - Flashing Warning Tiles
