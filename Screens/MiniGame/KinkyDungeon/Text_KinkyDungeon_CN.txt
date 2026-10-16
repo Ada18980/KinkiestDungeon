@@ -47598,7 +47598,8 @@ RestraintName 失效了！
 减速时自动冲刺
 - Skip Tutorial
 跳过教程
-# - Visible Vibrating Toys
+- Visible Vibrating Toys
+显示震动玩具
 - Mod Compat Mode (requires reload)
 模组兼容模式 ( 需要重启 )
 - Flashing Warning Tiles
