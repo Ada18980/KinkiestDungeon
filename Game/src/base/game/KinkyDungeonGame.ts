@@ -4904,13 +4904,16 @@ function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDT
 	let checkedTiles: Record<string, number> = {};
 	let checkedTilesAge: Record<string, number> = {};
 	let accumulated = 0;
+	// Index-based queue: avoids O(n) splice(0, 1) shift on every node
+	let head = 0;
 
 	let first = true;
 
-	while (checkTiles.length > 0) {
-		let tile = checkTiles[0].point;
+	while (head < checkTiles.length) {
+		let current = checkTiles[head];
+		let tile = current.point;
 		let age = checkedTilesAge[tile.x + ',' + tile.y] || 0;
-		let values = callback(tile, checkedTiles[tile.x + ',' + tile.y] != undefined ? checkedTiles[tile.x + ',' + tile.y] : checkTiles[0].mult, first, age);
+		let values = callback(tile, checkedTiles[tile.x + ',' + tile.y] != undefined ? checkedTiles[tile.x + ',' + tile.y] : current.mult, first, age);
 		first = false;
 		
 		if (values.mult > 0) {
@@ -4933,7 +4936,7 @@ function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDT
 			accumulated += values.added * values.mult; // bigger dist counts more
 		}
 
-		checkTiles.splice(0, 1);
+		head++;
 	}
 
 	return accumulated;
