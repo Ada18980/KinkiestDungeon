@@ -3897,7 +3897,10 @@ function KDButtonVisCached (name: string, hover: boolean, sig: string, container
 		let ids: string[] = [];
 		for (let i = 0; i < KDButtonVisSuffixes.length; i++) {
 			let id = name + KDButtonVisSuffixes[i];
-			if (kdpixisprites.has(id)) ids.push(id);
+			// Only keep sprites drawn this pass; a sprite left over from a previous
+			// visual state (e.g. a checkbox icon that was just removed) must not be
+			// re-marked as alive.
+			if (kdpixisprites.has(id) && kdSpritesDrawn.has(id)) ids.push(id);
 		}
 		KDButtonVisIds.set(name, ids);
 		// Cap the cache; names can be dynamic (e.g. include coordinates).
