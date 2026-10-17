@@ -3837,6 +3837,80 @@ function DrawHoldButtonKDExTo (
  * @param [options.filters] - filters
  * @returns - Whether or not the mouse is in the button
  */
+// Per-name button visual cache (see KDButtonVisCached).
+let KDButtonVisSig: Map<string, string> = new Map();
+let KDButtonVisIds: Map<string, string[]> = new Map();
+const KDButtonVisCacheMax = 2048;
+const KDButtonVisSuffixes = ["_|||boxfill", "_|||boxborder", "_|||sprite", "_|||spritestre", "_|||text", "_|||hotkey"];
+
+function KDButtonVisSignature (
+	Left: number, Top: number, Width: number, Height: number,
+	Label: string, Color: string, Image: string | string[], HoveringText: string,
+	Disabled: boolean, NoBorder: boolean, FillColor: string, FontSize: number,
+	ShiftText: boolean, options: ButtonOptions): string
+{
+	if (options && options.filters) return null;
+	let img = Array.isArray(Image) ? Image.join("|") : (Image || "");
+	let opt = KDAllowText ? "1" : "0";
+	if (options) {
+		opt += "," + [
+			options.zIndex, options.alpha, options.textalpha, options.fillcolor, options.bordercolor,
+			options.highlightcolor, options.tint, options.spritealpha, options.font, options.fontSize,
+			options.maxWidth, options.hotkey, options.centered ? 1 : 0, options.centerText ? 1 : 0,
+			options.scaleImage ? 1 : 0, options.noTextBG ? 1 : 0, options.unique ? 1 : 0,
+			options.wrap ? 1 : 0,
+		].join(",");
+	}
+	return Left + "," + Top + "," + Width + "," + Height + "," + Label + "," + Color + ","
+		+ img + "," + (HoveringText || "") + "," + (Disabled ? 1 : 0) + "," + (NoBorder ? 1 : 0)
+		+ "," + (FillColor || "") + "," + (FontSize || "") + "," + (ShiftText ? 1 : 0) + "," + opt;
+}
+
+// Draw a named button via `draw`, unless its visuals are unchanged and it is not
+// hovered; then just re-mark its cached sprites so the per-frame culler keeps them.
+function KDButtonVisCached (name: string, hover: boolean, sig: string, container: any, draw: () => void): void {
+	if (!name) { draw(); return; }
+	let visIds = KDButtonVisIds.get(name);
+	let skipVis = false;
+	if (sig != null && !hover && visIds && KDButtonVisSig.get(name) === sig) {
+		skipVis = true;
+		for (let i = 0; i < visIds.length; i++) {
+			let s = kdpixisprites.get(visIds[i]);
+			if (!s || s.destroyed || (container && s.parent !== container)) { skipVis = false; break; }
+		}
+	}
+	if (skipVis) {
+		// Re-mark cached sprites so the culler keeps them.
+		for (let i = 0; i < visIds.length; i++) {
+			let s = kdpixisprites.get(visIds[i]);
+			s.visible = true;
+			kdSpritesDrawn.set(visIds[i], true);
+		}
+		return;
+	}
+	draw();
+	if (hover || sig == null) {
+		// Force a clean redraw after hover.
+		KDButtonVisSig.delete(name);
+	} else {
+		KDButtonVisSig.set(name, sig);
+		let ids: string[] = [];
+		for (let i = 0; i < KDButtonVisSuffixes.length; i++) {
+			let id = name + KDButtonVisSuffixes[i];
+			// Only keep sprites drawn this pass; a sprite left over from a previous
+			// visual state (e.g. a checkbox icon that was just removed) must not be
+			// re-marked as alive.
+			if (kdpixisprites.has(id) && kdSpritesDrawn.has(id)) ids.push(id);
+		}
+		KDButtonVisIds.set(name, ids);
+		// Cap the cache; names can be dynamic (e.g. include coordinates).
+		if (KDButtonVisSig.size > KDButtonVisCacheMax) {
+			KDButtonVisSig.clear();
+			KDButtonVisIds.clear();
+		}
+	}
+}
+
 function DrawButtonKDEx (
 	name:		string,
 	func:		(bdata: any) => any,
@@ -3881,7 +3955,10 @@ function DrawButtonKDEx (
         }
 		else {Disabled = true; hover = false;}
 	}
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
+	let sig = name ? KDButtonVisSignature(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) : null;
+	KDButtonVisCached(name, hover, sig, null, () => {
+		DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
+	});
 	KDButtonsCache[name] = params
 	if (hover && options?.onHover) options.onHover(params);
 	return MouseIn(Left,Top,Width,Height);
@@ -4243,7 +4320,10 @@ function DrawButtonKDExTo (
 			hover = false;
 		}
 	}
-	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
+	let sig = name ? KDButtonVisSignature(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) : null;
+	KDButtonVisCached(name, hover, sig, Container || kdcanvas, () => {
+		DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
+	});
 	KDButtonsCache[name] = params;
 	if (hover && options?.onHover) options.onHover(params);
 	return MouseIn(Left,Top,Width,Height);

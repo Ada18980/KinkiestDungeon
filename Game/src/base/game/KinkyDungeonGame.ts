@@ -1783,6 +1783,7 @@ function KinkyDungeonMapSet(X: number, Y: number, SetTo: string, VisitedRooms?: 
 		KDMapData.Grid = KDMapData.Grid.replaceAt(X + Y*(width+1), SetTo);
 		if (VisitedRooms)
 			VisitedRooms.push({x: X, y: Y});
+		KDMapCacheDirty = true;
 		return true;
 	}
 	return false;
@@ -1793,6 +1794,7 @@ function KinkyDungeonMapSetForce(X: number, Y: number, SetTo: string, VisitedRoo
 	KDMapData.Grid = KDMapData.Grid.replaceAt(X + Y*(width+1), SetTo);
 	if (VisitedRooms)
 		VisitedRooms.push({x: X, y: Y});
+	KDMapCacheDirty = true;
 	return true;
 
 }
@@ -1850,6 +1852,7 @@ function KinkyDungeonMapDataGet(data: KDMapDataType, X: number, Y: number): stri
 function KinkyDungeonVisionSet(X: number, Y: number, SetTo: number): boolean {
 	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
 		KDMapExtraData.VisionGrid[X + Y*(KDMapData.GridWidth)] = SetTo;
+		KDMapCacheDirty = true;
 		return true;
 	}
 	return false;
@@ -1900,6 +1903,7 @@ function KinkyDungeonFogGet(X: number, Y: number): any {
 }
 function KinkyDungeonFogSet(X: number, Y: number, val: number): any {
 	KDMapData.FogGrid[X + Y*(KDMapData.GridWidth)] = val;
+	KDMapCacheDirty = true;
 }
 function KinkyDungeonFogMemoryGet(X: number, Y: number): any {
 	return KDMapData.FogMemory[X + Y*(KDMapData.GridWidth)];
