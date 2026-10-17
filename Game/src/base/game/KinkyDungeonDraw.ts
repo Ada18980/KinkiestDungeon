@@ -135,6 +135,31 @@ let kdmapboard = new PIXI.Container();
 kdmapboard.zIndex = -2;
 kdmapboard.filterArea = new PIXI.Rectangle(0, 0, 2000, 1000);
 
+// Static map layer: floor/overlay tiles are rendered into a RenderTexture and
+// reused while the camera tile, vision and map state are unchanged.
+let kdmapTileContainer = new PIXI.Container();
+let kdmapTileSprites: Map<string, any> = new Map();
+let kdmapRT: PIXIRenderTexture = null;
+let kdmapRTSprite: PIXISprite = null;
+let KDMapCacheKey = "";
+let KDMapCacheDirty = true;
+let KDMapMaxTexSize = 0;
+
+function KDMapGetRTResolution(rtW: number, rtH: number): number {
+	let res = PIXIapp.renderer.resolution || 1;
+	if (!KDMapMaxTexSize) {
+		try {
+			let gl = (PIXIapp.renderer as any).context?.gl || (PIXIapp.renderer as any).gl;
+			KDMapMaxTexSize = (gl && gl.getParameter) ? gl.getParameter(gl.MAX_TEXTURE_SIZE) : 4096;
+		} catch (e) {
+			KDMapMaxTexSize = 4096;
+		}
+		if (!KDMapMaxTexSize) KDMapMaxTexSize = 4096;
+	}
+	while (res > 1 && Math.max(rtW, rtH) * res > KDMapMaxTexSize) res = Math.floor(res / 2) || 1;
+	return res;
+}
+
 let kdlightmap = null;
 let kdlightmapGFX = null;
 
@@ -4624,15 +4649,77 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 	let params = KinkyDungeonMapParams[drawFloor];
 	if (params?.noReplace)
 		noReplace = params.noReplace;
+
+	let useRT = !Debug && StandalonePatched && !!PIXIapp;
+	let rtBoard = useRT ? kdmapTileContainer : kdmapboard;
+	let rtSprites = useRT ? kdmapTileSprites : kdpixisprites;
+	if (useRT) {
+		let gsize = KinkyDungeonGridSizeDisplay;
+		let rtCols = Math.floor(KinkyDungeonGridWidthDisplay + 1) + 2;
+		let rtRows = Math.floor(KinkyDungeonGridHeightDisplay + 1) + 2;
+		let rtW = rtCols * gsize;
+		let rtH = rtRows * gsize;
+		let rtRes = KDMapGetRTResolution(rtW, rtH);
+		let cacheKey = CamX + "," + CamY + "," + rtW + "x" + rtH + "x" + rtRes + "," + (KDToggles.LightmapFilter ? 1 : 0)
+			+ "," + KinkyDungeonForceRender + "," + KinkyDungeonForceRenderFloor
+			+ "," + MiniGameKinkyDungeonLevel + "," + MiniGameKinkyDungeonCheckpoint
+			+ "," + (KDAllowFog() ? 1 : 0);
+
+		// Only "A"/"M" shrine tiles produce a tooltip, so while not hovering one
+		// the cached layer can be reused without recomputing the whole tile loop.
+		let hoverShrine = false;
+		let mX = Math.floor((MouseX - canvasOffsetX) / gsize) + CamX;
+		let mY = Math.floor((MouseY - canvasOffsetY) / gsize) + CamY;
+		if (mX >= 0 && mY >= 0 && mX < KDMapData.GridWidth && mY < KDMapData.GridHeight) {
+			let mCode = KinkyDungeonMapGet(mX, mY);
+			hoverShrine = (mCode == "A" || mCode == "M");
+		}
+
+		if (!hoverShrine && !KDMapCacheDirty && kdmapRTSprite && cacheKey == KDMapCacheKey) {
+			kdmapRTSprite.visible = true;
+			return {
+				tooltip: "",
+				tooltipX: 0,
+				tooltipY: 0,
+				KinkyDungeonForceRender: KinkyDungeonForceRender,
+			};
+		}
+
+		if (!kdmapRT || kdmapRT.width != rtW || kdmapRT.height != rtH || kdmapRT.baseTexture.resolution != rtRes) {
+			if (kdmapRTSprite) {
+				if (kdmapRTSprite.parent) kdmapRTSprite.parent.removeChild(kdmapRTSprite);
+				kdmapRTSprite.destroy();
+				kdmapRTSprite = null;
+			}
+			if (kdmapRT) kdmapRT.destroy(true);
+			kdmapRT = PIXI.RenderTexture.create({ width: rtW, height: rtH, resolution: rtRes });
+			kdmapRTSprite = new PIXI.Sprite(kdmapRT);
+			kdmapRTSprite.x = -gsize;
+			kdmapRTSprite.y = -gsize;
+			kdmapboard.addChild(kdmapRTSprite);
+		}
+		kdmapRTSprite.visible = true;
+		// Offset tiles by one so the render texture covers the whole visible window
+		kdmapTileContainer.x = gsize;
+		kdmapTileContainer.y = gsize;
+		// Hide stale tiles; KDDraw makes drawn ones visible again
+		for (let s of kdmapTileSprites.values()) s.visible = false;
+
+		KDMapCacheKey = cacheKey;
+		KDMapCacheDirty = false;
+	} else if (kdmapRTSprite) {
+		kdmapRTSprite.visible = false;
+	}
+
 	// Draw the grid and tiles
-	let rows = KDMapData.Grid.split('\n');
 	for (let R = -1; R <= KinkyDungeonGridHeightDisplay + 1; R++)  {
 		for (let X = -1; X <= KinkyDungeonGridWidthDisplay + 1; X++)  {
 			let RY = R+CamY;
 			let RX = X+CamX;
-			if (!rows[RY]) continue;
 			let allowFog = KDAllowFog();
 			if (RY >= 0 && RY < KDMapData.GridHeight && RX >= 0 && RX < KDMapData.GridWidth && (KinkyDungeonVisionGet(RX, RY) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY) > 0))) {
+				let mapCode = KinkyDungeonMapGet(RX, RY);
+				let tileData = KinkyDungeonTilesGet(RX + "," + RY);
 				if (Debug) {
 					if (KDCommanderChokes && KDCommanderChokes[RX + "," + RY]) {
 						DrawTextFitKD("Choke", (-CamX_offset + X)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, KinkyDungeonGridSizeDisplay, "#aaaaaA");
@@ -4693,12 +4780,13 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 						}
 					}
 				}
-				let floor = KDMapData.TilesSkin[RX + "," + RY] ?
-					(KDMapData.TilesSkin[RX + "," + RY].force ? KDMapData.TilesSkin[RX + "," + RY].skin : KinkyDungeonMapIndex[KDMapData.TilesSkin[RX + "," + RY].skin] || KDMapData.TilesSkin[RX + "," + RY].skin)
+				let tskin = KDMapData.TilesSkin[RX + "," + RY];
+				let floor = tskin ?
+					(tskin.force ? tskin.skin : KinkyDungeonMapIndex[tskin.skin] || tskin.skin)
 					: drawFloor;
 				let vision = KinkyDungeonVisionGet(RX, RY);
-				let nR = KDMapData.TilesSkin[RX + "," + RY] ? noReplace : noReplace_skin[floor];
-				let code = KinkyDungeonTilesGet(RX + "," + RY)?.SkinCode || rows[RY][RX];
+				let nR = tskin ? noReplace : noReplace_skin[floor];
+				let code = tileData?.SkinCode || mapCode;
 				let sprite = KinkyDungeonGetSprite(code, RX, RY, vision == 0, nR);
 				let sprite2 = KinkyDungeonGetSpriteOverlay(code, RX, RY, vision == 0, nR);
 				let sprite3 = KinkyDungeonGetSpriteOverlay2(code, RX, RY, vision == 0, nR);
@@ -4710,49 +4798,49 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 				if (KinkyDungeonForceRenderFloor != "") floor = KinkyDungeonForceRenderFloor;
 				let lightColor = (StandalonePatched && KDToggles.LightmapFilter) ? 0xfffafa : KDGetLightColor(RX, RY);
 
-				KDDraw(kdmapboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
+				KDDraw(rtBoard, rtSprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
 					Math.round(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, Math.round(-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 					 KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -2,
 						tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
 					}, undefined, undefined, undefined, true);
 				if (sprite2)
-					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
+					KDDraw(rtBoard, rtSprites, RX + "," + RY + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1.1,
 							tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
 						});
 
 				if (sprite3)
-					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o2", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite3 + ".png",
+					KDDraw(rtBoard, rtSprites, RX + "," + RY + "_o2", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite3 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1,
 							tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
 						});
 
-				if (rows[RY][RX] == "A") {
+				if (mapCode == "A") {
 					let color = "";
-					if (KinkyDungeonTilesGet(RX + "," + RY)) {
-						color = KDGoddessColor(KinkyDungeonTilesGet(RX + "," + RY).Name);
+					if (tileData) {
+						color = KDGoddessColor(tileData.Name);
 					}
 					if (color)
-						KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_a", KinkyDungeonRootDirectory + "ShrineAura.png",
+						KDDraw(rtBoard, rtSprites, RX + "," + RY + "_a", KinkyDungeonRootDirectory + "ShrineAura.png",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								tint: string2hex(color),
 							});
-					if (KinkyDungeonTilesGet(RX + "," + RY)?.Quest)
-						KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_a2", KinkyDungeonRootDirectory + "ShrineAuraQuest.png",
+					if (tileData?.Quest)
+						KDDraw(rtBoard, rtSprites, RX + "," + RY + "_a2", KinkyDungeonRootDirectory + "ShrineAuraQuest.png",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								tint: color ? string2hex(color) : 0xfffafa,
 							});
 				}
-				if (KinkyDungeonVisionGet(RX, RY) > 0
-					&& (KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "A" || KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "M")
+				if (vision > 0
+					&& (tileData && mapCode == "A" || tileData && mapCode == "M")
 					&& MouseIn(canvasOffsetX + (-CamX_offset + X)*KinkyDungeonGridSizeDisplay, 
 					canvasOffsetY + (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)) {
-					tooltip = TextGet("KinkyDungeon" + KinkyDungeonTilesGet(RX + "," + RY).Type + "Tooltip").replace("SHRINETYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTilesGet(RX + "," + RY).Name));
+					tooltip = TextGet("KinkyDungeon" + tileData.Type + "Tooltip").replace("SHRINETYPE", TextGet("KinkyDungeonShrine" + tileData.Name));
 					tooltipX = RX;
 					tooltipY = RY;
 				}
@@ -4760,6 +4848,10 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 		}
 	}
 
+
+	if (useRT) {
+		PIXIapp.renderer.render(kdmapTileContainer, { renderTexture: kdmapRT, clear: true });
+	}
 
 	return {
 		tooltip: tooltip,
@@ -4852,7 +4944,8 @@ function KDDraw (
 			if (options.filters && sprite.cacheAsBitmap) {
 				sprite.filters = null;
 			} else {
-				for (let [k, v] of Object.entries(options)) {
+				for (let k in options) {
+					let v = options[k];
 					if (v != undefined || k != "tint")
 						sprite[k] = v;
 				}
@@ -5245,6 +5338,7 @@ function KDUpdateVision(CamX?: number, CamY?: number, _CamX_offset?: number, _Ca
 	}
 
 	KDVisionUpdate = 0;
+	KDMapCacheDirty = true;
 }
 
 function KDObjectTooltip(x: number, y: number, fallback: string): string {
