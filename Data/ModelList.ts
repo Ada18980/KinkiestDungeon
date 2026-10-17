@@ -1912,6 +1912,29 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "TransparentRobeBra",
+	Folder: "Robes",
+	Parent: "Robes",
+	Parent2: ["RobeBra"],
+	TopLevel: false,
+	Categories: ["Tops"],
+	Filters: {
+		Bra: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
+	},
+	Layers: ToLayerMap([
+		{ Name: "Chest", Layer: "BraChest", Pri: 50,
+			Invariant: true,
+			InheritColor: "Bra",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			HideWhenOverridden: true,
+			EraseAmount: 100,
+			EraseSprite: "LaceChest", EraseInvariant: true,
+			EraseLayers: ToMap(["CorsetBra"]),
+		},
+	])
+});
+
 
 AddModel({
 	Name: "RobeSleeveLeft",

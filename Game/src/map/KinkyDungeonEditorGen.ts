@@ -19,8 +19,8 @@ function KDAddLabel(label: KDLabel) {
  * @param maxTagFlags
  */
 function KDMapTilesPopulate (
-	_w:              number,
-	_h:              number,
+	w:              number,
+	h:              number,
 	indices:         Record<string, string>,
 	data:            any,
 	requiredAccess:  Record<string, boolean>,
@@ -31,10 +31,95 @@ function KDMapTilesPopulate (
 	/**
 	 * temp helper var
 	 */
+	let indicesOrdered: Record<string, string> = {};
 	let tiles_temp: string[] = [];
+	let tilesToCheck: {index: string, x: number, y: number}[] = [];
+
+
 	for (let t of Object.keys(indices)) {
-		tiles_temp.push(t);
+		if (requiredAccess[t]) {
+			tiles_temp.push(t);
+			tilesToCheck.push({
+				index: t,
+				x: parseInt(t.split(',')[0]),
+				y: parseInt(t.split(',')[0])
+		});
+		}
 	}
+
+	// breadth first search for tiles to place
+	while(tilesToCheck.length > 0) {
+		let ind = tilesToCheck[0];
+
+		if (ind.index.includes('u')) {
+			if (ind.y > 0 && !indicesOrdered[ind.x + ',' + (ind.y - 1)]) {
+				tilesToCheck.push({
+					index: ind.x + ',' + (ind.y - 1),
+					x: ind.x,
+					y: ind.y - 1,
+				})
+			}
+		}
+
+		if (ind.index.includes('u')) {
+			if (ind.y > 0 && !indicesOrdered[ind.x + ',' + (ind.y - 1)]) {
+				tilesToCheck.push({
+					index: ind.x + ',' + (ind.y - 1),
+					x: ind.x,
+					y: ind.y - 1,
+				})
+			}
+		}
+
+		if (ind.index.includes('d')) {
+			if (ind.y < h - 1 && !indicesOrdered[ind.x + ',' + (ind.y + 1)]) {
+				tilesToCheck.push({
+					index: ind.x + ',' + (ind.y + 1),
+					x: ind.x,
+					y: ind.y + 1,
+				})
+			}
+		}
+
+		
+		if (ind.index.includes('l')) {
+			if (ind.x > 0 && !indicesOrdered[(ind.x - 1) + ',' + ind.y]) {
+				tilesToCheck.push({
+					index: (ind.x - 1) + ',' + ind.y,
+					x: ind.x - 1,
+					y: ind.y,
+				})
+			}
+		}
+		if (ind.index.includes('r')) {
+			if (ind.x < w-1 && !indicesOrdered[(ind.x + 1) + ',' + ind.y]) {
+				tilesToCheck.push({
+					index: (ind.x + 1) + ',' + ind.y,
+					x: ind.x + 1,
+					y: ind.y,
+				})
+				
+			}
+		}
+
+		tiles_temp.push(ind.index);
+		indicesOrdered[ind.index] = ind.index;
+		tilesToCheck.splice(0, 1);
+	}
+
+	for (let x = 0; x < w; x++) {
+		for (let y = 0; y < h; y++) {
+			if (!indicesOrdered[x + ',' + y]) {
+				tiles_temp.push(x + ',' + y);
+				indicesOrdered[x + ',' + y] = x + ',' + y;
+			}
+		}
+	}
+
+
+
+
+	
 	/**
 	 * order of which tiles to consider, sampled randomly from indices
 	 */
@@ -52,16 +137,16 @@ function KDMapTilesPopulate (
 
 	// Determine order of filling tiles
 	while (tiles_temp.length > 0) {
-		let ind = Math.floor(KDRandom() * tiles_temp.length);
-		if (indices[tiles_temp[ind]])
-			tileOrder.push(tiles_temp[ind]);
+		let ind = tiles_temp[0]
+		if (indices[ind])
+			tileOrder.push(ind);
 		else {
-			indexFilled[tiles_temp[ind]] = '';
+			indexFilled[ind] = '';
 
 			// @ts-ignore
-			tilesFilled[tiles_temp[ind]] = {};
+			tilesFilled[ind] = {};
 		}
-		tiles_temp.splice(ind, 1);
+		tiles_temp.splice(0, 1);
 	}
 
 
@@ -137,7 +222,7 @@ function KDMapTilesPopulate (
 			}
 
 			let tileName: string;
-			let tile: any; // Should be a KDMapTile but line 162 cries if I set it to that
+			let tile: KDMapTile;
 			let tags: string[];
 			let trycount = 0;
 
