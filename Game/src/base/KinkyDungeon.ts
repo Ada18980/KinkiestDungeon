@@ -3837,6 +3837,38 @@ function DrawHoldButtonKDExTo (
  * @param [options.filters] - filters
  * @returns - Whether or not the mouse is in the button
  */
+// Visual cache for named buttons: when a button's inputs are unchanged and it is
+// not hovered, skip redrawing it and just re-mark its cached sprites as drawn so
+// the per-frame culler keeps them alive. Invalidated automatically whenever any
+// visual input changes, the button is hovered, or a cached sprite was culled.
+let KDButtonVisSig: Map<string, string> = new Map();
+let KDButtonVisIds: Map<string, string[]> = new Map();
+const KDButtonVisCacheMax = 2048;
+const KDButtonVisSuffixes = ["_|||boxfill", "_|||boxborder", "_|||sprite", "_|||spritestre", "_|||text", "_|||hotkey"];
+
+function KDButtonVisSignature (
+	Left: number, Top: number, Width: number, Height: number,
+	Label: string, Color: string, Image: string | string[], HoveringText: string,
+	Disabled: boolean, NoBorder: boolean, FillColor: string, FontSize: number,
+	ShiftText: boolean, options: ButtonOptions): string
+{
+	if (options && options.filters) return null;
+	let img = Array.isArray(Image) ? Image.join("|") : (Image || "");
+	let opt = KDAllowText ? "1" : "0";
+	if (options) {
+		opt += "," + [
+			options.zIndex, options.alpha, options.textalpha, options.fillcolor, options.bordercolor,
+			options.highlightcolor, options.tint, options.spritealpha, options.font, options.fontSize,
+			options.maxWidth, options.hotkey, options.centered ? 1 : 0, options.centerText ? 1 : 0,
+			options.scaleImage ? 1 : 0, options.noTextBG ? 1 : 0, options.unique ? 1 : 0,
+			options.wrap ? 1 : 0,
+		].join(",");
+	}
+	return Left + "," + Top + "," + Width + "," + Height + "," + Label + "," + Color + ","
+		+ img + "," + (HoveringText || "") + "," + (Disabled ? 1 : 0) + "," + (NoBorder ? 1 : 0)
+		+ "," + (FillColor || "") + "," + (FontSize || "") + "," + (ShiftText ? 1 : 0) + "," + opt;
+}
+
 function DrawButtonKDEx (
 	name:		string,
 	func:		(bdata: any) => any,
@@ -3881,7 +3913,47 @@ function DrawButtonKDEx (
         }
 		else {Disabled = true; hover = false;}
 	}
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
+	let sig = name ? KDButtonVisSignature(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) : null;
+	let visIds = name ? KDButtonVisIds.get(name) : undefined;
+	let skipVis = false;
+	if (sig != null && !hover && visIds && KDButtonVisSig.get(name) === sig) {
+		skipVis = true;
+		for (let i = 0; i < visIds.length; i++) {
+			let s = kdpixisprites.get(visIds[i]);
+			if (!s || s.destroyed) { skipVis = false; break; }
+		}
+	}
+	if (skipVis) {
+		// Unchanged and not hovered: keep the cached sprites alive without redrawing.
+		for (let i = 0; i < visIds.length; i++) {
+			let s = kdpixisprites.get(visIds[i]);
+			s.visible = true;
+			kdSpritesDrawn.set(visIds[i], true);
+		}
+	} else {
+		DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
+		if (name) {
+			if (hover || sig == null) {
+				// Hover changes the visuals (highlight/tooltip) and is redrawn each frame,
+				// so drop the signature to force a clean redraw on the next non-hover frame.
+				KDButtonVisSig.delete(name);
+			} else {
+				KDButtonVisSig.set(name, sig);
+				let ids: string[] = [];
+				for (let i = 0; i < KDButtonVisSuffixes.length; i++) {
+					let id = name + KDButtonVisSuffixes[i];
+					if (kdpixisprites.has(id)) ids.push(id);
+				}
+				KDButtonVisIds.set(name, ids);
+				// Bound the cache: names can be dynamic (e.g. include coordinates), so
+				// drop it wholesale once it grows past the cap; it repopulates next frame.
+				if (KDButtonVisSig.size > KDButtonVisCacheMax) {
+					KDButtonVisSig.clear();
+					KDButtonVisIds.clear();
+				}
+			}
+		}
+	}
 	KDButtonsCache[name] = params
 	if (hover && options?.onHover) options.onHover(params);
 	return MouseIn(Left,Top,Width,Height);
