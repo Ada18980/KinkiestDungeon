@@ -3770,13 +3770,24 @@ function KDNearbyTiles(x: number, y: number, dist: number): {x: number, y: numbe
  * @param y
  * @param dist
  */
-function KDNearbyMapTiles(x: number, y: number, dist: number): {x: number, y: number, tile: string}[] {
-	let list = [];
+/**
+ * Iterate the map tiles within `dist` of (x, y) without allocating an array
+ * or per-tile objects. Prefer this over KDNearbyMapTiles in hot loops.
+ */
+function KDIterateNearbyMapTiles(x: number, y: number, dist: number, callback: (X: number, Y: number, tile: string) => void) {
+	let distSquared = dist * dist;
 	for (let X = Math.floor(x - dist); X < Math.ceil(x + dist); X++)
 		for (let Y = Math.floor(y - dist); Y < Math.ceil(y + dist); Y++)
-			if (KDistEuclidean(X - x, Y - y) <= dist) {
-				list.push({x: X, y: Y, tile: KinkyDungeonMapGet(X, Y)});
+			if (KDistEuclideanSquared(X - x, Y - y) <= distSquared) {
+				callback(X, Y, KinkyDungeonMapGet(X, Y));
 			}
+}
+
+function KDNearbyMapTiles(x: number, y: number, dist: number): {x: number, y: number, tile: string}[] {
+	let list: {x: number, y: number, tile: string}[] = [];
+	KDIterateNearbyMapTiles(x, y, dist, (X, Y, tile) => {
+		list.push({x: X, y: Y, tile: tile});
+	});
 	return list;
 }
 

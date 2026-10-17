@@ -4920,19 +4920,20 @@ function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDT
 			// spread
 			if (age <= dist)
 				age += 1
-				for (let tt of KDNearbyMapTiles(tile.x, tile.y, 1.5)) {
-					if ((checkedTiles[tt.x + ',' + tt.y] == undefined || checkedTiles[tt.x + ',' + tt.y] < values.mult)
-						&& (checkedTilesAge[tt.x + ',' + tt.y] || dist) >= age
+				KDIterateNearbyMapTiles(tile.x, tile.y, 1.5, (X, Y) => {
+					let key = X + ',' + Y;
+					if ((checkedTiles[key] == undefined || checkedTiles[key] < values.mult)
+						&& (checkedTilesAge[key] || dist) >= age
 					) {
-						if (checkedTiles[tt.x + ',' + tt.y] == undefined) checkTiles.push({
-							point: tt,
+						if (checkedTiles[key] == undefined) checkTiles.push({
+							point: {x: X, y: Y},
 							mult: values.mult
 						});
-						checkedTiles[tt.x + ',' + tt.y] = values.mult;
+						checkedTiles[key] = values.mult;
 						if (age < dist)
-							checkedTilesAge[tt.x + ',' + tt.y] = age;
+							checkedTilesAge[key] = age;
 					}
-				}
+				});
 			accumulated += values.added * values.mult; // bigger dist counts more
 		}
 
