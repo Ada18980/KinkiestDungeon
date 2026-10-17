@@ -4899,45 +4899,114 @@ function KDGetSkin(x: number, y: number, defaultFloor?: string): floorParams {
 		return skin;
 }
 
-function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDTile, previous: number, first: boolean, age: number) => {added: number, mult: number}): number {
-	let checkTiles = [{point: point, mult: 1}];
-	let checkedTiles: Record<string, number> = {};
-	let checkedTilesAge: Record<string, number> = {};
-	let accumulated = 0;
-	// Index-based queue: avoids O(n) splice(0, 1) shift on every node
-	let head = 0;
+// Reusable flood-fill state for KDGetPropagationFunc, indexed by Y*GridWidth+X.
+// In checkedTiles, -1 marks "unvisited".
+type KDPropagationState = {
+	checkedTiles: Float64Array;
+	checkedTilesAge: Int32Array;
+	touched: number[];
+	inUse: boolean;
+};
 
-	let first = true;
+function KDPropagationStateCreate(): KDPropagationState {
+	return {
+		checkedTiles: new Float64Array(0),
+		checkedTilesAge: new Int32Array(0),
+		touched: [],
+		inUse: false
+	};
+}
 
-	while (head < checkTiles.length) {
-		let current = checkTiles[head];
-		let tile = current.point;
-		let age = checkedTilesAge[tile.x + ',' + tile.y] || 0;
-		let values = callback(tile, checkedTiles[tile.x + ',' + tile.y] != undefined ? checkedTiles[tile.x + ',' + tile.y] : current.mult, first, age);
-		first = false;
-		
-		if (values.mult > 0) {
-			// spread
-			if (age <= dist)
-				age += 1
-				KDIterateNearbyMapTiles(tile.x, tile.y, 1.5, (X, Y) => {
-					let key = X + ',' + Y;
-					if ((checkedTiles[key] == undefined || checkedTiles[key] < values.mult)
-						&& (checkedTilesAge[key] || dist) >= age
-					) {
-						if (checkedTiles[key] == undefined) checkTiles.push({
-							point: {x: X, y: Y},
-							mult: values.mult
-						});
-						checkedTiles[key] = values.mult;
-						if (age < dist)
-							checkedTilesAge[key] = age;
-					}
-				});
-			accumulated += values.added * values.mult; // bigger dist counts more
+// Pool of reusable flood-fill states. Two are allocated up front; more are added
+// only if a call is re-entered while every pooled state is still checked out.
+let KDPropagationPool: KDPropagationState[] = [KDPropagationStateCreate(), KDPropagationStateCreate()];
+
+function KDPropagationAcquire(size: number): KDPropagationState {
+	let state: KDPropagationState | undefined;
+	for (let i = 0; i < KDPropagationPool.length; i++) {
+		if (!KDPropagationPool[i].inUse) {
+			state = KDPropagationPool[i];
+			break;
 		}
+	}
+	if (!state) {
+		state = KDPropagationStateCreate();
+		KDPropagationPool.push(state);
+	}
+	state.inUse = true;
+	if (state.checkedTiles.length < size) {
+		// Grow (never shrink) to fit the current map; -1 means "unvisited".
+		state.checkedTiles = new Float64Array(size).fill(-1);
+		state.checkedTilesAge = new Int32Array(size);
+		state.touched = [];
+	}
+	return state;
+}
 
-		head++;
+function KDPropagationRelease(state: KDPropagationState) {
+	// Restore only the entries this call touched, then return the state to the pool.
+	for (let i = 0; i < state.touched.length; i++) {
+		let n = state.touched[i];
+		state.checkedTiles[n] = -1;
+		state.checkedTilesAge[n] = 0;
+	}
+	state.touched.length = 0;
+	state.inUse = false;
+}
+
+function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDTile, previous: number, first: boolean, age: number) => {added: number, mult: number}): number {
+	let gridWidth = KDMapData.GridWidth;
+	let gridHeight = KDMapData.GridHeight;
+	let state = KDPropagationAcquire(gridWidth * gridHeight);
+	let checkedTiles = state.checkedTiles;
+	let checkedTilesAge = state.checkedTilesAge;
+	let touched = state.touched;
+
+	let accumulated = 0;
+	try {
+		let checkTiles = [{point: point, mult: 1}];
+		// Index-based queue: avoids O(n) splice(0, 1) shift on every node
+		let head = 0;
+
+		let first = true;
+
+		while (head < checkTiles.length) {
+			let current = checkTiles[head];
+			let tile = current.point;
+			let n = tile.y * gridWidth + tile.x;
+			let age = checkedTilesAge[n] || 0;
+			let values = callback(tile, checkedTiles[n] >= 0 ? checkedTiles[n] : current.mult, first, age);
+			first = false;
+
+			if (values.mult > 0) {
+				// spread
+				if (age <= dist)
+					age += 1
+					KDIterateNearbyMapTiles(tile.x, tile.y, 1.5, (X, Y) => {
+						if (X < 0 || Y < 0 || X >= gridWidth || Y >= gridHeight) return;
+						let nn = Y * gridWidth + X;
+						if ((checkedTiles[nn] < 0 || checkedTiles[nn] < values.mult)
+							&& (checkedTilesAge[nn] || dist) >= age
+						) {
+							if (checkedTiles[nn] < 0) {
+								checkTiles.push({
+									point: {x: X, y: Y},
+									mult: values.mult
+								});
+								touched.push(nn);
+							}
+							checkedTiles[nn] = values.mult;
+							if (age < dist)
+								checkedTilesAge[nn] = age;
+						}
+					});
+				accumulated += values.added * values.mult; // bigger dist counts more
+			}
+
+			head++;
+		}
+	} finally {
+		KDPropagationRelease(state);
 	}
 
 	return accumulated;
