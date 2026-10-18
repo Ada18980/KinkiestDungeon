@@ -295,6 +295,11 @@ function KDCreateEffectTile(x: number, y: number, tile: effectTileRef, durationM
 		let tt = Object.assign({x: x, y: y}, KDEffectTiles[tile.name]);
 		Object.assign(tt, tile);
 		tt.duration = duration;
+		// a permanent effect tile should not be replaced by a temporary one resulting from a spell:
+		const prev = KDGetEffectTiles(x, y)[tt.name];
+		if (prev && (prev.infinite || prev.duration >= 9000) && !(tt.infinite || tt.duration >= 9000)) {
+			return prev;
+		}
 		if (!KinkyDungeonEffectTilesGet(x + "," + y)) {
 			KinkyDungeonEffectTilesSet(x + "," + y, {});
 		}

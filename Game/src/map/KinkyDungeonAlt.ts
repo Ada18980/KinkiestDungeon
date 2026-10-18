@@ -647,8 +647,27 @@ let alts: Record<string, AltType> = {
 
 		loadscript: (_firstTime) => {
 			// Summit loadscript triggers escape for up to 10 NPCs
-
 			KDTriggerNPCEscape(10);
+
+			// latex tiles that despawned in unfixed saves need to be respawned
+			const tile = KDMapTilesList.Summit;
+			for (let pos of Object.entries(tile.effectTiles)) {
+				// KinkyDungeonCreateSummit pastes at 1,1 so offset by 1,1
+				const xx = parseInt(pos[0].split(',')[0]) + 1;
+				const yy = parseInt(pos[0].split(',')[1]) + 1;
+				for (let effect of Object.values(pos[1])) {
+					if (!effect.infinite || KDEffectTiles[effect.name]?.infinite) {
+						continue;
+					}
+					const existing = KDGetEffectTiles(xx, yy)[effect.name];
+					if (existing) {
+						existing.infinite = true;
+						existing.duration = 9999;
+					} else {
+						KDCreateEffectTile(xx, yy, {name: effect.name, duration: 9999, infinite: true}, 0);
+					}
+				}
+			}
 
 			return true; // Returns whether or not to repopulate this map
 		},
@@ -2216,6 +2235,16 @@ function KinkyDungeonCreateSummit(_POI: any, VisitedRooms: any[], _width: number
 	}
 
 	KD_PasteTile(KDMapTilesList.Summit, 1, 1, data);
+
+	if (KDGameData.SummitFurniture) {
+		for (let key in KDGameData.SummitFurniture) {
+			const tile = KinkyDungeonTilesGet(key);
+			if (tile?.Furniture) {
+				tile.Furniture = KDGameData.SummitFurniture[key];
+			}
+		}
+	}
+
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 

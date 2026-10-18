@@ -133,6 +133,11 @@ function KDMapTilesPopulate (
 	 * indices that are filled in
 	 */
 	let indexFilled: Record<string, string> = {};
+	/**
+	 * indices that MUST be connected normally
+	 */
+	let indexStrict: Record<string, string> = {};
+	
 
 	// Determine order of filling tiles
 	while (tiles_temp.length > 0) {
@@ -229,7 +234,8 @@ function KDMapTilesPopulate (
 			while (trycount < 10) {
 				try {
 					// Get tile name based on weights (TODO)
-					tileName = KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, requiredAccess, globalTags, indices, tagModifiers);
+					tileName = KD_GetMapTile(index, indX, indY, tilesFilled, 
+						indexFilled, indexStrict, tagCounts, requiredAccess, globalTags, indices, tagModifiers);
 				
 					// Get tile from array
 					tile = KDMapTilesList[tileName];
@@ -249,6 +255,9 @@ function KDMapTilesPopulate (
 									category: tile.category,
 									tags: tags,
 								};
+								if (tile.tags.includes("strict")) {
+									indexStrict[(indX + xx - 1) + "," + (indY + yy - 1)] = tileName;
+								}
 							}
 					}
 
@@ -285,6 +294,7 @@ function KDMapTilesPopulate (
 	console.log(globalTags);
 	console.log(tilesFilled);
 	console.log(indexFilled);
+	console.log(indexStrict);
 
 
 
@@ -364,6 +374,7 @@ function KD_GetMapTile (
 	indY:            number,
 	tilesFilled:     Record<string, KDMapTile>,
 	indexFilled:     Record<string, string>,
+	indexStrict:     Record<string, string>,
 	tagCounts:       Record<string, number>,
 	requiredAccess:  Record<string, boolean>,
 	globalTags:      Record<string, boolean>,
@@ -389,7 +400,10 @@ function KD_GetMapTile (
 				&& mapTile.flexEdge['1,1']
 				&& (mapTile.primInd.includes(index)
 					|| (mapTile.flexEdgeSuper && mapTile.flexEdgeSuper['1,1'])))) {
-			if (!KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, indexFilled)) continue;
+			if (!KDCheckMapTileFilling(mapTile, indX, indY, indices, 
+				requiredAccess, 
+				indexFilled,
+				indexStrict)) continue;
 
 			if (!KDCheckMapTileAccess(mapTile, indX, indY, indexFilled, requiredAccess)) continue;
 
@@ -446,7 +460,11 @@ function KD_GetMapTile (
  * @param requiredAccess
  * @param indexFilled
  */
-function KDCheckMapTileFilling(mapTile: KDMapTile, indX: number, indY: number, indices: Record<string, string>, requiredAccess: Record<string, Boolean>, indexFilled: Record<string, string>): boolean {
+function KDCheckMapTileFilling(mapTile: KDMapTile, indX: number, indY: number,
+	indices: Record<string, string>,
+	requiredAccess: Record<string, Boolean>,
+	indexFilled: Record<string, string>,
+	indexStrict: Record<string, string>): boolean {
 	let passCount = 0;
 	// Skip over larger tiles that dont fit the tilesFilled map or are already filled
 	for (let xx = 1; xx <= mapTile.w; xx++)
@@ -469,16 +487,20 @@ function KDCheckMapTileFilling(mapTile: KDMapTile, indX: number, indY: number, i
 						// 3rd condition: other index direction points to is already filled
 						(yy > 1
 							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('u')
-							|| (indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)] === '' || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)]?.includes('d')))
+							|| (!indexStrict[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)]
+								&& indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)] === '' || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)]?.includes('d')))
 						&& (yy < mapTile.h
 							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('d')
-							|| (indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)] === '' || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)]?.includes('u')))
+							|| (!indexStrict[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)]
+								&& indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)] === '' || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)]?.includes('u')))
 						&& (xx > 1
 							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l')
-							|| (indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)] === '' || indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)]?.includes('r')))
+							|| (!indexStrict[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)]
+								&& indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)] === '' || indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)]?.includes('r')))
 						&& (xx < mapTile.w
 							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('r')
-							|| (indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)] === '' || indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)]?.includes('l')))
+							|| (!indexStrict[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)]
+								&& indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)] === '' || indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)]?.includes('l')))
 					))) fail = true; // fail here instead of returning false; if we matched the index it would be successful
 				else return false;
 			}
@@ -1326,6 +1348,7 @@ function KDCreateEffectTileTile(x: number, y: number, tileGenerator: any, data: 
 		tile = KDCreateEffectTile(x, y, {
 			name: tileGenerator.name,
 			duration: tileGenerator.duration,
+			infinite: tileGenerator.infinite,
 		}, 0);
 	}
 	if (tile)
