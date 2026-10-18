@@ -539,6 +539,7 @@ interface KDGameDataBase {
 	NoForceGreet:			boolean,
 	InteractTargetX:		number,
 	InteractTargetY:		number,
+	SummitFurniture:		Record<string, string>, // {"x,y": KDFurniture key}
 	RegimentID:			number,
 	Containers: Record<string, KDContainer>,
 	FacilitiesData:			FacilitiesData,
@@ -625,6 +626,7 @@ let KDGameDataBase: KDGameDataBase = {
 	FacilitiesData: null,
 	InteractTargetX: 0,
 	InteractTargetY: 0,
+	SummitFurniture: {},
 	NoForceGreet: false,
 	LogFilters: {
 		Combat: true,
@@ -7446,7 +7448,7 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 			if (!KDGameData.Containers) KDGameData.Containers = {};
 			if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
 			if (!KDGameData.BulletWarnings) KDGameData.BulletWarnings = [];
-
+			if (!KDGameData.SummitFurniture) KDGameData.SummitFurniture = {};
 
 			InitFacilities();
 
