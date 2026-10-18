@@ -1297,6 +1297,7 @@ function KDCreateEffectTileTile(x: number, y: number, tileGenerator: any, data: 
 		tile = KDCreateEffectTile(x, y, {
 			name: tileGenerator.name,
 			duration: tileGenerator.duration,
+			infinite: tileGenerator.infinite,
 		}, 0);
 	}
 	if (tile)
