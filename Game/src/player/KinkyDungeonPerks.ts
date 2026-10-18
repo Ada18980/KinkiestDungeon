@@ -961,6 +961,18 @@ let KDPerkStart = {
 		KDAddConsumable("RedKey", -1000);
 		KDAddConsumable("Pick", -1000);
 	},
+	DollShoppeStart: () => {
+		if (KinkyDungeonStatsChoice.get("NoPlayerOwner")) {
+			return;
+		}
+		KDChangeFactionRelation("Player", "Dressmaker", KDREPHOSTILE - KDFactionRelation("Player", "Dressmaker"), false);
+		KDCustomDefeatUniforms.DollShoppe();
+		KDFixPlayerClothes("Dressmaker");
+		KDBecomeShoppeMerchandise();
+		if (!KDHasSpell("ZeroResistance")) {
+			KDPushSpell(KinkyDungeonFindSpell("ZeroResistance"));
+		}
+	},
 	StartMaid: () =>{
 		KDAddQuest("MaidSweeper");
 		KDChangeFactionRelation("Player", "Maidforce", 0.2 - KDFactionRelation("Player", "Maidforce"), true);

@@ -1491,6 +1491,33 @@ function KDEnterDragonLair(dragon: entity, lairType: string = "DragonLair") {
 	KinkyDungeonSaveGame();
 }
 
+function KDBecomeShoppeMerchandise(): void {
+	KDDefeatedPlayerTick(false);
+	KDGameData.PrisonerState = "jail";
+	const params = KinkyDungeonMapParams[alts.DollShoppe.genType];
+	KinkyDungeonCreateMap(params, "DollShoppe", "", MiniGameKinkyDungeonLevel, undefined, undefined, "Dressmaker", undefined, false, "");
+	if (KDSoundEnabled()) {
+		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg", KDPlayer(), 1.0);
+	}
+
+	while (true) {
+		const jail = CommonRandomItemFromList(undefined, KDMapData.JailPoints);
+		if (jail.type != "display") {
+			continue;
+		}
+		const tile = KinkyDungeonTilesGet(`${jail.x},${jail.y}`);
+		if (!tile?.Furniture?.includes("Stand")) {
+			continue;
+		}
+
+		const player = KDPlayer();
+		player.x = jail.x;
+		player.y = jail.y;
+		break;
+	}
+
+	KDPlayerEffectRestrain(undefined, 1, ["dollstand"], KDGetMainFaction(), false, true, false, false, false);
+}
 
 function KDEnterDollTerminal(willing: boolean, cancelDialogue: boolean = true, forceOutfit: boolean = true): void {
 	let dollStand = KinkyDungeonPlayerTags.get("Dollstand");
