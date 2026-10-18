@@ -861,10 +861,12 @@ let KDPerkStart = {
 			turns_total: 0,
 			turns_trained: 0,
 		};
-		if (!KinkyDungeonStatsChoice.get("NoHood")) {
-			KinkyDungeonInventoryAddLoose("LeatherHood");
-		} else if (!KinkyDungeonStatsChoice.get("Unmasked")) {
-			KinkyDungeonInventoryAddLoose("LeatherMask");
+		if (!KinkyDungeonStatsChoice.get("NoSenseDep")) {
+			if (!KinkyDungeonStatsChoice.get("NoHood")) {
+				KinkyDungeonInventoryAddLoose("LeatherHood");
+			} else if (!KinkyDungeonStatsChoice.get("Unmasked")) {
+				KinkyDungeonInventoryAddLoose("LeatherMask");
+			}
 		}
 		//KinkyDungeonInventoryAddLoose("TrapEarplugs");
 
@@ -913,10 +915,12 @@ let KDPerkStart = {
 			turns_total: 0,
 			turns_trained: 0,
 		};
-		if (!KinkyDungeonStatsChoice.get("NoHood")) {
-			KinkyDungeonAddRestraintIfWeaker("LeatherHood", 20, true, "HiSec", false, undefined, undefined, undefined, true);
-		} else if (!KinkyDungeonStatsChoice.get("Unmasked")) {
-			KinkyDungeonAddRestraintIfWeaker("LeatherMask", 20, true, "HiSec", false, undefined, undefined, undefined, true);
+		if (!KinkyDungeonStatsChoice.get("NoSenseDep")) {
+			if (!KinkyDungeonStatsChoice.get("NoHood")) {
+				KinkyDungeonAddRestraintIfWeaker("LeatherHood", 20, true, "HiSec", false, undefined, undefined, undefined, true);
+			} else if (!KinkyDungeonStatsChoice.get("Unmasked")) {
+				KinkyDungeonAddRestraintIfWeaker("LeatherMask", 20, true, "HiSec", false, undefined, undefined, undefined, true);
+			}
 		}
 	},
 	HeadStartGag: () =>{
