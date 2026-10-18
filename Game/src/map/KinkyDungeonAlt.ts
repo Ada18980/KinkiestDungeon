@@ -2216,16 +2216,6 @@ function KinkyDungeonCreateSummit(_POI: any, VisitedRooms: any[], _width: number
 	}
 
 	KD_PasteTile(KDMapTilesList.Summit, 1, 1, data);
-
-	if (KDGameData.SummitFurniture) {
-		for (let key in KDGameData.SummitFurniture) {
-			const tile = KinkyDungeonTilesGet(key);
-			if (tile?.Furniture) {
-				tile.Furniture = KDGameData.SummitFurniture[key];
-			}
-		}
-	}
-
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 

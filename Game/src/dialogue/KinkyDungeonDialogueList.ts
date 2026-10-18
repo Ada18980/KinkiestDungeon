@@ -7400,10 +7400,6 @@ function KDSummitFurnitureBuildCache() {
 			dontTouchText: true,
 			clickFunction: (): boolean => {
 				const pos = KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY;
-				if (!KDGameData.SummitFurniture) {
-					KDGameData.SummitFurniture = {};
-				}
-				KDGameData.SummitFurniture[pos] = key;
 				const tile = KinkyDungeonTilesGet(pos);
 				if (tile?.Furniture) {
 					tile.Furniture = key;
