@@ -435,6 +435,11 @@ function KDDrawEditorUI() {
 		return true;
 	}, true, 150 , 210, 140, 45, 'OpenBorder', KDBaseWhite, KDEditorTileFlexSuper ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
 
+	DrawButtonKDEx("accessibilitytoggle", () => {
+		KDTE_TestAccessibility = !KDTE_TestAccessibility;
+		return true;
+	}, true, 150, 260, 140, 45, "TestAccess", KDBaseWhite, KDTE_TestAccessibility ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
+
 	// For later
 	let tileKeys = Object.keys(KDMapTilesListEditor);
 
@@ -1090,6 +1095,7 @@ let KDTE_Brush: Record<string, (brush: any, curr: string, noSwap: boolean) => vo
 };
 
 let KDTE_Inaccessible = false;
+let KDTE_TestAccessibility = true;
 
 let KDTE_confirmreset = false;
 let KDTE_confirmcommit = false;
@@ -1138,7 +1144,7 @@ function KDHandleTileEditor(noSwap?: boolean): void {
 	}
 
 	if (!noSwap) {
-		let inaccess = KDTEGetInaccessible();
+		let inaccess = KDTE_TestAccessibility ? KDTEGetInaccessible() : [];
 		if (inaccess.length > 0) KDTE_Inaccessible = true;
 		else KDTE_Inaccessible = false;
 	}
