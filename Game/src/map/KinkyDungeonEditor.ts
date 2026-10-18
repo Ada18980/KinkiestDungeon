@@ -1095,7 +1095,7 @@ let KDTE_Brush: Record<string, (brush: any, curr: string, noSwap: boolean) => vo
 };
 
 let KDTE_Inaccessible = false;
-let KDTE_TestAccessibility = true;
+let KDTE_TestAccessibility = KDSearchParams.has('test') ? !!KDSearchParams.get('test') : false;
 
 let KDTE_confirmreset = false;
 let KDTE_confirmcommit = false;
