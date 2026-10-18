@@ -2540,6 +2540,33 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					return KDCanSleepTooltip(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				}
 			},
+			"Remodel": {
+				playertext: "Default",
+				response: "Default",
+				prerequisiteFunction: (): boolean => {
+					if (KDGameData.RoomType != "Summit") {
+						return false;
+					}
+					const tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					return !!tile?.Furniture;
+				},
+				greyoutFunction: (): boolean => {
+					return !KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+				},
+				greyoutCustomTooltip: (): string => {
+					return "KDOccupied";
+				},
+				enterFunction: () => {
+					KDSummitFurnitureBuildCache();
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave",
+						response: "Default",
+						exitDialogue: true,
+					},
+				},
+			},
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,
@@ -7312,4 +7339,78 @@ function KDShopkeeperCriteria(player?: entity) {
 		&& !(item.lock && KDLocks[item.lock]?.shopImmune)
 		&& !(KDGetCurse(item) && KDCurses[KDGetCurse(item)]?.noShop);
 	};
+}
+
+let KDSummitFurnitureCacheBuilt = false;
+function KDSummitFurnitureBuildCache() {
+	if (KDSummitFurnitureCacheBuilt) {
+		return;
+	}
+	KDSummitFurnitureCacheBuilt = true;
+
+	const dialog = KDDialogue["Furniture"]?.options?.["Remodel"];
+	if (!dialog) {
+		return;
+	}
+
+	// map furniture tags to furniture restraints
+	const furnitures: Record<string, string> = {};
+	const best: Record<string, number> = {};
+	for (let r of KinkyDungeonRestraints) {
+		if (r.Group != "ItemDevices" || !r.immobile) {
+			continue;
+		}
+		if (!r.enemyTags) {
+			continue;
+		}
+		if (r.enemyTags["noSummitRemodel"] != undefined) {
+			// allow mods to exclude their furniture from the dialog
+			continue;
+		}
+		if (r.name == "Resin") {
+			continue;
+		}
+
+		for (let key in KDFurniture) {
+			if (key == "ShadowBase") {
+				// ShadowBallSuit has weight 100 but is not immobile so it picks cage with weight 0.1 instead
+				continue;
+			}
+			if (key == "DisplayEgyptian") {
+				// resolves to display trap which creates a duplicate dialog entry
+				continue;
+			}
+
+			const w = r.enemyTags[KDFurniture[key].restraintTag];
+			if (w != undefined && (best[key] == undefined || w > best[key])) {
+				best[key] = w;
+				furnitures[key] = KDGetRestraintName(r);
+			}
+		}
+	}
+
+	let i = 0;
+	for (let key in furnitures) {
+		const idx = "" + i;
+		addTextKey("dFurnitureRemodel_" + idx, furnitures[key]);
+		dialog.options[idx] = {
+			playertext: "Default",
+			response: "FurnitureRemodeled",
+			leadsToStage: "",
+			dontTouchText: true,
+			clickFunction: (): boolean => {
+				const pos = KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY;
+				if (!KDGameData.SummitFurniture) {
+					KDGameData.SummitFurniture = {};
+				}
+				KDGameData.SummitFurniture[pos] = key;
+				const tile = KinkyDungeonTilesGet(pos);
+				if (tile?.Furniture) {
+					tile.Furniture = key;
+				}
+				return false;
+			},
+		};
+		i++;
+	}
 }
