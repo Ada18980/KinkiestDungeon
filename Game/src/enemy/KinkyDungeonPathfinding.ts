@@ -121,7 +121,8 @@ function KinkyDungeonFindPath (
 	/** can swap with things leashed with the same */
 	Leashtarget?: number,
 	RequireFog?: boolean,
-	EnemyWeight?: number
+	EnemyWeight?: number,
+	ignoreBlockers?: boolean,
 ): KDPoint[]
 {
 	let tileShort = Tiles;
@@ -268,7 +269,7 @@ function KinkyDungeonFindPath (
 							&& (!RequireLight || KinkyDungeonVisionGet(xx, yy) > 0)
 							&& (!RequireFog || KinkyDungeonVisionGet(xx, yy) > 0 || KinkyDungeonFogGet(xx, yy) > 0)
 							&& (ignoreLocks || !MapTile || !MapTile.Lock || (Enemy && KDLocks[MapTile.Lock].canNPCPass(xx, yy, MapTile, Enemy)))
-							&& (!KinkyDungeonEnemyAt(xx, yy)?.Enemy?.immobile)
+							&& (ignoreBlockers || !KinkyDungeonEnemyAt(xx, yy)?.Enemy?.immobile)
 							&& (!blockEnemy || !!EnemyWeight
 								|| ((needDoorMemory && KinkyDungeonVisionGet(xx, yy) <= 0.1)
 									|| ((Leashtarget > 0 && Leashtarget == KinkyDungeonEnemyAt(xx, yy)?.leash?.entity)

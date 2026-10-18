@@ -589,8 +589,9 @@ function KDInitCanvas() {
 	KinkyDungeonCanvasFow.height = KinkyDungeonCanvas.height;
 }
 
-function KDCreateBoringness(noBoring: boolean) {
+function KDCreateBoringness(noBoring: boolean, locksBlock = true) {
 	let start = performance.now();
+	let fails = 0;
 	// Initialize boringness array
 	KDMapExtraData.Boringness = [];
 	for (let X = 0; X < KDMapData.GridWidth; X++) {
@@ -614,22 +615,31 @@ function KDCreateBoringness(noBoring: boolean) {
 			if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))) {
 				let startLength = KinkyDungeonFindPath(X, Y,
 					KDMapData.StartPosition.x, KDMapData.StartPosition.y,
-					false, false, false, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
-					undefined, false, undefined, false, true);
+					false, false, !locksBlock, KinkyDungeonMovableTilesSmartEnemy + (locksBlock ? "" : "Z"), 
+					false, false, false,
+					undefined, false, undefined, false, true, undefined, undefined,
+					undefined, undefined, undefined, !locksBlock);
+				
 				if (startLength) {
 					let endLength = KinkyDungeonFindPath(X, Y, KDMapData.EndPosition?.x || KDMapData.StartPosition.x, KDMapData.EndPosition?.y || KDMapData.StartPosition.y,
-						false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
-						undefined, false, undefined, false, true);
+						false, false, true, KinkyDungeonMovableTilesSmartEnemy + "Z", 
+						false, false, false,
+						undefined, false, undefined, false, true, undefined, undefined,
+						undefined, undefined, undefined, true);
 					if (endLength) {
 						let delta = Math.abs((startLength.length + endLength.length) - pathLength);
 						KinkyDungeonBoringSet(X, Y, delta);
 					} else KinkyDungeonBoringSet(X, Y, 2*pathLength);
-				} else KinkyDungeonBoringSet(X, Y, 5*pathLength);
+				} else {
+					fails++;
+					KinkyDungeonBoringSet(X, Y, 5*pathLength);
+				}
 			}
 		}
 	}
 
 	console.log("Time to create Boring" + (performance.now() - start));
+	return fails;
 }
 
 function KDGetMapSize(): number {
@@ -3933,7 +3943,10 @@ function KinkyDungeonTargetTileMsg(): boolean {
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectFaction")
 				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), KDBaseRed, 2, true);
 		if (KDSoundEnabled()) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Locked.ogg", KDPlayer());
-		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonObjectLock")
+		KinkyDungeonSendTextMessage(8, TextGet(
+			HasText("KinkyDungeonObject" + KinkyDungeonTargetTile.Type  + "Lock")
+				? "KinkyDungeonObject" + KinkyDungeonTargetTile.Type  + "Lock"
+				: "KinkyDungeonObjectLock")
 			.replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name))
 			.replace("LKTP", TextGet(`Kinky${KinkyDungeonTargetTile.Lock}Lock`))
 		, KDBaseWhite, 1, true);

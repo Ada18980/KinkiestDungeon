@@ -38,7 +38,6 @@ function KDMapTilesPopulate (
 
 	for (let t of Object.keys(indices)) {
 		if (requiredAccess[t]) {
-			tiles_temp.push(t);
 			tilesToCheck.push({
 				index: t,
 				x: parseInt(t.split(',')[0]),
@@ -245,7 +244,7 @@ function KDMapTilesPopulate (
 						for (let xx = 1; xx <= tile.w; xx++)
 							for (let yy = 1; yy <= tile.h; yy++) {
 								tilesFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile;
-								indexFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile.index[xx + ',' + yy];
+								indexFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile.flexEdgeSuper && tile.flexEdgeSuper[xx + ',' + yy] ? 'udlr' : tile.index[xx + ',' + yy];
 								KDMapData.CategoryIndex[(indX + xx - 1) + "," + (indY + yy - 1)] = {
 									category: tile.category,
 									tags: tags,
@@ -458,25 +457,29 @@ function KDCheckMapTileFilling(mapTile: KDMapTile, indX: number, indY: number, i
 			// Skip map tile if out of bounds
 			if (indices[(xx + indX - 1) + ',' + (yy + indY - 1)] == undefined) return false;
 			// Skip this mapTile if it doesnt fit
-			if (ind != indices[(xx + indX - 1) + ',' + (yy + indY - 1)] && KDLooseIndexRankingSuspend(indices[(xx + indX - 1) + ',' + (yy + indY - 1)], ind, mapTile.w, mapTile.h, xx, yy)) {
+			if (ind != indices[(xx + indX - 1) + ',' + (yy + indY - 1)]
+				&& KDLooseIndexRankingSuspend(indices[(xx + indX - 1) + ',' + (yy + indY - 1)], ind, mapTile.w, mapTile.h, xx, yy)) {
+				// FlexEdge means we only need one to succeed
 				if (mapTile.flexEdge && mapTile.flexEdge[xx + ',' + yy] && (
-					(mapTile.flexEdgeSuper && mapTile.flexEdgeSuper[xx + ',' + yy]) || (
-						// 1st condition: tile is inside this one
-						// 2nd condition: this tile doesn't need it
-						// 3rd condition: other index is already filled
+					// OpenBorder means it always succeeds
+					(mapTile.flexEdgeSuper && mapTile.flexEdgeSuper[xx + ',' + yy])
+						|| (
+						// 1st condition: direction points inwards
+						// 2nd condition: this tile doesn't need this direction
+						// 3rd condition: other index direction points to is already filled
 						(yy > 1
 							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('u')
-							|| indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)] != undefined)
+							|| (indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)] === '' || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)]?.includes('d')))
 						&& (yy < mapTile.h
 							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('d')
-							|| indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)] != undefined)
-						&& (xx < mapTile.w
-							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l')
-							|| indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)] != undefined)
+							|| (indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)] === '' || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)]?.includes('u')))
 						&& (xx > 1
+							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l')
+							|| (indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)] === '' || indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)]?.includes('r')))
+						&& (xx < mapTile.w
 							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('r')
-							|| indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)] != undefined)
-					))) fail = true;
+							|| (indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)] === '' || indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)]?.includes('l')))
+					))) fail = true; // fail here instead of returning false; if we matched the index it would be successful
 				else return false;
 			}
 			// Skip this mapTile if it's already filled
@@ -491,16 +494,18 @@ function KDCheckMapTileFilling(mapTile: KDMapTile, indX: number, indY: number, i
 	return passCount > 0;
 }
 
-/** Suspends the inside of large tiles */
+/** Suspends the inside of large tiles
+ * returns true if the tile SHOULD be considered for index checking
+ */
 function KDLooseIndexRankingSuspend(indexCheck: string, indexTile: string, w: number, h: number, xx: number, yy: number): boolean {
 	if (w == 1 && h == 1) return true; // Tiles that are 1/1 dont get requirements suspended
 	if (xx > 1 && xx < w && yy > 1 && yy < h) return false; // Suspended tiles in the middle
 	if (!indexCheck) return true; // This means we hit the border
 	if (!indexTile) return true; // This is bad but it shouldnt crash the game. We just dont place the tile
-	if (indexCheck.includes('u') && yy == 1 && !indexTile.includes('u')) return true; // Dont suspend if we dont have the appropriate index entrance
-	if (indexCheck.includes('d') && yy == h && !indexTile.includes('d')) return true; // Dont suspend if we dont have the appropriate index entrance
-	if (indexCheck.includes('l') && xx == 1 && !indexTile.includes('l')) return true; // Dont suspend if we dont have the appropriate index entrance
-	if (indexCheck.includes('r') && xx == w && !indexTile.includes('r')) return true; // Dont suspend if we dont have the appropriate index entrance
+	if (indexCheck.includes('u') && yy == 1 && !indexTile.includes('u')) return true; // Dont suspend if we lack the appropriate index entrance
+	if (indexCheck.includes('d') && yy == h && !indexTile.includes('d')) return true; // Dont suspend if we lack the appropriate index entrance
+	if (indexCheck.includes('l') && xx == 1 && !indexTile.includes('l')) return true; // Dont suspend if we lack the appropriate index entrance
+	if (indexCheck.includes('r') && xx == w && !indexTile.includes('r')) return true; // Dont suspend if we lack the appropriate index entrance
 	return false;
 }
 
@@ -682,7 +687,30 @@ function KDGenMaze(startX: number, startY: number, tile: any, seed: any, _MazeBl
 	//return tile.grid[x + y*(tileWidth+1)];
 	//};
 	let isMazeBlock = (x: number, y: number) => {
-		return tile.Tiles && tile.Tiles[x + ',' + y] && tile.Tiles[x + ',' + y].MazeBlock;
+		if (x >= 0 && y >= 0 && x+scale <= tileWidth && y+scale <= tileHeight) {
+		
+			return tile.Tiles && tile.Tiles[x + ',' + y] && tile.Tiles[x + ',' + y].MazeBlock;
+		}
+		return false;
+	};
+	
+	// Checks all intervening tiles
+	let MazeBlockTo = (x: number, y: number, x2: number, y2: number) => {
+		let dist = KDistChebyshev(x-x2, y-y2)
+		let dx = x2 - x;
+		let dy = y2 - y;
+		let sc = scale; // might bug out some existing tiles
+		for (let i = 0; i <= dist; i += 0.5) {
+			for (let xx = 0; xx < sc; xx++) {
+				for (let yy = 0; yy < sc; yy++) {
+					if (isMazeBlock(
+						Math.round(xx + x + dx * i/dist),
+						Math.round(yy + y + dy * i/dist)))
+						return true;
+				}
+			}
+		}
+		return false;
 	};
 
 	let ActivatedTiles = {};
@@ -690,7 +718,6 @@ function KDGenMaze(startX: number, startY: number, tile: any, seed: any, _MazeBl
 	let isValid = (x: number, y: number, allowActivated: boolean): boolean => {
 		if (x >= 0 && y >= 0 && x+scale <= tileWidth && y+scale <= tileHeight) {
 			//if (getGrid(x, y) != '1') return false;
-			if (isMazeBlock(x, y)) return false;
 			if (!allowActivated && ActivatedTiles[x + ',' + y]) return false;
 			return true;
 		}
@@ -720,7 +747,8 @@ function KDGenMaze(startX: number, startY: number, tile: any, seed: any, _MazeBl
 	let spread = (x: number, y: number, xe: number, ye: number): boolean => {
 		// Carve a path if its valid
 		// Chance to merge into an existing path
-		if (isValid(x, y, KDRandom() < branchchance) && !isMazeBlock(xe, ye)) {
+		if (isValid(x, y, KDRandom() < branchchance)
+			&& !MazeBlockTo(x, y, xe, ye)) {
 			ActiveTiles.push({x: x, y: y});
 			ActivatedTiles[(x) + ',' + (y)] = true;
 			let wob = KDRandom() < wobble;
@@ -799,6 +827,7 @@ function KDGenMaze(startX: number, startY: number, tile: any, seed: any, _MazeBl
 
 	// Start with the seed tile
 	ActiveTiles.push({x: startX, y: startY});
+	ActivatedTiles[startX + ',' + startY] = true;
 	let activeTile = operate(startX, startY);
 
 	while (activeTile) {

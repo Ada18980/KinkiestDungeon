@@ -3877,7 +3877,9 @@ KDEffectTileTooltipWrapping,Wrapping
 
 KinkyDungeonObjectCharger,"It appears to be a receptacle for an ancient crystal."
 KinkyDungeonObjectChargerDestroyed,"It's a pile of slag emitting a strange magic smoke..."
-KinkyDungeonObjectLock,"object"
+KinkyDungeonObjectLock,"That object is locked."
+KinkyDungeonObjectDoorLock,"That door is locked."
+KinkyDungeonObjectChestLock,"That chest is locked."
 KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectShrineCommerce,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectDoor,"That door is open. Do you want to close it?"

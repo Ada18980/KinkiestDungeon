@@ -747,6 +747,13 @@ function KinkyDungeonCreateMap (
 		}
 	}
 
+	// purely for debugging
+	let fails2 = KDCreateBoringness(false, false);
+	if (fails2 > 0) {
+		console.log("Warning: some tiles are inaccessible (this can be normal)")
+	}
+	KDCreateBoringness(false, true);
+
 	location.data[KDGameData.RoomType] = KDMapData;
 
 	KDTileToTest = null;

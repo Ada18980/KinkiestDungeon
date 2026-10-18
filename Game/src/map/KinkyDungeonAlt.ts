@@ -3008,8 +3008,6 @@ function KinkyDungeonCreateElevatorRoom(_POI: any, VisitedRooms: any[], _width: 
 
 	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
-	VisitedRooms[0].x = 1;
-	VisitedRooms[0].y = Math.floor(height/2);
 
 	// Now we STRETCH the map
 	let KinkyDungeonOldGrid = KDMapData.Grid;
@@ -3022,7 +3020,7 @@ function KinkyDungeonCreateElevatorRoom(_POI: any, VisitedRooms: any[], _width: 
 	// Generate the grid
 	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
 		for (let X = 0; X < KDMapData.GridWidth; X++)
-			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
+			KDMapData.Grid = KDMapData.Grid + '1';
 		KDMapData.Grid = KDMapData.Grid + '\n';
 	}
 
@@ -3120,6 +3118,10 @@ function KinkyDungeonCreateElevatorRoom(_POI: any, VisitedRooms: any[], _width: 
 			lightColor: 0x99ff99,
 		});
 	}
+
+	
+	VisitedRooms[0].x = KDMapData.StartPosition.x;
+	VisitedRooms[0].y = KDMapData.StartPosition.y;
 
 	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 3, '6');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x) + ',' + (KDMapData.StartPosition.y - 3), {
