@@ -639,7 +639,7 @@ function KDDrawEditorUI() {
 
 	if (!KDClipboardDisabled) {
 		DrawButtonKDEx("CopyClip", () => {
-			var text = JSON.stringify(KDMapTilesListEditor);
+			var text = JSON.stringify(KDMapTilesListEditor, null, 4);
 			navigator.clipboard.writeText(text).then(function() {
 				console.log('Async: Copying to clipboard was successful!');
 				console.log(KDMapTilesListEditor);
@@ -647,7 +647,7 @@ function KDDrawEditorUI() {
 				console.error('Async: Could not copy text: ', err);
 			});
 			return true;
-		}, true, 1450, 900, 275, 45, "Copy array to clipboard", KDBaseWhite, "");
+		}, true, 1450, 900, 275, 45, "Copy database to clipboard", KDBaseWhite, "");
 
 		DrawButtonKDEx("MergeClip", () => {
 			let success = false;
