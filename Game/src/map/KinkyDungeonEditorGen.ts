@@ -61,18 +61,7 @@ function KDMapTilesPopulate (
 		let ind = tilesToCheck[0];
 
 		if (indices[ind.index]?.includes('u')) {
-			if (ind.y > 0 && !indicesOrdered[ind.x + ',' + (ind.y - 1)]) {
-				tilesToCheck.push({
-					index: ind.x + ',' + (ind.y - 1),
-					x: ind.x,
-					y: ind.y - 1,
-					dist: ind.dist + 1,
-				})
-			}
-		}
-
-		if (indices[ind.index]?.includes('u')) {
-			if (ind.y > 0 && !indicesOrdered[ind.x + ',' + (ind.y - 1)]) {
+			if (ind.y > 1 && !indicesOrdered[ind.x + ',' + (ind.y - 1)]) {
 				tilesToCheck.push({
 					index: ind.x + ',' + (ind.y - 1),
 					x: ind.x,
@@ -83,7 +72,7 @@ function KDMapTilesPopulate (
 		}
 
 		if (indices[ind.index]?.includes('d')) {
-			if (ind.y < h - 1 && !indicesOrdered[ind.x + ',' + (ind.y + 1)]) {
+			if (ind.y < h && !indicesOrdered[ind.x + ',' + (ind.y + 1)]) {
 				tilesToCheck.push({
 					index: ind.x + ',' + (ind.y + 1),
 					x: ind.x,
@@ -92,10 +81,9 @@ function KDMapTilesPopulate (
 				})
 			}
 		}
-
 		
 		if (indices[ind.index]?.includes('l')) {
-			if (ind.x > 0 && !indicesOrdered[(ind.x - 1) + ',' + ind.y]) {
+			if (ind.x > 1 && !indicesOrdered[(ind.x - 1) + ',' + ind.y]) {
 				tilesToCheck.push({
 					index: (ind.x - 1) + ',' + ind.y,
 					x: ind.x - 1,
@@ -105,7 +93,7 @@ function KDMapTilesPopulate (
 			}
 		}
 		if (ind.index.includes('r')) {
-			if (ind.x < w-1 && !indicesOrdered[(ind.x + 1) + ',' + ind.y]) {
+			if (ind.x < w && !indicesOrdered[(ind.x + 1) + ',' + ind.y]) {
 				tilesToCheck.push({
 					index: (ind.x + 1) + ',' + ind.y,
 					x: ind.x + 1,
@@ -124,8 +112,8 @@ function KDMapTilesPopulate (
 
 	let maxDist = 1;
 
-	for (let x = 0; x < w; x++) {
-		for (let y = 0; y < h; y++) {
+	for (let x = 1; x <= w; x++) {
+		for (let y = 1; y <= h; y++) {
 			if (!indicesOrdered[x + ',' + y]) {
 				tiles_temp.push(x + ',' + y);
 				indicesOrdered[x + ',' + y] = x + ',' + y;

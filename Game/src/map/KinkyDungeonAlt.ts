@@ -1979,6 +1979,8 @@ function KinkyDungeonCreateTileMaze(_POI: any[], VisitedRooms: any[], width: num
 
 	// Now we convert the maze into an array of indices
 	let indices: Record<string, string> = {};
+	let indexW = 1;
+	let indexH = 1;
 	for (let x = 1; x < KDMapData.GridWidth; x += 2) {
 		for (let y = 1; y < KDMapData.GridHeight; y += 2) {
 			let index = "";
@@ -1990,6 +1992,8 @@ function KinkyDungeonCreateTileMaze(_POI: any[], VisitedRooms: any[], width: num
 
 
 			indices[(1 + (x - 1)/2) + "," + (1 + (y - 1)/2)] = index;
+			if ((1 + (x - 1)/2) > indexW) indexW = (1 + (x - 1)/2);
+			if ((1 + (y - 1)/2) > indexW) indexH = (1 + (y - 1)/2);
 		}
 	}
 
@@ -2033,7 +2037,7 @@ function KinkyDungeonCreateTileMaze(_POI: any[], VisitedRooms: any[], width: num
 		shrine: data.params.shrinecount || 0,
 		charger: data.params.chargercount || 0,
 	}, KDDefaultMaxFlags);
-	KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, tagModifiers);
+	KDMapTilesPopulate(indexW, indexH, indices, data, requiredAccess, maxTagFlags, tagModifiers);
 
 	let floodChance = data.params.floodchance || 0;
 
