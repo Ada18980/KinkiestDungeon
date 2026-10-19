@@ -438,7 +438,7 @@ function KDDrawEditorUI() {
 	DrawButtonKDEx("accessibilitytoggle", () => {
 		KDTE_TestAccessibility = !KDTE_TestAccessibility;
 		return true;
-	}, true, 150, 260, 140, 45, "TestAccess", KDBaseWhite, KDTE_TestAccessibility ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
+	}, true, 150, 260, 140, 45, "Test Access", KDBaseWhite, KDTE_TestAccessibility ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
 
 	// For later
 	let tileKeys = Object.keys(KDMapTilesListEditor);
@@ -1095,7 +1095,7 @@ let KDTE_Brush: Record<string, (brush: any, curr: string, noSwap: boolean) => vo
 };
 
 let KDTE_Inaccessible = false;
-let KDTE_TestAccessibility = KDSearchParams.has('test') ? !!KDSearchParams.get('test') : false;
+let KDTE_TestAccessibility = true;
 
 let KDTE_confirmreset = false;
 let KDTE_confirmcommit = false;
