@@ -2512,8 +2512,6 @@ Roguelike : ‎没有保存代码，只有自动保存
 - This belongs to the FACTION
 这属于 FACTION
 
-- Devious Dungeon Challenge is enabled.
-Devious Dungeon Challenge 已启用。
 - Waiting for game data...
 等待游戏数据...
 
@@ -7886,10 +7884,10 @@ SCHOOL 女神给予你庇护和反击之力！
 似乎是一个远古水晶的容器。
 - It's a pile of slag emitting a strange magic smoke...
 一堆散发着古怪魔法烟气的熔渣……
-- object
+- That object is locked.
 目标
-# :: KinkyDungeonObjectLock
-# :: KinkyDungeonObject
+# - That door is locked.
+# - That chest is locked.
 - A shrine to the goddess of TYPE.
 TYPE女神的神泉。
 # :: KinkyDungeonObjectShrine
@@ -7900,6 +7898,8 @@ TYPE女神的神泉。
 只是一件普通家具。
 - Nothing to see here.
 这里什么也没有。
+- object
+目标
 - Chest
 胸部
 :: KinkyDungeonObjectChest
@@ -26928,6 +26928,9 @@ Mmmph? (行为混乱)
 (把自己锁在里面)
 - (Check the occupant)
 检查里面的NPC
+# - (Remodel furniture)
+# - (Remodel to what?)
+# - (You remodel the furniture)
 - Can't enter in your current state.
 你无法在当前状态下进入。
 
