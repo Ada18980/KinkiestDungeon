@@ -246,14 +246,16 @@ function KDMapTilesPopulate (
 			while (trycount < 10) {
 				try {
 					// Get tile name based on weights (TODO)
-					tileName = KD_GetMapTile(index, indX, indY, tilesFilled, 
+					let tileData = KD_GetMapTile(index, indX, indY, tilesFilled, 
 						indexFilled, indexStrict, tileDistance, maxDist, tagCounts, requiredAccess, 
 						globalTags, indices, tagModifiers,);
+
+					tileName = tileData.name;
 				
 					// Get tile from array
 					tile = KDMapTilesList[tileName];
 
-					tags = KD_PasteTile(tile, cornerX, cornerY, data);
+					tags = KD_PasteTile(tile, cornerX - KDTE_Scale * (tileData.tileX - 1), cornerY - KDTE_Scale * (tileData.tileY - 1), data);
 
 					if (tags) {
 						for (let t of tags) {
@@ -262,14 +264,14 @@ function KDMapTilesPopulate (
 						}
 						for (let xx = 1; xx <= tile.w; xx++)
 							for (let yy = 1; yy <= tile.h; yy++) {
-								tilesFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile;
-								indexFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile.flexEdgeSuper && tile.flexEdgeSuper[xx + ',' + yy] ? 'udlr' : tile.index[xx + ',' + yy];
-								KDMapData.CategoryIndex[(indX + xx - 1) + "," + (indY + yy - 1)] = {
+								tilesFilled[(indX - (tileData.tileX - 1) + xx - 1) + "," + (indY - (tileData.tileY - 1) + yy - 1)] = tile;
+								indexFilled[(indX - (tileData.tileX - 1) + xx - 1) + "," + (indY - (tileData.tileY - 1) + yy - 1)] = tile.flexEdgeSuper && tile.flexEdgeSuper[xx + ',' + yy] ? 'udlr' : tile.index[xx + ',' + yy];
+								KDMapData.CategoryIndex[(indX - (tileData.tileX - 1) + xx - 1) + "," + (indY - (tileData.tileY - 1) + yy - 1)] = {
 									category: tile.category,
 									tags: tags,
 								};
 								if (tile.tags.includes("strict")) {
-									indexStrict[(indX + xx - 1) + "," + (indY + yy - 1)] = tileName;
+									indexStrict[(indX - (tileData.tileX - 1) + xx - 1) + "," + (indY - (tileData.tileY - 1) + yy - 1)] = tileName;
 								}
 							}
 					}
@@ -395,7 +397,7 @@ function KD_GetMapTile (
 	globalTags:      Record<string, boolean>,
 	indices:         Record<string, string>,
 	tagModifiers:    Record<string, number>
-): string
+): {name: string, tileX: number, tileY: number}
 {
 	let tagList = {
 		"1,1": KDAggregateTileTags(indX, indY, 1, 1, tilesFilled, globalTags),
@@ -410,23 +412,28 @@ function KD_GetMapTile (
 	let maxWeight = 0;
 
 	for (let mapTile of Object.values(KDMapTilesList)) {
+		// pick a random corner
+		let tileX = 1;
+		let tileY = 1;
+		if (mapTile.w > 1 && (indX > mapTile.w) && KDRandom() < 0.5) tileX = mapTile.w;
+		if (mapTile.h > 1 && (indY > mapTile.h) && KDRandom() < 0.5) tileY = mapTile.h;
 		if (mapTile.primInd == index ||
 			(mapTile.flexEdge
 				&& mapTile.flexEdge['1,1']
 				&& (mapTile.primInd.includes(index)
 					|| (mapTile.flexEdgeSuper && mapTile.flexEdgeSuper['1,1'])))) {
-			if (!KDCheckMapTileFilling(mapTile, indX, indY, indices, 
+			if (!KDCheckMapTileFilling(mapTile, indX - (tileX - 1), indY - (tileY - 1), indices, 
 				requiredAccess, 
 				indexFilled,
 				indexStrict)) continue;
 
-			if (!KDCheckMapTileAccess(mapTile, indX, indY, indexFilled, requiredAccess)) continue;
+			if (!KDCheckMapTileAccess(mapTile, indX - (tileX - 1), indY - (tileY - 1), indexFilled, requiredAccess)) continue;
 
 			// Aggregate tags for the creation and evaluation of this tile, caching them if needed
-			let tags = tagList[mapTile.w + ',' + mapTile.h];
+			let tags = tagList[(mapTile.w - (tileX - 1)) + ',' + (mapTile.h - (tileY - 1))];
 			if (!tags) {
-				tags = KDAggregateTileTags(indX, indY, mapTile.w, mapTile.h, tilesFilled, globalTags);
-				tagList[mapTile.w + ',' + mapTile.h] = tags;
+				tags = KDAggregateTileTags(indX - (tileX - 1), indY - (tileY - 1), mapTile.w, mapTile.h, tilesFilled, globalTags);
+				tagList[(mapTile.w - (tileX - 1)) + ',' + (mapTile.h - (tileY - 1))] = tags;
 			}
 
 			if (requiredAccess[indX + ',' + indY]) tags.start = true;
@@ -442,7 +449,7 @@ function KD_GetMapTile (
 			}
 			if (weight > 0 && (maxWeight < KD_GENWEIGHTCUTOFF || weight >= KD_GENWEIGHTCUTOFF)) {
 				maxWeight = weight;
-				Weights.push({tile: mapTile, weight: WeightTotal});
+				Weights.push({tile: mapTile, x: tileX, y: tileY, weight: WeightTotal});
 				WeightTotal += weight;
 			}
 		}
@@ -459,10 +466,15 @@ function KD_GetMapTile (
 	}
 
 	let selection = KDRandom() * WeightTotal;
+	let tileX = 1;
+	let tileY = 1;
 
 	for (let L = Weights.length - 1; L >= 0; L--) {
 		if (selection > Weights[L].weight) {
 			tile = Weights[L].tile.name;
+			tileX = Weights[L].x;
+			tileY = Weights[L].y;
+
 			break;
 		}
 	}
@@ -471,7 +483,7 @@ function KD_GetMapTile (
 		console.log("ERROR AT INDEX " + indX + "," + indY);
 	}
 
-	return tile;
+	return {name: tile, tileX: tileX, tileY: tileY};
 }
 
 /**
@@ -562,12 +574,15 @@ function KDCheckMapTileFilling(mapTile: KDMapTile, indX: number, indY: number,
 function KDLooseIndexRankingSuspend(indexCheck: string, indexTile: string, w: number, h: number, xx: number, yy: number): boolean {
 	if (w == 1 && h == 1) return true; // Tiles that are 1/1 dont get requirements suspended
 	if (xx > 1 && xx < w && yy > 1 && yy < h) return false; // Suspended tiles in the middle
-	if (!indexCheck) return true; // This means we hit the border
+	if (indexCheck === undefined) return true; // This means we hit the border
 	if (!indexTile) return true; // This is bad but it shouldnt crash the game. We just dont place the tile
+	
+	// We care only about entrances that point outside the tile
 	if (indexCheck.includes('u') && yy == 1 && !indexTile.includes('u')) return true; // Dont suspend if we lack the appropriate index entrance
 	if (indexCheck.includes('d') && yy == h && !indexTile.includes('d')) return true; // Dont suspend if we lack the appropriate index entrance
 	if (indexCheck.includes('l') && xx == 1 && !indexTile.includes('l')) return true; // Dont suspend if we lack the appropriate index entrance
 	if (indexCheck.includes('r') && xx == w && !indexTile.includes('r')) return true; // Dont suspend if we lack the appropriate index entrance
+	
 	return false;
 }
 

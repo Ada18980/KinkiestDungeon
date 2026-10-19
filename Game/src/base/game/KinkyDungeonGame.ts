@@ -2055,7 +2055,7 @@ function KDGetAdjacentTiles(dx: number, dy: number): KDPoint[] {
 let KinkyDungeonAutoWaitSuppress = false;
 
 function KinkyDungeonControlsEnabled() {
-	return !KinkyDungeonInspect
+	return (!KinkyDungeonInspect || KinkyDungeonDrawState != "Game")
 		&& KDGameData.SlowMoveTurns < 1
 		&& KinkyDungeonStatFreeze < 1
 		&& KDGameData.SleepTurns < 1

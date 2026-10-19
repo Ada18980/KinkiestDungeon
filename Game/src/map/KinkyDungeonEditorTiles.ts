@@ -1,6 +1,7 @@
 "use strict";
 
-let KDMapTilesList: Record<string, KDMapTile> = {
+let KDMapTilesList: Record<string, KDMapTile> = 
+{
     "HallCross": {
         "name": "HallCross",
         "Labels": {},
@@ -18627,6 +18628,7 @@ let KDMapTilesList: Record<string, KDMapTile> = {
     },
     "BellowsRobotTrap": {
         "name": "BellowsRobotTrap",
+        "Labels": {},
         "w": 1,
         "h": 2,
         "primInd": "d",
@@ -18638,7 +18640,9 @@ let KDMapTilesList: Record<string, KDMapTile> = {
             "1,1": "y",
             "1,2": "y"
         },
-        "flexEdgeSuper": {},
+        "flexEdgeSuper": {
+            "1,2": "y"
+        },
         "scale": 7,
         "category": "bellows",
         "weight": 80,
@@ -19177,7 +19181,7 @@ let KDMapTilesList: Record<string, KDMapTile> = {
         },
         "scale": 7,
         "category": "bellows",
-        "weight": 30,
+        "weight": 1,
         "grid": "00000000000000\n0X222XX111Z100\n01111111333110\n01C00001Z11110\n0111110000z010\n01X22111111d10\n00000000000000\n",
         "POI": [],
         "Keyring": [],
