@@ -1109,6 +1109,32 @@ function KinkyDungeonGenerateLock(Guaranteed?: boolean, Floor?: number, AllowGol
 	return lock;
 }
 
+
+function KDFixDoors (
+	width:           number,
+	height:          number,) {
+
+	let doorTiles = "Dd";
+	for (let X = 1; X < width; X += 1) {
+		for (let Y = 1; Y < height; Y += 1) {
+			if (doorTiles.includes(KinkyDungeonMapGet(X, Y))
+				&& !KinkyDungeonTilesGet(X + ',' + Y)?.Lock) {
+					let vert = 
+						KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(X, Y + 1))
+						&& KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(X, Y - 1));
+					let horiz = 
+						KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(X + 1, Y))
+						&& KinkyDungeonMovableTilesSmartEnemy.includes(KinkyDungeonMapGet(X - 1, Y));
+
+					if (!vert && !horiz) {
+						KinkyDungeonMapSet(X, Y, '1');
+					}
+			}
+		}
+	}
+
+}
+
 let KDPlaceMode = {
 	MODE_PLACENEW: 0x0,
 	MODE_MODIFYPOTENTIALANDEXISTING: 0x1,

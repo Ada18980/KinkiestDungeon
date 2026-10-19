@@ -3,6 +3,14 @@
 /** If a tile's weight is higher than this, then any time without this much weight will get culled from the list */
 let KD_GENWEIGHTCUTOFF = 100000;
 
+let KDBoringnessWeightScaleTags = {
+	chest: true,
+	blue: true,
+	gold: true,
+	lessergold: true,
+	silver: true,
+}
+
 
 function KDAddLabel(label: KDLabel) {
 	if (!KDMapData.Labels) KDMapData.Labels = {};
@@ -33,7 +41,8 @@ function KDMapTilesPopulate (
 	 */
 	let indicesOrdered: Record<string, string> = {};
 	let tiles_temp: string[] = [];
-	let tilesToCheck: {index: string, x: number, y: number}[] = [];
+	let tilesToCheck: {index: string, x: number, y: number, dist: number}[] = [];
+	let tileDistance: Record<string, number> = {};
 
 
 	for (let t of Object.keys(indices)) {
@@ -41,7 +50,8 @@ function KDMapTilesPopulate (
 			tilesToCheck.push({
 				index: t,
 				x: parseInt(t.split(',')[0]),
-				y: parseInt(t.split(',')[0])
+				y: parseInt(t.split(',')[0]),
+				dist: 0,
 		});
 		}
 	}
@@ -50,43 +60,47 @@ function KDMapTilesPopulate (
 	while(tilesToCheck.length > 0) {
 		let ind = tilesToCheck[0];
 
-		if (ind.index.includes('u')) {
+		if (indices[ind.index]?.includes('u')) {
 			if (ind.y > 0 && !indicesOrdered[ind.x + ',' + (ind.y - 1)]) {
 				tilesToCheck.push({
 					index: ind.x + ',' + (ind.y - 1),
 					x: ind.x,
 					y: ind.y - 1,
+					dist: ind.dist + 1,
 				})
 			}
 		}
 
-		if (ind.index.includes('u')) {
+		if (indices[ind.index]?.includes('u')) {
 			if (ind.y > 0 && !indicesOrdered[ind.x + ',' + (ind.y - 1)]) {
 				tilesToCheck.push({
 					index: ind.x + ',' + (ind.y - 1),
 					x: ind.x,
 					y: ind.y - 1,
+					dist: ind.dist + 1,
 				})
 			}
 		}
 
-		if (ind.index.includes('d')) {
+		if (indices[ind.index]?.includes('d')) {
 			if (ind.y < h - 1 && !indicesOrdered[ind.x + ',' + (ind.y + 1)]) {
 				tilesToCheck.push({
 					index: ind.x + ',' + (ind.y + 1),
 					x: ind.x,
 					y: ind.y + 1,
+					dist: ind.dist + 1,
 				})
 			}
 		}
 
 		
-		if (ind.index.includes('l')) {
+		if (indices[ind.index]?.includes('l')) {
 			if (ind.x > 0 && !indicesOrdered[(ind.x - 1) + ',' + ind.y]) {
 				tilesToCheck.push({
 					index: (ind.x - 1) + ',' + ind.y,
 					x: ind.x - 1,
 					y: ind.y,
+					dist: ind.dist + 1,
 				})
 			}
 		}
@@ -96,15 +110,19 @@ function KDMapTilesPopulate (
 					index: (ind.x + 1) + ',' + ind.y,
 					x: ind.x + 1,
 					y: ind.y,
+					dist: ind.dist + 1,
 				})
 				
 			}
 		}
 
 		tiles_temp.push(ind.index);
+		tileDistance[ind.index] = ind.dist;
 		indicesOrdered[ind.index] = ind.index;
 		tilesToCheck.splice(0, 1);
 	}
+
+	let maxDist = 1;
 
 	for (let x = 0; x < w; x++) {
 		for (let y = 0; y < h; y++) {
@@ -115,6 +133,8 @@ function KDMapTilesPopulate (
 		}
 	}
 
+
+	
 
 
 
@@ -151,6 +171,10 @@ function KDMapTilesPopulate (
 			tilesFilled[ind] = {};
 		}
 		tiles_temp.splice(0, 1);
+		
+		if (tileDistance[ind] || 1 > maxDist) {
+			maxDist = tileDistance[ind];
+		}
 	}
 
 
@@ -235,7 +259,8 @@ function KDMapTilesPopulate (
 				try {
 					// Get tile name based on weights (TODO)
 					tileName = KD_GetMapTile(index, indX, indY, tilesFilled, 
-						indexFilled, indexStrict, tagCounts, requiredAccess, globalTags, indices, tagModifiers);
+						indexFilled, indexStrict, tileDistance, maxDist, tagCounts, requiredAccess, 
+						globalTags, indices, tagModifiers,);
 				
 					// Get tile from array
 					tile = KDMapTilesList[tileName];
@@ -375,6 +400,8 @@ function KD_GetMapTile (
 	tilesFilled:     Record<string, KDMapTile>,
 	indexFilled:     Record<string, string>,
 	indexStrict:     Record<string, string>,
+	tileDistance:     Record<string, number>,
+	maxDist: number,
 	tagCounts:       Record<string, number>,
 	requiredAccess:  Record<string, boolean>,
 	globalTags:      Record<string, boolean>,
@@ -418,10 +445,17 @@ function KD_GetMapTile (
 
 			// Determine tile candidate weight and then commit to the array if it's positive
 			let weight = KDGetTileWeight(mapTile, tags, tagCounts, tagModifiers);
+			if (!tags['noDistScale'] && weight > 0 && Object.keys(KDBoringnessWeightScaleTags).some((tag) => {
+				return !!tags[tag];
+			})) {
+				// Lower the weight of chest-bearing tiles so that they are further into the maze
+				let dist = tileDistance[indX + ',' + indY] || 1;
+				weight *= 0.3 + 0.7 * dist / maxDist;
+			}
 			if (weight > 0 && (maxWeight < KD_GENWEIGHTCUTOFF || weight >= KD_GENWEIGHTCUTOFF)) {
 				maxWeight = weight;
 				Weights.push({tile: mapTile, weight: WeightTotal});
-				WeightTotal += mapTile.weight;
+				WeightTotal += weight;
 			}
 		}
 	}
@@ -466,6 +500,7 @@ function KDCheckMapTileFilling(mapTile: KDMapTile, indX: number, indY: number,
 	indexFilled: Record<string, string>,
 	indexStrict: Record<string, string>): boolean {
 	let passCount = 0;
+	let connectedCount = 0;
 	// Skip over larger tiles that dont fit the tilesFilled map or are already filled
 	for (let xx = 1; xx <= mapTile.w; xx++)
 		for (let yy = 1; yy <= mapTile.h; yy++) {
@@ -510,10 +545,27 @@ function KDCheckMapTileFilling(mapTile: KDMapTile, indX: number, indY: number,
 			if (mapTile.w != 1 || mapTile.h != 1 || (mapTile.inaccessible && mapTile.inaccessible.length > 0)) {
 				if (requiredAccess[(xx + indX - 1) + ',' + (yy + indY - 1)]) return false;
 			}
-			if (!fail)
+			if (!fail) {
 				passCount += 1;
+				// check edge tiles for an outward connection that matches the main maze
+				if (yy == 1
+					 && mapTile.index[xx + ',' + yy].includes('u')
+					 && indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('u')) connectedCount++;
+				else if (yy == mapTile.h
+					&& mapTile.index[xx + ',' + yy].includes('d')
+					&& indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('d')
+				) connectedCount++;
+				else if (xx == 1
+					&& mapTile.index[xx + ',' + yy].includes('l')
+					&& indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l')) connectedCount++;
+				else if (xx == mapTile.h
+					&& mapTile.index[xx + ',' + yy].includes('r')
+					&& indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('r')) connectedCount++;
+			}
+
 		}
-	return passCount > 0;
+	// one edge needs to count and one edge needs to lead outward
+	return passCount > 0 && connectedCount > 0;
 }
 
 /** Suspends the inside of large tiles
@@ -1451,3 +1503,4 @@ function KDDoJailPointForTile(x: number, y: number) {
 		}
 	}
 }
+

@@ -275,6 +275,8 @@ interface AltType {
 	brightness?: number,
 	/** Automatically place extra doors according to door placement algorithm */
 	placeDoors?: boolean,
+	/** Automatically fixes doors that are embedded into walls with no route through them */
+	dontFixDoors?: boolean,
 	/** places no setpieces */
 	noSetpiece?: boolean,
 	/** This is considered a "main" room, e.g. quests will generate, elemental hunters will follow, etc. **/

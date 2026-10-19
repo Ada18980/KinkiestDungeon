@@ -38528,7 +38528,9 @@ let KDMapTilesList: Record<string, KDMapTile> = {
         },
         "flexEdge": {
             "1,2": "y",
-            "1,1": "y"
+            "1,1": "y",
+            "2,2": "y",
+            "2,1": "y"
         },
         "flexEdgeSuper": {},
         "scale": 7,
@@ -42465,4 +42467,4 @@ let KDMapTilesList: Record<string, KDMapTile> = {
         "multTags": [],
         "notTags": []
     }
-};
+}
