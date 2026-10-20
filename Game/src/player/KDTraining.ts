@@ -174,12 +174,18 @@ function KDAdvanceSingleTraining(training: string, player: entity) {
 	
 }
 
-function KDCheckLevelUp(training: string, player: entity) {
-	let data = KDGameData.Training[training];
+function KDTrainingCostMult(training: string, player: entity) {
 	let costmult = 1;
 	if (player?.player && KinkyDungeonStatsChoice.get("Mastery" + training)) {
 		costmult *= 2;
 	}
+	return costmult;
+}
+
+function KDCheckLevelUp(training: string, player: entity) {
+	let data = KDGameData.Training[training];
+	let costmult = KDTrainingCostMult(training, player);
+	
 	while (data.training_points > (data.training_stage + 1) * costmult) {
 
 		KinkyDungeonSendFloater({x: 1100, y: 600 - KDRecentRepIndex * KDFloaterSpacingOverride}, 

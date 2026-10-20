@@ -53,7 +53,8 @@ function KDEnumerateTrainingProgress(data: ProgressListEventData) {
             let skipped = (KDGameData.Training ? (KDGameData.Training[type]?.turns_skipped || 0) : 0);
             let total = (KDGameData.Training ? (KDGameData.Training[type]?.turns_trained || 0) : 0);
             let next = KDGetTrainingXPNext(type, data.player);
-            let lvl = KDGetTrainingXPMax(type, data.player);
+            let costmult = KDTrainingCostMult(type, data.player);
+            let lvl = costmult * KDGetTrainingXPMax(type, data.player);
             let drawData: ProgressListDrawTrainingData = {
                 type: "Training",
                 name: type,

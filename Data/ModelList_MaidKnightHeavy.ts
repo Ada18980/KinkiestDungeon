@@ -699,16 +699,18 @@ AddModel({
 			],
 		},
 
-		{ Name: "BootLegLeft", Layer: "OverShoes", Pri: 131,
+		{ Name: "BootLegLeft", Layer: "KneeAccLeft", Pri: 131,
 			InheritColor: "KneepadLeft",
+			HideWhenOverridden: true,
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			Poses: ToMap([...LEGPOSES]),
 			HidePoseConditional: [
 				["DynamicArmor", "BootsArmor", "SuppressDynamic"],
 			],
 		},
-		{ Name: "BootLegRight", Layer: "ShoeRight", Pri: 131,
+		{ Name: "BootLegRight", Layer: "KneeAccRight", Pri: 131,
 			InheritColor: "KneepadRight",
+			HideWhenOverridden: true,
 			Poses: ToMap([...LEGPOSES]),
 			HidePoseConditional: [
 				["DynamicArmor", "BootsArmor", "SuppressDynamic"],
