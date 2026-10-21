@@ -4,6 +4,8 @@ interface KDCreateMapReturnData {
 	oldMapDataObject: KDMapDataType,
 }
 
+let KDMapGenExecuteAfterIterations = [];
+
 /**
  * Starts the the game at a specified level
  * Example usage:
@@ -36,6 +38,7 @@ function KinkyDungeonCreateMap (
 	forceEscape?:    string
 ): KDCreateMapReturnData
 {
+	KDMapGenExecuteAfterIterations = [];
 	// every time a map is created or moved the preference flags are updated
 	KDUpdatePreferenceFlags();
 	KDResetDialogue();
@@ -123,6 +126,10 @@ function KinkyDungeonCreateMap (
 		if (!altType?.loadscript || altType.loadscript(false)) {
 			if (!altType?.noPersistentPrisoners && !mapMod?.noPersistentPrisoners)
 				KDRepopulatePersistentNPCs();
+			for (let cb of KDMapGenExecuteAfterIterations) {
+				cb();
+			}
+			KDMapGenExecuteAfterIterations = [];
 			if (!altType?.noPersistentSpawn && !mapMod?.noPersistentSpawn)
 				// Spawn wandering persistent NPCs depending on spawn AI
 				KDSpawnPersistentNPCs({
@@ -160,6 +167,7 @@ function KinkyDungeonCreateMap (
 
 	let maxIter = 100;
 	for (let iterations = 0; iterations <= maxIter; iterations++) {
+		KDMapGenExecuteAfterIterations = [];
 		if (iterations > 0) {
 			// Clear so party prisoners are reused
 			for (let en of [...KDMapData.Entities]) {
@@ -773,10 +781,19 @@ function KinkyDungeonCreateMap (
 		return (!KDGetNPCLocation(enemy.id) || KDCompareLocation(KDGetNPCLocation(enemy.id), KDGetCurrentLocation()));
 	});
 	KinkyDungeonAdvanceTime(0);
+	for (let cb of KDMapGenExecuteAfterIterations) {
+		cb();
+	}
+	KDMapGenExecuteAfterIterations = [];
 
 	if (!altType?.loadscript || altType.loadscript(true)) {
 		if (!altType?.noPersistentPrisoners && !mapMod?.noPersistentPrisoners)
 			KDRepopulatePersistentNPCs();
+
+		for (let cb of KDMapGenExecuteAfterIterations) {
+				cb();
+			}
+		KDMapGenExecuteAfterIterations = [];
 
 		if (!altType?.noPersistentSpawn && !mapMod?.noPersistentSpawn)
 			// Spawn wandering persistent NPCs depending on spawn AI
@@ -786,6 +803,8 @@ function KinkyDungeonCreateMap (
 				room: KDGameData.RoomType,
 			}, true);
 	}
+
+	
 
 	KinkyDungeonGenNavMap();
 

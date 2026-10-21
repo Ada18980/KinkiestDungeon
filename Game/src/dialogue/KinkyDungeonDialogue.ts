@@ -594,6 +594,25 @@ function DialogueCreateEnemy(x: number, y: number, Name: string, persistentid?: 
 
 	return KDAddNewEntity(Enemy, persistentid != undefined, undefined, noLoadout);
 }
+/**
+ * @param x
+ * @param y
+ * @param Name
+ * @param [persistentid]
+ * @param [noLoadout]
+ */
+function KDDialogueMakeEnemy(x: number, y: number, Name: string, persistentid?: number, noLoadout?: boolean): entity {
+	if (KinkyDungeonEnemyAt(x, y)) KDKickEnemy(KinkyDungeonEnemyAt(x, y), undefined, true);
+	let Enemy = DialogueGetEnemy(Name, persistentid);
+	Enemy.x = x;
+	Enemy.y = y;
+	Enemy.visual_x = x;
+	Enemy.visual_y = y;
+
+	KDEnemyRollPronouns(Enemy);
+
+	return Enemy;
+}
 
 /**
  * Generates an entity but does not place it

@@ -1073,22 +1073,28 @@ let KDTileGen = {
 		KinkyDungeonMapSet(x, y, '0');
 		return null;
 	},
-	"ForceSpawn": (x, y, tile, tileGenerator, data) => {
+	"ForceSpawn": (xx, yy, tile, tt, data) => {
+		let tileGenerator = tt;
+		let x = xx;
+		let y = yy;
 		if (!tileGenerator.Chance || KDRandom() < tileGenerator.Chance) {
-			let enemy = KinkyDungeonGetEnemy(tileGenerator.tags,
-				MiniGameKinkyDungeonLevel + (tileGenerator.levelBoost || 0),
-				tileGenerator.forceIndex || KDCurrIndex(),
-				'0', tileGenerator.required, tileGenerator.requireHostile, tileGenerator.bonusTags, tileGenerator.filterTags, tileGenerator.requireSingleTag);
-			if (enemy) {
-				let en = DialogueCreateEnemy(x, y, enemy.name);
-				if (en && tileGenerator.faction) {
-					en.faction = tileGenerator.faction;
+			KDMapGenExecuteAfterIterations.push(() => {
+				let enemy = KinkyDungeonGetEnemy(tileGenerator.tags,
+					MiniGameKinkyDungeonLevel + (tileGenerator.levelBoost || 0),
+					tileGenerator.forceIndex || KDCurrIndex(),
+					'0', tileGenerator.required, tileGenerator.requireHostile, tileGenerator.bonusTags, tileGenerator.filterTags, tileGenerator.requireSingleTag);
+				if (enemy) {
+					let en = DialogueCreateEnemy(x, y, enemy.name);
+					if (en && tileGenerator.faction) {
+						en.faction = tileGenerator.faction;
+					}
+					if (en && tileGenerator.AI) {
+						en.AI = tileGenerator.AI;
+					}
+					KDRunCreationScript(en, KDGetCurrentLocation());
 				}
-				if (en && tileGenerator.AI) {
-					en.AI = tileGenerator.AI;
-				}
-				KDRunCreationScript(en, KDGetCurrentLocation());
-			}
+			});
+			
 		}
 		KinkyDungeonMapSet(x, y, '0');
 		return null;

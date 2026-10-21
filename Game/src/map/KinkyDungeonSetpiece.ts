@@ -349,10 +349,13 @@ function KinkyDungeonGenerateSetpiece (
 
 				let Enemy = KinkyDungeonGetEnemyByName("Fuuka1");
 				let e = {tracking: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:cornerX + 3, y:cornerY + 3, shield: Enemy.shield, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
-				KDAddNewEntity(e);
+				KDMapGenExecuteAfterIterations.push( () => {
+					KDAddNewEntity(e);
 				
-				KDRunCreationScript(e, KDGetCurrentLocation());
+					KDRunCreationScript(e, KDGetCurrentLocation());
+				});
 				KDStageBossGenerated = true;
+				
 				break;
 			}
 			case "PearlChest":
@@ -876,6 +879,8 @@ interface KDSpawnResult {
 }
 
 function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, lock = "White", faction?: string, sameLocation?: boolean): KDSpawnResult {
+	
+	
 	let Enemy = null;
 	let noJam = false;
 	let noPersistent = false;
@@ -923,18 +928,21 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 		noJam = true;
 		e.x = x;
 		e.y = y;
-		e = KDAddEntity(e);
+		KDMapGenExecuteAfterIterations.push(() => {
+			e = KDAddEntity(e);
 
-		if (e) {
-			e.faction = "Prisoner";
-			e.boundLevel = e.hp * 11;
-			e.items = [];
+			if (e) {
+				e.faction = "Prisoner";
+				e.boundLevel = e.hp * 11;
+				e.items = [];
 
-			KDImprisonEnemy(e, noJam, "auto", furn?.restraintTag ? [furn?.restraintTag] : undefined, 
-				furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(),
-			undefined, furn?.restraintSetLevelBonus, furn?.lockType != undefined ? furn.lockType : "White");
+				KDImprisonEnemy(e, noJam, "auto", furn?.restraintTag ? [furn?.restraintTag] : undefined, 
+					furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(),
+				undefined, furn?.restraintSetLevelBonus, furn?.lockType != undefined ? furn.lockType : "White");
 
-		}
+			}
+		})
+		
 		return {
 			entity: e,
 			persistent: true,
@@ -953,21 +961,26 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 			"leatherAnger", "leatherRage",
 			"willAnger", "willRage"], MiniGameKinkyDungeonLevel * 2, KDCurrIndex(), KinkyDungeonMapGet(x, y), ["imprisonable"]);
 		if (Enemy) {
-			let e = DialogueCreateEnemy(x, y, Enemy.name);
-			if (
-			KDImprisonEnemy(e, noJam, "auto", furn?.restraintTag ? [furn?.restraintTag] : undefined, 
-				furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(), true,
-			furn?.restraintSetLevelBonus, furn?.lockType != undefined ? furn.lockType : "White")) {
-				e.faction = "Prisoner";
-				e.boundLevel = e.hp * 11;
-				//e.prisondialogue = "PrisonerJail";
-				e.items = [];
-			} else {
-				// Just spawn them with no items
-				e.playerdmg = undefined;
-				if (e.hp <= 0.5) e.hp = 0.51;
-				e.items = [];
-			}
+			
+			let e = KDDialogueMakeEnemy(x, y, Enemy.name);
+			KDMapGenExecuteAfterIterations.push(() => {
+				KDAddNewEntity(e)
+				if (
+				KDImprisonEnemy(e, noJam, "auto", furn?.restraintTag ? [furn?.restraintTag] : undefined, 
+					furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(), true,
+				furn?.restraintSetLevelBonus, furn?.lockType != undefined ? furn.lockType : "White")) {
+					e.faction = "Prisoner";
+					e.boundLevel = e.hp * 11;
+					//e.prisondialogue = "PrisonerJail";
+					e.items = [];
+				} else {
+					// Just spawn them with no items
+					e.playerdmg = undefined;
+					if (e.hp <= 0.5) e.hp = 0.51;
+					e.items = [];
+				}
+			});
+			
 
 			return {
 				entity: e,
