@@ -173,6 +173,7 @@ let KDTilePalette = {
 	'ChestRed': {type: "tile", tile: 'C', special: {Type: "Chest", Lock: "Red"}},
 	'ChestBlue': {type: "tile", tile: 'C', special: {Type: "Chest", Lock: "Blue"}},
 	'ChestOrShrine': {type: "tile", tile: 'O', special: {Type: "ChestOrShrine"}},
+	'WallChestOrShrine': {type: "tile", tile: 'O', special: {Type: "ChestOrShrine", tile: '1'}},
 	'HighPriorityChest': {type: "tile", tile: 'C', special: {Priority: true}},
 	'SilverChest': {type: "tile", tile: 'C', special: {Type: "Chest", Loot: "silver", Priority: true}},
 	'StorageChest': {type: "tile", tile: 'C', special: {Type: "Chest", Loot: "storage", Chance: 0.8, refill: true,}},
@@ -189,6 +190,7 @@ let KDTilePalette = {
 	'GuardedChestLocked': {type: "tile", tile: 'C', special: {Type: "GuardedChest", Lock: "Red", Label: "Guarded"}},
 	'----Shrines----': {type: "none"},
 	'Shrine': {type: "tile", tile: 'A', special: {Type: "Shrine", Name: "Metal"}},
+	'WallShrine': {type: "tile", tile: 'A', special: {Type: "Shrine", tile: '1', Name: "Metal"}},
 	'HighPriorityShrine': {type: "tile", tile: 'A', special: {Type: "Shrine", Name: "Will", Priority: true}},
 	'----Hazards----': {type: "none"},
 	'SpikeTrap':  {type: "effect", effectTile: "SpikeTrap"},
@@ -1364,6 +1366,13 @@ function KDTE_Create(w: number, h: number, chkpoint: string = 'grv', closed: boo
 
 	KDInitCanvas();
 	KDVisionUpdate = 1;
+	KinkyDungeonResetFog();
+	if (kdbrightnessmap) {
+		//@ts-ignore
+		PIXIapp.renderer.renderTexture.bind(kdbrightnessmap)
+		//@ts-ignore
+		PIXIapp.renderer.renderTexture.clear()
+	}
 	KinkyDungeonMakeBrightnessMap(KDMapData.GridWidth, KDMapData.GridHeight, KDMapData.MapBrightness, [], KDVisionUpdate);
 	KinkyDungeonMakeVisionMap(KDMapData.GridWidth, KDMapData.GridHeight, [], [], KDVisionUpdate, KDMapData.MapBrightness);
 	KDVisionUpdate = 0;
@@ -1423,6 +1432,12 @@ function KDTE_LoadTile(name: any, loadedTile?: KDMapTile) {
 					KDMapData.PatrolPoints.push({x: label.x, y: label.y});
 			}
 		}
+		if (KDMapData.Labels["Guard"]) {
+			for (let label of KDMapData.Labels["Guard"]) {
+				if (label.type == "Patrol")
+					KDMapData.PatrolPoints.push({x: label.x, y: label.y});
+			}
+		}
 		newJail.unshift(j);
 	}
 	nt.Jail = newJail;
@@ -1432,6 +1447,12 @@ function KDTE_LoadTile(name: any, loadedTile?: KDMapTile) {
 	}
 
 	KDVisionUpdate = 1;
+	if (kdbrightnessmap) {
+		//@ts-ignore
+		PIXIapp.renderer.renderTexture.bind(kdbrightnessmap)
+		//@ts-ignore
+		PIXIapp.renderer.renderTexture.clear()
+	}
 	KinkyDungeonMakeBrightnessMap(KDMapData.GridWidth, KDMapData.GridHeight, KDMapData.MapBrightness, [], KDVisionUpdate);
 	KinkyDungeonMakeVisionMap(KDMapData.GridWidth, KDMapData.GridHeight, [], [], KDVisionUpdate, KDMapData.MapBrightness);
 	KDVisionUpdate = 0;

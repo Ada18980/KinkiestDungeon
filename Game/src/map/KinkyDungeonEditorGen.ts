@@ -1147,7 +1147,7 @@ let KDTileGen = {
 			data.chestlist.push(({x: x, y: y, NoTrap: tileGenerator.NoTrap}));
 		else
 			data.shrinelist.push(({x: x, y: y, NoTrap: tileGenerator.NoTrap}));
-		KinkyDungeonMapSet(x, y, '2');
+		KinkyDungeonMapSet(x, y, tileGenerator.tile != undefined ? tileGenerator.tile : '2');
 		return null;
 	},
 	"Door": (x, y, tile, tileGenerator, data) => {
@@ -1188,7 +1188,7 @@ let KDTileGen = {
 	},
 	"Shrine": (x, y, tile, tileGenerator, data) => {
 		data.shrinelist.push(({x: x, y: y, priority: tileGenerator.Priority}));
-		KinkyDungeonMapSet(x, y, 'a');
+		KinkyDungeonMapSet(x, y, tileGenerator.tile != undefined ? tileGenerator.tile : 'a');
 		return null;
 	},
 	"DollDropoff": (x, y, tile, tileGenerator, data) => {

@@ -140,16 +140,19 @@ let KDMapTilesList: Record<string, KDMapTile> =
     },
     "deadend_d": {
         "name": "deadend_d",
+        "Labels": {},
         "w": 1,
         "h": 1,
         "primInd": "d",
         "index": {
             "1,1": "d"
         },
+        "flexEdge": {},
+        "flexEdgeSuper": {},
         "scale": 7,
         "category": "urban",
         "weight": 10,
-        "grid": "1111111\n11RRL11\n1L00001\n10000L1\n1000001\n1000001\n111d111\n",
+        "grid": "1111111\n11RRL11\n1L00001\n10000L1\n1000001\n1000001\n1110111\n",
         "POI": [
             {
                 "x": 3,
@@ -167,9 +170,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [],
         "Tiles": {
-            "3,6": {
-                "Type": "Door"
-            },
             "5,3": {
                 "Type": "Barrel"
             },
@@ -187,7 +187,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         },
         "effectTiles": {},
-        "Skin": [],
+        "Skin": {},
         "inaccessible": [],
         "tags": [
             "urban",
@@ -416,14 +416,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {},
         "effectTiles": {},
         "Skin": {},
@@ -480,14 +473,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": [],
         "effectTiles": {},
         "Skin": [],
@@ -544,14 +530,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": [],
         "effectTiles": {},
         "Skin": [],
@@ -610,14 +589,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {},
         "effectTiles": {},
         "Skin": {},
@@ -750,14 +722,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": [],
         "effectTiles": {
             "2,3": {
@@ -826,14 +791,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": [],
         "effectTiles": {
             "2,2": {
@@ -902,14 +860,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": [],
         "effectTiles": {
             "4,2": {
@@ -978,14 +929,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,3": {
                 "Type": "Rubble"
@@ -1058,14 +1002,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,2": {
                 "Type": "Rubble"
@@ -1245,14 +1182,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "1,2": {
                 "Type": "Barrel"
@@ -1345,14 +1275,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,3": {
                 "Type": "Barrel"
@@ -3548,12 +3471,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 2,
                 "y": 5,
                 "type": "furniture",
@@ -3633,14 +3550,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n111d111\n1110LL1\n0d00La1\n1120LL1\n1111111\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "5,2": {
                 "Type": "Barrel"
@@ -3740,14 +3650,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                 "y": 2
             }
         ],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "1,3": {
                 "Type": "Door"
@@ -11992,32 +11895,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "XAX0XAX\nA00000A\nX01b10X\n001C100\nX01310X\nA00000A\nXAX0XAX\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Priority": true
@@ -12261,32 +12139,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0202020\n2X2X2X2\n0202020\n2X232X2\n0202020\n2X2X2X2\n0202000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Type": "ForceSpawn",
@@ -42531,5 +42384,420 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "bonusTags": [],
         "multTags": [],
         "notTags": []
+    },
+    "wide_horiz2": {
+        "name": "wide_horiz2",
+        "Labels": {},
+        "w": 1,
+        "h": 1,
+        "primInd": "lr",
+        "index": {
+            "1,1": "lr"
+        },
+        "flexEdge": {},
+        "flexEdgeSuper": {},
+        "scale": 7,
+        "category": "urban",
+        "weight": 10,
+        "grid": "1111111\n1A1A1A1\n0000000\n0000000\n0000000\n1A1A1A1\n1111111\n",
+        "POI": [],
+        "Keyring": [],
+        "Jail": [],
+        "Tiles": {
+            "1,1": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "3,1": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "5,1": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "1,5": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "3,5": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "5,5": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            }
+        },
+        "effectTiles": {},
+        "Skin": {},
+        "inaccessible": [],
+        "tags": [
+            "urban",
+            "wide"
+        ],
+        "forbidTags": [
+            "silverchest"
+        ],
+        "requireTags": [],
+        "indexTags": [
+            "wide"
+        ],
+        "maxTags": [
+            -1
+        ],
+        "bonusTags": [
+            0
+        ],
+        "multTags": [
+            4
+        ],
+        "notTags": [
+            ""
+        ]
+    },
+    "wide_vert2": {
+        "name": "wide_vert2",
+        "Labels": {},
+        "w": 1,
+        "h": 1,
+        "primInd": "ud",
+        "index": {
+            "1,1": "ud"
+        },
+        "flexEdge": {},
+        "flexEdgeSuper": {},
+        "scale": 7,
+        "category": "urban",
+        "weight": 10,
+        "grid": "1100011\n1A000A1\n1100011\n1A000A1\n1100011\n1A000A1\n1100011\n",
+        "POI": [],
+        "Keyring": [],
+        "Jail": [],
+        "Tiles": {
+            "5,1": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "5,3": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "5,5": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "1,5": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "1,3": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "1,1": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            }
+        },
+        "effectTiles": {},
+        "Skin": {},
+        "inaccessible": [],
+        "tags": [
+            "urban",
+            "wide"
+        ],
+        "forbidTags": [
+            "silverchest"
+        ],
+        "requireTags": [],
+        "indexTags": [
+            "wide"
+        ],
+        "maxTags": [
+            -1
+        ],
+        "bonusTags": [
+            0
+        ],
+        "multTags": [
+            4
+        ],
+        "notTags": [
+            ""
+        ]
+    },
+    "narrow_uprightOpen2": {
+        "name": "narrow_uprightOpen2",
+        "Labels": {
+            "Patrol": [
+                {
+                    "name": "Guard",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 3,
+                    "y": 4,
+                    "guard": true,
+                    "interesting": true
+                }
+            ]
+        },
+        "w": 1,
+        "h": 1,
+        "primInd": "ur",
+        "index": {
+            "1,1": "ur"
+        },
+        "flexEdge": {},
+        "flexEdgeSuper": {},
+        "scale": 7,
+        "category": "urban",
+        "weight": 10,
+        "grid": "1110111\n1110111\n1000001\nA000000\n1000001\n1000001\n1111111\n",
+        "POI": [],
+        "Keyring": [],
+        "Jail": [],
+        "Tiles": {
+            "0,3": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            }
+        },
+        "effectTiles": {
+            "2,2": {
+                "TorchUnlit": {
+                    "x": 2,
+                    "y": 2,
+                    "name": "TorchUnlit",
+                    "duration": 9999,
+                    "priority": 5,
+                    "yoffset": -1,
+                    "tags": []
+                }
+            }
+        },
+        "Skin": {},
+        "inaccessible": [],
+        "tags": [
+            "urban",
+            "narrow"
+        ],
+        "forbidTags": [],
+        "requireTags": [],
+        "indexTags": [
+            "wide",
+            "narrow"
+        ],
+        "maxTags": [
+            -1,
+            -1
+        ],
+        "bonusTags": [
+            0,
+            0
+        ],
+        "multTags": [
+            0,
+            2
+        ],
+        "notTags": [
+            "",
+            ""
+        ]
+    },
+    "narrow_upleftOpen2": {
+        "name": "narrow_upleftOpen2",
+        "Labels": {},
+        "w": 1,
+        "h": 1,
+        "primInd": "ul",
+        "index": {
+            "1,1": "ul"
+        },
+        "flexEdge": {},
+        "flexEdgeSuper": {},
+        "scale": 7,
+        "category": "urban",
+        "weight": 10,
+        "grid": "1110111\n111d111\n110T00A\n0dT0001\n110000A\n1100001\n1111111\n",
+        "POI": [],
+        "Keyring": [],
+        "Jail": [],
+        "Tiles": {
+            "1,3": {
+                "Type": "Door"
+            },
+            "3,1": {
+                "Type": "Door"
+            },
+            "6,2": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "6,4": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "2,3": {
+                "Type": "Trap"
+            },
+            "3,2": {
+                "Type": "Trap"
+            }
+        },
+        "effectTiles": {},
+        "Skin": {},
+        "inaccessible": [],
+        "tags": [
+            "urban",
+            "narrow"
+        ],
+        "forbidTags": [],
+        "requireTags": [],
+        "indexTags": [
+            "wide",
+            "narrow"
+        ],
+        "maxTags": [
+            -1,
+            -1
+        ],
+        "bonusTags": [
+            0,
+            0
+        ],
+        "multTags": [
+            0,
+            2
+        ],
+        "notTags": [
+            "",
+            ""
+        ]
+    },
+    "TempleHall_End4": {
+        "name": "TempleHall_End4",
+        "Labels": {
+            "Patrol": [
+                {
+                    "name": "Guard",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 2,
+                    "y": 5,
+                    "guard": true,
+                    "interesting": true
+                },
+                {
+                    "name": "Guard",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 4,
+                    "y": 2
+                }
+            ],
+            "null": []
+        },
+        "w": 1,
+        "h": 1,
+        "primInd": "udlr",
+        "index": {
+            "1,1": "udlr"
+        },
+        "flexEdge": {
+            "1,1": "y"
+        },
+        "flexEdgeSuper": {
+            "1,1": "y"
+        },
+        "scale": 7,
+        "category": "temple",
+        "weight": 50,
+        "grid": "XAX0XAX\nA00000A\nX00000X\n0000000\nX00000X\nA00000A\nXAX0XAX\n",
+        "POI": [],
+        "Keyring": [],
+        "Jail": [],
+        "Tiles": {
+            "0,1": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "1,0": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "5,0": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "6,1": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "6,5": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "5,6": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "1,6": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            },
+            "0,5": {
+                "Type": "Shrine",
+                "tile": "1",
+                "Name": "Metal"
+            }
+        },
+        "effectTiles": {},
+        "Skin": {},
+        "inaccessible": [],
+        "tags": [
+            "temple",
+            "hall",
+            "wide"
+        ],
+        "forbidTags": [],
+        "requireTags": [],
+        "indexTags": [
+            "temple"
+        ],
+        "maxTags": [
+            -1
+        ],
+        "bonusTags": [
+            0
+        ],
+        "multTags": [
+            1
+        ],
+        "notTags": [
+            "1"
+        ]
     }
 }

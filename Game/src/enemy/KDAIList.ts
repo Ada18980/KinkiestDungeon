@@ -43,7 +43,20 @@ let KDAIType: Record<string, AIType> = {
 				if (KDWanderFarEnemyParty(enemy))
 					return true;
 			}
-			let newPoint = (KDRandom() < 0.4 && (enemy.spawnX || enemy.spawnY)) ? KinkyDungeonGetNearbyPoint(enemy.spawnX, enemy.spawnY, true, undefined, false, false) : KinkyDungeonGetRandomEnemyPoint(false, false);
+			if (KDMapData.Labels["Guard"] && KDRandom() < 0.5) {
+				let filtered = KDMapData.Labels["Guard"].filter((label) => {
+					return !KinkyDungeonEntityAt(label.x, label.y, undefined, undefined, undefined, false);
+				})
+				if (filtered.length > 0) {
+					let newPoint = CommonRandomItemFromList(null, filtered);
+					enemy.gx = newPoint.x;
+					enemy.gy = newPoint.y;
+					return true;
+				}
+			}
+			let newPoint = (KDRandom() < 0.4 && (enemy.spawnX || enemy.spawnY)) ?
+				KinkyDungeonGetNearbyPoint(enemy.spawnX, enemy.spawnY, true, undefined, false, false)
+				: KinkyDungeonGetRandomEnemyPoint(false, false);
 			if (!newPoint) newPoint = KinkyDungeonGetRandomEnemyPoint(false, false);
 			if (newPoint) {
 				enemy.gx = newPoint.x;
