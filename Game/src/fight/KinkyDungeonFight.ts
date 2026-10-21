@@ -1743,9 +1743,9 @@ function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: num
 	}
 	if (!KinkyDungeonPlayerDamage || !KinkyDungeonPlayerDamage.silent || !(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Silence") > 0)) {
 		if (Enemy && hp < Enemy.Enemy.maxhp) {
-			KinkyDungeonAlert = 4;
-		} else {
 			KinkyDungeonAlert = 2;
+		} else {
+			KinkyDungeonAlert = 1;
 		}
 	} else {
 		if (!KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Silence") || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Silence") < 2) {

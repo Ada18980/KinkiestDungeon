@@ -833,7 +833,7 @@ function KDGenMaze(startX: number, startY: number, tile: any, seed: any, _MazeBl
 			let woby = Math.floor(scale*KDRandom());
 			for (let xx = 0; xx < scale; xx++)
 				for (let yy = 0; yy < scale; yy++)
-					if (!wob || (xx != wobx && yy != woby))
+					if (!wob || ((xx == wobx && y != ye) || (yy == woby && x != xe)))
 						CarvedTiles.push({x:xx+xe, y:yy+ye});
 			return true;
 		}
@@ -1082,6 +1082,9 @@ let KDTileGen = {
 				let en = DialogueCreateEnemy(x, y, enemy.name);
 				if (en && tileGenerator.faction) {
 					en.faction = tileGenerator.faction;
+				}
+				if (en && tileGenerator.AI) {
+					en.AI = tileGenerator.AI;
 				}
 				KDRunCreationScript(en, KDGetCurrentLocation());
 			}

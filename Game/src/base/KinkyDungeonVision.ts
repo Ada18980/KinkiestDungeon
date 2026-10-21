@@ -555,10 +555,10 @@ function KinkyDungeonMakeVisionMap(width: number, height: number, Viewports: any
 		KDMapExtraData.VisionGrid = [];
 		// Generate the grid
 		for (let X = 0; X < KDMapData.GridWidth; X++) {
-			for (let Y = 0; Y < KDMapData.GridHeight; Y++)
-				//KinkyDungeonLightGrid = KinkyDungeonLightGrid + '9'; // 0 = pitch dark
+			for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+				KDMapExtraData.BrightnessGrid.push(10); // 0 = pitch dark
 				KDMapExtraData.VisionGrid.push(10); // 0 = pitch dark
-			//KinkyDungeonLightGrid = KinkyDungeonLightGrid + '\n';
+			}
 		}
 	} else {
 

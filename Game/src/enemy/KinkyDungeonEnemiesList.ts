@@ -7331,6 +7331,7 @@ let KDEnemyAction: Record<string, KDEnemyActionType> = {
 		},
 		maintain: (enemy, _delta) => {
 			// Stops investigating if alerted or idle
+			KinkyDungeonSetEnemyFlag(enemy, "nowander", 3);
 			return !(enemy.idle
 				|| (KinkyDungeonAggressive(enemy) && enemy.aware)
 				|| enemy.attackPoints
@@ -7350,6 +7351,7 @@ let KDEnemyAction: Record<string, KDEnemyActionType> = {
 		},
 		maintain: (enemy, _delta) => {
 			// Stops investigating if alerted or idle
+			KinkyDungeonSetEnemyFlag(enemy, "nowander", 3);
 			return ((enemy.idle && KDRandom() < 0.5)
 				|| !(enemy.aware)
 				|| enemy.attackPoints

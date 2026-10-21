@@ -1768,7 +1768,7 @@ function KinkyDungeonRun() {
 
 	if ((KinkyDungeonState != "Game" || KinkyDungeonDrawState != "Game") && KinkyDungeonState != "TileEditor") {
 		let BG = KDStateBG[KinkyDungeonState] ||
-			(KinkyDungeonState == "Consent" || KinkyDungeonState == "Intro" || KinkyDungeonState == "Logo" || KinkyDungeonState == "Game") ? "Logo" : "BrickWall";
+			(KinkyDungeonState == "Consent" || KinkyDungeonState == "Stats" || KinkyDungeonState == "Intro" || KinkyDungeonState == "Logo" || KinkyDungeonState == "Game") ? "Logo" : "BrickWall";
 		if (StandalonePatched) {
 			KDDraw(kdcanvas, kdpixisprites, "bg", "Backgrounds/" + BG + (StandalonePatched ? ".png" : ".jpg"), 0, 0, CanvasWidth, CanvasHeight, undefined, {
 				zIndex: -115,
@@ -2061,6 +2061,7 @@ function KinkyDungeonRun() {
 				DrawButtonKDEx("TileEditor", () => {
 					KDInitTileEditor();
 					KinkyDungeonState = "TileEditor";
+					KinkyDungeonUpdateLightGrid = true;
 					return true;
 				}, true, 1000-350/2, ii, 350, 64, "Tile Editor", KDBaseWhite, "");
 			}

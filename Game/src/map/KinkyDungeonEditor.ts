@@ -1314,12 +1314,15 @@ function KDTE_Create(w: number, h: number, chkpoint: string = 'grv', closed: boo
 		KDMapData.Grid = KDMapData.Grid + "\n";
 	}
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+	KDCommanderChokes = {};
 	KDMapData.Tiles = {};
 	KDMapData.EffectTiles = {};
 	KDMapData.TilesSkin = {};
 	KDMapData.Entities = [];
 	KDCommanderRoles = new Map();
 	KDMapData.TilesMemory = {};
+	
+	KDMapData.JailPoints = [];
 
 	KinkyDungeonPOI = [];
 	KDGameData.KeyringLocations = [];
@@ -1349,6 +1352,7 @@ function KDTE_Create(w: number, h: number, chkpoint: string = 'grv', closed: boo
 
 		}
 	}
+
 	KDEditorTileFlexStore = {};
 	KDEditorTileFlexSuperStore = {};
 
@@ -1378,10 +1382,12 @@ function KDTE_LoadTile(name: any, loadedTile?: KDMapTile) {
 		ElementValue("MapTileWeight", "" + nt.weight);
 	KDMapData.Grid = nt.grid;
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+	KDCommanderChokes = {};
 	KinkyDungeonPOI = [];
 	for (let p of nt.POI) {
 		KinkyDungeonPOI.push(Object.assign({}, p));
 	}
+	
 	KDGameData.KeyringLocations = [];
 	if (nt.Keyring) {
 		for (let k of nt.Keyring) {
@@ -1409,6 +1415,12 @@ function KDTE_LoadTile(name: any, loadedTile?: KDMapTile) {
 		if (KDMapData.Labels["Display"]) {
 			for (let label of KDMapData.Labels["Display"]) {
 				if (label.x == jp.x && label.y == jp.y && label.type == "Display") jp.type = "display";
+			}
+		}
+		if (KDMapData.Labels["Patrol"]) {
+			for (let label of KDMapData.Labels["Patrol"]) {
+				if (label.type == "Patrol")
+					KDMapData.PatrolPoints.push({x: label.x, y: label.y});
 			}
 		}
 		newJail.unshift(j);

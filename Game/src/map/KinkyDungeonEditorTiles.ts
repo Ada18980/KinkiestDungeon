@@ -29228,6 +29228,66 @@ let KDMapTilesList: Record<string, KDMapTile> =
     },
     "GoldVault": {
         "name": "GoldVault",
+        "Labels": {
+            "Patrol": [
+                {
+                    "name": "Patrol",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 10,
+                    "y": 14
+                },
+                {
+                    "name": "Patrol",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 15,
+                    "y": 10
+                },
+                {
+                    "name": "Patrol",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 3,
+                    "y": 10
+                },
+                {
+                    "name": "Patrol",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 3,
+                    "y": 0
+                },
+                {
+                    "name": "Patrol",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 11,
+                    "y": 2
+                },
+                {
+                    "name": "Patrol",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 17,
+                    "y": 0
+                },
+                {
+                    "name": "Patrol",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 15,
+                    "y": 2
+                },
+                {
+                    "name": "Patrol",
+                    "type": "Patrol",
+                    "assigned": -1,
+                    "x": 7,
+                    "y": 2
+                }
+            ]
+        },
         "w": 3,
         "h": 3,
         "primInd": "dr",
@@ -29254,13 +29314,13 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 9,
+                "x": 11,
                 "y": 18,
                 "type": "furniture",
                 "radius": 1
             },
             {
-                "x": 11,
+                "x": 9,
                 "y": 18,
                 "type": "furniture",
                 "radius": 1
@@ -29481,7 +29541,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29499,7 +29559,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29517,7 +29577,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29535,7 +29595,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29553,7 +29613,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29571,7 +29631,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29589,7 +29649,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29607,7 +29667,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29625,7 +29685,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29643,7 +29703,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29661,7 +29721,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "patrol",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29679,7 +29739,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "hunt",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29697,7 +29757,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "hunt",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29715,7 +29775,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "hunt",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29733,7 +29793,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "hunt",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4
@@ -29751,7 +29811,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                     "turret"
                 ],
                 "Chance": 0.5,
-                "AI": "looseguard",
+                "AI": "hunt",
                 "force": "true",
                 "faction": "Enemy",
                 "levelBoost": 4

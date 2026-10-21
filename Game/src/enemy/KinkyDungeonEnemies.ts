@@ -6549,7 +6549,11 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				} else {
 					let wanderfar = AIType.wander_far(enemy, player, AIData) || KDEnemyHasFlag(enemy, "forceWFar");
 					let wandernear = AIType.wander_near(enemy, player, AIData);
-					if ((wanderfar || wandernear) && !AIData.allyFollowPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive || enemy.ignore)) {
+					if ((wanderfar || wandernear) && !AIData.allyFollowPlayer
+					&& !(KDEnemyHasFlag(enemy, "nowander"))
+					&& (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere"))
+					&& !KDEnemyHasFlag(enemy, "StayHere")
+					&& enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive || enemy.ignore)) {
 						if ((Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 2.5 || (KDRandom() < 0.02 && KDEnemyHasFlag(enemy, "failpath"))) || (!(enemy.vp > 0.05) && (!enemy.path || KDRandom() < 0.1))) {
 							AIData.master = KinkyDungeonFindMaster(enemy).master;
 							if (!KDEnemyHasFlag(enemy, "wander")) {
