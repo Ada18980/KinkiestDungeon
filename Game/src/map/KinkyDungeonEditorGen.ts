@@ -415,12 +415,13 @@ function KD_GetMapTile (
 		// pick a random corner
 		let tileX = 1;
 		let tileY = 1;
-		if (mapTile.w > 1 && (indX > mapTile.w) && KDRandom() < 0.5) tileX = mapTile.w;
-		if (mapTile.h > 1 && (indY > mapTile.h) && KDRandom() < 0.5) tileY = mapTile.h;
-		if (mapTile.primInd == index ||
+		if (mapTile.w > 1 && (indX >= mapTile.w) && KDRandom() < 0.5) tileX = mapTile.w;
+		if (mapTile.h > 1 && (indY >= mapTile.h) && KDRandom() < 0.5) tileY = mapTile.h;
+		let primInd = mapTile.index[tileX + ',' + tileY];
+		if (primInd == index ||
 			(mapTile.flexEdge
 				&& mapTile.flexEdge['1,1']
-				&& (mapTile.primInd.includes(index)
+				&& (primInd.includes(index)
 					|| (mapTile.flexEdgeSuper && mapTile.flexEdgeSuper['1,1'])))) {
 			if (!KDCheckMapTileFilling(mapTile, indX - (tileX - 1), indY - (tileY - 1), indices, 
 				requiredAccess, 
