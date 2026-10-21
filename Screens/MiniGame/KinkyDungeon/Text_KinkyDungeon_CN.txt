@@ -7885,9 +7885,11 @@ SCHOOL 女神给予你庇护和反击之力！
 - It's a pile of slag emitting a strange magic smoke...
 一堆散发着古怪魔法烟气的熔渣……
 - That object is locked.
-目标
-# - That door is locked.
-# - That chest is locked.
+对象已锁定。
+- That door is locked.
+这扇门被锁上了。
+- That chest is locked.
+这个箱子被锁着。
 - A shrine to the goddess of TYPE.
 TYPE女神的神泉。
 # :: KinkyDungeonObjectShrine
@@ -7899,7 +7901,7 @@ TYPE女神的神泉。
 - Nothing to see here.
 这里什么也没有。
 - object
-目标
+对象
 - Chest
 胸部
 :: KinkyDungeonObjectChest
@@ -26928,9 +26930,12 @@ Mmmph? (行为混乱)
 (把自己锁在里面)
 - (Check the occupant)
 检查里面的NPC
-# - (Remodel furniture)
-# - (Remodel to what?)
-# - (You remodel the furniture)
+- (Remodel furniture)
+( 改造装置 )
+- (Remodel to what?)
+( 改造成什么？ )
+- (You remodel the furniture)
+( 你改造了装置 )
 - Can't enter in your current state.
 你无法在当前状态下进入。
 
