@@ -349,6 +349,7 @@ let LAYERS_BASE = [
 	"TightPantsLeft",
 	
 	"StockingLeftKneel", "StockingLeft",
+	"PantiesDecoLeft",
 	"FootLeft", // unused
 	"LegLeft",
 
