@@ -1176,8 +1176,8 @@ function KDUpdateModelList(level: number = 0, C?: Character): void {
 function KDChangeWardrobe(C: Character) {
 	if (C == KinkyDungeonPlayer)
 		try {
-			if (!KDOriginalValue)
-				KDOriginalValue = AppearanceItemStringify(C.Appearance);
+			if (!KDOutfitOriginalStore[KDCurrentOutfit])
+				KDOutfitOriginalStore[KDCurrentOutfit] = AppearanceItemStringify(C.Appearance);
 		} catch (e) {
 			// Fail
 		}
@@ -1924,7 +1924,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				KDOutfitStore[KDCurrentOutfit] = LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer,
 					KDGetCharMetadata(C || KinkyDungeonPlayer)
 				));
-				KDOutfitOriginalStore[KDCurrentOutfit] = KDOriginalValue;
+				//KDOutfitOriginalStore[KDCurrentOutfit] = KDOriginalValue;
 				ElementValue("KDOutfitName", "");
 			}
 			KDCurrentOutfit = index;
@@ -1934,7 +1934,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			let NewOutfit = KDOutfitStore[KDCurrentOutfit] || localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
 
 			if (NewOutfit) {
-				KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
+				//KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
 				KinkyDungeonSetDress("None", "None", C, true);
 				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C, true, false, undefined, undefined, undefined, C.metadata?.palette || C.Palette, undefined, 
@@ -2009,7 +2009,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				}
 			},
 			clickButton(index), true, 475, 140 + 50 * i, 200, 45,
-			KDOutfitInfo[index] + (((index == KDCurrentOutfit && KDOriginalValue) || (KDOriginalValue && KDOriginalValue != KDOutfitOriginalStore[index])) ? "(*)" : ""),
+			KDOutfitInfo[index] + ((!!KDOutfitOriginalStore[index]) ? "(*)" : ""),
 				index == KDCurrentOutfit ? KDBaseWhite : "#888888", "", undefined, undefined, index != KDCurrentOutfit);
 
 	}
@@ -2076,7 +2076,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			if (KDWardrobeRevertCallback) KDWardrobeRevertCallback();
 			else
 				KDRestoreOutfit();
-			KDOriginalValue = "";
+			delete KDOutfitOriginalStore[KDCurrentOutfit];
 			return true;
 		} else {
 			KDConfirmType = "revert";
@@ -2087,7 +2087,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	}, true, 465, 820, 240, 50,
 	TextGet((KinkyDungeonReplaceConfirm > 0 && KDConfirmType == 'revert') ?
 		"KDWardrobeCancelConfirm" :
-		"KDWardrobeCancel"), ((C == KinkyDungeonPlayer && KDOriginalValue) || (KDCanRevertFlag)) ? KDBaseWhite : "#888888",
+		"KDWardrobeCancel"), ((C == KinkyDungeonPlayer && !!KDOutfitOriginalStore[KDCurrentOutfit]) || (KDCanRevertFlag)) ? KDBaseWhite : "#888888",
 		KinkyDungeonRootDirectory + "UI/Revert.png", undefined, undefined, undefined,
 		undefined, undefined, true);
 	if (C == KinkyDungeonPlayer) {
@@ -2106,7 +2106,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					));
 				//localStorage.setItem("kdcurrentoutfit", KDCurrentOutfit + "");
 				KinkyDungeonDressSet();
-				KDOriginalValue = "";
+				delete KDOutfitOriginalStore[KDCurrentOutfit];
 				KDRefreshOutfitInfo();
 				return true;
 			} else {
@@ -2119,7 +2119,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		}, true, 465, 930, 240, 50,
 		TextGet((KinkyDungeonReplaceConfirm > 0 && KDConfirmType == 'save') ?
 			"KDWardrobeSaveOutfitConfirm" :
-			"KDWardrobeSaveOutfit"), KDOriginalValue ? KDBaseWhite : "#888888",
+			"KDWardrobeSaveOutfit"), !!KDOutfitOriginalStore[KDCurrentOutfit] ? KDBaseWhite : "#888888",
 			KinkyDungeonRootDirectory + "UI/Floppy.png", undefined, undefined, undefined,
 			undefined, undefined, true);
 	} else {
@@ -2394,8 +2394,8 @@ function KDSaveCodeOutfit(C: Character, clothesOnly: boolean = false): void {
 
 function KDRestoreOutfit() {
 	// Restore the original outfit
-	if (KDOriginalValue) {
-		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue) || KDOriginalValue, false, true);
+	if (KDOutfitOriginalStore[KDCurrentOutfit]) {
+		CharacterAppearanceRestore(KinkyDungeonPlayer, KDOutfitOriginalStore[KDCurrentOutfit], false, true);
 		CharacterRefresh(KinkyDungeonPlayer);
 		KDInitProtectedGroups(KinkyDungeonPlayer);
 		KinkyDungeonDressPlayer();

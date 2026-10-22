@@ -1431,7 +1431,6 @@ let KinkyDungeonSexyPlug = false;
 let KinkyDungeonSexyPlugFront = false;
 let KDOldValue = "";
 let KDOldSaveCodeValue = "";
-let KDOriginalValue = "";
 
 let KDConsentArray: Record<string, string> = {};
 
@@ -2221,7 +2220,7 @@ function KinkyDungeonRun() {
 			let orig = itt ?
 				JSON.parse(LZString.decompressFromBase64(itt)).appearance
 				|| itt : "";
-			if (orig != ElementValue("saveInputField")) KDOriginalValue = orig;
+			if (orig != ElementValue("saveInputField")) KDOutfitOriginalStore[KDCurrentOutfit] = orig;
 			let decompressed = DecompressB64(ElementValue("saveInputField"));
 			if (decompressed) {
 				let origAppearance = KinkyDungeonPlayer.Appearance;
@@ -2297,7 +2296,7 @@ function KinkyDungeonRun() {
 			let orig = itt ?
 				JSON.parse(LZString.decompressFromBase64(itt)).appearance
 				|| itt : "";
-			if (orig != ElementValue("saveInputField")) KDOriginalValue = orig;
+			if (orig != ElementValue("saveInputField")) KDOutfitOriginalStore[KDCurrentOutfit] = orig;
 			let decompressed = DecompressB64(ElementValue("saveInputField"));
 			if (decompressed) {
 				try {
@@ -8719,7 +8718,7 @@ function KDDrawWardrobeButton() {
 				JSON.parse(LZString.decompressFromBase64(itt)).appearance
 				|| itt : "";
 			let current = LZString.compressToBase64(AppearanceItemStringify(KinkyDungeonPlayer.Appearance));
-			if (orig != current) KDOriginalValue = orig;
+			if (orig != current) KDOutfitOriginalStore[KDCurrentOutfit] = orig;
 		}
 		let appearance = DecompressB64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
 		if (appearance) {
@@ -8734,7 +8733,7 @@ function KDDrawWardrobeButton() {
 			CharacterRefresh(KinkyDungeonPlayer);
 		}
 		KinkyDungeonNewDress = true;
-		KDOriginalValue = "";
+		KDOutfitOriginalStore[KDCurrentOutfit] = "";
 
 		CharacterReleaseTotal(KinkyDungeonPlayer);
 		KinkyDungeonDressSet(KinkyDungeonPlayer);

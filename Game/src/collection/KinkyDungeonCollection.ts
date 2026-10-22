@@ -501,7 +501,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			KDPIXIPaletteFilters.clear();
 		KDCanRevertFlag = value.customOutfit != undefined;
 		ForceRefreshModels(KDSpeakerNPC);
-		KDOriginalValue = "";
+		KDOutfitOriginalStore[KDCurrentOutfit] = "";
 		CharacterReleaseTotal(KDSpeakerNPC);
 		KDWardrobeCallback = () => {
 			UpdateModels(KDSpeakerNPC);
@@ -556,7 +556,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			JSON.parse(LZString.decompressFromBase64(itt)).appearance
 			|| itt : "";
 		let current = LZString.compressToBase64(AppearanceItemStringify(KinkyDungeonPlayer.Appearance));
-		if (orig != current) KDOriginalValue = orig;
+		if (orig != current) KDOutfitOriginalStore[KDCurrentOutfit] = orig;
 		ForceRefreshModelsAsync(KDSpeakerNPC);
 		KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
 		KDDressWardrobeChar(KDSpeakerNPC, true);
