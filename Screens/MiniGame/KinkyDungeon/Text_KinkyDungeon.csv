@@ -3443,6 +3443,7 @@ KinkyDungeonStruggleUnlockNoMasterworkKey,"The lock has a special mechanism that
 KinkyDungeonStruggleUnlockNoDiscKey,"The lock requires a key."
 KinkyDungeonStruggleUnlockNoBlueKey,"The magical lock only accepts magical keys and can't be picked."
 KinkyDungeonStruggleUnlockNoGoldKey,"The magical lock is guarded with powerful magic. You'll have to wait for it to wear off..."
+KinkyDungeonStruggleUnlockNoGoldPlusKey,"The magical lock bears a contractual obligation. You'll have to wait for it to wear off..."
 KinkyDungeonStruggleUnlockNoCyberKey,"The item is cybernetically locked. You will need a key card to unlock it."
 KinkyDungeonStruggleUnlockNoCyber2Key,"The item is cybernetically locked. You will need a key card to unlock it."
 KinkyDungeonStruggleUnlockNoCyber3Key,"The item is cybernetically locked. You will need a key card to unlock it."

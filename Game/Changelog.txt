@@ -79,9 +79,12 @@ Must do
 
 5.5.5
 - Significant changes to map generation
+- Can now remodel furniture in summit (thank you fjarnskaggl)
 - Fixed enemy AI not being assigned correctly to forced spawns on map tiles
 - Improved patrolling functionality of non-guarding enemies
 - Fixed a bug where mastery perks would cause the training xp bar to overflow
+- Fixed shoppe start perk (thank you fjarnskaggl)
+- Summit latex pools fixed (thank you fjarnskaggl)
 
 5.5.4
 - Resin is easier to crack
