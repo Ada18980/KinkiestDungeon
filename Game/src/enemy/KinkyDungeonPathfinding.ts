@@ -266,7 +266,11 @@ function KinkyDungeonFindPath (
 		});
 		if (lowest) {
 			let lowLoc = lowest.x + "," + lowest.y;
+			let locIndex = (!blockEnemy && !blockPlayer && !RequireLight && !RequireFog && !noDoors && !needDoorMemory) ?
+				`${lowLoc},${endx},${endy},${tileShort}` : null;
 			let lowIndex = lowest.x + lowest.y * KDMapData.GridWidth;
+			let cacheHit = !blockEnemy && !blockPlayer && !RequireLight && !RequireFog && !noDoors && !needDoorMemory
+				&& ((ignoreLocks && KDPathCacheIgnoreLocks.has(locIndex)) || (!ignoreLocks && KDPathCache.has(locIndex)));
 			moveCost = 1;
 			succ = new Map();
 			// Check bordering tiles on the lowest
@@ -275,15 +279,14 @@ function KinkyDungeonFindPath (
 					if ((x != 0 || y != 0) && (!taxicab || y == 0 || x == 0)) {
 						xx = lowest.x + x;
 						yy = lowest.y + y;
+						if (xx < -20 || xx >= KDMapData.GridWidth + 20) continue;
+						if (yy < -20 || yy >= KDMapData.GridHeight + 20) continue;
 						loc = (xx) + "," + (yy)
 						let tile = (xx == endx && yy == endy) ? "" : KinkyDungeonMapGet(xx, yy);
 						// The 20 tile buffer is to allow blind pathfinding into the dark, basically just to hide the map edge
-						if (xx < -20 || xx >= KDMapData.GridWidth + 20) continue;
-						if (yy < -20 || yy >= KDMapData.GridHeight + 20) continue;
 						MapTile = KinkyDungeonTilesGet(loc);
-						let locIndex = (!blockEnemy && !blockPlayer && !RequireLight && !RequireFog && !noDoors && !needDoorMemory) ?
-							`${lowLoc},${endx},${endy},${tileShort}` : null;
-						const useWiredDoor = allowWiredDoors && KDWiredDoorPathable(lowest.x, lowest.y, tile);
+						
+						const useWiredDoor = allowWiredDoors && KDWiredDoorPathable(lowest.x, lowest.y, MapTile);
 						// If we have found the end
 						if (xx == endx && yy == endy) {
 							closed.set(lowIndex, lowest);
@@ -299,8 +302,7 @@ function KinkyDungeonFindPath (
 							if (newPath.length > 0 && TilesTemp.includes(KinkyDungeonMapGet(newPath[0].x, newPath[0].y)))
 								return newPath;
 							else return undefined;
-						} else if (!blockEnemy && !blockPlayer && !RequireLight && !RequireFog && !noDoors && !needDoorMemory
-								&& ((ignoreLocks && KDPathCacheIgnoreLocks.has(locIndex)) || (!ignoreLocks && KDPathCache.has(locIndex)))) {
+						} else if (cacheHit) {
 							let newPath = [];
 							if (ignoreLocks) {
 								closed.set(lowIndex, lowest);
