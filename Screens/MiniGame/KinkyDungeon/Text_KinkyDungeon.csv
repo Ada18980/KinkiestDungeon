@@ -7803,7 +7803,7 @@ KinkyDungeonInching2,"You wiggle your hips inching forward, feeling the plugs in
 KinkyDungeonInching3,"You wiggle forward, the massive plugs inside you digging in and out..."
 KinkyDungeonCrawling0,You crawl helplessly!
 KinkyDungeonCrawling1,"You crawl helplessly, feeling the plugs shifting around inside you."
-KinkyDungeonCrawling2,"You crawl and feel the plugs inside you rub around teasingly..."
+KinkyDungeonCrawling2,"You crawl and feel the plugs rubbing inside you..."
 KinkyDungeonCrawling3,"You crawl helplessly, tormented by the massive plugs inside you..."
 KinkyDungeonCantMove0,You are unable to move!
 KinkyDungeonCantMove1,"You wriggle uselessly, feeling the plugs shift inside you!"
@@ -28216,6 +28216,40 @@ m_DollStandSpreader_l_OneBarLarge,OneBarLarge
 m_DollStandSpreader_l_ShortLeft,ShortLeft
 m_DollStandSpreader_l_ShortRight,ShortRight
 m_DollStandSpreader_l_Bar,Bar
+
+m_GothicBra,GothicBra
+m_GothicBra_l_Bra,Bra
+m_GothicBra_l_Edges,Edges
+m_GothicBra_l_Lace,Lace
+m_GothicBra_l_Straps,Straps
+m_GothicBra_l_Lacing,Lacing
+m_GothicBra_l_Bows,Bows
+m_GothicBraFrills,GothicBraFrills
+m_GothicBraFrills_l_Bra,Bra
+m_GothicBraFrills_l_Frills,Frills
+m_GothicBraFrills_l_Straps,Straps
+m_GothicBraFrills_l_Lacing,Lacing
+m_GothicBraFrills_l_Bows,Bows
+m_PantiesBow_l_Base,Base
+m_PantiesBow_l_Seams,Seams
+m_GothicPanties,GothicPanties
+m_GothicPanties_l_Under/Panties,Under/Panties
+m_GothicPanties_l_SideLace,SideLace
+m_GothicPanties_l_Lace,Lace
+m_GothicPanties_l_BowCenter,BowCenter
+m_GothicPanties_l_BowLeft,BowLeft
+m_GothicPanties_l_BowRight,BowRight
+m_GothicPanties_l_Doily,Doily
+m_GothicPantiesFrill,GothicPantiesFrill
+m_GothicPantiesFrill_l_Under/Panties,Under/Panties
+m_GothicPantiesFrill_l_SideLace,SideLace
+m_GothicPantiesFrill_l_Frills,Frills
+m_GothicPantiesFrill_l_BowCenter,BowCenter
+m_GothicPantiesFrill_l_BowLeft,BowLeft
+m_GothicPantiesFrill_l_BowRight,BowRight
+m_GothicPantiesFrill_l_Doily,Doily
+m_TransparentRobeBra,TransparentRobeBra
+m_TransparentRobeBra_l_Bra,Bra
 
 
 

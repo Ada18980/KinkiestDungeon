@@ -977,7 +977,7 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 			}
 			KDEnemyAddSound(entity, 7, undefined, (KDToggles.MinorSoundDesc ? TextGet("KDAmbSound_Speech") : undefined));
 			if (KDRandom() < 0.5)
-				KDSendGagParticles(entity);
+				KDSendGagParticles(entity, KDMAINPORTRAITID);
 		}
 		return;
 	}

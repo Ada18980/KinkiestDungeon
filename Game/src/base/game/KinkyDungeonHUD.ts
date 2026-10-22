@@ -2063,24 +2063,6 @@ function KinkyDungeonHandleHUD() {
 		}
 		if (MouseIn(975, 550, 550, 64)) {
 			
-		} else if (KinkyDungeonIsPlayer() && MouseIn(975, 650, 550, 64)) {
-			if (KDSaveBusy) {
-				if (KDSoundEnabled())
-					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
-			} else {
-				KinkyDungeonSaveGame();
-				KinkyDungeonState = "Menu";
-				let itt = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
-				if (itt) {
-					CharacterAppearanceRestore(KinkyDungeonPlayer, itt, false);
-				}
-				KinkyDungeonInitialize(0);
-			}
-			//KinkyDungeonAutoWait = true;
-			//KinkyDungeonTempWait = false;
-			//KinkyDungeonAutoWaitSuppress = true;
-			//KDUpdateWaitTime(500);
-			return true;
 		}
 		KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 		return true;

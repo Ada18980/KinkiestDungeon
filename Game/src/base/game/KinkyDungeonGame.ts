@@ -3262,7 +3262,9 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 				if (newDelta > 1 && newDelta < 10 && !quick) {
 					if (KDToggles.LazyWalk && !KinkyDungeonInDanger()) {
 						KDGameData.SlowMoveTurns = newDelta - 1;
-						KDUpdateWaitTime(200);
+
+						KDWaitTimeSetpoint = KDWaitTimeLazyMove * (0.4 + KDAnimSpeed * 0.6);
+						KDUpdateWaitTime(KDWaitTimeSetpoint);
 					} else {
 						KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 1-newDelta);
 					}
@@ -3579,7 +3581,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	CharacterAppearanceBuildCanvas = () => {};
 	let start = performance.now();
 
-	if (KDGameData.MovePoints < -1 && KDGameData.KinkyDungeonLeashedPlayer < 1) KDGameData.MovePoints += delta;
+	//if (KDGameData.MovePoints < -1 && KDGameData.KinkyDungeonLeashedPlayer < 1) KDGameData.MovePoints += delta;
 	if (delta > 0) {
 		KDDrawUpdate = delta;
 		KDVisionUpdate = delta;
@@ -4752,9 +4754,12 @@ function KDFastMoveTo(xx: number, yy: number): number {
 }
 
 let KDOverrideWaitTimeThreshold = 950;
+let KDWaitTimeSetpoint = 100;
+let KDWaitTimeLazyMove = 250;
 
 function KDUpdateWaitTime(delay: number, force: boolean = false, nooverride: boolean = false) {
 	if (force) KinkyDungeonSleepTime = CommonTime() + delay;
+	
 	else {
 		let ct = CommonTime();
 		if (!nooverride && KinkyDungeonSleepTime > ct) {
@@ -4766,7 +4771,6 @@ function KDUpdateWaitTime(delay: number, force: boolean = false, nooverride: boo
 			}
 		}
 		KinkyDungeonSleepTime = Math.max(KinkyDungeonSleepTime, CommonTime() + delay);
-
 
 	}
 
@@ -4926,7 +4930,7 @@ function KDDoMumble(player: entity, cancel: boolean) {
 			KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), KDBaseWhite, 2, 0);
 
 			if (KDToggles.GagParticles) {
-				KDSendGagParticles(KDPlayer());
+				KDSendGagParticles(KDPlayer(), KDMAINPORTRAITID);
 			}
 		}
 	}

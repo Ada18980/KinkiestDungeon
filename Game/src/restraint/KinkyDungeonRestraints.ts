@@ -5329,7 +5329,7 @@ function KinkyDungeonAddRestraintIfWeaker (
 			msg = msg + gagMsg;
 
 			KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), KDBaseWhite, 5, 3);
-			KDSendGagParticles(KDPlayer());
+			KDSendGagParticles(KDPlayer(), KDMAINPORTRAITID);
 		}
 		return ret;
 	}
@@ -5432,7 +5432,7 @@ function KDAddRestraintItem (
 			msg = msg + gagMsg;
 
 			KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), KDBaseWhite, 5, 3);
-			KDSendGagParticles(KDPlayer());
+			KDSendGagParticles(KDPlayer(), KDMAINPORTRAITID);
 		}
 		return ret;
 	}

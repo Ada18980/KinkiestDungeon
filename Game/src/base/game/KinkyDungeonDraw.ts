@@ -1603,7 +1603,8 @@ function KinkyDungeonDrawGame() {
 								let slowed = KDGameData.MovePoints < 0;
 								if (KDGameData.MovePoints < 0) {
 									if (path?.length > 1) {
-										dist -= Math.min(0, KDGameData.MovePoints + 1);
+										dist -= diststart;
+										dist -= Math.min(0, KDGameData.MovePoints - 1);
 									} else dist = 1 - KDGameData.MovePoints;
 								} else if (!KDToggles.LazyWalk || KinkyDungeonInDanger()) {
 									if (path?.length > 1) {
@@ -1846,7 +1847,9 @@ function KinkyDungeonDrawGame() {
 				DrawCharacter(KinkyDungeonPlayer, 
 					KDPlayerPos().x, 
 					KDPlayerPos().y, KDCharSize, 
-					undefined, undefined, undefined, undefined, KinkyDungeonDrawState == "Game" ? KDGamePlayerZIndex : - 20, KDToggles.FlipPlayer);
+					undefined, undefined, undefined, 
+					undefined, KinkyDungeonDrawState == "Game" ? KDGamePlayerZIndex : - 20, KDToggles.FlipPlayer,
+					undefined, KDMAINPORTRAITID);
 
 			}
 			if (KinkyDungeonSleepiness) {
@@ -1866,7 +1869,7 @@ function KinkyDungeonDrawGame() {
 					canvasOffsetY
 						+ (KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay
 						+ (KinkyDungeonGridSizeDisplay/6),
-						zoom);
+						zoom, "MainPlayerChibi");
 
 			if ((KDToggles.ShowFacing || KDGetInertia(KDPlayer()) > 0)
 					&& (KinkyDungeonPlayerEntity.facing_y || KinkyDungeonPlayerEntity.facing_x)) {
@@ -2322,7 +2325,35 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonDressPlayer();
 				return true;
 			}, true, 975, 550, 550, 64, TextGet("KinkyDungeonRestartNo"), KDBaseWhite, "");
-			DrawButtonVis(975, 650, 550, 64, TextGet(KDSaveBusy ? "KDSaveBusy"
+			DrawButtonKDEx("quit", () => {
+
+				if (KinkyDungeonIsPlayer()) {
+					
+					if (KDSaveBusy) {
+						if (KDSoundEnabled())
+							AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
+					} else {
+						KinkyDungeonSaveGame();
+						KinkyDungeonState = "Menu";
+						let itt = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+						if (itt) {
+							CharacterAppearanceRestore(KinkyDungeonPlayer, itt, false);
+
+							
+							KinkyDungeonNewDress = true;
+							KinkyDungeonDressSet();
+							
+							KinkyDungeonCheckClothesLoss = true;
+							KinkyDungeonDressPlayer();
+						}
+						KinkyDungeonInitialize(0);
+					}
+				}
+				
+				return true;
+			}, true,
+				
+				975, 650, 550, 64, TextGet(KDSaveBusy ? "KDSaveBusy"
 				: (KDGameData.CurrentDialog ? "KinkyDungeonRestartQuitInDialogue" : "KinkyDungeonRestartQuitNoErase")
 			), KDBaseWhite, "");
 			DrawButtonVis(975, 800, 550, 64, TextGet("KinkyDungeonRestartCapture" + (KDConfirmDeleteSave ? "Confirm" : "")),  (KDGameData.PrisonerState == 'jail' || !KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) ? "Pink" : KDBaseWhite, "");
@@ -5922,7 +5953,8 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 				xx,
 				yy,
 				(listItem.size)/1000, false, 
-				npcTooltipContainer, undefined, undefined, 120, false);
+				npcTooltipContainer, undefined, undefined, 120, false,
+				undefined, "NPCTooltip");
 
 			if (mesh) {
 				let zum = (listItem.size)/1000;
@@ -6426,12 +6458,12 @@ function KDPlayerZoom(PlayerModel: ModelContainer): number {
 		: KinkyDungeonGridSizeDisplay/250;
 }
 
-function KDDrawChibi(Character: Character, x: number, y: number, zoom: number) {
+function KDDrawChibi(Character: Character, x: number, y: number, zoom: number, id: string) {
 	return DrawCharacter(Character,
 		x, y,
 		zoom, false, undefined,
 		PIXI.SCALE_MODES.NEAREST, CHIBIMOD, undefined, KDFlipPlayer, ["Sprite"],
-			undefined, CHIBIMODEND);
+			id, CHIBIMODEND);
 
 
 }

@@ -498,7 +498,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
 		//KDSpeakerNPC = null;
 		KinkyDungeonState = "Wardrobe";
-			KDPIXIPaletteFilters.clear();
+		KDClearPaletteFilters()
 		KDCanRevertFlag = value.customOutfit != undefined;
 		ForceRefreshModels(KDSpeakerNPC);
 		KDOutfitOriginalStore[KDCurrentOutfit] = "";
@@ -864,7 +864,8 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 				(NPCTooltipZoomY * 1000 * (height)/1000)
 					+ spriteY,
 				KDToggleBigView ? (800/1000) : (400/1000), false, 
-				collectionNPCContainer, undefined, undefined, 120, false);
+				collectionNPCContainer, undefined, undefined, 120, false, undefined,
+				"CollectionPortraitZoom");
 			if (mesh) {
 				mesh.scale.x = spriteZoom;
 				mesh.scale.y = spriteZoom;
@@ -872,7 +873,9 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		} else DrawCharacter(KDSpeakerNPC,
 			x + 20 + (KDToggleBigView ? 0 : 100),
 			y + 60,
-			KDToggleBigView ? (800/1000) : (400/1000), true, undefined, PIXI.SCALE_MODES.NEAREST, [], undefined, false);
+			KDToggleBigView ? (800/1000) : (400/1000), true, undefined, 
+			PIXI.SCALE_MODES.NEAREST, [], undefined, false, undefined,
+			"CollectionPortrait");
 
 		if (NPCTooltipZoomIn) {
 			NPCTooltipZoomIn = false;

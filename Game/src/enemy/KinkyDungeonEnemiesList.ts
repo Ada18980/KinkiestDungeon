@@ -1651,7 +1651,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 2,
 		visionRadius: 4.5, maxhp: 3.2, minLevel: 5, weight:10, movePoints: 2, attackPoints: 3, attack: "SpellMeleeSlowBindSuicide", suicideOnSpell: true, suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "crush",
 		 floors:KDMapInit(["tmp"]), shrines: ["Latex"]},
-	{name: "LabAssistant", faction: "Alchemist", clusterWith: "alchemist", playLine: "Apprentice", outfit: "BlueSuit", bound: "LabAssistant", color: "#92b9e8",
+	{name: "LabAssistant", faction: "Alchemist", clusterWith: "alchemist", playLine: "Apprentice",
+		
+		style: "BlueHair",
+		outfit: "BlueSuit", bound: "LabAssistant", color: "#92b9e8",
 		tags: KDMapInit(["opendoors", "leashing", "human", "alchemist", "latexRestraints", "ranged", "minor", "latexGag", "jail", "jailer", "hunter"]),
 		ignorechance: 0, followRange: 4.5, AI: "hunt",
 		difficulty: 0.3,

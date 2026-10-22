@@ -1598,7 +1598,11 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	}
 	DrawCharacter(C, 
 		250 - 250 * KDCharSize , 
-					0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, KDCharSize, undefined, undefined, undefined, undefined, undefined, C == KinkyDungeonPlayer ? KDToggles.FlipPlayer : false);
+					0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, 
+					KDCharSize, undefined, undefined, 
+					undefined, undefined, 
+					undefined, C == KinkyDungeonPlayer ? KDToggles.FlipPlayer : false, undefined,
+				KDMAINPORTRAITID);
 
 	KDTextField("KDOutfitName", 25, 5, 450, 30);
 	if (!ElementValue("KDOutfitName")) {
@@ -1919,7 +1923,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	let clickButton = (index: number) => {
 		return (_bdata: any) => {
 			KDSelectedModel = null;
-			KDPIXIPaletteFilters.clear();
+			KDClearPaletteFilters()
 			if (C == KinkyDungeonPlayer) {
 				KDOutfitStore[KDCurrentOutfit] = LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer,
 					KDGetCharMetadata(C || KinkyDungeonPlayer)
@@ -2639,12 +2643,12 @@ function KDWardrobeToolsDraw(C: Character) {
 			else parent = "Torso";
 			if (KDWToolsPivotAimRefresh) {
 
-				CenterPivotToMouse(C, CurrentLayer, parent);
+				CenterPivotToMouse(C, CurrentLayer, parent, KDMAINPORTRAITID);
 			}
 			if (KDWToolsDraggingRefresh)
-				ApplyDragDisplacement(C, CurrentLayer, parent);
+				ApplyDragDisplacement(C, CurrentLayer, parent, KDMAINPORTRAITID);
 
-			KDWToolsDrawPivotPoint(C, CurrentLayer, parent);
+			KDWToolsDrawPivotPoint(C, CurrentLayer, parent, KDMAINPORTRAITID);
 			return true;
 		}
 	}
@@ -2660,7 +2664,7 @@ let KDWToolsPivotAimRefresh = false;
 
 
 //Set pivot location to the mouse pointer
-function CenterPivotToMouse(C: Character, CurrentLayer: LayerPropertiesType, Parent?: string) {
+function CenterPivotToMouse(C: Character, CurrentLayer: LayerPropertiesType, Parent: string, id: string) {
 	let Zoom = KDCharSize;
 	//Translate Mouse coordinates to canvas coordinates
 
@@ -2701,7 +2705,7 @@ function CenterPivotToMouse(C: Character, CurrentLayer: LayerPropertiesType, Par
 		Parent: Parent || "Torso",
 		X: X_Pivot,
 		Y: Y_Pivot,
-	}, KDToggles.FlipPlayer);
+	}, KDToggles.FlipPlayer, id);
 	let XX_Offset = x;
 	let YY_Offset = y;
 
@@ -2737,7 +2741,7 @@ function CenterPivotToMouse(C: Character, CurrentLayer: LayerPropertiesType, Par
 }
 
 //Draw red circle at the pivot location
-function KDWToolsDrawPivotPoint(C: Character, CurrentLayer: LayerPropertiesType, Parent: string) {
+function KDWToolsDrawPivotPoint(C: Character, CurrentLayer: LayerPropertiesType, Parent: string, id: string) {
 	let Zoom = KDCharSize;
 	//Transform model coordiantes to screen coordinates
 	if (!CurrentLayer.XPivot || !CurrentLayer.YPivot) return;
@@ -2760,7 +2764,7 @@ function KDWToolsDrawPivotPoint(C: Character, CurrentLayer: LayerPropertiesType,
 		Parent: Parent || "Torso",
 		X: X_Offset,
 		Y: Y_Offset,
-	}, KDToggles.FlipPlayer);
+	}, KDToggles.FlipPlayer, undefined, id);
 
 
 	//let {X_Offset, Y_Offset} = ModelGetPoseOffsets(KDCurrentModels.get(KinkyDungeonPlayer).Poses, KDToggles.FlipPlayer);
@@ -2869,7 +2873,7 @@ window.addEventListener('wheel', function(event) {
 let KDWToolsDraggingLazyRefresh = 0;
 
 //Calculations of properties while drag-moving
-function ApplyDragDisplacement(C, CurrentLayer, Parent: string) {
+function ApplyDragDisplacement(C, CurrentLayer, Parent: string, id: string) {
 	let Zoom = KDCharSize;
 	let X_OFFSET = (KDToggles.FlipPlayer ? -1 : 1) * (KDWToolsDraggingDelta.x / (MODEL_SCALE * Zoom));
 	let Y_OFFSET = KDWToolsDraggingDelta.y / (MODEL_SCALE * Zoom);
@@ -2882,7 +2886,7 @@ function ApplyDragDisplacement(C, CurrentLayer, Parent: string) {
 		Parent: Parent || "Torso",
 		X: 0,
 		Y: 0,
-	}, false);
+	}, false, undefined, id);
 
 	//0  = x=x, y=y
 	//90 = x=-y,y=x

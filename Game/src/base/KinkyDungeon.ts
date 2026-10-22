@@ -5,6 +5,8 @@ let KDENABLEDISCORDSYNC = false;
 
 let KDGenMapCallback: () => string = null;
 
+let KDMAINPORTRAITID = "MainPortraitID";
+
 let KDOptionFilter = "";
 let KDConsentFilter = "";
 let LaunchedMenu = false;
@@ -311,7 +313,7 @@ let KinkyDungeonInitTime = 0;
 
 let KinkyDungeonSleepTime = 0;
 let KinkyDungeonFreezeTime = 1000;
-let KinkyDungeonStunTime = 500;
+let KinkyDungeonStunTime = 400;
 let KinkyDungeonPlaySelfTime = 300;
 let KinkyDungeonOrgasmTime = 1000;
 let KinkyDungeonAutoWait = false;
@@ -1227,7 +1229,11 @@ function KDReloadMainData(force: boolean) {
 
 
 		
-		DrawCharacter(KinkyDungeonPlayer, 0, 0, 0.01);
+		DrawCharacter(KinkyDungeonPlayer, 0, 0, 0.01,
+			undefined, undefined, undefined, 
+			undefined, undefined, undefined, undefined,
+			KDMAINPORTRAITID
+		);
 		
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
@@ -1698,6 +1704,8 @@ function KinkyDungeonRun() {
 					MC.ForceUpdate.delete(Container[0])
 					MC.Refresh.delete(Container[0])
 					KDContainerClear(Container[1]);
+					MC.Mods.delete(Container[0]);
+					MC.EndMods.delete(Container[0]);
 				} else if (refresh && (
 					ent[0] == KinkyDungeonPlayer
 					|| ent[0] == KDSpeakerNPC
@@ -1801,7 +1809,11 @@ function KinkyDungeonRun() {
 		let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
 		DrawCharacter(Char, 
 			250 - 250 * KDCharSize,
-			0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, KDCharSize, undefined, undefined, undefined, undefined, KinkyDungeonState == "Game" ? KDGamePlayerZIndex : KDMenuPlayerZIndex, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+			0.5*PIXIHeight - 0.5 * PIXIHeight * KDCharSize + (1 - KDCharSize) * PIXIHeight*0.27, KDCharSize, 
+			undefined, undefined, undefined, undefined, 
+			KinkyDungeonState == "Game" ? KDGamePlayerZIndex : KDMenuPlayerZIndex, 
+			KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false,
+			undefined, KDMAINPORTRAITID);
 	}
 
 	if (CommonIsMobile && mouseDown && !KDMouseInPlayableArea()) {
@@ -2277,7 +2289,7 @@ function KinkyDungeonRun() {
 			DrawButtonKDEx("loadclothes", (_b) => {
 				KDSaveCodeOutfit(Char, true);
 				KinkyDungeonState = "Wardrobe";
-				KDPIXIPaletteFilters.clear();
+				KDClearPaletteFilters()
 				KDCanRevertFlag = false;
 				//KDWardrobeCallback = null;
 				//KDWardrobeRevertCallback = null;
@@ -3119,6 +3131,9 @@ function KinkyDungeonRun() {
 			CharacterAppearanceBuildCanvas = () => {};
 
 			if (!KDContextMenu && KinkyDungeonDrawState != "Restart") {
+				if (!KDGameData.SlowMoveTurns) {
+					KDWaitTimeSetpoint = 0;
+				}
 				if (KDGameData.SleepTurns > 0) {
 					if (CommonTime() > KinkyDungeonSleepTime) {
 						KDGameData.SleepTurns -= 1;
@@ -3165,7 +3180,7 @@ function KinkyDungeonRun() {
 						KDGameData.SlowMoveTurns -= 1;
 						KDPauseBalance(5);
 						KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
-						KDUpdateWaitTime(KinkyDungeonStunTime * (0.35 + KDAnimSpeed * 0.65));
+						KDUpdateWaitTime((KDWaitTimeSetpoint || KinkyDungeonStunTime) * (0.35 + KDAnimSpeed * 0.65));
 					}
 				} else if (KinkyDungeonFastMove && KinkyDungeonFastMovePath && KinkyDungeonFastMovePath.length > 0) {
 					if (CommonTime() > KinkyDungeonSleepTime) {
@@ -3227,7 +3242,9 @@ function KinkyDungeonRun() {
 							KDDisableAutoWait();
 						KDUpdateWaitTime((300 + Math.min(1200, KDAutoStruggleData.lastDelay * 270)) * (0.5 + KDAnimSpeed * 0.5));
 					}
-				} else KDUpdateWaitTime(100);
+				} else {
+					KDUpdateWaitTime(100);
+				}
 			}
 
 			CharacterRefresh = _CharacterRefresh;
@@ -3341,6 +3358,7 @@ function KinkyDungeonRun() {
 	KDCullSprites();
 	KDCullRTList(kdRTcache);
 	KDCullTexList(kdTexcache);
+	KDCullModelContainers(CommonTime());
 	
 	if (CommonTime() > lastFloaterRefresh + KDFloaterRefreshTime) {
 		KDEntitiesFloaterRegisty = new Map();
@@ -3489,6 +3507,14 @@ function KDPurgeSpriteRelatedFilters(sprite: PIXISprite | PIXITexture) {
 	}
 }
 
+function KDCullModelContainers(time: number) {
+	for (let MC of KDCurrentModels.entries()) {
+		if (MC[1].lastDrawn + KDModelContainerTimeout < time) {
+			KDClearModel(MC[0]);
+		}
+	}
+}
+
 function KDCullSprites(): void {
 	if (!KDlastCull.get(kdpixisprites)) KDlastCull.set(kdpixisprites, 0);
 	let cull = CommonTime() > ((KDlastCull.get(kdpixisprites) || 0) + KDGetCullTime());
@@ -3503,7 +3529,7 @@ function KDCullSprites(): void {
 				if (sprite[1].removeChildren) sprite[1].removeChildren();
 				if (sprite[1].destroy) {
 					if (!sprite[1].destroyed) {
-						if (sprite[1].clear) {sprite[1].clear(); sprite[1].removeFromParent();}
+						if (sprite[1].clear) {sprite[1].clear(); sprite[1].removeFromParent(); sprite[1].destroy();}
 						else sprite[1].destroy();
 						/*if (sprite[1].parent) {
 							if (!containersToPurge.get(sprite[1].parent)) {
@@ -3560,7 +3586,7 @@ function KDCullSpritesList(list: Map<string, any>): void {
 				KDPurgeSpriteRelatedFilters(sprite[1]);
 				if (sprite[1].destroy) {
 					if (!sprite[1].destroyed) {
-						if (sprite[1].clear)  {sprite[1].clear(); sprite[1].removeFromParent();}
+						if (sprite[1].clear)  {sprite[1].clear(); sprite[1].removeFromParent(); sprite[1].destroy();}
 						else sprite[1].destroy();
 						/*if (sprite[1].parent) {
 							if (!containersToPurge.get(sprite[1].parent)) {
@@ -5425,7 +5451,9 @@ function KDDrawLoadMenu() {
 		// Player Paper Doll
 		if (ModelPreviewLoaded) {
 			if (KDCurrentModels.get(KDPreviewModel))
-				DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true);
+				DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, 
+			undefined, undefined, undefined, undefined, 
+			100, true, undefined, "SaveModelPreview");
 
 		}
 		// New Game Text
@@ -6570,7 +6598,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 			KDRefreshCharacter.set(Char, true);
 			KinkyDungeonDressPlayer(Char, true);
 			KinkyDungeonState = "Wardrobe";
-			KDPIXIPaletteFilters.clear();
+			KDClearPaletteFilters()
 			KDCanRevertFlag = false;
 			//KDWardrobeCallback = null;
 			//KDWardrobeRevertCallback = null;
@@ -6582,7 +6610,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 			if (StandalonePatched) {
 				KDRestoreOutfit();
 				KinkyDungeonState = "Wardrobe";
-				KDPIXIPaletteFilters.clear();
+				KDClearPaletteFilters()
 				KDCanRevertFlag = false;
 				KDWardrobeCallback = null;
 				KDWardrobeRevertCallback = null;
@@ -6775,7 +6803,9 @@ function KDClick(event: MouseEvent) {
 			KDUpdatedSeenConsents = false;
 			// Draw the PC for one
 			let Char = (KinkyDungeonState == "LoadOutfit" ? KDSpeakerNPC : null) || KinkyDungeonPlayer;
-			DrawCharacter(Char, 0, 0, .01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+			DrawCharacter(Char, 0, 0, .01, 
+				undefined, undefined, undefined, 
+				undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
 			KDLogoStartTime = CommonTime();
 		}
 		else if (KDIntroStage < KDIntroProgress.length) {
@@ -8702,7 +8732,7 @@ function KDDrawWardrobeButton() {
 			KDSpeakerNPC = null;
 			KinkyDungeonPreviousState = KinkyDungeonState;
 			KinkyDungeonState = "Wardrobe";
-			KDPIXIPaletteFilters.clear();
+			KDClearPaletteFilters()
 			KDCanRevertFlag = false;
 			KDWardrobeCallback = null;
 			KDWardrobeRevertCallback = null;
@@ -8893,4 +8923,12 @@ function KDUpdateScreen() {
 	PIXIapp.renderer.resize(PIXIWidth * resolution, PIXIHeight * resolution);
 	PIXIapp.view.width = PIXIWidth * resolution;
 	PIXIapp.view.height = PIXIHeight * resolution;
+}
+
+function KDClearPaletteFilters() {
+	for (let f of KDPIXIPaletteFilters.values()) {
+		KDFilterCacheToDestroy.push(...f);
+	}
+	KDPIXIPaletteFilters.clear();
+
 }
