@@ -1619,8 +1619,14 @@ function KinkyDungeonDrawGame() {
 									let color = KinkyDungeonFastMoveSuppress ? 0xff5555 : 0xffaaaa;
 									let ii = 0;
 									for (let p of path) {
-										let singleDash = !allDashed && KDTileSlows(KDPlayer(), p.x, p.y);
-										let lastSingleDash = !allDashed && KDTileSlows(KDPlayer(), lastP.x, lastP.y);
+										let singleDash = !allDashed
+											&& KinkyDungeonVisionGet(p.x, p.y) > 0.1
+											&& KinkyDungeonFogGet(p.x, p.y) > 0.1
+											&& KDTileSlows(KDPlayer(), p.x, p.y);
+										let lastSingleDash = !allDashed 
+											&& KinkyDungeonVisionGet(lastP.x, lastP.y) > 0.1
+											&& KinkyDungeonFogGet(lastP.x, lastP.y) > 0.1
+											&& KDTileSlows(KDPlayer(), lastP.x, lastP.y);
 										let dashed = allDashed;
 										KDPathGraphics.lineStyle({
 											width: slowed ? KDFastPathWidthSlowed : (dashed ? KDFastPathWidth : (KDFastPathWidth-1)),

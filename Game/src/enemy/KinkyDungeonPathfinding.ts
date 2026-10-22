@@ -277,8 +277,9 @@ function KinkyDungeonFindPath (
 						yy = lowest.y + y;
 						loc = (xx) + "," + (yy)
 						let tile = (xx == endx && yy == endy) ? "" : KinkyDungeonMapGet(xx, yy);
-						if (xx < 1 || xx >= KDMapData.GridWidth) continue;
-						if (yy < 1 || yy >= KDMapData.GridHeight) continue;
+						// The 20 tile buffer is to allow blind pathfinding into the dark, basically just to hide the map edge
+						if (xx < -20 || xx >= KDMapData.GridWidth + 20) continue;
+						if (yy < -20 || yy >= KDMapData.GridHeight + 20) continue;
 						MapTile = KinkyDungeonTilesGet(loc);
 						let locIndex = (!blockEnemy && !blockPlayer && !RequireLight && !RequireFog && !noDoors && !needDoorMemory) ?
 							`${lowLoc},${endx},${endy},${tileShort}` : null;
