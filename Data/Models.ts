@@ -523,6 +523,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 	
 
 	let OldSubmeshes = null;
+	let OldMesh: PIXIMesh = null;
 	if (MC.Containers.get(containerID) && !MC.Update.has(containerID) && MC.Refresh.has(containerID)) {
 
 		let data = {
@@ -562,9 +563,14 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		DrawCanvas.removeChild(MC.Containers.get(containerID).Mesh);
 		MC.Containers.get(containerID).Container.destroy();
 		//MC.Containers.get(containerID).Mesh.destroy();
-		KDMeshToDestroy.push(MC.Containers.get(containerID).Mesh);
-		//MC.Containers.get(containerID).Mesh.texture.destroy();
-		KDRenderTexToDestroy.push(MC.Containers.get(containerID).RenderTexture);
+
+
+		OldMesh = MC.Containers.get(containerID).Mesh;
+		OldMesh.removeChildren();
+		//KDMeshToDestroy.push(MC.Containers.get(containerID).Mesh);
+		//KDRenderTexToDestroy.push(MC.Containers.get(containerID).RenderTexture);
+
+
 		/*for (let submesh of MC.Containers.get(containerID).Submeshes.values()) {
 			KDMeshToDestroy.push(submesh.mesh);
 			KDRenderTexToDestroy.push(submesh.rt);
@@ -594,8 +600,9 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 	let created = false;
 	if (!MC.Containers.get(containerID)) {
 
-		let RT = PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution});
-		let Mesh = new PIXI.SimplePlane(RT, 10, 10);
+		// Reuse old rendertexture instead of allocating a new one
+		let RT = (OldMesh?.texture instanceof PIXI.RenderTexture ? OldMesh?.texture : null) || PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution});
+		let Mesh = OldMesh || new PIXI.SimplePlane(RT, 10, 10);
 		Mesh.sortableChildren = true;
 		let Container: ContainerInfo = {
 			Container: new PIXI.Container(),
@@ -603,7 +610,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 			SpritesDrawn: new Map(),
 			SpriteGroups: new Map(),//OldSpriteGroups || 
 			Submeshes: OldSubmeshes || new Map(),
-			RenderTexture: RT,
+			RenderTexture: RT as PIXIRenderTexture,
 			SpriteList: new Map(),
 			Matrix: Object.assign([], Mesh.geometry.getBuffer('aVertexPosition').data),
 			Zoom: Zoom,
@@ -618,7 +625,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		Container.Mesh.pivot.set(MODELWIDTH*MODEL_SCALE * 1 * Zoom, MODELHEIGHT*MODEL_SCALE * 1 * Zoom);
 		created = true;
 		MC.Containers.set(containerID, Container);
-		DrawCanvas.addChild(Container.Mesh);
+		if (!Container.Mesh.parent)
+			DrawCanvas.addChild(Container.Mesh);
 		Container.Container.sortableChildren = true;
 		//Container.Container.cacheAsBitmap = true;
 		if (zIndex) Container.Mesh.zIndex = zIndex;
