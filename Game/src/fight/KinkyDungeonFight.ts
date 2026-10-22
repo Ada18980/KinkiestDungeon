@@ -3998,6 +3998,8 @@ function KDEntityBlocksExp(entity: entity): boolean {
 	return entity.Enemy?.tags?.bulwark || KDEntityBuffedStat(entity, "Bulwark") > 0;
 }
 
+let KDUpdateMapCache = true;
+
 function KDCrackTile(x: number, y: number, allowCrack: boolean, data: any) {
 	let origTile = KinkyDungeonMapGet(x, y);
 	KinkyDungeonSendEvent("beforeCrackTile", data);
@@ -4013,6 +4015,8 @@ function KDCrackTile(x: number, y: number, allowCrack: boolean, data: any) {
 			duration: 9999,
 		}, 0);
 		KinkyDungeonUpdateLightGrid = true;
+		KDUpdateMapCache = true;
+		KDUpdateDoorNavMap();
 
 		KinkyDungeonSendEvent("crackTile", data);
 	}

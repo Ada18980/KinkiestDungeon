@@ -118,6 +118,10 @@ let KDFocusControlButtons = {
 		Fast: false,
 		VeryFast: false,
 	},
+	"AutoPath": {
+		SuppressBeforeCombat: true,
+		StepDuringCombat: true,
+	},
 };
 let KDFocusControlButtonsExclude = {
 	AutoWaitSlow: ["AutoWaitNormal", "AutoWaitFast", "AutoWaitVeryFast"],
@@ -1717,6 +1721,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 			undefined, undefined, !KDGameData.FocusControlToggle || !KDGameData.FocusControlToggle[KDFocusControls +  button[0]], KDTextGray1, undefined, false, {
 				alpha: 0.7,
 				zIndex: 110,
+				centered: true,
 				//hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[2]),
 			});
 			if (MouseIn(xx, yy - bHeight + 15, bWidth, bHeight)) focusTooltip = "KDFocusControls" + setTo + button[0];

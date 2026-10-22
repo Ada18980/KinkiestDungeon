@@ -29782,9 +29782,9 @@ KDFocusControlsAutoPassSummons,"Pass thru summons"
 KDFocusControlsAutoPassShop,"Pass thru shopkeepers"
 KDFocusControlsAutoPassSpecial,"Pass thru special NPCs"
 
-KDFocusControlsAutoPathSuppressBeforeCombat,"Stop when enemies are first sighted"
+KDFocusControlsAutoPathSuppressBeforeCombat,"Stop when entering danger"
 KDFocusControlsAutoPathSuppressDuringCombat,"Suppress during combat"
-KDFocusControlsAutoPathStepDuringCombat,"Step during combat"
+KDFocusControlsAutoPathStepDuringCombat,"Single step during combat"
 
 KDFocusControlsAutoWaitFast,"0.1s/turn"
 KDFocusControlsAutoWaitSlow,"1.5s/turn"

@@ -3153,6 +3153,8 @@ interface KDBullet {
 	time?: number,
 	lifetime?: number,
 	reflected?: boolean,
+	/** Already warned once for autoapthing */
+	warned?: boolean,
 	y: number,
 	x: number,
 	vx: number,

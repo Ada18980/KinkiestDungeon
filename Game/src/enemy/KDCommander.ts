@@ -811,7 +811,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 					return en != enemy && KinkyDungeonIsDisabled(en) && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
 					&& !KDIsImprisoned(en)
 					&& KDIsTileDangerous(en, en.x, en.y, KDMapData)
-					&& KDNearbyMapTiles(en.x, en.y, 1.5).some((tile) => {
+					&& KDSomeNearbyMapTiles(en.x, en.y, 1.5, (tile) => {
 						return (tile.x != en.x || tile.y != en.y)
 							&& !KinkyDungeonEntityAt(tile.x, tile.y)
 							&& KinkyDungeonMovableTilesEnemy.includes(tile.tile)
@@ -859,7 +859,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 					&& !KDIsImprisoned(en)
 					&& KDIsTileDangerous(en, en.x, en.y, KDMapData)
 					&& KDWillingToHelp(en, enemy)
-					&& KDNearbyMapTiles(en.x, en.y, 1.5).some((tile) => {
+					&& KDSomeNearbyMapTiles(en.x, en.y, 1.5, (tile) => {
 						return (tile.x != en.x || tile.y != en.y)
 							&& !KinkyDungeonEntityAt(tile.x, tile.y)
 							&& KinkyDungeonMovableTilesEnemy.includes(tile.tile)
@@ -872,7 +872,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 					&& !KDIsImprisoned(en)
 					&& KDIsTileDangerous(en, en.x, en.y, KDMapData)
 					&& KDWillingToHelp(en, enemy)
-					&& KDNearbyMapTiles(en.x, en.y, 1.5).some((tile) => {
+					&& KDSomeNearbyMapTiles(en.x, en.y, 1.5, (tile) => {
 						return (tile.x != en.x || tile.y != en.y)
 							&& !KinkyDungeonEntityAt(tile.x, tile.y)
 							&& KinkyDungeonMovableTilesEnemy.includes(tile.tile)
@@ -904,11 +904,11 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 					if (KDistChebyshev(enemy.x - help.x, enemy.y - help.y) < 1.5) {
 						// Bump!
 						let en = help;
-						let potentialTiles = KDNearbyMapTiles(en.x, en.y, 1.5).filter((tile) => {
+						let potentialTiles = KDFilterNearbyMapTiles(en.x, en.y, 1.5, (tile) => {
 							return (tile.x != en.x || tile.y != en.y)
 								&& (!KinkyDungeonEntityAt(tile.x, tile.y) || (
 									KinkyDungeonEntityAt(tile.x, tile.y)?.id == enemy.id)
-									&& KDNearbyMapTiles(enemy.x, enemy.y, 1.5).some((tile2) => {
+									&& KDSomeNearbyMapTiles(enemy.x, enemy.y, 1.5, (tile2) => {
 										return (tile2.x != enemy.x || tile2.y != enemy.y)
 											&& !KinkyDungeonEntityAt(tile2.x, tile2.y)
 											&& KinkyDungeonMovableTilesEnemy.includes(tile2.tile)
@@ -926,7 +926,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 						if (potentialTiles.length > 0) {
 							let tileChosen = potentialTiles[Math.floor(potentialTiles.length * KDRandom())];
 							if (tileChosen.x == enemy.x && tileChosen.y == enemy.y) {
-								let MoveFirstTiles = KDNearbyMapTiles(enemy.x, enemy.y, 1.5).filter((tile) => {
+								let MoveFirstTiles = KDFilterNearbyMapTiles(enemy.x, enemy.y, 1.5, (tile) => {
 									return (tile.x != enemy.x || tile.y != enemy.y)
 										&& !KinkyDungeonEntityAt(tile.x, tile.y)
 										&& KinkyDungeonMovableTilesEnemy.includes(tile.tile)

@@ -78,7 +78,7 @@ let KDRestraintArchetypes = ["Rope", "Latex", "Ribbon", "Leather", "Cyber", "Met
 let KDCustomAffinity: Record<string, (data : KDEventData_affinity) => boolean> = {
 	Wall: (data) => {
 		// Intentionally only a + shape
-		if (KDNearbyMapTiles(data.entity.x, data.entity.y, 1.1)?.some((tile) => {return KinkyDungeonBlockTiles.includes(tile.tile);})) return true;
+		if (KDSomeNearbyMapTiles(data.entity.x, data.entity.y, 1.1, (tile) => {return KinkyDungeonBlockTiles.includes(tile.tile);})) return true;
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
 	},
 	HookOrFoot: (data) => {

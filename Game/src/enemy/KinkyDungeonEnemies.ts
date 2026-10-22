@@ -736,6 +736,7 @@ function KDAmbushAI(enemy: entity): boolean {
 let KinkyDungeonFastMoveSuppress = false;
 let KinkyDungeonFastStruggleSuppress = false;
 let KDInDanger = false;
+let KDWasInDanger = false;
 
 function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number, CamX: number, CamY: number) {
 	let reenabled2 = false;
@@ -759,18 +760,24 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 			if (!KinkyDungeonAutoWait)
 				if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress)
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Warning.ogg");
-			if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
-				KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
-			} else {
-				KinkyDungeonFastMovePath = [];
+
+			if (KDGameData.FocusControlToggle.AutoPathSuppressBeforeCombat) {
+				if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+					KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+				} else {
+					KinkyDungeonFastMovePath = [];
+				}
 			}
+			
 		}
 	}
 
 	for (let b of KDMapData.Bullets) {
 		let bdist = 1.5;
 		if (b.vx && b.vy) bdist = 2*Math.sqrt(b.vx*b.vx + b.vy*b.vy);
-		if (KinkyDungeonVisionGet(Math.round(b.x), Math.round(b.y)) > 0 && Math.max(Math.abs(b.x - KinkyDungeonPlayerEntity.x), Math.abs(b.y - KinkyDungeonPlayerEntity.y)) < bdist) {
+		if (KinkyDungeonVisionGet(Math.round(b.x), Math.round(b.y)) > 0
+			&& !b.bullet?.spell?.hideWarnings
+			&& Math.max(Math.abs(b.x - KinkyDungeonPlayerEntity.x), Math.abs(b.y - KinkyDungeonPlayerEntity.y)) < bdist) {
 			if (KinkyDungeonFastStruggle) {
 				
 				if (!KinkyDungeonAutoWait)
@@ -784,10 +791,15 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 				KinkyDungeonFastStruggleSuppress = true;
 			}
 			if (KinkyDungeonFastMove) {
-				if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
-					KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
-				} else {
-					KinkyDungeonFastMovePath = [];
+				if (KDGameData.FocusControlToggle.AutoPathSuppressBeforeCombat) {
+					if (!b.warned || KDGameData.FocusControlToggle.AutoPathStepDuringCombat) {
+						b.warned = true;
+						if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+							KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+						} else {
+							KinkyDungeonFastMovePath = [];
+						}
+					}
 				}
 			}
 
@@ -817,11 +829,20 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 							if (!KinkyDungeonAutoWait)
 								if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && KDToggles.SoundAutoPathEnd)
 									KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KDStopAutoSound + ".ogg");
-							if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
-								KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
-							} else {
-								KinkyDungeonFastMovePath = [];
+
+							if (KDGameData.FocusControlToggle.AutoPathSuppressBeforeCombat) {
+								if (KDGameData.FocusControlToggle.AutoPathStepDuringCombat
+									|| (!KDSeenEnemyCache[enemy.id] || (KDSeenEnemyCache[enemy.id]) < KinkyDungeonCurrentTick)) {
+										
+									KDSeenEnemyCache[enemy.id] = KinkyDungeonCurrentTick + KDSeenEnemyCacheTime;
+									if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+										KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+									} else {
+										KinkyDungeonFastMovePath = [];
+									}
+								}
 							}
+							
 						}
 						KDInDanger = true;
 					}
@@ -970,11 +991,15 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 	}
 	if (KinkyDungeonFastMove) {
 		if (KDInDanger) {
-			if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
-					KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
-				} else {
-					KinkyDungeonFastMovePath = [];
+			if (KDGameData.FocusControlToggle.AutoPathSuppressBeforeCombat) {
+				if (KDGameData.FocusControlToggle.AutoPathStepDuringCombat || !KDWasInDanger) {
+					if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+						KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+					} else {
+						KinkyDungeonFastMovePath = [];
+					}
 				}
+			}
 			KinkyDungeonFastMoveSuppress = true;
 		} else {
 			KinkyDungeonFastMoveSuppress = false;
@@ -985,7 +1010,10 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 		if (reenabled2 && KinkyDungeonFastStruggle && KDToggles.SoundAutoPathEnd) {
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KDStopAutoSound + ".ogg");
 		}
+
+	KDWasInDanger = KDInDanger;
 }
+
 
 function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: number, CamX: number, CamY: number, StaticView?: boolean, zIndex: number = 0, id: string = "", size = -1): string {
 	let buffSprite = "";
@@ -3770,6 +3798,21 @@ function KDNearbyTiles(x: number, y: number, dist: number): {x: number, y: numbe
  * @param y
  * @param dist
  */
+function KDFilterNearbyMapTiles(x: number, y: number, dist: number, cb: (tile) => boolean): {x: number, y: number, tile: string}[] {
+	let list = [];
+	for (let X = Math.floor(x - dist); X < Math.ceil(x + dist); X++)
+		for (let Y = Math.floor(y - dist); Y < Math.ceil(y + dist); Y++)
+			if (KDistEuclideanSquared(X - x, Y - y) <= dist * dist
+				&& cb({x: X, y: Y, tile: KinkyDungeonMapGet(X, Y)})) {
+				list.push({x: X, y: Y, tile: KinkyDungeonMapGet(X, Y)});
+			}
+	return list;
+}
+/**
+ * @param x
+ * @param y
+ * @param dist
+ */
 function KDNearbyMapTiles(x: number, y: number, dist: number): {x: number, y: number, tile: string}[] {
 	let list = [];
 	for (let X = Math.floor(x - dist); X < Math.ceil(x + dist); X++)
@@ -3778,6 +3821,46 @@ function KDNearbyMapTiles(x: number, y: number, dist: number): {x: number, y: nu
 				list.push({x: X, y: Y, tile: KinkyDungeonMapGet(X, Y)});
 			}
 	return list;
+}
+/**
+ * @param x
+ * @param y
+ * @param dist
+ */
+function KDIterateNearbyMapTiles(x: number, y: number, dist: number, cb: (tile) => void): void {
+	for (let X = Math.floor(x - dist); X < Math.ceil(x + dist); X++)
+		for (let Y = Math.floor(y - dist); Y < Math.ceil(y + dist); Y++)
+			if (KDistEuclideanSquared(X - x, Y - y) <= dist * dist) {
+				cb({x: X, y: Y, tile: KinkyDungeonMapGet(X, Y)});
+			}
+}
+
+/**
+ * @param x
+ * @param y
+ * @param dist
+ */
+function KDSomeNearbyMapTiles(x: number, y: number, dist: number, cb: (tile) => boolean): boolean {
+	for (let X = Math.floor(x - dist); X < Math.ceil(x + dist); X++)
+		for (let Y = Math.floor(y - dist); Y < Math.ceil(y + dist); Y++)
+			if (KDistEuclideanSquared(X - x, Y - y) <= dist * dist) {
+				if (cb({x: X, y: Y, tile: KinkyDungeonMapGet(X, Y)})) return true;
+			}
+	return false;
+}
+
+/**
+ * @param x
+ * @param y
+ * @param dist
+ */
+function KDAllNearbyMapTiles(x: number, y: number, dist: number, cb: (tile) => boolean): boolean {
+	for (let X = Math.floor(x - dist); X < Math.ceil(x + dist); X++)
+		for (let Y = Math.floor(y - dist); Y < Math.ceil(y + dist); Y++)
+			if (KDistEuclideanSquared(X - x, Y - y) <= dist * dist) {
+				if (!cb({x: X, y: Y, tile: KinkyDungeonMapGet(X, Y)})) return false;
+			}
+	return true;
 }
 
 /**
@@ -12050,3 +12133,6 @@ function KDGetToyWithDialogue(enemy: entity, player: entity) : string {
 function KDEnemyDoesFollow(enemy: entity) {
 	return KDIsInPartyID(enemy.id) || enemy.Enemy.allied;
 }
+
+let KDSeenEnemyCache: Record<string, number> = {};
+let KDSeenEnemyCacheTime = 8;

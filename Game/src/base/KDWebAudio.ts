@@ -578,13 +578,13 @@ function KinkyDungeonPlaySoundLocation(src: string, player: entity, point?: KDPo
 						val *= (1-KDReverbWeightingDistance) + KDReverbWeightingDistance * dd / dist;
 						let mult = 1;
 						if (!(tile.x == point.x && tile.y == point.y))
-							for (let neighbor of KDNearbyMapTiles(tile.x, tile.y, 1.5)) {
+							KDIterateNearbyMapTiles(tile.x, tile.y, 1.5, (neighbor) => {
 								if (!KinkyDungeonOpenObjects.includes(neighbor.tile)) {
 									mult *= KDReverbWallObject;
 								} else if (!KinkyDungeonMovableTilesEnemy.includes(neighbor.tile)) {
 									mult *= KDReverbDampeningObject;
 								}
-							}
+							});
 						return {added: val * previous,
 							mult: val ? (mult * previous) : 0};
 				});

@@ -1578,8 +1578,9 @@ function KinkyDungeonDrawGame() {
 						KDPathGraphics.clear();
 
 						let allowFog = KDAllowFog();
-						if (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || (allowFog && KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0)
-							|| KDistChebyshev(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) < 1.5) {
+						//let originallyCanTargetSquare = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0 || (allowFog && KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0)
+						//	|| KDistChebyshev(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) < 1.5;
+						if (true) {
 							let retType = KDGetTargetRetType(KinkyDungeonTargetX, KinkyDungeonTargetY);
 							KDDraw(kdstatusboard, kdpixisprites, "ui_movereticule" + KinkyDungeonTargetX + "," + KinkyDungeonTargetY, 
 								KinkyDungeonRootDirectory + "Target" + retType + ".png",
@@ -1594,13 +1595,7 @@ function KinkyDungeonDrawGame() {
 								let dist = diststart;
 								//let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
 								//let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
-								let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY,
-									true, false, false,
-									KDToggles.FastMoveDoors ? KinkyDungeonMovableTilesSmartEnemy : KinkyDungeonMovableTilesEnemy,
-									false, false, true,
-									KDPlayer(), false, undefined, false, true, 
-									KDToggles.FastMovePassable, undefined, undefined, true, 
-									KDAutoPathEnemyWeight);
+								let path = KDGetFastMovePath(KinkyDungeonTargetX, KinkyDungeonTargetY);
 								if (path?.length > 1) {
 									dist *= path.length;
 								}
@@ -6691,4 +6686,16 @@ function KDCancelConfirmBasic() {
 	KinkyDungeonInspect = false;
 	KDInteracting = false;
 	KDContextMenu = false;
+}
+
+function KDGetFastMovePath(x: number, y: number) {
+	return KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 
+	x, y,
+	true, false, false,
+	KDToggles.FastMoveDoors ? KinkyDungeonMovableTilesSmartEnemy : KinkyDungeonMovableTilesEnemy,
+	false, false, true,
+	KDPlayer(), false, undefined, false, true, 
+	KDToggles.FastMovePassable, undefined, undefined, false, 
+	KDAutoPathEnemyWeight, false, true, true);
+
 }
