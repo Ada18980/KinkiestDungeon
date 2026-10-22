@@ -3,7 +3,7 @@
 This source code is made available for those looking to make mods or contribute to Kinky Dungeon.
 You may download it, modify it for personal use, link to it, and use it to develop content under the Kinky Contributor License seen below.
 However, things you may not do:
-- Re-host the code in its entirety
+- Re-host the code in its entirety without permission from Strait Laced Games LLC
 - Charge money for the source code or any modifications to it
 - Claim it as your own
 - Use assets from the game without permission from Strait Laced Games LLC
