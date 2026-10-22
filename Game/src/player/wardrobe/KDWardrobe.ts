@@ -2009,7 +2009,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				}
 			},
 			clickButton(index), true, 475, 140 + 50 * i, 200, 45,
-			KDOutfitInfo[index] + (((index == KDCurrentOutfit && KDOriginalValue) || KDOutfitOriginalStore[index]) ? "(*)" : ""),
+			KDOutfitInfo[index] + (((index == KDCurrentOutfit && KDOriginalValue) || (KDOriginalValue && KDOriginalValue != KDOutfitOriginalStore[index])) ? "(*)" : ""),
 				index == KDCurrentOutfit ? KDBaseWhite : "#888888", "", undefined, undefined, index != KDCurrentOutfit);
 
 	}

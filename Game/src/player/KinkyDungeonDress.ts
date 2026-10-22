@@ -268,17 +268,17 @@ function KinkyDungeonDressPlayer (
 			// First we remove all restraints and clothes
 			let clothGroups = {};
 			for (let cloth of Object.values(DressList)) {
-				clothGroups[cloth.Group || cloth.Item] = true;
+				clothGroups[cloth.Item || cloth.Group] = true;
 			}
 			let newAppearance = {};
 			for (let A = 0; A < Character.Appearance.length; A++) {
 				if (StandalonePatched) {
 					let model = Character.Appearance[A]?.Model;
-					if (model && ((!model.Restraint && !model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name])
+					if (model && ((!model.Restraint && !model.Group?.startsWith("Item") && !clothGroups[model.Name || model.Group])
 						|| KDModelIsProtected(model) || model.SuperProtected)) {
 						//Character.Appearance.splice(A, 1);
 						//A -= 1;
-						newAppearance[model.Group || model.Name] = Character.Appearance[A];
+						newAppearance[model.Name || model.Group] = Character.Appearance[A];
 
 						if (model.Properties) {
 							for (let p of Object.values(model.Properties)) {
@@ -462,7 +462,7 @@ function KinkyDungeonDressPlayer (
 					} else if (IsModelLost(Character, clothes.Item))
 						clothes.Lost = true;
 				}
-				if (alreadyClothed[clothes.Group || clothes.Item]) continue;
+				if (alreadyClothed[clothes.Item || clothes.Group]) continue;
 				data.updateDress = true;
 				if (!noLoss && !clothes.Lost && KDRefreshCharacter.get(Character)) {
 
@@ -553,16 +553,16 @@ function KinkyDungeonDressPlayer (
 
 						let item = KDInventoryWear(Character, clothes.Item, clothes.Group, undefined, 
 							clothes.Color, filters, clothes.Properties, clothes.factionFilters);
-						alreadyClothed[clothes.Group || clothes.Item] = true;
+						alreadyClothed[clothes.Item || clothes.Group] = true;
 						if (item) {
 							if (clothes.OverridePriority) {
 								if (item) {
 									if (!item.Property) item.Property = {OverridePriority: clothes.OverridePriority};
 									else item.Property.OverridePriority = clothes.OverridePriority;
 								}
-							} else if (KDClothOverrides[clothes.Group || clothes.Item] && KDClothOverrides[clothes.Group || clothes.Item][clothes.Item] != undefined) {
-								if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Group || clothes.Item][clothes.Item]};
-								else item.Property.OverridePriority = KDClothOverrides[clothes.Group || clothes.Item][clothes.Item];
+							} else if (KDClothOverrides[clothes.Item || clothes.Group] && KDClothOverrides[clothes.Item || clothes.Group][clothes.Item] != undefined) {
+								if (!item.Property) item.Property = {OverridePriority: KDClothOverrides[clothes.Item || clothes.Group][clothes.Item]};
+								else item.Property.OverridePriority = KDClothOverrides[clothes.Item || clothes.Group][clothes.Item];
 							}
 							if (clothes.Property) item.Property = clothes.Property;
 							// Ignored because BC uses string[] as a type!
@@ -578,7 +578,7 @@ function KinkyDungeonDressPlayer (
 			}
 		} else {
 			for (let clothes of DressList) {
-				if (alreadyClothed[clothes.Group || clothes.Item]) continue;
+				if (alreadyClothed[clothes.Item || clothes.Group]) continue;
 				data.updateDress = true;
 
 				//if (!clothes.Lost) {
@@ -630,7 +630,7 @@ function KinkyDungeonDressPlayer (
 					KDInventoryWear(Character, clothes.Item, clothes.Group, undefined, 
 						clothes.Color, filters, 
 						clothes.Properties, clothes.factionFilters);
-					alreadyClothed[clothes.Group || clothes.Item] = true;
+					alreadyClothed[clothes.Item || clothes.Group] = true;
 				}
 				//}
 
