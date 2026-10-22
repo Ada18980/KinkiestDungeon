@@ -3363,7 +3363,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 				Top: (side ? YY : tooltipY) - 25,
 				Width: size + 20,
 				Height: 48,
-				Color: "#0b0b0b",
+				Color: "#030303",
 				zIndex: 159,
 				alpha: 0.92,
 			});
@@ -4017,7 +4017,7 @@ function KDDrawStruggleGroups() {
 				FillRectKD(kdcanvas, kdpixisprites, "selectedBG", {
 					Left: 510, Top: MY - 20, Width: 740,
 					Height: lastO * lineSize + 40,
-					Color: KDBaseBlack, alpha: 0.7, zIndex: 149
+					Color: KDBaseBlack, alpha: 0.9, zIndex: 149
 				});
 			}
 
