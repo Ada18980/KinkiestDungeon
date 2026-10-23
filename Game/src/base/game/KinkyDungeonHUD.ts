@@ -440,7 +440,8 @@ function KDRenderHotbarTooltip(button: KDButtonParamData) {
 			return;
 		}
 		let inv = KinkyDungeonInventoryGet(button.hoverData);
-		if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), false, true, 0, 0);
+		if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), false, 
+		true, 0, 0, 10);
 		
 	}
 }
@@ -455,7 +456,8 @@ function KDRenderHotbarTooltipSpell(button: KDButtonParamData) {
 			return;
 		}
 
-		KDDrawSpellInfo(true, 0,0, button.hoverData, false);
+		KDDrawSpellInfo(true, 0,0, button.hoverData, 
+			false, 10);
 	}
 }
 
@@ -1172,7 +1174,8 @@ function KDDrawWeaponSwap(x: number, y: number): boolean {
 			})) {
 				if (KDWeapon(KinkyDungeonInventoryGetWeapon(wep))) {
 					let inv = KinkyDungeonInventoryGetWeapon(wep);
-					if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), false, true, 0);
+					if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), 
+					false, true, 0, undefined, 10);
 				}
 				hover = true;
 			}
@@ -1197,7 +1200,8 @@ function KDDrawWeaponSwap(x: number, y: number): boolean {
 	})) {
 		if (KDWeapon(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))) {
 			let inv = KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon);
-			if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), false, true, 0);
+			if (inv) KinkyDungeonDrawInventorySelected(KDGetItemPreview(inv), 
+			false, true, 0, undefined, 10);
 		}
 	}
 	return hover;
@@ -3601,7 +3605,7 @@ function KDDrawStruggleGroups() {
 					|| highlightSG))
 					KinkyDungeonDrawInventorySelected(
 						KDGetItemPreview(currentHighlightedItem || item), false, 
-						true, 700);
+						true, 700, undefined, 10);
 				//}
 
 				if (!KDStruggleGroupHighlightedItem) {
