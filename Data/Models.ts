@@ -99,7 +99,7 @@ function AddModel(Model: Model, Strings?: Record<string, string>) {
 	ModelDefs[Model.Name] = Model;
 	if (Strings) {
 		for (let str of Object.entries(Strings)) {
-			addTextKey("m_" + str[0], str[1]);
+			addTextKeyCareful("m_" + str[0], str[1]);
 		}
 	}
 }

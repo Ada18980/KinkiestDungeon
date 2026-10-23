@@ -33269,6 +33269,9 @@ KDLoreLabelen.mummy,"Mummy"
 KDLoreTexten.meleecleric,"Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows"
 KDLoreTitleen.meleecleric,"Bast Clerics"
 KDLoreLabelen.meleecleric,"Mummy"
+KDLoreTexten.puppeteer,"Danger Level: High, unless you want to be a doll||The organization known as DressUp Co. is known for their highly eager models. What is less known, however, is that quite a few of their models are actually former humans who have been turned into dolls of their own volition.||The transformation is indefinite, as far as one can tell, although some puppetmasters are known to carry a magical potion imbued with the exact inverse of the dollification spell. In theory, reversing the spell's components should turn them back into humans, but most dolls will accept this with extreme reluctance.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.puppeteer,The Puppetmasters
+KDLoreLabelen.puppeteer,Puppetmaster
 RestraintBreastplate,"Breastplate"
 RestraintBreastplateDesc,"Rock-solid and form-fitting."
 RestraintBreastplateDesc2,"Provides minor protection against enemy attacks. Decreases stealth."

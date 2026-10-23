@@ -677,3 +677,9 @@ function addTextKey(Name: string, Text: string) {
 		.getGroupManager()
 		.appendText("default", Name, Text);
 }
+function addTextKeyCareful(Name: string, Text: string) {
+	if (!HasText(Name))
+		textProvider
+			.getGroupManager()
+			.appendText("default", Name, Text);
+}

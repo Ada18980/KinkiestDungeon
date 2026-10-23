@@ -487,9 +487,9 @@ function KinkyDungeonCloneRestraint(clonedName: string, newName: string, props: 
 function KinkyDungeonAddRestraintText(name: string, displayName: string, flavorText: string, functionText: string): void {
 	const baseKey = `Restraint${name}`;
 
-	addTextKey(baseKey, displayName);
-	addTextKey(`${baseKey}Desc`, flavorText);
-	addTextKey(`${baseKey}Desc2`, functionText);
+	addTextKeyCareful(baseKey, displayName);
+	addTextKeyCareful(`${baseKey}Desc`, flavorText);
+	addTextKeyCareful(`${baseKey}Desc2`, functionText);
 }
 
 /**
@@ -502,9 +502,60 @@ function KinkyDungeonDupeRestraintText(restraint: string, newRestraint: string):
 	const oldKey = `Restraint${restraint}`;
 	const baseKey = `Restraint${newRestraint}`;
 
-	addTextKey(baseKey, TextGetKD(oldKey));
-	addTextKey(`${baseKey}Desc`, TextGetKD(`${oldKey}Desc`));
-	addTextKey(`${baseKey}Desc2`, TextGetKD(`${oldKey}Desc2`));
+	addTextKeyCareful(baseKey, TextGetKD(oldKey));
+	addTextKeyCareful(`${baseKey}Desc`, TextGetKD(`${oldKey}Desc`));
+	addTextKeyCareful(`${baseKey}Desc2`, TextGetKD(`${oldKey}Desc2`));
+}
+
+/**
+ * this function was AI generated, but isn't used in the game
+ * run it to get text keys after adding lore, armor items, etc
+ * then paste in Text_KinkyDungeon.csv to enable translation
+ * 
+ * Lists text keys that are in the text cache but not in Text_KinkyDungeon.csv, e.g. keys added at runtime via addTextKey.
+ * Cursed restraint variants are collapsed into their base restraint's keys.
+ * 
+ * @param [log] - Also logs the result to the console as CSV rows, ready to paste into Text_KinkyDungeon.csv
+ * @returns Map of text key to its current (untranslated) value
+ */
+async function KDGetTextKeysMissingFromCSV(log: boolean = true): Promise<Record<string, string>> {
+	const groupId = textProvider.defaultGroupId;
+	const csvPath = textProvider.queryResourceConfig(groupId)[0].original;
+	const csv = await ResourceLoader.load<TextResMap>(csvPath, "original-csv", {});
+	const cache = textProvider.getGroupManager().getGroup(groupId);
+
+	// Restraint<Base><Variant> -> Restraint<Base>
+	let variantKeys: Record<string, string> = {};
+	for (let [base, variants] of Object.entries(KDCursedVariantsCreated)) {
+		for (let v of Object.keys(variants)) {
+			variantKeys["Restraint" + base + v] = "Restraint" + base;
+		}
+	}
+
+	let missing: Record<string, string> = {};
+	for (let [key, value] of cache) {
+		// can ignore shop keys
+		//if (/^dShopBuyItem\d+$/.test(key)) continue;
+		let outKey = key;
+		if (key.startsWith("Restraint")) {
+			// Longest suffix first so Desc2 isn't read as Desc
+			for (let suffix of ["Desc2", "Desc", ""]) {
+				let stem = key.substring(0, key.length - suffix.length);
+				if (key.endsWith(suffix) && variantKeys[stem]) {
+					outKey = variantKeys[stem] + suffix;
+					break;
+				}
+			}
+		}
+		if (csv.has(outKey) || missing[outKey] != undefined) continue;
+		missing[outKey] = cache.has(outKey) ? cache.get(outKey) : value;
+	}
+
+	if (log) {
+		const escape = (s: string) => /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+		console.log(Object.entries(missing).map(([k, v]) => escape(k) + "," + escape(v)).join("\n"));
+	}
+	return missing;
 }
 
 

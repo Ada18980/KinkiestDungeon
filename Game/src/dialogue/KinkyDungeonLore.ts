@@ -836,9 +836,9 @@ function KinkyDungeonHandleLore() {
  * @param [enemy]
  */
 function KDNewLore(tabs: string | string[], id: string, label: string, title: string, text: string, condition?: () => boolean, image?: string, noShow?: string[], enemy?: string) {
-	addTextKey("KDLoreText" + id, text);
-	addTextKey("KDLoreTitle" + id, title);
-	addTextKey("KDLoreLabel" + id, label);
+	addTextKeyCareful("KDLoreText" + id, text);
+	addTextKeyCareful("KDLoreTitle" + id, title);
+	addTextKeyCareful("KDLoreLabel" + id, label);
 
 	if (image) {
 		KDLoreImg[id] = image;
