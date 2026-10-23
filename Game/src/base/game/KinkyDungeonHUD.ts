@@ -3600,7 +3600,8 @@ function KDDrawStruggleGroups() {
 					((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
 					|| highlightSG))
 					KinkyDungeonDrawInventorySelected(
-						KDGetItemPreview(currentHighlightedItem || item), false, true, 700);
+						KDGetItemPreview(currentHighlightedItem || item), false, 
+						true, 700);
 				//}
 
 				if (!KDStruggleGroupHighlightedItem) {
