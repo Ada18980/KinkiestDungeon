@@ -2356,20 +2356,35 @@ function KinkyDungeonDrawGame() {
 				975, 650, 550, 64, TextGet(KDSaveBusy ? "KDSaveBusy"
 				: (KDGameData.CurrentDialog ? "KinkyDungeonRestartQuitInDialogue" : "KinkyDungeonRestartQuitNoErase")
 			), KDBaseWhite, "");
-			DrawButtonVis(975, 800, 550, 64, TextGet("KinkyDungeonRestartCapture" + (KDConfirmDeleteSave ? "Confirm" : "")),  (KDGameData.PrisonerState == 'jail' || !KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) ? "Pink" : KDBaseWhite, "");
-			//DrawButtonVis(975, 900, 550, 64, TextGet("KinkyDungeonRestartYes" + (KDConfirmDeleteSave ? "Confirm" : "")), KDBaseWhite, "");
-			DrawButtonVis(1650, 900, 300, 64, TextGet("KinkyDungeonCheckPerks"), KDBaseWhite, "");
+			DrawButtonKDEx("jailCapture", () => {
+				if (KinkyDungeonIsPlayer() && KDGameData.PrisonerState != 'jail' && KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) {
 
-			/*DrawButtonKDEx("GameConfigKeys", () => {
-				KinkyDungeonState = "Keybindings";
-				if (!KinkyDungeonKeybindings)
-					KDSetDefaultKeybindings();
-				else {
-					KinkyDungeonKeybindingsTemp = {};
-					Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
+					if (KDConfirmDeleteSave) {
+						KDSendInput("defeat", {});
+						KDResetAlternateInventoryRender();
+						KDGoToScreen("Game");
+
+
+						KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+						KinkyDungeonDressPlayer();
+					} else {
+						KDConfirmDeleteSave = true;
+						
+						if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
+					}
 				}
 				return true;
-			}, true, 975, 450, 260, 64, TextGet("GameConfigKeys"), KDBaseWhite, "");*/
+			}, true,
+				975, 800, 550, 64, 
+				TextGet("KinkyDungeonRestartCapture" + (KDConfirmDeleteSave ? "Confirm" : "")),  
+				(KDGameData.PrisonerState == 'jail' ||
+					!KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) ? "Pink" : KDBaseWhite,
+					"");
+			DrawButtonKDEx("chechperks", () => {
+				KDGoToScreen("Perks2");
+				return true;
+			}, true, 1650, 900, 300, 64, TextGet("KinkyDungeonCheckPerks"), KDBaseWhite, "");
+
 			DrawButtonKDEx("GameToggles", () => {
 				KinkyDungeonState = "Toggles";
 				KDOptionFilter = "";

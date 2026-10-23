@@ -394,34 +394,48 @@ function KinkyDungeonDrawHeart() {
 	DrawTextKD(TextGet("StatMana").replace("CURRENT/MAX", "" + KinkyDungeonStatManaMax * KDMaxStatStart), 1250 + 250/2, 650, KDBaseWhite, KDTextGray2);
 	DrawTextKD(TextGet("StatWill").replace("CURRENT/MAX", "" + KinkyDungeonStatWillMax * KDMaxStatStart), 1550 + 250/2, 650, KDBaseWhite, KDTextGray2);
 
-	DrawButtonVis(650, 700, 250, 60, TextGet("KinkyDungeonHeartDistraction"), KinkyDungeonStatDistractionMax < KDMaxStat ? KDBaseWhite : "#999999");
-	DrawButtonVis(950, 700, 250, 60, TextGet("KinkyDungeonHeartStamina"), KinkyDungeonStatStaminaMax < KDMaxStat ? KDBaseWhite : "#999999");
-	DrawButtonVis(1250, 700, 250, 60, TextGet("KinkyDungeonHeartMana"), KinkyDungeonStatManaMax < KDMaxStat ? KDBaseWhite : "#999999");
-	DrawButtonVis(1550, 700, 250, 60, TextGet("KinkyDungeonHeartWill"), KinkyDungeonStatWillMax < KDMaxStat ? KDBaseWhite : "#999999");
+	DrawButtonKDEx("boostdp", () => {
+		KDSendInput("heart", {type: "AP"});
+		KDGoToScreen("Game");
+		return true;
+	}, 
+	CommonTime() > KinkyDungeonDialogueTimer && KinkyDungeonStatDistractionMax < KDMaxStat, 
+	650, 700, 250, 60, TextGet("KinkyDungeonHeartDistraction"),
+	 KinkyDungeonStatDistractionMax < KDMaxStat ? KDBaseWhite : "#999999");
+	DrawButtonKDEx("boostsp", () => {
+		KDSendInput("heart", {type: "SP"});
+		KDGoToScreen("Game");
+		return true;
+	}, 
+	CommonTime() > KinkyDungeonDialogueTimer && KinkyDungeonStatStaminaMax < KDMaxStat, 
+	950, 700, 250, 60, TextGet("KinkyDungeonHeartStamina"), 
+	KinkyDungeonStatStaminaMax < KDMaxStat ? KDBaseWhite : "#999999");
+	DrawButtonKDEx("boostmp", () => {
+		KDSendInput("heart", {type: "MP"});
+		KDGoToScreen("Game");
+		return true;
+	}, 
+	CommonTime() > KinkyDungeonDialogueTimer && KinkyDungeonStatManaMax < KDMaxStat, 
+	1250, 700, 250, 60, TextGet("KinkyDungeonHeartMana"), 
+	KinkyDungeonStatManaMax < KDMaxStat ? KDBaseWhite : "#999999");
+	DrawButtonKDEx("boostwp", () => {
+		KDSendInput("heart", {type: "WP"});
+		KDGoToScreen("Game");
+		return true;
+	}, 
+	CommonTime() > KinkyDungeonDialogueTimer && KinkyDungeonStatWillMax < KDMaxStat, 
+	1550, 700, 250, 60, TextGet("KinkyDungeonHeartWill"), 
+	KinkyDungeonStatWillMax < KDMaxStat ? KDBaseWhite : "#999999");
 
 	DrawButtonKDEx("discardheart", (_bdata) => {
 		KDGoToScreen("Game");
 		return true;
-	}, CommonTime() > KinkyDungeonDialogueTimer, 1000, 850, 450, 60, TextGet("KinkyDungeonHeartDiscard"), KinkyDungeonStatWillMax < KDMaxStat ? KDBaseWhite : "#999999");
+	}, 
+	CommonTime() > KinkyDungeonDialogueTimer, 
+	1000, 850, 450, 60, TextGet("KinkyDungeonHeartDiscard"), KinkyDungeonStatWillMax < KDMaxStat ? KDBaseWhite : "#999999");
 }
 
 function KinkyDungeonHandleHeart() {
-	if (CommonTime() > KinkyDungeonDialogueTimer) {
-		if (MouseIn(650, 700, 250, 60) && KinkyDungeonStatDistractionMax < KDMaxStat) {
-			KDSendInput("heart", {type: "AP"});
-			KDGoToScreen("Game");
-		} else if (MouseIn(950, 700, 250, 60) && KinkyDungeonStatStaminaMax < KDMaxStat) {
-			KDSendInput("heart", {type: "SP"});
-			KDGoToScreen("Game");
-		} else if (MouseIn(1250, 700, 250, 60) && KinkyDungeonStatManaMax < KDMaxStat) {
-			KDSendInput("heart", {type: "MP"});
-			KDGoToScreen("Game");
-		} else if (MouseIn(1550, 700, 250, 60) && KinkyDungeonStatWillMax < KDMaxStat) {
-			KDSendInput("heart", {type: "WP"});
-			KDGoToScreen("Game");
-		}
-	}
-
 
 	return true;
 }

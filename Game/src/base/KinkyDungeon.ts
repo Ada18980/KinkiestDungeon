@@ -1871,9 +1871,18 @@ function KinkyDungeonRun() {
 			DrawTextKD(c, 550, 25 + 40 * i, KDBaseWhite, KDTextGray2, undefined, "left");
 			i++;
 		}
+		DrawButtonKDEx("creditsback", (_bdata) => {
+			KinkyDungeonState = "Menu";
+			return true;
+		}, true, 1870, 930, 110, 64, 
+		TextGet("KinkyDungeonBack"), KDBaseWhite, "");
+		DrawButtonKDEx("creditsnext", (_bdata) => {
+			if (KinkyDungeonCreditsPos < 1) KinkyDungeonCreditsPos += 1;
+			else KinkyDungeonCreditsPos = 0;
+			return true;
+		}, true, 1730, 930, 110, 64, 
+		TextGet("KinkyDungeonNext"), KDBaseWhite, "");
 
-		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), KDBaseWhite, "");
-		DrawButtonVis(1730, 930, 110, 64, TextGet("KinkyDungeonNext"), KDBaseWhite, "");
 	} else if (KinkyDungeonState == "Patrons") {
 		let credits = KDPatrons;//TextGet("KinkyDungeonPatronsList" + x).split(/\||\\n|\n/);
 		DrawTextKD(TextGet("KinkyDungeonPatronsList"), 550, 25, KDBaseWhite, KDTextGray2, undefined, "left");
@@ -1881,7 +1890,7 @@ function KinkyDungeonRun() {
 		let iter = 1;
 		let height = 30;
 		let maxPatron = Math.floor(975/height);
-		let maxcolumn = 6;
+		let maxcolumn = 4;
 		let colwidth = 250;
 		for (let i = KinkyDungeonPatronPos * maxPatron; i < credits.length; i++) {
 			let c = credits[i];
@@ -1896,7 +1905,11 @@ function KinkyDungeonRun() {
 		}
 
 
-		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), KDBaseWhite, "");
+		DrawButtonKDEx("patronback", (_bdata) => {
+			KinkyDungeonState = "Menu";
+			return true;
+		}, true, 1870, 930, 110, 64, 
+		TextGet("KinkyDungeonBack"), KDBaseWhite, "");
 		DrawButtonKDEx("patronnext", (_bdata) => {
 			if (KinkyDungeonPatronPos * maxPatron < credits.length - maxPatron) KinkyDungeonPatronPos += 1;
 			else KinkyDungeonPatronPos = 0;
@@ -1919,7 +1932,12 @@ function KinkyDungeonRun() {
 		if (KDSaveBusy) {
 			DrawTextKD(TextGet("KDSaveBusyMenu"), 1000, 500, KDBaseWhite, KDTextGray2);
 		} else {
-			DrawCheckboxVis(1700, 25, 64, 64, TextGet("KDToggleSound"), KDSoundEnabled(), false, KDBaseWhite);
+			DrawCheckboxKDEx("soundToggle", (_bada) => {
+				KDToggles.Sound = !KDToggles.Sound;
+				KDSaveToggles();
+				return true;
+			}, 
+			!KDSaveBusy, 1700, 25, 64, 64, TextGet("KDToggleSound"), KDSoundEnabled(), false, KDBaseWhite);
 			// Draw temp start screen
 			if (KDLose) {
 				DrawTextKD(TextGet("End"), 1000, 250, KDBaseWhite, KDTextGray2);
@@ -2080,13 +2098,28 @@ function KinkyDungeonRun() {
 
 			KDDrawWardrobeButton();
 
-			DrawButtonVis(1850, 942, 135, 50, TextGet("KinkyDungeonCredits"), KDBaseWhite, "");
-			DrawButtonVis(1700, 942, 135, 50, TextGet("KinkyDungeonPatrons"), KDBaseWhite, "");
 
-
-
+			DrawButtonKDEx("menucredits", (_bdata) => {
+				KinkyDungeonState = "Credits";
+				return true;
+			}, !KDSaveBusy, 1850, 942, 135, 50, TextGet("KinkyDungeonCredits"), KDBaseWhite, "");
+			DrawButtonKDEx("menupatrons", (_bdata) => {
+				KinkyDungeonState = "Patrons";
+				return true;
+			}, !KDSaveBusy, 1700, 942, 135, 50, TextGet("KinkyDungeonPatrons"), KDBaseWhite, "");
+			
+			
 			DrawTextKD(TextGet("Language") + " ->", 1675, 898, KDBaseWhite, KDTextGray2, undefined, "right");
-			DrawButtonVis(1700, 874, 280, 50, localStorage.getItem("BondageClubLanguage") || "EN", KDBaseWhite, "");
+			DrawButtonKDEx("menulanguage", (_bdata) => {
+				let langIndex = KDLanguages.indexOf(localStorage.getItem("BondageClubLanguage")) || 0;
+				let newIndex = (langIndex + 1) % KDLanguages.length;
+				localStorage.setItem("BondageClubLanguage", KDLanguages[newIndex]);
+				localStorage.setItem("LanguageChange", "1");
+				KDRestart = true;
+				return true;
+			}, !KDSaveBusy, 1700, 874, 280, 50, localStorage.getItem("BondageClubLanguage") || "EN", KDBaseWhite, "");
+
+
 
 
 			if (KDPatched) {
@@ -6510,21 +6543,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 		KinkyDungeonExit();
 		return true;
 	}
-	if (KinkyDungeonState == "Credits") {
-		if (MouseIn(1870, 930, 110, 64)) {
-			KinkyDungeonState = "Menu";
-			return true;
-		}
-		if (MouseIn(1730, 930, 110, 64)) {
-			if (KinkyDungeonCreditsPos < 1) KinkyDungeonCreditsPos += 1;
-			else KinkyDungeonCreditsPos = 0;
-		}
-	} if (KinkyDungeonState == "Patrons") {
-		if (MouseIn(1870, 930, 110, 64)) {
-			KinkyDungeonState = "Menu";
-			return true;
-		}
-	} else if (KinkyDungeonState == "Journey") {
+	if (KinkyDungeonState == "Journey") {
 		if (MouseIn(875, 350, 750, 64)) {
 			KDJourney = "";
 			KinkyDungeonState = "Stats";
@@ -6628,32 +6647,11 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 			// Nothing!
 		} else {
 
-			if (MouseIn(1700, 25, 64, 64)) {
-				KDToggles.Sound = !KDToggles.Sound;
-				KDSaveToggles();
-			}
 
 			if (MouseIn(1100, 150, 100, 100)) {
 				TestMode = !TestMode;
 			}
 
-			if (MouseIn(1700, 874, 280, 50)) {
-				let langIndex = KDLanguages.indexOf(localStorage.getItem("BondageClubLanguage")) || 0;
-				let newIndex = (langIndex + 1) % KDLanguages.length;
-				localStorage.setItem("BondageClubLanguage", KDLanguages[newIndex]);
-				localStorage.setItem("LanguageChange","1")
-				KDRestart = true;
-				return true;
-			}
-
-			if (MouseIn(1850, 930, 135, 64)) {
-				KinkyDungeonState = "Credits";
-				return true;
-			}
-			if (MouseIn(1700, 930, 135, 64)) {
-				KinkyDungeonState = "Patrons";
-				return true;
-			}
 		}
 
 	} else if (KinkyDungeonState == "Save") {

@@ -325,26 +325,6 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 
 
 
-	if (!KDPatched) DrawButtonKDEx("quitbutton", (_b) => {
-		KDGoToScreen("Restart");
-		KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
-		if (KDDebugMode) {
-			ElementCreateTextArea("DebugEnemy");
-			ElementValue("DebugEnemy", "Maidforce");
-			ElementCreateTextArea("DebugItem");
-			ElementValue("DebugItem", "TrapArmbinder");
-		} else {
-			if (document.getElementById("DebugEnemy")) {
-				ElementRemove("DebugEnemy");
-			}
-			if (document.getElementById("DebugItem")) {
-				ElementRemove("DebugItem");
-			}
-		}
-		return true;
-	}, true, 1750, 20, 100, 50, TextGet("KinkyDungeonRestart"), KDBaseWhite);
-
-
 
 
 	if (!KDToggles.TransparentUI) {
@@ -2038,36 +2018,12 @@ function KinkyDungeonHandleHUD() {
 			}
 		}
 
-		if (MouseIn(1650, 900, 300, 64)) {
-			KDGoToScreen("Perks2");
-			return true;
-		}
-
 		//if (MouseIn(600, 650, 64, 64)) {
 		//KinkyDungeonFastWait = !KinkyDungeonFastWait;
 		//return true;
 		//}
 		// Done, converted to input
-		if (KinkyDungeonIsPlayer() && MouseIn(975, 800, 550, 64) && KDGameData.PrisonerState != 'jail' && KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) {
-
-			if (KDConfirmDeleteSave) {
-				KDSendInput("defeat", {});
-				KDResetAlternateInventoryRender();
-				KDGoToScreen("Game");
-
-
-				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-				KinkyDungeonDressPlayer();
-			} else {
-				KDConfirmDeleteSave = true;
-				
-                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
-			}
-			return true;
-		}
-		if (MouseIn(975, 550, 550, 64)) {
-			
-		}
+		
 		KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
 		return true;
 	}

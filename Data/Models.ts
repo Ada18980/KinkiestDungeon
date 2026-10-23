@@ -1908,7 +1908,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 							KDAdjustmentFilterCache.delete(containerID + FilterHash(ef));
 						}
 						f = KDAdjustmentFilterCache.get(efh) ? null : KDGetFilter(ef);
-						f.multisample = 0;
+						if (f)
+							f.multisample = 0;
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
 							KDAdjustmentFilterCache.set(containerID + FilterHash(ef), efilter);

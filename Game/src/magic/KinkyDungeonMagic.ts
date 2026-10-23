@@ -1670,7 +1670,7 @@ function KinkyDungeonHandleMagic(): boolean {
 	let xOffset = -125;
 
 
-	if (KinkyDungeonSpells[KinkyDungeonCurrentPage] && !KinkyDungeonPreviewSpell) {
+	/*if (KinkyDungeonSpells[KinkyDungeonCurrentPage] && !KinkyDungeonPreviewSpell) {
 
 		if (MouseIn(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale * 0.5 - 175, canvasOffsetY_ui - 55 + 483*KinkyDungeonBookScale, 375, 45)) {
 			KDSendInput("spellCastFromBook", {CurrentSpell: KinkyDungeonCurrentPage});
@@ -1687,7 +1687,7 @@ function KinkyDungeonHandleMagic(): boolean {
 		if (KinkyDungeonPreviewSpell.hideLearned) KDGoToScreen("MagicSpells");
 		KDSendInput("spellLearn", {SpellName: KinkyDungeonPreviewSpell.name});
 		return true;
-	}
+	}*/
 
 	KDConfirmClearSpells = false;
 
@@ -3157,21 +3157,39 @@ function KDDrawSpellInfo(showbg: boolean, xOffset: number, yOffset: number, spel
 
 			if (!spell.passive && !(spell.type == "passive") && !spell.upcastFrom)
 				// Castfrombook
-				DrawButtonVis(
+				DrawButtonKDEx("spellcastfrombook", (_bdata) => {
+					KDSendInput("spellCastFromBook", {CurrentSpell: KinkyDungeonCurrentPage});
+					KinkyDungeonTargetingSpellItem = null;
+					KinkyDungeonTargetingSpellWeapon = null;
+					KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast(KinkyDungeonSpells[KinkyDungeonCurrentPage]);
+					KDModalArea = false;
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = null;
+					KDGoToScreen("Game");
+					KDResetAlternateInventoryRender();
+					KDConfirmClearSpells = false;
+					return true;
+				}, true, 
 					canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale * 0.5 - 175, 
 					canvasOffsetY_ui + yOffset - 55 + 483*KinkyDungeonBookScale, 375, 45, TextGet("KinkyDungeonSpellCastFromBook")
 					.replace("XXX", KinkyDungeonStatsChoice.has("Disorganized") ? "3" : (KinkyDungeonStatsChoice.has("QuickDraw") ? "No" : "1")), KDBaseWhite, "", "", 
-					false, true, KDButtonColor, undefined, undefined, undefined,
-					zIndexOffset + 130);
+					false, true, KDButtonColor, undefined, undefined, 
+					{zIndex: zIndexOffset + 130});
 		} else if (showExtra) {
 			let cost = KinkyDungeonGetCost(spell);
-			DrawButtonVis(
+
+			
+			DrawButtonKDEx("spellbuy", (_bdata) => {
+				if (KinkyDungeonPreviewSpell.hideLearned) KDGoToScreen("MagicSpells");
+				KDSendInput("spellLearn", {SpellName: KinkyDungeonPreviewSpell.name});
+				return true;
+			}, true, 
 				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40, 
 				canvasOffsetY_ui + yOffset + 125, 225, 60, TextGet("KinkyDungeonSpellsBuy"),
 				(KinkyDungeonSpellPoints >= cost && KinkyDungeonCheckSpellPrerequisite(spell)) ? KDBaseWhite : "Pink", "",
 				"", undefined, undefined, undefined, 
-				undefined, undefined, undefined,
-				zIndexOffset + 130);
+				undefined, undefined, 
+				{zIndex: zIndexOffset + 130});
 		}
 	}
 }
