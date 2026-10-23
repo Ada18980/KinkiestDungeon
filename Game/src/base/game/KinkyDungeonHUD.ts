@@ -2236,7 +2236,8 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 	}); bindex++; bInc();}
 
 	{let bb = bindex;
-	let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", "" + KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
+	let numtext = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonN").replace("N", "" + KinkyDungeonNewLoreList.length): "";
+	let logtxt = TextGet( "KinkyDungeonLogbook");
 	if (skip == bindex) logtxt = TextGet("KDNavGame");
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goLog", (_bdata) => {
 		KDResetAlternateInventoryRender();
@@ -2252,9 +2253,11 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		KinkyDungeonDressPlayer();
 		return true;
 	}, true, bx, by, bwidth, bheight, 
-	NoButtonText ? "" : logtxt, KDBaseWhite,
-	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_logbook.png"), undefined, undefined, false, "", 24, true, {
+	logtxt, KDBaseWhite,
+	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_logbook.png"), 
+	undefined, undefined, false, "", 24, !NoButtonText, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[3]),
+		subtitle: numtext
 	}); bindex++; bInc();}
 	{let bb = bindex;
 	if (KDGameData.Collection && Object.entries(KDGameData.Collection).length > 0) {

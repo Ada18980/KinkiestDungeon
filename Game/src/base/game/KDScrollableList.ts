@@ -148,7 +148,6 @@ function KDScrollScrollableList(name: string, amount: number) {
 	}
 	return list.index != origIndex;
 }
-
 let KDCurrentScrollableListHover: KDScrollableListData = null;
 
 function KDUpdateScrollableLists(delta: number) {
@@ -200,7 +199,9 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	isSelected: boolean,
 	selectedIndex: number,
 	list: KDScrollableListData) => boolean, drawBG = true, horizontal = false, scrollbarSize = 36,
-	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string, pad: number = 4, scrollButtons: boolean = true, scrollbarSize2 = undefined, scrollBarColor?: string, scrollbarClickable: boolean = true): any {
+	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string, pad: number = 4,
+	scrollButtons: boolean = true, scrollbarSize2 = undefined, scrollBarColor?: string, scrollbarClickable: boolean = true,
+	scrollCallback?: (items: any[], listItemTo: number, index: number, amount: number) => boolean): any {
 	let list = KDScrollableListDataset[name];
 	let container = kdcanvas;
 
@@ -331,9 +332,8 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			undefined,
 			undefined,
 			{
-				centered: true,
 				hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
-				hotkeyPress: scrollhotkeyUp,
+				centered: true,
 			},
 		);
 
@@ -357,10 +357,11 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			{
 				centered: true,
 				hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
-				hotkeyPress: scrollhotkeyDown,
 			}
 		);
 	}
+
+	
 
 	const tabThickness = Math.min(gutterW, gutterH);
 	const tabMinLength = tabThickness;
@@ -532,6 +533,56 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			}
 		}
 		
+	}
+
+
+	
+	if (scrollCallback) {
+		if (scrollhotkeyUp)
+			DrawButtonKDEx(
+				name + "upscrollbtn", () => scrollCallback(list.items, selected, list.selectedindex, -1), true,
+				PIXIWidth,
+				PIXIHeight,
+				10,
+				10,
+				"",
+				KDBaseWhite,
+				``,
+				undefined,
+				undefined,
+				true,
+				undefined,
+				undefined,
+				undefined,
+				{
+					hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
+					hotkeyPress: scrollhotkeyUp,
+				},
+			);
+
+		if (scrollhotkeyDown)
+			DrawButtonKDEx(
+				name + "downscrollbtn",
+				() => scrollCallback(list.items, selected, list.selectedindex, 1),
+				true,
+				PIXIWidth,
+				PIXIHeight,
+				10,
+				10,
+				"",
+				KDBaseWhite,
+				``,
+				undefined,
+				undefined,
+				true,
+				undefined,
+				undefined,
+				undefined,
+				{
+					hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
+					hotkeyPress: scrollhotkeyDown,
+				}
+			);
 	}
 
 

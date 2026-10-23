@@ -240,5 +240,11 @@ KDNewLore(["Enemy", 'tmb'], "en.meleecleric", "Mummy",
 	undefined, "Enemies/MeleeCleric.png|EnemiesBound/Cleric.png|Enemies/MeleeCleric.png|EnemiesBound/Cleric.png", ['tmb'], "Cleric"
 );
 
+KDNewLore(["Enemy", 'lib'], "en.puppeteer", "Puppetmaster",
+	"The Puppetmasters",
+	"Danger Level: High, unless you want to be a doll|The organization known as DressUp Co. is known for their highly eager models. What is less known, however, is that quite a few of their models are actually former humans who have been turned into dolls of their own volition.||The transformation is indefinite, as far as one can tell, although some puppetmasters are known to carry a magical potion imbued with the exact inverse of the dollification spell. In theory, reversing the spell's components should turn them back into humans, but most dolls will accept this with extreme reluctance.||-Denizens of the Dungeon by Catherine Willows",
+	undefined, "Enemies/Puppetmaster.png|Enemies/Puppeteer.png|EnemiesBound/PuppetLost.png|EnemiesBound/Puppetmaster.png", ['lib'], "Puppetmaster"
+);
+
 
 KinkyDungeonUpdateTabs(localStorage.getItem("kdexpLore") ? JSON.parse(localStorage.getItem("kdexpLore")) : {Cover: 1});

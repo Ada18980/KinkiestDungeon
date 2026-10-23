@@ -3815,6 +3815,7 @@ KinkyDungeonDropKeyCard,"You insert the card the wrong way and the reader ejects
 
 KinkyDungeonLogbook,Journal
 KinkyDungeonLogbookN,Journal (N)
+KinkyDungeonN,(N)
 KinkyDungeonAutoPassOn,"Passing..."
 KinkyDungeonAutoPassOff,"Pass NPCs"
 KinkyDungeonAutoDoorOn,"Closing..."

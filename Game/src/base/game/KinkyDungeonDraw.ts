@@ -4147,6 +4147,9 @@ type ButtonOptions = {
 	/// hotkey
 	hotkey?:      string;
 	/// hotkey
+	subtitle?:      string;
+	
+	/// hotkey
 	hotkeyPress?: string;
 	/** wraps the text if its too big */
 	wrap?: boolean,
@@ -4364,6 +4367,15 @@ function DrawButtonVisTo (
 			(options && options.noTextBG) ? "none" : undefined,
 			size, "right", zIndex + 0.02, options?.textalpha, undefined, 
 			undefined, KDButtonFont, undefined, name ? name + "_|||hotkey" : undefined);
+	}
+	if (options?.subtitle) {
+		let size = (FontSize*0.6) || 14;
+		DrawTextFitKDTo(Container || kdcanvas, options?.subtitle, Left + Width - 4,
+			Top + Height - (size / 2) - 2, Width*0.7,
+			KDBaseVLightGrey,
+			(options && options.noTextBG) ? "none" : undefined,
+			size, "right", zIndex + 0.02, options?.textalpha, undefined, 
+			undefined, KDButtonFont, undefined, name ? name + "_|||sub" : undefined);
 	}
 }
 
