@@ -6968,6 +6968,7 @@ AttackName 击中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害, 伤�
 魔法锁只接受魔法钥匙，且不能被撬开。
 - The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
 魔法锁被强大的魔法守护着。你得等待它自行消退...
+# - The magical lock bears a contractual obligation. You'll have to wait for it to wear off...
 - The item is cybernetically locked. You will need a key card to unlock it.
 该物品被电子控制锁定。你需要一张钥匙卡才能解锁它。
 # :: KinkyDungeonStruggleUnlockNoCyberKey
@@ -12141,6 +12142,9 @@ RestraintName 上的诅咒解除了！
 # :: m_LatexCorsetFullStrapRestraint_l_Bra
 # :: m_LatexCorsetFullCrossRestraint_l_Bra
 # :: m_LatexCorsetFullCrossRestraint_l_Bra
+# :: m_GothicBra_l_Bra
+# :: m_GothicBraFrills_l_Bra
+# :: m_TransparentRobeBra_l_Bra
 - Belt
 腰带
 :: KinkyDungeonGroupItemPelvis
@@ -15500,7 +15504,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 你无助地爬行！
 - You crawl helplessly, feeling the plugs shifting around inside you.
 你无助地爬行，感觉塞子在你体内移动。
-- You crawl and feel the plugs inside you rub around teasingly...
+- You crawl and feel the plugs rubbing inside you...
 你爬行并感觉到你体内的塞子戏弄地摩擦着......
 - You crawl helplessly, tormented by the massive plugs inside you...
 你无助地爬行，被你体内的巨大塞子折磨着......
@@ -40089,6 +40093,8 @@ Aura刘海(右后)
 # :: m_LatexDollMittsLong_l_Straps
 # :: m_LatexDollMittsLong_l_Straps
 # :: m_LatexDollMittsLong_l_Straps
+# :: m_GothicBra_l_Straps
+# :: m_GothicBraFrills_l_Straps
 # :: m_HighSecCollarRestraint_l_Straps
 - Base
 基础部分
@@ -40130,6 +40136,7 @@ Aura刘海(右后)
 # :: m_VibePiercings_l_Base
 # :: m_VibePiercingsRestraint_l_Base
 # :: m_VibePiercingsRestraint_l_Base
+# :: m_PantiesBow_l_Base
 - Lines
 线条
 # :: m_Panties_l_Lines
@@ -42282,6 +42289,7 @@ Vents发型
 # :: m_PantiesBowStriped_l_Seams
 # :: m_PantiesHigh_l_Seams
 # :: m_PantiesHighStriped_l_Seams
+# :: m_PantiesBow_l_Seams
 # - InnerEars
 # :: m_BunnyEars_l_InnerEars
 # :: m_KittyEars_l_InnerEars
@@ -42720,6 +42728,8 @@ Vents发型
 :: m_Dress_l_Lace
 内裤蕾丝边
 # :: m_BindingDress_l_Lace
+# :: m_GothicBra_l_Lace
+# :: m_GothicPanties_l_Lace
 - Lens
 镜片
 # :: m_Glasses_l_Lens
@@ -44894,6 +44904,40 @@ Aura刘海
 # :: m_DollStand_l_DollStand
 # :: m_DollStandSpreader_l_DollStand
 # - DollStandSpreader
+
+# - GothicBra
+# - Edges
+# - Lacing
+# :: m_GothicBra_l_Lacing
+# :: m_GothicBraFrills_l_Lacing
+# - Bows
+# :: m_GothicBra_l_Bows
+# :: m_GothicBraFrills_l_Bows
+# - GothicBraFrills
+# - Frills
+# :: m_GothicBraFrills_l_Frills
+# :: m_GothicPantiesFrill_l_Frills
+# - GothicPanties
+# - Under/Panties
+# :: m_GothicPanties_l_Under/Panties
+# :: m_GothicPantiesFrill_l_Under/Panties
+# - SideLace
+# :: m_GothicPanties_l_SideLace
+# :: m_GothicPantiesFrill_l_SideLace
+# - BowCenter
+# :: m_GothicPanties_l_BowCenter
+# :: m_GothicPantiesFrill_l_BowCenter
+# - BowLeft
+# :: m_GothicPanties_l_BowLeft
+# :: m_GothicPantiesFrill_l_BowLeft
+# - BowRight
+# :: m_GothicPanties_l_BowRight
+# :: m_GothicPantiesFrill_l_BowRight
+# - Doily
+# :: m_GothicPanties_l_Doily
+# :: m_GothicPantiesFrill_l_Doily
+# - GothicPantiesFrill
+# - TransparentRobeBra
 
 
 
@@ -47219,11 +47263,11 @@ LKTYP 锁锁在了你的一个拘束具上！
 - Pass thru special NPCs
 绕过特殊NPC
 
-- Stop when enemies are first sighted
+- Stop when entering danger
 第一眼看到敌人时停止
 - Suppress during combat
 战斗中压制
-- Step during combat
+- Single step during combat
 战斗中的步骤
 
 - 0.1s/turn
