@@ -164,85 +164,85 @@ KDNewLore(["Ejahl", 'tmp'], "EJ2", "Ejahl 2",
 
 KDNewLore(["Enemy", 'grv'], "en.BlindZombie", "Zombie",
 	"Zombie",
-	"Danger Level: Nearly Harmless|A reanimated corpse from before the Great Work. I can't tell if the original soul still inhabits the body, since it can barely speak let alone explain its identity.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: Nearly Harmless||A reanimated corpse from before the Great Work. I can't tell if the original soul still inhabits the body, since it can barely speak let alone explain its identity.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/BlindZombie.png|EnemiesBound/Zombie.png", ['grv'], "BlindZombie"
 );
 KDNewLore(["Enemy", 'grv'], "en.FastZombie", "Fast Z.",
 	"Angry Zombie",
-	"Danger Level: Normal|These zombies are more motivated than the others. Their behavior is similar to that of vengeful spirits I've encountered in the depths.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: Normal||These zombies are more motivated than the others. Their behavior is similar to that of vengeful spirits I've encountered in the depths.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/FastZombie.png|EnemiesBound/FastZombie.png", ['grv'], "FastZombie"
 );
 
 KDNewLore(["Enemy", 'grv'], "en.MageZombie", "Mage Z.",
 	"Mage Zombie",
-	"Danger Level: Normal|A zombie that can use magic. It doesn't look like any magic I've seen outside the ruins, which makes me think that it was taught to use magic. Some of them have tattoos associated with magic in the old times. Since magic comes from the soul, I assume there is some hint of the original soul still present.|-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: Normal||A zombie that can use magic. It doesn't look like any magic I've seen outside the ruins, which makes me think that it was taught to use magic. Some of them have tattoos associated with magic in the old times. Since magic comes from the soul, I assume there is some hint of the original soul still present.|-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/MageZombie.png|EnemiesBound/MageZombie.png", ['grv'], "MageZombie"
 );
 KDNewLore(["Enemy", 'grv'], "en.SamuraiZombie", "Warrior Z.",
 	"Warrior Zombie",
-	"Danger Level: High|A zombie with impeccable sword technique. I've never seen an undead handle a sword so smoothly. Probably buried with their weapons and gear, since most of it is aged. Even their binding techniques resemble those in the textbooks rather than modern ropework.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: High||A zombie with impeccable sword technique. I've never seen an undead handle a sword so smoothly. Probably buried with their weapons and gear, since most of it is aged. Even their binding techniques resemble those in the textbooks rather than modern ropework.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/SamuraiZombie.png|EnemiesBound/SamuraiZombie.png", ['grv'], "SamuraiZombie"
 );
 KDNewLore(["Enemy", 'grv'], "en.TalismanZombie", "Talisman Z.",
 	"Talisman Zombie",
-	"Danger Level: High|A zombie that uses sealing charms and healing magic. Irony aside, I've seen these with rope marks and gag strap marks on their skin and face. It seems like someone is playing with them. Who could that be?||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: High||A zombie that uses sealing charms and healing magic. Irony aside, I've seen these with rope marks and gag strap marks on their skin and face. It seems like someone is playing with them. Who could that be?||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/TalismanZombie.png|EnemiesBound/TalismanZombie.png", ['grv'], "FastZombie"
 );
 KDNewLore(["Enemy", 'grv'], "en.Ghost", "Ghost",
 	"Ghost",
-	"Danger Level: Annoying|A playful spirit residing in the dungeon, taking advantage of any adventurers they come across. They can pass through walls, and most physical weapons go right through them. Using a magical weapon seems to banish them for some time, at least.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: Annoying||A playful spirit residing in the dungeon, taking advantage of any adventurers they come across. They can pass through walls, and most physical weapons go right through them. Using a magical weapon seems to banish them for some time, at least.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/Ghost.png", ['grv'], "Ghost"
 );
 KDNewLore(["Enemy", 'grv'], "en.Poltergeist", "Poltergeist",
 	"Poltergeist",
-	"Danger Level: Very Annoying|It is said that ghosts are the spirits of pre-Great Work humans whose souls are bound to this world by unfinished dreams and ambitions. But I don't believe a word of that. These little guys care about nothing except humiliating people. Ask me how I know.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: Very Annoying||It is said that ghosts are the spirits of pre-Great Work humans whose souls are bound to this world by unfinished dreams and ambitions. But I don't believe a word of that. These little guys care about nothing except humiliating people. Ask me how I know.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/Poltergeist.png|Enemies/GagGeist.png", ['grv'], "Poltergeist"
 );
 KDNewLore(["Enemy", 'cat'], "en.TickleTerror", "Tickle Terror",
 	"Tickle Terror",
-	"Danger Level: Medium|A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: Medium||A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/TickleTerror.png", ['cat'], "TickleTerror"
 );
 KDNewLore(["Enemy", 'cat'], "en.GreedyGhast", "Greedy Ghast",
 	"Greedy Ghast",
-	"Danger Level: Low|The feelings of a person who desired wealth in life. While it is unable to claim any physical wealth for itself, it nonetheless will rummage through your pockets and possessions if it gets a chance.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: Low||The feelings of a person who desired wealth in life. While it is unable to claim any physical wealth for itself, it nonetheless will rummage through your pockets and possessions if it gets a chance.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/GreedyGhast.png", ['cat'], "GreedyGhast"
 );
 KDNewLore(["Enemy", 'cat'], "en.HugHorror", "Hug Horror",
 	"Hug Horror",
-	"Danger Level: High|A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: High||A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/HugHorror.png", ['cat'], "HugHorror"
 );
 
 
 KDNewLore(["Enemy", 'lib'], "en.Witches", "Witches",
 	"The Witches' Coven",
-	"Danger Level: High|While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: High||While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/WitchFlame.png|Enemies/WitchWater.png|Enemies/WitchEarth.png|Enemies/WitchShock.png|Enemies/WitchIce.png|Enemies/WitchSlime.png|Enemies/WitchRope.png|Enemies/WitchChain.png", ['lib'], "WitchFlame"
 );
 
 
 KDNewLore(["Enemy", 'lib'], "en.Conjure", "Conjurer",
 	"Master Conjurer",
-	"Danger Level: Extreme|A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: Extreme||A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/Frog.png|Enemies/ConjurerTickler.png|EnemiesBound/ConjurerTickler.png|EnemiesBound/Conjurer.png|Enemies/TickleHand.png|Enemies/Book.png", ['lib'], "HugHorror"
 );
 
 
 KDNewLore(["Enemy", 'tmb'], "en.mummy", "Mummy",
 	"Bast Mummy",
-	"Danger Level: High|They appear to be influential figures in the ancient Bast cult. Not only are they able to wield explosive magics, they can conjure magical wrappings at close range.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: High||They appear to be influential figures in the ancient Bast cult. Not only are they able to wield explosive magics, they can conjure magical wrappings at close range.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/Mummy.png|EnemiesBound/Mummy.png", ['tmb'], "Mummy"
 );
 KDNewLore(["Enemy", 'tmb'], "en.meleecleric", "Mummy",
 	"Bast Clerics",
-	"Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: Medium||Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/MeleeCleric.png|EnemiesBound/Cleric.png|Enemies/MeleeCleric.png|EnemiesBound/Cleric.png", ['tmb'], "Cleric"
 );
 
 KDNewLore(["Enemy", 'lib'], "en.puppeteer", "Puppetmaster",
 	"The Puppetmasters",
-	"Danger Level: High, unless you want to be a doll|The organization known as DressUp Co. is known for their highly eager models. What is less known, however, is that quite a few of their models are actually former humans who have been turned into dolls of their own volition.||The transformation is indefinite, as far as one can tell, although some puppetmasters are known to carry a magical potion imbued with the exact inverse of the dollification spell. In theory, reversing the spell's components should turn them back into humans, but most dolls will accept this with extreme reluctance.||-Denizens of the Dungeon by Catherine Willows",
+	"Danger Level: High, unless you want to be a doll||The organization known as DressUp Co. is known for their highly eager models. What is less known, however, is that quite a few of their models are actually former humans who have been turned into dolls of their own volition.||The transformation is indefinite, as far as one can tell, although some puppetmasters are known to carry a magical potion imbued with the exact inverse of the dollification spell. In theory, reversing the spell's components should turn them back into humans, but most dolls will accept this with extreme reluctance.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/Puppetmaster.png|Enemies/Puppeteer.png|EnemiesBound/PuppetLost.png|EnemiesBound/Puppetmaster.png", ['lib'], "Puppetmaster"
 );
 

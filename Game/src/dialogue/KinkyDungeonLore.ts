@@ -378,7 +378,7 @@ function KinkyDungeonDrawLore() {
 		}
 
 		let extra = 5;
-		let YY = canvasOffsetY_ui - 20 + 400*KinkyDungeonLoreScale;
+		let YY = canvasOffsetY_ui - 20 + h;
 		TooltipList.forEach((listItem) => {
 			YY -= (extra + listItem.size);
 		});
@@ -551,7 +551,7 @@ function KDDrawLoreList(x: number, y: number, w: number, h: number) {
 
 		if (loreNum)
 
-			DrawButtonKDEx("loreItem" + loreNum, (_b) => {
+			DrawButtonKDExTo(container, "loreItem" + loreNum, (_b) => {
 					KDUpdateLore = true;
 					KinkyDungeonCurrentLore = loreNum;
 					return true;

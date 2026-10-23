@@ -334,6 +334,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			{
 				hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
 				centered: true,
+				zIndex: (container.zIndex || 0) + 0.1
 			},
 		);
 
@@ -357,6 +358,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			{
 				centered: true,
 				hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
+				zIndex: (container.zIndex || 0) + 0.1
 			}
 		);
 	}
@@ -557,6 +559,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 				{
 					hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
 					hotkeyPress: scrollhotkeyUp,
+					zIndex: (container.zIndex || 0) + 0.1
 				},
 			);
 
@@ -581,6 +584,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 				{
 					hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
 					hotkeyPress: scrollhotkeyDown,
+					zIndex: (container.zIndex || 0) + 0.1
 				}
 			);
 	}
