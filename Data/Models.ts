@@ -2162,11 +2162,13 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					if (!f) break;
 					let sprite: PIXISprite = (f as any).maskSprite;
 					if (sprite) {
-						if (!spr.destroyed && spr?.getBounds().intersects(sprite.getBounds())) {
+						if (!spr.destroyed && !sprite.destroyed && spr?.getBounds().intersects(sprite.getBounds())) {
 							if (!cc.getChildByName(sprite.name))
 								cc.addChild(sprite);
 						} else {
 							filters.splice(i, 1); // remove the filter to speed rendering
+							if (sprite.destroyed)
+								KDFilterCacheToDestroy.push(f); // this filter is slated to be destroyed
 							i--;
 						}
 					}
@@ -2251,10 +2253,9 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let f = submesh.container.filters[i];
 				if (!f) break;
 				let sprite: PIXISprite = (f as any).maskSprite;
-				if (sprite) {
+				if (sprite && !sprite.destroyed) {
 						if (!submesh.container.getChildByName(sprite.name))
 							submesh.container.addChild(sprite);
-					
 				}
 			}
 

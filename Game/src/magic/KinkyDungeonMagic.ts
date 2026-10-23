@@ -3109,14 +3109,14 @@ function KDDrawSpellInfo(showbg: boolean, xOffset: number, yOffset: number, spel
 			for (let N = 0; N < textSplitDesc.length; N++) {
 				DrawTextFitKD(textSplitDesc[N],
 					canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), 
-					canvasOffsetY_ui + yOffset + 483*KinkyDungeonBookScale/5 + i * 32, 350, 
+					canvasOffsetY_ui + yOffset + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, 
 					KDBookText, KDTextTan, 20, undefined, zIndexOffset + 130); i++;}
 		}
 		else {
 			for (let N = 0; N < textSplit.length; N++) {
 				DrawTextFitKD(textSplit[N],
 					canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), 
-					canvasOffsetY_ui + yOffset + 483*KinkyDungeonBookScale/5 + i * 32, 350, 
+					canvasOffsetY_ui + yOffset + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, 
 					KDBookText, KDTextTan, 20, undefined, zIndexOffset + 130); i++;}
 		}
 
