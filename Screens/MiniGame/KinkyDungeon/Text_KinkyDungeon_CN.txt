@@ -6422,6 +6422,8 @@ Ada 屈服于欲望，跌倒在地~
 
 - Puppetmaster
 傀儡师
+# :: NamePuppetmaster
+# :: KDLoreLabelen.puppeteer
 - The puppetmaster storms out in a rage.
 傀儡师怒气冲冲地冲了出去。
 - The puppetmaster has you try on one of ${Etheir} new accessories! (+RestraintAdded)
@@ -6968,7 +6970,8 @@ AttackName 击中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害, 伤�
 魔法锁只接受魔法钥匙，且不能被撬开。
 - The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
 魔法锁被强大的魔法守护着。你得等待它自行消退...
-# - The magical lock bears a contractual obligation. You'll have to wait for it to wear off...
+- The magical lock bears a contractual obligation. You'll have to wait for it to wear off...
+魔法锁受到契约约束，你只能等它自行失效……
 - The item is cybernetically locked. You will need a key card to unlock it.
 该物品被电子控制锁定。你需要一张钥匙卡才能解锁它。
 # :: KinkyDungeonStruggleUnlockNoCyberKey
@@ -7722,6 +7725,7 @@ TargetRestraint 太结实了，不会破……
 
 - Journal (N)
 日记 (N)
+# - (N)
 - Passing...
 通过中...
 - Closing...
@@ -15429,7 +15433,7 @@ SummonCount 只僵尸从地面中涌现！
 
 
 
-- Cast Spell (XXX turn delay)
+- Cast From Book (XXX turn delay)
 施法 ( XXX 回合延迟 )
 
 - You feel the vibrations leaving your body...
@@ -15479,7 +15483,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - You hop forward!
 你往前跳了一步！
 - You hop and feel the plugs shifting around inside your body.
-你跳跃并感觉到塞子在你体内移动。
+你一边跳跃着，一边感觉到塞子在你体内移动……
 - The plugs shift in and out with each hop...
 塞子随着每一跳而进进出出……
 - The massive plugs slide in and out sensually as you hop...
@@ -15487,7 +15491,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - You crawl forward!
 你向前爬行！
 - You crawl and feel the plugs shifting around inside your body.
-你爬行并感觉到塞子在你体内移动。
+你一边爬行着，一边感觉到塞子在你体内移动……
 - The plugs shift in and out as you crawl...
 当你爬行时，塞子会滑入和滑出……
 - The massive plugs slide in and out sensually as you crawl...
@@ -15505,7 +15509,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - You crawl helplessly, feeling the plugs shifting around inside you.
 你无助地爬行，感觉塞子在你体内移动。
 - You crawl and feel the plugs rubbing inside you...
-你爬行并感觉到你体内的塞子戏弄地摩擦着......
+你一边爬行着，一边感觉到塞子在你体内摩擦……
 - You crawl helplessly, tormented by the massive plugs inside you...
 你无助地爬行，被你体内的巨大塞子折磨着......
 - You are unable to move!
@@ -47264,11 +47268,11 @@ LKTYP 锁锁在了你的一个拘束具上！
 绕过特殊NPC
 
 - Stop when entering danger
-第一眼看到敌人时停止
+遇到危险时暂停
 - Suppress during combat
 战斗中压制
 - Single step during combat
-战斗中的步骤
+单步战斗
 
 - 0.1s/turn
 0.1秒/回合
@@ -52847,6 +52851,8 @@ ENMY 解开了 ITMN 的锁!
 危险等级 : 中等 | 猫女神的信徒。仅致力于唯一的任务——保护墓地不受外人侵犯，她们很少愿意谈判。有些信徒有着极高的身体素质，而另一些则能施展魔法。||——《地牢中的居民》凯瑟琳·威洛斯 著
 - Bast Clerics
 猫女神祭司
+# - Danger Level: High, unless you want to be a doll||The organization known as DressUp Co. is known for their highly eager models. What is less known, however, is that quite a few of their models are actually former humans who have been turned into dolls of their own volition.||The transformation is indefinite, as far as one can tell, although some puppetmasters are known to carry a magical potion imbued with the exact inverse of the dollification spell. In theory, reversing the spell's components should turn them back into humans, but most dolls will accept this with extreme reluctance.||-Denizens of the Dungeon by Catherine Willows
+# - The Puppetmasters
 - Rock-solid and form-fitting.
 坚如磐石，贴身舒适。
 # :: RestraintBreastplateDesc
