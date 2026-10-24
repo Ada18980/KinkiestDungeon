@@ -2163,12 +2163,13 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					if (!f) break;
 					let sprite: PIXISprite = (f as any).maskSprite;
 					if (sprite) {
-						if (!spr.destroyed && !sprite.destroyed && spr?.getBounds().intersects(sprite.getBounds())) {
+						let maskAlive = KDSpriteAlive(sprite)
+						if (!spr.destroyed && maskAlive && spr?.getBounds().intersects(sprite.getBounds())) {
 							if (!cc.getChildByName(sprite.name))
 								cc.addChild(sprite);
 						} else {
 							filters.splice(i, 1); // remove the filter to speed rendering
-							if (sprite.destroyed)
+							if (!maskAlive)
 								KDFilterCacheToDestroy.push(f); // this filter is slated to be destroyed
 							i--;
 						}
@@ -3465,3 +3466,7 @@ let SubmeshEditorClosest = -1;
 let SubmeshEditorClosestDist = 10000;
 let SubmeshEditorBuffer: number[] = null;
 let SubmeshEditorBufferOrig: number[] = null;
+
+function KDSpriteAlive(sprite: PIXISprite) {
+	return !sprite.destroyed && !!sprite.texture?.orig;
+}
