@@ -117,7 +117,7 @@ function KDAddParticleEmitter(x: number, y: number, img: string, imgemitted: str
 		}
 
 		if (emitterinfo.scale != 1 || emitterinfo.scale_delta) {
-			if (emitterinfo) sprite.width = emitterinfo.width * emitterinfo.scale;
+			if (emitterinfo.width) sprite.width = emitterinfo.width * emitterinfo.scale;
 			else sprite.scale.x = emitterinfo.scale;
 			if (emitterinfo.height) sprite.height = emitterinfo.height * emitterinfo.scale;
 			else sprite.scale.y = emitterinfo.scale;
@@ -226,7 +226,7 @@ function KDUpdateParticles(main_delta: number) {
 		if (emitter.time >= 0) sprite.visible = true;
 		if (emitter.vy) {sprite.position.y += emitter.vy * delta;}
 		if (emitter.vx) {sprite.position.x += emitter.vx * delta;}
-		if (emitter.angle_delta) {sprite.rotation += info.angle_delta * delta;}
+		if (emitter.angle_delta) {sprite.rotation += emitter.angle_delta * delta;}
 
 		if (emitter.sin_x && emitter.sin_period && sprite.visible) {sprite.position.x += emitter.sin_x * Math.sin(emitter.phase + emitter.sin_period * emitter.time / emitter.lifetime) * delta;}
 		if (emitter.sin_y && emitter.sin_period && sprite.visible) {sprite.position.y += emitter.sin_y * Math.sin(emitter.phase + emitter.sin_period * emitter.time / emitter.lifetime) * delta;}
