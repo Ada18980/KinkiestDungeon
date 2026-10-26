@@ -6429,7 +6429,7 @@ Ada 屈服于欲望，跌倒在地~
 - The puppetmaster has you try on one of ${Etheir} new accessories! (+RestraintAdded)
 傀儡师让你试戴${Etheir}的新饰品之一！（+RestraintAdded）
 - The puppetmaster adds a lock 'just to complete the look, you know?'
-傀儡师加了一把锁，“只是为了让它看起来更完整，你懂的？”
+傀儡师加了一把锁，“为了完成造型，你懂的~” 
 - The puppetmaster cuddles your helpless body~ (DamageTaken)
 傀儡师拥抱着你那无助的身体~ ( DamageTaken )
 - Puppeteer
@@ -7726,6 +7726,8 @@ TargetRestraint 太结实了，不会破……
 - Journal (N)
 日记 (N)
 # - (N)
+:: KinkyDungeonN
+N
 - Passing...
 通过中...
 - Closing...
@@ -15434,7 +15436,7 @@ SummonCount 只僵尸从地面中涌现！
 
 
 - Cast From Book (XXX turn delay)
-施法 ( XXX 回合延迟 )
+从书中施放 ( XXX 回合延迟 )
 
 - You feel the vibrations leaving your body...
 你感觉到振动正在离开你的身体......
@@ -52851,8 +52853,10 @@ ENMY 解开了 ITMN 的锁!
 危险等级 : 中等 | 猫女神的信徒。仅致力于唯一的任务——保护墓地不受外人侵犯，她们很少愿意谈判。有些信徒有着极高的身体素质，而另一些则能施展魔法。||——《地牢中的居民》凯瑟琳·威洛斯 著
 - Bast Clerics
 猫女神祭司
-# - Danger Level: High, unless you want to be a doll||The organization known as DressUp Co. is known for their highly eager models. What is less known, however, is that quite a few of their models are actually former humans who have been turned into dolls of their own volition.||The transformation is indefinite, as far as one can tell, although some puppetmasters are known to carry a magical potion imbued with the exact inverse of the dollification spell. In theory, reversing the spell's components should turn them back into humans, but most dolls will accept this with extreme reluctance.||-Denizens of the Dungeon by Catherine Willows
-# - The Puppetmasters
+- Danger Level: High, unless you want to be a doll||The organization known as DressUp Co. is known for their highly eager models. What is less known, however, is that quite a few of their models are actually former humans who have been turned into dolls of their own volition.||The transformation is indefinite, as far as one can tell, although some puppetmasters are known to carry a magical potion imbued with the exact inverse of the dollification spell. In theory, reversing the spell's components should turn them back into humans, but most dolls will accept this with extreme reluctance.||-Denizens of the Dungeon by Catherine Willows
+危险等级 : 高，除非你想变成一个玩偶。||名为装扮公司的组织以它极富热情的模型而闻名。然而鲜为人知的是，他们的不少模特其实曾经都是人类，并且是出于自身意愿变成玩偶的。||就目前而言，这种转变是无期限的，不过据说某些傀儡师会随身携带一种魔法药水，其有着与“玩偶化”完全相反的效果。理论上，只要反转该法术的机理，就能让那些玩偶重获人身，变回人类，但绝大多数玩偶对变回去这件事并不愿意接受。
+- The Puppetmasters
+傀儡师们
 - Rock-solid and form-fitting.
 坚如磐石，贴身舒适。
 # :: RestraintBreastplateDesc
