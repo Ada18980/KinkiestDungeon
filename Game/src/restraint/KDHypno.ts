@@ -55,7 +55,7 @@ let KDHypnoRenderTypes: Record<string, KDHypnoRenderType> = {
                 ang, {
                     zIndex: button.zIndex + 100 + 0.01,
                     mask: mask,
-                    alpha: alpha * 0.25 * (0.7 + 0.3 * Math.sin((CommonTime() / 3000) % (Math.PI * 2)))
+                    alpha: (0.1 + 0.9 * trance) * alpha * 0.4 * (0.7 + 0.3 * Math.sin((CommonTime() / 3000) % (Math.PI * 2)))
                 }
             )
             if (!exists) {
