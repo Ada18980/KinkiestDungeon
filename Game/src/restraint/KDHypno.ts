@@ -17,8 +17,60 @@ interface HypnoButton {
     callback?: string,
     callbackdata?: any,
     player?: number,
-    zIndex?: number
+    zIndex?: number,
+    renderType?: string,
 }
+
+interface KDHypnoRenderType {
+    render: (button: HypnoButton, x: number, y: number, alpha: number, trance: number) => void
+}
+
+let KDHypnoRenderTypes: Record<string, KDHypnoRenderType> = {
+    Default: {
+        render: KDDrawHypnoButton,
+    },
+    Spiral: {
+        render: (button: HypnoButton, x: number, y: number, alpha: number, trance: number) => {
+            KDDrawHypnoButton(button, x, y, alpha);
+            if (!KDToggles.HypnoSpiral) return;
+
+            let mask = FillRectKD(kdcanvas, kdpixisprites, "hypnobutton_" + x + "," + y + "_mask", {
+                Left: x + 1,
+                Top: y + 1,
+                Width: button.width - 2,
+                Height: button.height - 2, 
+                Color: KDBaseWhite,
+                zIndex: button.zIndex + 100 + 0.01,
+                alpha: 1.0
+            });
+
+            let angle = kdpixisprites.get("hypnobutton_" + x + "," + y + "_spiral")?.rotation || 0;
+            let exists = !!kdpixisprites.get("hypnobutton_" + x + "," + y + "_spiral");
+            let ang = (angle + KDDrawDelta * KDHypnoSpin * (1 + trance * KDHypnoSpinMult)) % (Math.PI * 2);
+
+            KDDraw(kdcanvas, kdpixisprites, "hypnobutton_" + x + "," + y + "_spiral",
+                KinkyDungeonRootDirectory + "HypnoSpiral.png", 
+                 x + button.width/2, y + button.height/2, 
+                undefined, undefined,
+                ang, {
+                    zIndex: button.zIndex + 100 + 0.01,
+                    mask: mask,
+                    alpha: alpha * 0.25 * (0.7 + 0.3 * Math.sin((CommonTime() / 3000) % (Math.PI * 2)))
+                }
+            )
+            if (!exists) {
+                kdpixisprites.get("hypnobutton_" + x + "," + y + "_spiral").anchor.set(0.5);
+                kdpixisprites.get("hypnobutton_" + x + "," + y + "_spiral").scale.set(1.1* button.width/512);
+            }
+            kdpixisprites.get("hypnobutton_" + x + "," + y + "_spiral").rotation = ang;
+            
+        },
+    },
+
+}
+
+let KDHypnoSpin = 0.0005;
+let KDHypnoSpinMult = 4;
 
 let KDDollHypnoSuggestions = 10;
 
@@ -28,6 +80,7 @@ let KDMaxHypnoButtons = 20;
 function KDDrawHypnoOverlay(xoff: number, yoff: number, alpha: number) {
     if (alpha == 0) return;
     if (!KinkyDungeonStatsChoice.get("NoHypno")) {
+        let trance = KDEntityBuffedStat(KDPlayer(), "Hypnosis")/100;
         if (!KDGameData.HypnoButtons) {
             KDGameData.HypnoButtons = [];
         }
@@ -43,7 +96,7 @@ function KDDrawHypnoOverlay(xoff: number, yoff: number, alpha: number) {
                     if (button.alpha > 1) button.alpha = 1;
                 }
                 if (button.alpha > 0) {
-                    KDDrawHypnoButton(button, xoff + button.x, yoff + button.y, alpha * button.alpha);
+                    KDHypnoRenderTypes[button.renderType || "Default"].render(button, xoff + button.x, yoff + button.y, alpha * button.alpha, trance);
                     newButtons.push(button);
                 }
             }
@@ -58,7 +111,8 @@ let KDMaxHypnoButtonPlacementAttempts = 64;
 let KDStandardHypnoHeight = 80;
 let KDStandardHypnoWidth = 160;
 
-function KDAddHypnoButton(buff: string, amount: number, textKey: string, textData?: Record<string, string>, textKey_after?: string, callback?: {name: string, data: any}, player?: number, duration?: number, extraTrance?: number, x?: number, y?: number) {
+function KDAddHypnoButton(buff: string, amount: number, textKey: string, textData?: Record<string, string>, textKey_after?: string,
+        callback?: {name: string, data: any}, player?: number, duration?: number, extraTrance?: number, x?: number, y?: number, renderType?: string) {
     let width = KDStandardHypnoWidth;
     let setPoint = (button) => {
         
@@ -86,6 +140,7 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
         callback: callback?.name,
         callbackdata: callback?.data,
         player: player,
+        renderType: renderType,
         zIndex: KDRandom(),
     };
     if (!x && !y) {

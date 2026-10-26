@@ -200,6 +200,7 @@ let KDToggles = {
 	TrainingBuff: true,
 	FlashingWarning: true,
 	HypnoOverlay: true,
+	HypnoSpiral: true,
 	WarningSound: true,
 	SoundAutoPathEnd: true,
 	SoundNotification: true,
@@ -245,6 +246,7 @@ let KDToggleCategories = {
 	ShowServantNPCSprites: "GFX",
 	ShowOtherNPCSprites: "GFX",
 	HypnoOverlay: "UI",
+	HypnoSpiral: "UI",
 
 	StruggleBars: "UI",
 	SpellBook: "UI",

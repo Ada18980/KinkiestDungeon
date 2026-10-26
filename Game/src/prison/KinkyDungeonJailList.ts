@@ -4,14 +4,14 @@ let KDBaseJailTickSub = 0.5;
 let KDNumberOfJailRandoms = 4;
 let KDJailRandomTimer = 1000;
 
-let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => number, trigger: (guard: any, xx: any, yy: any) => void}> = {
+let KDJailEvents: Record<string, {weight: (guard: entity, xx: number, yy: number, ix: number, iy: number) => number, trigger: (guard: entity, xx: number, yy: number, ix: number, iy: number) => void}> = {
 	"spawnGuard": {
 		// Determines the weight
 		weight: (_guard, _xx, _yy) => {
 			return 70;
 		},
 		// Occurs when the jail event triggers
-		trigger: (_g, xx, yy) => {
+		trigger: (_g, xx, yy, ix, iy) => {
 			// Allow the player to sleep 150 turns after the guard shows up
 			if (KinkyDungeonFlags.get("slept") == -1) {
 				KinkyDungeonSetFlag("slept", 0);
@@ -35,8 +35,8 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 				id: KinkyDungeonGetEnemyID(),
 				x:xx,
 				y:yy,
-				gx: xx - 2,
-				gy: yy,
+				gx: ix,
+				gy: iy,
 				CurrentAction: "jailWander",
 				keys: true,
 				AI: KDGetAITypeOverride(Enemy, "guard") || "guard",
@@ -163,9 +163,9 @@ function KDCanSpawnShopkeeper(override?: boolean): boolean {
 }
 
 
-type guardAction_num  = (guard: entity, xx: number, yy: number) => number;
-type guardAction_bool = (guard: entity, xx: number, yy: number) => boolean;
-type guardAction_void = (guard: entity, xx: number, yy: number, delta: number) => void;
+type guardAction_num  = (guard: entity, xx: number, yy: number, ix: number, iy: number) => number;
+type guardAction_bool = (guard: entity, xx: number, yy: number, ix: number, iy: number) => boolean;
+type guardAction_void = (guard: entity, xx: number, yy: number, delta: number, ix: number, iy: number) => void;
 
 type guardActionEntry = {
 	weight:       guardAction_num;
@@ -185,14 +185,15 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 		assign: (_guard, _xx, _yy) => {
 
 		},
-		handle: (guard, xx, yy) => {
+		handle: (guard, xx, yy, ix, iy) => {
 			// Random meandering about the cell, sometimes stopping near the player
 			if (KDRandom() < 0.2 && guard.idle) {
-				guard.gx = xx - 2;
+				guard.gx = ix;
+				guard.gy = iy;
 				if (KDRandom() < 0.5) {
-					guard.gx = xx;
-					guard.gy = yy + Math.round(KDRandom() * 2 - 1);
-				} else
+					guard.gx = ix;
+					guard.gy = iy + Math.round(KDRandom() * 2 - 1);
+				} else 
 					guard.gy = KinkyDungeonPlayerEntity.y;
 			}
 			KDGameData.GuardApplyTime = 0;
@@ -248,11 +249,11 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 			// Always a random chance to tease
 			guard.CurrentAction = "jailTease";
 		},
-		handle: (guard, xx, yy, _delta) => {
+		handle: (guard, xx, yy, _delta, ix, iy) => {
 			let playerHasVibrator = !KDGameData.CurrentVibration &&
 				Array.from(KinkyDungeonAllRestraint()).some(i => KDRestraint(i).allowRemote);
-			guard.gx = xx - 2;
-			guard.gy = yy;
+			guard.gx = ix;
+			guard.gy = iy;
 			if (playerHasVibrator) {
 				let extraCharge = Math.round(2 + (KinkyDungeonGoddessRep.Ghost + 50) * KDRandom() * 0.15);
 				KinkyDungeonSendEvent("remoteVibe", {enemy: guard.Enemy.name, power: extraCharge, overcharge: true, noSound: false});

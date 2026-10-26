@@ -1447,7 +1447,10 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 							}
 						} 
 					}
-					KDAddHypnoButton("Hypno_Doll", amount, key, null, keyafter, callback ? {name: callback, data: callbackdata} : undefined, player.id, duration ? duration : undefined);
+					KDAddHypnoButton("Hypno_Doll", amount, key, null, 
+						keyafter, callback ? {name: callback, data: callbackdata} : undefined, player.id, 
+						duration ? duration : undefined, undefined, undefined, undefined,
+						"Spiral");
 					KinkyDungeonSetFlag("DollSuggestion_Basic", 3 + Math.floor(KDRandom() * 3));
 				}
 			}
@@ -8537,7 +8540,10 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 							}
 						} 
 					}
-					KDAddHypnoButton("Hypno_Doll", amount, key, null, keyafter, callback ? {name: callback, data: callbackdata} : undefined, player.id, duration ? duration : undefined);
+					KDAddHypnoButton("Hypno_Doll", amount, key, null, 
+						keyafter, callback ? {name: callback, data: callbackdata} : undefined, 
+						player.id, duration ? duration : undefined, undefined, undefined, undefined,
+						"Spiral");
 					KinkyDungeonSetFlag("DollSuggestion_Basic", 3 + Math.floor(KDRandom() * 3));
 				}
 			}

@@ -80,24 +80,6 @@ function KDTestFullRunthrough(GameLoops: number, Init: boolean, NGP: boolean): b
 	return true;
 }
 
-function KDTestjailer(iter: number) {
-	let totals: any = {};
-	for (let i = 0; i < iter; i++) {
-		KDJailEvents.spawnGuard.trigger(KinkyDungeonJailGuard(), KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
-		if (KinkyDungeonJailGuard()) {
-			if (!totals[KinkyDungeonJailGuard().Enemy.name]) totals[KinkyDungeonJailGuard().Enemy.name] = 1;
-			else totals[KinkyDungeonJailGuard().Enemy.name] = totals[KinkyDungeonJailGuard().Enemy.name] + 1;
-		} else {
-			if (!totals.null) totals.null = 1;
-			else totals.null = totals.null + 1;
-		}
-		KDRemoveEntity(KinkyDungeonJailGuard());
-		//KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonJailGuard()), 1);
-		KDGameData.JailGuard = 0;
-	}
-	console.log(totals);
-}
-
 /**
  * Tests the variant item system
  * @param name

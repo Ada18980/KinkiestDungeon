@@ -2718,7 +2718,17 @@ interface KDQuest {
 };
 
 interface KDPoint {x: number, y: number}
-interface KDJailPoint extends KDPoint {type: string, entrance?: boolean, radius: number, requireLeash?: boolean, requireFurniture?: boolean, direction?:{x: number, y: number}, restraint?:string, restrainttags?:string[]}
+interface KDJailPoint extends KDPoint {
+	type: string,
+	door?: KDPoint,
+	outside?: KDPoint,
+	inside?: KDPoint,
+	entrance?: boolean,
+	radius: number,
+	requireLeash?: boolean,
+	requireFurniture?: boolean,
+	direction?:{x: number, y: number},
+	restraint?:string, restrainttags?:string[]}
 
 interface KinkyDialogue {
 	image?: string,

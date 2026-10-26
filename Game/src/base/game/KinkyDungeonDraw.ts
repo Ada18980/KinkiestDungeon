@@ -3984,7 +3984,7 @@ function DrawCrossKD(Container: PIXIContainer, Map: Map<string, any>, id: string
 
 
 //Just a copy of FillRectKD, but for circle
-function FillCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: CircleParams) {
+function FillCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: CircleParams): PIXISprite {
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -4018,9 +4018,9 @@ function FillCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: strin
 		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
 		sprite.alpha = Params.alpha ? Params.alpha : 1;
 		kdSpritesDrawn.set(id, true);
-		return true;
+		return sprite;
 	}
-	return false;
+	return null;
 }
 
 
@@ -4031,7 +4031,7 @@ function FillCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: strin
  * @param Params - rect parameters
  * @returns - If it worked
  */
-function FillRectKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: RectParams): boolean {
+function FillRectKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: RectParams): PIXISprite {
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -4068,9 +4068,9 @@ function FillRectKD(Container: PIXIContainer, Map: Map<string, any>, id: string,
 		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
 		sprite.alpha = Params.alpha ? Params.alpha : 1;
 		kdSpritesDrawn.set(id, true);
-		return true;
+		return sprite;
 	}
-	return false;
+	return null;
 }
 
 /**

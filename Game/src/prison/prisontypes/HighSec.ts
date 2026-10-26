@@ -213,11 +213,12 @@ KDPrisonTypes.HighSec = {
 
 					if (nearestJail) {
 
-						let xx = nearestJail.x + KinkyDungeonJailLeashX;
+						let xx = nearestJail.x;
 						let yy = nearestJail.y;
+						let inside = KDJailPointInside(nearestJail);
 						KDJailEvents.useCurrentGuard.trigger(
 							KinkyDungeonJailGuard(),
-							xx, yy
+							xx, yy,  inside.x, inside.y
 						);
 					}
 

@@ -14,13 +14,13 @@ let KDMaxKeys = 2;
 /** Only these have jail events */
 let KDJailFilters = ['jail'];
 
-function KDAssignGuardAction(guard: entity, xx: number, yy: number): void {
+function KDAssignGuardAction(guard: entity, xx: number, yy: number, ix: number, iy: number): void {
 	let eventWeightTotal = 0;
 	let eventWeights = [];
 
 	for (let event of Object.values(KDGuardActions)) {
 		eventWeights.push({event: event, weight: eventWeightTotal});
-		eventWeightTotal += event.weight(guard, xx, yy);
+		eventWeightTotal += event.weight(guard, xx, yy, ix, iy);
 	}
 
 	let selection = KDRandom() * eventWeightTotal;
@@ -33,13 +33,13 @@ function KDAssignGuardAction(guard: entity, xx: number, yy: number): void {
 	}
 }
 
-function KDGetJailEvent(guard: entity, xx: number, yy: number): (g: entity, x: number, y: number) => void {
+function KDGetJailEvent(guard: entity, xx: number, yy: number, ix: number, iy: number): (g: entity, x: number, y: number, ix: number, iy: number) => void {
 	let eventWeightTotal = 0;
 	let eventWeights = [];
 
 	for (let event of Object.values(KDJailEvents)) {
 		eventWeights.push({event: event, weight: eventWeightTotal});
-		eventWeightTotal += event.weight(guard, xx, yy);
+		eventWeightTotal += event.weight(guard, xx, yy, ix, iy);
 	}
 
 	let selection = KDRandom() * eventWeightTotal;
@@ -679,9 +679,14 @@ function KinkyDungeonHandleJailSpawns(delta: number, useExistingGuard: boolean =
 
 	if (!nearestJail) return;
 
-	let xx = nearestJail.x + KinkyDungeonJailLeashX;
-	let yy = nearestJail.y;
-	let playerInCell = (Math.abs(KinkyDungeonPlayerEntity.x - nearestJail.x) < KinkyDungeonJailLeashX - 1 && Math.abs(KinkyDungeonPlayerEntity.y - nearestJail.y) <= KinkyDungeonJailLeash);
+	let door = KDJailPointDoor(nearestJail);
+	let outside = KDJailPointOutside(nearestJail);
+	let inside = KDJailPointInside(nearestJail);
+	let xx = outside.x;
+	let yy = outside.y;
+	let ix = inside.x;
+	let iy = inside.y;
+	let playerInCell = KDEntityInCell(KDPlayer(), nearestJail);
 
 	// This is an important piece to make it so guards don't clog up the jail space
 	for (let enemy of KDMapData.Entities) {
@@ -696,21 +701,21 @@ function KinkyDungeonHandleJailSpawns(delta: number, useExistingGuard: boolean =
 		&& (KDGameData.GuardSpawnTimer <= 1)
 		&& ((KDGameData.GuardTimer == 0 && useExistingGuard) || !KinkyDungeonJailGuard())
 		&& playerInCell) {
-		KDGetJailEvent(KinkyDungeonJailGuard(), xx, yy)(KinkyDungeonJailGuard(), xx, yy);
+		KDGetJailEvent(KinkyDungeonJailGuard(), xx, yy, ix, iy)(KinkyDungeonJailGuard(), xx, yy, ix, iy);
 	} else if (KDGameData.GuardSpawnTimer > 0 && KDGameData.SleepTurns < 1 && !KinkyDungeonAngel()) KDGameData.GuardSpawnTimer -= delta;
 
 	// Assign and handle the current jail action if there is a guard
 	if (KinkyDungeonJailGuard() && KDGameData.GuardTimer > 0 && KDGameData.GuardTimerMax - KDGameData.GuardTimer > 6 && KDGameData.PrisonerState == 'jail') {
 		if (KDGuardActions[KinkyDungeonJailGuard().CurrentAction]
 			&& KDGuardActions[KinkyDungeonJailGuard().CurrentAction].assignable
-			&& KDGuardActions[KinkyDungeonJailGuard().CurrentAction].assignable(KinkyDungeonJailGuard(), xx, yy)) {
-			KDAssignGuardAction(KinkyDungeonJailGuard(), xx, yy);
+			&& KDGuardActions[KinkyDungeonJailGuard().CurrentAction].assignable(KinkyDungeonJailGuard(), xx, yy, ix, iy)) {
+			KDAssignGuardAction(KinkyDungeonJailGuard(), xx, yy, ix, iy);
 		}
 	}
 
 	if (KinkyDungeonJailGuard() && !KinkyDungeonJailGuard().IntentAction && !KinkyDungeonJailGuard().action) {
 		if (KDGuardActions[KinkyDungeonJailGuard().CurrentAction] && KDGuardActions[KinkyDungeonJailGuard().CurrentAction].handle) {
-			KDGuardActions[KinkyDungeonJailGuard().CurrentAction].handle(KinkyDungeonJailGuard(), xx, yy, delta);
+			KDGuardActions[KinkyDungeonJailGuard().CurrentAction].handle(KinkyDungeonJailGuard(), xx, yy, delta, ix, iy);
 		}
 
 		// Return guard to wandering if the jail is over
@@ -754,11 +759,11 @@ function KinkyDungeonHandleJailSpawns(delta: number, useExistingGuard: boolean =
 					let doorOff = 1;
 					//KDSpliceIndex(KDMapData.Entities.indexOf(KinkyDungeonJailGuard()), 1);
 					// Close the door
-					if (KinkyDungeonTilesGet((xx-doorOff) + "," + yy) && 'dD'.includes(KinkyDungeonMapGet(xx-doorOff, yy))) {
-						KinkyDungeonMapSet(xx-doorOff, yy, 'D');
+					if (KinkyDungeonTilesGet((door.x) + "," + door.y) && 'dD'.includes(KinkyDungeonMapGet(door.x, door.y))) {
+						KinkyDungeonMapSet(door.x, door.y, 'D');
 						if (KDGameData.PrisonerState == 'jail') {
-							KinkyDungeonTilesGet((xx-doorOff) + "," + yy).Type = "Door";
-							KinkyDungeonTilesGet((xx-doorOff) + "," + yy).Lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(), false, "Door", {x: (xx-doorOff), y: yy, tile: KinkyDungeonTilesGet((xx-doorOff) + "," + yy)});
+							KinkyDungeonTilesGet((door.x) + "," + door.y).Type = "Door";
+							KinkyDungeonTilesGet((door.x) + "," + door.y).Lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(), false, "Door", {x: (door.x), y: door.y, tile: KinkyDungeonTilesGet((door.x) + "," + door.y)});
 						}
 						if (KDGameData.PrisonerState == 'jail' && KinkyDungeonVisionGet(g.x, g.y))
 							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardDisappear").replace("EnemyName", TextGet("Name" + g.Enemy.name)), KDBaseRed, 6);
@@ -1067,21 +1072,20 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 				KinkyDungeonJailGuard().y - KinkyDungeonJailGuard().NextJailLeashTourWaypointY) < 5)
 			|| KDRandom() < 0.01)) {
 			KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints--;
-			if (KinkyDungeonJailGuard().NextJailLeashTourWaypointX > KinkyDungeonJailLeashX + 2) {
-				if (KinkyDungeonLastAction == "Move") {
-					if (KDRandom() < 0.5) {
-						let index = "0";
-						if (KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions < 1) {
-							index = "" + Math.floor(KDRandom() * 6);
-							//KinkyDungeonChangeRep("Ghost", 8);
-						}
-						KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index,
-									KDGetGenericDialogueParams(KDPlayer(), KinkyDungeonJailGuard())).replace("EnemyName", 
-										TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#e7cf1a", 4, 9, true, undefined, true, true);
+			if (KinkyDungeonLastAction == "Move") {
+				// TODO maybe
+				if (KDRandom() < 0.5) {
+					let index = "0";
+					if (KinkyDungeonJailGuard().KinkyDungeonJailTourInfractions < 1) {
+						index = "" + Math.floor(KDRandom() * 6);
+						//KinkyDungeonChangeRep("Ghost", 8);
 					}
-					KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0),
-							KDGameData.HeelPower <= 0, 2, 4);
+					KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index,
+								KDGetGenericDialogueParams(KDPlayer(), KinkyDungeonJailGuard())).replace("EnemyName", 
+									TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#e7cf1a", 4, 9, true, undefined, true, true);
 				}
+				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0),
+						KDGameData.HeelPower <= 0, 2, 4);
 			}
 			KinkyDungeonJailGuardGetLeashWaypoint(xx, yy, type);
 		} else {
@@ -1220,8 +1224,12 @@ function KinkyDungeonPlayerInCell(any?: boolean, qualified?: boolean, filter?: s
 	}
 	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, filter, any, qualified);
 	if (!nearestJail || nearestJail.type != "jail") return false;
-	return KDistChebyshev(KinkyDungeonPlayerEntity.x - nearestJail.x, KinkyDungeonPlayerEntity.y - nearestJail.y) < 2;
+	return KDEntityInCell(KDPlayer(), nearestJail);
 	//return (Math.abs(KinkyDungeonPlayerEntity.x - KDMapData.StartPosition.x) < KinkyDungeonJailLeashX - 1 && Math.abs(KinkyDungeonPlayerEntity.y - KDMapData.StartPosition.y) <= KinkyDungeonJailLeash);
+}
+
+function KDEntityInCell(player: entity, point: KDJailPoint) {
+	return KDistChebyshev(player.x - point.x, player.y - point.y) < (point.radius || 2);
 }
 
 function KinkyDungeonPointInCell(x: number, y: number, radius: number = 2): boolean {
@@ -1229,6 +1237,22 @@ function KinkyDungeonPointInCell(x: number, y: number, radius: number = 2): bool
 	if (!nearestJail) return false;
 	return KDistChebyshev(x - nearestJail.x, y - nearestJail.y) < radius;
 	//return (Math.abs(x - KDMapData.StartPosition.x) < KinkyDungeonJailLeashX - 1 && Math.abs(y - KDMapData.StartPosition.y) <= KinkyDungeonJailLeash);
+}
+
+function KDJailPointDoor(jailPoint: KDJailPoint): KDPoint {
+	if (jailPoint.door) return jailPoint.door;
+	return {x: jailPoint.x + KinkyDungeonJailLeashX - 1, y: jailPoint.y};
+}
+
+function KDJailPointOutside(jailPoint: KDJailPoint): KDPoint {
+	if (jailPoint.outside) return jailPoint.outside;
+	let door = KDJailPointDoor(jailPoint);
+	return {x: door.x + Math.sign(door.x - jailPoint.x), y: door.y + Math.sign(door.y - jailPoint.y)};
+}
+function KDJailPointInside(jailPoint: KDJailPoint): KDPoint {
+	if (jailPoint.inside) return jailPoint.inside;
+	let door = KDJailPointDoor(jailPoint);
+	return {x: door.x - Math.sign(door.x - jailPoint.x), y: door.y - Math.sign(door.y - jailPoint.y)};
 }
 
 function KinkyDungeonPassOut(noteleport?: boolean) {
@@ -1288,10 +1312,12 @@ function KinkyDungeonPassOut(noteleport?: boolean) {
 function KDGetJailDoor(x: number, y: number): { tile: any; x: number; y: number } {
 	let point = KinkyDungeonNearestJailPoint(x, y);
 	if (point) {
-		x = point.x;
-		y = point.y;
+		let door = KDJailPointDoor(point);
+		x = door.x;
+		x = door.y;
+	} else {
+		x += KinkyDungeonJailLeashX - 1;
 	}
-	x += KinkyDungeonJailLeashX - 1;
 	return {tile: KinkyDungeonTilesGet((x) + "," + y), x: x, y: y};
 }
 
