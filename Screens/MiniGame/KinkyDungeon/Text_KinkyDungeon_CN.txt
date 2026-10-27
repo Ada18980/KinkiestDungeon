@@ -316,6 +316,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 
 - Hypnosis Screen Wobble
 催眠时屏幕晃动
+# - Hypnosis Spirals
 
 - Replace struggle icons with menu
 将挣扎按钮替换为菜单
