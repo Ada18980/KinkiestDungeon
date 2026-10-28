@@ -316,7 +316,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 
 - Hypnosis Screen Wobble
 催眠时屏幕晃动
-# - Hypnosis Spirals
+- Hypnosis Spirals
+催眠螺旋
 
 - Replace struggle icons with menu
 将挣扎按钮替换为菜单
@@ -2083,7 +2084,7 @@ EnemyName对TargetName念出了一个口令！
 # :: KDBuffName_Corrupted
 # :: KDPersonalityCorrupt
 - Your willpower gain and struggle power is less effective due to your corruption.
-由于你的腐化，你的意志力获取和挣扎能力的效果降低了。
+受到腐化的影响，你的意志力获取与挣扎效果有所降低。
 - Cursing Circle
 诅咒之环
 - You are in the process of being cursed.
@@ -46316,7 +46317,7 @@ RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 随着快感的涌动，你感受到你那被诅咒的束缚收紧、加强！
 
 - Corruption: While in the shadows, you slowly gain corruption.
-腐化 : ‎身处阴影中时，你会缓慢获得腐化。
+腐化 : 身处阴影之中时，你的腐化值会缓慢上升。
 
 - Seduction: Gain distraction after taking damage.
 诱惑 : ‎受到伤害后开始性奋。
@@ -51424,9 +51425,9 @@ ENMY 请求帮助！
 你的皮带太多了！
 
 - You feel a corrupting influence... (+AMNT Corruption)
-你受到一股腐化影响……（+AMNT 腐化）
+你受到了腐化的侵蚀…… ( +AMNT 腐化 )
 - You feel a restoring influence! (-AMNT Corruption)
-你受到一股恢复影响！（-AMNT 腐化）
+你感到了净化的力量！( -AMNT 腐化 )
 - Sticky latex fuses itself to your skin! (+AMNT LatexIntegration)
 粘性乳胶与你的皮肤融合到一起了！(+AMNT LatexIntegration)
 - The latex starts to detach from your skin... (-AMNT Latex Integration)
