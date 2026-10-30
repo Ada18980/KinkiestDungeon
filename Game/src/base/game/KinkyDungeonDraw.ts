@@ -2493,7 +2493,12 @@ function KinkyDungeonDrawGame() {
 		if (KDToggles.VibeHearts) {
 			KDDrawVibeParticles(KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax);
 		}
-		KDDrawHypnoOverlay(0, 0, 1);
+		KDDrawHypnoOverlay(canvasOffsetX
+						+ (KinkyDungeonPlayerEntity.visual_x - KinkyDungeonCamXVis)*KinkyDungeonGridSizeDisplay,
+					canvasOffsetY
+						+ (KinkyDungeonPlayerEntity.visual_y - KinkyDungeonCamYVis)*KinkyDungeonGridSizeDisplay, 
+						KinkyDungeonGridSizeDisplay,
+						KinkyDungeonGridSizeDisplay, 1);
 
 		/*if (!KinkyDungeonFlags.get("PlayerOrgasmFilter") && KDIntenseFilter) {
 			kdgameboard.removeChild(KDIntenseFilter);

@@ -365,7 +365,7 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		nocrit: true,
 		armormult: 0.25,
 		events: [
-			{type: "DollHypnosis", trigger: "tick", power: 1, chance: 0.1}]},
+			{type: "DollHypnosis", trigger: "tick", power: 1, chance: 0.25}]},
 	
 
 	// Techy

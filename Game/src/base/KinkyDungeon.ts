@@ -1258,6 +1258,7 @@ function KDReloadMainData(force: boolean) {
  * Loads the kinky dungeon game
  */
 function KinkyDungeonLoad(): void {
+	KDInitInventory();
 
 	try {
 		//@ts-ignore
@@ -3944,7 +3945,12 @@ function DrawButtonKDEx (
         }
 		else {Disabled = true; hover = false;}
 	}
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options, name);
+	DrawButtonVis(Left, Top, Width, 
+		Height, Label, Color, 
+		Image, HoveringText, Disabled, 
+		NoBorder, FillColor, 
+		FontSize, ShiftText, undefined, 
+		options?.zIndex, options, name);
 	KDButtonsCache[name] = params
 	if (hover && options?.onHover) options.onHover(params);
 	return MouseIn(Left,Top,Width,Height);

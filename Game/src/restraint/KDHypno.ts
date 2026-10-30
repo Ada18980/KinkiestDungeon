@@ -34,23 +34,25 @@ let KDHypnoRenderTypes: Record<string, KDHypnoRenderType> = {
             KDDrawHypnoButton(button, x, y, alpha);
             if (!KDToggles.HypnoSpiral) return;
 
-            let mask = FillRectKD(kdcanvas, kdpixisprites, "hypnobutton_" + x + "," + y + "_mask", {
+            let mask = FillRectKD(kdcanvas, kdpixisprites, 
+                "hypnobutton_" + button.x + "," + button.y + "," + button.textKey + "_mask", {
                 Left: x + 1,
                 Top: y + 1,
-                Width: button.width - 2,
-                Height: button.height - 2, 
+                Width: button.width*KinkyDungeonGridSizeDisplay - 2,
+                Height: button.height*KinkyDungeonGridSizeDisplay - 2, 
                 Color: KDBaseWhite,
                 zIndex: button.zIndex + 100 + 0.01,
                 alpha: 1.0
             });
 
-            let angle = kdpixisprites.get("hypnobutton_" + x + "," + y + "_spiral")?.rotation || 0;
-            let exists = !!kdpixisprites.get("hypnobutton_" + x + "," + y + "_spiral");
+            let angle = kdpixisprites.get("hypnobutton_" + button.x + "," + button.y + "," + button.textKey + "_spiral")?.rotation || 0;
+            let exists = !!kdpixisprites.get("hypnobutton_" + button.x + "," + button.y + "," + button.textKey + "_spiral");
             let ang = (angle + KDDrawDelta * KDHypnoSpin * (1 + trance * KDHypnoSpinMult)) % (Math.PI * 2);
 
-            KDDraw(kdcanvas, kdpixisprites, "hypnobutton_" + x + "," + y + "_spiral",
+            KDDraw(kdcanvas, kdpixisprites, "hypnobutton_" + button.x + "," + button.y + "," + button.textKey + "_spiral",
                 KinkyDungeonRootDirectory + "HypnoSpiral.png", 
-                 x + button.width/2, y + button.height/2, 
+                 x + button.width*KinkyDungeonGridSizeDisplay/2, 
+                 y + button.height*KinkyDungeonGridSizeDisplay/2, 
                 undefined, undefined,
                 ang, {
                     zIndex: button.zIndex + 100 + 0.01,
@@ -59,10 +61,11 @@ let KDHypnoRenderTypes: Record<string, KDHypnoRenderType> = {
                 }
             )
             if (!exists) {
-                kdpixisprites.get("hypnobutton_" + x + "," + y + "_spiral").anchor.set(0.5);
-                kdpixisprites.get("hypnobutton_" + x + "," + y + "_spiral").scale.set(1.1* button.width/512);
+                kdpixisprites.get("hypnobutton_" + button.x + "," + button.y + "," + button.textKey + "_spiral").anchor.set(0.5);
+                
             }
-            kdpixisprites.get("hypnobutton_" + x + "," + y + "_spiral").rotation = ang;
+            kdpixisprites.get("hypnobutton_" + button.x + "," + button.y + "," + button.textKey + "_spiral").scale.set(1.1* button.width*KinkyDungeonGridSizeDisplay/512);
+            kdpixisprites.get("hypnobutton_" + button.x + "," + button.y + "," + button.textKey + "_spiral").rotation = ang;
             
         },
     },
@@ -77,7 +80,7 @@ let KDDollHypnoSuggestions = 10;
 let KDHypnoDefaultAlphaRate = 0.5;
 let KDMaxHypnoButtons = 20;
 
-function KDDrawHypnoOverlay(xoff: number, yoff: number, alpha: number) {
+function KDDrawHypnoOverlay(xoff: number, yoff: number, xmult: number, ymult: number, alpha: number) {
     if (alpha == 0) return;
     if (!KinkyDungeonStatsChoice.get("NoHypno")) {
         let trance = KDEntityBuffedStat(KDPlayer(), "Hypnosis")/100;
@@ -96,7 +99,8 @@ function KDDrawHypnoOverlay(xoff: number, yoff: number, alpha: number) {
                     if (button.alpha > 1) button.alpha = 1;
                 }
                 if (button.alpha > 0) {
-                    KDHypnoRenderTypes[button.renderType || "Default"].render(button, xoff + button.x, yoff + button.y, alpha * button.alpha, trance);
+                    KDHypnoRenderTypes[button.renderType || "Default"].render(
+                        button, xoff + button.x * xmult, yoff + button.y * ymult, alpha * button.alpha, trance);
                     newButtons.push(button);
                 }
             }
@@ -108,8 +112,8 @@ function KDDrawHypnoOverlay(xoff: number, yoff: number, alpha: number) {
 
 let KDStandardHypnoDuration = 20;
 let KDMaxHypnoButtonPlacementAttempts = 64;
-let KDStandardHypnoHeight = 80;
-let KDStandardHypnoWidth = 160;
+let KDStandardHypnoHeight = 1;
+let KDStandardHypnoWidth = 2;
 
 function KDAddHypnoButton(buff: string, amount: number, textKey: string, textData?: Record<string, string>, textKey_after?: string,
         callback?: {name: string, data: any}, player?: number, duration?: number, extraTrance?: number, x?: number, y?: number, renderType?: string) {
@@ -117,9 +121,9 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
     let setPoint = (button) => {
         
         let angle = KDRandom() * Math.PI * 2;
-        let length = 90 + KDRandom() * 120 + KDRandom() * PIXIHeight/6; + KDRandom() * PIXIHeight/6;
-        button.x = PIXIWidth/2 + Math.cos(angle) * length - button.width / 2;
-        button.y = PIXIHeight/2 + Math.sin(angle) * length - button.height/2;
+        let length = 1 + KDRandom() * 4;
+        button.x = Math.round(Math.cos(angle) * length);
+        button.y = Math.round(Math.sin(angle) * length);
     }
     let button: HypnoButton = {
         x: x || 0,
@@ -149,7 +153,22 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
     // check for overlaps
     let ii = 0;
     while (ii++ < KDMaxHypnoButtonPlacementAttempts) {
-
+        for (let hb of KDGameData.HypnoButtons) {
+            if (((
+                (hb.x) == x
+                || (hb.x+1) == x
+                || (hb.x-1) == x
+            ) && hb.y == y
+            )) {
+                setPoint(button)
+            } else if (((
+                (hb.x) == 0
+                || (hb.x-1) == 0
+            ) && hb.y == 0
+            )) {
+                setPoint(button)
+            }
+        }
     }
 
     if (!KDGameData.HypnoButtons) {
@@ -161,7 +180,7 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
 
 function KDDrawHypnoButton(button: HypnoButton, x: number, y: number, alpha: number) {
 
-    if (DrawButtonKDEx("hypnobutton_" + x + "," + y, 
+    if (DrawButtonKDEx("hypnobutton_" + button.x + "," + button.y + "," + button.textKey, 
         (data) => {
             if (alpha == 1) {
                 if (button.textKey_after) {
@@ -189,15 +208,15 @@ function KDDrawHypnoButton(button: HypnoButton, x: number, y: number, alpha: num
         alpha > 0, 
         x, 
         y, 
-        button.width, 
-        button.height, 
+        button.width * KinkyDungeonGridSizeDisplay, 
+        button.height * KinkyDungeonGridSizeDisplay, 
         TextGet(button.textKey), 
         KDBaseWhite, undefined, undefined, 
         undefined, true, 
         KDButtonColor, undefined, undefined, {
             alpha: alpha * 0.4,
             textalpha: alpha,
-            zIndex: 100 + button.zIndex || 0
+            zIndex: 100 + button.zIndex || 0,
         })) {
         if (button.textKey_after) {
             button.textKey = button.textKey_after;

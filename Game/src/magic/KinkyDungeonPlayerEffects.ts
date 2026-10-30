@@ -2247,7 +2247,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 	},
 	"CharmWraps": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
-		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 0.5)) {
+		if (KDTestSpellHitsNoFF(target, entity, spell, 0.5, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 

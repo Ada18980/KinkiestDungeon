@@ -8544,7 +8544,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 						keyafter, callback ? {name: callback, data: callbackdata} : undefined, 
 						player.id, duration ? duration : undefined, undefined, undefined, undefined,
 						"Spiral");
-					KinkyDungeonSetFlag("DollSuggestion_Basic", 3 + Math.floor(KDRandom() * 3));
+					KinkyDungeonSetFlag("DollSuggestion_Basic", 2 + Math.floor(KDRandom() * 3));
 				}
 			}
 		},
