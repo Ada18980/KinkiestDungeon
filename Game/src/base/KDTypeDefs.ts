@@ -1703,6 +1703,9 @@ interface KinkyDungeonEvent {
 	sfx?: string;
 	vol?: number;
 	power?: number;
+	miscast?: number,
+	accuracy?: number,
+	stat?: string,
 	keepLock?: boolean,
 	distractEff?: number;
 	desireMult?: number;

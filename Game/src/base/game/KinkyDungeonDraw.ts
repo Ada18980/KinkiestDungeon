@@ -5986,7 +5986,7 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 				yy,
 				(listItem.size)/1000, false, 
 				npcTooltipContainer, undefined, undefined, 120, false,
-				undefined, "NPCTooltip");
+				undefined, "NPCTooltip" + KDGameData.CurrentDialog);
 
 			if (mesh) {
 				let zum = (listItem.size)/1000;
@@ -6495,7 +6495,7 @@ function KDDrawChibi(Character: Character, x: number, y: number, zoom: number, i
 		x, y,
 		zoom, false, undefined,
 		PIXI.SCALE_MODES.NEAREST, CHIBIMOD, undefined, KDFlipPlayer, ["Sprite"],
-			id, CHIBIMODEND);
+			id + zoom, CHIBIMODEND);
 
 
 }

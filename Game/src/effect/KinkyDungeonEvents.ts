@@ -4544,6 +4544,48 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 	},
 	"tick": {
 		
+		"HypnosisStats": (e, buff, entity, data) => {
+			let power = Math.max(0, Math.min(1, buff.power * 0.01));
+
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "HypnosisStatsAccuracy",
+				type: "Accuracy",
+				duration: 1,
+				power: e.accuracy*power
+			});
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "HypnosisStatsMiscast",
+				type: "MiscastChance",
+				duration: 1,
+				power: e.miscast*power
+			});
+		},
+		
+		"AccuracyBuff": (e, buff, entity, data) => {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: (e.original || "") + buff.id + e.type + e.trigger,
+				type: "Accuracy",
+				duration: 1,
+				power: e.power
+			});
+		},
+		"MiscastBuff": (e, buff, entity, data) => {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: (e.original || "") + buff.id + e.type + e.trigger,
+				type: "MiscastChance",
+				duration: 1,
+				power: e.power
+			});
+		},
+		"StatBuff": (e, buff, entity, data) => {
+			KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: (e.original || "") + buff.id + e.type + "--" + e.stat + e.trigger,
+				type: e.stat,
+				duration: 1,
+				power: e.power
+			});
+		},
+		
 		"DollMirrorCurse": (_e, buff, entity, data) => {
 			// doll curse is paused while player is resisting compulsions
 			// removed when the player advances a floor without the mirror in inventory
@@ -14084,12 +14126,20 @@ function KDAddTrance(player: entity, powerAdded: number) {
 			resetDurationTime: KDHypnoResetTime,
 			textPower: true,
 			textSuff: "%",
+			events: [
+				{type: "HypnosisStats", trigger: "tick", miscast: 0.3, accuracy: -0.5}
+			]
 			//text: Math.round(10 * initial),
 		});
 	} else {
 		buff.power = Math.min(KDMaxHypnosis, buff.power + powerAdded);
 		if (buff.power <= 0) buff.duration = 0;
 		else buff.duration = Math.max(KDHypnoResetTime, buff.duration);
+		if (!buff.events || buff.events.length == 0) {
+			buff.events = [
+				{type: "HypnosisStats", trigger: "tick", miscast: 0.3, accuracy: -0.5}
+			];
+		}
 	}
 }
 

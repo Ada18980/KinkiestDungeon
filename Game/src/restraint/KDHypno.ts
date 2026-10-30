@@ -36,10 +36,10 @@ let KDHypnoRenderTypes: Record<string, KDHypnoRenderType> = {
 
             let mask = FillRectKD(kdcanvas, kdpixisprites, 
                 "hypnobutton_" + button.x + "," + button.y + "," + button.textKey + "_mask", {
-                Left: x + 1,
-                Top: y + 1,
-                Width: button.width*KinkyDungeonGridSizeDisplay - 2,
-                Height: button.height*KinkyDungeonGridSizeDisplay - 2, 
+                Left: x - KDHypnoIntensity,
+                Top: y - KDHypnoIntensity,
+                Width: button.width*KinkyDungeonGridSizeDisplay + 2*KDHypnoIntensity,
+                Height: button.height*KinkyDungeonGridSizeDisplay + 2*KDHypnoIntensity, 
                 Color: KDBaseWhite,
                 zIndex: button.zIndex + 100 + 0.01,
                 alpha: 1.0
@@ -114,6 +114,7 @@ let KDStandardHypnoDuration = 20;
 let KDMaxHypnoButtonPlacementAttempts = 64;
 let KDStandardHypnoHeight = 1;
 let KDStandardHypnoWidth = 2;
+let KDStandardHypnoDist = 5;
 
 function KDAddHypnoButton(buff: string, amount: number, textKey: string, textData?: Record<string, string>, textKey_after?: string,
         callback?: {name: string, data: any}, player?: number, duration?: number, extraTrance?: number, x?: number, y?: number, renderType?: string) {
@@ -121,7 +122,7 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
     let setPoint = (button) => {
         
         let angle = KDRandom() * Math.PI * 2;
-        let length = 1 + KDRandom() * 4;
+        let length = 1 + KDRandom() * KDStandardHypnoDist;
         button.x = Math.round(Math.cos(angle) * length);
         button.y = Math.round(Math.sin(angle) * length);
     }
@@ -162,9 +163,9 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
             )) {
                 setPoint(button)
             } else if (((
-                (hb.x) == 0
-                || (hb.x-1) == 0
-            ) && hb.y == 0
+                (x) == 0
+                || (x-1) == 0
+            ) && y == 0
             )) {
                 setPoint(button)
             }
@@ -206,10 +207,10 @@ function KDDrawHypnoButton(button: HypnoButton, x: number, y: number, alpha: num
             return true;
         }, 
         alpha > 0, 
-        x, 
-        y, 
-        button.width * KinkyDungeonGridSizeDisplay, 
-        button.height * KinkyDungeonGridSizeDisplay, 
+        x - KDHypnoIntensity - 1, 
+        y - KDHypnoIntensity - 1, 
+        button.width * KinkyDungeonGridSizeDisplay + 2 * KDHypnoIntensity + 2, 
+        button.height * KinkyDungeonGridSizeDisplay + 2 * KDHypnoIntensity + 2, 
         TextGet(button.textKey), 
         KDBaseWhite, undefined, undefined, 
         undefined, true, 

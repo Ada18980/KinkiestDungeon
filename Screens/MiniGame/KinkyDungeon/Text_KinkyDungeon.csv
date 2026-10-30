@@ -1079,7 +1079,7 @@ KDBuffDesc_LatexKittyCurseTick,This is the total amount of Latex Kitty Curse you
 KDBuffName_Hypno_DollStat,Stillness
 KDBuffDesc_Hypno_DollStat,${You} you're starting to feel just like a doll... 
 KDBuffName_Hypnosis,Trance
-KDBuffDesc_Hypnosis,"${Youve} fallen into a trance, making suggestions more powerful."
+KDBuffDesc_Hypnosis,"${Youve} fallen into a trance, giving accuracy and miscast penalties."
 KDBuffName_StraitjacketBolt,Locked Down
 KDBuffDesc_StraitjacketBolt,"Struggling power is greatly reduced."
 KDBuffName_Lockdown,Locked Down

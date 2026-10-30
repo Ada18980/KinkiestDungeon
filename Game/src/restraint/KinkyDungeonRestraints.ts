@@ -22,6 +22,7 @@ let KDLayersUnderLayersRestraintFilters = {
 	LArms: 1,
 	LLegbinder: 1,
 	LCorset: 1,
+	LMitt: 1,
 	LPanel: 1, // allow harness straps under muzzle
 	LMuzzle: 1, // Muzzle without harness straps
 
