@@ -1160,7 +1160,7 @@ function KinkyDungeonDrawGame() {
 			let OX = KDInspectCamera.x - (KinkyDungeonPlayerEntity.x||0);
 			let OY = KDInspectCamera.y - (KinkyDungeonPlayerEntity.y||0);
 
-			let CamX = KinkyDungeonPlayerEntity.x - (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay/72 * KDCenterPlayerOffset)) - Math.floor(KinkyDungeonGridWidthDisplay/2) + OX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
+			let CamX = KinkyDungeonPlayerEntity.x - KDPlayerOffsetX() - Math.floor(KinkyDungeonGridWidthDisplay/2) + OX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
 			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2) + OY;// Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
 
 
@@ -6768,4 +6768,8 @@ function KDGetFastMovePath(x: number, y: number) {
 	KDToggles.FastMovePassable, undefined, undefined, false, 
 	KDAutoPathEnemyWeight, false, true, true);
 
+}
+
+function KDPlayerOffsetX() {
+	return (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay/72 * KDCenterPlayerOffset));
 }

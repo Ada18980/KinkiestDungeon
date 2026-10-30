@@ -156,16 +156,16 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
     while (ii++ < KDMaxHypnoButtonPlacementAttempts) {
         for (let hb of KDGameData.HypnoButtons) {
             if (((
-                (hb.x) == x
-                || (hb.x+1) == x
-                || (hb.x-1) == x
-            ) && hb.y == y
+                (hb.x) == button.x
+                || (hb.x+1) == button.x
+                || (hb.x-1) == button.x
+            ) && hb.y == button.y
             )) {
                 setPoint(button)
             } else if (((
-                (x) == 0
-                || (x-1) == 0
-            ) && y == 0
+                (button.x) == 0
+                || (button.x+1) == 0
+            ) && button.y == 0
             )) {
                 setPoint(button)
             }
