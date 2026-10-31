@@ -235,16 +235,23 @@ let KDHypnoCallbacks : Record<string, (data: any) => void> = {
     DollAccept: (data) => {
         let player = KinkyDungeonFindID(data.player);
         if (!player) return;
-        if (KinkyDungeonJailGuard()) {
+        if (KinkyDungeonJailGuard()?.IntentAction == "CaptureDollShoppe") {
+            KDStunTurns(10, true);
             //KDStunTurns(Math.floor(2 * (0.5 + KDRandom())), true);
         } else {
-            KDStunTurns(40, true);
+            
             // freeze the player and call an NPC to make the player a doll
             KinkyDungeonSetFlag("GuardCalled", 35);
+            KDGameData.JailGuard = 0;
             let entity = KinkyDungeonCallGuard(player.x, player.y,
                     true, true, undefined, "Dressmaker", "dolldressmaker");
             if (entity) {
-                // TODO add intent action to bring up doll dialogue
+                if (KDIntentEvents.CaptureDollShoppe.trigger(entity, {})) {
+                    KinkyDungeonSetFlag("dollpickup", 300);
+                    KDStunTurns(10, true);
+                } else {
+                    KDStunTurns(10, true);
+                }
             }
         }
     },

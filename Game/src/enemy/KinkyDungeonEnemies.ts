@@ -5176,7 +5176,7 @@ function KDRunDefeatForEnemy() {
 	if (CD && KDCustomDefeats[CD]) KDCustomDefeats[CD](CDE);
 	else if (!KinkyDungeonFlags.get("CustomDefeat")) {
 		if (KDRunRegularJailDefeatAttempt(CDE)) {
-			let putInJail = KinkyDungeonFlags.has("LeashToPrison");
+			let putInJail = KDIsLeashingToPrison(KDCustomDefeatEnemy);
 
 			if (CDE?.IntentLeashPoint) {
 				let exit = KDGetNearestExit(CDE.x, CDE.y, KDMapData, true);
@@ -6499,7 +6499,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							let splice = false;
 							let pathThresh = (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 3 : 8;
 							if (T > 2 && T < pathThresh) dir = KinkyDungeonGetDirectionRandom(dir.x * 10, dir.y * 10); // Fan out a bit
-							if (T >= pathThresh || enemy.path || !KinkyDungeonCheckPath(enemy.x, enemy.y, enemy.gx, enemy.gy) || KDEnemyHasFlag(enemy, "forcepath")) {
+							if (T >= pathThresh || enemy.path || !KinkyDungeonCheckPath(enemy.x, enemy.y, enemy.gx, enemy.gy, false, false, 1) || KDEnemyHasFlag(enemy, "forcepath")) {
 								if (!enemy.path && !KDEnemyHasFlag(enemy, "genpath")) {
 									enemy.path = KinkyDungeonFindPath(
 										enemy.x, enemy.y, enemy.gx, enemy.gy,
@@ -9122,6 +9122,10 @@ function KDPlayerIsDefeated() {
 	return KinkyDungeonFlags.get("playerDefeated");
 }
 
+function KDPlayerCantRespond() {
+	return KDPlayerIsDisabled() || KDGameData.SlowMoveTurns > 0;
+}
+
 function KDPlayerIsDisabled() {
 	return KinkyDungeonFlags.get("playerDisabled")
 		|| (KinkyDungeonStatBlind > 0 || KinkyDungeonStatBind > 0 || KinkyDungeonStatFreeze > 0 || (KinkyDungeonFlags.get("playerStun") && !KinkyDungeonFlags.get("channeling")) || KDGameData.SleepTurns > 0);
@@ -9643,10 +9647,10 @@ function KDAssignLeashPoint(enemy: entity): KDJailPoint {
 	return AIData.nearestJail;
 }
 
-function KDGetHighSecOutpost(enemy: entity, fromHere?: boolean): string {
+function KDGetHighSecOutpost(enemy: entity, fromHere?: boolean, overrideRoom?: string): string {
 
 	let forceFaction = KDGetLeashFaction(enemy);
-	let jailroom = KDGetLeashJailRoom(enemy);
+	let jailroom = overrideRoom || KDGetLeashJailRoom(enemy);
 	
 	if (!enemy) return jailroom;
 
@@ -9707,10 +9711,10 @@ function KDGetHighSecOutpost(enemy: entity, fromHere?: boolean): string {
 	return outpost || jailroom;
 }
 
-function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
-	let jailroom = KDGetLeashJailRoom(enemy);
+function KDGetHighSecLoc(enemy: entity, fromHere?: boolean, overrideRoom?: string): KDPoint {
+	let jailroom = overrideRoom || KDGetLeashJailRoom(enemy);
 
-	let outpost = KDGetHighSecOutpost(enemy, fromHere);
+	let outpost = KDGetHighSecOutpost(enemy, fromHere, overrideRoom);
 
 
 	let pos: KDPoint = KDGetShortcutPosition(outpost || jailroom, enemy.x, enemy.y, KDMapData);
@@ -10692,7 +10696,8 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveT
 	KinkyDungeonSendEvent("despawn", {enemy: enemy, mapData: mapData});
 
 	KDDespawnParty(enemy.id, mapData);
-	KDRemoveEntity(enemy, false, false, false, E, mapData);
+	KDRemoveEntity(enemy, false, false, false, E, mapData,
+		 !!moveThruExit || KDIsInEnemyParty(enemy));
 
 	delete enemy.despawnX;
 	delete enemy.despawnY;
@@ -10790,7 +10795,7 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveT
  * @param [noEvent]
  * @param [forceIndex]
  */
-function KDRemoveEntity(enemy: entity, kill?: boolean, capture?: boolean, noEvent?: boolean, forceIndex?: number, mapData?: KDMapDataType): boolean {
+function KDRemoveEntity(enemy: entity, kill?: boolean, capture?: boolean, noEvent?: boolean, forceIndex?: number, mapData?: KDMapDataType, nodelete?: boolean): boolean {
 	let data = {
 		enemy: enemy,
 		kill: kill,
@@ -10850,7 +10855,7 @@ function KDRemoveEntity(enemy: entity, kill?: boolean, capture?: boolean, noEven
 	if (KDIsNPCPersistent(enemy.id) && KDGetPersistentNPC(enemy.id)) {
 		//KDGetPersistentNPC(enemy.id).jailed = undefined;
 		KDGetPersistentNPC(enemy.id).spawned = undefined;
-	} else DisposeEntity(enemy.id, false); // non-persistent gets snapped from existence
+	} else if (!nodelete) DisposeEntity(enemy.id, false); // non-persistent gets snapped from existence
 
 	let index = forceIndex != undefined ? forceIndex : data.mapData.Entities.findIndex((entity) => {return entity.id == data.enemy.id;});
 	if (index >= 0)

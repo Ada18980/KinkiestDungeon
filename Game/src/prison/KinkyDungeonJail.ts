@@ -1656,15 +1656,15 @@ function KDResetDialogue() {
 	KDGameData.CurrentDialogStage = "";
 }
 
-function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
+function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity, overrideRoom?: string) {
 	KDCustomDefeat = "";
 	KDCustomDefeatEnemy = null;
 	KinkyDungeonInterruptSleep();
 
 
 	let forceFaction = KDGetLeashFaction(leashEnemy);
-	let jailroom = KDGetLeashJailRoom(leashEnemy);
-	let hisecoutpost = KDGetHighSecOutpost(leashEnemy);
+	let jailroom = overrideRoom || KDGetLeashJailRoom(leashEnemy);
+	let hisecoutpost = KDGetHighSecOutpost(leashEnemy, undefined, overrideRoom);
 	let slot = KDGetWorldMapLocation(KDCurrentWorldSlot);
 
 	if (PutInJail && (hisecoutpost != undefined ? hisecoutpost : jailroom) == KDMapData.RoomType && forceFaction == KDMapData.MapFaction) {
@@ -2405,7 +2405,7 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 		KDCustomDefeatUniforms.ElementalSlave();
 	},
 	DollStorage: (enemy) => {
-		if (KinkyDungeonFlags.has("LeashToPrison"))
+		if (KDIsLeashingToPrison(enemy))
 			KDEnterDollTerminal(false, false, false);
 		else
 			KinkyDungeonDefeat(false, enemy);
@@ -2830,4 +2830,10 @@ function KDGetFurnitureCriteria(entity: entity, enemy?: entity, unoccupied: bool
 function KDResetStripSearch() {
 	KinkyDungeonSetFlag("jailStripSearched", 0);
 	KinkyDungeonSetFlag("stripSearchComplete", 0);
+}
+
+function KDIsLeashingToPrison(enemy?: entity) {
+	return KinkyDungeonFlags.has("LeashToPrison") || (
+		(enemy || KinkyDungeonLeashingEnemy()) && KDEnemyHasFlag((enemy || KinkyDungeonLeashingEnemy()), 'leashingtoprison')
+	)
 }

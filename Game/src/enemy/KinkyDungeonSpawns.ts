@@ -333,23 +333,26 @@ function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, nor
 	//if (!noTransgress)
 	// KinkyDungeonAggroAction('call', {});
 	let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, true, true);
+	if (!point) point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, undefined, true);
 	if (!point) point = KinkyDungeonGetRandomEnemyPoint(true);
 	if (point) {
 
 		if (!KinkyDungeonJailGuard()) {
 			let mainFaction = faction || KDGetMainFaction();
 
-			let entities = KDNearbyEnemies(x, y, 20).filter((en) => {
-				return KDEntityCanBeGuard(en, mainFaction, requireTags || ["jail"]);
+			let entities = KDNearbyEnemies(x, y, 10).filter((en) => {
+				return KDEntityCanBeGuard(en, mainFaction, requireTags || ["jail"])
+					&& KinkyDungeonFindPath(en.x, en.y, x, y, 
+						true, false, false, 
+						KinkyDungeonMovableTilesSmartEnemy, false)?.length < 12;
 			});
 			if (entities.length == 0) {
-				entities = KDMapData.Entities.filter((en) => {return KDEntityCanBeGuard(en, mainFaction, requireTags || ["jail"]);});
-			}
-			if (entities.length > 0) {
-				let en = entities[Math.floor(KDRandom() * entities.length)];
-				KDGameData.JailGuard = en.id;
-				en.gx = point.x;
-				en.gy = point.y;
+				entities = KDMapData.Entities.filter((en) => {
+					return (
+					KinkyDungeonFindPath(en.x, en.y, x, y, 
+						true, false, false, 
+						KinkyDungeonMovableTilesSmartEnemy, false)?.length < 18
+					&& KDEntityCanBeGuard(en, mainFaction, requireTags || ["jail"]));});
 			}
 		}
 		if (!KinkyDungeonJailGuard()) {
@@ -357,12 +360,17 @@ function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, nor
 			let mainFaction = faction || KDGetMainFaction();
 
 			let jt = jailtag || (KDMapData.GuardFaction?.length > 0 ? KinkyDungeonFactionTag[KDMapData.GuardFaction[Math.floor(KDRandom() * KDMapData.GuardFaction.length)]] : "guardCall");
-
-			let Enemy =  KinkyDungeonGetEnemy(["Guard", jt], KDGetEffLevel(),KDCurrIndex(), '0', requireTags ? requireTags : [jt, "jail"], {requireHostile: "Player"}, undefined, ["gagged"]);
+			let arr = ["Guard", jt];
+			if (KinkyDungeonFactionJailTag[mainFaction]) arr.push(KinkyDungeonFactionJailTag[mainFaction]);
+			else if (KinkyDungeonFactionTag[mainFaction]) arr.push(KinkyDungeonFactionTag[mainFaction]);
+			let Enemy =  KinkyDungeonGetEnemy(arr, KDGetEffLevel(),KDCurrIndex(), '0', requireTags ? requireTags : [jt, "jail"], {requireHostile: "Player"}, undefined, ["gagged"]);
 			if (!Enemy) {
-				Enemy = KinkyDungeonGetEnemy(["Guard", jt], KDGetEffLevel(),KDCurrIndex(), '0', [jt, "jail"], undefined, undefined, ["gagged"]);
+				Enemy = KinkyDungeonGetEnemy(arr, KDGetEffLevel(),KDCurrIndex(), '0', [jt, "jail"], undefined, undefined, ["gagged"]);
 				if (!Enemy) {
 					jt = "guardCall";
+					arr = ["Guard", jt];
+					if (KinkyDungeonFactionJailTag[mainFaction]) arr.push(KinkyDungeonFactionJailTag[mainFaction]);
+					else if (KinkyDungeonFactionTag[mainFaction]) arr.push(KinkyDungeonFactionTag[mainFaction]);
 					Enemy = KinkyDungeonGetEnemy(["Guard", jt], KDGetEffLevel(),KDCurrIndex(), '0', [jt, "jail"], undefined);
 				}
 			}

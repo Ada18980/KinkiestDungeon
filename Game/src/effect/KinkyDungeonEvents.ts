@@ -1432,7 +1432,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 							KDDollHypnoSuggestions * (0.5 + 0.5*dollLevel/100)));
 					if (KDRandom() < 0.6 && KDEntityBuffedStat(player, "Hypnosis") > 25 && KDRandom() < KDEntityBuffedStat(player, "Hypnosis")*0.01) {
 						
-						if (dollLevel > 90 && KDRandom() < 0.25) {
+						if (dollLevel > 90 && KDRandom() < 0.25 && !KDIsInNonLeashableFurniture(player)) {
 							amount = Math.floor(5 * (0.5 + KDRandom()));
 							key = "KDHypno_Doll_Accept";
 							callback = "DollAccept";
@@ -8559,7 +8559,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 							KDDollHypnoSuggestions * (0.5 + 0.5*dollLevel/100)));
 					if (KDRandom() < 0.6 && KDEntityBuffedStat(player, "Hypnosis") > 25 && KDRandom() < KDEntityBuffedStat(player, "Hypnosis")*0.01) {
 						
-						if (dollLevel > 90 && KDRandom() < 0.25) {
+						if (dollLevel > 90 && KDRandom() < 0.25 && !KDIsInNonLeashableFurniture(player)) {
 							amount = Math.floor(5 * (0.5 + KDRandom()));
 							key = "KDHypno_Doll_Accept";
 							callback = "DollAccept";
@@ -12931,7 +12931,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 					let Enemy = null;
 					if (KDHardModeReplace[e.Enemy.name]) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
 					if (Enemy) {
-						KDRemoveEntity(e);
+						KDRemoveEntity(e, undefined, undefined, undefined, undefined, undefined, true);
 						e.Enemy = JSON.parse(JSON.stringify(Enemy));
 						e.modified = true;
 						KDAddEntity(e, undefined, undefined, true);
@@ -13002,7 +13002,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 					let Enemy = null;
 					if (KDHardModeReplace[e.Enemy.name] && KDRandom() < 0.5) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
 					if (Enemy) {
-						KDRemoveEntity(e);
+						KDRemoveEntity(e, undefined, undefined, undefined, undefined, undefined, true);
 						e.Enemy = JSON.parse(JSON.stringify(Enemy));
 						e.modified = true;
 						KDAddEntity(e, undefined, undefined, true);

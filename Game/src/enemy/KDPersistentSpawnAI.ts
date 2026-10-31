@@ -102,7 +102,7 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 				} else {
 					// Wait till next spawn cycle
 					KDRemoveEntity(entity, false, false,
-						true, undefined, mapData);
+						true, undefined, mapData, true);
 					return true;
 				}
 			}
@@ -203,7 +203,7 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 				} else {
 					// Wait till next spawn cycle
 					KDRemoveEntity(entity, false, false,
-						true, undefined, mapData);
+						true, undefined, mapData, true);
 					return true;
 				}
 			}

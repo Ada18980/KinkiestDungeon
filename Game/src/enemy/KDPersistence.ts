@@ -215,7 +215,7 @@ function KDDespawnParty(partyid: number, mapData: KDMapDataType) {
 				|| KDistChebyshev(en.x - KDPlayer().x, en.y - KDPlayer().y) > 16)
 			&& KDEnemyCanDespawn(en.id, mapData,
 			pleader ? KDistChebyshev(en.x - pleader.x, en.y - pleader.y) : undefined)) {
-			KDRemoveEntity(en, false, false, true, undefined, mapData);
+			KDRemoveEntity(en, false, false, true, undefined, mapData, true);
 		}
 	}
 }

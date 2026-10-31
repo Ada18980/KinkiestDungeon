@@ -35,7 +35,7 @@ let KDPathConditions : Record<string, PathCondition> = {
 		},
 		doPassthrough: (attemptingNPC: entity, thisNPC: entity, mapdata: KDMapDataType) => {
 			// Removes the barricade for 1 turn
-			if (KDRemoveEntity(thisNPC, false, false, true)
+			if (KDRemoveEntity(thisNPC, false, false, true, undefined, undefined, true)
 				&& !KDEnemyIsTemporary(thisNPC)) {
 				KDAddRepopQueue({
 					x: thisNPC.x,
@@ -82,7 +82,7 @@ let KDPathConditions : Record<string, PathCondition> = {
 		},
 		doPassthrough: (attemptingNPC: entity, thisNPC: entity, mapdata: KDMapDataType) => {
 			// Removes the door but adds it to the map's 'repopulate' queue after 5 turns
-			if (KDRemoveEntity(thisNPC, false, false, true)
+			if (KDRemoveEntity(thisNPC, false, false, true, undefined, undefined, true)
 				&& !KDEnemyIsTemporary(thisNPC)) {
 				KDAddRepopQueue({
 					x: thisNPC.x,
@@ -107,7 +107,7 @@ let KDPathConditions : Record<string, PathCondition> = {
 		},
 		doPassthrough: (attemptingNPC: entity, thisNPC: entity, mapdata: KDMapDataType) => {
 			// Removes the door but adds it to the map's 'repopulate' queue after 5 turns
-			if (KDRemoveEntity(thisNPC, false, false, true)
+			if (KDRemoveEntity(thisNPC, false, false, true, undefined, undefined, true)
 				&& !KDEnemyIsTemporary(thisNPC)) {
 				KDAddRepopQueue({
 					x: thisNPC.x,

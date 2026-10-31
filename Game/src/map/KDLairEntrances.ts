@@ -96,11 +96,11 @@ let KDLairEntrancePlaceScript: Record<string, (lairData: KDLair, data: KDMapData
 	},
 }
 
-function KDGenHighSecCondition(force: boolean, enemy: entity) {
-	if (((force || KinkyDungeonFlags.has("LeashToPrison"))
+function KDGenHighSecCondition(force: boolean, enemy: entity, selfish?: boolean) {
+	if (((force || KDIsLeashingToPrison(enemy))
 			&& !(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison))
 		|| (
-			KDSelfishLeash(enemy)
+			selfish || KDSelfishLeash(enemy)
 		)) {
 
 		let altType = KDGetAltType(MiniGameKinkyDungeonLevel);

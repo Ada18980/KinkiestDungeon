@@ -1016,6 +1016,7 @@ function KDPrisonPuppetmasterGuard(player: entity, _call: boolean = false, suppr
 	}));
 	if (guard)
 		KDGameData.JailGuard = guard.id;
+	else return null;
 
 	return KinkyDungeonJailGuard();
 }

@@ -279,6 +279,7 @@ function KDDefaultPrereqs(enemy: entity, AIData: any, dist: number, maxdist: num
 			&& (!KinkyDungeonFlags.get("DangerFlag") || force)
 			&& (!KinkyDungeonFlags.get("BondageOffer") || force)
 			&& !KinkyDungeonFlags.get("NoTalk")
+			&& !KDPlayerCantRespond()
 			&& (KinkyDungeonStatsChoice.get("Undeniable") || KDRandom() < chance || force)
 			&& (!restraintTags || KinkyDungeonGetRestraint(
 				{tags: restraintTags},

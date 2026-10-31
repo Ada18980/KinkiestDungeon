@@ -77,6 +77,9 @@ Must do
 - species perks
 
 
+5.5.7
+- Fixed "I am a doll" dialogue not spawning a puppeteer or dressmaker to take you to the shoppe
+
 5.5.6
 - Rendering optimizations
 - Made the lore part of the journal use nicer scrollable lists

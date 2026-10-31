@@ -3670,7 +3670,7 @@ type EnemyEvent = {
 	/** Determines weight */
 	weight: (enemy: entity, AIData: KDEventDataBoolean, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Run when triggered */
-	trigger: (enemy: entity, AIData: KDEventDataBoolean) => void,
+	trigger: (enemy: entity, AIData: KDEventDataBoolean) => boolean | void,
 	/** Run when leashes to the leash point */
 	arrive?: (enemy: entity, AIData: KDEventDataBoolean) => boolean,
 	/** Run each turn at the end */

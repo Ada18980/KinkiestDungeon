@@ -925,7 +925,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	"defeat": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		KinkyDungeonDefeat(!(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison)
-			&& KinkyDungeonFlags.has("LeashToPrison"), KinkyDungeonLeashingEnemy());
+			&& KDIsLeashingToPrison(), KinkyDungeonLeashingEnemy());
 		KDResetStripSearch();
 		KinkyDungeonChangeRep("Ghost", 4);
 		return "";
