@@ -2708,96 +2708,71 @@ let KDFloaterGridWipedOutAlpha = 0.25;
 let KDFloaterID = 0;
 
 function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean = false) {
-	let delta = CommonTime() - KinkyDungeonLastFloaterTime;
-
 	KDFloaterGridCache = {};
-	let KDFloaterYCache: Record<string, boolean>[] = [];
-	let XCacheRes = 10; // How many sections the screen is split into
-	let max = 40;
-	let i = 0;
-	let floatermult = 1.5; // Global tweak value
-	if (delta > 0) {
-		for (let floater of KinkyDungeonFloaters) {
-			floater.t += floatermult * delta/1000;
-			if (i > max) break;
-			i += 1;
-		}
-	}
-	let newFloaters = [];
-	i = 0;
-	for (let floater of KinkyDungeonFloaters.reverse()) {
-		if (i <= max && (floater.override || !onlyAbs)) {
-			let x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
-			let y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
-			/*let overlap = false;
-			let overlapAmount = 9;
-			for (let iii = -overlapAmount; iii < overlapAmount; iii += 2) {
-				if (KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)]
-					&& KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)][Math.round(y + iii)]) {
-					overlap = true;
-				}
-			}
-			let ii = 0;
-			let direction = -1;
-			while ( overlap && ii < 24) {
-				floater.y -= (floater.override ? 4 : 4/KinkyDungeonGridSizeDisplay) * direction;
-				//floater.x += -20 + Math.random() * 40;
-				x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
-				y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
-				overlap = false;
-				// fix bug where text slides across screen
-				for (let iii = -overlapAmount; iii < overlapAmount; iii += 2) {
-					if (KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)]
-					&& KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)][Math.round(y + iii)]) {
-						overlap = true;
-					}
-				}
-				ii += 1;
-			}
-			for (let iii = -overlapAmount; iii < overlapAmount; iii++) {
-				if (!KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)])
-					KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)] = {};
-				KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)][Math.round(y + iii)] = true;
-			}*/
-			let alpha = KDEase(floater.t / floater.lifetime);
 
-			KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
-				+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
-				 = Math.max(KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
-					+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
-					|| 0, alpha);
-			KDFloaterGridCache[(Math.round(KDFloaterGridRes * x / PIXIWidth) + 1)
-				+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
-				= Math.max(KDFloaterGridCache[(1 + Math.round(KDFloaterGridRes * x / PIXIWidth))
-					+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
-					|| 0, 0.7*alpha);
-			KDFloaterGridCache[(Math.round(KDFloaterGridRes * x / PIXIWidth) - 1)
-				+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
-				= Math.max(KDFloaterGridCache[(-1 + Math.round(KDFloaterGridRes * x / PIXIWidth))
-					+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
-					|| 0, 0.7*alpha);
-			KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
-				+ "," + (1 + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight))]
-				= Math.max(KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
-					+ "," + (1 + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight))]
-					|| 0, 0.7*alpha);
-			KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
-				+ "," + (-1 + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight))]
-				= Math.max(KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
-					+ "," + (-1 + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight))]
-					|| 0, 0.7*alpha);
-			DrawTextFitKDTo(kdfloatercanvas, floater.text,
-				x, y - floater.speed*floater.t/floatermult,
-				1000, floater.color, KDTextGray1, floater.size || 20, undefined,
-				undefined, alpha, undefined, undefined, undefined,
-				undefined, "KDFloater_" + floater.id);
+	const delta = CommonTime() - KinkyDungeonLastFloaterTime;
+	const max = 40;
+	const floatermult = 1.5; // Global tweak value
+	const floaterdelta = floatermult * delta / 1000;
+	const keys = new Array<[string, number]>(5);
+
+outer:
+	for (let i = 0; i < Math.min(KinkyDungeonFloaters.length, max); ++i) {
+		let floater = KinkyDungeonFloaters[i];
+		floater.t += floaterdelta;
+		while (floater.t >= floater.lifetime) {
+			KinkyDungeonFloaters[i] = KinkyDungeonFloaters[KinkyDungeonFloaters.length - 1];
+			--KinkyDungeonFloaters.length;
+			if (KinkyDungeonFloaters.length == 0) {
+				break outer;
+			}
+			if (i >= KinkyDungeonFloaters.length) {
+				break outer;
+			}
+			floater = KinkyDungeonFloaters[i];
+			floater.t += floaterdelta;
 		}
-		if (floater.t < floater.lifetime) {
-			newFloaters.push(floater);
+
+		if (!floater.override && onlyAbs) {
+			continue;
 		}
-		i += 1;
+
+		const alpha = KDEase(floater.t / floater.lifetime);
+		const lessAlpha = alpha * 0.7;
+		const x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX) * KinkyDungeonGridSizeDisplay;
+		const y = floater.override ? floater.y : canvasOffsetY + (floater.y - CamY) * KinkyDungeonGridSizeDisplay;
+		const yAdj = y - floater.speed * floater.t / floatermult;
+
+		const gx = Math.round(KDFloaterGridRes * x / PIXIWidth);
+		const gy = Math.round(KDFloaterGridRes * yAdj / PIXIHeight);
+		keys[0] = [`${gx},${gy}`, alpha];
+		keys[1] = [`${gx + 1},${gy}`, lessAlpha];
+		keys[2] = [`${gx - 1},${gy}`, lessAlpha];
+		keys[3] = [`${gx},${gy + 1}`, lessAlpha];
+		keys[4] = [`${gx},${gy - 1}`, lessAlpha];
+		for (const k of keys) {
+			KDFloaterGridCache[k[0]] = Math.max(KDFloaterGridCache[k[0]] || 0, k[1]);
+		}
+
+		DrawTextFitKDTo(
+			kdfloatercanvas,
+			floater.text,
+			x,
+			yAdj,
+			1000,
+			floater.color,
+			KDTextGray1,
+			floater.size || 20,
+			undefined,
+			undefined,
+			alpha,
+			undefined,
+			undefined,
+			undefined,
+			undefined,
+			`KDFloater_${floater.id}`
+		);
 	}
-	KinkyDungeonFloaters = newFloaters.reverse();
 
 	KinkyDungeonLastFloaterTime = CommonTime();
 }
