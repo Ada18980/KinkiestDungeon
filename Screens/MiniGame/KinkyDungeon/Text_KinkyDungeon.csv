@@ -141,6 +141,8 @@ KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleHighResDisplacement,Hi-Res Distortion (Needs Restart)
 KDToggleMobileTextures,Low-Res Textures (Needs Restart)
+KDToggleModelMultisample,Portrait Supersampling
+
 KDToggleHiResModel,Hi-Res Model (no restart needed)
 KDToggleGraphicsQuality,High Quality Animations
 KDToggleEnemyAnimations,Enemy Animations
@@ -184,6 +186,7 @@ KDBlocked,Blocked!
 KDBlockedRestraint,Resisted Bondage!
 
 KDWallBump,You bump into a wall.
+
 
 KDResolution,Game Resolution:
 KDModelResolution,Model Resolution:

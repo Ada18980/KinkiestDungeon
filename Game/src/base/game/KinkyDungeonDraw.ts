@@ -4601,8 +4601,25 @@ function DrawBackNextButtonVis (
 	MainCanvas.stroke();
 	MainCanvas.closePath();*/
 
+	// Draw the back/next arrows, Left.png and Right.png are 36x86
+	const arrowAspect = KDTex(KinkyDungeonRootDirectory + "Left.png").width/KDTex(KinkyDungeonRootDirectory + "Left.png").height;
+	const arrowH = Height;
+	const arrowW = arrowH * arrowAspect;
+	const arrowPad = 6;
+	const arrowOptions = {zIndex: 101, alpha: Disabled ? 0.5 : 1};
+	KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + "w" + Width + "h" + Height + "bnL", 
+		KinkyDungeonRootDirectory + "Left.png",
+		Left + arrowPad, Top + (Height - arrowH) / 2, 
+		arrowW, arrowH, undefined, arrowOptions);
+	KDDraw(kdcanvas, kdpixisprites, Left + "," + Top + "w" + Width + "h" + Height + "bnR", 
+		KinkyDungeonRootDirectory + "Right.png",
+		Left + Width - arrowPad - arrowW, Top + (Height - arrowH) / 2, 
+		arrowW, arrowH, undefined, arrowOptions);
+
 	// Draw the text or image
-	DrawTextFitKD(Label, Left + Width / 2, Top + (Height / 2) + 1, (CommonIsMobile) ? Width - 6 : Width - 36, KDBaseWhite, undefined, undefined, undefined, undefined, undefined, undefined, undefined, options?.font);
+	DrawTextFitKD(Label, Left + Width / 2, Top + (Height / 2) + 1, Width - 2 * (arrowW + arrowPad + 4), 
+		KDBaseWhite, undefined, options?.fontSize || 20, undefined, undefined, 
+		undefined, undefined, undefined, options?.font);
 
 	// Draw the back arrow
 	/*MainCanvas.beginPath();

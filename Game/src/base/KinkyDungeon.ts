@@ -1089,6 +1089,16 @@ function KDReloadMainData(force: boolean) {
 				KDResolution = KDResolutionList[KDResolutionListIndex];
 			}
 		}
+		// Defaults to the game resolution if never set
+		KDModelResolutionListIndex = KDResolutionListIndex;
+		if (localStorage.getItem("KDModelResolution")) {
+			let parsed = parseInt(localStorage.getItem("KDModelResolution"));
+			if (!isNaN(parsed)) {
+				KDModelResolutionListIndex = parsed;
+			}
+		}
+		if (!(KDModelResolutionListIndex >= 0 && KDModelResolutionListIndex < KDResolutionList.length)) KDModelResolutionListIndex = 0;
+		KDModelResolution = KDResolutionList[KDModelResolutionListIndex];
 		if (localStorage.getItem("KDVibeVolume")) {
 			let parsed = parseInt(localStorage.getItem("KDVibeVolume"));
 			if (parsed != undefined) {
@@ -6690,10 +6700,11 @@ function KDMenuTogglesClick() {
 	let YY = YYstart;
 	let YYd = 54;
 
-	YY = YYstart + 50;
-	YYd = 80;
+	YY = YYstart;
+	YYd = 72;
 
 	let CombarXX = 550;
+		let CombarHeight = 50;
 
 	if (KDToggleTab == "Main") {
 		if (StandalonePatched) {
@@ -6706,6 +6717,15 @@ function KDMenuTogglesClick() {
 				localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
 
 				KDUpdateScreen();
+			}
+			YY += YYd;
+			if (MouseIn(CombarXX, YY, 350, 64)) {
+				if (MouseX <= CombarXX + 350/2) KDModelResolutionListIndex = (KDResolutionList.length + KDModelResolutionListIndex - 1) % KDResolutionList.length;
+				else KDModelResolutionListIndex = (KDModelResolutionListIndex + 1) % KDResolutionList.length;
+				KDModelResolution = KDResolutionList[KDModelResolutionListIndex];
+				localStorage.setItem("KDModelResolution", "" + KDModelResolutionListIndex);
+
+				KDUpdateModelResolution();
 			}
 			YY += YYd;
 			if (MouseIn(CombarXX, YY, 350, 64)) {
@@ -8577,48 +8597,55 @@ function KDTogglesDraw() {
 		}
 		//MainCanvas.textAlign = "center";
 
-		YY = YYstart + 50;
-		YYd = 80;
+		YY = YYstart + 0;
+		YYd = 72;
 		let CombarXX = 550;
+		let CombarHeight = 50;
+
 
 		if (KDToggleTab == "Main") {
 			if (StandalonePatched) {
-				DrawBackNextButtonVis(CombarXX, YY, 350, 64, 
+				DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, 
 					TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 50) + "%", KDBaseWhite, "",
 					() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 50 + "%",
 					() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 50 + "%");
 				YY += YYd;
-				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDGamma") + " " + (Math.round(KDGamma * 100) + "%"), KDBaseWhite, "",
+				DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight,
+					TextGet("KDModelResolution") + " " + Math.round(KDModelResolution * 50) + "%", KDBaseWhite, "",
+					() => KDResolutionList[(KDModelResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 50 + "%",
+					() => KDResolutionList[(KDModelResolutionListIndex + 1) % KDResolutionList.length] * 50 + "%");
+				YY += YYd;
+				DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDGamma") + " " + (Math.round(KDGamma * 100) + "%"), KDBaseWhite, "",
 					() => KDGammaList[(KDGammaListIndex + KDGammaList.length - 1) % KDGammaList.length] * 100 + "%",
 					() => KDGammaList[(KDGammaListIndex + 1) % KDGammaList.length] * 100 + "%");
 				YY += YYd * 1.25;
-				DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDCharSize") + " " + (Math.round(KDCharSize * 100) + "%"), KDBaseWhite, "",
+				DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDCharSize") + " " + (Math.round(KDCharSize * 100) + "%"), KDBaseWhite, "",
 					() => KDCharSizeList[(KDCharSizeListIndex + KDCharSizeList.length - 1) % KDCharSizeList.length] * 100 + "%",
 					() => KDCharSizeList[(KDCharSizeListIndex + 1) % KDCharSizeList.length] * 100 + "%");
 				YY += YYd;
 			}
 
-			DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), KDBaseWhite, "",
+			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), KDBaseWhite, "",
 				() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
 				() => KDVibeVolumeList[(KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length] * 100 + "%");
 			YY += YYd;
-			DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDMusicVolume") + " " + (KDMusicVolume * 100 + "%"), KDBaseWhite, "",
+			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDMusicVolume") + " " + (KDMusicVolume * 100 + "%"), KDBaseWhite, "",
 				() => KDMusicVolumeList[(KDMusicVolumeListIndex + KDMusicVolumeList.length - 1) % KDMusicVolumeList.length] * 100 + "%",
 				() => KDMusicVolumeList[(KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length] * 100 + "%");
 			YY += YYd;
-			DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDSfxVolume") + " " + (KDSfxVolume * 100 + "%"), KDBaseWhite, "",
+			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDSfxVolume") + " " + (KDSfxVolume * 100 + "%"), KDBaseWhite, "",
 				() => KDSfxVolumeList[(KDSfxVolumeListIndex + KDSfxVolumeList.length - 1) % KDSfxVolumeList.length] * 100 + "%",
 				() => KDSfxVolumeList[(KDSfxVolumeListIndex + 1) % KDSfxVolumeList.length] * 100 + "%");
 			YY += YYd;
-			DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), KDBaseWhite, "",
+			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), KDBaseWhite, "",
 				() => KDAnimSpeedList[(KDAnimSpeedListIndex + KDAnimSpeedList.length - 1) % KDAnimSpeedList.length] * 100 + "%",
 				() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
 			YY += YYd * 1.25;
-			DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDSelectedFont") + " " + (KDSelectedFont), KDBaseWhite, "",
+			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDSelectedFont") + " " + (KDSelectedFont), KDBaseWhite, "",
 				() => KDSelectedFontList[(KDSelectedFontListIndex + KDSelectedFontList.length - 1) % KDSelectedFontList.length],
 				() => KDSelectedFontList[(KDSelectedFontListIndex + 1) % KDSelectedFontList.length]);
 			YY += YYd;
-			DrawBackNextButtonVis(CombarXX, YY, 350, 64, TextGet("KDButtonFont") + " " + (KDButtonFont), KDBaseWhite, "",
+			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDButtonFont") + " " + (KDButtonFont), KDBaseWhite, "",
 				() => KDButtonFontList[(KDButtonFontListIndex + KDButtonFontList.length - 1) % KDButtonFontList.length],
 				() => KDButtonFontList[(KDButtonFontListIndex + 1) % KDButtonFontList.length], undefined, undefined, undefined, {
 					font: KDButtonFont
@@ -8931,6 +8958,14 @@ function KDUpdateScreen() {
 	PIXIapp.renderer.resize(PIXIWidth * resolution, PIXIHeight * resolution);
 	PIXIapp.view.width = PIXIWidth * resolution;
 	PIXIapp.view.height = PIXIHeight * resolution;
+}
+
+/** Rebuilds all character models so their render textures use the new KDModelResolution */
+function KDUpdateModelResolution() {
+	for (let C of [...KDCurrentModels.keys()]) {
+		KDClearModel(C);
+		KDRefreshCharacter.set(C, true);
+	}
 }
 
 function KDClearPaletteFilters() {

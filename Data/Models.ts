@@ -609,7 +609,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		let RT = (OldMesh?.texture instanceof PIXI.RenderTexture ? OldMesh?.texture : null) || KDGetRenderTexture(
 			MODELWIDTH*MODEL_SCALE * 2 * Zoom,
 			MODELHEIGHT*MODEL_SCALE * 2 * Zoom,
-			resolution
+			KDModelResolution
 		)
 
 
@@ -2128,7 +2128,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 							|| KDGetRenderTexture(
 								MODELWIDTH * 2 * Zoom,
 								MODELHEIGHT * 2 * Zoom,
-								resolution,//Math.min(KDGetModelResolution()*0.99, resolution),
+								KDModelResolution,//Math.min(KDGetModelResolution()*0.99, resolution),
 							)
 						if (ContainerContainer.Submeshes.get(sg)?.mesh) {
 							if (!ContainerContainer.Submeshes.get(sg)?.mesh.destroyed)
@@ -3287,13 +3287,17 @@ function RenderMCSubmeshes(MC: ModelContainer, C: Character, containerID: string
 	for (let sm of MC.Containers.get(containerID).Submeshes.entries()) {
 		let submesh = sm[1];
 		if (submesh.lhash != submesh.hash) {
-			//KDRenderSupersampled(submesh.container, submesh.rt)
-			if (submesh.container.children.length > 0)
-				PIXIapp.renderer.render(submesh.container, {
-					clear: true,
-					renderTexture: submesh.rt,
-					blit: true,
-				});
+			if (KDToggles.ModelMultisample && submesh.rt.width > 60) {
+				KDRenderSupersampled(submesh.container, submesh.rt)
+			} else {
+				if (submesh.container.children.length > 0)
+					PIXIapp.renderer.render(submesh.container, {
+						clear: true,
+						renderTexture: submesh.rt,
+						blit: true,
+					});
+			}
+			
 			
 			submesh.lhash = submesh.hash;
 		}

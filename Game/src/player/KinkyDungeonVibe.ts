@@ -46,6 +46,9 @@ let KDResolution = 2;
 let KDResolutionList = [2.0, 1, 1.2, 1.4, 1.6, 1.8];
 let KDResolutionListIndex = KDResolutionList.length-1;
 
+let KDModelResolution = 2;
+let KDModelResolutionListIndex = 0;
+
 
 
 let KDVibeVolume = 1;
@@ -97,6 +100,7 @@ let KDToggles = {
 	Reverb: true,
 	//HighResDisplacement: false,
 	MobileTextures: CommonIsMobile,
+	ModelMultisample: false,
 	//OptRender: false,//!CommonIsMobile, // experimental, for now
 	Bloom: true,
 	StunFlash: true,
@@ -261,6 +265,7 @@ let KDToggleCategories = {
 	StunFlash: "UI",
 	ParticlesFX: "GFX",
 	ParticlesRestrain: "GFX",
+	ModelMultisample: "GFX",
 	ArousalHearts: "Clothes",
 	VibeHearts: "Clothes",
 	GagParticles: "Clothes",
