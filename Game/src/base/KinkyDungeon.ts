@@ -1715,7 +1715,7 @@ function KinkyDungeonRun() {
 					MC.Update.delete(Container[0])
 					MC.ForceUpdate.delete(Container[0])
 					MC.Refresh.delete(Container[0])
-					KDClearMCContainer(Container[1]);
+					KDClearContainer(Container[1]);
 					MC.Mods.delete(Container[0]);
 					MC.EndMods.delete(Container[0]);
 				} else {

@@ -81,7 +81,8 @@ Must do
 - Fixed "I am a doll" dialogue not spawning a puppeteer or dressmaker to take you to the shoppe
 - Refactoring + added arrows to combo boxes
 - Added model resolution (lower this if you are having issues with crashes)
-- Added model supersampling (enable if you are having )
+- Added model supersampling (enable if model is fuzzy but you want it to look better at a slight vram hit)
+- Fixed a major vram leak
 
 5.5.6
 - Rendering optimizations
