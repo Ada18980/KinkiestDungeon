@@ -783,7 +783,10 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 	}
 
 	if (KDSpeakerNPC) {
-		if (KinkyDungeonCheckClothesLoss || KDRefreshCharacter.get(KDSpeakerNPC)) {
+		if (collectionNPCContainer && (!collectionNPCContainer.mask || (
+			//@ts-ignore
+			collectionNPCContainer.mask.x != x || collectionNPCContainer.mask.y != y
+		))) {
 			if (collectionNPCContainer.mask) {
 				let oldmask = collectionNPCContainer.mask;
 				collectionNPCContainer.mask = null;
@@ -799,11 +802,16 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			mask.drawRect(
 				x,
 				y,
-				440,
-				830
+				440 - 1,
+				830 - 1
 			);
 			mask.endFill();
+			mask.x = x;
+			mask.y = y;
 			collectionNPCContainer.mask = mask;
+		}
+		if (KinkyDungeonCheckClothesLoss || KDRefreshCharacter.get(KDSpeakerNPC)) {
+			
 
 
 			if (!NPCTags.get(KDSpeakerNPC)) {
@@ -1158,6 +1166,7 @@ let KDDrawnCollectionInventory: KDCollectionEntry[] = [];
 
 function KDResetCollectionUI() {
 	KDRenameNPC = false;
+	KDRefreshCharacter.get(KDSpeakerNPC);
 }
 
 function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: KDCollectionEntry, X: number, Y: number) => void) {

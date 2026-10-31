@@ -446,7 +446,7 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 
 	}
 	for (let dataFile of list) {
-		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile+ buildSuff).then((value) => {
+		let result = preload ? await PIXI.Assets.load(dataFile+ buildSuff).then((value) => {
 
 			let amount = 100;
 			//console.log(value)
@@ -582,7 +582,7 @@ async function load() {
 	//KDLoadingMax = 100;
 	
 	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
-	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
+	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR, true);
 	//await PreloadDisplacement(displacementList);
 	// Load everything twice... for good measure
 

@@ -98,6 +98,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
+				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 
 				if (!enemy.IntentLeashPoint) {
 					if (!KDEntityHasFlag(enemy, "intent_startChecking")) {
@@ -221,6 +223,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
+				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 
 				if (!enemy.IntentLeashPoint) {
 					enemy.IntentAction = '';
@@ -329,6 +333,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
+				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 
 				
 
@@ -420,6 +426,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
+				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 
 				if (!enemy.IntentLeashPoint) {
 					let nj = KDRandomJailPoint(enemy.x, enemy.y, ["storage"]);
@@ -663,6 +671,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
+				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 
 				if (!enemy.IntentLeashPoint) {
 					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
@@ -863,6 +873,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
+				//KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
 
 				if (!enemy.IntentLeashPoint) {
 					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
@@ -881,6 +892,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
 				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 
 				// If they are not attacking player
 				if (KDistChebyshev(enemy.gx - enemy.x, enemy.gy - enemy.y) < 1.5) {
@@ -934,7 +946,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		aggressive: true,
 		nonaggressive: false,
 		noplay: true,
-		forceattack: true,
+		forceattack: false,
 		overrideIgnore: true,
 		weight: (enemy, aiData, _allied, hostile, _aggressive) => {
 			return 0;
@@ -979,13 +991,16 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
+					
+					KDEnemyHasFlag(enemy, "notouchie")
 					KDTryToLeash(enemy, player, delta, false,
 						false);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
+				//KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
 				if (KinkyDungeonFlags.get("dollpickup"))
-						KDStunTurns(4, true);
+					KDStunTurns(4, true);
 
 				if (!enemy.IntentLeashPoint) {
 					if ((KDIsLeashingToPrison(enemy)
@@ -1001,6 +1016,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
 				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 
 				// If they are not attacking player
 				if (KDistChebyshev(enemy.gx - enemy.x, enemy.gy - enemy.y) < 0.5) {

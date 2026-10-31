@@ -5883,6 +5883,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		(!player.player // NPCs will aggro NPCs no questions asked
 			|| ( // However there are situations where the player will not get attacked
 				!AIData.ignore // For example if the player is ignored
+				&& (!KDEnemyHasFlag(enemy, "gentle") || KDPlayerDeservesPunishment(enemy, player))
 				&& ( // In order to be attacked the player must fulfill one of these conditions
 					( // The most common is that the player is not currently leashed
 						!KDGameData.KinkyDungeonLeashedPlayer

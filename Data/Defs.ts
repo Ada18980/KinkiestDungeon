@@ -514,8 +514,8 @@ let LAYERS_BASE = [
 	"MittenLeft",
 	"GloveLeft",
 	"TightSleeveLeft",
-	"HandLeft",
 	"ArmLeft",
+	"HandLeft",
 
 	// Feet behind the body
 	"WrappingLegsUnderHogtie",

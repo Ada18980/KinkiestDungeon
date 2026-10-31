@@ -122,7 +122,7 @@ interface ContainerInfo {
 	readonly SpriteGroups: Map<string, PIXIContainer>;
 	readonly Submeshes: Map<string, Submesh>;
 	readonly Mesh: PIXIMesh;
-	readonly RenderTexture: PIXIRenderTexture;
+	RenderTexture: PIXIRenderTexture;
 	readonly Matrix: PIXIArray;
 	Zoom: number;
 }
@@ -566,7 +566,11 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 
 
 		OldMesh = MC.Containers.get(containerID).Mesh;
+		for (let sub of OldMesh.children) {
+			sub.destroy();
+		}
 		OldMesh.removeChildren();
+		
 		//KDMeshToDestroy.push(MC.Containers.get(containerID).Mesh);
 		//KDRenderTexToDestroy.push(MC.Containers.get(containerID).RenderTexture);
 
@@ -601,8 +605,17 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 	if (!MC.Containers.get(containerID)) {
 
 		// Reuse old rendertexture instead of allocating a new one
-		let RT = (OldMesh?.texture instanceof PIXI.RenderTexture ? OldMesh?.texture : null) || PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution});
+
+		let RT = (OldMesh?.texture instanceof PIXI.RenderTexture ? OldMesh?.texture : null) || KDGetRenderTexture(
+			MODELWIDTH*MODEL_SCALE * 2 * Zoom,
+			MODELHEIGHT*MODEL_SCALE * 2 * Zoom,
+			resolution
+		)
+
+
 		let Mesh = OldMesh || new PIXI.SimplePlane(RT, 10, 10);
+		KDRTActive.delete(OldMesh);
+		KDRTActive.set(Mesh, RT);
 		Mesh.sortableChildren = true;
 		let Container: ContainerInfo = {
 			Container: new PIXI.Container(),
@@ -691,8 +704,6 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 			MC.Refresh.add(containerID);
 			MC.Update.delete(containerID);
 		} else if (modified) {
-			if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
-				PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
 
 
 
@@ -706,6 +717,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 				RenderModelContainer(MC, C, containerID);
 			}
 		}
+		if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
+			PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
 		Container.SpritesDrawn.clear();
 
 		for (let p of flippedPoses) {
@@ -2112,11 +2125,21 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						ContainerContainer.SpriteGroups.set(sg, cc);
 						// note: zoom is multiplied by MODEL_SCALE so here it cancels
 						let RT = ContainerContainer.Submeshes.get(sg)?.rt
-							|| PIXI.RenderTexture.create({ width: MODELWIDTH * 2 * Zoom, height: MODELHEIGHT * 2 * Zoom,
-								resolution: resolution, scaleMode: PIXI.SCALE_MODES.LINEAR});
+							|| KDGetRenderTexture(
+								MODELWIDTH * 2 * Zoom,
+								MODELHEIGHT * 2 * Zoom,
+								resolution,//Math.min(KDGetModelResolution()*0.99, resolution),
+							)
+						if (ContainerContainer.Submeshes.get(sg)?.mesh) {
+							if (!ContainerContainer.Submeshes.get(sg)?.mesh.destroyed)
+								ContainerContainer.Submeshes.get(sg)?.mesh.destroy();
+							KDRTActive.delete(ContainerContainer.Submeshes.get(sg)?.mesh);
+						}
 						let Mesh = ModelGetMaxMeshWarp(MC.Poses, sg, "pri_basic", "BasicMesh") ?
 							new PIXI.SimplePlane(RT, 30, 30)
 							: new PIXI.SimplePlane(RT, 2, 2);
+
+						KDRTActive.set(Mesh, RT);
 												
 						Mesh.zIndex = -ModelLayers[metaLayerForward[sg][metaLayerForward[sg].length - 1]] - LAYER_INCREMENT;
 						ContainerContainer.Mesh.addChild(Mesh);
@@ -3264,12 +3287,14 @@ function RenderMCSubmeshes(MC: ModelContainer, C: Character, containerID: string
 	for (let sm of MC.Containers.get(containerID).Submeshes.entries()) {
 		let submesh = sm[1];
 		if (submesh.lhash != submesh.hash) {
-			PIXIapp.renderer.render(submesh.container, {
-				//blit: true,
-				clear: true,
-				renderTexture: submesh.rt,
-				blit: true,
-			});
+			//KDRenderSupersampled(submesh.container, submesh.rt)
+			if (submesh.container.children.length > 0)
+				PIXIapp.renderer.render(submesh.container, {
+					clear: true,
+					renderTexture: submesh.rt,
+					blit: true,
+				});
+			
 			submesh.lhash = submesh.hash;
 		}
 		
@@ -3401,19 +3426,33 @@ function KDModelIsProtected(m: Model): boolean {
 	return false;
 }
 
+
+
 function KDContainerClear(Container: ContainerInfo) {
 	Container.Mesh.destroy({
 		texture: true,
 		baseTexture: true,
 	});
 	Container.Container.destroy();
-	Container.RenderTexture.destroy(true);
+
+	//@ts-ignore
+	if (!KDRTAvailable.get(Container.RenderTexture.idw + "," + Container.RenderTexture.idh + "," + Container.RenderTexture.resolution))
+	//@ts-ignore
+		KDRTAvailable.set(Container.RenderTexture.idw + "," + Container.RenderTexture.idh + "," + Container.RenderTexture.resolution, 
+		[]);
+	//@ts-ignore
+	KDRTAvailable.get(Container.RenderTexture.idw + "," + Container.RenderTexture.idh + "," + Container.RenderTexture.resolution)
+		.push(Container.RenderTexture);
+	Container.RenderTexture = null;//.destroy(true);
+	
+	KDRTActive.delete(Container.Mesh);
 	
 	for (let sg of Container.SpriteGroups.values()) {
 		sg.destroy();
 	}
 
 	for (let submesh of Container.Submeshes.values()) {
+		KDRTActive.delete(submesh.mesh);
 		if (!submesh.mesh.destroyed)
 			submesh.mesh.destroy({
 				texture: true,
@@ -3422,8 +3461,19 @@ function KDContainerClear(Container: ContainerInfo) {
 		if (!submesh.container.destroyed)
 			submesh.container.destroy();
 		
-		if (!submesh.rt.destroyed)
-			submesh.rt.destroy(true);
+		if (!submesh.rt.destroyed) {
+						
+			//@ts-ignore
+			if (!KDRTAvailable.get(submesh.rt.idw + "," + submesh.rt.idh + "," + submesh.rt.resolution))
+			//@ts-ignore
+				KDRTAvailable.set(submesh.rt.idw + "," + submesh.rt.idh + "," + submesh.rt.resolution, 
+				[]);
+			//@ts-ignore
+			KDRTAvailable.get(submesh.rt.idw + "," + submesh.rt.idh + "," + submesh.rt.resolution)
+				.push(submesh.rt);
+			submesh.rt = null;//.destroy(true);
+		}
+			
 
 	}
 
@@ -3469,4 +3519,54 @@ let SubmeshEditorBufferOrig: number[] = null;
 
 function KDSpriteAlive(sprite: PIXISprite) {
 	return !sprite.destroyed && !!sprite.texture?.orig;
+}
+
+function KDGetModelResolution() {
+	//@ts-ignore
+	let physical = PIXIapp.renderer.view.clientWidth * window.devicePixelRatio; // or the canvas's CSS width
+	return Math.min(resolution, Math.max(1, physical / PIXIWidth));
+}
+
+let KDSSAAScratch: PIXIRenderTexture = null;
+
+function KDRenderSupersampled(container: PIXIContainer, target: PIXIRenderTexture) {
+	let w = target.width, h = target.height;
+	// Create a shared larger texture to supersample from
+	if (!KDSSAAScratch) KDSSAAScratch = PIXI.RenderTexture.create(
+		{width: w, height: h,
+			multisample: PIXI.MSAA_QUALITY.MEDIUM,
+			resolution: target.resolution * 2,
+			scaleMode: PIXI.SCALE_MODES.NEAREST});
+	else if (KDSSAAScratch.width < w || KDSSAAScratch.height < h)
+		KDSSAAScratch.resize(
+	Math.max(w, KDSSAAScratch.width), 
+	Math.max(h, KDSSAAScratch.height));
+	
+	PIXIapp.renderer.render(container, {renderTexture: KDSSAAScratch, clear: true, blit: true,});
+	let spr = new PIXI.Sprite(new PIXI.Texture(KDSSAAScratch.baseTexture, new PIXI.Rectangle(0, 0, w, h)));
+	PIXIapp.renderer.render(spr, {renderTexture: target, clear: true});
+	spr.destroy();
+}
+
+let KDRTActive: Map<PIXIMesh, PIXIRenderTexture> = new Map();
+let KDRTAvailable: Map<string, PIXIRenderTexture[]> = new Map();
+
+function KDGetRenderTexture(w: number, h: number, res: number) {
+	if (KDRTAvailable.get(w + ',' + h + ',' + res)?.length > 0) {
+		let rt = KDRTAvailable.get(w + ',' + h + ',' + res).splice(0, 1)[0];
+		KDRTLookupTime.set(rt, CommonTime() + KDCULLTIMELONG);
+		return rt;
+	}
+		
+	let rt = PIXI.RenderTexture.create(
+			{
+				width: w,
+				height: h,
+				resolution: res,
+				scaleMode: PIXI.SCALE_MODES.NEAREST});
+	//@ts-ignore
+	rt.idw = w;
+	//@ts-ignore
+	rt.idh = h;
+	return rt
 }

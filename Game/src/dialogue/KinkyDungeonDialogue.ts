@@ -3111,7 +3111,7 @@ function KDGetHonorificIntimate(player: entity, lowercase?: boolean) {if (KinkyD
  */
 function KDGetSubTitle(player: entity, lowercase?: boolean) {
 	if (player?.player && KDIsArtificial(player)) return TextGet((
-		KinkyDungeonFlags.get("DollSleep") ? "KDSubTitleUnit" : "KDSubTitleDoll") + (lowercase ? "_LC" : ""));
+		KinkyDungeonFlags.get("DollSleep") ? "KDSubTitleDoll" : "KDSubTitleUnit") + (lowercase ? "_LC" : ""));
 	if (player?.player && KinkyDungeonStatsChoice.get("NovicePet")) return TextGet("KDSubTitlePet" + (lowercase ? "_LC" : ""));
 	return TextGet("KDSubTitleGirl"+ (lowercase ? "_LC" : ""));
 }
@@ -3124,7 +3124,7 @@ function KDGetSubTitle(player: entity, lowercase?: boolean) {
  */
 function KDGetDiminutive(player: entity, lowercase?: boolean) {
 	if (player?.player && KDIsArtificial(player)) return TextGet((
-		KinkyDungeonFlags.get("DollSleep") ? "KDSubTitleUnit" : "KDSubTitleDoll")+ (lowercase ? "_LC" : ""));
+		KinkyDungeonFlags.get("DollSleep") ? "KDSubTitleDoll" : "KDSubTitleUnit")+ (lowercase ? "_LC" : ""));
 	if (player?.player && KinkyDungeonStatsChoice.get("NovicePet")) return TextGet("KDSubTitlePet"+ (lowercase ? "_LC" : ""));
 	return TextGet("KDSubTitleGirl"+ (lowercase ? "_LC" : ""));
 }

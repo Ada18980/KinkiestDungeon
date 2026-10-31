@@ -4976,6 +4976,32 @@ function KDDoAdaptiveTexCache(id: string, delta: number): boolean {
 	return curr + delta > KDAdaptiveTexCacheThreshold;
 }
 
+
+let KDRTLookupTime: Map<PIXIRenderTexture, number> = new Map();
+
+function KDTickRTCache() {
+	let time = CommonTime();
+
+	for (let entry of KDRTAvailable.entries()) {
+		let rtlist = entry[1];
+		let toCull: PIXIRenderTexture[] = [];
+		for (let rt of rtlist) {
+			if (KDRTLookupTime.get(rt) != undefined && KDRTLookupTime.get(rt) < time) {
+				KDRTLookupTime.delete(rt);
+				toCull.push(rt);
+			}
+		}
+		for (let rt of toCull) {
+			let ind = rtlist.indexOf(rt);
+			KDRenderTexToDestroy.push(rt);
+			if (ind > -1)
+				rtlist.splice(ind, 1);
+			if (rtlist.length == 0)
+				KDRTAvailable.delete(entry[0]);
+		}
+	}
+}
+
 /** The purpose of this is to prerender a rendertexture with a specific set of filters
  * This is important because we dont want to rerender those filters constantly
  * if there are no filters then its unnecessary

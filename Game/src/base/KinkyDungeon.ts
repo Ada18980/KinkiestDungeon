@@ -52,6 +52,7 @@ let KDPaletteWidth = 6;
 
 let KDDefaultPalette = "";
 let KDCULLTIME = 10000; // Garbage collection
+let KDCULLTIMELONG = 1000 * 100;
 let KDLoadingFinishedSet = false;
 
 // Disable interpolation when scaling, will make texture be pixelated
@@ -1232,7 +1233,7 @@ function KDReloadMainData(force: boolean) {
 		DrawCharacter(KinkyDungeonPlayer, 0, 0, 0.01,
 			undefined, undefined, undefined, 
 			undefined, undefined, undefined, undefined,
-			KDMAINPORTRAITID
+			KDMAINPORTRAITID + "z"
 		);
 		
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -1707,14 +1708,16 @@ function KinkyDungeonRun() {
 					KDContainerClear(Container[1]);
 					MC.Mods.delete(Container[0]);
 					MC.EndMods.delete(Container[0]);
-				} else if (refresh && (
-					ent[0] == KinkyDungeonPlayer
-					|| ent[0] == KDSpeakerNPC
-					|| ent[0] == KDPreviewModel
-					|| Math.random() < 0.01
-				))
-					// We only always refresh NPCs that are front and center, for optimization reasons
-					MC.Update.delete(Container[0]);
+				} else {
+					 if (refresh && (
+						ent[0] == KinkyDungeonPlayer
+						|| ent[0] == KDSpeakerNPC
+						|| ent[0] == KDPreviewModel
+						|| Math.random() < 0.01
+					))
+						// We only always refresh NPCs that are front and center, for optimization reasons
+						MC.Update.delete(Container[0]);
+				}
 			}
 
 			MC.ContainersDrawn.clear();
@@ -3604,6 +3607,7 @@ function KDCullSprites(): void {
 		}
 	}*/
 	if (cull) KDlastCull.set(kdpixisprites, CommonTime());
+	if (cull) KDTickRTCache();
 }
 function KDCullSpritesList(list: Map<string, any>): void {
 	if (!KDlastCull.get(list)) KDlastCull.set(list, 0);
