@@ -1096,7 +1096,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let layer = LayerLayer(MC, l, m, Mods);
 				MC.HighestPriority[layer] = Math.max(MC.HighestPriority[layer] || -500, pri || -500);
 			}
-			if (l.CrossHideOverride) {
+			if (!l.NoOverride && l.CrossHideOverride) {
 				if (l.HideOverrideLayerMulti) {
 					for (let hideGroup of l.HideOverrideLayerMulti) {
 						for (let hideLayer of Object.keys(LayerGroups[hideGroup])) {
@@ -1107,7 +1107,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				if (l.HideOverrideLayer)
 					MC.HighestPriority[l.HideOverrideLayer] = Math.max(MC.HighestPriority[l.HideOverrideLayer] || -500, pri || -500);
 			}
-			if (l.ExtraOverrideLayers) {
+			if (!l.NoOverride && l.ExtraOverrideLayers) {
 				for (let hideLayer of l.ExtraOverrideLayers) {
 					MC.HighestPriority[hideLayer] = Math.max(MC.HighestPriority[hideLayer] || -500, pri || -500);
 				}
