@@ -76,6 +76,8 @@ Must do
 - Proper stripping
 - species perks
 
+5.5.8
+
 
 5.5.7
 - Fixed "I am a doll" dialogue not spawning a puppeteer or dressmaker to take you to the shoppe
