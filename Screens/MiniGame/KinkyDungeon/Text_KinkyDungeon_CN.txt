@@ -2402,7 +2402,7 @@ ${You}被沉默，无法轻易施放法术。
 你开始感觉自己就像一个玩偶……
 - Trance
 恍惚
-- ${Youve} fallen into a trance, making suggestions more powerful.
+- ${Youve} fallen into a trance, giving accuracy and miscast penalties.
 ${Youve}陷入恍惚，使那些暗示更加强大。
 - Locked Down
 锁定
