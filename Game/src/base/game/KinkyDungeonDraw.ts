@@ -4144,6 +4144,8 @@ type ButtonOptions = {
 	highlightcolor?: string,
 	/** hovering in here counts as not being in playable area */
 	nonplayable?: boolean,
+	/** Registers the button for clicks/hotkeys without drawing it */
+	invisible?: boolean,
 	
 	/// Custom data passed to onHover callback
 	hoverData?:   any;

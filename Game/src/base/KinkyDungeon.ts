@@ -1715,7 +1715,7 @@ function KinkyDungeonRun() {
 					MC.Update.delete(Container[0])
 					MC.ForceUpdate.delete(Container[0])
 					MC.Refresh.delete(Container[0])
-					KDContainerClear(Container[1]);
+					KDClearMCContainer(Container[1]);
 					MC.Mods.delete(Container[0]);
 					MC.EndMods.delete(Container[0]);
 				} else {
@@ -3933,7 +3933,7 @@ function DrawButtonKDEx (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	ButtonOptions,
-  Hover?:      InventoryHoverObject,
+  	Hover?:      InventoryHoverObject,
 ): boolean
 {
 	let params = {
@@ -3959,15 +3959,75 @@ function DrawButtonKDEx (
         }
 		else {Disabled = true; hover = false;}
 	}
-	DrawButtonVis(Left, Top, Width, 
-		Height, Label, Color, 
-		Image, HoveringText, Disabled, 
-		NoBorder, FillColor, 
-		FontSize, ShiftText, undefined, 
-		options?.zIndex, options, name);
+	if (!options?.invisible)
+		DrawButtonVis(Left, Top, Width,
+			Height, Label, Color,
+			Image, HoveringText, Disabled,
+			NoBorder, FillColor,
+			FontSize, ShiftText, undefined,
+			options?.zIndex, options, name);
 	KDButtonsCache[name] = params
 	if (hover && options?.onHover) options.onHover(params);
 	return MouseIn(Left,Top,Width,Height);
+}
+
+type BackNextButtonOptions = ButtonOptions & {
+	/// hotkey for the back (left) half
+	hotkeyPressLeft?: string;
+	/// hotkey for the next (right) half
+	hotkeyPressRight?: string;
+};
+
+/**
+ * DrawBackNextButtonVis but with buttons
+ * halves are each an individual button
+ * @param name - buttons are registered as name + "--back" and name + "--next", dashes to avoid accidental collisions with other _back or _next
+ * @param func - dir -1 for back (left) and 1 for next (right)
+ * @param [options.hotkeyPressLeft] - hotkey for back
+ * @param [options.hotkeyPressRight] - hotkey for next
+ */
+function DrawBackNextButtonKDEx (
+	name:		string,
+	func:		(dir: number, bdata: any) => any,
+	enabled:	boolean,
+	Left:		number,
+	Top:		number,
+	Width:		number,
+	Height:		number,
+	Label:		string,
+	Color:		string,
+	Image?:		string,
+	BackText?:	() => string,
+	NextText?:	() => string,
+	Disabled?:	boolean,
+	ArrowWidth?:	number,
+	NoBorder?:	boolean,
+	options?:	BackNextButtonOptions,
+): boolean
+{
+	if (ArrowWidth == null || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
+
+	DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image,
+		BackText, NextText, Disabled, ArrowWidth, NoBorder, options);
+
+	DrawButtonKDEx(name + "--back", (bdata) => func(-1, bdata), enabled && !Disabled,
+		Left, Top, ArrowWidth, Height, "", Color, undefined, undefined, Disabled, true,
+		undefined, undefined, undefined, {
+			zIndex: options?.zIndex,
+			hotkeyPress: options?.hotkeyPressLeft,
+			nonplayable: options?.nonplayable,
+			invisible: true,
+		});
+	DrawButtonKDEx(name + "--next", (bdata) => func(1, bdata), enabled && !Disabled,
+		Left + Width - ArrowWidth, Top, ArrowWidth, Height, "", Color, undefined, undefined, Disabled, true,
+		undefined, undefined, undefined, {
+			zIndex: options?.zIndex,
+			hotkeyPress: options?.hotkeyPressRight,
+			nonplayable: options?.nonplayable,
+			invisible: true,
+		});
+
+	return MouseIn(Left, Top, Width, Height);
 }
 
 let KDTooltipZ = 115;
@@ -6686,7 +6746,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 	} else if (KinkyDungeonState == "Keybindings") {
 		// Replaced by DrawButtonKDEx
 	} else if (KinkyDungeonState == "Toggles") {
-		KDMenuTogglesClick();
+		// Replaced by DrawBackNextButtonKDEx
 
 
 	}
@@ -6695,99 +6755,8 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 	return false;
 }
 
-function KDMenuTogglesClick() {
-	let YYstart = 60;
-	let YY = YYstart;
-	let YYd = 54;
-
-	YY = YYstart;
-	YYd = 72;
-
-	let CombarXX = 550;
-		let CombarHeight = 50;
-
-	if (KDToggleTab == "Main") {
-		if (StandalonePatched) {
-			if (MouseIn(CombarXX, YY, 350, 64)) {
-				if (MouseX <= CombarXX + 350/2) KDResolutionListIndex = (KDResolutionList.length + KDResolutionListIndex - 1) % KDResolutionList.length;
-				else KDResolutionListIndex = (KDResolutionListIndex + 1) % KDResolutionList.length;
-				KDResolution = KDResolutionList[KDResolutionListIndex];
-				KDResolutionConfirm = true;
-                if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
-				localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
-
-				KDUpdateScreen();
-			}
-			YY += YYd;
-			if (MouseIn(CombarXX, YY, 350, 64)) {
-				if (MouseX <= CombarXX + 350/2) KDModelResolutionListIndex = (KDResolutionList.length + KDModelResolutionListIndex - 1) % KDResolutionList.length;
-				else KDModelResolutionListIndex = (KDModelResolutionListIndex + 1) % KDResolutionList.length;
-				KDModelResolution = KDResolutionList[KDModelResolutionListIndex];
-				localStorage.setItem("KDModelResolution", "" + KDModelResolutionListIndex);
-
-				KDUpdateModelResolution();
-			}
-			YY += YYd;
-			if (MouseIn(CombarXX, YY, 350, 64)) {
-				if (MouseX <= CombarXX + 350/2) KDGammaListIndex = (KDGammaList.length + KDGammaListIndex - 1) % KDGammaList.length;
-				else KDGammaListIndex = (KDGammaListIndex + 1) % KDGammaList.length;
-				KDGamma = KDGammaList[KDGammaListIndex] || 0;
-				localStorage.setItem("KDGamma", "" + KDGammaListIndex);
-				kdgammafilterstore[0] = KDGamma;
-			}
-			YY += YYd;
-			if (MouseIn(CombarXX, YY, 350, 64)) {
-				if (MouseX <= CombarXX + 350/2) KDCharSizeListIndex = (KDCharSizeList.length + KDCharSizeListIndex - 1) % KDCharSizeList.length;
-				else KDCharSizeListIndex = (KDCharSizeListIndex + 1) % KDCharSizeList.length;
-				KDCharSize = KDCharSizeList[KDCharSizeListIndex] || 0;
-				localStorage.setItem("KDCharSize", "" + KDCharSizeListIndex);
-			}
-			YY += YYd*1.25;
-		}
-
-		if (MouseIn(CombarXX, YY, 350, 64)) {
-			if (MouseX <= CombarXX + 350/2) KDVibeVolumeListIndex = (KDVibeVolumeList.length + KDVibeVolumeListIndex - 1) % KDVibeVolumeList.length;
-			else KDVibeVolumeListIndex = (KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length;
-			KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
-			localStorage.setItem("KDVibeVolume", "" + KDVibeVolumeListIndex);
-		}
-		YY += YYd;
-		if (MouseIn(CombarXX, YY, 350, 64)) {
-			if (MouseX <= CombarXX + 350/2) KDMusicVolumeListIndex = (KDMusicVolumeList.length + KDMusicVolumeListIndex - 1) % KDMusicVolumeList.length;
-			else KDMusicVolumeListIndex = (KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length;
-			KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
-			localStorage.setItem("KDMusicVolume", "" + KDMusicVolumeListIndex);
-		}
-		YY += YYd;
-		if (MouseIn(CombarXX, YY, 350, 64)) {
-			if (MouseX <= CombarXX + 350/2) KDSfxVolumeListIndex = (KDSfxVolumeList.length + KDSfxVolumeListIndex - 1) % KDSfxVolumeList.length;
-			else KDSfxVolumeListIndex = (KDSfxVolumeListIndex + 1) % KDSfxVolumeList.length;
-			KDSfxVolume = KDSfxVolumeList[KDSfxVolumeListIndex];
-			localStorage.setItem("KDSfxVolume", "" + KDSfxVolumeListIndex);
-		}
-		YY += YYd;
-		if (MouseIn(CombarXX, YY, 350, 64)) {
-			if (MouseX <= CombarXX + 350/2) KDAnimSpeedListIndex = (KDAnimSpeedList.length + KDAnimSpeedListIndex - 1) % KDAnimSpeedList.length;
-			else KDAnimSpeedListIndex = (KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length;
-			KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
-			localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
-		}
-		YY += YYd*1.25;
-		if (MouseIn(CombarXX, YY, 350, 64)) {
-			if (MouseX <= CombarXX + 350/2) KDSelectedFontListIndex = (KDSelectedFontList.length + KDSelectedFontListIndex - 1) % KDSelectedFontList.length;
-			else KDSelectedFontListIndex = (KDSelectedFontListIndex + 1) % KDSelectedFontList.length;
-			KDSelectedFont = KDFonts.get(KDSelectedFontList[KDSelectedFontListIndex])?.alias || KDFontName;
-			localStorage.setItem("KDSelectedFont", "" + KDSelectedFontListIndex);
-		}
-		YY += YYd;
-		if (MouseIn(CombarXX, YY, 350, 64)) {
-			if (MouseX <= CombarXX + 350/2) KDButtonFontListIndex = (KDButtonFontList.length + KDButtonFontListIndex - 1) % KDButtonFontList.length;
-			else KDButtonFontListIndex = (KDButtonFontListIndex + 1) % KDButtonFontList.length;
-			KDButtonFont = KDFonts.get(KDButtonFontList[KDButtonFontListIndex])?.alias || KDFontName;
-			localStorage.setItem("KDButtonFont", "" + KDButtonFontListIndex);
-		}
-		YY += YYd;
-	}
+function KDCycleIndex(index: number, length: number, amount: number): number {
+	return (index + length + amount) % length;
 }
 
 /**
@@ -8580,7 +8549,12 @@ function KDTogglesDraw() {
 			
 			if (KDOptionFilter != "" && !(txt == KDOptionFilter.toLocaleLowerCase() || txt.includes(KDOptionFilter.toLocaleLowerCase())))continue;
 			DrawCheckboxKDEx("toggle" + toggle, () => {
-				KDToggles[toggle] = !KDToggles[toggle];
+				if (KDCustomToggleIndiv[toggle]) {
+					if (KDCustomToggleIndiv[toggle](toggle)) {
+						KDToggles[toggle] = !KDToggles[toggle];
+					}
+				} else
+					KDToggles[toggle] = !KDToggles[toggle];
 				KDSaveToggles();
 				return true;
 			}, true, XX, YY, size, size, TextGet("KDToggle" + toggle), KDToggles[toggle], false, KDBaseWhite, undefined, {
@@ -8605,47 +8579,112 @@ function KDTogglesDraw() {
 
 		if (KDToggleTab == "Main") {
 			if (StandalonePatched) {
-				DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, 
+				DrawBackNextButtonKDEx("optResolution", (dir, _bdata) => {
+					KDResolutionListIndex = KDCycleIndex(KDResolutionListIndex, KDResolutionList.length, dir);
+					KDResolution = KDResolutionList[KDResolutionListIndex];
+					KDResolutionConfirm = true;
+					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
+					localStorage.setItem("KDResolution", "" + KDResolutionListIndex);
+					KDUpdateScreen();
+					return true;
+				}, true,
+					CombarXX, YY, 350, CombarHeight,
 					TextGet("KDResolution" + (KDResolutionConfirm ? "Confirm" : "")) + " " + Math.round(KDResolution * 50) + "%", KDBaseWhite, "",
 					() => KDResolutionList[(KDResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 50 + "%",
 					() => KDResolutionList[(KDResolutionListIndex + 1) % KDResolutionList.length] * 50 + "%");
 				YY += YYd;
-				DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight,
+				DrawBackNextButtonKDEx("optModelResolution", (dir, _bdata) => {
+					KDModelResolutionListIndex = KDCycleIndex(KDModelResolutionListIndex, KDResolutionList.length, dir);
+					KDModelResolution = KDResolutionList[KDModelResolutionListIndex];
+					localStorage.setItem("KDModelResolution", "" + KDModelResolutionListIndex);
+					KDRefreshAllModels();
+					return true;
+				}, true,
+					CombarXX, YY, 350, CombarHeight,
 					TextGet("KDModelResolution") + " " + Math.round(KDModelResolution * 50) + "%", KDBaseWhite, "",
 					() => KDResolutionList[(KDModelResolutionListIndex + KDResolutionList.length - 1) % KDResolutionList.length] * 50 + "%",
 					() => KDResolutionList[(KDModelResolutionListIndex + 1) % KDResolutionList.length] * 50 + "%");
 				YY += YYd;
-				DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDGamma") + " " + (Math.round(KDGamma * 100) + "%"), KDBaseWhite, "",
+				DrawBackNextButtonKDEx("optGamma", (dir, _bdata) => {
+					KDGammaListIndex = KDCycleIndex(KDGammaListIndex, KDGammaList.length, dir);
+					KDGamma = KDGammaList[KDGammaListIndex] || 0;
+					localStorage.setItem("KDGamma", "" + KDGammaListIndex);
+					kdgammafilterstore[0] = KDGamma;
+					return true;
+				}, true,
+					CombarXX, YY, 350, CombarHeight, TextGet("KDGamma") + " " + (Math.round(KDGamma * 100) + "%"), KDBaseWhite, "",
 					() => KDGammaList[(KDGammaListIndex + KDGammaList.length - 1) % KDGammaList.length] * 100 + "%",
 					() => KDGammaList[(KDGammaListIndex + 1) % KDGammaList.length] * 100 + "%");
 				YY += YYd * 1.25;
-				DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDCharSize") + " " + (Math.round(KDCharSize * 100) + "%"), KDBaseWhite, "",
+				DrawBackNextButtonKDEx("optCharSize", (dir, _bdata) => {
+					KDCharSizeListIndex = KDCycleIndex(KDCharSizeListIndex, KDCharSizeList.length, dir);
+					KDCharSize = KDCharSizeList[KDCharSizeListIndex] || 0;
+					localStorage.setItem("KDCharSize", "" + KDCharSizeListIndex);
+					return true;
+				}, true,
+					CombarXX, YY, 350, CombarHeight, TextGet("KDCharSize") + " " + (Math.round(KDCharSize * 100) + "%"), KDBaseWhite, "",
 					() => KDCharSizeList[(KDCharSizeListIndex + KDCharSizeList.length - 1) % KDCharSizeList.length] * 100 + "%",
 					() => KDCharSizeList[(KDCharSizeListIndex + 1) % KDCharSizeList.length] * 100 + "%");
 				YY += YYd;
 			}
 
-			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), KDBaseWhite, "",
+			DrawBackNextButtonKDEx("optVibeVolume", (dir, _bdata) => {
+				KDVibeVolumeListIndex = KDCycleIndex(KDVibeVolumeListIndex, KDVibeVolumeList.length, dir);
+				KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
+				localStorage.setItem("KDVibeVolume", "" + KDVibeVolumeListIndex);
+				return true;
+			}, true,
+				CombarXX, YY, 350, CombarHeight, TextGet("KDVibeVolume") + " " + (KDVibeVolume * 100 + "%"), KDBaseWhite, "",
 				() => KDVibeVolumeList[(KDVibeVolumeListIndex + KDVibeVolumeList.length - 1) % KDVibeVolumeList.length] * 100 + "%",
 				() => KDVibeVolumeList[(KDVibeVolumeListIndex + 1) % KDVibeVolumeList.length] * 100 + "%");
 			YY += YYd;
-			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDMusicVolume") + " " + (KDMusicVolume * 100 + "%"), KDBaseWhite, "",
+			DrawBackNextButtonKDEx("optMusicVolume", (dir, _bdata) => {
+				KDMusicVolumeListIndex = KDCycleIndex(KDMusicVolumeListIndex, KDMusicVolumeList.length, dir);
+				KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
+				localStorage.setItem("KDMusicVolume", "" + KDMusicVolumeListIndex);
+				return true;
+			}, true,
+				CombarXX, YY, 350, CombarHeight, TextGet("KDMusicVolume") + " " + (KDMusicVolume * 100 + "%"), KDBaseWhite, "",
 				() => KDMusicVolumeList[(KDMusicVolumeListIndex + KDMusicVolumeList.length - 1) % KDMusicVolumeList.length] * 100 + "%",
 				() => KDMusicVolumeList[(KDMusicVolumeListIndex + 1) % KDMusicVolumeList.length] * 100 + "%");
 			YY += YYd;
-			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDSfxVolume") + " " + (KDSfxVolume * 100 + "%"), KDBaseWhite, "",
+			DrawBackNextButtonKDEx("optSfxVolume", (dir, _bdata) => {
+				KDSfxVolumeListIndex = KDCycleIndex(KDSfxVolumeListIndex, KDSfxVolumeList.length, dir);
+				KDSfxVolume = KDSfxVolumeList[KDSfxVolumeListIndex];
+				localStorage.setItem("KDSfxVolume", "" + KDSfxVolumeListIndex);
+				return true;
+			}, true,
+				CombarXX, YY, 350, CombarHeight, TextGet("KDSfxVolume") + " " + (KDSfxVolume * 100 + "%"), KDBaseWhite, "",
 				() => KDSfxVolumeList[(KDSfxVolumeListIndex + KDSfxVolumeList.length - 1) % KDSfxVolumeList.length] * 100 + "%",
 				() => KDSfxVolumeList[(KDSfxVolumeListIndex + 1) % KDSfxVolumeList.length] * 100 + "%");
 			YY += YYd;
-			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), KDBaseWhite, "",
+			DrawBackNextButtonKDEx("optAnimSpeed", (dir, _bdata) => {
+				KDAnimSpeedListIndex = KDCycleIndex(KDAnimSpeedListIndex, KDAnimSpeedList.length, dir);
+				KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
+				localStorage.setItem("KDAnimSpeed", "" + KDAnimSpeedListIndex);
+				return true;
+			}, true,
+				CombarXX, YY, 350, CombarHeight, TextGet("KDAnimSpeed") + " " + (KDAnimSpeed * 100 + "%"), KDBaseWhite, "",
 				() => KDAnimSpeedList[(KDAnimSpeedListIndex + KDAnimSpeedList.length - 1) % KDAnimSpeedList.length] * 100 + "%",
 				() => KDAnimSpeedList[(KDAnimSpeedListIndex + 1) % KDAnimSpeedList.length] * 100 + "%");
 			YY += YYd * 1.25;
-			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDSelectedFont") + " " + (KDSelectedFont), KDBaseWhite, "",
+			DrawBackNextButtonKDEx("optSelectedFont", (dir, _bdata) => {
+				KDSelectedFontListIndex = KDCycleIndex(KDSelectedFontListIndex, KDSelectedFontList.length, dir);
+				KDSelectedFont = KDFonts.get(KDSelectedFontList[KDSelectedFontListIndex])?.alias || KDFontName;
+				localStorage.setItem("KDSelectedFont", "" + KDSelectedFontListIndex);
+				return true;
+			}, true,
+				CombarXX, YY, 350, CombarHeight, TextGet("KDSelectedFont") + " " + (KDSelectedFont), KDBaseWhite, "",
 				() => KDSelectedFontList[(KDSelectedFontListIndex + KDSelectedFontList.length - 1) % KDSelectedFontList.length],
 				() => KDSelectedFontList[(KDSelectedFontListIndex + 1) % KDSelectedFontList.length]);
 			YY += YYd;
-			DrawBackNextButtonVis(CombarXX, YY, 350, CombarHeight, TextGet("KDButtonFont") + " " + (KDButtonFont), KDBaseWhite, "",
+			DrawBackNextButtonKDEx("optButtonFont", (dir, _bdata) => {
+				KDButtonFontListIndex = KDCycleIndex(KDButtonFontListIndex, KDButtonFontList.length, dir);
+				KDButtonFont = KDFonts.get(KDButtonFontList[KDButtonFontListIndex])?.alias || KDFontName;
+				localStorage.setItem("KDButtonFont", "" + KDButtonFontListIndex);
+				return true;
+			}, true,
+				CombarXX, YY, 350, CombarHeight, TextGet("KDButtonFont") + " " + (KDButtonFont), KDBaseWhite, "",
 				() => KDButtonFontList[(KDButtonFontListIndex + KDButtonFontList.length - 1) % KDButtonFontList.length],
 				() => KDButtonFontList[(KDButtonFontListIndex + 1) % KDButtonFontList.length], undefined, undefined, undefined, {
 					font: KDButtonFont
@@ -8960,8 +8999,8 @@ function KDUpdateScreen() {
 	PIXIapp.view.height = PIXIHeight * resolution;
 }
 
-/** Rebuilds all character models so their render textures use the new KDModelResolution */
-function KDUpdateModelResolution() {
+/** marks all models for rerendering, like when changing resolution or enabling supersampling */
+function KDRefreshAllModels() {
 	for (let C of [...KDCurrentModels.keys()]) {
 		KDClearModel(C);
 		KDRefreshCharacter.set(C, true);
@@ -8974,4 +9013,11 @@ function KDClearPaletteFilters() {
 	}
 	KDPIXIPaletteFilters.clear();
 
+}
+
+let KDCustomToggleIndiv: Record<string, (toggle) => boolean> = {
+	ModelMultisample: (toggle) => {
+		KDRefreshAllModels();
+		return true;
+	}
 }

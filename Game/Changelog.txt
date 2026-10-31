@@ -79,6 +79,9 @@ Must do
 
 5.5.7
 - Fixed "I am a doll" dialogue not spawning a puppeteer or dressmaker to take you to the shoppe
+- Refactoring + added arrows to combo boxes
+- Added model resolution (lower this if you are having issues with crashes)
+- Added model supersampling (enable if you are having )
 
 5.5.6
 - Rendering optimizations

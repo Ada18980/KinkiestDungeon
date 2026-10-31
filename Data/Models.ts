@@ -389,6 +389,7 @@ function GetOverCorset(BaseModel: string): Model {
 
 function KDClearModel(C: Character) {
 	for (let Container of KDCurrentModels.get(C).Containers.values()) {
+		
 		Container.Container.parent?.removeChild(Container.Container);
 		Container.Mesh.parent?.removeChild(Container.Container);
 		KDMeshToDestroy.push(Container.Mesh);
@@ -3432,7 +3433,7 @@ function KDModelIsProtected(m: Model): boolean {
 
 
 
-function KDContainerClear(Container: ContainerInfo) {
+function KDClearContainer(Container: ContainerInfo) {
 	Container.Mesh.destroy({
 		texture: true,
 		baseTexture: true,

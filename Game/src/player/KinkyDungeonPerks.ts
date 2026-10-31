@@ -387,7 +387,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"MasterySenses": {category: "Training", id: "MasterySenses", cost: -1, tags: ["senses"], costGroup: "mastery", costMin: -0.5},
 	"PoorBalance": {category: "Combat", id: "PoorBalance", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
 	"HeadStartHeels": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "heels"], block: ["ClassicHeels"]},
-	"HeadStartCorset": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "corset"]},
+	"HeadStartCorset": {category: "Training", id: "HeadStartCorset", cost: 1, tags: ["start", "corset"]},
 	"HeadStartGag": {category: "Training", id: "HeadStartGag", cost: 1, tags: ["start", "gag"]},
 	"HeadStartSenses": {category: "Training", id: "HeadStartSenses", cost: 1, tags: ["start", "senses"]},
 
