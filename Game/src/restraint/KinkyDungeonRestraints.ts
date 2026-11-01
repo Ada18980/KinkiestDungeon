@@ -3673,6 +3673,7 @@ let KDNoOverrideTags = [
 	"Damsel",
 	"NoPet",
 	"NoKigu",
+	"NoToeRope",
 	"NoBlindfolds",
 	"Blackout",
 	"NoInvis",
@@ -4281,6 +4282,8 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 		if (KinkyDungeonStatsChoice.get("NoBelt2")) playerTags.set("NoBelt", true);
 		if (KinkyDungeonStatsChoice.get("NoBelt1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("NoBelt", true);
 		if (KinkyDungeonStatsChoice.get("NoKigu")) playerTags.set("NoKigu", true);
+		if (KinkyDungeonStatsChoice.get("NoToeRope")) playerTags.set("NoToeRope", true);
+
 		if (KinkyDungeonStatsChoice.get("NoBlindfolds")) playerTags.set("NoBlindfolds", true);
 		if (KinkyDungeonStatsChoice.get("NoPet")) playerTags.set("NoPet", true);
 		if (KinkyDungeonStatsChoice.get("Unchained")) playerTags.set("Unchained", true);

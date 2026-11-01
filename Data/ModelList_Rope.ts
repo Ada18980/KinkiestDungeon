@@ -345,10 +345,11 @@ AddModel({
 	Categories: ["Restraints", "Rope"],
 	AddPose: ["FeetLinked"],
 	Layers: ToLayerMap([
-		{ Name: "Toe", Layer: "OverShoes", Pri: 10,
+		{ Name: "Toe", Layer: "OverShoes", Pri: 104,
 			Poses: ToMap(["Closed"]),
 			CrossHideOverride: true,
 			HideOverrideLayerMulti: ["ToeTie"],
+			HideWhenOverridden: true,
 			InheritColor: "Rope",
 			NoOverride: true,
 		},

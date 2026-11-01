@@ -13045,7 +13045,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		noDupe: true,
 		maxwill: 1.0,
 		enemyTags: {"ropeRestraints":4},
-		playerTags: {"ItemLegsFull":-1},
+		playerTags: {"ItemLegsFull":-1, "NoToeRope": -1000},
 		playerTagsMissingMult: {"ItemAnklesFull":0.05},
 		minLevel: 0,
 		allFloors: true,

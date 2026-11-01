@@ -25,6 +25,8 @@ let KDFocusableTextFields = [
 ];
 
 let KDSlowedSprintCost = 5.0;
+let KDSlowedSprintCostPerSlowAmount = 1;
+let KDSlowedSprintCostPerSlowAmountMax = 5;
 
 let KDMAXGODDESSQUESTS = 3;
 
@@ -4119,6 +4121,22 @@ function KDAddModel (
 			Properties: data.Properties,
 			factionFilters: data.factionFilters,
 		};
+		let folders: Record<string, boolean> = {};
+		if (NA.Model.Folder) {
+			folders[NA.Model.Folder] = true;
+		}
+		if (NA.Model.Layers)
+			for (let layer of Object.values(NA.Model.Layers)) {
+				if (layer.Folder) {
+					folders[layer.Folder] = true;
+				}
+			}
+		for (let folder of Object.keys(folders)) {
+			if (!KDModelAtlasHits[folder]) {
+				PIXI.Assets.load(KDGetModelAtlasURL(folder));
+				KDModelAtlasHits[folder] = (KDModelAtlasHits[folder] || 0) + 1;
+			}
+		}
 		NA.Model.Filters = NA.Filters || NA.Model.Filters;
 		NA.Model.Properties = NA.Properties || NA.Model.Properties;
 		NA.Model.factionFilters = NA.factionFilters || NA.Model.factionFilters;
@@ -4523,7 +4541,12 @@ function KDSprintCost(sprintdata?: any, sprintCost?: number, accountForSlow: boo
 		Math.round(KinkyDungeonSlowLevel))] + (
 			(accountForSlow && KinkyDungeonSlowLevel > 1) ? -KDSprintAdjustSlowed : 0
 		));
-	if (KDGameData.MovePoints < 0) data.cost -= KDSlowedSprintCost;
+	if (KDPlayerIsStunned()) data.cost -= KDSlowedSprintCost;
+	else if (KDGameData.MovePoints < 0) {
+		let penalty = -KDGameData.MovePoints * KDSlowedSprintCostPerSlowAmount;
+		if (penalty > KDSlowedSprintCostPerSlowAmountMax) penalty = KDSlowedSprintCostPerSlowAmount;
+		data.cost -= penalty;
+	}
 
 
 	KinkyDungeonSendEvent("calcSprint", data);

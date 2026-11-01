@@ -116,7 +116,7 @@ interface Submesh {
 }
 
 interface ContainerInfo {
-	readonly SpriteList: Map<string, any>;
+	SpriteList: Map<string, any>;
 	readonly SpritesDrawn: Map<string, any>;
 	readonly Container: PIXIContainer;
 	readonly SpriteGroups: Map<string, PIXIContainer>;
@@ -276,6 +276,7 @@ function GetModelLayersNoOverride(ModelName: string, PrependString?: string, App
 			if (layerSwap) layer.Layer = layerSwap;
 			if (Folder) layer.Folder = Folder;
 			layer.NoOverride = true;
+			layer.CrossHideOverride = false;
 		}
 		return ret;
 	}
@@ -663,66 +664,81 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		let flippedPoses = DrawModelProcessPoses(MC, extraPoses, flip);
 		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
-		let modified = DrawCharacterModels(containerID,
+		let Container = MC.Containers.get(containerID);
+		let oldSpriteList = new Map();
+		for (let entry of Container.SpriteList) {
+			oldSpriteList.set(entry[0], entry[1]);
+		}
+		let ret = DrawCharacterModels(containerID,
 			MC, X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25,
 			Y + Zoom * MODEL_SCALE * MODELHEIGHT/2,
 			(Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
 			MC.Containers.get(containerID), refreshfilters, flip, EndMods);
-		
-		MC.Mods.set(containerID, StartMods);
-		MC.EndMods.set(containerID, EndMods);
-		MC.Update.add(containerID);
+		let modified = ret == "Mod";
 
-		let Container = MC.Containers.get(containerID);
-		// Cull sprites that weren't drawn yet
-
-		modified = KDCullModelContainerContainer(MC, containerID) || modified;
-
-
-		// We only refresh if it actually needs to be updated
-		if (!MC.ForceUpdate.has(containerID)) modified = true; // Force refresh if we are forced to
-
-		for (let pose of [...Object.keys(MC.Poses), ...Object.keys(MC.TempPoses)]) {
-			if (PoseProperties[pose]?.flip) {
-				flip = !flip;
-				break;
-			}
-		}
-
-
-		if (flip && Container.Mesh?.scale.x > 0) {
-			Container.Mesh.scale.x *= -1;
-			modified = true;
-		}
-		else if (!flip && Container.Mesh?.scale.x < 0) {
-			Container.Mesh.scale.x *= -1;
-			modified = true;
-		}
-
-		if (modified && !created) {
+		if (ret == "Load") // skip this frame, update next frame
+		{
 			MC.Refresh.add(containerID);
-			MC.Update.delete(containerID);
-		} else if (modified) {
+			Container.SpritesDrawn.clear();
+			Container.SpriteList = oldSpriteList; // restore backup
+		} else {
+
+			MC.Mods.set(containerID, StartMods);
+			MC.EndMods.set(containerID, EndMods);
+			MC.Update.add(containerID);
+
+			// Cull sprites that weren't drawn yet
+
+			modified = KDCullModelContainerContainer(MC, containerID) || modified;
+
+
+			// We only refresh if it actually needs to be updated
+			if (!MC.ForceUpdate.has(containerID)) modified = true; // Force refresh if we are forced to
+
+			for (let pose of [...Object.keys(MC.Poses), ...Object.keys(MC.TempPoses)]) {
+				if (PoseProperties[pose]?.flip) {
+					flip = !flip;
+					break;
+				}
+			}
+
+
+			if (flip && Container.Mesh?.scale.x > 0) {
+				Container.Mesh.scale.x *= -1;
+				modified = true;
+			}
+			else if (!flip && Container.Mesh?.scale.x < 0) {
+				Container.Mesh.scale.x *= -1;
+				modified = true;
+			}
+
+			if (modified && !created) {
+				MC.Refresh.add(containerID);
+				MC.Update.delete(containerID);
+			} else if (modified) {
 
 
 
 
 
-			//Container.Container.pivot.set(-MODELWIDTH*MODEL_SCALE * Container.Container.scale.x * 0.25 * Zoom, -MODELHEIGHT*MODEL_SCALE * Container.Container.scale.y * 0.25 * Zoom);
-			//Container.Mesh.x += Container.Container.pivot.x;
-			//Container.Mesh.y += Container.Container.pivot.y;
-			//if (MC.Containers.get(containerID).RenderTexture)
-            if (MC.Containers.get(containerID).RenderTexture) {
-				RenderModelContainer(MC, C, containerID);
+				//Container.Container.pivot.set(-MODELWIDTH*MODEL_SCALE * Container.Container.scale.x * 0.25 * Zoom, -MODELHEIGHT*MODEL_SCALE * Container.Container.scale.y * 0.25 * Zoom);
+				//Container.Mesh.x += Container.Container.pivot.x;
+				//Container.Mesh.y += Container.Container.pivot.y;
+				//if (MC.Containers.get(containerID).RenderTexture)
+				if (MC.Containers.get(containerID).RenderTexture) {
+					RenderModelContainer(MC, C, containerID);
+				}
+			}
+			if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
+				PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
+			Container.SpritesDrawn.clear();
+
+			for (let p of flippedPoses) {
+				delete MC.Poses[p];
 			}
 		}
-		if (PIXI.BaseTexture.defaultOptions.scaleMode != oldBlend)
-			PIXI.BaseTexture.defaultOptions.scaleMode = oldBlend;
-		Container.SpritesDrawn.clear();
-
-		for (let p of flippedPoses) {
-			delete MC.Poses[p];
-		}
+		
+		
 	}
 
 	if (StruggleAnimation) {
@@ -1039,7 +1055,7 @@ function KDLayerPropName(l: ModelLayer, Poses: Record<string, boolean>, props: R
  */
 function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom,
 	StartMods: PoseMod[],
-	ContainerContainer: ContainerInfo, refreshfilters: boolean, flip: boolean, EndMods: PoseMod[]) : boolean {
+	ContainerContainer: ContainerInfo, refreshfilters: boolean, flip: boolean, EndMods: PoseMod[]) : string {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
 	let modified = false;
@@ -1095,7 +1111,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let layer = LayerLayer(MC, l, m, Mods);
 				MC.HighestPriority[layer] = Math.max(MC.HighestPriority[layer] || -500, pri || -500);
 			}
-			if (!l.NoOverride && l.CrossHideOverride) {
+			if (l.CrossHideOverride) {
 				if (l.HideOverrideLayerMulti) {
 					for (let hideGroup of l.HideOverrideLayerMulti) {
 						for (let hideLayer of Object.keys(LayerGroups[hideGroup])) {
@@ -2178,6 +2194,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					ContainerContainer.SpritesDrawn,
 					Zoom, false
 				);
+				if (KDAssetNeedsLoading) return "Load";// cancel draw
 
 				// add the filters to the container if not already
 				for (let i = 0; i < filters.length; i++) {
@@ -2285,7 +2302,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 		} else submesh.container.filters = undefined;
 	}
-	return modified;
+	return modified ? "Mod" : "";
 }
 
 function FilterHash(filter) {

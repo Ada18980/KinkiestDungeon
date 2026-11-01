@@ -5208,6 +5208,9 @@ let OPTIONS_NEAREST = {scaleMode: PIXI.SCALE_MODES.NEAREST};
 
 let errorImg = {};
 
+let KDAssetNeedsLoading = false;
+let KDAssetsLoading : Record<string, boolean> = {};
+
 /**
  * Returns a PIXI.Texture, or null if there isnt one
  * @param Image
@@ -5215,16 +5218,43 @@ let errorImg = {};
  * @returns - Requested texture
  */
 function KDTex(Image: string, Nearest?: boolean): PIXITexture {
-	if (KDImageAtlasCache[Image]) KDModelAtlasHits[KDImageAtlasCache[Image]] = (KDModelAtlasHits[KDImageAtlasCache[Image]] || 0) + 1;
+	KDAssetNeedsLoading = false;
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
 	if (errorImg[KDModFiles[Image] || Image]) return null;
+	
+	if (KDAssetsLoading[Image]) {
+		KDAssetNeedsLoading = true;
+		return null;
+	}
 	if (KDImageAtlasCache[Image] == undefined) {
 		KDImageAtlasCache[Image] = KDGetModelAtlasID(Image);
-		if (KDImageAtlasCache[Image] && !kdpixitex.has(Image) && !errorImg[KDModFiles[Image] || Image]) {
-			PIXI.Assets.load(KDGetModelAtlasURL(KDImageAtlasCache[Image]));
+		if (KDImageAtlasCache[Image]) {
+			if (!KDModelAtlasHits[KDImageAtlasCache[Image]]) {
+				KDAssetsLoading[Image] = true;
+				PIXI.Assets.load(KDGetModelAtlasURL(KDImageAtlasCache[Image])).then(() => {
+					let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST)
+						: PIXI.Texture.from(KDModFiles[Image] || Image);
+					if (!tex) {
+						errorImg[KDModFiles[Image] || Image] = true;
+					} else {
+						kdpixitex.set(Image, tex);
+					}
+					delete KDAssetsLoading[Image];
+				}, () => {
+					delete KDAssetsLoading[Image];
+				});
+				setTimeout(() => {
+					delete KDAssetsLoading[Image];
+				}, 1000);
+				KDAssetNeedsLoading = true;
+				if (KDImageAtlasCache[Image]) KDModelAtlasHits[KDImageAtlasCache[Image]] = (KDModelAtlasHits[KDImageAtlasCache[Image]] || 0) + 1;
+				return null;
+			}
 		}
 	}
+	if (KDImageAtlasCache[Image]) KDModelAtlasHits[KDImageAtlasCache[Image]] = (KDModelAtlasHits[KDImageAtlasCache[Image]] || 0) + 1;
 	try {
+		if (KDAssetNeedsLoading) return null;
 		let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST)
 		: PIXI.Texture.from(KDModFiles[Image] || Image);
 		if (!tex) {
@@ -5235,6 +5265,7 @@ function KDTex(Image: string, Nearest?: boolean): PIXITexture {
 		return tex;
 	} catch (e) {
 		console.log("Failed to find texture " + Image);
+		errorImg[KDModFiles[Image] || Image] = true;
 		return null;
 	}
 }

@@ -264,6 +264,21 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "Petsuits"),
             tooltip: TextGet("KDConsentListDesc_" + "Petsuits"),
     },
+    ToeTies: {
+            name: "ToeTies",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "",
+            perkYellow: "NoToeRope",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "ToeTies"),
+            tooltip: TextGet("KDConsentListDesc_" + "ToeTies"),
+    },
     ForcedOwner: {
             name: "ForcedOwner",
             color: KDBaseWhite,
@@ -551,6 +566,7 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "PrisonerMarkings"),
             tooltip: TextGet("KDConsentListDesc_" + "PrisonerMarkings"),
     },
+    
     SleepFood: {
             name: "SleepFood",
             color: KDBaseWhite,
