@@ -5215,8 +5215,12 @@ let errorImg = {};
  * @returns - Requested texture
  */
 function KDTex(Image: string, Nearest?: boolean): PIXITexture {
+	if (KDImageAtlasCache[Image]) KDModelAtlasHits[KDImageAtlasCache[Image]] = (KDModelAtlasHits[KDImageAtlasCache[Image]] || 0) + 1;
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
 	if (errorImg[KDModFiles[Image] || Image]) return null;
+	if (KDImageAtlasCache[Image] == undefined) {
+		KDImageAtlasCache[Image] = KDGetModelAtlasID(Image);
+	}
 	try {
 		let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST)
 		: PIXI.Texture.from(KDModFiles[Image] || Image);

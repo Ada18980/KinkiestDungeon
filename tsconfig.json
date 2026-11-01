@@ -178,6 +178,7 @@
         "Data/Defs.ts",
         "Data/Poses.ts",
         "Data/Models.ts",
+        "Data/ModelAtlases.ts",
         "Data/MushWarp.ts",
         "Data/ModelListHair.ts",
         "Data/ModelListHair2.ts",

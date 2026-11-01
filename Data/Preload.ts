@@ -406,7 +406,7 @@ let displacementList = [
 
 KDLoadToggles();
 let linearList = [];
-if (KDToggles.MobileTextures) {
+/*if (KDToggles.MobileTextures) {
 	linearList.push(...[
 	"TextureAtlas/models_mobile_0000.json",
 ]);
@@ -414,7 +414,7 @@ if (KDToggles.MobileTextures) {
 	linearList.push(...[
 	"TextureAtlas/models_0000.json",
 ]);
-}
+}*/
 linearList.push(
 	"TextureAtlas/displacement_0000.json");
 
