@@ -33,6 +33,8 @@
 !/style.css
 !/tools/*
 /tools/*.cache
+/tools/models/
+/tools/mobile/
 
 .DS_Store
 */.DS_Store

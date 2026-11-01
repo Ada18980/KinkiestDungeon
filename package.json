@@ -9,8 +9,9 @@
         "buildContWSL": "tsc -b --watch --watchDirectory dynamicprioritypolling --watchFile dynamicPriorityPolling",
         "buildTypes": "tsc --declaration --emitDeclarationOnly --removeComments false",
         "serve": "http-server",
-        "pack": "python tools/pack.py",
-        "forcepack": "python tools/pack.py rc"
+        "genatlas": "python tools/gen_model_atlas_confs.py",
+        "pack": "npm run genatlas && python tools/pack.py",
+        "forcepack": "npm run genatlas && python tools/pack.py rc"
     },
     "author": "Ada18980",
     "license": "All Rights Reserved",

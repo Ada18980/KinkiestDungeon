@@ -30,3 +30,13 @@ packs = [
 for pack in packs:
     print(f"--- {wtxpck} {pack} {flags}")
     subprocess.run([wtxpck, pack, flags], check=True)
+
+# Per-folder atlases
+# create an atlas for each folder so we can load folder whenever an asset needs it
+wtxpck_abs = os.path.abspath(wtxpck)
+for folder in ["models", "mobile"]:
+    if not os.path.isdir(folder):
+        continue
+    for pack in sorted(f for f in os.listdir(folder) if f.endswith(".conf")):
+        print(f"--- {wtxpck} {folder}/{pack} {flags}")
+        subprocess.run([wtxpck_abs, pack, flags], check=True, cwd=folder)
