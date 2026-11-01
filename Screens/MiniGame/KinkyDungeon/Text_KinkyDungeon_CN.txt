@@ -470,6 +470,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 高分辨率形变 ( 需重启 )
 - Low-Res Textures (Needs Restart)
 低分辨率贴图 (需要重启)
+# - Portrait Supersampling
+
 - Hi-Res Model (no restart needed)
 高分辨率模型 ( 无需重启 )
 - High Quality Animations
@@ -558,8 +560,10 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - You bump into a wall.
 你撞到了一堵墙。
 
+
 - Game Resolution:
 游戏分辨率 :‎
+# - Model Resolution:
 - Resolution:
 分辨率 :‎
 - Toy Volume:
@@ -2403,7 +2407,7 @@ ${You}被沉默，无法轻易施放法术。
 - Trance
 恍惚
 - ${Youve} fallen into a trance, giving accuracy and miscast penalties.
-${Youve}陷入恍惚，使那些暗示更加强大。
+${Youve}陷入恍惚，命中率降低，施法失误概率增加。
 - Locked Down
 锁定
 # :: KDBuffName_StraitjacketBolt
