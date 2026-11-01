@@ -5220,6 +5220,9 @@ function KDTex(Image: string, Nearest?: boolean): PIXITexture {
 	if (errorImg[KDModFiles[Image] || Image]) return null;
 	if (KDImageAtlasCache[Image] == undefined) {
 		KDImageAtlasCache[Image] = KDGetModelAtlasID(Image);
+		if (KDImageAtlasCache[Image] && !kdpixitex.has(Image) && !errorImg[KDModFiles[Image] || Image]) {
+			PIXI.Assets.load(KDGetModelAtlasURL(KDImageAtlasCache[Image]));
+		}
 	}
 	try {
 		let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST)

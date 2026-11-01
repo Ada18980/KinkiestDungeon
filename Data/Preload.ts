@@ -446,63 +446,67 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 
 	}
 	for (let dataFile of list) {
-		let result = preload ? await PIXI.Assets.load(dataFile+ buildSuff).then((value) => {
-
-			let amount = 100;
-			//console.log(value)
-			CurrentLoading = "Loaded " + dataFile;
-			//console.log(dataFile);
-			KDLoadingDone += amount;
-
-		}, () => {
-
-			let amount = 100;
-			CurrentLoading = "Error Loading " + dataFile;
-			KDLoadingDone += amount;
-		})
-		 : await PIXI.Assets.load(dataFile + buildSuff).then((value) => {
-			for (let s of Object.values(value.linkedSheets)) {
-				for (let t of Object.keys((s as any).textures)) {
-					let tsprite = PIXI.Sprite.from(KDTex(t, scale_mode == PIXI.SCALE_MODES.NEAREST));
-					let rt = PIXI.RenderTexture.create(
-						{ width: 100, height: 100,
-							scaleMode: scale_mode,
-							resolution: 1});
-
-					PIXIapp.renderer.render(tsprite, {
-						//blit: true,
-						clear: true,
-						renderTexture: rt,
-						blit: true,
-					});
-					tsprite.destroy();
-					rt.destroy(true);
-				}
-			}
-
-			let amount = 100;
-			//console.log(value)
-			CurrentLoading = "Loaded " + dataFile;
-			//console.log(dataFile);
-			KDLoadingDone += amount;
-			//console.log(amount)
-		 }, () => {
-
-			let amount = 100;
-			CurrentLoading = "Error Loading " + dataFile;
-			KDLoadingDone += amount;
-		});
-
-
-		/*result.then((value) => {
-
-		}, () => {
-			CurrentLoading = "Error Loading " + dataFile;
-			KDLoadingDone += amount;
-		});*/
-		//let atlas = await result;
+		LoadSingleTextureAtlas(dataFile, scale_mode, preload);
 	}
 
+}
+
+async function LoadSingleTextureAtlas(dataFile: string, scale_mode, preload) {
+	let result = !preload ? await PIXI.Assets.load(dataFile+ buildSuff).then((value) => {
+
+		let amount = 100;
+		//console.log(value)
+		CurrentLoading = "Loaded " + dataFile;
+		//console.log(dataFile);
+		KDLoadingDone += amount;
+
+	}, () => {
+
+		let amount = 100;
+		CurrentLoading = "Error Loading " + dataFile;
+		KDLoadingDone += amount;
+	})
+		: await PIXI.Assets.load(dataFile + buildSuff).then((value) => {
+		for (let s of Object.values(value.linkedSheets)) {
+			for (let t of Object.keys((s as any).textures)) {
+				let tsprite = PIXI.Sprite.from(KDTex(t, scale_mode == PIXI.SCALE_MODES.NEAREST));
+				let rt = PIXI.RenderTexture.create(
+					{ width: 100, height: 100,
+						scaleMode: scale_mode,
+						resolution: 1});
+
+				PIXIapp.renderer.render(tsprite, {
+					//blit: true,
+					clear: true,
+					renderTexture: rt,
+					blit: true,
+				});
+				tsprite.destroy();
+				rt.destroy(true);
+			}
+		}
+
+		let amount = 100;
+		//console.log(value)
+		CurrentLoading = "Loaded " + dataFile;
+		//console.log(dataFile);
+		KDLoadingDone += amount;
+		//console.log(amount)
+		}, () => {
+
+		let amount = 100;
+		CurrentLoading = "Error Loading " + dataFile;
+		KDLoadingDone += amount;
+	});
+
+
+	/*result.then((value) => {
+
+	}, () => {
+		CurrentLoading = "Error Loading " + dataFile;
+		KDLoadingDone += amount;
+	});*/
+	//let atlas = await result;
 }
 
 async function PreloadDisplacement(list) {
