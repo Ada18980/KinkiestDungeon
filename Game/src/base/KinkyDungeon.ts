@@ -4590,7 +4590,7 @@ function KDFunctionMsgScroll(amount: number): boolean {
 }
 function KDFunctionRestraintIndexScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game"
-		&& !KDCurrentScrollableListHover
+		//&& !KDCurrentScrollableListHover
 		&& KinkyDungeonDrawStruggleHover && currentDrawnSG && currentDrawnSGLength) {
 		KDScrollMovedStruggleItem = true
 		if (amount > 0) {
@@ -7060,6 +7060,12 @@ window.addEventListener('mouseup', function(event) {
 	LastHoldTime = CommonTime() - HoldStartTime;
 });
 window.addEventListener('wheel', function(event) {
+	if (Math.abs(event.deltaX)
+		&& Math.sign(event.deltaX) != Math.sign(KDScrollCapacitorX))
+		KDScrollCapacitorX = 0;
+	if (Math.abs(event.deltaY)
+		&& Math.sign(event.deltaY) != Math.sign(KDScrollCapacitorY))
+		KDScrollCapacitorY = 0;
 	KDScrollCapacitorX += event.deltaX;
 	KDScrollCapacitorY += event.deltaY;
 

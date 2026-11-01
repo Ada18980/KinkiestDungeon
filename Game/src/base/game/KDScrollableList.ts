@@ -23,6 +23,8 @@ interface KDScrollableListData {
 	lastDrawn: number,
 	drawAll?: boolean,
 	redraw?: boolean,
+	noscroll?: boolean,
+	scrollCallback?: (items: any[], indexNew: number, indexOld: number, amount: number) => void;
 }
 let KDScrollableListExp = 10;
 let KDScrollableListMin = 4;
@@ -47,7 +49,7 @@ function ForceUpdateList(name: string) {
 	}
 }
 function PopulateList(name: string, x: number, y: number, w: number, h: number, zIndex: number, num_per_page: number, items: any[],
-	allowWrap?: boolean, drawAll?: boolean, updateInterval: number = 500): KDScrollableListData {
+	allowWrap?: boolean, drawAll?: boolean, updateInterval: number = 500, noscroll?: boolean): KDScrollableListData {
 	let dataset = KDScrollableListDataset[name];
 	if (!dataset) {
 		dataset = {
@@ -60,6 +62,7 @@ function PopulateList(name: string, x: number, y: number, w: number, h: number, 
 			lastDrawn: 0,
 			updateInterval: updateInterval,
 			drawAll: drawAll,
+			noscroll: noscroll,
 		} as any;
 		KDScrollableListDataset[name] = dataset;
 	}
@@ -124,7 +127,7 @@ function KDScrollScrollableLists(mouseX: number, mouseY: number, scrollAmount: n
 	const highest = KDHighestScrollableList(mouseX, mouseY);
 	if (highest) {
 		let list = KDScrollableListDataset[highest];
-		if (list) {
+		if (list && !list.noscroll) {
 			KDScrollScrollableList(highest, scrollAmount)
 			return true;
 		}
@@ -145,6 +148,9 @@ function KDScrollScrollableList(name: string, amount: number) {
 	}
 	else {
 		list.index = KDClamp(list.index + amount, list.min, list.max);
+	}
+	if (list.scrollCallback) {
+		list.scrollCallback(list.items, list.index, origIndex, amount);
 	}
 	return list.index != origIndex;
 }
@@ -201,11 +207,13 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	list: KDScrollableListData) => boolean, drawBG = true, horizontal = false, scrollbarSize = 36,
 	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string, pad: number = 4,
 	scrollButtons: boolean = true, scrollbarSize2 = undefined, scrollBarColor?: string, scrollbarClickable: boolean = true,
-	scrollCallback?: (items: any[], listItemTo: number, index: number, amount: number) => boolean): any {
+	buttonScrollCallback?: (items: any[], listItemTo: number, index: number, amount: number) => boolean,
+	scrollCallback?: (items: any[], indexNew: number, indexOld: number, amount: number) => void): any {
 	let list = KDScrollableListDataset[name];
 	let container = kdcanvas;
 
 	list.lastDrawn = CommonTime();
+	list.scrollCallback = scrollCallback;
 	
 	
 	if (useContainer != undefined) {
@@ -539,10 +547,10 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 
 
 	
-	if (scrollCallback) {
+	if (buttonScrollCallback) {
 		if (scrollhotkeyUp)
 			DrawButtonKDEx(
-				name + "upscrollbtn", () => scrollCallback(list.items, selected, list.selectedindex, -1), true,
+				name + "upscrollbtn", () => buttonScrollCallback(list.items, selected, list.selectedindex, -1), true,
 				PIXIWidth,
 				PIXIHeight,
 				10,
@@ -566,7 +574,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		if (scrollhotkeyDown)
 			DrawButtonKDEx(
 				name + "downscrollbtn",
-				() => scrollCallback(list.items, selected, list.selectedindex, 1),
+				() => buttonScrollCallback(list.items, selected, list.selectedindex, 1),
 				true,
 				PIXIWidth,
 				PIXIHeight,

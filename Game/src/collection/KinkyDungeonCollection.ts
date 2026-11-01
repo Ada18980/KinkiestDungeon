@@ -485,7 +485,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		KDToggleBigView = !KDToggleBigView;
 		return true;
 	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
-		KinkyDungeonRootDirectory + "UI/vision.png", undefined, undefined,
+		KinkyDungeonRootDirectory + "UI/Inspect.png", undefined, undefined,
 		!KDToggleBigView, KDButtonColorIntense, undefined, undefined, {
 			centered: true
 		})) {

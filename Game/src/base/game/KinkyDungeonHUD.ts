@@ -4167,14 +4167,15 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 	let listID = x + y + KDRestraint(item).Group;
 	let doFix = false;
 	if (KinkyDungeonCheckClothesLoss || KDScrollMovedStruggleItem || ShouldUpdateList(listID)) {
-		let list: ProgressListData[] = KDEnumerateProgressItems();
-		PopulateList(listID, 
+		let list = PopulateList(listID, 
 			x, 
 			y, 
 			width, size, zIndex, 
 			Math.floor(width / size),
-			dynamicList, false, true, 50
+			dynamicList, false, true, 50,
+			true // we handle scroll spearately
 		);
+		list.max = dynamicList.length - 1;
 		if (KinkyDungeonCheckClothesLoss || KDScrollMovedStruggleItem) {
 			doFix = true;
 		}
@@ -4264,9 +4265,10 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 		
 
 		
-		return selected;
+		return KDStruggleGroupLinkIndex[sg.group] == listRow;
 	}, false, true, 0, undefined, 
-	"", "", undefined, undefined, undefined, undefined, false);
+	"", "", undefined, undefined, 
+	undefined, undefined, false);
 
 	if (hoverCallback) hoverCallback();
 	if (doFix) {
