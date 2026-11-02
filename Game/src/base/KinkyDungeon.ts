@@ -1028,6 +1028,9 @@ function KDLoadToggles() {
 	KDUpdateButtplug();
 }
 function KDSaveToggles() {
+	//@ts-ignore
+	if (!window.kdAPI && !TestMode) delete KDToggles.Preload;
+
 	localStorage.setItem("KDToggles", JSON.stringify(KDToggles));
 	localStorage.setItem("KDConsentArray", JSON.stringify(KDConsentArray));
 

@@ -220,6 +220,8 @@ let KDToggles = {
 	Buttplug: false,
 };
 
+//@ts-ignore
+if (!window.kdAPI && !TestMode) delete KDToggles.Preload;
 
 
 let KDToggleCategories = {

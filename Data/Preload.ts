@@ -407,7 +407,9 @@ let displacementList = [
 KDLoadToggles();
 let linearList = [];
 let preloaded = false;
-if (KDToggles.Preload) {
+
+//@ts-ignore
+if (KDToggles.Preload || (!window.kdAPI && !TestMode)) {
 	preloaded = true;
 	if (KDToggles.MobileTextures) {
 		linearList.push(...[

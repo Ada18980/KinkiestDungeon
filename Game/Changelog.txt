@@ -79,6 +79,7 @@ Must do
 5.5.8
 - Added dynamic loading- this should reduce average memory requirements
 - Added toggle to fully preload all assets (only use on computers with a lot of memory)
+- Dynamic loading is only available offline due to Itch.io web limitations
 
 5.5.7
 - Fixed "I am a doll" dialogue not spawning a puppeteer or dressmaker to take you to the shoppe
