@@ -14,7 +14,7 @@ let KDModelAtlasHits: Record<string, number> = {
 let KDImageAtlasCache: Record<string, string> = {
 
 }
-let KDModelAtlasCacheInterval = 100000;//set to quick for testing to check performance
+let KDModelAtlasCacheInterval = 10000;//set to quick for testing to check performance
 // Removes this fraction - 1 hit
 let KDModelAtlasCachePercent = 0.1;
 

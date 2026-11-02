@@ -524,6 +524,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 
 	let OldSubmeshes = null;
 	let OldMesh: PIXIMesh = null;
+	let OldContainer: PIXIContainer = null;
 	if (MC.Containers.get(containerID) && !MC.Update.has(containerID) && MC.Refresh.has(containerID)) {
 
 		let data = {
@@ -561,7 +562,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		//console.log("Refreshed!")
 		// Refresh the container!
 		DrawCanvas.removeChild(MC.Containers.get(containerID).Mesh);
-		MC.Containers.get(containerID).Container.destroy();
+		MC.Containers.get(containerID).Container.removeChildren();
+		OldContainer = MC.Containers.get(containerID).Container;
 		//MC.Containers.get(containerID).Mesh.destroy();
 
 
@@ -618,7 +620,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		KDRTActive.set(Mesh, RT);
 		Mesh.sortableChildren = true;
 		let Container: ContainerInfo = {
-			Container: new PIXI.Container(),
+			Container: OldContainer || new PIXI.Container(),
 			Mesh: Mesh,//Mesh(new PIXI.PlaneGeometry(MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE, 100, 100), new PIXI.MeshMaterial(PIXI.Texture.WHITE)),
 			SpritesDrawn: new Map(),
 			SpriteGroups: new Map(),//OldSpriteGroups || 
@@ -681,7 +683,19 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 			MC.Refresh.add(containerID);
 			Container.SpritesDrawn.clear();
 			Container.SpriteList = oldSpriteList; // restore backup
+			
+			Container.Mesh.visible = false;
+			let spr = KDDraw(DrawCanvas, kdpixisprites, containerID + "--spr",
+				KinkyDungeonRootDirectory + "Placeholder.png", 
+				X + Zoom * 500 * (flip ? 1 : 0), Y, 
+				Zoom * 500, Zoom * 1000,
+				0
+			);
+			if (spr && flip) {
+				spr.scale.x = -1 * Zoom;
+			}
 		} else {
+			Container.Mesh.visible = true;
 
 			MC.Mods.set(containerID, StartMods);
 			MC.EndMods.set(containerID, EndMods);

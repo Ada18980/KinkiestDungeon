@@ -1069,7 +1069,7 @@ let KDHypnoIntensity = 3;
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
 	if (KDShowLoading) {
-		if (Object.values(KDAssetsLoading).length > 0) {
+		if (Object.values(KDAssetsLoading).length > 0 || KDAtlasesLoading) {
 			DrawTextFitKD(TextGet("KDLoadingGame"),
 		PIXIWidth/2, PIXIHeight/2, 1000, KDBaseWhite, undefined, 36, undefined,
 			501);
@@ -5237,6 +5237,8 @@ let errorImg = {};
 
 let KDAssetNeedsLoading = false;
 let KDAssetsLoading : Record<string, boolean> = {};
+let KDAtlasesLoading : Record<string, boolean> = {};
+
 
 /**
  * Returns a PIXI.Texture, or null if there isnt one
@@ -5257,8 +5259,7 @@ function KDTex(Image: string, Nearest?: boolean): PIXITexture {
 	if (KDImageAtlasCache[Image] == undefined && !preloaded) {
 		KDImageAtlasCache[Image] = KDGetModelAtlasID(Image);
 		if (KDImageAtlasCache[Image]) {
-			
-			if (KDHitModelFolderAtlas(KDImageAtlasCache[Image], () => {
+			let startload = KDHitModelFolderAtlas(KDImageAtlasCache[Image], () => {
 				let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST)
 					: PIXI.Texture.from(KDModFiles[Image] || Image);
 				if (!tex) {
@@ -5269,8 +5270,11 @@ function KDTex(Image: string, Nearest?: boolean): PIXITexture {
 				delete KDAssetsLoading[Image];
 			}, () => {
 				delete KDAssetsLoading[Image];
-			})) {
-				KDAssetsLoading[Image] = true;
+			});
+			
+			if (startload || !KDModelTexturesToRemove[KDImageAtlasCache[Image]]) {
+				if (startload)
+					KDAssetsLoading[Image] = true;
 				setTimeout(() => {
 					delete KDAssetsLoading[Image];
 				}, 1000);
@@ -6866,11 +6870,13 @@ function KDPlayerOffsetX() {
  * @param reject 
  * @returns Whether or not it started a load process
  */
-function KDHitModelFolderAtlas(folder: string, cb?: () => void, reject?: () => void): boolean {
+function KDHitModelFolderAtlas(folder: string, cb?: (value) => void, reject?: (value) => void): boolean {
 	let loaded = false;
 	if (!KDModelAtlasHits[folder]) {
 		loaded = true;
-		PIXI.Assets.load(KDGetModelAtlasURL(folder)).then((value) => {
+		let url = KDGetModelAtlasURL(folder);
+		KDAtlasesLoading[url] = true;
+		PIXI.Assets.load(url).then((value) => {
 			if (!KDModelTexturesToRemove[folder]) {
 				KDModelTexturesToRemove[folder] = [];
 			}
@@ -6884,8 +6890,12 @@ function KDHitModelFolderAtlas(folder: string, cb?: () => void, reject?: () => v
 				for (let t of Object.keys(value.textures)) {
 					KDModelTexturesToRemove[folder].push(t);
 				}
-			if (cb) cb();
-		}, reject);
+			if (cb) cb(value);
+			delete KDAtlasesLoading[url];
+		}, (value) => {
+			reject(value);
+			delete KDAtlasesLoading[url];
+		});
 	}
 	KDModelAtlasHits[folder] = (KDModelAtlasHits[folder] || 0) + 1;
 	return loaded;

@@ -77,7 +77,8 @@ Must do
 - species perks
 
 5.5.8
-
+- Added dynamic loading- this should reduce average memory requirements
+- Added toggle to fully preload all assets (only use on computers with a lot of memory)
 
 5.5.7
 - Fixed "I am a doll" dialogue not spawning a puppeteer or dressmaker to take you to the shoppe
