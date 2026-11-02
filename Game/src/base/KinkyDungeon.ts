@@ -1348,17 +1348,21 @@ function KinkyDungeonLoad(): void {
 			}
 
 			if (!cancel) {
-				let code = KinkyDungeonKeySkip[0];
-				if (!KinkyDungeonKeybindingCurrentKey) {
-					KinkyDungeonKeybindingCurrentKey = code;
-					KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime() + 100;
-					// We also press it for 100 msec
-					(async function() {
-						KinkyDungeonGameKey.keyPressed[9] = true;
-						KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
-						await sleep(100);
-						KinkyDungeonGameKey.keyPressed[9] = false;
-					})();
+				if (KDCurrentKeyBindSet) KDCurrentKeyBindSet = '';
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+				else {
+					let code = KinkyDungeonKeySkip[0];
+					if (!KinkyDungeonKeybindingCurrentKey) {
+						KinkyDungeonKeybindingCurrentKey = code;
+						KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime() + 100;
+						// We also press it for 100 msec
+						(async function() {
+							KinkyDungeonGameKey.keyPressed[9] = true;
+							KDConfirmDeleteSave = false; KinkyDungeonReplaceColorConfirm = -999; 
+							await sleep(100);
+							KinkyDungeonGameKey.keyPressed[9] = false;
+						})();
+					}
 				}
 			}
 
