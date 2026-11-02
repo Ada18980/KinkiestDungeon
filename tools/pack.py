@@ -2,6 +2,7 @@
 import subprocess
 import sys
 import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -33,10 +34,26 @@ for pack in packs:
 
 # Per-folder atlases
 # create an atlas for each folder so we can load folder whenever an asset needs it
+# run in parallel, printing each pack's output once it finishes so they don't interleave
 wtxpck_abs = os.path.abspath(wtxpck)
-for folder in ["models", "mobile"]:
-    if not os.path.isdir(folder):
-        continue
-    for pack in sorted(f for f in os.listdir(folder) if f.endswith(".conf")):
+jobs = [(folder, pack)
+        for folder in ["models", "mobile"] if os.path.isdir(folder)
+        for pack in sorted(f for f in os.listdir(folder) if f.endswith(".conf"))]
+
+def run_pack(folder, pack):
+    r = subprocess.run([wtxpck_abs, pack, flags], cwd=folder,
+                       capture_output=True, text=True)
+    return folder, pack, r
+
+failed = []
+with ThreadPoolExecutor(max_workers=os.cpu_count()) as ex:
+    for fut in as_completed([ex.submit(run_pack, folder, pack) for folder, pack in jobs]):
+        folder, pack, r = fut.result()
         print(f"--- {wtxpck} {folder}/{pack} {flags}")
-        subprocess.run([wtxpck_abs, pack, flags], check=True, cwd=folder)
+        print(r.stdout, end="")
+        print(r.stderr, end="", file=sys.stderr)
+        if r.returncode != 0:
+            failed.append(f"{folder}/{pack}")
+
+if failed:
+    sys.exit(f"Failed packs: {', '.join(sorted(failed))}")
