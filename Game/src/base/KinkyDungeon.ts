@@ -3544,7 +3544,7 @@ function KDPurgeSpriteRelatedFilters(sprite: PIXISprite | PIXITexture) {
 }
 
 function KDCullModelContainers(time: number, refresh: boolean) {
-	KDDoFilterRefresh();
+	//KDDoFilterRefresh();
 
 	let MCNumber = Math.max(1, KDCurrentModels.size);
 	for (let ent of KDCurrentModels.entries()) {
