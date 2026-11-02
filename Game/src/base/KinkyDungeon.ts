@@ -3447,10 +3447,13 @@ function KinkyDungeonRun() {
 	}
 
 
-	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings") || !KDCurrentKeyBindSet) {
+	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings") || KDCurrentKeyBindSet) {
 		if (KDCurrentKeyBindSet && (KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings")) {
-			KinkyDungeonKeybindingsTemp[KDCurrentKeyBindSet] = KinkyDungeonKeybindingCurrentKey;
-			KDCurrentKeyBindSet = "";
+			if (KinkyDungeonKeybindingCurrentKey) {
+				KinkyDungeonKeybindingsTemp[KDCurrentKeyBindSet] = KinkyDungeonKeybindingCurrentKey;
+				KDCurrentKeyBindSet = "";
+				KinkyDungeonKeybindingCurrentKey = "";
+			}
 		} else {
 			KDCurrentKeyBindSet = "";
 			if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
@@ -8400,9 +8403,16 @@ let KDCustomToggleTab: Record<string, () => void > = {
 
 			if (KDOptionFilter != "" && !(txt == KDOptionFilter.toLocaleLowerCase() || txt.includes(KDOptionFilter.toLocaleLowerCase())))continue;
 			DrawButtonKDEx("KB" + key, 
-				() => {KDCurrentKeyBindSet = key; return true;}, KinkyDungeonKeybindingCurrentKey != '',
-				X, Y, dX, dY, TextGet("KinkyDungeonKey" + key) + ": '" + (KinkyDungeonKeybindingsTemp[key]) + "'",
-				KinkyDungeonKeybindingsTemp[key] == KinkyDungeonKeybindingCurrentKey ? KDBaseWhite : "#aaaaaa", "", undefined, undefined, true, KDButtonColor);
+				() => {
+					KDCurrentKeyBindSet = key;
+					KinkyDungeonKeybindingCurrentKey = '';
+					return true;
+				}, true,
+				X, Y, dX, dY, 
+				TextGet("KinkyDungeonKey" + key) + ": '" + (KinkyDungeonKeybindingsTemp[key]) + "'",
+				KinkyDungeonKeybindingsTemp[key] == KinkyDungeonKeybindingCurrentKey ? KDBaseWhite : "#aaaaaa", 
+				"", undefined, undefined, KDCurrentKeyBindSet != key, 
+				KDCurrentKeyBindSet == key ? KDButtonColorLight : KDButtonColor);
 
 			Y += dY + pad;
 			if (Y > maxY) {

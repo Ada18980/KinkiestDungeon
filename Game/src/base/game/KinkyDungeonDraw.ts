@@ -2543,7 +2543,7 @@ function KinkyDungeonDrawGame() {
 	}
 
 	if ((KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
-		if (!KinkyDungeonKeybindingCurrentKey) {
+		if (!KinkyDungeonKeybindingCurrentKey && !KDCurrentKeyBindSet) {
 			KinkyDungeonKeybindingCurrentKey = KinkyDungeonKeySkip[0];
 
 			KDCheckCustomKeypress();
@@ -3241,6 +3241,7 @@ type CircleParams = {
 let KDBoxThreshold = 60;
 let KDButtonColor = "rgba(5, 5, 5, 0.5)";
 let KDButtonColorIntense = "rgba(5, 5, 5, 0.8)";
+let KDButtonColorLight = "rgba(45, 45, 45, 0.5)";
 let KDBorderColor = KDBaseLightGrey;
 let KDUIColorHighlight = KDBaseLightGrey;//"#ffee83";
 let KDHighlightColor = 'rgb(220, 207, 178)';//'rgb(225, 187, 104)'
@@ -6911,7 +6912,7 @@ function KDHitModelFolderAtlas(folder: string, cb?: (value) => void, reject?: (v
 			if (cb) cb(value);
 			setTimeout(() => {
 				delete KDAtlasesLoading[folder];
-			}, 10);
+			}, 20);
 		}, (value) => {
 			reject(value);
 			delete KDAtlasesLoading[folder];
