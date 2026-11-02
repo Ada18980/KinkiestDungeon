@@ -285,7 +285,10 @@ function KinkyDungeonHandleStairs(toTile: string, suppressCheckPoint?: boolean) 
 		KDStairsAltAction[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction](toTile, suppressCheckPoint);
 	}
 	else {
-		if (!KDPlayer().leash) {
+		if (!KDPlayer().leash || (
+			KinkyDungeonLeashingEnemy()?.IntentAction
+			&& KDIntentEvents[KinkyDungeonLeashingEnemy().IntentAction]?.allowStairs
+		)) {
 			KDGoThruTile(KDPlayer().x, KDPlayer().y, suppressCheckPoint, false, true);
 		} else {
 			KinkyDungeonSendActionMessage(10, TextGet("ClimbDownFail"), KDBaseWhite, 1);

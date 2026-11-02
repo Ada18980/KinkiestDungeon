@@ -824,11 +824,16 @@ function KDPackEnemies(data: KDMapDataType) {
  * @param [ignoreAware] - Enemies will lock the door if this is true and they see you enter
  */
 function KDLoadMapFromWorld(x: number, y: number, room: string, direction: number = 0, constantX?: boolean, ignoreAware: boolean = true): KDMapDataType {
+	
+
 	let origx = x;
 	if (constantX) x = 0;
 
 	if (!KDWorldMap[x + ',' + y]) return KDMapData;
 	if (!KDWorldMap[x + ',' + y].data[room]) return KDMapData;
+
+	
+	let tether = KDBreakTether(KDPlayer());
 
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
@@ -881,6 +886,8 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
 
 	for (let e of allies) {
 		let ent = KDAddEntity(e, true, undefined, true);
+		
+		if (tether && tether.entity == e.id) KDPlayer().leash = tether;
 	}
 
 	for (let e of KinkyDungeonGetAllies()) {
@@ -3085,7 +3092,13 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 				KDModalArea = false;
 				// We can pick up items inside walls, in case an enemy drops it into bars
 				KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
-				if (!KinkyDungeonHandleMoveObject(moveX, moveY, moveObject)) {// Move
+				
+				let willSprint = (forceSprint || KinkyDungeonToggleAutoSprint) && !SuppressSprint;
+
+				if (!KinkyDungeonHandleMoveObject(moveX, moveY, moveObject, 
+					(willSprint && KDCanSprint(KDSprintCost())) ? 
+					// end if we hopping
+					(KDSprintLimited(KDPlayer()) ? 2 : 1) : 0)) {// Move
 					KinkyDungeonNoMoveFlag = false;
 					KinkyDungeonConfirmStairs = false;
 					KinkyDungeonSendEvent("beforeMove", {x:moveX, y:moveY});
@@ -3127,7 +3140,6 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 						if (KinkyDungeonStatBind) KDGameData.MovePoints = Math.min(0, KDGameData.MovePoints);
 						//let MovePoints = KDGameData.MovePoints;
 
-						let willSprint = (forceSprint || KinkyDungeonToggleAutoSprint) && !SuppressSprint;
 
 						if (KDGameData.MovePoints >= 1 || (willSprint && KDCanSprint(sprintcost))) {// Math.max(1, KinkyDungeonSlowLevel) // You need more move points than your slow level, unless your slow level is 1
 							let xx = KinkyDungeonPlayerEntity.x;
@@ -3403,6 +3415,10 @@ function KinkyDungeonWaitMessage(NoTime: boolean, delta: number, msg: boolean = 
 }
 
 
+function KDSprintLimited(player: entity) {
+	return KinkyDungeonSlowLevel > 1 || KDGameData.MovePoints < 0;
+}
+
 /**
  * Returns th number of turns that must elapse
  * Sets MovePoints to 0
@@ -3433,12 +3449,13 @@ function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _
 	}
 	if (!cencelled && willSprint) {
 		if (KDCanSprint(sprintCost)) {
-			let unblocked = KinkyDungeonSlowLevel > 1 || KDGameData.MovePoints < 0;
+			let unblocked = KDSprintLimited(KDPlayer());
 			if (!unblocked) {
 				let nextPosX = moveX*2 - xx;
 				let nextPosY = moveY*2 - yy;
 				let nextTile = KinkyDungeonMapGet(nextPosX, nextPosY);
-				if (KinkyDungeonMovableTilesEnemy.includes(nextTile) && KinkyDungeonNoEnemy(nextPosX, nextPosY)) {
+				if (KinkyDungeonMovableTilesEnemy.includes(nextTile) && KinkyDungeonNoEnemy(nextPosX, nextPosY)
+					&& !KinkyDungeonHandleMoveObject(nextPosX, nextPosY, nextTile, 2)) {
 					unblocked = true;
 				}
 			}
@@ -3873,6 +3890,10 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	if (KDToggles.AutoSprint) {
 		if (!KDGameData.AutoSprintTriggered) {
 			if (KDAutoSprintCriteria(KDPlayer()) && KinkyDungeonInDanger()) {
+				if (!KinkyDungeonFlags.get("tut_autosp")) {
+					KinkyDungeonSendTextMessage(10, TextGet("KDTut_AutoSprint"), KDTutorialColor, 10);
+					KinkyDungeonSetFlag("tut_autosp", -1);
+				}
 				KDGameData.AutoSprintTriggered = true;
 				KinkyDungeonToggleAutoSprint = true;
 				KinkyDungeonSuppressSprint = false;
@@ -3886,6 +3907,10 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 		}
 	} else if (KDGameData.AutoSprintTriggered) {
 		KDGameData.AutoSprintTriggered = false;
+		if (KinkyDungeonToggleAutoSprint) {
+			KinkyDungeonToggleAutoSprint = false;
+			KinkyDungeonSuppressSprint = false
+		}
 	}
 }
 let KDEntityFlagCache = new Map();
@@ -5007,6 +5032,7 @@ function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDT
 function KDAutoSprintCriteria(player: entity) : boolean {
 	if (KinkyDungeonLeashingEnemy() || (
 		KinkyDungeonFlags.get("ZeroResistance")
+		|| !KinkyDungeonFlags.get("PlayerCombat")
 	)) return false;
 
 	return KDPlayerIsSlowedMovementOnly();

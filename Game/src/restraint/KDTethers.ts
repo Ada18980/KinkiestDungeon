@@ -242,15 +242,16 @@ function KDIsPlayerTetheredToEntity(player: entity, entity: entity) {
 
 
 
-function KDBreakTether(player: entity, mapData?: KDMapDataType): boolean {
+function KDBreakTether(player: entity, mapData?: KDMapDataType): KDLeashData {
 	if (player?.leash) {
+		let data = player.leash;
 		delete player.leash;
 		if (KinkyDungeonAutoWait && (!mapData || mapData != KDMapData) && player == KDPlayer()) {
 			KDUpdateWaitTime(KDDelayWaitTime());
 		}
-		return true;
+		return data;
 	}
-	return false;
+	return null;
 }
 
 

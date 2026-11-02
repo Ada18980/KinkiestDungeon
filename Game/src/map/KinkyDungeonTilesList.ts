@@ -485,34 +485,37 @@ let KDTileUpdateFunctions: Record<string, (delta: number) => boolean> = {
 /**
  * Return true if movement is stopped
  */
-let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => boolean> = {
-	'B': (_moveX, _moveY) => {
+let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number, sprint?: number) => boolean> = {
+	'B': (_moveX, _moveY, sprint) => {
 		/*if (KDCanSleep()) {
 			KDGameData.InteractTargetX = moveX;
 			KDGameData.InteractTargetY = moveY;
 			KDStartDialog("Bed", "", true);
 		}*/
-
+		if (sprint) return false;
 		if (!KinkyDungeonFlags.get("1stBed")) {
 			KinkyDungeonSendTextMessage(10, TextGet("KDBedHelp"), KDBaseWhite, 12, undefined, undefined, undefined, "");
 			KinkyDungeonSetFlag("1stBed", -1);
 		}
 		return false;
 	},
-	'@': (_moveX, _moveY) => {
+	'@': (_moveX, _moveY, sprint) => {
+		if (sprint == 1) return false;
 		if (!KinkyDungeonFlags.get("nobutton")) {
 			KDStartDialog("Button", "", true);
 		}
 		return false;
 	},
-	'l': (moveX, moveY) => {
+	'l': (moveX, moveY, sprint) => {
+		if (sprint == 1) return false;
 		if (!KinkyDungeonFlags.get("noleyline") && KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax && KDTile(moveX, moveY) && KDTile(moveX, moveY).Leyline) {
 			KDMovePlayer(moveX, moveY, true, false);
 			KDStartDialog("Leyline", "", true);
 		}
 		return false;
 	},
-	';': (moveX, moveY) => {
+	';': (moveX, moveY, sprint) => {
+		if (sprint == 1) return false;
 		if (!KinkyDungeonFlags.get("noportal") && KDTile(moveX, moveY) && KDTile(moveX, moveY).Portal) {
 			KDMovePlayer(moveX, moveY, true, false);
 			KDStartDialog(KDTile(moveX, moveY).Portal, "", true);
@@ -524,7 +527,9 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 
 		return true;
 	},
-	'R': (moveX, moveY) => {
+	'R': (moveX, moveY, sprint) => {
+		
+		if (sprint == 1) return false;
 		let allowManip = KDAllowUseItems(true);
 		if (allowManip) {
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
@@ -537,7 +542,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 			return false;
 		}
 
-		return true;
+		return false;
 	},
 	'C': (moveX, moveY) => { // Open the chest
 		let chestType = KinkyDungeonTilesGet(moveX + "," +moveY) && KinkyDungeonTilesGet(moveX + "," +moveY).Loot ? KinkyDungeonTilesGet(moveX + "," +moveY).Loot : "chest";

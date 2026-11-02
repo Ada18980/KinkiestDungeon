@@ -45,7 +45,6 @@ function KinkyDungeonCreateMap (
 
 	KDTileModes = {};
 	KDUpdateOptionGame(false);
-	KDBreakTether(KDPlayer());
 
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeNewMap"]);
 	KDGameData.PreferredJailPointTick = 0;
@@ -153,6 +152,8 @@ function KinkyDungeonCreateMap (
 			oldMapDataObject: oldMapData,
 		};
 	}
+	
+	let tether = KDBreakTether(KDPlayer());
 
 	// Filter out the allies
 	KDMapData.Entities = KDMapData.Entities.filter((enemy) => {
@@ -749,6 +750,7 @@ function KinkyDungeonCreateMap (
 				KDMoveEntity(e, point.x, point.y, false,undefined, undefined, true);
 				e.visual_x = point.x;
 				e.visual_y = point.y;
+				if (tether && tether.entity == e.id) KDPlayer().leash = tether;
 			}
 
 			KDUnPackEnemies(KDMapData);

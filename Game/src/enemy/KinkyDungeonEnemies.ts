@@ -6440,7 +6440,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 
 					if (AIData.moveTowardPlayer) {
-						if (KDEnemyHoldingStill(enemy)) {
+						if (!KDEnemyHoldingStill(enemy)) {
 							enemy.gx = player.x;
 							enemy.gy = player.y;
 							KDUpdateMoveToEntity(enemy);

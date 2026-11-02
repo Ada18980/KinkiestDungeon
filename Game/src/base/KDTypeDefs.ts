@@ -3654,6 +3654,7 @@ type EnemyEvent = {
 	overrideIgnore?: boolean,
 	/** don't let go of leashes when idle */
 	holdleash?: boolean,
+	allowStairs?: boolean,
 	forceattack?: boolean,
 	aggressive?: boolean,
 	nonaggressive?: boolean,

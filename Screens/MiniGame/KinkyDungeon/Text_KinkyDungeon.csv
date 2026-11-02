@@ -33401,7 +33401,7 @@ KinkyDungeonWardenOrb2,The warden's magic leaves you significantly vulnerable to
 KinkyDungeonWardenOrb3,The warden's magic ensnares you. It's time to give in.
 
 
-
+KDTut_AutoSprint,Auto-sprint in Combat is enabled. You can disable it in the Controls settings.
 KDTut_Tooltip,You can click Inspect then click the enemy to cycle thru pages.
 KDTut_Tooltip2,NPC tooltips like the ${EnemyName} are too long to show on one page.
 KDTut_Slowed,"You are slowed! Trying to move will cause you to lose a turn, but you can sprint at 2x SP cost."

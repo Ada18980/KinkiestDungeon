@@ -234,13 +234,21 @@ function KDEffectTileTagsLoc(loc: string, mapData?: KDMapDataType): Record<strin
 
 let KinkyDungeonConfirmStairs = false;
 
-function KinkyDungeonHandleMoveObject(moveX: number, moveY: number, moveObject: string): boolean {
+/**
+ * 
+ * @param moveX 
+ * @param moveY 
+ * @param moveObject 
+ * @param sprint 2 for end tile from sprint, 1 for mid tile
+ * @returns 
+ */
+function KinkyDungeonHandleMoveObject(moveX: number, moveY: number, moveObject: string, sprint?: number): boolean {
 	if (KDMapData.GroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {
 		// We can pick up items inside walls, in case an enemy drops it into bars
 		KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
 	}
 	if (KDMoveObjectFunctions[moveObject]) {
-		return KDMoveObjectFunctions[moveObject](moveX, moveY);
+		return KDMoveObjectFunctions[moveObject](moveX, moveY, sprint);
 	}
 	return false;
 }

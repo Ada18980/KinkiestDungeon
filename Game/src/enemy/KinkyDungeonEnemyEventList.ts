@@ -1121,6 +1121,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		nonaggressive: true,
 		noplay: true,
 		holdleash: true,
+		allowStairs: true,
 		//play: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, aiData, _allied, _hostile, _aggressive) => {
