@@ -43,7 +43,7 @@ let KDAIType: Record<string, AIType> = {
 				if (KDWanderFarEnemyParty(enemy))
 					return true;
 			}
-			if (KDMapData.Labels["Guard"] && KDRandom() < 0.5) {
+			if (KDMapData.Labels && KDMapData.Labels["Guard"] && KDRandom() < 0.5) {
 				let filtered = KDMapData.Labels["Guard"].filter((label) => {
 					return !KinkyDungeonEntityAt(label.x, label.y, undefined, undefined, undefined, false);
 				})

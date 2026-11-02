@@ -4121,19 +4121,7 @@ function KDAddModel (
 			Properties: data.Properties,
 			factionFilters: data.factionFilters,
 		};
-		let folders: Record<string, boolean> = {};
-		if (NA.Model.Folder) {
-			folders[NA.Model.Folder] = true;
-		}
-		if (NA.Model.Layers)
-			for (let layer of Object.values(NA.Model.Layers)) {
-				if (layer.Folder) {
-					folders[layer.Folder] = true;
-				}
-			}
-		for (let folder of Object.keys(folders)) {
-			KDHitModelFolderAtlas(folder);
-		}
+		// TODO understand why hitting model asset cache here causes models to render prematurely
 		NA.Model.Filters = NA.Filters || NA.Model.Filters;
 		NA.Model.Properties = NA.Properties || NA.Model.Properties;
 		NA.Model.factionFilters = NA.factionFilters || NA.Model.factionFilters;

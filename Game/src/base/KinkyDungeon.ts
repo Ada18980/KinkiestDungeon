@@ -1693,8 +1693,8 @@ function KinkyDungeonRun() {
 			}
 		}
 	}
+	let refresh = false;
 	if (StandalonePatched && KDCurrentModels) {
-		let refresh = false;
 		if (CommonTime() > lastGlobalRefresh + GlobalRefreshInterval) {
 			
 			lastGlobalRefresh = CommonTime();
@@ -1708,33 +1708,17 @@ function KinkyDungeonRun() {
 		for (let ent of KDCurrentModels.entries()) {
 			let MC = ent[1];
 
-			// Cull containers that werent drawn this turn
+			// Cull containers that arent being drawn
 			for (let Container of MC.Containers.entries()) {
 				
-
-				if (!MC.ContainersDrawn.has(Container[0]) && Container[1]) {
-					Container[1].Mesh.parent.removeChild(Container[1].Container);
-					MC.Containers.delete(Container[0]);
-					MC.Update.delete(Container[0])
-					MC.ForceUpdate.delete(Container[0])
-					MC.Refresh.delete(Container[0])
-					KDClearContainer(Container[1]);
-					MC.Mods.delete(Container[0]);
-					MC.EndMods.delete(Container[0]);
-				} else {
-					 if (refresh && (
-						ent[0] == KinkyDungeonPlayer
-						|| ent[0] == KDSpeakerNPC
-						|| ent[0] == KDPreviewModel
-						|| Math.random() < 0.01
-					))
-						// We only always refresh NPCs that are front and center, for optimization reasons
-						MC.Update.delete(Container[0]);
+				// remove from the screen
+				if (!MC.ContainersDrawn.has(Container[0]) && Container[1]?.Mesh?.parent) {
+					Container[1].Mesh.parent.removeChild(Container[1].Mesh);
 				}
 			}
-
-			MC.ContainersDrawn.clear();
 		}
+
+		
 	}
 
 
@@ -3409,7 +3393,7 @@ function KinkyDungeonRun() {
 		KDCullPreloadedAssets();
 	KDCullRTList(kdRTcache);
 	KDCullTexList(kdTexcache);
-	KDCullModelContainers(CommonTime());
+	KDCullModelContainers(CommonTime(), refresh);
 	
 	if (CommonTime() > lastFloaterRefresh + KDFloaterRefreshTime) {
 		KDEntitiesFloaterRegisty = new Map();
@@ -3532,7 +3516,8 @@ let KDlastCull = new Map();
 
 function KDGetCullTime() {
 	// Adaptive culling
-	return Math.max(1000, KDCULLTIME);
+	let MCNumber = Math.max(1, KDCurrentModels.size);
+	return Math.max(1000, KDCULLTIME/MCNumber);
 }
 
 function KDPurgeFilterSprites() {
@@ -3558,11 +3543,44 @@ function KDPurgeSpriteRelatedFilters(sprite: PIXISprite | PIXITexture) {
 	}
 }
 
-function KDCullModelContainers(time: number) {
-	for (let MC of KDCurrentModels.entries()) {
-		if (MC[1].lastDrawn + KDModelContainerTimeout < time) {
-			KDClearModel(MC[0]);
+function KDCullModelContainers(time: number, refresh: boolean) {
+	KDDoFilterRefresh();
+
+	let MCNumber = Math.max(1, KDCurrentModels.size);
+	for (let ent of KDCurrentModels.entries()) {
+		if (ent[1].lastDrawn + Math.max(5000,KDModelContainerTimeout/MCNumber) < time) {
+			KDClearModel(ent[0]);
+		} else if (ent[1].lastDrawn + Math.max(1000,KDModelContainerContainerTimeout/MCNumber) < time) {
+			let MC = ent[1];
+
+			// Cull containers that arent being drawn
+			for (let Container of MC.Containers.entries()) {
+				
+
+				if (!MC.ContainersDrawn.has(Container[0]) && Container[1]) {
+					Container[1].Mesh?.parent?.removeChild(Container[1].Container);
+					MC.Containers.delete(Container[0]);
+					MC.Update.delete(Container[0])
+					MC.ForceUpdate.delete(Container[0])
+					MC.Refresh.delete(Container[0])
+					KDClearContainer(Container[1]);
+					MC.Mods.delete(Container[0]);
+					MC.EndMods.delete(Container[0]);
+				} else {
+					if (refresh && (
+						ent[0] == KinkyDungeonPlayer
+						|| ent[0] == KDSpeakerNPC
+						|| ent[0] == KDPreviewModel
+						|| Math.random() < 0.01
+					))
+						// We only always refresh NPCs that are front and center, for optimization reasons
+						MC.Update.delete(Container[0]);
+				}
+			}
 		}
+
+		
+		ent[1].ContainersDrawn.clear();
 	}
 }
 

@@ -1865,6 +1865,7 @@ function KinkyDungeonDrawGame() {
 						alpha: StandalonePatched ? KDUIAlpha : 0.01,
 					});
 				}
+				if (KinkyDungeonCheckClothesLoss) KinkyDungeonDressPlayer();
 				DrawCharacter(KinkyDungeonPlayer, 
 					KDPlayerPos().x, 
 					KDPlayerPos().y, KDCharSize, 
@@ -5044,11 +5045,17 @@ function KDGetOrMakeRenderTexture(Image: string, Nearest: boolean, id: string = 
 	if (!res || (!force && !KDDoAdaptiveTexCache(res + id, 1) && !kdRTcache.get(res + id))) return null;
 
 	kdRTlastLookup.set(res + id, CommonTime());
-	let rt: PIXIRenderTexture = kdRTcache.get(res + id) || PIXI.RenderTexture.create({
+	let rt: PIXIRenderTexture = kdRTcache.get(res + id) || KDGetRenderTexture(
+		useAtlas ? baseTex.baseTexture.width : baseTex.width,
+		useAtlas ? baseTex.baseTexture.height : baseTex.height,
+		resolution * (useAtlas ? baseTex.baseTexture.resolution : baseTex.resolution)
+	)
+	
+	/*PIXI.RenderTexture.create({
 		width: useAtlas ? baseTex.baseTexture.width : baseTex.width,
 		height: useAtlas ? baseTex.baseTexture.height : baseTex.height,
 		resolution: resolution * (useAtlas ? baseTex.baseTexture.resolution : baseTex.resolution)
-	});
+	});*/
 	if (!kdRTcache.get(res + id) && res) {
 		// do the rendering fr
 		let sprite: PIXISprite = (kdpixisprites.get(res + id) && !kdpixisprites.get(res + id).destroyed) ?
@@ -5085,6 +5092,8 @@ function KDGetOrMakeRenderTexture(Image: string, Nearest: boolean, id: string = 
 
 
 /**
+ * Current use is to create a rendertexture for filter purposes so that they can be atlased
+ * 
  * @param Container
  * @param Map
  * @param id
@@ -5259,13 +5268,20 @@ function KDTex(Image: string, Nearest?: boolean): PIXITexture {
 	if (KDImageAtlasCache[Image] == undefined && !preloaded) {
 		KDImageAtlasCache[Image] = KDGetModelAtlasID(Image);
 		if (KDImageAtlasCache[Image]) {
+			
+			if (KDAtlasesLoading[KDImageAtlasCache[Image]]) {
+				KDAssetNeedsLoading = true;
+				return null;
+			}
 			let startload = KDHitModelFolderAtlas(KDImageAtlasCache[Image], () => {
-				let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST)
-					: PIXI.Texture.from(KDModFiles[Image] || Image);
-				if (!tex) {
-					errorImg[KDModFiles[Image] || Image] = true;
-				} else {
-					kdpixitex.set(Image, tex);
+				if (!kdpixitex.get(Image) && !errorImg[KDModFiles[Image] || Image]) {
+					let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST)
+						: PIXI.Texture.from(KDModFiles[Image] || Image);
+					if (!tex) {
+						errorImg[KDModFiles[Image] || Image] = true;
+					} else {
+						kdpixitex.set(Image, tex);
+					}
 				}
 				delete KDAssetsLoading[Image];
 			}, () => {
@@ -6482,7 +6498,9 @@ function KDDoGraphicsSanitize(): void {
 			map.set(f, true);
 		}
 	}
-	if (KDFilterCacheToDestroy.length > 0 && CommonTime() > KDLastFilterSpritesSanitize + KDCULLTIME) {
+	
+	let MCNumber = Math.max(1, KDCurrentModels.size);
+	if (KDFilterCacheToDestroy.length > 0 && CommonTime() > KDLastFilterSpritesSanitize + Math.max(1000, KDCULLTIME/MCNumber)) {
 		KDLastFilterSpritesSanitize = CommonTime();
 		for (let f of kdFilterSprites.entries()) {
 			f[1] = f[1].filter((ff) => {
@@ -6875,7 +6893,7 @@ function KDHitModelFolderAtlas(folder: string, cb?: (value) => void, reject?: (v
 	if (!KDModelAtlasHits[folder]) {
 		loaded = true;
 		let url = KDGetModelAtlasURL(folder);
-		KDAtlasesLoading[url] = true;
+		KDAtlasesLoading[folder] = true;
 		PIXI.Assets.load(url).then((value) => {
 			if (!KDModelTexturesToRemove[folder]) {
 				KDModelTexturesToRemove[folder] = [];
@@ -6891,10 +6909,12 @@ function KDHitModelFolderAtlas(folder: string, cb?: (value) => void, reject?: (v
 					KDModelTexturesToRemove[folder].push(t);
 				}
 			if (cb) cb(value);
-			delete KDAtlasesLoading[url];
+			setTimeout(() => {
+				delete KDAtlasesLoading[folder];
+			}, 10);
 		}, (value) => {
 			reject(value);
-			delete KDAtlasesLoading[url];
+			delete KDAtlasesLoading[folder];
 		});
 	}
 	KDModelAtlasHits[folder] = (KDModelAtlasHits[folder] || 0) + 1;

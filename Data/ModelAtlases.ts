@@ -53,6 +53,7 @@ function KDGetModelAtlasURL(folder: string, mobile: boolean = KDToggles.MobileTe
 
 let KDLastPreloadCullTime = 0;
 function KDCullPreloadedAssets() {
+
 	if (CommonTime() > KDModelAtlasCacheInterval + KDLastPreloadCullTime) {
 		let folders: Record<string, boolean> = {};
 		for (let MC of KDCurrentModels.values()) {
