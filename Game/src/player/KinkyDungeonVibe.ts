@@ -101,6 +101,7 @@ let KDToggles = {
 	//HighResDisplacement: false,
 	MobileTextures: CommonIsMobile,
 	ModelMultisample: false,
+	Preload: false,
 	//OptRender: false,//!CommonIsMobile, // experimental, for now
 	Bloom: true,
 	StunFlash: true,
@@ -266,6 +267,7 @@ let KDToggleCategories = {
 	ParticlesFX: "GFX",
 	ParticlesRestrain: "GFX",
 	ModelMultisample: "GFX",
+	Preload: "GFX",
 	ArousalHearts: "Clothes",
 	VibeHearts: "Clothes",
 	GagParticles: "Clothes",

@@ -142,7 +142,7 @@ KDToggleFullscreen,Enable Fullscreen
 KDToggleHighResDisplacement,Hi-Res Distortion (Needs Restart)
 KDToggleMobileTextures,Low-Res Textures (Needs Restart)
 KDToggleModelMultisample,Portrait Supersampling
-
+KDTogglePreload,Preload Assets (4GB+ RAM) (Restart)
 KDToggleHiResModel,Hi-Res Model (no restart needed)
 KDToggleGraphicsQuality,High Quality Animations
 KDToggleEnemyAnimations,Enemy Animations
@@ -30206,7 +30206,7 @@ KDConsentItem_Police,Police
 KDConsentItem_Nurses,Nurses/Doctors
 KDConsentItem_Slime,Slime
 KDConsentItem_Kigu,Kigurumi Masks
-KDConsentItem_ToeRope,Toe Ties
+KDConsentItem_ToeTies,Toe Ties
 KDConsentItem_Encasement,Encasement
 KDConsentItem_Tape,Tape Bondage
 KDConsentItem_Tickle,Tickling
@@ -33384,6 +33384,7 @@ RestraintLeatherBootsCommonDesc,"For stepping into all kinds of trouble!"
 RestraintLeatherBootsCommonDesc2,"Provides minor protection against enemy attacks."
 
 KDGenMap,Generating Map...
+KDLoadingGame,Loading Game...
 
 KinkyDungeonSpellHexWrappingDamage,Mystic wrappings constrict around your body!
 KinkyDungeonSpellOneBarMissile,One Bar Missile

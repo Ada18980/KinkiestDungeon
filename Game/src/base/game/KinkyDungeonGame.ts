@@ -4132,10 +4132,7 @@ function KDAddModel (
 				}
 			}
 		for (let folder of Object.keys(folders)) {
-			if (!KDModelAtlasHits[folder]) {
-				PIXI.Assets.load(KDGetModelAtlasURL(folder));
-				KDModelAtlasHits[folder] = (KDModelAtlasHits[folder] || 0) + 1;
-			}
+			KDHitModelFolderAtlas(folder);
 		}
 		NA.Model.Filters = NA.Filters || NA.Model.Filters;
 		NA.Model.Properties = NA.Properties || NA.Model.Properties;
@@ -5020,7 +5017,9 @@ function KDGetPropagationFunc(point: KDPoint, dist: number, callback: (tile: KDT
 }
 
 function KDAutoSprintCriteria(player: entity) : boolean {
-	if (KinkyDungeonLeashingEnemy() || !KinkyDungeonFlags.get("PlayerCombat")) return false;
+	if (KinkyDungeonLeashingEnemy() || (
+		KinkyDungeonFlags.get("ZeroResistance")
+	)) return false;
 
 	return KDPlayerIsSlowedMovementOnly();
 }

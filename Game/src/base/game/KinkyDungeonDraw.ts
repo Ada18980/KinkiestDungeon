@@ -1068,6 +1068,27 @@ let KDHypnoIntensity = 3;
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
+	if (KDShowLoading) {
+		if (Object.values(KDAssetsLoading).length > 0) {
+			DrawTextFitKD(TextGet("KDLoadingGame"),
+		PIXIWidth/2, PIXIHeight/2, 1000, KDBaseWhite, undefined, 36, undefined,
+			501);
+			FillRectKD(kdcanvas, kdpixisprites, "GenMapBG", {
+				Left: 0,
+				Top: 0,
+				Width: PIXIWidth,
+				Height: PIXIHeight,
+				Color: KDBaseBlack,
+				LineWidth: 1,
+				zIndex: 500,
+				alpha: 1
+			});
+			return;
+		} else {
+			KDShowLoading = false;
+		}
+	}
+
 	KDCurrentEnemyTooltip = null;
 
 	KinkyDungeonGridSizeDisplay = 72 + KDZoomLevels[KDZoomIndex] * 12;
@@ -4866,7 +4887,11 @@ function KDDraw (
 		sprite = null;
 		Map.delete(id);
 	};
-	if (!sprite) {
+	if (!sprite || !sprite.texture || !sprite.texture.orig) {
+		if (sprite) {
+			KDSpritesToCull.push(sprite);
+			sprite.removeFromParent();
+		}
 		// Load the texture
 		let tex = KDTex(Image, Nearest);
 
@@ -4882,6 +4907,8 @@ function KDDraw (
 			// Add it to the container
 			Container.addChild(sprite);
 		}
+	} else {
+		if (KDImageAtlasCache[Image]) KDModelAtlasHits[KDImageAtlasCache[Image]] = (KDModelAtlasHits[KDImageAtlasCache[Image]] || 0) + 1;
 	}
 	if (sprite) {
 		sprite.visible = true;
@@ -5226,28 +5253,28 @@ function KDTex(Image: string, Nearest?: boolean): PIXITexture {
 		KDAssetNeedsLoading = true;
 		return null;
 	}
-	if (KDImageAtlasCache[Image] == undefined) {
+	// This loop is NOT used if assets are preloaded
+	if (KDImageAtlasCache[Image] == undefined && !preloaded) {
 		KDImageAtlasCache[Image] = KDGetModelAtlasID(Image);
 		if (KDImageAtlasCache[Image]) {
-			if (!KDModelAtlasHits[KDImageAtlasCache[Image]]) {
+			
+			if (KDHitModelFolderAtlas(KDImageAtlasCache[Image], () => {
+				let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST)
+					: PIXI.Texture.from(KDModFiles[Image] || Image);
+				if (!tex) {
+					errorImg[KDModFiles[Image] || Image] = true;
+				} else {
+					kdpixitex.set(Image, tex);
+				}
+				delete KDAssetsLoading[Image];
+			}, () => {
+				delete KDAssetsLoading[Image];
+			})) {
 				KDAssetsLoading[Image] = true;
-				PIXI.Assets.load(KDGetModelAtlasURL(KDImageAtlasCache[Image])).then(() => {
-					let tex = Nearest ? PIXI.Texture.from(KDModFiles[Image] || Image, OPTIONS_NEAREST)
-						: PIXI.Texture.from(KDModFiles[Image] || Image);
-					if (!tex) {
-						errorImg[KDModFiles[Image] || Image] = true;
-					} else {
-						kdpixitex.set(Image, tex);
-					}
-					delete KDAssetsLoading[Image];
-				}, () => {
-					delete KDAssetsLoading[Image];
-				});
 				setTimeout(() => {
 					delete KDAssetsLoading[Image];
 				}, 1000);
 				KDAssetNeedsLoading = true;
-				if (KDImageAtlasCache[Image]) KDModelAtlasHits[KDImageAtlasCache[Image]] = (KDModelAtlasHits[KDImageAtlasCache[Image]] || 0) + 1;
 				return null;
 			}
 		}
@@ -6830,4 +6857,36 @@ function KDGetFastMovePath(x: number, y: number) {
 
 function KDPlayerOffsetX() {
 	return (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay/72 * KDCenterPlayerOffset));
+}
+
+/**
+ * 
+ * @param folder 
+ * @param cb 
+ * @param reject 
+ * @returns Whether or not it started a load process
+ */
+function KDHitModelFolderAtlas(folder: string, cb?: () => void, reject?: () => void): boolean {
+	let loaded = false;
+	if (!KDModelAtlasHits[folder]) {
+		loaded = true;
+		PIXI.Assets.load(KDGetModelAtlasURL(folder)).then((value) => {
+			if (!KDModelTexturesToRemove[folder]) {
+				KDModelTexturesToRemove[folder] = [];
+			}
+			
+			for (let s of Object.values(value.linkedSheets)) {
+				for (let t of Object.keys((s as any).textures)) {
+					KDModelTexturesToRemove[folder].push(t);
+				}
+			}
+			if (value.textures)
+				for (let t of Object.keys(value.textures)) {
+					KDModelTexturesToRemove[folder].push(t);
+				}
+			if (cb) cb();
+		}, reject);
+	}
+	KDModelAtlasHits[folder] = (KDModelAtlasHits[folder] || 0) + 1;
+	return loaded;
 }

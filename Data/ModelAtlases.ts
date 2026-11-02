@@ -14,9 +14,13 @@ let KDModelAtlasHits: Record<string, number> = {
 let KDImageAtlasCache: Record<string, string> = {
 
 }
-let KDModelAtlasCacheInterval = 100;//real quick for testing to check performance
+let KDModelAtlasCacheInterval = 100000;//set to quick for testing to check performance
 // Removes this fraction - 1 hit
 let KDModelAtlasCachePercent = 0.1;
+
+let KDModelTexturesToRemove: Record<string, string[]> = {
+
+}
 
 /**
  * Gets the texture atlas a texture would be packed into
@@ -44,4 +48,47 @@ function KDGetModelAtlasURL(folder: string, mobile: boolean = KDToggles.MobileTe
 	return mobile
 		? `TextureAtlas/mobile/models_mobile_${folder}_0000.json`
 		: `TextureAtlas/models/models_${folder}_0000.json`;
+}
+
+
+let KDLastPreloadCullTime = 0;
+function KDCullPreloadedAssets() {
+	if (CommonTime() > KDModelAtlasCacheInterval + KDLastPreloadCullTime) {
+		let folders: Record<string, boolean> = {};
+		for (let MC of KDCurrentModels.values()) {
+			for (let model of MC.Models.values()) {
+				if (model.Folder) {
+					folders[model.Folder] = true;
+				}
+				if (model.Layers)
+					for (let layer of Object.values(model.Layers)) {
+						if (layer.Folder) {
+							folders[layer.Folder] = true;
+						}
+					}
+				
+			}
+		}
+		for (let folder of Object.keys(folders)) {
+			KDHitModelFolderAtlas(folder);
+			//KDModelAtlasHits[folder] = (KDModelAtlasHits[folder] || 0) + 1;
+		}
+		KDLastPreloadCullTime = CommonTime();
+		for (let key of Object.keys(KDModelAtlasHits)) {
+			if (KDModelAtlasHits[key] > 0.1) {
+				KDModelAtlasHits[key] = Math.max(0.1, KDModelAtlasHits[key] * (1-KDModelAtlasCachePercent) - 0.4);
+			} else KDModelAtlasHits[key]--;
+			if (KDModelAtlasHits[key] <= 0) {
+				delete KDModelAtlasHits[key];
+				PIXI.Assets.unload(KDGetModelAtlasURL(key))
+				if (KDModelTexturesToRemove[key]) {
+					for (let tex of KDModelTexturesToRemove[key]) {
+						kdpixitex.delete(tex);
+						delete KDImageAtlasCache[tex];
+					}
+					delete KDModelTexturesToRemove[key]
+				}
+			}
+		}
+	}
 }

@@ -23,8 +23,8 @@ else:
 packs = [
     "wtxpck.displacement.conf",
     "wtxpck.game.conf",
-#    "wtxpck.models.conf",
-#    "wtxpck.models_mobile.conf",
+    "wtxpck.models.conf",
+    "wtxpck.models_mobile.conf",
 ]
 
 for pack in packs:

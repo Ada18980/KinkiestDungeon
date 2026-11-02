@@ -406,15 +406,19 @@ let displacementList = [
 
 KDLoadToggles();
 let linearList = [];
-/*if (KDToggles.MobileTextures) {
-	linearList.push(...[
-	"TextureAtlas/models_mobile_0000.json",
-]);
-} else  {
-	linearList.push(...[
-	"TextureAtlas/models_0000.json",
-]);
-}*/
+let preloaded = false;
+if (KDToggles.Preload) {
+	preloaded = true;
+	if (KDToggles.MobileTextures) {
+		linearList.push(...[
+		"TextureAtlas/models_mobile_0000.json",
+	]);
+	} else  {
+		linearList.push(...[
+		"TextureAtlas/models_0000.json",
+	]);
+	}
+}
 linearList.push(
 	"TextureAtlas/displacement_0000.json");
 

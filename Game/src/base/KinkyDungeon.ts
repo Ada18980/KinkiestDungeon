@@ -2984,7 +2984,6 @@ function KinkyDungeonRun() {
 		KDDrawWardrobe("menu", KDSpeakerNPC);
 	} else if (KinkyDungeonState == "GenMap") {
 		DrawTextFitKD(TextGet("KDGenMap"),
-
 		PIXIWidth/2, PIXIHeight/2, 1000, KDBaseWhite, undefined, 36);
 		FillRectKD(kdcanvas, kdpixisprites, "GenMapBG", {
 			Left: 0,
@@ -3403,6 +3402,8 @@ function KinkyDungeonRun() {
 	//}
 	// Cull the sprites that werent rendered or updated this frame
 	KDCullSprites();
+	if (!preloaded)
+		KDCullPreloadedAssets();
 	KDCullRTList(kdRTcache);
 	KDCullTexList(kdTexcache);
 	KDCullModelContainers(CommonTime());
@@ -7406,10 +7407,16 @@ async function KinkyDungeonCompressSave(save: string): Promise<string> {
 	}
 }
 
+let KDShowLoading = false;
+
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=
 function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 	localStorage.setItem('KDLastSaveSlot', "" + KDSaveSlot);
 	KinkyDungeonSendEvent("beforeLoadGame", {});
+	KDShowLoading = true;
+	setTimeout(() => {
+		KDShowLoading = false;
+	}, 1000);
 	let str = String ? DecompressB64(String.trim()) :
 		(localStorage.getItem('KinkyDungeonSave') ? DecompressB64(localStorage.getItem('KinkyDungeonSave'))
 		: (loadedsaveslots[KDSaveSlot-1] ? DecompressB64(loadedsaveslots[KDSaveSlot-1]) : ""));

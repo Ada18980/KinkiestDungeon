@@ -5,6 +5,7 @@
     "main": "index.html",
     "scripts": {
         "build": "tsc && npm run pack",
+        "compile": "tsc",
         "buildCont": "tsc -b --watch",
         "buildContWSL": "tsc -b --watch --watchDirectory dynamicprioritypolling --watchFile dynamicPriorityPolling",
         "buildTypes": "tsc --declaration --emitDeclarationOnly --removeComments false",
