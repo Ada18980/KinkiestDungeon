@@ -1453,10 +1453,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	KinkyDungeonRootDirectory + ("UI/AutoStruggle.png"), undefined, undefined, !KinkyDungeonAutoWaitStruggle, KDTextGray05, undefined, false,
 	{
 		alpha: 1.0,
-		spritealpha: Math.max(0.1, Math.min(1, 
-			((KDFocusControls == "AutoWait") && (KDAnimSpeed))
-				? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
-				: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)),
+		
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[3]),
 	}, KDButtonTooltip(TextGet("KDAutoStruggle"), undefined, "right"));
 
@@ -1576,6 +1573,10 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[6]),
 		hotkeyPress: KinkyDungeonKeyToggle[6],
+		spritealpha: Math.max(0.1, Math.min(1, 
+			((KDFocusControls == "AutoWait") && (KDAnimSpeed))
+				? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+				: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)),
 	}, KDButtonTooltip(TextGet("KDWait"), undefined, "right"))) {
 		KDTrySetFocusControl("AutoWait");
 	}
