@@ -6304,6 +6304,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				!KDIsImmobile(enemy)
 				// We are willing to move
 				&& !KDEnemyHasFlag(enemy, "dontChase")
+				&& !KDEnemyHasFlag(enemy, "overrideMove")
 				// We are willing to move
 				&& (!KDEnemyHasFlag(enemy, "Defensive") || !KDEnemyHasFlag(enemy, "StayHere"))
 				// We want to move

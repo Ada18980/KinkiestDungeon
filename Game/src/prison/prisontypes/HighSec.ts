@@ -401,7 +401,7 @@ KDPrisonTypes.HighSec = {
 						guard.gy = player.y;
 						KDUpdateMoveToEntity(guard);
 						KinkyDungeonSetEnemyFlag(guard, "wander", 30)
-						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 4);
 					}
 					if (KDGameData.PrisonerState == 'jail') {
 						KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
@@ -518,7 +518,7 @@ KDPrisonTypes.HighSec = {
 						guard.gy = player.y;
 						KDUpdateMoveToEntity(guard);
 						KinkyDungeonSetEnemyFlag(guard, "wander", 30)
-						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 4);
 					}
 					if (KDGameData.PrisonerState == 'jail') {
 						KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
@@ -596,7 +596,7 @@ KDPrisonTypes.HighSec = {
 							guard.gy = player.y;
 							KDUpdateMoveToEntity(guard);
 							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
-							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 4);
 						}
 
 						if (KinkyDungeonLeashingEnemy() == guard) {

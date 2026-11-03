@@ -91,7 +91,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = player.y;
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 					KDTryToLeash(enemy, player, delta, false,
 						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && (aiData as KDAIData).canAttack);
@@ -216,7 +216,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 					KDTryToLeash(enemy, player, delta, false,
 						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && (aiData as KDAIData).canAttack);
@@ -326,7 +326,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 					KDTryToLeash(enemy, player, delta, false,
 						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && (aiData as KDAIData).canAttack);
@@ -419,7 +419,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 					KDTryToLeash(enemy, player, delta, false,
 						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && (aiData as KDAIData).canAttack);
@@ -664,7 +664,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 					KDTryToLeash(enemy, player, delta, false,
 						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && (aiData as KDAIData).canAttack);
@@ -1297,7 +1297,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 								enemy.gx = newPoint.x;
 								enemy.gy = newPoint.y;
 								KinkyDungeonSetEnemyFlag(enemy, "wander", 300);
-								KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 300);
+								KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 6);
 								if ((furn && KDistChebyshev(enemy.x - furn.x, enemy.y - furn.y) < 1.5)
 									|| (jail && KDistChebyshev(enemy.x - jail.x, enemy.y - jail.y) < 1.5)) {
 									if (newPoint && newPoint.x == furn?.x && newPoint.y == furn?.y) {
@@ -1590,7 +1590,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 								enemy.gx = newPoint.x;
 								enemy.gy = newPoint.y;
 								KinkyDungeonSetEnemyFlag(enemy, "wander", 300);
-								KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 300);
+								KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 6);
 								if ((furn && KDistChebyshev(enemy.x - furn.x, enemy.y - furn.y) < 1.5)
 									|| (jail && KDistChebyshev(enemy.x - jail.x, enemy.y - jail.y) < 1.5)) {
 									if (newPoint && newPoint.x == furn?.x && newPoint.y == furn?.y) {
@@ -1798,7 +1798,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				enemy.gy = player.y;
 				KDUpdateMoveToEntity(enemy);
 				KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 			}
 			return true;

@@ -63,7 +63,7 @@ KDPrisonTypes.DollStorage = {
 					}
 				} else {
 					KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
-					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
+					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 4);
 					gg.gx = doll.x;
 					gg.gy = doll.y;
 					KDUpdateMoveToEntity(gg);
@@ -116,7 +116,7 @@ KDPrisonTypes.DollStorage = {
 							doll.hp = 0;
 						} else {
 							KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
-							KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
+							KinkyDungeonSetEnemyFlag(gg, "overrideMove", 4);
 							KinkyDungeonSetEnemyFlag(gg, "leashPrisoner", 3);
 							KinkyDungeonAttachTetherToEntity(1.5, gg, doll, "DollLeash", KDBasePink, 6);
 							gg.gx = storage.x;
@@ -134,7 +134,7 @@ KDPrisonTypes.DollStorage = {
 					}
 				} else {
 					KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
-					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
+					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 4);
 					gg.gx = doll.x;
 					gg.gy = doll.y;
 					KDUpdateMoveToEntity(gg);
@@ -182,7 +182,7 @@ KDPrisonTypes.DollStorage = {
 							KinkyDungeonSetEnemyFlag(doll, "tryNotToSwap", 500);
 						} else {
 							KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
-							KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
+							KinkyDungeonSetEnemyFlag(gg, "overrideMove", 4);
 							KinkyDungeonSetEnemyFlag(gg, "leashPrisoner", 3);
 							KinkyDungeonAttachTetherToEntity(1.5, gg, doll, "DollLeash", KDBaseCyan, 6);
 							gg.gx = storage.x;
@@ -200,7 +200,7 @@ KDPrisonTypes.DollStorage = {
 					}
 				} else {
 					KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
-					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
+					KinkyDungeonSetEnemyFlag(gg, "overrideMove", 4);
 					gg.gx = doll.x;
 					gg.gy = doll.y;
 					KDUpdateMoveToEntity(gg);
@@ -377,7 +377,7 @@ KDPrisonTypes.DollStorage = {
 						guard.gy = player.y;
 						KDUpdateMoveToEntity(guard);
 						KinkyDungeonSetEnemyFlag(guard, "wander", 30)
-						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 4);
 					}
 					if (KDGameData.PrisonerState == 'jail') {
 						KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
@@ -686,7 +686,7 @@ KDPrisonTypes.DollStorage = {
 							guard.gy = player.y;
 							KDUpdateMoveToEntity(guard);
 							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
-							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 4);
 						}
 
 						if (KinkyDungeonLeashingEnemy() == guard) {
@@ -746,7 +746,7 @@ KDPrisonTypes.DollStorage = {
 							guard.gy = player.y;
 							KDUpdateMoveToEntity(guard);
 							KinkyDungeonSetEnemyFlag(guard, "wander", 30)
-							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+							KinkyDungeonSetEnemyFlag(guard, "overrideMove", 4);
 						}
 						if (KinkyDungeonLeashingEnemy() == guard) {
 							// Make the guard focus on leashing more strongly, not attacking or pickpocketing
