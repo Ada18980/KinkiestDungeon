@@ -2645,7 +2645,7 @@ function KDIsGrounded() {
 
 function KDGetKneelStats(delta: number, msg: boolean): KDKneelData {
 	let data: KDKneelData = {
-		baseRate: KinkyDungeonStatsChoice.get("PoorBalance") ? 0.5 : 1,
+		baseRate: KinkyDungeonStatsChoice.get("PoorBalance") ? 0.67 : 1.1,
 		kneelRate: 1,
 		minKneel: 0,
 		delta: delta,
@@ -2658,7 +2658,7 @@ function KDGetKneelStats(delta: number, msg: boolean): KDKneelData {
 	if (KinkyDungeonSlowLevel > 2) data.kneelRate *= 0.85;
 	let restriction = KDGameData.Restriction || 0;
 	if (restriction) {
-		data.kneelRate *= 10 / (10 + restriction);
+		data.kneelRate *= 30 / (30 + restriction);
 	}
 
 
