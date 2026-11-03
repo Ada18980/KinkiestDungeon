@@ -76,6 +76,11 @@ Must do
 - Proper stripping
 - species perks
 
+5.5.9
+- Fixes to dynamic loading
+- Fixed a lot of missing pronoun tags
+- Incremented version number
+
 5.5.8
 - Added dynamic loading- this should reduce average memory requirements
 - Added toggle to fully preload all assets (only use on computers with a lot of memory)
