@@ -5933,6 +5933,10 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			// Otherwise if we dont meet the conditions we dont want to attack
 			: false
 	);
+
+	if (AIData.wantsToAttack && KDEntityHasFlag(enemy, "overrideMoveNoCom")) {
+		KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 1);
+	}
 	AIData.wantsToTease = AIData.canTeaseAggro && (
 		(player.player && ((enemy.playWithPlayer && !KinkyDungeonAggressive(enemy)
 		&& (KDEnemyHasFlag(enemy, "forcetease")
@@ -6271,10 +6275,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || (KDDefaultRestraintThresh + (Math.max(0, enemy.Enemy.power - 1) || 0));
 
-			AIData.wantsToLeash = !enemy.Enemy.noLeash && !KinkyDungeonFlags.get("PlayerDommed");
+			AIData.wantsToLeash = player?.player && !enemy.Enemy.noLeash && !KinkyDungeonFlags.get("PlayerDommed");
 			AIData.focusOnLeash = (enemy.Enemy.noLeash) ? false : (
-			(!KinkyDungeonFlags.has("PlayerCombat") && KDEnemyHasFlag(enemy, "focusLeash")) || (
+				(!KinkyDungeonFlags.has("PlayerCombat")
+					&& KDEnemyHasFlag(enemy, "focusLeash"))
+					&& player?.player 
+				|| (
 				enemy == KinkyDungeonLeashingEnemy()
+				&& player?.player
 				&& !AIData.addLeash && !KDEnemyHasFlag(enemy, "dontfocusleash") && (
 					!AIData.addMoreRestraints
                 || !KinkyDungeonAggressive(enemy, KinkyDungeonPlayerEntity)
@@ -6304,6 +6312,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				!KDIsImmobile(enemy)
 				// We are willing to move
 				&& !KDEnemyHasFlag(enemy, "dontChase")
+				// Our movement isnt being controlled by a script
 				&& !KDEnemyHasFlag(enemy, "overrideMove")
 				// We are willing to move
 				&& (!KDEnemyHasFlag(enemy, "Defensive") || !KDEnemyHasFlag(enemy, "StayHere"))
@@ -6431,8 +6440,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				if (AIData.focusOnLeash && AIData.wantsToLeash) {
 
 
-					// Only break awareness if the AI cant chase player
+					// TODO if I ever generalize to non-player leashing
 					if (player.player) {
+						// Move toward the leashpoint
 						if (!enemy.IntentLeashPoint) {
 							if ((AIData.aggressive) && !enemy.movePoints) {
 								KDAssignLeashPoint(enemy);
@@ -6446,17 +6456,23 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 								KinkyDungeonSetFlag("tut_surr", -1);
 								KinkyDungeonSendTextMessage(10, TextGet("KDTut_Surr"), KDTutorialColor, 10);
 							}
+						} else {
+							// focusonleash will be false if we need to move toward the player
+							// so this only happens if we are focusing on leash but dont have a target place
+							// basically templeash and such
+							if (AIData.moveTowardPlayer) {
+								if (!KDEnemyHoldingStill(enemy)) {
+									enemy.gx = player.x;
+									enemy.gy = player.y;
+									KDUpdateMoveToEntity(enemy);
+								}
+							}
 						}
+						
+						
 					}
 
 
-					if (AIData.moveTowardPlayer) {
-						if (!KDEnemyHoldingStill(enemy)) {
-							enemy.gx = player.x;
-							enemy.gy = player.y;
-							KDUpdateMoveToEntity(enemy);
-						}
-					}
 
 
 				} else if (!AIData.canSensePlayer) {

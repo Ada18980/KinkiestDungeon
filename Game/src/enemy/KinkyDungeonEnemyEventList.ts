@@ -91,7 +91,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = player.y;
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 					KDTryToLeash(enemy, player, delta, false,
 						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && (aiData as KDAIData).canAttack);
@@ -99,7 +99,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 
 				if (!enemy.IntentLeashPoint) {
 					if (!KDEntityHasFlag(enemy, "intent_startChecking")) {
@@ -216,7 +216,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 					KDTryToLeash(enemy, player, delta, false,
 						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && (aiData as KDAIData).canAttack);
@@ -224,7 +224,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 
 				if (!enemy.IntentLeashPoint) {
 					enemy.IntentAction = '';
@@ -326,7 +326,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 					KDTryToLeash(enemy, player, delta, false,
 						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && (aiData as KDAIData).canAttack);
@@ -334,7 +334,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 
 				
 
@@ -419,7 +419,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 					KDTryToLeash(enemy, player, delta, false,
 						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && (aiData as KDAIData).canAttack);
@@ -427,7 +427,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 
 				if (!enemy.IntentLeashPoint) {
 					let nj = KDRandomJailPoint(enemy.x, enemy.y, ["storage"]);
@@ -664,7 +664,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KDUpdateMoveToEntity(enemy);
 					KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 					KDTryToLeash(enemy, player, delta, false,
 						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && (aiData as KDAIData).canAttack);
@@ -672,7 +672,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 
 				if (!enemy.IntentLeashPoint) {
 					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
@@ -892,7 +892,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
 				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 
 				// If they are not attacking player
 				if (KDistChebyshev(enemy.gx - enemy.x, enemy.gy - enemy.y) < 1.5) {
@@ -1017,7 +1017,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 
 				// If they are not attacking player
 				if (KDistChebyshev(enemy.gx - enemy.x, enemy.gy - enemy.y) < 0.5) {
@@ -1798,7 +1798,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				enemy.gy = player.y;
 				KDUpdateMoveToEntity(enemy);
 				KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
 			}
 			return true;

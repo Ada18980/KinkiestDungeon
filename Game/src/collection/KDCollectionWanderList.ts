@@ -39,7 +39,7 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 				} else {
 					entity.gx = point.x;
 					entity.gy = point.y;
-					KinkyDungeonSetEnemyFlag(entity, "overrideMove", 12);
+					KinkyDungeonSetEnemyFlag(entity, "overrideMove", 4);
 					if (entity.IntentAction)
 						KDResetIntent(entity, undefined);
 				}
@@ -88,7 +88,7 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 				} else {
 					entity.gx = point.x;
 					entity.gy = point.y;
-					KinkyDungeonSetEnemyFlag(entity, "overrideMove", 12);
+					KinkyDungeonSetEnemyFlag(entity, "overrideMove", 4);
 					if (entity.IntentAction)
 						KDResetIntent(entity, undefined);
 				}
@@ -261,7 +261,7 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 						: presentIDs[Math.floor(KDRandom() * presentIDs.length)];
 					let prisoner = KinkyDungeonFindID(prisonerID);
 					if (prisoner) {
-						KDSetIDFlag(entity.id, "overrideMove", 18);
+						KDSetIDFlag(entity.id, "overrideMove", 6);
 						if (KDistChebyshev(entity.x - prisoner.x, entity.y - prisoner.y) < 1.5) {
 							// Despawn if not prisoner
 							if (!KDGameData.FacilitiesData["Prisoners_CuddleLounge"].includes(prisoner.id)
@@ -304,7 +304,7 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 					);
 
 					if (furn) {
-						KDSetIDFlag(entity.id, "overrideMove", 18);
+						KDSetIDFlag(entity.id, "overrideMove", 6);
 						if (KDistChebyshev(entity.x - furn.x, entity.y - furn.y) < 1.5) {
 							// Spawn a prisoner
 							let vid = eligibleIDs[Math.floor(KDRandom() * eligibleIDs.length)];

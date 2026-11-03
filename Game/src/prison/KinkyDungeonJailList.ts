@@ -197,7 +197,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.gy = KinkyDungeonPlayerEntity.y;
 			}
 			KDGameData.GuardApplyTime = 0;
-			KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+			KinkyDungeonSetEnemyFlag(guard, "overrideMoveNoCom", 4);
 			KinkyDungeonSetEnemyFlag(guard, "wander", 10);
 		},
 	},
