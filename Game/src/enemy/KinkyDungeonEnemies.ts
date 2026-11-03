@@ -5934,7 +5934,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			: false
 	);
 
-	if (AIData.wantsToAttack && KDEntityHasFlag(enemy, "overrideMoveNoCom")) {
+	if (!AIData.wantsToAttack && KDEntityHasFlag(enemy, "overrideMoveNoCom")) {
 		KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 1);
 	}
 	AIData.wantsToTease = AIData.canTeaseAggro && (
