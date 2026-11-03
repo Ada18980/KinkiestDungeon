@@ -4206,40 +4206,12 @@ let KDStruggleTypeShowDifficulty = [
 /**
  * @param item
  */
-function KDButtonTooltip(item: item): HoverObject {
-    let name = item.name;
-    let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentified(item);
-    let prefix = "KinkyDungeonInventoryItem";
-    let nameText = KDGetItemName(item)
-    if (item.type == Restraint || item.type == LooseRestraint) {
-        prefix = "Restraint";
-    }
-    let mods = [];
-    if (item.events) {
-        item.events.forEach((t) => {
-            if (t.trigger == "inventoryTooltip") {
-                if (t.type == "varModifier" && !unidentified) {
-                    mods.push({
-                        str: TextGet("KDVariableModifier_" + t.msg)
-                                .replace("AMNT", `${t.power >= 0 ? "+" : ""}${Math.round(t.power)}`)
-                                .replace("DRTN", `${Math.round(t.duration)}`)
-                                .replace("DMG", TextGet("KinkyDungeonDamageType" + t.damage))
-                                .replace("TYPE", `${t.kind}`),
-                        colorFG: "#eeeeee",
-                        colorBG: t.bgcolor || KDBaseBlack,
-                        TextSize: 20
-                    });
-                }
-            }
-        })
-    }
-    let hoverobject = {
+function KDButtonTooltip(tooltip: string): HoverObject {
+    let hoverobject: HoverObject = {
         type: "InventoryItem",
-        item: item,
-        name: nameText,
+        name: tooltip,
         TitleTextColor: KDBaseWhite,
         TitleTextColorBack: KDBaseBlack,
-        ItemMods: mods
     }
     return hoverobject
 }
