@@ -1290,11 +1290,11 @@ DAMAGEDEALT 의 전기 데미지를 입었습니다!!!
 RestraintName은 물이 있으면 더 쉽게 벗겨집니다!
 ### You slip on the floor!
 
-- The air around you is ablaze! (-DamageDealt SP)
+- The air around ${youObj} is ablaze! (-DamageDealt SP)
 주변 공기가 불타고 있습니다! (-DamageDealt SP)
-- The Goddess of Illusions shrouds you in shadows!
+- The Goddess of Illusions shrouds ${youObj} in shadows!
 환상의 여신이 당신을 그림자로 감쌉니다!
-- You struggle against your bonds, but a magical force resists!
+- ${You} struggle${Ys} against ${your} bonds, but a magical force resists!
 당신은 당신의 구속에 맞서 싸우지만, 마법의 힘이 저항합니다!
 - The ropes squeeze you tighter and tighter...
 로프가 당신을 점점 더 조이고 있습니다...
@@ -1358,21 +1358,21 @@ EnemyName이 TargetName에 명령어를 발합니다!
 
 ### Magic Armor:
 
-- In the Shadows: You are harder to see.
+- In the Shadows: ${You} ${Yis} harder to see.
 그림자 속에서: 당신은 보기가 더 어렵습니다.
-- Invisible: You are very difficult to see.
+- Invisible: ${You} ${Yis} very difficult to see.
 보이지 않음: 당신은 보기가 매우 어렵습니다.
-- Quickness: Your next movement is so fast it doesn't advance a turn.
+- Quickness: ${Your} next movement is so fast it doesn't advance a turn.
 빠름: 다음 이동은 매우 신속해 턴을 소모하지 않습니다.
 ### All Damage Reduction:
 
-- You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
+- ${You} take${Ys} PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 PERCENT2 DAMAGETYPE 저항과 PERCENT3 DAMAGECATEGORY 수정자를 기준으로 PERCENT1 DAMAGETYPE 피해를 받습니다.
-- You deal PERCENT more DAMAGETYPE damage.
+- ${You} deal${Ys} PERCENT more DAMAGETYPE damage.
 당신은 PERCENT 더 많은 DAMAGETYPE 피해를 줍니다.
-- Your bindings are PERCENT more effective.
+- ${Your} bindings are PERCENT more effective.
 귀하의 바인딩이 PERCENT 더 효과적입니다.
-### Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
+### ${Your} attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
 
 ### Plugged!
 
@@ -1394,11 +1394,11 @@ PERCENT2 DAMAGETYPE 저항과 PERCENT3 DAMAGECATEGORY 수정자를 기준으로 
 고통스러운 진동!!!
 
 
-### Your restraints are restrictive! Struggling is less effective without help.
+### ${Your} restraints are restrictive! Struggling is less effective without help.
 
 - Stunned! You can't move!
 기절! 움직일 수 없어!
-- Your vision is impaired!
+- ${Your} vision is impaired!
 당신의 시력은 손상되었습니다!
 - Arms are bound!
 팔이 묶여있다!
@@ -1416,15 +1416,15 @@ PERCENT2 DAMAGETYPE 저항과 PERCENT3 DAMAGECATEGORY 수정자를 기준으로 
 
 ### Slow Level 10+: Immobilized!
 
-- Your mouth is free for potion-drinking and spellcasting activities.
+- ${Your} mouth is free for potion-drinking and spellcasting activities.
 입은 멀쩡합니다. 포션을 섭취하거나 주문을 시전할 수 있습니다.
-- Your vision is clear.
+- ${Your} vision is clear.
 당신의 시야는 깨끗합니다.
-- Your hands are unobstructed.
+- ${Your} hands are unobstructed.
 당신의 손은 방해받지 않습니다.
-- Your arms are free to move as you please.
+- ${Your} arms are free to move as ${you} please${Ys}.
 팔은 원하는 대로 자유롭게 움직일 수 있습니다.
-- Your legs are free and unimpeded.
+- ${Your} legs are free and unimpeded.
 당신의 다리는 자유롭고 방해받지 않습니다.
 - You are gagged! Verbal miscast chance is increased and your potions are less effective!
 재갈이 물려졌습니다! 주문 영창 실패 확률이 증가하고 포션은 덜 효과적이게 됩니다!
@@ -1438,7 +1438,7 @@ PERCENT2 DAMAGETYPE 저항과 PERCENT3 DAMAGECATEGORY 수정자를 기준으로 
 
 ### Let there be light!
 
-- You're seeing things...
+- ${Youre} seeing things...
 당신은 사물을보고 있습니다 ...
 
 
@@ -1482,7 +1482,7 @@ PERCENT2 DAMAGETYPE 저항과 PERCENT3 DAMAGECATEGORY 수정자를 기준으로 
 
 - Ignited: You are dealing fire damage to yourself and nearby enemies!
 점화: 자신과 주변의 적에게 화염 피해를 입힙니다!
-- You are on fire and taking damage!
+- ${You} ${Yis} on fire and taking damage!
 당신은 불타고 있고 피해를 입고 있습니다!
 
 
@@ -1532,17 +1532,17 @@ FULL POWER: 절단력이 증가했습니다.
 잔상: 회피율 대폭 상승.
 ### We did it! We made ourselves invisible--mmmmph!!!
 
-### You are not currently attempting to disguise yourself. Click to reenable.
+### ${You} ${Yis} not currently attempting to disguise ${your}self. Click to reenable.
 
-- Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
+- ${Your} restraints are disenchanted, treating them as nonmagical for purposes of cutting.
 당신의 구속구에 걸린 마법은 풀렸으며, 자를 때 비마법 상태로 판정됩니다.
-- You can launch another leather restraint instantly!
+- ${You} can launch another leather restraint instantly!
 다른 가죽 구속을 즉시 시작할 수 있습니다!
-### You can launch another Sagitta instantly!
+### ${You} can launch another Sagitta instantly!
 
-### You have stored willpower.
+### ${You} ${Yhas} stored willpower.
 
-### You have consumed a mote of essence, granting miscast chance reduction.
+### ${You} ${Yhas} consumed a mote of essence, granting miscast chance reduction.
 
 ### You recapture an essence mote and concentrate on its essence!
 
@@ -1646,7 +1646,7 @@ Kinky: 저장 코드 없음, 오브는 임의의 주문을 제공합니다. 아�
 
 - Got the keys! Find the stairs to go to the next floor.
 열쇠를 얻었다! 다음 층으로 가는 계단을 찾으세요.
-- You haven't found the keys for this floor yet.
+- ${You} ${Yhas}n't found the keys for this floor yet.
 아직 이 층의 열쇠를 찾지 못했습니다.
 - Missing key
 열쇠 미발견
@@ -3032,17 +3032,17 @@ DOLMAKER라는 이름이 적힌 지팡이를 집습니다.
 열쇠를 찾아라..
 - Find the exit!
 출구를 찾아라!
-- You are receiving help from a friendly ally.
+- ${You} ${Yis} receiving help from a friendly ally.
 당신은 우호적인 동맹으로부터 도움을 받고 있습니다.
-- You found a hook you can use to pull on straps and loops.
+- ${You} found a hook ${you} can use to pull on straps and loops.
 스트랩과 루프를 당기는 데 사용할 수 있는 후크를 찾았습니다.
-### You have access to something sharp and can attempt to Cut restraints, or Remove more effectively.
+### ${You} ${Yhas} access to something sharp and can attempt to Cut restraints, or Remove more effectively.
 
-- You found a corner to help manipulate buckles and snaps with.
+- ${You} found a corner to help manipulate buckles and snaps with.
 버클과 스냅을 조작하는 데 도움이 되는 모서리를 찾았습니다.
-- You found a crack and could maybe wedge a knife or tool into it to keep it still.
+- ${You} found a crack and could maybe wedge a knife or tool into it to keep it still.
 균열을 발견하고 칼이나 도구를 쐐기로 고정하여 고정시킬 수 있습니다.
-- You found something sticky and might be able to pull off fabrics.
+- ${You} found something sticky and might be able to pull off fabrics.
 끈적끈적한 무언가를 찾았고 천을 떼어낼 수 있을지도 모릅니다.
 ### Evasion:
 
@@ -3050,11 +3050,11 @@ DOLMAKER라는 이름이 적힌 지팡이를 집습니다.
 
 
 
-- Submissive: Enemies won't attack you, but they will try to play with you.
+- Submissive: Enemies won't attack ${youObj}, but they will try to play with ${youObj}.
 복종: 적들은 당신을 공격하지 않을 것이지만, 당신을 가지고 놀려고 할 것입니다.
 - On the Run! Enemies are hostile.
 도망쳐라! 적이 적대적이다.
-- Prisoner: Enemies won't attack you unless you are out of jail.
+- Prisoner: Enemies won't attack ${youObj} unless ${you} ${Yis} out of jail.
 죄수: 당신이 감옥에서 나오지 않는 한 적들은 당신을 공격하지 않을 것입니다.
 - Freedom
 자유
@@ -13198,7 +13198,7 @@ EnemyName을 캡처합니다.
 
 ### Hands off my property.
 
-### Know your place, girl!
+### Know your place, ${Psub}!
 
 ### You've had your chance.
 
@@ -13306,7 +13306,7 @@ EnemyName을 캡처합니다.
 
 ### You've made some enemies, haven't you?
 
-### I should teach you to be a nice girl.
+### I should teach you to be a nice ${Psub}.
 
 ### You need to learn some manners~
 
@@ -13548,11 +13548,11 @@ EnemyName을 캡처합니다.
 오, 안돼!
 ### You're not supposed to be here...
 
-- I'm gonna teach you a lesson, girl.
+- I'm gonna teach you a lesson, ${Pdim}.
 내가 가르쳐 줄게, 아가씨.
 - I'm gonna miss you when we find you a nice master...
 좋은 주인을 만나면 그리워할거야...
-- Looks like you need some training, girl.
+- Looks like you need some training, ${Psub}.
 훈련이 좀 필요한 것 같군, 아가씨.
 - You picked a bad time to get lost, friend.
 당신은 길을 잃기에는 나쁜 시간을 선택했습니다, 친구.
@@ -13592,7 +13592,7 @@ EnemyName을 캡처합니다.
 아무도 접근하지 못하게 해야지~
 ### I'm PTRN. And who might you be?
 
-### Bad time to party, girl~
+### Bad time to party, ${Pdim}~
 
 ### You've got nerve showing your face around here.
 
@@ -14052,7 +14052,7 @@ EnemyName을 캡처합니다.
 이리와, 테스트 좀 해보고 싶어!
 - Looks like it's time to drop some science!
 이제 과학을 그만둘 때가 된 것 같군!
-- Bad girl!
+- Bad ${Psub}!
 나쁜 여자!
 - Keep your filthy hands off me!
 더러운 손 치워!
@@ -14172,7 +14172,7 @@ EnemyName을 캡처합니다.
 그 예쁜 손은 혼자 간직하세요, 여보~
 - Where'd you find that, dear?
 어디서 찾았어, 얘야?
-- Silly girl, you should be looking to your mistress for guidance.
+- Silly ${Pdim}, you should be looking to your mistress for guidance.
 어리석은 소녀여, 당신은 당신의 여주인에게 지도를 구해야 합니다.
 - That's not yours, sweetie~
 그건 네 것이 아니야, 자기야~
@@ -14368,7 +14368,7 @@ EnemyName을 캡처합니다.
 당신은 당신의 진행을 망칠거야 ~
 - Patients are forbidden from casting spells!
 환자는 주문을 거는 것이 금지되어 있습니다!
-- Silly girl, your illness can't be cured by a prayer.
+- Silly ${Pdim}, your illness can't be cured by a prayer.
 어리석은 소녀여, 당신의 병은 기도로 고칠 수 없습니다.
 - You shouldn't break things, you know~
 부수면 안 돼, 알잖아~
@@ -14982,7 +14982,7 @@ EnemyName을 캡처합니다.
 
 ### Did you think I wasn't looking?
 
-### Nice try, girl~
+### Nice try, ${Pdim}~
 
 ### You've made a mistake attacking my client.
 
@@ -15148,7 +15148,7 @@ EnemyName을 캡처합니다.
 
 ### I have a warrant for your arrest...
 
-### You're a wanted girl.
+### You're a wanted ${Pdim}.
 
 ### You're under arrest.
 
@@ -15528,7 +15528,7 @@ EnemyName을 캡처합니다.
 
 ### Scary!
 
-- Girl!
+- ${PDim}!
 소녀!
 - Wear this!
 이걸 입어!
@@ -15544,7 +15544,7 @@ EnemyName을 캡처합니다.
 압수하라!!
 - Intruder! Alert!
 침입자! 경보!
-- Fight girl!
+- Fight ${Pdim}!
 싸워라!
 - Fight!
 싸움!
@@ -15980,7 +15980,7 @@ EnemyName을 캡처합니다.
 그것에서 벗어나보십시오!
 ### Who am I? You beings may call me PTRN.
 
-### ${PThey} thinks ${Pthey} can beat us~
+### ${PThey} think${Ps} ${Pthey} can beat us~
 
 ### No one will save you.
 
@@ -16464,7 +16464,7 @@ EnemyName을 캡처합니다.
 직접 감방으로 모셔다 드릴께요~
 - Amateur.
 아마추어.
-- Bad girl. You need discipline.
+- Bad ${Psub}. You need discipline.
 나쁜 여자야. 규율이 필요해.
 - I'll be keeping the keys.
 열쇠는 내가 맡을게.
@@ -16846,7 +16846,7 @@ EnemyName을 캡처합니다.
 제발...
 - Command... Me...
 사령부... 나...
-- Cute... Girl...
+- Cute... ${PDim}...
 귀여운 소녀...
 - Helpless...
 어찌할 수 없는...
@@ -17002,11 +17002,11 @@ EnemyName을 캡처합니다.
 (SPEAKER 신호음)|활력 징후는 부정직함을 나타냅니다.
 
 
-- (The SPEAKER furrows her brow)|...Excuse me?
+- (The SPEAKER furrows ${Etheir} brow)|...Excuse me?
 (SPEAKER 가 눈썹을 찌푸리며)|...실례합니다.
 
 
-- (The SPEAKER tilts her head)|Right, sorry.
+- (The SPEAKER tilts ${Etheir} head)|Right, sorry.
 (SPEAKER 가 고개를 기울인다)|맞아, 미안해.
 - (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
 (SPEAKER 가 얼굴을 붉히며)|저...미안합니다! 계속해 주세요...
@@ -17046,7 +17046,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?
 
-### (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
+### (The SPEAKER grins and cracks ${Etheir} knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
 
 - Yes, miss... (Currently held weapon will be lost)
 네, 아가씨... (현재 들고 있는 무기는 사라집니다)
@@ -17130,7 +17130,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 당신의 감방에서 당신에게 접근합니다)|다시 돌아왔습니까? 바보 같은 여자.|우리는 대답을 거절하지 않는다는 것을 알고 있습니다.
 
 
-- (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
+- (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and return${Es} with some toys...)|Now hold still!
 (화자가 미소를 지으며 대답한다)|오, 이건 너에게 게임이야?|그럼 내가 너를 위해 더 재미있게 만들어야 할 것 같은데...|(그녀는 장난감을 가지고 떠났다가 돌아온다...)|이제 가만히 있어!
 - (The SPEAKER frowns)|I know exactly what you need...
 (SPEAKER 가 눈살을 찌푸린다)|당신에게 필요한 것이 무엇인지 정확히 알고 있습니다...
@@ -17180,7 +17180,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 당신을 신기하게 바라본다)|오, 당신은 완벽할 거에요!|제 최근 디자인을 모델로 만들어 주시겠어요?
 - (The SPEAKER holds up a restrictive outfit)|This RESTRAINT might be a tight fit|so hold still while I lace it~
 (SPEAKER 가 제한적인 의상을 들고 있다)|이 RESTRAINT는 딱 맞을 수 있습니다|그러니까 끈을 묶는 동안 가만히 계세요~
-- (The SPEAKER giggles)|It looks even better than I thought!|Thank you girl~
+- (The SPEAKER giggles)|It looks even better than I thought!|Thank you ${Pdim}~
 (SPEAKER  낄낄거림)|생각보다 훨씬 좋아보이네요!|고마워요~
 - (The SPEAKER sighs and moves away)|Such a shame...
 (SPEAKER 가 한숨을 쉬며 멀어진다)|이런 부끄러운 일이...
@@ -17194,7 +17194,7 @@ EnemyName을 캡처합니다.
 (SPEAKER  투덜거림)|...괜찮아요. 하지만 귀엽게 보이겠죠~
 - (The SPEAKER looks bemused)|Changed your mind?|It does look good on you though~
 (SPEAKER 가 어리둥절해 보인다)|마음이 바뀌었나요?|그래도 잘 어울리네요~
-- (The SPEAKER snaps her fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
+- (The SPEAKER snaps ${Etheir} fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
 (SPEAKER 가 손가락을 튕긴다)|(제지 장치가 마법처럼 자신에게 나타나는 것을 느낀다)|아하! 멋지군! 이제 가도 돼~
 
 
@@ -17228,7 +17228,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER looks at you with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
 
-- (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
+- (The SPEAKER takes a strange mask from ${Etheir} satchel)|Well, I have the answer right here...
 (화자가 가방에서 이상한 가면을 꺼낸다)|글쎄, 바로 여기에 답이 있어...
 - (The SPEAKER nods seriously)|My hypothesis was correct...
 (SPEAKER 가 진지하게 고개를 끄덕인다)|내 가설이 맞았다...
@@ -17244,7 +17244,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 뒤돌아서 계속 생각에 잠긴다)|흠...
 - (The SPEAKER nods)|I see you are a truth seeker after all.
 (SPEAKER 가 고개를 끄덕인다)|당신은 결국 진실을 찾는 사람이군요.
-- (The SPEAKER lets you go. But then...)|(You feel her clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
+- (The SPEAKER lets you go. But then...)|(You feel ${Ethem} clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
 (SPEAKER 가 당신을 가도록 합니다. 하지만 그때...)|(당신은 그녀의 클립이 뒤에서 당신을 구속하는 것을 느낍니다!)|저기... 이제 당신의 행동을 관찰하겠습니다.
 
 
@@ -17270,7 +17270,7 @@ EnemyName을 캡처합니다.
 
 
 
-### (The SPEAKER smiles as ${Ethey} hide${Es} her hands behind her back)|Have you heard of 'sensory deprivation'?
+### (The SPEAKER smiles as ${Ethey} hide${Es} ${Etheir} hands behind ${Etheir} back)|Have you heard of 'sensory deprivation'?
 
 ### (The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!
 
@@ -17286,7 +17286,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER pouts)|I thought it would be fun...
 
-### (The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of her)|That's better~|Now why don't you say good night~
+### (The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of ${Ethem})|That's better~|Now why don't you say good night~
 
 ### Of course! I love it!
 
@@ -17310,9 +17310,9 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
 
-### (The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
+### (The SPEAKER takes a duster gag from ${Etheir} satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
 
-### (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+### (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from ${Etheir} satchel)|Now then, this place is filthy.|Why don't you put this on to help?
 
 ### (The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
 
@@ -17350,7 +17350,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 RESTTRAINT를 들어 올린다)|이것은 낡은 갑옷 근처에서 찾았습니다.|투구 같은 것 같은데...
 - (The SPEAKER winks and locks it on)|I feel much safer already~
 (SPEAKER 가 윙크하고 잠급니다)|이제 훨씬 안전해진 것 같아요~
-- (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting her imaginary enemies)
+- (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting ${Etheir} imaginary enemies)
 (SPEAKER 가 삐죽거린다)|아, 망할 짓이야!|(그녀는 상상의 적과 싸우기 위해 돌아간다)
 - (The SPEAKER shrugs)|Your loss~
 (SPEAKER 가 어깨를 으쓱한다)|당신의 패배~
@@ -17504,7 +17504,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 찡그린다)|이봐, 물러서지 마!|편안하게 해줄게 약속할게!
 - (The SPEAKER frowns)|Too bad, I want to tie someone!
 (SPEAKER가 눈살을 찌푸린다)|안타깝지만, 누군가를 묶고 싶어요!
-- (The SPEAKER drops her scarves)|Aww, really?|I'll go find someone else then...
+- (The SPEAKER drops ${Etheir} scarves)|Aww, really?|I'll go find someone else then...
 (SPEAKER 가 스카프를 떨어뜨린다)|아, 정말?|그럼 다른 사람을 찾으러 갈게...
 - (The SPEAKER beams a smile)|Yay, thank you!|Feels nice, right?
 (SPEAKER 가 미소를 짓는다)|예, 감사합니다!|기분이 좋죠?
@@ -17550,9 +17550,9 @@ EnemyName을 캡처합니다.
 
 ### (The green gas starts leaking)|Oh no! It wasn't supposed to do that!
 
-### (You push her out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
+### (You push ${Ethem} out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
 
-### (You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
+### (You push ${Ethem} out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
 
 ### (The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen...
 
@@ -17590,7 +17590,7 @@ EnemyName을 캡처합니다.
 아, 하지만 빨리 될거야!|(SPEAKER 가 플라스크를 기울이기 시작한다)|봐? 이미 너를 향해 움직이고 있어!
 - (The SPEAKER tosses the slime on you)|(The slime flops off limply)|Ah. Back to the drawing board.
 (SPEAKER 가 당신에게 슬라임을 던집니다.)|(슬라임이 철퍽거리며 떨어집니다.)|아. 다시 제도판으로 돌아가야겠네.
-- (The SPEAKER pours the slime onto you)|That's the spirit girl!|(Sticky RESTRAINT clings to you)
+- (The SPEAKER pours the slime onto you)|That's the spirit ${Pdim}!|(Sticky RESTRAINT clings to you)
 (SPEAKER 가 당신에게 점액을 붓는다)|그 느낌이야!|(끈적끈적한 구속이 당신에게 달라붙는다)
 - (The SPEAKER tosses the slime on you)|Ha, look, it's alive!|(Sticky RESTRAINT clings to you)
 (SPEAKER 가 당신에게 점액을 던진다)|하, 봐, 살아있어!|(끈적끈적한 구속이 당신에게 달라붙는다)
@@ -17624,7 +17624,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 웃는다)|나한테 구속구가 있어요~|한 번 해볼래요?
 - (The SPEAKER puts on the RESTRAINT)|Perfect. Better behave now~|(The SPEAKER pats your butt)
 (SPEAKER 가 구속구를 입힌다)|완벽해. 앞으로 말 잘들으렴~|(SPEAKER 가 엉덩이를 토닥거린다)
-- (The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
+- (The SPEAKER rolls ${Etheir} eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
 (SPEAKER 가 눈을 굴리며)|늑대소녀본 적 있지?|아, 어쨋든, 잘가~
 - (The SPEAKER nods glumly)|Not a fan?|Shame, I am~
 (SPEAKER 가 침울하게 고개를 끄덕인다)|관심없어?|안타깝네 난 있어~
@@ -17712,7 +17712,7 @@ EnemyName을 캡처합니다.
 
 - (A SPEAKER plays with silvery rope)|Hmm, I need to get better with this.|Can I practice on you?
 (A SPEAKER play with silvery rope)|흠, 이걸 좀 더 잘해야겠어.|연습해도 될까?
-- (The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~
+- (The SPEAKER grins happily)|Thank you ${Pdim}~|I'll tie with RESTRAINT then~
 (SPEAKER 가 행복하게 웃는다)|고마워요~|그럼 RESTRAINT로 묶을게요~
 - (The SPEAKER binds you tightly)|(The rope is tight, and ${Etheyre} clearly an expert.)|Mmm, not too bad~
 (SPEAKER 가 당신을 단단히 묶습니다.)|(로프가 팽팽하고 그녀는 분명히 전문가입니다.)|음, 나쁘지 않습니다~
@@ -17754,7 +17754,7 @@ EnemyName을 캡처합니다.
 
 - (The SPEAKER quickly motions to you)|Hey! Over here!| I got something to show you!
 (SPEAKER 가 재빨리 당신을 가리킨다)|이봐! 여기!| 보여줄 게 ​​있어!
-- (The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in her hands)
+- (The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in ${Etheir} hands)
 (SPEAKER  웃음)|너 이거 입게 될거야~|(억제장치가 그녀의 손에 있다)
 - (The SPEAKER looks surprised)|Oh, uh, sure!|(They quickly add the RESTRAINT)
 (발표자가 놀란 표정을 짓는다)|오, 어, 그렇군요!|(재빨리 구속을 추가합니다)
@@ -17808,7 +17808,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 한숨을 쉬며)|다음 기회에~
 - (The SPEAKER titters)|It's going on, kitty~
 (SPEAKER 가 큭큭대며)|잘 되고 있어, 고양이~
-- (The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in her hand)
+- (The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in ${Etheir} hand)
 (화자 웃음)|그럼 도망칠 수 있는지 보자~|(그녀의 손에 구속 장치가 보인다)
 - (The SPEAKER whimpers and drops it)|Owwww!|I hit my knee!
 (SPEAKER 가 낑낑거리며 떨어뜨린다)|오오오!|무릎을 쳤어요!
@@ -17836,7 +17836,7 @@ EnemyName을 캡처합니다.
 
 
 
-- (A SPEAKER winks at you)|You look like a girl who likes feeling|like a prisoner, am I right?
+- (A SPEAKER winks at you)|You look like a ${Psub} who likes feeling|like a prisoner, am I right?
 (A SPEAKER 윙크)|죄수 같은 느낌을 좋아하는 여자 같아 보여요, 맞죠?
 - (The SPEAKER nods happily)|I knew it! Well, it's your lucky day.|I've got some RESTRAINT for you~
 (SPEAKER 가 행복하게 고개를 끄덕인다)|알고 있었어! 자, 오늘은 너의 행운의 날이야.|너를 위한 구속이 있어~
@@ -17848,7 +17848,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 눈살을 찌푸린다)|정말요?|확실히...
 - (The SPEAKER grins maliciously)|I like seeing prisoners though~|And you're right here...
 (SPEAKER 가 악의적으로 웃는다)|그래도 죄수를 보는 건 좋아~|그리고 당신은 바로 여기...
-- (The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in her hand)
+- (The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in ${Etheir} hand)
 (SPEAKER  웃음)|어차피 내가 하나 만들어줄게~|(그녀의 손에 있는 구속이 보인다)
 - (The SPEAKER gulps)|M-Maybe I won't then!
 (SPEAKER 가 침을 꿀꺽 삼킨다)|M-그럼 안 할지도 몰라!
@@ -17922,17 +17922,17 @@ EnemyName을 캡처합니다.
 
 
 
-- (The SPEAKER brushes past hurriedly)|Careful girl!|Else I'll lock you away~
+- (The SPEAKER brushes past hurriedly)|Careful ${Pdim}!|Else I'll lock you away~
 (SPEAKER 가 황급히 지나간다)|조심해!|그렇지 않으면 널 가둘게~
 - (The SPEAKER looks at you intrigued)|Aren't you something...|How about wearing this RESTRAINT?
 (SPEAKER 가 당신을 흥미롭게 바라본다)|당신은 뭔가...|이 구속복을 입는 건 어때?
 - (The SPEAKER grins and locks it on)|Maybe I should bump into you more~
 (SPEAKER 가 싱긋 웃으며 입을 다물었다)|좀 더 부딪혀야 할 것 같아요~
-- (The SPEAKER rolls her eyes)|Run along then girl~
+- (The SPEAKER rolls ${Etheir} eyes)|Run along then ${Pdim}~
 (SPEAKER 가 눈을 굴리며)|따라와 아가씨~
 - (The SPEAKER nods)|Didn't think so~|Oh, and, uh, sorry for the bump.
 (SPEAKER  고개 끄덕임)|그렇게 생각하지 않았어~|아, 그리고, 어, 부딪쳐서 미안해.
-- (The SPEAKER shakes her head)|You don't get off that lightly.|These are going on.
+- (The SPEAKER shakes ${Etheir} head)|You don't get off that lightly.|These are going on.
 (SPEAKER 가 고개를 젓는다)|그 말을 가볍게 할 수는 없습니다.|이런 일이 벌어지고 있습니다.
 - (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(${EThey} hold${Es} up a RESTRAINT)
 (화자가 눈살을 찌푸린다)|제 생각에는 그래야 할 것 같아요.|당신은 다른 사람을 귀찮게 할 뿐입니다.|(그녀는 제지 장치를 들고 있습니다)
@@ -17976,13 +17976,13 @@ EnemyName을 캡처합니다.
 (발표자 고개 끄덕임)|그럼에도 불구하고 다시 뵙기를 바랍니다.
 - (The SPEAKER glares)|We urge you to reconsider.
 (SPEAKER 가 노려본다)|다시 생각해 보시기 바랍니다.
-- (The SPEAKER has a twinkle in her eye)|We will offer you this RESTRAINT.|You should accept.
+- (The SPEAKER has a twinkle in ${Etheir} eye)|We will offer you this RESTRAINT.|You should accept.
 (SPEAKER 의 눈이 반짝인다)|우리는 당신에게 이 구속을 제안할 것입니다.|당신은 받아들여야 합니다.
 - (The SPEAKER pulls an odd smile)|Very well.
 (화자가 묘한 미소를 지으며)|아주 좋아.
 - (The SPEAKER smugly nods)|(With surprising speed, the RESTRAINT locks in place)|Excellent, a good fit.
 (SPEAKER 가 멋쩍게 고개를 끄덕인다)|(놀라운 속도로 RESTTRAINT가 제자리에 고정됨)|훌륭합니다. 잘 맞습니다.
-### (The SPEAKER covers your mouth with her hand)|Shush, no more bad decisions.|(You feel her buckle the restraint strictly)
+### (The SPEAKER covers your mouth with ${Etheir} hand)|Shush, no more bad decisions.|(You feel ${Ethem} buckle the restraint strictly)
 
 - No, thank you.
 아니요 괜찮습니다.
@@ -18046,7 +18046,7 @@ EnemyName을 캡처합니다.
 
 - (A SPEAKER giggles and calls to you)|Hey there~|Fancy seeing some nature?~
 (SPEAKER 가 낄낄거리며 당신을 부른다)|이봐~|자연을 보고 싶니?~
-- (The SPEAKER motions with her hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
+- (The SPEAKER motions with ${Etheir} hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
 (SPEAKER 가 손으로 움직인다)|(덩굴이 바닥에서 솟아올라 빙글빙글 돌았다)|이것이 당신을 멋지게 묶을 것입니다...
 - (The SPEAKER grins and motions again)|(The plants wrap around you quickly)|(You wriggle against the RESTRAINT)
 (SPEAKER 가 씩 웃으며 다시 움직인다)|(식물이 빠르게 당신을 감쌉니다)|(당신은 구속에 맞서 꿈틀거립니다)
@@ -18096,7 +18096,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 한숨을 쉬며)|아 그렇군요.
 - (The SPEAKER frowns sadly)|But they make the best noise!
 (SPEAKER 가 슬프게 눈살을 찌푸린다)|하지만 그들은 최고의 소리를 낸다!
-- (The SPEAKER rolls her eyes)|Tough luck then~|You're getting one!
+- (The SPEAKER rolls ${Etheir} eyes)|Tough luck then~|You're getting one!
 (SPEAKER 가 눈을 굴리며)|그럼 운이 없군~|하나를 얻다니!
 - (The SPEAKER grins)|See how you feel when|you're wearing one!
 (SPEAKER 가 웃는다)|당신이 그것을 입고 있을 때 당신이 어떻게 느끼는지 보십시오!
@@ -18162,7 +18162,7 @@ EnemyName을 캡처합니다.
 잠깐, 뭐라고? (피할 확률이 PERCENT)
 
 
-### (The SPEAKER steps up to you)|Hey girl~|You happen to be a fan of latex?
+### (The SPEAKER steps up to you)|Hey ${Pdim}~|You happen to be a fan of latex?
 
 ### (The SPEAKER smiles)|Then would you like to try on this RESTRAINT?
 
@@ -18262,7 +18262,7 @@ EnemyName을 캡처합니다.
 
 - (The SPEAKER walks up to you)|We don't get a lot of visitors.|I take it that you enjoy bondage?
 (SPEAKER 가 당신에게 다가온다)|방문객이 많지 않습니다.|속박을 즐기시는 걸로 압니다.
-- (The SPEAKER tilts her head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
+- (The SPEAKER tilts ${Etheir} head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
 (SPEAKER 가 고개를 갸웃한다)|글쎄요, 제 주변에 구속 장치가 있는데|즐거우실 거라 생각했습니다.
 - (The SPEAKER smiles)|I'm glad you like it!
 (SPEAKER 가 웃는다)|당신이 좋아해서 기뻐요!
@@ -18294,11 +18294,11 @@ EnemyName을 캡처합니다.
 (SPEAKER  미소)|알았어, 내가 장비할 동안 가만히 있어~
 - (The SPEAKER slaps your butt as ${Ethey} tie${Es} the last knot)|All trussed up~
 (SPEAKER 가 마지막 매듭을 묶으면서 당신의 엉덩이를 찰싹 때립니다)|모두 묶었습니다~
-- (The SPEAKER looks disappointed and packs her rope away)
+- (The SPEAKER looks disappointed and packs ${Etheir} rope away)
 (SPEAKER 가 실망한 표정을 지으며 밧줄을 움켜쥔다)
 - (The SPEAKER frowns)|Aw. What a missed opportunity!
 (화자가 눈살을 찌푸린다)|아. 정말 놓친 기회!
-- (The SPEAKER grins and reaches for her satchel)|Well, too bad--
+- (The SPEAKER grins and reaches for ${Etheir} satchel)|Well, too bad--
 (SPEAKER 가 씩 웃으며 가방에 손을 뻗는다)|글쎄, 안됐군--
 - (The SPEAKER grins)|But I've already brought so much rope with me~
 (SPEAKER 가 웃는다)|하지만 이미 밧줄을 너무 많이 가져왔어~
@@ -18332,7 +18332,7 @@ EnemyName을 캡처합니다.
 
 
 
-- (The SPEAKER perks her ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
+- (The SPEAKER perks ${Etheir} ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
 (SPEAKER 가 당신을 보고 귀를 쫑긋 세웁니다)|당신은 몸매가 좋습니다.|운동을 좀 하면 더 잘할 것 같아요!
 - (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
 (SPEAKER 가 웃으며 당신에게 종이를 건네준다)|Nevermere Training은 항상 신입 사원을 찾고 있습니다!|여기에 사인을 하도록 하겠습니다...
@@ -18378,11 +18378,11 @@ EnemyName을 캡처합니다.
 
 - (The SPEAKER does a short bow as ${Ethey} see${Es} you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 (SPEAKER 가 당신을 보고 짧은 인사를 합니다)|안녕하세요.|당신은 우리가 사용할 수 있는 자질을 가지고 있는 것 같습니다.|당신에게 자리를 제공하게 되어 기쁩니다...
-- (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
+- (The SPEAKER smiles briefly before clearing ${Etheir} throat)|Fantastic!|I have your uniform right here...
 (SPEAKER 가 목을 가다듬기 전에 잠시 미소를 지음)|멋지다!|여기 유니폼이 있어...
 - (The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck.
 (SPEAKER 가 버클을 채우고 끈을 아주 세게 잡아당겨...)|(자물쇠 몇 개가 딸깍하는 소리가 들린다...)|멋지군. 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다. .
-- (The SPEAKER tilts her head and shrugs)|We are always prepared...
+- (The SPEAKER tilts ${Etheir} head and shrugs)|We are always prepared...
 (SPEAKER 가 고개를 갸우뚱하며 어깨를 으쓱한다)|우리는 항상 준비되어 있습니다...
 - (The SPEAKER nods)|Fair enough.
 (SPEAKER 가 고개를 끄덕인다)|그만하면 됐어.
@@ -18394,7 +18394,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 눈살을 찌푸린다)|당신은 무엇이 당신을 때렸는지 모를 것입니다.
 - (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
 (SPEAKER  미소)|올바른 결정을 내리셨다니 기쁩니다.|이제 첫 번째 작업은 이 바닥을 청소하는 것입니다.|행운을 빕니다.
-- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|You'll require additional training, I suppose...
+- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and lock${Es} it tight...)|You'll require additional training, I suppose...
 (SPEAKER 가 갑자기 당신이 반응할 수 있는 것보다 더 빨리 움직입니다.)|(당신이 아래로 내려가면서 발이 당신의 등을 누르는 것을 느낍니다.)|(그녀는 당신에게 제복을 입히고 단단히 고정시킵니다...)|당신은 추가로 필요합니다. 훈련, 아마...
 
 
@@ -18414,7 +18414,7 @@ EnemyName을 캡처합니다.
 
 
 
-- (The SPEAKER perks her ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
+- (The SPEAKER perks ${Etheir} ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
 (SPEAKER 가 당신을 보고 귀를 쫑긋 세웁니다)|축복받은 고양이에게 영광을!|우리와 함께할 준비가 되셨습니까?
 - (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to cats.|And also we own you now.
 (SPEAKER 가 행복하게 고개를 끄덕인다)|멋지다! 고양이에게 친절하게 대하는 데 동의하기만 하면 된다.|그리고 이제 우리는 당신을 소유하고 있다.
@@ -18466,13 +18466,13 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 당신을 꽉 조이는 천으로 묶습니다...)|(자물쇠 몇 개가 딸깍하는 소리가 들립니다...)|맙소사... 너무 예뻐요!|당신은 훌륭한 조수가 될 것입니다!
 - (The SPEAKER frowns)|Aw...
 (SPEAKER 가 눈살을 찌푸린다)|아...
-- (The SPEAKER clenches her fist to the ceiling)|Nooooo!!!
+- (The SPEAKER clenches ${Etheir} fist to the ceiling)|Nooooo!!!
 (SPEAKER 가 천장을 향해 주먹을 쥔다)|안돼!!!
 - (The SPEAKER grins and pulls out a frilly dress)|Don't knock it till you try it!|Trust me, it'll be fun!
 (SPEAKER 가 웃으며 주름 장식이 달린 드레스를 꺼낸다)|해보기 전에는 노크하지 마세요!|저를 믿으세요, 재미있을 거예요!
-- (The SPEAKER furrows her brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you...
+- (The SPEAKER furrows ${Etheir} brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you...
 (SPEAKER 가 미간을 찌푸리며)|혀 조심해, 아가씨.|아니면 내가 당신을 위해 플러그를 꽂아야겠어...
-- (The SPEAKER folds her arms as ribbons rise up around her)|Suit yourself, hehe~
+- (The SPEAKER folds ${Etheir} arms as ribbons rise up around ${Ethem})|Suit yourself, hehe~
 (SPEAKER 가 팔짱을 끼고 리본이 그녀 주위로 올라간다)|마음대로 해, 헤헤~
 - (The SPEAKER smiles)|Yes! Yes! Wonderful!
 (SPEAKER 가 웃는다)|예! 예! 훌륭합니다!
@@ -18516,7 +18516,7 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 눈살을 찌푸린다)|테스트 실행 시간입니다!
 - (The SPEAKER looks happy again)|Thank you! I'm super grateful!
 (SPEAKER 가 다시 행복해 보인다)|고맙습니다! 정말 감사합니다!
-- (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
+- (The SPEAKER tilts ${Etheir} head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
 (SPEAKER 가 고개를 기울인다)|그럼 좋다. 당신이 이겼다.|(떠나면서 그녀가 유리병을 깨면서 '농담'하는 소리가 들린다)|(파란색 라텍스가 당신을 감싼다!)
 
 
@@ -18550,11 +18550,11 @@ EnemyName을 캡처합니다.
 (화자가 따뜻하게 웃는다)|외부인은 우리 사회에서 낮은 지위에 있다.|하지만 그것은 모두 같은 계급이다.|당신은 필멸의 동료들보다 위에 있게 될 것이다.|무슨 말을 합니까?
 - (The SPEAKER clasps some 'jewelry' around your limbs)|You look beautiful, my dear.|I will leave you to your own affairs until we meet again.
 (SPEAKER 가 당신의 팔다리에 '보석'을 움켜쥔다)|당신은 아름다워요, 여보.|우리가 다시 만날 때까지 당신의 일에 맡기겠습니다.
-- (The SPEAKER turns her head away)|Hmph. I offer you a bargain and you refuse.
+- (The SPEAKER turns ${Etheir} head away)|Hmph. I offer you a bargain and you refuse.
 (SPEAKER 가 고개를 돌린다)|흠. 내가 당신에게 흥정을 제안했지만 당신은 거절했습니다.
-- (The SPEAKER turns her head away)|Hmph. As expected.
+- (The SPEAKER turns ${Etheir} head away)|Hmph. As expected.
 (SPEAKER 가 고개를 돌린다)|흥. 역시.
-- (The SPEAKER folds her arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild.
+- (The SPEAKER folds ${Etheir} arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild.
 (화자가 팔짱을 낀다)|당신이 우리와 함께하지 않는다면 당신은 우리를 대적하는 것입니다.|당신은 야생의 분노에 직면하게 될 것입니다.
 - (The SPEAKER frowns)|Hardly slavery!|A mere slave would not be allowed to even set foot in our society.
 (화자가 눈살을 찌푸린다)|거의 노예가 아닙니다!|단순한 노예는 우리 사회에 발을 들여놓는 것조차 허용되지 않습니다.
@@ -18562,7 +18562,7 @@ EnemyName을 캡처합니다.
 (화자가 눈살을 찌푸린다)|우리는 다시 만날 것입니다.
 - (The SPEAKER nods and smiles)|(${EThey} decorate${Es} your body with 'jewelry')|I am glad you had a change of heart.
 (SPEAKER 가 고개를 끄덕이며 웃는다)|(그녀는 당신의 몸을 '장신구'로 장식합니다)|마음이 바뀌어서 다행입니다.
-- (The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur.
+- (The SPEAKER scoffs)|(${ETheir} magic suddenly binds you tightly in glowing ropes)|Amateur.
 (SPEAKER 가 비웃는다)|(그녀의 마법이 갑자기 당신을 빛나는 밧줄로 단단히 묶는다)|아마추어.
 
 
@@ -18592,19 +18592,19 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 당신에게 미소 짓는다)|필멸자.
 - (The SPEAKER points to the ground)|Kneel before me and accept your collar.
 (SPEAKER 가 땅을 가리키며)|내 앞에 무릎을 꿇고 당신의 옷깃을 받으십시오.
-- (The SPEAKER snaps her fingers)|(A collar of cold black metal materializes around your neck)|A girl who knows her place! Wonderful...
+- (The SPEAKER snaps ${Etheir} fingers)|(A collar of cold black metal materializes around your neck)|A ${Psub} who knows ${Ptheir} place! Wonderful...
 (SPEAKER 가 손가락을 튕긴다)|(당신의 목에 차갑고 검은 금속 목걸이가 나타난다)|자신의 위치를 ​​아는 소녀! 훌륭하다...
 - (The SPEAKER scoffs)|Hmmph. Mortals...
 (SPEAKER 가 비웃는다)|흠. 필멸자...
-- (The SPEAKER folds her arms)|Well, look who doesn't know her place~
+- (The SPEAKER folds ${Etheir} arms)|Well, look who doesn't know ${Ptheir} place~
 (SPEAKER 가 팔짱을 낀다)|글쎄, 누가 자기 위치를 모르나봐~
-- (The SPEAKER folds her arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that.
+- (The SPEAKER folds ${Etheir} arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that.
 (SPEAKER 가 팔짱을 낀다)|나는 당신에게 그 문제에 대해 선택권을 주지 않았습니다.|당신은 내 꺼야, 내가 결정했어.
 - (The SPEAKER's eyes begin to glow)|Looks like we'll do this the fun way!
 (SPEAKER 의 눈이 빛나기 시작한다)|우리가 이것을 재미있는 방법으로 할 것 같다!
 - (The SPEAKER smiles)|Wonderful~|Now come along, my pet!
 (SPEAKER 가 웃는다)|멋지다~|이제 따라와, 내 애완동물!
-- (The SPEAKER scoffs and snaps her fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?
+- (The SPEAKER scoffs and snaps ${Etheir} fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?
 (SPEAKER 가 비웃으며 손가락을 튕긴다)|(금속 구속이 모든 각도에서 당신에게 다가오고 제자리에 단단히 고정됩니다.)|(재갈이 당신의 입에 억지로 박힙니다)|그럼 우리가 뭐라고 하던가요?
 
 
@@ -18644,11 +18644,11 @@ EnemyName을 캡처합니다.
 (SPEAKER 가 고개를 끄덕인다)|좋아요, 그럼 귀찮게 하지 않겠습니다.
 - (The SPEAKER looks dubious)|You know, there's quite a bounty on your head.|I'm sure we could do something about it.
 (SPEAKER 가 수상쩍어 보인다)|당신도 알다시피, 당신의 목에는 상당한 현상금이 걸려 있습니다.|우리가 그것에 대해 뭔가를 할 수 있을 것이라고 확신합니다.
-- (The SPEAKER tilts her head)|Haha, very funny.|We both know that you're not one of those... right?
+- (The SPEAKER tilts ${Etheir} head)|Haha, very funny.|We both know that you're not one of those... right?
 (SPEAKER 가 고개를 갸웃한다)|하하, 아주 웃기다.|당신이 그런 사람이 아니라는 건 우리 둘 다 알고 있어...맞지?
 - (The SPEAKER frowns and readies for battle)|My instincts were right.
 (SPEAKER 가 눈살을 찌푸리며 전투를 준비한다)|내 직감이 맞았다.
-- (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off her hands)|We'll have a talk when you get out of that, okay?
+- (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off ${Etheir} hands)|We'll have a talk when you get out of that, okay?
 (SPEAKER 가 갑자기 당신을 바닥으로 내리칩니다.)|(그녀가 당신을 엄격한 밧줄 매춘부로 묶을 때 당신은 당신의 등에 발이 닿는 것을 느낍니다...)|(그녀는 그녀의 손에서 먼지를 털어냅니다.)|당신이 그만둬, 알았지?
 
 
@@ -18724,17 +18724,17 @@ EnemyName을 캡처합니다.
 
 - (The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!
 (SPEAKER  미소)|나도 너 같은 모험가였어.|그때 드래곤하트에 합류했어!
-- (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
+- (The SPEAKER clears ${Etheir} throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 (화자가 목을 가다듬는다)|음, 우리는 실제로 모집하고 있습니다!|정의를 위해 싸우는 데 동의한다면 우리와 함께 할 수 있습니다!
 - (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER 가 힘차게 악수를 건넸다)|자매 관계에 오신 것을 환영합니다, 모험가님!
-### (The SPEAKER tilts her head and shrugs)|Ah well.
+### (The SPEAKER tilts ${Etheir} head and shrugs)|Ah well.
 
 - (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (화자가 눈살을 찌푸리며)|뭐야?|당신은 정의의 적이 아니지, 그렇지?
 - (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
 (화자가 눈살을 찌푸린다)|...정의를 위해 싸우지 않는다면 정의의 적이 되는 것입니다.
-- (The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
+- (The SPEAKER frowns and cracks ${Etheir} knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
 (SPEAKER 가 눈살을 찌푸리며 손가락 관절을 꺾는다)|제 생각이 맞았나 보군요!|당신과 제가 잡담을 좀 할 것 같군요...
 - (The SPEAKER giggles)|Hehe, just messin' with ya.|Anyway, welcome to the sisterhood!
 (SPEAKER  낄낄거림)|헤헤, 그냥 장난칠 뿐이야.|어쨌든 자매결연에 온 걸 환영해!
@@ -18768,13 +18768,13 @@ EnemyName을 캡처합니다.
 
 - (The SPEAKER waves and calls you over)|Looks like you've made a name for yourself.|What do you say to a little agreement?
 (SPEAKER 가 손을 흔들며 당신을 부릅니다)|당신은 이름을 알린 것 같습니다.|약간의 합의에 대해 뭐라고 말합니까?
-- (The SPEAKER clears her throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
+- (The SPEAKER clears ${Etheir} throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
 (SPEAKER 가 목을 가다듬는다)|음, 당신은 현재 우리 영역에 있습니다.|하지만 우리는 당신에게 약간의 여유를 줄 용의가 있습니다.|당신은 우리 중 누구도 공격하지 않기로 동의하기만 하면 됩니다.
-- (The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~
+- (The SPEAKER frowns)|Criminals? ${PDim}, we ARE the law around these parts~
 (화자 눈살을 찌푸리며)|범죄자? 여보, 이 부분은 우리가 법이야~
-- (The SPEAKER grins)|I like your spunk, girl.|But you're kidding, right?
+- (The SPEAKER grins)|I like your spunk, ${Pdim}.|But you're kidding, right?
 (SPEAKER 가 웃는다)|난 당신의 엉덩이가 좋아요, 아가씨.|하지만 농담하는 거에요, 그렇죠?
-- (The SPEAKER raises her fists and smiles)|You're on!
+- (The SPEAKER raises ${Etheir} fists and smiles)|You're on!
 (SPEAKER 가 주먹을 치켜들고 웃는다)|시작합니다!
 - (The SPEAKER chuckles)|Here's a toast to a new partnership!
 (발표자 웃음)|새로운 파트너십을 위한 건배입니다!
@@ -18874,7 +18874,7 @@ EnemyName을 캡처합니다.
 (발표자가 눈살을 찌푸린다)|그들은 당신이 서명했는지 확인하라고 하더군요...|어떤 수단을 써서라도!
 - (The SPEAKER nods and smiles)|Thank you so much!|I don't know what I would have done if you said no...
 (SPEAKER 가 고개를 끄덕이며 웃는다)|정말 감사합니다!|아니라고 했다면 어떻게 했을지 모르겠습니다...
-- (The SPEAKER frowns and waves her wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
+- (The SPEAKER frowns and waves ${Etheir} wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
 (SPEAKER 가 눈살을 찌푸리며 지팡이를 흔든다)|(다발의 밧줄이 땅에서 나와 당신을 구속합니다)|흠. 어쨌든 당신이 서명했다고 말하겠습니다.|빈손으로 돌아갈 수 없습니다.
 
 
@@ -18912,11 +18912,11 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER waves)|Greetings,|I manufacture all sorts of weapons.|Would you like to buy some?
 
-- (The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
+- (The SPEAKER drops ${Etheir} hammer and cracks ${Etheir} knuckles)|Put em up!
 (SPEAKER 가 망치를 떨어뜨리고 손가락 마디를 꺾는다)| 올려!
 - (The SPEAKER looks at you.)|But you already have one?
 (SPEAKER 가 당신을 쳐다봅니다.)|그런데 이미 갖고 계시죠?
-- (The SPEAKER folds her arms)|I don't do charity, ma'am.
+- (The SPEAKER folds ${Etheir} arms)|I don't do charity, ma'am.
 (발표자가 팔짱을 끼며)|저는 자선사업을 하지 않습니다, 부인.
 ### (The SPEAKER smirks)|Another adventurer found this lying around.|I wonder who it's for~
 
@@ -18938,7 +18938,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER looks at you.)|Do you have a dealer's license?
 
-### (The SPEAKER folds her arms)|I don't do charity, girl.
+### (The SPEAKER folds ${Etheir} arms)|I don't do charity, ${Pdim}.
 
 ### (The SPEAKER nods)|The most high-impact of sports bras.
 
@@ -18958,7 +18958,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER waves)|Hello miss!|What brings you here today?
 
-### (The SPEAKER folds her arms)|That's not very nice!
+### (The SPEAKER folds ${Etheir} arms)|That's not very nice!
 
 ### (The SPEAKER looks at you and smiles.)|Don't you already have one?
 
@@ -18988,7 +18988,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER looks you over and shrugs)|Don't joke around.
 
-### (The SPEAKER folds her arms)|Don't have money? Better go find some.
+### (The SPEAKER folds ${Etheir} arms)|Don't have money? Better go find some.
 
 ### (The SPEAKER produces a bag of stuffings)|Quite the staple.
 
@@ -19004,7 +19004,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER rattles as ${Ethey} wave${Es})|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
 
-### (The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
+### (The SPEAKER cracks ${Etheir} exposed knuckles)|So you've seen through my disguise...
 
 ### (The SPEAKER looks at you.)|Yours is just fine, dear.
 
@@ -19026,7 +19026,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER sells you the item)
 
-### (The SPEAKER shakes her head)|I think you'd be better off without that~
+### (The SPEAKER shakes ${Etheir} head)|I think you'd be better off without that~
 
 ### (The SPEAKER looks embarassed)|I can't sell you that, miss...
 
@@ -19084,7 +19084,7 @@ EnemyName을 캡처합니다.
 (화자 감사합니다)|친절한 제물입니다! 감사합니다.
 - (The SPEAKER thanks you)|A magnificent offering! You have my thanks.
 (화자님 감사합니다)|훌륭한 제안입니다! 감사합니다.
-- (The SPEAKER tilts her head)|...where did you get this?
+- (The SPEAKER tilts ${Etheir} head)|...where did you get this?
 (SPEAKER 가 고개를 갸웃한다)|...이거 어디서 났어?
 - (The SPEAKER thanks you)|A fine trinket!|I will enjoy meditating upon it.
 (화자 감사합니다)|좋은 장신구입니다!|명상하는 것을 즐기겠습니다.
@@ -19124,7 +19124,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER smiles)|Elemental magic, interesting stuff.
 
-### (The SPEAKER tilts her head)|Why is it wet?
+### (The SPEAKER tilts ${Etheir} head)|Why is it wet?
 
 ### (The SPEAKER smiles)|Gladly, this will be useful to my studies.
 
@@ -19134,7 +19134,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER giggles)|Living dangerously, I see~
 
-- (The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?
+- (The SPEAKER approaches you with an offer)|Hey ${Pdim}~|You seem like the explorer type.|Happen to have any good finds?
 (SPEAKER 가 제안을 가지고 접근함)|이봐 아가씨~|당신은 탐험가 타입인 것 같군요.|혹시 좋은 발견이 있으신가요?
 - (The SPEAKER frowns)|Well then.
 (SPEAKER 가 눈살을 찌푸린다)|그럼.
@@ -19166,9 +19166,9 @@ EnemyName을 캡처합니다.
 (발표자 인사)|가장 값진 발견입니다.
 
 
-### (The SPEAKER tilts her shades)|I like to think of myself as a dealer in quality tools.
+### (The SPEAKER tilts ${Etheir} shades)|I like to think of myself as a dealer in quality tools.
 
-### (The SPEAKER reaches for her hip)|I'd think twice if I were you...
+### (The SPEAKER reaches for ${Etheir} hip)|I'd think twice if I were you...
 
 ### (The SPEAKER smiles)|Nevermere keeps a tight grip on their blueprints.|Thank you.
 
@@ -19182,13 +19182,13 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnance in order to...|...add to my collection.|Anyway, got any bombs?
 
-### (The SPEAKER reaches for her backpack)|I'll blow you away!
+### (The SPEAKER reaches for ${Etheir} backpack)|I'll blow you away!
 
 ### (The SPEAKER shrugs)|Cute fireworks, I suppose...
 
 ### (The SPEAKER giggles)|That's what I'm talking about!
 
-### (The SPEAKER rubs her hands together)|Excellent...
+### (The SPEAKER rubs ${Etheir} hands together)|Excellent...
 
 ### (The SPEAKER smiles)|Yes! I can make more bombs!
 
@@ -19208,7 +19208,7 @@ EnemyName을 캡처합니다.
 
 ### (A distracted SPEAKER munches on a cookie)
 
-### (The SPEAKER continues eating her snack)
+### (The SPEAKER continues eating ${Etheir} snack)
 
 ### (The SPEAKER plucks the cookie out of your hand)|My favorite!
 
@@ -19528,7 +19528,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER wiggles excitedly)|Y-yes miss!
 
-### (The SPEAKER shakes her head while blushing)|W-what makes you think that?
+### (The SPEAKER shakes ${Etheir} head while blushing)|W-what makes you think that?
 
 ### (The SPEAKER computes something)|Error...
 
@@ -19542,7 +19542,7 @@ EnemyName을 캡처합니다.
 
 ### (The SPEAKER trembles with pleasure)
 
-### (The SPEAKER struggles to let go due to her chastity belt)
+### (The SPEAKER struggles to let go due to ${Etheir} chastity belt)
 
 
 
@@ -19674,7 +19674,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 나도 당신에게 똑같이 물어야 합니다.
 - (Growl at ${Ethem})
 (그녀에게 으르렁거린다)
-- (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
+- (${EThey} smile${Es})|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
 (미소 짓는다)|내 이름은 바람과 노래를 뜻하는 Fuuka입니다.|자기 소개를 할 건가요?
 - What kind of name is that?
 어떤 종류의 이름입니까?
@@ -19698,11 +19698,11 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 나는 모험가입니다. 그리고 당신은 누구입니까?
 - Mmmmm... (Blush)
 음... (붉어짐)
-- (She grins)|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though.
+- (${EThey} grin${Es})|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though.
 (그녀가 웃는다)|내 이름은 바람과 노래의 글자를 가진 후카입니다.|환생자들은 나를 바람송이라고 부르지만|그들은 그다지 밝지는 않습니다.
 - Reincarnated ones?
 환생자들?
-- (SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue.
+- (SPEAKER tilts ${Etheir} head)|I believe the term is 'Zombie' in the common tongue.
 (SPEAKER 가 고개를 갸웃한다)|일반적인 언어로 '좀비'라는 용어가 있는 것 같아요.
 ### (SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually.
 
@@ -19732,7 +19732,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### The Alchemists are always looking for a youth potion.
 
-### (SPEAKER folds her arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!
+### (SPEAKER folds ${Etheir} arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!
 
 ### Do you know what's on the next floor?
 
@@ -19782,13 +19782,13 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 - Mmpphgh? (Pout at her)
 음? (그녀에게 삐죽)
-- (She smirks)|So you're that kind of visitor, huh?
+- (${EThey} smirk${Es})|So you're that kind of visitor, huh?
 (그녀는 웃는다)|그래서 당신은 그런 종류의 손님이군요, 그렇죠?
 - That's right. How powerful are you?
 좋아요. 당신은 얼마나 강력합니까?
-- (She cracks her knuckles)|I have been practicing the resurrection arts for a thousand years.
+- (${EThey} crack${Es} ${Etheir} knuckles)|I have been practicing the resurrection arts for a thousand years.
 (손목을 꺾는다)|나는 천년 동안 부활 술을 수련해 왔다.
-- (She smiles)|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them.
+- (${EThey} smile${Es})|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them.
 (미소 짓는다)|묘지에서 보이는 모든 좀비들?|그들은 내 애완동물이고 나는 그들 모두를 돌본다.
 - What the heck are 'Resurrection Arts'?
 도대체 '부활술'이 뭐야?
@@ -19796,9 +19796,9 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 진정한 실력을 발휘할 때입니다!
 - Hmmph. (Look away)
 흠. (멀리 봐)
-- (She grins)|We'll wipe that pout off your face soon enough...
+- (${EThey} grin${Es})|We'll wipe that pout off your face soon enough...
 (그녀가 웃는다)|당신의 얼굴에 묻은 그 뾰루지를 곧 닦아줄게요...
-- (She frowns)|Well, you will soon.
+- (${EThey} frown${Es})|Well, you will soon.
 (그녀는 눈살을 찌푸린다)|글쎄, 곧 알게 될거야.
 - Pfff. Never heard of it.
 큭큭 들어 본 적이 없습니다.
@@ -19808,11 +19808,11 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 그게 왜 당신에게 중요합니까?
 - (Stare at her silently, maintaining your posture)
 (자세를 유지하며 말없이 그녀를 응시한다)
-- (She grins)|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong.
+- (${EThey} grin${Es})|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong.
 (그녀가 웃는다)|나는 이곳을 책임지고 있습니다.|여기를 통과하는 모든 것은 나를 통과합니다.|당신은 나를 Fuuka Windsong이라고 부를 수 있습니다.
 - By what authority?
 어떤 권한으로?
-- (SPEAKER tilts her head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries.
+- (SPEAKER tilts ${Etheir} head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries.
 (SPEAKER 가 고개를 갸웃한다)|음.... 어...|오래된 문명! 물론이죠!|나는 그들의 전통을 수세기 동안 지켜왔습니다.
 - (SPEAKER blushes)|Umm... That's because...|Oh shut up!
 (SPEAKER  얼굴이 붉어짐)|음...그건...|아 닥쳐!
@@ -19838,7 +19838,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 저는 모험가입니다, 아가씨.
 - Mmmpphh~ (Moan and wiggle seductively)
 으음~ (매혹적으로 신음하며 흔든다)
-- (She grins)|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!
+- (${EThey} grin${Es})|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!
 (그녀가 웃는다)|오 봐요!|당신에게 옷을 입히고 내 애완동물로 만들겠습니다!|당신은 원하는 모든 긁힘과 껴안기를 가질 수 있습니다!|내 이름은 Fuuka입니다!
 - A pet? What kind?
 애완 동물? 어떤 종류?
@@ -19872,7 +19872,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 (아무 말도 없이 그녀를 공격한다)
 
 
-### (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
+### (SPEAKER clears ${Etheir} throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
 
 - I do what I want.
 나는 내가 원하는 것을 한다.
@@ -19912,13 +19912,13 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 아마도...
 
 
-- (SPEAKER smiles as she stands over you)|Well well. Look who won.
+- (SPEAKER smiles as ${Ethey} stand${Es} over you)|Well well. Look who won.
 (SPEAKER 가 당신을 바라보며 미소짓는다)|글쎄요. 누가 이겼는지 보세요.
 ### (SPEAKER nods and giggles)|Absolutely.|Allow me to present to you, my prized pet collar!|I save it only for my favorite pets.|That's right! You're my favorite pet now~
 
 ### (SPEAKER giggles)|You're not in a position to resist.|Now then, where did I put that collar...
 
-### (SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!
+### (SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(${EThey} brandish${Ees} a collar) Now including you!
 
 ### What's this weird magic?
 
@@ -19938,7 +19938,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 (마지못해 옷깃을 받아)
 ### (SPEAKER presents you with your collar...)|(She locks it around your neck)|You are free to go now, dear!
 
-- (SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!
+- (SPEAKER puts up a wall of talismans to regain ${Etheir} strength)|I'm... I'm not finished yet!
 (SPEAKER 가 힘을 되찾기 위해 부적의 벽을 세움)|난... 아직 끝나지 않았어!
 
 
@@ -19948,7 +19948,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 (SPEAKER 기가 막힌 듯)|R-정말요? 알았어...그럼 보상을 줄게...
 ### (Submit to her anyway) (Gain a special collar)
 
-- (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
+- (SPEAKER resists but ultimately you force a gag into ${Etheir} mouth)|MMMMMPH!
 (SPEAKER 가 저항하지만 결국 당신은 그녀의 입에 재갈을 물려줍니다)|음음!
 - (Gag ${Ethem})
 (개그 그녀)
@@ -20018,7 +20018,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### (Sell Whole Stacks of Items)
 
-### Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)
+### Daww! What a cutie!|(${EThey} smile${Es} and pat${Es} your head gently)
 
 ### Do you have anything for sale?
 
@@ -20030,7 +20030,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 
 
-### (The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
+### (The SPEAKER brings you safely back to ${Etheir} shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
 
 ### Right! Here's RESCUECOST gp.
 
@@ -20042,21 +20042,21 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### (Shake your head regrettably.)
 
-### (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
+### (The SPEAKER rubs ${Etheir} chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
 
-### (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
+### (The SPEAKER rubs ${Etheir} chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
 
-### (The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!
+### (The SPEAKER folds ${Etheir} arms)|Come on now, I can hear the gold jingling in your pocket!
 
 ### Pretty please? I promise I'll pay you back.
 
 ### (Be insistent)
 
-### (The SPEAKER rubs her chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
+### (The SPEAKER rubs ${Etheir} chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
 
 ### (The SPEAKER sighs)|Fine, I believe you.|You better believe I won't forget, though!
 
-### (The SPEAKER folds her arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
+### (The SPEAKER folds ${Etheir} arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
 
 ### (Help her test cursed armors)
 
@@ -20076,7 +20076,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### (The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
 
-### (The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~
+### (The SPEAKER folds ${Etheir} arms and nods)|Good ${Psub}! I knew you would come clean~
 
 ### Sure! I accept!
 
@@ -20090,9 +20090,9 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(${EThey} place${Es} the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
 
-### Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
+### Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckle${Es} the collar on)|Now go out there and find me some treasure~
 
-### You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
+### You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dust${Es} it off, and help${Es} you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
 
 ### No? That's alright.|I'm sure I'll find someone else to test these on, huehue.
 
@@ -20112,7 +20112,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### (The SPEAKER folds her arms)|Business is business, miss~
 
-### (The SPEAKER rubs her chin)|No can do.|Rules are rules~
+### (The SPEAKER rubs ${Etheir} chin)|No can do.|Rules are rules~
 
 ### (The SPEAKER sighs)|Business is business, miss~
 
@@ -20206,9 +20206,9 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 눈을 감아도 진동 때문에 잠이 오지 않는다...
 
 
-- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through her gag)
+- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through ${Etheir} gag)
 (A SPEAKER 가 당신 앞에 결박되어 누워 있습니다.)|(그녀는 애원하는 눈으로 당신을 바라보고 있습니다.)|(재갈을 물고 중얼중얼 중얼거립니다.)
-- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into her gag)
+- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into ${Etheir} gag)
 (A SPEAKER 가 당신 앞에 결박되어 누워 있습니다.)|(그녀는 당신을 바라보며 중얼거리고 그녀의 재갈 속으로 낄낄거립니다)
 - (SPEAKER looks grateful)|Thank you so much|I shall join your party.
 (SPEAKER 는 감사해 보인다)|정말 감사합니다|당신의 파티에 합류하겠습니다.
@@ -20224,7 +20224,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 그녀가 단단하게 꽉 조여져 있는지 확인한다
 
 
-- (A SPEAKER bumps into you while immersed in her thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
+- (A SPEAKER bumps into you while immersed in ${Etheir} thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
 (생각에 잠긴 당신과 마주친 SPEAKER)|오! 여보세요!|말해, 당신은 사랑스러워 보인다...|내가 뭔가 찾는 것을 도와줄래?
 - (The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!
 (SPEAKER 가 위아래로 펄쩍펄쩍 뛰며)|아, 멋지군!|내 드레스 중 하나를 잃어버렸어.|찾을 수 있으면 입고, 가져다 줘,|정말 고맙겠어! 고마워!
@@ -20264,7 +20264,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 - (A SPEAKER looks distraught)|Well met, adventurer!|We have a problem...
 (화자가 정신이 나간 듯 보인다)|잘 봤습니다, 모험가님!|문제가 생겼습니다...
-- (The SPEAKER folds her arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice.
+- (The SPEAKER folds ${Etheir} arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice.
 (화자가 팔짱을 낀다)|요즘 반란군이 우리에게 문제를 일으키고 있어...|만약 그녀를 마주치면, 그녀에게 당신이 가진 모든 것을 주세요!|그녀는 정의의 심판을 받아야 합니다.
 
 
@@ -20274,9 +20274,9 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 (SPEAKER 가 웃는다)|최근에 한 무리의 불량자들이 들이닥쳤습니다.|그들은 벨트에서 벗어날 방법을 찾고 있습니다.|누군가가 그들에게 그들의 위치를 ​​보여줘야 합니다|내가 말하는 것을 이해한다면.
 
 
-- (A SPEAKER approaches you in your cell)|Since you've been a bad girl,|we're taking you to the high-security prison.
+- (A SPEAKER approaches you in your cell)|Since you've been a bad ${Psub},|we're taking you to the high-security prison.
 (감옥에서 SPEAKER 가 접근함)|당신이 나쁜 여자였으니|우리는 당신을 높은 보안 감옥으로 데려갈 것입니다.
-- (The SPEAKER folds her arms)|Want to or not, you're going.
+- (The SPEAKER folds ${Etheir} arms)|Want to or not, you're going.
 (SPEAKER 가 팔짱을 끼며)|원하든 원하지 않든, 당신은 갑니다.
 - (Resist)
 (저항하다)
@@ -20286,7 +20286,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### (A SPEAKER approaches you in your cell)|Looks like you're not in the System.|I'm going to have to take you to sorting.
 
-### (The SPEAKER grins as her systems glow)|I love my job sometimes~
+### (The SPEAKER grins as ${Etheir} systems glow)|I love my job sometimes~
 
 ### (The SPEAKER grins)|It means you'll get nicely packaged,|so that we can sort you through the System.
 
@@ -20296,7 +20296,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### Hmmmph? Mmmm! (Act worried and whimper)
 
-### (The SPEAKER folds her arms)|Mistress Oriel's orders
+### (The SPEAKER folds ${Etheir} arms)|Mistress Oriel's orders
 
 ### Not in the 'System'?
 
@@ -20322,7 +20322,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### The facility is in ruins! This is pointless!
 
-- (A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
+- (A SPEAKER crosses ${Etheir} arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
 (A SPEAKER 가 팔짱을 끼며)|누구를 보고 있니?|오, 모험가네.|말해, 당신은|우리와 일하는 데 관심이 없을 거야, 그렇지?
 - (The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out.
 (발표자가 웃는다)|그게 더 좋아.|특종: 우리 중 하나가 다음 층에서 잡혔어.|가서 그녀를 꺼내야 해.
@@ -20334,7 +20334,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 (자물쇠에 작동하는 열쇠가 없습니다)
 - (You can't help ${Ethem}, bound as tightly as you are...)
 (당신처럼 단단히 묶인 그녀를 도울 수 없습니다...)
-- (You unlock her, fumbling around for a while with your bound hands)
+- (You unlock ${Ethem}, fumbling around for a while with your bound hands)
 (당신은 그녀의 잠금을 해제하고, 묶인 손으로 잠시 더듬거립니다)
 - (You unlock the SPEAKER)|Thank you!|Let's get out of here!
 (SPEAKER 잠금 해제)|고맙습니다!|여기서 나가자!
@@ -20348,7 +20348,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 (손이 묶인 상태에서 자물쇠를 열 수 없습니다)
 - (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
 (잠시 후 SPEAKER 를 풀어줍니다)|감사합니다!|가자!
-- (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} her head when you go for her gag...)
+- (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} ${Etheir} head when you go for ${Etheir} gag...)
 (잠시 후, 당신은 SPEAKER 를 풀어줍니다)|으읍읍!|(당신이 재갈을 물릴 때 그녀는 고개를 흔든다...)
 - (You don't have enough mana for a command word)
 (명령어를 쓸 마나가 부족합니다)
@@ -20356,9 +20356,9 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 (힘껏 해봐, 입이 꽉 막혀)
 - (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
 (SPEAKER 를 풀어주라는 명령을 내림)|대단히 감사합니다!|가자!
-- (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} her gag back on...)
+- (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)
 (SPEAKER 를 풀어주라는 명령을 내림)|으으읍!|(그녀는 재갈을 물려...)
-### (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
+### (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help ${Ethem}.)
 
 - Use a key to unlock her
 열쇠를 사용하여 그녀를 풀어준다
@@ -20368,7 +20368,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### Apologize profusely!
 
-### (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} is bugged and needs your help to get out)
+### (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} ${Eis} bugged and needs your help to get out)
 
 ### (Unlock her and file a bug report to Ada)
 
@@ -20378,7 +20378,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 
 
-### (The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)
+### (The SPEAKER sits restrained by your own hand.|Only someone with keys can let ${Ethem} out.)
 
 - Try to pick her restraints
 그녀의 구속구를 따려고 시도한다
@@ -20452,7 +20452,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### (You lock yourself in the furniture!)
 
-### (The SPEAKER slips out of your grip|before you can lock her in place!)
+### (The SPEAKER slips out of your grip|before you can lock ${Ethem} in place!)
 
 ### (Display one of your prisoners)
 
@@ -20470,7 +20470,7 @@ Fuuka는 가차없이 당신을 간지럽히며 입을 삐죽거립니다! (Dama
 
 ### (Secure NME into the furniture)
 
-### (You lock her into the furniture so that ${Ethey} stay${Es} in place)
+### (You lock ${Ethem} into the furniture so that ${Ethey} stay${Es} in place)
 
 
 
@@ -20718,7 +20718,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### Sounds fun... but I really need to get going.
 
-### (The Dollmaker folds ${Etheir} arms as she walks over)|All tight and shiny!|You'll be my prized possession~
+### (The Dollmaker folds ${Etheir} arms as ${Ethey} walk${Es} over)|All tight and shiny!|You'll be my prized possession~
 
 ### (The Dollmaker nods)|Already eager to obey!|So beautiful...
 
@@ -20738,7 +20738,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### (The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower.
 
-### (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as she storms toward you!)
+### (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as ${Ethey} storm${Es} toward you!)
 
 ### (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)
 
@@ -20748,7 +20748,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### (Wear a doll mask)
 
-### (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and she starts mumbling angrily)
+### (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and ${Ethey} start${Es} mumbling angrily)
 
 
 
@@ -26394,7 +26394,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### Restores 30% willpower. Takes a few turns to eat.
 
-### A playful ghost now accompanies you on your journey.
+### A playful ghost now accompanies ${youObj} on ${your} journey.
 
 ### The ghost haunting you decides to have a little fun! (+RestraintAdded)
 
@@ -26888,7 +26888,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### A dark energy enters your body... (DamageDealt)
 
-### A dark energy lurks within you.
+### A dark energy lurks within ${youObj}.
 
 ### You succumb to a dark desire... (+RestraintAdded)
 
@@ -27142,13 +27142,13 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### Corruption: While in the shadows, you slowly gain corruption.
 
-### Your willpower gain and struggle power is less effective due to your corruption.
+### ${Your} willpower gain and struggle power is less effective due to ${your} corruption.
 
 ### Seduction: Gain distraction after taking damage.
 
 ### Taking damage fills your minds with cursed thoughts...
 
-### Having taken damage, your distraction is increasing...
+### Having taken damage, ${your} distraction is increasing...
 
 ### Punishment: When you defeat an enemy, you are stunned briefly and enemies are attracted.
 
@@ -27158,7 +27158,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### Dark Voice: Kneel before your mistress.
 
-### You must submit! Moving away from an enemy at 0 WP will bind you!
+### ${You} must submit! Moving away from an enemy at 0 WP will bind ${youObj}!
 
 ### Denial: -10 WP when you try to Let Go. At 0 WP you cannot orgasm.
 
@@ -27428,7 +27428,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 10% Max Mana.
 
-### You sense that a high value target is near.
+### ${You} sense${Ys} that a high value target is near.
 
 ### You push yourself beyond physical limits!
 
@@ -27456,7 +27456,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### Costs 100 Arcane Energy and refunds 100 Mana. Bringing memories to life, you call upon your magical knowledge to ignore arm, leg, and verbal spell components for 3 turns.
 
-### You can ignore Arm, Leg, and Verbal components!
+### ${You} can ignore Arm, Leg, and Verbal components!
 
 ### Magical whisperings circle around you, enabling you to cast spells without components!
 
@@ -27478,7 +27478,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### Chaotic energy overtakes you, crystallizing into physical form...
 
-### Chaotic energy flows through you! You have a bad feeling about this...
+### Chaotic energy flows through ${youObj}! ${You} ${Yhas} a bad feeling about this...
 
 
 
@@ -27506,9 +27506,9 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### You don't have any restraints that can be removed
 
-### As you are low on mana, you are unable to store Arcane Energy.
+### As ${you} ${Yis} low on mana, ${you} ${Yis} unable to store Arcane Energy.
 
-### You are recharging your next mana cost reduction.
+### ${You} ${Yis} recharging ${your} next mana cost reduction.
 
 
 
@@ -27620,7 +27620,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### A ball of latex envelops you!
 
-### The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range.
+### The latex around ${youObj} dampens ${your} attacks, reducing physical damage by 30% and lowering ${your} sight range.
 
 ### Latex Ball
 
@@ -28062,11 +28062,11 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### The gap in the bubble closes, and you are fully sealed within the bubble!
 
-### Magical water reduces your accuracy and slows you significantly!
+### Magical water reduces ${your} accuracy and slows ${youObj} significantly!
 
-### You attack twice!
+### ${You} attack${Ys} twice!
 
-### You gain a free move from Combat Maneuvers!
+### ${You} gain${Ys} a free move from Combat Maneuvers!
 
 ### Access denied.
 
@@ -28200,7 +28200,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### Hundreds of years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
 
-### An item has increased your spell damage!
+### An item has increased ${your} spell damage!
 
 ### AMNT ice damage/turn vs. Frozen
 
@@ -28214,11 +28214,11 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### You were hit by one of Fuuka's talismans. Fuuka's magic renders you helpless!!!
 
-### You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
+### ${You} ${Yhas} been hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting ${youObj}!
 
 ### Sealing Shadows
 
-### Shadowy magic is restricting you!
+### Shadowy magic is restricting ${youObj}!
 
 ### A powerful seal holds you in place temporarily!!!
 
@@ -28740,7 +28740,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### You raise your defences!
 
-### Your defenses are raised!
+### ${Your} defenses are raised!
 
 
 
@@ -28750,7 +28750,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### You channel your fighting spirit into your desire for freedom!
 
-### Your struggle power is greatly increased!!!
+### ${Your} struggle power is greatly increased!!!
 
 ### The teleportation partially succeeds due to an obstruction, placing you near the intended point.
 
@@ -28778,7 +28778,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### Your shield absorbed AMNT damage.
 
-### You are currently shielded from damage and some spells.
+### ${You} ${Yis} currently shielded from damage and some spells.
 
 ### No offhand weapon set. Activate the spell in your hotbar to set one.
 
@@ -29096,7 +29096,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### You have the mental clarity but not the magical clarity! (not enough mana)
 
-### You have formed a mental barrier...
+### ${You} ${Yhas} formed a mental barrier...
 
 
 
@@ -29836,7 +29836,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### Cut to the chase. Do I have to fight you or not?
 
-### (She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
+### (${EThey} chuckle${Es})|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
 
 ### Quite a boast for someone who's about to lose.
 
@@ -29866,7 +29866,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### What is this place?
 
-### (She smiles)|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(She motions to the north)
+### (${EThey} smile${Es})|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(${EThey} motion${Es} to the north)
 
 ### Tell me about your collection
 
@@ -29956,15 +29956,15 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### I won't wear anyone's collar!
 
-### (She smirks)|Tsk tsk. Then you won't pass.
+### (${EThey} smirk${Es})|Tsk tsk. Then you won't pass.
 
-### (She giggles)|How cute!|You're so used to yours that you forgot about it~
+### (${EThey} giggle${Es})|How cute!|You're so used to yours that you forgot about it~
 
 ### Why don't you wear it yourself?
 
 ### Hmmph. (Scoff at ${Ethem})
 
-### (She frowns)|Watch your tongue~
+### (${EThey} frown${Es})|Watch your tongue~
 
 ### (She frowns)|I do not wear collars.
 
@@ -30004,7 +30004,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### There must be a mistake. Sign me up!
 
-### (She smiles)|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~
+### (${EThey} smile${Es})|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~
 
 ### I am the strongest.
 
@@ -30928,7 +30928,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### The item hugs your layer tightly, adhering firmly!
 
-### Your skin is covered in a layer of latex, making escape from cyber restraints harder!
+### ${Your} skin is covered in a layer of latex, making escape from cyber restraints harder!
 
 ### Some Exclusions Apply
 
@@ -30966,9 +30966,9 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### Gain AMNT DMG Resist for DRTN turns
 
-### Your elemental damage is increased!
+### ${Your} elemental damage is increased!
 
-### Your elemental resistance is increased!
+### ${Your} elemental resistance is increased!
 
 
 
@@ -31096,7 +31096,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### You are not in a condition to use a leash on ${Ethem}.
 
-### She refuses to be leashed unless you tie ${Ethem} up!
+### ${EThey} refuse${Es} to be leashed unless you tie ${Ethem} up!
 
 ### You attach a leash to ENMY.
 
@@ -31138,7 +31138,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### ... will get an accuracy bonus against you in melee range.
 
-### You are more likely to succumb to curses.
+### ${You} ${Yis} more likely to succumb to curses.
 
 ### X Offset
 
@@ -31574,9 +31574,9 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### [EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
 
-### Phase Dance active. Your next move is instant.
+### Phase Dance active. ${Your} next move is instant.
 
-### Combat Maneuver active. Your next move is instant.
+### Combat Maneuver active. ${Your} next move is instant.
 
 ### The furniture space is occupied
 
@@ -32512,9 +32512,9 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### You zap your leasher!
 
-### You are psychically connected!
+### ${You} ${Yis} psychically connected!
 
-### You've used Shock Collar recently and it costs more DP.
+### ${Youve} used Shock Collar recently and it costs more DP.
 
 
 
@@ -32536,7 +32536,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
 
-### -100% miscast chance, but casting spells can send you over the edge.
+### -100% miscast chance, but casting spells can send ${youObj} over the edge.
 
 ### The psychic link conducts away some of the intensity...
 
@@ -32604,7 +32604,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
 
-### (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} locks ${Etheir} gag back on...)
+### (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)
 
 ### Dissolve the latex with a SLVNT
 

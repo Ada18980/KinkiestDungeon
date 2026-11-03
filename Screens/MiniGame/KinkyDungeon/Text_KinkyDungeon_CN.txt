@@ -1823,27 +1823,27 @@ EnemyName对TargetName念出了一个口令！
 物理防御:
 - Magic Armor: 
 魔法防御: 
-- In the Shadows: You are harder to see.
+- In the Shadows: ${You} ${Yis} harder to see.
 处在阴影中 : ‎你更难被敌人察觉。
-- Invisible: You are very difficult to see.
+- Invisible: ${You} ${Yis} very difficult to see.
 隐形 : ‎你非常难以被敌人察觉。
-- Quickness: Your next movement is so fast it doesn't advance a turn.
+- Quickness: ${Your} next movement is so fast it doesn't advance a turn.
 迅捷 : ‎你的下一个动作极其迅速，不消耗回合时间。
 - All Damage Reduction: 
 全部伤害减免：
-- You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
+- ${You} take${Ys} PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 你受到的DAMAGETYPE伤害减少至PERCENT1，基于PERCENT2的DAMAGETYPE抗性和PERCENT3的DAMAGECATEGORY修正。
-- You deal PERCENT more DAMAGETYPE damage.
+- ${You} deal${Ys} PERCENT more DAMAGETYPE damage.
 你造成的DAMAGETYPE伤害增加了 PERCENT。
-- Your bindings are PERCENT more effective.
+- ${Your} bindings are PERCENT more effective.
 你的束缚效果提高了 PERCENT
-- Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
+- ${Your} attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
 你的基础攻击花费 STMNA 点体力，造成 DAMAGEDEALT 点DAMAGETYPE伤害。
 - Plugged!
 被插入！
 - Plugged!!!
 被完全插入！！！
-- Denied! You won't be getting off that easy~ (Denial Level: ${Denial}%)
+- Denied! ${You} won't be getting off that easy~ (Denial Level: ${Denial}%)
 不行！不会让你这么容易就出来的~( 剥夺等级 : ${Denial}% )
 - Teasing vibrations...
 挑逗的震动...
@@ -1858,11 +1858,11 @@ EnemyName对TargetName念出了一个口令！
 - Torturous vibrations!!!
 折磨般的震动！
 
-- Your restraints are restrictive! Struggling is less effective without help.
+- ${Your} restraints are restrictive! Struggling is less effective without help.
 你的束缚太严格了！无人帮助时挣扎效果减弱。
 - Stunned! You can't move!
 你被晕眩，无法移动！
-- Your vision is impaired!
+- ${Your} vision is impaired!
 你的视野受到影响！
 - Arms are bound!
 你的手臂被束缚！
@@ -1880,73 +1880,73 @@ EnemyName对TargetName念出了一个口令！
 减速 4 级以上 : 几乎无法移动。冲刺和跳跃均被禁用。
 - Slow Level 10+: Immobilized!
 减速 10 级以上 : 完全无法动弹！
-- Your mouth is free for potion-drinking and spellcasting activities.
+- ${Your} mouth is free for potion-drinking and spellcasting activities.
 你的嘴巴可以自由饮用药剂和施放法术。
-- Your vision is clear.
+- ${Your} vision is clear.
 你的视野十分清晰。
-- Your hands are unobstructed.
+- ${Your} hands are unobstructed.
 你的双手没有被阻碍。
-- Your arms are free to move as you please.
+- ${Your} arms are free to move as ${you} please${Ys}.
 你的手臂可以自由伸展。
-- Your legs are free and unimpeded.
+- ${Your} legs are free and unimpeded.
 你的双腿自由而无阻。
-- You are ${AMOUNT} gagged! Verbal miscast chance is increased and potions are less effective!
+- ${You} ${Yis} ${AMOUNT} gagged! Verbal miscast chance is increased and potions are less effective!
 你的嘴巴被${AMOUNT}堵住了，施放言语法术的失败几率增加，而且药水的效果降低！
-- Your mouth is totally filled! You can't drink potions and can't cast verbal spells!
+- ${Your} mouth is totally filled! ${You} can't drink potions and can't cast verbal spells!
 你的嘴巴被堵的死死的，无法施放言语法术和饮用药剂！
 
 
 
 - Doll Mirror's Curse
 玩偶之镜的诅咒
-- A certain mirror has captivated you, and you can no longer stop looking...
+- A certain mirror has captivated ${youObj}, and ${you} can no longer stop looking...
 这面镜子让你深深着迷，你再也无法停止注视……
 - Corruption
 腐化
-- You are more likely to succumb to curses.
+- ${You} ${Yis} more likely to succumb to curses.
 你更有可能屈服于诅咒。
 - Latex Integration
 乳胶融合
-- Your skin is covered in a layer of latex, making escape from cyber restraints harder!
+- ${Your} skin is covered in a layer of latex, making escape from cyber restraints harder!
 你的皮肤上覆盖着一层乳胶，使从赛博拘束具中逃脱变得更加困难！
 - Party Submission
 队内顺从
 - Friendly fire is reduced by ${PowerInt}%
 友军伤害减少 ${PowerInt}%
-- -100% miscast chance, but casting spells can send you over the edge.
+- -100% miscast chance, but casting spells can send ${youObj} over the edge.
 -100% 法术失误几率，但施放法术可能会让你高潮。
 - Psychic Link
 灵能链接
 # :: KDBuffName_PsychicLink
 # :: KinkyDungeonSpellPsychicLink
-- You are psychically connected!
+- ${You} ${Yis} psychically connected!
 你已建立心灵链接！
 - Shock Collar
 电击项圈
 # :: KDBuffName_ShockCollarCD
 # :: KinkyDungeonSpellShockCollar
-- You've used Shock Collar recently and it costs more DP.
+- ${Youve} used Shock Collar recently and it costs more DP.
 你最近使用过电击项圈，因此需要花费更多 DP。
 - Warden's Lockdown
 典狱长的限制
-- Marked for Collection. Getting hit by more orbs will put you on a stand. Reduces Bondage resist.
+- Marked for Collection. Getting hit by more orbs will put ${youObj} on a stand. Reduces Bondage resist.
 被标记为收集目标，若被更多法球命中会将你放上展示台，同时降低束缚抗性。
-- Phase Dance active. Your next move is instant.
+- Phase Dance active. ${Your} next move is instant.
 相位舞步已激活，你的下一步操作将立即执行。
 - Combat Maneuver
 战斗机动
 # :: KDBuffName_CombatManeuverQuick
 # :: KDBuffName_CombatManeuver
 # :: KinkyDungeonSpellCombatManeuver
-- Combat Maneuver active. Your next move is instant.
+- Combat Maneuver active. ${Your} next move is instant.
 战斗机动已激活，你的下一步操作将立即执行。
 - Elemental Charge
 元素充能
-- Your elemental damage is increased!
+- ${Your} elemental damage is increased!
 你的元素伤害提升了！
 - Elemental Resistance
 元素抗性
-- Your elemental resistance is increased!
+- ${Your} elemental resistance is increased!
 你的元素抗性提升了！
 - Taunted
 被嘲讽
@@ -1959,7 +1959,7 @@ EnemyName对TargetName念出了一个口令！
 # :: KDBuffName_MagicalSight
 - Shield of Unclarity
 模糊之盾
-- You have formed a mental barrier...
+- ${You} ${Yhas} formed a mental barrier...
 你已形成了一道精神屏障……
 - Phase
 相位
@@ -1969,13 +1969,13 @@ EnemyName对TargetName念出了一个口令！
 挣脱
 # :: KDBuffName_BreakFree
 # :: KinkyDungeonSpellBreakFree
-- Your struggle power is greatly increased!!!
+- ${Your} struggle power is greatly increased!!!
 你的挣扎能力大幅提升了！！！
 - Raise Defenses
 提高防御
 # :: KDBuffName_RaiseDefenses
 # :: KinkyDungeonSpellRaiseDefenses
-- Your defenses are raised!
+- ${Your} defenses are raised!
 你的防御已提升！
 - Double Accel
 双重加速
@@ -2003,55 +2003,55 @@ EnemyName对TargetName念出了一个口令！
 时间已经停滞了……
 - Sealed by Shadows
 暗影封印
-- Shadowy magic is restricting you!
+- Shadowy magic is restricting ${youObj}!
 暗影魔法正在束缚你！
 - Fuuka's Seal
 风香封印
-- You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
+- ${You} ${Yhas} been hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting ${youObj}!
 你被风花的一枚符咒弹击中了，她的魔法正在束缚你！
 - Bubbled
 泡泡
-- Magical water reduces your accuracy and slows you significantly!
+- Magical water reduces ${your} accuracy and slows ${youObj} significantly!
 魔法之水会降低你的命中率，且显著降低你的速度！
 - Battle Trance
 战斗回响
 # :: KDBuffName_BattleTrance
 # :: KinkyDungeonSpellBattleTrance
-- You attack twice!
+- ${You} attack${Ys} twice!
 你攻击两次！
-- You gain a free move from Combat Maneuvers!
+- ${You} gain${Ys} a free move from Combat Maneuvers!
 你从战斗机动中获得一次免费移动！
 - Surrender
 投降
 # :: KDBuffName_NoWP
 # :: KDPlayerTitle_OutofWillpower
-- Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist.
+- ${Your} willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist.
 你的意志力为 0，对挣扎、格挡、闪避和束缚抵抗造成巨大惩罚。
 - Latex Bubbled
 乳胶泡泡
-- The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range.
+- The latex around ${youObj} dampens ${your} attacks, reducing physical damage by 30% and lowering ${your} sight range.
 你周围的乳胶削弱了你的攻击，使你的物理伤害降低30%，并降低你的视野范围。
 # :: KDBuffDesc_LatexBubble
 # :: KDBuffDesc_LatexBall
 - Ballsuit
 充气球形衣
-- As you are low on mana, you are unable to store Arcane Energy.
+- As ${you} ${Yis} low on mana, ${you} ${Yis} unable to store Arcane Energy.
 由于你法力不足，你无法储存奥术能量。
 - Inner Power Recharging
 内在能源充能中
-- You are recharging your next mana cost reduction.
+- ${You} ${Yis} recharging ${your} next mana cost reduction.
 你正在为下一次的法力消耗降低效果充能。
 - Chaotic Overflow
 混沌溢出
 # :: KDBuffName_ChaoticOverflow
 # :: KinkyDungeonSpellChaoticOverflow
-- Chaotic energy flows through you! You have a bad feeling about this...
+- Chaotic energy flows through ${youObj}! ${You} ${Yhas} a bad feeling about this...
 混沌能量流遍你全身！你对此有种不祥的预感……
 - Akashic Conflux
 以太超流
 # :: KDBuffName_AkashicConflux
 # :: KinkyDungeonSpellAkashicConflux
-- You can ignore Arm, Leg, and Verbal components!
+- ${You} can ignore Arm, Leg, and Verbal components!
 你可以忽略手臂、腿部和言语部位施法！
 - Hard to Catch
 难以捕捉
@@ -2061,7 +2061,7 @@ EnemyName对TargetName念出了一个口令！
 挣扎效果提升，逃脱速度更快！
 - High Value Target
 高价值目标
-- You sense that a high value target is near.
+- ${You} sense${Ys} that a high value target is near.
 你感觉到高价值目标就在附近。
 - Arcane Energy
 奥术能量
@@ -2077,27 +2077,27 @@ EnemyName对TargetName念出了一个口令！
 通过攻击消耗体力可获得战斗节拍，最多累计 40 点。
 - Forced Submission
 强制屈服
-- You must submit! Moving away from an enemy at 0 WP will bind you!
+- ${You} must submit! Moving away from an enemy at 0 WP will bind ${youObj}!
 你必须屈服！在 0 WP 时远离敌人会被束缚！
 - Curse of Distraction
 性奋诅咒
-- Having taken damage, your distraction is increasing...
+- Having taken damage, ${your} distraction is increasing...
 受到伤害后，你的性奋值正在上升……
 - Corrupted
 堕落
 # :: KDBuffName_Corrupted
 # :: KDPersonalityCorrupt
-- Your willpower gain and struggle power is less effective due to your corruption.
+- ${Your} willpower gain and struggle power is less effective due to ${your} corruption.
 受到腐化的影响，你的意志力获取与挣扎效果有所降低。
 - Cursing Circle
 诅咒之环
-- You are in the process of being cursed.
+- ${You} ${Yis} in the process of being cursed.
 你正在被诅咒。
-- A dark energy lurks within you.
+- A dark energy lurks within ${youObj}.
 一股黑暗能量潜伏在你体内。
-- You've made a deal... your freedom now in exchange for your freedom later...
+- ${Youve} made a deal... ${your} freedom now in exchange for ${your} freedom later...
 你已达成一笔交易……用你现在的自由，换取你日后的自由……
-- You've made a deal, which lurks deep inside you~
+- ${Youve} made a deal, which lurks deep inside ${youObj}~
 你已达成一笔交易，它现在潜伏在你体内深处~
 - Mental Resistance
 精神抗性
@@ -2105,9 +2105,9 @@ EnemyName对TargetName念出了一个口令！
 # :: KDBuffName_d_OrgasmResist
 # :: KinkyDungeonSpellOrgasmResist
 # :: KDControlHarnessChastityMode_Fullpower
-- You cannot orgasm except by choice or below 10% WP. Click to toggle.
+- ${You} cannot orgasm except by choice or below 10% WP. Click to toggle.
 你无法高潮，除非自慰或 WP 低于 10% ，点击切换。
-- You are allowing yourself to let go. Click to toggle.
+- ${You} ${Yis} allowing ${your}self to let go. Click to toggle.
 你正在允许自己高潮，点击切换。
 - Bound by Fate
 命运束缚
@@ -2115,7 +2115,7 @@ EnemyName对TargetName念出了一个口令！
 离开指定地块将受到惩罚！
 - Haunted
 灵魂缠身
-- A playful ghost now accompanies you on your journey.
+- A playful ghost now accompanies ${youObj} on ${your} journey.
 现在有一个调皮的幽灵陪伴你踏上旅程。
 - Intense Vibrations
 强烈震动
@@ -2125,7 +2125,7 @@ EnemyName对TargetName念出了一个口令！
 聚力
 # :: KDBuffName_Empower
 # :: KinkyDungeonFilterupcast
-- You are able to cast higher level versions of spells.
+- ${You} ${Yis} able to cast higher level versions of spells.
 你能够施放更高等级的法术。
 - Light
 光
@@ -2143,11 +2143,11 @@ EnemyName对TargetName念出了一个口令！
 亮部
 - Let there be light!
 要有光！
-- You're seeing things...
+- ${Youre} seeing things...
 你出现幻觉了……
 - Poisoned
 中毒
-- You're starting to feel drowsy.
+- ${Youre} starting to feel drowsy.
 你开始感到昏昏欲睡。
 - Blessing of Latex
 乳胶的祝福
@@ -2183,7 +2183,7 @@ EnemyName对TargetName念出了一个口令！
 -50% MP消耗 ( 幻术 )
 - Conductive
 导电
-- When you or an enemy takes electric damage, the other takes half of it as well!
+- When ${you} or an enemy takes electric damage, the other takes half of it as well!
 当你或一名敌人受到电击伤害时，另一方也会受到其中一半的伤害！
 - Lightning Rod
 避雷针
@@ -2193,21 +2193,21 @@ EnemyName对TargetName念出了一个口令！
 大幅提升电击抗性。
 - Drenched
 湿透
-- Grants fire resist, ice/electric weakness, and makes you conductive.
+- Grants fire resist, ice/electric weakness, and makes ${youObj} conductive.
 获得火焰抗性、冰电易伤，并使你导电。
 - Chilled
 寒冷
-- The cold makes it hard to move! You are slowed.
+- The cold makes it hard to move! ${You} ${Yis} slowed.
 寒冷让你难以移动！你被减速了。
 - Slimed
 粘液
-- It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
+- It's sticky and dense! ${You} ${Yis} slowed and 30% more vulnerable to glue damage.
 它又黏又稠！你被减速，并且受到胶体伤害增加 30%。
 - Unsteady
 不稳定
 # :: KDBuffName_Unsteady
 # :: KDBuffName_Unsteady2
-- You're on loose footing. You are easier to hit and are slowed.
+- ${Youre} on loose footing. ${You} ${Yis} easier to hit and ${Yis} slowed.
 你脚下不稳，你被减速，且更容易被击中。
 # :: KDBuffDesc_Unsteady
 # :: KDBuffDesc_Unsteady2
@@ -2219,23 +2219,23 @@ EnemyName对TargetName念出了一个口令！
 点燃
 # :: KDBuffName_Ignite
 # :: KDBuffName_IgniteDamage
-- You are dealing fire damage to yourself and nearby enemies!
+- ${You} ${Yis} dealing fire damage to ${your}self and nearby enemies!
 你正在对自己和附近的敌人造成火焰伤害！
 - On Fire
 着火
-- You are on fire and taking damage!
+- ${You} ${Yis} on fire and taking damage!
 你着火了，正在受到伤害！
 - Divine Punishment
 神圣惩罚
-- Deals bonus damage when you hit an enemy.
+- Deals bonus damage when ${you} hit${Ys} an enemy.
 命中敌人时造成额外伤害。
 - Divine Protection
 神圣庇佑
-- Automatically blocks the next 3 times an enemy tries to bind you.
+- Automatically blocks the next 3 times an enemy tries to bind ${youObj}.
 自动格挡接下来 3 次敌人试图束缚你的效果。
 - Divine Cunning
 神圣诡诈
-- You turn invisible briefly after attacking.
+- ${You} turn${Ys} invisible briefly after attacking.
 攻击后你会短暂隐身。
 - Blessing of Flame
 火之祝福
@@ -2255,7 +2255,7 @@ EnemyName对TargetName念出了一个口令！
 - MP消耗 ( 地 )
 - Slime Form
 粘液形态
-- You gain bonuses and can slip through bars!
+- ${You} gain${Ys} bonuses and can slip through bars!
 你获得加成，并且可以穿过栅栏！
 - Shroud
 影雾
@@ -2267,7 +2267,7 @@ EnemyName对TargetName念出了一个口令！
 拟态
 # :: KDBuffName_Camo
 # :: KinkyDungeonSpellCamo
-- While next to a wall, you are very hard to see.
+- While next to a wall, ${you} ${Yis} very hard to see.
 靠墙时，你极难被发现。
 - Stone Skin
 石肤术
@@ -2289,19 +2289,19 @@ EnemyName对TargetName念出了一个口令！
 魔法防御提高。
 - Great Invisibility
 高级隐形
-- It is impossible for enemies to see you.
+- It is impossible for enemies to see ${youObj}.
 敌人无法发现你。
 - Invisibility
 隐形
 # :: KDBuffName_Invisibility
 # :: KinkyDungeonSpellInvisibility
-- It is very difficult for enemies to see you.
+- It is very difficult for enemies to see ${youObj}.
 敌人很难发现你。
 - Lesser Invisibility
 次级隐形
 # :: KDBuffName_LesserInvisibility
 # :: KinkyDungeonSpellLesserInvisibility
-- It is harder for enemies to see you.
+- It is harder for enemies to see ${youObj}.
 敌人更难发现你。
 - FULL POWER
 全力
@@ -2319,7 +2319,7 @@ EnemyName对TargetName念出了一个口令！
 近战体力消耗降低，法力消耗增加。
 - Sleepy
 困倦
-- You are sluggish and have a hard time keeping your eyes open.
+- ${You} ${Yis} sluggish and ${Yhas} a hard time keeping ${your} eyes open.
 你昏昏沉沉，难以睁开眼睛。
 - Afterimage
 残像
@@ -2334,17 +2334,17 @@ EnemyName对TargetName念出了一个口令！
 # :: KinkyDungeonSpellSlimeMimic
 - We did it! We made ourselves invisible--mmmmph!!!
 我们成功了！我们让自己隐形了——唔唔唔！！！
-- You are not currently attempting to disguise yourself. Click to reenable.
+- ${You} ${Yis} not currently attempting to disguise ${your}self. Click to reenable.
 你当前并未尝试伪装自己，点击以重新启用。
 - Disenchanted
 已驱散
-- Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
+- ${Your} restraints are disenchanted, treating them as nonmagical for purposes of cutting.
 你的拘束具已被消除附魔，在切割时视为非魔法物品。
 - Resist Charm
 抵抗魅惑
 # :: KDBuffName_ResistCharm
 # :: KinkyDungeonSpellResistCharm
-- You are unaffected by curses and charming effects.
+- ${You} ${Yis} unaffected by curses and charming effects.
 你不会受到诅咒和魅惑效果的影响。
 
 
@@ -2352,29 +2352,29 @@ EnemyName对TargetName念出了一个口令！
 皮革包裹
 # :: KDBuffName_LeatherBurst
 # :: KinkyDungeonSpellLeatherBurst
-- You can launch another leather restraint instantly!
+- ${You} can launch another leather restraint instantly!
 你可以立即发射另一个皮革拘束具！
 - Sagitta
 天剑
 # :: KDBuffName_SagittaAssault
 # :: KinkyDungeonSpellSagitta
-- You can launch another Sagitta instantly!
+- ${You} can launch another Sagitta instantly!
 你可以立即发射另一柄天剑！
-- You have stored willpower.
+- ${You} ${Yhas} stored willpower.
 你已储存了意志力。
 - Devoted Focus
 虔诚专注
-- You have consumed a mote of essence, granting miscast chance reduction.
+- ${You} ${Yhas} consumed a mote of essence, granting miscast chance reduction.
 你已消耗一枚精华微粒，使施法失误几率降低。
-- The air around you is ablaze! (-DamageDealt SP)
+- The air around ${youObj} is ablaze! (-DamageDealt SP)
 你周围的空气燃烧起来了！( -DamageDealt SP )
 - Shadowstep
 暗影步伐
-- The Goddess of Illusions shrouds you in shadows!
+- The Goddess of Illusions shrouds ${youObj} in shadows!
 幻术女神将你笼罩在阴影之中！
 - Lockdown
 锁定
-- You struggle against your bonds, but a magical force resists!
+- ${You} struggle${Ys} against ${your} bonds, but a magical force resists!
 你挣扎着要挣脱束缚，但一股魔法力量在抗拒！
 - ${You} ${Yis} an expert in wearing a petsuit and ${your} mobility is increased.
 ${You}是穿宠物服的专家，机动性提升。
@@ -2398,11 +2398,11 @@ ${You}是一只不听话的宠物，应该穿上宠物服！
 # :: KDStatusTooltipEnemySilence
 - ${You} ${Yis} silenced, unable to cast spells easily.
 ${You}被沉默，无法轻易施放法术。
-- This is the total amount of Latex Kitty Curse you possess.
+- This is the total amount of Latex Kitty Curse ${you} possess${Yes}.
 这是你拥有的乳胶猫娘诅咒总量。
 - Stillness
 静止
-- ${You} you're starting to feel just like a doll... 
+- ${Youre} starting to feel just like a doll...
 你开始感觉自己就像一个玩偶……
 - Trance
 恍惚
@@ -2418,15 +2418,15 @@ ${Youve}陷入恍惚，命中率降低，施法失误概率增加。
 # :: KDBuffDesc_Lockdown
 - Verbose
 信息
-- You can cast verbal spells while gagged.
+- ${You} can cast verbal spells while gagged.
 你可以在被堵嘴时施放言语法术。
 - Dextrous
 灵巧
-- You can cast arm spells while tied up.
+- ${You} can cast arm spells while tied up.
 你可以在被绑手时施放手臂法术。
 - Spell Dance
 法术之舞
-- You can cast leg spells while tied up.
+- ${You} can cast leg spells while tied up.
 你可以在被绑腿住时施放腿部法术。
 - Bondage Buster
 束缚破坏者
@@ -2442,10 +2442,10 @@ Lazor 正在充能……
 风暴之锤
 # :: KDBuffName_StormCharge
 # :: KinkyDungeonInventoryItemStormBreaker
-- You have the Power.
+- ${You} ${Yhas} the Power.
 你拥有力量。
 
-- An item has increased your spell damage!
+- An item has increased ${your} spell damage!
 一件物品提高了你的法术伤害！
 
 
@@ -2529,7 +2529,7 @@ Roguelike : ‎没有保存代码，只有自动保存
 
 - Got the keys! Find the stairs to go to the next floor.
 找到了钥匙！找到楼梯前往下一层。
-- You haven't found the keys for this floor yet.
+- ${You} ${Yhas}n't found the keys for this floor yet.
 你还没有找到本层的钥匙。
 - Missing key
 未找到钥匙
@@ -4216,17 +4216,17 @@ Roguelike : ‎没有保存代码，只有自动保存
 寻找钥匙...
 - Find the exit!
 寻找出口！
-- You are receiving help from a friendly ally.
+- ${You} ${Yis} receiving help from a friendly ally.
 你得到了友好盟友的帮助
-- You found a hook you can use to pull on straps and loops.
+- ${You} found a hook ${you} can use to pull on straps and loops.
 你找到了一个钩子，可以用来拉动带子和环扣
-- You have access to something sharp and can attempt to Cut restraints, or Remove more effectively.
+- ${You} ${Yhas} access to something sharp and can attempt to Cut restraints, or Remove more effectively.
 你可以使用锋利的工具来尝试切断拘束具，其可更有效地解除束缚
-- You found a corner to help manipulate buckles and snaps with.
+- ${You} found a corner to help manipulate buckles and snaps with.
 你找到了一个角落，可以帮助你操纵带扣和卡扣
-- You found a crack and could maybe wedge a knife or tool into it to keep it still.
+- ${You} found a crack and could maybe wedge a knife or tool into it to keep it still.
 你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定
-- You found something sticky and might be able to pull off fabrics.
+- ${You} found something sticky and might be able to pull off fabrics.
 你找到了一些黏糊糊的东西，也许可以用它来撕掉布料
 - Evasion: 
 闪避：
@@ -4234,11 +4234,11 @@ Roguelike : ‎没有保存代码，只有自动保存
 显眼度：
 
 
-- Submissive: Enemies won't attack you, but they will try to play with you.
+- Submissive: Enemies won't attack ${youObj}, but they will try to play with ${youObj}.
 顺从者 : ‎敌人不会尝试攻击你，但他们会尝试对你做一些奇妙的互动。
 - On the Run! Enemies are hostile.
 逃亡！敌人对你怀着敌意。
-- Prisoner: Enemies won't attack you unless you are out of jail.
+- Prisoner: Enemies won't attack ${youObj} unless ${you} ${Yis} out of jail.
 囚犯 : ‎敌人不会攻击你，除非你越狱。
 - Freedom
 自由
@@ -17755,7 +17755,7 @@ EnemyName 设法带着你的物品撤退了！
 我会亲自惩罚你的。
 - Hands off my property.
 放开我的财产。
-- Know your place, girl!
+- Know your place, ${Psub}!
 知道你的位置，女孩！
 - You've had your chance.
 你有机会了。
@@ -17952,7 +17952,7 @@ EnemyName 设法带着你的物品撤退了！
 你树敌了，是吗？
 # :: KinkyDungeonRemindJailChaseTheWardenHonor0
 # :: KinkyDungeonRemindJailChaseSilverWitchHonor0
-- I should teach you to be a nice girl.
+- I should teach you to be a nice ${Psub}.
 我应该教你做一个好女孩。
 # :: KinkyDungeonRemindJailChaseTheWardenHonor1
 # :: KinkyDungeonRemindJailChaseSilverWitchHonor1
@@ -18478,11 +18478,11 @@ EnemyName 设法带着你的物品撤退了！
 哦不，你不能这么做！
 - You're not supposed to be here...
 你不应该在这里...
-- I'm gonna teach you a lesson, girl.
+- I'm gonna teach you a lesson, ${Pdim}.
 我要给你上一课了，姑娘。
 - I'm gonna miss you when we find you a nice master...
 当我们找到你一个好主人时，我会想念你的......
-- Looks like you need some training, girl.
+- Looks like you need some training, ${Psub}.
 看起来你需要一些调教，女孩。
 - You picked a bad time to get lost, friend.
 你在错误的时间出现在错误的地点，朋友。
@@ -18524,7 +18524,7 @@ EnemyName 设法带着你的物品撤退了！
 要确保没有人接近你~
 - I'm PTRN. And who might you be?
 我是 PTRN。你又是谁呢？
-- Bad time to party, girl~
+- Bad time to party, ${Pdim}~
 女孩，聚会的时机不好~
 - You've got nerve showing your face around here.
 你居然敢在这里露面。
@@ -19125,7 +19125,7 @@ SPL已激活。
 过来，我要进行一些测试！
 - Looks like it's time to drop some science!
 看起来是时候让你见识一下真正的科学了！
-- Bad girl!
+- Bad ${Psub}!
 坏女孩！
 - Keep your filthy hands off me!
 把你的脏手拿开！
@@ -19264,7 +19264,7 @@ SPL已激活。
 # :: KinkyDungeonRemindJailChaseDressmakerSpellItem
 # :: KinkyDungeonRemindJailChaseNurseSpellItem
 # :: KinkyDungeonRemindJailChaseDoctorSpellItem
-- Silly girl, you should be looking to your mistress for guidance.
+- Silly ${Pdim}, you should be looking to your mistress for guidance.
 傻丫头，你应该向你的女主人寻求指导。
 - That's not yours, sweetie~
 那不是你的，亲爱的~
@@ -19514,7 +19514,7 @@ SPL。
 病人不允许施展法术！
 # :: KinkyDungeonRemindJailChaseNurseSpell1
 # :: KinkyDungeonRemindJailChaseDoctorSpell1
-- Silly girl, your illness can't be cured by a prayer.
+- Silly ${Pdim}, your illness can't be cured by a prayer.
 傻姑娘，你的病不是靠祈祷就能痊愈的。
 # :: KinkyDungeonRemindJailChaseNurseShrine
 # :: KinkyDungeonRemindJailChaseDoctorShrine
@@ -20094,7 +20094,7 @@ Nya~！不公平...
 噗。业余。
 - Did you think I wasn't looking?
 你以为我没注意吗？
-- Nice try, girl~
+- Nice try, ${Pdim}~
 想得美，女孩~
 - You've made a mistake attacking my client.
 你攻击我的客户是个错误。
@@ -20302,7 +20302,7 @@ SPL时间到了!
 放下武器，别动！
 - I have a warrant for your arrest...
 我有逮捕令...
-- You're a wanted girl.
+- You're a wanted ${Pdim}.
 你是个被通缉的女孩。
 - You're under arrest.
 你被捕了。
@@ -20352,7 +20352,7 @@ SPL时间到了!
 我要和你玩点好玩的~
 # :: KinkyDungeonRemindJailPlayHunterLeash
 # :: KinkyDungeonRemindJailPlayWolfgirlLeash
-- Watch yourself, girl~
+- Watch yourself, ${Pdim}~
 小心点，妹妹~
 # :: KinkyDungeonRemindJailPlayHunterFree
 # :: KinkyDungeonRemindJailPlayWolfgirlFree
@@ -20911,7 +20911,7 @@ Ninril要求伸张正义。
 跑！
 - Scary!
 可怕！
-- Girl!
+- ${PDim}!
 小妹妹！
 - Wear this!
 穿上这个！
@@ -20929,7 +20929,7 @@ Ninril要求伸张正义。
 没收！！
 - Intruder! Alert!
 入侵者！警戒！
-- Fight girl!
+- Fight ${Pdim}!
 攻击女孩!
 - Fight!
 战斗！
@@ -21482,7 +21482,7 @@ Nya！需要朋友帮忙吗？
 # :: KinkyDungeonRemindJailElementalIntro
 # :: KinkyDungeonRemindJailAthenaIntro
 # :: KinkyDungeonRemindJailAngelIntro
-- ${PThey} thinks ${Pthey} can beat us~
+- ${PThey} think${Ps} ${Pthey} can beat us~
 ${PThey}以为${Pthey}能打败我们~
 # :: KinkyDungeonRemindJailChaseElementalDefend0
 # :: KinkyDungeonRemindJailChaseAthenaDefend0
@@ -22097,7 +22097,7 @@ Ack !多不雅啊!
 我会亲自带你去你的牢房~
 - Amateur.
 业余。
-- Bad girl. You need discipline.
+- Bad ${Psub}. You need discipline.
 坏女孩。你需要纪律。
 - I'll be keeping the keys.
 我会保管钥匙的。
@@ -22549,7 +22549,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 求求...
 - Command... Me...
 命令...我...
-- Cute... Girl...
+- Cute... ${PDim}...
 可爱……女孩……
 - Helpless...
 真无奈…
@@ -22762,10 +22762,10 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER beeps)|Vital signs indicate dishonesty.
 ( SPEAKER 发出哔哔声 ) |生命体征表明不诚实。
 
-- (The SPEAKER furrows her brow)|...Excuse me?
+- (The SPEAKER furrows ${Etheir} brow)|...Excuse me?
 ( SPEAKER 皱起眉头 ) |...打扰一下？
 
-- (The SPEAKER tilts her head)|Right, sorry.
+- (The SPEAKER tilts ${Etheir} head)|Right, sorry.
 ( SPEAKER 歪着头 ) |呃，对不起。
 - (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
 ( SPEAKER 脸红 ) |我……我很抱歉！请继续...
@@ -22803,7 +22803,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 (SPEAKER脸红了)|嗯，${PHonor}，我看到你带了件武器，|你能把它交出来吗？
 - (The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?
 (SPEAKER对你微笑)|做个好${Psub}，把武器交出来，|好吗？
-- (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
+- (The SPEAKER grins and cracks ${Etheir} knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
 (SPEAKER 咧嘴笑着，掰着指关节)|你打算用它和别人打架吗？|或者你要把它交出去？
 - Yes, ${EHonor}... (Currently held weapon will be lost)
 是的，${EHonor}…… ( 目前持有的武器将会丢失 )
@@ -22884,7 +22884,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You shouldn't have tried to escape, you know~
 ( SPEAKER走近你的牢房 ) |又回来了，是吗？傻${Pdim}。|你不该试图逃跑的，你知道的~
 
-- (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
+- (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and return${Es} with some toys...)|Now hold still!
 ( SPEAKER 回以微笑 ) |哦，这对你来说是一个游戏？|那么也许我应该让你觉得更有趣...| ( 她离开并带着一些玩具回来... ) |现在别动！
 - (The SPEAKER frowns)|I know exactly what you need...
 ( SPEAKER 皱起眉头 ) |我清楚地知道你需要什么......
@@ -22938,7 +22938,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 好奇地看着你 ) |哦，你好完美！|你能为我的最新设计做模特吗？
 - (The SPEAKER holds up a restrictive outfit)|This RESTRAINT might be a tight fit|so hold still while I lace it~
 ( SPEAKER 举起了一件有着束缚性的衣服 ) |这件 RESTRAINT 可能会很紧|所以在我束紧它时请保持不动~
-- (The SPEAKER giggles)|It looks even better than I thought!|Thank you girl~
+- (The SPEAKER giggles)|It looks even better than I thought!|Thank you ${Pdim}~
 ( SPEAKER 咯咯笑 ) |看起来比我想象的还要好！|谢谢你，女孩~
 - (The SPEAKER sighs and moves away)|Such a shame...
 ( SPEAKER 叹了口气，走开 ) |真可惜……
@@ -22952,7 +22952,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 嘟囔 ) |...好吧，但你看起来很可爱嘛~
 - (The SPEAKER looks bemused)|Changed your mind?|It does look good on you though~
 ( SPEAKER 一脸困惑 ) |改变主意了？|不过你穿起来确实不错~
-- (The SPEAKER snaps her fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
+- (The SPEAKER snaps ${Etheir} fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
 ( SPEAKER 打了个响指 ) | ( 你感觉到 RESTRAINT 神奇地出现在你身上 ) |啊哈！真精彩！你可以走了~
 
 - Yes please!
@@ -23098,7 +23098,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 - (The SPEAKER looks at you with a philosophical outlook)|Have you ever felt like you wanted to be...|Transformed?
 ( SPEAKER带着一种哲学家的神情看着你 ) |你是否曾感觉自己想要……|转变？
-- (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
+- (The SPEAKER takes a strange mask from ${Etheir} satchel)|Well, I have the answer right here...
 ( SPEAKER 从她的跨包里拿出一个奇怪的面具 ) |好吧，我这里有答案......
 - (The SPEAKER nods seriously)|My hypothesis was correct...
 ( SPEAKER 认真点头 ) |我的假设是正确的......
@@ -23114,7 +23114,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 转身继续沉思 ) |嗯……
 - (The SPEAKER nods)|I see you are a truth seeker after all.
 ( SPEAKER 点头 ) |我知道你毕竟是个寻求真理的人。
-- (The SPEAKER lets you go. But then...)|(You feel her clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
+- (The SPEAKER lets you go. But then...)|(You feel ${Ethem} clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
 ( SPEAKER 让你走了。但是... ) | ( 你感觉到她从后面往你身上绑了 RESTRAINT！ ) |那里...我现在将观察你的行为。
 
 - Um, sure?
@@ -23141,7 +23141,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 
-- (The SPEAKER smiles as ${Ethey} hide${Es} her hands behind her back)|Have you heard of 'sensory deprivation'?
+- (The SPEAKER smiles as ${Ethey} hide${Es} ${Etheir} hands behind ${Etheir} back)|Have you heard of 'sensory deprivation'?
 ( SPEAKER 微笑着把手藏在背后)|你听说过“感官剥夺”吗？
 - (The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!
 ( SPEAKER 提出了一个RESTRAINT)|好吧，我正好有东西给你|它很舒服，而且内置了耳罩！
@@ -23159,7 +23159,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 轻笑)|说实话，我不是在请求~|现在你为什么不为我跪下...
 - (The SPEAKER pouts)|I thought it would be fun...
 ( SPEAKER 撅嘴)|我以为会很有趣...
-- (The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of her)|That's better~|Now why don't you say good night~
+- (The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of ${Ethem})|That's better~|Now why don't you say good night~
 ( SPEAKER 突然鞭打了你的腿)|(你不由自主地跪在她面前)|这样好多了~~现在你为什么不说晚安呢~
 
 - Of course! I love it!
@@ -23197,15 +23197,15 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 - (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
 ( SPEAKER 微笑并狡猾地低头看着你 ) |嘿，我有一份 '工作' 给你！
-- (The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
+- (The SPEAKER takes a duster gag from ${Etheir} satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
 ( SPEAKER 从书包里拿出一个掸子口塞 ) |真是个好${Psub}！|来看看我为你准备了什么~|这可是个能保持这里整洁的特殊工具。
-- (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+- (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from ${Etheir} satchel)|Now then, this place is filthy.|Why don't you put this on to help?
 ( SPEAKER 笑了 ) |很高兴我们能达成共识~| ( ${EThey}从书包里拿出一个掸子口塞 ) |那么，这个地方太脏了。|你为什么不戴上这个来帮帮忙呢？
 - (The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
 ( SPEAKER 皱起眉头 ) |很公平。|也许你应该重新考虑一下你的人生选择~
 - (The SPEAKER shrugs)|I'll find someone else...
 ( SPEAKER 耸耸肩 ) |那我去找其他人吧......
-- (The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(${EThey} get${Es} out a duster gag from her satchel and grins)
+- (The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(${EThey} get${Es} out a duster gag from ${Etheir} satchel and grin${Es})
 ( SPEAKER 伸手抓住你 ) |现在，|你不应该逃避你的职责~| ( ${EThey}从书包里拿出一个掸子口塞并笑了笑 )
 - (The SPEAKER smiles)|Don't be afraid!|(${EThey} turn${Es} the gag with the round mouth ball clearly visible)|Now open up...
 ( SPEAKER 微笑 )|别害怕！|( ${EThey}转动口球，使其圆球部分清晰可见 )|现在张嘴…
@@ -23242,7 +23242,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 举起一个 RESTRAINT ) |我在一套旧盔甲附近发现了这个。|我认为它是头盔或其他东西......
 - (The SPEAKER winks and locks it on)|I feel much safer already~
 ( SPEAKER 眨眼并锁定 ) |我感觉你安全多了~
-- (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting her imaginary enemies)
+- (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting ${Etheir} imaginary enemies)
 ( SPEAKER 撅起嘴 ) |哇哦，扫兴！| ( ${EThey}又开始与她幻想的敌人作战 )
 - (The SPEAKER shrugs)|Your loss~
 ( SPEAKER 耸耸肩 ) |这是你的损失~
@@ -23415,7 +23415,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( 一个高兴的 SPEAKER 看着你 ) |嘿，小可爱~|想尝试被一些围巾束缚吗？
 - (The SPEAKER holds up some scarves)|If you want to try, I've got a few here.|I could give you a RESTRAINT?
 ( SPEAKER 举起一些围巾 ) |如果你想尝试一下，我这里有一些。|我可以往你身上绑 RESTRAINT 吗？
-- (The SPEAKER smiles gently at you as ${Ethey} tie${Es}|I love the silky feeling~|(The SPEAKER tightens all her knots)
+- (The SPEAKER smiles gently at you as ${Ethey} tie${Es}|I love the silky feeling~|(The SPEAKER tightens all ${Etheir} knots)
 ( SPEAKER 在捆绑时对你温柔地微笑 ) |我喜欢丝滑的感觉~| ( SPEAKER 拉紧所有的结 )
 - (The SPEAKER looks away and nods)|Well... maybe next time.
 ( SPEAKER 移开视线并点头 ) |好的……也许下次吧。
@@ -23425,7 +23425,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 皱起眉头 ) |嘿，别后退！|我保证我会让它很舒服的！
 - (The SPEAKER frowns)|Too bad, I want to tie someone!
 ( SPEAKER 皱起眉头 ) |太糟糕了，我想绑一个人！
-- (The SPEAKER drops her scarves)|Aww, really?|I'll go find someone else then...
+- (The SPEAKER drops ${Etheir} scarves)|Aww, really?|I'll go find someone else then...
 ( SPEAKER 放下围巾 ) |哇，真的吗？|那我就去找别人了……
 - (The SPEAKER beams a smile)|Yay, thank you!|Feels nice, right?
 ( SPEAKER 微笑 )|耶，谢谢！|感觉不错，对吧？
@@ -23488,9 +23488,9 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 皱起眉头 ) |什么，你怀疑我的结果吗？你自己看看吧！| ( ${EThey}拧开盖子 )
 - (The green gas starts leaking)|Oh no! It wasn't supposed to do that!
 ( 绿色气体开始泄漏 ) |哦不！不应该这样！
-- (You push her out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
+- (You push ${Ethem} out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
 ( 你把她推开，${Ethey}却皱起了眉头 ) |哼，都怪你。
-- (You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
+- (You push ${Ethem} out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
 ( 你把她推开，但你自己却被困在雾里 )|( 气体在你的身体上结晶成了 RESTRAINT )|哦不，本来应该是我中招的！
 - (The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen...
 ( 气体向你移动，仿佛有了自己的意志一样 )|( 气体在你的身体上结晶成了 RESTRAINT )|这可不该发生…
@@ -23536,7 +23536,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 啊，但它会很快|！| ( SPEAKER 开始倾斜烧瓶 ) |看到了吗？它已经向你走来了！
 - (The SPEAKER tosses the slime on you)|(The slime flops off limply)|Ah. Back to the drawing board.
 ( SPEAKER 把粘液扔到你身上 ) | ( 粘液软软地滑了下来 ) |啊。从头再来。
-- (The SPEAKER pours the slime onto you)|That's the spirit girl!|(Sticky RESTRAINT clings to you)
+- (The SPEAKER pours the slime onto you)|That's the spirit ${Pdim}!|(Sticky RESTRAINT clings to you)
 ( SPEAKER 将粘液倒在你身上 ) |这就是精灵女孩！| ( 粘性 RESTRAINT 粘在你身上 )
 - (The SPEAKER tosses the slime on you)|Ha, look, it's alive!|(Sticky RESTRAINT clings to you)
 ( SPEAKER 把粘液扔到你身上 ) |哈，看，它是活的！| ( 粘性 RESTRAINT 粘在你身上 )
@@ -23568,17 +23568,17 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 咧嘴一笑 ) |我这里有一件RESTRAINT~|想尝试一下吗？
 - (The SPEAKER puts on the RESTRAINT)|Perfect. Better behave now~|(The SPEAKER pats your butt)
 ( SPEAKER 为你佩戴 RESTRAINT ) |完美。现在乖一点吧~| ( SPEAKER 拍了拍你的屁股 )
-- (The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
+- (The SPEAKER rolls ${Etheir} eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
 ( SPEAKER 翻白眼 ) |你见过狼娘吧？|啊，不管怎样，玩去吧~
 - (The SPEAKER nods glumly)|Not a fan?|Shame, I am~
 ( SPEAKER 闷闷不乐地点点头 ) |不是粉丝？|耻辱，我是~
 - (The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained...
 ( SPEAKER 迅速地抓住你 ) |哦，很严格~|而且非常适合接受训练...
-- (The SPEAKER looks at you deviously)|A good ${Psub} wears her RESTRAINT with enthusiasm~
+- (The SPEAKER looks at you deviously)|A good ${Psub} wears ${Ptheir} RESTRAINT with enthusiasm~
 ( SPEAKER 阴险地看着你 ) |好${Psub}应该热情地穿上她的 RESTRAINT~
 - (The SPEAKER sulks)|You'd be difficult to train anyway~
 ( SPEAKER 生闷气 ) |你可真难调教~
-- (The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good ${Psub}~|I'll make it extra tight for you!
+- (The SPEAKER adds the RESTRAINT)|(You feel ${Ethem} tighten everything before locking it)|Good ${Psub}~|I'll make it extra tight for you!
 ( SPEAKER 添加了 RESTRAINT ) | ( 你感觉到她在上锁之前收紧了所有束缚 ) |好${Psub}~|为了你，我会为你绑得更紧一些！
 - (The SPEAKER knocks you down and forces you into the RESTRAINT)|Here, maybe you'll reconsider after wearing it a while!
 （SPEAKER 打倒你并强行用 RESTRAINT 束缚你）|也许你戴上这个一会儿后就会重新考虑了！
@@ -23640,7 +23640,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 皱起眉头 ) |我明白了~
 - (The SPEAKER leans closer)|Then you can test their escapability!|(The SPEAKER dives towards you!)
 ( SPEAKER 靠得更近 ) |然后你可以测试他们的逃脱能力！| ( SPEAKER 俯冲向你！ )
-- (The SPEAKER shifts her weight back)|I'm afraid I must insist.|(${EThey} ${Eis} gripping a RESTRAINT)|(The SPEAKER dives towards you!)
+- (The SPEAKER shifts ${Etheir} weight back)|I'm afraid I must insist.|(${EThey} ${Eis} gripping a RESTRAINT)|(The SPEAKER dives towards you!)
 ( SPEAKER 向后转移重心 ) |恐怕我必须坚持我的意见。| ( ${EThey}紧握着一件 RESTRAINT ) | ( SPEAKER 向你扑来！ )
 - (The SPEAKER rolls past harmlessly)|Oh! So fast~
 ( SPEAKER 无害地滚过去 ) |哦！真快~
@@ -23689,7 +23689,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 - (A SPEAKER plays with silvery rope)|Hmm, I need to get better with this.|Can I practice on you?
 ( SPEAKER 在玩银色的绳子 ) |嗯，我需要在这方面做得更好。|我可以在你身上练习吗？
-- (The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~
+- (The SPEAKER grins happily)|Thank you ${Pdim}~|I'll tie with RESTRAINT then~
 ( SPEAKER 开心地笑 ) |谢谢你，女孩~|那我就为你绑上 RESTRAINT 了~
 - (The SPEAKER binds you tightly)|(The rope is tight, and ${Etheyre} clearly an expert.)|Mmm, not too bad~
 ( SPEAKER 把你绑得紧紧的 ) | ( 绳子很紧，${Etheir}思路清晰又熟练。 ) |嗯，还不错~
@@ -23729,7 +23729,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 - (The SPEAKER quickly motions to you)|Hey! Over here!| I got something to show you!
 ( SPEAKER 快速向你示意 ) |嘿！这里！| 我有东西要给你看！
-- (The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in her hands)
+- (The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in ${Etheir} hands)
 ( SPEAKER 咯咯笑 ) |你穿这个吧~| ( 她手里拿着 RESTRAINT )
 - (The SPEAKER looks surprised)|Oh, uh, sure!|(They quickly add the RESTRAINT)
 ( SPEAKER 看起来很惊讶 ) |哦，呃，当然！| ( 他们很快添加了 RESTRAINT )
@@ -23801,7 +23801,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 失望地点了点头)~
 - (The SPEAKER titters)|It's going on, kitty~
 ( SPEAKER 咯咯地笑)|事情还在继续，小猫~
-- (The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in her hand)
+- (The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in ${Etheir} hand)
 ( SPEAKER 咯咯地笑了起来)|那我们看看你能不能逃走~~(你看到她手里拿着一个 RESTRAINT)
 - (The SPEAKER whimpers and drops it)|Owwww!|I hit my knee!
 ( SPEAKER 呜咽着扔掉了它)|哇|我撞到膝盖了！
@@ -23827,7 +23827,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 
-- (A SPEAKER winks at you)|You look like a girl who likes feeling|like a prisoner, am I right?
+- (A SPEAKER winks at you)|You look like a ${Psub} who likes feeling|like a prisoner, am I right?
 ( SPEAKER 对你眨眼 ) |你看起来像一个喜欢|囚禁感的女孩，对吗？
 - (The SPEAKER nods happily)|I knew it! Well, it's your lucky day.|I've got some RESTRAINT for you~
 ( SPEAKER 高兴地点点头 ) |我就知道！ 好吧，今天是你的幸运日。|我给你准备了 RESTRAINT~
@@ -23839,13 +23839,13 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 皱起眉头 ) |真的吗？|我非常确定……
 - (The SPEAKER grins maliciously)|I like seeing prisoners though~|And you're right here...
 ( SPEAKER 恶意一笑 ) |不过我喜欢看到囚犯~|而你就在这里......
-- (The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in her hand)
+- (The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in ${Etheir} hand)
 ( SPEAKER 咯咯地笑 ) |无论如何我都会给你做一个~| ( 你看到她手里有 RESTRAINT )
 - (The SPEAKER gulps)|M-Maybe I won't then!
 ( SPEAKER 咽了咽口水 ) |也-也许我不会！
 - (The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?
 ( SPEAKER 添加了 RESTRAINT ) |亲爱的你脸红了~|她抗议太多了？
-- (The SPEAKER giggles as ${Ethey} catch${Ees} you and slaps on the cuffs)|Not so fast, dear~
+- (The SPEAKER giggles as ${Ethey} catch${Ees} you and slap${Es} on the cuffs)|Not so fast, dear~
 ( SPEAKER轻笑着抓住了你并扣上手铐 ) |别那么快，亲爱的~
 
 - Maybe a bit~
@@ -23913,17 +23913,17 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 
-- (The SPEAKER brushes past hurriedly)|Careful girl!|Else I'll lock you away~
+- (The SPEAKER brushes past hurriedly)|Careful ${Pdim}!|Else I'll lock you away~
 ( SPEAKER 急匆匆地从你身边擦身而过 ) |小心点姑娘！|不然我就把你锁起来了~
 - (The SPEAKER looks at you intrigued)|Aren't you something...|How about wearing this RESTRAINT?
 ( SPEAKER 好奇地看着你 ) |你不是……|戴上 RESTRAINT 怎么样？
 - (The SPEAKER grins and locks it on)|Maybe I should bump into you more~
 ( SPEAKER 微笑并锁定 ) |也许我应该碰见更多的你~
-- (The SPEAKER rolls her eyes)|Run along then girl~
+- (The SPEAKER rolls ${Etheir} eyes)|Run along then ${Pdim}~
 ( SPEAKER 翻白眼 ) |姑娘，赶紧跑吧~
 - (The SPEAKER nods)|Didn't think so~|Oh, and, uh, sorry for the bump.
 ( SPEAKER 点头 ) |没想到~|哦，呃，抱歉打扰了。
-- (The SPEAKER shakes her head)|You don't get off that lightly.|These are going on.
+- (The SPEAKER shakes ${Etheir} head)|You don't get off that lightly.|These are going on.
 ( SPEAKER 摇头 ) |你不能轻易离开|这些都在继续。
 - (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(${EThey} hold${Es} up a RESTRAINT)
 ( SPEAKER 皱起眉头 ) |我想我应该这样做。|你只会打扰别人。| ( ${EThey}举起了 RESTRAINT )
@@ -23963,13 +23963,13 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 点头 ) |尽管如此，我们还是希望再次见到您。
 - (The SPEAKER glares)|We urge you to reconsider.
 ( SPEAKER 怒视 ) |我们敦促你重新考虑。
-- (The SPEAKER has a twinkle in her eye)|We will offer you this RESTRAINT.|You should accept.
+- (The SPEAKER has a twinkle in ${Etheir} eye)|We will offer you this RESTRAINT.|You should accept.
 ( SPEAKER 眼中闪烁着光芒 ) |我们将为您提供 RESTRAINT。|您应该接受。
 - (The SPEAKER pulls an odd smile)|Very well.
 ( 说话者露出一个奇怪的微笑 ) |很好。
 - (The SPEAKER smugly nods)|(With surprising speed, the RESTRAINT locks in place)|Excellent, a good fit.
 ( SPEAKER 得意地点点头 ) | ( RESTRAINT 以惊人的速度锁定到位 ) |太棒了，非常合适。
-- (The SPEAKER covers your mouth with her hand)|Shush, no more bad decisions.|(You feel her buckle the restraint strictly)
+- (The SPEAKER covers your mouth with ${Etheir} hand)|Shush, no more bad decisions.|(You feel ${Ethem} buckle the restraint strictly)
 ( SPEAKER 用手捂住你的嘴 ) |嘘，别再做出错误的决定了。| ( 你感觉到她严厉地扣住了束缚 )
 
 - No, thank you.
@@ -24032,7 +24032,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 - (A SPEAKER giggles and calls to you)|Hey there~|Fancy seeing some nature?~
 ( SPEAKER 咯咯地笑着向你喊话 ) |嘿那边的人~|想看看大自然吗？~
-- (The SPEAKER motions with her hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
+- (The SPEAKER motions with ${Etheir} hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
 ( SPEAKER 用手示意 ) | ( 藤蔓从地板上升起并旋转 ) |这些会很好地束缚你......
 - (The SPEAKER grins and motions again)|(The plants wrap around you quickly)|(You wriggle against the RESTRAINT)
 ( SPEAKER 咧嘴一笑，再次做了个动作 ) | ( 植物迅速包围了你 ) | ( 你扭动着抵抗 RESTRAINT )
@@ -24081,7 +24081,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 叹了口气 ) |啊，好吧。
 - (The SPEAKER frowns sadly)|But they make the best noise!
 ( SPEAKER 悲伤地皱起眉头 ) |但他们发出的声音是最好听的！
-- (The SPEAKER rolls her eyes)|Tough luck then~|You're getting one!
+- (The SPEAKER rolls ${Etheir} eyes)|Tough luck then~|You're getting one!
 ( SPEAKER 翻了个白眼 ) |那就倒霉了~|你得了一个！
 - (The SPEAKER grins)|See how you feel when|you're wearing one!
 ( SPEAKER 笑了 ) |看看当你戴着它时|你的感觉如何！
@@ -24209,7 +24209,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dOfferLeatherForce_No
 
 
-- (The SPEAKER steps up to you)|Hey girl~|You happen to be a fan of latex?
+- (The SPEAKER steps up to you)|Hey ${Pdim}~|You happen to be a fan of latex?
 ( SPEAKER 走近你)|嘿，女孩~~你恰好是乳胶迷吗？
 - (The SPEAKER smiles)|Then would you like to try on this RESTRAINT?
 ( SPEAKER 微笑)|那么你想试试这个 RESTRAINT 吗？
@@ -24317,7 +24317,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 - (The SPEAKER walks up to you)|We don't get a lot of visitors.|I take it that you enjoy bondage?
 ( SPEAKER 向你走来 ) |少见的访客。|我猜你喜欢被束缚？
-- (The SPEAKER tilts her head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
+- (The SPEAKER tilts ${Etheir} head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
 ( SPEAKER 歪着头 ) |嗯，我这里有一个 RESTRAINT ，|我觉得你会喜欢的。
 - (The SPEAKER smiles)|I'm glad you like it!
 ( SPEAKER 微笑 )|很高兴你喜欢！
@@ -24348,11 +24348,11 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 微笑 )|好吧，请等等，让我给你绑好~
 - (The SPEAKER slaps your butt as ${Ethey} tie${Es} the last knot)|All trussed up~
 ( SPEAKER拍了拍你的屁股，同时打好了最后一个结 ) |全部绑好了~
-- (The SPEAKER looks disappointed and packs her rope away)
+- (The SPEAKER looks disappointed and packs ${Etheir} rope away)
 ( SPEAKER 看起来很失望，把她的绳子收起来 )
 - (The SPEAKER frowns)|Aw. What a missed opportunity!
 ( SPEAKER 皱眉 ) |噢。多么难得的机会！
-- (The SPEAKER grins and reaches for her satchel)|Well, too bad--
+- (The SPEAKER grins and reaches for ${Etheir} satchel)|Well, too bad--
 ( SPEAKER 咧嘴一笑，伸手去拿她的包 ) |好吧，太糟糕了——
 - (The SPEAKER grins)|But I've already brought so much rope with me~
 ( SPEAKER 笑着 ) |可是我已经带了这么多绳子了~
@@ -24384,7 +24384,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 
 
-- (The SPEAKER perks her ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
+- (The SPEAKER perks ${Etheir} ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
 ( SPEAKER竖起耳朵看着你 ) |你的身材真不错。|我觉得通过一些训练会更好！
 - (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
 ( SPEAKER 咧嘴笑着递给你一张纸 ) |Nevermere 训练师一直在寻找新人！|你只需要在这里签字……
@@ -24394,7 +24394,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 嗤笑 ) |他们都是这么说的。
 - (The SPEAKER frowns)|What a shame.
 ( SPEAKER皱眉 ) |真可惜。
-- (The SPEAKER sneakily reaches for her baton)|You'll love it if you try it!
+- (The SPEAKER sneakily reaches for ${Etheir} baton)|You'll love it if you try it!
 （SPEAKER 偷偷拿出警棍）|你试试就会喜欢的！
 - (The SPEAKER grins)|I promise you it's a good deal~
 ( SPEAKER 咧嘴一笑 ) |我向你保证很划算~
@@ -24469,7 +24469,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: rOfferMaid
 # :: rOfferWitch
 # :: rOfferTemp
-- (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
+- (The SPEAKER smiles briefly before clearing ${Etheir} throat)|Fantastic!|I have your uniform right here...
 ( SPEAKER 在清清嗓子前微微一笑 ) |太棒了！|我这里有你的制服……
 # :: rOfferMaidYes
 # :: rOfferWitchYes
@@ -24479,7 +24479,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: rOfferMaidYes_Yes
 # :: rOfferWitchYes_Yes
 # :: rOfferTempYes_Yes
-- (The SPEAKER tilts her head and shrugs)|We are always prepared...
+- (The SPEAKER tilts ${Etheir} head and shrugs)|We are always prepared...
 ( SPEAKER 歪着头耸了耸肩 ) |我们时刻准备着……
 # :: rOfferMaidYes_No
 # :: rOfferWitchYes_No
@@ -24511,7 +24511,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: rOfferMaidForce_Yes
 # :: rOfferWitchForce_Yes
 # :: rOfferTempForce_Yes
-- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|Consider this a warning from my mistress~
+- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and lock${Es} it tight...)|Consider this a warning from my mistress~
 ( SPEAKER突然移动的速度超出了你的反应 )|( 你感觉到一只脚踩在你的背上，迫使你俯下身去 )|( ${EThey}给你穿上一套制服，并将其锁紧…)|把这当作我女主人的警告吧~
 
 
@@ -24531,7 +24531,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 
 
-- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|You'll require additional training, I suppose...
+- (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and lock${Es} it tight...)|You'll require additional training, I suppose...
 ( SPEAKER突然移动的速度超出了你的反应 )|( 你感觉到一只脚踩在你的背上，迫使你俯下身去 )|( ${EThey}给你穿上一套制服，并将其锁紧…)|我看，你需要额外的训练…
 # :: rOfferWitchForce_Failure
 # :: rOfferTempForce_Failure
@@ -24543,7 +24543,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 
 
-- (The SPEAKER perks her ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
+- (The SPEAKER perks ${Etheir} ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
 ( SPEAKER竖起耳朵看着你 ) |赞美神圣的小猫！|你准备好加入我们了吗？
 - (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to other kitties.|Also we own you now.
 （SPEAKER 高兴地点了点头）|太棒了！和其他猫娘好好相处。|现在你是我们的了。
@@ -24593,13 +24593,13 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 把你绑在紧身织物上…)|(你听到几把锁的咔嗒声…)|天哪...太漂亮了|你会成为一名出色的助手！
 - (The SPEAKER frowns)|Aw...
 ( SPEAKER 皱着眉头)|噢...
-- (The SPEAKER clenches her fist to the ceiling)|Nooooo!!!
+- (The SPEAKER clenches ${Etheir} fist to the ceiling)|Nooooo!!!
 (SPEAKER 握紧拳头对着天花板)|不！！！
 - (The SPEAKER grins and pulls out a frilly dress)|Don't knock it till you try it!|Trust me, it'll be fun!
 ( SPEAKER 咧嘴一笑，拿出一件褶边连衣裙)|除非你试穿，否则别碰它|相信我，这会很有趣的！
-- (The SPEAKER furrows her brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you...
+- (The SPEAKER furrows ${Etheir} brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you...
 ( SPEAKER 皱起眉头)|小女士，说话要小心|否则我就得帮你把插头插进去……
-- (The SPEAKER folds her arms as ribbons rise up around her)|Suit yourself, hehe~
+- (The SPEAKER folds ${Etheir} arms as ribbons rise up around ${Ethem})|Suit yourself, hehe~
 ( SPEAKER 双臂交叉，丝带在她周围飘扬)|随你便，呵呵~
 - (The SPEAKER smiles)|Yes! Yes! Wonderful!
 ( SPEAKER 微笑)|是的！是的！漂亮极了！
@@ -24640,7 +24640,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 皱着眉头)|是时候进行试运行了！
 - (The SPEAKER looks happy again)|Thank you! I'm super grateful!
 ( SPEAKER 看起来又高兴了)|谢谢！我非常感激！
-- (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
+- (The SPEAKER tilts ${Etheir} head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
 ( SPEAKER歪着头)|那好吧。你赢了|(当你离开时，你听到${Ethey}打碎了一个小玻璃瓶，她说 : “开个玩笑。”)|(一件蓝色乳胶制服包裹住了你！)
 
 - ...Hello?
@@ -24670,11 +24670,11 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 热情地微笑)|外来者在我们的社会中地位较低|但这仍然是一个等级|你将超越你的凡人同类|你说呢？
 - (The SPEAKER clasps some 'jewelry' around your limbs)|You look beautiful, my dear.|I will leave you to your own affairs until we meet again.
 ( SPEAKER 在你的四肢上扣了一些“珠宝”)|亲爱的，你看起来很漂亮|在我们再次见面之前，我会把你的事情留给你自己处理。
-- (The SPEAKER turns her head away)|Hmph. I offer you a bargain and you refuse.
+- (The SPEAKER turns ${Etheir} head away)|Hmph. I offer you a bargain and you refuse.
 ( SPEAKER 转过头去)|哼。我给你一笔交易，然而你拒绝了。
-- (The SPEAKER turns her head away)|Hmph. As expected.
+- (The SPEAKER turns ${Etheir} head away)|Hmph. As expected.
 ( SPEAKER 转过头去)|哼。正如预期的那样。
-- (The SPEAKER folds her arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild.
+- (The SPEAKER folds ${Etheir} arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild.
 ( SPEAKER 双手合十)|如果你不与我们同在，那么你就是在反对我们。|你将面临野性的愤怒。
 - (The SPEAKER frowns)|Hardly slavery!|A mere slave would not be allowed to even set foot in our society.
 ( SPEAKER 皱着眉头)|几乎没有奴隶！|一个奴隶甚至不允许踏入我们的社会。
@@ -24682,7 +24682,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 皱着眉头)|我们还会再见面的。
 - (The SPEAKER nods and smiles)|(${EThey} decorate${Es} your body with 'jewelry')|I am glad you had a change of heart.
 ( SPEAKER点头微笑)|(${EThey}用“珠宝”装饰你的身体)|我很高兴你改变了主意。
-- (The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur.
+- (The SPEAKER scoffs)|(${ETheir} magic suddenly binds you tightly in glowing ropes)|Amateur.
 ( SPEAKER 嘲笑)|(她的魔法突然把你紧紧地绑在发光的绳子里)|业余。
 
 - I'm interested. (Talk with her)
@@ -24708,21 +24708,21 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 对你微笑)|凡人。
 - (The SPEAKER points to the ground)|Kneel before me and accept your collar.
 （SPEAKER指着地面)|跪在我面前，接受你的项圈。
-- (The SPEAKER snaps her fingers)|(A collar of cold black metal materializes around your neck)|A girl who knows her place! Wonderful...
+- (The SPEAKER snaps ${Etheir} fingers)|(A collar of cold black metal materializes around your neck)|A ${Psub} who knows ${Ptheir} place! Wonderful...
 （SPEAKER打了个响指）|（冰冷的黑色金属项圈出现在你的脖子上）|一个知道自己位置的女孩！棒极了…
 - (The SPEAKER scoffs)|Hmmph. Mortals...
 (SPEAKER 嘲笑)|哼. 凡人...
 # :: rOfferElementalYes_No
 # :: rOfferElementalNo
-- (The SPEAKER folds her arms)|Well, look who doesn't know her place~
+- (The SPEAKER folds ${Etheir} arms)|Well, look who doesn't know ${Ptheir} place~
 （SPEAKER抱起双臂）|唔，看看谁不知道自己的位置
-- (The SPEAKER folds her arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that.
+- (The SPEAKER folds ${Etheir} arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that.
 ( SPEAKER 抱起双臂）|在这件事上我没有给你选择的余地。|你是我的，我已经决定了。
 - (The SPEAKER's eyes begin to glow)|Looks like we'll do this the fun way!
 （SPEAKER的眼睛开始发光）|看起来我们要用有趣的方式来做这件事！
 - (The SPEAKER smiles)|Wonderful~|Now come along, my pet!
 (The SPEAKER 微笑)|好极了~|来吧，我的宠物!
-- (The SPEAKER scoffs and snaps her fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?
+- (The SPEAKER scoffs and snaps ${Etheir} fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?
 ( SPEAKER 嘲笑并捏手指)|(金属拘束束装置从各个角度向你扑来，紧紧地扣到位)|(一个塞子强行塞进你的嘴里)|现在，我们在说什么？
 
 - Yes?
@@ -24761,11 +24761,11 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 点点头)|好吧，那我就不打扰你了。
 - (The SPEAKER looks dubious)|You know, there's quite a bounty on your head.|I'm sure we could do something about it.
 ( SPEAKER 看起来很可疑)|你知道，你头上有很多赏金|我相信我们可以做点什么。
-- (The SPEAKER tilts her head)|Haha, very funny.|We both know that you're not one of those... right?
+- (The SPEAKER tilts ${Etheir} head)|Haha, very funny.|We both know that you're not one of those... right?
 ( SPEAKER 歪着头)|哈哈，很好笑|我们都知道你不是那种人...对吗？
 - (The SPEAKER frowns and readies for battle)|My instincts were right.
 ( SPEAKER 皱着眉头，准备战斗)|我的直觉是对的
-- (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off her hands)|We'll have a talk when you get out of that, okay?
+- (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off ${Etheir} hands)|We'll have a talk when you get out of that, okay?
 ( SPEAKER突然把你击倒在地)|(你感觉到一只脚踩在你的背上，而${Ethey}把紧紧地把你捆了个驷马……)|(${EThey}掸掉手上的灰尘)|等你从那里面出来，我们再谈谈，好吗？
 
 - I have no interest in joining the guild.
@@ -24834,19 +24834,19 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 - (The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!
 ( SPEAKER 笑了)|我以前和你一样是个探险家。|然后我加入了龙之心！
-- (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
+- (The SPEAKER clears ${Etheir} throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 ( SPEAKER 清了清嗓子)|好吧，我们实际上是在招募人手|如果你同意为正义而战，你就可以自由加入我们！
 - (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 ( SPEAKER 坚定地与你握手)|欢迎加入姐妹会，探险家！
 # :: rOfferDragonheartYes_Yes
 # :: rOfferBanditYes_Yes
-- (The SPEAKER tilts her head and shrugs)|Ah well. 
+- (The SPEAKER tilts ${Etheir} head and shrugs)|Ah well. 
 (SPEAKER歪了歪头，耸肩)|啊，好吧。
 - (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 ( SPEAKER 皱着眉头)|这是什么|你不是正义的敌人，是吗？
 - (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
 ( SPEAKER 皱着眉头)|...如果你不为正义而战，那你就是正义的敌人。
-- (The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
+- (The SPEAKER frowns and cracks ${Etheir} knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
 ( SPEAKER 皱着眉头，掰着指关节)|看来我的怀疑是对的|看来你和我要聊一会儿...
 - (The SPEAKER giggles)|Hehe, just messin' with ya.|Anyway, welcome to the sisterhood!
 (SPEAKER 咯咯地笑了起来)|呵呵，跟你捣乱|不管怎样，欢迎加入姐妹会！
@@ -24880,15 +24880,15 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 - (The SPEAKER waves and calls you over)|Looks like you've made a name for yourself.|What do you say to a little agreement?
 ( SPEAKER 挥手叫你过来)|看来你已经出名了|你觉得达成一个小协议怎么样？
-- (The SPEAKER clears her throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
+- (The SPEAKER clears ${Etheir} throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
 ( SPEAKER 清了清嗓子)|好吧，你现在在我们的地盘上。|但我们愿意让你放松一下|你只需要同意不攻击我们任何人。
-- (The SPEAKER tilts her head and shrugs)|Ah well.
+- (The SPEAKER tilts ${Etheir} head and shrugs)|Ah well.
 (SPEAKER歪了歪头，耸肩)|啊，好吧。
-- (The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~
+- (The SPEAKER frowns)|Criminals? ${PDim}, we ARE the law around these parts~
 ( SPEAKER 皱着眉头)|罪犯？女孩，我们是这些地方的法律~
-- (The SPEAKER grins)|I like your spunk, girl.|But you're kidding, right?
+- (The SPEAKER grins)|I like your spunk, ${Pdim}.|But you're kidding, right?
 ( SPEAKER 咧嘴一笑)|我喜欢你的勇气，女孩|但你在开玩笑，对吧？
-- (The SPEAKER raises her fists and smiles)|You're on!
+- (The SPEAKER raises ${Etheir} fists and smiles)|You're on!
 ( SPEAKER 举起拳头微笑)|你来了！
 - (The SPEAKER chuckles)|Here's a toast to a new partnership!
 ( SPEAKER 轻笑)|为新的合作伙伴关系干杯！
@@ -24983,7 +24983,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 皱起眉头 ) |他们告诉我要确保你签字……|不惜一切代价！
 - (The SPEAKER nods and smiles)|Thank you so much!|I don't know what I would have done if you said no...
 ( SPEAKER 点头微笑 ) |非常感谢！|如果您说不，我真的就不知道我该怎么办了……
-- (The SPEAKER frowns and waves her wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
+- (The SPEAKER frowns and waves ${Etheir} wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
 ( SPEAKER 皱起眉头，挥动魔杖 ) | ( 一堆绳子从地上冒出来，束缚住了你 ) |哼。不管怎样，我都会告诉他们你签了字。|我不能空手而归。
 
 - Thank you for delivering it. (Read it)
@@ -25017,13 +25017,13 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 - (The SPEAKER waves)|Greetings,|I manufacture all sorts of weapons.|Would you like to buy some?
 ( SPEAKER 挥手 ) |你好，|我制造各种武器。|你想买一些吗？
-- (The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
+- (The SPEAKER drops ${Etheir} hammer and cracks ${Etheir} knuckles)|Put em up!
 ( SPEAKER 放下锤子，指关节吱吱作响 ) |把手举起来！
 # :: rBlacksmithShopAttack
 # :: rArmorerShopAttack
 - (The SPEAKER looks at you.)|But you already have one?
 ( SPEAKER 看着你。 ) |但是你已经有了一个？
-- (The SPEAKER folds her arms)|I don't do charity, ma'am.
+- (The SPEAKER folds ${Etheir} arms)|I don't do charity, ma'am.
 ( SPEAKER 交叉双臂 ) |我不做慈善事业，女士。
 - (The SPEAKER smirks)|Another adventurer found this lying around.|I wonder who it's for~
 ( SPEAKER 傻笑 ) |另一位探险家发现了这个。|我想知道它是给谁的~
@@ -25046,7 +25046,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 挥手 ) |嗨。|我只做最好的盔甲。|我与我的孪生兄弟不同，我卖的盔甲可不便宜。
 - (The SPEAKER looks at you.)|Do you have a dealer's license?
 ( SPEAKER 看着你。 ) |您有经销商执照吗？
-- (The SPEAKER folds her arms)|I don't do charity, girl.
+- (The SPEAKER folds ${Etheir} arms)|I don't do charity, ${Pdim}.
 ( SPEAKER 交叉双臂 ) |我不做慈善事业，小姑娘。
 - (The SPEAKER nods)|The most high-impact of sports bras.
 ( SPEAKER 点点头 ) |最具冲击力的运动胸罩。
@@ -25069,11 +25069,11 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 - (The SPEAKER waves)|Hello ${PHonor}!|What brings you here today?
 ( SPEAKER挥手 ) |你好啊${PHonor}！|什么风把您吹到这来了
-- (The SPEAKER folds her arms)|That's not very nice!
+- (The SPEAKER folds ${Etheir} arms)|That's not very nice!
 ( SPEAKER 交叉双臂 ) |那样做可不好哦！
 - (The SPEAKER looks at you and smiles.)|Don't you already have one?
 ( SPEAKER 微笑着看着你 ) |你不是已经有一个了吗？
-- (The SPEAKER folds her arms)|I don't do charity, ${PHonor}.
+- (The SPEAKER folds ${Etheir} arms)|I don't do charity, ${PHonor}.
 ( SPEAKER交叉双臂 ) |我不做慈善事业，${PHonor}。
 - (The SPEAKER nods)|Could use a higher heel...
 ( SPEAKER 点点头 ) |鞋跟或许可以再高一点...
@@ -25100,7 +25100,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 试图逃跑 ) |该死！
 - (The SPEAKER looks you over and shrugs)|Don't joke around.
 ( SPEAKER 看看你并耸了耸肩 ) |不要开玩笑。
-- (The SPEAKER folds her arms)|Don't have money? Better go find some.
+- (The SPEAKER folds ${Etheir} arms)|Don't have money? Better go find some.
 ( SPEAKER 交叉双臂 ) |没有钱？那你最好去找点来。
 - (The SPEAKER produces a bag of stuffings)|Quite the staple.
 ( SPEAKER 制作了一包填充物 ) |相当重要
@@ -25121,7 +25121,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 - (The SPEAKER rattles as ${Ethey} wave${Es})|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
 (SPEAKER身体发出嘎吱声，同时挥了挥手)|嗨！|想买些古代宝藏吗？|我的古董店里正好有你需要的！
-- (The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
+- (The SPEAKER cracks ${Etheir} exposed knuckles)|So you've seen through my disguise...
 (SPEAKER 敲击着她的指节)|那么你已经看穿了我的伪装...
 - (The SPEAKER looks at you.)|Yours is just fine, dear.
 (SPEAKER 看着你)|你的就很好，亲爱的。
@@ -25144,7 +25144,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( 以 IC# 金币购买 ITM# ) ( 持有 AMNT# 个 )
 - (The SPEAKER sells you the item)
 ( SPEAKER 向你出售该物品 )
-- (The SPEAKER shakes her head)|I think you'd be better off without that~
+- (The SPEAKER shakes ${Etheir} head)|I think you'd be better off without that~
 ( SPEAKER 摇头 ) |我认为没有那个你会更好~
 - (The SPEAKER looks embarrassed)|I can't sell you that, ${PHonor}...
 ( SPEAKER看上去很尴尬 ) |我不能把这个卖给你，${PHonor}……
@@ -25207,7 +25207,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 感谢你 ) |真是好心！非常感谢你。
 - (The SPEAKER thanks you)|A magnificent offering! You have my thanks.
 ( SPEAKER 感谢你 ) |一个伟大的奉献！我对你表示感谢。
-- (The SPEAKER tilts her head)|...where did you get this?
+- (The SPEAKER tilts ${Etheir} head)|...where did you get this?
 ( SPEAKER 歪着头 ) |...你从哪里得到这个的？
 - (The SPEAKER thanks you)|A fine trinket!|I will enjoy meditating upon it.
 ( SPEAKER 感谢你 ) |一个精美的小饰品！|我会喜欢冥想它。
@@ -25252,7 +25252,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 微笑 )|元素魔法，有趣的东西。
 # :: rScrollPlusSellEarthRune
 # :: rScrollPlusSellIceRune
-- (The SPEAKER tilts her head)|Why is it wet?
+- (The SPEAKER tilts ${Etheir} head)|Why is it wet?
 ( SPEAKER 歪着头 ) |为什么是湿的？
 - (The SPEAKER smiles)|Gladly, this will be useful to my studies.
 ( SPEAKER 微笑 )|很高兴，这对我的研究很有帮助。
@@ -25263,7 +25263,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER giggles)|Living dangerously, I see~
 ( SPEAKER 咯咯笑 )|生活很危险，我明白了~
 
-- (The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?
+- (The SPEAKER approaches you with an offer)|Hey ${Pdim}~|You seem like the explorer type.|Happen to have any good finds?
 ( SPEAKER 向你提出邀约 ) |嘿姑娘~|你看起来像探险家。|碰巧有什么好发现吗？
 - (The SPEAKER frowns)|Well then.
 ( SPEAKER 皱眉 ) |那么好吧。
@@ -25296,9 +25296,9 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER bows)|A most valuable find.
 ( SPEAKER 鞠躬 ) |最宝贵的发现。
 
-- (The SPEAKER tilts her shades)|I like to think of myself as a dealer in quality tools.
+- (The SPEAKER tilts ${Etheir} shades)|I like to think of myself as a dealer in quality tools.
 ( SPEAKER 倾斜了她的窗帘 ) |我喜欢将自己视为优质工具的经销商。
-- (The SPEAKER reaches for her hip)|I'd think twice if I were you...
+- (The SPEAKER reaches for ${Etheir} hip)|I'd think twice if I were you...
 ( SPEAKER 伸手抚摸她的臀部 ) |如果我是你，我会三思而后行......
 - (The SPEAKER smiles)|Nevermere keeps a tight grip on their blueprints.|Thank you.
 ( SPEAKER 微笑 )|“奈文米尔”不会轻易提供他们的蓝图。|谢谢。
@@ -25315,7 +25315,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 - (The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnance in order to...|...add to my collection.|Anyway, got any bombs?
 ( SPEAKER 看起来有点疯狂 ) |我正在寻找一些重火力，以便...|...添加到我的收藏中。|无论如何，有炸弹吗？
-- (The SPEAKER reaches for her backpack)|I'll blow you away!
+- (The SPEAKER reaches for ${Etheir} backpack)|I'll blow you away!
 ( SPEAKER 伸手去拿她的背包 ) |我会把你炸飞！
 - (The SPEAKER shrugs)|Cute fireworks, I suppose...
 ( SPEAKER 耸耸肩 ) |可爱的烟花，我想……
@@ -25323,12 +25323,12 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: rBombSellFlashBomb
 - (The SPEAKER giggles)|That's what I'm talking about!
 ( SPEAKER 咯咯地笑了)|这就是我说的！
-- (The SPEAKER rubs her hands together)|Excellent...
+- (The SPEAKER rubs ${Etheir} hands together)|Excellent...
 ( SPEAKER 搓着手 ) |非常好......
 - (The SPEAKER smiles)|Yes! I can make more bombs!
 ( SPEAKER 微笑 )|好嘞！我可以做更多炸弹了！
 
-- (The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my drift.
+- (The SPEAKER takes a whiff of ${Etheir} cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my drift.
 （SPEAKER 吸了一口雪茄）|嘿朋友。我正在市面上寻找一些“工具”，|……如果你明白我的意思的话。
 - (The SPEAKER pulls out a knife)|Thought so. You won't take me that easily!
 ( SPEAKER 拔出一把刀 ) |我想是的。你不会那么轻易带走我的！
@@ -25348,7 +25348,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 - (A distracted SPEAKER munches on a cookie)
 ( SPEAKER 心烦意乱地嚼着一块曲奇 )
-- (The SPEAKER continues eating her snack)
+- (The SPEAKER continues eating ${Etheir} snack)
 ( SPEAKER 继续吃着零食 )
 - (The SPEAKER plucks the cookie out of your hand)|My favorite!
 ( SPEAKER 从你手中夺走饼干 ) |我的最爱！
@@ -25569,7 +25569,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 （推开这个单位）
 - (Push all units)
 （推开所有单位）
-- (Confirm? You will swap if you click on her, for a few turns)
+- (Confirm? You will swap if you click on ${Ethem}, for a few turns)
 （确认吗？在接下来几回合中，点击她就会和她交换位置）
 
 - (Stop following me)
@@ -25720,7 +25720,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 微笑 )|确实如此... 你不愿意帮助我吗？
 - (The SPEAKER wiggles excitedly)|Y-yes ${PHonor}!
 ( SPEAKER 兴奋地扭动着身体 ) |是-是的，${PHonor}！
-- (The SPEAKER shakes her head while blushing)|W-what makes you think that?
+- (The SPEAKER shakes ${Etheir} head while blushing)|W-what makes you think that?
 ( SPEAKER 脸红了，摇了摇头 ) |你怎么会这么想？
 - (The SPEAKER computes something)|Error...
 ( SPEAKER 计算某事 ) |错误...
@@ -25734,7 +25734,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( 与她拥抱 2 回合 )
 - (The SPEAKER trembles with pleasure)
 ( SPEAKER 高兴得浑身颤抖 )
-- (The SPEAKER struggles to let go due to her chastity belt)
+- (The SPEAKER struggles to let go due to ${Etheir} chastity belt)
 ( 由于贞操带的存在，SPEAKER 很难高潮 )
 
 
@@ -25904,7 +25904,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 这是我要问的。
 - (Growl at her)
 ( 对她咆哮 )
-- (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
+- (${EThey} smile${Es})|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
 ( 笑 )|我叫风香 (Fuuka)，包含“风”和“歌”的字母。|你要介绍一下自己吗？
 - What kind of name is that?
 那是什么名字？
@@ -25932,11 +25932,11 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 嗯嗯…… ( 脸红 )
 # :: dFuuka_DefensiveGag
 # :: dTheWarden_DefensiveGag
-- (She grins)|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though.
+- (${EThey} grin${Es})|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though.
 ( 笑 )|我叫风香 (Fuuka)，包含“风”和“歌”的字母。|转生者们叫我风之歌，|虽然他们脑袋不太灵光。
 - Reincarnated ones?
 转世的？
-- (SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue.
+- (SPEAKER tilts ${Etheir} head)|I believe the term is 'Zombie' in the common tongue.
 ( SPEAKER 歪着头 )|我相信这个词在普通话中是“僵尸”。
 - (SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually.
 ( SPEAKER 很享受讨论 )|当大多数人去世时，他们的灵魂会传递到来世。|但有些人留在这个世界上，只要有正确的祝福，|人们可以给他们第二次机会！|我计划给他们所有人合适的身体...|最终。
@@ -25966,7 +25966,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 微笑 )|那些穿着乳胶的白痴什么也不懂。|科学只能让你走这么远！|崇拜就在于此！
 - The Alchemists are always looking for a youth potion.
 炼金术士们一直在寻找长生不老药。
-- (SPEAKER folds her arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!
+- (SPEAKER folds ${Etheir} arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!
 ( SPEAKER 抱起双臂 )|哦吼吼~|这不关你的事，因为这也是我契约的一部分|防止外人干涉下面的地下墓穴！
 - Do you know what's on the next floor?
 你知道下一层有什么吗？
@@ -26021,13 +26021,13 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 别烦我，小姑娘。
 - Mmpphgh? (Pout at her)
 嗯？  ( 对她噘嘴 )
-- (She smirks)|So you're that kind of visitor, huh?
+- (${EThey} smirk${Es})|So you're that kind of visitor, huh?
 ( 她笑了起来 )|所以你是那种访客，对吧？
 - That's right. How powerful are you?
 这是正确的。你有多厉害？
-- (She cracks her knuckles)|I have been practicing the resurrection arts for a thousand years.
+- (${EThey} crack${Es} ${Etheir} knuckles)|I have been practicing the resurrection arts for a thousand years.
 ( 她捏着指关节 )|我修炼复活术已经有一千年了。
-- (She smiles)|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them.
+- (${EThey} smile${Es})|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them.
 ( 她笑 )|你在墓地里看到的所有僵尸？|它们是我的宠物，我关心每一只。
 - What the heck are 'Resurrection Arts'?
 “复活术”到底是什么鬼？
@@ -26035,9 +26035,9 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 是时候展示真正的技术了！
 - Hmmph. (Look away)
 呜嗯。 ( 移开视线 )
-- (She grins)|We'll wipe that pout off your face soon enough...
+- (${EThey} grin${Es})|We'll wipe that pout off your face soon enough...
 ( 她笑了 )|我很快就会把你撅着的嘴抹平的……
-- (She frowns)|Well, you will soon.
+- (${EThey} frown${Es})|Well, you will soon.
 ( 她皱眉 )|好吧，你很快就会的。
 - Pfff. Never heard of it.
 噗。从来没有听说过。
@@ -26047,11 +26047,11 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 为什么这对你很重要？
 - (Stare at her silently, maintaining your posture)
 ( 静静地盯着她，保持你的姿势 )
-- (She grins)|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong.
+- (${EThey} grin${Es})|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong.
 ( 她咧嘴一笑 )|这里由我负责。|这里的一切都经过我。|你可以称呼我为风香(Fuuka)·风之歌。
 - By what authority?
 凭什么？
-- (SPEAKER tilts her head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries.
+- (SPEAKER tilts ${Etheir} head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries.
 ( SPEAKER歪着头 )|嗯嗯……呃……|旧日文明！当然！|几个世纪以来我一直保持着他们的传统。
 - (SPEAKER blushes)|Umm... That's because...|Oh shut up!
 ( SPEAKER脸红了 )|嗯……那是因为……|哦闭嘴！
@@ -26085,7 +26085,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 Mmmpphh~ ( 呻吟和诱惑地扭动 )
 # :: dFuuka_SubGag
 # :: dTheWarden_SubGag
-- (She grins)|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!
+- (${EThey} grin${Es})|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!
 ( 她咧嘴笑 )|哦，看看你的样子！|我要好好地打扮你，然后把你变成我的宠物！|你想要的任何东西都可以！|我叫风香(Fuuka)！
 - A pet? What kind?
 宠物？哪一种？
@@ -26123,7 +26123,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 - (Attack her without saying anything)
 ( 二话不说就攻击她 )
 
-- (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
+- (SPEAKER clears ${Etheir} throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
 ( SPEAKER 清了清喉咙 )|我的任务是保持这个墓地的纯净与神圣。|在我的允许下，转世者们在这个地方漫步。|但是你呢？我不记得和你达成过任何协议。|你是来挑战我的吗？
 - I do what I want.
 我想干什么就干什么。
@@ -26169,13 +26169,13 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 - I suppose we fight...
 我想我们得打一架...
 
-- (SPEAKER smiles as she stands over you)|Well well. Look who won.
+- (SPEAKER smiles as ${Ethey} stand${Es} over you)|Well well. Look who won.
 ( SPEAKER站在你面前微笑 )|好吧好吧。看看谁赢了。
 - (SPEAKER nods and giggles)|Absolutely.|Allow me to present to you, my prized pet collar!|I save it only for my favorite pets.|That's right! You're my favorite pet now~
 ( SPEAKER 点头并咯咯笑 )|当然。|请允许我向您介绍我最珍贵的宠物项圈！|我只把它留给我最喜欢的宠物。|没错！你现在是我最喜欢的宠物~
 - (SPEAKER giggles)|You're not in a position to resist.|Now then, where did I put that collar...
 ( SPEAKER 咯咯笑 )|你没有资格反抗。|那么，我把那个项圈放在哪里了……
-- (SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!
+- (SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(${EThey} brandish${Ees} a collar) Now including you!
 ( SPEAKER 微笑 )|这是一种魔法诅咒，可以暂时封印你的力量~|每当我的宠物不守规矩的时候，我就会使用它......|( 她挥舞着项圈 ) 现在包括你！
 - What's this weird magic?
 这是什么奇怪的魔法？
@@ -26201,10 +26201,10 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( 急切地接受项圈 )
 - (Accept the collar begrudgingly)
 ( 勉强接受项圈 )
-- (SPEAKER presents you with your collar...)|(She locks it around your neck)|Now you're my pretty toy!
+- (SPEAKER presents you with your collar...)|(${EThey} lock${Es} it around your neck)|Now you're my pretty toy!
 ( SPEAKER 给你展示了你的项圈... )|( 她将其锁在你的脖子上 )|现在你是我的小宠物了！
 
-- (SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!
+- (SPEAKER puts up a wall of talismans to regain ${Etheir} strength)|I'm... I'm not finished yet!
 ( SPEAKER竖起一堵符墙恢复体力 )|我……我还没完呢！
 
 - (SPEAKER is out of breath)|I... can't... believe... it...|She drops her keys...
@@ -26213,7 +26213,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( SPEAKER 看起来大吃一惊 )|真-真的吗？好吧… 那我给你奖励…
 - (Submit to her anyway) (Gain a special collar)
 ( 服从于她 )  ( 获得特殊项圈 )
-- (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
+- (SPEAKER resists but ultimately you force a gag into ${Etheir} mouth)|MMMMMPH!
 ( SPEAKER 反抗，但最终你把堵嘴塞进了她的嘴里 ) |MMMMPH！
 - (Gag her)
 ( 堵住她的嘴 )
@@ -26304,7 +26304,7 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 ( 出售整堆物品 )
 - (Sell from your storage)
 （从存储系统出售）
-- Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)
+- Daww! What a cutie!|(${EThey} smile${Es} and pat${Es} your head gently)
 呜哇！好可爱啊OwO！| ( ${EThey}微笑着轻轻拍拍你的头 )
 - How are you removing these divine restraints anyway?
 你到底是怎么解除这些神圣拘束具的？
@@ -26324,7 +26324,7 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 ( 返回 )
 
 
-- (The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
+- (The SPEAKER brings you safely back to ${Etheir} shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
 ( SPEAKER 带你安全回到她的商店 ) |那里！ 又好又安全。|现在，至于我的费用...|那将是 RESCUECOST 金币！
 
 - Right! Here's RESCUECOST gp.
@@ -26348,11 +26348,11 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 ( 遗憾地摇摇头。 )
 # :: dShopkeeperTeleport_TabGag
 # :: dShopkeeperOfferHelp_TabGag
-- (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
+- (The SPEAKER rubs ${Etheir} chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
 ( SPEAKER 揉着下巴 ) |啊……嗯，好吧……|我想这次我会放过你的。|但我不会帮你挣脱这些束缚的~
-- (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
+- (The SPEAKER rubs ${Etheir} chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
 ( SPEAKER 揉着下巴 ) |啊……嗯，好吧……|我想这次我会放过你的。|毕竟你是个好顾客。
-- (The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!
+- (The SPEAKER folds ${Etheir} arms)|Come on now, I can hear the gold jingling in your pocket!
 ( SPEAKER 交叉双臂 ) |哎呀 来吧，我都能听到你口袋里的金币在叮当作响！
 # :: rShopkeeperTeleportTabNo
 # :: rShopkeeperOfferHelpTabNo
@@ -26365,12 +26365,12 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 ( 坚持 )
 # :: dShopkeeperTeleport_TabRetryGag
 # :: dShopkeeperOfferHelp_TabRetryGag
-- (The SPEAKER rubs her chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
+- (The SPEAKER rubs ${Etheir} chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
 ( SPEAKER 揉着下巴 ) |好吧，我相信你。|但我不会帮你挣脱这些束缚的！
 - (The SPEAKER sighs)|Fine, I believe you.|You better believe I won't forget, though!
 ( SPEAKER 叹了口气 ) |好吧，我相信你。|不过你最好相信我不会忘记！
 
-- (The SPEAKER folds her arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
+- (The SPEAKER folds ${Etheir} arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
 ( SPEAKER 抱起双臂 ) |你的探险让我损失了一大笔钱。|如果我的客户不付钱就逃跑，我就没法继续做生意了。|听着，我会和你做一笔交易，你帮我，我帮你。公平吧？
 
 - (Help her test cursed armors)
@@ -26410,7 +26410,7 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 ( SPEAKER 举起一个 RESTRAINTNAME ) |你的身体看起来就像一个巨大的广告牌！|这套衣服会让你如此有吸引力，没有人能够抗拒！|在，咳咳，检查你的过程中，|他们会..一定会看到我的logo！
 # :: rShopkeeperTeleportDebt_Catsuit
 # :: rShopkeeperOfferHelpDebt_Catsuit
-- (The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~
+- (The SPEAKER folds ${Etheir} arms and nods)|Good ${Psub}! I knew you would come clean~
 ( SPEAKER 抱起双臂点头 ) |好${Psub}！我就知道你会坦白的~
 # :: rShopkeeperTeleportDebt_Pay
 # :: rShopkeeperOfferHelpDebt_Pay
@@ -26440,11 +26440,11 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 太好了，我很期待看到你被送回来。| 呃，我是说，带着满手的财宝回来！| ( ${EThey}将 RESTRAINTNAME 戴在你身上，封印随之启动。上面没有钥匙孔。 )
 # :: rShopkeeperTeleportDebt_Restraint_Yes
 # :: rShopkeeperOfferHelpDebt_Restraint_Yes
-- Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
+- Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckle${Es} the collar on)|Now go out there and find me some treasure~
 好吧！站稳点~|( ${EThey}把你的头发撩开，扣上项圈 )|现在出去帮我找些宝藏吧~
 # :: rShopkeeperTeleportDebt_Collar_Yes
 # :: rShopkeeperOfferHelpDebt_Collar_Yes
-- You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
+- You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dust${Es} it off, and help${Es} you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
 你一定会喜欢的，我保证~|( ${EThey}从抽屉里拿出胶衣，掸去灰尘，然后帮你穿上 )|(这件衣服没有拉链或扣子，只有一个弹性极好的领口 )|( 一旦戴上并正确贴合，你会感觉颈部不再那么宽松了...... ) | ( ......而且你再也无法将橡胶从皮肤上拉开了 ) |太美了，我现在就放你走。|我相信你的新造型一定会吸引很多顾客的！
 # :: rShopkeeperTeleportDebt_Catsuit_Yes
 # :: rShopkeeperOfferHelpDebt_Catsuit_Yes
@@ -26512,14 +26512,14 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 
 
 
-- (The SPEAKER rubs her chin)|Sorry ${PGen}!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
+- (The SPEAKER rubs ${Etheir} chin)|Sorry ${PGen}!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
 ( SPEAKER 揉着下巴 ) |不好意思${PGen}！|这就是生意场上的代价，你懂的吧？|要不你带点那种闪闪发光、美味诱人的金子再回来？
 # :: rShopkeeperOfferHelpTabYesRestrained
 # :: rShopkeeperOfferHelpTabYes
-- (The SPEAKER folds her arms)|Business is business, ${PGen}~
+- (The SPEAKER folds ${Etheir} arms)|Business is business, ${PGen}~
 ( SPEAKER 双手抱胸 ) |公事公办，${PGen}~
 
-- (The SPEAKER rubs her chin)|No can do.|Rules are rules~
+- (The SPEAKER rubs ${Etheir} chin)|No can do.|Rules are rules~
 ( SPEAKER 摸着下巴 ) |没办法。|规则就是规则~
 - (The SPEAKER sighs)|Business is business, ${PGen}~
 ( SPEAKER 叹了口气 ) |公事公办，${PGen}~
@@ -26610,9 +26610,9 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 - You close your eyes but the vibrations keep you from dozing off...
 你闭上眼睛，但振动器让你无法休息。。。
 
-- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through her gag)
+- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through ${Etheir} gag)
 ( SPEAKER 被绑着躺在你面前 ) | ( ${EThey}用恳求的眼神看着你， ) | ( 并通过她被堵住的嘴语无伦次地咕哝着。 )
-- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into her gag)
+- (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into ${Etheir} gag)
 ( SPEAKER 被绑着躺在你面前 ) | ( ${EThey}看着你，嘴里含混不清地嘟囔着，对着口塞咯咯直笑。 )
 - (SPEAKER looks grateful)|Thank you so much|I shall join your party.
 ( SPEAKER 看起来很感激 ) |非常感谢|我会加入你的队伍。
@@ -26627,7 +26627,7 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 - Make sure ${Ethey} ${Eis} tight and secure
 确保${Ethey}安全可靠
 
-- (A SPEAKER bumps into you while immersed in her thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
+- (A SPEAKER bumps into you while immersed in ${Etheir} thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
 ( SPEAKER 沉浸在她的思想中时撞到了你 ) |噢！你好！|喂，你看起来很可爱…|你介意帮我找点东西吗？
 - (The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!
 ( SPEAKER 跳上跳下 ) |啊，太棒了|我把一件衣服放错地方了|如果你能找到一个，戴上它，带给我，我将非常感激！谢谢！
@@ -26652,7 +26652,7 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 - Mmmmm! (Struggle)
 呜呜呜呜！ ( 挣扎 )
 
-- (A SPEAKER clutching her books approaches you)|Adventurer!|I happen to need a magic scroll of any kind.|It's for my studies.
+- (A SPEAKER clutching ${Etheir} books approaches you)|Adventurer!|I happen to need a magic scroll of any kind.|It's for my studies.
 ( SPEAKER 抓着她的书走近你 ) |探险家！|我碰巧需要一个魔法卷轴，任何一种都行。|我的研究需要它。
 - (The SPEAKER smiles)|Yes, thank you so much!|It's been so difficult to get them lately.|The magic library is closed off these days,|and there are mean people trying to get the scrolls back...
 ( SPEAKER 微笑 )|是的，非常感谢！|最近很难搞到它们。|魔法图书馆这两天也关着，|还有一些卑鄙的家伙试图拿回卷轴...
@@ -26673,7 +26673,7 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 
 - (A SPEAKER looks distraught)|Well met, adventurer!|We have a problem...
 ( SPEAKER 看起来心烦意乱 ) |很好，探险家！|我们有个问题...
-- (The SPEAKER folds her arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice.
+- (The SPEAKER folds ${Etheir} arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice.
 ( SPEAKER 交叉双臂 ) |最近一个叛军给我们带来了麻烦…|如果你碰到她，尽你所能！|她需要被绳之以法。
 
 - (A SPEAKER scoffs in your direction)|Well? You lookin' for work or no?
@@ -26681,9 +26681,9 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 - (The SPEAKER grins)|A bunch of delinquents stormed out recently.|They're looking for a way out of their belts.|Someone oughta show em their place,|if you catch what I'm saying.
 ( SPEAKER 咧嘴笑 ) |最近一群违法者暴跳如雷|他们正在寻找摆脱困境的方法|应该有人带他们去他们的地方，|如果你明白我说的话。
 
-- (A SPEAKER approaches you in your cell)|Since you've been a bad girl,|we're taking you to the high-security prison.
+- (A SPEAKER approaches you in your cell)|Since you've been a bad ${Psub},|we're taking you to the high-security prison.
 ( SPEAKER 在你的牢房里走近你 ) |既然你是个坏女孩，|我们就把你带到高度戒备的监狱。
-- (The SPEAKER folds her arms)|Want to or not, you're going.
+- (The SPEAKER folds ${Etheir} arms)|Want to or not, you're going.
 ( SPEAKER 交叉双臂 ) |不管你想不想，你都要去。
 - (Resist)
 ( 抵抗 )
@@ -26696,7 +26696,7 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 
 - (A SPEAKER approaches you in your cell)|Looks like you're not in the System.|I'm going to have to take you to sorting.
 ( SPEAKER 在你的牢房里接近你)|看起来你不在系统中|我得带你去分类了。
-- (The SPEAKER grins as her systems glow)|I love my job sometimes~
+- (The SPEAKER grins as ${Etheir} systems glow)|I love my job sometimes~
 ( SPEAKER 咧嘴一笑，她的系统闪闪发光)|有时我喜欢我的工作~
 - (The SPEAKER grins)|It means you'll get nicely packaged,|so that we can sort you through the System.
 ( SPEAKER 咧嘴一笑)|这意味着你会得到很好的包装，|这样我们就可以在系统中对你进行分类。
@@ -26706,7 +26706,7 @@ Mmmmphh...( 请求帮忙处理严重的诅咒 )
 ( SPEAKER 咯咯地笑了起来)|这意味着我们可以把你打包起来，然后|决定怎么处理你，傻瓜~
 - Hmmmph? Mmmm! (Act worried and whimper)
 Hmmmph? Mmmm!(表现出担忧和呜咽)
-- (The SPEAKER folds her arms)|Mistress Oriel's orders
+- (The SPEAKER folds ${Etheir} arms)|Mistress Oriel's orders
 （SPEAKER 双臂交叉）这是女主人奥莉尔的命令
 - Not in the 'System'?
 不在“系统”中？
@@ -26722,7 +26722,7 @@ Mmmph? (行为混乱)
 # :: dCyberHiSec_Question2Gag
 - (The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System.
 (SPEAKER双手抱胸)|奥丽尔(Oriel)夫人的指令很明确：|任何未登入系统的人，都得被装载入系统。
-- (The SPEAKER pauses for a moment, then speaks)|I'm just following Mistress Oriel's orders.|I'm sure ${Ethey} will have time to speak with you if you want to ask her.
+- (The SPEAKER pauses for a moment, then speaks)|I'm just following Mistress Oriel's orders.|I'm sure she will have time to speak with you if you want to ask her.
 ( SPEAKER停顿片刻，然后说道 )|我只是在听从奥丽尔夫人的命令|如果你想询问的话，我相信${Ethey}会有时间和你谈谈的。
 - But why???
 但是为什么呢？？？
@@ -26739,7 +26739,7 @@ Mmmph? (行为混乱)
 - The facility is in ruins! This is pointless!
 设施已成废墟！这毫无意义！
 
-- (A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
+- (A SPEAKER crosses ${Etheir} arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
 ( SPEAKER 交叉双臂 ) |你在看什么？|哦，是个探险家。|喂，你不会是想和我们一起工作吧，想吗？
 - (The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out.
 ( SPEAKER 微笑 )|更像是这样|独家报道 : ‎我们其中一人在下一层被抓获|我们需要你去把她救出来。
@@ -26755,7 +26755,7 @@ Mmmph? (行为混乱)
 # :: rPrisonerJailUnlockHandsBound
 # :: rPrisonerJailOwnUnlockHandsBound
 # :: rPrisonerLatexUnlockHandsBound
-- (You unlock her, fumbling around for a while with your bound hands)
+- (You unlock ${Ethem}, fumbling around for a while with your bound hands)
 ( 你解开了她的锁，用绑着的手摸索了一会儿。 )
 # :: rPrisonerJailUnlockSlow
 # :: rPrisonerJailOwnUnlockSlow
@@ -26777,7 +26777,7 @@ Mmmph? (行为混乱)
 ( 你解救了你的 SPEAKER ) |哦？这么快？
 - (You unlock your SPEAKER)|Time to get to work~!
 ( 你解救了你的 SPEAKER ) |是时候开始干活了~！
-- (You unlock your SPEAKER)|Mmmmph!|(She want${Es} to keep her gag...)
+- (You unlock your SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
 （你解开了你的 SPEAKER）|呜呜呜！|（她想保持自己的堵嘴……）
 - (You unlock the SPEAKER)|Mmmmph!|(She want${Es} to keep her gag...)
 ( 你解开了 SPEAKER ) |呜呜呜！| ( 她想让自己一直戴着口塞… )
@@ -26812,7 +26812,7 @@ Mmmph? (行为混乱)
 （过了一会儿，你救出了 SPEAKER）|唔…那可花了老长时间呢~
 - (After a while, you free the SPEAKER)|Are you supposed to be here?|(${EThey} giggle${Es})
 ( 过了一会儿，你解开了SPEAKER )|你怎么在这？|( ${EThey}笑了笑 )
-- (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} her head when you go for her gag...)
+- (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} ${Etheir} head when you go for ${Etheir} gag...)
 ( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|( ${EThey}在你给${EThey}解开口塞时摇了摇头... )
 # :: rPrisonerJailPickGagged
 # :: rPrisonerJailOwnPickGagged
@@ -26829,11 +26829,11 @@ Mmmph? (行为混乱)
 ( 你发出命令释放 SPEAKER ) |非常感谢|走吧！
 # :: rPrisonerJailWord
 # :: rPrisonerJailOwnWord
-- (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} her gag back on...)
+- (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)
 ( 你发出命令释放 SPEAKER ) |呜呜呜！|( ${EThey}把口塞又锁上了... )
 # :: rPrisonerJailWordGagged
 # :: rPrisonerJailOwnWordGagged
-- (The SPEAKER is locked in high-security manacles.|The safety pins have been triggered, making it impossible to help her without a key.)
+- (The SPEAKER is locked in high-security manacles.|The safety pins have been triggered, making it impossible to help ${Ethem} without a key.)
 ( SPEAKER 被高安全性的镣铐锁住了。|安全别针已被触发，帮助她已经不可能了。 )
 
 - Use a key to unlock her
@@ -26849,7 +26849,7 @@ Mmmph? (行为混乱)
 # :: dPrisonerJailJammedRecent_Apologize
 # :: dPrisonerJailOwnJammedRecent_Apologize
 
-- (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} is bugged and needs your help to get out)
+- (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} ${Eis} bugged and needs your help to get out)
 (SPEAKER被拘束于神秘的ASCII字符中)|(${EThey}需要你的帮助来摆脱Bug状态)
 - (Unlock her and file a bug report to Ada)
 (解锁她并向Ada投掷一封错误报告)
@@ -26859,11 +26859,11 @@ Mmmph? (行为混乱)
 (这位SPEAKER是sub，但不是 你 的sub！)
 
 
-- (The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)
+- (The SPEAKER sits restrained by your own hand.|Only someone with keys can let ${Ethem} out.)
 ( SPEAKER 坐在那里，被你束缚住了。|只有有钥匙的人才能让她出去。)
-- (You unlock the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep her gag...)
+- (You unlock the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
 ( 你解开了 SPEAKER ) |呜呜呜！| ( ${EThey}想让自己一直戴着口塞… )
-- (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
+- (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help ${Ethem}.)
 ( SPEAKER 被高安全性的镣铐锁住了。|安全护盾已被触发，帮助她已经不可能了。 )
 
 - Try to pick her restraints
@@ -26938,7 +26938,7 @@ Mmmph? (行为混乱)
 (这是一件束缚家具)
 - (You lock yourself in the furniture!)
 (你把自己锁在家具里了！)
-- (The SPEAKER slips out of your grip|before you can lock her in place!)
+- (The SPEAKER slips out of your grip|before you can lock ${Ethem} in place!)
 ( SPEAKER 从你手中溜走了|你还没来得及把她锁好！)
 - (Display one of your prisoners)
 (展示你的一名囚犯)
@@ -26965,7 +26965,7 @@ Mmmph? (行为混乱)
 区域未净空。
 - (Secure NME into the furniture)
 (将 NME 固定到家具中)
-- (You lock her into the furniture so that ${Ethey} stay${Es} in place)
+- (You lock ${Ethem} into the furniture so that ${Ethey} stay${Es} in place)
 (你把她锁在家具里，这样${Ethey}就不会动了)
 
 
@@ -27280,7 +27280,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 - Sounds fun... but I really need to get going.
 听起来很有趣……但我真的需要开始了。
 
-- (The Dollmaker folds ${Etheir} arms as she walks over)|All tight and shiny!|You'll be my prized possession~
+- (The Dollmaker folds ${Etheir} arms as ${Ethey} walk${Es} over)|All tight and shiny!|You'll be my prized possession~
 ( 玩偶师交叉双臂 ，向这边走来)|紧致又闪亮！|你将成为我最珍贵的收藏~
 - (The Dollmaker nods)|Already eager to obey!|So beautiful...
 ( 玩偶师点头 )|已经迫不及待地服从我了！|太美丽了……
@@ -27301,7 +27301,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 
 - (The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower.
 ( 玩偶师突然传送离开 ) |嗯。看来我不得不动用我的重型火力。
-- (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as she storms toward you!)
+- (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as ${Ethey} storm${Es} toward you!)
 ( 玩偶师沉入一滩粘液中，随后在附近现身 ) | ( 机械臂从${Etheir}背后伸出，她向你冲来！）
 
 - (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)
@@ -27314,7 +27314,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 ( 戴上玩偶目镜 )
 - (Wear a doll mask)
 ( 戴上玩偶面罩 )
-- (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and she starts mumbling angrily)
+- (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and ${Ethey} start${Es} mumbling angrily)
 ( 你掀起玩偶师的面具，里面是一个撅着嘴的年轻女子 ) |你要干什——| ( 你把一个口塞塞入${Ethem}张开的嘴里，她开始愤怒地嘟囔着）
 - (Gag ${Ethem})
 ( 堵住${Etheir}嘴 )
@@ -48433,7 +48433,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 
 - Your shield absorbed AMNT damage.
 你的护盾吸收了 AMNT 的伤害。
-- You are currently shielded from damage and some spells.
+- ${You} ${Yis} currently shielded from damage and some spells.
 你目前被保护免受伤害和一些法术的伤害。
 - No offhand weapon set. Click to open inventory and select the action on a weapon'.
 未设置副手武器。点击以打开背包并选择副手武器。
@@ -49736,7 +49736,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 直入主题。我到底要不要跟你打架？
 - (Growl at ${Ethem})
 ( 对${Ethem}咆哮 )
-- (She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
+- (${EThey} chuckle${Es})|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
 ( 她笑了 ) |哦，天哪~|我希望你的技能和你的态度一样好。|我没有时间陪那些制造麻烦的人~
 - Quite a boast for someone who's about to lose.
 对于一个即将失败的人来说，这真是太夸张了。
@@ -49766,7 +49766,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 的确！
 - What is this place?
 这是什么地方？
-- (She smiles)|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(She motions to the north)
+- (${EThey} smile${Es})|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(${EThey} motion${Es} to the north)
 ( 她笑了 ) |为什么，这是我的私人监狱。|我只带着我最漂亮的玩具留在这里。|你可以在那里看到它们。| ( 她向北示意 )
 - Tell me about your collection
 告诉我你的收藏
@@ -49852,21 +49852,21 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 你的记录太糟糕了，我现在要走了。
 - Mmpphgh? (Go to pass ${Ethem})
 Mmpphgh? ( 从${Ethem}身边走过 )
-- (She smirks)|Not so fast, dear~|You'll have to wear a special ${Restraint} to pass.
+- (${EThey} smirk${Es})|Not so fast, dear~|You'll have to wear a special ${Restraint} to pass.
 ( 她笑了 ) |别急，亲爱的~|你得戴上特殊的${Restraint}才能通过。
 - I won't wear anyone's ${Restraint}!
 我不会戴任何人的${Restraint}！
-- (She smirks)|Tsk tsk. Then you won't pass.
+- (${EThey} smirk${Es})|Tsk tsk. Then you won't pass.
 ( 她笑了 ) |啧啧，那你就过不了关了。
-- (She giggles)|How cute!|You're so used to yours that you forgot about it~
+- (${EThey} giggle${Es})|How cute!|You're so used to yours that you forgot about it~
 ( 她咯咯地笑 ) |好可爱！|你已经习惯了你自己，以至于忘记了这件事~
 - Why don't you wear it yourself?
 你自己咋不穿呢？
 - Hmmph. (Scoff at ${Ethem})
 Hmmph. ( 嘲笑${Ethem} )
-- (She frowns)|Watch your tongue~
+- (${EThey} frown${Es})|Watch your tongue~
 ( 她皱眉 ) |注意你的言辞~
-- (She frowns)|I do not wear ${Restraints}.
+- (${EThey} frown${Es})|I do not wear ${Restraints}.
 ( 她皱起眉头 ) |我不戴${Restraints}。
 - You'd be better off wearing mine instead.
 你最好还是穿我的。
@@ -49904,7 +49904,7 @@ Mmmph! ( 热切地点头 )
 可以试一试哦~
 - There must be a mistake. Sign me up!
 肯定是搞错了。帮我报名吧！
-- (She smiles)|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~
+- (${EThey} smile${Es})|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~
 ( 她笑了 ) |我们很热切吗？|但我不会随便记录任何人。|我只关心那些最强的探险家~
 - I am the strongest.
 我是最强的。
@@ -49984,11 +49984,11 @@ Mmmph! ( 热切地点头 )
 
 - (SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~
 ( SPEAKER 笑了 ) |非常令人印象深刻。|虽然你输掉了这场战斗，但你的表现令人钦佩~
-- (SPEAKER smiles)|I will let you pass so long as you wear my emblem.|(${EThey} snaps ${Etheir} fingers and conjures a glowing band)
+- (SPEAKER smiles)|I will let you pass so long as you wear my emblem.|(${EThey} snap${Es} ${Etheir} fingers and conjure${Es} a glowing band)
 ( SPEAKER微笑 )|只要你戴上我的徽章，我就会让你过去。| ( ${EThey}打了个响指，变出一个发光的圆环 )
-- (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
+- (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(${EThey} snap${Es} ${Etheir} fingers and conjure${Es} a glowing ring)
 （SPEAKER咯咯笑）|那么你的旅程就到此为止了。|我猜你不想那样。|那么，至于你的惩罚嘛~|（她打了个响指，变出一个发光的圆环）
-- (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(${EThey} snaps ${Etheir} fingers and conjures a glowing band)
+- (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(${EThey} snap${Es} ${Etheir} fingers and conjure${Es} a glowing band)
 ( SPEAKER轻笑了一声) |当然是魔法~|谁说指挥官就一定得手无寸铁？| ( 她打了个响指，变出了一个发光的带子) )
 - Was that magic?
 那是魔法吗？
@@ -50008,9 +50008,9 @@ Mmmph! ( 热切地点头 )
 
 - (SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
 ( SPEAKER 蹲下 ) |最令人印象深刻...|我很少输给探险家...|我很想最终得到你~
-- (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps ${Etheir} fingers and tosses you a glowing collar)|This is a special one, reserved for those with divine privilege.|You've earned it.
+- (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snap${Es} ${Etheir} fingers and toss${Ees} you a glowing collar)|This is a special one, reserved for those with divine privilege.|You've earned it.
 ( SPEAKER看起来有些惊讶 )|我没料到你会如此……顺从。|( ${EThey}打了个响指，把一条发光的项圈扔给你 )|这是一个特别的，专为拥有神圣特权者准备的项圈，|这是你应得的。
-- (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps ${Etheir} fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
+- (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snap${Es} ${Etheir} fingers and toss${Ees} you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
 ( SPEAKER看起来很惊讶 ) |我没想到你会如此……顺从。| ( ${EThey}打了个响指，扔给你一条发光的贞操带 ) |这是一条特殊的贞操带，只留给拥有神圣特权的人。|这是你应得的。
 :: rTheWardenWinAcceptBelt
 ( SPEAKER看起来有些惊讶 )|我没料到你会如此……顺从。|( ${EThey}打了个响指，把一条发光的腰带扔给你 )|这是一个特别的，专为拥有神圣特权者准备的腰带，|这是你应得的。
@@ -51389,7 +51389,7 @@ ENMY 请求帮助！
 
 - You are not in a condition to use a leash on ${Ethem}.
 你现在的状况不适合给${Ethem}系牵引绳。
-- She refuses to be leashed unless you tie ${Ethem} up!
+- ${EThey} refuse${Es} to be leashed unless you tie ${Ethem} up!
 除非你把${Ethem}绑起来，否则她不能被拴住！
 - You attach a leash to ENMY.
 你给 ENMY 系上皮带。
@@ -53258,13 +53258,13 @@ PTRN 的 RMTPE
 (你的手里没有切割工具)
 - (You cut ${Etheir} restraints, fumbling around for a while with your bound hands)
 (你切开了${Etheir}拘束具，用绑着的手摸索了一会儿。)
-- (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shakes ${Etheir} head when you go for ${Etheir} gag...)
+- (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} ${Etheir} head when you go for ${Etheir} gag...)
 ( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|( ${EThey}在你给${EThey}解开口塞时摇了摇头... ) 
 - (You don't have enough mana for Remove Slime)
 (你没有足够的法力来移除粘液)
 - (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
 ( 你发出命令释放 SPEAKER ) |非常感谢|走吧！
-- (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} locks ${Etheir} gag back on...)
+- (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)
 ( 你发出命令释放 SPEAKER ) |呜呜呜！|( ${EThey}把口塞又锁上了... )
 
 - Dissolve the latex with a SLVNT
@@ -54327,7 +54327,7 @@ Boss
 [经验 : AMNT/LMT][进入下一层 +NXT 经验] 高跟鞋训练可以提高你的平衡能力，防止你摔倒
 - [EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamina penalty from corsets.
 [经验 : AMNT/LMT][进入下一层 +NXT 经验] 束腰训练可以减少穿着束腰造成的体力惩罚
-- [EXP: AMNT/LMT, +NXT next floor] Gag training reduces your overall gag level.
+- [EXP: AMNT/LMT, +NXT next floor] Gag training reduces ${your} overall gag level.
 [经验 : AMNT/LMT][进入下一层 +NXT 经验] 堵嘴训练可以降低你的口塞等级
 - [EXP: AMNT/LMT, +NXT next floor] Senses training increases hearing radius and reduces blindfold effectiveness.
 [经验 : AMNT/LMT][进入下一层 +NXT 经验] 感官训练可增加听觉半径并降低眼罩效果
@@ -54875,7 +54875,7 @@ ${Weapon}为了自身安全，自行收起……
 
 - On the ground! Bondage Resist reduced by 50%
 倒地！降低 50% 束缚抗性
-- Your balance is low! Consider standing in place to restore it.
+- ${Your} balance is low! Consider standing in place to restore it.
 你的平衡值过低！考虑原地不动来恢复它。
 
 - Always show defense in buff bar
@@ -54955,7 +54955,7 @@ ${Weapon}为了自身安全，自行收起……
 
 - (The SPEAKER gushes over how adorable you are)|Oh gods, ${Ptheyre} so cute!|Looks like I've come to the right place~
 ( SPEAKER滔滔不绝地夸你有多可爱 )|哦天哪，${Ptheyre}太可爱了！|看来我来对地方了~
-- (The SPEAKER chuckles)|There we go, that's better. Good girl~
+- (The SPEAKER chuckles)|There we go, that's better. Good ${Psub}~
 ( SPEAKER轻笑 )|好了，这样好多了。乖女孩~
 - (The SPEAKER smiles)|Not quite my type. But cute.
 ( SPEAKER微笑 )|不太是我的类型，但也很可爱。
@@ -55135,7 +55135,7 @@ ${Weapon}为了自身安全，自行收起……
 ( SPEAKER捏住你的下巴，把你的头转向${Ethem} )|我想我会很享受让你认清自己的位置的过程……
 - (The SPEAKER folds ${Etheir} arms and smiles)|I like your spirit.
 ( SPEAKER微笑着交叉双臂 )|我喜欢你的这股劲。
-- (The SPEAKER tilts ${Etheir} head)|Do you think this will get you anywhere?|(${EThey} smile and hold up your chin)
+- (The SPEAKER tilts ${Etheir} head)|Do you think this will get you anywhere?|(${EThey} smile${Es} and hold${Es} up your chin)
 ( SPEAKER歪了歪头 )|你觉得这样能有什么用吗？| ( ${EThey}微笑着抬起你的下巴 )
 - (The SPEAKER smiles)|Better start begging~
 ( SPEAKER微笑着 )|最好开始求饶吧~
@@ -55152,9 +55152,9 @@ ${Weapon}为了自身安全，自行收起……
 
 
 
-- (The SPEAKER makes a beep of approval)|Cute behavior has been noted, logged, and approved.|Good girl.
+- (The SPEAKER makes a beep of approval)|Cute behavior has been noted, logged, and approved.|Good ${Psub}.
 ( SPEAKER发出赞许的哔声 )|卖萌行为已被注意、记录在案并批准，|乖女孩。
-- (The SPEAKER pauses)|Subject cuteness within expected bounds.|Good girl.
+- (The SPEAKER pauses)|Subject cuteness within expected bounds.|Good ${Psub}.
 ( SPEAKER停顿 )|对象的可爱度在预期范围内，|乖女孩。
 - (The SPEAKER makes a loud noise resembling an error message)|Subject does not conform to expected standards.|Suggest corrective training.
 ( SPEAKER发出类似错误消息的巨响 )|对象不符合预期标准，|建议进行纠正训练。
@@ -55165,9 +55165,9 @@ ${Weapon}为了自身安全，自行收起……
 # :: rDollShoppeVisitorBeCute_FailLateRobot
 # :: rDollShoppeVisitorBeBrat_FailLateRobot
 
-- (The SPEAKER makes a beep of approval)|Behavior has been noted, logged, and found to be within acceptable bounds.|Good girl.
+- (The SPEAKER makes a beep of approval)|Behavior has been noted, logged, and found to be within acceptable bounds.|Good ${Psub}.
 ( SPEAKER发出认可的哔声 )|行为已被记录、存档，并判定在可接受范围内，|乖女孩。
-- (The SPEAKER pauses)|Subject behavior within expected parameters.|Good girl.
+- (The SPEAKER pauses)|Subject behavior within expected parameters.|Good ${Psub}.
 ( SPEAKER停顿了一下 )|对象行为在预期参数内，|乖女孩。
 
 - (The SPEAKER makes a beep of approval)|Subject resists as expected.|Noting and proceeding.
@@ -55179,9 +55179,9 @@ ${Weapon}为了自身安全，自行收起……
 - (The SPEAKER pauses)|Subject continues to resist, despite lack of capability.|Logical error.
 ( SPEAKER停顿 )|对象尽管能力不足，但持续抵抗。|逻辑错误。
 
-- (The SPEAKER makes a beep of approval)|No movement detected. This has been logged.|Good girl.
+- (The SPEAKER makes a beep of approval)|No movement detected. This has been logged.|Good ${Psub}.
 ( SPEAKER发出一声表示赞许的哔声 )|未检测到移动，此情况已记录，|乖女孩。
-- (The SPEAKER pauses)|Subject has corrected unwanted behavior.|Good girl.
+- (The SPEAKER pauses)|Subject has corrected unwanted behavior.|Good ${Psub}.
 ( SPEAKER停顿 )|对象已纠正不良行为，|乖女孩。
 - (The SPEAKER makes a loud noise resembling an error message)|Subject does not respond to stimuli in an expected manner.|Suggest additional stimulation.
 ( SPEAKER发出类似错误消息的巨响 )|对象未以预期方式对刺激作出反应，|建议增加额外刺激。

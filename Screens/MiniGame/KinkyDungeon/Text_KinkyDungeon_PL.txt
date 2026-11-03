@@ -1027,9 +1027,9 @@
 # - The pressure fans the flames on you, dealing bonus DAMAGEDEALT fire damage!
 # - The RestraintName comes off more easily in the presence of water!
 # - You slip on the floor!
-# - The air around you is ablaze! (-DamageDealt SP)
-# - The Goddess of Illusions shrouds you in shadows!
-# - You struggle against your bonds, but a magical force resists!
+# - The air around ${youObj} is ablaze! (-DamageDealt SP)
+# - The Goddess of Illusions shrouds ${youObj} in shadows!
+# - ${You} struggle${Ys} against ${your} bonds, but a magical force resists!
 # - The ropes squeeze you tighter and tighter...
 # - Your body sinks deeper into a sea of bindings...
 # - You struggle to breath as you are buried alive in squirming ropes...
@@ -1106,14 +1106,14 @@
 
 # - Physical Armor: 
 # - Magic Armor: 
-# - In the Shadows: You are harder to see.
-# - Invisible: You are very difficult to see.
-# - Quickness: Your next movement is so fast it doesn't advance a turn.
+# - In the Shadows: ${You} ${Yis} harder to see.
+# - Invisible: ${You} ${Yis} very difficult to see.
+# - Quickness: ${Your} next movement is so fast it doesn't advance a turn.
 # - All Damage Reduction: 
-# - You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
-# - You deal PERCENT more DAMAGETYPE damage.
-# - Your bindings are PERCENT more effective.
-# - Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
+# - ${You} take${Ys} PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
+# - ${You} deal${Ys} PERCENT more DAMAGETYPE damage.
+# - ${Your} bindings are PERCENT more effective.
+# - ${Your} attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
 # - Plugged!
 # - Plugged up!!!
 # - Denied! You won't be getting off that easy~
@@ -1124,9 +1124,9 @@
 # - Intense vibrations!!
 # - Torturous vibrations!!!
 
-# - Your restraints are restrictive! Struggling is less effective without help.
+# - ${Your} restraints are restrictive! Struggling is less effective without help.
 # - Stunned! You can't move!
-# - Your vision is impaired!
+# - ${Your} vision is impaired!
 # - Arms are bound!
 # - Hands are useless!
 # - Hands are impaired! Some tasks will be harder...
@@ -1135,11 +1135,11 @@
 # - Slow Level 3: Movement severely impaired!
 # - Slow Level 4+: Movement is almost impossible. Sprinting and hopping are disabled.
 # - Slow Level 10+: Immobilized!
-# - Your mouth is free for potion-drinking and spellcasting activities.
-# - Your vision is clear.
-# - Your hands are unobstructed.
-# - Your arms are free to move as you please.
-# - Your legs are free and unimpeded.
+# - ${Your} mouth is free for potion-drinking and spellcasting activities.
+# - ${Your} vision is clear.
+# - ${Your} hands are unobstructed.
+# - ${Your} arms are free to move as ${you} please${Ys}.
+# - ${Your} legs are free and unimpeded.
 # - You are gagged! Verbal miscast chance is increased and your potions are less effective!
 # - Your mouth is totally filled! You can't drink potions and cant cast verbal spells!
 
@@ -1147,7 +1147,7 @@
 
 # - Let there be light!
 
-# - You're seeing things...
+# - ${Youre} seeing things...
 
 # - You've been poisoned!
 
@@ -1172,7 +1172,7 @@
 # - Ignore Ice Tiles
 
 # - Ignited: You are dealing fire damage to yourself and nearby enemies!
-# - You are on fire and taking damage!
+# - ${You} ${Yis} on fire and taking damage!
 
 # - Divine Punishment: Deals bonus damage when you hit an enemy.
 # - Divine Protection: Automatically blocks the next 3 times an enemy tries to bind you.
@@ -1198,13 +1198,13 @@
 # - Sleepy: You are sluggish and have a hard time keeping your eyes open.
 # - Afterimage: Evasion greatly increased.
 # - We did it! We made ourselves invisible--mmmmph!!!
-# - You are not currently attempting to disguise yourself. Click to reenable.
-# - Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
-# - You can launch another leather restraint instantly!
-# - You can launch another Sagitta instantly!
+# - ${You} ${Yis} not currently attempting to disguise ${your}self. Click to reenable.
+# - ${Your} restraints are disenchanted, treating them as nonmagical for purposes of cutting.
+# - ${You} can launch another leather restraint instantly!
+# - ${You} can launch another Sagitta instantly!
 
-# - You have stored willpower.
-# - You have consumed a mote of essence, granting miscast chance reduction.
+# - ${You} ${Yhas} stored willpower.
+# - ${You} ${Yhas} consumed a mote of essence, granting miscast chance reduction.
 # - You recapture an essence mote and concentrate on its essence!
 # - Choose an essence mote to absorb.
 
@@ -1266,7 +1266,7 @@
 # - Come back later for new dungeons!
 
 # - Got the keys! Find the stairs to go to the next floor.
-# - You haven't found the keys for this floor yet.
+# - ${You} ${Yhas}n't found the keys for this floor yet.
 # - Missing key
 # - You are protected from damage and can't be bound until the shield is broken!
 # - Chance for a spell to fizzle: 
@@ -2285,19 +2285,19 @@
 # - Bind Crit Multiplier: 
 # - Find the keys..
 # - Find the exit!
-# - You are receiving help from a friendly ally.
-# - You found a hook you can use to pull on straps and loops.
-# - You have access to something sharp and can attempt to Cut restraints, or Remove more effectively.
-# - You found a corner to help manipulate buckles and snaps with.
-# - You found a crack and could maybe wedge a knife or tool into it to keep it still.
-# - You found something sticky and might be able to pull off fabrics.
+# - ${You} ${Yis} receiving help from a friendly ally.
+# - ${You} found a hook ${you} can use to pull on straps and loops.
+# - ${You} ${Yhas} access to something sharp and can attempt to Cut restraints, or Remove more effectively.
+# - ${You} found a corner to help manipulate buckles and snaps with.
+# - ${You} found a crack and could maybe wedge a knife or tool into it to keep it still.
+# - ${You} found something sticky and might be able to pull off fabrics.
 # - Evasion: 
 # - Visibility: 
 
 
-# - Submissive: Enemies won't attack you, but they will try to play with you.
+# - Submissive: Enemies won't attack ${youObj}, but they will try to play with ${youObj}.
 # - On the Run! Enemies are hostile.
-# - Prisoner: Enemies won't attack you unless you are out of jail.
+# - Prisoner: Enemies won't attack ${youObj} unless ${you} ${Yis} out of jail.
 # - Freedom
 # - Crawling slowly!
 # - Inching slowly!
@@ -10666,7 +10666,7 @@
 # - You won't be allowed to make that mistake twice.
 # - I'll punish you myself.
 # - Hands off my property.
-# - Know your place, girl!
+# - Know your place, ${Psub}!
 # - You've had your chance.
 # :: KinkyDungeonRemindJailChaseDollmakerDefendHonor2
 # :: KinkyDungeonRemindJailChaseDollmakerHonor2
@@ -10812,7 +10812,7 @@
 # - You've made some enemies, haven't you?
 # :: KinkyDungeonRemindJailChaseTheWardenHonor0
 # :: KinkyDungeonRemindJailChaseSilverWitchHonor0
-# - I should teach you to be a nice girl.
+# - I should teach you to be a nice ${Psub}.
 # :: KinkyDungeonRemindJailChaseTheWardenHonor1
 # :: KinkyDungeonRemindJailChaseSilverWitchHonor1
 # - You need to learn some manners~
@@ -11240,9 +11240,9 @@
 # - What are you rummaging around for?
 # - Oh no you don't!
 # - You're not supposed to be here...
-# - I'm gonna teach you a lesson, girl.
+# - I'm gonna teach you a lesson, ${Pdim}.
 # - I'm gonna miss you when we find you a nice master...
-# - Looks like you need some training, girl.
+# - Looks like you need some training, ${Psub}.
 # - You picked a bad time to get lost, friend.
 # - Never should have come here.
 # - I used to be an adventurer like you.
@@ -11264,7 +11264,7 @@
 # - Dibs on this one!
 # - Gotta make sure no one gets to you~
 # - I'm PTRN. And who might you be?
-# - Bad time to party, girl~
+# - Bad time to party, ${Pdim}~
 # - You've got nerve showing your face around here.
 # - Don't think you can get away~
 # - Trying to fight your way out?
@@ -11553,7 +11553,7 @@
 # - You'll make a fine test subject...
 # - Come here, I want to perform some tests!
 # - Looks like it's time to drop some science!
-# - Bad girl!
+# - Bad ${Psub}!
 # - Keep your filthy hands off me!
 # - Your chances of winning are... less than zero.
 # - Good ${Psub}s don't use magic without permission.
@@ -11632,7 +11632,7 @@
 # :: KinkyDungeonRemindJailChaseDressmakerSpellItem
 # :: KinkyDungeonRemindJailChaseNurseSpellItem
 # :: KinkyDungeonRemindJailChaseDoctorSpellItem
-# - Silly girl, you should be looking to your mistress for guidance.
+# - Silly ${Pdim}, you should be looking to your mistress for guidance.
 # - That's not yours, sweetie~
 # :: KinkyDungeonRemindJailChaseDressmakerChest
 # :: KinkyDungeonRemindJailChaseNurseChest
@@ -11789,7 +11789,7 @@
 # - Patients are forbidden from casting spells!
 # :: KinkyDungeonRemindJailChaseNurseSpell1
 # :: KinkyDungeonRemindJailChaseDoctorSpell1
-# - Silly girl, your illness can't be cured by a prayer.
+# - Silly ${Pdim}, your illness can't be cured by a prayer.
 # :: KinkyDungeonRemindJailChaseNurseShrine
 # :: KinkyDungeonRemindJailChaseDoctorShrine
 # - You shouldn't break things, you know~
@@ -12113,7 +12113,7 @@
 # - It's me you should worry about!
 # - Pfft. Amateurs.
 # - Did you think I wasn't looking?
-# - Nice try, girl~
+# - Nice try, ${Pdim}~
 # - You've made a mistake attacking my client.
 # - Capture her? Fine, but I expect payment.
 # - I just follow the money, miss~
@@ -12241,7 +12241,7 @@
 # - Hands up! Don't move!
 # - Lay down your weapons and don't move!
 # - I have a warrant for your arrest...
-# - You're a wanted girl.
+# - You're a wanted ${Pdim}.
 # - You're under arrest.
 # - Backup has arrived.
 # - Requesting backup!
@@ -12665,7 +12665,7 @@
 # - Run away!
 # - Run!
 # - Scary!
-# - Girl!
+# - ${PDim}!
 # - Wear this!
 # - Come here!
 # :: KinkyDungeonRemindJailPlayMushy2
@@ -12675,7 +12675,7 @@
 # - Confiscate!
 # - Confiscate!!
 # - Intruder! Alert!
-# - Fight girl!
+# - Fight ${Pdim}!
 # - Fight!
 # :: KinkyDungeonRemindJailChaseMushyAttack2
 # :: KinkyDungeonRemindJailMushyHitPlayer
@@ -13010,7 +13010,7 @@
 # :: KinkyDungeonRemindJailElementalIntro
 # :: KinkyDungeonRemindJailAthenaIntro
 # :: KinkyDungeonRemindJailAngelIntro
-# - ${PThey} thinks ${Pthey} can beat us~
+# - ${PThey} think${Ps} ${Pthey} can beat us~
 # :: KinkyDungeonRemindJailChaseElementalDefend0
 # :: KinkyDungeonRemindJailChaseAthenaDefend0
 # :: KinkyDungeonRemindJailChaseAngelDefend0
@@ -13385,7 +13385,7 @@
 # :: KinkyDungeonRemindJailHeadMaidBlockedMe
 # - I'll be taking you to your cell personally~
 # - Amateur.
-# - Bad girl. You need discipline.
+# - Bad ${Psub}. You need discipline.
 # - I'll be keeping the keys.
 # - Hmm. You may call me Head Maid PTRN.
 # - Looks like we have a guest.
@@ -13647,7 +13647,7 @@
 # - Play... with... me...
 # - Please...
 # - Command... Me...
-# - Cute... Girl...
+# - Cute... ${PDim}...
 # - Helpless...
 # - Take...
 # - Mine...
@@ -13776,9 +13776,9 @@
 # - (The SPEAKER chuckles)|What a cute lie.
 # - (The SPEAKER beeps)|Vital signs indicate dishonesty.
 
-# - (The SPEAKER furrows her brow)|...Excuse me?
+# - (The SPEAKER furrows ${Etheir} brow)|...Excuse me?
 
-# - (The SPEAKER tilts her head)|Right, sorry.
+# - (The SPEAKER tilts ${Etheir} head)|Right, sorry.
 # - (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
 # - (The SPEAKER smiles)|Keep up the good work, ${Psub}.
 # - (The SPEAKER beeps)|Vital signs indicate honesty. Carry on.
@@ -13799,7 +13799,7 @@
 # - (The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply.
 # - (The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
 # - (The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?
-# - (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
+# - (The SPEAKER grins and cracks ${Etheir} knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
 # - Yes, miss... (Currently held weapon will be lost)
 # - Mmph... (Nod politely) (Currently held weapon will be lost)
 # - No, I refuse!
@@ -13847,7 +13847,7 @@
 
 # - (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You know we don't take no for an answer.
 
-# - (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
+# - (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and return${Es} with some toys...)|Now hold still!
 # - (The SPEAKER frowns)|I know exactly what you need...
 # - (The SPEAKER smiles back)|I'm glad you're enjoying yourself.|However, your behavior is still unacceptable.|You need to learn some respect.
 # - (The SPEAKER chuckles)|Looks like you're enjoying your restraints?|Let's make them tighter, shall we?
@@ -13879,14 +13879,14 @@
 
 # - (The SPEAKER looks at you curiously)|Oh, you'd be perfect!|Would you please model my latest design?
 # - (The SPEAKER holds up a restrictive outfit)|This RESTRAINT might be a tight fit|so hold still while I lace it~
-# - (The SPEAKER giggles)|It looks even better than I thought!|Thank you girl~
+# - (The SPEAKER giggles)|It looks even better than I thought!|Thank you ${Pdim}~
 # - (The SPEAKER sighs and moves away)|Such a shame...
 # - (The SPEAKER looks disappointed)|Guess I'll find someone else then...
 # - (The SPEAKER pouts)|But I just have to see how you look in it!
 # - (The SPEAKER smiles)|Maybe you'll change your mind when it's on~
 # - (The SPEAKER grumbles)|...fine, but you'd look cute~
 # - (The SPEAKER looks bemused)|Changed your mind?|It does look good on you though~
-# - (The SPEAKER snaps her fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
+# - (The SPEAKER snaps ${Etheir} fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
 
 # - Yes please!
 # :: dOfferDress_Yes
@@ -14018,7 +14018,7 @@
 
 
 # - (The SPEAKER looks at you with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
-# - (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
+# - (The SPEAKER takes a strange mask from ${Etheir} satchel)|Well, I have the answer right here...
 # - (The SPEAKER nods seriously)|My hypothesis was correct...
 # - (The SPEAKER frowns)|Such a philistine. Begone.
 # - (The SPEAKER turns away and thinks deeply)
@@ -14026,7 +14026,7 @@
 # - (The SPEAKER smiles)|You can be someone else...
 # - (The SPEAKER turns around and keeps pondering)|Hmmm...
 # - (The SPEAKER nods)|I see you are a truth seeker after all.
-# - (The SPEAKER lets you go. But then...)|(You feel her clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
+# - (The SPEAKER lets you go. But then...)|(You feel ${Ethem} clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
 
 # - Um, sure?
 # - (Nod seriously)
@@ -14045,7 +14045,7 @@
 
 
 
-# - (The SPEAKER smiles as ${Ethey} hide${Es} her hands behind her back)|Have you heard of 'sensory deprivation'?
+# - (The SPEAKER smiles as ${Ethey} hide${Es} ${Etheir} hands behind ${Etheir} back)|Have you heard of 'sensory deprivation'?
 # - (The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!
 # - (The SPEAKER starts pulling the hood over your head)|Let's get you laced in!
 # :: rOfferSenseDepYes_Yes
@@ -14055,7 +14055,7 @@
 # - (The SPEAKER looks at you with a devious grin)|Oh, but it's so much fun!|You can run around bumping into things!|It's the ultimate adventure!
 # - (The SPEAKER chuckles)|Truth be told, I wasn't asking~|Now why don't you kneel for me...
 # - (The SPEAKER pouts)|I thought it would be fun...
-# - (The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of her)|That's better~|Now why don't you say good night~
+# - (The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of ${Ethem})|That's better~|Now why don't you say good night~
 
 # - Of course! I love it!
 # - (Nod eagerly)
@@ -14083,8 +14083,8 @@
 
 
 # - (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
-# - (The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
-# - (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+# - (The SPEAKER takes a duster gag from ${Etheir} satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
+# - (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from ${Etheir} satchel)|Now then, this place is filthy.|Why don't you put this on to help?
 # - (The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
 # - (The SPEAKER shrugs)|I'll find someone else...
 # - (The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(She pulls out a duster gag from her satchel and grins)
@@ -14110,7 +14110,7 @@
 # - (The SPEAKER swings an imaginary sword around)|En guar- Oh, you're unarmored!|Do you want to borrow some of mine?
 # - (The SPEAKER holds up a RESTRAINT)|I found this near an old suit of armor.|I think it's a helmet or something...
 # - (The SPEAKER winks and locks it on)|I feel much safer already~
-# - (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting her imaginary enemies)
+# - (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting ${Etheir} imaginary enemies)
 # - (The SPEAKER shrugs)|Your loss~
 # - (The SPEAKER grins deviously)|So? It might help...|(The SPEAKER dives at you suddenly!)
 # - (The SPEAKER giggles)|Close enough, right?|Come on, there's enemies to fight!
@@ -14233,7 +14233,7 @@
 # - (The SPEAKER shuffles awkwardly)|Oh... well...|Come back if you change your mind~
 # - (The SPEAKER scowls)|Hey, don't back out!|I promise I'll make it comfortable!
 # - (The SPEAKER frowns)|Too bad, I want to tie someone!
-# - (The SPEAKER drops her scarves)|Aww, really?|I'll go find someone else then...
+# - (The SPEAKER drops ${Etheir} scarves)|Aww, really?|I'll go find someone else then...
 # - (The SPEAKER beams a smile)|Yay, thank you!|Feels nice, right?
 # - (The SPEAKER tosses a scarf around you like a lasso)|Not so fast! You cannot escape the fluff!
 
@@ -14277,8 +14277,8 @@
 # :: rOfferSlimeNo
 # - (The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(${EThey} unscrew${Es} the cap)
 # - (The green gas starts leaking)|Oh no! It wasn't supposed to do that!
-# - (You push her out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
-# - (You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
+# - (You push ${Ethem} out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
+# - (You push ${Ethem} out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
 # - (The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen...
 
 # - Seems interesting!
@@ -14307,7 +14307,7 @@
 # - (The SPEAKER glares at you)|You've got no sense of adventure!|For science!
 # - Ah, but it'll be quick!|(The SPEAKER begins tipping the flask)|See? It's already moving toward you!
 # - (The SPEAKER tosses the slime on you)|(The slime flops off limply)|Ah. Back to the drawing board.
-# - (The SPEAKER pours the slime onto you)|That's the spirit girl!|(Sticky RESTRAINT clings to you)
+# - (The SPEAKER pours the slime onto you)|That's the spirit ${Pdim}!|(Sticky RESTRAINT clings to you)
 # - (The SPEAKER tosses the slime on you)|Ha, look, it's alive!|(Sticky RESTRAINT clings to you)
 
 # - Sure.
@@ -14327,12 +14327,12 @@
 # - (A SPEAKER whispers to you)|Ever wonder how wolfgirls feel?|Or why they're so obedient?
 # - (The SPEAKER grins)|I've got a RESTRAINT here~|Wanna give it a try?
 # - (The SPEAKER puts on the RESTRAINT)|Perfect. Better behave now~|(The SPEAKER pats your butt)
-# - (The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
+# - (The SPEAKER rolls ${Etheir} eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
 # - (The SPEAKER nods glumly)|Not a fan?|Shame, I am~
 # - (The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained...
-# - (The SPEAKER looks at you deviously)|A good ${Psub} wears her RESTRAINT with enthusiasm~
+# - (The SPEAKER looks at you deviously)|A good ${Psub} wears ${Ptheir} RESTRAINT with enthusiasm~
 # - (The SPEAKER sulks)|You'd be difficult to train anyway~
-# - (The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good ${Psub}~|I'll make it extra tight for you!
+# - (The SPEAKER adds the RESTRAINT)|(You feel ${Ethem} tighten everything before locking it)|Good ${Psub}~|I'll make it extra tight for you!
 # - (The SPEAKER knocks you down and forces you into the RESTRAINT)|Here, maybe you'll reconsider after wearing it a while!
 
 # - Maybe a little~
@@ -14413,7 +14413,7 @@
 
 
 # - (A SPEAKER plays with silvery rope)|Hmm, I need to get better with this.|Can I practice on you?
-# - (The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~
+# - (The SPEAKER grins happily)|Thank you ${Pdim}~|I'll tie with RESTRAINT then~
 # - (The SPEAKER binds you tightly)|(The rope is tight, and ${Etheyre} clearly an expert.)|Mmm, not too bad~
 # - (The SPEAKER pouts indignantly)|Why say yes then?!|(The SPEAKER walks off grumbling)
 # - (The SPEAKER sighs)|Very well then~
@@ -14437,7 +14437,7 @@
 
 
 # - (The SPEAKER quickly motions to you)|Hey! Over here!| I got something to show you!
-# - (The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in her hands)
+# - (The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in ${Etheir} hands)
 # - (The SPEAKER looks surprised)|Oh, uh, sure!|(They quickly add the RESTRAINT)
 # - (The SPEAKER grins sneakily)|I thought you might say that~|But- ahh!|(They drop the item and you slip away)
 # - (The SPEAKER looks angry)|Hey! HEY! I'm talking to-|Ah, forget it.
@@ -14487,7 +14487,7 @@
 # - (The SPEAKER nods disappointed)|Fair enough~
 # - (The SPEAKER sighs)|Maybe another time~
 # - (The SPEAKER titters)|It's going on, kitty~
-# - (The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in her hand)
+# - (The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in ${Etheir} hand)
 # - (The SPEAKER whimpers and drops it)|Owwww!|I hit my knee!
 # - (The SPEAKER wiggles happily)|Oh, you're so cute!|Enjoy it~
 # - (The SPEAKER traps you)|(You feel the RESTRAINT being forced on)|Meow~
@@ -14504,13 +14504,13 @@
 
 
 
-# - (A SPEAKER winks at you)|You look like a girl who likes feeling|like a prisoner, am I right?
+# - (A SPEAKER winks at you)|You look like a ${Psub} who likes feeling|like a prisoner, am I right?
 # - (The SPEAKER nods happily)|I knew it! Well, it's your lucky day.|I've got some RESTRAINT for you~
 # - (The SPEAKER spins you around)|(You hear the cold metal click shut)|Nice and submissive~
 # - (The SPEAKER shrugs)|It's not for everyone, I guess~
 # - (The SPEAKER frowns)|Really?|I was so sure...
 # - (The SPEAKER grins maliciously)|I like seeing prisoners though~|And you're right here...
-# - (The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in her hand)
+# - (The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in ${Etheir} hand)
 # - (The SPEAKER gulps)|M-Maybe I won't then!
 # - (The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?
 # - (The SPEAKER giggles as ${Ethey} catch${Ees} you and slaps on the cuffs)|No so fast, dear~
@@ -14557,12 +14557,12 @@
 
 
 
-# - (The SPEAKER brushes past hurriedly)|Careful girl!|Else I'll lock you away~
+# - (The SPEAKER brushes past hurriedly)|Careful ${Pdim}!|Else I'll lock you away~
 # - (The SPEAKER looks at you intrigued)|Aren't you something...|How about wearing this RESTRAINT?
 # - (The SPEAKER grins and locks it on)|Maybe I should bump into you more~
-# - (The SPEAKER rolls her eyes)|Run along then girl~
+# - (The SPEAKER rolls ${Etheir} eyes)|Run along then ${Pdim}~
 # - (The SPEAKER nods)|Didn't think so~|Oh, and, uh, sorry for the bump.
-# - (The SPEAKER shakes her head)|You don't get off that lightly.|These are going on.
+# - (The SPEAKER shakes ${Etheir} head)|You don't get off that lightly.|These are going on.
 # - (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(${EThey} hold${Es} up a RESTRAINT)
 # - (The SPEAKER sighs)|I'll let you off then.|Oh, and, uh, sorry for the bump.
 # - (The SPEAKER adds the RESTRAINT)|(As ${Etheyre} locking it, ${Ethey} giggle${Es})|You're really cute actually~
@@ -14585,10 +14585,10 @@
 # - (The SPEAKER frowns for a second)|Ah, I see.|As you were then.
 # - (The SPEAKER nods)|We hope to see you again nonetheless.
 # - (The SPEAKER glares)|We urge you to reconsider.
-# - (The SPEAKER has a twinkle in her eye)|We will offer you this RESTRAINT.|You should accept.
+# - (The SPEAKER has a twinkle in ${Etheir} eye)|We will offer you this RESTRAINT.|You should accept.
 # - (The SPEAKER pulls an odd smile)|Very well.
 # - (The SPEAKER smugly nods)|(With surprising speed, the RESTRAINT locks in place)|Excellent, a good fit.
-# - (The SPEAKER covers your mouth with her hand)|Shush, no more bad decisions.|(You feel her buckle the restraint strictly)
+# - (The SPEAKER covers your mouth with ${Etheir} hand)|Shush, no more bad decisions.|(You feel ${Ethem} buckle the restraint strictly)
 
 # - No, thank you.
 
@@ -14628,7 +14628,7 @@
 
 
 # - (A SPEAKER giggles and calls to you)|Hey there~|Fancy seeing some nature?~
-# - (The SPEAKER motions with her hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
+# - (The SPEAKER motions with ${Etheir} hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
 # - (The SPEAKER grins and motions again)|(The plants wrap around you quickly)|(You wriggle against the RESTRAINT)
 # - (The SPEAKER pouts)|Aww...
 # - (The SPEAKER frowns)|Not even a little?
@@ -14657,7 +14657,7 @@
 # - (The SPEAKER wraps a long chain around you)|This should do the trick~|(RESTRAINT settles in place)
 # - (The SPEAKER sighs)|Ah well.
 # - (The SPEAKER frowns sadly)|But they make the best noise!
-# - (The SPEAKER rolls her eyes)|Tough luck then~|You're getting one!
+# - (The SPEAKER rolls ${Etheir} eyes)|Tough luck then~|You're getting one!
 # - (The SPEAKER grins)|See how you feel when|you're wearing one!
 # - (The SPEAKER sighs)|Maybe another time then.
 # :: rOfferChainForce_No
@@ -14747,7 +14747,7 @@
 # :: dOfferLeatherForce_No
 
 
-# - (The SPEAKER steps up to you)|Hey girl~|You happen to be a fan of latex?
+# - (The SPEAKER steps up to you)|Hey ${Pdim}~|You happen to be a fan of latex?
 # - (The SPEAKER smiles)|Then would you like to try on this RESTRAINT?
 # - (The SPEAKER chuckles)|Tight and shiny!
 # - (The SPEAKER shrugs)|Alright. Sorry I asked.
@@ -14814,7 +14814,7 @@
 
 
 # - (The SPEAKER walks up to you)|We don't get a lot of visitors.|I take it that you enjoy bondage?
-# - (The SPEAKER tilts her head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
+# - (The SPEAKER tilts ${Etheir} head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
 # - (The SPEAKER smiles)|I'm glad you like it!
 # - (The SPEAKER frowns)|I guess I'll have to find someone else to wear it.
 # - (The SPEAKER looks disappointed)|Oh well.
@@ -14833,9 +14833,9 @@
 # - (The SPEAKER looks at your bound body)|I've got some more ropes for you, babe!
 # - (The SPEAKER smiles)|Okay, hold still while I get you rigged up~
 # - (The SPEAKER slaps your butt as ${Ethey} tie${Es} the last knot)|All trussed up~
-# - (The SPEAKER looks disappointed and packs her rope away)
+# - (The SPEAKER looks disappointed and packs ${Etheir} rope away)
 # - (The SPEAKER frowns)|Aw. What a missed opportunity!
-# - (The SPEAKER grins and reaches for her satchel)|Well, too bad--
+# - (The SPEAKER grins and reaches for ${Etheir} satchel)|Well, too bad--
 # - (The SPEAKER grins)|But I've already brought so much rope with me~
 # - (The SPEAKER frowns)|Suit yourself.
 # - (The SPEAKER smiles)|Good ${Psub}~
@@ -14853,12 +14853,12 @@
 
 
 
-# - (The SPEAKER perks her ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
+# - (The SPEAKER perks ${Etheir} ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
 # - (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
 # - (The SPEAKER gets you suited up)|There you go! Now go be a good ${Psub}!
 # - (The SPEAKER scoffs)|That's what they all say.
 # - (The SPEAKER frowns)|What a shame.
-# - (The SPEAKER sneakily reaches for her baton)|You'll love it if you try it!
+# - (The SPEAKER sneakily reaches for ${Etheir} baton)|You'll love it if you try it!
 # - (The SPEAKER grins)|I promise you it's a good deal~
 # - (The SPEAKER frowns)|Fine. I'll look for other candidates.
 # - (The SPEAKER smiles)|That's right. Your name, please?
@@ -14919,7 +14919,7 @@
 # :: rOfferMaid
 # :: rOfferWitch
 # :: rOfferTemp
-# - (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
+# - (The SPEAKER smiles briefly before clearing ${Etheir} throat)|Fantastic!|I have your uniform right here...
 # :: rOfferMaidYes
 # :: rOfferWitchYes
 # :: rOfferTempYes
@@ -14927,7 +14927,7 @@
 # :: rOfferMaidYes_Yes
 # :: rOfferWitchYes_Yes
 # :: rOfferTempYes_Yes
-# - (The SPEAKER tilts her head and shrugs)|We are always prepared...
+# - (The SPEAKER tilts ${Etheir} head and shrugs)|We are always prepared...
 # :: rOfferMaidYes_No
 # :: rOfferWitchYes_No
 # :: rOfferTempYes_No
@@ -14953,7 +14953,7 @@
 # :: rOfferMaidForce_Yes
 # :: rOfferWitchForce_Yes
 # :: rOfferTempForce_Yes
-# - (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|Consider this a warning from my mistress~
+# - (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and lock${Es} it tight...)|Consider this a warning from my mistress~
 
 
 # - Gladly!
@@ -14970,7 +14970,7 @@
 
 
 
-# - (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|You'll require additional training, I suppose...
+# - (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and lock${Es} it tight...)|You'll require additional training, I suppose...
 # :: rOfferWitchForce_Failure
 # :: rOfferTempForce_Failure
 
@@ -14981,7 +14981,7 @@
 
 
 
-# - (The SPEAKER perks her ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
+# - (The SPEAKER perks ${Etheir} ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
 # - (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to other kitties.|Also we own you now.
 # - (The SPEAKER jumps happily)|Wonderful! Here's your collar!
 # - (The SPEAKER whimpers and looks at you)|How mean!
@@ -15010,10 +15010,10 @@
 # - (The SPEAKER smiles briefly)|You have an opportunity to model for me!|I need someone to wear all of my wonderful inventions!
 # - (The SPEAKER laces you up in the tight fabric...)|(You hear the click of a few locks going on...)|Oh my goodness... So pretty!|You'll make a fine assistant!
 # - (The SPEAKER frowns)|Aw...
-# - (The SPEAKER clenches her fist to the ceiling)|Nooooo!!!
+# - (The SPEAKER clenches ${Etheir} fist to the ceiling)|Nooooo!!!
 # - (The SPEAKER grins and pulls out a frilly dress)|Don't knock it till you try it!|Trust me, it'll be fun!
-# - (The SPEAKER furrows her brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you...
-# - (The SPEAKER folds her arms as ribbons rise up around her)|Suit yourself, hehe~
+# - (The SPEAKER furrows ${Etheir} brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you...
+# - (The SPEAKER folds ${Etheir} arms as ribbons rise up around ${Ethem})|Suit yourself, hehe~
 # - (The SPEAKER smiles)|Yes! Yes! Wonderful!
 # - (Magical clothes rise out of the ground without warning and engulf you)|Suit yourself!|(The SPEAKER giggles)
 
@@ -15037,7 +15037,7 @@
 # - (The SPEAKER looks frustrated)|I'm not... my work is not crazy!|We seek only knowledge!
 # - (The SPEAKER frowns)|Time for a test run!
 # - (The SPEAKER looks happy again)|Thank you! I'm super grateful!
-# - (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
+# - (The SPEAKER tilts ${Etheir} head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
 
 # - ...Hello?
 # - You guys are crazy.
@@ -15057,13 +15057,13 @@
 # - (The SPEAKER greets you)|Normally we don't meddle in mortal affairs.|But you, Outsider, are different.|Let's have a conversation.
 # - (The SPEAKER smiles warmly)|Outsiders have a lower rank in our society.|But it is a rank all the same.|You will be above your mortal peers.|What do you say?
 # - (The SPEAKER clasps some 'jewelry' around your limbs)|You look beautiful, my dear.|I will leave you to your own affairs until we meet again.
-# - (The SPEAKER turns her head away)|Hmph. I offer you a bargain and you refuse.
-# - (The SPEAKER turns her head away)|Hmph. As expected.
-# - (The SPEAKER folds her arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild.
+# - (The SPEAKER turns ${Etheir} head away)|Hmph. I offer you a bargain and you refuse.
+# - (The SPEAKER turns ${Etheir} head away)|Hmph. As expected.
+# - (The SPEAKER folds ${Etheir} arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild.
 # - (The SPEAKER frowns)|Hardly slavery!|A mere slave would not be allowed to even set foot in our society.
 # - (The SPEAKER frowns)|We will meet again.
 # - (The SPEAKER nods and smiles)|(${EThey} decorate${Es} your body with 'jewelry')|I am glad you had a change of heart.
-# - (The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur.
+# - (The SPEAKER scoffs)|(${ETheir} magic suddenly binds you tightly in glowing ropes)|Amateur.
 
 # - I'm interested. (Talk with her)
 
@@ -15080,15 +15080,15 @@
 
 # - (The SPEAKER smiles at you)|Mortal.
 # - (The SPEAKER points to the ground)|Kneel before me and accept your collar.
-# - (The SPEAKER snaps her fingers)|(A collar of cold black metal materializes around your neck)|A girl who knows her place! Wonderful...
+# - (The SPEAKER snaps ${Etheir} fingers)|(A collar of cold black metal materializes around your neck)|A ${Psub} who knows ${Ptheir} place! Wonderful...
 # - (The SPEAKER scoffs)|Hmmph. Mortals...
 # :: rOfferElementalYes_No
 # :: rOfferElementalNo
-# - (The SPEAKER folds her arms)|Well, look who doesn't know her place~
-# - (The SPEAKER folds her arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that.
+# - (The SPEAKER folds ${Etheir} arms)|Well, look who doesn't know ${Ptheir} place~
+# - (The SPEAKER folds ${Etheir} arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that.
 # - (The SPEAKER's eyes begin to glow)|Looks like we'll do this the fun way!
 # - (The SPEAKER smiles)|Wonderful~|Now come along, my pet!
-# - (The SPEAKER scoffs and snaps her fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?
+# - (The SPEAKER scoffs and snaps ${Etheir} fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?
 
 # - Yes?
 # - I don't talk to monsters!
@@ -15113,9 +15113,9 @@
 # - (The SPEAKER nods)|Fair enough. Guild work is not for everyone.
 # - (The SPEAKER nods)|Very well, then I won't bother you.
 # - (The SPEAKER looks dubious)|You know, there's quite a bounty on your head.|I'm sure we could do something about it.
-# - (The SPEAKER tilts her head)|Haha, very funny.|We both know that you're not one of those... right?
+# - (The SPEAKER tilts ${Etheir} head)|Haha, very funny.|We both know that you're not one of those... right?
 # - (The SPEAKER frowns and readies for battle)|My instincts were right.
-# - (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off her hands)|We'll have a talk when you get out of that, okay?
+# - (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off ${Etheir} hands)|We'll have a talk when you get out of that, okay?
 
 # - I have no interest in joining the guild.
 
@@ -15159,16 +15159,16 @@
 
 
 # - (The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!
-# - (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
+# - (The SPEAKER clears ${Etheir} throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 # - (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 # :: rOfferDragonheartYes_Yes
 # :: rOfferBanditYes_Yes
-# - (The SPEAKER tilts her head and shrugs)|Ah well. 
+# - (The SPEAKER tilts ${Etheir} head and shrugs)|Ah well. 
 # :: rOfferDragonheartYes_No
 # :: rOfferBanditYes_No
 # - (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 # - (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
-# - (The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
+# - (The SPEAKER frowns and cracks ${Etheir} knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
 # - (The SPEAKER giggles)|Hehe, just messin' with ya.|Anyway, welcome to the sisterhood!
 # - (The SPEAKER grabs you and ties you up)|You won't be making trouble like that any time soon.
 
@@ -15190,10 +15190,10 @@
 
 
 # - (The SPEAKER waves and calls you over)|Looks like you've made a name for yourself.|What do you say to a little agreement?
-# - (The SPEAKER clears her throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
-# - (The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~
-# - (The SPEAKER grins)|I like your spunk, girl.|But you're kidding, right?
-# - (The SPEAKER raises her fists and smiles)|You're on!
+# - (The SPEAKER clears ${Etheir} throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
+# - (The SPEAKER frowns)|Criminals? ${PDim}, we ARE the law around these parts~
+# - (The SPEAKER grins)|I like your spunk, ${Pdim}.|But you're kidding, right?
+# - (The SPEAKER raises ${Etheir} fists and smiles)|You're on!
 # - (The SPEAKER chuckles)|Here's a toast to a new partnership!
 # - (The SPEAKER catches you and trusses you up)|Maybe we'll just have to find you an owner, then!|Hehe.
 
@@ -15251,7 +15251,7 @@
 # - (The SPEAKER blushes)|Well...|I was told we would make changes to your academic record,|should you refuse...
 # - (The SPEAKER frowns)|They told me to make sure you sign...|by any means necessary!
 # - (The SPEAKER nods and smiles)|Thank you so much!|I don't know what I would have done if you said no...
-# - (The SPEAKER frowns and waves her wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
+# - (The SPEAKER frowns and waves ${Etheir} wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
 
 # - Thank you for delivering it. (Read it)
 # - (Read the letter)
@@ -15276,11 +15276,11 @@
 
 
 # - (The SPEAKER waves)|Greetings,|I manufacture all sorts of weapons.|Would you like to buy some?
-# - (The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
+# - (The SPEAKER drops ${Etheir} hammer and cracks ${Etheir} knuckles)|Put em up!
 # :: rBlacksmithShopAttack
 # :: rArmorerShopAttack
 # - (The SPEAKER looks at you.)|But you already have one?
-# - (The SPEAKER folds her arms)|I don't do charity, ma'am.
+# - (The SPEAKER folds ${Etheir} arms)|I don't do charity, ma'am.
 # - (The SPEAKER smirks)|Another adventurer found this lying around.|I wonder who it's for~
 # - (The SPEAKER smiles)|Now don't be up to no good~|Or else I'll have to put you in cuffs...
 # - (The SPEAKER nods)|A versatile weapon. One of my favorites.
@@ -15292,7 +15292,7 @@
 
 # - (The SPEAKER waves)|Hi.|I make armor. Only the finest.|I don't sell it cheap, unlike my twin.
 # - (The SPEAKER looks at you.)|Do you have a dealer's license?
-# - (The SPEAKER folds her arms)|I don't do charity, girl.
+# - (The SPEAKER folds ${Etheir} arms)|I don't do charity, ${Pdim}.
 # - (The SPEAKER nods)|The most high-impact of sports bras.
 # - (The SPEAKER nods)|These aren't for hiking, just so you know.
 # - (The SPEAKER nods)|I've been thinking about making a lockable version...
@@ -15305,7 +15305,7 @@
 # :: rArmorerShopTrapBra
 
 # - (The SPEAKER waves)|Hello miss!|What brings you here today?
-# - (The SPEAKER folds her arms)|That's not very nice!
+# - (The SPEAKER folds ${Etheir} arms)|That's not very nice!
 # - (The SPEAKER looks at you and smiles.)|Don't you already have one?
 # - (The SPEAKER folds her arms)|I don't do charity, miss.
 # - (The SPEAKER nods)|Could use a higher heel...
@@ -15321,7 +15321,7 @@
 # - (The SPEAKER whispers in a hushed tone)|Welcome.|I'm not supposed to be here, so|if you don't want to do business, get out.|I only sell in packs of 10, by the way.
 # - (The SPEAKER tries to get away)|Damn!
 # - (The SPEAKER looks you over and shrugs)|Don't joke around.
-# - (The SPEAKER folds her arms)|Don't have money? Better go find some.
+# - (The SPEAKER folds ${Etheir} arms)|Don't have money? Better go find some.
 # - (The SPEAKER produces a bag of stuffings)|Quite the staple.
 # - (The SPEAKER produces a bundle of rope)|Aren't you quite the artist.|That was rhetorical.
 # - (The SPEAKER produces some bondage tape)|It only sticks to itself, doesn't leave residue.|Gotta be responsible, you know?
@@ -15335,7 +15335,7 @@
 
 
 # - (The SPEAKER rattles as ${Ethey} wave${Es})|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
-# - (The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
+# - (The SPEAKER cracks ${Etheir} exposed knuckles)|So you've seen through my disguise...
 # - (The SPEAKER looks at you.)|Yours is just fine, dear.
 # - (The SPEAKER chuckles)|You don't have enough gold for that, dear.|Try coming back after a good round of looting!
 # - (The SPEAKER nods)|My great grandmother used to wear these.
@@ -15347,7 +15347,7 @@
 # - (Attack the SPEAKER?)
 # - (Buy ITM# for IC# gp) (Owned: AMNT#)
 # - (The SPEAKER sells you the item)
-# - (The SPEAKER shakes her head)|I think you'd be better off without that~
+# - (The SPEAKER shakes ${Etheir} head)|I think you'd be better off without that~
 # - (The SPEAKER looks embarassed)|I can't sell you that, miss...
 # - (The SPEAKER blushes)|Actually, I was saving that for myself...
 # - (The SPEAKER grins)|Good ${Psub}s don't need one of those~
@@ -15385,7 +15385,7 @@
 # - (The SPEAKER doesn't look surprised)|Then let us have a battle of wits!
 # - (The SPEAKER thanks you)|A kind offering! You have my thanks.
 # - (The SPEAKER thanks you)|A magnificent offering! You have my thanks.
-# - (The SPEAKER tilts her head)|...where did you get this?
+# - (The SPEAKER tilts ${Etheir} head)|...where did you get this?
 # - (The SPEAKER thanks you)|A fine trinket!|I will enjoy meditating upon it.
 # - (The SPEAKER thanks you)|I sense its flowing essence.|You have my thanks.
 # - (The SPEAKER thanks you)|I can feel a great sadness emanating from it.|It calls for warmth.
@@ -15412,13 +15412,13 @@
 # - (The SPEAKER smiles)|Elemental magic, interesting stuff.
 # :: rScrollPlusSellEarthRune
 # :: rScrollPlusSellIceRune
-# - (The SPEAKER tilts her head)|Why is it wet?
+# - (The SPEAKER tilts ${Etheir} head)|Why is it wet?
 # - (The SPEAKER smiles)|Gladly, this will be useful to my studies.
 # - (The SPEAKER smiles)|My legs don't carry me like they used to~
 # - (The SPEAKER smiles)|Always good to have somebody to talk to.
 # - (The SPEAKER giggles)|Living dangerously, I see~
 
-# - (The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?
+# - (The SPEAKER approaches you with an offer)|Hey ${Pdim}~|You seem like the explorer type.|Happen to have any good finds?
 # - (The SPEAKER frowns)|Well then.
 # - (The SPEAKER grins)|Are you willing to part with this?
 # - (The SPEAKER smiles)|Aha!|Fantastic.
@@ -15437,8 +15437,8 @@
 # - (The SPEAKER bows)|A tool of the trade.
 # - (The SPEAKER bows)|A most valuable find.
 
-# - (The SPEAKER tilts her shades)|I like to think of myself as a dealer in quality tools.
-# - (The SPEAKER reaches for her hip)|I'd think twice if I were you...
+# - (The SPEAKER tilts ${Etheir} shades)|I like to think of myself as a dealer in quality tools.
+# - (The SPEAKER reaches for ${Etheir} hip)|I'd think twice if I were you...
 # - (The SPEAKER smiles)|Nevermere keeps a tight grip on their blueprints.|Thank you.
 # :: rGunSellBlaster
 # :: rGunSellEscortDrone
@@ -15448,12 +15448,12 @@
 # - (The SPEAKER nods)|Yeah... that'll do.
 
 # - (The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnance in order to...|...add to my collection.|Anyway, got any bombs?
-# - (The SPEAKER reaches for her backpack)|I'll blow you away!
+# - (The SPEAKER reaches for ${Etheir} backpack)|I'll blow you away!
 # - (The SPEAKER shrugs)|Cute fireworks, I suppose...
 # :: rBombSellSmokeBomb
 # :: rBombSellFlashBomb
 # - (The SPEAKER giggles)|That's what I'm talking about!
-# - (The SPEAKER rubs her hands together)|Excellent...
+# - (The SPEAKER rubs ${Etheir} hands together)|Excellent...
 # - (The SPEAKER smiles)|Yes! I can make more bombs!
 
 # - (The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my frift.
@@ -15468,7 +15468,7 @@
 # - (The SPEAKER smiles)|You can never be too safe.
 
 # - (A distracted SPEAKER munches on a cookie)
-# - (The SPEAKER continues eating her snack)
+# - (The SPEAKER continues eating ${Etheir} snack)
 # - (The SPEAKER plucks the cookie out of your hand)|My favorite!
 # - (The SPEAKER eats the brownies slowly, savoring every bite)|Kind of dense, but really good!
 # - (The SPEAKER takes a bite out of the donut)|A bit heavy on the sprinkles...
@@ -15556,8 +15556,8 @@
 # :: dGhostNegotiatePossess_Cancel
 # :: dGhostNegotiatePossessPleasure_Cancel
 
-# - You've made a deal... your freedom now in exchange for your freedom later...
-# - You've made a deal, which lurks deep inside you~
+# - ${Youve} made a deal... ${your} freedom now in exchange for ${your} freedom later...
+# - ${Youve} made a deal, which lurks deep inside ${youObj}~
 
 
 
@@ -15599,7 +15599,7 @@
 # - (Swap with all units)
 # - (Push this unit)
 # - (Push all units)
-# - (Confirm? You will swap if you click on her, for a few turns)
+# - (Confirm? You will swap if you click on ${Ethem}, for a few turns)
 
 # - (Stop following me)
 # :: dGenericAllyStopFollowingMe
@@ -15729,14 +15729,14 @@
 # - (The SPEAKER nervously smiles)|H-how'd you know?
 # - (The SPEAKER smiles)|Indeed I am... Won't you assist me?
 # - (The SPEAKER wiggles excitedly)|Y-yes miss!
-# - (The SPEAKER shakes her head while blushing)|W-what makes you think that?
+# - (The SPEAKER shakes ${Etheir} head while blushing)|W-what makes you think that?
 # - (The SPEAKER computes something)|Error...
 # - (The SPEAKER nods)|Mmmph!
 # - (Give her release with a magic wand)
 # - (Set her toys to high for a while)
 # - (Cuddle with her for 2 turns)
 # - (The SPEAKER trembles with pleasure)
-# - (The SPEAKER struggles to let go due to her chastity belt)
+# - (The SPEAKER struggles to let go due to ${Etheir} chastity belt)
 
 
 
@@ -15842,7 +15842,7 @@
 # - (Growl at ${Ethem})
 # :: dFuuka_AggressiveGag
 # :: dTheWarden_AggressiveGag
-# - (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
+# - (${EThey} smile${Es})|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
 # - What kind of name is that?
 # - (SPEAKER frowns)|It means Windsong!|I bet yours isn't anywhere nearly as cool.
 # - (SPEAKER looks enraged)|Because names and meanings are different things!|My name uses the script from the Old Civilization!|You're just a poser!
@@ -15858,9 +15858,9 @@
 # - Mmmmm... (Blush)
 # :: dFuuka_DefensiveGag
 # :: dTheWarden_DefensiveGag
-# - (She grins)|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though.
+# - (${EThey} grin${Es})|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though.
 # - Reincarnated ones?
-# - (SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue.
+# - (SPEAKER tilts ${Etheir} head)|I believe the term is 'Zombie' in the common tongue.
 # - (SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually.
 # - How do they get reincarnated?
 # - (SPEAKER enjoys the discussion)|No, they're people!|People who died long ago.|Now they live a new life, safeguarded by my Resurrection Arts!
@@ -15875,7 +15875,7 @@
 # - Can you resurrect my back? It kind of hurts right now...
 # - (SPEAKER smiles)|Those latex-clad idiots don't understand a thing.|Science can only get you so far!|Worship is where it's at!
 # - The Alchemists are always looking for a youth potion.
-# - (SPEAKER folds her arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!
+# - (SPEAKER folds ${Etheir} arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!
 # - Do you know what's on the next floor?
 # - (SPEAKER blushes)|Nope, nothing at all!|In fact, whatever it is, you won't find it down here!|Now, would you like to become my pet?
 # - Do you know anything about the Old Civilization?
@@ -15905,22 +15905,22 @@
 # :: dTheWardenDom_Brat_ProceedGag
 # - Don't mess with me, girl.
 # - Mmpphgh? (Pout at her)
-# - (She smirks)|So you're that kind of visitor, huh?
+# - (${EThey} smirk${Es})|So you're that kind of visitor, huh?
 # - That's right. How powerful are you?
-# - (She cracks her knuckles)|I have been practicing the resurrection arts for a thousand years.
-# - (She smiles)|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them.
+# - (${EThey} crack${Es} ${Etheir} knuckles)|I have been practicing the resurrection arts for a thousand years.
+# - (${EThey} smile${Es})|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them.
 # - What the heck are 'Resurrection Arts'?
 # - It's time for a true display of skill!
 # - Hmmph. (Look away)
-# - (She grins)|We'll wipe that pout off your face soon enough...
-# - (She frowns)|Well, you will soon.
+# - (${EThey} grin${Es})|We'll wipe that pout off your face soon enough...
+# - (${EThey} frown${Es})|Well, you will soon.
 # - Pfff. Never heard of it.
 # - I bet I could do better.
 # - Why does that matter to you?
 # - (Stare at her silently, maintaining your posture)
-# - (She grins)|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong.
+# - (${EThey} grin${Es})|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong.
 # - By what authority?
-# - (SPEAKER tilts her head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries.
+# - (SPEAKER tilts ${Etheir} head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries.
 # - (SPEAKER blushes)|Umm... That's because...|Oh shut up!
 # - You don't sound too confident.
 # - Who are you anyway?
@@ -15941,7 +15941,7 @@
 # - Mmmpphh~ (Moan and wiggle seductively)
 # :: dFuuka_SubGag
 # :: dTheWarden_SubGag
-# - (She grins)|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!
+# - (${EThey} grin${Es})|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!
 # - A pet? What kind?
 # - (SPEAKER hops up and down excitedly)|Oh I've got dresses!|And all sorts of fun gear!|Maybe even this huge gag for you to chew on!
 # - (SPEAKER grins)|Having second thoughts?
@@ -15968,7 +15968,7 @@
 # :: dDollmaker_Attack
 # :: dTheWarden_Attack
 
-# - (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
+# - (SPEAKER clears ${Etheir} throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
 # - I do what I want.
 # - (Glare at her and scoff)
 # - (SPEAKER makes a big grin)|I take that you wish to challenge me?|Very well!|Come at me!
@@ -15996,10 +15996,10 @@
 # :: dTheWardenFight_Fight2Gag
 # - I suppose we fight...
 
-# - (SPEAKER smiles as she stands over you)|Well well. Look who won.
+# - (SPEAKER smiles as ${Ethey} stand${Es} over you)|Well well. Look who won.
 # - (SPEAKER nods and giggles)|Absolutely.|Allow me to present to you, my prized pet collar!|I save it only for my favorite pets.|That's right! You're my favorite pet now~
 # - (SPEAKER giggles)|You're not in a position to resist.|Now then, where did I put that collar...
-# - (SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!
+# - (SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(${EThey} brandish${Ees} a collar) Now including you!
 # - What's this weird magic?
 # - You beat me fair and square.
 # - Mmmph. (Submit)
@@ -16020,14 +16020,14 @@
 # - (Accept the collar begrudgingly)
 # :: dFuukaLose_Continue3
 # :: dTheWardenLose_Continue3
-# - (SPEAKER presents you with your collar...)|(She locks it around your neck)|Now you're my pretty toy!
+# - (SPEAKER presents you with your collar...)|(${EThey} lock${Es} it around your neck)|Now you're my pretty toy!
 
-# - (SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!
+# - (SPEAKER puts up a wall of talismans to regain ${Etheir} strength)|I'm... I'm not finished yet!
 
 # - (SPEAKER is out of breath)|I... can't... believe... it...|She drops her keys...
 # - (SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then...
 # - (Submit to her anyway) (Gain a special collar)
-# - (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
+# - (SPEAKER resists but ultimately you force a gag into ${Etheir} mouth)|MMMMMPH!
 # - (Gag ${Ethem})
 # :: dFuukaWin_Gag
 # :: dDollmakerWin_Gag
@@ -16074,7 +16074,7 @@
 # - (Sell Items)
 # - (Sell Whole Stacks of Items)
 # - (Sell from your storage)
-# - Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)
+# - Daww! What a cutie!|(${EThey} smile${Es} and pat${Es} your head gently)
 
 # - Do you have anything for sale?
 # - (Look around for items to buy)
@@ -16083,7 +16083,7 @@
 # - (Return)
 
 
-# - (The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
+# - (The SPEAKER brings you safely back to ${Etheir} shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
 
 # - Right! Here's RESCUECOST gp.
 # :: dShopkeeperTeleport_Pay
@@ -16101,9 +16101,9 @@
 # - (Shake your head regrettably.)
 # :: dShopkeeperTeleport_TabGag
 # :: dShopkeeperOfferHelp_TabGag
-# - (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
-# - (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
-# - (The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!
+# - (The SPEAKER rubs ${Etheir} chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
+# - (The SPEAKER rubs ${Etheir} chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
+# - (The SPEAKER folds ${Etheir} arms)|Come on now, I can hear the gold jingling in your pocket!
 # :: rShopkeeperTeleportTabNo
 # :: rShopkeeperOfferHelpTabNo
 
@@ -16113,10 +16113,10 @@
 # - (Be insistent)
 # :: dShopkeeperTeleport_TabRetryGag
 # :: dShopkeeperOfferHelp_TabRetryGag
-# - (The SPEAKER rubs her chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
+# - (The SPEAKER rubs ${Etheir} chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
 # - (The SPEAKER sighs)|Fine, I believe you.|You better believe I won't forget, though!
 
-# - (The SPEAKER folds her arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
+# - (The SPEAKER folds ${Etheir} arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
 
 # - (Help her test cursed armors)
 # :: dShopkeeperTeleportDebt_Armor
@@ -16146,7 +16146,7 @@
 # - (The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
 # :: rShopkeeperTeleportDebt_Catsuit
 # :: rShopkeeperOfferHelpDebt_Catsuit
-# - (The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~
+# - (The SPEAKER folds ${Etheir} arms and nods)|Good ${Psub}! I knew you would come clean~
 # :: rShopkeeperTeleportDebt_Pay
 # :: rShopkeeperOfferHelpDebt_Pay
 
@@ -16169,10 +16169,10 @@
 # - Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(${EThey} place${Es} the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
 # :: rShopkeeperTeleportDebt_Restraint_Yes
 # :: rShopkeeperOfferHelpDebt_Restraint_Yes
-# - Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
+# - Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckle${Es} the collar on)|Now go out there and find me some treasure~
 # :: rShopkeeperTeleportDebt_Collar_Yes
 # :: rShopkeeperOfferHelpDebt_Collar_Yes
-# - You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
+# - You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dust${Es} it off, and help${Es} you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
 # :: rShopkeeperTeleportDebt_Catsuit_Yes
 # :: rShopkeeperOfferHelpDebt_Catsuit_Yes
 
@@ -16199,7 +16199,7 @@
 # :: rShopkeeperOfferHelpTabYes
 # - (The SPEAKER folds her arms)|Business is business, miss~
 
-# - (The SPEAKER rubs her chin)|No can do.|Rules are rules~
+# - (The SPEAKER rubs ${Etheir} chin)|No can do.|Rules are rules~
 # - (The SPEAKER sighs)|Business is business, miss~
 
 # - (The SPEAKER reluctantly frees you)|...Fine, I'll cut you a deal.|You help me, I help you. Fair?
@@ -16255,8 +16255,8 @@
 # - You're not feeling it...
 # - You close your eyes but the vibrations keep you from dozing off...
 
-# - (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through her gag)
-# - (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into her gag)
+# - (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through ${Etheir} gag)
+# - (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into ${Etheir} gag)
 # - (SPEAKER looks grateful)|Thank you so much|I shall join your party.
 # - (SPEAKER looks grateful)|Thank you so much miss!|I owe you everything.
 # - (SPEAKER groans and wriggles around uselessly)
@@ -16264,7 +16264,7 @@
 # - Untie her
 # - Make sure ${Ethey} ${Eis} tight and secure
 
-# - (A SPEAKER bumps into you while immersed in her thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
+# - (A SPEAKER bumps into you while immersed in ${Etheir} thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
 # - (The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!
 # - (The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(${EThey} snap${Es} a photo of you using a magic crystal)
 # - (The SPEAKER giggles)|I never said I'd take it off, did I?
@@ -16292,13 +16292,13 @@
 # - Give her a Scroll of Purity
 
 # - (A SPEAKER looks distraught)|Well met, adventurer!|We have a problem...
-# - (The SPEAKER folds her arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice.
+# - (The SPEAKER folds ${Etheir} arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice.
 
 # - (A SPEAKER scoffs in your direction)|Well? You lookin' for work or no?
 # - (The SPEAKER grins)|A bunch of delinquents stormed out recently.|They're looking for a way out of their belts.|Someone oughta show em their place,|if you catch what I'm saying.
 
-# - (A SPEAKER approaches you in your cell)|Since you've been a bad girl,|we're taking you to the high-security prison.
-# - (The SPEAKER folds her arms)|Want to or not, you're going.
+# - (A SPEAKER approaches you in your cell)|Since you've been a bad ${Psub},|we're taking you to the high-security prison.
+# - (The SPEAKER folds ${Etheir} arms)|Want to or not, you're going.
 # - (Resist)
 # :: dJailerHiSec_Resist
 # :: dCyberHiSec_Resist
@@ -16307,7 +16307,7 @@
 # :: dCyberHiSec_Submit
 
 # - (A SPEAKER approaches you in your cell)|Looks like you're not in the System.|I'm going to have to take you to sorting.
-# - (The SPEAKER grins as her systems glow)|I love my job sometimes~
+# - (The SPEAKER grins as ${Etheir} systems glow)|I love my job sometimes~
 # - (The SPEAKER grins)|It means you'll get nicely packaged,|so that we can sort you through the System.
 # - W-what does that entail?
 # - (The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~
@@ -16332,7 +16332,7 @@
 # - (You anger the SPEAKER. ${EThey} gag${Es} you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?
 # - The facility is in ruins! This is pointless!
 
-# - (A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
+# - (A SPEAKER crosses ${Etheir} arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
 # - (The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out.
 
 # - (The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)
@@ -16343,7 +16343,7 @@
 # :: rPrisonerJailUnlockHandsBound
 # :: rPrisonerJailOwnUnlockHandsBound
 # :: rPrisonerLatexUnlockHandsBound
-# - (You unlock her, fumbling around for a while with your bound hands)
+# - (You unlock ${Ethem}, fumbling around for a while with your bound hands)
 # :: rPrisonerJailUnlockSlow
 # :: rPrisonerJailOwnUnlockSlow
 # - (You unlock the SPEAKER)|Thank you!|Let's get out of here!
@@ -16356,7 +16356,7 @@
 # - (You unlock your SPEAKER)|Hmmpf... are you letting me go?
 # - (You unlock your SPEAKER)|Oh? So soon?
 # - (You unlock your SPEAKER)|Time to get to work~!
-# - (You unlock your SPEAKER)|Mmmmph!|(She want${Es} to keep her gag...)
+# - (You unlock your SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
 # - (You unlock the SPEAKER)|Mmmmph!|(She want${Es} to keep her gag...)
 # :: rPrisonerJailUnlockGagged
 # :: rPrisonerJailOwnUnlockGagged
@@ -16380,7 +16380,7 @@
 # - (After a while, you free the SPEAKER)|Thank you miss!|Your lockpicking skills are impeccable!
 # - (After a while, you free the SPEAKER)|Mmph, that took forever~
 # - (After a while, you free the SPEAKER)|Are you supposed to be here?|(${EThey} giggle${Es})
-# - (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} her head when you go for her gag...)
+# - (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} ${Etheir} head when you go for ${Etheir} gag...)
 # :: rPrisonerJailPickGagged
 # :: rPrisonerJailOwnPickGagged
 # :: rPrisonerLatexCutGagged
@@ -16394,10 +16394,10 @@
 # - (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
 # :: rPrisonerJailWord
 # :: rPrisonerJailOwnWord
-# - (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} her gag back on...)
+# - (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)
 # :: rPrisonerJailWordGagged
 # :: rPrisonerJailOwnWordGagged
-# - (The SPEAKER is locked in high-security manacles.|The safety pins have been triggered, making it impossible to help her without a key.)
+# - (The SPEAKER is locked in high-security manacles.|The safety pins have been triggered, making it impossible to help ${Ethem} without a key.)
 
 # - Use a key to unlock her
 # :: dPrisonerJail_Unlock
@@ -16408,15 +16408,15 @@
 # :: dPrisonerJailJammedRecent_Apologize
 # :: dPrisonerJailOwnJammedRecent_Apologize
 
-# - (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} is bugged and needs your help to get out)
+# - (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} ${Eis} bugged and needs your help to get out)
 # - (Unlock her and file a bug report to Ada)
 
 
 # - (This SPEAKER is a sub, but not YOUR sub!)
 
 
-# - (The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)
-# - (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
+# - (The SPEAKER sits restrained by your own hand.|Only someone with keys can let ${Ethem} out.)
+# - (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help ${Ethem}.)
 
 # - Try to pick her restraints
 # - Return her to your collection
@@ -16458,7 +16458,7 @@
 # - (Put NME on the stand)
 # - (This is a piece of bondage furniture)
 # - (You lock yourself in the furniture!)
-# - (The SPEAKER slips out of your grip|before you can lock her in place!)
+# - (The SPEAKER slips out of your grip|before you can lock ${Ethem} in place!)
 # - (Display one of your prisoners)
 # - (Lock yourself inside)
 # - (Check the occupant)
@@ -16469,7 +16469,7 @@
 # - Stun or disable her first.
 # - Area isn't clear.
 # - (Secure NME into the furniture)
-# - (You lock her into the furniture so that ${Ethey} stay${Es} in place)
+# - (You lock ${Ethem} into the furniture so that ${Ethey} stay${Es} in place)
 
 
 # - FOODMSG|(It invites you to partake in its culinary delights)
@@ -16634,7 +16634,7 @@
 # - Feel free to try.
 # - Sounds fun... but I really need to get going.
 
-# - (The Dollmaker folds ${Etheir} arms as she walks over)|All tight and shiny!|You'll be my prized possession~
+# - (The Dollmaker folds ${Etheir} arms as ${Ethey} walk${Es} over)|All tight and shiny!|You'll be my prized possession~
 # - (The Dollmaker nods)|Already eager to obey!|So beautiful...
 # - (The Dollmaker chuckles)|Oh, but I already have~
 # - I have no choice but to submit.
@@ -16645,7 +16645,7 @@
 # - (The Dollmaker places ${Etheir} visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them.
 
 # - (The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower.
-# - (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as she storms toward you!)
+# - (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as ${Ethey} storm${Es} toward you!)
 
 # - (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)
 # - (SPEAKER looks confused)|What are you... Okay, you can have it...
@@ -16653,7 +16653,7 @@
 # :: rDollmakerWinAccept2
 # - (Wear a doll visor)
 # - (Wear a doll mask)
-# - (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and she starts mumbling angrily)
+# - (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and ${Ethey} start${Es} mumbling angrily)
 
 
 # - The Dollmaker calls in drone reinforcements!
@@ -30688,7 +30688,7 @@
 # - A decadent blend of butter and chocolate topped with fudge and baked to perfection.
 # - Restores 30% willpower. Takes a few turns to eat.
 
-# - A playful ghost now accompanies you on your journey.
+# - A playful ghost now accompanies ${youObj} on ${your} journey.
 # - The ghost haunting you decides to have a little fun! (+RestraintAdded)
 # - The ghost you made a deal with decides to have a little fun! (+RestraintAdded)
 # - The ghost you made a deal with decides to snap a ${LockType} lock to your ${Restraint}
@@ -31182,7 +31182,7 @@
 # - The stairs dissolve as you step onto them, pulling you with them to somewhere else.
 
 # - A dark energy enters your body... (DamageDealt)
-# - A dark energy lurks within you.
+# - A dark energy lurks within ${youObj}.
 # - You succumb to a dark desire... (+RestraintAdded)
 
 # - Observer's Gaze
@@ -31389,18 +31389,18 @@
 # - With the rush of pleasure, you feel your cursed restraints tighten and strengthen!
 
 # - Corruption: While in the shadows, you slowly gain corruption.
-# - Your willpower gain and struggle power is less effective due to your corruption.
+# - ${Your} willpower gain and struggle power is less effective due to ${your} corruption.
 
 # - Seduction: Gain distraction after taking damage.
 # - Taking damage fills your minds with cursed thoughts...
-# - Having taken damage, your distraction is increasing...
+# - Having taken damage, ${your} distraction is increasing...
 
 # - Punishment: When you defeat an enemy, you are stunned briefly and enemies are attracted.
 # - Dark Voice: You are supposed to be a slave!
 
 # - Submission: At 0 WP, you are restrained if you leave the presence of a hostile.
 # - Dark Voice: Kneel before your mistress.
-# - You must submit! Moving away from an enemy at 0 WP will bind you!
+# - ${You} must submit! Moving away from an enemy at 0 WP will bind ${youObj}!
 
 # - Denial: -10 WP when you try to Let Go. At 0 WP you cannot orgasm.
 # - Dark Voice: Not yet.
@@ -31586,7 +31586,7 @@
 # - Arcane Barrier
 # - When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 10% Max Mana.
 
-# - You sense that a high value target is near.
+# - ${You} sense${Ys} that a high value target is near.
 
 # - You push yourself beyond physical limits!
 # - You try to push yourself beyond your capabilities and falter...
@@ -31606,7 +31606,7 @@
 
 # - Akashic Conflux
 # - Costs 100 Arcane Energy and refunds 100 Mana. Bringing memories to life, you call upon your magical knowledge to ignore arm, leg, and verbal spell components for 3 turns.
-# - You can ignore Arm, Leg, and Verbal components!
+# - ${You} can ignore Arm, Leg, and Verbal components!
 # - Magical whisperings circle around you, enabling you to cast spells without components!
 # - You don't have enough Arcane Energy. You need AMNT.
 
@@ -31619,7 +31619,7 @@
 # - You are already full of chaotic energy!
 # - Chaotic energy overtakes you, crystallizing into physical form...
 
-# - Chaotic energy flows through you! You have a bad feeling about this...
+# - Chaotic energy flows through ${youObj}! ${You} ${Yhas} a bad feeling about this...
 
 
 # - You find a shimmering macaron.
@@ -31640,8 +31640,8 @@
 # - Select a restraint to remove the curse from
 # - You don't have any restraints that can be removed
 
-# - As you are low on mana, you are unable to store Arcane Energy.
-# - You are recharging your next mana cost reduction.
+# - As ${you} ${Yis} low on mana, ${you} ${Yis} unable to store Arcane Energy.
+# - ${You} ${Yis} recharging ${your} next mana cost reduction.
 
 
 
@@ -31718,7 +31718,7 @@
 # - A bubble of latex envelops you!
 # - A ball of latex surrounds you and inflates, sealing around your neck!
 # - A ball of latex envelops you!
-# - The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range.
+# - The latex around ${youObj} dampens ${your} attacks, reducing physical damage by 30% and lowering ${your} sight range.
 # :: KinkyDungeonBuffLatexBubble
 # :: KinkyDungeonBuffLatexBall
 
@@ -32023,9 +32023,9 @@
 # - Enchanted Bubble
 # - A bubble of magic water starts forming around you!
 # - The gap in the bubble closes, and you are fully sealed within the bubble!
-# - Magical water reduces your accuracy and slows you significantly!
-# - You attack twice!
-# - You gain a free move from Combat Maneuvers!
+# - Magical water reduces ${your} accuracy and slows ${youObj} significantly!
+# - ${You} attack${Ys} twice!
+# - ${You} gain${Ys} a free move from Combat Maneuvers!
 
 # - Access denied.
 # - Facility is under lockdown.
@@ -32117,7 +32117,7 @@
 # - But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
 # - Hundreds of years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
 
-# - An item has increased your spell damage!
+# - An item has increased ${your} spell damage!
 
 # - AMNT ice damage/turn vs. Frozen
 # - AMNT shadow bleed (10 turns)
@@ -32128,10 +32128,10 @@
 # - You were hit by one of Fuuka's talismans. Fuuka's magic begins sealing your power!
 # - You were hit by one of Fuuka's talismans. Fuuka's magic makes you sluggish!!
 # - You were hit by one of Fuuka's talismans. Fuuka's magic renders you helpless!!!
-# - You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
+# - ${You} ${Yhas} been hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting ${youObj}!
 
 # - Sealing Shadows
-# - Shadowy magic is restricting you!
+# - Shadowy magic is restricting ${youObj}!
 # - A powerful seal holds you in place temporarily!!!
 
 # - You lock yourself in magical locks!
@@ -32593,13 +32593,13 @@
 # - Your expertise and skill provides you with additional tool effectiveness! (+AMOUNT%)
 
 # - You raise your defences!
-# - Your defenses are raised!
+# - ${Your} defenses are raised!
 
 
 # - You don't have the will to break free.
 # - You don't have enough Battle Rhythm. You need 20.
 # - You channel your fighting spirit into your desire for freedom!
-# - Your struggle power is greatly increased!!!
+# - ${Your} struggle power is greatly increased!!!
 
 # - The teleportation partially succeeds due to an obstruction, placing you near the intended point.
 # - The teleportation fizzles due to obstruction.
@@ -32618,7 +32618,7 @@
 # - turns
 
 # - Your shield absorbed AMNT damage.
-# - You are currently shielded from damage and some spells.
+# - ${You} ${Yis} currently shielded from damage and some spells.
 # - No offhand weapon set. Activate the spell in your hotbar to set one.
 
 
@@ -32880,7 +32880,7 @@
 # - You are too distracted to form a mental barrier...
 # - You have the mental clarity but not the magical clarity! (not enough mana)
 
-# - You have formed a mental barrier...
+# - ${You} ${Yhas} formed a mental barrier...
 
 
 # - Desire Burst
@@ -33387,7 +33387,7 @@
 
 # - (The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not in my records...
 # - Cut to the chase. Do I have to fight you or not?
-# - (She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
+# - (${EThey} chuckle${Es})|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
 # - Quite a boast for someone who's about to lose.
 # - (SPEAKER grins)|I look forward to testing those claims~
 # - I defeated Fuuka. Now you're next!
@@ -33402,7 +33402,7 @@
 # - You will see soon enough.
 # - Indeed!
 # - What is this place?
-# - (She smiles)|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(She motions to the north)
+# - (${EThey} smile${Es})|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(${EThey} motion${Es} to the north)
 # - Tell me about your collection
 # - (SPEAKER smiles pleasantly)|Its a fitting reward, isn't it?|Long ago, this mountain was home to a vicious empire.|Machines went out to sea, bringing back countless prisoners.|As commander of the invasion, I earned this title!
 # - (SPEAKER grins)|When we stormed the prisons, we encountered many fierce defenders.|Many of them now reside in these halls, earning their rightful punishment.
@@ -33447,11 +33447,11 @@
 # - Mmpphgh? (Go to pass ${Ethem})
 # - (She smirks)|Not so fast, dear~|You'll have to wear a special collar to pass.
 # - I won't wear anyone's collar!
-# - (She smirks)|Tsk tsk. Then you won't pass.
-# - (She giggles)|How cute!|You're so used to yours that you forgot about it~
+# - (${EThey} smirk${Es})|Tsk tsk. Then you won't pass.
+# - (${EThey} giggle${Es})|How cute!|You're so used to yours that you forgot about it~
 # - Why don't you wear it yourself?
 # - Hmmph. (Scoff at ${Ethem})
-# - (She frowns)|Watch your tongue~
+# - (${EThey} frown${Es})|Watch your tongue~
 # - (She frowns)|I do not wear collars.
 # - You'd be better off wearing mine instead.
 # - You're missing out~
@@ -33471,7 +33471,7 @@
 # - Why don't I make you wear it?
 # - You can try~
 # - There must be a mistake. Sign me up!
-# - (She smiles)|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~
+# - (${EThey} smile${Es})|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~
 # - I am the strongest.
 # - (SPEAKER chuckles)|Then why don't I test your skills?
 # - (SPEAKER grins)|How about trial by combat?
@@ -33503,7 +33503,7 @@
 
 # - (SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~
 # - (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
-# - (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
+# - (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(${EThey} snap${Es} ${Etheir} fingers and conjure${Es} a glowing ring)
 # - (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)
 # - Was that magic?
 # - I've lost. Now what?
@@ -34240,7 +34240,7 @@
 # - Your latex layer adheres to latex, making struggling more difficult!
 # - The item sticks to your rubber layer, making it harder to pull off...
 # - The item hugs your layer tightly, adhering firmly!
-# - Your skin is covered in a layer of latex, making escape from cyber restraints harder!
+# - ${Your} skin is covered in a layer of latex, making escape from cyber restraints harder!
 
 # - Some Exclusions Apply
 # - Goddess shrines do not remove non-binding restraints such as harnesses and cuffs.
@@ -34265,8 +34265,8 @@
 # - After casting a DMG spell:
 # - Gain AMNT% DMG Damage for DRTN turns
 # - Gain AMNT DMG Resist for DRTN turns
-# - Your elemental damage is increased!
-# - Your elemental resistance is increased!
+# - ${Your} elemental damage is increased!
+# - ${Your} elemental resistance is increased!
 
 
 # - The overgrown monolith contains an ancient blessing.
@@ -34354,7 +34354,7 @@
 # - You pick up a leash.
 
 # - You are not in a condition to use a leash on ${Ethem}.
-# - She refuses to be leashed unless you tie ${Ethem} up!
+# - ${EThey} refuse${Es} to be leashed unless you tie ${Ethem} up!
 # - You attach a leash to ENMY.
 # - You remove your leash from ENMY.
 # - You let go of all leashes.
@@ -34390,7 +34390,7 @@
 # - While you have an evasion penalty, even clumsy enemies...
 # - ... will get an accuracy bonus against you in melee range.
 
-# - You are more likely to succumb to curses.
+# - ${You} ${Yis} more likely to succumb to curses.
 
 # - X Offset
 # - Y Offset
@@ -34683,8 +34683,8 @@
 
 # - [EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
 
-# - Phase Dance active. Your next move is instant.
-# - Combat Maneuver active. Your next move is instant.
+# - Phase Dance active. ${Your} next move is instant.
+# - Combat Maneuver active. ${Your} next move is instant.
 
 # - The furniture space is occupied
 # - Combat Maneuver: Your next move is instant.
@@ -35357,8 +35357,8 @@
 # - You don't have enough distraction.
 # - You zap your leasher!
 
-# - You are psychically connected!
-# - You've used Shock Collar recently and it costs more DP.
+# - ${You} ${Yis} psychically connected!
+# - ${Youve} used Shock Collar recently and it costs more DP.
 
 
 # - Essence Crystal
@@ -35374,7 +35374,7 @@
 
 # - Your distraction reaches a critical point! -100% miscast chance.
 # - While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
-# - -100% miscast chance, but casting spells can send you over the edge.
+# - -100% miscast chance, but casting spells can send ${youObj} over the edge.
 # - The psychic link conducts away some of the intensity...
 # - Your linked target lets go of ${Ethem}self, transmitting a wave of pleasure to yourself...
 
@@ -35413,7 +35413,7 @@
 # - (You cut ${Etheir} restraints, fumbling around for a while with your bound hands)
 # - (You don't have enough mana for Remove Slime)
 # - (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
-# - (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} locks ${Etheir} gag back on...)
+# - (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)
 
 # - Dissolve the latex with a SLVNT
 # - Cut ${Ethem} out with a sharp tool
@@ -35756,7 +35756,7 @@
 # - You transfer the remainder of your ${Item}'s curse to ${Target}.
 # - The curse will deal 25% damage as residual curse transfers.
 
-# - This is the total amount of Latex Kitty Curse you possess.
+# - This is the total amount of Latex Kitty Curse ${you} possess${Yes}.
 
 # - Dark
 

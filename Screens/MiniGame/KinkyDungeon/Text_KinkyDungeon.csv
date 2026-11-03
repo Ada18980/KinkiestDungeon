@@ -817,17 +817,17 @@ KinkyDungeonPlayerVibratedLocationMultiple,Everywhere!
 
 KinkyDungeonPlayerArmor,"Physical Armor: "
 KinkyDungeonPlayerSpellResist,"Magic Armor: "
-KinkyDungeonPlayerShadow,"In the Shadows: You are harder to see."
-KinkyDungeonPlayerSneak,"Invisible: You are very difficult to see."
-KinkyDungeonPlayerQuickness,"Quickness: Your next movement is so fast it doesn't advance a turn."
+KinkyDungeonPlayerShadow,"In the Shadows: ${You} ${Yis} harder to see."
+KinkyDungeonPlayerSneak,"Invisible: ${You} ${Yis} very difficult to see."
+KinkyDungeonPlayerQuickness,"Quickness: ${Your} next movement is so fast it doesn't advance a turn."
 KinkyDungeonPlayerReduction,"All Damage Reduction: "
-KinkyDungeonPlayerDamageResist,"You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier."
-KinkyDungeonPlayerDamageBuff,"You deal PERCENT more DAMAGETYPE damage."
-KinkyDungeonPlayerBindBuff,"Your bindings are PERCENT more effective."
-KinkyDungeonPlayerDamage,"Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA."
+KinkyDungeonPlayerDamageResist,"${You} take${Ys} PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier."
+KinkyDungeonPlayerDamageBuff,"${You} deal${Ys} PERCENT more DAMAGETYPE damage."
+KinkyDungeonPlayerBindBuff,"${Your} bindings are PERCENT more effective."
+KinkyDungeonPlayerDamage,"${Your} attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA."
 KinkyDungeonPlayerPlugged,"Plugged!"
 KinkyDungeonPlayerPluggedExtreme,"Plugged!!!"
-KinkyDungeonPlayerDenied,"Denied! You won't be getting off that easy~ (Denial Level: ${Denial}%)"
+KinkyDungeonPlayerDenied,"Denied! ${You} won't be getting off that easy~ (Denial Level: ${Denial}%)"
 KinkyDungeonPlayerVibrated0,"Teasing vibrations..."
 KinkyDungeonPlayerVibrated1,"Gentle vibrations..."
 KinkyDungeonPlayerVibrated2,"Mild vibrations..."
@@ -835,9 +835,9 @@ KinkyDungeonPlayerVibrated3,"Strong vibrations!"
 KinkyDungeonPlayerVibrated4,"Intense vibrations!!"
 KinkyDungeonPlayerVibrated5,"Torturous vibrations!!!"
 
-KDStatRestriction,Your restraints are restrictive! Struggling is less effective without help.
+KDStatRestriction,${Your} restraints are restrictive! Struggling is less effective without help.
 KDStatStun,"Movement is slowed this turn."
-KDStatBlind,"Your vision is impaired!"
+KDStatBlind,"${Your} vision is impaired!"
 KDStatArms,"Arms are bound!"
 KDStatHands,"Hands are useless!"
 KDStatHandsPartial,"Hands are impaired! Some tasks will be harder..."
@@ -846,52 +846,52 @@ KDStatSpeedSlightlySlow,"Slow Level 1: Movement slightly impaired."
 KDStatSpeedVerySlow,"Slow Level 3: Movement severely impaired!"
 KDStatSpeedNoSprint,"Slow Level 4+: Movement is almost impossible. Sprinting and hopping are disabled."
 KDStatSpeedImmobile,"Slow Level 10+: Immobilized!"
-KDStatFreeMouth,"Your mouth is free for potion-drinking and spellcasting activities."
-KDStatFreeEyes,"Your vision is clear."
-KDStatFreeHands,"Your hands are unobstructed."
-KDStatFreeArms,"Your arms are free to move as you please."
-KDStatFreeLegs,"Your legs are free and unimpeded."
-KDStatGag,"You are ${AMOUNT} gagged! Verbal miscast chance is increased and potions are less effective!"
-KDStatGagFull,"Your mouth is totally filled! You can't drink potions and can't cast verbal spells!"
+KDStatFreeMouth,"${Your} mouth is free for potion-drinking and spellcasting activities."
+KDStatFreeEyes,"${Your} vision is clear."
+KDStatFreeHands,"${Your} hands are unobstructed."
+KDStatFreeArms,"${Your} arms are free to move as ${you} please${Ys}."
+KDStatFreeLegs,"${Your} legs are free and unimpeded."
+KDStatGag,"${You} ${Yis} ${AMOUNT} gagged! Verbal miscast chance is increased and potions are less effective!"
+KDStatGagFull,"${Your} mouth is totally filled! ${You} can't drink potions and can't cast verbal spells!"
 
 
 
 KDBuffName_DollMirrorCurse,Doll Mirror's Curse
-KDBuffDesc_DollMirrorCurse,"A certain mirror has captivated you, and you can no longer stop looking..."
+KDBuffDesc_DollMirrorCurse,"A certain mirror has captivated ${youObj}, and ${you} can no longer stop looking..."
 KDBuffName_CorruptionStat,Corruption
-KDBuffDesc_CorruptionStat,You are more likely to succumb to curses.
+KDBuffDesc_CorruptionStat,${You} ${Yis} more likely to succumb to curses.
 KDBuffName_LatexIntegrationStat,Latex Integration
-KDBuffDesc_LatexIntegrationStat,"Your skin is covered in a layer of latex, making escape from cyber restraints harder!"
+KDBuffDesc_LatexIntegrationStat,"${Your} skin is covered in a layer of latex, making escape from cyber restraints harder!"
 KDBuffName_FriendlyFireStat,Party Submission
 KDBuffDesc_FriendlyFireStat,"Friendly fire is reduced by ${PowerInt}%"
 KDBuffName_ManaBurst,Mana Burst
-KDBuffDesc_ManaBurst,"-100% miscast chance, but casting spells can send you over the edge."
+KDBuffDesc_ManaBurst,"-100% miscast chance, but casting spells can send ${youObj} over the edge."
 KDBuffName_PsychicLink,Psychic Link
-KDBuffDesc_PsychicLink,You are psychically connected!
+KDBuffDesc_PsychicLink,${You} ${Yis} psychically connected!
 KDBuffName_ShockCollarCD,Shock Collar
-KDBuffDesc_ShockCollarCD,You've used Shock Collar recently and it costs more DP.
+KDBuffDesc_ShockCollarCD,${Youve} used Shock Collar recently and it costs more DP.
 KDBuffName_WardenOrb,Warden's Lockdown
-KDBuffDesc_WardenOrb,Marked for Collection. Getting hit by more orbs will put you on a stand. Reduces Bondage resist.
+KDBuffDesc_WardenOrb,Marked for Collection. Getting hit by more orbs will put ${youObj} on a stand. Reduces Bondage resist.
 KDBuffName_Quickness,Quickness
-KDBuffDesc_Quickness,Phase Dance active. Your next move is instant.
+KDBuffDesc_Quickness,Phase Dance active. ${Your} next move is instant.
 KDBuffName_CombatManeuverQuick,Combat Maneuver
-KDBuffDesc_CombatManeuverQuick,Combat Maneuver active. Your next move is instant.
+KDBuffDesc_CombatManeuverQuick,Combat Maneuver active. ${Your} next move is instant.
 KDBuffName_ElementalBuff,Elemental Charge
-KDBuffDesc_ElementalBuff,Your elemental damage is increased!
+KDBuffDesc_ElementalBuff,${Your} elemental damage is increased!
 KDBuffName_ElementalResist,Elemental Resistance
-KDBuffDesc_ElementalResist,Your elemental resistance is increased!
+KDBuffDesc_ElementalResist,${Your} elemental resistance is increased!
 KDBuffName_Taunted,Taunted
 KDBuffDesc_Taunted,"Defeat all taunting enemies or stay within the tiles to avoid shame!"
 KDBuffName_Analyze,Analysis
 KDBuffDesc_Analyze,Analysis
 KDBuffName_DistractionShield,Shield of Unclarity
-KDBuffDesc_DistractionShield,"You have formed a mental barrier..."
+KDBuffDesc_DistractionShield,"${You} ${Yhas} formed a mental barrier..."
 KDBuffName_PhaseEvasion,Phase
 KDBuffDesc_PhaseEvasion,+50 Evasion
 KDBuffName_BreakFree,Break Free
-KDBuffDesc_BreakFree,Your struggle power is greatly increased!!!
+KDBuffDesc_BreakFree,${Your} struggle power is greatly increased!!!
 KDBuffName_RaiseDefenses,Raise Defenses
-KDBuffDesc_RaiseDefenses,Your defenses are raised!
+KDBuffDesc_RaiseDefenses,${Your} defenses are raised!
 KDBuffName_Quickness2,Double Accel
 KDBuffDesc_Quickness2,"Time is slowed by 2x"
 KDBuffName_Quickness3,Triple Accel
@@ -901,69 +901,69 @@ KDBuffDesc_Quickness4,"Time is slowed by 4x"
 KDBuffName_Quickness5,Time Stop
 KDBuffDesc_Quickness5,"Time has come to a halt..."
 KDBuffName_ShadowSeal,Sealed by Shadows
-KDBuffDesc_ShadowSeal,"Shadowy magic is restricting you!"
+KDBuffDesc_ShadowSeal,"Shadowy magic is restricting ${youObj}!"
 KDBuffName_FuukaOrb,Fuuka's Seal
-KDBuffDesc_FuukaOrb,"You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!"
+KDBuffDesc_FuukaOrb,"${You} ${Yhas} been hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting ${youObj}!"
 KDBuffName_WaterBubble,Bubbled
-KDBuffDesc_WaterBubble,"Magical water reduces your accuracy and slows you significantly!"
+KDBuffDesc_WaterBubble,"Magical water reduces ${your} accuracy and slows ${youObj} significantly!"
 KDBuffName_BattleTrance,Battle Trance
-KDBuffDesc_BattleTrance,You attack twice!
+KDBuffDesc_BattleTrance,${You} attack${Ys} twice!
 KDBuffName_CombatManeuver,Combat Maneuver
-KDBuffDesc_CombatManeuver,You gain a free move from Combat Maneuvers!
+KDBuffDesc_CombatManeuver,${You} gain${Ys} a free move from Combat Maneuvers!
 KDBuffName_NoWP,Surrender
-KDBuffDesc_NoWP,"Your willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist."
+KDBuffDesc_NoWP,"${Your} willpower is 0, giving huge penalties to struggling, Block, Evasion, and Bondage Resist."
 KDBuffName_LatexBubble,Latex Bubbled
-KDBuffDesc_LatexBubble,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
+KDBuffDesc_LatexBubble,"The latex around ${youObj} dampens ${your} attacks, reducing physical damage by 30% and lowering ${your} sight range."
 KDBuffName_LatexBall,Ballsuit
-KDBuffDesc_LatexBall,"The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range."
+KDBuffDesc_LatexBall,"The latex around ${youObj} dampens ${your} attacks, reducing physical damage by 30% and lowering ${your} sight range."
 KDBuffName_InnerPowerArcaneStore,""
-KDBuffDesc_InnerPowerArcaneStore,"As you are low on mana, you are unable to store Arcane Energy."
+KDBuffDesc_InnerPowerArcaneStore,"As ${you} ${Yis} low on mana, ${you} ${Yis} unable to store Arcane Energy."
 KDBuffName_ManaRegenSuspend,Inner Power Recharging
-KDBuffDesc_ManaRegenSuspend,"You are recharging your next mana cost reduction."
+KDBuffDesc_ManaRegenSuspend,"${You} ${Yis} recharging ${your} next mana cost reduction."
 KDBuffName_ChaoticOverflow,Chaotic Overflow
-KDBuffDesc_ChaoticOverflow,"Chaotic energy flows through you! You have a bad feeling about this..."
+KDBuffDesc_ChaoticOverflow,"Chaotic energy flows through ${youObj}! ${You} ${Yhas} a bad feeling about this..."
 KDBuffName_AkashicConflux,Akashic Conflux
-KDBuffDesc_AkashicConflux,"You can ignore Arm, Leg, and Verbal components!"
+KDBuffDesc_AkashicConflux,"${You} can ignore Arm, Leg, and Verbal components!"
 KDBuffName_RogueEscape,Hard to Catch
 KDBuffDesc_RogueEscape,Struggling is improved and escape is quicker!
 KDBuffName_HighValueFound,High Value Target
-KDBuffDesc_HighValueFound,You sense that a high value target is near.
+KDBuffDesc_HighValueFound,${You} sense${Ys} that a high value target is near.
 KDBuffName_ArcaneEnergy,Arcane Energy
 KDBuffDesc_ArcaneEnergy,"Arcane Energy is stored by casting spells, up to 100% Max mana."
 KDBuffName_BattleRhythm,Battle Rhythm
 KDBuffDesc_BattleRhythm,"Battle Rhythm is gained by spending stamina through attacks, up to 40 total."
 KDBuffName_ForcedSubmission,Forced Submission
-KDBuffDesc_ForcedSubmission,"You must submit! Moving away from an enemy at 0 WP will bind you!"
+KDBuffDesc_ForcedSubmission,"${You} must submit! Moving away from an enemy at 0 WP will bind ${youObj}!"
 KDBuffName_CursedDistract,Curse of Distraction
-KDBuffDesc_CursedDistract,"Having taken damage, your distraction is increasing..."
+KDBuffDesc_CursedDistract,"Having taken damage, ${your} distraction is increasing..."
 KDBuffName_Corrupted,Corrupted
-KDBuffDesc_Corrupted,"Your willpower gain and struggle power is less effective due to your corruption."
+KDBuffDesc_Corrupted,"${Your} willpower gain and struggle power is less effective due to ${your} corruption."
 KDBuffName_CursingCircle,Cursing Circle
-KDBuffDesc_CursingCircle,"You are in the process of being cursed."
+KDBuffDesc_CursingCircle,"${You} ${Yis} in the process of being cursed."
 KDBuffName_Cursed,""
-KDBuffDesc_Cursed,"A dark energy lurks within you."
+KDBuffDesc_Cursed,"A dark energy lurks within ${youObj}."
 KDBuffName_GhostDeal,""
-KDBuffDesc_GhostDeal,"You've made a deal... your freedom now in exchange for your freedom later..."
+KDBuffDesc_GhostDeal,"${Youve} made a deal... ${your} freedom now in exchange for ${your} freedom later..."
 KDBuffName_GhostDealPleasure,""
-KDBuffDesc_GhostDealPleasure,"You've made a deal, which lurks deep inside you~"
+KDBuffDesc_GhostDealPleasure,"${Youve} made a deal, which lurks deep inside ${youObj}~"
 KDBuffName_e_OrgasmResist,Mental Resistance
-KDBuffDesc_e_OrgasmResist,"You cannot orgasm except by choice or below 10% WP. Click to toggle."
+KDBuffDesc_e_OrgasmResist,"${You} cannot orgasm except by choice or below 10% WP. Click to toggle."
 KDBuffName_d_OrgasmResist,Mental Resistance
-KDBuffDesc_d_OrgasmResist,"You are allowing yourself to let go. Click to toggle."
+KDBuffDesc_d_OrgasmResist,"${You} ${Yis} allowing ${your}self to let go. Click to toggle."
 KDBuffName_BoundByFate,Bound by Fate
 KDBuffDesc_BoundByFate,Stepping outside of the indicated tiles will result in punishment!
 KDBuffName_Haunted,Haunted
-KDBuffDesc_Haunted,A playful ghost now accompanies you on your journey.
+KDBuffDesc_Haunted,A playful ghost now accompanies ${youObj} on ${your} journey.
 KDBuffName_DildoBatBuff,Intense Vibrations
 KDBuffDesc_DildoBatBuff,"The Blade of Ejahl deals bonus charm damage!!!"
 KDBuffName_Empower,Upcast
-KDBuffDesc_Empower,"You are able to cast higher level versions of spells."
+KDBuffDesc_Empower,"${You} ${Yis} able to cast higher level versions of spells."
 KDBuffName_Light,Light
 KDBuffDesc_Light,"Let there be light!"
 KDBuffName_MagicalSight,Analysis
-KDBuffDesc_MagicalSight,"You're seeing things..."
+KDBuffDesc_MagicalSight,"${Youre} seeing things..."
 KDBuffName_PoisonDagger,Poisoned
-KDBuffDesc_PoisonDagger,"You're starting to feel drowsy."
+KDBuffDesc_PoisonDagger,"${Youre} starting to feel drowsy."
 KDBuffName_TabletLatex,Blessing of Latex
 KDBuffDesc_TabletLatex,-50% MP Cost (Latex)
 KDBuffName_TabletLeather,Blessing of Leather
@@ -981,31 +981,31 @@ KDBuffDesc_TabletConjure,-50% MP Cost (Conjuration)
 KDBuffName_TabletIllusion,Blessing of Illusion
 KDBuffDesc_TabletIllusion,-50% MP Cost (Illusion)
 KDBuffName_Conduction,Conductive
-KDBuffDesc_Conduction,"When you or an enemy takes electric damage, the other takes half of it as well!"
+KDBuffDesc_Conduction,"When ${you} or an enemy takes electric damage, the other takes half of it as well!"
 KDBuffName_LightningRod,Lightning Rod
 KDBuffDesc_LightningRod,"Gain significantly boosted electric resist."
 KDBuffName_Drenched,Drenched
-KDBuffDesc_Drenched,"Grants fire resist, ice/electric weakness, and makes you conductive."
+KDBuffDesc_Drenched,"Grants fire resist, ice/electric weakness, and makes ${youObj} conductive."
 KDBuffName_Chilled,Chilled
-KDBuffDesc_Chilled,"The cold makes it hard to move! You are slowed."
+KDBuffDesc_Chilled,"The cold makes it hard to move! ${You} ${Yis} slowed."
 KDBuffName_Slimed,Slimed
-KDBuffDesc_Slimed,"It's sticky and dense! You are slowed and 30% more vulnerable to glue damage."
+KDBuffDesc_Slimed,"It's sticky and dense! ${You} ${Yis} slowed and 30% more vulnerable to glue damage."
 KDBuffName_Unsteady,Unsteady
-KDBuffDesc_Unsteady,"You're on loose footing. You are easier to hit and are slowed."
+KDBuffDesc_Unsteady,"${Youre} on loose footing. ${You} ${Yis} easier to hit and ${Yis} slowed."
 KDBuffName_Unsteady2,Unsteady
-KDBuffDesc_Unsteady2,"You're on loose footing. You are easier to hit and are slowed."
+KDBuffDesc_Unsteady2,"${Youre} on loose footing. ${You} ${Yis} easier to hit and ${Yis} slowed."
 KDBuffName_ChillWalk,Chill Walk
 KDBuffDesc_ChillWalk,Ignore Ice Tiles
 KDBuffName_Ignite,Ignited
-KDBuffDesc_Ignite,"You are dealing fire damage to yourself and nearby enemies!"
+KDBuffDesc_Ignite,"${You} ${Yis} dealing fire damage to ${your}self and nearby enemies!"
 KDBuffName_Burning,On Fire
-KDBuffDesc_Burning,"You are on fire and taking damage!"
+KDBuffDesc_Burning,"${You} ${Yis} on fire and taking damage!"
 KDBuffName_ShrineElements,Divine Punishment
-KDBuffDesc_ShrineElements,"Deals bonus damage when you hit an enemy."
+KDBuffDesc_ShrineElements,"Deals bonus damage when ${you} hit${Ys} an enemy."
 KDBuffName_ShrineConjure,Divine Protection
-KDBuffDesc_ShrineConjure,"Automatically blocks the next 3 times an enemy tries to bind you."
+KDBuffDesc_ShrineConjure,"Automatically blocks the next 3 times an enemy tries to bind ${youObj}."
 KDBuffName_ShrineIllusion,Divine Cunning
-KDBuffDesc_ShrineIllusion,"You turn invisible briefly after attacking."
+KDBuffDesc_ShrineIllusion,"${You} turn${Ys} invisible briefly after attacking."
 KDBuffName_AvatarFire,Blessing of Flame
 KDBuffDesc_AvatarFire,-MP Cost (Fire)
 KDBuffName_AvatarAir,Blessing of Air
@@ -1015,11 +1015,11 @@ KDBuffDesc_AvatarWater,-MP Cost (Water)
 KDBuffName_AvatarEarth,Blessing of Earth
 KDBuffDesc_AvatarEarth,-MP Cost (Earth)
 KDBuffName_SlimeForm,Slime Form
-KDBuffDesc_SlimeForm,"You gain bonuses and can slip through bars!"
+KDBuffDesc_SlimeForm,"${You} gain${Ys} bonuses and can slip through bars!"
 KDBuffName_Shroud2,Shroud
 KDBuffDesc_Shroud2,"Visibility decreased, evasion increased."
 KDBuffName_Camo,Camouflage
-KDBuffDesc_Camo,"While next to a wall, you are very hard to see."
+KDBuffDesc_Camo,"While next to a wall, ${you} ${Yis} very hard to see."
 KDBuffName_StoneSkin,Stone Skin
 KDBuffDesc_StoneSkin,"Increased armor."
 KDBuffName_ShadowBlade,Darkblade
@@ -1027,11 +1027,11 @@ KDBuffDesc_ShadowBlade,"Increased damage."
 KDBuffName_Shield,Runic Ward
 KDBuffDesc_Shield,"Increased Magic Armor."
 KDBuffName_GreaterInvisibility,Great Invisibility
-KDBuffDesc_GreaterInvisibility,"It is impossible for enemies to see you."
+KDBuffDesc_GreaterInvisibility,"It is impossible for enemies to see ${youObj}."
 KDBuffName_Invisibility,Invisibility
-KDBuffDesc_Invisibility,"It is very difficult for enemies to see you."
+KDBuffDesc_Invisibility,"It is very difficult for enemies to see ${youObj}."
 KDBuffName_LesserInvisibility,Lesser Invisibility
-KDBuffDesc_LesserInvisibility,"It is harder for enemies to see you."
+KDBuffDesc_LesserInvisibility,"It is harder for enemies to see ${youObj}."
 KDBuffName_Cutting,FULL POWER
 KDBuffDesc_Cutting,"Cutting power increased."
 KDBuffName_Slippery,Graceful
@@ -1039,33 +1039,33 @@ KDBuffDesc_Slippery,"Struggling power increased."
 KDBuffName_IronBlood,Iron Blood
 KDBuffDesc_IronBlood,"Reduced melee cost, increased mana costs."
 KDBuffName_Sleepy,Sleepy
-KDBuffDesc_Sleepy,"You are sluggish and have a hard time keeping your eyes open."
+KDBuffDesc_Sleepy,"${You} ${Yis} sluggish and ${Yhas} a hard time keeping ${your} eyes open."
 KDBuffName_Evasion,Afterimage
 KDBuffDesc_Evasion,"Evasion greatly increased."
 KDBuffName_SlimeMimic,Convincing Disguise
 KDBuffDesc_SlimeMimic,"We did it! We made ourselves invisible--mmmmph!!!"
 KDBuffName_d_SlimeMimic,Convincing Disguise
-KDBuffDesc_d_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
+KDBuffDesc_d_SlimeMimic,"${You} ${Yis} not currently attempting to disguise ${your}self. Click to reenable."
 KDBuffName_DisenchantSelf,Disenchanted
-KDBuffDesc_DisenchantSelf,"Your restraints are disenchanted, treating them as nonmagical for purposes of cutting."
+KDBuffDesc_DisenchantSelf,"${Your} restraints are disenchanted, treating them as nonmagical for purposes of cutting."
 KDBuffName_ResistCharm,Resist Charm
-KDBuffDesc_ResistCharm,"You are unaffected by curses and charming effects."
+KDBuffDesc_ResistCharm,"${You} ${Yis} unaffected by curses and charming effects."
 
 
 KDBuffName_LeatherBurst,Leather Package
-KDBuffDesc_LeatherBurst,"You can launch another leather restraint instantly!"
+KDBuffDesc_LeatherBurst,"${You} can launch another leather restraint instantly!"
 KDBuffName_SagittaAssault,Sagitta
-KDBuffDesc_SagittaAssault,"You can launch another Sagitta instantly!"
+KDBuffDesc_SagittaAssault,"${You} can launch another Sagitta instantly!"
 KDBuffName_TraineeWP,Mental Defiance
-KDBuffDesc_TraineeWP,You have stored willpower.
+KDBuffDesc_TraineeWP,${You} ${Yhas} stored willpower.
 KDBuffName_DistractionCast,Devoted Focus
-KDBuffDesc_DistractionCast,"You have consumed a mote of essence, granting miscast chance reduction."
+KDBuffDesc_DistractionCast,"${You} ${Yhas} consumed a mote of essence, granting miscast chance reduction."
 KDBuffName_IgniteDamage,Ignited
-KDBuffDesc_IgniteDamage,The air around you is ablaze! (-DamageDealt SP)
+KDBuffDesc_IgniteDamage,The air around ${youObj} is ablaze! (-DamageDealt SP)
 KDBuffName_ShrineIllusionTrigger,Shadowstep
-KDBuffDesc_ShrineIllusionTrigger,"The Goddess of Illusions shrouds you in shadows!"
+KDBuffDesc_ShrineIllusionTrigger,"The Goddess of Illusions shrouds ${youObj} in shadows!"
 KDBuffName_LockdownTry,"Lockdown"
-KDBuffDesc_LockdownTry,"You struggle against your bonds, but a magical force resists!"
+KDBuffDesc_LockdownTry,"${You} struggle${Ys} against ${your} bonds, but a magical force resists!"
 KDBuffName_NovicePet,""
 KDBuffDesc_NovicePet,${You} ${Yis} an expert in wearing a petsuit and ${your} mobility is increased.
 KDBuffName_NovicePetBad,""
@@ -1079,9 +1079,9 @@ KDBuffDesc_PoisonBreath,Toxic spores are making it difficult to move
 KDBuffName_Silenced,Silenced
 KDBuffDesc_Silenced,"${You} ${Yis} silenced, unable to cast spells easily."
 KDBuffName_LatexKittyCurseTick,""
-KDBuffDesc_LatexKittyCurseTick,This is the total amount of Latex Kitty Curse you possess.
+KDBuffDesc_LatexKittyCurseTick,This is the total amount of Latex Kitty Curse ${you} possess${Yes}.
 KDBuffName_Hypno_DollStat,Stillness
-KDBuffDesc_Hypno_DollStat,${You} you're starting to feel just like a doll... 
+KDBuffDesc_Hypno_DollStat,${Youre} starting to feel just like a doll...
 KDBuffName_Hypnosis,Trance
 KDBuffDesc_Hypnosis,"${Youve} fallen into a trance, giving accuracy and miscast penalties."
 KDBuffName_StraitjacketBolt,Locked Down
@@ -1089,19 +1089,19 @@ KDBuffDesc_StraitjacketBolt,"Struggling power is greatly reduced."
 KDBuffName_Lockdown,Locked Down
 KDBuffDesc_Lockdown,"Struggling power is greatly reduced."
 KDBuffName_ScrollVerbal,Verbose
-KDBuffDesc_ScrollVerbal,"You can cast verbal spells while gagged."
+KDBuffDesc_ScrollVerbal,"${You} can cast verbal spells while gagged."
 KDBuffName_ScrollArms,Dextrous
-KDBuffDesc_ScrollArms,"You can cast arm spells while tied up."
+KDBuffDesc_ScrollArms,"${You} can cast arm spells while tied up."
 KDBuffName_ScrollLegs,Spell Dance
-KDBuffDesc_ScrollLegs,"You can cast leg spells while tied up."
+KDBuffDesc_ScrollLegs,"${You} can cast leg spells while tied up."
 KDBuffName_BondageBusterCharge,Bondage Buster
 KDBuffDesc_BondageBusterCharge,"Lazor is charging..."
 KDBuffName_KatanaCharge,Katana
 KDBuffDesc_KatanaCharge,"Patience is key..."
 KDBuffName_StormCharge,Stormbreaker
-KDBuffDesc_StormCharge,"You have the Power."
+KDBuffDesc_StormCharge,"${You} ${Yhas} the Power."
 
-KDBuffDesc_SpellDamageBuff,An item has increased your spell damage!
+KDBuffDesc_SpellDamageBuff,An item has increased ${your} spell damage!
 
 
 
@@ -1152,7 +1152,7 @@ EndWin2,"Come back later for new dungeons!"
 
 StatWeapon,""
 StatKeyEscapeKey,Got the keys! Find the stairs to go to the next floor.
-StatKeyEscapeNoKey,You haven't found the keys for this floor yet.
+StatKeyEscapeNoKey,${You} ${Yhas}n't found the keys for this floor yet.
 StatKey,Missing key
 StatShield,Protects from damage and binding until the shield is broken!
 StatMiscastChance,"Chance for a spell to fizzle: "
@@ -1962,19 +1962,19 @@ KinkyDungeonCrit,"Crit Multiplier: "
 KinkyDungeonBindCrit,"Bind Crit Multiplier: "
 KinkyDungeonPlayerNoKeys,Find the keys..
 KinkyDungeonPlayerYesKeys,Find the exit!
-KinkyDungeonPlayerHelp,"You are receiving help from a friendly ally."
-KinkyDungeonPlayerHook,"You found a hook you can use to pull on straps and loops."
-KinkyDungeonPlayerSharp,"You have access to something sharp and can attempt to Cut restraints, or Remove more effectively."
-KinkyDungeonPlayerEdge,"You found a corner to help manipulate buckles and snaps with."
-KinkyDungeonPlayerCrack,"You found a crack and could maybe wedge a knife or tool into it to keep it still."
-KinkyDungeonPlayerSticky,"You found something sticky and might be able to pull off fabrics."
+KinkyDungeonPlayerHelp,"${You} ${Yis} receiving help from a friendly ally."
+KinkyDungeonPlayerHook,"${You} found a hook ${you} can use to pull on straps and loops."
+KinkyDungeonPlayerSharp,"${You} ${Yhas} access to something sharp and can attempt to Cut restraints, or Remove more effectively."
+KinkyDungeonPlayerEdge,"${You} found a corner to help manipulate buckles and snaps with."
+KinkyDungeonPlayerCrack,"${You} found a crack and could maybe wedge a knife or tool into it to keep it still."
+KinkyDungeonPlayerSticky,"${You} found something sticky and might be able to pull off fabrics."
 KinkyDungeonPlayerEvasion,"Evasion: "
 KinkyDungeonPlayerVisibility,"Visibility: "
 
 
-KinkyDungeonPlayerParole,"Submissive: Enemies won't attack you, but they will try to play with you."
+KinkyDungeonPlayerParole,"Submissive: Enemies won't attack ${youObj}, but they will try to play with ${youObj}."
 KinkyDungeonPlayerChase,"On the Run! Enemies are hostile."
-KinkyDungeonPlayerJail,"Prisoner: Enemies won't attack you unless you are out of jail."
+KinkyDungeonPlayerJail,"Prisoner: Enemies won't attack ${youObj} unless ${you} ${Yis} out of jail."
 KinkyDungeonPlayerNotJailed,"Freedom"
 KinkyDungeonPlayerSlow4,Crawling slowly!
 KinkyDungeonPlayerSlow3,Inching slowly!
@@ -8992,7 +8992,7 @@ KinkyDungeonRemindJailChaseDollmakerDefend0,"You don't know who you're messing w
 KinkyDungeonRemindJailChaseDollmakerDefend1,"You won't be allowed to make that mistake twice."
 KinkyDungeonRemindJailChaseDollmakerDefend2,"I'll punish you myself."
 KinkyDungeonRemindJailChaseDollmakerDefendHonor0,"Hands off my property."
-KinkyDungeonRemindJailChaseDollmakerDefendHonor1,"Know your place, girl!"
+KinkyDungeonRemindJailChaseDollmakerDefendHonor1,"Know your place, ${Psub}!"
 KinkyDungeonRemindJailChaseDollmakerDefendHonor2,"You've had your chance."
 KinkyDungeonRemindJailChaseDollmakerHonor0,"Fine, then."
 KinkyDungeonRemindJailChaseDollmakerHonor1,"Know your place!"
@@ -9054,7 +9054,7 @@ KinkyDungeonRemindJailChaseTheWardenDefendHonor0,"Careful what you ask for~"
 KinkyDungeonRemindJailChaseTheWardenDefendHonor1,"That's my property~"
 KinkyDungeonRemindJailChaseTheWardenDefendHonor2,"Be gentle with her~"
 KinkyDungeonRemindJailChaseTheWardenHonor0,"You've made some enemies, haven't you?"
-KinkyDungeonRemindJailChaseTheWardenHonor1,"I should teach you to be a nice girl."
+KinkyDungeonRemindJailChaseTheWardenHonor1,"I should teach you to be a nice ${Psub}."
 KinkyDungeonRemindJailChaseTheWardenHonor2,"You need to learn some manners~"
 KinkyDungeonRemindJailChaseTheWardenCommandDefend,"This will be entertaining."
 KinkyDungeonRemindJailChaseTheWardenCommandAssault,"Show me what you've got~"
@@ -9113,7 +9113,7 @@ KinkyDungeonRemindJailChaseSilverWitchDefendHonor0,"Careful what you ask for~"
 KinkyDungeonRemindJailChaseSilverWitchDefendHonor1,"That's my property~"
 KinkyDungeonRemindJailChaseSilverWitchDefendHonor2,"Be gentle with her~"
 KinkyDungeonRemindJailChaseSilverWitchHonor0,"You've made some enemies, haven't you?"
-KinkyDungeonRemindJailChaseSilverWitchHonor1,"I should teach you to be a nice girl."
+KinkyDungeonRemindJailChaseSilverWitchHonor1,"I should teach you to be a nice ${Psub}."
 KinkyDungeonRemindJailChaseSilverWitchHonor2,"You need to learn some manners~"
 KinkyDungeonRemindJailChaseSilverWitchCommandDefend,"This will be entertaining."
 KinkyDungeonRemindJailChaseSilverWitchCommandAssault,"Show me what you've got~"
@@ -9373,9 +9373,9 @@ KinkyDungeonRemindJailPlayBanditLeash,"Let's put you up for auction!"
 KinkyDungeonRemindJailPlayBanditLoot,"What are you rummaging around for?"
 KinkyDungeonRemindJailPlayBanditKey,"Oh no you don't!"
 KinkyDungeonRemindJailChaseBanditAlert,"You're not supposed to be here..."
-KinkyDungeonRemindJailPlayBandit0,"I'm gonna teach you a lesson, girl."
+KinkyDungeonRemindJailPlayBandit0,"I'm gonna teach you a lesson, ${Pdim}."
 KinkyDungeonRemindJailPlayBandit1,"I'm gonna miss you when we find you a nice master..."
-KinkyDungeonRemindJailPlayBandit2,"Looks like you need some training, girl."
+KinkyDungeonRemindJailPlayBandit2,"Looks like you need some training, ${Psub}."
 KinkyDungeonRemindJailChaseBanditAttack0,"You picked a bad time to get lost, friend."
 KinkyDungeonRemindJailChaseBanditAttack1,"Never should have come here."
 KinkyDungeonRemindJailChaseBanditAttack2,"I used to be an adventurer like you."
@@ -9401,7 +9401,7 @@ KinkyDungeonRemindJailBanditStun,"Caught ya~"
 KinkyDungeonRemindJailBanditPickpocket,"Dibs on this one!"
 KinkyDungeonRemindJailBanditLock,"Gotta make sure no one gets to you~"
 KinkyDungeonRemindJailBanditIntro,"I'm PTRN. And who might you be?"
-KinkyDungeonRemindJailChaseBanditDefend0,"Bad time to party, girl~"
+KinkyDungeonRemindJailChaseBanditDefend0,"Bad time to party, ${Pdim}~"
 KinkyDungeonRemindJailChaseBanditDefend1,"You've got nerve showing your face around here."
 KinkyDungeonRemindJailChaseBanditDefend2,"Don't think you can get away~"
 KinkyDungeonRemindJailChaseBanditDefendHonor0,"Trying to fight your way out?"
@@ -9729,7 +9729,7 @@ KinkyDungeonRemindJailChaseAlchemistAlert,"Oh?"
 KinkyDungeonRemindJailPlayAlchemist0,"You'll make a fine test subject..."
 KinkyDungeonRemindJailPlayAlchemist1,"Come here, I want to perform some tests!"
 KinkyDungeonRemindJailPlayAlchemist2,"Looks like it's time to drop some science!"
-KinkyDungeonRemindJailChaseAlchemistAttack0,"Bad girl!"
+KinkyDungeonRemindJailChaseAlchemistAttack0,"Bad ${Psub}!"
 KinkyDungeonRemindJailChaseAlchemistAttack1,"Keep your filthy hands off me!"
 KinkyDungeonRemindJailChaseAlchemistAttack2,"Your chances of winning are... less than zero."
 KinkyDungeonRemindJailChaseAlchemistSpell0,"Good ${Psub}s don't use magic without permission."
@@ -9794,7 +9794,7 @@ KinkyDungeonRemindJailChaseDressmakerSpell0,"Oh my, that's dangerous!"
 KinkyDungeonRemindJailChaseDressmakerSpell1,"You're going to damage my dress!"
 KinkyDungeonRemindJailChaseDressmakerSpell2,"Keep those pretty hands to yourself, dear~"
 KinkyDungeonRemindJailChaseDressmakerSpellItem,"Where'd you find that, dear?"
-KinkyDungeonRemindJailChaseDressmakerShrine,"Silly girl, you should be looking to your mistress for guidance."
+KinkyDungeonRemindJailChaseDressmakerShrine,"Silly ${Pdim}, you should be looking to your mistress for guidance."
 KinkyDungeonRemindJailChaseDressmakerChest,"That's not yours, sweetie~"
 KinkyDungeonRemindJailChaseDressmakerOrb,"You shouldn't break things with such dainty hands~"
 KinkyDungeonRemindJailChaseDressmakerJailbreak,"I knew something was amiss!"
@@ -9911,7 +9911,7 @@ KinkyDungeonRemindJailChaseNurseSpell0,"Oh my, that's dangerous!"
 KinkyDungeonRemindJailChaseNurseSpell1,"Patients are forbidden from casting spells!"
 KinkyDungeonRemindJailChaseNurseSpell2,"Keep those pretty hands to yourself, dear~"
 KinkyDungeonRemindJailChaseNurseSpellItem,"Where'd you find that, dear?"
-KinkyDungeonRemindJailChaseNurseShrine,"Silly girl, your illness can't be cured by a prayer."
+KinkyDungeonRemindJailChaseNurseShrine,"Silly ${Pdim}, your illness can't be cured by a prayer."
 KinkyDungeonRemindJailChaseNurseChest,"That's not yours, sweetie~"
 KinkyDungeonRemindJailChaseNurseOrb,"You shouldn't break things, you know~"
 KinkyDungeonRemindJailChaseNurseJailbreak,"I knew something was amiss!"
@@ -9970,7 +9970,7 @@ KinkyDungeonRemindJailChaseDoctorSpell0,"Oh my, that's dangerous!"
 KinkyDungeonRemindJailChaseDoctorSpell1,"Patients are forbidden from casting spells!"
 KinkyDungeonRemindJailChaseDoctorSpell2,"Keep those pretty hands to yourself, dear~"
 KinkyDungeonRemindJailChaseDoctorSpellItem,"Where'd you find that, dear?"
-KinkyDungeonRemindJailChaseDoctorShrine,"Silly girl, your illness can't be cured by a prayer."
+KinkyDungeonRemindJailChaseDoctorShrine,"Silly ${Pdim}, your illness can't be cured by a prayer."
 KinkyDungeonRemindJailChaseDoctorChest,"That's not yours, sweetie~"
 KinkyDungeonRemindJailChaseDoctorOrb,"You shouldn't break things, you know~"
 KinkyDungeonRemindJailChaseDoctorJailbreak,"I knew something was amiss!"
@@ -10345,7 +10345,7 @@ KinkyDungeonRemindJailChaseAdventurer_Dom_FighterDefend0,"I'LL take it from here
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterDefend1,"It's me you should worry about!"
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterDefend2,"Pfft. Amateurs."
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterDefendHonor0,"Did you think I wasn't looking?"
-KinkyDungeonRemindJailChaseAdventurer_Dom_FighterDefendHonor1,"Nice try, girl~"
+KinkyDungeonRemindJailChaseAdventurer_Dom_FighterDefendHonor1,"Nice try, ${Pdim}~"
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterDefendHonor2,"You've made a mistake attacking my client."
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterHonor0,"Capture her? Fine, but I expect payment."
 KinkyDungeonRemindJailChaseAdventurer_Dom_FighterHonor1,"I just follow the money, ${PHonor}~"
@@ -10465,7 +10465,7 @@ KinkyDungeonRemindJailChaseOfficerDefendHonor0,"Backup is here!"
 KinkyDungeonRemindJailChaseOfficerDefendHonor1,"Hands up! Don't move!"
 KinkyDungeonRemindJailChaseOfficerDefendHonor2,"Lay down your weapons and don't move!"
 KinkyDungeonRemindJailChaseOfficerHonor0,"I have a warrant for your arrest..."
-KinkyDungeonRemindJailChaseOfficerHonor1,"You're a wanted girl."
+KinkyDungeonRemindJailChaseOfficerHonor1,"You're a wanted ${Pdim}."
 KinkyDungeonRemindJailChaseOfficerHonor2,"You're under arrest."
 KinkyDungeonRemindJailChaseOfficerCommandDefend,"Backup has arrived."
 KinkyDungeonRemindJailChaseOfficerCommandAssault,"Requesting backup!"
@@ -10488,7 +10488,7 @@ KinkyDungeonRemindJailPlayHunter1,"You've got a nice pair of wrists~"
 KinkyDungeonRemindJailPlayHunter2,"You there! Let's have a talk."
 KinkyDungeonRemindJailPlayHunterStruggle,"Looks like you're rusty. Haven't you ever done escape training?"
 KinkyDungeonRemindJailPlayHunterLeash,"I'm going to have some fun with you~"
-KinkyDungeonRemindJailPlayHunterFree,"Watch yourself, girl~"
+KinkyDungeonRemindJailPlayHunterFree,"Watch yourself, ${Pdim}~"
 KinkyDungeonRemindJailPlayHunterLoot,"Nice find. I'll take it."
 KinkyDungeonRemindJailPlayHunterKey,"This place is off-limits for you."
 KinkyDungeonRemindJailChaseHunterAlert,"Target is in my sights."
@@ -10547,7 +10547,7 @@ KinkyDungeonRemindJailPlayWolfgirl1,"You've got a nice pair of wrists~"
 KinkyDungeonRemindJailPlayWolfgirl2,"Hey~! Let's have a talk."
 KinkyDungeonRemindJailPlayWolfgirlStruggle,"Looks like you need additional training."
 KinkyDungeonRemindJailPlayWolfgirlLeash,"I'm going to have some fun with you~"
-KinkyDungeonRemindJailPlayWolfgirlFree,"Watch yourself, girl~"
+KinkyDungeonRemindJailPlayWolfgirlFree,"Watch yourself, ${Pdim}~"
 KinkyDungeonRemindJailPlayWolfgirlLoot,"Nice find. I'll take it."
 KinkyDungeonRemindJailPlayWolfgirlKey,"This place is off-limits for you."
 KinkyDungeonRemindJailChaseWolfgirlAlert,"I spy a cute one!"
@@ -10833,7 +10833,7 @@ KinkyDungeonRemindJailPlayBratMushy2,"Scary!"
 KinkyDungeonRemindJailPlaySubMushy0,"This is a bug, please report"
 KinkyDungeonRemindJailPlaySubMushy1,"This is a bug, please report"
 KinkyDungeonRemindJailPlaySubMushy2,"This is a bug, please report"
-KinkyDungeonRemindJailPlayMushy0,"Girl!"
+KinkyDungeonRemindJailPlayMushy0,"${PDim}!"
 KinkyDungeonRemindJailPlayMushy1,"Wear this!"
 KinkyDungeonRemindJailPlayMushy2,"Come here!"
 KinkyDungeonRemindJailPlayMushyStruggle,"..."
@@ -10843,7 +10843,7 @@ KinkyDungeonRemindJailPlayMushyLoot,"Confiscate!"
 KinkyDungeonRemindJailPlayMushyKey,"Confiscate!!"
 KinkyDungeonRemindJailChaseMushyAlert,"Alert!"
 KinkyDungeonRemindJailChaseMushyAttack0,"Intruder! Alert!"
-KinkyDungeonRemindJailChaseMushyAttack1,"Fight girl!"
+KinkyDungeonRemindJailChaseMushyAttack1,"Fight ${Pdim}!"
 KinkyDungeonRemindJailChaseMushyAttack2,"Fight!"
 KinkyDungeonRemindJailChaseMushySpell0,"Magic!"
 KinkyDungeonRemindJailChaseMushySpell1,"Wizard!"
@@ -11099,7 +11099,7 @@ KinkyDungeonRemindJailElementalStun,"You are beneath me."
 KinkyDungeonRemindJailElementalPickpocket,"Nice gear. I'll take it."
 KinkyDungeonRemindJailElementalLock,"Try getting out of that!"
 KinkyDungeonRemindJailElementalIntro,"Who am I? You beings may call me PTRN."
-KinkyDungeonRemindJailChaseElementalDefend0,"${PThey} thinks ${Pthey} can beat us~"
+KinkyDungeonRemindJailChaseElementalDefend0,"${PThey} think${Ps} ${Pthey} can beat us~"
 KinkyDungeonRemindJailChaseElementalDefend1,"No one will save you."
 KinkyDungeonRemindJailChaseElementalDefend2,"Come and accept your fate."
 KinkyDungeonRemindJailChaseElementalDefendHonor0,"An unruly subject. ${PThey} need${Ps} training."
@@ -11157,7 +11157,7 @@ KinkyDungeonRemindJailAthenaStun,"You are beneath me."
 KinkyDungeonRemindJailAthenaPickpocket,"Yoink!"
 KinkyDungeonRemindJailAthenaLock,"You can't get out now!"
 KinkyDungeonRemindJailAthenaIntro,"Who am I? You beings may call me PTRN."
-KinkyDungeonRemindJailChaseAthenaDefend0,"${PThey} thinks ${Pthey} can beat us~"
+KinkyDungeonRemindJailChaseAthenaDefend0,"${PThey} think${Ps} ${Pthey} can beat us~"
 KinkyDungeonRemindJailChaseAthenaDefend1,"No one will save you."
 KinkyDungeonRemindJailChaseAthenaDefend2,"Come and accept your fate."
 KinkyDungeonRemindJailChaseAthenaDefendHonor0,"An unruly subject. ${PThey} need${Ps} training."
@@ -11273,7 +11273,7 @@ KinkyDungeonRemindJailAngelStun,"You are beneath me."
 KinkyDungeonRemindJailAngelPickpocket,"Nice gear. I'll take it."
 KinkyDungeonRemindJailAngelLock,"Try getting out of that!"
 KinkyDungeonRemindJailAngelIntro,"Who am I? You beings may call me PTRN."
-KinkyDungeonRemindJailChaseAngelDefend0,"${PThey} thinks ${Pthey} can beat us~"
+KinkyDungeonRemindJailChaseAngelDefend0,"${PThey} think${Ps} ${Pthey} can beat us~"
 KinkyDungeonRemindJailChaseAngelDefend1,"No one will save you."
 KinkyDungeonRemindJailChaseAngelDefend2,"Come and accept your fate."
 KinkyDungeonRemindJailChaseAngelDefendHonor0,"An unruly subject. ${PThey} need${Ps} training."
@@ -11501,7 +11501,7 @@ KinkyDungeonRemindJailHeadMaidMissedMe,"Not even close."
 KinkyDungeonRemindJailHeadMaidBlockedMe,"Not even close."
 KinkyDungeonRemindJailHeadMaidLeash,"I'll be taking you to your cell personally~"
 KinkyDungeonRemindJailHeadMaidPull,"Amateur."
-KinkyDungeonRemindJailHeadMaidStun,"Bad girl. You need discipline."
+KinkyDungeonRemindJailHeadMaidStun,"Bad ${Psub}. You need discipline."
 KinkyDungeonRemindJailHeadMaidPickpocket,"Hand it over."
 KinkyDungeonRemindJailHeadMaidLock,"I'll be keeping the keys."
 KinkyDungeonRemindJailHeadMaidIntro,"Hmm. You may call me Head Maid PTRN."
@@ -11763,7 +11763,7 @@ KinkyDungeonRemindJailPlayBratZombie2,"*giggles*"
 KinkyDungeonRemindJailPlaySubZombie0,"Play... with... me..."
 KinkyDungeonRemindJailPlaySubZombie1,"Please..."
 KinkyDungeonRemindJailPlaySubZombie2,"Command... Me..."
-KinkyDungeonRemindJailPlayZombieFree,"Cute... Girl..."
+KinkyDungeonRemindJailPlayZombieFree,"Cute... ${PDim}..."
 KinkyDungeonRemindJailPlayZombieStruggle,"Helpless..."
 KinkyDungeonRemindJailPlayZombieLeash,"Take..."
 KinkyDungeonRemindJailPlayZombieLoot,"Mine..."
@@ -11858,9 +11858,9 @@ rDisbeliefSub,"(The SPEAKER looks puzzled)|That doesn't seem right..."
 rDisbeliefDom,"(The SPEAKER chuckles)|What a cute lie."
 rDisbeliefRobot,"(The SPEAKER beeps)|Vital signs indicate dishonesty."
 
-rHeadMaidExcuseMe,"(The SPEAKER furrows her brow)|...Excuse me?"
+rHeadMaidExcuseMe,"(The SPEAKER furrows ${Etheir} brow)|...Excuse me?"
 
-rBluffed,"(The SPEAKER tilts her head)|Right, sorry."
+rBluffed,"(The SPEAKER tilts ${Etheir} head)|Right, sorry."
 rBluffedSub,"(The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on..."
 rBluffedDom,"(The SPEAKER smiles)|Keep up the good work, ${Psub}."
 rBluffedRobot,"(The SPEAKER beeps)|Vital signs indicate honesty. Carry on."
@@ -11881,7 +11881,7 @@ rWeaponFound,"(The SPEAKER calls at you)|You're not supposed to be carrying a we
 rWeaponFoundRobot,"(The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply."
 rWeaponFoundSub,"(The SPEAKER blushes)|Umm, ${PHonor}, I see that you have a weapon there,|could you maybe hand it over?"
 rWeaponFoundDom,"(The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?"
-rWeaponFoundBrat,"(The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?"
+rWeaponFoundBrat,"(The SPEAKER grins and cracks ${Etheir} knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?"
 dWeaponFoundAccept,"Yes, ${EHonor}... (Currently held weapon will be lost)"
 dWeaponFoundAcceptGag,"Mmph... (Nod politely) (Currently held weapon will be lost)"
 dWeaponFoundDeny,"No, I refuse!"
@@ -11925,7 +11925,7 @@ dPrisonIntroRules_SubGag,"(Giggle and wiggle your body)"
 
 rPrisonRepeat,"(The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You shouldn't have tried to escape, you know~"
 
-rPrisonRepeatSmile,"(The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!"
+rPrisonRepeatSmile,"(The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and return${Es} with some toys...)|Now hold still!"
 rPrisonRepeatSmile_Correct,"(The SPEAKER frowns)|I know exactly what you need..."
 rPrisonRepeatSmile2,"(The SPEAKER smiles back)|I'm glad you're enjoying yourself.|However, your behavior is still unacceptable.|You need to learn some respect."
 rPrisonRepeatStruggle,"(The SPEAKER chuckles)|Looks like you're enjoying your restraints?|Let's make them tighter, shall we?"
@@ -11954,14 +11954,14 @@ rOfferDominantSuccess,"(The SPEAKER blushes and accepts)"
 
 rOfferDress,"(The SPEAKER looks at you curiously)|Oh, you'd be perfect!|Would you please model my latest design?"
 rOfferDressYes,"(The SPEAKER holds up a restrictive outfit)|This RESTRAINT might be a tight fit|so hold still while I lace it~"
-rOfferDressYes_Yes,"(The SPEAKER giggles)|It looks even better than I thought!|Thank you girl~"
+rOfferDressYes_Yes,"(The SPEAKER giggles)|It looks even better than I thought!|Thank you ${Pdim}~"
 rOfferDressYes_No,"(The SPEAKER sighs and moves away)|Such a shame..."
 rOfferDressNo,"(The SPEAKER looks disappointed)|Guess I'll find someone else then..."
 rOfferDressForce,"(The SPEAKER pouts)|But I just have to see how you look in it!"
 rOfferDressForceYes,"(The SPEAKER smiles)|Maybe you'll change your mind when it's on~"
 rOfferDressForce_No,"(The SPEAKER grumbles)|...fine, but you'd look cute~"
 rOfferDressForce_Yes,"(The SPEAKER looks bemused)|Changed your mind?|It does look good on you though~"
-rOfferDressForce_Failure,"(The SPEAKER snaps her fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~"
+rOfferDressForce_Failure,"(The SPEAKER snaps ${Etheir} fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~"
 
 dOfferDress_Yes,"Yes please!"
 dOfferDress_YesGag,"(Nod enthusiastically)"
@@ -11981,7 +11981,7 @@ dOfferDressForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 
 rOfferKigu,"(The SPEAKER looks at you with a philosophical outlook)|Have you ever felt like you wanted to be...|Transformed?"
-rOfferKiguYes,"(The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here..."
+rOfferKiguYes,"(The SPEAKER takes a strange mask from ${Etheir} satchel)|Well, I have the answer right here..."
 rOfferKiguYes_Yes,"(The SPEAKER nods seriously)|My hypothesis was correct..."
 rOfferKiguYes_No,"(The SPEAKER frowns)|Such a philistine. Begone."
 rOfferKiguNo,"(The SPEAKER turns away and thinks deeply)"
@@ -11989,7 +11989,7 @@ rOfferKiguForce,"(The SPEAKER is lost deep in thought)|Like... become someone el
 rOfferKiguForceYes,"(The SPEAKER smiles)|You can be someone else..."
 rOfferKiguForce_No,"(The SPEAKER turns around and keeps pondering)|Hmmm..."
 rOfferKiguForce_Yes,"(The SPEAKER nods)|I see you are a truth seeker after all."
-rOfferKiguForce_Failure,"(The SPEAKER lets you go. But then...)|(You feel her clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior."
+rOfferKiguForce_Failure,"(The SPEAKER lets you go. But then...)|(You feel ${Ethem} clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior."
 
 dOfferKigu_Yes,"Um, sure?"
 dOfferKigu_YesGag,"(Nod seriously)"
@@ -12009,7 +12009,7 @@ dOfferKiguForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 
 
-rOfferSenseDep,"(The SPEAKER smiles as ${Ethey} hide${Es} her hands behind her back)|Have you heard of 'sensory deprivation'?"
+rOfferSenseDep,"(The SPEAKER smiles as ${Ethey} hide${Es} ${Etheir} hands behind ${Etheir} back)|Have you heard of 'sensory deprivation'?"
 rOfferSenseDepYes,"(The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!"
 rOfferSenseDepYes_Yes,"(The SPEAKER starts pulling the hood over your head)|Let's get you laced in!"
 rOfferSenseDepYes_No,"(The SPEAKER giggles)|Alrighty.|You don't know what you're missing out on~"
@@ -12018,7 +12018,7 @@ rOfferSenseDepForce,"(The SPEAKER looks at you with a devious grin)|Oh, but it's
 rOfferSenseDepForceYes,"(The SPEAKER chuckles)|Truth be told, I wasn't asking~|Now why don't you kneel for me..."
 rOfferSenseDepForce_No,"(The SPEAKER pouts)|I thought it would be fun..."
 rOfferSenseDepForce_Yes,"(The SPEAKER starts pulling the hood over your head)|Let's get you laced in!"
-rOfferSenseDepForce_Failure,"(The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of her)|That's better~|Now why don't you say good night~"
+rOfferSenseDepForce_Failure,"(The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of ${Ethem})|That's better~|Now why don't you say good night~"
 
 dOfferSenseDep_Yes,"Of course! I love it!"
 dOfferSenseDep_YesGag,"(Nod eagerly)"
@@ -12038,11 +12038,11 @@ dOfferSenseDepForce_NoGag,"(Shake your head and groan) (PERCENT chance to avoid)
 
 
 rOfferDusterGag,"(The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!"
-rOfferDusterGagYes,"(The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean."
-rOfferDusterGagYes_Yes,"(The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?"
+rOfferDusterGagYes,"(The SPEAKER takes a duster gag from ${Etheir} satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean."
+rOfferDusterGagYes_Yes,"(The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from ${Etheir} satchel)|Now then, this place is filthy.|Why don't you put this on to help?"
 rOfferDusterGagYes_No,"(The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~"
 rOfferDusterGagNo,"(The SPEAKER shrugs)|I'll find someone else..."
-rOfferDusterGagForce,"(The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(${EThey} get${Es} out a duster gag from her satchel and grins)"
+rOfferDusterGagForce,"(The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(${EThey} get${Es} out a duster gag from ${Etheir} satchel and grin${Es})"
 rOfferDusterGagForceYes,"(The SPEAKER smiles)|Don't be afraid!|(${EThey} turn${Es} the gag with the round mouth ball clearly visible)|Now open up..."
 rOfferDusterGagForce_No,"(The SPEAKER shrugs)|Fine, I'll get someone else to clean up."
 rOfferDusterGagForce_Yes,"(The SPEAKER places the gag in your mouth)|(${EThey} then buckle${Es} up the straps.)|(You feel a locking mechanism pull the straps in tight...)|Good maid!"
@@ -12069,7 +12069,7 @@ dOfferDusterGagForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)
 rOfferArmor,"(The SPEAKER swings an imaginary sword around)|En guar- Oh, you're unarmored!|Do you want to borrow some of mine?"
 rOfferArmorYes,"(The SPEAKER holds up a RESTRAINT)|I found this near an old suit of armor.|I think it's a helmet or something..."
 rOfferArmorYes_Yes,"(The SPEAKER winks and locks it on)|I feel much safer already~"
-rOfferArmorYes_No,"(The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting her imaginary enemies)"
+rOfferArmorYes_No,"(The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting ${Etheir} imaginary enemies)"
 rOfferArmorNo,"(The SPEAKER shrugs)|Your loss~"
 rOfferArmorForce,"(The SPEAKER grins deviously)|So? It might help...|(The SPEAKER dives at you suddenly!)"
 rOfferArmorForceYes,"(The SPEAKER giggles)|Close enough, right?|Come on, there's enemies to fight!"
@@ -12180,12 +12180,12 @@ dOfferHiTechCablesForce_NoGag,"(Shake your head rapidly) (PERCENT chance to avoi
 
 rOfferScarf,"(A happy SPEAKER looks at you)|Hey there cutie~|Want to try some scarf bondage?"
 rOfferScarfYes,"(The SPEAKER holds up some scarves)|If you want to try, I've got a few here.|I could give you a RESTRAINT?"
-rOfferScarfYes_Yes,"(The SPEAKER smiles gently at you as ${Ethey} tie${Es}|I love the silky feeling~|(The SPEAKER tightens all her knots)"
+rOfferScarfYes_Yes,"(The SPEAKER smiles gently at you as ${Ethey} tie${Es}|I love the silky feeling~|(The SPEAKER tightens all ${Etheir} knots)"
 rOfferScarfYes_No,"(The SPEAKER looks away and nods)|Well... maybe next time."
 rOfferScarfNo,"(The SPEAKER shuffles awkwardly)|Oh... well...|Come back if you change your mind~"
 rOfferScarfForce,"(The SPEAKER scowls)|Hey, don't back out!|I promise I'll make it comfortable!"
 rOfferScarfForceYes,"(The SPEAKER frowns)|Too bad, I want to tie someone!"
-rOfferScarfForce_No,"(The SPEAKER drops her scarves)|Aww, really?|I'll go find someone else then..."
+rOfferScarfForce_No,"(The SPEAKER drops ${Etheir} scarves)|Aww, really?|I'll go find someone else then..."
 rOfferScarfForce_Yes,"(The SPEAKER beams a smile)|Yay, thank you!|Feels nice, right?"
 rOfferScarfForce_Failure,"(The SPEAKER tosses a scarf around you like a lasso)|Not so fast! You cannot escape the fluff!"
 
@@ -12212,8 +12212,8 @@ rOfferResinYes_No,"(The SPEAKER scoffs)|You'll see... you'll all see!"
 rOfferResinNo,"(The SPEAKER sighs)|So hard to find good help out here..."
 rOfferResinForce,"(The SPEAKER frowns)|What, do you doubt my results? See for yourself!|(${EThey} unscrew${Es} the cap)"
 rOfferResinForceYes,"(The green gas starts leaking)|Oh no! It wasn't supposed to do that!"
-rOfferResinForce_No,"(You push her out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault."
-rOfferResinForce_Yes,"(You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!"
+rOfferResinForce_No,"(You push ${Ethem} out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault."
+rOfferResinForce_Yes,"(You push ${Ethem} out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!"
 rOfferResinForce_Failure,"(The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen..."
 
 dOfferResin_Yes,"Seems interesting!"
@@ -12242,7 +12242,7 @@ rOfferSlimeNo,"(The SPEAKER sighs)|So hard to find good help out here..."
 rOfferSlimeForce,"(The SPEAKER glares at you)|You've got no sense of adventure!|For science!"
 rOfferSlimeForceYes,"Ah, but it'll be quick!|(The SPEAKER begins tipping the flask)|See? It's already moving toward you!"
 rOfferSlimeForce_No,"(The SPEAKER tosses the slime on you)|(The slime flops off limply)|Ah. Back to the drawing board."
-rOfferSlimeForce_Yes,"(The SPEAKER pours the slime onto you)|That's the spirit girl!|(Sticky RESTRAINT clings to you)"
+rOfferSlimeForce_Yes,"(The SPEAKER pours the slime onto you)|That's the spirit ${Pdim}!|(Sticky RESTRAINT clings to you)"
 rOfferSlimeForce_Failure,"(The SPEAKER tosses the slime on you)|Ha, look, it's alive!|(Sticky RESTRAINT clings to you)"
 
 dOfferSlime_Yes,"Sure."
@@ -12265,12 +12265,12 @@ dOfferSlimeForce_NoGag,"(Shake your head and whimper) (PERCENT chance to avoid)"
 rOfferWolfRestraint,"(A SPEAKER whispers to you)|Ever wonder how wolfgirls feel?|Or why they're so obedient?"
 rOfferWolfRestraintYes,"(The SPEAKER grins)|I've got a RESTRAINT here~|Wanna give it a try?"
 rOfferWolfRestraintYes_Yes,"(The SPEAKER puts on the RESTRAINT)|Perfect. Better behave now~|(The SPEAKER pats your butt)"
-rOfferWolfRestraintYes_No,"(The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~"
+rOfferWolfRestraintYes_No,"(The SPEAKER rolls ${Etheir} eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~"
 rOfferWolfRestraintNo,"(The SPEAKER nods glumly)|Not a fan?|Shame, I am~"
 rOfferWolfRestraintForce,"(The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained..."
-rOfferWolfRestraintForceYes,"(The SPEAKER looks at you deviously)|A good ${Psub} wears her RESTRAINT with enthusiasm~"
+rOfferWolfRestraintForceYes,"(The SPEAKER looks at you deviously)|A good ${Psub} wears ${Ptheir} RESTRAINT with enthusiasm~"
 rOfferWolfRestraintForce_No,"(The SPEAKER sulks)|You'd be difficult to train anyway~"
-rOfferWolfRestraintForce_Yes,"(The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good ${Psub}~|I'll make it extra tight for you!"
+rOfferWolfRestraintForce_Yes,"(The SPEAKER adds the RESTRAINT)|(You feel ${Ethem} tighten everything before locking it)|Good ${Psub}~|I'll make it extra tight for you!"
 rOfferWolfRestraintForce_Failure,"(The SPEAKER knocks you down and forces you into the RESTRAINT)|Here, maybe you'll reconsider after wearing it a while!"
 
 dOfferWolfRestraint_Yes,"Maybe a little~"
@@ -12296,7 +12296,7 @@ rOfferMithrilYes_Yes,"(The SPEAKER smiles sweetly)|Such a good ${Psub}~|(The RES
 rOfferMithrilYes_No,"(The SPEAKER sagely nods)|As you wish~"
 rOfferMithrilNo,"(The SPEAKER frowns briefly)|I understand~"
 rOfferMithrilForce,"(The SPEAKER leans closer)|Then you can test their escapability!|(The SPEAKER dives towards you!)"
-rOfferMithrilForceYes,"(The SPEAKER shifts her weight back)|I'm afraid I must insist.|(${EThey} ${Eis} gripping a RESTRAINT)|(The SPEAKER dives towards you!)"
+rOfferMithrilForceYes,"(The SPEAKER shifts ${Etheir} weight back)|I'm afraid I must insist.|(${EThey} ${Eis} gripping a RESTRAINT)|(The SPEAKER dives towards you!)"
 rOfferMithrilForce_No,"(The SPEAKER rolls past harmlessly)|Oh! So fast~"
 rOfferMithrilForce_Yes,"(The SPEAKER snaps the RESTRAINT on)|There, much better.|Now squirm for me cutie~"
 rOfferMithrilForce_Failure,"(The SPEAKER trips you over)|(Before you can move, the RESTRAINT closes firmly)|Strict, isn't it?~"
@@ -12319,7 +12319,7 @@ dOfferMithrilForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 
 rOfferMithrilRope,"(A SPEAKER plays with silvery rope)|Hmm, I need to get better with this.|Can I practice on you?"
-rOfferMithrilRopeYes,"(The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~"
+rOfferMithrilRopeYes,"(The SPEAKER grins happily)|Thank you ${Pdim}~|I'll tie with RESTRAINT then~"
 rOfferMithrilRopeYes_Yes,"(The SPEAKER binds you tightly)|(The rope is tight, and ${Etheyre} clearly an expert.)|Mmm, not too bad~"
 rOfferMithrilRopeYes_No,"(The SPEAKER pouts indignantly)|Why say yes then?!|(The SPEAKER walks off grumbling)"
 rOfferMithrilRopeNo,"(The SPEAKER sighs)|Very well then~"
@@ -12347,7 +12347,7 @@ dOfferMithrilRopeForce_NoGag,"(Struggle against her) (PERCENT chance to avoid)"
 
 
 rOfferHighSec,"(The SPEAKER quickly motions to you)|Hey! Over here!| I got something to show you!"
-rOfferHighSecYes,"(The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in her hands)"
+rOfferHighSecYes,"(The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in ${Etheir} hands)"
 rOfferHighSecYes_Yes,"(The SPEAKER looks surprised)|Oh, uh, sure!|(They quickly add the RESTRAINT)"
 rOfferHighSecYes_No,"(The SPEAKER grins sneakily)|I thought you might say that~|But- ahh!|(They drop the item and you slip away)"
 rOfferHighSecNo,"(The SPEAKER looks angry)|Hey! HEY! I'm talking to-|Ah, forget it."
@@ -12380,7 +12380,7 @@ rOfferKittyYes_Yes,"(The SPEAKER gleefully comes closer)|(The RESTRAINT fits snu
 rOfferKittyYes_No,"(The SPEAKER nods disappointed)|Fair enough~"
 rOfferKittyNo,"(The SPEAKER sighs)|Maybe another time~"
 rOfferKittyForce,"(The SPEAKER titters)|It's going on, kitty~"
-rOfferKittyForceYes,"(The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in her hand)"
+rOfferKittyForceYes,"(The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in ${Etheir} hand)"
 rOfferKittyForce_No,"(The SPEAKER whimpers and drops it)|Owwww!|I hit my knee!"
 rOfferKittyForce_Yes,"(The SPEAKER wiggles happily)|Oh, you're so cute!|Enjoy it~"
 rOfferKittyForce_Failure,"(The SPEAKER traps you)|(You feel the RESTRAINT being forced on)|Meow~"
@@ -12402,16 +12402,16 @@ dOfferKittyForce_NoGag,"(Duck out the way) (PERCENT chance to avoid)"
 
 
 
-rOfferShackles,"(A SPEAKER winks at you)|You look like a girl who likes feeling|like a prisoner, am I right?"
+rOfferShackles,"(A SPEAKER winks at you)|You look like a ${Psub} who likes feeling|like a prisoner, am I right?"
 rOfferShacklesYes,"(The SPEAKER nods happily)|I knew it! Well, it's your lucky day.|I've got some RESTRAINT for you~"
 rOfferShacklesYes_Yes,"(The SPEAKER spins you around)|(You hear the cold metal click shut)|Nice and submissive~"
 rOfferShacklesYes_No,"(The SPEAKER shrugs)|It's not for everyone, I guess~"
 rOfferShacklesNo,"(The SPEAKER frowns)|Really?|I was so sure..."
 rOfferShacklesForce,"(The SPEAKER grins maliciously)|I like seeing prisoners though~|And you're right here..."
-rOfferShacklesForceYes,"(The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in her hand)"
+rOfferShacklesForceYes,"(The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in ${Etheir} hand)"
 rOfferShacklesForce_No,"(The SPEAKER gulps)|M-Maybe I won't then!"
 rOfferShacklesForce_Yes,"(The SPEAKER adds the RESTRAINT)|You're blushing dear~|She doth protest too much?"
-rOfferShacklesForce_Failure,"(The SPEAKER giggles as ${Ethey} catch${Ees} you and slaps on the cuffs)|Not so fast, dear~"
+rOfferShacklesForce_Failure,"(The SPEAKER giggles as ${Ethey} catch${Ees} you and slap${Es} on the cuffs)|Not so fast, dear~"
 
 dOfferShackles_Yes,"Maybe a bit~"
 dOfferShackles_YesGag,"(Nod eagerly)"
@@ -12458,12 +12458,12 @@ dOfferComfyForce_NoGag,"(Shake your head rapidly) (PERCENT chance to avoid)"
 
 
 
-rOfferDragon,"(The SPEAKER brushes past hurriedly)|Careful girl!|Else I'll lock you away~"
+rOfferDragon,"(The SPEAKER brushes past hurriedly)|Careful ${Pdim}!|Else I'll lock you away~"
 rOfferDragonYes,"(The SPEAKER looks at you intrigued)|Aren't you something...|How about wearing this RESTRAINT?"
 rOfferDragonYes_Yes,"(The SPEAKER grins and locks it on)|Maybe I should bump into you more~"
-rOfferDragonYes_No,"(The SPEAKER rolls her eyes)|Run along then girl~"
+rOfferDragonYes_No,"(The SPEAKER rolls ${Etheir} eyes)|Run along then ${Pdim}~"
 rOfferDragonNo,"(The SPEAKER nods)|Didn't think so~|Oh, and, uh, sorry for the bump."
-rOfferDragonForce,"(The SPEAKER shakes her head)|You don't get off that lightly.|These are going on."
+rOfferDragonForce,"(The SPEAKER shakes ${Etheir} head)|You don't get off that lightly.|These are going on."
 rOfferDragonForceYes,"(The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(${EThey} hold${Es} up a RESTRAINT)"
 rOfferDragonForce_No,"(The SPEAKER sighs)|I'll let you off then.|Oh, and, uh, sorry for the bump."
 rOfferDragonForce_Yes,"(The SPEAKER adds the RESTRAINT)|(As ${Etheyre} locking it, ${Ethey} giggle${Es})|You're really cute actually~"
@@ -12492,10 +12492,10 @@ rOfferMaidRestraintYes_Yes,"(The SPEAKER buckles it strictly)|All maids wear thi
 rOfferMaidRestraintYes_No,"(The SPEAKER frowns for a second)|Ah, I see.|As you were then."
 rOfferMaidRestraintNo,"(The SPEAKER nods)|We hope to see you again nonetheless."
 rOfferMaidRestraintForce,"(The SPEAKER glares)|We urge you to reconsider."
-rOfferMaidRestraintForceYes,"(The SPEAKER has a twinkle in her eye)|We will offer you this RESTRAINT.|You should accept."
+rOfferMaidRestraintForceYes,"(The SPEAKER has a twinkle in ${Etheir} eye)|We will offer you this RESTRAINT.|You should accept."
 rOfferMaidRestraintForce_No,"(The SPEAKER pulls an odd smile)|Very well."
 rOfferMaidRestraintForce_Yes,"(The SPEAKER smugly nods)|(With surprising speed, the RESTRAINT locks in place)|Excellent, a good fit."
-rOfferMaidRestraintForce_Failure,"(The SPEAKER covers your mouth with her hand)|Shush, no more bad decisions.|(You feel her buckle the restraint strictly)"
+rOfferMaidRestraintForce_Failure,"(The SPEAKER covers your mouth with ${Etheir} hand)|Shush, no more bad decisions.|(You feel ${Ethem} buckle the restraint strictly)"
 
 dOfferMaidRestraint_Yes,"Yes please!"
 dOfferMaidRestraint_YesGag,"(Nod eagerly)"
@@ -12543,7 +12543,7 @@ dOfferObsidianForce_NoGag,"(Shake your head and whine) (PERCENT chance to avoid)
 
 
 rOfferVine,"(A SPEAKER giggles and calls to you)|Hey there~|Fancy seeing some nature?~"
-rOfferVineYes,"(The SPEAKER motions with her hands)|(Vines rise from the floor and twirl)|These will bind you nicely..."
+rOfferVineYes,"(The SPEAKER motions with ${Etheir} hands)|(Vines rise from the floor and twirl)|These will bind you nicely..."
 rOfferVineYes_Yes,"(The SPEAKER grins and motions again)|(The plants wrap around you quickly)|(You wriggle against the RESTRAINT)"
 rOfferVineYes_No,"(The SPEAKER pouts)|Aww..."
 rOfferVineNo,"(The SPEAKER frowns)|Not even a little?"
@@ -12575,7 +12575,7 @@ rOfferChainYes,"(The SPEAKER nods happily)|Exactly!|Want one for yourself?"
 rOfferChainYes_Yes,"(The SPEAKER wraps a long chain around you)|This should do the trick~|(RESTRAINT settles in place)"
 rOfferChainYes_No,"(The SPEAKER sighs)|Ah well."
 rOfferChainNo,"(The SPEAKER frowns sadly)|But they make the best noise!"
-rOfferChainForce,"(The SPEAKER rolls her eyes)|Tough luck then~|You're getting one!"
+rOfferChainForce,"(The SPEAKER rolls ${Etheir} eyes)|Tough luck then~|You're getting one!"
 rOfferChainForceYes,"(The SPEAKER grins)|See how you feel when|you're wearing one!"
 rOfferChainForce_No,"(The SPEAKER sighs)|Maybe another time then."
 rOfferChainForce_Yes,"(The SPEAKER wraps a long chain around you)|(RESTRAINT hugs your body closely)|(You shiver as the cold metal touches you)"
@@ -12652,7 +12652,7 @@ dOfferLatexForce_No,"Wait, what? (PERCENT chance to avoid)"
 dOfferLatexForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 
-rOfferLatex2,"(The SPEAKER steps up to you)|Hey girl~|You happen to be a fan of latex?"
+rOfferLatex2,"(The SPEAKER steps up to you)|Hey ${Pdim}~|You happen to be a fan of latex?"
 rOfferLatex2Yes,"(The SPEAKER smiles)|Then would you like to try on this RESTRAINT?"
 rOfferLatex2Yes_Yes,"(The SPEAKER chuckles)|Tight and shiny!"
 rOfferLatex2Yes_No,"(The SPEAKER frowns)|Aww..."
@@ -12741,7 +12741,7 @@ dOfferCursedObserve,"(Look at your belt...)"
 
 
 rOfferLeather,"(The SPEAKER walks up to you)|We don't get a lot of visitors.|I take it that you enjoy bondage?"
-rOfferLeatherYes,"(The SPEAKER tilts her head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it."
+rOfferLeatherYes,"(The SPEAKER tilts ${Etheir} head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it."
 rOfferLeatherYes_Yes,"(The SPEAKER smiles)|I'm glad you like it!"
 rOfferLeatherYes_No,"(The SPEAKER frowns)|I guess I'll have to find someone else to wear it."
 rOfferLeatherNo,"(The SPEAKER looks disappointed)|Oh well."
@@ -12773,9 +12773,9 @@ rOfferRopes,"(The SPEAKER grins as ${Ethey} see${Es} you)|Hey there sweetie~|I t
 rOfferRopesExtra,"(The SPEAKER looks at your bound body)|I've got some more ropes for you, babe!"
 rOfferRopesYes,"(The SPEAKER smiles)|Okay, hold still while I get you rigged up~"
 rOfferRopesYes_Yes,"(The SPEAKER slaps your butt as ${Ethey} tie${Es} the last knot)|All trussed up~"
-rOfferRopesYes_No,"(The SPEAKER looks disappointed and packs her rope away)"
+rOfferRopesYes_No,"(The SPEAKER looks disappointed and packs ${Etheir} rope away)"
 rOfferRopesNo,"(The SPEAKER frowns)|Aw. What a missed opportunity!"
-rOfferRopesForce,"(The SPEAKER grins and reaches for her satchel)|Well, too bad--"
+rOfferRopesForce,"(The SPEAKER grins and reaches for ${Etheir} satchel)|Well, too bad--"
 rOfferRopesForceYes,"(The SPEAKER grins)|But I've already brought so much rope with me~"
 rOfferRopesForce_No,"(The SPEAKER frowns)|Suit yourself."
 rOfferRopesForce_Yes,"(The SPEAKER smiles)|Good ${Psub}~"
@@ -12798,12 +12798,12 @@ dOfferRopesForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 
 
-rOfferWolfgirl,"(The SPEAKER perks her ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!"
+rOfferWolfgirl,"(The SPEAKER perks ${Etheir} ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!"
 rOfferWolfgirlYes,"(The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here..."
 rOfferWolfgirlYes_Yes,"(The SPEAKER gets you suited up)|There you go! Now go be a good ${Psub}!"
 rOfferWolfgirlYes_No,"(The SPEAKER scoffs)|That's what they all say."
 rOfferWolfgirlNo,"(The SPEAKER frowns)|What a shame."
-rOfferWolfgirlForce,"(The SPEAKER sneakily reaches for her baton)|You'll love it if you try it!"
+rOfferWolfgirlForce,"(The SPEAKER sneakily reaches for ${Etheir} baton)|You'll love it if you try it!"
 rOfferWolfgirlForceYes,"(The SPEAKER grins)|I promise you it's a good deal~"
 rOfferWolfgirlForce_No,"(The SPEAKER frowns)|Fine. I'll look for other candidates."
 rOfferWolfgirlForce_Yes,"(The SPEAKER smiles)|That's right. Your name, please?"
@@ -12826,15 +12826,15 @@ dOfferWolfgirlForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)
 
 
 rOfferMaid,"(The SPEAKER does a short bow as ${Ethey} see${Es} you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position..."
-rOfferMaidYes,"(The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here..."
+rOfferMaidYes,"(The SPEAKER smiles briefly before clearing ${Etheir} throat)|Fantastic!|I have your uniform right here..."
 rOfferMaidYes_Yes,"(The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck."
-rOfferMaidYes_No,"(The SPEAKER tilts her head and shrugs)|We are always prepared..."
+rOfferMaidYes_No,"(The SPEAKER tilts ${Etheir} head and shrugs)|We are always prepared..."
 rOfferMaidNo,"(The SPEAKER nods)|Fair enough."
 rOfferMaidForce,"(The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them..."
 rOfferMaidForceYes,"(The SPEAKER nods proudly)|We are willing to make some changes to our records~"
 rOfferMaidForce_No,"(The SPEAKER frowns)|You won't know what hit you."
 rOfferMaidForce_Yes,"(The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck."
-rOfferMaidForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|Consider this a warning from my mistress~"
+rOfferMaidForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and lock${Es} it tight...)|Consider this a warning from my mistress~"
 
 dOfferMaid_Yes,"This sounds like an interesting opportunity."
 dOfferMaid_YesGag,"(Nod excitedly)"
@@ -12853,15 +12853,15 @@ dOfferMaidForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
 
 
 rOfferWitch,"(The SPEAKER does a short bow as ${Ethey} see${Es} you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position..."
-rOfferWitchYes,"(The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here..."
+rOfferWitchYes,"(The SPEAKER smiles briefly before clearing ${Etheir} throat)|Fantastic!|I have your uniform right here..."
 rOfferWitchYes_Yes,"(The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck."
-rOfferWitchYes_No,"(The SPEAKER tilts her head and shrugs)|We are always prepared..."
+rOfferWitchYes_No,"(The SPEAKER tilts ${Etheir} head and shrugs)|We are always prepared..."
 rOfferWitchNo,"(The SPEAKER nods)|Fair enough."
 rOfferWitchForce,"(The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them..."
 rOfferWitchForceYes,"(The SPEAKER nods proudly)|We are willing to make some changes to our records~"
 rOfferWitchForce_No,"(The SPEAKER frowns)|You won't know what hit you."
 rOfferWitchForce_Yes,"(The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck."
-rOfferWitchForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|You'll require additional training, I suppose..."
+rOfferWitchForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and lock${Es} it tight...)|You'll require additional training, I suppose..."
 
 dOfferWitch_Yes,"This sounds like an interesting opportunity."
 dOfferWitch_YesGag,"(Nod excitedly)"
@@ -12882,7 +12882,7 @@ dOfferWitchForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
 
 
 
-rOfferBast,"(The SPEAKER perks her ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?"
+rOfferBast,"(The SPEAKER perks ${Etheir} ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?"
 rOfferBastYes,"(The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to other kitties.|Also we own you now."
 rOfferBastYes_Yes,"(The SPEAKER jumps happily)|Wonderful! Here's your collar!"
 rOfferBastYes_No,"(The SPEAKER whimpers and looks at you)|How mean!"
@@ -12913,10 +12913,10 @@ rOfferDressmaker,"(The SPEAKER does a curtsy)|Why hello there!|You have a wonder
 rOfferDressmakerYes,"(The SPEAKER smiles briefly)|You have an opportunity to model for me!|I need someone to wear all of my wonderful inventions!"
 rOfferDressmakerYes_Yes,"(The SPEAKER laces you up in the tight fabric...)|(You hear the click of a few locks going on...)|Oh my goodness... So pretty!|You'll make a fine assistant!"
 rOfferDressmakerYes_No,"(The SPEAKER frowns)|Aw..."
-rOfferDressmakerNo,"(The SPEAKER clenches her fist to the ceiling)|Nooooo!!!"
+rOfferDressmakerNo,"(The SPEAKER clenches ${Etheir} fist to the ceiling)|Nooooo!!!"
 rOfferDressmakerForce,"(The SPEAKER grins and pulls out a frilly dress)|Don't knock it till you try it!|Trust me, it'll be fun!"
-rOfferDressmakerForceYes,"(The SPEAKER furrows her brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you..."
-rOfferDressmakerForce_No,"(The SPEAKER folds her arms as ribbons rise up around her)|Suit yourself, hehe~"
+rOfferDressmakerForceYes,"(The SPEAKER furrows ${Etheir} brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you..."
+rOfferDressmakerForce_No,"(The SPEAKER folds ${Etheir} arms as ribbons rise up around ${Ethem})|Suit yourself, hehe~"
 rOfferDressmakerForce_Yes,"(The SPEAKER smiles)|Yes! Yes! Wonderful!"
 rOfferDressmakerForce_Failure,"(Magical clothes rise out of the ground without warning and engulf you)|Suit yourself!|(The SPEAKER giggles)"
 
@@ -12945,7 +12945,7 @@ rOfferAlchemistForce,"(The SPEAKER looks frustrated)|I'm not... my work is not c
 rOfferAlchemistForceYes,"(The SPEAKER looks frustrated)|I'm not... my work is not crazy!|We seek only knowledge!"
 rOfferAlchemistForce_No,"(The SPEAKER frowns)|Time for a test run!"
 rOfferAlchemistForce_Yes,"(The SPEAKER looks happy again)|Thank you! I'm super grateful!"
-rOfferAlchemistForce_Failure,"(The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)"
+rOfferAlchemistForce_Failure,"(The SPEAKER tilts ${Etheir} head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)"
 
 dOfferAlchemist_Yes,"...Hello?"
 dOfferAlchemist_YesGag,"(Nod excitedly)"
@@ -12967,13 +12967,13 @@ dOfferAlchemistForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid
 rOfferElf,"(The SPEAKER greets you)|Normally we don't meddle in mortal affairs.|But you, Outsider, are different.|Let's have a conversation."
 rOfferElfYes,"(The SPEAKER smiles warmly)|Outsiders have a lower rank in our society.|But it is a rank all the same.|You will be above your mortal peers.|What do you say?"
 rOfferElfYes_Yes,"(The SPEAKER clasps some 'jewelry' around your limbs)|You look beautiful, my dear.|I will leave you to your own affairs until we meet again."
-rOfferElfYes_No,"(The SPEAKER turns her head away)|Hmph. I offer you a bargain and you refuse."
-rOfferElfNo,"(The SPEAKER turns her head away)|Hmph. As expected."
-rOfferElfForce,"(The SPEAKER folds her arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild."
+rOfferElfYes_No,"(The SPEAKER turns ${Etheir} head away)|Hmph. I offer you a bargain and you refuse."
+rOfferElfNo,"(The SPEAKER turns ${Etheir} head away)|Hmph. As expected."
+rOfferElfForce,"(The SPEAKER folds ${Etheir} arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild."
 rOfferElfForceYes,"(The SPEAKER frowns)|Hardly slavery!|A mere slave would not be allowed to even set foot in our society."
 rOfferElfForce_No,"(The SPEAKER frowns)|We will meet again."
 rOfferElfForce_Yes,"(The SPEAKER nods and smiles)|(${EThey} decorate${Es} your body with 'jewelry')|I am glad you had a change of heart."
-rOfferElfForce_Failure,"(The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur."
+rOfferElfForce_Failure,"(The SPEAKER scoffs)|(${ETheir} magic suddenly binds you tightly in glowing ropes)|Amateur."
 
 dOfferElf_Yes,"I'm interested. (Talk with her)"
 dOfferElf_YesGag,"(Nod excitedly)"
@@ -12996,14 +12996,14 @@ dOfferElfForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
 
 rOfferElemental,"(The SPEAKER smiles at you)|Mortal."
 rOfferElementalYes,"(The SPEAKER points to the ground)|Kneel before me and accept your collar."
-rOfferElementalYes_Yes,"(The SPEAKER snaps her fingers)|(A collar of cold black metal materializes around your neck)|A girl who knows her place! Wonderful..."
+rOfferElementalYes_Yes,"(The SPEAKER snaps ${Etheir} fingers)|(A collar of cold black metal materializes around your neck)|A ${Psub} who knows ${Ptheir} place! Wonderful..."
 rOfferElementalYes_No,"(The SPEAKER scoffs)|Hmmph. Mortals..."
 rOfferElementalNo,"(The SPEAKER scoffs)|Hmmph. Mortals..."
-rOfferElementalForce,"(The SPEAKER folds her arms)|Well, look who doesn't know her place~"
-rOfferElementalForceYes,"(The SPEAKER folds her arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that."
+rOfferElementalForce,"(The SPEAKER folds ${Etheir} arms)|Well, look who doesn't know ${Ptheir} place~"
+rOfferElementalForceYes,"(The SPEAKER folds ${Etheir} arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that."
 rOfferElementalForce_No,"(The SPEAKER's eyes begin to glow)|Looks like we'll do this the fun way!"
 rOfferElementalForce_Yes,"(The SPEAKER smiles)|Wonderful~|Now come along, my pet!"
-rOfferElementalForce_Failure,"(The SPEAKER scoffs and snaps her fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?"
+rOfferElementalForce_Failure,"(The SPEAKER scoffs and snaps ${Etheir} fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?"
 
 dOfferElemental_Yes,"Yes?"
 dOfferElemental_YesGag,"(Nod excitedly)"
@@ -13031,10 +13031,10 @@ rOfferBountyhunterYes_Yes,"(The SPEAKER takes out a magic scroll and signs it)|(
 rOfferBountyhunterYes_No,"(The SPEAKER nods)|Fair enough. Guild work is not for everyone."
 rOfferBountyhunterNo,"(The SPEAKER nods)|Very well, then I won't bother you."
 rOfferBountyhunterForce,"(The SPEAKER looks dubious)|You know, there's quite a bounty on your head.|I'm sure we could do something about it."
-rOfferBountyhunterForceYes,"(The SPEAKER tilts her head)|Haha, very funny.|We both know that you're not one of those... right?"
+rOfferBountyhunterForceYes,"(The SPEAKER tilts ${Etheir} head)|Haha, very funny.|We both know that you're not one of those... right?"
 rOfferBountyhunterForce_No,"(The SPEAKER frowns and readies for battle)|My instincts were right."
 rOfferBountyhunterForce_Yes,"(The SPEAKER takes out a magic scroll and signs it)|(The scroll vanishes into the aether)|Good luck out there, freelancer."
-rOfferBountyhunterForce_Failure,"(The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off her hands)|We'll have a talk when you get out of that, okay?"
+rOfferBountyhunterForce_Failure,"(The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off ${Etheir} hands)|We'll have a talk when you get out of that, okay?"
 
 dOfferBountyhunter_Yes,"This sounds like an interesting opportunity."
 dOfferBountyhunter_YesGag,"(Nod excitedly)"
@@ -13089,13 +13089,13 @@ dOfferAncientRobotForce_NoGag,"(Shake your head and frown) (PERCENT chance to av
 
 
 rOfferDragonheart,"(The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!"
-rOfferDragonheartYes,"(The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!"
+rOfferDragonheartYes,"(The SPEAKER clears ${Etheir} throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!"
 rOfferDragonheartYes_Yes,"(The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!"
-rOfferDragonheartYes_No,"(The SPEAKER tilts her head and shrugs)|Ah well. "
+rOfferDragonheartYes_No,"(The SPEAKER tilts ${Etheir} head and shrugs)|Ah well. "
 rOfferDragonheartNo,"(The SPEAKER nods)|Fair enough."
 rOfferDragonheartForce,"(The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?"
 rOfferDragonheartForceYes,"(The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice."
-rOfferDragonheartForce_No,"(The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat..."
+rOfferDragonheartForce_No,"(The SPEAKER frowns and cracks ${Etheir} knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat..."
 rOfferDragonheartForce_Yes,"(The SPEAKER giggles)|Hehe, just messin' with ya.|Anyway, welcome to the sisterhood!"
 rOfferDragonheartForce_Failure,"(The SPEAKER grabs you and ties you up)|You won't be making trouble like that any time soon."
 
@@ -13118,13 +13118,13 @@ dOfferDragonheartForce_NoGag,"(Shake your head and frown) (PERCENT chance to avo
 
 
 rOfferBandit,"(The SPEAKER waves and calls you over)|Looks like you've made a name for yourself.|What do you say to a little agreement?"
-rOfferBanditYes,"(The SPEAKER clears her throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us."
+rOfferBanditYes,"(The SPEAKER clears ${Etheir} throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us."
 rOfferBanditYes_Yes,"(The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!"
-rOfferBanditYes_No,"(The SPEAKER tilts her head and shrugs)|Ah well."
+rOfferBanditYes_No,"(The SPEAKER tilts ${Etheir} head and shrugs)|Ah well."
 rOfferBanditNo,"(The SPEAKER nods)|Fair enough."
-rOfferBanditForce,"(The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~"
-rOfferBanditForceYes,"(The SPEAKER grins)|I like your spunk, girl.|But you're kidding, right?"
-rOfferBanditForce_No,"(The SPEAKER raises her fists and smiles)|You're on!"
+rOfferBanditForce,"(The SPEAKER frowns)|Criminals? ${PDim}, we ARE the law around these parts~"
+rOfferBanditForceYes,"(The SPEAKER grins)|I like your spunk, ${Pdim}.|But you're kidding, right?"
+rOfferBanditForce_No,"(The SPEAKER raises ${Etheir} fists and smiles)|You're on!"
 rOfferBanditForce_Yes,"(The SPEAKER chuckles)|Here's a toast to a new partnership!"
 rOfferBanditForce_Failure,"(The SPEAKER catches you and trusses you up)|Maybe we'll just have to find you an owner, then!|Hehe."
 
@@ -13189,7 +13189,7 @@ rOfferApprenticeForce,"(The SPEAKER glares at you)|It's an important message con
 rOfferApprenticeForceYes,"(The SPEAKER blushes)|Well...|I was told we would make changes to your academic record,|should you refuse..."
 rOfferApprenticeForce_No,"(The SPEAKER frowns)|They told me to make sure you sign...|by any means necessary!"
 rOfferApprenticeForce_Yes,"(The SPEAKER nods and smiles)|Thank you so much!|I don't know what I would have done if you said no..."
-rOfferApprenticeForce_Failure,"(The SPEAKER frowns and waves her wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed."
+rOfferApprenticeForce_Failure,"(The SPEAKER frowns and waves ${Etheir} wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed."
 
 dOfferApprentice_Yes,"Thank you for delivering it. (Read it)"
 dOfferApprentice_YesGag,"(Read the letter)"
@@ -13209,15 +13209,15 @@ dOfferApprenticeForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoi
 
 
 rOfferTemp,"(The SPEAKER does a short bow as ${Ethey} see${Es} you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position..."
-rOfferTempYes,"(The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here..."
+rOfferTempYes,"(The SPEAKER smiles briefly before clearing ${Etheir} throat)|Fantastic!|I have your uniform right here..."
 rOfferTempYes_Yes,"(The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck."
-rOfferTempYes_No,"(The SPEAKER tilts her head and shrugs)|We are always prepared..."
+rOfferTempYes_No,"(The SPEAKER tilts ${Etheir} head and shrugs)|We are always prepared..."
 rOfferTempNo,"(The SPEAKER nods)|Fair enough."
 rOfferTempForce,"(The SPEAKER grins and pulls out a skimpy dress)|Might I remind you that you have made quite a few... enemies?|It would be a shame if you ran into one of them..."
 rOfferTempForceYes,"(The SPEAKER nods proudly)|We are willing to make some changes to our records~"
 rOfferTempForce_No,"(The SPEAKER frowns)|You won't know what hit you."
 rOfferTempForce_Yes,"(The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck."
-rOfferTempForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|You'll require additional training, I suppose..."
+rOfferTempForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and lock${Es} it tight...)|You'll require additional training, I suppose..."
 
 dOfferTemp_Yes,"This sounds like an interesting opportunity."
 dOfferTemp_YesGag,"(Nod excitedly)"
@@ -13241,9 +13241,9 @@ dOfferTempForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
 
 
 rBlacksmithShop,"(The SPEAKER waves)|Greetings,|I manufacture all sorts of weapons.|Would you like to buy some?"
-rBlacksmithShopAttack,"(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!"
+rBlacksmithShopAttack,"(The SPEAKER drops ${Etheir} hammer and cracks ${Etheir} knuckles)|Put em up!"
 rBlacksmithShop_AlreadyHave,"(The SPEAKER looks at you.)|But you already have one?"
-rBlacksmithShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, ma'am."
+rBlacksmithShop_NoMoney,"(The SPEAKER folds ${Etheir} arms)|I don't do charity, ma'am."
 rBlacksmithShopRedKey,"(The SPEAKER smirks)|Another adventurer found this lying around.|I wonder who it's for~"
 rBlacksmithShopPick,"(The SPEAKER smiles)|Now don't be up to no good~|Or else I'll have to put you in cuffs..."
 rBlacksmithShopSword,"(The SPEAKER nods)|A versatile weapon. One of my favorites."
@@ -13254,9 +13254,9 @@ rBlacksmithShopHammer,"(The SPEAKER nods)|Speak softly and carry a big hammer."
 rBlacksmithShopTrapCuffs,"(The SPEAKER smiles)|Can never be too prepared~"
 
 rArmorerShop,"(The SPEAKER waves)|Hi.|I make armor. Only the finest.|I don't sell it cheap, unlike my twin."
-rArmorerShopAttack,"(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!"
+rArmorerShopAttack,"(The SPEAKER drops ${Etheir} hammer and cracks ${Etheir} knuckles)|Put em up!"
 rArmorerShop_AlreadyHave,"(The SPEAKER looks at you.)|Do you have a dealer's license?"
-rArmorerShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, girl."
+rArmorerShop_NoMoney,"(The SPEAKER folds ${Etheir} arms)|I don't do charity, ${Pdim}."
 rArmorerShopBreastplate,"(The SPEAKER nods)|The most high-impact of sports bras."
 rArmorerShopSteelBoots,"(The SPEAKER nods)|These aren't for hiking, just so you know."
 rArmorerShopGauntlets,"(The SPEAKER nods)|I've been thinking about making a lockable version..."
@@ -13268,9 +13268,9 @@ rArmorerShopTrapBelt,"(The SPEAKER chuckles)|I hear female adventurers like to w
 rArmorerShopTrapBra,"(The SPEAKER chuckles)|I hear female adventurers like to wear these for protection.|Or something like that."
 
 rBowyerShop,"(The SPEAKER waves)|Hello ${PHonor}!|What brings you here today?"
-rBowyerShopAttack,"(The SPEAKER folds her arms)|That's not very nice!"
+rBowyerShopAttack,"(The SPEAKER folds ${Etheir} arms)|That's not very nice!"
 rBowyerShop_AlreadyHave,"(The SPEAKER looks at you and smiles.)|Don't you already have one?"
-rBowyerShop_NoMoney,"(The SPEAKER folds her arms)|I don't do charity, ${PHonor}."
+rBowyerShop_NoMoney,"(The SPEAKER folds ${Etheir} arms)|I don't do charity, ${PHonor}."
 rBowyerShopLeatherBoots,"(The SPEAKER nods)|Could use a higher heel..."
 rBowyerShopLeatherGloves,"(The SPEAKER nods)|Back to the basics."
 rBowyerShopBustier,"(The SPEAKER smiles)|I see you have good taste!"
@@ -13284,7 +13284,7 @@ rBowyerShopTrapBlindfold,"(The SPEAKER giggles)|I like to include these as a gif
 rShadyShop,"(The SPEAKER whispers in a hushed tone)|Welcome.|I'm not supposed to be here, so|if you don't want to do business, get out.|I only sell in packs of 10, by the way."
 rShadyShopAttack,"(The SPEAKER tries to get away)|Damn!"
 rShadyShop_AlreadyHave,"(The SPEAKER looks you over and shrugs)|Don't joke around."
-rShadyShop_NoMoney,"(The SPEAKER folds her arms)|Don't have money? Better go find some."
+rShadyShop_NoMoney,"(The SPEAKER folds ${Etheir} arms)|Don't have money? Better go find some."
 rShadyShopStuffing,"(The SPEAKER produces a bag of stuffings)|Quite the staple."
 rShadyShopRopeSnakeRaw,"(The SPEAKER produces a bundle of rope)|Aren't you quite the artist.|That was rhetorical."
 rShadyShopVinylTapeRaw,"(The SPEAKER produces some bondage tape)|It only sticks to itself, doesn't leave residue.|Gotta be responsible, you know?"
@@ -13297,7 +13297,7 @@ rShadyShopClothBlindfold,"(The SPEAKER produces a bag of cloth strips)|How tight
 
 
 rAntiqueShop,"(The SPEAKER rattles as ${Ethey} wave${Es})|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!"
-rAntiqueShopAttack,"(The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise..."
+rAntiqueShopAttack,"(The SPEAKER cracks ${Etheir} exposed knuckles)|So you've seen through my disguise..."
 rAntiqueShop_AlreadyHave,"(The SPEAKER looks at you.)|Yours is just fine, dear."
 rAntiqueShop_NoMoney,"(The SPEAKER chuckles)|You don't have enough gold for that, dear.|Try coming back after a good round of looting!"
 rAntiqueShopSunglasses,"(The SPEAKER nods)|My great grandmother used to wear these."
@@ -13309,7 +13309,7 @@ rShopBuy,"(Select an item to buy from the SPEAKER)"
 rShopBuyAttack,"(Attack the SPEAKER?)"
 dShopBuy,(Buy ITM# for IC# gp) (Owned: AMNT#)
 rShopBuyItem,"(The SPEAKER sells you the item)"
-rShopBuy_Fail,"(The SPEAKER shakes her head)|I think you'd be better off without that~"
+rShopBuy_Fail,"(The SPEAKER shakes ${Etheir} head)|I think you'd be better off without that~"
 rShopBuy_FailSub,"(The SPEAKER looks embarrassed)|I can't sell you that, ${PHonor}..."
 rShopBuy_FailBrat,"(The SPEAKER blushes)|Actually, I was saving that for myself..."
 rShopBuy_FailDom,"(The SPEAKER grins)|Good ${Psub}s don't need one of those~"
@@ -13339,7 +13339,7 @@ rElfCrystalSell,"(The SPEAKER approaches you)|My greetings, Outsider!|My throat 
 rElfCrystalSellAttack,"(The SPEAKER doesn't look surprised)|Then let us have a battle of wits!"
 rElfCrystalSellPotionMana,"(The SPEAKER thanks you)|A kind offering! You have my thanks."
 rElfCrystalSellManaOrb,"(The SPEAKER thanks you)|A magnificent offering! You have my thanks."
-rElfCrystalSellElfCrystal,"(The SPEAKER tilts her head)|...where did you get this?"
+rElfCrystalSellElfCrystal,"(The SPEAKER tilts ${Etheir} head)|...where did you get this?"
 rElfCrystalSellEarthRune,"(The SPEAKER thanks you)|A fine trinket!|I will enjoy meditating upon it."
 rElfCrystalSellWaterRune,"(The SPEAKER thanks you)|I sense its flowing essence.|You have my thanks."
 rElfCrystalSellIceRune,"(The SPEAKER thanks you)|I can feel a great sadness emanating from it.|It calls for warmth."
@@ -13349,7 +13349,7 @@ rFoodSell,"(The SPEAKER munches on a donut)|Gee I'm starving!|You wouldn't have 
 rFoodSellAttack,"(The SPEAKER throws a donut in your face)|Ha! Take that!"
 rFoodSellDonut,"(The SPEAKER smiles)|Yum! Thank you!"
 rFoodSellCookie,"(The SPEAKER smiles)|Crunchy! My favorite!"
-rFoodSellCookie,"(The SPEAKER tilts her head)|It smells funny...|Still, it'd be a shame for it to go to waste!"
+rFoodSellCookie,"(The SPEAKER tilts ${Etheir} head)|It smells funny...|Still, it'd be a shame for it to go to waste!"
 
 rScrollSell,"(The SPEAKER approaches you with an offer)|Hello!|I am searching for magical scrolls.|Would you happen to have any?"
 rScrollSellAttack,"(The SPEAKER doesn't look surprised)|Rude!"
@@ -13363,14 +13363,14 @@ rScrollPlusSellAttack,"(The SPEAKER shrugs)|I guess that's how it is."
 rScrollPlusSellPotionMana,"(The SPEAKER smiles)|Always nice to have some of these!"
 rScrollPlusSellManaOrb,"(The SPEAKER smiles)|I can never get enough of these."
 rScrollPlusSellEarthRune,"(The SPEAKER smiles)|Elemental magic, interesting stuff."
-rScrollPlusSellWaterRune,"(The SPEAKER tilts her head)|Why is it wet?"
+rScrollPlusSellWaterRune,"(The SPEAKER tilts ${Etheir} head)|Why is it wet?"
 rScrollPlusSellIceRune,"(The SPEAKER smiles)|Elemental magic, interesting stuff."
 rScrollPlusSellScrollArms,"(The SPEAKER smiles)|Gladly, this will be useful to my studies."
 rScrollPlusSellScrollLegs,"(The SPEAKER smiles)|My legs don't carry me like they used to~"
 rScrollPlusSellScrollVerbal,"(The SPEAKER smiles)|Always good to have somebody to talk to."
 rScrollPlusSellScrollPurity,"(The SPEAKER giggles)|Living dangerously, I see~"
 
-rWolfgirlSell,"(The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?"
+rWolfgirlSell,"(The SPEAKER approaches you with an offer)|Hey ${Pdim}~|You seem like the explorer type.|Happen to have any good finds?"
 rWolfgirlSellAttack,"(The SPEAKER frowns)|Well then."
 rWolfgirlSellMistressKey,"(The SPEAKER grins)|Are you willing to part with this?"
 rWolfgirlSellAncientPowerSource,"(The SPEAKER smiles)|Aha!|Fantastic."
@@ -13388,8 +13388,8 @@ rNinjaSellBomb,"(The SPEAKER bows)|A bit dangerous, but I'll take it."
 rNinjaSellBola,"(The SPEAKER bows)|A tool of the trade."
 rNinjaSellPotionInvisibility,"(The SPEAKER bows)|A most valuable find."
 
-rGunSell,"(The SPEAKER tilts her shades)|I like to think of myself as a dealer in quality tools."
-rGunSellAttack,"(The SPEAKER reaches for her hip)|I'd think twice if I were you..."
+rGunSell,"(The SPEAKER tilts ${Etheir} shades)|I like to think of myself as a dealer in quality tools."
+rGunSellAttack,"(The SPEAKER reaches for ${Etheir} hip)|I'd think twice if I were you..."
 rGunSellBlaster,"(The SPEAKER smiles)|Nevermere keeps a tight grip on their blueprints.|Thank you."
 rGunSellEscortDrone,"(The SPEAKER smiles)|Nevermere keeps a tight grip on their blueprints.|Thank you."
 rGunSellCrossbow,"(The SPEAKER smiles)|There's always a buyer.|That's just the way things are."
@@ -13398,14 +13398,14 @@ rGunSellCrossbowHeavy,"(The SPEAKER smiles)|That's what I'm talking about."
 rGunSellGunpowder,"(The SPEAKER nods)|Yeah... that'll do."
 
 rBombSell,"(The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnance in order to...|...add to my collection.|Anyway, got any bombs?"
-rBombSellAttack,"(The SPEAKER reaches for her backpack)|I'll blow you away!"
+rBombSellAttack,"(The SPEAKER reaches for ${Etheir} backpack)|I'll blow you away!"
 rBombSellSmokeBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
 rBombSellFlashBomb,"(The SPEAKER shrugs)|Cute fireworks, I suppose..."
 rBombSellFlashbang,"(The SPEAKER giggles)|That's what I'm talking about!"
-rBombSellBomb,"(The SPEAKER rubs her hands together)|Excellent..."
+rBombSellBomb,"(The SPEAKER rubs ${Etheir} hands together)|Excellent..."
 rBombSellGunpowder,"(The SPEAKER smiles)|Yes! I can make more bombs!"
 
-rThiefSell,"(The SPEAKER takes a whiff of her cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my drift."
+rThiefSell,"(The SPEAKER takes a whiff of ${Etheir} cigar)|Hey friend. Im in the market for some 'tools,'|...if you catch my drift."
 rThiefSellAttack,"(The SPEAKER pulls out a knife)|Thought so. You won't take me that easily!"
 rThiefSellCuffKeys,"(The SPEAKER nods)|Could help out in a bind."
 rThiefSellSnuffer,"(The SPEAKER chuckles)|Lights out, eh..."
@@ -13416,7 +13416,7 @@ rThiefSellFlashBomb,"(The SPEAKER smiles)|For when things go south..."
 rThiefSellFlashbang,"(The SPEAKER smiles)|You can never be too safe."
 
 rCookieSell,"(A distracted SPEAKER munches on a cookie)"
-rCookieSellAttack,"(The SPEAKER continues eating her snack)"
+rCookieSellAttack,"(The SPEAKER continues eating ${Etheir} snack)"
 rCookieSellCookie,"(The SPEAKER plucks the cookie out of your hand)|My favorite!"
 rCookieSellBrownies,"(The SPEAKER eats the brownies slowly, savoring every bite)|Kind of dense, but really good!"
 rCookieSellDonut,"(The SPEAKER takes a bite out of the donut)|A bit heavy on the sprinkles..."
@@ -13541,7 +13541,7 @@ dGenericAllyLetMePass_ConfirmAll,"(Swap with all units)"
 dGenericAllyLetMePass_ConfirmPush,"(Push this unit)"
 dGenericAllyLetMePass_ConfirmPushAll,"(Push all units)"
 dGenericAllyLetMePass_Leave,"(Never mind...)"
-rGenericAllyLetMePass,"(Confirm? You will swap if you click on her, for a few turns)"
+rGenericAllyLetMePass,"(Confirm? You will swap if you click on ${Ethem}, for a few turns)"
 rGenericAllyLetMePass_Leave,"(...)"
 
 dGenericAllyStopFollowingMe,"(Stop following me)"
@@ -13631,14 +13631,14 @@ dGenericAllyFlirt_ReleaseGag,"(Help her with her distraction)"
 rGenericAllyFlirt_Release,"(The SPEAKER nervously smiles)|H-how'd you know?"
 rGenericAllyFlirt_ReleaseDom,"(The SPEAKER smiles)|Indeed I am... Won't you assist me?"
 rGenericAllyFlirt_ReleaseSub,"(The SPEAKER wiggles excitedly)|Y-yes ${PHonor}!"
-rGenericAllyFlirt_ReleaseBrat,"(The SPEAKER shakes her head while blushing)|W-what makes you think that?"
+rGenericAllyFlirt_ReleaseBrat,"(The SPEAKER shakes ${Etheir} head while blushing)|W-what makes you think that?"
 rGenericAllyFlirt_ReleaseRobot,"(The SPEAKER computes something)|Error..."
 rGenericAllyFlirt_ReleaseGagged,"(The SPEAKER nods)|Mmmph!"
 dGenericAllyFlirt_Release_Wand,"(Give her release with a magic wand)"
 dGenericAllyFlirt_Release_Vibe,"(Set her toys to high for a while)"
 dGenericAllyFlirt_Release_Cuddle,"(Cuddle with her for 2 turns)"
 rGenericAllyFlirt_Release_Success,"(The SPEAKER trembles with pleasure)"
-rGenericAllyFlirt_Release_FailChastity,"(The SPEAKER struggles to let go due to her chastity belt)"
+rGenericAllyFlirt_Release_FailChastity,"(The SPEAKER struggles to let go due to ${Etheir} chastity belt)"
 
 
 
@@ -13736,7 +13736,7 @@ NameFuukaRecruit,"Fuuka"
 rFuuka,"(You find a girl wearing an ornate dress)|(${EThey} glance${Es} at you)|And who might you be?"
 dFuuka_Aggressive,"I should be asking the same of you."
 dFuuka_AggressiveGag,"(Growl at her)"
-rFuukaAggressive,"(She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?"
+rFuukaAggressive,"(${EThey} smile${Es})|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?"
 dFuukaAggressive_Question,What kind of name is that?
 rFuukaAggressive_Question,"(SPEAKER frowns)|It means Windsong!|I bet yours isn't anywhere near as cool."
 rFuukaAggressive_Question_Brat,"(SPEAKER looks enraged)|Because names and meanings are different things!|My name uses the script from the Old Civilization!|You're just a poser!"
@@ -13754,9 +13754,9 @@ dFuukaAggressive_Brat_ProceedGag,"(...)"
 dFuukaAggressive_Brat_Proceed2,"(...)"
 dFuuka_Defensive,"I'm an adventurer. And who are you?"
 dFuuka_DefensiveGag,"Mmmmm... (Blush)"
-rFuukaDefensive,"(She grins)|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though."
+rFuukaDefensive,"(${EThey} grin${Es})|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though."
 dFuukaDefensive_Question,Reincarnated ones?
-rFuukaDefensive_Question,"(SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue."
+rFuukaDefensive_Question,"(SPEAKER tilts ${Etheir} head)|I believe the term is 'Zombie' in the common tongue."
 rFuukaDefensive_Question_Question,"(SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually."
 dFuukaDefensive_Question_Question,"How do they get reincarnated?"
 rFuukaDefensive_Question_Question2,"(SPEAKER enjoys the discussion)|No, they're people!|People who died long ago.|Now they live a new life, safeguarded by my Resurrection Arts!"
@@ -13772,7 +13772,7 @@ rFuukaDefensive_Question_Question_Question_Question2,"(SPEAKER frowns)|Divine bl
 dFuukaDefensive_Question_Question_Question_Question2,"Can you resurrect my back? It kind of hurts right now..."
 rFuukaDefensive_Question_Question_Question_Question3,"(SPEAKER smiles)|Those latex-clad idiots don't understand a thing.|Science can only get you so far!|Worship is where it's at!"
 dFuukaDefensive_Question_Question_Question_Question3,"The Alchemists are always looking for a youth potion."
-rFuukaDefensive_Question_Question_Question_Question_Question,"(SPEAKER folds her arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!"
+rFuukaDefensive_Question_Question_Question_Question_Question,"(SPEAKER folds ${Etheir} arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!"
 dFuukaDefensive_Question_Question_Question_Question_Question,"Do you know what's on the next floor?"
 rFuukaDefensive_Question_Question_Question_Question_Question2,"(SPEAKER blushes)|Nope, nothing at all!|In fact, whatever it is, you won't find it down here!|Now, would you like to become my pet?"
 dFuukaDefensive_Question_Question_Question_Question_Question2,"Do you know anything about the Old Civilization?"
@@ -13802,27 +13802,27 @@ dFuukaDefensive_Brat_ProceedGag,"(Giggle)"
 dFuukaDefensive_Brat_Proceed2,"(...)"
 dFuuka_Brat,"Don't mess with me, girl."
 dFuuka_BratGag,"Mmpphgh? (Pout at her)"
-rFuukaBrat,"(She smirks)|So you're that kind of visitor, huh?"
+rFuukaBrat,"(${EThey} smirk${Es})|So you're that kind of visitor, huh?"
 dFuukaBrat_Question,That's right. How powerful are you?
-rFuukaBrat_Question,"(She cracks her knuckles)|I have been practicing the resurrection arts for a thousand years."
-rFuukaBrat_Question_Question,"(She smiles)|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them."
+rFuukaBrat_Question,"(${EThey} crack${Es} ${Etheir} knuckles)|I have been practicing the resurrection arts for a thousand years."
+rFuukaBrat_Question_Question,"(${EThey} smile${Es})|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them."
 dFuukaBrat_Question_Question,"What the heck are 'Resurrection Arts'?"
 dFuukaBrat_Question_Question_Proceed,"(...)"
 dFuukaBrat_Question_Proceed,"(...)"
 dFuukaBrat_Proceed,It's time for a true display of skill!
 dFuukaBrat_ProceedGag,Hmmph. (Look away)
-rFuukaBrat_ProceedGag,"(She grins)|We'll wipe that pout off your face soon enough..."
+rFuukaBrat_ProceedGag,"(${EThey} grin${Es})|We'll wipe that pout off your face soon enough..."
 dFuukaBrat_ProceedGag_Proceed,"(Shake your head)"
-rFuukaBrat_Brat,"(She frowns)|Well, you will soon."
+rFuukaBrat_Brat,"(${EThey} frown${Es})|Well, you will soon."
 dFuukaBrat_Brat,Pfff. Never heard of it.
 dFuukaBrat_Brat_Proceed,"I bet I could do better."
 dFuukaBrat_Brat_ProceedGag,"(Giggle)"
 dFuukaBrat_Brat_Proceed2,"(...)"
 dFuuka_Dom,"Why does that matter to you?"
 dFuuka_DomGag,"(Stare at her silently, maintaining your posture)"
-rFuukaDom,"(She grins)|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong."
+rFuukaDom,"(${EThey} grin${Es})|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong."
 dFuukaDom_Question,By what authority?
-rFuukaDom_Question,"(SPEAKER tilts her head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries."
+rFuukaDom_Question,"(SPEAKER tilts ${Etheir} head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries."
 rFuukaDom_Question_Question,"(SPEAKER blushes)|Umm... That's because...|Oh shut up!"
 dFuukaDom_Question_Question,"You don't sound too confident."
 dFuukaDom_Question_Question_Proceed,"Who are you anyway?"
@@ -13839,7 +13839,7 @@ dFuukaDom_Brat_ProceedGag,"(Giggle)"
 dFuukaDom_Brat_Proceed2,"(...)"
 dFuuka_Sub,"I'm an adventurer, ${EHonor}."
 dFuuka_SubGag,"Mmmpphh~ (Moan and wiggle seductively)"
-rFuukaSub,"(She grins)|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!"
+rFuukaSub,"(${EThey} grin${Es})|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!"
 dFuukaSub_Question,A pet? What kind?
 rFuukaSub_Question,"(SPEAKER hops up and down excitedly)|Oh I've got dresses!|And all sorts of fun gear!|Maybe even this huge gag for you to chew on!"
 rFuukaSub_Question_Question,"(SPEAKER grins)|Having second thoughts?"
@@ -13858,7 +13858,7 @@ dFuukaSub_Brat_ProceedGag,"(Shake your head)"
 dFuukaSub_Brat_Proceed2,"(Sigh and shrug)"
 dFuuka_Attack,(Attack her without saying anything)
 
-rFuukaPostIntro,"(SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?"
+rFuukaPostIntro,"(SPEAKER clears ${Etheir} throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?"
 dFuukaPostIntro_Brat,"I do what I want."
 dFuukaPostIntro_BratGag,"(Glare at her and scoff)"
 rFuukaPostIntro_Brat,"(SPEAKER makes a big grin)|I take it that you wish to challenge me?|Very well!|Come at me!"
@@ -13880,10 +13880,10 @@ dFuukaFight_Fight2Gag,"Mmmmmghh!"
 dFuukaFight_Fight3,"I suppose we fight..."
 dFuukaFight_Fight3Gag,"Mmmmph..."
 
-rFuukaLose,"(SPEAKER smiles as she stands over you)|Well well. Look who won."
+rFuukaLose,"(SPEAKER smiles as ${Ethey} stand${Es} over you)|Well well. Look who won."
 rFuukaLoseAccept,"(SPEAKER nods and giggles)|Absolutely.|Allow me to present to you, my prized pet collar!|I save it only for my favorite pets.|That's right! You're my favorite pet now~"
 rFuukaLoseDeny,"(SPEAKER giggles)|You're not in a position to resist.|Now then, where did I put that collar..."
-rFuukaLoseMagic,"(SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!"
+rFuukaLoseMagic,"(SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(${EThey} brandish${Ees} a collar) Now including you!"
 dFuukaLose_Magic,"What's this weird magic?"
 dFuukaLose_Accept,"You beat me fair and square."
 dFuukaLose_AcceptGag,"Mmmph. (Submit)"
@@ -13892,14 +13892,14 @@ dFuukaLose_DenyGag,"Mmmph! (Struggle weakly)"
 dFuukaLose_Continue1,"(Sigh and accept your fate)"
 dFuukaLose_Continue2,"(Accept the collar eagerly)"
 dFuukaLose_Continue3,"(Accept the collar begrudgingly)"
-rFuukaLoseFinish,"(SPEAKER presents you with your collar...)|(She locks it around your neck)|Now you're my pretty toy!"
+rFuukaLoseFinish,"(SPEAKER presents you with your collar...)|(${EThey} lock${Es} it around your neck)|Now you're my pretty toy!"
 
-rFuukaStage2,"(SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!"
+rFuukaStage2,"(SPEAKER puts up a wall of talismans to regain ${Etheir} strength)|I'm... I'm not finished yet!"
 
 rFuukaWin,"(SPEAKER is out of breath)|I... can't... believe... it...|She drops her keys..."
 rFuukaWinAccept,"(SPEAKER looks flabbergasted)|R-really? Okay... I'll give you a reward then..."
 dFuukaWin_Accept,"(Submit to her anyway) (Gain a special collar)"
-rFuukaWinGag,"(SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!"
+rFuukaWinGag,"(SPEAKER resists but ultimately you force a gag into ${Etheir} mouth)|MMMMMPH!"
 dFuukaWin_Gag,"(Gag her)"
 
 
@@ -13955,7 +13955,7 @@ dShopkeeperStartShop_Sell,(Sell Items)
 dShopkeeperStartShop_SellBulk,(Sell Whole Stacks of Items)
 dShopkeeperStartShop_SellStorage,(Sell from your storage)
 dShopkeeperStart_Gag,"Mmmph!"
-rShopkeeperStartGag,"Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)"
+rShopkeeperStartGag,"Daww! What a cutie!|(${EThey} smile${Es} and pat${Es} your head gently)"
 dShopkeeperStart_DivineAsk,"How are you removing these divine restraints anyway?"
 rShopkeeperStartDivineAsk,"(${EThey} wink${Es}, a smirk stretching across ${Etheir} face)|That's a trade secret, sweetie~"
 
@@ -13968,7 +13968,7 @@ rShopkeeperStartBuy,"I'm sorry sweetie, I don't sell merchandise here.|Who would
 dReturn,"(Return)"
 
 
-rShopkeeperTeleport,"(The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!"
+rShopkeeperTeleport,"(The SPEAKER brings you safely back to ${Etheir} shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!"
 
 dShopkeeperTeleport_Pay,"Right! Here's RESCUECOST gp."
 dShopkeeperTeleport_PayGag,"Mmmph. (Nod your head and pay RESCUECOST gp)"
@@ -13976,16 +13976,16 @@ rShopkeeperTeleportPay,"(The SPEAKER smiles)|Pleasure doing business with ya~"
 
 dShopkeeperTeleport_Tab,"Mind adding it to my tab?"
 dShopkeeperTeleport_TabGag,"(Shake your head regrettably.)"
-rShopkeeperTeleportTabYesRestrained,"(The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~"
-rShopkeeperTeleportTabYes,"(The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all."
-rShopkeeperTeleportTabNo,"(The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!"
+rShopkeeperTeleportTabYesRestrained,"(The SPEAKER rubs ${Etheir} chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~"
+rShopkeeperTeleportTabYes,"(The SPEAKER rubs ${Etheir} chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all."
+rShopkeeperTeleportTabNo,"(The SPEAKER folds ${Etheir} arms)|Come on now, I can hear the gold jingling in your pocket!"
 
 dShopkeeperTeleport_TabRetry,"Pretty please? I promise I'll pay you back."
 dShopkeeperTeleport_TabRetryGag,"(Be insistent)"
-rShopkeeperTeleportTabRetryRestrained,"(The SPEAKER rubs her chin)|Fine, I believe you.|But I won't be letting you out of those restraints!"
+rShopkeeperTeleportTabRetryRestrained,"(The SPEAKER rubs ${Etheir} chin)|Fine, I believe you.|But I won't be letting you out of those restraints!"
 rShopkeeperTeleportTabRetry,"(The SPEAKER sighs)|Fine, I believe you.|You better believe I won't forget, though!"
 
-rShopkeeperTeleportDebt,"(The SPEAKER folds her arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?"
+rShopkeeperTeleportDebt,"(The SPEAKER folds ${Etheir} arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?"
 
 dShopkeeperTeleportDebt_Armor,"(Help her test cursed armors)"
 dShopkeeperTeleportDebt_Restraint,"(Add cursed restraints as collateral)"
@@ -13997,7 +13997,7 @@ rShopkeeperTeleportDebt_Armor,"(The SPEAKER holds up a RESTRAINTNAME)|I've bough
 rShopkeeperTeleportDebt_Restraint,"(The SPEAKER holds up a RESTRAINTNAME)|I need to make sure you won't go running off again.|This RESTRAINTNAME here has a special seal on it.|I can get you out of it, of course, but you'll have to pay up first."
 rShopkeeperTeleportDebt_Collar,"(The SPEAKER holds up a RESTRAINTNAME)|Your captors are quite the market for high-security restraints.|If you get captured by them, maybe they'll see my logo on this collar!|It's quite comfy and secure,|you'll end up feeling more submissive the more you wear it."
 rShopkeeperTeleportDebt_Catsuit,"(The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!"
-rShopkeeperTeleportDebt_Pay,"(The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~"
+rShopkeeperTeleportDebt_Pay,"(The SPEAKER folds ${Etheir} arms and nods)|Good ${Psub}! I knew you would come clean~"
 
 dShopkeeperTeleportDebt_Yes,"Sure! I accept!"
 dShopkeeperTeleportDebt_YesGag,"(Nod in approval)"
@@ -14007,8 +14007,8 @@ dShopkeeperTeleportDebt_NoGag,"(Shake your head)"
 rShopkeeperTeleportDebt_Armor_YesCursed,"Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~"
 rShopkeeperTeleportDebt_Armor_YesUncursed,"Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~"
 rShopkeeperTeleportDebt_Restraint_Yes,"Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(${EThey} place${Es} the RESTRAINTNAME on you and the seal activates. There is no keyhole.)"
-rShopkeeperTeleportDebt_Collar_Yes,"Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~"
-rShopkeeperTeleportDebt_Catsuit_Yes,"You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!"
+rShopkeeperTeleportDebt_Collar_Yes,"Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckle${Es} the collar on)|Now go out there and find me some treasure~"
+rShopkeeperTeleportDebt_Catsuit_Yes,"You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dust${Es} it off, and help${Es} you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!"
 
 rShopkeeperTeleportDebt_Armor_No,"No? That's alright.|I'm sure I'll find someone else to test these on, huehue."
 rShopkeeperTeleportDebt_Restraint_No,"Up to you!|You'll still have to pay me eventually~"
@@ -14049,14 +14049,14 @@ rShopkeeperOfferHelpPayFavor,"(The SPEAKER rolls ${Etheir} eyes, but smiles)|Alr
 
 dShopkeeperOfferHelp_Tab,"Mind adding it to my tab?"
 dShopkeeperOfferHelp_TabGag,"(Shake your head regrettably.)"
-rShopkeeperOfferHelpTabYesRestrained,"(The SPEAKER rubs her chin)|Sorry ${PGen}!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~"
-rShopkeeperOfferHelpTabYes,"(The SPEAKER rubs her chin)|Sorry ${PGen}!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~"
-rShopkeeperOfferHelpTabNo,"(The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!"
-rShopkeeperOfferHelpTabNoPoor,"(The SPEAKER folds her arms)|Business is business, ${PGen}~"
+rShopkeeperOfferHelpTabYesRestrained,"(The SPEAKER rubs ${Etheir} chin)|Sorry ${PGen}!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~"
+rShopkeeperOfferHelpTabYes,"(The SPEAKER rubs ${Etheir} chin)|Sorry ${PGen}!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~"
+rShopkeeperOfferHelpTabNo,"(The SPEAKER folds ${Etheir} arms)|Come on now, I can hear the gold jingling in your pocket!"
+rShopkeeperOfferHelpTabNoPoor,"(The SPEAKER folds ${Etheir} arms)|Business is business, ${PGen}~"
 
 dShopkeeperOfferHelp_TabRetry,"Pretty please? I promise I'll pay you back."
 dShopkeeperOfferHelp_TabRetryGag,"(Be insistent)"
-rShopkeeperOfferHelpTabRetryRestrained,"(The SPEAKER rubs her chin)|No can do.|Rules are rules~"
+rShopkeeperOfferHelpTabRetryRestrained,"(The SPEAKER rubs ${Etheir} chin)|No can do.|Rules are rules~"
 rShopkeeperOfferHelpTabRetry,"(The SPEAKER sighs)|Business is business, ${PGen}~"
 
 rShopkeeperOfferHelpDebt,"(The SPEAKER reluctantly frees you)|...Fine, I'll cut you a deal.|You help me, I help you. Fair?"
@@ -14071,7 +14071,7 @@ rShopkeeperOfferHelpDebt_Armor,"(The SPEAKER holds up a RESTRAINTNAME)|I've boug
 rShopkeeperOfferHelpDebt_Restraint,"(The SPEAKER holds up a RESTRAINTNAME)|I need to make sure you won't go running off again.|This RESTRAINTNAME here has a special seal on it.|I can get you out of it, of course, but you'll have to pay up first."
 rShopkeeperOfferHelpDebt_Collar,"(The SPEAKER holds up a RESTRAINTNAME)|Your captors are quite the market for high-security restraints.|If you get captured by them, maybe they'll see my logo on this collar!|It's quite comfy and secure,|you'll end up feeling more submissive the more you wear it."
 rShopkeeperOfferHelpDebt_Catsuit,"(The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!"
-rShopkeeperOfferHelpDebt_Pay,"(The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~"
+rShopkeeperOfferHelpDebt_Pay,"(The SPEAKER folds ${Etheir} arms and nods)|Good ${Psub}! I knew you would come clean~"
 
 dShopkeeperOfferHelpDebt_Yes,"Sure! I accept!"
 dShopkeeperOfferHelpDebt_YesGag,"(Nod in approval)"
@@ -14081,8 +14081,8 @@ dShopkeeperOfferHelpDebt_NoGag,"(Shake your head)"
 rShopkeeperOfferHelpDebt_Armor_YesCursed,"Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~"
 rShopkeeperOfferHelpDebt_Armor_YesUncursed,"Excellent! Please hold still~|(${EThey} fit${Es} the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~"
 rShopkeeperOfferHelpDebt_Restraint_Yes,"Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(${EThey} place${Es} the RESTRAINTNAME on you and the seal activates. There is no keyhole.)"
-rShopkeeperOfferHelpDebt_Collar_Yes,"Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~"
-rShopkeeperOfferHelpDebt_Catsuit_Yes,"You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!"
+rShopkeeperOfferHelpDebt_Collar_Yes,"Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckle${Es} the collar on)|Now go out there and find me some treasure~"
+rShopkeeperOfferHelpDebt_Catsuit_Yes,"You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dust${Es} it off, and help${Es} you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!"
 
 rShopkeeperOfferHelpDebt_Armor_No,"No? That's alright.|I'm sure I'll find someone else to test these on, huehue."
 rShopkeeperOfferHelpDebt_Restraint_No,"Up to you!|You'll still have to pay me eventually~"
@@ -14135,8 +14135,8 @@ rTutorial4,"There's a few zombies up ahead.|Fight your way through and claim the
 KDNotFeeling,You're not feeling it...
 KDCantSleep,"You close your eyes but the vibrations keep you from dozing off..."
 
-rPrisonerBandit,"(A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through her gag)"
-rPrisonerBanditSub,"(A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into her gag)"
+rPrisonerBandit,"(A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through ${Etheir} gag)"
+rPrisonerBanditSub,"(A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into ${Etheir} gag)"
 rPrisonerBanditHelp,"(SPEAKER looks grateful)|Thank you so much|I shall join your party."
 rPrisonerBanditHelpSub,"(SPEAKER looks grateful)|Thank you so much ${PGen}!|I owe you everything."
 rPrisonerBanditTighten,"(SPEAKER groans and wriggles around uselessly)"
@@ -14144,7 +14144,7 @@ rPrisonerBanditTightenSub,"(SPEAKER moans and rolls around, blushing deeply)"
 dPrisonerBandit_Help,Untie her
 dPrisonerBandit_Tighten,Make sure ${Ethey} ${Eis} tight and secure
 
-rDressmakerQuest,"(A SPEAKER bumps into you while immersed in her thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?"
+rDressmakerQuest,"(A SPEAKER bumps into you while immersed in ${Etheir} thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?"
 rDressmakerQuestHelp,"(The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!"
 rDressmakerQuestComplete,"(The SPEAKER stares at you like a rabid animal)|Wowie! You look gorgeous!|Thank you so much!|(${EThey} snap${Es} a photo of you using a magic crystal)"
 rDressmakerQuestComplete_Question,"(The SPEAKER giggles)|I never said I'd take it off, did I?"
@@ -14155,7 +14155,7 @@ dDressmakerQuest_CompleteGag,Mmmph... (Found the dress!)
 dDressmakerQuestComplete_Question,Great! Can you take it off?
 dDressmakerQuestComplete_QuestionGag,Mmmmm! (Struggle)
 
-rApprenticeQuest,"(A SPEAKER clutching her books approaches you)|Adventurer!|I happen to need a magic scroll of any kind.|It's for my studies."
+rApprenticeQuest,"(A SPEAKER clutching ${Etheir} books approaches you)|Adventurer!|I happen to need a magic scroll of any kind.|It's for my studies."
 rApprenticeQuestHelp,"(The SPEAKER smiles)|Yes, thank you so much!|It's been so difficult to get them lately.|The magic library is closed off these days,|and there are mean people trying to get the scrolls back..."
 rApprenticeQuestCompleteLegs,"(The SPEAKER is happy)|Thank you so much!"
 rApprenticeQuestCompleteArms,"(The SPEAKER is happy)|Thank you so much!"
@@ -14168,35 +14168,35 @@ dApprenticeQuest_CompleteVerbal,Give her a Scroll of Speech
 dApprenticeQuest_CompletePurity,Give her a Scroll of Purity
 
 rDragonheartQuest,"(A SPEAKER looks distraught)|Well met, adventurer!|We have a problem..."
-rDragonheartQuestHelp,"(The SPEAKER folds her arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice."
+rDragonheartQuestHelp,"(The SPEAKER folds ${Etheir} arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice."
 dDragonheartQuest_Help,(Show interest)
 
 rMaidforceQuest,"(A SPEAKER scoffs in your direction)|Well? You lookin' for work or no?"
 rMaidforceQuestHelp,"(The SPEAKER grins)|A bunch of delinquents stormed out recently.|They're looking for a way out of their belts.|Someone oughta show em their place,|if you catch what I'm saying."
 dMaidforceQuest_Help,(Nod)
 
-rJailerHiSec,"(A SPEAKER approaches you in your cell)|Since you've been a bad girl,|we're taking you to the high-security prison."
-rJailerHiSecResist,"(The SPEAKER folds her arms)|Want to or not, you're going."
+rJailerHiSec,"(A SPEAKER approaches you in your cell)|Since you've been a bad ${Psub},|we're taking you to the high-security prison."
+rJailerHiSecResist,"(The SPEAKER folds ${Etheir} arms)|Want to or not, you're going."
 dJailerHiSec_Resist,(Resist)
 dJailerHiSec_Submit,(Submit)
 
 rCyberHiSec,"(A SPEAKER approaches you in your cell)|Looks like you're not in the System.|I'm going to have to take you to sorting."
-rCyberHiSecResist,"(The SPEAKER grins as her systems glow)|I love my job sometimes~"
+rCyberHiSecResist,"(The SPEAKER grins as ${Etheir} systems glow)|I love my job sometimes~"
 dCyberHiSec_Resist,(Resist)
 dCyberHiSec_Submit,(Submit)
 rCyberHiSecQuestion1,"(The SPEAKER grins)|It means you'll get nicely packaged,|so that we can sort you through the System."
 dCyberHiSec_Question1,W-what does that entail?
 rCyberHiSecQuestion1Gag,"(The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~"
 dCyberHiSec_Question1Gag,Hmmmph? Mmmm! (Act worried and whimper)
-rCyberHiSecQuestion2,"(The SPEAKER folds her arms)|Mistress Oriel's orders"
+rCyberHiSecQuestion2,"(The SPEAKER folds ${Etheir} arms)|Mistress Oriel's orders"
 dCyberHiSec_Question2,Not in the 'System'?
 rCyberHiSecQuestion2Gag,"(The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System."
 dCyberHiSec_Question2Gag,Mmmph? (Act confused)
-rCyberHiSecQuestion2,"(The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System."
+rCyberHiSecQuestion2,"(The SPEAKER folds ${Etheir} arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System."
 dCyberHiSec_Question2,Not in the 'System'?
 rCyberHiSecQuestion2Gag,"(The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System."
 dCyberHiSec_Question2Gag,Mmmph? (Act confused)
-rCyberHiSecQuestion3,"(The SPEAKER pauses for a moment, then speaks)|I'm just following Mistress Oriel's orders.|I'm sure ${Ethey} will have time to speak with you if you want to ask her."
+rCyberHiSecQuestion3,"(The SPEAKER pauses for a moment, then speaks)|I'm just following Mistress Oriel's orders.|I'm sure she will have time to speak with you if you want to ask her."
 dCyberHiSec_Question3,But why???
 rCyberHiSecQuestion3_Who,"(The SPEAKER frowns)|You should be thankful.|Without Mistress Oriel, we'd all be dead!|Probably..."
 dCyberHiSecQuestion3_Who,Who is Mistress Oriel?
@@ -14205,14 +14205,14 @@ dCyberHiSecQuestion3_When,When are these orders from?
 rCyberHiSecQuestion3_Why,"(You anger the SPEAKER. ${EThey} gag${Es} you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?"
 dCyberHiSecQuestion3_Why,The facility is in ruins! This is pointless!
 
-rBanditQuest,"(A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?"
+rBanditQuest,"(A SPEAKER crosses ${Etheir} arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?"
 rBanditQuestHelp,"(The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get them out."
 dBanditQuest_Help,(Show interest)
 
 rPrisonerJail,"(The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get ${Ethem} out.)"
 rPrisonerJailNoKeys,"(You don't have any keys that work on the lock)"
 rPrisonerJailUnlockHandsBound,"(You can't help ${Ethem}, bound as tightly as you are...)"
-rPrisonerJailUnlockSlow,"(You unlock her, fumbling around for a while with your bound hands)"
+rPrisonerJailUnlockSlow,"(You unlock ${Ethem}, fumbling around for a while with your bound hands)"
 rPrisonerJailUnlockDom,"(You unlock the SPEAKER)|Thank you!|Let's get out of here!"
 rPrisonerJailUnlockBrat,"(You unlock the SPEAKER)|...thanks.|No, I wasn't enjoying it or anything..."
 rPrisonerJailUnlock,"(You unlock the SPEAKER)|Appreciate the rescue!|'twas fun while it lasted..."
@@ -14221,8 +14221,8 @@ rPrisonerJailUnlockOwnDom,"(You unlock your SPEAKER)|...at your command."
 rPrisonerJailUnlockOwnBrat,"(You unlock your SPEAKER)|Hmmpf... are you letting me go?"
 rPrisonerJailUnlockOwn,"(You unlock your SPEAKER)|Oh? So soon?"
 rPrisonerJailUnlockOwnSub,"(You unlock your SPEAKER)|Time to get to work~!"
-rPrisonerJailUnlockOwnGagged,"(You unlock your SPEAKER)|Mmmmph!|(She want${Es} to keep ${Ptheir} gag...)"
-rPrisonerJailUnlockGagged,"(You unlock the SPEAKER)|Mmmmph!|(She want${Es} to keep ${Ptheir} gag...)"
+rPrisonerJailUnlockOwnGagged,"(You unlock your SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)"
+rPrisonerJailUnlockGagged,"(You unlock the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)"
 rPrisonerLatexCutDom,"(After a while, you free the SPEAKER)|That was quite tight... thanks for the rescue."
 rPrisonerLatexCutBrat,"(After a while, you free the SPEAKER)|That was fun!|Er--|Thanks, I mean!"
 rPrisonerLatexCutSub,"(After a while, you free the SPEAKER)|Mmph... thank you ${PGen}!"
@@ -14234,41 +14234,41 @@ rPrisonerJailPickDom,"(After a while, you free the SPEAKER)|For a moment there I
 rPrisonerJailPickSub,"(After a while, you free the SPEAKER)|Thank you ${PGen}!|Your lockpicking skills are impeccable!"
 rPrisonerJailPickBrat,"(After a while, you free the SPEAKER)|Mmph, that took forever~"
 rPrisonerJailPick,"(After a while, you free the SPEAKER)|Are you supposed to be here?|(${EThey} giggle${Es})"
-rPrisonerJailPickGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} her head when you go for her gag...)"
+rPrisonerJailPickGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} ${Etheir} head when you go for ${Etheir} gag...)"
 rPrisonerJailWordNoMana,"(You don't have enough mana for a command word)"
 rPrisonerJailWordNoSpeak,"(Try as you might, your mouth is sealed tight)"
 rPrisonerJailWord,"(You utter a command word to free the SPEAKER)|Many thanks!|Let's go!"
-rPrisonerJailWordGagged,"(You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} her gag back on...)"
-rPrisonerJailJammed,"(The SPEAKER is locked in high-security manacles.|The safety pins have been triggered, making it impossible to help her without a key.)"
+rPrisonerJailWordGagged,"(You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)"
+rPrisonerJailJammed,"(The SPEAKER is locked in high-security manacles.|The safety pins have been triggered, making it impossible to help ${Ethem} without a key.)"
 
 dPrisonerJail_Unlock,Use a key to unlock her
 dPrisonerJail_Pick,"Try to pick her restraints (JAMPERCENT jam chance)"
 dPrisonerJail_Word,Use CMD: Unlock
 dPrisonerJailJammedRecent_Apologize,Apologize profusely!
 
-rPrisonerJailBug,"(The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} is bugged and needs your help to get out)"
+rPrisonerJailBug,"(The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} ${Eis} bugged and needs your help to get out)"
 dPrisonerJailBug_Unlock,(Unlock her and file a bug report to Ada)
 
 
 rPrisonerJailOther,"(This SPEAKER is a sub, but not YOUR sub!)"
 
 
-rPrisonerJailOwn,"(The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)"
+rPrisonerJailOwn,"(The SPEAKER sits restrained by your own hand.|Only someone with keys can let ${Ethem} out.)"
 rPrisonerJailOwnNoKeys,"(You don't have any keys that work on the lock)"
 rPrisonerJailOwnUnlockHandsBound,"(You can't help ${Ethem}, bound as tightly as you are...)"
-rPrisonerJailOwnUnlockSlow,"(You unlock her, fumbling around for a while with your bound hands)"
+rPrisonerJailOwnUnlockSlow,"(You unlock ${Ethem}, fumbling around for a while with your bound hands)"
 rPrisonerJailOwnUnlock,"(You unlock the SPEAKER)|Thank you!|Let's get out of here!"
-rPrisonerJailOwnUnlockGagged,"(You unlock the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep her gag...)"
+rPrisonerJailOwnUnlockGagged,"(You unlock the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)"
 rPrisonerJailOwnNoPick,"(You don't have any lockpicks)"
 rPrisonerJailOwnPickJam,"(You try to pick the lock...)|(Click! A safety shield locks securely into place!)|(Looks like the SPEAKER will be staying here for a while...)"
 rPrisonerJailOwnPickHandsBound,"(You can't pick the lock with your hands bound)"
 rPrisonerJailOwnPick,"(After a while, you free the SPEAKER)|Thank you!|Let's get moving!"
-rPrisonerJailOwnPickGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} her head when you go for her gag...)"
+rPrisonerJailOwnPickGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} ${Etheir} head when you go for ${Etheir} gag...)"
 rPrisonerJailOwnWordNoMana,"(You don't have enough mana for a command word)"
 rPrisonerJailOwnWordNoSpeak,"(Try as you might, your mouth is sealed tight)"
 rPrisonerJailOwnWord,"(You utter a command word to free the SPEAKER)|Many thanks!|Let's go!"
-rPrisonerJailOwnWordGagged,"(You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} her gag back on...)"
-rPrisonerJailOwnJammed,"(The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)"
+rPrisonerJailOwnWordGagged,"(You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)"
+rPrisonerJailOwnJammed,"(The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help ${Ethem}.)"
 
 dPrisonerJailOwn_Unlock,Use a key to unlock her
 dPrisonerJailOwn_Pick,"Try to pick her restraints"
@@ -14311,7 +14311,7 @@ dDollDropoff_Enemy,(Put NME on the stand) (PRCNT% Chance)
 dDollDropoff_EnemyHelpless,(Put NME on the stand)
 rFurniture,"(This is a piece of bondage furniture)"
 rFurnitureUse,"(You lock yourself in the furniture!)"
-rFurnitureEnemyFail,"(The SPEAKER slips out of your grip|before you can lock her in place!)"
+rFurnitureEnemyFail,"(The SPEAKER slips out of your grip|before you can lock ${Ethem} in place!)"
 dFurniture_NPC,(Display one of your prisoners)
 dFurniture_Use,(Lock yourself inside)
 dFurniture_Talk,(Check the occupant)
@@ -14325,7 +14325,7 @@ rFurnitureEnemy,"(You close the furniture around your unfortunate victim!)"
 KDFurnEnemyDisabled,"Stun or disable her first."
 KDFurnNotClear,"Area isn't clear."
 dFurniture_EnemyHelpless,(Secure NME into the furniture)
-rFurnitureEnemyHelpless,"(You lock her into the furniture so that ${Ethey} stay${Es} in place)"
+rFurnitureEnemyHelpless,"(You lock ${Ethem} into the furniture so that ${Ethey} stay${Es} in place)"
 
 
 rTableFood,"FOODMSG|(It invites you to partake in its culinary delights)"
@@ -14504,7 +14504,7 @@ dDollmakerFight_Fight2Gag,"Mmmmmghh!"
 dDollmakerFight_Fight3,"Sounds fun... but I really need to get going."
 dDollmakerFight_Fight3Gag,"Mmmmph..."
 
-rDollmakerLose,"(The Dollmaker folds ${Etheir} arms as she walks over)|All tight and shiny!|You'll be my prized possession~"
+rDollmakerLose,"(The Dollmaker folds ${Etheir} arms as ${Ethey} walk${Es} over)|All tight and shiny!|You'll be my prized possession~"
 rDollmakerLoseAccept,"(The Dollmaker nods)|Already eager to obey!|So beautiful..."
 rDollmakerLoseDeny,"(The Dollmaker chuckles)|Oh, but I already have~"
 dDollmakerLose_Accept,"I have no choice but to submit."
@@ -14517,14 +14517,14 @@ dDollmakerLose_Continue3,"(Sigh and be forced to wear whatever she chooses)"
 rDollmakerLoseFinish,"(The Dollmaker places ${Etheir} visor over your face)|(With a click, you feel its fasteners lock around your head)|Now... as it stands, I have a task for you, doll.|You see, some dolls have been escaping my realm.|I want you to go capture them."
 
 rDollmakerStage2,"(The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower."
-rDollmakerStage3,"(The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as she storms toward you!)"
+rDollmakerStage3,"(The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as ${Ethey} storm${Es} toward you!)"
 
 rDollmakerWin,"(The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)"
 rDollmakerWinAccept,"(SPEAKER looks confused)|What are you... Okay, you can have it..."
 dDollmakerWin_Accept,"(Wear a doll visor)"
 rDollmakerWinAccept2,"(SPEAKER looks confused)|What are you... Okay, you can have it..."
 dDollmakerWin_Accept2,"(Wear a doll mask)"
-rDollmakerWinGag,"(You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and she starts mumbling angrily)"
+rDollmakerWinGag,"(You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and ${Ethey} start${Es} mumbling angrily)"
 dDollmakerWin_Gag,"(Gag ${Ethem})"
 
 
@@ -30495,7 +30495,7 @@ KDEnrageFail,You are too tired to rage. Perhaps try a warm cozy bed instead?
 KDTurns,turns
 
 KDShieldAbsorb,Your shield absorbed AMNT damage.
-KDStatShield,You are currently shielded from damage and some spells.
+KDStatShield,${You} ${Yis} currently shielded from damage and some spells.
 KDoffhandMissingTooltip,No offhand weapon set. Click to open inventory and select the action on a weapon'.
 
 
@@ -31297,7 +31297,7 @@ NameTheWardenRecruit,"The Warden"
 rTheWarden,"(The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not in my records..."
 dTheWarden_Aggressive,"Cut to the chase. Do I have to fight you or not?"
 dTheWarden_AggressiveGag,"(Growl at ${Ethem})"
-rTheWardenAggressive,"(She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~"
+rTheWardenAggressive,"(${EThey} chuckle${Es})|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~"
 dTheWardenAggressive_Question,Quite a boast for someone who's about to lose.
 rTheWardenAggressive_Question,"(SPEAKER grins)|I look forward to testing those claims~"
 dTheWardenAggressive_Question_Brat,I defeated Fuuka. Now you're next!
@@ -31321,7 +31321,7 @@ dTheWardenAggressive_Brat_ProceedGag,"(...)"
 dTheWardenAggressive_Brat_Proceed2,"(...)"
 dTheWarden_Defensive,"What is this place?"
 dTheWarden_DefensiveGag,"Mmmmm... (Blush)"
-rTheWardenDefensive,"(She smiles)|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(She motions to the north)"
+rTheWardenDefensive,"(${EThey} smile${Es})|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(${EThey} motion${Es} to the north)"
 dTheWardenDefensive_Question,Tell me about your collection
 rTheWardenDefensive_Question,"(SPEAKER smiles pleasantly)|It's a fitting reward, isn't it?|Long ago, this mountain was home to a vicious empire.|Machines went out to sea, bringing back countless prisoners.|As commander of the invasion, I earned this title!"
 rTheWardenDefensive_Question_Question,"(SPEAKER grins)|When we stormed the prisons, we encountered many fierce defenders.|Many of them now reside in these halls, earning their rightful punishment."
@@ -31369,16 +31369,16 @@ dTheWardenDefensive_Brat_ProceedGag,"(Pout)"
 dTheWardenDefensive_Brat_Proceed2,"(...)"
 dTheWarden_Brat,"That's a shame about your records, I'll be going now."
 dTheWarden_BratGag,"Mmpphgh? (Go to pass ${Ethem})"
-rTheWardenBrat,"(She smirks)|Not so fast, dear~|You'll have to wear a special ${Restraint} to pass."
+rTheWardenBrat,"(${EThey} smirk${Es})|Not so fast, dear~|You'll have to wear a special ${Restraint} to pass."
 dTheWardenBrat_Question,I won't wear anyone's ${Restraint}!
-rTheWardenBrat_Question,"(She smirks)|Tsk tsk. Then you won't pass."
-rTheWardenBrat_Question_Collar,"(She giggles)|How cute!|You're so used to yours that you forgot about it~"
+rTheWardenBrat_Question,"(${EThey} smirk${Es})|Tsk tsk. Then you won't pass."
+rTheWardenBrat_Question_Collar,"(${EThey} giggle${Es})|How cute!|You're so used to yours that you forgot about it~"
 dTheWardenBrat_Question_Proceed,"(...)"
 dTheWardenBrat_Proceed,Why don't you wear it yourself?
 dTheWardenBrat_ProceedGag,Hmmph. (Scoff at ${Ethem})
-rTheWardenBrat_ProceedGag,"(She frowns)|Watch your tongue~"
+rTheWardenBrat_ProceedGag,"(${EThey} frown${Es})|Watch your tongue~"
 dTheWardenBrat_ProceedGag_Proceed,"(Shake your head)"
-rTheWardenBrat_Brat,"(She frowns)|I do not wear ${Restraints}."
+rTheWardenBrat_Brat,"(${EThey} frown${Es})|I do not wear ${Restraints}."
 dTheWardenBrat_Brat,You'd be better off wearing mine instead.
 dTheWardenBrat_Brat_Proceed,"You're missing out~"
 dTheWardenBrat_Brat_ProceedGag,"(Giggle)"
@@ -31404,7 +31404,7 @@ dTheWardenDom_Brat_ProceedGag,"(Giggle)"
 dTheWardenDom_Brat_Proceed2,"(...)"
 dTheWarden_Sub,"There must be a mistake. Sign me up!"
 dTheWarden_SubGag,"Mmmpphh~ (Moan and wiggle seductively)"
-rTheWardenSub,"(She smiles)|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~"
+rTheWardenSub,"(${EThey} smile${Es})|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~"
 dTheWardenSub_Question,I am the strongest.
 rTheWardenSub_Question,"(SPEAKER chuckles)|Then why don't I test your skills?"
 rTheWardenSub_Question_Question,"(SPEAKER grins)|How about trial by combat?"
@@ -31456,9 +31456,9 @@ dTheWardenFight_Fight3,"I guess I have no choice..."
 dTheWardenFight_Fight3Gag,"Mmmmph..."
 
 rTheWardenLose,"(SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~"
-rTheWardenLoseAccept,"(SPEAKER smiles)|I will let you pass so long as you wear my emblem.|(${EThey} snaps ${Etheir} fingers and conjures a glowing band)"
-rTheWardenLoseDeny,"(SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(${EThey} snaps ${Etheir} fingers and conjures a glowing ring)"
-rTheWardenLoseMagic,"(SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(${EThey} snaps ${Etheir} fingers and conjures a glowing band)"
+rTheWardenLoseAccept,"(SPEAKER smiles)|I will let you pass so long as you wear my emblem.|(${EThey} snap${Es} ${Etheir} fingers and conjure${Es} a glowing band)"
+rTheWardenLoseDeny,"(SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(${EThey} snap${Es} ${Etheir} fingers and conjure${Es} a glowing ring)"
+rTheWardenLoseMagic,"(SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(${EThey} snap${Es} ${Etheir} fingers and conjure${Es} a glowing band)"
 dTheWardenLose_Magic,"Was that magic?"
 dTheWardenLose_Accept,"I've lost. Now what?"
 dTheWardenLose_AcceptGag,"Mmmph. (Submit)"
@@ -31472,9 +31472,9 @@ rTheWardenLoseFinish,"(SPEAKER presents you with your 'reward'...)|(It closes ar
 rTheWardenStage2,"(SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really believe it would be this easy?"
 
 rTheWardenWin,"(SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~"
-rTheWardenWinAcceptCollar,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps ${Etheir} fingers and tosses you a glowing collar)|This is a special one, reserved for those with divine privilege.|You've earned it."
-rTheWardenWinAcceptBelt,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps ${Etheir} fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it."
-rTheWardenWinAcceptCBelt,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snaps ${Etheir} fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it."
+rTheWardenWinAcceptCollar,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snap${Es} ${Etheir} fingers and toss${Ees} you a glowing collar)|This is a special one, reserved for those with divine privilege.|You've earned it."
+rTheWardenWinAcceptBelt,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snap${Es} ${Etheir} fingers and toss${Ees} you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it."
+rTheWardenWinAcceptCBelt,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(${EThey} snap${Es} ${Etheir} fingers and toss${Ees} you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it."
 dTheWardenWin_AcceptCollar,"(Wear ${Etheir} collar anyway)"
 dTheWardenWin_AcceptBelt,"(Wear ${Etheir} waist belt anyway)"
 dTheWardenWin_AcceptCBelt,"(Wear ${Etheir} chastity belt anyway)"
@@ -32369,7 +32369,7 @@ KinkyDungeonInventoryItemLeashItemDesc2,"Target an NPC to attach a leash. Enemie
 ItemPickupLeashItem,"You pick up a leash."
 
 KDLeashSpellCant,You are not in a condition to use a leash on ${Ethem}.
-KDLeashSpellMustTie,She refuses to be leashed unless you tie ${Ethem} up!
+KDLeashSpellMustTie,${EThey} refuse${Es} to be leashed unless you tie ${Ethem} up!
 KDLeashSpell,You attach a leash to ENMY.
 KDLeashSpellRemove,You remove your leash from ENMY.
 KDLeashSpellRemoveAll,You let go of all leashes.
@@ -33534,11 +33534,11 @@ rPrisonerLatexUnlockGagged,"(You rescue the SPEAKER)|Mmmmph!|(${EThey} want${Es}
 rPrisonerLatexNoCut,"(You are not holding a cutting tool)"
 rPrisonerLatexCutHandsBound,"(You can't pick the lock with your hands bound)"
 rPrisonerLatexCutSlow,"(You cut ${Etheir} restraints, fumbling around for a while with your bound hands)"
-rPrisonerLatexCutGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shakes ${Etheir} head when you go for ${Etheir} gag...)"
+rPrisonerLatexCutGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} ${Etheir} head when you go for ${Etheir} gag...)"
 rPrisonerLatexWordNoMana,"(You don't have enough mana for Remove Slime)"
 rPrisonerLatexWordNoSpeak,"(Try as you might, your mouth is sealed tight)"
 rPrisonerLatexWord,"(You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!"
-rPrisonerLatexWordGagged,"(You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} locks ${Etheir} gag back on...)"
+rPrisonerLatexWordGagged,"(You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)"
 
 dPrisonerLatex_Unlock,Dissolve the latex with a SLVNT
 dPrisonerLatex_Cut,Cut ${Ethem} out with a sharp tool
@@ -34199,7 +34199,7 @@ KDPlayerTitleDesc_LostInSpace,Unlocked by stepping into a dimensional rift willi
 
 KDTrainingLevelHeels,"[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels."
 KDTrainingLevelCorset,"[EXP: AMNT/LMT, +NXT next floor] Corset training reduces stamina penalty from corsets."
-KDTrainingLevelGag,"[EXP: AMNT/LMT, +NXT next floor] Gag training reduces your overall gag level."
+KDTrainingLevelGag,"[EXP: AMNT/LMT, +NXT next floor] Gag training reduces ${your} overall gag level."
 KDTrainingLevelSenses,"[EXP: AMNT/LMT, +NXT next floor] Senses training increases hearing radius and reduces blindfold effectiveness."
 
 KDEffTraining_Heels,Balance Costs:
@@ -34525,7 +34525,7 @@ dYes,(Yes)
 dNo,(No)
 
 KinkyDungeonStatKnockedDown,On the ground! Bondage Resist reduced by 50%
-KinkyDungeonStatLowBalance,Your balance is low! Consider standing in place to restore it.
+KinkyDungeonStatLowBalance,${Your} balance is low! Consider standing in place to restore it.
 
 KDToggleShowDefensiveStats,Always show defense in buff bar
 
@@ -34572,7 +34572,7 @@ dDollShoppeVisitorAttack_Confirm,(You have to try!)
 dDollShoppeVisitorAttack_GiveUp,(Reconsider)
 
 rDollShoppeVisitorBeCute_Success,"(The SPEAKER gushes over how adorable you are)|Oh gods, ${Ptheyre} so cute!|Looks like I've come to the right place~"
-rDollShoppeVisitorBeCute_SuccessLate,"(The SPEAKER chuckles)|There we go, that's better. Good girl~"
+rDollShoppeVisitorBeCute_SuccessLate,"(The SPEAKER chuckles)|There we go, that's better. Good ${Psub}~"
 rDollShoppeVisitorBeCute_Fail,"(The SPEAKER smiles)|Not quite my type. But cute."
 rDollShoppeVisitorBeCute_FailLate,"(The SPEAKER shakes ${Etheir} head)|I'll have a look at the other dolls."
 
@@ -34678,7 +34678,7 @@ rDollShoppeVisitorBeStill_FailLateBrat,"(The SPEAKER chuckles)|Being on display 
 
 rDollShoppeVisitorBeBrat_SuccessBrat,"(The SPEAKER grabs your chin and points your head toward ${Ethem})|I think I'd enjoy showing you your place..."
 rDollShoppeVisitorBeBrat_SuccessLateBrat,"(The SPEAKER folds ${Etheir} arms and smiles)|I like your spirit."
-rDollShoppeVisitorBeBrat_FailBrat,"(The SPEAKER tilts ${Etheir} head)|Do you think this will get you anywhere?|(${EThey} smile and hold up your chin)"
+rDollShoppeVisitorBeBrat_FailBrat,"(The SPEAKER tilts ${Etheir} head)|Do you think this will get you anywhere?|(${EThey} smile${Es} and hold${Es} up your chin)"
 rDollShoppeVisitorBeBrat_FailLateBrat,"(The SPEAKER smiles)|Better start begging~"
 
 rDollShoppeVisitorBeAngry_SuccessBrat,"(The SPEAKER grabs your shoulder to stop you moving)|Oh, cutie, you won't be going anywhere.|Except perhaps with me, hehe~"
@@ -34689,13 +34689,13 @@ rDollShoppeVisitorBeAngry_FailLateBrat,"(The SPEAKER giggles)|You're not going a
 
 
 
-rDollShoppeVisitorBeCute_SuccessRobot,"(The SPEAKER makes a beep of approval)|Cute behavior has been noted, logged, and approved.|Good girl."
-rDollShoppeVisitorBeCute_SuccessLateRobot,"(The SPEAKER pauses)|Subject cuteness within expected bounds.|Good girl."
+rDollShoppeVisitorBeCute_SuccessRobot,"(The SPEAKER makes a beep of approval)|Cute behavior has been noted, logged, and approved.|Good ${Psub}."
+rDollShoppeVisitorBeCute_SuccessLateRobot,"(The SPEAKER pauses)|Subject cuteness within expected bounds.|Good ${Psub}."
 rDollShoppeVisitorBeCute_FailRobot,"(The SPEAKER makes a loud noise resembling an error message)|Subject does not conform to expected standards.|Suggest corrective training."
 rDollShoppeVisitorBeCute_FailLateRobot,"(The SPEAKER pauses)|Subject continues to defy protocol."
 
-rDollShoppeVisitorBeBrat_SuccessRobot,"(The SPEAKER makes a beep of approval)|Behavior has been noted, logged, and found to be within acceptable bounds.|Good girl."
-rDollShoppeVisitorBeBrat_SuccessLateRobot,"(The SPEAKER pauses)|Subject behavior within expected parameters.|Good girl."
+rDollShoppeVisitorBeBrat_SuccessRobot,"(The SPEAKER makes a beep of approval)|Behavior has been noted, logged, and found to be within acceptable bounds.|Good ${Psub}."
+rDollShoppeVisitorBeBrat_SuccessLateRobot,"(The SPEAKER pauses)|Subject behavior within expected parameters.|Good ${Psub}."
 rDollShoppeVisitorBeBrat_FailRobot,"(The SPEAKER makes a loud noise resembling an error message)|Subject does not conform to expected standards.|Suggest corrective training."
 rDollShoppeVisitorBeBrat_FailLateRobot,"(The SPEAKER pauses)|Subject continues to defy protocol."
 
@@ -34704,8 +34704,8 @@ rDollShoppeVisitorBeAngry_SuccessLateRobot,"(The SPEAKER pauses)|Subject resists
 rDollShoppeVisitorBeAngry_FailRobot,"(The SPEAKER makes a loud noise resembling an error message)|Subject continues to resist capture.|Propose intense corrective measures."
 rDollShoppeVisitorBeAngry_FailLateRobot,"(The SPEAKER pauses)|Subject continues to resist, despite lack of capability.|Logical error."
 
-rDollShoppeVisitorBeStill_SuccessRobot,"(The SPEAKER makes a beep of approval)|No movement detected. This has been logged.|Good girl."
-rDollShoppeVisitorBeStill_SuccessLateRobot,"(The SPEAKER pauses)|Subject has corrected unwanted behavior.|Good girl."
+rDollShoppeVisitorBeStill_SuccessRobot,"(The SPEAKER makes a beep of approval)|No movement detected. This has been logged.|Good ${Psub}."
+rDollShoppeVisitorBeStill_SuccessLateRobot,"(The SPEAKER pauses)|Subject has corrected unwanted behavior.|Good ${Psub}."
 rDollShoppeVisitorBeStill_FailRobot,"(The SPEAKER makes a loud noise resembling an error message)|Subject does not respond to stimuli in an expected manner.|Suggest additional stimulation."
 rDollShoppeVisitorBeStill_FailLateRobot,"(The SPEAKER pauses)|Subject does not act when prompted.|This is not acceptable."
 

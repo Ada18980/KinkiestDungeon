@@ -1208,11 +1208,11 @@ Abgelenkt
 
 ### You slip on the floor!
 
-### The air around you is ablaze! (-DamageDealt SP)
+### The air around ${youObj} is ablaze! (-DamageDealt SP)
 
-### The Goddess of Illusions shrouds you in shadows!
+### The Goddess of Illusions shrouds ${youObj} in shadows!
 
-### You struggle against your bonds, but a magical force resists!
+### ${You} struggle${Ys} against ${your} bonds, but a magical force resists!
 
 ### The ropes squeeze you tighter and tighter...
 
@@ -1268,21 +1268,21 @@ Abgelenkt
 
 ### Magic Armor:
 
-### In the Shadows: You are harder to see.
+### In the Shadows: ${You} ${Yis} harder to see.
 
-### Invisible: You are very difficult to see.
+### Invisible: ${You} ${Yis} very difficult to see.
 
-### Quickness: Your next movement is so fast it doesn't advance a turn.
+### Quickness: ${Your} next movement is so fast it doesn't advance a turn.
 
 ### All Damage Reduction:
 
-### You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
+### ${You} take${Ys} PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 
-### You deal PERCENT more DAMAGETYPE damage.
+### ${You} deal${Ys} PERCENT more DAMAGETYPE damage.
 
-### Your bindings are PERCENT more effective.
+### ${Your} bindings are PERCENT more effective.
 
-### Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
+### ${Your} attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
 
 ### Plugged!
 
@@ -1302,11 +1302,11 @@ Abgelenkt
 
 ### Torturous vibrations!!!
 
-### Your restraints are restrictive! Struggling is less effective without help.
+### ${Your} restraints are restrictive! Struggling is less effective without help.
 
 ### Stunned! You can't move!
 
-### Your vision is impaired!
+### ${Your} vision is impaired!
 
 ### Arms are bound!
 
@@ -1324,15 +1324,15 @@ Abgelenkt
 
 ### Slow Level 10+: Immobilized!
 
-### Your mouth is free for potion-drinking and spellcasting activities.
+### ${Your} mouth is free for potion-drinking and spellcasting activities.
 
-### Your vision is clear.
+### ${Your} vision is clear.
 
-### Your hands are unobstructed.
+### ${Your} hands are unobstructed.
 
-### Your arms are free to move as you please.
+### ${Your} arms are free to move as ${you} please${Ys}.
 
-### Your legs are free and unimpeded.
+### ${Your} legs are free and unimpeded.
 
 ### You are gagged! Verbal miscast chance is increased and your potions are less effective!
 
@@ -1342,7 +1342,7 @@ Abgelenkt
 
 ### Let there be light!
 
-### You're seeing things...
+### ${Youre} seeing things...
 
 ### You've been poisoned!
 
@@ -1378,7 +1378,7 @@ Abgelenkt
 
 ### Ignited: You are dealing fire damage to yourself and nearby enemies!
 
-### You are on fire and taking damage!
+### ${You} ${Yis} on fire and taking damage!
 
 ### Divine Punishment: Deals bonus damage when you hit an enemy.
 
@@ -1424,17 +1424,17 @@ Abgelenkt
 
 ### We did it! We made ourselves invisible--mmmmph!!!
 
-### You are not currently attempting to disguise yourself. Click to reenable.
+### ${You} ${Yis} not currently attempting to disguise ${your}self. Click to reenable.
 
-### Your restraints are disenchanted, treating them as nonmagical for purposes of cutting.
+### ${Your} restraints are disenchanted, treating them as nonmagical for purposes of cutting.
 
-### You can launch another leather restraint instantly!
+### ${You} can launch another leather restraint instantly!
 
-### You can launch another Sagitta instantly!
+### ${You} can launch another Sagitta instantly!
 
-### You have stored willpower.
+### ${You} ${Yhas} stored willpower.
 
-### You have consumed a mote of essence, granting miscast chance reduction.
+### ${You} ${Yhas} consumed a mote of essence, granting miscast chance reduction.
 
 ### You recapture an essence mote and concentrate on its essence!
 
@@ -1520,7 +1520,7 @@ Komm zurück später, für mehr.
 
 - Got the keys! Find the stairs to go to the next floor.
 Schlüssen gefunden! Finde die Treppen zum nächsten Stockwerk.
-- You haven't found the keys for this floor yet.
+- ${You} ${Yhas}n't found the keys for this floor yet.
 Du hast noch nicht die Schlüssel für dieses Stockwerk gefunden.
 - Missing key
 Fehlende Schlüssel
@@ -2820,17 +2820,17 @@ Messer
 
 ### Find the exit!
 
-### You are receiving help from a friendly ally.
+### ${You} ${Yis} receiving help from a friendly ally.
 
-### You found a hook you can use to pull on straps and loops.
+### ${You} found a hook ${you} can use to pull on straps and loops.
 
-### You have access to something sharp and can attempt to Cut restraints, or Remove more effectively.
+### ${You} ${Yhas} access to something sharp and can attempt to Cut restraints, or Remove more effectively.
 
-### You found a corner to help manipulate buckles and snaps with.
+### ${You} found a corner to help manipulate buckles and snaps with.
 
-### You found a crack and could maybe wedge a knife or tool into it to keep it still.
+### ${You} found a crack and could maybe wedge a knife or tool into it to keep it still.
 
-### You found something sticky and might be able to pull off fabrics.
+### ${You} found something sticky and might be able to pull off fabrics.
 
 ### Evasion:
 
@@ -2838,11 +2838,11 @@ Messer
 
 
 
-### Submissive: Enemies won't attack you, but they will try to play with you.
+### Submissive: Enemies won't attack ${youObj}, but they will try to play with ${youObj}.
 
 ### On the Run! Enemies are hostile.
 
-### Prisoner: Enemies won't attack you unless you are out of jail.
+### Prisoner: Enemies won't attack ${youObj} unless ${you} ${Yis} out of jail.
 
 ### Freedom
 
@@ -12138,7 +12138,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### Hands off my property.
 
-### Know your place, girl!
+### Know your place, ${Psub}!
 
 ### You've had your chance.
 
@@ -12246,7 +12246,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### You've made some enemies, haven't you?
 
-### I should teach you to be a nice girl.
+### I should teach you to be a nice ${Psub}.
 
 ### You need to learn some manners~
 
@@ -12488,11 +12488,11 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### You're not supposed to be here...
 
-### I'm gonna teach you a lesson, girl.
+### I'm gonna teach you a lesson, ${Pdim}.
 
 ### I'm gonna miss you when we find you a nice master...
 
-### Looks like you need some training, girl.
+### Looks like you need some training, ${Psub}.
 
 ### You picked a bad time to get lost, friend.
 
@@ -12532,7 +12532,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### I'm PTRN. And who might you be?
 
-### Bad time to party, girl~
+### Bad time to party, ${Pdim}~
 
 ### You've got nerve showing your face around here.
 
@@ -12992,7 +12992,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### Looks like it's time to drop some science!
 
-### Bad girl!
+### Bad ${Psub}!
 
 ### Keep your filthy hands off me!
 
@@ -13112,7 +13112,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### Where'd you find that, dear?
 
-### Silly girl, you should be looking to your mistress for guidance.
+### Silly ${Pdim}, you should be looking to your mistress for guidance.
 
 ### That's not yours, sweetie~
 
@@ -13308,7 +13308,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### Patients are forbidden from casting spells!
 
-### Silly girl, your illness can't be cured by a prayer.
+### Silly ${Pdim}, your illness can't be cured by a prayer.
 
 ### You shouldn't break things, you know~
 
@@ -13922,7 +13922,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### Did you think I wasn't looking?
 
-### Nice try, girl~
+### Nice try, ${Pdim}~
 
 ### You've made a mistake attacking my client.
 
@@ -14088,7 +14088,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### I have a warrant for your arrest...
 
-### You're a wanted girl.
+### You're a wanted ${Pdim}.
 
 ### You're under arrest.
 
@@ -14468,7 +14468,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### Scary!
 
-### Girl!
+### ${PDim}!
 
 ### Wear this!
 
@@ -14484,7 +14484,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### Intruder! Alert!
 
-### Fight girl!
+### Fight ${Pdim}!
 
 ### Fight!
 
@@ -14920,7 +14920,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### Who am I? You beings may call me PTRN.
 
-### ${PThey} thinks ${Pthey} can beat us~
+### ${PThey} think${Ps} ${Pthey} can beat us~
 
 ### No one will save you.
 
@@ -15402,7 +15402,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### Amateur.
 
-### Bad girl. You need discipline.
+### Bad ${Psub}. You need discipline.
 
 ### I'll be keeping the keys.
 
@@ -15784,7 +15784,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### Command... Me...
 
-### Cute... Girl...
+### Cute... ${PDim}...
 
 ### Helpless...
 
@@ -15934,9 +15934,9 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER beeps)|Vital signs indicate dishonesty.
 
-### (The SPEAKER furrows her brow)|...Excuse me?
+### (The SPEAKER furrows ${Etheir} brow)|...Excuse me?
 
-### (The SPEAKER tilts her head)|Right, sorry.
+### (The SPEAKER tilts ${Etheir} head)|Right, sorry.
 
 ### (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
 
@@ -15972,7 +15972,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER smiles at you)|Be a good ${Psub} and hand that weapon over,|would you?
 
-### (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
+### (The SPEAKER grins and cracks ${Etheir} knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
 
 ### Yes, miss... (Currently held weapon will be lost)
 
@@ -16040,7 +16040,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER approaches you in your cell)|Back again, are we? Silly ${Pdim}.|You know we don't take no for an answer.
 
-### (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and returns with some toys...)|Now hold still!
+### (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and return${Es} with some toys...)|Now hold still!
 
 ### (The SPEAKER frowns)|I know exactly what you need...
 
@@ -16088,7 +16088,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER holds up a restrictive outfit)|This RESTRAINT might be a tight fit|so hold still while I lace it~
 
-### (The SPEAKER giggles)|It looks even better than I thought!|Thank you girl~
+### (The SPEAKER giggles)|It looks even better than I thought!|Thank you ${Pdim}~
 
 ### (The SPEAKER sighs and moves away)|Such a shame...
 
@@ -16102,7 +16102,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER looks bemused)|Changed your mind?|It does look good on you though~
 
-### (The SPEAKER snaps her fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
+### (The SPEAKER snaps ${Etheir} fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
 
 ### Yes please!
 
@@ -16128,7 +16128,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER looks at you with a philisophical outlook)|Have you ever felt like you wanted to be...|Transformed?
 
-### (The SPEAKER takes a strange mask from her satchel)|Well, I have the answer right here...
+### (The SPEAKER takes a strange mask from ${Etheir} satchel)|Well, I have the answer right here...
 
 ### (The SPEAKER nods seriously)|My hypothesis was correct...
 
@@ -16144,7 +16144,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER nods)|I see you are a truth seeker after all.
 
-### (The SPEAKER lets you go. But then...)|(You feel her clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
+### (The SPEAKER lets you go. But then...)|(You feel ${Ethem} clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
 
 ### Um, sure?
 
@@ -16164,7 +16164,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 
 
-### (The SPEAKER smiles as ${Ethey} hide${Es} her hands behind her back)|Have you heard of 'sensory deprivation'?
+### (The SPEAKER smiles as ${Ethey} hide${Es} ${Etheir} hands behind ${Etheir} back)|Have you heard of 'sensory deprivation'?
 
 ### (The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!
 
@@ -16180,7 +16180,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER pouts)|I thought it would be fun...
 
-### (The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of her)|That's better~|Now why don't you say good night~
+### (The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of ${Ethem})|That's better~|Now why don't you say good night~
 
 ### Of course! I love it!
 
@@ -16202,9 +16202,9 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
 
-### (The SPEAKER takes a duster gag from her satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
+### (The SPEAKER takes a duster gag from ${Etheir} satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
 
-### (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from her satchel)|Now then, this place is filthy.|Why don't you put this on to help?
+### (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from ${Etheir} satchel)|Now then, this place is filthy.|Why don't you put this on to help?
 
 ### (The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
 
@@ -16242,7 +16242,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER winks and locks it on)|I feel much safer already~
 
-### (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting her imaginary enemies)
+### (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting ${Etheir} imaginary enemies)
 
 ### (The SPEAKER shrugs)|Your loss~
 
@@ -16372,7 +16372,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER frowns)|Too bad, I want to tie someone!
 
-### (The SPEAKER drops her scarves)|Aww, really?|I'll go find someone else then...
+### (The SPEAKER drops ${Etheir} scarves)|Aww, really?|I'll go find someone else then...
 
 ### (The SPEAKER beams a smile)|Yay, thank you!|Feels nice, right?
 
@@ -16412,9 +16412,9 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The green gas starts leaking)|Oh no! It wasn't supposed to do that!
 
-### (You push her out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
+### (You push ${Ethem} out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
 
-### (You push her out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
+### (You push ${Ethem} out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
 
 ### (The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen...
 
@@ -16452,7 +16452,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER tosses the slime on you)|(The slime flops off limply)|Ah. Back to the drawing board.
 
-### (The SPEAKER pours the slime onto you)|That's the spirit girl!|(Sticky RESTRAINT clings to you)
+### (The SPEAKER pours the slime onto you)|That's the spirit ${Pdim}!|(Sticky RESTRAINT clings to you)
 
 ### (The SPEAKER tosses the slime on you)|Ha, look, it's alive!|(Sticky RESTRAINT clings to you)
 
@@ -16478,7 +16478,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER puts on the RESTRAINT)|Perfect. Better behave now~|(The SPEAKER pats your butt)
 
-### (The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
+### (The SPEAKER rolls ${Etheir} eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
 
 ### (The SPEAKER nods glumly)|Not a fan?|Shame, I am~
 
@@ -16550,7 +16550,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (A SPEAKER plays with silvery rope)|Hmm, I need to get better with this.|Can I practice on you?
 
-### (The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~
+### (The SPEAKER grins happily)|Thank you ${Pdim}~|I'll tie with RESTRAINT then~
 
 ### (The SPEAKER binds you tightly)|(The rope is tight, and ${Etheyre} clearly an expert.)|Mmm, not too bad~
 
@@ -16584,7 +16584,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER quickly motions to you)|Hey! Over here!| I got something to show you!
 
-### (The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in her hands)
+### (The SPEAKER giggles)|You'll be wearing this~|(A RESTRAINT is in ${Etheir} hands)
 
 ### (The SPEAKER looks surprised)|Oh, uh, sure!|(They quickly add the RESTRAINT)
 
@@ -16630,7 +16630,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER titters)|It's going on, kitty~
 
-### (The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in her hand)
+### (The SPEAKER giggles)|Let's see if you can get away then~|(You see a RESTRAINT in ${Etheir} hand)
 
 ### (The SPEAKER whimpers and drops it)|Owwww!|I hit my knee!
 
@@ -16650,7 +16650,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 
 
-### (A SPEAKER winks at you)|You look like a girl who likes feeling|like a prisoner, am I right?
+### (A SPEAKER winks at you)|You look like a ${Psub} who likes feeling|like a prisoner, am I right?
 
 ### (The SPEAKER nods happily)|I knew it! Well, it's your lucky day.|I've got some RESTRAINT for you~
 
@@ -16662,7 +16662,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER grins maliciously)|I like seeing prisoners though~|And you're right here...
 
-### (The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in her hand)
+### (The SPEAKER giggles)|I'm gonna make you one anyway~|(You see a RESTRAINT in ${Etheir} hand)
 
 ### (The SPEAKER gulps)|M-Maybe I won't then!
 
@@ -16720,17 +16720,17 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 
 
-### (The SPEAKER brushes past hurriedly)|Careful girl!|Else I'll lock you away~
+### (The SPEAKER brushes past hurriedly)|Careful ${Pdim}!|Else I'll lock you away~
 
 ### (The SPEAKER looks at you intrigued)|Aren't you something...|How about wearing this RESTRAINT?
 
 ### (The SPEAKER grins and locks it on)|Maybe I should bump into you more~
 
-### (The SPEAKER rolls her eyes)|Run along then girl~
+### (The SPEAKER rolls ${Etheir} eyes)|Run along then ${Pdim}~
 
 ### (The SPEAKER nods)|Didn't think so~|Oh, and, uh, sorry for the bump.
 
-### (The SPEAKER shakes her head)|You don't get off that lightly.|These are going on.
+### (The SPEAKER shakes ${Etheir} head)|You don't get off that lightly.|These are going on.
 
 ### (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(${EThey} hold${Es} up a RESTRAINT)
 
@@ -16766,13 +16766,13 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER glares)|We urge you to reconsider.
 
-### (The SPEAKER has a twinkle in her eye)|We will offer you this RESTRAINT.|You should accept.
+### (The SPEAKER has a twinkle in ${Etheir} eye)|We will offer you this RESTRAINT.|You should accept.
 
 ### (The SPEAKER pulls an odd smile)|Very well.
 
 ### (The SPEAKER smugly nods)|(With surprising speed, the RESTRAINT locks in place)|Excellent, a good fit.
 
-### (The SPEAKER covers your mouth with her hand)|Shush, no more bad decisions.|(You feel her buckle the restraint strictly)
+### (The SPEAKER covers your mouth with ${Etheir} hand)|Shush, no more bad decisions.|(You feel ${Ethem} buckle the restraint strictly)
 
 ### No, thank you.
 
@@ -16822,7 +16822,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (A SPEAKER giggles and calls to you)|Hey there~|Fancy seeing some nature?~
 
-### (The SPEAKER motions with her hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
+### (The SPEAKER motions with ${Etheir} hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
 
 ### (The SPEAKER grins and motions again)|(The plants wrap around you quickly)|(You wriggle against the RESTRAINT)
 
@@ -16864,7 +16864,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER frowns sadly)|But they make the best noise!
 
-### (The SPEAKER rolls her eyes)|Tough luck then~|You're getting one!
+### (The SPEAKER rolls ${Etheir} eyes)|Tough luck then~|You're getting one!
 
 ### (The SPEAKER grins)|See how you feel when|you're wearing one!
 
@@ -16918,7 +16918,7 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 
 
-### (The SPEAKER steps up to you)|Hey girl~|You happen to be a fan of latex?
+### (The SPEAKER steps up to you)|Hey ${Pdim}~|You happen to be a fan of latex?
 
 ### (The SPEAKER smiles)|Then would you like to try on this RESTRAINT?
 
@@ -17010,7 +17010,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER walks up to you)|We don't get a lot of visitors.|I take it that you enjoy bondage?
 
-### (The SPEAKER tilts her head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
+### (The SPEAKER tilts ${Etheir} head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
 
 ### (The SPEAKER smiles)|I'm glad you like it!
 
@@ -17040,11 +17040,11 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER slaps your butt as ${Ethey} tie${Es} the last knot)|All trussed up~
 
-### (The SPEAKER looks disappointed and packs her rope away)
+### (The SPEAKER looks disappointed and packs ${Etheir} rope away)
 
 ### (The SPEAKER frowns)|Aw. What a missed opportunity!
 
-### (The SPEAKER grins and reaches for her satchel)|Well, too bad--
+### (The SPEAKER grins and reaches for ${Etheir} satchel)|Well, too bad--
 
 ### (The SPEAKER grins)|But I've already brought so much rope with me~
 
@@ -17070,7 +17070,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 
 
-### (The SPEAKER perks her ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
+### (The SPEAKER perks ${Etheir} ears as ${Ethey} see${Es} you)|You've got a nice body.|I think it'll do better with some training!
 
 ### (The SPEAKER grins and hands you a paper)|Nevermere Training is always looking for new recruits!|I'll just have you sign here...
 
@@ -17110,11 +17110,11 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER does a short bow as ${Ethey} see${Es} you)|Greetings.|You seem to possess qualities we can make use of.|I would be glad to offer you a position...
 
-### (The SPEAKER smiles briefly before clearing her throat)|Fantastic!|I have your uniform right here...
+### (The SPEAKER smiles briefly before clearing ${Etheir} throat)|Fantastic!|I have your uniform right here...
 
 ### (The SPEAKER buckles you in, pulling the lacing extra-tight...)|(You hear the click of a few locks going on...)|Wonderful. Your first task is to clean up this floor.|Good luck.
 
-### (The SPEAKER tilts her head and shrugs)|We are always prepared...
+### (The SPEAKER tilts ${Etheir} head and shrugs)|We are always prepared...
 
 ### (The SPEAKER nods)|Fair enough.
 
@@ -17126,7 +17126,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck.
 
-### (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and locks it tight...)|You'll require additional training, I suppose...
+### (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(${EThey} put${Es} a uniform on you and lock${Es} it tight...)|You'll require additional training, I suppose...
 
 
 
@@ -17144,7 +17144,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 
 
-### (The SPEAKER perks her ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
+### (The SPEAKER perks ${Etheir} ears as ${Ethey} see${Es} you)|Glory to the blessed kitty!|Are you prepared to join us?
 
 ### (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to cats.|And also we own you now.
 
@@ -17190,13 +17190,13 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER frowns)|Aw...
 
-### (The SPEAKER clenches her fist to the ceiling)|Nooooo!!!
+### (The SPEAKER clenches ${Etheir} fist to the ceiling)|Nooooo!!!
 
 ### (The SPEAKER grins and pulls out a frilly dress)|Don't knock it till you try it!|Trust me, it'll be fun!
 
-### (The SPEAKER furrows her brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you...
+### (The SPEAKER furrows ${Etheir} brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you...
 
-### (The SPEAKER folds her arms as ribbons rise up around her)|Suit yourself, hehe~
+### (The SPEAKER folds ${Etheir} arms as ribbons rise up around ${Ethem})|Suit yourself, hehe~
 
 ### (The SPEAKER smiles)|Yes! Yes! Wonderful!
 
@@ -17236,7 +17236,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER looks happy again)|Thank you! I'm super grateful!
 
-### (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
+### (The SPEAKER tilts ${Etheir} head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as ${Ethey} break${Es} a glass vial)|(A suit of blue latex envelops you!)
 
 ### ...Hello?
 
@@ -17262,11 +17262,11 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER clasps some 'jewelry' around your limbs)|You look beautiful, my dear.|I will leave you to your own affairs until we meet again.
 
-### (The SPEAKER turns her head away)|Hmph. I offer you a bargain and you refuse.
+### (The SPEAKER turns ${Etheir} head away)|Hmph. I offer you a bargain and you refuse.
 
-### (The SPEAKER turns her head away)|Hmph. As expected.
+### (The SPEAKER turns ${Etheir} head away)|Hmph. As expected.
 
-### (The SPEAKER folds her arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild.
+### (The SPEAKER folds ${Etheir} arms)|If you are not with us, then you are against us.|You shall face the wrath of the wild.
 
 ### (The SPEAKER frowns)|Hardly slavery!|A mere slave would not be allowed to even set foot in our society.
 
@@ -17274,7 +17274,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER nods and smiles)|(${EThey} decorate${Es} your body with 'jewelry')|I am glad you had a change of heart.
 
-### (The SPEAKER scoffs)|(Her magic suddenly binds you tightly in glowing ropes)|Amateur.
+### (The SPEAKER scoffs)|(${ETheir} magic suddenly binds you tightly in glowing ropes)|Amateur.
 
 ### I'm interested. (Talk with her)
 
@@ -17296,19 +17296,19 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER points to the ground)|Kneel before me and accept your collar.
 
-### (The SPEAKER snaps her fingers)|(A collar of cold black metal materializes around your neck)|A girl who knows her place! Wonderful...
+### (The SPEAKER snaps ${Etheir} fingers)|(A collar of cold black metal materializes around your neck)|A ${Psub} who knows ${Ptheir} place! Wonderful...
 
 ### (The SPEAKER scoffs)|Hmmph. Mortals...
 
-### (The SPEAKER folds her arms)|Well, look who doesn't know her place~
+### (The SPEAKER folds ${Etheir} arms)|Well, look who doesn't know ${Ptheir} place~
 
-### (The SPEAKER folds her arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that.
+### (The SPEAKER folds ${Etheir} arms)|I didn't offer you a choice in the matter.|You're mine, I've decided that.
 
 ### (The SPEAKER's eyes begin to glow)|Looks like we'll do this the fun way!
 
 ### (The SPEAKER smiles)|Wonderful~|Now come along, my pet!
 
-### (The SPEAKER scoffs and snaps her fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?
+### (The SPEAKER scoffs and snaps ${Etheir} fingers)|(Metallic restraints come at you from all angles and snap in place tightly)|(A gag forces itself into your mouth)|Now then, what were we saying?
 
 ### Yes?
 
@@ -17342,11 +17342,11 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER looks dubious)|You know, there's quite a bounty on your head.|I'm sure we could do something about it.
 
-### (The SPEAKER tilts her head)|Haha, very funny.|We both know that you're not one of those... right?
+### (The SPEAKER tilts ${Etheir} head)|Haha, very funny.|We both know that you're not one of those... right?
 
 ### (The SPEAKER frowns and readies for battle)|My instincts were right.
 
-### (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off her hands)|We'll have a talk when you get out of that, okay?
+### (The SPEAKER suddenly strikes you to the floor)|(You feel a foot on your back as ${Ethey} tie${Es} you in a strict rope hogtie...)|(${EThey} dust${Es} off ${Etheir} hands)|We'll have a talk when you get out of that, okay?
 
 ### I have no interest in joining the guild.
 
@@ -17408,17 +17408,17 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!
 
-### (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
+### (The SPEAKER clears ${Etheir} throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 
 ### (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 
-### (The SPEAKER tilts her head and shrugs)|Ah well.
+### (The SPEAKER tilts ${Etheir} head and shrugs)|Ah well.
 
 ### (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 
 ### (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
 
-### (The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
+### (The SPEAKER frowns and cracks ${Etheir} knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
 
 ### (The SPEAKER giggles)|Hehe, just messin' with ya.|Anyway, welcome to the sisterhood!
 
@@ -17446,13 +17446,13 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER waves and calls you over)|Looks like you've made a name for yourself.|What do you say to a little agreement?
 
-### (The SPEAKER clears her throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
+### (The SPEAKER clears ${Etheir} throat)|Well, you're currently on our turf.|But we're willing to cut you some slack.|You just have to agree not to attack any of us.
 
-### (The SPEAKER frowns)|Criminals? Girl, we ARE the law around these parts~
+### (The SPEAKER frowns)|Criminals? ${PDim}, we ARE the law around these parts~
 
-### (The SPEAKER grins)|I like your spunk, girl.|But you're kidding, right?
+### (The SPEAKER grins)|I like your spunk, ${Pdim}.|But you're kidding, right?
 
-### (The SPEAKER raises her fists and smiles)|You're on!
+### (The SPEAKER raises ${Etheir} fists and smiles)|You're on!
 
 ### (The SPEAKER chuckles)|Here's a toast to a new partnership!
 
@@ -17538,7 +17538,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER nods and smiles)|Thank you so much!|I don't know what I would have done if you said no...
 
-### (The SPEAKER frowns and waves her wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
+### (The SPEAKER frowns and waves ${Etheir} wand)|(A bunch of ropes come out of the ground and restrain you)|Hmmph. I'll tell them you signed it anyway.|I can't go back empty handed.
 
 ### Thank you for delivering it. (Read it)
 
@@ -17568,11 +17568,11 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER waves)|Greetings,|I manufacture all sorts of weapons.|Would you like to buy some?
 
-### (The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
+### (The SPEAKER drops ${Etheir} hammer and cracks ${Etheir} knuckles)|Put em up!
 
 ### (The SPEAKER looks at you.)|But you already have one?
 
-### (The SPEAKER folds her arms)|I don't do charity, ma'am.
+### (The SPEAKER folds ${Etheir} arms)|I don't do charity, ma'am.
 
 ### (The SPEAKER smirks)|Another adventurer found this lying around.|I wonder who it's for~
 
@@ -17594,7 +17594,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER looks at you.)|Do you have a dealer's license?
 
-### (The SPEAKER folds her arms)|I don't do charity, girl.
+### (The SPEAKER folds ${Etheir} arms)|I don't do charity, ${Pdim}.
 
 ### (The SPEAKER nods)|The most high-impact of sports bras.
 
@@ -17614,7 +17614,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER waves)|Hello miss!|What brings you here today?
 
-### (The SPEAKER folds her arms)|That's not very nice!
+### (The SPEAKER folds ${Etheir} arms)|That's not very nice!
 
 ### (The SPEAKER looks at you and smiles.)|Don't you already have one?
 
@@ -17644,7 +17644,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER looks you over and shrugs)|Don't joke around.
 
-### (The SPEAKER folds her arms)|Don't have money? Better go find some.
+### (The SPEAKER folds ${Etheir} arms)|Don't have money? Better go find some.
 
 ### (The SPEAKER produces a bag of stuffings)|Quite the staple.
 
@@ -17660,7 +17660,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER rattles as ${Ethey} wave${Es})|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
 
-### (The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
+### (The SPEAKER cracks ${Etheir} exposed knuckles)|So you've seen through my disguise...
 
 ### (The SPEAKER looks at you.)|Yours is just fine, dear.
 
@@ -17682,7 +17682,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER sells you the item)
 
-### (The SPEAKER shakes her head)|I think you'd be better off without that~
+### (The SPEAKER shakes ${Etheir} head)|I think you'd be better off without that~
 
 ### (The SPEAKER looks embarassed)|I can't sell you that, miss...
 
@@ -17736,7 +17736,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER thanks you)|A magnificent offering! You have my thanks.
 
-### (The SPEAKER tilts her head)|...where did you get this?
+### (The SPEAKER tilts ${Etheir} head)|...where did you get this?
 
 ### (The SPEAKER thanks you)|A fine trinket!|I will enjoy meditating upon it.
 
@@ -17774,7 +17774,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER smiles)|Elemental magic, interesting stuff.
 
-### (The SPEAKER tilts her head)|Why is it wet?
+### (The SPEAKER tilts ${Etheir} head)|Why is it wet?
 
 ### (The SPEAKER smiles)|Gladly, this will be useful to my studies.
 
@@ -17784,7 +17784,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER giggles)|Living dangerously, I see~
 
-### (The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?
+### (The SPEAKER approaches you with an offer)|Hey ${Pdim}~|You seem like the explorer type.|Happen to have any good finds?
 
 ### (The SPEAKER frowns)|Well then.
 
@@ -17814,9 +17814,9 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER bows)|A most valuable find.
 
-### (The SPEAKER tilts her shades)|I like to think of myself as a dealer in quality tools.
+### (The SPEAKER tilts ${Etheir} shades)|I like to think of myself as a dealer in quality tools.
 
-### (The SPEAKER reaches for her hip)|I'd think twice if I were you...
+### (The SPEAKER reaches for ${Etheir} hip)|I'd think twice if I were you...
 
 ### (The SPEAKER smiles)|Nevermere keeps a tight grip on their blueprints.|Thank you.
 
@@ -17830,13 +17830,13 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordnance in order to...|...add to my collection.|Anyway, got any bombs?
 
-### (The SPEAKER reaches for her backpack)|I'll blow you away!
+### (The SPEAKER reaches for ${Etheir} backpack)|I'll blow you away!
 
 ### (The SPEAKER shrugs)|Cute fireworks, I suppose...
 
 ### (The SPEAKER giggles)|That's what I'm talking about!
 
-### (The SPEAKER rubs her hands together)|Excellent...
+### (The SPEAKER rubs ${Etheir} hands together)|Excellent...
 
 ### (The SPEAKER smiles)|Yes! I can make more bombs!
 
@@ -17856,7 +17856,7 @@ Ich weigere mich. (PERCENT Chance davon zu kommen)
 
 ### (A distracted SPEAKER munches on a cookie)
 
-### (The SPEAKER continues eating her snack)
+### (The SPEAKER continues eating ${Etheir} snack)
 
 ### (The SPEAKER plucks the cookie out of your hand)|My favorite!
 
@@ -18162,7 +18162,7 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### (The SPEAKER wiggles excitedly)|Y-yes miss!
 
-### (The SPEAKER shakes her head while blushing)|W-what makes you think that?
+### (The SPEAKER shakes ${Etheir} head while blushing)|W-what makes you think that?
 
 ### (The SPEAKER computes something)|Error...
 
@@ -18176,7 +18176,7 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### (The SPEAKER trembles with pleasure)
 
-### (The SPEAKER struggles to let go due to her chastity belt)
+### (The SPEAKER struggles to let go due to ${Etheir} chastity belt)
 
 
 
@@ -18304,7 +18304,7 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### (Growl at ${Ethem})
 
-### (She smiles)|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
+### (${EThey} smile${Es})|My name is Fuuka, with the letters for Wind and Song.|Are you going to introduce yourself?
 
 ### What kind of name is that?
 
@@ -18328,11 +18328,11 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### Mmmmm... (Blush)
 
-### (She grins)|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though.
+### (${EThey} grin${Es})|My name is Fuuka, with the letters for Wind and Song.|The reincarnated ones call me Windsong,|they aren't very bright though.
 
 ### Reincarnated ones?
 
-### (SPEAKER tilts her head)|I believe the term is 'Zombie' in the common tongue.
+### (SPEAKER tilts ${Etheir} head)|I believe the term is 'Zombie' in the common tongue.
 
 ### (SPEAKER enjoys the discussion)|When most people die, their spirits pass on to the next life.|But some stay in this world, and with the right blessings,|one can grant them a second chance!|I plan to give them all proper bodies...|Eventually.
 
@@ -18362,7 +18362,7 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### The Alchemists are always looking for a youth potion.
 
-### (SPEAKER folds her arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!
+### (SPEAKER folds ${Etheir} arms)|Oh ho ho~|That's none of your business, for it is also part of my contract|to keep outsiders from interfering with the catacombs below!
 
 ### Do you know what's on the next floor?
 
@@ -18412,13 +18412,13 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### Mmpphgh? (Pout at her)
 
-### (She smirks)|So you're that kind of visitor, huh?
+### (${EThey} smirk${Es})|So you're that kind of visitor, huh?
 
 ### That's right. How powerful are you?
 
-### (She cracks her knuckles)|I have been practicing the resurrection arts for a thousand years.
+### (${EThey} crack${Es} ${Etheir} knuckles)|I have been practicing the resurrection arts for a thousand years.
 
-### (She smiles)|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them.
+### (${EThey} smile${Es})|All the zombies you seee in the Graveyard?|They are my pets, and I care for each and every one of them.
 
 ### What the heck are 'Resurrection Arts'?
 
@@ -18426,9 +18426,9 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### Hmmph. (Look away)
 
-### (She grins)|We'll wipe that pout off your face soon enough...
+### (${EThey} grin${Es})|We'll wipe that pout off your face soon enough...
 
-### (She frowns)|Well, you will soon.
+### (${EThey} frown${Es})|Well, you will soon.
 
 ### Pfff. Never heard of it.
 
@@ -18438,11 +18438,11 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### (Stare at her silently, maintaining your posture)
 
-### (She grins)|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong.
+### (${EThey} grin${Es})|I am in charge of this place.|Everything that goes through here goes through me.|You may address me as Fuuka Windsong.
 
 ### By what authority?
 
-### (SPEAKER tilts her head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries.
+### (SPEAKER tilts ${Etheir} head)|Ummmm.... uh...|The Old Civilization! Of course!|I've been keeping their traditions for centuries.
 
 ### (SPEAKER blushes)|Umm... That's because...|Oh shut up!
 
@@ -18468,7 +18468,7 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### Mmmpphh~ (Moan and wiggle seductively)
 
-### (She grins)|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!
+### (${EThey} grin${Es})|Oh look at you!|I'm going to dress you up and make you my pet!|You can have all the scritches and snuggles you want!|My name's Fuuka!
 
 ### A pet? What kind?
 
@@ -18500,7 +18500,7 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### (Attack ${Ethem} without saying anything)
 
-### (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
+### (SPEAKER clears ${Etheir} throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
 
 ### I do what I want.
 
@@ -18536,13 +18536,13 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### I suppose...
 
-### (SPEAKER smiles as she stands over you)|Well well. Look who won.
+### (SPEAKER smiles as ${Ethey} stand${Es} over you)|Well well. Look who won.
 
 ### (SPEAKER nods and giggles)|Absolutely.|Allow me to present to you, my prized pet collar!|I save it only for my favorite pets.|That's right! You're my favorite pet now~
 
 ### (SPEAKER giggles)|You're not in a position to resist.|Now then, where did I put that collar...
 
-### (SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(She brandishes a collar) Now including you!
+### (SPEAKER smiles)|It's a magical spell that seals your power temporarily~|I use it for my pets when they're being unruly...|(${EThey} brandish${Ees} a collar) Now including you!
 
 ### What's this weird magic?
 
@@ -18562,7 +18562,7 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### (SPEAKER presents you with your collar...)|(She locks it around your neck)|You are free to go now, dear!
 
-### (SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!
+### (SPEAKER puts up a wall of talismans to regain ${Etheir} strength)|I'm... I'm not finished yet!
 
 ### (SPEAKER is out of breath)|I... can't... believe... it...|She drops her keys...
 
@@ -18570,7 +18570,7 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### (Submit to her anyway) (Gain a special collar)
 
-### (SPEAKER resists but ultimately you force a gag into her mouth)|MMMMMPH!
+### (SPEAKER resists but ultimately you force a gag into ${Etheir} mouth)|MMMMMPH!
 
 ### (Gag ${Ethem})
 
@@ -18638,7 +18638,7 @@ Hast du etwas, dass du mir Zeigen willst?
 (Verkaufe Items)
 - (Sell Whole Stacks of Items)
 (Verkauf den ganzen Stappel an Items)
-- Daww! What a cutie!|(${EThey} smile${Es} and pats your head gently)
+- Daww! What a cutie!|(${EThey} smile${Es} and pat${Es} your head gently)
 Och! So eine Süße!|(Sie lächelt und streichelt dich sanft am Kompf)
 - Do you have anything for sale?
 Verkaufst du etwas?
@@ -18650,7 +18650,7 @@ Sorry, freund, aber ich verkaufe kein merchandise hier.|Wer würde schon einen S
 Zurück
 
 
-- (The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
+- (The SPEAKER brings you safely back to ${Etheir} shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
 (Die SPEAKER brint dich sicher zu ihrem Shop zurück)|So, jetzt bist du sicher.|Lass mich kurz wegen den Kosten schauen...|Das wären RESCUECOST Goldstücke!
 - Right! Here's RESCUECOST gp.
 OK!, Hier sind RESCUECOST gp.
@@ -18662,21 +18662,21 @@ Mmmph. (Nick mit dem Kopf und zahle RESCUECOST gp)
 Könnte ich das später Zahlen?
 - (Shake your head regrettably.)
 (Shüttel entteuscht deinen Kopf.)
-- (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
+- (The SPEAKER rubs ${Etheir} chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
 (Die SPREAKER reibst sich ihr Kin)|Nun... Hmmm. Ehh.|Schon gut, ich werde ein Auge zudrücken|Aber ich werde nicht nicht entfesseln~
-- (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
+- (The SPEAKER rubs ${Etheir} chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
 (Die SPREAKER reibst sich ihr Kin)|Nun... Hmmm. Ehh.|Schon gut, ich werde ein Auge zudrücken|Du bist ein gute Kunde~
-- (The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!
+- (The SPEAKER folds ${Etheir} arms)|Come on now, I can hear the gold jingling in your pocket!
 (Die SPEAKER verschänkt ihre Arme)|Du weißt, dass ich das Gold in deine Tasche hören kann!
 - Pretty please? I promise I'll pay you back.
 Ich flehe dich an, ich werde es dir später auf zurück zahlen.
 - (Be insistent)
 (Bleib hartnäckig)
-- (The SPEAKER rubs her chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
+- (The SPEAKER rubs ${Etheir} chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
 (Die SPEAAKER reibt sich ihr Kin)|Nagut, ich glaub dir.|Aber ich werde dich nicht aus den Fesseln befreien!
 - (The SPEAKER sighs)|Fine, I believe you.|You better believe I won't forget, though!
 (Die SPEAKER seufst)|Nagut, ich glaub dir.|Ich schwöre aber, dass ich es nicht vergessen werde!
-- (The SPEAKER folds her arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
+- (The SPEAKER folds ${Etheir} arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
 (Die SPEAKER verschränkt ihre Arme)|Deine Abenteuer haben mir einiges gekosten.|Ich werde pleite gehen, wenn ich Kunden einfach ohne zu Zahlen gehen lass.|Wie wäre es mit... Du hilfst mir, und ich helfe dir. Fair?
 - (Help her test cursed armors)
 (Teste ihre verfluchte Ausrüstung)
@@ -18696,7 +18696,7 @@ Ich flehe dich an, ich werde es dir später auf zurück zahlen.
 (Die SPEAKER helt ein/eine/einen RESTRAINTNAME)|Deine Fänger suchen immer Hochsicherheitsfesseln.|Wenn du gefangen wirst, vielleicht sehen sie ja mein Logo auf dem Halsfessel!|Es ist wirklich bequem und|du wirst dich mehr hingebender fühlen, je länger du die tragst.
 - (The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
 (Die SPEAKER helt ein/eine/einen RESTRAINTNAME)|Dein Körper schaut schön als Werbefläche|Dieses Zeug wird dich so attraktiv machen, dass niemand wegschauen kann!|Und wenn sie dich bewundern,|werden die sicher mein Logo sehen!
-- (The SPEAKER folds her arms and nods)|Good ${Psub}! I knew you would come clean~
+- (The SPEAKER folds ${Etheir} arms and nods)|Good ${Psub}! I knew you would come clean~
 (Die SPEAKER verschränkt ihre Arme und nickt)|Good Girl! Ich wusste, das du es zugeben wirst~
 - Sure! I accept!
 OK, ich akzeptiere das!
@@ -18710,9 +18710,9 @@ Exellent! Bitte bleib kurz still~|(Sie zieht dir den/der RESTRAINTNAME an und ei
 Exellent! Bitte bleib kurz still~|(Sie zieht dir den/der RESTRAINTNAME an und nichts passiert)|Hah! Perfekt|Du kannst das aber nicht haben, bis du wirklich zurück zahlst.
 - Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(${EThey} place${Es} the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
 Wunderbar. Ich warte bis du mit vielen Schätzen zurück|gebracht wirst, er, zurück kommst!|(Sie schliest den/der RESTRAINTNAME um dich und das Siegel aktiviert sich. Da ist kein Schlüsselloch.)
-- Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
+- Alright! Why don't you hold still~|(${EThey} lift${Es} your hair out of the way and buckle${Es} the collar on)|Now go out there and find me some treasure~
 OK, bleib kurz still~|(Sie hebt deine Haare weg, und schliest die Halsfessel ab)|Jetzt geh wieder rein und finde ein paar Schätze~
-- You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
+- You're gonna like it, I guarantee it~|(${EThey} pull${Es} out the catsuit from a drawer, dust${Es} it off, and help${Es} you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
 Du wirst das garantiert lieben~|(Sie nimmt den Catsuit aus einem Kasten, staubt in ab, und hilft dir in anzuziehen)|(Es gibt keinen Zipper, einfach nur ein sehr dehnbares Kragen)|(Wenn du endlich drinne bist, fühlst du den Kragen enger werden.)|(Jetzt das Gummi von der Haut wegzuziehen ist unmöglich)|Sehr schön. Ich lass dich jetzt gehen.|Ich bin mir sicher, dass du viele Kunden anwerben wirst!
 - No? That's alright.|I'm sure I'll find someone else to test these on, huehue.
 No? Das ist auch gut.|Ich bin mir sicher, dass ich schon was für dich finden werde.
@@ -18732,7 +18732,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 (Die SPEAKER reibt sich ihr Kin)|Sorry aber!|Das ist der Preis, weißt du?|Warum kommst du nicht zurück, wenn du ein bisschen, glänzendes Gold hast~
 - (The SPEAKER folds her arms)|Business is business, miss~
 (Die SPEAKER verschränkt ihre Arme)|Geschäft ist Geschäft.
-- (The SPEAKER rubs her chin)|No can do.|Rules are rules~
+- (The SPEAKER rubs ${Etheir} chin)|No can do.|Rules are rules~
 (The SPEAKER reibt sich ihr Kin)|Das kann ich nicht|Regeln sind Regeln~
 - (The SPEAKER sighs)|Business is business, miss~
 (Die SPEAKER seufst)|Geschäft ist Geschäft.
@@ -18814,9 +18814,9 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### You close your eyes but the vibrations keep you from dozing off...
 
-### (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through her gag)
+### (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you with pleading eyes,)|(and mumbles incoherently through ${Etheir} gag)
 
-### (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into her gag)
+### (A SPEAKER lies hogtied in front of you)|(${EThey} look${Es} at you, mumbling and giggling into ${Etheir} gag)
 
 ### (SPEAKER looks grateful)|Thank you so much|I shall join your party.
 
@@ -18830,7 +18830,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### Make sure ${Ethey} ${Eis} tight and secure
 
-### (A SPEAKER bumps into you while immersed in her thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
+### (A SPEAKER bumps into you while immersed in ${Etheir} thoughts)|Oh! Hello!|Say, you look adorable...|Do you mind helping me find something?
 
 ### (The SPEAKER jumps up and down)|Ah, wonderful!|I've misplaced one of my dresses.|If you could find one, wear it, and bring it to me,|I'd greatly appreciate it! Thanks!
 
@@ -18866,15 +18866,15 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### (A SPEAKER looks distraught)|Well met, adventurer!|We have a problem...
 
-### (The SPEAKER folds her arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice.
+### (The SPEAKER folds ${Etheir} arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice.
 
 ### (A SPEAKER scoffs in your direction)|Well? You lookin' for work or no?
 
 ### (The SPEAKER grins)|A bunch of delinquents stormed out recently.|They're looking for a way out of their belts.|Someone oughta show em their place,|if you catch what I'm saying.
 
-### (A SPEAKER approaches you in your cell)|Since you've been a bad girl,|we're taking you to the high-security prison.
+### (A SPEAKER approaches you in your cell)|Since you've been a bad ${Psub},|we're taking you to the high-security prison.
 
-### (The SPEAKER folds her arms)|Want to or not, you're going.
+### (The SPEAKER folds ${Etheir} arms)|Want to or not, you're going.
 
 ### (Resist)
 
@@ -18882,7 +18882,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### (A SPEAKER approaches you in your cell)|Looks like you're not in the System.|I'm going to have to take you to sorting.
 
-### (The SPEAKER grins as her systems glow)|I love my job sometimes~
+### (The SPEAKER grins as ${Etheir} systems glow)|I love my job sometimes~
 
 ### (The SPEAKER grins)|It means you'll get nicely packaged,|so that we can sort you through the System.
 
@@ -18892,7 +18892,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### Hmmmph? Mmmm! (Act worried and whimper)
 
-### (The SPEAKER folds her arms)|Mistress Oriel's orders
+### (The SPEAKER folds ${Etheir} arms)|Mistress Oriel's orders
 
 ### Not in the 'System'?
 
@@ -18918,7 +18918,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### The facility is in ruins! This is pointless!
 
-### (A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
+### (A SPEAKER crosses ${Etheir} arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
 
 ### (The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out.
 
@@ -18928,7 +18928,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### (You can't help ${Ethem}, bound as tightly as you are...)
 
-### (You unlock her, fumbling around for a while with your bound hands)
+### (You unlock ${Ethem}, fumbling around for a while with your bound hands)
 
 ### (You unlock the SPEAKER)|Thank you!|Let's get out of here!
 
@@ -18942,7 +18942,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
 
-### (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} her head when you go for her gag...)
+### (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} ${Etheir} head when you go for ${Etheir} gag...)
 
 ### (You don't have enough mana for a command word)
 
@@ -18950,9 +18950,9 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
 
-### (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} her gag back on...)
+### (You utter a command word to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)
 
-### (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
+### (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help ${Ethem}.)
 
 ### Use a key to unlock her
 
@@ -18962,7 +18962,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### Apologize profusely!
 
-- (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} is bugged and needs your help to get out)
+- (The SPEAKER sits bound in mysterious ASCII glyphs)|(${EThey} ${Eis} bugged and needs your help to get out)
 (Die SPEAKER sitzt gefesselt in mysteriösischen ASCII Zeichen)|(Sie ist verbuggt und braucht deine Hilfe)
 - (Unlock her and file a bug report to Ada)
 (Befreie sie und schreib einen Fehlerbericht an Ada)
@@ -18972,7 +18972,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 
 
-### (The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)
+### (The SPEAKER sits restrained by your own hand.|Only someone with keys can let ${Ethem} out.)
 
 ### Try to pick her restraints
 
@@ -19040,7 +19040,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### (You lock yourself in the furniture!)
 
-### (The SPEAKER slips out of your grip|before you can lock her in place!)
+### (The SPEAKER slips out of your grip|before you can lock ${Ethem} in place!)
 
 ### (Display one of your prisoners)
 
@@ -19058,7 +19058,7 @@ Deine Entscheidung~|Nicht reder will so rausstechen~
 
 ### (Secure NME into the furniture)
 
-### (You lock her into the furniture so that ${Ethey} stay${Es} in place)
+### (You lock ${Ethem} into the furniture so that ${Ethey} stay${Es} in place)
 
 
 
@@ -19296,7 +19296,7 @@ Metallerne Arme geben einen Kauschheitsgürtel um deine Hüfte.
 
 ### Sounds fun... but I really need to get going.
 
-### (The Dollmaker folds ${Etheir} arms as she walks over)|All tight and shiny!|You'll be my prized possession~
+### (The Dollmaker folds ${Etheir} arms as ${Ethey} walk${Es} over)|All tight and shiny!|You'll be my prized possession~
 
 ### (The Dollmaker nods)|Already eager to obey!|So beautiful...
 
@@ -19316,7 +19316,7 @@ Metallerne Arme geben einen Kauschheitsgürtel um deine Hüfte.
 
 ### (The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower.
 
-### (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as she storms toward you!)
+### (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from ${Etheir} back as ${Ethey} storm${Es} toward you!)
 
 ### (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)
 
@@ -19326,7 +19326,7 @@ Metallerne Arme geben einen Kauschheitsgürtel um deine Hüfte.
 
 ### (Wear a doll mask)
 
-### (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and she starts mumbling angrily)
+### (You lift up the dollmaker's mask, revealing a pouting young woman inside)|What are you--|(You insert a gag into ${Etheir} open mouth and ${Ethey} start${Es} mumbling angrily)
 
 
 
@@ -24972,7 +24972,7 @@ Fasion-Keuschheitsbh
 
 ### Restores 30% willpower. Takes a few turns to eat.
 
-### A playful ghost now accompanies you on your journey.
+### A playful ghost now accompanies ${youObj} on ${your} journey.
 
 ### The ghost haunting you decides to have a little fun! (+RestraintAdded)
 
@@ -25466,7 +25466,7 @@ Fasion-Keuschheitsbh
 
 ### A dark energy enters your body... (DamageDealt)
 
-### A dark energy lurks within you.
+### A dark energy lurks within ${youObj}.
 
 ### You succumb to a dark desire... (+RestraintAdded)
 
@@ -25720,13 +25720,13 @@ Fasion-Keuschheitsbh
 
 ### Corruption: While in the shadows, you slowly gain corruption.
 
-### Your willpower gain and struggle power is less effective due to your corruption.
+### ${Your} willpower gain and struggle power is less effective due to ${your} corruption.
 
 ### Seduction: Gain distraction after taking damage.
 
 ### Taking damage fills your minds with cursed thoughts...
 
-### Having taken damage, your distraction is increasing...
+### Having taken damage, ${your} distraction is increasing...
 
 ### Punishment: When you defeat an enemy, you are stunned briefly and enemies are attracted.
 
@@ -25736,7 +25736,7 @@ Fasion-Keuschheitsbh
 
 ### Dark Voice: Kneel before your mistress.
 
-### You must submit! Moving away from an enemy at 0 WP will bind you!
+### ${You} must submit! Moving away from an enemy at 0 WP will bind ${youObj}!
 
 ### Denial: -10 WP when you try to Let Go. At 0 WP you cannot orgasm.
 
@@ -26006,7 +26006,7 @@ Fasion-Keuschheitsbh
 
 ### When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 10% Max Mana.
 
-### You sense that a high value target is near.
+### ${You} sense${Ys} that a high value target is near.
 
 ### You push yourself beyond physical limits!
 
@@ -26034,7 +26034,7 @@ Fasion-Keuschheitsbh
 
 ### Costs 100 Arcane Energy and refunds 100 Mana. Bringing memories to life, you call upon your magical knowledge to ignore arm, leg, and verbal spell components for 3 turns.
 
-### You can ignore Arm, Leg, and Verbal components!
+### ${You} can ignore Arm, Leg, and Verbal components!
 
 ### Magical whisperings circle around you, enabling you to cast spells without components!
 
@@ -26056,7 +26056,7 @@ Fasion-Keuschheitsbh
 
 ### Chaotic energy overtakes you, crystallizing into physical form...
 
-### Chaotic energy flows through you! You have a bad feeling about this...
+### Chaotic energy flows through ${youObj}! ${You} ${Yhas} a bad feeling about this...
 
 
 
@@ -26084,9 +26084,9 @@ Fasion-Keuschheitsbh
 
 ### You don't have any restraints that can be removed
 
-### As you are low on mana, you are unable to store Arcane Energy.
+### As ${you} ${Yis} low on mana, ${you} ${Yis} unable to store Arcane Energy.
 
-### You are recharging your next mana cost reduction.
+### ${You} ${Yis} recharging ${your} next mana cost reduction.
 
 
 
@@ -26198,7 +26198,7 @@ Fasion-Keuschheitsbh
 
 ### A ball of latex envelops you!
 
-### The latex around you dampens your attacks, reducing physical damage by 30% and lowering your sight range.
+### The latex around ${youObj} dampens ${your} attacks, reducing physical damage by 30% and lowering ${your} sight range.
 
 ### Latex Ball
 
@@ -26640,11 +26640,11 @@ Fasion-Keuschheitsbh
 
 ### The gap in the bubble closes, and you are fully sealed within the bubble!
 
-### Magical water reduces your accuracy and slows you significantly!
+### Magical water reduces ${your} accuracy and slows ${youObj} significantly!
 
-### You attack twice!
+### ${You} attack${Ys} twice!
 
-### You gain a free move from Combat Maneuvers!
+### ${You} gain${Ys} a free move from Combat Maneuvers!
 
 ### Access denied.
 
@@ -26778,7 +26778,7 @@ Fasion-Keuschheitsbh
 
 ### Hundreds of years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
 
-### An item has increased your spell damage!
+### An item has increased ${your} spell damage!
 
 ### AMNT ice damage/turn vs. Frozen
 
@@ -26792,11 +26792,11 @@ Fasion-Keuschheitsbh
 
 ### You were hit by one of Fuuka's talismans. Fuuka's magic renders you helpless!!!
 
-### You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
+### ${You} ${Yhas} been hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting ${youObj}!
 
 ### Sealing Shadows
 
-### Shadowy magic is restricting you!
+### Shadowy magic is restricting ${youObj}!
 
 ### A powerful seal holds you in place temporarily!!!
 
@@ -27318,7 +27318,7 @@ Fasion-Keuschheitsbh
 
 ### You raise your defences!
 
-### Your defenses are raised!
+### ${Your} defenses are raised!
 
 
 
@@ -27328,7 +27328,7 @@ Fasion-Keuschheitsbh
 
 ### You channel your fighting spirit into your desire for freedom!
 
-### Your struggle power is greatly increased!!!
+### ${Your} struggle power is greatly increased!!!
 
 ### The teleportation partially succeeds due to an obstruction, placing you near the intended point.
 
@@ -27356,7 +27356,7 @@ Fasion-Keuschheitsbh
 
 ### Your shield absorbed AMNT damage.
 
-### You are currently shielded from damage and some spells.
+### ${You} ${Yis} currently shielded from damage and some spells.
 
 ### No offhand weapon set. Activate the spell in your hotbar to set one.
 
@@ -27674,7 +27674,7 @@ Ein scwebendes Keuschheitsitem erscheint und startet zu dir zu fliegen!
 
 ### You have the mental clarity but not the magical clarity! (not enough mana)
 
-### You have formed a mental barrier...
+### ${You} ${Yhas} formed a mental barrier...
 
 
 
@@ -28414,7 +28414,7 @@ Ein scwebendes Keuschheitsitem erscheint und startet zu dir zu fliegen!
 
 ### Cut to the chase. Do I have to fight you or not?
 
-### (She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
+### (${EThey} chuckle${Es})|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
 
 ### Quite a boast for someone who's about to lose.
 
@@ -28444,7 +28444,7 @@ Ein scwebendes Keuschheitsitem erscheint und startet zu dir zu fliegen!
 
 ### What is this place?
 
-### (She smiles)|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(She motions to the north)
+### (${EThey} smile${Es})|Why, this is my private prison.|I bring only my prettiest toys to stay here with me.|You can see them up there.|(${EThey} motion${Es} to the north)
 
 ### Tell me about your collection
 
@@ -28534,15 +28534,15 @@ Ein scwebendes Keuschheitsitem erscheint und startet zu dir zu fliegen!
 
 ### I won't wear anyone's collar!
 
-### (She smirks)|Tsk tsk. Then you won't pass.
+### (${EThey} smirk${Es})|Tsk tsk. Then you won't pass.
 
-### (She giggles)|How cute!|You're so used to yours that you forgot about it~
+### (${EThey} giggle${Es})|How cute!|You're so used to yours that you forgot about it~
 
 ### Why don't you wear it yourself?
 
 ### Hmmph. (Scoff at ${Ethem})
 
-### (She frowns)|Watch your tongue~
+### (${EThey} frown${Es})|Watch your tongue~
 
 ### (She frowns)|I do not wear collars.
 
@@ -28582,7 +28582,7 @@ Ein scwebendes Keuschheitsitem erscheint und startet zu dir zu fliegen!
 
 ### There must be a mistake. Sign me up!
 
-### (She smiles)|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~
+### (${EThey} smile${Es})|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~
 
 ### I am the strongest.
 
@@ -29506,7 +29506,7 @@ Sortier Raum
 
 ### The item hugs your layer tightly, adhering firmly!
 
-### Your skin is covered in a layer of latex, making escape from cyber restraints harder!
+### ${Your} skin is covered in a layer of latex, making escape from cyber restraints harder!
 
 ### Some Exclusions Apply
 
@@ -29544,9 +29544,9 @@ Sortier Raum
 
 ### Gain AMNT DMG Resist for DRTN turns
 
-### Your elemental damage is increased!
+### ${Your} elemental damage is increased!
 
-### Your elemental resistance is increased!
+### ${Your} elemental resistance is increased!
 
 
 
@@ -29674,7 +29674,7 @@ Sortier Raum
 
 ### You are not in a condition to use a leash on ${Ethem}.
 
-### She refuses to be leashed unless you tie ${Ethem} up!
+### ${EThey} refuse${Es} to be leashed unless you tie ${Ethem} up!
 
 ### You attach a leash to ENMY.
 
@@ -29716,7 +29716,7 @@ Sortier Raum
 
 ### ... will get an accuracy bonus against you in melee range.
 
-### You are more likely to succumb to curses.
+### ${You} ${Yis} more likely to succumb to curses.
 
 ### X Offset
 
@@ -30152,9 +30152,9 @@ Keuschheitsgürtel
 
 ### [EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
 
-### Phase Dance active. Your next move is instant.
+### Phase Dance active. ${Your} next move is instant.
 
-### Combat Maneuver active. Your next move is instant.
+### Combat Maneuver active. ${Your} next move is instant.
 
 ### The furniture space is occupied
 
@@ -31090,9 +31090,9 @@ Keuschheitsgürtel
 
 ### You zap your leasher!
 
-### You are psychically connected!
+### ${You} ${Yis} psychically connected!
 
-### You've used Shock Collar recently and it costs more DP.
+### ${Youve} used Shock Collar recently and it costs more DP.
 
 
 
@@ -31114,7 +31114,7 @@ Keuschheitsgürtel
 
 ### While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
 
-### -100% miscast chance, but casting spells can send you over the edge.
+### -100% miscast chance, but casting spells can send ${youObj} over the edge.
 
 ### The psychic link conducts away some of the intensity...
 
@@ -31182,7 +31182,7 @@ Keuschheitsgürtel
 
 ### (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
 
-### (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} locks ${Etheir} gag back on...)
+### (You utter a word of release to free the SPEAKER)|Mmmmph!|(${EThey} lock${Es} ${Etheir} gag back on...)
 
 ### Dissolve the latex with a SLVNT
 
