@@ -470,8 +470,10 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 高分辨率形变 ( 需重启 )
 - Low-Res Textures (Needs Restart)
 低分辨率贴图 (需要重启)
-# - Portrait Supersampling
-# - Preload Assets (4GB+ RAM) (Restart)
+- Portrait Supersampling
+立绘超采样
+- Preload Assets (4GB+ RAM) (Restart)
+预加载资源 ( 4GB+ 内存)( 需重启)
 - Hi-Res Model (no restart needed)
 高分辨率模型 ( 无需重启 )
 - High Quality Animations
@@ -563,7 +565,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 
 - Game Resolution:
 游戏分辨率 :‎
-# - Model Resolution:
+- Model Resolution:
+模型分辨率 :
 - Resolution:
 分辨率 :‎
 - Toy Volume:
@@ -600,7 +603,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Having 10+ spare points will trigger Hard Mode, granting unique loot.
 可用积分大于10将进入困难模式，可获得独特的战利品
 -  (HARD MODE ENABLED)
-困难模式已开启
+（困难模式已开启）
 - Advanced start (choose perks)
 高级启动 ( 选择额外特质 )
 - Kinky start
@@ -1111,7 +1114,7 @@ Sub
 - A collar reserved for the most prestigious of submissives.
 这是专为最尊贵的顺从者准备的项圈。
 - Restores mana when you play with yourself, but increases the distraction given. Only works when Desire is below the limit.
-自慰时可恢复法力，但会提高增加性奋值的程度。仅当欲望低于上限时有效。
+自慰时恢复法力值，但会增加获得的性奋值。仅在欲望低于上限时生效。
 
 
 - Bullet Hell
@@ -1860,7 +1863,7 @@ EnemyName对TargetName念出了一个口令！
 
 - Your restraints are restrictive! Struggling is less effective without help.
 你的束缚太严格了！无人帮助时挣扎效果减弱。
-- Stunned! You can't move!
+- Movement is slowed this turn.
 你被晕眩，无法移动！
 - Your vision is impaired!
 你的视野受到影响！
@@ -2536,7 +2539,7 @@ Roguelike : ‎没有保存代码，只有自动保存
 - Protects from damage and binding until the shield is broken!
 护盾未破裂时，免受伤害和束缚！
 - Chance for a spell to fizzle: 
-施法失败几率：
+施法失败概率：
 - Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 闪避率 : ‎Percent% [基于 EVASIONSUM 点闪避值和 EVASIONPENALTY% 闪避值惩罚]
 - Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
@@ -2614,7 +2617,7 @@ Roguelike : ‎没有保存代码，只有自动保存
 自动尝试挣脱
 - Auto-path
 自动寻路
-- Quick-Swap Weapon
+- Quick-Swap to ${Weapon}
 快速切换武器
 - Inspect
 检查
@@ -3038,7 +3041,7 @@ Roguelike : ‎没有保存代码，只有自动保存
 - You search through the debris but find nothing of note
 你在碎片中寻找，但没有发现任何值得注意的东西
 - You find some gold coins in a corner (+XXX gold)
-你在角落里发现了一些金币 ( +XXX 金币 )
+你在角落里发现了一些金币（ +XXX 金币 ）
 - You find a lockpick in a crack between the tiles
 你在地块之间的裂缝中发现了一个撬锁工具
 - You find a rusty knife among the rocks
@@ -47262,6 +47265,9 @@ LKTYP 锁锁在了你的一个拘束具上！
 敌人设置的路障不会过期，即使没有警报，敌人也会设置路障。
 
 
+# - Auto Pass
+# - Auto Path
+# - Auto Wait
 - Pass thru helpless allies
 绕过完全束缚的盟友
 - Pass thru helpless enemies
@@ -47931,6 +47937,8 @@ RestraintName 失效了！
 - Kigurumi Masks
 Kigurumi头壳
 # - Toe Ties
+:: KDConsentItem_ToeTies
+脚趾束缚
 - Encasement
 包裹
 :: KDConsentItem_Encasement
@@ -48025,7 +48033,8 @@ Brats
 |||该对象被标绿，这将阻止人类药水生成，使玩偶化变为永久状态。
 
 
-# - Allows the player to be tied with rope around the toes by enemies. These remove shoes from the player outfit in order to apply.
+- Allows the player to be tied with rope around the toes by enemies. These remove shoes from the player outfit in order to apply.
+允许敌人用绳索捆绑玩家的脚趾。穿戴此束缚时会脱下玩家服装中的鞋子。
 - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
 允许在游戏过程中使用此菜单（包括“安全词”按钮）。如果你不希望在开始游戏后还能进入此界面修改规则，请将其标红。此选项不会随存档读取而改变。
 - Allows some ghosts to place invisible restraints on you. These bind you despite not being directly visible.||If marked as red, these will be replaced with comfy spectral bindings instead.
@@ -53049,7 +53058,8 @@ ENMY 解开了 ITMN 的锁!
 
 - Generating Map...
 生成地图中...
-# - Loading Game...
+- Loading Game...
+正在加载游戏...
 
 - Mystic wrappings constrict around your body!
 神秘的丝带紧紧包裹了你的身体！
@@ -53075,7 +53085,7 @@ ENMY 解开了 ITMN 的锁!
 典狱长的魔法俘获了你。束手就擒吧。
 
 
-
+# - Auto-sprint in Combat is enabled. You can disable it in the Controls settings.
 - You can click Inspect then click the enemy to cycle thru pages.
 你可以点击“检查”按钮然后再点击敌人来翻页。
 - NPC tooltips like the ${EnemyName} are too long to show on one page.
