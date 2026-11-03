@@ -5318,7 +5318,7 @@ function KDTex(Image: string, Nearest?: boolean): PIXITexture {
 		return null;
 	}
 	// This loop is NOT used if assets are preloaded
-	if (KDImageAtlasCache[Image] == undefined && !preloaded) {
+	if (!preloaded) {
 		KDImageAtlasCache[Image] = KDGetModelAtlasID(Image);
 		if (KDImageAtlasCache[Image]) {
 			
@@ -6021,7 +6021,7 @@ let KDInspectTooltipZoomedSize = 600;
 function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): number {
 	let TooltipWidth = 300;
 	let TooltipHeight = 0;
-	let extra = 5;
+	let extra = TooltipList.length < KDLARGETOOLTIPSIZE ? KDTOOLTIPSPACING : KDTOOLTIPSPACINGSMALL;
 	for (let listItem of TooltipList) {
 		TooltipHeight += listItem.size + extra;
 	}

@@ -703,6 +703,15 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 				if (spr && flip) {
 					spr.scale.x = -1 * Zoom;
 				}
+			} else {
+				if (flip && Container.Mesh?.scale.x > 0) {
+					Container.Mesh.scale.x *= -1;
+					modified = true;
+				}
+				else if (!flip && Container.Mesh?.scale.x < 0) {
+					Container.Mesh.scale.x *= -1;
+					modified = true;
+				}
 			}
 			
 		} else {

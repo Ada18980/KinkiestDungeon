@@ -3165,8 +3165,18 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 
 	if (packed) KDPackEnemy(enemy);
 
+	if (TooltipList.length > KDLARGETOOLTIPSIZE) for (let tt of TooltipList) {
+		if (tt.size)
+			tt.size -= KDLARGETOOLTIPRED;
+	}
+
 	return KDDrawTooltip(TooltipList, offset);
 }
+
+let KDLARGETOOLTIPSIZE = 25;
+let KDLARGETOOLTIPRED = 2;
+let KDTOOLTIPSPACING = 4;
+let KDTOOLTIPSPACINGSMALL = 2;
 
 
 /**
