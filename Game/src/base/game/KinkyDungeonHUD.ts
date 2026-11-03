@@ -1190,10 +1190,10 @@ function KDDrawWeaponSwap(x: number, y: number): boolean {
 let KDLastKneelTurns = 0;
 
 function KinkyDungeonDrawActionBar(_x: number, _y: number) {
-	let str = "";
 	let BalanceOffset = KDToggles.BuffSide ? 850 : 800;
 	let BalanceSpacing = 75;
 	let II = 0;
+
 	if (KDGameData.KneelTurns > 0 && !KinkyDungeonStatsChoice.get("TrustFall")
 		&& (!KDForcedToGround() || KDGameData.KneelTurns > 1)) {
 		let KneelStats = KDGetKneelStats(1, false);
@@ -1256,6 +1256,8 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		}
 
 	}
+
+	
 
 	if (DrawButtonKDEx("RestHide", (_bdata) => {
 		KDStruggleDrawMode += 1;
@@ -1399,95 +1401,8 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	}
 
 
-
-	// Vertical
-	/*
-	actionBarII = 0;
-	if (!KDToggles.TransparentUI) {
-		DrawRectKD(
-			kdcanvas, kdpixisprites, "actionvborder", {
-				Left: 1990 - actionBarWidth - 5, Top: actionBarVertStart - 5, Width: actionBarWidth + 10,
-				Height: (5+actionbarHeight)*4 + 10,
-				Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -2,
-				LineWidth: 2,
-			}
-		);
-		FillRectKD(
-			kdcanvas, kdpixisprites, "actionvbg", {
-				Left: 1990 - actionBarWidth - 5, Top: actionBarVertStart - 5, Width: actionBarWidth + 10,
-				Height: (5+actionbarHeight)*4 + 10,
-				Color: KDUIColor, alpha: KDUIAlpha, zIndex: -1
-			}
-		);
-	}
-	if (DrawButtonKDEx("toggleInspect", (bdata) => {
-		KinkyDungeonInspect = !KinkyDungeonInspect;
-		return true;
-	}, true, 1990 - actionBarWidth, actionBarVertStart + actionBarSpacingV*actionBarII++, actionBarWidth, actionbarHeight,
-	"", "", KinkyDungeonRootDirectory + (KinkyDungeonInspect ? "UI/Inspect" : "UI/Inspect") + ".png",
-	undefined, undefined, !KinkyDungeonInspect, KDTextGray05, undefined, false, {alpha: 1.0,
-		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[5]),
-	})) str = "KDInspect";
-
-	// Auto Struggle Button
-	if (DrawButtonKDEx("AutoStruggle", (bdata) => {
-		if (!KinkyDungeonControlsEnabled()) return false;
-		KDAutoStruggleClick();
-		return true;
-	}, true, 1990 - actionBarWidth, actionBarVertStart + actionBarSpacingV*actionBarII++, actionBarWidth, actionbarHeight, "", "",
-	KinkyDungeonRootDirectory + ("UI/AutoStruggle.png"), undefined, undefined, !KinkyDungeonAutoWaitStruggle, KDTextGray05, undefined, false,
-	{
-		alpha: 1.0,
-		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[3]),
-	})) str = "KDAutoStruggle";
-
-	// Pass button
-	if (DrawButtonKDEx("togglePass", (bdata) => {
-		KinkyDungeonToggleAutoPass = !KinkyDungeonToggleAutoPass;
-		if (KinkyDungeonToggleAutoPass) {
-			KDSetFocusControl("AutoPass");
-		} else {
-			KDSetFocusControl("");
-		}
-		return true;
-	}, true, 1990 - actionBarWidth, actionBarVertStart + actionBarSpacingV*actionBarII++, actionBarWidth, actionbarHeight, "", "",
-	KinkyDungeonRootDirectory + (KinkyDungeonToggleAutoPass ? "UI/Pass.png" : "UI/NoPass.png"),
-	undefined, undefined, !KinkyDungeonToggleAutoPass, KDTextGray05, undefined, false, {alpha: 1.0,
-		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[1]),
-	})) str = "KDPass";
-
-	if (DrawButtonKDEx("toggleFastMove", (bdata) => {
-		if (!KinkyDungeonFastMoveSuppress)
-			KinkyDungeonFastMove = !KinkyDungeonFastMove;
-		KinkyDungeonFastMoveSuppress = false;
-		KinkyDungeonFastMovePath = [];
-		KDSetFocusControl("AutoPath");
-		return true;
-	}, true, 1990 - actionBarWidth, actionBarVertStart + actionBarSpacingV*actionBarII++, actionBarWidth, actionbarHeight,
-	"", "", KinkyDungeonRootDirectory + (KinkyDungeonFastMove ? "FastMove" : "FastMoveOff") + ".png",
-	undefined, undefined, !KinkyDungeonFastMove, KDTextGray05, undefined, false, {alpha: 1.0,
-		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[4]),
-	})) str = "KDAutoPath";*/
-
 	// Horizontal second layer
 	actionBarII = 0;
-	/*if (!KDToggles.TransparentUI) {
-		DrawRectKD(
-			kdcanvas, kdpixisprites, "actionvborder", {
-				Left: actionBarXX + actionBarSpacing*actionBarII - 5, Top: actionBarYY - 80 - 5, Width: actionBarSpacing*4 + 5,
-				Height: 80,
-				Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -2,
-				LineWidth: 2,
-			}
-		);
-		FillRectKD(
-			kdcanvas, kdpixisprites, "actionvbg", {
-				Left: actionBarXX + actionBarSpacing*actionBarII - 5, Top: actionBarYY - 80 - 5, Width: actionBarSpacing*4 + 10,
-				Height: 80,
-				Color: KDUIColor, alpha: KDUIAlpha, zIndex: -1
-			}
-		);
-	}*/
 
 	let actionBar2nDOffset = 64;
 
@@ -1717,10 +1632,6 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	}
 
 	actionBarII = 0;
-	if (str) {
-		DrawTextFitKD(TextGet(str), Math.min(1700, Math.max(700, MouseX)), 
-		PIXIHeight - 300, 250, KDBaseWhite, undefined, 18);
-	}
 
 	//}
 }
@@ -4290,3 +4201,45 @@ let KDStruggleTypeShowDifficulty = [
 	"Pick",
 	"Remove"
 ]
+
+
+/**
+ * @param item
+ */
+function KDButtonTooltip(item: item): HoverObject {
+    let name = item.name;
+    let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentified(item);
+    let prefix = "KinkyDungeonInventoryItem";
+    let nameText = KDGetItemName(item)
+    if (item.type == Restraint || item.type == LooseRestraint) {
+        prefix = "Restraint";
+    }
+    let mods = [];
+    if (item.events) {
+        item.events.forEach((t) => {
+            if (t.trigger == "inventoryTooltip") {
+                if (t.type == "varModifier" && !unidentified) {
+                    mods.push({
+                        str: TextGet("KDVariableModifier_" + t.msg)
+                                .replace("AMNT", `${t.power >= 0 ? "+" : ""}${Math.round(t.power)}`)
+                                .replace("DRTN", `${Math.round(t.duration)}`)
+                                .replace("DMG", TextGet("KinkyDungeonDamageType" + t.damage))
+                                .replace("TYPE", `${t.kind}`),
+                        colorFG: "#eeeeee",
+                        colorBG: t.bgcolor || KDBaseBlack,
+                        TextSize: 20
+                    });
+                }
+            }
+        })
+    }
+    let hoverobject = {
+        type: "InventoryItem",
+        item: item,
+        name: nameText,
+        TitleTextColor: KDBaseWhite,
+        TitleTextColorBack: KDBaseBlack,
+        ItemMods: mods
+    }
+    return hoverobject
+}

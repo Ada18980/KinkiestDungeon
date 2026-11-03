@@ -836,7 +836,7 @@ KinkyDungeonPlayerVibrated4,"Intense vibrations!!"
 KinkyDungeonPlayerVibrated5,"Torturous vibrations!!!"
 
 KDStatRestriction,Your restraints are restrictive! Struggling is less effective without help.
-KDStatStun,"Stunned! You can't move!"
+KDStatStun,"Movement is slowed this turn."
 KDStatBlind,"Your vision is impaired!"
 KDStatArms,"Arms are bound!"
 KDStatHands,"Hands are useless!"

@@ -1171,12 +1171,15 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 	return ret;
 }
 
-interface InventoryHoverObject {
-    type: string;
-    item: item;
+interface HoverObject {
     name: string;
     TitleTextColor: string;
     TitleTextColorBack: string;
+	TitleTextSize?: number,
+    type: string;
+}
+interface InventoryHoverObject extends HoverObject {
+    item: item;
     ItemMods: any[];
 }
 /**

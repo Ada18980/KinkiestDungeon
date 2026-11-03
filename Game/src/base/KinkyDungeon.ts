@@ -1513,17 +1513,17 @@ let KDLastHoverButton: KDButtonParamData = null;
 let KDCurrentHoverButton: KDButtonParamData = null;
 let KDCurrentHoverBox: KDButtonParamData;
 
-let KDHoverTypes = ["InventoryItem"]
-let KDHoverFunctions = {
-    "InventoryItem": (hover) => {
+let KDHoverTypes = ["InventoryItem", "Tooltip"]
+let KDHoverFunctions: Record<string, (KDButtonParamData, HoverObject) => void> = {
+    "InventoryItem": (hover, object: InventoryHoverObject) => {
         let currentlyhovering = ((MouseX >= KDCurrentHoverBox.Left) && (MouseX <= KDCurrentHoverBox.Left + KDCurrentHoverBox.Width) && (MouseY >= KDCurrentHoverBox.Top) && (MouseY <= KDCurrentHoverBox.Top + KDCurrentHoverBox.Height));
         if (!currentlyhovering) {
             KDCurrentHoverBox = undefined;
             return;
         }
         let pad = 10;
-        let TooltipWidth = Math.max(20, 220, (Math.min(hover.Hover.name.length * 12, 350)));
-        let TooltipHeight = Math.max(20, ((pad * 2) + ((hover.Hover.ItemMods ?? []).length > 0 ? 46 : 20) + (hover.Hover.ItemMods ?? []).length * (20 + 10)));
+        let TooltipWidth = Math.max(20, 220, (Math.min(object.name.length * 12, 350)));
+        let TooltipHeight = Math.max(20, ((pad * 2) + ((object.ItemMods ?? []).length > 0 ? 46 : 20) + (object.ItemMods ?? []).length * (20 + 10)));
 
         let tooltipX = KDCurrentHoverBox.Left + KDCurrentHoverBox.Width;
         // Move the tooltip to the left if it would flow off the right side of the screen.
@@ -1536,7 +1536,7 @@ let KDHoverFunctions = {
             tooltipY = 1000 - TooltipHeight;
         }
         let YY = 20;
-        FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + hover.Hover.name, {
+        FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + object.name, {
             Left: tooltipX,
             Top: tooltipY, //- 25,
             Width: TooltipWidth,
@@ -1547,16 +1547,53 @@ let KDHoverFunctions = {
             alpha: 0.8,
         });
         
-        if (hover.Hover.name) {
-            DrawTextFitKD(`${hover.Hover.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, hover.Hover.TitleTextColor, hover.TitleTextColorBack, (hover.Hover.TitleTextSize ? hover.Hover.TitleTextSize : 24), "center", 701);
+        if (object.name) {
+            DrawTextFitKD(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, hover.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701);
             YY += (hover.TitleTextSize ? (hover.TitleTextSize + 4) : 16);
         }
         YY = YY + 30
-        if (hover.Hover.ItemMods) {
-            hover.Hover.ItemMods.forEach((mod) => {
+        if (object.ItemMods) {
+            object.ItemMods.forEach((mod) => {
                 DrawTextFitKD(mod.str, tooltipX + pad, tooltipY + YY, TooltipWidth - 2 * pad, mod.colorFG, mod.colorBG, (mod.TextSize ? mod.TextSize : 20), "left", 701);
                 YY += (mod.TextSize + 10);
             })
+        }
+    },
+	"Tooltip": (hover, object) => {
+        let currentlyhovering = ((MouseX >= KDCurrentHoverBox.Left) && (MouseX <= KDCurrentHoverBox.Left + KDCurrentHoverBox.Width) && (MouseY >= KDCurrentHoverBox.Top) && (MouseY <= KDCurrentHoverBox.Top + KDCurrentHoverBox.Height));
+        if (!currentlyhovering) {
+            KDCurrentHoverBox = undefined;
+            return;
+        }
+        let pad = 10;
+        let TooltipWidth = Math.max(20, 220, (Math.min(object.name.length * 12, 350)));
+        let TooltipHeight = Math.max(20, ((pad * 2) + ((object.ItemMods ?? []).length > 0 ? 46 : 20) + (object.ItemMods ?? []).length * (20 + 10)));
+
+        let tooltipX = KDCurrentHoverBox.Left + KDCurrentHoverBox.Width;
+        // Move the tooltip to the left if it would flow off the right side of the screen.
+        if ((tooltipX + TooltipWidth + 10) > 2000) {
+            tooltipX = KDCurrentHoverBox.Left - TooltipWidth;
+        }
+        let tooltipY = KDCurrentHoverBox.Top;
+        // Move the tooltip up if it would flow off the bottom of the screen. 
+        if ((tooltipY + TooltipHeight + 10) > 1000) {
+            tooltipY = 1000 - TooltipHeight;
+        }
+        let YY = 20;
+        FillRectKD(kdcanvas, kdpixisprites, "HoverTooltip_" + object.name, {
+            Left: tooltipX,
+            Top: tooltipY, //- 25,
+            Width: TooltipWidth,
+            Height: TooltipHeight, //+ 20,
+            Color: KDBaseBlack,
+            LineWidth: 1,
+            zIndex: 700,
+            alpha: 0.8,
+        });
+        
+        if (object.name) {
+            DrawTextFitKD(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, hover.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701);
+            YY += (hover.TitleTextSize ? (hover.TitleTextSize + 4) : 16);
         }
     }
 }
@@ -3764,7 +3801,7 @@ interface KDButtonParamData {
 	nonplayable?: boolean,
 	hoverData?: any,
 	onHover?: (button: KDButtonParamData) => void,
-  Hover?: InventoryHoverObject
+  Hover?: HoverObject
 }
 
 /** For most things use LastButtonsCache as buttons might not have been rendered yet this frame. Will lag a frame behind but eh. */
@@ -3807,7 +3844,7 @@ function DrawButtonKD (
 	HoveringText?:	string,
 	Disabled?:	boolean,
 	NoBorder?:	boolean,
-    Hover?:      InventoryHoverObject,
+    Hover?:      HoverObject,
 ): void
 {
 	let params = {
@@ -3962,7 +3999,7 @@ function DrawButtonKDEx (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	ButtonOptions,
-  	Hover?:      InventoryHoverObject,
+  	Hover?:      HoverObject,
 ): boolean
 {
 	let params = {
@@ -4218,7 +4255,7 @@ function DrawButtonKDExScroll (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	any,
-  Hover?:      InventoryHoverObject,
+  Hover?:      HoverObject,
 ): boolean
 {
 
@@ -4304,7 +4341,7 @@ function DrawButtonKDExScrollTo (
 	FontSize?:	number,
 	ShiftText?:	boolean,
 	options?:	any,
-  Hover?:      InventoryHoverObject,
+  Hover?:      HoverObject,
 ): boolean
 {
 
@@ -4386,7 +4423,7 @@ function DrawButtonKDExTo (
 	ShiftText?:	boolean,
 	options?:	any,
 	priority = 0,
-	Hover?: InventoryHoverObject,
+	Hover?: HoverObject,
 ): boolean
 {
 	let params = {

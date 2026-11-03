@@ -1147,7 +1147,7 @@ function KinkyDungeonDrawGame() {
 	
 	KinkyDungeonCapStats();
     if (KDHoverTypes.includes(KDCurrentHoverBox?.Hover?.type)) {
-        KDHoverFunctions[KDCurrentHoverBox?.Hover?.type](KDCurrentHoverBox);
+        KDHoverFunctions[KDCurrentHoverBox?.Hover?.type](KDCurrentHoverBox, KDCurrentHoverBox.Hover);
     }
 
 	if (KDContextMenu && KDCurrentHoverButton?.contextMenu) {
