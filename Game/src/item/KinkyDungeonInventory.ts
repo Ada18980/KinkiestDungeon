@@ -4011,13 +4011,19 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 			Height: 82,
 			Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -20,
 			LineWidth: 2,
+			
+			hidden: KDToggles.TransparentUI,
+			blockControl: true,
 		}
 	);
 	FillRectKD(
 		kdcanvas, kdpixisprites, "Ahotbarbg", {
 			Left: hotBarX - 5, Top: HotbarStart - 5, Width: 72 * 11,
 			Height: 82,
-			Color: KDUIColor, alpha: 1, zIndex: -10
+			Color: KDUIColor, alpha: 1, zIndex: -10,
+			
+			hidden: KDToggles.TransparentUI,
+			blockControl: true,
 		}
 	);
 	//}
