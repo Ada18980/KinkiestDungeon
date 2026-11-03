@@ -1192,7 +1192,7 @@ KDHelp,"Call for Help!"
 KDWait,"Wait until interrupted"
 KDAutoStruggle,"Auto-struggle"
 KDAutoPath,"Auto-path"
-KDSwitchWeapon,"Quick-Swap Weapon"
+KDSwitchWeapon,"Quick-Swap to ${Weapon}"
 KDInspect,"Inspect"
 KDPass,Pass NPCs
 KDDoor,Interact

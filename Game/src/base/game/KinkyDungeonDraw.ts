@@ -3212,6 +3212,8 @@ type RectParams = {
 	zIndex:     number,
 	LineWidth?: number,
 	alpha?:     number
+	hidden?: 	boolean,
+	blockControl?: 	boolean,
 }
 
 type CircParams = {
@@ -3225,7 +3227,9 @@ type CircParams = {
 	zIndex:      		number,
 	LineWidth?:  		number,
 	alpha?:      		number,
-	Rotation?: 			number
+	Rotation?: 			number,
+	hidden?: 	boolean,
+	blockControl?: 	boolean,
 }
 
 type CircleParams = {
@@ -3235,7 +3239,9 @@ type CircleParams = {
 	Color:      string,
 	zIndex:     number,
 	LineWidth?: number,
-	alpha?:     number
+	alpha?:     number,
+	hidden?: 	boolean,
+	blockControl?: 	boolean,
 }
 
 let KDBoxThreshold = 60;

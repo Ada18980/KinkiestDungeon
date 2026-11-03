@@ -1514,7 +1514,7 @@ let KDCurrentHoverButton: KDButtonParamData = null;
 let KDCurrentHoverBox: KDButtonParamData;
 
 let KDHoverTypes = ["InventoryItem", "Tooltip"]
-let KDHoverFunctions: Record<string, (KDButtonParamData, HoverObject) => void> = {
+let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: HoverObject) => void> = {
     "InventoryItem": (hover, object: InventoryHoverObject) => {
         let currentlyhovering = ((MouseX >= KDCurrentHoverBox.Left) && (MouseX <= KDCurrentHoverBox.Left + KDCurrentHoverBox.Width) && (MouseY >= KDCurrentHoverBox.Top) && (MouseY <= KDCurrentHoverBox.Top + KDCurrentHoverBox.Height));
         if (!currentlyhovering) {
@@ -1527,13 +1527,19 @@ let KDHoverFunctions: Record<string, (KDButtonParamData, HoverObject) => void> =
 
         let tooltipX = KDCurrentHoverBox.Left + KDCurrentHoverBox.Width;
         // Move the tooltip to the left if it would flow off the right side of the screen.
-        if ((tooltipX + TooltipWidth + 10) > 2000) {
-            tooltipX = KDCurrentHoverBox.Left - TooltipWidth;
-        }
+		if (object.align != "right") {
+			if ((tooltipX + TooltipWidth + 10) > PIXIWidth) {
+				tooltipX = KDCurrentHoverBox.Left - TooltipWidth;
+			}
+		} else {
+			if ((tooltipX - TooltipWidth - 10) > 0) {
+				tooltipX = KDCurrentHoverBox.Left - TooltipWidth;
+			}
+		}
         let tooltipY = KDCurrentHoverBox.Top;
         // Move the tooltip up if it would flow off the bottom of the screen. 
-        if ((tooltipY + TooltipHeight + 10) > 1000) {
-            tooltipY = 1000 - TooltipHeight;
+        if ((tooltipY + TooltipHeight + 10) > PIXIHeight) {
+            tooltipY = PIXIHeight - TooltipHeight;
         }
         let YY = 20;
         FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + object.name, {
@@ -1544,12 +1550,12 @@ let KDHoverFunctions: Record<string, (KDButtonParamData, HoverObject) => void> =
             Color: KDBaseBlack,
             LineWidth: 1,
             zIndex: 700,
-            alpha: 0.8,
+            alpha: object.alpha || 0.8,
         });
         
         if (object.name) {
-            DrawTextFitKD(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, hover.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701);
-            YY += (hover.TitleTextSize ? (hover.TitleTextSize + 4) : 16);
+            DrawTextFitKD(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701);
+            YY += (object.TitleTextSize ? (object.TitleTextSize + 4) : 16);
         }
         YY = YY + 30
         if (object.ItemMods) {
@@ -1566,18 +1572,27 @@ let KDHoverFunctions: Record<string, (KDButtonParamData, HoverObject) => void> =
             return;
         }
         let pad = 10;
-        let TooltipWidth = Math.max(20, 220, (Math.min(object.name.length * 12, 350)));
-        let TooltipHeight = Math.max(20, ((pad * 2) + ((object.ItemMods ?? []).length > 0 ? 46 : 20) + (object.ItemMods ?? []).length * (20 + 10)));
+        let TooltipWidth = Math.max(20, object.Width ? object.Width : 220, (Math.min(object.name.length * 12, 
+			object.Width ? Math.round(object.Width * 1.5) : 350
+		)));
+
+        let TooltipHeight = Math.max(20, ((pad * 2) + (20)));
 
         let tooltipX = KDCurrentHoverBox.Left + KDCurrentHoverBox.Width;
         // Move the tooltip to the left if it would flow off the right side of the screen.
-        if ((tooltipX + TooltipWidth + 10) > 2000) {
-            tooltipX = KDCurrentHoverBox.Left - TooltipWidth;
-        }
+		if (object.align != "right") {
+			if ((tooltipX + TooltipWidth + 10) > PIXIWidth) {
+				tooltipX = KDCurrentHoverBox.Left - TooltipWidth;
+			}
+		} else {
+			if ((tooltipX - TooltipWidth - 10) > 0) {
+				tooltipX = KDCurrentHoverBox.Left - TooltipWidth;
+			}
+		}
         let tooltipY = KDCurrentHoverBox.Top;
         // Move the tooltip up if it would flow off the bottom of the screen. 
-        if ((tooltipY + TooltipHeight + 10) > 1000) {
-            tooltipY = 1000 - TooltipHeight;
+        if ((tooltipY + TooltipHeight + 10) > PIXIHeight) {
+            tooltipY = PIXIHeight - TooltipHeight;
         }
         let YY = 20;
         FillRectKD(kdcanvas, kdpixisprites, "HoverTooltip_" + object.name, {
@@ -1588,12 +1603,12 @@ let KDHoverFunctions: Record<string, (KDButtonParamData, HoverObject) => void> =
             Color: KDBaseBlack,
             LineWidth: 1,
             zIndex: 700,
-            alpha: 0.8,
+            alpha: object.alpha || 0.8,
         });
         
         if (object.name) {
-            DrawTextFitKD(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, hover.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701);
-            YY += (hover.TitleTextSize ? (hover.TitleTextSize + 4) : 16);
+            DrawTextFitKD(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701);
+            YY += (object.TitleTextSize ? (object.TitleTextSize + 4) : 16);
         }
     }
 }

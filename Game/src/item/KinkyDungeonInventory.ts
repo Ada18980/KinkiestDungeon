@@ -1177,6 +1177,9 @@ interface HoverObject {
     TitleTextColorBack: string;
 	TitleTextSize?: number,
     type: string;
+	Width?: number,
+	alpha?: number,
+	align?: string,
 }
 interface InventoryHoverObject extends HoverObject {
     item: item;
