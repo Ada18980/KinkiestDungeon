@@ -96,6 +96,7 @@ let KDDrawGameContextMenu = {
 	},
 
 	Game: (draw, mouseX, mouseY) => {
+		if (KDFocusControls) return [];
 		let doHighlightItem = () => {
 			let {
 				options, optionImages, optionActions, optionGrey, optionText, optionColor, optionFilter

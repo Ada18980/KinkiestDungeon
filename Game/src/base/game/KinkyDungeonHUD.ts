@@ -1400,6 +1400,10 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	undefined, undefined, !KDGameData.Crouch, KDTextGray05, undefined, false, {alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[9]),
 		hotkeyPress: KinkyDungeonKeyToggle[9],
+		spritealpha: Math.max(0.1, Math.min(1, 
+			((KDGameData.Crouch) && (KDAnimSpeed))
+				? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+				: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)),
 	}, KDButtonTooltip(TextGet("KDCrouch"), undefined, "right"));
 
 	// Pass button
@@ -1415,6 +1419,10 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	KinkyDungeonRootDirectory + (KinkyDungeonToggleAutoPass ? "UI/Pass.png" : "UI/NoPass.png"),
 	undefined, undefined, !KinkyDungeonToggleAutoPass, KDTextGray05, undefined, false, {alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[1]),
+		spritealpha: Math.max(0.1, Math.min(1, 
+			((KDFocusControls == "AutoPass") && (KDAnimSpeed))
+				? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+				: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)),
 	}, KDButtonTooltip(TextGet("KDPass"), undefined, "right"))) {
 		KDTrySetFocusControl("AutoPass");
 	}
@@ -1428,6 +1436,10 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	"", "", KinkyDungeonRootDirectory + (KinkyDungeonFastMove ? "FastMove" : "FastMoveOff") + ".png",
 	undefined, undefined, !KinkyDungeonFastMove, KDTextGray05, undefined, false, {alpha: 1.0,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[4]),
+		spritealpha: Math.max(0.1, Math.min(1, 
+			((KDFocusControls == "AutoPath") && (KDAnimSpeed))
+				? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+				: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)),
 	}, KDButtonTooltip(TextGet("KDAutoPath"), undefined, "right"))) {
 		KDTrySetFocusControl("AutoPath")
 	}
@@ -1441,6 +1453,10 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	KinkyDungeonRootDirectory + ("UI/AutoStruggle.png"), undefined, undefined, !KinkyDungeonAutoWaitStruggle, KDTextGray05, undefined, false,
 	{
 		alpha: 1.0,
+		spritealpha: Math.max(0.1, Math.min(1, 
+			((KDFocusControls == "AutoWait") && (KDAnimSpeed))
+				? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+				: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)),
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[3]),
 	}, KDButtonTooltip(TextGet("KDAutoStruggle"), undefined, "right"));
 
@@ -1529,6 +1545,10 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		: (KinkyDungeonChastityMult() > 0.75 ? "UI/PlayChastity.png" : "UI/Play.png"))),
 	undefined, undefined, !KinkyDungeonCanTryOrgasm(), KDTextGray05, undefined, false, {
 		alpha: 1.0,
+		spritealpha: Math.max(0.1, Math.min(1, 
+			((KinkyDungeonCanTryOrgasm()) && (KDAnimSpeed))
+				? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+				: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)),
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[8]),
 		hotkeyPress: KinkyDungeonKeyToggle[8],
 	}, KDButtonTooltip(TextGet(KinkyDungeonCanTryOrgasm() ? "KDLetGo" : "KDPlay"), undefined, "right"));
@@ -1579,37 +1599,58 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 
 
 
-	let focusTooltip = "";
-
 	if (KDFocusControls && KDFocusControlButtons[KDFocusControls] && !KDModalArea) {
 		let list = Object.entries(KDFocusControlButtons[KDFocusControls]);
 		let bWidth = 60;
 		let bHeight = 60;
-		let spacing = bWidth + 10;
-		let xx = 1710 - spacing * list.length;
+		let pad = 10;
+		let spacing = bWidth + pad;
+		let xxstart = 1710 - spacing * list.length;
+		let xx = xxstart;
 		let yy = 600;
 
 		let setTo = KDFocusControls;
 
+		DrawTextFitKD(TextGet("KDFocusControls" + setTo), 
+			xx, yy - bHeight + 15 - 16, spacing * list.length,
+			KDBaseWhite, KDBaseBlack, 18, "left", 110);
+
+		let ii = 0;
 		for (let button of list) {
 			DrawButtonKDEx("focus" + KDFocusControls + button[0], (_bdata) => {
 				KDSetFocusControlToggle(setTo + button[0], !(KDGameData.FocusControlToggle && KDGameData.FocusControlToggle[setTo +  button[0]]));
 				KDFocusControls = setTo; // This is to refresh after KDProcessButtons
 				return true;
-			}, true, xx, yy - bHeight + 15, bWidth, bHeight,
+			}, true, 
+			xx, yy - bHeight + 15, bWidth, bHeight,
 			"", "", KinkyDungeonRootDirectory + `UI/${KDFocusControls}/${ button[0]}.png`,
 			undefined, undefined, !KDGameData.FocusControlToggle || !KDGameData.FocusControlToggle[KDFocusControls +  button[0]], KDTextGray1, undefined, false, {
 				alpha: 0.7,
 				zIndex: 110,
 				centered: true,
-				//hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[2]),
-			});
-			if (MouseIn(xx, yy - bHeight + 15, bWidth, bHeight)) focusTooltip = "KDFocusControls" + setTo + button[0];
+				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
+			}, KDButtonTooltip(TextGet("KDFocusControls" + setTo + button[0]), undefined, "right"));
 			xx += spacing;
 		}
-		if (focusTooltip) {
-			DrawTextFitKD(TextGet(focusTooltip), Math.min(1700, MouseX), yy - 80, 250, KDBaseWhite, undefined, 18);
-		}
+		DrawRectKD(
+			kdcanvas, kdpixisprites, "hotbarborder", {
+				Left: xxstart - pad, Top: yy - bHeight + 15 - pad,
+				Width: (xx + pad) - (xxstart - pad),
+				Height: bHeight + 2*pad,
+				Color: KDUIColorHighlight, alpha: KDUIAlphaHighlight, zIndex: -2,
+				LineWidth: 2,
+				blockControl: true,
+			}
+		);
+		FillRectKD(
+			kdcanvas, kdpixisprites, "hotbarbg", {
+				Left: xxstart - pad, Top: yy - bHeight + 15 - pad,
+				Width: (xx + pad) - (xxstart - pad),
+				Height: bHeight + 2*pad,
+				Color: KDUIColor, alpha: KDUIAlpha, zIndex: -1,
+				blockControl: true,
+			}
+		);
 	}
 
 	actionBarII = 0;

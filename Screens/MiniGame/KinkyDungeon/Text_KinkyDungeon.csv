@@ -29814,6 +29814,9 @@ KinkyDungeonStatFortify_Barricade,"Fortified"
 KinkyDungeonStatDescFortify_Barricade,"Barricades set up by enemies do not expire, and enemies set them up even when not alerted."
 
 
+KDFocusControlsAutoPass,"Auto Pass"
+KDFocusControlsAutoPath,"Auto Path"
+KDFocusControlsAutoWait,"Auto Wait"
 KDFocusControlsAutoPassHelplessAllies,"Pass thru helpless allies"
 KDFocusControlsAutoPassHelplessEnemies,"Pass thru helpless enemies"
 KDFocusControlsAutoPassAllies,"Pass thru allies"
