@@ -1348,8 +1348,8 @@ function KinkyDungeonLoad(): void {
 			}
 
 			if (!cancel) {
-				if (KDCurrentKeyBindSet) KDCurrentKeyBindSet = '';
 				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+				if (KDCurrentKeyBindSet) KDCurrentKeyBindSet = '';
 				else {
 					let code = KinkyDungeonKeySkip[0];
 					if (!KinkyDungeonKeybindingCurrentKey) {
