@@ -433,8 +433,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					let nj = KDRandomJailPoint(enemy.x, enemy.y, ["storage"]);
 					enemy.IntentLeashPoint = nj;
 				} else {
-					enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
-					enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
+					enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.x;
+					enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.y;
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 
 					if (KDistChebyshev(enemy.IntentLeashPoint.x - enemy.x, enemy.IntentLeashPoint.y - enemy.y) < 1.5) {
@@ -678,8 +678,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
 					enemy.IntentLeashPoint = nj;
 				} else {
-					enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
-					enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
+					enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.x;
+					enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.y;
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 
 					if (KDistChebyshev(enemy.IntentLeashPoint.x - enemy.x, enemy.IntentLeashPoint.y - enemy.y) < 1.5) {
@@ -889,8 +889,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1, entrance: true}, pos);
 				}
 
-				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
-				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
+				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.x;
+				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.y;
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 
@@ -1013,8 +1013,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					}
 				}
 
-				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
-				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.x;
+				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.x;
+				enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.y;
 				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
 				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
@@ -1465,7 +1465,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 
 			enemy.playWithPlayer = 12;
 			enemy.playWithPlayerCD = 40;
-			enemy.IntentAction = 'TempLeash';
+			enemy.IntentAction = 'TempLeash'; // TODO fix
 
 
 			KinkyDungeonSendDialogue(enemy,
