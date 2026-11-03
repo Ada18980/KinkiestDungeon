@@ -1785,6 +1785,8 @@ function KinkyDungeonRun() {
 
 	KDLastButtonsCache = KDButtonsCache;
 	KDButtonsCache = {};
+	KDLastBlockControlCache = KDBlockControlCache;
+	KDBlockControlCache = {};
 	KDHoldButtonsCache = {};
 	KDUpdateVibeSounds();
 	KDUpdateMusic();
@@ -3544,6 +3546,7 @@ function KinkyDungeonRun() {
 
 	KDLastButtonsCache = {};
 	KDLastHoldButtonsCache = {};
+	KDLastBlockControlCache = {};
 
 	if (mouseDown)
 		KDHandleMouseDown();
@@ -3828,6 +3831,10 @@ let KDHoldButtonsCache: Record<string, KDButtonParamData> = {
 let KDLastButtonsCache: Record<string, KDButtonParamData> = {
 };
 let KDLastHoldButtonsCache: Record<string, KDButtonParamData> = {
+};
+let KDBlockControlCache: Record<string, KDBlockControlArea> = {
+};
+let KDLastBlockControlCache: Record<string, KDBlockControlArea> = {
 };
 
 /**

@@ -3244,6 +3244,22 @@ type CircleParams = {
 	blockControl?: 	boolean,
 }
 
+/** Rectangle, or a circle centered on Left/Top if Radius is set */
+type KDBlockControlArea = {
+	Left:    number,
+	Top:     number,
+	Width?:  number,
+	Height?: number,
+	Radius?: number,
+}
+
+function KDPointInBlockControlArea(X: number, Y: number, area: KDBlockControlArea): boolean {
+	if (area.Radius != undefined)
+		return PointInRadius(X, Y, area.Left, area.Top, area.Radius);
+	else
+		return PointIn(X, Y, area.Left, area.Top, area.Width, area.Height);
+}
+
 let KDBoxThreshold = 60;
 let KDButtonColor = "rgba(5, 5, 5, 0.5)";
 let KDButtonColorIntense = "rgba(5, 5, 5, 0.8)";
@@ -3850,6 +3866,11 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
  * @returns - If it worked
  */
 function DrawRectKD (Container: PIXIContainer, Map: Map<string, any>, id: string, Params: RectParams): boolean {
+	if (Params.blockControl) {
+		KDBlockControlCache[id] = {Left: Params.Left, Top: Params.Top, Width: Params.Width, Height: Params.Height};
+	}
+	
+	if (Params.hidden) return false;
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -3898,6 +3919,13 @@ function DrawRectKD (Container: PIXIContainer, Map: Map<string, any>, id: string
  * @returns - If it worked
  */
 function DrawCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: RectParams): boolean {
+	// Drawn with radius Width/2 from the top left corner
+	if (Params.blockControl) {
+		KDBlockControlCache[id] = {Left: Params.Left + Params.Width/2, Top: Params.Top + Params.Width/2,
+			Radius: Params.Width/2};
+	}
+	
+	if (Params.hidden) return false;
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -3994,6 +4022,12 @@ function DrawCrossKD(Container: PIXIContainer, Map: Map<string, any>, id: string
 
 //Just a copy of FillRectKD, but for circle
 function FillCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: CircleParams): PIXISprite {
+	// Left/Top is the center
+	if (Params.blockControl) {
+		KDBlockControlCache[id] = {Left: Params.Left, Top: Params.Top, Radius: Params.Radius};
+	}
+	
+	if (Params.hidden) return null;
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -4041,6 +4075,11 @@ function FillCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: strin
  * @returns - If it worked
  */
 function FillRectKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: RectParams): PIXISprite {
+	if (Params.blockControl) {
+		KDBlockControlCache[id] = {Left: Params.Left, Top: Params.Top, Width: Params.Width, Height: Params.Height};
+	}
+	
+	if (Params.hidden) return null;
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -4090,6 +4129,13 @@ function FillRectKD(Container: PIXIContainer, Map: Map<string, any>, id: string,
  * @returns - If it worked
  */
 function FillCircleBarKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: CircParams): boolean {
+	// Left/Top is the center, block the whole circle rather than just the arc
+	if (Params.blockControl) {
+		KDBlockControlCache[id] = {Left: Params.Left, Top: Params.Top,
+			Radius: Params.Radius ? Params.Radius : 10};
+	}
+	
+	if (Params.hidden) return false;
 	let sprite = Map.get(id);
     let same = true;
     if (sprite && kdprimitiveparams.has(id)) {
@@ -6310,7 +6356,13 @@ function KDPointInPlayableArea(X: number, Y: number): boolean {
 	if (KinkyDungeonDrawState == "Game" && KDGameData.CurrentDialog && PointIn(X, Y, 
 		PIXIWidth/2 - KDDialogueButtonWidth * 0.6, KDDialogueButtonY - 50, 
 		KDDialogueButtonWidth * 1.2, KDDialogueButtonSpacing * KDMaxDialogue + 50)) return false;
-		
+
+	for (let cache of [KDLastBlockControlCache, KDBlockControlCache]) {
+		for (let area of Object.values(cache)) {
+			if (KDPointInBlockControlArea(X, Y, area)) return false;
+		}
+	}
+
 	return PointIn(X, Y, canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)
 		&& !PointIn(X, Y, 0, 0, 500, PIXIHeight)
 		&& !PointIn(X, Y, PIXIWidth-60, 0, 70, PIXIHeight)

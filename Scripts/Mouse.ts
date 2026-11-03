@@ -15,6 +15,9 @@ function MouseIn(Left: number, Top: number, Width: number, Height: number): bool
 function PointIn(X: number, Y: number, Left: number, Top: number, Width: number, Height: number): boolean {
 	return (X >= Left) && (X <= Left + Width) && (Y >= Top) && (Y <= Top + Height);
 }
+function PointInRadius(X: number, Y: number, CenterX: number, CenterY: number, Radius: number): boolean {
+	return KDistEuclidean(CenterX - X, CenterY - Y) <= Radius;
+}
 
 /**
  * Check if the mouse position is within the boundaries of a given zone along the X axis
