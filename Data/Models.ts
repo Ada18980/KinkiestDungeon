@@ -713,6 +713,10 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 					modified = true;
 				}
 			}
+
+			
+			MC.Mods.set(containerID, StartMods);
+			MC.EndMods.set(containerID, EndMods);
 			
 		} else {
 			Container.lastLoadTime = 0;
