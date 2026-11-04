@@ -69,3 +69,26 @@ for pack in PACKS:
 		with open(path, "w", encoding="utf8", newline="\n") as f:
 			f.write(conf)
 	print(f"{pack['dir']}: {len(names)} configs")
+
+# Register every folder as a key in KDModelAtlases (Data/ModelAtlases.ts).
+# Values stay empty: KDGetModelAtlasURL fills the URL lazily because it depends on the mobile texture toggle.
+ATLAS_TS = "../Data/ModelAtlases.ts"
+BEGIN, END = "// BEGIN GENERATED", "// END GENERATED"
+with open(ATLAS_TS, "r", encoding="utf8", newline="") as f:
+	ts = f.read()
+nl = chr(13) + chr(10) if chr(13) + chr(10) in ts else chr(10)
+start = ts.find(BEGIN)
+end = ts.find(END)
+if start < 0 or end < start:
+	print(f"markers not found in {ATLAS_TS}, skipping KDModelAtlases update")
+else:
+	line_start = ts.rfind(nl, 0, start) + len(nl)
+	indent = ts[line_start:start]
+	body = "".join(f'{indent}"{folder}": "",{nl}' for folder in folders)
+	new_ts = ts[:start] + BEGIN + nl + body + indent + ts[end:]
+	if new_ts != ts:
+		with open(ATLAS_TS, "w", encoding="utf8", newline="") as f:
+			f.write(new_ts)
+		print(f"updated KDModelAtlases with {len(folders)} folders")
+	else:
+		print("KDModelAtlases up to date")
