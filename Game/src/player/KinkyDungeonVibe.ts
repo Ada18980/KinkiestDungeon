@@ -220,8 +220,7 @@ let KDToggles = {
 	Buttplug: false,
 };
 
-//@ts-ignore
-if (!window.kdAPI && !TestMode) delete KDToggles.Preload;
+let forcePreload = false;
 
 
 let KDToggleCategories = {
@@ -341,6 +340,19 @@ let KDToggleCategories = {
 	SoundNotification: "UI",
 	ShowDefensiveStats: "UI",
 };
+
+function KDUpdateForcePreload() {
+	//@ts-ignore
+	if ((!window.kdAPI && !TestMode)
+		&& KDToggles.MobileTextures) forcePreload = true;
+	else forcePreload = false;
+
+	if (forcePreload) {
+		delete KDToggles.Preload;
+	} else {
+		if (KDToggles.Preload == undefined) KDToggles.Preload = false;
+	}
+}
 
 function KDStopAllVibeSounds(Exceptions?: string[]) {
 	let EE = [];

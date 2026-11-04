@@ -32,8 +32,10 @@ let KDInventoryActionsDefault: Record<string, (item: item) => string[]> = {
 			if (item.lock) {
 				ret.push("Unlock", "Pick");
 			} else if (KinkyDungeonIsLockable(KDRestraint(item))) {
-				ret.push("Remove");
 				ret.push("Lock");
+			}
+			if (KDRestraint(item)?.escapeChance?.Remove != undefined) {
+				ret.push("Remove");
 			}
 		} else {
 			ret.push("CurseUnlock", "CurseInfo", "CurseStruggle");

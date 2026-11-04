@@ -409,7 +409,7 @@ let linearList = [];
 let preloaded = false;
 
 //@ts-ignore
-if (KDToggles.Preload || (!window.kdAPI && !TestMode)) {
+if (KDToggles.Preload || forcePreload) {
 	preloaded = true;
 	if (KDToggles.MobileTextures) {
 		linearList.push(...[

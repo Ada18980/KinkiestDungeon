@@ -49,15 +49,76 @@ function GetNewAudio(src?: string) {
     return element;
 }
 
+// SFX is packed into a single binary file during the build
+// purpose is to reduce file count and reduce the number of fetch requests
+// SFX is only a few MB 
+let KDSFXPackPath = "sfx.pack";
+let KDSFXPackID = "KDSFX1";
+let KDSFXPackVersion = 1;
+let KDSFXPackCache: Record<string, [number, number]> = null;
+let KDSFXPackData: ArrayBuffer = null;
+let KDSFXPackDataStart = 0;
+let KDSFXUnpaackPromise: Promise<void> = null;
+
+function KDLoadSFXPack(): Promise<void> {
+	if (!KDSFXUnpaackPromise) {
+		KDSFXUnpaackPromise = fetch(KinkyDungeonRootDirectory + KDSFXPackPath)
+			.then((value) => {
+				if (!value.ok) throw new Error(`HTTP ${value.status}`);
+				return value.arrayBuffer();
+			})
+			.then((data) => {
+				let id = new TextDecoder().decode(new Uint8Array(data, 0, KDSFXPackID.length));
+				if (id != KDSFXPackID) {
+					throw new Error("Wrong SFX pack ID");
+				}
+
+				let view = new DataView(data);
+				if (view.getUint8(KDSFXPackID.length) != KDSFXPackVersion) {
+					throw new Error("unsupported pack version");
+				}
+				
+				let headerLength = view.getUint32(KDSFXPackID.length + 1, true);
+				let headerStart = KDSFXPackID.length + 1 + 4;
+				let header = JSON.parse(new TextDecoder().decode(new Uint8Array(data, headerStart, headerLength)));
+				
+				KDSFXPackCache = header.files;
+				KDSFXPackDataStart = headerStart + headerLength;
+
+				KDSFXPackData = data;
+			})
+			.catch((e) => {
+				console.warn("SFX pack unavailable, loading loose files:", e);
+				KDSFXPackCache = null;
+				KDSFXPackData = null;
+			});
+	}
+	return KDSFXUnpaackPromise;
+}
+
+function KDGetFromSFXPack(src: string): ArrayBuffer {
+	if (!KDSFXPackCache || !src.startsWith(KinkyDungeonRootDirectory)) return null;
+	// trim accidental doubles
+	let entry = KDSFXPackCache[src.substring(KinkyDungeonRootDirectory.length)
+		.replace(/^\/+/, "")];
+	if (!entry) return null;
+	return KDSFXPackData.slice(KDSFXPackDataStart + entry[0], KDSFXPackDataStart + entry[0] + entry[1]);
+}
+
 function KDLoadWebAudioSFX(src: string): Promise<AudioBuffer> {
 	let pending = KDWebAudioSFXBuffers.get(src);
 	if (!pending) {
-		pending = fetch(src)
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error(`HTTP ${response.status} while loading ${src}`);
-				}
-				return response.arrayBuffer();
+		pending = KDLoadSFXPack()
+			.then(() => {
+				let packed = KDGetFromSFXPack(src);
+				if (packed) return packed;
+				return fetch(src)
+					.then((response) => {
+						if (!response.ok) {
+							throw new Error(`HTTP ${response.status} while loading ${src}`);
+						}
+						return response.arrayBuffer();
+					});
 			})
 			.then((data) => KDWebAudio.decodeAudioData(data));
 		KDWebAudioSFXBuffers.set(src, pending);
@@ -420,8 +481,12 @@ async function KDCreateReverb(context: AudioContext, impulse: string) {
 	let convolver = context.createConvolver();
 
 	// load impulse response from file
-	let response = await fetch(KinkyDungeonRootDirectory + "Audio/Impulse/"+ impulse + ".wav");
-	let arraybuffer = await response.arrayBuffer();
+	await KDLoadSFXPack();
+	let arraybuffer = KDGetFromSFXPack(KinkyDungeonRootDirectory + "Audio/Impulse/"+ impulse + ".wav");
+	if (!arraybuffer) {
+		let response = await fetch(KinkyDungeonRootDirectory + "Audio/Impulse/"+ impulse + ".wav");
+		arraybuffer = await response.arrayBuffer();
+	}
 	convolver.buffer = await context.decodeAudioData(arraybuffer);
 
 	KDGlobalConvolveNodes[impulse] = convolver;

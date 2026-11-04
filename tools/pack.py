@@ -32,6 +32,10 @@ for pack in packs:
     print(f"--- {wtxpck} {pack} {flags}")
     subprocess.run([wtxpck, pack, flags], check=True)
 
+# SFX bundle
+print("--- pack_audio.py")
+subprocess.run([sys.executable, "pack_audio.py"], check=True)
+
 # Per-folder atlases
 # create an atlas for each folder so we can load folder whenever an asset needs it
 # run in parallel, printing each pack's output once it finishes so they don't interleave

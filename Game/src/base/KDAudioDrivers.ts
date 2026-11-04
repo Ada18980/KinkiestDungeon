@@ -26,7 +26,7 @@ let OGVSupported = false;
 
 
 /** jfrancos Oggmented library, MIT license */
-const SILENCE_OGG_DATA_URI = 'Game/Audio/Null.ogg';
+const SILENCE_OGG_DATA_URI = 'Game/Null.ogg';
 
 class OggmentedAudioContext extends (window.AudioContext || window.webkitAudioContext) {
   constructor(options = {}) {
