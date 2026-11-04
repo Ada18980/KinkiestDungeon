@@ -341,6 +341,7 @@ function KDSendGagParticles(entity: entity, id: string): void {
 		let lifetime = 2000;
 		let pos = GetHardpointLoc(KinkyDungeonPlayer, KDPlayerPos().x, KDPlayerPos().y, 
 			KDCharSize, "Mouth", KDToggles.FlipPlayer, id);
+		if (!pos) return;
 		let x = pos.x;
 		let y = pos.y;
 
