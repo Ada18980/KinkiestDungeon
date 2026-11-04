@@ -17637,7 +17637,7 @@ EnemyName 设法带着你的物品撤退了！
 你挡住我了。
 - Step aside, pet.
 靠边站吧，宠物。
-- Get her, my pets!
+- Get ${Pthem}, my pets!
 抓住她，我的宠物们！
 - Hey! Don't touch that!
 嘿！别碰那个！
@@ -18098,7 +18098,7 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailNecromancerGrab
 - Sorceress!
 女巫！
-- Get her!
+- Get ${Pthem}!
 抓住她！
 - She's a mage! Stop her!
 她是个法师！阻止她！
@@ -18471,7 +18471,7 @@ EnemyName 设法带着你的物品撤退了！
 我曾经是个坏女孩~
 - Hey! You should know your place.
 喂！你应该知道你自己什么地位。
-- Look who's enjoying ${PThem}self~
+- Look who's enjoying ${Pthem}self~
 看看谁玩得开心~
 - Let's put you up for auction!
 我们把你拿去拍卖吧！
@@ -21771,7 +21771,7 @@ SPL之力!
 把它收起来！
 - That's off limits. You need to be punished!
 那是禁区。你需要受到惩罚！
-- Thief! Get her!
+- Thief! Get ${Pthem}!
 盗贼！抓住她！
 - Yikes! I'm calling backup!
 哎呀！需要后援！
@@ -22616,7 +22616,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ...安全...
 - *Her burial cloth reads PTRN*
 *她的葬礼布上写着 PTRN*
-- Get her...
+- Get ${Pthem}...
 抓住她...
 - Must... hug...
 必须...抱...
@@ -22786,13 +22786,13 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER beeps)|Thank you for complying.
 ( SPEAKER 发出哔哔声 ) |感谢您的遵守。
 
-- (The SPEAKER frowns)|Looks like you'll need to be punished. Get her!
+- (The SPEAKER frowns)|Looks like you'll need to be punished. Get ${Pthem}!
 ( SPEAKER 皱眉 ) |看来你需要受到惩罚。抓住她！
-- (The SPEAKER looks Embarrassed)|Then... then... uh... someone stop her!
+- (The SPEAKER looks Embarrassed)|Then... then... uh... someone stop ${Pthem}!
 ( SPEAKER 看起来很尴尬 ) |那么……那么……呃……来人阻止她！
 - (The SPEAKER grins)|Then allow me to personally show you the rules.
 ( SPEAKER 咧嘴一笑 ) |那么请允许我亲自向你展示规则。
-- (The SPEAKER cracks her knuckles)|Finally, I get to have some fun~
+- (The SPEAKER cracks ${Etheir} knuckles)|Finally, I get to have some fun~
 (SPEAKER捏响她的指节)|我终于能有点乐子了~
 - (The SPEAKER beeps)|Subject is resisting. Begin capture protocol.
 ( SPEAKER 发出哔哔声 ) |对象在反抗。开始捕获协议。
@@ -25228,7 +25228,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 微笑 )|美味！谢谢你！
 - (The SPEAKER smiles)|Crunchy! My favorite!
 ( SPEAKER 微笑 )|脆脆的！我的最爱！
-- (The SPEAKER tilts her head)|It smells funny...|Still, it'd be a shame for it to go to waste!
+- (The SPEAKER tilts ${Etheir} head)|It smells funny...|Still, it'd be a shame for it to go to waste!
 (SPEAKER歪了歪头)|闻起来有点奇怪…|不过，浪费掉的话还是太可惜了！
 
 - (The SPEAKER approaches you with an offer)|Hello!|I am searching for magical scrolls.|Would you happen to have any?
@@ -26723,7 +26723,7 @@ Hmmmph? Mmmm!(表现出担忧和呜咽)
 Mmmph? (行为混乱)
 # :: dCyberHiSec_Question2Gag
 # :: dCyberHiSec_Question2Gag
-- (The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System.
+- (The SPEAKER folds ${Etheir} arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System.
 (SPEAKER双手抱胸)|奥丽尔(Oriel)夫人的指令很明确：|任何未登入系统的人，都得被装载入系统。
 - (The SPEAKER pauses for a moment, then speaks)|I'm just following Mistress Oriel's orders.|I'm sure she will have time to speak with you if you want to ask her.
 ( SPEAKER停顿片刻，然后说道 )|我只是在听从奥丽尔夫人的命令|如果你想询问的话，我相信${Ethey}会有时间和你谈谈的。
@@ -26744,10 +26744,10 @@ Mmmph? (行为混乱)
 
 - (A SPEAKER crosses ${Etheir} arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
 ( SPEAKER 交叉双臂 ) |你在看什么？|哦，是个探险家。|喂，你不会是想和我们一起工作吧，想吗？
-- (The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out.
+- (The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get them out.
 ( SPEAKER 微笑 )|更像是这样|独家报道 : ‎我们其中一人在下一层被抓获|我们需要你去把她救出来。
 
-- (The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)
+- (The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get ${Ethem} out.)
 ( SPEAKER 戴着高安全性的镣铐坐着。|你需要打开锁才能将她解开。 )
 - (You don't have any keys that work on the lock)
 ( 你没有锁的钥匙。 )
@@ -26782,8 +26782,10 @@ Mmmph? (行为混乱)
 ( 你解救了你的 SPEAKER ) |是时候开始干活了~！
 - (You unlock your SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
 （你解开了你的 SPEAKER）|呜呜呜！|（她想保持自己的堵嘴……）
-- (You unlock the SPEAKER)|Mmmmph!|(She want${Es} to keep her gag...)
+- (You unlock the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
 ( 你解开了 SPEAKER ) |呜呜呜！| ( 她想让自己一直戴着口塞… )
+# :: rPrisonerJailUnlockGagged
+# :: rPrisonerJailOwnUnlockGagged
 - (After a while, you free the SPEAKER)|That was quite tight... thanks for the rescue.
 （过了一会儿，你救出了 SPEAKER）|捆的真紧…谢谢你救了我。
 - (After a while, you free the SPEAKER)|That was fun!|Er--|Thanks, I mean!
@@ -26816,9 +26818,10 @@ Mmmph? (行为混乱)
 - (After a while, you free the SPEAKER)|Are you supposed to be here?|(${EThey} giggle${Es})
 ( 过了一会儿，你解开了SPEAKER )|你怎么在这？|( ${EThey}笑了笑 )
 - (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} ${Etheir} head when you go for ${Etheir} gag...)
-( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|( ${EThey}在你给${EThey}解开口塞时摇了摇头... )
+( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|( ${EThey}在你给${EThey}解开口塞时摇了摇头... ) 
 # :: rPrisonerJailPickGagged
 # :: rPrisonerJailOwnPickGagged
+# :: rPrisonerLatexCutGagged
 - (You don't have enough mana for a command word)
 ( 你没有足够的法力来写命令词。 )
 # :: rPrisonerJailWordNoMana
@@ -26864,8 +26867,6 @@ Mmmph? (行为混乱)
 
 - (The SPEAKER sits restrained by your own hand.|Only someone with keys can let ${Ethem} out.)
 ( SPEAKER 坐在那里，被你束缚住了。|只有有钥匙的人才能让她出去。)
-- (You unlock the SPEAKER)|Mmmmph!|(${EThey} want${Es} to keep ${Etheir} gag...)
-( 你解开了 SPEAKER ) |呜呜呜！| ( ${EThey}想让自己一直戴着口塞… )
 - (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help ${Ethem}.)
 ( SPEAKER 被高安全性的镣铐锁住了。|安全护盾已被触发，帮助她已经不可能了。 )
 
@@ -53268,8 +53269,6 @@ PTRN 的 RMTPE
 (你的手里没有切割工具)
 - (You cut ${Etheir} restraints, fumbling around for a while with your bound hands)
 (你切开了${Etheir}拘束具，用绑着的手摸索了一会儿。)
-- (After a while, you free the SPEAKER)|Mmmmph!|(${EThey} shake${Es} ${Etheir} head when you go for ${Etheir} gag...)
-( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|( ${EThey}在你给${EThey}解开口塞时摇了摇头... ) 
 - (You don't have enough mana for Remove Slime)
 (你没有足够的法力来移除粘液)
 - (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
