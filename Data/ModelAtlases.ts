@@ -74,7 +74,7 @@ function KDCullPreloadedAssets() {
 			}
 		}
 		for (let folder of Object.keys(folders)) {
-			if (KDModelAtlases[folder])
+			if (KDModelAtlases[folder] != undefined)
 				KDHitModelFolderAtlas(folder);
 			//KDModelAtlasHits[folder] = (KDModelAtlasHits[folder] || 0) + 1;
 		}

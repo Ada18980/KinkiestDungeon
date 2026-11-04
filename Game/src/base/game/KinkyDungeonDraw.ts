@@ -5320,7 +5320,7 @@ function KDTex(Image: string, Nearest?: boolean): PIXITexture {
 	// This loop is NOT used if assets are preloaded
 	if (!preloaded) {
 		KDImageAtlasCache[Image] = KDGetModelAtlasID(Image);
-		if (KDImageAtlasCache[Image] && KDModelAtlases[KDImageAtlasCache[Image]]) {
+		if (KDImageAtlasCache[Image] && KDModelAtlases[KDImageAtlasCache[Image]] != undefined) {
 			
 			if (KDAtlasesLoading[KDImageAtlasCache[Image]]) {
 				KDAssetNeedsLoading = true;
