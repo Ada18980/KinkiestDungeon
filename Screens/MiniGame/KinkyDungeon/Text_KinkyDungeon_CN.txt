@@ -83,6 +83,64 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 ( 本游戏中没有蜘蛛 )
 # - 
 # :: Intro4BC
+# :: KDToggleDescTurnCounter
+# :: KDToggleDescStunFlash
+# :: KDToggleDescParticlesFX
+# :: KDToggleDescParticlesRestrain
+# :: KDToggleDescArousalHearts
+# :: KDToggleDescVibeHearts
+# :: KDToggleDescGagParticles
+# :: KDToggleDescShowNPCStatuses
+# :: KDToggleDescShowSpellRange
+# :: KDToggleDescFancyWalls
+# :: KDToggleDescFancyShadows
+# :: KDToggleDescLightmapFilter
+# :: KDToggleDescIntenseOrgasm
+# :: KDToggleDescVibeSounds
+# :: KDToggleDescFullscreen
+# :: KDToggleDescHighResDisplacement
+# :: KDToggleDescMobileTextures
+# :: KDToggleDescModelMultisample
+# :: KDToggleDescPreload
+# :: KDToggleDescHiResModel
+# :: KDToggleDescGraphicsQuality
+# :: KDToggleDescEnemyAnimations
+# :: KDToggleDescLazyWalk
+# :: KDToggleDescShiftLatch
+# :: KDToggleDescCrotchRopeOption
+# :: KDToggleDescChastityOption
+# :: KDToggleDescChastityOption2
+# :: KDToggleDescChastityBraOption
+# :: KDToggleDescSimpleColorPicker
+# :: KDToggleDescCenter
+# :: KDToggleDescBuffSide
+# :: KDToggleDescShowPath
+# :: KDToggleDescShowFacing
+# :: KDToggleDescShowSameCatSpells
+# :: KDToggleDescPlayerAura
+# :: KDToggleDescEnemyAura
+# :: KDToggleDescSoundNotification
+# :: KDToggleDescOutlineAura
+# :: KDToggleDescNearestNeighbor
+# :: KDToggleDescAutoCrouchOnTrip
+# :: KDToggleDescRetroAnim
+# :: KDToggleDescFlipStatusBars
+# :: KDToggleDescHelper
+# :: KDToggleDescForceRGB
+# :: KDToggleDescAutoSprint
+# :: KDToggleDescSkipTutorial
+# :: KDToggleDescThighVibe
+# :: KDToggleDescModCompat
+# :: KDToggleDescFlashingWarning
+# :: KDToggleDescCenteredLog
+# :: KDToggleDescReverb
+# :: KDToggleDescEnemyShockwave
+# :: KDToggleDescShowExtraStruggle
+# :: KDToggleDescFlipPlayerAuto
+# :: KDToggleDescHotbarTooltips
+# :: KDToggleDescOScreenFilter
+# :: KDToggleDescDistractScreenFilter
+# :: KDToggleDescMinorSoundDesc
 # :: KinkyDungeonStatT
 # :: KinkyDungeonStatDescT
 # :: KDBuffName_InnerPowerArcaneStore
@@ -294,6 +352,9 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Loads your data from a file. Note: This may overwrite any data you currently have.
 从文件加载数据。注意：这将覆盖你现有的所有的游戏数据。
 
+
+
+
 - GFX
 图像特效
 - Character
@@ -313,6 +374,84 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 鼠标快捷操作
 - Toy Integration
 玩具集成
+
+
+
+# - Enables buttplug.io (using Intiface) or XToys integration to connect real-life toys
+# - Makes the screen wobble when under the effects of a trance
+# - Adds spinning spirals to certain elements relating to hypnosis
+# - Removes the multiple struggle icons in the struggle UI and instead opens up a menu
+# - Auto-pathing will make no attempt to avoid NPCs that you can swap with
+# - Auto-pathing will make no attempt to avoid doors
+# - Shows enemy binding level as a percentage instead of a flat number
+# - Automatically skips through turns when performing a multi-turn action. You can still cancel by giving an input.
+# - Plays a jingle when auto-pathing is interrupted (e.g. by seeing an enemy)
+# - Plays a sound when the player character is targeted by an attack
+# - Allows stacking multiple items of the same category (e.g. multiple tails)
+# - Show labels on the minimap such as the types of chests and shrines
+# - Automatically takes everything when opening a chest
+# - Ignores palettes associated with an outfit item ingame (such as the prisoner uniform)
+# - Shows the player's training progress when expanding the buff list
+# - Applies palettes to restraints the player character is wearing
+# - Applies palettes to visual changes from effects such as Latex Integration
+# - Applies a limit to consumables you can hold. Excess consumables are automatically sent to storage.
+# - Ignores the palette associated with a character design (Extra Options menu in wardrobe)
+# - Always uses the character's palette rather than ingame outfits or restraints
+# - Associates the Adventurer's Outfit ingame with the default palette selected here
+# - Shows two rows of buffs when the buff bar is collapsed
+# - Show background art for some levels like the Summit
+# - Deprecated
+# :: KDToggleDescOptRender
+# :: KDToggleDescShowNPCSprites
+# :: KDToggleDescAllowSusMods
+# :: KDToggleDescAsyncRendering
+# - Allows you to headpat the player character ingame
+# - Tries to fit more into tooltips before splitting into pages
+# - Cycles through tooltip pages automatically. Otherwise, enter Inspect mode and click on the target.
+# - Mutes the game when minimized
+# - Shows the player's DP (Distraction Points) as a flat number rather than a percentage
+# - When you select a wearable item in the quick inventory, it will always be applied to self instead of being targeted like a spell.
+# - Replaces the outfit stored in a save file with the outfit currently selected on the title screen.
+# :: KDToggleDescOverrideOutfit
+# :: KDToggleDescOverrideOutfitAbbr
+# - Loads consent settings when loading a save file, instead of applying your own from the New Game menu
+# - Saves outfit data to save files, using the original default outfit instead of the one from the title screen.
+# - Show full paperdoll portraits on the map for NPCs in furniture or imprisoned
+# - Show full paperdoll portraits on the map for unique patron NPCs
+# - Show full paperdoll portraits in the collection for servants
+# - Show full paperdoll portraits in the collection for prisoners
+# - Show struggle progress on a restraint in the struggle UI
+# - Loads mods from the mods folder (offline) or automatically loads the last mods used (web)
+# - Shows a scroll when displaying inventory item descriptions instead of a more modern grey rectangle 
+# - Skips the intro when you start up the game
+# - NPCs will not open dialogues directly for advertising their shop. Bondage offers unaffected.
+# - Shows zoom in/out buttons next to the minimap
+# - Shows restraint descriptions when you hover over them in the struggle UI.
+# - Warnings from incoming attacks will always show. Otherwise, they are hidden when clicking out of the playable area.
+# - Shows arrows to indicate the direction of enemy projectiles.
+# - Shows the minimap in the top right corner
+# - Enables all sound effects and music
+# - Enables drool effects when the player is gagged
+# - Shows the default appearance of armor items. Turn this off if you enable Dynamic Armor.
+# - Plays background music.
+# - Highlights light sources with a bloom effect.
+# - Hides the grey background to parts of the ingame UI.
+# - Show nipples on characters
+# - Nipple toys appear on top of bras, rather than below.
+# - Hides nipple clamps and toys that aren't piercings.
+# - Hides nipple piercings but not other nipple toys.
+# - Uses the selected palette as the palette for the Adventuring Outfit. Overridden by outfits ingame or character-specific palettes.
+# - Overrides your character's palette based on which faction applied the current restraints.
+# - Flips the player portrait so they point to the right instead of left
+# - Makes the map greyscale when wearing a blindfold.
+# - Makes damage floaters disappear more quickly.
+# - Hides floating damage indicators when NPCs take damage.
+# - Certain armor items in the character creator will no longer appear unless your character is wearing the appropriate armor ingame.
+# - Hide the floating weapon graphic behind the player character for weapons that are not held in hand.
+# - Shows defensive stats like evasion in the buff bar, even when collapsed
+# - Shows left and right buttons in the struggle UI when multiple restraints are present in the same slot
+
+
 
 - Hypnosis Screen Wobble
 催眠时屏幕晃动
@@ -343,7 +482,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 自动从箱子中拿走所有物品
 - Don't Use Outfit Palettes
 不使用套装调色板
-- Show training in buffs and stats
+- Show training in buff bar
 在增益和状态中显示训练
 
 - Apply palettes to Restraints
@@ -351,7 +490,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Apply palettes to transforms
 将调色应用于变化
 
-- (Test) Enforce Inventory Limits
+- Enforce Inventory Limits
 （测试）背包物品有上限
 - Don't use character palette
 不使用角色调色板
@@ -360,7 +499,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Use character palette for default outfit
 默认装备使用角色调色板
 
-- Allow two rows of buffs when collapsed
+- Show Two Rows of Buffs when Collapsed
 折叠时显示两行增益效果
 - Show Background Art
 显示背景
@@ -466,15 +605,15 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 播放玩具音效
 - Enable Fullscreen
 启用全屏
-- Hi-Res Distortion (Needs Restart)
+- Hi-Res Distortion (Restart)
 高分辨率形变 ( 需重启 )
-- Low-Res Textures (Needs Restart)
+- Low-Res Textures (Restart)
 低分辨率贴图 (需要重启)
 - Portrait Supersampling
 立绘超采样
-- Preload Assets (4GB+ RAM) (Restart)
+- Preload Assets (Restart)
 预加载资源 ( 4GB+ 内存)( 需重启)
-- Hi-Res Model (no restart needed)
+- Hi-Res Model
 高分辨率模型 ( 无需重启 )
 - High Quality Animations
 高品质动画
@@ -542,7 +681,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 漂浮文字更快消散
 - No Damage Floaters
 不显示伤害数字
-- Dynamic Armor (must hide armor)
+- Dynamic Armor
 动态盔甲 ( 必须隐藏盔甲 )
 - Hide floating weapon display
 隐藏浮动武器显示
@@ -1827,7 +1966,7 @@ EnemyName对TargetName念出了一个口令！
 - Magic Armor: 
 魔法防御: 
 - In the Shadows: ${You} ${Yis} harder to see.
-处在阴影中 : ‎你更难被敌人察觉。
+处在阴影中 : ‎${You}更难被敌人察觉。
 - Invisible: ${You} ${Yis} very difficult to see.
 隐形 : ‎你非常难以被敌人察觉。
 - Quickness: ${Your} next movement is so fast it doesn't advance a turn.
@@ -47186,6 +47325,8 @@ LKTYP 锁锁在了你的一个拘束具上！
 特殊能力
 - Staff
 法杖
+# :: KDFilterFiltersStaff
+# :: KDWeaponNoStack_Staff
 - Toy
 玩具
 # :: KDFilterFiltersToy
@@ -55382,4 +55523,6 @@ Buttplug.io 设备${DEVICE}电量低
 - Paste your Xtoys webhook ID here and the game will post messages|Supported actions: 'shock', 'vibestart', 'vibestop'
 在此粘贴你的 Xtoys webhook ID，游戏便会推送 messages|支持的操作 : 'shock'、'vibestart'、'vibestop'
 
+# - '${BuffType}' effects of the same type do not stack.
 
+# - Book
