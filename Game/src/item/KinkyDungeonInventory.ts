@@ -1182,6 +1182,7 @@ interface HoverObject {
 	Width?: number,
 	alpha?: number,
 	align?: string,
+	wrap?: boolean,
 }
 interface InventoryHoverObject extends HoverObject {
     item: item;
@@ -4522,6 +4523,17 @@ function KDGetDescOffset(item: itemPreviewEntry) {
 
 function KDDrawExtraItemInfo(item: itemPreviewEntry, xOffset: number, yOffset: number, player: entity) {
 	let yy = 0;
+	
+	//@ts-ignore
+	if (KDItem(item.item)?.nostack)
+		DrawTextKD(TextGet("KDWeaponNoStackDesc", {
+	        //@ts-ignore
+			BuffType: TextGet("KDWeaponNoStack_" + KDItem(item.item).nostack),
+			}),
+			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), 
+			yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 435 + (20 * yy--),
+			KDBookText, KDTextTan, 22,
+			 undefined, 130);
 	if (KDRestraint(item.item)?.corset)
 		DrawTextKD(TextGet("KDCorsetDesc", {
 			FRACTION: Math.round(KDRestraint(item.item)?.corset * 100 * KDCorsetSPReductionMult(player)),

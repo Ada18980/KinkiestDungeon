@@ -1598,6 +1598,8 @@ interface weapon extends damageInfo, NamedAndTyped {
 	/** Determines if the weapon is a gun/staff type (does damage regardless of binding)
 	 * or a whack type that needs force to be effective*/
 	noDamagePenalty?: boolean,
+	/** Adds a nostack tag to the description */
+	nostack?: string,
 	cutBonus?: number;
 	playSelfBonus?: number;
 	playSelfMsg?: string;
@@ -1640,6 +1642,7 @@ interface KDWeaponSpecial {
 interface KinkyDungeonEvent {
 	sprite?: string,
 
+	buffid?: string,
 
 
 	cloneTags?: string[],

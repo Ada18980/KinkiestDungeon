@@ -8693,7 +8693,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 		"Buff": (e, weapon, data) => {
 			if (KDCheckPrereq(null, e.prereq, e, data))
 				KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-					id: (e.kind || weapon.name) + (e.buffType || e.buff),
+					id: e.buffid ? e.buffid : ((e.kind || weapon.name) + (e.buffType || e.buff)),
 					type: e.buffType || e.buff,
 					power: e.power,
 					tags: e.tags,

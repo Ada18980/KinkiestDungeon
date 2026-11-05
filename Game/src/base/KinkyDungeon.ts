@@ -1524,7 +1524,8 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
         }
         let pad = 10;
         let TooltipWidth = Math.max(20, 220, (Math.min(object.name.length * 12, 350)));
-        let TooltipHeight = Math.max(20, ((pad * 2) + ((object.ItemMods ?? []).length > 0 ? 46 : 20) + (object.ItemMods ?? []).length * (20 + 10)));
+        let TooltipHeight = 
+			Math.max(20, ((pad * 2) + ((object.ItemMods ?? []).length > 0 ? 46 : 20) + (object.ItemMods ?? []).length * (20 + 10)));
 
         let tooltipX = KDCurrentHoverBox.Left + KDCurrentHoverBox.Width;
         // Move the tooltip to the left if it would flow off the right side of the screen.
@@ -1543,6 +1544,21 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
             tooltipY = PIXIHeight - TooltipHeight;
         }
         let YY = 20;
+        
+        if (object.name) {
+            DrawTextFitKD(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701);
+            YY += (object.TitleTextSize ? (object.TitleTextSize + 4) : 16);
+        }
+        YY = YY + 30
+        if (object.ItemMods) {
+            object.ItemMods.forEach((mod) => {
+                let height = RetDrawTextFitKDgetHeight(mod.str, tooltipX + pad, tooltipY + YY, TooltipWidth - 2 * pad, mod.colorFG, mod.colorBG, (mod.TextSize ? mod.TextSize : 20), "left", 701, undefined, undefined, undefined, undefined, object.wrap);
+                YY += (height + 10);
+				tooltipY -= height/2;
+				TooltipHeight += height;
+				TooltipHeight -= 20 + 10;
+            })
+        }
         FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + object.name, {
             Left: tooltipX,
             Top: tooltipY, //- 25,
@@ -1553,18 +1569,6 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
             zIndex: 700,
             alpha: object.alpha || 0.8,
         });
-        
-        if (object.name) {
-            DrawTextFitKD(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701);
-            YY += (object.TitleTextSize ? (object.TitleTextSize + 4) : 16);
-        }
-        YY = YY + 30
-        if (object.ItemMods) {
-            object.ItemMods.forEach((mod) => {
-                DrawTextFitKD(mod.str, tooltipX + pad, tooltipY + YY, TooltipWidth - 2 * pad, mod.colorFG, mod.colorBG, (mod.TextSize ? mod.TextSize : 20), "left", 701);
-                YY += (mod.TextSize + 10);
-            })
-        }
     },
 	"Tooltip": (hover, object) => {
         let currentlyhovering = ((MouseX >= KDCurrentHoverBox.Left) && (MouseX <= KDCurrentHoverBox.Left + KDCurrentHoverBox.Width) && (MouseY >= KDCurrentHoverBox.Top) && (MouseY <= KDCurrentHoverBox.Top + KDCurrentHoverBox.Height));
@@ -1596,6 +1600,14 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
             tooltipY = PIXIHeight - TooltipHeight;
         }
         let YY = 20;
+        
+        if (object.name) {
+            let height = DrawTextFitKDgetHeight(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701, undefined, undefined, undefined, undefined, object.wrap);
+            YY += (height + 10);
+			tooltipY -= height/2;
+			TooltipHeight += height;
+			TooltipHeight -= 20;
+        }
         FillRectKD(kdcanvas, kdpixisprites, "HoverTooltip_" + object.name, {
             Left: tooltipX,
             Top: tooltipY, //- 25,
@@ -1606,11 +1618,6 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
             zIndex: 700,
             alpha: object.alpha || 0.8,
         });
-        
-        if (object.name) {
-            DrawTextFitKD(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701);
-            YY += (object.TitleTextSize ? (object.TitleTextSize + 4) : 16);
-        }
     }
 }
 
@@ -1709,6 +1716,7 @@ function KinkyDungeonRun() {
 
 
 	
+	
 	KDRunButtplug();
 
 	KDJourneyGraphics.clear();
@@ -1792,6 +1800,19 @@ function KinkyDungeonRun() {
 	KDUpdateVibeSounds();
 	KDUpdateMusic();
 
+
+	
+    if (KDHoverTypes.includes(KDCurrentHoverBox?.Hover?.type)) {
+        KDHoverFunctions[KDCurrentHoverBox?.Hover?.type](KDCurrentHoverBox, KDCurrentHoverBox.Hover);
+    }
+
+	if (KDContextMenu && KDCurrentHoverButton?.contextMenu) {
+		KDDrawGameContextMenu[KDCurrentHoverButton.contextMenu](true, MouseX, MouseY);
+	} else
+	if (KDContextMenu && KDDrawGameContextMenu[KinkyDungeonDrawState]) {
+		KDDrawGameContextMenu[KinkyDungeonDrawState](true, MouseX, MouseY);
+	}
+
 	if (KDErrorText && KDErrorTextTime + KDErrorTextTime_DELAY > CommonTime()) {
 
 		let txt = KDErrorText.split('\n');
@@ -1807,9 +1828,6 @@ function KinkyDungeonRun() {
 
 		DrawBoxKD(MouseX - w/2 - 10, MouseY - 30 - h - 5, w + 20, 15 + h, KDBGColor, false, 0.7, 249)
 	}
-
-	if (!KDPatched)
-		DrawButtonVis(1885, 25, 90, 90, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Exit.png");
 
 	// eslint-disable-next-line no-constant-condition
 	if (true || KDToggles.Fullscreen) {
@@ -4040,7 +4058,7 @@ function DrawButtonKDEx (
 		nonplayable: options?.nonplayable,
     Hover,
 	};
-	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !Disabled);
 	if (hover) {
 		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
             KDCurrentHoverButton = params;
@@ -8669,7 +8687,7 @@ function KDTogglesDraw() {
 				maxWidth: 350,
 				fontSize: KDCustomOptionsFontSize[KDToggleTab] || 24,
 				scaleImage: true,
-			});
+			}, KDToggleTooltip(toggle));
 
 			YY += YYd;
 			if (YY > YYmax) {
@@ -8854,7 +8872,7 @@ function KDTogglesDraw() {
 						maxWidth: 265,
 						fontSize: 18,
 						scaleImage: true,
-					});
+					}, KDToggleTooltip(o.name));
 				}
 				ii++;
 			}

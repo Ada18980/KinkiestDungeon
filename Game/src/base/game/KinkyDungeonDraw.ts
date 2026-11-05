@@ -1146,16 +1146,6 @@ function KinkyDungeonDrawGame() {
 
 	
 	KinkyDungeonCapStats();
-    if (KDHoverTypes.includes(KDCurrentHoverBox?.Hover?.type)) {
-        KDHoverFunctions[KDCurrentHoverBox?.Hover?.type](KDCurrentHoverBox, KDCurrentHoverBox.Hover);
-    }
-
-	if (KDContextMenu && KDCurrentHoverButton?.contextMenu) {
-		KDDrawGameContextMenu[KDCurrentHoverButton.contextMenu](true, MouseX, MouseY);
-	} else
-	if (KDContextMenu && KDDrawGameContextMenu[KinkyDungeonDrawState]) {
-		KDDrawGameContextMenu[KinkyDungeonDrawState](true, MouseX, MouseY);
-	}
 
 	KinkyDungeonDrawDelta = Math.min(CommonTime() - KinkyDungeonLastDraw, KinkyDungeonLastDraw - KinkyDungeonLastDraw2);
 	KinkyDungeonLastDraw2 = KinkyDungeonLastDraw;
@@ -3402,7 +3392,8 @@ function DrawTextFitKDgetHeight(
 		font: font,
 		wordwrap: wordwrap,
 		valign: valign,
-		lineHeight: lineHeight
+		lineHeight: lineHeight,
+		return: true
 	})[1];//return the height
 }
 
@@ -3772,7 +3763,7 @@ let KDAllowText = true;
  * @returns  True if it worked
  */
 function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: string, Params: TextParamsType): number[] {
-	if (!KDAllowText) return [0];
+	if (!KDAllowText) return [0, 0];
 	let sprite: PIXIText = Map.get(id);
 	let same = true;
 	let par = kdprimitiveparams.get(id);
@@ -3852,9 +3843,9 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
 		sprite.alpha = Params.alpha ? Params.alpha : 1;
 		kdSpritesDrawn.set(id, true);
-		return Params?.return ? [sprite.width, sprite.height] : [];
+		return Params?.return ? [sprite.width, sprite.height] : [0, 0];
 	}
-	return [0];
+	return [0, 0];
 }
 
 /**
@@ -4507,12 +4498,13 @@ function DrawCheckboxKDEx (
 	Disabled:     boolean = false,
 	TextColor:    string = KDTextGray0,
 	CheckImage:  string = "UI/Checked.png",
-	options?:     ButtonOptions
+	options?:     ButtonOptions,
+	Hover?:       HoverObject,
 ): void
 {
 	DrawTextFitKD(Text, Left + 10 + Width, Top + Height/2+1, options?.maxWidth || 1000, TextColor, "#333333", options?.fontSize, "left");
 	DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : KDBaseWhite, IsChecked ? (KinkyDungeonRootDirectory + CheckImage) : "", null, Disabled,
-		undefined, undefined, undefined, undefined, options);
+		undefined, undefined, undefined, undefined, options, Hover);
 }
 
 

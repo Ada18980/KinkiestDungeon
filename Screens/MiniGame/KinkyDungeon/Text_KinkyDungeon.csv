@@ -51,6 +51,9 @@ KDFullBackupDesc,Stores all of your settings and presets into a file.
 KDLoadBackup,Load Backup
 KDLoadBackupDesc,Loads your data from a file. Note: This may overwrite any data you currently have.
 
+
+
+
 KDToggleTabGFX,GFX
 KDToggleTabClothes,Character
 KDToggleTabMain,Main
@@ -60,6 +63,140 @@ KDToggleTabKeybindings,Keybindings
 KDToggleTabButtplug,Buttplug/Xtoys
 KDToggleTabMouseShortcuts,Mouse Shortcuts
 KDToggleButtplug,Toy Integration
+
+
+
+KDToggleDescButtplug,Enables buttplug.io (using Intiface) or XToys integration to connect real-life toys
+KDToggleDescHypnoOverlay,Makes the screen wobble when under the effects of a trance
+KDToggleDescHypnoSpiral,Adds spinning spirals to certain elements relating to hypnosis
+KDToggleDescStruggleContext,Removes the multiple struggle icons in the struggle UI and instead opens up a menu
+KDToggleDescFastMovePassable,Auto-pathing will make no attempt to avoid NPCs that you can swap with
+KDToggleDescFastMoveDoors,Auto-pathing will make no attempt to avoid doors
+KDToggleDescBindPercent,Shows enemy binding level as a percentage instead of a flat number
+KDToggleDescAutoWaitDelayed,Automatically skips through turns when performing a multi-turn action. You can still cancel by giving an input.
+KDToggleDescSoundAutoPathEnd,Plays a jingle when auto-pathing is interrupted (e.g. by seeing an enemy)
+KDToggleDescWarningSound,Plays a sound when the player character is targeted by an attack
+KDToggleDescStackOutfitItems,Allows stacking multiple items of the same category (e.g. multiple tails)
+KDToggleDescMMLabels,Show labels on the minimap such as the types of chests and shrines
+KDToggleDescAutoloot,"Automatically takes everything when opening a chest"
+KDToggleDescNoOutfitPalette,Ignores palettes associated with an outfit item ingame (such as the prisoner uniform)
+KDToggleDescTrainingBuff,Shows the player's training progress when expanding the buff list
+KDToggleDescApplyPaletteRestraint,Applies palettes to restraints the player character is wearing
+KDToggleDescApplyPaletteTransform,Applies palettes to visual changes from effects such as Latex Integration
+KDToggleDescInvLimit,Applies a limit to consumables you can hold. Excess consumables are automatically sent to storage.
+KDToggleDescIgnoreApplyCharPalette,Ignores the palette associated with a character design (Extra Options menu in wardrobe)
+KDToggleDescAlwaysApplyCharPalette,Always uses the character's palette rather than ingame outfits or restraints
+KDToggleDescDefaultApplyCharPalette,Associates the Adventurer's Outfit ingame with the default palette selected here
+KDToggleDescExtraBuffRow,Shows two rows of buffs when the buff bar is collapsed
+KDToggleDescBackgrounds,Show background art for some levels like the Summit
+KDToggleDescOptRender,Deprecated
+KDToggleDescHeadpats,Allows you to headpat the player character ingame
+KDToggleDescExtraTooltipHeight,Tries to fit more into tooltips before splitting into pages
+KDToggleDescExtraTooltipCycle,"Cycles through tooltip pages automatically. Otherwise, enter Inspect mode and click on the target."
+KDToggleDescSoundOffWhenMin,Mutes the game when minimized
+KDToggleDescRawDP,Shows the player's DP (Distraction Points) as a flat number rather than a percentage
+KDToggleDescOnlySelfQuickInv,"When you select a wearable item in the quick inventory, it will always be applied to self instead of being targeted like a spell."
+KDToggleDescOverrideOutfit,Replaces the outfit stored in a save file with the outfit currently selected on the title screen.
+KDToggleDescOverrideOutfitAbbr,Replaces the outfit stored in a save file with the outfit currently selected on the title screen.
+KDToggleDescOverrideConsentAbbr,"Loads consent settings when loading a save file, instead of applying your own from the New Game menu"
+KDToggleDescSaveOutfit,"Saves outfit data to save files, using the original default outfit instead of the one from the title screen."
+KDToggleDescShowNPCSprites,Deprecated
+KDToggleDescShowJailedNPCSprites,Show full paperdoll portraits on the map for NPCs in furniture or imprisoned
+KDToggleDescShowPatronNPCSprites,Show full paperdoll portraits on the map for unique patron NPCs
+KDToggleDescShowServantNPCSprites,Show full paperdoll portraits in the collection for servants
+KDToggleDescShowOtherNPCSprites,Show full paperdoll portraits in the collection for prisoners
+KDToggleDescStruggleBars,Show struggle progress on a restraint in the struggle UI
+KDToggleDescAllowSusMods,Deprecated
+KDToggleDescAutoLoadMods,Loads mods from the mods folder (offline) or automatically loads the last mods used (web)
+KDToggleDescSpellBook,Shows a scroll when displaying inventory item descriptions instead of a more modern grey rectangle 
+KDToggleDescSkipIntro,Skips the intro when you start up the game
+KDToggleDescNoForceGreet,NPCs will not open dialogues directly for advertising their shop. Bondage offers unaffected.
+KDToggleDescShowZoom,Shows zoom in/out buttons next to the minimap
+KDToggleDescShowRestraintOnHover,Shows restraint descriptions when you hover over them in the struggle UI.
+KDToggleDescForceWarnings,"Warnings from incoming attacks will always show. Otherwise, they are hidden when clicking out of the playable area."
+KDToggleDescArrowWarnings,Shows arrows to indicate the direction of enemy projectiles.
+KDToggleDescEnableMinimap,Shows the minimap in the top right corner
+KDToggleDescSound,Enables all sound effects and music
+KDToggleDescDrool,Enables drool effects when the player is gagged
+KDToggleDescDrawArmor,Shows the default appearance of armor items. Turn this off if you enable Dynamic Armor.
+KDToggleDescMusic,Plays background music.
+KDToggleDescAsyncRendering,Deprecated
+KDToggleDescBloom,Highlights light sources with a bloom effect.
+KDToggleDescTransparentUI,Hides the grey background to parts of the ingame UI.
+KDToggleDescTurnCounter,
+KDToggleDescStunFlash,
+KDToggleDescParticlesFX,
+KDToggleDescParticlesRestrain,
+KDToggleDescArousalHearts,
+KDToggleDescVibeHearts,
+KDToggleDescGagParticles,
+KDToggleDescShowNPCStatuses,
+KDToggleDescShowSpellRange,
+KDToggleDescFancyWalls,
+KDToggleDescFancyShadows,
+KDToggleDescLightmapFilter,
+KDToggleDescIntenseOrgasm,
+KDToggleDescVibeSounds,
+KDToggleDescFullscreen,
+KDToggleDescHighResDisplacement,
+KDToggleDescMobileTextures,
+KDToggleDescModelMultisample,
+KDToggleDescPreload,
+KDToggleDescHiResModel,
+KDToggleDescGraphicsQuality,
+KDToggleDescEnemyAnimations,
+KDToggleDescLazyWalk,
+KDToggleDescShiftLatch,
+KDToggleDescCrotchRopeOption,
+KDToggleDescChastityOption,
+KDToggleDescChastityOption2,
+KDToggleDescChastityBraOption,
+KDToggleDescSimpleColorPicker,
+KDToggleDescCenter,
+KDToggleDescBuffSide,
+KDToggleDescShowPath,
+KDToggleDescShowFacing,
+KDToggleDescShowSameCatSpells,
+KDToggleDescPlayerAura,
+KDToggleDescEnemyAura,
+KDToggleDescSoundNotification,
+KDToggleDescOutlineAura,
+KDToggleDescNearestNeighbor,
+KDToggleDescAutoCrouchOnTrip,
+KDToggleDescRetroAnim,
+KDToggleDescFlipStatusBars,
+KDToggleDescHelper,
+KDToggleDescNipples,"Show nipples on characters"
+KDToggleDescNippleToysOption,"Nipple toys appear on top of bras, rather than below."
+KDToggleDescNippleToysHide,"Hides nipple clamps and toys that aren't piercings."
+KDToggleDescNipplePiercingsHide,"Hides nipple piercings but not other nipple toys."
+KDToggleDescForcePalette,Uses the selected palette as the palette for the Adventuring Outfit. Overridden by outfits ingame or character-specific palettes.
+KDToggleDescRestraintPalette,Overrides your character's palette based on which faction applied the current restraints.
+KDToggleDescFlipPlayer,Flips the player portrait so they point to the right instead of left
+KDToggleDescGreyscaleBlindness,Makes the map greyscale when wearing a blindfold.
+KDToggleDescFastFloaters,Makes damage floaters disappear more quickly.
+KDToggleDescNoDmgFloaters,Hides floating damage indicators when NPCs take damage.
+KDToggleDescDynamicArmor,Certain armor items in the character creator will no longer appear unless your character is wearing the appropriate armor ingame.
+KDToggleDescHideFloatingWeapon,"Hide the floating weapon graphic behind the player character for weapons that are not held in hand."
+KDToggleDescForceRGB,
+KDToggleDescAutoSprint,
+KDToggleDescSkipTutorial,
+KDToggleDescThighVibe,
+KDToggleDescModCompat,
+KDToggleDescFlashingWarning,
+KDToggleDescCenteredLog,
+KDToggleDescReverb,
+KDToggleDescEnemyShockwave,
+KDToggleDescShowExtraStruggle,
+KDToggleDescFlipPlayerAuto,
+KDToggleDescHotbarTooltips,
+KDToggleDescOScreenFilter,
+KDToggleDescDistractScreenFilter,
+KDToggleDescMinorSoundDesc,
+KDToggleDescShowDefensiveStats,"Shows defensive stats like evasion in the buff bar, even when collapsed"
+KDToggleDescStruggleScroll,Shows left and right buttons in the struggle UI when multiple restraints are present in the same slot
+
+
 
 KDToggleHypnoOverlay,Hypnosis Screen Wobble
 KDToggleHypnoSpiral,Hypnosis Spirals
@@ -77,17 +214,17 @@ KDToggleStackOutfitItems,Allow Stacking Similar Items
 KDToggleMMLabels,Show Minimap Labels
 KDToggleAutoLoot,Auto loot all from chests
 KDToggleNoOutfitPalette,Don't Use Outfit Palettes
-KDToggleTrainingBuff,Show training in buffs and stats
+KDToggleTrainingBuff,Show training in buff bar
 
 KDToggleApplyPaletteRestraint,Apply palettes to Restraints
 KDToggleApplyPaletteTransform,Apply palettes to transforms
 
-KDToggleInvLimit,(Test) Enforce Inventory Limits
+KDToggleInvLimit,Enforce Inventory Limits
 KDToggleIgnoreApplyCharPalette,Don't use character palette
 KDToggleAlwaysApplyCharPalette,Always use character palette
 KDToggleDefaultApplyCharPalette,Use character palette for default outfit
 
-KDToggleExtraBuffRow,Allow two rows of buffs when collapsed
+KDToggleExtraBuffRow,Show Two Rows of Buffs when Collapsed
 KDToggleBackgrounds,Show Background Art
 KDToggleOptRender,Experimental Rendering (unstable)
 KDToggleHeadpats,Enable Headpats
@@ -139,11 +276,11 @@ KDToggleLightmapFilter,Light Shader
 KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
-KDToggleHighResDisplacement,Hi-Res Distortion (Needs Restart)
-KDToggleMobileTextures,Low-Res Textures (Needs Restart)
+KDToggleHighResDisplacement,Hi-Res Distortion (Restart)
+KDToggleMobileTextures,Low-Res Textures (Restart)
 KDToggleModelMultisample,Portrait Supersampling
-KDTogglePreload,Preload Assets (4GB+ RAM) (Restart)
-KDToggleHiResModel,Hi-Res Model (no restart needed)
+KDTogglePreload,Preload Assets (Restart)
+KDToggleHiResModel,Hi-Res Model
 KDToggleGraphicsQuality,High Quality Animations
 KDToggleEnemyAnimations,Enemy Animations
 KDToggleLazyWalk,One-Click Move (when slowed)
@@ -177,7 +314,7 @@ KDToggleFlipPlayer,Flip Player Display
 KDToggleGreyscaleBlindness,Greyscale when Blind
 KDToggleFastFloaters,Faster Floater Fade
 KDToggleNoDmgFloaters,No Damage Floaters
-KDToggleDynamicArmor,Dynamic Armor (must hide armor)
+KDToggleDynamicArmor,Dynamic Armor
 KDToggleHideFloatingWeapon,Hide floating weapon display
 KDToggleAutoloot,Automatically Take All from Chests
 KDHelpless,Helpless!
@@ -34854,4 +34991,7 @@ KDButtplugCategory_ItemNipples,Nipples
 
 KDXtoysWebhookID,"Paste your Xtoys webhook ID here and the game will post messages|Supported actions: 'shock', 'vibestart', 'vibestop'"
 
+KDWeaponNoStackDesc,"'${BuffType}' effects of the same type do not stack."
 
+KDWeaponNoStack_Staff,Staff
+KDWeaponNoStack_Book,Book

@@ -4229,15 +4229,24 @@ let KDStruggleTypeShowDifficulty = [
 /**
  * @param item
  */
-function KDButtonTooltip(tooltip: string, width?: number, defaultAlign = "left", alpha: number = 0.92): HoverObject {
+function KDButtonTooltip(tooltip: string, width?: number, defaultAlign = "left", alpha: number = 0.92, wrap?: boolean): HoverObject {
     let hoverobject: HoverObject = {
-        type: "InventoryItem",
+        type: "Tooltip",
         name: tooltip,
         TitleTextColor: KDBaseWhite,
         TitleTextColorBack: KDBaseBlack,
 		Width: width,
 		align: defaultAlign,
 		alpha: alpha,
+		wrap: wrap,
     }
     return hoverobject
+}
+
+function KDToggleTooltip(toggle: string): HoverObject | undefined {
+	let key = "KDToggleDesc" + toggle;
+	if (!HasText(key)) return undefined;
+	let desc = TextGet(key);
+	if (!desc || desc == key) return undefined;
+	return KDButtonTooltip(desc, PIXIWidth * 0.25, "right", undefined, true);
 }
