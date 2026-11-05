@@ -2572,7 +2572,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown")) {
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonBuffLockdownTry")
+		KinkyDungeonSendActionMessage(10, TextGet("KDBuffName_LockdownTry")
 			.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 1);
 		data.escapeChance -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown") * 0.1;
 	}

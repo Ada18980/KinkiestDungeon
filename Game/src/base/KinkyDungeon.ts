@@ -1567,7 +1567,17 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
             Top: tooltipY, //- 25,
             Width: TooltipWidth,
             Height: TooltipHeight, //+ 20,
-            Color: KDBaseBlack,
+            Color: object.bg || KDBaseBlack,
+            LineWidth: 1,
+            zIndex: 700,
+            alpha: object.alpha || 0.8,
+        });
+        DrawRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltipb_" + object.name, {
+            Left: tooltipX,
+            Top: tooltipY, //- 25,
+            Width: TooltipWidth,
+            Height: TooltipHeight, //+ 20,
+            Color: object.border || KDBorderColor,
             LineWidth: 1,
             zIndex: 700,
             alpha: object.alpha || 0.8,
@@ -1614,12 +1624,22 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
 			TooltipHeight += height;
 			TooltipHeight -= 20;
         }
-        FillRectKD(kdcanvas, kdpixisprites, "HoverTooltip_" + object.name, {
+        FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + object.name, {
             Left: tooltipX,
             Top: tooltipY, //- 25,
             Width: TooltipWidth,
             Height: TooltipHeight, //+ 20,
-            Color: KDBaseBlack,
+            Color: object.bg || KDBaseBlack,
+            LineWidth: 1,
+            zIndex: 700,
+            alpha: object.alpha || 0.8,
+        });
+        DrawRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltipb_" + object.name, {
+            Left: tooltipX,
+            Top: tooltipY, //- 25,
+            Width: TooltipWidth,
+            Height: TooltipHeight, //+ 20,
+            Color: object.border || KDBorderColor,
             LineWidth: 1,
             zIndex: 700,
             alpha: object.alpha || 0.8,
@@ -3541,7 +3561,7 @@ function KinkyDungeonRun() {
 			KDCurrentKeyBindSet = "";
 			if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
 
-			if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) {
+			if ((KDIsFocusable(document.activeElement))) {
 				if (KinkyDungeonKeybindingCurrentKey)
 					KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
 				KinkyDungeonKeybindingCurrentKey = '';

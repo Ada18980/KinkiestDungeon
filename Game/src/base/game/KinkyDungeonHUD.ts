@@ -4229,7 +4229,9 @@ let KDStruggleTypeShowDifficulty = [
 /**
  * @param item
  */
-function KDButtonTooltip(tooltip: string, width?: number, defaultAlign = "left", alpha: number = 0.92, wrap?: boolean): HoverObject {
+function KDButtonTooltip(tooltip: string, width?: number, defaultAlign = "left", alpha: number = 0.92, wrap?: boolean,
+	border:string = KDBorderColor,
+	bg:string = KDTooltipColor): HoverObject {
     let hoverobject: HoverObject = {
         type: "Tooltip",
         name: tooltip,
@@ -4239,6 +4241,8 @@ function KDButtonTooltip(tooltip: string, width?: number, defaultAlign = "left",
 		align: defaultAlign,
 		alpha: alpha,
 		wrap: wrap,
+		bg: bg,
+		border: border,
     }
     return hoverobject
 }

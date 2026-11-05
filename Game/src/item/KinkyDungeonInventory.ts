@@ -1182,6 +1182,8 @@ interface HoverObject {
 	Width?: number,
 	alpha?: number,
 	align?: string,
+	bg?: string,
+	border?: string,
 	wrap?: boolean,
 }
 interface InventoryHoverObject extends HoverObject {

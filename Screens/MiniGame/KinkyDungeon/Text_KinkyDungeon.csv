@@ -123,26 +123,26 @@ KDToggleDescMusic,Plays background music.
 KDToggleDescAsyncRendering,Deprecated
 KDToggleDescBloom,Highlights light sources with a bloom effect.
 KDToggleDescTransparentUI,Hides the grey background to parts of the ingame UI.
-KDToggleDescTurnCounter,
-KDToggleDescStunFlash,
-KDToggleDescParticlesFX,
-KDToggleDescParticlesRestrain,
-KDToggleDescArousalHearts,
-KDToggleDescVibeHearts,
-KDToggleDescGagParticles,
-KDToggleDescShowNPCStatuses,
-KDToggleDescShowSpellRange,
-KDToggleDescFancyWalls,
-KDToggleDescFancyShadows,
-KDToggleDescLightmapFilter,
-KDToggleDescIntenseOrgasm,
-KDToggleDescVibeSounds,
-KDToggleDescFullscreen,
-KDToggleDescHighResDisplacement,
-KDToggleDescMobileTextures,
-KDToggleDescModelMultisample,
-KDToggleDescPreload,
-KDToggleDescHiResModel,
+KDToggleDescTurnCounter,Shows turns elapsed in the bottom right of the screen.
+KDToggleDescStunFlash,Flash the screen grey when player character is stunned.
+KDToggleDescParticlesFX,Draw particle effects on the game board.
+KDToggleDescParticlesRestrain,Draw particle effects on the character portrait when bound.
+KDToggleDescArousalHearts,Draw floating arousal hearts on the player character to indicate Distraction level.
+KDToggleDescVibeHearts,Draw small particles to indicate vibrators buzzing on the player character.
+KDToggleDescGagParticles,Draw particles to indicate gagged moans from the player character.
+KDToggleDescShowNPCStatuses,Shows status effects on NPCs such as Disarm or Silenced.
+KDToggleDescShowSpellRange,Shows the range of spells by highlighting a blue area.
+KDToggleDescFancyWalls,Blocks out the far side of walls that would be obscured from the field of view.
+KDToggleDescFancyShadows,Blurs the fog of war between tiles so it looks smoother.
+KDToggleDescLightmapFilter,Colors map tiles based on the color of light sources illuminating them.
+KDToggleDescIntenseOrgasm,Deprecated
+KDToggleDescVibeSounds,Plays sounds for vibrators the player character is wearing.
+KDToggleDescFullscreen,Makes the game fullscreen.
+KDToggleDescHighResDisplacement,Deprecated
+KDToggleDescMobileTextures,"Uses lower-resolution textures to save on VRAM. On web version, forces preloading of textures."
+KDToggleDescModelMultisample,"Pre-renders the player model to a higher resolution before scaling down, making the image smoother but requiring more memory."
+KDToggleDescPreload,"Preloads all of the game's assets on launch, using a significant amount of memory but mostly eliminating load times."
+KDToggleDescHiResModel,Deprecated
 KDToggleDescGraphicsQuality,
 KDToggleDescEnemyAnimations,
 KDToggleDescLazyWalk,
@@ -178,21 +178,21 @@ KDToggleDescFastFloaters,Makes damage floaters disappear more quickly.
 KDToggleDescNoDmgFloaters,Hides floating damage indicators when NPCs take damage.
 KDToggleDescDynamicArmor,Certain armor items in the character creator will no longer appear unless your character is wearing the appropriate armor ingame.
 KDToggleDescHideFloatingWeapon,"Hide the floating weapon graphic behind the player character for weapons that are not held in hand."
-KDToggleDescForceRGB,
-KDToggleDescAutoSprint,
-KDToggleDescSkipTutorial,
-KDToggleDescThighVibe,
-KDToggleDescModCompat,
-KDToggleDescFlashingWarning,
-KDToggleDescCenteredLog,
-KDToggleDescReverb,
-KDToggleDescEnemyShockwave,
-KDToggleDescShowExtraStruggle,
-KDToggleDescFlipPlayerAuto,
-KDToggleDescHotbarTooltips,
-KDToggleDescOScreenFilter,
-KDToggleDescDistractScreenFilter,
-KDToggleDescMinorSoundDesc,
+KDToggleDescForceRGB,Defaults to the RGB color picker when doing advanced coloring in the wardrobe.
+KDToggleDescAutoSprint,Automatically enables sprinting/hopping when the player character is slowed and currently in combat.
+KDToggleDescSkipTutorial,Skips the tutorial when you start a new game.
+KDToggleDescThighVibe,Shows a battery pack and thigh strap for egg-type vibrators.
+KDToggleDescModCompat,Edits mod scripts to help some older mods run.
+KDToggleDescFlashingWarning,Warning tiles from enemy attacks and spells will flash slowly.
+KDToggleDescCenteredLog,Centers the message log in the middle of the screen.
+KDToggleDescReverb,Adds a reverb effect to sounds based on the environment around the player.
+KDToggleDescEnemyShockwave,"Shows a particle effect when an NPC in the fog of war makes a sound, but is not identifiable."
+KDToggleDescShowExtraStruggle,Shows additional details when mousing over escape options in the struggle UI.
+KDToggleDescFlipPlayerAuto,Flips the player character portrait depending on the direction the player character moves.
+KDToggleDescHotbarTooltips,"Shows weapon, wearable, and spell information when mousing over the hotbar."
+KDToggleDescOScreenFilter,Displays a pink filter over the screen when the player character experiences orgasm.
+KDToggleDescDistractScreenFilter,Displays a pink filter over the screen when the character is distracted.
+KDToggleDescMinorSoundDesc,Draws text to indicate the nature of sounds heard in the fog of war.
 KDToggleDescShowDefensiveStats,"Shows defensive stats like evasion in the buff bar, even when collapsed"
 KDToggleDescStruggleScroll,Shows left and right buttons in the struggle UI when multiple restraints are present in the same slot
 

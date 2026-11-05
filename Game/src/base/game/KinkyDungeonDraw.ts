@@ -2546,7 +2546,7 @@ function KinkyDungeonDrawGame() {
 	if ((KinkyDungeonGameKey.keyPressed[9] && KinkyDungeonKeybindingCurrentKey != KinkyDungeonKeySkip[0]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
 
 		// @ts-ignore
-		if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) {
+		if (KDIsFocusable(document.activeElement)) {
 			KinkyDungeonGameKey.keyPressed[9] = false;
 		} else {
 			let cancelType = null;
@@ -3251,6 +3251,7 @@ function KDPointInBlockControlArea(X: number, Y: number, area: KDBlockControlAre
 }
 
 let KDBoxThreshold = 60;
+let KDTooltipColor = "rgb(25,29,36)"
 let KDButtonColor = "rgba(5, 5, 5, 0.5)";
 let KDButtonColorIntense = "rgba(5, 5, 5, 0.8)";
 let KDButtonColorLight = "rgba(45, 45, 45, 0.5)";
@@ -4818,12 +4819,13 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 						}
 					}
 				}
-				let floor = KDMapData.TilesSkin[RX + "," + RY] ?
-					(KDMapData.TilesSkin[RX + "," + RY].force ? KDMapData.TilesSkin[RX + "," + RY].skin : KinkyDungeonMapIndex[KDMapData.TilesSkin[RX + "," + RY].skin] || KDMapData.TilesSkin[RX + "," + RY].skin)
+				let loc = RX + "," + RY;
+				let floor = KDMapData.TilesSkin[loc] ?
+					(KDMapData.TilesSkin[loc].force ? KDMapData.TilesSkin[loc].skin : KinkyDungeonMapIndex[KDMapData.TilesSkin[loc].skin] || KDMapData.TilesSkin[loc].skin)
 					: drawFloor;
 				let vision = KinkyDungeonVisionGet(RX, RY);
-				let nR = KDMapData.TilesSkin[RX + "," + RY] ? noReplace : noReplace_skin[floor];
-				let code = KinkyDungeonTilesGet(RX + "," + RY)?.SkinCode || rows[RY][RX];
+				let nR = KDMapData.TilesSkin[loc] ? noReplace : noReplace_skin[floor];
+				let code = KinkyDungeonTilesGet(loc)?.SkinCode || rows[RY][RX];
 				let sprite = KinkyDungeonGetSprite(code, RX, RY, vision == 0, nR);
 				let sprite2 = KinkyDungeonGetSpriteOverlay(code, RX, RY, vision == 0, nR);
 				let sprite3 = KinkyDungeonGetSpriteOverlay2(code, RX, RY, vision == 0, nR);
@@ -4835,21 +4837,21 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 				if (KinkyDungeonForceRenderFloor != "") floor = KinkyDungeonForceRenderFloor;
 				let lightColor = (StandalonePatched && KDToggles.LightmapFilter) ? 0xfffafa : KDGetLightColor(RX, RY);
 
-				KDDraw(kdmapboard, kdpixisprites, RX + "," + RY, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
+				KDDraw(kdmapboard, kdpixisprites, loc, KinkyDungeonRootDirectory + "Floors/Floor_" + floor + "/" + sprite + ".png",
 					Math.round(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, Math.round(-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 					 KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -2,
 						tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
 					}, undefined, undefined, undefined, true);
 				if (sprite2)
-					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
+					KDDraw(kdmapboard, kdpixisprites, loc + "_o", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite2 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1.1,
 							tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
 						});
 
 				if (sprite3)
-					KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_o2", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite3 + ".png",
+					KDDraw(kdmapboard, kdpixisprites, loc + "_o2", KinkyDungeonRootDirectory + "FloorGeneric/" + sprite3 + ".png",
 						(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 							zIndex: -1,
 							tint: (StandalonePatched && KDToggles.LightmapFilter) ? undefined : lightColor,
@@ -4857,27 +4859,27 @@ function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 
 				if (rows[RY][RX] == "A") {
 					let color = "";
-					if (KinkyDungeonTilesGet(RX + "," + RY)) {
-						color = KDGoddessColor(KinkyDungeonTilesGet(RX + "," + RY).Name);
+					if (KinkyDungeonTilesGet(loc)) {
+						color = KDGoddessColor(KinkyDungeonTilesGet(loc).Name);
 					}
 					if (color)
-						KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_a", KinkyDungeonRootDirectory + "ShrineAura.png",
+						KDDraw(kdmapboard, kdpixisprites, loc + "_a", KinkyDungeonRootDirectory + "ShrineAura.png",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								tint: string2hex(color),
 							});
-					if (KinkyDungeonTilesGet(RX + "," + RY)?.Quest)
-						KDDraw(kdmapboard, kdpixisprites, RX + "," + RY + "_a2", KinkyDungeonRootDirectory + "ShrineAuraQuest.png",
+					if (KinkyDungeonTilesGet(loc)?.Quest)
+						KDDraw(kdmapboard, kdpixisprites, loc + "_a2", KinkyDungeonRootDirectory + "ShrineAuraQuest.png",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay, (-CamY_offset+R)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								tint: color ? string2hex(color) : 0xfffafa,
 							});
 				}
 				if (KinkyDungeonVisionGet(RX, RY) > 0
-					&& (KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "A" || KinkyDungeonTilesGet(RX + "," + RY) && rows[RY][RX] == "M")
+					&& (KinkyDungeonTilesGet(loc) && rows[RY][RX] == "A" || KinkyDungeonTilesGet(loc) && rows[RY][RX] == "M")
 					&& MouseIn(canvasOffsetX + (-CamX_offset + X)*KinkyDungeonGridSizeDisplay, 
 					canvasOffsetY + (-CamY_offset+R)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay)) {
-					tooltip = TextGet("KinkyDungeon" + KinkyDungeonTilesGet(RX + "," + RY).Type + "Tooltip").replace("SHRINETYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTilesGet(RX + "," + RY).Name));
+					tooltip = TextGet("KinkyDungeon" + KinkyDungeonTilesGet(loc).Type + "Tooltip").replace("SHRINETYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTilesGet(loc).Name));
 					tooltipX = RX;
 					tooltipY = RY;
 				}

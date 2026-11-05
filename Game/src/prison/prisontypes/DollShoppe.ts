@@ -484,7 +484,8 @@ KDPrisonTypes.DollShoppe = {
 						return "Uniform";
 					}
 
-					if (!KinkyDungeonFlags.get("transformCD") && !KinkyDungeonStatsChoice.get("NoDollTransform") && !KinkyDungeonFlags.get("Transformed")
+					if (!KinkyDungeonFlags.get("transformCD")
+						&& !KinkyDungeonStatsChoice.get("NoDollTransform") && !KinkyDungeonFlags.get("Transformed")
 						&& (KDCanBeDolled(player))) {
 						return "Transform";
 					}

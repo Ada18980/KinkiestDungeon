@@ -1142,7 +1142,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
 		effect = true;
-		KinkyDungeonSendTextMessage(playerEffect.power, TextGet("KinkyDungeonBuffIgniteDamage").KDReplaceOrAddDmg(dmg.string), KDBaseRed, 1);
+		KinkyDungeonSendTextMessage(playerEffect.power, TextGet("KDBuffName_IgniteDamage").KDReplaceOrAddDmg(dmg.string), KDBaseRed, 1);
 		return {sfx: "FireSpell", effect: effect};
 	},
 	"IceBolt": (target, damage, playerEffect, spell, _faction, bullet, entity) => {

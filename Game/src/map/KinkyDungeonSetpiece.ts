@@ -515,22 +515,26 @@ function KinkyDungeonGenerateSetpiece (
 			case "JungleLight": {
 				if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(cornerX, cornerY))) skip = true;
 				else {
-					KinkyDungeonMapSet(cornerX, cornerY, '2');
-					KinkyDungeonTilesSet((cornerX) + "," + (cornerY), {Light: 6, Skin: "LightRays"});
+					KinkyDungeonMapSet((cornerX),(cornerY), "5");
+					KinkyDungeonTilesSet((cornerX) + "," + (cornerY), {SkinCode: "2", Light: 6, FloorSkin: '2', Skin: "LightRays"});
 				}
 				break;
 			}
 			case "Fireflies": {
 				if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(cornerX, cornerY))) skip = true;
-				else
+				else {
+					KinkyDungeonMapSet((cornerX),(cornerY), "5");
 					KinkyDungeonTilesSet((cornerX) + "," + (cornerY), {Light: 2, Skin: "Fireflies"});
+				}
+					
 				break;
 			}
 			case "Magicflies": {
 				if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(cornerX, cornerY))) skip = true;
-				else
+				else {
+					KinkyDungeonMapSet((cornerX),(cornerY), "5");
 					KinkyDungeonTilesSet((cornerX) + "," + (cornerY), {Light: 2, Skin: "Magicflies"});
-				break;
+				} break;
 			}
 			case "Storage": {
 				let rad = radius - 2;

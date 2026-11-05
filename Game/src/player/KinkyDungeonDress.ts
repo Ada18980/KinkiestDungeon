@@ -876,6 +876,12 @@ function KinkyDungeonDressPlayer (
 				undefined, undefined);
 			ReUpdate = true;
 		}
+		if (!KDCurrentModels.get(Character)?.Poses?.Blush && KDModelFace[facestyle]) {
+			KDInventoryWear(Character, "Blush",
+				undefined, undefined, undefined,
+				undefined, undefined);
+			ReUpdate = true;
+		}
 		if (!KDCurrentModels.get(Character)?.Poses?.Cosplay && KDModelCosplay[cosplaystyle]) {
 			for (let cosplay of Object.values(KDModelCosplay[cosplaystyle])) {
 				KDInventoryWear(Character, cosplay.Item, undefined, undefined, undefined, 

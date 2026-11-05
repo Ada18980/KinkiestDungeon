@@ -2224,7 +2224,7 @@ function KinkyDungeonGetMovable() {
 }
 
 function KinkyDungeonListenKeyMove() {
-	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
+	if (KDIsFocusable(document.activeElement)) return true;
 
 	if (KinkyDungeonLastMoveTimer < performance.now() && (KinkyDungeonControlsEnabled() || KinkyDungeonInspect)
 		&& KinkyDungeonDrawState == "Game" && !KDModalArea) {
@@ -2325,12 +2325,12 @@ function KinkyDungeonGameKeyDown() {
 	let moveDirection = null;
 
 	if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey
-		&& document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
+		&& KDIsFocusable(document.activeElement)) {
 		// @ts-ignore
 		document.activeElement.blur();
 		KDEnter();
 	}
-	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
+	if (KDIsFocusable(document.activeElement)) return true;
 
 	if (KDCheckCustomKeypress()) return true;
 	KDShopBuyConfirm = false;
@@ -2579,7 +2579,7 @@ function KinkyDungeonGameKeyUp(lastPress: number): boolean {
 	//if (!KinkyDungeonControlsEnabled()) return;
 	let delta = CommonTime() - lastPress;
 
-	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
+	if (KDIsFocusable(document.activeElement)) return true;
 
 
 	// Holding for a minute = fail

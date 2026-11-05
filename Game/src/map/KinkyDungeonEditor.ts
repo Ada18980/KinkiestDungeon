@@ -1102,10 +1102,17 @@ let KDTE_TestAccessibility = true;
 let KDTE_confirmreset = false;
 let KDTE_confirmcommit = false;
 
+function KDIsFocusable(element) {
+	return element && 
+		(element.type == "text"
+			|| element.type == "textarea"
+			|| KDFocusableTextFields.includes(element.id)
+		);
+}
+
 function KDHandleTileEditor(noSwap?: boolean): void {
 
-	// @ts-ignore
-	if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) return;
+	if (KDIsFocusable(document.activeElement)) return;
 	if (!noSwap && KDTE_lastMouse && CommonTime() > KDTE_lastMouse + KDTEHoldDelay) return;
 
 	KDTE_confirmreset = false;
