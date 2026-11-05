@@ -1549,12 +1549,15 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
             DrawTextFitKD(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701);
             YY += (object.TitleTextSize ? (object.TitleTextSize + 4) : 16);
         }
-        YY = YY + 30
+        YY = YY + 20
         if (object.ItemMods) {
             object.ItemMods.forEach((mod) => {
-                let height = RetDrawTextFitKDgetHeight(mod.str, tooltipX + pad, tooltipY + YY, TooltipWidth - 2 * pad, mod.colorFG, mod.colorBG, (mod.TextSize ? mod.TextSize : 20), "left", 701, undefined, undefined, undefined, undefined, object.wrap);
+                let height = RetDrawTextFitKDgetHeight(mod.str, tooltipX + pad, 
+					tooltipY + YY, TooltipWidth - 2 * pad, mod.colorFG, 
+					mod.colorBG, (mod.TextSize ? mod.TextSize : 20), 
+					"left", 701, undefined, undefined, 
+					undefined, undefined, object.wrap, "top");
                 YY += (height + 10);
-				tooltipY -= height/2;
 				TooltipHeight += height;
 				TooltipHeight -= 20 + 10;
             })
@@ -1599,12 +1602,15 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
         if ((tooltipY + TooltipHeight + 10) > PIXIHeight) {
             tooltipY = PIXIHeight - TooltipHeight;
         }
-        let YY = 20;
+        let YY = 10;
         
         if (object.name) {
-            let height = DrawTextFitKDgetHeight(`${object.name}`, tooltipX + (TooltipWidth / 2), tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), "center", 701, undefined, undefined, undefined, undefined, object.wrap);
+            let height = DrawTextFitKDgetHeight(`${object.name}`, tooltipX + (TooltipWidth / 2), 
+			tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, 
+			object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), 
+			"center", 701, undefined, undefined, undefined,
+			 undefined, object.wrap, "top");
             YY += (height + 10);
-			tooltipY -= height/2;
 			TooltipHeight += height;
 			TooltipHeight -= 20;
         }
