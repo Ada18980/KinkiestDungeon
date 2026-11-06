@@ -106,21 +106,24 @@ function KinkyDungeonTickBuffs(entity: entity, delta: number, endFloor: boolean)
 				} else end = true;
 			} 
 			if (!end) {
-				if (buff.type == "restore_mp") KDChangeMana(buff.id, "buff", "tick", buff.power);
-				else if (buff.type == "restore_wp") KDChangeWill(buff.id, "buff", "tick", buff.power);
-				else if (buff.type == "restore_sp") KDChangeStamina(buff.id, "buff", "tick", buff.power);
-				else if (buff.type == "restore_ap") KDChangeDistraction(buff.id, "buff", "tick", buff.power, true);
-				else if (buff.type == "restore_dp") KDChangeDesire(buff.id, "buff", "tick", buff.power, true);
+				if (delta > 0) {
+					if (buff.type == "restore_mp") KDChangeMana(buff.id, "buff", "tick", buff.power);
+					else if (buff.type == "restore_wp") KDChangeWill(buff.id, "buff", "tick", buff.power);
+					else if (buff.type == "restore_sp") KDChangeStamina(buff.id, "buff", "tick", buff.power);
+					else if (buff.type == "restore_ap") KDChangeDistraction(buff.id, "buff", "tick", buff.power, true);
+					else if (buff.type == "restore_dp") KDChangeDesire(buff.id, "buff", "tick", buff.power, true);
 
-				else if (buff.type == "SpellCastConstant" && buff.spell && entity) {
-					KinkyDungeonCastSpell(entity.x, entity.y, KinkyDungeonFindSpell(buff.spell, true), undefined, undefined, undefined);
+					else if (buff.type == "SpellCastConstant" && buff.spell && entity) {
+						KinkyDungeonCastSpell(entity.x, entity.y, KinkyDungeonFindSpell(buff.spell, true), undefined, undefined, undefined);
+					}
+
 				}
-
+				
 				else if (buff.type == "Flag") {
 					KinkyDungeonSetFlag(buff.id, 1 + delta);
 				}
 				else if (KDCustomBuff[buff.type]) {
-					KDCustomBuff[buff.type](entity, buff);
+					KDCustomBuff[buff.type](entity, buff, delta);
 				}
 
 				if (buff.flag) {

@@ -689,11 +689,9 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 					KDSpritesToCull.push(Container.SpritesDrawn.get(sprite));
 				}
 			}
-			Container.SpritesDrawn.clear();
-			Container.SpriteList = oldSpriteList; // restore backup
-			
-			if (Container.loadTimeIndex > 1) {
-				Container.Mesh.visible = false;
+
+			if (Container.loadTimeIndex > 1 || created) {
+				
 				let spr = KDDraw(DrawCanvas, kdpixisprites, containerID + "--spr",
 					KinkyDungeonRootDirectory + "Placeholder.png", 
 					X + Zoom * 500 * (flip ? 1 : 0), Y, 
@@ -703,6 +701,14 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 				if (spr && flip) {
 					spr.scale.x = -1 * Zoom;
 				}
+			}
+			Container.SpritesDrawn.clear();
+			Container.SpriteList = oldSpriteList; // restore backup
+			
+			
+
+			if (Container.loadTimeIndex > 1) {
+				Container.Mesh.visible = false;
 			} else {
 				if (flip && Container.Mesh?.scale.x > 0) {
 					Container.Mesh.scale.x *= -1;

@@ -1451,21 +1451,24 @@ function KinkyDungeonDrawGame() {
 					&& !(KinkyDungeonShowInventory && !KinkyDungeonTargetingSpell) && KinkyDungeonIsPlayer()
 					&& KDMouseInPlayableArea()) {
 					if (KinkyDungeonInspect) {
-						KinkyDungeonSetTargetLocation(false);
+						if (!lastWasTouch)
+							KinkyDungeonSetTargetLocation(false);
 
 						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "TargetInspect.png",
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 100,
 							});
 					} else if (KDInteracting) {
-						KinkyDungeonSetTargetLocation(false);
+						if (!lastWasTouch)
+							KinkyDungeonSetTargetLocation(false);
 
 						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "UI/Interact.png",
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 100,
 							});
 					} else if (KinkyDungeonTargetingSpell) {
-						KinkyDungeonSetTargetLocation(false);
+						if (!lastWasTouch)
+							KinkyDungeonSetTargetLocation(false);
 
 						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "TargetSpell.png",
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
@@ -1578,7 +1581,8 @@ function KinkyDungeonDrawGame() {
 					} else if ((KinkyDungeonFastMove
 						&& !(!KinkyDungeonSuppressSprint && KinkyDungeonToggleAutoSprint && KDCanSprint())
 						&& (KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0))) {
-						KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
+						if (!lastWasTouch)
+							KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
 
 						KDPathGraphics.visible = true;
 						

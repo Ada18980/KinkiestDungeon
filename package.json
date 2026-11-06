@@ -4,7 +4,7 @@
     "description": "This is the official git repo for Kinky Dungeon.",
     "main": "index.html",
     "scripts": {
-        "build": "tsc && npm run pack",
+        "build": "npm run pack && tsc",
         "compile": "tsc",
         "buildCont": "tsc -b --watch",
         "buildContWSL": "tsc -b --watch --watchDirectory dynamicprioritypolling --watchFile dynamicPriorityPolling",

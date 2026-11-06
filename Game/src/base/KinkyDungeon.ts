@@ -7030,6 +7030,12 @@ let HoldEndPosY = 0;
 let HoldMoved = false;
 let HoldMoveThresh = 140;
 
+
+	
+window.addEventListener('mousemove', function(event) {
+	lastWasTouch = false;
+});
+
 window.addEventListener('click', function(event) {
 	MouseMove(event, true);
 	if ((!CommonIsMobile || !MouseClicked) && !mouseHoldTaken) {
@@ -7054,10 +7060,16 @@ window.addEventListener('mousedown', function(event) {
 		HoldStartPosX = Math.round((event.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
 		HoldStartPosY = Math.round((event.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
 	}
+	
+	dragStartX = MouseX;
+	dragStartY = MouseY;
+	lastWasTouch = false;
 
 	if (!CommonIsMobile)
 		MouseClicked = true;
 });
+let dragStartX = -1;
+let dragStartY = -1;
 window.addEventListener('touchstart', function(event) {
 	MouseClicked = true;
 	HoldMoved = false;
@@ -7072,12 +7084,16 @@ window.addEventListener('touchstart', function(event) {
 		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
 		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
 	}
+	dragStartX = MouseX;
+	dragStartY = MouseY;
 	//CommonClick(event);
 	CommonTouchList = event.touches;
 	mouseDown = true;
 	MouseClicked = false;
 	//}
 });
+
+let lastWasTouch = true;
 
 window.addEventListener('touchmove', function(event) {
 	let touch = event.touches[0];
@@ -7103,7 +7119,9 @@ window.addEventListener('touchmove', function(event) {
 		}
 	}
 
-	if ((startedInPlayableArea && !KDMouseInPlayableArea() && !KinkyDungeonTargetingSpell) || (!startedInPlayableArea && KDMouseInPlayableArea())) {
+	if ((startedInPlayableArea && !KDMouseInPlayableArea() && !KinkyDungeonTargetingSpell)
+		|| (!startedInPlayableArea && KDMouseInPlayableArea())
+		|| (KDistEuclidean(MouseX - dragStartX, MouseY - dragStartY) > PIXIHeight * 0.14)) {
 		MouseClicked = true; // To prevent KDClick on end
 	}
 });
@@ -7123,8 +7141,10 @@ window.addEventListener('touchend', function(event: TouchEvent) {
 
 	if (mouseDown && !MouseClicked) {
 		if (!mouseHoldTaken) {
-			if (!DisableButtonsOneFrame)
+			if (!DisableButtonsOneFrame) {
 				KDClick(undefined);
+				lastWasTouch = true;
+			}
 		}
 		MouseClicked = true;
 	} else {
@@ -7153,6 +7173,11 @@ window.addEventListener('touchend', function(event: TouchEvent) {
 	}
 
 	mouseDown = false;
+	lastWasTouch = true;
+
+	
+	dragStartX = -1;
+	dragStartY = -1;
 
 });
 
@@ -7189,6 +7214,10 @@ window.addEventListener('mouseup', function(event) {
 		HoldEndPosX = Math.round((event.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
 		HoldEndPosY = Math.round((event.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
 	}
+
+	
+	dragStartX = -1;
+	dragStartY = -1;
 
 	LastHoldTime = CommonTime() - HoldStartTime;
 });

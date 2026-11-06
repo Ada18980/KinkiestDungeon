@@ -2376,7 +2376,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (_miscast) return "Miscast";
 			
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name, KDGetGenericDialogueParams(_entity, en)), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-			KinkyDungeonLaunchAttack(en, 1);
+			KinkyDungeonLaunchAttack(en);
 			return "Cast";
 		} else return "Fail";
 	},
@@ -2387,7 +2387,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (_miscast) return "Miscast";
 			
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name, KDGetGenericDialogueParams(_entity, en)), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-			KinkyDungeonLaunchAttack(en, 1);
+			KinkyDungeonLaunchAttack(en);
 			return "Cast";
 		} else {
 			if (_miscast) return "Miscast";

@@ -2083,7 +2083,7 @@ function KDStartSpellcast(tx: number, ty: number, SpellToCast: spell, enemy: any
 }
 
 // Click function for the game portion
-function KinkyDungeonClickGame(event: MouseEvent, _Level?: number) {
+function KinkyDungeonClickGame(event: MouseEvent, _Level?: number, touch?: boolean) {
 	let _CharacterRefresh = CharacterRefresh;
 	let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
 	CharacterRefresh = () => {KDRefresh = true;};
@@ -2160,6 +2160,7 @@ function KinkyDungeonClickGame(event: MouseEvent, _Level?: number) {
 				KDInspectCamera.y = KinkyDungeonTargetY;
 				KDInspectCamera.x = Math.max(-KinkyDungeonGridWidthDisplay, Math.min(KDInspectCamera.x, KDMapData.GridWidth));
 				KDInspectCamera.y = Math.max(-KinkyDungeonGridHeightDisplay, Math.min(KDInspectCamera.y, KDMapData.GridHeight));
+				
 				KinkyDungeonLastMoveTimer = performance.now() + KinkyDungeonLastMoveTimerCooldown/2;
 				KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 				KinkyDungeonUpdateLightGrid = true; // Rerender since cam moved

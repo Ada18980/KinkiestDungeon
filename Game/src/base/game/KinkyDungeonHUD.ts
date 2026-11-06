@@ -261,6 +261,11 @@ let KDConfirmDeleteSave = false;
 let KDConfirmUpload = false;
 
 
+function KDDoSetTargetLoc() {
+	if (KinkyDungeonIsPlayer() && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height))
+		KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
+}
+
 function KDHandleGame() {
 	if (KinkyDungeonShowInventory && (!KinkyDungeonTargetingSpell || MouseIn(0, 0, 500, PIXIHeight))) {
 		// Done, converted to input
@@ -273,8 +278,7 @@ function KDHandleGame() {
 		}
 	}
 
-	if (KinkyDungeonIsPlayer() && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height))
-		KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
+	KDDoSetTargetLoc();
 
 
 
