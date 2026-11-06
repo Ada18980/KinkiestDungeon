@@ -1103,6 +1103,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	StartMods: PoseMod[],
 	ContainerContainer: ContainerInfo, refreshfilters: boolean, flip: boolean, EndMods: PoseMod[]) : string {
 
+
+	let cid = KDGetCharacterID(MC.Character);
 	let load = false;
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
@@ -1813,14 +1815,14 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let rot = transform.rot;
 
 
-				let fhash = (m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "");
+				let fhash = (m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name], cid) : "") : "");
 				let fh = containerID + fhash;
 
 				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
 					((KDAdjustmentFilterCache.get(fh)) || [KDGetFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
 				if (filter && !KDAdjustmentFilterCache.get(fh)) {
-					KDAdjustmentFilterCache.set(containerID + FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
+					KDAdjustmentFilterCache.set(containerID + FilterHash(m.Filters[l.InheritColor || l.Name], cid), filter);
 				}
 
 				let extrafilter: PIXIFilter[] = [];
@@ -1828,17 +1830,17 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				// Add extrafilters
 				if (ExtraFilters[origlayer]) {
 					for (let ef of ExtraFilters[origlayer]) {
-						let efh = containerID + FilterHash(ef)
+						let efh = containerID + FilterHash(ef, cid)
 						if (refreshfilters) {
 							//KDFilterCacheToDestroy.push(...KDAdjustmentFilterCache.get(containerID + FilterHash(ef)));
-							KDAdjustmentFilterCache.delete(containerID + FilterHash(ef));
+							KDAdjustmentFilterCache.delete(containerID + FilterHash(ef, cid));
 						}
 						f = KDAdjustmentFilterCache.get(efh) ? null : KDGetFilter(ef);
 						if (f)
 							f.multisample = 0;
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
-							KDAdjustmentFilterCache.set(containerID + FilterHash(ef), efilter);
+							KDAdjustmentFilterCache.set(containerID + FilterHash(ef, cid), efilter);
 						}
 						extrafilter.push(...efilter);
 					}
@@ -2174,9 +2176,16 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let f = submesh.container.filters[i];
 				if (!f) break;
 				let sprite: PIXISprite = (f as any).maskSprite;
-				if (sprite && KDSpriteAlive(sprite)) {
-						if (!submesh.container.getChildByName(sprite.name))
-							submesh.container.addChild(sprite);
+				if (sprite) {
+						if (KDSpriteAlive(sprite)) {
+							if (!submesh.container.getChildByName(sprite.name))
+								submesh.container.addChild(sprite);
+						} else {
+							submesh.container.filters.splice(i, 1);
+							KDFilterCacheToDestroy.push(f);
+							i--;
+						}
+						
 				}
 			}
 
@@ -2185,9 +2194,9 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	return load ? "Load" : (modified ? "Mod" : "");
 }
 
-function FilterHash(filter) {
+function FilterHash(filter, id = -1) {
 	if (!filter) return "";
-	let str = "";
+	let str = id + "-";
 	for (let f of Object.values(filter)) str = str + "_" + Math.round((f as number) * 1000);
 	return str;
 }
@@ -3384,8 +3393,8 @@ function KDClearContainer(Container: ContainerInfo) {
 function KDSetFilterSprite(info: {hash: string, filter: PIXIFilter}, sprite: PIXISprite) {
 	if (!kdFilterSprites.get(sprite)) {
 		kdFilterSprites.set(sprite, []);
-		kdFilterSprites.get(sprite).push(info);
 	}
+	kdFilterSprites.get(sprite).push(info);
 	/*if (sprite.texture) {
 		if (!kdFilterSprites.get(sprite.texture)) {
 			kdFilterSprites.set(sprite.texture, []);
