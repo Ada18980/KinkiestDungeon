@@ -7120,8 +7120,11 @@ window.addEventListener('touchmove', function(event) {
 	}
 
 	if ((startedInPlayableArea && !KDMouseInPlayableArea() && !KinkyDungeonTargetingSpell)
-		|| (!startedInPlayableArea && KDMouseInPlayableArea())
-		|| (KDistEuclidean(MouseX - dragStartX, MouseY - dragStartY) > PIXIHeight * 0.14)) {
+		|| (!startedInPlayableArea && KDMouseInPlayableArea())) {
+		MouseClicked = true; // To prevent KDClick on end
+	}
+	if ((KDistEuclidean(MouseX - dragStartX, MouseY - dragStartY) > PIXIHeight * 0.14)) {
+		KDDoSetTargetLoc();
 		MouseClicked = true; // To prevent KDClick on end
 	}
 });
