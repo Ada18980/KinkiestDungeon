@@ -1860,7 +1860,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						}
 						//@ts-ignore
 						KDTex(dsprite.path, false); // try to preload it
-						if (!KDAdjustmentFilterCache.get(efh)) {
+						if (!KDAdjustmentFilterCache.get(efh) || KDDropFilterIfStale(efh, dsprite)) {
 							f = new EraseFilter(
 								dsprite,
 							);
@@ -1902,7 +1902,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								}
 								//@ts-ignore
 								KDTex(dsprite.path, false); // try to preload it
-								if (!KDAdjustmentFilterCache.get(efh)) {
+								if (!KDAdjustmentFilterCache.get(efh) || KDDropFilterIfStale(efh, dsprite)) {
 									f = new DisplaceFilter(
 										dsprite,
 										ef.amount,
@@ -1944,7 +1944,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						
 						//@ts-ignore
 						KDTex(dsprite.path, false); // try to preload it
-						if (!KDAdjustmentFilterCache.get(efh)) {
+						if (!KDAdjustmentFilterCache.get(efh) || KDDropFilterIfStale(efh, dsprite)) {
 							f = new DisplaceFilter(
 								dsprite,
 								ef.amount,
@@ -2122,7 +2122,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 				//@ts-ignore
 				KDTex(dsprite.path, false); // try to preload it
-				if (!KDAdjustmentFilterCache.get(efh)) {
+				if (!KDAdjustmentFilterCache.get(efh) || KDDropFilterIfStale(efh, dsprite)) {
 					f = new EraseFilter(
 						dsprite,
 					);
@@ -2150,7 +2150,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 				//@ts-ignore
 				KDTex(dsprite.path, false); // try to preload it
-				if (!KDAdjustmentFilterCache.get(efh)) {
+				if (!KDAdjustmentFilterCache.get(efh) || KDDropFilterIfStale(efh, dsprite)) {
 					f = new DisplaceFilter(
 						dsprite,
 						ef.amount,
@@ -3393,8 +3393,8 @@ function KDClearContainer(Container: ContainerInfo) {
 function KDSetFilterSprite(info: {hash: string, filter: PIXIFilter}, sprite: PIXISprite) {
 	if (!kdFilterSprites.get(sprite)) {
 		kdFilterSprites.set(sprite, []);
+		kdFilterSprites.get(sprite).push(info);
 	}
-	kdFilterSprites.get(sprite).push(info);
 	/*if (sprite.texture) {
 		if (!kdFilterSprites.get(sprite.texture)) {
 			kdFilterSprites.set(sprite.texture, []);
@@ -3499,4 +3499,24 @@ function KDDoFilterRefresh() {
 		}
 		KDFilterDrawn = new Map();
 	}
+}
+
+function KDDropFilterIfStale(efh: string, sprite: PIXISprite): boolean {
+	let cachedFilter = KDAdjustmentFilterCache.get(efh);
+	if (!cachedFilter) return;
+	let stale = false;
+	for (let f of cachedFilter) {
+		let mask: PIXISprite = (f as any).maskSprite;
+		if (mask != sprite || (mask && !KDSpriteAlive(mask))) {
+			stale = true;
+		}
+	}
+	if (stale) {
+		for (let subfilter of cachedFilter) {
+			KDFilterCacheToDestroy.push(subfilter);
+		}
+		KDAdjustmentFilterCache.delete(efh);
+		return true;
+	}
+	return false;
 }
