@@ -4138,7 +4138,7 @@ function KDDrawScrollableItemList(x: number, y: number, size: number, width: num
 			if (!icon && sg.blocked) icon = "Blocked";
 
 			if (icon) {
-				KDDraw(container, kdpixisprites, "icon" + sg.name + icon, KinkyDungeonRootDirectory + `Locks/${icon}.png`,
+				KDDraw(container, kdpixisprites, "icon" + sg.name + icon + listItem.id, KinkyDungeonRootDirectory + `Locks/${icon}.png`,
 					list.x + visualIndex * size, list.y, size/2 - 10, 
 					size/2 - 10, undefined, {zIndex: zIndex + 1});
 			}
