@@ -83,26 +83,6 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 ( 本游戏中没有蜘蛛 )
 # - 
 # :: Intro4BC
-# :: KDToggleDescTurnCounter
-# :: KDToggleDescStunFlash
-# :: KDToggleDescParticlesFX
-# :: KDToggleDescParticlesRestrain
-# :: KDToggleDescArousalHearts
-# :: KDToggleDescVibeHearts
-# :: KDToggleDescGagParticles
-# :: KDToggleDescShowNPCStatuses
-# :: KDToggleDescShowSpellRange
-# :: KDToggleDescFancyWalls
-# :: KDToggleDescFancyShadows
-# :: KDToggleDescLightmapFilter
-# :: KDToggleDescIntenseOrgasm
-# :: KDToggleDescVibeSounds
-# :: KDToggleDescFullscreen
-# :: KDToggleDescHighResDisplacement
-# :: KDToggleDescMobileTextures
-# :: KDToggleDescModelMultisample
-# :: KDToggleDescPreload
-# :: KDToggleDescHiResModel
 # :: KDToggleDescGraphicsQuality
 # :: KDToggleDescEnemyAnimations
 # :: KDToggleDescLazyWalk
@@ -126,21 +106,6 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDToggleDescRetroAnim
 # :: KDToggleDescFlipStatusBars
 # :: KDToggleDescHelper
-# :: KDToggleDescForceRGB
-# :: KDToggleDescAutoSprint
-# :: KDToggleDescSkipTutorial
-# :: KDToggleDescThighVibe
-# :: KDToggleDescModCompat
-# :: KDToggleDescFlashingWarning
-# :: KDToggleDescCenteredLog
-# :: KDToggleDescReverb
-# :: KDToggleDescEnemyShockwave
-# :: KDToggleDescShowExtraStruggle
-# :: KDToggleDescFlipPlayerAuto
-# :: KDToggleDescHotbarTooltips
-# :: KDToggleDescOScreenFilter
-# :: KDToggleDescDistractScreenFilter
-# :: KDToggleDescMinorSoundDesc
 # :: KinkyDungeonStatT
 # :: KinkyDungeonStatDescT
 # :: KDBuffName_InnerPowerArcaneStore
@@ -405,6 +370,9 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDToggleDescShowNPCSprites
 # :: KDToggleDescAllowSusMods
 # :: KDToggleDescAsyncRendering
+# :: KDToggleDescIntenseOrgasm
+# :: KDToggleDescHighResDisplacement
+# :: KDToggleDescHiResModel
 # - Allows you to headpat the player character ingame
 # - Tries to fit more into tooltips before splitting into pages
 # - Cycles through tooltip pages automatically. Otherwise, enter Inspect mode and click on the target.
@@ -436,6 +404,23 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # - Plays background music.
 # - Highlights light sources with a bloom effect.
 # - Hides the grey background to parts of the ingame UI.
+# - Shows turns elapsed in the bottom right of the screen.
+# - Flash the screen grey when player character is stunned.
+# - Draw particle effects on the game board.
+# - Draw particle effects on the character portrait when bound.
+# - Draw floating arousal hearts on the player character to indicate Distraction level.
+# - Draw small particles to indicate vibrators buzzing on the player character.
+# - Draw particles to indicate gagged moans from the player character.
+# - Shows status effects on NPCs such as Disarm or Silenced.
+# - Shows the range of spells by highlighting a blue area.
+# - Blocks out the far side of walls that would be obscured from the field of view.
+# - Blurs the fog of war between tiles so it looks smoother.
+# - Colors map tiles based on the color of light sources illuminating them.
+# - Plays sounds for vibrators the player character is wearing.
+# - Makes the game fullscreen.
+# - Uses lower-resolution textures to save on VRAM. On web version, forces preloading of textures.
+# - Pre-renders the player model to a higher resolution before scaling down, making the image smoother but requiring more memory.
+# - Preloads all of the game's assets on launch, using a significant amount of memory but mostly eliminating load times.
 # - Show nipples on characters
 # - Nipple toys appear on top of bras, rather than below.
 # - Hides nipple clamps and toys that aren't piercings.
@@ -448,6 +433,21 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # - Hides floating damage indicators when NPCs take damage.
 # - Certain armor items in the character creator will no longer appear unless your character is wearing the appropriate armor ingame.
 # - Hide the floating weapon graphic behind the player character for weapons that are not held in hand.
+# - Defaults to the RGB color picker when doing advanced coloring in the wardrobe.
+# - Automatically enables sprinting/hopping when the player character is slowed and currently in combat.
+# - Skips the tutorial when you start a new game.
+# - Shows a battery pack and thigh strap for egg-type vibrators.
+# - Edits mod scripts to help some older mods run.
+# - Warning tiles from enemy attacks and spells will flash slowly.
+# - Centers the message log in the middle of the screen.
+# - Adds a reverb effect to sounds based on the environment around the player.
+# - Shows a particle effect when an NPC in the fog of war makes a sound, but is not identifiable.
+# - Shows additional details when mousing over escape options in the struggle UI.
+# - Flips the player character portrait depending on the direction the player character moves.
+# - Shows weapon, wearable, and spell information when mousing over the hotbar.
+# - Displays a pink filter over the screen when the player character experiences orgasm.
+# - Displays a pink filter over the screen when the character is distracted.
+# - Draws text to indicate the nature of sounds heard in the fog of war.
 # - Shows defensive stats like evasion in the buff bar, even when collapsed
 # - Shows left and right buttons in the struggle UI when multiple restraints are present in the same slot
 
