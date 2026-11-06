@@ -143,29 +143,29 @@ KDToggleDescMobileTextures,"Uses lower-resolution textures to save on VRAM. On w
 KDToggleDescModelMultisample,"Pre-renders the player model to a higher resolution before scaling down, making the image smoother but requiring more memory."
 KDToggleDescPreload,"Preloads all of the game's assets on launch, using a significant amount of memory but mostly eliminating load times."
 KDToggleDescHiResModel,Deprecated
-KDToggleDescGraphicsQuality,
-KDToggleDescEnemyAnimations,
-KDToggleDescLazyWalk,
-KDToggleDescShiftLatch,
-KDToggleDescCrotchRopeOption,
-KDToggleDescChastityOption,
-KDToggleDescChastityOption2,
-KDToggleDescChastityBraOption,
-KDToggleDescSimpleColorPicker,
-KDToggleDescCenter,
-KDToggleDescBuffSide,
-KDToggleDescShowPath,
-KDToggleDescShowFacing,
-KDToggleDescShowSameCatSpells,
-KDToggleDescPlayerAura,
-KDToggleDescEnemyAura,
-KDToggleDescSoundNotification,
-KDToggleDescOutlineAura,
-KDToggleDescNearestNeighbor,
-KDToggleDescAutoCrouchOnTrip,
-KDToggleDescRetroAnim,
-KDToggleDescFlipStatusBars,
-KDToggleDescHelper,
+KDToggleDescGraphicsQuality,Deprecated
+KDToggleDescEnemyAnimations,"Displays subtle animations for NPCs on the game board such as breathing, floating, etc."
+KDToggleDescLazyWalk,"When slowed, automatically waits until you are able to move again before you can act. Makes the game more difficult, but requires less clicking."
+KDToggleDescShiftLatch,"Normally, the shift key triggers when pressed instead of released like other keys. With this option enabled, it will also trigger when released if holding for longer than 250ms. Binding an action to the shift key will allow it to be pressed twice with the same keypress. The intended and default behavior of this is that you only need to hold shift to sprint instead of tapping it to turn sprinting on and then tapping it again to turn off."
+KDToggleDescCrotchRopeOption,Crotch ropes are rendered under panties instead of over them.
+KDToggleDescChastityOption,Renders chastity belts over panties instead of under.
+KDToggleDescChastityOption2,Renders chastity belts over harnesses instead of under. Takes precedence over 'Chastity over Panties'
+KDToggleDescChastityBraOption,Renders chastity bras over bras instead of under.
+KDToggleDescSimpleColorPicker,Use the color wheel instead of sliders for coloring layers in the wardrobe.
+KDToggleDescCenter,Centers the player character on the screen instead of offset to the side.
+KDToggleDescBuffSide,Renders the buff bar on the side next to the player portrait instead of above the hotbar.
+KDToggleDescShowPath,Shows the path the player will take when Auto Path is enabled.
+KDToggleDescShowFacing,Shows an arrow to indicate the 'facing' of the player character. Relevant for some perks such as inertial movement or directional vision.
+KDToggleDescShowSameCatSpells,Makes the 'Learnable' filter in the spells menu also show spells and abilities that you can unlock the prerequisite of.
+KDToggleDescPlayerAura,Show visual indicators of buffs on the player character's map icon.
+KDToggleDescEnemyAura,Show visual indicators of buffs on NPCs.
+KDToggleDescSoundNotification,Play a sound effect when your character hears sounds that they cannot see.
+KDToggleDescOutlineAura,Use an outline instead of colored circles to represent buffs on NPCs.
+KDToggleDescNearestNeighbor,Deprecated
+KDToggleDescAutoCrouchOnTrip,Deprecated
+KDToggleDescRetroAnim,Makes enemy animations intentionally 'choppy' instead of smooth.
+KDToggleDescFlipStatusBars,"Flips the fill direction of the status bars (WP, DP, etc) on the main UI"
+KDToggleDescHelper,"If the cursor is between a wall tile and an open tile, preferentially targets the open tile, except when targeting spells."
 KDToggleDescNipples,"Show nipples on characters"
 KDToggleDescNippleToysOption,"Nipple toys appear on top of bras, rather than below."
 KDToggleDescNippleToysHide,"Hides nipple clamps and toys that aren't piercings."
