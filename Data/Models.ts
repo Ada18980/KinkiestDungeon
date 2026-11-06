@@ -2174,7 +2174,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let f = submesh.container.filters[i];
 				if (!f) break;
 				let sprite: PIXISprite = (f as any).maskSprite;
-				if (sprite && !sprite.destroyed) {
+				if (sprite && KDSpriteAlive(sprite)) {
 						if (!submesh.container.getChildByName(sprite.name))
 							submesh.container.addChild(sprite);
 				}
