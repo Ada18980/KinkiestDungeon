@@ -76,6 +76,11 @@ Must do
 - Proper stripping
 - species perks
 
+5.5.11
+- Fixed some crash that occurred when swapping characters repeatedly in collection
+- Fixed various minor bugs
+- Puppetmasters now stay globally pissed off for 2 floors after dealing 50 damage, leading to the doll path in shoppe
+
 5.5.10
 - Some under the hood changes to sound handling. All SFX is now preloaded to memory (about 17mb)
 - Fixed armor not having remove option in Inventory menu
