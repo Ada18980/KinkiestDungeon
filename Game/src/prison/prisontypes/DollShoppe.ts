@@ -1061,7 +1061,7 @@ function KDGetLabel(entity: entity) {
 }
 
 function KDCanBeDolled(player: entity) {
-	return KinkyDungeonFlags.get("annoy_puppet")
+	return !!KinkyDungeonFlags.get("annoy_puppet")
 		|| KDFactionRelation("Player", "Dressmaker") <= KDREPHOSTILE 
 		|| KDEntityBuffedStat(player, "Hypno_Doll") > 10;
 }
