@@ -847,7 +847,9 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 				zoomed = true;
 				NPCTooltipZoomIn = true;
 
-				if (NPCTooltipZoomCurrent == NPCTooltipZoomRatio) {
+				if (!KDNPCTooltipZoomReady()) {
+					// nothing!
+				} else if (NPCTooltipZoomCurrent == NPCTooltipZoomRatio) {
 					NPCTooltipZoomX = zoomX;
 					NPCTooltipZoomY = zoomY;
 				} else {
@@ -887,7 +889,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 		if (NPCTooltipZoomIn) {
 			NPCTooltipZoomIn = false;
-		} else {
+		} else if (KDNPCTooltipZoomOutReady()) {
 			NPCTooltipZoomCurrent = Math.max(1, NPCTooltipZoomCurrent - 1.4 * KDDrawDelta*0.001);
 			if (NPCTooltipZoomX > 0) NPCTooltipZoomX = Math.max(0, NPCTooltipZoomX - 1.4 * KDDrawDelta*0.001);
 			else if (NPCTooltipZoomX < 0) NPCTooltipZoomX = Math.min(0, NPCTooltipZoomX + 1.4 * KDDrawDelta*0.001);

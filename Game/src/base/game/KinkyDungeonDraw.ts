@@ -1747,7 +1747,7 @@ function KinkyDungeonDrawGame() {
 				let cursorY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + KinkyDungeonCamY;
 				if (NPCTooltipZoomIn) {
 					NPCTooltipZoomIn = false;
-				} else {
+				} else if (KDNPCTooltipZoomOutReady()) {
 					NPCTooltipZoomCurrent = Math.max(1, NPCTooltipZoomCurrent - 1.4 * KDDrawDelta*0.001);
 					if (NPCTooltipZoomX > 0) NPCTooltipZoomX = Math.max(0, NPCTooltipZoomX - 1.4 * KDDrawDelta*0.001);
 					else if (NPCTooltipZoomX < 0) NPCTooltipZoomX = Math.min(0, NPCTooltipZoomX + 1.4 * KDDrawDelta*0.001);
@@ -6114,7 +6114,9 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 				zoomed = true;
 				NPCTooltipZoomIn = true;
 
-				if (NPCTooltipZoomCurrent == NPCTooltipZoomRatio) {
+				if (!KDNPCTooltipZoomReady()) {
+					// nothing!
+				} else if (NPCTooltipZoomCurrent == NPCTooltipZoomRatio) {
 					NPCTooltipZoomX = zoomX;
 					NPCTooltipZoomY = zoomY;
 				} else {
@@ -6162,6 +6164,23 @@ let NPCTooltipZoomX = 0;
 let NPCTooltipZoomY = 0;
 
 let NPCTooltipZoomIn = false;
+
+let NPCTooltipZoomDelay = 200; //ms
+let NPCTooltipZoomOutDelay = 100; //ms
+let NPCTooltipZoomHoverStart = 0;
+let NPCTooltipZoomHoverLast = 0;
+
+function KDNPCTooltipZoomReady(): boolean {
+	let time = CommonTime();
+	if (time - NPCTooltipZoomHoverLast > Math.max(100, KDDrawDelta * 2)) NPCTooltipZoomHoverStart = time;
+	NPCTooltipZoomHoverLast = time;
+	return NPCTooltipZoomCurrent > 1
+		|| time - NPCTooltipZoomHoverStart >= NPCTooltipZoomDelay;
+}
+
+function KDNPCTooltipZoomOutReady(): boolean {
+	return CommonTime() - NPCTooltipZoomHoverLast >= NPCTooltipZoomOutDelay;
+}
 
 
 /**
