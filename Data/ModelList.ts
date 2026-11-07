@@ -1926,6 +1926,7 @@ AddModel({
 		{ Name: "Chest", Layer: "BraChest", Pri: 50,
 			Invariant: true,
 			InheritColor: "Bra",
+			Sprite: "Bra",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			HideWhenOverridden: true,
 			EraseAmount: 100,
