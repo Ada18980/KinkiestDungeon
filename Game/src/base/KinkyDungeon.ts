@@ -1598,7 +1598,7 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
 
 		// Centered tooltips sit above the button, or below it if there is no room above.
 		let aboveButton = object.align == "center" && KDCurrentHoverBox.Top >= 60;
-		let tooltipBottom = KDCurrentHoverBox.Top - 5;
+		let tooltipBottom = KDCurrentHoverBox.Top - 2;
 
         let tooltipX = KDCurrentHoverBox.Left + KDCurrentHoverBox.Width;
 		if (object.align == "center") {

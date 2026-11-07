@@ -91,7 +91,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				}
 			}
 			let hasRestraints = KDNPCRestraintBindingData[sgroup.id]?.length > 0;
-			if ((!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk)) &&
+			let hovered = (!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk)) &&
 				(!sgroup.noPerk || !KinkyDungeonStatsChoice.get(sgroup.noPerk)) && DrawButtonKDEx(
 				"npc_rest_butsg_"+ sgroup.id,
 				() => {
@@ -120,8 +120,10 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				hasRestraints ? KDButtonColor : KDBaseRed, undefined, undefined, {
 					scaleImage: true,
 					alpha: hasRestraints ? KDBaseButtonAlpha : 0.25
-				}
-			) || KDNPCBindingSelectedSlot?.id == sgroup.id) tooltip = sgroup.id;
+				}, KDButtonTooltip(TextGet("KDBindNPCSlot_" + sgroup.id), undefined, "center")
+			);
+			// The row label names the selected slot; hovered slots get the tooltip instead
+			if (!hovered && KDNPCBindingSelectedSlot?.id == sgroup.id) tooltip = sgroup.id;
 
 
 			if (II++ == 0) {
