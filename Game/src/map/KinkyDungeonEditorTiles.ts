@@ -646,14 +646,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": [],
         "effectTiles": {
             "4,3": {
@@ -1602,14 +1595,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1100R11\n1,0R011\n000/R11\n000LL11\n00RLL11\n1111111\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Type": "Barrel"
@@ -1705,14 +1691,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1100011\n1100011\n11RR000\n11LLR00\n11LL/00\n1111111\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,4": {
                 "Type": "Debris"
@@ -1802,14 +1781,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1111111\n0RLLL11\n00RL/11\n000LL11\n1100R11\n1100011\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,2": {
                 "Type": "Barrel"
@@ -1896,14 +1868,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1000001\n1000001\n000G000\n10+O+01\n1000001\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,4": {
                 "Type": "Charger"
@@ -1999,14 +1964,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1000001\n10+0001\n10OG000\n10+0001\n1000001\n1110111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,2": {
                 "Type": "Charger"
@@ -2102,14 +2060,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1000001\n1000+01\n000GO01\n1000+01\n1000001\n1110111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,3": {
                 "Type": "ChestOrShrine"
@@ -2205,14 +2156,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1000001\n1000001\n000G000\n10+O+01\n1000001\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,4": {
                 "Type": "Charger"
@@ -2308,14 +2252,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1000001\n10+O+01\n000G000\n1000001\n1000001\n1110111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,2": {
                 "Type": "ChestOrShrine"
@@ -2476,14 +2413,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "6,3": {
                 "Type": "Door"
@@ -2565,14 +2495,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,0": {
                 "Type": "Door"
@@ -2658,14 +2581,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110011\n1111011\n1+01d11\n1O00000\n1+01d11\n1111011\n1110011\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,4": {
                 "Type": "Door"
@@ -2765,14 +2681,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1100111\n1101111\n11d10+1\n00000O1\n11d10+1\n1101111\n1100111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,2": {
                 "Type": "Door"
@@ -2872,14 +2781,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1100111\n1101111\n11d10+1\n00000O1\n11d10+1\n1101111\n1100111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,2": {
                 "Type": "Door"
@@ -2988,14 +2890,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n11oCo11\n1100011\n0100010\n0d000d0\n111d111\n1110111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,1": {
                 "Type": "Chest",
@@ -3106,14 +3001,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1111111\n002O200\n002G200\n0000000\n1111111\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,2": {
                 "Type": "ChestOrShrine"
@@ -3212,14 +3100,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1X222X1\n1G000G1\n1X2O2X1\n1G000G1\n1X222X1\n1110111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Type": "ChestOrShrine"
@@ -3344,14 +3225,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1X222X1\n1G000G1\n002O000\n1G000G1\n1X222X1\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Type": "ChestOrShrine"
@@ -3740,12 +3614,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 2,
                 "y": 4,
                 "type": "furniture",
@@ -3848,14 +3716,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1C10CB1\n10D00B1\n1010GB1\n1Rb00B1\n1L10RB1\n1110111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "1,1": {
                 "Priority": true
@@ -3957,14 +3818,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1BR0GB1\n11bDb11\n0000000\n1R000L1\n1111111\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,2": {
                 "Type": "Door",
@@ -4060,12 +3914,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
             {
                 "x": 4,
                 "y": 2,
@@ -4233,14 +4081,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1111111\n0002000\n000G000\n11g1111\n11000C1\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "5,5": {
                 "Type": "Chest"
@@ -4342,14 +4183,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1100111\n1X00g01\n1100101\n1AGG1/1\n1100101\n1X00g01\n1100111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,3": {
                 "Type": "Spawn",
@@ -4622,14 +4456,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1100011\n1100000\n1000000\n1RLL000\n1111/00\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,4": {
                 "Type": "Barrel"
@@ -4698,14 +4525,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1000111\n0000011\n0X0XGO1\n0000021\n1000111\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "5,3": {
                 "Type": "ChestOrShrine"
@@ -4802,32 +4622,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                 "y": 5
             }
         ],
-        "Jail": [
-            {
-                "x": 3,
-                "y": 34,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 31,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 25,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            },
-            {
-                "x": 30,
-                "y": 4,
-                "type": "furniture",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "11,1": {
                 "Type": "Trap",
@@ -5001,30 +4796,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Jail": [
-            {
-                "x": 3,
-                "y": 34,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 31,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 25,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            },
-            {
-                "x": 30,
-                "y": 4,
-                "type": "furniture",
-                "radius": 1
-            },
             {
                 "x": 18,
                 "y": 3,
@@ -5508,14 +5279,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n10G0001\n1001131\n1G01F01\n1000001\n10000R1\n1110111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "1,3": {
                 "Type": "Spawn",
@@ -5656,14 +5420,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                 "y": 1
             }
         ],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,2": {
                 "Type": "Door",
@@ -5759,14 +5516,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                 "y": 1
             }
         ],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,2": {
                 "Type": "Door",
@@ -6178,38 +5928,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000011\n01000R1\n000X130\n0000100\nX000,10\n1X00010\n1000000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "5,1": {
                 "Type": "Rubble"
@@ -6279,38 +5998,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,1": {
                 "Type": "Rubble"
@@ -6349,38 +6037,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "XX00000\nX0R0010\n0000000\n00X1000\n0000000\n000-100\n0000000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,1": {
                 "Type": "Rubble"
@@ -6428,38 +6085,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
             }
         ],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "5,1": {
                 "Type": "Rubble"
@@ -6508,38 +6134,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "XXX0X0X\nX0X0X30\n0000000\n0000000\n0300030\nX3000XX\nX0XX0X0\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "5,1": {
                 "Type": "ForceSpawn",
@@ -6632,38 +6227,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                 "y": 4
             }
         ],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "5,3": {
                 "Type": "Barrel"
@@ -6711,38 +6275,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000000\n0000000\n0303000\nX0X0000\nXX3XX00\n1XX3000\n11XXXX0\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,4": {
                 "Type": "ForceSpawn",
@@ -6819,38 +6352,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0001111\n0001C01\n0001101\n00001g1\n0000000\n0000000\n0000000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,1": {
                 "Type": "Chest",
@@ -6888,38 +6390,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111100\n11X0300\n11X0X00\n1130000\n1X03000\n1000000\n0000000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,1": {
                 "Type": "ForceSpawn",
@@ -6998,38 +6469,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000001\n00000X1\n000Xo01\n0X00001\n0000XA1\n00X0XX1\n0000011\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "5,4": {
                 "Type": "Shrine",
@@ -7066,38 +6506,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1000000\n1X0X000\nXR00000\n1XX0000\n4XXX000\n1RX0000\n1100000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "1,5": {
                 "Type": "Rubble"
@@ -7136,38 +6545,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n111111X\n031X100\n00XR130\n0030000\n0000000\n0000000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Type": "Rubble"
@@ -7258,38 +6636,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000000\n0000000\n0000000\n011G110\n0100010\n01RCR11\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Type": "ForceSpawn",
@@ -7500,12 +6847,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 1,
                 "y": 1,
                 "type": "furniture",
@@ -7663,12 +7004,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "POI": [],
         "Keyring": [],
         "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
             {
                 "x": 1,
                 "y": 1,
@@ -7896,12 +7231,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 1,
                 "y": 1,
                 "type": "furniture",
@@ -8035,12 +7364,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "POI": [],
         "Keyring": [],
         "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
             {
                 "x": 1,
                 "y": 1,
@@ -8183,12 +7506,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 1,
                 "y": 1,
                 "type": "furniture",
@@ -8330,12 +7647,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "POI": [],
         "Keyring": [],
         "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
             {
                 "x": 1,
                 "y": 1,
@@ -8571,12 +7882,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 1,
                 "y": 1,
                 "type": "furniture",
@@ -8807,12 +8112,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 1,
                 "y": 1,
                 "type": "furniture",
@@ -9010,12 +8309,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 1,
                 "y": 1,
                 "type": "furniture",
@@ -9194,12 +8487,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 1,
                 "y": 1,
                 "type": "furniture",
@@ -9366,12 +8653,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 1,
                 "y": 1,
                 "type": "furniture",
@@ -9532,12 +8813,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "POI": [],
         "Keyring": [],
         "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
             {
                 "x": 1,
                 "y": 1,
@@ -11499,32 +10774,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000000\nLL+0+0L\nRL0000L\nLR00111\n/000141\n11401A1\n11100TL\n1A1000L\n0T00111\n00L0411\nL0001A1\nR0000T0\n/R+0+00\n0000000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,1": {
                 "Type": "Charger"
@@ -11710,32 +10960,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "11111111111111\n1R1111C=1111R1\n001A102201A100\n0032G0220G2300\n00021111112000\n1000Xo00oX0001\n11000000000011\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "10,2": {
                 "Type": "Shrine",
@@ -12030,32 +11255,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "XA101AX\nA22222A\n1200021\n020+020\n1200021\nA22222A\nXA101AX\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Type": "Charger"
@@ -12231,32 +11431,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1222221\n12A0A21\n1200020\n12A0A21\n1222221\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,2": {
                 "Type": "Shrine",
@@ -12343,32 +11518,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1222221\n12A0A21\n0200021\n12A0A21\n1222221\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,2": {
                 "Type": "Shrine",
@@ -12455,32 +11605,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1222221\n12A0A21\n0200021\n12A0A21\n1222221\n1110111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,2": {
                 "Type": "Shrine",
@@ -12567,32 +11692,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1222221\n12A0A21\n1200020\n12A0A21\n1222221\n1110111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,2": {
                 "Type": "Shrine",
@@ -12697,32 +11797,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "XA101AX\nA22222A\n1200021\n0200020\n1200021\nA22222A\nXA101AX\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "6,1": {
                 "Type": "Shrine",
@@ -12803,38 +11878,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000110\n01TAT10\n02TFT00\n02TTT12\n0100010\n21R0110\n0000200\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,2": {
                 "Type": "Table",
@@ -13008,38 +12052,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000000\n0111100\n01C0100\n0100D00\n01B0100\n011g100\n0000000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,2": {
                 "Priority": true,
@@ -13200,32 +12213,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "11000141100011\n1m000222200Rm4\n00000100400000\n0R0X142211X000\n00011A22A11000\n1211A2222A1121\n4202220C222021\n120222G0222021\n1211A2222A1421\n00014A22A11000\n000X112241XR00\n000/0100400000\n1m0002222000m1\n11000141100041\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "5,4": {
                 "Type": "Shrine",
@@ -13430,32 +12418,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
                 "y": 10
             }
         ],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,5": {
                 "Type": "Shrine",
@@ -13654,32 +12617,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1110111\n1110111\n1100011\n1100011\n1000001\n1300031\n+00+00+\n+00+00+\n1300031\n1000001\n1100011\n1100011\n1110111\n111D111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "1,5": {
                 "Type": "ForceSpawn",
@@ -22330,32 +21268,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "11101111110111\n1+0012gg2101A1\n10101g11g10101\n00000201000000\n110X01g111g101\n1A01g12R112101\n110g211111g101\n11g12g001+2001\n1000011g11g101\n1b1221C2112101\n0011g10011g100\n1000211b1+01A1\n1A101112200111\n11101111100111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "7,5": {
                 "Type": "Rubble"
@@ -22434,32 +21347,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1111111\n1111111\n0002000\n0002000\n111g111\n11+2+11\n11O2O11\n11+2+11\n111g111\n0002000\n0002000\n1111111\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,7": {
                 "Type": "ChestOrShrine"
@@ -22513,32 +21401,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "11100111110011\n111001R0R10011\n111001g1g10011\n11100g01010011\n1110010g010011\n111001C10g0011\n11100111110011\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "6,1": {
                 "Type": "Rubble"
@@ -22591,30 +21454,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "POI": [],
         "Keyring": [],
         "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            },
             {
                 "x": 5,
                 "y": 7,
@@ -22704,30 +21543,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "POI": [],
         "Keyring": [],
         "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            },
             {
                 "x": 5,
                 "y": 7,
@@ -22917,32 +21732,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1111111\n11+O+11\n00020G0\n0002000\n0111111\n00020O1\n000C001\n00020O1\n0111111\n0002000\n00G2000\n11+O+11\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,7": {
                 "Type": "GuardedChest",
@@ -23019,32 +21809,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1000O11\n1011111\n0002000\n0002000\n1,11110\n1002000\n1O0C0T0\n1-02000\n1111110\n0002000\n0002000\n1111111\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,7": {
                 "Type": "GuardedChest",
@@ -23101,30 +21866,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "POI": [],
         "Keyring": [],
         "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            },
             {
                 "x": 12,
                 "y": 4,
@@ -23262,32 +22003,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1111111\n1111111\n0G02000\n0002000\n111g111\n1112111\n1112111\n1112111\n111g111\n0002G00\n0002000\n1111111\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,10": {
                 "Type": "Spawn",
@@ -23821,32 +22537,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1111111\n1111111\n1111111\n0G02000\n0002000\n111g111\n11R2L11\n1102C11\n11R2L11\n111g111\n0002G00\n0002000\n1111111\n1111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,10": {
                 "Type": "Spawn",
@@ -23905,14 +22596,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "11111111111110\n10+00+00+00+01\n12222222222221\n02X11X11X11X20\n02222222222220\n10+00+00+00+01\n11111111111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "2,1": {
                 "Type": "Charger"
@@ -23992,14 +22676,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000000\n0A0A0X0\n0101010\n0111110\n0300000\n0000000\n0111110\n0101X10\n0000030\n01X1110\n0030000\n0111X10\n0000000\n0000000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "1,1": {
                 "Type": "Shrine",
@@ -24226,14 +22903,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "00000300000000\n01000000000100\n01111101111100\n00000000000030\n0+011110A11A00\n00000000000000\n00000300000000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "1,4": {
                 "Type": "Charger"
@@ -26435,12 +25105,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            },
-            {
                 "x": 1,
                 "y": 1,
                 "type": "furniture",
@@ -26547,14 +25211,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1100011\n1102011\n1X020X1\n1C020C1\n1X020X1\n1102011\n1100011\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 13,
-                "y": 32,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "5,3": {
                 "Type": "Chest"
@@ -33645,108 +32302,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 21,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 23,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 12,
-                "y": 21,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 12,
-                "y": 22,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 12,
-                "y": 23,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 12,
-                "y": 24,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 10,
-                "y": 24,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 10,
-                "y": 23,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 10,
-                "y": 22,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 8,
-                "y": 21,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 8,
-                "y": 22,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 8,
-                "y": 23,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 8,
-                "y": 24,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 6,
-                "y": 24,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 6,
-                "y": 23,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 6,
-                "y": 22,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 6,
-                "y": 21,
-                "type": "storage",
-                "radius": 1
-            },
-            {
                 "x": 8,
                 "y": 18,
                 "type": "storage",
@@ -33921,12 +32476,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
                 "radius": 1
             },
             {
-                "x": 10,
-                "y": 21,
-                "type": "storage",
-                "radius": 1
-            },
-            {
                 "x": 6,
                 "y": 3,
                 "type": "storage",
@@ -34097,102 +32646,6 @@ let KDMapTilesList: Record<string, KDMapTile> =
             {
                 "x": 12,
                 "y": 18,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 12,
-                "y": 24,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 12,
-                "y": 23,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 12,
-                "y": 22,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 12,
-                "y": 21,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 10,
-                "y": 21,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 10,
-                "y": 22,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 10,
-                "y": 23,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 10,
-                "y": 24,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 8,
-                "y": 24,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 8,
-                "y": 23,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 8,
-                "y": 22,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 8,
-                "y": 21,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 6,
-                "y": 21,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 6,
-                "y": 22,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 6,
-                "y": 23,
-                "type": "storage",
-                "radius": 1
-            },
-            {
-                "x": 6,
-                "y": 24,
                 "type": "storage",
                 "radius": 1
             },
@@ -35691,32 +34144,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "XAX0XAX\nA00000A\nX01410X\n001C100\nX01410X\nA00000A\nXAX0XAX\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Priority": true
@@ -35804,32 +34232,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "XAX0XAX\nA00000A\nX01110X\n004C400\nX01110X\nA00000A\nXAX0XAX\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Priority": true
@@ -35913,32 +34316,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "XmX0XaX\na00020A\nX0141RX\n004C100\nX21442X\na0R020m\nXAX0XoX\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "3,3": {
                 "Priority": true
@@ -36251,32 +34629,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "1100011\n4000001\n1000001\n=01110=\n001A100\n1022201\nX02220X\nX02220X\n1022201\n=01A10=\n0011100\n1000001\n1000004\n1100011\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "6,9": {
                 "Type": "Charger",
@@ -36481,32 +34834,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "11001111111111\n110011122Z0031\n1100111g110031\n110020021111@1\n11002102111131\n1+0021021111Z1\n11002102100001\n11002002Z000C1\n110020011110C1\n11002101111011\n1+002101000001\n11002101Z100@1\n11002002210031\n11001111111111\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 17,
-                "y": 5,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "8,7": {
                 "Type": "AutoDoor",
@@ -37329,27 +35657,9 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "Keyring": [],
         "Jail": [
             {
-                "x": 28,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 29,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
                 "x": 17,
                 "y": 5,
                 "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 18,
-                "y": 25,
-                "type": "jail",
                 "radius": 1
             }
         ],
@@ -38964,38 +37274,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000000\n01X0000\n0X00X10\n00000X0\n00X0000\n001X000\n00X0000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {},
         "effectTiles": {},
         "Skin": {},
@@ -39028,38 +37307,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000000\n01X0000\n0X00X10\n0000RX0\n00X0000\n001X000\n00X0000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,3": {
                 "Type": "Rubble"
@@ -39096,38 +37344,7 @@ let KDMapTilesList: Record<string, KDMapTile> =
         "grid": "0000000\n01X0000\n0X00X10\n0000RX0\n00X0000\n001X000\n00X0000\n",
         "POI": [],
         "Keyring": [],
-        "Jail": [
-            {
-                "x": 24,
-                "y": 41,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 47,
-                "y": 10,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 45,
-                "y": 19,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 3,
-                "y": 33,
-                "type": "furniture",
-                "radius": 1
-            },
-            {
-                "x": 39,
-                "y": 25,
-                "type": "jail",
-                "radius": 1
-            }
-        ],
+        "Jail": [],
         "Tiles": {
             "4,3": {
                 "Type": "Rubble"
