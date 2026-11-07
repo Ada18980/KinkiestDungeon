@@ -58,6 +58,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 	for (let row of rows) {
 		let II = 0;
 		let tooltip = "";
+		let tooltipLoc = {x: 0, y: 0};
 		for (let sgroup of row) {
 			let restraint = restraints[sgroup.id];
 			let preview = "";
@@ -123,7 +124,13 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				}, KDButtonTooltip(TextGet("KDBindNPCSlot_" + sgroup.id), undefined, "center")
 			);
 			// The row label names the selected slot; hovered slots get the tooltip instead
-			if (!hovered && KDNPCBindingSelectedSlot?.id == sgroup.id) tooltip = sgroup.id;
+			if (!hovered && KDNPCBindingSelectedSlot?.id == sgroup.id) {
+				tooltip = sgroup.id;
+				tooltipLoc = {
+					x: XX + wid / 2,
+					y: YY - 12,
+				};
+			}
 
 
 			if (II++ == 0) {
@@ -177,7 +184,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		if (tooltip)
 			DrawTextFitKD(TextGet("KDBindNPCSlot_" + tooltip),
-				x + paddingFirstCol + 25, YY - 12, 400, KDBaseWhite, KDTextGray1,
+				tooltipLoc.x, tooltipLoc.y, 400, KDBaseWhite, KDTextGray1,
 				18, "center"
 			);
 
