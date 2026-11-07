@@ -6067,27 +6067,6 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 			if (KDDrewEnemyTooltipThisFrame) {
 				if (!KDDrewEnemyTooltip) {
 					KDRefreshCharacter.set(listItem.npcSprite, true);
-
-					
-					if (npcTooltipContainer.mask) {
-						let oldmask = npcTooltipContainer.mask;
-						npcTooltipContainer.mask = null;
-						//@ts-ignore
-						oldmask.destroy();
-					}
-					
-					// Create a graphics object to define our mask
-					let mask = new PIXI.Graphics();
-					// Add the rectangular area to show
-					mask.beginFill(0xffffff);
-					mask.drawRect(
-						spriteX,
-						spriteY,
-						spriteW,
-						spriteH
-					);
-					mask.endFill();
-					npcTooltipContainer.mask = mask;
 				}
 			}
 			if (KDRefreshCharacter.get(listItem.npcSprite)) {
@@ -6150,12 +6129,34 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 				let zum = (listItem.size)/1000;
 				mesh.scale.x = spriteZoom;
 				mesh.scale.y = spriteZoom;
+				KDDrawNPCTooltipMask(listItem.id, mesh, spriteX, spriteY, spriteW, spriteH);
 			}
 
 		}
 		YY += extra + listItem.size;
 	}
 	return offset + TooltipHeight + 30;
+}
+
+let KDNPCTooltipMasks: Map<number, {mask: any, rect: string}> = new Map();
+let KDNPCTooltipMasksDrawn: Map<number, boolean> = new Map();
+
+function KDDrawNPCTooltipMask(id: number, mesh: PIXIMesh, x: number, y: number, w: number, h: number) {
+	let entry = KDNPCTooltipMasks.get(id);
+	if (!entry) {
+		entry = {mask: new PIXI.Graphics(), rect: ""};
+		KDNPCTooltipMasks.set(id, entry);
+	}
+	let rect = x + "," + y + "," + w + "," + h;
+	if (entry.rect != rect) {
+		entry.rect = rect;
+		entry.mask.clear();
+		entry.mask.beginFill(0xffffff);
+		entry.mask.drawRect(x, y, w, h);
+		entry.mask.endFill();
+	}
+	mesh.mask = entry.mask;
+	KDNPCTooltipMasksDrawn.set(id, true);
 }
 
 let NPCTooltipZoomRatio = 2;

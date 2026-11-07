@@ -2628,20 +2628,25 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 	KDQuickGenNPC(enemy, enemy.CustomName != undefined || !!enemy.Enemy?.outfit);
 
 	if (KDNPCChar.get(enemy.id)) {
-		if (KDDrewEnemyTooltip && KDDrewEnemyTooltip != "" + enemy.id) {
-			KDDrewEnemyTooltip = "";
+		// draw only one
+		if (!KDDrewEnemyTooltipThisFrame) {
+			if (KDDrewEnemyTooltip && KDDrewEnemyTooltip != "" + enemy.id) {
+				KDDrewEnemyTooltip = "";
+			}
+			KDDrewEnemyTooltipThisFrame = "" + enemy.id;
+			
+			TooltipList.push({
+				str: "",
+				fg: KDBaseWhite,
+				bg: KDBaseBlack,
+				size: KinkyDungeonInspect ? 1 : 144,
+				center: true,
+				npcSprite: KDNPCChar.get(enemy.id),
+				id: enemy.id,
+				inspect: KinkyDungeonInspect
+			});
 		}
-		KDDrewEnemyTooltipThisFrame = "" + enemy.id;
-		TooltipList.push({
-			str: "",
-			fg: KDBaseWhite,
-			bg: KDBaseBlack,
-			size: KinkyDungeonInspect ? 1 : 144,
-			center: true,
-			npcSprite: KDNPCChar.get(enemy.id),
-			id: enemy.id,
-			inspect: KinkyDungeonInspect
-		});
+		
 	}
 
 	if (enemy.shield > 0) {
@@ -3207,19 +3212,23 @@ function KDDrawEnemyDialogue(enemy: entity, offset: number): number {
 	KDQuickGenNPC(enemy, true);
 
 	if (KDNPCChar.get(enemy.id)) {
-		if (KDDrewEnemyTooltip && KDDrewEnemyTooltip != "d" + enemy.id) {
-			KDDrewEnemyTooltip = "";
+		// draw only one
+		if (!KDDrewEnemyTooltipThisFrame) {
+			if (KDDrewEnemyTooltip && KDDrewEnemyTooltip != "d" + enemy.id) {
+				KDDrewEnemyTooltip = "";
+			}
+			KDDrewEnemyTooltipThisFrame = "d" + enemy.id;
+			TooltipList.push({
+				str: "",
+				fg: KDBaseWhite,
+				bg: KDBaseBlack,
+				size: 500,
+				center: true,
+				npcSprite: KDNPCChar.get(enemy.id),
+				id: enemy.id,
+			});
 		}
-		KDDrewEnemyTooltipThisFrame = "d" + enemy.id;
-		TooltipList.push({
-			str: "",
-			fg: KDBaseWhite,
-			bg: KDBaseBlack,
-			size: 500,
-			center: true,
-			npcSprite: KDNPCChar.get(enemy.id),
-			id: enemy.id,
-		});
+		
 	}
 
 	if (enemy.shield > 0) {

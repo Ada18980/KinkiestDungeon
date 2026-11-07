@@ -3483,6 +3483,13 @@ function KinkyDungeonRun() {
 	//}
 	// Cull the sprites that werent rendered or updated this frame
 	KDCullSprites();
+	for (let id of KDNPCTooltipMasks.keys()) {
+		if (!KDNPCTooltipMasksDrawn.get(id)) {
+			KDNPCTooltipMasks.get(id).mask.destroy();
+			KDNPCTooltipMasks.delete(id);
+		}
+	}
+	KDNPCTooltipMasksDrawn = new Map();
 	if (!preloaded)
 		KDCullPreloadedAssets();
 	KDCullRTList(kdRTcache);
