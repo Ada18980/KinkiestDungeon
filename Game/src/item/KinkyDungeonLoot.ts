@@ -965,7 +965,7 @@ function KinkyDungeonAddGold(value: number) {
 		//if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable()) CharacterChangeMoney(Player, Math.round(value/10));
 		let pre = value >= 0 ? "+" : "";
 		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, pre + `${value} GP`, KDBaseWhite, 3.5);
-	} else KinkyDungeonSendActionMessage(10, "Error, the thing you just did would have set your gold to infinity. Please report.", KDBaseWhite, 4);
+	} else KinkyDungeonSendActionMessage(10, TextGet("KDGoldOverflowError"), KDBaseWhite, 4);
 
 }
 

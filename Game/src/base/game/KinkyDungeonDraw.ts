@@ -1712,7 +1712,7 @@ function KinkyDungeonDrawGame() {
 										(newX - CamX)*KinkyDungeonGridSizeDisplay, (newY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 											zIndex: 99,
 										});
-									DrawTextKD(Math.round(-KDSprintCost()*10) + "sp",
+									DrawTextKD(Math.round(-KDSprintCost()*10) + TextGet("KDSprintCostUnit"),
 										(newX - CamX + 0.5)*KinkyDungeonGridSizeDisplay,
 										(newY - CamY - 0.25)*KinkyDungeonGridSizeDisplay, KDBaseMint,
 									 undefined, undefined, undefined, 100.1);
@@ -2119,7 +2119,7 @@ function KinkyDungeonDrawGame() {
 		} else if (KinkyDungeonDrawState == "Restart") {
 			KDDrawNavBar(0);
 			if (TestMode) {
-				DrawCheckboxVis(600, 20, 64, 64, "Debug Mode", KDDebugMode, false, KDBaseWhite);
+				DrawCheckboxVis(600, 20, 64, 64, TextGet("KDDebug_DebugMode"), KDDebugMode, false, KDBaseWhite);
 				if (KDDebugMode) {
 					ElementPosition("DebugItem", 1650, 212, 300, 64);
 					ElementPosition("DebugEnemy", 1650, 52, 300, 64);
@@ -2164,19 +2164,19 @@ function KinkyDungeonDrawGame() {
 						}
 					}
 
-					DrawCheckboxVis(1100, 20, 64, 64, "Verbose Console", KDDebug, false, KDBaseWhite);
-					DrawCheckboxVis(1100, 90, 64, 64, "Changeable Perks", KDDebugPerks, false, KDBaseWhite);
-					DrawCheckboxVis(1100, 160, 64, 64, "Unlimited Gold", KDDebugGold, false, KDBaseWhite);
+					DrawCheckboxVis(1100, 20, 64, 64, TextGet("KDDebug_VerboseConsole"), KDDebug, false, KDBaseWhite);
+					DrawCheckboxVis(1100, 90, 64, 64, TextGet("KDDebug_ChangeablePerks"), KDDebugPerks, false, KDBaseWhite);
+					DrawCheckboxVis(1100, 160, 64, 64, TextGet("KDDebug_UnlimitedGold"), KDDebugGold, false, KDBaseWhite);
 					//DrawCheckboxVis(850, 300, 64, 64, "Link Under", KDDebugLink, false, KDBaseWhite);
 					DrawCheckboxKDEx("debujgforceadd", ()=>{KDDebugforceadds = !KDDebugforceadds; return true;},
-						true,850, 230, 64, 64, "Forcibly add restraints from inv", KDDebugforceadds, false, KDBaseWhite);
+						true,850, 230, 64, 64, TextGet("KDDebug_ForciblyAddRestraintsFromInv"), KDDebugforceadds, false, KDBaseWhite);
 					DrawCheckboxKDEx("debuglinkunder", ()=>{KDDebugLink = !KDDebugLink; return true;},
-						true,850, 300, 64, 64, "Link Under", KDDebugLink, false, KDBaseWhite);
+						true,850, 300, 64, 64, TextGet("KDDebug_LinkUnder"), KDDebugLink, false, KDBaseWhite);
 
-					DrawButtonVis(1500, 100, 100, 64, "Enemy", KDBaseWhite, "");
-					DrawButtonVis(1600, 100, 100, 64, "Ally", KDBaseWhite, "");
-					DrawButtonVis(1700, 100, 100, 64, "Shop", KDBaseWhite, "");
-					DrawButtonVis(1500, 260, 300, 64, "Add to inventory", KDBaseWhite, "");
+					DrawButtonVis(1500, 100, 100, 64, TextGet("KDDebug_Enemy"), KDBaseWhite, "");
+					DrawButtonVis(1600, 100, 100, 64, TextGet("KDDebug_Ally"), KDBaseWhite, "");
+					DrawButtonVis(1700, 100, 100, 64, TextGet("KDDebug_Shop"), KDBaseWhite, "");
+					DrawButtonVis(1500, 260, 300, 64, TextGet("KDDebug_AddToInventory"), KDBaseWhite, "");
 					DrawButtonKDEx("debugtelestairs", () => {
 						KDMapData.KeyQuota=0;
 						KDMapData.ChestQuota=0;
@@ -2197,9 +2197,9 @@ function KinkyDungeonDrawGame() {
 						KinkyDungeonSetFlag("BossUnlocked", -1);
 						KinkyDungeonUpdateLightGrid = true;
 						return true;
-					}, true, 1100, 300, 300, 64, "Teleport to stairs", KDBaseWhite, "");
-					DrawButtonVis(1500, 320, 300, 64, "Get save code", KDBaseWhite, "");
-					DrawButtonVis(1100, 370, 300, 64, "Enter parole mode", KDBaseWhite, "");
+					}, true, 1100, 300, 300, 64, TextGet("KDDebug_TeleportToStairs"), KDBaseWhite, "");
+					DrawButtonVis(1500, 320, 300, 64, TextGet("KDDebug_GetSaveCode"), KDBaseWhite, "");
+					DrawButtonVis(1100, 370, 300, 64, TextGet("KDDebug_EnterParoleMode"), KDBaseWhite, "");
 					DrawButtonKDEx("debugDefeat", (_bdata) => {
                         console.log("Defeat Enemy...");
                         KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast({ name: "debugDefeat",
@@ -2218,7 +2218,7 @@ function KinkyDungeonDrawGame() {
                         KDGoToScreen("Game")
 						KDResetAlternateInventoryRender();
                         return true;
-                    }, true, 500, 96, 145, 48, "Defeat", KDBaseWhite, "");
+                    }, true, 500, 96, 145, 48, TextGet("KDDebug_Defeat"), KDBaseWhite, "");
                     DrawButtonKDEx("debugBind", (_bdata) => {
                         console.log("Bind Enemy...");
                         KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast({ name: "debugBind",
@@ -2237,31 +2237,31 @@ function KinkyDungeonDrawGame() {
                         KDGoToScreen("Game")
 						KDResetAlternateInventoryRender();
                         return true;
-                    }, true, 655, 96, 145, 48, "Bind", KDBaseWhite, "");
+                    }, true, 655, 96, 145, 48, TextGet("KDDebug_Bind"), KDBaseWhite, "");
 					DrawButtonKDEx("debugAddKey", (_bdata) => {
 						KDAddConsumable("Pick", 10);
 						KDAddConsumable("RedKey", 10);
 						KDAddConsumable("BlueKey", 10);
 						return true;
-					}, true, 500, 160, 300, 64, "Add keys and lockpicks", KDBaseWhite, "");
+					}, true, 500, 160, 300, 64, TextGet("KDDebug_AddKeysAndLockpicks"), KDBaseWhite, "");
 					DrawButtonKDEx("debugAddVision", (_bdata) => {
 						KinkyDungeonSeeAll = !KinkyDungeonSeeAll;
 						return true;
-					}, true, 500, 240, 300, 64, "Toggle OmniVision™", KDBaseWhite, "");
+					}, true, 500, 240, 300, 64, TextGet("KDDebug_ToggleOmniVision"), KDBaseWhite, "");
 					DrawButtonKDEx("debugAddSP", (_bdata) => {
 						KinkyDungeonSpellPoints += 10;
 						return true;
-					}, true, 500, 320, 300, 64, "Add 10 spell points", KDBaseWhite, "");
+					}, true, 500, 320, 300, 64, TextGet("KDDebug_Add10SpellPoints"), KDBaseWhite, "");
 					DrawButtonKDEx("debugClearQuickInv", (_bdata) => {
 						KinkyDungeonInventory.get('looserestraint').clear();
 						KinkyDungeonAdvanceTime(0, true);
 						return true;
-					}, true, 500, 400, 300, 64, "Clear loose restraints", KDBaseWhite, "");
+					}, true, 500, 400, 300, 64, TextGet("KDDebug_ClearLooseRestraints"), KDBaseWhite, "");
 					DrawButtonKDEx("debugClearPlayerInv", (_bdata) => {
 						KinkyDungeonInventory.get('restraint').clear();
 						KinkyDungeonAdvanceTime(0, true);
 						return true;
-					}, true, 500, 480, 300, 64, "Clear worn restraints", KDBaseWhite, "");
+					}, true, 500, 480, 300, 64, TextGet("KDDebug_ClearWornRestraints"), KDBaseWhite, "");
 
 
 					DrawButtonKDEx("debugVisitStorage", (_bdata) => {
@@ -2273,7 +2273,7 @@ function KinkyDungeonDrawGame() {
 						KinkyDungeonCurrentFilter = "All";
 						KDUI_CurrentContainer = "PlayerChest";
 						return true;
-					}, true, 710, 560, 200, 64, "Open Storage", KDBaseWhite, "");
+					}, true, 710, 560, 200, 64, TextGet("KDDebug_OpenStorage"), KDBaseWhite, "");
 
 
 					DrawButtonKDEx("debugaddallrest", (_bdata) => {
@@ -2283,7 +2283,7 @@ function KinkyDungeonDrawGame() {
 								KinkyDungeonInventoryAddLoose(r.name);
 						}
 						return true;
-					}, true, 500, 560, 200, 64, "Add all restraints", KDBaseWhite, "");
+					}, true, 500, 560, 200, 64, TextGet("KDDebug_AddAllRestraints"), KDBaseWhite, "");
 					DrawButtonKDEx("debugIncFloor", (_bdata) => {
 						MiniGameKinkyDungeonLevel += 1;
 						KDCurrentWorldSlot.y += 1;
@@ -2291,40 +2291,40 @@ function KinkyDungeonDrawGame() {
 						KinkyDungeonSendEvent("tickFlags", {delta: 1});
 						KDTickSpecialStats();
 						return true;
-					}, true, 500, 640, 300, 64, "Increment Floor", KDBaseWhite, "");
+					}, true, 500, 640, 300, 64, TextGet("KDDebug_IncrementFloor"), KDBaseWhite, "");
 					DrawButtonKDEx("RestSP", (_bdata) => {
                         KDChangeStamina("","","",100)
                         return true;
-                    }, true, 500, 720, 145, 48, "Rest SP", KDBaseWhite, "")
+                    }, true, 500, 720, 145, 48, TextGet("KDDebug_RestSP"), KDBaseWhite, "")
                     DrawButtonKDEx("+maxSP", (_bdata) => {
                         KDGameData.StatMaxBonus.SP += 10;
                         return true;
-                    }, true, 655, 720, 145, 48, "+Max SP", "#44ff00", "")
+                    }, true, 655, 720, 145, 48, TextGet("KDDebug_PlusMaxSP"), "#44ff00", "")
                     DrawButtonKDEx("RestMP", (_bdata) => {
                         KDChangeMana("","","",100)
                         return true;
-                    }, true, 500, 780, 145, 48, "Rest MP", KDBaseWhite, "")
+                    }, true, 500, 780, 145, 48, TextGet("KDDebug_RestMP"), KDBaseWhite, "")
                     DrawButtonKDEx("+maxMP", (_bdata) => {
                         KDGameData.StatMaxBonus.MP += 10;
                         return true;
-                    }, true, 655, 780, 145, 48, "+Max MP", KDBaseBaby, "")
+                    }, true, 655, 780, 145, 48, TextGet("KDDebug_PlusMaxMP"), KDBaseBaby, "")
                     DrawButtonKDEx("RestWP", (_bdata) => {
                         KDChangeWill("","","",100)
                         return true;
-                    }, true, 500, 840, 145, 48, "Rest WP", KDBaseWhite, "")
+                    }, true, 500, 840, 145, 48, TextGet("KDDebug_RestWP"), KDBaseWhite, "")
                     DrawButtonKDEx("+maxWP", (_bdata) => {
                         KDGameData.StatMaxBonus.WP += 10;
                         return true;
-                    }, true, 655, 840, 145, 48, "+Max WP", KDBaseRed, "")
+                    }, true, 655, 840, 145, 48, TextGet("KDDebug_PlusMaxWP"), KDBaseRed, "")
                     DrawButtonKDEx("RestDP", (_bdata) => {
                         KDChangeDistraction("","","",-100)
                         KDChangeDesire("","","",-100,true)
                         return true;
-                    }, true, 500, 900, 145, 48, "Rest DP", KDBaseWhite, "")
+                    }, true, 500, 900, 145, 48, TextGet("KDDebug_RestDP"), KDBaseWhite, "")
                     DrawButtonKDEx("+maxDP", (_bdata) => {
                         KDGameData.StatMaxBonus.AP += 10;
                         return true;
-                    }, true, 655, 900, 145, 48, "+Max DP", "#ffaaaa", "")
+                    }, true, 655, 900, 145, 48, TextGet("KDDebug_PlusMaxDP"), "#ffaaaa", "")
 
 
 

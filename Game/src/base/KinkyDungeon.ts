@@ -2196,7 +2196,7 @@ function KinkyDungeonRun() {
 					KinkyDungeonState = "TileEditor";
 					KinkyDungeonUpdateLightGrid = true;
 					return true;
-				}, true, 1000-350/2, ii, 350, 64, "Tile Editor", KDBaseWhite, "");
+				}, true, 1000-350/2, ii, 350, 64, TextGet("KDTileEditorOpen"), KDBaseWhite, "");
 			}
 
 
@@ -2292,15 +2292,6 @@ function KinkyDungeonRun() {
 			CharacterRefresh(KinkyDungeonPlayer);
 			// Draw the PC for one
 			KDLogoStartTime = CommonTime() + 400;
-			/*
-
-				DrawButtonVis(1000-450/2, 720, 450, 64, TextGet("KDOptIn"), KDLoadingFinished ? KDBaseWhite : "#888888", "");
-				DrawButtonVis(1000-450/2, 820, 450, 64, TextGet("KDOptOut"), KDLoadingFinished ? KDBaseWhite : "#888888", "");
-
-				DrawTextKD(TextGet("KinkyDungeonConsent"), 1000, 450, KDBaseWhite, KDTextGray2);
-				DrawTextKD(TextGet("KinkyDungeonConsent2"), 1000, 500, KDBaseWhite, KDTextGray2);
-				DrawTextKD(TextGet("KinkyDungeonConsent3"), 1000, 550, KDBaseWhite, KDTextGray2);
-				*/
 
 		}
 		if (KDLoadingDone >= KDLoadingMax) {
@@ -5848,7 +5839,7 @@ function KDDrawLoadMenu() {
 			zIndex: 59,
 		});
 
-		DrawTextFitKD(`Stamina: ${Math.floor(loadedSaveforPreview.stamina * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.SP + 10) * 10}`,
+		DrawTextFitKD(`${TextGet("KDSavePreviewStamina")}${Math.floor(loadedSaveforPreview.stamina * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.SP + 10) * 10}`,
 			CombarXX + 1100, barOffset + (offsetcount * offsetmult), 400, KDBaseWhite, undefined, 32);
 
 		// Stamina Potions Held by the Player
@@ -5890,7 +5881,7 @@ function KDDrawLoadMenu() {
 			zIndex: 59 + (offsetcount * 5),
 		});
 
-		DrawTextFitKD(`Mana: ${Math.floor(loadedSaveforPreview.mana * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.MP + 10) * 10}`,
+		DrawTextFitKD(`${TextGet("KDSavePreviewMana")}${Math.floor(loadedSaveforPreview.mana * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.MP + 10) * 10}`,
 			CombarXX + 1100, barOffset + (offsetcount * offsetmult), 400, KDBaseWhite, undefined, 32);
 
 		// Mana Potions Held by the Player
@@ -5932,7 +5923,7 @@ function KDDrawLoadMenu() {
 			zIndex: 59 + (offsetcount * 5),
 		});
 
-		DrawTextFitKD(`Willpower: ${Math.floor(loadedSaveforPreview.willpower * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.WP + 10) * 10}`,
+		DrawTextFitKD(`${TextGet("KDSavePreviewWillpower")}${Math.floor(loadedSaveforPreview.willpower * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.WP + 10) * 10}`,
 			CombarXX + 1100, barOffset + (offsetcount * offsetmult), 400, KDBaseWhite, undefined, 32);
 
 		// Will Potions Held by the Player
@@ -5974,7 +5965,7 @@ function KDDrawLoadMenu() {
 			zIndex: 59 + (offsetcount * 5),
 		});
 
-		DrawTextFitKD(`Distraction: ${Math.floor(loadedSaveforPreview.distraction * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.AP + 10) * 10}`,
+		DrawTextFitKD(`${TextGet("KDSavePreviewDistraction")}${Math.floor(loadedSaveforPreview.distraction * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.AP + 10) * 10}`,
 			CombarXX + 1100, barOffset + (offsetcount * offsetmult), 400, KDBaseWhite, undefined, 32);
 
 		// Frigid Potions Held by the Player

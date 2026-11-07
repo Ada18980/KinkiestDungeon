@@ -9013,8 +9013,6 @@ KinkyDungeonStartGame,Start Playing
 KinkyDungeonStartGameDesc,"Lock your settings in, nice and tight."
 KinkyDungeonStartGameDescKinky,"Start with some perks that increase strictness and immersion."
 KinkyDungeonStartGameDescAdc,"Choose some perks to spice up your run."
-KDOptIn,"Accept"
-KDOptOut,"Don't Track Me"
 KDStartGame,"Proceed"
 
 KinkyDungeonRemoveJailKey,"Your key to the stairs is taken away!"
@@ -34995,3 +34993,108 @@ KDWeaponNoStackDesc,"'${BuffType}' effects of the same type do not stack."
 
 KDWeaponNoStack_Staff,Staff
 KDWeaponNoStack_Book,Book
+
+KDPlayerTitleActivated,Activated
+KDPlayerTitleSetTitle,Set Title
+KDSprintCostUnit,sp
+KDSavePreviewStamina,"Stamina: "
+KDSavePreviewMana,"Mana: "
+KDSavePreviewWillpower,"Willpower: "
+KDSavePreviewDistraction,"Distraction: "
+KDModConfigurationTitle,"Mod Configuration - "
+KDGoldOverflowError,"Error, the thing you just did would have set your gold to infinity. Please report."
+KDWardrobeDataTitle,Wardrobe Data
+KDWardrobeClipboardUnsupported,Your browser doesn't appear to support exporting directly to the clipboard.
+KDWardrobeClipboardInstructions,"Here's the data for your outfit, for you to copy to your clipboard. Click on the text below and use Control+C to copy it."
+KDErrorModalCopy,Copy to clipboard
+KDErrorModalCopied,Awoo!
+KDErrorModalCopyFailed,Failed
+KDErrorModalClose,Close
+KDErrorModalOccurred,"An error has occurred whilst Kinky Dungeon was running. "
+KDErrorModalContinue,"You may be able to continue playing, but Kinky Dungeon might not function correctly."
+KDErrorModalReport,Please report this error in the Kinky Dungeon Discord so that we can dispatch our team of highly-trained wolfgirls to fix it.
+KDErrorModalDebugInfo,"When you make your report, please include the following debug information - the wolfgirls will appreciate it!"
+KDModCrashFailed,"Kinky Dungeon failed to load mods last time it was running. "
+KDModCrashDisabled,Automatic mod loading has been disabled for this session.
+KDModCrashCause,"The mod that caused the crash on loading was "
+KDModCrashRemoved,and has been removed from automatically loading. Please refresh the game (F5)!
+KDErrorModalHeading,Kinky Dungeon Crash Handler
+KDModCrashHeading,Error Loading Mods
+
+KDTileEditorOpen,Tile Editor
+KDDebug_DebugMode,Debug Mode
+KDDebug_VerboseConsole,Verbose Console
+KDDebug_ChangeablePerks,Changeable Perks
+KDDebug_UnlimitedGold,Unlimited Gold
+KDDebug_ForciblyAddRestraintsFromInv,Forcibly add restraints from inv
+KDDebug_LinkUnder,Link Under
+KDDebug_Enemy,Enemy
+KDDebug_Ally,Ally
+KDDebug_AddToInventory,Add to inventory
+KDDebug_TeleportToStairs,Teleport to stairs
+KDDebug_GetSaveCode,Get save code
+KDDebug_EnterParoleMode,Enter parole mode
+KDDebug_Defeat,Defeat
+KDDebug_AddKeysAndLockpicks,Add keys and lockpicks
+KDDebug_ToggleOmniVision,Toggle OmniVision™
+KDDebug_Add10SpellPoints,Add 10 spell points
+KDDebug_ClearLooseRestraints,Clear loose restraints
+KDDebug_ClearWornRestraints,Clear worn restraints
+KDDebug_OpenStorage,Open Storage
+KDDebug_AddAllRestraints,Add all restraints
+KDDebug_IncrementFloor,Increment Floor
+KDDebug_RestSP,Rest SP
+KDDebug_PlusMaxSP,+Max SP
+KDDebug_RestMP,Rest MP
+KDDebug_PlusMaxMP,+Max MP
+KDDebug_RestWP,Rest WP
+KDDebug_PlusMaxWP,+Max WP
+KDDebug_RestDP,Rest DP
+KDDebug_PlusMaxDP,+Max DP
+KDTileEditor_TileTags,Tile Tags
+KDTileEditor_RequireTags,Require Tags
+KDTileEditor_ForbidTags,Forbid Tags
+KDTileEditor_ExistingTag,Existing Tag
+KDTileEditor_Mult,Mult
+KDTileEditor_Bonus,Bonus
+KDTileEditor_Max,Max
+KDTileEditor_NOT,NOT
+KDTileEditor_NameOfTile,Name of Tile
+KDTileEditor_Tileset,Tileset
+KDTileEditor_Skin,Skin
+KDTileEditor_Category,Category
+KDTileEditor_Weight,Weight
+KDTileEditor_EditTileTags,Edit Tile Tags
+KDTileEditor_GoBack,Go Back
+KDTileEditor_TileIndex,Tile Index
+KDTileEditor_Flex,Flex
+KDTileEditor_OpenBorder,OpenBorder
+KDTileEditor_TestAccess,Test Access
+KDTileEditor_TileList,Tile List
+KDTileEditor_DoubleClickToLOAD,Double click to LOAD
+KDTileEditor_Delete,Delete!!!
+KDTileEditor_SaveTile,Save Tile
+KDTileEditor_BackToMenu,Back to menu
+KDTileEditor_NewOpen,New (Open)
+KDTileEditor_NewEmpty,New (Empty)
+KDTileEditor_NewClosed,New (Closed)
+KDTileEditor_NewClosedPlusEmpty,New (Closed+Empty)
+KDTileEditor_TestTile,Test Tile
+KDTileEditor_CopyDatabaseToClipboard,Copy database to clipboard
+KDTileEditor_MergeFromClipboard,Merge from clipboard
+KDTileEditor_ResetTileDatabase,Reset tile database
+KDTileEditor_LoadTileFromClipboard,Load tile from Clipboard
+KDTileEditor_CopyTileToClipboard,Copy Tile to Clipboard
+KDTileEditor_CommitEditorTiles,Commit Editor Tiles
+KDTileEditor_GetDatabase,Get Database...
+KDTileEditor_PasteHereToMergeDatabase,Paste here to merge database
+KDTileEditor_NothingNewToAdd,Nothing new to add
+KDTileEditor_Success,Success
+KDTileEditor_InaccessibleWarning,Some entrances are inaccessible. This tile will occur more rarely in worldgen
+KDTileEditor_ResetWarning,This is a DESTRUCTIVE operation. Click the button again to do it. Save a tile to commit fully.
+KDTileEditor_CommitWarning,This will temporarily make the game use your editor's tiles. You are responsible for any crashes.
+KDWardrobeDebug_SubmeshEditor,Submesh Editor
+KDWardrobeDebug_FlipLyrbonus,Flip lyrbonus
+KDWardrobeDebug_PrintSMToConsole,Print SM to console
+KDDebug_Shop,Shop
+KDDebug_Bind,Bind

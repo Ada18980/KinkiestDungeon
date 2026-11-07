@@ -213,7 +213,7 @@ function KinkyDungeonDrawTitles() {
         DrawButtonKDEx(`setTitle`, (_b) => {
             KDGameData.currentTitle = (KDTitleTabCurrentTitleSelected)
             return true;
-        }, true, x - 600, 650, 400, 80, (KDTitleTabCurrentTitleSelected == KDGameData.currentTitle) ? "Activated" : "Set Title", (KDTitleTabCurrentTitleSelected == KDGameData.currentTitle) ? "#aaaaaa" : "#ffffff", undefined, undefined, (KDTitleTabCurrentTitleSelected == KDGameData.currentTitle)); 
+        }, true, x - 600, 650, 400, 80, (KDTitleTabCurrentTitleSelected == KDGameData.currentTitle) ? TextGet("KDPlayerTitleActivated") : TextGet("KDPlayerTitleSetTitle"), (KDTitleTabCurrentTitleSelected == KDGameData.currentTitle) ? "#aaaaaa" : "#ffffff", undefined, undefined, (KDTitleTabCurrentTitleSelected == KDGameData.currentTitle)); 
     }
     KDDrawLoreRepTabs(xOffset);
 }

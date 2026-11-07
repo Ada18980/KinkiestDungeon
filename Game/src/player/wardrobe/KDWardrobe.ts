@@ -1544,7 +1544,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				SubmeshEditorBuffer = null;
 				SubmeshEditorBufferOrig = null;
 				return true;
-			}, true, 510, 5, 100, 40, "Submesh Editor", KDBaseWhite);
+			}, true, 510, 5, 100, 40, TextGet("KDWardrobeDebug_SubmeshEditor"), KDBaseWhite);
 		let II = 0;
 		let debugspacing = 110;
 		if (KDShowCharacterPalette) DrawButtonKDEx("fliplayerbonus", 
@@ -1567,7 +1567,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				}
 			}
 			return true;
-		}, true, 510 + debugspacing * ++II, 5, 100, 40, "Flip lyrbonus", KDBaseWhite);
+		}, true, 510 + debugspacing * ++II, 5, 100, 40, TextGet("KDWardrobeDebug_FlipLyrbonus"), KDBaseWhite);
 		if (KDSubmeshEditor) {
 			KDDrawSubmeshEditor();
 		}
@@ -1579,7 +1579,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					});
 					console.log(data);
 					return true;
-				}, true, 605, 5, 100, 40, "Print SM to console", KDBaseWhite);
+				}, true, 605, 5, 100, 40, TextGet("KDWardrobeDebug_PrintSMToConsole"), KDBaseWhite);
 		if (KDSubmeshEditor) {
 			KDDrawSubmeshEditor();
 		}
@@ -3733,7 +3733,7 @@ function KinkyDungeonExportWardrobeDataToClipboardOrModal(data: string, title: s
 		navigator.clipboard.writeText(data)
 }
 
-function KinkyDungeonWardrobePopup(data: string, title: string = "Wardrobe Data") {
+function KinkyDungeonWardrobePopup(data: string, title: string = "KDWardrobeDataTitle") {
 	const id = "kinky-dungeon-wardrobe-export";
 	if (document.querySelector(`#${id}`)) {
 		return;
@@ -3794,8 +3794,8 @@ function KinkyDungeonWardrobePopup(data: string, title: string = "Wardrobe Data"
   modal.appendChild(hr);
 
   modal.appendChild(KinkyDungeonErrorPreamble([
-    "Your browser doesn't appear to support exporting directly to the clipboard.\n",
-    "Here's the data for your outfit, for you to copy to your clipboard. Click on the text below and use Control+C to copy it.",
+    TextGet("KDWardrobeClipboardUnsupported"),
+    TextGet("KDWardrobeClipboardInstructions"),
   ]));
 
   const pre = document.createElement("pre");
@@ -3824,7 +3824,7 @@ function KinkyDungeonWardrobePopup(data: string, title: string = "Wardrobe Data"
   });
   modal.appendChild(buttons);
 
-  const closeButton = KinkyDungeonErrorModalButton("Close");
+  const closeButton = KinkyDungeonErrorModalButton(TextGet("KDErrorModalClose"));
   closeButton.addEventListener("click", () => {
     backdrop.remove();
   });

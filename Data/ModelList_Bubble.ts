@@ -105,7 +105,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Latex"],
-	AddPose: ["ForceHogtie"],
+	AddPose: ["ForceKneel"],
 	AddPoseConditional: {
 		BallsuitTip: ["BubbleHogtie"],
 	},

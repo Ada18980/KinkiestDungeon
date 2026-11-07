@@ -564,7 +564,7 @@ function KinkyDungeonShowModLoadFailedModal(errormod: string) {
     let modtext = ``;
     if (localStorage.getItem(`KinkyDungeonModList`)) {
         removeModFromOnlineList(errormod.replace(".zip", ``));
-        modtext = `and has been removed from automatically loading. Please refresh the game (F5)!`
+        modtext = TextGetFallback("KDModCrashRemoved", `and has been removed from automatically loading. Please refresh the game (F5)!`);
     }
 
     const id = 'kinky-dungeon-moderror-report'
@@ -615,7 +615,7 @@ function KinkyDungeonShowModLoadFailedModal(errormod: string) {
 	/*heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));
 	heading.appendChild(KinkyDungeonErrorImage("Wolfgirl"));
 	heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));*/
-	heading.appendChild(document.createTextNode("Error Loading Mods"));
+	heading.appendChild(document.createTextNode(TextGetFallback("KDModCrashHeading", "Error Loading Mods")));
 	/*heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));
 	heading.appendChild(KinkyDungeonErrorImage("Wolfgirl"));
 	heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));*/
@@ -629,9 +629,9 @@ function KinkyDungeonShowModLoadFailedModal(errormod: string) {
 	modal.appendChild(hr);
 
 	modal.appendChild(KinkyDungeonErrorPreamble([
-		"Kinky Dungeon failed to load mods last time it was running. ",
-		"Automatic mod loading has been disabled for this session.",
-        "The mod that caused the crash on loading was ",
+		TextGetFallback("KDModCrashFailed", "Kinky Dungeon failed to load mods last time it was running. "),
+		TextGetFallback("KDModCrashDisabled", "Automatic mod loading has been disabled for this session."),
+        TextGetFallback("KDModCrashCause", "The mod that caused the crash on loading was "),
         errormod,
         modtext
 	]));
@@ -645,7 +645,7 @@ function KinkyDungeonShowModLoadFailedModal(errormod: string) {
 	});
 	modal.appendChild(buttons);
 
-	const closeButton = KinkyDungeonErrorModalButton("Close");
+	const closeButton = KinkyDungeonErrorModalButton(TextGetFallback("KDErrorModalClose", "Close"));
 	closeButton.addEventListener("click", () => {
 		backdrop.remove();
 	});
@@ -667,7 +667,7 @@ function KDDrawModConfigs() {
     let CombarXX = 550;
     let modrows = 8; // Number of mods or config options
     // Draw text as a title for mod configuration
-    DrawTextFitKD(`Mod Configuration - ${TextGet("KDModButton" + (KDModToggleTab))}`, 1250, YYstart - 70, 1000, KDBaseWhite, undefined, 40);
+    DrawTextFitKD(`${TextGet("KDModConfigurationTitle")}${TextGet("KDModButton" + (KDModToggleTab))}`, 1250, YYstart - 70, 1000, KDBaseWhite, undefined, 40);
     let loadedmods = Object.keys(KDModConfigs);
     loadedmods = loadedmods.splice((KDModListPage) * modrows, modrows); // Select only the page of mods for which we are on
     loadedmods.forEach((loadedmod) => {

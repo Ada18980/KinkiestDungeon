@@ -430,8 +430,8 @@ function KDGetGameContextActionsVanilla(
 								zIndex: 99,
 							});
 						let sprintcost = KDSprintCost();
-						optionText.Sprint = TextGet("KDContextMenu_Sprint").replace("AMNT", Math.round(-sprintcost*10) + "sp");
-						DrawTextKD(Math.round(-sprintcost*10) + "sp",
+						optionText.Sprint = TextGet("KDContextMenu_Sprint").replace("AMNT", Math.round(-sprintcost*10) + TextGet("KDSprintCostUnit"));
+						DrawTextKD(Math.round(-sprintcost*10) + TextGet("KDSprintCostUnit"),
 							(newX - KinkyDungeonCamX + 0.5)*KinkyDungeonGridSizeDisplay,
 							(newY - KinkyDungeonCamY - 0.25)*KinkyDungeonGridSizeDisplay, KDBaseMint);
 					}

@@ -338,13 +338,13 @@ function KDDrawTileEditor() {
 			DrawButtonKDEx("ToTags", (_bdata) => {
 				KDTE_State = "Tags";
 				return true;
-			}, true, 20 , 920, 250, 64, 'Edit Tile Tags', KDBaseWhite);
+			}, true, 20 , 920, 250, 64, TextGet("KDTileEditor_EditTileTags"), KDBaseWhite);
 			KDDrawEditorUI();
 		} else {
 			DrawButtonKDEx("backToBrushes", (_bdata) => {
 				KDTE_State = "";
 				return true;
-			}, true, 20 , 920, 250, 64, 'Go Back', KDBaseWhite);
+			}, true, 20 , 920, 250, 64, TextGet("KDTileEditor_GoBack"), KDBaseWhite);
 			if (KDTE_State == "Tags")
 				KDDrawEditorTagsUI();
 		}
@@ -383,7 +383,7 @@ function KDDrawEditorUI() {
 	let yy = 160;
 	let xx = 100;
 	let grid = 10;
-	DrawTextFitKD("Tile Index", xx + grid * 1.5 , yy - 30, 200, KDBaseWhite);
+	DrawTextFitKD(TextGet("KDTileEditor_TileIndex"), xx + grid * 1.5 , yy - 30, 200, KDBaseWhite);
 	KDEditorTileIndexHover = '';
 	KDEditorTileIndex = KDEditorTileIndexStore[KDEditorTileIndexQuery];
 	KDEditorTileFlex = KDEditorTileFlexStore[KDEditorTileIndexQuery] || "";
@@ -425,7 +425,7 @@ function KDDrawEditorUI() {
 			KDEditorTileFlexStore[KDEditorTileIndexQuery] = KDEditorTileFlex;
 		}
 		return true;
-	}, true, 150 , 160, 140, 45, 'Flex', KDBaseWhite, KDEditorTileFlex ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
+	}, true, 150 , 160, 140, 45, TextGet("KDTileEditor_Flex"), KDBaseWhite, KDEditorTileFlex ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
 
 	DrawButtonKDEx("flexsupertoggle", (_bdata) => {
 		KDEditorTileFlexSuper = KDEditorTileFlexSuper ? "" : "y";
@@ -435,12 +435,12 @@ function KDDrawEditorUI() {
 			KDEditorTileFlexSuperStore[KDEditorTileIndexQuery] = KDEditorTileFlexSuper;
 		}
 		return true;
-	}, true, 150 , 210, 140, 45, 'OpenBorder', KDBaseWhite, KDEditorTileFlexSuper ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
+	}, true, 150 , 210, 140, 45, TextGet("KDTileEditor_OpenBorder"), KDBaseWhite, KDEditorTileFlexSuper ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
 
 	DrawButtonKDEx("accessibilitytoggle", () => {
 		KDTE_TestAccessibility = !KDTE_TestAccessibility;
 		return true;
-	}, true, 150, 260, 140, 45, "Test Access", KDBaseWhite, KDTE_TestAccessibility ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
+	}, true, 150, 260, 140, 45, TextGet("KDTileEditor_TestAccess"), KDBaseWhite, KDTE_TestAccessibility ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
 
 	// For later
 	let tileKeys = Object.keys(KDMapTilesListEditor);
@@ -520,7 +520,7 @@ function KDDrawEditorUI() {
 	xx = 300;
 	grid = 45;
 	width = 200;
-	DrawTextFitKD("Tile List", xx + width/2 , yy - 30, width, KDBaseWhite, undefined, 36);
+	DrawTextFitKD(TextGet("KDTileEditor_TileList"), xx + width/2 , yy - 30, width, KDBaseWhite, undefined, 36);
 
 	DrawButtonKDEx("tilenameup", (_bdata) => {
 		if (KDEditorTileNameIndex == 0) KDEditorTileNameIndex = tileKeys.length - 4;
@@ -552,11 +552,11 @@ function KDDrawEditorUI() {
 			return true;
 		}, true, xx , yy, width, grid-5, tileKeys[index], tileKeys[index] == KDEditorCurrentMapTileName ? KDBaseWhite : "#888888");
 		if (KDTELoadConfirm && tileKeys[index] == KDEditorCurrentMapTileName) {
-			DrawTextFitKD("Double click to LOAD", xx + width * 1.65 , yy + grid/2, width, KDBaseWhite, undefined);
+			DrawTextFitKD(TextGet("KDTileEditor_DoubleClickToLOAD"), xx + width * 1.65 , yy + grid/2, width, KDBaseWhite, undefined);
 			DrawButtonKDEx("deletetilename" + i, (_bdata) => {
 				delete KDMapTilesListEditor[KDEditorCurrentMapTileName];
 				return true;
-			}, true, xx - 160, yy, 150, grid-5, "Delete!!!", tileKeys[index] == KDEditorCurrentMapTileName ? KDBaseWhite : "#888888");
+			}, true, xx - 160, yy, 150, grid-5, TextGet("KDTileEditor_Delete"), tileKeys[index] == KDEditorCurrentMapTileName ? KDBaseWhite : "#888888");
 		}
 
 		yy += grid;
@@ -571,7 +571,7 @@ function KDDrawEditorUI() {
 	DrawButtonKDEx("tilesave", (_bdata) => {
 		KDTE_SaveTile(KDEditorCurrentMapTileName);
 		return true;
-	}, true, 900 , 150, 200, 60, 'Save Tile', KDBaseWhite);
+	}, true, 900 , 150, 200, 60, TextGet("KDTileEditor_SaveTile"), KDBaseWhite);
 
 
 	DrawButtonKDEx("maptileR", (_bdata) => {
@@ -602,42 +602,42 @@ function KDDrawEditorUI() {
 		KinkyDungeonSeeAll = false;
 		KDTE_CloseUI();
 		return true;
-	}, true, 10, 10, 350, 64, "Back to menu", KDBaseWhite, "");
+	}, true, 10, 10, 350, 64, TextGet("KDTileEditor_BackToMenu"), KDBaseWhite, "");
 	DrawButtonKDEx("TileEditorNew", () => {
 		let x = parseInt(ElementValue("MapTileX"));
 		let y = parseInt(ElementValue("MapTileY"));
 		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
 			KDTE_Create(x, y, undefined, false, false);
 		return true;
-	}, true, 1500, 130, 110, 64, "New (Open)", KDBaseWhite, "");
+	}, true, 1500, 130, 110, 64, TextGet("KDTileEditor_NewOpen"), KDBaseWhite, "");
 	DrawButtonKDEx("TileEditorNewFloor", () => {
 		let x = parseInt(ElementValue("MapTileX"));
 		let y = parseInt(ElementValue("MapTileY"));
 		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
 			KDTE_Create(x, y, undefined, false, true);
 		return true;
-	}, true, 1620, 130, 110, 64, "New (Empty)", KDBaseWhite, "");
+	}, true, 1620, 130, 110, 64, TextGet("KDTileEditor_NewEmpty"), KDBaseWhite, "");
 	DrawButtonKDEx("TileEditorNewClosed", () => {
 		let x = parseInt(ElementValue("MapTileX"));
 		let y = parseInt(ElementValue("MapTileY"));
 		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
 			KDTE_Create(x, y, undefined, true);
 		return true;
-	}, true, 1740, 130, 110, 64, "New (Closed)", KDBaseWhite, "");
+	}, true, 1740, 130, 110, 64, TextGet("KDTileEditor_NewClosed"), KDBaseWhite, "");
 	DrawButtonKDEx("TileEditorNewHollow", () => {
 		let x = parseInt(ElementValue("MapTileX"));
 		let y = parseInt(ElementValue("MapTileY"));
 		if (x && y && x > 0 && y > 0 && x <= KDTE_MAXDIM && y <= KDTE_MAXDIM)
 			KDTE_Create(x, y, undefined, true, true);
 		return true;
-	}, true, 1860, 130, 110, 64, "New (Closed+Empty)", KDBaseWhite, "");
+	}, true, 1860, 130, 110, 64, TextGet("KDTileEditor_NewClosedPlusEmpty"), KDBaseWhite, "");
 
 	DrawButtonKDEx("TileTest", () => {
 		KDTE_CloseUI();
 		KDTileToTest = KDTE_ExportTile();
 		KinkyDungeonStartNewGame();
 		return true;
-	}, true, 1910, 10, 80, 40, "Test Tile", KDBaseWhite, "");
+	}, true, 1910, 10, 80, 40, TextGet("KDTileEditor_TestTile"), KDBaseWhite, "");
 
 	if (!KDClipboardDisabled) {
 		DrawButtonKDEx("CopyClip", () => {
@@ -649,7 +649,7 @@ function KDDrawEditorUI() {
 				console.error('Async: Could not copy text: ', err);
 			});
 			return true;
-		}, true, 1450, 900, 275, 45, "Copy database to clipboard", KDBaseWhite, "");
+		}, true, 1450, 900, 275, 45, TextGet("KDTileEditor_CopyDatabaseToClipboard"), KDBaseWhite, "");
 
 		DrawButtonKDEx("MergeClip", () => {
 			let success = false;
@@ -684,7 +684,7 @@ function KDDrawEditorUI() {
 
 
 			return true;
-		}, true, 1450, 850, 275, 45, "Merge from clipboard", KDBaseWhite, "");
+		}, true, 1450, 850, 275, 45, TextGet("KDTileEditor_MergeFromClipboard"), KDBaseWhite, "");
 
 	} else {
 		let Copy = KDTextField("copyarrayToCB", 1450, 900, 275, 45, undefined, undefined, "", 12);
@@ -695,12 +695,12 @@ function KDDrawEditorUI() {
 				Copy.Element.value = text;
 			}
 		} else {
-			Copy.Element.value = "Get Database...";
+			Copy.Element.value = TextGet("KDTileEditor_GetDatabase");
 		}
 		
 		let MergeClip = KDTextField("MergeClip", 1450, 850, 275, 45, undefined, undefined, "", 12);
 		if (MergeClip.Created) {
-			MergeClip.Element.value = "Paste here to merge database";
+			MergeClip.Element.value = TextGet("KDTileEditor_PasteHereToMergeDatabase");
 			MergeClip.Element.oninput = () => {
 				let text = MergeClip.Element.value;
 				try {
@@ -724,9 +724,9 @@ function KDDrawEditorUI() {
 						if (success) {
 							localStorage.setItem("KDMapTilesListEditor", JSON.stringify(KDMapTilesListEditor));
 							console.log("Saved new tiles to browser local storage.");
-							MergeClip.Element.value = "Success";
+							MergeClip.Element.value = TextGet("KDTileEditor_Success");
 						} else 
-							MergeClip.Element.value = "Nothing new to add";
+							MergeClip.Element.value = TextGet("KDTileEditor_NothingNewToAdd");
 					}
 				} catch (e) {
 					console.log(e);
@@ -748,9 +748,9 @@ function KDDrawEditorUI() {
 
 
 		return true;
-	}, true, 1450, 800, 275, 40, "Reset tile database", KDBaseWhite, "");
+	}, true, 1450, 800, 275, 40, TextGet("KDTileEditor_ResetTileDatabase"), KDBaseWhite, "");
 	if (KDTE_confirmreset) {
-		DrawTextFitKD("This is a DESTRUCTIVE operation. Click the button again to do it. Save a tile to commit fully.", 1400, 470, 1000, "#e7cf1a", KDBaseRed);
+		DrawTextFitKD(TextGet("KDTileEditor_ResetWarning"), 1400, 470, 1000, "#e7cf1a", KDBaseRed);
 	}
 
 
@@ -776,7 +776,7 @@ function KDDrawEditorUI() {
 					console.error('Failed to read clipboard contents: ', err);
 				});
 			return true;
-		}, true, 1250, 950, 175, 45, "Load tile from Clipboard", KDBaseWhite, "");
+		}, true, 1250, 950, 175, 45, TextGet("KDTileEditor_LoadTileFromClipboard"), KDBaseWhite, "");
 
 	if (!KDClipboardDisabled)
 		DrawButtonKDEx("MakeTileCB", () => {
@@ -787,7 +787,7 @@ function KDDrawEditorUI() {
 				console.error('Async: Could not copy text: ', err);
 			});
 			return true;
-		}, true, 1250, 900, 175, 45, "Copy Tile to Clipboard", KDBaseWhite, "");
+		}, true, 1250, 900, 175, 45, TextGet("KDTileEditor_CopyTileToClipboard"), KDBaseWhite, "");
 
 	DrawButtonKDEx("CommitTiles", () => {
 		if (KDTE_confirmcommit) {
@@ -798,9 +798,9 @@ function KDDrawEditorUI() {
             if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 		}
 		return true;
-	}, true, 1450, 950, 275, 45, "Commit Editor Tiles", KDBaseWhite, "");
+	}, true, 1450, 950, 275, 45, TextGet("KDTileEditor_CommitEditorTiles"), KDBaseWhite, "");
 	if (KDTE_confirmcommit) {
-		DrawTextFitKD("This will temporarily make the game use your editor's tiles. You are responsible for any crashes.", 1400, 470, 1000, KDBaseWhite, "#ff00aa");
+		DrawTextFitKD(TextGet("KDTileEditor_CommitWarning"), 1400, 470, 1000, KDBaseWhite, "#ff00aa");
 	}
 
 	KDEditorTileIndexQuery = indexX
@@ -1197,26 +1197,26 @@ function KDTE_UpdateUI(Load: boolean): void {
 	}
 
 	if (KDTE_State == "Tags") {
-		DrawTextFitKD("Tile Tags", 300, 50, 500, KDBaseWhite);
+		DrawTextFitKD(TextGet("KDTileEditor_TileTags"), 300, 50, 500, KDBaseWhite);
 		ElementPosition("MapTags", 300, 200, 500, 200);
 
-		DrawTextFitKD("Require Tags", 300, 350, 500, KDBaseWhite);
+		DrawTextFitKD(TextGet("KDTileEditor_RequireTags"), 300, 350, 500, KDBaseWhite);
 		ElementPosition("MapRequireTags", 300, 500, 500, 200);
 
-		DrawTextFitKD("Forbid Tags", 300, 650, 500, KDBaseWhite);
+		DrawTextFitKD(TextGet("KDTileEditor_ForbidTags"), 300, 650, 500, KDBaseWhite);
 		ElementPosition("MapForbidTags", 300, 800, 500, 200);
 
 		for (let i = 0; i < tagCount; i++) {
-			DrawTextFitKD("Existing Tag", 1450, 150, 400, KDBaseWhite);
-			DrawTextFitKD("Mult", 1720, 150, 400, KDBaseWhite);
-			DrawTextFitKD("Bonus", 1820, 150, 400, KDBaseWhite);
-			DrawTextFitKD("Max", 1920, 150, 400, KDBaseWhite);
+			DrawTextFitKD(TextGet("KDTileEditor_ExistingTag"), 1450, 150, 400, KDBaseWhite);
+			DrawTextFitKD(TextGet("KDTileEditor_Mult"), 1720, 150, 400, KDBaseWhite);
+			DrawTextFitKD(TextGet("KDTileEditor_Bonus"), 1820, 150, 400, KDBaseWhite);
+			DrawTextFitKD(TextGet("KDTileEditor_Max"), 1920, 150, 400, KDBaseWhite);
 			ElementPosition("MapCountTag" + i, 1450, 200 + 50 * i, 200, 40);
 			ElementPosition("MapCountTagMult" + i, 1680, 200 + 50 * i, 150, 40);
 			ElementPosition("MapCountTagBonus" + i, 1820, 200 + 50 * i, 110, 40);
 			ElementPosition("MapCountTagMax" + i, 1920, 200 + 50 * i, 110, 40);
 
-			DrawTextFitKD("NOT", 1250, 150, 400, KDBaseWhite);
+			DrawTextFitKD(TextGet("KDTileEditor_NOT"), 1250, 150, 400, KDBaseWhite);
 			ElementPosition("MapCountTagNot" + i, 1250, 200 + 50 * i, 110, 40);
 		}
 	} else {
@@ -1239,15 +1239,15 @@ function KDTE_UpdateUI(Load: boolean): void {
 	ElementPosition("MapTileY", 1800, 75, 150);
 
 
-	DrawTextFitKD("Name of Tile", 1000, 25, 200, KDBaseWhite);
+	DrawTextFitKD(TextGet("KDTileEditor_NameOfTile"), 1000, 25, 200, KDBaseWhite);
 	ElementPosition("MapTileTitle", 1000, 70, 400);
 	let propTile = ElementValue("MapTileTitle");
 	KDEditorCurrentMapTileName = propTile;
 
-	DrawTextFitKD("Tileset", 1000 - 400, 25, 200, KDBaseWhite);
+	DrawTextFitKD(TextGet("KDTileEditor_Tileset"), 1000 - 400, 25, 200, KDBaseWhite);
 	ElementPosition("MapTileTileset", 1000 - 400, 70, 200);
 
-	DrawTextFitKD("Skin", 1000 - 400, 120, 200, KDBaseWhite);
+	DrawTextFitKD(TextGet("KDTileEditor_Skin"), 1000 - 400, 120, 200, KDBaseWhite);
 	KDTextField("MapTileSkin", 1000 - 400 - 100, 150, 200, 60,);
 
 	let propTileset = ElementValue("MapTileTileset");
@@ -1255,14 +1255,14 @@ function KDTE_UpdateUI(Load: boolean): void {
 		KinkyDungeonMapIndex.grv = propTileset;
 	}
 
-	DrawTextFitKD("Category", 1000 + 350, 25, 200, KDBaseWhite);
+	DrawTextFitKD(TextGet("KDTileEditor_Category"), 1000 + 350, 25, 200, KDBaseWhite);
 	ElementPosition("MapTileCategory", 1000 + 350, 70, 200);
 
-	DrawTextFitKD("Weight", 1000 + 550, 25, 200, KDBaseWhite);
+	DrawTextFitKD(TextGet("KDTileEditor_Weight"), 1000 + 550, 25, 200, KDBaseWhite);
 	ElementPosition("MapTileWeight", 1000 + 550, 70, 200);
 
 	if (KDTE_Inaccessible)
-		DrawTextFitKD("Some entrances are inaccessible. This tile will occur more rarely in worldgen", 1000, 800, 1000, KDBaseRed);
+		DrawTextFitKD(TextGet("KDTileEditor_InaccessibleWarning"), 1000, 800, 1000, KDBaseRed);
 }
 
 function KDTESetIndexToTile(propTile: string): void {

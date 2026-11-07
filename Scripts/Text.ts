@@ -666,6 +666,15 @@ function HasText(TextTag: string, params?: TemplateParams): boolean {
 }
 
 
+function TextGetFallback(key: string, fallback: string): string {
+	try {
+		return HasText(key) ? TextGet(key) : fallback;
+	} catch {
+		return fallback;
+	}
+}
+
+
 
 function TextLoad(): void {
 	textProvider.setLanguage(TranslationLanguage as LanguageIdentifier);
