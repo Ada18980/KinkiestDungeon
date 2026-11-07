@@ -83,29 +83,6 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 ( 本游戏中没有蜘蛛 )
 # - 
 # :: Intro4BC
-# :: KDToggleDescGraphicsQuality
-# :: KDToggleDescEnemyAnimations
-# :: KDToggleDescLazyWalk
-# :: KDToggleDescShiftLatch
-# :: KDToggleDescCrotchRopeOption
-# :: KDToggleDescChastityOption
-# :: KDToggleDescChastityOption2
-# :: KDToggleDescChastityBraOption
-# :: KDToggleDescSimpleColorPicker
-# :: KDToggleDescCenter
-# :: KDToggleDescBuffSide
-# :: KDToggleDescShowPath
-# :: KDToggleDescShowFacing
-# :: KDToggleDescShowSameCatSpells
-# :: KDToggleDescPlayerAura
-# :: KDToggleDescEnemyAura
-# :: KDToggleDescSoundNotification
-# :: KDToggleDescOutlineAura
-# :: KDToggleDescNearestNeighbor
-# :: KDToggleDescAutoCrouchOnTrip
-# :: KDToggleDescRetroAnim
-# :: KDToggleDescFlipStatusBars
-# :: KDToggleDescHelper
 # :: KinkyDungeonStatT
 # :: KinkyDungeonStatDescT
 # :: KDBuffName_InnerPowerArcaneStore
@@ -373,6 +350,9 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDToggleDescIntenseOrgasm
 # :: KDToggleDescHighResDisplacement
 # :: KDToggleDescHiResModel
+# :: KDToggleDescGraphicsQuality
+# :: KDToggleDescNearestNeighbor
+# :: KDToggleDescAutoCrouchOnTrip
 # - Allows you to headpat the player character ingame
 # - Tries to fit more into tooltips before splitting into pages
 # - Cycles through tooltip pages automatically. Otherwise, enter Inspect mode and click on the target.
@@ -421,6 +401,26 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # - Uses lower-resolution textures to save on VRAM. On web version, forces preloading of textures.
 # - Pre-renders the player model to a higher resolution before scaling down, making the image smoother but requiring more memory.
 # - Preloads all of the game's assets on launch, using a significant amount of memory but mostly eliminating load times.
+# - Displays subtle animations for NPCs on the game board such as breathing, floating, etc.
+# - When slowed, automatically waits until you are able to move again before you can act. Makes the game more difficult, but requires less clicking.
+# - Normally, the shift key triggers when pressed instead of released like other keys. With this option enabled, it will also trigger when released if holding for longer than 250ms. Binding an action to the shift key will allow it to be pressed twice with the same keypress. The intended and default behavior of this is that you only need to hold shift to sprint instead of tapping it to turn sprinting on and then tapping it again to turn off.
+# - Crotch ropes are rendered under panties instead of over them.
+# - Renders chastity belts over panties instead of under.
+# - Renders chastity belts over harnesses instead of under. Takes precedence over 'Chastity over Panties'
+# - Renders chastity bras over bras instead of under.
+# - Use the color wheel instead of sliders for coloring layers in the wardrobe.
+# - Centers the player character on the screen instead of offset to the side.
+# - Renders the buff bar on the side next to the player portrait instead of above the hotbar.
+# - Shows the path the player will take when Auto Path is enabled.
+# - Shows an arrow to indicate the 'facing' of the player character. Relevant for some perks such as inertial movement or directional vision.
+# - Makes the 'Learnable' filter in the spells menu also show spells and abilities that you can unlock the prerequisite of.
+# - Show visual indicators of buffs on the player character's map icon.
+# - Show visual indicators of buffs on NPCs.
+# - Play a sound effect when your character hears sounds that they cannot see.
+# - Use an outline instead of colored circles to represent buffs on NPCs.
+# - Makes enemy animations intentionally 'choppy' instead of smooth.
+# - Flips the fill direction of the status bars (WP, DP, etc) on the main UI
+# - If the cursor is between a wall tile and an open tile, preferentially targets the open tile, except when targeting spells.
 # - Show nipples on characters
 # - Nipple toys appear on top of bras, rather than below.
 # - Hides nipple clamps and toys that aren't piercings.
@@ -17635,10 +17635,6 @@ EnemyName 设法带着你的物品撤退了！
 从一些增加约束性和沉浸感的特质开始
 - Choose some perks to spice up your run.
 选择一些额外特质，为你的游玩增添趣味
-- Accept
-接受
-- Don't Track Me
-不要追踪我的数据
 - Proceed
 继续
 
@@ -46607,6 +46603,8 @@ ${Item} 瞄准
 已抓住捆绑目标！
 - Bind
 束缚术
+# :: KinkyDungeonSpellBondage
+# :: KDDebug_Bind
 - Choose target to bind
 选择要捆绑的目标
 - Target Acquired!
@@ -50516,6 +50514,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - Shop
 店铺
+# :: KDRoomType_ShopStart
+# :: KDDebug_Shop
 - Chamber
 寝室
 - Prison
@@ -55526,3 +55526,106 @@ Buttplug.io 设备${DEVICE}电量低
 # - '${BuffType}' effects of the same type do not stack.
 
 # - Book
+
+# - Activated
+# - Set Title
+# - sp
+# - Stamina: 
+# - Mana: 
+# - Willpower: 
+# - Distraction: 
+# - Mod Configuration - 
+# - Error, the thing you just did would have set your gold to infinity. Please report.
+# - Wardrobe Data
+# - Your browser doesn't appear to support exporting directly to the clipboard.
+# - Here's the data for your outfit, for you to copy to your clipboard. Click on the text below and use Control+C to copy it.
+# - Copy to clipboard
+# - Awoo!
+# - Failed
+# - Close
+# - An error has occurred whilst Kinky Dungeon was running. 
+# - You may be able to continue playing, but Kinky Dungeon might not function correctly.
+# - Please report this error in the Kinky Dungeon Discord so that we can dispatch our team of highly-trained wolfgirls to fix it.
+# - When you make your report, please include the following debug information - the wolfgirls will appreciate it!
+# - Kinky Dungeon failed to load mods last time it was running. 
+# - Automatic mod loading has been disabled for this session.
+# - The mod that caused the crash on loading was 
+# - and has been removed from automatically loading. Please refresh the game (F5)!
+# - Kinky Dungeon Crash Handler
+# - Error Loading Mods
+
+# - Tile Editor
+# - Debug Mode
+# - Verbose Console
+# - Changeable Perks
+# - Unlimited Gold
+# - Forcibly add restraints from inv
+# - Link Under
+# - Enemy
+# - Ally
+# - Add to inventory
+# - Teleport to stairs
+# - Get save code
+# - Enter parole mode
+# - Defeat
+# - Add keys and lockpicks
+# - Toggle OmniVision™
+# - Add 10 spell points
+# - Clear loose restraints
+# - Clear worn restraints
+# - Open Storage
+# - Add all restraints
+# - Increment Floor
+# - Rest SP
+# - +Max SP
+# - Rest MP
+# - +Max MP
+# - Rest WP
+# - +Max WP
+# - Rest DP
+# - +Max DP
+# - Tile Tags
+# - Require Tags
+# - Forbid Tags
+# - Existing Tag
+# - Mult
+# - Bonus
+# - Max
+# - NOT
+# - Name of Tile
+# - Tileset
+# - Skin
+# - Category
+# - Weight
+# - Edit Tile Tags
+# - Go Back
+# - Tile Index
+# - Flex
+# - OpenBorder
+# - Test Access
+# - Tile List
+# - Double click to LOAD
+# - Delete!!!
+# - Save Tile
+# - Back to menu
+# - New (Open)
+# - New (Empty)
+# - New (Closed)
+# - New (Closed+Empty)
+# - Test Tile
+# - Copy database to clipboard
+# - Merge from clipboard
+# - Reset tile database
+# - Load tile from Clipboard
+# - Copy Tile to Clipboard
+# - Commit Editor Tiles
+# - Get Database...
+# - Paste here to merge database
+# - Nothing new to add
+# - Success
+# - Some entrances are inaccessible. This tile will occur more rarely in worldgen
+# - This is a DESTRUCTIVE operation. Click the button again to do it. Save a tile to commit fully.
+# - This will temporarily make the game use your editor's tiles. You are responsible for any crashes.
+# - Submesh Editor
+# - Flip lyrbonus
+# - Print SM to console
