@@ -1911,6 +1911,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			let healed = false;
 			for (let enemy of KDMapData.Entities) {
 				if (KDAllied(enemy)
+					&& !(enemy?.Enemy?.regen < 0)
 					&& (enemy.hp > 0 || KDHelpless(enemy))
 					&& KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
 					KDHealNPC(enemy, e.power, -1);
@@ -11851,7 +11852,11 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 					let nearby = KDNearbyEnemies(enemy.x, enemy.y, e.dist);
 					for (let en of nearby) {
 						if (KDFactionRelation(KDGetFaction(en), KDGetFaction(enemy)) > 0.05)
-							if (((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy))) && en.hp > 0.52) en.hp = Math.min(en.hp + e.power, en.Enemy.maxhp);
+							if (((data.allied && KDAllied(enemy))
+								|| (!data.allied && !KDAllied(enemy)))
+							&& !(en?.Enemy?.regen < 0)
+							&& en.hp > 0.52)
+								KDHealNPC(en, e.power, -1);
 					}
 					near.push(...nearby);
 				}

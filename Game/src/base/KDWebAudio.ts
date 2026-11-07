@@ -68,7 +68,8 @@ function KDLoadSFXPack(): Promise<void> {
 				return value.arrayBuffer();
 			})
 			.then((data) => {
-				let id = new TextDecoder().decode(new Uint8Array(data, 0, KDSFXPackID.length));
+				let id = new TextDecoder().decode(
+					new Uint8Array(data, 0, KDSFXPackID.length));
 				if (id != KDSFXPackID) {
 					throw new Error("Wrong SFX pack ID");
 				}
