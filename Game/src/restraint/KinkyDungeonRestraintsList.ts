@@ -3996,7 +3996,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTags: {},
 		minLevel: 0,
 		allFloors: true,
-		shrine: ["Furniture", "Container", "CrystalEncase", "BlockKneel", "FeetLinked", "HandsBehind"],
+		shrine: ["Furniture", "Container", "CrystalEncase", "BlockKneel", "FeetLinked", "HandsBehind", "DiscourageHogtie"],
 		ignoreSpells: true,
 		removeOnLeash: true,
 		immobile: true,
@@ -6008,7 +6008,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTags: {},
 		minLevel: 0,
 		allFloors: true,
-		shrine: ["Furniture", "Container", "Sarcophagus"],
+		shrine: ["Furniture", "Container", "Sarcophagus", "BlockKneel"],
 		ignoreSpells: true,
 		removeOnLeash: true,
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]

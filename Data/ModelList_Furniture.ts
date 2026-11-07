@@ -189,7 +189,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Latex"],
-	AddPose: ["UprightHogtie", "ForceKneel"],
+	AddPose: ["SuspendedHogtie", "ForceKneel"],
 	Layers: ToLayerMap([
 		{ Name: "LatexCube", Layer: "FurnitureFront", Pri: -40,
 			Invariant: true,
