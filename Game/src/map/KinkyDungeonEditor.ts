@@ -1419,7 +1419,7 @@ function KDTE_LoadTile(name: any, loadedTile?: KDMapTile) {
 	let newJail = [];
 	for (let j of nt.Jail.reverse()) {
 		let jp : any = {};
-		if (!alreadyJail[j.x + "," + j.y] && (!!KinkyDungeonTilesGet(j.x + "," + j.y)?.Furniture || KinkyDungeonMapGet(j.x,j.y) == 'a')) {
+		if (KDIsInBounds(j.x, j.y, 0) && !alreadyJail[j.x + "," + j.y] && (!!KinkyDungeonTilesGet(j.x + "," + j.y)?.Furniture || KinkyDungeonMapGet(j.x,j.y) == 'a')) {
 			alreadyJail[j.x + "," + j.y] = true;
 		} else continue;
 		KDMapData.JailPoints.push(Object.assign(jp, j));

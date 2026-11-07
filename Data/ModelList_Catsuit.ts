@@ -829,7 +829,8 @@ AddModel({
 			EraseAmount: 100,
 			EraseInvariant: true,
 			EraseSprite: "EraseCoreUpper",
-			EraseLayers: {CatsuitUpper: true}
+			EraseLayers: {CatsuitUpper: true},
+			NoOverride: true,
 		},
 		{
 			Name: "LeotardLower",
@@ -837,6 +838,7 @@ AddModel({
 			Pri: 5,
 			InheritColor: "TorsoLower",
 			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Hogtie"},
+			NoOverride: true,
 		},
 		{
 			Name: "Chest",
@@ -869,6 +871,7 @@ AddModel({
 			Layer: "TorsoUpper",
 			Pri: 5,
 			InheritColor: "TorsoUpper",
+			NoOverride: true,
 		},
 		{
 			Name: "LeotardLower",
@@ -876,12 +879,14 @@ AddModel({
 			Pri: 5,
 			InheritColor: "TorsoLower",
 			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Hogtie"},
+			NoOverride: true,
 		},
 		{
 			Name: "Chest",
 			Layer: "CatsuitChest",
 			Pri: 5,
 			InheritColor: "TorsoUpper",
+			NoOverride: true,
 		},
 	]),
 });
