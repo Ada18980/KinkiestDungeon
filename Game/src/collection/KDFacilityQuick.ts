@@ -57,7 +57,7 @@ KDCollectionTabDraw.FacilityQuick = (value, buttonSpacing, III, x, y) => {
 				}
 			);
 		}
-		if (DrawButtonKDEx("facQuickAssign" + fac[0], (b) => {
+		DrawButtonKDEx("facQuickAssign" + fac[0], (b) => {
 			if (!valid) return false;
 			if (!allowed) return false;
 			let oldFacility = value.Facility;
@@ -99,10 +99,7 @@ KDCollectionTabDraw.FacilityQuick = (value, buttonSpacing, III, x, y) => {
 			hotkeyPress: ii < KinkyDungeonKeySpell.length ? KinkyDungeonKeySpell[ii] : undefined,
 			scaleImage: true,
 			centered: true,
-		})) {
-			DrawTextFitKD(TextGet(`KDCollection${(!allowed) ? (KDIsInPartyID(value.id) ? "CantParty" : "Cant") : (assigned ? "Remove" : "Assign")}`) + TextGet("KDFacility_" + (assigned ? value.Facility : fac[0])),
-				x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
-		}
+		}, KDButtonTooltip(TextGet(`KDCollection${(!allowed) ? (KDIsInPartyID(value.id) ? "CantParty" : "Cant") : (assigned ? "Remove" : "Assign")}`) + TextGet("KDFacility_" + (assigned ? value.Facility : fac[0])), undefined, "center"));
 		ii++;
 
 		if (XX >= quikCols) {

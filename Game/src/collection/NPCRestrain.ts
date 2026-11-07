@@ -507,7 +507,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 	if (!currentBottomTab) {
 		let enemy = KDGetGlobalEntity(npcID);
 		if (enemy?.boundLevel < KDGetExpectedBondageAmountTotal(npcID, enemy, false)) {
-			if (DrawButtonKDEx("TightenBinds", (b) => {
+			DrawButtonKDEx("TightenBinds", (b) => {
 				if (!KDIsNPCPersistent(npcID) || KDGetPersistentNPC(npcID).collect)
 					KDSendInput("tightenNPCRestraint", {
 						npc: npcID,
@@ -523,11 +523,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Tighten.png",
 			undefined, undefined, false,
 			(!KDIsNPCPersistent(npcID) || KDGetPersistentNPC(npcID).collect) ?
-				KDButtonColor : KDBaseRed)) {
-					DrawTextFitKD(TextGet("KDTightenRestraint"), x + 0, y + 720, 500, KDBaseWhite,
-					KDTextGray0, 18, "left");
-
-				}
+				KDButtonColor : KDBaseRed, undefined, undefined, undefined, KDButtonTooltip(TextGet("KDTightenRestraint"), undefined, "center"));
 		}
 	}
 

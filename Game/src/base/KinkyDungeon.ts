@@ -1596,9 +1596,17 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
 
         let TooltipHeight = Math.max(20, ((pad * 2) + (20)));
 
+		// Centered tooltips sit above the button, or below it if there is no room above.
+		let aboveButton = object.align == "center" && KDCurrentHoverBox.Top >= 60;
+		let tooltipBottom = KDCurrentHoverBox.Top - 5;
+
         let tooltipX = KDCurrentHoverBox.Left + KDCurrentHoverBox.Width;
+		if (object.align == "center") {
+			tooltipX = Math.max(0, Math.min(PIXIWidth - TooltipWidth,
+				KDCurrentHoverBox.Left + (KDCurrentHoverBox.Width - TooltipWidth) / 2));
+		}
         // Move the tooltip to the left if it would flow off the right side of the screen.
-		if (object.align != "right") {
+		else if (object.align != "right") {
 			if ((tooltipX + TooltipWidth + 10) > PIXIWidth) {
 				tooltipX = KDCurrentHoverBox.Left - TooltipWidth;
 			}
@@ -1607,7 +1615,9 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
 				tooltipX = KDCurrentHoverBox.Left - TooltipWidth;
 			}
 		}
-        let tooltipY = KDCurrentHoverBox.Top;
+        let tooltipY = (object.align == "center" && !aboveButton)
+			? KDCurrentHoverBox.Top + KDCurrentHoverBox.Height + 2
+			: KDCurrentHoverBox.Top;
         // Move the tooltip up if it would flow off the bottom of the screen. 
         if ((tooltipY + TooltipHeight + 10) > PIXIHeight) {
             tooltipY = PIXIHeight - TooltipHeight;
@@ -1616,14 +1626,15 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
         
         if (object.name) {
             let height = DrawTextFitKDgetHeight(`${object.name}`, tooltipX + (TooltipWidth / 2), 
-			tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor, 
-			object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24), 
+			aboveButton ? tooltipBottom - YY : tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor,
+			object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24),
 			"center", 701, undefined, undefined, undefined,
-			 undefined, object.wrap, "top");
+			 undefined, object.wrap, aboveButton ? "bottom" : "top");
             YY += (height + 10);
 			TooltipHeight += height;
 			TooltipHeight -= 20;
         }
+		if (aboveButton) tooltipY = tooltipBottom - TooltipHeight;
         FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + object.name, {
             Left: tooltipX,
             Top: tooltipY, //- 25,

@@ -108,7 +108,7 @@ function KDDrawCollectionFilters(x: number, y: number) {
 	let spacing = 80;
 	let II = 0;
 	for (let filter of Object.entries(KDCollectionFilters)) {
-		if (DrawButtonKDEx("KDCollFilter" + filter[0], (_b) => {
+		DrawButtonKDEx("KDCollFilter" + filter[0], (_b) => {
 			filter[1].Current += 1;
 			if (filter[1].Current >= filter[1].Options.length) {
 				filter[1].Current = 0;
@@ -117,11 +117,8 @@ function KDDrawCollectionFilters(x: number, y: number) {
 		}, true, x - spacing * II++, y, 72, 72, "", KDBaseWhite,
 		KinkyDungeonRootDirectory
 			+ "UI/CollectionFilter/" + (filter[1].Options[filter[1].Current] || filter[1].Options[1]) + ".png", undefined, undefined,
-		!filter[1].Current, KDButtonColor)) {
-			DrawTextFitKD(TextGet("KDCollectionFilter" + filter[0])
-				+ TextGet("KDCollectionFilter" + filter[1].Options[filter[1].Current]),
-			x - spacing * II + spacing + 36, y - 20, 500, KDBaseWhite, KDTextGray0,);
-		}
+		!filter[1].Current, KDButtonColor, undefined, undefined, undefined, KDButtonTooltip(TextGet("KDCollectionFilter" + filter[0])
+				+ TextGet("KDCollectionFilter" + filter[1].Options[filter[1].Current]), undefined, "center"));
 	}
 }
 
@@ -130,7 +127,7 @@ function KDDrawCollectionTabOptions(x: number, y: number) {
 	let II = 0;
 	for (let tab of KDCollectionTabButtons) {
 		if (!KDCollectionTabButtonFilter[tab] || KDCollectionTabButtonFilter[tab]())
-		if (DrawButtonKDEx("KDCollTabSet" + tab, (_b) => {
+		DrawButtonKDEx("KDCollTabSet" + tab, (_b) => {
 			if (KDCollectionTab) KDCollectionTab = "";
 			else KDCollectionTab = tab;
 			return true;
@@ -139,10 +136,7 @@ function KDDrawCollectionTabOptions(x: number, y: number) {
 			+ "UI/CollectionTab/" + tab + ".png", undefined, undefined,
 		KDCollectionTab != tab, KDButtonColor, undefined, undefined, {
 			centered: true,
-		})) {
-			DrawTextFitKD(TextGet("KDCollectionTab_" + tab),
-				x + spacing * II + spacing + 36, y - 20, 500, KDBaseWhite, KDTextGray0,);
-		}
+		}, KDButtonTooltip(TextGet("KDCollectionTab_" + tab), undefined, "center"));
 	}
 }
 
@@ -481,19 +475,15 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 	let II = 0;
 	let spacing = 90;
-	if (DrawButtonKDEx("toggleBig", () => {
+	DrawButtonKDEx("toggleBig", () => {
 		KDToggleBigView = !KDToggleBigView;
 		return true;
 	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Inspect.png", undefined, undefined,
 		!KDToggleBigView, KDButtonColorIntense, undefined, undefined, {
 			centered: true
-		})) {
-
-		DrawTextFitKD(TextGet("KDZoomNPC"), x - 100, y + spacing * (II-0.5), 500, 
-		KDBaseWhite, KDTextGray0, undefined, "right");
-	}
-	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", () => {
+		}, KDButtonTooltip(TextGet("KDZoomNPC"), undefined, "center"));
+	if (KDGameData.Collection[value.id + ""]) DrawButtonKDEx("dressNPC", () => {
 		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
 		//KDSpeakerNPC = null;
@@ -565,24 +555,17 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		KinkyDungeonRootDirectory + "UI/Dress.png", undefined, undefined,
 		true, KDButtonColorIntense, undefined, undefined, {
 			centered: true
-		})) {
-		DrawTextFitKD(TextGet("KDDressNPC"), x -100, y + spacing * (II-0.5), 500, 
-		KDBaseWhite, KDTextGray0, undefined, "right");
-	}
-	if (DrawButtonKDEx("toggleInfo", () => {
+		}, KDButtonTooltip(TextGet("KDDressNPC"), undefined, "center"));
+	DrawButtonKDEx("toggleInfo", () => {
 		KDToggleCollectionInfo = !KDToggleCollectionInfo;
 		return true;
 	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/CollectionInfo.png", undefined, undefined,
 		!KDToggleCollectionInfo, KDButtonColorIntense, undefined, undefined, {
 			centered: true
-		})) {
+		}, KDButtonTooltip(TextGet("KDInfoNPC"), undefined, "center"));
 
-		DrawTextFitKD(TextGet("KDInfoNPC"), x - 100, y + spacing * (II-0.5), 500, 
-		KDBaseWhite, KDTextGray0, undefined, "right");
-	}
-
-	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("renameNPC", () => {
+	if (KDGameData.Collection[value.id + ""]) DrawButtonKDEx("renameNPC", () => {
 		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Unlock" + ".ogg");
 		KDRenameNPC = !KDRenameNPC;
@@ -591,10 +574,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		KinkyDungeonRootDirectory + "UI/Rename.png", undefined, undefined,
 		!KDRenameNPC, KDButtonColorIntense, undefined, undefined, {
 			centered: true
-		})) {
-		DrawTextFitKD(TextGet("KDRenameNPC"), x - 100, y + spacing * (II-0.5), 500, 
-		KDBaseWhite, KDTextGray0, undefined, "right");
-	}
+		}, KDButtonTooltip(TextGet("KDRenameNPC"), undefined, "center"));
 
 
 	let sp = (value.sprite || value.type);
@@ -933,7 +913,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 							zIndex: 160,
 						}
 					);
-					if (DrawButtonKDEx("facilityAssign", (_b) => {
+					DrawButtonKDEx("facilityAssign", (_b) => {
 						if (!valid) return false;
 						if (!assigned) {
 							let data = KDGameData.FacilitiesData[collType + "_" + KDCurrentFacilityTarget];
@@ -963,10 +943,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 						return true;
 					}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", KDBaseWhite,
 					KinkyDungeonRootDirectory + `UI/Facility/${value.Facility || KDCurrentFacilityTarget}.png`,
-					undefined, undefined, !valid, (!valid) ? KDBaseRed : undefined)) {
-						DrawTextFitKD(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}`) + TextGet("KDFacility_" + (assigned ? value.Facility : KDCurrentFacilityTarget)),
-							x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
-					}
+					undefined, undefined, !valid, (!valid) ? KDBaseRed : undefined, undefined, undefined, undefined, KDButtonTooltip(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}`) + TextGet("KDFacility_" + (assigned ? value.Facility : KDCurrentFacilityTarget)), undefined, "center"));
 				}
 
 			}
@@ -1378,7 +1355,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 		}
 
-		if (DrawButtonKDEx(value.name + "_coll," + value.id, (_data) => {
+		DrawButtonKDEx(value.name + "_coll," + value.id, (_data) => {
 			KDCollectionSelected = value.id;
 			KDResetCollectionUI();
 			return true;
@@ -1386,11 +1363,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 		XX,
 		YY,
 		79, 79, "", KDBaseWhite, drawChar ? "" : (KinkyDungeonRootDirectory + dir + sp + ".png"),
-		"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}
-		)) {
-			DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, KDBaseWhite,
-				(value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 24);
-		}
+		"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}, Object.assign(KDButtonTooltip(value.name, undefined, "center"), {TitleTextColorBack: (value.color && value.color != "#ffffff") ? value.color : KDTextGray05}));
 
 		if (drawCallback) drawCallback(value, XX, YY);
 
@@ -1504,7 +1477,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 			}
 
-			if (DrawButtonKDEx(value.name + "_guest," + value.id, (_data) => {
+			DrawButtonKDEx(value.name + "_guest," + value.id, (_data) => {
 				KDCollectionSelected = value.id;
 				KDResetCollectionUI();
 				return true;
@@ -1512,10 +1485,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 			XX,
 			YY,
 			79, 79, "", KDBaseWhite, drawChar ? "" : (KinkyDungeonRootDirectory + dir + sp + ".png"),
-			"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}
-			)) {
-				DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, KDBaseWhite, (value.color && value.color != KDBaseWhite) ? value.color : KDTextGray05, 24);
-			}
+			"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}, Object.assign(KDButtonTooltip(value.name, undefined, "center"), {TitleTextColorBack: (value.color && value.color != KDBaseWhite) ? value.color : KDTextGray05}));
 
 			if (drawCallback) drawCallback(value, XX, YY);
 
@@ -1671,7 +1641,7 @@ let KDCollectionTabScreen = {
 let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 	Imprison: (value, buttonSpacing, III, x, y) => {
 		let entity = KinkyDungeonFindID(value.id) || KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
-		if (DrawButtonKDEx("ImprisonNPC", (_b) => {
+		DrawButtonKDEx("ImprisonNPC", (_b) => {
 
 			if (entity || KDNPCUnavailable(value.id, value.status)) {
 				return false;
@@ -1712,15 +1682,12 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		undefined, undefined, entity != undefined,
 			KDNPCUnavailable(value.id, value.status) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 				centered: true,
-			})) {
-			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, KDBaseWhite,
-				KDTextGray0);
-		}
+			}, KDButtonTooltip(TextGet("KDImprison"), undefined, "center"));
 		return III;
 	},
 	Dropoff: (value, buttonSpacing, III, x, y) => {
 		let entity = KinkyDungeonFindID(value.id) || KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
-		if (DrawButtonKDEx("DropoffNPC", (_b) => {
+		DrawButtonKDEx("DropoffNPC", (_b) => {
 
 			if (entity || KDNPCUnavailable(value.id, value.status)) {
 				return false;
@@ -1777,14 +1744,11 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		undefined, undefined, entity != undefined,
 			KDNPCUnavailable(value.id, value.status) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 				centered: true,
-			})) {
-			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, KDBaseWhite,
-				KDTextGray0);
-		}
+			}, KDButtonTooltip(TextGet("KDImprison"), undefined, "center"));
 		return III;
 	},
 	Restrain: (value, buttonSpacing, III, x, y) => {
-		if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("RestrainFree", (_b) => {
+		if (KDGameData.Collection[value.id + ""]) DrawButtonKDEx("RestrainFree", (_b) => {
 			if (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect)
 				KDSendInput("freeNPCRestraint", {
 					npc: value.id,
@@ -1799,25 +1763,19 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 		"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/RestrainFree.png",
 		undefined, undefined, false, (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect) ?
-		KDButtonColor : KDBaseRed)) {
-			DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, KDBaseWhite,
-				KDTextGray0);
-		}
-		if (DrawButtonKDEx("returnToCollectionRestrain", (_b) => {
+		KDButtonColor : KDBaseRed, undefined, undefined, undefined, KDButtonTooltip(TextGet("KDFreePrisoner"), undefined, "center"));
+		DrawButtonKDEx("returnToCollectionRestrain", (_b) => {
 			KDCurrentRestrainingTarget = 0;
 			if (KDSoundEnabled())
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 		"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/RestrainBack.png",
-		undefined, undefined, false)) {
-			DrawTextFitKD(TextGet("KDRestrainNPCBack"), x + 220, y + 750, 500, KDBaseWhite,
-				KDTextGray0);
-		}
+		undefined, undefined, false, undefined, undefined, undefined, undefined, KDButtonTooltip(TextGet("KDRestrainNPCBack"), undefined, "center"));
 		return III;
 	},
 	Default: (value, buttonSpacing, III, x, y) => {
-		if (KDPromotableStatus.includes(value.status) && DrawButtonKDEx("promoteNPC", (_b) => {
+		if (KDPromotableStatus.includes(value.status)) DrawButtonKDEx("promoteNPC", (_b) => {
 			if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
 				if (KDCanPromote(value)) {
 					KDPromote(value);
@@ -1834,11 +1792,10 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			}
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Promote.png",
-		undefined, undefined, false, (!KDCanPromote(value) || KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns) ? KDBaseRed : "")) {
-			DrawTextFitKD(TextGet(KDCanPromote(value) ? "KDPromoteNPC" :
+		undefined, undefined, false, (!KDCanPromote(value) || KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns) ? KDBaseRed : "", undefined, undefined, undefined, KDButtonTooltip(TextGet(KDCanPromote(value) ? "KDPromoteNPC" :
 			(KDIsInPartyID(value.id) ? "KDPromoteRemoveFromParty" : "KDPromoteNotEnough")
-		), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
-		} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (_b) => {
+		), undefined, "center"));
+		else if (value.status == "Servant") DrawButtonKDEx("demoteNPC", (_b) => {
 			value.status = value.oldstatus || "";
 			delete value.Facility;
 			KDSortCollection();
@@ -1846,28 +1803,23 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Demote.png",
-		undefined, undefined, false)) {
-			DrawTextFitKD(TextGet("KDDemoteNPC"), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
-		}
+		undefined, undefined, false, undefined, undefined, undefined, undefined, KDButtonTooltip(TextGet("KDDemoteNPC"), undefined, "center"));
 
 		if ((!value.status
 			|| Object.values(KDGetNPCRestraints(value.id)).length > 0
 			|| KDIsOKWithRestraining(value))
 			&& !KDNPCUnavailable(value.id, value.status))
-			if (DrawButtonKDEx("CollectionRestrain", (_b) => {
+			DrawButtonKDEx("CollectionRestrain", (_b) => {
 				KDCurrentRestrainingTarget = value.id;
 				if (KDSoundEnabled())
 					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Chain" + ".ogg");
 				return true;
 			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 			"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Restrain.png",
-			undefined, undefined, false)) {
-				DrawTextFitKD(TextGet("KDRestrainNPC"), x + 220, y + 750, 500, KDBaseWhite,
-					KDTextGray0);
-			}
+			undefined, undefined, false, undefined, undefined, undefined, undefined, KDButtonTooltip(TextGet("KDRestrainNPC"), undefined, "center"));
 
 
-		if (value.status == "Guest" && DrawButtonKDEx("removeGuest", (_b) => {
+		if (value.status == "Guest") DrawButtonKDEx("removeGuest", (_b) => {
 			if (!KDConfirmOverInventoryAction) {
 				KDConfirmOverInventoryAction = true;
                 if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
@@ -1883,12 +1835,9 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Buttons/RemoveGuest" + (KDConfirmOverInventoryAction ? "Confirm" : "") + ".png",
-		undefined, undefined, false)) {
-			DrawTextFitKD(TextGet("KDKickOutGuest" + (KDConfirmOverInventoryAction ? "Confirm" : "")), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
-		}
+		undefined, undefined, false, undefined, undefined, undefined, undefined, KDButtonTooltip(TextGet("KDKickOutGuest" + (KDConfirmOverInventoryAction ? "Confirm" : "")), undefined, "center"));
 
-		if (KDSummonableStatus.includes(value.status)
-			&& DrawButtonKDEx("summonServant", (_b) => {
+		if (KDSummonableStatus.includes(value.status)) DrawButtonKDEx("summonServant", (_b) => {
 				if (!KDNPCUnavailable(value.id, value.status)
 					&& KDIsInSummit()
 					&& !KinkyDungeonFindID(value.id)) {
@@ -1919,15 +1868,11 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			|| !KDIsInSummit()
 			|| KinkyDungeonFindID(value.id)
 		)
-		? KDBaseRed : "")) {
-			let tt = "KDSummonServant";
-			if (KDNPCUnavailable(value.id, value.status)) tt = "KDSummonServantUnavailable";
-			else if (!KDIsInSummit()) tt = "KDSummonServantSummit";
-			else if (KinkyDungeonFindID(value.id)) tt = "KDSummonServantAlreadyPresent";
-
-			DrawTextFitKD(TextGet(tt),
-				x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
-		}
+		? KDBaseRed : "", undefined, undefined, undefined, KDButtonTooltip(TextGet(
+			KDNPCUnavailable(value.id, value.status) ? "KDSummonServantUnavailable"
+			: !KDIsInSummit() ? "KDSummonServantSummit"
+			: KinkyDungeonFindID(value.id) ? "KDSummonServantAlreadyPresent"
+			: "KDSummonServant"), undefined, "center"));
 
 		return III;
 	}

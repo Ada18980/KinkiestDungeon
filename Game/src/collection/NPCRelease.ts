@@ -4,8 +4,7 @@ let KDClipCollectionIndex = true;
 
 // @ts-ignore: squelch error: block-scoped variable used before declaration.
 KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
-	let tooltip = false;
-	if (DrawButtonKDEx("KDReleaseRelease", (b) => {
+	DrawButtonKDEx("KDReleaseRelease", (b) => {
 
 		KDSendInput("releaseNPC", {
 			selection: KDCollectionReleaseSelection,
@@ -23,11 +22,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	(Object.keys(KDCollectionReleaseSelection).length == 0) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[0]),
 		hotkeyPress: KinkyDungeonKeyUpcast[0],
-	})) {
-		tooltip = true;
-		DrawTextFitKD(TextGet("KDReleaseRelease"), x + 220, y + 750, 500, KDBaseWhite,
-			KDTextGray0);
-	}
+	}, KDButtonTooltip(TextGet("KDReleaseRelease"), undefined, "center"));
 
 	let ransomValue = 0;
 	for (let v of Object.keys(KDCollectionReleaseSelection)) {
@@ -39,7 +34,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	DrawTextFitKD("" + Math.round(ransomValue), x + 10 + buttonSpacing*III + 40, y + 68 + 730 - 10 - 80, 500, KDBaseWhite,
 		KDTextGray0, 18);
 
-	if (DrawButtonKDEx("KDReleaseRansom", (b) => {
+	DrawButtonKDEx("KDReleaseRansom", (b) => {
 
 		if (ransomValue > 0)
 			KDSendInput("ransomNPC", {
@@ -58,14 +53,10 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	(ransomValue == 0 || Object.keys(KDCollectionReleaseSelection).length == 0) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[1]),
 		hotkeyPress: KinkyDungeonKeyUpcast[1],
-	})) {
-		tooltip = true;
-		DrawTextFitKD(TextGet("KDReleaseRansom").replace("GP", "" + Math.round(ransomValue)), x + 220, y + 750, 500, KDBaseWhite,
-			KDTextGray0);
-	}
+	}, KDButtonTooltip(TextGet("KDReleaseRansom").replace("GP", "" + Math.round(ransomValue)), undefined, "center"));
 
 
-	if (DrawButtonKDEx("KDReleaseUnMarkAll", (b) => {
+	DrawButtonKDEx("KDReleaseUnMarkAll", (b) => {
 
 		KDCollectionReleaseSelection = {};
 
@@ -78,12 +69,8 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
 	(Object.keys(KDCollectionReleaseSelection).length == 0) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 
-	})) {
-		tooltip = true;
-		DrawTextFitKD(TextGet("KDReleaseUnMarkAll"), x + 220, y + 750, 500, KDBaseWhite,
-			KDTextGray0);
-	}
-	if (DrawButtonKDEx("KDReleaseMarkAll", (b) => {
+	}, KDButtonTooltip(TextGet("KDReleaseUnMarkAll"), undefined, "center"));
+	DrawButtonKDEx("KDReleaseMarkAll", (b) => {
 
 		KDCollectionReleaseSelection = {};
 
@@ -101,13 +88,9 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length,
 	(Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 
-	})) {
-		tooltip = true;
-		DrawTextFitKD(TextGet("KDReleaseMarkAll"), x + 220, y + 750, 500, KDBaseWhite,
-			KDTextGray0);
-	}
+	}, KDButtonTooltip(TextGet("KDReleaseMarkAll"), undefined, "center"));
 
-	if (DrawButtonKDEx("KDReleaseMarkUnmark", (b) => {
+	DrawButtonKDEx("KDReleaseMarkUnmark", (b) => {
 
 		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
@@ -125,17 +108,11 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
 		hotkeyPress: KinkyDungeonKeyEnter[0],
-	})) {
-		tooltip = true;
-		DrawTextFitKD(TextGet("KDRelease" + (KDCollectionReleaseSelection[value.id] ? "Unmark" : "Mark")), x + 220, y + 750, 500, KDBaseWhite,
-			KDTextGray0);
-	}
+	}, KDButtonTooltip(TextGet("KDRelease" + (KDCollectionReleaseSelection[value.id] ? "Unmark" : "Mark")), undefined, "center"));
 
-	if (!tooltip) {
-		DrawTextFitKD(TextGet("KDRansomValue").replace("GP",
-			KDCanRansom(value.id) ? ("" + Math.round(KDRansomValue(value.id))) : TextGet("KDNA")), x + 220, y + 750, 500, KDBaseWhite,
-			KDTextGray0);
-	}
+	DrawTextFitKD(TextGet("KDRansomValue").replace("GP",
+		KDCanRansom(value.id) ? ("" + Math.round(KDRansomValue(value.id))) : TextGet("KDNA")), x + 220, y + 750, 500, KDBaseWhite,
+		KDTextGray0);
 	DrawTextFitKD(TextGet("KDCurrentGold").replace("GP", "" + Math.round(KinkyDungeonGold)), x + 220, y + 785, 500, KDBaseWhite,
 			KDTextGray0);
 
