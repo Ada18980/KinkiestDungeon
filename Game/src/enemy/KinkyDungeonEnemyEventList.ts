@@ -840,7 +840,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				}
 				KinkyDungeonSetFlag("LeashToPrison", -1, 1);
 			}
-			enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1, entrance: true}, pos);
+			enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1.5, entrance: true}, pos);
 
 		},
 		maintain: (enemy, delta, aiData) => {
@@ -886,7 +886,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 						}
 						KinkyDungeonSetFlag("LeashToPrison", -1, 1);
 					}
-					enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1, entrance: true}, pos);
+					enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1.5, entrance: true}, pos);
 				}
 
 				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.x;
@@ -959,7 +959,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				enemy.playWithPlayer = 0;
 				enemy.IntentAction = 'CaptureDollShoppe';
 				KDSetIDFlag(enemy.id, "leashingtoprison", 9000);
-				enemy.IntentLeashPoint = Object.assign({ type: "jail", radius: 1, entrance: true}, pos);
+				enemy.IntentLeashPoint = Object.assign({ type: "jail", radius: 1.5, entrance: true}, pos);
 			}
 			
 			return true;
@@ -1009,7 +1009,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 						let pos = KDGetHighSecLoc(enemy, true, "DollShoppe");
 
 						KDSetIDFlag(enemy.id, "leashingtoprison", 9000);
-						enemy.IntentLeashPoint = Object.assign({ type: "jail", radius: 1, entrance: true}, pos);
+						enemy.IntentLeashPoint = Object.assign({ type: "jail", radius: 1.5, entrance: true}, pos);
 					}
 				}
 

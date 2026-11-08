@@ -1,5 +1,5 @@
 let KDTextBoxStyle = {
-	backgroundColor: "#000000a0",
+	backgroundColor: "#000000db",
 	fontFamily: "'Courier New', 'Arial', sans-serif",
 	fontSize: "14px",
 	color: KDBaseWhite,

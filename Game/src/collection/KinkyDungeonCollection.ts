@@ -480,8 +480,12 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		return true;
 	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Inspect.png", undefined, undefined,
-		!KDToggleBigView, KDButtonColorIntense, undefined, undefined, {
-			centered: true
+		!KDToggleBigView, KDToggleBigView ? KDButtonColorLightGrey : KDButtonColorIntense, undefined, undefined, {
+			centered: true,
+			alpha: KDToggleBigView ? Math.max(0.1, Math.min(1, 
+				((KDToggleBigView) && (KDAnimSpeed))
+					? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+					: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)) : undefined,
 		}, KDButtonTooltip(TextGet("KDZoomNPC"), undefined, "center"));
 	if (KDGameData.Collection[value.id + ""]) DrawButtonKDEx("dressNPC", () => {
 		if (KDSoundEnabled())
@@ -561,9 +565,14 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		return true;
 	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/CollectionInfo.png", undefined, undefined,
-		!KDToggleCollectionInfo, KDButtonColorIntense, undefined, undefined, {
-			centered: true
-		}, KDButtonTooltip(TextGet("KDInfoNPC"), undefined, "center"));
+		!KDToggleCollectionInfo, KDToggleCollectionInfo ? KDButtonColorLightGrey : KDButtonColorIntense, undefined, undefined, {
+			centered: true,
+			alpha: KDToggleCollectionInfo ? Math.max(0.1, Math.min(1, 
+				((KDToggleCollectionInfo) && (KDAnimSpeed))
+					? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+					: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)) : undefined
+		}, KDButtonTooltip(TextGet("KDInfoNPC"), 
+		undefined, "center"));
 
 	if (KDGameData.Collection[value.id + ""]) DrawButtonKDEx("renameNPC", () => {
 		if (KDSoundEnabled())
@@ -572,8 +581,12 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		return true;
 	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Rename.png", undefined, undefined,
-		!KDRenameNPC, KDButtonColorIntense, undefined, undefined, {
-			centered: true
+		!KDRenameNPC, KDRenameNPC ? KDButtonColorLightGrey : KDButtonColorIntense, undefined, undefined, {
+			centered: true,
+			alpha: KDRenameNPC ? Math.max(0.1, Math.min(1, 
+				((KDRenameNPC) && (KDAnimSpeed))
+					? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+					: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)) : undefined
 		}, KDButtonTooltip(TextGet("KDRenameNPC"), undefined, "center"));
 
 
@@ -617,9 +630,10 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			}, KDHUDGlobals.PronounPicker_CollectionOptions
 		);
 		
-		let TF = KDTextField("RenameNPC", x + 220 - 150, y + 50 - 36, 300,
-			36, "text", "", "45");
+		let TF = KDTextField("RenameNPC", x + 220 - 150, y + 50 - 42, 300,
+			48, "text", "", "45");
 		if (TF.Created) {
+			TF.Element.Placeholder = value.origname || value.name;
 			TF.Element.oninput = (_event: any) => {
 				KDSendInput("renamenpc", {
 					id: value.id,

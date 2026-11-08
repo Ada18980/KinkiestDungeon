@@ -4089,7 +4089,8 @@ function KDDrawPronounPicker(X: number, Y: number, list: string[], current: stri
 			}, true, X - (!params?.vertical ? (0.5 * (count) * spacing - spacing * i++) : (spacing * 0.5)), 
 			Y + (params?.vertical ? params.spacingY as number * i++ : 0), 
 			size, size, TextGet("KDPronoun_" + pronoun), (!pronoun && !current) || current == pronoun, undefined, textcolor, undefined, {
-				fontSize: fontsize
+				fontSize: fontsize,
+				alpha: 0.8
 			});
 	}
 }

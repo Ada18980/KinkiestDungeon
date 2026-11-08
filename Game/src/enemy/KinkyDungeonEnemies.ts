@@ -9691,7 +9691,7 @@ function KDAssignLeashPoint(enemy: entity): KDJailPoint {
 	let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y);
 	if (!nj || KDGenHighSecCondition(false, enemy)) {
 		let pos = KDGetHighSecLoc(enemy, !KDSelfishLeash(enemy));
-		AIData.nearestJail = {type: "jail", radius: 1, x: pos.x, y: pos.y, entrance: true};
+		AIData.nearestJail = {type: "jail", radius: 1.5, x: pos.x, y: pos.y, entrance: true};
 	} else AIData.nearestJail = nj;
 	return AIData.nearestJail;
 }

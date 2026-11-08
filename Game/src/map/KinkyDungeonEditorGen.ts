@@ -1280,12 +1280,12 @@ let KDTileGen = {
 	},
 	"JailBed": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'B');
-		KDMapData.JailPoints.push({x: x, y: y, type: "jail", radius: 1});
+		KDMapData.JailPoints.push({x: x, y: y, type: "jail", radius: 1.5});
 		return {Jail: true, OL: true};
 	},
 	"JailPoint": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, '0');
-		KDMapData.JailPoints.push({x: x, y: y, type: "jail", radius: 1});
+		KDMapData.JailPoints.push({x: x, y: y, type: "jail", radius: 1.5});
 		return {Jail: true, OL: true};
 	},
 	"Furniture": (x, y, tile, tileGenerator, data) => {

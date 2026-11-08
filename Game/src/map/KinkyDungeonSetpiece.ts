@@ -465,7 +465,7 @@ function KinkyDungeonGenerateSetpiece (
 				if (KDRandom() < 0.5 + ((KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) ? 0.25 : 0)) {
 					SetpieceSpawnPrisoner(cornerX+1, cornerY+3);
 				}
-				KDMapData.JailPoints.push({x: cornerX+2, y: cornerY+2, type: "jail", radius: 1});
+				KDMapData.JailPoints.push({x: cornerX+2, y: cornerY+2, type: "jail", radius: 1.5});
 				let t = [];
 				let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]] : "jailer";
 				t.push(jt);
@@ -509,7 +509,7 @@ function KinkyDungeonGenerateSetpiece (
 
 				KinkyDungeonMapSet(cornerX+1, cornerY+1, 'B');
 				KDTorch(cornerX + 1, cornerY, altType, MapParams);
-				KDMapData.JailPoints.push({x: cornerX+1, y: cornerY+1, type: "jail", radius: 1});
+				KDMapData.JailPoints.push({x: cornerX+1, y: cornerY+1, type: "jail", radius: 1.5});
 				break;
 			}
 			case "JungleLight": {

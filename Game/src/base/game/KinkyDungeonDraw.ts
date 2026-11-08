@@ -3259,6 +3259,7 @@ let KDTooltipColor = "rgb(25,29,36)"
 let KDButtonColor = "rgba(5, 5, 5, 0.5)";
 let KDButtonColorIntense = "rgba(5, 5, 5, 0.8)";
 let KDButtonColorLight = "rgba(45, 45, 45, 0.5)";
+let KDButtonColorLightGrey = "rgba(141, 141, 141, 0.5)";
 let KDBorderColor = KDBaseLightGrey;
 let KDUIColorHighlight = KDBaseLightGrey;//"#ffee83";
 let KDHighlightColor = 'rgb(220, 207, 178)';//'rgb(225, 187, 104)'

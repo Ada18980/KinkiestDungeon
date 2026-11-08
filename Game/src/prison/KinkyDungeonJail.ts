@@ -1229,7 +1229,7 @@ function KinkyDungeonPlayerInCell(any?: boolean, qualified?: boolean, filter?: s
 }
 
 function KDEntityInCell(player: entity, point: KDJailPoint) {
-	return KDistChebyshev(player.x - point.x, player.y - point.y) < (point.radius || 2);
+	return KDistChebyshev(player.x - point.x, player.y - point.y) <= (point.radius || 2);
 }
 
 function KinkyDungeonPointInCell(x: number, y: number, radius: number = 2): boolean {
@@ -1708,7 +1708,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity, overrideRo
 	KDGameData.AlertTimer = 0;
 	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 	if (!nearestJail) {
-		nearestJail = Object.assign({type: "jail", radius: 1, entrance: true}, KDMapData.StartPosition);
+		nearestJail = Object.assign({type: "jail", radius: 1.5, entrance: true}, KDMapData.StartPosition);
 	}
 	KDSendStatus('jailed');
 	KDSendEvent('jail');
