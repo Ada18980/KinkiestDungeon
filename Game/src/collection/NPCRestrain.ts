@@ -1457,10 +1457,15 @@ function KDTriggerNPCEscape(maxNPC: number = 10) {
 				KDSetToExpectedBondage(entity, -1);
 
 				KDMakeHostile(entity, 300);
-				KinkyDungeonSendDialogue(entity,
-					TextGet((KDHelpless(entity) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(entity) ? KDGetEnemyPlayLine(entity) : "") + Math.floor(KDRandom() * 3), KDGetGenericDialogueParams(KDPlayer(), entity))
-						.replace("EnemyName", TextGet("Name" + entity.Enemy.name)), KDGetColor(entity),
-					Math.floor(12 + KDRandom() * 8), 10, false, true);
+				if (!KDEnemyHasFlag(entity, "complainhelpless")
+					) {
+					KinkyDungeonSendDialogue(entity,
+						TextGet((KDHelpless(entity) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(entity) ? KDGetEnemyPlayLine(entity) : "") + Math.floor(KDRandom() * 3), KDGetGenericDialogueParams(KDPlayer(), entity))
+							.replace("EnemyName", TextGet("Name" + entity.Enemy.name)), KDGetColor(entity),
+						Math.floor(12 + KDRandom() * 8), 10, false, false);
+
+					KinkyDungeonSetEnemyFlag(entity, "complainhelpless", Math.floor((2) * (1 + KDRandom())));
+				}
 				count += 1;
 			}
 		} else break;
@@ -1962,7 +1967,7 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 		cats,
 		x, y,
 		currentItem, slot, id, callback, categoryItem, showCategories,
-		 showOtherSlots, matsPerRow, bindsPerRow
+		 showOtherSlots, matsPerRow, bindsPerRow, -325
 	)
 
 

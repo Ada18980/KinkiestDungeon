@@ -151,10 +151,11 @@ function KinkyDungeonNearestJailPoint(x: number, y: number, filter?: string[], a
 		if (qualified && p.requireLeash && !leash) continue;
 		if (qualified && p.requireFurniture && !furniture) continue;
 		let d = KDistChebyshev(x-p.x, y-p.y);
-		if (dist && d > dist) continue;
+		if (d > dist) continue;
 		if (unnocupied && KinkyDungeonEntityAt(p.x, p.y)) continue;
 		if (criteria && !criteria(p.x, p.y, p)) continue;
-		if (KinkyDungeonEntityAt(p.x, p.y, undefined, undefined, undefined, false)
+		if (KinkyDungeonEntityAt(p.x, p.y, 
+			undefined, undefined, undefined, false)
 			&& KDIsImprisoned(KinkyDungeonEntityAt(p.x, p.y))) continue;
 		dist = d;
 		point = p;

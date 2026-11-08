@@ -1601,7 +1601,7 @@ function KinkyDungeonDrawGame() {
 								KinkyDungeonRootDirectory + "Target" + retType + ".png",
 								(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 									zIndex: 100,
-								tint: retType && KinkyDungeonFastMoveSuppress ? 0xff7777 : 0xffffff
+								tint: (retType == "Move" && KinkyDungeonFastMoveSuppress) ? 0xff7777 : 0xffffff
 								});
 							if (KinkyDungeonSlowLevel < 10) {
 								//if (!KinkyDungeonEnemyAt(KinkyDungeonTargetX, KinkyDungeonTargetY)

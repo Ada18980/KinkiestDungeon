@@ -76,6 +76,12 @@ Must do
 - Proper stripping
 - species perks
 
+5.5.12
+- Fixed some leashing behavior issues
+- Allies no longer follow you without you telling them to follow you
+- Yet more graphics optimizations
+- 
+
 5.5.11
 - Fixed some crash that occurred when swapping characters repeatedly in collection
 - Fixed various minor bugs
