@@ -929,9 +929,14 @@ function KDFreeNPCRestraints(id: number, player: number) {
 function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<string, item>, bypass: boolean = true): boolean {
 	let row = KDGetEncaseGroupRow(data.slot);
 	let slot = KDGetEncaseGroupSlot(data.slot);
+	
 	let items: item[] = [];
 	if (!slot) return false;
 	let willing = data.force || false;
+	
+	if (data.npc) {
+		KDInvalidateFurnitureCriteriaCache(data.npc);
+	}
 	if (KDGameData.Collection[data.npc + ""]) {
 		if (!KDGetGlobalEntity(data.npc)) {// We have to create it
 			let Enemy = KinkyDungeonGetEnemyByName(KDGameData.Collection[data.npc + ""].type);

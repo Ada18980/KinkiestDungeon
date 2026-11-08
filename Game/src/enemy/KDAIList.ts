@@ -8,7 +8,9 @@ let KDAIType: Record<string, AIType> = {
 		trackvisibletarget: (_enemy, _player, _aiData) => {return true;},
 		persist: (_enemy, _player, _aiData) => {return false;},
 		move: (_enemy, _player, _aiData) => {return true;},
-		follower: (_enemy, _player, _aiData) => {return true;},
+		follower: (enemy, player, aiData) => {return player?.player
+			&& (KDIsInPartyID(enemy.id)
+				|| KDEnemyHasFlag(enemy, "FollowMe"));},
 		followsound: (_enemy, _player, _aiData) => {return true;},
 		wander_near: (_enemy, _player, _aiData) => {return true;},
 		wander_far: (_enemy, _player, _aiData) => {return KDRandom() < 0.2;},
@@ -27,7 +29,9 @@ let KDAIType: Record<string, AIType> = {
 		trackvisibletarget: (_enemy, _player, _aiData) => {return true;},
 		persist: (_enemy, _player, _aiData) => {return true;},
 		move: (_enemy, _player, _aiData) => {return true;},
-		follower: (_enemy, _player, _aiData) => {return true;},
+		follower: (enemy, player, aiData) => {return player?.player
+			&& (KDIsInPartyID(enemy.id)
+				|| KDEnemyHasFlag(enemy, "FollowMe"));},
 		followsound: (_enemy, _player, _aiData) => {return true;},
 		wander_near: (_enemy, _player, _aiData) => {return true;},
 		wander_far: (_enemy, _player, _aiData) => {return KDRandom() < 0.2;},
@@ -73,7 +77,9 @@ let KDAIType: Record<string, AIType> = {
 		trackvisibletarget: (_enemy, _player, _aiData) => {return true;},
 		persist: (_enemy, _player, _aiData) => {return true;},
 		move: (_enemy, _player, _aiData) => {return true;},
-		follower: (_enemy, _player, _aiData) => {return true;},
+		follower: (enemy, player, aiData) => {return player?.player
+			&& (KDIsInPartyID(enemy.id)
+				|| KDEnemyHasFlag(enemy, "FollowMe"));},
 		followsound: (_enemy, _player, _aiData) => {return true;},
 		wander_near: (_enemy, _player, _aiData) => {return true;},
 		wander_far: (_enemy, _player, _aiData) => {return KDRandom() < 0.4;},
@@ -152,7 +158,9 @@ let KDAIType: Record<string, AIType> = {
 		trackvisibletarget: (_enemy, _player, _aiData) => {return true;},
 		persist: (_enemy, _player, _aiData) => {return true;},
 		move: (_enemy, _player, _aiData) => {return true;},
-		follower: (_enemy, _player, _aiData) => {return true;},
+		follower: (enemy, player, aiData) => {return player?.player
+			&& (KDIsInPartyID(enemy.id)
+				|| KDEnemyHasFlag(enemy, "FollowMe"));},
 		followsound: (_enemy, _player, _aiData) => {return true;},
 		wander_near: (_enemy, _player, _aiData) => {return true;},
 		wander_far: (_enemy, _player, _aiData) => {return true;},
@@ -161,7 +169,7 @@ let KDAIType: Record<string, AIType> = {
 		tease: (_enemy, _player, _aiData) => {return true;},
 		spell: (_enemy, _player, _aiData) => {return true;},
 		aftermove: (enemy, _player, aiData) => {
-			if (!aiData.allyFollowPlayer && !KDEnemyHasFlag(enemy, "StayHere")) {
+			if (!aiData.allyFollowPlayer && KDEnemyHasFlag(enemy, "FollowMe")) {
 				let patrolChance = aiData.patrolChange ? 0.13 : 0.02;
 				if (!enemy.patrolIndex) enemy.patrolIndex = KinkyDungeonNearestPatrolPoint(enemy.x, enemy.y);
 				if (KDMapData.PatrolPoints[enemy.patrolIndex] && KDRandom() < patrolChance) {
@@ -199,7 +207,9 @@ let KDAIType: Record<string, AIType> = {
 		},
 		persist: (_enemy, _player, _aiData) => {return false;},
 		move: (_enemy, _player, _aiData) => {return true;},
-		follower: (_enemy, _player, _aiData) => {return true;},
+		follower: (enemy, player, aiData) => {return player?.player
+			&& (KDIsInPartyID(enemy.id)
+				|| KDEnemyHasFlag(enemy, "FollowMe"));},
 		followsound: (_enemy, _player, _aiData) => {return true;},
 		wander_near: (_enemy, _player, _aiData) => {return false;},
 		wander_far: (_enemy, _player, _aiData) => {return false;},
@@ -225,7 +235,9 @@ let KDAIType: Record<string, AIType> = {
 		},
 		persist: (_enemy, _player, _aiData) => {return false;},
 		move: (_enemy, _player, _aiData) => {return true;},
-		follower: (_enemy, _player, _aiData) => {return true;},
+		follower: (enemy, player, aiData) => {return player?.player
+			&& (KDIsInPartyID(enemy.id)
+				|| KDEnemyHasFlag(enemy, "FollowMe"));},
 		followsound: (_enemy, _player, _aiData) => {return true;},
 		wander_near: (_enemy, _player, _aiData) => {return true;},
 		wander_far: (_enemy, _player, _aiData) => {return false;},
@@ -246,7 +258,9 @@ let KDAIType: Record<string, AIType> = {
 		trackvisibletarget: (_enemy, _player, _aiData) => {return true;},
 		persist: (_enemy, _player, _aiData) => {return false;},
 		move: (_enemy, _player, _aiData) => {return true;},
-		follower: (_enemy, _player, _aiData) => {return true;},
+		follower: (enemy, player, aiData) => {return player?.player
+			&& (KDIsInPartyID(enemy.id)
+				|| KDEnemyHasFlag(enemy, "FollowMe"));},
 		followsound: (_enemy, _player, _aiData) => {return true;},
 		wander_near: (_enemy, _player, _aiData) => {return true;},
 		wander_far: (_enemy, _player, _aiData) => {return true;},
@@ -270,7 +284,9 @@ let KDAIType: Record<string, AIType> = {
 		trackvisibletarget: (enemy, _player, _aiData) => {return enemy.ambushtrigger;},
 		persist: (enemy, _player, _aiData) => {return enemy.ambushtrigger;},
 		move: (enemy, _player, aiData) => {return enemy.ambushtrigger || (enemy.Enemy.wanderTillSees && !aiData.canSeePlayer);},
-		follower: (_enemy, _player, _aiData) => {return true;},
+		follower: (enemy, player, aiData) => {return player?.player
+			&& (KDIsInPartyID(enemy.id)
+				|| KDEnemyHasFlag(enemy, "FollowMe"));},
 		followsound: (_enemy, _player, _aiData) => {return true;},
 		wander_near: (enemy, _player, aiData) => {return (enemy.Enemy.wanderTillSees && !aiData.canSeePlayer);},
 		wander_far: (_enemy, _player, _aiData) => {return false;},

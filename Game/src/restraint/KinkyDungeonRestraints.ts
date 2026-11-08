@@ -4187,6 +4187,11 @@ function KDGetRestraintWithVariants (
 
 function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: number, customRestraints?: item[], extraTags?: string[]): Map<string, boolean> {
 	if (!C && !id) C = KinkyDungeonPlayer;
+	if (id) {
+		KDInvalidateFurnitureCriteriaCache(id);
+	} else if (C == KinkyDungeonPlayer) {
+		KDInvalidateFurnitureCriteriaCache(-1);
+	}
 	if (C == KinkyDungeonPlayer && !customRestraints) {
 		let playerTags = new Map();
 		for (let inv of KinkyDungeonAllRestraintDynamic()) {

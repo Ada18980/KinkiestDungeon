@@ -4016,6 +4016,7 @@ function KDCrackTile(x: number, y: number, allowCrack: boolean, data: any) {
 		}, 0);
 		KinkyDungeonUpdateLightGrid = true;
 		KDUpdateMapCache = true;
+		KDRefreshFurnitureCriteriaCaches();
 		KDUpdateDoorNavMap();
 
 		KinkyDungeonSendEvent("crackTile", data);

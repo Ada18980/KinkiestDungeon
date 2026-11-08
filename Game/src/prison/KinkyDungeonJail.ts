@@ -2779,6 +2779,10 @@ function KDApplyJailOutfit() {
 	KinkyDungeonDressPlayer();
 }
 
+let KDFurnitureCriteriaCache: Map<string, boolean> = new Map();
+let KDFurnitureCriteriaIDCache: Map<number, string[]> = new Map();
+
+
 function KDGetFurnitureCriteria(entity: entity, enemy?: entity, unoccupied: boolean = true): (x: number, y: number, point: KDJailPoint) => boolean {
 	// returns TRUE if no furniture present--thats gonna be filtered elsewhere
 	let unocc = unoccupied;
@@ -2788,17 +2792,25 @@ function KDGetFurnitureCriteria(entity: entity, enemy?: entity, unoccupied: bool
 				let en = KinkyDungeonEntityAt(x, y);
 				if (en && en != enemy) return false;
 			}
+			let id = entity.id + '|' +x + '|' +y;
+			if (KDFurnitureCriteriaCache.get(id)) return KDFurnitureCriteriaCache.get(id);
 			let furniture: string = KinkyDungeonTilesGet(x + "," + y)?.Furniture;
 			let restrainttags : string[] = point.restrainttags;
 			if (!restrainttags && furniture && KDFurniture[furniture]?.restraintTag) restrainttags = [KDFurniture[furniture]?.restraintTag];
 
-			return !furniture || (restrainttags && (
-				!!KinkyDungeonGetRestraint({tags: restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, undefined,
-			undefined, undefined, undefined, undefined, undefined, undefined,
-			undefined, undefined, undefined, undefined, {
-				ignoreCurrentGroups: ["ItemDevices"]
-			})
-			));
+			KDFurnitureCriteriaCache.set(id, 
+				!furniture || (restrainttags && (
+					!!KinkyDungeonGetRestraint({tags: restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, undefined,
+				undefined, undefined, undefined, undefined, undefined, undefined,
+				undefined, undefined, undefined, undefined, {
+					ignoreCurrentGroups: ["ItemDevices"]
+				})
+				))
+			);
+			if (!KDFurnitureCriteriaIDCache.get(entity.id))
+				KDFurnitureCriteriaIDCache.set(entity.id, []);
+			KDFurnitureCriteriaIDCache.get(entity.id).push(id);
+			return KDFurnitureCriteriaCache.get(id);
 		}
 	} else {
 		let id = entity.id;
@@ -2807,25 +2819,49 @@ function KDGetFurnitureCriteria(entity: entity, enemy?: entity, unoccupied: bool
 				let en = KinkyDungeonEntityAt(x, y);
 				if (en && en != enemy) return false;
 			}
+			let cid = entity.id + '|' +x + '|' +y;
+			if (KDFurnitureCriteriaCache.get(cid)) return KDFurnitureCriteriaCache.get(cid);
 			let furniture: string = KinkyDungeonTilesGet(x + "," + y)?.Furniture;
 			let restrainttags : string[] = point.restrainttags;
 			if (!restrainttags && furniture && KDFurniture[furniture]?.restraintTag) restrainttags = [KDFurniture[furniture]?.restraintTag];
 
-			return !entity || !furniture || (restrainttags && (
-				!KDCanEquipItemOnNPC(
-					KinkyDungeonGetRestraint({tags: restrainttags}, KDGetEffLevel(),KDCurrIndex(), false,
-					undefined, undefined, undefined, undefined, undefined, true),
-					id, false, undefined, undefined, undefined, {
-						ignoreCurrentGroups: ["ItemDevices"]
-					}
-				)
-			));
+			
+			KDFurnitureCriteriaCache.set(cid, 
+				!entity || !furniture || (restrainttags && (
+					!KDCanEquipItemOnNPC(
+						KinkyDungeonGetRestraint({tags: restrainttags}, KDGetEffLevel(),KDCurrIndex(), false,
+						undefined, undefined, undefined, undefined, undefined, true),
+						id, false, undefined, undefined, undefined, {
+							ignoreCurrentGroups: ["ItemDevices"]
+						}
+					)
+				))
+			);
+			if (!KDFurnitureCriteriaIDCache.get(entity.id))
+				KDFurnitureCriteriaIDCache.set(entity.id, []);
+			KDFurnitureCriteriaIDCache.get(entity.id).push(cid);
+			
+			return KDFurnitureCriteriaCache.get(cid);
 		}
 	}
 
 
 }
 
+function KDInvalidateFurnitureCriteriaCache(id: number) {
+	if (KDFurnitureCriteriaIDCache.get(id)) {
+		for (let cid of KDFurnitureCriteriaIDCache.get(id)) {
+			KDFurnitureCriteriaCache.delete(cid);
+		}
+		KDFurnitureCriteriaIDCache.delete(id);
+	}
+}
+
+
+function KDRefreshFurnitureCriteriaCaches() {
+	KDFurnitureCriteriaIDCache = new Map();
+	KDFurnitureCriteriaCache = new Map();
+}
 
 function KDResetStripSearch() {
 	KinkyDungeonSetFlag("jailStripSearched", 0);

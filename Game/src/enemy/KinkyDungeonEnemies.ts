@@ -150,15 +150,14 @@ function KinkyDungeonNearestJailPoint(x: number, y: number, filter?: string[], a
 		if (!any && p.type && !filt.includes(p.type)) continue;
 		if (qualified && p.requireLeash && !leash) continue;
 		if (qualified && p.requireFurniture && !furniture) continue;
+		let d = KDistChebyshev(x-p.x, y-p.y);
+		if (dist && d > dist) continue;
 		if (unnocupied && KinkyDungeonEntityAt(p.x, p.y)) continue;
 		if (criteria && !criteria(p.x, p.y, p)) continue;
 		if (KinkyDungeonEntityAt(p.x, p.y, undefined, undefined, undefined, false)
 			&& KDIsImprisoned(KinkyDungeonEntityAt(p.x, p.y))) continue;
-		let d = Math.max(Math.abs(x - p.x), Math.abs(y - p.y));
-		if (d < dist) {
-			dist = d;
-			point = p;
-		}
+		dist = d;
+		point = p;
 	}
 
 	return point;
@@ -6250,7 +6249,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			AIData.dontFollow = false;
 
 			if (AIType.follower(enemy, player, AIData)) {
-				if (KDAllied(enemy) && player.player && (KDEnemyDoesFollow(enemy) || KDEnemyHasFlag(enemy, "FollowMe"))) {
+				if (KDAllied(enemy) && player.player
+				&& (KDEnemyDoesFollow(enemy) || KDEnemyHasFlag(enemy, "FollowMe"))) {
 					if (!KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "StayHere")) {
 						AIData.allyFollowPlayer = true;
 					} else {
@@ -6261,7 +6261,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						}
 					}
 				} else {
-					if (KDEnemyHasFlag(enemy, "Defensive") && !KDEnemyHasFlag(enemy, "StayHere") && !KDEnemyHasFlag(enemy, "dontChase")) {
+					if (KDEnemyHasFlag(enemy, "Defensive")
+						&& !KDEnemyHasFlag(enemy, "StayHere")
+						&& !KDEnemyHasFlag(enemy, "dontChase")) {
 						enemy.gx = KinkyDungeonPlayerEntity.x;
 						enemy.gy = KinkyDungeonPlayerEntity.y;
 						KDUpdateMoveToEntity(enemy);
@@ -6328,7 +6330,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				// Our movement isnt being controlled by a script
 				&& !KDEnemyHasFlag(enemy, "overrideMove")
 				// We are willing to move
-				&& (!KDEnemyHasFlag(enemy, "Defensive") || !KDEnemyHasFlag(enemy, "StayHere"))
+				&& (!KDEnemyHasFlag(enemy, "Defensive")
+					|| !KDEnemyHasFlag(enemy, "StayHere"))
 				// We want to move
 				&& AIType.chase(enemy, player, AIData)
 				// We are not ignoring the target
@@ -6336,7 +6339,10 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				// We aren't prevented from following the target
 				&& !AIData.dontFollow
 				// We are aware of the target OR we are allied and are following
-				&& (enemy.aware || AIData.allyFollowPlayer)
+				&& ((enemy.aware && 
+					(enemy.playWithPlayer
+					|| AIData.aggressive)
+				) || AIData.allyFollowPlayer)
 				// Player is within our max chase range
 				&& (AIData.playerDist <= AIData.chaseRadius && AIData.canSeePlayerChase)
 				// We aren't already following a path or stationed at our current point
@@ -6346,7 +6352,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 			// Also if the enemy is supposed to go to the player (goal x and y are same as players) and the enemy can see, it just does it
 			// Party members get a free pass too on sight
-			if (player && !AIData.ignore && ((KDEnemyReallyAware(enemy, player) && AIData.canSensePlayer) || KDIsInParty(enemy)) && enemy.gx == player.x && enemy.gy == player.y) {
+			if (player && !AIData.ignore && ((KDEnemyReallyAware(enemy, player) && AIData.canSensePlayer)
+				|| KDIsInParty(enemy)) && enemy.gx == player.x && enemy.gy == player.y) {
 				AIData.moveTowardPlayer = true;
 			}
 
@@ -10671,6 +10678,7 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 	
 	KDClearNPCMovement(data.enemy);
 	mapData.Entities.push(data.enemy);
+	
 	if (!noLoadout)
 		KDSetLoadout(data.enemy, data.loadout);
 	if (data.enemy.Enemy.onSpawnScript) {

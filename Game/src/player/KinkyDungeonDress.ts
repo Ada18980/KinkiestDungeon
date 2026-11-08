@@ -830,7 +830,7 @@ function KinkyDungeonDressPlayer (
 			|| Character == KDSpeakerNPC
 			|| Character == KDPreviewModel
 			|| !(KDCurrentModels.get(Character)?.Poses?.Body) // refresh if not haired
-			|| Math.random() < 0.01)
+			|| (Math.random() < 0.05 && KDForceEnemyUpdate++ == 0)) // one per frame max
 			UpdateModels(Character, Xray, customFaction);
 		let ReUpdate = false;
 
@@ -892,7 +892,7 @@ function KinkyDungeonDressPlayer (
 		}
 
 		if (KDRefreshCharacter.get(Character) || Character == KinkyDungeonPlayer || Character == KDSpeakerNPC
-	|| !(KDCurrentModels.get(Character)?.Poses?.Body))
+			|| !(KDCurrentModels.get(Character)?.Poses?.Body))
 			if (ReUpdate) UpdateModels(Character, Xray, customFaction);
 		if (Force) {
 			ForceRefreshModels(Character);

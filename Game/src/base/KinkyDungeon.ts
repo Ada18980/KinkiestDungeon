@@ -3616,11 +3616,13 @@ function KinkyDungeonRun() {
 
 	KDForceAllCull = false;
 	KDUpdateEnemySprites = false;
+	KDForceEnemyUpdate = 0;
 	
 	KDLastActiveElement = document.activeElement;
 }
 
 let KDUpdateEnemySprites = true;
+let KDForceEnemyUpdate = 0;
 
 let KDLastActiveElement = null;
 

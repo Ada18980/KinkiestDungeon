@@ -771,12 +771,17 @@ function KDSyncPersistentEntities(Level: number, data: KDMapDataType, removeMiss
 				enemy = pers.entity;
 			}
 		}
-		if (enemy)
+		if (enemy) {
 			newEntities.push(enemy);
+			
+			KDRefreshFurnitureCriteriaCaches();
+		}
 	}
 	let oldEntities = data.Entities;
 	data.Entities = newEntities;
 	oldEntities.splice(0, oldEntities.length);
+
+	
 }
 
 /**
@@ -3549,6 +3554,7 @@ let KDLastTick = 0;
 let KDSawFlagsDecayRate = 0.95;
 
 function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: boolean) {
+
 	KDUpdateEnemySprites = true;
 	if (delta > 0) {
 		KDEventData.sounddesc = [];
