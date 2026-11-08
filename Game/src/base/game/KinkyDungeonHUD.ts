@@ -9,10 +9,13 @@ let KDHUDGlobals = {
 	PronounPicker_Size: 50,
 	PronounPicker_ShowInCollectionByDefault: true,
 	PronounPicker_CollectionOptions: {
-		spacing: 150,
-		fontsize: 16,
-		size: 42,
-		offX: 25,
+		spacing: 110,
+		fontsize: 14,
+		size: 32,
+		offX: 6,
+		//vertical is currently BROKEN
+		//vertical: 1,
+		//spacingY: 70,
 	},
 };
 
@@ -4074,25 +4077,150 @@ function KDDrawResourcesQuick() {
 	return !KinkyDungeonTargetingSpell;
 }
 
-function KDDrawPronounPicker(X: number, Y: number, list: string[], current: string, callback: (pronoun: string) => void, params?: Record<string, number|string>) {
-	let count = list.length;
+function KDDrawPronounPicker(
+	X: number, Y: number, list: string[], current: string,
+	callback: (pronoun: string) => void,
+	params?: Record<string, number | string>,
+	customID?: number,
+	customCallback?: (forms: KDCustomPronounData) => void): number {
+
+	let custom = customID != undefined;
+	let customKey = custom ? KDCustomPronounKey(customID) : "";
+	let customActive = custom && current == customKey;
+
+	let count = list.length + (custom ? 1 : 0);
 	let i = 0;
 	let spacing = params?.spacing as number || KDHUDGlobals.PronounPicker_SpacingX;
 	let size = params?.size as number || KDHUDGlobals.PronounPicker_Size;
 	let fontsize = params?.fontsize as number || KDHUDGlobals.PronounPicker_Fontsize;
 	let textcolor = params?.color as string || KDTextWhite;
-	for (let pronoun of list) {
-		DrawCheckboxKDEx("pronounlist" + X + pronoun, 
+	let vertical = !!params?.vertical;
+	let spacingY = params?.spacingY as number || 0;
+
+	let posX = (ii: number) => X - (!vertical ? (0.5 * (count) * spacing - spacing * ii) : (spacing * 0.5));
+	let posY = (ii: number) => Y + (vertical ? spacingY * ii : 0);
+
+	for (let pronoun of KDLanguagesWithCustomPronoun.includes(TranslationLanguage) ? [...list, "Custom"] : list) {
+		let ii = i++;
+		// custom always shown
+		if (!customActive || pronoun == "Custom") {
+			if (pronoun == "Custom") {
+				DrawCheckboxKDEx("pronounlist" + X + "Custom",
+					(d) => {
+						if (!customActive && !KDGetCustomPronounData(customKey)) customCallback(getForms());
+						callback(customActive ? (list[0] || "") : customKey);
+						return true;
+					}, true, posX(ii), posY(ii),
+					size, size, TextGet("KDPronoun_Custom"), customActive, undefined, textcolor, undefined, {
+						fontSize: fontsize,
+						//alpha: 0.8,
+						zIndex: 91
+					});
+			} else {
+				DrawCheckboxKDEx("pronounlist" + X + pronoun,
+				(d) => {
+					callback(pronoun);
+					return true;
+				}, true, posX(ii), posY(ii),
+				size, size, TextGet("KDPronoun_" + pronoun), 
+				(!pronoun && !current) || current == pronoun, 
+				undefined, textcolor, undefined, {
+					fontSize: fontsize,
+					//alpha: 0.8,
+					zIndex: 91
+				});
+			}
+		}
+			
+	}
+
+	let pad = 4;
+	
+	let boxX = posX(0) - pad;
+	let boxY = Y - pad;
+	let boxW = (count) * spacing - pad;
+	let boxH = size + 2 * pad + (customActive ? size : 0);
+	if (vertical) {
+		boxX = posX(0) - pad - spacing;
+		boxY = posY(0) - pad;
+		boxW = spacing * 3;
+		boxH = (count - 1) * spacingY + size + 2 * pad;
+	}
+	DrawBoxKDTo(kdcanvas, boxX, boxY, boxW, boxH, 
+		KDUIColor, false, KDBaseButtonAlpha, 
+		90, undefined);
+
+
+	if (!custom) return boxH;
+
+	if (!customCallback) customCallback = (forms) => {
+		KDSendInput("setcustompronoun", {
+			id: customID,
+			forms: forms,
+		});
+	};
+	let getForms = (): KDCustomPronounData =>
+		Object.assign({plural: true}, 
+			KDGetCustomPronounData(customKey));
+
+	if (customActive) {
+		// 5 fields + plural checkbox
+		// vertical is broken atm
+		let cells = KDCustomPronounFields.length + 1;
+		let cellW = vertical ? boxW/2 - 2 * pad : (boxW - spacing - pad) / Math.ceil(cells/2) - pad;
+		let cellH = vertical ? (boxH - pad) / Math.floor(cells) - pad : size;
+		let cellX = (ii: number) => boxX + pad + (vertical ? (
+			ii % 2 == 0 ? boxW/2 : 0
+		) : (
+			Math.floor(ii/2)
+		) * (cellW + pad));
+		let cellY = (ii: number) => boxY + pad + (vertical ? Math.floor(ii/2) * (cellH + pad) : (
+			ii % 2 == 0 ? 0 : size
+		));
+
+		let ii = 0;
+		for (let f of KDCustomPronounFields) {
+			let name = "PronounCustom" + f.field + customID;
+			let TF = KDTextField(name, 
+				cellX(ii), 
+			cellY(ii) + cellH * 0.05, 
+			cellW * 0.9, 
+			cellH * 0.9, "text", "", "20", fontsize);
+			ii++;
+			if (TF.Created) {
+				ElementValue(name, getForms()[f.field] || "");
+				TF.Element.placeholder = TextGet("KDPro_They" + f.type + "LC");
+				TF.Element.oninput = (_event: any) => {
+					let forms = getForms();
+					forms[f.field] = ElementValue(name);
+					customCallback(forms);
+				};
+			}
+		}
+
+		let checkSize = Math.min(cellH, size) * 0.6;
+		DrawCheckboxKDEx("pronounlist" + X + "CustomPlural",
 			(d) => {
-				callback(pronoun);
+				let forms = getForms();
+				forms.plural = !forms.plural;
+				customCallback(forms);
 				return true;
-			}, true, X - (!params?.vertical ? (0.5 * (count) * spacing - spacing * i++) : (spacing * 0.5)), 
-			Y + (params?.vertical ? params.spacingY as number * i++ : 0), 
-			size, size, TextGet("KDPronoun_" + pronoun), (!pronoun && !current) || current == pronoun, undefined, textcolor, undefined, {
+			}, true, 
+			cellX(ii) + cellW * 0.1, 
+			cellY(ii) + (cellH - checkSize) / 2,
+			checkSize, checkSize, TextGet("KDPronounCustomPlural"), 
+			getForms().plural, undefined, 
+			textcolor, undefined, {
 				fontSize: fontsize,
-				alpha: 0.92
+				alpha: 0.92,
+				scaleImage: true,
+				maxWidth: Math.max(10, cellW - checkSize - 10),
 			});
 	}
+
+	return boxH;
+
+	
 }
 
 let KDDrawLayeredStackMaxNum = 6;

@@ -922,6 +922,10 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			}
 			return "";
 		},
+	"setcustompronoun": (data) => {
+		KDSetCustomPronoun(data.id, data.forms);
+		return "";
+	},
 	"defeat": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		KinkyDungeonDefeat(!(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison)

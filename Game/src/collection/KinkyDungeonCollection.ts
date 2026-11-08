@@ -619,7 +619,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 
 	if (KDRenameNPC) {
-		KDDrawPronounPicker(
+		let yy = KDLanguagesWithPronouns.includes(TranslationLanguage) ? KDDrawPronounPicker(
 			x + 220 + KDHUDGlobals.PronounPicker_CollectionOptions.offX, y + 50 + 20, KDGameGlobals.Pronouns, 
 			value.pronoun|| "She", (pronoun) => {
 				
@@ -627,8 +627,8 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 					id: value.id,
 					newPronoun: pronoun,
 				});
-			}, KDHUDGlobals.PronounPicker_CollectionOptions
-		);
+			}, KDHUDGlobals.PronounPicker_CollectionOptions, value.id
+		) : 0;
 		
 		let TF = KDTextField("RenameNPC", x + 220 - 150, y + 50 - 42, 300,
 			48, "text", "", "45");
@@ -650,7 +650,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 					newPronoun: value.origpronoun || ""
 				});
 				return true;
-			}, true, x + 220 - 130, y + 50 + 70, 260, 24, 
+			}, true, x + 220 - 130, y + 50 + 20 + yy, 260, 40, 
 			TextGet("KDRenameOrigNPC")
 				.replace("NME", value.origname != undefined ? value.origname : value.name), KDBaseWhite);
 	}
@@ -670,7 +670,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 			
 			if (KDLanguagesThatShowPronoun.includes(TranslationLanguage))
-				DrawTextFitKD(TextGet("KDCollectionInfo_Pronouns") + TextGet("KDPronoun_" + (value.pronoun || "")), 
+				DrawTextFitKD(TextGet("KDCollectionInfo_Pronouns") + KDGetPronounLabel(value.pronoun),
 				x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 
 			if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.has(value.Faction)))

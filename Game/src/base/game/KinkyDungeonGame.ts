@@ -5,6 +5,7 @@ let KDGameGlobals = {
 	Currently supported pronouns
 	*/
 	Pronouns: ["She", "They", "It"],
+	PronounsBase: ["She", "They", "It"],
 };
 
 let KDIntentionalSPSpendSrc = [
@@ -450,6 +451,14 @@ function KinkyDungeonNewGamePlus(increaseDiff: boolean): void {
 
 		KinkyDungeonHardMode = KinkyDungeonStatsChoice.get("hardMode");
 		KinkyDungeonExtremeMode = KinkyDungeonStatsChoice.get("extremeMode");
+	}
+
+	if (KDGameData.CustomPronouns) {
+		for (let key of Object.keys(KDGameData.CustomPronouns)) {
+			let id = key.substring("Custom".length);
+			if (id != "-1" && !newPersistent[id] && !KDGameData.Collection[id])
+				delete KDGameData.CustomPronouns[key];
+		}
 	}
 
 	KDGameData.PersistentNPCCache = {};

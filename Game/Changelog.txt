@@ -80,7 +80,7 @@ Must do
 - Fixed some leashing behavior issues
 - Allies no longer follow you without you telling them to follow you
 - Yet more graphics optimizations
-- 
+- Added customizable pronouns to player and NPC
 
 5.5.11
 - Fixed some crash that occurred when swapping characters repeatedly in collection

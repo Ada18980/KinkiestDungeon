@@ -12,6 +12,11 @@ let KDConsentFilter = "";
 let LaunchedMenu = false;
 /** Listing pronouns depends on the language atm */
 let KDLanguagesThatShowPronoun = ['', 'EN'];
+/** Languages that currently support pronouns */
+let KDLanguagesWithPronouns = ['', 'EN', 'CN', 'RU'];
+let KDLanguagesWithCustomPronoun = ['', 'EN', 'CN', 'RU'];
+let KDLanguagesWithItIts = ['', 'EN', 'CN', 'RU'];
+let KDLanguagesWithTheyThem = ['', 'EN', 'RU'];
 
 
 // Modders look here!
@@ -593,10 +598,12 @@ interface KDGameDataBase {
 	BulletWarnings: Record<string, any>[],
 	ShopkeeperFavors: number,
 	SeenEntities?: Record<string, boolean>,
+	CustomPronouns:			Record<string, KDCustomPronounData>,
 };
 
 
 let KDGameDataBase: KDGameDataBase = {
+	CustomPronouns: {},
 	CorsetPower: 0,
 	CorsetPowerEffective: 0,
 	ShopkeeperFavors: 0,
@@ -2096,7 +2103,7 @@ function KinkyDungeonRun() {
 			|| (localStorage.getItem('KDLastSaveSlot') !== null && loadedsaveslots[parseInt(localStorage.getItem('KDLastSaveSlot')) - 1])) ? KDBaseWhite : "pink", "");
 			DrawButtonKDEx("GameStart", () => {
 				KinkyDungeonState = "Name";
-				KDGameData.PlayerPronoun = localStorage.getItem('KDLastPronoun');
+				KDRestorePlayerPronoun();
 				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 4;
 				let emptySlot = undefined;
 				for (var i = 1; i <= (saveSlotsPerPage*maxSaveSlotPages); i++) {
@@ -2943,10 +2950,15 @@ function KinkyDungeonRun() {
 			);
 		}
 		
-		KDDrawPronounPicker(975 + 550/2, 250, KDGameGlobals.Pronouns, KDGameData.PlayerPronoun, (pronoun) => {
-			KDGameData.PlayerPronoun = pronoun;
-			localStorage.setItem('KDLastPronoun', pronoun);
-		});
+		if (KDLanguagesWithPronouns.includes(TranslationLanguage))
+			KDDrawPronounPicker(975 + 550/2, 238, KDGameGlobals.Pronouns, 
+				KDGameData.PlayerPronoun, (pronoun) => {
+				KDGameData.PlayerPronoun = pronoun;
+				localStorage.setItem('KDLastPronoun', pronoun);
+			}, undefined, -1, (forms) => {
+				KDSetCustomPronoun(-1, forms);
+				localStorage.setItem('KDPlayerCustomPronoun', JSON.stringify(forms));
+			});
 		KDDrawWardrobeButton();
 
 		DrawButtonKDEx("randomName", () => {
@@ -5700,7 +5712,7 @@ function KDDrawLoadMenu() {
 		DrawTextFitKD(loadedSaveforPreview.KDGameData.PlayerName, CombarXX + 680, YYstart + 630, 400, KDBaseWhite, undefined, 40);
 		
 		if (KDLanguagesThatShowPronoun.includes(TranslationLanguage))
-			DrawTextFitKD(TextGet("KDPronoun_" + (loadedSaveforPreview.KDGameData.PlayerPronoun || "")), 
+			DrawTextFitKD(KDGetPronounLabel(loadedSaveforPreview.KDGameData.PlayerPronoun, loadedSaveforPreview.KDGameData),
 				CombarXX + 680, YYstart + 650, 400, KDBaseWhite, undefined, 12);
 		if (loadedSaveforPreview.KDGameData.Class)
 			DrawTextFitKD(
@@ -6569,6 +6581,7 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 
 		KDGameData.PlayerName = localStorage.getItem("PlayerName") || "Ada";
 		KinkyDungeonPlayer.Name = KDGameData.PlayerName;
+		KDRestorePlayerPronoun();
 	}
 	if (!KDMapData.Grid) {
 		KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], "JourneyFloor", "", MiniGameKinkyDungeonLevel, false, Load);

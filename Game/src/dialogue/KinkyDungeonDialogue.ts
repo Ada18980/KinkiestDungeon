@@ -3130,13 +3130,6 @@ function KDGetDiminutive(player: entity, lowercase?: boolean) {
 }
 //function KDGetSubTitle(player: entity) {return TextGet("");}
 
-interface KDPronounData {
-	player: entity,
-	type: string,
-	pronoun: string,
-	priority: number,
-	lowercase: boolean,
-}
 
 function KDGetPronoun(player: entity, type: string = "", lowercase: boolean = false, override?: string) {
 	let data: KDPronounData = {
@@ -3147,14 +3140,24 @@ function KDGetPronoun(player: entity, type: string = "", lowercase: boolean = fa
 		lowercase: lowercase,
 	}
 	if (player?.player) {
-		data.pronoun = TextGet("KDPro_" + (override || KDGameData.PlayerPronoun || "She") + data.type + (data.lowercase ? "LC" : ""));
+		data.pronoun = KDGetPronounText(KDGetPronounKey(player, override), data.type, data.lowercase);
 		KinkyDungeonSendEvent("playerpronoun", data);
 		return data.pronoun;;
 	}
 	if (!player) return TextGet("KDPro_She" + data.type + (data.lowercase ? "LC" : ""));
-	data.pronoun = TextGet("KDPro_" + (override || (KDIsNPCPersistent(data.player?.id) ? KDGetPersistentNPC(data.player.id).entity?.CustomPronoun : data.player.CustomPronoun) || "She") + data.type + (data.lowercase ? "LC" : ""));
+	data.pronoun = KDGetPronounText(KDGetPronounKey(player, override), data.type, data.lowercase);
 	KinkyDungeonSendEvent("npcpronoun", data);
 	return data.pronoun;
+}
+
+function KDPronounIsPlural(player: entity, override?: string): boolean {
+	let pro = KDGetPronoun(player, "", true, override);
+	let key = KDGetPronounKey(player, override);
+	let custom = KDGetCustomPronounData(key);
+	if (custom && pro == KDGetCustomPronounForm(key, "", true)) {
+		return !!custom.plural;
+	}
+	return pro == TextGet("KDPro_TheyLC") || pro == TextGet("KDPro_YouLC");
 }
 function KDGetPronounThey(player: entity, override?: string) {
 	return KDGetPronoun(player, "", undefined, override);
@@ -3192,33 +3195,25 @@ function KDGetPronountheyre(player: entity, override?: string) {
 
 // In english it's awkward to say "they returns" or "they pulls" so the s gets removed depending on pronoun
 function KDGetTheyThem_s(player: entity, override?: string) {
-	let pro = KDGetPronoun(player, "", true, override);
-	if (pro == TextGet("KDPro_TheyLC")
-		|| pro == TextGet("KDPro_YouLC")) {
+	if (KDPronounIsPlural(player, override)) {
 		return "";
 	} else return TextGet("KDTheyThem_s")
 }
 // In english it's awkward to say "they inches" so the es gets removed depending on pronoun
 function KDGetTheyThem_es(player: entity, override?: string) {
-	let pro = KDGetPronoun(player, "", true, override);
-	if (pro == TextGet("KDPro_TheyLC")
-		|| pro == TextGet("KDPro_YouLC")) {
+	if (KDPronounIsPlural(player, override)) {
 		return "";
 	} else return TextGet("KDTheyThem_es")
 }
 // In english it's awkward to say "they has" so it gets changed to "they have"
 function KDGetTheyThem_has(player: entity, override?: string) {
-	let pro = KDGetPronoun(player, "", true, override);
-	if (pro == TextGet("KDPro_TheyLC")
-		|| pro == TextGet("KDPro_YouLC")) {
+	if (KDPronounIsPlural(player, override)) {
 		return TextGet("KDTheyThem_have");
 	} else return TextGet("KDTheyThem_has")
 }
 // In english it's awkward to say "they is" so it gets changed to "they are"
 function KDGetTheyThem_is(player: entity, override?: string) {
-	let pro = KDGetPronoun(player, "", true, override);
-	if (pro == TextGet("KDPro_TheyLC")
-		|| pro == TextGet("KDPro_YouLC")) {
+	if (KDPronounIsPlural(player, override)) {
 		return TextGet("KDTheyThem_are");
 	} else return TextGet("KDTheyThem_is")
 }

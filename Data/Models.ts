@@ -457,6 +457,7 @@ function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false
 			delete KDGameData.NamesGenerated[KDPersistentNPCs[id + ""].Name]
 		delete KDPersistentNPCs[id + ""];
 		delete KDGameData.NPCRestraints[id + ""];
+		KDDeleteCustomPronoun(id);
 		KDDeletedIDs[id + ""] = 1;
 	}
 	delete KDGameData.Collection[id + ""];

@@ -17,6 +17,15 @@ function TranslationLoad(): void {
 	}
 
 	if (language != null) TranslationLanguage = language;
+
+	KDGameGlobals.Pronouns = [...KDGameGlobals.PronounsBase];
+
+	if (!KDLanguagesWithTheyThem.includes(TranslationLanguage)) {
+		KDGameGlobals.Pronouns = KDGameGlobals.Pronouns.filter((p) => {return p != "They";});
+	}
+	if (!KDLanguagesWithItIts.includes(TranslationLanguage)) {
+		KDGameGlobals.Pronouns = KDGameGlobals.Pronouns.filter((p) => {return p != "It";});
+	}
 }
 
 function GetUserPreferredLanguage() {
