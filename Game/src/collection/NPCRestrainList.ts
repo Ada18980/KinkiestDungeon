@@ -90,11 +90,13 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			allowedTags: ["Masks", "Hoods", "Wrapping", "Encase"]},
 		layers: [
 			{id: "OuterHead", encasedBy: ["Hood"], allowedGroups: ["ItemHead"],
-				allowedTags: ["Blindfolds", "Earplugs"]},
+				allowedTags: ["Blindfolds"]},
 			{id: "InterHead", encasedBy: ["Hood"], allowedGroups: ["ItemHead"],
 				allowedTags: ["Blindfolds"]},
 			{id: "InnerHead", encasedBy: ["Hood"], allowedGroups: ["ItemHead"],
 				allowedTags: ["Blindfolds", "Tape", "Visors", "Ribbons"]},
+			{id: "Earplugs", encasedBy: ["Hood"], allowedGroups: ["ItemEars"],
+				allowedTags: ["Earplugs"]},
 		]},
 	{id: "Gag", encaseGroup:
 		{id: "Muzzle", encasedBy: ["Hood"], allowedGroups: ["ItemMouth"],

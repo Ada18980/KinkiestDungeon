@@ -13428,6 +13428,7 @@ rShadyShopClothGag2,"(The SPEAKER produces a bag of cloth gags)|It's a matter of
 rShadyShopClothGag3,"(The SPEAKER produces a bag of cloth gags)|It's a matter of taste, really.|No, I didn't mean that literally..."
 rShadyShopClothGagOver,"(The SPEAKER produces a bag of cloth gags)|It's a matter of taste, really.|No, I didn't mean that literally..."
 rShadyShopClothBlindfold,"(The SPEAKER produces a bag of cloth strips)|How tight you tie it depends on how bratty your target is."
+rShadyShopTrapEarplugs,"(The SPEAKER produces a box of earplugs)|It's harder to call for help if you can't tell where anyone is~|Unless you scream and scream until you get tired, but you know..."
 
 
 
@@ -32713,9 +32714,10 @@ KDBindNPCSlot_ModuleUtility,Module (Utility)
 KDBindNPCSlot_CollarTag,Leash
 KDBindNPCSlot_ModulePunish,Module (Punishment)
 KDBindNPCSlot_Collar,~~~ Collar ~~~
-KDBindNPCSlot_InnerHead,Blindfold / Earplugs
+KDBindNPCSlot_InnerHead,Blindfold / Visors
 KDBindNPCSlot_InterHead,Blindfold
 KDBindNPCSlot_OuterHead,Blindfold
+KDBindNPCSlot_Earplugs,Earplugs/Muffs
 KDBindNPCSlot_Hood,Mask/Hood
 KDBindNPCSlot_InnerGag,Gag / Stuffing
 KDBindNPCSlot_InterGag,Gag
