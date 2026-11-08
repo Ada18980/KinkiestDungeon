@@ -4090,7 +4090,7 @@ function KDDrawPronounPicker(X: number, Y: number, list: string[], current: stri
 			Y + (params?.vertical ? params.spacingY as number * i++ : 0), 
 			size, size, TextGet("KDPronoun_" + pronoun), (!pronoun && !current) || current == pronoun, undefined, textcolor, undefined, {
 				fontSize: fontsize,
-				alpha: 0.8
+				alpha: 0.92
 			});
 	}
 }
