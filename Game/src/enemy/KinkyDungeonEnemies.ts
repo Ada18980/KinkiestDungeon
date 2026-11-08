@@ -1139,8 +1139,12 @@ function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: 
 				KDEntityRestraintMetadata.set(enemy.id, KDUpdateRestraintMetadata(enemy.id, 0));
 				enemy.refreshSprite = false;
 			}
-			KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[enemy.id + ''] : undefined);
+			if (KDRefreshCharacter.get(char)
+				|| KDUpdateEnemySprites) {
+				KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[enemy.id + ''] : undefined);
 
+			}
+			
 			kdpixisprites.set("xspr_" + enemy.id + id, {}); // Hijack pixisprites due to desired functionality
 			kdSpritesDrawn.set("xspr_" + enemy.id + id, true);
 

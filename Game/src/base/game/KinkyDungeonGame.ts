@@ -3549,6 +3549,7 @@ let KDLastTick = 0;
 let KDSawFlagsDecayRate = 0.95;
 
 function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: boolean) {
+	KDUpdateEnemySprites = true;
 	if (delta > 0) {
 		KDEventData.sounddesc = [];
 	}
