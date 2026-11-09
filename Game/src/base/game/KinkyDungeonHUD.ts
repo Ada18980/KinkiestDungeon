@@ -443,7 +443,7 @@ function KDDrawSpellChoices() {
 			scaleImage: true,
 			centered: true,
 			centerText: true,
-		});
+		}, KDButtonTooltip(TextGet("KDCycleHotbar"), undefined, "center"));
 	}
 	KDCullSpellChoices();
 
@@ -487,7 +487,7 @@ function KDDrawSpellChoices() {
 				undefined, undefined, undefined, {
 					hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[0]),
 					scaleImage: true,
-				}
+				}, KDButtonTooltip(TextGet("KDSpellEmpower" + (hasUpcast ? "" : "Fail")), undefined, "center")
 			);
 			if (KDUpcastLevel > 0)
 				DrawButtonKDEx("empowerSpellCancel",
@@ -500,16 +500,8 @@ function KDDrawSpellChoices() {
 					undefined, undefined, undefined, {
 						hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[1]),
 						scaleImage: true,
-					}
+					}, KDButtonTooltip(TextGet("KDSpellEmpowerCancel"), undefined, "center")
 				);
-			if (MouseIn(hotBarX + (hotBarIndex)*hotBarSpacing , HotbarStart, 72, 72)) {
-				DrawTextFitKD(TextGet("KDSpellEmpower" + (hasUpcast ? "" : "Fail")), hotBarX + (hotBarIndex)*hotBarSpacing, HotbarStart - 140,
-					1000, KDBaseWhite, undefined, undefined, "center");
-			}
-			if (KDUpcastLevel > 0 && MouseIn(hotBarX + (hotBarIndex)*hotBarSpacing, HotbarStart - 82, 72, 72)) {
-				DrawTextFitKD(TextGet("KDSpellEmpowerCancel"), hotBarX + (hotBarIndex)*hotBarSpacing, HotbarStart - 140,
-					1000, KDBaseWhite, undefined, undefined, "center");
-			}
 		}
 	}
 
@@ -1254,7 +1246,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		return true;
 	}, true, 510, 925, 60, 60, "", KinkyDungeonStruggleGroups.length > 0 ? KDBaseWhite : "#333333", KinkyDungeonRootDirectory + "Hide" + (
 		KDDrawStruggleIcon[KDStruggleDrawMode] || "False") + ".png", "", undefined, undefined, undefined, undefined, undefined, undefined,
-		KDButtonTooltip(TextGet("KDHideRest"), undefined, "right"));
+		KDButtonTooltip(TextGet("KDHideRest"), undefined, "left"));
 	if (MouseIn(0, 0, 500, 1000) || MouseIn(500, 900, 320, 200) || KDPlayerSetPose || KDToggleXRay) {
 		if (StandalonePatched) {
 			DrawButtonKDEx("SetPose", (_bdata) => {
@@ -1262,7 +1254,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 				return true;
 			}, true, 650, 925, 60, 60, "", KDBaseWhite, KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false,
 			KDPlayerSetPose ? KDTextGray3 : KDButtonColor, undefined, undefined, undefined,
-			KDButtonTooltip(TextGet("KDSetPose"), undefined, "right"));
+			KDButtonTooltip(TextGet("KDSetPose"), undefined, "left"));
 		}
 		DrawButtonKDEx("ToggleXray", (_bdata) => {
 			KDToggleXRay += 1;
@@ -1273,7 +1265,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 			return true;
 		}, true, 580, 925, 60, 60, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/XRay" + KDToggleXRay + ".png", "", false, false,
 			KDToggleXRay ? KDTextGray3 : KDButtonColor, undefined, undefined, undefined,
-			KDButtonTooltip(TextGet("KDXRay"), undefined, "right"));
+			KDButtonTooltip(TextGet("KDXRay"), undefined, "left"));
 	}
 	if (MouseIn(0, 0, 500, 1000) || MouseIn(500, 900, 320, 200) || KDBulletTransparency || KDMapData.Bullets?.length > 0) {
 		DrawButtonKDEx("SetTransparentBullets", (_bdata) => {
@@ -1295,7 +1287,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 			((!KDBulletTransparency && KDStatusToggle) ? "All" : (KDStatusToggle ? "Only" : (!KDBulletTransparency ? "Bullet" : "None")))
 		+".png", "", false, false,
 		KDButtonColor, undefined, undefined, undefined,
-		KDButtonTooltip(TextGet("KDBulletTransparency"), undefined, "right"));
+		KDButtonTooltip(TextGet("KDBulletTransparency"), undefined, "left"));
 	}
 	if (KDPlayerSetPose) {
 		KDPlayerDrawPoseButtons(KinkyDungeonPlayer);
@@ -1369,7 +1361,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 		undefined, undefined, undefined, undefined, undefined,
 		{
 			hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[0]),
-		}, !KinkyDungeonShowInventory ? KDButtonTooltip(TextGet("KDQuickInv"), undefined, "right") : undefined);
+		}, !KinkyDungeonShowInventory ? KDButtonTooltip(TextGet("KDQuickInv"), undefined, "left") : undefined);
 
 	}
 	

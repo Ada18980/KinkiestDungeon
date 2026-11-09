@@ -4003,7 +4003,7 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 		scaleImage: true,
 		centered: true,
 		centerText: true,
-	});
+	}, KDButtonTooltip(TextGet("KDCycleHotbar"), undefined, "center"));
 	KDCullSpellChoices();
 
 	//if (!KDToggles.TransparentUI) {
