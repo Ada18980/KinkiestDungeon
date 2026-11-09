@@ -2300,7 +2300,6 @@ function KinkyDungeonDrawInventory() {
 		if (inventoryActions.length > 0) {
 			let XX = canvasOffsetX_ui + xOffset + 70;
 			let YY = 34 + 483*KinkyDungeonBookScale - 5 + 38;
-			let YYTooltip = YY - 30;
 			let II = 0;
 			for (let action of inventoryActions) {
 				if (!KDInventoryAction[action]?.show || KDInventoryAction[action]?.show(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)) {
@@ -2318,7 +2317,7 @@ function KinkyDungeonDrawInventory() {
 							DrawTextFitKD(KDInventoryAction[action].label(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item),
 								XX + II*KDInventoryActionSpacing + (KDInventoryAction[action]?.doubleSize ? (74 + KDInventoryActionSpacing)/2 : 34), YY + 72 - 9, 72, KDInventoryAction[action].labelcolor ? KDInventoryAction[action].labelcolor(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) : KDBaseWhite,
 								KDTextGray0, 18, "center");
-						if (DrawButtonKDEx("invAction" + action, (_bdata) => {
+						DrawButtonKDEx("invAction" + action, (_bdata) => {
 							KDSendInput("inventoryAction",
 								{action: action,
 									container: KDInventoryActionContainer(KDPlayer()),
@@ -2345,12 +2344,10 @@ function KinkyDungeonDrawInventory() {
 							wrap: true,
 
 						},
-						)) {
-							DrawTextFitKD(KDInventoryAction[action].text ?
-								KDInventoryAction[action].text(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)
-								: TextGet("KDInventoryAction" + action),
-							XX, YYTooltip, KDInventoryActionSpacing*6, KDBaseWhite, KDTextGray0, 24, "left");
-						}
+						KDButtonTooltip(KDInventoryAction[action].text ?
+							KDInventoryAction[action].text(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)
+							: TextGet("KDInventoryAction" + action), undefined, "center"),
+						);
 					}
 
 					II++;
