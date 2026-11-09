@@ -25254,6 +25254,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: rShadyShopClothGagOver
 - (The SPEAKER produces a bag of cloth strips)|How tight you tie it depends on how bratty your target is.
 ( SPEAKER 拿出一袋布条)|你系得有多紧取决于你的目标有多淘气。
+# - (The SPEAKER produces a box of earplugs)|It's harder to call for help if you can't tell where anyone is~|Unless you scream and scream until you get tired, but you know...
 
 
 
@@ -51884,8 +51885,9 @@ ${PHonor}，你挡住我了……
 模块 ( 惩罚 )
 - ~~~ Collar ~~~
 ~~~ 项圈 ~~~
-- Blindfold / Earplugs
+- Blindfold / Visors
 眼罩 / 耳塞
+# - Earplugs/Muffs
 - Mask/Hood
 面罩 / 头套
 - Gag / Stuffing
@@ -55406,6 +55408,9 @@ ${Weapon}为了自身安全，自行收起……
 TA
 - It/Its
 它
+# - Custom
+# - PRO1/PRO2
+# - Plural
 
 - Detailed Info
 详细信息
