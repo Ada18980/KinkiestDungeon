@@ -84,6 +84,7 @@ KDToggleDescTrainingBuff,Shows the player's training progress when expanding the
 KDToggleDescApplyPaletteRestraint,Applies palettes to restraints the player character is wearing
 KDToggleDescApplyPaletteTransform,Applies palettes to visual changes from effects such as Latex Integration
 KDToggleDescInvLimit,Applies a limit to consumables you can hold. Excess consumables are automatically sent to storage.
+KDToggleDescNativeCompression,"Use native browser compression for smaller, faster save files.  Old save files may still be loaded."
 KDToggleDescIgnoreApplyCharPalette,Ignores the palette associated with a character design (Extra Options menu in wardrobe)
 KDToggleDescAlwaysApplyCharPalette,Always uses the character's palette rather than ingame outfits or restraints
 KDToggleDescDefaultApplyCharPalette,Associates the Adventurer's Outfit ingame with the default palette selected here
@@ -220,6 +221,7 @@ KDToggleApplyPaletteRestraint,Apply palettes to Restraints
 KDToggleApplyPaletteTransform,Apply palettes to transforms
 
 KDToggleInvLimit,Enforce Inventory Limits
+KDToggleNativeCompression,Save Files with Native Compression
 KDToggleIgnoreApplyCharPalette,Don't use character palette
 KDToggleAlwaysApplyCharPalette,Always use character palette
 KDToggleDefaultApplyCharPalette,Use character palette for default outfit
