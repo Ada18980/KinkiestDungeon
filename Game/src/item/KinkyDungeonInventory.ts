@@ -4122,7 +4122,7 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 				undefined, undefined, undefined, {
 					hotkey: KDHotkeyToText(KinkyDungeonKeySpell[i]),
 					scaleImage: true,
-				});
+				}, KDHotbarSpellHover(spell));
 			if (KinkyDungeoCheckComponentsPartial(spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true).length > 0) {
 				let sp = KinkyDungeoCheckComponents(spell).failed.length > 0 ? "SpellFail" : "SpellFailPartial";
 				KDDraw(kdcanvas, kdpixisprites, "spellFail" + "SpellCast" + i, KinkyDungeonRootDirectory + "Spells/" + sp + ".png",
@@ -4137,11 +4137,6 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 					});
 			}
 
-			if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
-				DrawTextFitKD(TextGet("KinkyDungeonSpell"+ spell.name),
-				buttonDim.x, buttonDim.y - 140, 300, KDBaseWhite, "#333333", undefined, "center",
-				200);
-			}
 			// Render number
 			//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, KDBaseWhite, KDTextGray0, 18, undefined, 101);
 
@@ -4151,12 +4146,7 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 			let item = KinkyDungeonConsumableChoices[index] || KinkyDungeonWeaponChoices[index] || KinkyDungeonArmorChoices[index];
 			let arm = KinkyDungeonArmorChoices[index];
 			let consumable = KinkyDungeonConsumableChoices[index];
-			let wep = KinkyDungeonWeaponChoices[index];
 			// Draw the main icon
-			let name = item;
-			if (arm && KinkyDungeonRestraintVariants[arm]) name = KinkyDungeonRestraintVariants[arm].template;
-			if (consumable && KinkyDungeonConsumableVariants[consumable]) name = KinkyDungeonConsumableVariants[consumable].template;
-			if (wep && KinkyDungeonWeaponVariants[wep]) name = KinkyDungeonWeaponVariants[wep].template;
 			if (KDGetItemPreview({name: item, id: 0, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)})) {
 				DrawButtonKDEx("UseItem" + index,
 					() => {
@@ -4186,14 +4176,7 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 					undefined, undefined, undefined, {
 						hotkey: KDHotkeyToText(KinkyDungeonKeySpell[i]),
 						scaleImage: true,
-					});
-
-				if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
-					DrawTextFitKD(TextGet((arm ? "Restraint" : ("KinkyDungeonInventoryItem")) + name),
-						buttonDim.x, buttonDim.y - 140, 300,
-						KDBaseWhite, "#333333", undefined, "center",
-						200);
-				}
+					}, KDHotbarItemHover(item));
 				// Render number
 				//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, KDBaseWhite, KDTextGray0, 18, undefined, 101);
 				if (consumable) {
@@ -4301,7 +4284,8 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 
 					return true;
 				}, true, buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall - 2, buttonDim.hsmall - 2, "",
-				KDButtonColor, "", "", false, true, KDButtonColor, undefined, undefined, {zIndex: 50});
+				KDButtonColor, "", "", false, true, KDButtonColor, undefined, undefined, {zIndex: 50},
+				KDHotbarSpellHover(spellPaged));
 				KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged, KinkyDungeonRootDirectory + "Spells/" + spellPaged.name + ".png"
 					,buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall, buttonDim.hsmall, undefined, {
 						zIndex: 71,
@@ -4356,7 +4340,8 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 
 						return true;
 					}, true, buttonDimSmall.x - 4, buttonDimSmall.y - 4, buttonDim.wsmall - 2, buttonDim.hsmall - 2, "",
-					KDButtonColor, "", "", false, true, KDButtonColor, undefined, undefined, {zIndex: 50});
+					KDButtonColor, "", "", false, true, KDButtonColor, undefined, undefined, {zIndex: 50},
+					KDHotbarItemHover(item));
 
 				}
 

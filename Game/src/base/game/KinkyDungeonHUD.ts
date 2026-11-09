@@ -413,12 +413,14 @@ function KDRenderHotbarTooltipSpell(button: KDButtonParamData) {
 
 function KDHotbarItemHover(item: string): HoverObject | undefined {
 	if (!item) return undefined;
-	return KDButtonTooltip(KDGetItemNameString(item), undefined, "center");
+	return KDButtonTooltip(KDGetItemNameString(item), 
+		undefined, "center");
 }
 
 function KDHotbarSpellHover(spell: spell): HoverObject | undefined {
 	if (!spell) return undefined;
-	return KDButtonTooltip(TextGet("KinkyDungeonSpell" + spell.name), undefined, "center");
+	return KDButtonTooltip(TextGet("KinkyDungeonSpell" + spell.name), 
+		undefined, "center");
 }
 
 function KDDrawSpellChoices() {
