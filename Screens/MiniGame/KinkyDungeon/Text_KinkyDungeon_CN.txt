@@ -50531,6 +50531,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 点击快捷栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的快捷栏保存和加载预设。|这些预设在每一局之间共享。
+# - Cycle hotbar
 
 - You step on the item and tug to pull it taut...
 你踩在物品上并用力拉紧它......
