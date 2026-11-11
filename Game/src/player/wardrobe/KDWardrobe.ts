@@ -386,10 +386,8 @@ function KDDrawSavedColors(X: number, y: number, max: number, C: Character): voi
 		48, 48, "", 
 		KDBaseWhite, KinkyDungeonRootDirectory + "UI/savedColor_copy.png", undefined, !filters, 
 		KinkyDungeonReplaceColorConfirm != (ii + 1), undefined, undefined, undefined, {
-			onHover: KDRenderTooltipRed,
 			tint: filters ? 0xffffff : 0x888888,
-			hoverData: TextGet("KDCopyColor")
-		});
+		}, undefined, Object.assign(KDButtonTooltip(TextGet("KDCopyColor")), {TitleTextColor: "#ffaeae"}));
 		DrawButtonKDExTo(kdpalettecontainer, "SavedColorPaste" + ii, (_bdata) => {
 			if (KinkyDungeonReplaceColorConfirm != -(ii + 1)) {
 				KinkyDungeonReplaceColorConfirm = -(ii + 1);
@@ -409,10 +407,8 @@ function KDDrawSavedColors(X: number, y: number, max: number, C: Character): voi
 		Y + 64+ (KinkyDungeonReplaceColorConfirm == -(ii + 1) ? Math.round(Math.random() * 3 - 1) : 0), 
 		48, 48, "", 
 		KDBaseWhite, KinkyDungeonRootDirectory + "UI/savedColor_paste.png", undefined, false, 
-		KinkyDungeonReplaceColorConfirm != -(ii + 1), undefined, undefined, undefined, {
-			onHover: KDRenderTooltip,
-			hoverData: TextGet("KDPasteColor")
-		});
+		KinkyDungeonReplaceColorConfirm != -(ii + 1), undefined, undefined, undefined,
+			undefined, undefined, KDButtonTooltip(TextGet("KDPasteColor")));
 	}
 }
 
@@ -2595,26 +2591,23 @@ function KDDrawWardrobeToolsButtons(X, Y, C, Model) {
 			return true;
 			}, true, X + width/2 + 10, YY + yOff, 30, 30, undefined, KDBaseWhite, "Game/UI/Aim.png",
 			undefined, false, false, KDWToolsPivotAimEnabled ? KDBorderColor : KDButtonColor,
-			undefined, undefined, {hotkeyPress: KDHotkeyToText('ControlLeft')});
+			undefined, undefined, {hotkeyPress: KDHotkeyToText('ControlLeft')},
+			KDButtonTooltip(TextGet("KDWToolsButton1")));
 		//Grab toggle button
 		DrawButtonKDEx("KDWToolsButton2", (bdata) => {
 			KDWToolsDraggingEnabled = !KDWToolsDraggingEnabled;
 			return true;
 			}, true, X + 3*width/4 - 10, YY + yOff, 30, 30, undefined, KDBaseWhite,
 			"Game/UI/Grab" + (KDWToolsDraggingEnabled ? "Closed" : "Open") + ".png",
-			undefined, false, false, KDWToolsDraggingEnabled ? KDBorderColor : KDButtonColor);
+			undefined, false, false, KDWToolsDraggingEnabled ? KDBorderColor : KDButtonColor,
+			undefined, undefined, undefined, KDButtonTooltip(TextGet("KDWToolsButton2")));
 		//Reserved button
 		DrawButtonKDEx("KDWToolsButton3", (bdata) => {
 			KDWToolsDrawSettingsMenuEnabled = !KDWToolsDrawSettingsMenuEnabled;
 			return true;
 			}, true, X + width - 30, YY + yOff, 30, 30, undefined, KDBaseWhite, "Game/UI/Wrench.png",
-			undefined, false, false, KDWToolsDrawSettingsMenuEnabled ? KDBorderColor : KDButtonColor);
-
-		//Tooltips
-		for (let i = 1; i <= 3; i++)
-			if (MouseInKD("KDWToolsButton" + i))
-				DrawTextFitKD(TextGet("KDWToolsButton" + i), X + 3*width/4 + 5,
-			YY + yOff - 15, width/2 + 50, KDBaseWhite, KDTextGray0);
+			undefined, false, false, KDWToolsDrawSettingsMenuEnabled ? KDBorderColor : KDButtonColor,
+			undefined, undefined, undefined, KDButtonTooltip(TextGet("KDWToolsButton3")));
 
 		//Settings menu
 		if(KDWToolsDrawSettingsMenuEnabled)

@@ -18,7 +18,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	},
 	setAutoSprint: (data) => {
 		KinkyDungeonToggleAutoSprint = data.Sprint;
-		KDGameData.AutoSprintTriggered = data.AUto;
+		KDGameData.AutoSprintTriggered = data.Auto;
 		KinkyDungeonSuppressSprint = data.Suppress;
 		return "";
 	},
