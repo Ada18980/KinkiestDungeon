@@ -3915,7 +3915,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 				KinkyDungeonToggleAutoSprint = true;
 				KinkyDungeonSuppressSprint = false;
 			}
-		} else if (KDGameData.AutoSprintTriggered && !KDAutoSprintCriteria(KDPlayer())) {
+		} else if (KDGameData.AutoSprintTriggered && (!KDAutoSprintCriteria(KDPlayer()) || !KinkyDungeonInDanger())) {
 			KDGameData.AutoSprintTriggered = false;
 			KinkyDungeonToggleAutoSprint = false;
 			KinkyDungeonSuppressSprint = false
