@@ -829,7 +829,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 		).YY;
 	}
 
-	KDDrawWardrobeToolsButtons(X, Y, C, Model);
+	KDDrawWardrobeToolsButtons(X + (KDClipboardDisabled ? -width/2 : 0), Y + (KDClipboardDisabled ? 80 : 0), C, Model);
 
 
 	DrawButtonKDEx("tab_ColorPickerSimple", (_b) => {
