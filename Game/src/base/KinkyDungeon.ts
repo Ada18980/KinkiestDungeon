@@ -2110,7 +2110,7 @@ function KinkyDungeonRun() {
 					let num = (i);
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
-						let decoded = LZString.decompressFromBase64(code);
+						let decoded = KinkyDungeonDecompressSave(code);
 						if (!decoded) return;
 						let parse = JSON.parse(decoded);
 						if (decoded && parse?.KDGameData?.PlayerName)
@@ -2150,7 +2150,7 @@ function KinkyDungeonRun() {
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
 
-						let decoded = LZString.decompressFromBase64(code);
+						let decoded = KinkyDungeonDecompressSave(code);
 						let parse = JSON.parse(decoded);
 						if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName)
 							loadedsaveNames[num - 1] =
@@ -2379,7 +2379,7 @@ function KinkyDungeonRun() {
 				JSON.parse(LZString.decompressFromBase64(itt)).appearance
 				|| itt : "";
 			if (orig != ElementValue("saveInputField")) KDOutfitOriginalStore[KDCurrentOutfit] = orig;
-			let decompressed = DecompressB64(ElementValue("saveInputField"));
+			let decompressed = KinkyDungeonDecompressSave(ElementValue("saveInputField"));
 			if (decompressed) {
 				let origAppearance = KinkyDungeonPlayer.Appearance;
 				try {
@@ -2455,7 +2455,7 @@ function KinkyDungeonRun() {
 				JSON.parse(LZString.decompressFromBase64(itt)).appearance
 				|| itt : "";
 			if (orig != ElementValue("saveInputField")) KDOutfitOriginalStore[KDCurrentOutfit] = orig;
-			let decompressed = DecompressB64(ElementValue("saveInputField"));
+			let decompressed = KinkyDungeonDecompressSave(ElementValue("saveInputField"));
 			if (decompressed) {
 				try {
 					CharacterAppearanceRestore(Char, decompressed, true, false);
@@ -3262,7 +3262,9 @@ function KinkyDungeonRun() {
 		if (ElementValue("saveDataField"))
 			DrawButtonKDEx(
 				"saveToFile", () => {
-					downloadFile((ElementValue("savename") || KDGameData.PlayerName || "Save") + KDSAVEEXTENSION, ElementValue("saveDataField"));
+					const ext = KDToggles.NativeCompression  ? KDSAVEEXTENSION_GZ  : KDSAVEEXTENSION;
+					downloadFile((ElementValue("savename") || KDGameData.PlayerName || "Save") + ext, 
+						ElementValue("saveDataField"));
 					return true;
 				}, true, 875, 650, 350, 64, TextGet("KinkyDungeonSaveToFile"), KDBaseWhite, ""
 			);
@@ -5643,22 +5645,25 @@ function KDDrawLoadMenu() {
 	DrawButtonKDEx("LoadFromCodeButton", () => {
 		KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
 		LoadMenuCurrentSlot = undefined;
-		if (newValue) {
-			loadedSaveforPreview = KinkyDungeonLoadPreview(newValue);
-			if (loadedSaveforPreview) LoadMenuCurrentSlot = -1;
-		} else if (KDSlot0) {
-			loadedSaveforPreview = KinkyDungeonLoadPreview(KDSlot0);
-			if (loadedSaveforPreview) LoadMenuCurrentSlot = 0;
-			LoadMenuCurrentSave = KDSlot0;
+		const decodeSrc = newValue || KDSlot0;
+		const slotidx = !!newValue ? -1 : 0;
+
+		if (decodeSrc) {
+			loadedSaveforPreview = KinkyDungeonLoadPreview (decodeSrc);
+			if (loadedSaveforPreview) {
+				LoadMenuCurrentSlot = slotidx;
 		}
-		else {
+			if (slotidx == 0) {
+				LoadMenuCurrentSave = decodeSrc;
+			}
+		} else {
 			loadedSaveforPreview = null;
 			LoadMenuCurrentSlot = -1;
 		}
-		if (loadedSaveforPreview) {
-			LoadMenuCurrentSave = newValue ? newValue : KDSlot0;
 
-			let origSaveSlot = KDSaveSlot;
+		if (loadedSaveforPreview) {
+			LoadMenuCurrentSave = newValue || KDSlot0;
+
 			KDSaveSlot = 0;
 			// @ts-ignore
 			if (!loadedSaveforPreview.invalid) {
@@ -6323,7 +6328,7 @@ function KinkyDungeonLoadPreview(String: string): KinkyDungeonSave {
 		};
 	}
 	try {
-		let str: string = DecompressB64(String.trim());
+		let str: string = KinkyDungeonDecompressSave(String.trim());
 		let returndata: KinkyDungeonSave = null;
 
 		// We do a little JS witchery here
@@ -7569,16 +7574,34 @@ function KinkyDungeonSaveGame(ToString: boolean = false): KinkyDungeonSave {
 }
 
 
+enum SaveType {
+	Game     = 'game',
+	Outfit   = 'outfit',
+	Wardrobe = 'wardrobe',	// Complete outfit collection; TBD
+}
+
+interface SaveWorkerMsg {
+	op:	'cmp' | 'err' | 'cmp-legacy';
+	type:	SaveType;
+	data:	string;
+}
+
 let KDSaveTimeout = 600000; // 10 minutes
-async function KinkyDungeonCompressSave(save: string): Promise<string> {
-	if (window.Worker) {
+async function KinkyDungeonCompressSave(save: string, type = SaveType.Game): Promise<string> {
+	if (window.Worker && false) {
+		const workerMsg: SaveWorkerMsg = {
+			op:	KDToggles.NativeCompression  ? 'cmp'  : 'cmp-legacy',
+			type:	type,
+			data:	save
+		};
 		const myWorker = new Worker("out/saveworker.js");
-		let pp = new Promise<string>(function (resolve, reject) {
+		let pp = new Promise<SaveWorkerMsg>(function (resolve, reject) {
 			myWorker.onmessage = function(e) {
 				console.log('Compressed data received from worker');
 				resolve(e.data);
 			}
-			myWorker.postMessage(save);
+			//myWorker.postMessage(save);
+			myWorker.postMessage(workerMsg);
 			console.log('Save message posted to worker');
 			setTimeout(reject, KDSaveTimeout); // 10 min timeout
 		});
@@ -7586,31 +7609,171 @@ async function KinkyDungeonCompressSave(save: string): Promise<string> {
 			.then((v) => {
 				console.log('Yay');
 				myWorker.terminate();
-				return v;})
-			.catch((v) => {
+				return v.data;})
+			.catch((_v) => {
 				console.log('Nay');
 				myWorker.terminate();
 				return LZString.compressToBase64(save);});
 	} else {
+		/**
+		 * IMPORTANT: Keep this block in sync with saveworker.js.
+		 */
 		console.log('Your browser doesn\'t support web workers.');
-		return LZString.compressToBase64(save);
+		const mime_type = `application/vnd.straightlaced.kinkydungeon.save.${type.toString()}+gzip;version=2`;
+
+		
+		/** Base64-encode bytes; chunked so large saves don't overflow String.fromCharCode's argument limit. */
+		function bytesToBase64 (bytes) {
+			let bin = "";
+			const chunk = 0x8000;
+			for (let i = 0; i < bytes.length; i += chunk) {
+				bin += String.fromCharCode.apply (null, bytes.subarray (i, i + chunk));
+			}
+			return btoa (bin);
+		}
+
+		/** same output format as compressNative. */
+		function compressFflate (data, mime_type) {
+			//@ts-ignore
+			if (typeof fflate == 'undefined') throw new Error ("fflate not available");
+			//@ts-ignore
+			const save_z = fflate.gzipSync (fflate.strToU8 (data));
+			return `data:${mime_type};base64,${bytesToBase64 (save_z)}`;
+		}
+
+
+		if (KDToggles.NativeCompression) {
+			try {
+				// Blob.  CompressionStream discards MIME-type; we'll add it later.
+				const save_b_js = new Blob ([save]);
+				const save_pipe = save_b_js.stream().pipeThrough (new CompressionStream ('gzip'));
+
+				// Compressed blob.
+				const resp = new Response (save_pipe, { headers: [["Content-Type", mime_type ]]});
+				const save_b_z = await resp.blob();
+
+				// Snarfed from MDN Web docs.
+				async function toBase64DataURL (blob: Blob): Promise<string> {
+					return await new Promise ((resolve, reject) => {
+						const reader = Object.assign (new FileReader(), {
+							onload:  () => resolve (reader.result as string),
+							onerror: () => reject (reader.error)
+						});
+						reader.readAsDataURL (blob);
+					});
+				}
+
+				const save_z64 = await toBase64DataURL (save_b_z);
+
+				return save_z64;
+			} catch (err) {
+				try {
+					console.log (`Caught ${err}; falling back to fflate...`);
+					return compressFflate (save, mime_type);
+				} catch (err) {
+					console.log (`Caught ${err}; falling back to LZString...`);
+				}
+			}
+
+		}
+		
+		
+		return LZString.compressToBase64 (save);
 	}
+}
+
+/**
+ * Decompress a save code into JSON.
+ *
+ * @param save - Compressed save code, either old-style LZString, or new `data:` URL.
+ * @param expected_type - Expected type of save.
+ * @return - JSON string, suitable for parsing; or null if the expected_type doesn't match the code's type.
+ */
+function KinkyDungeonDecompressSave (save: string, expected_type = SaveType.Game): string | null
+{
+	if (!save  ||  !save.trim) {
+		return null;
+	}
+
+	/*
+	 * Trim leading/trailing whitespace, and join newline-separated
+	 * lines into single string.
+	 */
+	save = "".concat (...save.trim().split ('\n'));
+
+	if (!save.startsWith ('data:')) {
+		/*  Legacy LSZtring save code.  */
+		console.log ("Decompressing old-style LZString save code...");
+		return LZString.decompressFromBase64 (save);
+	}
+
+	/*
+	 * New style `data:` URL.
+	 * Verify type and version number.  (Don't need to match against the whole thing.)
+	 */
+	const save_head = save.slice (0, 256);
+
+	/*
+	 * Check save type.
+	 * TODO: Test for `+gzip` and skip decompression if it's not there.
+	 */
+	let re = /vnd.straightlaced.kinkydungeon.save.(\w+)(?:\+gzip)?;/
+	let res = save_head.match (re);
+	if (!res  ||  res.length < 2) {
+		console.log ("Unrecognized save type.");
+		return null;
+	}
+	const save_type = res[1];
+	if (save_type != expected_type) {
+		console.log (`Expected save code type ${expected_type}, got ${save_type}.`);
+		return null;
+	}
+
+	/*
+	 * Check version.
+	 */
+	re = /;version=(\d+);/
+	res = save_head.match (re);
+	if (!res  ||  res.length < 2) {
+		console.log ("Missing version in save code.");
+		return null;
+	}
+	const save_version = res[1];
+	if (Number (save_version) != 2) {
+		console.log (`Unsupported save version ${save_version}`);
+		return null;
+	}
+
+	try {
+		const b64 = save.slice(save.indexOf(',') + 1);
+		const bin = atob(b64);
+		const bytes = new Uint8Array(bin.length);
+		for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+		//@ts-ignore
+		return new TextDecoder().decode(fflate.gunzipSync(bytes));
+	} catch (err) {
+		console.log(`Save code decompression failed: ${err}`);
+	}
+	return null;
 }
 
 let KDShowLoading = false;
 
+// LZString code
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=
-function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
+function KinkyDungeonLoadGame(String: string = null, kdloadconsent = false): boolean {
 	localStorage.setItem('KDLastSaveSlot', "" + KDSaveSlot);
 	KinkyDungeonSendEvent("beforeLoadGame", {});
 	KDShowLoading = true;
 	setTimeout(() => {
 		KDShowLoading = false;
 	}, 1000);
-	let str = String ? DecompressB64(String.trim()) :
-		(localStorage.getItem('KinkyDungeonSave') ? DecompressB64(localStorage.getItem('KinkyDungeonSave'))
-		: (loadedsaveslots[KDSaveSlot-1] ? DecompressB64(loadedsaveslots[KDSaveSlot-1]) : ""));
-	if (str) {
+	const src_str = String  ||  localStorage.getItem('KinkyDungeonSave')  ||  loadedsaveslots[KDSaveSlot-1];
+
+	if (src_str) {
+		//const str = DecompressB64 (src_str);
+		const str = KinkyDungeonDecompressSave (src_str);
+
 		let saveData: KinkyDungeonSave = JSON.parse(str);
 		if (    saveData
 		    &&  saveData.spells != undefined
@@ -8224,6 +8387,7 @@ function KinkyDungeonMultiplayerUpdate(_delay) {
 
 let saveFile = null;
 let KDSAVEEXTENSION = '.kdsave';
+let KDSAVEEXTENSION_GZ = '.kdsav2';
 let KDOUTFITEXTENSION = '.kdoutfit';
 let KDBACKUPEXTENSION = '.kdsettings';
 let KDOUTFITBACKUP = '.kdcharbackup';
@@ -8232,7 +8396,10 @@ let KDSaveName = "";
 function KDLoadSave(files) {
 	for (let f of files) {
 		if (f && f.name) {
-			if (f.name.endsWith(KDSAVEEXTENSION) || f.name.endsWith('.txt')) {
+			if (f.name.endsWith(KDSAVEEXTENSION)
+				|| f.name.endsWith(KDSAVEEXTENSION_GZ)
+				|| f.name.endsWith('.lzstr')
+				|| f.name.endsWith('.txt')) {
 				let str = "";
 				KDSaveName = f.name;
 				try {

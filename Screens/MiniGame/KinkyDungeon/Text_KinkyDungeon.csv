@@ -195,9 +195,10 @@ KDToggleDescDistractScreenFilter,Displays a pink filter over the screen when the
 KDToggleDescMinorSoundDesc,Draws text to indicate the nature of sounds heard in the fog of war.
 KDToggleDescShowDefensiveStats,"Shows defensive stats like evasion in the buff bar, even when collapsed"
 KDToggleDescStruggleScroll,Shows left and right buttons in the struggle UI when multiple restraints are present in the same slot
+KDToggleDescNativeCompression,"Use native browser compression for smaller, faster save files. Old save files may still be loaded."
 
 
-
+KDToggleNativeCompression,Save Files with Native Compression
 KDToggleHypnoOverlay,Hypnosis Screen Wobble
 KDToggleHypnoSpiral,Hypnosis Spirals
 

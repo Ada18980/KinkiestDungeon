@@ -218,6 +218,7 @@ let KDToggles = {
 	CenteredLog: false,
 	StruggleScroll: !CommonIsMobile,
 	Buttplug: false,
+	NativeCompression: true,
 };
 
 let forcePreload = false;
