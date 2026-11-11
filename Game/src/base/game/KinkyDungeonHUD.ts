@@ -1934,10 +1934,13 @@ function KinkyDungeonHandleHUD() {
 				return true;
 			}
 			if (MouseIn(1500, 320, 300, 64)) {
-				let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
-				KinkyDungeonState = "Save";
-				ElementCreateTextArea("saveDataField");
-				ElementValue("saveDataField", saveData);
+				KinkyDungeonCompressSave(JSON.stringify(KinkyDungeonSaveGame(true)))
+				.then(saveData => {
+					KinkyDungeonState = "Save";
+					ElementCreateTextArea("saveDataField");
+					ElementValue("saveDataField", saveData);
+				});
+				
 
 
 				return true;

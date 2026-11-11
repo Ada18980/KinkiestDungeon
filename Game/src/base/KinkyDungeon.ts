@@ -2110,7 +2110,7 @@ function KinkyDungeonRun() {
 					let num = (i);
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
-						let decoded = KinkyDungeonDecompressSave(code);
+						let decoded = KinkyDungeonDecompressSave(code, undefined, false);
 						if (!decoded) return;
 						let parse = JSON.parse(decoded);
 						if (decoded && parse?.KDGameData?.PlayerName)
@@ -2150,7 +2150,7 @@ function KinkyDungeonRun() {
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
 
-						let decoded = KinkyDungeonDecompressSave(code);
+						let decoded = KinkyDungeonDecompressSave(code, undefined, false);
 						let parse = JSON.parse(decoded);
 						if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName)
 							loadedsaveNames[num - 1] =
@@ -2379,7 +2379,7 @@ function KinkyDungeonRun() {
 				JSON.parse(LZString.decompressFromBase64(itt)).appearance
 				|| itt : "";
 			if (orig != ElementValue("saveInputField")) KDOutfitOriginalStore[KDCurrentOutfit] = orig;
-			let decompressed = KinkyDungeonDecompressSave(ElementValue("saveInputField"));
+			let decompressed = KinkyDungeonDecompressSave(ElementValue("saveInputField"), undefined, false);
 			if (decompressed) {
 				let origAppearance = KinkyDungeonPlayer.Appearance;
 				try {
@@ -2455,7 +2455,7 @@ function KinkyDungeonRun() {
 				JSON.parse(LZString.decompressFromBase64(itt)).appearance
 				|| itt : "";
 			if (orig != ElementValue("saveInputField")) KDOutfitOriginalStore[KDCurrentOutfit] = orig;
-			let decompressed = KinkyDungeonDecompressSave(ElementValue("saveInputField"));
+			let decompressed = KinkyDungeonDecompressSave(ElementValue("saveInputField"), undefined, false);
 			if (decompressed) {
 				try {
 					CharacterAppearanceRestore(Char, decompressed, true, false);
@@ -5218,33 +5218,40 @@ function KinkyDungeonDBSave(saveslot: number, gamecode?: string) {
 		console.error("Save slot is not defined");
 		return; // This is an invalid call or the save slot has not been set.
 	}
+
+	let dbOpen = (save) => {
+		// Get the savegame database
+		KinkyDungeonDBOpen().then((db) => {
+			// Create a transaction
+			const transaction = db.transaction(KDGameSaveDBStoreName, "readwrite");
+			const store = transaction.objectStore(KDGameSaveDBStoreName);
+			const data = { content: save };
+			const request = store.put(data, `save_${saveslot}`);
+
+			request.onsuccess = () => {
+				console.log(`Game saved to save_${saveslot}`, request.result);
+			};
+			request.onerror = () => {
+				console.error("Could not add data to the store");
+			};
+			transaction.oncomplete = () => {
+				db.close();
+				return true;
+			};
+		});
+	}
 	if (gamecode == undefined) {
 		// We are going to use the current game state as a save code.
-		save = LZString.compressToBase64(JSON.stringify(KinkyDungeonGenerateSaveData()));
+		KinkyDungeonCompressSave(JSON.stringify(KinkyDungeonGenerateSaveData())).then((save) => {
+			dbOpen(save);
+		});
 	}
 	else {
 		save = gamecode;
+		dbOpen(save);
 	}
 
-	// Get the savegame database
-	KinkyDungeonDBOpen().then((db) => {
-		// Create a transaction
-		const transaction = db.transaction(KDGameSaveDBStoreName, "readwrite");
-		const store = transaction.objectStore(KDGameSaveDBStoreName);
-		const data = { content: save };
-		const request = store.put(data, `save_${saveslot}`);
-
-		request.onsuccess = () => {
-			console.log(`Game saved to save_${saveslot}`, request.result);
-		};
-		request.onerror = () => {
-			console.error("Could not add data to the store");
-		};
-		transaction.oncomplete = () => {
-			db.close();
-			return true;
-		};
-	});
+	
 }
 
 /**
@@ -6328,7 +6335,7 @@ function KinkyDungeonLoadPreview(String: string): KinkyDungeonSave {
 		};
 	}
 	try {
-		let str: string = KinkyDungeonDecompressSave(String.trim());
+		let str: string = KinkyDungeonDecompressSave(String.trim(), undefined, false);
 		let returndata: KinkyDungeonSave = null;
 
 		// We do a little JS witchery here
@@ -7588,7 +7595,7 @@ interface SaveWorkerMsg {
 
 let KDSaveTimeout = 600000; // 10 minutes
 async function KinkyDungeonCompressSave(save: string, type = SaveType.Game): Promise<string> {
-	if (window.Worker && false) {
+	if (window.Worker) {
 		const workerMsg: SaveWorkerMsg = {
 			op:	KDToggles.NativeCompression  ? 'cmp'  : 'cmp-legacy',
 			type:	type,
@@ -7682,6 +7689,48 @@ async function KinkyDungeonCompressSave(save: string, type = SaveType.Game): Pro
 	}
 }
 
+/** Synchronous save- uses library to gzip instead of CompressionStream */
+function KDCompressSync(save: string, type = SaveType.Game): string {
+	/**
+	 * IMPORTANT: Keep this block in sync with saveworker.js.
+	 */
+	console.log('Your browser doesn\'t support web workers.');
+	const mime_type = `application/vnd.straightlaced.kinkydungeon.save.${type.toString()}+gzip;version=2`;
+
+	
+	/** Base64-encode bytes; chunked so large saves don't overflow String.fromCharCode's argument limit. */
+	function bytesToBase64 (bytes) {
+		let bin = "";
+		const chunk = 0x8000;
+		for (let i = 0; i < bytes.length; i += chunk) {
+			bin += String.fromCharCode.apply (null, bytes.subarray (i, i + chunk));
+		}
+		return btoa (bin);
+	}
+
+	/** same output format as compressNative. */
+	function compressFflate (data, mime_type) {
+		//@ts-ignore
+		if (typeof fflate == 'undefined') throw new Error ("fflate not available");
+		//@ts-ignore
+		const save_z = fflate.gzipSync (fflate.strToU8 (data));
+		return `data:${mime_type};base64,${bytesToBase64 (save_z)}`;
+	}
+
+
+	if (KDToggles.NativeCompression) {
+		try {
+			return compressFflate (save, mime_type);
+		} catch (err) {
+			console.log (`Caught ${err}; falling back to LZString...`);
+		}
+
+	}
+	
+	
+	return LZString.compressToBase64 (save);
+}
+
 /**
  * Decompress a save code into JSON.
  *
@@ -7689,7 +7738,7 @@ async function KinkyDungeonCompressSave(save: string, type = SaveType.Game): Pro
  * @param expected_type - Expected type of save.
  * @return - JSON string, suitable for parsing; or null if the expected_type doesn't match the code's type.
  */
-function KinkyDungeonDecompressSave (save: string, expected_type = SaveType.Game): string | null
+function KinkyDungeonDecompressSave (save: string, expected_type = SaveType.Game, quiet: boolean = true): string | null
 {
 	if (!save  ||  !save.trim) {
 		return null;
@@ -7703,7 +7752,8 @@ function KinkyDungeonDecompressSave (save: string, expected_type = SaveType.Game
 
 	if (!save.startsWith ('data:')) {
 		/*  Legacy LSZtring save code.  */
-		console.log ("Decompressing old-style LZString save code...");
+		if (!quiet)
+			console.log ("Decompressing old-style LZString save code...");
 		return LZString.decompressFromBase64 (save);
 	}
 
@@ -7772,7 +7822,7 @@ function KinkyDungeonLoadGame(String: string = null, kdloadconsent = false): boo
 
 	if (src_str) {
 		//const str = DecompressB64 (src_str);
-		const str = KinkyDungeonDecompressSave (src_str);
+		const str = KinkyDungeonDecompressSave (src_str, undefined, false);
 
 		let saveData: KinkyDungeonSave = JSON.parse(str);
 		if (    saveData
@@ -8336,9 +8386,11 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 
 
 
-function DecompressB64(str: string): string {
+function DecompressB64(str: string, expected_type?: SaveType): string {
 	if (!str || !str.trim) return str;
-	return LZString.decompressFromBase64("".concat(...str.trim().split('\n')));
+
+	return KinkyDungeonDecompressSave(str, expected_type);
+	//return LZString.decompressFromBase64("".concat(...str.trim().split('\n')));
 }
 
 let KDToggleTab = "Main";

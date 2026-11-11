@@ -265,7 +265,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 function KDPostStairSave() {
 	if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3
 			if ((!KinkyDungeonStatsChoice.get("saveMode"))) {
-				let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
+				let saveData = KDCompressSync(JSON.stringify(KinkyDungeonSaveGame(true)));
 				KinkyDungeonState = "Save";
 				KDTextArea("saveDataField", 750, 100, 1000, 230);
 				ElementValue("saveDataField", saveData);

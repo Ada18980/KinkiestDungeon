@@ -111,7 +111,7 @@ function KinkyDungeonCrashReportSaveData(): string {
 	let saveData = localStorage.getItem("KinkyDungeonSave");
 	if (!saveData) {
 		try {
-			saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonGenerateSaveData()));
+			KDCompressSync(JSON.stringify(KinkyDungeonGenerateSaveData()));
 		} catch (error) {
 			saveData = "Could not locate or generate save data";
 		}
