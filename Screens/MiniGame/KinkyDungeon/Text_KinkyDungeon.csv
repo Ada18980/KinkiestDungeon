@@ -34377,6 +34377,11 @@ KDProgressTag_Gag_ShopLight,Bought/sold while lightly gagged
 KDProgressTag_Gag_ShopMedium,Bought/sold while moderately gagged
 KDProgressTag_Gag_ShopHeavy,Bought/sold while heavily gagged
 
+KDProgressTag_Gag_BribeNone,Bribed the jailer without a gag
+KDProgressTag_Gag_BribeLight,Bribed the jailer while lightly gagged
+KDProgressTag_Gag_BribeMedium,Bribed the jailer while moderately gagged
+KDProgressTag_Gag_BribeHeavy,Bribed the jailer while heavily gagged
+
 KDProgressTag_Gag_AngelNone,Prayed without a gag
 KDProgressTag_Gag_AngelLight,Prayed while lightly gagged
 KDProgressTag_Gag_AngelMedium,Prayed while moderately gagged

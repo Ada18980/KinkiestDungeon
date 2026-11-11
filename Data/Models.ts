@@ -3475,7 +3475,7 @@ function KDGetRenderTexture(w: number, h: number, res: number) {
 				width: w,
 				height: h,
 				resolution: res,
-				scaleMode: PIXI.SCALE_MODES.NEAREST});
+				scaleMode: PIXI.SCALE_MODES.LINEAR});
 	//@ts-ignore
 	rt.idw = w;
 	//@ts-ignore

@@ -349,7 +349,7 @@ function KinkyDungeonFindPath (
 										|| KinkyDungeonNoEnemyExceptSub(xx, yy, false, Enemy)
 										|| (allowPassable && KDCanPassEnemy(KDPlayer(), KinkyDungeonEnemyAt(xx, yy))))))
 								&& (!blockPlayer || KinkyDungeonPlayerEntity.x != xx || KinkyDungeonPlayerEntity.y != yy)
-								&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]) || useWiredDoor)
+								&& (!needDoorMemory || tile != "d" || KDMapData.TilesMemory[xx + "," + yy]?.includes("Open") || useWiredDoor)
 							))
 							) {
 							costBonus = 0;
