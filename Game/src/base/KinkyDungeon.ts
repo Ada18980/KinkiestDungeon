@@ -2358,7 +2358,7 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx(
 			"KinkyDungeonLoadBack", () => {
 				KinkyDungeonState = "Menu";
-				KDRestoreOutfit();
+				KDRestoreOutfit(KinkyDungeonPlayer);
 				ElementRemove("saveInputField");
 				return true;
 			}, true, 1275, 750, 350, 64,
@@ -6878,7 +6878,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 			return true;
 		} else if (MouseIn(1275, 750, 350, 64)) {
 			if (StandalonePatched) {
-				KDRestoreOutfit();
+				KDRestoreOutfit(KinkyDungeonPlayer);
 				KinkyDungeonState = "Wardrobe";
 				KDClearPaletteFilters()
 				KDCanRevertFlag = false;
