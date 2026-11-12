@@ -450,9 +450,10 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # - Draws text to indicate the nature of sounds heard in the fog of war.
 # - Shows defensive stats like evasion in the buff bar, even when collapsed
 # - Shows left and right buttons in the struggle UI when multiple restraints are present in the same slot
+# - Use native browser compression for smaller, faster save files. Old save files may still be loaded.
 
 
-
+# - Save Files with Native Compression
 - Hypnosis Screen Wobble
 催眠时屏幕晃动
 - Hypnosis Spirals
@@ -54544,6 +54545,11 @@ Boss
 在被中度堵嘴时购买或出售物品
 - Bought/sold while heavily gagged
 在被重度堵嘴时购买或出售物品
+
+# - Bribed the jailer without a gag
+# - Bribed the jailer while lightly gagged
+# - Bribed the jailer while moderately gagged
+# - Bribed the jailer while heavily gagged
 
 - Prayed without a gag
 在未被堵嘴时祈祷
