@@ -125,6 +125,9 @@ interface ModelLayer extends Namable {
     Sprite?: string,
     /** This layer only appears if the item is locked */
     LockLayer?: boolean,
+    /** This layer does not hide if the item is unlocked */
+    NoLockLayer?: boolean,
+	
 	/** Changes the layer if a certain pose exists */
 	SwapLayerPose?: Record<string, string>,
 	/** Prepends a string to the beginning of the layer if a pose is present. Only the first happens */
