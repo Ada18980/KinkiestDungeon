@@ -2352,7 +2352,7 @@ function KDSetWorldSlot(x: number, y: number, jx?: number, jy?: number) {
 
 /**
  */
-let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
+let KDCustomDefeats: Record<string, (enemy: entity, forceRegular?: boolean) => void> = {
 	"DemonTransition": (_enemy) => {
 		KDEnterDemonTransition();
 	},
@@ -2372,34 +2372,34 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 	},
 
 
-	WolfgirlHunters: (enemy) => {
-		if (KDRunRegularJailDefeatAttempt(enemy)) {
+	WolfgirlHunters: (enemy, forceRegular) => {
+		if (forceRegular || KDRunRegularJailDefeatAttempt(enemy)) {
 			KinkyDungeonDefeat(true, enemy);
 		}
 		KDCustomDefeatUniforms.WolfgirlHunters();
 	},
-	MaidSweeper: (enemy) => {
-		if (KDRunRegularJailDefeatAttempt(enemy)) {
+	MaidSweeper: (enemy, forceRegular) => {
+		if (forceRegular || KDRunRegularJailDefeatAttempt(enemy)) {
 			/** She puts on a happy face */
 			enemy.faction = "Maidforce";
 			KinkyDungeonDefeat(true, enemy);
 		}
 		KDCustomDefeatUniforms.MaidSweeper();
 	},
-	DollShoppe: (enemy) => {
-		if (KDRunRegularJailDefeatAttempt(enemy)) {
+	DollShoppe: (enemy, forceRegular) => {
+		if (forceRegular || KDRunRegularJailDefeatAttempt(enemy)) {
 			KinkyDungeonDefeat(true, enemy);
 		}
 		KDCustomDefeatUniforms.DollShoppe();
 	},
-	CyberDoll: (enemy) => {
-		if (KDRunRegularJailDefeatAttempt(enemy)) {
+	CyberDoll: (enemy, forceRegular) => {
+		if (forceRegular || KDRunRegularJailDefeatAttempt(enemy)) {
 			KinkyDungeonDefeat(true, enemy);
 		}
 		KDCustomDefeatUniforms.CyberDoll();
 	},
-	ElementalSlave: (enemy) => {
-		if (KDRunRegularJailDefeatAttempt(enemy)) {
+	ElementalSlave: (enemy, forceRegular) => {
+		if (forceRegular || KDRunRegularJailDefeatAttempt(enemy)) {
 			KinkyDungeonDefeat(true, enemy);
 		}
 		KDCustomDefeatUniforms.ElementalSlave();

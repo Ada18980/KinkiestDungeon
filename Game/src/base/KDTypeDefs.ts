@@ -3511,6 +3511,8 @@ interface KDAIData extends KDAITriggerData {
 
 	/** Whether to do a defeat or not */
 	defeat?: boolean,
+	/** Defeat skips KDRunRegularJailDefeatAttempt (no jail room search / exit fallback), e.g. capture to a dropoff */
+	forceRegularDefeat?: boolean,
 	/** Whether this enemy is idle or not. Gets set to true by default and false if the enemy does ANYTHING */
 	idle?: boolean,
 	/** Indicates that the enemy has moved, therefore cant attack or cast unless it has the necessary properties */

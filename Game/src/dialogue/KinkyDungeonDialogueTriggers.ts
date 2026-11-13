@@ -185,7 +185,7 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 				&& !KinkyDungeonFlags.get("BondageOffer")
 				&& !KinkyDungeonFlags.get("ChastityOffer")
 				&& !KinkyDungeonFlags.get("NoTalk")
-				&& !KinkyDungeonFlags.get("conveyed")
+				&& !KinkyDungeonFlags.get("conveyed_rec")
 				&& KDRandom() < 0.05
 				&& !KDPlayerCantRespond()
 				&& KinkyDungeonGetRestraint({tags: ["genericChastity"]}, MiniGameKinkyDungeonLevel * 2, KDCurrIndex(), false, undefined,
@@ -223,7 +223,7 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 				&& !KinkyDungeonFlags.get("DangerFlag")
 				&& !KinkyDungeonFlags.get("BondageOffer")
 				&& !KinkyDungeonFlags.get("NoTalk")
-				&& !KinkyDungeonFlags.get("conveyed")
+				&& !KinkyDungeonFlags.get("conveyed_rec")
 				&& !KinkyDungeonFlags.get("CursedOffer")
 				&& KDRandom() < 0.05
 				&& !KDPlayerCantRespond()
@@ -285,7 +285,7 @@ function KDDefaultPrereqs(enemy: entity, AIData: any, dist: number, maxdist: num
 			&& (!KinkyDungeonFlags.get("DangerFlag") || force)
 			&& (!KinkyDungeonFlags.get("BondageOffer") || force)
 			&& !KinkyDungeonFlags.get("NoTalk")
-			&& !KinkyDungeonFlags.get("conveyed")
+			&& !KinkyDungeonFlags.get("conveyed_rec")
 			&& !KDPlayerCantRespond()
 			&& (KinkyDungeonStatsChoice.get("Undeniable") || KDRandom() < chance || force)
 			&& (!restraintTags || KinkyDungeonGetRestraint(

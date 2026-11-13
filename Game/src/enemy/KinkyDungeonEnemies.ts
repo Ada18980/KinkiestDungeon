@@ -4877,6 +4877,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 
 						if (KDCustomDefeatEnemy != enemy) KDCustomDefeat = "";
 						KDCustomDefeatEnemy = enemy;
+						KDCustomDefeatForceRegular = ret.forceRegularDefeat;
 						let fac = KDGetFaction(enemy);
 						if (!KDFactionProperties[fac]) {
 							fac = KDGetFactionOriginal(enemy);
@@ -5195,11 +5196,13 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 function KDRunDefeatForEnemy() {
 	let CD = KDCustomDefeat;
 	let CDE = KDCustomDefeatEnemy;
+	let forceRegular = KDCustomDefeatForceRegular;
 	KDCustomDefeat = "";
 	KDCustomDefeatEnemy = null;
-	if (CD && KDCustomDefeats[CD]) KDCustomDefeats[CD](CDE);
+	KDCustomDefeatForceRegular = false;
+	if (CD && KDCustomDefeats[CD]) KDCustomDefeats[CD](CDE, forceRegular);
 	else if (!KinkyDungeonFlags.get("CustomDefeat")) {
-		if (KDRunRegularJailDefeatAttempt(CDE)) {
+		if (forceRegular || KDRunRegularJailDefeatAttempt(CDE)) {
 			let putInJail = KDIsLeashingToPrison(KDCustomDefeatEnemy);
 
 			if (CDE?.IntentLeashPoint) {
@@ -5353,6 +5356,7 @@ function KDRunRegularJailDefeatAttempt(CDE: entity, allowMain: boolean = true, r
 
 let KDCustomDefeat: string = "";
 let KDCustomDefeatEnemy: entity = null;
+let KDCustomDefeatForceRegular: boolean = false;
 
 function KDMakeHostile(enemy: entity, timer?: number, noAggroOthers?: boolean) {
 	if (!timer) timer = KDMaxAlertTimerAggro;
@@ -5457,7 +5461,7 @@ let AIData: KDAIData = {};
  * @param visionMod
  * @param playerItems
  */
-function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, visionMod: number, playerItems: item[]): {idle: boolean, defeat: boolean, defeatEnemy: entity} {
+function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, visionMod: number, playerItems: item[]): {idle: boolean, defeat: boolean, forceRegularDefeat: boolean, defeatEnemy: entity} {
 	AIData = {};
 
 	if (!enemy.Enemy.maxhp) {
@@ -8083,7 +8087,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 	if (AIData.ignore) enemy.ignore = true;
 	else delete enemy.ignore;
 
-	return {idle: AIData.idle, defeat: AIData.defeat, defeatEnemy: enemy};
+	return {idle: AIData.idle, defeat: AIData.defeat, forceRegularDefeat: !!AIData.forceRegularDefeat, defeatEnemy: enemy};
 }
 
 // Unique ID for enemies, to prevent bullets from hitting them

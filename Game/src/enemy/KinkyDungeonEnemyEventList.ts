@@ -1410,6 +1410,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			KinkyDungeonSetFlag("TeaseOnLeash", 2);
 			if (KDCaptureParoleMistake(enemy, aiData)) return true;
 			(aiData as KDAIData).defeat = true;
+			(aiData as KDAIData).forceRegularDefeat = true;
 			//KDBreakTether(KinkyDungeonPlayerEntity);
 			if (KinkyDungeonAutoWait) {
 				KDUpdateWaitTime(KDDelayWaitTime());
