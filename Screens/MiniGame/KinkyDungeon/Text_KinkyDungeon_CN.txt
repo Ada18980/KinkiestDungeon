@@ -8681,7 +8681,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 罚站桩(S)
 - A pole and frame, ankles locked in place so that escape is completely impossible for the girl mounted on it.
 一根桩子和框架，女孩被固定在上面，脚踝被锁住，根本无法逃脱。
-# :: RestraintOneBaSpreaderTrapDesc
+# :: RestraintOneBarSpreaderTrapDesc
 # :: RestraintOneBarSpreaderVibeTrapDesc
 - One Bar Heaven (S)
 舒适桩(S)
@@ -11877,8 +11877,10 @@ RestraintName 上的诅咒解除了！
 
 - Divine Cuffs
 神圣手铐
-# :: RestraintDivineCuffs
-# :: RestraintDivineAnkleCuffs
+:: RestraintDivineCuffs
+神圣手铐
+:: RestraintDivineAnkleCuffs
+神圣脚铐
 - It is said that even heaven has its hierarchies...
 都说天堂也有等级……
 # :: RestraintDivineCuffsDesc
