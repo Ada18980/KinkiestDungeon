@@ -53,7 +53,7 @@ AddModel({
 		{ Name: "Door", Layer: "FurnitureFront", Pri: 20.2,
 			Invariant: true,
 			Poses: ToMap(["Menu"]),
-			NoLockLayer: true,
+			LockLayer: true,
 		},
 		{ Name: "DoorWindow", Layer: "FurnitureFront", Pri: 20.1,
 			Invariant: true,

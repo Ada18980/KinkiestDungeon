@@ -218,6 +218,7 @@ KDPrisonTypes.DollStorage = {
 				if (en.Enemy.tags.jailer) guardCount += 1;
 			}
 		}
+		let gc = 8;
 		if (guardCount > 8) {
 			for (let en of idleGuards) {
 				KinkyDungeonSetEnemyFlag(en, "despawn", 300);
@@ -229,7 +230,9 @@ KDPrisonTypes.DollStorage = {
 				en.despawnY = KDMapData.EndPosition.y;
 				en.goToDespawn = true;
 			}
-		} else if (!KinkyDungeonFlags.get("guardspawn")) {
+		}
+		if (KinkyDungeonFlags.get("requestCommonGuard")
+			|| (guardCount <= gc && !KinkyDungeonFlags.get("guardspawn"))) {
 			// TODO replace with map flags
 			// spawn a new one
 			if (KinkyDungeonFlags.get("shiftchange")) {
@@ -264,6 +267,7 @@ KDPrisonTypes.DollStorage = {
 					en.gy = l.y;
 					KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
 					KinkyDungeonSetEnemyFlag(en, "cyberaccess", -1);
+					KinkyDungeonSetFlag("requestCommonGuard", 0);
 				}
 			}
 		}
@@ -399,13 +403,17 @@ KDPrisonTypes.DollStorage = {
 			},
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
-				let guard = KDPrisonCommonGuard(player);
+				let guard = KDPrisonCommonGuard(player, false, true);
 
 				if (KDPrisonIsInFurniture(player)) {
-					let action = "Follow";
-					if (guard.IntentAction != action)
-						KDIntentEvents[action].trigger(guard, {});
-					else guard.playWithPlayer = Math.max(guard.playWithPlayer, 3);
+					
+					guard = KDPrisonCommonGuard(player, false, true, KDPrisonUniformGuardCondition);
+					if (guard) {
+						let action = "Follow";
+						if (guard.IntentAction != action)
+							KDIntentEvents[action].trigger(guard, {});
+						else guard.playWithPlayer = Math.max(guard.playWithPlayer, 3);
+					}
 					let uniformCheck = KDPrisonGetGroups(player, ["cyborg"], "Cyber", KDCYBERPOWER);
 					if (uniformCheck.groupsToStrip.length > 0 && !KinkyDungeonFlags.get("failStrip")) {
 						// Create a queue
@@ -428,8 +436,10 @@ KDPrisonTypes.DollStorage = {
 			},
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
-				let guard = KDPrisonCommonGuard(player);
+				let guard = KDPrisonCommonGuard(player, false, true, KDPrisonUniformGuardCondition);
 
+				// Wait for a guard who can do the uniforming
+				if (!guard && KDPrisonIsInFurniture(player)) return KDCurrentPrisonState(player);
 				if (guard && KDPrisonIsInFurniture(player)) {
 					let action = "Follow";
 					if (guard.IntentAction != action)
@@ -460,7 +470,7 @@ KDPrisonTypes.DollStorage = {
 			},
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
-				let guard = KDPrisonCommonGuard(player);
+				let guard = KDPrisonCommonGuard(player, false, true, KDPrisonUniformGuardCondition);
 
 				if (KDPrisonIsInFurniture(player)) {
 					if (guard) {
@@ -771,3 +781,11 @@ KDPrisonTypes.DollStorage = {
 		},
 	},
 };
+
+
+/** Robots wont do the dressing */
+function KDPrisonUniformGuardCondition(en: entity): boolean {
+	return KDPrisonGuardCondition(en)
+		&& (!en.Enemy?.tags?.robot || KDNonRobotRobot(en))
+		&& !en.Enemy?.tags?.drone;
+}

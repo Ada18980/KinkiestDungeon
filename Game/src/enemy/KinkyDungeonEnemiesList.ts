@@ -7111,7 +7111,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 	},
 	"HealingAura": {
 		filter: (enemy, types) => {
-			if (enemy.Enemy.tags?.robot || enemy.Enemy.tags?.construct || enemy.Enemy.tags?.nobrain) return false;
+			if ((enemy.Enemy.tags?.robot && !KDNonRobotRobot(enemy)) || enemy.Enemy.tags?.construct || enemy.Enemy.tags?.nobrain) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss", "Extreme"].includes(type);});
 		},
 		weight: (enemy, _types) => {

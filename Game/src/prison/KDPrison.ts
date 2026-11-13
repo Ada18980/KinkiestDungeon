@@ -4,14 +4,17 @@
  * @param x
  * @param y
  */
-function KDGetNearestFactionGuard(x: number, y: number, condition?: (entity) => boolean): entity {
-	condition = condition || ((en: entity) => {
-		return (KDEnemyHasFlag(en, "mapguard")
-			|| (
-				KDGetFaction(en) == KDGetMainFaction()
-				&& en.Enemy?.tags.jailer
-			)) && !KDHelpless(en) && !KinkyDungeonIsDisabled(en);
-	});
+function KDPrisonGuardCondition(en: entity): boolean {
+	return (KDEnemyHasFlag(en, "mapguard")
+		|| (
+			KDGetFaction(en) == KDGetMainFaction()
+			&& en.Enemy?.tags.jailer
+		)) && !KDHelpless(en) && !KinkyDungeonIsDisabled(en);
+}
+
+
+function KDGetNearestFactionGuard(x: number, y: number, condition?: (entity) => boolean, noFallback: boolean = false): entity {
+	condition = condition || KDPrisonGuardCondition;
 
 	if (KinkyDungeonJailGuard()?.aware && condition(KinkyDungeonJailGuard())) return KinkyDungeonJailGuard();
 
@@ -29,7 +32,7 @@ function KDGetNearestFactionGuard(x: number, y: number, condition?: (entity) => 
 			}
 		}
 	}
-	return cand || KinkyDungeonJailGuard();
+	return cand || (noFallback ? null : KinkyDungeonJailGuard());
 }
 
 
@@ -37,14 +40,19 @@ function KDGetNearestFactionGuard(x: number, y: number, condition?: (entity) => 
 /**
  * @param player
  */
-function KDPrisonCommonGuard(player: entity, _call: boolean = false, suppressCall: boolean = true): entity {
+function KDPrisonCommonGuard(player: entity, _call: boolean = false, suppressCall: boolean = true, condition?: (en: entity) => boolean): entity {
 	// Suppress standard guard call behavior
 	KinkyDungeonSetFlag("SuppressGuardCall", 10);
-	let guard = KDGetNearestFactionGuard(player.x, player.y);
+	let guard = KDGetNearestFactionGuard(player.x, player.y, condition, !!condition);
 	if (guard)
 		KDGameData.JailGuard = guard.id;
+	guard = condition ? guard : KinkyDungeonJailGuard();
 
-	return KinkyDungeonJailGuard();
+	if (!guard) {
+		KinkyDungeonSetFlag("requestCommonGuard", 10);
+	}
+
+	return guard
 }
 
 

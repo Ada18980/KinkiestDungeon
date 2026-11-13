@@ -9058,9 +9058,13 @@ function KDIsBrattyPersonality(entity: entity): boolean {
  */
 function KDIsRobotPersonality(entity: entity): boolean {
 	if (entity && !entity.player) {
-		if (KDEnemyPersonalities[entity.personality]?.robot || KDEnemyHasFlag(entity, "forcerobot")) return true;
+		if ((KDEnemyPersonalities[entity.personality]?.robot && !KDNonRobotRobot(entity)) || KDEnemyHasFlag(entity, "forcerobot")) return true;
 	}
 	return false;
+}
+
+function KDNonRobotRobot(entity: entity) {
+	return !entity.Enemy?.nonHumanoid;
 }
 
 

@@ -234,7 +234,8 @@ KDPrisonTypes.DollShoppe = {
 				if (en.Enemy.tags.jailer) guardCount += 1;
 			}
 		}
-		if (guardCount > 15) {
+		let gc = 15;
+		if (guardCount > gc) {
 			for (let en of idleGuards) {
 				KinkyDungeonSetEnemyFlag(en, "despawn", 300);
 				KinkyDungeonSetEnemyFlag(en, "vis_despawn", 300);
@@ -246,7 +247,8 @@ KDPrisonTypes.DollShoppe = {
 				en.despawnY = KDMapData.EndPosition.y;
 				en.goToDespawn = true;
 			}
-		} else if (!KinkyDungeonFlags.get("guardspawn")) {
+		}
+		if (KinkyDungeonFlags.get("requestCommonGuard") || (guardCount <= gc && !KinkyDungeonFlags.get("guardspawn"))) {
 			// TODO replace with map flags
 			// spawn a new one
 			if (KinkyDungeonFlags.get("shiftchange")) {
@@ -281,7 +283,7 @@ KDPrisonTypes.DollShoppe = {
 					en.gx = l.x;
 					en.gy = l.y;
 					KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
-					KinkyDungeonSetEnemyFlag(en, "cyberaccess", -1);
+					KinkyDungeonSetFlag("requestCommonGuard", 0);
 				}
 			}
 		}
@@ -432,7 +434,6 @@ KDPrisonTypes.DollShoppe = {
 							en.faction = "Dressmaker";
 							en.keys = true;
 							KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
-							KinkyDungeonSetEnemyFlag(en, "cyberaccess", -1);
 						}
 
 					}
@@ -448,7 +449,6 @@ KDPrisonTypes.DollShoppe = {
 							en.faction = "Dressmaker";
 							en.keys = true;
 							KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
-							KinkyDungeonSetEnemyFlag(en, "cyberaccess", -1);
 						}
 
 					}

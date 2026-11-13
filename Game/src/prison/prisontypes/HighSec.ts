@@ -83,7 +83,8 @@ KDPrisonTypes.HighSec = {
 				if (en.Enemy.tags.jailer) guardCount += 1;
 			}
 		}
-		if (guardCount > 6) {
+		let gc = 6;
+		if (guardCount > gc) {
 			let max = guardCount * 0.2;
 			let despawning = 0;
 			for (let en of idleGuards) {
@@ -107,7 +108,9 @@ KDPrisonTypes.HighSec = {
 					if (despawning > max) break;
 				}
 			}
-		} else if (!KinkyDungeonFlags.get("guardspawn")) {
+		} 
+		if (KinkyDungeonFlags.get("requestCommonGuard")
+			|| (guardCount <= gc &&  !KinkyDungeonFlags.get("guardspawn"))) {
 			// TODO replace with map flags
 			// spawn a new one
 			if (KinkyDungeonFlags.get("shiftchange")) {
@@ -125,7 +128,8 @@ KDPrisonTypes.HighSec = {
 			
 
 
-			if (KDMapData.Labels && KDMapData.Labels.Deploy?.length > 0) {
+			if (
+				KDMapData.Labels && KDMapData.Labels.Deploy?.length > 0) {
 				let l = KDMapData.Labels.Deploy[Math.floor(KDRandom() * KDMapData.Labels.Deploy.length)];
 
 				let Enemy = KDGetJailEnemy();
@@ -144,6 +148,7 @@ KDPrisonTypes.HighSec = {
 					en.gy = l.y;
 					KinkyDungeonSetEnemyFlag(en, "mapguard", -1);
 					KinkyDungeonSetEnemyFlag(en, "spawned", 300);
+					KinkyDungeonSetFlag("requestCommonGuard", 0);
 					//KinkyDungeonSetEnemyFlag(en, "cyberaccess", -1);
 				}
 			}
