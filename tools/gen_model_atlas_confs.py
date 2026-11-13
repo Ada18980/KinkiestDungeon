@@ -97,6 +97,7 @@ atlas_size={atlas_size};
 atlas_prefix={atlas_prefix};
 input_scale={input_scale};
 alpha_cutoff=1;
+trim=2;
 padding=1;"""
 
 folders = sorted(
