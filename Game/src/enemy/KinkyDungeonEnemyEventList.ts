@@ -1387,7 +1387,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (KDLeashConditionFails(enemy, aiData)) return 0;
 			if (KDIsInNonLeashableFurniture(KDPlayer())) return 0;
 			return hostile && KDEnemyJailOrLeashing(enemy) && (KinkyDungeonFlags.has("Released")
-			&& !KDEnemyHasFlag(enemy, "dontChase") && KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])) ? 200 : 0;
+			&& !KDEnemyHasFlag(enemy, "dontChase")
+			&& KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])) ? 200 : 0;
 		},
 		trigger: (enemy, _aiData) => {
 			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
@@ -1395,6 +1396,16 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.IntentAction = 'CaptureDoll';
 			enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]);
 		},
+		maintain: (enemy, _delta, aiData) => {
+			if (!enemy.IntentLeashPoint)
+				enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]);
+			if (!enemy.IntentLeashPoint) {
+				KDResetIntent(enemy, aiData);
+				return true;
+			}
+			return false;
+		},
+		
 		arrive: (enemy, aiData) => {
 			KinkyDungeonSetFlag("TeaseOnLeash", 2);
 			if (KDCaptureParoleMistake(enemy, aiData)) return true;
