@@ -77,7 +77,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 2);
 
 				if (!enemy.IntentLeashPoint) {
 					if (!KDEntityHasFlag(enemy, "intent_startChecking")) {
@@ -181,7 +181,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 2);
 
 				if (!enemy.IntentLeashPoint) {
 					enemy.IntentAction = '';
@@ -272,7 +272,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 2);
 
 				
 
@@ -348,7 +348,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 2);
 
 				if (!enemy.IntentLeashPoint) {
 					let nj = KDRandomJailPoint(enemy.x, enemy.y, ["storage"]);
@@ -568,7 +568,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
 				KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 2);
 
 				if (!enemy.IntentLeashPoint) {
 					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
@@ -1070,6 +1070,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 													KDMoveEntity(enemy, lastx, lasty, true);
 												KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 												KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
+												KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 0);
 												let newPoint2 = KinkyDungeonGetRandomEnemyPoint(true,
 													false, enemy);
 												if (newPoint2) {
@@ -1219,6 +1220,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.IntentLeashPoint = null;
 					KinkyDungeonSetEnemyFlag(enemy, "wander", 7);
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
+					KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 0);
 
 					if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
 						if (!KinkyDungeonFlags.has("TempLeash") && KDGameData.HeelPower > 0)
@@ -1287,6 +1289,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 												KDMoveEntity(enemy, lastx, lasty, true);
 												KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 												KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
+												KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 0);
 												let newPoint2 = KinkyDungeonGetRandomEnemyPoint(true,
 													false, enemy);
 												if (newPoint2) {
@@ -1310,12 +1313,14 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 									enemy.IntentLeashPoint = null;
 									KinkyDungeonSetEnemyFlag(enemy, "wander", 7);
 									KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
+									KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 0);
 								}
 							} else {
 								enemy.IntentAction = '';
 								enemy.IntentLeashPoint = null;
 								KinkyDungeonSetEnemyFlag(enemy, "wander", 7);
 								KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
+								KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 0);
 							}
 
 						}
@@ -1876,7 +1881,7 @@ function KDIntentChasePlayer(enemy: entity, player: entity, noResetTime: number 
 function KDIntentOverrideChasePlayer(enemy: entity, player: entity) {
 	KDChasePlayer(enemy, player);
 	KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-	KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
+	KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 2);
 }
 
 /**
@@ -1890,8 +1895,8 @@ function KDCaptureDragToLeashPoint(enemy: entity, aiData: KDEventDataBoolean, ar
 	enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.x;
 	enemy.gy = enemy.IntentLeashPoint?.y || KDMapData.StartPosition.y;
 	KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+	KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 2);
 	if (gentle) KinkyDungeonSetEnemyFlag(enemy, "gentle", 2);
-	KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 2);
 
 	if (KDistChebyshev(enemy.gx - enemy.x, enemy.gy - enemy.y) < arriveDist) {
 		KDIntentEvents[enemy.IntentAction]?.arrive?.(enemy, aiData);
@@ -1904,6 +1909,7 @@ function KDTempLeashEnd(enemy: entity) {
 	enemy.IntentLeashPoint = null;
 	KinkyDungeonSetEnemyFlag(enemy, "wander", 7);
 	KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
+	KinkyDungeonSetEnemyFlag(enemy, "overrideMoveNoCom", 0);
 }
 
 /** returns true if can't apply leash */

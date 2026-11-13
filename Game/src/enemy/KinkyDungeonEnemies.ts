@@ -5947,6 +5947,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			: false
 	);
 
+	if ((!AIData.wantsToAttack && !AIData.wantsToTease) || !enemy.IntentLeashPoint || (
+		!enemy.aware && AIData.playerDist > 1.5
+	)) {
+		delete enemy.recentHitsWhileLeash;
+	} else if (AIData.playerDist > 1.5) {
+		enemy.recentHitsWhileLeash = (enemy.recentHitsWhileLeash || 0) + delta * 0.1;
+	}
+
 	if (!AIData.wantsToAttack && KDEntityHasFlag(enemy, "overrideMoveNoCom")) {
 		KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 1);
 	}
@@ -6823,7 +6831,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			}
 
 			teaseAttack.apply(enemy, player, AIData, blocked, dodged, KDGetTeaseDamageMod(enemy));
-		}
+		} else enemy.recentHitsWhileLeash = (enemy.recentHitsWhileLeash || 0) + delta * 0.26;
 	};
 
 	// Attack loop
@@ -6925,6 +6933,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				// Enemies can take advantage of you~
 				KDOperateTease();
 			} else { // Attack lands!
+				if (enemy.IntentLeashPoint)
+					enemy.recentHitsWhileLeash = (enemy.recentHitsWhileLeash || 0) + 0.91;
 				enemy.revealed = true;
 				let hit = ((enemy.usingSpecial && enemy.Enemy.specialAttackPoints) ? enemy.Enemy.specialAttackPoints : ap) <= 1;
 				for (let tile of enemy.warningTiles) {
@@ -7082,7 +7092,11 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					if (player.player && !KDEnemyHasFlag(enemy, "noleash")) {
 						if (player.player
 							&& AIData.playerDist <= AIData.range
-							&& ((AIData.aggressive || AIData.attack.includes("Pull") && !enemy.playWithPlayer) || enemy.IntentLeashPoint)
+							&& ((((!AIData.wantsToAttack && !AIData.wantsToTease) && AIData.aggressive)
+								|| AIData.attack.includes("Pull") && !enemy.playWithPlayer)
+								|| (enemy.IntentLeashPoint && (
+									(!AIData.wantsToAttack && !AIData.wantsToTease) || enemy.recentHitsWhileLeash > KDEnemyRecentHitsWhileLeashThresh(enemy)
+								)))
 							&& ( // If we are already leashing or pulling or we are a leashing type that is able to leash
 								((!enemy.Enemy.noLeashUnlessExhausted || !KinkyDungeonHasWill(0.1))
 								&& enemy.Enemy.tags
@@ -12187,4 +12201,8 @@ let KDSeenEnemyCacheTime = 8;
 
 function KDHasLeashIntent(enemy: entity) {
 	return enemy.IntentAction ? KDIntentEvents[enemy.IntentAction]?.isCapturing : false;
+}
+
+function KDEnemyRecentHitsWhileLeashThresh(enemy: entity) {
+	return 3;
 }

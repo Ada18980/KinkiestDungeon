@@ -2097,6 +2097,7 @@ interface entity {
 	playWithPlayerCD?: number,
 
 	IntentAction?: string,
+	recentHitsWhileLeash?: number,
 	IntentLeashPoint?: {x: number, y: number, type: string, radius: number, entrance?: boolean},
 	IntentLeashPointType?: string,
 	intentDialogue?: string,
