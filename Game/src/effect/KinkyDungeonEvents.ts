@@ -11719,7 +11719,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 								KinkyDungeonSendTextMessage(9, TextGet("KDShopkeeperLeash"), KDBaseWhite, 4);
 							}
 						}
-					} else {
+					} else if (KDIsPlayerTetheredToEntity(player, enemy)) {
 						KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 3);
 						// Drag the player to the start position
 						enemy.gx = KDMapData.StartPosition.x;

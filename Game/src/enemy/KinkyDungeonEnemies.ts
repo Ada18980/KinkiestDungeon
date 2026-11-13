@@ -4875,6 +4875,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 						defeat = true;
 						AIData.defeat = false;
 
+						if (KDCustomDefeatEnemy != enemy) KDCustomDefeat = "";
 						KDCustomDefeatEnemy = enemy;
 						let fac = KDGetFaction(enemy);
 						if (!KDFactionProperties[fac]) {

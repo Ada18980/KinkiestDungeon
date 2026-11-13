@@ -675,7 +675,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (KDLeashCaptureBlocked(enemy, aiData)) return 0;
 			if (!KDCanDoBasicCapture(enemy, aiData, allied, hostile, aggressive)) return 0;
 			if (KDIntentEvents.CaptureJail.weight(enemy, aiData, allied, hostile, aggressive) > 0) return 0;
-			return 100;
+			return 1;
 		},
 		trigger: (enemy, aiData) => {
 			KDResetIntent(enemy, aiData);
@@ -1763,7 +1763,7 @@ function KDApplyFurnitureRestraint(x: number, y: number, player: entity) {
 			false,
 			false);
 		if (rest) {
-			KinkyDungeonAddRestraintIfWeaker(rest, 0, true);
+			KinkyDungeonAddRestraintIfWeaker(rest, 0, true, KinkyDungeonFlags.get("NoFurnitureLock") ? "None" : undefined);
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 
 			return true;

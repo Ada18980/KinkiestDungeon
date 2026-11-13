@@ -367,6 +367,8 @@ KDPrisonTypes.DollStorage = {
 				// We are not in a furniture, so we conscript the guard
 				let guard = KDPrisonCommonGuard(player);
 				if (guard) {
+					// Uniform furniture (FutureBox) stays unlocked
+					KinkyDungeonSetFlag("NoFurnitureLock", 2);
 					// Assign the guard to a furniture intentaction
 					let action = (KDGameData.PrisonerState == 'jail' && !KinkyDungeonAggressive(guard, player)) ? "leashFurniture" : "leashFurnitureAggressive";
 					if (guard.IntentAction != action)
