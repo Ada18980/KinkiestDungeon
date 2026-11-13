@@ -2103,9 +2103,8 @@ function KinkyDungeonCreateDollStorage(_POI: any, VisitedRooms: any[], _width: n
 	KD_PasteTile(KDMapTilesList.DollRoom, 1, 1, data);
 	KDMapData.EndPosition = {x: 2, y: 11};
 	KinkyDungeonMapSet(2, 11, 's');
-	if (MiniGameKinkyDungeonLevel == 0 && !KinkyDungeonFlags.get("fg")) {
+	if (MiniGameKinkyDungeonLevel == 0 && !KDGameData.HighestLevelCurrent) {
 		KinkyDungeonTilesSet(KDMapData.EndPosition.x + ',' + KDMapData.EndPosition.y, {RoomType: "JourneyFloor"});
-		KinkyDungeonSetFlag("fg", -1);
 	}
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
@@ -2190,9 +2189,8 @@ function KinkyDungeonCreateDollShoppe(_POI: any, VisitedRooms: any[], _width: nu
 		KinkyDungeonMapSet(p.x, p.y, '1');
 	}
 
-	if (MiniGameKinkyDungeonLevel == 0 && !KinkyDungeonFlags.get("fg")) {
+	if (MiniGameKinkyDungeonLevel == 0 && !KDGameData.HighestLevelCurrent) {
 		KinkyDungeonTilesSet(KDMapData.EndPosition.x + ',' + KDMapData.EndPosition.y, {RoomType: "JourneyFloor"});
-		KinkyDungeonSetFlag("fg", -1);
 	}
 
 	if (KDMapData.Labels.BackDoor)
