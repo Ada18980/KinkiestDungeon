@@ -696,6 +696,15 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			KDResetIntent(enemy, aiData);
 			return false;
 		},
+		maintain: (enemy, _delta, aiData) => {
+			if (!(aiData as KDAIData).aggressive || KDLeashCaptureBlocked(enemy, aiData)) {
+				KDResetIntent(enemy, aiData);
+				return false;
+			}
+			if (KDIsPlayerTetheredToEntity(KDPlayer(), enemy))
+				KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 12);
+			return false;
+		},
 	},
 	"CaptureJail": {
 		// Capture and bring to jail
@@ -721,6 +730,10 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.IntentLeashPoint = KDCaptureGetJailPoint(enemy);
 		},
 		maintain: (enemy, delta, aiData) => {
+			if (KDLeashCaptureBlocked(enemy, aiData)) {
+				KDResetIntent(enemy, aiData);
+				return false;
+			}
 			let player = KDPlayer();
 			KinkyDungeonSetFlag("TeaseOnLeash", 2);
 			if (KDIntentDoAttachTether(enemy, player)) return true;
