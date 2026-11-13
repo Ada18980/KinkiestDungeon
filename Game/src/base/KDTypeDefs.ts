@@ -3665,6 +3665,8 @@ type EnemyEvent = {
 	noplay?: boolean,
 	/** This event wont get cleared by mass resets, like when you are deposited into a cage */
 	noMassReset?: boolean,
+	/** Enables the leashing mechanic */
+	isCapturing?: boolean,
 	/** Determines if the enemy will tease you */
 	decideTease?: (enemy: entity, target: entity, AIData: KDEventDataBoolean, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
 	/** Determines if the enemy will attack you */

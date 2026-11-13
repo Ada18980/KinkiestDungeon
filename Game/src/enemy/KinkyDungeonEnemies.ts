@@ -7109,7 +7109,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 									KDAssignLeashPoint(enemy);
 								}
 
-								let leashPos = (AIData.aggressive) ? (AIData.nearestJail) : {x: enemy.x, y: enemy.y, type: "", radius: 1};
+								let leashPos = (AIData.aggressive && KDHasLeashIntent(enemy)) ? (AIData.nearestJail) : {x: enemy.x, y: enemy.y, type: "", radius: 1};
 								let findMaster = undefined;
 								if (!enemy.IntentAction && enemy.CurrentAction == 'jailLeashTour') {
 									// TODO replace with intent action
@@ -7368,16 +7368,6 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 								} else {
 									KDResetIntent(enemy, AIData);
 								}
-							}
-							else if (enemy.Enemy.tags.leashing && AIData.nearestJail && leashPos == AIData.nearestJail && Math.abs(enemy.x - leashPos.x) <= 1 && Math.abs(enemy.y - leashPos.y) <= 1) {
-								AIData.defeat = true;
-								if (leashPos &&
-									KinkyDungeonStairTiles.includes(KinkyDungeonMapGet(leashPos.x, leashPos.y))) {
-									KinkyDungeonSetFlag("LeashToPrison", 1);
-								}
-								KDGameData.KinkyDungeonLeashedPlayer = 3 + ap * 2;
-								KDGameData.KinkyDungeonLeashingEnemy = enemy.id;
-								KDBreakTether(KinkyDungeonPlayerEntity);
 							}
 							else if (leashPos && (
 								(AIData.attack.includes("Pull") && enemy.x == leashPos.x && enemy.y == leashPos.y)
@@ -12194,3 +12184,7 @@ function KDEnemyDoesFollow(enemy: entity) {
 
 let KDSeenEnemyCache: Record<string, number> = {};
 let KDSeenEnemyCacheTime = 8;
+
+function KDHasLeashIntent(enemy: entity) {
+	return enemy.IntentAction ? KDIntentEvents[enemy.IntentAction]?.isCapturing : false;
+}
