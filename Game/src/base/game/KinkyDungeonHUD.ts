@@ -1054,6 +1054,9 @@ function KDDrawStatusResources(x: number, y: number, width: number) {
 	if (KinkyDungeonConsumableCount("MistressKey") > 0)
 		resources.push({id: "MistressKey", count: KinkyDungeonConsumableCount("MistressKey"),
 		name: "KinkyDungeonInventoryItemMistressKey", scale: 1});
+	if (KinkyDungeonConsumableCount("DivineTear") > 0)
+		resources.push({id: "DivineTear", count: KinkyDungeonConsumableCount("DivineTear"),
+		name: "KinkyDungeonInventoryItemDivineTear", scale: 1});
 
 	let spacing = Math.min(50, (width) / (resources.length-1));
 	
