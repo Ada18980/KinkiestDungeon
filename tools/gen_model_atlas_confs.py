@@ -5,6 +5,7 @@ Generates one wtxpck config per folder in Models/:
   tools/mobile/wtxpck.models_mobile.<Folder>.conf  -> TextureAtlas/mobile/models_mobile_<Folder>_XXXX
 """
 import os
+import math
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -35,8 +36,12 @@ MIN_ATLAS = 64
 PADDING = 1
 PACK_EFFICIENCY = 0.5
 
-def read_cache(path):
-	"""cache format: file:srcW:srcH:trimX:trimY:trimW:trimH:mtime:page:x:y:packedW:packedH"""
+def read_cache(path, scale):
+	"""
+	cache format: file:srcW:srcH:trimX:trimY:trimW:trimH:mtime:page:x:y:packedW:packedH
+	packedW/H are only written for sprites repacked in that run (0 otherwise), so sizes come from the
+	trimmed source size times input_scale, rounded up so the largest-sprite bound is never underestimated.
+	"""
 	entries = {}
 	try:
 		with open(path, "r", encoding="utf8") as f:
@@ -53,7 +58,7 @@ def read_cache(path):
 			continue
 		# key by path relative to Models/, e.g. "Pumpkin/Kneel/XXX.png"
 		rel = os.path.normpath(parts[0]).replace("\\", "/").split("Models/", 1)[-1]
-		entries[rel] = {"mtime": nums[6], "w": nums[10], "h": nums[11]}
+		entries[rel] = {"mtime": nums[6], "w": math.ceil(nums[4] * scale), "h": math.ceil(nums[5] * scale)}
 	return entries
 
 def next_pow2(n):
@@ -116,7 +121,7 @@ for pack in PACKS:
 			os.remove(os.path.join(pack["dir"], f))
 			print(f"removed {pack['dir']}/{f}")
 
-	cache = read_cache(pack["cache"])
+	cache = read_cache(pack["cache"], float(pack["input_scale"]))
 	sizes = {}
 	for name, folder in names.items():
 		path = os.path.join(pack["dir"], name)
