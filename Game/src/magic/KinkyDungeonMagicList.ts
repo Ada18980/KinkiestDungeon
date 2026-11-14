@@ -4253,7 +4253,7 @@ let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spe
 				}
 			).length * 2);
 		if (KDNearbyEnemies(enemy.x, enemy.y, KDGetSpellRange(spell))
-			.filter((en) => {return en.Enemy?.name == "PuppetLost";}).length > count) return false;
+			.filter((en) => {return en.Enemy?.name == "PuppetSummoned";}).length > count) return false;
 			// party member gets 2 puppets per partymember with the spell
 		return true;
 	},
