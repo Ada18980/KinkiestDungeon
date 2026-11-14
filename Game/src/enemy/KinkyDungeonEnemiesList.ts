@@ -5964,7 +5964,6 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		stamina: 7,
 		maxblock: 1,
-		pathcondition: "puppetstrings",
 		
 		Security: {
 			level_key: 2,
@@ -6017,7 +6016,6 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		stamina: 7,
 		maxblock: 1,
-		pathcondition: "puppetstrings",
 		
 		Security: {
 			level_key: 2,
@@ -6064,6 +6062,8 @@ let KinkyDungeonEnemies: enemy[] = [
 			"bulwark", "immobile", "magicresist"]),
 		faction: "Witch", immobile: true, spellResist: -1.5, lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: -0.25,
 		visionRadius: 0, maxhp: 3, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		
+		pathcondition: "puppetstrings",
 		
 		Resistance: {
 			profile: ["construct"],

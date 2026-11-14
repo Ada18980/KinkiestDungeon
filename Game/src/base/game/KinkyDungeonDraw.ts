@@ -2681,7 +2681,9 @@ let KDFloaterSpacing = 18 / KinkyDungeonGridSizeDisplay;
 let KDFloaterSpacingOverride = 18;
 let KDFloaterRefreshTime = 1000;
 
-function KinkyDungeonSendFloater(Entity: entity, Amount: number | string, Color: string, Time?: number, LocationOverride?: boolean, suff: string = "", size?: number, prefix?: string) {
+function KinkyDungeonSendFloater(Entity: entity, Amount: number | string, Color: string, Time?: number,
+	LocationOverride?: boolean, suff: string = "", size?: number, prefix?: string,
+	zIndexBonus?: number) {
 	if (Entity.x && Entity.y) {
 		let II = KDEntitiesFloaterRegisty.get(Entity) || 1;
 		II += 1;
@@ -2700,6 +2702,7 @@ function KinkyDungeonSendFloater(Entity: entity, Amount: number | string, Color:
 			text: "" + ((typeof Amount === "string") ? Amount : (prefix || "") + Math.round(Amount * 10)/10) + suff,
 			lifetime: Time ? stringFloaterMult*Time : ((typeof Amount === "string") ? stringFloaterMult*4 : floaterMult*((Amount < 3) ? 2 : (Amount > 5 ? 3 : 2))),
 		};
+		if (zIndexBonus) floater.zIndexBonus = zIndexBonus;
 		KinkyDungeonFloaters.push(floater);
 		if (KDFloaterID > 1000000000) KDFloaterID = 0;
 	}
@@ -2716,6 +2719,7 @@ interface KDFloater {
 	text: string,
 	lifetime: number,
 	id: number,
+	zIndexBonus?: number,
 }
 
 let KDFloaterGridRes = 10; // How many sections the screen is split into
@@ -2780,7 +2784,7 @@ outer:
 			KDTextGray1,
 			floater.size || 20,
 			undefined,
-			undefined,
+			110 + (floater.zIndexBonus || 0) * 0.1,
 			alpha,
 			undefined,
 			undefined,
@@ -6415,7 +6419,11 @@ function KDGetTargetRetType(x: number, y: number): string {
 	if (enemy && KinkyDungeonVisionGet(x, y) > 0.1) {
 		let agg = KinkyDungeonAggressive(enemy);
 		if (KDCanPassEnemy(KinkyDungeonPlayerEntity, enemy) &&
-			(!agg || KDHelpless(enemy))) return "Pass";
+			(!agg || KDHelpless(enemy))) {
+				return (enemy?.Enemy?.pathcondition
+					&& KDPathConditions[enemy?.Enemy?.pathcondition].customPassMarker
+				) ? KDPathConditions[enemy?.Enemy?.pathcondition].customPassMarker : "Pass";
+			}
 		if (KDHostile(enemy) && agg) return "Attack";
 		if (!KDHostile(enemy) && (agg
 			|| (!KDTalkToEnemy(enemy) && (enemy.playWithPlayer && KDCanDom(enemy)))

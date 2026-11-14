@@ -3515,7 +3515,9 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		{name: "LearnedRope", count: 1, chance: 0.5, time: 20, strict: false, aware: true,bound: true, hidden: true},
 		{name: "UnforseenRope", count: 1, chance: 0.5, time: 20, strict: true, aware: true,bound: true}
 	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
-	{enemySpell: true, name: "PuppetAttack", manacost: 1, components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
+	{enemySpell: true, name: "PuppetAttack", manacost: 1,
+		castCondition: "PuppetAttack",
+		components: ["Verbal"], level:4, type:"hit", onhit:"null", noSprite: true, noSumMsg: true, summon: [
 		{name: "PuppetSummoned", count: 1, chance: 0.5, time: 80, strict: false, bound: true, hidden: true, aware: true,},
 		{name: "PuppetSummoned", count: 1, chance: 1.0, time: 80, strict: false, bound: true, hidden: true, aware: true,},
 	], power: 0, time: 12, delay: 1, range: 8, size: 3, aoe: 10, lifetime: 1, damage: "fire"},
@@ -4242,6 +4244,20 @@ let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spe
 		if (KDNearbyEnemies(enemy.x, enemy.y, KDGetSpellRange(spell)).filter((en) => {return en.Enemy?.tags.smithdoll;}).length > 8 || KDNearbyEnemies(enemy.x, enemy.y, spell.aoe).filter((en) => {return !en.allied && en.Enemy?.tags.dollmakerconvert;}).length < 1) return false;
 		return true;
 	},
+	"PuppetAttack": (enemy, _target, spell) => {
+		if (KDGetFaction(enemy) != "Player") return true; // no limit on enemy
+		let count = Math.max(2, KDGameData.Party?.filter(
+				(pm) => {
+					return pm.Enemy?.spells?.includes("PuppetAttack")
+						|| pm.Enemy?.Magic?.priority?.PuppetAttack != undefined
+				}
+			).length * 2);
+		if (KDNearbyEnemies(enemy.x, enemy.y, KDGetSpellRange(spell))
+			.filter((en) => {return en.Enemy?.name == "PuppetLost";}).length > count) return false;
+			// party member gets 2 puppets per partymember with the spell
+		return true;
+	},
+	
 	"wolfDrone": (enemy, _target) => {
 		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.wolfdrone;}).length > 3) return false;
 		return true;

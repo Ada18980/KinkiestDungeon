@@ -4551,14 +4551,14 @@ function KDGetAltType(Floor: number, MapMod?: string, RoomType?: string): AltTyp
  * @param Enemy
  */
 function KDCanPassEnemy(player: entity, Enemy: entity, force?: boolean, ignoreIfAlready?: boolean): boolean {
-	return !KDIsImmobile(Enemy)
+	let succPathCondition = (Enemy.Enemy?.pathcondition
+		&& KDPathConditions[Enemy.Enemy.pathcondition]?.query
+		&& KDPathConditions[Enemy.Enemy.pathcondition].query(player, Enemy));
+	if (!succPathCondition && Enemy.Enemy?.pathcondition) return false;
+	return (succPathCondition || !KDIsImmobile(Enemy))
 	&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
 	&& ((force || (KinkyDungeonToggleAutoPass
-		&& (
-			(Enemy.Enemy?.pathcondition
-				&& KDPathConditions[Enemy.Enemy.pathcondition]?.query
-				&& KDPathConditions[Enemy.Enemy.pathcondition].query(player, Enemy))
-			|| !KDGameData.FocusControlToggle || (
+		&& (!KDGameData.FocusControlToggle || (
 				(KDGameData.FocusControlToggle.AutoPassHelplessEnemies || !(KDHostile(Enemy) && KDHelpless(Enemy))) &&
 				(KDGameData.FocusControlToggle.AutoPassHelplessAllies || !(!KDHostile(Enemy) && KDHelpless(Enemy))) &&
 				(KDGameData.FocusControlToggle.AutoPassAllies || !(KDAllied(Enemy))) &&

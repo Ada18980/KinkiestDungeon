@@ -969,7 +969,8 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 				entity.dialogueDuration = duration;
 				entity.dialoguePriority = 10;
 				KinkyDungeonSendFloater(entity, TextGet("KinkyDungeonRemindJailPlay" + suff + "Gagged" + Math.floor(KDRandom() * 3)), 
-					color, 1.5 + 0.5*duration);
+					color, 1.5 + 0.5*duration, undefined, undefined, undefined, undefined,
+			1);
 			}
 			if (dialogue && KDCanHearEnemy(KDPlayer(), entity) || KDCanSeeEnemy(entity)) {
 				KinkyDungeonSendTextMessage(0, `${TextGet("Name" + entity.Enemy.name)}: ${dialogue}`, 
@@ -993,7 +994,8 @@ function KinkyDungeonSendDialogue(entity: entity, dialogue: string, color: strin
 			entity.dialogueDuration = duration;
 			entity.dialoguePriority = priority;
 			KinkyDungeonSendFloater(entity, dialogue, 
-				color, 3 + 0.7*duration);
+				color, 3 + 0.7*duration, undefined, undefined, undefined, undefined,
+			1);
 		}
 		if (!entity.player && dialogue) {
 			KDEnemyAddSound(entity, 12, undefined, 
