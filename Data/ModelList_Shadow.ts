@@ -16,6 +16,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Arms1", Layer: "BindChest", Pri: 50,
 			DisplacementSprite: "Arm2Squish",
+			DisplaceAmount: 125,
 			DisplacementMorph: {Boxtie: "Boxtie",Wristtie: "Wristtie",Front: "Boxtie",Crossed: "Boxtie",},
 			Poses: ToMap(["Boxtie", "Wristtie", "Front", "Crossed"]),
 			DisplaceLayers: ToMap(["Ribbon1"]),
@@ -44,6 +45,7 @@ AddModel({
 			InheritColor: "Shadow",
 			Invariant: true,
 			DisplacementSprite: "Arm1Squish",
+			DisplaceAmount: 125,
 			DisplacementMorph: {Boxtie: "Boxtie",Wristtie: "Wristtie",Front: "Boxtie",Crossed: "Boxtie",},
 			Poses: ToMap(["Boxtie", "Wristtie", "Front", "Crossed"]),
 			DisplaceLayers: ToMap(["Ribbon1"]),
