@@ -1036,7 +1036,7 @@ function KDDrawStatusBars(x: number, y: number, width: number = 125) {
 		x - buttonWidth + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 5 - 2*heightPerBar +  heightPerBar/2, buttonWidth, KDBaseWhite, "#333333", 14, "left");
 
 	// Resources, below the distraction bar
-	KDDrawStatusResources(x - buttonWidth / 1.4 - 5, y + heightPerBar * barHeightOffset2ndSet + 2, 
+	KDDrawStatusResources(x - buttonWidth / 1.4 - 5, y + heightPerBar * barHeightOffset2ndSet - 2, 
 		width);
 }
 

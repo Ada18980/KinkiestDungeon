@@ -204,7 +204,7 @@ let kdbulletboard = new PIXI.Container();
 kdbulletboard.zIndex = 2.3;
 kdbulletboard.sortableChildren = true;
 let kdeffecttileboard = new PIXI.Container();
-kdeffecttileboard.zIndex = -0.1;
+kdeffecttileboard.zIndex = -0.15;
 kdeffecttileboard.sortableChildren = true;
 let kdUItext = new PIXI.Container();
 kdUItext.zIndex = 60;
@@ -231,7 +231,7 @@ kdstatusboard.addChild(kdenemydialoguecanvas);
 
 
 let kditemsboard = new PIXI.Container();
-kditemsboard.zIndex = -2;
+kditemsboard.zIndex = -0.1;
 kditemsboard.sortableChildren = false;
 let kdwarningboard = new PIXI.Container();
 kdwarningboard.zIndex = -0.3;
