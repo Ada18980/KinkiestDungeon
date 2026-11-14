@@ -1627,7 +1627,8 @@ function KinkyDungeonDrawGame() {
 									} else dist = 1;
 								}
 								dist = Math.ceil(Math.max(0, dist));
-								DrawTextKD("x" + dist, (KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
+								if (!KDDrewEnemyTooltip && !KDDrewEnemyTooltipThisFrame)
+									DrawTextKD("x" + dist, (KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
 								
 								if (path?.length > 0 && KDToggles.ShowPath && !(KinkyDungeonTargetX == KDPlayer().x && KinkyDungeonTargetY == KDPlayer().y)) {
 									
@@ -1729,9 +1730,10 @@ function KinkyDungeonDrawGame() {
 									dist = 1 - KDGameData.MovePoints;
 								} else if (!KDToggles.LazyWalk || KinkyDungeonInDanger()) dist = 1;
 								dist = Math.ceil(Math.max(0, dist));
-								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, 
-								(yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44",
-								undefined, undefined, undefined, 100.1);
+								if (!KDDrewEnemyTooltip && !KDDrewEnemyTooltipThisFrame)
+									DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, 
+									(yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44",
+									undefined, undefined, undefined, 100.1);
 							}
 						}
 						KDDraw(kdstatusboard, kdpixisprites, "ui_movereticule" + KinkyDungeonTargetX + "," + KinkyDungeonTargetY, KinkyDungeonRootDirectory + "Target" + KDGetTargetRetType(xx, yy) + ".png",

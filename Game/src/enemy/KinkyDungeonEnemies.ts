@@ -2408,35 +2408,55 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 						|| (KDGameData.CurrentDialog && KDGetSpeaker() == enemy)))) {
 						let faction = KDGetFaction(enemy);
 						let flatOff = 0;
+						let ttX = canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2;
+						let ttLines: {y: number, w: number}[] = [];
 						if (faction && (!KinkyDungeonHiddenFactions.has(faction) || KinkyDungeonTooltipFactions.includes(faction))) {
 							let tt = TextGet("KinkyDungeonFaction" + faction);
+							let ttY = yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3 + flatOff;
 
 							if(!CharacterCheckerHasCJK(tt)){
-								DrawTextFitKD(tt, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3 + flatOff, 10 + tt.length * 8, KDBaseWhite, "black");
+								DrawTextFitKD(tt, ttX, ttY, 10 + tt.length * 8, KDBaseWhite, "black");
+								ttLines.push({y: ttY, w: 10 + tt.length * 8});
 								yboost += -2*KinkyDungeonGridSizeDisplay/7;
 							}
 							else{
-								DrawTextFitKD(tt, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3 + flatOff, 10 + CharacterCheckerGetLength(tt) * 8, KDBaseWhite, "black");
+								DrawTextFitKD(tt, ttX, ttY, 10 + CharacterCheckerGetLength(tt) * 8, KDBaseWhite, "black");
+								ttLines.push({y: ttY, w: 10 + CharacterCheckerGetLength(tt) * 8});
 							 	yboost += -3*KinkyDungeonGridSizeDisplay/8;
 							}
 						}
 
 						let name = TextGet("Name" + enemy.Enemy.name);
-						if(!CharacterCheckerHasCJK(name)){
-							DrawTextFitKD(name, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3 + flatOff, 10 + name.length * 8, KDBaseWhite, "black");
-						}
-						else {
-							DrawTextFitKD(name, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3 + flatOff, 10 + CharacterCheckerGetLength(name) * 8, KDBaseWhite, "black");
-						}
+						let nameY = yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/3 + flatOff;
+						let nameW = 10 + (CharacterCheckerHasCJK(name) ? CharacterCheckerGetLength(name) : name.length) * 8;
+						DrawTextFitKD(name, ttX, nameY, nameW, KDBaseWhite, "black");
+						ttLines.push({y: nameY, w: nameW});
 
 						if (enemy.CustomName) {
-							DrawTextKD(enemy.CustomName, canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2, yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 + flatOff, enemy.CustomNameColor, "black");
+							let customY = yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 + flatOff;
+							DrawTextKD(enemy.CustomName, ttX, customY, 
+								enemy.CustomNameColor, "black");
+							ttLines.push({y: customY - 6, w: 10 + enemy.CustomName.length * 15});
 						}
+
+						let lineH = 2*KinkyDungeonGridSizeDisplay/7;
+						let ttTop = Math.min(...ttLines.map((l) => l.y)) - lineH/2 - 2;
+						let ttBottom = Math.max(...ttLines.map((l) => l.y)) + lineH/2 + 2;
+						let ttW = Math.max(...ttLines.map((l) => l.w)) + 8;
+						FillRectKD(kdcanvas, kdpixisprites, "enemyhovertooltipbg", {
+							Left: ttX - ttW/2,
+							Top: ttTop,
+							Width: ttW,
+							Height: ttBottom - ttTop,
+							Color: KDBaseBlack,
+							alpha: 0.8,
+							zIndex: 109,
+						});
 						tooltip = true;
 					}
 				}
 
-				if (enemy.dialogue && !tooltip) {
+				if (enemy.dialogue && !tooltip && !KDDrewEnemyTooltip && !KDDrewEnemyTooltipThisFrame) {
 					let dialogueOffset = 6;
 					while (dialogueOffset < 300 && (KDDialogueSlots[yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset])) {
 						dialogueOffset += 18;
@@ -2627,6 +2647,16 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 		size: 24,
 		center: true,
 	});
+	let ttFaction = KDGetFaction(enemy);
+	if (ttFaction && (!KinkyDungeonHiddenFactions.has(ttFaction) || KinkyDungeonTooltipFactions.includes(ttFaction))) {
+		TooltipList.push({
+			str: TextGet("KinkyDungeonFaction" + ttFaction),
+			fg: KDBaseLightGrey,
+			bg: KDBaseBlack,
+			size: 18,
+			center: true,
+		});
+	}
 
 	KDCurrentEnemyTooltip = enemy;
 
