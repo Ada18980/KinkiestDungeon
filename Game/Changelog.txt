@@ -76,6 +76,11 @@ Must do
 - Proper stripping
 - species perks
 
+5.5.13
+- Reduced VRAM usage by a lot (50% for desktop, 75% for mobile)
+- Can now push barrels, etc
+- Can now dispel puppet strings by walking into them
+
 5.5.12
 - Fixed some leashing behavior issues
 - Allies no longer follow you without you telling them to follow you

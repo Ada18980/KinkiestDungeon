@@ -29,6 +29,10 @@ let KDPathConditions : Record<string, PathCondition> = {
 	},
 	barricade: {
 		query: (attemptingNPC: entity, thisNPC: entity) => {
+			if (attemptingNPC?.player) {
+				if (KDGetFaction(thisNPC) == "Player") return true;
+				return false;
+			}
 			// Everyone can pass barrels
 			// Even other barrels
 			return true;
@@ -49,6 +53,10 @@ let KDPathConditions : Record<string, PathCondition> = {
 	},
 	witchwall: {
 		query: (attemptingNPC: entity, thisNPC: entity) => {
+			if (attemptingNPC?.player) {
+				if (KDGetFaction(thisNPC) == "Player") return true;
+				return false;
+			}
 			// Only Ranks 3 and above can pass through, or witches, or leashers
 			return (KDEnemyRank(attemptingNPC) >= 3
 				|| attemptingNPC.Enemy?.tags.witch)
@@ -62,6 +70,10 @@ let KDPathConditions : Record<string, PathCondition> = {
 	},
 	puppetstrings: {
 		query: (attemptingNPC: entity, thisNPC: entity) => {
+			if (attemptingNPC?.player) {
+				if (KDGetFaction(thisNPC) == "Player") return true;
+				return false;
+			}
 			// Only Ranks 3 and above can pass through, or witches, or dressmakers
 			return (KDEnemyRank(attemptingNPC) >= 3
 				|| attemptingNPC.Enemy?.tags.dressmaker)
@@ -75,6 +87,10 @@ let KDPathConditions : Record<string, PathCondition> = {
 	},
 	stonedoor: {
 		query: (attemptingNPC: entity, thisNPC: entity) => {
+			if (attemptingNPC?.player) {
+				if (KDGetFaction(thisNPC) == "Player") return true;
+				return false;
+			}
 			// Only Ranks 3 and above can pass through, or leashers
 			return KDEnemyRank(attemptingNPC) >= 3
 			|| KinkyDungeonJailGuard()?.id == attemptingNPC.id
@@ -96,6 +112,10 @@ let KDPathConditions : Record<string, PathCondition> = {
 	},
 	blastdoor: {
 		query: (attemptingNPC: entity, thisNPC: entity) => {
+			if (attemptingNPC?.player) {
+				if (KDGetFaction(thisNPC) == "Player") return true;
+				return false;
+			}
 			// Only Ranks 3 and above can pass through, or robots/cyborgs/dollsmiths/wolfgirls, or leashers
 			return (KDEnemyRank(attemptingNPC) >= 3
 				|| attemptingNPC.Enemy?.tags.robot
