@@ -1117,7 +1117,8 @@ function KinkyDungeonDrawGame() {
 		DrawTextFitKD(TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr"), 1990, 50, 200, KDBaseWhite, KDTextGray2, undefined, "right");
 	}
 	KDDrawMinimap(1990-KDMinimapWCurrent, 25);
-	KDDrawPartyMembers(500 + ((KDToggles.BuffSide && !KDToggleShowAllBuffs) ? 60 : 0), 500 + ((KDToggles.BuffSide && KDToggleShowAllBuffs) ? 175 : 0), tooltips);
+	KDDrawPartyMembers(500 + ((KDToggles.BuffSide && !KDToggleShowAllBuffs) ? 60 : 4), 
+	500 + ((KDToggles.BuffSide && KDToggleShowAllBuffs) ? 105 : 0), tooltips);
 
 
 
@@ -3262,6 +3263,7 @@ function KDPointInBlockControlArea(X: number, Y: number, area: KDBlockControlAre
 
 let KDBoxThreshold = 60;
 let KDTooltipColor = "rgb(25,29,36)"
+let KDPMColor = "rgb(25,29,36)"
 let KDButtonColor = "rgba(5, 5, 5, 0.5)";
 let KDButtonColorIntense = "rgba(5, 5, 5, 0.8)";
 let KDButtonColorLight = "rgba(45, 45, 45, 0.5)";

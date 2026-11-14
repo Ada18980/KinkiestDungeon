@@ -2619,9 +2619,23 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 						Top: PartyY,
 						Width: PartyDy,
 						Height: PartyDy,
-						Color: KDBaseBlack,
+						Color: KDPMColor,
 						alpha: 0.9,
 						zIndex: zIndex - 0.1,
+					}
+				);
+				DrawRectKD(
+					kdstatusboard,
+					kdpixisprites,
+					"bgPMb" + PM.id,
+					{
+						Left: PartyX,
+						Top: PartyY,
+						Width: PartyDy,
+						Height: PartyDy,
+						Color: KDBorderColor,
+						alpha: 0.9,
+						zIndex: zIndex - 0.09,
 					}
 				);
 			}
