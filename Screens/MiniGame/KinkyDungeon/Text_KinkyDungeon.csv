@@ -3990,7 +3990,7 @@ KinkyDungeonHackDoorFail,"The lock beeps as its security blocks your attempts at
 KinkyDungeonHackDoorNone,"You have no way to hack the locking system."
 KinkyDungeonPickDoor,"Pick"
 KinkyDungeonLockedDoor,"(No way to open)"
-KinkyDungeonLockedShrine,"(She cannot help you)"
+KinkyDungeonLockedShrine,"(The goddess cannot help you)"
 KinkyDungeonPayShrine,"Offer XXXg"
 KinkyDungeonPayShrineCant,"Offer"
 KinkyDungeonPayShrineFail,"You do not have enough for a proper offering."
@@ -32111,6 +32111,7 @@ RestraintVineSuspension,Vine Suspension
 RestraintVineSuspensionDesc,"Vines linked to your bindings that keep you suspended!"
 RestraintVineSuspensionDesc2,"You are left dangling! Maybe if you swing hard enough you can tear the vines..."
 
+Elemental_Temple.ogg,Kocaeli - Elemental Temple
 DragonLair.ogg,Kocaeli - Dragon Lair
 SlimyScience.ogg,EchoZero - Slimy Science
 MachinedPerfection.ogg,EchoZero - Machined Perfection

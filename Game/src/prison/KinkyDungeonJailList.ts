@@ -56,10 +56,10 @@ let KDJailEvents: Record<string, {weight: (guard: entity, xx: number, yy: number
 					guard)
 			} else if (!KinkyDungeonFlags.get("JailIntro")) {
 				KinkyDungeonSetFlag("JailIntro", -1);
-				KDStartDialog("PrisonIntro", guard.Enemy.name, true, "");
+				KDStartDialog("PrisonIntro", guard.Enemy.name, true, "", guard);
 			} else if (KinkyDungeonFlags.get("JailRepeat")) {
 				KinkyDungeonSetFlag("JailRepeat",  0);
-				KDStartDialog("PrisonRepeat", guard.Enemy.name, true, "");
+				KDStartDialog("PrisonRepeat", guard.Enemy.name, true, "", guard);
 			}
 
 			if (KinkyDungeonPlayerInCell(true))
