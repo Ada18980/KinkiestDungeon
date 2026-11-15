@@ -68,7 +68,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{type: "ShopkeeperRescueAI", trigger: "afterEnemyTick"},
 		],
-		pronouns: {She: 100},
+		pronouns: {They: 100},
 		 floors:KDMapInit([])},
 
 	// Easy mode NPC
@@ -77,7 +77,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Behavior: {noPlay: true},
 		spawnAISetting: "None",
 		noDisplace: false, keys: true,
-		pronouns: {She: 100},
+		pronouns: {They: 100},
 		 floors:KDMapInit([])},
 
 	// Quest NPC

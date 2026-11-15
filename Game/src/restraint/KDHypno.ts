@@ -179,11 +179,13 @@ function KDAddHypnoButton(buff: string, amount: number, textKey: string, textDat
     return button;
 }
 
+let KDMinHypnoButtonAlpha = 0.75;
+
 function KDDrawHypnoButton(button: HypnoButton, x: number, y: number, alpha: number) {
 
     if (DrawButtonKDEx("hypnobutton_" + button.x + "," + button.y + "," + button.textKey, 
         (data) => {
-            if (alpha == 1) {
+            if (alpha >= KDMinHypnoButtonAlpha) {
                 if (button.textKey_after) {
                     button.textKey = button.textKey_after;
                     delete button.textKey_after;

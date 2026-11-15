@@ -2367,7 +2367,10 @@ let KDCustomDefeats: Record<string, (enemy: entity, forceRegular?: boolean) => v
 		KinkyDungeonCreateMap(KinkyDungeonMapParams.shoppe, "ShopStart", "", MiniGameKinkyDungeonLevel,
 			undefined, undefined, undefined, {x: 0, y: 0},
 			 false, undefined);
-		KDStartDialog("ShopkeeperTeleport", enemy.Enemy.name, true, "", enemy);
+		KDStartDialog("ShopkeeperTeleport", enemy.Enemy.name, 
+			true, "", KDMapData.Entities.find((en) => {
+				return en.Enemy?.name == "ShopkeeperStart"
+			}));
 
 	},
 
