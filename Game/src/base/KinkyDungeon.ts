@@ -1652,8 +1652,10 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
 		if (aboveButton) tooltipY = tooltipBottom - TooltipHeight;
 		let lineY = (aboveButton ? tooltipBottom - pad - linesHeight : tooltipY + YY - pad) + lineSpacing / 2;
 		for (let l of lines) {
-			DrawTextFitKD(l.str, tooltipX + TooltipWidth / 2, lineY, TooltipWidth - 2 * pad,
-				l.color || KDBaseLightGrey, KDBaseBlack, lineSize, "center", 701);
+			DrawTextFitKD(l.str, tooltipX + TooltipWidth / 2, lineY, 
+				TooltipWidth - 2 * pad,
+				l.color || KDTextWhite, 
+				KDBaseBlack, lineSize, "center", 701);
 			lineY += lineSpacing;
 		}
         FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + object.name, {

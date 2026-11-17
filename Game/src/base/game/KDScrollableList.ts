@@ -204,7 +204,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	visualIndex: number,
 	isSelected: boolean,
 	selectedIndex: number,
-	list: KDScrollableListData) => boolean, drawBG = true, horizontal = false, scrollbarSize = 36,
+	list: KDScrollableListData) => boolean, drawBG = true, horizontal = false, scrollbarSize = 24,
 	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string, pad: number = 4,
 	scrollButtons: boolean = true, scrollbarSize2 = undefined, scrollBarColor?: string, scrollbarClickable: boolean = true,
 	buttonScrollCallback?: (items: any[], listItemTo: number, index: number, amount: number) => boolean,
@@ -260,12 +260,13 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	const barW = horizontal ? (scrollbarSize2 ? scrollbarSize2 : list.w) : scrollbarSize;
 	const barH = horizontal ? scrollbarSize : (scrollbarSize2 ? scrollbarSize2 : list.h);
 
-	const upX = barX;
+	const crossOffset = (scrollbarSize > 0 && !drawBG && !horizontal) ? pad / 2 : 0;
+	const upX = barX + crossOffset;
 	const upY = barY;
 	const upW = scrollbarSize;
 	const upH = scrollbarSize;
 
-	const downX = barX + (horizontal ? (list.w - scrollbarSize) : 0);
+	const downX = upX + (horizontal ? (list.w - scrollbarSize) : 0);
 	const downY = barY + (horizontal ? 0 : (list.h - scrollbarSize));
 	const downW = upW;
 	const downH = upH;
@@ -342,6 +343,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			{
 				hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
 				centered: true,
+				scaleImage: scrollbarSize < 36,
 				zIndex: (container.zIndex || 0) + 0.1
 			},
 		);
@@ -365,6 +367,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			undefined,
 			{
 				centered: true,
+				scaleImage: scrollbarSize < 36,
 				hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
 				zIndex: (container.zIndex || 0) + 0.1
 			}

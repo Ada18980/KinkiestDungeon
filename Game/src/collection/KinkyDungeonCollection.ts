@@ -1214,6 +1214,11 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 	for (let i = 0; i < KDCollectionTabStatusOptions.length; i++) {
 		let option = KDCollectionTabStatusOptions[i];
 		DrawButtonKDEx("collectionTab" + option, (_b) => {
+			if (KDCollectionTabStatus != option && KDCollectionSelected
+				&& KDGameData.Collection[KDCollectionSelected]?.status != "Servant") {
+				KDCollectionSelected = 0;
+				KDResetCollectionUI();
+			}
 			KDCollectionTabStatus = option;
 			return true;
 		},true,
@@ -1234,7 +1239,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 		ElementValue("CollFilter", KDCollFilter || "");
 		TF.Element.oninput = (_event) => {
 			KDCollFilter = ElementValue("CollFilter");
-			KDCollectionIndex = 0;
+			KDResetCollectionScroll();
 		};
 	}
 
@@ -1273,254 +1278,60 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 
 	// Collection
-	let guests = [];
-	let filters = [];
-	for (let f of Object.values(KDCollectionFilters)) {
-		if (f.Current && f.Options[f.Current]) {
-			filters.push(f.FilterCode[f.Options[f.Current]]);
-		}
-	}
-	let rendered = [];
-	let cf = KDCollFilter ? KDCollFilter.toLocaleUpperCase() : null;
-	// Iterate thru the collection, parting out the notable ones to the top
-	for (let value of KDGameData.CollectionSorted) {
-		if (cf && !KDCollFilterString(value).includes(cf)) {
-			continue;
-		}
-		if (value.status == "Servant") {
-			guests.push(value);
-			continue;
-		}
-		if (value.status != KDCollectionTabStatus) continue;
+	let listY = y + KDCollectionSpacing * (KDCollectionGuestRows + 1);
+	let scrollbarSize = 28;
+	let listW = KDCollectionColumns * KDCollectionSpacing + 8 + scrollbarSize;
+	let listH = KDCollectionRows * KDCollectionSpacing;
 
-
-		if (KDCollectionSelected == value.id) selectedIndex = II + 1;
-
-		if (filters.length > 0 && filters.some((filter) => {return !filter(value);})) continue;
-
-		if (II++ < KDCollectionIndex || row >= KDCollectionRows) continue;
-
-		rendered.push(value);
-		if (value.status) KDGetPersistentNPC(value.id); // All guests and servants are persistent
-
-		let sp = (value.sprite || value.type);
-		let dir = "Enemies/";
-		let enemyType = value.Enemy || KinkyDungeonGetEnemyByName(value.type);
-
-		if (!value.status) {
-			// Prisoner
-			dir = value.customSprite ? "Enemies/CustomSpriteBound/" : "EnemiesBound/";
-			if (!value.customSprite) sp = enemyType.bound;
-		} else {
-			dir = value.customSprite ? "Enemies/CustomSprite/" : "Enemies/";
-		}
-
-		let drawChar = false;
-		if (((KDToggles.ShowServantNPCSprites && value.status == "Servant")
-			|| (KDToggles.ShowOtherNPCSprites && value.status != "Servant"))
-			&& (KDNPCChar.get(value.id) || KDCollectionGenThisFrame++ < KDCollectionGenPerFrame)) {
-			if (!KDNPCChar.get(value.id)) KDGenCharForCollection(value, enemyType);
-			let char = KDNPCChar.get(value.id);
-			// We refresh
-			if (value.refreshSprite
-				|| !kdpixisprites.get("xspr_" + value.id)) {
-				if (char)
-					KDRefreshCharacter.set(char, true);
-				if (!NPCTags.get(char)) {
-					NPCTags.set(char, new Map());
-				}
-				NPCTags.set(char, KinkyDungeonUpdateRestraints(char, value.id, 0));
-				KDEntityRestraintMetadata.set(value.id, KDUpdateRestraintMetadata(value.id, 0));
-				value.refreshSprite = false;
-			}
-			if (KDRefreshCharacter.get(char) || KDUpdateEnemySprites)
-				KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
-
-			kdpixisprites.set("xspr_" + value.id, {}); // Hijack pixisprites due to desired functionality
-			kdSpritesDrawn.set("xspr_" + value.id, true);
-
-			let size = Math.max(79, 79);
-			drawChar = true;
-			DrawCharacter(char,
-				XX + size/2.7,
-				YY + size*0.2,
-				size/1300, false, kdcanvas, undefined, 
-				CHIBIMOD, 101, false, undefined, 
-				value.name + "_coll," + value.id, CHIBIMODEND);
-
-		}
-
-		DrawButtonKDEx(value.name + "_coll," + value.id, (_data) => {
-			KDCollectionSelected = value.id;
-			KDResetCollectionUI();
-			return true;
-		}, true,
-		XX,
-		YY,
-		79, 79, "", KDBaseWhite, drawChar ? "" : (KinkyDungeonRootDirectory + dir + sp + ".png"),
-		"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}, KDCollectionEntryTooltip(value));
-
-		if (drawCallback) drawCallback(value, XX, YY);
-
-		if (KDNPCUnavailable(value.id, value.status) || value.escapegrace) {
-			let icon = KDGetPersistentNPC(value.id)?.captured
-				? ((KDCompareLocation(KDGetNPCLocation(value.id), KDGetCurrentLocation())
-				&& !KinkyDungeonFindID(value.id)) ? "InspectQuestion" : "Inspect")
-				: ((value.escaped ? "escaped"
-				: (value.escapegrace ? "escapegrace" :
-					(KDIsInPartyID(value.id) ? (!!KinkyDungeonFindID(value.id) ? "party" : "Inspect") : "jail")
-				)));
-			KDDraw(kdcanvas, kdpixisprites, value.name + "_jail," + value.id,
-				KinkyDungeonRootDirectory + "UI/" + icon + ".png",
-				XX + 36,
-				YY + 36,
-				36, 36, undefined, {
-					zIndex: 110
-				});
-		} else if (value.status && KDIsInPartyID(value.id)) {
-			KDDraw(kdcanvas, kdpixisprites, value.name + "_party," + value.id,
-				KinkyDungeonRootDirectory + "UI/Star.png",
-				XX + 48,
-				YY + 48,
-				28, 28, undefined, {
-					zIndex: 110
-				});
-		}
-		if (value.Facility) {
-			KDDraw(kdcanvas, kdpixisprites, value.name + "_fac," + value.id,
-				KinkyDungeonRootDirectory + "UI/Facility/" + value.Facility + ".png",
-				XX,
-				YY + 36,
-				36, 36, undefined, {
-					zIndex: 110
-				});
-		}
-		/*KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".png",
-			XX,
-			YY,
-			72, 72, undefined);*/
-
-		column++;
-		if (column >= KDCollectionColumns) {
-			column = 0;
-			row++;
-			XX = x;
-			YY += KDCollectionSpacing;
-		} else XX += KDCollectionSpacing;
-	}
-
-	if (rendered.length == 0 && KDCollectionIndex > 0) {
-		KDCollectionIndex = Math.max(0, KDCollectionIndex - KDCollectionColumns);
+	let signature = KDCollectionListSignature();
+	if (KDClipCollectionIndex || signature != KDCollectionListLastSignature || ShouldUpdateList(KDCollectionListID)) {
+		KDClipCollectionIndex = false;
+		KDCollectionListLastSignature = signature;
+		KDPopulateCollectionList();
+		PopulateList(KDCollectionListID, x, listY, listW, listH, 
+			10, KDCollectionRows,
+			KDSplitIntoSublists(KDCollectionListEntries, KDCollectionColumns), false);
 	}
 	
-	if (rendered.length == 0 && KDCollectionIndex == 0 && KDCollectionTabStatus == '' && KDGameData.Party && KDGameData.Party.length > 0) {
+	let entries = KDCollectionListEntries;
+	let guests = KDCollectionListGuests;
+	let selectedIndex = entries.findIndex((value) => {return value.id == KDCollectionSelected;}) + 1;
+
+	let rendered: KDCollectionEntry[] = [];
+	KDDrawScrollableList(KDCollectionListID, true, (
+		container: PIXIContainer,
+		isClickable: boolean,
+		row: KDCollectionEntry[],
+		listRow: number,
+		visualIndex: number,
+		isSelected: boolean,
+		selectedIndex: number,
+		list: KDScrollableListData) => {
+			if (visualIndex <= -1 || visualIndex >= list.num_per_page) return false;
+			let fullyVisible = isClickable && visualIndex > -0.5 && visualIndex < list.num_per_page - 0.5;
+			for (let i = 0; i < row.length; i++) {
+				let value = row[i];
+				let XX = list.x + i * KDCollectionSpacing;
+				let YY = list.y + KDCollectionSpacing * visualIndex;
+				if (fullyVisible) rendered.push(value);
+				KDDrawCollectionEntry(container, value, XX, YY, "_coll,", fullyVisible,
+					fullyVisible ? drawCallback : undefined);
+			}
+			return false;
+		}, false, false, scrollbarSize);
+
+	if (entries.length == 0 && KDCollectionTabStatus == '' && KDGameData.Party && KDGameData.Party.length > 0) {
 		KDCollectionTabStatus = 'Guest'; // auto go to guests
 	}
-	// Iterate thru guests array
-	YY = y;
-	XX = x;
-	column = 0;
-	row = 0;
 
+	// Iterate thru servants  array
+	let YY = y;
+	let XX = x;
+	let column = 0;
 
 	for (let i = 0; i < KDCollectionColumns * KDCollectionGuestRows; i++) {
 		if (i < guests.length) {
-			// We have a member
-			let value = guests[i];
-			KDGetPersistentNPC(value.id); // All guests and servants are persistent
-			let sp = (value.sprite || value.type);
-			let dir = "Enemies/";
-			let enemyType = value.Enemy || KinkyDungeonGetEnemyByName(value.type);
-
-			if (!value.status) {
-				// Prisoner
-				dir = value.customSprite ? "Enemies/CustomSpriteBound/" : "EnemiesBound/";
-				if (!value.customSprite) sp = enemyType.bound;
-			} else {
-				dir = value.customSprite ? "Enemies/CustomSprite/" : "Enemies/";
-			}
-
-			let drawChar = false;
-			if (((KDToggles.ShowServantNPCSprites && value.status == "Servant")
-				|| (KDToggles.ShowOtherNPCSprites && value.status != "Servant"))
-				&& (KDNPCChar.get(value.id) || KDCollectionGenThisFrame++ < KDCollectionGenPerFrame)) {
-				if (!KDNPCChar.get(value.id)) KDGenCharForCollection(value, enemyType);
-				let char = KDNPCChar.get(value.id);
-				// We refresh
-				if (value.refreshSprite
-					|| !kdpixisprites.get("xspr_" + value.id)) {
-					if (char)
-						KDRefreshCharacter.set(char, true);
-					if (!NPCTags.get(char)) {
-						NPCTags.set(char, new Map());
-					}
-					NPCTags.set(char, KinkyDungeonUpdateRestraints(char, value.id, 0));
-					KDEntityRestraintMetadata.set(value.id, KDUpdateRestraintMetadata(value.id, 0));
-					value.refreshSprite = false;
-				}
-				if (KDRefreshCharacter.get(char) || KDUpdateEnemySprites)
-					KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
-
-				kdpixisprites.set("xspr_" + value.id, {}); // Hijack pixisprites due to desired functionality
-				kdSpritesDrawn.set("xspr_" + value.id, true);
-
-				let size = Math.max(79, 79);
-				drawChar = true;
-				DrawCharacter(char,
-					XX + size/2.7,
-					YY + size*0.2,
-					size/1300, false, kdcanvas, undefined, 
-					CHIBIMOD, 101, false, undefined, 
-					value.name + "_coll," + value.id, CHIBIMODEND);
-
-			}
-
-			DrawButtonKDEx(value.name + "_guest," + value.id, (_data) => {
-				KDCollectionSelected = value.id;
-				KDResetCollectionUI();
-				return true;
-			}, true,
-			XX,
-			YY,
-			79, 79, "", KDBaseWhite, drawChar ? "" : (KinkyDungeonRootDirectory + dir + sp + ".png"),
-			"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}, KDCollectionEntryTooltip(value));
-
-			if (drawCallback) drawCallback(value, XX, YY);
-
-
-			if (KDNPCUnavailable(value.id, value.status) || value.escapegrace) {
-				let icon = KDGetPersistentNPC(value.id)?.captured
-					? ((KDCompareLocation(KDGetNPCLocation(value.id), KDGetCurrentLocation())
-					&& !KinkyDungeonFindID(value.id)) ? "InspectQuestion" : "Inspect")
-					: ((value.escaped ? "escaped"
-					: (value.escapegrace ? "escapegrace" :
-						(KDIsInPartyID(value.id) ? (!!KinkyDungeonFindID(value.id) ? "party" : "Inspect") : "jail")
-					)));
-				KDDraw(kdcanvas, kdpixisprites, value.name + "_jail," + value.id,
-					KinkyDungeonRootDirectory + "UI/" + icon + ".png",
-					XX + 42,
-					YY + 42,
-					36, 36, undefined, {
-						zIndex: 110
-					});
-			} else if (value.status && KDIsInPartyID(value.id)) {
-				KDDraw(kdcanvas, kdpixisprites, value.name + "_party," + value.id,
-					KinkyDungeonRootDirectory + "UI/Star.png",
-					XX + 48,
-					YY + 48,
-					28, 28, undefined, {
-						zIndex: 110
-					});
-			}
-			if (value.Facility) {
-				KDDraw(kdcanvas, kdpixisprites, value.name + "_fac," + value.id,
-					KinkyDungeonRootDirectory + "UI/Facility/" + value.Facility + ".png",
-					XX,
-					YY + 36,
-					36, 36, undefined, {
-						zIndex: 110
-					});
-			}
+			KDDrawCollectionEntry(kdcanvas, guests[i], XX, YY, "_guest,", true, drawCallback);
 		} else {
 			// Render empty square
 			FillRectKD(kdcanvas, kdpixisprites, "guestslot_" + i, {
@@ -1538,18 +1349,181 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 		column++;
 		if (column >= KDCollectionColumns) {
 			column = 0;
-			row++;
 			XX = x;
 			YY += KDCollectionSpacing;
 		} else XX += KDCollectionSpacing;
 	}
 
 	if (KDCollectionSelected && KDGameData.Collection[KDCollectionSelected]) {
-		KDDrawSelectedCollectionMember(KDGameData.Collection[KDCollectionSelected], x - 460, 150, selectedIndex, KDCollectionTab);
-	} else DrawTextFitKD(TextGet("KDCollectionSelect"), x - 240, 500, 500, KDBaseWhite, KDTextGray0, 24);
+		KDDrawSelectedCollectionMember(KDGameData.Collection[KDCollectionSelected], 
+			x - 460, 150, selectedIndex, KDCollectionTab);
+	} else DrawTextFitKD(TextGet("KDCollectionSelect"), 
+	x - 240, 500, 500, KDBaseWhite, KDTextGray0, 24);
 
 
 	KDDrawnCollectionInventory = rendered;
+}
+
+let KDCollectionListID = "collectionList";
+let KDCollectionListEntries: KDCollectionEntry[] = [];
+let KDCollectionListGuests: KDCollectionEntry[] = [];
+
+
+let KDCollectionListLastSignature = "";
+let KDCollectionListLastSorted: KDCollectionEntry[] = null;
+
+function KDCollectionListSignature(): string {
+	if (KDCollectionListLastSorted != KDGameData.CollectionSorted) {
+		KDCollectionListLastSorted = KDGameData.CollectionSorted;
+		// force rerender
+		KDCollectionListLastSignature = "";
+	}
+	let sig = KDCollectionTabStatus + "|" + (KDCollFilter || "") + "|" + (KDGameData.CollectionSorted?.length || 0);
+	for (let f of Object.values(KDCollectionFilters)) sig += "|" + (f.Current || 0);
+	return sig;
+}
+
+function KDPopulateCollectionList() {
+	let filters = [];
+	for (let f of Object.values(KDCollectionFilters)) {
+		if (f.Current && f.Options[f.Current]) {
+			filters.push(f.FilterCode[f.Options[f.Current]]);
+		}
+	}
+
+	let cf = KDCollFilter ? KDCollFilter.toLocaleUpperCase() : null;
+	let entries: KDCollectionEntry[] = [];
+	let guests: KDCollectionEntry[] = [];
+	for (let value of KDGameData.CollectionSorted) {
+		if (cf && !KDCollFilterString(value).includes(cf)) continue;
+		if (value.status == "Servant") {
+			guests.push(value);
+			continue;
+		}
+		if (value.status != KDCollectionTabStatus) continue;
+		if (filters.length > 0 && filters.some((filter) => {return !filter(value);})) continue;
+		entries.push(value);
+	}
+	KDCollectionListEntries = entries;
+	KDCollectionListGuests = guests;
+}
+
+function KDResetCollectionScroll() {
+	let list = KDScrollableListDataset[KDCollectionListID];
+	if (list) {
+		list.index = 0;
+		list.visual_index = 0;
+	}
+	ForceUpdateList(KDCollectionListID);
+}
+
+function KDCollectionScrollToSelected() {
+	let list = KDScrollableListDataset[KDCollectionListID];
+	if (!list) return;
+	let index = KDCollectionListEntries.findIndex((value) => {return value.id == KDCollectionSelected;});
+	if (index < 0) return;
+	let row = Math.floor(index / KDCollectionColumns);
+	if (row < list.index) list.index = row;
+	else if (row >= list.index + list.num_per_page) list.index = row - list.num_per_page + 1;
+	list.index = KDClamp(list.index, list.min, list.max);
+}
+
+function KDDrawCollectionEntry(container: PIXIContainer, value: KDCollectionEntry, XX: number, YY: number,
+	buttonSuffix: string, enabled: boolean,
+	drawCallback?: (value: KDCollectionEntry, X: number, Y: number) => void) {
+	if (value.status) KDGetPersistentNPC(value.id); // All guests and servants are persistent
+	let sp = (value.sprite || value.type);
+	let dir = "Enemies/";
+	let enemyType = value.Enemy || KinkyDungeonGetEnemyByName(value.type);
+
+	if (!value.status) {
+		// Prisoner
+		dir = value.customSprite ? "Enemies/CustomSpriteBound/" : "EnemiesBound/";
+		if (!value.customSprite) sp = enemyType.bound;
+	} else {
+		dir = value.customSprite ? "Enemies/CustomSprite/" : "Enemies/";
+	}
+
+	let drawChar = false;
+	if (((KDToggles.ShowServantNPCSprites && value.status == "Servant")
+		|| (KDToggles.ShowOtherNPCSprites && value.status != "Servant"))
+		&& (KDNPCChar.get(value.id) || KDCollectionGenThisFrame++ < KDCollectionGenPerFrame)) {
+		if (!KDNPCChar.get(value.id)) KDGenCharForCollection(value, enemyType);
+		let char = KDNPCChar.get(value.id);
+		// We refresh
+		if (value.refreshSprite
+			|| !kdpixisprites.get("xspr_" + value.id)) {
+			if (char)
+				KDRefreshCharacter.set(char, true);
+			if (!NPCTags.get(char)) {
+				NPCTags.set(char, new Map());
+			}
+			NPCTags.set(char, KinkyDungeonUpdateRestraints(char, value.id, 0));
+			KDEntityRestraintMetadata.set(value.id, KDUpdateRestraintMetadata(value.id, 0));
+			value.refreshSprite = false;
+		}
+		if (KDRefreshCharacter.get(char) || KDUpdateEnemySprites)
+			KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
+
+		kdpixisprites.set("xspr_" + value.id, {}); // Hijack pixisprites due to desired functionality
+		kdSpritesDrawn.set("xspr_" + value.id, true);
+
+		let size = 79;
+		drawChar = true;
+		DrawCharacter(char,
+			XX + size/2.9,
+			YY + size*0.2,
+			size/1300, false, container, undefined,
+			CHIBIMOD, 101, false, undefined,
+			value.name + (container == kdcanvas ? "_coll," : "_colllist,") + value.id, CHIBIMODEND);
+	}
+
+	DrawButtonKDExTo(container, value.name + buttonSuffix + value.id, (_data) => {
+		KDCollectionSelected = value.id;
+		KDResetCollectionUI();
+		return true;
+	}, enabled,
+	XX,
+	YY,
+	79, 79, "", KDBaseWhite, drawChar ? "" : (KinkyDungeonRootDirectory + dir + sp + ".png"),
+	"", !enabled, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}, 0,
+	enabled ? KDCollectionEntryTooltip(value) : undefined);
+
+	if (drawCallback) drawCallback(value, XX, YY);
+
+	if (KDNPCUnavailable(value.id, value.status) || value.escapegrace) {
+		let icon = KDGetPersistentNPC(value.id)?.captured
+			? ((KDCompareLocation(KDGetNPCLocation(value.id), KDGetCurrentLocation())
+			&& !KinkyDungeonFindID(value.id)) ? "InspectQuestion" : "Inspect")
+			: ((value.escaped ? "escaped"
+			: (value.escapegrace ? "escapegrace" :
+				(KDIsInPartyID(value.id) ? (!!KinkyDungeonFindID(value.id) ? "party" : "Inspect") : "jail")
+			)));
+		KDDraw(container, kdpixisprites, value.name + "_jail," + value.id,
+			KinkyDungeonRootDirectory + "UI/" + icon + ".png",
+			XX + 36,
+			YY + 36,
+			36, 36, undefined, {
+				zIndex: 110
+			});
+	} else if (value.status && KDIsInPartyID(value.id)) {
+		KDDraw(container, kdpixisprites, value.name + "_party," + value.id,
+			KinkyDungeonRootDirectory + "UI/Star.png",
+			XX + 48,
+			YY + 48,
+			28, 28, undefined, {
+				zIndex: 110
+			});
+	}
+	if (value.Facility) {
+		KDDraw(container, kdpixisprites, value.name + "_fac," + value.id,
+			KinkyDungeonRootDirectory + "UI/Facility/" + value.Facility + ".png",
+			XX,
+			YY + 36,
+			36, 36, undefined, {
+				zIndex: 110
+			});
+	}
 }
 
 /**

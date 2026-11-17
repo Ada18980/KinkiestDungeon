@@ -506,7 +506,7 @@ function KDResetEventData(Data?: any) {
 
 
 function KinkyDungeonInitialize(Level: number, Load?: any) {
-	KDCollectionIndex = 0;
+	KDResetCollectionScroll();
 	KDWorldMap = {};
 	KDMapData = KDDefaultMapData(0, 0);
 	KDCurrentWorldSlot = {x: 0, y: 0};
@@ -2480,13 +2480,7 @@ function KinkyDungeonGameKeyDown() {
 				if (index > -1 && KDGameData.CollectionSorted[index]) {
 					KDCollectionSelected = KDGameData.CollectionSorted[index].id;
 					KDResetCollectionUI();
-					index = KDGameData.CollectionSorted.findIndex((entry) => {return entry.id == (KDCollectionSelected || -1);});
-					while (index >= KDCollectionIndex + KDCollectionColumns*KDCollectionRows) {
-						KDCollectionIndex += KDCollectionColumns;
-					}
-					while (index < KDCollectionIndex) {
-						KDCollectionIndex -= KDCollectionColumns;
-					}
+					KDCollectionScrollToSelected();
 
 				}
 			}
