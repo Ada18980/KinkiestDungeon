@@ -1162,7 +1162,7 @@ function KDResetCollectionUI() {
 	KDRefreshCharacter.get(KDSpeakerNPC);
 }
 
-let KDCollectionGenPerFrame = 4;
+let KDCollectionGenPerFrame = 2;
 let KDCollectionGenThisFrame = 0;
 
 let KDCollFilterCache: Map<number, {key: string, str: string}> = new Map();
@@ -1305,17 +1305,35 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 		listRow: number,
 		visualIndex: number,
 		isSelected: boolean,
-		selectedIndex: number,
+		_listSelectedIndex: number,
 		list: KDScrollableListData) => {
-			if (visualIndex <= -1 || visualIndex >= list.num_per_page) return false;
-			let fullyVisible = isClickable && visualIndex > -0.5 && visualIndex < list.num_per_page - 0.5;
+			let offscreen = visualIndex <= -1 || visualIndex >= list.num_per_page;
+			let fullyVisible = !offscreen && isClickable && visualIndex > -0.5 && visualIndex < list.num_per_page - 0.5;
 			for (let i = 0; i < row.length; i++) {
 				let value = row[i];
+				let index = listRow * KDCollectionColumns + i;
+				let hk = selectedIndex > 0
+					? KDFindHotkeyInGrid(index, selectedIndex - 1, entries, KDCollectionColumns,
+						KinkyDungeonKey[0], KinkyDungeonKey[2], KinkyDungeonKey[1], KinkyDungeonKey[3])
+					: (index == 0 ? KinkyDungeonKey[3] : "");
 				let XX = list.x + i * KDCollectionSpacing;
 				let YY = list.y + KDCollectionSpacing * visualIndex;
 				if (fullyVisible) rendered.push(value);
+				
+				if (offscreen) {
+					if (hk) DrawButtonKDEx(value.name + "_collhk," + value.id, (_data) => {
+						KDCollectionSelectEntry(value.id, true);
+						return true;
+					}, true, PIXIWidth, PIXIHeight, 10, 10, "", KDBaseWhite, "", undefined, undefined, true,
+					undefined, undefined, undefined, 
+					{
+						invisible: true,
+						hotkeyPress: hk
+					});
+					continue;
+				} else
 				KDDrawCollectionEntry(container, value, XX, YY, "_coll,", fullyVisible,
-					fullyVisible ? drawCallback : undefined);
+					fullyVisible ? drawCallback : undefined, hk);
 			}
 			return false;
 		}, false, false, scrollbarSize);
@@ -1417,6 +1435,12 @@ function KDResetCollectionScroll() {
 	ForceUpdateList(KDCollectionListID);
 }
 
+function KDCollectionSelectEntry(id: number, scroll: boolean) {
+	KDCollectionSelected = id;
+	KDResetCollectionUI();
+	if (scroll) KDCollectionScrollToSelected();
+}
+
 function KDCollectionScrollToSelected() {
 	let list = KDScrollableListDataset[KDCollectionListID];
 	if (!list) return;
@@ -1430,7 +1454,7 @@ function KDCollectionScrollToSelected() {
 
 function KDDrawCollectionEntry(container: PIXIContainer, value: KDCollectionEntry, XX: number, YY: number,
 	buttonSuffix: string, enabled: boolean,
-	drawCallback?: (value: KDCollectionEntry, X: number, Y: number) => void) {
+	drawCallback?: (value: KDCollectionEntry, X: number, Y: number) => void, hotkey?: string) {
 	if (value.status) KDGetPersistentNPC(value.id); // All guests and servants are persistent
 	let sp = (value.sprite || value.type);
 	let dir = "Enemies/";
@@ -1478,15 +1502,18 @@ function KDDrawCollectionEntry(container: PIXIContainer, value: KDCollectionEntr
 			value.name + (container == kdcanvas ? "_coll," : "_colllist,") + value.id, CHIBIMODEND);
 	}
 
-	DrawButtonKDExTo(container, value.name + buttonSuffix + value.id, (_data) => {
-		KDCollectionSelected = value.id;
-		KDResetCollectionUI();
+	DrawButtonKDExTo(container, value.name + buttonSuffix + value.id, (data) => {
+		KDCollectionSelectEntry(value.id, data?.source == "hotkey");
 		return true;
 	}, enabled,
 	XX,
 	YY,
 	79, 79, "", KDBaseWhite, drawChar ? "" : (KinkyDungeonRootDirectory + dir + sp + ".png"),
-	"", !enabled, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}, 0,
+	"", !enabled, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {
+		centered: true,
+		hotkey: hotkey ? KDHotkeyToText(hotkey) : undefined,
+		hotkeyPress: hotkey || undefined,
+	}, 0,
 	enabled ? KDCollectionEntryTooltip(value) : undefined);
 
 	if (drawCallback) drawCallback(value, XX, YY);
