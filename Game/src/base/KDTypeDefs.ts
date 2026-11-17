@@ -876,6 +876,7 @@ interface enemy extends KDHasTags {
 
 	nameList?: string,
 	noName?: boolean,
+	hideName?: boolean,
 
 	
 	/** Pronoun list */

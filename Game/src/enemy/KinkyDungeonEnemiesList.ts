@@ -6316,7 +6316,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 
 	// Bosses
-	{name: "Fuuka1", recruitType: "FuukaRecruit", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "Fuuka", bound: "Fuuka", faction: "Boss", clusterWith: "zombie", tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "fuuka", "zombie", "ranged", "mikoRestraints", "stageBoss", "boss", "nocapture", "unflinching"]),
+	{name: "Fuuka1", noName: true, recruitType: "FuukaRecruit", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "Fuuka", bound: "Fuuka", faction: "Boss", clusterWith: "zombie", tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "fuuka", "zombie", "ranged", "mikoRestraints", "stageBoss", "boss", "nocapture", "unflinching"]),
 		armor: 0, followRange: 3, AI: "guard",
 		
 		
@@ -6353,7 +6353,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		visionRadius: 8, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "White",
 		 floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "bossstage", dialogue:"FuukaStage2", click: true}]},
-	{name: "Fuuka2", recruitType: "FuukaRecruit", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "Fuuka", bound: "Fuuka", faction: "Boss", clusterWith: "zombie",
+	{name: "Fuuka2", hideName: true, recruitType: "FuukaRecruit", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "Fuuka", bound: "Fuuka", faction: "Boss", clusterWith: "zombie",
 		tags: KDMapInit(["nosub", "leashing", "fuuka",
 			"bulwark", "zombie", "ranged", "mikoRestraints", "stageBoss", "boss", "unstoppable"]),
 		armor: 0, followRange: 1, AI: "hunt",
@@ -6563,7 +6563,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		 shrines: [], floors:KDMapInit([]),
 		dropTable: [{name: "PotionMana", weight: 100, amount: 3}]},
 
-	{name: "TheWarden1", recruitType: "TheWardenRecruit", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+	{name: "TheWarden1", noName: true, recruitType: "TheWardenRecruit", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
 		color: "#ffaa44",
 		tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "warden", "human", "magicresist", "soulweakness", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss"]),
 		armor: 1, followRange: 3, AI: "guard",
@@ -6590,7 +6590,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackLock: "Purple",
 		 floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "bossstage", dialogue:"TheWardenStage2", click: true}]},
 
-	{name: "TheWarden2", recruitType: "TheWardenRecruit", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+	{name: "TheWarden2", hideName: true, recruitType: "TheWardenRecruit", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
 		color: "#ffaa44",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "warden", "human", "soulweakness", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "unflinching"]),
 		armor: 1, followRange: 3, AI: "guard",
@@ -6638,7 +6638,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackLock: "HiSec",
 		 floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}]},
 
-	{name: "DollmakerBoss1", recruitType: "DollmakerRecruit", outfit: "DollSuit", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
+	{name: "DollmakerBoss1", noName: true, recruitType: "DollmakerRecruit", outfit: "DollSuit", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		applyFaction: "Dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged", "nocapture", "slimewalk",
 			"bulwark",
@@ -6670,7 +6670,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		ondeath: [{type: "bossstage", dialogue:"DollmakerStage2", click: true}],
 	},
 
-	{name: "DollmakerBoss2", recruitType: "DollmakerRecruit", outfit: "DollSuit", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
+	{name: "DollmakerBoss2", noName: true, recruitType: "DollmakerRecruit", outfit: "DollSuit", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		applyFaction: "Dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged", "nocapture", "slimewalk",
 			"bulwark",
@@ -6702,7 +6702,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		 floors:KDMapInit([]),
 		ondeath: [{type: "bossstage", dialogue:"DollmakerStage3", click: true}]},
 
-	{name: "DollmakerBoss3", recruitType: "DollmakerRecruit", nameList: "Dollmaker", outfit: "Dollmaker", style: "Dollmaker", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
+	{name: "DollmakerBoss3", hideName: true, recruitType: "DollmakerRecruit", nameList: "Dollmaker", outfit: "Dollmaker", style: "Dollmaker", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		applyFaction: "Dollsmith",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "dollsmith", "ranged", "slimewalk",
 			"bulwark",

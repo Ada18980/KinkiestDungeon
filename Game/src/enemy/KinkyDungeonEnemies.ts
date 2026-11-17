@@ -2632,7 +2632,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 	let analyze = KDGameData.Collection[enemy.id + ""] || KinkyDungeonFlags.get("AdvTooltips") || KDHasSpell("ApprenticeKnowledge");
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
-	if (KDEnemyName(enemy) != TextGet("Name" + enemy.Enemy.name))
+	if (!enemy.Enemy.hideName && KDEnemyName(enemy) != TextGet("Name" + enemy.Enemy.name))
 		TooltipList.push({
 			str: KDEnemyName(enemy),
 			fg: KDEnemyNameColor(enemy),
@@ -3226,7 +3226,7 @@ let KDTOOLTIPSPACINGSMALL = 2;
 function KDDrawEnemyDialogue(enemy: entity, offset: number): number {
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
-	if (KDEnemyName(enemy) != TextGet("Name" + enemy.Enemy.name))
+	if (!enemy.Enemy.hideName && KDEnemyName(enemy) != TextGet("Name" + enemy.Enemy.name))
 		TooltipList.push({
 			str: KDEnemyName(enemy),
 			fg: KDEnemyNameColor(enemy),
