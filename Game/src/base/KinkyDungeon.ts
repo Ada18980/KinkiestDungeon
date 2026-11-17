@@ -3893,6 +3893,11 @@ interface KDButtonParamData {
 	onHover?: (button: KDButtonParamData) => void,
   Hover?: HoverObject
 }
+function KDHoverBlockedByHigher(name: string, priority: number = 100): boolean {
+	let b = KDLastHoverButton;
+	return !!b && b.name != name && (b.priority || 0) > priority
+		&& MouseIn(b.Left, b.Top, b.Width, b.Height);
+}
 
 /** For most things use LastButtonsCache as buttons might not have been rendered yet this frame. Will lag a frame behind but eh. */
 let KDButtonsCache: Record<string, KDButtonParamData> = {
@@ -3952,6 +3957,7 @@ function DrawButtonKD (
         Hover
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover && KDHoverBlockedByHigher(name, params.priority)) {Disabled = true; hover = false;}
 	if (hover) {
 		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
             KDCurrentHoverButton = params;
@@ -4032,6 +4038,7 @@ function DrawHoldButtonKDExTo (
 		nonplayable: options?.nonplayable,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover && KDHoverBlockedByHigher(name, params.priority)) {Disabled = true; hover = false;}
 	if (hover) {
 		
 		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) KDCurrentHoverButton = params;
@@ -4112,6 +4119,7 @@ function DrawButtonKDEx (
     Hover,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !Disabled);
+	if (hover && KDHoverBlockedByHigher(name, params.priority)) {Disabled = true; hover = false;}
 	if (hover) {
 		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
             KDCurrentHoverButton = params;
@@ -4287,6 +4295,7 @@ function DrawButtonKDExContext (
 		nonplayable: options?.nonplayable,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover && KDHoverBlockedByHigher(name, params.priority)) {Disabled = true; hover = false;}
 	if (hover) {
 		
 		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) KDCurrentHoverButton = params;
@@ -4370,6 +4379,7 @@ function DrawButtonKDExScroll (
     Hover,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover && KDHoverBlockedByHigher(name, params.priority)) {Disabled = true; hover = false;}
 	if (hover) {
 		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
             KDCurrentHoverButton = params;
@@ -4456,6 +4466,7 @@ function DrawButtonKDExScrollTo (
     Hover,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover && KDHoverBlockedByHigher(name, params.priority)) {Disabled = true; hover = false;}
 	if (hover) {
 		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
             KDCurrentHoverButton = params;
@@ -4535,6 +4546,7 @@ function DrawButtonKDExTo (
 		Hover,
 	};
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover && KDHoverBlockedByHigher(name, params.priority)) {Disabled = true; hover = false;}
 	if (hover) {
 		
 		if (!KDCurrentHoverButton || ((params.priority || 0) > (KDCurrentHoverButton.priority || 0))) {
