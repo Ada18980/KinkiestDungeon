@@ -6043,6 +6043,15 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		: false);
 
 
+	if (KDAllyHasOrder(enemy, "Passive") && player != KDPlayer()) {
+		AIData.wantsToAttack = false;
+		AIData.wantsToCast = false;
+		AIData.wantsToTease = false;
+		AIData.wantsToLeash = false;
+		AIData.moveTowardPlayer = false;
+	}
+
+
 	AIData.sneakMult = 0.05;
 
 	if (AIData.canSeePlayer) AIData.sneakMult += 0.15;
@@ -6232,7 +6241,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		enemy.gyy = enemy.gy;
 	}
 
-	if (KDEnemyHasFlag(enemy, "runAway")) {
+	if (KDEnemyHasFlag(enemy, "runAway") || KDAllyHasOrder(enemy, "Avoidant")) {
 		AIData.followRange = 5.9;
 		if (AIData.playerDist > 1.5 || KDRandom() < 0.75)
 			AIData.kite = true;
@@ -6320,8 +6329,12 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					if (KDHostile(enemy)) {
 						KinkyDungeonSetEnemyFlag(enemy, "StayHere", 0);
 						KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
+						KinkyDungeonSetEnemyFlag(enemy, "Passive", 0);
+						KinkyDungeonSetEnemyFlag(enemy, "Avoidant", 0);
 					} else if (!KDAllied(enemy)) {
 						KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
+						KinkyDungeonSetEnemyFlag(enemy, "Passive", 0);
+						KinkyDungeonSetEnemyFlag(enemy, "Avoidant", 0);
 					}
 				}
 			}
@@ -6377,8 +6390,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				// Our movement isnt being controlled by a script
 				&& !KDEnemyHasFlag(enemy, "overrideMove")
 				// We are willing to move
-				&& (!KDAllyHasOrder(enemy, "Defensive")
-					|| !KDAllyHasOrder(enemy, "StayHere"))
+				&& (!KDAllyHasOrder(enemy, "Passive")
+					|| player == KDPlayer())
 				// We want to move
 				&& AIType.chase(enemy, player, AIData)
 				// We are not ignoring the target
@@ -8843,7 +8856,9 @@ function KDIgnoresAllyOrders(enemy: entity): boolean {
 }
 
 function KDAllyHasOrder(enemy: entity, flag: string): boolean {
-	return KDEnemyHasFlag(enemy, flag) && !KDIgnoresAllyOrders(enemy);
+	return (KDAllied(enemy) || KDEnemyHasFlag(enemy, "FollowMe"))
+		&& KDEnemyHasFlag(enemy, flag)
+		&& !KDIgnoresAllyOrders(enemy);
 }
 
 /**
@@ -12319,7 +12334,8 @@ interface KDOrderAnchor {
 	x: number,
 	y: number,
 	radius: number }
-let KDDefensiveRadius = 3.5; // will target enemies this close to the player
+let KDDefensiveRadius = 2.5; // will target enemies this close to the player
+let KDDefensiveAvoidant = 4.5;
 
 function KDGetAllyOrderAnchor(enemy: entity, player: entity): KDOrderAnchor | null {
 	if (KDHostile(enemy) || KDIgnoresAllyOrders(enemy)) return null;
@@ -12327,6 +12343,7 @@ function KDGetAllyOrderAnchor(enemy: entity, player: entity): KDOrderAnchor | nu
 		&& enemy.orderX != undefined)
 		return {x: enemy.orderX, y: enemy.orderY, radius: 0.5};
 	if (KDEnemyHasFlag(enemy, "Defensive") && player?.player)
-		return {x: player.x, y: player.y, radius: KDDefensiveRadius}; // e.g. 2
+		return {x: player.x, y: player.y,
+		radius: KDAllyHasOrder(enemy, "Avoidant") ? KDDefensiveAvoidant : KDDefensiveRadius}; // e.g. 2
 	return null;
 }

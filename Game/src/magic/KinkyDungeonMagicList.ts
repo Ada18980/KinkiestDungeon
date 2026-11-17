@@ -214,6 +214,8 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 				"AllyDisperse",
 				"AllyAggressive",
 				"AllyDefensive",
+				"AllyAvoidant",
+				"AllyPassive",
 				"AllyDeselectAll",
 				"AllyHold",
 				"AllyCancelHold",
@@ -246,6 +248,18 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
 			events: [
 				{type: "AllyDefensive", trigger: "toggleSpell", },
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+		{name: "AllyAvoidant", tags: ["utility", "defense"], prerequisite: "AllyCommand", quick: true, school: "Any",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "AllyAvoidant", trigger: "toggleSpell", },
+			],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+		{name: "AllyPassive", tags: ["utility", "defense"], prerequisite: "AllyCommand", quick: true, school: "Any",
+			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			events: [
+				{type: "AllyPassive", trigger: "toggleSpell", },
 			],
 			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 
@@ -3982,7 +3996,9 @@ KDDefineSpellPage("Command", [
 	["AllyToggle", "AllyAttention", "AllyDeselect", "AllyDeselectAll"],
 	["AllyMove"],
 	["AllyOnMe", "AllyDisperse", "AllyHold", "AllyCancelHold"],
-	["AllyDefensive", "AllyAggressive"],
+	["AllyAggressive", "AllyDefensive", 
+				"AllyAvoidant",
+				"AllyPassive",],
 ]);
 
 

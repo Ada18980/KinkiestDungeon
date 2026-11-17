@@ -13724,6 +13724,11 @@ rGenericAllyAggressive,"(The SPEAKER will now pursue enemies)"
 dGenericAllyDefensive,"(Switch to Defensive)"
 rGenericAllyDefensive,"(The SPEAKER will stay close to you or its assigned position)"
 
+dGenericAllyAvoidant,"(Switch to Avoidant)"
+rGenericAllyAvoidant,"(The SPEAKER will move away from threats)"
+dGenericAllyPassive,"(Switch to Passive)"
+rGenericAllyPassive,"(The SPEAKER will ignore everything except you)"
+
 dGenericAllyFlirt,"(Flirting)"
 rGenericAllyFlirt,"(The SPEAKER smiles)|This will be fun!"
 rGenericAllyFlirtDom,"(The SPEAKER grins)|I will make sure you enjoy yourself~"
@@ -30088,6 +30093,11 @@ KinkyDungeonSpellAllyDefensive,Defensive Order
 KinkyDungeonSpellDescriptionAllyDefensive,All selected units switch to Defensive mode
 KinkyDungeonSpellAllyAggressive,Aggressive Order
 KinkyDungeonSpellDescriptionAllyAggressive,All selected units switch to Aggressive mode
+
+KinkyDungeonSpellAllyAvoidant,Avoidant Order
+KinkyDungeonSpellDescriptionAllyAvoidant,All selected units switch to Avoidant mode
+KinkyDungeonSpellAllyPassive,Passive Order
+KinkyDungeonSpellDescriptionAllyPassive,All selected units switch to Passive mode
 
 KinkyDungeonSpellsPageCommand,"Command"
 KinkyDungeonSpellsPageClass,"Unique"

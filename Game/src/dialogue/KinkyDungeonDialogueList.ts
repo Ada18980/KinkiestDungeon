@@ -4897,6 +4897,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								e.faction = "Player";
 								KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
+								KinkyDungeonSetEnemyFlag(e, "Passive", 0);
+								KinkyDungeonSetEnemyFlag(e, "Avoidant", 0);
 								
 								KinkyDungeonChangeRep("Prisoner", 0.5);
 								if (!KDEntityHasFlag(e, "rescuedOnce")) {
@@ -4966,6 +4968,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									e.faction = "Player";
 									KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 									KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
+								KinkyDungeonSetEnemyFlag(e, "Passive", 0);
+								KinkyDungeonSetEnemyFlag(e, "Avoidant", 0);
 									if (!KDEntityHasFlag(e, "rescuedOnce")) {
 										if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
 											if (KDFactionRelation("Player", faction) < 0.25)
@@ -5039,6 +5043,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								e.faction = "Player";
 								KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
+								KinkyDungeonSetEnemyFlag(e, "Passive", 0);
+								KinkyDungeonSetEnemyFlag(e, "Avoidant", 0);
 								if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
 									if (KDFactionRelation("Player", faction) < 0.25)
 										KinkyDungeonChangeFactionRep(faction, 0.03);
@@ -5092,6 +5098,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								e.faction = "Player";
 								KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
+								KinkyDungeonSetEnemyFlag(e, "Passive", 0);
+								KinkyDungeonSetEnemyFlag(e, "Avoidant", 0);
 								if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
 									if (KDFactionRelation("Player", faction) < 0.25)
 										KinkyDungeonChangeFactionRep(faction, 0.03);

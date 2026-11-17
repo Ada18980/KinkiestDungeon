@@ -7957,6 +7957,54 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 							i++;
 						}
 						KinkyDungeonSetEnemyFlag(en, "Defensive", -1);
+						KinkyDungeonSetEnemyFlag(en, "Passive", 0);
+						KinkyDungeonSetEnemyFlag(en, "Avoidant", 0);
+					}
+			}
+		},
+		"AllyAvoidant": (_e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let list = KDMapData.Entities.filter((en) => {
+					return KDAllied(en);
+				});
+				let i = 0;
+				for (let en of list)
+					if (en && en.buffs?.AllySelect) {
+						if (!KDEntityHasFlag(en, "Avoidant") && (KDRandom() < 0.5 || i == 0)) {
+							KinkyDungeonSendDialogue(en,
+								TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(en) ? KDGetEnemyPlayLine(en) : "") + "CommandDefend", KDGetGenericDialogueParams(KDPlayer(), en))
+									.replace("EnemyName", TextGet("Name" + en.Enemy.name)), KDGetColor(en),
+								7, 7, false, true);
+							i++;
+						}
+						KinkyDungeonSetEnemyFlag(en, "Defensive", 0);
+						KinkyDungeonSetEnemyFlag(en, "Passive", 0);
+						KinkyDungeonSetEnemyFlag(en, "Avoidant", -1);
+					}
+			}
+		},
+		"AllyPassive": (_e, spell, data) => {
+			if (data.spell?.name == spell?.name) {
+				KinkyDungeonSpellChoicesToggle[data.index] = false;
+
+				let list = KDMapData.Entities.filter((en) => {
+					return KDAllied(en);
+				});
+				let i = 0;
+				for (let en of list)
+					if (en && en.buffs?.AllySelect) {
+						if (!KDEntityHasFlag(en, "Passive") && (KDRandom() < 0.5 || i == 0)) {
+							KinkyDungeonSendDialogue(en,
+								TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(en) ? KDGetEnemyPlayLine(en) : "") + "CommandDefend", KDGetGenericDialogueParams(KDPlayer(), en))
+									.replace("EnemyName", TextGet("Name" + en.Enemy.name)), KDGetColor(en),
+								7, 7, false, true);
+							i++;
+						}
+						KinkyDungeonSetEnemyFlag(en, "Defensive", 0);
+						KinkyDungeonSetEnemyFlag(en, "Passive", -1);
+						KinkyDungeonSetEnemyFlag(en, "Avoidant", 0);
 					}
 			}
 		},

@@ -1337,29 +1337,37 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			},
 		}
 	};
-	dialog.options.StopFollowingMe = {playertext: name + "StopFollowingMe", response: "Default",
+	
+	dialog.options.Aggressive = {playertext: name + "Aggressive", response: "Default",
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return KDAllied(enemy) && !KDEnemyHasFlag(enemy, "NoFollow");
+				return !KDHostile(enemy)
+				&& !KDEnemyHasFlag(enemy, "Defensive")
+				&& !KDEnemyHasFlag(enemy, "Avoidant")
+				&& KDEnemyHasFlag(enemy, "Passive")
 			}
 			return false;
 		},
 		clickFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 9999);
+				KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
+				KinkyDungeonSetEnemyFlag(enemy, "Passive", 0);
+				KinkyDungeonSetEnemyFlag(enemy, "Avoidant", 0);
 			}
 			return false;
 		},
 		leadsToStage: "", dontTouchText: true,
 	};
-	dialog.options.FollowMe = {playertext: name + "FollowMe", response: "Default",
+	dialog.options.Defensive = {playertext: name + "Defensive", response: "Default",
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return KDAllied(enemy)
-				&& (KDEnemyHasFlag(enemy, "NoFollow") || !KDEnemyDoesFollow(enemy))
+				return !KDHostile(enemy)
+				&& !KDEnemyHasFlag(enemy, "Defensive")
+				&& !KDEnemyHasFlag(enemy, "Avoidant")
+				&& !KDEnemyHasFlag(enemy, "Passive")
 				&& !KDEnemyHasFlag(enemy, "Shop");
 			}
 			return false;
@@ -1367,15 +1375,55 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 		clickFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				if (!KDEnemyHasFlag(enemy, "NoStay")
-					&& (KDRandom() < (70 - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 50 : 0))/100 * 0.35 * KDEnemyHelpfulness(enemy) || enemy.Enemy.allied)
-				) {
-					KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "FollowMe", -1);
-				} else {
-					KDGameData.CurrentDialogMsg = name + "StayHere_Fail";
-					KinkyDungeonSetEnemyFlag(enemy, "NoStay", 100);
-				}
+				KinkyDungeonSetEnemyFlag(enemy, "Defensive", -1);
+				KinkyDungeonSetEnemyFlag(enemy, "Passive", 0);
+				KinkyDungeonSetEnemyFlag(enemy, "Avoidant", 0);
+			}
+			return false;
+		},
+		leadsToStage: "", dontTouchText: true,
+	};
+	dialog.options.Avoidant = {playertext: name + "Avoidant", response: "Default",
+		prerequisiteFunction: (_gagged, _player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				return !KDHostile(enemy)
+				&& KDEnemyHasFlag(enemy, "Defensive")
+				&& !KDEnemyHasFlag(enemy, "Avoidant")
+				&& !KDEnemyHasFlag(enemy, "Passive")
+				&& !KDEnemyHasFlag(enemy, "Shop");
+			}
+			return false;
+		},
+		clickFunction: (_gagged, _player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				KinkyDungeonSetEnemyFlag(enemy, "Passive", 0);
+				KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
+				KinkyDungeonSetEnemyFlag(enemy, "Avoidant", -1);
+			}
+			return false;
+		},
+		leadsToStage: "", dontTouchText: true,
+	};
+	dialog.options.Passive = {playertext: name + "Passive", response: "Default",
+		prerequisiteFunction: (_gagged, _player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				return !KDHostile(enemy)
+				&& !KDEnemyHasFlag(enemy, "Defensive")
+				&& KDEnemyHasFlag(enemy, "Avoidant")
+				&& !KDEnemyHasFlag(enemy, "Passive")
+				&& !KDEnemyHasFlag(enemy, "Shop");
+			}
+			return false;
+		},
+		clickFunction: (_gagged, _player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				KinkyDungeonSetEnemyFlag(enemy, "Passive", -1);
+				KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
+				KinkyDungeonSetEnemyFlag(enemy, "Avoidant", 0);
 			}
 			return false;
 		},
@@ -1424,35 +1472,47 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 		},
 		leadsToStage: "", dontTouchText: true,
 	};
-	dialog.options.Aggressive = {playertext: name + "Aggressive", response: "Default",
+	
+	dialog.options.FollowMe = {playertext: name + "FollowMe", response: "Default",
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return !KDHostile(enemy) && KDEnemyHasFlag(enemy, "Defensive");
+				return KDAllied(enemy)
+				&& (KDEnemyHasFlag(enemy, "NoFollow") || !KDEnemyDoesFollow(enemy))
+				&& !KDEnemyHasFlag(enemy, "Shop");
 			}
 			return false;
 		},
 		clickFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
+				if (!KDEnemyHasFlag(enemy, "NoStay")
+					&& (KDRandom() < (70 - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 50 : 0))/100 * 0.35 * KDEnemyHelpfulness(enemy) || enemy.Enemy.allied)
+				) {
+					KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
+					KinkyDungeonSetEnemyFlag(enemy, "FollowMe", -1);
+				} else {
+					KDGameData.CurrentDialogMsg = name + "StayHere_Fail";
+					KinkyDungeonSetEnemyFlag(enemy, "NoStay", 100);
+				}
 			}
 			return false;
 		},
 		leadsToStage: "", dontTouchText: true,
 	};
-	dialog.options.Defensive = {playertext: name + "Defensive", response: "Default",
+	
+	dialog.options.StopFollowingMe = {playertext: name + "StopFollowingMe", response: "Default",
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return !KDHostile(enemy) && !KDEnemyHasFlag(enemy, "Defensive") && !KDEnemyHasFlag(enemy, "Shop");
+				return KDAllied(enemy) && !KDEnemyHasFlag(enemy, "NoFollow");
 			}
 			return false;
 		},
 		clickFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				KinkyDungeonSetEnemyFlag(enemy, "Defensive", -1);
+				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 9999);
 			}
 			return false;
 		},
@@ -1495,7 +1555,9 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 				leadsToStage: "",
 			},
 		}
+		
 	};
+	
 	dialog.options.HelpMeCommandWord = {playertext: name + "HelpMeCommandWord", response: "Default",
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);

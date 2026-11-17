@@ -1293,12 +1293,17 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			enemy.gy = data.player.y;
 			if (KDEnemyHasFlag(data.enemy, "NoFollow")) {
 				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
-				KinkyDungeonSetEnemyFlag(enemy, "Defensive", -1);
+				if (!KDEnemyHasFlag(data.enemy, "Passive")
+					&& !KDEnemyHasFlag(data.enemy, "Avoidant"))
+					KinkyDungeonSetEnemyFlag(enemy, "Defensive", -1);
 				KinkyDungeonSendTextMessage(10, TextGet("KDOrderOnMe").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), KDBaseWhite, 1);
 			} else {
 				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
 				KinkyDungeonSetEnemyFlag(enemy, "FollowMe", 0);
-				KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
+				
+				if (!KDEnemyHasFlag(data.enemy, "Passive")
+					&& !KDEnemyHasFlag(data.enemy, "Avoidant"))
+					KinkyDungeonSetEnemyFlag(enemy, "Defensive", 0);
 				KinkyDungeonSendTextMessage(10, TextGet("KDOrderDisperse").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), KDBaseWhite, 1);
 			}
 

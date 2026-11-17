@@ -79,8 +79,12 @@ Must do
 5.5.13
 - Reduced VRAM usage by a lot (50% for desktop, 75% for mobile)
 - Can now push barrels, etc
+- Fixed hold still/defensive not really working
+- New 'avoidant' stance for allies
+- Made enemies escape properly in the summit instead of trying to leash you
 - Can now dispel puppet strings by walking into them
 - Shopkeeper now uses They/Them pronouns
+
 
 5.5.12
 - Fixed some leashing behavior issues
