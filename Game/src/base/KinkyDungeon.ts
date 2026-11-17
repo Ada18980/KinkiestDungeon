@@ -1559,14 +1559,17 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
         YY = YY + 20
         if (object.ItemMods) {
             object.ItemMods.forEach((mod) => {
+				let bg = mod.colorBG
+				let col = DrawHexToRGB(bg);
+				bg = `rgba(${col.r / 2}, ${col.g / 2}, ${col.b / 2}, 0.5)`;
                 let height = RetDrawTextFitKDgetHeight(mod.str, tooltipX + pad, 
 					tooltipY + YY, TooltipWidth - 2 * pad, mod.colorFG, 
-					mod.colorBG, (mod.TextSize ? mod.TextSize : 20), 
+					bg, (mod.TextSize ? mod.TextSize : 20), 
 					"left", 701, undefined, undefined, 
 					undefined, undefined, object.wrap, "top");
                 YY += (height + 10);
 				TooltipHeight += height;
-				TooltipHeight -= 10;
+				TooltipHeight -= 20;
             })
         }
         FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + object.name, {
@@ -1577,7 +1580,7 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
             Color: object.bg || KDBaseBlack,
             LineWidth: 1,
             zIndex: 700,
-            alpha: object.alpha || 0.8,
+            alpha: object.alpha || 0.92,
         });
         DrawRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltipb_" + object.name, {
             Left: tooltipX,
@@ -1587,7 +1590,7 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
             Color: object.border || KDBorderColor,
             LineWidth: 1,
             zIndex: 700,
-            alpha: object.alpha || 0.8,
+            alpha: object.alpha || 0.92,
         });
     },
 	"Tooltip": (hover, object) => {

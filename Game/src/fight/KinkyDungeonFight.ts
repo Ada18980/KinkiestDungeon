@@ -726,7 +726,7 @@ function KinkyDungeonEvasion(Enemy: entity, IsSpell?: boolean, IsMagic?: boolean
 		return true;
 	}
 
-	if (Enemy) {
+	if (Enemy && hitChance > 0) {
 		// Increment the pity timer
 		KinkyDungeonEvasionPityModifier += KinkyDungeonEvasionPityModifierIncrementPercentage * hitChance;
 	}

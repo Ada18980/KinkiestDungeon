@@ -1249,7 +1249,8 @@ function KDInventoryItemHover(item: item): InventoryHoverObject {
         name: nameText,
         TitleTextColor: KDBaseWhite,
         TitleTextColorBack: KDBaseBlack,
-        ItemMods: mods
+        ItemMods: mods,
+		bg: KDTooltipColor,
     }
     return hoverobject
 }
