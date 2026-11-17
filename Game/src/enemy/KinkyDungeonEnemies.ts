@@ -11997,7 +11997,7 @@ function KDIsArtificial(enemy: entity) {
 	}
 	return enemy.Enemy?.nonHumanoid || !enemy.Enemy?.bound
 		|| (enemy.Enemy?.tags &&
-			KDArtificialTags.some((tag) => {return enemy.Enemy.tags;}));
+			KDArtificialTags.some((tag) => {return !!enemy.Enemy.tags[tag];}));
 }
 let KDArtificialTags = [
 	"artificial",

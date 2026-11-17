@@ -495,7 +495,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		KDClearPaletteFilters()
 		KDCanRevertFlag = value.customOutfit != undefined;
 		ForceRefreshModels(KDSpeakerNPC);
-		
+
 		KDOutfitOriginalStore[KDNPCOutfit] = "";
 		CharacterReleaseTotal(KDSpeakerNPC);
 		KDWardrobeCallback = () => {
@@ -1866,6 +1866,10 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 								KDFreeNPC(en);
 								//en.ceasefire = 9999;
 								en.playWithPlayer = 0;
+								
+								delete en.hostile;
+								KDDefectIfPossible(en);
+								
 								if (KDNPCChar.get(en.id))
 									KDRefreshCharacter.set(KDNPCChar.get(en.id), true);
 								KDUpdatePersistentNPC(en.id, true);
@@ -2070,8 +2074,11 @@ function KDPromote(value: KDCollectionEntry) {
 	KDApplyRecruitType(value);
 	if (KDIsNPCPersistent(value.id)) {
 		KDGetPersistentNPC(value.id).collect = true;
-		if (KDGetPersistentNPC(value.id).entity)
+		KDRefreshPersistentNPC(value.id);
+		if (KDGetPersistentNPC(value.id).entity) {
 			delete KDGetPersistentNPC(value.id).entity.hostile;
+			KDDefectIfPossible(KDGetPersistentNPC(value.id).entity);
+		}
 		KDUpdatePersistentNPC(value.id);
 	}
 }
