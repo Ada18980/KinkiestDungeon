@@ -1456,8 +1456,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					}
 
 					let Char = KinkyDungeonPlayer;
-					if (Char == KinkyDungeonPlayer)
-						KinkyDungeonDressSet();
+					KDUpdateCharacterDressProtected(Char);
 					KDRefreshCharacter.set(Char, true);
 					KinkyDungeonDressPlayer(Char);
 					
@@ -7200,8 +7199,7 @@ function KDMakeIntoDoll(player: entity) {
 				}
 
 				let Char = KinkyDungeonPlayer;
-				if (Char == KinkyDungeonPlayer)
-					KinkyDungeonDressSet();
+				KDUpdateCharacterDressProtected(Char);
 				KDRefreshCharacter.set(Char, true);
 				KinkyDungeonDressPlayer(Char);
 				
@@ -7254,8 +7252,7 @@ function KDMakeIntoHuman
 				}
 
 				let Char = KinkyDungeonPlayer;
-				if (Char == KinkyDungeonPlayer)
-					KinkyDungeonDressSet();
+				KDUpdateCharacterDressProtected(Char);
 				KDRefreshCharacter.set(Char, true);
 				KinkyDungeonDressPlayer(Char);
 				

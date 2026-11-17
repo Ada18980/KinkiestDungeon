@@ -1566,7 +1566,7 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
 					undefined, undefined, object.wrap, "top");
                 YY += (height + 10);
 				TooltipHeight += height;
-				TooltipHeight -= 20 + 10;
+				TooltipHeight -= 10;
             })
         }
         FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + object.name, {

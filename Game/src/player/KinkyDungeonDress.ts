@@ -96,6 +96,38 @@ function KinkyDungeonDressSet(C?: Character) {
 	KinkyDungeonNewDress = false;
 }
 
+function KDUpdateCharacterDressProtected(C?: Character) {
+	if (!C) C = KinkyDungeonPlayer;
+
+	let old = KDGetDressList().Default;
+	let newList: KinkyDungeonDress = []; 
+
+	for (let A = 0; A < old.length; A++) {
+		let item = old[A];
+		let model = ModelDefs[item.Item];
+		if (model && !KDModelIsProtected(model) && !model.Restraint) {
+			newList.push(item);
+		}
+	}
+	
+	for (let A = 0; A < C.Appearance.length; A++) {
+		if (C.Appearance[A].Model && !KDModelIsProtected(C.Appearance[A].Model)) continue;
+		if (C.Appearance[A].Model?.Restraint) continue;
+		newList.push({
+			Item: C.Appearance[A].Model?.Name || C.Appearance[A].Asset?.Name,
+			Group: C.Appearance[A].Model?.Group,
+			Filters: C.Appearance[A].Model?.Filters,
+			Properties: C.Appearance[A].Model?.Properties,
+			factionFilters: C.Appearance[A].Model?.factionFilters,
+			Property: C.Appearance[A].Property,
+			Color: (C.Appearance[A].Color) ? C.Appearance[A].Color : (C.Appearance[A].Model?.DefaultColor ? C.Appearance[A].Model?.DefaultColor : "Default"),
+			Lost: false,
+			Skirt: C.Appearance[A].Model?.Group == "Skirt" || C.Appearance[A].Model?.Categories?.includes("Skirts"),
+		},);
+	}
+	KDGetDressList().Default = newList;
+}
+
 let KDCharacterDress = new Map();
 
 function KinkyDungeonSetDress(Dress: string, Outfit?: string, Character?: Character, NoRestraints?: boolean) {

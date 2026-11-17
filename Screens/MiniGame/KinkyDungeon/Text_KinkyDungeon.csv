@@ -34656,7 +34656,7 @@ dNext,(...)
 
 KinkyDungeonInventoryItemPotionHumanity,Potion of Humanity
 KinkyDungeonInventoryItemPotionHumanityUse,Choose who should drink the potion.
-KinkyDungeonInventoryItemPotionHumanityDesc,"A potion said to grant the gift of life to an artificial being made of clockwork."
+KinkyDungeonInventoryItemPotionHumanityDesc,"A potion said to grant the gift of life to an artificial being made of clockwork. Must be drunk normally, does not work with Potion Absorber or other means of drinking potions while gagged."
 KinkyDungeonInventoryItemPotionHumanityDesc2,"Transforms a doll into a living creature."
 
 KinkyDungeonPuppetStrings,The strings wrap around your limbs and tug back on you!

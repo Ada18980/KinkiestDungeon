@@ -247,7 +247,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity,
 			if (Consumable.sp_gradual) KDApplyBuffToEntity(entity, {id: "PotionStamina", type: "restore_sp", power: Consumable.sp_gradual/Consumable.duration * gagMult * multi, duration: Consumable.duration});
 			if (Consumable.ap_gradual) KDApplyBuffToEntity(entity, {id: "PotionFrigid", type: "restore_ap", power: Consumable.ap_gradual/Consumable.duration * gagMult * Distmulti, duration: Consumable.duration});
 
-			if ((Consumable.food && !KDIsArtificial(entity)) && (Consumable.wp_instant || Consumable.wp_gradual)) {
+			if ((Consumable.food && KDIsArtificial(entity)) && (Consumable.wp_instant || Consumable.wp_gradual)) {
 				KinkyDungeonSendTextMessage(3, TextGet("KDFoodEatDoll"), KDBaseRed, 1);
 			}
 		} else {
