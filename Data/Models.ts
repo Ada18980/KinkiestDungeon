@@ -809,7 +809,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 					buffer.data = SubmeshEditorBuffer;
 				} 
 
-				let drawDots = (x: number, width: number, y: number, height: number, i: number) => {
+				let drawDots = KDSubmeshEditor ? (x: number, width: number, y: number, height: number, i: number) => {
 					if (KDSubmeshEditor && KDSubmeshChosen == entry[0] && Zoom == 1 && x >= width*.25 && x <= width*.75 && y >= height*.25 && y <= height*.75) {
 						let color = y % 2 == 0 ? 0x00ff00 : 0xff0000;
 						let xxx = -50 + (buffer.data[i]*2 + -( MODELWIDTH*0.25 - MODEL_XOFFSET * 0.5))*.5;
@@ -855,7 +855,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 							tint: color,
 						});
 					}
-				}
+				} : null;
 
 				// Assign locations
 				let MaxWarp = ModelGetMaxMeshWarp(MC.Poses, entry[0], "pri_basic", "BasicMesh");
