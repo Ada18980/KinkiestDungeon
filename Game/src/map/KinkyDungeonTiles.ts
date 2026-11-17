@@ -107,6 +107,7 @@ function KinkyDungeonUpdateTileEffects(delta: number) {
 let KinkyDungeonChestConfirm = false;
 
 function KinkyDungeonHandleMoveToTile(toTile: string): void {
+	if (KinkyDungeonFlags.get("waitIntentional"))
 	if (toTile == 's' || toTile == 'H' || (toTile == 'S' && (
 		(!KinkyDungeonAltFloor(KDGameData.RoomType)?.noReverse)
 		//|| (MiniGameKinkyDungeonLevel == 1 && KDGameData.RoomType)

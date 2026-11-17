@@ -13552,7 +13552,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			}
 		},
 		"LikeTheWind": (_e, _data) => {
-			if (KinkyDungeonStatStamina >= KinkyDungeonStatStaminaMax * 0.95 && KinkyDungeonStatsChoice.has("LikeTheWind")) {
+			if (KinkyDungeonStatStamina >= KinkyDungeonStatStaminaMax * 0.75 && KinkyDungeonStatsChoice.has("LikeTheWind")) {
 				KDApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "LikeTheWind",
 					type: "Evasion",

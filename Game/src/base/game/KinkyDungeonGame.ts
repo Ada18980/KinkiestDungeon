@@ -2217,6 +2217,8 @@ function KinkyDungeonClickGame(event: MouseEvent, _Level?: number, touch?: boole
 						return !!KDFastMoveTo(KinkyDungeonTargetX, KinkyDungeonTargetY);
 					} else if (!fastMove || Math.max(Math.abs(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x), Math.abs(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)) <= 1) {
 						KDSetFocusControl("");
+						if (KinkyDungeonMoveDirection.x == 0 && KinkyDungeonMoveDirection.y == 0)
+							KinkyDungeonSetFlag("waitIntentional", 1)
 						KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
 					}
 				}
@@ -2288,6 +2290,8 @@ function KinkyDungeonListenKeyMove() {
 
 					try {
 						KDSetFocusControl("");
+						if (moveDirection.x == 0 && moveDirection.y == 0)
+							KinkyDungeonSetFlag("waitIntentional", 1)
 						KDSendInput("move", {dir: moveDirection, delta: 1, AllowInteract: KinkyDungeonLastMoveTimer == 0, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: false});
 						KinkyDungeonLastMoveTimer = performance.now() + KinkyDungeonLastMoveTimerCooldown;
 					} finally {
@@ -2375,6 +2379,9 @@ function KinkyDungeonGameKeyDown() {
 
 	if (KDCustomKeyDown.some((c) => {return c(KinkyDungeonKeybindingCurrentKey);})) return true;
 	else if (moveDirection && KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game") {
+		
+		if (moveDirection.x == 0 && moveDirection.y == 0)
+			KinkyDungeonSetFlag("waitIntentional", 1)
 		KDSendInput("move", {dir: moveDirection, delta: 1, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: false});
 		return true;
 	} else if (KinkyDungeonKeySpell.includes(KinkyDungeonKeybindingCurrentKey)) {
@@ -4836,6 +4843,8 @@ function KDFastMoveTo(xx: number, yy: number): number {
 			return path.length;
 		} else if (KDistChebyshev(KinkyDungeonPlayerEntity.x - xx, KinkyDungeonPlayerEntity.y - yy) < 1.5) {
 			KDSetFocusControl("");
+			if (KinkyDungeonMoveDirection.x == 0 && KinkyDungeonMoveDirection.y == 0)
+				KinkyDungeonSetFlag("waitIntentional", 1)
 			KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
 			return 1;
 		}

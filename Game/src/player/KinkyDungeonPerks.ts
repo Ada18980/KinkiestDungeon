@@ -71,7 +71,7 @@ let KDPerkIcons = {
 	"FrigidPersonality" : () => {return true;},
 	"ImmovableObject" : () => {return KinkyDungeonStatWill >= KinkyDungeonStatWillMax * 0.90;},
 	"GroundedInReality" : () => {return KinkyDungeonPlayerDamage && KinkyDungeonStatMana >= KinkyDungeonStatManaMax * 0.999;},
-	"LikeTheWind" : () => {return KinkyDungeonStatStamina >= KinkyDungeonStatStaminaMax * 0.95;},
+	"LikeTheWind" : () => {return KinkyDungeonStatStamina >= KinkyDungeonStatStaminaMax * 0.75;},
 	"LeastResistance" : () => {return KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.01;},
 	//"DistractionCast" : () => {return KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.99;},
 };
@@ -500,7 +500,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"BurningDesire":  {category: "Damage", id: "BurningDesire", cost: 1},
 	"FrigidPersonality":  {category: "Damage", id: "FrigidPersonality", cost: 2},
 	"GroundedInReality":  {category: "Damage", id: "GroundedInReality", cost: 1.5},
-	"LikeTheWind":  {category: "Damage", id: "LikeTheWind", cost: 1.5},
+	"LikeTheWind":  {category: "Damage", id: "LikeTheWind", cost: 2.5},
 	"ImmovableObject":  {category: "Damage", id: "ImmovableObject", cost: 1.5},
 	"LeastResistance":  {category: "Damage", id: "LeastResistance", cost: 1},
 

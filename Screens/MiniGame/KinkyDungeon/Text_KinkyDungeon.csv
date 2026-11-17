@@ -649,7 +649,7 @@ KinkyDungeonStatDescFrigidPersonality,"While below 10% distraction, you gain +10
 KinkyDungeonStatGroundedInReality,"Grounded in Reality"
 KinkyDungeonStatDescGroundedInReality,"While at max mana, your attacks deal an additional 30% of their base damage as electric damage."
 KinkyDungeonStatLikeTheWind,"Like the Wind"
-KinkyDungeonStatDescLikeTheWind,"While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1."
+KinkyDungeonStatDescLikeTheWind,"While above 75% stamina, you gain +30 Evasion and your slow level is reduced by 1."
 
 KinkyDungeonStatImmovableObject,"Immovable Object"
 KinkyDungeonStatDescImmovableObject,"While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells cost half mana."
