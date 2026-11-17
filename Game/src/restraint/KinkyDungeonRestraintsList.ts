@@ -16465,7 +16465,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Group: "ItemMouth",
 		power: 44,
 		weight: 0,
-		Model: "PlugMuzzleGag",
+		Model: "SegmentedLargeBallGagHarnessSecure",
 		Filters: {
 			Harness: {"gamma":0.8999999999999999,"saturation":0.2,"contrast":1.25,"brightness":0.7666666666666666,"red":2.816666666666667,"green":1.9333333333333333,"blue":1,"alpha":1},
 			SideStrap: {"gamma":0.8999999999999999,"saturation":0.2,"contrast":1.25,"brightness":0.7666666666666666,"red":2.816666666666667,"green":1.9333333333333333,"blue":1,"alpha":1},
