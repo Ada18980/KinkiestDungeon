@@ -2063,7 +2063,7 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
  */
 function KDCanPromote(value: KDCollectionEntry): boolean {
 	if (value.id == KDGameData.MistressID) return false;
-	return KDGetModifiedOpinionID(value.id) > 0 || value.Opinion > 0;
+	return KDGetModifiedOpinionID(value.id) > 0;
 }
 
 function KDRemoveFromAllFacilities(id: number) {

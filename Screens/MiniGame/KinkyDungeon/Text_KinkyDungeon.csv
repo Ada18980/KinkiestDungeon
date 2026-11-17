@@ -35126,3 +35126,6 @@ KDWardrobeDebug_FlipLyrbonus,Flip lyrbonus
 KDWardrobeDebug_PrintSMToConsole,Print SM to console
 KDDebug_Shop,Shop
 KDDebug_Bind,Bind
+
+
+KDLoadError,Error loading save! Please copy save code and post a bug report.

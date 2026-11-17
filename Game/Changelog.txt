@@ -94,7 +94,7 @@ Must do
 - Inventory filters now mutually exclusive
 - Moved keys, lockpicks, etc to the status bars area
 - Stairs now only activate when manually waited on
-- Like the Wind now activates at 75% stamina instead of 95%, cost increased to 2.5
+- Like the Wind now activates at 75% stamina instead of 95%, cost increased to 5
 - Cyber Doll Storage and Doll Shoppe starts now share a tag, cant start with both (and crash)
 - Save on entering the end screen (to avoid having to re-fight the dollmaker)
 - Fixed a bug where all NPCs were counted as artificial

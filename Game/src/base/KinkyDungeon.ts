@@ -42,7 +42,7 @@ let KDModsAfterGameStart = () => {};
 let KDModsAfterLoad = () => {};
 
 let KDFastWaitTime = 100;
-let KDVeryFastWaitTime = 33;
+let KDVeryFastWaitTime = 50;
 let KDNormalWaitTime = 500;
 let KDSlowWaitTime = 1500;
 

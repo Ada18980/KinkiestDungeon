@@ -2278,7 +2278,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					en.orderX = targetX;
 					en.orderY = targetY;
 				} else {
-					KinkyDungeonSetEnemyFlag(en, "NoFollow", 50);
+					KinkyDungeonSetEnemyFlag(en, "NoFollow", 100);
 					en.orderX = targetX;
 					en.orderY = targetY;
 				}
