@@ -111,7 +111,7 @@ function KinkyDungeonCrashReportSaveData(): string {
 	let saveData = localStorage.getItem("KinkyDungeonSave");
 	if (!saveData) {
 		try {
-			KDCompressSync(JSON.stringify(KinkyDungeonGenerateSaveData()));
+			saveData = KDCompressSync(JSON.stringify(KinkyDungeonGenerateSaveData()));
 		} catch (error) {
 			saveData = "Could not locate or generate save data";
 		}
@@ -121,6 +121,38 @@ function KinkyDungeonCrashReportSaveData(): string {
 		"",
 		saveData,
 	].join("\n");
+}
+
+/**
+ * Generates a report for a save that failed to load, including the save code that was attempted
+ */
+function KinkyDungeonGenerateLoadErrorReport(saveCode: string, error?: any): string {
+	return [
+		"========== Kinky Dungeon Load Error ==========",
+		"",
+		TextGetFallback("KDLoadError", "Error loading save! Please copy save code and post a bug report."),
+		"",
+		error ? `Message: ${error?.message || error}` : "Message: Failed to decode or other error",
+		error?.stack ? KinkyDungeonStackSanitize(error.stack) : "",
+		KinkyDungeonCrashReportStateData(),
+		KinkyDungeonCrashReportDiagnostics(),
+		KinkyDungeonCrashReportDeviceDetails(),
+		"========== Save Data ==========",
+		"",
+		saveCode || "No save code found",
+	].join("\n\n");
+}
+
+function KDTryLoadGame(saveCode: string = null, kdloadconsent = false): boolean {
+	let src = saveCode || localStorage.getItem('KinkyDungeonSave') || loadedsaveslots[KDSaveSlot-1];
+	try {
+		if (KinkyDungeonLoadGame(saveCode, kdloadconsent)) return true;
+		KinkyDungeonShowCrashReportModal(KinkyDungeonGenerateLoadErrorReport(src));
+	} catch (err) {
+		console.error(err);
+		KinkyDungeonShowCrashReportModal(KinkyDungeonGenerateLoadErrorReport(src, err));
+	}
+	return false;
 }
 
 /**

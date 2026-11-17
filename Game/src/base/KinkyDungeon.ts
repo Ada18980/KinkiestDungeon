@@ -6090,7 +6090,7 @@ function KDDrawLoadMenu() {
 				KinkyDungeonInitializeDresses();
 				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			}
-			if (KinkyDungeonLoadGame(LoadMenuCurrentSave, KDToggles.OverrideConsent)) {
+			if (KDTryLoadGame(LoadMenuCurrentSave, KDToggles.OverrideConsent)) {
 				if (KDToggles.OverrideConsent) {
 					KDToggles.OverrideConsent = false;
 					KDSaveToggles();
@@ -6605,7 +6605,11 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		}
 
-		KinkyDungeonLoadGame(undefined, true);
+		if (!KDTryLoadGame(undefined, true)) {
+			KinkyDungeonState = "Menu";
+			return;
+		}
+		
 		KDSendEvent('loadGame');
 	} else {
 		KDSendEvent('newGame');
@@ -6868,7 +6872,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			}
 
-			if (KinkyDungeonLoadGame(ElementValue("saveInputField"), KDToggles.OverrideConsent)) {
+			if (KDTryLoadGame(ElementValue("saveInputField"), KDToggles.OverrideConsent)) {
 				if (KDToggles.OverrideConsent) {
 					KDToggles.OverrideConsent = false;
 					KDSaveToggles();
