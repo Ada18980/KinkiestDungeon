@@ -47,8 +47,8 @@ let KDCollectionFilters: Record<string, CollectionFilterItem> = {
 		Options: ["", "Positive", "Negative"],
 		FilterCode: {
 			"": (_value) => {return true;},
-			Negative: (value) => {return !value.Opinion || value.Opinion < 0;},
-			Positive: (value) => {return value.Opinion > 0;},
+			Negative: (value) => {return KDGetModifiedOpinionID(value.id) < 0;},
+			Positive: (value) => {return KDGetModifiedOpinionID(value.id) > 0;},
 		},
 	},
 	Escape: {
@@ -1869,7 +1869,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 								
 								delete en.hostile;
 								KDDefectIfPossible(en);
-								
+
 								if (KDNPCChar.get(en.id))
 									KDRefreshCharacter.set(KDNPCChar.get(en.id), true);
 								KDUpdatePersistentNPC(en.id, true);
