@@ -264,15 +264,57 @@ KDFilterFilters[Weapon] = {
 	Tease: false,
 };
 
+/** Exclusive filters so that you don't set e.g. Gags and Collars to be true
+ * (there may be some overlap such as posture gag but whatever) */
+let KDExclusiveFilters: Record<string, string[][]> = {};
+KDExclusiveFilters[LooseRestraint] = [
+	["Special", "Mundane"],
+	["Rope", "Leather", "Metal", "Latex", "Tape"],
+	["Ties", "Belts", "Cuffs", "Collars", "Gags", "Blindfolds", "Armbinders", "Boxbinders", "Straitjackets",
+		"Mittens", "Boots", "Harnesses", "Corsets", "Chastity", "Legbinders", "Leashes", "Chains", "Devices",
+		"Toys", "Wrapping"],
+];
+KDExclusiveFilters[Armor] = [
+	["Enchanted", "Mundane"],
+	["Light", "Heavy", "Mage"],
+	["Head", "Chest", "Arms", "Gloves", "Torso", "Panties", "Legs", "Boots"],
+];
+KDExclusiveFilters[Restraint] = [
+	["Special", "Enchanted", "Mundane"],
+	["Armor", "Restraint"],
+	["Rope", "Leather", "Metal", "Latex"],
+	["Locked", "Unlocked"],
+	["Blocked", "Unblocked"],
+];
+KDExclusiveFilters[Weapon] = [
+	["Mundane", "Magic"],
+	["Ranged", "Melee"],
+	["Physical", "Magical"],
+	["Light", "Heavy"],
+];
+
+function KDSetInventoryFilter(category: string, filter: string) {
+	let filters = KDFilterFilters[category];
+	if (!filters) return;
+	let value = !filters[filter];
+	if (value) {
+		for (let group of KDExclusiveFilters[category] || []) {
+			if (!group.includes(filter)) continue;
+			for (let other of group) {
+				if (other != filter && filters[other] != undefined) filters[other] = false;
+			}
+		}
+	}
+	filters[filter] = value;
+}
+
 
 let KDSpecialFilters: Record<string, Record<string, (item: item, handle: boolean) => boolean>> = {
 	looserestraint: {
-		Special: (item, handle) => {
-			if (handle) KDFilterFilters[LooseRestraint].Mundane = false;
+		Special: (item, _handle) => {
 			return KDRestraintSpecial(item);
 		},
-		Mundane: (item, handle) => {
-			if (handle) KDFilterFilters[LooseRestraint].Special = false;
+		Mundane: (item, _handle) => {
 			return !(KDRestraintSpecial(item));
 		},
 		Disassemble: (item, _handle) => {
@@ -301,12 +343,10 @@ let KDSpecialFilters: Record<string, Record<string, (item: item, handle: boolean
 		},
 	},
 	armor: {
-		Enchanted: (item, handle) => {
-			if (handle) KDFilterFilters[Armor].Mundane = false;
+		Enchanted: (item, _handle) => {
 			return KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] != undefined;
 		},
-		Mundane: (item, handle) => {
-			if (handle) KDFilterFilters[Armor].Enchanted = false;
+		Mundane: (item, _handle) => {
 			return !KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
 		},
 
@@ -342,42 +382,34 @@ let KDSpecialFilters: Record<string, Record<string, (item: item, handle: boolean
 		},
 	},
 	weapon: {
-		Mundane: (item, handle) => {
-			if (handle) KDFilterFilters[Weapon].Magic = false;
+		Mundane: (item, _handle) => {
 			return !KDWeapon(item)?.magic && !KinkyDungeonWeaponVariants[item.inventoryVariant || item.name];
 		},
-		Magic: (item, handle) => {
-			if (handle) KDFilterFilters[Weapon].Mundane = false;
+		Magic: (item, _handle) => {
 			return KDWeapon(item)?.magic || KinkyDungeonWeaponVariants[item.inventoryVariant || item.name] != undefined;
 		},
 		Divine: (item, _handle) => {
 			return KDWeapon(item)?.tags?.includes("divine");
 		},
-		Ranged: (item, handle) => {
-			if (handle) KDFilterFilters[Weapon].Melee = false;
+		Ranged: (item, _handle) => {
 			return KDWeapon(item)?.tags?.includes("ranged");
 		},
-		Melee: (item, handle) => {
-			if (handle) KDFilterFilters[Weapon].Ranged = false;
+		Melee: (item, _handle) => {
 			return !KDWeapon(item)?.tags?.includes("ranged");
 		},
 		Ability: (item, _handle) => {
 			return KDWeapon(item)?.special != undefined;
 		},
-		Physical: (item, handle) => {
-			if (handle) KDFilterFilters[Weapon].Magical = false;
+		Physical: (item, _handle) => {
 			return KinkyDungeonMeleeDamageTypes.includes(KDWeapon(item)?.type);
 		},
-		Magical: (item, handle) => {
-			if (handle) KDFilterFilters[Weapon].Physical = false;
+		Magical: (item, _handle) => {
 			return !KinkyDungeonMeleeDamageTypes.includes(KDWeapon(item)?.type);
 		},
-		Light: (item, handle) => {
-			if (handle) KDFilterFilters[Weapon].Heavy = false;
+		Light: (item, _handle) => {
 			return KDWeapon(item)?.light;
 		},
-		Heavy: (item, handle) => {
-			if (handle) KDFilterFilters[Weapon].Light = false;
+		Heavy: (item, _handle) => {
 			return KDWeapon(item)?.heavy || KDWeapon(item)?.clumsy || KDWeapon(item)?.massive;
 		},
 		Toy: (item, _handle) => {
@@ -400,47 +432,38 @@ let KDSpecialFilters: Record<string, Record<string, (item: item, handle: boolean
 		},
 	},
 	restraint: {
-		Special: (item, handle) => {
-			if (handle) KDFilterFilters[Restraint].Mundane = false;
+		Special: (item, _handle) => {
 			return (KDRestraint(item)?.armor && KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] != undefined)
 				|| (!KDRestraint(item)?.armor && (KDRestraintSpecial(item)));
 		},
-		Enchanted: (item, handle) => {
-			if (handle) KDFilterFilters[Restraint].Mundane = false;
+		Enchanted: (item, _handle) => {
 			return (KDRestraint(item)?.armor && KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] != undefined);
 		},
 		Good: (item, _handle) => {
 			return (KDRestraint(item)?.good);
 		},
-		Mundane: (item, handle) => {
-			if (handle) KDFilterFilters[Restraint].Special = false;
+		Mundane: (item, _handle) => {
 			return !(
 				(KDRestraint(item)?.armor && KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] != undefined)
 				|| (!KDRestraint(item)?.armor && (KDRestraintSpecial(item)))
 			);
 		},
-		Armor: (item, handle) => {
-			if (handle) KDFilterFilters[Restraint].Restraint = false;
+		Armor: (item, _handle) => {
 			return KDRestraint(item)?.armor;
 		},
-		Locked: (item, handle) => {
-			if (handle) KDFilterFilters[Restraint].Unlocked = false;
+		Locked: (item, _handle) => {
 			return !(!item.lock);
 		},
-		Unlocked: (item, handle) => {
-			if (handle) KDFilterFilters[Restraint].Locked = false;
+		Unlocked: (item, _handle) => {
 			return !item.lock;
 		},
-		Blocked: (item, handle) => {
-			if (handle) KDFilterFilters[Restraint].Unblocked = false;
+		Blocked: (item, _handle) => {
 			return KDGroupBlocked(KDRestraint(item)?.Group) || !KDDynamicLinkListSurface(item).includes(item);
 		},
-		Unblocked: (item, handle) => {
-			if (handle) KDFilterFilters[Restraint].Blocked = false;
+		Unblocked: (item, _handle) => {
 			return !(KDGroupBlocked(KDRestraint(item)?.Group) || !KDDynamicLinkListSurface(item).includes(item));
 		},
-		Restraint: (item, handle) => {
-			if (handle) KDFilterFilters[Restraint].Armor = false;
+		Restraint: (item, _handle) => {
 			return !KDRestraint(item)?.armor;
 		},
 		Cursed: (item, _handle) => {
@@ -2079,7 +2102,7 @@ function KDDrawInventoryContainer (
 						);
 				}, (_bdata) => {
 					if (show) {
-						KDFilterFilters[CurrentFilter][filters[i][0]] = !KDFilterFilters[CurrentFilter][filters[i][0]];
+						KDSetInventoryFilter(CurrentFilter, filters[i][0]);
 						/*if (prefix) {
 							KinkyDungeonContainerOffset = 0;
 						} else {
