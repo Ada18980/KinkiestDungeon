@@ -55012,7 +55012,7 @@ ${Weapon}为了自身安全，自行收起……
 
 - Potion of Humanity
 人类药水
-- A potion said to grant the gift of life to an artificial being made of clockwork.
+- A potion said to grant the gift of life to an artificial being made of clockwork. Must be drunk normally, does not work with Potion Absorber or other means of drinking potions while gagged.
 一种据说能赋予发条人造生命以生命之礼的药水。
 - Transforms a doll into a living creature.
 将玩偶变为活物。
