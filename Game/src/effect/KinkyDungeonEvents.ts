@@ -7983,6 +7983,8 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				for (let en of list)
 					if (en && en.buffs?.AllySelect) {
 						KinkyDungeonSetEnemyFlag(en, "StayHere", -1);
+						en.orderX = en.x;
+						en.orderY = en.y;
 					}
 			}
 		},

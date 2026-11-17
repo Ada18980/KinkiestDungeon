@@ -53,6 +53,7 @@ let KDEventableAttackTypes = [
 	"Slow",
 ];
 
+
 let KDPlayerNoiseSources = {
 	// TODO add events
 	Movement: {
@@ -447,8 +448,8 @@ function KinkyDungeonNearestPlayer(enemy: entity, _requireVision?: boolean, deco
 		let hostile = KDHostile(enemy);
 		let nearestDistance = (hostile) ? pdist - 0.1 : 100000;
 		if (KDGetFaction(enemy) == "Player"
-			&& (KDEnemyHasFlag(enemy, "NoFollow")
-			|| KDEnemyHasFlag(enemy, "StayHere")))
+			&& (KDAllyHasOrder(enemy, "NoFollow")
+			|| KDAllyHasOrder(enemy, "StayHere")))
 			nearestDistance = 100000;
 
 		if ((enemy.Enemy.visionRadius || enemy.Enemy.blindSight) && !(enemy.Enemy.noAttack && !enemy.Enemy.spells)) {
@@ -465,8 +466,8 @@ function KinkyDungeonNearestPlayer(enemy: entity, _requireVision?: boolean, deco
 						+ (e.y - enemy.y)*(e.y - enemy.y));
 					let pdist_enemy =
 						(KDGetFaction(enemy) == "Player"
-						&& !KDEnemyHasFlag(enemy, "NoFollow")
-						&& !KDEnemyHasFlag(enemy, "StayHere")
+						&& !KDAllyHasOrder(enemy, "NoFollow")
+						&& !KDAllyHasOrder(enemy, "StayHere")
 						&& (enemy.Enemy.allied || KDIsInParty(enemy) || (!KDGameData.PrisonerState || KDGameData.PrisonerState == "chase")))
 						? KDistChebyshev(e.x - KinkyDungeonPlayerEntity.x, e.y - KinkyDungeonPlayerEntity.y) :
 						-1;
@@ -6080,12 +6081,12 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			KinkyDungeonSetEnemyFlag(enemy, "wander", 0); // Reset wander timer
 
 
-		if (!KDEnemyHasFlag(enemy, "StayHere")
+		if (!KDAllyHasOrder(enemy, "StayHere")
 			&& !KDEnemyHasFlag(enemy, "overrideMove")) {
 			// Enemies that arent told to hold still will decide to follow their targets
-			if (KDEnemyHasFlag(enemy, "Defensive")) {
+			if (KDAllyHasOrder(enemy, "Defensive")) {
 				// Defensive AI will follow the player
-				if (!KDEnemyHasFlag(enemy, "NoFollow")) {
+				if (!KDAllyHasOrder(enemy, "NoFollow")) {
 					enemy.gx = KinkyDungeonPlayerEntity.x;
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KDUpdateMoveToEntity(enemy);
@@ -6098,7 +6099,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				&& AIType.trackvisibletarget(enemy, player, AIData)
 				&& (
 					// We will follow the player if aggressive, playing, or not told to not follow
-					AIData.aggressive || enemy.playWithPlayer || !KDEnemyHasFlag(enemy, "NoFollow"))
+					AIData.aggressive || enemy.playWithPlayer || !KDAllyHasOrder(enemy, "NoFollow"))
 			) {
 				let pp = KDistChebyshev(enemy.x - player.x, enemy.y - player.y) < 1.5 ? null : KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, true);
 				if (pp) {
@@ -6256,8 +6257,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			|| (!enemy.Enemy.attackWhileMoving && enemy.warningTiles.length > 0)
 			|| enemy.Enemy.Behavior?.holdStillWhenNear
 			|| (player.player && enemy.Enemy.allied && !enemy.Enemy.Behavior?.behaveAsEnemy
-				&& KDAllied(enemy) && !KDEnemyHasFlag(enemy, "NoFollow")
-				&& !KDEnemyHasFlag(enemy, "StayHere"))
+				&& KDAllied(enemy) && !KDAllyHasOrder(enemy, "NoFollow")
+				&& !KDAllyHasOrder(enemy, "StayHere"))
 		);
 
 
@@ -6295,26 +6296,26 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			AIData.dontFollow = false;
 
 			if (AIType.follower(enemy, player, AIData)) {
-				if (KDAllied(enemy) && player.player
+				if (KDAllied(enemy) && player.player && !KDIgnoresAllyOrders(enemy)
 				&& (KDEnemyDoesFollow(enemy) || KDEnemyHasFlag(enemy, "FollowMe"))) {
-					if (!KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "StayHere")) {
+					if (!KDAllyHasOrder(enemy, "NoFollow") && !KDAllyHasOrder(enemy, "StayHere")) {
 						AIData.allyFollowPlayer = true;
 					} else {
 						AIData.dontFollow = true;
-						if (enemy.gx == player.x && enemy.gy == player.y && !KDEnemyHasFlag(enemy, "StayHere")) {
+						if (enemy.gx == player.x && enemy.gy == player.y && !KDAllyHasOrder(enemy, "StayHere")) {
 							//enemy.gx = undefined;
 							//enemy.gy = undefined;
 						}
 					}
 				} else {
-					if (KDEnemyHasFlag(enemy, "Defensive")
-						&& !KDEnemyHasFlag(enemy, "StayHere")
+					if (KDAllyHasOrder(enemy, "Defensive")
+						&& !KDAllyHasOrder(enemy, "StayHere")
 						&& !KDEnemyHasFlag(enemy, "dontChase")) {
 						enemy.gx = KinkyDungeonPlayerEntity.x;
 						enemy.gy = KinkyDungeonPlayerEntity.y;
 						KDUpdateMoveToEntity(enemy);
 					}
-					if (KDEnemyHasFlag(enemy, "StayHere") && (KDEnemyHasFlag(enemy, "Defensive") && !KinkyDungeonFlags.get("PlayerCombat")))
+					if (KDAllyHasOrder(enemy, "StayHere") && (KDAllyHasOrder(enemy, "Defensive") && !KinkyDungeonFlags.get("PlayerCombat")))
 						AIData.dontFollow = true;
 					if (KDHostile(enemy)) {
 						KinkyDungeonSetEnemyFlag(enemy, "StayHere", 0);
@@ -6376,8 +6377,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				// Our movement isnt being controlled by a script
 				&& !KDEnemyHasFlag(enemy, "overrideMove")
 				// We are willing to move
-				&& (!KDEnemyHasFlag(enemy, "Defensive")
-					|| !KDEnemyHasFlag(enemy, "StayHere"))
+				&& (!KDAllyHasOrder(enemy, "Defensive")
+					|| !KDAllyHasOrder(enemy, "StayHere"))
 				// We want to move
 				&& AIType.chase(enemy, player, AIData)
 				// We are not ignoring the target
@@ -6394,7 +6395,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				// We aren't already following a path or stationed at our current point
 				// TODO evaluate whether we should check gxx and gyy instead of gx and gy (station point vs goto point)
 				&& ((enemy.gx != enemy.x || enemy.gy != enemy.y || enemy.path || enemy.fx || enemy.fy
-					|| (KDAllied(enemy) && (!KDEnemyHasFlag(enemy, "Defensive") || KinkyDungeonFlags.get("PlayerCombat")))) ? true : false);
+					|| (KDAllied(enemy) && (!KDAllyHasOrder(enemy, "Defensive") || KinkyDungeonFlags.get("PlayerCombat")))) ? true : false);
 
 			// Also if the enemy is supposed to go to the player (goal x and y are same as players) and the enemy can see, it just does it
 			// Party members get a free pass too on sight
@@ -6402,9 +6403,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				|| KDIsInParty(enemy)) && enemy.gx == player.x && enemy.gy == player.y) {
 				AIData.moveTowardPlayer = true;
 			}
+			
+			AIData.orderAnchor = KDGetAllyOrderAnchor(enemy, KDPlayer());
+
 
 			// try 12 times to find a moveable tile, with some random variance
 			// First part is player chasing behavior
+
+			
 
 			if (// We aren't focusing on pulling
 				!AIData.focusOnLeash
@@ -6412,10 +6418,31 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				&& AIData.moveTowardPlayer) {
 				//enemy.aware = true;
 
+				
+				// if an order anchor is set we follow it IF we are in defensive mode
+				let anchor = KDAllyHasOrder(enemy, "Defensive") ? AIData.orderAnchor : null;
+
+				if (anchor && KDistChebyshev(enemy.gx - anchor.x, enemy.gy - anchor.y) > anchor.radius) {
+					enemy.gx = anchor.x;
+					enemy.gy = anchor.y;
+					enemy.path = null;
+				}
+
 				if (AIData.kite ? true : KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > AIData.followRange) {
 					for (let T = 0; T < 12; T++) {
 						let dir = KDGetDir(enemy, player);
 						let splice = false;
+						let anchorfail = false;
+
+						if (
+							anchor && KDistEuclidean(
+								enemy.x + dir.x - anchor.x,
+								enemy.y + dir.y - anchor.y,
+							) > anchor.radius
+						) {
+							anchorfail = true;
+						}
+						
 						if (T >= 8 || (enemy.path && !AIData.canSeePlayer) || (!AIData.canSeePlayer && !(enemy.Enemy.stopToCast && AIData.canShootPlayer))) {
 							// Allies are a little smarter and can always see the player usually
 							if (!enemy.path && (AIData.allied || KinkyDungeonAlert || KDEnemyReallyAware(enemy, player) || AIData.canSeePlayer)) {
@@ -6428,18 +6455,40 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 										KDAddThought(enemy.id, "Search", 2, 6);
 									}
 								}
-								enemy.path = KinkyDungeonFindPath(enemy.x, enemy.y, player.x, player.y,
-									!(KDEnemyHasFlag(enemy, "blocked")
-									|| KDEnemyHasFlag(enemy, "blockedenemy")),
-									!KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
-									AIData.ignoreLocks, AIData.MovableTiles,
-									undefined, undefined, undefined, enemy,
-									!enemy.CurrentAction && enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
+								if (!anchor || (
+									KDistEuclidean(
+										player.x - anchor.x,
+										player.y - anchor.y,
+									) > anchor.radius + AIData.followRange
+								)) {
+									enemy.path = KinkyDungeonFindPath(enemy.x, enemy.y, 
+										player.x, player.y,
+										!(KDEnemyHasFlag(enemy, "blocked")
+										|| KDEnemyHasFlag(enemy, "blockedenemy")),
+										!KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
+										AIData.ignoreLocks, AIData.MovableTiles,
+										undefined, undefined, undefined, enemy,
+										!enemy.CurrentAction && enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
+								
+								}
+								
 							}
 							if (enemy.path) {
+								anchorfail = false;
 								if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
 									dir = {x: enemy.path[0].x - enemy.x, y: enemy.path[0].y - enemy.y, delta: KDistChebyshev(enemy.path[0].x - enemy.x, enemy.path[0].y - enemy.y)};
-									if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
+									
+									if (
+										anchor && KDistEuclidean(
+											enemy.x + dir.x - anchor.x,
+											enemy.y + dir.y - anchor.y,
+										) > anchor.radius
+									) {
+										anchorfail = true;
+									}
+									
+									if (anchorfail || 
+										!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
 										|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
 										if (AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
 											KinkyDungeonSetEnemyFlag(enemy, "blockedenemy", 15);
@@ -6464,12 +6513,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 								}
 							}
 						} else if (T > 2 && T < 8) dir = KinkyDungeonGetDirectionRandom(dir.x * 10, dir.y * 10); // Fan out a bit
-						if (dir.delta > 1.5) {
+						if (dir.delta > 1.5 || anchorfail) {
 							enemy.path = null;
 							KinkyDungeonSetEnemyFlag(enemy, "failpath", 20);
 						}
 						else if (KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
-							if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y, true)) AIData.moved = true;
+							if (!anchorfail) {
+								if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y, true)) AIData.moved = true;
+							}
 							if (AIData.moved && splice && enemy.path) enemy.path.splice(0, 1);
 							AIData.idle = false;
 
@@ -6483,7 +6534,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 										enemy.fy = enemy.y + dir.y;
 									}
 								}
-							} else {
+							} else if (!anchorfail) {
 								KDBlockedByPlayer(enemy, dir);
 							}
 							break;
@@ -6557,6 +6608,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						enemy.gx = point.x;
 						enemy.gy = point.y;
 					}
+				}
+
+				// if an order anchor is set we follow it
+				let anchor = AIData.orderAnchor;
+				if (anchor && KDistChebyshev(enemy.gx - anchor.x, enemy.gy - anchor.y) > anchor.radius) {
+					enemy.gx = anchor.x;
+					enemy.gy = anchor.y;
+					enemy.path = null;
 				}
 
 				if (
@@ -6697,8 +6756,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				KDApplyBuffToEntity(enemy, KDSpeedy);
 			}
 
-			if ((allyHoming || !KDEnemyHasFlag(enemy, "Defensive"))
-				&& !KDEnemyHasFlag(enemy, "StayHere")
+			if ((allyHoming || !KDAllyHasOrder(enemy, "Defensive"))
+				&& !KDAllyHasOrder(enemy, "StayHere")
 				&& !KDEnemyHasFlag(enemy, "overrideMove")
 				&& !KDIsImmobile(enemy)
 				&& !AIType.aftermove(enemy, player, AIData)
@@ -6731,8 +6790,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					let wandernear = AIType.wander_near(enemy, player, AIData);
 					if ((wanderfar || wandernear) && !AIData.allyFollowPlayer
 					&& !(KDEnemyHasFlag(enemy, "nowander"))
-					&& (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere"))
-					&& !KDEnemyHasFlag(enemy, "StayHere")
+					&& (!enemy.Enemy.allied && !KDAllyHasOrder(enemy, "StayHere"))
+					&& !KDAllyHasOrder(enemy, "StayHere")
 					&& enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive || enemy.ignore)) {
 						if ((Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 2.5 || (KDRandom() < 0.02 && KDEnemyHasFlag(enemy, "failpath"))) || (!(enemy.vp > 0.05) && (!enemy.path || KDRandom() < 0.1))) {
 							AIData.master = KinkyDungeonFindMaster(enemy).master;
@@ -8778,6 +8837,14 @@ function KinkyDungeonSendEnemyEvent(Event: string, data: any, mapData: KDMapData
 		}
 }
 
+
+function KDIgnoresAllyOrders(enemy: entity): boolean {
+	return (enemy.IntentAction && KDIntentEvents[enemy.IntentAction]?.ignoreAllyOrders);
+}
+
+function KDAllyHasOrder(enemy: entity, flag: string): boolean {
+	return KDEnemyHasFlag(enemy, flag) && !KDIgnoresAllyOrders(enemy);
+}
 
 /**
  * @param enemy
@@ -12246,4 +12313,20 @@ function KDHasLeashIntent(enemy: entity) {
 
 function KDEnemyRecentHitsWhileLeashThresh(enemy: entity) {
 	return 3;
+}
+
+interface KDOrderAnchor {
+	x: number,
+	y: number,
+	radius: number }
+let KDDefensiveRadius = 3.5; // will target enemies this close to the player
+
+function KDGetAllyOrderAnchor(enemy: entity, player: entity): KDOrderAnchor | null {
+	if (KDHostile(enemy) || KDIgnoresAllyOrders(enemy)) return null;
+	if (KDEnemyHasFlag(enemy, "StayHere")
+		&& enemy.orderX != undefined)
+		return {x: enemy.orderX, y: enemy.orderY, radius: 0.5};
+	if (KDEnemyHasFlag(enemy, "Defensive") && player?.player)
+		return {x: player.x, y: player.y, radius: KDDefensiveRadius}; // e.g. 2
+	return null;
 }

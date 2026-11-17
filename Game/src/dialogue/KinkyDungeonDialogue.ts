@@ -1413,6 +1413,8 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 					KinkyDungeonSetEnemyFlag(enemy, "StayHere", -1);
 					enemy.gx = enemy.x;
 					enemy.gy = enemy.y;
+					enemy.orderX = enemy.x;
+					enemy.orderY = enemy.y;
 				} else {
 					KDGameData.CurrentDialogMsg = name + "StayHere_Fail";
 					KinkyDungeonSetEnemyFlag(enemy, "NoStay", 100);

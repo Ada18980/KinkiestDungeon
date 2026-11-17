@@ -2059,6 +2059,8 @@ interface entity {
 	path?: {x: number, y: number}[],
 	gx?: number,
 	gy?: number,
+	orderX?: number,
+	orderY?: number,
 	/** will not try to path thru this entity */
 	gx_ent?: number,
 	gy_ent?: number,
@@ -3592,6 +3594,7 @@ interface KDAIData extends KDAITriggerData {
 	moveTowardPlayer?: boolean,
 	/** Enemy will wait a bit before forcing leash again */
 	SlowLeash?: boolean,
+	orderAnchor?: KDOrderAnchor,
 
 	/** The enemy plans to leash the player,
 	 * important to declare b/c otherwise enemy can close cages, etc during play*/
@@ -3673,6 +3676,8 @@ type EnemyEvent = {
 	noMassReset?: boolean,
 	/** Enables the leashing mechanic */
 	isCapturing?: boolean,
+	/** ally orders (holdstill, defensive, etc) are ignored */
+	ignoreAllyOrders?: boolean,
 	/** Determines if the enemy will tease you */
 	decideTease?: (enemy: entity, target: entity, AIData: KDEventDataBoolean, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
 	/** Determines if the enemy will attack you */

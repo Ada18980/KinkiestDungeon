@@ -120,6 +120,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		},
 	},
 	leashToPoint: {
+		ignoreAllyOrders: true,
 		play: true,
 		nonaggressive: true,
 		// This will make the enemy want to leash you
@@ -297,6 +298,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		},
 	},
 	"leashStorage": {
+		ignoreAllyOrders: true,
 		play: true,
 		nonaggressive: true,
 		// This will make the enemy want to leash you
@@ -376,6 +378,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 	},
 	
 	"initiateDialogue": {
+		ignoreAllyOrders: true,
 		play: false,
 		nonaggressive: true,
 		// This will make the enemy want to leash you
@@ -433,6 +436,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 	},
 	
 	"allyPunishPlayer": {
+		ignoreAllyOrders: true,
 		aggressive: true,
 		nonaggressive: true,
 		noMassReset: true,
@@ -512,6 +516,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		},
 	},
 	"leashCell": {
+		ignoreAllyOrders: true,
 		play: true,
 		nonaggressive: true,
 		noMassReset: true,
@@ -923,6 +928,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		},
 	},
 	"TempLeash": {
+		ignoreAllyOrders: true,
 		aggressive: false,
 		nonaggressive: true,
 		noplay: true,
@@ -1147,6 +1153,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		},
 	},
 	"Cuddle": {
+		ignoreAllyOrders: true,
 		aggressive: false,
 		nonaggressive: true,
 		holdleash: true,
@@ -1375,6 +1382,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		},
 	},
 	"CaptureDoll": {
+		ignoreAllyOrders: true,
 		// Capture and bring to dropoff
 		aggressive: true,
 		nonaggressive: true,
@@ -1498,6 +1506,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		},
 	},
 	"Follow": {
+		ignoreAllyOrders: true,
 		// Follow for 2 turns
 		aggressive: true,
 		nonaggressive: true,
