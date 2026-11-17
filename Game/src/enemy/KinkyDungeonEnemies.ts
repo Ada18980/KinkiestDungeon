@@ -6241,7 +6241,12 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		enemy.gyy = enemy.gy;
 	}
 
-	if (KDEnemyHasFlag(enemy, "runAway") || KDAllyHasOrder(enemy, "Avoidant")) {
+	if (KDEnemyHasFlag(enemy, "runAway") || (
+		KDAllyHasOrder(enemy, "Avoidant")
+		&& (
+			player != KDPlayer() && KDHostile(enemy, player)
+		)
+	)) {
 		AIData.followRange = 5.9;
 		if (AIData.playerDist > 1.5 || KDRandom() < 0.75)
 			AIData.kite = true;
@@ -6448,10 +6453,17 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						let anchorfail = false;
 
 						if (
-							anchor && KDistEuclidean(
+							anchor && (KDistEuclidean(
 								enemy.x + dir.x - anchor.x,
 								enemy.y + dir.y - anchor.y,
 							) > anchor.radius
+							&& KDistEuclidean(
+								enemy.x + dir.x - anchor.x,
+								enemy.y + dir.y - anchor.y,
+							) > KDistEuclidean(
+								enemy.x - anchor.x,
+								enemy.y - anchor.y,
+							))
 						) {
 							anchorfail = true;
 						}
@@ -6473,6 +6485,13 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 										player.x - anchor.x,
 										player.y - anchor.y,
 									) > anchor.radius + AIData.followRange
+									&& KDistEuclidean(
+										player.x - anchor.x,
+										player.y - anchor.y,
+									) > KDistEuclidean(
+										enemy.x - anchor.x,
+										enemy.y - anchor.y,
+									)
 								)) {
 									enemy.path = KinkyDungeonFindPath(enemy.x, enemy.y, 
 										player.x, player.y,
@@ -6496,6 +6515,13 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											enemy.x + dir.x - anchor.x,
 											enemy.y + dir.y - anchor.y,
 										) > anchor.radius
+										&& KDistEuclidean(
+											enemy.x + dir.x - anchor.x,
+											enemy.y + dir.y - anchor.y,
+										) > KDistEuclidean(
+											enemy.x - anchor.x,
+											enemy.y - anchor.y,
+										)
 									) {
 										anchorfail = true;
 									}
@@ -6625,7 +6651,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 				// if an order anchor is set we follow it
 				let anchor = AIData.orderAnchor;
-				if (anchor && KDistChebyshev(enemy.gx - anchor.x, enemy.gy - anchor.y) > anchor.radius) {
+				if (anchor
+					&& KDistChebyshev(enemy.gx - anchor.x, enemy.gy - anchor.y) > anchor.radius) {
 					enemy.gx = anchor.x;
 					enemy.gy = anchor.y;
 					enemy.path = null;
@@ -12334,7 +12361,7 @@ interface KDOrderAnchor {
 	x: number,
 	y: number,
 	radius: number }
-let KDDefensiveRadius = 2.5; // will target enemies this close to the player
+let KDDefensiveRadius = 1.5; // will target enemies this close to the player
 let KDDefensiveAvoidant = 4.5;
 
 function KDGetAllyOrderAnchor(enemy: entity, player: entity): KDOrderAnchor | null {
