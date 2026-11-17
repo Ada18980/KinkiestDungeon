@@ -1163,6 +1163,28 @@ function KDResetCollectionUI() {
 	KDRefreshCharacter.get(KDSpeakerNPC);
 }
 
+function KDCollectionEntryTooltip(value: KDCollectionEntry): HoverObject {
+	let lines: {str: string, color?: string}[] = [
+		{str: TextGet("Name" + value.type)},
+	];
+	if (value.Facility)
+		lines.push({str: TextGet("KDFacilityAssignedTo", {
+		Facility: TextGet("KDFacility_" + value.Facility)
+		})});
+	if (value.escaped)
+		lines.push({str: TextGet("KDCollectionTooltipEscaped"), color: KDBaseOrange});
+	else if (value.escapegrace)
+		lines.push({str: TextGet("KDCollectionTooltipEscapeRisk"), color: KDBaseYellow});
+	return Object.assign(
+		KDButtonTooltip(value.name, undefined, "center"), 
+		{
+			TitleTextColorBack: (value.color && value.color != KDBaseWhite && value.color != "#ffffff") ?
+				value.color
+				: KDTextGray05,
+			lines: lines,
+		});
+}
+
 function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: KDCollectionEntry, X: number, Y: number) => void) {
 	if (!KDGameData.CollectionSorted) KDSortCollection();
 
@@ -1354,7 +1376,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 				KDEntityRestraintMetadata.set(value.id, KDUpdateRestraintMetadata(value.id, 0));
 				value.refreshSprite = false;
 			}
-			KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
+			if (KDRefreshCharacter.get(char) || KDUpdateEnemySprites)
+				KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
 
 			kdpixisprites.set("xspr_" + value.id, {}); // Hijack pixisprites due to desired functionality
 			kdSpritesDrawn.set("xspr_" + value.id, true);
@@ -1378,7 +1401,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 		XX,
 		YY,
 		79, 79, "", KDBaseWhite, drawChar ? "" : (KinkyDungeonRootDirectory + dir + sp + ".png"),
-		"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}, Object.assign(KDButtonTooltip(value.name, undefined, "center"), {TitleTextColorBack: (value.color && value.color != "#ffffff") ? value.color : KDTextGray05}));
+		"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}, KDCollectionEntryTooltip(value));
 
 		if (drawCallback) drawCallback(value, XX, YY);
 
@@ -1476,7 +1499,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 					KDEntityRestraintMetadata.set(value.id, KDUpdateRestraintMetadata(value.id, 0));
 					value.refreshSprite = false;
 				}
-				KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
+				if (KDRefreshCharacter.get(char) || KDUpdateEnemySprites)
+					KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
 
 				kdpixisprites.set("xspr_" + value.id, {}); // Hijack pixisprites due to desired functionality
 				kdSpritesDrawn.set("xspr_" + value.id, true);
@@ -1500,7 +1524,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 			XX,
 			YY,
 			79, 79, "", KDBaseWhite, drawChar ? "" : (KinkyDungeonRootDirectory + dir + sp + ".png"),
-			"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}, Object.assign(KDButtonTooltip(value.name, undefined, "center"), {TitleTextColorBack: (value.color && value.color != KDBaseWhite) ? value.color : KDTextGray05}));
+			"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}, KDCollectionEntryTooltip(value));
 
 			if (drawCallback) drawCallback(value, XX, YY);
 
@@ -2189,4 +2213,5 @@ function KDResetCollectionScreen(screen = "") {
 	KDCurrentFacilityTarget = "";
 	KDFacilityCollectionCallback = null;
 	KinkyDungeonCheckClothesLoss = true;
+	KDUpdateEnemySprites = true;
 }

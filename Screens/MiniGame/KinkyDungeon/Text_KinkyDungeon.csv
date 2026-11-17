@@ -32593,6 +32593,7 @@ KDFacilityInfo_Productivity,"+AMNT% Productivity"
 KDFacilityInfo_Prisoners,"AMNT/MAXX Prisoners Assigned"
 KDFacilityInfo_Servants,"AMNT/MAXX Servants Assigned"
 
+KDFacilityAssignedTo,"Assigned to: ${Facility}"
 KDFacility_Management,Management
 KDFacilityDesc_Management,"Assign servants as managers to boost the production of other facilities.|Appointing new management results in a loss of efficiency until the next cycle."
 KDFacility_TrainingDojo,Bondage Dojo
@@ -32837,6 +32838,8 @@ KDCollectionFilterFree,"Free"
 KDCollectionFilterSafe,"Secure"
 KDCollectionFilterEscapeRisk,"At Risk"
 KDCollectionFilterEscaped,"Escaped"
+KDCollectionTooltipEscapeRisk,"At risk of escaping"
+KDCollectionTooltipEscaped,"Escaped"
 KDCollectionFilterImprisoned,"Imprisoned"
 KDCollectionFilterPositive,"Positive"
 KDCollectionFilterNegative,"Negative"

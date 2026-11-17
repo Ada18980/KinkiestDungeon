@@ -2054,7 +2054,7 @@ function KDEaseValue(delta: number, currentval: number, targetval: number, rate:
 	let effamount = Math.max(minrate * delta, amount);
 	let eps_real = Math.max(eps, effamount);
 	if (val > targetval + eps_real || val < targetval - eps_real) {
-		val = val + (targetval - currentval) * effamount;
+		val = val + (targetval - currentval) * Math.min(1, effamount);
 	} else val = targetval;
 	return val;
 }

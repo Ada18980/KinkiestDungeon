@@ -1208,6 +1208,7 @@ interface HoverObject {
 	bg?: string,
 	border?: string,
 	wrap?: boolean,
+	extralines?: {str: string, color?: string}[],
 }
 interface InventoryHoverObject extends HoverObject {
     item: item;

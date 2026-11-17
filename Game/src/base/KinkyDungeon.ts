@@ -1600,11 +1600,16 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
             return;
         }
         let pad = 10;
-        let TooltipWidth = Math.max(20, object.Width ? object.Width : 220, (Math.min(object.name.length * 12, 
+        let lines = object.extralines || [];
+        let lineSize = 18;
+        let lineSpacing = lineSize + 2;
+        let linesHeight = lines.length * lineSpacing;
+        let longest = Math.max(object.name.length * 12, ...lines.map((l) => l.str.length * 10));
+        let TooltipWidth = Math.max(20, object.Width ? object.Width : 220, (Math.min(longest, 
 			object.Width ? Math.round(object.Width * 1.5) : 350
 		)));
 
-        let TooltipHeight = Math.max(20, ((pad * 2) + (20)));
+        let TooltipHeight = Math.max(20, ((pad * 2) + (20))) + linesHeight;
 
 		// Centered tooltips sit above the button, or below it if there is no room above.
 		let aboveButton = object.align == "center" && KDCurrentHoverBox.Top >= 60;
@@ -1636,7 +1641,7 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
         
         if (object.name) {
             let height = DrawTextFitKDgetHeight(`${object.name}`, tooltipX + (TooltipWidth / 2), 
-			aboveButton ? tooltipBottom - YY : tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor,
+			aboveButton ? tooltipBottom - YY - linesHeight : tooltipY + YY, TooltipWidth - 2 * pad, object.TitleTextColor,
 			object.TitleTextColorBack, (object.TitleTextSize ? object.TitleTextSize : 24),
 			"center", 701, undefined, undefined, undefined,
 			 undefined, object.wrap, aboveButton ? "bottom" : "top");
@@ -1645,6 +1650,12 @@ let KDHoverFunctions: Record<string, (hover: KDButtonParamData, HoverObject: Hov
 			TooltipHeight -= 20;
         }
 		if (aboveButton) tooltipY = tooltipBottom - TooltipHeight;
+		let lineY = (aboveButton ? tooltipBottom - pad - linesHeight : tooltipY + YY - pad) + lineSpacing / 2;
+		for (let l of lines) {
+			DrawTextFitKD(l.str, tooltipX + TooltipWidth / 2, lineY, TooltipWidth - 2 * pad,
+				l.color || KDBaseLightGrey, KDBaseBlack, lineSize, "center", 701);
+			lineY += lineSpacing;
+		}
         FillRectKD(kdcanvas, kdpixisprites, "InventoryItemTooltip_" + object.name, {
             Left: tooltipX,
             Top: tooltipY, //- 25,
