@@ -2584,6 +2584,12 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 				KDCancelConfirmBasic();
+			} else if (KinkyDungeonDrawState == "Collection" && KDCollectionSelected) {
+				KDCollectionSelected = 0;
+				KDResetCollectionUI();
+				KinkyDungeonGameKey.keyPressed[9] = false;
+				KinkyDungeonKeybindingCurrentKey = '';
+				KDCancelConfirmBasic();
 			} else if (KDAlternateInventoryRender()) {
 				KDResetAlternateInventoryRender();
 				KinkyDungeonGameKey.keyPressed[9] = false;

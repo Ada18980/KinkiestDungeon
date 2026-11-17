@@ -1213,20 +1213,20 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 	let xpad = 24;
 	for (let i = 0; i < KDCollectionTabStatusOptions.length; i++) {
 		let option = KDCollectionTabStatusOptions[i];
+		// Down-left/down-right switch to the first/second tab
+		let tabHotkey = i == 0 ? KinkyDungeonKey[6] : (i == 1 ? KinkyDungeonKey[7] : "");
 		DrawButtonKDEx("collectionTab" + option, (_b) => {
-			if (KDCollectionTabStatus != option && KDCollectionSelected
-				&& KDGameData.Collection[KDCollectionSelected]?.status != "Servant") {
-				KDCollectionSelected = 0;
-				KDResetCollectionUI();
-			}
-			KDCollectionTabStatus = option;
+			KDSetCollectionTabStatus(option);
 			return true;
 		},true,
 		x + xpad/2 + KDCollectionColumns * KDCollectionSpacing/2 - 400 + i * ww/KDCollectionTabStatusOptions.length,
 		y - KDCollectionSpacing + 12 + (1+ KDCollectionGuestRows)*KDCollectionSpacing,
 		ww/KDCollectionTabStatusOptions.length - xpad, 50, TextGet("KDCollectionTabStatusOption_" + option), KDBaseWhite, "",
-		"", false, KDCollectionTabStatus != option, KDButtonColor, undefined, undefined, {centered: true}
-		);
+		"", false, KDCollectionTabStatus != option, KDButtonColor, undefined, undefined, {
+			centered: true,
+			hotkey: (tabHotkey && KDCollectionTabStatus != option) ? KDHotkeyToText(tabHotkey) : undefined,
+			hotkeyPress: tabHotkey || undefined,
+		});
 	}
 
 
@@ -1296,6 +1296,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 	let entries = KDCollectionListEntries;
 	let guests = KDCollectionListGuests;
 	let selectedIndex = entries.findIndex((value) => {return value.id == KDCollectionSelected;}) + 1;
+	let servantselected = KDGameData.Collection[KDCollectionSelected]?.status == "Servant";
 
 	let rendered: KDCollectionEntry[] = [];
 	KDDrawScrollableList(KDCollectionListID, true, (
@@ -1315,7 +1316,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 				let hk = selectedIndex > 0
 					? KDFindHotkeyInGrid(index, selectedIndex - 1, entries, KDCollectionColumns,
 						KinkyDungeonKey[0], KinkyDungeonKey[2], KinkyDungeonKey[1], KinkyDungeonKey[3])
-					: (index == 0 ? KinkyDungeonKey[3] : "");
+					: ((index == 0 && !servantselected) ? KinkyDungeonKey[3] : "");
 				let XX = list.x + i * KDCollectionSpacing;
 				let YY = list.y + KDCollectionSpacing * visualIndex;
 				if (fullyVisible) rendered.push(value);
@@ -1347,9 +1348,32 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 	let XX = x;
 	let column = 0;
 
+	let shownServants = guests.slice(0, KDCollectionColumns * KDCollectionGuestRows);
+	let servantIndex = shownServants.findIndex((value) => {return value.id == KDCollectionSelected;});
+	// hotkey to jump to servants
+	if (shownServants.length > 0) {
+		// add invisible buttons for this functionality
+		for (let key of [KinkyDungeonKey[5], KinkyDungeonKey[4]]) {
+			if (servantIndex < 0 && key == KinkyDungeonKey[5]) continue;
+			DrawButtonKDEx("collservantjump_" + key, (_data) => {
+				KDCollectionSelectEntry(shownServants[0].id, false);
+				return true;
+			}, true, PIXIWidth, PIXIHeight, 10, 10, "", KDBaseWhite, "", undefined, undefined, true,
+			undefined, undefined, undefined, 
+			{
+				invisible: true,
+				hotkeyPress: key
+			});
+		}
+	}
+
 	for (let i = 0; i < KDCollectionColumns * KDCollectionGuestRows; i++) {
 		if (i < guests.length) {
-			KDDrawCollectionEntry(kdcanvas, guests[i], XX, YY, "_guest,", true, drawCallback);
+			let hk = servantIndex >= 0
+				? KDFindHotkeyInGrid(i, servantIndex, shownServants, KDCollectionColumns,
+					KinkyDungeonKey[0], KinkyDungeonKey[2], KinkyDungeonKey[1], KinkyDungeonKey[3])
+				: (i == 0 ? KinkyDungeonKey[5] : "");
+			KDDrawCollectionEntry(kdcanvas, guests[i], XX, YY, "_guest,", true, drawCallback, hk);
 		} else {
 			// Render empty square
 			FillRectKD(kdcanvas, kdpixisprites, "guestslot_" + i, {
@@ -1433,6 +1457,15 @@ function KDResetCollectionScroll() {
 		list.visual_index = 0;
 	}
 	ForceUpdateList(KDCollectionListID);
+}
+
+function KDSetCollectionTabStatus(option: string) {
+	if (KDCollectionTabStatus != option && KDCollectionSelected
+		&& KDGameData.Collection[KDCollectionSelected]?.status != "Servant") {
+		KDCollectionSelected = 0;
+		KDResetCollectionUI();
+	}
+	KDCollectionTabStatus = option;
 }
 
 function KDCollectionSelectEntry(id: number, scroll: boolean) {

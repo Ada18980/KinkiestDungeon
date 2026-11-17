@@ -873,7 +873,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 						// y
 						buffer.data[i+1] = matrix[i+1] + (BasicMesh[i+1]) * intensity * Zoom;
 
-						drawDots(x, width, y, height, i);
+						if (KDSubmeshEditor) drawDots(x, width, y, height, i);
 
 						x += 1;
 						if (x >= width) {
@@ -889,7 +889,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 						let height = 2;
 						for (let i = 0; i + 1 < buffer.data.length; i+= 2)
 						{
-							drawDots(x, width, y, height, i);
+							if (KDSubmeshEditor) drawDots(x, width, y, height, i);
 							
 
 							x += 1;
@@ -908,7 +908,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 						let height = 10;
 						for (let i = 0; i + 1 < buffer.data.length; i+= 2)
 						{
-							drawDots(x, width, y, height, i);
+							if (KDSubmeshEditor) drawDots(x, width, y, height, i);
 							
 
 							x += 1;
@@ -927,7 +927,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 						let height = 30;
 						for (let i = 0; i + 1 < buffer.data.length; i+= 2)
 						{
-							drawDots(x, width, y, height, i);
+							if (KDSubmeshEditor) drawDots(x, width, y, height, i);
 							
 
 							x += 1;
