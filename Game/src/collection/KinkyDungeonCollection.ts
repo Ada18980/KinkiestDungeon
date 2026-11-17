@@ -1163,6 +1163,25 @@ function KDResetCollectionUI() {
 	KDRefreshCharacter.get(KDSpeakerNPC);
 }
 
+let KDCollectionGenPerFrame = 4;
+let KDCollectionGenThisFrame = 0;
+
+let KDCollFilterCache: Map<number, {key: string, str: string}> = new Map();
+
+function KDCollFilterString(value: KDCollectionEntry): string {
+	let key = value.name + "|" + value.type + "|" + (value.Faction || "");
+	let cached = KDCollFilterCache.get(value.id);
+	if (cached?.key == key) return cached.str;
+	let str = [
+		value.name,
+		value.type || "",
+		TextGet("Name" + value.type),
+		value.Faction ? TextGet("KinkyDungeonFaction" + value.Faction) : "",
+	].join("\n").toLocaleUpperCase();
+	KDCollFilterCache.set(value.id, {key: key, str: str});
+	return str;
+}
+
 function KDCollectionEntryTooltip(value: KDCollectionEntry): HoverObject {
 	let lines: {str: string, color?: string}[] = [
 		{str: TextGet("Name" + value.type)},
@@ -1187,6 +1206,7 @@ function KDCollectionEntryTooltip(value: KDCollectionEntry): HoverObject {
 
 function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: KDCollectionEntry, X: number, Y: number) => void) {
 	if (!KDGameData.CollectionSorted) KDSortCollection();
+	KDCollectionGenThisFrame = 0;
 
 	let XX = x;
 	let YY = y + KDCollectionSpacing * (KDCollectionGuestRows + 1);
@@ -1316,20 +1336,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 	let cf = KDCollFilter ? KDCollFilter.toLocaleUpperCase() : null;
 	// Iterate thru the collection, parting out the notable ones to the top
 	for (let value of KDGameData.CollectionSorted) {
-		if (value.status) KDGetPersistentNPC(value.id); // All guests and servants are persistent
-		if (cf && !((
-			value.name.toLocaleUpperCase()
-				.includes(cf)
-		) || (
-			value.type?.toLocaleUpperCase()
-				.includes(cf)
-		) || (
-			TextGet("Name" + value.type).toLocaleUpperCase()
-				.includes(cf)
-		) || (
-			value.Faction && TextGet("KinkyDungeonFaction" + value.Faction).toLocaleUpperCase()
-				.includes(cf)
-		))) {
+		if (cf && !KDCollFilterString(value).includes(cf)) {
 			continue;
 		}
 		if (value.status == "Servant") {
@@ -1346,6 +1353,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 		if (II++ < KDCollectionIndex || row >= KDCollectionRows) continue;
 
 		rendered.push(value);
+		if (value.status) KDGetPersistentNPC(value.id); // All guests and servants are persistent
 
 		let sp = (value.sprite || value.type);
 		let dir = "Enemies/";
@@ -1361,7 +1369,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 		let drawChar = false;
 		if (((KDToggles.ShowServantNPCSprites && value.status == "Servant")
-			|| (KDToggles.ShowOtherNPCSprites && value.status != "Servant"))) {
+			|| (KDToggles.ShowOtherNPCSprites && value.status != "Servant"))
+			&& (KDNPCChar.get(value.id) || KDCollectionGenThisFrame++ < KDCollectionGenPerFrame)) {
 			if (!KDNPCChar.get(value.id)) KDGenCharForCollection(value, enemyType);
 			let char = KDNPCChar.get(value.id);
 			// We refresh
@@ -1470,6 +1479,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 		if (i < guests.length) {
 			// We have a member
 			let value = guests[i];
+			KDGetPersistentNPC(value.id); // All guests and servants are persistent
 			let sp = (value.sprite || value.type);
 			let dir = "Enemies/";
 			let enemyType = value.Enemy || KinkyDungeonGetEnemyByName(value.type);
@@ -1484,7 +1494,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 			let drawChar = false;
 			if (((KDToggles.ShowServantNPCSprites && value.status == "Servant")
-				|| (KDToggles.ShowOtherNPCSprites && value.status != "Servant"))) {
+				|| (KDToggles.ShowOtherNPCSprites && value.status != "Servant"))
+				&& (KDNPCChar.get(value.id) || KDCollectionGenThisFrame++ < KDCollectionGenPerFrame)) {
 				if (!KDNPCChar.get(value.id)) KDGenCharForCollection(value, enemyType);
 				let char = KDNPCChar.get(value.id);
 				// We refresh
@@ -1617,6 +1628,7 @@ function KDSortCollection() {
 
 	for (let value of Object.values(KDGameData.Collection)) {
 		KDValidateEscapeGrace(value);
+		if (value.status) KDGetPersistentNPC(value.id); // All guests and servants are persistent
 	}
 
 
@@ -1628,6 +1640,8 @@ function KDSortCollection() {
 	}
 
 	KDGameData.Collection = newCollection;
+
+	KDCollFilterCache = new Map();
 
 
 	KDGameData.CollectionGuests = 0;
