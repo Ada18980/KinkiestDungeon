@@ -6240,16 +6240,22 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		enemy.gxx = enemy.gx;
 		enemy.gyy = enemy.gy;
 	}
-
-	if (KDEnemyHasFlag(enemy, "runAway") || (
+	let forceAvoid = (
 		KDAllyHasOrder(enemy, "Avoidant")
 		&& (
 			player != KDPlayer() && KDHostile(enemy, player)
 		)
-	)) {
+	);
+
+	if (KDEnemyHasFlag(enemy, "runAway") || forceAvoid) {
 		AIData.followRange = 5.9;
-		if (AIData.playerDist > 1.5 || KDRandom() < 0.75)
+		if (AIData.playerDist > 1.5 || (AIData.playerDist > 1.5 && forceAvoid) || KDRandom() < 0.75) {
 			AIData.kite = true;
+			if (forceAvoid) {
+				KDAddThought(enemy.id, "Avoid", 3, 2);
+			}
+		}
+			
 	}
 
 	// Movement loop
@@ -6466,6 +6472,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							))
 						) {
 							anchorfail = true;
+							KDAddThought(enemy.id, KDAllyHasOrder(enemy, "Passive") ? "Passive" : "Defend", 6, 2);
 						}
 						
 						if (T >= 8 || (enemy.path && !AIData.canSeePlayer) || (!AIData.canSeePlayer && !(enemy.Enemy.stopToCast && AIData.canShootPlayer))) {
@@ -6524,6 +6531,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 										)
 									) {
 										anchorfail = true;
+										KDAddThought(enemy.id, KDAllyHasOrder(enemy, "Passive") ? "Passive" : "Defend", 6, 2);
 									}
 									
 									if (anchorfail || 
