@@ -2254,7 +2254,6 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					if (tile?.Furniture) {
 						let furn = KDFurniture[tile.Furniture];
 						if (furn) {
-							KinkyDungeonSetFlag("GuardCalled", 50);
 							let rest = KinkyDungeonGetRestraint(
 								{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
 								KDCurrIndex(),
@@ -2494,7 +2493,6 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					if (tile?.Furniture) {
 						let furn = KDFurniture[tile.Furniture];
 						if (furn) {
-							KinkyDungeonSetFlag("GuardCalled", 50);
 							let rest = KinkyDungeonGetRestraint(
 								{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
 								KDCurrIndex(),
@@ -2520,7 +2518,6 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						if (tile?.Furniture) {
 							let furn = KDFurniture[tile.Furniture];
 							if (furn) {
-								KinkyDungeonSetFlag("GuardCalled", 50);
 								let rest = KinkyDungeonGetRestraint(
 									{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
 									KDCurrIndex(),
