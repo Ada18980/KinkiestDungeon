@@ -1632,7 +1632,7 @@ function KDSortCollection() {
  * @param enemy
  */
 function KDGenEnemyName(enemy: entity): string {
-	if (enemy?.Enemy?.nonHumanoid) return TextGet("Name" + enemy.Enemy.name);
+	if (enemy?.Enemy?.nonHumanoid || enemy?.Enemy?.noName) return TextGet("Name" + enemy.Enemy.name);
 	let faction = KDGetFaction(enemy) || KDGetFactionOriginal(enemy);
 	let nameList = KDFactionProperties[faction]?.nameList ? KDFactionProperties[faction].nameList[Math.floor(Math.random() * KDFactionProperties[faction].nameList.length)] : faction;
 	if (enemy.Enemy?.nameList) nameList = enemy.Enemy?.nameList;
