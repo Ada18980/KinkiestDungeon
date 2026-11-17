@@ -6534,6 +6534,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {"bed":100},
 		playerTags: {},
 		minLevel: 0,
+		allFloors: true,
 		floors: KDMapInit([]),
 		shrine: ["Furniture", "HandsBehind", "BlockKneel", "DiscourageHogtie", "LieDown"],
 		ignoreSpells: true,
