@@ -1150,7 +1150,6 @@ let KDNPCChar: Map<number, Character> = new Map();
 let KDNPCChar_ID: Map<Character, number> = new Map();
 let KDNPCStyle = new Map();
 let KDCollectionSelected = 0;
-let KDCollectionIndex = 0;
 let KDCollectionGuestRows = 2;
 let KDCollectionRows = 6;
 let KDCollectionColumns = 10;
@@ -1199,8 +1198,8 @@ function KDCollectionEntryTooltip(value: KDCollectionEntry): HoverObject {
 		{
 			TitleTextColorBack: (value.color && value.color != KDBaseWhite && value.color != "#ffffff") ?
 				value.color
-				: KDTextGray05,
-			lines: lines,
+				: KDTextWhite,
+			extralines: lines,
 		});
 }
 
@@ -1208,57 +1207,6 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 	if (!KDGameData.CollectionSorted) KDSortCollection();
 	KDCollectionGenThisFrame = 0;
 
-	let XX = x;
-	let YY = y + KDCollectionSpacing * (KDCollectionGuestRows + 1);
-	let column = 0;
-	let row = 0;
-
-	let II = 0;
-	let selectedIndex = 0;
-
-
-	if (KDCollectionIndex + KDCollectionRows * KDCollectionColumns < KDGameData.CollectionSorted.length) {
-		DrawButtonKDEx("collDOWN", (_b) => {
-			KDCollectionIndex = Math.max(
-				0,
-				Math.min(
-					KDCollectionIndex + KDCollectionColumns,
-					Math.floor(KDGameData.CollectionSorted.length / KDCollectionColumns) * KDCollectionColumns));
-			return true;
-		},true,
-		1700, 870, 125, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png",
-		"", false, false, KDButtonColor, undefined, undefined, {centered: true}
-		);
-	}
-	if (KDCollectionIndex > 0) {
-		DrawButtonKDEx("collUP", (_b) => {
-			KDCollectionIndex = Math.max(
-				0,
-				Math.min(
-					KDCollectionIndex - KDCollectionColumns,
-					Math.floor(KDGameData.CollectionSorted.length / KDCollectionColumns) * KDCollectionColumns));
-			return true;
-		},true,
-		1700, 100, 125, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png",
-		"", false, false, KDButtonColor, undefined,
-		undefined, {centered: true}
-		);
-
-	}
-
-	if (KDClipCollectionIndex) {
-		KDClipCollectionIndex = true;
-		KDCollectionIndex = Math.max(
-			0,
-			Math.min(
-				KDCollectionIndex,
-				Math.floor(KDGameData.CollectionSorted.length / KDCollectionColumns) * KDCollectionColumns));
-	}
-
-	KDDraw(kdcanvas, kdpixisprites, "collScrollBar",
-		KinkyDungeonRootDirectory + "UI/Checked.png",
-		1775, 125 + 590*(KDCollectionIndex/Math.max(1, KDGameData.CollectionSorted.length)), 60, 60
-	);
 	if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
 
 	let ww = 800;
