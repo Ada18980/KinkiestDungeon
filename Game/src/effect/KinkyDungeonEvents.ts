@@ -8018,6 +8018,8 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				for (let en of list)
 					if (en && en.buffs?.AllySelect) {
 						KinkyDungeonSetEnemyFlag(en, "Defensive", 0);
+						KinkyDungeonSetEnemyFlag(en, "Passive", 0);
+						KinkyDungeonSetEnemyFlag(en, "Avoidant", 0);
 					}
 			}
 		},

@@ -6249,7 +6249,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 	if (KDEnemyHasFlag(enemy, "runAway") || forceAvoid) {
 		AIData.followRange = 5.9;
-		if (AIData.playerDist > 1.5 || (AIData.playerDist > 1.5 && forceAvoid) || KDRandom() < 0.75) {
+		if (AIData.playerDist > 1.5 || KDRandom() < 0.75) {
 			AIData.kite = true;
 			if (forceAvoid) {
 				KDAddThought(enemy.id, "Avoid", 3, 2);
@@ -12377,7 +12377,8 @@ function KDGetAllyOrderAnchor(enemy: entity, player: entity): KDOrderAnchor | nu
 	if (KDEnemyHasFlag(enemy, "StayHere")
 		&& enemy.orderX != undefined)
 		return {x: enemy.orderX, y: enemy.orderY, radius: 0.5};
-	if (KDEnemyHasFlag(enemy, "Defensive") && player?.player)
+	if ((KDAllyHasOrder(enemy, "Avoidant")
+		|| KDEnemyHasFlag(enemy, "Defensive")) && player?.player)
 		return {x: player.x, y: player.y,
 		radius: KDAllyHasOrder(enemy, "Avoidant") ? KDDefensiveAvoidant : KDDefensiveRadius}; // e.g. 2
 	return null;
