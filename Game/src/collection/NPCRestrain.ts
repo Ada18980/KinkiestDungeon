@@ -1453,6 +1453,7 @@ function KDTriggerNPCEscape(maxNPC: number = 10) {
 			let entity = DialogueCreateEnemy(point.x, point.y, value.type, value.id, true)
 			if (entity) {
 				entity.hp = entity.Enemy.maxhp;
+				entity.IntentAction = "Escape";
 
 				KDSetToExpectedBondage(entity, -1);
 

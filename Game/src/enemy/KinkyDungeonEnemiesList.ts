@@ -1157,7 +1157,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		visionRadius: 8, maxhp: 24, minLevel:7, weight:3, movePoints: 3, spellRdy: true,
 		spellResist: 1.5, attackLock: "Purple",
 		attackPoints: 4, attack: "MeleeLockAllWillSpellBind", attackWidth: 1, attackRange: 1, power: 3, dmgType: "tickle",
-		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -4, "open": 20, "passage": -20, "conjureAnger": 20, "conjureRage": 70, "increasingWeight":0.5, "witch": 30},
+		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -4, "open": 20, "passage": -20, "conjureAnger": 20,
+			"conjureRage": 70, "increasingWeight":0.5, "witch": 30},
 		allFloors: true, shrines: ["Conjure"],
 		dropTable: [{name: "MagicSword", weight: 1, ignoreInInventory: true}, {name: "MagicSpear", weight: 1, ignoreInInventory: true}, {name: "MagicAxe", weight: 1, ignoreInInventory: true}, {name: "MagicFlail", weight: 1, ignoreInInventory: true}, {name: "MagicHammer", weight: 1, ignoreInInventory: true}, {name: "BlueKey", weight: 2}]},
 	{name: "ConjurerTickler", nameList: "witch", faction: "Witch", clusterWith: "apprentice", bound: "ConjurerTickler", outfit: "Conjurer", style: "Necromancer", playLine: "Witch",
@@ -1171,7 +1172,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxblock: 3,
 		maxdodge: 1,
 		attackPoints: 4, attack: "MeleeLockAllWillSpellBind", attackWidth: 1, attackRange: 1, power: 3, dmgType: "tickle",
-		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -4, "open": 20, "passage": -20, "conjureAnger": 20, "conjureRage": 70, "increasingWeight":0.5, "witch": 30},
+		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -4, "open": 20, "passage": -20, "conjureAnger": 20,
+			"conjureRage": 70, "increasingWeight":0.5, "witch": 30, Less_Tickle: -1000},
 		allFloors: true, shrines: ["Conjure"],
 		dropTable: [{name: "MagicSword", weight: 1, ignoreInInventory: true}, {name: "MagicSpear", weight: 1, ignoreInInventory: true}, {name: "MagicAxe", weight: 1, ignoreInInventory: true}, {name: "MagicFlail", weight: 1, ignoreInInventory: true}, {name: "MagicHammer", weight: 1, ignoreInInventory: true}, {name: "BlueKey", weight: 2}]},
 
@@ -5259,7 +5261,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxblock: 0,
 		maxdodge: 0,
 		attackWidth: 3, tilesMinRange: 1, attackRange: 1, power: 1, dmgType: "tickle", ondeath: [{type: "spellOnSelf", spell: "Feathers"}],
-		terrainTags: {"secondhalf":2, "lastthird":-1, "increasingLevel": -0.25, revenge: 7, "Less_Tickle": -10, "doortrap": 8}, allFloors: true, shrines: [], difficulty: 0.7, },
+		terrainTags: {"secondhalf":2, "lastthird":-1, "increasingLevel": -0.25, revenge: 7, "Less_Tickle": -100, "doortrap": 8}, allFloors: true, shrines: [], difficulty: 0.7, },
 	{name: "Scarves", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["ignoreharmless", "construct", "nosignal", "flying", "poisonresist", "soulimmune", "melee", "scarfRestraints", "minor", "firesevereweakness", "acidweakness", "soapweakness", "slashweakness", "meleeresist", "doortrap"]), ignorechance: 0.75, armor: 0, followRange: 1, AI: "hunt",  ignoreflag: ["scarves"], failAttackflag: ["scarves"], squeeze: true,
 		visionRadius: 3, visionSummoned: 12, maxhp: 1, minLevel: 0, maxLevel: 3, weight:1, movePoints: 1.5, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "plush", fullBoundBonus: 1,
 		Attack: {

@@ -18,6 +18,8 @@ function KinkyDungeonAggressive(enemy?: entity, player?: entity): boolean {
 		return false;
 	}
 	// Non player mode
+	if (enemy.IntentAction && KDIntentEvents[enemy.IntentAction]?.ignoreNonPlayer
+		&& KDGetFaction(player) != "Player") return false;
 	return KDHostile(enemy, player) && (!!enemy.hostile || !!player.hostile || (
 		KDGetFaction(enemy) != "Player"
 		&& KDGetFaction(player) != "Player") || (

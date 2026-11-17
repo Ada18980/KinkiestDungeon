@@ -3666,6 +3666,7 @@ type EnemyEvent = {
 	forceattack?: boolean,
 	aggressive?: boolean,
 	nonaggressive?: boolean,
+	ignoreNonPlayer?: boolean,
 	play?: boolean,
 	noplay?: boolean,
 	/** This event wont get cleared by mass resets, like when you are deposited into a cage */

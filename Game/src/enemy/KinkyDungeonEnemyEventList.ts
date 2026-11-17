@@ -1418,6 +1418,85 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			return false;
 		},
 	},
+	"Escape": {
+		// Try to escape, bring to dropoff if player is sighted
+		aggressive: true,
+		nonaggressive: true,
+		noplay: true,
+		forceattack: true,
+		isCapturing: true,
+		ignoreNonPlayer: true,
+		weight: (enemy, aiData, _allied, hostile, _aggressive) => {
+			if (KDEntityIsPlayerFaction(enemy)) return 0;
+			if (KDMapData.MapFaction != "Player") return 0;
+			return hostile
+				&& !KDEnemyHasFlag(enemy, "dontChase") ? 100000 : 0;
+		},
+		trigger: (enemy, aiData) => {
+			KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 30);
+			enemy.playWithPlayer = 0;
+			enemy.IntentAction = 'Escape';
+			let focusEscape = !enemy.aware;
+
+			if (!focusEscape) {
+				focusEscape = KDLeashConditionFails(enemy, aiData)
+					|| KDIsInNonLeashableFurniture(KDPlayer())
+					|| !KDEnemyJailOrLeashing(enemy)
+					|| !KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])
+			}
+			if (!focusEscape)
+				enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]);
+		},
+		maintain: (enemy, _delta, aiData) => {
+			let focusEscape = !enemy.aware;
+
+			if (!focusEscape) {
+				focusEscape = KDLeashConditionFails(enemy, aiData)
+					|| KDIsInNonLeashableFurniture(KDPlayer())
+					|| !KDEnemyJailOrLeashing(enemy)
+					|| !KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])
+			}
+
+			if (!enemy.IntentLeashPoint && !focusEscape)
+				enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]);
+
+			if (!enemy.IntentLeashPoint || focusEscape) {
+				// focus on getting away!
+				KinkyDungeonSetEnemyFlag(enemy, "dontChase", 4);
+				KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 4);
+				KinkyDungeonSetEnemyFlag(enemy, "gentle", 4);
+				enemy.gx = KDMapData.StartPosition.x;
+				enemy.gy = KDMapData.StartPosition.y;
+
+				//KDResetIntent(enemy, aiData);
+				return false;
+			}
+			return false;
+		},
+		
+		arrive: (enemy, aiData) => {
+			let focusEscape = !enemy.aware;
+
+			if (!focusEscape) {
+				focusEscape = KDLeashConditionFails(enemy, aiData)
+					|| KDIsInNonLeashableFurniture(KDPlayer())
+					|| !KDEnemyJailOrLeashing(enemy)
+					|| !KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])
+			}
+			if (!focusEscape && enemy.IntentLeashPoint) {
+				KinkyDungeonSetFlag("TeaseOnLeash", 2);
+				if (KDCaptureParoleMistake(enemy, aiData)) return true;
+				(aiData as KDAIData).defeat = true;
+				(aiData as KDAIData).forceRegularDefeat = true;
+				//KDBreakTether(KinkyDungeonPlayerEntity);
+				if (KinkyDungeonAutoWait) {
+					KDUpdateWaitTime(KDDelayWaitTime());
+				}
+			}
+			
+			return false;
+		},
+	},
 	"Follow": {
 		// Follow for 2 turns
 		aggressive: true,

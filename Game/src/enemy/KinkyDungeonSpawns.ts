@@ -329,7 +329,8 @@ function KDEntityCanBeGuard(en: entity, faction: string, requireTags: string[]):
  * @param normalDrops
  * @param [requireTags]
  */
-function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, normalDrops: boolean, requireTags?: string[], faction?: string, jailtag?: string): entity {
+function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, normalDrops: boolean,
+	requireTags?: string[], faction?: string, jailtag?: string): entity {
 	//if (!noTransgress)
 	// KinkyDungeonAggroAction('call', {});
 	let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, true, true);
@@ -379,7 +380,7 @@ function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, nor
 				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 
 			if (mainFaction) guard.faction = mainFaction;
-			if (mainFaction == "Player") guard.faction = "Enemy";
+			//if (mainFaction == "Player") guard.faction = "Enemy";
 			KinkyDungeonSetEnemyFlag(guard, "norep", -1);
 			KDGameData.JailGuard = guard.id;
 			guard = KDAddNewEntity(guard);
