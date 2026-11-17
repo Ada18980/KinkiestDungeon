@@ -1074,7 +1074,8 @@ function KDDrawStatusResources(x: number, y: number, width: number) {
 			return true;
 		}, true, xx + size/2 - spacing/2, y, spacing, size, "", KDButtonColor, undefined, undefined, false, true,
 		KDBaseBlack, undefined, undefined, 
-		{zIndex: 89, invisible: true}, KDButtonTooltip(TextGet(r.name), undefined, "right"));
+		{zIndex: 89, invisible: true}, KDButtonTooltip(
+			TextGet(r.name) + ": " + r.count, undefined, "right"));
 	}
 
 

@@ -6443,8 +6443,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				//enemy.aware = true;
 
 				
-				// if an order anchor is set we follow it IF we are in defensive mode
-				let anchor = KDAllyHasOrder(enemy, "Defensive") ? AIData.orderAnchor : null;
+				// if an order anchor is set we follow it unless holding still
+				let anchor = KDAllyHasOrder(enemy, "StayHere") ? null : AIData.orderAnchor;
 
 				if (anchor && KDistChebyshev(enemy.gx - anchor.x, enemy.gy - anchor.y) > anchor.radius) {
 					enemy.gx = anchor.x;
@@ -6491,11 +6491,11 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 									KDistEuclidean(
 										player.x - anchor.x,
 										player.y - anchor.y,
-									) > anchor.radius + AIData.followRange
-									&& KDistEuclidean(
+									) <= anchor.radius + AIData.followRange
+									|| KDistEuclidean(
 										player.x - anchor.x,
 										player.y - anchor.y,
-									) > KDistEuclidean(
+									) <= KDistEuclidean(
 										enemy.x - anchor.x,
 										enemy.y - anchor.y,
 									)
@@ -12371,6 +12371,7 @@ interface KDOrderAnchor {
 	radius: number }
 let KDDefensiveRadius = 1.5; // will target enemies this close to the player
 let KDDefensiveAvoidant = 4.5;
+let KDAggressiveRadius = 7.5;
 
 function KDGetAllyOrderAnchor(enemy: entity, player: entity): KDOrderAnchor | null {
 	if (KDHostile(enemy) || KDIgnoresAllyOrders(enemy)) return null;
@@ -12380,6 +12381,10 @@ function KDGetAllyOrderAnchor(enemy: entity, player: entity): KDOrderAnchor | nu
 	if ((KDAllyHasOrder(enemy, "Avoidant")
 		|| KDEnemyHasFlag(enemy, "Defensive")) && player?.player)
 		return {x: player.x, y: player.y,
-		radius: KDAllyHasOrder(enemy, "Avoidant") ? KDDefensiveAvoidant : KDDefensiveRadius}; // e.g. 2
+		radius: KDAllyHasOrder(enemy, "Avoidant") ? KDDefensiveAvoidant : KDDefensiveRadius};
+	if (KDAllied(enemy) && player?.player
+		&& !KDAllyHasOrder(enemy, "NoFollow")
+		&& (KDEnemyDoesFollow(enemy) || KDEnemyHasFlag(enemy, "FollowMe")))
+		return {x: player.x, y: player.y, radius: KDAggressiveRadius};
 	return null;
 }
