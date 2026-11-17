@@ -76,14 +76,31 @@ Must do
 - Proper stripping
 - species perks
 
+5.5.14
+
 5.5.13
 - Reduced VRAM usage by a lot (50% for desktop, 75% for mobile)
 - Can now push barrels, etc
 - Fixed hold still/defensive not really working
-- New 'avoidant' stance for allies
 - Made enemies escape properly in the summit instead of trying to leash you
 - Can now dispel puppet strings by walking into them
 - Shopkeeper now uses They/Them pronouns
+- New 'avoidant' stance for allies
+- New 'passive' stance for allies
+- Allied puppetmasters now have a limit on how many puppets they can summon
+- Collection list reworked to use smoother scrolling list
+- Fixed potential epilepsy trigger due to binding bars in the collection
+- Fixed the positive/negative opinion filters in the collection not being accurate
+- Inventory filters now mutually exclusive
+- Moved keys, lockpicks, etc to the status bars area
+- Stairs now only activate when manually waited on
+- Like the Wind now activates at 75% stamina instead of 95%, cost increased to 2.5
+- Cyber Doll Storage and Doll Shoppe starts now share a tag, cant start with both (and crash)
+- Save on entering the end screen (to avoid having to re-fight the dollmaker)
+- Fixed a bug where all NPCs were counted as artificial
+- Fixed a bug that prevented the doll body from being applied when transformed
+- NPCs in summit now get set to non-hostile when summoned
+- Hypno buttons are clickable faster
 
 
 5.5.12

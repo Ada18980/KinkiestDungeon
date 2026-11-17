@@ -2274,7 +2274,14 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (en && en.buffs?.AllySelect) {
 				en.gx = targetX;
 				en.gy = targetY;
-				KinkyDungeonSetEnemyFlag(en, "NoFollow", 9000);
+				if (en.flags?.NoFollow == -1) {
+					en.orderX = targetX;
+					en.orderY = targetY;
+				} else {
+					KinkyDungeonSetEnemyFlag(en, "NoFollow", 50);
+					en.orderX = targetX;
+					en.orderY = targetY;
+				}
 				succeed = true;
 			}
 			
