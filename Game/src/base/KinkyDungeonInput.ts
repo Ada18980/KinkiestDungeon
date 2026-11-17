@@ -51,6 +51,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		KinkyDungeonToggleAutoSprint = data.sprint;
 		KinkyDungeonSuppressSprint = data.SuppressSprint;
 		KinkyDungeonConfirmStairs = true;
+		KinkyDungeonSetFlag("waitIntentional", 1);
         if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ClickError.ogg");
 		return KinkyDungeonMove(data.dir, data.delta, data.AllowInteract, data.SuppressSprint) ? "move" : "nomove";
 	},
