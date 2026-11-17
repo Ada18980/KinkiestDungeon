@@ -2356,9 +2356,10 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 						if (bubble.index + bubble.duration >= KinkyDungeonCurrentTick && (enemy.ambushtrigger || !KDAIType[KDGetAI(enemy)]?.ambush)) {
 							bb = true;
 							let name = CommonTime() % 1000 < 500 ? "Thought" : bubble.name;
-							if (name != "Thought" || !((enemy.lifetime != undefined || enemy.hp < enemy.Enemy.maxhp || enemy.boundLevel)))
+							if (name != "Thought")// || !((enemy.lifetime != undefined || enemy.hp < enemy.Enemy.maxhp || enemy.boundLevel)))
 								KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_th", KinkyDungeonRootDirectory + `Conditions/Thought/${name}.png`,
-									canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
+									canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + 8,
+									canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + 6,
 									KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 										zIndex: 23,
 									});
