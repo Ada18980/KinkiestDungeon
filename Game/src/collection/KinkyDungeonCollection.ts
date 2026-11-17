@@ -1460,12 +1460,19 @@ function KDResetCollectionScroll() {
 }
 
 function KDSetCollectionTabStatus(option: string) {
-	if (KDCollectionTabStatus != option && KDCollectionSelected
-		&& KDGameData.Collection[KDCollectionSelected]?.status != "Servant") {
-		KDCollectionSelected = 0;
-		KDResetCollectionUI();
-	}
+	if (KDCollectionTabStatus == option) return;
 	KDCollectionTabStatus = option;
+
+	if (KDGameData.Collection[KDCollectionSelected]?.status == "Servant") {
+		KDPopulateCollectionList();
+		KDResetCollectionScroll();
+		if (KDCollectionListEntries.length > 0) {
+			KDCollectionSelectEntry(KDCollectionListEntries[0].id, false);
+		} else if (KDCollectionSelected) {
+			KDCollectionSelected = 0;
+			KDResetCollectionUI();
+		}
+	}
 }
 
 function KDCollectionSelectEntry(id: number, scroll: boolean) {
