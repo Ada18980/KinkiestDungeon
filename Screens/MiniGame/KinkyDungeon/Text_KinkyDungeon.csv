@@ -28493,6 +28493,9 @@ m_FashionNeoSteelBeltRadial,FashionNeoSteelBeltRadial
 m_FashionNeoSteelBeltRadial_l_BaseMetal,BaseMetal
 m_FashionNeoSteelBeltRadial_l_Lock,Lock
 
+m_LeatherPants_l_LegRight,LegRight
+m_FutureBox_l_BackFadeLocked,BackFadeLocked
+
 m_LeatherShorts,LeatherShorts
 m_LeatherShorts_l_Shorts,Shorts
 m_LeatherShorts_l_Belt,Belt

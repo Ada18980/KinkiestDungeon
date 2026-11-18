@@ -1489,6 +1489,17 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Fuuka",
 		],
 	},
+	TheWarden: {
+		Bodystyle: [
+			"Mid",
+		],
+		Facestyle: [
+			"TheWarden",
+		],
+		Hairstyle: [
+			"TheWarden",
+		],
+	},
 	Dollmaker: {
 		Bodystyle: [
 			"Default2",

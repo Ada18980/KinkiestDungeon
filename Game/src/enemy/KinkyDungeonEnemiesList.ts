@@ -6565,7 +6565,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		 shrines: [], floors:KDMapInit([]),
 		dropTable: [{name: "PotionMana", weight: 100, amount: 3}]},
 
-	{name: "TheWarden1", noName: true, recruitType: "TheWardenRecruit", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+	{name: "TheWarden1", noName: true, recruitType: "TheWardenRecruit",
+		outfit: "TheWarden", style: "TheWarden",
+		nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
 		color: "#ffaa44",
 		tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "warden", "human", "magicresist", "soulweakness", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss"]),
 		armor: 1, followRange: 3, AI: "guard",
@@ -6592,7 +6594,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackLock: "Purple",
 		 floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "bossstage", dialogue:"TheWardenStage2", click: true}]},
 
-	{name: "TheWarden2", hideName: true, recruitType: "TheWardenRecruit", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
+	{name: "TheWarden2", hideName: true, recruitType: "TheWardenRecruit", 
+		outfit: "TheWarden", style: "TheWarden",
+		nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
 		color: "#ffaa44",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "warden", "human", "soulweakness", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "stageBoss", "boss", "unflinching"]),
 		armor: 1, followRange: 3, AI: "guard",
@@ -6620,7 +6624,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackLock: "HiSec",
 		 floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue_and_die", dialogue:"TheWardenWin", click: true}]},
 
-	{name: "TheWardenRecruit", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", clusterWith: "human",
+	{name: "TheWardenRecruit", 
+		outfit: "TheWarden", style: "TheWarden",
+		nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", clusterWith: "human",
 		color: "#ffaa44",
 		tags: KDMapInit(["nosub", "leashing", "noshop", "warden", "human", "soulweakness", "magicresist", "ranged", "highsecRestraints", "leatherRestraints", "leatherRestraintsHeavy", "unflinching", "stageBossRecruit"]),
 		armor: 1, followRange: 3, AI: "guard",

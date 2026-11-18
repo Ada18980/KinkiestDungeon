@@ -78,6 +78,7 @@ AddModel({
 			DisplaceLayers: {StockingLeft: true,},
 			DisplacementSprite: "SockLSquish_Long",
 			DisplaceAmount: 10,
+			InheritColor: "LegLeft",
 
 		},
 		{ Name: "FootSockLeftHogtie", Layer: "TightPantsLeftHogtie", Pri: 5,
@@ -91,12 +92,13 @@ AddModel({
 			DisplaceLayers: {StockingRight: true,},
 			DisplacementSprite: "SockRSquish_Long",
 			DisplaceAmount: 10,
+			InheritColor: "LegRight",
 
 		},
 		{ Name: "FootSockRightKneel", Layer: "TightPantsRightKneel", Pri: 5,
 			HidePoses: ToMap(["FeetLinked"]),
 			Poses: ToMap(["Kneel"]),
-			InheritColor: "SockRight",
+			InheritColor: "LegRight",
 			Invariant: true,
 		},
 	])

@@ -3180,8 +3180,10 @@ function KDDrawSpellInfo(showbg: boolean, xOffset: number, yOffset: number, spel
 
 			
 			DrawButtonKDEx("spellbuy", (_bdata) => {
-				if (KinkyDungeonPreviewSpell.hideLearned) KDGoToScreen("MagicSpells");
-				KDSendInput("spellLearn", {SpellName: KinkyDungeonPreviewSpell.name});
+				if (KinkyDungeonPreviewSpell) {
+					if (KinkyDungeonPreviewSpell.hideLearned) KDGoToScreen("MagicSpells");
+					KDSendInput("spellLearn", {SpellName: KinkyDungeonPreviewSpell.name});
+				}
 				return true;
 			}, true, 
 				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40, 

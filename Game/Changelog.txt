@@ -77,6 +77,7 @@ Must do
 - species perks
 
 5.5.14
+- Added an outfit for the warden
 
 5.5.13
 - Reduced VRAM usage by a lot (50% for desktop, 75% for mobile)
