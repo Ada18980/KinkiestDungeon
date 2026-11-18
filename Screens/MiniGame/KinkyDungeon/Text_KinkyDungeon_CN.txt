@@ -1329,7 +1329,7 @@ Sub
 当法力值最大时，攻击可造成额外 30% 基础伤害的电击伤害。
 - Like the Wind
 风之旋律
-- While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1.
+- While above 75% stamina, you gain +30 Evasion and your slow level is reduced by 1.
 当体力超过 95 %时，闪避 +30，并且减速等级-1。
 
 - Immovable Object
@@ -25759,26 +25759,31 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: dGenericAllyStayHere
 # :: dGenericAllyStayHere_Confirm
 - (The SPEAKER follows your orders)
-( SPEAKER 听从你的命令 )
+( 确认？ )
+# :: rGenericAllyStayHere
+# :: rGenericAllyDontStayHere
 
 - (Don't stay here)
 ( 不要留在这里 )
 # :: dGenericAllyDontStayHere
 # :: dGenericAllyDontStayHere_Confirm
-- (Confirm?)
-( 确认？ )
 - (You decide you would rather the SPEAKER stay put)
 ( 你决定让 SPEAKER 留在原地 )
 
-- (Switch to Aggressive)
+- (Stance: Passive)
 ( 切换到侵略模式 )
-- (The SPEAKER will now pursue enemies)
+- (The SPEAKER switches to aggressive stance.\n${EThey} will rip and tear until it is finished)
 ( SPEAKER 现在将追击敌人 )
 
-- (Switch to Defensive)
+- (Stance: Aggressive)
 ( 切换到防御模式 )
-- (The SPEAKER will stay close to you or its assigned position)
+- (The SPEAKER switches to defensive stance.\n${EThey} will stay close to you or its assigned position)
 ( SPEAKER 将跟随你或待在指定位置 )
+
+# - (Stance: Defensive)
+# - (The SPEAKER switches to avoidant stance.\n${EThey} will move away from threats)
+# - (Stance: Avoidant)
+# - (The SPEAKER switches to passive stance.\n${EThey} will ignore everything except the player character)
 
 - (Flirting)
 ( 调情 )
@@ -47653,6 +47658,11 @@ LKTYP 锁锁在了你的一个拘束具上！
 - All selected units switch to Aggressive mode
 所有选定的队伍切换到侵略模式
 
+# - Avoidant Order
+# - All selected units switch to Avoidant mode
+# - Passive Order
+# - All selected units switch to Passive mode
+
 
 - Magic Unlock
 魔法解锁
@@ -51698,6 +51708,7 @@ AMNT/MAXX 囚犯分配
 - AMNT/MAXX Servants Assigned
 AMNT/MAXX 仆从分配
 
+# - Assigned to: ${Facility}
 - Assign servants as managers to boost the production of other facilities.|Appointing new management results in a loss of efficiency until the next cycle.
 指派仆人担任管理员，提高其他设施的效率。|新管理员提升的效率从下个周期开始才会生效。
 - Bondage Dojo
@@ -52063,6 +52074,9 @@ NPC可用性：
 面临风险
 - Escaped
 已逃脱
+# :: KDCollectionFilterEscaped
+# :: KDCollectionTooltipEscaped
+# - At risk of escaping
 - Imprisoned
 已监禁
 - Positive
@@ -55646,3 +55660,6 @@ Buttplug.io 设备${DEVICE}电量低
 # - Submesh Editor
 # - Flip lyrbonus
 # - Print SM to console
+
+
+# - Error loading save! Please copy save code and post a bug report.
