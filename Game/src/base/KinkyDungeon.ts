@@ -5,6 +5,14 @@ let KDENABLEDISCORDSYNC = false;
 
 let KDGenMapCallback: () => string = null;
 
+let KDClickStateLockoutTime = 75;
+let KDLastClickState = "";
+let KDClickStateChangeTime = 0;
+
+let KDSaveSlotScanPending = 0;
+let KDSaveSlotScanStart = 0;
+let KDSaveSlotScanTimeout = 3000;
+
 let KDMAINPORTRAITID = "MainPortraitID";
 
 let KDOptionFilter = "";
@@ -1692,6 +1700,11 @@ function KinkyDungeonRun() {
 	if (!mouseDown)
 		mouseHoldTaken = "";
 
+	if (KinkyDungeonState != KDLastClickState) {
+		KDLastClickState = KinkyDungeonState;
+		KDClickStateChangeTime = CommonTime();
+	}
+
 	if (KDButtonHovering > 0) KDButtonHovering--;
 	KDLastHoverButton = KDCurrentHoverButton;
 	KDCurrentHoverButton = null;
@@ -2067,7 +2080,7 @@ function KinkyDungeonRun() {
 		KinkyDungeonGameFlag = false;
 
 
-		if (KDSaveBusy) {
+		if (KDSavingProgress()) {
 			DrawTextKD(TextGet("KDSaveBusyMenu"), 1000, 500, KDBaseWhite, KDTextGray2);
 		} else {
 			DrawCheckboxKDEx("soundToggle", (_bada) => {
@@ -2075,7 +2088,7 @@ function KinkyDungeonRun() {
 				KDSaveToggles();
 				return true;
 			}, 
-			!KDSaveBusy, 1700, 25, 64, 64, TextGet("KDToggleSound"), KDSoundEnabled(), false, KDBaseWhite);
+			!KDSavingProgress(), 1700, 25, 64, 64, TextGet("KDToggleSound"), KDSoundEnabled(), false, KDBaseWhite);
 			// Draw temp start screen
 			if (KDLose) {
 				DrawTextKD(TextGet("End"), 1000, 250, KDBaseWhite, KDTextGray2);
@@ -2122,9 +2135,13 @@ function KinkyDungeonRun() {
 				KDRestorePlayerPronoun();
 				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 4;
 				let emptySlot = undefined;
+				KDSaveSlotScanPending = saveSlotsPerPage*maxSaveSlotPages;
+				KDSaveSlotScanStart = CommonTime();
 				for (var i = 1; i <= (saveSlotsPerPage*maxSaveSlotPages); i++) {
 					let num = (i);
-					KinkyDungeonDBLoad(num).then((code) => {
+					KinkyDungeonDBLoad(num).finally(() => {
+						KDSaveSlotScanPending--;
+					}).then((code) => {
 						loadedsaveslots[num - 1] = code;
 						let decoded = KinkyDungeonDecompressSave(code, undefined, false);
 						if (!decoded) return;
@@ -2240,11 +2257,11 @@ function KinkyDungeonRun() {
 			DrawButtonKDEx("menucredits", (_bdata) => {
 				KinkyDungeonState = "Credits";
 				return true;
-			}, !KDSaveBusy, 1850, 942, 135, 50, TextGet("KinkyDungeonCredits"), KDBaseWhite, "");
+			}, !KDSavingProgress(), 1850, 942, 135, 50, TextGet("KinkyDungeonCredits"), KDBaseWhite, "");
 			DrawButtonKDEx("menupatrons", (_bdata) => {
 				KinkyDungeonState = "Patrons";
 				return true;
-			}, !KDSaveBusy, 1700, 942, 135, 50, TextGet("KinkyDungeonPatrons"), KDBaseWhite, "");
+			}, !KDSavingProgress(), 1700, 942, 135, 50, TextGet("KinkyDungeonPatrons"), KDBaseWhite, "");
 			
 			
 			DrawTextKD(TextGet("Language") + " ->", 1675, 898, KDBaseWhite, KDTextGray2, undefined, "right");
@@ -2255,7 +2272,7 @@ function KinkyDungeonRun() {
 				localStorage.setItem("LanguageChange", "1");
 				KDRestart = true;
 				return true;
-			}, !KDSaveBusy, 1700, 874, 280, 50, localStorage.getItem("BondageClubLanguage") || "EN", KDBaseWhite, "");
+			}, !KDSavingProgress(), 1700, 874, 280, 50, localStorage.getItem("BondageClubLanguage") || "EN", KDBaseWhite, "");
 
 
 
@@ -3060,6 +3077,7 @@ function KinkyDungeonRun() {
 			}
 		}
 
+		let slotScanDone = KDSaveSlotScanPending <= 0 || CommonTime() - KDSaveSlotScanStart > KDSaveSlotScanTimeout;
 		DrawButtonKDEx("selectName", () => {
 
 			if (danger && !KDConfirmDeleteSave) {
@@ -3085,9 +3103,9 @@ function KinkyDungeonRun() {
 			}
 
 			return true;
-		}, true, (KDConfirmDeleteSave ? (Math.random() > 0.5 ? -1 : 1) : 0) + 875, KDConfirmDeleteSave ?
+		}, slotScanDone, (KDConfirmDeleteSave ? (Math.random() > 0.5 ? -1 : 1) : 0) + 875, KDConfirmDeleteSave ?
 			(Math.random() > 0.5 ? -1 : 1) + 450 : 450, 750, 64, TextGet(KDConfirmDeleteSave ?
-			"KDConfirmREALLY" : "KDConfirm"), KDConfirmDeleteSave ? KDBaseRed : KDBaseWhite, "");
+			"KDConfirmREALLY" : "KDConfirm"), !slotScanDone ? "#888888" : KDConfirmDeleteSave ? KDBaseRed : KDBaseWhite, "");
 
 		DrawButtonKDEx("backButton", (_b) => {
 			KinkyDungeonState = "Menu";
@@ -6799,6 +6817,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 	allowMusic = true;
 	KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 	if (KDAwaitingModLoad) return true;
+	if (KinkyDungeonState != KDLastClickState || CommonTime() - KDClickStateChangeTime < KDClickStateLockoutTime) return true;
 	if (KDContextMenu && KDCurrentHoverButton?.contextMenu
 	) {
 		if (!MouseIn(KDContextXX, KDContextYY, KDContextW, KDContextH)) {
@@ -6926,7 +6945,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 		return true;
 	} else if (KinkyDungeonState == "Menu" || KinkyDungeonState == "Lose") {
 
-		if (KDSaveBusy) {
+		if (KDSavingProgress()) {
 			// Nothing!
 		} else {
 

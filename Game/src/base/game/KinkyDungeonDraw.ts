@@ -1132,7 +1132,7 @@ function KinkyDungeonDrawGame() {
 
 	if (!KDGameData.LastSave) KDGameData.LastSave = KinkyDungeonCurrentTick;
 	if (KinkyDungeonCurrentTick > KDGameData.LastSave + wt && KinkyDungeonStatsChoice.get("saveMode")
-		&& !KDSaveBusy) {
+		&& !KDSavingProgress()) {
 		KDGameData.LastSave = KinkyDungeonCurrentTick
 		KinkyDungeonSaveGame();
 	}
@@ -2348,7 +2348,7 @@ function KinkyDungeonDrawGame() {
 
 				if (KinkyDungeonIsPlayer()) {
 					
-					if (KDSaveBusy) {
+					if (KDSavingProgress()) {
 						if (KDSoundEnabled())
 							AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 					} else {
@@ -7015,4 +7015,8 @@ function KDHitModelFolderAtlas(folder: string, cb?: (value) => void, reject?: (v
 	}
 	KDModelAtlasHits[folder] = (KDModelAtlasHits[folder] || 0) + 1;
 	return loaded;
+}
+
+function KDSavingProgress() {
+	return KDSaveBusy || KDSaveQueue.length > 0;
 }

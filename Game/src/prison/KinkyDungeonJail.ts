@@ -1287,7 +1287,8 @@ function KinkyDungeonPassOut(noteleport?: boolean) {
 
 	KDMapData.KeysHeld = 0;
 	KDResetAllAggro();
-	KinkyDungeonSaveGame();
+	if (!KDSavingProgress())
+		KinkyDungeonSaveGame();
 
 	if (!noteleport) {
 		let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined);
@@ -1375,7 +1376,8 @@ function KDEnterDemonTransition() {
 	KinkyDungeonLoseJailKeys();
 	KDResetAllAggro();
 
-	KinkyDungeonSaveGame();
+	if (!KDSavingProgress())
+		KinkyDungeonSaveGame();
 }
 
 
@@ -1514,7 +1516,8 @@ function KDEnterDragonLair(dragon: entity, lairType: string = "DragonLair") {
 
 	KDAddDefeatRestraints(dragon, !furnitureApplied);
 
-	KinkyDungeonSaveGame();
+	if (!KDSavingProgress())
+		KinkyDungeonSaveGame();
 }
 
 function KDBecomeShoppeMerchandise(): void {
@@ -1582,7 +1585,8 @@ function KDEnterDollTerminal(willing: boolean, cancelDialogue: boolean = true, f
 		KDPlayerEffectRestrain(undefined, 1, ["dollstand"], KDGetMainFaction(), false, true, false, false, false);
 	}
 
-	KinkyDungeonSaveGame();
+	if (!KDSavingProgress())
+		KinkyDungeonSaveGame();
 }
 
 function KDApplyLivingCollars() {
@@ -1957,8 +1961,8 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity, overrideRo
 
 	KDRepairRubble(true);
 
-
-	KinkyDungeonSaveGame();
+	if (!KDSavingProgress())
+		KinkyDungeonSaveGame();
 }
 
 /**

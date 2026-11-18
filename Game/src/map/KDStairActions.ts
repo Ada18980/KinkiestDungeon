@@ -140,7 +140,8 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 					if (MiniGameKinkyDungeonLevel >= KinkyDungeonMaxLevel) {
 						KDSetWorldSlot(0, 0, 0, 0);
 						KinkyDungeonState = "End";
-						KinkyDungeonSaveGame();
+						if (!KDSavingProgress())
+							KinkyDungeonSaveGame();
 						KinkyDungeonClassModeChoice = "";
 						MiniGameVictory = true;
 						suppressCheckPoint = true;
@@ -269,9 +270,11 @@ function KDPostStairSave() {
 				KinkyDungeonState = "Save";
 				KDTextArea("saveDataField", 750, 100, 1000, 230);
 				ElementValue("saveDataField", saveData);
-			} else KinkyDungeonSaveGame();
+			} else if (!KDSavingProgress())
+				KinkyDungeonSaveGame();
 		}
-		else KinkyDungeonSaveGame();
+		else if (!KDSavingProgress())
+			KinkyDungeonSaveGame();
  }
 function KinkyDungeonHandleStairs(toTile: string, suppressCheckPoint?: boolean) {
 	if (KinkyDungeonFlags.get("stairslocked")) {
