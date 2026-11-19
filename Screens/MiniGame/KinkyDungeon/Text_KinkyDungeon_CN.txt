@@ -70,6 +70,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 版本号
 - Kinky Dungeon
 淫荡地牢
+:: KinkyDungeon
+Kinky Dungeon
 # - By Ada18980
 :: KDLogo2
 由 Strait-Laced Games 呈现
@@ -342,7 +344,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # - Associates the Adventurer's Outfit ingame with the default palette selected here
 # - Shows two rows of buffs when the buff bar is collapsed
 # - Show background art for some levels like the Summit
-# - Deprecated
+- Deprecated
+已弃用
 # :: KDToggleDescOptRender
 # :: KDToggleDescShowNPCSprites
 # :: KDToggleDescAllowSusMods
@@ -450,10 +453,12 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # - Draws text to indicate the nature of sounds heard in the fog of war.
 # - Shows defensive stats like evasion in the buff bar, even when collapsed
 # - Shows left and right buttons in the struggle UI when multiple restraints are present in the same slot
-# - Use native browser compression for smaller, faster save files. Old save files may still be loaded.
+- Use native browser compression for smaller, faster save files. Old save files may still be loaded.
+使用浏览器原生压缩功能，以获得更小、更快的存档文件。旧存档文件仍可加载。
 
 
-# - Save Files with Native Compression
+- Save Files with Native Compression
+使用原生压缩保存文件
 - Hypnosis Screen Wobble
 催眠时屏幕晃动
 - Hypnosis Spirals
@@ -607,15 +612,15 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Enable Fullscreen
 启用全屏
 - Hi-Res Distortion (Restart)
-高分辨率形变 ( 需重启 )
+高分辨率形变（需重启）
 - Low-Res Textures (Restart)
 低分辨率贴图 (需要重启)
 - Portrait Supersampling
 立绘超采样
 - Preload Assets (Restart)
-预加载资源 ( 4GB+ 内存)( 需重启)
+预加载资源 ( 需重启 )
 - Hi-Res Model
-高分辨率模型 ( 无需重启 )
+高分辨率模型
 - High Quality Animations
 高品质动画
 - Enemy Animations
@@ -683,7 +688,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - No Damage Floaters
 不显示伤害数字
 - Dynamic Armor
-动态盔甲 ( 必须隐藏盔甲 )
+动态盔甲
 - Hide floating weapon display
 隐藏浮动武器显示
 - Automatically Take All from Chests
@@ -1330,7 +1335,7 @@ Sub
 - Like the Wind
 风之旋律
 - While above 75% stamina, you gain +30 Evasion and your slow level is reduced by 1.
-当体力超过 95 %时，闪避 +30，并且减速等级-1。
+当体力超过 75% 时，闪避 +30，并且减速等级 -1。
 
 - Immovable Object
 坚不可摧
@@ -1969,25 +1974,25 @@ EnemyName对TargetName念出了一个口令！
 - In the Shadows: ${You} ${Yis} harder to see.
 处在阴影中 : ‎${You}更难被敌人察觉。
 - Invisible: ${You} ${Yis} very difficult to see.
-隐形 : ‎你非常难以被敌人察觉。
+隐形 : ‎${You}非常难以被敌人察觉。
 - Quickness: ${Your} next movement is so fast it doesn't advance a turn.
-迅捷 : ‎你的下一个动作极其迅速，不消耗回合时间。
+迅捷 : ‎${Your}下一个动作极其迅速，不消耗回合时间。
 - All Damage Reduction: 
 全部伤害减免：
 - ${You} take${Ys} PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
-你受到的DAMAGETYPE伤害减少至PERCENT1，基于PERCENT2的DAMAGETYPE抗性和PERCENT3的DAMAGECATEGORY修正。
+${You}受到的DAMAGETYPE伤害减少至 PERCENT1 ，基于 PERCENT2 的DAMAGETYPE抗性和 PERCENT3 的DAMAGECATEGORY修正。
 - ${You} deal${Ys} PERCENT more DAMAGETYPE damage.
-你造成的DAMAGETYPE伤害增加了 PERCENT。
+${You}造成的DAMAGETYPE伤害增加了 PERCENT。
 - ${Your} bindings are PERCENT more effective.
-你的束缚效果提高了 PERCENT
+${Your}束缚效果提高了 PERCENT
 - ${Your} attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
-你的基础攻击花费 STMNA 点体力，造成 DAMAGEDEALT 点DAMAGETYPE伤害。
+${Your}基础攻击花费 STMNA 点体力，造成 DAMAGEDEALT 点DAMAGETYPE伤害。
 - Plugged!
 被插入！
 - Plugged!!!
 被完全插入！！！
 - Denied! ${You} won't be getting off that easy~ (Denial Level: ${Denial}%)
-不行！不会让你这么容易就出来的~( 剥夺等级 : ${Denial}% )
+不行！不会让${You}这么容易就出来的~( 剥夺等级 : ${Denial}% )
 - Teasing vibrations...
 挑逗的震动...
 - Gentle vibrations...
@@ -2002,11 +2007,11 @@ EnemyName对TargetName念出了一个口令！
 折磨般的震动！
 
 - ${Your} restraints are restrictive! Struggling is less effective without help.
-你的束缚太严格了！无人帮助时挣扎效果减弱。
+${Your}束缚太严格了！无人帮助时挣扎效果减弱。
 - Movement is slowed this turn.
-你被晕眩，无法移动！
+本回合移动速度减慢。
 - ${Your} vision is impaired!
-你的视野受到影响！
+${Your}视野受到影响！
 - Arms are bound!
 你的手臂被束缚！
 - Hands are useless!
@@ -2024,19 +2029,19 @@ EnemyName对TargetName念出了一个口令！
 - Slow Level 10+: Immobilized!
 减速 10 级以上 : 完全无法动弹！
 - ${Your} mouth is free for potion-drinking and spellcasting activities.
-你的嘴巴可以自由饮用药剂和施放法术。
+${Your}嘴巴没有被限制，可以自由饮用药剂和施放法术。
 - ${Your} vision is clear.
-你的视野十分清晰。
+${Your}视野十分清晰。
 - ${Your} hands are unobstructed.
-你的双手没有被阻碍。
+${Your}双手没有被阻碍。
 - ${Your} arms are free to move as ${you} please${Ys}.
-你的手臂可以自由伸展。
+${Your}手臂可以自由活动，随意伸展。
 - ${Your} legs are free and unimpeded.
-你的双腿自由而无阻。
+${Your}双腿自由无阻。
 - ${You} ${Yis} ${AMOUNT} gagged! Verbal miscast chance is increased and potions are less effective!
-你的嘴巴被${AMOUNT}堵住了，施放言语法术的失败几率增加，而且药水的效果降低！
+${Your}嘴巴被${AMOUNT}堵住了，施放言语法术的失败几率增加，同时药水效果减弱！
 - ${Your} mouth is totally filled! ${You} can't drink potions and can't cast verbal spells!
-你的嘴巴被堵的死死的，无法施放言语法术和饮用药剂！
+${Your}嘴巴被堵的死死的，无法施放言语法术，也无法饮用药剂！
 
 
 
@@ -2673,7 +2678,7 @@ Roguelike : ‎没有保存代码，只有自动保存
 - Got the keys! Find the stairs to go to the next floor.
 找到了钥匙！找到楼梯前往下一层。
 - ${You} ${Yhas}n't found the keys for this floor yet.
-你还没有找到本层的钥匙。
+${You}还没有找到本层的钥匙。
 - Missing key
 未找到钥匙
 - Protects from damage and binding until the shield is broken!
@@ -2758,7 +2763,7 @@ Roguelike : ‎没有保存代码，只有自动保存
 - Auto-path
 自动寻路
 - Quick-Swap to ${Weapon}
-快速切换武器
+快速切换${Weapon}
 - Inspect
 检查
 # :: KDInspect
@@ -4360,17 +4365,17 @@ Roguelike : ‎没有保存代码，只有自动保存
 - Find the exit!
 寻找出口！
 - ${You} ${Yis} receiving help from a friendly ally.
-你得到了友好盟友的帮助
+${You}得到了友好盟友的帮助
 - ${You} found a hook ${you} can use to pull on straps and loops.
-你找到了一个钩子，可以用来拉动带子和环扣
+${You}找到了一个钩子，可以用来拉扯绑带和环扣。
 - ${You} ${Yhas} access to something sharp and can attempt to Cut restraints, or Remove more effectively.
-你可以使用锋利的工具来尝试切断拘束具，其可更有效地解除束缚
+${You}手边有锋利的物品，可以尝试“切割”束缚，或更高效地将其“移除”。
 - ${You} found a corner to help manipulate buckles and snaps with.
-你找到了一个角落，可以帮助你操纵带扣和卡扣
+${You}找到了一处边角，可以用来辅助摆弄带扣和按扣。
 - ${You} found a crack and could maybe wedge a knife or tool into it to keep it still.
-你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定
+${You}找到了一条裂缝，或许可以把刀或工具卡进去固定住。
 - ${You} found something sticky and might be able to pull off fabrics.
-你找到了一些黏糊糊的东西，也许可以用它来撕掉布料
+${You}找到了一些黏糊糊的东西，也许可以用它来扯掉织物。
 - Evasion: 
 闪避：
 - Visibility: 
@@ -4378,11 +4383,11 @@ Roguelike : ‎没有保存代码，只有自动保存
 
 
 - Submissive: Enemies won't attack ${youObj}, but they will try to play with ${youObj}.
-顺从者 : ‎敌人不会尝试攻击你，但他们会尝试对你做一些奇妙的互动。
+顺从者 : ‎敌人不会尝试攻击${youObj}，但他们会尝试对你做一些奇妙的互动。
 - On the Run! Enemies are hostile.
 逃亡！敌人对你怀着敌意。
 - Prisoner: Enemies won't attack ${youObj} unless ${you} ${Yis} out of jail.
-囚犯 : ‎敌人不会攻击你，除非你越狱。
+囚犯 : ‎敌人不会攻击${youObj}，除非${you}越狱。
 - Freedom
 自由
 - Crawling slowly!
@@ -7951,7 +7956,7 @@ N
 - (No way to open)
 ( 没办法打开 )
 - (The goddess cannot help you)
-( 她帮不了你 )
+( 女神帮不了你 )
 - Offer XXXg
 上贡 XXX 金币
 - Offer
@@ -17776,7 +17781,7 @@ EnemyName 设法带着你的物品撤退了！
 - Step aside, pet.
 靠边站吧，宠物。
 - Get ${Pthem}, my pets!
-抓住她，我的宠物们！
+抓住${Pthem}，我的宠物们！
 - Hey! Don't touch that!
 嘿！别碰那个！
 - Why you...
@@ -17897,7 +17902,7 @@ EnemyName 设法带着你的物品撤退了！
 - Hands off my property.
 放开我的财产。
 - Know your place, ${Psub}!
-知道你的位置，女孩！
+知道你的位置，${Psub}！
 - You've had your chance.
 你有机会了。
 # :: KinkyDungeonRemindJailChaseDollmakerDefendHonor2
@@ -18237,7 +18242,7 @@ EnemyName 设法带着你的物品撤退了！
 - Sorceress!
 女巫！
 - Get ${Pthem}!
-抓住她！
+抓住${Pthem}！
 - She's a mage! Stop her!
 她是个法师！阻止她！
 - Watch it!
@@ -18620,11 +18625,11 @@ EnemyName 设法带着你的物品撤退了！
 - You're not supposed to be here...
 你不应该在这里...
 - I'm gonna teach you a lesson, ${Pdim}.
-我要给你上一课了，姑娘。
+我要给你上一课了，${Pdim}。
 - I'm gonna miss you when we find you a nice master...
 当我们找到你一个好主人时，我会想念你的......
 - Looks like you need some training, ${Psub}.
-看起来你需要一些调教，女孩。
+看起来你需要一些调教，${Psub}。
 - You picked a bad time to get lost, friend.
 你在错误的时间出现在错误的地点，朋友。
 - Never should have come here.
@@ -18666,7 +18671,7 @@ EnemyName 设法带着你的物品撤退了！
 - I'm PTRN. And who might you be?
 我是 PTRN。你又是谁呢？
 - Bad time to party, ${Pdim}~
-女孩，聚会的时机不好~
+${Pdim}，现在可不是聚会的好时机~
 - You've got nerve showing your face around here.
 你居然敢在这里露面。
 - Don't think you can get away~
@@ -19267,7 +19272,7 @@ SPL已激活。
 - Looks like it's time to drop some science!
 看起来是时候让你见识一下真正的科学了！
 - Bad ${Psub}!
-坏女孩！
+坏${Psub}！
 - Keep your filthy hands off me!
 把你的脏手拿开！
 - Your chances of winning are... less than zero.
@@ -19406,7 +19411,7 @@ SPL已激活。
 # :: KinkyDungeonRemindJailChaseNurseSpellItem
 # :: KinkyDungeonRemindJailChaseDoctorSpellItem
 - Silly ${Pdim}, you should be looking to your mistress for guidance.
-傻丫头，你应该向你的女主人寻求指导。
+傻${Pdim}，你应该向你的女主人寻求指导。
 - That's not yours, sweetie~
 那不是你的，亲爱的~
 # :: KinkyDungeonRemindJailChaseDressmakerChest
@@ -20236,7 +20241,7 @@ Nya~！不公平...
 - Did you think I wasn't looking?
 你以为我没注意吗？
 - Nice try, ${Pdim}~
-想得美，女孩~
+想得美，${Pdim}~
 - You've made a mistake attacking my client.
 你攻击我的客户是个错误。
 - Capture her? Fine, but I expect payment.
@@ -20444,7 +20449,7 @@ SPL时间到了!
 - I have a warrant for your arrest...
 我有逮捕令...
 - You're a wanted ${Pdim}.
-你是个被通缉的女孩。
+你是被通缉的${Pdim}。
 - You're under arrest.
 你被捕了。
 - Backup has arrived.
@@ -21053,7 +21058,7 @@ Ninril要求伸张正义。
 - Scary!
 可怕！
 - ${PDim}!
-小妹妹！
+${PDim}！
 - Wear this!
 穿上这个！
 - Come here!
@@ -21071,7 +21076,7 @@ Ninril要求伸张正义。
 - Intruder! Alert!
 入侵者！警戒！
 - Fight ${Pdim}!
-攻击女孩!
+攻击${Pdim}!
 - Fight!
 战斗！
 # :: KinkyDungeonRemindJailChaseMushyAttack2
@@ -21910,7 +21915,7 @@ SPL之力!
 - That's off limits. You need to be punished!
 那是禁区。你需要受到惩罚！
 - Thief! Get ${Pthem}!
-盗贼！抓住她！
+盗贼！抓住${Pthem}！
 - Yikes! I'm calling backup!
 哎呀！需要后援！
 - Hold still~
@@ -22239,7 +22244,7 @@ Ack !多不雅啊!
 - Amateur.
 业余。
 - Bad ${Psub}. You need discipline.
-坏女孩。你需要纪律。
+坏${Psub}，你需要纪律。
 - I'll be keeping the keys.
 我会保管钥匙的。
 - Hmm. You may call me Head Maid PTRN.
@@ -22691,7 +22696,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - Command... Me...
 命令...我...
 - Cute... ${PDim}...
-可爱……女孩……
+可爱……${PDim}……
 - Helpless...
 真无奈…
 - Take...
@@ -22755,7 +22760,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - *Her burial cloth reads PTRN*
 *她的葬礼布上写着 PTRN*
 - Get ${Pthem}...
-抓住她...
+抓住${Pthem}...
 - Must... hug...
 必须...抱...
 - Come... back...
@@ -22904,10 +22909,10 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 发出哔哔声 ) |生命体征表明不诚实。
 
 - (The SPEAKER furrows ${Etheir} brow)|...Excuse me?
-( SPEAKER 皱起眉头 ) |...打扰一下？
+( SPEAKER皱起${Etheir}眉头 ) |...打扰一下？
 
 - (The SPEAKER tilts ${Etheir} head)|Right, sorry.
-( SPEAKER 歪着头 ) |呃，对不起。
+( SPEAKER歪了歪头 ) |呃，对不起。
 - (The SPEAKER blushes deeply)|I'm... I'm sorry! Please carry on...
 ( SPEAKER 脸红 ) |我……我很抱歉！请继续...
 - (The SPEAKER smiles)|Keep up the good work, ${Psub}.
@@ -22925,9 +22930,9 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 发出哔哔声 ) |感谢您的遵守。
 
 - (The SPEAKER frowns)|Looks like you'll need to be punished. Get ${Pthem}!
-( SPEAKER 皱眉 ) |看来你需要受到惩罚。抓住她！
+( SPEAKER皱眉 ) |看来你需要受到惩罚，抓住${Pthem}！
 - (The SPEAKER looks Embarrassed)|Then... then... uh... someone stop ${Pthem}!
-( SPEAKER 看起来很尴尬 ) |那么……那么……呃……来人阻止她！
+( SPEAKER看起来很尴尬 ) |那么……那么……呃……来人阻止${Pthem}！
 - (The SPEAKER grins)|Then allow me to personally show you the rules.
 ( SPEAKER 咧嘴一笑 ) |那么请允许我亲自向你展示规则。
 - (The SPEAKER cracks ${Etheir} knuckles)|Finally, I get to have some fun~
@@ -23026,7 +23031,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER走近你的牢房 ) |又回来了，是吗？傻${Pdim}。|你不该试图逃跑的，你知道的~
 
 - (The SPEAKER smiles back)|Oh, this is a game to you?|Then perhaps I should make it funner for you...|(${EThey} leave${Es} and return${Es} with some toys...)|Now hold still!
-( SPEAKER 回以微笑 ) |哦，这对你来说是一个游戏？|那么也许我应该让你觉得更有趣...| ( 她离开并带着一些玩具回来... ) |现在别动！
+( SPEAKER回以微笑 ) |哦，这对你来说是一个游戏？|那么也许我应该让你觉得更有趣...| ( ${EThey}离开并带着一些玩具回来... ) |现在别动！
 - (The SPEAKER frowns)|I know exactly what you need...
 ( SPEAKER 皱起眉头 ) |我清楚地知道你需要什么......
 - (The SPEAKER smiles back)|I'm glad you're enjoying yourself.|However, your behavior is still unacceptable.|You need to learn some respect.
@@ -23080,7 +23085,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER holds up a restrictive outfit)|This RESTRAINT might be a tight fit|so hold still while I lace it~
 ( SPEAKER 举起了一件有着束缚性的衣服 ) |这件 RESTRAINT 可能会很紧|所以在我束紧它时请保持不动~
 - (The SPEAKER giggles)|It looks even better than I thought!|Thank you ${Pdim}~
-( SPEAKER 咯咯笑 ) |看起来比我想象的还要好！|谢谢你，女孩~
+( SPEAKER咯咯笑 ) |看起来比我想象的还要好！|谢谢你，${Pdim}~
 - (The SPEAKER sighs and moves away)|Such a shame...
 ( SPEAKER 叹了口气，走开 ) |真可惜……
 - (The SPEAKER looks disappointed)|Guess I'll find someone else then...
@@ -23094,7 +23099,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER looks bemused)|Changed your mind?|It does look good on you though~
 ( SPEAKER 一脸困惑 ) |改变主意了？|不过你穿起来确实不错~
 - (The SPEAKER snaps ${Etheir} fingers)|(You feel the RESTRAINT magically appear on you)|Aha! Wonderful! You can go now~
-( SPEAKER 打了个响指 ) | ( 你感觉到 RESTRAINT 神奇地出现在你身上 ) |啊哈！真精彩！你可以走了~
+( SPEAKER打了个响指 ) | ( 你感觉到 RESTRAINT 神奇地出现在你身上 ) |啊哈！真精彩！你可以走了~
 
 - Yes please!
 是的！
@@ -23240,7 +23245,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER looks at you with a philosophical outlook)|Have you ever felt like you wanted to be...|Transformed?
 ( SPEAKER带着一种哲学家的神情看着你 ) |你是否曾感觉自己想要……|转变？
 - (The SPEAKER takes a strange mask from ${Etheir} satchel)|Well, I have the answer right here...
-( SPEAKER 从她的跨包里拿出一个奇怪的面具 ) |好吧，我这里有答案......
+( SPEAKER从${Etheir}跨包里拿出一个奇怪的面具 ) |好吧，我这里有答案......
 - (The SPEAKER nods seriously)|My hypothesis was correct...
 ( SPEAKER 认真点头 ) |我的假设是正确的......
 - (The SPEAKER frowns)|Such a philistine. Begone.
@@ -23256,7 +23261,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER nods)|I see you are a truth seeker after all.
 ( SPEAKER 点头 ) |我知道你毕竟是个寻求真理的人。
 - (The SPEAKER lets you go. But then...)|(You feel ${Ethem} clip a RESTRAINT on you from behind!)|There... I shall now observe your behavior.
-( SPEAKER 让你走了。但是... ) | ( 你感觉到她从后面往你身上绑了 RESTRAINT！ ) |那里...我现在将观察你的行为。
+( SPEAKER让你走了，但随后... ) | ( 你感觉到${Ethem}从后面给你扣上了RESTRAINT！ ) |好了...我现在要观察你的表现。
 
 - Um, sure?
 嗯，当然？
@@ -23283,7 +23288,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 - (The SPEAKER smiles as ${Ethey} hide${Es} ${Etheir} hands behind ${Etheir} back)|Have you heard of 'sensory deprivation'?
-( SPEAKER 微笑着把手藏在背后)|你听说过“感官剥夺”吗？
+( SPEAKER微笑着把手藏在背后)|你听说过“感官剥夺”吗？
 - (The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!
 ( SPEAKER 提出了一个RESTRAINT)|好吧，我正好有东西给你|它很舒服，而且内置了耳罩！
 - (The SPEAKER starts pulling the hood over your head)|Let's get you laced in!
@@ -23301,7 +23306,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER pouts)|I thought it would be fun...
 ( SPEAKER 撅嘴)|我以为会很有趣...
 - (The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of ${Ethem})|That's better~|Now why don't you say good night~
-( SPEAKER 突然鞭打了你的腿)|(你不由自主地跪在她面前)|这样好多了~~现在你为什么不说晚安呢~
+( SPEAKER突然抽了你的大腿一下)|(你不由自主地跪在${Ethem}面前)|这样才对嘛~|现在，不如说声晚安吧~
 
 - Of course! I love it!
 当然！我爱这个！
@@ -23339,15 +23344,15 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
 ( SPEAKER 微笑并狡猾地低头看着你 ) |嘿，我有一份 '工作' 给你！
 - (The SPEAKER takes a duster gag from ${Etheir} satchel)|Such a good ${Psub}!|So here's what I have for you~|It's a special tool to help keep the place clean.
-( SPEAKER 从书包里拿出一个掸子口塞 ) |真是个好${Psub}！|来看看我为你准备了什么~|这可是个能保持这里整洁的特殊工具。
+( SPEAKER从包里拿出一个掸子口塞 ) |真是个听话的${Psub}！|来看看我为你准备了什么~|这可是个能保持这里整洁的特殊工具。
 - (The SPEAKER grins)|I'm glad we could come to an understanding~|(${EThey} take${Es} out a duster gag from ${Etheir} satchel)|Now then, this place is filthy.|Why don't you put this on to help?
-( SPEAKER 笑了 ) |很高兴我们能达成共识~| ( ${EThey}从书包里拿出一个掸子口塞 ) |那么，这个地方太脏了。|你为什么不戴上这个来帮帮忙呢？
+( SPEAKER笑了 ) |很高兴我们能达成共识~| ( ${EThey}从包里拿出一个掸子口塞 ) |那么，这个地方太脏了。|你为什么不戴上这个来帮帮忙呢？
 - (The SPEAKER frowns)|Fair enough.|Perhaps you should reconsider your life choices~
 ( SPEAKER 皱起眉头 ) |很公平。|也许你应该重新考虑一下你的人生选择~
 - (The SPEAKER shrugs)|I'll find someone else...
 ( SPEAKER 耸耸肩 ) |那我去找其他人吧......
 - (The SPEAKER reaches out to grab you)|Now now,|You shouldn't skip out on your duties~|(${EThey} get${Es} out a duster gag from ${Etheir} satchel and grin${Es})
-( SPEAKER 伸手抓住你 ) |现在，|你不应该逃避你的职责~| ( ${EThey}从书包里拿出一个掸子口塞并笑了笑 )
+( SPEAKER伸手抓住你 ) |现在，|你不应该逃避你的职责~| ( ${EThey}从包里拿出一个掸子口塞并笑了笑 )
 - (The SPEAKER smiles)|Don't be afraid!|(${EThey} turn${Es} the gag with the round mouth ball clearly visible)|Now open up...
 ( SPEAKER 微笑 )|别害怕！|( ${EThey}转动口球，使其圆球部分清晰可见 )|现在张嘴…
 - (The SPEAKER shrugs)|Fine, I'll get someone else to clean up.
@@ -23384,7 +23389,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER winks and locks it on)|I feel much safer already~
 ( SPEAKER 眨眼并锁定 ) |我感觉你安全多了~
 - (The SPEAKER pouts)|Aww, spoilsport!|(${EThey} return${Es} to fighting ${Etheir} imaginary enemies)
-( SPEAKER 撅起嘴 ) |哇哦，扫兴！| ( ${EThey}又开始与她幻想的敌人作战 )
+( SPEAKER撅起嘴 ) |哇哦，扫兴！| ( ${EThey}又开始与她幻想的敌人作战 )
 - (The SPEAKER shrugs)|Your loss~
 ( SPEAKER 耸耸肩 ) |这是你的损失~
 - (The SPEAKER grins deviously)|So? It might help...|(The SPEAKER dives at you suddenly!)
@@ -23630,9 +23635,9 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The green gas starts leaking)|Oh no! It wasn't supposed to do that!
 ( 绿色气体开始泄漏 ) |哦不！不应该这样！
 - (You push ${Ethem} out of the way, but ${Ethey} frown${Es})|Hmph. This is your fault.
-( 你把她推开，${Ethey}却皱起了眉头 ) |哼，都怪你。
+( 你把${Ethem}推开，${Ethey}却皱起了眉头 ) |哼，都怪你。
 - (You push ${Ethem} out of the way, but get caught in the cloud yourself)|(The gas crystalizes into a RESTRAINT across your body)|Oh no, that could have been me!
-( 你把她推开，但你自己却被困在雾里 )|( 气体在你的身体上结晶成了 RESTRAINT )|哦不，本来应该是我中招的！
+( 你把${Ethem}推开，但你自己却被困在雾里 )|( 气体在你的身体上结晶成了RESTRAINT )|哦不，本来应该是我中招的！
 - (The gas moves toward you, as if by its own will)|(The gas crystalizes into a RESTRAINT across your body)|That wasn't supposed to happen...
 ( 气体向你移动，仿佛有了自己的意志一样 )|( 气体在你的身体上结晶成了 RESTRAINT )|这可不该发生…
 
@@ -23716,11 +23721,11 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained...
 ( SPEAKER 迅速地抓住你 ) |哦，很严格~|而且非常适合接受训练...
 - (The SPEAKER looks at you deviously)|A good ${Psub} wears ${Ptheir} RESTRAINT with enthusiasm~
-( SPEAKER 阴险地看着你 ) |好${Psub}应该热情地穿上她的 RESTRAINT~
+( SPEAKER阴险地看着你 ) |优秀的${Psub}应该热情地穿上${Ptheir}RESTRAINT~
 - (The SPEAKER sulks)|You'd be difficult to train anyway~
 ( SPEAKER 生闷气 ) |你可真难调教~
 - (The SPEAKER adds the RESTRAINT)|(You feel ${Ethem} tighten everything before locking it)|Good ${Psub}~|I'll make it extra tight for you!
-( SPEAKER 添加了 RESTRAINT ) | ( 你感觉到她在上锁之前收紧了所有束缚 ) |好${Psub}~|为了你，我会为你绑得更紧一些！
+( SPEAKER添加了RESTRAINT ) | ( 你感觉到她在上锁之前收紧了所有束缚 ) |好${Psub}~|为了你，我会为你绑得更紧一些！
 - (The SPEAKER knocks you down and forces you into the RESTRAINT)|Here, maybe you'll reconsider after wearing it a while!
 （SPEAKER 打倒你并强行用 RESTRAINT 束缚你）|也许你戴上这个一会儿后就会重新考虑了！
 
@@ -23782,7 +23787,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER leans closer)|Then you can test their escapability!|(The SPEAKER dives towards you!)
 ( SPEAKER 靠得更近 ) |然后你可以测试他们的逃脱能力！| ( SPEAKER 俯冲向你！ )
 - (The SPEAKER shifts ${Etheir} weight back)|I'm afraid I must insist.|(${EThey} ${Eis} gripping a RESTRAINT)|(The SPEAKER dives towards you!)
-( SPEAKER 向后转移重心 ) |恐怕我必须坚持我的意见。| ( ${EThey}紧握着一件 RESTRAINT ) | ( SPEAKER 向你扑来！ )
+( SPEAKER向后转移重心 ) |恐怕我必须坚持我的意见。| ( ${EThey}紧握着一件 RESTRAINT ) | ( SPEAKER向你扑来！ )
 - (The SPEAKER rolls past harmlessly)|Oh! So fast~
 ( SPEAKER 无害地滚过去 ) |哦！真快~
 - (The SPEAKER snaps the RESTRAINT on)|There, much better.|Now squirm for me cutie~
@@ -24055,17 +24060,17 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 - (The SPEAKER brushes past hurriedly)|Careful ${Pdim}!|Else I'll lock you away~
-( SPEAKER 急匆匆地从你身边擦身而过 ) |小心点姑娘！|不然我就把你锁起来了~
+( SPEAKER匆匆擦肩而过 ) |小心点${Pdim}！|不然我就把你锁起来了~
 - (The SPEAKER looks at you intrigued)|Aren't you something...|How about wearing this RESTRAINT?
 ( SPEAKER 好奇地看着你 ) |你不是……|戴上 RESTRAINT 怎么样？
 - (The SPEAKER grins and locks it on)|Maybe I should bump into you more~
 ( SPEAKER 微笑并锁定 ) |也许我应该碰见更多的你~
 - (The SPEAKER rolls ${Etheir} eyes)|Run along then ${Pdim}~
-( SPEAKER 翻白眼 ) |姑娘，赶紧跑吧~
+( SPEAKER翻了个白眼 ) |${Pdim}，赶紧走吧~
 - (The SPEAKER nods)|Didn't think so~|Oh, and, uh, sorry for the bump.
 ( SPEAKER 点头 ) |没想到~|哦，呃，抱歉打扰了。
 - (The SPEAKER shakes ${Etheir} head)|You don't get off that lightly.|These are going on.
-( SPEAKER 摇头 ) |你不能轻易离开|这些都在继续。
+( SPEAKER摇了摇头 ) |你可没那么容易脱身，|这些还是得给你戴上。
 - (The SPEAKER frowns)|I think I should.|You'll just bother someone else.|(${EThey} hold${Es} up a RESTRAINT)
 ( SPEAKER 皱起眉头 ) |我想我应该这样做。|你只会打扰别人。| ( ${EThey}举起了 RESTRAINT )
 - (The SPEAKER sighs)|I'll let you off then.|Oh, and, uh, sorry for the bump.
@@ -24105,13 +24110,13 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER glares)|We urge you to reconsider.
 ( SPEAKER 怒视 ) |我们敦促你重新考虑。
 - (The SPEAKER has a twinkle in ${Etheir} eye)|We will offer you this RESTRAINT.|You should accept.
-( SPEAKER 眼中闪烁着光芒 ) |我们将为您提供 RESTRAINT。|您应该接受。
+( SPEAKER眼中闪过一丝狡黠 ) |我们要为你奉上这RESTRAINT，|你应该接受。
 - (The SPEAKER pulls an odd smile)|Very well.
 ( 说话者露出一个奇怪的微笑 ) |很好。
 - (The SPEAKER smugly nods)|(With surprising speed, the RESTRAINT locks in place)|Excellent, a good fit.
 ( SPEAKER 得意地点点头 ) | ( RESTRAINT 以惊人的速度锁定到位 ) |太棒了，非常合适。
 - (The SPEAKER covers your mouth with ${Etheir} hand)|Shush, no more bad decisions.|(You feel ${Ethem} buckle the restraint strictly)
-( SPEAKER 用手捂住你的嘴 ) |嘘，别再做出错误的决定了。| ( 你感觉到她严厉地扣住了束缚 )
+( SPEAKER用手捂住了你的嘴 ) |嘘，别再做出错误的决定了。| ( 你感觉到${Ethem}把束缚严实地扣紧了 )
 
 - No, thank you.
 不，谢谢。
@@ -24174,7 +24179,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (A SPEAKER giggles and calls to you)|Hey there~|Fancy seeing some nature?~
 ( SPEAKER 咯咯地笑着向你喊话 ) |嘿那边的人~|想看看大自然吗？~
 - (The SPEAKER motions with ${Etheir} hands)|(Vines rise from the floor and twirl)|These will bind you nicely...
-( SPEAKER 用手示意 ) | ( 藤蔓从地板上升起并旋转 ) |这些会很好地束缚你......
+( SPEAKER双手比划了个手势 ) | ( 藤蔓从地板上升起并盘旋起来 ) |这些能把你绑得妥妥帖帖的......
 - (The SPEAKER grins and motions again)|(The plants wrap around you quickly)|(You wriggle against the RESTRAINT)
 ( SPEAKER 咧嘴一笑，再次做了个动作 ) | ( 植物迅速包围了你 ) | ( 你扭动着抵抗 RESTRAINT )
 - (The SPEAKER pouts)|Aww...
@@ -24223,7 +24228,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER frowns sadly)|But they make the best noise!
 ( SPEAKER 悲伤地皱起眉头 ) |但他们发出的声音是最好听的！
 - (The SPEAKER rolls ${Etheir} eyes)|Tough luck then~|You're getting one!
-( SPEAKER 翻了个白眼 ) |那就倒霉了~|你得了一个！
+( SPEAKER翻了个白眼 )| 那算你倒霉咯~ | 你还是得戴上一个！
 - (The SPEAKER grins)|See how you feel when|you're wearing one!
 ( SPEAKER 笑了 ) |看看当你戴着它时|你的感觉如何！
 - (The SPEAKER sighs)|Maybe another time then.
@@ -24351,7 +24356,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 
 
 - (The SPEAKER steps up to you)|Hey ${Pdim}~|You happen to be a fan of latex?
-( SPEAKER 走近你)|嘿，女孩~~你恰好是乳胶迷吗？
+( SPEAKER走到你面前 )|嘿，${Pdim}~|你碰巧喜欢乳胶吗？
 - (The SPEAKER smiles)|Then would you like to try on this RESTRAINT?
 ( SPEAKER 微笑)|那么你想试试这个 RESTRAINT 吗？
 - (The SPEAKER chuckles)|Tight and shiny!
@@ -24459,7 +24464,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER walks up to you)|We don't get a lot of visitors.|I take it that you enjoy bondage?
 ( SPEAKER 向你走来 ) |少见的访客。|我猜你喜欢被束缚？
 - (The SPEAKER tilts ${Etheir} head)|Well, I have a RESTRAINT lying around,|and I figured you'd enjoy it.
-( SPEAKER 歪着头 ) |嗯，我这里有一个 RESTRAINT ，|我觉得你会喜欢的。
+( SPEAKER歪了歪头 ) |嗯，我手头正好有RESTRAINT闲置着，|我想你应该会很喜欢。
 - (The SPEAKER smiles)|I'm glad you like it!
 ( SPEAKER 微笑 )|很高兴你喜欢！
 - (The SPEAKER frowns)|I guess I'll have to find someone else to wear it.
@@ -24490,11 +24495,11 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER slaps your butt as ${Ethey} tie${Es} the last knot)|All trussed up~
 ( SPEAKER拍了拍你的屁股，同时打好了最后一个结 ) |全部绑好了~
 - (The SPEAKER looks disappointed and packs ${Etheir} rope away)
-( SPEAKER 看起来很失望，把她的绳子收起来 )
+( SPEAKER露出失望的神情，把绳子收了起来 )
 - (The SPEAKER frowns)|Aw. What a missed opportunity!
 ( SPEAKER 皱眉 ) |噢。多么难得的机会！
 - (The SPEAKER grins and reaches for ${Etheir} satchel)|Well, too bad--
-( SPEAKER 咧嘴一笑，伸手去拿她的包 ) |好吧，太糟糕了——
+( SPEAKER咧嘴一笑，伸手探向${Etheir}包 )|嗯，那可真遗憾——
 - (The SPEAKER grins)|But I've already brought so much rope with me~
 ( SPEAKER 笑着 ) |可是我已经带了这么多绳子了~
 - (The SPEAKER frowns)|Suit yourself.
@@ -24536,7 +24541,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER frowns)|What a shame.
 ( SPEAKER皱眉 ) |真可惜。
 - (The SPEAKER sneakily reaches for ${Etheir} baton)|You'll love it if you try it!
-（SPEAKER 偷偷拿出警棍）|你试试就会喜欢的！
+（SPEAKER偷偷拿出${Etheir}警棍）|你试试就会喜欢的！
 - (The SPEAKER grins)|I promise you it's a good deal~
 ( SPEAKER 咧嘴一笑 ) |我向你保证很划算~
 - (The SPEAKER frowns)|Fine. I'll look for other candidates.
@@ -25780,10 +25785,14 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER switches to defensive stance.\n${EThey} will stay close to you or its assigned position)
 ( SPEAKER 将跟随你或待在指定位置 )
 
-# - (Stance: Defensive)
-# - (The SPEAKER switches to avoidant stance.\n${EThey} will move away from threats)
-# - (Stance: Avoidant)
-# - (The SPEAKER switches to passive stance.\n${EThey} will ignore everything except the player character)
+- (Stance: Defensive)
+(姿态：防御)
+- (The SPEAKER switches to avoidant stance.\n${EThey} will move away from threats)
+( SPEAKER切换为回避姿态。\n${EThey}将远离威胁 )
+- (Stance: Avoidant)
+(姿态：回避)
+- (The SPEAKER switches to passive stance.\n${EThey} will ignore everything except the player character)
+( SPEAKER切换为被动姿态。\n${EThey}将无视除玩家角色以外的一切事物 )
 
 - (Flirting)
 ( 调情 )
@@ -29958,6 +29967,7 @@ ENEMYNAME 将附近的玩偶变成了${Ptheir}臣民！
 # :: m_TransparentLeatherCatsuitLower_l_LegRight
 # :: m_TransparentLeatherCatsuit_l_LegRight
 # :: m_LeatherCatsuitRestraint_l_LegRight
+# :: m_LeatherPants_l_LegRight
 - Butt
 臀部
 :: m_Body_l_Butt
@@ -45125,6 +45135,8 @@ Aura刘海
 # - FashionNeoSteelBeltSegu
 # - FashionNeoSteelBeltRadial
 
+# - BackFadeLocked
+
 - LeatherShorts
 皮短裤
 - LeatherPants
@@ -46613,7 +46625,8 @@ ${Item} 瞄准
 - Bind
 束缚术
 # :: KinkyDungeonSpellBondage
-# :: KDDebug_Bind
+:: KDDebug_Bind
+强制捆绑
 - Choose target to bind
 选择要捆绑的目标
 - Target Acquired!
@@ -47658,10 +47671,14 @@ LKTYP 锁锁在了你的一个拘束具上！
 - All selected units switch to Aggressive mode
 所有选定的队伍切换到侵略模式
 
-# - Avoidant Order
-# - All selected units switch to Avoidant mode
-# - Passive Order
-# - All selected units switch to Passive mode
+- Avoidant Order
+回避命令
+- All selected units switch to Avoidant mode
+所有选定的单位切换到回避模式
+- Passive Order
+被动命令
+- All selected units switch to Passive mode
+所有选定的单位切换到被动模式
 
 
 - Magic Unlock
@@ -50529,7 +50546,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - Shop
 店铺
 # :: KDRoomType_ShopStart
-# :: KDDebug_Shop
+:: KDDebug_Shop
+商人
 - Chamber
 寝室
 - Prison
@@ -50544,7 +50562,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 点击快捷栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的快捷栏保存和加载预设。|这些预设在每一局之间共享。
-# - Cycle hotbar
+- Cycle hotbar
+循环切换快捷栏
 
 - You step on the item and tug to pull it taut...
 你踩在物品上并用力拉紧它......
@@ -50933,7 +50952,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - You are left dangling! Maybe if you swing hard enough you can tear the vines...
 你悬空了！也许你挥动得足够用力，你就能震破藤蔓......
 
-# - Kocaeli - Elemental Temple
+- Kocaeli - Elemental Temple
+Kocaeli - 《Elemental Temple》
 - Kocaeli - Dragon Lair
 Kocaeli - 《龙巢》
 - EchoZero - Slimy Science
@@ -51708,7 +51728,8 @@ AMNT/MAXX 囚犯分配
 - AMNT/MAXX Servants Assigned
 AMNT/MAXX 仆从分配
 
-# - Assigned to: ${Facility}
+- Assigned to: ${Facility}
+已分配给：${Facility}
 - Assign servants as managers to boost the production of other facilities.|Appointing new management results in a loss of efficiency until the next cycle.
 指派仆人担任管理员，提高其他设施的效率。|新管理员提升的效率从下个周期开始才会生效。
 - Bondage Dojo
@@ -51903,7 +51924,8 @@ ${PHonor}，你挡住我了……
 ~~~ 项圈 ~~~
 - Blindfold / Visors
 眼罩 / 耳塞
-# - Earplugs/Muffs
+- Earplugs/Muffs
+耳塞/耳罩
 - Mask/Hood
 面罩 / 头套
 - Gag / Stuffing
@@ -52075,8 +52097,11 @@ NPC可用性：
 - Escaped
 已逃脱
 # :: KDCollectionFilterEscaped
-# :: KDCollectionTooltipEscaped
+:: KDCollectionTooltipEscaped
+已逃跑
 # - At risk of escaping
+:: KDCollectionTooltipEscapeRisk
+有逃跑风险
 - Imprisoned
 已监禁
 - Positive
@@ -54670,8 +54695,10 @@ ${Playername}使用了${Etheir}安全词，被传送回关卡起点。
 主人
 - mixtress
 主人
-# - Command Node
-# - command node
+- Command Node
+命令节点
+- command node
+命令节点
 
 - doll
 玩偶
@@ -55434,9 +55461,11 @@ ${Weapon}为了自身安全，自行收起……
 TA
 - It/Its
 它
-# - Custom
+- Custom
+自定义
 # - PRO1/PRO2
-# - Plural
+- Plural
+复数
 
 - Detailed Info
 详细信息
@@ -55556,110 +55585,212 @@ Buttplug.io 设备${DEVICE}电量低
 
 # - '${BuffType}' effects of the same type do not stack.
 
-# - Book
+- Book
+书
 
-# - Activated
-# - Set Title
+- Activated
+已激活
+- Set Title
+设置标题
 # - sp
-# - Stamina: 
-# - Mana: 
-# - Willpower: 
-# - Distraction: 
-# - Mod Configuration - 
-# - Error, the thing you just did would have set your gold to infinity. Please report.
-# - Wardrobe Data
-# - Your browser doesn't appear to support exporting directly to the clipboard.
-# - Here's the data for your outfit, for you to copy to your clipboard. Click on the text below and use Control+C to copy it.
-# - Copy to clipboard
-# - Awoo!
-# - Failed
-# - Close
-# - An error has occurred whilst Kinky Dungeon was running. 
-# - You may be able to continue playing, but Kinky Dungeon might not function correctly.
-# - Please report this error in the Kinky Dungeon Discord so that we can dispatch our team of highly-trained wolfgirls to fix it.
-# - When you make your report, please include the following debug information - the wolfgirls will appreciate it!
-# - Kinky Dungeon failed to load mods last time it was running. 
-# - Automatic mod loading has been disabled for this session.
-# - The mod that caused the crash on loading was 
-# - and has been removed from automatically loading. Please refresh the game (F5)!
+- Stamina: 
+体力：
+- Mana: 
+法力：
+- Willpower: 
+意志力：
+- Distraction: 
+性奋值：
+- Mod Configuration - 
+模组配置 -
+- Error, the thing you just did would have set your gold to infinity. Please report.
+错误，你刚才的操作会使你的金币数量变为无穷大，请报告。
+- Wardrobe Data
+衣柜数据
+- Your browser doesn't appear to support exporting directly to the clipboard.
+你的浏览器似乎不支持直接导出到剪贴板。
+- Here's the data for your outfit, for you to copy to your clipboard. Click on the text below and use Control+C to copy it.
+这是你的服装数据，供你复制到剪贴板。点击下方文本并使用 Control+C 进行复制。
+- Copy to clipboard
+复制到剪贴板
+- Awoo!
+嗷呜！
+- Failed
+失败
+- Close
+关闭
+- An error has occurred whilst Kinky Dungeon was running. 
+Kinky Dungeon 运行时发生错误。
+- You may be able to continue playing, but Kinky Dungeon might not function correctly.
+你或许可以继续游戏，但 Kinky Dungeon 可能无法正常运行。
+- Please report this error in the Kinky Dungeon Discord so that we can dispatch our team of highly-trained wolfgirls to fix it.
+请在 Kinky Dungeon Discord 中报告此错误，以便我们派遣训练有素的狼娘团队进行修复。
+- When you make your report, please include the following debug information - the wolfgirls will appreciate it!
+提交报告时，请附上以下调试信息——狼娘们会非常感谢的！
+- Kinky Dungeon failed to load mods last time it was running. 
+Kinky Dungeon 上次运行时加载模组失败。
+- Automatic mod loading has been disabled for this session.
+本次会话已禁用自动模组加载。
+- The mod that caused the crash on loading was 
+导致加载时崩溃的模组是
+- and has been removed from automatically loading. Please refresh the game (F5)!
+并已从自动加载中移除，请重启游戏（F5）！
 # - Kinky Dungeon Crash Handler
-# - Error Loading Mods
+- Error Loading Mods
+加载模组时出错
 
-# - Tile Editor
-# - Debug Mode
-# - Verbose Console
-# - Changeable Perks
-# - Unlimited Gold
-# - Forcibly add restraints from inv
-# - Link Under
-# - Enemy
-# - Ally
-# - Add to inventory
-# - Teleport to stairs
-# - Get save code
-# - Enter parole mode
+- Tile Editor
+地块编辑器
+- Debug Mode
+调试模式
+- Verbose Console
+详细控制台
+- Changeable Perks
+可变特质
+- Unlimited Gold
+无限金币
+- Forcibly add restraints from inv
+强制从背包添加拘束具
+- Link Under
+强制链接
+- Enemy
+敌人
+- Ally
+盟友
+- Add to inventory
+添加到背包
+- Teleport to stairs
+传送到楼梯
+- Get save code
+获取存档代码
+- Enter parole mode
+进入假释状态
 # - Defeat
-# - Add keys and lockpicks
-# - Toggle OmniVision™
-# - Add 10 spell points
-# - Clear loose restraints
-# - Clear worn restraints
-# - Open Storage
-# - Add all restraints
-# - Increment Floor
-# - Rest SP
-# - +Max SP
-# - Rest MP
-# - +Max MP
-# - Rest WP
-# - +Max WP
-# - Rest DP
-# - +Max DP
-# - Tile Tags
-# - Require Tags
-# - Forbid Tags
-# - Existing Tag
-# - Mult
-# - Bonus
-# - Max
-# - NOT
-# - Name of Tile
-# - Tileset
-# - Skin
-# - Category
-# - Weight
-# - Edit Tile Tags
-# - Go Back
-# - Tile Index
-# - Flex
-# - OpenBorder
-# - Test Access
-# - Tile List
-# - Double click to LOAD
-# - Delete!!!
-# - Save Tile
-# - Back to menu
-# - New (Open)
-# - New (Empty)
-# - New (Closed)
-# - New (Closed+Empty)
-# - Test Tile
-# - Copy database to clipboard
-# - Merge from clipboard
-# - Reset tile database
-# - Load tile from Clipboard
-# - Copy Tile to Clipboard
-# - Commit Editor Tiles
-# - Get Database...
-# - Paste here to merge database
-# - Nothing new to add
-# - Success
-# - Some entrances are inaccessible. This tile will occur more rarely in worldgen
-# - This is a DESTRUCTIVE operation. Click the button again to do it. Save a tile to commit fully.
-# - This will temporarily make the game use your editor's tiles. You are responsible for any crashes.
-# - Submesh Editor
-# - Flip lyrbonus
-# - Print SM to console
+:: KDDebug_Defeat
+强制击杀
+- Add keys and lockpicks
+添加钥匙和开锁工具
+- Toggle OmniVision™
+切换OmniVision™
+- Add 10 spell points
+增加10个技能点
+- Clear loose restraints
+清除松动的拘束具
+- Clear worn restraints
+清除磨损的拘束具
+- Open Storage
+打开存储
+- Add all restraints
+添加所有拘束具
+- Increment Floor
+增加楼层
+- Rest SP
+重置 SP
+- +Max SP
++最大 SP
+- Rest MP
+重置 MP
+- +Max MP
++最大 MP
+- Rest WP
+重置 WP
+- +Max WP
++最大 WP
+- Rest DP
+重置 DP
+- +Max DP
++最大 DP
+- Tile Tags
+地块标签
+- Require Tags
+显示标签
+- Forbid Tags
+禁止标签
+- Existing Tag
+现有标签
+- Mult
+多
+- Bonus
+奖励
+- Max
+最大
+- NOT
+非
+- Name of Tile
+地块名称
+- Tileset
+地块集
+- Skin
+皮肤
+- Category
+分类
+- Weight
+权重
+- Edit Tile Tags
+编辑地块标签
+- Go Back
+返回
+- Tile Index
+地块索引
+- Flex
+灵活
+- OpenBorder
+开放边界
+- Test Access
+测试访问
+- Tile List
+地块列表
+- Double click to LOAD
+双击以加载
+- Delete!!!
+删除！！！
+- Save Tile
+保存地块
+- Back to menu
+返回菜单
+- New (Open)
+新建（打开）
+- New (Empty)
+新建（空白）
+- New (Closed)
+新建（关闭）
+- New (Closed+Empty)
+新建（关闭+空）
+- Test Tile
+测试地块
+- Copy database to clipboard
+将数据库复制到剪贴板
+- Merge from clipboard
+从剪贴板合并
+- Reset tile database
+重置地块数据库
+- Load tile from Clipboard
+从剪贴板加载地块
+- Copy Tile to Clipboard
+复制地块到剪贴板
+- Commit Editor Tiles
+提交编辑器地块
+- Get Database...
+获取数据库...
+- Paste here to merge database
+在此粘贴以合并数据库
+- Nothing new to add
+没有新内容可添加
+- Success
+成功
+- Some entrances are inaccessible. This tile will occur more rarely in worldgen
+一些入口无法进入，该地块在世界生成中出现的频率会更低
+- This is a DESTRUCTIVE operation. Click the button again to do it. Save a tile to commit fully.
+这是破坏性操作，再次点击按钮以执行，保存地块以完全提交。
+- This will temporarily make the game use your editor's tiles. You are responsible for any crashes.
+这将暂时使游戏使用你编辑器中的地块，任何崩溃由你自行负责。
+- Submesh Editor
+子网格编辑器
+- Flip lyrbonus
+翻转lyrbonus
+- Print SM to console
+打印SM到控制台
 
 
-# - Error loading save! Please copy save code and post a bug report.
+- Error loading save! Please copy save code and post a bug report.
+加载存档出错！请复制存档代码并发布错误报告。
