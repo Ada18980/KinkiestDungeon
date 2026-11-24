@@ -500,6 +500,7 @@ function KinkyDungeonInterruptSleep() {
 		};
 		KinkyDungeonSendEvent("sleepEnd", data);
 	}
+	KinkyDungeonFastMovePath = [];
 	KDGameData.SleepTurns = 0;
 	KDGameData.PlaySelfTurns = 0;
 	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonGetRestraintItem("ItemDevices") && !KinkyDungeonFlags.get("ZeroResistance")) {
@@ -639,7 +640,7 @@ function KDDoPerkDamageTypeChanges(data: any) {
 	}
 }
 
-function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean, src?: string) {
+function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean, src?: string, trig?: string) {
 	if (bullet && !noAlreadyHit) {
 		if (KDBulletAlreadyHit(bullet, KinkyDungeonPlayerEntity)) return {happened: 0, string: ""};
 	}
@@ -876,7 +877,7 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAl
 			str = str + `${Math.round(amt*10)}wp`;
 			KDChangeWill(src || (data.arouseAmount > 0 ? "tease" : "dmg"), data.type,"playerDmg", amt, true);
 		}
-		if (!data.noInterrupt)
+		if (!data.noInterrupt && src != "player" && src != "player" && trig != "tick")
 			KinkyDungeonInterruptSleep();
 
 		if (data.dmg > 0 && KinkyDungeonStatsChoice.get("Breathless") && !KinkyDungeonStatsChoice.get("Artificial")) {
