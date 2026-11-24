@@ -3458,7 +3458,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					KDChangeDistraction("shock", "restraint", "punish", 5, false, 0.5);
 					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 				}
-				KinkyDungeonDealDamage({ damage: e.power, type: "estim", src: "shock", srctype: "restraint", srctrig: "punish" });
+				KinkyDungeonDealDamage({ damage: e.power, type: "estim", src: "shock", srctype: "restraint", srctrig: "punish", noInterrupt: !KDHostile(enemy) });
 				const msg = TextGet(e.msg ? e.msg : "KinkyDungeonRemoteShockEstim")
 					.replace("RestraintName", TextGet(`Restraint${item.name}`))
 					.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
@@ -3469,7 +3469,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
 					KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints - 1); // This is to prevent stunlock while slowed heavily
 				}
-				KinkyDungeonDealDamage({ damage: e.power, type: e.damage });
+				KinkyDungeonDealDamage({ damage: e.power, type: e.damage, noInterrupt: !KDHostile(enemy) });
 				const msg = TextGet(e.msg ? e.msg : "KinkyDungeonRemoteShock")
 					.replace("RestraintName", TextGet(`Restraint${item.name}`))
 					.replace("EnemyName", TextGet(`Name${enemy.Enemy.name}`));
@@ -3596,7 +3596,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"PunishShock": (e, item, data) => {
 			if (item == data.item && (!e.kind || data.kind == e.kind) && (!e.requireTags || e.requireTags.includes(data.kind)) && (!e.filterTags || !e.filterTags.includes(data.kind))) {
 				if (!e.chance || KDRandom() < e.chance) {
-					KinkyDungeonDealDamage({ damage: e.power, type: e.damage });
+					KinkyDungeonDealDamage({ damage: e.power, type: e.damage, noInterrupt: data.noInterrupt });
 					if (e.msg && (e.always || !KDGameData.CurrentVibration)) KinkyDungeonSendTextMessage(1, TextGet(e.msg).replace("[RESTRAINTNAME]", TextGet("Restraint" + item.name)), "#aaaaaa", 1);
 					if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg", undefined, e.vol);
 				
@@ -3615,6 +3615,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					item: item,
 					type: "playSelf",
 					kind: e.kind || "low",
+					noInterrupt: !!data.automatic && !data.orgasm,
 				}, data));
 
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg", undefined, e.vol);
@@ -5083,7 +5084,8 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 						distract: e.distract,
 						addBind: e.addBind,
 						bindType: e.bindType,
-						flags: ["BurningDamage"]
+						flags: ["BurningDamage"],
+						noInterrupt: true,
 					});
 				} else {
 					KinkyDungeonDamageEnemy(entity, {
@@ -5112,7 +5114,8 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 							distract: e.distract,
 							bindType: e.bindType,
 							addBind: e.addBind,
-							flags: ["BurningDamage"]
+							flags: ["BurningDamage"],
+							noInterrupt: true,
 						});
 					} else {
 						KinkyDungeonDamageEnemy(entity, {
@@ -5141,7 +5144,8 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 							distract: e.distract,
 							bindType: e.bindType,
 							addBind: e.addBind,
-							flags: ["BurningDamage"]
+							flags: ["BurningDamage"],
+							noInterrupt: true,
 						});
 					} else {
 						KinkyDungeonDamageEnemy(entity, {

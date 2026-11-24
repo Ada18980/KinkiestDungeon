@@ -1724,7 +1724,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 		if ((KinkyDungeonTeaseLevel > 0 || KDGameData.OrgasmNextStageTimer >= KDOrgasmStageTimerMax) && (KDRandom() < data.invol_chance && KinkyDungeonControlsEnabled())) {
 			if (KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage) {
 				if (KinkyDungeonCanPlayWithSelf() && KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax > KDGetPlaySelfThreshold() && !KinkyDungeonInDanger()) {
-					KinkyDungeonDoPlayWithSelf(KinkyDungeonTeaseLevel);
+					KinkyDungeonDoPlayWithSelf(KinkyDungeonTeaseLevel, true);
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonPlaySelfAutomatic" + (KinkyDungeonIsArmsBound() ? "Bound" : "")), "#FF5BE9", 5);
 				} else {
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPlaySelfTease"), "#FF5BE9", 2);
@@ -2297,7 +2297,7 @@ function KDGetPlaySelfPower(tease?: number): {orig: number, final: number}  {
 	return {orig: OrigAmount, final: amount};
 }
 
-function KinkyDungeonDoPlayWithSelf(tease?: number): number {
+function KinkyDungeonDoPlayWithSelf(tease?: number, automatic?: boolean, orgasm?: boolean): number {
 	let affinity = KinkyDungeonGetAffinity(false, "Edge");
 	let power = KDGetPlaySelfPower(tease);
 	let OrigAmount = power.orig;
@@ -2320,6 +2320,8 @@ function KinkyDungeonDoPlayWithSelf(tease?: number): number {
 		power: power,
 		alertRadius: 4.5 - 4*Math.min(1, KinkyDungeonGagTotal()),
 		distractionCooldown: Math.max(KDGameData.DistractionCooldown, 13),
+		automatic: !!automatic,
+		orgasm: orgasm,
 	};
 
 	KinkyDungeonSendEvent("playSelf", data);
@@ -2415,7 +2417,7 @@ function KinkyDungeonDoTryOrgasm(Bonus?: number, Auto?: number) {
 
 	let amount = denied ? 0 : KinkyDungeonOrgasmVibeLevel * KinkyDungeonOrgasmVibeLevelPlayPowerMult;
 	amount += KDDesireScalingOrgasmPower*(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionLowerCap / KinkyDungeonStatDistractionMax);
-	let playSelfAmount = Bonus != undefined ? Bonus : KinkyDungeonDoPlayWithSelf();
+	let playSelfAmount = Bonus != undefined ? Bonus : KinkyDungeonDoPlayWithSelf(undefined, !!Auto, true);
 	//if (playSelfAmount > KinkyDungeonOrgasmVibeLevel) {
 	//console.log(`${playSelfAmount} + ${amount}`);
 	amount += playSelfAmount;
