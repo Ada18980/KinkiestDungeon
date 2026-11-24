@@ -3154,7 +3154,7 @@ function KDGetHonorificGeneric(player: entity, lowercase?: boolean) {if (KinkyDu
  * @returns 
  */
 function KDGetHonorific(player: entity, lowercase?: boolean) {if (KinkyDungeonPlayerTags.get("Drone") || player?.Enemy?.tags?.robot || player?.Enemy?.tags?.cyborg) return TextGet("KDHonorificUnit"+ (lowercase ? "_LC" : ""));
-	if (player?.player && (KinkyDungeonStatsChoice.get("Dominant"))) return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMaster" : "KDHonorificMistress")+ (lowercase ? "_LC" : ""));
+	if (player?.player && (KinkyDungeonStatsChoice.get("Dominant"))) return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMixx" : (KDIsMaster(player) ? "KDHonorificMiss" : "KDHonorificMiss")) + (lowercase ? "_LC" : ""));
 	return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMixx" : (KDIsMaster(player) ? "KDHonorificMiss" : "KDHonorificMiss")) + (lowercase ? "_LC" : ""));
 }
 /**
@@ -3164,7 +3164,7 @@ function KDGetHonorific(player: entity, lowercase?: boolean) {if (KinkyDungeonPl
  * @returns 
  */
 function KDGetHonorificIntimate(player: entity, lowercase?: boolean) {if (KinkyDungeonPlayerTags.get("Drone") || player?.Enemy?.tags?.robot || player?.Enemy?.tags?.cyborg) return TextGet("KDHonorificUnitNode"+ (lowercase ? "_LC" : ""));
-	if (player?.player && (KinkyDungeonStatsChoice.get("Dominant"))) return TextGet((KDIsGenderAmbiguous(player) ? "KDHonorificMaster" : "KDHonorificMistress")+ (lowercase ? "_LC" : ""));
+	if (player?.player && (KinkyDungeonStatsChoice.get("Dominant"))) return TextGet(TextGet((KDIsMaster(player) ? "KDHonorificMaster" : (KDIsGenderAmbiguous(player) ? "KDHonorificMixtress" : "KDHonorificMistress")))+ (lowercase ? "_LC" : ""));
 	return TextGet((KDIsMaster(player) ? "KDHonorificMaster" : (KDIsGenderAmbiguous(player) ? "KDHonorificMixtress" : "KDHonorificMistress")) + (lowercase ? "_LC" : ""));
 }
 /**

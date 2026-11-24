@@ -1142,7 +1142,8 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					if (inventoryAs && KinkyDungeonRestraintVariants[inventoryAs]) {
 						KinkyDungeonRestraintVariants[inventoryAs].curse = undefined;
 					}
-					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonCurseUnlockCursedDamage").replace("RestraintName", TextGet("Restraint" + item.name)), KDBaseMint, 2);
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonCurseUnlockCursedDamage")
+						.replace("RestraintName", TextGet("Restraint" + item.name)), KDBaseMint, 2);
 				}
 			}
 		},
