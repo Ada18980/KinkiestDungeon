@@ -536,7 +536,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["ElementalIce", [
-		{name: "Julia", color: "rgb(109, 104, 255)", prisoner: true, free: true, customPlayLine: "", customIntro: "H-Hello... Please instruct me on what to do, Master.",
+		{name: "Julia", color: "rgb(109, 104, 255)", prisoner: true, free: true, customPlayLine: "", customIntro: "H-Hello... Please instruct me on what to do, ${PHonor}.",
 			
 			customOutfit: "Julia",customStyle: "Julia", 
 			customSprite: ""},
