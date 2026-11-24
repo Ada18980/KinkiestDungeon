@@ -344,8 +344,7 @@ let KDToggleCategories = {
 
 function KDUpdateForcePreload() {
 	//@ts-ignore
-	if ((!window.kdAPI && !TestMode)
-		&& KDToggles.MobileTextures) forcePreload = true;
+	if ((!window.kdAPI && !TestMode)) forcePreload = true;
 	else forcePreload = false;
 
 	if (forcePreload) {
