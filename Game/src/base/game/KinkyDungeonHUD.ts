@@ -3182,15 +3182,24 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 	KDDrawBuffIcons(minXX, minYY, statsDraw, side);
 }
 
+let KDSideBuffBarRightX = 566;
+let KDSideBuffBarBottomY = 625;
+
 function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string, statInfo>, side: boolean) {
 	// Draw the buff icons
 	let II = 0;
 	let spriteSize = 46;
+	if (side) KDSideBuffBarRightX = minXX + spriteSize + 10;
 	let sorted = Object.values(statsDraw).sort((a, b) => {
 		return (b.priority + KDStatsOrder[b.category]) - (a.priority + KDStatsOrder[a.category]);
 	});
 	let maxXX = minXX + 800;
 	let maxYY = minYY + 520;
+	if (side) {
+		let shrink = KDGetPlayerPoseProperty("shrinkSideBuffBar");
+		if (shrink) maxYY = Math.max(minYY, Math.min(maxYY, 1000 - shrink - spriteSize));
+		KDSideBuffBarBottomY = maxYY + Math.ceil(spriteSize/2);
+	}
 	let YY = minYY;
 	let textWidth = 44;
 	let XX = minXX;
@@ -3306,6 +3315,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 		}
 
 		if (side) {
+			KDSideBuffBarRightX = Math.max(KDSideBuffBarRightX, XX + spriteSize);
 			YY += XXspacing;
 			if (YY > maxYY) {
 				if (KDToggleShowAllBuffs || (KDToggles.ExtraBuffRow && !reset)) {

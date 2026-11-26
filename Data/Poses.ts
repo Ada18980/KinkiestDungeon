@@ -146,6 +146,8 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 	Hogtie: {
 		rotation: -90,
 		pri_rotation: 1,
+		shrinkSideBuffBar: 450,
+		shrinkSideBuffBarPri: 1,
 		offset_x: 0.52,
 		offset_xFlip: 0.17,
 		offset_y: 0.2,
@@ -325,6 +327,34 @@ function ModelGetMaxPose(Poses: {[_: string]: boolean}, CheckVar: string, Filter
 		}
 	}
 	return maxPose;
+}
+
+/**
+ * Get the pose from the pose array with the highest value of checkvar
+ * using priority
+ * CheckVar + "Pri"
+ */
+function ModelGetMaxPriPose(Poses: {[_: string]: boolean}, CheckVar: string, FilterVar: string | null = null): string {
+	let maxPose = "";
+	let pri = -1;
+	for (let p of Object.keys(Poses)) {
+		if (PoseProperties[p] && PoseProperties[p][CheckVar] != undefined
+			&& (!PoseProperties[p].filter_pose || PoseProperties[p].filter_pose.some((pose) => {return Poses[pose];}))
+			&& (!FilterVar || PoseProperties[p][FilterVar])
+			&& ((PoseProperties[p][CheckVar + "Pri"] || 0) > pri)
+		) {
+			maxPose = p;
+			pri = (PoseProperties[p][CheckVar + "Pri"] || 0);
+		}
+	}
+	return maxPose;
+}
+
+function KDGetPlayerPoseProperty(prop: string): number {
+	let Poses = KDCurrentModels.get(KinkyDungeonPlayer)?.Poses;
+	if (!Poses) return 0;
+	let pose = ModelGetMaxPriPose(Poses, prop);
+	return PoseProperties[pose]?.[prop] || 0;
 }
 
 function ModelGetPoseOffsets(Poses: {[_: string]: boolean}, Flip: boolean) {

@@ -44,6 +44,9 @@ type PoseProperty = {
 	global_default?: string,
 	/** Does a model flip*/
 	flip?: boolean,
+	/** Pixels, from bottom of player portrait */
+	shrinkSideBuffBar?: number,
+	shrinkSideBuffBarPri?: number,
 
 }
 

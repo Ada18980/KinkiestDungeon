@@ -1117,8 +1117,10 @@ function KinkyDungeonDrawGame() {
 		DrawTextFitKD(TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr"), 1990, 50, 200, KDBaseWhite, KDTextGray2, undefined, "right");
 	}
 	KDDrawMinimap(1990-KDMinimapWCurrent, 25);
-	KDDrawPartyMembers(500 + ((KDToggles.BuffSide && !KDToggleShowAllBuffs) ? 60 : 4), 
-	500 + ((KDToggles.BuffSide && KDToggleShowAllBuffs) ? 105 : 0), tooltips);
+	if (KDToggles.BuffSide && KDToggleShowAllBuffs)
+		KDDrawPartyMembers(504, KDSideBuffBarBottomY + 8, tooltips);
+	else
+		KDDrawPartyMembers((KDToggles.BuffSide ? KDSideBuffBarRightX : 500) + 8, 60, tooltips);
 
 
 
