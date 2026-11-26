@@ -301,22 +301,26 @@ function KDAddGagXP(type: string, player: entity, xp?: number) {
 		{thresh: 0.75, tag: "Heavy", xp: xp},
 	]) {
 		if (dat.thresh == 0) {
-			KDTickTraining("Gag", gagTotal > 0, gagTotal == 0, KDGagTrainingMult * 10, 1 + gagTotal);
+			KDTickTraining("Gag", gagTotal > 0, gagTotal == 0, 
+				KDGagTrainingMult * 10, 1 + gagTotal);
 		}
-		if (((dat.thresh > 0 && gagTotal >= dat.thresh) || (
-			(dat.thresh == 0 && gagTotal == 0)
-		)) && AddProgressFloor("Training", "Gag", 
-			{
-				key: "Gag_" + type + dat.tag,
-				tag: type + dat.tag,
-				data: {
-					level: KDGameData.Training["Gag"]?.training_stage,
-					floor: KDGameData.HighestLevelCurrent,
-				},
-				desc: "OncePerFloor",
-				value: Math.round(dat.xp * 100)}, false)) {
-				KDAddFlatTraining("Gag", dat.xp);
-			}
+		if (dat.xp >= 0 || ((KDGameData.Training["Gag"]?.training_points || 0) + dat.xp >= 0)) {
+			if (((dat.thresh > 0 && gagTotal >= dat.thresh) || (
+				(dat.thresh == 0 && gagTotal == 0)
+			)) && AddProgressFloor("Training", "Gag", 
+				{
+					key: "Gag_" + type + dat.tag,
+					tag: type + dat.tag,
+					data: {
+						level: KDGameData.Training["Gag"]?.training_stage,
+						floor: KDGameData.HighestLevelCurrent,
+					},
+					desc: "OncePerFloor",
+					value: Math.round(dat.xp * 100)}, false)) {
+					KDAddFlatTraining("Gag", dat.xp);
+				}
+		}
+		
 	}
 }
 
