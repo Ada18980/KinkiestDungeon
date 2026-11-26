@@ -2997,7 +2997,8 @@ function KDDoCapture(Enemy: entity, attackCost: number, noadvance: boolean, skip
 	KDSetToExpectedBondage(Enemy, 0);
 	KinkyDungeonSetEnemyFlag(Enemy, "cap", noadvance ? 1 : 2);
 	if (KDDoCollect(Enemy)) {
-		KDAddCollection(Enemy);
+		let val = KDAddCollection(Enemy);
+		if (val) KDApplyRecruitType(val);
 	}
 	else {
 		KDFreeNPCRestraints(Enemy.id, KDPlayer().id);

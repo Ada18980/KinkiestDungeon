@@ -298,7 +298,7 @@ function KDCapturableType(enemy: enemy): boolean {
  * @param [servantclass]
  * @param [type]
  */
-function KDAddCollection(enemy: entity, type?: string, status?: string, servantclass?: string) {
+function KDAddCollection(enemy: entity, type?: string, status?: string, servantclass?: string): KDCollectionEntry {
 	if (!KDGameData.Collection) KDGameData.Collection = {};
 	if (!KDGameData.CollectionSorted) KDSortCollection();
 
@@ -374,6 +374,8 @@ function KDAddCollection(enemy: entity, type?: string, status?: string, servantc
 		}
 		KDUpdatePersistentNPC(enemy.id);
 	}
+
+	return KDGameData.Collection["" + enemy.id];
 }
 
 
