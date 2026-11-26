@@ -3183,7 +3183,8 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 }
 
 let KDSideBuffBarRightX = 566;
-let KDSideBuffBarBottomY = 625;
+let KDSideBuffBarBottomY = 350;
+let KDSideBuffBarBottomMaxY = 370;
 
 function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string, statInfo>, side: boolean) {
 	// Draw the buff icons
@@ -3194,7 +3195,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 		return (b.priority + KDStatsOrder[b.category]) - (a.priority + KDStatsOrder[a.category]);
 	});
 	let maxXX = minXX + 800;
-	let maxYY = minYY + 520;
+	let maxYY = minYY + KDSideBuffBarBottomMaxY;
 	if (side) {
 		let shrink = KDGetPlayerPoseProperty("shrinkSideBuffBar");
 		if (shrink) maxYY = Math.max(minYY, Math.min(maxYY, 1000 - shrink - spriteSize));
