@@ -55675,9 +55675,9 @@ Kinky Dungeon 上次运行时加载模组失败。
 - Add 10 spell points
 增加10个技能点
 - Clear loose restraints
-清除松动的拘束具
+清除背包中的拘束具
 - Clear worn restraints
-清除磨损的拘束具
+清除已装备的拘束具
 - Open Storage
 打开存储
 - Add all restraints
