@@ -47918,7 +47918,7 @@ RestraintName 失效了！
 # :: KDCollectionFilterFree
 - Disarmed!!!
 缴械！！！
-- Show Buffs and Stats
+- Expand Buffs and Stats
 显示增益和统计数据
 
 
@@ -55675,9 +55675,9 @@ Kinky Dungeon 上次运行时加载模组失败。
 - Add 10 spell points
 增加10个技能点
 - Clear loose restraints
-清除背包中的拘束具
+清除松动的拘束具
 - Clear worn restraints
-清除已装备的拘束具
+清除磨损的拘束具
 - Open Storage
 打开存储
 - Add all restraints
